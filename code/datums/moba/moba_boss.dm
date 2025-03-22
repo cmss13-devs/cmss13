@@ -9,10 +9,12 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(boon_type)
+		var/datum/moba_boon/boon = new boon_type(controller)
+		boon.on_grant(controller, killing_hive)
 		if(killing_hive.hivenumber == XENO_HIVE_MOBA_LEFT)
-			controller.team1_boons += new boon_type(controller)
+			controller.team1_boons += boon
 		else if(killing_hive.hivenumber == XENO_HIVE_MOBA_RIGHT)
-			controller.team2_boons += new boon_type(controller)
+			controller.team2_boons += boon
 
 
 /datum/moba_boss/megacarp
@@ -24,7 +26,7 @@
 
 /datum/moba_boss/megacarp/on_boss_kill(mob/living/simple_animal/hostile/dead_boss, datum/moba_player/killer, datum/hive_status/killing_hive, datum/moba_controller/controller)
 	. = ..()
-	START_COOLDOWN(controller, carp_boss_spawn_cooldown, carp_spawn_time)
+	COOLDOWN_START(controller, carp_boss_spawn_cooldown, controller.carp_spawn_time)
 
 
 /datum/moba_boss/hivebot

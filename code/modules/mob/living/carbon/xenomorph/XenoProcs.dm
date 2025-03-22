@@ -46,15 +46,17 @@
 	. += ""
 
 	. += "Health: [floor(health)]/[floor(maxHealth)]"
-	. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
 	// Zonenote: hack
 	var/datum/component/moba_player/player_component = GetComponent(/datum/component/moba_player)
 	if(player_component)
-		. += "Acid Armor: [floor(acid_armor + acid_armor_buff - acid_armor_debuff)]/[floor(acid_armor)]"
+		. += "Armor: [floor(((0.01 * armor_integrity * armor_deflection) + (armor_deflection_buff - armor_deflection_debuff)) * player_component.armor_multiplier)]/[floor(armor_deflection * player_component.armor_multiplier)]"
+		. += "Acid Armor: [floor((acid_armor + acid_armor_buff - acid_armor_debuff) * player_component.armor_multiplier)]/[floor(acid_armor * player_component.armor_multiplier)]"
 		. += "Lifesteal: [player_component.lifesteal * 100]%"
 		. += "Acid Power: [player_component.get_ap()]"
 		. += "Slash Penetration: [player_component.slash_penetration]"
 		. += "Acid Penetration: [player_component.acid_penetration]"
+	else
+		. += "Armor: [floor(0.01*armor_integrity*armor_deflection)+(armor_deflection_buff-armor_deflection_debuff)]/[floor(armor_deflection)]"
 	. += "Plasma: [floor(plasma_stored)]/[floor(plasma_max)]"
 	. += "Slash Damage: [floor((melee_damage_lower+melee_damage_upper)/2)]"
 

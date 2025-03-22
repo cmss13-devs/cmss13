@@ -62,10 +62,10 @@
 	var/minion_spawn_time = (1 MINUTES) / MOBA_WAVES_PER_MINUTE
 
 	COOLDOWN_DECLARE(carp_boss_spawn_cooldown)
-	var/carp_initial_spawn_time = 18 MINUTES
+	var/carp_initial_spawn_time = 15 MINUTES
 	var/carp_spawn_time = 7 MINUTES
 
-	COOLDOWN_DECLARE(hivebot_spawn_cooldown)
+	COOLDOWN_DECLARE(hivebot_boss_spawn_cooldown)
 	var/hivebot_boss_spawned = FALSE
 	var/hivebot_spawn_time = 7 MINUTES
 
@@ -310,7 +310,7 @@
 	var/mob/living/carbon/xenomorph/xeno = new found_playerdata.caste.equivalent_xeno_path
 	xeno.forceMove(player_datum.right_team ? right_base : left_base)
 	xeno.set_hive_and_update(player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT)
-	xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, TRUE)
+	var/datum/component/moba_player/player_comp = xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, TRUE)
 	xeno.got_evolution_message = TRUE
 	ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	found_playerdata.player.tied_client.mob.mind.transfer_to(xeno, TRUE)
@@ -319,7 +319,7 @@
 
 	found_playerdata.player.set_tied_xeno(xeno)
 	for(var/datum/moba_boon/boon as anything in (player_datum.right_team ? team2_boons : team1_boons))
-		boon.on_friendly_spawn(xeno, player_datum)
+		boon.on_friendly_spawn(xeno, player_datum, player_comp)
 
 /datum/moba_controller/proc/move_disconnected_player_to_body(mob/source)
 	SIGNAL_HANDLER
@@ -489,15 +489,14 @@
 			killing_hive = GLOB.hive_datum[XENO_HIVE_MOBA_RIGHT]
 			break
 
-	for(var/datum/moba_player/player as anything in players)
-		if(!player.tied_client)
-			continue
+	var/message
+	if(!killing_hive)
+		message = "Both teams have failed to kill the [source.name]! Tell Zonespace how this happened please!"
+	else
+		message = "The [source.name] has been killed by the <b>[killing_hive.name]</b>!"
 
-		playsound_client(player.tied_client, 'sound/voice/alien_distantroar_3.ogg', player.get_tied_xeno().loc, 25, FALSE)
-		if(!killing_hive)
-			player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "Both teams have failed to kill the [source.name]! Tell Zonespace how this happened please!", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
-		else
-			player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "The [source.name] has been killed by the <b>[killing_hive.name]</b>!", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+	message_team1(message, 'sound/voice/alien_distantroar_3.ogg')
+	message_team2(message, 'sound/voice/alien_distantroar_3.ogg')
 
 	var/datum/moba_boss/boss_datum = spawned_bosses[source]
 	if(boss_datum)
@@ -510,3 +509,29 @@
 
 	qdel(spawned_bosses[source])
 	spawned_bosses -= source
+
+/datum/moba_controller/proc/message_team1(message, sound = 'sound/voice/alien_distantroar_3.ogg')
+	for(var/datum/moba_player/player as anything in team1)
+		if(!player.tied_client)
+			continue
+
+		var/mob/living/carbon/xenomorph/xeno = player.get_tied_xeno()
+		if(!xeno)
+			continue
+
+		if(sound)
+			playsound_client(player.tied_client, sound, xeno.loc, 25, FALSE)
+		xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>[message]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+
+/datum/moba_controller/proc/message_team2(message, sound = 'sound/voice/alien_distantroar_3.ogg')
+	for(var/datum/moba_player/player as anything in team2)
+		if(!player.tied_client)
+			continue
+
+		var/mob/living/carbon/xenomorph/xeno = player.get_tied_xeno()
+		if(!xeno)
+			continue
+
+		if(sound)
+			playsound_client(player.tied_client, sound, xeno.loc, 25, FALSE)
+		xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>[message]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))

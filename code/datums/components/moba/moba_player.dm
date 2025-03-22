@@ -45,6 +45,9 @@
 	var/lifesteal = 0
 	var/slash_penetration = 0
 	var/acid_penetration = 0
+	var/ap_multiplier = 1
+	/// Applies to both armor and acid armor
+	var/armor_multiplier = 1
 
 /datum/component/moba_player/Initialize(datum/moba_player/player, id, right)
 	. = ..()
@@ -134,6 +137,7 @@
 	RegisterSignal(parent_xeno, COMSIG_XENO_TRY_OVERWATCH, PROC_REF(on_overwatch))
 	RegisterSignal(parent_xeno, COMSIG_MOB_LOGGED_IN, PROC_REF(on_reconnect))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_PLAYER_DATUM, PROC_REF(get_player_datum))
+	RegisterSignal(parent_xeno, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, PROC_REF(on_armor_damage_apply))
 
 /datum/component/moba_player/proc/handle_level_up()
 	player_datum.level_up()
@@ -280,13 +284,24 @@
 /datum/component/moba_player/proc/get_ap_signal(datum/source, list/ap_list)
 	SIGNAL_HANDLER
 
-	ap_list += acid_power
-
-/datum/component/moba_player/proc/get_ap()
+	var/ap = acid_power
 	var/datum/status_effect/acid_neutralized/neutralized = parent_xeno.has_status_effect(/datum/status_effect/acid_neutralized)
 	if(neutralized)
-		return acid_power * neutralized.ap_mult
-	return acid_power
+		ap *= neutralized.ap_mult
+
+	ap *= ap_multiplier
+
+	ap_list += ap
+
+/datum/component/moba_player/proc/get_ap()
+	var/ap = acid_power
+	var/datum/status_effect/acid_neutralized/neutralized = parent_xeno.has_status_effect(/datum/status_effect/acid_neutralized)
+	if(neutralized)
+		ap *= neutralized.ap_mult
+
+	ap *= ap_multiplier
+
+	return ap
 
 /datum/component/moba_player/proc/add_ap(ap)
 	acid_power += ap
@@ -486,3 +501,8 @@
 		MP.grant_gold(null, 10000)
 
 #endif
+
+/datum/component/moba_player/proc/on_armor_damage_apply(datum/source, list/damagedata)
+	SIGNAL_HANDLER
+
+	damagedata["armor"] *= armor_multiplier

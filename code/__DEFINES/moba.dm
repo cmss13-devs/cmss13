@@ -47,3 +47,9 @@
 
 /// How much bonus damage to deal against structures minions/players have the hivebot boon
 #define MOBA_HIVEBOT_BOON_TRUE_DAMAGE 8
+
+/// Bonus AD from carp boon
+#define MOBA_CARP_BOON_AD_MULT 1.08
+
+/// Bonus AP from carp boon
+#define MOBA_CARP_BOON_AP_MULT 1.1

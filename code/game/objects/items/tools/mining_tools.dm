@@ -13,7 +13,7 @@
 	icon_state = "pickaxe"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_STRONG
+	force = MELEE_FORCE_TIER_7
 	throwforce = 4
 	item_state = "pickaxe"
 	w_class = SIZE_LARGE

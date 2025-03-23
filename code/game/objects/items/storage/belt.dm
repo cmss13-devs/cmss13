@@ -1486,7 +1486,7 @@
 
 /obj/item/storage/belt/gun/m4a3/wy/es4/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/es4())
-	for(var/i = 1 to 3)
+	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/es4(src)
 
 /obj/item/storage/belt/gun/m4a3/wy/vp78/fill_preset_inventory()

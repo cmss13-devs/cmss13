@@ -602,15 +602,13 @@
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
-		if(dead.health < HEALTH_THRESHOLD_DEAD)
-			return
-		if(!COOLDOWN_FINISHED(src, ghost_notif))
-			return
-		var/mob/dead/observer/ghost = dead.get_ghost()
-		if(ghost?.client)
-			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
-			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+	if(!COOLDOWN_FINISHED(src, ghost_notif))
+		return
+	var/mob/dead/observer/ghost = dead.get_ghost()
+	if(ghost?.client)
+		COOLDOWN_START(src, ghost_notif, 30 SECONDS)
+		playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
+		to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating

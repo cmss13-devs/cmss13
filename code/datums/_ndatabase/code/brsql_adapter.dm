@@ -592,6 +592,8 @@
 			return "BLOB"
 		if(DB_FIELDTYPE_DECIMAL)
 			return "DECIMAL(18,5)"
+		if(DB_FIELDTYPE_JSON)
+			return "JSON"
 	return FALSE
 
 /datum/db/adapter/brsql_adapter/proc/fields2text(list/L)

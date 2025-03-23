@@ -132,7 +132,7 @@
 	var/minimum_evolve_time = 1 MINUTES
 	/// Iconstate for the xeno on the minimap
 	var/minimap_icon = "xeno"
-	var/minimap_background = "background_xeno"
+	var/ = "background_xeno"
 	///The iconstate for leadered xenos on the minimap, added as overlay
 	var/minimap_leadered_overlay = "xenoleader"
 
@@ -176,7 +176,7 @@
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
 
 /datum/caste_datum/proc/get_minimap_icon()
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', minimap_background)
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', )
 
 	var/iconstate = minimap_icon ? minimap_icon : "unknown"
 	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)

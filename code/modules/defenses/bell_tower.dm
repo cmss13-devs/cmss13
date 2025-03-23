@@ -25,6 +25,9 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
+	var/minimap_flag = get_minimap_flag_for_faction(linked_tower.selected_categories[SENTRY_CATEGORY_IFF])
+	new /obj/effect/temp_visual/minimap_blip(get_turf(target), minimap_flag)
+
 
 /obj/structure/machinery/defenses/bell_tower/Initialize()
 	. = ..()
@@ -171,6 +174,9 @@
 	md.iff_signal = LAZYACCESS(faction_group, 1)
 	md.toggle_active(null, FALSE)
 
+	var/minimap_flag = get_minimap_flag_for_faction(selected_categories[SENTRY_CATEGORY_IFF])
+	SSminimaps.add_marker(src, minimap_flag, image('icons/ui_icons/map_blips.dmi', null, "md", HIGH_FLOAT_LAYER, dir = src.dir))
+
 	if(!md.iff_signal)
 		md.iff_signal = FACTION_MARINE
 
@@ -178,7 +184,7 @@
 	if(md)
 		md.linked_tower = null
 		QDEL_NULL(md)
-
+	SSminimaps.remove_marker(src)
 
 
 /obj/structure/machinery/defenses/bell_tower/cloaker

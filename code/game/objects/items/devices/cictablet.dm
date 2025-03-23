@@ -17,17 +17,31 @@
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE
 
-	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_USCM
+	/// List of references to the tools we will be using to shape what the map looks like
+	var/list/atom/movable/screen/drawing_tools = list(
+		/atom/movable/screen/minimap_tool/draw_tool/red,
+		/atom/movable/screen/minimap_tool/draw_tool/yellow,
+		/atom/movable/screen/minimap_tool/draw_tool/purple,
+		/atom/movable/screen/minimap_tool/draw_tool/blue,
+		/atom/movable/screen/minimap_tool/draw_tool/erase,
+		/atom/movable/screen/minimap_tool/label,
+		/atom/movable/screen/minimap_tool/clear,
+	)
+	///flags that we want to be shown when you interact with this table
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	///by default Zlevel 2, groundside is targetted
+	var/targetted_zlevel = 2
+	///minimap obj ref that we will display to users
+	var/atom/movable/screen/minimap/map
+	///Is user currently interacting with minimap
+	var/interacting_minimap = FALSE
+	///Toggle for scrolling map
+	var/scroll_toggle
 
 	COOLDOWN_DECLARE(announcement_cooldown)
 	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
-	if(announcement_faction == FACTION_MARINE)
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
@@ -35,7 +49,7 @@
 	return ..()
 
 /obj/item/device/cotablet/Destroy()
-	QDEL_NULL(tacmap)
+	map = null
 	return ..()
 
 /obj/item/device/cotablet/proc/disable_pmc()
@@ -128,7 +142,21 @@
 			. = TRUE
 
 		if("mapview")
-			tacmap.tgui_interact(user)
+			if(!map)
+				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
+				var/list/atom/movable/screen/actions = list()
+				for(var/path in drawing_tools)
+					actions += new path(null, targetted_zlevel, minimap_flag, map)
+					scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
+				drawing_tools = actions
+			if(!interacting_minimap)
+				user.client.screen += map
+				user.client.screen += drawing_tools
+				user.client.screen += scroll_toggle
+				interacting_minimap = TRUE
+			else
+				remove_minimap(user)
+				interacting_minimap = FALSE
 			. = TRUE
 
 		if("evacuation_start")
@@ -168,6 +196,19 @@
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
+/obj/item/device/cotablet/ui_close(mob/user)
+	..()
+	remove_minimap(user)
+
+/obj/item/device/cotablet/proc/remove_minimap(mob/user)
+	user?.client?.screen -= map
+	user?.client?.screen -= drawing_tools
+	user?.client?.screen -= scroll_toggle
+	user?.client?.mouse_pointer_icon = null
+	interacting_minimap = FALSE
+	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
+		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
+
 /obj/item/device/cotablet/pmc
 	desc = "A special device used by corporate PMC directors."
 
@@ -176,7 +217,7 @@
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
 	add_pmcs = TRUE
-	minimap_type = MINIMAP_FLAG_WY
+	minimap_flag = MINIMAP_FLAG_WY
 
 /obj/item/device/cotablet/upp
 
@@ -188,4 +229,4 @@
 	announcement_faction = FACTION_UPP
 	req_access = list(ACCESS_UPP_LEADERSHIP)
 
-	minimap_type = MINIMAP_FLAG_UPP
+	minimap_flag = MINIMAP_FLAG_UPP

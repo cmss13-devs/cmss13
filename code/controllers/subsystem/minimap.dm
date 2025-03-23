@@ -1,5 +1,10 @@
-#define CANVAS_COOLDOWN_TIME 4 MINUTES
-#define FLATTEN_MAP_COOLDOWN_TIME 3 MINUTES
+#define CANVAS_COOLDOWN_TIME 10 SECONDS
+#define FLATTEN_MAP_COOLDOWN_TIME 10 SECONDS
+///A player needs to be unbanned from ALL these roles in order to be able to use the minimap drawing tool
+GLOBAL_LIST_INIT(roles_allowed_minimap_draw, list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SO, JOB_XO, JOB_CO))
+GLOBAL_PROTECT(roles_allowed_minimap_draw)
+/// range that we can remove labels when we click near them with the removal tool
+#define LABEL_REMOVE_RANGE 20
 
 /**
  *  # Minimaps subsystem
@@ -9,16 +14,20 @@
  * Minimaps are a low priority subsystem that fires relatively often
  * the Initialize proc for this subsystem draws the maps as one of the last initializing subsystems
  *
- * Fire() for this subsystem doesn't actually update anything, and purely just reapplies the overlays that it already tracks
+ * Fire() for this subsystem doens't actually updates anything, and purely just reapplies the overlays that it already tracks
  * actual updating of marker locations is handled by [/datum/controller/subsystem/minimaps/proc/on_move]
  * and zlevel changes are handled in [/datum/controller/subsystem/minimaps/proc/on_z_change]
  * tracking of the actual atoms you want to be drawn on is done by means of datums holding info pertaining to them with [/datum/hud_displays]
+ *
+ * Todo
+ * *: add fetching of images to allow stuff like adding/removing xeno crowns easily
+ * *: add a system for viscontents so things like minimap draw are more responsive
  */
 SUBSYSTEM_DEF(minimaps)
 	name = "Minimaps"
 	init_order = SS_INIT_MINIMAP
 	priority = SS_PRIORITY_MINIMAPS
-	wait = 5 SECONDS
+	wait = 10
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	///Minimap hud display datums sorted by zlevel
 	var/list/datum/hud_displays/minimaps_by_z = list()
@@ -26,115 +35,28 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/image/images_by_source = list()
 	///the update target datums, sorted by update flag type
 	var/list/update_targets = list()
-	///Nonassoc list of targets we want to be stripped of their overlays during the SS fire
-	var/list/atom/update_targets_unsorted = list()
+	///Nonassoc list of updators we want to have their overlays reapplied
+	var/list/datum/minimap_updator/update_targets_unsorted = list()
 	///Assoc list of removal callbacks to invoke to remove images from the raw lists
 	var/list/datum/callback/removal_cbs = list()
-	///list of holders for data relating to tracked zlevel and tracked atom
+	///list of holders for data relating to tracked zlevel and tracked atum
 	var/list/datum/minimap_updator/updators_by_datum = list()
-	///list of callbacks we need to invoke late because Initialize happens early
-	var/list/datum/callback/earlyadds = list()
+	///assoc list of hash = image of images drawn by players
+	var/list/image/drawn_images = list()
+	///list of callbacks we need to invoke late because Initialize happens early, or a Z-level was loaded after init
+	var/list/list/datum/callback/earlyadds = list()
 	///assoc list of minimap objects that are hashed so we have to update as few as possible
 	var/list/hashed_minimaps = list()
-	/// associated list of tacmap datums with a hash
-	var/list/hashed_tacmaps = list()
-	/// weakrefs of xenos temporarily added to the marine minimap
-	var/list/minimap_added = list()
 
-/datum/controller/subsystem/minimaps/Initialize(start_timeofday)
-	for(var/level in 1 to length(SSmapping.z_list))
-		minimaps_by_z["[level]"] = new /datum/hud_displays
-		if(!is_ground_level(level) && !is_mainship_level(level))
-			continue
-
-		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
-		var/xmin = world.maxx
-		var/ymin = world.maxy
-		var/xmax = 1
-		var/ymax = 1
-
-		for(var/xval in 1 to world.maxx)
-			for(var/yval in 1 to world.maxy) //Scan all the turfs and draw as needed
-				var/turf/location = locate(xval, yval, level)
-				if(location.z != level)
-					continue
-
-				if(location.density)
-					if(!istype(location, /turf/closed/wall/almayer/outer)) // Ignore almayer border
-						xmin = min(xmin, xval)
-						ymin = min(ymin, yval)
-						xmax = max(xmax, xval)
-						ymax = max(ymax, yval)
-					icon_gen.DrawBox(location.minimap_color, xval, yval)
-					continue
-
-				if(istype(location, /turf/open/space))
-					continue
-
-				var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
-				if(alttarget)
-					xmin = min(xmin, xval)
-					ymin = min(ymin, yval)
-					xmax = max(xmax, xval)
-					ymax = max(ymax, yval)
-					icon_gen.DrawBox(alttarget.minimap_color, xval, yval)
-					continue
-
-				var/area/turfloc = location.loc
-				if(turfloc.minimap_color)
-					xmin = min(xmin, xval)
-					ymin = min(ymin, yval)
-					xmax = max(xmax, xval)
-					ymax = max(ymax, yval)
-					icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
-					continue
-
-				xmin = min(xmin, xval)
-				ymin = min(ymin, yval)
-				xmax = max(xmax, xval)
-				ymax = max(ymax, yval)
-				icon_gen.DrawBox(location.minimap_color, xval, yval)
-
-		xmin = xmin * MINIMAP_SCALE - 1
-		ymin = ymin * MINIMAP_SCALE - 1
-		xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
-		ymax = min(ymax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
-
-		icon_gen.Scale(icon_gen.Width() * MINIMAP_SCALE, icon_gen.Height() * MINIMAP_SCALE) //scale it up x2 to make it easer to see
-		icon_gen.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1) //then trim it down also cutting anything unused on the bottom left
-
-		// Determine and assign the offsets
-		minimaps_by_z["[level]"].x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / MINIMAP_SCALE) - xmin
-		minimaps_by_z["[level]"].y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / MINIMAP_SCALE) - ymin
-		minimaps_by_z["[level]"].x_max = xmax
-		minimaps_by_z["[level]"].y_max = ymax
-
-		// Center the map icon
-		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset + xmin)
-		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset + ymin)
-
-		minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
-
-	RegisterSignal(SSdcs, COMSIG_GLOB_NEW_Z, PROC_REF(handle_new_z))
-
+/datum/controller/subsystem/minimaps/Initialize()
 	initialized = TRUE
-
-	for(var/i in 1 to length(earlyadds)) //lateload icons
-		earlyadds[i].Invoke()
-	earlyadds = null //then clear them
+	for(var/datum/space_level/z_level as anything in SSmapping.z_list)
+		load_new_z(null, z_level)
 
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/minimaps/proc/handle_new_z(dcs, datum/space_level/z_level)
-	SIGNAL_HANDLER
-
-	if(minimaps_by_z["[z_level.z_value]"])
-		return
-
-	minimaps_by_z["[z_level.z_value]"] = new /datum/hud_displays
-
 /datum/controller/subsystem/minimaps/stat_entry(msg)
-	msg = "Upd:[length(update_targets_unsorted)] Mark: [length(removal_cbs)]"
+	msg = "Upd:[length(update_targets_unsorted)] Mark:[length(removal_cbs)]"
 	return ..()
 
 /datum/controller/subsystem/minimaps/Recover()
@@ -144,28 +66,96 @@ SUBSYSTEM_DEF(minimaps)
 	update_targets_unsorted = SSminimaps.update_targets_unsorted
 	removal_cbs = SSminimaps.removal_cbs
 	updators_by_datum = SSminimaps.updators_by_datum
+	drawn_images = SSminimaps.drawn_images
 
 /datum/controller/subsystem/minimaps/fire(resumed)
 	var/static/iteration = 0
-	if(!iteration) //on first iteration clear all overlays
-		for(var/iter=1 to length(update_targets_unsorted))
-			update_targets_unsorted[iter].overlays.Cut() //clear all the old overlays, no we cant cache it because they wont update
-	//checks last fired flag to make sure under high load that things are performed in stages
 	var/depthcount = 0
-	for(var/flag in update_targets)
+	for(var/datum/minimap_updator/updator as anything in update_targets_unsorted)
 		if(depthcount < iteration) //under high load update in chunks
 			depthcount++
 			continue
-		for(var/datum/minimap_updator/updator as anything in update_targets[flag])
-			if(length(updator.minimap.overlays))
-				updator.minimap.overlays += minimaps_by_z["[updator.ztarget]"].images_raw[flag]
-			else
-				updator.minimap.overlays = minimaps_by_z["[updator.ztarget]"].images_raw[flag]
+		updator.minimap.overlays = updator.raw_blips
 		depthcount++
 		iteration++
 		if(MC_TICK_CHECK)
 			return
 	iteration = 0
+
+///Creates a minimap for a particular z level
+/datum/controller/subsystem/minimaps/proc/load_new_z(datum/dcs, datum/space_level/z_level)
+	SIGNAL_HANDLER
+
+	var/level = z_level.z_value
+	minimaps_by_z["[level]"] = new /datum/hud_displays
+	if(!is_mainship_level(level) && !is_ground_level(level) && !(SSmapping.level_trait(level, ZTRAIT_AWAY))) //todo: maybe move this around
+		return
+	var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
+	var/xmin = world.maxx
+	var/ymin = world.maxy
+	var/xmax = 1
+	var/ymax = 1
+
+	for(var/xval = 1 to world.maxx)
+		for(var/yval = 1 to world.maxy) //Scan all the turfs and draw as needed
+			var/turf/location = locate(xval,yval,level)
+			if(location.density)
+				if(!istype(location, /turf/closed/wall/almayer/outer)) // Ignore almayer border
+					xmin = min(xmin, xval)
+					ymin = min(ymin, yval)
+					xmax = max(xmax, xval)
+					ymax = max(ymax, yval)
+				icon_gen.DrawBox(location.minimap_color, xval, yval)
+				continue
+			if(istype(location, /turf/open/space))
+				continue
+			var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
+			if(alttarget)
+				xmin = min(xmin, xval)
+				ymin = min(ymin, yval)
+				xmax = max(xmax, xval)
+				ymax = max(ymax, yval)
+				icon_gen.DrawBox(alttarget.minimap_color, xval, yval)
+				continue
+			var/area/turfloc = location.loc
+			if(turfloc.minimap_color)
+				xmin = min(xmin, xval)
+				ymin = min(ymin, yval)
+				xmax = max(xmax, xval)
+				ymax = max(ymax, yval)
+				icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
+				continue
+			xmin = min(xmin, xval)
+			ymin = min(ymin, yval)
+			xmax = max(xmax, xval)
+			ymax = max(ymax, yval)
+			icon_gen.DrawBox(location.minimap_color, xval, yval)
+	xmin = xmin * MINIMAP_SCALE - 1
+	ymin = ymin * MINIMAP_SCALE - 1
+	xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
+	ymax = min(ymax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
+
+	icon_gen.Scale(icon_gen.Width() * MINIMAP_SCALE, icon_gen.Height() * MINIMAP_SCALE) //scale it up x2 to make it easer to see
+	icon_gen.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1) //then trim it down also cutting anything unused on the bottom left
+
+	// Determine and assign the offsets
+	minimaps_by_z["[level]"].x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / MINIMAP_SCALE) - xmin
+	minimaps_by_z["[level]"].y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / MINIMAP_SCALE) - ymin
+	minimaps_by_z["[level]"].x_max = xmax
+	minimaps_by_z["[level]"].y_max = ymax
+
+	// Center the map icon
+	icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset + xmin)
+	icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset + ymin)
+	minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
+
+	//lateload icons
+	if(!earlyadds["[level]"])
+		return
+
+	for(var/datum/callback/callback as anything in earlyadds["[level]"])
+		callback.Invoke()
+	earlyadds["[level]"] = null //then clear them
 
 /**
  * Adds an atom to the processing updators that will have blips drawn on them
@@ -178,8 +168,9 @@ SUBSYSTEM_DEF(minimaps)
 	var/datum/minimap_updator/holder = new(target, ztarget)
 	for(var/flag in bitfield2list(flags))
 		LAZYADD(update_targets["[flag]"], holder)
+		holder.raw_blips += minimaps_by_z["[ztarget]"].images_raw["[flag]"]
 	updators_by_datum[target] = holder
-	update_targets_unsorted += target
+	update_targets_unsorted += holder
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updator))
 
 /**
@@ -192,17 +183,13 @@ SUBSYSTEM_DEF(minimaps)
 	updators_by_datum -= target
 	for(var/key in update_targets)
 		LAZYREMOVE(update_targets[key], holder)
-	update_targets_unsorted -= target
+	update_targets_unsorted -= holder
 
 /**
  * Holder datum for a zlevels data, concerning the overlays and the drawn level itself
  * The individual image trackers have a raw and a normal list
  * raw lists just store the images, while the normal ones are assoc list of [tracked_atom] = image
  * the raw lists are to speed up the Fire() of the subsystem so we dont have to filter through
- * WARNING!
- * There is a byond bug: http://www.byond.com/forum/post/2661309
- * That that forces us to use a separate list ref when accessing the lists of this datum
- * Yea it hurts me too
  */
 /datum/hud_displays
 	///Actual icon of the drawn zlevel with all of it's atoms
@@ -234,119 +221,165 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/minimap
 	///Target zlevel we want to be updating to
 	var/ztarget = 0
+	/// list of overlays we update
+	var/raw_blips
 
 /datum/minimap_updator/New(minimap, ztarget)
 	..()
 	src.minimap = minimap
 	src.ztarget = ztarget
+	raw_blips = list()
 
 /**
  * Adds an atom we want to track with blips to the subsystem
  * Arguments:
  * * target: atom we want to track
- * * zlevel: zlevel we want this atom to be tracked for
  * * hud_flags: tracked HUDs we want this atom to be displayed on
- * * iconstate: iconstate for the blip we want to be used for this tracked atom
- * * icon: icon file we want to use for this blip, 'icons/UI_icons/map_blips.dmi' by default
- * * overlay_iconstates: list of iconstates to use as overlay. Used for xeno leader icons.
+ * * marker: image or mutable_appearance we want to be using on the map
  */
-/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, zlevel, hud_flags = NONE, iconstate, icon = 'icons/ui_icons/map_blips.dmi', list/overlay_iconstates, image/given_image)
-	if(!isatom(target) || !zlevel || !hud_flags || ((!iconstate || !icon) && !given_image))
+/datum/controller/subsystem/minimaps/proc/add_marker(atom/target, hud_flags = NONE, image/blip, image_x, image_y)
+	if(!isatom(target) || !hud_flags || !blip)
 		CRASH("Invalid marker added to subsystem")
-	if(images_by_source[target])
-		CRASH("Duplicate marker added to subsystem")
-	if(!initialized)
-		earlyadds += CALLBACK(src, PROC_REF(add_marker), target, zlevel, hud_flags, iconstate, icon, overlay_iconstates, given_image)
+
+	if(!initialized || !(minimaps_by_z["[target.z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
+		for(var/datum/callback/callback as anything in earlyadds["[target.z]"])
+			if(callback.arguments[1] == target)
+				return
+		LAZYADDASSOCLIST(earlyadds, "[target.z]", CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
+		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_earlyadd), override = TRUE) //Override required for late z-level loading to prevent hard dels where an atom is initiated during z load, but is qdel'd before it finishes
 		return
 
-	var/image/blip
-	if(!given_image)
-		blip = image(icon, iconstate, pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset, pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset)
-	else
-		given_image.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target.x) + minimaps_by_z["[zlevel]"].x_offset
-		given_image.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target.y) + minimaps_by_z["[zlevel]"].y_offset
-		blip = given_image
+	var/turf/target_turf = get_turf(target)
 
-	for(var/i in overlay_iconstates)
-		var/image/overlay = image(icon, i)
-		overlay.appearance_flags = RESET_COLOR
-		blip.overlays += overlay
+	blip.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target_turf.x) + minimaps_by_z["[target_turf.z]"].x_offset + image_x
+	blip.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target_turf.y) + minimaps_by_z["[target_turf.z]"].y_offset + image_y
 
 	images_by_source[target] = blip
 	for(var/flag in bitfield2list(hud_flags))
-		minimaps_by_z["[zlevel]"].images_assoc["[flag]"][target] = blip
-		minimaps_by_z["[zlevel]"].images_raw["[flag]"] += blip
+		minimaps_by_z["[target_turf.z]"].images_assoc["[flag]"][target] = blip
+		minimaps_by_z["[target_turf.z]"].images_raw["[flag]"] += blip
+		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
+			if(target_turf.z == updator.ztarget)
+				updator.raw_blips += blip
 	if(ismovableatom(target))
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_z_change))
 		blip.RegisterSignal(target, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
-	removal_cbs[target] = CALLBACK(src, PROC_REF(removeimage), blip, target)
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_marker))
+	removal_cbs[target] = CALLBACK(src, PROC_REF(removeimage), blip, target, hud_flags)
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_marker), override = TRUE) //override for atoms that were on a late loaded z-level, overrides the remove_earlyadd above
+
+///Removes the object from the earlyadds list, in case it was qdel'd before the z-level was fully loaded
+/datum/controller/subsystem/minimaps/proc/remove_earlyadd(atom/source)
+	SIGNAL_HANDLER
+	remove_marker(source)
+	for(var/datum/callback/callback in earlyadds["[source.z]"])
+		if(callback.arguments[1] != source)
+			continue
+		earlyadds["[source.z]"] -= callback
+		UnregisterSignal(source, COMSIG_PARENT_QDELETING)
+		return
 
 /**
  * removes an image from raw tracked lists, invoked by callback
  */
-/datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target)
-	var/turf/turf_gotten = get_turf(target)
-	if(!turf_gotten)
-		return
-	var/z_level = turf_gotten.z
-	for(var/flag in GLOB.all_minimap_flags)
-		minimaps_by_z["[z_level]"].images_raw["[flag]"] -= blip
+/datum/controller/subsystem/minimaps/proc/removeimage(image/blip, atom/target, hud_flags)
+	var/turf/target_turf = get_turf(target)
+	for(var/flag in bitfield2list(hud_flags))
+		minimaps_by_z["[target_turf.z]"].images_raw["[flag]"] -= blip
+		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
+			if(updator.ztarget == target_turf.z)
+				updator.raw_blips -= blip
 	blip.UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	removal_cbs -= target
 
 /**
  * Called on zlevel change of a blip-atom so we can update the image lists as needed
+ *
+ * TODO gross amount of assoc usage and unneeded ALL FLAGS iteration
  */
 /datum/controller/subsystem/minimaps/proc/on_z_change(atom/movable/source, oldz, newz)
 	SIGNAL_HANDLER
+	var/image/blip
 	for(var/flag in GLOB.all_minimap_flags)
 		if(!minimaps_by_z["[oldz]"]?.images_assoc["[flag]"][source])
 			continue
-		var/ref_old = minimaps_by_z["[oldz]"].images_assoc["[flag]"][source]
-
-		minimaps_by_z["[newz]"].images_assoc["[flag]"][source] = ref_old
-		minimaps_by_z["[newz]"].images_raw["[flag]"] += ref_old
-
+		if(!blip)
+			blip = minimaps_by_z["[oldz]"].images_assoc["[flag]"][source]
+		// todo maybe make update_targets also sort by zlevel?
+		for(var/datum/minimap_updator/updator as anything in update_targets["[flag]"])
+			if(updator.ztarget == oldz)
+				updator.raw_blips -= blip
+			else if(updator.ztarget == newz)
+				updator.raw_blips += blip
+		minimaps_by_z["[newz]"].images_assoc["[flag]"][source] = blip
 		minimaps_by_z["[oldz]"].images_assoc["[flag]"] -= source
-		minimaps_by_z["[oldz]"].images_raw["[flag]"] -= ref_old
+
+		minimaps_by_z["[newz]"].images_raw["[flag]"] += blip
+		minimaps_by_z["[oldz]"].images_raw["[flag]"] -= blip
 
 /**
  * Simple proc, updates overlay position on the map when a atom moves
  */
 /image/proc/minimap_on_move(atom/movable/source, oldloc)
 	SIGNAL_HANDLER
-
-	var/source_z = source.z
-	if(!source_z)
+	if(isturf(source.loc))
+		pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + SSminimaps.minimaps_by_z["[source.z]"].x_offset
+		pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source.z]"].y_offset
 		return
-	pixel_x = MINIMAP_PIXEL_FROM_WORLD(source.x) + SSminimaps.minimaps_by_z["[source_z]"].x_offset
-	pixel_y = MINIMAP_PIXEL_FROM_WORLD(source.y) + SSminimaps.minimaps_by_z["[source_z]"].y_offset
+
+	var/atom/movable/movable_loc = source.loc
+	source.override_minimap_tracking(source.loc)
+	pixel_x = MINIMAP_PIXEL_FROM_WORLD(movable_loc.x) + SSminimaps.minimaps_by_z["[movable_loc.z]"].x_offset
+	pixel_y = MINIMAP_PIXEL_FROM_WORLD(movable_loc.y) + SSminimaps.minimaps_by_z["[movable_loc.z]"].y_offset
+
+///Used to handle minimap tracking inside other movables
+/atom/movable/proc/override_minimap_tracking(atom/movable/loc)
+	var/image/blip = SSminimaps.images_by_source[src]
+	blip.RegisterSignal(loc, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/image, minimap_on_move))
+	RegisterSignal(loc, COMSIG_ATOM_EXITED, PROC_REF(cancel_override_minimap_tracking))
+
+///Stops minimap override tracking
+/atom/movable/proc/cancel_override_minimap_tracking(atom/movable/source, atom/movable/mover)
+	SIGNAL_HANDLER
+	if(mover != src)
+		return
+	var/image/blip = SSminimaps.images_by_source[src]
+	blip?.UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(source, COMSIG_ATOM_EXITED)
+
 
 /**
- * Removes an atom and it's blip from the subsystem.
- * Force has no effect on this proc, but is here because we are a COMSIG_PARENT_QDELETING handler.
+ * Removes an atom and it's blip from the subsystem
  */
-/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source, force, minimap_flag)
+/datum/controller/subsystem/minimaps/proc/remove_marker(atom/source)
 	SIGNAL_HANDLER
 	if(!removal_cbs[source]) //already removed
 		return
 	UnregisterSignal(source, list(COMSIG_PARENT_QDELETING, COMSIG_MOVABLE_Z_CHANGED))
+	var/turf/source_turf = get_turf(source)
+	for(var/flag in GLOB.all_minimap_flags)
+		minimaps_by_z["[source_turf.z]"].images_assoc["[flag]"] -= source
 	images_by_source -= source
 	removal_cbs[source].Invoke()
 	removal_cbs -= source
+
+/// Checks if the source has a marker already set
+/datum/controller/subsystem/minimaps/proc/has_marker(atom/source)
 	var/turf/turf_gotten = get_turf(source)
+
 	if(!turf_gotten)
 		return
+
 	var/z_level = turf_gotten.z
-	if(minimap_flag)
-		minimaps_by_z["[z_level]"].images_assoc["[minimap_flag]"] -= source
-	else
+
+	if(minimaps_by_z["[z_level]"])
 		for(var/flag in GLOB.all_minimap_flags)
-			minimaps_by_z["[z_level]"].images_assoc["[flag]"] -= source
+			if(source in minimaps_by_z["[z_level]"].images_assoc["[flag]"])
+				return TRUE
+
+	return FALSE
 
 /**
- * Fetches a /atom/movable/screen/minimap instance or creates one if none exists
+ * Fetches a /atom/movable/screen/minimap instance or creates on if none exists
  * Note this does not destroy them when the map is unused, might be a potential thing to do?
  * Arguments:
  * * zlevel: zlevel to fetch map for
@@ -356,186 +389,25 @@ SUBSYSTEM_DEF(minimaps)
 	var/hash = "[zlevel]-[flags]-[shifting]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
-	var/atom/movable/screen/minimap/map = new(null, zlevel, flags, shifting)
+	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
 		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
 
-/**
- * Fetches the datum containing an announced flattend map png reference.
- *
- * Arguments:
- * * faction: FACTION_MARINE or XENO_HIVE_NORMAL
- */
-/proc/get_tacmap_data_png(faction)
-	var/list/map_list
-
-	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_flat_tacmap_data
-	else if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_flat_tacmap_data
-	else
-		return null
-
-	var/map_length = length(map_list)
-
-	if(map_length == 0)
-		return null
-
-	return map_list[map_length]
-
-/**
- * Fetches the datum containing the latest unannounced flattend map png reference.
- *
- * Arguments:
- * * faction: FACTION_MARINE or XENO_HIVE_NORMAL
- */
-/proc/get_unannounced_tacmap_data_png(faction)
-	if(faction == FACTION_MARINE)
-		return GLOB.uscm_unannounced_map
-	else if(faction == XENO_HIVE_NORMAL)
-		return GLOB.xeno_unannounced_map
-
-	return null
-
-/**
- * Fetches the last set of svg coordinates for the tacmap drawing.
- *
- * Arguments:
- * * faction: which faction get the map for: FACTION_MARINE or XENO_HIVE_NORMAL
- */
-/proc/get_tacmap_data_svg(faction)
-	var/list/map_list
-
-	if(faction == FACTION_MARINE)
-		map_list = GLOB.uscm_svg_tacmap_data
-	else if(faction == XENO_HIVE_NORMAL)
-		map_list = GLOB.xeno_svg_tacmap_data
-	else
-		return null
-
-	var/map_length = length(map_list)
-
-	if(map_length == 0)
-		return null
-
-	return map_list[map_length]
-
-/**
- * Re-sends relevant flattened tacmaps to a single client.
- *
- * Arguments:
- * * user: The mob that is either an observer, marine, or xeno
- */
-/proc/resend_current_map_png(mob/user)
-	if(!user.client)
-		return
-
-	var/is_observer = user.faction == FACTION_NEUTRAL && isobserver(user)
-	if(is_observer || user.faction == FACTION_MARINE)
-		// Send marine maps
-		var/datum/flattened_tacmap/latest = get_tacmap_data_png(FACTION_MARINE)
-		if(latest)
-			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(FACTION_MARINE)
-		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
-			SSassets.transport.send_assets(user.client, unannounced.asset_key)
-
-	var/mob/living/carbon/xenomorph/xeno = user
-	if(is_observer || istype(xeno) && xeno.hivenumber == XENO_HIVE_NORMAL)
-		// Send xeno maps
-		var/datum/flattened_tacmap/latest = get_tacmap_data_png(XENO_HIVE_NORMAL)
-		if(latest)
-			SSassets.transport.send_assets(user.client, latest.asset_key)
-		var/datum/flattened_tacmap/unannounced = get_unannounced_tacmap_data_png(XENO_HIVE_NORMAL)
-		if(unannounced && (!latest || latest.asset_key != unannounced.asset_key))
-			SSassets.transport.send_assets(user.client, unannounced.asset_key)
-
-/**
- * Flattens the current map and then distributes it for the specified faction as an unannounced map.
- *
- * Arguments:
- * * faction: Which faction to distribute the map to: FACTION_MARINE or XENO_HIVE_NORMAL
- * Return:
- * * Returns a boolean value, TRUE if the operation was successful, FALSE if it was not (on cooldown generally).
- */
-/datum/tacmap/drawing/proc/distribute_current_map_png(faction)
-	if(faction == FACTION_MARINE)
-		if(!COOLDOWN_FINISHED(GLOB, uscm_flatten_map_icon_cooldown))
-			return FALSE
-		COOLDOWN_START(GLOB, uscm_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
-	else if(faction == XENO_HIVE_NORMAL)
-		if(!COOLDOWN_FINISHED(GLOB, xeno_flatten_map_icon_cooldown))
-			return FALSE
-		COOLDOWN_START(GLOB, xeno_flatten_map_icon_cooldown, FLATTEN_MAP_COOLDOWN_TIME)
-	else
-		return FALSE
-
-	var/icon/flat_map = getFlatIcon(map_holder.map, appearance_flags = TRUE)
-	if(!flat_map)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder.")) // tf2heavy: "Oh, this is bad!"
-		return FALSE
-
-	// Send to only relevant clients
-	var/list/faction_clients = list()
-	for(var/client/client as anything in GLOB.clients)
-		if(!client || !client.mob)
-			continue
-		var/mob/client_mob = client.mob
-		if(client_mob.faction == faction)
-			faction_clients += client
-		else if(client_mob.faction == FACTION_NEUTRAL && isobserver(client_mob))
-			faction_clients += client
-		else if(isxeno(client_mob))
-			var/mob/living/carbon/xenomorph/xeno = client_mob
-			if(xeno.hivenumber == faction)
-				faction_clients += client
-
-	// This may be unnecessary to do this way if the asset url is always the same as the lookup key
-	var/flat_tacmap_key = icon2html(flat_map, faction_clients, keyonly = TRUE)
-	if(!flat_tacmap_key)
-		to_chat(usr, SPAN_WARNING("A critical error has occurred! Contact a coder."))
-		return FALSE
-	var/flat_tacmap_png = SSassets.transport.get_asset_url(flat_tacmap_key)
-	var/datum/flattened_tacmap/new_flat = new(flat_tacmap_png, flat_tacmap_key)
-
-	if(faction == FACTION_MARINE)
-		GLOB.uscm_unannounced_map = new_flat
-	else //if(faction == XENO_HIVE_NORMAL)
-		GLOB.xeno_unannounced_map = new_flat
-
-	return TRUE
-
-/**
- * Globally stores svg coords for a given faction.
- *
- * Arguments:
- * * faction: which faction to save the data for: FACTION_MARINE or XENO_HIVE_NORMAL
- * * svg_coords: an array of coordinates corresponding to an svg.
- * * ckey: the ckey of the user who submitted this
- */
-/datum/tacmap/drawing/proc/store_current_svg_coords(faction, svg_coords, ckey)
-	var/datum/svg_overlay/svg_store_overlay = new(svg_coords, ckey)
-
-	if(faction == FACTION_MARINE)
-		GLOB.uscm_svg_tacmap_data += svg_store_overlay
-	else if(faction == XENO_HIVE_NORMAL)
-		GLOB.xeno_svg_tacmap_data += svg_store_overlay
-	else
-		qdel(svg_store_overlay)
-		debug_log("SVG coordinates for [faction] are not implemented!")
-
-#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
-
-/datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
-	var/hash = "[zlevel]-[flags]"
-	if(hashed_tacmaps[hash])
-		return hashed_tacmaps[hash]
-
-	var/datum/tacmap_holder/tacmap = new(null, zlevel, flags)
-	hashed_tacmaps[hash] = tacmap
-	return tacmap
+///fetches the drawing icon for a minimap flag and returns it, creating it if needed. assumes minimap_flag is ONE flag
+/datum/controller/subsystem/minimaps/proc/get_drawing_image(zlevel, minimap_flag)
+	var/hash = "[zlevel]-[minimap_flag]"
+	if(drawn_images[hash])
+		return drawn_images[hash]
+	var/image/blip = new // could use MA but yolo
+	blip.icon = icon('icons/ui_icons/minimap.dmi')
+	minimaps_by_z["[zlevel]"].images_raw["[minimap_flag]"] += blip
+	for(var/datum/minimap_updator/updator as anything in update_targets["[minimap_flag]"])
+		if(zlevel == updator.ztarget)
+			updator.raw_blips += blip
+	drawn_images[hash] = blip
+	return blip
 
 ///Default HUD screen minimap object
 /atom/movable/screen/minimap
@@ -546,6 +418,10 @@ SUBSYSTEM_DEF(minimaps)
 	screen_loc = "1,1"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = TILE_BOUND
+	///assoc list of mob choices by clicking on coords. only exists fleetingly for the wait loop in [/proc/get_coords_from_click]
+	var/list/mob/choices_by_mob
+	///assoc list to determine if get_coords_from_click should stop waiting for an input for that specific mob
+	var/list/mob/stop_polling
 	/// How many pixels to shift each update
 	var/shift_size = 8
 	/// The horizontal max for this map (set at Initialize)
@@ -560,11 +436,14 @@ SUBSYSTEM_DEF(minimaps)
 	var/west_x_shift = TRUE
 	/// Whether the vertical shift is currently pushing the map southward
 	var/south_y_shift = TRUE
+	var/stop_shifting = FALSE
 
-/atom/movable/screen/minimap/Initialize(mapload, target, flags, shifting = FALSE)
+/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
+	choices_by_mob = list()
+	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
 	SSminimaps.add_to_updaters(src, flags, target)
 
@@ -575,8 +454,13 @@ SUBSYSTEM_DEF(minimaps)
 		START_PROCESSING(SSobj, src)
 		if(findtext(screen_loc, "1") != 1) // We're detecting the first position matching, not the 1 there
 			CRASH("Shifting a minimap screen_loc of '[screen_loc]' is not currently implemented!") // Just need to do string manip in process to support it
+	add_filter("border_outline", 1, outline_filter(2, COLOR_BLACK))
+	add_filter("map_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, offset = 1, color = "#c0f7ff"))
+	add_filter("overlay", 3, layering_filter(x = 0, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
 
 /atom/movable/screen/minimap/process()
+	if(stop_shifting)
+		return
 	if(x_max > SCREEN_PIXEL_SIZE)
 		if(west_x_shift)
 			cur_x_shift = min(cur_x_shift + shift_size, x_max - SCREEN_PIXEL_SIZE)
@@ -596,6 +480,89 @@ SUBSYSTEM_DEF(minimaps)
 			if(cur_y_shift == 0)
 				south_y_shift = !south_y_shift
 	screen_loc = "1:-[cur_x_shift],1:-[cur_y_shift]" // Pixel shift the map
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MINIMAP_SHIFTED)
+
+/atom/movable/screen/minimap/Destroy()
+	SSminimaps.hashed_minimaps -= src
+	stop_polling = null
+	return ..()
+
+/**
+ * lets the user get coordinates by clicking the actual map
+ * Returns a list(x_coord, y_coord)
+ * note: sleeps until the user makes a choice, stop_polling is set to TRUE for this specific user or they disconnect
+ */
+/atom/movable/screen/minimap/proc/get_coords_from_click(mob/user)
+	//lord forgive my shitcode
+	var/signal_by_type = isobserver(user) ? COMSIG_OBSERVER_CLICKON : COMSIG_MOB_CLICKON
+	RegisterSignal(user, signal_by_type, PROC_REF(on_click))
+	while(!(choices_by_mob[user] || stop_polling[user]) && user.client && islist(stop_polling))
+		stoplag(1)
+	UnregisterSignal(user, signal_by_type)
+	. = choices_by_mob[user]
+	choices_by_mob -= user
+	// I have an extra layer of shitcode for you
+	stop_polling -= user
+
+/**
+ * Handles fetching the targetted coordinates when the mob tries to click on this map
+ * does the following:
+ * turns map targetted pixel into a list(x, y)
+ * gets z level of this map
+ * x and y minimap centering is reverted, then the x2 scaling of the map is removed
+ * round up to correct if an odd pixel was clicked and make sure its valid
+ */
+/atom/movable/screen/minimap/proc/on_click(datum/source, atom/A, params)
+	SIGNAL_HANDLER
+	var/list/modifiers = params2list(params)
+	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff
+	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
+	var/zlevel = SSminimaps.updators_by_datum[src].ztarget
+	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + cur_x_shift)  / 2
+	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + cur_y_shift)  / 2
+	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
+	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
+	choices_by_mob[source] = list(c_x, c_y)
+	return COMSIG_MOB_CLICK_CANCELED
+
+/atom/movable/screen/minimap_locator
+	name = "You are here"
+	icon = 'icons/ui_icons/map_blips.dmi'
+	icon_state = "locator"
+	layer = INTRO_LAYER // 1 above minimap
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/atom/movable/screen/minimap/current_map
+	var/currently_tracking
+	var/shift_x = 0
+	var/shift_y = 0
+
+///Get the current x and y shift and mover of the minimap
+/atom/movable/screen/minimap_locator/proc/link_locator(action_map, atom/movable/mover)
+	SIGNAL_HANDLER
+	if(action_map)
+		current_map = action_map
+	if(mover)
+		currently_tracking = mover
+	shift_x = current_map.cur_x_shift
+	shift_y = current_map.cur_y_shift
+
+///updates the screen loc of the locator so that it's on the movers location on the minimap
+/atom/movable/screen/minimap_locator/proc/update(atom/movable/mover, atom/oldloc, direction)
+	SIGNAL_HANDLER
+	link_locator()
+	var/turf/mover_turf = get_turf(currently_tracking)
+	var/x_coord = mover_turf.x * 2
+	var/y_coord = mover_turf.y * 2
+	x_coord += SSminimaps.minimaps_by_z["[mover_turf.z]"].x_offset - shift_x
+	y_coord += SSminimaps.minimaps_by_z["[mover_turf.z]"].y_offset - shift_y
+	// + 1 because tiles start at 1
+	var/x_tile = FLOOR(x_coord/32, 1) + 1
+	// -3 to center the image
+	var/x_pixel = x_coord % 32 - 3
+	var/y_tile = FLOOR(y_coord/32, 1) + 1
+	var/y_pixel = y_coord % 32 - 3
+	screen_loc = "[x_tile]:[x_pixel],[y_tile]:[y_pixel]"
+	link_locator()
 
 /**
  * Action that gives the owner access to the minimap pool
@@ -611,65 +578,196 @@ SUBSYSTEM_DEF(minimaps)
 	var/minimap_displayed = FALSE
 	///Minimap object we'll be displaying
 	var/atom/movable/screen/minimap/map
-	///This is mostly for the AI & other things which do not move groundside.
+	///Overrides what the locator tracks aswell what z the map displays as opposed to always tracking the minimap's owner. Default behavior when null.
+	var/atom/movable/locator_override
+	///Minimap "You are here" indicator for when it's up
+	var/atom/movable/screen/minimap_locator/locator
+	///Sets a fixed z level to be tracked by this minimap action instead of being influenced by the owner's / locator override's z level.
 	var/default_overwatch_level = 0
 	///Whether this minimap should shift or not
-	var/shifting = FALSE
+	var/shifting = TRUE
+	///Toggle for scrolling map
+	var/atom/movable/screen/stop_scroll/scroll_toggle
+	///Does this minimap action get scroll toggle
+	var/has_scroll = TRUE
+
+/datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
+	. = ..()
+	locator = new
+	if(new_minimap_flags)
+		minimap_flags = new_minimap_flags
+	if(new_marker_flags)
+		marker_flags = new_marker_flags
 
 /datum/action/minimap/Destroy()
 	map = null
+	locator_override = null
+	QDEL_NULL(locator)
 	return ..()
 
 /datum/action/minimap/action_activate()
 	. = ..()
 	if(!map)
-		return
-	if(minimap_displayed)
-		owner.client.remove_from_screen(map)
+		return FALSE
+
+	return toggle_minimap()
+
+/// Toggles the minimap, has a variable to force on or off (most likely only going to be used to close it)
+/datum/action/minimap/proc/toggle_minimap(force_state)
+	// No force state? Invert the current state
+	if(isnull(force_state))
+		force_state = !minimap_displayed
+	if(force_state == minimap_displayed)
+		return FALSE
+	if(!locator_override && ismovableatom(owner.loc))
+		override_locator(owner.loc)
+	var/atom/movable/tracking = locator_override ? locator_override : owner
+	if(force_state)
+		if(locate(/atom/movable/screen/minimap) in owner.client.screen) //This seems like the most effective way to do this without some wacky code
+			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
+			return FALSE
+		owner.client.screen += map
+		owner.client.screen += locator
+		if(scroll_toggle)
+			owner.client.screen += scroll_toggle
+		locator.link_locator(map, owner)
+		locator.update(tracking, null, null)
+		locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
+		locator.RegisterSignal(tracking, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 	else
-		owner.client.add_to_screen(map)
-	minimap_displayed = !minimap_displayed
+		owner.client.screen -= map
+		owner.client.screen -= locator
+		if(scroll_toggle)
+			owner.client.screen -= scroll_toggle
+		map.stop_polling -= owner
+		locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
+		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
+	minimap_displayed = force_state
+	return TRUE
 
-/datum/action/minimap/give_to(mob/target)
+///Overrides the minimap locator to a given atom
+/datum/action/minimap/proc/override_locator(atom/movable/to_track)
+	var/atom/movable/tracking = locator_override ? locator_override : owner
+	var/atom/movable/new_track = to_track ? to_track : owner
+	if(locator_override)
+		clear_locator_override()
+	if(owner)
+		UnregisterSignal(tracking, COMSIG_MOVABLE_Z_CHANGED)
+	if(!minimap_displayed)
+		locator_override = to_track
+		if(to_track)
+			RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
+			if(owner && owner.loc == to_track)
+				RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+		if(owner)
+			RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
+			var/turf/old_turf = get_turf(tracking)
+			if(!old_turf || !old_turf.z || old_turf.z != new_track.z)
+				on_owner_z_change(new_track, old_turf?.z, new_track?.z)
+		return
+	locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
+	locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
+	locator_override = to_track
+	if(to_track)
+		RegisterSignal(to_track, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/action/minimap, clear_locator_override))
+		if(owner.loc == to_track)
+			RegisterSignal(to_track, COMSIG_ATOM_EXITED, TYPE_PROC_REF(/datum/action/minimap, on_exit_check))
+	RegisterSignal(new_track, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
+	var/turf/old_turf = get_turf(tracking)
+	if(old_turf.z != new_track.z)
+		on_owner_z_change(new_track, old_turf.z, new_track.z)
+	locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
+	locator.RegisterSignal(new_track, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
+	locator.link_locator(map, new_track)
+	locator.update(new_track)
+
+///checks if we should clear override if the owner exits this atom
+/datum/action/minimap/proc/on_exit_check(datum/source, atom/movable/mover)
+	SIGNAL_HANDLER
+	if(mover && mover != owner)
+		return
+	clear_locator_override()
+
+///CLears the locator override in case the override target is deleted
+/datum/action/minimap/proc/clear_locator_override()
+	SIGNAL_HANDLER
+	if(!locator_override)
+		return
+	UnregisterSignal(locator_override, list(COMSIG_PARENT_QDELETING, COMSIG_ATOM_EXITED))
+	if(owner)
+		UnregisterSignal(locator_override, COMSIG_MOVABLE_Z_CHANGED)
+		RegisterSignal(owner, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
+		var/turf/owner_turf = get_turf(owner)
+		if(owner_turf.z != locator_override.z)
+			on_owner_z_change(owner, locator_override.z, owner_turf.z)
+	if(minimap_displayed)
+		locator.UnregisterSignal(locator_override, COMSIG_MOVABLE_MOVED)
+		locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
+		locator.RegisterSignal(owner, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
+		locator.link_locator(map, owner)
+		locator.update(owner)
+	locator_override = null
+
+/datum/action/minimap/give_to(mob/M)
 	. = ..()
-
+	var/atom/movable/tracking = locator_override ? locator_override : M
+	RegisterSignal(tracking, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 	if(default_overwatch_level)
+		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
+			return
 		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
-	else
-		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
-
-	var/turf/turf_gotten = get_turf(target)
-	if(!turf_gotten)
 		return
-	var/z_level = turf_gotten.z
-
-	if(!SSminimaps.minimaps_by_z["[z_level]"] || !SSminimaps.minimaps_by_z["[z_level]"].hud_image)
+	if(!SSminimaps.minimaps_by_z["[tracking.z]"] || !SSminimaps.minimaps_by_z["[tracking.z]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(z_level, minimap_flags, shifting)
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, shifting)
+	if(has_scroll || scroll_toggle)
+		scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
 
-/datum/action/minimap/remove_from(mob/target)
-	. = ..()
-	if(minimap_displayed)
-		owner?.client?.remove_from_screen(map)
-		minimap_displayed = FALSE
-
-	UnregisterSignal(target, COMSIG_MOVABLE_Z_CHANGED)
+/datum/action/minimap/remove_from(mob/M)
+	toggle_minimap(FALSE)
+	UnregisterSignal(locator_override || M, COMSIG_MOVABLE_Z_CHANGED)
+	return ..()
 
 /**
  * Updates the map when the owner changes zlevel
  */
 /datum/action/minimap/proc/on_owner_z_change(atom/movable/source, oldz, newz)
 	SIGNAL_HANDLER
+	var/atom/movable/tracking = locator_override ? locator_override : owner
 	if(minimap_displayed)
-		owner.client.remove_from_screen(map)
-		minimap_displayed = FALSE
+		owner.client?.screen -= map
 	map = null
-	if(!SSminimaps.minimaps_by_z["[newz]"] || !SSminimaps.minimaps_by_z["[newz]"].hud_image)
-		return
 	if(default_overwatch_level)
+		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
+			if(minimap_displayed)
+				owner.client?.screen -= locator
+				locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
+				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
+				minimap_displayed = FALSE
+			return
 		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
+		if(minimap_displayed)
+			if(owner.client)
+				owner.client.screen += map
+			else
+				minimap_displayed = FALSE
+		return
+	if(!SSminimaps.minimaps_by_z["[newz]"] || !SSminimaps.minimaps_by_z["[newz]"].hud_image)
+		if(minimap_displayed)
+			owner.client?.screen -= locator
+			locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
+			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
+			minimap_displayed = FALSE
 		return
 	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, shifting)
+	if(scroll_toggle)
+		scroll_toggle.linked_map = map
+	if(minimap_displayed)
+		if(owner.client)
+			owner.client.screen += map
+		else
+			minimap_displayed = FALSE
+
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
@@ -678,427 +776,382 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
 
-/datum/action/minimap/upp
-	minimap_flags =  MINIMAP_FLAG_UPP
+/datum/action/minimap/marine/upp
+	minimap_flags = MINIMAP_FLAG_UPP
 	marker_flags = MINIMAP_FLAG_UPP
 
+/datum/action/minimap/ai	//I'll keep this as seperate type despite being identical so it's easier if people want to make different aspects different.
+	minimap_flags = MINIMAP_FLAG_USCM
+	marker_flags = MINIMAP_FLAG_USCM
+
+/datum/action/minimap/upp
+	minimap_flags = MINIMAP_FLAG_UPP
+	marker_flags = MINIMAP_FLAG_UPP
+
+/datum/action/minimap/pmc
+	minimap_flags = MINIMAP_FLAG_PMC
+	marker_flags = MINIMAP_FLAG_PMC
+
 /datum/action/minimap/observer
-	minimap_flags = MINIMAP_FLAG_ALL
+	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_UPP|MINIMAP_FLAG_PMC
 	marker_flags = NONE
-	hidden = TRUE
-	shifting = TRUE
+	has_scroll = FALSE
 
-/datum/tacmap
-	var/allowed_flags = MINIMAP_FLAG_USCM
-	/// by default the ground map - this picks the first level matching the trait. if it exists
-	var/targeted_ztrait = ZTRAIT_GROUND
-	/// the current z level within the z stack
-	var/target_z = 1
-	var/atom/owner
-
-	/// tacmap holder for holding the minimap
-	var/datum/tacmap_holder/map_holder
-
-/datum/tacmap/drawing
-	/// A url that will point to the wiki map for the current map as a fall back image
-	var/static/wiki_map_fallback
-
-	/// color selection for the tactical map canvas, defaults to black.
-	var/toolbar_color_selection = "black"
-	var/toolbar_updated_selection = "black"
-
-	/// boolean value to keep track if the canvas has been updated or not, the value is used in tgui state.
-	var/updated_canvas = FALSE
-	/// current flattend map
-	var/datum/flattened_tacmap/new_current_map
-	/// previous flattened map
-	var/datum/flattened_tacmap/old_map
-	/// current svg
-	var/datum/svg_overlay/current_svg
-
-	var/action_queue_change = 0
-
-	/// The last time the map has been flattened - used as a key to trick react into updating the canvas
-	var/last_update_time = 0
-	/// A temporary lock out time before we can open the new canvas tab to allow the tacmap time to fire
-	var/tacmap_ready_time = 0
-
-/datum/tacmap/New(atom/source, minimap_type)
-	allowed_flags = minimap_type
-	owner = source
-
-/datum/tacmap/drawing/status_tab_view/New()
-	var/datum/tacmap/drawing/status_tab_view/uscm_tacmap
-	allowed_flags = MINIMAP_FLAG_USCM
-	owner = uscm_tacmap
-
-/datum/tacmap/drawing/status_tab_view/xeno/New()
-	var/datum/tacmap/drawing/status_tab_view/xeno/xeno_tacmap
-	allowed_flags = MINIMAP_FLAG_XENO
-	owner = xeno_tacmap
-
-/datum/tacmap/Destroy()
-	map_holder = null
-	owner = null
-	return ..()
-
-/datum/tacmap/drawing/Destroy()
-	new_current_map = null
-	old_map = null
-	current_svg = null
-	return ..()
-
-/datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
-	if(!map_holder)
-		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[target_z])
-			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
-
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		user.client.register_map_obj(map_holder.map)
-		ui = new(user, src, "TacticalMap")
-		ui.open()
-		RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
-
-/datum/tacmap/drawing/tgui_interact(mob/user, datum/tgui/ui)
-	var/mob/living/carbon/xenomorph/xeno = user
-	var/is_xeno = istype(xeno)
-	var/faction = is_xeno ? xeno.hivenumber : user.faction
-	if(faction == FACTION_NEUTRAL && isobserver(user))
-		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
-
-	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
-		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
-		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
-		map_holder = null
-
-	new_current_map = get_unannounced_tacmap_data_png(faction)
-	old_map = get_tacmap_data_png(faction)
-	current_svg = get_tacmap_data_svg(faction)
-
-	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno
-
-	if(use_live_map && !map_holder)
-		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[target_z])
-			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
-
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		if(!wiki_map_fallback)
-			var/wiki_url = CONFIG_GET(string/wikiurl)
-			var/obj/item/map/current_map/new_map = new
-			if(wiki_url && new_map.html_link)
-				wiki_map_fallback ="[wiki_url]/[new_map.html_link]"
-			else
-				debug_log("Failed to determine fallback wiki map! Attempted '[wiki_url]/[new_map.html_link]'")
-			qdel(new_map)
-
-		// Ensure we actually have the map image sent
-		resend_current_map_png(user)
-
-		if(use_live_map)
-			tacmap_ready_time = SSminimaps.next_fire + 2 SECONDS
-			addtimer(CALLBACK(src, PROC_REF(on_tacmap_fire), faction), SSminimaps.next_fire - world.time + 1 SECONDS)
-			user.client.register_map_obj(map_holder.map)
-			RegisterSignal(user.mind, COMSIG_MIND_TRANSFERRED, PROC_REF(on_mind_transferred))
-
-		ui = new(user, src, "TacticalMap")
-		ui.open()
-
-/datum/tacmap/ui_data(mob/user)
+/datum/action/minimap/observer/action_activate()
 	. = ..()
-
-	.["mapRef"] = map_holder?.map_ref
-
-/datum/tacmap/drawing/ui_data(mob/user)
-	var/list/data = list()
-
-	data["newCanvasFlatImage"] = new_current_map?.flat_tacmap
-	data["oldCanvasFlatImage"] = old_map?.flat_tacmap
-	data["svgData"] = current_svg?.svg_data
-
-	data["actionQueueChange"] = action_queue_change
-
-	data["toolbarColorSelection"] = toolbar_color_selection
-	data["toolbarUpdatedSelection"] = toolbar_updated_selection
-
-	if(isxeno(user))
-		data["canvasCooldown"] = max(GLOB.xeno_canvas_cooldown - world.time, 0)
-	else
-		data["canvasCooldown"] = max(GLOB.uscm_canvas_cooldown - world.time, 0)
-
-	data["updatedCanvas"] = updated_canvas
-
-	data["lastUpdateTime"] = last_update_time
-	data["tacmapReady"] = world.time > tacmap_ready_time
-	data["mapRef"] = map_holder?.map_ref
-
-	return data
-
-/datum/tacmap/ui_static_data(mob/user)
-	var/list/data = list()
-
-	data["canDraw"] = FALSE
-	data["canViewTacmap"] = TRUE
-	data["canChangeZ"] = FALSE
-	data["canViewCanvas"] = FALSE
-	data["isxeno"] = FALSE
-
-	return data
-
-/datum/tacmap/drawing/ui_static_data(mob/user)
-	var/list/data = list()
-
-	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
-	data["canDraw"] = FALSE
-	data["mapFallback"] = wiki_map_fallback
-	data["canChangeZ"] = TRUE
-
-	var/mob/living/carbon/xenomorph/xeno = user
-	var/is_xeno = istype(xeno)
-	var/faction = is_xeno ? xeno.hivenumber : user.faction
-
-	data["isxeno"] = is_xeno
-	data["canViewTacmap"] = is_xeno
-	data["canViewCanvas"] = faction == FACTION_MARINE || faction == XENO_HIVE_NORMAL
-
-	if(can_draw(faction, user))
-		data["canDraw"] = TRUE
-		data["canViewTacmap"] = TRUE
-
-	return data
-
-/datum/tacmap/drawing/status_tab_view/ui_static_data(mob/user)
-	var/list/data = list()
-
-	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
-	data["mapFallback"] = wiki_map_fallback
-	data["canDraw"] = FALSE
-	data["canViewTacmap"] = FALSE
-	data["canViewCanvas"] = TRUE
-	data["isxeno"] = FALSE
-
-	return data
-
-/datum/tacmap/drawing/status_tab_view/xeno/ui_static_data(mob/user)
-	var/list/data = list()
-
-	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
-	data["mapFallback"] = wiki_map_fallback
-	data["canDraw"] = FALSE
-	data["canViewTacmap"] = FALSE
-	data["canViewCanvas"] = TRUE
-	data["isxeno"] = TRUE
-
-	return data
-
-/datum/tacmap/ui_close(mob/user)
-	UnregisterSignal(user.mind, COMSIG_MIND_TRANSFERRED)
-
-/datum/tacmap/drawing/ui_close(mob/user)
-	. = ..()
-	action_queue_change = 0
-	updated_canvas = FALSE
-	toolbar_color_selection = "black"
-	toolbar_updated_selection = "black"
-
-/datum/tacmap/drawing/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	. = ..()
-	if(.)
+	if(!.)
 		return
+	if(!minimap_displayed)
+		map.stop_polling[owner] = TRUE
+		return
+	var/list/clicked_coords = map.get_coords_from_click(owner)
+	if(!clicked_coords)
+		toggle_minimap(FALSE)
+		return
+	var/turf/clicked_turf = locate(clicked_coords[1], clicked_coords[2], owner.z)
+	if(!clicked_turf)
+		toggle_minimap(FALSE)
+		return
+	// Taken directly from observer/DblClickOn
+	owner.abstract_move(clicked_turf)
+	// Close minimap
+	toggle_minimap(FALSE)
 
-	var/mob/user = ui.user
-	var/mob/living/carbon/xenomorph/xeno = user
-	var/faction = istype(xeno) ? xeno.hivenumber : user.faction
-	var/is_observer = isobserver(user)
-	if(faction == FACTION_NEUTRAL && is_observer)
-		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
-	var/drawing_allowed = !is_observer && can_draw(faction, user)
+/atom/movable/screen/exit_map
+	name = "Close Minimap"
+	desc = "Close the minimap"
+	icon = 'icons/ui_icons/minimap_buttons.dmi'
+	icon_state = "close"
+	screen_loc = "RIGHT,TOP"
+	/// what minimap table is linked to this button
+	var/obj/structure/machinery/prop/almayer/CICmap/linked_map
 
-	switch (action)
-		if ("menuSelect")
-			if(params["selection"] != "Canvas")
-				if(updated_canvas)
-					updated_canvas = FALSE
-					toolbar_updated_selection = toolbar_color_selection  // doing this if it == canvas can cause a latency issue with the stroke.
-			else
-				if(!drawing_allowed)
-					msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'menuSelect' the 'new canvas' panel of the [faction] tacmap!")
-					return FALSE
-				distribute_current_map_png(faction)
-				last_update_time = world.time
-				// An attempt to get the image to load on first try in the interface, but doesn't seem always reliable
+/atom/movable/screen/exit_map/Initialize(mapload, linked_map)
+	. = ..()
+	src.linked_map = linked_map
 
-			new_current_map = get_unannounced_tacmap_data_png(faction)
-			old_map = get_tacmap_data_png(faction)
-			current_svg = get_tacmap_data_svg(faction)
+/atom/movable/screen/exit_map/MouseEntered(location, control, params)
+	. = ..()
+	add_filter("mouseover", 1, outline_filter(1, COLOR_LIME))
+	if(desc)
+		openToolTip(usr, src, params, title = name, content = desc)
 
-		if("updateCanvas")
-			toolbar_updated_selection = "export"
-			updated_canvas = TRUE
-			action_queue_change += 1
+/atom/movable/screen/exit_map/MouseExited(location, control, params)
+	. = ..()
+	remove_filter("mouseover")
+	if(desc)
+		closeToolTip(usr)
 
-		if("clearCanvas")
-			toolbar_updated_selection = "clear"
-			updated_canvas = FALSE
-			action_queue_change += 1
-
-		if("undoChange")
-			toolbar_updated_selection = "undo"
-			updated_canvas = FALSE
-			action_queue_change += 1
-
-		if("selectColor")
-			var/newColor = params["color"]
-			if(newColor)
-				toolbar_color_selection = newColor
-				toolbar_updated_selection = newColor
-			action_queue_change += 1
-
-		if("onDraw")
-			updated_canvas = FALSE
-
-		if("changeZ")
-			var/amount = params["amount"]
-			var/level = SSmapping.levels_by_trait(targeted_ztrait)
-			if(target_z+amount < 1 || target_z+amount > length(level) || !SSmapping.same_z_map(level[target_z], level[target_z+amount]))
-				return
-
-			target_z += amount
-
-			if(!level[target_z])
-				return
-
-			if(user.client)
-				user.client.clear_map(map_holder.map.name)
-			map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
-			resend_current_map_png(user)
-			if(user.client)
-				user.client.register_map_obj(map_holder.map)
-
-			distribute_current_map_png(faction)
-			last_update_time = world.time
-
-			new_current_map = get_unannounced_tacmap_data_png(faction)
-			old_map = get_tacmap_data_png(faction)
-			current_svg = get_tacmap_data_svg(faction)
-
-
-		if("selectAnnouncement")
-			if(!drawing_allowed)
-				msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'selectAnnouncement' the [faction] tacmap!")
-				return FALSE
-
-			if(!istype(params["image"], /list)) // potentially very serious?
-				return FALSE
-
-			var/cooldown_satisfied = FALSE
-			if(faction == FACTION_MARINE)
-				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, uscm_canvas_cooldown)
-			else if(faction == XENO_HIVE_NORMAL)
-				cooldown_satisfied = COOLDOWN_FINISHED(GLOB, xeno_canvas_cooldown)
-			if(!cooldown_satisfied)
-				msg_admin_niche("[key_name(user)] attempted to 'selectAnnouncement' the [faction] tacmap while it is still on cooldown!")
-				return FALSE
-
-			if(faction == FACTION_MARINE)
-				GLOB.uscm_flat_tacmap_data += new_current_map
-				COOLDOWN_START(GLOB, uscm_canvas_cooldown, CANVAS_COOLDOWN_TIME)
-				for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
-					current_squad.send_maptext("Tactical map update in progress...", "Tactical Map:")
-				var/mob/living/carbon/human/human_leader = user
-				human_leader.visible_message(SPAN_BOLDNOTICE("Tactical map update in progress..."))
-				playsound_client(human_leader.client, "sound/effects/data-transmission.ogg")
-				notify_ghosts(header = "Tactical Map", message = "The USCM tactical map has been updated.", ghost_sound = "sound/effects/data-transmission.ogg", notify_volume = 80, action = NOTIFY_USCM_TACMAP, enter_link = "uscm_tacmap=1", enter_text = "View", source = owner)
-			else if(faction == XENO_HIVE_NORMAL)
-				GLOB.xeno_flat_tacmap_data += new_current_map
-				COOLDOWN_START(GLOB, xeno_canvas_cooldown, CANVAS_COOLDOWN_TIME)
-				xeno_maptext("The Queen has updated our hive mind map", "We sense something unusual...", faction)
-				var/mutable_appearance/appearance = mutable_appearance(icon('icons/mob/hud/actions_xeno.dmi'), "toggle_queen_zoom")
-				notify_ghosts(header = "Tactical Map", message = "The Xenomorph tactical map has been updated.", ghost_sound = "sound/voice/alien_distantroar_3.ogg", notify_volume = 50, action = NOTIFY_XENO_TACMAP, enter_link = "xeno_tacmap=1", enter_text = "View", source = user, alert_overlay = appearance)
-
-			store_current_svg_coords(faction, params["image"], user)
-			current_svg = get_tacmap_data_svg(faction)
-			old_map = get_tacmap_data_png(faction)
-
-			toolbar_updated_selection = toolbar_color_selection
-			message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a> for [faction].")
-			updated_canvas = FALSE
-
+/atom/movable/screen/exit_map/clicked(location, list/modifiers)
+	linked_map.on_unset_interaction(usr)
 	return TRUE
 
-/datum/tacmap/ui_status(mob/user)
-	if(!(isatom(owner)))
-		return UI_INTERACTIVE
+/atom/movable/screen/stop_scroll
+	name = "Stop Scrolling"
+	desc = "Stop the scrolling of the minimap(shared)"
+	icon = 'icons/ui_icons/minimap_buttons.dmi'
+	icon_state = "scroll"
+	screen_loc = "CENTER,TOP"
+	/// what minimap screen is linked to this button
+	var/atom/movable/screen/minimap/linked_map
 
-	var/dist = get_dist(owner, user)
-	if(dist <= 1)
-		return UI_INTERACTIVE
-	else if(dist <= 2)
-		return UI_UPDATE
+/atom/movable/screen/stop_scroll/Initialize(mapload, linked_map)
+	. = ..()
+	src.linked_map = linked_map
+
+/atom/movable/screen/stop_scroll/MouseEntered(location, control, params)
+	. = ..()
+	add_filter("mouseover", 1, outline_filter(1, COLOR_LIME))
+	if(desc)
+		openToolTip(usr, src, params, title = name, content = desc)
+
+/atom/movable/screen/stop_scroll/MouseExited(location, control, params)
+	. = ..()
+	remove_filter("mouseover")
+	if(desc)
+		closeToolTip(usr)
+
+/atom/movable/screen/stop_scroll/clicked(location, list/modifiers)
+	if(linked_map.stop_shifting)
+		linked_map.stop_shifting = FALSE
+		icon_state = "scroll"
 	else
-		return UI_CLOSE
+		linked_map.stop_shifting = TRUE
+		icon_state = "scroll_stop"
+	return TRUE
 
-/datum/tacmap/drawing/xeno/ui_status(mob/user)
-	if(!isxeno(user))
-		return UI_CLOSE
+/atom/movable/screen/minimap_tool
+	icon = 'icons/ui_icons/minimap_buttons.dmi'
+	///x offset of the minimap icon for this zlevel. mostly used for shorthand
+	var/x_offset
+	///y offset of the minimap icon for this zlevel. mostly used for shorthand
+	var/y_offset
+	///zlevel that this minimap tool applies to and which it will be drawing on
+	var/zlevel
+	/// active mouse icon when the tool is selected
+	var/active_mouse_icon
+	///one minimap flag that this tool will be drawing on
+	var/minimap_flag
+	/// reference to the icon we are manipulating when drawing, fetched during initialize
+	var/image/drawn_image
+	/// what minimap screen we drawing to
+	var/atom/movable/screen/minimap/linked_map
 
-	var/mob/living/carbon/xenomorph/xeno = user
-	if(!xeno.hive?.living_xeno_queen?.ovipositor)
-		return UI_CLOSE
+/atom/movable/screen/minimap_tool/Initialize(mapload, zlevel, minimap_flag, linked_map)
+	. = ..()
+	src.minimap_flag = minimap_flag
+	src.zlevel = zlevel
+	src.linked_map = linked_map
+	if(SSminimaps.initialized)
+		set_zlevel(zlevel, minimap_flag)
+		return
+	LAZYADDASSOCLIST(SSminimaps.earlyadds, "[zlevel]", CALLBACK(src, PROC_REF(set_zlevel), zlevel, minimap_flag))
 
-	return UI_INTERACTIVE
+///Setter for the offsets of the x and y of drawing based on the input z, and the drawn_image
+/atom/movable/screen/minimap_tool/proc/set_zlevel(zlevel, minimap_flag)
+	x_offset = SSminimaps.minimaps_by_z["[zlevel]"].x_offset
+	y_offset = SSminimaps.minimaps_by_z["[zlevel]"].y_offset
+	drawn_image = SSminimaps.get_drawing_image(zlevel, minimap_flag)
 
-// This gets removed when the player changes bodies (i.e. xeno evolution), so re-register it when that happens.
-/datum/tacmap/proc/on_mind_transferred(datum/mind/source, mob/previous_body)
+/atom/movable/screen/minimap_tool/MouseEntered(location, control, params)
+	. = ..()
+	add_filter("mouseover", 1, outline_filter(1, COLOR_LIME))
+	if(desc)
+		openToolTip(usr, src, params, title = name, content = desc)
+
+/atom/movable/screen/minimap_tool/MouseExited(location, control, params)
+	. = ..()
+	remove_filter("mouseover")
+	if(desc)
+		closeToolTip(usr)
+
+/atom/movable/screen/minimap_tool/clicked(location, list/modifiers)
+	if(LAZYACCESS(modifiers, LEFT_CLICK))
+		RegisterSignal(usr, COMSIG_MOB_MOUSEDOWN, PROC_REF(on_mousedown))
+		usr.client.mouse_pointer_icon = active_mouse_icon
+	return TRUE
+
+/**
+ * handles actions when the mouse is held down while the tool is active.
+ * returns COMSIG_MOB_CLICK_CANCELED to continue handling, NONE to cancel
+ */
+/atom/movable/screen/minimap_tool/proc/on_mousedown(mob/source, atom/object, location, control, params)
 	SIGNAL_HANDLER
-	source.current.client.register_map_obj(map_holder.map)
+	if(!(src in source.client.screen))
+		UnregisterSignal(source, COMSIG_MOB_MOUSEDOWN)
+		source.client.mouse_pointer_icon = null
+		return NONE
+	if(istype(object, /atom/movable/screen/minimap_tool))
+		UnregisterSignal(usr, COMSIG_MOB_MOUSEDOWN)
+		usr.client.mouse_pointer_icon = null
+		return NONE
+	return COMSIG_MOB_CLICK_CANCELED
 
-/datum/tacmap_holder
-	var/map_ref
-	var/atom/movable/screen/minimap/map
+/atom/movable/screen/minimap_tool/draw_tool
+	icon_state = "draw"
+	desc = "Draw using a color. Drag to draw a line, middle click to place a dot. Middle click this button to unselect."
+	// color that this draw tool will be drawing in
+	color = COLOR_PINK
+	var/list/last_drawn
+	///temporary existing list used to calculate a line between the start of a click and the end of a click
+	var/list/starting_coords
 
-/datum/tacmap_holder/New(loc, zlevel, flags)
-	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags)
-	map.screen_loc = "[map_ref]:1,1"
-	map.assigned_map = map_ref
-	map.appearance_flags = NONE // If you really want TILE_BOUND for the tacmaps, you need to CENTER it but it won't be scaled right
+/atom/movable/screen/minimap_tool/draw_tool/clicked(location, list/modifiers)
+	. = ..()
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK) && last_drawn)
+		last_drawn += list(null)
+		draw_line(arglist(last_drawn))
+		last_drawn = null
 
-/datum/tacmap_holder/Destroy()
-	map = null
-	return ..()
+/atom/movable/screen/minimap_tool/draw_tool/on_mousedown(mob/source, atom/object, location, control, params)
+	. = ..()
+	if(!.)
+		return
+	var/list/modifiers = params2list(params)
+	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
+	pixel_coords = list(pixel_coords[1] + linked_map.cur_x_shift, pixel_coords[2] + linked_map.cur_y_shift)
+	if(modifiers[BUTTON] == MIDDLE_CLICK)
+		var/icon/mona_lisa = icon(drawn_image.icon)
+		mona_lisa.DrawBox(color, pixel_coords[1], pixel_coords[2], ++pixel_coords[1], ++pixel_coords[2])
+		drawn_image.icon = mona_lisa
+		return COMSIG_MOB_CLICK_CANCELED
+	starting_coords = pixel_coords
+	RegisterSignal(source, COMSIG_MOB_MOUSEUP, PROC_REF(on_mouseup))
+	return COMSIG_MOB_CLICK_CANCELED
 
-/datum/flattened_tacmap
-	var/flat_tacmap
-	var/asset_key
-	var/time
+///Called when the mouse is released again to finish the drag-draw
+/atom/movable/screen/minimap_tool/draw_tool/proc/on_mouseup(mob/living/source, atom/object, location, control, params)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_MOB_MOUSEUP)
+	var/list/modifiers = params2list(params)
+	var/list/end_coords = params2screenpixel(modifiers["screen-loc"])
+	end_coords = list(end_coords[1] + linked_map.cur_x_shift, end_coords[2] + linked_map.cur_y_shift)
+	draw_line(starting_coords, end_coords)
+	last_drawn = list(starting_coords, end_coords)
 
-/datum/flattened_tacmap/New(flat_tacmap, asset_key)
-	src.flat_tacmap = flat_tacmap
-	src.asset_key = asset_key
-	src.time = time_stamp()
+/// proc for drawing a line from list(startx, starty) to list(endx, endy) on the screen. yes this is aa ripoff of [/proc/getline]
+/atom/movable/screen/minimap_tool/draw_tool/proc/draw_line(list/start_coords, list/end_coords, draw_color = color)
+	// converts these into the unscaled minimap version so we have to do less calculating
+	var/start_x = FLOOR(start_coords[1]/2, 1)
+	var/start_y = FLOOR(start_coords[2]/2, 1)
+	var/end_x = FLOOR(end_coords[1]/2, 1)
+	var/end_y = FLOOR(end_coords[2]/2, 1)
+	var/icon/mona_lisa = icon(drawn_image.icon)
 
-/datum/svg_overlay
-	var/svg_data
-	var/ckey
-	var/name
-	var/time
+	//special case 1, straight line
+	if(start_x == end_x)
+		mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, end_y*2 + 1)
+		drawn_image.icon = mona_lisa
+		return
+	if(start_y == end_y)
+		drawn_image.icon = mona_lisa
+		mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, end_x*2 + 1, start_y*2 + 1)
+		return
 
-/datum/svg_overlay/New(svg_data, mob/user)
-	src.svg_data = svg_data
-	src.ckey = user?.persistent_ckey
-	src.name = user?.real_name
-	src.time = time_stamp()
+	mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
 
-/// Callback when timer indicates the tacmap is flattenable now
-/datum/tacmap/drawing/proc/on_tacmap_fire(faction)
-	distribute_current_map_png(faction)
-	last_update_time = world.time
+	var/abs_dx = abs(end_x - start_x)
+	var/abs_dy = abs(end_y - start_y)
+	var/sign_dx = ( ((end_x - start_x) > 0) - ((end_x - start_x) < 0) )
+	var/sign_dy = ( ((end_y - start_y) > 0) - ((end_y - start_y) < 0) )
+
+	//special case 2, perfectly diagonal line
+	if(abs_dx == abs_dy)
+		for(var/j = 1 to abs_dx)
+			start_x += sign_dx
+			start_y += sign_dy
+			mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
+		drawn_image.icon = mona_lisa
+		return
+
+	/*x_error and y_error represents how far we are from the ideal line.
+	Initialized so that we will check these errors against 0, instead of 0.5 * abs_(dx/dy)*/
+	//We multiply every check by the line slope denominator so that we only handles integers
+	if(abs_dx > abs_dy)
+		var/y_error = -(abs_dx >> 1)
+		var/steps = abs_dx
+		while(steps--)
+			y_error += abs_dy
+			if(y_error > 0)
+				y_error -= abs_dx
+				start_y += sign_dy
+			start_x += sign_dx
+			mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
+	else
+		var/x_error = -(abs_dy >> 1)
+		var/steps = abs_dy
+		while(steps--)
+			x_error += abs_dx
+			if(x_error > 0)
+				x_error -= abs_dy
+				start_x += sign_dx
+			start_y += sign_dy
+			mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
+	drawn_image.icon = mona_lisa
+
+/atom/movable/screen/minimap_tool/draw_tool/red
+	screen_loc = "16,14"
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_red.dmi'
+	color = MINIMAP_DRAWING_RED
+
+/atom/movable/screen/minimap_tool/draw_tool/yellow
+	screen_loc = "16,13"
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_yellow.dmi'
+	color = MINIMAP_DRAWING_YELLOW
+
+/atom/movable/screen/minimap_tool/draw_tool/purple
+	screen_loc = "16,12"
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_purple.dmi'
+	color = MINIMAP_DRAWING_PURPLE
+
+/atom/movable/screen/minimap_tool/draw_tool/blue
+	screen_loc = "16,11"
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_blue.dmi'
+	color = MINIMAP_DRAWING_BLUE
+
+/atom/movable/screen/minimap_tool/draw_tool/erase
+	icon_state = "erase"
+	desc = "Drag to erase a line, middle click to erase a dot. Middle click this button to unselect."
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
+	screen_loc = "16,10"
+	color = null
+
+/atom/movable/screen/minimap_tool/label
+	icon_state = "label"
+	desc = "Click to place a label. Middle click a label to remove it. Middle click this button to remove all labels."
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/label.dmi'
+	screen_loc = "16,8"
+	/// List of turfs that have labels attached to them. kept around so it can be cleared
+	var/list/turf/labelled_turfs = list()
+
+/atom/movable/screen/minimap_tool/label/clicked(location, list/modifiers)
+	. = ..()
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
+		clear_labels(usr)
+
+///Clears all labels and logs who did it
+/atom/movable/screen/minimap_tool/label/proc/clear_labels(mob/user)
+	for(var/turf/label as anything in labelled_turfs)
+		SSminimaps.remove_marker(label)
+
+/atom/movable/screen/minimap_tool/label/on_mousedown(mob/source, atom/object, location, control, params)
+	. = ..()
+	if(!.)
+		return
+	INVOKE_ASYNC(src, PROC_REF(async_mousedown), source, object, location, control, params)
+	return COMSIG_MOB_CLICK_CANCELED
+
+///async mousedown for the actual label placement handling
+/atom/movable/screen/minimap_tool/label/proc/async_mousedown(mob/source, atom/object, location, control, params)
+	// this is really [/atom/movable/screen/minimap/proc/get_coords_from_click] copypaste since we
+	// want to also cancel the click if they click src and I cant be bothered to make it even more generic rn
+	var/list/modifiers = params2list(params)
+	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
+	var/x = (pixel_coords[1] - x_offset + linked_map.cur_x_shift) / 2
+	var/y = (pixel_coords[2] - y_offset + linked_map.cur_y_shift) / 2
+	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
+	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
+	var/turf/target = locate(c_x, c_y, zlevel)
+	if(modifiers[BUTTON] == MIDDLE_CLICK)
+		var/curr_dist
+		var/turf/nearest
+		for(var/turf/label as anything in labelled_turfs)
+			var/dist = get_dist_euclidian(label, target)
+			if(dist > LABEL_REMOVE_RANGE)
+				continue
+			if(!curr_dist || curr_dist > dist)
+				curr_dist = dist
+				nearest = label
+		if(nearest)
+			SSminimaps.remove_marker(nearest)
+		return
+	var/label_text = MAPTEXT(tgui_input_text(source, title = "Label Name", max_length = 35))
+	if(!label_text)
+		return
+	var/atom/movable/screen/minimap/mini = SSminimaps.fetch_minimap_object(zlevel, minimap_flag, TRUE)
+	if(!locate(mini) in source.client?.screen)
+		return
+
+	var/mutable_appearance/textbox = new
+	textbox.maptext_x = 5
+	textbox.maptext_y = 5
+	textbox.maptext_width = 64
+	textbox.maptext = label_text
+
+	labelled_turfs += target
+	var/image/blip = image('icons/ui_icons/map_blips.dmi', null, "label", ABOVE_FLOAT_LAYER)
+	blip.overlays += textbox
+	SSminimaps.add_marker(target, minimap_flag, blip)
+
+/atom/movable/screen/minimap_tool/clear
+	icon_state = "clear"
+	desc = "Remove all current labels and drawings."
+	screen_loc = "16,9"
+
+/atom/movable/screen/minimap_tool/clear/clicked(location, list/modifiers)
+	drawn_image.icon = icon('icons/ui_icons/minimap.dmi')
+	var/atom/movable/screen/minimap_tool/label/labels = locate() in usr.client?.screen
+	labels?.clear_labels(usr)
 
 /// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
 /proc/get_minimap_flag_for_faction(faction)
@@ -1114,7 +1167,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(FACTION_CLF)
 			return MINIMAP_FLAG_CLF
 		if(FACTION_PMC)
-			return MINIMAP_FLAG_WY
+			return MINIMAP_FLAG_PMC
 		if(FACTION_YAUTJA)
 			return MINIMAP_FLAG_YAUTJA
 		if(XENO_HIVE_CORRUPTED)
@@ -1140,7 +1193,3 @@ SUBSYSTEM_DEF(minimaps)
 		if(XENO_HIVE_RENEGADE)
 			return MINIMAP_FLAG_XENO_RENEGADE
 	return 0
-
-#undef CANVAS_COOLDOWN_TIME
-#undef FLATTEN_MAP_COOLDOWN_TIME
-#undef can_draw

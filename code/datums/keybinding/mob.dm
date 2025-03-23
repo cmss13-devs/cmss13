@@ -220,3 +220,21 @@
 	if(.)
 		return
 	user.movement_locked = FALSE
+
+/datum/keybinding/mob/minimap
+	hotkey_keys = list("5")
+	classic_keys = list("5")
+	name = "toggle_minimap"
+	full_name = "Toggle Minimap"
+	keybind_signal = COMSIG_KB_MOB_TOGGLE_MINIMAP
+
+/datum/keybinding/mob/minimap/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/user_mob = user.mob
+	if(!(user.screen))
+		return
+	for(var/datum/action/minimap/user_map in user_mob.actions)
+		user_map.action_activate()
+	return TRUE

@@ -35,7 +35,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		return
 
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "nuke[timing ? "_on" : "_off"]", 'icons/ui_icons/map_blips_large.dmi')
+	SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips_large.dmi', null, "nuke[timing ? "_on" : "_off"]", VERY_HIGH_FLOAT_LAYER))
 
 /obj/structure/machinery/nuclearbomb/update_icon()
 	overlays.Cut()

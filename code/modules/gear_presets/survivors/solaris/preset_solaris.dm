@@ -69,7 +69,7 @@
 	name = "Survivor - Solaris United Americas Peacekeepers"
 	assignment = "United Americas Peacekeeper"
 	minimap_icon = "peacekeeper"
-	minimap_background = "background_ua"
+	 = "background_ua"
 
 /datum/equipment_preset/survivor/security/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)
@@ -85,7 +85,7 @@
 	assignment = "USCM Recruiter"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "recruiter"
-	minimap_background = "background_medical"
+	 = "background_medical"
 
 /datum/equipment_preset/survivor/uscm/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)

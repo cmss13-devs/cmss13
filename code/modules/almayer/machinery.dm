@@ -76,28 +76,88 @@
 	use_power = USE_POWER_IDLE
 	density = TRUE
 	idle_power_usage = 2
-	var/datum/tacmap/map
-	///flags that we want to be shown when you interact with this table
-	var/minimap_type = MINIMAP_FLAG_USCM
-	///The faction that is intended to use this structure (determines type of tacmap used)
-	var/faction = FACTION_MARINE
-
-/obj/structure/machinery/prop/almayer/CICmap/Initialize()
-	. = ..()
-
-	if (faction == FACTION_MARINE)
-		map = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		map = new(src, minimap_type) // Non-drawing version
+	/// List of references to the tools we will be using to shape what the map looks like
+	var/list/atom/movable/screen/drawing_tools = list(
+		/atom/movable/screen/minimap_tool/draw_tool/red,
+		/atom/movable/screen/minimap_tool/draw_tool/yellow,
+		/atom/movable/screen/minimap_tool/draw_tool/purple,
+		/atom/movable/screen/minimap_tool/draw_tool/blue,
+		/atom/movable/screen/minimap_tool/draw_tool/erase,
+		/atom/movable/screen/minimap_tool/label,
+		/atom/movable/screen/minimap_tool/clear,
+	)
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	///by default Zlevel 2, groundside is targetted
+	var/targetted_zlevel = 2
+	///minimap obj ref that we will display to users
+	var/atom/movable/screen/minimap/map
+	///List of currently interacting mobs
+	var/list/mob/interactees = list()
+	///Toggle for scrolling map
+	var/scroll_toggle
+	///Button for closing map
+	var/close_button
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
-	QDEL_NULL(map)
+	map = null
 	return ..()
 
 /obj/structure/machinery/prop/almayer/CICmap/attack_hand(mob/user)
 	. = ..()
+	if(.)
+		return
+	if(interact_checks(user))
+		return TRUE
+	if(!map)
+		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
+		var/list/atom/movable/screen/actions = list()
+		for(var/path in drawing_tools)
+			actions += new path(null, targetted_zlevel, minimap_flag, map)
+		drawing_tools = actions
+		scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
+		close_button = new /atom/movable/screen/exit_map(null, src)
+	user.client.screen += map
+	interactees += user
+	user.client.screen += drawing_tools
+	user.client.screen += scroll_toggle
+	user.client.screen += close_button
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_move), user)
 
-	map.tgui_interact(user)
+///Returns true if something prevents the user from interacting with this. used mainly with the drawtable
+/obj/structure/machinery/prop/almayer/CICmap/proc/interact_checks(mob/user)
+	if(!user.client)
+		return TRUE
+
+	/obj/structure/machinery/prop/almayer/CICmap/on_unset_interaction(mob/user)
+	. = ..()
+	interactees -= user
+	user?.client?.screen -= map
+	user?.client?.screen -= drawing_tools
+	user?.client?.screen -= scroll_toggle
+	user?.client?.screen -= close_button
+	user?.client?.mouse_pointer_icon = null
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
+		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
+
+///Updates the z-level this maptable views
+/obj/structure/machinery/prop/almayer/CICmap/proc/change_targeted_z(datum/source, new_z)
+	if(!isnum(new_z))
+		return
+	for(var/mob/user as anything in interactees)
+		on_unset_interaction(user)
+	map = null
+	targetted_zlevel = new_z
+	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
+		tool.zlevel = new_z
+		tool.set_zlevel(new_z, tool.minimap_flag)
+
+//Bugfix to handle cases for ghosts/observers that dont automatically close uis on move.
+/obj/structure/machinery/prop/almayer/CICmap/proc/on_move(mob/source, oldloc)
+	SIGNAL_HANDLER
+	if(Adjacent(source))
+		return
+	on_unset_interaction(source)
 
 /obj/structure/machinery/prop/almayer/CICmap/computer
 	name = "map terminal"
@@ -107,16 +167,13 @@
 	density = FALSE
 
 /obj/structure/machinery/prop/almayer/CICmap/upp
-	minimap_type = MINIMAP_FLAG_UPP
-	faction = FACTION_UPP
+	minimap_flag = MINIMAP_FLAG_UPP
 
 /obj/structure/machinery/prop/almayer/CICmap/clf
-	minimap_type = MINIMAP_FLAG_CLF
-	faction = FACTION_CLF
+	minimap_flag = MINIMAP_FLAG_CLF
 
 /obj/structure/machinery/prop/almayer/CICmap/pmc
-	minimap_type = MINIMAP_FLAG_WY
-	faction = FACTION_PMC
+	minimap_flag = MINIMAP_FLAG_PMC
 
 //Nonpower using props
 

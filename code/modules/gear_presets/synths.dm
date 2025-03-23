@@ -168,7 +168,7 @@
 
 /datum/equipment_preset/synth/survivor/wy
 	flags = EQUIPMENT_PRESET_STUB
-	minimap_background = "background_goon"
+	 = "background_goon"
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -619,7 +619,7 @@
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
-	minimap_background = "background_cmb"
+	 = "background_cmb"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
@@ -669,7 +669,7 @@
 	idtype = /obj/item/card/id/pmc
 	role_comm_title = "WY Syn"
 	minimap_icon = "pmc_syn"
-	minimap_background = "background_pmc"
+	 = "background_pmc"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc/hvh,
@@ -716,7 +716,7 @@
 	name = "Survivor - Synthetic - Interstellar Commerce Commission Synthetic"
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "ICC Syn"
-	minimap_background = "background_cmb"
+	 = "background_cmb"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
 		WEAR_R_EAR = /obj/item/tool/pen/clicky,
@@ -859,7 +859,7 @@
 	rank = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
 	idtype = /obj/item/card/id/dogtag
-	minimap_background = "background_upp"
+	 = "background_upp"
 	faction_group = list(FACTION_UPP)
 	faction = FACTION_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE, LANGUAGE_ENGLISH)
@@ -918,7 +918,7 @@
 	name = "Cultist - Xeno Cultist Synthetic"
 	faction = FACTION_XENOMORPH
 	minimap_icon = "cult_synth"
-	minimap_background = "background_cultist"
+	 = "background_cultist"
 
 /datum/equipment_preset/synth/survivor/cultist_synth/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic

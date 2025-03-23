@@ -991,9 +991,3 @@
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
 	xeno.hive_message()
 	return ..()
-
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	xeno.xeno_tacmap()
-	return ..()
-

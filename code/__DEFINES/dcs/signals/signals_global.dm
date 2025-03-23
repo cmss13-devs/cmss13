@@ -87,3 +87,6 @@
 
 /// From /datum/controller/subsystem/hijack/fire()
 #define COMSIG_GLOB_FUEL_PUMP_UPDATE "!fuel_pump_update"
+
+//Called when minimap shifts
+#define COMSIG_GLOB_MINIMAP_SHIFTED "!minimap_shift"

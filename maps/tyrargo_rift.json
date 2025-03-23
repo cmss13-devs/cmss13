@@ -3,7 +3,7 @@
     "map_path": "map_files/Tyrargo_Rift",
     "map_file": "Tyrargo_Rift.dmm",
     "webmap_url": "LV624",
-    "weather_holder": "/datum/weather_ss_map_holder/lv624",
+
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",
@@ -21,7 +21,6 @@
     "announce_text": "###SHIPNAME### this is Brigadier General Hathaway onboard the USS Victory. Welcome to planet Tyrargo. Time is limited and we’re in the thick of it, so here is the situation.\n\nThe planet is under siege by the xenomorphs, there are hot spots everywhere and we can’t help everyone. 1st Battalion of the US Army 1st Air Cavalry are pinned down in the city of Tyrargo Rift, they are held up in the city Museum at a civilian evacuation site, thousands of lives are at stake.\n\nYour orders are to take orbit around the city and land your forces to the west. You’ll approach the city and secure the area to facilitate the arrival of the 32nd armour division who will break the siege.\n\nIn 24 hours those thousands of people will become thousands of bugs. Marines lead the way, get it done Falling Falcons. Good luck, and good hunting.",
     "monkey_types": [
         "farwa",
-        "monkey",
         "neaera",
         "stok"
     ],

@@ -30,7 +30,7 @@
 	ceiling = CEILING_MAX
 	ambience_exterior = AMBIENCE_TYRARGO_SEWER_CITY
 	soundscape_playlist = SCAPE_PL_TYRARGO_SEWER
-	soundscape_interval = 55
+	soundscape_interval = 13
 
 /area/tyrargo/oob
 	name = "Out Of Bounds"
@@ -168,16 +168,16 @@
 	base_muffle = MUFFLE_LOW
 
 /area/tyrargo/indoors/bunker/north
-	name = "Surface Bunker - North/Alpha"
+	name = "Surface Bunker - Alpha"
 
 /area/tyrargo/indoors/bunker/north_south
-	name = "Surface Bunker - North/Bravo"
+	name = "Surface Bunker - Bravo"
 
 /area/tyrargo/indoors/bunker/central
-	name = "Surface Bunker - Central/Charlie"
+	name = "Surface Bunker - Charlie"
 
 /area/tyrargo/indoors/bunker/central_south
-	name = "Surface Bunker - Central/Delta"
+	name = "Surface Bunker - Delta"
 
 // Underground Bunker
 
@@ -185,3 +185,16 @@
 	name = "Underground Bunker"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_SEC
+
+/area/tyrargo/underground/bunker/north
+	name = "Bunker Network - Sector Tango-12"
+
+/area/tyrargo/underground/bunker/south
+	name = "Bunker Network - Sector Epsilon-29"
+
+/area/tyrargo/underground/bunker/ammo_dump_entrance
+	name = "USASF Airbase Anderson - Underground Ammo Dump"
+
+/area/tyrargo/underground/bunker/ammo_dump_connection
+	name = "USASF Airbase Anderson - Underground Cave Network"
+	requires_power = FALSE

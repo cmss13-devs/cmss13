@@ -412,7 +412,7 @@
 /area/tyrargo/outdoors)
 "abH" = (
 /turf/open/floor/corsat/green,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "abI" = (
 /obj/structure/machinery/computer/telecomms/server{
 	pixel_x = -3;
@@ -1152,7 +1152,7 @@
 /area/tyrargo/landing_zone_1/no_mans_land)
 "adS" = (
 /turf/open/floor/corsat/green/southeast,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "adT" = (
 /obj/structure/barricade/metal/wired{
 	brute_multiplier = 0.05;
@@ -2865,8 +2865,9 @@
 /turf/open/floor/prison/ramptop,
 /area/tyrargo/outdoors)
 "aii" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/green/east,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aij" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/southwest,
@@ -2975,7 +2976,7 @@
 	},
 /obj/structure/platform/metal/stair_cut/platform_left,
 /turf/open/floor/almayer_hull,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aiD" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
 	dir = 1
@@ -3178,7 +3179,7 @@
 /area/tyrargo/outdoors)
 "ajk" = (
 /turf/open/floor/corsat/green/north,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "ajl" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/ramptop/north,
@@ -3511,7 +3512,7 @@
 /area/tyrargo/outdoors)
 "akk" = (
 /turf/open/floor/corsat/green/northeast,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "akl" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/floor_plate,
@@ -3928,7 +3929,7 @@
 /area/tyrargo/outdoors)
 "aly" = (
 /turf/open/floor/corsat/blue,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "alz" = (
 /obj/item/prop{
 	desc = "An M83 SADAR Anti-Tank RPG. This one has been expended.";
@@ -4409,7 +4410,7 @@
 /area/tyrargo/outdoors)
 "and" = (
 /turf/open/floor/corsat/blue/southeast,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "ane" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 9
@@ -5387,9 +5388,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/outdoors)
-"aoY" = (
-/turf/open/floor/corsat/blue/north,
-/area/tyrargo/underground/bunker)
 "aoZ" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -6947,9 +6945,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors)
-"asx" = (
-/turf/open/floor/corsat/blue/northeast,
-/area/tyrargo/underground/bunker)
 "asy" = (
 /obj/structure/prop/vehicles/tank/miltruck/wheeled/cover{
 	pixel_x = -31
@@ -13095,8 +13090,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/prop/ice_colony/ground_wire{
-	dir = 1;
-	layer = 4.1
+	dir = 1
 	},
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -14423,95 +14417,127 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/outdoors)
 "aLc" = (
-/turf/closed/wall/r_wall/bunker,
-/area/tyrargo/underground/bunker)
-"aLd" = (
-/turf/open/floor/corsat/plate,
-/area/tyrargo/underground)
-"aLe" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
 	},
-/turf/open/floor/corsat,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"aLd" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"aLe" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/south)
 "aLf" = (
-/turf/open/floor/corsat/purple/southwest,
-/area/tyrargo/underground)
-"aLg" = (
-/turf/open/floor/corsat/purple,
-/area/tyrargo/underground)
-"aLh" = (
-/turf/open/floor/corsat/purple/southeast,
-/area/tyrargo/underground)
-"aLi" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/purple/west,
-/area/tyrargo/underground)
-"aLj" = (
+/area/tyrargo/underground/bunker/south)
+"aLh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/purple/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
+"aLi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/purple/west,
+/area/tyrargo/underground/bunker/south)
+"aLj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/purple/east,
+/area/tyrargo/underground/bunker/south)
 "aLk" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/squares,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/purplecorner/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
 /turf/open/floor/corsat/purplecorner/north,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/purple/northwest,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLo" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/purple/north,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/purple/northeast,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLq" = (
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/red/southwest,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLr" = (
 /turf/open/floor/corsat/red,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLs" = (
 /turf/open/floor/corsat/red/southeast,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLt" = (
 /turf/open/floor/corsat/red/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLv" = (
 /turf/open/floor/corsat/red/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/corsat/redcorner/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLx" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/red/north,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLy" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/red/northeast,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLz" = (
 /turf/open/floor/corsat/red/northwest,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLA" = (
 /turf/open/floor/corsat/brown/southwest,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLB" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/brown,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLC" = (
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/brown/southeast,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLD" = (
 /turf/open/floor/corsat/brown/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLE" = (
 /turf/open/floor/corsat/brown/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLF" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
@@ -14524,80 +14550,100 @@
 	icon_state = "W"
 	},
 /turf/open/floor/corsat,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLH" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/browncorner/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLI" = (
 /turf/open/floor/corsat/brown/north,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLJ" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
 /turf/open/floor/corsat/brown/northeast,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLK" = (
 /turf/open/floor/corsat/browncorner/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/browncorner,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLM" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/browncorner/north,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
 /turf/open/floor/corsat/plate,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "aLP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/interior/wood/alt,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/underground)
 "aLR" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreencorner/north,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLS" = (
 /turf/open/floor/corsat/darkgreencorner/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/interior/wood/alt,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLV" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreen/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLW" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat/darkgreen/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = 6
 	},
 /turf/open/floor/interior/wood,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLY" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreencorner/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aLZ" = (
 /turf/open/floor/corsat/darkgreencorner,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -14607,18 +14653,18 @@
 	layer = 2.1
 	},
 /turf/open/floor/interior/wood/alt,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/interior/wood,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
 /turf/open/floor/corsat,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMd" = (
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = 8
@@ -14630,7 +14676,7 @@
 	pixel_x = -5
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards{
@@ -14639,10 +14685,11 @@
 	pixel_y = -4
 	},
 /turf/open/floor/interior/wood,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMf" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreen,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMg" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
@@ -14651,51 +14698,72 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/interior/wood,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMi" = (
-/turf/open/floor/corsat/darkgreen/north,
-/area/tyrargo/underground)
-"aMj" = (
-/turf/open/floor/corsat/darkgreen/northeast,
-/area/tyrargo/underground)
-"aMk" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
 	},
-/turf/open/floor/corsat,
-/area/tyrargo/underground)
+/turf/open/floor/corsat/darkgreen/north,
+/area/tyrargo/underground/bunker/north)
+"aMj" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/darkgreen/northeast,
+/area/tyrargo/underground/bunker/north)
+"aMk" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
 "aMl" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/corsat/bluecorner/north,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMm" = (
 /turf/open/floor/corsat/bluecorner/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMn" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/blue/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMo" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
 /turf/open/floor/corsat/blue/east,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMp" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/bluecorner/west,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMq" = (
 /turf/open/floor/corsat/bluecorner,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMr" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
 /obj/structure/platform/metal/strata,
 /turf/open/floor/corsat,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMs" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/strata_left,
 /turf/open/floor/corsat,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "aMt" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -15497,12 +15565,6 @@
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/outdoors)
 "aNP" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	pixel_x = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -17006,6 +17068,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/strata,
+/obj/structure/machinery/light/small,
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/north)
 "aQG" = (
@@ -17224,6 +17287,9 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/strata_left,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/north)
 "aRc" = (
@@ -17985,6 +18051,12 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors)
+"aSF" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/underground)
 "aSG" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -15;
@@ -19238,7 +19310,7 @@
 /area/tyrargo/landing_zone_1)
 "aUD" = (
 /turf/open/floor/corsat/marked,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aUE" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
@@ -19764,6 +19836,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
+"aVC" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"aVD" = (
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aVE" = (
 /obj/item/trash/uscm_mre{
 	pixel_y = 13;
@@ -25646,8 +25725,11 @@
 	},
 /area/tyrargo/underground)
 "bgP" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/corsat/marked,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "bgQ" = (
 /turf/open/gm/river/desert/deep/covered,
 /area/tyrargo/underground)
@@ -26405,8 +26487,9 @@
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors)
 "biy" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "biz" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/blocker/invisible_wall/water,
@@ -27881,8 +27964,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bly" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
 /turf/open/floor/corsat/squares,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "blz" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
@@ -28012,8 +28100,13 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "blM" = (
-/obj/structure/prop/broken_ladder,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/ladder{
+	height = 2;
+	id = "bunker_1";
+	pixel_y = -1;
+	name = "Bunker Ladder"
+	},
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central_south)
 "blN" = (
@@ -29583,6 +29676,9 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"boz" = (
+/turf/closed/wall/r_wall/bunker,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "boA" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -31167,10 +31263,6 @@
 "brE" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/m56d{
-	pixel_x = -4;
-	current_rounds = 0
-	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "brF" = (
@@ -31511,35 +31603,36 @@
 /turf/open_space,
 /area/tyrargo/outdoors)
 "bsl" = (
-/turf/open/floor/corsat,
-/area/tyrargo/underground/bunker)
+/obj/structure/girder/displaced,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bsm" = (
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/underground/bunker)
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bsn" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
 /turf/open/floor/almayer_hull,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bso" = (
 /turf/open/floor/corsat/arrow_west,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bsp" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/arrow_east,
-/area/tyrargo/underground/bunker)
-"bsq" = (
-/turf/open/floor/corsat/blue/east,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bsr" = (
+/obj/structure/girder/displaced,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bss" = (
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull,
-/area/tyrargo/underground/bunker)
+/area/tyrargo/underground/bunker/ammo_dump_connection)
 "bst" = (
 /turf/closed/wall/wood,
 /area/tyrargo/landing_zone_1/underground)
@@ -35507,6 +35600,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bCg" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/almayer/black2/north,
 /area/tyrargo/indoors/bunker/central_south)
 "bCh" = (
@@ -42750,11 +42846,428 @@
 	},
 /turf/open_space,
 /area/tyrargo/outdoors)
+"bTP" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTQ" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTR" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTS" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/red/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTT" = (
+/turf/open/floor/corsat/red/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTU" = (
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTV" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/red/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTW" = (
+/turf/open/floor/corsat/redcorner/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTX" = (
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTY" = (
+/turf/open/floor/corsat/redcorner,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bTZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/green,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUd" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUe" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/arrow_west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUf" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUh" = (
+/turf/open/floor/corsat/green/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/green/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUl" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUm" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUo" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUp" = (
+/obj/item/device/flashlight/flare/on,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUq" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUr" = (
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUs" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/green/southeast,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUt" = (
+/turf/open/floor/corsat/blue/southwest,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUu" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/blue,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUv" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/arrow_west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUw" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/green/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/bluecorner/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/sentry,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/blue/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUE" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUF" = (
+/turf/open/floor/corsat/blue/northwest,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUG" = (
+/turf/open/floor/corsat/bluecorner/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUJ" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/green/northeast,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/bluecorner/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUN" = (
+/turf/open/floor/corsat/blue/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUO" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUP" = (
+/turf/open/floor/corsat/blue/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUQ" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUS" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUT" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat/bluecorner/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/minirocket/incendiary,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/blue/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bUZ" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVa" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVb" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVc" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVd" = (
+/turf/open/floor/corsat/bluecorner/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVg" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/outdoors)
+"bVi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/bluecorner/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/blue/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVl" = (
+/turf/open/floor/corsat/blue/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVm" = (
+/turf/open/floor/corsat/blue/northeast,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/blue/northeast,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVp" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/southwest,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVr" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -42770,6 +43283,81 @@
 	},
 /turf/open/floor/prison/blue/southeast,
 /area/tyrargo/outdoors)
+"bVs" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVu" = (
+/turf/open/floor/corsat/red/southeast,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVv" = (
+/turf/open/floor/corsat/red/southwest,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVw" = (
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVz" = (
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground)
+"bVA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/redcorner/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/redcorner,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVD" = (
+/mob/living/simple_animal/mouse/rat/gray,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/guns,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVF" = (
+/obj/item/device/flashlight/flare/on,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVG" = (
+/turf/open/floor/corsat/arrow_east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/northwest,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVJ" = (
 /obj/structure/prop/rock/black_ground{
 	dir = 5;
@@ -42778,12 +43366,171 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors)
+"bVK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/redcorner/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/guns,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVM" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/heavygun,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVQ" = (
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ship_ammo/heavygun/antitank,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/blue/southeast,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/item/prop/folded_anti_tank_sadar,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVU" = (
+/obj/structure/girder,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/corsat/redcorner/west,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/lisa,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVX" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bVY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVZ" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWa" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWc" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWd" = (
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWe" = (
+/obj/item/device/flashlight/flare/on,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bWf" = (
 /obj/structure/surface/table/gamblingtable{
 	color = "#aeaeae"
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/outdoors)
+"bWg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/redcorner/east,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWl" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWm" = (
+/turf/open/floor/corsat/red/northwest,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bWn" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -42794,6 +43541,647 @@
 	},
 /turf/open/floor/hybrisa/tile/supermartfloor2,
 /area/tyrargo/underground)
+"bWo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWq" = (
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWr" = (
+/obj/item/device/flashlight/flare/on,
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/corsat/red/northeast,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWt" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWv" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_x = 16
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWx" = (
+/obj/structure/girder/displaced,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWz" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	pixel_y = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWA" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	pixel_y = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWC" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bWD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWE" = (
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWF" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWG" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWH" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 11;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWI" = (
+/turf/closed/wall/r_wall/bunker,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWJ" = (
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWN" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWO" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWP" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 8;
+	light_color = s
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWQ" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWS" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWT" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWU" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWV" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 25
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWX" = (
+/obj/item/device/flashlight/flare/on,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bWZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXc" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXh" = (
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXi" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXj" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXk" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	layer = 4.1;
+	pixel_x = 6
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXl" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	layer = 4.1;
+	pixel_x = 6
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXm" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 25
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	layer = 4.1;
+	pixel_x = 6
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXn" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXo" = (
+/mob/living/simple_animal/mouse/rat/brown,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXp" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXq" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXr" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXs" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXt" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXu" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXw" = (
+/obj/structure/closet/crate/ammo{
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	},
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXx" = (
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXy" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_x = -15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXz" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXA" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXB" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXC" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_x = 15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXF" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground)
+"bXG" = (
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground)
+"bXH" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXI" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXJ" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXM" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXN" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 9;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 11;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground)
+"bXQ" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground)
+"bXR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXS" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXT" = (
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXU" = (
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXV" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXW" = (
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXX" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXY" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bXZ" = (
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bYa" = (
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bYb" = (
+/turf/closed/wall/r_wall/bunker,
+/area/tyrargo/underground/bunker/south)
+"bYc" = (
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/south)
+"bYd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder{
+	height = 1;
+	id = "bunker_3";
+	pixel_y = -1;
+	name = "Bunker Ladder"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYe" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/purple/southwest,
+/area/tyrargo/underground/bunker/south)
+"bYf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/purple,
+/area/tyrargo/underground/bunker/south)
+"bYg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/purple/southeast,
+/area/tyrargo/underground/bunker/south)
+"bYh" = (
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYk" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/structure/machinery/light/small,
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bYl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bYm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
 "bYn" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -42807,6 +44195,564 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/outdoors)
+"bYo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYp" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYq" = (
+/obj/structure/ladder{
+	height = 1;
+	id = "bunker_1";
+	pixel_y = -1;
+	name = "Bunker Ladder"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYr" = (
+/obj/structure/closet/crate/ammo{
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	},
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/ladder{
+	height = 1;
+	id = "bunker_2";
+	pixel_y = -1;
+	name = "Bunker Ladder"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/purple/west,
+/area/tyrargo/underground/bunker/south)
+"bYu" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bYv" = (
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bYw" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bYx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bYy" = (
+/mob/living/simple_animal/mouse/rat/gray,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 1;
+	pixel_y = -8
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bYz" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bYA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/green,
+/area/tyrargo/underground/bunker/south)
+"bYB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bYC" = (
+/turf/open/floor/corsat/purple/east,
+/area/tyrargo/underground/bunker/south)
+"bYD" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bYE" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 8;
+	light_color = s
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bYF" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bYG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bYH" = (
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"bYI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bYJ" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bYK" = (
+/turf/open/floor/corsat/green/north,
+/area/tyrargo/underground/bunker/south)
+"bYL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bYM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/green/north,
+/area/tyrargo/underground/bunker/south)
+"bYN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/purple/east,
+/area/tyrargo/underground/bunker/south)
+"bYO" = (
+/obj/structure/surface/rack,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYP" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"bYR" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bYS" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/m56d,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYT" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/m56d{
+	pixel_x = 4;
+	pixel_y = 5;
+	current_rounds = 5
+	},
+/obj/item/ammo_magazine/m56d{
+	pixel_x = -9;
+	pixel_y = 9;
+	current_rounds = 45
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bYV" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/underground/bunker/south)
+"bYW" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"bYY" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bYZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bZa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/south)
+"bZb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/southeast,
+/area/tyrargo/underground/bunker/south)
+"bZc" = (
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bZd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bZe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"bZf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/arrow_east,
+/area/tyrargo/underground/bunker/south)
+"bZg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"bZh" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bZi" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bZj" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	layer = 4.1;
+	pixel_x = 6
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bZk" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 11;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZl" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bZm" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bZn" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZo" = (
+/turf/open/floor/corsat/white,
+/area/tyrargo/underground/bunker/south)
+"bZp" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder/displaced,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZr" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bZs" = (
+/obj/structure/girder,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZu" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/turf/open/floor/corsat/brown/east,
+/area/tyrargo/underground/bunker/south)
+"bZv" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/south)
+"bZw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/white/north,
+/area/tyrargo/underground/bunker/south)
+"bZx" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	layer = 2.1;
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZy" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_x = -15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZA" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_x = 15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZB" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 8;
+	light_color = s
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZC" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZD" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"bZE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/arrow_south,
+/area/tyrargo/underground/bunker/south)
+"bZF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/arrow_south,
+/area/tyrargo/underground/bunker/south)
+"bZG" = (
+/turf/open/floor/corsat/browncorner/east,
+/area/tyrargo/underground/bunker/south)
+"bZH" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/brown/west,
+/area/tyrargo/underground/bunker/south)
+"bZJ" = (
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"bZL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/brown/east,
+/area/tyrargo/underground/bunker/south)
+"bZM" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bZN" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"bZO" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"bZP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZQ" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/brown/east,
+/area/tyrargo/underground/bunker/south)
+"bZR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"bZT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"bZU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
 "bZV" = (
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -42820,6 +44766,206 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors)
+"bZW" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/browncorner,
+/area/tyrargo/underground/bunker/south)
+"bZY" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_x = -15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"bZZ" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_x = 15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"caa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"cab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"cac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"cad" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 4;
+	pixel_y = 12;
+	pixel_x = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"cae" = (
+/turf/open/floor/corsat/browncorner/north,
+/area/tyrargo/underground/bunker/south)
+"caf" = (
+/obj/structure/girder/displaced,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"cag" = (
+/turf/open/floor/corsat/blue,
+/area/tyrargo/underground/bunker/south)
+"cah" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"cai" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = -4;
+	layer = 2.8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"caj" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/brown/west,
+/area/tyrargo/underground/bunker/south)
+"cak" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"cal" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/south)
+"cam" = (
+/mob/living/simple_animal/mouse/rat/brown,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"can" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/south)
+"cao" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/south)
+"cap" = (
+/turf/open/floor/corsat/blue/north,
+/area/tyrargo/underground/bunker/south)
+"caq" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/south)
+"car" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cas" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/south)
+"cat" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cau" = (
+/turf/closed/wall/wood,
+/area/tyrargo/underground/bunker/north)
+"cav" = (
+/turf/open/floor/corsat/browncorner,
+/area/tyrargo/underground/bunker/south)
+"caw" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	pixel_x = -11;
+	pixel_y = -9;
+	layer = 2.1
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 8;
+	pixel_x = 13;
+	dir = 1
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 7;
+	pixel_x = -9
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = 7;
+	pixel_y = -8;
+	layer = 2.98;
+	dir = 4
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cax" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cay" = (
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/bunker/north)
+"caz" = (
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"caA" = (
+/turf/closed/wall/r_wall/bunker,
+/area/tyrargo/underground/bunker/north)
 "caB" = (
 /obj/structure/mirror{
 	pixel_y = 28
@@ -42830,9 +44976,1393 @@
 /obj/item/tool/soap/deluxe,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/outdoors)
+"caC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/north)
+"caD" = (
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/bunker/north)
+"caE" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caF" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caG" = (
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caH" = (
+/obj/structure/platform/stone/hybrisa/rockdark,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caI" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caJ" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/interior/wood/alt,
+/area/tyrargo/underground/bunker/north)
+"caK" = (
+/turf/open/floor/interior/wood/alt,
+/area/tyrargo/underground/bunker/north)
+"caL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/bunker/north)
+"caM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"caN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"caO" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"caP" = (
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caQ" = (
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caR" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"caT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"caU" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caV" = (
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"caW" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caX" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caY" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"caZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/bunker/north)
+"cba" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cbb" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	pixel_x = -11;
+	pixel_y = -9;
+	layer = 2.1
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 1;
+	layer = 2.1;
+	pixel_y = -9;
+	pixel_x = 9
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = 7;
+	pixel_x = 13
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 1;
+	layer = 2.1;
+	pixel_y = 11;
+	pixel_x = -12
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_y = -1;
+	dir = 8
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cbc" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = -5;
+	layer = 2.1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cbd" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/bunker/north)
+"cbe" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"cbf" = (
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cbg" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cbh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cbi" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cbj" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cbk" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/underground/bunker/north)
+"cbl" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cbm" = (
+/turf/open/floor/corsat/red/southwest,
+/area/tyrargo/underground/bunker/north)
+"cbn" = (
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/north)
+"cbo" = (
+/turf/open/floor/corsat/red/southeast,
+/area/tyrargo/underground/bunker/north)
+"cbp" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"cbq" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = 15;
+	pixel_y = 2;
+	layer = 2.98;
+	dir = 1
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = -4;
+	layer = 2.8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cbr" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = 15;
+	pixel_y = 2;
+	layer = 2.98;
+	dir = 8
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_y = -2;
+	pixel_x = 3;
+	layer = 2.1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cbs" = (
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"cbt" = (
+/turf/open/floor/corsat/darkgreen/east,
+/area/tyrargo/underground/bunker/north)
+"cbu" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cbv" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/bunker/north)
+"cbw" = (
+/turf/open/floor/corsat/red/west,
+/area/tyrargo/underground/bunker/north)
+"cbx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/redcorner,
+/area/tyrargo/underground/bunker/north)
+"cby" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/north)
+"cbz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/southeast,
+/area/tyrargo/underground/bunker/north)
+"cbA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cbB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/darkgreencorner,
+/area/tyrargo/underground/bunker/north)
+"cbC" = (
+/turf/open/floor/corsat/darkgreen,
+/area/tyrargo/underground/bunker/north)
+"cbD" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/darkgreen/east,
+/area/tyrargo/underground/bunker/north)
+"cbE" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cbF" = (
+/mob/living/simple_animal/mouse/rat/brown,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cbG" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cbH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/tyrargo/underground/bunker/north)
+"cbI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cbJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"cbK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/east,
+/area/tyrargo/underground/bunker/north)
+"cbL" = (
+/obj/structure/closet/crate/ammo{
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	},
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"cbM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/arrow_east,
+/area/tyrargo/underground/bunker/north)
+"cbN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/arrow_south,
+/area/tyrargo/underground/bunker/north)
+"cbO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"cbP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cbQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/redcorner/east,
+/area/tyrargo/underground/bunker/north)
+"cbR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/north)
+"cbS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/northeast,
+/area/tyrargo/underground/bunker/north)
+"cbT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/corsat/darkgreen/north,
+/area/tyrargo/underground/bunker/north)
+"cbU" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/darkgreen/north,
+/area/tyrargo/underground/bunker/north)
+"cbV" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/darkgreen/north,
+/area/tyrargo/underground/bunker/north)
+"cbW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"cbX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/darkgreencorner/east,
+/area/tyrargo/underground/bunker/north)
+"cbY" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cbZ" = (
+/turf/open/floor/corsat/red/northwest,
+/area/tyrargo/underground/bunker/north)
+"cca" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/north)
+"ccb" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"ccc" = (
+/obj/structure/surface/rack,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"ccd" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"cce" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"ccf" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"ccg" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cch" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cci" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccj" = (
+/mob/living/simple_animal/mouse/rat/gray,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cck" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 11;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccl" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"ccm" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 8;
+	light_color = s
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccn" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cco" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccp" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/m56d{
+	pixel_x = 3;
+	pixel_y = 10;
+	current_rounds = 45
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"ccs" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cct" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccu" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 1;
+	pixel_y = -8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"ccv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/m56d{
+	pixel_x = -9;
+	pixel_y = 9;
+	current_rounds = 45
+	},
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"ccx" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccy" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccz" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccA" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"ccB" = (
+/obj/effect/glowshroom,
+/mob/living/simple_animal/mouse/rat/white,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"ccC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"ccD" = (
+/obj/effect/glowshroom,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccE" = (
+/turf/open/floor/corsat/arrow_south,
+/area/tyrargo/underground/bunker/north)
+"ccF" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"ccG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccH" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = 7
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = -9
+	},
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"ccI" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = 7
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = 7
+	},
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccK" = (
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/bluecorner/north,
+/area/tyrargo/underground/bunker/north)
+"ccM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccN" = (
+/turf/open/floor/corsat/blue/east,
+/area/tyrargo/underground/bunker/north)
+"ccO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccP" = (
+/mob/living/simple_animal/mouse/rat/brown,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccQ" = (
+/turf/open/floor/corsat/blue/west,
+/area/tyrargo/underground/bunker/north)
+"ccR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccS" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/blue/west,
+/area/tyrargo/underground/bunker/north)
+"ccT" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 4;
+	pixel_y = -5;
+	layer = 2.1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccU" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccV" = (
+/turf/open/floor/corsat/bluecorner/west,
+/area/tyrargo/underground/bunker/north)
+"ccW" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_x = -15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccX" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ccY" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_x = 15
+	},
+/obj/structure/largecrate/random,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"ccZ" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"cda" = (
+/turf/open/floor/corsat/bluecorner/north,
+/area/tyrargo/underground/bunker/north)
+"cdb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdd" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"cde" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/corsat/blue/east,
+/area/tyrargo/underground/bunker/north)
+"cdf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdg" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cdh" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/mouse/rat/brown,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdi" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 1;
+	pixel_y = -8
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdj" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cdk" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cdl" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cdm" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"cdn" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"cdo" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/corsat/blue/east,
+/area/tyrargo/underground/bunker/north)
+"cdp" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdq" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdr" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cds" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cdt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdu" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat/blue/east,
+/area/tyrargo/underground/bunker/north)
+"cdv" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = 9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cdw" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/corsat/bluecorner/west,
+/area/tyrargo/underground/bunker/north)
+"cdx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = -9
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = -9
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	dir = 4;
+	pixel_y = 19;
+	pixel_x = 7
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdz" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/turf/open/floor/corsat/box,
+/area/tyrargo/underground/bunker/north)
+"cdA" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cdB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cdC" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	layer = 4.1;
+	pixel_x = 6
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 17
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdE" = (
+/obj/structure/largecrate/black_market/confiscated_weaponry,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdF" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cdG" = (
+/obj/structure/ore_box,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cdH" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 8;
+	layer = 2.1;
+	pixel_y = -3;
+	pixel_x = -7
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cdI" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/red/west,
+/area/tyrargo/underground/bunker/north)
+"cdJ" = (
+/turf/open/floor/corsat/redcorner,
+/area/tyrargo/underground/bunker/north)
+"cdK" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/north)
+"cdL" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cdM" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cdN" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/pipe_water{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cdO" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cdP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cdQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/crowbar,
+/turf/open/floor/corsat/red,
+/area/tyrargo/underground/bunker/north)
 "cdR" = (
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
 /area/tyrargo/outdoors)
+"cdS" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/red/west,
+/area/tyrargo/underground/bunker/north)
+"cdT" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cdU" = (
+/turf/open/floor/corsat/red/east,
+/area/tyrargo/underground/bunker/north)
+"cdV" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cdW" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8;
+	layer = 4.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cdX" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/north)
+"cdY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
+"cdZ" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cea" = (
+/obj/structure/prop/ice_colony/surveying_device/measuring_device,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"ceb" = (
+/obj/effect/decal/cleanable/generic,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/redcorner/east,
+/area/tyrargo/underground/bunker/north)
+"cec" = (
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/north)
+"ced" = (
+/turf/open/floor/corsat/red/northeast,
+/area/tyrargo/underground/bunker/north)
+"cee" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cef" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/surveying_device/measuring_device{
+	dir = 1;
+	layer = 5;
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ceg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/wirecutters/clippers,
+/turf/open/floor/corsat/red/north,
+/area/tyrargo/underground/bunker/north)
+"ceh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cei" = (
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/north)
+"cej" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/corsat/red/northwest,
+/area/tyrargo/underground/bunker/north)
+"cek" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cel" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = 10
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cem" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"cen" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder/displaced,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ceo" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/m56d,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"cep" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
+	},
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/north)
+"ceq" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	layer = 4.1
+	},
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cer" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"ces" = (
+/obj/effect/glowshroom,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"cet" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
+"ceu" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer/black2/east,
+/area/tyrargo/indoors/bunker/central_south)
+"cev" = (
+/obj/structure/ladder{
+	height = 2;
+	id = "bunker_2";
+	pixel_y = -1;
+	name = "Bunker Ladder"
+	},
+/turf/open/floor/almayer/blackfull2,
+/area/tyrargo/indoors/bunker/central_south)
+"cew" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/machinery/light/small,
+/obj/structure/platform/metal/strata,
+/turf/open/floor/almayer/blackfull2,
+/area/tyrargo/indoors/bunker/central)
+"cex" = (
+/obj/structure/platform/metal/strata,
+/turf/open_space,
+/area/tyrargo/indoors/bunker/central)
+"cey" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/platform/metal/stair_cut/strata_left,
+/turf/open/floor/almayer/blackfull2,
+/area/tyrargo/indoors/bunker/central)
+"cez" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open_space,
+/area/tyrargo/indoors/bunker/central)
+"ceA" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/machinery/light/small,
+/obj/structure/platform/metal/strata,
+/turf/open/floor/almayer/blackfull2,
+/area/tyrargo/indoors/bunker/north_south)
+"ceB" = (
+/obj/structure/platform/metal/strata,
+/turf/open_space,
+/area/tyrargo/indoors/bunker/north_south)
+"ceC" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	icon_state = "sandbag_0";
+	color = "#a98c7c";
+	layer = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/m56d{
+	pixel_x = 3;
+	pixel_y = 10;
+	current_rounds = 9
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/indoors/bunker/north_south)
+"ceD" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/platform/metal/stair_cut/strata_left,
+/turf/open/floor/almayer/blackfull2,
+/area/tyrargo/indoors/bunker/north_south)
+"ceE" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open_space,
+/area/tyrargo/indoors/bunker/north_south)
 "cfi" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
@@ -43809,7 +47339,7 @@
 	dir = 1
 	},
 /turf/open/floor/interior/wood,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "dKc" = (
 /obj/structure/stairs{
 	dir = 1
@@ -44207,8 +47737,13 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/outdoors/outskirts/central)
 "eAZ" = (
-/obj/structure/prop/broken_ladder,
 /obj/structure/machinery/power/apc/power/south,
+/obj/structure/ladder{
+	height = 2;
+	id = "bunker_3";
+	pixel_y = -1;
+	name = "Bunker Ladder"
+	},
 /turf/open/floor/almayer/black2,
 /area/tyrargo/indoors/bunker/central_south)
 "eBG" = (
@@ -44421,6 +47956,11 @@
 /area/tyrargo/outdoors)
 "fdA" = (
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/m56d{
+	pixel_x = -9;
+	pixel_y = -3;
+	current_rounds = 2
+	},
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central_south)
 "feh" = (
@@ -46019,7 +49559,6 @@
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors)
 "icU" = (
-/obj/structure/prop/broken_ladder,
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "icY" = (
@@ -47255,7 +50794,7 @@
 "kSj" = (
 /obj/structure/stairs/multiz/up,
 /turf/open/floor/interior/wood/alt,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "kSt" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 10;
@@ -48815,6 +52354,11 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/item/ammo_magazine/m56d{
+	pixel_x = 3;
+	pixel_y = 10;
+	current_rounds = 6
+	},
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
 "nIV" = (
@@ -48956,6 +52500,11 @@
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/tyrargo/outdoors)
 "nWO" = (
+/obj/item/ammo_magazine/m56d{
+	pixel_x = 3;
+	pixel_y = 10;
+	current_rounds = 45
+	},
 /turf/open/floor/almayer/blackcorner/east,
 /area/tyrargo/indoors/bunker/central_south)
 "nWX" = (
@@ -50126,7 +53675,7 @@
 	dir = 8
 	},
 /turf/open/floor/corsat,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/south)
 "pVQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -50178,7 +53727,7 @@
 "qbU" = (
 /obj/structure/stairs/multiz/up,
 /turf/open/floor/interior/wood,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "qcb" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
@@ -50286,6 +53835,11 @@
 	layer = 2.1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/m56d{
+	pixel_x = 3;
+	pixel_y = 10;
+	current_rounds = 6
+	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "qoY" = (
@@ -51703,7 +55257,7 @@
 	dir = 1
 	},
 /turf/open/floor/interior/wood/alt,
-/area/tyrargo/underground)
+/area/tyrargo/underground/bunker/north)
 "sVu" = (
 /obj/structure/barricade/deployable{
 	dir = 1
@@ -52027,8 +55581,8 @@
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/underground)
 "tro" = (
-/turf/open/floor/corsat,
-/area/tyrargo/underground)
+/turf/open/floor/corsat/green,
+/area/tyrargo/underground/bunker/south)
 "trF" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -52760,8 +56314,8 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/outdoors)
 "uGc" = (
-/obj/effect/decal/strata_decals/catwalk/prison{
-	icon = 'icons/turf/floors/hybrisafloors.dmi'
+/obj/structure/prop/hybrisa/misc/floorprops/grate{
+	layer = 4
 	},
 /turf/open/floor/shiva/radiator_tile2,
 /area/tyrargo/outdoors)
@@ -53859,6 +57413,11 @@
 /area/tyrargo/outdoors)
 "wgF" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/m56d{
+	pixel_x = 3;
+	pixel_y = 10;
+	current_rounds = 9
+	},
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
 "whj" = (
@@ -65049,7 +68608,7 @@ abb
 abb
 abb
 abb
-abb
+aSF
 abb
 abb
 abb
@@ -65231,7 +68790,7 @@ abb
 abb
 abb
 abb
-abb
+aSF
 abb
 abb
 abb
@@ -65411,14 +68970,14 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
+aSF
+aSF
 abb
 abb
 abb
@@ -65595,11 +69154,11 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
-abb
-abb
+aSF
 abb
 abb
 abb
@@ -65739,6 +69298,13 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -65770,18 +69336,11 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+aSF
 abb
 abb
 abb
@@ -65921,6 +69480,13 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+abb
+abb
+abb
+aSF
+aSF
 abb
 abb
 abb
@@ -65952,18 +69518,11 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+aSF
 abb
 abb
 abb
@@ -66071,6 +69630,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -66102,11 +69662,13 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -66136,10 +69698,7 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
+aSF
 abb
 abb
 abb
@@ -66253,6 +69812,8 @@ abb
 abb
 abb
 abb
+aSF
+aSF
 abb
 abb
 abb
@@ -66283,11 +69844,13 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -66316,6 +69879,8 @@ abb
 abb
 abb
 abb
+aSF
+aSF
 abb
 abb
 abb
@@ -66329,44 +69894,38 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
 abb
 abb
 abb
@@ -66467,6 +70026,21 @@ abb
 abb
 abb
 abb
+aSF
+abb
+abb
+abb
+abb
+abb
+aSF
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -66486,78 +70060,63 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
+bWI
+bWI
+bWI
+bWI
+bWI
+bWI
+boz
+boz
+boz
 aiC
 bsn
 bsn
 bsn
 bsn
-aLc
-aLc
+boz
+boz
 aiC
 bsn
 bsn
 bsn
 bsn
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
+boz
+boz
+bVg
+bUZ
+boz
+boz
 aiC
 bsn
 bsn
 bsn
 bsn
-aLc
-aLc
+boz
+boz
 aiC
 bsn
 bsn
 bsn
 bsn
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-abb
-abb
-abb
-abb
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -66636,6 +70195,34 @@ abb
 abb
 abb
 abb
+aSF
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
+abb
+abb
+abb
+abb
+abb
+aSF
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -66657,86 +70244,58 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
+bXn
+bWd
+bWN
+bWN
+bWN
+bWQ
+bWJ
 aUD
-biy
-bly
-aoY
+bWz
+bTU
+bVl
+bVG
+bTU
 bsp
-bly
+bUu
+bUo
+bTX
+bVl
+bVG
+bTU
 bsp
-aly
-bly
-bly
-aoY
-bsp
-bly
-bsp
-aly
-bly
-bly
-bly
-bly
-bly
-bly
+bUu
+bVo
+bTU
+bTU
+bTU
+bUQ
+bTX
+ajk
+bUv
+bUa
+bUv
+bUb
+bUo
+bTX
 ajk
 bso
-bly
+bTU
 bso
 abH
 bly
-bly
-ajk
-bso
-bly
-bso
-abH
-bly
 biy
 aUD
-abb
-abb
-abb
-abb
+bTW
+bTT
+bTR
+aVD
 abb
 abb
 abb
@@ -66798,6 +70357,9 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -66814,6 +70376,9 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -66839,6 +70404,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -66854,72 +70420,65 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
+bWd
+bVX
+bXi
+bWT
+bWG
+bWG
+bWG
+bWJ
 aUD
+bWA
+bVf
+bVl
+bTU
+bTU
+bUa
+bUu
+bVP
 biy
-bly
-aoY
-bly
-bly
-bly
+bVl
+bTU
+bUa
+bVA
 aly
-bly
-bly
-aoY
-bly
-bly
-bly
-aly
-bly
-bly
-bly
-bly
-bly
-bly
-ajk
-bly
-bly
-bly
-abH
-bly
-bly
-ajk
-bly
-bly
-bly
-abH
-bly
+biy
+bTU
+bVb
+bTU
+bUR
+biy
+bUk
+bTU
+bTU
+bTU
+bUb
+bUp
+bTX
+bUk
+bUa
+bUc
+bUa
+bUb
+bTU
 biy
 aUD
-abb
-abb
-abb
-abb
-abb
+bTX
+bTP
+bTP
+aVD
+aVC
 abb
 abb
 abb
@@ -66981,6 +70540,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -66999,6 +70559,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67011,6 +70572,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67024,6 +70586,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67048,59 +70611,55 @@ abb
 abb
 abb
 abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-aUD
+bWd
+bWd
+bWd
+bVX
+bWb
+bWE
+bWE
+bWM
+bWK
+bUg
+bTX
+bUa
+bVm
+bUY
+bUY
+bUY
+bVS
 biy
-bly
-asx
-bsq
-bsq
-bsq
+biy
+bVm
+bUP
+bUY
+bUP
 and
-bly
-bly
-asx
-bsq
-bsq
-bsq
-and
-bly
-bly
-bly
-bly
-bly
-bly
+bTX
+bUa
+bUa
+bUa
+bUa
+biy
+bUK
+aii
+aii
+bUw
+bUs
+bTX
+biy
 akk
 aii
-aii
-aii
-adS
-bly
-bly
-akk
-aii
-aii
+bUh
 aii
 adS
-bly
-biy
+bUa
+bTZ
 aUD
-abb
-abb
-abb
-abb
+bTX
+bTU
+bTP
+bTP
 abb
 abb
 abb
@@ -67163,6 +70722,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67181,6 +70741,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67193,9 +70754,13 @@ abb
 abb
 abb
 abb
+aSF
+aSF
 abb
 abb
 abb
+aSF
+aSF
 abb
 abb
 abb
@@ -67203,6 +70768,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67227,63 +70793,56 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsm
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
+bWd
+bWd
+bWd
+bWM
+bXb
+bWM
+bWW
+bWR
+bWJ
 aUD
+bWB
+bWg
+bVY
+bWe
+bVY
+bUa
+bUa
+bVP
+bTX
+bUa
+bUa
+bVf
+bUa
+bTU
+bTX
+bTU
+bUa
+bVa
+bUS
+bTX
+bTU
+bTU
+bTU
+bUc
+bUc
 biy
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-biy
+bTX
+bUa
+bUa
+bUa
+bUa
+bUc
+bUa
+bTX
 aUD
-abb
-abb
-abb
-abb
-abb
+bTY
+bTV
+bTS
+bTQ
+aVD
 abb
 abb
 abb
@@ -67345,13 +70904,22 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -67373,6 +70941,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67405,69 +70974,59 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-aLc
-biy
-biy
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-bly
-biy
-biy
-aLc
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+bXy
+bVX
+bXq
+bVX
+bVX
+bXc
+bWE
+bWM
+bWM
+bWL
+boz
+bTX
+bTX
+bTU
+bsp
+bVY
+bsp
+bVa
+bTX
+bTX
+bUa
+bsp
+bUa
+bsp
+bTU
+bTX
+bTU
+bUa
+bTU
+bTU
+bTX
+bTU
+bso
+bUa
+bUv
+bTU
+bTX
+bTX
+bTU
+bso
+bTU
+bUe
+bUa
+bTX
+bTX
+boz
+boz
+boz
+boz
+boz
+boz
+aSF
+aSF
 abb
 abb
 abb
@@ -67527,17 +71086,22 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
+aSF
 abb
 abb
+aSF
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67549,6 +71113,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67567,6 +71132,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67589,59 +71155,52 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
+bWc
+bXz
+bVX
+bVX
+bVX
+bWM
+bXc
+bVX
+bWX
+bWS
+bWM
+boz
+boz
+bTX
+bTX
+bUa
+bTU
+bTU
+bTU
+boz
+boz
+bUa
+bTU
+bUa
+bTU
+bTU
+boz
+bTU
+bTU
+bVb
+bTU
+boz
+bTU
+bUa
+bUc
+bUa
+bTU
 aLc
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
 aLc
-aLc
-biy
-biy
-bly
-bly
-bly
-bly
-aLc
-aLc
-bly
-bly
-bly
-bly
-bly
-aLc
-bly
-bly
-bly
-bly
-aLc
-bly
-bly
-bly
-bly
-bly
-aLc
-aLc
-bly
-bly
-bly
-bly
-bly
-biy
-aLc
+bTU
+bTU
+bUa
+bUa
+bTU
+bTX
+boz
 aLc
 abb
 abb
@@ -67691,9 +71250,9 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -67709,13 +71268,22 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -67725,6 +71293,9 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -67743,6 +71314,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67764,66 +71336,53 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-aLc
-aLc
-aLc
+bWI
+bWE
+bXA
+bWE
+bVX
+bWE
+bWM
+bXb
+bVX
+bWE
+bWM
+bWE
+boz
+boz
+boz
+bVM
+bTX
+bTX
+bTX
+bTX
+boz
+boz
+bVM
+biy
+bTX
+bTX
+bUd
+boz
+bTU
+bTU
+bVc
+bTU
+boz
+bTX
 biy
 biy
-biy
-biy
-biy
-aLc
-aLc
-biy
-biy
-biy
-biy
-biy
-aLc
-bly
-bly
-bly
-bly
-aLc
-biy
-biy
-biy
-biy
-biy
-aLc
-aLc
-biy
-biy
-biy
-biy
-biy
+bUx
+bUd
 aLc
 aLc
+bTX
+bTX
+biy
+bUf
+bUd
+boz
+boz
 aLc
 abb
 abb
@@ -67856,40 +71415,42 @@ abb
 abb
 abb
 abb
+caA
+cbk
+cbk
+cbk
+cbk
+cbk
+caA
+caA
+caA
+caA
+caA
+caA
+abb
+caA
+caA
+caA
 aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
+cbk
 abb
-aSL
-aSL
-aSL
-aSL
-aSL
+cbk
+caA
+caA
+caA
+caA
+cbk
+cbk
+cbk
+cbk
+cbk
+caA
 abb
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67922,9 +71483,11 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67933,6 +71496,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -67954,56 +71518,51 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-aLc
-aLc
-aLc
-aLc
+bWI
+bWE
+bXB
+bVX
+bVX
+bXo
+bWM
+bXb
+bWM
+bWM
+bWE
+bWN
+boz
+boz
+boz
+boz
+bVZ
+bVZ
 aUD
+boz
+boz
+boz
+boz
+bVH
+bUB
 aUD
+boz
+boz
+boz
+boz
+boz
+boz
+boz
+boz
 aUD
+bUB
+bUy
 aLc
 aLc
 aLc
 aLc
-aUD
-aUD
-aUD
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aUD
-aUD
-aUD
-aLc
-aLc
-aLc
-aLc
-aUD
-aUD
-aUD
-aLc
+bUg
+bUg
+bUg
+boz
 aLc
 aLc
 aLc
@@ -68037,42 +71596,43 @@ abb
 abb
 abb
 abb
-aSL
-aSL
+caA
+caA
 aMs
-pVd
-pVd
-pVd
+cbl
+cbl
+cbl
 aMr
-aSL
-aSL
-aLe
-aSS
-aLe
-aSL
-aSL
-aSL
-aLe
-aLe
-aSS
-aSL
-aSL
-aSL
-aLe
-aLe
-aSS
-aSL
-pVd
-pVd
-pVd
-pVd
-pVd
-aSL
-aSL
+caA
+caA
+cdt
+cdl
+cdc
+caA
+caA
+caA
+ccq
+ccq
+ccy
+caA
+caA
+caA
+ccv
+ccq
+ccm
+caA
+cbl
+cbl
+cbl
+cbl
+cbl
+caA
+caA
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68105,9 +71665,11 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68139,56 +71701,53 @@ abb
 abb
 abb
 abb
-abb
-abb
+bWl
+bXB
+bVX
+bWE
+bXp
+bWE
+bWM
+bWM
+bWE
+bWN
+bWN
+boz
+boz
+boz
+bTX
+bTX
+biy
+bTX
+bTX
+boz
+boz
+bUx
+biy
+biy
+biy
+bTX
+boz
+bTX
+bTX
+bTX
+bTX
+boz
+bTX
+bTX
+biy
+bTX
+bTX
 aLc
+aLc
+biy
+bUi
+biy
+bTX
 bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-abb
-abb
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -68219,42 +71778,43 @@ abb
 abb
 abb
 abb
-aSL
-aLd
-aLz
-aLt
-aLt
-aLt
-aLq
-aLd
+caA
+ccd
+cej
+cbw
+cdS
+cdI
+cbm
+cdz
+cdw
+ccQ
+ccQ
+ccQ
+cda
+cbe
+ccV
+ccS
+ccQ
+aMn
+ccL
+cbO
 aMp
 aMn
 aMn
 aMn
 aMl
-aLd
-aMp
-aMn
-aMn
-aMn
-aMl
-aLd
-aMp
-aMn
-aMn
-aMn
-aMl
-aLz
-aLt
-aLt
-aLt
-aLq
-aLd
-aSL
+cbZ
+cbw
+cbw
+cbw
+cbm
+cbe
+caA
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68277,15 +71837,21 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68317,60 +71883,53 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
+bWx
+bXz
+bWE
+bXr
+bVX
+bVX
+bXd
+bWM
+bWE
+bWN
+bWN
+bWE
+boz
+bTX
+bTX
+bVI
+bVN
+bVq
+biy
+boz
+boz
+biy
+bVI
+bTT
+bVv
+bTX
+boz
+bTX
+bUF
+bUt
+bTX
+boz
+bTX
+bUF
+bUC
+bUt
+bTX
 aLc
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
+bUm
+bUj
+bUj
+bTP
+aVD
 abb
 abb
+aSF
+aSF
 abb
 abb
 abb
@@ -68401,38 +71960,38 @@ abb
 abb
 abb
 abb
-aSL
-aLd
-aLy
-aLw
-aLd
-aLu
-aLs
-aLd
-aLk
-aLk
-aLk
-aLk
-aLd
-aLd
-aLd
-aLk
-aLk
-aLk
-aLd
-aLd
-aLd
-aLk
-aLk
-aLk
-aLd
-aLx
-aLd
-aLd
-aLd
-aLr
-aLd
-aSL
+caA
+ceo
+ced
+ceb
+cdT
+cdJ
+cbo
+cdA
+cbL
+caM
+cdm
+cbs
+cbf
+ccE
+caT
+cbs
+caM
+cbs
+ccb
+ccE
+caT
+caM
+ccr
+caM
+caT
+cca
+cbP
+cbI
+caT
+cbn
+cbf
+caA
 abb
 abb
 abb
@@ -68441,10 +72000,18 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -68466,6 +72033,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68498,66 +72066,57 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+bXC
+bVX
+bWE
+bWE
+bVX
+bXe
+bWM
+bWE
+bWG
+bWG
+bWF
+aUD
+bWt
+bWm
+bVK
+bUa
+bVV
+bVv
+bTX
+bTX
+bVI
+bVK
+bUa
+bVB
+bVq
+bTX
+bUF
+bUG
+bVd
+bUt
+bTX
+bUF
+bUG
+bTU
+bUz
+bUt
+bTX
+bUn
+bUl
+bTP
+aVD
+abb
+abb
+abb
+abb
+aSF
+abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -68583,38 +72142,38 @@ abb
 abb
 abb
 abb
-aSL
-aLd
-aLd
-aLx
-aLk
-aLr
-aLd
-aLd
-aLk
-aLk
-aLk
-aLk
-aLd
-aLd
-aLd
-aLk
-aLk
-aLk
-aLd
-aLd
-aLd
-aLk
-aLk
-aLk
-aLd
-aLy
-aLw
-aLd
-aLu
-aLs
-aLd
-aSL
+caA
+cep
+cbf
+cec
+cbs
+cdK
+cbf
+cbf
+cbs
+caM
+cdn
+cdd
+cbf
+ccE
+cbf
+caM
+caM
+caM
+caT
+ccE
+ccC
+ccw
+caM
+caM
+caT
+cbS
+cbQ
+caT
+cbx
+cbo
+cbf
+caA
 abb
 abb
 abb
@@ -68623,14 +72182,18 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
+aSF
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68648,6 +72211,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68682,57 +72246,52 @@ abb
 abb
 abb
 abb
+aSF
+abb
+abb
+bWd
+bVX
+bWE
+bWE
+bXf
+bWM
+bWE
+bVX
+bVX
+bWG
+aUD
+bWu
+bWo
+bUa
+bWa
+bUa
+bTW
+bTT
+bVN
+bVK
+bUa
+bVE
+bVb
+bVs
+bUa
+bVl
+bVi
+bVe
+bUT
+bUN
+bUL
+bUH
+bUa
+bUA
+bUu
+bUa
+bUj
+bTP
+bTP
 abb
 abb
 abb
 abb
-abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsm
-bsl
-bsm
-bsl
 abb
 abb
 abb
@@ -68765,38 +72324,38 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-aLd
-aLy
-aLv
-aLs
-aLd
-aLd
+caA
+caA
+cek
+ced
+cdU
+cbo
+ccC
+cdB
+aMq
+cdu
+cdo
+cde
+aMm
+ccZ
+aMq
+aMo
+ccN
+ccN
+aMm
+ccF
 aMq
 aMo
 aMo
 aMo
 aMm
-aLd
-aMq
-aMo
-aMo
-aMo
-aMm
-aLd
-aMq
-aMo
-aMo
-aMo
-aMm
-aLd
-aLx
-aLk
-aLr
-aLd
-aLd
-aSL
+ccb
+cbR
+cbJ
+cby
+caT
+cbg
+caA
 abb
 abb
 abb
@@ -68805,13 +72364,22 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68820,12 +72388,12 @@ abb
 abb
 abb
 abb
-aSL
 abb
 abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -68860,61 +72428,52 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
+bWT
+bVX
+bVX
+bWE
+bXb
+bWE
+bWE
+bWT
+bWO
+bWG
+aUD
+biy
+bWo
+bUR
+bTU
+bVW
+bUa
+bUa
+bUa
+bTU
+bVL
+bTU
+bUa
+bVt
+bTU
+bVl
+bUa
+bUD
+bUU
+bUa
+bTU
+bUa
+bUD
+bUa
+bUu
+bTU
+aVD
 bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
+aVD
+aVC
+abb
+abb
+abb
 abb
 abb
 abb
@@ -68948,42 +72507,42 @@ abb
 abb
 abb
 abb
-aSL
-aLd
-aLd
-aLd
-aLd
-aLd
-aSL
-aSL
-aLG
-aLG
-aLG
-aSL
-aSL
-aSL
-aLG
-aLG
-aLG
-aSL
-aSL
-aSL
-aLG
-aLG
-aLG
-aSL
-aLd
-aLy
-aLv
-aLs
-aLd
-aLd
-aSL
+caA
+ccd
+cee
+cdV
+cdL
+cbp
+caA
+caA
+caU
+caU
+cdf
+caA
+caA
+caA
+caU
+ccR
+ccO
+caA
+caA
+caA
+caU
+caU
+caU
+caA
+ccc
+cbS
+cbK
+cbz
+cbf
+cbf
+caA
 abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
@@ -69002,7 +72561,7 @@ abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
@@ -69016,12 +72575,17 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -69046,62 +72610,57 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-aLc
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-abb
-abb
-abb
-abb
-abb
+aSF
+abb
+abb
+bVX
+bVX
+bWE
+bWM
+bWM
+bVX
+bWE
+bWE
+bWE
+bWG
+boz
+biy
+bWp
+bTU
+bUa
+bTU
+bVT
+bVQ
+bTX
+bUV
+bTU
+bUa
+bVC
+bVu
+bVp
+bVm
+bVj
+bVf
+bUV
+bTX
+bTU
+bUI
+bTU
+bUr
+bUr
+bUq
+aVD
+aVD
+aVD
+aVD
+abb
+abb
+abb
+abb
+aSF
+abb
+aSF
+aSF
 abb
 abb
 abb
@@ -69130,42 +72689,42 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-aLd
-aLd
-aLd
-aSL
+caA
+caA
+cdM
+cdW
+cdM
+caA
 abb
-aSL
-tro
-aSS
-tro
-aSL
+caA
+caV
+cbE
+cbE
+caA
 abb
-aSL
-tro
-aSS
-tro
-aSL
+caA
+cbE
+cbE
+caU
+caA
 abb
-aSL
-tro
-aSS
-tro
-aSL
-aLd
-aLd
-aLd
-aLd
-aLd
-aSL
-aSL
+caA
+ccx
+cbE
+cbE
+caA
+ccd
+caT
+cbA
+cbA
+cbp
+caA
+caA
 abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
@@ -69184,7 +72743,7 @@ abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
@@ -69198,6 +72757,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -69232,55 +72792,54 @@ abb
 abb
 abb
 abb
+aSF
 abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
 abb
+bXi
+bXs
+bWM
+bWM
+bWE
+bVX
+bWE
+bWM
+bWE
+bWE
+boz
+bWv
+bWo
+bUa
+bUa
+bUa
+bTX
+boz
+boz
+bTX
+bUa
+bUa
+bVw
+bTX
+boz
+bTX
+bVk
+bUa
+bTX
+boz
+bTX
+bTU
+bTP
+bTP
+bTP
+bUr
 abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -69311,43 +72870,43 @@ abb
 abb
 abb
 abb
-abb
-aSL
-aLG
-aLG
-aLG
-aLG
-aLG
-aSL
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aSL
-aSS
-aSS
-tro
-aSL
-aSL
+caA
+caA
+cel
+cdX
+cdX
+cdN
+cdF
+caA
+caA
+ccn
+ccn
+ccn
+caA
+caA
+caA
+ccn
+ccn
+ccn
+caA
+caA
+caA
+ccy
+caO
+cbE
+caA
+caA
 aLS
-aLk
-aLZ
-aSL
-aSL
+cbL
+cbB
+caA
+caA
 abb
 abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
@@ -69366,7 +72925,7 @@ abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
@@ -69380,6 +72939,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -69415,54 +72975,53 @@ abb
 abb
 abb
 abb
-aLc
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
 abb
+bVX
+bVX
+bWE
+bWM
+bWM
+bWS
+bWE
+bWE
+bWM
+bWM
+bWE
+boz
+bTX
+bWo
+bUa
+bUa
+bTU
+bTX
+boz
+boz
+bTX
+bUa
+bTU
+bVw
+bTX
+boz
+bTX
+bVl
+bUa
+biy
+boz
+bTX
+bTU
+bUr
+bTP
+bTP
 abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -69494,61 +73053,61 @@ abb
 abb
 abb
 abb
-aSS
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-aSS
-aMk
+ceq
+caU
+caU
+ccT
+cbE
+cbE
+cdC
+cdx
+caS
+cbG
+cdg
+caV
+caV
+caS
+caS
+cbh
+caS
+caS
+ccG
+ccD
+ccn
+ccs
+cbE
+cbE
+cbE
 aMi
-aLk
+caM
 aMf
-aSL
+caA
 abb
 abb
 abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
-aSL
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
+aSF
 abb
-aSS
+bZN
 abb
 abb
-aSL
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
 abb
@@ -69562,6 +73121,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -69596,55 +73156,54 @@ abb
 abb
 abb
 abb
+bWI
+bWE
+bWE
+bVX
+bXj
+bXj
+bXj
+bXg
+bWM
+bWE
+bWM
+bWM
+bWE
+boz
+bTX
+bWq
+bVf
+bUa
+bUa
+bVc
+bUo
+bTX
+bTU
+bUa
+bUa
+bTW
+bVv
+bTX
+bUF
+bUL
+bTU
+bUa
+bUO
+bTU
+bTU
+aVD
+bTP
+aVD
 abb
-aLc
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsm
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
 abb
 abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -69675,69 +73234,62 @@ abb
 abb
 abb
 abb
-aSS
-aSS
-tro
-tro
-aSS
-aSS
-tro
-aSS
-tro
-tro
-aSS
-tro
-aSS
-aSS
-tro
-tro
-aSS
-tro
-aSS
-tro
-tro
-aSS
-aSS
-tro
-aSS
-aSS
+ces
+caO
+ccn
+ccn
+cdO
+cdO
+ccn
+caO
+cdx
+caV
+ccz
+caV
+caO
+caO
+caS
+caV
+caO
+caV
+caO
+cbh
+caV
+caO
+ccp
+caV
+ccj
+cbE
 aMi
-aLk
+caM
 aMf
-aSL
+caA
 abb
 abb
 abb
 abb
 abb
 abb
-aSL
+aSF
 abb
 abb
-aSS
-aSL
+bYJ
+bYb
 abb
 abb
-aSL
+aSF
 abb
-aSS
-tro
+bXY
+bZr
 abb
-aSL
-abb
-abb
-aSL
-abb
-tro
-abb
-aSL
+aSF
 abb
 abb
+aSF
 abb
+bZr
 abb
-abb
-abb
-abb
+aSF
 abb
 abb
 abb
@@ -69768,63 +73320,70 @@ abb
 abb
 abb
 abb
+aSF
+aSF
+aSF
+aSF
+aSF
+abb
+abb
+abb
+aSF
+aSF
+aSF
+aSF
+abb
+abb
+aSF
+aSF
+aSF
+bWI
+bWI
+bWE
+bWE
+bXt
+bVX
+bVX
+bVX
+bWE
+bWE
+bWE
+bWM
+bWE
+bWG
+aUD
+bTX
+bWq
+bTU
+bUa
+bUa
+bUa
+bVR
+bUc
+bVf
+bUa
+bVA
+bUa
+bVw
+bTU
+bVl
+bUa
+bUa
+bUW
+bUa
+bUM
+bUJ
+bUE
+aVD
+aVD
+aVD
+aVD
 abb
 abb
 abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-aLc
-aLc
-bsl
-bsl
-bsm
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsm
-bsm
-bsl
-bsm
-bsl
-bsl
 abb
 abb
 abb
@@ -69857,69 +73416,62 @@ abb
 abb
 abb
 abb
-tro
-tro
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-aSS
-aSS
-tro
-tro
-tro
-aSS
-tro
-aSS
-aMk
+cet
+caV
+cem
+caS
+caO
+cdP
+caS
+cdD
+cdy
+caV
+cdp
+caS
+cdb
+caS
+caS
+ccT
+caV
+caO
+caO
+caS
+caS
+caS
+ccp
+cbG
+cck
+caU
 aMi
-aLd
+caT
 aMf
-aSL
+caA
 abb
 abb
 abb
 abb
 abb
 abb
-aSL
-aSL
-aSS
-aSS
-aSL
-aSL
-aSL
-aSL
+aSF
+bZM
+bZr
+bYz
+bYb
+bYb
+bYb
+aSF
 abb
-tro
-tro
-tro
-aSL
-aSL
-aSL
-aSL
-abb
-tro
-tro
-aSL
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+bYa
+bXY
+bXY
+bYb
+bYb
+bYb
+bYb
+bZr
+bZs
+bXZ
+bYb
 abb
 abb
 abb
@@ -69950,6 +73502,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -69960,53 +73513,59 @@ abb
 abb
 abb
 abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
+abb
+abb
+abb
+abb
+bXW
+bXT
+bWd
+bVX
+bWE
+bXd
+bXb
+bWE
+bWG
+bWG
+bWE
+bWE
+bWM
+bWM
+bWE
+bWG
+aUD
+bWt
+bWr
+bWg
+bUa
+bUa
+bUa
+bUa
+bVO
+bUa
+bTU
+bTU
+bUa
+bVs
+bTU
+bVl
+bVb
+bUa
+bUR
+bUD
+bTP
+bTP
+aVD
+bTP
 bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsm
-bsm
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
+aVD
+aVD
+aVD
+abb
+abb
+abb
+abb
+abb
 abb
 abb
 abb
@@ -70039,69 +73598,62 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-tro
-tro
-tro
-tro
-aSL
-aSL
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aSL
-tro
-aSS
-tro
-aSL
-aSL
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aMi
-aLd
+aSF
+caA
+cen
+cef
+cdY
+cdQ
+caA
+caA
+caA
+cdq
+cdq
+cdh
+caA
+caA
+caA
+caV
+caO
+ccx
+caA
+caA
+caA
+caS
+caV
+ccn
+caA
+caA
+cbT
+cbM
 aMf
-aSL
+caA
 abb
 abb
 abb
 abb
 abb
 abb
-aSL
-aSS
-aSS
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-aSS
-tro
-tro
-tro
-aSS
-aSL
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+bYb
+cap
+bXY
+cag
+cad
+bYa
+bZY
+bZW
+bZR
+bZp
+bYa
+bYa
+bYa
+bZB
+bZy
+bYB
+bZw
+bYB
+bYw
+bYb
 abb
 abb
 abb
@@ -70132,6 +73684,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -70142,58 +73695,64 @@ abb
 abb
 abb
 abb
-aLc
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsm
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
+abb
+abb
+abb
+bXX
+bXX
+bXU
+bWk
+bWb
+bWE
+bWE
+bWG
+bWE
+bWG
+bWG
+bWE
+bXa
+bWY
+bWU
+bWG
+bWG
+bUr
+bWt
+bWq
+bWh
+bUa
+bVf
+bUa
+bVO
+bUa
+bUa
+bTU
+bTU
+bTP
+bVx
+bTU
+bVk
+bUa
+bTU
+bUX
+bTU
+abb
+abb
+abb
+abb
+aVD
+aVC
+aVD
+aVD
 abb
 abb
 abb
 abb
 abb
+abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -70221,67 +73780,62 @@ abb
 abb
 abb
 abb
-aSL
+aSF
 abb
-aSL
-tro
-aSS
-tro
-aSL
+caA
+ceg
+cba
+cbn
+caA
 abb
-aSL
-tro
-tro
-tro
-aSL
+caA
+cbE
+cbE
+cbE
+caA
 abb
-aSL
-tro
-aSS
-tro
-aSL
+caA
+caV
+caO
+ccx
+caA
 abb
-aSL
-tro
-aSS
-tro
-aSL
+caA
+caS
+caO
+caV
+caA
 aMk
-aMi
-aLd
+cbU
+caT
 aMf
-aSL
-aSL
-aSL
+caA
+caA
+caA
 abb
 abb
 abb
 abb
-aSL
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-aSS
-tro
-tro
-tro
-tro
-aSS
-tro
-tro
-aSL
-abb
-abb
-abb
-abb
-abb
+bYb
+cap
+can
+cah
+bYa
+bYa
+bZz
+bYB
+bYa
+bZO
+bYa
+bXY
+bYa
+bYB
+bZz
+bYB
+bXY
+bZt
+bZo
+bYb
 abb
 abb
 abb
@@ -70312,6 +73866,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -70324,55 +73879,59 @@ abb
 abb
 abb
 abb
-aLc
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
 abb
 abb
+abb
+bXV
+bXR
+bXO
+bWb
+bWE
+bWN
+bWN
+bWE
+bXk
+bWE
+bWM
+bWE
+bWV
+bWN
+bWE
+bUj
+bWw
+bWs
+bWi
+bTU
+bTU
+bTU
+bUa
+bUD
+bUa
+bTU
+bVF
+bTP
+bVy
+biy
+bVn
+bUY
+bUY
+bUY
+bUP
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -70403,65 +73962,62 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-tro
-tro
-aSS
-aSS
-aSL
-aSL
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aSL
-tro
-aSS
-tro
-tro
-aMk
-aMi
-aLk
-aMf
-aSS
-tro
-aSL
-aSL
-aSL
+aSF
+caA
+caV
+ceh
+cdZ
+caO
+caA
+caA
+caA
+ccn
+ccn
+ccn
+caA
+caA
+caA
+caV
+caO
+caV
+caA
+caA
+caA
+caS
+caO
+cco
+ccl
+cce
+cbU
+caM
+cbC
+caO
+caV
+caA
+caA
+caA
 abb
 abb
-aSL
-tro
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-aSS
-tro
-tro
-aSS
-tro
-aSS
-tro
-aSL
-abb
-abb
-abb
+bYb
+bYB
+bYa
+bYB
+bXY
+bYa
+bZZ
+bYB
+bYB
+bYB
+bYa
+bYw
+bXY
+bZC
+bZA
+bXY
+bYa
+bXY
+bZp
+bYb
 abb
 abb
 abb
@@ -70492,6 +74048,56 @@ abb
 abb
 abb
 abb
+aSF
+abb
+abb
+abb
+aSF
+aSF
+aSF
+abb
+abb
+abb
+abb
+abb
+aSF
+aSF
+aSF
+aSF
+bXS
+bXS
+bXj
+bXH
+bXj
+bXu
+bXp
+bWE
+bXl
+bVX
+bWE
+bWZ
+bWE
+bWN
+bWE
+bWC
+bUr
+bTP
+bTR
+bUr
+bTP
+bTP
+aVD
+bTP
+aVD
+aVD
+bTR
+aVD
+bTP
+bUr
+biy
+biy
+biy
+bTX
 abb
 abb
 abb
@@ -70505,57 +74111,10 @@ abb
 abb
 abb
 abb
-aLc
-aLc
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsm
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-aSL
-aSL
-aSL
+abb
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -70587,63 +74146,60 @@ abb
 abb
 abb
 abb
-aSS
-tro
-tro
-tro
-aSS
-tro
-tro
-aSS
-aSS
-aSS
-tro
-tro
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-aMk
-aMi
-aLk
-aMf
+caO
+caS
+caS
+caS
+cdG
+cdE
+caV
+ccz
+caO
+caO
+caV
+caV
+ccW
+cbG
+caO
+caV
+cbE
+ccH
+cbE
+caV
+cbG
+ccp
+caV
+ccf
+cbV
+caM
+cbC
 aMc
-tro
-tro
-tro
-aSL
+cbh
+caS
+caS
+caA
 abb
 abb
-aSL
-aSS
-tro
-tro
-aSL
-aSL
-aSL
-aSL
-tro
-tro
-tro
-tro
-aSL
-aSL
-aSL
-aSL
-tro
-tro
-tro
-aSL
-abb
-abb
-abb
+bYb
+bYw
+bYB
+bYa
+bYb
+bYb
+bYb
+bYb
+bYB
+bYB
+aLe
+aLe
+bYb
+bYb
+bYb
+bYb
+bYa
+bYB
+bYB
+bYb
 abb
 abb
 abb
@@ -70678,6 +74234,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -70687,57 +74244,59 @@ abb
 abb
 abb
 abb
-aLc
+abb
+abb
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
+bWE
+bWE
+bWE
+bWM
+bWb
+bWE
+bXk
+bVX
+bWE
+bWM
+bWE
 abb
 abb
 abb
-bsl
+bTP
+bTP
+bTP
+bTP
 bsr
-bsl
-bsr
-bsr
+bVU
+aLc
+aLc
+aLc
+aUD
+aVC
+bVD
 aLc
 aLc
 aLc
 aLc
 aLc
 aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aSL
+aSF
+aSF
 abb
-aSL
+abb
+abb
+aSF
+aSF
+aSF
+aSF
+abb
+abb
+abb
+aSF
+aSF
+aSF
+abb
+aSF
 abb
 abb
 abb
@@ -70769,62 +74328,60 @@ abb
 abb
 abb
 abb
+caO
+cei
+cbG
+caS
+cdH
+caV
+caV
+caV
+caO
+caO
+caO
+caO
+ccX
+caV
+caO
+caO
+caO
+ccI
+caO
+ccz
+cbG
+ccp
+caV
+ccg
+cbU
+caM
+cbC
+cbq
+caA
+caO
+caS
+caA
 abb
-aSS
-tro
-tro
-aSS
-tro
-tro
-tro
-aSS
-aSS
-aSS
-aSS
-tro
-tro
-aSS
-aSS
-aSS
-aSS
-aSS
-aSS
-tro
-aSS
-tro
-aMk
-aMi
-aLk
-aMf
-aSS
-aSL
-aSS
-tro
-aSL
-abb
-aSL
-aSL
-tro
-tro
-tro
-aSL
-abb
-abb
-aSL
-tro
-tro
-aSS
-aSS
-aSL
+bYb
+bYb
+bYB
+bYB
+bYa
+bYb
 abb
 abb
-aSL
-aSS
-tro
-tro
-aSL
+bYb
+bYB
+bYa
+bZv
+bZH
+bYb
 abb
 abb
+bYb
+bXY
+bZq
+bZq
+bYb
 abb
 abb
 abb
@@ -70838,11 +74395,11 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
-abb
-abb
+aSF
 abb
 abb
 abb
@@ -70859,6 +74416,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -70869,39 +74427,43 @@ abb
 abb
 abb
 abb
-aLc
+abb
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-bsm
-bsl
-bsm
-bsl
-bsl
-bsl
+bXJ
+bXI
+bWE
+bWM
+bWb
+bWE
+bXm
+bWE
+bWM
+bWM
 abb
 abb
 abb
 abb
 abb
-bsl
-bsr
-bsr
-bsr
-abb
-abb
-abb
-abb
-abb
-abb
+bWd
+bVX
+bWb
+bVX
 abb
 abb
 abb
 abb
 abb
 abb
+aVD
+bTQ
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -70914,12 +74476,9 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -70950,69 +74509,79 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-aSS
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-aSS
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aMk
-aMi
-aLk
-aMf
-aSS
-aSL
-aSL
-aSS
-aSL
-aSL
-aSL
-aSS
-aLe
-aLe
-aSS
-aSL
-aSL
-aSL
-aSL
+cer
+caz
+caz
+caO
+caV
+caV
+caO
+caV
+caV
+caV
+caV
+caV
+ccz
+ccY
+ccU
+caS
+caS
+ccM
+ccJ
+caS
+caS
+caS
+cco
+caV
+cch
+cbU
+caN
+cbC
+cbr
+caA
+caA
+caO
+caA
+caA
+bYb
+bXY
+bYx
+bYx
+cai
+bYb
+bYb
+bYb
+bYb
+bZS
+bZP
 aLN
-aLe
 aLN
-aLN
-aSL
-aSL
-aSL
-aSL
-aLe
-aLe
-aLe
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
+bYb
+bYb
+bYb
+bYb
+bYx
+bYx
+bYx
+bYb
+bYb
+bYb
+bYV
+bYV
+bYV
+bYV
+bYV
+bYb
+abb
+abb
+abb
+abb
+abb
+aSF
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -71041,37 +74610,27 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsr
-bsr
+bWE
+bXJ
+bXD
+bVX
+bWE
+bWE
+bXk
+bWM
+bWE
+bVX
+bVX
+bWP
+bWd
 abb
-abb
-abb
-bsr
-bsr
-bsr
-bsr
-bsr
+bWx
+bWd
+bWj
+bWb
+bVX
 abb
 abb
 abb
@@ -71079,7 +74638,7 @@ iFy
 iFy
 abb
 abb
-abb
+bVz
 abb
 abb
 abb
@@ -71131,34 +74690,34 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-aSL
-abb
-abb
-aSS
-aSL
-aSL
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aSL
-aSS
-tro
-tro
-aSL
-aSL
-aSL
-tro
-tro
-aSL
-aSL
-aSL
+aSF
+caA
+caA
+caz
+cea
+ccz
+caA
+caA
+caA
+caV
+caV
+cbG
+caA
+caA
+caA
+ccK
+caV
+caS
+caA
+caA
+caA
+caV
+caV
+caA
+caA
+caA
 aLR
-aLd
+caT
 aLY
 aLV
 aLR
@@ -71170,57 +74729,46 @@ aLK
 aLD
 aLD
 aLD
-aLD
-aLM
-aLd
-aLd
+caj
+cae
+bYv
+bYv
 aLK
-aLD
-aLD
-aLD
-aLD
+bZI
+bZI
+bZI
+bZI
 aLM
-aLd
-aLd
+bZD
+bYv
 aLK
 aLD
 aLD
 aLD
 aLD
 aLA
-aSL
+bYb
 pVd
 pVd
 pVd
 pVd
 pVd
-aSL
-aSL
+bYb
+bYb
 abb
 abb
 abb
 abb
+aSF
 abb
+bYD
+bYy
+aSF
 abb
-abb
-abb
-abb
-abb
-aSL
-aSL
-aSL
-aSL
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+bYb
+bYb
+bYb
+bYb
 abb
 abb
 abb
@@ -71233,26 +74781,37 @@ abb
 abb
 abb
 abb
-aLc
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+bXS
 bss
-bsl
-bsm
-bsm
-bsl
-bsl
-bsm
-bsl
-bsl
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
+bWE
+bWb
+bVX
+bWE
+bWM
+bVX
+bWE
+bWM
+bWb
+bWb
+bWj
+bWj
+bWd
+bWd
+bWd
+bWj
+bWk
+bWc
 abb
 abb
 abb
@@ -71268,7 +74827,7 @@ abb
 abb
 abb
 abb
-abb
+aSF
 abb
 abb
 abb
@@ -71313,91 +74872,86 @@ abb
 abb
 abb
 abb
-aSL
+aSF
 abb
-aSL
+caA
+cbY
 abb
 abb
+aSF
 abb
-aSL
+aSF
+ccA
+cdr
+cdi
+caA
 abb
-aSL
+caA
+caO
+caV
+caS
+caA
 abb
-tro
-tro
-aSL
+caA
+caV
+caO
+caA
 abb
-aSL
-aSS
-tro
-tro
-aSL
-abb
-aSL
-tro
-aSS
-aSL
-abb
-aSL
-aLd
-aLd
-aLd
+caA
+cbW
+cbN
+caT
+cbs
+cbf
+caT
+caT
+caM
+caC
 aLk
-aLd
-aLd
-aLd
-aLk
-bgP
-aLk
-aLd
-aLd
+cas
+bZE
 aLk
 aLk
 aLk
-aLd
-aLd
+bYj
+caa
+bZK
+bZK
+aLk
+bZK
 aLk
 aLk
-aLk
-aLk
-aLk
-aLk
-aLd
-aLd
+bZE
+bYj
 aLk
 aLk
 aLk
 aLk
 aLk
 aLB
-aLd
+bYR
 aLz
 aLt
 aLt
 aLt
 aLq
-aLd
-aSL
+bYR
+bYb
 abb
 abb
 abb
 abb
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aLd
-aLd
-aSL
-aSL
-abb
-abb
-abb
-abb
-abb
+bYb
+bYJ
+bYE
+bYz
+bYb
+bYb
+bYb
+bYq
+bYh
+bYb
+bYb
 abb
 abb
 abb
@@ -71415,26 +74969,31 @@ abb
 abb
 abb
 abb
-aLc
-aLc
-bsm
-bsl
-bsl
-bsl
-bsl
-bsl
-bsl
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
+abb
+abb
+abb
+abb
+abb
+bXS
+bXS
+bVX
+bXK
+bXv
+bXv
+bWL
+bWE
+bWE
+bVX
+bVX
+bWj
+bWk
+bWD
+bWD
+bWD
+bWj
+bWj
+bWd
+bWd
 abb
 abb
 abb
@@ -71495,87 +75054,87 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
-aSL
-aSL
-aSL
-abb
-abb
-abb
-aSL
-aSL
-aSL
-tro
-tro
-aSS
-aSL
-aSL
-aSL
-tro
-aSS
-aSL
-aSL
-aSL
-aLS
-aLd
-aLd
-aLk
-aLd
-aLd
-aLd
-aLk
-bgP
-aLk
-aLd
-aLd
-aLk
-aLk
-aLk
-aLd
-aLd
+aSF
+aSF
+aSF
+cds
+cds
+cdj
+caA
+caA
+caA
+caV
+caV
+caO
+caA
+caA
+caA
+caV
+caO
+caA
+caA
+caA
+cbX
+cbO
+caT
+cbs
+caT
+caT
+caT
+caN
+caC
+bYH
+bYI
+bZE
 aLk
 aLk
+bYX
+cab
+cab
+aLk
+bZT
+bYX
+aLk
+bYQ
+bYX
+bZF
+bYj
 aLk
 aLk
-aLk
-aLk
-aLd
-aLd
-aLk
-aLk
-aLd
-aLd
-aLd
+bYj
+bYj
+bYv
 aLB
-aLd
+bYj
 aLx
-aLd
-aLd
-aLd
+bYZ
+bYm
+bYZ
 aLr
-aLd
-aSL
+bYS
+bYb
 abb
 abb
 abb
 abb
-aSL
+bYb
+bYK
+bYF
 tro
-tro
-tro
-tro
-aSS
-bgP
-aLd
-aLd
-aLd
-aSL
-aSL
+aLe
+aLe
+bYc
+bYj
+bYm
+bYh
+bYb
+bYb
 abb
 abb
 abb
@@ -71597,25 +75156,25 @@ abb
 abb
 abb
 abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-bsl
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
+bWE
+bWM
+bWM
+bWS
+bWE
+bVX
+bVX
+bXh
+bWd
+bWc
+bWj
+bWj
+bWd
+bWd
+bWy
+bWd
+bWl
 abb
 abb
 abb
@@ -71686,78 +75245,88 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-aSS
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aMk
+cdv
+caz
+caz
+caO
+caO
+ccz
+caO
+cba
+ccP
+caS
+cbh
+caS
+caS
+cct
+cbE
+caS
+cci
 aMj
-aLW
-aLW
-aLW
+cbD
+cbD
+cbt
 aLS
 aLZ
 aLW
 aLS
-bgP
+caD
+cav
+aLE
+bZu
+bZu
+bZu
+bZG
+cac
+bYI
+bZX
+bZL
+bZQ
+bZL
+aLE
+bZG
+bYI
+bYI
 aLL
-aLE
-aLE
-aLE
-aLE
 aLH
-aLd
-aLd
-aLL
-aLE
-aLE
-aLE
-aLE
-aLH
-aLd
-aLd
-aLL
-aLH
-aLd
-aLd
-aLd
+bYj
+bYj
+bYj
 aLB
-aLd
+bYj
 aLy
 aLw
-aLd
+bZd
 aLu
 aLs
+bYT
+bYb
+abb
+abb
+abb
+abb
+bYb
+bXY
+bYG
+bYA
+bXY
+aLe
+bYc
+bYr
+bYo
+bYi
 aLd
-aSL
+bYb
 abb
 abb
 abb
 abb
-aSL
-aSS
-tro
-tro
-aSS
-aSS
-bgP
-aLd
-aLd
-aLd
-aLd
-aSL
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -71769,34 +75338,24 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-bsl
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
-bsr
+bWE
+bXL
+bWM
+bWE
+bWQ
+abb
+bVX
+bVX
+abb
+abb
+bWd
+bWd
+bWH
+bWd
+bWd
+bWj
 abb
 abb
 abb
@@ -71869,81 +75428,77 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-aSS
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-aSS
-aSS
-aLG
+caz
+caz
+caz
+caz
+caz
+caO
+caO
+caV
+caS
+caS
+caS
+caS
+cct
+cbE
+caO
+caV
+cbE
+cbE
+cbE
 aMd
-aSL
-aSL
+caA
+caA
+caU
+caA
+caA
+bYb
 aLG
-aSL
-aSL
-aSL
-aLG
-aLG
-aLG
-aLG
-aSL
-aSL
-aSL
-aSL
+aLe
+aLe
+aLe
+bYb
+bYb
+bYb
+bYb
+bZU
+bZv
 aLG
 aLO
-aLG
-aLO
-aSL
-aSL
-aSL
-aSL
+bYb
+bYb
+bYb
+bYb
 aLI
-aLd
-aLd
-aLd
+bYv
+bZi
+bYI
 aLB
-aLd
-aLd
+bYj
+bYj
 aLx
-aLk
-aLr
-aLd
-aLd
-aSL
-aSL
+bZe
+bZa
+bYv
+bYv
+bYb
+bYb
 abb
 abb
 abb
-aSL
-aSS
-tro
-tro
-aSS
-tro
-aSL
-aLd
-aLd
-aLd
-aLd
-aSL
-abb
-abb
-abb
-abb
+bYb
+bYL
+bYh
+bYB
+bXY
+aLe
+bYb
+bYs
+bYj
+bYj
+bYd
+bYb
 abb
 abb
 abb
@@ -71953,6 +75508,7 @@ abb
 abb
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -71961,13 +75517,16 @@ abb
 abb
 abb
 abb
-aLc
+abb
+abb
+abb
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-aLc
+bWS
+bWM
+bWE
+bWE
+abb
 abb
 abb
 abb
@@ -72052,76 +75611,76 @@ abb
 abb
 abb
 abb
+cdk
+caz
+caz
+caz
+caz
+caz
+caV
+caO
+ccK
+caV
+caO
+cct
+cbE
+caU
+caV
+caV
+caS
+cbh
+caS
+caA
+caS
+caV
+caA
+abb
+bYb
+bYb
+aLe
+aLe
+aLe
+bYb
 abb
 abb
+bYb
+aLe
+aLe
+aLe
+aLe
+bYb
 abb
 abb
-abb
-abb
-tro
-aSS
-aSS
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aSL
-tro
-tro
-aSL
-abb
-aSL
-aSL
-tro
-tro
-aSS
-aSL
-abb
-abb
-aSL
-tro
-tro
-tro
-tro
-aSL
-abb
-abb
-aSL
+bYb
 aLJ
-aLE
+bZu
 aLE
 aLE
 aLC
-aLd
-aLd
+bYh
+bYr
 aLy
 aLv
-aLs
-aLd
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-tro
-aSS
-tro
-aSS
-tro
-aSL
-aSL
-bgP
-bgP
-aSL
-aSL
+bZb
+bYh
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYM
+bXY
+bYa
+bYw
+aLe
+bYb
+bYb
+bYc
+bYc
+bYb
+bYb
 abb
 abb
 abb
@@ -72143,13 +75702,13 @@ abb
 abb
 abb
 abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-aLc
+bWE
+bWM
+bWE
+bXw
+bWI
 abb
 iFy
 iFy
@@ -72223,86 +75782,93 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
-aSL
-aSL
-aSL
+caA
+caA
+caA
 abb
 abb
 abb
-aSL
-aSL
-aSL
+caA
+caA
+caA
+ccA
+ccu
+caA
+caU
+caU
+caO
+cbG
+caV
+caS
+caS
+caS
+caO
 abb
 abb
-aSL
-aSL
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-aSS
 abb
-abb
-abb
-aSL
-tro
-tro
-tro
-aSL
-aSL
-aSL
-aSL
-tro
-tro
-tro
-tro
-aSL
-aSL
-aSL
-aSL
+bYb
+caq
+cao
+cak
+bYb
+bYb
+bYb
+bYb
+bYa
+bYa
+bYa
+bYB
+bYb
+bYb
+bYb
+bYb
+bZv
+bZv
 aLG
-aSS
-aLG
-aSL
-aSL
-aSL
-aLd
-aLd
-aLd
-aLd
-aLd
-aSL
-aSL
-aSS
-aSS
+bYb
+bYb
+bYb
+bZl
+bYj
+bZf
+bYj
+bYW
+bYb
+bYb
+bYw
+bXY
+bYx
+bYb
+bYb
+bYx
+bYx
+bYb
+bYx
 aLe
-aSL
-aSL
 aLe
 aLe
-aSL
 aLe
 aLe
-aSS
-aLe
-aSS
-aLe
-aSL
+bYb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -72318,20 +75884,13 @@ abb
 abb
 abb
 abb
+bXS
+bXS
+bXD
+bXd
+bWE
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-aLc
-aLc
-bsl
-bsl
-bsl
-bsl
-aLc
 abb
 iFy
 iFy
@@ -72405,86 +75964,93 @@ abb
 abb
 abb
 abb
-aSL
+aSF
 abb
-aSL
-abb
-abb
-abb
-aSL
-abb
-aSL
+aSF
 abb
 abb
 abb
-aSL
+aSF
 abb
-aSL
-abb
-abb
-abb
-aSL
-abb
-aSL
-abb
-abb
-aSL
-abb
-aSL
-abb
-abb
-bgB
-bgB
-bgB
+aSF
 abb
 abb
 abb
+aSF
+abb
+aSF
 abb
 abb
-aSL
-tro
-tro
-tro
-aSS
-tro
-aSS
-aSS
-aSS
-tro
-aSS
-tro
-tro
-tro
-tro
-aSS
-tro
-tro
-tro
-aSL
 abb
-aSL
-aSL
-aLd
+aSF
+abb
+caA
+ccB
+abb
+aSF
+abb
+caA
+cbY
+caz
+cbF
+caz
+caz
+caO
+caz
+abb
+abb
+abb
+bYb
+cal
+cal
+cal
+bXY
+bYa
+bXY
+bXY
+bXY
+bYa
+bXY
+bYB
+bYB
+aLe
+aLe
+bZx
+bYa
+aLe
+aLe
+bYb
+abb
+bYb
+bYb
+bYh
 aLk
 aLk
-aLk
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aSL
-aSL
-aLd
-aLd
-aLd
-aLd
-aLd
-aSL
+bYH
+bYv
+bYh
+bYh
+bYh
+bYh
+bYO
+bYO
+bYh
+bYv
+bYb
+bYb
+bYu
+bYp
+bYp
+bYp
+bYk
+bYb
+aSF
+aSF
+aSF
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -72500,20 +76066,13 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-aLc
+bWE
+bXd
+bWM
+bWE
+bWI
 abb
 iFy
 iFy
@@ -72587,86 +76146,89 @@ abb
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
 abb
 abb
-aSL
-aSL
-aSL
+aSF
+aSF
+aSF
+abb
+caz
+caz
+caz
+caO
+caO
+caO
 abb
 abb
-bgB
-bgB
-bgB
+abb
+bYJ
+bXY
+bYa
+bYa
+bYa
+bYB
+bYB
+bYG
+bYB
+bYa
+bXY
+bYa
+bZt
+bYB
+bYa
+bYa
+bYa
+bXY
+bYa
+bYb
 abb
 abb
-abb
-abb
-abb
-aSL
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-tro
-tro
-aSS
-tro
-aSL
-abb
-abb
-aSL
-aLd
+bYb
+bYh
 aLk
 aLk
 aLk
 aLn
-aLi
-aLi
-aLi
-aLi
-aLi
-aLi
-aLi
-aLi
-aLm
-aLl
-aLi
-aLi
-aLi
+aLf
+aLf
+aLf
+aLf
+aLf
+aLf
 aLi
 aLf
-aSL
+aLm
+aLl
+aLf
+aLf
+bYt
+aLi
+aLf
+bYe
+bYc
+bXY
+bXY
 abb
 abb
 abb
@@ -72686,16 +76248,13 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-aLc
+bXJ
+bXM
+bXE
+bVX
+bWI
 abb
 iFy
 iFy
@@ -72797,58 +76356,69 @@ abb
 abb
 abb
 abb
-tro
-bgB
-bgB
-bgB
-bgB
+cbE
+caz
+caO
+cba
+caO
+caz
+abb
+bXZ
+bXZ
+bXY
+bYa
+bYB
+bYB
+bYL
+bYw
+bXY
+bXY
+bXY
+bXY
+bYa
+bYa
+bYa
+bXY
+bYB
+bYB
+bYB
+bYa
+bYb
 abb
 abb
-abb
-aSL
-aSS
-tro
-tro
-tro
-aSS
-aSS
-aSS
-aSS
-aSS
-aSS
-tro
-tro
-tro
-aSS
-tro
-tro
-tro
-tro
-aSL
-abb
-abb
-aSL
-aLd
+bYb
+bZi
 aLk
-aLk
-aLk
+bYX
+bYX
 aLo
-aLd
-aLd
+bYj
+bYj
+bYQ
 aLk
 aLk
 aLk
 aLk
+bYH
+bYh
+bYh
+bYh
 aLk
-aLk
-aLd
-aLd
-aLd
-aLk
-aLd
-aLd
-aLg
-aSL
+bYj
+bYh
+bYj
+bYf
+bYc
+bXY
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -72860,24 +76430,13 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-aLc
+bWM
+bXN
+bWj
+bVX
+bWI
 abb
 iFy
 iFy
@@ -72979,58 +76538,69 @@ abb
 abb
 abb
 abb
-tro
-bgB
-bgB
-bgB
-bgB
+cbE
+caz
+cbi
+caz
+caO
+caz
+caE
+bXZ
+bXZ
+bXY
+bXY
+bXY
+caf
+bYb
+bYb
+bYb
+bZO
+bXZ
+bXZ
+bZJ
+aSL
+aSL
+aSL
+aSL
+bXY
+bYB
+bYB
+bYb
 abb
 abb
-bgB
-bgB
-aSS
-aSS
-aSS
-aSS
-aSL
-aSL
-aSL
-aSS
-aSS
-aSS
-aSS
-aSL
-aSL
-aSL
-aSL
-aSS
-tro
-tro
-aSL
-abb
-abb
-aSL
-aLd
-aLk
-aLk
-aLk
+bYb
+bYh
+bZg
+bYX
+bYX
 aLp
-aLj
-aLj
-aLj
-aLj
-aLj
-aLj
-aLj
-aLj
-aLj
+bYN
+bYN
+bYN
+bYN
+bYN
+bYN
+bYN
+bYC
+bYC
 aLj
 aLj
 aLj
 aLj
 aLj
 aLh
-aSL
+bYg
+bYc
+bXZ
+bXZ
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+aSF
 abb
 abb
 abb
@@ -73042,24 +76612,13 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-aLc
+bXS
 bss
-bsl
-bsl
-bsl
-bsl
-aLc
+bWM
+bWd
+bWd
+bWH
+bWI
 abb
 iFy
 iFy
@@ -73161,66 +76720,69 @@ abb
 abb
 abb
 abb
-tro
-bgB
-bgB
-bgB
-bgB
-bgB
-aSS
-bgB
-bgB
-bgB
-bgB
-bgB
-aSL
+caU
+caz
+caz
+caz
+caz
+caO
+caF
+bXZ
+bXZ
+bZm
+bXZ
+bXZ
+bYb
+abb
+abb
+aSF
+abb
+bXZ
+bXZ
+bYJ
+aSF
 abb
 abb
 aSL
+bYa
+bYB
+bXY
+bXZ
+abb
+abb
+aLe
+bZj
+bYj
+bYY
+bYY
+bYU
+bYh
+bYh
+bYh
+bYh
+bYh
+bYP
+bYh
+bYI
+bYj
+bYh
+bYv
+bYh
+bYh
+bYj
+bYl
+bYb
+aSF
+bYa
+bYa
+aSF
+aSF
+aSF
 abb
 abb
 abb
 abb
-aSL
-abb
-abb
-aSL
-tro
-tro
-aSS
-bgB
-abb
-abb
-bgB
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aLd
-aSL
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+aSF
 abb
 abb
 abb
@@ -73232,16 +76794,13 @@ abb
 abb
 abb
 abb
-abb
-abb
-abb
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
-aLc
+bXS
+bXS
+bWI
+bXx
+bWd
+bXx
+bWI
 abb
 iFy
 iFy
@@ -73343,85 +76902,85 @@ abb
 abb
 abb
 abb
-tro
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-aSL
-aSL
-aSL
-aSL
+caV
+caz
+caz
+caz
+caW
+caP
+caG
+bXZ
+bXZ
+bZr
+bXZ
+cam
+bYb
+aSF
+aSF
+aSF
+abb
+abb
+bZM
+abb
+aSF
+aSF
+aSF
+aSF
+bYw
+bYa
+bXY
+bXZ
+bXY
+bXZ
+bXY
+bZh
+bZh
+aLe
+aLe
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
+bYb
 abb
 abb
 abb
 abb
-aSL
-aSL
-aSL
-aSL
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+bXP
 aSS
-tro
 aSS
-bgB
-aSS
-bgB
-aSS
-bgB
-bgB
-bgB
-bgB
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-aSL
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
 abb
 abb
 iFy
@@ -73525,85 +77084,85 @@ abb
 abb
 abb
 abb
-tro
+cbG
+caz
+caz
+caz
+caX
+caQ
+caH
+bXZ
+bXZ
+bXZ
+bXZ
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+bYa
+bXY
+bZp
+bXZ
+bXZ
+bZm
+bXZ
+bXY
+bXZ
+bZc
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+bXQ
 bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-tro
-aSS
-tro
-bgB
-bgB
-bgB
-bgB
-aSS
-bgB
-bgB
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+bXF
 abb
 iFy
 iFy
@@ -73708,15 +77267,15 @@ abb
 abb
 abb
 abb
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
+cbu
+cbj
+cbb
+caY
+caR
+caI
+caw
+cat
+car
 abb
 abb
 abb
@@ -73732,29 +77291,14 @@ abb
 abb
 abb
 abb
-tro
-aSS
-aSS
-aSS
-aSS
-bgB
-bgB
-bgB
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
-abb
+bYa
+bXY
+bXY
+bZn
+bYw
+bXZ
+bXZ
+bXZ
 abb
 abb
 abb
@@ -73786,6 +77330,21 @@ abb
 abb
 abb
 abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+abb
+bVz
+bXG
 abb
 iFy
 iFy
@@ -73890,14 +77449,14 @@ abb
 abb
 abb
 abb
-dvt
-bgB
-bgB
-bgB
-bgB
-bgB
-bgB
-dvt
+cau
+caz
+cbc
+caz
+caz
+caz
+cax
+cau
 abb
 abb
 abb
@@ -73915,12 +77474,12 @@ abb
 abb
 abb
 abb
-aSS
-aSS
-aSS
-aSS
-aSS
-aSS
+bZk
+bXY
+bXY
+bXY
+bXY
+bZk
 abb
 abb
 abb
@@ -74072,21 +77631,21 @@ abb
 abb
 abb
 abb
-dvt
-bgV
-bgU
-bgB
-bgU
-bgV
-bgU
-dvt
+cau
+caK
+cay
+caz
+cay
+caJ
+cay
+cau
 abb
 abb
 abb
-abb
-abb
-abb
-abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -74253,22 +77812,22 @@ abb
 abb
 abb
 abb
-abb
-dvt
-bgB
-bgU
-bgB
-bgV
-bgU
-bgB
-dvt
-abb
-abb
+cau
+cau
+caz
+cbd
+caz
+caK
+cay
+caz
+cau
 abb
 abb
 abb
+aSF
 abb
 abb
+aSF
 abb
 abb
 abb
@@ -74433,24 +77992,24 @@ abb
 abb
 abb
 abb
-dvt
-dvt
-dvt
-dvt
-bgU
-bgB
-bgU
+cau
+cau
+cau
+cbv
+cay
+caz
+cay
 aLT
-dvt
-dvt
-dvt
+caK
+cau
+cau
 abb
 abb
 abb
-abb
-abb
-abb
-abb
+aSF
+aSF
+aSF
+aSF
 abb
 abb
 abb
@@ -74615,17 +78174,17 @@ abb
 abb
 abb
 abb
-dvt
+cau
 dJv
-aMg
+cbH
 aLU
-aLQ
+caL
 aMa
-aLQ
-bgU
+caZ
+cay
 aLP
 kSj
-dvt
+cau
 abb
 abb
 abb
@@ -74797,17 +78356,17 @@ abb
 abb
 abb
 abb
-dvt
+cau
 sVg
 aMh
 aMe
-aLQ
+caL
 aMb
 aLX
 aLU
-aLQ
+caL
 qbU
-dvt
+cau
 abb
 abb
 abb
@@ -74979,17 +78538,17 @@ abb
 abb
 abb
 abb
-dvt
-dvt
-dvt
-dvt
-dvt
-dvt
-dvt
-dvt
-dvt
-dvt
-dvt
+cau
+cau
+cau
+cau
+cau
+cau
+cau
+cau
+cau
+cau
+cau
 abb
 abb
 abb
@@ -111018,7 +114577,7 @@ bJV
 bJV
 bbg
 lcu
-bbg
+ceC
 bJV
 bJV
 bKi
@@ -111379,11 +114938,11 @@ bCR
 bJV
 bJV
 bJV
+ceD
 bKC
 bKC
 bKC
-bKC
-bKC
+ceA
 bJV
 bJV
 bJV
@@ -111561,11 +115120,11 @@ bMC
 bBg
 bBg
 bJV
+ceE
 bKD
 bKD
 bKD
-bKD
-bKD
+ceB
 bJV
 bBg
 bCY
@@ -114506,11 +118065,11 @@ bnX
 bDV
 bDV
 bDV
+cey
 hXV
 hXV
 hXV
-hXV
-hXV
+cew
 bDV
 bDV
 bDV
@@ -114688,11 +118247,11 @@ bBg
 bBg
 bBg
 bDV
+cez
 bEg
 bEg
 bEg
-bEg
-bEg
+cex
 bDV
 bDX
 bBO
@@ -115070,7 +118629,7 @@ bCY
 bCR
 bCR
 bBN
-rIB
+ceu
 rIB
 nWO
 obm
@@ -115252,7 +118811,7 @@ bBg
 bCY
 bCS
 bBN
-bBN
+icU
 icU
 dLj
 tnr
@@ -115432,10 +118991,10 @@ bBg
 bBg
 bBg
 bBg
-bBg
+bDm
 bBN
-bBN
-bBN
+cev
+icU
 bCg
 eAZ
 bBN
@@ -115614,8 +119173,8 @@ bBg
 bBg
 bBg
 bBg
-bBg
-bBg
+bDm
+bDm
 bBN
 bBN
 bBN
@@ -115797,8 +119356,8 @@ bBg
 bBg
 bBg
 bBg
-bBg
-bBg
+bDm
+bDm
 bBg
 bBg
 bBg
@@ -118475,7 +122034,7 @@ aKU
 aJO
 aOL
 aOF
-bMl
+bMG
 bLT
 aOj
 aOg
@@ -118656,9 +122215,9 @@ bzi
 bzi
 bzi
 bzi
-aJI
 bzi
-aJI
+bzi
+bzi
 bzi
 bzi
 byQ
@@ -158023,7 +161582,7 @@ aaj
 aaj
 aaj
 aaj
-adp
+bTB
 aaj
 aaj
 aaj

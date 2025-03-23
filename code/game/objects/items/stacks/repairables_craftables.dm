@@ -27,6 +27,9 @@
 	repair_verb = list("lubes", "oils", "cleans", "tends to", "gently strokes", "repairs")
 	repair_time = 6 SECONDS
 
+/obj/item/stack/repairable/gunlube/single
+	amount = 1
+
 /obj/item/stack/repairable/gunkit
 	name = "firearms repair kit"
 	singular_name = "essential firearms-tool"

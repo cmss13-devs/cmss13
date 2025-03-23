@@ -91,11 +91,11 @@ export const CentralOverwatchConsole = (props) => {
     >
       <Window.Content>
         {(!data.operator && <LoginPanel />) || (
-          <Stack vertical>
+          <Stack vertical height="100%">
             <Stack.Item>
               <CombinedSquadPanel />
             </Stack.Item>
-            <Stack.Item m="0">
+            <Stack.Item m="0" grow>
               <SecondaryFunctions />
             </Stack.Item>
           </Stack>
@@ -177,7 +177,7 @@ const SecondaryFunctions = (props) => {
 
   return (
     <Section fontSize="18px" fill>
-      <Stack justify="center" align="top">
+      <Stack justify="center" align="top" height="100%">
         <Stack.Item width="24.5%">
           <Tabs fluid mr="0" fontSize="15px" vertical>
             <Tabs.Tab
@@ -891,7 +891,7 @@ const SquadMonitor = (props) => {
         </>
       }
     >
-      <Stack vertical>
+      <Stack vertical fill height="100%">
         <Stack.Item>
           <Input
             fluid
@@ -900,8 +900,8 @@ const SquadMonitor = (props) => {
             onInput={(e, value) => setMarineSearch(value)}
           />
         </Stack.Item>
-        <Stack.Item>
-          <Section m="0px" mb="3px" scrollable height="190px" fill fitted>
+        <Stack.Item grow>
+          <Section m="0px" mb="3px" scrollable fill fitted>
             <Table>
               <Table.Row bold fontSize="14px">
                 <Table.Cell textAlign="center">Name</Table.Cell>
@@ -914,7 +914,7 @@ const SquadMonitor = (props) => {
                   SL Dist.
                 </Table.Cell>
               </Table.Row>
-              {squad_leader && leaders_alive ? (
+              {squad_leader && data.leader_count ? (
                 <Table.Row bold>
                   <Table.Cell collapsing p="2px">
                     {(squad_leader.has_helmet && (

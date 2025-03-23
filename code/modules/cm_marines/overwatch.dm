@@ -124,9 +124,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
 		return
 
-	if(!isSilicon(usr) && !skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && !no_skill_req && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
+	if(!skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && !no_skill_req)
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
+
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Console access denied."))
+		return
+
 	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
 		user.set_interaction(src)
 	tgui_interact(user)
@@ -332,54 +337,33 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(mob_state != "Dead")
 					marines_alive++
 
-		if(!variable_format)
-			var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
-			data["marines"] += marine_data
-			if(is_squad_leader)
-				if(!data["squad_leader"])
-					data["squad_leader"] = marine_data[1]
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
+		data["marines"] += marine_data
+		if(is_squad_leader)
+			if(!data["squad_leader"])
+				data["squad_leader"] = marine_data[1]
+				leader_count++
+				marine_count--
 
-	if(variable_format)	// will have been set to TRUE if original proc was called by the groundside ops console
-		var/list/squad_count = list(
-			"total_deployed" = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count,
-			"living_count" = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive,
-			"leader_count" = leader_count,
-			"ftl_count" = ftl_count,
-			"spec_count" = spec_count,
-			"medic_count" = medic_count,
-			"engi_count" = engi_count,
-			"smart_count" = smart_count,
-			"leaders_alive" = leaders_alive,
-			"ftl_alive" = ftl_alive,
-			"spec_alive" = spec_alive,
-			"medic_alive" = medic_alive,
-			"engi_alive" = engi_alive,
-			"smart_alive" = smart_alive,
-			"specialist_type" = specialist_type ? specialist_type : "NONE",
-		)
+	data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
+	data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
 
-		return squad_count
+	data["leader_count"] = leader_count
+	data["ftl_count"] = ftl_count
+	data["spec_count"] = spec_count
+	data["medic_count"] = medic_count
+	data["engi_count"] = engi_count
+	data["smart_count"] = smart_count
 
-	else
-		data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
-		data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
+	data["leaders_alive"] = leaders_alive
+	data["ftl_alive"] = ftl_alive
+	data["spec_alive"] = spec_alive
+	data["medic_alive"] = medic_alive
+	data["engi_alive"] = engi_alive
+	data["smart_alive"] = smart_alive
+	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
 
-		data["leader_count"] = leader_count
-		data["ftl_count"] = ftl_count
-		data["spec_count"] = spec_count
-		data["medic_count"] = medic_count
-		data["engi_count"] = engi_count
-		data["smart_count"] = smart_count
-
-		data["leaders_alive"] = leaders_alive
-		data["ftl_alive"] = ftl_alive
-		data["spec_alive"] = spec_alive
-		data["medic_alive"] = medic_alive
-		data["engi_alive"] = engi_alive
-		data["smart_alive"] = smart_alive
-		data["specialist_type"] = specialist_type ? specialist_type : "NONE"
-
-		return data
+	return data
 
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
 	var/list/data = list()
@@ -721,14 +705,19 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(operator && isSilicon(operator))
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("AI override in progress. Access denied.")]")
 					return
+				if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
+					for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
+						if(resolve_root.name == "Root" && resolve_root.faction == faction)
+							current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+							break
 				if(!current_squad || current_squad.assume_overwatch(user))
 					operator = user
 				if(isSilicon(user))
 					to_chat(user, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
 					current_squad?.send_squad_message("Attention. [operator.name] has engaged overwatch system control override.", displayed_icon = src)
 				else
-					var/mob/living/carbon/human/H = operator
-					var/obj/item/card/id/ID = H.get_idcard()
+					var/mob/living/carbon/human/human = operator
+					var/obj/item/card/id/ID = human.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
 
@@ -790,10 +779,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 			var/signed = null
 			if(ishuman(usr))
-				var/mob/living/carbon/human/H = usr
-				var/obj/item/card/id/id = H.get_idcard()
+				var/mob/living/carbon/human/human = usr
+				var/obj/item/card/id/id = human.get_idcard()
 				if(id)
-					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					var/paygrade = get_paygrades(id.paygrade, FALSE, human.gender)
 					signed = "[paygrade] [id.registered_name]"
 
 				COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
@@ -1032,7 +1021,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 
 /obj/structure/machinery/computer/overwatch/check_eye(mob/user)
-	if(user.is_mob_incapacitated(TRUE) || get_dist(user, src) > 1 || user.blinded) //user can't see - not sure why canmove is here.
+	if(user.is_mob_incapacitated(TRUE) || ui_status(user) == UI_CLOSE || user.blinded) //user can't see - not sure why canmove is here.
 		user.unset_interaction()
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
 		for(var/datum/weakref/user_ref in concurrent_users)
@@ -1261,11 +1250,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, T), 6 SECONDS + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
-	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
-		if(is_mainship_level(H.z) && !H.stat) //USS Almayer decks.
-			to_chat(H, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
-			if(H.client)
-				shake_camera(H, 10, 1)
+	for(var/mob/living/carbon/human in GLOB.alive_mob_list)
+		if(is_mainship_level(human.z) && !human.stat) //USS Almayer decks.
+			to_chat(human, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
+			if(human.client)
+				shake_camera(human, 10, 1)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 

@@ -1,0 +1,8 @@
+author: "detectivegoogle"
+delete-after: True
+changes:
+  - balance: "the alt shotguns have been rebalanced."
+  - balance: "The custom shotgun fires 2 deciseconds slower(now same as Mk221, is otherwise the same."
+  - balance: "The double barrel(currently unobtainable) is now in most ways equivalent to a M37, it fires as fast as a Mk221, though."
+  - balance: "The sawn-off double barrel(currently unobtainable-mostly) is now in most ways worse than the normal DB."
+  - code_imp: "Shotgun delay defines have been changed to be consistent, use SECONDS for readability, and reduce magic numbers."

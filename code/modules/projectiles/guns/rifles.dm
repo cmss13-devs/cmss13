@@ -2522,6 +2522,8 @@
 	))
 
 /obj/item/weapon/gun/rifle/xm51/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
 	if(!COOLDOWN_FINISHED(src, allow_pump))
 		return
 	if(in_chamber)

@@ -1,0 +1,5 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - imageadd: "added special hud icons for some specialists"
+  - imageadd: "added special minimap icons for some specialists"

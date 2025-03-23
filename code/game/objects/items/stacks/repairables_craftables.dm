@@ -15,10 +15,13 @@
 /obj/item/stack/repairable/gunlube
 	name = "Multi-purpose combat lubricant"
 	singular_name = "combat lubricant"
-	desc = "A USCM-standard issued firearms lubricant consisting of more than a few ounces of synthetic firearm lubricant meant for field use. Do not consume."
+	desc = "A USCM-standard issued firearms lubricant consisting of more than a few ounces of synthetic firearm lubricant meant for field use. Do not consume, or apply to self."
 	w_class = SIZE_TINY
 	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
 	icon_state = "gunoil" //for now
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		)
 	amount = 10
 	max_amount = 10
 	stack_id = "combatoil"

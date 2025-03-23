@@ -159,14 +159,6 @@
 	max_range = 7
 	max_duration = 50
 
-/obj/item/ammo_magazine/flamer_tank/EX
-	name = "incinerator tank (EX)"
-	desc = "A fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
-	caliber = "Napalm EX"
-	flamer_chem = "napalmex"
-
-	max_range = 7
-
 /obj/item/ammo_magazine/flamer_tank/custom
 	name = "custom incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a pressure regulator and an internal propellant tank."
@@ -290,3 +282,22 @@
 
 /obj/item/ammo_magazine/flamer_tank/survivor/empty
 	flamer_chem = null
+
+/obj/item/ammo_magazine/flamer_tank/flammenwerfer
+	name = "heavy incinerator tank"
+	desc = "A heavy, high capacity tank utilized by Flammenwerfer 3 Heavy Incineration Unit, has a blue Weyland-Yutani logo on it."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/flamers.dmi'
+	icon_state = "fl3"
+	item_state = "fl3"
+	gun_type = /obj/item/weapon/gun/flamer/flammenwerfer3
+	max_rounds = 300
+	max_range = 8
+	max_intensity = 70
+	stripe_icon = FALSE
+
+/obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout
+	name = "heavy incinerator tank (EX)"
+	desc = "A heavy fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, utilized by Flammenwerfer 3 Heavy Incineration Unit, has a blue Weyland-Yutani logo on it. Handle with care."
+	caliber = "Napalm EX"
+	flamer_chem = "napalmex"
+	stripe_icon = TRUE

@@ -47,8 +47,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/whiteout, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/EX, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/EX, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout, WEAR_IN_BACK)
 
 	// accessory
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
@@ -71,7 +71,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/whiteout, WEAR_J_STORE)
 	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/deathsquad, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad, WEAR_WAIST)
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/combat_droid, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/combat_android, WEAR_FEET)
@@ -124,7 +124,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/heap, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite/whiteout, WEAR_J_STORE)
 	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/deathsquad, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad, WEAR_WAIST)
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/combat_droid, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/combat_android, WEAR_FEET)
@@ -282,7 +282,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/ap, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite, WEAR_J_STORE)
 	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/deathsquad/standard, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard, WEAR_WAIST)
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/combat_droid, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/combat_android, WEAR_FEET)
@@ -333,7 +333,7 @@
 	// accessory
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/wy_faction, WEAR_ACCESSORY)
 	//waist
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/deathsquad/standard, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard, WEAR_WAIST)
 	//limbs
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc/combat_droid, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/combat_android, WEAR_FEET)

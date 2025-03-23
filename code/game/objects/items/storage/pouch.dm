@@ -164,6 +164,10 @@
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/pouch/survival/full/black
+	icon_state = "soctools"
+
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
 	desc = "An emergency pouch given to synthetics in the event of an emergency."

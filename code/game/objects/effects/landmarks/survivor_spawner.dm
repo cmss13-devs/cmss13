@@ -376,7 +376,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	icon_state = "surv_wy"
-	equipment = /datum/equipment_preset/survivor/pmc
+	equipment = /datum/equipment_preset/survivor/pmc/standard
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\

@@ -98,6 +98,7 @@
 // Reskinned rubber bullet used for the ES-4 CL pistol.
 /datum/ammo/bullet/pistol/rubber/stun
 	name = "stun pistol bullet"
+	icon_state = "cm_laser"
 	sound_override = null
 
 	accuracy = HIT_ACCURACY_TIER_4

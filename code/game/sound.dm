@@ -121,7 +121,7 @@
 
 
 //This is the replacement for playsound_local. Use this for sending sounds directly to a client
-/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 35, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
+/proc/playsound_client(client/client, sound/soundin, atom/origin, vol = 100, random_freq, vol_cat = VOLUME_SFX, channel = 0, status, list/echo, y_s_offset, x_s_offset)
 	if(!istype(client) || !client.soundOutput)
 		return FALSE
 

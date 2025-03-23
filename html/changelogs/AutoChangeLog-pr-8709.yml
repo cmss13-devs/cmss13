@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Neuro hallucination sounds are no extremly loud."
+  - code_imp: "playsound_client is now base 35 so its not as loud."

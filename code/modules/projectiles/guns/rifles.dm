@@ -2524,13 +2524,14 @@
 /obj/item/weapon/gun/rifle/xm51/unique_action(mob/user)
 	if(jammed)
 		jam_unique_action(user)
-	if(!COOLDOWN_FINISHED(src, allow_pump))
-		return
-	if(in_chamber)
-		if(COOLDOWN_FINISHED(src, allow_message))
-			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
-			COOLDOWN_START(src, allow_message, message_delay)
-		return
+	else
+		if(!COOLDOWN_FINISHED(src, allow_pump))
+			return
+		if(in_chamber)
+			if(COOLDOWN_FINISHED(src, allow_message))
+				to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
+				COOLDOWN_START(src, allow_message, message_delay)
+			return
 
 	playsound(user, pump_sound, 10, 1)
 	COOLDOWN_START(src, allow_pump, pump_delay)

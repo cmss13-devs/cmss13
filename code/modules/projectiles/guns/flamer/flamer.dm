@@ -297,7 +297,7 @@
 			chem.intensityfire = clamp(chem.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
 			chem.durationfire = clamp(chem.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
 
-			new /obj/flamer_fire(turfed, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure)
+			new /obj/flamer_fire(turfed, create_cause_data(initial(name), user), chem, current_mag.reagents, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure)
 
 /obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
 	last_fired = world.time

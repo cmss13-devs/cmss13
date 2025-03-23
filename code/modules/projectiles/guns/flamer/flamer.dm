@@ -275,10 +275,10 @@
 				return
 			stop_at_turf = TRUE
 
-	flame_adjacent(current_turf, user, chem)
 	if(stop_at_turf)
-		show_percentage(user)
+		flame_adjacent(current_turf, user, chem)
 		playsound(current_turf, src.get_fire_sound(), 50, TRUE)
+		show_percentage(user)
 		return
 
 	distance++
@@ -299,6 +299,7 @@
 			chem.durationfire = clamp(chem.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
 
 			new /obj/flamer_fire(turfed, create_cause_data(initial(name), user), chem)
+			current_mag.reagents.remove_reagent(chem.id, 1)
 
 /obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
 	last_fired = world.time

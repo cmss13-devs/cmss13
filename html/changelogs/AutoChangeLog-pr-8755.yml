@@ -1,0 +1,5 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - balance: "upgraded backpacks and webbings now cost experimental tools points in the synth vendor"
+  - rscdel: "foam backpack, maint jack, crew monitor, autocomp, mesons removed from the experimental vendor"

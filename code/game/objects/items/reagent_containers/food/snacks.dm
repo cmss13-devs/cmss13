@@ -2614,7 +2614,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/bread
 	name = "Bread"
-	icon_state = "Some plain old Earthen bread."
+	desc = "Some plain old Earthen bread."
 	icon_state = "bread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/breadslice

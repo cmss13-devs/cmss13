@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - bugfix: "Normal Defender sideview icons (looking left/right) and overlays were moved 2 pixels to the center, so Steelcrest strain will have overlays on correct positions now (bloodied, marine packs)"

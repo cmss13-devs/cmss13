@@ -1115,7 +1115,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(!in_chamber)
 		ready_in_chamber()
 		cock_gun(user)
-	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
+		user.visible_message(SPAN_NOTICE(("[user] loads [magazine] into [src]!")),
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
@@ -1296,7 +1296,8 @@ and you're good to go.
 			if(bullet.current_rounds > 0)
 				in_chamber = create_bullet(bullet.ammo_source, initial(name))
 				apply_traits(in_chamber)
-				to_chat(user, SPAN_NOTICE("You load a bullet into [src]'s chamber."))
+				user.visible_message(SPAN_NOTICE(("[user] loads a [bullet.singular_name] into [src]'s chamber!")),
+					SPAN_NOTICE(("You load a [bullet.singular_name] into [src]'s chamber.")))
 				bullet.current_rounds--
 				bullet.update_icon()
 				if(bullet.current_rounds <= 0)

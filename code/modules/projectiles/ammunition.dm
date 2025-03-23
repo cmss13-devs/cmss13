@@ -274,6 +274,7 @@ bullets/shells. ~N
 	flags_magazine = AMMUNITION_HANDFUL
 	attack_speed = 3 // should make reloading less painful
 	var/ammo_source = null // for referencing where the ammo comes from
+	var/singular_name = "generic" // for referencing the singular name of the ammo rather than a handful of something each time
 
 /obj/item/ammo_magazine/handful/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -309,9 +310,9 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 			to_chat(user, "Those aren't the same rounds. Better not mix them up.")
 
 /obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, new_max_rounds, new_rounds, new_gun_type)
-	var/datum/ammo/A = GLOB.ammo_list[new_ammo]
-	var/ammo_name = A.name //Let's pull up the name.
-	var/multiple_handful_name = A.multiple_handful_name
+	var/datum/ammo/bullet = GLOB.ammo_list[new_ammo]
+	var/ammo_name = bullet.name //Let's pull up the name.
+	var/multiple_handful_name = bullet.multiple_handful_name
 
 	name = "handful of [ammo_name + (multiple_handful_name ? " ":"s ") + "([new_caliber])"]"
 
@@ -320,10 +321,11 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	max_rounds = new_max_rounds
 	current_rounds = new_rounds
 	gun_type = new_gun_type
-	handful_state = A.handful_state
-	ammo_source = A
-	if(A.handful_color)
-		color = A.handful_color
+	handful_state = bullet.handful_state
+	ammo_source = bullet
+	singular_name = ammo_name
+	if(bullet.handful_color)
+		color = bullet.handful_color
 	update_icon()
 
 //----------------------------------------------------------------//

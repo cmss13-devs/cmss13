@@ -249,22 +249,18 @@
 	process_flame_tiles(temp, target, user, chem, max_range, flameshape, fire_type, distance, null, FALSE)
 
 /obj/item/weapon/gun/flamer/proc/process_flame_tiles(list/turfs, atom/target, mob/living/user, datum/reagent/chem, max_range, flameshape, fire_type, distance, turf/prev_turf, stop_at_turf)
-	if(!turfs.len || stop_at_turf || distance >= max_range)
-		show_percentage(user)
-		return
-
-	if(distance >= max_range)
+	if(!length(turfs))
 		return
 
 	var/turf/current_turf = turfs[1]
 	turfs.Cut(1, 2)
 
-	if(!current_turf)
-		return
-
 	if(current_turf == user.loc)
 		prev_turf = current_turf
 		addtimer(CALLBACK(src, PROC_REF(process_flame_tiles), turfs, target, user, chem, max_range, flameshape, fire_type, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
+		return
+
+	if(distance >= max_range)
 		return
 
 	if(current_turf.density)
@@ -273,27 +269,23 @@
 		var/atom/movable/temp = new /obj/flamer_fire()
 		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
 		qdel(temp)
+
 		if(blocked)
 			if(blocked.flags_atom & ON_BORDER)
 				return
 			stop_at_turf = TRUE
-		flame_adjacent(current_turf, user, chem)
 
+	flame_adjacent(current_turf, user, chem)
 	if(stop_at_turf)
-		show_percentage(user)
 		playsound(current_turf, src.get_fire_sound(), 50, TRUE)
 		return
 
 	distance++
 	prev_turf = current_turf
 
-	var/obj/flamer_fire/fire = locate() in current_turf
-	if(fire)
-		qdel(fire)
-
 	playsound(current_turf, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(current_turf, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, flameshape, target, null, fuel_pressure, fire_type)
+	new /obj/flamer_fire(current_turf, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/flame_adjacent(turf/turfed, mob/living/user, datum/reagent/chem)
 	if(!istype(turfed))
@@ -305,7 +297,7 @@
 			chem.intensityfire = clamp(chem.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
 			chem.durationfire = clamp(chem.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
 
-			new /obj/flamer_fire(turfed, create_cause_data(initial(name), user), chem)
+			new /obj/flamer_fire(turfed, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure)
 
 /obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
 	last_fired = world.time

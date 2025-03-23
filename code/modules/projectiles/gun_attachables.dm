@@ -3234,10 +3234,6 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 
 /obj/item/attachable/attached_gun/flamer/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
-	if(get_dist(user,target) > max_range+4)
-		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
-		return
-
 	if(!istype(loc, /obj/item/weapon/gun))
 		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
 		return
@@ -3263,7 +3259,7 @@ Defined in conflicts.dm of the #defines folder.
 	process_flame_turf(turfs, target, user, distance, prev_turf, stop_at_turf)
 
 /obj/item/attachable/attached_gun/flamer/proc/process_flame_turf(list/turfs, atom/target, mob/living/user, distance, turf/prev_turf, stop_at_turf)
-	if(!turfs.len)
+	if(!length(turfs))
 		return
 	var/turf/current_turf = turfs[1]
 	turfs.Cut(1,2)
@@ -3286,18 +3282,22 @@ Defined in conflicts.dm of the #defines folder.
 		var/atom/movable/temp = new/obj/flamer_fire()
 		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
 		qdel(temp)
+
 		if(blocked)
 			blocked.flamer_fire_act(0, cause_data)
 			if(blocked.flags_atom & ON_BORDER)
 				return
 			stop_at_turf = TRUE
+
 	flame_turf(current_turf, user)
 	if(stop_at_turf)
 		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
 		return
+
 	distance++
 	prev_turf = current_turf
-	if(!turfs.len)
+
+	if(!length(turfs))
 		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
 	addtimer(CALLBACK(src, PROC_REF(process_flame_turf), turfs, target, user, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
 

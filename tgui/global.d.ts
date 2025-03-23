@@ -133,6 +133,11 @@ type ByondType = {
   parseJson(text: string): any;
 
   /**
+   * Downloads a blob, platform-agnostic
+   */
+  saveBlob(blob: Blob, filename: string, ext: string): void;
+
+  /**
    * Sends a message to `/datum/tgui_window` which hosts this window instance.
    */
   sendMessage(type: string, payload?: any): void;
@@ -160,9 +165,25 @@ type ByondType = {
   loadJs(url: string): void;
 
   /**
+   * Maps icons to their ref
+   */
+  iconRefMap: Record<string, string>;
+
+  /**
    * The ByondCSS stylesheet to load into ByondUI components
    */
   styleSheet: string;
+
+  /**
+   * The external URL for the IndexedDB IFrame to use as the origin
+   */
+  storageCdn: string;
+
+  /**
+   * If this tgui window exists in the IE11 trident browser.
+   * TODO: Remove with 516
+   */
+  TRIDENT: boolean;
 };
 
 /**

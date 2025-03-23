@@ -35,6 +35,8 @@
 	/// set when a player uses a pen on a renamable object
 	var/renamedByPlayer = FALSE
 
+	vis_flags = VIS_INHERIT_PLANE
+
 
 /obj/Initialize(mapload, ...)
 	. = ..()
@@ -210,11 +212,13 @@
 	return
 
 /obj/attack_hand(mob/user)
-	if(can_buckle) manual_unbuckle(user)
+	if(can_buckle)
+		manual_unbuckle(user)
 	else . = ..()
 
 /obj/attack_remote(mob/user)
-	if(can_buckle) manual_unbuckle(user)
+	if(can_buckle)
+		manual_unbuckle(user)
 	else . = ..()
 
 /obj/proc/handle_rotation()
@@ -226,7 +230,8 @@
 
 /obj/MouseDrop_T(mob/M, mob/user)
 	if(can_buckle)
-		if(!istype(M)) return
+		if(!istype(M))
+			return
 		buckle_mob(M, user)
 	else . = ..()
 
@@ -305,8 +310,14 @@
 			do_buckle(M, user)
 			return
 	if ((M.mob_size > MOB_SIZE_HUMAN))
-		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
-		return
+		if(istype(src, /obj/structure/bed/roller))
+			var/obj/structure/bed/roller/roller = src
+			if(!roller.can_carry_big)
+				to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
+				return
+			if(M.stat != DEAD)
+				to_chat(user, SPAN_WARNING("[M] resists your attempt to buckle!"))
+				return
 	do_buckle(M, user)
 
 // the actual buckling proc

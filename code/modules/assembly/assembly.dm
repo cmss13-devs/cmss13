@@ -35,7 +35,8 @@
 	. = ..()
 
 /obj/item/device/assembly/proc/activate() //What the device does when turned on
-	if(!secured || (cooldown > 0)) return 0
+	if(!secured || (cooldown > 0))
+		return 0
 	cooldown = 2
 	spawn(10)
 		process_cooldown()
@@ -69,7 +70,8 @@
 
 /obj/item/device/assembly/proc/process_cooldown() //Called via spawn(10) to have it count down the cooldown var
 	cooldown--
-	if(cooldown <= 0) return 0
+	if(cooldown <= 0)
+		return 0
 	spawn(10)
 		process_cooldown()
 	return 1

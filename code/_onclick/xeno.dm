@@ -11,6 +11,9 @@
 		target = params2turf(click_parameters["screen-loc"], get_turf(src), client)
 		tile_attack = TRUE
 
+	if(target.z != z)
+		return
+
 	if(isturf(target) && tile_attack) //Attacks on turfs must be done indirectly through directional attacks or clicking own sprite.
 		var/turf/T = target
 		var/mob/living/non_xeno_target
@@ -18,6 +21,8 @@
 			if (!iscarbon(L))
 				if (!alt)
 					alt = L // last option is a simple mob
+				continue
+			if(HAS_TRAIT(L, TRAIT_NESTED))
 				continue
 
 			if (!L.is_xeno_grabbable() || L == src) //Xenos never attack themselves.

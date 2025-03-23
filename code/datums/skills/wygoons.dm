@@ -8,6 +8,18 @@
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 	)
 
+/datum/skills/wy_goon_medic
+	name = "Corporate Security Medic"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
+	)
+
 /datum/skills/wy_goon_tech
 	name = "Corporate Security Support Technician"
 	skills = list(

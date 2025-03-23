@@ -109,7 +109,8 @@
 /obj/structure/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
 	for(var/obj/structure/machinery/keycard_auth/KA in GLOB.machines)
-		if(KA == src || KA.channel != channel) continue
+		if(KA == src || KA.channel != channel)
+			continue
 		KA.reset()
 		INVOKE_ASYNC(KA, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth, receive_request), src)
 
@@ -146,7 +147,8 @@
 			revoke_maint_all_access()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
-	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
+	if(CONFIG_GET(flag/ert_admin_call_only))
+		return 1
 	return SSticker.mode && SSticker.mode.ert_disabled
 
 GLOBAL_VAR_INIT(maint_all_access, TRUE)
@@ -240,11 +242,11 @@ GLOBAL_VAR_INIT(maint_all_access, TRUE)
 		dat += "Select an event to trigger:<ul>"
 		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
 		dat += "</ul>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
 		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	return
 
 /obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(timeleft = 0)

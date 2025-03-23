@@ -535,6 +535,11 @@
 	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
 
 /datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	if(method == TOUCH)
+		return
+	if(!ishuman_strict(chem_host))
+		return
+
 	give_action(chem_host, /datum/action/human_action/psychic_whisper)
 	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
 

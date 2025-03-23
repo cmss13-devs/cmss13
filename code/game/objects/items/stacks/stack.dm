@@ -136,7 +136,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 					t1 += " <A href='byond://?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
 
 	t1 += "</TT></body></HTML>"
-	show_browser(user, t1, "Construction using [src]", "stack")
+	show_browser(user, t1, "Construction using [src]", "stack", width = 440, height = 500)
 	return
 
 /obj/item/stack/Topic(href, href_list)
@@ -184,7 +184,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
-			if(!OT.allow_construction)
+			var/area/area = get_area(usr)
+			if(!OT.allow_construction || !area.allow_construction)
 				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
 				return
 

@@ -70,8 +70,10 @@
 				user.put_in_hands(RG)
 
 /obj/item/stack/sheet/glass/proc/construct_window(mob/user)
-	if(!user || !src) return FALSE
-	if(!istype(user.loc,/turf)) return FALSE
+	if(!user || !src)
+		return FALSE
+	if(!istype(user.loc,/turf))
+		return FALSE
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return FALSE
@@ -82,6 +84,10 @@
 	title += " ([src.amount] sheet\s left)"
 	var/to_build = tgui_input_list(user, title, "What would you like to construct?", construction_options)
 	if(!to_build)
+		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("Windows must be constructed on a proper surface!"))
 		return
 	var/turf/open/T = user.loc
 	if(!(istype(T) && T.allow_construction))
@@ -100,8 +106,10 @@
 		return
 	switch(to_build)
 		if("One Direction")
-			if(!src) return TRUE
-			if(src.loc != user) return TRUE
+			if(!src)
+				return TRUE
+			if(src.loc != user)
+				return TRUE
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
 			if(AC)
 				to_chat(usr, SPAN_WARNING("\The [src] cannot be built here!"))
@@ -132,8 +140,10 @@
 			WD.set_constructed_window(dir_to_set)
 			src.use(1)
 		if("Full Window")
-			if(!src) return TRUE
-			if(src.loc != user) return TRUE
+			if(!src)
+				return TRUE
+			if(src.loc != user)
+				return TRUE
 			if(src.amount < 4)
 				to_chat(user, SPAN_DANGER("You need more glass to do that."))
 				return TRUE
@@ -144,9 +154,11 @@
 			WD.set_constructed_window()
 			src.use(4)
 		if("Windoor")
-			if(!is_reinforced) return TRUE
+			if(!is_reinforced)
+				return TRUE
 
-			if(!src || src.loc != user) return TRUE
+			if(!src || src.loc != user)
+				return TRUE
 
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
 			if(AC)

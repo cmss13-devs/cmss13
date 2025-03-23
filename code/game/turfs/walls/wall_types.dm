@@ -508,9 +508,11 @@
 	color = "#535963"
 	walltype = WALL_CAVE
 	turf_flags = TURF_HULL
+	baseturfs = /turf/open/gm/dirt
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
+	baseturfs = /turf/open/gm/dirt
 
 /turf/closed/wall/rock/orange
 	color = "#994a16"
@@ -1288,7 +1290,8 @@
 		var/turf/T
 		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
-			if(!istype(T)) continue
+			if(!istype(T))
+				continue
 			for(var/obj/structure/mineral_door/resin/R in T)
 				R.check_resin_support()
 

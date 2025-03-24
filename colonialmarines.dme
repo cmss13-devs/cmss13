@@ -643,6 +643,7 @@
 #include "code\datums\moba\ward.dm"
 #include "code\datums\moba\castes\_moba_caste.dm"
 #include "code\datums\moba\castes\drone.dm"
+#include "code\datums\moba\castes\spitter.dm"
 #include "code\datums\moba\castes\vampire.dm"
 #include "code\datums\moba\items\_item.dm"
 #include "code\datums\moba\items\common.dm"

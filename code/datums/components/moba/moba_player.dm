@@ -196,7 +196,7 @@
 
 	parent_xeno = null
 	player_caste = null
-	QDEL_NULL(player_datum)
+	player_datum = null
 
 /// If the bullet is acidic, we don't use the value gotten from armor and instead use the acid_armor value
 /datum/component/moba_player/proc/on_bullet_act(mob/living/carbon/xenomorph/acting_xeno, list/damage_result, pre_mitigation_damage, ammo_flags, obj/projectile/acting_projectile)

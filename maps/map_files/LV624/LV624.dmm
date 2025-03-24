@@ -9181,7 +9181,7 @@
 /area/lv624/lazarus/secure_storage)
 "aWU" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWV" = (

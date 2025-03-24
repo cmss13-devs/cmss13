@@ -28,6 +28,12 @@
 	desc = "Failing to follow a lawful order from a superior that is personally directed at you."
 	brig_time = 15
 
+/datum/law/major_law/civil_insubordination
+	name = "Civil Insubordination"
+	desc = "Failing to follow a direct and lawful order from the Commander or Duty Officer during an active Military Operation."
+	special_punishment = "Only Applicable to Non-USCM personnel."
+	brig_time = 10
+
 /datum/law/major_law/interference
 	name = "Interference"
 	desc = "Interfering in a legal arrest being performed with ill intent. Clearly trying to hinder the arrest being performed."

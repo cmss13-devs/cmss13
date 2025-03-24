@@ -19,7 +19,11 @@
 
 	unload_sound = 'sound/weapons/handling/flamer_unload.ogg'
 	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
+	dry_fire_sound = list('sound/weapons/flamer_dryfire1.ogg', 'sound/weapons/flamer_dryfire2.ogg')
 	fire_sound = ""
+
+	var/ignite_sound = 'sound/weapons/handling/flamer_ignition.ogg'
+	var/extinguish_sound = 'sound/weapons/handling/flamer_ignition.ogg'
 
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
@@ -67,7 +71,7 @@
 
 /obj/item/weapon/gun/flamer/gun_safety_handle(mob/user)
 	to_chat(user, SPAN_NOTICE("You [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "extinguish" : "ignite")] the pilot light."))
-	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
+	playsound(user, flags_gun_features & GUN_TRIGGER_SAFETY ? extinguish_sound : ignite_sound, 25, 1)
 	update_icon()
 
 /obj/item/weapon/gun/flamer/get_examine_text(mob/user)
@@ -88,9 +92,11 @@
 	icon_state = new_icon_state
 
 	if(current_mag && current_mag.reagents)
-		var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
-		I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
-		overlays += I
+		var/obj/item/ammo_magazine/flamer_tank/flamtank = current_mag
+		if(flamtank.stripe_icon)
+			var/image/I = image(icon, icon_state="[base_gun_icon]_strip")
+			I.color = mix_color_from_reagents(current_mag.reagents.reagent_list)
+			overlays += I
 
 	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
 		var/obj/item/attachable/attached_gun/flamer_nozzle/nozzle = locate() in contents
@@ -102,13 +108,14 @@
 	. = ..()
 	if(.)
 		if(!current_mag || !current_mag.current_rounds)
+			click_empty(user)
 			return NONE
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
-							'sound/weapons/gun_flamethrower1.ogg',
-							'sound/weapons/gun_flamethrower2.ogg',
-							'sound/weapons/gun_flamethrower3.ogg')
+		'sound/weapons/gun_flamethrower1.ogg',
+		'sound/weapons/gun_flamethrower2.ogg',
+		'sound/weapons/gun_flamethrower3.ogg')
 	return pick(fire_sounds)
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
@@ -140,6 +147,7 @@
 		return NONE
 
 	if(!current_mag)
+		click_empty(user)
 		return NONE
 
 	if(current_mag.current_rounds <= 0)
@@ -216,6 +224,7 @@
 	set waitfor = 0
 	last_fired = world.time
 	if(!current_mag || !current_mag.reagents || !length(current_mag.reagents.reagent_list))
+		click_empty(user)
 		return
 
 	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
@@ -901,3 +910,34 @@
 // So it doens't do the spinny animation
 /obj/flamer_fire/onZImpact(turf/impact_turf, height)
 	return
+
+/obj/item/weapon/gun/flamer/survivor
+	name = "\improper improvised flamethrower"
+	desc = "A custom made incinerator, made from repurposed welding and piping equipment."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/flamers.dmi'
+	icon_state = "flamer"
+	item_state = "flamer"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
+	)
+	ignite_sound = 'sound/weapons/surv_flamer_ignite.ogg'
+	extinguish_sound = 'sound/weapons/surv_flamer_extinguish.ogg'
+
+	fire_sound = ""
+
+	current_mag = /obj/item/ammo_magazine/flamer_tank/survivor
+
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+	)
+
+/obj/item/weapon/gun/flamer/survivor/get_fire_sound()
+	var/list/fire_sounds = list(
+		'sound/weapons/surv_flamer_fire1.ogg',
+		'sound/weapons/surv_flamer_fire2.ogg',
+		'sound/weapons/surv_flamer_fire3.ogg',
+		'sound/weapons/surv_flamer_fire4.ogg')
+	return pick(fire_sounds)

@@ -541,7 +541,9 @@
 
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
-//Military Survivors//
+////************Military Survivors************////
+
+// Forecon //
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_tech
 	equipment = /datum/equipment_preset/survivor/forecon/tech
@@ -562,6 +564,10 @@
 /obj/effect/landmark/survivor_spawner/lv522_forecon_squad_leader
 	equipment = /datum/equipment_preset/survivor/forecon/squad_leader
 	spawn_priority = SPAWN_PRIORITY_HIGH
+
+// US Army //
+
+// UPP Recon //
 
 /obj/effect/landmark/survivor_spawner/upp/soldier
 	icon_state = "surv_upp"

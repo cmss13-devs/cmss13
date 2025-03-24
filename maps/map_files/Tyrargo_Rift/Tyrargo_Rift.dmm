@@ -13,6 +13,31 @@
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /turf/open/gm/river/no_overlay/sewage,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
+"aad" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"aae" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
+"aaf" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/south)
+"aag" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"aah" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
+"aai" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/north)
 "aaj" = (
 /turf/open_space,
 /area/tyrargo/oob)
@@ -22,9 +47,31 @@
 "aal" = (
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"aam" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_exterior/south_east)
+"aan" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aao" = (
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/indoors/sewer_treatment/upper)
+"aap" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/tyrargo/outdoors/outskirts/central)
+"aaq" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_exterior/west)
 "aar" = (
 /obj/structure/flora/tree/dead/tree_3{
 	pixel_x = -4;
@@ -49,6 +96,10 @@
 "aas" = (
 /turf/open/asphalt/cement,
 /area/tyrargo/oob)
+"aat" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
 "aau" = (
 /obj/structure/machinery/light,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -75,6 +126,11 @@
 "aaB" = (
 /turf/open/floor/strata/green4/east,
 /area/tyrargo/indoors/market/ground)
+"aaC" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aaD" = (
 /turf/open/floor/strata/green3/west,
 /area/tyrargo/indoors/market/ground)
@@ -93,6 +149,11 @@
 "aaI" = (
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/indoors/sewer_treatment/upper)
+"aaJ" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/west)
 "aaK" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -135,6 +196,11 @@
 "aaS" = (
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/south_ground)
+"aaT" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/hybrisa/street/roadlines4,
+/area/tyrargo/outdoors/colony_streets/north_west)
 "aaU" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
@@ -165,6 +231,16 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/engineering/ground)
+"aba" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/outskirts_road/east)
+"abb" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/east)
 "abc" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/clothing/accessory/storage/droppouch,
@@ -178,6 +254,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"abf" = (
+/obj/structure/flora/tree/tyrargo_small/tree_stump{
+	pixel_x = -23;
+	pixel_y = 4;
+	layer = 3
+	},
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
 "abg" = (
 /obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed{
 	pixel_y = -34;
@@ -395,6 +480,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/security/ground)
+"abL" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
 "abM" = (
 /obj/structure/stairs/multiz/up{
 	dir = 4
@@ -14818,6 +14907,7 @@
 "aMK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/mob/living/simple_animal/hostile/alien,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aML" = (
@@ -22959,7 +23049,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "bbZ" = (
@@ -26823,6 +26912,7 @@
 	pixel_x = -10;
 	pixel_y = -5
 	},
+/mob/living/simple_animal/hostile/alien,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkj" = (
@@ -36174,6 +36264,7 @@
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bEA" = (
 /obj/item/prop/colony/used_flare,
+/mob/living/simple_animal/hostile/alien,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bEB" = (
@@ -40920,6 +41011,7 @@
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
 	},
+/mob/living/simple_animal/hostile/alien,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/east)
 "bQv" = (
@@ -48049,6 +48141,7 @@
 /obj/structure/prop/rock/black_ground{
 	dir = 1
 	},
+/obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
 "cnb" = (
@@ -48383,10 +48476,6 @@
 	dir = 8
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/outdoors/colony_exterior/west)
-"cow" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/colony_exterior/west)
 "cox" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -53818,6 +53907,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
+/mob/living/simple_animal/hostile/alien,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dyN" = (
@@ -77573,7 +77663,7 @@ bsw
 bsw
 bsw
 bXy
-bVX
+aae
 bXq
 bVX
 bVX
@@ -79877,7 +79967,7 @@ bsw
 bsw
 bsO
 bsw
-bXY
+aaf
 bZr
 bsw
 bsO
@@ -80746,7 +80836,7 @@ bsw
 bsw
 caO
 caS
-caS
+aai
 caS
 cdG
 cdE
@@ -81769,7 +81859,7 @@ bWc
 bWj
 bWj
 bWd
-bWd
+aad
 bWy
 bWd
 bWl
@@ -82028,7 +82118,7 @@ bsw
 bsw
 caz
 caz
-caz
+aah
 caz
 caz
 caO
@@ -83319,7 +83409,7 @@ bsw
 bsw
 bsw
 caU
-caz
+aah
 caz
 caz
 caz
@@ -83328,7 +83418,7 @@ caF
 bXZ
 bXZ
 bZm
-bXZ
+aag
 bXZ
 bYb
 bsw
@@ -83577,7 +83667,7 @@ bsw
 bsw
 bsw
 bXP
-bVX
+aae
 bVX
 bsw
 bsw
@@ -84074,7 +84164,7 @@ bsw
 bsw
 bZk
 bXY
-bXY
+aaf
 bXY
 bXY
 bZk
@@ -112307,7 +112397,7 @@ bxJ
 bxJ
 bCj
 bBJ
-bBJ
+aan
 bBW
 bBJ
 bBK
@@ -113736,7 +113826,7 @@ bpe
 mRz
 bGi
 bxJ
-bFt
+aaC
 bxJ
 bxJ
 boJ
@@ -115725,7 +115815,7 @@ baT
 bxz
 bIM
 bxz
-bDj
+aaJ
 byp
 bDt
 bxz
@@ -120692,7 +120782,7 @@ bxE
 bsw
 bzb
 byZ
-bxr
+cix
 bxr
 bxr
 bxr
@@ -121895,7 +121985,7 @@ bGt
 bFj
 bEL
 bBg
-bBg
+aat
 bBg
 bMq
 bBg
@@ -122329,7 +122419,7 @@ bAq
 bxr
 bxr
 bxr
-cix
+bxr
 bxY
 bxE
 bzu
@@ -122428,7 +122518,7 @@ bPm
 bPm
 bPm
 bOP
-bBg
+cog
 bFj
 bFj
 bKz
@@ -123570,7 +123660,7 @@ bBg
 bBg
 bBg
 bBg
-bBg
+aat
 bBg
 bBg
 bBg
@@ -123717,7 +123807,7 @@ bBg
 bBg
 bBg
 bBg
-bBg
+aat
 bBg
 bBg
 bBg
@@ -123946,7 +124036,7 @@ bBg
 bBg
 bBg
 bDB
-bCH
+aap
 bCH
 bCH
 bCH
@@ -124109,7 +124199,7 @@ bGH
 bGG
 bGt
 bBg
-cog
+bBg
 bBg
 bBh
 bBg
@@ -124253,7 +124343,7 @@ bBg
 bBg
 bBg
 bBg
-bBg
+aat
 bBg
 bBg
 bBg
@@ -124606,7 +124696,7 @@ bBg
 bBg
 bBg
 bBg
-bBg
+aat
 bBg
 bBg
 bBg
@@ -125001,7 +125091,7 @@ bBw
 bBg
 bBg
 bBg
-bBg
+aat
 bBh
 bBg
 bBg
@@ -125694,7 +125784,7 @@ bRM
 bzi
 bzi
 bzy
-bwE
+abL
 bwE
 bIq
 bzi
@@ -127183,7 +127273,7 @@ byQ
 bzy
 bwE
 bBn
-bBk
+abb
 bBl
 bBl
 bBl
@@ -129936,7 +130026,7 @@ bwE
 bwE
 bwE
 bwE
-bmk
+bwE
 bwE
 bwE
 bzh
@@ -130085,7 +130175,7 @@ bFF
 bFF
 bwE
 bwE
-bKR
+abf
 bFF
 bFF
 bHU
@@ -130253,7 +130343,7 @@ bQe
 bwE
 bwE
 bzh
-bwE
+abL
 bwE
 bPa
 bOT
@@ -131007,7 +131097,7 @@ apt
 apl
 bBn
 uKB
-bJY
+aba
 aoZ
 bBn
 bJl
@@ -131737,7 +131827,7 @@ cqF
 cqF
 cqF
 cqF
-aoP
+aaT
 cqc
 cqd
 cnA
@@ -132114,13 +132204,13 @@ col
 col
 coL
 col
-cow
-cow
+col
+col
 tOO
 coj
 ckP
 ckP
-ckQ
+aaq
 mEC
 anF
 anF
@@ -132673,7 +132763,7 @@ ckP
 cna
 ckP
 ckP
-ckQ
+aaq
 ckP
 ckP
 ckP
@@ -149825,7 +149915,7 @@ cfI
 cfr
 cfr
 cfr
-cfI
+aam
 cfY
 cfA
 cfA

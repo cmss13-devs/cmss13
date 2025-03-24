@@ -197,6 +197,9 @@
 			//CIA
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
+			// US Army
+			if(JOB_ARMY_TROOPER)
+				marine_rk = "army_trpr"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"

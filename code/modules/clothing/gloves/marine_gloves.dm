@@ -176,7 +176,7 @@
 
 /obj/item/clothing/gloves/marine/veteran/pmc/apesuit
 	name = "\improper M5X gauntlets"
-	desc = "A pair of heavily armored gloves made to complete the M5X Apesuit"
+	desc = "A pair of heavily armored gloves made to pair up the M5X Apesuit system."
 	icon_state = "gauntlets"
 	item_state = "bgloves"
 	siemens_coefficient = 0

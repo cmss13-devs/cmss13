@@ -122,14 +122,6 @@
 	bound_xeno = null
 	return ..()
 
-/obj/effect/alien/resin/design/proc/forsaken_handling()
-	SIGNAL_HANDLER
-	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
-
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
-
 /obj/effect/alien/resin/design/speed_node
 	name = "Design Optimized Node (100)"
 	icon_state = "static_speednode"

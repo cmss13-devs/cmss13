@@ -164,6 +164,7 @@
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
 		/obj/item/attachable/scope/mini/nsg23,
+		/obj/item/attachable/suppressor/nsg,
 		/obj/item/attachable/attached_gun/shotgun/af13,
 	)
 

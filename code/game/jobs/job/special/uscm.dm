@@ -21,3 +21,6 @@
 // US Army
 /datum/job/special/uscm/trooper
 	title = JOB_ARMY_TROOPER
+
+/datum/job/special/uscm/cet
+	title = JOB_ARMY_ENGI

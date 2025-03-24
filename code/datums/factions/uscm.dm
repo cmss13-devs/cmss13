@@ -54,6 +54,8 @@
 			// US Army
 			if(JOB_ARMY_TROOPER)
 				marine_rk = "trpr"
+			if(JOB_ARMY_ENGI)
+				marine_rk = "cet"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")
@@ -125,6 +127,8 @@
 			// US Army
 			if(JOB_ARMY_TROOPER)
 				marine_rk = "trpr"
+			if(JOB_ARMY_ENGI)
+				marine_rk = "cet"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)

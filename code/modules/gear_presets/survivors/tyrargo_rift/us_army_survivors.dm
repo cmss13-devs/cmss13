@@ -93,7 +93,7 @@
 	assignment = JOB_ARMY_TROOPER
 	rank = JOB_ARMY_TROOPER
 	skills = /datum/skills/military/survivor/army_standard
-	minimap_icon = "army_trpr"
+	minimap_icon = "hudsquad_trpr"
 
 /datum/equipment_preset/survivor/army/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
@@ -102,3 +102,17 @@
 	add_army_weapon(new_human)
 
 ///*****************************//
+
+/datum/equipment_preset/survivor/army/engineer
+	name = "Survivor - US Army Combat Engineering Technician"
+	assignment = JOB_ARMY_ENGI
+	rank = JOB_ARMY_ENGI
+	skills = /datum/skills/military/survivor/army_engineer
+	minimap_icon = "hudsquad_cet"
+
+/datum/equipment_preset/survivor/army/engineer/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/welding(new_human), WEAR_HEAD)
+	..()
+	add_army_weapon(new_human)

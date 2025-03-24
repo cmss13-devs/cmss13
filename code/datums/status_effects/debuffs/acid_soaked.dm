@@ -2,6 +2,7 @@
 	id = "acid_soaked"
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 2 SECONDS
+	tick_interval = 1 SECONDS
 	var/damage_per_sec = 10
 
 /datum/status_effect/acid_soaked/New(list/arguments)

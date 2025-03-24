@@ -1298,12 +1298,6 @@
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
-/turf/closed/wall/resin/weak/greater
-	name = "greater weak resin wall"
-	desc = "Weird slime solidified into a wall. It looks like it will collapse soon..."
-	damage_cap = HEALTH_WALL_XENO_WEAK
-	duration = 10 SECONDS
-
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()
 	if(mapload)
@@ -1311,6 +1305,18 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
+/turf/closed/wall/resin/reflective/weak
+	name = "weakened reflective wall"
+	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
+	damage_cap = HEALTH_WALL_XENO_WEAK
+	var/duration = 10 SECONDS
+
+/turf/closed/wall/resin/reflective/weak/Initialize(mapload, ...)
+	. = ..()
+	if(mapload)
+		ScrapeAway()
+		return
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 /turf/closed/wall/resin/can_be_dissolved()
 	return FALSE

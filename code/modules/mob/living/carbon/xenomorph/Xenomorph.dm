@@ -305,21 +305,10 @@
 	var/list/built_structures = list()
 
 	// Designer stuff
-	var/list/speed_node_list = list()
-	var/list/cost_node_list = list()
-	var/list/whitelist_build = list(
-	/datum/resin_construction/resin_turf/wall,
-	/datum/resin_construction/resin_turf/wall/thick,
-	/datum/resin_construction/resin_turf/wall/queen,
-	/datum/resin_construction/resin_turf/membrane,
-	/datum/resin_construction/resin_turf/membrane/thick,
-	/datum/resin_construction/resin_turf/membrane/queen,
-	/datum/resin_construction/resin_turf/wall/reflective,
-	/datum/resin_construction/resin_obj/door,
-	/datum/resin_construction/resin_obj/door/thick,
-	/datum/resin_construction/resin_obj/door/queen,
-	)
-	var/list/blacklist_caste = list(XENO_CASTE_HIVELORD)
+	var/obj/effect/alien/resin/design/selected_design = null
+	var/list/available_design = list()
+	var/list/current_design = list()
+	var/max_design_nodes = 0
 
 	var/icon_xeno
 	var/icon_xenonid

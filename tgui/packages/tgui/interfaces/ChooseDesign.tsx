@@ -1,12 +1,16 @@
 import { classes } from 'common/react';
 import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Section, Stack, Tabs } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
-import { useBackend } from '../backend';
-import { Box, Button, Section, Stack, Tabs } from '../components';
-import { Window } from '../layouts';
+type Data = {
+  design: { name: string; desc: string; image: string; id: string }[];
+  selected_design: string | null;
+};
 
 export const ChooseDesign = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { design, selected_design } = data;
 
   const [compact, setCompact] = useState(false);
@@ -57,7 +61,7 @@ export const ChooseDesign = (props) => {
                     />
                   </Stack.Item>
                   <Stack.Item grow>
-                    <Box fontSiz>{val.name}</Box>
+                    <Box>{val.name}</Box>
                   </Stack.Item>
                 </Stack>
               </Tabs.Tab>

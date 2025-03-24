@@ -69,9 +69,9 @@
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	delay = 0
 
-///
-///
-///
+//////////////////////////
+/// Designer... Paths. ///
+//////////////////////////
 
 /obj/effect/alien/resin/design
 	name = "Design Node"
@@ -122,6 +122,14 @@
 	bound_xeno = null
 	return ..()
 
+/obj/effect/alien/resin/design/proc/forsaken_handling()
+	SIGNAL_HANDLER
+	if(is_ground_level(z))
+		hivenumber = XENO_HIVE_FORSAKEN
+		set_hive_data(src, XENO_HIVE_FORSAKEN)
+
+	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
 /obj/effect/alien/resin/design/speed_node
 	name = "Design Optimized Node (100)"
 	icon_state = "static_speednode"
@@ -132,14 +140,6 @@
 		. += "On closer examination, this node looks like it has a big green oozing bulb at its center, making the weeds under it twitch..."
 	if(isxeno(user) || isobserver(user))
 		. += "You sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
-
-/obj/effect/alien/resin/design/speed_node/proc/forsaken_handling()
-	SIGNAL_HANDLER
-	if(is_ground_level(z))
-		hivenumber = XENO_HIVE_FORSAKEN
-		set_hive_data(src, XENO_HIVE_FORSAKEN)
-
-	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
 
 /obj/effect/alien/resin/design/cost_node
 	name = "Design Flexible Node (125)"
@@ -177,9 +177,9 @@
 	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/activable/greater_resin_surge
-	name = "Greater Resin Surge (200)"
+	name = "Greater Resin Surge (250)"
 	action_icon_state = "greater_resin_surge"
-	plasma_cost = 200
+	plasma_cost = 250
 	xeno_cooldown = 30 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
 	action_type = XENO_ACTION_CLICK
@@ -251,7 +251,7 @@
 		qdel(src)
 
 /////////////////////////////
-
+///     Place Design      ///
 /////////////////////////////
 
 /datum/action/xeno_action/activable/place_design
@@ -436,8 +436,9 @@
 		return FALSE
 	return TRUE
 
-///////////////
-///////////////
+//////////////////////////
+///   Change Design    ///
+//////////////////////////
 
 /datum/action/xeno_action/onclick/change_design
 	name = "Choose Action"
@@ -446,7 +447,7 @@
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/onclick/change_design/give_to(mob/living/carbon/xenomorph/xeno)
 	. = ..()

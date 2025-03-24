@@ -1,5 +1,6 @@
-///*****************************US Army Survivors*******************************************************/
+///*****************************US Army Survivors************************************************/
 /datum/equipment_preset/survivor/army
+	name = "Survivor - US Army"
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
@@ -44,8 +45,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake/orange(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
 	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
-
-
 
 /datum/equipment_preset/survivor/army/add_survivor_weapon_security(mob/living/carbon/human/new_human)
 	return
@@ -93,7 +92,7 @@
 	name = "Survivor - US Army Trooper"
 	assignment = JOB_ARMY_TROOPER
 	rank = JOB_ARMY_TROOPER
-	skills = /datum/skills/military/survivor/forecon_standard
+	skills = /datum/skills/military/survivor/army_standard
 	minimap_icon = "army_trpr"
 
 /datum/equipment_preset/survivor/army/standard/load_gear(mob/living/carbon/human/new_human)

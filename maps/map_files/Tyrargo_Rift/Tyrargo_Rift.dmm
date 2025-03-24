@@ -14,28 +14,28 @@
 /turf/open/gm/river/no_overlay/sewage,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aad" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "aae" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "aaf" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/south)
 "aag" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/south)
 "aah" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/north)
 "aai" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "aaj" = (
@@ -55,14 +55,14 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_east)
 "aan" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aao" = (
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/indoors/sewer_treatment/upper)
 "aap" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/outskirts/central)
 "aaq" = (
@@ -97,7 +97,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/oob)
 "aat" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "aau" = (
@@ -128,7 +128,7 @@
 /area/tyrargo/indoors/market/ground)
 "aaC" = (
 /obj/effect/decal/cleanable/blood,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aaD" = (
@@ -151,7 +151,7 @@
 /area/tyrargo/indoors/sewer_treatment/upper)
 "aaJ" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aaK" = (
@@ -198,7 +198,7 @@
 /area/tyrargo/indoors/apartment/south_ground)
 "aaT" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/hybrisa/street/roadlines4,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aaU" = (
@@ -233,12 +233,12 @@
 /area/tyrargo/indoors/engineering/ground)
 "aba" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "abb" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/east)
 "abc" = (
@@ -260,7 +260,7 @@
 	pixel_y = 4;
 	layer = 3
 	},
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "abg" = (
@@ -481,7 +481,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/security/ground)
 "abL" = (
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "abM" = (
@@ -1021,7 +1021,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
 	},
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "adr" = (
@@ -14868,7 +14868,7 @@
 "aMK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aML" = (
@@ -26670,7 +26670,7 @@
 	pixel_x = -10;
 	pixel_y = -5
 	},
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkj" = (
@@ -35993,7 +35993,7 @@
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bEA" = (
 /obj/item/prop/colony/used_flare,
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bEB" = (
@@ -40684,7 +40684,6 @@
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
 	},
-/mob/living/simple_animal/hostile/alien,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/east)
 "bQv" = (
@@ -53492,7 +53491,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
-/mob/living/simple_animal/hostile/alien,
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dyN" = (
@@ -127175,7 +127174,7 @@ bNz
 bzy
 bxw
 bwE
-bwE
+abL
 bQo
 bIq
 byQ

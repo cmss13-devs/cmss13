@@ -154,9 +154,6 @@
 	if(buckled_mob)
 		overlays += over_image
 
-/obj/structure/bed/chair/comfy/vehicle/driver/armor/wy
-	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
-
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor
 	desc = "Military-grade seat for armored vehicle gunner with some controls, switches and indicators."
 	var/image/over_image = null

@@ -130,7 +130,7 @@
 	icon_state = "armor_chair"
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/wy/on_load(datum/interior/I)
-	var/obj/structure/bed/chair/comfy/vehicle/driver/armor/wy/S = new(loc)
+	var/obj/structure/bed/chair/comfy/vehicle/driver/armor/S = new(loc)
 
 	S.icon = icon
 	S.icon_state = icon_state

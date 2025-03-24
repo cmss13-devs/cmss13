@@ -30,7 +30,7 @@
 
 /datum/law/major_law/civil_insubordination
 	name = "Civil Insubordination"
-	desc = "Failing to follow a direct and lawful order from the Commander or Duty Officer during an active Military Operation."
+	desc = "Failing to follow a lawful order from the Commander or Duty Officer (or assigned department head, if any) during an active Military Operation."
 	special_punishment = "Only Applicable to Non-USCM personnel."
 	brig_time = 10
 

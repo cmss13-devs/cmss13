@@ -20,7 +20,7 @@
 
 /datum/law/minor_law/civil_insubordination
 	name = "Civil Insubordination"
-	desc = "Failing to follow a lawful order from the Commander or Duty Officer during an active Military Operation. Additionally applicable for being disrespectful to the Commander or Duty Officer."
+	desc = "Failing to follow a lawful order from a member of the department (if any) to which you have been assigned. Additionally applicable for being disrespectful to the Commander or Duty Officer."
 	special_punishment = "Only Applicable to Non-USCM personnel."
 	brig_time = 5
 

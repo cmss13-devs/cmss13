@@ -200,9 +200,6 @@
 	if(buckled_mob)
 		overlays += over_image
 
-/obj/structure/bed/chair/comfy/vehicle/gunner/armor/wy
-	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
-
 //armored vehicles support gunner seat
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner
@@ -288,15 +285,9 @@
 				return
 		to_chat(M, SPAN_WARNING("ERROR. NO FPW FOUND, TELL A DEV!"))
 
-/obj/structure/bed/chair/comfy/vehicle/support_gunner/wy
-	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
-
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/second
 	name = "right support gunner's seat"
 	seat = VEHICLE_SUPPORT_GUNNER_TWO
-
-/obj/structure/bed/chair/comfy/vehicle/support_gunner/second/wy
-	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 
 //ARMORED VEHICLES PASSENGER SEATS
 //Unique feature - you can put two seats on same tile with different pixel_offsets, humans will be buckled with respective offsets

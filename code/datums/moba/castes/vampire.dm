@@ -4,7 +4,7 @@
 	name = "Vampire"
 	desc = {"
 		Aggressive melee combat caste focused on lifesteal and scaling.<br>
-		<b>P:</b> Gain permanent stacks of bloodlust from landing your abilities. Every 10 stacks of bloodlust grants lifesteal.<br>
+		<b>P:</b> Gain permanent stacks of bloodlust from landing your abilities on players. Every 10 stacks of bloodlust grants lifesteal.<br>
 		<b>1:</b> Rush towards a target within 4 tiles.<br>
 		<b>2:</b> Slash in a wide area in front of you, healing for each target hit.<br>
 		<b>3:</b> Quickly stab a target with your tail, ignoring some armor.<br>
@@ -54,7 +54,7 @@
 
 
 /datum/action/xeno_action/activable/flurry/moba
-	desc = "1x3 attack that damages everyone hit for 30/40/50 (+40% AD) (+50% Bloodlust) physical damage. You heal for 15/20/25% (+5% AD) of the damage done. Each player hit grants 1 stack of bloodlust (2 against players). Cooldown 4 seconds."
+	desc = "1x3 attack that damages everyone hit for 30/40/50 (+40% AD) (+50% Bloodlust) physical damage. You heal for 15/20/25% (+5% AD) of the damage done. Each player hit grants 2 stacks of bloodlust. Cooldown 4 seconds."
 	xeno_cooldown = 3 SECONDS
 	var/base_damage = 30
 	var/heal_percentage = 0.15
@@ -77,18 +77,18 @@
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
 	if(HAS_TRAIT(target, TRAIT_MOBA_PARTICIPANT))
 		bloodlust_effect.add_stacks(2)
-	else
-		bloodlust_effect.add_stacks(1)
+//	else
+//		bloodlust_effect.add_stacks(1)
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
 
 /datum/action/xeno_action/activable/flurry/moba/level_up_ability(new_level)
 	base_damage = src::base_damage + ((new_level - 1) * 10)
 	heal_percentage = src::heal_percentage + ((new_level - 1) * 0.05)
 
-	desc = "1x3 attack that damages everyone hit for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 30, 40, 50)] (+40% AD) (+50% Bloodlust) physical damage. You heal for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "15%", "20%", "25%")] (+5% AD) of the damage done. Each creature hit grants 1 stack of bloodlust (2 against players). Cooldown 4 seconds."
+	desc = "1x3 attack that damages everyone hit for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 30, 40, 50)] (+40% AD) (+50% Bloodlust) physical damage. You heal for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "15%", "20%", "25%")] (+5% AD) of the damage done. Each player hit grants 2 stacks of bloodlust. Cooldown 4 seconds."
 
 /datum/action/xeno_action/activable/tail_jab/moba
-	desc = "Quickly stab your tail at a target within 2 tiles, dealing 1.2/1.3/1.4x (+50% Bloodlust) your standard attack's damage with +0/5/10 armor penetration in addition to slowing the target for 0.5 seconds and shoving them back a tile. Hitting a creature grants 2 stacks of bloodlust (4 against players). Cooldown 8 seconds."
+	desc = "Quickly stab your tail at a target within 2 tiles, dealing 1.2/1.3/1.4x (+50% Bloodlust) your standard attack's damage with +0/5/10 armor penetration in addition to slowing the target for 0.5 seconds and shoving them back a tile. Hitting a player grants 4 stacks of bloodlust. Cooldown 8 seconds."
 	xeno_cooldown = 8 SECONDS
 	direct_hit_bonus = FALSE
 	plasma_cost = 80
@@ -104,15 +104,15 @@
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
 	if(HAS_TRAIT(hit_target, TRAIT_MOBA_PARTICIPANT))
 		bloodlust_effect.add_stacks(4)
-	else
-		bloodlust_effect.add_stacks(2)
+//	else
+//		bloodlust_effect.add_stacks(2)
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, hit_target)
 
 /datum/action/xeno_action/activable/tail_jab/moba/level_up_ability(new_level)
 	damage_mult = src::damage_mult + ((new_level - 1) * 0.2)
 	bonus_pen = src::bonus_pen + ((new_level - 1) * 5)
 
-	desc = "Quickly stab your tail at a target within 2 tiles, dealing [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "1.2x", "1.4x", "1.6x")] (+50% Bloodlust) your standard attack's damage with +[MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 0, 5, 10)] armor penetration in addition to slowing the target for 0.5 seconds and shoving them back a tile. Hitting a creature grants 2 stacks of bloodlust (4 against players). Cooldown 8 seconds."
+	desc = "Quickly stab your tail at a target within 2 tiles, dealing [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "1.2x", "1.4x", "1.6x")] (+50% Bloodlust) your standard attack's damage with +[MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 0, 5, 10)] armor penetration in addition to slowing the target for 0.5 seconds and shoving them back a tile. Hitting a player grants 4 stacks of bloodlust. Cooldown 8 seconds."
 
 
 /datum/action/xeno_action/activable/moba_headbite // not inheriting for this, too much is different
@@ -121,7 +121,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
-	desc = "Deals 150/200/250 (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 5 stacks of bloodlust (10 against players) and heals for the damage dealt. Cooldown 120/100/80 seconds."
+	desc = "Deals 150/200/250 (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 10 stacks of bloodlust and heals for the damage dealt. Cooldown 120/100/80 seconds."
 	xeno_cooldown = 120 SECONDS
 	plasma_cost = 120
 	var/true_damage_to_deal = 150
@@ -167,8 +167,8 @@
 
 	if(HAS_TRAIT(target_carbon, TRAIT_MOBA_PARTICIPANT))
 		bloodlust_effect.add_stacks(10)
-	else
-		bloodlust_effect.add_stacks(5)
+	//else
+	//	bloodlust_effect.add_stacks(5)
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target_carbon)
 
 	apply_cooldown()
@@ -178,4 +178,4 @@
 	true_damage_to_deal = src::true_damage_to_deal + ((new_level - 1) * 50)
 	xeno_cooldown = src::xeno_cooldown - ((new_level - 1) * (20 SECONDS))
 
-	desc = "Deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 150, 200, 250)] (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 5 stacks of bloodlust (10 against players) and heals for the damage dealt. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 100, 80)] seconds."
+	desc = "Deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 150, 200, 250)] (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 10 stacks of bloodlust and heals for the damage dealt. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 100, 80)] seconds."

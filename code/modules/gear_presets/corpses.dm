@@ -1628,7 +1628,7 @@
 
 /datum/equipment_preset/corpse/tyrargo/us_army_trooper/load_gear(mob/living/carbon/human/new_human)
 
-	var/choice = rand(1,16)
+	var/choice = rand(1,12)
 	var/obj/item/clothing/under/marine/army/uniform = new()
 	var/obj/item/clothing/accessory/ranks/marine/e2/pin = new()
 	var/obj/item/clothing/accessory/patch/army/patch_army = new()

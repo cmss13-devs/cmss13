@@ -28,27 +28,7 @@ function testHubStorage() {
 var status_tab_parts = ["Loading..."];
 var current_tab = null;
 var current_fontsize = 14; // in px, also determines line height and category header sizes for the verb menus
-// Per `storage.js` for tgui:
-// Localstorage can sometimes throw an error, even if DOM storage is not
-// disabled in IE11 settings.
-// See: https://superuser.com/questions/1080011
-try {
-	if (!Byond.TRIDENT) {
-		// Unfortunately byond storage isn't available immediately
-		if (!testHubStorage()) {
-			document.addEventListener('byondstorageupdated', onByondStorageLoad);
-		} else {
-			current_fontsize = parseInt(window.hubStorage.getItem("fontsize"));
-		}
-	} else { // TODO: Remove with 516
-		current_fontsize = parseInt(window.localStorage.getItem("fontsize"));
-	}
-} catch (error) {
-	current_fontsize = 14;
-}
-if (isNaN(current_fontsize) || current_fontsize <= 0) {
-	current_fontsize = 14;
-}
+
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var spells = [];

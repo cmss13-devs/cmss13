@@ -224,7 +224,7 @@
 	assignment = "CLF Guerilla"
 	rank = JOB_CLF
 	access = list(ACCESS_CIVILIAN_PUBLIC)
-	survivor_variant = HOSTILE_SURVIVOR
+//	survivor_variant = HOSTILE_SURVIVOR
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/operative
 	name = "Survivor - Navalis - CLF Special Force: Operative"

@@ -502,6 +502,11 @@
 		to_chat(user, SPAN_WARNING("The [name] is empty."))
 		return
 
+/obj/item/storage/pill_bottle/shake(mob/user, turf/tile)
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		error_idlock(user)
+		return
+	return ..()
 
 /obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
 	if(istype(W))

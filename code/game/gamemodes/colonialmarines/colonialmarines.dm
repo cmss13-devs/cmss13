@@ -149,6 +149,8 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer! Bugs are pouring into the inner perimeter! Civilians are taking up arms to defend the site, but they’re untrained.\n\nWe’re being overrun, we need fire support now! Now god dammit!", "Tyrargo Civilian Evac, 1st Air Cav Command", 'sound/AI/commandreport.ogg'), 120 MINUTES)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "##&@* all dead! Tyrango is overrun! T&^@%###--- the command post any second, %$#* we ne#@##s--------------------", "Tyrargo Civilian Evac, 1st Air Cav Command", 'sound/AI/commandreport.ogg'), 140 MINUTES)
 
+	return ..()
+
 /datum/game_mode/colonialmarines/ds_first_landed(obj/docking_port/stationary/marine_dropship)
 	. = ..()
 	clear_lz_hazards() // This shouldn't normally do anything, but is here just in case

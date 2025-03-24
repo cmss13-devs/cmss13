@@ -1611,12 +1611,7 @@
 
 // US Army - Trooper
 
-
-/datum/job/us_army_trooper
-	title = "US Army - Trooper"
-
 /datum/equipment_preset/corpse/tyrargo/us_army_trooper
-
 	name = "Corpse - US Army - Trooper"
 	assignment = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
@@ -1627,7 +1622,6 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
 
 /datum/equipment_preset/corpse/tyrargo/us_army_trooper/load_gear(mob/living/carbon/human/new_human)
-
 	var/choice = rand(1,12)
 	var/obj/item/clothing/under/marine/army/uniform = new()
 	var/obj/item/clothing/accessory/ranks/marine/e2/pin = new()
@@ -1670,7 +1664,5 @@
 	..()
 
 /datum/equipment_preset/corpse/tyrargo/us_army_trooper/burst
-
 	name = "Corpse - Burst - US Army - Trooper"
-	assignment = JOB_ARMY_TROOPER
 	xenovictim = TRUE

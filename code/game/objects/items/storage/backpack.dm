@@ -1282,7 +1282,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_storage_space = 21
 
 /obj/item/storage/backpack/pmc/backpack/commando
-	name = "\improper W-Y Commano combat backpack"
+	name = "\improper W-Y Commando combat backpack"
 	desc = "Ergonomic, protected, high capacity backpack, designed for Weyland-Yutani Commandos."
 	icon_state = "commando_backpack"
 

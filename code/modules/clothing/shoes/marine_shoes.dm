@@ -168,7 +168,7 @@
 
 /obj/item/clothing/shoes/veteran/pmc/combat_android
 	name = "\improper M7X greaves"
-	desc = "A pair of heavily armored, acid-resistant boots, made to complete the M7X  Apesuit."
+	desc = "A pair of heavily armored, acid-resistant boots, made to complete the M7X Apesuit."
 	icon_state = "droid_boots"
 	item_state = "droid_boots"
 	armor_bio = CLOTHING_ARMOR_HIGH

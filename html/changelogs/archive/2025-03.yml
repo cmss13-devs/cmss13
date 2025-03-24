@@ -333,3 +333,49 @@
   ihatethisengine:
   - balance: raised the timer of techwebs nuke to 3 minutes and made it uncancelable,
       nuke autotriggers after decryption is finished.
+2025-03-24:
+  Aurallianz:
+  - bugfix: fixes nuke Before Decryption
+  BOBAMAx:
+  - bugfix: CLF surv synths now have CLF IFF and survival pouches containing working
+      radios.
+  DarkLordCabbage:
+  - spellcheck: Fixes some minor grammer errors in the forbiddance/allowance of the
+      construction/destruction of special structures.
+  Detective-Google:
+  - balance: upgraded backpacks and webbings now cost experimental tools points in
+      the synth vendor
+  - rscdel: foam backpack, maint jack, crew monitor, autocomp, mesons removed from
+      the experimental vendor
+  - bugfix: clocks are no longer insanely slow when thrown
+  Nihisohel:
+  - bugfix: You can now *accidentally* discharge a weapon once more. Try not to abuse
+      this with your nearest specialist.
+  Nomoresolvalou:
+  - balance: UBS attachment now only knockback stuns in a 1 tile range
+  Red-byte3D:
+  - bugfix: Neuro hallucination sounds are no extremly loud.
+  - code_imp: playsound_client is now base 35 so its not as loud.
+  TotalEpicness5:
+  - qol: Soro storm and blizzard effects are now 40% more transparent and less distracting.
+  Venuska1117:
+  - imageadd: Add Tacmap Icons for Xenomorphs Egg Morpher & Recovery Node
+  cuberound:
+  - balance: vanguard shield requires minimal damage 6 to trigger decay
+  detectivegoogle:
+  - balance: the alt shotguns have been rebalanced.
+  - balance: The custom shotgun fires 2 deciseconds slower(now same as Mk221, is otherwise
+      the same.
+  - balance: The double barrel(currently unobtainable) is now in most ways equivalent
+      to a M37, it fires as fast as a Mk221, though.
+  - balance: The sawn-off double barrel(currently unobtainable-mostly) is now in most
+      ways worse than the normal DB.
+  - code_imp: Shotgun delay defines have been changed to be consistent, use SECONDS
+      for readability, and reduce magic numbers.
+  jupyterkat:
+  - imageadd: added special hud icons for some specialists
+  - imageadd: added special minimap icons for some specialists
+  larentoun:
+  - bugfix: Normal Defender sideview icons (looking left/right) and overlays were
+      moved 2 pixels to the center, so Steelcrest strain will have overlays on correct
+      positions now (bloodied, marine packs)

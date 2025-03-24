@@ -198,6 +198,9 @@
 
 	damage = 55
 
+/datum/ammo/bullet/shotgun/buckshot/masterkey/on_hit_mob(mob/M,obj/projectile/P)
+	knockback(M,P,1)
+
 /datum/ammo/bullet/shotgun/spread
 	name = "additional buckshot"
 	icon_state = "buckshot"

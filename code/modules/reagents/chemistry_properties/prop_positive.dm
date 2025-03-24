@@ -833,7 +833,7 @@
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
 
-/datum/chem_property/positive/photosensetive/process(mob/living/M, potency = 1)
+/datum/chem_property/positive/photosensitive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
 	M.apply_internal_damage(potency, "brain")
 

@@ -417,56 +417,56 @@
 		display_foot_right = 1
 
 	if (display_head)
-		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("face!\n")]")
+		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("face!")]\n")
 
 	if (display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] [SPAN_BOLD("entire body!\n")]")
+		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] [SPAN_BOLD("entire body!")]\n")
 	else
 		if (display_chest && display_arm_left && display_arm_right && display_hand_left && display_hand_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] [SPAN_BOLD("upper body!\n")]")
+			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] [SPAN_BOLD("upper body!")]\n")
 		else
 			if (display_chest)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("shirt!\n")]")
+				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("shirt!")]\n")
 			if (display_arm_left && display_arm_right && display_hand_left && display_hand_left)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("gloves")] and [SPAN_BOLD("sleeves!\n")]")
+				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("gloves")] and [SPAN_BOLD("sleeves!")]\n")
 			else
 				if (display_arm_left && display_arm_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("sleeves!\n")]")
+					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("sleeves!")]\n")
 				else
 					if (display_arm_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left sleeve!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left sleeve!")]\n")
 					if (display_arm_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right sleeve!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right sleeve!")]\n")
 				if (display_hand_left && display_hand_right)
-					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("gloves!\n")]")
+					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("gloves!")]\n")
 				else
 					if (display_hand_left)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("left glove!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("left glove!")]\n")
 					if (display_hand_right)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("right glove!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("right glove!")]\n")
 
 		if (display_groin && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] [SPAN_BOLD("lower body!\n")]")
+			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] [SPAN_BOLD("lower body!")]\n")
 		else
 			if (display_groin)
-				msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("groin!\n")]")
+				msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("groin!")]\n")
 			if (display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs")] and [SPAN_BOLD("boots!\n")]")
+				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs")] and [SPAN_BOLD("boots!")]\n")
 			else
 				if (display_leg_left && display_leg_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs!\n")]")
+					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs!")]\n")
 				else
 					if (display_leg_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left pant leg!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left pant leg!")]\n")
 					if (display_leg_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right pant leg!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right pant leg!")]\n")
 				if (display_foot_left && display_foot_right)
-					msg += SPAN_WARNING("[t_He] has blood pooling around[t_his] [SPAN_BOLD("boots!\n")]")
+					msg += SPAN_WARNING("[t_He] has blood pooling around[t_his] [SPAN_BOLD("boots!")]\n")
 				else
 					if (display_foot_left)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("left boot!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("left boot!")]\n")
 					if (display_foot_right)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("right boot!\n")]")
+						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("right boot!")]\n")
 
 	if(chestburst == 2)
 		msg += SPAN_WARNING(SPAN_BOLD("[t_He] has a giant hole in [t_his] chest!\n"))
@@ -549,7 +549,7 @@
 	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
-			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name]")].")
+			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name].")]")
 		. += SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")

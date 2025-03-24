@@ -1,0 +1,4 @@
+author: "Nomoresolvalou"
+delete-after: True
+changes:
+  - balance: "UBS attachment now only knockback stuns in a 1 tile range"

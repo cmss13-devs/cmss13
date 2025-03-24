@@ -283,6 +283,15 @@ const CombinedSquadPanel = (props) => {
                   );
                 })
               : null}
+            <Tabs.Tab
+              selected={category === 'root'}
+              onClick={() => {
+                setCategory('root');
+                act('gather_index_squad_data', { squad: 'root' });
+              }}
+            >
+              {'Command Overwatch'}
+            </Tabs.Tab>
           </Tabs>
         </Stack.Item>
         <Stack.Item align="center" width="100%">

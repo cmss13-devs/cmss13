@@ -54,6 +54,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE
+	var/show_command_squad = FALSE
 
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
@@ -71,6 +72,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	req_access = list(ACCESS_MARINE_SENIOR)
 	// should be usable even without OW training
 	no_skill_req = TRUE
+	show_command_squad = TRUE
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -206,6 +208,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/specialist_type
 
 	var/SL_z //z level of the Squad Leader
+
+	if(index_squad && index_squad.name == "Root")
+		var/list/command_data = get_command_squad(data)
+		return command_data
+
 	if(current_squad.squad_leader)
 		var/turf/SL_turf = get_turf(current_squad.squad_leader)
 		SL_z = SL_turf.z
@@ -362,6 +369,105 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	data["engi_alive"] = engi_alive
 	data["smart_alive"] = smart_alive
 	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
+
+	return data
+
+
+/obj/structure/machinery/computer/overwatch/proc/get_command_squad(list/data)
+	var/list/marine_leaders = list()
+
+	var/co_count = 0
+	var/xo_count = 0
+	var/so_count = 0
+
+	var/co_alive = 0
+	var/xo_alive = 0
+	var/so_alive = 0
+
+	if(!show_command_squad)
+		return
+
+	marine_leaders = list(GLOB.marine_leaders[JOB_CO], GLOB.marine_leaders[JOB_XO])
+	marine_leaders |= (GLOB.marine_leaders[JOB_SO])
+
+	for(var/marine in marine_leaders)
+		if(!marine)
+			continue //just to be safe
+		var/mob_name = "unknown"
+		var/mob_state = ""
+		var/has_helmet = TRUE
+		var/role = "unknown"
+		var/area_name = "???"
+		var/mob/living/carbon/human/marine_human
+
+		if(ishuman(marine))
+			marine_human = marine
+		if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
+			continue
+		mob_name = marine_human.real_name
+		var/area/current_area = get_area(marine_human)
+		var/turf/current_turf = get_turf(marine_human)
+		if(!current_turf)
+			continue
+		if(current_area)
+			area_name = sanitize_area(current_area.name)
+
+		switch(z_hidden)
+			if(HIDE_ALMAYER)
+				if(is_mainship_level(current_turf.z))
+					continue
+			if(HIDE_GROUND)
+				if(is_ground_level(current_turf.z))
+					continue
+
+		var/obj/item/card/id/card = marine_human.get_idcard()
+		if(marine_human.job)
+			role = marine_human.job
+		else if(card?.rank) //decapitated marine is mindless,
+			role = card.rank
+
+		switch(marine_human.stat)
+			if(CONSCIOUS)
+				mob_state = "Conscious"
+
+			if(UNCONSCIOUS)
+				mob_state = "Unconscious"
+
+			if(DEAD)
+				mob_state = "Dead"
+
+		if(!marine_has_camera(marine_human))
+			has_helmet = FALSE
+
+		switch(role)
+			if(JOB_CO)
+				co_count++
+				if(mob_state != "Dead")
+					co_alive++
+
+			if(JOB_XO)
+				xo_count++
+				if(mob_state != "Dead")
+					xo_alive++
+
+			if(JOB_SO)
+				so_count++
+				if(mob_state != "Dead")
+					so_alive++
+
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "area_name" = area_name, "ref" = REF(marine)))
+		data["marines"] += marine_data
+
+	data["total_deployed"] = co_count + xo_count + so_count
+	data["living_count"] = co_alive + xo_alive + so_alive
+
+	data["co_count"] = co_count
+	data["xo_count"] = xo_count
+	data["so_count"] = so_count
+
+	data["co_alive"] = co_alive
+	data["xo_alive"] = xo_alive
+	data["so_alive"] = so_alive
 
 	return data
 
@@ -746,7 +852,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("Manual Security Update", "Changed the security level to [get_security_level()].", user)
 
 		if("gather_index_squad_data")
-			if(params["squad"])
+			var/squad = params["squad"]
+			if(!squad)
+				return
+			if(squad == "root" && show_command_squad)
+				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
+					if(resolve_root.name == "Root" && resolve_root.faction == faction)
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+			else
 				current_squad = locate(params["squad"])
 
 		if("announce")

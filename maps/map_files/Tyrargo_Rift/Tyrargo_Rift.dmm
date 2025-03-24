@@ -43864,8 +43864,7 @@
 	light_range = 1;
 	light_system = 1;
 	pixel_x = -9;
-	pixel_y = 8;
-	light_color = s
+	pixel_y = 8
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
@@ -44475,8 +44474,7 @@
 	light_range = 1;
 	light_system = 1;
 	pixel_x = -9;
-	pixel_y = 8;
-	light_color = s
+	pixel_y = 8
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/south)
@@ -44778,8 +44776,7 @@
 	light_range = 1;
 	light_system = 1;
 	pixel_x = -9;
-	pixel_y = 8;
-	light_color = s
+	pixel_y = 8
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/south)
@@ -45665,8 +45662,7 @@
 	light_range = 1;
 	light_system = 1;
 	pixel_x = -9;
-	pixel_y = 8;
-	light_color = s
+	pixel_y = 8
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)

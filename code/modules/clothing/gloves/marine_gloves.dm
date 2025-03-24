@@ -188,7 +188,7 @@
 
 /obj/item/clothing/gloves/marine/veteran/pmc/combat_droid
 	name = "\improper M7X gauntlets"
-	desc = "A pair of heavily armored gloves made to complete the M7X Apesuit"
+	desc = "A pair of heavily armored gloves made to pair up the M7X Apesuit system."
 	icon_state = "combat_android_gloves"
 	item_state = "bgloves"
 	item_state_slots = list(WEAR_HANDS = "marine_grey")

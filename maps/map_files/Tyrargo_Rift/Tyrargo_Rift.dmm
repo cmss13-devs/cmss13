@@ -448,6 +448,7 @@
 /area/tyrargo/outdoors/colony_exterior/south_east)
 "abF" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
 "abG" = (
@@ -1700,6 +1701,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/sanitation,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "afw" = (
@@ -4743,6 +4745,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "leafybush_2"
 	},
+/obj/structure/blocker/fog,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "anC" = (
@@ -9163,6 +9166,12 @@
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
+"axL" = (
+/obj/structure/stairs/multiz/up{
+	dir = 4
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/underground/bunker/north)
 "axM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2/east,
@@ -10826,6 +10835,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/indoors/admin/ground)
 "aCn" = (
@@ -14635,10 +14645,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/underground/bunker/north)
-"aLQ" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/interior/wood,
-/area/tyrargo/oob)
 "aLR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreencorner/north,
@@ -14727,10 +14733,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreen,
 /area/tyrargo/underground/bunker/north)
-"aMg" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/interior/wood/alt,
-/area/tyrargo/oob)
 "aMh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -14808,6 +14810,10 @@
 /obj/structure/platform/stone/kutjevo/west,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/landing_zone_2/east_trench)
+"aMu" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/almayer/blackfull2,
+/area/tyrargo/indoors/bunker/central_south)
 "aMv" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
@@ -15061,6 +15067,17 @@
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
+"aMX" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/structure/blocker/fog,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob)
+"aMY" = (
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/admin/ground)
 "aMZ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_3"
@@ -15089,6 +15106,24 @@
 /obj/item/device/flashlight/flare/on,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
+"aNd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"aNe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"aNf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/turf/open/floor/prison/ramptop/east,
+/area/tyrargo/indoors/admin/upper)
 "aNg" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -16366,7 +16401,6 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPK" = (
@@ -52988,6 +53022,7 @@
 "cHs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/upper)
 "cHt" = (
@@ -54099,7 +54134,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/outdoors/outskirts/central)
 "eAZ" = (
-/obj/structure/machinery/power/apc/power/south,
 /obj/structure/ladder{
 	height = 2;
 	id = "bunker_3";
@@ -56988,7 +57022,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer_hull,
-/area/tyrargo/oob)
+/area/tyrargo/underground/bunker/north)
 "kAO" = (
 /obj/structure/closet/crate/explosives{
 	pixel_y = 4
@@ -60996,6 +61030,7 @@
 	dir = 4
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "rTf" = (
@@ -62501,6 +62536,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/west)
 "uEK" = (
@@ -63062,6 +63098,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "sunnybush_1"
 	},
+/obj/structure/blocker/fog,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "vxc" = (
@@ -63489,6 +63526,7 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 4
 	},
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "waA" = (
@@ -76464,11 +76502,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-dvt
-dvt
-dvt
-dvt
+cau
+cau
+cau
+cau
+cau
 bsw
 bsw
 bsw
@@ -76646,11 +76684,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
+cau
 kAA
 kAA
 kAA
-dvt
+cau
 bsw
 bsw
 bsw
@@ -76828,11 +76866,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-bgV
-aLQ
-bgU
-dvt
+cau
+caK
+caL
+cay
+cau
 bsw
 bsw
 bsw
@@ -77010,11 +77048,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-bgV
-aMg
-aLQ
-dvt
+cau
+caK
+cbH
+caL
+cau
 bsw
 bsw
 bsw
@@ -77192,11 +77230,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-bgU
-aLQ
-aLQ
-dvt
+cau
+cay
+caL
+caL
+cau
 bsw
 bsw
 bsw
@@ -77374,11 +77412,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-aMg
-aLQ
-aLQ
-dvt
+cau
+cbH
+caL
+caL
+cau
 bsw
 bsw
 bsw
@@ -77556,11 +77594,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-aLQ
-aLQ
-aLQ
-dvt
+cau
+caL
+caL
+caL
+cau
 bsw
 bsw
 bsw
@@ -77738,11 +77776,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-bgU
-bgV
-bgV
-dvt
+cau
+cay
+caK
+caK
+cau
 bsw
 bsw
 bsw
@@ -77920,11 +77958,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-aoF
-aoF
-aoF
-dvt
+cau
+axL
+axL
+axL
+cau
 bsw
 bsw
 bsw
@@ -78102,11 +78140,11 @@ bsw
 bsw
 bsw
 bsw
-dvt
-dvt
-dvt
-dvt
-dvt
+cau
+cau
+cau
+cau
+cau
 bsw
 bsw
 bsw
@@ -125146,7 +125184,7 @@ bBg
 bDm
 bBN
 cev
-icU
+aMu
 bCg
 eAZ
 bBN
@@ -144562,7 +144600,7 @@ cwd
 cvR
 aBR
 aBK
-ctn
+aMY
 aBk
 ctl
 fKk
@@ -145099,7 +145137,7 @@ cxX
 cxE
 cvT
 csR
-cwe
+aNe
 ctC
 cwP
 cwG
@@ -146013,7 +146051,7 @@ csR
 aCN
 aCF
 ctC
-cwe
+aNd
 aCl
 csR
 csR
@@ -151504,23 +151542,23 @@ bsw
 bsw
 bsw
 atv
-bsZ
-bsZ
-bsZ
-bsZ
+atv
+atv
+atv
+atv
 anB
-bsZ
-bsZ
-btq
-bsZ
-bsZ
-btq
-bsZ
+atv
+atv
+aMX
+atv
+atv
+aMX
+atv
 vwj
-bsZ
-bsZ
-bsZ
-bsZ
+atv
+atv
+atv
+atv
 atv
 bsw
 bsw
@@ -151685,25 +151723,25 @@ bsw
 bsw
 bsw
 bsw
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
-atv
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
+bsw
 bsw
 bsw
 bsw
@@ -188607,7 +188645,7 @@ cHk
 cGD
 adK
 cGS
-cGd
+aNf
 cGE
 cGo
 cGp

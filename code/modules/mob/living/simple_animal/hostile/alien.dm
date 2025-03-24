@@ -81,6 +81,8 @@
 	. = ..()
 	if(!. || !hivenumber)
 		return
+	if(ismonkey(target))
+		return FALSE
 	if(istype(target, /mob/living/simple_animal/hostile/alien))
 		var/mob/living/simple_animal/hostile/alien/alien_target = target
 		if(alien_target.hivenumber == hivenumber)

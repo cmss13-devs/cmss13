@@ -1606,3 +1606,71 @@
 	xenovictim = TRUE
 
 //*****************************************************************************************************/
+
+//********* TYRARGO RIFT **************/
+
+// US Army - Trooper
+
+
+/datum/job/us_army_trooper
+	title = "US Army - Trooper"
+
+/datum/equipment_preset/corpse/tyrargo/us_army_trooper
+
+	name = "Corpse - US Army - Trooper"
+	assignment = JOB_ARMY_TROOPER
+	faction = FACTION_MARINE
+	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/military/survivor/army_standard
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	idtype = /obj/item/card/id/dogtag
+	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,)
+
+/datum/equipment_preset/corpse/tyrargo/us_army_trooper/load_gear(mob/living/carbon/human/new_human)
+
+	var/choice = rand(1,16)
+	var/obj/item/clothing/under/marine/army/uniform = new()
+	var/obj/item/clothing/accessory/ranks/marine/e2/pin = new()
+	var/obj/item/clothing/accessory/patch/army/patch_army = new()
+	var/obj/item/clothing/accessory/patch/army/infantry/patch_infantry = new()
+	uniform.attach_accessory(new_human,patch_army)
+	uniform.attach_accessory(new_human,pin)
+	uniform.attach_accessory(new_human,patch_infantry)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/rto(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake/orange(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
+
+	switch(choice)
+		if(1 to 5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+		if(6 to 7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+		if(8 to 10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/army, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BACK)
+		if(10 to 12)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra/army, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap/empty, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra, WEAR_IN_BACK)
+	..()
+
+/datum/equipment_preset/corpse/tyrargo/us_army_trooper/burst
+
+	name = "Corpse - Burst - US Army - Trooper"
+	assignment = JOB_ARMY_TROOPER
+	xenovictim = TRUE

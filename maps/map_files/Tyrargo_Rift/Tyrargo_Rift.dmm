@@ -1266,6 +1266,23 @@
 /obj/item/explosive/mine/active/no_iff,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1/no_mans_land)
+"adV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_2/east_trench)
+"adW" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"adX" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_west)
 "adY" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -4535,6 +4552,11 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_east)
+"ank" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "anl" = (
 /obj/structure/flora/tree/dead/tree_1{
 	pixel_y = -2;
@@ -5243,6 +5265,7 @@
 	pixel_x = -8;
 	pixel_y = 10
 	},
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoL" = (
@@ -14992,6 +15015,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aMZ" = (
@@ -15284,6 +15308,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNK" = (
@@ -16300,6 +16325,7 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPK" = (
@@ -18354,6 +18380,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aTQ" = (
@@ -25749,6 +25776,7 @@
 "bih" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "bii" = (
@@ -27249,6 +27277,7 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "bls" = (
@@ -28612,6 +28641,7 @@
 	pixel_x = -8
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnN" = (
@@ -37993,6 +38023,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "bJi" = (
@@ -40115,6 +40146,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bOZ" = (
@@ -56365,6 +56397,7 @@
 "jxJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/roller,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/tyrargo/indoors/apartment/north_ground)
 "jxT" = (
@@ -64070,6 +64103,7 @@
 	pixel_y = -9;
 	pixel_x = 4
 	},
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/apartment/north_ground)
 "xdh" = (
@@ -123084,7 +123118,7 @@ byO
 byP
 adP
 xkr
-bkU
+adV
 bkQ
 bkI
 bvY
@@ -125920,7 +125954,7 @@ aJX
 bNH
 bNy
 bNa
-bNb
+ank
 bMR
 bME
 bMr
@@ -135948,7 +135982,7 @@ cpt
 oZS
 cqv
 eWU
-cpN
+adW
 iMQ
 cpj
 vGQ
@@ -138854,7 +138888,7 @@ aEx
 kFO
 cqG
 wPt
-cpt
+adX
 tvN
 cpd
 cpd

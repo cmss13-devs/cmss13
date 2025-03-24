@@ -360,3 +360,15 @@
 	equip_path = /datum/equipment_preset/corpse/hybrisa/scientist_xenoarchaeologist/burst
 
 //*****************************************************************************************************/
+
+///US Army Corpses///
+
+// Army Trooper //
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper
+	name = "Corpse - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_trooper
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper/burst
+	name = "Corpse - Burst - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_trooper/burst

@@ -285,7 +285,7 @@
 
 /obj/item/ammo_magazine/flamer_tank/flammenwerfer
 	name = "heavy incinerator tank"
-	desc = "A heavy, high capacity tank utilized by Flammenwerfer 3 Heavy Incineration Unit, has a blue Weyland-Yutani logo on it."
+	desc = "A heavy, high capacity tank utilized by Flammenwerfer 3 Heavy Incineration Unit. This has a blue Weyland-Yutani logo on it."
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"
 	item_state = "fl3"

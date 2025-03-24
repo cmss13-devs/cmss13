@@ -266,13 +266,6 @@
 	buildstacktype = /obj/item/stack/sheet/plasteel
 	can_carry_big = TRUE
 
-/obj/structure/bed/roller/heavy/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)
-		if(buckled_mob || buckled_bodybag)
-			manual_unbuckle()
-			return
-	return ..()
-
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."

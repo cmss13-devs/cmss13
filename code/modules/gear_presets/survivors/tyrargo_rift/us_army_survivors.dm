@@ -111,8 +111,27 @@
 	minimap_icon = "hudsquad_cet"
 
 /datum/equipment_preset/survivor/army/engineer/load_gear(mob/living/carbon/human/new_human)
+	..()
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/welding(new_human), WEAR_HEAD)
+	add_army_weapon(new_human)
+
+/datum/equipment_preset/survivor/army/medic
+	name = "Survivor - US Army Combat Medical Technician"
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
+	assignment = JOB_ARMY_MEDIC
+	rank = JOB_ARMY_MEDIC
+	skills = /datum/skills/military/survivor/army_medic
+	minimap_icon = "hudsquad_cet"
+
+/datum/equipment_preset/survivor/army/medic/load_gear(mob/living/carbon/human/new_human)
 	..()
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/big(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
 	add_army_weapon(new_human)

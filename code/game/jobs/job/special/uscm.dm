@@ -24,3 +24,6 @@
 
 /datum/job/special/uscm/cet
 	title = JOB_ARMY_ENGI
+
+/datum/job/special/uscm/cmt
+	title = JOB_ARMY_MEDIC

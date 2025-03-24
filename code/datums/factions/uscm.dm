@@ -56,6 +56,8 @@
 				marine_rk = "trpr"
 			if(JOB_ARMY_ENGI)
 				marine_rk = "cet"
+			if(JOB_ARMY_MEDIC)
+				marine_rk = "cmt"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")
@@ -129,6 +131,8 @@
 				marine_rk = "trpr"
 			if(JOB_ARMY_ENGI)
 				marine_rk = "cet"
+			if(JOB_ARMY_MEDIC)
+				marine_rk = "cmt"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)

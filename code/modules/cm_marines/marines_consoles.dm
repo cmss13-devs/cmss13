@@ -997,6 +997,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SYNTH_K9 = 71,
 				JOB_ARMY_TROOPER = 72,
 				JOB_ARMY_ENGI = 73,
+				JOB_ARMY_MEDIC = 74,
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
 				JOB_PASSENGER = 141,

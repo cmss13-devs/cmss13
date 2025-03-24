@@ -567,6 +567,14 @@
 
 // US Army //
 
+/obj/effect/landmark/survivor_spawner/us_army_engineer
+	equipment = /datum/equipment_preset/survivor/army/engineer
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/us_army_medic
+	equipment = /datum/equipment_preset/survivor/army/medic
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
 // UPP Recon //
 
 /obj/effect/landmark/survivor_spawner/upp/soldier

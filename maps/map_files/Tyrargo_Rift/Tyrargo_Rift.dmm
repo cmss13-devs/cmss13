@@ -4590,6 +4590,14 @@
 	},
 /turf/closed/wall/rock,
 /area/tyrargo/oob)
+"ann" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/interior/wood/alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "ano" = (
 /obj/structure/flora/tree/dead/tree_2,
 /obj/structure/flora/tree/dead/tree_3{
@@ -4619,6 +4627,15 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_west)
+"anr" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/interior/wood/alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "ans" = (
 /obj/structure/flora/tree/dead/tree_4{
 	pixel_x = -15;
@@ -4837,6 +4854,14 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/colony_exterior/west)
+"anR" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/survivor_spawner/us_army_medic,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "anS" = (
 /obj/structure/flora/tree/dead/tree_4{
 	layer = 4.8
@@ -5922,6 +5947,11 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/asphalt,
 /area/tyrargo/indoors/gararge/ground)
+"aqe" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/item/reagent_container/blood/empty,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "aqf" = (
 /obj/structure/grille,
 /turf/open/floor/plating,
@@ -6744,6 +6774,12 @@
 /obj/structure/platform_decoration/stone/kutjevo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
+"arV" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "arW" = (
 /obj/structure/platform/stone/kutjevo/west,
 /obj/structure/prop/rock{
@@ -7345,6 +7381,13 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/oob)
+"atz" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/roller,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/obj/item/stack/medical/bruise_pack/two,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "atA" = (
 /obj/item/prop{
 	desc = "An M83 SADAR Anti-Tank RPG. This one has been expended.";
@@ -16194,7 +16237,7 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/power/apc/power/south,
-/obj/effect/landmark/survivor_spawner,
+/obj/effect/landmark/survivor_spawner/us_army_engineer,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPy" = (
@@ -16307,7 +16350,6 @@
 "aPH" = (
 /obj/item/clothing/head/beret/eng,
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPI" = (
@@ -16315,7 +16357,6 @@
 	pixel_x = 4;
 	pixel_y = -8
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPJ" = (
@@ -16409,6 +16450,7 @@
 /obj/structure/prop/server_equipment/laptop/on{
 	pixel_x = -7
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPR" = (
@@ -39739,7 +39781,6 @@
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bOa" = (
 /obj/item/device/flashlight/flare/on,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bOb" = (
@@ -40146,7 +40187,6 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bOZ" = (
@@ -50535,7 +50575,11 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cxn" = (
-/obj/effect/landmark/survivor_spawner,
+/obj/item/prop/colony/usedbandage{
+	dir = 1;
+	pixel_x = -7;
+	pixel_y = 6
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "cxo" = (
@@ -126132,7 +126176,7 @@ aKq
 aKl
 cww
 aPv
-bNF
+ann
 aPo
 bNa
 bNn
@@ -126308,7 +126352,7 @@ bOo
 bMr
 bME
 bOS
-bNa
+arV
 bNa
 aKr
 bbK
@@ -126490,10 +126534,10 @@ cyc
 bOz
 bME
 bOY
-bNa
-bNn
+atz
+anR
 aKs
-bMU
+anr
 bLU
 aYj
 bLS
@@ -126673,7 +126717,7 @@ bMr
 bME
 bOS
 cxn
-bMR
+aqe
 aKt
 bMT
 bMG

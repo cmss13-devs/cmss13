@@ -127,6 +127,7 @@
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/wy
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+	icon_state = "armor_chair"
 
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor/wy/on_load(datum/interior/I)
 	var/obj/structure/bed/chair/comfy/vehicle/driver/armor/wy/S = new(loc)

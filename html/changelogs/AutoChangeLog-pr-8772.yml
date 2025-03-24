@@ -1,4 +1,0 @@
-author: "Aurallianz"
-delete-after: True
-changes:
-  - bugfix: "fixes nuke Before Decryption"

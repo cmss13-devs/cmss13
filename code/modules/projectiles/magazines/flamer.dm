@@ -297,7 +297,7 @@
 
 /obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout
 	name = "heavy incinerator tank (EX)"
-	desc = "A heavy fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, utilized by Flammenwerfer 3 Heavy Incineration Unit, has a blue Weyland-Yutani logo on it. Handle with care."
+	desc = "A heavy fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustible liquid chemical that burns so hot it melts straight through flame-resistant material, utilized by Flammenwerfer 3 Heavy Incineration Unit. This has a blue Weyland-Yutani logo on it. Handle with care."
 	caliber = "Napalm EX"
 	flamer_chem = "napalmex"
 	stripe_icon = TRUE

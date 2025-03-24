@@ -49,8 +49,8 @@
 	// Zonenote: hack
 	var/datum/component/moba_player/player_component = GetComponent(/datum/component/moba_player)
 	if(player_component)
-		. += "Armor: [floor(((0.01 * armor_integrity * armor_deflection) + (armor_deflection_buff - armor_deflection_debuff)) * player_component.armor_multiplier)]/[floor(armor_deflection * player_component.armor_multiplier)]"
-		. += "Acid Armor: [floor((acid_armor + acid_armor_buff - acid_armor_debuff) * player_component.armor_multiplier)]/[floor(acid_armor * player_component.armor_multiplier)]"
+		. += "Armor: [floor(((0.01 * armor_integrity * armor_deflection) + (armor_deflection_buff - armor_deflection_debuff)) * player_component.armor_multiplier)]/[floor((armor_deflection + armor_deflection_buff) * player_component.armor_multiplier)]"
+		. += "Acid Armor: [floor((acid_armor + acid_armor_buff - acid_armor_debuff) * player_component.armor_multiplier)]/[floor((acid_armor + acid_armor_buff) * player_component.armor_multiplier)]"
 		. += "Lifesteal: [player_component.lifesteal * 100]%"
 		. += "Acid Power: [player_component.get_ap()]"
 		. += "Slash Penetration: [player_component.slash_penetration]"

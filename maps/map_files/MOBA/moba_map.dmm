@@ -12,10 +12,6 @@
 /obj/effect/alien/resin/moba_shop,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/north,
 /area/misc/moba/base)
-"ad" = (
-/obj/effect/landmark/moba_hive_core,
-/turf/open/floor/hybrisa/engineership/engineer_floor4,
-/area/misc/moba/base)
 "ae" = (
 /obj/effect/landmark/moba_hive_core_turret,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/east,
@@ -27,7 +23,7 @@
 /turf/open/shuttle/red,
 /area/misc/moba/base)
 "ag" = (
-/obj/effect/moba_camp_spawner,
+/obj/effect/moba_camp_spawner/carp,
 /turf/open/floor/hybrisa/engineership/engineer_floor4,
 /area/misc/moba)
 "ah" = (
@@ -284,8 +280,17 @@
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "bg" = (
-/obj/effect/moba_camp_spawner,
+/obj/effect/moba_camp_spawner/carp,
 /turf/open/floor/whiteyellowfull/east,
+/area/misc/moba)
+"bh" = (
+/obj/effect/moba_camptarget_trigger,
+/turf/open/floor/strata/orange_edge/north,
+/area/misc/moba)
+"bi" = (
+/obj/effect/moba_camptarget_trigger,
+/obj/effect/landmark/moba_left_boss_spawn,
+/turf/open/floor/strata/multi_tiles,
 /area/misc/moba)
 "bj" = (
 /turf/open/gm/dirt,
@@ -2850,13 +2855,16 @@
 	pixel_x = -26
 	},
 /obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/shiva/radiator_tile2,
 /area/misc/moba)
 "ja" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/misc/moba)
 "jb" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/shiva/radiator_tile2,
 /area/misc/moba)
 "jc" = (
@@ -2910,7 +2918,7 @@
 /turf/open/floor/green/northwest,
 /area/misc/moba)
 "jm" = (
-/obj/effect/moba_camp_spawner,
+/obj/effect/moba_camp_spawner/carp,
 /turf/open/floor,
 /area/misc/moba)
 "jn" = (
@@ -3101,6 +3109,7 @@
 /obj/item/storage/briefcase{
 	pixel_y = 12
 	},
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/strata/orange_edge/north,
 /area/misc/moba)
 "jT" = (
@@ -3393,17 +3402,21 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/misc/moba)
 "kP" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/misc/spaceport2,
 /area/misc/moba)
 "kQ" = (
 /obj/structure/bed/sofa/vert/white/bot,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/misc/moba)
 "kR" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/misc/spaceport1,
 /area/misc/moba)
 "kS" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/misc/moba)
 "kT" = (
@@ -3677,6 +3690,7 @@
 "lP" = (
 /obj/structure/bed/sofa/vert/white,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/misc/moba)
 "lQ" = (
@@ -3953,6 +3967,7 @@
 	pixel_x = -1
 	},
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/misc/spaceport2,
 /area/misc/moba)
 "mA" = (
@@ -3961,6 +3976,7 @@
 	pixel_x = 1
 	},
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/misc/spaceport1,
 /area/misc/moba)
 "mB" = (
@@ -4515,6 +4531,7 @@
 "od" = (
 /obj/structure/bed/sofa/vert/white/top,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/misc/moba)
 "oe" = (
@@ -4757,6 +4774,7 @@
 	pixel_y = 17
 	},
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/strata/orange_edge,
 /area/misc/moba)
 "oP" = (
@@ -4765,6 +4783,7 @@
 	pixel_x = 9;
 	pixel_y = -2
 	},
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/strata/orange_edge,
 /area/misc/moba)
 "oQ" = (
@@ -4772,6 +4791,7 @@
 	layer = 2.9;
 	pixel_y = 32
 	},
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/strata/orange_edge,
 /area/misc/moba)
 "oR" = (
@@ -4946,9 +4966,11 @@
 /area/misc/moba)
 "pw" = (
 /obj/effect/decal/remains/human,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/warnplate,
 /area/misc/moba)
 "px" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/warnplate,
 /area/misc/moba)
 "py" = (
@@ -4996,7 +5018,7 @@
 /area/misc/moba)
 "pG" = (
 /obj/item/frame/table/wood/poor,
-/obj/effect/moba_camp_spawner,
+/obj/effect/moba_camp_spawner/marine,
 /turf/open/floor/carpet/bcarpet08{
 	icon_state = "bcarpet04"
 	},
@@ -5008,10 +5030,7 @@
 	},
 /area/misc/moba)
 "pI" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 8
-	},
-/obj/effect/moba_unslashinator,
+/obj/structure/prop/brazier/campfire,
 /turf/open/floor/wood/wood_broken6,
 /area/misc/moba)
 "pJ" = (
@@ -5149,16 +5168,20 @@
 /turf/open/floor/plating,
 /area/misc/moba)
 "qc" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "qd" = (
 /obj/item/clothing/mask/gas,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2,
 /area/misc/moba)
 "qe" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2/west,
 /area/misc/moba)
 "qf" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2,
 /area/misc/moba)
 "qg" = (
@@ -5371,10 +5394,12 @@
 	icon_state = "box_1"
 	},
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "qM" = (
 /obj/structure/prop/mech/drill,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "qN" = (
@@ -5385,6 +5410,7 @@
 	pixel_x = -1;
 	pixel_y = -5
 	},
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "qO" = (
@@ -5604,9 +5630,14 @@
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
+"rs" = (
+/obj/effect/moba_camptarget_trigger,
+/turf/open/floor/strata/orange_edge,
+/area/misc/moba)
 "rt" = (
 /obj/structure/computerframe,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2,
 /area/misc/moba)
 "ru" = (
@@ -5853,6 +5884,10 @@
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
+"sb" = (
+/obj/effect/landmark/moba_hive_core,
+/turf/open/floor/hybrisa/engineership/engineer_floor3,
+/area/misc/moba/base)
 "sc" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/moba_unslashinator,
@@ -5863,10 +5898,12 @@
 	dir = 8
 	},
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2/west,
 /area/misc/moba)
 "se" = (
 /obj/effect/decal/remains/human,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2/west,
 /area/misc/moba)
 "sf" = (
@@ -6025,6 +6062,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/misc/moba)
 "sD" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/strata/multi_tiles,
 /area/misc/moba)
 "sE" = (
@@ -6159,25 +6197,36 @@
 /obj/effect/moba_unslashinator,
 /turf/open/gm/river/ocean/deep_ocean,
 /area/misc/moba)
+"sV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/brazier/campfire,
+/turf/open/floor/hybrisa/metal/orangeline/east,
+/area/misc/moba)
 "sW" = (
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2,
 /area/misc/moba)
 "sX" = (
 /obj/structure/prop/mech/parts/gygax_torso,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2,
 /area/misc/moba)
 "sY" = (
 /obj/structure/prop/mech/parts/chassis/gygax,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2,
 /area/misc/moba)
 "sZ" = (
 /obj/item/stool,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/vault2,
 /area/misc/moba)
 "ta" = (
@@ -6427,17 +6476,25 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/misc/moba)
+"tJ" = (
+/obj/effect/moba_camptarget_trigger,
+/obj/effect/landmark/moba_right_boss_spawn,
+/turf/open/floor/vault2/west,
+/area/misc/moba)
 "tK" = (
 /obj/structure/prop/mech/armor_booster,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "tL" = (
 /obj/item/device/multitool,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "tM" = (
 /obj/structure/machinery/constructable_frame,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "tN" = (
@@ -6591,16 +6648,19 @@
 	},
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/moba_unslashinator,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "ul" = (
 /obj/effect/decal/remains/human,
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "um" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = 30
 	},
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/platebot,
 /area/misc/moba)
 "un" = (
@@ -6790,11 +6850,11 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/misc/moba)
 "uN" = (
-/obj/effect/moba_camp_spawner,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/effect/moba_camp_spawner/carp,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/misc/moba)
 "uO" = (
@@ -6875,6 +6935,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/misc/moba)
 "va" = (
+/obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/warnplate/north,
 /area/misc/moba)
 "vb" = (
@@ -7879,7 +7940,7 @@
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/misc/moba)
 "xY" = (
-/obj/effect/moba_camp_spawner,
+/obj/effect/moba_camp_spawner/combat_drone,
 /turf/open/floor/almayer/fake_outerhull,
 /area/misc/moba)
 "xZ" = (
@@ -9238,7 +9299,7 @@
 /turf/open/floor,
 /area/misc/moba)
 "Sp" = (
-/obj/effect/moba_camp_spawner,
+/obj/effect/moba_camp_spawner/marine,
 /turf/open/floor/almayer/blackfull/west,
 /area/misc/moba)
 "TH" = (
@@ -9647,7 +9708,7 @@ ra
 ra
 nH
 nH
-nI
+sb
 nH
 nH
 lr
@@ -9704,7 +9765,7 @@ ac
 ra
 nI
 nI
-ad
+nH
 nI
 nI
 lr
@@ -10445,7 +10506,7 @@ ky
 rb
 qv
 ot
-ot
+sV
 ot
 nL
 mZ
@@ -13245,7 +13306,7 @@ kP
 mz
 kP
 kP
-gE
+bh
 iY
 ie
 cd
@@ -13296,7 +13357,7 @@ cd
 cd
 aC
 jb
-lx
+rs
 od
 lP
 lP
@@ -13353,13 +13414,13 @@ bC
 ba
 cd
 ja
-lx
+rs
 kR
 kR
 kR
 kR
 kR
-gE
+bh
 ja
 cd
 bB
@@ -13413,7 +13474,7 @@ ja
 ja
 kS
 sD
-sD
+bi
 sD
 kS
 ja
@@ -13467,13 +13528,13 @@ gG
 bQ
 cd
 ja
-lx
+rs
 kP
 kP
 kP
 kP
 kP
-gE
+bh
 ja
 cd
 bb
@@ -13530,7 +13591,7 @@ lP
 lP
 lP
 kQ
-gE
+bh
 jb
 cc
 eE
@@ -13587,7 +13648,7 @@ kR
 mA
 kR
 kR
-gE
+bh
 iY
 ig
 eE
@@ -14203,7 +14264,7 @@ va
 qe
 qe
 qe
-qe
+tJ
 qe
 qe
 qe
@@ -17798,7 +17859,7 @@ kv
 kv
 lo
 kv
-kv
+af
 kv
 lo
 kv
@@ -17855,7 +17916,7 @@ kv
 kv
 lo
 kv
-af
+kv
 kv
 lo
 kv

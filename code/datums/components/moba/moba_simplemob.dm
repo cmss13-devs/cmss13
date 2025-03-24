@@ -8,6 +8,7 @@
 	var/ending_max_health = 400
 	var/map_id
 	var/boss_simplemob = FALSE
+	var/boss_ticks_since_last_fighting = 0
 
 /datum/component/moba_simplemob/Initialize(starting_health, ending_health, new_map_id, gold_to_grant, starting_xp_to_grant, ending_xp_to_grant, boss_simplemob = FALSE)
 	. = ..()
@@ -32,11 +33,28 @@
 		parent_simplemob.AddComponent(/datum/component/moba_death_reward, gold_to_grant, starting_xp_to_grant + ((ending_xp_to_grant - starting_xp_to_grant) * scale))
 	else
 		parent_simplemob.maptext_width = 64
+		parent_simplemob.maptext_x = -16
+		parent_simplemob.maptext_y = 32
 		parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
+		START_PROCESSING(SSprocessing, src)
 
 /datum/component/moba_simplemob/Destroy(force, silent)
 	handle_qdel()
+	STOP_PROCESSING(SSprocessing, src)
 	return ..()
+
+/datum/component/moba_simplemob/process(delta_time)
+	if(!boss_simplemob)
+		return
+
+	if((boss_ticks_since_last_fighting > 4))
+		return_to_home()
+		boss_ticks_since_last_fighting = 0
+
+	if(parent_simplemob.stance == HOSTILE_STANCE_IDLE)
+		boss_ticks_since_last_fighting++
+	else
+		boss_ticks_since_last_fighting = 0
 
 /datum/component/moba_simplemob/RegisterWithParent()
 	..()
@@ -55,13 +73,16 @@
 	SIGNAL_HANDLER
 
 	if(returning_to_home || (get_dist(parent_simplemob, home_turf) <= home_dist))
+		if(boss_simplemob)
+			parent_simplemob.health = parent_simplemob.getMaxHealth()
+			parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
 		return
 
 	returning_to_home = TRUE
 	RegisterSignal(home_turf, COMSIG_TURF_ENTERED, PROC_REF(on_enter_turf))
 	addtimer(CALLBACK(src, PROC_REF(returned_home)), 5 SECONDS) // in case they get stuck
 	parent_simplemob.LoseTarget()
-	parent_simplemob.heal_all_damage()
+	parent_simplemob.health = parent_simplemob.getMaxHealth()
 	walk_to(parent_simplemob, home_turf, 0, parent_simplemob.move_to_delay * 0.5)
 	parent_simplemob.manual_emote("wanders off.")
 	if(boss_simplemob)
@@ -98,6 +119,13 @@
 	SIGNAL_HANDLER
 
 	if(((parent_simplemob.health - damagedata["damage"]) <= 0) && (parent_simplemob.stat != DEAD))
-		parent_simplemob.death()
+		var/shortest_range = INFINITY
+		var/mob/living/carbon/xenomorph/best_xeno
+		for(var/mob/living/carbon/xenomorph/xeno in view(3, parent_simplemob))
+			if(get_dist(xeno, parent_simplemob) < shortest_range)
+				best_xeno = xeno
+				shortest_range = get_dist(xeno, parent_simplemob)
+		parent_simplemob.death(create_cause_data("death", best_xeno))
 
-	parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
+	if(boss_simplemob)
+		parent_simplemob?.maptext = MAPTEXT("<center><h2>[floor((parent_simplemob.health - damagedata["damage"]) / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")

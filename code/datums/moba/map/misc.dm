@@ -47,6 +47,7 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 	for(var/obj/structure/thing in loc.contents)
 		thing.unslashable = TRUE
 		thing.unacidable = TRUE
+		thing.explo_proof = TRUE
 	qdel(src)
 
 /obj/structure/flora/grass/tallgrass/jungle/moba
@@ -137,3 +138,33 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 
 		return_list += grass
 		grass.get_connected_bushes(return_list)
+
+// used for bosses
+/obj/effect/moba_camptarget_trigger
+	invisibility = INVISIBILITY_MAXIMUM
+	icon = 'icons/landmarks.dmi'
+	icon_state = "x"
+
+/obj/effect/moba_camptarget_trigger/Initialize(mapload, ...)
+	. = ..()
+	RegisterSignal(get_turf(src), COMSIG_TURF_ENTERED, PROC_REF(on_enter))
+
+/obj/effect/moba_camptarget_trigger/proc/on_enter(datum/source, atom/entering_atom)
+	SIGNAL_HANDLER
+
+	if(!isxeno(entering_atom) || HAS_TRAIT(entering_atom, TRAIT_MOBA_CAMP_TARGET))
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = entering_atom
+	ADD_TRAIT(xeno, TRAIT_MOBA_CAMP_TARGET, TRAIT_SOURCE_INHERENT)
+	RegisterSignal(xeno, COMSIG_MOVABLE_MOVED, PROC_REF(on_xeno_move))
+
+/obj/effect/moba_camptarget_trigger/proc/on_xeno_move(mob/living/carbon/xenomorph/source, atom/oldloc, dir, forced)
+	SIGNAL_HANDLER
+
+	var/turf/xeno_turf = get_turf(source)
+	if(locate(/obj/effect/moba_camptarget_trigger) in xeno_turf)
+		return
+
+	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
+	REMOVE_TRAIT(source, TRAIT_MOBA_CAMP_TARGET, TRAIT_SOURCE_INHERENT)

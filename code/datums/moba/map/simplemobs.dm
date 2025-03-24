@@ -56,7 +56,9 @@
 	response_disarm = "gently pushes aside the"
 	response_harm = "hits the"
 	speak = list("ALERT.","Hostile-ile-ile entities dee-twhoooo-wected.","Threat parameterszzzz- szzet.","Bring sub-sub-sub-systems uuuup to combat alert alpha-a-a.")
-	emote_see = list("beeps menacingly","whirrs threateningly","scans its immediate vicinity")
+	emote_see = list("beeps menacingly.","whirrs threateningly.","scans its immediate vicinity.")
+	melee_damage_lower = 25
+	melee_damage_upper = 25
 	a_intent = INTENT_HARM
 	health = 300
 	maxHealth = 300
@@ -98,12 +100,61 @@
 		icon_state = "drone0"
 
 /mob/living/simple_animal/hostile/combat_drone/death()
+	. = ..()
+	if(!.)
+		return
+
 	var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
 	spark.set_up(3, 1, src)
 	spark.start()
 	spark.holder = null
 	qdel(src)
-	return ..()
+
+/mob/living/simple_animal/hostile/marine
+	name = "marine"
+	desc = "A tired-looking marine holding a sharp blade."
+	icon_state = "marine"
+	icon_living = "marine"
+	icon_dead = "marine_dead"
+	icon_gib = null
+	speak_chance = 0
+	turns_per_move = 5
+	response_help = "cautiously pets the"
+	response_disarm = "pushes aside the"
+	response_harm = "hits the"
+	speak = list("Wish we had some fuckin' ammo.", "Pass me the smokes.", "When will evac get here?", "I wanna go home.")
+	emote_see = list("sniffs.", "coughs.", "sharpens his blade.")
+	speed = 5
+	maxHealth = 400
+	health = 400
+
+	harm_intent_damage = 8
+	melee_damage_lower = 35
+	melee_damage_upper = 35
+	attacktext = "slashes"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+
+	break_stuff_probability = 15
+
+	faction = FACTION_MARINE
+
+/mob/living/simple_animal/hostile/marine/FindTarget()
+	. = ..()
+	if(. && prob(50))
+		manual_emote("shouts an inspiring cry!")
+		playsound(src, get_sfx("male_warcry"), 55)
+
+/mob/living/simple_animal/hostile/marine/AttackingTarget()
+	. = ..()
+	var/mob/living/L = .
+	if(istype(L))
+		var/datum/status_effect/stacking/bleed/bleed = L.has_status_effect(/datum/status_effect/stacking/bleed)
+		if(!bleed)
+			bleed = L.apply_status_effect(/datum/status_effect/stacking/bleed, 1)
+		else
+			bleed.add_stacks(1)
+
+// Here be bosses
 
 /mob/living/simple_animal/hostile/megacarp
 	name = "megacarp"
@@ -141,7 +192,7 @@
 
 /mob/living/simple_animal/hostile/megacarp/FindTarget()
 	. = ..()
-	if(. && prob(50))
+	if(.)
 		manual_emote("growls at [.]")
 
 /mob/living/simple_animal/hostile/megacarp/AttackingTarget()
@@ -166,7 +217,7 @@
 	icon = 'icons/mob/broadMobs.dmi'
 
 
-/mob/living/simple_animal/hostile/hivebot
+/mob/living/simple_animal/hostile/hivebot // zonenote: these guys can't attack bc nobody has the camp target trait
 	name = "hivebot"
 	desc = "A strange, armored robot with a worrying red visor. Its blade looks like it could pierce the thickest armor."
 	icon_state = "hivebot"
@@ -209,7 +260,7 @@
 
 /mob/living/simple_animal/hostile/hivebot/FindTarget()
 	. = ..()
-	if(. && prob(50))
+	if(.)
 		manual_emote("beeps angrily at [.]")
 		playsound(loc, 'sound/machines/twobeep.ogg', 40)
 

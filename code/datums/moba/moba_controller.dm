@@ -64,6 +64,7 @@
 	COOLDOWN_DECLARE(carp_boss_spawn_cooldown)
 	var/carp_initial_spawn_time = 15 MINUTES
 	var/carp_spawn_time = 7 MINUTES
+	var/megacarp_alive = FALSE
 
 	COOLDOWN_DECLARE(hivebot_boss_spawn_cooldown)
 	var/hivebot_boss_spawned = FALSE
@@ -246,7 +247,8 @@
 	if(COOLDOWN_FINISHED(src, minion_spawn_cooldown))
 		spawn_minions()
 
-	if(COOLDOWN_FINISHED(src, carp_boss_spawn_cooldown))
+	if(COOLDOWN_FINISHED(src, carp_boss_spawn_cooldown) && !megacarp_alive)
+		megacarp_alive = TRUE
 		spawn_boss(/datum/moba_boss/megacarp)
 
 	if(COOLDOWN_FINISHED(src, hivebot_boss_spawn_cooldown) && !hivebot_boss_spawned)

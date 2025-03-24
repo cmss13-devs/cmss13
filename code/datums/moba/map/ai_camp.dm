@@ -2,6 +2,8 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 
 /obj/effect/moba_camp_spawner
 	invisibility = INVISIBILITY_MAXIMUM
+	icon = 'icons/landmarks.dmi'
+	icon_state = "x3"
 	var/simplemob_type = /mob/living/simple_animal/hostile/carp/low_knockdown
 	var/hostile_range = 3
 	var/amount_to_spawn = 2
@@ -30,12 +32,12 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 
 /obj/effect/moba_camp_spawner/proc/spawn_mobs()
 	if(!length(watched_tiles))
-		for(var/turf/open/floor/floor in view(hostile_range, src))
+		for(var/turf/open/floor in view(hostile_range, src))
 			RegisterSignal(floor, COMSIG_TURF_ENTERED, PROC_REF(on_enter))
 			watched_tiles += floor
 
 	var/list/viable_turfs = list()
-	for(var/turf/open/floor/floor in range(1, src))
+	for(var/turf/open/floor in range(1, src))
 		viable_turfs += floor
 
 	for(var/i in 1 to amount_to_spawn)
@@ -98,6 +100,7 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 
 // A swarm that occasionally stuns on-hit
 /obj/effect/moba_camp_spawner/carp
+	amount_to_spawn = 3
 
 // Tough bastard that deals max HP damage
 /obj/effect/moba_camp_spawner/hellhound
@@ -108,3 +111,23 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 	starting_xp_per_mob = 150
 	ending_xp_per_mob = 225
 	gold_per_mob = 120
+
+// Just A Guy really
+/obj/effect/moba_camp_spawner/combat_drone
+	simplemob_type = /mob/living/simple_animal/hostile/combat_drone
+	amount_to_spawn = 2
+	starting_max_health = 240
+	ending_max_health = 960
+	starting_xp_per_mob = 75
+	ending_xp_per_mob = 110
+	gold_per_mob = 120
+
+// Applies DoT on hit
+/obj/effect/moba_camp_spawner/marine
+	simplemob_type = /mob/living/simple_animal/hostile/marine
+	amount_to_spawn = 2
+	starting_max_health = 400
+	ending_max_health = 1600
+	starting_xp_per_mob = 75
+	ending_xp_per_mob = 110
+	gold_per_mob = 105

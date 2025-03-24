@@ -94,24 +94,24 @@
 	// using.screen_loc = ui_ghost_slot3
 	// static_inventory += using
 
-	using = new /atom/movable/screen/ghost/reenter_corpse()
+	using = new /atom/movable/screen/ghost/moba()
 	using.screen_loc = ui_ghost_slot4
 	static_inventory += using
 
-	using = new /atom/movable/screen/ghost/toggle_huds()
+	using = new /atom/movable/screen/ghost/reenter_corpse()
 	using.screen_loc = ui_ghost_slot5
+	static_inventory += using
+
+	using = new /atom/movable/screen/ghost/toggle_huds()
+	using.screen_loc = ui_ghost_slot6
 	static_inventory += using
 
 	// Using the same slot because they are two parts of the same slot
 	using = new /atom/movable/screen/move_up()
-	using.screen_loc = ui_ghost_slot6
+	using.screen_loc = ui_ghost_slot7
 	static_inventory += using
 
 	using = new /atom/movable/screen/move_down()
-	using.screen_loc = ui_ghost_slot6
-	static_inventory += using
-
-	using = new /atom/movable/screen/ghost/moba()
 	using.screen_loc = ui_ghost_slot7
 	static_inventory += using
 

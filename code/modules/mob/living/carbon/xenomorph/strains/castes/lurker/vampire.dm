@@ -91,7 +91,7 @@
 			if (target.stat == DEAD)
 				continue
 
-			if (!xeno.can_not_harm(target))
+			if (xeno.can_not_harm(target))
 				continue
 
 			if (HAS_TRAIT(target, TRAIT_NESTED))

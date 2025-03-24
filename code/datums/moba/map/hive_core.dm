@@ -5,7 +5,6 @@
 	icon = 'icons/obj/structures/alien/structures96x96.dmi'
 	can_block_movement = TRUE
 	density = TRUE
-	pixel_x = -32
 	maptext_x = 16
 	maptext_y = 98
 	bound_height = 96

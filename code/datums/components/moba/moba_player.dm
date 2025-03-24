@@ -12,6 +12,7 @@
 		/datum/status_effect/stacking/furious_haste = "Furious Haste",
 		/datum/status_effect/stacking/rended_armor = "Rended Armor",
 		/datum/status_effect/antiheal = "Healing Disrupted",
+		/datum/status_effect/stacking/bleed = "Bleeding",
 	)
 
 	var/static/list/level_up_thresholds = list(
@@ -181,12 +182,12 @@
 	var/text_to_use = ""
 
 	for(var/datum/status_effect/effect as anything in parent_xeno.status_effects)
-		if(moba_status_effect_dict[effect])
+		if(moba_status_effect_dict[effect.type])
 			if(istype(effect, /datum/status_effect/stacking))
 				var/datum/status_effect/stacking/stack_effect = effect
-				text_to_use += "[moba_status_effect_dict[effect]] <b>[stack_effect.stacks]</b>x<br>"
+				text_to_use += "[moba_status_effect_dict[effect.type]] <b>[stack_effect.stacks]</b>x<br>"
 			else
-				text_to_use += "[moba_status_effect_dict[effect]]<br>"
+				text_to_use += "[moba_status_effect_dict[effect.type]]<br>"
 
 	parent_xeno.hud_used.alien_plasma_display.maptext = MAPTEXT(text_to_use)
 

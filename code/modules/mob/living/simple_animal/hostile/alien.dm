@@ -176,3 +176,6 @@
 
 	pixel_x = -12
 	old_x = -12
+
+/mob/living/simple_animal/hostile/alien/no_harm_animal
+	faction_group = list(FACTION_XENOMORPH, FACTION_MONKEY, FACTION_NEUTRAL)

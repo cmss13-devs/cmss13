@@ -116,6 +116,261 @@
 /area/tyrargo/outdoors/outskirts_road/east
 	name = "Outskirts Road - East"
 
+// Colony Streets
+
+/area/tyrargo/outdoors/colony_streets
+	name = "Colony Streets"
+	icon_state = "shuttle3"
+	ceiling = CEILING_NONE
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
+	requires_power = FALSE
+
+/area/tyrargo/outdoors/colony_streets/north_west
+	name = "Colony Streets - North-West"
+
+/area/tyrargo/outdoors/colony_streets/west
+	name = "Colony Streets - West"
+
+/area/tyrargo/outdoors/colony_streets/south_west
+	name = "Colony Streets - South-West"
+
+/area/tyrargo/outdoors/colony_streets/north
+	name = "Colony Streets - North"
+
+/area/tyrargo/outdoors/colony_streets/north_east
+	name = "Colony Streets - North-East"
+
+/area/tyrargo/outdoors/colony_streets/east
+	name = "Colony Streets - East"
+
+/area/tyrargo/outdoors/colony_streets/south_east
+	name = "Colony Streets - South-East"
+
+// Colony Exterior
+
+/area/tyrargo/outdoors/colony_exterior
+	name = "Colony Exterior"
+	icon_state = "mining"
+	ceiling = CEILING_NONE
+	minimap_color = MINIMAP_AREA_JUNGLE
+	requires_power = FALSE
+
+/area/tyrargo/outdoors/colony_exterior/north_west
+	name = "Colony Exterior - North-West"
+
+/area/tyrargo/outdoors/colony_exterior/west
+	name = "Colony Exterior - West"
+
+/area/tyrargo/outdoors/colony_exterior/south_west
+	name = "Colony Exterior - South-West"
+
+/area/tyrargo/outdoors/colony_exterior/north
+	name = "Colony Exterior - North"
+
+/area/tyrargo/outdoors/colony_exterior/north_east
+	name = "Colony Exterior - North-East"
+
+/area/tyrargo/outdoors/colony_exterior/east
+	name = "Colony Exterior - East"
+
+/area/tyrargo/outdoors/colony_exterior/south_east
+	name = "Colony Exterior - South-East"
+
+// Colony Walkways
+
+/area/tyrargo/outdoors/walkway_access
+	name = "External Access Walkway"
+	icon_state = "showroom"
+	ceiling = CEILING_NONE
+	minimap_color = MINIMAP_AREA_CELL_HIGH
+	requires_power = FALSE
+
+/area/tyrargo/outdoors/walkway_access/power_sewer
+	name = "External Walkway - Power/Sewer"
+
+/area/tyrargo/outdoors/walkway_access/sewer_apart
+	name = "External Walkway - Sewer/Apartments"
+
+/area/tyrargo/outdoors/walkway_access/power_apart
+	name = "External Walkway - Power/Apartments"
+
+/area/tyrargo/outdoors/walkway_access/apart_gararge
+	name = "External Walkway - Apartments/Gararge"
+
+/area/tyrargo/outdoors/walkway_access/gararge_admin
+	name = "External Walkway - Gararge/Admin"
+
+/area/tyrargo/outdoors/walkway_access/museum_central
+	name = "External Walkway - Museum"
+
+//// Colony Buildings ////
+
+// Apartment
+
+/area/tyrargo/indoors/apartment
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	icon_state = "quart"
+
+/area/tyrargo/indoors/apartment/north_ground
+	name = "Standfeld Apartment Complex - North-Ground"
+
+/area/tyrargo/indoors/apartment/north_upper
+	name = "Standfeld Apartment Complex - North-Upper"
+
+/area/tyrargo/indoors/apartment/south_ground
+	name = "Standfeld Apartment Complex - South-Ground"
+
+/area/tyrargo/indoors/apartment/south_upper
+	name = "Standfeld Apartment Complex - South-Upper"
+
+// Bar
+
+/area/tyrargo/indoors/bar
+	minimap_color = MINIMAP_AREA_CELL_VIP
+	icon_state = "bar"
+
+/area/tyrargo/indoors/bar/ground
+	name = "Last Throw Bar - Ground"
+
+/area/tyrargo/indoors/bar/upper
+	name = "Last Throw Bar - Upper"
+
+/area/tyrargo/indoors/bar/upper/external
+	name = "Last Throw Bar - Upper/External"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Power-Plant
+
+/area/tyrargo/indoors/engineering
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
+	icon_state = "maint_engine"
+
+/area/tyrargo/indoors/engineering/ground
+	name = "Sector F: Power Plant - Ground"
+
+/area/tyrargo/indoors/engineering/upper
+	name = "Sector F: Power Plant - Upper"
+
+/area/tyrargo/indoors/engineering/upper/external
+	name = "Sector F: Power Plant - Upper/External"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Sewer Treatment
+
+/area/tyrargo/indoors/sewer_treatment
+	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
+	icon_state = "explored"
+
+/area/tyrargo/indoors/sewer_treatment/ground
+	name = "Sewer Treatment Plant - Ground"
+
+/area/tyrargo/indoors/sewer_treatment/upper
+	name = "Sewer Treatment Plant - Upper"
+
+/area/tyrargo/indoors/sewer_treatment/lower
+	name = "Sewer Treatment Plant - Underground Access"
+
+/area/tyrargo/indoors/sewer_treatment/upper/external
+	name = "Sewer Treatment Plant - Upper/External"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Ancillery Comms
+
+/area/tyrargo/indoors/comms
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
+	icon_state = "ai_upload"
+
+/area/tyrargo/indoors/comms/ground
+	name = "Ancillery Communications System - Ground"
+
+/area/tyrargo/indoors/comms/upper
+	name = "Ancillery Communications System - Upper"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Gararge
+
+/area/tyrargo/indoors/gararge
+	minimap_color = MINIMAP_AREA_CELL_MED
+	icon_state = "HH_Mines"
+
+/area/tyrargo/indoors/gararge/ground
+	name = "Busters Car Repair - Ground"
+
+/area/tyrargo/indoors/gararge/upper
+	name = "Busters Car Repair - Ground"
+	ceiling = CEILING_NONE
+
+/area/tyrargo/indoors/gararge/upper/external
+	name = "Busters Car Repair - Upper/External"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Administration
+
+/area/tyrargo/indoors/admin
+	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
+	icon_state = "storage"
+
+/area/tyrargo/indoors/admin/ground
+	name = "Sector F: Government Administration - Ground"
+
+/area/tyrargo/indoors/admin/upper
+	name = "Sector F: Government Administration - Upper"
+
+/area/tyrargo/indoors/admin/upper/external
+	name = "Sector F: Government Administration - Upper-External"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Administration
+
+/area/tyrargo/indoors/market
+	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
+	icon_state = "HH_Panic"
+
+/area/tyrargo/indoors/market/ground
+	name = "Farmers Market - Ground"
+
+/area/tyrargo/indoors/market/upper
+	name = "Farmers Market - Upper"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Security
+
+/area/tyrargo/indoors/security
+	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
+	icon_state = "HH_Basement"
+
+/area/tyrargo/indoors/security/ground
+	name = "Sector F: Marshals Outpost - Ground"
+
+/area/tyrargo/indoors/security/upper
+	name = "Sector F: Marshals Outpost - Upper"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
+// Administration
+
+/area/tyrargo/indoors/museum_storage
+	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
+	icon_state = "auxstorage"
+
+/area/tyrargo/indoors/museum_storage/ground
+	name = "West: Museum Storage - Ground"
+
+/area/tyrargo/indoors/museum_storage/upper
+	name = "West: Museum Storage - Upper"
+
+/area/tyrargo/indoors/museum_storage/upper/external
+	name = "West: Museum Storage - Upper/External"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
 // Western Outdoor Areas
 
 /area/tyrargo/outdoors/outskirts
@@ -135,6 +390,9 @@
 
 /area/tyrargo/outdoors/outskirts/east
 	name = "Outskirts  - East"
+
+/area/tyrargo/outdoors/outskirts/river
+	name = "Outskirts  - River"
 
 /area/tyrargo/outdoors/outskirts/fsb_north
 	name = "Fire Support Base - North"
@@ -197,4 +455,13 @@
 
 /area/tyrargo/underground/bunker/ammo_dump_connection
 	name = "USASF Airbase Anderson - Underground Cave Network"
+	requires_power = FALSE
+
+// Saipan
+
+/area/tyrargo/indoors/saipan
+	name = "Dropship Saipan"
+	minimap_color = MINIMAP_SQUAD_ECHO
+	icon_state = "Holodeck"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	requires_power = FALSE

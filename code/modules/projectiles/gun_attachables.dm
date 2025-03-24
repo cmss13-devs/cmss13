@@ -280,7 +280,7 @@ Defined in conflicts.dm of the #defines folder.
 	damage_falloff_mod = 0.1
 
 /obj/item/attachable/suppressor/nsg
-	name = "BL11 Firearm Muffler"
+	name = "\improper BL11 firearm muffler"
 	desc = "Threaded steel barrel attachment; slows the escape of propellant gasses, resulting in muffled weapon fire."
 	icon_state = "bl11"
 	attach_icon = "bl11_a"

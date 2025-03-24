@@ -44,7 +44,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake/orange(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
-	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 
 /datum/equipment_preset/survivor/army/add_survivor_weapon_security(mob/living/carbon/human/new_human)
 	return
@@ -105,14 +104,15 @@
 
 /datum/equipment_preset/survivor/army/engineer
 	name = "Survivor - US Army Combat Engineering Technician"
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_ENGI
 	rank = JOB_ARMY_ENGI
 	skills = /datum/skills/military/survivor/army_engineer
 	minimap_icon = "hudsquad_cet"
 
 /datum/equipment_preset/survivor/army/engineer/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/welding(new_human), WEAR_HEAD)
 	..()
 	add_army_weapon(new_human)

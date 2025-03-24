@@ -1611,6 +1611,9 @@
 
 // US Army - Trooper
 
+/datum/equipment_preset/corpse/tyrargo
+	flags = EQUIPMENT_PRESET_STUB
+
 /datum/equipment_preset/corpse/tyrargo/us_army_trooper
 	name = "Corpse - US Army - Trooper"
 	assignment = JOB_ARMY_TROOPER

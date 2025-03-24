@@ -17,4 +17,4 @@
 /datum/status_effect/stacking/bleed/tick(seconds_between_ticks)
 	. = ..()
 	var/mob/living/living_owner = owner
-	living_owner.take_overall_damage(damage_per_stack_per_sec * stacks)
+	living_owner.apply_armoured_damage(stacks * damage_per_stack_per_sec, ARMOR_MELEE, BRUTE)

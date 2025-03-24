@@ -156,7 +156,7 @@
 
 // Here be bosses
 
-/mob/living/simple_animal/hostile/megacarp
+/mob/living/simple_animal/hostile/megacarp //zonenote look into bounds
 	name = "megacarp"
 	desc = "An enormous fang-bearing creature that resembles the smaller space carp, except far angrier."
 	icon = 'icons/mob/broadMobs.dmi'

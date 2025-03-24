@@ -988,12 +988,11 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob)
 "adl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/south_upper)
@@ -1018,6 +1017,13 @@
 "adp" = (
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob)
+"adq" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/mob/living/simple_animal/hostile/alien,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
 "adr" = (
 /turf/open/floor/plating/wood,
 /area/tyrargo/landing_zone_1/ceiling)
@@ -1030,10 +1036,35 @@
 /obj/structure/platform/stone/kutjevo,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
+"adu" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "adv" = (
 /obj/structure/platform_decoration/stone/kutjevo,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central)
+"adw" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "adx" = (
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
@@ -1041,10 +1072,9 @@
 /turf/open/floor/strata/floor2,
 /area/tyrargo/indoors/admin/ground)
 "adz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -1052,6 +1082,14 @@
 	},
 /turf/open/floor/plating/platingdmg1,
 /area/tyrargo/indoors/apartment/south_ground)
+"adA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "adB" = (
 /obj/structure/prop/rock{
 	density = 0
@@ -1062,6 +1100,19 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central)
+"adC" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	pixel_x = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "adD" = (
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/west,
@@ -1079,11 +1130,16 @@
 /obj/structure/platform_decoration/stone/kutjevo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central)
+"adH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/interior/wood/alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "adI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
-	icon_state = "sandbag_0";
-	color = "#a98c7c"
+	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
@@ -1103,22 +1159,20 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/engineering/upper/external)
 "adM" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "adN" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
@@ -1145,16 +1199,13 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "adP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
@@ -2079,6 +2130,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "ago" = (
@@ -2239,10 +2292,9 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agE" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -2303,10 +2355,9 @@
 	pixel_x = 4;
 	layer = 2.99
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -2395,10 +2446,9 @@
 	layer = 2.99;
 	pixel_x = -3
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -2410,10 +2460,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agR" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -2439,10 +2488,9 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/barricade/sandbags/wired{
@@ -4861,16 +4909,12 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/colony_exterior/west)
 "aod" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -4893,11 +4937,9 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/west)
 "aog" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
@@ -5018,17 +5060,13 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aot" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -5111,11 +5149,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoD" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/barricade/sandbags/wired{
 	dir = 1;
@@ -5140,10 +5176,9 @@
 	layer = 2.97;
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -5185,11 +5220,9 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -5254,18 +5287,9 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
-	},
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.97;
-	pixel_y = 4
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
@@ -5273,16 +5297,21 @@
 	layer = 2.96;
 	pixel_y = -12
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 1;
@@ -5296,12 +5325,11 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aoS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
@@ -5430,16 +5458,12 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "apk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -5505,11 +5529,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aps" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -5597,33 +5619,30 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "apC" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c"
-	},
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.97;
-	pixel_y = 4
-	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_x = -1;
 	layer = 2.96;
 	pixel_y = -10
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
 "apD" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement2,
@@ -6318,12 +6337,11 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/oob)
 "aro" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -6339,12 +6357,11 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/tyrargo/outdoors/colony_streets/north)
 "arp" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
@@ -6359,12 +6376,11 @@
 /turf/open/hybrisa/street/roadlines4,
 /area/tyrargo/outdoors/colony_streets/north)
 "arq" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -6505,10 +6521,9 @@
 	layer = 2.97;
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
@@ -7093,12 +7108,11 @@
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/indoors/engineering/upper/external)
 "asV" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
@@ -7432,10 +7446,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
 "atM" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tower,
@@ -7568,10 +7581,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "atX" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/blocker/invisible_wall,
@@ -9086,10 +9097,6 @@
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
-"axL" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkredfull2,
-/area/tyrargo/indoors/museum_storage/ground)
 "axM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2/east,
@@ -13277,31 +13284,24 @@
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/museum_storage/ground)
 "aIQ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aIR" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/interior/wood/alt,
@@ -13322,16 +13322,13 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/museum_storage/ground)
 "aIU" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
@@ -13357,25 +13354,22 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aIY" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aIZ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -13508,10 +13502,9 @@
 /turf/open/floor/prison/darkbrown2,
 /area/tyrargo/indoors/museum_storage/ground)
 "aJw" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
@@ -13523,20 +13516,17 @@
 /area/tyrargo/indoors/museum_storage/ground)
 "aJy" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aJz" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/interior/wood,
@@ -13545,11 +13535,9 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
@@ -13557,10 +13545,9 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -13586,16 +13573,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "aJE" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/interior/wood,
@@ -13638,11 +13622,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "aJI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99;
 	pixel_x = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -13685,10 +13667,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aJL" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood/alt,
@@ -13703,10 +13684,9 @@
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/tyrargo/indoors/apartment/south_upper)
 "aJO" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/largecrate/random/barrel/white,
@@ -13882,25 +13862,21 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aKc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "aKd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood/alt,
@@ -14176,11 +14152,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "aKy" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -2;
@@ -14191,16 +14165,14 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aKz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -14218,11 +14190,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aKA" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
@@ -14255,16 +14225,14 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/east)
 "aKG" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/interior/wood,
@@ -14282,16 +14250,12 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aKI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -14372,10 +14336,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/museum_storage/upper)
 "aKU" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/largecrate/random/barrel/red,
@@ -14876,10 +14839,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
 "aMH" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -14911,11 +14872,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aML" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
@@ -14936,10 +14895,9 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aMN" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -14953,16 +14911,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
 "aMP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15007,11 +14962,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/east)
 "aMU" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -15028,16 +14981,14 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aMW" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/blood,
@@ -15061,10 +15012,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "aNc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15166,10 +15116,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNo" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -15199,11 +15148,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "aNv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
@@ -15265,11 +15212,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "aNA" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -15323,11 +15268,9 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "aNI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/heap{
@@ -15363,10 +15306,8 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "aNM" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15421,20 +15362,17 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNT" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15525,26 +15463,20 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "aOd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aOe" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15552,11 +15484,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOf" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = 6
@@ -15564,16 +15494,13 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOg" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -15609,10 +15536,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -15634,10 +15560,8 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15645,20 +15569,16 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOm" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOn" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15668,21 +15588,17 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOo" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOp" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
@@ -15703,34 +15619,30 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOt" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/trash/uscm_mre{
 	pixel_x = 10;
 	pixel_y = -2
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOu" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15753,10 +15665,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOx" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15776,11 +15687,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards{
@@ -15807,10 +15716,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOD" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/mortar_shell/frag{
@@ -15839,11 +15747,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
 "aOH" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -15866,31 +15772,26 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOJ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOK" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOL" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/hybrisa/trash{
@@ -15918,10 +15819,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aOP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15929,10 +15829,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOQ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -15949,16 +15848,13 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aOS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -16001,10 +15897,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aOY" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -16039,16 +15933,13 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "aPb" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -16060,10 +15951,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aPd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -16073,7 +15963,6 @@
 	layer = 2.9
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPe" = (
@@ -16096,10 +15985,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPg" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/closet/crate/ammo{
@@ -16110,7 +15998,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPh" = (
@@ -16118,10 +16007,9 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aPi" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -16204,6 +16092,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPq" = (
@@ -16241,11 +16130,9 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "aPt" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
@@ -16265,11 +16152,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/interior/wood,
@@ -16340,11 +16225,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPC" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/colony/usedbandage{
@@ -16411,10 +16294,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPJ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/blood,
@@ -16481,11 +16363,9 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/central)
 "aPP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -16495,10 +16375,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPQ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/server_equipment/laptop/on{
@@ -16675,11 +16554,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
 "aQk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -16707,10 +16584,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -16730,10 +16606,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQo" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/trash/uscm_mre{
@@ -16777,16 +16652,13 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQt" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/closet/crate/ammo{
@@ -16799,7 +16671,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQu" = (
@@ -16807,10 +16680,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -16827,10 +16699,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
 "aQx" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/mortar_shell/flare{
@@ -16880,14 +16751,12 @@
 /obj/item/trash/cigbutt{
 	pixel_y = 8
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQD" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/largecrate/random/case/small{
@@ -16913,10 +16782,9 @@
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/north)
 "aQG" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -16939,10 +16807,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -16960,10 +16826,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQK" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/ammo_magazine/rifle/heap{
@@ -16972,10 +16837,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQL" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/generic,
@@ -16990,11 +16854,9 @@
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
 "aQN" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -17088,10 +16950,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQY" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -17101,16 +16962,14 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "aQZ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -17143,16 +17002,14 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aRd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/closet/crate/explosives{
@@ -17215,12 +17072,11 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "aRl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -18004,28 +17860,25 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
 "aTh" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aTi" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aTj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/auto_turf/strata_grass,
@@ -18179,11 +18032,9 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
@@ -18263,11 +18114,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aTB" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	pixel_x = -1;
@@ -18363,11 +18212,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aTH" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
@@ -18485,11 +18332,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aTO" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = 1;
@@ -18557,11 +18402,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aTV" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/vehicles/tank/miltruck{
 	pixel_x = -15
@@ -18651,11 +18494,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aTZ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass,
@@ -18670,10 +18511,8 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
 "aUb" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/item/ammo_casing/bullet,
@@ -18720,11 +18559,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/landing_zone_2)
 "aUg" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -18734,16 +18571,12 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aUi" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -18753,10 +18586,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "aUj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -18773,10 +18604,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "aUk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -18923,10 +18752,9 @@
 	icon_state = "sandbag_0";
 	color = "#a98c7c"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
@@ -19162,10 +18990,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aVa" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -19181,10 +19007,8 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/landing_zone_2)
 "aVc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -19196,10 +19020,8 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
 "aVd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/barricade/sandbags/wired{
@@ -19452,10 +19274,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aVz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/tile/tilegreen,
@@ -19736,11 +19557,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aWd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/wood,
@@ -19914,10 +19733,8 @@
 /area/tyrargo/landing_zone_1)
 "aWw" = (
 /obj/effect/decal/grass_overlay/grass1,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/item/ammo_casing/bullet,
@@ -19935,10 +19752,8 @@
 	icon_state = "sandbag_0";
 	color = "#a98c7c"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -20319,12 +20134,11 @@
 	icon_state = "sandbag_0";
 	color = "#a98c7c"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -4;
@@ -20526,10 +20340,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
 "aXv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/auto_turf/strata_grass,
@@ -20567,10 +20380,9 @@
 /area/tyrargo/outdoors/outskirts/central)
 "aXA" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/auto_turf/strata_grass,
@@ -20740,11 +20552,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "aXP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -21073,11 +20883,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aYt" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -21303,11 +21111,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aYN" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -21459,10 +21265,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "aZc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/prop{
@@ -21569,11 +21374,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "aZn" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -21614,10 +21417,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "aZs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/item/trash/cigbutt{
@@ -21635,11 +21436,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "aZu" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
@@ -21653,10 +21452,8 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/west_trench)
 "aZw" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -21724,23 +21521,21 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZD" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZE" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -21754,12 +21549,11 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZF" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
@@ -21771,12 +21565,11 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "aZH" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -21802,12 +21595,11 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZK" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood/alt,
@@ -21933,11 +21725,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/colony_exterior/west)
 "bab" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/rifle/m41a{
@@ -22314,17 +22104,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/colony_exterior/west)
 "baH" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -22335,10 +22121,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1)
 "baI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -22888,10 +22672,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bbK" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/weapon/gun/rifle/m41a{
@@ -22936,11 +22719,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "bbO" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -23579,10 +23360,8 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/oob)
 "bdh" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
@@ -24149,10 +23928,9 @@
 	layer = 2.97;
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -24587,10 +24365,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
 "bfe" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -25147,17 +24923,14 @@
 /turf/open/floor/almayer/black2/north,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
@@ -25167,20 +24940,18 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "bgu" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/machinery/m56d_hmg/mg_turret{
@@ -26283,16 +26054,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
 "biX" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/largecrate/random/barrel/brown,
@@ -26311,16 +26079,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
 "biZ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/item/ammo_casing/bullet,
@@ -26531,10 +26296,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "bjs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -26671,11 +26435,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "bjJ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
@@ -26811,17 +26573,13 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/landing_zone_2)
 "bjZ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood/alt,
@@ -26975,11 +26733,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkr" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/item/trash/cigbutt{
@@ -27021,10 +26777,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -27035,10 +26790,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2)
 "bkw" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -27053,10 +26807,9 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/admin/upper)
 "bky" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -27179,6 +26932,8 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkM" = (
@@ -27454,10 +27209,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/west)
 "blo" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -27466,10 +27220,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "blp" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -27479,10 +27232,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "blq" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -27490,10 +27242,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "blr" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/generic,
@@ -28017,10 +27768,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bmj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/prop{
@@ -28595,6 +28345,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bno" = (
@@ -29130,10 +28882,9 @@
 	color = "#a98c7c";
 	layer = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -29150,10 +28901,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bon" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -30481,11 +30231,9 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/colony_streets/north)
 "bqT" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
@@ -30723,10 +30471,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "brp" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/item/ammo_casing/bullet,
@@ -30746,10 +30492,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "brs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/generic,
@@ -30778,10 +30522,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "brv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -30835,10 +30577,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brB" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -31049,12 +30789,11 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "brX" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/item/trash/cigbutt{
 	pixel_x = 1;
@@ -31085,12 +30824,11 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bsa" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
@@ -31121,12 +30859,11 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bsd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/item/trash/cigbutt{
 	pixel_x = -3;
@@ -31135,12 +30872,11 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bse" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -31170,12 +30906,11 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bsg" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
@@ -32920,11 +32655,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
 "bwG" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
@@ -33135,11 +32868,9 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/landing_zone_2)
 "bwZ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
@@ -33994,10 +33725,9 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bzw" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
@@ -36192,10 +35922,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bEs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -36949,11 +36678,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bFY" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
@@ -37150,11 +36877,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bGz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
@@ -37277,11 +37002,9 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/central)
 "bGJ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/rifle/m41a{
@@ -37641,10 +37364,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bHx" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -38027,10 +37749,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bIC" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -39044,12 +38765,11 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "bLh" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
@@ -39121,16 +38841,12 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "bLs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -39205,16 +38921,13 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "bLH" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
@@ -39278,11 +38991,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bLQ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
@@ -39292,10 +39003,8 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bLS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
@@ -39309,10 +39018,8 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bLV" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -39397,30 +39104,27 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/interior/wood,
@@ -39484,11 +39188,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "bMx" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
@@ -39588,11 +39290,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "bMN" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood/alt,
@@ -39615,28 +39315,24 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMT" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bMU" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood/alt,
@@ -39653,11 +39349,9 @@
 /turf/closed/wall/wood,
 /area/tyrargo/landing_zone_1/ceiling)
 "bMX" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
@@ -39870,11 +39564,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "bNF" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -40088,16 +39780,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bOm" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood/alt,
@@ -40111,16 +39800,12 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bOo" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
@@ -40134,10 +39819,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bOr" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -40629,11 +40313,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "bPz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/west_trench)
@@ -40679,10 +40361,9 @@
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/north)
 "bPF" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -40756,12 +40437,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "bPL" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
@@ -40834,10 +40514,8 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "bPW" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
@@ -40900,11 +40578,9 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/east)
 "bQf" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
@@ -40929,16 +40605,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "bQk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -41015,11 +40688,9 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/east)
 "bQv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -41210,12 +40881,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bQV" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
@@ -41235,12 +40905,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "bQY" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
@@ -41263,11 +40932,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "bRc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
@@ -41299,11 +40966,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bRh" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
@@ -41312,20 +40977,16 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bRj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bRk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
@@ -41357,11 +41018,9 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bRp" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
@@ -41391,28 +41050,22 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/west_trench)
 "bRt" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRu" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -41426,11 +41079,9 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRx" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
@@ -41517,10 +41168,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bRM" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -41564,16 +41213,13 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/interior/wood,
@@ -41618,23 +41264,21 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bSa" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bSb" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -41642,12 +41286,11 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "bSc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
@@ -41694,59 +41337,46 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "bSj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "bSk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "bSl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "bSm" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
 "bSn" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -41760,11 +41390,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
 "bSp" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
@@ -42657,10 +42285,9 @@
 "bUy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/corsat/marked,
@@ -42679,10 +42306,9 @@
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUB" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/corsat/marked,
@@ -43071,10 +42697,9 @@
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVZ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/corsat/marked,
@@ -43228,10 +42853,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bWz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/machinery/light/small{
@@ -43242,10 +42866,9 @@
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bWA" = (
 /obj/effect/decal/cleanable/generic,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /turf/open/floor/corsat/plate,
@@ -43549,6 +43172,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/effect/landmark/objective_landmark/far,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXx" = (
@@ -43838,6 +43463,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bYs" = (
@@ -44947,6 +44574,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/north)
 "cbM" = (
@@ -46153,21 +45782,18 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/colony_exterior/south_east)
 "cfE" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "cfF" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/objective_landmark/far,
@@ -47665,9 +47291,6 @@
 "clf" = (
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/museum_storage/ground)
-"clg" = (
-/turf/open/floor/prison/darkredfull2,
-/area/tyrargo/indoors/museum_storage/ground)
 "clh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
@@ -47725,10 +47348,6 @@
 "cls" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/museum_storage/ground)
-"clt" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/prison/darkredfull2,
 /area/tyrargo/indoors/museum_storage/ground)
 "clu" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -48882,12 +48501,11 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cqg" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -50007,10 +49625,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "cug" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -50484,10 +50101,8 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cvW" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/generic,
@@ -50542,10 +50157,8 @@
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cwi" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/landmark/objective_landmark/medium,
@@ -50626,11 +50239,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cww" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/interior/wood,
@@ -50746,10 +50357,9 @@
 /turf/open/floor/prison/green/southeast,
 /area/tyrargo/indoors/admin/ground)
 "cwR" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -50824,6 +50434,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "cxc" = (
@@ -50836,10 +50448,9 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt/cement/cement3,
@@ -51041,17 +50652,6 @@
 "cxO" = (
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/colony_exterior/north_east)
-"cxP" = (
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
-	pixel_y = -6
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/interior/wood,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "cxQ" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -51125,10 +50725,8 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cyc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/effect/landmark/survivor_spawner,
@@ -51976,18 +51574,16 @@
 /turf/open/floor/plating,
 /area/tyrargo/indoors/engineering/upper)
 "cBC" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -53520,10 +53116,9 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "cKa" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt/cement/cement1,
@@ -53676,17 +53271,13 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "daS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
@@ -53731,11 +53322,9 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "dhp" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/plating/wood,
 /area/tyrargo/landing_zone_1/ceiling)
@@ -53824,10 +53413,9 @@
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/south_ground)
 "drs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -53842,17 +53430,10 @@
 /turf/open/floor/hybrisa/metal/stripe_red/north,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "drO" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
-	},
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
-	pixel_y = -10
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -53861,6 +53442,10 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "drV" = (
@@ -54002,10 +53587,9 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/tyrargo/indoors/admin/ground)
 "dHv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -54205,13 +53789,6 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/tyrargo/outdoors/walkway_access/sewer_apart)
 "dXu" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99;
-	pixel_x = -3
-	},
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
@@ -54381,18 +53958,16 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/west)
 "esI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1
@@ -54690,12 +54265,9 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/tyrargo/indoors/saipan)
 "feU" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.9;
-	pixel_y = -10;
-	pixel_x = -3
+	pixel_y = -6
 	},
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -54817,20 +54389,14 @@
 /area/tyrargo/indoors/saipan)
 "fnR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors/colony_streets/west)
 "foM" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	color = "#a98c7c"
-	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 1;
 	pixel_x = -2;
@@ -54839,6 +54405,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/blacklight{
 	pixel_y = 33
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -54875,6 +54446,10 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/floor/plating/panelscorched,
 /area/tyrargo/indoors/apartment/north_upper)
 "fut" = (
@@ -54908,12 +54483,11 @@
 /turf/open_space,
 /area/tyrargo/oob)
 "fBS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 1;
@@ -55081,11 +54655,9 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "fUa" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_1_1";
@@ -55161,10 +54733,8 @@
 	icon_state = "sandbag_0";
 	color = "#a98c7c"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
@@ -55227,10 +54797,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/landing_zone_2)
 "gfr" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -55368,11 +54937,9 @@
 /turf/open/floor/plating/panelscorched,
 /area/tyrargo/indoors/apartment/south_upper)
 "gsl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -55430,12 +54997,11 @@
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/north_ground)
 "gzA" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/closet/crate/ammo{
 	pixel_y = -1
@@ -55539,16 +55105,13 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "gFy" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/item/prop{
@@ -55653,10 +55216,8 @@
 /area/tyrargo/oob)
 "gNz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/item/prop{
@@ -55685,14 +55246,13 @@
 	pixel_x = -9;
 	pixel_y = 5
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 12
+	pixel_y = 4;
+	layer = 4
 	},
-/obj/effect/decal/hybrisa/road/lines3,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "gRD" = (
@@ -55723,6 +55283,8 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "gUQ" = (
@@ -55790,11 +55352,9 @@
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/tyrargo/indoors/engineering/ground)
 "hgs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegreen,
@@ -55803,10 +55363,9 @@
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/tyrargo/oob)
 "hjr" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt/cement/cement12,
@@ -55848,11 +55407,9 @@
 /turf/open/floor/prison/floorscorched2,
 /area/tyrargo/indoors/museum_storage/upper)
 "hmM" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/plating/wood_broken5,
 /area/tyrargo/landing_zone_1/ceiling)
@@ -55892,10 +55449,9 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/tyrargo/outdoors/walkway_access/museum_central)
 "hpg" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -55944,10 +55500,8 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "htK" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -55960,17 +55514,8 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "hxN" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99;
-	pixel_x = -3
-	},
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/flag/plantable/ua{
@@ -55982,6 +55527,10 @@
 	layer = 2.9
 	},
 /obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "hzN" = (
@@ -56081,10 +55630,8 @@
 /turf/open/floor/strata/red3/north,
 /area/tyrargo/oob)
 "hLu" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/item/ammo_casing/shell,
@@ -56135,18 +55682,17 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "hPr" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 12
-	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1;
 	pixel_y = 6;
 	pixel_x = 1
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -56257,10 +55803,9 @@
 	color = "#a98c7c";
 	pixel_y = 1
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -56276,11 +55821,9 @@
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "icY" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.9;
-	pixel_y = -1
+	pixel_y = 3
 	},
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -56330,12 +55873,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "ifF" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.9;
-	pixel_y = -10;
-	pixel_x = -3
+	pixel_y = -6
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -56345,9 +55885,6 @@
 /obj/structure/platform/stone/kutjevo/east,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts_road/west)
-"ijS" = (
-/turf/open/floor/prison/darkredfull2,
-/area/tyrargo/oob)
 "ijY" = (
 /obj/item/trash/cigbutt,
 /turf/open/asphalt/cement/cement3,
@@ -56364,12 +55901,11 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "imz" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
@@ -56389,14 +55925,13 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "iqA" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/north_upper)
 "iqV" = (
@@ -56525,10 +56060,9 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "iKI" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -56565,10 +56099,9 @@
 	pixel_y = -2;
 	pixel_x = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt/cement/cement3,
@@ -56934,10 +56467,8 @@
 /turf/open/floor/prison/damaged3,
 /area/tyrargo/indoors/museum_storage/upper)
 "jJk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -56961,12 +56492,11 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/tyrargo/indoors/apartment/south_ground)
 "jLJ" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1
@@ -57107,12 +56637,6 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "kdm" = (
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
-	pixel_y = -10
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
@@ -57128,6 +56652,10 @@
 	},
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 13
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -57289,16 +56817,9 @@
 /turf/open/floor/plating/panelscorched,
 /area/tyrargo/indoors/apartment/north_upper)
 "kvB" = (
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
-	pixel_y = -10
-	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -57309,6 +56830,10 @@
 	},
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 13
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -57484,12 +57009,11 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_exterior/south_east)
 "kML" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 4
@@ -57804,10 +57328,8 @@
 /area/tyrargo/indoors/bar/upper)
 "lxz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -58000,10 +57522,8 @@
 /turf/open_space,
 /area/tyrargo/oob)
 "lQs" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -58240,19 +57760,17 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "mlv" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "mlC" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/structure/barricade/sandbags/wired{
@@ -58290,10 +57808,8 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "mpl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood/alt,
@@ -58586,12 +58102,11 @@
 /turf/open/floor/prison/floorscorched2,
 /area/tyrargo/indoors/museum_storage/upper)
 "mUd" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
@@ -58601,16 +58116,12 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "mUr" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -58622,10 +58133,8 @@
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/north_upper)
 "mWj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/floor/interior/wood,
@@ -58680,11 +58189,9 @@
 /turf/open/asphalt/cement/cement14,
 /area/tyrargo/outdoors/colony_streets/north)
 "ndL" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
@@ -58722,12 +58229,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "ngP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = -6;
@@ -58748,10 +58254,9 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "niW" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -58772,11 +58277,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/landing_zone_2)
 "njV" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -58862,12 +58365,11 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/outdoors/walkway_access/power_apart)
 "nrS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
@@ -58886,17 +58388,6 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
-"ntf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	pixel_x = -1;
-	pixel_y = -20
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "ntB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -58909,17 +58400,13 @@
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors/colony_exterior/west)
 "nwl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1/no_mans_land)
@@ -59154,12 +58641,11 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "nSY" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
@@ -59213,10 +58699,9 @@
 /turf/open/floor/almayer/blackcorner/east,
 /area/tyrargo/indoors/bunker/central_south)
 "nWX" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/flora/bush/ausbushes/ausbush{
@@ -59330,10 +58815,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "ocS" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/surface/table/almayer{
@@ -59354,12 +58837,11 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/oob)
 "oek" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
@@ -59438,10 +58920,9 @@
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/apartment/south_upper)
 "olx" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt/cement/cement4,
@@ -59658,11 +59139,9 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/tyrargo/indoors/saipan)
 "oGw" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/largecrate/random/mini/ammo{
 	pixel_y = 5;
@@ -59761,11 +59240,9 @@
 /area/tyrargo/outdoors/outskirts/central)
 "oLe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
@@ -59865,10 +59342,9 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "oWV" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -60120,12 +59596,11 @@
 	icon_state = "lattice8";
 	pixel_x = 30
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -60180,11 +59655,9 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "pCP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
@@ -60590,11 +60063,9 @@
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/north)
 "qsl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.9;
-	pixel_y = -1
+	pixel_y = 2
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -60751,12 +60222,11 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/tyrargo/indoors/engineering/ground)
 "qFf" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/west)
@@ -60854,11 +60324,9 @@
 /turf/open/floor/hybrisa/tile/supermartfloor2,
 /area/tyrargo/oob)
 "qRe" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet{
 	icon_state = "cartridge_1_1";
@@ -60963,12 +60431,11 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/east)
 "reP" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -12;
@@ -60978,11 +60445,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "rhn" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
@@ -61165,11 +60630,9 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "rwL" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
@@ -61218,17 +60681,13 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "rBq" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -61239,11 +60698,9 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_upper)
 "rBt" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
@@ -61443,10 +60900,9 @@
 /obj/structure/prop/vehicles/tank/longstreet/concussive/destroyed{
 	pixel_x = 17
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt,
@@ -61492,10 +60948,9 @@
 /turf/open/floor/prison/blue/northeast,
 /area/tyrargo/indoors/security/ground)
 "rXO" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -61705,10 +61160,8 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/colony_exterior/west)
 "srO" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/barricade/sandbags/wired{
@@ -61750,10 +61203,9 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/west)
 "syq" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/carpet/carpetfadedred,
@@ -61849,10 +61301,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "sMj" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -61885,13 +61336,6 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_upper)
 "sOS" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99;
-	pixel_x = -3
-	},
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
@@ -62002,12 +61446,6 @@
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "sYN" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
-	},
 /obj/item/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
@@ -62024,12 +61462,11 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "tae" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
@@ -62169,18 +61606,16 @@
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "tlx" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1
@@ -62237,11 +61672,9 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/central)
 "tph" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/prop{
 	desc = "Empty and useless now.";
@@ -62322,10 +61755,8 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/colony_streets/west)
 "tvN" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /obj/structure/surface/table/almayer{
@@ -62375,10 +61806,9 @@
 "txL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -62874,11 +62304,9 @@
 /turf/open_space,
 /area/tyrargo/indoors/bar/upper)
 "uuo" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -62973,17 +62401,13 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "uDH" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/reagent_container/blood/empty,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -63040,12 +62464,11 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "uIe" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/interior/wood,
@@ -63100,12 +62523,11 @@
 	pixel_x = -4;
 	pixel_y = 11
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 12
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -63217,17 +62639,9 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "uXH" = (
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
-	pixel_y = -10
-	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -63237,6 +62651,10 @@
 	},
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 13
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -63386,11 +62804,9 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "vke" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_10";
@@ -63540,12 +62956,9 @@
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/north_ground)
 "vsX" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99;
-	pixel_x = -3
+	icon_state = "sandbag_0"
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -63793,18 +63206,15 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
@@ -63895,10 +63305,9 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "vPJ" = (
 /obj/effect/decal/siding,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/asphalt,
@@ -63970,12 +63379,11 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "vYc" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
@@ -64047,10 +63455,8 @@
 	icon_state = "sandbag_0";
 	color = "#a98c7c"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -64248,14 +63654,13 @@
 	pixel_x = -12;
 	pixel_y = 7
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 12
+	pixel_y = 4;
+	layer = 4
 	},
-/obj/effect/decal/hybrisa/road/lines3,
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "wyf" = (
@@ -64319,16 +63724,13 @@
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "wDF" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_y = 4
 	},
 /obj/item/ammo_casing/bullet,
@@ -64337,10 +63739,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "wEl" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /obj/structure/prop/tyrargo/boards{
@@ -64516,10 +63917,9 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "wSN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
 	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -64631,11 +64031,9 @@
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors/colony_streets/north)
 "xct" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/structure/prop/tyrargo/large_tents/small{
 	layer = 3.1
@@ -64846,11 +64244,9 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/south_ground)
 "xsW" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
@@ -64953,12 +64349,9 @@
 	icon_state = "road_edge_decal3";
 	pixel_y = 16
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.9;
-	pixel_y = -11;
-	pixel_x = -3
+	pixel_y = -6
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -65136,11 +64529,9 @@
 /turf/open/floor/hybrisa/carpet/carpetblue,
 /area/tyrargo/indoors/apartment/south_ground)
 "xZO" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
 /obj/item/ammo_casing/bullet,
 /obj/structure/prop/tyrargo/boards{
@@ -65215,16 +64606,12 @@
 /turf/open/floor/prison/floorscorched1,
 /area/tyrargo/indoors/museum_storage/upper)
 "yew" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99
+	icon_state = "sandbag_0"
 	},
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
 	pixel_y = -6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -124538,7 +123925,7 @@ bBE
 bBE
 bLH
 bLQ
-bLs
+adu
 bBE
 bBE
 bBD
@@ -125074,7 +124461,7 @@ bLF
 bBE
 bOm
 bMS
-bLQ
+adA
 bNF
 bMS
 bNj
@@ -125652,7 +125039,7 @@ bHc
 bHc
 bGT
 bBg
-bBg
+aat
 bBg
 bBg
 bBg
@@ -125797,7 +125184,7 @@ bLQ
 bLt
 aQs
 aQo
-aJE
+adC
 bMr
 bME
 bME
@@ -126018,7 +125405,7 @@ bBg
 bGw
 bGw
 bGw
-bBh
+adq
 bBg
 bCp
 bBg
@@ -126336,7 +125723,7 @@ bPG
 byQ
 bzi
 aQZ
-aQs
+adH
 aQW
 aKH
 aQH
@@ -128341,7 +127728,7 @@ bQb
 byQ
 bLF
 bLt
-cxP
+bLV
 bMr
 bMP
 bOS
@@ -128352,7 +127739,7 @@ aPK
 bqV
 bMr
 bMr
-bLH
+adw
 bMG
 aOY
 bzi
@@ -138917,7 +138304,7 @@ cpi
 cpj
 cub
 ctP
-ntf
+cty
 cpi
 cqh
 rBI
@@ -148968,8 +148355,8 @@ cmi
 cmb
 clG
 axQ
-clg
-clg
+clf
+clf
 ckL
 ckE
 fTs
@@ -149150,8 +148537,8 @@ clf
 cmc
 axQ
 axQ
-clt
-clg
+cmI
+clf
 ckL
 ckF
 fTs
@@ -149332,8 +148719,8 @@ aIy
 cmc
 axQ
 clG
-axL
-clg
+clh
+clf
 ckL
 ckF
 fTs
@@ -185339,8 +184726,8 @@ aaj
 aaj
 bgC
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
 bgC
 bgC
@@ -185349,8 +184736,8 @@ lsF
 bgC
 bgC
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
 bgC
 cDU
@@ -185363,13 +184750,13 @@ aaj
 aaj
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 cWU
@@ -185520,20 +184907,20 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 lsF
@@ -185544,15 +184931,15 @@ bgC
 bgC
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -185702,39 +185089,39 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -185884,39 +185271,39 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 hSM
@@ -186066,39 +185453,39 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 hSM
@@ -186248,39 +185635,39 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 hSM
@@ -186430,39 +185817,39 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
 bgC
 bgC
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 hSM
@@ -186612,39 +185999,39 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -186794,39 +186181,39 @@ faT
 faT
 faT
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 bgC
 bgC
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -186976,39 +186363,39 @@ cFm
 cFm
 cFm
 piV
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 bgC
 bgC
 bgC
 bgC
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -187158,39 +186545,39 @@ cFq
 cFn
 cFn
 piV
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -187340,39 +186727,39 @@ cFn
 cFn
 cFn
 piV
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -187522,39 +186909,39 @@ cFn
 cFn
 cFn
 piV
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 bgC
 bgC
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -187704,39 +187091,39 @@ cFo
 cFo
 cFo
 piV
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-bgC
-bgC
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgC
+bgC
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -187886,39 +187273,39 @@ tyM
 tyM
 tyM
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -188068,26 +187455,26 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 bgC
@@ -188096,11 +187483,11 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -188250,26 +187637,26 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
 bgC
 bgC
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 uZE
 aaj
 aaj
@@ -188278,11 +187665,11 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -188432,26 +187819,26 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 uZE
 aaj
 aaj
@@ -188460,11 +187847,11 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -188614,26 +188001,26 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 uZE
 aaj
 aaj
@@ -188642,11 +188029,11 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -188796,26 +188183,26 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 uZE
 aaj
 aaj
@@ -188824,11 +188211,11 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -188978,26 +188365,26 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 uZE
 aaj
 aaj
@@ -189006,11 +188393,11 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -189160,20 +188547,20 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 oee
 oee
@@ -189188,11 +188575,11 @@ aaj
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 adp
 hSM
@@ -189343,18 +188730,18 @@ aaj
 aaj
 bgC
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
-ijS
-ijS
+bgD
+bgD
 bgC
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
 bgC
 bgC
 cDU
@@ -189370,11 +188757,11 @@ bgC
 aaj
 aaj
 bgC
-ijS
-ijS
-ijS
-ijS
-ijS
+bgD
+bgD
+bgD
+bgD
+bgD
 bgC
 kDt
 fLH

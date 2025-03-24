@@ -303,14 +303,14 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //-------- US ARMY --------//
 
-#define JOB_ARMY_TROOPER "Army Trooper"
-#define JOB_ARMY_ENGI "Army Combat Engineering Technician"
-#define JOB_ARMY_MEDIC "Army Combat Medical Technician"
-#define JOB_ARMY_MARKSMAN "Army Marksman"
-#define JOB_ARMY_SMARTGUNNER "Army Heavy Gunner"
-#define JOB_ARMY_SNCO "Army Squad Leader"
-#define JOB_ARMY_CO "Army Commander"
-#define JOB_ARMY_SYN "Army Synthetic"
+#define JOB_ARMY_TROOPER "US Army Trooper"
+#define JOB_ARMY_ENGI "US Army Combat Engineering Technician"
+#define JOB_ARMY_MEDIC "US Army Combat Medical Technician"
+#define JOB_ARMY_MARKSMAN "US Army Marksman"
+#define JOB_ARMY_SMARTGUNNER "US Army Heavy Gunner"
+#define JOB_ARMY_SNCO "US Army Squad Leader"
+#define JOB_ARMY_CO "US Army Commander"
+#define JOB_ARMY_SYN "US Army Synthetic"
 
 
 #define JOB_ARMY_LIST list(JOB_ARMY_TROOPER, JOB_ARMY_ENGI, JOB_ARMY_MEDIC, JOB_ARMY_MARKSMAN, JOB_ARMY_SMARTGUNNER, JOB_ARMY_SNCO, JOB_ARMY_CO, JOB_ARMY_SYN)

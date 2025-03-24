@@ -1,10 +1,11 @@
-///*****************************LV-522 Force Recon Survivors*******************************************************/
+///*****************************US Army Survivors*******************************************************/
 /datum/equipment_preset/survivor/army
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
 	minimap_background = "background_ua"
-	rank = JOB_SURVIVOR
+	rank = JOB_ARMY_TROOPER
+	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
@@ -41,7 +42,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake/orange(new_human), WEAR_EYES)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
 	GLOB.character_traits[/datum/character_trait/skills/spotter].apply_trait(new_human)
 
@@ -82,7 +82,7 @@
 	return
 
 /datum/equipment_preset/survivor/army/proc/spawn_random_headgear(mob/living/carbon/human/new_human)
-	var/i = rand(3)
+	var/i = rand(1,3)
 	switch(i)
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
@@ -98,6 +98,7 @@
 
 /datum/equipment_preset/survivor/army/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
+	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
 

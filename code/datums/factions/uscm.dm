@@ -51,6 +51,9 @@
 				marine_rk = "soccmd"
 			if(JOB_SQUAD_TECH)
 				marine_rk = "tech"
+			// US Army
+			if(JOB_ARMY_TROOPER)
+				marine_rk = "trpr"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")
@@ -119,6 +122,9 @@
 				marine_rk = "leader"
 			if(JOB_SQUAD_TECH)
 				marine_rk = "tech"
+			// US Army
+			if(JOB_ARMY_TROOPER)
+				marine_rk = "trpr"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)
@@ -197,9 +203,6 @@
 			//CIA
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
-			// US Army
-			if(JOB_ARMY_TROOPER)
-				marine_rk = "army_trpr"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"

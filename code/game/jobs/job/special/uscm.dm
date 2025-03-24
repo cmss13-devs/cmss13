@@ -17,3 +17,7 @@
 
 /datum/job/special/uscm/tech
 	title = JOB_SQUAD_TECH
+
+// US Army
+/datum/job/special/uscm/trooper
+	title = JOB_ARMY_TROOPER

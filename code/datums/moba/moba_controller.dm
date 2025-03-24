@@ -70,6 +70,11 @@
 	var/hivebot_boss_spawned = FALSE
 	var/hivebot_spawn_time = 7 MINUTES
 
+	COOLDOWN_DECLARE(reaper_boss_spawn_cooldown)
+	var/reaper_initial_spawn_time = 1 MINUTES
+	var/reaper_boss_spawned = FALSE
+	var/reaper_spawn_time = 1 MINUTES
+
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
 	for(var/datum/moba_queue_player/player as anything in team1_players)
@@ -85,6 +90,7 @@
 	map_id = id
 	scoreboard = new(map_id)
 	COOLDOWN_START(src, carp_boss_spawn_cooldown, carp_initial_spawn_time)
+	COOLDOWN_START(src, reaper_boss_spawn_cooldown, reaper_initial_spawn_time)
 	COOLDOWN_START(src, hivebot_boss_spawn_cooldown, hivebot_spawn_time)
 
 /datum/moba_controller/Destroy(force, ...)
@@ -254,6 +260,10 @@
 	if(COOLDOWN_FINISHED(src, hivebot_boss_spawn_cooldown) && !hivebot_boss_spawned)
 		hivebot_boss_spawned = TRUE
 		spawn_boss(/datum/moba_boss/hivebot)
+
+	if(COOLDOWN_FINISHED(src, reaper_boss_spawn_cooldown) && !reaper_boss_spawned)
+		reaper_boss_spawned = TRUE
+		spawn_boss(/datum/moba_boss/reaper)
 
 	game_duration += SSmoba.wait
 

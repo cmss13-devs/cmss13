@@ -35,3 +35,22 @@
 
 /datum/moba_boon/hivebot/on_friendly_spawn(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/player_comp)
 	ADD_TRAIT(xeno, TRAIT_MOBA_STRUCTURESHRED, TRAIT_SOURCE_INHERENT)
+
+
+/datum/moba_boon/reaper
+
+name = "Reapers Schyte"
+desc = "Players will execute enemies and gain more damage to structures"
+
+/datum/moba_boon/reaper/New(datum/moba_controller/controller)
+	. = ..()
+	desc = "Players will execute enemies and deal []"
+
+/datum/moba_boon/reaper/proc/on_minion_spawn(datum/moba_controller/source, mob/living/minion)
+	SIGNAL_HANDLER
+
+	ADD_TRAIT(minion, TRAIT_MOBA_STRUCTURESHRED, TRAIT_SOURCE_INHERENT)
+
+/datum/moba_boon/reaper/proc/on_friendly_spawn(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/player_comp)
+	ADD_TRAIT(xeno, TRAIT_MOBA_STRUCTURESHRED, TRAIT_SOURCE_INHERENT)
+

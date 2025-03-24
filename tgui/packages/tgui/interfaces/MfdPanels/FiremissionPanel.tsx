@@ -1,8 +1,8 @@
 import { range } from 'common/collections';
 import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Divider, Icon, Input, Stack } from 'tgui/components';
 
-import { useBackend } from '../../backend';
-import { Box, Button, Divider, Icon, Input, Stack } from '../../components';
 import { DropshipEquipment, DropshipProps } from '../DropshipWeaponsConsole';
 import { MfdPanel, MfdProps } from './MultifunctionDisplay';
 import {
@@ -11,7 +11,7 @@ import {
   fmWeaponEditState,
   mfdState,
 } from './stateManagers';
-import { CasFiremission, FiremissionContext } from './types';
+import type { CasFiremission, FiremissionContext } from './types';
 
 const sortWeapons = (a: DropshipEquipment, b: DropshipEquipment) => {
   return (a?.mount_point ?? 0) < (b?.mount_point ?? 0) ? -1 : 1;

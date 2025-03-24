@@ -112,3 +112,4 @@
 
 /obj/structure/weapons_loader/wy
 	icon_state = "weapons_loader_wy"
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'

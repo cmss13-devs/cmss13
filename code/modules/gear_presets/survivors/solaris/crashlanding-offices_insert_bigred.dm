@@ -31,6 +31,9 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
+/datum/equipment_preset/survivor/pmc/standard
+	name = "Survivor - PMC Standard"
+
 /datum/equipment_preset/survivor/pmc/standard/load_gear(mob/living/carbon/human/new_human)
 	//uniform
 	var/obj/item/clothing/under/marine/veteran/pmc/uniform = new()

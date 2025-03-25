@@ -160,6 +160,7 @@
 /obj/item/clothing/under/marine/army
 	name = "US Army uniform"
 	desc = "Standard-issue Army uniform. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
+	specialty = "US Army"
 
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"

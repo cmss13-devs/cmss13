@@ -58,6 +58,14 @@
 				marine_rk = "cet"
 			if(JOB_ARMY_MEDIC)
 				marine_rk = "cmt"
+			if(JOB_ARMY_MARKSMAN)
+				marine_rk = "snpr"
+			if(JOB_ARMY_SMARTGUNNER)
+				marine_rk = "mmg"
+			if(JOB_ARMY_SNCO)
+				marine_rk = "sl_army"
+			if(JOB_ARMY_CO)
+				marine_rk = "co_army"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
 				if("Squad")
@@ -129,10 +137,18 @@
 			// US Army
 			if(JOB_ARMY_TROOPER)
 				marine_rk = "trpr"
-			if(JOB_ARMY_ENGI)
-				marine_rk = "cet"
 			if(JOB_ARMY_MEDIC)
 				marine_rk = "cmt"
+			if(JOB_ARMY_ENGI)
+				marine_rk = "cet"
+			if(JOB_ARMY_MARKSMAN)
+				marine_rk = "snpr"
+			if(JOB_ARMY_SMARTGUNNER)
+				marine_rk = "mmg"
+			if(JOB_ARMY_SNCO)
+				marine_rk = "sl_army"
+			if(JOB_ARMY_CO)
+				marine_rk = "co_army"
 			if(JOB_INTEL)
 				marine_rk = "io"
 			if(JOB_CAS_PILOT)

@@ -145,6 +145,10 @@
 	icon_state = "beret_black"
 	flags_atom = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/head/beret/cm/black/army
+	name = "US Army beret"
+	desc = "The proud tradition of the US Army 1st Air Cav using black berets for their troopers is maintained since the 20th century."
+
 /obj/item/clothing/head/beret/cm/green
 	icon_state = "beret_green"
 	flags_atom = NO_GAMEMODE_SKIN
@@ -749,6 +753,9 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 	flags_atom = NO_GAMEMODE_SKIN
+
+/obj/item/clothing/head/beret/marine/commander/black/army
+	name = "army major black beret"
 
 /obj/item/clothing/head/beret/marine/commander/council
 	name = "marine colonel beret"

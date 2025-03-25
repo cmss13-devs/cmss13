@@ -575,6 +575,18 @@
 	equipment = /datum/equipment_preset/survivor/army/medic
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
+/obj/effect/landmark/survivor_spawner/us_army_marksman
+	equipment = /datum/equipment_preset/survivor/army/marksman
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/us_army_gunner
+	equipment = /datum/equipment_preset/survivor/army/gunner
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/us_army_sl
+	equipment = /datum/equipment_preset/survivor/army/sl
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
 // UPP Recon //
 
 /obj/effect/landmark/survivor_spawner/upp/soldier

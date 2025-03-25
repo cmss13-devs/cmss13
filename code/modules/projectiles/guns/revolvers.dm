@@ -598,6 +598,7 @@
 	)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
+	explo_proof = TRUE
 	black_market_value = 100
 	var/is_locked = TRUE
 	var/can_change_barrel = TRUE

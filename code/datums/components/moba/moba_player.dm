@@ -13,6 +13,9 @@
 		/datum/status_effect/stacking/rended_armor = "Rended Armor",
 		/datum/status_effect/antiheal = "Healing Disrupted",
 		/datum/status_effect/stacking/bleed = "Bleeding",
+		/datum/status_effect/acid_soaked = "Acid Soaked",
+		/datum/status_effect/stacking/spit_detonation = "Acid Detonation",
+		/datum/status_effect/corroding = "Corroding",
 	)
 
 	var/static/list/level_up_thresholds = list(

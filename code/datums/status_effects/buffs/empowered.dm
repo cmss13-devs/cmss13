@@ -28,8 +28,3 @@
 	target.attack_speed_modifier -= attack_delay_buff
 
 	return ..()
-
-/atom/movable/screen/alert/status_effect/empowered
-	name = "Empowered"
-	desc = "You feel faster!"
-	icon_state = ALERT_FLOORED

@@ -8,10 +8,12 @@
 /datum/status_effect/antiheal/New(list/arguments)
 	if(!antiheal_overlay)
 		antiheal_overlay = icon('icons/mob/hud/hud.dmi', "antiheal")
-
-	if(length(arguments) >= 2)
-		healing_reduction = arguments[2]
 	return ..()
+
+/datum/status_effect/antiheal/on_creation(mob/living/new_owner, healing_reduction = 0.4)
+	. = ..()
+	if(.)
+		src.healing_reduction = healing_reduction
 
 /datum/status_effect/antiheal/on_apply()
 	. = ..()

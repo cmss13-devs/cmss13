@@ -47,8 +47,12 @@
 	name = "Special Acid Mixture"
 	icon_state = "special_acid_mixture"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3.25
+	component_items = list(
+		/datum/moba_item/common/accelerated_plasma_regen,
+	)
 
 	acid_power = 50
+	plasma_regen = 6
 
 /datum/moba_item/uncommon/antiheal
 	name = "Mending Disruptor"

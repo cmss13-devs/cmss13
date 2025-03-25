@@ -289,8 +289,9 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.is_mob_incapacitated() && !xeno.buckled)
-		return TRUE
+	if(!xeno || xeno.is_mob_incapacitated() || xeno.buckled)
+		return FALSE
+	return ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/give_to(mob/living/living_mob)
 	. = ..()
@@ -450,6 +451,7 @@
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE
+	var/spit_projectile_type = /obj/projectile
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3

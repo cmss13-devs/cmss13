@@ -423,7 +423,7 @@
 	else if (istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
 		girder.dismantle()
-		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
+		visible_message(SPAN_XENODANGER("[acid_t] audibly cracks under the bubbling acid and begins to fragment!"))
 
 	else if(istype(acid_t, /obj/structure/window/framed))
 		var/obj/structure/window/framed/window = acid_t
@@ -431,7 +431,6 @@
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 
 	else if(istype(acid_t, /obj/structure/barricade))
-		visible_message(SPAN_XENODANGER("[acid_t] audibly cracks under the bubbling acid and begins to fragment!"))
 		pass() // Don't delete it, just damaj
 
 	else if(istype(acid_t, /obj/item/weapon/gun))

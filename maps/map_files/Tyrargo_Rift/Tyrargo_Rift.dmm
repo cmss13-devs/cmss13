@@ -8249,6 +8249,7 @@
 	icon_state = "trash_5";
 	layer = 3.1
 	},
+/mob/living/simple_animal/mouse/rat/gray,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/north)
 "avk" = (
@@ -11730,6 +11731,7 @@
 	icon_state = "trash_2";
 	pixel_y = 12
 	},
+/mob/living/simple_animal/mouse/rat/brown,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/security/ground)
 "aEJ" = (
@@ -14196,6 +14198,7 @@
 	pixel_y = 5
 	},
 /obj/item/weapon/gun/smartgun{
+	current_mag = null;
 	pixel_y = -5
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -16044,9 +16047,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
-"aOT" = (
-/turf/closed/wall/rock,
-/area/tyrargo/underground/bunker/north)
 "aOU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
@@ -25352,6 +25352,10 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/oob)
+"bgB" = (
+/mob/living/simple_animal/mouse/rat/gray,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/north)
 "bgC" = (
 /turf/closed/wall/strata_outpost,
 /area/tyrargo/oob)
@@ -25367,6 +25371,12 @@
 "bgG" = (
 /turf/open/floor/plating,
 /area/tyrargo/oob)
+"bgH" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/landing_zone_1/underground)
 "bgI" = (
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "27"
@@ -25417,6 +25427,10 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bgT" = (
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_exterior/south_east)
 "bgU" = (
 /turf/open/floor/interior/wood,
 /area/tyrargo/oob)
@@ -27756,6 +27770,10 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
+"blM" = (
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/security/ground)
 "blN" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -14;
@@ -35773,6 +35791,7 @@
 	dir = 4
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/item/ammo_magazine/smartgun,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bDm" = (
@@ -36704,6 +36723,10 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
+"bFs" = (
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/tyrargo/outdoors/colony_exterior/south_west)
 "bFt" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass,
@@ -38218,6 +38241,20 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/oob/outdoors)
+"bIY" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bIZ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_3";
@@ -38364,6 +38401,11 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
+"bJs" = (
+/obj/item/device/flashlight/flare/on,
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bJt" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 8;
@@ -41910,6 +41952,10 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
+"bSQ" = (
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_exterior/west)
 "bSR" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -42934,6 +42980,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/red/northwest,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVJ" = (
+/mob/living/simple_animal/mouse/rat/brown,
+/turf/open/hybrisa/street/cement2,
+/area/tyrargo/outdoors/colony_streets/east)
 "bVK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/redcorner/north,
@@ -42987,6 +43037,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/blue/southeast,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVT" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/central)
 "bVU" = (
 /obj/structure/girder,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -43632,11 +43689,22 @@
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXQ" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors/colony_streets/north_east)
 "bXR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
+"bXS" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_exterior/north_east)
 "bXT" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
@@ -44837,10 +44905,6 @@
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/no_overlay/sewage,
-/area/tyrargo/underground/bunker/north)
-"cbF" = (
-/mob/living/simple_animal/mouse/rat/brown,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/north)
 "cbG" = (
 /obj/effect/decal/cleanable/generic,
@@ -59756,6 +59820,7 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
+/mob/living/simple_animal/mouse/rat/black,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/south_ground)
 "pmu" = (
@@ -63498,6 +63563,7 @@
 "vHF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/mouse/rat/brown,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "vIh" = (
@@ -66700,11 +66766,11 @@ bsw
 bsw
 bsw
 bsw
-bst
+bgH
 bsv
 asp
 bsu
-bst
+bgH
 bsw
 bsw
 bsw
@@ -66713,11 +66779,11 @@ bsw
 bsw
 bsw
 bsw
-bst
+bgH
 bsv
 asf
 bsu
-bst
+bgH
 bsw
 bsw
 bsw
@@ -66882,11 +66948,11 @@ bsw
 bsw
 bsw
 bsw
-bst
+bgH
 bsv
 asf
 bsu
-bst
+bgH
 bsw
 bsw
 bsw
@@ -66895,11 +66961,11 @@ bsw
 bsw
 bsw
 bsw
-bst
+bgH
 bsv
 aso
 bsu
-bst
+bgH
 bsw
 bsw
 bsw
@@ -76697,9 +76763,9 @@ bsw
 bsw
 bsw
 cau
-cau
-cau
-cau
+cbk
+cbk
+cbk
 cau
 bsw
 bsw
@@ -78335,9 +78401,9 @@ bsw
 bsw
 bsw
 cau
-cau
-cau
-cau
+cbk
+cbk
+cbk
 cau
 bsw
 bsw
@@ -82010,7 +82076,7 @@ cct
 cbE
 caU
 caV
-caV
+ccP
 caS
 cbh
 caS
@@ -82376,9 +82442,9 @@ bsw
 caA
 cbY
 caz
-cbF
+aah
 caz
-caz
+bgB
 caO
 caz
 bsw
@@ -83105,7 +83171,7 @@ bsw
 bsw
 bsw
 caU
-aah
+caz
 caz
 caz
 caz
@@ -84558,7 +84624,7 @@ bsw
 bsw
 bsw
 bsw
-aOT
+cbk
 dJv
 cbH
 ceV
@@ -84568,7 +84634,7 @@ caZ
 cay
 aLP
 kSj
-aOT
+cbk
 bsw
 bsw
 bsw
@@ -84740,7 +84806,7 @@ bsw
 bsw
 bsw
 bsw
-aOT
+cbk
 dJv
 aMh
 aMe
@@ -84750,7 +84816,7 @@ aLX
 aLU
 caL
 kSj
-aOT
+cbk
 bsw
 bsw
 bsw
@@ -119701,7 +119767,7 @@ bpT
 bxi
 bpF
 bwt
-bAt
+bVT
 bxr
 bxY
 bxD
@@ -119732,7 +119798,7 @@ byZ
 bxY
 bxr
 aXw
-bxr
+cix
 bnt
 bxr
 bxr
@@ -119843,7 +119909,7 @@ bcL
 bcG
 bBi
 bBg
-bBg
+cog
 bKp
 bLq
 bBh
@@ -120641,7 +120707,7 @@ bni
 bxr
 bxr
 bxr
-byt
+bJs
 bxr
 bxr
 bBM
@@ -120832,7 +120898,7 @@ bxr
 bCd
 byX
 bmZ
-bmT
+bIY
 bxr
 bBt
 bxr
@@ -121166,7 +121232,7 @@ bsw
 bsw
 bAp
 bxY
-bxr
+cix
 bxr
 bxr
 bxr
@@ -123692,7 +123758,7 @@ bDW
 bBg
 bBg
 bBg
-bBg
+aat
 bBg
 bBg
 bBg
@@ -124033,7 +124099,7 @@ bBg
 bBg
 bBg
 bBg
-bBg
+aat
 bBg
 bBg
 bBg
@@ -126107,7 +126173,7 @@ bBg
 bBg
 bBg
 bCp
-bBg
+aat
 bBg
 bBg
 bBg
@@ -129123,7 +129189,7 @@ bzy
 bxw
 bwE
 bwE
-bwE
+abL
 bwE
 bwE
 bPU
@@ -132483,7 +132549,7 @@ anz
 cgi
 cgi
 cgi
-cgi
+bFs
 cgi
 fcC
 cgi
@@ -133376,7 +133442,7 @@ ckP
 ckP
 clJ
 ckP
-ckP
+bSQ
 ckP
 aaQ
 aki
@@ -141240,7 +141306,7 @@ aEQ
 cgA
 sDW
 cfI
-cfr
+bgT
 cfr
 deN
 rHF
@@ -142439,7 +142505,7 @@ ctD
 csS
 csF
 csE
-csf
+bXQ
 cqC
 crz
 cqC
@@ -147339,7 +147405,7 @@ cvd
 cvd
 cvd
 cvd
-avi
+bXS
 csR
 csR
 aBF
@@ -147737,7 +147803,7 @@ ckE
 ckE
 ckE
 ckE
-cmg
+bVJ
 ayd
 cmg
 cmg
@@ -148151,7 +148217,7 @@ chB
 chq
 aFM
 cgg
-cgg
+blM
 abK
 non
 aEL
@@ -174460,16 +174526,16 @@ aaj
 aaj
 aaj
 aaj
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
 aaj
 aaj
 aaj
@@ -174479,23 +174545,23 @@ aaj
 aaj
 aaj
 aaj
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
-bgC
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
+bta
 bsw
 bsw
 bsw
@@ -174651,17 +174717,17 @@ aaj
 bgC
 aaj
 bgC
-bgC
-bgC
-bgC
+bta
+bta
+bta
 aaj
 aaj
 aaj
 aaj
 aaj
-bgC
-bgC
-bgC
+bta
+bta
+bta
 bgC
 aaj
 bgC
@@ -174835,13 +174901,13 @@ aaj
 aaj
 aaj
 bgC
-bgC
+bta
 aaj
 aaj
 aaj
 aaj
 aaj
-bgC
+bta
 bgC
 bgC
 aaj
@@ -175017,13 +175083,13 @@ aaj
 aaj
 aaj
 aaj
-bgC
+bta
 aaj
 aaj
 aaj
 aaj
 aaj
-bgC
+bta
 aaj
 aaj
 aaj

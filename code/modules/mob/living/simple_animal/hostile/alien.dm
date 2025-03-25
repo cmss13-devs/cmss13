@@ -81,7 +81,9 @@
 	. = ..()
 	if(!. || !hivenumber)
 		return
-	if(ismonkey(target))
+	if(ismonkey(target)) // So they don't kill Monkeys that Xenos need
+		return FALSE
+	if(ismouse(target)) // Mice and rats are beneath the Xenomorphs notice
 		return FALSE
 	if(istype(target, /mob/living/simple_animal/hostile/alien))
 		var/mob/living/simple_animal/hostile/alien/alien_target = target

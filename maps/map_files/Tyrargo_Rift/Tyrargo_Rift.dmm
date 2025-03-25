@@ -4710,13 +4710,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
-"anB" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "leafybush_2"
-	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/oob)
 "anC" = (
 /obj/structure/flora/tree/dead/tree_5{
 	layer = 4.5
@@ -15063,7 +15056,7 @@
 	layer = 2.9
 	},
 /obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/auto_turf/strata_grass,
+/turf/open/hybrisa/street/sidewalk/west,
 /area/tyrargo/oob)
 "aMY" = (
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
@@ -15229,7 +15222,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_x = -1;
-	pixel_y = 2
+	pixel_y = 1
 	},
 /turf/open/floor/almayer/black,
 /area/tyrargo/underground/bunker/south)
@@ -15375,13 +15368,13 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle/m4ra,
 /obj/item/ammo_magazine/rifle/m4ra,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/item/ammo_magazine/rifle/m4ra,
 /turf/open/floor/almayer/black/west,
 /area/tyrargo/underground/bunker/south)
 "aND" = (
@@ -16225,6 +16218,9 @@
 	dir = 6
 	},
 /obj/item/ammo_casing/bullet,
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPm" = (
@@ -35689,6 +35685,9 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
 	},
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bCW" = (
@@ -43771,6 +43770,10 @@
 /area/tyrargo/underground/bunker/south)
 "bYd" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/rope{
+	pixel_x = 12;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer,
 /area/tyrargo/underground/bunker/south)
 "bYe" = (
@@ -43854,6 +43857,10 @@
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bYq" = (
+/obj/structure/prop/invuln/rope{
+	pixel_x = -10;
+	pixel_y = 23
+	},
 /turf/open/floor/almayer,
 /area/tyrargo/underground/bunker/south)
 "bYr" = (
@@ -43873,6 +43880,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/prop/invuln/rope{
+	pixel_x = 12;
+	pixel_y = 23
 	},
 /turf/open/floor/almayer,
 /area/tyrargo/underground/bunker/south)
@@ -54265,6 +54276,7 @@
 	health = 999999
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/floodlight/landing,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "cJj" = (
@@ -54887,6 +54899,65 @@
 /obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/upper)
+"cKD" = (
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_2/east_trench)
+"cKE" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/tyrargo/oob)
+"cKF" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open_space,
+/area/tyrargo/indoors/bunker/central)
+"cKG" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "sunnybush_1"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob)
+"cKH" = (
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/apartment/north_ground)
+"cKI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north)
+"cKJ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open_space,
+/area/tyrargo/indoors/bunker/north_south)
+"cKK" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_north)
+"cKL" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open_space,
+/area/tyrargo/indoors/bunker/north)
 "cMd" = (
 /obj/item/device/healthanalyzer,
 /obj/item/trash/uscm_mre{
@@ -64738,13 +64809,6 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/engineering/ground)
-"vwj" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "sunnybush_1"
-	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/oob)
 "vxc" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3"
@@ -123664,7 +123728,7 @@ bBg
 bBg
 bOP
 bPm
-bPm
+cKL
 bPm
 bOP
 cog
@@ -123869,7 +123933,7 @@ bCo
 bBg
 bJV
 bKD
-bKD
+cKJ
 bKD
 bJV
 bBg
@@ -124850,7 +124914,7 @@ xkr
 adV
 bkQ
 bkI
-bvY
+cKD
 bxf
 bxf
 bvY
@@ -126777,7 +126841,7 @@ bMF
 bME
 bME
 bMr
-bMj
+cKK
 bLS
 bBE
 bBD
@@ -126996,7 +127060,7 @@ bBg
 bBg
 bDV
 bEg
-bEg
+cKF
 bEg
 bDV
 bBg
@@ -139176,7 +139240,7 @@ lpj
 qkg
 kpZ
 qkg
-qkg
+cKH
 sfh
 kpZ
 wCQ
@@ -141528,7 +141592,7 @@ csA
 csA
 crk
 crK
-crl
+cKI
 crl
 cqL
 coc
@@ -151551,7 +151615,7 @@ ckF
 ckF
 bsw
 att
-aaM
+att
 aaM
 aaM
 aaM
@@ -151567,7 +151631,7 @@ ckF
 aaM
 aty
 aaM
-aaM
+att
 att
 bsw
 ckF
@@ -152642,7 +152706,7 @@ bsw
 bsw
 bsw
 bsw
-atv
+att
 bsZ
 bsZ
 bsZ
@@ -152660,7 +152724,7 @@ bsZ
 atC
 bsZ
 bsZ
-atv
+att
 bsw
 bsw
 bsw
@@ -152824,8 +152888,8 @@ bsw
 bsw
 bsw
 bsw
-atv
-bsZ
+att
+aaM
 btq
 bsZ
 buc
@@ -152841,8 +152905,8 @@ atP
 atI
 bsZ
 bsZ
-bsZ
-atv
+aaM
+att
 bsw
 bsw
 bsw
@@ -153006,25 +153070,25 @@ bsw
 bsw
 bsw
 bsw
+att
+att
+aaM
+bsZ
+bsZ
+buc
+buc
 atv
 bsZ
 bsZ
 bsZ
 bsZ
-buc
-buc
+btq
 bsZ
+cKG
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-atv
+aaM
+att
+att
 bsw
 bsw
 bsw
@@ -153188,25 +153252,25 @@ bsw
 bsw
 bsw
 bsw
-atv
-atv
-atv
-atv
-atv
-anB
-atv
-atv
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
 aMX
-atv
-atv
-aMX
-atv
-vwj
-atv
-atv
-atv
-atv
-atv
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
+cKE
 bsw
 bsw
 bsw

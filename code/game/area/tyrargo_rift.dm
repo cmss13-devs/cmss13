@@ -124,6 +124,7 @@
 	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_AREA_COLONY_STREETS
 	requires_power = FALSE
+	unoviable_timer = FALSE
 
 /area/tyrargo/outdoors/colony_streets/north_west
 	name = "Colony Streets - North-West"
@@ -154,6 +155,7 @@
 	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_AREA_JUNGLE
 	requires_power = FALSE
+	unoviable_timer = FALSE
 
 /area/tyrargo/outdoors/colony_exterior/north_west
 	name = "Colony Exterior - North-West"
@@ -184,6 +186,7 @@
 	ceiling = CEILING_NONE
 	minimap_color = MINIMAP_AREA_CELL_HIGH
 	requires_power = FALSE
+	unoviable_timer = FALSE
 
 /area/tyrargo/outdoors/walkway_access/power_sewer
 	name = "External Walkway - Power/Sewer"
@@ -210,6 +213,7 @@
 /area/tyrargo/indoors/apartment
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "quart"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/apartment/north_ground
 	name = "Standfeld Apartment Complex - North-Ground"
@@ -228,6 +232,7 @@
 /area/tyrargo/indoors/bar
 	minimap_color = MINIMAP_AREA_CELL_VIP
 	icon_state = "bar"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/bar/ground
 	name = "Last Throw Bar - Ground"
@@ -245,6 +250,7 @@
 /area/tyrargo/indoors/engineering
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 	icon_state = "maint_engine"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/engineering/ground
 	name = "Sector F: Power Plant - Ground"
@@ -262,6 +268,7 @@
 /area/tyrargo/indoors/sewer_treatment
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	icon_state = "explored"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/sewer_treatment/ground
 	name = "Sewer Treatment Plant - Ground"
@@ -282,6 +289,7 @@
 /area/tyrargo/indoors/comms
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 	icon_state = "ai_upload"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/comms/ground
 	name = "Ancillery Communications System - Ground"
@@ -296,6 +304,7 @@
 /area/tyrargo/indoors/gararge
 	minimap_color = MINIMAP_AREA_CELL_MED
 	icon_state = "HH_Mines"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/gararge/ground
 	name = "Busters Car Repair - Ground"
@@ -314,6 +323,7 @@
 /area/tyrargo/indoors/admin
 	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
 	icon_state = "storage"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/admin/ground
 	name = "Sector F: Government Administration - Ground"
@@ -331,6 +341,7 @@
 /area/tyrargo/indoors/market
 	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
 	icon_state = "HH_Panic"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/market/ground
 	name = "Farmers Market - Ground"
@@ -345,6 +356,7 @@
 /area/tyrargo/indoors/security
 	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 	icon_state = "HH_Basement"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/security/ground
 	name = "Sector F: Marshals Outpost - Ground"
@@ -354,11 +366,12 @@
 	ceiling = CEILING_NONE
 	requires_power = FALSE
 
-// Administration
+// Museum West
 
 /area/tyrargo/indoors/museum_storage
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	icon_state = "auxstorage"
+	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/museum_storage/ground
 	name = "West: Museum Storage - Ground"
@@ -465,3 +478,4 @@
 	icon_state = "Holodeck"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	requires_power = FALSE
+	unoviable_timer = FALSE

@@ -120,7 +120,7 @@
 	dat += ""
 	dat += "<!-- Message -->"
 	dat += "<div class=\"message-body-text\">"
-	dat += "<p>I, <span class=\"paper_field\"></span>, do hereby swear and affirm that they I will do everything within my power to preserve and protect the integrity and value of all proprietary interests of the Weyland Yutani (Space) Corporation on the surface of or above the surface of <span class=\"paper_field\"></span>.</p>"
+	dat += "<p>I, <span class=\"paper_field\"></span>, do hereby swear and affirm that they I will do everything within my power to preserve and protect the integrity and value of all proprietary interests of the Weyland Yutani Corporation on, or above, the surface of <span class=\"paper_field\"></span>.</p>"
 	dat += "<p>Signature: <span class=\"paper_field\"></span><br>Liaison Signature: <span class=\"paper_field\"></span><br>Date: <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font></p>"
 	dat += "</div> <!-- /message-body-text -->"
 	dat += ""

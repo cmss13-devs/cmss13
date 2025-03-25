@@ -192,12 +192,22 @@ export const setupHotKeys = () => {
   globalEvents.on('window-blur', () => {
     releaseHeldKeys();
   });
-  globalEvents.on('key', (key: KeyEvent) => {
-    for (const keyListener of keyListeners) {
-      keyListener(key);
-    }
-    handlePassthrough(key);
-  });
+  startKeyPassthrough();
+};
+
+export const startKeyPassthrough = () => {
+  globalEvents.on('key', keyEvent);
+};
+
+export const stopKeyPassthrough = () => {
+  globalEvents.off('key', keyEvent);
+};
+
+const keyEvent = (key: KeyEvent) => {
+  for (const keyListener of keyListeners) {
+    keyListener(key);
+  }
+  handlePassthrough(key);
 };
 
 /**

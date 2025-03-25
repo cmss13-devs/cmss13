@@ -4,9 +4,9 @@
 	description = "In exchange for your ability to fling and shield yourself with slashes, you gain KO meter and the ability to resist stuns. Your punches will reset the cooldown of your Jab. Jab lets you close in and confuse your opponents while resetting Punch cooldown. Your slashes and abilities build up KO meter that later lets you deal damage, knockback, heal, and restore your stun resistance depending on how much KO meter you gained with a titanic Uppercut strike."
 	icon_state_prefix = "Boxer"
 	actions_to_remove = list(
-				/datum/action/xeno_action/activable/lunge,
-				/datum/action/xeno_action/activable/fling,
-				/datum/action/xeno_action/activable/warrior_punch,
+		/datum/action/xeno_action/activable/lunge,
+		/datum/action/xeno_action/activable/fling,
+		/datum/action/xeno_action/activable/warrior_punch,
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/boxer_punch,
@@ -63,8 +63,6 @@
 		clear_head++
 		next_clear_head_regen = world_time+ clear_head_delay
 
-
-
 /datum/behavior_delegate/boxer/melee_attack_additional_effects_target(mob/living/carbon/carbon_target, ko_boost = 0.5)
 
 	if(!ismob(carbon_target))
@@ -109,10 +107,6 @@
 	big_ko_icon.maptext_x = -32
 	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KO!</span>"
 	bound_xeno.client.images += big_ko_icon
-
-
-
-	bound_xeno.client.images += big_ko_icon
 	addtimer(CALLBACK(src, PROC_REF(remove_big_ko)), 2 SECONDS)
 
 /datum/behavior_delegate/boxer/proc/remove_big_ko()
@@ -132,7 +126,6 @@
 	boxer_delegate.clear_head--
 	if(boxer_delegate.clear_head <= 0)
 		boxer_delegate.clear_head = 0
-
 
 /mob/living/carbon/xenomorph/warrior/boxer/SetDaze(amount)
 	var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
@@ -160,8 +153,6 @@
 	if(boxer_delegate.clear_head <= 0)
 		boxer_delegate.clear_head = 0
 
-
-
 /mob/living/carbon/xenomorph/warrior/boxer/KnockDown(amount, forced)
 	var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
 	if(boxer_delegate.clear_head <= 0)
@@ -174,7 +165,6 @@
 	boxer_delegate.clear_head--
 	if(boxer_delegate.clear_head <= 0)
 		boxer_delegate.clear_head = 0
-
 
 /mob/living/carbon/xenomorph/warrior/boxer/SetKnockDown(amount)
 	var/datum/behavior_delegate/boxer/boxer_delegate = behavior_delegate
@@ -244,8 +234,6 @@
 	if(boxer_delegate.clear_head <= 0)
 		boxer_delegate.clear_head = 0
 
-
-
 /datum/action/xeno_action/activable/boxer_punch
 
 	name = "Punch"
@@ -254,7 +242,6 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 4.5 SECONDS
 
-
 	var/boxer_punch_damage = 20
 	var/boxer_punch_damage_synth = 30
 	var/boxer_punch_damage_pred = 25
@@ -262,7 +249,6 @@
 	var/damage_variance = 5
 
 /datum/action/xeno_action/activable/uppercut
-
 	name = "Uppercut"
 	action_icon_state = "rav_clothesline"
 	action_type = XENO_ACTION_CLICK

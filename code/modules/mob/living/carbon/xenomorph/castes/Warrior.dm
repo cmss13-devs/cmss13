@@ -15,7 +15,6 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
-
 	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."

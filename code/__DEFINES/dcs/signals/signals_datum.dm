@@ -61,6 +61,8 @@
 #define COMSIG_DROP_RETRIEVAL_CHECK "drop_retrieval_check"
 	#define COMPONENT_DROP_RETRIEVAL_PRESENT (1<<0)
 
+#define COMSIG_DROP_RETRIEVAL_SLOT "drop_retrieval_slot"
+
 // from /datum/emergency_call/proc/spawn_candidates()
 #define COMSIG_ERT_SETUP "ert_setup"
 

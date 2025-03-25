@@ -11,7 +11,7 @@
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/boxer_punch,
 		/datum/action/xeno_action/activable/jab,
-		/datum/action/xeno_action/activable/uppercut
+		/datum/action/xeno_action/activable/uppercut,
 	)
 
 

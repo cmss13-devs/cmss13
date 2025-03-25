@@ -41,6 +41,11 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_buildup_limit = RECOIL_AMOUNT_TIER_3 / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_FAIR
+	unjam_chance = GUN_UNJAM_CHANCE_INSUBSTANTIAL
+	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/minigun/handle_starting_attachment()
 	..()
@@ -127,6 +132,11 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	empty_sound = 'sound/weapons/gun_empty.ogg'
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_SEVERE
+	unjam_chance = GUN_UNJAM_CHANCE_LOW
+	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/m60/clicked(mob/user, list/mods)
 	if(!mods["alt"] || !CAN_PICKUP(user, src))
@@ -253,6 +263,11 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	empty_sound = 'sound/weapons/gun_empty.ogg'
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_SEVERE
+	unjam_chance = GUN_UNJAM_CHANCE_LOW
+	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/pkp/clicked(mob/user, list/mods)
 	if(!mods["alt"] || !CAN_PICKUP(user, src))

@@ -55,6 +55,7 @@
 	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
 	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE
 	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL
+	jam_threshold = GUN_DURABILITY_LOW
 
 /obj/item/weapon/gun/revolver/get_examine_text(mob/user)
 	. = ..()
@@ -657,6 +658,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/revolver/mateba/pmc
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap

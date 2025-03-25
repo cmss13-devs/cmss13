@@ -40,6 +40,7 @@
 	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
 	unjam_chance = GUN_UNJAM_CHANCE_FAIR
 	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(

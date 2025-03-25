@@ -250,6 +250,8 @@
 	var/jammed = FALSE
 	/// guns inherent chance to jam
 	var/initial_jam_chance = 0
+	/// threshold for when gun jamming starts, default 80 and ideally between 50-80, 0 disables it
+	var/jam_threshold = GUN_DURABILITY_HIGH
 	/// guns chance to jam after calculations
 	var/scaled_jam_chance = 0
 	/// chance to unjam after hitting the unique action
@@ -511,8 +513,6 @@
 			A.Attach(src)
 			update_attachable(A.slot)
 
-
-
 /obj/item/weapon/gun/emp_act(severity)
 	. = ..()
 	for(var/obj/O in contents)
@@ -691,7 +691,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		update_gun_durability()
 		check_worn_out(user)
 
-	scaled_jam_chance = initial_jam_chance * (GUN_DURABILITY_HIGH - gun_durability) // scale jam chance based on durability
+	scaled_jam_chance = initial_jam_chance * (jam_threshold - gun_durability) // scale jam chance based on durability after passing weapons jam threshold
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -732,11 +732,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(gun_durability < GUN_DURABILITY_MAX)
 		gun_durability = min(gun_durability + amount + total_repair_bonus, GUN_DURABILITY_MAX)
 
-/obj/item/weapon/gun/proc/destroy_gun_durability() //for acid use specifically, ill probably refactor this
+/obj/item/weapon/gun/proc/acid_gun_durability() //for acid use specifically, ill probably refactor this
 	if(gun_durability == GUN_DURABILITY_BROKEN) //fix your guns man
+		visible_message(SPAN_XENODANGER("[src] collapses under its own weight into a puddle of goop and undigested debris!"))
 		qdel(src)
 	else
 		gun_durability = 0
+		visible_message(SPAN_XENODANGER("[src] audibly cracks under the bubbling acid and begins to fragment!"))
 	update_gun_durability()
 	check_worn_out()
 

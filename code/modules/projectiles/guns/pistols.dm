@@ -39,6 +39,7 @@
 	initial_jam_chance = GUN_JAM_CHANCE_LOW
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
 	durability_loss = GUN_DURABILITY_LOSS_FAIR
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/pistol/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -243,6 +244,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/pistol/heavy/co
 	name = "polished vintage Desert Eagle"

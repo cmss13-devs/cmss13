@@ -435,6 +435,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/shotgun/type23/breacher
 	random_spawn_chance = 100
@@ -573,6 +574,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/shotgun/double/get_examine_text(mob/user)
 	. = ..()
@@ -752,6 +754,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/shotgun/double/cane/gun_safety_handle(mob/user)
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)

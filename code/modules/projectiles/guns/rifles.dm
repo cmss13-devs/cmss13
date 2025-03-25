@@ -1804,6 +1804,7 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 	durability_loss = GUN_DURABILITY_LOSS_FAIR
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
 	..()
@@ -1890,6 +1891,7 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 	durability_loss = GUN_DURABILITY_LOSS_LOW
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/rifle/l42a/training
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
@@ -2511,6 +2513,7 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
 	durability_loss = GUN_DURABILITY_LOSS_CRITICAL
+	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/rifle/xm51/Initialize(mapload, spawn_empty)
 	. = ..()

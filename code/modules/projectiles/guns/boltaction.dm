@@ -94,6 +94,7 @@
 	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
 	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL //why make bolties more useless
+	jam_threshold = GUN_DURABILITY_LOW
 
 /obj/item/weapon/gun/boltaction/unique_action(mob/user)
 	if(jammed)

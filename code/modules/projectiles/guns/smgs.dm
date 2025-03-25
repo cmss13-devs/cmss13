@@ -33,6 +33,7 @@
 	initial_jam_chance = GUN_JAM_CHANCE_LOW
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
 	durability_loss = GUN_DURABILITY_LOSS_SEVERE
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/smg/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -421,6 +422,7 @@
 	initial_jam_chance = GUN_JAM_CHANCE_CRITICAL //the ppsh jams apparently a fuckton in real life, so we're going to make it jam a lot
 	unjam_chance = GUN_UNJAM_CHANCE_LOW // yep
 	durability_loss = GUN_DURABILITY_LOSS_FAIR
+	jam_threshold = GUN_DURABILITY_HIGH
 
 
 /obj/item/weapon/gun/smg/ppsh/unload(mob/user, reload_override, drop_override, loc_override)
@@ -571,6 +573,7 @@
 	scatter = SCATTER_AMOUNT_TIER_5
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/smg/mac15/extended
 	current_mag = /obj/item/ammo_magazine/smg/mac15/extended
@@ -628,6 +631,7 @@
 	initial_jam_chance = GUN_JAM_CHANCE_HIGH //carlarc wanted the smg jam often, but not as often as the ppsh
 	unjam_chance = GUN_UNJAM_CHANCE_HIGH
 	durability_loss = GUN_DURABILITY_LOSS_HIGH
+	jam_threshold = GUN_DURABILITY_HIGH
 
 
 //-------------------------------------------------------

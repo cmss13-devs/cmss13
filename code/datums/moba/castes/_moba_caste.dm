@@ -47,13 +47,14 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	handle_level_up(xeno, player_component, player_datum, player_datum.level)
 	for(var/path in abilities_to_add)
 		var/datum/action/xeno_action/xeno_action = give_action(xeno, path, player_datum)
-		var/datum/component/moba_action/component = xeno_action.AddComponent(/datum/component/moba_action, 3, (path == abilities_to_add[length(abilities_to_add)]), player_datum) // We assume the last ability is the ultimate
+		xeno_action.AddComponent(/datum/component/moba_action, 3, (path == abilities_to_add[length(abilities_to_add)]), player_datum) // We assume the last ability is the ultimate
 		if(player_datum.ability_path_level_dict[path] >= 2)
 			xeno_action.level_up_ability(player_datum.ability_path_level_dict[path])
-		if(player_datum.unspent_levels)
-			component.start_level_up_overlay()
 		if(!player_datum.ability_path_level_dict[path])
 			player_datum.ability_path_level_dict[path] = 0
+
+	if(player_datum.unspent_levels)
+		give_action(xeno, /datum/action/level_up_ability)
 
 /datum/moba_caste/proc/handle_level_up(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/player_component, datum/moba_player/player_datum, new_level = 1)
 	var/multiplier = (new_level - 1) / (MOBA_MAX_LEVEL - 1)

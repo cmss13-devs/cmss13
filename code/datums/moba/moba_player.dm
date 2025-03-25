@@ -47,8 +47,7 @@
 /datum/moba_player/proc/set_tied_xeno(mob/living/carbon/xenomorph/xeno)
 	tied_xeno = xeno
 	if(tied_xeno && unspent_levels)
-		for(var/datum/action/action as anything in tied_xeno.actions)
-			SEND_SIGNAL(action, COMSIG_MOBA_ACTION_ADD_LEVELUP)
+		give_action(xeno, /datum/action/level_up_ability)
 
 /datum/moba_player/proc/level_up()
 	level++
@@ -56,12 +55,8 @@
 	if((level == 4) || (level == 8) || (level == 12))
 		max_ultimate_level++
 	if(tied_xeno)
-		for(var/datum/action/action as anything in tied_xeno.actions)
-			SEND_SIGNAL(action, COMSIG_MOBA_ACTION_ADD_LEVELUP)
+		give_action(tied_xeno, /datum/action/level_up_ability)
 
 /datum/moba_player/proc/spend_level(path)
 	ability_path_level_dict[path]++
 	unspent_levels--
-	if(tied_xeno)
-		for(var/datum/action/action as anything in tied_xeno.actions)
-			SEND_SIGNAL(action, COMSIG_MOBA_ACTION_REMOVE_LEVELUP)

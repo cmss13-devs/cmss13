@@ -289,8 +289,9 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno && !xeno.is_mob_incapacitated() && !xeno.buckled)
-		return TRUE
+	if(!xeno || xeno.is_mob_incapacitated() || xeno.buckled)
+		return FALSE
+	return ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/give_to(mob/living/living_mob)
 	. = ..()

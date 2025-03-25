@@ -40,7 +40,7 @@
 /datum/moba_item/rare/corrosive_acid
 	name = "Corrosive Acid"
 	icon_state = "red"
-	gold_cost = MOBA_GOLD_PER_MINUTE * 2.75
+	gold_cost = MOBA_GOLD_PER_MINUTE * 3.125
 	unique = TRUE
 	component_items = list(
 		/datum/moba_item/uncommon/special_acid,
@@ -52,6 +52,7 @@
 	acid_power = 85
 	health = 250
 	plasma = 300
+	plasma_regen = 6
 
 /datum/moba_item/rare/corrosive_acid/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()

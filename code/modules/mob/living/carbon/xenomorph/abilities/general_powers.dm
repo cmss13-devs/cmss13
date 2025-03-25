@@ -814,7 +814,7 @@
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
 	var/obj/projectile/proj = new spit_projectile_type(current_turf, create_cause_data(xeno.ammo.name, xeno))
-	proj.generate_bullet(xeno.ammo)
+	proj.generate_bullet(xeno.ammo, bullet_generator = xeno)
 	proj.permutated += xeno
 	proj.def_zone = xeno.get_limbzone_target()
 	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)

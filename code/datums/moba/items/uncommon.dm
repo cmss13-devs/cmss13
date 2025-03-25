@@ -46,9 +46,10 @@
 /datum/moba_item/uncommon/special_acid
 	name = "Special Acid Mixture"
 	icon_state = "special_acid_mixture"
-	gold_cost = MOBA_GOLD_PER_MINUTE * 3.25
+	gold_cost = MOBA_GOLD_PER_MINUTE * 4
 
 	acid_power = 50
+	plasma_regen = 6
 
 /datum/moba_item/uncommon/antiheal
 	name = "Mending Disruptor"

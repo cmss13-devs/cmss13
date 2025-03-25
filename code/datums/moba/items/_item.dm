@@ -126,7 +126,7 @@
 	if(attack_damage)
 		description += "<br>Damage: +[attack_damage]"
 	if(ability_cooldown_reduction)
-		description += "<br>Cooldown Reduction: +[1 - (ability_cooldown_reduction * 100)]%"
+		description += "<br>Cooldown Reduction: +[(1 - ability_cooldown_reduction) * 100]%"
 	if(lifesteal)
 		description += "<br>Lifesteal: [lifesteal * 100]%"
 	if(slash_penetration)

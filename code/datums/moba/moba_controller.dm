@@ -351,6 +351,9 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[winning_hive]
 
 	for(var/datum/moba_player/player as anything in players)
+		if(!player.tied_client)
+			continue
+
 		player.get_tied_xeno().play_screen_text("[hive.name] wins.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
 
 	sleep(5 SECONDS)

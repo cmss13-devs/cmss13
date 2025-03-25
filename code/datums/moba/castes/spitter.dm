@@ -3,12 +3,12 @@
 	equivalent_xeno_path = /mob/living/carbon/xenomorph/spitter
 	name = XENO_CASTE_SPITTER
 	desc = {"
-		Long-ranged offensive caste.<br>
-		<b>P:</b> Gain wards as a team faster and increase your team's ward capacity by 1.<br>
-		<b>1:</b> Ready your tail to stab, giving your next attack increased range, attack damage, and daze.<br>
-		<b>2:</b> Plant an empowering pillar that grows over a short period, granting nearby allies increased speed.<br>
-		<b>3:</b> Create a beam between you and an ally, regenerating their health over time at the cost of plasma.<br>
-		<b>U:</b> After a channel, heal all nearby allies for a portion of their max health.
+		Long-ranged offensive caste that deals heavy damage.<br>
+		<b>P:</b> Landing three spit attacks within 10 seconds on a player creates an acid explosion.<br>
+		<b>1:</b> Fire a spit that increases the damage taken by the target for a brief period.<br>
+		<b>2:</b> Spray a blast of slow-moving acid that leaves a damaging trail behind.<br>
+		<b>3:</b> Fire a low-cooldown spit that deals damage.<br>
+		<b>U:</b> Increase your vision range in addition to making your abilities more powerful at longer ranges.
 	"}
 	category = MOBA_ARCHETYPE_CASTER
 	icon_state = "spitter"
@@ -25,7 +25,7 @@
 	ending_armor = 0
 	starting_acid_armor = 0
 	ending_acid_armor = 5
-	speed = 1
+	speed = 1.1
 	attack_delay_modifier = 0
 	starting_attack_damage = 27
 	ending_attack_damage = 42
@@ -46,7 +46,8 @@
 
 /obj/projectile/moba_spitter/generate_bullet(datum/ammo/ammo_datum, bonus_damage, special_flags, mob/bullet_generator)
 	. = ..()
-	if(bullet_generator.is_zoomed)
+	var/mob/living/carbon/xenomorph/xeno = bullet_generator
+	if(xeno.is_zoomed)
 		parent_was_zoomed = TRUE
 
 /obj/projectile/moba_spitter/calculate_damage()
@@ -57,6 +58,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/marking
 	name = "Marking Spit"
+	action_icon_state = "breathe_fire" // looks cool
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	spit_projectile_type = /obj/projectile/moba_spitter
 	var/real_cooldown = 5 SECONDS
@@ -76,7 +78,7 @@
 	if(xeno.is_zoomed)
 		xeno.ammo.shell_speed = AMMO_SPEED_TIER_5
 		xeno.ammo.accuracy = HIT_ACCURACY_TIER_8
-		xeno.ammo.max_range = 8
+		xeno.ammo.max_range = 10
 	. = ..()
 	if(xeno.is_zoomed)
 		xeno.ammo.shell_speed = initial(xeno.ammo.shell_speed)
@@ -102,9 +104,18 @@
 	penetration = 0
 	var/damage_percent_boost = 10
 
-/datum/ammo/xeno/acid/marking/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/acid/marking/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(isliving(M))
 		M.AddComponent(/datum/component/bonus_damage_stack, damage_percent_boost * 10, world.time, 100, 2000)
+		var/datum/status_effect/stacking/spit_detonation/spit = M.has_status_effect(/datum/status_effect/stacking/spit_detonation)
+		if(!spit)
+			var/list/ap_list = list()
+			SEND_SIGNAL(P.firer, COMSIG_MOBA_GET_AP, ap_list)
+			var/list/level_list = list()
+			SEND_SIGNAL(P.firer, COMSIG_MOBA_GET_LEVEL, level_list)
+			spit = M.apply_status_effect(/datum/status_effect/stacking/spit_detonation, 1, (120 + (level_list[1] * 10) + (ap_list[1] * 0.8)))
+		else
+			spit.add_stacks(1)
 	return ..()
 
 /datum/ammo/xeno/acid/marking/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator)
@@ -121,11 +132,12 @@
 	spray_effect_type = /obj/effect/xenomorph/spray/no_stun/moba
 
 /datum/action/xeno_action/activable/spray_acid/moba/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.is_zoomed)
-		spray_distance += 3
+		spray_distance += 5
 	. = ..()
 	if(xeno.is_zoomed)
-		spray_distance -= 3
+		spray_distance -= 5
 
 /datum/action/xeno_action/activable/spray_acid/moba/level_up_ability(new_level)
 	desc = "Spit a slow-moving blast of acid that leaves a trail behind. Being directly hit by the acid deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 40, 60, 80)] (+70% AP) acid damage. Stepping into the acid trail slows the target and deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 10, 15, 20)] (+30% AP) acid damage per second for [/datum/status_effect/acid_soaked::duration * 0.1] seconds. Cooldown [xeno_cooldown * 0.1] seconds."
@@ -195,7 +207,7 @@
 	if(xeno.is_zoomed)
 		xeno.ammo.shell_speed = AMMO_SPEED_TIER_5
 		xeno.ammo.accuracy = HIT_ACCURACY_TIER_8
-		xeno.ammo.max_range = 8
+		xeno.ammo.max_range = 10
 	. = ..()
 	if(xeno.is_zoomed)
 		xeno.ammo.shell_speed = initial(xeno.ammo.shell_speed)
@@ -222,6 +234,19 @@
 	SEND_SIGNAL(bullet_generator, COMSIG_MOBA_GET_AP, ap_list)
 	generated_projectile.damage = damage + (ap_list[1] * 0.9)
 
+/datum/ammo/xeno/acid/moba/on_hit_mob(mob/living/M, obj/projectile/P)
+	var/datum/status_effect/stacking/spit_detonation/spit = M.has_status_effect(/datum/status_effect/stacking/spit_detonation)
+	if(!spit)
+		var/list/ap_list = list()
+		SEND_SIGNAL(P.firer, COMSIG_MOBA_GET_AP, ap_list)
+		var/list/level_list = list()
+		SEND_SIGNAL(P.firer, COMSIG_MOBA_GET_LEVEL, level_list)
+		spit = M.apply_status_effect(/datum/status_effect/stacking/spit_detonation, 1, (120 + (level_list[1] * 10) + (ap_list[1] * 0.8)))
+	else
+		spit.add_stacks(1)
+	return ..()
+
+
 
 /datum/action/xeno_action/onclick/toggle_long_range/spitter
 	name = "Bombardment Mode"
@@ -237,16 +262,23 @@
 
 /datum/action/xeno_action/onclick/toggle_long_range/spitter/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(xeno.is_zoomed && !check_and_use_plasma_owner())
+	if(!xeno.is_zoomed && !check_and_use_plasma_owner())
 		return
 	return ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/spitter/on_zoom_out()
 	. = ..()
-	apply_cooldown(cooldown_time)
+	apply_cooldown_override(cooldown_time)
 
-//datum/action/xeno_action/onclick/toggle_long_range/spitter/on_zoom_in()
-//	return
+/datum/action/xeno_action/onclick/toggle_long_range/spitter/on_zoom_in()
+	addtimer(CALLBACK(src, PROC_REF(try_zoom_out)), duration)
+	to_chat(owner, SPAN_XENONOTICE("We will end bombardment mode in [duration * 0.1] seconds."))
+
+/datum/action/xeno_action/onclick/toggle_long_range/spitter/proc/try_zoom_out()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.is_zoomed)
+		return
+	xeno.zoom_out()
 
 /datum/action/xeno_action/onclick/toggle_long_range/spitter/level_up_ability(new_level)
 	switch(new_level)
@@ -255,4 +287,4 @@
 		if(3)
 			cooldown_time = 95 SECONDS
 
-	desc = "Gain an extra 3 tiles of sight and range on your abilities, faster projectile speed, and a slow for [duration * 0.1] seconds. Additionally, your spits deal an extra 5% damage for each tile travelled after the first 2. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 110, 100, 95)] seconds."
+	desc = "Gain an extra 3 tiles of sight and 5 tiles of range on your abilities, faster projectile speed, and a slow for [duration * 0.1] seconds. Additionally, your spits deal an extra 5% damage for each tile travelled after the first 2. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 110, 100, 95)] seconds."

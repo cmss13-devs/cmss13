@@ -1,4 +1,4 @@
-/datum/equipment_preset/uscm/us_army
+/datum/equipment_preset/us_army
 	assignment = JOB_ARMY_TROOPER
 	rank = JOB_ARMY_TROOPER
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
@@ -7,17 +7,16 @@
 	rank = JOB_ARMY_TROOPER
 	faction_group = list(FACTION_MARINE)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	ert_squad = TRUE
 
-/datum/equipment_preset/uscm/us_army/New()
+/datum/equipment_preset/us_army/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_UA)
 
-/datum/equipment_preset/uscm/us_army/load_status(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/load_status(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.nutrition = rand(NUTRITION_MAX, NUTRITION_NORMAL)
 
-/datum/equipment_preset/uscm/us_army/proc/add_army_weapon(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/proc/add_army_weapon(mob/living/carbon/human/new_human)
 	var/random_gun = rand(1,3)
 	switch(random_gun)
 		if(1 , 2)
@@ -32,7 +31,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap(new_human), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/heap(new_human), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/us_army/proc/add_army_weapon_pistol(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/proc/add_army_weapon_pistol(mob/living/carbon/human/new_human)
 	var/random_pistol = rand(1,5)
 	switch(random_pistol)
 		if(1 , 2)
@@ -45,7 +44,7 @@
 		if(5)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human),WEAR_WAIST)
 
-/datum/equipment_preset/uscm/us_army/proc/spawn_random_headgear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/proc/spawn_random_headgear(mob/living/carbon/human/new_human)
 	var/i = rand(1,4)
 	switch(i)
 		if (1)
@@ -56,14 +55,14 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto(new_human), WEAR_HEAD)
 
 
-/datum/equipment_preset/uscm/us_army/standard
+/datum/equipment_preset/us_army/standard
 	name = "US Army Trooper"
 	assignment = JOB_ARMY_TROOPER
 	rank = JOB_ARMY_TROOPER
 	skills = /datum/skills/military/survivor/army_standard
 	minimap_icon = "hudsquad_trpr"
 
-/datum/equipment_preset/uscm/us_army/standard/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/standard/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/army/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -90,7 +89,7 @@
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
 
-/datum/equipment_preset/uscm/us_army/gunner
+/datum/equipment_preset/us_army/gunner
 	name = "US Army Heavy Gunner"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SMARTGUNNER
@@ -98,7 +97,7 @@
 	skills = /datum/skills/military/survivor/army_gunner
 	minimap_icon = "hudsquad_mmg"
 
-/datum/equipment_preset/uscm/us_army/gunner/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/gunner/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/army/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -130,7 +129,7 @@
 
 	spawn_random_headgear(new_human)
 
-/datum/equipment_preset/uscm/us_army/medic
+/datum/equipment_preset/us_army/medic
 	name = "US Army Combat Medical Technician"
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MEDIC
@@ -138,7 +137,7 @@
 	skills = /datum/skills/military/survivor/army_medic
 	minimap_icon = "hudsquad_cet"
 
-/datum/equipment_preset/uscm/us_army/medic/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/medic/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/army/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
@@ -168,7 +167,7 @@
 
 	add_army_weapon(new_human)
 
-/datum/equipment_preset/uscm/us_army/sl
+/datum/equipment_preset/us_army/sl
 	name = "US Army Squad Leader"
 	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SNCO
@@ -176,7 +175,7 @@
 	skills = /datum/skills/military/survivor/army_sl
 	minimap_icon = "hudsquad_sl_army"
 
-/datum/equipment_preset/uscm/us_army/sl/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/us_army/sl/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/army/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()

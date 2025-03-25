@@ -65,12 +65,12 @@
 /area/tyrargo/landing_zone_1/west_trench
 	name = "Firebase Charlie - Western Trench"
 	icon_state = "ass_line"
-	minimap_color = MINIMAP_AREA_GLASS
+	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
 /area/tyrargo/landing_zone_1/north_trench
 	name = "Firebase Charlie - Northern Trench"
 	icon_state = "ass_line"
-	minimap_color = MINIMAP_AREA_GLASS
+	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
 
 /area/tyrargo/landing_zone_1/no_mans_land
 	name = "Firebase Charlie - No Man's Land"
@@ -104,7 +104,7 @@
 /area/tyrargo/outdoors/outskirts_road
 	name = "Outskirts Road"
 	icon_state = "shuttle2"
-	minimap_color = MINIMAP_AREA_CELL_LOW
+	minimap_color = MINIMAP_AREA_SHIP
 	requires_power = FALSE
 
 /area/tyrargo/outdoors/outskirts_road/west

@@ -198,7 +198,13 @@
 		be_special &= ~BE_KING
 		S["be_special"] << be_special
 
-	if(savefile_version < 31)
+	if(savefile_version < 31) // Increment the savefile version
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles &= ~TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Disable it by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
+	if(savefile_version < 32)
 		for(var/i in 1 to MAX_SAVE_SLOTS)
 			S.cd = "/character[i]"
 

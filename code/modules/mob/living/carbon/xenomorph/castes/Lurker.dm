@@ -99,7 +99,7 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(next_slash_buffed)
+	if(next_slash_buffed && target_carbon)
 		return INTENT_HARM
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)

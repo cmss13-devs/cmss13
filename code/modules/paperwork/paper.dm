@@ -720,13 +720,16 @@
 	var/note_type
 	var/full_report
 	var/grant
+	var/contract
 
-/obj/item/paper/research_notes/Initialize(mapload, data, note_type)
+/obj/item/paper/research_notes/Initialize(mapload, data, note_type, contract)
 	. = ..()
 	if(data)
 		src.data = data
 	if(note_type)
 		src.note_type = note_type
+	if(contract)
+		src.contract = contract
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/paper/research_notes/LateInitialize()
@@ -760,7 +763,10 @@
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[chemical_to_generate.id]
-			name = "Synthesis of [chemical_to_generate.name]"
+			if(!contract)
+				name = "Synthesis of [chemical_to_generate.name]"
+			else
+				name = "Contract for [chemical_to_generate.name]"
 			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"

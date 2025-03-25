@@ -295,7 +295,7 @@
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
 	name = "emergency chemical plate"
 	desc = "One-time disposable research plate packing all kinds of chemicals injected at the will of the user by pressing two buttons on the sides simultaneously. The injection is painless, instant and packs much more chemicals than your normal emergency injector. Features OD Protection in three modes."
-	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_STRICT
+	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC
 	var/datum/action/item_action/activation
 	var/mob/living/wearer
 	var/used = FALSE

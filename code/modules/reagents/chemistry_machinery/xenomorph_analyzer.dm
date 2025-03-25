@@ -29,7 +29,7 @@
 			continue
 		technology_purchased[upgrade_type] = 0
 
-/obj/structure/machinery/xenoanalyzer/attack_hand(mob/user as mob)
+/obj/structure/machinery/xenoanalyzer/attack_hand(mob/user)
 	if(!skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
 		return

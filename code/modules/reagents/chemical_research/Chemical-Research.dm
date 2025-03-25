@@ -158,7 +158,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	contract_chems = list()
 	for(var/i in 1 to RESEARCH_CONTRACT_CHEM_AMOUNT)
 		var/datum/reagent/generated/contract_chemical = new /datum/reagent/generated
-		contract_chemical.id = "contract-chem-[i]"//we dont actually give it proper id.
+		contract_chemical.id = "contract-chem-[i]"// we dont actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
 		contract_chemical.generate_name()
 		contract_chemical.gen_tier = rand(1,3) //easy, hard and medium
 		contract_chemical.generate_stats()
@@ -196,7 +196,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 	playsound(comp.loc, 'sound/machines/twobeep.ogg', 50, 1, 7)
 
 ///Makes the chemical "exist", given a proper ID, proper reaction, and added to global lists. Used when contract chemical is picked and it needs to be completed.
-/datum/chemical_data/proc/legalize_chem(datum/reagent/generated/chem) // we dont actually create the recipe for it or give it a proper id, frankly that would be too much pain to remove when we reroll them
+/datum/chemical_data/proc/legalize_chem(datum/reagent/generated/chem)
 	contract_chems[chem.id] = null
 	chem.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
 	GLOB.chemical_gen_classes_list["tau"] += chem.id

@@ -543,8 +543,9 @@ DEFINES in setup.dm, referenced here.
 
 	var/obj/item/active_hand = get_active_hand()
 	if(active_hand)
-		var/drop_retrieval_slot = SEND_SIGNAL(active_hand, COMSIG_DROP_RETRIEVAL_SLOT)
-		if(drop_retrieval_slot && equip_to_slot_if_possible(active_hand, drop_retrieval_slot, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
+
+		if((SEND_SIGNAL(active_hand, COMSIG_DROP_RETRIEVAL_GUN_CHECK) & COMPONENT_DROP_RETRIEVAL_GUN_PRESENT) \
+			&& equip_to_slot_if_possible(active_hand, WEAR_J_STORE, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
 			return TRUE
 
 		if(active_hand.preferred_storage)

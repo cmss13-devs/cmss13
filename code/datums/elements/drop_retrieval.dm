@@ -42,12 +42,12 @@
 	. = ..()
 	if (.)
 		return
-	RegisterSignal(target, COMSIG_DROP_RETRIEVAL_SLOT, PROC_REF(slot_check))
+	RegisterSignal(target, COMSIG_DROP_RETRIEVAL_GUN_CHECK, PROC_REF(gun_check))
 	retrieval_slot = slot
 
-/datum/element/drop_retrieval/gun/proc/slot_check()
+/datum/element/drop_retrieval/gun/proc/gun_check()
 	SIGNAL_HANDLER
-	return retrieval_slot
+	return COMPONENT_DROP_RETRIEVAL_GUN_PRESENT
 
 /datum/element/drop_retrieval/gun/dropped(obj/item/weapon/gun/G, mob/user)
 	G.handle_retrieval(user, retrieval_slot)

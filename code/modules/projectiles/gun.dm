@@ -254,7 +254,7 @@
 	var/scaled_jam_chance = 0
 	/// chance to unjam after hitting the unique action
 	var/unjam_chance = 0
-	/// Amount of durability loss per shot, 0.01 by default, setting it to 0 will disable most calculations otherwise
+	/// Amount of durability loss per shot, 0.05 by default, setting it to 0 will disable most calculations otherwise
 	var/durability_loss = GUN_DURABILITY_LOSS_DEFAULT
 	/// Durability of a gun that determines jam chance.
 	var/gun_durability = GUN_DURABILITY_MAX
@@ -677,7 +677,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
-	var/bullet_duraloss = 0.01 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
+	var/bullet_duraloss = 0.05 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
 	var/bullet_duramage = BULLET_DURABILITY_DAMAGE_DEFAULT // for guns that dont fire bullets traditionally e.g. flamer, lets make sure they actually lose durability by default
 	if(in_chamber && in_chamber.ammo)
 		bullet_duraloss = in_chamber.ammo.bullet_duraloss

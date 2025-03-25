@@ -54352,7 +54352,8 @@
 	},
 /obj/structure/machinery/door_control{
 	pixel_y = 28;
-	needs_power = 0
+	needs_power = 0;
+	id = "us_army_ert"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
@@ -150112,7 +150113,7 @@ nUw
 aiJ
 aiJ
 aiJ
-nUw
+cjw
 fTs
 bsw
 bsw
@@ -150294,7 +150295,7 @@ aiJ
 aiJ
 nUw
 nUw
-nUw
+cjw
 fTs
 bsw
 bsw
@@ -172521,12 +172522,12 @@ aaj
 aaj
 aaj
 aaj
-aky
-aky
-aky
-aky
-aky
-aky
+aaj
+aaj
+aaj
+aaj
+aaj
+aaj
 aky
 aky
 aky
@@ -172703,12 +172704,12 @@ aaj
 aaj
 aaj
 aaj
-aky
-aky
-aky
-aky
-aky
-aky
+aaj
+aaj
+aaj
+aaj
+aaj
+aaj
 aky
 aaj
 aaj
@@ -172886,11 +172887,11 @@ aaj
 aaj
 aaj
 aaj
-aky
-aky
-aky
-aky
-aky
+aaj
+aaj
+aaj
+aaj
+aaj
 aky
 aaj
 aaj
@@ -173068,11 +173069,11 @@ aaj
 aaj
 aaj
 aaj
-aky
-aky
-aky
-aky
-aky
+aaj
+aaj
+aaj
+aaj
+aaj
 aky
 aaj
 aaj

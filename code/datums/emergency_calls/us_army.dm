@@ -28,7 +28,7 @@
 
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
-		arm_equipment(mob, /datum/equipment_preset/survivor/army/sl, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/us_army/sl, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the US Army Squad Leader!"))
 
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
@@ -38,16 +38,16 @@
 
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
-		arm_equipment(mob, /datum/equipment_preset/survivor/army/medic, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/us_army/medic, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are the US Army Medic!"))
 
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a US Army Gunner!"))
-		arm_equipment(mob, /datum/equipment_preset/survivor/army/gunner, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/us_army/gunner, TRUE, TRUE)
 
 	else
-		arm_equipment(mob, /datum/equipment_preset/survivor/army/standard, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/uscm/us_army/standard, TRUE, TRUE)
 		to_chat(mob, SPAN_ROLE_HEADER("You are a US Army Trooper!"))
 
 	to_chat(mob, SPAN_ROLE_BODY("You are a member of the US Army 32nd Armored Division. You and your division have been held in reserve until the Falling Falcons could secure a beachhead. Now that this is true, you are being sent in to help secure the breach!"))

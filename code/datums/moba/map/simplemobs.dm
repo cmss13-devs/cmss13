@@ -278,9 +278,8 @@
 			rended.add_stacks(1)
 
 /mob/living/simple_animal/hostile/reaper
-
 	name = "Reaper"
-	desc = "a disgusting icon of death"
+	desc = "A towering icon of death and destruction."
 	icon = 'icons/mob/xenos/castes/moba/reaper.dmi'
 	icon_state = "Normal Reaper Walking"
 	icon_living = "Normal Reaper Walking"
@@ -300,24 +299,17 @@
 	attack_sound = 'sound/weapons/alien_tail_attack.ogg'
 
 	break_stuff_probability = 15
-
 	faction = "reaper"
 
-
 	var/true_damage = 35
-
-
-/mob/living/simple_animal/hostile/reaper/Initialize()
-	. = ..()
-
 
 /mob/living/simple_animal/hostile/reaper/death(datum/cause_data/cause_data, gibbed, deathmessage)
 	. = ..()
 	if(!.)
 		return .
 
-	qdel(src)
-
+	if(!gibbed)
+		gib(src)
 
 /mob/living/simple_animal/hostile/reaper/FindTarget()
 	. = ..()
@@ -326,7 +318,7 @@
 
 /mob/living/simple_animal/hostile/reaper/AttackingTarget()
 	. = ..()
-	var/mob/living/L = .
+	/*var/mob/living/L = .
 	if(istype(L))
 		L.apply_damage(true_damage, BRUTE)
 
@@ -334,4 +326,4 @@
 		if(!rended)
 			rended = L.apply_status_effect(/datum/status_effect/stacking/rended_armor, 1)
 		else
-			rended.add_stacks(1)
+			rended.add_stacks(1)*/

@@ -38,9 +38,8 @@
 
 
 /datum/moba_boon/reaper
-
-name = "Reapers Schyte"
-desc = "Players will execute enemies and gain more damage to structures"
+	name = "Reaper's Call"
+	desc = "Reducing an enemy to N% health executes them for the next N minutes.."
 
 /datum/moba_boon/reaper/New(datum/moba_controller/controller)
 	. = ..()

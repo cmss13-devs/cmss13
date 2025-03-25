@@ -1,0 +1,6 @@
+author: "Paperybirch"
+delete-after: True
+changes:
+  - rscadd: "Added quick clot checks to hypothermic process"
+  - rscadd: "hypothermic/pre_process and hypothermic/on_delete as flag removers"
+  - rscadd: "CHEM_EFFECT_NO_BLEED now cures bleeding instead of just pausing it"

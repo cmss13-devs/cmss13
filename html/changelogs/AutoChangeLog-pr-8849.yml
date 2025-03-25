@@ -1,0 +1,5 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "Fixes a unclosed html tag. Murders the rest of the html bold tags with SPAN_BOLD"
+  - spellcheck: "Made total upper and/or lower body bleeding more unique."

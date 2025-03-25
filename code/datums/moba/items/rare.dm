@@ -207,3 +207,64 @@
 		haste = source.apply_status_effect(/datum/status_effect/stacking/furious_haste, 1)
 	else
 		haste.add_stacks(1)
+
+/datum/moba_item/rare/blood_fury
+	name = "Uninhibited Fury"
+	description = "<br><b>Kill Frenzy</b><br>Killing an enemy reduces your cooldowns by N seconds or N%, whichever is larger."
+	icon_state = "red"
+
+/datum/moba_item/rare/hubris // Absurdly expensive "win more" item that should just win you the game if you keep up the kills
+	name = "Queen Mother's Hubris"
+	description = "<br><b>Body Stacking</b><br>Killing an enemy grants you 10 + (4 x total enemies killed while holding this) extra attack damage for 90 seconds."
+	icon_state = "red"
+	gold_cost = MOBA_GOLD_PER_MINUTE * 1.25
+	unique = TRUE
+	instanced = TRUE
+	component_items = list(
+		/datum/moba_item/uncommon/viscious_slashes,
+		/datum/moba_item/uncommon/viscious_slashes,
+		/datum/moba_item/uncommon/penetrating_claws,
+		/datum/moba_item/uncommon/heightened_senses,
+	)
+
+	ability_cooldown_reduction = 0.8
+	attack_damage = 60
+	slash_penetration = 10
+	speed = -0.1
+	var/kills = 0
+
+/datum/moba_item/rare/hubris/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
+	. = ..()
+	RegisterSignal(xeno, COMSIG_MOB_KILLED_MOB, PROC_REF(on_kill))
+
+/datum/moba_item/rare/hubris/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
+	. = ..()
+	UnregisterSignal(xeno, COMSIG_MOB_KILLED_MOB)
+
+/datum/moba_item/rare/hubris/handle_pass_data_write(mob/living/carbon/xenomorph/xeno, datum/cause_data/causedata)
+	var/list/datum/moba_player/datum_list = list()
+	SEND_SIGNAL(xeno, COMSIG_MOBA_GET_PLAYER_DATUM, datum_list)
+	datum_list[1].held_item_pass_data["hubris_kills"] = kills
+
+/datum/moba_item/rare/hubris/handle_pass_data_read(datum/moba_player/player)
+	kills = player.held_item_pass_data["hubris_kills"]
+
+/datum/moba_item/rare/hubris/proc/on_kill(mob/living/carbon/xenomorph/source, mob/killed_mob)
+	SIGNAL_HANDLER
+
+	if(!HAS_TRAIT(killed_mob, TRAIT_MOBA_PARTICIPANT))
+		return
+
+	kills++
+
+	source.apply_status_effect(/datum/status_effect/hubris, 10 + (4 * kills))
+
+/datum/moba_item/rare/echo_shard
+	name = "Extrasensory Time Dilation"
+	description = "<br><b>Active</b><br>Instantly recharge your most recently used non-ultimate ability. Cooldown N seconds."
+	icon_state = "red"
+
+/datum/moba_item/rare/thornmail
+	name = "Piercing Spines"
+	description = "<br><b>Spiked</b><br>When you take damage from an ability or attack, deal N damage to whoever attacked you."
+	icon_state = "red"

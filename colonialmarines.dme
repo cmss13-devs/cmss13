@@ -699,6 +699,7 @@
 #include "code\datums\skills\contractor.dm"
 #include "code\datums\skills\dutch.dm"
 #include "code\datums\skills\forecon.dm"
+#include "code\datums\status_effects\buffs\hubris.dm"
 #include "code\datums\status_effects\debuffs\corroding.dm"
 #include "code\datums\skills\freelancer.dm"
 #include "code\datums\skills\gladiator.dm"

@@ -763,6 +763,14 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			SPAN_NOTICE("You shake \the [src] but nothing falls out."))
 		return
 
+	var/obj/item/storage/pill_bottle/shook_bottle
+	shook_bottle = src
+	if(istype(shook_bottle))
+		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
+				SPAN_NOTICE("You shake \the [src] but nothing falls out, it seems to have some kind of safety lid"))
+			return
+
 	storage_close(user)
 	var/obj/item/item_obj
 	if(storage_flags & STORAGE_USING_FIFO_DRAWING)

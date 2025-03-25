@@ -379,3 +379,15 @@
   - bugfix: Normal Defender sideview icons (looking left/right) and overlays were
       moved 2 pixels to the center, so Steelcrest strain will have overlays on correct
       positions now (bloodied, marine packs)
+2025-03-25:
+  Detective-Google:
+  - bugfix: pill bottle skill locks can't be bypassed by shaking anymore
+  Noname995:
+  - qol: Yautjas can eat endlessly
+  Paperybirch:
+  - rscadd: Added quick clot checks to hypothermic process
+  - rscadd: hypothermic/pre_process and hypothermic/on_delete as flag removers
+  - rscadd: CHEM_EFFECT_NO_BLEED now cures bleeding instead of just pausing it
+  dryramen, blundir for the code, detective-google for overlay bug fix:
+  - rscadd: add color changing armband to loadout
+  - imageadd: add new armband sprites

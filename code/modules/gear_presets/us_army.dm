@@ -13,6 +13,10 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_UA)
 
+/datum/equipment_preset/uscm/us_army/load_status(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.nutrition = rand(NUTRITION_MAX, NUTRITION_NORMAL)
+
 /datum/equipment_preset/uscm/us_army/proc/add_army_weapon(mob/living/carbon/human/new_human)
 	var/random_gun = rand(1,3)
 	switch(random_gun)

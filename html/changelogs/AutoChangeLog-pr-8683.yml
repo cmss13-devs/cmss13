@@ -1,0 +1,5 @@
+author: "dryramen, blundir for the code, detective-google for overlay bug fix"
+delete-after: True
+changes:
+  - rscadd: "add color changing armband to loadout"
+  - imageadd: "add new armband sprites"

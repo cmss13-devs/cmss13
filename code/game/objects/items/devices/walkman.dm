@@ -104,13 +104,13 @@
 			current_song.status = SOUND_STREAM
 		else
 			return
-	paused = FALSE
-	if(current_song.status & SOUND_PAUSED)
+	if(current_song.status & SOUND_PAUSED || paused)
 		to_chat(current_listener,SPAN_INFO("Resuming [pl_index] of [length(current_playlist)]"))
 		update_song(current_song,current_listener)
 	else
 		to_chat(current_listener,SPAN_INFO("Now playing [pl_index] of [length(current_playlist)]"))
 		update_song(current_song,current_listener,0)
+	paused = FALSE
 
 	update_song(current_song, current_listener)
 

@@ -182,6 +182,7 @@
 	pixel_y = 0
 	pixel_x = -20
 	volume = 50
+	volume = 15
 	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
 	var/list/current_listeners = list()
 	var/list/listener_data = list()
@@ -243,7 +244,7 @@
 
 /obj/item/device/walkman/blackfoot_cassette/play(mob/user)
 	cassette_start_time = world.time
-	next_song_timer = addtimer(CALLBACK(src, PROC_REF(next_song)), 3 MINUTES, TIMER_STOPPABLE)
+	next_song_timer = addtimer(CALLBACK(src, PROC_REF(next_song), user), 5 MINUTES, TIMER_STOPPABLE)
 	if(!current_listener)
 		current_listener = user
 		START_PROCESSING(SSobj, src)
@@ -261,7 +262,7 @@
 		return
 	cassette_start_time = world.time
 	deltimer(next_song_timer)
-	next_song_timer = addtimer(CALLBACK(src, PROC_REF(next_song)), 3 MINUTES, TIMER_STOPPABLE)
+	next_song_timer = addtimer(CALLBACK(src, PROC_REF(next_song), user), 5 MINUTES, TIMER_STOPPABLE)
 	for(var/data in listener_data)
 		var/sound/child_song = data["child_song"]
 		var/mob/listener = data["listener"]
@@ -270,7 +271,7 @@
 	to_chat(user,SPAN_INFO("You restart the song"))
 
 /obj/item/device/walkman/blackfoot_cassette/next_song(mob/user)
-	if(user.is_mob_incapacitated() || length(current_playlist) == 0)
+	if(length(current_playlist) == 0)
 		return
 	if(pl_index + 1 > length(current_playlist))
 		break_sound()

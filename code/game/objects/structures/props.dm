@@ -800,7 +800,7 @@
 
 /obj/structure/prop/vehicles/aircraft/vtol
 	name = "\improper AD-71E VTOL"
-	desc = "A VTOL"
+	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials. This craft appears to be undergoing maintenance and is not ready to fly."
 	icon = 'icons/obj/vehicles/vtol_prop.dmi'
 	icon_state = "vtol"
 	density = FALSE
@@ -809,14 +809,15 @@
 	explo_proof = TRUE
 
 /obj/structure/prop/vehicles/aircraft/vtol/damaged
-	desc = "A crashed VTOL"
+	name = "\improper Crashed AD-71E VTOL"
+	desc = "A twin tilt-jet VTOL, the Blackfoot is the Bearcat's ugly big sister. For what she lacks in fire power and agility, she more than makes up for in utility and love handles. First tested by UA Northridge on American soil, the Blackfoot is currently undergoing active combat trials. This craft appears to have crash landed, and is inoperable."
 	icon_state = "vtol_damaged"
 
 // USCM Aerospace Fighter
 
 /obj/structure/prop/vehicles/aircraft/aircraft
 	name = "\improper EVAC-3 Aerospace fighter"
-	desc = "A Alphatech Aircraft"
+	desc = "A state of the art EVAC-3F aerospace fighter used by the USCM. This fighter has seen better days with extensive internal wiring damage and unfinished repairs to the bomb-bays."
 	icon = 'icons/obj/vehicles/aircraft_prop.dmi'
 	icon_state = "evac_uscm"
 	density = FALSE
@@ -826,12 +827,13 @@
 
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf
 	icon_state = "evac_usaf"
+	desc = "High tech, silver coated EVAC-3 aerospace fighter used by the USAF in deep recon mission. The thermal-absorbent paint alone probably costs more than your squads collective paycheck. Unfortunately, however, this jet was in the middle of a repair cycle when the nothern defences were breached, nessecitating an evacuation."
 
 // USCM Truck
 
 /obj/structure/prop/vehicles/tank/truck
 	name = "M887 Truck"
-	desc = "A Truck"
+	desc = "A small box-type van. It's a compact vehicle with a rectangular cargo area, typically designed for transporting goods or small equipment. It features a high roof and straight sides, providing ample vertical space for storage. Its size makes it maneuverable and ideal for urban driving and tight spaces. This van appears to be non-functional, likely due to excessive use during the recent oubreak."
 	icon = 'icons/obj/vehicles/van_prop.dmi'
 	icon_state = "van_base"
 	density = FALSE
@@ -855,7 +857,7 @@
 
 /obj/structure/prop/vehicles/tank/apc
 	name = "M577 Armored Personnel Carrier"
-	desc = "A APC"
+	desc = "An M577 Armored Personnel Carrier. An armored transport with four big wheels. This one is no longer in working order, serving now as a roadblock."
 	icon = 'icons/obj/vehicles/apc_prop.dmi'
 	icon_state = "apc_base"
 	density = FALSE
@@ -878,7 +880,7 @@
 
 /obj/structure/prop/vehicles/tank/miltruck
 	name = "M255 Armored Half-Track"
-	desc = "A Track"
+	desc = "UA Military half-track, used by all branches of the United American army, including the US Army and USCM. Comes in multiple different configurations, from being able to haul troops to mounting a mobile mortar. Verstile and cheap. This one appears to be non-functional due to overuse during the recent oubreak."
 	icon = 'icons/obj/vehicles/miltruck_prop.dmi'
 	icon_state = "track_base"
 	density = FALSE
@@ -919,7 +921,7 @@
 
 /obj/structure/prop/vehicles/tank/arc
 	name = "M540-B Armored Recon Carrier"
-	desc = "A ARC"
+	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. This vehicle appears to be non-functional."
 	icon = 'icons/obj/vehicles/arc_prop.dmi'
 	icon_state = "arc_base"
 	density = FALSE
@@ -934,7 +936,7 @@
 
 /obj/structure/prop/vehicles/tank/longstreet
 	name = "M34A2 Longstreet Light Tank"
-	desc = "A TANK"
+	desc = "A giant piece of armor with a big gun, it knew what it had to do, and it served its duty."
 	icon = 'icons/obj/vehicles/tank_prop.dmi'
 	icon_state = "tank_base"
 	density = FALSE

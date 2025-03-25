@@ -84,7 +84,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/black/army(new_human), WEAR_HEAD)
-		if (3, 4)
+		if (3 , 4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto(new_human), WEAR_HEAD)
 
 /datum/equipment_preset/survivor/army/standard

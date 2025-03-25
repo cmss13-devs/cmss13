@@ -274,6 +274,14 @@
 	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/medium/rto/army
+	name = "\improper M4 pattern trooper armor"
+	desc = "Whilst it saw limited field-testing amongst the USCMC, the US Army adopted the M4 series pattern armor across the board. Surprisingly uncomfortable, even compared to the old M3 series armor."
+	specialty = "M4 pattern trooper"
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	storage_slots = 3
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."

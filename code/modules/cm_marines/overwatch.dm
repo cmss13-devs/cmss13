@@ -55,6 +55,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/announcement_faction = FACTION_MARINE
 	var/add_pmcs = FALSE
 	var/show_command_squad = FALSE
+	var/tgui_interaction_distance = 1
 
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
@@ -73,6 +74,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	// should be usable even without OW training
 	no_skill_req = TRUE
 	show_command_squad = TRUE
+	tgui_interaction_distance = 3
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -572,12 +574,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-/obj/structure/machinery/computer/overwatch/groundside_operations/ui_status(mob/user)
+/obj/structure/machinery/computer/overwatch/ui_status(mob/user)
 	if(!(isatom(src)))
 		return UI_INTERACTIVE
 
 	var/dist = get_dist(src, user)
-	if(dist <= 3)
+	if(dist <= tgui_interaction_distance)
 		return UI_INTERACTIVE
 	else
 		return UI_CLOSE

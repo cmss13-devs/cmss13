@@ -1835,7 +1835,7 @@
 	pixel_x = 7
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/tyrargo/outdoors/outskirts/river)
+/area/tyrargo/outdoors/outskirts_road/central)
 "afK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/invisible_wall,
@@ -1967,7 +1967,7 @@
 	pixel_x = 17
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/tyrargo/outdoors/outskirts/river)
+/area/tyrargo/outdoors/outskirts_road/central)
 "afX" = (
 /obj/structure/blocker/invisible_wall,
 /obj/effect/landmark/lv624/fog_blocker/long,
@@ -1975,8 +1975,8 @@
 /area/tyrargo/oob)
 "afY" = (
 /obj/structure/closet/crate/ammo{
-	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	name = "heap munitions crate";
+	desc = "Crate filled with heap ammo. You know what to do with it."
 	},
 /obj/item/ammo_magazine/rifle/heap,
 /obj/item/ammo_magazine/rifle/heap,
@@ -2065,7 +2065,7 @@
 	pixel_x = 2
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/tyrargo/outdoors/outskirts/river)
+/area/tyrargo/outdoors/outskirts_road/central)
 "agj" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -11539,17 +11539,7 @@
 	pixel_x = 7
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/outdoors/outskirts/river)
-"aEk" = (
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/outdoors/outskirts/river)
-"aEl" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = -2
-	},
-/turf/open/floor/prison/cell_stripe/west,
-/area/tyrargo/outdoors/outskirts/river)
+/area/tyrargo/outdoors/outskirts_road/central)
 "aEm" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /turf/open/hybrisa/street/asphalt,
@@ -53747,25 +53737,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
-"cIn" = (
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -24;
-	pixel_y = 2;
-	layer = 5.94
-	},
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -15;
-	pixel_y = 15;
-	layer = 5.92
-	},
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -6;
-	pixel_y = 6;
-	layer = 5.93
-	},
-/obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/oob)
 "cIo" = (
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/rock,
@@ -54120,14 +54091,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
-"cIX" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt"
-	},
-/obj/effect/landmark/ert_spawns/groundside_army,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/oob/outdoors)
 "cIY" = (
 /obj/effect/landmark/ert_spawns/groundside_army,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -54278,6 +54241,24 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
+"cJr" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -23;
+	pixel_y = 15;
+	layer = 5.96
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -9;
+	pixel_y = 19;
+	layer = 5.95
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob)
 "cJs" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -54285,13 +54266,6 @@
 	},
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/oob/outdoors)
-"cJt" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	pixel_x = -8;
-	pixel_y = 10
-	},
-/turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
 "cJu" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
@@ -54441,6 +54415,42 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
+"cJG" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/bathmens{
+	pixel_x = 7;
+	pixel_y = 9;
+	desc = "A traffic signal denoting the direction towards the nearest city.";
+	name = "City Direction Sign"
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper North traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the North."
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob/outdoors)
 "cJH" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -54454,6 +54464,42 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
+"cJI" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/bathmens{
+	pixel_x = 7;
+	pixel_y = 9;
+	desc = "A traffic signal denoting the direction towards the nearest city.";
+	name = "City Direction Sign"
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper North traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the North."
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
 "cJJ" = (
 /obj/structure/blocker/invisible_wall,
 /obj/effect/landmark/lv624/fog_blocker/long,
@@ -128679,7 +128725,7 @@ atv
 atv
 bsZ
 bsZ
-bsI
+cJr
 bsw
 bsw
 bsw
@@ -128859,8 +128905,8 @@ cIU
 buc
 bcR
 bsZ
-atv
-cIn
+bsZ
+bsF
 bsw
 bsw
 bsw
@@ -129205,11 +129251,11 @@ bfD
 bfE
 bfE
 bfE
-aEk
-aEk
-aEk
-aEk
-aEk
+bwj
+bwj
+bwj
+bwj
+bwj
 aEj
 aEj
 cJH
@@ -129388,12 +129434,12 @@ bfP
 bws
 bws
 bwj
-aEk
-aEk
-aEk
-aEk
-aEk
-aEk
+bwj
+bwj
+bwj
+bwj
+bwj
+bwj
 agk
 bHy
 bHy
@@ -129570,12 +129616,12 @@ bwt
 bwt
 bwt
 lBd
-aEl
-aEl
-aEl
-aEl
-aEl
-aEl
+lBd
+lBd
+lBd
+lBd
+lBd
+lBd
 agq
 cJy
 bHy
@@ -129746,7 +129792,7 @@ bwE
 byf
 bye
 bwE
-bwE
+cJI
 bwE
 bwV
 bwE
@@ -130307,11 +130353,11 @@ bFo
 bFo
 cJC
 bFo
-bFo
+cJG
 bFo
 cIZ
 cIY
-cIX
+cIQ
 bHy
 bHy
 cID
@@ -130670,8 +130716,8 @@ cJl
 cJm
 bHy
 cJE
+afY
 bFo
-cJt
 bFo
 cJb
 cJb
@@ -130857,7 +130903,7 @@ afY
 bFo
 cJb
 cJb
-cJb
+bFo
 cIR
 cIK
 bum

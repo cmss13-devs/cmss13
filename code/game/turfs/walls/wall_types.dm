@@ -1310,7 +1310,7 @@
 /turf/closed/wall/resin/reflective/weak
 	name = "weakened reflective wall"
 	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
-	damage_cap = HEALTH_WALL_XENO_WEAK
+	damage_cap = HEALTH_WALL_XENO_REFLECTIVE_WEAK
 	var/duration = 10 SECONDS
 
 /turf/closed/wall/resin/reflective/weak/Initialize(mapload, ...)

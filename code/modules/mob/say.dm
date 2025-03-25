@@ -104,15 +104,15 @@
 		langchat_speech(message, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE)
 
 /mob/proc/say_understands(mob/other, datum/language/speaking = null)
-	if(src.stat == DEAD) //Dead
+	if(stat == DEAD) //Dead
 		return TRUE
 
-	if(src.universal_understand)
+	if(universal_understand)
 		return TRUE
 	if(other?.universal_speak)
 		return TRUE
 	//Language check.
-	for(var/datum/language/L in src.languages)
+	for(var/datum/language/L in languages)
 		if(speaking?.name == L.name)
 			return TRUE
 

@@ -1926,6 +1926,11 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_east)
+"afS" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/gm/river/desert/deep,
+/area/tyrargo/oob)
 "afT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -1963,6 +1968,26 @@
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/outdoors/outskirts/river)
+"afX" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob)
+"afY" = (
+/obj/structure/closet/crate/ammo{
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	},
+/obj/item/ammo_magazine/rifle/heap,
+/obj/item/ammo_magazine/rifle/heap,
+/obj/item/ammo_magazine/rifle/heap,
+/obj/item/ammo_magazine/rifle/heap,
+/obj/item/ammo_magazine/rifle/m4ra/heap,
+/obj/item/ammo_magazine/rifle/m4ra/heap,
+/obj/item/ammo_magazine/rifle/m4ra/heap,
+/obj/item/ammo_magazine/rifle/m4ra/heap,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob/outdoors)
 "afZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -2041,6 +2066,25 @@
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/outdoors/outskirts/river)
+"agj" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	id = "us_army_ert"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
+"agk" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	id = "us_army_ert"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
 "agl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -2099,6 +2143,23 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_east)
+"agq" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	id = "us_army_ert"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob/outdoors)
+"agr" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/oob)
 "ags" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4648,7 +4709,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "leafybush_2"
 	},
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "anC" = (
@@ -7251,7 +7312,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "att" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/oob)
 "atu" = (
@@ -7264,7 +7325,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/bar/upper/external)
 "atv" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "atw" = (
@@ -14995,7 +15056,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
 	},
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "aMY" = (
@@ -47263,7 +47324,7 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/oob)
 "cjw" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/oob)
 "cjx" = (
@@ -47313,7 +47374,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "cjF" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/oob)
 "cjG" = (
@@ -47353,7 +47414,7 @@
 /area/tyrargo/outdoors/colony_streets/south_east)
 "cjM" = (
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/oob)
 "cjN" = (
@@ -47424,7 +47485,7 @@
 /obj/effect/decal/hybrisa/doubleroad/lines3{
 	pixel_y = 13
 	},
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/oob)
 "cjX" = (
@@ -47468,7 +47529,7 @@
 /area/tyrargo/oob)
 "ckc" = (
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/oob)
 "ckd" = (
@@ -47536,7 +47597,7 @@
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "ckp" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob)
 "ckq" = (
@@ -48830,7 +48891,7 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north)
 "cps" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/oob)
@@ -49084,7 +49145,7 @@
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "cqt" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/oob)
@@ -49255,7 +49316,7 @@
 /area/tyrargo/oob)
 "crg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/oob)
 "crh" = (
@@ -49338,7 +49399,7 @@
 /area/tyrargo/oob)
 "crt" = (
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
 	pixel_x = 12;
@@ -49663,7 +49724,7 @@
 /area/tyrargo/oob)
 "csq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob)
 "csr" = (
@@ -50239,7 +50300,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cuw" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/oob)
 "cux" = (
@@ -50367,7 +50428,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cuV" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
 "cuW" = (
@@ -51598,7 +51659,7 @@
 /turf/open/floor/corsat/marked,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "czc" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
@@ -53702,7 +53763,7 @@
 	pixel_y = 6;
 	layer = 5.93
 	},
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/oob)
 "cIo" = (
@@ -54094,7 +54155,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
 "cJc" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
@@ -54146,7 +54207,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
 "cJi" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
 	color = "#a98c7c";
@@ -54217,11 +54278,6 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
-"cJr" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/fog,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/oob)
 "cJs" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -54238,7 +54294,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
 "cJu" = (
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/oob)
 "cJv" = (
@@ -54293,6 +54349,10 @@
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
+	},
+/obj/structure/machinery/door_control{
+	pixel_y = 28;
+	needs_power = 0
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
@@ -54380,10 +54440,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
-"cJG" = (
-/obj/structure/platform_decoration/metal/almayer/west,
-/turf/open_space,
-/area/tyrargo/outdoors/outskirts/river)
 "cJH" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -54392,20 +54448,14 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	id = "us_army_ert"
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
-"cJI" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/structure/platform/metal/almayer/east,
-/turf/open_space,
-/area/tyrargo/outdoors/outskirts/river)
 "cJJ" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/fog,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/oob/outdoors)
-"cJK" = (
-/obj/structure/blocker/invisible_wall,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
 "cJL" = (
@@ -54418,8 +54468,23 @@
 /area/tyrargo/outdoors/outskirts/river)
 "cJN" = (
 /obj/structure/platform_decoration/metal/almayer/north,
-/turf/open_space,
-/area/tyrargo/outdoors/outskirts/river)
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/oob)
+"cJO" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/oob)
+"cJP" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
 "cJX" = (
 /obj/structure/prop/vehicles/tank/miltruck{
 	dir = 8;
@@ -64294,7 +64359,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "sunnybush_1"
 	},
-/obj/structure/blocker/fog,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "vxc" = (
@@ -64847,6 +64912,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "wiH" = (
 /obj/structure/blocker/invisible_wall,
+/obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "wiU" = (
@@ -85275,7 +85341,7 @@ bsw
 bsw
 bsw
 bsw
-bsw
+bsO
 ceG
 ceG
 ceG
@@ -86184,8 +86250,8 @@ bsw
 bsw
 bsw
 bsw
-ceG
-ceG
+bsO
+bsO
 ceG
 ceG
 ceG
@@ -124055,7 +124121,7 @@ biJ
 bgZ
 bgZ
 bgZ
-bsZ
+atv
 btp
 bsY
 bur
@@ -124238,7 +124304,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
+atv
 bsZ
 bsZ
 bsZ
@@ -124420,7 +124486,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
+atv
 bsZ
 bsZ
 bsZ
@@ -124603,7 +124669,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
+atv
 bsZ
 btq
 bsZ
@@ -124786,7 +124852,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
+atv
 bsZ
 bsZ
 btL
@@ -124969,8 +125035,8 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
-bsZ
+atv
+atv
 bsZ
 bsZ
 bsZ
@@ -125152,7 +125218,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bgZ
+afS
 bgZ
 bgZ
 aSj
@@ -125334,7 +125400,7 @@ biB
 bgZ
 bgZ
 bgZ
-bgZ
+afS
 bgZ
 bgZ
 aSj
@@ -125516,7 +125582,7 @@ bdA
 biz
 bgZ
 bgZ
-bgZ
+afS
 bgZ
 bgZ
 aSj
@@ -125698,7 +125764,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bgZ
+afS
 bgZ
 bgZ
 aSj
@@ -125880,7 +125946,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bgZ
+afS
 bgZ
 bgZ
 aSj
@@ -126058,11 +126124,11 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+atv
+atv
+atv
+atv
+atv
 bgZ
 bgZ
 aSj
@@ -126238,8 +126304,8 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
-bsZ
+atv
+atv
 bsZ
 bsZ
 bsZ
@@ -126419,7 +126485,7 @@ biT
 bgZ
 bgZ
 bgZ
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -126601,7 +126667,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -126783,7 +126849,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -126964,8 +127030,8 @@ cfg
 cfg
 cfg
 cfg
-buk
-buk
+afX
+afX
 bsZ
 bsZ
 bsZ
@@ -127146,7 +127212,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -127328,7 +127394,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -127510,7 +127576,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -127692,7 +127758,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -127874,7 +127940,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -128056,7 +128122,7 @@ cfg
 cfg
 cfg
 cfg
-cJr
+afX
 atv
 bsZ
 bsZ
@@ -128237,8 +128303,8 @@ cfg
 cfg
 cfg
 cfg
-cJr
-cJr
+afX
+afX
 atv
 atv
 atv
@@ -128419,7 +128485,7 @@ cfg
 cfg
 cfg
 cfg
-cJr
+afX
 bsZ
 cJn
 bsZ
@@ -128601,7 +128667,7 @@ cfg
 cfg
 cfg
 cfg
-cJr
+afX
 bhU
 cJo
 cJj
@@ -128774,15 +128840,15 @@ bxh
 bwD
 bwD
 bwr
-bvk
+bsO
 cJL
 cJL
 cJL
 cJL
 cJL
-cJI
-cJG
-cJr
+cJL
+bsO
+afX
 buk
 buk
 cJe
@@ -128963,7 +129029,7 @@ agi
 afW
 afJ
 afJ
-cJx
+agj
 afB
 afz
 cIW
@@ -129327,7 +129393,7 @@ aEk
 aEk
 aEk
 aEk
-cIQ
+agk
 bHy
 bHy
 bHy
@@ -129509,7 +129575,7 @@ aEl
 aEl
 aEl
 aEl
-cJv
+agq
 cJy
 bHy
 bHy
@@ -129684,14 +129750,14 @@ bwE
 bwV
 bwE
 cJN
+cJO
 cJM
 cJM
 cJM
 cJM
 cJM
-cJM
-cJJ
-cIR
+bsO
+agr
 cJz
 bHy
 cJs
@@ -129872,7 +129938,7 @@ cfg
 cfg
 cfg
 cJJ
-cJK
+bFo
 cJm
 cJA
 cJw
@@ -130053,7 +130119,7 @@ cfg
 cfg
 cfg
 cJJ
-cJK
+bFo
 bFo
 bFo
 cJB
@@ -130597,7 +130663,7 @@ cfg
 cfg
 cfg
 cfg
-cJr
+afX
 cJc
 cJl
 cJm
@@ -130778,15 +130844,15 @@ cfg
 cfg
 cfg
 cfg
-buk
-bsZ
+afX
+atv
 cJc
 bFo
 bFo
 bFo
 cJF
 bFo
-bFo
+afY
 bFo
 cJb
 cJb
@@ -130960,7 +131026,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 cJc
 cJc
@@ -131141,7 +131207,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -131323,7 +131389,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -131499,12 +131565,12 @@ bwE
 bwE
 bwE
 bwE
-aaj
 cfg
 cfg
 cfg
 cfg
-buk
+cfg
+afX
 bsZ
 bsZ
 bsZ
@@ -131681,12 +131747,12 @@ bwE
 bxk
 bxw
 bwE
-aaj
 cfg
 cfg
 cfg
 cfg
-buk
+cfg
+afX
 bsZ
 bsZ
 bsZ
@@ -131867,7 +131933,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -132049,7 +132115,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -132230,7 +132296,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsQ
@@ -132412,7 +132478,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsY
@@ -132593,7 +132659,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -132774,7 +132840,7 @@ cfg
 cfg
 cfg
 cfg
-buk
+afX
 bsZ
 bsZ
 bsZ
@@ -132956,7 +133022,7 @@ cfg
 cfg
 cfg
 cfg
-bum
+cJP
 bsZ
 bsZ
 bsZ
@@ -133138,7 +133204,7 @@ cfl
 cfg
 cfg
 wiH
-bum
+cJP
 buc
 bsZ
 bsY

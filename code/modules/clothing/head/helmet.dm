@@ -1389,12 +1389,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/army
-	name = "\improper 6B82 Combat Helmet"
-	desc = "An older Version of the UPP Army's 6B92 combat helmet, still worn by certain units on planets the UPP deems less important"
+	name = "\improper 6B82 combat helmet"
+	desc = "An older version of the UPP Army's 6B92 combat helmet, still worn by certain units on planets the UPP deems less important"
 	icon_state = "upp_army_helmet"
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet
-	name = "\improper CCC5-L Composite Helmet"
+	name = "\improper CCC5-L composite helmet"
 	desc = "A UPP-manufactured combat helmet with a distinctive spherical design. Made from a reinforced polymer composite, it offers ballistic protection while incorporating an integrated HUD, encrypted comms, and a rebreather system. Its limited visor visibility is a tradeoff for enhanced durability."
 	icon_state = "sof_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1434,7 +1434,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter
-	name = "T-20 Firefighter Helmet"
+	name = "T-20 firefighter helmet"
 	desc = "A reinforced, heat-resistant helmet issued to UPP emergency responders. Its durable composite shell provides protection against falling debris and extreme heat, while the attached fire-resistant shroud shields the wearer’s neck and shoulders. A red star is emblazoned on the front, marking its service within the Union."
 	icon_state = "firefighter"
 	flags_heat_protection = BODY_FLAG_HEAD

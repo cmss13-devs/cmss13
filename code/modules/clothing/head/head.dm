@@ -903,7 +903,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_inv_hide = HIDEEARS
 
 /obj/item/clothing/head/beret/SOF_beret
-	name = "\improper SOF Beret"
+	name = "\improper SOF beret"
 	desc = "A finely crafted beret worn by members of the UPP Space Operations Forces. It signifies service in the void, from deep-space missions to planetary operations, and is a mark of discipline and camaraderie among its wearers."
 	icon_state = "SOF_beret"
 	item_state = "SOF_beret"
@@ -914,7 +914,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 
 /obj/item/clothing/head/beret/SOF_beret/reservist
-	name = "\improper UPP Reservist Beret"
+	name = "\improper UPP reservist beret"
 	desc = "A well-made beret worn by reservists of the UPP armed forces. It signifies their continued commitment to the cause, even while not on active duty, and serves as a symbol of unity and service."
 	icon_state = "SOF_blue_beret"
 	item_state = "SOF_blue_beret"

@@ -444,7 +444,7 @@
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/army
 
-	name = "\improper 6B80 Personal Body Armour"
+	name = "\improper 6B80 personal body armor"
 	desc = "An older UPP Armour that's since been replaced by the UPP Army Standard 6B90 Body Armour, still used by certain UPP Army units that the UPP doesn't expect to see much combat."
 	storage_slots = 3
 	icon_state = "upp_armor_army_brown"

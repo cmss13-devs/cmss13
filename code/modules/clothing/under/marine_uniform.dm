@@ -672,27 +672,27 @@
 
 /obj/item/clothing/under/marine/veteran/UPP/civi5
 	name = "\improper Jùtóu Combine mining overalls"
-	desc = "A durable, olive-green jumpsuit worn beneath a sleeveless, puffy orange work vest—standard issue for Jùtóu Combine laborers. The vest’s faded fabric is lined with reinforced padding, offering minimal protection against workplace hazards. A red star insignia is stamped on the back, marking its wearer as part of the Combine’s industrial workforce. Stiff, uncomfortable, and mass-produced, but better than nothing in the unforgiving conditions of deep-space labor."
+    desc = "A durable, olive-green jumpsuit worn beneath a sleeveless, puffy orange work vest—standard issue for Jùtóu Combine laborers. The vest's faded fabric is lined with reinforced padding, offering minimal protection against workplace hazards. A red star insignia is stamped on the back, marking its wearer as part of the Combine’s industrial workforce. Stiff, uncomfortable, and mass-produced, but better than nothing in the unforgiving conditions of deep-space labor."
 	icon_state = "miner_uniform"
 	worn_state = "miner_uniform"
 
 /obj/item/clothing/under/marine/veteran/UPP/army
-	name = "\improper UPP Army fatigues"
-	desc =  "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the Jungle pattern of the UPP Army's 202nd Infantry Regiment."
+	name = "\improper UPP army jungle fatigues"
+    desc =  "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the jungle pattern of the UPP Army's 202nd Infantry Regiment."
 	icon_state = "upp_army_green_uniform"
 	worn_state = "upp_army_green_uniform"
 	suit_restricted = FALSE
 
 /obj/item/clothing/under/marine/veteran/UPP/army/alt
 	name = "\improper UPP Army fatigues"
-	desc = "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the Standard UPP pattern of the UPP Army's 202nd Infantry Regiment."
+    desc = "A set of UPP fatigues, mass produced for the Armed Collective of the Union of Progressive Peoples. A rare sight, especially in 3WE zones. This particular set sports the standard UPP pattern of the UPP Army's 202nd Infantry Regiment."
 	icon_state = "upp_army_yellow_uniform"
 	worn_state = "upp_army_yellow_uniform"
 
 // UPP SOF
 
 /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform
-	name = "\improper CCC5-L Compression Undersuit"
+    name = "\improper CCC5-L compression undersuit"
 	desc = "A temperature-regulating pressure suit forming the base layer of the CCC5-L system. It provides compression support, limited vacuum resistance, moisture-wicking properties, and NBC protection to sustain operators in hazardous conditions."
 	icon_state = "sof_uniform"
 	worn_state = "sof_uniform"
@@ -1179,7 +1179,7 @@
 	displays_id = FALSE
 
 /obj/item/clothing/under/rank/utility
-	name = "\improper Green utility uniform"
+	name = "\improper green utility uniform"
 	desc = "A green-on-green utility uniform, popularly issued to UA contract workers on the frontier."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
@@ -1190,38 +1190,38 @@
 	displays_id = FALSE
 
 /obj/item/clothing/under/rank/utility/yellow
-	name = "\improper Yellow utility uniform"
+	name = "\improper yellow utility uniform"
 	desc = "A grey utility uniform with yellow suspenders, made for shipside crew."
 	icon_state = "yellow_utility"
 	worn_state = "yellow_utility"
 
 /obj/item/clothing/under/rank/utility/red
-	name = "\improper Red utility uniform"
+	name = "\improper red utility uniform"
 	desc = "A grey utility uniform with red suspenders and blue jeans, the sign of a veteran laborer, or someone not paid by the hour."
 	icon_state = "red_utility"
 	worn_state = "red_utility"
 
 /obj/item/clothing/under/rank/utility/blue
-	name = "\improper Blue utility uniform"
+	name = "\improper blue utility uniform"
 	desc = "A blue utility uniform with teal suspenders and rugged pants."
 	icon_state = "blue_utility"
 	worn_state = "blue_utility"
 
 /obj/item/clothing/under/rank/utility/gray
-	name = "\improper Gray utility uniform"
+	name = "\improper gray utility uniform"
 	desc = "A stylish gray jumpsuit, popularly issued to UA contract workers on the frontier."
 	icon_state = "grey_utility"
 	worn_state = "grey_utility"
 
 /obj/item/clothing/under/rank/utility/brown
-	name = "\improper Brown utility uniform"
+	name = "\improper brown utility uniform"
 	desc = "A stylish brown jumpsuit, popularly issued to UA contract workers on the frontier."
 	icon_state = "brown_utility"
 	worn_state = "brown_utility"
 	has_sensor = UNIFORM_HAS_SENSORS
 
 /obj/item/clothing/under/rank/utility/brown/upp
-	name = "Brown utility uniform"
+	name = "brown utility uniform"
 	desc = "A rugged utility jumpsuit worn by UPP workers and emergency crews. Constructed from heat-treated synthetic fibers and reinforced at key points, it provides basic protection against heat and physical hazards. Though practical, its heavy fabric and outdated design reflect the Union’s focus on durability over comfort."
 	icon_state = "brown_utility"
 	worn_state = "brown_utility"
@@ -1230,7 +1230,7 @@
 	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/rank/utility/gray/upp
-	name = "\improper Gray utility uniform"
+	name = "\improper gray utility uniform"
 	desc = "A rugged utility jumpsuit worn by UPP workers and emergency crews. Constructed from heat-treated synthetic fibers and reinforced at key points, it provides basic protection against heat and physical hazards. Though practical, its heavy fabric and outdated design reflect the Union’s focus on durability over comfort."
 	icon_state = "grey_utility"
 	worn_state = "grey_utility"

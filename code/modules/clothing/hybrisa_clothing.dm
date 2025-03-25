@@ -649,7 +649,7 @@
 // UPP firefighter
 
 /obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp
-	name = "T-20 Fire Response Coat"
+	name = "T-20 fire response coat"
 	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
 	icon_state = "upp_firefighter_alt"
 	item_state = "upp_firefighter_alt"

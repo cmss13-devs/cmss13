@@ -367,7 +367,7 @@
 
 /obj/item/ammo_magazine/rifle/ak4047/incendiary
 	name = "\improper AK-4047 incendiary magazine (10x24mm)"
-	desc = "A 10mm assault rifle magazine."
+	desc = "A 10mm assault rifle magazine containing the incendiary rounds for the AK-4047 rifle."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 

@@ -445,7 +445,7 @@
 /obj/item/clothing/suit/storage/marine/faction/UPP/army
 
 	name = "\improper 6B80 personal body armor"
-	desc = "An older UPP Armour that's since been replaced by the UPP Army Standard 6B90 Body Armour, still used by certain UPP Army units that the UPP doesn't expect to see much combat."
+    desc = "An older UPP personal armor system that's since been replaced by the UPP Army Standard 6B90 body armor. It is still used by certain UPP Army units that the UPP doesn't expect to see much combat."
 	storage_slots = 3
 	icon_state = "upp_armor_army_brown"
 
@@ -463,13 +463,11 @@
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/army/simple
-	name = "6B70 Personal Body Armour"
-	desc = "An older UPP Armour that's since been replaced by the UPP Army Standard 6B90 Body Armour, still used by certain UPP Army units that the UPP doesn't expect to see much combat."
+	name = "6B70 personal body armour"
 	icon_state = "upp_generic_ballistic_armor"
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/army/alt
-	name = "6B75 Personal Body Armour"
-	desc = "An older UPP Armour that's since been replaced by the UPP Army Standard 6B90 Body Armour, still used by certain UPP Army units that the UPP doesn't expect to see much combat."
+	name = "6B75 personal body armour"
 	icon_state = "upp_ballistic_armor"
 
 // People's Armed Police
@@ -487,7 +485,7 @@
 // UPP SOF
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor
-	name = "\improper CCC5-L Tactical Vest"
+	name = "\improper CCC5-L tactical vest"
 	desc = "A lightweight UPP-issued armor vest designed for space operations forces. It features polymer-ceramic composite plating for improved protection while allowing greater mobility. Equipped with modular pouches for ammunition and gear, it ensures rapid access to essential supplies."
 	icon_state = "sof_vest"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
@@ -523,7 +521,7 @@
 	flags_armor_protection = (BODY_FLAG_CHEST|BODY_FLAG_ARMS|BODY_FLAG_GROIN)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/medium
-	name = "\improper CCC5-L Plated Tactical Vest"
+	name = "\improper CCC5-L plated tactical vest"
 	desc = "A lightweight UPP-issued armor vest designed for space operations forces. It features polymer-ceramic composite plating for improved protection while allowing greater mobility. Equipped with modular pouches for ammunition and gear, it ensures rapid access to essential supplies."
 	icon_state = "sof_vest_plate"
 
@@ -539,7 +537,7 @@
 	icon_state = "sof_vest_alt"
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor/synth
-	name = "\improper CCC5-L Synthetic Tactical Vest"
+	name = "\improper CCC5-L synthetic tactical vest"
 	desc = "A lightweight UPP-issued armor vest designed for space operations forces. It features polymer-ceramic composite plating for improved protection while allowing greater mobility. Equipped with modular pouches for ammunition and gear, it ensures rapid access to essential supplies."
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS

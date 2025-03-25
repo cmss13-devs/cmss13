@@ -2511,7 +2511,7 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/ak4047_barrel
-	name = "AK-4047 Barrel"
+	name = "AK-4047 barrel"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "ak4047_barrel"

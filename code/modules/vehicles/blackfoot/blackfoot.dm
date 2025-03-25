@@ -266,9 +266,6 @@
 		STOP_PROCESSING(SSsuperfastobj, src)
 		crash()
 
-	if(back_door.open)
-		update_rear_view()
-
 /obj/vehicle/multitile/blackfoot/proc/crash()
 	for(var/mob/living/passenger in interior.get_passengers())
 		var/turf/fall_turf = locate(x + rand(-5, 5), y + rand(-5, 5), z)
@@ -293,6 +290,9 @@
 	entrances = null
 
 /obj/vehicle/multitile/blackfoot/before_move(direction)
+	if(back_door.open)
+		update_rear_view()
+	
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
 		return
 
@@ -574,6 +574,7 @@
 	qdel(downwash)
 	forceMove(SSmapping.get_turf_above(get_turf(src)))
 	shadow_holder = new(SSmapping.get_turf_below(get_turf(src)))
+	shadow_holder.icon_state = "[get_sprite_state()]_shadow"
 	update_rear_view()
 	START_PROCESSING(SSsuperfastobj, src)
 	busy = FALSE

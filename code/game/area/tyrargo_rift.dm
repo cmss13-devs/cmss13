@@ -479,3 +479,15 @@
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	requires_power = FALSE
 	unoviable_timer = FALSE
+
+// ERT Spawn Area
+
+/area/tyrargo/outdoors/army_staging
+	name = "32nd Armor Division: Staging Area - Southern Outskirts"
+	icon_state = "Holodeck"
+	ceiling = CEILING_NO_PROTECTION
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_SEC_CAVE
+	requires_power = FALSE
+	ambience_exterior = AMBIENCE_TYRARGO_CITY

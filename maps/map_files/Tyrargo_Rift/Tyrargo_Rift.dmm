@@ -49,7 +49,8 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "aam" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass,
@@ -67,7 +68,8 @@
 /area/tyrargo/outdoors/outskirts/central)
 "aaq" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass,
@@ -1020,7 +1022,8 @@
 /area/tyrargo/oob)
 "adq" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/strata_grass,
@@ -3588,7 +3591,8 @@
 /area/tyrargo/outdoors/colony_exterior/west)
 "akq" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3";
@@ -4442,7 +4446,8 @@
 /area/tyrargo/outdoors/colony_exterior/south_west)
 "anc" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/colony_exterior/south_west)
@@ -6284,7 +6289,8 @@
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "arg" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -6822,7 +6828,8 @@
 /area/tyrargo/oob)
 "ash" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -8611,7 +8618,8 @@
 /area/tyrargo/indoors/admin/ground)
 "awi" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -8679,7 +8687,8 @@
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "aws" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 5
@@ -15050,7 +15059,8 @@
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aMX" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/strata_grass,
@@ -17309,7 +17319,8 @@
 /area/tyrargo/landing_zone_2)
 "aRu" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/structure/barricade/handrail,
 /turf/open/auto_turf/strata_grass,
@@ -17331,7 +17342,8 @@
 "aRx" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/east,
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
@@ -19120,7 +19132,8 @@
 	layer = 2.9
 	},
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
@@ -19169,7 +19182,8 @@
 /area/tyrargo/oob)
 "aUU" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/strata_grass,
@@ -19323,7 +19337,8 @@
 /area/tyrargo/landing_zone_1)
 "aVh" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/item/trash/cigbutt{
 	pixel_x = 7
@@ -20326,10 +20341,10 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
 /turf/open/floor/plating/wood,
 /area/tyrargo/landing_zone_1/ceiling)
 "aWZ" = (
@@ -21366,6 +21381,9 @@
 	pixel_y = -9;
 	layer = 2.1
 	},
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "aYP" = (
@@ -21529,6 +21547,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aZe" = (
@@ -22024,7 +22043,8 @@
 /area/tyrargo/outdoors/colony_exterior/west)
 "bag" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
@@ -24389,7 +24409,8 @@
 /area/tyrargo/oob)
 "beE" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/auto_turf/strata_grass,
@@ -27019,7 +27040,8 @@
 "bkq" = (
 /obj/item/prop/colony/used_flare,
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -27493,7 +27515,8 @@
 /area/tyrargo/landing_zone_2/east_trench)
 "bln" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -27554,7 +27577,8 @@
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "blt" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass,
@@ -28157,7 +28181,8 @@
 "bmw" = (
 /obj/item/explosive/mine/active/no_iff,
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
@@ -28499,7 +28524,8 @@
 	pixel_y = 8
 	},
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
@@ -28905,6 +28931,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_box/magazine/misc/mre/empty,
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnO" = (
@@ -29233,7 +29260,8 @@
 /area/tyrargo/outdoors/outskirts/central)
 "boq" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/strata_grass,
@@ -31561,7 +31589,8 @@
 /area/tyrargo/landing_zone_2)
 "bsX" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
@@ -31700,7 +31729,8 @@
 /area/tyrargo/oob)
 "btq" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
@@ -31936,7 +31966,8 @@
 "btZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
@@ -32530,7 +32561,8 @@
 /area/tyrargo/landing_zone_2)
 "bvx" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -32605,7 +32637,8 @@
 "bvJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2/east_trench)
@@ -33298,7 +33331,8 @@
 /area/tyrargo/outdoors/outskirts_road/central)
 "bxw" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
@@ -33342,7 +33376,8 @@
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bxF" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -33439,7 +33474,8 @@
 /area/tyrargo/outdoors/outskirts_road/west)
 "bxV" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/west)
@@ -33551,7 +33587,8 @@
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "byk" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
@@ -33723,7 +33760,8 @@
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "byJ" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
@@ -34566,7 +34604,8 @@
 /area/tyrargo/outdoors/outskirts_road/central)
 "bAt" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/central)
@@ -34867,7 +34906,8 @@
 /area/tyrargo/outdoors/outskirts/central)
 "bBh" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
@@ -34989,7 +35029,8 @@
 /area/tyrargo/outdoors/outskirts_road/east)
 "bBz" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
@@ -35333,7 +35374,8 @@
 /area/tyrargo/outdoors/outskirts/east)
 "bCr" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
@@ -36928,7 +36970,8 @@
 /area/tyrargo/oob/outdoors)
 "bFS" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob/outdoors)
@@ -37840,7 +37883,8 @@
 "bHW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/west)
@@ -38087,7 +38131,8 @@
 /area/tyrargo/landing_zone_1)
 "bIJ" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
@@ -39770,7 +39815,8 @@
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bNm" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -41567,6 +41613,9 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bRW" = (
@@ -41829,7 +41878,8 @@
 /area/tyrargo/outdoors/outskirts/no_mans_land)
 "bSH" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
@@ -43009,7 +43059,8 @@
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVT" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass,
@@ -45015,6 +45066,7 @@
 /area/tyrargo/underground/bunker/north)
 "ccc" = (
 /obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/med_small_stack,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "ccd" = (
@@ -46171,7 +46223,8 @@
 /area/tyrargo/outdoors/colony_exterior/south_east)
 "cfo" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_west)
@@ -46261,7 +46314,8 @@
 /area/tyrargo/outdoors/colony_exterior/south_west)
 "cfI" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_east)
@@ -46788,7 +46842,8 @@
 /area/tyrargo/indoors/security/ground)
 "chC" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass,
@@ -47637,7 +47692,8 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "cky" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/west)
@@ -47722,7 +47778,8 @@
 /area/tyrargo/outdoors/colony_exterior/west)
 "ckQ" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
@@ -48319,7 +48376,8 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "cnf" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -48474,7 +48532,8 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "cnP" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -48848,7 +48907,8 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cpj" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -49895,7 +49955,8 @@
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "ctb" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/north_west)
@@ -50686,7 +50747,8 @@
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "cvV" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/north_east)
@@ -50789,7 +50851,8 @@
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "cwp" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/north)
@@ -54742,6 +54805,88 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open_space,
 /area/tyrargo/oob)
+"cKr" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/stack/sheet/metal/med_small_stack,
+/turf/open/floor/corsat/plate,
+/area/tyrargo/underground/bunker/south)
+"cKs" = (
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/landing_zone_2)
+"cKt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_2/east_trench)
+"cKu" = (
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/outdoors/colony_streets/south_east)
+"cKv" = (
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_west_usasf)
+"cKw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"cKx" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 4;
+	pixel_x = 12;
+	pixel_y = 8
+	},
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"cKy" = (
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"cKz" = (
+/obj/effect/decal/grass_overlay/grass1,
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"cKA" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
+	},
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north)
+"cKB" = (
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty{
+	pixel_x = -2
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/east_trench)
+"cKC" = (
+/obj/item/stack/sheet/metal/med_small_stack,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/engineering/upper)
 "cMd" = (
 /obj/item/device/healthanalyzer,
 /obj/item/trash/uscm_mre{
@@ -60147,7 +60292,8 @@
 "nFb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/west)
@@ -63605,7 +63751,8 @@
 	dir = 1
 	},
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
@@ -66186,7 +66333,8 @@
 	dir = 1
 	},
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "fullgrass_1"
+	icon_state = "fullgrass_1";
+	layer = 2.9
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
@@ -83721,7 +83869,7 @@ bYh
 bYh
 bYh
 bYh
-bYO
+cKr
 bYO
 bYh
 bYv
@@ -85947,7 +86095,7 @@ cKd
 ceG
 ceG
 ceG
-ceG
+cJR
 cJt
 bsw
 bsw
@@ -113601,7 +113749,7 @@ bxJ
 bkK
 bxQ
 btr
-btr
+cKs
 bsW
 bwF
 bwv
@@ -114829,7 +114977,7 @@ bGi
 bxJ
 aaC
 bxJ
-bxJ
+cKv
 boJ
 byD
 bxJ
@@ -119900,7 +120048,7 @@ abh
 bBh
 bLo
 bBg
-bBg
+cKy
 bBg
 bBg
 bBg
@@ -125142,7 +125290,7 @@ bSD
 bSu
 bSn
 bRi
-bRl
+cKB
 bRi
 bQV
 bBw
@@ -125608,7 +125756,7 @@ bvk
 bvN
 bzw
 bkU
-aMI
+cKt
 bkc
 bkR
 bvM
@@ -128294,7 +128442,7 @@ bGU
 bBm
 bBm
 bBy
-bBn
+bBz
 bBk
 bBl
 bBl
@@ -133732,7 +133880,7 @@ ctK
 cte
 cte
 cte
-apz
+cKz
 csu
 cqe
 rsK
@@ -136835,7 +136983,7 @@ mlv
 rRS
 nxb
 cpd
-cpz
+cKw
 cpz
 cpd
 uXg
@@ -141736,7 +141884,7 @@ crk
 crl
 crl
 crk
-cuc
+cKA
 crn
 crn
 ctg
@@ -145627,7 +145775,7 @@ ciI
 chG
 chz
 aHa
-aGP
+cKu
 aGH
 aGr
 aGc
@@ -147749,7 +147897,7 @@ waX
 csR
 cqz
 azf
-crO
+cKx
 cqq
 cqC
 cqX
@@ -169271,11 +169419,11 @@ aaj
 aaj
 aaj
 aaj
-bTB
+bTF
 aaj
 aaj
 aaj
-bTB
+bTF
 aaj
 aaj
 aaj
@@ -169452,13 +169600,13 @@ aaj
 aaj
 aaj
 aaj
-bTB
-bTB
-bTB
-bTB
-bTB
-bTB
-bTB
+bTJ
+bTG
+bTG
+bTG
+bTG
+bTC
+bTH
 aaj
 aaj
 aaj
@@ -169634,12 +169782,12 @@ aaj
 aaj
 aaj
 aaj
+bTH
 bTB
 bTB
 bTB
 bTB
-bTB
-bTB
+bTE
 aaj
 aaj
 aaj
@@ -169816,12 +169964,12 @@ aaj
 aaj
 aaj
 aaj
+bTH
 bTB
 bTB
 bTB
 bTB
-bTB
-bTB
+bTE
 aaj
 aaj
 aaj
@@ -169998,12 +170146,12 @@ aaj
 aaj
 aaj
 aaj
+bTH
 bTB
 bTB
 bTB
 bTB
-bTB
-bTB
+bTE
 aaj
 aaj
 aaj
@@ -170180,13 +170328,13 @@ aaj
 aaj
 aaj
 aaj
+bTI
 bTB
 bTB
 bTB
 bTB
-bTB
-bTB
-bTB
+bTE
+bTH
 aaj
 aaj
 aaj
@@ -170363,11 +170511,11 @@ aaj
 aaj
 aaj
 aaj
-bTB
-bTB
-bTB
-bTB
-bTB
+bTI
+bTF
+bTF
+bTF
+bTD
 aaj
 aaj
 aaj
@@ -172575,14 +172723,14 @@ aaj
 aaj
 aaj
 aaj
+bsO
 aaj
 aaj
 aaj
 aaj
 aaj
 aaj
-aaj
-aaj
+bsO
 cKp
 cKp
 aaj
@@ -172764,7 +172912,7 @@ aaj
 aaj
 aaj
 cKp
-cKp
+bsO
 cKp
 aaj
 aaj
@@ -172946,7 +173094,7 @@ aaj
 aaj
 aaj
 cKp
-aaj
+bsO
 aaj
 aaj
 aaj
@@ -173128,7 +173276,7 @@ aaj
 aaj
 aaj
 cKp
-aaj
+bsO
 aaj
 aaj
 aaj
@@ -173310,7 +173458,7 @@ aaj
 aaj
 aaj
 cKp
-aaj
+bsO
 aaj
 aaj
 aaj
@@ -173484,15 +173632,15 @@ aaj
 aaj
 bTA
 aaj
-aaj
-aaj
+bsO
+bsO
 aaj
 aaj
 aaj
 aaj
 aaj
 cKp
-aaj
+bsO
 aaj
 aaj
 aaj
@@ -179086,7 +179234,7 @@ amo
 amj
 amf
 cBL
-cBM
+cKC
 cBE
 cBB
 aaj

@@ -127,6 +127,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/vanyard)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -18804,10 +18808,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/flight_control_exterior)
-"bcX" = (
-/obj/structure/largecrate/random/barrel/yellow,
-/turf/open/gm/dirt/brown/variant_6,
-/area/strata/exterior/marsh/spring_marshes)
 "bcY" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -12;
@@ -38538,9 +38538,6 @@
 /obj/effect/blocker/sorokyne_hot_water,
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
-"dOO" = (
-/turf/closed/wall/strata_outpost,
-/area/strata/interior/vanyard)
 "dOR" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 4
@@ -39337,7 +39334,7 @@
 	pixel_x = -18;
 	pixel_y = 10
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/vanyard)
 "eNa" = (
 /obj/structure/platform/stone/soro,
@@ -41857,10 +41854,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
-"ibE" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/strata/floor3/east,
-/area/strata/interior/vanyard)
 "ibH" = (
 /obj/item/trash/pistachios{
 	pixel_x = 5;
@@ -42511,7 +42504,7 @@
 	dir = 4
 	},
 /turf/open/floor/strata/orange_cover,
-/area/strata/interior/vanyard)
+/area/strata/exterior/marsh/spring_marshes)
 "iQt" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -42869,7 +42862,7 @@
 "jmy" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/strata/orange_cover,
-/area/strata/interior/vanyard)
+/area/strata/exterior/marsh/spring_marshes)
 "jmH" = (
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/strata/floor3/east,
@@ -43001,7 +42994,7 @@
 /area/strata/interior/out_of_bounds)
 "jvl" = (
 /obj/structure/sign/safety/synth_storage,
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/vanyard)
 "jvU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -49587,7 +49580,7 @@
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/vanyard)
 "scb" = (
 /obj/structure/closet/bodybag/tarp,
@@ -49892,8 +49885,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/admin3)
 "ssE" = (
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata/orange_cover,
-/area/strata/interior/vanyard)
+/area/strata/exterior/marsh/spring_marshes)
 "stb" = (
 /obj/structure/platform_decoration/stone/soro/east,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -66338,17 +66332,17 @@ bgd
 aXW
 aaY
 aaY
-bcX
-dOO
+gfZ
+gfZ
 ssE
 iQi
-ssE
+lPj
 jmy
-dOO
+rOB
 eMZ
 unE
 rOB
-dOO
+rOB
 hxj
 aUG
 blJ
@@ -66519,10 +66513,10 @@ baT
 oeT
 bFv
 eBr
-dOO
+rOB
 qTV
 qKx
-ibE
+vtl
 sbW
 hxj
 aNs
@@ -66698,7 +66692,7 @@ jvl
 ajl
 opg
 xJb
-dOO
+rOB
 fbq
 aNs
 aNs
@@ -66872,8 +66866,8 @@ aaY
 rOB
 rjn
 khh
-vtl
-dOO
+aau
+rOB
 boI
 bpw
 blJ

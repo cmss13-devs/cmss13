@@ -39,6 +39,7 @@
 // This should be programmed to do stuff once there's an acid damage caste
 /datum/moba_item/rare/corrosive_acid
 	name = "Corrosive Acid"
+	description = "<br><b>Deep Burns</b><br>Dealing acid damage to a target causes them to take acid damage equal to 2.5% of their max HP every 1 second for 3 seconds."
 	icon_state = "red"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3.125
 	unique = TRUE
@@ -57,6 +58,7 @@
 /datum/moba_item/rare/corrosive_acid/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()
 	RegisterSignal(xeno, COMSIG_ATOM_FIRED_PROJECTILE_HIT, PROC_REF(on_acid_hit))
+	// If we find a way to do melee acid damage this'll need to be updated
 
 /datum/moba_item/rare/corrosive_acid/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
 	. = ..()
@@ -65,7 +67,8 @@
 /datum/moba_item/rare/corrosive_acid/proc/on_acid_hit(datum/source, mob/living/hit, obj/projectile/shot)
 	SIGNAL_HANDLER
 
-	return
+	if((shot.ammo.flags_ammo_behavior|shot.projectile_override_flags) & AMMO_ACIDIC)
+		hit.apply_status_effect(/datum/status_effect/corroding)
 
 
 /datum/moba_item/rare/mageslayer

@@ -116,6 +116,10 @@
 	name = "distress_groundside_xeno"
 	icon_state = "spawn_distress_xeno"
 
+/obj/effect/landmark/ert_spawns/groundside_army
+	name = "distress_groundside_army"
+	icon_state = "spawn_distress_wo"
+
 /obj/effect/landmark/monkey_spawn
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"

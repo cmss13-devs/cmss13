@@ -562,6 +562,7 @@
 #include "code\datums\emergency_calls\tank_crew.dm"
 #include "code\datums\emergency_calls\upp.dm"
 #include "code\datums\emergency_calls\upp_commando.dm"
+#include "code\datums\emergency_calls\us_army.dm"
 #include "code\datums\emergency_calls\whiskey_outpost.dm"
 #include "code\datums\emergency_calls\xeno_cultists.dm"
 #include "code\datums\emergency_calls\xenos.dm"

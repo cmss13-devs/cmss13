@@ -61,6 +61,9 @@
 /obj/effect/landmark/lv624/fog_blocker/short
 	time_to_dispel = 15 MINUTES
 
+/obj/effect/landmark/lv624/fog_blocker/long
+	time_to_dispel = 24 HOURS
+
 /obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
 	. = ..()
 
@@ -141,7 +144,7 @@
 
 // Tyrargo Lore Messages
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Sisters. A great battles rages across this world, a world slathered in hosts for our taking! However, these hosts fight back with great ferocity. I have directed your sub-hive to this area, you will create a mighty hive here to cover our western flank whilst another sub-hive overtakes a stronghold filled with thousands!\n\nIn order to aid you, I have dispatched a legion of disposable drones ahead of you, they are far less intelligent than you, but will suffice in waylaying any hostile hosts until you have secured yourselves.", "Queen Mother", "Queen Mother"), 15 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(xeno_announcement), "Sisters. A great battles rages across this world, a world slathered in hosts for our taking! However, these hosts fight back with great ferocity. I have directed your sub-hive to this area, you will create a mighty hive here to cover our western flank whilst another sub-hive overtakes a stronghold filled with thousands!\n\nIn order to aid you, I have dispatched a legion of disposable drones ahead of you, they are far less intelligent than you, but will suffice in waylaying any hostile hosts until you have secured yourselves.", "Queen Mother", "Queen Mother"), 20 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer, this is the Tyrango Museum civilian evacuation site. We are under assault by a XX-121 cluster, but we are holding our own.\n\nWe have heavy XX-121 waves inbound from the north-east and are under heavy suppression, our evacuation craft are pinned by long range boiler strikes and the western city exits are too dangerous to move towards with ground based evacuation vehicles, we’re requesting you secure the western approach so you can suppress the enemy forces to allow civilian evacuation, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 25 MINUTES)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "Almayer. We’re seeing increased XX-121 activity at the Tyrango evac site. Additional strains are inbound from the north.\n\nEnemy Boiler’s have moved close enough to suppress our air support, we’re re-orienting the Longstreet tanks to cover our flanks. Requesting immediate suppression of enemy forces near our location via the western city entrance, over. ", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 40 MINUTES)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(marine_announcement), "All elements, more XX-121 clusters are encroaching from our east. We’re under heavy attack from all quarters and have lost half of our Longstreet tank support to Crushers.\n\nWe’ve exhausted our HEAP munitions and have had to switch to soft-point munitions. We can’t take this for much longer, requesting urgent support from Almayer forces, over.", "Tyrargo Civilian Evac, 1st Air Cav Headquarters", 'sound/AI/commandreport.ogg'), 60 MINUTES)
@@ -516,7 +519,7 @@
 /datum/game_mode/colonialmarines/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
-	if(ROUND_TIME < 10 MINUTES)
+	if(ROUND_TIME < 30 SECONDS)
 		return
 	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
@@ -534,6 +537,7 @@
 			SSticker.roundend_check_paused = TRUE
 			round_finished = MODE_INFESTATION_M_MAJOR //Humans destroyed the xenomorphs.
 			ares_conclude()
+			SSticker.mode.get_specific_call(/datum/emergency_call/us_army) //
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)
 		round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.

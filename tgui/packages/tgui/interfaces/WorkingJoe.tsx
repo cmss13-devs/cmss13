@@ -263,7 +263,7 @@ const MainMenu = (props) => {
         )}
       </Section>
       {local_access_level >= 4 && (
-        <APOLLO_ACCESS_JOESection>
+        <Section>
           <h1 style={{ textAlign: 'center' }}>Core Security Protocols</h1>
           <Stack>
             <Stack.Item grow>

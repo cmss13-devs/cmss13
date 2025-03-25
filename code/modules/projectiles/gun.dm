@@ -754,11 +754,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/blast_gun_durability(amount = 1) //for more static use, such as explosive power
 	var/blastmsg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	var/gun_blown = pick("is damaged by the blast!", "is plinked by the blast!", "cracks as the explosion engulfs it!", "cracks into fragments by the blast!", "malfunctions from the blast!", "is ruined by the blast!")
 	if(amount > 149 && gun_durability <= GUN_DURABILITY_BROKEN && !explo_proof) //we dont want weak explosions to delete the gun e.g. grenades
 		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [blastmsg]")))
 		qdel(src)
 	else
 		gun_durability = max(gun_durability - (amount / 5), GUN_DURABILITY_BROKEN)
+		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [gun_blown]")))
 	update_gun_durability()
 	check_worn_out()
 

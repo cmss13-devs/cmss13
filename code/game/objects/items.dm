@@ -205,12 +205,10 @@
 
 /obj/item/ex_act(severity, explosion_direction)
 	var/splode = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
-	var/gun_blown = pick("is damaged by the blast!", "is obliterated by the blast!", "cracks as the explosion engulfs it!", "cracks into fragments by the blast!", "malfunctions from the blast!", "is ruined by the blast!")
 	explosion_throw(severity, explosion_direction)
 	var/obj/item/weapon/gun/gun_blast = src
 	if(istype(gun_blast))
 		gun_blast.blast_gun_durability(severity) // exploded guns should be handled through gun.dm
-		visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [gun_blown]")))
 	else
 		switch(severity)
 			if(0 to EXPLOSION_THRESHOLD_LOW)

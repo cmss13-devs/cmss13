@@ -164,6 +164,8 @@
 
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
+	/// Priorities of slots that this items will go through, preferred_storage still overrides this if it checks out
+	var/list/storage_slot_priorities
 
 /obj/item/Initialize(mapload, ...)
 	. = ..()

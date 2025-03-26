@@ -25,6 +25,7 @@
 	var/ignite_sound = 'sound/weapons/handling/flamer_ignition.ogg'
 	var/extinguish_sound = 'sound/weapons/handling/flamer_ignition.ogg'
 
+	storage_slot_priorities = PRIMARY_WEAPON_SLOT_PRIORITY
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 15

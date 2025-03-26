@@ -396,6 +396,34 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 		WEAR_IN_BACK\
 	)
 
+#define PRIMARY_WEAPON_SLOT_PRIORITY list( \
+		WEAR_J_STORE,\
+		WEAR_IN_J_STORE,\
+		WEAR_BACK,\
+		WEAR_ID,\
+		WEAR_BODY,\
+		WEAR_JACKET,\
+		WEAR_HEAD,\
+		WEAR_FEET,\
+		WEAR_IN_SHOES,\
+		WEAR_FACE,\
+		WEAR_HANDS,\
+		WEAR_L_EAR,\
+		WEAR_R_EAR,\
+		WEAR_EYES,\
+		WEAR_IN_BELT,\
+		WEAR_IN_SCABBARD,\
+		WEAR_WAIST,\
+		WEAR_IN_L_STORE,\
+		WEAR_IN_R_STORE,\
+		WEAR_IN_ACCESSORY,\
+		WEAR_IN_JACKET,\
+		WEAR_IN_HELMET,\
+		WEAR_L_STORE,\
+		WEAR_R_STORE,\
+		WEAR_IN_BACK\
+	)
+
 //=================================================
 
 // bitflags for clothing parts

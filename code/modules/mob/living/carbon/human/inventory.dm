@@ -8,7 +8,7 @@
 		if(!I)
 			to_chat(H, SPAN_NOTICE("You are not holding anything to equip."))
 			return
-		if(!H.equip_to_appropriate_slot(I, 0))
+		if(!H.equip_to_appropriate_slot(I, 0, I.storage_slot_priorities ? I.storage_slot_priorities : DEFAULT_SLOT_PRIORITY))
 			to_chat(H, SPAN_DANGER("You are unable to equip that."))
 
 /mob/living/carbon/human/proc/equip_in_one_of_slots(obj/item/W, list/slots, del_on_fail = 1)

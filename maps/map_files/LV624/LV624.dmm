@@ -814,6 +814,9 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
+"adq" = (
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -833,6 +836,10 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/obj/structure/prop/tower,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -17287,10 +17294,6 @@
 /obj/item/clothing/mask/gas,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
-"pZV" = (
-/obj/structure/prop/tower,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "qae" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1
@@ -17372,9 +17375,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
-"qhY" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "qit" = (
 /obj/item/prop/alien/hugger{
 	pixel_x = -20;
@@ -46107,11 +46107,11 @@ aaW
 aaq
 aaw
 aaw
-qhY
-qhY
-qhY
-qhY
-qhY
+adq
+adq
+adq
+adq
+adq
 aaw
 aaw
 aaw
@@ -46335,11 +46335,11 @@ aaw
 aaw
 aaw
 aaw
-qhY
-qhY
-qhY
-qhY
-qhY
+adq
+adq
+adq
+adq
+adq
 aaw
 aaw
 aaw
@@ -46563,11 +46563,11 @@ aaw
 aaw
 aaw
 aaw
-qhY
-qhY
-pZV
-qhY
-qhY
+adq
+adq
+adv
+adq
+adq
 aaw
 aaw
 aaw
@@ -46791,11 +46791,11 @@ aaw
 aaw
 aaw
 aaw
-qhY
-qhY
-qhY
-qhY
-qhY
+adq
+adq
+adq
+adq
+adq
 aaw
 aaw
 aaw
@@ -47019,11 +47019,11 @@ aaw
 aaw
 aaw
 aaw
-qhY
-qhY
-qhY
-qhY
-qhY
+adq
+adq
+adq
+adq
+adq
 aaw
 aaw
 aaw

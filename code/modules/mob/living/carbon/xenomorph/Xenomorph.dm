@@ -120,6 +120,7 @@
 	var/next_grace_time = 0
 
 	var/evasion = 0   // RNG "Armor"
+	var/slash_evasion = 0
 
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"

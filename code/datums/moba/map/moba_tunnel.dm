@@ -32,10 +32,10 @@
 		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
-	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY * 1.5
+	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 
 	if(M.mob_size >= MOB_SIZE_BIG)
-		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY * 0.75
+		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY * 0.5
 		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into [src]."),
 			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else

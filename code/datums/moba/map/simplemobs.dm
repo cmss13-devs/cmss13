@@ -148,12 +148,7 @@
 	. = ..()
 	var/mob/living/L = .
 	if(istype(L))
-		var/datum/status_effect/stacking/bleed/bleed = L.has_status_effect(/datum/status_effect/stacking/bleed)
-		if(!bleed)
-			bleed = L.apply_status_effect(/datum/status_effect/stacking/bleed, 1)
-		else
-			bleed.add_stacks(1)
-
+		L.apply_status_effect(/datum/status_effect/bleed)
 // Here be bosses
 
 /mob/living/simple_animal/hostile/megacarp //zonenote look into bounds

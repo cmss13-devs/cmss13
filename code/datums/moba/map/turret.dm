@@ -20,7 +20,7 @@
 	anchored = TRUE
 	density = TRUE
 	can_block_movement = TRUE
-	layer = ABOVE_XENO_LAYER
+	layer = BELOW_MOB_LAYER
 	health = 2000
 	bound_height = 96
 	bound_width = 64

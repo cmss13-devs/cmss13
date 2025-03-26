@@ -201,7 +201,7 @@
 	if(savefile_version < 31) // Increment the savefile version
 		var/pref_toggles
 		S["toggle_prefs"] >> pref_toggles
-		pref_toggles &= ~TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Disable it by default for new saves
+		pref_toggles |= ~TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
 		S["toggle_prefs"] << pref_toggles
 
 	if(savefile_version < 32)

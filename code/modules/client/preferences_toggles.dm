@@ -382,13 +382,13 @@
 		to_chat(src,SPAN_BOLDNOTICE( "Click-dragging now blocks clicks from going through."))
 	prefs.save_preferences()
 
-/// Toggles whether activating marine leader orders will be spoken or not, default is no
+/// Toggles whether activating marine leader orders will be spoken or not, on by default
 /client/proc/toggle_leadership_spoken_orders()
-	prefs.toggle_prefs ^= TOGGLE_LEADERSHIP_SPOKEN_ORDERS
+	prefs.toggle_prefs |= TOGGLE_LEADERSHIP_SPOKEN_ORDERS
 	if(prefs.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
-		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will now be verbally spoken."))
-	else
 		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will no longer be verbally spoken."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will now be verbally spoken."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.

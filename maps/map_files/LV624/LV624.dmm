@@ -837,8 +837,7 @@
 	},
 /area/lv624/lazarus/crashed_ship_containers)
 "adv" = (
-/obj/structure/prop/tower,
-/turf/open/floor/bot/north,
+/turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
@@ -852,13 +851,14 @@
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
 "adz" = (
-/turf/open/floor/asteroidplating,
+/turf/open/floor,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
 "adB" = (
-/turf/open/floor,
+/obj/structure/prop/tower,
+/turf/open/floor/bot/north,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adC" = (
 /obj/structure/surface/rack,
@@ -46126,8 +46126,8 @@ aaw
 aaw
 adq
 adq
-adz
-adz
+adv
+adv
 adq
 aaw
 aaw
@@ -46353,10 +46353,10 @@ aaw
 aaw
 aaw
 adG
-adB
 adz
-adB
+adv
 adz
+adv
 aaw
 aaw
 aaw
@@ -46581,10 +46581,10 @@ aaw
 aaw
 aaw
 adK
-adB
-adv
+adz
 adB
 adz
+adv
 aaw
 aaw
 aaw
@@ -46809,9 +46809,9 @@ aaw
 aaw
 aaw
 adL
-adB
-adB
-adB
+adz
+adz
+adz
 adq
 aaw
 aaw
@@ -47038,9 +47038,9 @@ aaw
 aaw
 adK
 adG
-adB
-adB
 adz
+adz
+adv
 aaw
 aaw
 aaw

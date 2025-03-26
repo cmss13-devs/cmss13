@@ -137,6 +137,7 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 
 	return ..()
@@ -357,6 +358,84 @@
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+
+/datum/game_mode/proc/ares_command_check()
+	var/role_in_charge
+	var/mob/living/carbon/human/person_in_charge
+	var/update_id = FALSE
+	var/doesnotneedheadset = FALSE
+	var/announce_addendum
+
+
+	var/datum/job/command/auxiliary_officer/aso_job = GLOB.RoleAuthority.roles_for_mode[JOB_AUXILIARY_OFFICER]
+	var/datum/job/command/warrant/cmp_job = GLOB.RoleAuthority.roles_for_mode[JOB_CHIEF_POLICE]
+	var/datum/job/civilian/professor/cmo_job = GLOB.RoleAuthority.roles_for_mode[JOB_CMO]
+	var/datum/job/command/pilot/dropship_pilot/dp_job = GLOB.RoleAuthority.roles_for_mode[JOB_DROPSHIP_PILOT]
+	var/datum/job/command/pilot/cas_pilot/gs_job = GLOB.RoleAuthority.roles_for_mode[JOB_CAS_PILOT]
+	var/datum/job/logistics/engineering/ce_job = GLOB.RoleAuthority.roles_for_mode[JOB_CHIEF_ENGINEER]
+	var/datum/squad/intel_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/intel]
+	var/list/intel_officers = intel_squad.marines_list
+
+	//Basically this follows the list of command staff in order of CoC,
+	//then if the role lacks senior command access it gives the person that access
+
+	if(GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO])
+		return
+	//If we have a CO or XO, we're good no need to announce anything.
+
+	else if(aso_job.active_auxiliary_officer)
+		role_in_charge = JOB_AUXILIARY_OFFICER
+		person_in_charge = aso_job.active_auxiliary_officer
+		doesnotneedheadset = TRUE
+	else if(cmp_job.active_cmp)
+		role_in_charge = JOB_CHIEF_POLICE
+		person_in_charge = cmp_job.active_cmp
+	else if(cmo_job.active_cmo)
+		role_in_charge = JOB_CMO
+		person_in_charge = cmo_job.active_cmo
+	else if(GLOB.marine_leaders[JOB_SO])
+		update_id = TRUE
+		role_in_charge = JOB_SO
+		person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
+		doesnotneedheadset = TRUE
+	else if(ce_job.active_chief_engineer)
+		update_id = TRUE
+		role_in_charge = JOB_CHIEF_ENGINEER
+		person_in_charge = ce_job.active_chief_engineer
+	else if(dp_job.active_dropship_pilot)
+		update_id = TRUE
+		role_in_charge = JOB_DROPSHIP_PILOT
+		person_in_charge = dp_job.active_dropship_pilot
+	else if(gs_job.active_cas_pilot)
+		update_id = TRUE
+		role_in_charge = JOB_CAS_PILOT
+		person_in_charge = gs_job.active_cas_pilot
+	else if(intel_officers)
+		update_id = TRUE
+		role_in_charge = JOB_INTEL
+		person_in_charge = pick(intel_officers)
+		message_admins(intel_officers)
+	// if you have no one up to this point you are cooked and CIC literally dosent matter
+
+	if(!role_in_charge)
+		return
+
+	if(!doesnotneedheadset)
+		announce_addendum += "\nA Command headset key is availible in the CIC Command Tablet cabinet."
+
+	//adding permssions to the newly desinated commanders headset
+	if(update_id)
+		var/obj/item/card/id/card = person_in_charge.get_idcard()
+		var/list/access = card.access
+		access.Add(ACCESS_MARINE_SENIOR)
+		announce_addendum += "\nSenior Command access added to ID."
+
+
+	//does an announcement to the crew about the commander & alerts admins to that change for logs.
+	shipwide_ai_announcement("Due to the absence of command staff, commander authority now falls to [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
+	message_admins("[key_name(person_in_charge, 1)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
+	return
+
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")

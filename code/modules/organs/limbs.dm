@@ -897,6 +897,7 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_l_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
+				owner.lip_style = null
 				owner.update_hair()
 				if(owner.species)
 					owner.species.handle_head_loss(owner)
@@ -973,9 +974,6 @@ This function completely restores a damaged organ to perfect condition.
 			// Checks if the mob can feel pain or if they have at least oxycodone level of painkiller
 			if(body_part != BODY_FLAG_HEAD && owner.pain.feels_pain && owner.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
 				INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), pick("pain", "scream"))
-
-			if(body_part == BODY_FLAG_HEAD)
-				owner.lip_style = null
 
 			if(organ)
 				//Throw organs around

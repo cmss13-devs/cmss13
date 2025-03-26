@@ -1,0 +1,4 @@
+author: "Zonespace27"
+delete-after: True
+changes:
+  - bugfix: "You can no longer bypass storage locks by using a disposal bin."

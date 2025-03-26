@@ -1787,7 +1787,6 @@
 #include "code\modules\cm_tech\implements\czsp.dm"
 #include "code\modules\cm_tech\implements\engi_czsp.dm"
 #include "code\modules\cm_tech\implements\implants.dm"
-#include "code\modules\cm_tech\implements\medical_czsp.dm"
 #include "code\modules\cm_tech\implements\railgun.dm"
 #include "code\modules\cm_tech\implements\rev_jelly.dm"
 #include "code\modules\cm_tech\implements\stims.dm"

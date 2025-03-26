@@ -426,6 +426,56 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
 
+/obj/item/storage/box/czsp/first_aid
+	name = "first-aid combat support kit"
+	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "medicbox"
+	storage_slots = 3
+
+/obj/item/storage/box/czsp/first_aid/Initialize()
+	. = ..()
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/ointment(src)
+	if(prob(5))
+		new /obj/item/device/healthanalyzer(src)
+
+/obj/item/storage/box/czsp/medical
+	name = "medical combat support kit"
+	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "medicbox"
+	storage_slots = 4
+
+/obj/item/storage/box/czsp/medical/Initialize()
+	. = ..()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/device/defibrillator/upgraded(src)
+
+/obj/item/storage/box/czsp/medic_upgraded_kits
+	name = "medical upgrade kit"
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "upgradedkitbox"
+	desc = "This kit holds upgraded trauma and burn kits, for critical injuries."
+	w_class = SIZE_SMALL
+	max_w_class = SIZE_MEDIUM
+	storage_slots = 2
+
+/obj/item/storage/box/czsp/medic_upgraded_kits/full/Initialize()
+	. = ..()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+
+/obj/item/storage/box/czsp/medic_upgraded_kits/looted/Initialize()
+	. = ..()
+	if(prob(35))
+		new /obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount(src)
+	if(prob(35))
+		new /obj/item/stack/medical/advanced/ointment/upgraded/low_amount(src)
+
+
 //---------SURGICAL CASE---------
 
 

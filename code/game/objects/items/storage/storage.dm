@@ -698,7 +698,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (!isturf(T) || get_dist(src, T) > 1)
 		T = get_turf(src)
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
@@ -753,7 +753,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
 		return
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
 		return
@@ -762,14 +762,6 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out."))
 		return
-
-	var/obj/item/storage/pill_bottle/shook_bottle
-	shook_bottle = src
-	if(istype(shook_bottle))
-		if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
-				SPAN_NOTICE("You shake \the [src] but nothing falls out, it seems to have some kind of safety lid"))
-			return
 
 	storage_close(user)
 	var/obj/item/item_obj
@@ -965,6 +957,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 ///Things to be done after selecting a map skin (if any) and before adding inventory and updating icon for the first time. Most likely saving basic icon state.
 /obj/item/storage/proc/post_skin_selection()
 	return
+
+/obj/item/storage/proc/can_storage_interact(mob/user)
+	if(!allowed(user))
+		return FALSE
+	return TRUE
 
 /**Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.
 Returning 1 == directly inside the container's contents, 2 == inside something which is itself inside the container, etc.

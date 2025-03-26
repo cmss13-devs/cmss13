@@ -2555,7 +2555,6 @@
 
 /obj/item/storage/belt/gun/type47/SOF_belt
 	name = "\improper Type 47-S pistol holster rig"
-	desc = "This special black SOF UPP-designed sidearm rig can very snugly and securely fit a Type-73, NP92, or a ZHNK-72, and their magazines or speedloaders. However, it lacks versatility in stored weaponry."
 	icon_state = "korovin_black_holster"
 	item_state = "upp_belt"
 

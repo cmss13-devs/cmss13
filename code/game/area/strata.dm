@@ -222,7 +222,7 @@
 	ambience_exterior = AMBIENCE_SHIP_ALT
 
 /area/strata/interior/supply_shuttle_sof
-	name = "UPP-DS-3 'Voron'"
+	name = "UPP-DS-3 'Volk'"
 	icon_state = "outpost_engi_3"
 	ambience_exterior = AMBIENCE_SHIP_ALT
 

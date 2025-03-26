@@ -329,6 +329,14 @@
 /turf/closed/shuttle/upp_sof/transparent
 	opacity = FALSE
 
+/turf/closed/shuttle/upp_sof_alt
+	name = "\improper UPP-DS-3 'Volk'"
+	icon = 'icons/turf/upp_sof_alt_dropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof_alt/transparent
+	opacity = FALSE
+
 /turf/closed/shuttle/dropship3
 	name = "\improper Saipan"
 	icon = 'icons/turf/dropship3.dmi'

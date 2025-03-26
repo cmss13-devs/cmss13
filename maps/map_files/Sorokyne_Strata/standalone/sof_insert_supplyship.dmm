@@ -58,7 +58,7 @@
 /turf/open/floor/plating,
 /area/strata/exterior/marsh/crash)
 "dj" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "3,12";
 	opacity = 0
 	},
@@ -69,10 +69,10 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/strata/exterior/marsh/crash)
 "eR" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "1,12"
 	},
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "1,11"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -85,7 +85,7 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/marsh/crash)
 "eZ" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "8,7"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -100,7 +100,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "fs" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "8,3"
 	},
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -122,7 +122,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "gP" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "1,1"
 	},
 /obj/structure/prop/colorable_rock/colorable{
@@ -145,7 +145,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "gR" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "7,1"
 	},
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -184,7 +184,7 @@
 /turf/open/floor/plating,
 /area/strata/exterior/marsh/crash)
 "hL" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "0,7"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -216,7 +216,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/strata/interior/supply_shuttle_sof)
 "iS" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "1,2"
 	},
 /obj/structure/prop/hybrisa/misc/fire/fire2{
@@ -229,7 +229,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/supply_shuttle_sof)
 "iT" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "7,12"
 	},
 /obj/structure/blocker/invisible_wall,
@@ -244,7 +244,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/supply_shuttle_sof)
 "iY" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "7,6"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -301,12 +301,12 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "mF" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "7,3"
 	},
 /area/strata/interior/supply_shuttle_sof)
 "mL" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "6,0"
 	},
 /obj/structure/blocker/invisible_wall,
@@ -324,7 +324,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "nf" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "0,8"
 	},
 /obj/structure/prop/hybrisa/misc/fire/fire2{
@@ -403,7 +403,7 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/marsh/crash)
 "qH" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "0,4"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -424,7 +424,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "rb" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "0,6"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -439,7 +439,7 @@
 /area/strata/exterior/marsh/crash)
 "rI" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/shuttle/upp_sof/transparent{
+/turf/closed/shuttle/upp_sof_alt/transparent{
 	icon_state = "3,13"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -453,7 +453,7 @@
 /turf/open/floor/hybrisa/metal/red_warning_floor,
 /area/strata/interior/supply_shuttle_sof)
 "sw" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "1,0"
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -475,13 +475,13 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "tc" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "8,8"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/supply_shuttle_sof)
 "ug" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "1,4"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -499,7 +499,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "vl" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "1,12"
 	},
 /obj/structure/blocker/invisible_wall,
@@ -513,19 +513,19 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "vm" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "8,4"
 	},
 /area/strata/interior/supply_shuttle_sof)
 "vB" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "6,1"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/supply_shuttle_sof)
 "vE" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "8,6"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -584,7 +584,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "zi" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "1,12"
 	},
 /obj/structure/blocker/invisible_wall,
@@ -607,7 +607,7 @@
 /turf/open/floor/plating,
 /area/strata/exterior/marsh/crash)
 "AT" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "2,1"
 	},
 /obj/structure/prop/hybrisa/misc/fire/fire2{
@@ -703,7 +703,7 @@
 /area/strata/interior/out_of_bounds)
 "ED" = (
 /obj/structure/blocker/invisible_wall,
-/turf/closed/shuttle/upp_sof/transparent{
+/turf/closed/shuttle/upp_sof_alt/transparent{
 	icon_state = "2,12"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -721,7 +721,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "Fz" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "7,4"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -765,14 +765,14 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "Gp" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "7,0"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/supply_shuttle_sof)
 "Gt" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "6,13";
 	density = 0;
 	pixel_y = -3
@@ -902,14 +902,14 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/crash)
 "Lc" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "2,0"
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/interior/supply_shuttle_sof)
 "Lq" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "2,13";
 	density = 0;
 	pixel_x = 12;
@@ -954,7 +954,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "Nx" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "7,2"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -970,7 +970,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "NA" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "8,3"
 	},
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -1036,7 +1036,7 @@
 /area/strata/exterior/marsh/crash)
 "QE" = (
 /obj/structure/platform/stone/soro/west,
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	density = 0
 	},
 /turf/open/auto_turf/strata_grass/layer1,
@@ -1045,7 +1045,7 @@
 /obj/structure/shuttle/part/upp_sof{
 	icon_state = "2,11"
 	},
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "6,2"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -1058,7 +1058,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "TE" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "1,11"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -1122,7 +1122,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
 "Ud" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "8,0";
 	density = 0
 	},
@@ -1188,7 +1188,7 @@
 /obj/structure/shuttle/part/upp_sof{
 	icon_state = "2,11"
 	},
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "2,2"
 	},
 /area/strata/interior/supply_shuttle_sof)
@@ -1238,7 +1238,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/crash)
 "XR" = (
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "5,12";
 	opacity = 0
 	},
@@ -1284,10 +1284,10 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/crash)
 "Zy" = (
-/obj/structure/shuttle/part/upp_sof/transparent{
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
 	icon_state = "7,12"
 	},
-/turf/closed/shuttle/upp_sof{
+/turf/closed/shuttle/upp_sof_alt{
 	icon_state = "7,3"
 	},
 /area/strata/interior/supply_shuttle_sof)

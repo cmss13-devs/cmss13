@@ -6,12 +6,12 @@
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job</a> is to maintain your department and keep your technicians in check. You are responsible for engineering, power, ordnance, and the orbital cannon."
 	var/mob/living/carbon/human/active_chief_engineer
 
-/datum/job/logistics/engineering/chief_engineer/generate_entry_conditions(mob/living/chief_engineer, whitelist_status)
+/datum/job/logistics/engineering/generate_entry_conditions(mob/living/chief_engineer, whitelist_status)
 	. = ..()
 	active_chief_engineer = chief_engineer
 	RegisterSignal(chief_engineer, COMSIG_PARENT_QDELETING, PROC_REF(cleanup_active_chief_engineer))
 
-/datum/job/logistics/engineering/chief_engineer/proc/cleanup_active_chief_engineer(mob/chief_engineer)
+/datum/job/logistics/engineering/proc/cleanup_active_chief_engineer(mob/chief_engineer)
 	SIGNAL_HANDLER
 	active_chief_engineer = null
 

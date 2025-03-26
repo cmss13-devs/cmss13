@@ -515,6 +515,12 @@
 	},
 /turf/open/floor/prison/kitchen,
 /area/whiskey_outpost/inside/cic)
+"bI" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/whiskey_outpost/inside/caves/deep)
+"bJ" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/whiskey_outpost/inside/caves/deep)
 "bK" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/jungle,
@@ -526,12 +532,22 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
+"bM" = (
+/obj/effect/landmark/queen_spawn,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/whiskey_outpost/inside/caves/deep)
 "bN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
+"bO" = (
+/obj/effect/timed_event/scrapeaway{
+	time = 70
+	},
+/turf/closed/wall/mineral/bone_resin,
+/area/whiskey_outpost/inside/caves/deep)
 "bP" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4255,9 +4271,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/pillbox/three)
-"sd" = (
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
-/area/whiskey_outpost/inside/caves/deep)
 "se" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Generator Hatch"
@@ -7228,9 +7241,6 @@
 "Go" = (
 /turf/open/floor/plating,
 /area/whiskey_outpost/outside/lane/four_north)
-"Gq" = (
-/turf/closed/wall/mineral/bone_resin,
-/area/whiskey_outpost/inside/caves/deep)
 "Gr" = (
 /obj/structure/barricade/sandbags/wired,
 /turf/open/gm/dirt,
@@ -8612,12 +8622,6 @@
 /obj/structure/machinery/m56d_hmg/mg_turret,
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/south)
-"Og" = (
-/obj/effect/timed_event/scrapeaway{
-	time = 70
-	},
-/turf/closed/wall/mineral/bone_resin,
-/area/whiskey_outpost/inside/caves/deep)
 "Oi" = (
 /turf/open/gm/coast/west,
 /area/whiskey_outpost/outside/lane/four_north)
@@ -9175,10 +9179,6 @@
 /obj/structure/cargo_container/grant/rightmid,
 /turf/open/jungle,
 /area/whiskey_outpost/outside/south)
-"RE" = (
-/obj/effect/landmark/queen_spawn,
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
-/area/whiskey_outpost/inside/caves/deep)
 "RG" = (
 /turf/open/gm/grass/gbcorner/north_east,
 /area/whiskey_outpost/outside/north/northwest)
@@ -23175,7 +23175,7 @@ Zf
 Zf
 Zf
 Zf
-Gq
+bI
 "}
 (62,1,1) = {"
 mT
@@ -23376,8 +23376,8 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
+bI
+bI
 "}
 (63,1,1) = {"
 mT
@@ -23578,8 +23578,8 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
+bI
+bI
 "}
 (64,1,1) = {"
 mT
@@ -23779,9 +23779,9 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
+bI
+bI
+bI
 "}
 (65,1,1) = {"
 mT
@@ -23980,10 +23980,10 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
 "}
 (66,1,1) = {"
 mT
@@ -24181,11 +24181,11 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
 "}
 (67,1,1) = {"
 mT
@@ -24382,12 +24382,12 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
+bI
 "}
 (68,1,1) = {"
 mT
@@ -24584,12 +24584,12 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
+bI
 "}
 (69,1,1) = {"
 mT
@@ -24779,19 +24779,19 @@ WM
 WM
 mw
 mw
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
 "}
 (70,1,1) = {"
 mT
@@ -24983,17 +24983,17 @@ ce
 ce
 ce
 ce
-Og
-Og
-Og
-Og
-sd
-sd
-sd
-sd
-sd
-sd
-Gq
+bO
+bO
+bO
+bO
+bJ
+bJ
+bJ
+bJ
+bJ
+bJ
+bI
 "}
 (71,1,1) = {"
 mT
@@ -25184,18 +25184,18 @@ ce
 ce
 ce
 ce
-Og
-Og
-Og
-Og
-Og
-sd
-sd
-sd
-RE
-sd
-sd
-Gq
+bO
+bO
+bO
+bO
+bO
+bJ
+bJ
+bJ
+bM
+bJ
+bJ
+bI
 "}
 (72,1,1) = {"
 mT
@@ -25387,17 +25387,17 @@ ce
 ce
 ce
 ce
-Og
-Og
-Og
-Og
-sd
-sd
-sd
-sd
-sd
-sd
-Gq
+bO
+bO
+bO
+bO
+bJ
+bJ
+bJ
+bJ
+bJ
+bJ
+bI
 "}
 (73,1,1) = {"
 mT
@@ -25588,18 +25588,18 @@ ce
 ce
 ce
 ce
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-sd
-sd
-sd
-sd
-sd
-Gq
+bI
+bI
+bI
+bI
+bI
+bI
+bJ
+bJ
+bJ
+bJ
+bJ
+bI
 "}
 (74,1,1) = {"
 mT
@@ -25790,18 +25790,18 @@ WM
 Mb
 Mb
 Mb
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
 "}
 (75,1,1) = {"
 mT
@@ -25998,12 +25998,12 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
+bI
 "}
 (76,1,1) = {"
 mT
@@ -26200,12 +26200,12 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
+bI
 "}
 (77,1,1) = {"
 mT
@@ -26403,11 +26403,11 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
+bI
 "}
 (78,1,1) = {"
 mT
@@ -26606,10 +26606,10 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
 "}
 (79,1,1) = {"
 mT
@@ -26808,10 +26808,10 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
-Gq
+bI
+bI
+bI
+bI
 "}
 (80,1,1) = {"
 mT
@@ -27011,9 +27011,9 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
-Gq
+bI
+bI
+bI
 "}
 (81,1,1) = {"
 mT
@@ -27214,8 +27214,8 @@ Zf
 Zf
 Zf
 Zf
-Gq
-Gq
+bI
+bI
 "}
 (82,1,1) = {"
 mT

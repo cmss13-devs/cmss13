@@ -82,10 +82,6 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
-	if(hardcore)
-		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
-		return
-
 	if(fortify)
 		to_chat(src, SPAN_WARNING("We cannot rest while fortified!"))
 		return

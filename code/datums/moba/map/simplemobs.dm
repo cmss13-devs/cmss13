@@ -293,15 +293,13 @@
 	health = 7500
 
 	harm_intent_damage = 10
-	melee_damage_lower = 10
-	melee_damage_upper = 10
+	melee_damage_lower = 55
+	melee_damage_upper = 55
 	attacktext = "viscerates"
 	attack_sound = 'sound/weapons/alien_tail_attack.ogg'
 
 	break_stuff_probability = 15
 	faction = "reaper"
-
-	var/true_damage = 35
 
 /mob/living/simple_animal/hostile/reaper/death(datum/cause_data/cause_data, gibbed, deathmessage)
 	. = ..()

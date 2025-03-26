@@ -370,7 +370,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 
-//-Underground Dorms
+//-Deep Jungle Dorms
 
 /area/strata/interior/underground_dorms
 	name = "Do not use."
@@ -380,34 +380,34 @@
 	ceiling_muffle = FALSE
 
 /area/strata/interior/underground_dorms/sec1
-	name = "Underground Security Dorm #1"
+	name = "Deep Jungle - Security Dorm #1"
 	unoviable_timer = FALSE
 
 /area/strata/interior/underground_dorms/sec2
-	name = "Underground Security Dorm #2"
+	name = "Deep Jungle - Security Dorm #2"
 	unoviable_timer = FALSE
 
 /area/strata/interior/underground_dorms/admin1
-	name = "Underground General Staff Dorm #1"
+	name = "Deep Jungle - General Staff Dorm #1"
 
 /area/strata/interior/underground_dorms/admin2
-	name = "Underground General Staff Dorm #2"
+	name = "Deep Jungle - General Staff Dorm #2"
 	unoviable_timer = FALSE
 
 /area/strata/interior/underground_dorms/admin3
-	name = "Underground General Staff Dorm #3"
+	name = "Deep Jungle - General Staff Dorm #3"
 	unoviable_timer = FALSE
 
 /area/strata/interior/underground_dorms/admin4
-	name = "Underground General Staff Dorm #4"
+	name = "Deep Jungle - General Staff Dorm #4"
 	unoviable_timer = FALSE
 
 /area/strata/interior/underground_dorms/med1
-	name = "Underground Medical Dorm #1"
+	name = "Deep Jungle - Medical Dorm #1"
 	requires_power = 1
 
 /area/strata/interior/underground_dorms/med2
-	name = "Underground Medical Dorm #2"
+	name = "Deep Jungle - Medical Dorm #2"
 	requires_power = TRUE
 
 /area/strata/interior/underground_dorms/botany
@@ -417,7 +417,7 @@
 //-Platform
 
 /area/strata/exterior/outpost_platform
-	name = "Underground Platform"
+	name = "Deep Jungle - Platform"
 	icon_state = "ug_jung_1"
 	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
 
@@ -444,12 +444,12 @@
 	icon_state = "ug_jung_5"
 
 /area/strata/exterior/deep_jungle/platform
-	name = "Deep Jungle - South of Underground Platform"
+	name = "Deep Jungle - South of the Platform"
 	icon_state = "ug_jung_4"
 	unoviable_timer = FALSE
 
 /area/strata/exterior/deep_jungle/platform_east
-	name = "Deep Jungle - East of Underground Platform"
+	name = "Deep Jungle - East of the Platform"
 	icon_state = "ug_jung_0"
 	unoviable_timer = FALSE
 	ceiling = CEILING_NONE

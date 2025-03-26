@@ -2,6 +2,7 @@
 	id = "antiheal"
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 5 SECONDS
+	alert_type = null
 	var/healing_reduction = 0.4
 	var/static/icon/antiheal_overlay
 

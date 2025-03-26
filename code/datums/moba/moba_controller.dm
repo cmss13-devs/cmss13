@@ -71,9 +71,9 @@
 	var/hivebot_spawn_time = 7 MINUTES
 
 	COOLDOWN_DECLARE(reaper_boss_spawn_cooldown)
-	var/reaper_initial_spawn_time = 1 MINUTES
-	var/reaper_boss_spawned = FALSE
-	var/reaper_spawn_time = 1 MINUTES
+	var/reaper_initial_spawn_time = 25 MINUTES
+	var/reaper_spawn_time = 6 MINUTES
+	var/reaper_alive = FALSE
 
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
@@ -261,8 +261,14 @@
 		hivebot_boss_spawned = TRUE
 		spawn_boss(/datum/moba_boss/hivebot)
 
-	if(COOLDOWN_FINISHED(src, reaper_boss_spawn_cooldown) && !reaper_boss_spawned)
-		reaper_boss_spawned = TRUE
+	if(COOLDOWN_FINISHED(src, reaper_boss_spawn_cooldown) && !reaper_alive)
+		reaper_alive = TRUE
+		var/mob/living/simple_animal/hostile/hivebot/bot = locate() in spawned_bosses
+		if(bot)
+			qdel(spawned_bosses[bot])
+			spawned_bosses -= bot
+			qdel(bot) // If you didn't kill the hivebot in like 15m idk what to tell you
+
 		spawn_boss(/datum/moba_boss/reaper)
 
 	game_duration += SSmoba.wait

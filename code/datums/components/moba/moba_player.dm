@@ -7,15 +7,16 @@
 
 	// Hack-ish thing that's due for a redo down the line
 	var/static/list/moba_status_effect_dict = list(
-		/datum/status_effect/empowered = "Empowered",
-		/datum/status_effect/acid_neutralized = "Acid Neutralized",
-		/datum/status_effect/stacking/furious_haste = "Furious Haste",
-		/datum/status_effect/stacking/rended_armor = "Rended Armor",
-		/datum/status_effect/antiheal = "Healing Disrupted",
-		/datum/status_effect/stacking/bleed = "Bleeding",
-		/datum/status_effect/acid_soaked = "Acid Soaked",
-		/datum/status_effect/stacking/spit_detonation = "Acid Detonation",
-		/datum/status_effect/corroding = "Corroding",
+		/datum/status_effect/empowered = SPAN_GREEN("Empowered"),
+		/datum/status_effect/acid_neutralized = SPAN_RED("Acid Neutralized"),
+		/datum/status_effect/stacking/furious_haste = SPAN_GREEN("Furious Haste"),
+		/datum/status_effect/stacking/rended_armor = SPAN_RED("Rended Armor"),
+		/datum/status_effect/antiheal = SPAN_RED("Healing Disrupted"),
+		/datum/status_effect/stacking/bleed = SPAN_RED("Bleeding"),
+		/datum/status_effect/acid_soaked = SPAN_RED("Acid Soaked"),
+		/datum/status_effect/stacking/spit_detonation = SPAN_RED("Acid Detonation"),
+		/datum/status_effect/corroding = SPAN_RED("Corroding"),
+		/datum/status_effect/reapers_call = SPAN_GREEN("Reaper's Call"),
 	)
 
 	var/static/list/level_up_thresholds = list(

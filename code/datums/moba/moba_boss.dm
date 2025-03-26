@@ -47,11 +47,10 @@
 /datum/moba_boss/reaper
 	boss_name = "reaper"
 	boss_type = /mob/living/simple_animal/hostile/reaper
-	spawn_text = "The reaper has spawned at " // placeholder
-	right_spawn = TRUE
+	spawn_text = "The reaper has spawned at <b>Left Side Gateway</b>!"
 	boon_type = /datum/moba_boon/reaper
 
 /datum/moba_boss/reaper/on_boss_kill(mob/living/simple_animal/hostile/dead_boss, datum/moba_player/killer, datum/hive_status/killing_hive, datum/moba_controller/controller)
 	. = ..()
-	controller.reaper_boss_spawned = FALSE
+	controller.reaper_alive = FALSE
 	COOLDOWN_START(controller, reaper_boss_spawn_cooldown, controller.reaper_spawn_time)

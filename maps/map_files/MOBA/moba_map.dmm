@@ -12,6 +12,10 @@
 /obj/effect/alien/resin/moba_shop,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/north,
 /area/misc/moba/base)
+"ad" = (
+/obj/effect/landmark/moba_hive_core,
+/turf/open/floor/hybrisa/engineership/engineer_floor4,
+/area/misc/moba/base)
 "ae" = (
 /obj/effect/landmark/moba_hive_core_turret,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/east,
@@ -5884,10 +5888,6 @@
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
-"sb" = (
-/obj/effect/landmark/moba_hive_core,
-/turf/open/floor/hybrisa/engineership/engineer_floor3,
-/area/misc/moba/base)
 "sc" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/moba_unslashinator,
@@ -9708,8 +9708,8 @@ ra
 ra
 nH
 nH
-sb
-nH
+nI
+ad
 nH
 lr
 lr
@@ -17859,8 +17859,8 @@ kv
 kv
 lo
 kv
-af
 kv
+af
 lo
 kv
 kv

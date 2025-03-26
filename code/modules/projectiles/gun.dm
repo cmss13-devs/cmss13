@@ -687,7 +687,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 
 	if(prob(durability_loss + bullet_duraloss)) // probability durability loss dependent on weapon value, rngesus woe
-		set_gun_durability(gun_durability - bullet_duramage) // decrement durability based on bullet durability damage each time the gun is fired
+		set_gun_durability(gun_durability - 0) // decrement durability based on bullet durability damage each time the gun is fired
 		update_gun_durability()
 		check_worn_out(user)
 

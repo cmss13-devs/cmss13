@@ -224,7 +224,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 		return in_chamber
 
 /obj/item/weapon/gun/lever_action/unique_action(mob/user)
-	work_lever(user)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		work_lever(user)
 
 /obj/item/weapon/gun/lever_action/ready_in_chamber()
 	return

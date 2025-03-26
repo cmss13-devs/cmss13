@@ -4,7 +4,7 @@
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando
 	name = "\improper W-Y Commando helmet"
 	desc = "A standard enclosed helmet utilized by Weyland-Yutani Commandos."
-	icon_state = "pmc_helmet_elite"
+	icon_state = "commando_helmet"
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
@@ -18,12 +18,12 @@
 	anti_hug = 6
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando/sg
-	icon_state = "pmc_helmet_elite_sg"
+	icon_state = "commando_helmet_sg"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando/leader
 	name = "\improper W-Y Commando Leader helmet"
 	desc = "A standard enclosed helmet utilized by Weyland-Yutani Commandos. This one is worn by a high ranking corporate officer."
-	icon_state = "pmc_helmet_elite_leader"
+	icon_state = "commando_helmet_leader"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/apesuit
 	name = "\improper M5X Apesuit helmet"

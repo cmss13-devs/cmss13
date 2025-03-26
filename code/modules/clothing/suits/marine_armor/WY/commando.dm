@@ -1,8 +1,8 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/commando
 	name = "\improper MY7 pattern Commando armor"
 	desc = "A modification of the W-Y PMC armor patterns. Designed for elite corporate mercenaries in mind."
-	icon_state = "pmc_armor_elite"
-	item_state_slots = list(WEAR_JACKET = "pmc_armor_elite")
+	icon_state = "commando_armor"
+	item_state_slots = list(WEAR_JACKET = "commando_armor")
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_VERYHIGH
@@ -16,13 +16,13 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/commando/leader
 	name = "\improper MY7 pattern Commando leader armor"
 	desc = "A modification of the W-Y PMC armor patterns. Designed for elite corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."
-	icon_state = "pmc_armor_elite_leader"
-	item_state_slots = list(WEAR_JACKET = "pmc_armor_elite_leader")
+	icon_state = "commando_armor_leader"
+	item_state_slots = list(WEAR_JACKET = "commando_armor_leader")
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc/commando
 	name = "\improper MY7 pattern Commando gunner armor"
 	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
-	icon_state = "pmc_armor_elite_sg"
+	icon_state = "commando_armor_sg"
 	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN|SMARTGUN_HARNESS
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
@@ -31,7 +31,7 @@
 	armor_bomb = CLOTHING_ARMOR_HIGHPLUS
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 	storage_slots = 4
-	item_state_slots = list(WEAR_JACKET = "pmc_armor_elite_sg")
+	item_state_slots = list(WEAR_JACKET = "commando_armor_sg")
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/apesuit
 	name = "\improper M5X Apesuit"

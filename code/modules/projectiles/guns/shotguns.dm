@@ -584,9 +584,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	else . += "It's open with [current_mag.current_rounds] shell\s loaded."
 
 /obj/item/weapon/gun/shotgun/double/unique_action(mob/user)
-	if(flags_item & WIELDED)
-		unwield(user)
-	open_chamber(user)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		if(flags_item & WIELDED)
+			unwield(user)
+		open_chamber(user)
 
 /obj/item/weapon/gun/shotgun/double/check_chamber_position()
 	if(!current_mag)

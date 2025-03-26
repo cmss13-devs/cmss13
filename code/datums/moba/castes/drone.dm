@@ -210,7 +210,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(possible_healing_target == src)
+	if(possible_healing_target == owner)
 		to_chat(src, SPAN_XENOWARNING("We can't heal ourselves."))
 		return
 

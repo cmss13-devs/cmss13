@@ -164,6 +164,7 @@
 	name = "USCM Chief Engineer (CE)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
+
 	idtype = /obj/item/card/id/silver
 	access = list(
 		ACCESS_MARINE_CE,

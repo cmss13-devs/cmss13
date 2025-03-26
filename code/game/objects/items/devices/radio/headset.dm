@@ -471,6 +471,7 @@
 	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
 	misc_tracking = TRUE
 
+
 	inbuilt_tracking_options = list(
 		"Landing Zone" = TRACKER_LZ,
 		"Alpha SL" = TRACKER_ASL,

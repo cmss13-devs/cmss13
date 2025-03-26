@@ -621,6 +621,10 @@
 	if(isstorage(A.loc) || X.contains(A) || istype(A, /atom/movable/screen))
 		return FALSE
 
+	if(SSticker?.mode?.hardcore)
+		to_chat(X, SPAN_XENOWARNING("The hive is too inexperienced to design constructions."))
+		return FALSE
+
 	//Make sure construction is unrestricted
 	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))

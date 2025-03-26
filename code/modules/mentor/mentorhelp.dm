@@ -359,48 +359,48 @@
 	message_handlers(msg, responder, author)
 
 /client/verb/mentor_view_open_tickets()
-    set name = "View Open Tickets"
-    set category = "Admin.Mentor"
-    if(!check_rights(R_MENTOR))
-        return
+	set name = "View Open Tickets"
+	set category = "Admin.Mentor"
+	if(!check_rights(R_MENTOR))
+		return
 
-    var/html = "<html><head>"
-    html += "<meta charset='UTF-8'>"
-    html += "<style>"
-    html += "body { background-color: #2b2b2b; color: #e0e0e0; font-family: Arial, sans-serif; }"
-    html += "h2 { color: #ffb02e; }"
-    html += "table { width: 100%; border-collapse: collapse; }"
-    html += "th, td { padding: 8px; text-align: left; border: 1px solid #444; }"
-    html += "th { background-color: #3a3a3a; color: #ffb02e; }"
-    html += "tr:nth-child(even) { background-color: #333; }"
-    html += "tr:nth-child(odd) { background-color: #2b2b2b; }"
-    html += "a { color: #ffb02e; text-decoration: none; }"
-    html += "a:hover { text-decoration: underline; }"
-    html += "i { color: #888; }"
-    html += ".auto-response-btn { color: #ff8800; margin-left: 10px; }"  // Стили для кнопки AutoResponse
-    html += ".auto-response-btn:hover { color: #cc6600; text-decoration: underline; }"
-    html += "</style></head><body>"
-    html += "<h2>Open MentorHelp Tickets</h2>"
-    html += "<table>"
-    html += "<tr><th>Sender</th><th>Mentor</th><th>Status</th><th>Actions</th></tr>"
-    var/open_count = 0
-    for(var/datum/mentorhelp/MH in GLOB.mentorhelp_tickets)
-        if(MH.open)
-            open_count++
-            html += "<tr>"
-            html += "<td>[MH.author_key]</td>"
-            html += "<td>[MH.mentor ? MH.mentor.key : "None"]</td>"
-            html += "<td>[MH.open ? "Open" : "Closed"]"
-            if(MH.open)
-                html += " <a href='byond://?src=\ref[MH];action=autorespond' class='auto-response-btn'>AutoResponse</a>"
-            html += "</td>"
-            html += "<td><a href='byond://?src=\ref[MH];action=open_chat'>Message</a></td>"
-            html += "</tr>"
-    html += "</table>"
-    html += "<i>Total open tickets: [open_count]</i>"
-    html += "</body></html>"
+	var/html = "<html><head>"
+	html += "<meta charset='UTF-8'>"
+	html += "<style>"
+	html += "body { background-color: #2b2b2b; color: #e0e0e0; font-family: Arial, sans-serif; }"
+	html += "h2 { color: #ffb02e; }"
+	html += "table { width: 100%; border-collapse: collapse; }"
+	html += "th, td { padding: 8px; text-align: left; border: 1px solid #444; }"
+	html += "th { background-color: #3a3a3a; color: #ffb02e; }"
+	html += "tr:nth-child(even) { background-color: #333; }"
+	html += "tr:nth-child(odd) { background-color: #2b2b2b; }"
+	html += "a { color: #ffb02e; text-decoration: none; }"
+	html += "a:hover { text-decoration: underline; }"
+	html += "i { color: #888; }"
+	html += ".auto-response-btn { color: #ff8800; margin-left: 10px; }"  // Стили для кнопки AutoResponse
+	html += ".auto-response-btn:hover { color: #cc6600; text-decoration: underline; }"
+	html += "</style></head><body>"
+	html += "<h2>Open MentorHelp Tickets</h2>"
+	html += "<table>"
+	html += "<tr><th>Sender</th><th>Mentor</th><th>Status</th><th>Actions</th></tr>"
+	var/open_count = 0
+	for(var/datum/mentorhelp/MH in GLOB.mentorhelp_tickets)
+		if(MH.open)
+			open_count++
+			html += "<tr>"
+			html += "<td>[MH.author_key]</td>"
+			html += "<td>[MH.mentor ? MH.mentor.key : "None"]</td>"
+			html += "<td>[MH.open ? "Open" : "Closed"]"
+			if(MH.open)
+				html += " <a href='byond://?src=\ref[MH];action=autorespond' class='auto-response-btn'>AutoResponse</a>"
+			html += "</td>"
+			html += "<td><a href='byond://?src=\ref[MH];action=open_chat'>Message</a></td>"
+			html += "</tr>"
+	html += "</table>"
+	html += "<i>Total open tickets: [open_count]</i>"
+	html += "</body></html>"
 
-    usr << browse(html, "window=mentoropentickets;size=600x500")
+	usr << browse(html, "window=mentoropentickets;size=600x500")
 
 /datum/mentor/proc/show_open_tickets(mob/user)
 

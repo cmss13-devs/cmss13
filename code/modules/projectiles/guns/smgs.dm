@@ -25,8 +25,6 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 	)
-	storage_slot_priorities = PRIMARY_WEAPON_SLOT_PRIORITY
-
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG

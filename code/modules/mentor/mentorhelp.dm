@@ -377,7 +377,7 @@
 	html += "a { color: #ffb02e; text-decoration: none; }"
 	html += "a:hover { text-decoration: underline; }"
 	html += "i { color: #888; }"
-	html += ".auto-response-btn { color: #ff8800; margin-left: 10px; }"  // Стили для кнопки AutoResponse
+	html += ".auto-response-btn { color: #ff8800; margin-left: 10px; }"
 	html += ".auto-response-btn:hover { color: #cc6600; text-decoration: underline; }"
 	html += "</style></head><body>"
 	html += "<h2>Open MentorHelp Tickets</h2>"
@@ -391,10 +391,11 @@
 			html += "<td>[MH.author_key]</td>"
 			html += "<td>[MH.mentor ? MH.mentor.key : "None"]</td>"
 			html += "<td>[MH.open ? "Open" : "Closed"]"
+			html += "<td>"
+			html += "<a href='byond://?src=\ref[MH];action=open_chat'>Message</a>"
 			if(MH.open)
 				html += " <a href='byond://?src=\ref[MH];action=autorespond' class='auto-response-btn'>AutoResponse</a>"
 			html += "</td>"
-			html += "<td><a href='byond://?src=\ref[MH];action=open_chat'>Message</a></td>"
 			html += "</tr>"
 	html += "</table>"
 	html += "<i>Total open tickets: [open_count]</i>"

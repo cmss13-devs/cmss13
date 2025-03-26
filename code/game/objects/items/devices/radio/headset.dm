@@ -206,6 +206,7 @@
 	return
 
 
+
 /obj/item/device/radio/headset/proc/recalculateChannels()
 	for(var/ch_name in channels)
 		SSradio.remove_object(src, GLOB.radiochannels[ch_name])
@@ -468,6 +469,17 @@
 	initial_keys = list(/obj/item/device/encryptionkey/ce)
 	volume = RADIO_VOLUME_CRITICAL
 	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
+	misc_tracking = TRUE
+
+	inbuilt_tracking_options = list(
+		"Landing Zone" = TRACKER_LZ,
+		"Alpha SL" = TRACKER_ASL,
+		"Bravo SL" = TRACKER_BSL,
+		"Charlie SL" = TRACKER_CSL,
+		"Delta SL" = TRACKER_DSL,
+		"Echo SL" = TRACKER_ESL,
+		"Foxtrot SL" = TRACKER_FSL,
+	)
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"

@@ -3,6 +3,7 @@
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 2 SECONDS
 	tick_interval = 1 SECONDS
+	alert_type = null
 	var/damage_per_sec = 10
 
 /datum/status_effect/acid_soaked/on_creation(mob/living/new_owner, dps = 10)

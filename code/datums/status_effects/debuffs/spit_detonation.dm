@@ -6,6 +6,7 @@
 	stack_threshold = 3
 	tick_interval = 1 SECONDS
 	max_stacks = 3
+	alert_type = null
 	var/explosion_damage = 130
 
 /datum/status_effect/stacking/spit_detonation/on_creation(mob/living/new_owner, stacks_to_apply, explo_damage = 130)

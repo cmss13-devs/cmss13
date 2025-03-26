@@ -3,6 +3,7 @@
 	status_type = STATUS_EFFECT_REFRESH
 	duration = 3 SECONDS
 	tick_interval = 1 SECONDS
+	alert_type = null
 	var/max_health_percent = 0.025
 
 /datum/status_effect/corroding/on_creation(mob/living/new_owner, mhp = 0.025)

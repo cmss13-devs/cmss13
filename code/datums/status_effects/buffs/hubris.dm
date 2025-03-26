@@ -2,6 +2,7 @@
 	id = "hubris"
 	status_type = STATUS_EFFECT_REPLACE
 	duration = 90 SECONDS
+	alert_type = null
 	var/damage_to_add = 10
 
 /datum/status_effect/hubris/on_creation(mob/living/new_owner, damage_to_add = 10)

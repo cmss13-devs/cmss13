@@ -19,9 +19,9 @@
 /datum/moba_boon/megacarp/on_friendly_spawn(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/player_comp)
 	player_comp.armor_multiplier += 0.1
 
+
 /datum/moba_boon/hivebot
 	name = "Hivebot Blade"
-	desc = "Players and minions deal N bonus true damage to structures."
 
 /datum/moba_boon/hivebot/New(datum/moba_controller/controller)
 	. = ..()
@@ -35,3 +35,19 @@
 
 /datum/moba_boon/hivebot/on_friendly_spawn(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/player_comp)
 	ADD_TRAIT(xeno, TRAIT_MOBA_STRUCTURESHRED, TRAIT_SOURCE_INHERENT)
+
+
+/datum/moba_boon/reaper
+	name = "Reaper's Call"
+
+/datum/moba_boon/reaper/New(datum/moba_controller/controller)
+	. = ..()
+	desc = "Reducing an enemy to [MOBA_REAPER_BOON_EXECUTE_THRESHOLD * 100]% health executes them. This effect lasts [(MOBA_REAPER_BOON_DURATION * 0.1) / 60] minutes or until death."
+
+/datum/moba_boon/reaper/on_grant(datum/moba_controller/controller, datum/hive_status/claimed_hive)
+	. = ..()
+	for(var/datum/moba_player/player as anything in controller.players)
+		if(player.get_tied_xeno()?.hivenumber != claimed_hive.hivenumber)
+			continue
+
+		player.get_tied_xeno().apply_status_effect(/datum/status_effect/reapers_call)

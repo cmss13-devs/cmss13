@@ -206,7 +206,6 @@
 	return
 
 
-
 /obj/item/device/radio/headset/proc/recalculateChannels()
 	for(var/ch_name in channels)
 		SSradio.remove_object(src, GLOB.radiochannels[ch_name])

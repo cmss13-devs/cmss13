@@ -199,3 +199,10 @@
 /area/whiskey_outpost/inside/caves/caverns/east
 	name = "\improper Eastern Caverns"
 	icon_state = "caveseast"
+
+/area/whiskey_outpost/inside/caves/deep
+	name = "\improper Deep Caves"
+	icon_state = "caves"
+	ceiling = CEILING_DEEP_UNDERGROUND
+	unoviable_timer = FALSE
+	flags_area = AREA_NOTUNNEL

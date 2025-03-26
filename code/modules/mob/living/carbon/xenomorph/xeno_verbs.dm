@@ -7,7 +7,7 @@
 	if(!hive)
 		return
 
-	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
+	if((!hive.living_xeno_queen) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 

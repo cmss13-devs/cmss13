@@ -1,22 +1,20 @@
-/datum/status_effect/stacking/bleed
+/datum/status_effect/bleed
 	id = "bleed"
-	stack_decay = 10
-	delay_before_decay = 5 SECONDS
-	consumed_on_threshold = FALSE
+	duration = 5 SECONDS
 	tick_interval = 1 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
 	alert_type = null
-	max_stacks = 10
-	var/damage_per_stack_per_sec = 5
+	var/damage_per_sec = 10
 
-/datum/status_effect/stacking/bleed/on_creation(mob/living/new_owner, stacks_to_apply, dps = 5)
+/datum/status_effect/bleed/on_creation(mob/living/new_owner, dps = 10)
 	. = ..()
 	if(.)
-		damage_per_stack_per_sec = dps
+		damage_per_sec = dps
 
-/datum/status_effect/stacking/bleed/tick(seconds_between_ticks)
+/datum/status_effect/bleed/tick(seconds_between_ticks)
 	. = ..()
 	if(!owner)
 		return
 
 	var/mob/living/living_owner = owner
-	living_owner.apply_armoured_damage(stacks * damage_per_stack_per_sec, ARMOR_MELEE, BRUTE)
+	living_owner.apply_armoured_damage(damage_per_sec, ARMOR_MELEE, BRUTE)

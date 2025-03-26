@@ -67,7 +67,9 @@
 	else
 		SSmoba.get_moba_controller(map_id).use_team2_ward()
 		new /obj/effect/alien/resin/construction/ward(targetted_atom, GLOB.hive_datum[XENO_HIVE_MOBA_RIGHT], map_id, TRUE)
-	owner.visible_message(SPAN_XENONOTICE("[owner] plants a [name]."), SPAN_XENONOTICE("We plant a [name]."))
+	owner.visible_message(SPAN_XENONOTICE("[owner] plants a [/obj/effect/alien/resin/construction/ward::name]."), SPAN_XENONOTICE("We plant a [/obj/effect/alien/resin/construction/ward::name]."))
+
+	playsound(owner.loc, "alien_resin_build", 25)
 
 	apply_cooldown()
 	return ..()

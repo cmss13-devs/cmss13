@@ -15,12 +15,14 @@
 /datum/action/level_up_ability
 	name = "Level Up Ability"
 	action_icon_state = "upgrade"
-
-/datum/action/level_up_ability/New(map_id)
-	. = ..()
+	var/input_open = FALSE
 
 /datum/action/level_up_ability/action_activate()
 	. = ..()
+
+	if(input_open)
+		return
+
 	var/list/player_list = list()
 	SEND_SIGNAL(owner, COMSIG_MOBA_GET_PLAYER_DATUM, player_list)
 	if(!length(player_list))
@@ -48,7 +50,9 @@
 		to_chat(owner, SPAN_XENOWARNING("You have no abilities to level up!"))
 		return
 
+	input_open = TRUE
 	var/output = tgui_input_list(owner, "Level up which ability?", "Level Up", input_dict)
+	input_open = FALSE
 	if(!output)
 		return
 

@@ -276,6 +276,8 @@
 				playsound(loc, M.slash_sound, 25, 1)
 			apply_damage(damage, BRUTE)
 
+			SEND_SIGNAL(M, COMSIG_MOB_ALIEN_ATTACK, src, damage)
+
 		if(INTENT_DISARM)
 
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)

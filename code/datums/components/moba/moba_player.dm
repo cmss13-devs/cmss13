@@ -12,7 +12,7 @@
 		/datum/status_effect/stacking/furious_haste = SPAN_GREEN("Furious Haste"),
 		/datum/status_effect/stacking/rended_armor = SPAN_RED("Rended Armor"),
 		/datum/status_effect/antiheal = SPAN_RED("Healing Disrupted"),
-		/datum/status_effect/stacking/bleed = SPAN_RED("Bleeding"),
+		/datum/status_effect/bleed = SPAN_RED("Bleeding"),
 		/datum/status_effect/acid_soaked = SPAN_RED("Acid Soaked"),
 		/datum/status_effect/stacking/spit_detonation = SPAN_RED("Acid Detonation"),
 		/datum/status_effect/corroding = SPAN_RED("Corroding"),

@@ -13,6 +13,14 @@
 	flags_marine_armor = null
 	actions_types = null
 
+/obj/item/clothing/suit/storage/marine/veteran/pmc/commando/damaged //survivor variant
+	name = "damaged MY7 pattern Commando armor"
+	desc = "A modification of the W-Y PMC armor patterns. Designed for elite corporate mercenaries in mind. This one has a lot of scratches and acid damage."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	storage_slots = 3
+
 /obj/item/clothing/suit/storage/marine/veteran/pmc/commando/leader
 	name = "\improper MY7 pattern Commando leader armor"
 	desc = "A modification of the W-Y PMC armor patterns. Designed for elite corporate mercenaries in mind. This particular suit looks like it belongs to a high-ranking officer."

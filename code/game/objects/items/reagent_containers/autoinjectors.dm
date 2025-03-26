@@ -277,6 +277,11 @@
 	else
 		maptext = ""
 
+/obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty
+	name = "empty ultrazine autoinjector"
+	volume = 0
+	uses_left = 0
+
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
 	name = "white autoinjector"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."

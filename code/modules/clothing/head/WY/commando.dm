@@ -13,9 +13,16 @@
 	armor_internaldamage = CLOTHING_ARMOR_VERYHIGH
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
-	flags_marine_helmet = HELMET_DAMAGE_OVERLAY|HELMET_GARB_OVERLAY
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	anti_hug = 6
+
+/obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando/damaged
+	name = "damaged W-Y Commando helmet"
+	desc = "A standard enclosed helmet utilized by Weyland-Yutani Commandos. Has been through a lot of wear and tear."
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	anti_hug = 0
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/commando/sg
 	icon_state = "commando_helmet_sg"

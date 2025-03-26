@@ -36,10 +36,17 @@
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 2
 
-/obj/item/storage/box/czsp/medic_upgraded_kits/Initialize()
+/obj/item/storage/box/czsp/medic_upgraded_kits/full/Initialize()
 	. = ..()
 	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+
+/obj/item/storage/box/czsp/medic_upgraded_kits/looted/Initialize()
+	. = ..()
+	if(prob(35))
+		new /obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount(src)
+	if(prob(35))
+		new /obj/item/stack/medical/advanced/ointment/upgraded/low_amount(src)
 
 /obj/item/stack/medical/advanced/ointment/upgraded
 	name = "upgraded burn kit"
@@ -56,6 +63,11 @@
 	. = ..()
 	heal_burn = initial(heal_burn) * 3 // 3x stronger
 
+/obj/item/stack/medical/advanced/ointment/upgraded/low_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(1,4)
+	update_icon()
+
 /obj/item/stack/medical/advanced/bruise_pack/upgraded
 	name = "upgraded trauma kit"
 	singular_name = "upgraded trauma kit"
@@ -71,6 +83,11 @@
 	. = ..()
 	heal_brute = initial(heal_brute) * 3 // 3x stronger
 
+/obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(1,4)
+	update_icon()
+
 /obj/item/stack/medical/splint/nano
 	name = "nano splints"
 	singular_name = "nano splint"
@@ -84,19 +101,13 @@
 
 	stack_id = "nano splint"
 
+/obj/item/stack/medical/splint/nano/low_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(1,2)
+	update_icon()
+
 /obj/item/stack/medical/splint/nano/research
 	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and dont look cheap, better use them sparingly."
-
-/obj/item/device/defibrillator/upgraded
-	name = "upgraded emergency defibrillator"
-	icon_state = "adv_defib"
-	item_state = "adv_defib"
-	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant, not damaging the heart."
-
-	blocked_by_suit = FALSE
-	min_heart_damage_dealt = 0
-	max_heart_damage_dealt = 0
-	damage_heal_threshold = 35
 
 /obj/item/ammo_magazine/internal/pillgun
 	name = "pill tube"

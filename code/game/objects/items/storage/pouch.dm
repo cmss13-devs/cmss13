@@ -214,6 +214,10 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
+/obj/item/storage/pouch/firstaid/full/wy
+	name = "W-Y first-aid pouch"
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full/alternate
 	desc = "Contains a first-aid autoinjector, bandages, ointment, and splints."
 
@@ -416,6 +420,9 @@
 		/obj/item/ammo_magazine/m60,
 		/obj/item/ammo_magazine/handful,
 	)
+
+/obj/item/storage/pouch/magazine/wy
+	icon_state = "wy_ammo_mag_small"
 
 /obj/item/storage/pouch/magazine/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -727,7 +734,6 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/dermaline(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
 
 /obj/item/storage/pouch/medical/socmed/not_op/fill_preset_inventory()

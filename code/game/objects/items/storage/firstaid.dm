@@ -270,14 +270,14 @@
 		/obj/item/tool/weldingtool,
 		/obj/item/device/defibrillator,
 		/obj/item/tool/surgery/scalpel/manager,
-		/obj/item/storage/box/czsp/medic_upgraded_kits,
+		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
 		/obj/item/storage/surgical_case,
 		/obj/item/roller,
 	)
 
 /obj/item/storage/firstaid/whiteout/medical/fill_preset_inventory()
-	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
-	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/storage/surgical_case/elite/whiteout(src)
 	new /obj/item/storage/syringe_case/whiteout(src)
@@ -285,13 +285,21 @@
 	new /obj/item/roller/surgical(src)
 
 /obj/item/storage/firstaid/whiteout/medical/commando/fill_preset_inventory()
-	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
-	new /obj/item/storage/box/czsp/medic_upgraded_kits(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/storage/syringe_case/commando(src)
 	new /obj/item/storage/surgical_case/elite/commando(src)
 	new /obj/item/roller/surgical(src)
+
+/obj/item/storage/firstaid/whiteout/medical/commando/looted/fill_preset_inventory() //for commando insert
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/looted(src)
+	new /obj/item/storage/box/czsp/medic_upgraded_kits/looted(src)
+	new /obj/item/stack/medical/splint/nano/low_amount(src)
+	new /obj/item/storage/syringe_case/commando/looted(src)
+	new /obj/item/storage/surgical_case/elite/commando/looted(src)
+	new /obj/item/roller(src)
 
 /obj/item/storage/firstaid/rad
 	name = "radiation first-aid kit"
@@ -411,6 +419,13 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
 
+/obj/item/storage/syringe_case/commando/looted //for surv insert
+
+/obj/item/storage/syringe_case/commando/looted/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
+
 //---------SURGICAL CASE---------
 
 
@@ -466,6 +481,16 @@
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
+/obj/item/storage/surgical_case/elite/commando/looted/fill_preset_inventory()
+	if(prob(65))
+		new /obj/item/tool/surgery/scalpel(src)
+	if(prob(65))
+		new /obj/item/tool/surgery/hemostat(src)
+	if(prob(65))
+		new /obj/item/tool/surgery/retractor(src)
 	new /obj/item/tool/surgery/surgical_line(src)
 	new /obj/item/tool/surgery/synthgraft(src)
 

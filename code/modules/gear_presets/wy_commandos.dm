@@ -122,6 +122,31 @@
 	skills = /datum/skills/pmc/commando/leader
 	paygrades = list(PAY_SHORT_WY_COMLD = JOB_PLAYTIME_TIER_0)
 
+/datum/equipment_preset/pmc/commando/leader/load_name(mob/living/carbon/human/new_human, randomise) //reference to Theo Stern from A:DD
+	new_human.gender = MALE
+	var/datum/preferences/human = new()
+	human.randomize_appearance(new_human)
+	var/random_name
+
+	new_human.h_style = "Cpl. Dietrich"
+	new_human.f_style = "Soulful Selleck"
+	random_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
+
+	new_human.change_real_name(new_human, random_name)
+	new_human.age = rand(30,40)
+	new_human.r_facial = 0
+	new_human.g_facial = 0
+	new_human.b_facial = 0
+	new_human.r_hair = 0
+	new_human.g_hair = 0
+	new_human.b_hair = 0
+	new_human.r_eyes = 42
+	new_human.g_eyes = 32
+	new_human.b_eyes = 17
+	new_human.r_skin = 254
+	new_human.g_skin = 54
+	new_human.b_skin = 31
+
 /datum/equipment_preset/pmc/commando/leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/leader/commando/leader, WEAR_BODY)
@@ -147,8 +172,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/extended, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/commando, WEAR_J_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/council/full, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/commando/full, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_L_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton, WEAR_IN_BACK)

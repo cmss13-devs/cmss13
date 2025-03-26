@@ -1088,6 +1088,12 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/pmc)
 	maximum_keys = 5
 
+/obj/item/device/radio/headset/distress/pmc/commando/hvh
+	name = "W-Y commando headset"
+	desc = "A special headset used by unidentified operatives. Channels are as follows: :y - Corporate #pmc - PMC."
+	icon_state = "pmc_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/pmc)
+
 /obj/item/device/radio/headset/distress/pmc/commando/leader
 	name = "W-Y commando leader headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/pmc/command)

@@ -1858,6 +1858,8 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/item/stack/sheet/glass/small_stack,
+/obj/item/stack/cable_coil,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "hB" = (
@@ -3563,6 +3565,9 @@
 /area/whiskey_outpost/inside/bunker)
 "pa" = (
 /obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/prison/cell_stripe/west,
@@ -8131,6 +8136,8 @@
 /obj/item/device/camera_film,
 /obj/item/storage/photo_album,
 /obj/item/device/binoculars,
+/obj/item/device/broadcasting,
+/obj/item/device/fax_backpack,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "Lx" = (
@@ -9838,6 +9845,8 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
+/obj/structure/computerframe,
+/obj/item/circuitboard/computer/cameras/tv,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
 "Vk" = (

@@ -101,6 +101,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 		var/area/A = get_area(src)
 		if(hive && hive.living_xeno_queen)
 			if(!HAS_TRAIT(src, TRAIT_TEMPORARILY_MUTED))
+				if(hardcore)
+					return FALSE
 				xeno_message("Hive: [src] has <b>died</b>[A? " at [sanitize_area(A.name)]":""]! [banished ? "They were banished from the hive." : ""]", death_fontsize, hivenumber)
 
 	if(hive && IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here

@@ -77,11 +77,11 @@
 //-Caves (how are these caves?)
 
 /area/strata/exterior/shed_five_caves
-	name = "Terminal Five Topside Caves"
+	name = "Terminal Five Topside Pathway"
 	icon_state = "lzcaves"
 
 /area/strata/exterior/lz_caves
-	name = "External Mining Aerodrome Caves"
+	name = "External Mining Aerodrome Pathway"
 	linked_lz = DROPSHIP_LZ1
 	icon_state = "lzcaves"
 
@@ -136,7 +136,7 @@
 	icon_state = "garage"
 
 /area/strata/exterior/tcomms_mining_caves
-	name = "Mining Caves Relay"
+	name = "Mining Pathway Relay"
 	icon_state = "tcomms1"
 
 /area/strata/exterior/tcomms_vehicle_yard

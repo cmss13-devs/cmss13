@@ -198,6 +198,7 @@
 	ceiling = CEILING_METAL
 	block_game_interaction = TRUE
 	unique = TRUE
+	care_about_reg = FALSE
 
 	base_lighting_alpha = 255
 

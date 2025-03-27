@@ -143,6 +143,7 @@
 	if(!passing || !istype(BL) || !istype(TR))
 		return FALSE
 	for(var/i in final)
+		CHECK_TICK
 		var/turf/T = i
 		reserved_turfs |= T
 		SSmapping.unused_turfs["[T.z]"] -= T

@@ -120,7 +120,7 @@
 	..()
 	RegisterSignal(parent_xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdel))
 	RegisterSignal(parent_xeno, COMSIG_XENO_BULLET_ACT, PROC_REF(on_bullet_act))
-	RegisterSignal(parent_xeno, COMSIG_XENO_ALIEN_ATTACK, PROC_REF(on_attack))
+	RegisterSignal(parent_xeno, list(COMSIG_XENO_ALIEN_ATTACK, COMSIG_MOB_ALIEN_ATTACK), PROC_REF(on_attack))
 	RegisterSignal(parent_xeno, COMSIG_XENO_ALIEN_ATTACKED, PROC_REF(on_attacked))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_XP, PROC_REF(grant_xp))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_GOLD, PROC_REF(grant_gold))
@@ -163,6 +163,7 @@
 		TRUE,\
 	) // We refresh this because we're a level higher, so more XP on kill
 	parent_xeno.balloon_alert(parent_xeno, "Level up!", "#9723c4")
+	parent_xeno.xeno_jitter(15)
 
 /datum/component/moba_player/process(delta_time)
 	handle_effects()

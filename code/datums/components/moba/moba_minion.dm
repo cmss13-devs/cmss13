@@ -58,6 +58,9 @@
 		parent_xeno.death(create_cause_data("getting stuck"))
 		return
 
+	if(!parent_xeno.check_state())
+		return
+
 	var/turf/parent_turf = get_turf(parent_xeno)
 	if(parent_turf == last_turf)
 		ticks_since_last_move++

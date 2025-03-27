@@ -59,11 +59,12 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	var/chosen = tgui_input_list(usr, "What document do you need?", "Choose Document", available_documents)
 	var/selected = GLOB.prefab_papers[chosen].type
 	var/obj/item/paper/prefab/document = new selected
-	document.forceMove(user.loc)
-	user.put_in_hands(document)
-	to_chat(user, SPAN_NOTICE("You take [document] out of [src]."))
-	remaining_documents--
-	return TRUE
+	if(user.Adjacent(src))
+		document.forceMove(user.loc)
+		user.put_in_hands(document)
+		to_chat(user, SPAN_NOTICE("You take [document] out of [src]."))
+		remaining_documents--
+		return TRUE
 
 /obj/structure/filingcabinet/documentation/military_police
 	available_categories = list(PAPER_CATEGORY_MP)

@@ -254,6 +254,17 @@
 	roundstart = FALSE
 	locked = TRUE
 
+/datum/squad/marine/army
+	name = SQUAD_ARMY
+	equipment_color = "#349c30"
+	chat_color = "#349c30"
+	radio_freq = ARMY_FREQ
+	minimap_color = "#349c30"
+	background_icon = "background_civillian"
+
+	active = FALSE
+	roundstart = FALSE
+	locked = TRUE
 
 //############################### UPP Squads
 /datum/squad/upp

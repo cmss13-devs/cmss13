@@ -34,7 +34,7 @@
 	else if(heavies < max_heavies && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(mob.client, JOB_SQUAD_SPECIALIST))
 		heavies++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a US Army Tank Crewman!"))
-		arm_equipment(mob, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/us_army/tank, TRUE, TRUE)
 
 	else if(medics < max_medics && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(mob.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++

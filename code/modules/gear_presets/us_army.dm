@@ -1,11 +1,11 @@
 /datum/equipment_preset/us_army
-	assignment = JOB_ARMY_TROOPER
-	rank = JOB_ARMY_TROOPER
+//	assignment = JOB_ARMY_TROOPER
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
 	rank = JOB_ARMY_TROOPER
-	faction_group = list(FACTION_MARINE)
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/us_army/New()
@@ -202,3 +202,42 @@
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
+
+/datum/equipment_preset/us_army/tank
+	name = "US Army Vehicle Crewman (CRMN)"
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
+	assignment = JOB_TANK_CREW
+	rank = JOB_TANK_CREW
+	skills = /datum/skills/tank_crew
+	minimap_icon = "vc"
+	minimap_background = "background_intel"
+
+/datum/equipment_preset/us_army/tank/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/marine/officer/tanker/uniform = new()
+	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
+	var/obj/item/clothing/accessory/patch/army/patch_army = new()
+	var/obj/item/clothing/accessory/patch/army/infantry/patch_infantry = new()
+	uniform.attach_accessory(new_human,pouch)
+	uniform.attach_accessory(new_human,patch_army)
+	uniform.attach_accessory(new_human,patch_infantry)
+	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/weldpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/army/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake/orange(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech/tanker(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/heap(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/heap(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/heap(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/heap(new_human), WEAR_J_STORE)

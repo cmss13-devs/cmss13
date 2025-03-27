@@ -218,7 +218,8 @@
 	channels = list(SQUAD_SOF = TRUE, RADIO_CHANNEL_COLONY = TRUE)
 
 /obj/item/device/encryptionkey/soc/army
-	channels = list(SQUAD_SOF = TRUE, RADIO_CHANNEL_COLONY = TRUE)
+	name = "\improper Army Radio Encryption Key"
+	channels = list(SQUAD_ARMY = TRUE, RADIO_CHANNEL_COLONY = TRUE)
 
 //ERT, PMC
 

@@ -1281,7 +1281,7 @@
 	name = "US Army headset"
 	desc = "Issued exclusively to Army troopers."
 	icon_state = "soc_headset"
-	frequency = SOF_FREQ
+	frequency = ARMY_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc/army)
 	volume = RADIO_VOLUME_QUIET
 	has_hud = TRUE

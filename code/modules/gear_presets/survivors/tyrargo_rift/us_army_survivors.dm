@@ -23,6 +23,12 @@
 
 /datum/equipment_preset/survivor/army/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/army/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(new_human)
+		if(2)
+			uniform.roll_suit_sleeves(new_human)
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()
 	var/obj/item/clothing/accessory/patch/army/patch_army = new()
 	var/obj/item/clothing/accessory/patch/army/infantry/patch_infantry = new()
@@ -222,10 +228,16 @@
 	assignment = JOB_ARMY_SYN
 	rank = "Synthetic"
 	idtype = /obj/item/card/id/gold
-//	rank = JOB_ARMY_SYN
 
 /datum/equipment_preset/synth/survivor/army/load_gear(mob/living/carbon/human/preset_human)
-	preset_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/army(preset_human), WEAR_BODY)
+	var/obj/item/clothing/under/marine/army/uniform = new()
+	var/random_number = rand(1,2)
+	switch(random_number)
+		if(1)
+			uniform.roll_suit_jacket(preset_human)
+		if(2)
+			uniform.roll_suit_sleeves(preset_human)
+	preset_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch(preset_human), WEAR_ACCESSORY)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/army(preset_human), WEAR_ACCESSORY)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/army/infantry(preset_human), WEAR_ACCESSORY)

@@ -161,6 +161,7 @@
 		TRUE,\
 	) // We refresh this because we're a level higher, so more XP on kill
 	parent_xeno.balloon_alert(parent_xeno, "Level up!", "#9723c4")
+	parent_xeno.xeno_jitter(15)
 
 /datum/component/moba_player/process(delta_time)
 	handle_effects()

@@ -404,7 +404,6 @@
 	for(var/datum/moba_player/player in team1)
 		if(player.get_tied_xeno()?.hud_used)
 			player.get_tied_xeno().hud_used.locate_marker.maptext = "<span class='maptext'>Team Wards: <b>[team1_ward_count]</b>/<b>[team1_max_wards]</b></span>"
-			//zonenote maybe add timer to next
 
 /datum/moba_controller/proc/add_team1_ward(obj/effect/alien/resin/construction/ward/ward)
 	var/image/ward_icon = image('icons/obj/structures/alien/structures.dmi', get_turf(ward), "resin_ward")
@@ -431,15 +430,15 @@
 /datum/moba_controller/proc/use_team2_ward()
 	if(team2_ward_count <= team2_max_wards)
 		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
-	team1_ward_count--
+	team2_ward_count--
 	update_team2_ward_text()
 
 /datum/moba_controller/proc/regenerate_team2_ward()
 	if(team2_ward_count >= team2_max_wards)
 		return
 
-	team1_ward_count++
-	if(team1_ward_count < team1_max_wards)
+	team2_ward_count++
+	if(team2_ward_count < team2_max_wards)
 		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 	update_team2_ward_text()
 

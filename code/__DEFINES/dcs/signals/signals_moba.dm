@@ -46,5 +46,8 @@
 /// (mob/living/minion)
 #define COMSIG_MOBA_MINION_SPAWNED "moba_minion_spawned"
 
-/// (mob/living)
+/// (mob/living/attacked)
 #define COMSIG_MOB_ALIEN_ATTACK "mob_alien_attack"
+
+/// (mob/living/stunned)
+#define COMSIG_MOBA_STUN_GIVEN "moba_stun_given"

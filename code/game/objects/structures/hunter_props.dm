@@ -149,7 +149,7 @@
 // Misc
 
 /obj/structure/prop/hunter/stairs/border
-	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "border_stairs"
 	desc = null
 	density = FALSE
@@ -174,7 +174,7 @@
 	light_range = 1
 
 /obj/structure/prop/hunter/misc/feed
-	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "hunter_feed"
 	desc = null
 	anchored = TRUE
@@ -184,7 +184,7 @@
 
 /obj/structure/prop/hunter/misc/prop_armor
 	name = "ancient yautja armor"
-	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "hunter_armor_prop"
 	desc = "An ancient suit of armor. It looks incredibly old, yet most likely still functional, although it's fixed to the wall, and purely used as a ceremonial adornment."
 	anchored = TRUE
@@ -229,7 +229,7 @@
 /obj/structure/bed/chair/hunter/throne
 	name = "Throne of the Eternal Hunt"
 	desc = "A grotesquely magnificent seat, carved from the remains of the most formidable prey. Twisted spines, shattered skulls, and serrated bones form a testament to the ancient hunter’s unchallenged supremacy. The throne whispers of countless battles, its macabre elegance a reminder that only the strongest may sit upon it."
-	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "bone_throne"
 
 /obj/structure/bed/chair/hunter/throne/top
@@ -288,7 +288,7 @@
 /obj/structure/prop/hunter/trophy_display
 	name = "\improper Yautja Trophy Display Rack"
 	desc = "A trophy rack for hunters displaying their prizes."
-	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "pred_trophy_vendor_top_left"
 	layer = TABLE_LAYER
 	throwpass = TRUE

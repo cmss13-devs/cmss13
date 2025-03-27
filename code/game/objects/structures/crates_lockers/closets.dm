@@ -392,5 +392,5 @@
 	storage_capacity = 100
 
 /obj/structure/closet/yautja/big
-	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	storage_capacity = 100

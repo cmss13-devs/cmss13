@@ -148,7 +148,7 @@
 	return
 
 /obj/item/device/analyzer/plant_analyzer/yautja
-	icon = 'icons/obj/structures/props/hunter/32x32-hunter_props.dmi'
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 	icon_state = "hydro"
 	item_state = "analyzer"
 

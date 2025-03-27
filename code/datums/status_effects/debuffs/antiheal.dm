@@ -11,10 +11,11 @@
 		antiheal_overlay = icon('icons/mob/hud/hud.dmi', "antiheal")
 	return ..()
 
-/datum/status_effect/antiheal/on_creation(mob/living/new_owner, healing_reduction = 0.4)
+/datum/status_effect/antiheal/on_creation(mob/living/new_owner, healing_reduction = 0.4, duration = 5 SECONDS)
 	. = ..()
 	if(.)
 		src.healing_reduction = healing_reduction
+		src.duration = duration
 
 /datum/status_effect/antiheal/on_apply()
 	. = ..()

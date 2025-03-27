@@ -121,8 +121,10 @@ export const MobaItemStore = (props) => {
                           <br />
                           Components:
                           <br />
-                          {chosenItem.components.map((text: string) => (
-                            <Box key={text}>- {text}</Box>
+                          {chosenItem.components.map((text: string, i) => (
+                            <Box key={`${text}-${i}-${chosenItem.path}`}>
+                              - {text}
+                            </Box>
                           ))}
                         </Box>
                       ) : (

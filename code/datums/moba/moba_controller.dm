@@ -310,7 +310,8 @@
 
 /datum/moba_controller/proc/start_respawn(datum/moba_player/player_datum)
 	var/respawn_time = get_respawn_time()
-	player_datum.get_tied_xeno().play_screen_text("You have died. You will respawn in [respawn_time * 0.1] seconds.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+	if(player_datum.tied_client)
+		player_datum.get_tied_xeno().play_screen_text("You have died. You will respawn in [respawn_time * 0.1] seconds.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
 	addtimer(CALLBACK(src, PROC_REF(spawn_xeno), player_datum), respawn_time)
 
 /datum/moba_controller/proc/spawn_xeno(datum/moba_player/player_datum)

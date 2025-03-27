@@ -212,8 +212,52 @@
 
 /datum/moba_item/rare/blood_fury
 	name = "Uninhibited Fury"
-	description = "<br><b>Kill Frenzy</b><br>Killing an enemy reduces your cooldowns by N seconds or N%, whichever is larger."
+	description = "<br><b>Kill Frenzy</b><br>Killing an enemy reduces your cooldowns by N seconds or N%, whichever is better."
 	icon_state = "red"
+	gold_cost = MOBA_GOLD_PER_MINUTE * 3.25
+	unique = TRUE
+	component_items = list(
+		/datum/moba_item/uncommon/heightened_senses,
+		/datum/moba_item/uncommon/penetrating_claws,
+	)
+
+	ability_cooldown_reduction = 0.85
+	speed = -0.2
+	attack_speed = -1
+	slash_penetration = 12
+	var/second_reduction = 8 SECONDS
+	var/percent_reduction = 0.2
+
+/datum/moba_item/rare/blood_fury/New(datum/moba_player/creating_player)
+	. = ..()
+	description = "<br><b>Kill Frenzy</b><br>Killing an enemy reduces your cooldowns by [second_reduction * 0.1] seconds or [percent_reduction * 100]%, whichever is better."
+
+/datum/moba_item/rare/blood_fury/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
+	. = ..()
+	RegisterSignal(xeno, COMSIG_MOB_KILLED_MOB, PROC_REF(on_kill))
+
+/datum/moba_item/rare/blood_fury/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
+	. = ..()
+	UnregisterSignal(xeno, COMSIG_MOB_KILLED_MOB)
+
+/datum/moba_item/rare/blood_fury/proc/on_kill(mob/living/carbon/xenomorph/source, mob/killed_mob)
+	SIGNAL_HANDLER
+
+	if(!HAS_TRAIT(killed_mob, TRAIT_MOBA_PARTICIPANT))
+		return
+
+	for(var/datum/action/xeno_action/action in source.actions)
+		var/time_left = max(action.current_cooldown_start_time + action.current_cooldown_duration - world.time, 0)
+		if(!action.owner || time_left <= 0 || action.cooldown_timer_id == TIMER_ID_NULL)
+			continue
+
+		var/flat_reduction = max(time_left - second_reduction, 0)
+		var/mult_reduction = max(time_left * (1 - percent_reduction), 0)
+		var/best_time_left = min(flat_reduction, mult_reduction)
+
+		deltimer(action.cooldown_timer_id)
+		action.cooldown_timer_id = addtimer(CALLBACK(action, TYPE_PROC_REF(/datum/action/xeno_action, on_cooldown_end)), best_time_left, TIMER_UNIQUE|TIMER_STOPPABLE)
+		action.current_cooldown_duration = best_time_left
 
 /datum/moba_item/rare/hubris // Absurdly expensive "win more" item that should just win you the game if you keep up the kills
 	name = "Queen Mother's Hubris"
@@ -268,7 +312,7 @@
 
 /datum/moba_item/rare/thornmail
 	name = "Piercing Spines"
-	description = "<br><b>Spiked</b><br>When you take damage from an attack, deal 15 (+80% Armor) physical damage to whoever attacked you and apply healing disruption for N seconds."
+	description = "<br><b>Spiked</b><br>When you take damage from an attack, deal 15 (+60% Armor) physical damage to whoever attacked you and apply healing disruption for 3.5 seconds."
 	icon_state = "red"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3
 	unique = TRUE
@@ -284,6 +328,7 @@
 	health = 450
 	health_regen = 5
 	var/base_damage_to_deal = 15
+	var/antiheal_time = 3.5 SECONDS
 
 /datum/moba_item/rare/thornmail/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()
@@ -296,6 +341,6 @@
 /datum/moba_item/rare/thornmail/proc/on_attacked(mob/living/carbon/xenomorph/source, mob/living/carbon/xenomorph/attacking_xeno)
 	SIGNAL_HANDLER
 
-	var/add_amount = floor((source.armor_deflection + source.armor_deflection_buff - source.armor_deflection_debuff) * source.get_armor_integrity_percentage() * 0.8) //zonenote i'm sus on this proc getting me the right number so check later
+	var/add_amount = floor((source.armor_deflection + source.armor_deflection_buff - source.armor_deflection_debuff) * floor(source.armor_integrity / source.armor_integrity_max) * 0.6) //zonenote i'm sus on this proc getting me the right number so check later
 	attacking_xeno.apply_armoured_damage(base_damage_to_deal + add_amount, ARMOR_MELEE, BRUTE)
-
+	attacking_xeno.apply_status_effect(/datum/status_effect/antiheal, /datum/status_effect/antiheal::healing_reduction, antiheal_time)

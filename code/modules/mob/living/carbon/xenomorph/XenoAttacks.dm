@@ -203,7 +203,7 @@
 				playsound(loc, slash_sound, 25, 1)
 			var/list/armorpen_list = list()
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GET_PHYS_PENETRATION, armorpen_list)
-			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = (HAS_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT) ? 1 : XVX_ARMOR_EFFECTIVEMULT), penetration = (armorpen_list[1] || 0))
+			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = (HAS_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT) ? 1 : XVX_ARMOR_EFFECTIVEMULT), penetration = (length(armorpen_list) ? armorpen_list[1] : 0))
 
 			if(xeno.behavior_delegate)
 				var/datum/behavior_delegate/MD = xeno.behavior_delegate
@@ -211,7 +211,7 @@
 				MD.melee_attack_additional_effects_self()
 
 			SEND_SIGNAL(xeno, COMSIG_XENO_ALIEN_ATTACK, src, damage)
-			SEND_SIGNAL(src, COMSIG_XENO_ALIEN_ATTACKED, src)
+			SEND_SIGNAL(src, COMSIG_XENO_ALIEN_ATTACKED, xeno)
 
 		if(INTENT_DISARM)
 			xeno.animation_attack_on(src)

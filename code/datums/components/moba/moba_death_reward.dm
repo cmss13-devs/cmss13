@@ -59,6 +59,9 @@
 			if(parent_level != -1)
 				var/list/level_list = list()
 				SEND_SIGNAL(xeno, COMSIG_MOBA_GET_LEVEL, level_list)
+				if(!length(level_list))
+					continue
+
 				var/level_diff = parent_level - level_list[1]
 				var/xp_to_award = floor(xp / length(awarding_xenos))
 				if(level_diff >= MOBA_LEVEL_DIFF_XP_FALLOFF_THRESHOLD)

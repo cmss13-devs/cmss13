@@ -64,13 +64,13 @@
 	. = ..()
 	UnregisterSignal(xeno, COMSIG_ATOM_FIRED_PROJECTILE_HIT)
 
-/datum/moba_item/rare/corrosive_acid/proc/on_acid_hit(datum/source, mob/living/hit, obj/projectile/shot)
+/datum/moba_item/rare/corrosive_acid/proc/on_acid_hit(mob/living/carbon/xenomorph/source, mob/living/hit, obj/projectile/shot)
 	SIGNAL_HANDLER
 
 	var/list/armorpen_list = list()
-	SEND_SIGNAL(owner, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
+	SEND_SIGNAL(source, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
 	if((shot.ammo.flags_ammo_behavior|shot.projectile_override_flags) & AMMO_ACIDIC)
-		hit.apply_status_effect(/datum/status_effect/corroding, penetration = armorpen_list[1])
+		hit.apply_status_effect(/datum/status_effect/corroding, 0.025, armorpen_list[1])
 
 
 /datum/moba_item/rare/mageslayer
@@ -293,10 +293,9 @@
 	. = ..()
 	UnregisterSignal(xeno, COMSIG_XENO_ALIEN_ATTACKED)
 
-/datum/moba_item/rare/thornmail/proc/on_attacked(datum/source, mob/living/carbon/xenomorph/attacking_xeno)
+/datum/moba_item/rare/thornmail/proc/on_attacked(mob/living/carbon/xenomorph/source, mob/living/carbon/xenomorph/attacking_xeno)
 	SIGNAL_HANDLER
 
-	var/mob/living/carbon/xenomorph/xeno = owner
-	var/add_amount = floor((xeno.armor_deflection + xeno.armor_deflection_buff - xeno.armor_deflection_debuff) * xeno.get_armor_integrity_percentage() * 0.8) //zonenote i'm sus on this proc getting me the right number so check later
+	var/add_amount = floor((source.armor_deflection + source.armor_deflection_buff - source.armor_deflection_debuff) * source.get_armor_integrity_percentage() * 0.8) //zonenote i'm sus on this proc getting me the right number so check later
 	attacking_xeno.apply_armoured_damage(base_damage_to_deal + add_amount, ARMOR_MELEE, BRUTE)
 

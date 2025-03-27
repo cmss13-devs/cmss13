@@ -203,7 +203,7 @@
 				playsound(loc, slash_sound, 25, 1)
 			var/list/armorpen_list = list()
 			SEND_SIGNAL(xeno, COMSIG_MOBA_GET_PHYS_PENETRATION, armorpen_list)
-			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = (HAS_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT) ? 1 : XVX_ARMOR_EFFECTIVEMULT), (armorpen_list[1] || 0))
+			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = (HAS_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT) ? 1 : XVX_ARMOR_EFFECTIVEMULT), penetration = (armorpen_list[1] || 0))
 
 			if(xeno.behavior_delegate)
 				var/datum/behavior_delegate/MD = xeno.behavior_delegate

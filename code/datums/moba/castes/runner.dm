@@ -69,7 +69,7 @@
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
 		M.apply_status_effect(/datum/status_effect/slow, M.cur_speed * slow, duration)
-	SEND_SIGNAL(owner, COMSIG_XENO_PHYSICAL_ABILITY_HIT, M)
+	SEND_SIGNAL(P.firer, COMSIG_XENO_PHYSICAL_ABILITY_HIT, M)
 
 /datum/action/xeno_action/activable/runner_skillshot/moba/level_up_ability(new_level)
 	xeno_cooldown = src::xeno_cooldown - ((new_level - 1) * (2 SECONDS))

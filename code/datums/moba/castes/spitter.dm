@@ -124,7 +124,7 @@
 	SEND_SIGNAL(bullet_generator, COMSIG_MOBA_GET_AP, ap_list)
 	generated_projectile.damage = damage + (ap_list[1] * 0.6)
 	var/list/armorpen_list = list()
-	SEND_SIGNAL(owner, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
+	SEND_SIGNAL(bullet_generator, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
 	generated_projectile.ammo.penetration = armorpen_list[1]
 
 /datum/action/xeno_action/activable/spray_acid/moba
@@ -177,13 +177,17 @@
 /obj/effect/xenomorph/spray/no_stun/moba/apply_spray(mob/living/carbon/carbon, should_stun = FALSE)
 	var/mob/living/carbon/xenomorph/xeno = carbon
 	xeno.emote("hiss")
-	var/list/ap_list = list()
-	SEND_SIGNAL(xeno, COMSIG_MOBA_GET_AP, ap_list)
-	//if(xeno.has_status_effect(/datum/status_effect/acid_soaked))
-	//	xeno.apply_armoured_damage((damage_amount * 0.5) + (ap_list[1] * 0.7))
-	var/list/armorpen_list = list()
-	SEND_SIGNAL(owner, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
-	xeno.apply_status_effect(/datum/status_effect/acid_soaked, dot_damage + (ap_list[1] * 0.3), armorpen_list[1])
+	if(cause_data?.weak_mob)
+		var/mob/living/carbon/xenomorph/cause_xeno = cause_data.weak_mob.resolve()
+		var/list/ap_list = list()
+		SEND_SIGNAL(cause_xeno, COMSIG_MOBA_GET_AP, ap_list)
+		//if(xeno.has_status_effect(/datum/status_effect/acid_soaked))
+		//	xeno.apply_armoured_damage((damage_amount * 0.5) + (ap_list[1] * 0.7))
+		var/list/armorpen_list = list()
+		SEND_SIGNAL(cause_xeno, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
+		xeno.apply_status_effect(/datum/status_effect/acid_soaked, dot_damage + (ap_list[1] * 0.3), armorpen_list[1])
+	else
+		xeno.apply_status_effect(/datum/status_effect/acid_soaked, dot_damage)
 
 	xeno.last_damage_data = cause_data
 	xeno.UpdateDamageIcon()
@@ -238,7 +242,7 @@
 	SEND_SIGNAL(bullet_generator, COMSIG_MOBA_GET_AP, ap_list)
 	generated_projectile.damage = damage + (ap_list[1] * 0.9)
 	var/list/armorpen_list = list()
-	SEND_SIGNAL(owner, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
+	SEND_SIGNAL(bullet_generator, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
 	generated_projectile.ammo.penetration = armorpen_list[1]
 
 /datum/ammo/xeno/acid/moba/on_hit_mob(mob/living/M, obj/projectile/P)

@@ -1487,6 +1487,8 @@
 	update_item_state(user)
 
 /obj/item/weapon/gun/bow/proc/update_item_state(mob/user)
+	if(!user)
+		return
 	var/hand = user.hand
 	if(user.get_inactive_hand() == src)
 		hand = !hand

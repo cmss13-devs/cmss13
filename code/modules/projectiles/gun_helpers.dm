@@ -191,15 +191,17 @@ DEFINES in setup.dm, referenced here.
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc = TRUE, silent = FALSE)
 	if (!loc || !user)
 		return FALSE
-	if (!isturf(loc))
+	if (!isturf(loc) && check_loc)
 		return FALSE
 	if(!retrieval_check(user, retrieval_slot))
 		return FALSE
 	if(!user.equip_to_slot_if_possible(src, retrieval_slot, disable_warning = TRUE))
 		return FALSE
+	if(silent)
+		return TRUE
 	var/message
 	switch(retrieval_slot)
 		if(WEAR_BACK)
@@ -217,10 +219,11 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
-		return
+		return FALSE
 	if (!retrieval_check(user, retrieval_slot))
-		return
+		return FALSE
 	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	return TRUE
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -544,8 +547,7 @@ DEFINES in setup.dm, referenced here.
 	var/obj/item/active_hand = get_active_hand()
 	if(active_hand)
 
-		if((SEND_SIGNAL(active_hand, COMSIG_DROP_RETRIEVAL_GUN_CHECK) & COMPONENT_DROP_RETRIEVAL_GUN_PRESENT) \
-			&& equip_to_slot_if_possible(active_hand, WEAR_J_STORE, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
+		if(SEND_SIGNAL(active_hand, COMSIG_ITEM_HOLSTER, usr) & COMPONENT_ITEM_HOLSTER_CANCELLED)
 			return TRUE
 
 		if(active_hand.preferred_storage)

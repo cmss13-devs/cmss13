@@ -61,9 +61,6 @@
 #define COMSIG_DROP_RETRIEVAL_CHECK "drop_retrieval_check"
 	#define COMPONENT_DROP_RETRIEVAL_PRESENT (1<<0)
 
-#define COMSIG_DROP_RETRIEVAL_GUN_CHECK "drop_retrieval_gun"
-	#define COMPONENT_DROP_RETRIEVAL_GUN_PRESENT (1<<0)
-
 // from /datum/emergency_call/proc/spawn_candidates()
 #define COMSIG_ERT_SETUP "ert_setup"
 
@@ -72,3 +69,6 @@
 
 /// Fired on the lazy template datum when the template is finished loading. (list/loaded_atom_movables, list/loaded_turfs, list/loaded_areas)
 #define COMSIG_LAZY_TEMPLATE_LOADED "lazy_template_loaded"
+
+#define COMSIG_ITEM_HOLSTER "item_holster"
+	#define COMPONENT_ITEM_HOLSTER_CANCELLED (1<<0)

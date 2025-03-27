@@ -2710,7 +2710,6 @@
 /area/rostock/upperdeck_maint/p_a)
 "boE" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/upp,
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/kitchen)
 "bpt" = (
@@ -3877,7 +3876,7 @@
 /area/rostock/upperdeck_maint/p_a)
 "cmC" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/kitchen)
 "cmK" = (
@@ -7675,6 +7674,7 @@
 	req_access = null
 	},
 /obj/structure/surface/table/almayer,
+/obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/plating,
 /area/rostock/security/brig_entryway)
 "fkc" = (
@@ -9843,10 +9843,20 @@
 /area/rostock/lower_deck/p_a_hallway)
 "hcN" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/corsat/retrosquares,
 /area/rostock/lower_deck/kitchen)
 "hcZ" = (
@@ -9900,41 +9910,21 @@
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/rostock/airoom)
 "hej" = (
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
 /obj/structure/closet/crate/freezer/rations{
 	desc = "A crate of UPP food rations.";
 	name = "UPP food Rations"
 	},
 /obj/structure/machinery/light,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
+/obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/strata/orange_edge,
 /area/rostock/req)
 "hew" = (
@@ -17666,7 +17656,7 @@
 /area/rostock/railgun)
 "njM" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/kitchen)
 "nku" = (
@@ -17731,7 +17721,7 @@
 /area/rostock/engineering/main_area)
 "nmy" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/kitchen)
 "nmI" = (

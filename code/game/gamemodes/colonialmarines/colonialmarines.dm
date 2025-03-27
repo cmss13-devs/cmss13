@@ -142,6 +142,7 @@
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 
+	return ..()
 
 /datum/game_mode/colonialmarines/ds_first_landed(obj/docking_port/stationary/marine_dropship)
 	. = ..()

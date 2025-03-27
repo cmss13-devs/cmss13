@@ -151,7 +151,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Officer Deployment Gear", 0, list(/obj/item/clothing/suit/storage/marine/MP/SO, /obj/item/clothing/shoes/marine/knife, /obj/item/device/binoculars/range/designator,), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_REGULAR),
-		list("Nailgun Magazine Box (7x45mm)", 0, /obj/item/ammo_box/magazine/nailgun, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),

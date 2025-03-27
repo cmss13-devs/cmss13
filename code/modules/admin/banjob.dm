@@ -169,5 +169,5 @@ WARNING!*/
 
 	body = "<body>[jobs]</body>"
 	dat = "<tt>[body]</tt>"
-	show_browser(usr, dat, "Job-Ban Panel: [M.name]", "jobban2", "size=800x490")
+	show_browser(usr, dat, "Job-Ban Panel: [M.name]", "jobban2", width = 800, height = 490)
 	return

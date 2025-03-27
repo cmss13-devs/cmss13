@@ -364,7 +364,7 @@
 
 	S["tgui_lock"] >> tgui_lock
 	S["tgui_fancy"] >> tgui_fancy
-	S["tgui_scale"] >> tgui_scale
+	S["window_scale"] >> window_scale
 
 	var/tutorial_string = ""
 	S["completed_tutorials"] >> tutorial_string
@@ -377,6 +377,8 @@
 
 	S["job_loadout"] >> loadout
 	S["job_loadout_names"] >> loadout_slot_names
+
+	S["show_cooldown_messages"] >> show_cooldown_messages
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -446,7 +448,7 @@
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
 
-	tgui_scale = sanitize_integer(tgui_scale, FALSE, TRUE, initial(tgui_scale))
+	window_scale = sanitize_integer(window_scale, FALSE, TRUE, initial(window_scale))
 	tgui_lock = sanitize_integer(tgui_lock, FALSE, TRUE, initial(tgui_lock))
 	tgui_fancy = sanitize_integer(tgui_fancy, FALSE, TRUE, initial(tgui_fancy))
 
@@ -468,6 +470,8 @@
 
 	loadout = sanitize_loadout(loadout, owner)
 	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
+
+	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -619,7 +623,9 @@
 
 	S["tgui_fancy"] << tgui_fancy
 	S["tgui_lock"] << tgui_lock
-	S["tgui_scale"] << tgui_scale
+	S["window_scale"] << window_scale
+
+	S["show_cooldown_messages"] << show_cooldown_messages
 
 	return TRUE
 

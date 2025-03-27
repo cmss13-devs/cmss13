@@ -65,8 +65,13 @@
 	. = ..()
 	if(!.)
 		return
-
+	// zonenote this doesn't apply armor pen
 	SEND_SIGNAL(stabbing_xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
+
+/datum/action/xeno_action/activable/tail_stab/moba/apply_damage(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+	var/list/armorpen_list = list()
+	SEND_SIGNAL(owner, COMSIG_MOBA_GET_PHYS_PENETRATION, armorpen_list)
+	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest", armorpen_list[1])
 
 /datum/action/xeno_action/activable/spore_fruit
 	name = "Empowering Pillar"

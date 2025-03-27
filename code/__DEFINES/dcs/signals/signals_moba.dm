@@ -48,3 +48,6 @@
 
 /// (mob/living)
 #define COMSIG_MOB_ALIEN_ATTACK "mob_alien_attack"
+
+#define COMSIG_MOBA_GET_PHYS_PENETRATION "moba_get_phys_penetration"
+#define COMSIG_MOBA_GET_ACID_PENETRATION "moba_get_acid_penetration"

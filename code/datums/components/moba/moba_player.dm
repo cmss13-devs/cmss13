@@ -143,6 +143,8 @@
 	RegisterSignal(parent_xeno, COMSIG_MOB_LOGGED_IN, PROC_REF(on_reconnect))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_PLAYER_DATUM, PROC_REF(get_player_datum))
 	RegisterSignal(parent_xeno, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, PROC_REF(on_armor_damage_apply))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_PHYS_PENETRATION, PROC_REF(get_phys_pen))
+	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_ACID_PENETRATION, PROC_REF(get_acid_pen))
 
 /datum/component/moba_player/proc/handle_level_up()
 	player_datum.level_up()
@@ -511,3 +513,13 @@
 	SIGNAL_HANDLER
 
 	damagedata["armor"] *= armor_multiplier
+
+/datum/component/moba_player/proc/get_phys_pen(datum/source, list/pendata)
+	SIGNAL_HANDLER
+
+	pendata += slash_penetration
+
+/datum/component/moba_player/proc/get_acid_pen(datum/source, list/pendata)
+	SIGNAL_HANDLER
+
+	pendata += acid_penetration

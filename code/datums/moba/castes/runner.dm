@@ -61,11 +61,15 @@
 /datum/ammo/xeno/bone_chips/spread/runner_skillshot/moba/on_bullet_generation(obj/projectile/generated_projectile, mob/living/carbon/xenomorph/bullet_generator)
 	. = ..()
 	generated_projectile.damage = damage + (bullet_generator.melee_damage_upper * 0.25)
+	var/list/armorpen_list = list()
+	SEND_SIGNAL(bullet_generator, COMSIG_MOBA_GET_PHYS_PENETRATION, armorpen_list)
+	generated_projectile.ammo.penetration = armorpen_list[1] // we can just do this since the ammo doesn't have inbuilt pen
 
 /datum/ammo/xeno/bone_chips/spread/runner_skillshot/moba/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
 		M.apply_status_effect(/datum/status_effect/slow, M.cur_speed * slow, duration)
+	SEND_SIGNAL(owner, COMSIG_XENO_PHYSICAL_ABILITY_HIT, M)
 
 /datum/action/xeno_action/activable/runner_skillshot/moba/level_up_ability(new_level)
 	xeno_cooldown = src::xeno_cooldown - ((new_level - 1) * (2 SECONDS))
@@ -117,6 +121,7 @@
 		target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, 1 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(additional_slash), target, xeno), 0.3 SECONDS)
+	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
 
 /datum/action/xeno_action/activable/pounce/runner/moba/proc/additional_slash(mob/living/carbon/target, mob/living/carbon/xenomorph/xeno)
 	target.attack_alien(xeno)
@@ -165,6 +170,7 @@
 			target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, duration)
 			target.EyeBlur(25)
 			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, ReduceEyeBlur), 25), duration)
+			SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
 
 	playsound(get_turf(xeno), 'sound/effects/bamf.ogg', 50, TRUE)
 	apply_cooldown()

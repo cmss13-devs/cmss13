@@ -29,7 +29,9 @@
 		if(xeno.stat == DEAD)
 			continue
 
-		xeno.apply_armoured_damage(explosion_damage, ARMOR_BIO, BURN)
+		var/list/armorpen_list = list()
+		SEND_SIGNAL(owner, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
+		xeno.apply_armoured_damage(explosion_damage, ARMOR_BIO, BURN, penetration = armorpen_list[1])
 		if(xeno == owner)
 			to_chat(xeno, SPAN_XENOWARNING("We feel a burst of acid blast out from our wounds!"))
 		else

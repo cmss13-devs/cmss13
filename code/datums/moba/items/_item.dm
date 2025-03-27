@@ -130,9 +130,9 @@
 	if(lifesteal)
 		description += "<br>Lifesteal: [lifesteal * 100]%"
 	if(slash_penetration)
-		description += "<br>Melee Armor Penetration: [slash_penetration]"
+		description += "<br>Physical Damage Armor Penetration: [slash_penetration]"
 	if(acid_penetration)
-		description += "<br>Acid Armor Penetration: [acid_penetration]"
+		description += "<br>Acid Damage Armor Penetration: [acid_penetration]"
 
 /datum/moba_item/proc/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health = FALSE)
 	SHOULD_CALL_PARENT(TRUE)

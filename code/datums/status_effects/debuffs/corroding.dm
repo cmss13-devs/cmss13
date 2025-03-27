@@ -5,12 +5,14 @@
 	tick_interval = 1 SECONDS
 	alert_type = null
 	var/max_health_percent = 0.025
+	var/penetration
 
-/datum/status_effect/corroding/on_creation(mob/living/new_owner, mhp = 0.025)
+/datum/status_effect/corroding/on_creation(mob/living/new_owner, mhp = 0.025, penetration)
 	. = ..()
 	if(.)
 		max_health_percent = mhp
+		src.penetration = penetration
 
 /datum/status_effect/corroding/tick(seconds_between_ticks)
 	var/mob/living/living = owner
-	living.apply_armoured_damage(living.getMaxHealth() * max_health_percent * seconds_between_ticks, ARMOR_BIO, BURN)
+	living.apply_armoured_damage(living.getMaxHealth() * max_health_percent * seconds_between_ticks, ARMOR_BIO, BURN, penetration = penetration)

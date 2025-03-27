@@ -1084,7 +1084,7 @@
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
 		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
 
-	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
+	apply_damage(stabbing_xeno, target, limb)
 	if(stabbing_xeno.mob_size >= MOB_SIZE_BIG)
 		target.apply_effect(3, DAZE)
 	else if(stabbing_xeno.mob_size == MOB_SIZE_XENO)
@@ -1098,3 +1098,6 @@
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == stabbing_xeno.dir)
 		stabbing_xeno.setDir(last_dir)
+
+/datum/action/xeno_action/activable/tail_stab/proc/apply_damage(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")

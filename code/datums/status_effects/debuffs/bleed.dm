@@ -5,11 +5,13 @@
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = null
 	var/damage_per_sec = 10
+	var/penetration
 
-/datum/status_effect/bleed/on_creation(mob/living/new_owner, dps = 10)
+/datum/status_effect/bleed/on_creation(mob/living/new_owner, dps = 10, penetration)
 	. = ..()
 	if(.)
 		damage_per_sec = dps
+		src.penetration = penetration
 
 /datum/status_effect/bleed/tick(seconds_between_ticks)
 	. = ..()
@@ -17,4 +19,4 @@
 		return
 
 	var/mob/living/living_owner = owner
-	living_owner.apply_armoured_damage(damage_per_sec, ARMOR_MELEE, BRUTE)
+	living_owner.apply_armoured_damage(damage_per_sec, ARMOR_MELEE, BRUTE, penetration = penetration)

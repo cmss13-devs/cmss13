@@ -67,8 +67,10 @@
 /datum/moba_item/rare/corrosive_acid/proc/on_acid_hit(datum/source, mob/living/hit, obj/projectile/shot)
 	SIGNAL_HANDLER
 
+	var/list/armorpen_list = list()
+	SEND_SIGNAL(owner, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
 	if((shot.ammo.flags_ammo_behavior|shot.projectile_override_flags) & AMMO_ACIDIC)
-		hit.apply_status_effect(/datum/status_effect/corroding)
+		hit.apply_status_effect(/datum/status_effect/corroding, penetration = armorpen_list[1])
 
 
 /datum/moba_item/rare/mageslayer
@@ -266,5 +268,35 @@
 
 /datum/moba_item/rare/thornmail
 	name = "Piercing Spines"
-	description = "<br><b>Spiked</b><br>When you take damage from an ability or attack, deal N damage to whoever attacked you."
+	description = "<br><b>Spiked</b><br>When you take damage from an attack, deal 15 (+80% Armor) physical damage to whoever attacked you and apply healing disruption for N seconds."
 	icon_state = "red"
+	gold_cost = MOBA_GOLD_PER_MINUTE * 3
+	unique = TRUE
+	component_items = list(
+		/datum/moba_item/uncommon/steel_carapace,
+		/datum/moba_item/common/mending_carapace,
+		/datum/moba_item/common/strong_constitution,
+		/datum/moba_item/common/armor_fortification,
+	)
+
+	armor = 25
+	acid_armor = 5
+	health = 450
+	health_regen = 5
+	var/base_damage_to_deal = 15
+
+/datum/moba_item/rare/thornmail/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
+	. = ..()
+	RegisterSignal(xeno, COMSIG_XENO_ALIEN_ATTACKED, PROC_REF(on_attacked))
+
+/datum/moba_item/rare/thornmail/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
+	. = ..()
+	UnregisterSignal(xeno, COMSIG_XENO_ALIEN_ATTACKED)
+
+/datum/moba_item/rare/thornmail/proc/on_attacked(datum/source, mob/living/carbon/xenomorph/attacking_xeno)
+	SIGNAL_HANDLER
+
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/add_amount = floor((xeno.armor_deflection + xeno.armor_deflection_buff - xeno.armor_deflection_debuff) * xeno.get_armor_integrity_percentage() * 0.8) //zonenote i'm sus on this proc getting me the right number so check later
+	attacking_xeno.apply_armoured_damage(base_damage_to_deal + add_amount, ARMOR_MELEE, BRUTE)
+

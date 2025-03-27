@@ -17804,11 +17804,17 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "aSr" = (
-/obj/structure/ship_ammo/rocket/napalm{
-	pixel_y = 1;
-	layer = 3.1
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/item/prop{
+	desc = "The AGM-99 'Napalm' is an incendiary missile used to turn specific targeted areas into giant balls of fire for a long time. Can be loaded into the LAU-444 Guided Missile Launcher.";
+	icon = 'icons/obj/structures/props/dropship/dropship_ammo64.dmi';
+	icon_state = "napalm";
+	name = "AGM-99 'Napalm'";
+	dir = 8;
+	pixel_y = 2;
+	anchored = 1;
+	pixel_x = 1
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
 "aSs" = (
@@ -24535,11 +24541,17 @@
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "beL" = (
-/obj/structure/dropship_equipment/fuel/cooling_system{
-	pixel_x = 3;
-	pixel_y = -7
-	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/prop{
+	desc = "A fuel enhancement system for dropships. It improves the thrust produced by the fuel combustion for faster travels. Fits inside the engine attach points. You need a powerloader to lift it.";
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi';
+	icon_state = "fuel_enhancer";
+	name = "Fuel enhancer";
+	dir = 8;
+	pixel_y = -6;
+	anchored = 1;
+	pixel_x = 2
+	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "beM" = (
@@ -24708,10 +24720,16 @@
 /turf/open/floor/almayer/plating,
 /area/tyrargo/landing_zone_2)
 "bfa" = (
-/obj/structure/dropship_equipment/fuel/cooling_system{
-	pixel_y = -7
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/item/prop{
+	desc = "A cooling system for dropships. It produces additional cooling reducing delays between launch. Fits inside the engine attach points. You need a powerloader to lift it.";
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment64.dmi';
+	icon_state = "cooling_system";
+	name = "Cooling system";
+	dir = 8;
+	pixel_y = -2;
+	anchored = 1
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "bfb" = (
@@ -42804,10 +42822,10 @@
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/ship_ammo/sentry,
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo"
 	},
+/obj/structure/ship_ammo/heavygun,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUB" = (
@@ -42926,14 +42944,6 @@
 	icon_state = "cargo"
 	},
 /obj/structure/largecrate/random/case/small,
-/turf/open/floor/corsat/squares,
-/area/tyrargo/underground/bunker/ammo_dump_entrance)
-"bUW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/ship_ammo/minirocket/incendiary,
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo"
-	},
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bUX" = (
@@ -43170,14 +43180,6 @@
 	pixel_y = -15
 	},
 /turf/open/floor/corsat/plate,
-/area/tyrargo/underground/bunker/ammo_dump_entrance)
-"bVR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/ship_ammo/heavygun/antitank,
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo"
-	},
-/turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -81854,7 +81856,7 @@ bTU
 bUa
 bUa
 bUa
-bVR
+bUD
 bsq
 bVf
 bUa
@@ -81865,7 +81867,7 @@ bTU
 bVl
 bUa
 bUa
-bUW
+bUA
 bUa
 bUM
 bUJ
@@ -82218,7 +82220,7 @@ bWh
 bUa
 bVf
 bUa
-bVO
+bUD
 bUa
 bUa
 bTU

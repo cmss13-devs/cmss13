@@ -100,7 +100,9 @@
 	fendy.throw_carbon(living_target, facing, 1, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE) //surely we can throw a living through throw carbon
 	playsound(living_target,'sound/weapons/alien_claw_block.ogg', 50, 1)
 
-	living_target.apply_armoured_damage(damage + (fendy.melee_damage_upper * 0.25), ARMOR_MELEE, BRUTE)
+	var/list/armorpen_list = list()
+	SEND_SIGNAL(fendy, COMSIG_MOBA_GET_PHYS_PENETRATION, armorpen_list)
+	living_target.apply_armoured_damage(damage + (fendy.melee_damage_upper * 0.25), ARMOR_MELEE, BRUTE, penetration = armorpen_list[1])
 
 	apply_cooldown()
 	return ..()

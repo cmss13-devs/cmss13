@@ -29,15 +29,13 @@ SUBSYSTEM_DEF(pathfinding)
 
 		var/turf/target = current_run.finish
 
-		var/mob/living/carbon/xenomorph/X = current_run.travelling_xeno
-
 		var/list/visited_nodes = current_run.visited_nodes
 		var/list/distances = current_run.distances
 		var/list/f_distances = current_run.f_distances
 		var/list/prev = current_run.prev
 
 		while(length(visited_nodes))
-			current_run.current_node = visited_nodes[visited_nodes.len]
+			current_run.current_node = visited_nodes[length(visited_nodes)]
 			visited_nodes.len--
 			if(current_run.current_node == target)
 				break
@@ -46,7 +44,7 @@ SUBSYSTEM_DEF(pathfinding)
 				var/turf/neighbor = get_step(current_run.current_node, direction)
 				var/distance_between = distances[current_run.current_node] * DISTANCE_PENALTY
 				if(isnull(distances[neighbor]))
-					if(get_dist(neighbor, X) > current_run.path_range)
+					if(get_dist(neighbor, current_run.agent) > current_run.path_range)
 						continue
 					distances[neighbor] = INFINITY
 					f_distances[neighbor] = INFINITY
@@ -54,15 +52,19 @@ SUBSYSTEM_DEF(pathfinding)
 				if(direction != get_dir(prev[neighbor], neighbor))
 					distance_between += DIRECTION_CHANGE_PENALTY
 
-				if(!neighbor.weeds)
+				if(isxeno(current_run.agent) && !neighbor.weeds)
 					distance_between += NO_WEED_PENALTY
 
-				var/list/L = LinkBlocked(X, current_run.current_node, neighbor, current_run.ignore, TRUE)
-				L += check_special_blockers(X, neighbor)
+				for(var/i in neighbor)
+					var/atom/A = i
+					distance_between += 1
+
+				var/list/L = LinkBlocked(current_run.agent, current_run.current_node, neighbor, current_run.ignore, TRUE)
+				L += check_special_blockers(current_run.agent, neighbor)
 				if(length(L))
-					for(var/i in L)
-						var/atom/A = i
-						distance_between += A.xeno_ai_obstacle(X, direction, target)
+					if(isxeno(current_run.agent))
+						for(var/atom/A as anything in L)
+							distance_between += A.xeno_ai_obstacle(current_run.agent, direction, target)
 
 				if(distance_between < distances[neighbor])
 					distances[neighbor] = distance_between
@@ -103,7 +105,6 @@ SUBSYSTEM_DEF(pathfinding)
 				var/atom/A = l
 				A.color = "#[red][green]00"
 			T.color = "#[red][green]00"
-			T.maptext = distance
 		#endif
 
 		if(!prev[target])
@@ -122,7 +123,7 @@ SUBSYSTEM_DEF(pathfinding)
 		current_run.to_return.Invoke(path)
 		QDEL_NULL(current_run)
 
-/datum/controller/subsystem/pathfinding/proc/check_special_blockers(mob/living/carbon/xenomorph/xeno, turf/checking_turf)
+/datum/controller/subsystem/pathfinding/proc/check_special_blockers(mob/agent, turf/checking_turf)
 	var/list/pass_back = list()
 
 	for(var/spec_blocker in AI_SPECIAL_BLOCKERS)
@@ -133,23 +134,23 @@ SUBSYSTEM_DEF(pathfinding)
 
 	return pass_back
 
-/datum/controller/subsystem/pathfinding/proc/stop_calculating_path(mob/living/carbon/xenomorph/X)
-	var/datum/xeno_pathinfo/data = hash_path[X]
+/datum/controller/subsystem/pathfinding/proc/stop_calculating_path(mob/agent)
+	var/datum/xeno_pathinfo/data = hash_path[agent]
 	qdel(data)
 
-/datum/controller/subsystem/pathfinding/proc/calculate_path(atom/start, atom/finish, path_range, mob/living/carbon/xenomorph/travelling_xeno, datum/callback/CB, list/ignore)
+/datum/controller/subsystem/pathfinding/proc/calculate_path(atom/start, atom/finish, path_range, mob/agent, datum/callback/CB, list/ignore)
 	if(!get_turf(start) || !get_turf(finish))
 		return
 
-	var/datum/xeno_pathinfo/data = hash_path[travelling_xeno]
+	var/datum/xeno_pathinfo/data = hash_path[agent]
 	SSpathfinding.current_processing -= data
 
 
 	if(!data)
 		data = new()
-		data.RegisterSignal(travelling_xeno, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/xeno_pathinfo, qdel_wrapper))
+		data.RegisterSignal(agent, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/datum/xeno_pathinfo, qdel_wrapper))
 
-		hash_path[travelling_xeno] = data
+		hash_path[agent] = data
 		paths_to_calculate += data
 
 	data.current_node = get_turf(start)
@@ -158,7 +159,7 @@ SUBSYSTEM_DEF(pathfinding)
 	var/turf/target = get_turf(finish)
 
 	data.finish = target
-	data.travelling_xeno = travelling_xeno
+	data.agent = agent
 	data.to_return = CB
 	data.path_range = path_range
 	data.ignore = ignore
@@ -171,7 +172,7 @@ SUBSYSTEM_DEF(pathfinding)
 /datum/xeno_pathinfo
 	var/turf/start
 	var/turf/finish
-	var/mob/living/carbon/xenomorph/travelling_xeno
+	var/mob/agent
 	var/datum/callback/to_return
 	var/path_range
 
@@ -194,7 +195,7 @@ SUBSYSTEM_DEF(pathfinding)
 	prev = list()
 
 /datum/xeno_pathinfo/Destroy(force)
-	SSpathfinding.hash_path -= travelling_xeno
+	SSpathfinding.hash_path -= agent
 	SSpathfinding.paths_to_calculate -= src
 	SSpathfinding.current_processing -= src
 
@@ -204,7 +205,7 @@ SUBSYSTEM_DEF(pathfinding)
 
 	start = null
 	finish = null
-	travelling_xeno = null
+	agent = null
 	to_return = null
 	visited_nodes = null
 	distances = null
@@ -220,5 +221,4 @@ SUBSYSTEM_DEF(pathfinding)
 			var/atom/A = l
 			A.color = null
 		T.color = null
-		T.maptext = null
 #endif

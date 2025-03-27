@@ -24,7 +24,7 @@
 
 /mob/proc/do_click(atom/A, location, params)
 	// We'll be sending a lot of signals and things later on, this will save time.
-	if(!client)
+	if(!client && !(mob_flags & AI_CONTROLLED))
 		return
 	// No clicking on atoms with the NOINTERACT flag
 	if ((A.flags_atom & NOINTERACT))
@@ -52,7 +52,7 @@
 	if (mods["drag"])
 		return
 
-	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
+	if(client && SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -62,7 +62,7 @@
 		A.clicked(src, mods)
 		return
 
-	if(client.click_intercept)
+	if(client && client.click_intercept)
 		if(istype(A, /atom/movable/screen/buildmode))
 			A.clicked(src, mods)
 			return
@@ -110,7 +110,7 @@
 		return
 
 	//Self-harm preference. isxeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
+	if(A == src && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
 		if(W)
 			if(W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 				if(world.time % 3)

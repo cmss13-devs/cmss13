@@ -140,7 +140,6 @@
 	shrapnel_chance = 0
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
-	accurate_range_min = 4
 
 	damage = 55
 	scatter = -SCATTER_AMOUNT_TIER_8
@@ -170,7 +169,7 @@
 	damage = 40
 	accuracy = -HIT_ACCURACY_TIER_2
 	scatter = -SCATTER_AMOUNT_TIER_8
-	penetration = ARMOR_PENETRATION_TIER_10
+	penetration = ARMOR_PENETRATION_TIER_5
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/projectile/P)
@@ -179,15 +178,13 @@
 /datum/ammo/bullet/rifle/m4ra/impact/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
-		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-		target.KnockDown(0.5-fired_projectile.distance_travelled/100) // purely for visual effect, noone actually cares
-		target.Stun(0.5-fired_projectile.distance_travelled/100)
-		target.apply_effect(2-fired_projectile.distance_travelled/20, SUPERSLOW)
-		target.apply_effect(5-fired_projectile.distance_travelled/10, SLOW)
+		to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
+		target.KnockDown(0.5-fired_projectile.distance_travelled/200) // purely for visual effect, noone actually cares
+		target.Stun(0.5-fired_projectile.distance_travelled/200)
 	else
 		if(!isyautja(living_mob)) //Not predators.
-			living_mob.apply_effect(1, SUPERSLOW)
-			living_mob.apply_effect(2, SLOW)
+			living_mob.apply_effect(0.5, SUPERSLOW)
+			living_mob.apply_effect(1, SLOW)
 			to_chat(living_mob, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
 		living_mob.apply_stamina_damage(fired_projectile.ammo.damage, fired_projectile.def_zone, ARMOR_BULLET)
 

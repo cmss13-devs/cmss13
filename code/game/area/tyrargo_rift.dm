@@ -92,8 +92,14 @@
 	requires_power = FALSE
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
 
+/area/tyrargo/landing_zone_2/road
+	name = "USASF Airbase Anderson - Road"
+	icon_state = "shuttle3"
+	minimap_color = MINIMAP_AREA_SHIP
+
 /area/tyrargo/landing_zone_2/ceiling
 	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_GLASS
 
 /area/tyrargo/landing_zone_2/east_trench
 	name = "USASF Airbase Anderson - North-East Trench"

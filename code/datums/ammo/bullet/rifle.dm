@@ -179,8 +179,8 @@
 	if(iscarbonsizexeno(living_mob))
 		var/mob/living/carbon/xenomorph/target = living_mob
 		to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
-		target.KnockDown(0.5-fired_projectile.distance_travelled/200) // purely for visual effect, noone actually cares
-		target.Stun(0.5-fired_projectile.distance_travelled/200)
+		target.KnockDown(0.5-fired_projectile.distance_travelled/100) // purely for visual effect, noone actually cares
+		target.Stun(0.5-fired_projectile.distance_travelled/100)
 	else
 		if(!isyautja(living_mob)) //Not predators.
 			living_mob.apply_effect(0.5, SUPERSLOW)

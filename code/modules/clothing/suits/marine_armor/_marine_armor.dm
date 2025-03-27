@@ -228,7 +228,7 @@
 	light_holder.set_light_flags(LIGHT_ATTACHED)
 	light_holder.set_light_range(initial(light_range))
 	light_holder.set_light_power(initial(light_power))
-	light_holder.set_light_color(initial(lamp_light_color))
+	light_holder.set_light_color(initial(light_color))
 	light_holder.set_light_on(toggle_on)
 
 	if(!toggle_on)

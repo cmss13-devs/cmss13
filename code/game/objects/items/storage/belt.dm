@@ -2303,7 +2303,7 @@
 /obj/item/storage/belt/gun/smartgunner/pmc/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
 	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 	new /obj/item/ammo_magazine/smartgun/dirty(src)
 

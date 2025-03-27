@@ -545,6 +545,10 @@
 	name = "smartgun drum pouch"
 	desc = "A heavy pouch designed for carrying a surplus of smargun drums."
 	icon_state = "wy_sgdrums_ammo"
+	storage_slots = 3
+	can_hold = list(
+		/obj/item/ammo_magazine/smartgun,
+	)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

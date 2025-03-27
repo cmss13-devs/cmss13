@@ -1,7 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "survivor improvised flamethrower inspired by Alien: Isolation and Alien props"
-  - bugfix: "fixed empty flamethrower having no suit storage sprite"
-  - maptweak: "changed all mapped flamethrowers to the new one, execept the ones on NV and LV522"
-  - soundadd: "all flamers now have fry fire sound"

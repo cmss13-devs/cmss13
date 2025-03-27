@@ -405,6 +405,9 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/reg_in_areas_in_z(list/areas)
 	for(var/B in areas)
 		var/area/A = B
+		if(!A.care_about_reg)
+			continue
+
 		A.reg_in_areas_in_z()
 
 /// Takes a z level datum, and tells the mapping subsystem to manage it

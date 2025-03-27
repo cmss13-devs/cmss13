@@ -300,7 +300,7 @@
 		minion.melee_damage_lower = wave_slashdamage
 		minion.melee_damage_upper = wave_slashdamage
 		minion.set_hive_and_update(side)
-		minion.AddComponent(/datum/component/moba_minion, map_id, MOBA_GOLD_PER_WAVE / MOBA_MINIONS_PER_WAVE, 65)
+		minion.AddComponent(/datum/component/moba_minion, map_id, MOBA_GOLD_PER_WAVE / MOBA_MINIONS_PER_WAVE, 55)
 		minion.forceMove(location)
 		SEND_SIGNAL(src, COMSIG_MOBA_MINION_SPAWNED, minion)
 		sleep(0.9 SECONDS)

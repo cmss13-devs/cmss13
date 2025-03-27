@@ -66,6 +66,8 @@
 
 		if(!marine_rk)
 			marine_rk = current_human.rank_fallback
+		if(current_human.rank_override)
+			marine_rk = current_human.rank_override
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
 			if(squad_clr)
@@ -105,7 +107,7 @@
 			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if(JOB_AUXILIARY_OFFICER, JOB_CIA_LIAISON)
+			if(JOB_AUXILIARY_OFFICER)
 				marine_rk = "aso"
 				border_rk = "command"
 			if(JOB_GENERAL, JOB_COLONEL, JOB_ACMC, JOB_CMC)
@@ -152,6 +154,9 @@
 			if(JOB_DOCTOR)
 				marine_rk = "doctor"
 				border_rk = "command"
+			if(JOB_FIELD_DOCTOR)
+				marine_rk = "field_doctor"
+				border_rk = "command"
 			if(JOB_RESEARCHER)
 				marine_rk = "researcher"
 				border_rk = "command"
@@ -189,6 +194,9 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
+			//CIA
+			if(JOB_CIA_LIAISON)
+				marine_rk = "cialo"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"
@@ -230,6 +238,8 @@
 				marine_rk = "tl"
 			if(JOB_SQUAD_LEADER)
 				marine_rk = "leader"
+		if(current_human.rank_override)
+			marine_rk = current_human.rank_override
 
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")

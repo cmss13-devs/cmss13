@@ -85,6 +85,7 @@
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/alt_iff_scope,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
 	)
@@ -1763,7 +1764,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/mini_iff,
+		/obj/item/attachable/alt_iff_scope,
 		/obj/item/attachable/flashlight/grip,
 	)
 
@@ -1799,7 +1800,7 @@
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
 
 /obj/item/weapon/gun/rifle/m4ra/tactical
-	current_mag = /obj/item/ammo_magazine/rifle/m4ra/ext
+	current_mag = /obj/item/ammo_magazine/rifle/m4ra/extended
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
 
 
@@ -1849,7 +1850,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/scope/mini_iff,
+		/obj/item/attachable/alt_iff_scope,
 		/obj/item/attachable/flashlight/grip,
 	)
 

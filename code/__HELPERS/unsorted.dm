@@ -21,11 +21,17 @@
 //Offuscate y for coord system
 #define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
+//Offuscate z for the coord system
+#define obfuscate_z(z) ((z) + GLOB.obfs_z)
+
 //Deoffuscate x for coord system
 #define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
 #define deobfuscate_y(y) ((y) - GLOB.obfs_y)
+
+//Deoffuscate z for the coord system
+#define deobfuscate_z(z) ((z) - GLOB.obfs_z)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
@@ -432,22 +438,37 @@
 
 	return target
 
-/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+/**
+ * An alternative to orange() that should perform better for distances >= 5 because
+ * of ORANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, excluding center (and
+ * its contents). Ignores visibility (like orange).
+ */
+/proc/long_orange(dist=0, atom/center)
 	if(!dist)
-		if(!orange)
-			return list(center)
-		else
-			return list()
+		return list()
 
-	var/list/turfs = RANGE_TURFS(dist, center)
-	if(orange)
-		turfs -= get_turf(center)
+	var/list/turfs = ORANGE_TURFS(dist, center)
 	. = list()
-	for(var/turf/T as anything in turfs)
-		. += T
-		. += T.contents
-		if(areas)
-			. |= T.loc
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
+	. -= center // If center isn't a turf
+
+/**
+ * An alternative to range() that should perform better for distances >= 5 because
+ * of RANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, including center (and its
+ * contents if a turf). Ignores visibility (like range).
+ */
+/proc/long_range(dist=0, atom/center)
+	var/list/turfs = RANGE_TURFS(dist, center)
+	. = list()
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
@@ -1261,7 +1282,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
-	var/start_z = start_turf.z
+	var/start_z
+
+	if(end_atom.z > start_atom.z)
+		start_z = end_atom.z
+	else
+		start_z = start_atom.z
 
 	var/list/line = list()
 	if(include_start_atom)

@@ -35,6 +35,12 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
+"aah" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "rocinante"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -5411,7 +5417,7 @@
 /area/fiorina/station/security)
 "ejM" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/box/wy_mre{
+/obj/item/storage/box/mre/wy{
 	pixel_x = 5;
 	pixel_y = 2
 	},
@@ -14482,10 +14488,10 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "lhJ" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
 /obj/item/storage/pouch/flamertank,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
@@ -46186,7 +46192,7 @@ wbI
 itN
 baC
 baC
-bQM
+aah
 bQM
 bQM
 bQM

@@ -262,32 +262,6 @@
 			X.set_hive_and_update(hivenumber)
 
 	/////////////////////////////////////new ban stuff
-	else if(href_list["unbanf"])
-		var/datum/entity/player/P = get_player_from_key(href_list["unbanf"])
-		switch(alert("Are you sure you want to remove timed ban from [P.ckey]?", , "Yes", "No"))
-			if("No")
-				return
-		if(!P.remove_timed_ban())
-			alert(usr, "This ban has already been lifted / does not exist.", "Error", "Ok")
-		unbanpanel()
-
-	else if(href_list["unban_perma"])
-		var/datum/entity/player/unban_player = get_player_from_key(href_list["unban_perma"])
-		if(!(tgui_alert(owner, "Do you want to unban [unban_player.ckey]? They are currently permabanned for: [unban_player.permaban_reason], since [unban_player.permaban_date].", "Unban Player", list("Yes", "No")) == "Yes"))
-			return
-
-		if(!unban_player.is_permabanned)
-			to_chat(owner, "The player is not currently permabanned.")
-
-		unban_player.is_permabanned = FALSE
-		unban_player.permaban_admin_id = null
-		unban_player.permaban_date = null
-		unban_player.permaban_reason = null
-
-		unban_player.save()
-
-		message_admins("[key_name_admin(owner)] has removed the permanent ban on [unban_player.ckey].")
-		important_message_external("[owner] has removed the permanent ban on [unban_player.ckey].", "Permaban Removed")
 
 	else if(href_list["sticky"])
 		if(href_list["view_all_ckeys"])
@@ -1395,7 +1369,7 @@
 					return
 
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1447,7 +1421,7 @@
 					sent_title = "USCM High Command"
 
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1495,7 +1469,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1543,7 +1517,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1591,7 +1565,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1639,7 +1613,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1687,7 +1661,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return

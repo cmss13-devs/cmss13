@@ -47,6 +47,9 @@
 		to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
 		return FALSE
 
+	if(HAS_TRAIT(user, TRAIT_HAULED)) // If somehow they have a grenade in hand while hauled, we don't want them to prime it
+		return FALSE
+
 	return TRUE
 
 /obj/item/explosive/grenade/dropped(mob/user)

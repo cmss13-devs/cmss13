@@ -105,6 +105,8 @@
 
 /datum/moba_item/proc/set_description()
 	//description = "Cost: [total_gold_cost] [MOBA_GOLD_NAME_SHORT]"
+	if(description)
+		description += "<br>" // adds spacing between existing description and stats
 	if(health)
 		description += "<br>Health: +[health]"
 	if(health_regen)

@@ -149,7 +149,13 @@ export const MobaItemStore = (props) => {
                         <Button
                           textAlign="center"
                           width="100%"
-                          disabled={data.at_item_capacity}
+                          disabled={
+                            data.at_item_capacity ||
+                            data.gold <
+                              (chosenItem.path in data.price_overrides
+                                ? data.price_overrides[chosenItem.path]
+                                : chosenItem.cost)
+                          }
                           tooltip={
                             data.at_item_capacity
                               ? 'You have the maximum number of items allowed.'

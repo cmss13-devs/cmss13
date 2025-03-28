@@ -270,7 +270,7 @@
 	time_to_live = 2 SECONDS
 	destroy_cades = FALSE
 
-	var/slow_duration = 2 // Is 2 seconds for some reason.
+	var/slow_duration = 2.5 // Is 2 seconds for some reason.
 	var/plasma_amount = 80
 
 /obj/effect/xenomorph/spray/plasma/friendly_spray(mob/living/carbon/carbone)
@@ -293,6 +293,11 @@
 		else if (isxeno(carbone))
 			var/mob/living/carbon/xenomorph/zenomorf = carbone
 			zenomorf.emote("hiss")
+
+/obj/effect/xenomorph/spray/plasma/strong
+	time_to_live = 3.5 SECONDS
+	slow_duration = 3
+	plasma_amount = 160
 
 /obj/effect/xenomorph/spray/praetorian
 	name = "splatter"

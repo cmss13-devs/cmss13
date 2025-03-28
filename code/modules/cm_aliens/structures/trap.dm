@@ -51,6 +51,8 @@
 			. += "It's filled with pressurised gas."
 		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
 			. += "It's filled with pressurised acid."
+		if(RESIN_TRAP_PLASMA)
+			. += "It's filled with compacted plasma."
 
 /obj/effect/alien/resin/trap/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -70,7 +72,7 @@
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			burn_trap()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_PLASMA)
 			trigger_trap(TRUE)
 	..()
 
@@ -78,7 +80,7 @@
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
 			burn_trap()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_PLASMA)
 			trigger_trap(TRUE)
 	..()
 
@@ -98,7 +100,7 @@
 				to_chat(victim_mob, SPAN_DANGER("You trip on [src]!"))
 				victim_mob.apply_effect(1, WEAKEN)
 				trigger_trap()
-		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+		if(RESIN_TRAP_GAS, RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_PLASMA)
 			if(ishuman_strict(victim))
 				var/mob/living/carbon/human/victim_human = victim
 				if(victim_human.stat == DEAD || victim_human.body_position == LYING_DOWN)
@@ -133,6 +135,9 @@
 		if(RESIN_TRAP_GAS)
 			trap_type = RESIN_TRAP_GAS
 			icon_state = "trapgas"
+		if(RESIN_TRAP_PLASMA)
+			trap_type = RESIN_TRAP_PLASMA
+			icon_state = "trapplasma"
 
 /obj/effect/alien/resin/trap/proc/burn_trap()
 	var/area/A = get_area(src)
@@ -152,6 +157,9 @@
 
 		if(RESIN_TRAP_ACID3)
 			return /obj/effect/xenomorph/spray/strong
+
+		if(RESIN_TRAP_PLASMA)
+			return /obj/effect/xenomorph/spray/plasma/strong
 
 /obj/effect/alien/resin/trap/proc/trigger_trap(destroyed = FALSE)
 	set waitfor = 0
@@ -176,7 +184,7 @@
 			smoke_system.start()
 			set_state()
 			clear_tripwires()
-		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3)
+		if(RESIN_TRAP_ACID1, RESIN_TRAP_ACID2, RESIN_TRAP_ACID3, RESIN_TRAP_PLASMA)
 			trap_type_name = "acid"
 			var/spray_type = get_spray_type(trap_type)
 
@@ -292,6 +300,8 @@
 
 		if(isburrower(X))
 			set_state(RESIN_TRAP_ACID3)
+		else if(istype(X.strain, /datum/xeno_strain/sculptor))
+			set_state(RESIN_TRAP_PLASMA)
 		else
 			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
 

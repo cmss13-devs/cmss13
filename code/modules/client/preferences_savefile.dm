@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 31
+#define SAVEFILE_VERSION_MAX 32
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -198,13 +198,7 @@
 		be_special &= ~BE_KING
 		S["be_special"] << be_special
 
-	if(savefile_version < 31) // Increment the savefile version
-		var/pref_toggles
-		S["toggle_prefs"] >> pref_toggles
-		pref_toggles |= ~TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
-		S["toggle_prefs"] << pref_toggles
-
-	if(savefile_version < 32)
+	if(savefile_version < 31)
 		for(var/i in 1 to MAX_SAVE_SLOTS)
 			S.cd = "/character[i]"
 
@@ -222,6 +216,12 @@
 			S["gear"] = new_list
 
 		S.cd = "/"
+
+	if(savefile_version < 32)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= ~TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
+		S["toggle_prefs"] << pref_toggles
 
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1

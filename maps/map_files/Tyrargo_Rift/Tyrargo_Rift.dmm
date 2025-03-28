@@ -140,6 +140,9 @@
 "aaE" = (
 /turf/open/floor/strata/green3/east,
 /area/tyrargo/indoors/market/ground)
+"aaF" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/tyrargo/oob)
 "aaG" = (
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob)
@@ -58768,6 +58771,24 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/north,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_exterior/north)
+"cWG" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/area/tyrargo/oob)
+"cWH" = (
+/turf/open/floor/almayer_hull,
+/area/tyrargo/oob)
+"cWI" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/tyrargo/oob)
+"cWJ" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/tyrargo/outdoors/colony_exterior/south_west)
+"cWK" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/tyrargo/outdoors/colony_exterior/south_west)
+"cWL" = (
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/tyrargo/outdoors/colony_exterior/south_west)
 "cWM" = (
 /obj/structure/bed/chair/vehicle{
 	pixel_x = -8;
@@ -58775,6 +58796,18 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/tyrargo/indoors/saipan)
+"cWN" = (
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/tyrargo/outdoors/colony_exterior/south_west)
+"cWO" = (
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/tyrargo/outdoors/colony_exterior/south_west)
+"cWP" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/tyrargo/outdoors/colony_exterior/south_west)
+"cWQ" = (
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/tyrargo/outdoors/colony_exterior/south_west)
 "cWU" = (
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/tyrargo/indoors/mall/upper/external)
@@ -179745,9 +179778,9 @@ aaj
 aaj
 aaj
 cfl
-cWi
-cWi
-cWi
+cWP
+cWN
+cWJ
 cSg
 cSg
 cSg
@@ -179927,9 +179960,9 @@ aaj
 chs
 chs
 chs
+cWQ
 cWi
-cWi
-cWi
+cWL
 cSg
 cSg
 cSg
@@ -180109,10 +180142,10 @@ chs
 chs
 chs
 chs
+cWK
+cWO
 cWi
-cWi
-cWi
-cWi
+cWJ
 cSg
 cSg
 cfg
@@ -180293,9 +180326,9 @@ chs
 chs
 chs
 chs
+cWK
 cWi
-cWi
-cWi
+cWJ
 cfg
 cfg
 cfg
@@ -180476,9 +180509,9 @@ chs
 chs
 chs
 chs
+cWK
 cWi
-cWi
-cWi
+cWJ
 cfg
 cfg
 cfg
@@ -180659,9 +180692,9 @@ chs
 chs
 cfg
 cfg
+cWK
 cWi
-cWi
-cWi
+cWJ
 cfg
 cfg
 aky
@@ -180842,7 +180875,7 @@ cfg
 cfg
 cfg
 cfg
-cWi
+cWK
 cWi
 bta
 bta
@@ -181025,9 +181058,9 @@ cfg
 cfg
 cfg
 cfg
-cWi
-bta
-bta
+cWK
+cWH
+aaF
 bta
 aaj
 aaj
@@ -181208,8 +181241,8 @@ cfg
 cfg
 cfg
 cfg
-bta
-bta
+cWI
+cWG
 bta
 bta
 aaj

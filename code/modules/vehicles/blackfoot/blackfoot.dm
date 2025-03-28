@@ -121,6 +121,7 @@
 	pixel_x = -64
 	pixel_y = -160
 	layer = ABOVE_MOB_LAYER
+	flags_atom = NO_ZFALL
 
 /obj/downwash_effect
 	icon = 'icons/obj/vehicles/blackfoot.dmi'
@@ -283,9 +284,16 @@
 	playsound(loc, 'sound/effects/metal_crash.ogg', 50, FALSE)
 	state = STATE_DESTROYED
 	update_icon()
-	var/turf/crash_turf = SSmapping.get_turf_below(get_turf(src))
-	forceMove(crash_turf)
-	cell_explosion(crash_turf, 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("blackfoot crash"))
+	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
+
+	while(SSmapping.get_turf_below(below_turf))
+		if(!fits_in_turf(below_turf))
+			break
+
+		below_turf = SSmapping.get_turf_below(below_turf)
+	
+	forceMove(below_turf)
+	cell_explosion(below_turf, 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("blackfoot crash"))
 	qdel(shadow_holder)
 	entrances = null
 
@@ -301,8 +309,16 @@
 	if(!below)
 		return
 
+	var/turf/shadow_turf = SSmapping.get_turf_below(below)
+
+	while(SSmapping.get_turf_below(shadow_turf))
+		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
+			break
+		
+		shadow_turf = SSmapping.get_turf_below(shadow_turf)
+
 	shadow_holder.dir = dir
-	shadow_holder.forceMove(below)
+	shadow_holder.forceMove(shadow_turf)
 
 /obj/vehicle/multitile/blackfoot/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
@@ -505,6 +521,16 @@
 	for(var/obj/vis_contents_holder/vis_holder in new_turf)
 		vis_holder.transform = transform_matrix
 
+/obj/vehicle/multitile/blackfoot/proc/fits_in_turf(turf/target_turf)
+	for(var/turf/cur_turf in CORNER_BLOCK_OFFSET(target_turf, 3, 3, -1, 0))
+		var/area/cur_turf_area = get_area(cur_turf)
+
+		if(CEILING_IS_PROTECTED(cur_turf_area.ceiling, CEILING_PROTECTION_TIER_1) || cur_turf.density)
+			return FALSE
+
+	return TRUE
+
+
 /obj/vehicle/multitile/blackfoot/proc/toggle_sensors(mode)
 	var/obj/item/hardpoint/support/sensor_array/sensors = locate() in hardpoints
 
@@ -543,10 +569,16 @@
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO ENGINES DETECTED."))
 		return
 
-	for(var/turf/takeoff_turf in CORNER_BLOCK_OFFSET(get_turf(src), 3, 3, -1, 0))
-		var/area/takeoff_turf_area = get_area(takeoff_turf)
+	var/turf/turf_to_check = get_turf(src)
 
-		if(CEILING_IS_PROTECTED(takeoff_turf_area.ceiling, CEILING_PROTECTION_TIER_1) || takeoff_turf.density)
+	if(!fits_in_turf(turf_to_check))
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't takeoff here, the area is roofed."))
+		return
+
+	while(SSmapping.get_turf_above(turf_to_check))
+		turf_to_check = SSmapping.get_turf_above(turf_to_check)
+
+		if(!fits_in_turf(turf_to_check))
 			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't takeoff here, the area is roofed."))
 			return
 
@@ -572,8 +604,21 @@
 	update_icon()
 	var/obj/downwash_effect/downwash = locate() in get_turf(src)
 	qdel(downwash)
-	forceMove(SSmapping.get_turf_above(get_turf(src)))
-	shadow_holder = new(SSmapping.get_turf_below(get_turf(src)))
+
+	var/turf/top_turf = SSmapping.get_turf_above(get_turf(src))
+	while(SSmapping.get_turf_above(top_turf))
+		top_turf = SSmapping.get_turf_above(top_turf)
+	
+	forceMove(top_turf)
+
+	var/turf/shadow_turf = SSmapping.get_turf_below(get_turf(src))
+
+	while(SSmapping.get_turf_below(shadow_turf))
+		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
+			break
+		
+		shadow_turf = SSmapping.get_turf_below(shadow_turf)
+	shadow_holder = new(shadow_turf)
 	shadow_holder.icon_state = "[get_sprite_state()]_shadow"
 	update_rear_view()
 	START_PROCESSING(SSsuperfastobj, src)
@@ -588,12 +633,16 @@
 
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
 
-	for(var/turf/landing_turf in CORNER_BLOCK_OFFSET(below_turf, 3, 3, -1, 0))
-		var/area/landing_turf_area = get_area(landing_turf)
+	if(!fits_in_turf(below_turf))
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed or blocked by something."))
+		return
 
-		if(CEILING_IS_PROTECTED(landing_turf_area.ceiling, CEILING_PROTECTION_TIER_1) || landing_turf.density)
+	while(SSmapping.get_turf_below(below_turf))
+		if(!fits_in_turf(below_turf))
 			to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed or blocked by something."))
 			return
+
+		below_turf = SSmapping.get_turf_below(below_turf)
 
 	if(busy)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("The vehicle is currently busy performing another action."))
@@ -610,7 +659,16 @@
 
 /obj/vehicle/multitile/blackfoot/proc/finish_landing()
 	STOP_PROCESSING(SSsuperfastobj, src)
-	forceMove(SSmapping.get_turf_below(get_turf(src)))
+
+	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
+
+	while(SSmapping.get_turf_below(below_turf))
+		if(!fits_in_turf(below_turf))
+			break
+
+		below_turf = SSmapping.get_turf_below(below_turf)
+	
+	forceMove(below_turf)
 	qdel(shadow_holder)
 	flags_atom &= ~NO_ZFALL
 	state = STATE_DEPLOYED

@@ -374,7 +374,7 @@
 	user.forceMove(get_step(user, dir))
 
 /obj/structure/blackfoot_doorgun
-		name = "M866 Automatic Grenade Launcher"
+	name = "M866 Automatic Grenade Launcher"
 	desc = "A belt-fed blowback operated automatic grenade launcher system, mounted directly to the aft end of the Blackfoot. The superstructure is hydraulically assisted so that the operator can adjust the gun with minimal force input. The gun fires 20mm Hornet-type grenades that disperse smaller caliber projectiles over a wide area, useful for incapacitating a large group of soft targets. "
 	icon = 'icons/obj/vehicles/interiors/blackfoot_64x64.dmi'
 	icon_state = "doorgun"

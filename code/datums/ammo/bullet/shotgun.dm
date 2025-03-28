@@ -46,7 +46,6 @@
 	name = "electrostatic solid slug"
 	icon_state = "bullet_iff"
 	handful_state = "es7_slug"
-	sound_hit = "energy_hit"
 	sound_miss = "energy_miss"
 	sound_bounce = "energy_bounce"
 	hit_effect_color = "#00aeff"

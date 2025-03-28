@@ -47,6 +47,7 @@ type OccupantData = {
   toxLoss: number;
   fireLoss: number;
   hasBlood: BooleanLike;
+  totalReagents: number;
 } & Partial<HumanData>;
 
 type Data = {
@@ -67,7 +68,7 @@ export const Autodoc = (props) => {
   const { data } = useBackend<Data>();
   const { hasOccupant } = data;
   const body = hasOccupant ? <AutodocMain /> : <AutodocEmpty />;
-  const windowHeight = hasOccupant ? 675 : 150;
+  const windowHeight = hasOccupant ? 700 : 150;
   return (
     <Window width={500} height={windowHeight}>
       <Window.Content className="Layout__content--flexColumn">
@@ -137,6 +138,17 @@ const AutodocOccupant = (props) => {
             </LabeledList.Item>
           </>
         )}
+        <LabeledList.Item label="Reagents">
+          <ProgressBar
+            value={occupant.totalReagents / 60}
+            ranges={{
+              bad: [1, Infinity],
+              average: [0.11, 0.99],
+            }}
+          >
+            {round(occupant.totalReagents, 1)}
+          </ProgressBar>
+        </LabeledList.Item>
       </LabeledList>
     </Section>
   );

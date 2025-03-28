@@ -718,6 +718,7 @@
 		occupantData["toxLoss"] = occupant.getToxLoss()
 		occupantData["fireLoss"] = occupant.getFireLoss()
 		occupantData["hasBlood"] = 0
+		occupantData["totalReagents"] = occupant.reagents.total_volume
 
 		// I'm not sure WHY you'd want to put a simple_animal in a sleeper, but precedent is precedent
 		if(ishuman(occupant))

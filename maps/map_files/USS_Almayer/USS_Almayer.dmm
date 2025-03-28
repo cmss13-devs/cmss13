@@ -9713,6 +9713,11 @@
 	pixel_x = 8;
 	pixel_y = 16
 	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 29;
+	pixel_x = -4;
+	layer = 2.9
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/numbertwobunks)
 "azU" = (
@@ -14512,6 +14517,11 @@
 	name = "Brig Lockdown Shutters";
 	pixel_y = 24;
 	req_access_txt = "3"
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27;
+	pixel_x = 19;
+	layer = 2.9
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/chief_mp_office)
@@ -34274,7 +34284,8 @@
 /area/almayer/hallways/lower/port_fore_hallway)
 "hEl" = (
 /obj/structure/sign/calendar/wy{
-	pixel_y = 29
+	pixel_y = 29;
+	pixel_x = -12
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -34878,9 +34889,6 @@
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 8;
 	pixel_y = 36
-	},
-/obj/item/frame/light_fixture/small{
-	pixel_y = 17
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)
@@ -50139,7 +50147,8 @@
 "oqw" = (
 /obj/structure/sign/calendar/ua{
 	pixel_y = 30;
-	pixel_x = 2
+	pixel_x = 2;
+	layer = 2.9
 	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
@@ -51517,9 +51526,6 @@
 	name = "broken M57 'Larry's Will' smartgun";
 	pixel_x = -7;
 	pixel_y = 3
-	},
-/obj/item/frame/light_fixture/small{
-	pixel_y = 17
 	},
 /obj/structure/machinery/door_control{
 	id = "crate_room4";
@@ -61556,7 +61562,8 @@
 /area/almayer/squads/req)
 "tiF" = (
 /obj/structure/machinery/keycard_auth{
-	pixel_y = 25
+	pixel_y = 27;
+	pixel_x = 8
 	},
 /obj/structure/filingcabinet/documentation/military_police{
 	pixel_y = 16;
@@ -73657,6 +73664,9 @@
 /obj/structure/surface/table/almayer,
 /obj/item/pizzabox/margherita{
 	pixel_y = 8
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 27
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)

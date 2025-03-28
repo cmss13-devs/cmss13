@@ -221,10 +221,6 @@
 				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [splode]")))
 				deconstruct(FALSE)
 
-/obj/item/weapon/gun/ex_act(severity, explosion_direction)
-	explosion_throw(severity, explosion_direction)
-	blast_gun_durability(severity) // exploded guns should be handled through gun.dm
-
 /obj/item/mob_launch_collision(mob/living/L)
 	forceMove(L.loc)
 	..()

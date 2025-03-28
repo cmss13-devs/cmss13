@@ -737,6 +737,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(gun_durability < GUN_DURABILITY_MAX)
 		gun_durability = min(gun_durability + amount + total_repair_bonus, GUN_DURABILITY_MAX)
 
+/obj/item/weapon/gun/ex_act(severity, explosion_direction)
+	explosion_throw(severity, explosion_direction)
+	blast_gun_durability(severity) // exploded guns should be handled through gun.dm
+
 /obj/item/weapon/gun/proc/acid_gun_durability() //for acid use specifically, ill probably refactor this
 	if(gun_durability == GUN_DURABILITY_BROKEN) //fix your guns man
 		visible_message(SPAN_XENODANGER("[src] collapses under its own weight into a puddle of goop and undigested debris!"))

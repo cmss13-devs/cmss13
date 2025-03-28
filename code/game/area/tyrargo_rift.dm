@@ -13,16 +13,13 @@
 	name = "Tyrargo - Indoors"
 	icon_state = "unknown"
 	ceiling = CEILING_METAL
-//area	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
 
 /area/tyrargo/outdoors
 	name = "Tyrargo - Outdoors"
 	icon_state = "unknown"
 	ceiling = CEILING_NONE
-//	soundscape_playlist = SCAPE_PL_LV759_OUTDOORS
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
-//	soundscape_interval = 25
 
 /area/tyrargo/underground
 	name = "Tyrargo - Underground"
@@ -324,6 +321,22 @@
 	ceiling = CEILING_NONE
 	requires_power = FALSE
 
+// Gararge
+
+/area/tyrargo/indoors/mall
+	name = "Tyrargo Wesfeld Mall - Ground"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	icon_state = "HH_Mines"
+	unoviable_timer = FALSE
+
+/area/tyrargo/indoors/mall/upper
+	name = "Tyrargo Wesfeld Mall - Upper"
+
+/area/tyrargo/indoors/mall/upper/external
+	name = "Tyrargo Wesfeld Mall - Upper/External"
+	ceiling = CEILING_NONE
+	requires_power = FALSE
+
 // Administration
 
 /area/tyrargo/indoors/admin
@@ -491,9 +504,7 @@
 /area/tyrargo/outdoors/army_staging
 	name = "32nd Armor Division: Staging Area - Southern Outskirts"
 	icon_state = "Holodeck"
-	ceiling = CEILING_NO_PROTECTION
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	minimap_color = MINIMAP_AREA_SEC_CAVE
 	requires_power = FALSE
-	ambience_exterior = AMBIENCE_TYRARGO_CITY

@@ -96,11 +96,16 @@
 	shrapnel_chance = 0
 
 // Reskinned rubber bullet used for the ES-4 CL pistol.
-/datum/ammo/bullet/pistol/rubber/stun
+/datum/ammo/bullet/pistol/rubber/es4
 	name = "stun pistol bullet"
 	icon_state = "cm_laser"
 	sound_override = null
-
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	sound_hit = "energy_hit"
+	sound_miss = "energy_miss"
+	sound_bounce = "energy_bounce"
+	hit_effect_color = "#00aeff"
+	stamina_damage = 30
 	accuracy = HIT_ACCURACY_TIER_4
 
 // Used by M1911, Deagle and KT-42

@@ -46,6 +46,10 @@
 	name = "electrostatic solid slug"
 	icon_state = "bullet_iff"
 	handful_state = "es7_slug"
+	sound_hit = "energy_hit"
+	sound_miss = "energy_miss"
+	sound_bounce = "energy_bounce"
+	hit_effect_color = "#00aeff"
 	sound_override = 'sound/weapons/gun_es7lethal.ogg'
 	damage = 60
 	penetration = ARMOR_PENETRATION_TIER_8
@@ -80,14 +84,28 @@
 	handful_state = "shock_slug"
 	icon_state = "cm_laser"
 	sound_override = 'sound/weapons/gun_es7.ogg'
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	sound_hit = "energy_hit"
+	sound_miss = "energy_miss"
+	sound_bounce = "energy_bounce"
 	max_range = 12
 	shrapnel_chance = 0
 	damage = 0
 	stamina_damage = 50
+	hit_effect_color = "#00aeff"
 	accuracy = HIT_ACCURACY_TIER_3
 	shell_speed = AMMO_SPEED_TIER_4
 	handful_state = "shock_slug"
+
+/datum/ammo/bullet/shotgun/beanbag/es7/on_hit_mob(mob/mobs, obj/projectile/P)
+	if(!isyautja(mobs) && !isxeno(mobs))
+		mobs.emote("pain")
+		mobs.sway_jitter(2,1)
+
+	if(ishuman(mobs))
+		var/mob/living/carbon/human/humanus = mobs
+		humanus.disable_special_items() // Disables scout cloak
+		humanus.make_jittery(40)
 
 /datum/ammo/bullet/shotgun/incendiary
 	name = "incendiary slug"

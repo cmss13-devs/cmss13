@@ -403,7 +403,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
-	initial_jam_chance = GUN_JAM_CHANCE_SEVERE
+	initial_jam_chance = GUN_JAM_CHANCE_SEVERE // look, futuristic lever action rifle that uses a button to chamber a round? yeah its gonna jam more than your traditionals
 	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)

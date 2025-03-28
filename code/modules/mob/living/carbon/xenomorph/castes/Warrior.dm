@@ -67,10 +67,6 @@
 	skull = /obj/item/skull/warrior
 	pelt = /obj/item/pelt/warrior
 
-	skull = /obj/item/skull/warrior
-	pelt = /obj/item/pelt/warrior
-
-
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"
 

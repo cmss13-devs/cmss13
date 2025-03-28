@@ -55,7 +55,7 @@ type Data = {
   hasOccupant: BooleanLike;
   occupant: OccupantData;
   surgery: BooleanLike;
-  surgeries: number[];
+  surgeries: BooleanLike[];
   filtering: BooleanLike;
   blood_transfer: BooleanLike;
   heal_brute: BooleanLike;
@@ -173,7 +173,7 @@ const AutodocControls = (props) => {
         <Flex.Item>
           <Button
             onClick={() => act('surgery')}
-            disabled={!!surgery}
+            disabled={surgery}
             px="15px"
             py="12px"
             backgroundColor="#10b310"
@@ -184,7 +184,7 @@ const AutodocControls = (props) => {
         <Flex.Item>
           <Button
             onClick={() => act('clear')}
-            disabled={!!surgery}
+            disabled={surgery}
             icon="trash-can"
             iconPosition="right"
           >
@@ -217,11 +217,11 @@ const AutodocSurgeries = (props) => {
     heal_burn,
     heal_toxin,
   } = data;
-  const brute_active = surgeries['brute'] === 1 || !!heal_brute;
-  const burn_active = surgeries['burn'] === 1 || !!heal_burn;
-  const toxin_active = surgeries['toxin'] === 1 || !!heal_toxin;
-  const blood_active = surgeries['blood'] === 1 || !!blood_transfer;
-  const dialysis_active = surgeries['dialysis'] === 1 || !!filtering;
+  const brute_active = !!surgeries['brute'] || !!heal_brute;
+  const burn_active = !!surgeries['burn'] || !!heal_burn;
+  const toxin_active = !!surgeries['toxin'] || !!heal_toxin;
+  const blood_active = !!surgeries['blood'] || !!blood_transfer;
+  const dialysis_active = !!surgeries['dialysis'] || !!filtering;
   return (
     <>
       <Section title="Trauma Surgeries">
@@ -231,7 +231,7 @@ const AutodocSurgeries = (props) => {
               fluid
               mx="3px"
               selected={brute_active}
-              disabled={!!surgery}
+              disabled={surgery}
               onClick={() => !brute_active && act('brute')}
             >
               Brute Damage Treatment
@@ -239,7 +239,7 @@ const AutodocSurgeries = (props) => {
                 <Icon
                   name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -250,7 +250,7 @@ const AutodocSurgeries = (props) => {
               fluid
               mx="3px"
               selected={burn_active}
-              disabled={!!surgery}
+              disabled={surgery}
               onClick={() => !burn_active && act('burn')}
             >
               Burn Damage Treatment
@@ -258,7 +258,7 @@ const AutodocSurgeries = (props) => {
                 <Icon
                   name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -270,16 +270,16 @@ const AutodocSurgeries = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['open'] === 1}
-              disabled={!!surgery}
-              onClick={() => surgeries['open'] !== 1 && act('open')}
+              selected={surgeries['open']}
+              disabled={surgery}
+              onClick={() => !surgeries['open'] && act('open')}
             >
               Close Open Incisions
-              {surgeries['open'] === 1 && (
+              {!!surgeries['open'] && (
                 <Icon
                   name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -289,16 +289,16 @@ const AutodocSurgeries = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['shrapnel'] === 1}
-              disabled={!!surgery}
-              onClick={() => surgeries['shrapnel'] !== 1 && act('shrapnel')}
+              selected={surgeries['shrapnel']}
+              disabled={surgery}
+              onClick={() => !surgeries['shrapnel'] && act('shrapnel')}
             >
               Shrapnel Removal Surgery
-              {surgeries['shrapnel'] === 1 && (
+              {!!surgeries['shrapnel'] && (
                 <Icon
                   name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -313,7 +313,7 @@ const AutodocSurgeries = (props) => {
               fluid
               mx="3px"
               selected={blood_active}
-              disabled={!!surgery}
+              disabled={surgery}
               onClick={() => !blood_active && act('blood')}
             >
               Blood Transfusion
@@ -321,7 +321,7 @@ const AutodocSurgeries = (props) => {
                 <Icon
                   name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -332,7 +332,7 @@ const AutodocSurgeries = (props) => {
               fluid
               mx="3px"
               selected={dialysis_active}
-              disabled={!!surgery}
+              disabled={surgery}
               onClick={() => !dialysis_active && act('dialysis')}
             >
               Dialysis
@@ -340,7 +340,7 @@ const AutodocSurgeries = (props) => {
                 <Icon
                   name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -351,7 +351,7 @@ const AutodocSurgeries = (props) => {
               fluid
               mx="3px"
               selected={toxin_active}
-              disabled={!!surgery}
+              disabled={surgery}
               onClick={() => !toxin_active && act('toxin')}
             >
               Bloodstream Toxin Removal
@@ -359,7 +359,7 @@ const AutodocSurgeries = (props) => {
                 <Icon
                   name={surgery ? 'arrows-rotate' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -382,16 +382,16 @@ const AutodocSurgeriesEx = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['internal'] === 1}
-              disabled={!!surgery}
-              onClick={() => surgeries['internal'] !== 1 && act('internal')}
+              selected={surgeries['internal']}
+              disabled={surgery}
+              onClick={() => !surgeries['internal'] && act('internal')}
             >
               Internal Bleeding Surgery
-              {surgeries['internal'] === 1 && (
+              {!!surgeries['internal'] && (
                 <Icon
                   name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -403,16 +403,16 @@ const AutodocSurgeriesEx = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['broken'] === 1}
-              disabled={!!surgery}
-              onClick={() => surgeries['broken'] !== 1 && act('broken')}
+              selected={surgeries['broken']}
+              disabled={surgery}
+              onClick={() => !surgeries['broken'] && act('broken')}
             >
               Broken Bone Surgery
-              {surgeries['broken'] === 1 && (
+              {!!surgeries['broken'] && (
                 <Icon
                   name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -426,18 +426,16 @@ const AutodocSurgeriesEx = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['organdamage'] === 1}
-              disabled={!!surgery}
-              onClick={() =>
-                surgeries['organdamage'] !== 1 && act('organdamage')
-              }
+              selected={surgeries['organdamage']}
+              disabled={surgery}
+              onClick={() => !surgeries['organdamage'] && act('organdamage')}
             >
               Organ Damage Treatment
-              {surgeries['organdamage'] === 1 && (
+              {!!surgeries['organdamage'] && (
                 <Icon
                   name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}
@@ -449,16 +447,16 @@ const AutodocSurgeriesEx = (props) => {
             <Button
               fluid
               mx="3px"
-              selected={surgeries['larva'] === 1}
-              disabled={!!surgery}
-              onClick={() => surgeries['larva'] !== 1 && act('larva')}
+              selected={surgeries['larva']}
+              disabled={surgery}
+              onClick={() => !surgeries['larva'] && act('larva')}
             >
               Parasite Extraction
-              {surgeries['larva'] === 1 && (
+              {!!surgeries['larva'] && (
                 <Icon
                   name={surgery ? 'hourglass' : 'plus'}
                   position="absolute"
-                  right="1px"
+                  right="0px"
                   top="4px"
                 />
               )}

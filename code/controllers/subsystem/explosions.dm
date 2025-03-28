@@ -5,7 +5,9 @@ SUBSYSTEM_DEF(explosions)
 	priority = SS_PRIORITY_EXPLOSIONS
 	flags = SS_NO_INIT
 
+	///turfs being exploded
 	var/list/exploded_turfs = list()
+	///turfs being exploded, this cycle
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/explosions/stat_entry(msg)
@@ -36,13 +38,8 @@ SUBSYSTEM_DEF(explosions)
 
 		var/turf/exploded_turf = ex_args["exploded_turf"]
 
-		if (!exploded_turf || QDELETED(exploded_turf))
-			continue
-
 		exploded_turf.ex_act(ex_args["power"], ex_args["direction"], ex_args["explosion_cause_data"])
-		for(var/atom/exploded_article in exploded_turf)
-			if(!exploded_article || QDELETED(exploded_article))
-				continue
+		for(var/atom/exploded_article as anything in exploded_turf)
 			exploded_article.ex_act(ex_args["power"], ex_args["direction"], ex_args["explosion_cause_data"])
 
 		if (MC_TICK_CHECK)

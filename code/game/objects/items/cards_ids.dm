@@ -249,7 +249,7 @@
 
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
-	desc = "It lists a callsign and a blood type. Issued to Whiteout protocol teams only."
+	desc = "It lists a callsign and a series number. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
 
 /obj/item/card/id/marshal

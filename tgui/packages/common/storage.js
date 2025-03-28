@@ -138,7 +138,7 @@ class IFrameIndexedDbBackend {
         }
       });
 
-      setTimeout(() => resolve(false), 10);
+      setTimeout(() => resolve(false), 100);
     });
 
     this.iframeWindow.postMessage({ type: 'ping' }, '*');
@@ -237,13 +237,15 @@ export class StorageProxy {
   constructor() {
     this.backendPromise = (async () => {
       if (!Byond.TRIDENT) {
-        if (Byond.storageCdn) {
+        if (Byond.storageCdn && !window.hubStorage) {
           const iframe = new IFrameIndexedDbBackend();
           await iframe.ready();
 
           if ((await iframe.ping()) === true) {
             // Remove with 516... eventually
             if (await iframe.get('byondstorage-migrated')) return iframe;
+
+            Byond.winset(null, 'browser-options', '+byondstorage');
 
             await new Promise((resolve) => {
               document.addEventListener('byondstorageupdated', async () => {

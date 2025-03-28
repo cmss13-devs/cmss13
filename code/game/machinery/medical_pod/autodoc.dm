@@ -114,7 +114,8 @@
 
 /obj/structure/machinery/medical_pod/autodoc/proc/heal_limb(mob/living/carbon/human/human, brute, burn)
 	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
-	if(!length(parts)) return
+	if(!length(parts))
+		return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		picked.heal_damage(brute, burn, TRUE)

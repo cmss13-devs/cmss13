@@ -121,14 +121,14 @@
 			begin_supply_phase()
 			return
 	// 1 in 5 chance per round to trigger a resupply phase
-	// Will only roll beyond wave 3, and 3 waves after the previous resupply phase.
-	if(prob(20) && (survival_wave >= (last_resupply_round + 3)))
+	// Will only roll beyond wave 3, and 5 waves after the previous resupply phase.
+	if(prob(20) && (survival_wave >= (last_resupply_round + 5)))
 		begin_supply_phase()
 		return
 	survival_wave++
 	// 1 in 5 chance per round to trigger a mass-cas (NIGHTMARE) phase
-	// Will only roll beyond wave 3, and 3 waves after the previous mass-cas phase.
-	if(prob(20) && (survival_wave >= (last_masscas_round + 3)))
+	// Will only roll beyond wave 3, and 5 waves after the previous mass-cas phase.
+	if(prob(20) && (survival_wave >= (last_masscas_round + 5)))
 		stage = TUTORIAL_HM_PHASE_NIGHTMARE
 		// increases difficulty by 2 levels, but not beyond the max.
 		for(var/i in 1 to 2)
@@ -250,11 +250,10 @@
 			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler))
 		if(limb.can_bleed_internally)
 			for(var/datum/wound/wound as anything in limb.wounds)
-				if(!wound.internal)
-					return
-				injury_type |= INTERNAL_BLEEDING
-				healing_tasks[limb] = injury_type
-				RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
+				if(wound.internal)
+					injury_type |= INTERNAL_BLEEDING
+					healing_tasks[limb] = injury_type
+					RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
 	if(!length(healing_tasks) || bypass)
 		make_agent_leave(target)
 	else
@@ -302,10 +301,10 @@
 			init_dragging_agent(dragging_agent)
 			dragging_agent.do_pull(target)
 			dragging_agents[dragging_agent] = target
-			move_dragging_agent()
+			movement_handler()
 		else
 			active_agents |= target
-			move_active_agents()
+			movement_handler()
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/handle_speech(mob/living/carbon/human/target)
 
@@ -326,33 +325,51 @@
 
 	target.say("[pick(help_me)]")
 
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_dragging_agent()
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/movement_handler()
 
 	listclearnulls(dragging_agents)
+	listclearnulls(active_agents)
 	for(var/mob/living/carbon/human/dragging_agent as anything in dragging_agents)
-		var/mob/living/carbon/human/target = dragging_agents[dragging_agent]
-		var/turf/dropoff_point = agents[target]
-		if(locate(dragging_agent) in agent_spawn_location)
-			var/initial_step_direction = pick((agent_spawn_location.y) <= (dropoff_point.y) ? NORTH : SOUTH)
-			var/turf/target_turf = get_step(dragging_agent, initial_step_direction)
-			dragging_agent.Move(target_turf, initial_step_direction)
-		if(dropoff_point.x <= dragging_agent.x) // this is MEANT to move one tile west of the dropzone
-			var/turf/target_turf = get_step(dragging_agent, WEST)
-			dragging_agent.Move(target_turf, WEST)
-		else if(dropoff_point.x == (dragging_agent.x + 1)) // only tests when beyond the dropzone
-			if(((dropoff_point.y - dragging_agent.y) >= 2) || ((dropoff_point.y - dragging_agent.y) <= (-2))) // handholding if the dragging agent was born yesterday
-				var/step_direction = pick((dragging_agent.y) > (dropoff_point.y) ? SOUTH : NORTH)
-				var/turf/target_turf = get_step(dragging_agent, step_direction)
-				dragging_agent.Move(target_turf, step_direction)
-				var/turf/drag_turf = get_step(dragging_agent, EAST)
+		move_agent(dragging_agent, dragging_agents)
+	for(var/mob/living/carbon/human/active_agent as anything in active_agents)
+		move_agent(active_agent, active_agents)
+
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_agent(mob/agent, list/agent_list)
+
+	var/dropoff_point_offset
+	var/mob/living/carbon/human/target = agent
+	if(agent in dragging_agents)
+		target = agent_list[agent]
+		dropoff_point_offset = 1
+	var/turf/dropoff_point = agents[target]
+	var/step_direction
+	var/turf/target_turf
+	if(locate(agent) in agent_spawn_location)
+		var/initial_step_direction = pick((agent_spawn_location.y) <= (dropoff_point.y) ? NORTH : SOUTH)
+		target_turf = get_step(agent, initial_step_direction)
+		agent.Move(target_turf, initial_step_direction)
+	if((dropoff_point.x > (agent.x  + dropoff_point_offset)) || (dropoff_point.x < (agent.x  + dropoff_point_offset)))
+		step_direction = pick((agent.x + dropoff_point_offset) > (dropoff_point.x) ? WEST : EAST)
+		target_turf = get_step(agent, step_direction)
+		agent.Move(target_turf, step_direction)
+	else if(dropoff_point.x == (agent.x + dropoff_point_offset))
+		if(((dropoff_point.y - agent.y) >= (1 + dropoff_point_offset)) || ((dropoff_point.y - agent.y) <= -(1 + dropoff_point_offset)))
+			step_direction = pick((agent.y) > (dropoff_point.y) ? SOUTH : NORTH)
+			target_turf = get_step(agent, step_direction)
+			agent.Move(target_turf, step_direction)
+			if(agent in dragging_agents)
+				var/turf/drag_turf = get_step(agent, EAST)
 				target.Move(drag_turf, EAST)
-				return
-			dragging_agent.mob_flags |= IMMOBILE_ACTION
-			target.Move(dropoff_point)
-			dragging_agent.stop_pulling()
-			handle_speech(dragging_agent)
-			dragging_agents -= dragging_agent
-			make_dragging_agent_leave(dragging_agent)
+			return
+		handle_speech(agent)
+		target.Move(dropoff_point)
+		if(agent in dragging_agents)
+			agent.mob_flags |= IMMOBILE_ACTION
+			agent.stop_pulling()
+			agent_list -= agent
+			make_dragging_agent_leave(agent)
+		if(agent in active_agents)
+			agent_list -= agent
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_dragging_agent_leave(mob/living/carbon/human/dragging_agent)
 
@@ -361,29 +378,6 @@
 	dragging_agent.density = FALSE
 	QDEL_IN(dragging_agent, 2.5 SECONDS)
 	animate(dragging_agent, 2.5 SECONDS, alpha = 0, easing = CUBIC_EASING)
-
-/datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_active_agents()
-
-	listclearnulls(active_agents) // failsafe
-	for(var/mob/living/carbon/human/realistic_dummy/active_agent as anything in active_agents)
-		var/turf/dropoff_point = agents[active_agent]
-		if(locate(active_agent) in agent_spawn_location)
-			var/initial_step_direction = pick((agent_spawn_location.y) <= (dropoff_point.y) ? NORTH : SOUTH)
-			var/turf/target_turf = get_step(active_agent, initial_step_direction)
-			active_agent.Move(target_turf, initial_step_direction)
-		if((dropoff_point.x > active_agent.x) || (dropoff_point.x < active_agent.x))
-			var/step_direction = pick((active_agent.x) > (dropoff_point.x) ? WEST : EAST)
-			var/turf/target_turf = get_step(active_agent, step_direction)
-			active_agent.Move(target_turf, step_direction)
-		else if(dropoff_point.x == active_agent.x)
-			if(((dropoff_point.y - active_agent.y) >= 2) || ((dropoff_point.y - active_agent.y) <= (-2)))
-				var/step_direction = pick((active_agent.y) > (dropoff_point.y) ? SOUTH : NORTH)
-				var/turf/target_turf = get_step(active_agent, step_direction)
-				active_agent.Move(target_turf, step_direction)
-				return
-			active_agent.Move(dropoff_point)
-			active_agents -= active_agent
-			handle_speech(active_agent)
 
 // NOTE: bypass variable is a boolean used in the simulate_evac proc, used to stop to the balloon text from playing
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/make_agent_leave(mob/living/carbon/human/realistic_dummy/agent, bypass)
@@ -476,10 +470,8 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/process(delta_time)
 
-	if(length(dragging_agents))
-		move_dragging_agent()
-	if(length(active_agents))
-		move_active_agents()
+	if(length(dragging_agents) || length(active_agents))
+		movement_handler()
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/item_cleanup(obj/item/clothing/suit/storage/marine/medium/armor)
 	SIGNAL_HANDLER

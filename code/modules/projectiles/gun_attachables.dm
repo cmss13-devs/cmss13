@@ -337,10 +337,17 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bayonet/upp_replica
 	name = "\improper Type 80 bayonet"
+	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
 	attach_icon = "upp_bayonet_a"
-	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
+
+/obj/item/attachable/bayonet/wy
+	name = "\improper SA120 L7 bayonet"
+	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
+	icon_state = "wy_bayonet"
+	attach_icon = "wy_bayonet_a"
+	unacidable = TRUE
 
 /obj/item/attachable/bayonet/upp
 	name = "\improper Type 80 bayonet"

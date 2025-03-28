@@ -545,9 +545,11 @@
 		continue
 
 	while(heal_brute||heal_burn||heal_toxin||filtering||blood_transfer)
-		if(!surgery) break
+		if(!surgery)
+			break
 		sleep(20)
-		if(prob(5)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps as it continues working.");
+		if(prob(5))
+			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps as it continues working.");
 
 	patient.pain.recalculate_pain()
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")

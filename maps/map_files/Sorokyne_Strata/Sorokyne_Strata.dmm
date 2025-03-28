@@ -290,6 +290,12 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaY" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -362,6 +368,19 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abm" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/outpost/canteen)
+"abn" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -369,6 +388,15 @@
 "abp" = (
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
+/area/strata/ag/interior/outpost/security)
+"abq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
@@ -394,6 +422,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abw" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -10550,6 +10584,9 @@
 /area/strata/ag/interior/outside/administration)
 "beT" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outside/administration)
 "beU" = (
@@ -17852,6 +17889,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
 /obj/item/clothing/glasses/thermal/syndi,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/purp1,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "czT" = (
@@ -19482,6 +19522,9 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/communications,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNF" = (
@@ -38084,7 +38127,7 @@ aoj
 cnv
 cru
 azx
-dCq
+abw
 ard
 arV
 dCq
@@ -52468,7 +52511,7 @@ blb
 iNi
 boV
 blb
-bTF
+aaY
 byF
 bBX
 ryK
@@ -56465,7 +56508,7 @@ atJ
 ddK
 bWM
 ijo
-ceI
+abq
 gAm
 gAm
 gAm
@@ -57867,7 +57910,7 @@ ijo
 awf
 ceI
 ijo
-aAD
+abn
 aCd
 aDf
 cea
@@ -62418,7 +62461,7 @@ cjn
 cjn
 bFx
 cjn
-chd
+abm
 jnt
 chd
 aFz

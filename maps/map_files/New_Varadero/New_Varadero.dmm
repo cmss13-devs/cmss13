@@ -214,6 +214,18 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
+"aaP" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aaQ" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1090,6 +1102,9 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "aHu" = (
@@ -10880,6 +10895,9 @@
 /area/varadero/exterior/pool)
 "iIt" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "iIC" = (
@@ -47312,7 +47330,7 @@ hsl
 giN
 hyr
 sXb
-tzw
+aaQ
 aJP
 svH
 kBo
@@ -50072,7 +50090,7 @@ fEZ
 htt
 wVf
 wVf
-idw
+aaP
 jQB
 psb
 idw

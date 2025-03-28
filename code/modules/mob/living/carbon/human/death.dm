@@ -87,7 +87,7 @@
 		var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 		var/see_humans_on_tacmap = main_hive.see_humans_on_tacmap
 		for(var/mob/living/carbon/human/cur_human as anything in GLOB.alive_human_list)
-			if(!is_mainship_level(cur_human.z))
+			if(!is_mainship_level(cur_human.z)) // This doesn't detect lockers
 				continue
 			shipside_humans_count++
 			if(last_living_human && see_humans_on_tacmap)
@@ -98,29 +98,32 @@
 		if(!see_humans_on_tacmap && shipside_humans_count < (main_hive.get_real_total_xeno_count() * HIJACK_RATIO_FOR_TACMAP))
 			xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
 			main_hive.see_humans_on_tacmap = TRUE
-		if(last_living_human && shipside_humans_count <= 1 && (GLOB.last_qm_callout + 2 MINUTES) < world.time)
-			GLOB.last_qm_callout = world.time
-			// Tell the xenos where the human is.
-			xeno_announcement("I sense the last tallhost hiding in [get_area_name(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
-			// Tell the human he is the last guy.
-			if(last_living_human.client)
-				to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))
+		if(last_living_human && shipside_humans_count == 1)
+			if((GLOB.last_qm_callout + 2 MINUTES) < world.time)
+				GLOB.last_qm_callout = world.time
+				// Tell the xenos where the human is.
+				xeno_announcement("I sense the last tallhost hiding in [get_area_name(last_living_human)].", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
+				// Tell the human he is the last guy.
+				if(last_living_human.client)
+					to_chat(last_living_human, SPAN_ANNOUNCEMENT_HEADER_BLUE("Panic creeps up your spine. You realize that you are the last survivor."))
+				//tell the ghosts
+				notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
 			//disable delaycloaks
 			var/mob/living/carbon/human/delayer = last_living_human
 			if(istype(delayer.back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
 				var/obj/item/storage/backpack/marine/satchel/scout_cloak/delayer_cloak = delayer.back
 				if(delayer_cloak.camo_active)
 					delayer_cloak.deactivate_camouflage(delayer)
+				if((delayer_cloak.cloak_cooldown - world.time) < 30 MINUTES)
+					to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))
 				delayer_cloak.cloak_cooldown = world.time + 1 HOURS //fuck you
-				to_chat(delayer, SPAN_WARNING("Your [delayer_cloak] fizzles out and breaks!"))
 			if(istype(delayer.wear_suit, /obj/item/clothing/suit/storage/marine/ghillie))
 				var/obj/item/clothing/suit/storage/marine/ghillie/delayer_armour = delayer.wear_suit
 				if(delayer_armour.camo_active)
 					delayer_armour.deactivate_camouflage(delayer)
-				delayer_armour.can_camo = FALSE //fuck you
-				to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
-			//tell the ghosts
-			notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
+				if(delayer_armour.can_camo)
+					delayer_armour.can_camo = FALSE //fuck you
+					to_chat(delayer, SPAN_WARNING("Your [delayer_armour]'s camo system breaks!"))
 
 	var/death_message = species.death_message
 	if(HAS_TRAIT(src, TRAIT_HARDCORE))

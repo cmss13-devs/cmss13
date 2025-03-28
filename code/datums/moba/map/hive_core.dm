@@ -23,7 +23,7 @@
 	name = "[lowertext(hive.prefix)][name]"
 	var/obj/effect/landmark/moba_hive_core_turret/turret_marker = locate() in range(5, src)
 	if(turret_marker)
-		linked_turret = new turret_type(get_turf(turret_marker))
+		linked_turret = new turret_type(get_turf(turret_marker), hivecore_turret = TRUE)
 		linked_turret.hivenumber = hivenumber
 		linked_turret.name = "[lowertext(hive.prefix)][linked_turret.name]"
 	healthcheck()

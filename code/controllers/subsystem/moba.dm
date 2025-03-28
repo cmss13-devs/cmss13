@@ -23,6 +23,11 @@ SUBSYSTEM_DEF(moba)
 	/// I'd like to avoid any weirdness so I have this
 	var/currently_creating_map = FALSE
 
+	var/panic_ticks = 0
+	var/panic_tick_max = 5
+
+	var/running_simulation = FALSE
+
 /datum/controller/subsystem/moba/Initialize() //random zonenote add sudden death for when the game round ends
 	for(var/caste_path in subtypesof(/datum/moba_caste))
 		var/datum/moba_caste/caste = new caste_path
@@ -57,8 +62,6 @@ SUBSYSTEM_DEF(moba)
 
 		if(MC_TICK_CHECK)
 			return
-
-
 
 	#if defined(MOBA_TESTING)
 	if(length(players_in_queue))
@@ -105,16 +108,22 @@ SUBSYSTEM_DEF(moba)
 	var/list/randomized_queue = shuffle(players_in_queue.Copy())
 	mm_loop:
 		for(var/i in 1 to 3)
+			if(running_simulation)
+				message_admins("Matchmaking prio [i] beginning.")
 			for(var/datum/moba_player/player as anything in randomized_queue)
 				if((player in team1_players) || (player in team2_players))
 					continue
 
 				if((player.queue_slots[i].position in team1_needed_roles) && !(player.queue_slots[i].caste in already_taken_castes_team1))
+					if(running_simulation)
+						message_admins("Player [player.tied_ckey] picked for team 1 at prio [i] for caste [player.queue_slots[i].caste] in lane [player.queue_slots[i].position].")
 					team1_needed_roles -= player.queue_slots[i].position
 					already_taken_castes_team1 += player.queue_slots[i].caste
 					team1_players += new /datum/moba_queue_player(player, player.queue_slots[i].position, player.queue_slots[i].caste)
 					randomized_queue -= player
 				else if((player.queue_slots[i].position in team2_needed_roles) && !(player.queue_slots[i].caste in already_taken_castes_team2))
+					if(running_simulation)
+						message_admins("Player [player.tied_ckey] picked for team 2 at prio [i] for caste [player.queue_slots[i].caste] in lane [player.queue_slots[i].position].")
 					team2_needed_roles -= player.queue_slots[i].position
 					already_taken_castes_team2 += player.queue_slots[i].caste
 					team2_players += new /datum/moba_queue_player(player, player.queue_slots[i].position, player.queue_slots[i].caste)
@@ -123,13 +132,95 @@ SUBSYSTEM_DEF(moba)
 				if(length(team1_players) == MOBA_PLAYERS_PER_TEAM && length(team2_players) == MOBA_PLAYERS_PER_TEAM)
 					break mm_loop
 
+	if(running_simulation)
+		message_admins("Team 1: [length(team1_players)] / 4, Team 2: [length(team2_players)] / 4")
+
+	// Autofilling if we don't have a full two teams
+	// Currently autofilling doesn't prioritize people getting their caste picks, should be changed later
+	// How it works is that we just take a person from the list and force them into a role as needed
+	// First we try to find a caste that fits the role, but if not we go for w/e
+	if((panic_ticks >= panic_tick_max) && length(team1_needed_roles))
+		message_admins("Autofilling team 1 for MOBA")
+		var/list/available_castes = list()
+		for(var/datum/moba_caste/caste as anything in GLOB.moba_castes)
+			if(caste in already_taken_castes_team1)
+				continue
+
+			available_castes += caste
+
+		team1_autofill:
+			for(var/role in team1_needed_roles)
+				var/datum/moba_player/player = pick(randomized_queue)
+				for(var/datum/moba_caste/caste as anything in available_castes)
+					if(role in caste.ideal_roles)
+						if(running_simulation)
+							message_admins("Player [player.tied_ckey] AUTOFILLED for team 1 for caste [caste] in lane [role].")
+						team1_needed_roles -= role
+						already_taken_castes_team1 += caste
+						team1_players += new /datum/moba_queue_player(player, role, caste)
+						available_castes -= caste
+						randomized_queue -= player
+						continue team1_autofill
+
+				// We failed to find a suitable caste to put the person as so we're settling for anything
+				var/datum/moba_caste/forced_caste = pick(available_castes)
+				if(running_simulation)
+					message_admins("Player [player.tied_ckey] UNIDEALLY AUTOFILLED for team 1 for caste [forced_caste] in lane [role].")
+				team1_needed_roles -= role
+				already_taken_castes_team1 += forced_caste
+				team1_players += new /datum/moba_queue_player(player, role, forced_caste)
+				available_castes -= forced_caste
+				randomized_queue -= player
+
+	if((panic_ticks >= panic_tick_max) && length(team2_needed_roles))
+		message_admins("Autofilling team 2 for MOBA")
+		var/list/available_castes = list()
+		for(var/datum/moba_caste/caste as anything in GLOB.moba_castes)
+			if(caste in already_taken_castes_team2)
+				continue
+
+			available_castes += caste
+
+		team2_autofill:
+			for(var/role in team2_needed_roles)
+				var/datum/moba_player/player = pick(randomized_queue)
+				for(var/datum/moba_caste/caste as anything in available_castes)
+					if(role in caste.ideal_roles)
+						if(running_simulation)
+							message_admins("Player [player.tied_ckey] AUTOFILLED for team 2 for caste [caste] in lane [role].")
+						team2_needed_roles -= role
+						already_taken_castes_team2 += caste
+						team2_players += new /datum/moba_queue_player(player, role, caste)
+						available_castes -= caste
+						randomized_queue -= player
+						continue team2_autofill
+
+				// We failed to find a suitable caste to put the person as so we're settling for anything
+				var/datum/moba_caste/forced_caste = pick(available_castes)
+				if(running_simulation)
+					message_admins("Player [player.tied_ckey] UNIDEALLY AUTOFILLED for team 2 for caste [forced_caste] in lane [role].")
+				team2_needed_roles -= role
+				already_taken_castes_team2 += forced_caste
+				team2_players += new /datum/moba_queue_player(player, role, forced_caste)
+				available_castes -= forced_caste
+				randomized_queue -= player
+
+
 	if(length(team1_players) == MOBA_PLAYERS_PER_TEAM && length(team2_players) == MOBA_PLAYERS_PER_TEAM)
-		make_game(team1_players, team2_players)
+		if(running_simulation)
+			message_admins("Game would be made.")
+			for(var/datum/moba_player/player as anything in players_in_queue)
+				remove_from_queue(player)
+				qdel(player)
+		else
+			make_game(team1_players, team2_players)
 		currently_creating_map = FALSE
+		panic_ticks = 0
 	else
 		COOLDOWN_START(src, matchmaking_cooldown, 5 SECONDS)
-		// We redo this check every 5s until we either drop below 8 in queue or finally make a game
-		// Should eventually add something that autofills people if there's enough in queue but missing players for a given lane
+		panic_ticks++
+		if(running_simulation)
+			message_admins("Game would not be made. Panic [panic_ticks].")
 
 /datum/controller/subsystem/moba/proc/make_game(list/team1_players, list/team2_players)
 	currently_creating_map = TRUE
@@ -201,3 +292,15 @@ SUBSYSTEM_DEF(moba)
 	SIGNAL_HANDLER
 
 	remove_from_queue(source)
+
+/datum/controller/subsystem/moba/proc/simulate_matchmaking(players = 8)
+	running_simulation = TRUE
+	for(var/i in 1 to players)
+		var/datum/moba_player/player = new()
+		player.tied_ckey = i
+		for(var/i2 in 1 to MOBA_ALLOWED_POSITIONS)
+			var/datum/moba_player_slot/new_slot = new
+			new_slot.position = pick(list(MOBA_LANE_TOP, MOBA_LANE_SUPPORT, MOBA_LANE_JUNGLE, MOBA_LANE_BOT))
+			new_slot.caste = pick(GLOB.moba_castes)
+			player.queue_slots += new_slot
+		add_to_queue(player)

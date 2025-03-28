@@ -45,7 +45,7 @@
 	var/global_gold_bounty = 50
 
 
-/obj/effect/alien/resin/moba_turret/Initialize(mapload, hivenum)
+/obj/effect/alien/resin/moba_turret/Initialize(mapload, hivenum, hivecore_turret = FALSE)
 	. = ..()
 	used_ammo = new /datum/ammo/xeno/acid/turret
 	if(hivenum)
@@ -58,7 +58,7 @@
 	for(var/turf/open/floor/tile in range(1, src))
 		RegisterSignal(tile, COMSIG_TURF_ENTER, PROC_REF(on_try_enter))
 	healthcheck()
-	if(!(locate(/obj/effect/moba_reuse_object_spawner) in get_turf(src)))
+	if(!hivecore_turret && !(locate(/obj/effect/moba_reuse_object_spawner) in get_turf(src)))
 		new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
 	if(gold_bounty || global_gold_bounty)
 		AddComponent(/datum/component/moba_obj_destroyed_reward, gold_bounty, 0, hivenumber, global_gold_bounty)

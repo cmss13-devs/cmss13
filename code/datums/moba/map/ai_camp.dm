@@ -25,10 +25,13 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 /obj/effect/moba_camp_spawner/Initialize(mapload, ...)
 	. = ..()
 	GLOB.mapless_moba_camps += src
+	if(!(locate(/obj/effect/moba_reuse_object_spawner) in get_turf(src)))
+		new /obj/effect/moba_reuse_object_spawner(get_turf(src), type)
 
 /obj/effect/moba_camp_spawner/Destroy(force)
 	. = ..()
-	QDEL_LIST(spawned_mobs)
+	QDEL_LIST(spawned_mobs) // qdeling them is intentional
+	watched_tiles = null
 
 /obj/effect/moba_camp_spawner/proc/spawn_mobs()
 	if(!length(watched_tiles))

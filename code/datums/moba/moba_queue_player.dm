@@ -11,4 +11,5 @@
 
 /datum/moba_queue_player/Destroy(force, ...)
 	player = null
+	caste = null
 	return ..()

@@ -1,5 +1,9 @@
 /datum/moba_controller
 	var/map_id = 0
+	/// Persistent across rounds so we can track individual games
+	var/game_id = 1
+
+	var/datum/entity/moba_round_report/round_record
 
 	var/list/datum/moba_player/players
 	var/list/datum/moba_player/team1 = list()
@@ -19,6 +23,7 @@
 
 	var/team1_max_wards = 2
 	var/team1_ward_count = 1
+	var/team1_placed_wards = 0
 	var/team1_ward_regen_time = 120 SECONDS
 	var/list/team1_wards = list()
 	var/list/image/team1_ward_images = list()
@@ -27,6 +32,7 @@
 
 	var/team2_max_wards = 2
 	var/team2_ward_count = 1
+	var/team2_placed_wards = 0
 	var/team2_ward_regen_time = 120 SECONDS
 	var/list/team2_wards = list()
 	var/list/image/team2_ward_images = list()
@@ -65,15 +71,18 @@
 	var/carp_initial_spawn_time = 15 MINUTES
 	var/carp_spawn_time = 7 MINUTES
 	var/megacarp_alive = FALSE
+	var/megacarps_killed = 0
 
 	COOLDOWN_DECLARE(hivebot_boss_spawn_cooldown)
 	var/hivebot_boss_spawned = FALSE
 	var/hivebot_spawn_time = 7 MINUTES
+	var/hivebots_killed = 0
 
 	COOLDOWN_DECLARE(reaper_boss_spawn_cooldown)
 	var/reaper_initial_spawn_time = 25 MINUTES
 	var/reaper_spawn_time = 6 MINUTES
 	var/reaper_alive = FALSE
+	var/reapers_killed = 0
 
 /datum/moba_controller/New(list/team1_players, list/team2_players, id)
 	. = ..()
@@ -175,6 +184,9 @@
 			qdel(found_object)
 		new spawner.path_to_spawn(spawner_turf)
 
+	for(var/obj/effect/moba_camp_spawner/spawner as anything in GLOB.mapless_moba_camps) // we remake the camp spawners
+		spawner.set_map_id(map_id)
+
 	left_base = unused_map.left_base
 	right_base = unused_map.right_base
 	ai_waypoints_botleft = unused_map.ai_waypoints_botleft
@@ -244,7 +256,13 @@
 	if(team2_ward_count <= team2_max_wards)
 		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 
+	round_record = SSentity_manager.select(/datum/entity/moba_round_report)
+	round_record.save()
+	round_record.sync_then(CALLBACK(src, PROC_REF(set_gameid)))
 	game_started = TRUE
+
+/datum/moba_controller/proc/set_gameid()
+	game_id = round_record.id
 
 /datum/moba_controller/proc/handle_tick()
 	if(!game_started)
@@ -373,6 +391,8 @@
 
 		player.get_tied_xeno().play_screen_text("[hive.name] wins.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
 
+	do_db_logging(winning_hive)
+
 	sleep(5 SECONDS)
 
 	for(var/datum/moba_player/player as anything in players)
@@ -383,13 +403,59 @@
 	team1_ward_images.Cut()
 	team2_ward_images.Cut()
 
+	for(var/mob/living/carbon/xenomorph/lesser_drone/drone in GLOB.xeno_mob_list)
+		if(drone.hivenumber == XENO_HIVE_MOBA_LEFT || drone.hivenumber == XENO_HIVE_MOBA_RIGHT)
+			qdel(drone)
+
 	SSmoba.unused_maps += new /datum/unused_moba_map(src)
 	qdel(src)
+
+/datum/moba_controller/proc/do_db_logging(winning_hive)
+	for(var/datum/moba_queue_player/player_data as anything in (team1_data + team2_data))
+		round_record.total_kills += player_data.player.kills
+		round_record.total_deaths += player_data.player.deaths
+
+		var/datum/entity/moba_player_report/report = DB_ENTITY(/datum/entity/moba_player_report)
+		report.round_id = GLOB.round_id
+		report.game_id = game_id
+		if((player_data.player.right_team && (winning_hive == XENO_HIVE_MOBA_RIGHT)) || (!player_data.player.right_team && (winning_hive == XENO_HIVE_MOBA_LEFT)))
+			report.won_game = TRUE
+		else
+			report.won_game = FALSE
+		report.kills = player_data.player.kills
+		report.deaths = player_data.player.deaths
+		report.caste_name = player_data.caste.name
+		var/list/item_list = list()
+		for(var/datum/moba_item/item_path as anything in player_data.player.held_item_types)
+			item_list += item_path::name
+		report.items_json = json_encode(item_list)
+		report.level = player_data.player.level
+		report.gold = player_data.player.gold
+		report.creep_score = player_data.player.creep_score
+		report.lane = player_data.role
+		report.game_length = game_duration
+		report.save()
+		//report.detach()
+
+	if(winning_hive == XENO_HIVE_MOBA_LEFT)
+		round_record.left_won = TRUE
+	else
+		round_record.left_won = FALSE
+	round_record.round_time = game_duration
+	round_record.game_level = game_level
+	round_record.killed_hivebots = hivebots_killed
+	round_record.killed_megacarps = megacarps_killed
+	round_record.killed_reapers = reapers_killed
+	round_record.leftside_wards_used = team1_placed_wards
+	round_record.rightside_wards_used = team2_placed_wards
+	round_record.save()
+	//round_record.detach()
 
 /datum/moba_controller/proc/use_team1_ward()
 	if(team1_ward_count <= team1_max_wards)
 		addtimer(CALLBACK(src, PROC_REF(regenerate_team1_ward)), team1_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 	team1_ward_count--
+	team1_placed_wards++
 	update_team1_ward_text()
 
 /datum/moba_controller/proc/regenerate_team1_ward()
@@ -432,6 +498,7 @@
 	if(team2_ward_count <= team2_max_wards)
 		addtimer(CALLBACK(src, PROC_REF(regenerate_team2_ward)), team2_ward_regen_time, TIMER_UNIQUE|TIMER_OVERRIDE)
 	team2_ward_count--
+	team2_placed_wards++
 	update_team2_ward_text()
 
 /datum/moba_controller/proc/regenerate_team2_ward()

@@ -38,6 +38,7 @@ export type BoxProps = Partial<{
   as: string;
   children: ReactNode;
   className: string | BooleanLike;
+  id: string;
   style: Partial<CSSStyleDeclaration>;
 }> &
   BooleanProps &
@@ -106,7 +107,7 @@ const mapBooleanPropTo = (attrName, attrValue) => (style, value) => {
 const mapDirectionalUnitPropTo = (attrName, unit, dirs) => (style, value) => {
   if (typeof value === 'number' || typeof value === 'string') {
     for (let i = 0; i < dirs.length; i++) {
-      style[attrName + '-' + dirs[i]] = unit(value);
+      style[attrName + dirs[i]] = unit(value);
     }
   }
 };

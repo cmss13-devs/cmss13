@@ -52,7 +52,7 @@
 		return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/door/poddoor/proc/pry_open(mob/living/carbon/xenomorph/X, time = 4 SECONDS)
-	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),\
+	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),
 	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
@@ -61,7 +61,7 @@
 		to_chat(X, "You stop prying [src] open.")
 		return
 
-	X.visible_message(SPAN_DANGER("[X] pries open [src]."), \
+	X.visible_message(SPAN_DANGER("[X] pries open [src]."),
 	SPAN_XENONOTICE("You pry open [src]."), max_distance = 3)
 
 	open()
@@ -228,6 +228,11 @@
 	emp_proof = TRUE
 	openspeed = 6
 
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/emp_act(power, severity)
+	if(emp_proof)
+		return FALSE
 	..()
 	return TRUE

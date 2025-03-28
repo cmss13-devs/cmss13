@@ -30,7 +30,7 @@
 	response_harm  = "punches"
 	friendly = "nuzzles"
 	see_in_dark = 50
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 	speak_chance = 2
 	speak_emote = "hisses"
@@ -86,7 +86,7 @@
 	/// A weakref to the food object that the mob is trying to eat.
 	var/datum/weakref/food_target_ref
 	///A list of foods the mob is interested in eating. The mob will eat anything that has meat protein in it even if it's not in this list.
-	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/packaged_meal, /obj/item/reagent_container/food/snacks/resin_fruit)
+	var/list/acceptable_foods = list(/obj/item/reagent_container/food/snacks/mre_food, /obj/item/reagent_container/food/snacks/resin_fruit)
 	///Is the mob currently eating the food_target?
 	var/is_eating = FALSE
 	///Cooldown dictating how long the mob will wait between eating food.
@@ -155,7 +155,7 @@
 
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(change_tongue_offset))
 
-	GLOB.giant_lizards_alive++
+	GLOB.giant_lizards_alive += src
 	change_real_name(src, "[name] ([rand(1, 999)])")
 	pounce_callbacks[/mob] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_mob_wrapper)
 	pounce_callbacks[/turf] = DYNAMIC(/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/pounced_turf_wrapper)
@@ -309,12 +309,16 @@
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/rejuvenate()
 	//if the mob was dead beforehand, it's now alive and therefore it's an extra lizard to the count
 	if(stat == DEAD)
-		GLOB.giant_lizards_alive++
+		GLOB.giant_lizards_alive += src
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/death(datum/cause_data/cause_data, gibbed = FALSE, deathmessage = "lets out a waning growl....")
 	playsound(loc, 'sound/effects/giant_lizard_death.ogg', 70)
-	GLOB.giant_lizards_alive--
+	GLOB.giant_lizards_alive -= src
+	return ..()
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/Destroy()
+	GLOB.giant_lizards_alive -= src
 	return ..()
 
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/attack_hand(mob/living/carbon/human/attacking_mob)
@@ -337,10 +341,10 @@
 		if(on_fire)
 			adjust_fire_stacks(-5, min_stacks = 0)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-			visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"), \
+			visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"),
 			SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 			if(fire_stacks <= 0)
-				visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"), \
+				visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"),
 				SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 			return
 		if(!resting)
@@ -752,7 +756,7 @@
 	return FALSE
 
 //Immediately retaliate after being attacked.
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/Retaliate()
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/Retaliate(pack_attack = FALSE)
 	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(stat == DEAD || get_dist(src, target_mob) < 6 || on_fire)
 		return
@@ -762,15 +766,22 @@
 
 	target_mob = FindTarget()
 	target_mob_ref = WEAKREF(target_mob)
-	if(target_mob_ref) // qdeleted check
-		growl(target_mob)
-		MoveToTarget()
+	if(!target_mob_ref)
+		return
 
-	//basic pack behaviour
-	for(var/mob/living/simple_animal/hostile/retaliate/giant_lizard/pack_member in view(12, src))
-		if(pack_member == src || pack_member.target_mob_ref?.resolve())
+	growl(target_mob)
+	MoveToTarget()
+
+	if(pack_attack)
+		return
+
+	alert_others()
+
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/alert_others()
+	for(var/mob/living/simple_animal/hostile/retaliate/giant_lizard/pack_member as anything in GLOB.giant_lizards_alive)
+		if(pack_member == src || pack_member.target_mob_ref?.resolve() || get_dist(src, pack_member) > 7)
 			continue
-		pack_member.Retaliate()
+		pack_member.Retaliate(pack_attack = TRUE)
 
 ///Proc for moving to targets. walk_to() doesn't check for resting and status effects so we will do it ourselves.
 /mob/living/simple_animal/hostile/retaliate/giant_lizard/proc/MoveTo(target, distance = 1, retreat = FALSE, time = 6 SECONDS, return_to_combat = FALSE)
@@ -843,7 +854,9 @@
 
 	var/successful_attacks = 0
 	for(var/times_to_attack = 3, times_to_attack > 0, times_to_attack--)
+		//we got stunned, so we can ravage no longer
 		if(body_position == LYING_DOWN)
+			is_ravaging = FALSE
 			return
 
 		if(Adjacent(target))

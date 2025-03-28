@@ -31,6 +31,9 @@ GLOBAL_PROTECT(href_token)
 	href_token = GenerateToken()
 	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
+	if(rights & R_PROFILER)
+		log_debug("Adding [ckey] to APP/admin.")
+		world.SetConfig("APP/admin", ckey, "role=admin")
 
 // Letting admins edit their own permission giver is a poor idea
 /datum/admins/vv_edit_var(var_name, var_value)
@@ -44,9 +47,6 @@ GLOBAL_PROTECT(href_token)
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		GLOB.admins |= C
-		if(owner.admin_holder.rights & R_PROFILER)
-			if(!world.GetConfig("admin", C.ckey))
-				world.SetConfig("APP/admin", C.ckey, "role = coder")
 
 /datum/admins/proc/disassociate()
 	if(owner)
@@ -64,7 +64,8 @@ if it doesn't return 1 and show_msg=1 it will prints a message explaining why th
 generally it would be used like so:
 
 /proc/admin_proc()
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_ADMIN))
+		return
 	to_world("you have enough rights!")
 
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call

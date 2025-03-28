@@ -7,6 +7,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
 
 //get an assetdatum or make a new one
 /proc/get_asset_datum(type)
+	RETURN_TYPE(/datum/asset)
+
 	return GLOB.asset_datums[type] || new type()
 
 /datum/asset
@@ -261,11 +263,12 @@ GLOBAL_LIST_EMPTY(asset_datums)
 				continue
 			asset = fcopy_rsc(asset) //dedupe
 			var/prefix2 = (length(directions) > 1) ? "[dir2text(direction)]." : ""
-			var/asset_name = sanitize_filename("[prefix].[prefix2][icon_state_name].png")
+			var/asset_name = sanitize_filename("[prefix ? "[prefix]." : ""][prefix2][icon_state_name].png")
 			if (generic_icon_names)
 				asset_name = "[generate_asset_name(asset)].png"
 
 			SSassets.transport.register_asset(asset_name, asset)
+			assets[asset_name] = asset
 
 /datum/asset/simple/icon_states/multiple_icons
 	_abstract = /datum/asset/simple/icon_states/multiple_icons
@@ -349,7 +352,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 /datum/asset/json/proc/generate()
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("generate() not implemented for [type]!")
-
 
 /datum/asset/changelog_item
 	_abstract = /datum/asset/changelog_item

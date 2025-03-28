@@ -62,7 +62,7 @@
 			user.visible_message(SPAN_WARNING("\The [user] tried to strap \the [src] onto [target_mob] but instead gets a tail swipe to the head!"))
 			return FALSE
 
-	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."), \
+	user.visible_message(SPAN_NOTICE("\The [user] starts strapping \the [src] onto [target_mob]."),
 	SPAN_NOTICE("You start strapping \the [src] onto [target_mob]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 	if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_GENERIC, target_mob, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
@@ -162,7 +162,8 @@
 	var/obj/item/card/id/card = H.get_idcard()
 	if(!card || locking_id.registered_name != card.registered_name)
 		return FALSE
-	else return TRUE
+	else
+		return TRUE
 
 /obj/item/storage/backpack/update_icon()
 	overlays.Cut()
@@ -565,11 +566,6 @@
 	name = "\improper USCM chestrig"
 	desc = "A chestrig used by some USCM personnel."
 	icon_state = "chestrig"
-	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
-	)
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
 
@@ -638,10 +634,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		icon_state = "[base_icon]_ear"
 		return
 
-	if(internal_transmitter.caller)
+	if(internal_transmitter.inbound_call)
 		icon_state = "[base_icon]_ring"
+		item_state = "rto_backpack_ring"
 	else
 		icon_state = base_icon
+		item_state = "rto_backpack"
 
 /obj/item/storage/backpack/marine/satchel/rto/forceMove(atom/dest)
 	. = ..()
@@ -784,7 +782,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A backpack specifically designed to hold ammunition for the M402 mortar."
 	icon_state = "mortarpack"
 	max_w_class = SIZE_HUGE
-	storage_slots = 8
+	storage_slots = 12
 	can_hold = list(/obj/item/mortar_shell)
 	xeno_types = null
 
@@ -1105,13 +1103,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper Technician Welder Chestrig"
 	desc = "A specialized Chestrig worn by technicians and engineers. It carries one medium fuel tank for quick welder refueling and use."
 	icon_state = "welder_chestrig"
-	item_state = "welder_chestrig"
-	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
-	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
-	)
 	max_storage_space = 12
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	max_fuel = 100
 	worn_accessible = TRUE
 
@@ -1217,6 +1209,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	worn_accessible = TRUE
 	max_fuel = 180
+
+/obj/item/storage/backpack/marine/engineerpack/ert/four_slot
+	max_fuel = 100
+	max_storage_space = 12
 
 /obj/item/storage/backpack/molle
 	name = "\improper T13 MOLLE Satchel"
@@ -1363,6 +1359,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 24
 
+/obj/item/storage/backpack/rmc/medium/medic
+	name = "standard RMC backpack"
+	desc = "A TWE military standard-carry RMC combat pack MK3 with a green cross denoting that it's a medic's backpack." //Surely CLF won't shoot the doc, right?
+	icon_state = "backpack_medium_medic"
+	item_state = "backpack_medium_medic"
+
 /obj/item/storage/backpack/rmc/light
 	name = "lightweight RMC backpack"
 	desc = "A TWE military light-carry RMC combat pack MK3."
@@ -1371,24 +1373,24 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	worn_accessible = TRUE
 	max_storage_space = 21
 
-/obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently
+/obj/item/storage/backpack/rmc/frame //One sorry sod should have to lug this about spawns in their shuttle currently (making it a more useless backpack was devious. Reworks it to hold ammo and medkits, as well as nades.)
 	name = "\improper RMC carry-frame"
 	desc = "A backpack specifically designed to hold equipment for commandos."
-	icon_state = "backpack_frame"
+	icon_state = "backpack_frame_0"
 	item_state = "backpack_frame"
 	max_w_class = SIZE_HUGE
-	storage_slots = 7
+	storage_slots = 5
 	can_hold = list(
-		/obj/item/ammo_box/magazine/misc/mre,
-		/obj/item/storage/firstaid/regular,
-		/obj/item/storage/firstaid/adv,
-		/obj/item/storage/firstaid/surgical,
-		/obj/item/device/defibrillator/compact,
-		/obj/item/tool/surgery/surgical_line,
-		/obj/item/tool/surgery/synthgraft,
-		/obj/item/storage/box/packet/rmc/he,
-		/obj/item/storage/box/packet/rmc/incin,
+		/obj/item/storage/firstaid,
+		/obj/item/device/defibrillator,
+		/obj/item/storage/box/packet,
+		/obj/item/ammo_box,
 	)
+	var/base_icon_state = "backpack_frame"
+
+/obj/item/storage/backpack/rmc/frame/update_icon()
+	. = ..()
+	icon_state = "[base_icon_state]_[length(contents)]"
 
 /obj/item/storage/backpack/general_belt/rmc //the breachers belt
 	name = "\improper RMC general utility belt"

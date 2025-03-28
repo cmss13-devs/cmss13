@@ -39,7 +39,8 @@
 	src.botcard = new(src)
 	if(GLOB.RoleAuthority)
 		var/datum/job/ctequiv = GLOB.RoleAuthority.roles_by_name[JOB_CARGO_TECH]
-		if(ctequiv) botcard.access = ctequiv.get_access()
+		if(ctequiv)
+			botcard.access = ctequiv.get_access()
 
 	src.locked = 0 // Start unlocked so roboticist can set them to patrol.
 
@@ -83,17 +84,17 @@
 Status: []<BR>
 Behaviour controls are [src.locked ? "locked" : "unlocked"]<BR>
 Maintenance panel is [src.open ? "opened" : "closed"]"},
-text("<A href='?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A>"))
+text("<A href='byond://?src=\ref[src];operation=start'>[src.on ? "On" : "Off"]</A>"))
 	if(!src.locked || isRemoteControlling(user))
-		dat += text({"<BR>Cleans Blood: []<BR>"}, text("<A href='?src=\ref[src];operation=blood'>[src.blood ? "Yes" : "No"]</A>"))
-		dat += text({"<BR>Patrol station: []<BR>"}, text("<A href='?src=\ref[src];operation=patrol'>[src.should_patrol ? "Yes" : "No"]</A>"))
-	// dat += text({"<BR>Beacon frequency: []<BR>"}, text("<A href='?src=\ref[src];operation=freq'>[src.beacon_freq]</A>"))
+		dat += text({"<BR>Cleans Blood: []<BR>"}, text("<A href='byond://?src=\ref[src];operation=blood'>[src.blood ? "Yes" : "No"]</A>"))
+		dat += text({"<BR>Patrol station: []<BR>"}, text("<A href='byond://?src=\ref[src];operation=patrol'>[src.should_patrol ? "Yes" : "No"]</A>"))
+	// dat += text({"<BR>Beacon frequency: []<BR>"}, text("<A href='byond://?src=\ref[src];operation=freq'>[src.beacon_freq]</A>"))
 	if(src.open && !src.locked)
 		dat += text({"
 Odd looking screw twiddled: []<BR>
 Weird button pressed: []"},
-text("<A href='?src=\ref[src];operation=screw'>[src.screwloose ? "Yes" : "No"]</A>"),
-text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"]</A>"))
+text("<A href='byond://?src=\ref[src];operation=screw'>[src.screwloose ? "Yes" : "No"]</A>"),
+text("<A href='byond://?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"]</A>"))
 
 	show_browser(user, dat, "Cleaner v1.0 controls", "autocleaner")
 	onclose(user, "autocleaner")
@@ -183,7 +184,8 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 		if (LAZYLEN(patrol_path) < 1)
 			var/datum/radio_frequency/frequency = SSradio.return_frequency(beacon_freq)
 
-			if(!frequency) return
+			if(!frequency)
+				return
 
 			closest_dist = 9999
 			closest_loc = null
@@ -206,7 +208,8 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 
 	if(target && length(path) == 0)
 		spawn(0)
-			if(!src || !target) return
+			if(!src || !target)
+				return
 			src.path = AStar(src.loc, src.target.loc, /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30, id=botcard)
 			if (!path) path = list()
 			if(length(src.path) == 0)

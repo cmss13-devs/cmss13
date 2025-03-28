@@ -309,10 +309,6 @@
 /obj/structure/largecrate,
 /turf/open/floor/bot/north,
 /area/bigredv2/outside/cargo)
-"bk" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "bm" = (
 /obj/item/device/flashlight,
 /obj/item/reagent_container/spray/cleaner,
@@ -531,7 +527,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "cj" = (
-/obj/structure/machinery/computer/ordercomp,
+/obj/structure/machinery/computer/supply,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "ck" = (
@@ -932,7 +928,7 @@ av
 av
 av
 ai
-bk
+av
 av
 af
 bD

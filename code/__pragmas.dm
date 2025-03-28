@@ -24,6 +24,7 @@
 #pragma InvalidIndexOperation error
 #pragma PointlessPositionalArgument error
 #pragma ProcArgumentGlobal error
+#pragma ScopeOperandNamedType error
 
 //3000-3999
 #pragma EmptyBlock error

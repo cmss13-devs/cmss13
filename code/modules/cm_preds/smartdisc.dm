@@ -30,8 +30,8 @@
 	var/mob/living/L = find_target(user)
 	icon_state = initial(icon_state) + "_active"
 	if(L)
-		throw_atom(L.loc, 4, SPEED_FAST, usr)
-	throw_atom(usr, 12, SPEED_SLOW, usr)
+		throw_atom(get_turf(L), 4, SPEED_FAST, user)
+	throw_atom(user, 12, SPEED_SLOW, user)
 	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()

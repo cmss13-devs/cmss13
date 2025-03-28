@@ -6,10 +6,6 @@
 	name = "\improper Basira-Armstrong bolt-action hunting rifle"
 	desc = "Named after its eccentric designers, the Basira-Armstrong is a cheap but reliable civilian bolt-action rifle frequently found in the outer colonies. Despite its legally-mandated limited magazine capacity, its light weight and legendary accuracy makes it popular among hunters and competitive shooters."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
-	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
-	fire_sound = 'sound/weapons/gun_boltaction.ogg'
-	var/open_bolt_sound ='sound/weapons/handling/gun_boltaction_open.ogg'
-	var/close_bolt_sound ='sound/weapons/handling/gun_boltaction_close.ogg'
 	icon_state = "boltaction"
 	item_state = "hunting"
 	item_icons = list(
@@ -18,6 +14,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
 	)
+	mouse_pointer = 'icons/effects/mouse_pointer/sniper_mouse.dmi'
+
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 5
@@ -30,6 +28,15 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini/hunting,
@@ -41,21 +48,25 @@
 	civilian_usable_override = TRUE
 	unacidable = TRUE // Like other 1-of-a-kind weapons, it can't be gotten rid of that fast
 	explo_proof = TRUE
+
+	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
+	fire_sound = 'sound/weapons/gun_boltaction.ogg'
+	var/open_bolt_sound ='sound/weapons/handling/gun_boltaction_open.ogg'
+	var/close_bolt_sound ='sound/weapons/handling/gun_boltaction_close.ogg'
+
 	var/bolted = TRUE // FALSE IS OPEN, TRUE IS CLOSE
 	var/bolt_delay
 	var/recent_cycle //world.time to see when they last bolted it.
 	/// If this gun should change icon states when the bolt is open
 	var/has_openbolt_icon = TRUE
 
-/obj/item/weapon/gun/boltaction/get_mouse_pointer()
-	return 'icons/effects/mouse_pointer/sniper_mouse.dmi'
-
 /obj/item/weapon/gun/boltaction/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 5, "rail_y" = 18, "under_x" = 25, "under_y" = 14, "stock_x" = 20, "stock_y" = 9)
 
 /obj/item/weapon/gun/boltaction/Initialize(mapload, spawn_empty)
 	. = ..()
-	if(current_mag && current_mag.current_rounds > 0) load_into_chamber()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
 	bolt_delay = FIRE_DELAY_TIER_5
 
 /obj/item/weapon/gun/boltaction/update_icon() // needed for bolt action sprites

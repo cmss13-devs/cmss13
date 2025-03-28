@@ -25,13 +25,14 @@
 
 	if(!(species.flags & IS_SYNTHETIC))
 		//Nutrition decrease
-		if(nutrition > 0 && stat != 2)
-			nutrition = max (0, nutrition - HUNGER_FACTOR)
+		if(stat != DEAD)
+			nutrition = max(0, nutrition - HUNGER_FACTOR)
 
 
 		handle_trace_chems()
 
-	else nutrition = NUTRITION_NORMAL //synthetics are never hungry
+	else
+		nutrition = NUTRITION_NORMAL //synthetics are never hungry
 
 	return //TODO: DEFERRED
 

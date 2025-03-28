@@ -641,6 +641,7 @@
 	name = "river"
 	icon_state = "seashallow"
 	can_bloody = FALSE
+	fishing_allowed = TRUE
 	var/icon_overlay = "riverwater"
 	var/covered = 0
 	var/covered_name = "grate"
@@ -724,7 +725,8 @@
 
 
 /turf/open/gm/river/proc/cleanup(mob/living/carbon/human/M)
-	if(!M || !istype(M)) return
+	if(!M || !istype(M))
+		return
 
 	if(M.back)
 		if(M.back.clean_blood())
@@ -754,7 +756,8 @@
 
 /turf/open/gm/river/poison/Entered(mob/living/M)
 	..()
-	if(istype(M)) M.apply_damage(55,TOX)
+	if(istype(M))
+		M.apply_damage(55,TOX)
 
 /turf/open/gm/river/darkred_pool
 	color = "#990000"
@@ -776,6 +779,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
 	default_name = "shallow ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
@@ -784,6 +788,7 @@
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
 	default_name = "deep ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean/Entered(atom/movable/AM)
 	. = ..()
@@ -791,7 +796,7 @@
 		if(!ismob(AM))
 			return
 		var/mob/unlucky_mob = AM
-		var/turf/target_turf = get_random_turf_in_range(AM.loc, 3, 0)
+		var/turf/target_turf = get_random_turf_in_range(AM, 3, 0)
 		var/datum/launch_metadata/LM = new()
 		LM.target = target_turf
 		LM.range = get_dist(AM.loc, target_turf)
@@ -807,7 +812,8 @@
 	if(world.time % 5)
 		if(ismob(AM))
 			var/mob/rivermob = AM
-			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -868,6 +874,7 @@
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
 	is_groundmap_turf = FALSE // Not real ground
+	fishing_allowed = TRUE
 
 
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
@@ -878,7 +885,8 @@
 	no_overlay = TRUE
 	supports_surgery = FALSE
 
-
+/turf/open/gm/river/no_overlay/sewage
+	name = "sewage"
 
 
 //ELEVATOR SHAFT-----------------------------------//
@@ -1210,6 +1218,13 @@
 
 /turf/open/shuttle/bright_red
 	icon_state = "floor4"
+
+/turf/open/shuttle/bright_red/glow
+	icon_state = "floor4"
+	light_on = TRUE
+	light_power = 2
+	light_range = 3
+	light_color = "#ff0000"
 
 /turf/open/shuttle/red
 	icon_state = "floor6"

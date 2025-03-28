@@ -9,25 +9,27 @@
 		g = "f"
 	return g
 
-/proc/get_limb_icon_name(datum/species/S, body_size, body_type, gender, limb_name, skin_color)
+/proc/get_limb_icon_name(datum/species/S, body_size, body_type, gender, limb_name, skin_color, body_presentation)
+	if(!body_presentation)
+		body_presentation = gender
 	if(S.flags & HAS_SKIN_COLOR)
 		if(S.special_body_types)
 			switch(limb_name)
 				if("torso")
-					return "[skin_color]_torso_[body_size]_[body_type]"
+					return "[skin_color]_torso_[body_size]_[body_type]_[get_gender_name(body_presentation)]"
 				if("chest")
-					return "[skin_color]_torso_[body_size]_[body_type]"
+					return "[skin_color]_torso_[body_size]_[body_type]_[get_gender_name(body_presentation)]"
 				if("head")
 					return "[skin_color]_[limb_name]"
 				if("groin")
-					return "[skin_color]_[limb_name]_[body_size]"
+					return "[skin_color]_[limb_name]"
 
 		if(!S.special_body_types)
 			switch(limb_name)
 				if("torso")
-					return "[skin_color]_torso_[body_type]_[get_gender_name(gender)]"
+					return "[skin_color]_torso_[body_type]_[get_gender_name(body_presentation)]"
 				if("chest")
-					return "[skin_color]_torso_[body_type]_[get_gender_name(gender)]"
+					return "[skin_color]_torso_[body_type]_[get_gender_name(body_presentation)]"
 				if("head")
 					return "[skin_color]_[limb_name]_[get_gender_name(gender)]"
 				if("groin")
@@ -75,10 +77,10 @@
 	else
 		switch(limb_name)
 			if ("torso")
-				return "[limb_name]_[get_gender_name(gender)]"
+				return "[limb_name]_[get_gender_name(body_presentation)]"
 
 			if ("chest")
-				return "[limb_name]_[get_gender_name(gender)]"
+				return "[limb_name]_[get_gender_name(body_presentation)]"
 
 			if ("head")
 				return "[limb_name]_[get_gender_name(gender)]"
@@ -171,7 +173,7 @@
 		body_type_icon = body_type
 
 	for(var/obj/limb/L as anything in limbs)
-		L.icon_name = get_limb_icon_name(species, body_size_icon, body_type_icon, gender, L.display_name, skin_color_icon)
+		L.icon_name = get_limb_icon_name(species, body_size_icon, body_type_icon, gender, L.display_name, skin_color_icon, body_presentation)
 
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone)
 	if(species?.flags & IS_SYNTHETIC)
@@ -271,6 +273,9 @@
 		if(istype(wear_suit, /obj/item/clothing/suit/storage/marine))
 			if(wear_suit.turn_light(src, toggle_on = FALSE))
 				light_off++
+		if(istype(back, /obj/item/storage/backpack/marine/smartpack))
+			if(back.turn_light(src, toggle_on = FALSE))
+				light_off++
 		for(var/obj/item/clothing/head/helmet/marine/H in contents)
 			for(var/obj/item/attachable/flashlight/FL in H.pockets)
 				if(FL.activate_attachment(H, src, TRUE))
@@ -284,11 +289,13 @@
 				light_off++
 	if(flares)
 		for(var/obj/item/device/flashlight/flare/F in contents)
-			if(F.on) goes_out++
+			if(F.on)
+				goes_out++
 			F.turn_off(src)
 	if(misc)
 		for(var/obj/item/device/flashlight/L in contents)
-			if(istype(L, /obj/item/device/flashlight/flare)) continue
+			if(istype(L, /obj/item/device/flashlight/flare))
+				continue
 			if(L.turn_off_light(src))
 				light_off++
 		for(var/obj/item/tool/weldingtool/W in contents)

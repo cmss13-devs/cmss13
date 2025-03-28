@@ -13,9 +13,11 @@
 /// The maximum number of degrees that your body can heat up in 1 tick, when in a hot area.
 #define BODYTEMP_HEATING_MAX 30
 /// The limit the human body can take before it starts taking damage from heat.
-#define BODYTEMP_HEAT_DAMAGE_LIMIT 360.15
+#define BODYTEMP_HEAT_DAMAGE_LIMIT 373.15 // 100degC
 /// The limit the human body can take before it starts taking damage from coldness.
-#define BODYTEMP_COLD_DAMAGE_LIMIT 260.15
+#define BODYTEMP_COLD_DAMAGE_LIMIT 260.15 // -13degC
+/// The limit the human body will reach in extremely cold liquids (required for cryo effects).
+#define BODYTEMP_CRYO_LIQUID_THRESHOLD 210 // -63.15degC
 
 #define ONE_ATMOSPHERE 101.325 //kPa
 
@@ -23,6 +25,7 @@
 
 #define T0C 273.15 // 0degC
 #define T20C 293.15 // 20degC
+#define T37C 310.15 // 37degC - body temp
 #define T90C 363.15 // 90degC
 #define T120C 393.15 // 120degC
 #define TCMB 2.7 // -270.3degC

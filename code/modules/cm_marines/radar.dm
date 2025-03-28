@@ -177,7 +177,7 @@
 /datum/radar/advanced_pdtl/scan()
 	. = ..()
 	objects = list()
-	var/obj/item/clothing/accessory/pdt_bracelet/bracelet = typed_holder.linked_bracelet
+	var/obj/item/clothing/accessory/wrist/pdt_bracelet/bracelet = typed_holder.linked_bracelet
 	if(!bracelet)
 		return
 	objects += list(list(

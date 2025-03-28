@@ -1,4 +1,14 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/paper_bin/wy{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/clicky{
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/clf_station)
 "ac" = (
 /obj/structure/target/syndicate,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -172,10 +182,6 @@
 /obj/structure/closet/secure_closet/freezer/fridge/groceries,
 /obj/structure/machinery/light/small/built,
 /turf/open/floor/prison/kitchen,
-/area/adminlevel/ert_station/clf_station)
-"fk" = (
-/obj/structure/pipes/vents/pump,
-/turf/closed/wall/wood,
 /area/adminlevel/ert_station/clf_station)
 "fx" = (
 /obj/structure/largecrate/supply/medicine/blood,
@@ -443,10 +449,10 @@
 /area/adminlevel/ert_station/clf_station)
 "ma" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/storage/fancy/cigarettes/lucky_strikes_4,
 /obj/structure/machinery/light/small/built{
 	dir = 1
 	},
+/obj/structure/machinery/faxmachine/clf,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "mp" = (
@@ -811,6 +817,7 @@
 /obj/item/reagent_container/syringe/drugs{
 	pixel_y = 8
 	},
+/obj/item/storage/fancy/cigarettes/lucky_strikes_4,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "vy" = (
@@ -3049,7 +3056,7 @@ qM
 FD
 vn
 eP
-Ns
+aa
 Bn
 mw
 Ns
@@ -3418,7 +3425,7 @@ ZI
 AP
 vn
 ZI
-fk
+ZI
 cx
 xM
 ZI

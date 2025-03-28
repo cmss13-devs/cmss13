@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -6,22 +5,18 @@
  */
 
 import { classes } from 'common/react';
-import { useEffect, useRef } from 'react';
-
-import {
-  BoxProps,
-  computeBoxClassName,
-  computeBoxProps,
-} from '../components/Box';
-import { addScrollableNode, removeScrollableNode } from '../events';
+import { ComponentProps, useEffect, useRef } from 'react';
+import { Box, computeBoxClassName, computeBoxProps } from 'tgui/components/Box';
+import { addScrollableNode, removeScrollableNode } from 'tgui/events';
 
 type Props = Partial<{
   theme: string;
 }> &
-  BoxProps;
+  ComponentProps<typeof Box>;
 
 export function Layout(props: Props) {
   const { className, theme = 'weyland_yutani', children, ...rest } = props;
+  document.documentElement.className = `theme-${theme}`;
 
   return (
     <div className={'theme-' + theme}>
@@ -38,7 +33,7 @@ export function Layout(props: Props) {
 type ContentProps = Partial<{
   scrollable: boolean;
 }> &
-  BoxProps;
+  ComponentProps<typeof Box>;
 
 function LayoutContent(props: ContentProps) {
   const { className, scrollable, children, ...rest } = props;

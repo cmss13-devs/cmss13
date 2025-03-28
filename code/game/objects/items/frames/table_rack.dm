@@ -56,6 +56,10 @@
 	if(AC)
 		to_chat(user, SPAN_WARNING("You can't construct the table here!"))
 		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		return
 	var/turf/open/OT = user.loc
 	if(!(istype(OT) && OT.allow_construction))
 		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
@@ -85,6 +89,7 @@
 	desc = "A kit for a table, including a large, flat metal surface and four legs. This kit has side panels. Some assembly required."
 	icon = 'icons/obj/items/table_parts.dmi'
 	icon_state = "reinf_tableparts"
+	item_state = "reinf_tableparts"
 	matter = list("metal" = 15000) //A reinforced table. Two sheets of metal and four rods
 	table_type = /obj/structure/surface/table/reinforced
 
@@ -106,6 +111,7 @@
 	name = "wooden table parts"
 	desc = "A kit for a table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "wood_tableparts"
+	item_state = "wood_tableparts"
 	flags_atom = FPRINT
 	matter = null
 	table_type = /obj/structure/surface/table/woodentable
@@ -131,12 +137,14 @@
 	name = "poor wooden table parts"
 	desc = "A kit for a poorly crafted table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "pwood_tableparts"
+	item_state = "pwood_tableparts"
 	table_type = /obj/structure/surface/table/woodentable/poor
 
 /obj/item/frame/table/wood/fancy
 	name = "fancy wooden table parts"
 	desc = "A kit for a finely crafted mahogany table, including a large, flat wooden surface and four legs. Some assembly required."
 	icon_state = "fwood_tableparts"
+	item_state = "fwood_tableparts"
 	table_type = /obj/structure/surface/table/woodentable/fancy
 
 /*
@@ -147,6 +155,7 @@
 	name = "gamble table parts"
 	desc = "A kit for a table, including a large, flat wooden and carpet surface and four legs. Some assembly required."
 	icon_state = "gamble_tableparts"
+	item_state = "gamble_tableparts"
 	flags_atom = null
 	matter = null
 	table_type = /obj/structure/surface/table/gamblingtable
@@ -173,9 +182,8 @@
 /obj/item/frame/table/almayer
 	name = "gray table parts"
 	icon_state = "table_parts"
+	item_state = "table_parts"
 	table_type = /obj/structure/surface/table/almayer
-
-
 
 /*
  * Rack Parts
@@ -202,6 +210,10 @@
 
 /obj/item/frame/rack/attack_self(mob/user)
 	..()
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		return
 	var/turf/open/OT = user.loc
 	if(!(istype(OT) && OT.allow_construction))
 		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))

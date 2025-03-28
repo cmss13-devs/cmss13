@@ -81,8 +81,7 @@
 	return FALSE
 
 /obj/effect/timed_event/destructible/generate_callback()
-	var/turf/closed/wall/wall = get_turf(src) // ensured by check_valid_type()
-	return VARSET_CALLBACK(wall, hull, FALSE)
+	return CALLBACK(get_turf(src), TYPE_PROC_REF(/turf, remove_flag), TURF_HULL)
 
 /obj/effect/timed_event/destructible/announce_event(time_to_grab)
 	var/announcement_areas = english_list(notification_areas[type]["[time_to_grab]"])
@@ -107,7 +106,7 @@ GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
 /// are placed, it picks randomly.
 /obj/effect/sentry_landmark
 	icon = 'icons/landmarks.dmi'
-	icon_state = "x3"
+	icon_state = "map_sentry"
 
 	var/abstract_type = /obj/effect/sentry_landmark
 

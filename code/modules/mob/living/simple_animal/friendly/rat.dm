@@ -50,12 +50,3 @@
 	response_disarm = "gently pushes aside"
 	response_harm = "splats"
 	holder_type = /obj/item/holder/rat/brown/Old_Timmy
-
-/mob/living/simple_animal/mouse/rat/black/Korey
-	name = "Korey"
-	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."
-	gender = MALE
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "stamps on"
-	holder_type = /obj/item/holder/rat/black/Korey

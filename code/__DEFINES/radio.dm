@@ -80,3 +80,8 @@
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
 
+
+// Listening bug broadcast setting. Whether or not it plays only to ghosts with preferences, or doesn't show to ghosts at all.
+#define NOT_LISTENING_BUG 0
+#define LISTENING_BUG_PREF 1
+#define LISTENING_BUG_NEVER 2

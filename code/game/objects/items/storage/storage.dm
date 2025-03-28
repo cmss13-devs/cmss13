@@ -395,8 +395,26 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 ///Returns TRUE if there is room for the given item. W_class_override allows checking for just a generic W_class, meant for checking shotgun handfuls without having to spawn and delete one just to check.
 /obj/item/storage/proc/has_room(obj/item/new_item, W_class_override = null)
+	for(var/obj/item/cur_item in contents)
+		if(istype(cur_item, /obj/item/stack) && istype(new_item, /obj/item/stack))
+			var/obj/item/stack/cur_stack = cur_item
+			var/obj/item/stack/new_stack = new_item
+
+			if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
+				return TRUE
+
+		else if(istype(cur_item, /obj/item/ammo_magazine/handful) && istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			if(cur_handful.is_transferable(new_handful))
+				return TRUE
+		else
+			continue
+
 	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
+
 	//calculate storage space only for containers that don't have slots
 	if (storage_slots == null)
 		var/sum_storage_cost = W_class_override ? W_class_override : new_item.get_storage_cost() //Takes the override if there is one, the given item otherwise.
@@ -436,7 +454,8 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
 /obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
-	if(!istype(W) || (W.flags_item & NODROP)) return //Not an item
+	if(!istype(W) || (W.flags_item & NODROP))
+		return //Not an item
 
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
@@ -490,7 +509,42 @@ user can be null, it refers to the potential mob doing the insertion.**/
 /obj/item/storage/proc/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
 	if(!istype(new_item))
 		return FALSE
+
 	if(user && new_item.loc == user)
+		if(istype(new_item, /obj/item/stack))
+			var/obj/item/stack/new_stack = new_item
+
+			for(var/obj/item/cur_item in contents)
+				if(!istype(cur_item, /obj/item/stack))
+					continue
+				var/obj/item/stack/cur_stack = cur_item
+
+				if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
+					var/amount = min(cur_stack.max_amount - cur_stack.amount, new_stack.amount)
+					new_stack.use(amount)
+					cur_stack.add(amount)
+
+			if(!QDELETED(new_stack) && can_be_inserted(new_stack, user))
+				if(!user.drop_inv_item_to_loc(new_item, src))
+					return FALSE
+			else
+				return TRUE
+		else if(istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			for(var/obj/item/cur_item in contents)
+				if(!istype(cur_item, /obj/item/ammo_magazine/handful))
+					continue
+				var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+				if(cur_handful.is_transferable(new_handful))
+					cur_handful.transfer_ammo(new_handful, user, new_handful.current_rounds)
+
+			if(!QDELETED(new_handful) && can_be_inserted(new_handful, user))
+				if(!user.drop_inv_item_to_loc(new_handful, src))
+					return FALSE
+			else
+				return TRUE
+
 		if(!user.drop_inv_item_to_loc(new_item, src))
 			return FALSE
 	else
@@ -511,8 +565,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),\
-								SPAN_NOTICE("You put \the [W] into [src]."),\
+			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),
+								SPAN_NOTICE("You put \the [W] into [src]."),
 								null, visidist)
 	orient2hud()
 	for(var/mob/M in can_see_content())
@@ -520,17 +574,20 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (storage_slots)
 		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 ///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, mob/user)
 	if(!istype(W))
 		return FALSE
 
-	_item_removal(W, new_location)
+	_item_removal(W, new_location, user)
 	return TRUE
 
 ///Separate proc because remove_from_storage isn't guaranteed to finish. Can be called directly if the target atom exists and is an item. Updates icon when done.
-/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location)
+/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location, mob/user)
 	for(var/mob/M in can_see_content())
 		if(M.client)
 			M.client.remove_from_screen(W)
@@ -553,6 +610,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		W.maptext = ""
 	W.on_exit_storage(src)
 	update_icon()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 	W.mouse_opacity = initial(W.mouse_opacity)
 
 //This proc is called when you want to place an item into the storage item.
@@ -578,6 +638,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return handle_item_insertion(W, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if (loc == user)
 		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
 			var/obj/item/I
@@ -636,7 +698,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (!isturf(T) || get_dist(src, T) > 1)
 		T = get_turf(src)
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
@@ -652,7 +714,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	storage_close(user)
 	for (var/obj/item/I in contents)
-		remove_from_storage(I, T)
+		remove_from_storage(I, T, user)
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
 	if (use_sound)
@@ -691,7 +753,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
 		return
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
 		return
@@ -709,7 +771,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		item_obj = contents[length(contents)]
 	if(!istype(item_obj))
 		return
-	remove_from_storage(item_obj, tile)
+	remove_from_storage(item_obj, tile, user)
 	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
 		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
@@ -726,7 +788,8 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		if(ammo_dumping.current_rounds != 0)
 			if(length(contents) < storage_slots)
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
-				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+					return
 				for(var/i = 1 to handfuls)
 					if(length(contents) < storage_slots)
 						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
@@ -736,7 +799,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
 						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls
-						handle_item_insertion(new_handful, TRUE,user)
+						handle_item_insertion(new_handful, TRUE, user)
 						update_icon(-transferred_handfuls)
 					else
 						break
@@ -766,7 +829,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	for(var/obj/item/new_item in origin_storage)
 		if(!has_room(new_item))
 			break
-		origin_storage.remove_from_storage(new_item)
+		origin_storage.remove_from_storage(new_item, user)
 		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 
 	playsound(user.loc, "rustle", 15, TRUE, 6)
@@ -894,6 +957,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 ///Things to be done after selecting a map skin (if any) and before adding inventory and updating icon for the first time. Most likely saving basic icon state.
 /obj/item/storage/proc/post_skin_selection()
 	return
+
+/obj/item/storage/proc/can_storage_interact(mob/user)
+	if(!allowed(user))
+		return FALSE
+	return TRUE
 
 /**Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.
 Returning 1 == directly inside the container's contents, 2 == inside something which is itself inside the container, etc.

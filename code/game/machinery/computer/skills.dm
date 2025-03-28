@@ -28,7 +28,7 @@
 			O.forceMove(src)
 			scan = O
 			to_chat(user, "You insert [O].")
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/skills/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -43,16 +43,16 @@
 	var/dat
 
 	if (temp)
-		dat = "<TT>[temp]</TT><BR><BR><A href='?src=\ref[src];choice=Clear Screen'>Clear Screen</A>"
+		dat = "<TT>[temp]</TT><BR><BR><A href='byond://?src=\ref[src];choice=Clear Screen'>Clear Screen</A>"
 	else
-		dat = "Confirm Identity: <A href='?src=\ref[src];choice=Confirm Identity'>[scan ? scan.name : "----------"]</A><HR>"
+		dat = "Confirm Identity: <A href='byond://?src=\ref[src];choice=Confirm Identity'>[scan ? scan.name : "----------"]</A><HR>"
 		if (authenticated)
 			switch(screen)
 				if(1.0)
 					dat += {"
 <p style='text-align:center;'>"}
-					dat += "<A href='?src=\ref[src];choice=Search Records'>Search Records</A><BR>"
-					dat += "<A href='?src=\ref[src];choice=New Record (General)'>New Record</A><BR>"
+					dat += "<A href='byond://?src=\ref[src];choice=Search Records'>Search Records</A><BR>"
+					dat += "<A href='byond://?src=\ref[src];choice=New Record (General)'>New Record</A><BR>"
 					dat += {"
 </p>
 <table style="text-align:center;" cellspacing="0" width="100%">
@@ -62,32 +62,32 @@
 </table>
 <table style="text-align:center;" border="1" cellspacing="0" width="100%">
 <tr>
-<th><A href='?src=\ref[src];choice=Sorting;sort=name'>Name</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=id'>ID</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
-<th><A href='?src=\ref[src];choice=Sorting;sort=fingerprint'>Fingerprints</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=name'>Name</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=id'>ID</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=rank'>Rank</A></th>
+<th><A href='byond://?src=\ref[src];choice=Sorting;sort=fingerprint'>Fingerprints</A></th>
 </tr>"}
 					if(!isnull(GLOB.data_core.general))
 						for(var/datum/data/record/R in sortRecord(GLOB.data_core.general, sortBy, order))
 							for(var/datum/data/record/E in GLOB.data_core.security)
-							dat += "<tr><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
+							dat += "<tr><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
 							dat += "<td>[R.fields["id"]]</td>"
 							dat += "<td>[R.fields["rank"]]</td>"
 						dat += "</table><hr width='75%' />"
-					dat += "<A href='?src=\ref[src];choice=Record Maintenance'>Record Maintenance</A><br><br>"
-					dat += "<A href='?src=\ref[src];choice=Log Out'>{Log Out}</A>"
+					dat += "<A href='byond://?src=\ref[src];choice=Record Maintenance'>Record Maintenance</A><br><br>"
+					dat += "<A href='byond://?src=\ref[src];choice=Log Out'>{Log Out}</A>"
 				if(2.0)
 					dat += "<B>Records Maintenance</B><HR>"
-					dat += "<BR><A href='?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='?src=\ref[src];choice=Return'>Back</A>"
+					dat += "<BR><A href='byond://?src=\ref[src];choice=Delete All Records'>Delete All Records</A><BR><BR><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 				if(3.0)
 					dat += "<CENTER><B>Employment Record</B></CENTER><BR>"
 					if ((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
 						dat += "<table><tr><td> \
-						Name: <A href='?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
-						ID: <A href='?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
-						Sex: <A href='?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
-						Age: <A href='?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
-						Rank: <A href='?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
+						Name: <A href='byond://?src=\ref[src];choice=Edit Field;field=name'>[active1.fields["name"]]</A><BR> \
+						ID: <A href='byond://?src=\ref[src];choice=Edit Field;field=id'>[active1.fields["id"]]</A><BR>\n \
+						Sex: <A href='byond://?src=\ref[src];choice=Edit Field;field=sex'>[active1.fields["sex"]]</A><BR>\n \
+						Age: <A href='byond://?src=\ref[src];choice=Edit Field;field=age'>[active1.fields["age"]]</A><BR>\n \
+						Rank: <A href='byond://?src=\ref[src];choice=Edit Field;field=rank'>[active1.fields["rank"]]</A><BR>\n \
 						Physical Status: [active1.fields["p_stat"]]<BR>\n \
 						Mental Status: [active1.fields["m_stat"]]<BR><BR>\n \
 						Employment/skills summary:<BR> [decode(active1.fields["notes"])]<BR></td> \
@@ -95,10 +95,10 @@
 						<img src=side.png height=80 width=80 border=4></td></tr></table>"
 					else
 						dat += "<B>General Record Lost!</B><BR>"
-					dat += "\n<A href='?src=\ref[src];choice=Delete Record (ALL)'>Delete Record (ALL)</A><BR><BR>\n<A href='?src=\ref[src];choice=Print Record'>Print Record</A><BR>\n<A href='?src=\ref[src];choice=Return'>Back</A><BR>"
+					dat += "\n<A href='byond://?src=\ref[src];choice=Delete Record (ALL)'>Delete Record (ALL)</A><BR><BR>\n<A href='byond://?src=\ref[src];choice=Print Record'>Print Record</A><BR>\n<A href='byond://?src=\ref[src];choice=Return'>Back</A><BR>"
 				if(4.0)
 					if(!length(Perp))
-						dat += "ERROR.  String could not be located.<br><br><A href='?src=\ref[src];choice=Return'>Back</A>"
+						dat += "ERROR.  String could not be located.<br><br><A href='byond://?src=\ref[src];choice=Return'>Back</A>"
 					else
 						dat += {"
 <table style="text-align:center;" cellspacing="0" width="100%">
@@ -120,15 +120,15 @@
 							if(istype(Perp[i+1],/datum/data/record/))
 								var/datum/data/record/E = Perp[i+1]
 								crimstat = E.fields["criminal"]
-							dat += "<tr style=background-color:#00FF7F><td><A href='?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
+							dat += "<tr style=background-color:#00FF7F><td><A href='byond://?src=\ref[src];choice=Browse Record;d_rec=\ref[R]'>[R.fields["name"]]</a></td>"
 							dat += "<td>[R.fields["id"]]</td>"
 							dat += "<td>[R.fields["rank"]]</td>"
 							dat += "<td>[crimstat]</td></tr>"
 						dat += "</table><hr width='75%' />"
-						dat += "<br><A href='?src=\ref[src];choice=Return'>Return to index.</A>"
+						dat += "<br><A href='byond://?src=\ref[src];choice=Return'>Return to index.</A>"
 		else
-			dat += "<A href='?src=\ref[src];choice=Log In'>{Log In}</A>"
-	show_browser(user, dat, "Employment Records", "secure_rec", "size=600x400")
+			dat += "<A href='byond://?src=\ref[src];choice=Log In'>{Log In}</A>"
+	show_browser(user, dat, "Employment Records", "secure_rec", width = 600, height = 400)
 	onclose(user, "secure_rec")
 	return
 
@@ -251,8 +251,8 @@ What a mess.*/
 			if ("Delete All Records")
 				temp = ""
 				temp += "Are you sure you wish to delete all Employment records?<br>"
-				temp += "<a href='?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
-				temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
+				temp += "<a href='byond://?src=\ref[src];choice=Purge All Records'>Yes</a><br>"
+				temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
 
 			if ("Purge All Records")
 				for(var/datum/data/record/R in GLOB.data_core.security)
@@ -264,8 +264,8 @@ What a mess.*/
 			if ("Delete Record (ALL)")
 				if(istype(active1, /datum/data/record))
 					temp = "<h5>Are you sure you wish to delete the record (ALL)?</h5>"
-					temp += "<a href='?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
-					temp += "<a href='?src=\ref[src];choice=Clear Screen'>No</a>"
+					temp += "<a href='byond://?src=\ref[src];choice=Delete Record (ALL) Execute'>Yes</a><br>"
+					temp += "<a href='byond://?src=\ref[src];choice=Clear Screen'>No</a>"
 //RECORD CREATE
 			if ("New Record (General)")
 				active1 = CreateGeneralRecord()
@@ -313,7 +313,7 @@ What a mess.*/
 								temp = "<h5>Occupation:</h5>"
 								temp += "<ul>"
 								for(var/rank in GLOB.joblist)
-									temp += "<li><a href='?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
+									temp += "<li><a href='byond://?src=\ref[src];choice=Change Rank;rank=[rank]'>[rank]</a></li>"
 								temp += "</ul>"
 							else
 								alert(usr, "You do not have the required rank to do this!")

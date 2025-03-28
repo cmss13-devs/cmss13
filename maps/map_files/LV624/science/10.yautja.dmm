@@ -56,9 +56,9 @@
 "aj" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table,
-/obj/structure/machinery/juicer{
-	pixel_y = 10;
-	pixel_x = -12
+/obj/structure/machinery/juicer/yautja{
+	pixel_x = -11;
+	pixel_y = 8
 	},
 /obj/item/stack/yautja_rope{
 	pixel_x = 4;

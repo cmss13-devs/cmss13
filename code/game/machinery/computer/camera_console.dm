@@ -253,7 +253,7 @@
 			return TRUE
 		toggle_anchored(wrench, user)
 		return TRUE
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast/toggle_anchored(obj/item/wrench, mob/user)
 	. = ..()

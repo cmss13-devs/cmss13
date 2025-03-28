@@ -137,7 +137,7 @@
 				prob(2);/obj/item/attachable/suppressor,\
 				prob(2);/obj/item/attachable/burstfire_assembly,\
 				prob(2);/obj/item/attachable/compensator,\
-				prob(1);/obj/item/attachable/scope/mini_iff,\
+				prob(1);/obj/item/attachable/alt_iff_scope,\
 				prob(1);/obj/item/attachable/heavy_barrel,\
 				prob(1);/obj/item/attachable/scope/mini)
 
@@ -203,7 +203,7 @@
 				/obj/item/storage/belt/champion,\
 				/obj/item/tool/soap/deluxe,\
 				/obj/item/tool/pickaxe/silver,\
-				/obj/item/tool/pen/invisible,\
+				/obj/item/tool/pen/white,\
 				/obj/item/explosive/grenade/smokebomb,\
 				/obj/item/corncob,\
 				/obj/item/poster,\

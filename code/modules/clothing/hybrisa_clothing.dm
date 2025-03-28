@@ -11,14 +11,14 @@
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security uniform"
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by what are known as 'goons'."
-	icon_state = "hybrisa_uniform"
-	worn_state = "hybrisa_uniform"
+	icon_state = "sec_hybrisa_uniform"
+	worn_state = "sec_hybrisa_uniform"
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa/lead
 	desc = "An armored uniform worn by Weyland-Yutani corporate security members. This variant is commonly worn by the lead of the 'goonsquad', as they are colloquially known."
-	icon_state = "lead_hybrisa_uniform"
-	worn_state = "lead_hybrisa_uniform"
+	icon_state = "sec_lead_hybrisa_uniform"
+	worn_state = "sec_lead_hybrisa_uniform"
 
 // CMB Police Officer
 
@@ -59,33 +59,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-
-// Detective Suit
-
-/obj/item/clothing/under/hybrisa/detective_synth_uniform
-	name = "\improper worn suit"
-	desc = "A washed out white shirt with a black tie and brown slacks."
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
-	)
-	icon_state = "synth_detective_uniform"
-	worn_state = "synth_detective_uniform"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-
-
-/obj/item/clothing/under/hybrisa/detective_synth_uniform/alt
-	name = "\improper worn suit"
-	desc = "A washed out white shirt with a red tie and black slacks."
-	icon_state = "synth_detective_uniform_alt"
-	worn_state = "synth_detective_uniform_alt"
 
 // Paramedic
 
@@ -316,40 +289,24 @@
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa
 	name = "\improper WY corporate security helmet"
 	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
-	icon_state = "helmet_black"
-	item_state = "helmet_black"
+	icon_state = "sec_helmet_hybrisa"
+	item_state = "sec_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/lead
 	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets. This variant is worn by low-level guards that have too much brainmatter to fit into the old one. Or so they say."
-	icon_state = "lead_helmet_black"
-	item_state = "lead_helmet_black"
+	icon_state = "sec_lead_helmet_hybrisa"
+	item_state = "sec_lead_helmet_hybrisa"
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/brown
 	name = "\improper WY corporate security helmet"
 	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar."
-	icon_state = "helmet_brown"
-	item_state = "helmet_brown"
+	icon_state = "sec_brown_helmet_hybrisa"
+	item_state = "sec_brown_helmet_hybrisa"
 
-/obj/item/clothing/head/hybrisa/wy_cap
-	name = "\improper Weyland-Yutani cap"
-	desc = "A dark cap enscribed with the Weyland-Yutani 'Wings' logo' representing corporate justice."
-	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/WY.dmi',
-	)
-	icon_state = "newcorpo_cap"
-	item_state = "newcorpo_cap"
-	flags_armor_protection = BODY_FLAG_HEAD
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NO_FLAGS
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic
+	desc = "A basic skull-helm with a orange saftey vison fitted. Worn by corporate security assets, graded to protect your head from an unruly scientist armed with a crowbar. A medical cross is emblazoned across the front."
+	icon_state = "sec_medic_helmet_hybrisa"
+	item_state = "sec_medic_helmet_hybrisa"
 
 // CMB Police Hats
 
@@ -462,35 +419,6 @@
 	)
 	icon_state = "pizzagalaxy_cap"
 	item_state = "pizzagalaxy_cap"
-
-// Detective Hat
-
-/obj/item/clothing/head/hybrisa/synth_detective_hat
-	name = "\improper worn fedora"
-	desc = "A brown classic fedora."
-	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi'
-	)
-	icon_state = "synth_detective_hat"
-	item_state = "synth_detective_hat"
-	flags_armor_protection = BODY_FLAG_HEAD
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = NO_FLAGS
-
-/obj/item/clothing/head/hybrisa/synth_detective_hat/alt
-	name = "\improper worn fedora"
-	desc = "A black classic fedora."
-	icon_state = "synth_detective_hat_alt"
-	item_state = "synth_detective_hat_alt"
 
 // Helmets
 
@@ -870,25 +798,6 @@
 	icon_state = "civilian_pilot_jacket"
 	item_state = "civilian_pilot_jacket"
 	uniform_restricted = null
-
-// Detective Trench-coat
-
-/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat
-	name = "\improper worn beige trench-coat"
-	desc = "A worn beige old style trench-coat, a classic noir style - piece of outerwear."
-	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
-	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
-	)
-	icon_state = "synth_detective_jacket"
-	item_state = "synth_detective_jacket"
-	uniform_restricted = null
-
-/obj/item/clothing/suit/storage/CMB/hybrisa/detective_coat/alt
-	name = "\improper worn grey trench-coat"
-	desc = "A worn grey old style trench-coat, a classic noir style - piece of outerwear."
-	icon_state = "synth_detective_jacket_alt"
-	item_state = "synth_detective_jacket_alt"
 
 // Executive Trench-coat
 

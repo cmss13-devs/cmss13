@@ -11,6 +11,8 @@
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	max_w_class = 0
 	foldable = null
+	/// For statistics tracking. The kit's name
+	var/kit_name = ""
 
 /obj/item/storage/box/spec/update_icon()
 	if(LAZYLEN(overlays))
@@ -25,12 +27,11 @@
 	name = "\improper Demolitionist equipment case"
 	desc = "A large case containing a heavy-caliber anti-tank M5 RPG rocket launcher, M3-T light armor, five 84mm rockets and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "demo"
+	kit_name = "demolitionist"
 
 /obj/item/storage/box/spec/demolitionist/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3T(src)
 	new /obj/item/clothing/head/helmet/marine/M3T(src)
-	new /obj/item/clothing/head/helmet/marine/M3T(src)
-	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/storage/backpack/marine/rocketpack(src)
 	new /obj/item/weapon/gun/launcher/rocket(src)
 	new /obj/item/ammo_magazine/rocket(src)
@@ -45,11 +46,47 @@
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/device/binoculars(src)
 
+	// loader
+	new /obj/item/storage/box/kit/loader(src)
+
+/obj/item/storage/box/kit/loader
+	name = "\improper Loader Kit"
+	desc = "A large kit containing all the supplies needed to turn a Private into the loading assistant for a Demolitions Specialist.\
+	\nA little infographic series shows how reloading should be done:\
+	\nStep One: Grab the Rocket\
+	\nStep Two: Position yourself behind the Specialist\
+	\nStep Three: Ensure the Specialist is wielding their Launcher\
+	\nStep Four: Load the Rocket into the Launcher\
+	\nStep Five: Stand clear of the back-blast"
+	pro_case_overlay = "loader"
+
+/obj/item/storage/box/kit/loader/fill_preset_inventory()
+	// wearables
+	new /obj/item/clothing/suit/storage/marine/M3T(src)
+	new /obj/item/clothing/head/helmet/marine/M3T(src)
+	new /obj/item/storage/backpack/marine/rocketpack(src)
+
+	// a little bit of extra ammo
+	new /obj/item/ammo_magazine/rocket(src)
+	new /obj/item/ammo_magazine/rocket/ap(src)
+	new /obj/item/ammo_magazine/rocket/wp(src)
+
+	// equipment
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/device/binoculars(src)
+
+	// skills
+	new /obj/item/pamphlet/skill/loader(src)
 
 /obj/item/storage/box/spec/sniper
 	name = "\improper Sniper equipment case"
 	desc = "A large case containing your very own long-range M42A sniper rifle, M45 ghillie armor and helmet, M42 scout sight, ammunition, spotter equipment, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "sniper"
+	kit_name = "sniper"
 
 /obj/item/storage/box/spec/sniper/fill_preset_inventory()
 	// sniper
@@ -70,16 +107,16 @@
 	// spotter
 	new /obj/item/storage/box/kit/spotter(src)
 
-/obj/item/storage/box/spec/sniper/anti_materiel/fill_preset_inventory()
+/obj/item/storage/box/spec/sniper/anti_materiel
 	name = "\improper AMR equipment case"
 	desc = "A large case containing an experimental XM43E1, a set of M45 ghillie armor and helmet, an M42 scout sight, ammunition, a set of spotter gear, and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	kit_name = "sniper_anti_materiel"
+
+/obj/item/storage/box/spec/sniper/anti_materiel/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/ghillie(src)
 	new /obj/item/clothing/head/helmet/marine/ghillie(src)
 	new /obj/item/clothing/glasses/night/m42_night_goggles(src)
 	new /obj/item/weapon/gun/rifle/sniper/XM43E1(src)
-	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
-	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
-	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/ammo_magazine/sniper/anti_materiel(src)
 	new /obj/item/storage/backpack/marine/smock(src)
@@ -94,6 +131,7 @@
 	name = "\improper Scout equipment case"
 	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "scout"
+	kit_name = "scout"
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
@@ -126,6 +164,7 @@
 	name = "\improper Pyrotechnician equipment case"
 	desc = "A large case containing M240-T incinerator unit, M35 pyrotechnician armor and helmet, Broiler-T flexible refueling system and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "pyro"
+	kit_name = "pyro"
 
 /obj/item/storage/box/spec/pyro/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M35(src)
@@ -146,6 +185,7 @@
 	name = "\improper Heavy Grenadier equipment case"
 	desc = "A large case containing a heavy-duty multi-shot Armat Systems M92 grenade launcher, M3-G4 grenadier armor and helmet, significant amount of various M40 grenades and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "grenadier"
+	kit_name = "grenadier"
 
 /obj/item/storage/box/spec/heavy_grenadier/fill_preset_inventory()
 	new /obj/item/weapon/gun/launcher/grenade/m92(src)
@@ -171,6 +211,31 @@
 	new /obj/item/clothing/gloves/marine/specialist(src)
 	new /obj/item/clothing/head/helmet/marine/specialist(src)
 	new /obj/item/clothing/suit/storage/marine/specialist(src)
+
+/obj/item/storage/box/spec/mortar
+	name = "\improper Mortar Kit"
+	desc = "Contains the equipment needed for the mortar."
+	kit_overlay = "mortar"
+
+/obj/item/storage/box/spec/mortar/fill_preset_inventory()
+	new /obj/item/mortar_kit(src)
+	new /obj/item/pamphlet/skill/mortar_operator(src)
+	new /obj/item/pamphlet/skill/mortar_operator(src)
+	new /obj/item/storage/belt/gun/mortarbelt(src)
+	new /obj/item/storage/belt/gun/mortarbelt(src)
+	new /obj/item/storage/backpack/marine/mortarpack(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/incendiary(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/he(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/frag(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/mortar_shell/flare(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/device/binoculars/range(src)
+	new /obj/item/device/binoculars/range(src)
+
 
 //-----------------SPEC KIT BOX------------------
 //For events/WO, allows the user to choose a specalist kit out of available ones in spec_kit_boxes_left list in gloabl_lists.dm
@@ -502,7 +567,7 @@
 	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/tool/crowbar/red(src)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
+	new /obj/item/mre_food_packet/entree/uscm(src)
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"

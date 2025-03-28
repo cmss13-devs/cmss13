@@ -21,6 +21,8 @@
 	var/foldabletype //To fold into an item (e.g. roller bed item)
 	var/buckling_y = 0 //pixel y shift to give to the buckled mob.
 	var/buckling_x = 0 //pixel x shift to give to the buckled mob.
+	///if the bed can carry big mobs (tier 3s)
+	var/can_carry_big = FALSE
 	var/obj/structure/closet/bodybag/buckled_bodybag
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
@@ -30,8 +32,7 @@
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/bed/update_icon()
@@ -138,6 +139,8 @@
 
 /obj/structure/bed/MouseDrop_T(atom/dropping, mob/user)
 	if(accepts_bodybag && !buckled_bodybag && !buckled_mob && istype(dropping,/obj/structure/closet/bodybag) && ishuman(user))
+		if(!isturf(user.loc)) // so they do not buckle themselves
+			return
 		var/obj/structure/closet/bodybag/B = dropping
 		if(!B.roller_buckled)
 			do_buckle_bodybag(B, user)
@@ -241,11 +244,38 @@
 
 	return
 
+/obj/structure/bed/roller/heavy
+	name = "heavy-duty roller bed"
+	desc = "A reinforced plasteel board resting on a small but sturdy frame. Not very comfortable at all, but allows heavy cargo to rest lying down while moved to another location rapidly. Cannot be collapsed."
+	icon = 'icons/obj/structures/rollerbed.dmi'
+	icon_state = "heavy_roller_up"
+	anchored = FALSE
+	drag_delay = 0 //Pulling something on wheels is easy
+	buckling_y = 3
+	foldabletype = null
+	accepts_bodybag = TRUE
+	base_bed_icon = null
+	density = TRUE
+	buildstacktype = /obj/item/stack/sheet/plasteel
+	can_carry_big = TRUE
+
+/obj/structure/bed/roller/heavy/attackby(obj/item/W, mob/user)
+	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)
+		if(buckled_mob || buckled_bodybag)
+			manual_unbuckle()
+			return
+	return ..()
+
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
 	icon = 'icons/obj/structures/rollerbed.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "folded"
+	item_state = "rbed"
 	w_class = SIZE_SMALL //Fits in a backpack
 	drag_delay = 1 //Pulling something on wheels is easy
 	matter = list("plastic" = 5000)
@@ -321,6 +351,7 @@
 	name = "portable surgical bed"
 	desc = "A collapsed surgical bed that can be carried around."
 	icon_state = "surgical_folded"
+	item_state = "sbed"
 	rollertype = /obj/structure/bed/portable_surgery
 	matter = list("plastic" = 6000)
 
@@ -425,6 +456,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	name = "medevac stretcher"
 	desc = "A collapsed medevac stretcher that can be carried around."
 	icon_state = "stretcher_folded"
+	item_state = "mvbed"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
 

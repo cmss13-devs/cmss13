@@ -107,7 +107,8 @@
 		if(user && istype(user))
 			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
-			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
+			for(var/mob/living/carbon/viewer_in_range in orange(7, src))
+				to_chat(viewer_in_range, SPAN_WARNING("[user] smashes through the [src][AM ? " with [AM]":""]!"))
 			if(is_mainship_level(z))
 				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
@@ -172,14 +173,15 @@
 	else if(isobj(AM))
 		var/obj/item/I = AM
 		tforce = I.throwforce
-	if(reinf) tforce *= 0.25
+	if(reinf)
+		tforce *= 0.25
 	if(!not_damageable) //Impossible to destroy
 		health = max(0, health - tforce)
 		if(health <= 7 && !reinf && !static_frame)
 			anchored = FALSE
 			update_nearby_icons()
 			step(src, get_dir(AM, src))
-	healthcheck(user = AM.launch_metadata.thrower)
+	healthcheck(user = AM.launch_metadata?.thrower)
 
 /obj/structure/window/attack_hand(mob/user as mob)
 	if(user.a_intent == INTENT_HARM && ishuman(user))
@@ -214,14 +216,17 @@
 	healthcheck(1, 1, 1, user)
 
 /obj/structure/window/attack_animal(mob/user as mob)
-	if(!isanimal(user)) return
+	if(!isanimal(user))
+		return
 	var/mob/living/simple_animal/M = user
-	if(M.melee_damage_upper <= 0) return
+	if(M.melee_damage_upper <= 0)
+		return
 	attack_generic(M, M.melee_damage_upper)
 
 /obj/structure/window/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
@@ -252,12 +257,18 @@
 			msg_admin_attack("[key_name(user)] slammed [key_name(M)] against [src] at [get_area_name(M)]", M.loc.x, M.loc.y, M.loc.z)
 
 			healthcheck(1, 1, 1, M) //The person thrown into the window literally shattered it
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 		return
 
-	if(W.flags_item & NOBLUDGEON) return
+	if(W.flags_item & NOBLUDGEON)
+		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && !not_deconstructable)
 		if(!anchored)
+			var/area/area = get_area(W)
+			if(!area.allow_construction)
+				to_chat(user, SPAN_WARNING("\The [src] must be fastened on a proper surface!"))
+				return
 			var/turf/open/T = loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in T // for M2C HMG, look at smartgun_mount.dm
 			if(!(istype(T) && T.allow_construction))
@@ -296,7 +307,7 @@
 				update_nearby_icons()
 				step(src, get_dir(user, src))
 		healthcheck(1, 1, 1, user, W)
-		..()
+		return ..()
 	return
 
 /obj/structure/window/proc/is_full_window()

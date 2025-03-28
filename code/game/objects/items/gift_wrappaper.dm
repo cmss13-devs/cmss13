@@ -72,7 +72,7 @@
 		/obj/item/storage/belt/champion,
 		/obj/item/tool/soap/deluxe,
 		/obj/item/tool/pickaxe/silver,
-		/obj/item/tool/pen/invisible,
+		/obj/item/tool/pen/white,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
@@ -103,7 +103,8 @@
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/horrible)
 
-	if(!ispath(gift_type,/obj/item)) return
+	if(!ispath(gift_type,/obj/item))
+		return
 
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)

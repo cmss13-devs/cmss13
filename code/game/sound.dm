@@ -24,7 +24,7 @@
 	var/list/hearers_to_return = list()
 	var/datum/shape/rectangle/zone = SQUARE(x, y, range * 2)
 	hearers_to_return += SSquadtree.players_in_range(zone, z)
-	
+
 	var/turf/above = SSmapping.get_turf_above(locate(x, y, z))
 	while(above)
 		hearers_to_return += SSquadtree.players_in_range(zone, above.z)

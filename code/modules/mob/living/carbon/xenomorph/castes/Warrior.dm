@@ -64,6 +64,12 @@
 	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")
 	weed_food_states_flipped = list("Warrior_1","Warrior_2","Warrior_3")
 
+	skull = /obj/item/skull/warrior
+	pelt = /obj/item/pelt/warrior
+
+	skull = /obj/item/skull/warrior
+	pelt = /obj/item/pelt/warrior
+
 
 /datum/behavior_delegate/warrior_base
 	name = "Base Warrior Behavior Delegate"

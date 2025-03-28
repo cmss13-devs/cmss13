@@ -21,14 +21,15 @@ type Data = {
   decryption_complete: BooleanLike;
   decrypting: BooleanLike;
   decryption_time: string;
+  can_disengage: BooleanLike;
 };
 
 export const NuclearBomb = () => {
   const { act, data } = useBackend<Data>();
 
-  const cantNuke = !data.anchor && !!data.safety && !data.decryption_complete;
-  const cantDecrypt = !data.anchor && data.decryption_complete;
-
+  const cantNuke = !data.anchor || !!data.safety || !data.decryption_complete;
+  const cantDecrypt = !data.anchor || data.decryption_complete;
+  const cantDisengage = !data.anchor || !data.can_disengage;
   return (
     <Window theme="retro" width={350} height={250}>
       <Window.Content scrollable>
@@ -135,6 +136,7 @@ export const NuclearBomb = () => {
                 <Button.Confirm
                   fluid
                   icon="power-off"
+                  disabled={cantDisengage}
                   onClick={() => act('toggleNuke')}
                 >
                   Deactivate nuke

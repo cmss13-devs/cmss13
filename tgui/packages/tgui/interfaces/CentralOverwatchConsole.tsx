@@ -393,12 +393,12 @@ const CombinedSquadPanel = (props: Props) => {
                                 )) || (
                                   <Table.Cell textAlign="center">
                                     NONE
-                                    <Box color="red">NOT total</Box>
+                                    <Box color="red">NOT DEPLOYED</Box>
                                   </Table.Cell>
                                 )}
 
                                 <Table.Cell textAlign="center" bold>
-                                  <Box>{data.ftl_count} total</Box>
+                                  <Box>{data.ftl_count} DEPLOYED</Box>
                                   <Box color={data.ftl_alive ? 'green' : 'red'}>
                                     {data.ftl_alive} ALIVE
                                   </Box>
@@ -434,7 +434,7 @@ const CombinedSquadPanel = (props: Props) => {
                                       ? data.spec_alive
                                         ? 'ALIVE'
                                         : 'DEAD'
-                                      : 'NOT total'}
+                                      : 'NOT DEPLOYED'}
                                   </Box>
                                 </Table.Cell>
                                 <Table.Cell textAlign="center" bold>
@@ -442,7 +442,7 @@ const CombinedSquadPanel = (props: Props) => {
                                     color={data.smart_count ? 'green' : 'red'}
                                   >
                                     {data.smart_count
-                                      ? data.smart_count + ' total'
+                                      ? data.smart_count + ' DEPLOYED'
                                       : 'NONE'}
                                   </Box>
                                   <Box
@@ -474,7 +474,7 @@ const CombinedSquadPanel = (props: Props) => {
                               </Table.Row>
                               <Table.Row>
                                 <Table.Cell textAlign="center" bold>
-                                  <Box>{data.medic_count} total</Box>
+                                  <Box>{data.medic_count} DEPLOYED</Box>
                                   <Box
                                     color={data.medic_alive ? 'green' : 'red'}
                                   >
@@ -482,7 +482,7 @@ const CombinedSquadPanel = (props: Props) => {
                                   </Box>
                                 </Table.Cell>
                                 <Table.Cell textAlign="center" bold>
-                                  <Box>{data.engi_count} total</Box>
+                                  <Box>{data.engi_count} DEPLOYED</Box>
                                   <Box
                                     color={data.engi_alive ? 'green' : 'red'}
                                   >

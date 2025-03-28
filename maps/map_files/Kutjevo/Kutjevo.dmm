@@ -1,73 +1,71 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfsmugglers"
-	},
-/turf/closed/wall/kutjevo/rock,
-/area/kutjevo/interior/oob)
-"aab" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/exterior/runoff_bridge)
-"aac" = (
+"aab" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
-"aad" = (
+"aac" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/construction/east)
-"aae" = (
+"aad" = (
 /obj/structure/girder,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/construction/east)
-"aaf" = (
+"aae" = (
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/signal_tower)
-"aag" = (
+"aaf" = (
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/construction/signal_tower)
-"aah" = (
+"aag" = (
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/east)
-"aai" = (
+"aah" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/east)
-"aaj" = (
+"aai" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/east)
-"aak" = (
+"aaj" = (
 /obj/structure/girder,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/east)
-"aal" = (
+"aak" = (
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/complex/med)
-"aam" = (
+"aal" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
-"aan" = (
+"aam" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/construction/east)
-"aao" = (
+"aan" = (
 /obj/structure/lattice,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
-"aap" = (
+"aao" = (
 /obj/structure/window/framed/kutjevo/reinforced,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/complex_border/med_rec)
-"aaq" = (
+"aap" = (
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/construction/north)
-"aar" = (
-/turf/open/floor/kutjevo/plate,
-/area/kutjevo/exterior/complex_border/med_rec)
-"aas" = (
+"aaq" = (
 /obj/structure/girder,
 /turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction/north)
+"aar" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aas" = (
+/turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/construction/north)
 "aat" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -76,16 +74,18 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/construction)
 "aau" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/exterior/complex_border/med_rec)
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/construction/north)
 "aav" = (
-/turf/open/floor/kutjevo/tan,
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/construction/north)
 "aaw" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
-/turf/open/floor/kutjevo/plate,
-/area/kutjevo/exterior/complex_border/med_rec)
+/obj/structure/window_frame/kutjevo/reinforced,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction/north)
 "aax" = (
 /obj/structure/platform/stone/kutjevo/north,
 /obj/structure/platform/stone/kutjevo/east,
@@ -93,67 +93,67 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "aay" = (
-/turf/closed/wall/kutjevo/colony,
-/area/kutjevo/interior/construction/north)
-"aaz" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	req_one_access = null
-	},
-/turf/open/floor/kutjevo/multi_tiles,
-/area/kutjevo/interior/construction/north)
-"aaA" = (
-/obj/structure/window_frame/kutjevo/reinforced,
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/construction/north)
-"aaB" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
 	dir = 1;
 	req_one_access = null
 	},
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/construction/north)
-"aaC" = (
+"aaz" = (
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/construction/north)
-"aaD" = (
+"aaA" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
-"aaE" = (
+"aaB" = (
 /obj/effect/landmark/corpsespawner/colonist/kutjevo,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
-"aaF" = (
+"aaC" = (
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/construction/north)
-"aaG" = (
+"aaD" = (
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
-"aaH" = (
+"aaE" = (
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction/north)
-"aaI" = (
+"aaF" = (
 /obj/structure/lattice,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
-"aaJ" = (
+"aaG" = (
 /obj/structure/girder,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
-"aaK" = (
+"aaH" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/north)
-"aaL" = (
+"aaI" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
-"aaM" = (
+"aaJ" = (
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med/auto_doc)
-"aaN" = (
+"aaK" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/north)
+"aaL" = (
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaM" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/complex_border/med_rec)
+"aaN" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfsmugglers"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -19490,7 +19490,7 @@ ppX
 ppX
 ppX
 ppX
-aaM
+aaJ
 ppX
 ppX
 ppX
@@ -31547,9 +31547,9 @@ oVX
 snr
 jzl
 dxF
-aal
+aak
 bjj
-aal
+aak
 orL
 dxF
 dxF
@@ -33305,7 +33305,7 @@ dxF
 dxF
 dxF
 dxF
-aaa
+aaN
 dxF
 dxF
 dxF
@@ -34265,7 +34265,7 @@ xvn
 dJT
 mNM
 mNM
-aab
+aaa
 fyD
 oeb
 wRj
@@ -34703,9 +34703,9 @@ msK
 msK
 hpy
 aEl
-aaw
-aau
+aaM
 aar
+aaL
 msK
 msK
 nAc
@@ -34854,11 +34854,11 @@ dxF
 dxF
 dxF
 dxF
-aaq
-aaq
-aaq
-aaq
-aaq
+aap
+aap
+aap
+aap
+aap
 dxF
 dxF
 kGU
@@ -35021,13 +35021,13 @@ dxF
 dxF
 dxF
 dxF
-aaq
-aaD
+aap
+aaA
 uiz
 gKa
-aaq
-aaq
-aaq
+aap
+aap
+aap
 kGU
 gXF
 gXF
@@ -35188,13 +35188,13 @@ dxF
 dxF
 dxF
 dxF
-aaq
-aaD
-aaD
-aaD
-aaH
-aaC
-aaH
+aap
+aaA
+aaA
+aaA
+aaE
+aaz
+aaE
 gld
 rgQ
 wzC
@@ -35355,12 +35355,12 @@ dxF
 dxF
 dxF
 dxF
-aaq
+aap
+aaA
 aaD
-aaG
-aaD
+aaA
 ffa
-aaD
+aaA
 tOw
 gld
 gld
@@ -35522,13 +35522,13 @@ dxF
 dxF
 dxF
 dxF
-aaq
-aaG
+aap
 aaD
-aaG
-aaI
+aaA
 aaD
-aaC
+aaF
+aaA
+aaz
 gld
 msK
 msK
@@ -35689,23 +35689,23 @@ dxF
 dxF
 dxF
 dxF
-aaq
+aap
 eTP
-aas
-aaI
-aaI
-aaI
-aaD
-aaC
-aaC
-aaC
 aaq
-aaq
+aaF
+aaF
+aaF
 aaA
-aaA
+aaz
+aaz
+aaz
+aap
+aap
+aaw
+aaw
 mYM
-aaq
-aaq
+aap
+aap
 aCY
 aCY
 aCY
@@ -35856,17 +35856,17 @@ dxF
 dxF
 dxF
 dxF
-aaq
-aaD
+aap
+aaA
 sXj
-aaG
-aaI
-aaG
-aaG
+aaD
+aaF
+aaD
+aaD
 ffa
 tAX
 eIZ
-aay
+aau
 eiz
 atC
 keM
@@ -36023,13 +36023,13 @@ dxF
 dxF
 dxF
 dxF
-aaq
+aap
+aaA
 aaD
-aaG
-aaF
+aaC
+aaA
+aaA
 aaD
-aaD
-aaG
 tAX
 mCL
 tAX
@@ -36190,17 +36190,17 @@ dxF
 dxF
 dxF
 dxF
-aaq
-aaI
-aaG
-aaC
+aap
+aaF
+aaD
+aaz
 ryY
-aaJ
-aay
-aas
+aaG
+aau
+aaq
 kKc
-aas
-aay
+aaq
+aau
 vfr
 qIi
 gew
@@ -36357,17 +36357,17 @@ dxF
 dxF
 dxF
 dxF
-aaq
+aap
 dsP
-aaC
-aaG
+aaz
 aaD
-aaG
-aay
+aaA
+aaD
+aau
 mtt
 wuL
 juz
-aay
+aau
 vfr
 bVI
 wAo
@@ -36524,17 +36524,17 @@ dxF
 dxF
 dxF
 dxF
-aaq
+aap
 hWD
-aaC
-aaG
+aaz
 aaD
+aaA
 sbz
-aay
+aau
 rqD
 xNf
 xNf
-aaB
+aay
 vfr
 xrF
 xrF
@@ -36691,17 +36691,17 @@ dxF
 dxF
 dxF
 dxF
-aaq
-aaD
-aaC
-aaC
-aaD
-aaD
-aay
+aap
+aaA
+aaz
+aaz
+aaA
+aaA
+aau
 era
 xNf
 rGm
-aay
+aau
 wOI
 ikW
 ikW
@@ -36858,26 +36858,26 @@ dxF
 dxF
 dxF
 dxF
-aaq
+aap
 eIZ
-aaC
-aaG
+aaz
 aaD
-aaJ
-aaq
-aay
+aaA
+aaG
+aap
+aau
 qCd
-aay
+aau
+aap
+aau
+aau
+aav
+aav
+aau
+aau
 aaq
-aay
-aay
-aaz
-aaz
-aay
-aay
-aas
-aas
 aaq
+aap
 ibV
 msK
 gld
@@ -37025,16 +37025,16 @@ dxF
 dxF
 dxF
 dxF
-aaq
+aap
 irK
-aaF
-aaD
 aaC
-aaF
-aay
+aaA
+aaz
+aaC
+aau
 uQa
-aaD
-aaD
+aaA
+aaA
 alo
 cPv
 qCi
@@ -37192,24 +37192,24 @@ dxF
 dxF
 dxF
 dxF
-aas
-aaC
-aaG
-aaC
+aaq
+aaz
 aaD
+aaz
+aaA
 sbz
-aay
+aau
 sBh
 xyF
-aaE
+aaB
 alo
 vfr
 hkq
 dKO
-aav
-aav
-aav
-aav
+aas
+aas
+aas
+aas
 sCG
 mYM
 iWU
@@ -37359,13 +37359,13 @@ dxF
 dxF
 dxF
 mSm
+aaA
+aaA
+aaF
+aaF
+aaA
 aaD
-aaD
-aaI
-aaI
-aaD
-aaG
-aay
+aau
 cWo
 iNt
 nSP
@@ -37376,9 +37376,9 @@ tgZ
 vaG
 soQ
 jpS
-aav
+aas
 kEG
-aaq
+aap
 eQQ
 ibV
 msK
@@ -37526,24 +37526,24 @@ wTt
 bEH
 bEH
 wUa
-aaG
-aaC
 aaD
-aaC
+aaz
+aaA
+aaz
+aaA
 aaD
-aaG
-aay
+aau
 mDm
 mDm
 mDm
-aaq
+aap
 mDz
-aav
-aav
+aas
+aas
 hma
-aav
-aav
-aav
+aas
+aas
+aas
 sCG
 twn
 kLO
@@ -37694,23 +37694,23 @@ bkR
 bkR
 wUa
 ryY
-aaC
-aaC
-aaC
-aaG
-aaG
+aaz
+aaz
+aaz
 aaD
 aaD
-aaD
-aaC
-aaB
+aaA
+aaA
+aaA
+aaz
+aay
 kuL
-aav
+aas
 fMd
 ssj
-aav
-aav
-aav
+aas
+aas
+aas
 dOJ
 twn
 nZp
@@ -37860,26 +37860,26 @@ bkR
 bkR
 jIN
 wUa
-aaG
-aaC
-aaC
-aaG
-aaC
-aaC
-aaC
-aaF
 aaD
+aaz
+aaz
 aaD
-aaq
+aaz
+aaz
+aaz
+aaC
+aaA
+aaA
+aap
 iLU
 oMW
-aav
+aas
 bKm
 vMf
 fEz
-aav
+aas
 txH
-aaq
+aap
 eQQ
 itr
 msK
@@ -38027,24 +38027,24 @@ bkR
 bkR
 bkR
 mSm
-aas
-aaC
-aaC
-aaG
-aaC
+aaq
+aaz
+aaz
 aaD
-aaC
-aaC
+aaz
+aaA
+aaz
+aaz
 ouW
 ouW
-aaq
-aaq
+aap
+aap
 pCJ
 qOM
-aav
+aas
 vQg
 vQg
-aav
+aas
 sCG
 mYM
 avT
@@ -38194,19 +38194,19 @@ bkR
 bEH
 hUk
 hUk
-aaq
-aaD
-aaI
-aaI
-aaI
+aap
+aaA
 aaF
+aaF
+aaF
+aaC
+aaA
 aaD
-aaG
 hUk
 hUk
 hUk
-aaq
-aaq
+aap
+aap
 cBd
 hTF
 snz
@@ -38361,12 +38361,12 @@ hUk
 hUk
 hUk
 sMg
-aaq
+aap
 irK
-aaL
-aaD
-aaD
-aaC
+aaI
+aaA
+aaA
+aaz
 hUk
 hUk
 hUk
@@ -38405,7 +38405,7 @@ xWK
 xWK
 bKH
 xWK
-aaf
+aae
 fyF
 cUm
 qaI
@@ -38528,11 +38528,11 @@ hUk
 hUk
 hUk
 sMg
-aaN
+aaK
 mJY
-aaK
-aaK
-aaK
+aaH
+aaH
+aaH
 hUk
 hUk
 hUk
@@ -38724,7 +38724,7 @@ ibc
 fyT
 qnB
 lpD
-aap
+aao
 xWK
 xWK
 xWK
@@ -39061,7 +39061,7 @@ kSH
 pmv
 bzj
 epe
-aao
+aan
 dQv
 eXy
 xWK
@@ -39073,7 +39073,7 @@ bKH
 xWK
 xWK
 viU
-aag
+aaf
 kQo
 qaI
 qaI
@@ -40066,7 +40066,7 @@ uah
 ecO
 lPR
 lPR
-aam
+aal
 dQv
 hpB
 bKH
@@ -40405,9 +40405,9 @@ bKH
 bKH
 bKH
 xWK
-aak
+aaj
+aag
 aah
-aai
 wAp
 lxc
 wAp
@@ -40572,10 +40572,10 @@ bKH
 bKH
 xWK
 xWK
-aad
-aah
-aaj
-aah
+aac
+aag
+aai
+aag
 hnm
 wAp
 xWK
@@ -40739,10 +40739,10 @@ xWK
 rvA
 dQv
 xWK
-aad
+aac
 nrt
 wLt
-aah
+aag
 lxc
 eTT
 jhx
@@ -41073,10 +41073,10 @@ jhx
 rvA
 lPR
 oNG
-aad
+aac
 wbE
-aai
-aai
+aah
+aah
 lCE
 kAr
 feg
@@ -41240,12 +41240,12 @@ mIq
 oNG
 oNG
 oNG
-aad
+aac
 wOX
-aai
-aai
+aah
+aah
 joL
-aad
+aac
 feg
 feg
 rdm
@@ -41399,7 +41399,7 @@ feg
 feg
 feg
 feg
-aad
+aac
 vSH
 uhD
 loO
@@ -41412,7 +41412,7 @@ oUP
 uOk
 oUP
 oUP
-aad
+aac
 feg
 feg
 rdm
@@ -41566,20 +41566,20 @@ feg
 feg
 feg
 feg
-aad
+aac
 eUA
 euj
 sBk
 tAQ
 pih
 jBe
-aah
-aai
-aai
+aag
 aah
 aah
-aah
-aae
+aag
+aag
+aag
+aad
 feg
 feg
 rdm
@@ -41733,7 +41733,7 @@ feg
 feg
 feg
 feg
-aad
+aac
 eUA
 euj
 sBk
@@ -41741,10 +41741,10 @@ cbf
 pih
 cUq
 wSU
-aai
 aah
+aag
 lxc
-aah
+aag
 lxc
 lxc
 feg
@@ -41900,15 +41900,15 @@ feg
 mbR
 xMm
 feg
-aad
+aac
 wSU
 oQL
 hrR
-aad
-aad
-aad
-aad
-aad
+aac
+aac
+aac
+aac
+aac
 csE
 oUP
 csE
@@ -42067,11 +42067,11 @@ qDu
 lxc
 lxc
 wAp
-aad
+aac
 oUP
 uOk
 oUP
-aad
+aac
 feg
 feg
 feg
@@ -42238,7 +42238,7 @@ kFF
 ubm
 uhD
 haK
-aad
+aac
 feg
 feg
 feg
@@ -42394,21 +42394,21 @@ mnT
 uiK
 mnT
 nlv
-aad
-aad
-aad
-aad
+aac
+aac
+aac
+aac
 oUP
 uOk
 oUP
 oUP
-aan
+aam
 euj
 sBk
-aad
+aac
 qoL
-aad
-aad
+aac
+aac
 feg
 rob
 rob
@@ -42908,7 +42908,7 @@ oQL
 oQL
 oQL
 oQL
-aai
+aah
 pih
 lxc
 wAp
@@ -50100,7 +50100,7 @@ cyc
 tlq
 nHd
 tlq
-aac
+aab
 ygL
 oIv
 quW

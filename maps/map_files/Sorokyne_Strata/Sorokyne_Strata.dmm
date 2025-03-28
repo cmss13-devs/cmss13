@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aaa" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 9
+	},
+/turf/open/floor/strata/orange_tile,
+/area/strata/ag/interior/mining_outpost/central)
 "aab" = (
 /turf/closed/shuttle{
 	dir = 1;
@@ -11,6 +17,14 @@
 "aad" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/strata/ug/interior)
+"aae" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
+	dir = 2;
+	name = "\improper Airlock"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/ag/interior/mining_outpost/central)
 "aaf" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -83,6 +97,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
+"aau" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/strata/floor3/east,
+/area/strata/ag/exterior/paths/north_outpost)
 "aav" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -99,6 +117,10 @@
 /obj/effect/landmark/corpsespawner/upp,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aay" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/plating,
+/area/strata/ug/interior/outpost/platform)
 "aaz" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
@@ -155,9 +177,17 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
 "aaH" = (
-/obj/structure/machinery/power/apc/no_power/south,
-/turf/open/floor/plating,
-/area/strata/ug/interior/outpost/platform)
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat{
+	pixel_y = 8;
+	pixel_x = -7
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/canteen)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -182,17 +212,25 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "aaN" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/kitchen/utensil/pfork{
+/obj/structure/surface/rack,
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
 	pixel_x = 6;
-	pixel_y = 7
+	pixel_y = -2
 	},
-/obj/item/reagent_container/food/drinks/cans/food/upp/meat{
-	pixel_y = 8;
-	pixel_x = -7
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = -6;
+	pixel_y = -2
 	},
-/turf/open/floor/strata/orange_cover,
-/area/strata/ag/interior/outpost/canteen)
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/mining_outpost/maintenance)
 "aaO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
@@ -233,11 +271,11 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "aaV" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 9
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfcrash"
 	},
-/turf/open/floor/strata/orange_tile,
-/area/strata/ag/interior/mining_outpost/central)
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -252,14 +290,6 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
-"aaY" = (
-/obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
-	dir = 2;
-	name = "\improper Airlock"
-	},
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ag/interior/mining_outpost/central)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -332,30 +362,6 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"abm" = (
-/obj/structure/surface/rack,
-/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
-	pixel_x = 6;
-	pixel_y = -2
-	},
-/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
-	pixel_x = 6;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/turf/open/floor/strata/multi_tiles/west,
-/area/strata/ag/interior/mining_outpost/maintenance)
-"abn" = (
-/obj/structure/machinery/power/apc/no_power/east,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ag/exterior/paths/north_outpost)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -364,12 +370,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
-"abq" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "clfcrash"
-	},
-/turf/closed/wall/strata_ice/dirty,
-/area/strata/ag/interior/mountain)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -42116,8 +42116,8 @@ atv
 crY
 avz
 bZW
-aaY
-aaV
+aae
+aaa
 aBt
 ctC
 aDO
@@ -43508,7 +43508,7 @@ ajt
 ajt
 aHq
 aqD
-abm
+aaN
 ajt
 aHq
 aHq
@@ -50673,7 +50673,7 @@ aac
 aac
 aac
 bLj
-abn
+aau
 awA
 ayw
 awJ
@@ -59588,7 +59588,7 @@ agR
 aac
 aac
 aac
-abq
+aaV
 aac
 aac
 aac
@@ -59974,7 +59974,7 @@ nap
 ckN
 nGk
 jBG
-aaN
+aaH
 xSL
 ffS
 aJe
@@ -63515,7 +63515,7 @@ wLv
 oSN
 tnM
 wZZ
-aaH
+aay
 fBG
 aad
 aad

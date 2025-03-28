@@ -1186,11 +1186,11 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return
 	if(flags_gun_features & (GUN_BURST_FIRING|GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG))
 		return
-	if(cock_cooldown > world.time)
+	if(world.time < cock_cooldown)
+		to_chat(user, SPAN_WARNING("You can't cock \the [src] yet!"))
 		return
 
-	cock_cooldown = world.time + cock_delay
-	cock_cooldown = clamp(cock_cooldown, 0, 10 SECONDS) // without this, its gonna be like a gajillion seconds of cooldown
+	cock_cooldown = clamp(world.time + cock_delay, world.time, world.time + 10 SECONDS) // for some reason, cock_cooldown increments infinitesimally but this doesnt affect much i think.
 	cock_gun(user)
 	if(in_chamber)
 		user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),

@@ -87,9 +87,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Intel Expedition Pack", 0, /obj/item/storage/backpack/marine/satchel/intel, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (CHOOSE 1)", 0, null, null, null),
+		list("Commanding Officer's M3 King Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO/xeno, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Commanding Officer's M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("M11C King Helmet", 0, /obj/item/clothing/head/helmet/marine/leader/CO/xeno, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("M11C Helmet", 0, /obj/item/clothing/head/helmet/marine/leader/CO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Insulated Combat Gloves", 0, /obj/item/clothing/gloves/marine/insulated/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),

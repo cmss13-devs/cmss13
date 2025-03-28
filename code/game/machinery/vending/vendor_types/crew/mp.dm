@@ -11,6 +11,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
+		list("Military Police M2 Runner Armor", 0, /obj/item/clothing/suit/storage/marine/MP/xeno, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Military Police M10 Runner Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/xeno, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Military Police M2 Armor", 0, /obj/item/clothing/suit/storage/marine/MP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("MP Beret", 0, /obj/item/clothing/head/beret/marine/mp, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
@@ -70,6 +72,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police_warden, list(
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR (TAKE ALL)", 0, null, null, null),
+		list("Military Police M2 Runner Armor", 0, /obj/item/clothing/suit/storage/marine/MP/xeno, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Military Police M10 Runner Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/xeno, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 		list("Military Warden M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/warden, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Warden Peaked Cap", 0, /obj/item/clothing/head/beret/marine/mp/warden, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 

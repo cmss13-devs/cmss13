@@ -10,6 +10,8 @@
 
 /obj/structure/closet/secure_closet/quartermaster/Initialize()
 	. = ..()
+	new /obj/item/clothing/suit/xenos/spitter(src)
+	new /obj/item/clothing/head/xenos/spitter(src)
 	new /obj/item/clothing/under/rank/cargo(src)
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/clothing/gloves/black(src)

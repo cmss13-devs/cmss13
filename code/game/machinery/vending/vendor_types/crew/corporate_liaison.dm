@@ -25,6 +25,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Blue Workwear", 0, /obj/item/clothing/under/colonist/workwear/blue, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 	list("SUIT (CHOOSE 5)", 0, null, null, null),
+	list("Burrower Suit", 0, /obj/item/clothing/suit/xenos/burrower, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
 	list("Black Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
 	list("Khaki Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Brown Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
@@ -49,6 +50,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Tan Vest", 0, /obj/item/clothing/suit/storage/jacket/marine/vest/tan, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 
 	list("HATS (CHOOSE 5)", 0, null, null, null),
+	list("Burrower Mask", 0, /obj/item/clothing/head/xenos/burrower, CIVILIAN_CAN_BUY_HAT, VENDOR_ITEM_RECOMMENDED),
 	list("Company Baseball Cap", 0, /obj/item/clothing/head/cmcap/wy_cap, CIVILIAN_CAN_BUY_HAT, VENDOR_ITEM_RECOMMENDED),
 	list("Tan Beret", 0, /obj/item/clothing/head/beret/civilian, CIVILIAN_CAN_BUY_HAT, VENDOR_ITEM_REGULAR),
 	list("Brown Beret", 0, /obj/item/clothing/head/beret/civilian/brown, CIVILIAN_CAN_BUY_HAT, VENDOR_ITEM_REGULAR),

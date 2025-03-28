@@ -130,6 +130,15 @@
 		list("M3-EOD Pattern Heavy Armor", floor(scale * 10), /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", floor(scale * 10), /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
+		list("ARMOR?", -1, null, null),
+		list("M10 Pattern Lesser Drone Helmet", floor(scale * 15), /obj/item/clothing/head/helmet/marine/xeno, VENDOR_ITEM_REGULAR),
+		list("M10 Pattern Warrior Helmet", floor(scale * 15), /obj/item/clothing/head/helmet/marine/xeno/warrior, VENDOR_ITEM_REGULAR),
+		list("M10 Pattern Defender Helmet", floor(scale * 15), /obj/item/clothing/head/helmet/marine/xeno/defender, VENDOR_ITEM_REGULAR),
+
+		list("M3-L Pattern Lesser Drone Light Armor", floor(scale * 15), /obj/item/clothing/suit/storage/marine/light/xeno, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Warrior Medium Armor", floor(scale * 15), /obj/item/clothing/suit/storage/marine/medium/xeno, VENDOR_ITEM_REGULAR),
+		list("M3-EOD Pattern Defender Heavy Armor", floor(scale * 15), /obj/item/clothing/suit/storage/marine/heavy/xeno, VENDOR_ITEM_REGULAR),
+
 		list("BACKPACK", -1, null, null, null),
 		list("Lightweight IMP Backpack", floor(scale * 15), /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
 		list("Technician Backpack", floor(scale * 15), /obj/item/storage/backpack/marine/tech, VENDOR_ITEM_REGULAR),

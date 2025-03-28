@@ -6,6 +6,7 @@
 	mob_max = 20
 	probability = 0
 	shuttle_id = ""
+	chance_hidden = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_army
 
 	max_heavies = 2

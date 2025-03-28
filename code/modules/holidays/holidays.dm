@@ -342,9 +342,7 @@
 	name = "Friendship Day"
 	begin_day = 30
 	begin_month = JULY
-
-/datum/holiday/friendship/greet()
-	return "Have a magical [name]!"
+	greet_text = "Have a magical Friendship Day!"
 
 /datum/holiday/intern
 	name = "National Intern Day"
@@ -373,7 +371,7 @@
 	name = "Health Unit Coordinators Day"
 	begin_day = 23
 	begin_month = AUGUST
-	greet_text = "This day reminds us of the important teamwork taking place in medical facilities and why health unit coordinators are so vital and indispensable.
+	greet_text = "This day reminds us of the important teamwork taking place in medical facilities and why health unit coordinators are so vital and indispensable."
 	holiday_faction = FACTION_WY
 
 // SEPTEMBER
@@ -423,7 +421,7 @@
 	begin_day = 27
 	begin_month = OCTOBER
 	greet_text = "We all have that cranky co-worker in the office who is always in a bad mood, so take October 27 as the day to make some fun of said co-worker's attitude by celebrating Cranky Co-Workers Day."
-	faction = FACTION_WY
+	holiday_faction = FACTION_WY
 
 /datum/holiday/halloween
 	name = HALLOWEEN
@@ -447,7 +445,7 @@
 	begin_month = NOVEMBER
 	begin_day = 10
 	greet_text = "This is when we honor lawyers and encourage them to keep going, despite the often negative reputation they have."
-	faction = FACTION_WY
+	holiday_faction = FACTION_WY
 
 /datum/holiday/remembrance_day
 	name = "Remembrance Day"
@@ -460,7 +458,7 @@
 	begin_month = NOVEMBER
 	begin_day = 10
 	greet_text = "Does the sight of a ledger book make your head spin? That's why we have accountants to figure it all out."
-	faction = FACTION_WY
+	holiday_faction = FACTION_WY
 
 /datum/holiday/lifeday
 	name = "Life Day"
@@ -474,9 +472,7 @@
 	begin_day = 1
 	begin_month = DECEMBER
 	end_day = 31
-
-/datum/holiday/festive_season/greet()
-	return "Have a nice festive season!"
+	greet_text = "Have a nice festive season!"
 
 /datum/holiday/business_plan
 	name = "National Write a Business Plan Month"
@@ -508,9 +504,7 @@
 	begin_day = 23
 	begin_month = DECEMBER
 	end_day = 27
-
-/datum/holiday/xmas/greet()
-	return "Have a merry Christmas!"
+	greet_text = "Have a merry Christmas!"
 
 /datum/holiday/boxing
 	name = "Boxing Day"
@@ -523,9 +517,7 @@
 	begin_month = DECEMBER
 	end_day = 2
 	end_month = JANUARY
-
-/datum/holiday/new_year/greet()
-	return "Have a happy New Year!"
+	greet_text = "Have a happy New Year!"
 
 // MOVING DATES
 

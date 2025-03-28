@@ -149,7 +149,30 @@
 			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
 			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
 
+	var/humans_weighed
+	var/xenos_weighed
+
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+		var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[current_human.job]
+		if(!job)
+			continue
+
+		humans_weighed += GLOB.RoleAuthority.calculate_role_weight(job)
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
+	if(istype(hive))
+		for(var/mob/living/carbon/xenomorph/current_xeno as anything in hive.totalXenos)
+			if(isfacehugger(current_xeno) || islesserdrone(current_xeno))
+				continue
+
+			xenos_weighed += 1
+
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
+
+	if(xenos_weighed && humans_weighed)
+		latejoin_larva_drop = humans_weighed / xenos_weighed // Keep the same ratio between xenos and marines as people latejoin
 
 	if (ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
 		latejoin_larva_drop = SSticker.mode.latejoin_larva_drop_early

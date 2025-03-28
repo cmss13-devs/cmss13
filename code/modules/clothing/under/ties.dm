@@ -6,7 +6,6 @@
 	w_class = SIZE_SMALL
 	var/image/inv_overlay = null //overlay used when attached to clothing.
 	var/obj/item/clothing/has_suit = null //the suit the tie may be attached to
-	var/slot = ACCESSORY_SLOT_DECOR
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ties.dmi'
@@ -20,6 +19,11 @@
 	var/removable = TRUE
 	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
+	var/original_item_path = /obj/item/clothing/accessory
+
+/obj/item/clothing/accessory/attack_self(mob/user)
+	if(can_become_accessory)
+		revert_from_accessory()
 
 /obj/item/clothing/accessory/Initialize()
 	. = ..()
@@ -374,7 +378,6 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi'
 	)
 	slot = ACCESSORY_SLOT_ARMBAND
-	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/armband/cargo
 	name = "cargo armband"

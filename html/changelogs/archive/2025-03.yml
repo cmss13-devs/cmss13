@@ -405,3 +405,9 @@
   - bugfix: Facepaints get deleted if you get beheaded
   Zonespace27:
   - bugfix: You can no longer bypass storage locks by using a disposal bin.
+2025-03-28:
+  Zenith, Crowford, cuberound, Thwomper:
+  - code_imp: expanded the butchering code a bit to include new items.
+  - imageadd: added many new additions to the Hunter sprite lists and expanded current
+      ones, as well as many new prey items.
+  - maptweak: completely remade the Hunter ship map and expanded it with more decks.

@@ -179,7 +179,6 @@
 
 	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
 		SSticker.mode.latejoin_larva_used += latejoin_larva_drop
-		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.latejoin_burrowed == TRUE)

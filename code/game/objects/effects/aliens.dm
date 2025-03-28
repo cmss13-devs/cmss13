@@ -270,7 +270,7 @@
 	time_to_live = 2 SECONDS
 	destroy_cades = FALSE
 
-	var/slow_duration = 2.5 // Is 2 seconds for some reason.
+	var/slow_duration = 2
 	var/plasma_amount = 80
 
 /obj/effect/xenomorph/spray/plasma/friendly_spray(mob/living/carbon/carbone)

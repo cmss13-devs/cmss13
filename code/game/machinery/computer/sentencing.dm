@@ -8,6 +8,12 @@
 	var/datum/crime_incident/incident
 	var/current_menu = "main"
 	var/static/paper_counter = 0
+	unacidable = TRUE
+	breakable = FALSE
+	unslashable = TRUE
+	
+/obj/structure/machinery/computer/sentencing/ex_act(severity)
+	return
 
 /obj/structure/machinery/computer/sentencing/attack_hand(mob/user as mob)
 	if(..() || !allowed(usr) || inoperable())
@@ -242,4 +248,4 @@
 					incident.criminal_gid = add_zero(num2hex(id.registered_gid), 6)
 					ping("\The [src] pings, \"Criminal [id.registered_name] verified.\"")
 
-	..()
+	. = ..()

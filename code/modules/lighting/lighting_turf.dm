@@ -3,17 +3,6 @@
 ///Used for lightig mask lumcount calculations
 #define LIGHT_POWER_ESTIMATION(alpha, range, distance) max((alpha * (range - distance)) / (255 * range), 0)
 
-/turf
-	///hybrid lights affecting this turf
-	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
-
-/turf/Destroy(force)
-	if(hybrid_lights_affecting)
-		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
-			LAZYREMOVE(mask.affecting_turfs, src)
-		hybrid_lights_affecting.Cut()
-	return ..()
-
 /// Causes any affecting light sources to be queued for a visibility update, for example a door got opened.
 /turf/proc/reconsider_lights()
 	//Consider static lights

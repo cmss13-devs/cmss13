@@ -19,7 +19,8 @@
 	var/filled = 0
 
 /obj/item/reagent_container/dropper/afterattack(obj/target, mob/user , flag)
-	if(!target.reagents || !flag) return
+	if(!target.reagents || !flag)
+		return
 
 	if(filled)
 
@@ -39,7 +40,8 @@
 			for(var/mob/O in viewers(GLOB.world_view_size, user))
 				O.show_message(SPAN_DANGER("<B>[user] is trying to squirt something into [target]'s eyes!</B>"), SHOW_MESSAGE_VISIBLE)
 
-			if(!do_after(user, time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+			if(!do_after(user, time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+				return
 
 			if(istype(target , /mob/living/carbon/human))
 				var/mob/living/carbon/human/victim = target
@@ -66,9 +68,12 @@
 						src.reagents.reaction(safe_thing, TOUCH)
 
 					to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
-					if (src.reagents.total_volume<=0)
+					if(src.reagents.total_volume<=0)
 						filled = 0
 						icon_state = "dropper[filled]"
+						item_state = icon_state
+						user.update_inv_l_hand()
+						user.update_inv_r_hand()
 					return
 
 			for(var/mob/O in viewers(GLOB.world_view_size, user))
@@ -87,9 +92,12 @@
 
 		trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the solution."))
-		if (src.reagents.total_volume<=0)
+		if(src.reagents.total_volume<=0)
 			filled = 0
 			icon_state = "dropper[filled]"
+			item_state = icon_state
+			user.update_inv_l_hand()
+			user.update_inv_r_hand()
 
 	else
 
@@ -111,6 +119,9 @@
 
 		filled = 1
 		icon_state = "dropper[filled]"
+		item_state = icon_state
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 	return
 

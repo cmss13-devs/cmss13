@@ -3,6 +3,7 @@
 	icon_state = "upp_c"
 	name = "\improper UPP Logo"
 	layer = WEED_LAYER
+	anchored = TRUE
 
 /obj/effect/decal/floor_symbol/westface
 	icon_state = "upp_directional"

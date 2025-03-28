@@ -21,7 +21,7 @@
 							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 18,
 							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
-	angle = 60
+	shrapnel_spread = 60
 	use_dir = TRUE
 	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
@@ -82,7 +82,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You start deploying [src]."))
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."),
 			SPAN_NOTICE("You stop deploying \the [src]."))
 		return
 
@@ -92,7 +92,7 @@
 	if(check_for_obstacles(user))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 
 	deploy_mine(user)
@@ -118,13 +118,13 @@
 			if(user.action_busy)
 				return
 			if(user.faction == iff_signal)
-				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
 				SPAN_NOTICE("You start disarming [src]."))
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
+				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."),
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(user.faction != iff_signal) //ow!
@@ -137,7 +137,7 @@
 					prime()
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 
@@ -172,7 +172,8 @@
 			return
 		else
 			..()
-			use_dir = FALSE // Claymore defaults to radial in these case. Poor man C4
+			// Claymore defaults to radial in these case. Poor man C4
+			use_dir = FALSE
 			triggered = TRUE // Delegating the tripwire/crossed function to the sensor.
 
 
@@ -209,8 +210,8 @@
 		return
 	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
 		return
-	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
-	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
+	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
+	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
 	SPAN_DANGER("You hear a click."))
 
 	triggered = TRUE
@@ -224,7 +225,7 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 12, dir, angle, , cause_data)
+		create_shrapnel(loc, 12, dir, shrapnel_spread, , cause_data)
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
 	else
@@ -242,7 +243,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 

@@ -57,7 +57,9 @@
 	. += SPAN_NOTICE(get_damage_status())
 
 /obj/item/clothing/accessory/health/additional_examine_text()
-	return ". [get_damage_status()]"
+	. = ..()
+
+	. += "[get_damage_status()]"
 
 /obj/item/clothing/accessory/health/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
@@ -217,14 +219,10 @@
 /obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/attached_to, mob/living/carbon/human/user)
 	. = ..()
 	attached_uni = attached_to
+	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 
 /obj/item/clothing/accessory/health/research_plate/proc/can_recycle(mob/living/user) //override this proc for check if you can recycle the plate.
 	return FALSE
-
-
-/obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
-	. = ..()
-	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 
 /obj/item/clothing/accessory/health/research_plate/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()

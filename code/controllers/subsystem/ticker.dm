@@ -256,9 +256,6 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		INVOKE_ASYNC(np, TYPE_PROC_REF(/mob/new_player, new_player_panel_proc), TRUE)
-
 	setup_economy()
 
 	SSoldshuttle.shuttle_controller?.setup_shuttle_docks()
@@ -281,6 +278,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
 
 	GLOB.supply_controller.start_processing()
+	GLOB.supply_controller_upp.start_processing()
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
@@ -376,7 +374,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(graceful)
 		to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Shutting down...")]</h3>")
-		world.Reboot(FALSE)
+		world.Reboot()
 		return
 
 	if(!delay)
@@ -399,7 +397,7 @@ SUBSYSTEM_DEF(ticker)
 	log_game("Rebooting World. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
 
-	world.Reboot(TRUE)
+	world.Reboot()
 
 /datum/controller/subsystem/ticker/proc/create_characters()
 	if(!GLOB.RoleAuthority)
@@ -413,6 +411,9 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
 	var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[player.job]
+
+	player.client?.prefs.update_slot(J.title, 10 SECONDS)
+
 	if(J.job_options && player?.client?.prefs?.pref_special_job_options[J.title])
 		J.handle_job_options(player.client.prefs.pref_special_job_options[J.title])
 	if(J.handle_spawn_and_equip)
@@ -451,7 +452,7 @@ SUBSYSTEM_DEF(ticker)
 			if(player.job == JOB_CO)
 				captainless = FALSE
 			if(player.job)
-				GLOB.RoleAuthority.equip_role(player, GLOB.RoleAuthority.roles_by_name[player.job], late_join = FALSE)
+				INVOKE_ASYNC(GLOB.RoleAuthority, TYPE_PROC_REF(/datum/authority/branch/role, equip_role), player, GLOB.RoleAuthority.roles_by_name[player.job], FALSE)
 				if(player.ckey in GLOB.donator_items)
 					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 

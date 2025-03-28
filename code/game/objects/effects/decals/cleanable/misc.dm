@@ -157,11 +157,13 @@
 	name = "black goo"
 	desc = "It's thick and gooey."
 	gender = PLURAL
+	anchored = TRUE
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "blackgoo"
 
 /obj/effect/decal/cleanable/blackgoo/Crossed(mob/living/carbon/human/H)
-	if(!istype(H)) return
+	if(!istype(H))
+		return
 	if(H.species.name == "Human")
 		if(!H.shoes && prob(50))
 			H.contract_disease(new /datum/disease/black_goo)

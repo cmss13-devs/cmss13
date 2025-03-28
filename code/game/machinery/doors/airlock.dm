@@ -102,9 +102,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			return
 	..(user)
 
-/obj/structure/machinery/door/airlock/bumpopen(mob/living/simple_animal/user as mob)
-	..(user)
-
 /// DAMAGE CODE
 
 /obj/structure/machinery/door/airlock/get_examine_text(mob/user)
@@ -222,8 +219,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			//tries to open the door without ID
 			//will succeed only if the ID wire is cut or the door requires no access
 			if(!requiresID() || check_access(null))
-				if(density) open()
-				else close()
+				if(density)
+					open()
+				else
+					close()
 
 		if(AIRLOCK_WIRE_SAFETY)
 			safe = !safe
@@ -399,7 +398,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 
 /obj/structure/machinery/door/airlock/update_icon()
-	if(overlays) overlays.Cut()
+	if(overlays)
+		overlays.Cut()
 	if(density)
 		if(locked && lights)
 			icon_state = "door_locked"
@@ -419,14 +419,16 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/do_animate(animation)
 	switch(animation)
 		if("opening")
-			if(overlays) overlays.Cut()
+			if(overlays)
+				overlays.Cut()
 			if(panel_open)
 				spawn(2) // The only work around that works. Downside is that the door will be gone for a millisecond.
 					flick("o_door_opening", src)  //can not use flick due to BYOND bug updating overlays right before flicking
 			else
 				flick("door_opening", src)
 		if("closing")
-			if(overlays) overlays.Cut()
+			if(overlays)
+				overlays.Cut()
 			if(panel_open)
 				flick("o_door_closing", src)
 			else
@@ -575,13 +577,13 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	add_fingerprint(user)
 
 	if(istype(attacking_item, /obj/item/weapon/zombie_claws) && (welded || locked))
-		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"), \
-			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."), \
+		user.visible_message(SPAN_NOTICE("[user] starts tearing into the door on [src]!"),
+			SPAN_NOTICE("You start prying your hand into the gaps of the door with your fingers... This will take about 30 seconds."),
 			SPAN_NOTICE("You hear tearing noises!"))
 
 		if(do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_NOTICE("[user] slams the door open [src]!"), \
-			SPAN_NOTICE("You slam the door open!"), \
+			user.visible_message(SPAN_NOTICE("[user] slams the door open [src]!"),
+			SPAN_NOTICE("You slam the door open!"),
 			SPAN_NOTICE("You hear metal screeching!"))
 			locked = 0
 			welded = 0
@@ -604,8 +606,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 			to_chat(user, SPAN_WARNING("\The [W] needs to be on!"))
 			return
 		if(W.remove_fuel(0,user))
-			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with \the [W]."), \
-			SPAN_NOTICE("You start working on \the [src] with \the [W]."), \
+			user.visible_message(SPAN_NOTICE("[user] starts working on \the [src] with \the [W]."),
+			SPAN_NOTICE("You start working on \the [src] with \the [W]."),
 			SPAN_NOTICE("You hear welding."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD) && density)
@@ -784,6 +786,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 	for(var/turf/turf in locs)
 		for(var/mob/living/crushed in turf)
+			if(!arePowerSystemsOn() && forced)
+				return
 			if(HAS_TRAIT(crushed, TRAIT_SUPER_STRONG))
 				crushed.apply_damage(DOOR_CRUSH_DAMAGE, BRUTE)
 			else
@@ -849,6 +853,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	if(autoname)
 		var/area/A = get_area(loc)
 		name = A.name
+
+	if(frequency)
+		set_frequency(frequency)
+
+	update_icon()
+	start_processing()
 
 	return INITIALIZE_HINT_LATELOAD
 

@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 import { Placement } from '@popperjs/core';
 import {
   PropsWithChildren,

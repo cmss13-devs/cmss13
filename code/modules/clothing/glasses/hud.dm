@@ -13,6 +13,7 @@
 	name = "\improper HealthMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
+	item_state = "healthhud"
 	deactive_state = "degoggles"
 	flags_armor_protection = 0
 	toggleable = TRUE
@@ -106,6 +107,19 @@
 		var/obj/item/paper/research_report/report = GLOB.chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 		if(report)
 			report.read_paper(user)
+
+/obj/item/clothing/glasses/hud/health/basic
+	name = "\improper Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one is a simpler model."
+	hud_type = MOB_HUD_MEDICAL_BASIC
+	req_skill = NONE
+	req_skill_level = NONE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/hud/health/basic/prescription
+	name = "\improper Prescription Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This simpler model contains prescription lenses."
+	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/health/science
 	name = "custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO

@@ -11,7 +11,6 @@
         "/datum/equipment_preset/survivor/scientist/shiva",
         "/datum/equipment_preset/survivor/engineer/shiva",
         "/datum/equipment_preset/survivor/security/shiva",
-        "/datum/equipment_preset/survivor/clf",
         "/datum/equipment_preset/survivor/civilian"
     ],
     "defcon_triggers": [

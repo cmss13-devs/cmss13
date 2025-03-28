@@ -1,5 +1,8 @@
 #define DELETE_TIME 1800
 
+/// Doesn't count tier 0
+GLOBAL_VAR_INIT(total_dead_xenos, 0)
+
 /mob/living/carbon/xenomorph/death(cause, gibbed)
 	var/msg = "lets out a waning guttural screech, green blood bubbling from its maw."
 	. = ..(cause, gibbed, msg)
@@ -27,6 +30,12 @@
 		update_icons()
 
 	if(!should_block_game_interaction(src)) //so xeno players don't get death messages from admin tests
+		if(!(datum_flags & DF_VAR_EDITED) && istype(SSticker.mode, /datum/game_mode/colonialmarines))
+			var/datum/entity/xeno_death/death_log = DB_ENTITY(/datum/entity/xeno_death)
+			death_log.load_data(src, cause)
+			if(!(caste.caste_type in XENO_T0_CASTES))
+				GLOB.total_dead_xenos++
+
 		if(isqueen(src))
 			var/mob/living/carbon/xenomorph/queen/XQ = src
 			playsound(loc, 'sound/voice/alien_queen_died.ogg', 75, 0)
@@ -98,10 +107,6 @@
 	if(behavior_delegate)
 		behavior_delegate.handle_death(src)
 
-	for(var/atom/movable/A in stomach_contents)
-		stomach_contents.Remove(A)
-		A.acid_damage = 0 //Reset the acid damage
-		A.forceMove(loc)
 
 	// Banished xeno provide a burrowed larva on death to compensate
 	if(banished && refunds_larva_if_banished)
@@ -150,10 +155,7 @@
 			no_remains = TRUE
 
 	if(!no_remains)
-		var/obj/effect/decal/remains/xeno/remains = new(get_turf(src))
-		remains.pixel_x = pixel_x //For 2x2.
-		remains.icon_state = "gibbed-a-corpse"
-		remains.icon = icon
+		new /obj/effect/decal/remains/xeno(get_turf(src), icon, "gibbed-a-corpse", pixel_x)
 
 	check_blood_splash(35, BURN, 65, 2) //Some testing numbers. 35 burn, 65 chance.
 

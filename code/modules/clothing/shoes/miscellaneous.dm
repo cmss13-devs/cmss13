@@ -3,7 +3,7 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	item_state = "brown"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 	var/list/clothing_choices = list()
@@ -64,7 +64,7 @@
 	desc = "Rubber boots"
 	name = "galoshes"
 	icon_state = "galoshes"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 /obj/item/clothing/shoes/clown_shoes

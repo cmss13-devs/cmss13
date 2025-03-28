@@ -290,11 +290,11 @@
 #define PANDEMIC 2
 
 //emote flags
-#define EMOTING_HIGH_FIVE  1
-#define EMOTING_FIST_BUMP  2
-#define EMOTING_HEADBUTT   3
-#define EMOTING_TAIL_SWIPE 4
-#define EMOTING_ROCK_PAPER_SCISSORS 5
+#define EMOTING_HIGH_FIVE  (1<<0)
+#define EMOTING_FIST_BUMP  (1<<1)
+#define EMOTING_HEADBUTT   (1<<2)
+#define EMOTING_TAIL_SWIPE (1<<3)
+#define EMOTING_ROCK_PAPER_SCISSORS (1<<4)
 
 //forcesay types
 #define SUDDEN 0

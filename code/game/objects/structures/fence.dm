@@ -1,7 +1,7 @@
 /obj/structure/fence
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
-	icon = 'icons/obj/structures/props/fence.dmi'
+	icon = 'icons/obj/structures/props/fences/fence.dmi'
 	icon_state = "fence0"
 	throwpass = TRUE
 	density = TRUE
@@ -14,6 +14,7 @@
 	var/cut = 0 //Cut fences can be passed through
 	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
+	var/forms_junctions = TRUE
 
 /obj/structure/fence/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -68,9 +69,9 @@
 
 /obj/structure/fence/attack_hand(mob/user as mob)
 	if(ishuman(user) && user.a_intent == INTENT_HARM)
-		var/mob/living/carbon/human/H = user
-		if(H.species.can_shred(H))
-			attack_generic(H, 25)
+		var/mob/living/carbon/human/human = user
+		if(human.species.can_shred(human))
+			attack_generic(human, 25)
 
 //Used by attack_animal
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
@@ -80,10 +81,12 @@
 	healthcheck(1, 1, user)
 
 /obj/structure/fence/attack_animal(mob/user as mob)
-	if(!isanimal(user)) return
-	var/mob/living/simple_animal/M = user
-	if(M.melee_damage_upper <= 0) return
-	attack_generic(M, M.melee_damage_upper)
+	if(!isanimal(user))
+		return
+	var/mob/living/simple_animal/simple = user
+	if(simple.melee_damage_upper <= 0)
+		return
+	attack_generic(simple, simple.melee_damage_upper)
 
 /obj/structure/fence/attackby(obj/item/W, mob/user)
 
@@ -91,26 +94,26 @@
 		if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_ENGI))
 			to_chat(user, SPAN_WARNING("You don't have the skill needed to fix [src]'s wiring."))
 			return
-		var/obj/item/stack/barbed_wire/R = W
+		var/obj/item/stack/barbed_wire/wire = W
 		var/amount_needed = 2
 		if(health)
 			amount_needed = 1
-		if(R.amount >= amount_needed)
-			user.visible_message(SPAN_NOTICE("[user] starts repairing [src] with [R]."),
-			SPAN_NOTICE("You start repairing [src] with [R]."))
+		if(wire.amount >= amount_needed)
+			user.visible_message(SPAN_NOTICE("[user] starts repairing [src] with [wire]."),
+			SPAN_NOTICE("You start repairing [src] with [wire]."))
 			playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-				if(R.amount < amount_needed)
+				if(wire.amount < amount_needed)
 					to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
 					return
-				R.use(amount_needed)
+				wire.use(amount_needed)
 				health = health_max
-				cut = 0
+				cut = FALSE
 				density = TRUE
 				update_icon()
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [R]."),
-				SPAN_NOTICE("You repair [src] with [R]."))
+				user.visible_message(SPAN_NOTICE("[user] repairs [src] with [wire]."),
+				SPAN_NOTICE("You repair [src] with [wire]."))
 				return
 		else
 			to_chat(user, SPAN_WARNING("You need more barbed wire to repair [src]."))
@@ -131,36 +134,37 @@
 		return
 
 	if(istype(W, /obj/item/grab) && get_dist(src, user) < 2)
-		var/obj/item/grab/G = W
-		if(istype(G.grabbed_thing, /mob/living))
-			var/mob/living/M = G.grabbed_thing
+		var/obj/item/grab/grabby = W
+		if(istype(grabby.grabbed_thing, /mob/living))
+			var/mob/living/grabbed_mob = grabby.grabbed_thing
 			var/state = user.grab_level
 			user.drop_held_item()
 			switch(state)
 				if(GRAB_PASSIVE)
-					M.visible_message(SPAN_WARNING("[user] slams [M] against \the [src]!"))
-					M.apply_damage(7)
+					grabbed_mob.visible_message(SPAN_WARNING("[user] slams [grabbed_mob] against \the [src]!"))
+					grabbed_mob.apply_damage(7)
 					health -= 10
 				if(GRAB_AGGRESSIVE)
-					M.visible_message(SPAN_DANGER("[user] bashes [M] against \the [src]!"))
+					grabbed_mob.visible_message(SPAN_DANGER("[user] bashes [grabbed_mob] against \the [src]!"))
 					if(prob(50))
-						M.apply_effect(1, WEAKEN)
-					M.apply_damage(10)
+						grabbed_mob.apply_effect(1, WEAKEN)
+					grabbed_mob.apply_damage(10)
 					health -= 25
 				if(GRAB_CHOKE)
-					M.visible_message(SPAN_DANGER("[user] crushes [M] against \the [src]!"))
-					M.apply_effect(5, WEAKEN)
-					M.apply_damage(20)
+					grabbed_mob.visible_message(SPAN_DANGER("[user] crushes [grabbed_mob] against \the [src]!"))
+					grabbed_mob.apply_effect(5, WEAKEN)
+					grabbed_mob.apply_damage(20)
 					health -= 50
 
-			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slammed against [src] by [key_name(user)]</font>")
-			user.attack_log += text("\[[time_stamp()]\] <font color='red'>slammed [key_name(M)] against [src]</font>")
-			msg_admin_attack("[key_name(user)] slammed [key_name(M)] against [src] at [get_area_name(M)]", M.loc.x, M.loc.y, M.loc.z)
+			grabbed_mob.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slammed against [src] by [key_name(user)]</font>")
+			user.attack_log += text("\[[time_stamp()]\] <font color='red'>slammed [key_name(grabbed_mob)] against [src]</font>")
+			msg_admin_attack("[key_name(user)] slammed [key_name(grabbed_mob)] against [src] at [get_area_name(grabbed_mob)]", grabbed_mob.loc.x, grabbed_mob.loc.y, grabbed_mob.loc.z)
 
-			healthcheck(1, 1, M) //The person thrown into the window literally shattered it
+			healthcheck(1, 1, grabbed_mob) //The person thrown into the window literally shattered it
 		return
 
-	if(W.flags_item & NOBLUDGEON) return
+	if(W.flags_item & NOBLUDGEON)
+		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/attachable/bayonet) || istype(W, /obj/item/weapon/bracer_attachment))
 		user.visible_message(SPAN_NOTICE("[user] starts cutting through [src] with [W]."),
@@ -185,7 +189,7 @@
 			if("brute")
 				health -= W.force * W.demolition_mod * 0.1
 		healthcheck(1, 1, user, W)
-		..()
+		. = ..()
 
 /obj/structure/fence/deconstruct(disassembled = TRUE)
 	if(disassembled)
@@ -194,7 +198,7 @@
 
 /obj/structure/fence/proc/cut_grille()
 	health = 0
-	cut = 1
+	cut = TRUE
 	density = FALSE
 	update_icon() //Make it appear cut through!
 
@@ -221,8 +225,9 @@
 /obj/structure/fence/proc/update_nearby_icons()
 	update_icon()
 	for(var/direction in GLOB.cardinals)
-		for(var/obj/structure/fence/W in get_step(src, direction))
-			W.update_icon()
+		for(var/obj/structure/fence/fence in get_step(src, direction))
+			if(fence.forms_junctions)
+				fence.update_icon()
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/fence/update_icon()
@@ -230,10 +235,13 @@
 	//this way it will only update full-tile ones
 	//This spawn is here so windows get properly updated when one gets deleted.
 	spawn(2)
-		if(!src) return
-		for(var/obj/structure/fence/W in orange(src, 1))
-			if(abs(x - W.x) - abs(y - W.y)) //Doesn't count grilles, placed diagonally to src
-				junction |= get_dir(src, W)
+		if(!src)
+			return
+		for(var/obj/structure/fence/fence in orange(src, 1))
+			if(!fence.forms_junctions)
+				continue
+			if(abs(x - fence.x) - abs(y - fence.y)) //Doesn't count grilles, placed diagonally to src
+				junction |= get_dir(src, fence)
 		if(cut)
 			icon_state = "broken[basestate][junction]"
 		else
@@ -244,3 +252,75 @@
 		health -= floor(exposed_volume / 100)
 		healthcheck(0) //Don't make hit sounds, it's dumb with fire/heat
 	..()
+
+GLOBAL_LIST_INIT(all_electric_fences, list())
+
+// Hybrisa Electric Fence
+/obj/structure/fence/electrified
+	name = "electrified grille"
+	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
+	icon_state = "highvoltagegrille_off"
+	basestate = "highvoltagegrille"
+	throwpass = TRUE
+	unacidable = TRUE
+	forms_junctions = FALSE
+	var/electrified = FALSE
+	var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/breaker_switch = null
+
+/obj/structure/fence/electrified/hitby(atom/movable/AM)
+	visible_message(SPAN_DANGER("[src] was hit by [AM]."))
+	var/tforce = 0
+	if(ismob(AM))
+		if(electrified && !cut)
+			electrocute_mob(AM, get_area(breaker_switch), src, 0.75)
+		else
+			tforce = 40
+	else if(isobj(AM))
+		var/obj/item/zapped_item = AM
+		tforce = zapped_item.throwforce
+	health = max(0, health - tforce)
+	healthcheck()
+
+/obj/structure/fence/electrified/update_nearby_icons()
+	return
+
+/obj/structure/fence/electrified/update_icon()
+	if(cut)
+		icon_state = "[basestate]_broken"
+	else
+		if(electrified)
+			icon_state = "[basestate]"
+		else
+			icon_state = "[basestate]_off"
+
+/obj/structure/fence/electrified/proc/toggle_power()
+	electrified = !electrified
+	update_icon()
+
+/obj/structure/fence/electrified/Initialize()
+	. = ..()
+	GLOB.all_electric_fences += src
+
+/obj/structure/fence/electrified/Destroy()
+	GLOB.all_electric_fences -= src
+	return ..()
+
+/obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
+	if(electrified && !cut)
+		electrocute_mob(user, get_area(breaker_switch), src, 0.75)
+	return ..()
+
+/obj/structure/fence/electrified/ex_act(severity)
+	health -= severity/2
+	healthcheck(make_hit_sound = FALSE, create_debris = TRUE)
+
+/obj/structure/fence/dark
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/dark_fence.dmi'
+
+/obj/structure/fence/dark/warning
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/electric_fence.dmi'

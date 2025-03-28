@@ -1,10 +1,29 @@
+/obj/effect/landmark/supply_elevator
+	icon_state = "elevator"
+	var/faction = FACTION_MARINE
+
+/obj/effect/landmark/supply_elevator/upp
+	icon_state = "elevator_upp"
+	faction = FACTION_UPP
+
 /obj/effect/landmark/supply_elevator/Initialize(mapload, ...)
 	. = ..()
-	GLOB.supply_elevator = get_turf(src)
+	switch(faction)
+		if(FACTION_MARINE)
+			GLOB.supply_controller.supply_elevator = get_turf(src)
+		if(FACTION_UPP)
+			GLOB.supply_controller_upp.supply_elevator = get_turf(src)
+		else
+			GLOB.supply_controller.supply_elevator = get_turf(src)
 	return INITIALIZE_HINT_QDEL
+
+
 
 /datum/shuttle/ferry/supply
 	iselevator = 1
+	location = 1
+	warmup_time = 1
+	move_time = ELEVATOR_TRANSIT_DURATION
 	var/away_location = 1 //the location to hide at while pretending to be in-transit
 	var/late_chance = 0
 	var/max_late_time = 300
@@ -20,13 +39,28 @@
 	var/elevator_loc
 	///Used to mirrors the turfs (and their contents) on the elevator when raising/lowering, so they don't instantly teleport or vanish.
 	var/obj/effect/elevator/animation_overlay/elevator_animation
+	var/datum/controller/supply/linked_supply_controller
+	var/faction = FACTION_MARINE
+
+/datum/shuttle/ferry/supply/upp
+	faction= FACTION_UPP
+	railing_id = "supply_elevator_railing_upp"
+	gear_id = "supply_elevator_gear_upp"
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
-	return GLOB.supply_elevator
+	return linked_supply_controller.supply_elevator
 
 /datum/shuttle/ferry/supply/New()
 	..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller
+	linked_supply_controller.shuttle = src
 	elevator_animation = new()
 	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
 	elevator_animation.pixel_y = -80
@@ -77,7 +111,7 @@
 				lower_railings()
 				return
 		else //at centcom
-			GLOB.supply_controller.buy()
+			linked_supply_controller.buy()
 
 		//We pretend it's a long_jump by making the shuttle stay at centcom for the "in-transit" period.
 		var/area/away_area = get_location_area(away_location)
@@ -148,14 +182,14 @@
 			recharging = 0
 
 /datum/shuttle/ferry/supply/proc/handle_sell()
-	GLOB.supply_controller.sell()
+	linked_supply_controller.sell() // fix this make it expandable
 
 // returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/ferry/supply/proc/forbidden_atoms_check()
 	if (!at_station())
 		return 0 //if badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
 
-	return GLOB.supply_controller.forbidden_atoms_check(get_location_area())
+	return linked_supply_controller.forbidden_atoms_check(get_location_area())
 
 /datum/shuttle/ferry/supply/proc/at_station()
 	return (!location)

@@ -15,8 +15,8 @@
 		return //Fuck this precision
 
 	if(bodytemperature < species.cold_level_1) //260.15 is 310.15 - 50, the temperature where you start to feel effects.
-		if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
-			nutrition -= 2
+		if(nutrition >= COLD_NUTRITION_COST) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
+			nutrition -= COLD_NUTRITION_COST
 		var/recovery_amt = max((body_temperature_difference / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
 		bodytemperature += recovery_amt
 		recalculate_move_delay = TRUE
@@ -209,6 +209,7 @@
 	last_damage_data = null
 	statistic_tracked = FALSE
 	tod = null
+	revive_grace_period = initial(revive_grace_period)
 	set_stat(UNCONSCIOUS)
 	emote("gasp")
 	regenerate_icons()

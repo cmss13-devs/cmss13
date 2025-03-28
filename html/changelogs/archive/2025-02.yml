@@ -1,0 +1,581 @@
+2025-02-01:
+  Drathek:
+  - bugfix: Fixed predators having unlimited slots and slot exemptions still actually
+      using slots
+  - bugfix: Fixed toggle predator round not working during pre-game
+  - balance: Predator slots are increased from 4 + 1per80 to 6 + 1per80 and clan leaders
+      no longer count for slots
+  - ui: Toggle predator round now uses TGUI alerts
+  - admin: Predator slot adjustment can now go negative (e.g. it can limit it lower
+      than starting count)
+  Joe Lampost:
+  - balance: Upp hunting ground ert memebers now have medical equipment
+  - code_imp: Lays the foundation for more faction warcrys
+  - code_imp: The hunting ground erts now inform preds if nothing spawns and or how
+      many humans or xenos spawned in the ert
+  - bugfix: The hunting grounds no longer gets effected by weather
+  - bugfix: Pred bursts sound
+  - bugfix: Makes your preferences for the hunting grounds save now.
+  - bugfix: Queen mother can no longer see humans inside the hunting grounds.
+  KaiserBlackwood:
+  - rscadd: L23 Assault Rifle based on NSG23, which is a lore-friendly RMC weapon
+  - rscadd: L42A3 Designated Marksman Rifle. RMC alternative to M4RA.
+  - rscadd: 'New ERT role: RMC Corpsman.'
+  - rscadd: 'New presets: RMC Captain and RMC Major.'
+  - rscadd: multitude of RMC-specific attachments.
+  - rscadd: NSG23 Training magazine loaded with rubber bullets.
+  - rscadd: integrated medical visors to all of the RMC helmets.
+  - rscadd: RMC surgical cases that fit 5 surgical items. Available only as part of
+      RMC kit.
+  - rscadd: TWE Variable Zoom Scope. Self-explanatory.
+  - rscadd: RMC Service uniforms.
+  - balance: reworked RMC skills to be more reasonable.
+  - balance: gave RMC Smartgunner Breacher helmet.
+  - balance: RMC Marksman is now equipped with ID-locked NVG goggles.
+  - balance: includes my NSG23 Rework buffs to NSG23's firerate and added recoil.
+  - balance: fixes MRE Rifleman to now carry ammo boxes for the team as well.
+  - balance: moves Breacher to the Engineer category for the ERTs.
+  - bugfix: RMC L5 Bayonet finally has dedicated sprites
+  - imageadd: new overlays and sprites for NSG23 mags.
+  - imageadd: new RMC uniforms.
+  - config: changed RMC ERT config to deploy a medic and slightly changed their xenomorph
+      awareness fluff (added 5% to them being faintly aware of xenos)
+  - spellcheck: changed NSG 23 extended magazine's name to "NSG 23 high-capacity drum
+      magazine".
+  Red-byte3D:
+  - bugfix: You can no longer show paper to non humans such as yautja or xenomorphs.
+  Vandu Jr, Triio:
+  - rscadd: added two new branded Cigarette Vendors, Koorlander and Weyland Yutani
+  - rscadd: added a new cigarette brand to the game, Balaji Imperials from the first
+      movie. Located in the WY vendor
+  - imageadd: added a new WY and Koorlander vendor, as well as sprites for the new
+      Balaji Imperial cigarettes
+  - maptweak: replaced all generic cigarette vendors with either a WY or Koorlander
+      one, areas for people without accounts get free variants of the branded ones
+      (like ERT stations and fax responders).
+  ihatethisengine:
+  - qol: answering an emote such as high-five no longer requires targeting a specific
+      limb.
+2025-02-03:
+  Red-byte3D:
+  - code_imp: Replacces some one letter vars in carbon.dm
+  - spellcheck: Replaces mentions of "belly" with "stomach" in game the tutorial(s).
+  - bugfix: Hellhounds no longer get offered up to the "Join as Hellhound" button
+      if the admin inhabiting it aghosts
+  - bugfix: Evolution button no longer gets deleted when you reset your strain while
+      at full evo.
+  - balance: Queens can now properly gib anyone regardless of their host status.
+  - bugfix: Synthetics and non-humans can no longer get psychic whisper through research.
+  - code_imp: encephalophrasive no longer applies on touch since it lasts forever
+      otherwise
+  - bugfix: Xenos are no longer blocked by people who are fireman carrying
+  - code_imp: Replaces one letter vars
+  VileBeggar:
+  - balance: Predator melee weapons now have click delay for clicking on empty adjacent
+      tiles.
+2025-02-05:
+  Diegoflores31:
+  - bugfix: Queen no longer stomps on dead and resting xenomorphs
+  - bugfix: Uniforms can no longer be removed if you are wearing a suit on top of
+      it
+  FebrezeNinja:
+  - bugfix: Dropship weapon console can see stasis bags in activated stretchers instead
+      of "Empty"
+  Mikrel0712:
+  - bugfix: ASO Jacket icon in the vendor now shows up as the actual jacket instead
+      of a bloodbag
+  Red-byte3D:
+  - bugfix: Fixes boiler speed being stuck if you buy a strain while zoomed in
+  - rscadd: Adds a bunch of career options for the commanding officer whitelist, currently
+      only used for fluff and RP.
+  - bugfix: Queens can no longer leader the dead.
+  - code_imp: Removes one letter vars
+  - bugfix: fixes the healing / aura effect from recovery nodes applying to dead xenos
+      / xenos who died while resting
+  - bugfix: Dead huggers can no longer be used to hug people
+  - bugfix: You can no longer apply the black holocard to people who are still revivable
+  - bugfix: Extuingishers can no longer be filled by harmful chemicals
+  - bugfix: Praetorian's acid ball no longer uses plasma if you cancel / do not use
+      it.
+  - bugfix: Mutated hive hugger icons work again.
+  - code_imp: Removes some one letter vars from smartpack code.
+  - bugfix: Airlock assemblies are no longer unslashable.
+  - bugfix: You can no longer use telekinesis to grab paper from far away.
+  ZephyrTFA, san7890, Nivrak:
+  - rscadd: Chat Reliability Layer
+  - code_imp: TGUI chat messages now track their sequence and will be resent if the
+      client notices a discrepenency
+  efzapa:
+  - maptweak: Replaced the Security Cabinet in the Security Office on LV624 with a
+      regular Cabinet. Almayer Crew Records should no longer spawn.
+  jupyterkat:
+  - bugfix: fixed cas ammo's icons not updating after ammo transfer
+  - bugfix: fixed ot rocket's blast wave only going in one direction
+  realforest2001:
+  - rscadd: Added multifaction support to crew monitors
+  - bugfix: cl not showing up on crew manifest
+  - rscadd: Giving Survivors/Other factions with IFF will let you track them.
+2025-02-06:
+  BartDrown:
+  - rscadd: migrate security records console to tgui
+  - bugfix: highcom cannot change rank in record
+  - bugfix: photo in security records console does not show
+  - bugfix: photo in security records console cannot be updated
+  - bugfix: fingerprint scanner report cannot be viewed if clue detector is not ejected
+      and cleared
+  - qol: add focus and listen on enter in inputs of security console
+  - qol: add cursor pointer to TGUI Button component
+  - refactor: refactor security records console code
+  - code_imp: security records client side sorting and filtering
+  Drathek Nanu:
+  - rscadd: Added unit test to check whether areas needing power have a single APC
+  - rscadd: Unit testing can now be performed during pre-game
+  - bugfix: Fixed various machines that didn't actually use power still marked as
+      requiring power
+  - bugfix: Fixed /obj/structure/closet/secure_closet/freezer/industry not properly
+      using the area's power
+  - maptweak: Fixes, adds & changes areas on all maps to make more sense.
+  - maptweak: Fixes areas that should have APC's getting them, also fixes areas that
+      had more than one APC.
+  - maptweak: Minor bugfixes, and moving some non-significant objects around.
+  Git-Nivrak:
+  - rscadd: Added distant screeches when a new xenomorph evolution becomes available
+  Red-byte3D:
+  - rscadd: You can no longer devolve from being a drone as the last xenomorph alive
+  - bugfix: fixes an issue with CO's not being able to access the techweb, tacmap
+      and get their icon.
+  - bugfix: Synthetic limbs are now named properly
+  efzapa:
+  - rscadd: CMB Fax Responders now start as a Deputy, then rank up to Marshal at 25
+      Hours of Playtime.
+  hry-gh:
+  - bugfix: fixes tgui windows sometimes offsetting weirdly
+  realforest2001:
+  - rscadd: Fax Responders now understand all human languages.
+  - bugfix: CL Radio Key now appropriately gives access to Almayer General Comms.
+  thebleh:
+  - qol: Removed client window side padding to prevent accidental dragging
+  zzzmike:
+  - bugfix: mitigates bug where you can't close or unlock an opened locked locker
+  - qol: message added when someone opens a stasis bag
+2025-02-07:
+  Red-byte3D:
+  - bugfix: fixes being able to infintely dupe weapon attachements
+  realforest2001:
+  - rscadd: Yautja can now track gear relative to their active falcon drone.
+  - rscadd: Yautja can now mark through walls and don't need direct line of sight.
+  zzzmike:
+  - sounddel: the vendor inflation event no longer plays sound
+2025-02-08:
+  BOBAMAx:
+  - rscadd: Goon Medic
+  - imageadd: New alt uniforms for goon techs and medics
+  - maptweak: Corporate Dome nightmare insert now has a medic, engi, and TL.
+  Red-byte3D:
+  - balance: Reworks warden into the Valkyrie
+  - rscadd: Valkyrie tail stab extuingishes people you stab. This goes for /anything/
+      so you can save caps on fire or your allies.
+  - rscadd: Tantrum ; You can click on a xenomorph to give them [15] armor, while
+      giving yourself [10] armor, during tantrum your slashes heal more. This lasts
+      3 seconds for the target, 5 seconds for yourself.
+  - rscadd: 'High Gallop: An ability that knocks people down infront of you, in a
+      2x3 radius. Also sends back grenades.'
+  - rscadd: 'Fight or Flight: A ranged rejuvenation that rejuvenates (removes stuns,
+      slows weakens etc etc) scaling its range with your rage'
+  - rscadd: Valkyrie slashes heal you and people 3 tiles next to you at a 15 to yourself
+      and 15 to allies, while BUFFED (red outline) 30 to yourself and 30 to allies
+  Syndro101:
+  - bugfix: fixed a floating pixel on the solid 2x1 medidoor.
+  zzzmike:
+  - bugfix: minor signature bug fixed with 'all hands on deck' announcements
+  - qol: Adds camera, camera film, tape recorder, clue scanner to SecTech.
+  - bugfix: Code fixed for sectech machine ads/slogans.
+2025-02-09:
+  Drathek:
+  - rscadd: Areas Unpowered unit test now checks for APCs on non-floor tiles (if they
+      are also deemed intact aka not exposed)
+  - bugfix: Focused unit testing now properly skips stages if the focus only applies
+      to a different stage
+  - maptweak: Fixed inaccessible APC terminals on basically all maps
+  Git-Nivrak:
+  - balance: Mortar range is now limited.
+  - balance: Removed free mortar shells from ASRS.
+  - balance: Lowered the initial costs of mortar shells for requisitions.
+  - balance: Incendiary mortar shells are now purely incendiary.
+  - balance: Fragmentation shell shrapnel now deals bonus damage to structures.
+  Nomoresolvalou:
+  - balance: thrall armor increased
+  - balance: thralls are now hero mobs and do not trigger resin traps or get slowed
+      by weeds
+  - rscadd: predators can now remotely stun and self destruct their thralls
+  efzapa:
+  - qol: Added a Forensic Refiller Tank, which you can use to easily refill your Forensic
+      Spray Bottles from.
+  hry-gh:
+  - bugfix: fix chat fixed?
+  - bugfix: 516 does not get laggier as the round goes on anymore
+  ihatethisengine, Nivrak, forest2001, SubjectD9341:
+  - rscadd: Added the M5 Camera Gear, an ear-mounted camera that works with Overwatch
+      consoles. Small numbers can be found in surplus uniform vendors.
+  realforest2001:
+  - rscadd: Added WY Deputy Director.
+  - rscadd: Changed name of general's mateba holster to luxury mateba holster.
+  - imageadd: Added a background for the Visiting Officer to use so it doesn't appear
+      identical to CO in follow menu/minimap.
+2025-02-10:
+  Katskan:
+  - balance: Enables tool web to hold metal rods.
+  - bugfix: Tool web has its original sprite, same as brown webbing.
+  Red-byte3D:
+  - bugfix: Valkyrie rejuvenate no longer rejuvenates enemy xenos.
+  - bugfix: Valkyrie slashes no longer heal enemy xenos.
+  - bugfix: Valkyrie no longer can empower enemy xenos
+  - spellcheck: fixes a small mistake on strain buy
+  - bugfix: Lesser drone weeding now checks to see if the node you are using belongs
+      to an enemy hive.
+2025-02-11:
+  BartDrown:
+  - bugfix: security records console resets sorting on data update
+  - bugfix: security records wrong sort indicators
+  - qol: security records default sorting by name
+  - qol: change displaying of rank to position
+  Git-Nivrak:
+  - bugfix: Fixed accessory duplication on quick equip
+  - rscdel: Removed pixel shifting
+  MistChristmas:
+  - bugfix: Printing security records + fingerprint report and clearing
+  - qol: Adds a notice that they're printing. Moved the time it takes in line with
+      photocopier. And Fingerprint scanner ejects to the table instead of your feet.
+  Red-byte3D:
+  - code_imp: Moves all lurker_powers into its own file
+  - rscdel: Removes unused "Armor Integrity" from xeno HUD
+  - code_imp: Moves all boiler_power into their own strain codefiles
+  - code_imp: Moved all burrower_powers into its own file and renamed some one letter
+      vars.
+  - code_imp: Moves all hivelord powers to its own file
+  - spellcheck: Changes a small you to we in hivelord resin walk
+  - code_imp: Moves all spitter_powers into its own file
+  - code_imp: Moves all king_powers to its own file
+  - code_imp: Moves all the ravager_powers code into its own respective .dm file
+  - code_imp: Moves all defender_powers into its own file
+  - code_imp: Moves all warrior_power code into its own warrior.dm
+  - code_imp: Moves all sentinel_powers into its own file
+  - code_imp: Moves all the code in praetorian_powers into its own respective strain
+      and removes praetorian_power
+  TheGamerdk:
+  - rscadd: Nuclear bomb now checks for passengers in vehicles to ensure swift delivery
+      of thermonuclear death
+  private-tristan:
+  - qol: Gun stats now list "single fire" as "fire rate"
+  zzzmike:
+  - qol: Gives hints to newer players about how to destroy or protect a growing xenomorph
+      king.
+2025-02-12:
+  Git-Nivrak:
+  - qol: Added a preference on whether you would like to be chosen as King or not,
+      you will no longer receive a prompt asking you for that. This can be toggled
+      under "special role candidacy"
+  - balance: The King hatchery now spawns around the hive core. Destroying pylons
+      will no longer destroy the hatchery but will instead pause its progress. To
+      fully reset the progress you must destroy the hatchery itself.
+  - rscadd: 'Replaced the armor hive buffs with two new hive buffs: Buff of Fire Resistance
+      - Makes all xenomorph immune to being *ignited* by fire. Buff of Adaptability
+      - Gives all xenomorph a new verb under the alien tab named "Transmute" which
+      will allow them to change to a different caste of the same tier.'
+  - bugfix: Fixes new players being teleported into the ground z level
+  Joe Lampost, Forrest2001:
+  - rscadd: A role for non-whitelisted players to play predator.
+  - rscadd: A new console and ert have been added relating to spawning youngbloods.
+  - rscadd: Feral xenos on the hunting grounds now drop weeds when they spawn.
+  - rscadd: A kill button for whitelisted pred players to instantly kill any youngblood
+      acting out of line.
+  - code_imp: Predator teleporting now has checks.
+  - mapadd: added a lower deck on the pred ship for youngbloods.
+  - maptweak: tweaked the fighting pit area of the predship.
+  - admin: Adds a new roleban relating to youngbloods.
+  Red-byte3D:
+  - bugfix: Fixes forecon spotter/marksman being hit by ally bullets while inivsible
+  - code_imp: Re-wrote some crusher ability code, changes one letter vars and made
+      some byond ticks change seconds macro
+  zzzmike:
+  - soundadd: faster defib noises for those who use defibs faster (synth, doctor)
+2025-02-13:
+  BOBAMAx:
+  - maptweak: changed the presets on the shiva's panic room insert to have an engineer
+      and 1 pmc
+  CapCamIII:
+  - rscadd: Adds French as a speakable language.
+  Red-byte3D:
+  - code_imp: Converts stuff into seconds in oppressor code and removes some one letter
+      vars
+  - bugfix: Black holocards are now work properly
+  Sergeant_Lemon:
+  - rscadd: new fish types to the old fishing code
+  - rscadd: added turf flag 'fishable_turf'
+  - rscadd: added items to fishing loot table
+  - bugfix: fixed fishing rod code so it fishes on ocean and rivers
+  - code_imp: Changed code in the fishing category as well as meat, ore, and atoms
+  - imageadd: sprites for new fish and pearl item
+  TheGamerdk:
+  - balance: M46C has slower fire-rate on burst IFF mode
+  Vile Beggar, thwomper:
+  - rscadd: Adds a new shotgun choke attachment to squad prep and requisitions vendors
+      for the M37A2 shotgun.
+  hry-gh:
+  - bugfix: carriers can use their abilities again
+  - bugfix: non-admins have ooc flags again
+  larentoun:
+  - bugfix: Boiler - Purchasing Trapper strain will forcefully change spit type to
+      acid, which makes acid-tail variant the only one. No more neuro-tails on Trappers.
+  - refactor: Boiler - swapped spit types in caste dastum, removed swapping types
+      in xeno's mob. Shouldn't change anything.
+  private-tristan:
+  - balance: Military Contractors (VAIPO/VAISO) spawn chance decreased significantly.
+  - balance: Increased the chances of Pizza galaxy ERT spawning, from 1/176 to 2/157.
+  - balance: Solar Devils SGs are now stuck on frontline mode, but gets a 15% damage
+      boost to compensate.
+  - balance: Solar Devils RFNs spawn with 30 metal (from 50)
+  - balance: Ammo box explosions are capped at 3k bullets.
+  realforest2001:
+  - rscadd: Ghosts can now view faxes sent through the round.
+  - rscadd: Added the functionality for community award OOC icons.
+  zzzmike:
+  - qol: Previously you had to be wearing a valid ID to launch a lifeboat, now you
+      can also hold it in hand
+  - bugfix: Fixes a bug with sub-10 minute marine majors
+  - qol: Updates turf descriptions to account for medevacs+CAS instead of just CAS.
+2025-02-14:
+  Weuyn:
+  - balance: doubled pain effects from the paining property and defibrilating/cardiopeutic
+      overdose
+  - balance: plants now require adequate food and water to grow instead of instantly
+      dying at 0 nutrition
+  - balance: warrior blood type now matches defender and crusher
+  - balance: added a slight excreting effect to neurotoxin plasma to reflect recent
+      changes
+  - bugfix: electrogenetic no longer tells you its inedible, photosensitive and crystallization
+      properties capped at 1
+  - bugfix: turing machine stops when it should (thank you N.H.C)
+  - bugfix: (hopefully) fixed multiple chemical simulator exploits and bugs (thank
+      you kiVts)
+  cuberound:
+  - balance: USCM specs on HvH are replced with b18s
+  private-tristan:
+  - rscadd: Electrogenetic property now triggers with defibrillating.
+  - balance: Painkilling and Electrogenetic are twice as powerful per level, halved
+      the property levels of Painkilling and Electrogenetic in chemicals, meaning
+      that they act the same.
+2025-02-15:
+  Furrior:
+  - ui: Job entry text is now boxed and looks bit less awful
+  Red-byte3D:
+  - bugfix: Fixes fire not negating vampire healing
+2025-02-16:
+  Drathek:
+  - maptweak: Removed an erronous nightmare insert on BigRed
+  Red-byte3D:
+  - bugfix: You can no longer crush people with unpowered doors via crowbar
+  - bugfix: WO commanding officer can now use the sg pamphlet
+  - code_imp: Removed some one letter vars
+  - code_imp: Removed sone unused code from vanguard praetorian
+  - qol: Aoe attacks no longer hit nested marines, including crusher slash
+  - code_imp: vanguard byond ticks into seconds
+  Zenith, Crowford, Frans_Feiffer, VaNdU-jr, cuberound, armolitskiy, mikoka wei:
+  - rscadd: Added many new loadout items, and more other loadout items previously
+      missing
+  zzzmike:
+  - qol: stops the economy inflation announcements during red/delta alert
+2025-02-18:
+  Ansekishoku:
+  - balance: adds AP mags for M4A3 pistol to the squad vendors.
+  - rscadd: A new Field Doctor job to end the arguments between doctors about who
+      wants to deploy.
+  Drathek Zenith:
+  - rscadd: Colony lights and traffic lights can be exploded into a stump now
+  - imageadd: Lightpost stumps by Zenith
+  Red-byte3D:
+  - bugfix: Fixes double examine text on hivelord when you examine them as a xeno.
+  - spellcheck: Rewrites Queen and Hivelord xeno examine text
+  - rscadd: Banishment now does damage per tick
+  - bugfix: You can no longer put down xeno resin marks in hyperspace
+  - code_imp: Fixes some bugs with fire ob admin proc
+  - bugfix: Towels no longer have lids
+2025-02-19:
+  Red-byte3D:
+  - bugfix: Fixes fractional numbers with extinguishers
+  - bugfix: Queen expand weeds now properly expands weeds as normal weeds instead
+      of the weed type it expands from
+  - code_imp: one letter vars replaced in code
+2025-02-20:
+  Git-Nivrak:
+  - rscadd: Multiz
+  NHC:
+  - rscadd: Added a passive acid generation cap of 400 to acider runner
+  - rscadd: Added an additional passive acid generation that activates when in combat
+      for acider
+  - ui: Added status panel info to show if combat acid generation is active or not
+      for acider
+  - ui: Updated status panel info to show acid gen cap and max acid for acider
+  - ui: The tgui_alert modal now calculates height differently to better handle large
+      messages
+  - ui: Purchase Strain buttons are now "Mutate" and "Cancel" so they don't stack
+      in the modal
+  - imageadd: Added overlays for caps for 10, 20, 30, 40, 50, 60, 70, 80 and 90%
+  - imageadd: Added overlays showing acider drooling when combat acid generation is
+      active
+  - spellcheck: Revised acider purchase strain information
+  Red-byte3D:
+  - bugfix: Carriers can no longer refills morpher from infinite range
+  SerheyKr:
+  - qol: Chem master can process several pill bottles
+  Zonespace27:
+  - rscadd: Valkyries can now see how much damage they have mitigated through use
+      of their Tantrum ability.
+  hry-gh:
+  - ui: unban panel is now tgui, less laggy on the whole entire server
+  realforest2001:
+  - bugfix: You can no longer place C4 or Breaching Charges onto objects that are
+      explosion proof.
+2025-02-22:
+  Drathek:
+  - spellcheck: Fixed a missing 'and' in acider strain purchase message
+  Nomoresolvou:
+  - bugfix: Fixed preds being unable to use abilities after SDing a thrall
+  - bugfix: Thralls are now set back to humans and can shoot guns again after being
+      unthralled
+  - code_imp: removed a couple one letter vars
+  Red-byte3D:
+  - code_imp: Removed all var/lol
+  - bugfix: Oreboxes are no longer unslashable and unbreakable
+  Steelpoint:
+  - mapadd: IASF Outpost Souter has been added as a nightmare insert for Hybrisa Prospera.
+      Part of the larger detachment of Imperial Armed Space Forces that defended the
+      colony. The IASF had been forced to withdraw prior to the events of the xenomorph
+      outbreak, however this insert represents a timeline where the IASF had not fully
+      completed their withdrawal.
+  - code_imp: Added a set of transparent versions of the TWE cosmetic Dropship for
+      mappers to use, instead of the older version that leaves a void overlay.
+  Steelpoint, Blundir:
+  - rscadd: Adds a UPP Squad gun and ammo vendor. Similar in function to the USCM
+      squad vendor. Supplies UPP soldiers with their weapons and munitions.
+  - rscadd: Shotgun shell boxes for UPP shotgun ammunition have been added to the
+      game, they have also been added to all UPP vendors.
+2025-02-23:
+  Drathek:
+  - rscadd: Defenders, Sentinels, and Runners can now also evolve to Queen if there
+      is no queen (no need to de-evolve)
+  - bugfix: Fixed incorrect evolve messaging when there is no queen (always would
+      say queen had died recently)
+  - bugfix: Fixed incorrect evolve messaging when the caste cannot evolve any further
+      (would say there were no castes to evolve to currently)
+  - bugfix: Fixed do_evolve considering queen job banned players as potential queen
+      candidates
+  - code_imp: Cleaned up code in do_evolve and hive_status
+  - bugfix: Fixed young blood job ban check and end game note who played as Predator
+  - bugfix: Fixed young blood leader objectives
+  - code_imp: Cleaned up the jobban_isbanned proc
+  Git-Nivrak:
+  - bugfix: Fixed issues with overwatch console when ground height is 0
+  detectivegoogle, ihatethisengine:
+  - balance: The smartscope now uses alt IFF and cannot fire through friendlies.
+  - balance: The smartscope now only applies a small damage and falloff malus to the
+      mounted weapon.
+  - balance: The smartscope can be mounted to the m41a MK2
+  - balance: The smartscope has lost it's zoom functionality.
+  realforest2001:
+  - rscadd: Added follow tabs to Mutated xeno hive and to Hellhounds.
+  - rscadd: Added sub-follow tabs to Weyland-Yutani.
+  - rscadd: Synthetics now appear in their faction follow tabs, as well as Synth tab.
+  - bugfix: Fixed the name of Whiteout Medic deathsquad version.
+2025-02-24:
+  Red-byte3D:
+  - bugfix: Smashing through stuff now takes the objects range instead of the users
+  - bugfix: Girders are now no longer immortal against xenos.
+2025-02-25:
+  IowaPotatoFarmer:
+  - rscadd: Added unique map-specific synthetic survivors to Kutjevo Refinery.
+  - rscadd: Added a lower quality goon squad synthetic vest, only used by the Kutjevo
+      Refinery corporate security synth for now.
+  SpypigDev:
+  - rscadd: Mateba and CO Deagle unique ability 'fire into the air'
+  SubjectD9341, Red-byte3D:
+  - balance: Reworked hellhounds, now they have slightly less health, better dodge
+      and a better pounce that slashes the person you land on.
+  - imageadd: New hellhound sprites
+  - rscadd: Hellhounds now get assigned to their own predator, that being whomever
+      called it in.
+  - spellcheck: Rewrites hellhound spawn text
+  - bugfix: Fixes a long standing bug with hellhound pack (hive status) not working
+  - balance: Hellhounds are no longer slowed by xeno weeds.
+  TrollerNoob:
+  - imageadd: Added missing back sprites for the M42A's Urban variant.
+  VileBeggar:
+  - qol: Clicking 'Watch' while already overwatching a xeno will now make you exit
+      overwatch. You can now overwatch leader xenos with the hive tracker, instead
+      of only being able to see the Queen.
+2025-02-26:
+  BOBAMAx:
+  - maptweak: Areas can now disallow construction. Applies this to the islands north
+      of the LZ on NV, along with depowering it permanently.
+  - maptweak: Ocean tiles no longer allow construction
+  LC4492:
+  - maptweak: Updates Lower Medbay to uh... *different* standards. Updates morgue
+      to allow for more symmetry. Changes the CMO's bunks a little to accomodate the
+      new set of ladders. Updates research to have more internal space in the containment
+      area, including other addons.
+  - rscadd: Adds an access define for Field Medical supply room.
+  NHC:
+  - bugfix: fixed PO tactical fligthsuit to use the TOGGLEJACKET verb instead of the
+      ROLL_SLEEVES verb to toggle its jacket
+  efzapa:
+  - rscadd: Added Sandstone Ceilings.
+  - mapadd: Jungle Moon Hunting Grounds Rooms now have proper Sandstone Ceilings.
+  neeshacark:
+  - balance: the skill required to use a synth reset key has been reduced to novice
+      (you can use it w/ a pamphlet)
+  realforest2001:
+  - rscadd: Added Leader uniform for Kutjevo Goon camo, and changed backend for how
+      the goon presets pick their uniform and helmets to allow for simpler use by
+      staff in events.
+  - imageadd: Added Leader uniform for Kutjevo Goon camo.
+  - imageadd: Added Lead Researcher hud icon for WY.
+2025-02-27:
+  Drathek:
+  - code_imp: Set ScopeOperandNamedType to be an error
+  - bugfix: Fixed WO doctor job overlapping with new Field Doctor
+  - code_imp: Added a check to ensure all usage of GLOBAL_SUBTYPE_INDEXED has uniquely
+      indexed entries
+  - rscdel: Removed unused young blood leader job datum
+  - rscadd: Added a preference to opt in for flashing lights (e.g. AR goggles and
+      happy pills)
+  - code_imp: Cleanup client_prefs
+  Git-Nivrak:
+  - bugfix: Fixed Queen being able to expand weeds into unweedable tiles
+  - code_imp: Added support for transparent turfs
+  - bugfix: Fixed layering issues with multiz
+  - code_imp: Added support for turf-specific modifiers for falling
+  hry-gh:
+  - rscadd: the synthetic snowflake vendor items are now found in the loadout in the
+      character setup menu
+2025-02-28:
+  Blundir, Crowford, Nauticall, Cuberound, Triiodine, LC4492:
+  - rscadd: added UPP, WY, PMC, TWE, WY emergency, Generic food rations, floor boxes
+      for them
+  - rscadd: USCM MRE now has cheese spread in multiple variations, beverage bag in
+      multiple variations (you need to pour water into it)
+  - rscadd: balaji imperial 4 packs and matches, matches added to WY vendor, both
+      matches and cigs can appear in TWE ration
+  - rscadd: USCM MRE now has an iconic MRE spoon
+  - rscadd: added numerous new mains, sides, snacks and desserts to USCM MRE
+  - rscadd: all ration food now has unique descriptions and reagents inside them having
+      custom reagents now displays food taste correctly
+  - rscadd: new rations to loadouts that should logically have them
+  - rscdel: WY brand MRE box got removed and replaced with an actual WY rations
+  - rscdel: USCM tray boxes got removed and replaced with an actual MREs
+  - rscdel: remove MRE from prep vendors
+  - refactor: mre backend changed severely and moved to separate .dm files
+  - rscdel: core nutrient reagent is no longer used for mre foods, apart from some
+      exceptions
+  - maptweak: added new rations around the maps where they logically make sense
+  Git-Nivrak:
+  - bugfix: Fixed squad assignment

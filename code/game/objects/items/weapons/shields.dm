@@ -74,7 +74,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 
 	attack_verb = list("shoved", "bashed")
@@ -119,7 +119,7 @@
 	var/active = 0
 
 /obj/item/weapon/shield/riot/metal
-	name = "metal shield"
+	name = "metal riot shield"
 	desc = "A metal riot shield effective, but heavy."
 	icon_state = "riotmetal"
 	item_state = "riotmetal"

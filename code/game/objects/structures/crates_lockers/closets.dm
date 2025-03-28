@@ -215,7 +215,8 @@
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
-			if(isxeno(user)) return
+			if(isxeno(user))
+				return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
 				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
@@ -293,6 +294,8 @@
 		return
 	if(O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1)
 		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 	if(!isturf(user.loc))
 		return
 	if(ismob(O))
@@ -314,8 +317,10 @@
 
 
 /obj/structure/closet/relaymove(mob/user)
-	if(!isturf(src.loc)) return
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(!isturf(src.loc))
+		return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	user.next_move = world.time + 5
 
 	var/obj/item/I = user.get_active_hand()
@@ -353,8 +358,6 @@
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
 		src.toggle(usr)
-	else
-		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	overlays.Cut()
@@ -381,3 +384,13 @@
 	if(!opened)
 		welded = 0
 		open()
+
+/obj/structure/closet/yautja
+	name = "alien closet"
+	desc = "A suspicious dark metal alien closet, what horrors can be stored inside?"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	storage_capacity = 100
+
+/obj/structure/closet/yautja/big
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
+	storage_capacity = 100

@@ -29,6 +29,18 @@
 	name = "van interior"
 	icon_state = "van"
 
+/area/interior/vehicle/clf_van
+	name = "clf van interior"
+	icon_state = "van"
+
+/area/interior/vehicle/box_van
+	name = "box-van interior"
+	icon_state = "van"
+
+/area/interior/vehicle/pizza_van
+	name = "pizza-van interior"
+	icon_state = "van"
+
 /area/interior/vehicle/arc
 	name = "\improper ARC interior"
 	icon_state = "arc"

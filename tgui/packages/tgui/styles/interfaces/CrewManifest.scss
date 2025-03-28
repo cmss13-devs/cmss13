@@ -1,0 +1,62 @@
+@use '../colors.scss';
+
+$departmental-colors: (
+  'Command': #114dc1,
+  'Auxiliary': #5281df,
+  'Marines': #77973b,
+  'Alpha': #db2626,
+  'Bravo': #c68610,
+  'Charlie': #aa55aa,
+  'Delta': #007fcf,
+  'Echo': #49ad70,
+  'Foxtrot': #9b6546,
+  'Intel': #06923a,
+  'Security': #a82828,
+  'Engineering': #c67519,
+  'Requisitions': #9b724d,
+  'Medical': #379c54,
+  'Miscellaneous': #9c9c9c,
+);
+
+$status-colors: (
+  'active': colors.$green,
+  'inactive': colors.$orange,
+  'ssd': colors.$yellow,
+  'unfit': colors.$pink,
+  'disabled': colors.$grey,
+  'deceased': colors.$red,
+);
+
+.row-even {
+  background-color: rgba(128, 128, 128, 0.1); // Light background for even rows
+}
+
+.row-odd {
+  background-color: rgba(0, 0, 0, 0.1); // Dark background for odd rows
+}
+
+@each $dept, $color in $departmental-colors {
+  .text-dept-#{to-lower-case($dept)} {
+    color: $color !important;
+  }
+  .bg-dept-#{to-lower-case($dept)} {
+    background-color: $color !important;
+  }
+  .border-dept-#{to-lower-case($dept)} {
+    border-color: $color !important;
+    .Section {
+      &__title {
+        border-color: $color;
+      }
+      &__titleText {
+        color: $color;
+      }
+    }
+  }
+}
+
+@each $status, $color in $status-colors {
+  .manifest-indicator-#{$status} {
+    color: $color !important;
+  }
+}

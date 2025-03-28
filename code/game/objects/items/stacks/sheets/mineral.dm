@@ -31,6 +31,7 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
 	new/datum/stack_recipe("brazier frame", /obj/structure/prop/brazier/frame, 5, time = 5 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wall torch frame", /obj/item/prop/torch_frame, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("alien chair", /obj/structure/bed/chair/comfy/yautja, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(silver_recipes, list ( \
@@ -102,7 +103,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	icon_state = "sheet-sandstone"
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
-
+	amount_sprites = TRUE
 	sheettype = "sandstone"
 	stack_id = "sandstone"
 
@@ -118,6 +119,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
+	amount_sprites = FALSE
 	black_market_value = 15
 
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack
@@ -189,8 +191,9 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
+	item_state = "sheet-plastic"
 	matter = list("plastic" = 2000)
-
+	amount_sprites = TRUE
 	perunit = 2000
 	stack_id = "plastic"
 	black_market_value = 0
@@ -207,6 +210,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
+	item_state = "sheet-plastic"
 	perunit = 2000
 
 /obj/item/stack/sheet/mineral/gold

@@ -47,7 +47,7 @@
 /obj/structure/prop/dam/truck
 	name = "truck"
 	desc = "An old truck, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "truck"
 	bound_height = 64
 	bound_width = 64
@@ -70,7 +70,7 @@
 /obj/structure/prop/dam/van
 	name = "van"
 	desc = "An old van, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
@@ -82,7 +82,7 @@
 
 /obj/structure/prop/dam/crane
 	name = "cargo crane"
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "crane"
 	bound_height = 64
 	bound_width = 64
@@ -774,7 +774,7 @@
 /obj/structure/prop/vehicles
 	name = "van"
 	desc = "An old van, seems to be broken down."
-	icon = 'icons/obj/structures/props/vehicles.dmi'
+	icon = 'icons/obj/structures/props/vehicles/vehicles.dmi'
 	icon_state = "van"
 	bound_height = 64
 	bound_width = 64
@@ -1025,7 +1025,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM)
-		..()
+		. = ..()
 		if(W.force && !(W.flags_item & NOBLUDGEON))
 			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 			update_health(W.force)
@@ -1044,13 +1044,13 @@
 		var/message = sanitize(input(user, "What do you write on [src]?", "Inscription"))
 		if(!message)
 			return
-		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),\
+		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),
 			SPAN_NOTICE("You begin to [action_msg] [src]."), null, 4)
 
 		if(!do_after(user, length(message) * time_multiplier, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			to_chat(user, SPAN_WARNING("You were interrupted!"))
 		else
-			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),\
+			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),
 				SPAN_NOTICE("You [action_msg] [src] with your [W.name]."), null, 4)
 			if(inscription)
 				inscription += "\n[message]"
@@ -1076,10 +1076,10 @@
 	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
 	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
 	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"),
 		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+		M.visible_message(SPAN_DANGER("[M] slashes [src]!"),
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
@@ -1091,14 +1091,14 @@
 /obj/structure/prop/invuln/rope
 	name = "rope"
 	desc = "A secure rope looks like someone might've been hiding out on those rocks."
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "rope"
 	density = FALSE
 
 /obj/structure/prop/pred_flight
 	name = "hunter flight console"
 	desc = "A console designed by the Hunters to assist in flight pathing and navigation."
-	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "overwatch"
 	density = TRUE
 

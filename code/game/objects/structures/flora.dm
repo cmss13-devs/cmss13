@@ -56,6 +56,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 		playsound(src, 'sound/effects/vegetation_hit.ogg', 25, 1)
 		if(cut_hits <= 0)
 			qdel(src)
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		. = ..()
 
@@ -707,6 +708,8 @@ ICEY GRASS. IT LOOKS LIKE IT'S MADE OF ICE.
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
 				var/stuck = rand(0,10)
+				if(HAS_TRAIT(L, TRAIT_HAULED))
+					return
 				switch(stuck)
 					if(0 to 4)
 						var/new_slowdown = H.next_move_slowdown + rand(2,3)

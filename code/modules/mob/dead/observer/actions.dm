@@ -62,7 +62,7 @@
 
 /datum/action/observer_action/view_crew_manifest/action_activate()
 	. = ..()
-	show_browser(owner, GLOB.data_core.get_manifest(), "Crew Manifest", "manifest", "size=450x750")
+	GLOB.crew_manifest.open_ui(owner)
 
 /datum/action/observer_action/view_hive_status
 	name = "View Hive Status"

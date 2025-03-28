@@ -14,6 +14,7 @@
 	/// The history of all atoms that were hovered over while the mouse was depressed
 	var/list/mouse_trace_history
 	var/list/lmb_last_mousedown_mods
+	var/datum/entity/clan_player/clan_info
 
 /client/MouseDown(atom/A, turf/T, skin_ctl, params)
 	ignore_next_click = FALSE

@@ -92,7 +92,11 @@
 	force = MELEE_FORCE_STRONG
 	w_class = SIZE_MEDIUM
 
-
+/obj/item/weapon/baseballbat/metal/yautja
+	name = "duelling club"
+	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
+	icon_state = "hunter_club"
+	item_state = "hunter_club"
 
 /obj/item/weapon/butterfly
 	name = "butterfly knife"
@@ -272,7 +276,7 @@
 		var/used_verb = "attacked"
 		if(LAZYLEN(attack_verb))
 			used_verb = pick(attack_verb)
-		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),\
+		user.visible_message(SPAN_DANGER("[M] has been [used_verb] with [src][showname]."),
 						SPAN_DANGER("You [used_verb] [M] with [src]."), null, 5)
 
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1)

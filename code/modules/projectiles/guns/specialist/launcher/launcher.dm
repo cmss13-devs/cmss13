@@ -5,6 +5,8 @@
 	gun_category = GUN_CATEGORY_HEAVY
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
+	mouse_pointer = 'icons/effects/mouse_pointer/explosive_mouse.dmi'
+
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
 	var/GL_has_empty_icon = TRUE
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
@@ -34,7 +36,8 @@
 		cylinder.use_sound = use_sound
 		if(direct_draw)
 			cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
-		if(preload && !spawn_empty) for(var/i = 1 to cylinder.storage_slots)
+		if(preload && !spawn_empty)
+			for(var/i = 1 to cylinder.storage_slots)
 			new preload(cylinder)
 		update_icon()
 

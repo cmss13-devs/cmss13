@@ -34,6 +34,18 @@
 	name = "Van"
 	interior_id = "van"
 
+/datum/map_template/interior/clf_van
+	name = "CLF Technical"
+	interior_id = "clf_van"
+
+/datum/map_template/interior/box_van
+	name = "Box Van"
+	interior_id = "box_van"
+
+/datum/map_template/interior/pizza_van
+	name = "Pizza-Galaxy Van"
+	interior_id = "pizza_van"
+
 /datum/map_template/interior/arc
 	name = "ARC"
 	interior_id = "arc"

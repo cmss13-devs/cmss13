@@ -31,10 +31,6 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
 
-/obj/item/attachable/attached_gun/grenade/Initialize()
-	. = ..()
-	grenade_pass_flags = PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
-
 /obj/item/hardpoint/secondary/grenade_launcher/try_fire(atom/target, mob/living/user, params)
 	if(get_turf(target) in owner.locs)
 		to_chat(user, SPAN_WARNING("The target is too close."))

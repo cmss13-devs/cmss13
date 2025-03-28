@@ -63,10 +63,6 @@ GLOBAL_LIST_INIT(nato_phonetic_alphabet, list("Alpha", "Bravo", "Charlie", "Delt
 GLOBAL_VAR_INIT(distress_cancel, FALSE)
 GLOBAL_VAR_INIT(destroy_cancel, FALSE)
 
-// Which lobby art is on display
-// This is updated by the lobby art turf when it initializes
-GLOBAL_VAR_INIT(displayed_lobby_art, -1)
-
 // Last global ID that was assigned to a mob (for round recording purposes)
 GLOBAL_VAR_INIT(last_mob_gid, 0)
 
@@ -135,6 +131,8 @@ GLOBAL_VAR(xeno_queue_candidate_count)
 GLOBAL_VAR(obfs_x)
 /// A number between -500 and 500.
 GLOBAL_VAR(obfs_y)
+/// A number between -10 and 10
+GLOBAL_VAR(obfs_z)
 
-/// The current amount of giant lizards that are alive.
-GLOBAL_VAR_INIT(giant_lizards_alive, 0)
+/// List of giant lizards that are alive.
+GLOBAL_LIST_EMPTY(giant_lizards_alive)

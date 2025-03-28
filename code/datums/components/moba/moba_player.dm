@@ -336,6 +336,7 @@
 
 	held_items += new_item
 	new_item.apply_stats(parent_xeno, src, player_datum, TRUE)
+	new_item.on_item_add(parent_xeno, src, player_datum)
 	player_datum.held_item_types += new_item.type
 
 /datum/component/moba_player/proc/remove_item(datum/source, datum/moba_item/item)
@@ -343,6 +344,7 @@
 
 	held_items -= item
 	item.unapply_stats(parent_xeno, src, player_datum)
+	item.on_item_remove(parent_xeno, src, player_datum)
 	player_datum.held_item_types -= item.type
 
 /datum/component/moba_player/proc/on_tunnel(datum/source, obj/structure/tunnel/used_tunnel)

@@ -309,6 +309,50 @@
 	name = "Extrasensory Time Dilation"
 	description = "<br><b>Active</b><br>Instantly recharge your most recently used non-ultimate ability. Cooldown N seconds."
 	icon_state = "red"
+	gold_cost = MOBA_GOLD_PER_MINUTE * 3.5
+	instanced = TRUE
+	active = TRUE
+	unique = TRUE
+	active_action_icon_state = "vote"
+	active_cooldown_time = 30 SECONDS
+	component_items = list(
+		/datum/moba_item/uncommon/special_acid,
+		/datum/moba_item/common/superior_stamina,
+		/datum/moba_item/common/enlarged_plasma,
+		/datum/moba_item/common/enlarged_plasma,
+	)
+
+	acid_power = 55
+	ability_cooldown_reduction = 0.85
+	plasma = 750
+	plasma_regen = 8
+	var/datum/action/xeno_action/most_recent_ability
+
+/datum/moba_item/rare/echo_shard/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
+	. = ..()
+	RegisterSignal(xeno, COMSIG_XENO_USE_XENO_ACTION, PROC_REF(on_ability_use))
+
+/datum/moba_item/rare/echo_shard/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
+	. = ..()
+	UnregisterSignal(xeno, COMSIG_XENO_USE_XENO_ACTION)
+
+/datum/moba_item/rare/echo_shard/proc/on_ability_use(mob/living/carbon/xenomorph/source, datum/action/xeno_action/xeno_ability)
+	SIGNAL_HANDLER
+
+	var/datum/component/moba_action/action_comp = xeno_ability.GetComponent(/datum/component/moba_action)
+	if(!action_comp)
+		return
+
+	if(action_comp.is_ultimate)
+		return
+
+	most_recent_ability = xeno_ability
+
+/datum/moba_item/rare/echo_shard/active_action_use()
+	if(!most_recent_ability || (most_recent_ability.cooldown_timer_id == TIMER_ID_NULL))
+		return FALSE
+	most_recent_ability.end_cooldown()
+	return TRUE
 
 /datum/moba_item/rare/thornmail
 	name = "Piercing Spines"

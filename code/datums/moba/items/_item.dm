@@ -31,6 +31,12 @@
 	/// If TRUE, this should be a unique object instead of a singleton, thus we can do things like hold data on it
 	var/instanced = FALSE
 	var/tier = 0
+	/// If TRUE, this is an active item that adds an action button. MUST BE INSTANCED.
+	var/active = FALSE
+	/// Icon file for an active item's action button
+	var/active_action_icon = 'icons/mob/hud/actions.dmi'
+	var/active_action_icon_state
+	var/active_cooldown_time = 0 SECONDS
 
 	var/health = 0
 	var/health_regen = 0
@@ -177,6 +183,14 @@
 	component.slash_penetration -= slash_penetration
 	component.acid_penetration -= acid_penetration
 
+/datum/moba_item/proc/on_item_add(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
+	if(active)
+		give_action(xeno, /datum/action/moba_item_active_action, null, active_action_icon_state, active_action_icon, name, CALLBACK(src, PROC_REF(active_action_use)), active_cooldown_time)
+
+/datum/moba_item/proc/on_item_remove(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
+	if(active)
+		remove_action(xeno, /datum/action/moba_item_active_action)
+
 /datum/moba_item/proc/apply_health(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component, restore_plasma_health = FALSE)
 	xeno.maxHealth += health
 	if(restore_plasma_health)
@@ -233,8 +247,10 @@
 	return
 
 /datum/moba_item/proc/handle_pass_data_read(datum/moba_player/player)
-
 	return
+
+/datum/moba_item/proc/active_action_use()
+	return FALSE
 
 /datum/moba_item/common
 	tier = 1
@@ -244,3 +260,23 @@
 
 /datum/moba_item/rare
 	tier = 3
+	unique = TRUE
+
+/datum/action/moba_item_active_action
+	unique = FALSE
+	var/datum/callback/proc_to_call
+
+/datum/action/moba_item_active_action/New(Target, override_icon_state, override_icon, name, datum/callback/action_callback, cooldown_time)
+	if(override_icon)
+		icon_file = override_icon
+	src.name = name
+	. = ..()
+	proc_to_call = action_callback
+	cooldown = cooldown_time
+
+/datum/action/moba_item_active_action/action_activate()
+	. = ..()
+	if(!proc_to_call.Invoke())
+		ability_used_time = world.time + 1 SECONDS // You aren't put on much of a CD if the action didn't work
+		update_button_icon()
+

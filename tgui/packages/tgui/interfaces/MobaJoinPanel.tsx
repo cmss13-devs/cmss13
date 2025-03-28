@@ -136,6 +136,18 @@ const MainTab = () => {
               </Collapsible>
             </Box>
           </Collapsible>
+          <Collapsible title="Miscellaneous">
+            <Box style={{ paddingLeft: '20px' }}>
+              <Collapsible title="Does this save my spot in the larva queue?">
+                Currently, joining a game gives up your spot in the larva queue.
+                This is planned to change in the future.
+              </Collapsible>
+              <Collapsible title="What should I do if someone is griefing my game?">
+                Please adminhelp people who are intentionally sabotaging their
+                own team.
+              </Collapsible>
+            </Box>
+          </Collapsible>
         </Box>
       ) : (
         <Box>

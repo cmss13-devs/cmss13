@@ -108,3 +108,6 @@
 /// From /datum/action/xeno_action/watch_xeno/action_activate() : ()
 #define COMSIG_XENO_TRY_OVERWATCH "xeno_try_overwatch"
 	#define COMPONENT_CANCEL_OVERWATCH (1<<0)
+
+/// From /datum/action/xeno_action/use_ability() : (datum/action/xeno_action/used_ability)
+#define COMSIG_XENO_USE_XENO_ACTION "xeno_use_xeno_action"

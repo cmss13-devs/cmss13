@@ -53,7 +53,7 @@
 		M.apply_damage(dam_amount,BURN,"r_leg")
 		M.apply_damage(dam_amount,BURN,"r_foot")
 	else
-		M.apply_damage(2*dam_amount,BURN)
+		M.apply_damage(1*dam_amount,BURN)
 
 	if (ishuman(M))
 		if (M.bodytemperature > T90C)

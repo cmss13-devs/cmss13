@@ -87,7 +87,6 @@
 /datum/equipment_preset/pmc/w_y_whiteout/medic
 	name = "Whiteout Team Support Unit (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Whiteout Team Support Unit"
 	role_comm_title = "WO-SUP"
 	minimap_background = "background_ua"
 	assignment = JOB_DS_SUP
@@ -139,12 +138,20 @@
 /datum/equipment_preset/pmc/w_y_whiteout/cloaker
 	name = "Whiteout Team Cloaker Unit (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Whiteout Team Cloaker Unit"
 	role_comm_title = "WO-CK"
 	minimap_background = "background_mp"
 	assignment = JOB_DS_CK
 	rank = JOB_DS_CK
 	new_bubble_icon = "syndibot"
+
+/datum/equipment_preset/pmc/w_y_whiteout/cloaker/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species("W-Y Combat Android Cloaker")
+	new_human.allow_gun_usage = TRUE //To allow usage of Guns/Grenades
+	new_human.r_eyes = 78
+	new_human.g_eyes = 74
+	new_human.b_eyes = 59
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
 
 /datum/equipment_preset/pmc/w_y_whiteout/cloaker/load_gear(mob/living/carbon/human/new_human)
 	//uniform
@@ -191,7 +198,6 @@
 /datum/equipment_preset/pmc/w_y_whiteout/leader
 	name = "Whiteout Team Leading Unit (!DEATHSQUAD!)"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Whiteout Leading Unit"
 	role_comm_title = "WO-LU"
 	minimap_background = "background_command"
 	assignment = JOB_DS_SL
@@ -247,6 +253,15 @@
 	minimap_background = "background_pmc"
 	assignment = JOB_DS_CU
 	rank = JOB_DS_CU
+
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species("W-Y Combat Android (Weaker)")
+	new_human.allow_gun_usage = TRUE //To allow usage of Guns/Grenades
+	new_human.r_eyes = 78
+	new_human.g_eyes = 74
+	new_human.b_eyes = 59
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -346,10 +361,20 @@
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/cloaker
 	name = "Whiteout Team Cloaker Unit"
-	minimap_background = "background_mp"
 	role_comm_title = "WO-CK"
+	minimap_background = "background_mp"
 	assignment = JOB_DS_CK
 	rank = JOB_DS_CK
+	new_bubble_icon = "syndibot"
+
+/datum/equipment_preset/pmc/w_y_whiteout/low_threat/cloaker/load_race(mob/living/carbon/human/new_human)
+	new_human.set_species("W-Y Combat Android Cloaker (Weaker)")
+	new_human.allow_gun_usage = TRUE //To allow usage of Guns/Grenades
+	new_human.r_eyes = 78
+	new_human.g_eyes = 74
+	new_human.b_eyes = 59
+	new_human.h_style = "Bald"
+	new_human.f_style = "Shaved"
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/cloaker/load_gear(mob/living/carbon/human/new_human)
 	//uniform

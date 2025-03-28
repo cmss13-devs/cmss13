@@ -97,7 +97,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/shotguns.dmi'
 	icon_state = "electric"
 	item_state = "incendiary"
-	default_ammo = /datum/ammo/bullet/shotgun/beanbag/electric
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	handful_state = "elec_slug"
 	caliber = "20g"
 
@@ -215,7 +215,7 @@ also doesn't really matter. You can only reload them with handfuls.
 
 /obj/item/ammo_magazine/internal/shotgun/combat/es7
 	caliber = "20g"
-	default_ammo = /datum/ammo/bullet/shotgun/beanbag/electric
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	max_rounds = 12
 
 /obj/item/ammo_magazine/internal/shotgun/merc
@@ -344,7 +344,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 /obj/item/ammo_magazine/handful/shotgun/beanbag/es7
 	name = "handful of X21 electrostatic slugs (20g)"
 	icon_state = "shock_slug_5"
-	default_ammo = /datum/ammo/bullet/shotgun/beanbag/electric
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	handful_state = "shock_slug"
 	caliber = "20g"
 

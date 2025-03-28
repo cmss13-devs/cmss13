@@ -16,11 +16,17 @@
 	knock_down_reduction = 5
 	stun_reduction = 5
 	weed_slowdown_mult = 0 // no slowdown!
-	death_sound = "wy_droid_death"
 
 /datum/species/synthetic/colonial/wy_droid/handle_post_spawn(mob/living/carbon/human/wy_droid)
 	. = ..()
 	give_action(wy_droid, /datum/action/wy_droid_emote_panel)
+
+/datum/species/synthetic/colonial/wy_droid/handle_death(mob/living/carbon/human/dying_droid)
+	playsound(get_turf(dying_droid),"wy_droid_death", 25, FALSE)
+
+/datum/species/synthetic/colonial/wy_droid/handle_on_fire(humanoidmob)
+	. = ..()
+	INVOKE_ASYNC(humanoidmob, TYPE_PROC_REF(/mob, emote), "pain")
 
 /datum/species/synthetic/colonial/wy_droid/open_emote_panel()
 	var/datum/wy_droid_emote_panel/ui = new(usr)
@@ -56,7 +62,7 @@
 /datum/wy_droid_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Emotes", "WY Combat Android Voice Synthesizer")
+		ui = new(user, src, "Emotes", "W-Y Combat Android Voice Synthesizer")
 		ui.open()
 
 /datum/wy_droid_emote_panel/ui_state(mob/user)
@@ -109,3 +115,21 @@
 			COOLDOWN_START(src, panel_emote_cooldown, 2.5 SECONDS)
 			usr.emote(initial(path.key))
 			return TRUE
+
+/datum/species/synthetic/colonial/wy_droid/cloaker
+	name = "W-Y Combat Android Cloaker"
+
+/datum/species/synthetic/colonial/wy_droid/cloaker/handle_death(mob/living/carbon/human/dying_droid)
+	playsound(get_turf(dying_droid),"wy_droid_cloaker_death", 25, FALSE)
+
+/datum/species/synthetic/colonial/wy_droid/non_deathsquad
+	name = "W-Y Combat Android (Weaker)"
+	burn_mod = 0.8
+	brute_mod = 0.8
+	total_health = 150
+
+/datum/species/synthetic/colonial/wy_droid/cloaker/non_deathsquad
+	name = "W-Y Combat Android Cloaker (Weaker)"
+	burn_mod = 0.8
+	brute_mod = 0.8
+	total_health = 150

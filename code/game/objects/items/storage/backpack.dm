@@ -857,7 +857,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/camo_active = FALSE
 	var/camo_alpha = 10
 	var/allow_gun_usage = FALSE
-	var/cloak_cooldown
+	var/cloak_cooldown = 0
 	var/allowed_stealth_shooting = FALSE
 	var/fluff_item = "cloak"
 	var/camo_on_sound = 'sound/effects/cloak_scout_on.ogg'
@@ -908,7 +908,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		deactivate_camouflage(H)
 		return
 
-	if(cloak_cooldown && cloak_cooldown > world.time)
+	if(cloak_cooldown > world.time)
 		to_chat(H, SPAN_WARNING("Your [fluff_item] is malfunctioning and can't be enabled right now!"))
 		return
 
@@ -933,6 +933,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	XI.remove_from_hud(H)
 
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
+	cloak_cooldown = world.time + 12
 	return TRUE
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/wrapper_fizzle_camouflage()
@@ -948,6 +949,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	SIGNAL_HANDLER
 	if(!istype(H))
 		return FALSE
+
+	if(cloak_cooldown > world.time)
+		to_chat(H, SPAN_WARNING("Your [fluff_item] is malfunctioning and can't be disabled right now!"))
+		return
 
 	UnregisterSignal(H, list(
 	COMSIG_GRENADE_PRE_PRIME,
@@ -974,6 +979,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(anim)
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
+	cloak_cooldown = world.time + 12
 	addtimer(CALLBACK(src, PROC_REF(allow_shooting), H), 1.5 SECONDS)
 
 // This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
@@ -1302,8 +1308,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_fuel = 180
 
 /obj/item/storage/backpack/pmc/backpack/commando/apesuit
-	name = "dogcatcher bag"
-	desc = "A heavy-duty bag carried by Weyland-Yutani dogcatchers."
+	name = "Dog Catcher bag"
+	desc = "A heavy-duty bag carried by Weyland-Yutani Dog Catchers."
 	icon_state = "apesuit_pack"
 
 /obj/item/storage/backpack/combat_droid

@@ -94,5 +94,5 @@
 /// WY-GUN, Weyland-Yutani Commando Gunner
 #define PAY_SHORT_WY_GUN "WY-GUN"
 
-/// WY-DOG, Weyland-Yutani Dogcatcher
+/// WY-DOG, Weyland-Yutani Dog Catcher
 #define PAY_SHORT_WY_DOG "WY-DOG"

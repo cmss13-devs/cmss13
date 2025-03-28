@@ -260,7 +260,7 @@
 	stun_duration = 0
 
 /obj/effect/xenomorph/spray/praetorian/apply_spray(mob/living/carbon/M)
-	if(ishuman(M))
+	if(ishuman(M) || iswydroid(M))
 		var/mob/living/carbon/human/H = M
 
 		var/datum/effects/prae_acid_stacks/PAS = locate() in H.effects_list

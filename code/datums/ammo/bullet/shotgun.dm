@@ -47,8 +47,8 @@
 	icon_state = "bullet_iff"
 	handful_state = "es7_slug"
 	sound_override = 'sound/weapons/gun_es7lethal.ogg'
-	damage = 55
-	penetration = ARMOR_PENETRATION_TIER_6
+	damage = 60
+	penetration = ARMOR_PENETRATION_TIER_8
 	accuracy = HIT_ACCURACY_TIER_5
 
 /datum/ammo/bullet/shotgun/beanbag
@@ -74,7 +74,7 @@
 		var/mob/living/carbon/human/H = M
 		shake_camera(H, 2, 1)
 
-/datum/ammo/bullet/shotgun/beanbag/electric
+/datum/ammo/bullet/shotgun/beanbag/es7
 	name = "electrostatic shock slug"
 	headshot_state = HEADSHOT_OVERLAY_LIGHT //Electric version of the bean bag.
 	handful_state = "shock_slug"
@@ -84,9 +84,9 @@
 	max_range = 12
 	shrapnel_chance = 0
 	damage = 0
-	stamina_damage = 45
+	stamina_damage = 50
 	accuracy = HIT_ACCURACY_TIER_3
-	shell_speed = AMMO_SPEED_TIER_3
+	shell_speed = AMMO_SPEED_TIER_4
 	handful_state = "shock_slug"
 
 /datum/ammo/bullet/shotgun/incendiary

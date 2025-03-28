@@ -158,6 +158,7 @@
 	desc = "A modified enclosed helmet utilized by Weyland-Yutani PMC crowd control units."
 	icon_state = "guard_heavy_helmet"
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
+	actions_types = null
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/guard
 	name = "\improper PMC guard tactical cap"

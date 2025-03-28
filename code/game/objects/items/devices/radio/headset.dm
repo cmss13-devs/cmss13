@@ -1057,10 +1057,10 @@
 
 /obj/item/device/radio/headset/distress/wy_android
 	name = "W-Y android headset"
-	desc = "A special headset used by unidentified androids. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
+	desc = "A special headset used by unidentified androids. Channels are as follows: :o - colony :y - Corporate #pmc - PMC"
 	frequency = WY_WO_FREQ
 	icon_state = "ms_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/pmc/command)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WO
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_PMC)
@@ -1090,9 +1090,9 @@
 
 /obj/item/device/radio/headset/distress/pmc/commando/hvh
 	name = "W-Y commando headset"
-	desc = "A special headset used by unidentified operatives. Channels are as follows: :y - Corporate #pmc - PMC."
+	desc = "A special headset used by unidentified operatives. Channels are as follows: :o - colony :y - Corporate #pmc - PMC."
 	icon_state = "pmc_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/pmc)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/WY, /obj/item/device/encryptionkey/pmc)
 
 /obj/item/device/radio/headset/distress/pmc/commando/leader
 	name = "W-Y commando leader headset"
@@ -1137,6 +1137,7 @@
 	desc = "A special headset used by corporate directors. Channels are as follows: :o - colony, #z - command, #f - medical, #e - engineering, #o - JTAC, #p - general"
 	maximum_keys = 4
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/pmc/command, /obj/item/device/encryptionkey/commando, /obj/item/device/encryptionkey/mcom/cl)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_WO, MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_MARINE)
 
 /obj/item/device/radio/headset/distress/pmc/command/director/hvh
 	maximum_keys = 3

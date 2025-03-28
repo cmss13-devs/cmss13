@@ -25,14 +25,19 @@
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
 	anti_hug = 100
 	var/deactivated = TRUE
+	var/activate_cooldown = 0 //cooldown for mask activation
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/combat_droid/attack_self(mob/user)
 	..()
+
+	if(activate_cooldown > world.time)
+		return
+
 	toggle()
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/combat_droid/verb/toggle()
 	set category = "Object"
-	set name = "Activate integrated face armor"
+	set name = "Activate integrated face armor plate"
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
@@ -43,14 +48,15 @@
 		flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 		flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 		icon_state = "[initial(icon_state)]_on"
-		to_chat(usr, SPAN_NOTICE("You active integrated face armor."))
+		to_chat(usr, SPAN_NOTICE("You active integrated face armor plate."))
 	else
 		flags_armor_protection |= BODY_FLAG_FACE|BODY_FLAG_EYES
 		flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ|BLOCKGASEFFECT
 		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 		icon_state = initial(icon_state)
-		to_chat(usr, SPAN_NOTICE("You deactivate integrated face armor."))
+		to_chat(usr, SPAN_NOTICE("You deactivate integrated face armor plate."))
 	deactivated = !deactivated
+	activate_cooldown = world.time + 35
 	playsound(loc, 'sound/items/rped.ogg', 25, FALSE)
 
 	update_clothing_icon() //so our mob-overlays update

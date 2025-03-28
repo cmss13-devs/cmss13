@@ -206,7 +206,7 @@ Private Military Contractors
 	)
 
 /datum/skills/pmc/commando/dogcatcher
-	name = "W-Y Commando Dogcatcher"
+	name = "W-Y Commando Dog Catcher"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_EXPERT,

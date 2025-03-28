@@ -374,7 +374,7 @@
 	execution_start = 10 SECONDS
 	flyoff_period = 15 SECONDS
 	cooldown_period = 25 SECONDS
-	soundeffect = 'sound/weapons/dropship_sonic_boom.ogg' //BOOM~WOOOOOSH~HSOOOOOW~BOOM
+	soundeffect = 'modular/aesthetics_sounds/sound/dropship_sonic_boom.ogg' //BOOM~WOOOOOSH~HSOOOOOW~BOOM // BANDAMARINES EDIT - Dropship soundeffects update
 	step_delay = 3
 	max_offset = 12
 

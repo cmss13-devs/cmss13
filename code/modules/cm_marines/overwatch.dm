@@ -10,7 +10,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
-	req_access = list(ACCESS_MARINE_DATABASE)
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -61,8 +60,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	COOLDOWN_DECLARE(cooldown_request)
 	/// messaging HC (admins)
 	COOLDOWN_DECLARE(cooldown_central)
-	/// making a ship announcement
+	/// making a groundside announcement
 	COOLDOWN_DECLARE(cooldown_message)
+	/// making a shipside announcement
+	COOLDOWN_DECLARE(cooldown_shipside_message)
 	/// 10 minute cooldown between calls for 'general quarters'
 	COOLDOWN_DECLARE(general_quarters)
 
@@ -463,14 +464,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	data["total_deployed"] = co_count + xo_count + so_count
 	data["living_count"] = co_alive + xo_alive + so_alive
 
-	data["co_count"] = co_count
-	data["xo_count"] = xo_count
-	data["so_count"] = so_count
-
-	data["co_alive"] = co_alive
-	data["xo_alive"] = xo_alive
-	data["so_alive"] = so_alive
-
 	return data
 
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
@@ -563,8 +556,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	data["world_time"] = world.time
 
 	data["time_request"] = cooldown_request
-	data["time_central"] = cooldown_central
-	data["time_message"] = cooldown_message
 
 	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
 	data["echo_squad_active"] = echo_squad.active
@@ -868,6 +859,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			var/mob/living/carbon/human/human_user = usr	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
 			var/bio_fail = FALSE
+			var/announcement_type = params["announcement_type"]
 			if(!istype(idcard))
 				idcard = human_user.get_idcard()
 			if(!idcard)
@@ -882,7 +874,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
 
-			if(!COOLDOWN_FINISHED(src, cooldown_message))
+			if((!COOLDOWN_FINISHED(src, cooldown_message) && announcement_type == "groundside") || (!COOLDOWN_FINISHED(src, cooldown_shipside_message) && announcement_type == "shipside"))
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
 			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
@@ -900,15 +892,16 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					var/paygrade = get_paygrades(id.paygrade, FALSE, human.gender)
 					signed = "[paygrade] [id.registered_name]"
 
-				COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
-				if(params["announcement_type"] == "shipside")
+				if(announcement_type == "shipside")
 					shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
 					message_admins("[key_name(user)] has made a shipwide annoucement.")
 					log_announcement("[key_name(user)] has announced the following to the ship: [input]")
+					COOLDOWN_START(src, cooldown_shipside_message, COOLDOWN_COMM_MESSAGE)
 				else
 					marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
 					message_admins("[key_name(usr)] has made a command announcement.")
 					log_announcement("[key_name(usr)] has announced the following: [input]")
+					COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
 
 		if("selectlz")
 			if(SSticker.mode.active_lz)

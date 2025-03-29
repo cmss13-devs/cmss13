@@ -47,6 +47,8 @@
 	var/fire_rattle = null
 	var/unload_sound = 'sound/weapons/flipblade.ogg'
 	var/empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	//Sound for when you try to shoot but the gun is empty.
+	var/list/dry_fire_sound = list('sound/weapons/gun_empty.ogg')
 	//We don't want these for guns that don't have them.
 	var/reload_sound = null
 	var/cocked_sound = null
@@ -1609,6 +1611,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return TRUE
 	if(user.is_mob_incapacitated())
 		return
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if(world.time < guaranteed_delay_time)
 		return
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0))
@@ -1692,11 +1696,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	return TRUE
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)
-	if(user)
-		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
-		playsound(user, 'sound/weapons/gun_empty.ogg', 25, 1, 5) //5 tile range
+	var/actual_sound = pick(dry_fire_sound)
+	var/dry_fire_text
+	var/obj/item/weapon/gun/current_gun = src
+	if(istype(current_gun, /obj/item/weapon/gun/flamer))
+		dry_fire_text = "<b>*pshhhh*</b>"
 	else
-		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
+		dry_fire_text = "<b>*click*</b>"
+
+	if(user)
+		to_chat(user, SPAN_WARNING(dry_fire_text))
+		playsound(user, actual_sound, 25, 1, 5) //5 tile range
+	else
+		playsound(current_gun, actual_sound, 25, 1, 5)
 
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
 	// Do not display ammo if you have an attachment
@@ -2081,3 +2093,43 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /// Getter for gun_user
 /obj/item/weapon/gun/proc/get_gun_user()
 	return gun_user
+
+/obj/item/weapon/gun/proc/fire_into_air(mob/user)
+	if(!user || !isturf(user.loc) || !current_mag || !current_mag.current_rounds)
+		return
+
+	var/turf/gun_turf = user.loc
+	var/area/gun_area = gun_turf.loc
+
+	if(user.a_intent < INTENT_GRAB)
+		return TRUE
+
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER)) // XO and CO
+		return TRUE
+
+	if(user.action_busy)
+		return
+
+	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+
+	if(!current_mag || !current_mag.current_rounds)
+		return
+
+	current_mag.current_rounds--
+
+	if(gun_area.ceiling <= CEILING_GLASS)
+		gun_turf.ceiling_debris()
+
+	user.visible_message(SPAN_HIGHDANGER(uppertext("[user] FIRES THEIR [name] INTO THE AIR!")),
+	SPAN_HIGHDANGER(uppertext("YOU FIRE YOUR [name] INTO THE AIR!")))
+
+	playsound(user, fire_sound, 120, FALSE)
+
+	FOR_DVIEW(var/mob/mob, world.view, user, HIDE_INVISIBLE_OBSERVER)
+		if(mob && mob.client)
+			if(ishuman(mob))
+				shake_camera(mob, 3, 4)
+	FOR_DVIEW_END
+
+	update_icon()

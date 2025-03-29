@@ -47,7 +47,9 @@
 		if(iff_additional_fire_delay)
 			var/obj/item/weapon/gun/gun = firing_weapon
 			if(istype(gun))
-				LAZYSET(user.fire_delay_next_fire, gun, world.time + iff_additional_fire_delay)
+				gun.last_fired = world.time + iff_additional_fire_delay
+				SEND_SIGNAL(gun, COMSIG_GUN_STOP_FIRE) //for autofire
+				SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
 		return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
 	//At some angles (scatter or otherwise) the original target is not in checked_turfs so we put it in there in order based on distance from user
@@ -77,6 +79,8 @@
 				continue
 			if(checked_living.body_position == LYING_DOWN && projectile_to_fire.original != checked_living)
 				continue
+			if(HAS_TRAIT(checked_living, TRAIT_NESTED))
+				continue
 
 			if(checked_living.get_target_lock(user.faction_group))
 				if(HAS_TRAIT(checked_living, TRAIT_CLOAKED))
@@ -88,7 +92,9 @@
 				if(iff_additional_fire_delay)
 					var/obj/item/weapon/gun/gun = firing_weapon
 					if(istype(gun))
-						LAZYSET(user.fire_delay_next_fire, gun, world.time + iff_additional_fire_delay)
+						gun.last_fired = world.time + iff_additional_fire_delay
+						SEND_SIGNAL(gun, COMSIG_GUN_STOP_FIRE) //for autofire
+						SEND_SIGNAL(gun, COMSIG_GUN_NEXT_FIRE_MODIFIED, gun.last_fired) //for autofire
 				return COMPONENT_CANCEL_GUN_BEFORE_FIRE
 
 			return //if we have a target we *can* hit and find it before any IFF targets we want to fire

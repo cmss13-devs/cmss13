@@ -2,10 +2,9 @@ import { round } from 'common/math';
 import { Ping } from 'common/ping';
 import { BooleanLike } from 'common/react';
 import { Component } from 'react';
-
-import { useBackend } from '../backend';
-import { Box, Button, Flex, Icon, RoundGauge, Stack } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Flex, Icon, RoundGauge, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 const RED = '#dc2828';
 

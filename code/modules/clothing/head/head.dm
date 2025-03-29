@@ -988,7 +988,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 
 /obj/item/clothing/head/general
 	name = "\improper USCM Officer Peaked Service Cap"
-	desc = "A Standard Issue Officer Service Cap, worn by USCM Officers on offical visits."
+	desc = "A standard issue officer service cap, worn by USCM Officers on offical visits."
 	icon_state = "general_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(

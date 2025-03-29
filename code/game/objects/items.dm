@@ -201,6 +201,11 @@
 	if(ismob(loc))
 		dropped(loc)
 
+	if(zoom)
+		for(var/mob/living/user in viewers(src, GLOB.world_view_size))
+			if(user.client && user.interactee == src) // user.interactee is necessary here to prevent everyone else zooming in from being unzoomed
+				unzoom(user)
+
 	return ..()
 
 /obj/item/ex_act(severity, explosion_direction)

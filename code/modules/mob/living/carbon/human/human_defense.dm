@@ -304,7 +304,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/hit_area = affecting.display_name
 
 	if (istype(O, /obj/item/reagent_container/food/snacks/grown/tomato) || (istype(O, /obj/item/reagent_container/food/snacks/egg))) //if the object is messy, large message
-		to_chat(src, SPAN_HIGHDANGER("The [O] splats messily on your [hit_area]!"))
+		to_chat(src, SPAN_HIGHDANGER("\The [O] splats messily on your [hit_area]!"))
 
 	src.visible_message(SPAN_DANGER("[src] has been hit in the [hit_area] by [O]."), null, null, 5)
 

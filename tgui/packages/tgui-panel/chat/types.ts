@@ -6,6 +6,7 @@ export type message = {
   times?: number;
   createdAt: number;
   avoidHighlighting?: boolean;
+  stored?: boolean;
 };
 
 export type Page = {

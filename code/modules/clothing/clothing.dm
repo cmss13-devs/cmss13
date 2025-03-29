@@ -12,13 +12,73 @@
 	var/armor_rad = 0
 	var/armor_internaldamage = 0
 	var/movement_compensation = 0
-	var/list/accessories
-	var/list/valid_accessory_slots = list()
-	var/list/restricted_accessory_slots = list()
 	var/drag_unequip = FALSE
 	var/blood_overlay_type = "" //which type of blood overlay to use on the mob when bloodied
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
+
+	// accessory stuff
+	var/list/accessories
+	var/list/valid_accessory_slots = list()
+	var/list/restricted_accessory_slots = list()
+	// vars below related to converting clothing to accessories
+	var/can_become_accessory = FALSE //can this clothing item be turned into an accessory?
+	var/slot = ACCESSORY_SLOT_DECOR //default slot for accessories, pathed here for use for non-accessories
+	var/accessory_path = "/obj/item/clothing/accessory"
+
+/obj/item/clothing/proc/convert_to_accessory()
+	if(!can_become_accessory)
+		to_chat(usr, SPAN_NOTICE("[src] cannot be turned into an accessory."))
+		return
+
+	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
+	var/obj/item/clothing/accessory/new_accessory = new accessory_path(loc)
+	new_accessory.name = name
+	new_accessory.icon = icon
+	new_accessory.icon_state = icon_state
+	new_accessory.desc = desc
+	var/list/accessory_icons = item_icons ? item_icons.Copy() : list()
+	if(accessory_icons[WEAR_FACE])
+		accessory_icons[WEAR_JACKET] = accessory_icons[WEAR_FACE]
+		accessory_icons[WEAR_BODY] = accessory_icons[WEAR_FACE]
+	new_accessory.accessory_icons = accessory_icons
+	new_accessory.high_visibility = TRUE
+	new_accessory.removable = TRUE
+	new_accessory.slot = slot
+	new_accessory.can_become_accessory = can_become_accessory
+
+	new_accessory.inv_overlay = image("icon" = accessory_icons[WEAR_FACE], "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]") // will need a dynamic implementation in the future, or path directly to accessory\inventory_overlays to its own dmi file  - nihi
+
+	new_accessory.original_item_path = src.type
+
+	if(ismob(loc) && loc == usr)
+		usr.put_in_hands(new_accessory)
+
+	to_chat(usr, SPAN_NOTICE("You will start wearing [src] as an accessory."))
+	// we dont want duplicates man
+	qdel(src)
+
+/obj/item/clothing/proc/revert_from_accessory()
+	var/obj/item/clothing/accessory/access = src
+	if(!access.original_item_path)
+		to_chat(usr, SPAN_NOTICE("[src] cannot be reverted because the original item path is missing."))
+		return
+
+	var/obj/item/clothing/original_item = new access.original_item_path(loc)
+	if(!original_item)
+		to_chat(usr, SPAN_NOTICE("Failed to revert [src] to its original item."))
+		return
+
+	if(ismob(loc) && loc == usr)
+		usr.put_in_hands(original_item)
+
+	to_chat(usr, SPAN_NOTICE("You will start wearing [src] as normal."))
+	// ditto
+	qdel(src)
+
+/obj/item/clothing/attack_self(mob/user)
+	if(can_become_accessory)
+		convert_to_accessory()
 
 /obj/item/clothing/get_examine_line(mob/user)
 	. = ..()

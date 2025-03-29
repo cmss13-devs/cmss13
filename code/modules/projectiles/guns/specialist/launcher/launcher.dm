@@ -6,6 +6,7 @@
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	mouse_pointer = 'icons/effects/mouse_pointer/explosive_mouse.dmi'
+	storage_slot_priorities = PRIMARY_WEAPON_SLOT_PRIORITY
 
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
 	var/GL_has_empty_icon = TRUE

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;health_scan - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/health_scan.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/health_scan.html">health_scan</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/modules/mob/living/living_healthscan.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_healthscan.dm 11"/></a></h1>
+
+<p>vars reffing this on /mob/dead/observer, /obj/item/device/healthanalyzer, /obj/structure/machinery/cm_vending/sorted/medical, /obj/structure/machinery/body_scanconsole are called last_health_display</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/health_scan.html#proc/get_death_value">get_death_value</a></th><td>Returns TRUE if the target is either dead or appears to be dead.</td></tr>
+            <tr><th><a href="datum/health_scan.html#proc/get_oxy_value">get_oxy_value</a></th><td>Returns the oxygen value, unless they have FAKEDEATH - in which case it will instead make up a number to return.</td></tr>
+            <tr><th><a href="datum/health_scan.html#proc/look_at">look_at</a></th><td>This is the proc for interacting with, or looking at, a mob's health display. Also contains skillchecks and the like. You may NOT call tgui interact directly, and you MUST set the detail level.</td></tr>
+            <tr><th><a href="datum/health_scan.html#proc/ui_act">ui_act</a></th><td>for checking if limbs are robot limbs</td></tr></table><h2 id="proc">Proc Details</h2><h3 id="proc/get_death_value"><aside class="declaration">proc </aside>get_death_value<aside>(/<a href="mob.html">mob</a>/target_mob) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/modules/mob/living/living_healthscan.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_healthscan.dm 67"/></a></aside>
+        </h3>
+        <p>Returns TRUE if the target is either dead or appears to be dead.</p><h3 id="proc/get_oxy_value"><aside class="declaration">proc </aside>get_oxy_value<aside>(/<a href="mob.html">mob</a>/target_mob) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/modules/mob/living/living_healthscan.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_healthscan.dm 74"/></a></aside>
+        </h3>
+        <p>Returns the oxygen value, unless they have FAKEDEATH - in which case it will instead make up a number to return.</p><h3 id="proc/look_at"><aside class="declaration">proc </aside>look_at<aside>(/<a href="mob.html">mob</a>/user, detail, bypass_checks, ignore_delay, alien, /<a href="datum.html">datum</a>/<a href="datum/tgui.html">tgui</a>/ui) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/modules/mob/living/living_healthscan.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_healthscan.dm 26"/></a></aside>
+        </h3>
+        <p>This is the proc for interacting with, or looking at, a mob's health display. Also contains skillchecks and the like. You may NOT call tgui interact directly, and you MUST set the detail level.</p><h3 id="proc/ui_act"><aside class="parent"><a title="/datum" href="datum.html#proc/ui_act">&uarr;</a></aside>ui_act<aside>(action, /list/params, /<a href="datum.html">datum</a>/<a href="datum/tgui.html">tgui</a>/ui, /<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/state) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/modules/mob/living/living_healthscan.dm#L486">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_healthscan.dm 486"/></a></aside>
+        </h3>
+        <p>for checking if limbs are robot limbs</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c">7aa10c5</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

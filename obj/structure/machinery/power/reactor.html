@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;structure&#x2F;machinery&#x2F;power&#x2F;reactor - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/structure/machinery/power/reactor.html#var">Var Details</a></header>
+<main>
+<h1>S-52 fusion reactor <aside>/<a href="obj.html">obj</a>/<a href="obj/structure/machinery.html">structure/machinery</a>/<a href="obj/structure/machinery/power.html">power</a>/<a href="obj/structure/machinery/power/reactor.html">reactor</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 10"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/buildstate">buildstate</a></th><td>How damaged the reactor is</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/cur_tick">cur_tick</a></th><td>How many ticks since last fail check</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/fail_check_ticks">fail_check_ticks</a></th><td>How often the reactor checks if it can fail</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/fail_rate">fail_rate</a></th><td>% chance of the reactor failing every check_failure</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/fusion_cell">fusion_cell</a></th><td>The reactors fuel cell, fail rate increases if empty</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/is_ship_reactor">is_ship_reactor</a></th><td>Whether the reactor is on the ship</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/original_fail_rate">original_fail_rate</a></th><td>Original fail rate of the reactor</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/overloaded">overloaded</a></th><td>If the generator is overloaded</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/power_gen_percent">power_gen_percent</a></th><td>% of power produced, increases to 100% over time</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/power_generation_max">power_generation_max</a></th><td>How much the reactor will generate at max power_gen_percent</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/power_percent_states">power_percent_states</a></th><td>All icon states split by power_gen_percent</td></tr>
+            <tr><th><a href="obj/structure/machinery/power/reactor.html#var/require_fusion_cell">require_fusion_cell</a></th><td>Whether the reactor requires a fusion cell</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/buildstate"><aside class="declaration">var </aside>buildstate
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 29"/></a></h3>
+        <p>How damaged the reactor is</p><h3 id="var/cur_tick"><aside class="declaration">var </aside>cur_tick
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 38"/></a></h3>
+        <p>How many ticks since last fail check</p><h3 id="var/fail_check_ticks"><aside class="declaration">var </aside>fail_check_ticks
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 36"/></a></h3>
+        <p>How often the reactor checks if it can fail</p><h3 id="var/fail_rate"><aside class="declaration">var </aside>fail_rate
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 34"/></a></h3>
+        <p>% chance of the reactor failing every check_failure</p><h3 id="var/fusion_cell"><aside class="declaration">var </aside>fusion_cell
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/fuel_cell.html">fuel_cell</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 52"/></a></h3>
+        <p>The reactors fuel cell, fail rate increases if empty</p><h3 id="var/is_ship_reactor"><aside class="declaration">var </aside>is_ship_reactor
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 24"/></a></h3>
+        <p>Whether the reactor is on the ship</p><h3 id="var/original_fail_rate"><aside class="declaration">var </aside>original_fail_rate
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 32"/></a></h3>
+        <p>Original fail rate of the reactor</p><h3 id="var/overloaded"><aside class="declaration">var </aside>overloaded
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 26"/></a></h3>
+        <p>If the generator is overloaded</p><h3 id="var/power_gen_percent"><aside class="declaration">var </aside>power_gen_percent
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 41"/></a></h3>
+        <p>% of power produced, increases to 100% over time</p><h3 id="var/power_generation_max"><aside class="declaration">var </aside>power_generation_max
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 43"/></a></h3>
+        <p>How much the reactor will generate at max power_gen_percent</p><h3 id="var/power_percent_states"><aside class="declaration">var </aside>power_percent_states
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 45"/></a></h3>
+        <p>All icon states split by power_gen_percent</p><h3 id="var/require_fusion_cell"><aside class="declaration">var </aside>require_fusion_cell
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c/code/game/machinery/fusion_engine.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;fusion_engine.dm 48"/></a></h3>
+        <p>Whether the reactor requires a fusion cell</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/7aa10c5cc83a29e7c7ccb6f1effe2ceb4549b57c">7aa10c5</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

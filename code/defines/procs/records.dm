@@ -45,7 +45,6 @@
 	medical_record.fields["last_scan_time"] = null
 	medical_record.fields["last_scan_result"] = "No scan data on record"
 	medical_record.fields["autodoc_data"] = list()
-	medical_record.fields["autodoc_manual"] = list()
 	medical_record.fields["ref"] = WEAKREF(person)
 	GLOB.data_core.medical += medical_record
 	return medical_record

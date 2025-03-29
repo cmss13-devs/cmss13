@@ -59684,18 +59684,6 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
-"cYA" = (
-/obj/item/prop{
-	desc = null;
-	icon = 'icons/obj/structures/machinery/big_floodlight.dmi';
-	icon_state = "flood_s_dmg";
-	name = "flood light (destroyed)";
-	anchored = 1;
-	layer = 3.8;
-	density = 1
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts_road/west)
 "cYB" = (
 /obj/item/prop{
 	desc = null;
@@ -59790,7 +59778,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "cYM" = (
-/obj/structure/prop/tyrargo/illuminator,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -59810,7 +59797,6 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
 "cYO" = (
-/obj/structure/prop/tyrargo/illuminator,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
@@ -61086,6 +61072,35 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/army_staging)
+"dcF" = (
+/obj/item/ammo_casing/shell,
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"dcG" = (
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 5
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/east)
+"dcH" = (
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/east)
+"dcI" = (
+/obj/structure/prop/tyrargo/illuminator,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"dcJ" = (
+/obj/structure/prop/tyrargo/illuminator,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/west)
+"dcK" = (
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 5
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/landing_zone_1)
 "dcL" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -61096,6 +61111,13 @@
 /obj/item/reagent_container/blood/empty,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
+"dcM" = (
+/mob/living/simple_animal/cat{
+	name = "Holly";
+	real_name = "Holly"
+	},
+/turf/open/floor/plating/wood,
+/area/tyrargo/landing_zone_1/ceiling)
 "dcO" = (
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/plating/wood_broken2,
@@ -117698,7 +117720,7 @@ bMW
 koN
 vHf
 bMW
-adr
+dcM
 aWi
 bNp
 bNg
@@ -120628,9 +120650,9 @@ bmm
 aUO
 bKd
 bJO
-byp
-byp
-bDt
+bJN
+bJN
+bPe
 bxz
 bEt
 bxz
@@ -120810,8 +120832,8 @@ bKv
 bJM
 bKe
 bJN
-byp
-bxU
+bJN
+dcK
 bDt
 bIK
 bxz
@@ -120992,7 +121014,7 @@ aUV
 bKm
 aOA
 bJP
-byp
+bJN
 bHG
 byp
 bIL
@@ -122270,7 +122292,7 @@ bxz
 bxz
 bJe
 bxz
-cYA
+bxz
 bDj
 byp
 bCE
@@ -122633,7 +122655,7 @@ bGN
 aUB
 bxz
 bxz
-bxz
+bIM
 bHZ
 byp
 byp
@@ -122815,8 +122837,8 @@ bGN
 bFw
 baT
 bxz
-bIM
 bxz
+dcJ
 aaJ
 byp
 bDt
@@ -129551,8 +129573,8 @@ bBg
 bBg
 bBg
 bBg
-bDi
 bBg
+dcI
 bwt
 bwt
 bwt
@@ -129914,7 +129936,7 @@ bBh
 bBg
 bBg
 bBg
-bBg
+bDi
 bBg
 bFW
 bwt
@@ -133588,7 +133610,7 @@ cXu
 cYG
 bDx
 cXf
-bcm
+dcF
 bBg
 bLq
 bBh
@@ -133958,7 +133980,7 @@ bCZ
 bBg
 cWX
 bBg
-bBg
+bCy
 bBg
 bBn
 bBj
@@ -134125,7 +134147,7 @@ bDI
 bBn
 bBn
 bBn
-bBn
+bKr
 bBn
 bBn
 bJr
@@ -134310,7 +134332,7 @@ bov
 bEh
 bBn
 bBn
-bBn
+dcH
 bBj
 cXw
 cXr
@@ -134493,7 +134515,7 @@ bBl
 bBP
 bBP
 bBP
-bBl
+dcG
 bBl
 cXs
 cXk
@@ -135229,7 +135251,7 @@ bwE
 cXe
 bwE
 bwE
-bwE
+bye
 bwE
 bwE
 bwE

@@ -384,7 +384,7 @@
 
 /// Toggles whether activating marine leader orders will be spoken or not, on by default
 /client/proc/toggle_leadership_spoken_orders()
-	prefs.toggle_prefs |= TOGGLE_LEADERSHIP_SPOKEN_ORDERS
+	prefs.toggle_prefs ^= TOGGLE_LEADERSHIP_SPOKEN_ORDERS
 	if(prefs.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
 		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will no longer be verbally spoken."))
 	else

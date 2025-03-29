@@ -50,7 +50,7 @@
 	// 1min cooldown on orders
 	addtimer(CALLBACK(src, PROC_REF(make_aura_available)), COMMAND_ORDER_COOLDOWN)
 
-	if(src.client?.prefs && (src.client?.prefs?.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS))
+	if(src.client?.prefs?.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
 		var/spoken_order = ""
 		switch(order)
 			if(COMMAND_ORDER_MOVE)

@@ -73,6 +73,9 @@
 	weed_food_states = list("Runner_1","Runner_2","Runner_3")
 	weed_food_states_flipped = list("Runner_1","Runner_2","Runner_3")
 
+	skull = /obj/item/skull/runner
+	pelt = /obj/item/pelt/runner
+
 
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()

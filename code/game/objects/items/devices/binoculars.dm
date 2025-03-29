@@ -11,7 +11,6 @@
 	force = 5
 	w_class = SIZE_SMALL
 	throwforce = 5
-	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 	/// If FALSE won't change icon_state to a camo marine bino.
 	var/uses_camo = TRUE
@@ -232,7 +231,7 @@
 
 	data["xcoord"] = src.last_x
 	data["ycoord"] = src.last_y
-	data["zcoord"] = src.last_z 
+	data["zcoord"] = src.last_z
 
 	return data
 
@@ -551,7 +550,6 @@
 	force = 5
 	w_class = SIZE_SMALL
 	throwforce = 5
-	throw_range = 15
 	throw_speed = SPEED_VERY_FAST
 	var/atom/target = null // required for lazing at things.
 	var/las_r = 0 //Red Laser, Used to Replace the IR. 0 is not active, 1 is cool down, 2 is actively Lazing the target

@@ -42,7 +42,7 @@
 
 /atom/movable/screen/ghost/moba
 	name = "MOBA"
-	icon_state = "reenter_corpse"
+	icon_state = "minigames" //placeholder
 
 /atom/movable/screen/ghost/moba/Click()
 	if(SSticker.current_state != GAME_STATE_PLAYING)

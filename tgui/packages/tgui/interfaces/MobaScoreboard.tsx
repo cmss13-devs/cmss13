@@ -57,23 +57,6 @@ const MainTab = () => {
             key={player}
           />
           <Box style={{ border: '1px solid rgb(61, 55, 61)' }} />
-          <PlayerRow
-            player1={player}
-            player2={data.team2_players[index]}
-            key={player}
-          />
-          <Box style={{ border: '1px solid rgb(61, 55, 61)' }} />
-          <PlayerRow
-            player1={player}
-            player2={data.team2_players[index]}
-            key={player}
-          />
-          <Box style={{ border: '1px solid rgb(61, 55, 61)' }} />
-          <PlayerRow
-            player1={player}
-            player2={data.team2_players[index]}
-            key={player}
-          />
         </>
       ))}
     </Box>
@@ -123,7 +106,7 @@ const PlayerEntry = (props) => {
       </Box>
       <Box style={{ marginLeft: '5%' }}>{player.name}</Box>
       <Box style={{ marginLeft: '5%' }}>
-        {player.kills}/{player.deaths}
+        {player.kills} K / {player.deaths} D
       </Box>
       <Box style={{ marginLeft: '5%' }}>{player.creep_score} CS</Box>
       <Box style={{ marginLeft: '5%', width: '100%' }}>

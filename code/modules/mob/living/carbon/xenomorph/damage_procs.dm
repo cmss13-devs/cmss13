@@ -121,6 +121,8 @@
 		"armor_integrity" = armor_integrity,
 		"armour_type" = armour_type,
 	)
+	if(HAS_TRAIT(src, TRAIT_MOBA_PARTICIPANT) && (damage_type == BURN))
+		damagedata["armor"] = (acid_armor + acid_armor_buff - acid_armor_debuff) * effectiveness_mult
 	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, damagedata)
 	var/modified_damage = armor_damage_reduction(armour_config, damage,
 		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],

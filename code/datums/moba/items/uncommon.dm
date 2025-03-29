@@ -57,7 +57,7 @@
 /datum/moba_item/uncommon/antiheal
 	name = "Mending Disruptor"
 	description = "<br><b>Disruption</b><br>Upon landing an attack on a target, healing is N% less effective on them for N seconds."
-	icon_state = "red"
+	icon_state = "mending_disruptor"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3.5
 	component_items = list(
 		/datum/moba_item/common/sharp_claws,

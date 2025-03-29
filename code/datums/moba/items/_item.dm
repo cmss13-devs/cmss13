@@ -72,7 +72,7 @@
 /datum/moba_item/proc/set_total_gold_cost()
 	total_gold_cost = get_recursive_gold_cost()
 	if(sell_value == -1)
-		sell_value = total_gold_cost * MOBA_ITEM_SELLBACK_VALUE
+		sell_value = floor(total_gold_cost * MOBA_ITEM_SELLBACK_VALUE)
 
 /datum/moba_item/proc/get_recursive_gold_cost()
 	var/return_gold = gold_cost
@@ -176,7 +176,7 @@
 	xeno.melee_damage_upper -= attack_damage
 	component.remove_ap(acid_power)
 	if(ability_cooldown_reduction)
-		xeno.cooldown_reduction_percentage = xeno.cooldown_reduction_percentage * (1 / ability_cooldown_reduction)
+		xeno.cooldown_reduction_percentage = 1 - (1 - xeno.cooldown_reduction_percentage) / ability_cooldown_reduction
 	component.lifesteal -= lifesteal
 	component.slash_penetration -= slash_penetration
 	component.acid_penetration -= acid_penetration

@@ -261,6 +261,8 @@
 #define TRAIT_MOBA_STRUCTURESHRED "t_moba_structureshred"
 /// If this mob is about to be executed by reaper boon
 #define TRAIT_MOBA_REAPER_BOON_EXECUTING "t_moba_reaper_boon_executing"
+/// If we're a support player
+#define TRAIT_MOBA_SUPPORT "t_moba_support"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

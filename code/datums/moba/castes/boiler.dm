@@ -40,7 +40,7 @@
 /datum/moba_caste/boiler/apply_caste(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/player_component, datum/moba_player/player_datum)
 	. = ..()
 	RegisterSignal(xeno, COMSIG_MOB_TAKE_DAMAGE, PROC_REF(on_damage))
-	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
+	//RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(on_death))
 
 /datum/moba_caste/boiler/proc/on_damage(mob/living/carbon/xenomorph/source, list/damagedata, damagetype)
 	SIGNAL_HANDLER
@@ -303,6 +303,7 @@
 			animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
 
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target_living)
+	SEND_SIGNAL(xeno, COMSIG_MOBA_ACID_DAMAGE_DEALT, target_living)
 	addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
 	apply_cooldown()
 	return ..()

@@ -5,7 +5,7 @@
 	consumed_on_threshold = FALSE
 	alert_type = null
 	max_stacks = 4
-	var/movespeed_per_stack = 0.25
+	var/movespeed_per_stack = -0.2
 	var/movespeed_granted = 0
 
 /datum/status_effect/stacking/furious_haste/add_stacks(stacks_added)

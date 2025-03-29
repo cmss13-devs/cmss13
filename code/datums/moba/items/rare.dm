@@ -1,7 +1,7 @@
 /datum/moba_item/rare/shredder_claws
 	name = "Rending Claws"
 	description = "<br><b>Armor Shred</b><br>Remove N% of the armor of anyone slashed. Stacks up to N, lasting N seconds since your last attack."
-	icon_state = "red"
+	icon_state = "rending_claws"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3
 	unique = TRUE
 	component_items = list(
@@ -40,7 +40,7 @@
 /datum/moba_item/rare/corrosive_acid
 	name = "Corrosive Acid"
 	description = "<br><b>Deep Burns</b><br>Dealing acid damage to a target causes them to take acid damage equal to 2.5% of their max HP every 1 second for 3 seconds."
-	icon_state = "red"
+	icon_state = "corrosive_acid"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3.125
 	unique = TRUE
 	component_items = list(
@@ -58,6 +58,7 @@
 /datum/moba_item/rare/corrosive_acid/apply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player, restore_plasma_health)
 	. = ..()
 	RegisterSignal(xeno, COMSIG_ATOM_FIRED_PROJECTILE_HIT, PROC_REF(on_acid_hit))
+	RegisterSignal(xeno, COMSIG_MOBA_ACID_DAMAGE_DEALT, PROC_REF(on_acid_damage_deal))
 	// If we find a way to do melee acid damage this'll need to be updated
 
 /datum/moba_item/rare/corrosive_acid/unapply_stats(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/component, datum/moba_player/player)
@@ -72,11 +73,18 @@
 	if((shot.ammo.flags_ammo_behavior|shot.projectile_override_flags) & AMMO_ACIDIC)
 		hit.apply_status_effect(/datum/status_effect/corroding, 0.025, armorpen_list[1])
 
+/datum/moba_item/rare/corrosive_acid/proc/on_acid_damage_deal(mob/living/carbon/xenomorph/source, mob/living/hit)
+	SIGNAL_HANDLER
+
+	var/list/armorpen_list = list()
+	SEND_SIGNAL(source, COMSIG_MOBA_GET_ACID_PENETRATION, armorpen_list)
+	hit.apply_status_effect(/datum/status_effect/corroding, 0.025, armorpen_list[1])
+
 
 /datum/moba_item/rare/mageslayer
 	name = "Acid Neutralizer"
 	description = "<br><b>Cast Neutralizer</b><br>Reduce the AP of anyone hit by your slashes or physical abilities by N% for N seconds."
-	icon_state = "red"
+	icon_state = "acid_neutralizer"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 2.25
 	unique = TRUE
 	component_items = list(
@@ -116,7 +124,7 @@
 /datum/moba_item/rare/steraks
 	name = "High-Stress Carapace Hardening"
 	description = "<br><b>Emergency Hardening</b><br>Upon dropping below N% health, gain a shield that absorbs N (+N% bonus HP) damage and decays after N seconds. N second cooldown."
-	icon_state = "red"
+	icon_state = "high_stress_carapace_hardening"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 2
 	unique = TRUE
 	instanced = TRUE
@@ -176,7 +184,7 @@
 /datum/moba_item/rare/furious_haste
 	name = "Oversized Adrenal Glands"
 	description = "<br><b>Furious Haste</b><br>Gain N movespeed upon slashing an enemy, stacking up to N times. Decays after N seconds."
-	icon_state = "red"
+	icon_state = "oversized_adrenal"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 2
 	unique = TRUE
 	component_items = list(
@@ -213,7 +221,7 @@
 /datum/moba_item/rare/blood_fury
 	name = "Uninhibited Fury"
 	description = "<br><b>Kill Frenzy</b><br>Killing an enemy reduces your cooldowns by N seconds or N%, whichever is better."
-	icon_state = "red"
+	icon_state = "uninhibited_fury"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3.25
 	unique = TRUE
 	component_items = list(
@@ -258,11 +266,12 @@
 		deltimer(action.cooldown_timer_id)
 		action.cooldown_timer_id = addtimer(CALLBACK(action, TYPE_PROC_REF(/datum/action/xeno_action, on_cooldown_end)), best_time_left, TIMER_UNIQUE|TIMER_STOPPABLE)
 		action.current_cooldown_duration = best_time_left
+		break
 
 /datum/moba_item/rare/hubris // Absurdly expensive "win more" item that should just win you the game if you keep up the kills
 	name = "Queen Mother's Hubris"
 	description = "<br><b>Body Stacking</b><br>Killing an enemy grants you 10 + (4 x total enemies killed while holding this) extra attack damage for 90 seconds."
-	icon_state = "red"
+	icon_state = "queen_mothers_hubris"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 1.25
 	unique = TRUE
 	instanced = TRUE
@@ -308,12 +317,12 @@
 /datum/moba_item/rare/echo_shard
 	name = "Extrasensory Time Dilation"
 	description = "<br><b>Active</b><br>Instantly recharge your most recently used non-ultimate ability. Cooldown N seconds."
-	icon_state = "red"
+	icon_state = "extrasensory_time_dilation"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3.5
 	instanced = TRUE
 	active = TRUE
 	unique = TRUE
-	active_action_icon_state = "vote"
+	active_action_icon_state = "chamber_swap" // the most placeholder of placeholders
 	active_cooldown_time = 30 SECONDS
 	component_items = list(
 		/datum/moba_item/uncommon/special_acid,
@@ -352,12 +361,14 @@
 	if(!most_recent_ability || (most_recent_ability.cooldown_timer_id == TIMER_ID_NULL))
 		return FALSE
 	most_recent_ability.end_cooldown()
+	most_recent_ability.owner.balloon_alert_to_viewers("dilates time for [most_recent_ability.name]")
+	most_recent_ability = null
 	return TRUE
 
 /datum/moba_item/rare/thornmail
 	name = "Piercing Spines"
 	description = "<br><b>Spiked</b><br>When you take damage from an attack, deal 15 (+60% Armor) physical damage to whoever attacked you and apply healing disruption for 3.5 seconds."
-	icon_state = "red"
+	icon_state = "piercing_spines"
 	gold_cost = MOBA_GOLD_PER_MINUTE * 3
 	unique = TRUE
 	component_items = list(

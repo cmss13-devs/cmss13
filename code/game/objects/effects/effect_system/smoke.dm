@@ -594,7 +594,10 @@
 		return FALSE
 
 	affected_mob.last_damage_data = cause_data
-	affected_mob.apply_status_effect(/datum/status_effect/poisoned, poison_dot, penetration)
+	var/mob/living/cause
+	if(cause_data?.weak_mob)
+		cause = cause_data.weak_mob.resolve()
+	affected_mob.apply_status_effect(/datum/status_effect/poisoned, poison_dot, penetration, cause)
 	return TRUE
 
 //Xeno neurotox smoke.

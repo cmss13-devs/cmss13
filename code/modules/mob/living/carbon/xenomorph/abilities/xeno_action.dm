@@ -61,6 +61,7 @@
 	if(!owner)
 		return FALSE
 	track_xeno_ability_stats()
+	SEND_SIGNAL(owner, COMSIG_XENO_USE_XENO_ACTION, src)
 	for(var/datum/action/action in owner.actions)
 		action.update_button_icon()
 	return TRUE

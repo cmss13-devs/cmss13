@@ -119,7 +119,7 @@
 /datum/component/moba_player/RegisterWithParent()
 	..()
 	RegisterSignal(parent_xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_qdel))
-	RegisterSignal(parent_xeno, COMSIG_XENO_BULLET_ACT, PROC_REF(on_bullet_act))
+	//RegisterSignal(parent_xeno, COMSIG_XENO_BULLET_ACT, PROC_REF(on_bullet_act))
 	RegisterSignal(parent_xeno, list(COMSIG_XENO_ALIEN_ATTACK, COMSIG_MOB_ALIEN_ATTACK), PROC_REF(on_attack))
 	RegisterSignal(parent_xeno, COMSIG_XENO_ALIEN_ATTACKED, PROC_REF(on_attacked))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GIVE_XP, PROC_REF(grant_xp))
@@ -206,7 +206,7 @@
 	player_datum = null
 
 /// If the bullet is acidic, we don't use the value gotten from armor and instead use the acid_armor value
-/datum/component/moba_player/proc/on_bullet_act(mob/living/carbon/xenomorph/acting_xeno, list/damage_result, pre_mitigation_damage, ammo_flags, obj/projectile/acting_projectile)
+/*datum/component/moba_player/proc/on_bullet_act(mob/living/carbon/xenomorph/acting_xeno, list/damage_result, pre_mitigation_damage, ammo_flags, obj/projectile/acting_projectile)
 	SIGNAL_HANDLER
 
 	if((acting_projectile.ammo.flags_ammo_behavior|acting_projectile.projectile_override_flags) & AMMO_ACIDIC)
@@ -217,7 +217,7 @@
 			parent_xeno.acid_armor + parent_xeno.acid_armor_buff - parent_xeno.acid_armor_debuff,
 			acting_projectile.ammo.penetration,
 			//zonenote modify this if we ever add armor integrity for acid armor
-		)
+		)*/
 		//SEND_SIGNAL(parent_xeno, COMSIG_XENO_HIT_ACID)
 
 /datum/component/moba_player/proc/on_attack(datum/source, mob/living/carbon/xenomorph/attacking, damage)

@@ -54,3 +54,5 @@
 
 /// (mob/living/stunned)
 #define COMSIG_MOBA_STUN_GIVEN "moba_stun_given"
+
+#define COMSIG_MOBA_ACID_DAMAGE_DEALT "moba_acid_damage_dealt"

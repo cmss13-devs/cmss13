@@ -216,6 +216,9 @@
 		ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 		player.set_tied_xeno(xeno)
+		xeno.play_screen_text("You have been assigned to [player_data.role].")
+		if(player_data.role == MOBA_LANE_SUPPORT) //zonenote should be redone later
+			ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
 
 	for(var/datum/moba_queue_player/player_data as anything in team2_data)
 		var/datum/moba_player/player = player_data.player
@@ -229,6 +232,9 @@
 		ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)
 		player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 		player.set_tied_xeno(xeno)
+		xeno.play_screen_text("You have been assigned to [player_data.role].")
+		if(player_data.role == MOBA_LANE_SUPPORT)
+			ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
 
 	start_game()
 	return TRUE
@@ -331,6 +337,8 @@
 	if(player_datum.tied_client)
 		player_datum.get_tied_xeno().play_screen_text("You have died. You will respawn in [respawn_time * 0.1] seconds.", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
 	addtimer(CALLBACK(src, PROC_REF(spawn_xeno), player_datum), respawn_time)
+	message_team1("[player_datum.get_tied_xeno().real_name] has died and will respawn in [respawn_time * 0.1] seconds.")
+	message_team2("[player_datum.get_tied_xeno().real_name] has died and will respawn in [respawn_time * 0.1] seconds.")
 
 /datum/moba_controller/proc/spawn_xeno(datum/moba_player/player_datum)
 	var/datum/moba_queue_player/found_playerdata
@@ -350,6 +358,9 @@
 	var/datum/component/moba_player/player_comp = xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, TRUE)
 	xeno.got_evolution_message = TRUE
 	ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
+	ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)
+	if(found_playerdata.role == MOBA_LANE_SUPPORT)
+		ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
 	found_playerdata.player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 
 	qdel(found_playerdata.player.get_tied_xeno())

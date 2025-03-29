@@ -1,46 +1,45 @@
-@use 'sass:color';
 @use 'sass:map';
 
-$background: #131313;
-$button: #1f1f1f;
-$lightMode: #ffffff;
-$lightBorder: #bbbbbb;
-$lightHover: #eaeaea;
+$background: hsl(0, 0%, 7.5%);
+$button: hsl(0, 0%, 12.2%);
+$lightMode: hsl(0, 0%, 100%);
+$lightBorder: hsl(0, 0%, 73.3%);
+$lightHover: hsl(0, 0%, 91.8%);
 $scrollbar-color-multiplier: 1 !default;
 
 ////////////////////////////////////////////////
 // Normal chat colors
-$say: #a4bad6;
-$comms: #b4b4b4;
-$me: #5975da;
-$ooc: #1c52f5;
-$looc: #e362b4;
-$mentor: #b5850d;
-$asay: #74471b;
+$say: hsl(214, 38%, 74%);
+$comms: hsl(0, 0%, 71%);
+$me: hsl(227, 64%, 60%);
+$ooc: hsl(225, 92%, 54%);
+$looc: hsl(322, 70%, 64%);
+$mentor: hsl(43, 87%, 38%);
+$asay: hsl(30, 62%, 28%);
 
 ////////////////////////////////////////////////
 // Subchannel chat colors
-$highcom: #318779;
-$command: #779cc2;
-$engi: #a66300;
-$hive: #855d85;
-$medsci: #008160;
-$security: #a52929;
-$req: #ba8e41;
-$alpha: #db2626;
-$bravo: #c68610;
-$charlie: #aa55aa;
-$delta: #007fcf;
-$echo: #3eb489;
-$foxtrot: #ad6d48;
-$jtac: #ad3b98;
-$wy: #fe9b24;
-$cct: #4dc5ce;
-$intel: #027d02;
-$pmc: #4dc5ce;
-$clf: #8e83ca;
-$upp: #8f4a4b;
-$colony: #993399;
+$highcom: hsl(170, 47%, 36%);
+$command: hsl(210, 38%, 61%);
+$engi: hsl(36, 100%, 33%);
+$hive: hsl(300, 18%, 44%);
+$medsci: hsl(165, 100%, 25%);
+$security: hsl(0, 60%, 40%);
+$req: hsl(38, 48%, 49%);
+$alpha: hsl(0, 72%, 50%);
+$bravo: hsl(39, 85%, 42%);
+$charlie: hsl(300, 33%, 50%);
+$delta: hsl(203, 100%, 41%);
+$echo: hsl(158, 49%, 47%);
+$foxtrot: hsl(22, 41%, 48%);
+$jtac: hsl(311, 49%, 45%);
+$wy: hsl(33, 99%, 57%);
+$cct: hsl(184, 57%, 55%);
+$intel: hsl(120, 97%, 25%);
+$pmc: hsl(184, 57%, 55%);
+$clf: hsl(249, 40%, 65%);
+$upp: hsl(359, 32%, 43%);
+$colony: hsl(300, 50%, 40%);
 
 $_channel_map: (
   'say': $say,
@@ -95,7 +94,7 @@ $channel_keys: map.keys($_channel_map) !default;
 $channel-map: ();
 
 @each $channel in $channel_keys {
-  $channel-map: map-merge(
+  $channel-map: map.merge(
     $channel-map,
     (
       $channel: map.get($_channel_map, $channel),

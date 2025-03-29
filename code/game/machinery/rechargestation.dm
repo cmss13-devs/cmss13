@@ -1,6 +1,6 @@
 /obj/structure/machinery/recharge_station
 	name = "synthetic maintenance station"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/machinery/synth_charger.dmi'
 	icon_state = "borgcharger0"
 	desc = "A Synthetic Maintenance Station designed to recharge, repair and maintain various sizes of artificial people. Simply place the synthetic or android in need of repair in here and they will be fixed up in no time!"
 	density = TRUE

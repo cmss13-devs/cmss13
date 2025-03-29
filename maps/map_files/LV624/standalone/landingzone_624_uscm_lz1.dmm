@@ -1,0 +1,3388 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"af" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/warning/southeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"bt" = (
+/obj/item/device/multitool,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"bz" = (
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"bA" = (
+/obj/structure/flora/jungle/planttop1,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"bM" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Robotics Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"bQ" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_jungle)
+"ca" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"cm" = (
+/obj/structure/bed/chair/comfy/beige,
+/turf/open/floor/whiteyellowcorner/east,
+/area/lv624/lazarus/corporate_dome)
+"cC" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"cD" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"cP" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/whiteyellow/southwest,
+/area/lv624/lazarus/corporate_dome)
+"di" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"dr" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"dx" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"dL" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"eg" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Robotics Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"el" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/corporate_dome)
+"en" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2,
+/turf/open/gm/dirt,
+/area/lv624/landing/console2)
+"fY" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"gm" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"gq" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Corporation Office"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"gr" = (
+/obj/structure/safe{
+	spawnkey = 0
+	},
+/obj/item/coin/diamond,
+/obj/item/m_gift,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
+/obj/item/clothing/under/marine/veteran/pmc,
+/obj/item/storage/fancy/cigar,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"gF" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"gL" = (
+/obj/structure/prop/mech/tesla_energy_relay{
+	layer = 2.5
+	},
+/obj/structure/largecrate/random,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"gO" = (
+/turf/open/floor/whiteyellow/west,
+/area/lv624/lazarus/corporate_dome)
+"gP" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/lv624/lazarus/landing_zones/lz2)
+"gV" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Corporate Liaison"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"hi" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Workshop Storage";
+	req_one_access = null
+	},
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"hj" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"ht" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/landing_zones/lz2)
+"hv" = (
+/obj/structure/computerframe,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"hL" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_y = 8
+	},
+/obj/item/folder/yellow{
+	pixel_y = 4
+	},
+/obj/item/folder/red,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/east,
+/area/lv624/lazarus/corporate_dome)
+"hQ" = (
+/obj/item/storage/fancy/cigarettes/emeraldgreen,
+/turf/open/floor/whitebluecorner/east,
+/area/lv624/lazarus/corporate_dome)
+"ia" = (
+/obj/item/storage/firstaid/adv/empty,
+/obj/structure/machinery/door_control{
+	id = "secure_outer_blast";
+	name = "Secure Outer Doors";
+	pixel_x = 25;
+	pixel_y = -5
+	},
+/obj/structure/transmitter/colony_net{
+	phone_category = "Lazarus Landing";
+	phone_color = "blue";
+	phone_id = "Corporate Office";
+	pixel_y = 24
+	},
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"in" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"ix" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper LZ2 Access";
+	req_one_access = null
+	},
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz2)
+"iH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/smg/mp5,
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"iI" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"jj" = (
+/obj/item/ammo_magazine/smg/mp5,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"jk" = (
+/obj/structure/machinery/cm_vending/sorted/tech/robotics,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"jr" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"jw" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"jy" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"kf" = (
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"ki" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"kj" = (
+/turf/open/floor/warning,
+/area/lv624/lazarus/landing_zones/lz2)
+"kk" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"kI" = (
+/obj/structure/largecrate/random,
+/obj/item/storage/fancy/crayons{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"lb" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"lm" = (
+/obj/structure/closet/crate/supply,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/area/lv624/lazarus/landing_zones/lz2)
+"lp" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Robotics Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/robotics)
+"lz" = (
+/obj/structure/sign/prop1,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/landing_zones/lz2)
+"lL" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"lM" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/warnplate/west,
+/area/lv624/lazarus/robotics)
+"mi" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"mr" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"mx" = (
+/obj/structure/barricade/metal{
+	dir = 8;
+	health = 70
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"mF" = (
+/turf/open/floor/whiteyellowcorner/east,
+/area/lv624/lazarus/corporate_dome)
+"mI" = (
+/obj/structure/dispenser/oxygen,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"nc" = (
+/turf/template_noop,
+/area/template_noop)
+"nh" = (
+/turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/west_jungle)
+"nl" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"nq" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"nu" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	health = 10;
+	is_wired = 1
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"nw" = (
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"nB" = (
+/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"nQ" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"oa" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"oi" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 6
+	},
+/obj/item/storage/toolbox/electrical,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
+"om" = (
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"ot" = (
+/turf/open/floor/plating/warnplate,
+/area/lv624/lazarus/robotics)
+"oZ" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"pe" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"pm" = (
+/obj/structure/showcase,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"pr" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/lv624/lazarus/landing_zones/lz2)
+"pt" = (
+/turf/open/floor/plating/asteroidwarning,
+/area/lv624/lazarus/landing_zones/lz2)
+"pu" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"pv" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/flora/jungle/vines/heavy,
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/flora/jungle/planttop1,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"pK" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"pZ" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"qw" = (
+/turf/open/floor/warning/northwest,
+/area/lv624/lazarus/landing_zones/lz2)
+"qD" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"qG" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"re" = (
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/corporate_dome)
+"rp" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"ru" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/clothing/shoes/dress,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"rv" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"ry" = (
+/obj/structure/prop/mech/armor_booster,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"rE" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"rI" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/obj/structure/prop/mech/hydralic_clamp,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"rK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/westright{
+	dir = 2;
+	layer = 2.9
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"rL" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"rV" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"rW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"sy" = (
+/obj/structure/lz_sign/lazarus_sign{
+	layer = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"sC" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"th" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"tv" = (
+/obj/structure/bookcase/manuals/medical,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"tC" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/lv624/lazarus/landing_zones/lz2)
+"tF" = (
+/obj/structure/largecrate,
+/obj/structure/prop/mech/parts/gygax_armor{
+	layer = 1
+	},
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"tO" = (
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"ui" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Corporation Dome"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"um" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"ur" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/warnplate/east,
+/area/lv624/lazarus/robotics)
+"uB" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"vD" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	health = 10;
+	is_wired = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"vU" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"vW" = (
+/turf/open/floor/plating/asteroidwarning/southwest,
+/area/lv624/lazarus/landing_zones/lz2)
+"vY" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Robotics Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/robotics)
+"wG" = (
+/obj/item/stool,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"wP" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/lv624/lazarus/robotics)
+"xe" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	locked = 1;
+	name = "\improper Storage Room"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"xq" = (
+/obj/effect/landmark/xeno_hive_spawn,
+/obj/effect/landmark/ert_spawns/groundside_xeno,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/lv624/lazarus/landing_zones/lz2)
+"xX" = (
+/obj/structure/surface/table,
+/obj/item/weapon/gun/pistol/holdout,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"yg" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/corporate_dome)
+"yx" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"yE" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"zn" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Workshop Storage";
+	req_one_access = null
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"zw" = (
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"zE" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"zM" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/warnplate,
+/area/lv624/lazarus/robotics)
+"zR" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"zS" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	icon_state = "door_open";
+	name = "\improper Robotics Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"Af" = (
+/turf/closed/wall,
+/area/lv624/lazarus/robotics)
+"Av" = (
+/obj/structure/machinery/door_control{
+	id = "garage_lv";
+	name = "Garage Shutters";
+	pixel_y = -28
+	},
+/turf/open/floor/plating/asteroidwarning,
+/area/lv624/lazarus/landing_zones/lz2)
+"Ax" = (
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"AA" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = 29
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"AD" = (
+/obj/structure/bed/chair/wheelchair{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"AX" = (
+/turf/open/floor/plating/warnplate/east,
+/area/lv624/lazarus/robotics)
+"Bc" = (
+/obj/structure/machinery/landinglight/ds2/delaythree,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"Bs" = (
+/obj/structure/machinery/atm{
+	name = "Weyland-Yutani Automatic Teller Machine";
+	pixel_y = 30
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"BK" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/lazarus/landing_zones/lz2)
+"BM" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_jungle)
+"Cc" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"Cv" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Garage";
+	req_one_access = null
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"Cy" = (
+/turf/open/gm/dirtgrassborder/east,
+/area/lv624/lazarus/landing_zones/lz2)
+"CL" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"CN" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"CU" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper LZ2 Access";
+	req_one_access = null
+	},
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz2)
+"CX" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin/wy{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/clicky,
+/turf/open/floor/whitebluecorner,
+/area/lv624/lazarus/corporate_dome)
+"Dd" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin/wy{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/red/clicky{
+	pixel_y = 6
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"Di" = (
+/obj/structure/largecrate,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"Dp" = (
+/turf/open/floor/plating/asteroidwarning/northeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"Dr" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"DD" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 1
+	},
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"DJ" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8;
+	id = "garage_lv";
+	name = "\improper Garage"
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"DS" = (
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"DY" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"DZ" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"Ei" = (
+/obj/item/stool,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"Et" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	locked = 1;
+	name = "\improper Corporate Liaison"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"EA" = (
+/turf/open/floor/plating/warnplate/north,
+/area/lv624/lazarus/robotics)
+"EB" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"EG" = (
+/obj/structure/prop/mech/parts/gygax_torso,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"EQ" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/robotics)
+"ER" = (
+/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"Fd" = (
+/obj/structure/machinery/door_control{
+	id = "garage_lv";
+	name = "Garage Shutters";
+	pixel_x = -28
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"Fh" = (
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/corporate_dome)
+"Fx" = (
+/turf/open/floor/whiteyellow/southwest,
+/area/lv624/lazarus/corporate_dome)
+"FD" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
+/area/lv624/lazarus/landing_zones/lz2)
+"FU" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/landing_zones/lz2)
+"FZ" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv624/lazarus/landing_zones/lz2)
+"Gf" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"GH" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/landing_zones/lz2)
+"GI" = (
+/obj/effect/landmark/good_item,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"GT" = (
+/obj/structure/bookcase,
+/obj/item/book/manual/research_and_development,
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/book/manual/security_space_law,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"GY" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"Ho" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"Hq" = (
+/obj/effect/acid_hole{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"Hu" = (
+/turf/open/floor/plating/asteroidwarning/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"Hv" = (
+/turf/open/floor/warning/southeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"HG" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"HL" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"HN" = (
+/obj/structure/surface/rack,
+/obj/item/moneybag,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"HY" = (
+/turf/open/floor/warning/southwest,
+/area/lv624/lazarus/landing_zones/lz2)
+"Ic" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/weapon/pole/fancy_cane,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Is" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"Iy" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"IF" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/gm/dirtgrassborder/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"IP" = (
+/obj/structure/machinery/landinglight/ds2,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"IQ" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"Js" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Kk" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"Kr" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/warning/east,
+/area/lv624/lazarus/landing_zones/lz2)
+"KO" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
+"Li" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"Lw" = (
+/obj/structure/flora/bush/ausbushes/genericbush,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"Lx" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"LC" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/soap/deluxe{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"LI" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/robotics)
+"LM" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"Mb" = (
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"Mf" = (
+/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"Mg" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"Mk" = (
+/obj/structure/largecrate,
+/obj/structure/prop/mech/repair_droid{
+	layer = 2;
+	pixel_y = -10
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"Mo" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"Mr" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Mt" = (
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_jungle)
+"Mw" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"ME" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"Ni" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whitebluecorner/west,
+/area/lv624/lazarus/corporate_dome)
+"Nl" = (
+/turf/open/floor/whiteyellowcorner/north,
+/area/lv624/lazarus/corporate_dome)
+"No" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = 3
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Nz" = (
+/turf/open/floor/plating/asteroidwarning/east,
+/area/lv624/lazarus/landing_zones/lz2)
+"NJ" = (
+/obj/item/bananapeel,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"NO" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"NW" = (
+/turf/open/floor/whitebluecorner/north,
+/area/lv624/lazarus/corporate_dome)
+"Oc" = (
+/obj/item/clothing/mask/gas,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"Om" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/warning/northwest,
+/area/lv624/lazarus/landing_zones/lz2)
+"Oy" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"OQ" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"OU" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"Pp" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"Ps" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"Pt" = (
+/turf/open/floor/whitebluecorner/east,
+/area/lv624/lazarus/corporate_dome)
+"PJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder/black_random,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/corporate_dome)
+"PK" = (
+/obj/structure/machinery/mecha_part_fabricator,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"PL" = (
+/turf/open/floor/plating/warnplate/west,
+/area/lv624/lazarus/robotics)
+"PO" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"PW" = (
+/obj/structure/largecrate/random,
+/obj/item/clothing/head/soft/ferret{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/warnplate/west,
+/area/lv624/lazarus/robotics)
+"Qb" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"Qf" = (
+/turf/open/floor/plating/asteroidwarning/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"Qh" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"Qk" = (
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"Qq" = (
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/corporate_dome)
+"QO" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/crowbar,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/whiteyellow/northwest,
+/area/lv624/lazarus/corporate_dome)
+"QX" = (
+/obj/structure/surface/table,
+/obj/structure/prop/mech/drill,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"Rg" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"Rn" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"RM" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/showcase,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/corporate_dome)
+"RV" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/west_jungle)
+"Sc" = (
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Sh" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"SF" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
+/area/lv624/lazarus/landing_zones/lz2)
+"SG" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"SQ" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"Te" = (
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"Tj" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"Tl" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/warning/northeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"Tv" = (
+/obj/structure/ore_box,
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"TD" = (
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"TQ" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/warning/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"Uj" = (
+/obj/structure/prop/mech/parts/chassis/gygax,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/robotics)
+"Ul" = (
+/obj/item/storage/firstaid/toxin/empty,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Ut" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp{
+	pixel_x = -7;
+	pixel_y = 15
+	},
+/obj/item/ashtray/glass,
+/obj/item/clothing/mask/cigarette,
+/obj/item/clothing/mask/cigarette{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"UE" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/warning/northeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"UF" = (
+/turf/open/gm/dirtgrassborder/south,
+/area/lv624/lazarus/landing_zones/lz2)
+"UN" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"UO" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"UV" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/vault2,
+/area/lv624/lazarus/robotics)
+"Va" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/corporate_dome)
+"Vg" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/lv624/lazarus/landing_zones/lz2)
+"Wc" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/adv,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"Xb" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+"Xh" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"Xk" = (
+/obj/structure/computerframe,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/platebot,
+/area/lv624/lazarus/robotics)
+"Xl" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Robotics Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/robotics)
+"Xr" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/showcase,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"Xs" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"XC" = (
+/turf/open/gm/dirtgrassborder/west,
+/area/lv624/lazarus/landing_zones/lz2)
+"XD" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/whiteyellow/east,
+/area/lv624/lazarus/corporate_dome)
+"XI" = (
+/turf/open/floor/plating/asteroidwarning/southeast,
+/area/lv624/lazarus/landing_zones/lz2)
+"XX" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/plating/asteroidwarning,
+/area/lv624/lazarus/landing_zones/lz2)
+"Ye" = (
+/obj/structure/showcase,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"Yi" = (
+/obj/effect/landmark/objective_landmark/far,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz2)
+"Yq" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"YI" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"YK" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"Zk" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_west_jungle)
+"ZN" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"ZP" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/lazarus/landing_zones/lz2)
+"ZU" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/landing_zones/lz2)
+
+(1,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+RV
+Mt
+Mt
+Mt
+bQ
+bQ
+Mt
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+"}
+(2,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+Mt
+Mt
+Mt
+nh
+Mt
+BM
+bQ
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+"}
+(3,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+ht
+ht
+nc
+nc
+nc
+nc
+nc
+nc
+ht
+nc
+ht
+ht
+nc
+nc
+nc
+ht
+ht
+nc
+nc
+Ax
+qw
+tO
+HY
+Iy
+hj
+yE
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+"}
+(4,1,1) = {"
+nc
+nc
+nc
+nc
+ht
+ht
+ht
+ht
+ht
+nc
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+ht
+FU
+lz
+pZ
+ix
+pZ
+FU
+FU
+ht
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+"}
+(5,1,1) = {"
+nc
+nc
+nc
+nc
+ht
+ht
+nQ
+ht
+ht
+ht
+ht
+nQ
+ht
+ht
+ht
+hj
+hj
+ht
+ht
+ht
+ht
+hj
+ht
+FU
+Mg
+Tl
+Kr
+af
+Yi
+FU
+ht
+ht
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+"}
+(6,1,1) = {"
+nc
+nc
+nc
+nc
+ht
+nQ
+Ax
+Ax
+fY
+Ax
+nQ
+nQ
+Ax
+Ax
+nQ
+hj
+nQ
+nQ
+Ax
+Ax
+nQ
+nQ
+nQ
+Ax
+Xs
+nQ
+nQ
+Ax
+Ax
+Ax
+nQ
+ht
+ht
+ht
+ht
+nc
+nc
+nc
+nc
+nc
+"}
+(7,1,1) = {"
+nc
+nc
+nc
+nc
+ht
+Ax
+FZ
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+Li
+FZ
+XC
+XC
+XC
+XC
+XC
+IF
+XC
+XC
+XC
+XC
+FU
+FU
+FU
+FU
+nc
+nc
+nc
+nc
+nc
+"}
+(8,1,1) = {"
+nc
+nc
+nc
+nc
+ht
+nQ
+BK
+Hu
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+CL
+Qf
+Qf
+Qf
+Qf
+Qf
+Qf
+aa
+vW
+FZ
+FU
+nc
+nc
+nc
+nc
+nc
+"}
+(9,1,1) = {"
+nc
+nc
+nc
+nc
+ht
+nQ
+BK
+Hu
+Mw
+Rn
+Qh
+ZU
+jr
+Rn
+Qh
+ZU
+jr
+Rn
+Qh
+ZU
+jr
+Rn
+Qh
+ZU
+jr
+Rn
+Qh
+ZU
+jr
+Rn
+Mw
+Mw
+pt
+FU
+FU
+nc
+nc
+nc
+nc
+nc
+"}
+(10,1,1) = {"
+nc
+nc
+nc
+nc
+ht
+Ax
+BK
+Hu
+Xb
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+DD
+Mw
+pt
+FU
+ht
+nc
+nc
+nc
+nc
+nc
+"}
+(11,1,1) = {"
+nc
+nc
+nc
+ht
+GH
+Ax
+BK
+Hu
+IP
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+oZ
+Mw
+jy
+SG
+pt
+FU
+ht
+GY
+Zk
+bA
+OU
+nc
+"}
+(12,1,1) = {"
+nc
+nc
+ht
+ht
+hj
+nQ
+BK
+Hu
+Bc
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+HG
+Mw
+pt
+FU
+FU
+Ax
+Js
+om
+om
+nc
+"}
+(13,1,1) = {"
+nc
+nc
+ht
+ht
+ht
+nQ
+BK
+Hu
+Oy
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Pp
+Mw
+pt
+Om
+lz
+HY
+om
+Dr
+om
+nc
+"}
+(14,1,1) = {"
+nc
+nc
+nc
+ht
+ht
+Ax
+BK
+Hu
+Xb
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+rV
+Mw
+pt
+TQ
+CU
+kj
+om
+om
+om
+nc
+"}
+(15,1,1) = {"
+nc
+nc
+ht
+ht
+nQ
+Ax
+BK
+Hu
+IP
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+oZ
+Mw
+Mw
+nc
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+jy
+Mw
+XX
+pK
+pZ
+kj
+om
+om
+om
+nc
+"}
+(16,1,1) = {"
+nc
+nc
+ht
+ht
+hj
+nQ
+BK
+Hu
+Bc
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+HG
+Mw
+pt
+TQ
+CU
+kj
+Mr
+om
+EB
+nc
+"}
+(17,1,1) = {"
+nc
+nc
+ht
+ht
+ht
+nQ
+BK
+Hu
+Oy
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+oZ
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Pp
+SG
+pt
+UE
+FU
+Hv
+om
+om
+om
+nc
+"}
+(18,1,1) = {"
+nc
+nc
+ht
+ht
+nQ
+Ax
+BK
+Hu
+Xb
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+rV
+Mw
+pt
+FU
+FU
+nc
+nc
+nc
+nc
+nc
+"}
+(19,1,1) = {"
+nc
+nc
+ht
+ht
+Ax
+Ax
+BK
+Hu
+IP
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+oZ
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+jy
+Mw
+pt
+FU
+ht
+nc
+nc
+nc
+nc
+nc
+"}
+(20,1,1) = {"
+nc
+nc
+ht
+ht
+nQ
+Ax
+BK
+Hu
+Bc
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Mw
+Tj
+Mw
+HG
+Mw
+pt
+FU
+ht
+nc
+nc
+nc
+nc
+nc
+"}
+(21,1,1) = {"
+nc
+nc
+ht
+hj
+hj
+nQ
+BK
+Hu
+Mw
+qD
+PO
+Qb
+dr
+qD
+PO
+Qb
+dr
+qD
+PO
+Qb
+dr
+qD
+PO
+Qb
+dr
+qD
+PO
+Qb
+dr
+qD
+Mw
+Mw
+pt
+FU
+ht
+ht
+nc
+nc
+nc
+nc
+"}
+(22,1,1) = {"
+nc
+ht
+ht
+ht
+nQ
+Ax
+BK
+Dp
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+xq
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+Nz
+XI
+FU
+FU
+ht
+nc
+nc
+nc
+nc
+"}
+(23,1,1) = {"
+nc
+ht
+ht
+ht
+hj
+nQ
+FZ
+bz
+bz
+bz
+Vg
+Cy
+Cy
+Cy
+Cy
+Cy
+FZ
+en
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+Hu
+zw
+pt
+bz
+bz
+bz
+bz
+bz
+FZ
+FU
+ht
+nc
+nc
+nc
+nc
+"}
+(24,1,1) = {"
+ht
+ht
+ht
+ht
+ht
+nQ
+BK
+bz
+YI
+bz
+ZP
+Ax
+Ax
+Ax
+Ax
+Ax
+UF
+sy
+bz
+bz
+bz
+bz
+bz
+bz
+bz
+Hu
+jw
+pt
+bz
+lz
+FU
+FU
+FU
+FU
+FU
+ht
+nc
+nc
+nc
+nc
+"}
+(25,1,1) = {"
+nc
+nc
+ht
+ht
+ht
+ht
+BK
+bz
+bz
+bz
+ZP
+uB
+Ax
+Ax
+Lw
+Ax
+UF
+bz
+bz
+bz
+bz
+pr
+Cy
+Cy
+SF
+Hu
+zw
+pt
+FU
+FU
+ht
+ht
+ht
+ht
+ht
+ht
+nc
+nc
+nc
+nc
+"}
+(26,1,1) = {"
+nc
+nc
+nc
+ht
+ht
+ht
+BK
+Sh
+Xh
+Sh
+ZP
+Ax
+Ax
+rE
+Ax
+Ax
+lm
+tC
+Gf
+bz
+bz
+zE
+nq
+Ax
+BK
+Hu
+zw
+Av
+qG
+qG
+qG
+qG
+qG
+qG
+qG
+ht
+nc
+nc
+nc
+nc
+"}
+(27,1,1) = {"
+nc
+nc
+ht
+ht
+ht
+ht
+wP
+LI
+Xl
+LI
+Af
+kk
+kk
+DY
+Ax
+Ax
+Ax
+UF
+bz
+bz
+bz
+zE
+mr
+uB
+qG
+DJ
+DJ
+DJ
+qG
+in
+Qk
+Qk
+in
+qG
+qG
+qG
+qG
+qG
+nc
+nc
+"}
+(28,1,1) = {"
+nc
+nc
+Af
+wP
+wP
+wP
+wP
+PW
+PL
+lM
+Af
+LI
+LI
+LI
+Af
+uB
+Ax
+UF
+bz
+oa
+Gf
+zE
+rW
+Ax
+qG
+Qk
+Qk
+Qk
+Fd
+Qk
+Qk
+Qk
+Qk
+qG
+Ps
+gF
+kI
+qG
+nc
+nc
+"}
+(29,1,1) = {"
+nc
+nc
+LI
+TD
+xX
+hv
+Af
+Kk
+kf
+nw
+Af
+gL
+tF
+iI
+LI
+nu
+Ax
+UF
+YI
+bz
+bz
+zE
+Ax
+Ax
+qG
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+Qk
+zn
+Te
+Te
+Te
+qG
+nc
+nc
+"}
+(30,1,1) = {"
+nc
+nc
+LI
+lL
+wG
+TD
+bM
+UV
+kf
+nw
+bM
+TD
+HL
+iI
+LI
+nu
+Ax
+UF
+bz
+bz
+bz
+zE
+Ax
+uB
+qG
+Qk
+Rg
+Qk
+Qk
+Rg
+AA
+Qk
+ca
+qG
+LC
+UO
+Te
+qG
+nc
+nc
+"}
+(31,1,1) = {"
+nc
+nc
+LI
+jk
+TD
+zR
+Af
+bt
+kf
+rL
+Af
+Mk
+TD
+Di
+LI
+nu
+Ax
+UF
+bz
+bz
+bz
+gP
+Li
+qG
+qG
+qG
+qG
+qG
+qG
+qG
+qG
+Cv
+qG
+qG
+qG
+qG
+hi
+qG
+qG
+nc
+"}
+(32,1,1) = {"
+nc
+Af
+Af
+Af
+eg
+Af
+Af
+Oc
+kf
+ki
+Af
+Af
+eg
+Af
+Af
+Af
+Li
+FD
+bz
+UN
+bz
+bz
+bz
+qG
+ER
+ZN
+iH
+Mf
+qG
+Ye
+NW
+cC
+Ni
+Xr
+qG
+Bs
+Mb
+lb
+qG
+nc
+"}
+(33,1,1) = {"
+nc
+LI
+EA
+nw
+dL
+OQ
+nw
+nw
+kf
+nw
+nw
+nw
+gm
+nw
+zM
+LI
+vD
+UN
+bz
+bz
+bz
+NJ
+bz
+ui
+Sc
+Sc
+Sc
+Sc
+ui
+Sc
+Sc
+Sc
+Sc
+Sc
+ui
+Sc
+Sc
+NO
+ui
+nc
+"}
+(34,1,1) = {"
+nc
+vY
+EA
+kf
+kf
+vU
+kf
+GI
+PK
+Uj
+kf
+yx
+kf
+kf
+ot
+vY
+ME
+bz
+bz
+bz
+bz
+bz
+bz
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+Sc
+NO
+Sc
+nc
+"}
+(35,1,1) = {"
+nc
+LI
+EA
+nw
+nw
+nw
+gm
+EG
+kf
+nw
+nw
+pu
+nw
+DZ
+ot
+LI
+vD
+Sh
+Sh
+bz
+Sh
+Sh
+Xh
+qG
+di
+KO
+KO
+nB
+qG
+pm
+Pt
+Sc
+Sc
+RM
+qG
+Cc
+oi
+Ho
+qG
+nc
+"}
+(36,1,1) = {"
+nc
+Af
+Af
+Af
+eg
+Af
+Af
+cD
+kf
+dL
+Af
+Af
+zS
+Af
+EQ
+EQ
+FU
+Mw
+Mw
+lz
+Mw
+Mw
+Mw
+qG
+qG
+qG
+qG
+qG
+qG
+qG
+qG
+Sc
+gq
+qG
+qG
+qG
+qG
+qG
+qG
+nc
+"}
+(37,1,1) = {"
+nc
+nc
+LI
+ry
+TD
+mI
+Af
+pe
+kf
+rv
+Af
+Xk
+TD
+Tv
+LI
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+qG
+th
+Mb
+Yq
+SQ
+Sc
+Sc
+dx
+qG
+HN
+HN
+qG
+nc
+nc
+"}
+(38,1,1) = {"
+nc
+nc
+LI
+TD
+HL
+TD
+bM
+nw
+kf
+nw
+bM
+TD
+Ei
+iI
+LI
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+qG
+jj
+NW
+Sc
+Va
+rK
+Sc
+Sc
+Sc
+xe
+DS
+AD
+qG
+nc
+nc
+"}
+(39,1,1) = {"
+nc
+nc
+LI
+TD
+lL
+Lx
+Af
+Is
+mi
+QX
+Af
+rI
+lL
+iI
+LI
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+ru
+NW
+Sc
+Sc
+PJ
+SQ
+Sc
+Sc
+LM
+qG
+Wc
+nl
+qG
+nc
+nc
+"}
+(40,1,1) = {"
+nc
+nc
+Af
+LI
+LI
+LI
+Af
+ur
+AX
+AX
+Af
+LI
+LI
+LI
+Af
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+GT
+hQ
+Sc
+CX
+Ut
+qG
+Sc
+gq
+qG
+qG
+qG
+qG
+um
+nc
+nc
+"}
+(41,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+Af
+LI
+lp
+LI
+Af
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+qG
+Hq
+Et
+qG
+qG
+qG
+mx
+Sc
+el
+gO
+cP
+YK
+nc
+nc
+nc
+"}
+(42,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+QO
+Nl
+Sc
+Fh
+Fx
+SQ
+Sc
+Sc
+Sc
+Sc
+yg
+pv
+nc
+nc
+nc
+"}
+(43,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+gr
+mF
+Sc
+No
+re
+SQ
+Sc
+Sc
+Ul
+Qq
+CN
+Mo
+nc
+nc
+nc
+"}
+(44,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+qG
+ia
+cm
+Ic
+Sc
+gV
+Sc
+Sc
+Qq
+tv
+IQ
+sC
+nc
+nc
+nc
+"}
+(45,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+qG
+Dd
+hL
+XD
+SQ
+XD
+XD
+rp
+IQ
+IQ
+nc
+nc
+nc
+nc
+"}
+(46,1,1) = {"
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+nc
+qG
+SQ
+SQ
+SQ
+qG
+SQ
+SQ
+SQ
+IQ
+nc
+nc
+nc
+nc
+nc
+"}

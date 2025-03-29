@@ -228,6 +228,8 @@
 	if(landing_lights)
 		landing_lights.Cut()
 	landing_lights = null // We didn't make them, so lets leave them
+	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/flight_console in GLOB.machines)
+		flight_console.compatible_landing_zones -= src
 
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()

@@ -14,6 +14,7 @@ import './styles/themes/crt/crt-green.scss';
 import './styles/themes/crt/crt-lobby.scss';
 import './styles/themes/crt/crt-lobby-red.scss';
 import './styles/themes/crt/crt-red.scss';
+import './styles/themes/crt/crt-white.scss';
 import './styles/themes/crt/crt-upp.scss';
 import './styles/themes/crt/crt-yellow.scss';
 import './styles/themes/spookyconsole.scss';

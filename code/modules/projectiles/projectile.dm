@@ -1323,6 +1323,13 @@
 
 	accuracy = HIT_ACCURACY_TIER_2 // flat 10% chance if you're desperate and try to fire this thing without a bipod
 
+/obj/projectile/pill
+	var/obj/item/reagent_container/pill/source_pill
+
+/obj/projectile/pill/Destroy()
+	. = ..()
+	source_pill = null
+
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE
 #undef DEBUG_XENO_DEFENSE

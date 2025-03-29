@@ -105,6 +105,10 @@
 	var/armor_variation = 0
 	/// The dmi where the grayscale squad overlays are contained
 	var/squad_overlay_icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	/// Icon state of the on-armor lamp
+	var/lamp_icon = "lamp"
+	/// Icon state of the on-armor lamp
+	var/lamp_light_color = LIGHT_COLOR_TUNGSTEN
 
 	var/atom/movable/marine_light/light_holder
 
@@ -143,9 +147,9 @@
 	armor_overlays["lamp"] = null
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_marine_armor & ARMOR_LAMP_ON)
-			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "lamp-on")
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "[lamp_icon]-on")
 		else
-			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "lamp-off")
+			I = image('icons/obj/items/clothing/suits/misc_ert.dmi', src, "[lamp_icon]-off")
 		armor_overlays["lamp"] = I
 		overlays += I
 	else
@@ -217,12 +221,14 @@
 		return
 	set_light_range(initial(light_range))
 	set_light_power(floor(initial(light_power) * 0.5))
+	set_light_color(lamp_light_color)
 	set_light_on(toggle_on)
 	flags_marine_armor ^= ARMOR_LAMP_ON
 
 	light_holder.set_light_flags(LIGHT_ATTACHED)
 	light_holder.set_light_range(initial(light_range))
 	light_holder.set_light_power(initial(light_power))
+	light_holder.set_light_color(initial(light_color))
 	light_holder.set_light_on(toggle_on)
 
 	if(!toggle_on)

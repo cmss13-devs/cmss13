@@ -1432,6 +1432,11 @@
 /obj/item/weapon/gun/rifle/lmg/tactical/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2//equal to m41a dmg
+
+/obj/item/weapon/gun/rifle/lmg/army
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip)
+	current_mag = /obj/item/ammo_magazine/rifle/lmg/heap
+
 //-------------------------------------------------------
 
 

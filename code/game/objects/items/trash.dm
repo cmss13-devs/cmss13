@@ -81,6 +81,10 @@
 	gender = PLURAL
 	icon_state= "4no_raisins"
 
+/obj/item/trash/semki
+	name = "Semki pack"
+	icon_state = "semki_pack"
+
 /obj/item/trash/sosjerky
 	name = "Scaredy's Private Reserve Beef Jerky"
 	icon_state = "sosjerky"

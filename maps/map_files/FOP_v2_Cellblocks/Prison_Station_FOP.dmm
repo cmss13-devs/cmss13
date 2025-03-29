@@ -33687,7 +33687,7 @@
 "gFN" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/antag,
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = 9;
 	pixel_y = 15
 	},

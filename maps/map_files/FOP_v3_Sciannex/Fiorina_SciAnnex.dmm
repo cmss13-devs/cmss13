@@ -2845,7 +2845,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "cfU" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "cfX" = (
@@ -8824,7 +8824,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "gSC" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/prison,
 /area/fiorina/maintenance)
 "gSK" = (
@@ -12829,7 +12829,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/telecomm/lz1_cargo)
 "jTo" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/station/medbay)
 "jTD" = (
@@ -14292,7 +14292,7 @@
 /obj/structure/toilet{
 	pixel_y = 4
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = 2;
 	pixel_y = 25
 	},
@@ -26607,7 +26607,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "uvc" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "uvn" = (

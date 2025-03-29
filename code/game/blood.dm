@@ -76,6 +76,7 @@
 	blood_color = null
 	if(blood_overlay)
 		overlays.Remove(blood_overlay)
+		blood_overlay = null // so guns will actually be cleaned of blood
 	return 1
 
 /obj/item/clothing/gloves/clean_blood()

@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "raised the timer of techwebs nuke to 3 minutes and made it uncancelable, nuke autotriggers after decryption is finished."

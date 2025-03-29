@@ -24,7 +24,7 @@
 	// vars below related to converting clothing to accessories
 	var/can_become_accessory = FALSE //can this clothing item be turned into an accessory?
 	var/slot = ACCESSORY_SLOT_DECOR //default slot for accessories, pathed here for use for non-accessories
-	var/accessory_path = "/obj/item/clothing/accessory"
+	var/accessory_path = /obj/item/clothing/accessory // for pathing to different accessory subtypes with unique mechanics
 
 /obj/item/clothing/proc/convert_to_accessory()
 	if(!can_become_accessory)
@@ -38,7 +38,7 @@
 	new_accessory.icon_state = icon_state
 	new_accessory.desc = desc
 	var/list/accessory_icons = item_icons ? item_icons.Copy() : list()
-	if(accessory_icons[WEAR_FACE])
+	if(accessory_icons[WEAR_FACE]) // this is really hacky, will probably need to change it in the future for dynamic implementations
 		accessory_icons[WEAR_JACKET] = accessory_icons[WEAR_FACE]
 		accessory_icons[WEAR_BODY] = accessory_icons[WEAR_FACE]
 	new_accessory.accessory_icons = accessory_icons

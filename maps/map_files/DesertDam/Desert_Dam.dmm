@@ -263,7 +263,7 @@
 "abd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abe" = (
@@ -21585,7 +21585,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYy" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -21699,7 +21699,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYY" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /obj/item/trash/raisins,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -43030,7 +43030,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "iqs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "iqv" = (

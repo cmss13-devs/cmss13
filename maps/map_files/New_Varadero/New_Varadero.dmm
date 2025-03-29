@@ -4052,7 +4052,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "dbV" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/eat,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
 "dcC" = (

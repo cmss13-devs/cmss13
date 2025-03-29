@@ -28007,7 +28007,7 @@
 /area/corsat/sigma/biodome)
 "ejD" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},

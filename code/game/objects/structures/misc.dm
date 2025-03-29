@@ -329,7 +329,7 @@
 		actual_turf = SSmapping.get_turf_above(target_turf)
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
-	
+
 	if(actual_turf)
 		if(istype(mover, /mob))
 			var/mob/mover_mob = mover
@@ -346,6 +346,19 @@
 
 /obj/structure/stairs/multiz/down
 	direction = DOWN
+
+/obj/effect/stairs
+	var/direction
+
+/obj/effect/stairs/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "stairs_[direction]")
+
+/obj/effect/stairs/up
+	direction = "up"
+
+/obj/effect/stairs/down
+	direction = "down"
 
 /obj/structure/stairs/perspective //instance these for the required icons
 	icon = 'icons/obj/structures/stairs/perspective_stairs.dmi'

@@ -492,7 +492,7 @@
 		if(embryo && istype(embryo))
 			if(embryo.counter > 0)
 				embryo.counter = embryo.counter - (potency * delta_time)
-				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage

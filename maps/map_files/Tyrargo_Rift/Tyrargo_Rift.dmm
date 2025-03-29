@@ -2415,12 +2415,6 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agP" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
@@ -2433,6 +2427,10 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/central)
 "agQ" = (
@@ -22666,13 +22664,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "bbg" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/north_south)
 "bbh" = (
@@ -25474,7 +25470,13 @@
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/indoors/mall)
 "bgW" = (
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door,
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	id = null;
+	explo_proof = 1;
+	needs_power = 0;
+	unacidable = 1;
+	dir = 2
+	},
 /turf/closed/wall/rock,
 /area/tyrargo/oob)
 "bgX" = (
@@ -36255,11 +36257,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "bEk" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/central)
@@ -40709,13 +40709,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "bPt" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/north)
 "bPu" = (
@@ -46097,17 +46095,15 @@
 /turf/open_space,
 /area/tyrargo/indoors/bunker/north_south)
 "ceC" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/m56d{
 	pixel_x = 3;
 	pixel_y = 10;
 	current_rounds = 9
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/north_south)
@@ -54074,6 +54070,12 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/cleanable/generic,
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "cII" = (
@@ -54326,7 +54328,12 @@
 	health = 999999
 	},
 /obj/structure/blocker/invisible_wall,
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/army_staging)
 "cJj" = (
@@ -60980,6 +60987,105 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/oob)
+"dcx" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -14;
+	pixel_y = -1;
+	layer = 5.93
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/landing_zone_2)
+"dcy" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -15;
+	pixel_y = 2;
+	layer = 5.94
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/landing_zone_2)
+"dcz" = (
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/landing_zone_2)
+"dcA" = (
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/landing_zone_2)
+"dcB" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/landing_zone_2)
+"dcC" = (
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/landing_zone_2)
+"dcD" = (
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/oob)
+"dcE" = (
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 5;
+	light_power = 2
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/army_staging)
 "dcL" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -62282,10 +62388,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "fQa" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4
+	pixel_y = -6
 	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/tyrargo/indoors/bunker/central_south)
@@ -63257,12 +63362,6 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "hFZ" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
@@ -63272,6 +63371,10 @@
 	pixel_y = 5;
 	dir = 8;
 	anchored = 1
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/central_south)
@@ -64385,11 +64488,6 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "koq" = (
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
@@ -64401,6 +64499,10 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/tyrargo/indoors/bunker/central_south)
 "koN" = (
@@ -64807,12 +64909,6 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/tyrargo/indoors/admin/ground)
 "lcu" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/prop{
@@ -64826,6 +64922,10 @@
 	anchored = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/north_south)
 "ldl" = (
@@ -66414,10 +66514,14 @@
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/tyrargo/indoors/apartment/north_upper)
 "ocO" = (
+/obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	id = null;
+	explo_proof = 1;
+	needs_power = 0;
+	unacidable = 1;
 	dir = 4
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "ocS" = (
@@ -68642,12 +68746,6 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "sfx" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/prop{
@@ -68662,6 +68760,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/north)
 "sfz" = (
@@ -71320,13 +71422,11 @@
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "wEx" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4
-	},
 /obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/central_south)
 "wEy" = (
@@ -118232,7 +118332,7 @@ bsJ
 bwu
 bsJ
 bsJ
-bsJ
+dcz
 bsJ
 bsJ
 bsJ
@@ -118252,7 +118352,7 @@ bsJ
 bsJ
 bsX
 bsJ
-bsJ
+dcC
 bsJ
 bsJ
 aSh
@@ -118434,7 +118534,7 @@ bsL
 bsL
 bsL
 bsL
-bsL
+bsN
 bsL
 bsL
 bsN
@@ -118446,7 +118546,7 @@ aRy
 bsL
 bsL
 bsL
-bsL
+dcB
 bsL
 btU
 btr
@@ -118823,8 +118923,8 @@ nLk
 kjp
 bsN
 bsN
-btj
-bsJ
+bsL
+dcA
 bsJ
 bsJ
 bsJ
@@ -124062,7 +124162,7 @@ bsJ
 bsJ
 bsJ
 bsJ
-bsJ
+dcz
 bsJ
 bsJ
 cLi
@@ -124470,8 +124570,8 @@ cLa
 cLa
 bsU
 bsJ
-bsD
-bsz
+dcx
+bsO
 bsw
 bsw
 bsw
@@ -125198,8 +125298,8 @@ bsJ
 bsJ
 asD
 bsE
-bsD
-bsy
+dcy
+bsO
 bsw
 bsw
 bsw
@@ -126287,7 +126387,7 @@ btj
 bsJ
 bsJ
 bti
-bsJ
+dcz
 bsJ
 bsE
 bsD
@@ -136621,7 +136721,7 @@ cfg
 cKV
 cKR
 cKR
-cKR
+dcE
 cKR
 cKP
 cKR
@@ -146636,7 +146736,7 @@ bta
 bta
 bta
 oPL
-btW
+dcD
 btW
 bsZ
 bsZ

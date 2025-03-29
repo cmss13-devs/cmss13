@@ -7373,7 +7373,12 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "atx" = (
-/obj/structure/machinery/floodlight/landing,
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 6;
+	light_power = 2
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "aty" = (
@@ -54073,7 +54078,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /turf/open/auto_turf/strata_grass,
@@ -54320,18 +54325,11 @@
 /area/tyrargo/outdoors/army_staging)
 "cJi" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
-/obj/structure/barricade/sandbags/wired{
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 3.9;
-	pixel_y = -6;
-	health = 999999
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /turf/open/auto_turf/strata_grass,
@@ -59684,18 +59682,6 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
-"cYB" = (
-/obj/item/prop{
-	desc = null;
-	icon = 'icons/obj/structures/machinery/big_floodlight.dmi';
-	icon_state = "flood_s_dmg";
-	name = "flood light (destroyed)";
-	anchored = 1;
-	layer = 3.8;
-	density = 1
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "cYC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -60993,7 +60979,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
@@ -61012,7 +60998,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -61033,7 +61019,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -61042,7 +61028,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -61058,7 +61044,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -61067,7 +61053,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 5;
+	light_range = 6;
 	light_power = 2
 	},
 /turf/open/auto_turf/strata_grass,
@@ -145936,7 +145922,7 @@ cvy
 cvo
 cqe
 cpi
-cYB
+cpi
 cpi
 cpj
 cub

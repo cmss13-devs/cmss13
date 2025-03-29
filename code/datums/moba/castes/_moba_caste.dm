@@ -60,13 +60,11 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	var/multiplier = (new_level - 1) / (MOBA_MAX_LEVEL - 1)
 	xeno.maxHealth = round(starting_health + ((ending_health - starting_health) * multiplier), 1)
 	player_component.healing_value_standing = round(starting_health_regen + ((ending_health_regen - starting_health_regen) * multiplier), 0.1)
-	player_component.healing_value_resting = round(starting_health_regen + ((ending_health_regen - starting_health_regen) * multiplier), 0.1) * MOBA_RESTING_HEAL_MULTIPLIER
 	var/old_plasma = xeno.plasma_max
 	xeno.plasma_max = round(starting_plasma + ((ending_plasma - starting_plasma) * multiplier), 1)
 	xeno.plasma_stored += xeno.plasma_max - old_plasma
 	xeno.plasma_gain = round(starting_plasma_regen + ((ending_plasma_regen - starting_plasma_regen) * multiplier), 1)
 	player_component.plasma_value_standing = round(starting_plasma_regen + ((ending_plasma_regen - starting_plasma_regen) * multiplier), 0.1)
-	player_component.plasma_value_resting = round(starting_plasma_regen + ((ending_plasma_regen - starting_plasma_regen) * multiplier), 0.1) * MOBA_RESTING_HEAL_MULTIPLIER
 	xeno.armor_deflection = round(starting_armor + ((ending_armor - starting_armor) * multiplier), 1)
 	xeno.acid_armor = round(starting_acid_armor + ((ending_acid_armor - starting_acid_armor) * multiplier), 1)
 	xeno.melee_damage_lower = round(starting_attack_damage + ((ending_attack_damage - starting_attack_damage) * multiplier), 1)

@@ -6,9 +6,8 @@
 	var/damage_to_add = 10
 
 /datum/status_effect/hubris/on_creation(mob/living/new_owner, damage_to_add = 10)
-	. = ..()
-	if(.)
-		src.damage_to_add = damage_to_add
+	src.damage_to_add = damage_to_add
+	return ..()
 
 /datum/status_effect/hubris/on_apply()
 	. = ..()

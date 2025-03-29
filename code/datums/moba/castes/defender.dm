@@ -154,7 +154,7 @@
 			continue
 		if(target.stat == DEAD)
 			continue
-		target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, debuff_duration)
+		target.apply_status_effect(/datum/status_effect/slow, slow, debuff_duration)
 		var/turf/destination = get_step(target, get_dir(xeno, target))
 		if(LinkBlocked(target, target.loc, destination))
 			SEND_SIGNAL(xeno, COMSIG_MOBA_STUN_GIVEN, target)
@@ -171,9 +171,9 @@
 
 /datum/action/xeno_action/onclick/moba_tail_sweep/level_up_ability(new_level)
 	xeno_cooldown = src::xeno_cooldown - ((1 SECONDS) * (new_level - 1))
-	slow = src::slow + (0.05 * (new_level - 1))
+	slow = src::slow + (0.1 * (new_level - 1))
 
-	desc = "Knock back all enemies around you by 1 tile, slowing them by [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "20", "25", "30")]% for 1.5 seconds. Additionally, if an enemy would collide with a solid object (wall, minion, tower, etc.), they are stunned for the same duration. Cooldown of [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "10", "9", "8")] seconds. Plasma cost [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "50", "45", "40")]."
+	desc = "Knock back all enemies around you by 1 tile, slowing them by [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "0.2", "0.3", "0.4")] for 1.5 seconds. Additionally, if an enemy would collide with a solid object (wall, minion, tower, etc.), they are stunned for the same duration. Cooldown of [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "10", "9", "8")] seconds. Plasma cost [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "50", "45", "40")]."
 
 // "I am fucking invincible" - some bald guy
 /datum/action/xeno_action/onclick/moba_soak

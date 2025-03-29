@@ -8,10 +8,9 @@
 	var/penetration
 
 /datum/status_effect/bleed/on_creation(mob/living/new_owner, dps = 10, penetration)
-	. = ..()
-	if(.)
-		damage_per_sec = dps
-		src.penetration = penetration
+	damage_per_sec = dps
+	src.penetration = penetration
+	return ..()
 
 /datum/status_effect/bleed/tick(seconds_between_ticks)
 	. = ..()

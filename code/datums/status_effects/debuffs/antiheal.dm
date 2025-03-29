@@ -12,10 +12,9 @@
 	return ..()
 
 /datum/status_effect/antiheal/on_creation(mob/living/new_owner, healing_reduction = 0.4, duration = 5 SECONDS)
-	. = ..()
-	if(.)
-		src.healing_reduction = healing_reduction
-		src.duration = duration
+	src.healing_reduction = healing_reduction
+	src.duration = duration
+	return ..()
 
 /datum/status_effect/antiheal/on_apply()
 	. = ..()

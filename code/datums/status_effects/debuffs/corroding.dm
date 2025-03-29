@@ -8,10 +8,9 @@
 	var/penetration
 
 /datum/status_effect/corroding/on_creation(mob/living/new_owner, mhp = 0.025, penetration)
-	. = ..()
-	if(.)
-		max_health_percent = mhp
-		src.penetration = penetration
+	max_health_percent = mhp
+	src.penetration = penetration
+	return ..()
 
 /datum/status_effect/corroding/tick(seconds_between_ticks)
 	var/mob/living/living = owner

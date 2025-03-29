@@ -19,6 +19,7 @@
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
 	var/datum/cause_data/cause_data = null
+	var/randomize_ttl = TRUE
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
@@ -35,7 +36,8 @@
 		else
 			new_cause_data = create_cause_data(name)
 	cause_data = new_cause_data
-	time_to_live += rand(-1,1)
+	if(randomize_ttl)
+		time_to_live += rand(-1,1)
 	START_PROCESSING(SSeffects, src)
 
 /obj/effect/particle_effect/smoke/Destroy()
@@ -575,6 +577,26 @@
 	affected_mob.last_damage_data = cause_data
 	return TRUE
 
+/obj/effect/particle_effect/smoke/xeno_burn/moba
+	time_to_live = 3
+	randomize_ttl = FALSE
+	opacity = FALSE
+	var/poison_dot = 5
+	var/penetration = 0
+	var/friendly_hive
+
+/obj/effect/particle_effect/smoke/xeno_burn/moba/affect(mob/living/affected_mob)
+	if(!isliving(affected_mob))
+		return FALSE
+	if(affected_mob.stat == DEAD)
+		return FALSE
+	if(affected_mob.ally_of_hivenumber(friendly_hive))
+		return FALSE
+
+	affected_mob.last_damage_data = cause_data
+	affected_mob.apply_status_effect(/datum/status_effect/poisoned, poison_dot, penetration)
+	return TRUE
+
 //Xeno neurotox smoke.
 /obj/effect/particle_effect/smoke/xeno_weak
 	time_to_live = 12
@@ -815,6 +837,9 @@
 
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
+
+/datum/effect_system/smoke_spread/xeno_acid/moba
+	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn/moba
 
 /datum/effect_system/smoke_spread/xeno_weaken
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_weak

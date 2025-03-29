@@ -343,7 +343,7 @@
 	if(!action_comp)
 		return
 
-	if(action_comp.is_ultimate)
+	if(action_comp.is_ultimate || !xeno_ability.xeno_cooldown)
 		return
 
 	most_recent_ability = xeno_ability

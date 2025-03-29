@@ -10,9 +10,8 @@
 	var/explosion_damage = 130
 
 /datum/status_effect/stacking/spit_detonation/on_creation(mob/living/new_owner, stacks_to_apply, explo_damage = 130)
-	. = ..()
-	if(.)
-		explosion_damage = explo_damage
+	explosion_damage = explo_damage
+	return ..()
 
 /datum/status_effect/stacking/spit_detonation/stacks_consumed_effect()
 	. = ..()

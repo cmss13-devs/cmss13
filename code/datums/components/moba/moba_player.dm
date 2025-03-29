@@ -17,6 +17,8 @@
 		/datum/status_effect/stacking/spit_detonation = SPAN_RED("Acid Detonation"),
 		/datum/status_effect/corroding = SPAN_RED("Corroding"),
 		/datum/status_effect/reapers_call = SPAN_GREEN("Reaper's Call"),
+		/datum/status_effect/poisoned = "Poisoned",
+		/datum/status_effect/overdrive = "Overdrive",
 	)
 
 	var/static/list/level_up_thresholds = list(
@@ -39,9 +41,7 @@
 	var/right_side = FALSE
 
 	var/healing_value_standing = 0
-	var/healing_value_resting = 0
 	var/plasma_value_standing = 0
-	var/plasma_value_resting = 0
 	/// How much HP we have that isn't from our caste. Used for item scaling and etc.
 	var/bonus_hp = 0
 	/// How much "Acid Power" (AP) we have, used for the scaling of certain abilities
@@ -171,7 +171,7 @@
 	if(parent_xeno.health < parent_xeno.maxHealth && parent_xeno.last_hit_time + parent_xeno.caste.heal_delay_time <= world.time && (!parent_xeno.caste || (parent_xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !parent_xeno.fire_stacks))
 		var/damage_to_heal = 0
 		if(parent_xeno.body_position == LYING_DOWN || parent_xeno.resting)
-			damage_to_heal = healing_value_resting
+			damage_to_heal = healing_value_standing * MOBA_RESTING_HEAL_MULTIPLIER
 		else
 			damage_to_heal = healing_value_standing
 		if(istype(get_area(parent_xeno), /area/misc/moba/base/fountain))
@@ -180,7 +180,7 @@
 		parent_xeno.updatehealth()
 
 	if(parent_xeno.plasma_stored < parent_xeno.plasma_max)
-		parent_xeno.plasma_stored += (parent_xeno.body_position == LYING_DOWN || parent_xeno.resting) ? plasma_value_resting : plasma_value_standing
+		parent_xeno.plasma_stored += (parent_xeno.body_position == LYING_DOWN || parent_xeno.resting) ? (plasma_value_standing * MOBA_RESTING_HEAL_MULTIPLIER) : plasma_value_standing
 
 /datum/component/moba_player/proc/handle_effects()
 	if(!parent_xeno.hud_used)
@@ -394,8 +394,9 @@
 	else
 		status_tab_items += "XP: MAX"
 	var/item_names = ""
-	for(var/datum/moba_item/item as anything in held_items)
-		item_names += item.name + (item == held_items[length(held_items)] ? "" : ", ")
+
+	for(var/i in 1 to length(held_items))
+		item_names += held_items[i].name + ((i == length(held_items)) ? "" : ", ")
 	status_tab_items += "Items: [item_names]"
 	status_tab_items += "---------------------------"
 

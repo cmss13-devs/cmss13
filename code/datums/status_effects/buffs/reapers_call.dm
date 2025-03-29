@@ -6,9 +6,8 @@
 	var/execute_threshold = MOBA_REAPER_BOON_EXECUTE_THRESHOLD
 
 /datum/status_effect/reapers_call/on_creation(mob/living/new_owner, execute_threshold = MOBA_REAPER_BOON_EXECUTE_THRESHOLD)
-	. = ..()
-	if(.)
-		src.execute_threshold = execute_threshold
+	src.execute_threshold = execute_threshold
+	return ..()
 
 /datum/status_effect/reapers_call/on_apply()
 	. = ..()

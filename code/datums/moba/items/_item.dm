@@ -136,7 +136,7 @@
 	if(ability_cooldown_reduction)
 		description += "<br>Cooldown Reduction: +[(1 - ability_cooldown_reduction) * 100]%"
 	if(lifesteal)
-		description += "<br>Lifesteal: [lifesteal * 100]%"
+		description += "<br>Melee Lifesteal: [lifesteal * 100]%"
 	if(slash_penetration)
 		description += "<br>Physical Damage Armor Penetration: [slash_penetration]"
 	if(acid_penetration)
@@ -166,10 +166,8 @@
 	xeno.maxHealth -= health
 	component.bonus_hp -= health
 	component.healing_value_standing -= health_regen
-	component.healing_value_resting -= health_regen * MOBA_RESTING_HEAL_MULTIPLIER
 	xeno.plasma_max -= plasma
 	component.plasma_value_standing -= plasma_regen
-	component.plasma_value_resting -= plasma_regen * MOBA_RESTING_HEAL_MULTIPLIER
 	xeno.armor_deflection_buff -= armor
 	xeno.acid_armor_buff -= acid_armor
 	xeno.ability_speed_modifier -= speed
@@ -199,7 +197,6 @@
 
 /datum/moba_item/proc/apply_health_regen(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
 	component.healing_value_standing += health_regen
-	component.healing_value_resting += health_regen * MOBA_RESTING_HEAL_MULTIPLIER
 
 /datum/moba_item/proc/apply_plasma(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, restore_plasma_health = FALSE)
 	xeno.plasma_max += plasma
@@ -208,7 +205,6 @@
 
 /datum/moba_item/proc/apply_plasma_regen(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
 	component.healing_value_standing += plasma_regen
-	component.healing_value_resting += plasma_regen * MOBA_RESTING_HEAL_MULTIPLIER
 
 /datum/moba_item/proc/apply_armor(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
 	xeno.armor_deflection_buff += armor

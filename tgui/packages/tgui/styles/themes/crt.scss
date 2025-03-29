@@ -85,7 +85,8 @@ $scrollbar-color-multiplier: 0.5 !default;
     '../components/Button.scss',
     $with: (
       'color-default': base.$color-fg,
-      'color-disabled': darken(base.$color-fg, 30)
+      'color-disabled': darken(base.$color-fg, 30),
+      'color-selected': lighten(base.$color-fg, 10)
     )
   );
 

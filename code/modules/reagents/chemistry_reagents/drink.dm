@@ -681,6 +681,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_RELAXING = 1)
 	adj_dizzy = -3
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/drink/cold/kiraspecial
 	name = "Kira Special"

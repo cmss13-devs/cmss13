@@ -32030,7 +32030,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "gGx" = (
-/obj/structure/filingcabinet/chestdrawer{
+/obj/structure/filingcabinet/research{
 	density = 0;
 	pixel_x = -16
 	},

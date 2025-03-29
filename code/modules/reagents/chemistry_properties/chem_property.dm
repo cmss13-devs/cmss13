@@ -48,6 +48,10 @@
 
 	return TRUE
 
+///what does this property do to a hydrotray and its plant
+/datum/chem_property/proc/reaction_hydro_tray(/obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency = 1, volume = 1)
+	return
+
 /datum/chem_property/proc/process_dead(mob/living/M, potency = 1, delta_time)
 	return FALSE // By default, chemicals don't process in dead personnel.
 

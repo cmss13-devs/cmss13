@@ -234,6 +234,10 @@ SUBSYSTEM_DEF(mapping)
 		INIT_ANNOUNCE("Loading [ship_map.map_name]...")
 		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP, override_map_path = ship_base_path)
 
+	// loads the UPP ship if the game mode is faction clash (Generally run by the Prepare event under prep event verb)
+	if(trim(file2text("data/mode.txt")) == GAMEMODE_FACTION_CLASH_UPP_CM)
+		Loadship(FailedZs, "ssv_rostock", "templates/", list("ssv_rostock.dmm") , list(),ZTRAITS_MAIN_SHIP , override_map_path = "maps/")
+
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
 		if(length(FailedZs) > 1)

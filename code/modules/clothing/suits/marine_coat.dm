@@ -250,8 +250,8 @@
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
-	name = "USCM Service A Officer Service Jacket"
-	desc = "A USCM Officer Service A Jacket, Often worn by Officers on official visits."
+	name = "USCM Service 'A' Officer Service Jacket"
+	desc = "A USCM Officer Service 'A' Jacket, often worn by Officers on official visits."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	icon_state = "general_jacket"
 	item_icons = list(

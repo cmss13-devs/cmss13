@@ -917,6 +917,28 @@
 /obj/structure/prop/vehicles/tank/ifv/destroyed
 	icon_state = "ifv_destroyed"
 
+// USCM BISON
+
+/obj/structure/prop/vehicles/tank/bison
+	name = "BISON Automated Transport Vehicle"
+	desc = "The BISON ATV is an remote-controled logistical supply vehicle, intended to assist USCM and US Army rear-line logistic forces in moving supplies. It requires someone to be standing near it for the auto-pilot functions to work. This model is non-functional."
+	icon = 'icons/obj/vehicles/bison_prop.dmi'
+	icon_state = "base_closed"
+	density = FALSE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/vehicles/tank/bison/destroyed
+	icon_state = "base_closed_damaged"
+
+/obj/structure/prop/vehicles/tank/bison/open
+	icon_state = "base_open"
+
+/obj/structure/prop/vehicles/tank/bison/open/destroyed
+	icon_state = "base_open_damaged"
+
+
 // USCM ARC
 
 /obj/structure/prop/vehicles/tank/arc

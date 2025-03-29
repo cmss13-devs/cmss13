@@ -73,3 +73,14 @@
 	icon_state = "small_closed_tent"
 /obj/structure/prop/tyrargo/large_tents/small_closed/back
 	icon_state = "small_closed_tent_back"
+
+/obj/structure/prop/tyrargo/illuminator
+	icon = 'icons/obj/structures/props/industrial/illuminator.dmi'
+	icon_state = "floodlight-off"
+	unacidable = TRUE
+	unslashable = TRUE
+	explo_proof = TRUE
+	health = 1000000
+	density = TRUE
+	layer = ABOVE_FLY_LAYER
+	bound_height = 32

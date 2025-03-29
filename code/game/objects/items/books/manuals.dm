@@ -25,7 +25,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe> </body>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Guide_to_Engineering" frameborder="0" id="main_frame"></iframe> </body>
 
 		</html>
 
@@ -46,7 +46,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_construction" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Guide_to_construction" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -68,7 +68,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Guide_to_Engineering#Hacking" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -89,7 +89,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Ordnance_Technician" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Ordnance_Technician" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -110,7 +110,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Comms" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Comms" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -131,7 +131,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/S-52_Fusion_Reactor" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/S-52_Fusion_Reactor" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -470,7 +470,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Standard_Operating_Procedure" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -492,7 +492,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="http://cm-ss13.com/wiki/Marine_Law" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="http://cm-ss13.com/wiki/Marine_Law" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -517,7 +517,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Surgery" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Surgery" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -552,7 +552,7 @@
 				<i>Ci-dessous, le serment medical prete par des medecins reconnus en service partout dans l'espace, y compris dans les branches militaires des Ameriques unies.</i><br>
 
 				<ol>
-					<li>Now, as part of the medical staff, I solemnly promise that I will, to the best of my ability, serve humanity-caring for the sick, promoting good health, and alleviating pain and suffering.</li>
+					<li>Now, as a practitioner, I solemnly promise that I will, to the best of my ability, serve humanity by caring for the sick, promoting good health, and alleviating pain and suffering.</li>
 					<li>I recognise that the practice of medicine is a privilege with which comes considerable responsibility and I will not abuse my position.</li>
 					<li>I will practise medicine with integrity, humility, honesty, and compassion-working with my fellow practitioners and other colleagues to meet the needs of my patients.</li>
 					<li>I shall never intentionally do or administer anything to the overall harm of my patients.</li>
@@ -567,7 +567,7 @@
 				<HR COLOR="steelblue" WIDTH="60%" ALIGN="LEFT">
 
 				<h3>Main guide</h3>
-				<iframe width='100%' height='85vh' src="http://cm-ss13.com/wiki/Guide_to_Medicine" frameborder="0" id="main_frame"></iframe>
+				<iframe width='100%' height='500px' src="http://cm-ss13.com/wiki/Guide_to_Medicine" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 
@@ -587,7 +587,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Chemistry" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Chemistry" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -607,7 +607,7 @@
 		</head>
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Researcher" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Researcher" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -620,7 +620,7 @@
 
 /obj/item/book/manual/tychontackle
 	name = "After Action Report No.55: Operation Tychon Tackle"
-	desc = "An after action report of the infamous Operation 'Tychon Tackle', so big that we had to turn it into a book. Warning: Some information, such as personal names, have been REDACTED on this print."
+	desc = "An after action report of the infamous Operation 'Tychon Tackle', so big that it had to be turned into a book. Warning: Some information, such as personal names, have been REDACTED on this print."
 	icon_state = "book_light_red"
 	item_state = "book_light_red"
 	author = "Executive Officer 'REDACTED', USS Heyst, United Americas"
@@ -632,7 +632,7 @@
 		</head><body class='Paper'
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/After_Action_Report_No.55" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/After_Action_Report_No.55" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -654,7 +654,7 @@
 		</head><body class='Paper'
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/UPP" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/UPP" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -676,7 +676,7 @@
 		</head><body class='Paper'
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Guide_to_Paperwork" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Guide_to_Paperwork" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -696,7 +696,7 @@
 		</head><body class='Paper'
 
 		<body>
-		<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Rank" frameborder="0" id="main_frame"></iframe>
+		<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Rank" frameborder="0" id="main_frame"></iframe>
 		</body>
 
 		</html>
@@ -760,7 +760,7 @@
 				Add one potato to the processor, then bake them in the microwave.
 
 				<h3>Further recipes</h3>
-				<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Cooking" frameborder="0" id="main_frame"></iframe>
+				<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Cooking" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 			"}
@@ -819,7 +819,7 @@
 				Mix vodka and orange juice into a glass.
 
 				<h3>Further recipes</h3>
-				<iframe width='100%' height='85vh' src="https://cm-ss13.com/wiki/Drinks" frameborder="0" id="main_frame"></iframe>
+				<iframe width='100%' height='500px' src="https://cm-ss13.com/wiki/Drinks" frameborder="0" id="main_frame"></iframe>
 				</body>
 			</html>
 			"}

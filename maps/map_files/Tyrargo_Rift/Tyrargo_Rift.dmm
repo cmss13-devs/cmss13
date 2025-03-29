@@ -14682,14 +14682,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/underground/bunker/north)
-"aLQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1;
-	pixel_x = -1
-	},
-/turf/closed/wall/rock,
-/area/tyrargo/oob)
 "aLR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreencorner/north,
@@ -25299,9 +25291,6 @@
 	icon_state = "sandbag_0";
 	pixel_y = 4
 	},
-/obj/structure/machinery/m56d_hmg/mg_turret{
-	dir = 1
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -25328,6 +25317,9 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/m56d_hmg{
+	dir = 1
+	},
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgw" = (
@@ -43822,6 +43814,25 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "bXR" = (
+/obj/structure/sign/safety/one{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/two{
+	pixel_x = 45;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/autoopenclose{
+	pixel_x = 32;
+	pixel_y = 7;
+	name = "Bunker Network - Sector Tango 12";
+	desc = "Semiotic Standard denoting bunker network designation."
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 45;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -43885,15 +43896,29 @@
 /area/tyrargo/underground/bunker/south)
 "bYe" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat/purple/southwest,
-/area/tyrargo/underground/bunker/south)
-"bYf" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat/purple,
+/turf/open/floor/corsat/purplecorner/north,
 /area/tyrargo/underground/bunker/south)
 "bYg" = (
+/obj/structure/sign/safety/one{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/two{
+	pixel_x = 45;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/autoopenclose{
+	pixel_x = 32;
+	pixel_y = 7;
+	name = "Bunker Network - Sector Tango 12";
+	desc = "Semiotic Standard denoting bunker network designation."
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = 45;
+	pixel_y = 7
+	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/corsat/purple/southeast,
+/turf/open/floor/corsat/purplecorner/east,
 /area/tyrargo/underground/bunker/south)
 "bYh" = (
 /turf/open/floor/corsat/plate,
@@ -53844,6 +53869,12 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
 "cIj" = (
@@ -53856,6 +53887,9 @@
 /obj/structure/prop/vehicles/tank/longstreet/concussive{
 	dir = 1;
 	pixel_x = -50
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
@@ -53905,6 +53939,12 @@
 	light_on = 1;
 	light_range = 6;
 	light_power = 2
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/army_staging)
@@ -54346,6 +54386,10 @@
 /obj/structure/prop/vehicles/tank/ifv/destroyed{
 	pixel_y = 2;
 	pixel_x = -25
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
@@ -60845,10 +60889,6 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/oob)
-"dcb" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrown2/southwest,
-/area/tyrargo/underground)
 "dcc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/west,
@@ -60857,22 +60897,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2,
 /area/tyrargo/underground)
-"dce" = (
-/turf/open/floor/prison/darkbrown2/southeast,
-/area/tyrargo/underground)
 "dcf" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dcg" = (
-/turf/open/floor/prison/darkbrown2,
+/turf/open/floor/prison/darkred2,
 /area/tyrargo/underground)
 "dch" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkbrown2,
+/turf/open/floor/prison/darkred2,
 /area/tyrargo/underground)
 "dci" = (
-/turf/open/floor/prison/darkbrowncorners2/west,
+/turf/open/floor/prison/darkredcorners2/west,
 /area/tyrargo/underground)
 "dcj" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
@@ -60881,7 +60918,7 @@
 	desc = "A huge rock pileup. It's looks unstable, best not touch it.";
 	name = "huge rock pileup"
 	},
-/turf/open/floor/prison/darkbrown2,
+/turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "dck" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
@@ -60891,24 +60928,14 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
-/turf/open/floor/prison/darkbrown2,
+/turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "dcl" = (
-/turf/open/floor/prison/darkbrown2,
+/turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "dcm" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/floor/prison/darkbrown2,
-/area/tyrargo/oob)
-"dcn" = (
-/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
-	unacidable = 1;
-	unslashable = 1;
-	desc = "Part of a huge rock pileup. It's looks unstable, best not touch it.";
-	name = "huge rock pileup";
-	pixel_y = -13
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
+/turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "dco" = (
 /obj/effect/decal/cleanable/dirt,
@@ -60918,22 +60945,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground)
-"dcp" = (
-/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
-	unacidable = 1;
-	unslashable = 1;
-	desc = "A huge rock pileup. It's looks unstable, best not touch it.";
-	name = "huge rock pileup"
-	},
-/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
-	unacidable = 1;
-	unslashable = 1;
-	desc = "Part of a huge rock pileup. It's looks unstable, best not touch it.";
-	name = "huge rock pileup";
-	pixel_y = -13
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/oob)
 "dcq" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_17";
@@ -60942,7 +60953,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground)
 "dcr" = (
-/turf/open/floor/prison/darkbrown2/north,
+/turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground)
 "dcs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -60953,7 +60964,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
-/turf/open/floor/prison/darkbrown2/north,
+/turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dct" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
@@ -60963,14 +60974,14 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
-/turf/open/floor/prison/darkbrown2/north,
+/turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dcu" = (
-/turf/open/floor/prison/darkbrown2/north,
+/turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dcv" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/floor/prison/darkbrown2/north,
+/turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dcw" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
@@ -61460,6 +61471,252 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/mall)
+"ddM" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/floor/prison/darkyellow2/west,
+/area/tyrargo/oob)
+"ddN" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/floor/prison/darkyellow2/east,
+/area/tyrargo/oob)
+"ddO" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/south)
+"ddP" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/west,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/south)
+"ddQ" = (
+/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/hybrisa/rockdark/east,
+/turf/open/gm/river/no_overlay/sewage,
+/area/tyrargo/underground/bunker/south)
+"ddR" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/underground/bunker/south)
+"ddS" = (
+/obj/structure/sign/safety/analysis_lab{
+	pixel_y = 7;
+	pixel_x = -30;
+	desc = "Semiotic Standard denoting bunker network designation.";
+	name = "Bunker Network - Sector Jericho 41"
+	},
+/obj/structure/sign/safety/south{
+	pixel_x = -18;
+	pixel_y = 7
+	},
+/obj/structure/sign/safety/four{
+	pixel_x = -30;
+	pixel_y = -7
+	},
+/obj/structure/sign/safety/one{
+	pixel_x = -18;
+	pixel_y = -7
+	},
+/turf/open/floor/corsat/yellowcorner/west,
+/area/tyrargo/underground/bunker/south)
+"ddT" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground)
+"ddU" = (
+/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
+	unacidable = 1;
+	unslashable = 1;
+	desc = "A huge rock pileup. It's looks unstable, best not touch it.";
+	name = "huge rock pileup"
+	},
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/oob)
+"ddV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/yellowcorner,
+/area/tyrargo/underground)
+"ddW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/yellow,
+/area/tyrargo/underground)
+"ddX" = (
+/turf/open/floor/prison/yellow,
+/area/tyrargo/underground)
+"ddY" = (
+/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
+	unacidable = 1;
+	unslashable = 1;
+	desc = "A huge rock pileup. It's looks unstable, best not touch it.";
+	name = "huge rock pileup"
+	},
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
+	unacidable = 1;
+	unslashable = 1;
+	desc = "Part of a huge rock pileup. It's looks unstable, best not touch it.";
+	name = "huge rock pileup";
+	pixel_y = -13
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/oob)
+"ddZ" = (
+/turf/open/floor/prison/darkredcorners2/east,
+/area/tyrargo/underground)
+"dea" = (
+/turf/open/floor/prison/yellowcorner/north,
+/area/tyrargo/underground)
+"deb" = (
+/turf/open/floor/prison/yellow/north,
+/area/tyrargo/underground)
+"dec" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"ded" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"dee" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"def" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/lv624/fog_blocker/long,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"deg" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"deh" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"dei" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"dej" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"dek" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"del" = (
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = 10;
+	light_color = "#FF7700";
+	pixel_x = 3
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = 22;
+	layer = 5.3;
+	light_color = "#FF7700";
+	pixel_x = -4
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/army_staging)
+"dem" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/oob)
+"den" = (
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	pixel_y = 22;
+	layer = 5.3;
+	light_color = "#FF7700";
+	pixel_x = -4
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/army_staging)
+"deo" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/structure/prop/vehicles/tank/bison/open{
+	dir = 4;
+	pixel_y = -30
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/army_staging)
 "deN" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 1
@@ -72531,12 +72788,6 @@
 	dir = 4;
 	pixel_x = 5;
 	layer = 2.98
-	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been fried via acid damage, and it will open fire on any targets within range.";
-	name = "Damaged UA-577 Gauss Turret";
-	dir = 8;
-	faction_group = "USCM"
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -89910,11 +90161,11 @@ aLe
 aLe
 bYb
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
+bsO
+bsO
 bsO
 bsw
 bsw
@@ -90091,13 +90342,13 @@ bYp
 bYp
 bYk
 bYb
-bsO
-bsO
-bsO
-bsO
-bsO
-bsO
-bsO
+bYb
+bYb
+bsw
+bsw
+bsw
+bsw
+bsw
 bsw
 bsw
 bsw
@@ -90274,9 +90525,9 @@ aLi
 aLf
 bYe
 bYc
+ddS
+bYa
 bXY
-bXY
-bsw
 bsw
 bsw
 bsw
@@ -90454,10 +90705,10 @@ aLk
 bYj
 bYh
 bYj
-bYf
+aLk
 bYc
 bXY
-aLQ
+bXY
 bsw
 bsw
 bsw
@@ -90639,8 +90890,8 @@ aLh
 bYg
 bYc
 bXZ
-bXZ
-bsw
+ddR
+ddP
 bsw
 bsw
 bsw
@@ -90819,12 +91070,12 @@ bYh
 bYj
 bYl
 bYb
-bsO
+bYb
 bYa
 bYa
-bsO
-bsO
-bsO
+ddQ
+ddO
+bsw
 bsw
 bsw
 bsw
@@ -91002,12 +91253,12 @@ bYb
 bYb
 bYb
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
@@ -103580,7 +103831,7 @@ cYZ
 cYS
 cYW
 cYS
-cYQ
+ddM
 bgD
 bgD
 bgD
@@ -104308,7 +104559,7 @@ cZb
 cYV
 cYV
 cYV
-cYQ
+ddN
 bgD
 bgD
 bgD
@@ -109333,11 +109584,11 @@ bsw
 bsw
 bta
 bta
-bgD
-dcp
+mAQ
+daH
 cYU
-eMV
-cYT
+bgD
+ddU
 bta
 bta
 bsw
@@ -109515,11 +109766,11 @@ bsw
 bsw
 bsw
 bta
-daH
-eMV
+ddY
+bgD
 daK
-dcn
-cYT
+cYY
+ddU
 bta
 bsw
 bsw
@@ -109697,11 +109948,11 @@ bsw
 bsw
 bsw
 bta
-bgD
+mAQ
 bgD
 iFy
 bgD
-bgD
+oyg
 bta
 bsw
 bsw
@@ -109880,9 +110131,9 @@ bsw
 bsw
 bUW
 dcr
-ciR
+bVR
 ciY
-ciR
+bVR
 dcg
 bUW
 bsw
@@ -110243,12 +110494,12 @@ bsw
 bsw
 bsw
 bUW
-dcr
+ddZ
 dcq
 ciY
 bVR
 dci
-dcb
+cZs
 bUW
 bUW
 bUW
@@ -110425,7 +110676,7 @@ bsw
 bsw
 bsw
 bUW
-dcr
+ciR
 ciR
 cZg
 ciR
@@ -110468,9 +110719,9 @@ kbV
 kbV
 daX
 bVR
-bVR
+ciR
 cZg
-cZf
+ddT
 cZo
 cZo
 cZo
@@ -110487,8 +110738,8 @@ cZQ
 cZo
 cZo
 cZo
-bVR
-ciY
+ciR
+cZg
 bVR
 cZn
 bUW
@@ -110607,7 +110858,7 @@ bsw
 bsw
 bsw
 bUW
-dcr
+bVR
 ciR
 cZg
 cZg
@@ -110649,11 +110900,11 @@ ciR
 ciR
 bVR
 bVR
-bVR
+ciR
 cZg
 cZg
 cZg
-bVR
+ciR
 bVR
 bVR
 cZo
@@ -110668,9 +110919,9 @@ bVR
 bVR
 bVR
 bVR
-bVR
-ciY
-ciY
+ciR
+cZg
+cZg
 bVR
 cZi
 bUW
@@ -110789,7 +111040,7 @@ bsw
 bsw
 bsw
 bUW
-dcr
+bVR
 ciR
 cZg
 cZg
@@ -110840,19 +111091,19 @@ ciY
 ciY
 ciY
 ciY
+cZg
+cZg
+cZg
+cZg
 ciY
 ciY
 ciY
 ciY
 ciY
 ciY
-ciY
-ciY
-ciY
-ciY
-ciY
-ciY
-bVR
+cZg
+cZg
+ciR
 bVR
 cZi
 bUW
@@ -110971,7 +111222,7 @@ bsw
 bsw
 bsw
 bUW
-dcr
+bVR
 ciR
 cZg
 cZg
@@ -111013,11 +111264,11 @@ cZs
 cZs
 cZo
 cZo
-bVR
+ciR
 cZg
 cZg
 cZg
-bVR
+ciR
 bVR
 cZo
 cZo
@@ -111153,7 +111404,7 @@ bsw
 bsw
 bsw
 bUW
-dcr
+ciR
 ciR
 cZg
 ciR
@@ -111196,9 +111447,9 @@ twj
 twj
 daY
 bVR
-bVR
+ciR
 cZg
-bVR
+ciR
 cZo
 dax
 cZb
@@ -111335,12 +111586,12 @@ bsw
 bsw
 bsw
 bUW
-dcr
+dea
 bVR
 ciY
 bVR
-dcd
-dce
+ddV
+ciR
 bUW
 bUW
 dcN
@@ -111517,11 +111768,11 @@ bsw
 bsw
 bsw
 bUW
-dcr
+deb
 bVR
 ciY
 cZW
-dch
+ddW
 bUW
 bUW
 bUW
@@ -111699,11 +111950,11 @@ bsw
 bsw
 bsw
 bUW
-dcr
+deb
 cZf
 ciY
 dco
-dcg
+ddX
 bUW
 bsw
 bUW
@@ -111881,11 +112132,11 @@ bsw
 bsw
 bsw
 bUW
-dcr
+deb
 bVR
 ciY
 cZo
-dch
+ddW
 bUW
 bsw
 bUW
@@ -112063,11 +112314,11 @@ bsw
 bsw
 bsw
 bUW
-dcr
+deb
 bVR
 ciY
 cZo
-dch
+ddW
 bUW
 bsw
 bsw
@@ -132734,7 +132985,7 @@ bgZ
 bgZ
 bgZ
 bgZ
-bsZ
+atv
 bgZ
 bgZ
 bgZ
@@ -132904,25 +133155,25 @@ bsZ
 bsZ
 bsZ
 bsZ
-bsZ
-bsZ
-buc
-buc
-buc
-buc
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+atv
+atv
+def
+cuV
+cuV
+cMk
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
 bgZ
 bgZ
 bgZ
@@ -133088,10 +133339,10 @@ bsZ
 bsZ
 bsZ
 bsZ
+bui
 buc
 buc
-buc
-buc
+btS
 bsZ
 bsZ
 bsZ
@@ -133105,27 +133356,27 @@ bsZ
 bsZ
 bsZ
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+atv
+atv
+atv
+atv
+atv
+atv
 bgZ
 bgZ
 bgZ
 bgZ
 bgZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
+atv
 bsw
 "}
 (94,1,2) = {"
@@ -133270,10 +133521,10 @@ bsZ
 bsZ
 bsZ
 bsZ
+bui
 buc
 buc
-buc
-buc
+dec
 bsZ
 bsZ
 bsZ
@@ -133293,11 +133544,11 @@ bsZ
 bsZ
 bsZ
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+atv
+atv
+atv
+atv
+atv
 bsZ
 bsZ
 bsZ
@@ -133451,10 +133702,10 @@ bsZ
 bsZ
 bsZ
 bsZ
+aZR
 buc
 buc
-buc
-buc
+btS
 bsZ
 bsZ
 bsZ
@@ -133633,10 +133884,10 @@ bsZ
 bsZ
 bsZ
 bsZ
+bui
 buc
-buc
-buc
-buc
+aZX
+dec
 bsZ
 bsZ
 bsZ
@@ -133814,9 +134065,9 @@ bsZ
 bsZ
 bsZ
 bsZ
+aZR
 buc
-buc
-buc
+btS
 bsZ
 bsZ
 bsZ
@@ -133995,10 +134246,10 @@ bsZ
 bsZ
 bsZ
 bsZ
+aZR
 buc
 buc
-buc
-buc
+btS
 bsZ
 bsZ
 bsZ
@@ -134176,11 +134427,11 @@ bsZ
 bsZ
 bsZ
 bsZ
+aZR
 buc
 buc
 buc
-buc
-buc
+dec
 bsZ
 bsZ
 bsZ
@@ -134357,11 +134608,11 @@ bsZ
 bsZ
 bsZ
 bsZ
+aZR
 buc
 buc
 buc
-buc
-buc
+dec
 bsZ
 bsZ
 bsZ
@@ -134539,10 +134790,10 @@ bsZ
 bsZ
 bsZ
 bsZ
+bui
 buc
 buc
-buc
-buc
+btS
 bsZ
 bsZ
 bsZ
@@ -134720,11 +134971,11 @@ afX
 atv
 bsZ
 bsZ
+aZR
 buc
 buc
 buc
-buc
-buc
+dec
 bsZ
 bsZ
 bsZ
@@ -134902,10 +135153,10 @@ afX
 atv
 atv
 atv
-cuV
+deg
 buc
 buc
-buc
+dec
 bsZ
 bsZ
 bsZ
@@ -135083,10 +135334,10 @@ afX
 bsZ
 cJn
 btP
-aMx
+dem
 cuV
 cuV
-cuV
+dei
 bsZ
 bsZ
 bsZ
@@ -135267,7 +135518,7 @@ cJo
 cJj
 bug
 buc
-aMx
+dej
 atv
 atv
 bsZ
@@ -135445,11 +135696,11 @@ bsO
 cKV
 anB
 anB
-cJe
+den
 cIV
 cJd
 cIU
-bug
+dek
 bcR
 bsZ
 bsZ
@@ -135630,7 +135881,7 @@ cIW
 cKU
 cKU
 cJe
-cIV
+del
 cIA
 bsZ
 cIz
@@ -137628,7 +137879,7 @@ cKR
 cKR
 cKR
 cJq
-cJq
+deo
 cJq
 cJk
 cJh
@@ -137810,7 +138061,7 @@ cJc
 cKR
 cKR
 cKR
-cKR
+anB
 cKR
 cJl
 cJh
@@ -137821,7 +138072,7 @@ cIG
 bum
 buc
 cIl
-bum
+dee
 buk
 atv
 bsZ
@@ -138000,11 +138251,11 @@ anB
 buk
 buk
 cIH
-cIi
+deh
 cIt
 cIm
 czc
-cuV
+ded
 atv
 bsZ
 bsZ
@@ -138183,11 +138434,11 @@ atv
 atv
 atv
 atv
-cuV
+deg
 cuV
 cuV
 buc
-buc
+btB
 bsZ
 bsZ
 bsZ
@@ -138365,7 +138616,7 @@ bsZ
 bsZ
 bsZ
 bsZ
-buc
+btI
 buc
 buc
 buc
@@ -138548,8 +138799,8 @@ bsZ
 bsZ
 bsZ
 bsZ
-buc
-buc
+btI
+aZX
 buc
 buc
 buc
@@ -164002,9 +164253,9 @@ cSj
 cSj
 cSj
 cSj
-bvw
-bvw
-bvw
+cRY
+cRY
+cRY
 bto
 bto
 bto
@@ -164730,9 +164981,9 @@ cSj
 cSj
 cSj
 cSj
-bvw
-bvw
-bvw
+cRY
+cRY
+cRY
 bto
 bto
 bto
@@ -169100,8 +169351,8 @@ cSh
 cSh
 cSh
 cSh
-bvw
-bvw
+cRY
+cRY
 bto
 bto
 bto
@@ -169281,9 +169532,9 @@ cSh
 cSh
 cSh
 cSh
-bvw
-bvw
-bvw
+cRY
+cRY
+cRY
 bto
 bto
 bto

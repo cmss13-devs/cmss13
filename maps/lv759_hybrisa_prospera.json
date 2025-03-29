@@ -49,7 +49,16 @@
         "monkey"
     ],
     "environment_traits": { "Fog": true },
-    "traits": [{ "Ground": true }],
+    "traits": [
+        { 
+            "Ground": true,
+            "Up": 1 
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/LV759_Hybrisa_Prospera/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

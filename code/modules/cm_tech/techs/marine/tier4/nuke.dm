@@ -44,7 +44,7 @@
 		var/marines_count = SSticker.mode.count_marines() // Counting marines on land and on the ship
 		var/marines_peak = GLOB.peak_humans * nuclear_lock / 100
 		if(marines_count >= marines_peak)
-			to_chat(user, SPAN_WARNING("You cannot purchase this while there are more than [marines_peak] Marines and USCM crew alive on this operation."))
+			to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this while there are more than [marines_peak] Marines and USCM crew alive on this operation."))
 			return FALSE
 
 	return TRUE

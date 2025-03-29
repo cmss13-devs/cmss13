@@ -874,9 +874,9 @@
 /obj/item/weapon/twohanded/yautja/glaive/damaged
 	name = "ancient war glaive"
 	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
-	force = MELEE_FORCE_WEAK
-	force_wielded = MELEE_FORCE_NORMAL
-	throwforce = MELEE_FORCE_WEAK
+	force = MELEE_FORCE_TIER_2
+	force_wielded = MELEE_FORCE_TIER_5
+	throwforce = MELEE_FORCE_TIER_2
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
 	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY

@@ -10,8 +10,8 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/non_lethal_righthand.dmi'
 	)
 	flags_equip_slot = SLOT_WAIST
-	force = 15
-	throwforce = 7
+	force = MELEE_FORCE_TIER_3
+	throwforce = MELEE_FORCE_TIER_1
 	sharp = FALSE
 	edge = FALSE
 	w_class = SIZE_MEDIUM

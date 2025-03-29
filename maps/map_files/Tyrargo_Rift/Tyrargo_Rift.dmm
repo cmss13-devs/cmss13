@@ -11742,6 +11742,9 @@
 	pixel_y = -7;
 	layer = 2.8
 	},
+/obj/item/weapon/gun/rifle/lmg{
+	current_mag = null
+	},
 /turf/open/floor/plating/platingdmg1,
 /area/tyrargo/indoors/apartment/north_upper)
 "aEI" = (
@@ -15874,6 +15877,9 @@
 	dir = 8;
 	pixel_x = -9
 	},
+/obj/structure/sign/banners/united_americas_flag_worn{
+	pixel_y = 30
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOw" = (
@@ -18809,11 +18815,6 @@
 /area/tyrargo/landing_zone_1)
 "aUa" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher{
-	dir = 8;
-	pixel_y = -26;
-	pixel_x = -67
-	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
 "aUb" = (
@@ -18870,6 +18871,17 @@
 	icon_state = "sandbag_0"
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/item/prop{
+	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon_state = "M56D";
+	name = "M56D heavy machine gun nest";
+	pixel_y = -2;
+	anchored = 1;
+	layer = 3.8;
+	dir = 8;
+	pixel_x = 17
+	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/landing_zone_1)
 "aUh" = (
@@ -28678,11 +28690,15 @@
 	dir = 4;
 	pixel_y = 2
 	},
-/obj/structure/largecrate/random,
+/obj/structure/largecrate/random{
+	layer = 3.1
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnm" = (
-/obj/structure/largecrate/random,
+/obj/structure/largecrate/random{
+	layer = 3.1
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnn" = (
@@ -36417,7 +36433,8 @@
 	light_power = 5;
 	light_range = 6;
 	pixel_x = -18;
-	pixel_y = -7
+	pixel_y = -7;
+	layer = 3.1
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
@@ -51135,6 +51152,9 @@
 	icon_state = "sandbag_0";
 	pixel_x = 4
 	},
+/obj/item/ammo_magazine/rifle/lmg/heap{
+	current_rounds = 0
+	},
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cxe" = (
@@ -59170,7 +59190,7 @@
 	name = "soft-point munitions crate";
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
 	},
-/obj/item/ammo_magazine/rifle/lmg,
+/obj/item/ammo_magazine/rifle/lmg/holo_target,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "cXv" = (
@@ -59596,6 +59616,54 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/fake_wood,
 /area/tyrargo/indoors/bar/upper)
+"cYy" = (
+/obj/item/prop{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/big_floodlight.dmi';
+	icon_state = "flood_s_dmg";
+	name = "flood light (destroyed)";
+	anchored = 1;
+	layer = 3.8;
+	density = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
+"cYz" = (
+/obj/item/prop{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/big_floodlight.dmi';
+	icon_state = "flood_s_dmg";
+	name = "flood light (destroyed)";
+	anchored = 1;
+	layer = 3.8;
+	density = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"cYA" = (
+/obj/item/prop{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/big_floodlight.dmi';
+	icon_state = "flood_s_dmg";
+	name = "flood light (destroyed)";
+	anchored = 1;
+	layer = 3.8;
+	density = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/west)
+"cYB" = (
+/obj/item/prop{
+	desc = null;
+	icon = 'icons/obj/structures/machinery/big_floodlight.dmi';
+	icon_state = "flood_s_dmg";
+	name = "flood light (destroyed)";
+	anchored = 1;
+	layer = 3.8;
+	density = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_streets/north_west)
 "cYE" = (
 /obj/item/ammo_box/magazine/misc/mre/empty,
 /turf/open/floor/interior/wood,
@@ -62011,6 +62079,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/item/ammo_magazine/rifle/lmg/heap{
+	current_rounds = 0
 	},
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -66312,6 +66383,7 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/lmg,
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/north_upper)
 "qvh" = (
@@ -70068,10 +70140,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/pink,
 /area/tyrargo/indoors/apartment/north_upper)
-"wPt" = (
-/obj/structure/prop/tower,
-/turf/open/asphalt/cement/cement12,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "wQh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/red/northwest,
@@ -120805,7 +120873,7 @@ bxz
 bxz
 bJe
 bxz
-bxz
+cYA
 bDj
 byp
 bCE
@@ -131572,7 +131640,7 @@ bDV
 bBg
 bBg
 bBg
-bBg
+cYz
 bBg
 bBg
 bCp
@@ -134303,7 +134371,7 @@ bwE
 bDC
 bwE
 bwE
-bwE
+cYy
 bwE
 bwE
 bwE
@@ -135727,7 +135795,7 @@ bBl
 bBl
 bEh
 bBn
-bwE
+cYy
 bIT
 bwE
 bwE
@@ -136078,7 +136146,7 @@ bwE
 aPa
 aON
 aON
-bwE
+cYy
 bwE
 apK
 bHC
@@ -144449,7 +144517,7 @@ cvy
 cvo
 cqe
 cpi
-cpi
+cYB
 cpi
 cpj
 cub
@@ -145004,7 +145072,7 @@ bta
 aEx
 kFO
 cqG
-wPt
+cqd
 adX
 tvN
 cpd

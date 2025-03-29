@@ -261,6 +261,7 @@
 	radio_freq = ARMY_FREQ
 	minimap_color = "#349c30"
 	background_icon = "background_civillian"
+	minimap_color = MINIMAP_SQUAD_ARMY
 
 	active = FALSE
 	roundstart = FALSE

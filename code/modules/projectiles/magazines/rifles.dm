@@ -47,6 +47,9 @@
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
+/obj/item/ammo_magazine/rifle/heap/empty
+	current_rounds = 0
+
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
 	desc = "A 10mm armor piercing magazine."
@@ -160,6 +163,9 @@
 	desc = "A magazine of high explosive armor piercing 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/m4ra/heap/empty
+	current_rounds = 0
 
 /obj/item/ammo_magazine/rifle/m4ra/penetrating
 	name = "\improper M4RA wall-penetrating magazine (10x24mm)"

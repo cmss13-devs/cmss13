@@ -536,6 +536,7 @@
 	name = EASTER
 	var/const/days_early = 1 //to make editing the holiday easier
 	var/const/days_extra = 1
+	greet_text = "Greetings! Have a Happy Easter and keep an eye out for Easter Bunnies!"
 
 /datum/holiday/easter/shouldCelebrate(dd, mm, yyyy, ddd)
 	if(!begin_month)

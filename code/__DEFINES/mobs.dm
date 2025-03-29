@@ -190,6 +190,7 @@
 #define MUTINEER (1<<4)  // Part of the Mutiny Gang
 #define GIVING (1<<5) // Is currently trying to give an item to someone
 #define NOBIOSCAN (1<<6)
+#define HAS_SPAWNED_PET (1<<7) // Has spawned their special pet.
 
 //=================================================
 

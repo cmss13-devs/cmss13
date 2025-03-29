@@ -466,6 +466,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		if(L.mode)
 			return 0
 
+	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+		return
+
 	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return

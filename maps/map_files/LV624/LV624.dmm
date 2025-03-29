@@ -814,6 +814,9 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
+"adq" = (
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -833,6 +836,9 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/turf/open/floor/asteroidplating,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -844,9 +850,16 @@
 "ady" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
+"adz" = (
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
+"adB" = (
+/obj/structure/prop/tower,
+/turf/open/floor/bot/north,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adC" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -883,6 +896,10 @@
 /obj/item/tool/shovel,
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
+"adG" = (
+/obj/structure/girder,
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adH" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -905,6 +922,13 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
+"adK" = (
+/turf/closed/wall,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"adL" = (
+/obj/item/frame/apc,
+/turf/closed/wall,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adM" = (
 /turf/open/floor/dark,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
@@ -46100,11 +46124,11 @@ aaW
 aaq
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
-aaw
+adq
+adq
+adv
+adv
+adq
 aaw
 aaw
 aaw
@@ -46328,11 +46352,11 @@ aaw
 aaw
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
-aaw
+adG
+adz
+adv
+adz
+adv
 aaw
 aaw
 aaw
@@ -46556,11 +46580,11 @@ aaw
 aaw
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
-aaw
+adK
+adz
+adB
+adz
+adv
 aaw
 aaw
 aaw
@@ -46784,11 +46808,11 @@ aaw
 aaw
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
-aaw
+adL
+adz
+adz
+adz
+adq
 aaw
 aaw
 aaw
@@ -47012,11 +47036,11 @@ aaw
 aaw
 aaw
 aaw
-aaw
-aaw
-aaw
-aaw
-aaw
+adK
+adG
+adz
+adz
+adv
 aaw
 aaw
 aaw

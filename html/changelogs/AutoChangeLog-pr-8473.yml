@@ -1,0 +1,7 @@
+author: "Generallemon07"
+delete-after: True
+changes:
+  - rscadd: "added 2 new fish types"
+  - qol: "made fishing poles able to be crafted"
+  - bugfix: "fixed Yautja spearfishing code"
+  - imageadd: "two new sprites for fish"

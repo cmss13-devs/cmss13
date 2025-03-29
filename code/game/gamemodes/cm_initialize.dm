@@ -478,7 +478,7 @@ Additional game mode variables.
 		if(!cur_xeno.client  && cur_xeno.away_timer < XENO_LEAVE_TIMER)
 			available_xenos += cur_xeno
 		else if(!cur_xeno.client && islarva(cur_xeno) && cur_xeno.away_timer < XENO_LEAVE_TIMER_LARVA)
-			available_xenos += cur_xeno'
+			available_xenos += cur_xeno
 		else
 			available_xenos_non_ssd += cur_xeno
 

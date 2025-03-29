@@ -294,24 +294,47 @@ DEFINES in setup.dm, referenced here.
 		if(!user.Adjacent(dropping))
 			return
 		var/obj/item/ammo_magazine/magazine = dropping
+		var/obj/item/ammo_magazine/handful/bullet = dropping
 		if(!istype(user) || user.is_mob_incapacitated(TRUE))
 			return
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 			return
-		if(flags_gun_features & GUN_INTERNAL_MAG)
-			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
-			return
 		//no tactical reload for the untrained.
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))
 			return
-		if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
+		// unconventional tac reloads, yes, you can reload with one hand if you know what youre doing irl
+		var/tac_reload_time = 15
+		var/old_ammo_loc = bullet.loc
+		var/obj/item/weapon/gun/shotgun/shotload = src
+		var/obj/item/weapon/gun/revolver/revload = src
+		if(flags_gun_features & GUN_INTERNAL_MAG)
+			if(magazine.caliber == caliber)
+				if(user.skills)
+					tac_reload_time = 2 //until this can loop, better for it to be in 2 ticks
+				if(current_mag && current_mag.current_rounds < current_mag.max_rounds)
+					to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional tactical reload.")) // the "you get on one knee and start" makes more sense if looping is added
+					if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && bullet.loc == old_ammo_loc && current_mag.current_rounds < current_mag.max_rounds)
+						if(shotload) // to do: make this loop until capacity is full or out of ammo
+							shotload.reload(user, bullet)
+						else if(revload) // to do: ditto
+							revload.reload(user, bullet)
+				else
+					to_chat(user, SPAN_NOTICE("[src] is already at its maximum capacity!"))
+					return
+			else if(magazine.caliber != caliber)
+				to_chat(user, SPAN_NOTICE("This doesn't match the [src]'s caliber!"))
+				return
+		// actual tactical reloads
+		else if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
+			if(istype(bullet, /obj/item/ammo_magazine/handful))
+				to_chat(user, SPAN_NOTICE("You can't reload with [bullet]!"))
+				return
 			if(current_mag)
 				unload(user, FALSE, TRUE)
 			to_chat(user, SPAN_NOTICE("You start a tactical reload."))
 			var/old_mag_loc = magazine.loc
-			var/tac_reload_time = 15
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
 			if(do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
@@ -319,6 +342,9 @@ DEFINES in setup.dm, referenced here.
 					var/obj/item/storage/master_storage = magazine.loc
 					master_storage.remove_from_storage(magazine)
 				reload(user, magazine)
+		else
+			to_chat(user, SPAN_NOTICE("This doesn't fit in [src]!"))
+			return
 	else
 		..()
 

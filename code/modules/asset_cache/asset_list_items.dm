@@ -270,6 +270,10 @@
 		list("medk9", "hudsquad_medk9"),
 		list("SG", "hudsquad_gun"),
 		list("Spc", "hudsquad_spec"),
+		list("SpcDem", "hudsquad_spec_demo"),
+		list("SpcSn", "hudsquad_spec_sniper"),
+		list("SpcGr", "hudsquad_spec_grenadier"),
+		list("SpcPy", "hudsquad_spec_pyro"),
 		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
 	)

@@ -146,6 +146,11 @@ const MainTab = () => {
                 Please adminhelp people who are intentionally sabotaging their
                 own team.
               </Collapsible>
+              <Collapsible title="How can I get back to my base quickly?">
+                You can get back to your base by using the tunnels found
+                throughout the jungle, or by walking back if you think it's
+                safer.
+              </Collapsible>
             </Box>
           </Collapsible>
         </Box>

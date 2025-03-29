@@ -43,21 +43,22 @@
 	var/datum/status_effect/stacking/bloodlust_effect = parent_xeno.has_status_effect(/datum/status_effect/stacking/bloodlust)
 	var/damage_to_deal = headbite.true_damage_to_deal + (parent_xeno.melee_damage_upper * 0.7) + (bloodlust_effect ? bloodlust_effect.stacks * 3 : 0)
 
-	/*for(var/datum/moba_player/player as anything in (!team2 ? controller.team2 : controller.team1))
-		if(QDELETED(player.tied_xeno) || (player.tied_xeno.stat == DEAD))
-			parent_xeno.client.images -= execute_images[player.tied_xeno]
-			execute_images -= player.tied_xeno
+	for(var/datum/moba_player/player as anything in (!team2 ? controller.team2 : controller.team1))
+		var/mob/living/carbon/xenomorph/tied_xeno = player.get_tied_xeno()
+		if(QDELETED(tied_xeno) || (tied_xeno.stat == DEAD))
+			parent_xeno.client.images -= execute_images[tied_xeno]
+			execute_images -= tied_xeno
 			continue
 
-		if(player.tied_xeno.health <= damage_to_deal)
-			var/image/execute_indicator = image('icons/mob/hud/hud.dmi', player.tied_xeno, "prae_tag")
+		if(tied_xeno.health <= damage_to_deal)
+			var/image/execute_indicator = image('icons/mob/hud/hud.dmi', tied_xeno, "execute_tag")
 			parent_xeno.client.images += execute_indicator
-			execute_images[player.tied_xeno] = execute_indicator
+			execute_images[tied_xeno] = execute_indicator
 		else
-			parent_xeno.client.images -= execute_images[player.tied_xeno]
-			execute_images -= player.tied_xeno*/
+			parent_xeno.client.images -= execute_images[tied_xeno]
+			execute_images -= tied_xeno
 
-	for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.living_xeno_list)
+	/*for(var/mob/living/carbon/xenomorph/xeno as anything in GLOB.living_xeno_list)
 		if(QDELETED(xeno) || (xeno.stat == DEAD))
 			var/image/indicator = execute_images[xeno]
 			if(indicator)
@@ -73,4 +74,4 @@
 			var/image/indicator = execute_images[xeno]
 			if(indicator)
 				//indicator.icon_state = ""
-				parent_xeno.client.images -= indicator
+				parent_xeno.client.images -= indicator*/

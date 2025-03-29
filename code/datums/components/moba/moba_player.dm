@@ -19,6 +19,7 @@
 		/datum/status_effect/reapers_call = SPAN_GREEN("Reaper's Call"),
 		/datum/status_effect/poisoned = "Poisoned",
 		/datum/status_effect/overdrive = "Overdrive",
+		/datum/status_effect/passive_gold = "Support: Passive Gold",
 	)
 
 	var/static/list/level_up_thresholds = list(
@@ -256,11 +257,11 @@
 		else
 			break
 
-/datum/component/moba_player/proc/grant_gold(datum/source, gold_amount = 0)
+/datum/component/moba_player/proc/grant_gold(datum/source, gold_amount = 0, silent = FALSE)
 	SIGNAL_HANDLER
 
 	player_datum.gold += gold_amount
-	if(gold_amount > 0)
+	if((gold_amount > 0) && !silent)
 		parent_xeno.balloon_alert(parent_xeno, "+[gold_amount][MOBA_GOLD_NAME_SHORT]", "#b89c14")
 
 /datum/component/moba_player/proc/get_owned_items(datum/source, list/datum/moba_item/items)

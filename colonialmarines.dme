@@ -747,6 +747,7 @@
 #include "code\datums\status_effects\grouped_effect.dm"
 #include "code\datums\status_effects\limited_effect.dm"
 #include "code\datums\status_effects\stacking_effect.dm"
+#include "code\datums\status_effects\buffs\passive_gold.dm"
 #include "code\datums\status_effects\buffs\overdrive.dm"
 #include "code\datums\status_effects\buffs\bloodlust.dm"
 #include "code\datums\status_effects\buffs\empowered.dm"

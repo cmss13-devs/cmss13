@@ -219,6 +219,7 @@
 		xeno.play_screen_text("You have been assigned to [player_data.role].")
 		if(player_data.role == MOBA_LANE_SUPPORT) //zonenote should be redone later
 			ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
+			xeno.apply_status_effect(/datum/status_effect/passive_gold, 3)
 
 	for(var/datum/moba_queue_player/player_data as anything in team2_data)
 		var/datum/moba_player/player = player_data.player
@@ -235,6 +236,7 @@
 		xeno.play_screen_text("You have been assigned to [player_data.role].")
 		if(player_data.role == MOBA_LANE_SUPPORT)
 			ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
+			xeno.apply_status_effect(/datum/status_effect/passive_gold, 3)
 
 	start_game()
 	return TRUE
@@ -361,6 +363,7 @@
 	ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)
 	if(found_playerdata.role == MOBA_LANE_SUPPORT)
 		ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
+		xeno.apply_status_effect(/datum/status_effect/passive_gold, 3)
 	found_playerdata.player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 
 	qdel(found_playerdata.player.get_tied_xeno())

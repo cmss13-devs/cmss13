@@ -1,6 +1,6 @@
 /datum/xeno_strain/sculptor
 	name = HIVELORD_SCULPTOR
-	description = "You loose weight, become more frail. Your resin will become less thick, your acid glands morph into plasma glands, and you will be able to use plasma to create gelatin and use plasma to enhance your psysical capabilities."
+	description = "You lose weight, become more frail. Your resin will become less thick, your acid glands morph into plasma glands, and you will be able to use plasma to create gelatin and use plasma to enhance your psysical capabilities."
 	flavor_description = "With the mastery of plasma, you will become the guardian of the hive."
 	icon_state_prefix = "Sculptor"
 
@@ -51,7 +51,7 @@
 	var/explosive_armor_buff_amount = 50
 	var/attack_speed_buff_amount = 2
 
-/datum/action/xeno_action/onclick/crystallized_plasma/use_ability(atom/A)
+/datum/action/xeno_action/onclick/crystallized_plasma/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/hivelord/zenomorf = owner
 
 	if (!action_cooldown_check())

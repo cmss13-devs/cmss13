@@ -13,7 +13,10 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_2
 
-	available_strains = list(/datum/xeno_strain/resin_whisperer)
+	available_strains = list(
+		/datum/xeno_strain/resin_whisperer,
+		/datum/xeno_strain/sculptor,
+	)
 
 	evolution_allowed = FALSE
 	caste_desc = "For all your resin needs."
@@ -90,6 +93,36 @@
 	skull = /obj/item/skull/hivelord
 	pelt = /obj/item/pelt/hivelord
 
+	var/mutable_appearance/plasma_overlays_icon
+
+	//Sculptor armor
+	var/armor_active = FALSE
+
+/mob/living/carbon/xenomorph/hivelord/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
+	. = ..()
+	plasma_overlays_icon = mutable_appearance('icons/mob/xenos/overlay_effects64x64.dmi',"empty")
+
+/mob/living/carbon/xenomorph/hivelord/proc/update_plasma_overlays()
+	if(!plasma_overlays_icon)
+		return
+
+	overlays -= plasma_overlays_icon
+	plasma_overlays_icon.overlays.Cut()
+
+	if(!armor_active)
+		return
+
+	if(stat != DEAD)
+		if(body_position == LYING_DOWN)
+			if(!HAS_TRAIT(src, TRAIT_INCAPACITATED) && !HAS_TRAIT(src, TRAIT_FLOORED))
+				plasma_overlays_icon.overlays += icon(icon, "plasma Sleeping")
+			else
+				plasma_overlays_icon.overlays += icon(icon, "plasma Knocked Down")
+		else
+			plasma_overlays_icon.overlays += icon(icon, "plasma")
+
+	overlays += plasma_overlays_icon
+
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"
 
@@ -127,8 +160,6 @@
 	to_chat(bound_xeno, SPAN_WARNING("We feel dizzy as the world slows down."))
 	bound_xeno.recalculate_move_delay = TRUE
 
-
-
 /datum/action/xeno_action/active_toggle/toggle_speed/enable_toggle()
 	. = ..()
 	update_weedwalking()
@@ -161,3 +192,7 @@
 		return
 
 	xeno.recalculate_move_delay = TRUE
+
+/datum/behavior_delegate/hivelord_base/on_update_icons()
+	var/mob/living/carbon/xenomorph/hivelord/bound_hivelord = bound_xeno
+	bound_hivelord.update_plasma_overlays()

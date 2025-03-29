@@ -505,7 +505,7 @@
 
 /obj/item/book/manual/surgery
 	name = "Surgical Reference Manual"
-	desc = "A detailed reference manual for surgical procedures."
+	desc = "A detailed reference manual for surgical procedures. To be read mid-surgery when you forget a simple surgical step."
 	icon_state = "book_medical"
 	item_state = "book_medical"
 	author = "Colonial Marines Bureau of Medicine and Surgery"
@@ -596,6 +596,7 @@
 
 /obj/item/book/manual/research_and_development
 	name = "Research and Development: What there is to find?"
+	desc = "Science: The final frontier. This book contains deeply specialized and educational information regarding research's continuing scientific mission: to explore strange new worlds; to seek out new life, new alloys and new vaccines; to boldly go where no one has researched before!"
 	icon_state = "book_research_development"
 	item_state = "book_research_development"
 	author = "Senior Researcher Glen Brooks, Weyland-Yutani Corporation"

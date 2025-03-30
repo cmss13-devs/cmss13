@@ -781,7 +781,7 @@
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 	new_human.r_eyes = 0
-	new_human.g_eyes = 0
+	new_human.g_eyes = 255
 	new_human.b_eyes = 0
 	new_human.r_hair = 100
 	new_human.g_hair = 88

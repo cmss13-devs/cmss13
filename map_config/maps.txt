@@ -65,3 +65,5 @@ endmap
 
 map whiskey_outpost_v2
 endmap
+
+map bigred_2016

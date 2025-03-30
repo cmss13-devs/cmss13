@@ -1100,6 +1100,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc
 	category = "Miscellaneous"
 
+/datum/gear/misc/facepaint_clown
+	display_name = "Makeup, clown"
+	path = /obj/item/facepaint/clown
+	fluff_cost = 1
+
 /datum/gear/misc/facepaint_green
 	display_name = "Facepaint, green"
 	path = /obj/item/facepaint/green

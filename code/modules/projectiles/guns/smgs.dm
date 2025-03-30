@@ -168,7 +168,7 @@
 
 /obj/item/weapon/gun/smg/m39/elite/heavy
 	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/extended_barrel, /obj/item/attachable/magnetic_harness, /obj/item/attachable/angledgrip)
-	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+	current_mag = /obj/item/ammo_magazine/smg/m39/ap
 	random_spawn_under = null
 
 /obj/item/weapon/gun/smg/m39/corporate

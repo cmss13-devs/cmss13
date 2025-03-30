@@ -74,7 +74,7 @@
 
 /obj/item/reagent_container/food/snacks/fishable/crab
 	name = "\improper spindle crab"
-	desc = "Looks like a little crab"
+	desc = "Looks like a little crab."
 	icon_state = "crab"
 	gut_icon_state = "crab_gutted"
 	guttable = TRUE
@@ -207,6 +207,40 @@
 	. = ..()
 	reagents.add_reagent("fish", 4)
 	bitesize = 6
+
+/obj/item/reagent_container/food/snacks/fishable/fish/salmon
+
+	name = "salmon"
+	desc = "A red and scaly river-dwelling fish!"
+	guttable = TRUE
+	icon_state = "salmon"
+	min_length = 12
+	max_length = 44
+	gut_icon_state = "salmon_gutted"
+	bitesize = 5
+	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/salmon
+	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/salmon)
+
+/obj/item/reagent_container/food/snacks/fishable/fish/salmon/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 4)
+
+/obj/item/reagent_container/food/snacks/fishable/fish/white_perch
+
+	name = "white perch"
+	desc = "A small and spiny invasive fish, kill it!"
+	guttable = TRUE
+	icon_state = "white_perch"
+	min_length = 6
+	max_length = 22
+	gut_icon_state = "white_perch_gutted"
+	bitesize = 5
+	base_gut_meat = /obj/item/reagent_container/food/snacks/meat/fish/white_perch
+	guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat/fish/white_perch)
+
+/obj/item/reagent_container/food/snacks/fishable/fish/white_perch/Initialize()
+	. = ..()
+	reagents.add_reagent("fish", 4)
 
 //--------------------//
 //Urchins, spikey bottom-feeding creatures

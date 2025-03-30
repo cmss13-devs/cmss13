@@ -84,19 +84,20 @@
 	plane = FLOOR_PLANE
 	health = HEALTH_RESIN_XENO_STICKY
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/plasma_cost = 0
 
 	var/mob/living/carbon/xenomorph/bound_xeno
 	var/obj/effect/alien/weeds/bound_weed
 
-/obj/effect/alien/resin/design/Initialize(mapload, obj/effect/alien/weeds/W, mob/living/carbon/xenomorph/X)
-	if(!istype(X))
+/obj/effect/alien/resin/design/Initialize(mapload, obj/effect/alien/weeds/weeds, mob/living/carbon/xenomorph/xeno)
+	if(!istype(xeno))
 		return INITIALIZE_HINT_QDEL
 
-	bound_xeno = X
-	bound_weed = W
-	hivenumber = X.hivenumber
-	RegisterSignal(W, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
-	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
+	bound_xeno = xeno
+	bound_weed = weeds
+	hivenumber = xeno.hivenumber
+	RegisterSignal(weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	RegisterSignal(xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
 	set_hive_data(src, hivenumber)
 	. = ..()
 
@@ -125,6 +126,7 @@
 /obj/effect/alien/resin/design/speed_node
 	name = "Design Optimized Node (100)"
 	icon_state = "static_speednode"
+	plasma_cost = 100
 
 /obj/effect/alien/resin/design/speed_node/get_examine_text(mob/user)
 	. = ..()
@@ -136,7 +138,7 @@
 /obj/effect/alien/resin/design/cost_node
 	name = "Design Flexible Node (125)"
 	icon_state = "static_costnode"
-
+	plasma_cost = 125
 
 /obj/effect/alien/resin/design/cost_node/get_examine_text(mob/user)
 	. = ..()
@@ -150,12 +152,14 @@
 	desc = "Open and Closes Doors"
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "door_control"
+	plasma_cost = 50
 
 /obj/effect/alien/resin/design/upgrade
 	name = "Thicken Resin (75)"
 	desc = "Channel our plasma and nutrients to thicken structures."
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "upgrade_resin"
+	plasma_cost = 75
 
 //////////////////////////
 // Greater Resin Surge. //
@@ -305,15 +309,9 @@
 		to_chat(xeno, SPAN_XENOWARNING("There is already a node here!"))
 		return
 
-	var/plasma_cost = 0
-	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node))
-		plasma_cost = 100
-	else if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/cost_node))
-		plasma_cost = 125
-	else if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/remote))
-		plasma_cost = 50
-	else if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
-		plasma_cost = 75
+	var/plasma_cost
+	if(xeno.selected_design && xeno.selected_design.plasma_cost)
+		plasma_cost = xeno.selected_design.plasma_cost
 
 	if(check_and_use_plasma_owner(plasma_cost))
 		var/selected_design = xeno.selected_design
@@ -505,7 +503,7 @@
 	if(.)
 		return
 
-	var/mob/living/carbon/xenomorph/xeno = usr
+	var/mob/living/carbon/xenomorph/xeno = ui.user
 	if(!istype(xeno))
 		return
 

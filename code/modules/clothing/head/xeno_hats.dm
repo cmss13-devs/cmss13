@@ -1,6 +1,6 @@
 /obj/item/clothing/head/xenos
 	name = "drone mask"
-	desc = "A mask made to resemble chitinous alien head. Who the hell made this, and most importantly, why?..."
+	desc = "A mask made to resemble a chitinous alien head. Who the hell made this, and most importantly, why?..."
 	icon_state = "drone_mask"
 	icon = 'icons/obj/items/clothing/hats/xeno_hats.dmi'
 	item_icons = list(

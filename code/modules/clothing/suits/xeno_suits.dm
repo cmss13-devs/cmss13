@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/xenos
 	name = "drone suit"
-	desc = "A suit made to resemble chitinous alien hide. Who the hell made this, and most importantly, why?..."
+	desc = "A suit made to resemble a chitinous alien hide. Who the hell made this, and most importantly, why?..."
 	icon_state = "drone_suit"
 	item_state = "xenos_suit"
 	icon = 'icons/obj/items/clothing/suits/xeno_suits.dmi'

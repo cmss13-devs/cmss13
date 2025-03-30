@@ -130,7 +130,7 @@
 		QDEL_NULL(coord)
 
 /obj/item/device/binoculars/range/clicked(mob/user, list/mods)
-	if(mods["ctrl"])
+	if(mods[CTRL_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		stop_targeting(user)
@@ -140,13 +140,13 @@
 /obj/item/device/binoculars/range/handle_click(mob/living/carbon/human/user, atom/targeted_atom, list/mods)
 	if(!istype(user))
 		return
-	if(mods["ctrl"])
+	if(mods[CTRL_CLICK])
 		if(user.stat != CONSCIOUS)
 			to_chat(user, SPAN_WARNING("You cannot use [src] while incapacitated."))
 			return FALSE
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
 			return FALSE
-		if(mods["click_catcher"])
+		if(mods[CLICK_CATCHER])
 			return FALSE
 		if(user.z != targeted_atom.z && !coord)
 			to_chat(user, SPAN_WARNING("You cannot get a direct laser from where you are."))
@@ -232,7 +232,7 @@
 
 	data["xcoord"] = src.last_x
 	data["ycoord"] = src.last_y
-	data["zcoord"] = src.last_z 
+	data["zcoord"] = src.last_z
 
 	return data
 
@@ -268,7 +268,7 @@
 	. += SPAN_NOTICE("[src] is currently set to [range_mode ? "range finder" : "CAS marking"] mode.")
 
 /obj/item/device/binoculars/range/designator/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		toggle_bino_mode(user)
@@ -632,7 +632,7 @@
 		return FALSE
 
 	var/list/modifiers = params2list(params) //Only single clicks.
-	if(modifiers["middle"] || modifiers["shift"] || modifiers["alt"] || modifiers["ctrl"])
+	if(modifiers[MIDDLE_CLICK] || modifiers[SHIFT_CLICK] || modifiers[ALT_CLICK] || modifiers[CTRL_CLICK])
 		return FALSE
 
 	var/turf/SS = get_turf(src) //Stand Still, not what you're thinking.

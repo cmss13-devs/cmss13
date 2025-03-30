@@ -1209,15 +1209,15 @@ and you're good to go.
 	var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
 
 	if(params) // Apply relative clicked position from the mouse info to offset projectile
-		if(!params["click_catcher"])
-			if(params["vis-x"])
-				projectile_to_fire.p_x = text2num(params["vis-x"])
-			else if(params["icon-x"])
-				projectile_to_fire.p_x = text2num(params["icon-x"])
-			if(params["vis-y"])
-				projectile_to_fire.p_y = text2num(params["vis-y"])
-			else if(params["icon-y"])
-				projectile_to_fire.p_y = text2num(params["icon-y"])
+		if(!params[CLICK_CATCHER])
+			if(params[VIS_X])
+				projectile_to_fire.p_x = text2num(params[VIS_X])
+			else if(params[ICON_X])
+				projectile_to_fire.p_x = text2num(params[ICON_X])
+			if(params[VIS_Y])
+				projectile_to_fire.p_y = text2num(params[VIS_Y])
+			else if(params[ICON_Y])
+				projectile_to_fire.p_y = text2num(params[ICON_Y])
 			var/atom/movable/clicked_target = original_target
 			if(istype(clicked_target))
 				projectile_to_fire.p_x -= clicked_target.bound_width / 2
@@ -2036,7 +2036,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK])
 		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.

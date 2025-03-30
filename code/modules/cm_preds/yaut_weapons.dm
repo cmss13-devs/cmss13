@@ -1421,8 +1421,8 @@
 	flags_item = TWOHANDED|ITEM_PREDATOR
 
 /obj/item/weapon/gun/bow/Initialize(mapload, spawn_empty)
-	. = ..(mapload, TRUE) //is there a better way?
-	update_icon()
+	spawn_empty = TRUE
+	. = ..()
 
 /obj/item/weapon/gun/bow/set_gun_config_values()
 	..()

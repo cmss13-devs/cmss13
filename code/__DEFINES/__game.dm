@@ -35,7 +35,7 @@
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
-#define MAP_BIGRED_2016 "Bigred_2016"
+#define MAP_BIGRED_2016 "bigred_2016"
 
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"

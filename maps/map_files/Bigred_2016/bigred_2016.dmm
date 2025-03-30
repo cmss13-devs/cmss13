@@ -1377,12 +1377,6 @@
 "ja" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/bigredv2/outside/space_port)
-"jc" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkbluecorners2{
-	dir = 8
-	},
-/area/bigredv2/outside/office_complex)
 "jd" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/whitebluecorner/west,
@@ -3466,9 +3460,7 @@
 /area/bigredv2/outside/space_port)
 "xa" = (
 /obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/darkbluecorners2{
-	dir = 1
-	},
+/turf/open/floor/darkbluecorners2,
 /area/bigredv2/outside/office_complex)
 "xc" = (
 /obj/structure/machinery/computer/shuttle/dropship/flight/lz1,
@@ -3564,11 +3556,6 @@
 /obj/structure/machinery/sleep_console,
 /turf/open/floor,
 /area/bigredv2/outside/medical)
-"xQ" = (
-/turf/open/floor/darkbluecorners2{
-	dir = 1
-	},
-/area/bigredv2/outside/office_complex)
 "xS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-in"
@@ -4284,9 +4271,7 @@
 /turf/open/floor/darkbrowncorners2/east,
 /area/bigredv2/outside/engineering)
 "CE" = (
-/turf/open/floor/darkbluecorners2{
-	dir = 8
-	},
+/turf/open/floor/darkbluecorners2,
 /area/bigredv2/outside/office_complex)
 "CG" = (
 /obj/structure/prop/static_tank/fuel,
@@ -4486,11 +4471,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/bar,
 /area/bigredv2/outside/general_offices)
-"DP" = (
-/turf/open/floor/darkbluecorners2{
-	dir = 4
-	},
-/area/bigredv2/outside/office_complex)
 "DR" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -4709,12 +4689,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/living)
-"Fb" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplatecorner/north{
-	dir = 8
-	},
-/area/bigredv2/outside/engineering)
 "Fc" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/spawner/random/toolbox,
@@ -5300,12 +5274,6 @@
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/caves_research)
-"IC" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkbluecorners2{
-	dir = 1
-	},
-/area/bigredv2/outside/office_complex)
 "ID" = (
 /obj/structure/pipes/vents/scrubber/on{
 	dir = 8
@@ -151287,7 +151255,7 @@ Ty
 Ty
 dL
 dL
-xQ
+CE
 oH
 CE
 dL
@@ -151536,7 +151504,7 @@ Ty
 Ty
 gq
 FX
-xQ
+CE
 oH
 CE
 ng
@@ -151785,7 +151753,7 @@ Ty
 Ty
 dL
 dL
-xQ
+CE
 oH
 CE
 dL
@@ -152283,9 +152251,9 @@ Ty
 Ty
 gq
 wP
-IC
+xr
 UP
-jc
+xr
 QE
 gq
 Ty
@@ -152532,7 +152500,7 @@ Ty
 Ty
 dL
 dL
-IC
+xr
 UP
 CE
 dL
@@ -152781,7 +152749,7 @@ Ty
 Ty
 Ty
 dL
-IC
+xr
 oH
 CE
 dL
@@ -153030,7 +152998,7 @@ Ty
 Ty
 dL
 dL
-xQ
+CE
 oH
 CE
 dL
@@ -153073,7 +153041,7 @@ Ra
 Ra
 Ra
 sP
-Fb
+tM
 WT
 OZ
 Ra
@@ -153279,7 +153247,7 @@ Ty
 Ty
 gq
 QE
-xQ
+CE
 UP
 CE
 QE
@@ -153528,7 +153496,7 @@ Ty
 Ty
 dL
 dL
-IC
+xr
 UP
 CE
 dL
@@ -153777,7 +153745,7 @@ Ty
 Ty
 Ty
 dL
-IC
+xr
 UP
 CE
 dL
@@ -154026,7 +153994,7 @@ Ty
 Ty
 dL
 dL
-IC
+xr
 oH
 CE
 dL
@@ -154275,7 +154243,7 @@ Ty
 Ty
 gq
 QE
-xQ
+CE
 oH
 CE
 QE
@@ -154524,9 +154492,9 @@ Ty
 Ty
 dL
 dL
-xQ
+CE
 oH
-jc
+xr
 dL
 dL
 Ty
@@ -154773,9 +154741,9 @@ Ty
 Ty
 Ty
 dL
-xQ
+CE
 UP
-jc
+xr
 dL
 gq
 gq
@@ -155024,7 +154992,7 @@ Ty
 dL
 xa
 UP
-jc
+xr
 NX
 Gb
 Gb
@@ -155271,9 +155239,9 @@ Ty
 Ty
 Ty
 dL
-IC
+xr
 UP
-jc
+xr
 rS
 Gb
 Gb
@@ -155520,9 +155488,9 @@ Ty
 Ty
 Ty
 dL
-IC
+xr
 UP
-jc
+xr
 dL
 gq
 gq
@@ -156018,7 +155986,7 @@ th
 Dh
 ms
 Ih
-xQ
+CE
 ia
 ia
 xV
@@ -156270,7 +156238,7 @@ ie
 Mt
 ia
 GR
-jc
+xr
 GU
 gq
 Ty
@@ -156765,7 +156733,7 @@ vy
 lb
 Ur
 Ih
-DP
+CE
 GR
 GR
 Rk
@@ -157263,9 +157231,9 @@ Ty
 Ty
 dL
 dL
-xQ
+CE
 UP
-jc
+xr
 dL
 dL
 Ty
@@ -157512,9 +157480,9 @@ Ty
 Ty
 gq
 QE
-xQ
+CE
 oH
-jc
+xr
 wP
 gq
 Ty
@@ -157761,9 +157729,9 @@ Ty
 Ty
 dL
 dL
-xQ
+CE
 oH
-jc
+xr
 dL
 dL
 Ty
@@ -158010,7 +157978,7 @@ Ty
 Ty
 Ty
 dL
-xQ
+CE
 oH
 CE
 dL
@@ -158259,7 +158227,7 @@ Ty
 Ty
 dL
 dL
-xQ
+CE
 oH
 CE
 dL
@@ -158508,7 +158476,7 @@ Ty
 Ty
 gq
 wP
-IC
+xr
 oH
 CE
 gq
@@ -158757,7 +158725,7 @@ Ty
 Ty
 dL
 dL
-IC
+xr
 UP
 CE
 gq
@@ -159006,7 +158974,7 @@ Ty
 Ty
 Ty
 dL
-IC
+xr
 UP
 CE
 rI
@@ -159255,7 +159223,7 @@ Ty
 Ty
 dL
 dL
-IC
+xr
 UP
 CE
 gq
@@ -159504,7 +159472,7 @@ Ty
 Ty
 gq
 wP
-IC
+xr
 oH
 CE
 gq
@@ -159753,9 +159721,9 @@ Jx
 Kp
 Kp
 Kp
-xQ
+CE
 oH
-jc
+xr
 dL
 dL
 gq
@@ -160002,9 +159970,9 @@ Sz
 Kp
 Kp
 Kp
-xQ
+CE
 oH
-jc
+xr
 dL
 Ty
 Ty
@@ -160251,9 +160219,9 @@ Sz
 Kp
 Kp
 Kp
-xQ
+CE
 UP
-jc
+xr
 dL
 Ty
 Ty

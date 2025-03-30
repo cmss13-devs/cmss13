@@ -375,6 +375,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/east,
 /area/bigredv2/caves/eta/storage)
 "bp" = (
@@ -730,6 +731,7 @@
 /area/bigredv2/outside/office_complex)
 "cq" = (
 /obj/structure/closet/radiation,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2,
 /area/bigredv2/caves/eta/storage)
 "cr" = (
@@ -787,6 +789,7 @@
 /turf/open/floor/darkblue2/west,
 /area/bigredv2/outside/space_port)
 "cB" = (
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/darkpurplecorners2/east,
 /area/bigredv2/outside/general_offices)
 "cC" = (
@@ -1025,6 +1028,7 @@
 /obj/structure/holowindow{
 	dir = 4
 	},
+/obj/structure/machinery/big_computers/messaging_server,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/eta/storage)
 "dr" = (
@@ -1060,6 +1064,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/lapvend,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/warnwhite,
 /area/bigredv2/caves/eta/storage)
 "dx" = (
@@ -1277,6 +1282,18 @@
 	},
 /turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/outside/medical)
+"ej" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
+"ek" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/living)
 "el" = (
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
@@ -1288,6 +1305,15 @@
 /obj/structure/prop/server_equipment/laptop/on,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
+/area/bigredv2/outside/cargo)
+"en" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/bigredv2/outside/cargo)
+"eo" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "ep" = (
 /obj/structure/closet/emcloset,
@@ -1307,10 +1333,23 @@
 	},
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves_research)
+"et" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/mars,
+/area/bigredv2/outside/s)
 "eu" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkish,
 /area/bigredv2/outside/admin_building)
+"ev" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/engine,
+/area/bigredv2/outside/engineering/reactor)
+"ew" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/mars,
+/area/bigredv2/outside/s)
 "ex" = (
 /obj/docking_port/stationary/trijent_elevator/empty{
 	id = "trijent_omega";
@@ -1320,6 +1359,14 @@
 	},
 /turf/open/gm/empty,
 /area/bigredv2/caves_research)
+"ey" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering)
+"ez" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating,
+/area/bigredv2/outside/engineering)
 "eA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -1346,6 +1393,15 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/caves_research)
+"eF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark,
+/area/bigredv2/outside/engineering)
+"eG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkpurple2,
+/area/bigredv2/caves/eta/storage)
 "eH" = (
 /obj/item/reagent_container/glass/bucket,
 /obj/structure/machinery/light{
@@ -1394,6 +1450,10 @@
 	},
 /turf/open/floor/bar,
 /area/bigredv2/outside/general_offices)
+"eQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkpurple2/west,
+/area/bigredv2/caves/eta/storage)
 "eR" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -1405,6 +1465,10 @@
 "eT" = (
 /turf/open/floor/whiteblue/southwest,
 /area/bigredv2/outside/general_offices)
+"eU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkpurple2/east,
+/area/bigredv2/caves/eta/storage)
 "eV" = (
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/jungle,
@@ -1418,6 +1482,11 @@
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/bigredv2/caves_research)
+"eY" = (
+/obj/structure/holowindow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkpurple2/north,
+/area/bigredv2/caves/eta/storage)
 "eZ" = (
 /obj/structure/holowindow{
 	dir = 8
@@ -1427,11 +1496,19 @@
 /obj/item/tool/pen/clicky,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"fa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkpurple2/north,
+/area/bigredv2/caves/eta/storage)
 "fb" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/scalpel/manager,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/caves_research)
+"fc" = (
+/obj/structure/holowindow,
+/turf/open/floor/darkpurple2/north,
+/area/bigredv2/caves/eta/storage)
 "fd" = (
 /obj/structure/sign/safety/chem_lab{
 	pixel_x = 8;
@@ -1460,6 +1537,40 @@
 	},
 /turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/caves_research)
+"fh" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
+"fi" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/storage)
+"fj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/bigredv2/caves/eta/storage)
+"fk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkpurplecorners2/west,
+/area/bigredv2/caves/eta/storage)
+"fl" = (
+/obj/structure/holowindow{
+	dir = 8
+	},
+/obj/structure/holowindow{
+	dir = 4
+	},
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/freezerfloor,
+/area/bigredv2/caves/eta/storage)
+"fm" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/mars,
+/area/bigredv2/outside/n)
 "fn" = (
 /obj/structure/machinery/washing_machine,
 /obj/structure/machinery/washing_machine{
@@ -1483,6 +1594,14 @@
 	},
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/caves_research)
+"fq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/white,
+/area/bigredv2/caves/eta/storage)
+"fr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/warnwhite/west,
+/area/bigredv2/caves/eta/storage)
 "fs" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "0-8"
@@ -1520,6 +1639,27 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/living)
+"fx" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark,
+/area/bigredv2/outside/general_offices)
+"fy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/whitebluecorner,
+/area/bigredv2/outside/admin_building)
+"fz" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/whiteblue/west,
+/area/bigredv2/outside/general_offices)
+"fA" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/darkish,
+/area/bigredv2/outside/admin_building)
+"fB" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/mars,
+/area/bigredv2/outside/n)
 "fC" = (
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/whitepurplefull,
@@ -1538,6 +1678,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whiteblue/northeast,
 /area/bigredv2/outside/general_offices)
+"fG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/redcorner/west,
+/area/bigredv2/outside/marshal_office)
 "fH" = (
 /obj/structure/surface/table,
 /obj/item/device/analyzer/plant_analyzer,
@@ -1547,6 +1692,10 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/whitegreen_v/northeast,
 /area/bigredv2/caves_research)
+"fI" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/mars,
+/area/bigredv2/outside/n)
 "fJ" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -1557,6 +1706,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
+"fL" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/carpet,
+/area/bigredv2/outside/dorms)
+"fM" = (
+/obj/structure/bed,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/carpet,
+/area/bigredv2/outside/dorms)
 "fN" = (
 /turf/open/floor/darkbrown2,
 /area/bigredv2/outside/engineering)
@@ -1569,6 +1728,11 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/jungle,
 /area/bigredv2/outside/filtration_plant)
+"fQ" = (
+/obj/item/stool,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
 "fR" = (
 /turf/open/floor/plating/warnplate/northeast,
 /area/bigredv2/outside/space_port)
@@ -1699,6 +1863,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/caves_research)
 "gx" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/warnwhite,
 /area/bigredv2/caves/eta/storage)
 "gA" = (
@@ -1796,6 +1961,7 @@
 	dir = 4;
 	icon_state = "conveyor-1"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurplecorners2,
 /area/bigredv2/caves/eta/storage)
 "ht" = (
@@ -1810,6 +1976,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/living)
 "hw" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurplecorners2/north,
 /area/bigredv2/caves/eta/storage)
 "hz" = (
@@ -2099,6 +2266,7 @@
 /obj/structure/holowindow{
 	dir = 8
 	},
+/obj/structure/machinery/big_computers/messaging_server/brown,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/eta/storage)
 "jr" = (
@@ -2462,6 +2630,7 @@
 /turf/open/jungle,
 /area/bigredv2/outside/filtration_plant)
 "lM" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/warnwhite/northwest,
 /area/bigredv2/caves/eta/storage)
 "lO" = (
@@ -2553,6 +2722,7 @@
 /turf/open/floor/platebot,
 /area/bigredv2/outside/cargo)
 "mu" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/warnwhite/southeast,
 /area/bigredv2/caves/eta/storage)
 "mv" = (
@@ -2581,11 +2751,10 @@
 /area/bigredv2/caves/eta/living)
 "mF" = (
 /obj/structure/holowindow{
-	dir = 1
-	},
-/obj/structure/holowindow{
 	dir = 8
 	},
+/obj/structure/machinery/computer/rdservercontrol,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/eta/storage)
 "mG" = (
@@ -3499,6 +3668,7 @@
 "sm" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2,
 /area/bigredv2/caves/eta/storage)
 "so" = (
@@ -4935,6 +5105,8 @@
 /obj/structure/holowindow{
 	dir = 8
 	},
+/obj/structure/surface/table,
+/obj/structure/machinery/cell_charger,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/eta/storage)
 "Ck" = (
@@ -6654,6 +6826,7 @@
 /turf/open/floor/darkred2/north,
 /area/bigredv2/outside/office_complex)
 "Mw" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/southeast,
 /area/bigredv2/caves/eta/storage)
 "Mx" = (
@@ -6833,6 +7006,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/southwest,
 /area/bigredv2/caves/eta/storage)
 "NJ" = (
@@ -7523,6 +7697,7 @@
 "Sb" = (
 /obj/structure/surface/table,
 /obj/item/storage/box/cups,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/west,
 /area/bigredv2/caves/eta/storage)
 "Sc" = (
@@ -7584,11 +7759,11 @@
 /area/bigredv2/outside/general_offices)
 "Sw" = (
 /obj/structure/holowindow{
-	dir = 1
-	},
-/obj/structure/holowindow{
 	dir = 4
 	},
+/obj/structure/surface/table,
+/obj/item/cell,
+/obj/item/cell,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/eta/storage)
 "Sx" = (
@@ -7739,6 +7914,9 @@
 /obj/structure/holowindow{
 	dir = 4
 	},
+/obj/structure/surface/table,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/eta/storage)
 "Tm" = (
@@ -7826,6 +8004,7 @@
 /area/bigredv2/caves_research)
 "TN" = (
 /obj/structure/machinery/power/apc/power/east,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/east,
 /area/bigredv2/caves/eta/storage)
 "TQ" = (
@@ -8074,6 +8253,7 @@
 "Vz" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/southwest,
 /area/bigredv2/caves/eta/storage)
 "VB" = (
@@ -8293,6 +8473,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/northwest,
 /area/bigredv2/caves/eta/storage)
 "WY" = (
@@ -8427,6 +8608,7 @@
 /area/bigredv2/outside/marshal_office)
 "XQ" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkpurple2/northwest,
 /area/bigredv2/caves/eta/storage)
 "XT" = (
@@ -95310,7 +95492,7 @@ hv
 qg
 hv
 hv
-fo
+ej
 fo
 fo
 ER
@@ -100021,7 +100203,7 @@ Mx
 Mx
 ph
 CI
-CI
+ek
 CI
 vF
 gm
@@ -100255,7 +100437,7 @@ gm
 gm
 vF
 XO
-fo
+ej
 Pe
 cR
 vF
@@ -140586,7 +140768,7 @@ Ty
 Ty
 Ty
 Ty
-Ty
+fB
 Ty
 Ty
 Ty
@@ -141450,7 +141632,7 @@ wy
 PA
 PA
 wy
-wy
+en
 wy
 wy
 PA
@@ -142195,7 +142377,7 @@ PA
 Br
 PA
 Br
-PA
+eo
 WR
 wy
 ep
@@ -150548,7 +150730,7 @@ Wn
 qT
 Jf
 ZN
-gc
+fA
 rV
 gc
 RC
@@ -151048,7 +151230,7 @@ KI
 Za
 KI
 gc
-Qx
+fy
 Cq
 Qx
 IS
@@ -153579,7 +153761,7 @@ Ra
 tC
 ge
 oo
-tM
+ez
 FV
 qj
 Ra
@@ -156517,7 +156699,7 @@ kl
 Fh
 qL
 Mh
-iG
+fG
 Od
 yn
 Ih
@@ -157586,7 +157768,7 @@ Ra
 Ra
 BL
 Oo
-AN
+ey
 AN
 AN
 fN
@@ -157755,7 +157937,7 @@ Ty
 Ty
 yn
 bX
-iG
+fG
 Ff
 Qi
 pb
@@ -157811,7 +157993,7 @@ Hp
 aR
 Nz
 Oo
-ON
+eF
 nQ
 nQ
 AN
@@ -158094,7 +158276,7 @@ GG
 mx
 mx
 IR
-jR
+ev
 lc
 ki
 ki
@@ -160982,7 +161164,7 @@ Ty
 Ty
 Ty
 QZ
-nV
+fL
 nV
 MQ
 AG
@@ -161731,7 +161913,7 @@ Ty
 QZ
 xG
 xG
-xG
+fM
 Bz
 ee
 dr
@@ -163025,7 +163207,7 @@ rt
 oW
 xv
 AL
-oW
+fh
 oW
 oW
 Sx
@@ -163506,7 +163688,7 @@ wo
 wo
 wo
 wo
-wo
+fx
 wo
 wo
 wo
@@ -163996,7 +164178,7 @@ Iw
 zC
 uc
 Eq
-JK
+fz
 JK
 JK
 JK
@@ -165761,9 +165943,9 @@ Ty
 Ty
 Ty
 WP
-vb
+fl
 GV
-ys
+fk
 Vz
 WP
 ut
@@ -166010,9 +166192,9 @@ Ty
 Ty
 Ty
 WP
-vb
+fl
 GV
-EN
+fj
 cq
 WP
 ut
@@ -166261,7 +166443,7 @@ Ty
 WP
 vb
 GV
-EN
+fj
 cq
 WP
 ut
@@ -166342,7 +166524,7 @@ ut
 ut
 ut
 ut
-ut
+et
 ut
 ut
 ut
@@ -167247,9 +167429,9 @@ Ty
 Ty
 TW
 WX
-RG
-RG
-RG
+eQ
+eQ
+eQ
 RG
 HT
 NI
@@ -167262,9 +167444,9 @@ zc
 yb
 Tc
 WX
-RG
-RG
-RG
+eQ
+eQ
+eQ
 bn
 ic
 jD
@@ -167495,22 +167677,22 @@ Ty
 Ty
 Ty
 TW
-GV
+fa
 lM
-UI
+fr
 UI
 UI
 lC
 sm
 Tc
-GV
-EN
+fa
+fj
 EN
 EN
 EN
 Ws
 Tc
-GV
+eY
 mF
 jq
 jq
@@ -167744,22 +167926,22 @@ Ty
 Ty
 Ty
 TW
-GV
+fa
 Ql
 fW
 fW
 jk
 gx
-EN
+fj
 BM
-GV
+fa
 Xh
 Zi
 DE
 Xh
-Ws
+eG
 BM
-GV
+fa
 Jz
 Jz
 cV
@@ -167959,7 +168141,7 @@ QZ
 zs
 mW
 nV
-nV
+fL
 zs
 zs
 QZ
@@ -167997,23 +168179,23 @@ GV
 WF
 rK
 jk
-jk
+fq
 gx
-EN
+fj
 ca
 GV
 OX
 mM
 PW
-Xh
-Ws
+fi
+eG
 ca
 Jz
 Jz
 cV
 cV
 cV
-Ws
+eG
 jD
 ut
 ut
@@ -168246,23 +168428,23 @@ GV
 Ql
 KL
 tB
-jk
+fq
 mu
-Ws
+eG
 Tc
 Jz
 EN
 EN
 EN
-EN
-Ws
+fj
+eG
 Tc
-GV
+fc
 Sw
 dq
 dq
 Tk
-Ws
+eG
 jD
 ut
 ut
@@ -168454,7 +168636,7 @@ Ty
 Ty
 Ty
 QZ
-mW
+fQ
 Jj
 nV
 nV
@@ -168502,14 +168684,14 @@ Tc
 Jz
 te
 te
-te
+eU
 TN
 Mw
 FB
 ik
 te
 te
-te
+eU
 bo
 Mw
 jD
@@ -173684,7 +173866,7 @@ Ty
 Ty
 Ty
 Ty
-Ty
+fI
 Ty
 Ty
 Ty
@@ -175458,7 +175640,7 @@ Ty
 Ty
 Ty
 Ty
-Ty
+fm
 Ty
 Ty
 Ty
@@ -178679,7 +178861,7 @@ Ty
 Ty
 Ty
 Ty
-Ty
+fm
 Ty
 Ty
 Ty
@@ -178956,7 +179138,7 @@ Ty
 Ty
 Ty
 Ty
-Ty
+fm
 Ty
 Ty
 Ty
@@ -180171,7 +180353,7 @@ Ty
 Ty
 Ty
 Ty
-Ty
+fI
 Ty
 Ty
 Ty
@@ -180970,7 +181152,7 @@ ut
 ut
 ut
 ut
-ut
+et
 ut
 ut
 ut
@@ -182239,7 +182421,7 @@ ut
 ut
 ut
 ut
-ut
+ew
 ut
 ut
 ut
@@ -184729,7 +184911,7 @@ ut
 ut
 ut
 ut
-ut
+et
 ut
 ut
 ut
@@ -185191,7 +185373,7 @@ Ty
 Ty
 ut
 ut
-ut
+ew
 ut
 ut
 ut

@@ -411,3 +411,15 @@
   - imageadd: added many new additions to the Hunter sprite lists and expanded current
       ones, as well as many new prey items.
   - maptweak: completely remade the Hunter ship map and expanded it with more decks.
+2025-03-29:
+  hry-gh:
+  - bugfix: the audio player shouldn't blow up in weird circumstances
+  - bugfix: mouse 4/5 presses no longer count as mouse 1 presses
+2025-03-30:
+  Generallemon07:
+  - rscadd: added 2 new fish types
+  - qol: made fishing poles able to be crafted
+  - bugfix: fixed Yautja spearfishing code
+  - imageadd: two new sprites for fish
+  IroquoisLou:
+  - balance: Lowered the L23's damage and gave it falloff.

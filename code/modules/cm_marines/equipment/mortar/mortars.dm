@@ -459,6 +459,8 @@
 				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			var/obj/item/mortar_kit/mortar = new /obj/item/mortar_kit(loc)
+			if(linked_designator)
+				mortar.linked_designator = linked_designator
 			mortar.name = src.name
 			qdel(src)
 
@@ -584,6 +586,8 @@
 	unacidable = TRUE
 	w_class = SIZE_HUGE //No dumping this in a backpack. Carry it, fatso
 	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	/// Linked designator, keeping track of it on undeploy so we don't have to relink it everytime.
+	var/obj/item/device/binoculars/range/designator/linked_designator
 
 /obj/item/mortar_kit/Initialize(...)
 	. = ..()
@@ -611,6 +615,8 @@
 	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)
 	if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		var/obj/structure/mortar/mortar = new /obj/structure/mortar(deploy_turf)
+		if(linked_designator)
+			mortar.linked_designator = linked_designator
 		if(!is_ground_level(deploy_turf.z))
 			mortar.ship_side = TRUE
 			user.visible_message(SPAN_NOTICE("[user] deploys [src]."),

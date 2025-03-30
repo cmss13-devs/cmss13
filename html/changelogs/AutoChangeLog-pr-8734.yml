@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - qol: "people with window scaling that is greater or less than 100% will now have windows scale, appropriate to the \"window scaling\" option in settings"

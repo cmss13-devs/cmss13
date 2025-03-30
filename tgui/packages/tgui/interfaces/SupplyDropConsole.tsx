@@ -72,8 +72,8 @@ export const SupplyDropConsole = () => {
               <NumberInput
                 width="4em"
                 step={1}
-                minValue={-1000}
-                maxValue={1000}
+                minValue={-Infinity}
+                maxValue={Infinity}
                 value={data.x_offset}
                 onChange={(value) => act('set_x', { set_x: `${value}` })}
               />
@@ -82,8 +82,8 @@ export const SupplyDropConsole = () => {
               <NumberInput
                 width="4em"
                 step={1}
-                minValue={-1000}
-                maxValue={1000}
+                minValue={-Infinity}
+                maxValue={Infinity}
                 value={data.y_offset}
                 onChange={(value) => act('set_y', { set_y: `${value}` })}
               />
@@ -92,8 +92,8 @@ export const SupplyDropConsole = () => {
               <NumberInput
                 width="4em"
                 step={1}
-                minValue={-1000}
-                maxValue={1000}
+                minValue={-Infinity}
+                maxValue={Infinity}
                 value={data.z_offset}
                 onChange={(value) => act('set_z', { set_z: `${value}` })}
               />

@@ -1,0 +1,7 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - rscadd: "Underbarrel Miniflamers now notify your remaining fuel after firing."
+  - bugfix: "Flamers no longer fire through doors and windows."
+  - bugfix: "Underbarrel Miniflamers are now a bit more responsive and will no longer drop clicks at far ranges."
+  - refactor: "Cleans up unleash_flame proc to bring up to code standard."

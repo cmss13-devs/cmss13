@@ -371,6 +371,17 @@
 	new /obj/item/storage/pill_bottle/imidazoline(src)
 	new /obj/item/storage/pill_bottle/alkysine(src)
 
+/obj/item/storage/belt/medical/lifesaver/wy/partial/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/device/healthanalyzer(src)
+
 /obj/item/storage/belt/medical/lifesaver/full/forecon/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle/bicaridine(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)

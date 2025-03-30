@@ -31,6 +31,10 @@
 	desc = "The pinnacle of fashion for any aspiring mercenary leader. Designed to protect the head from light impacts."
 	icon_state = "officer_hat"
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/sec
+	name = "\improper W-Y armored cap"
+	icon_state = "newcorpo_cap"
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc/sniper
 	name = "\improper PMC sniper helmet"
 	desc = "A helmet worn by PMC Marksmen."

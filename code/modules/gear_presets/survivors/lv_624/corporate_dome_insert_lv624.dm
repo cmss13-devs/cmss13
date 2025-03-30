@@ -156,28 +156,26 @@
 
 // only used on the spawner of all of those above...
 /datum/equipment_preset/synth/survivor/wy/security_synth/goon
-	name = "Survivor - Synthetic - Corporate Security Synth (Goon)"
+	name = "Survivor - Synthetic - Corporate Security Goon Synthetic"
 	idtype = /obj/item/card/id/silver/cl
+	assignment = JOB_WY_GOON_SYNTH
+	rank = JOB_WY_GOON_SYNTH
+	minimap_icon = "goon_synth"
 	role_comm_title = "WY Syn"
-	minimap_icon = "pmc_syn"
-	minimap_background = "background_goon"
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/colonist/white_service,
-		WEAR_BACK = /obj/item/storage/backpack/satchel/sec,
+		WEAR_BODY = /obj/item/clothing/under/marine/veteran/pmc/corporate,
+		WEAR_BACK = /obj/item/storage/backpack/lightpack/five_slot,
 		WEAR_IN_BACK = /obj/item/restraint/handcuffs,
 		WEAR_IN_BACK = /obj/item/restraint/handcuffs,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/webbing,
+		WEAR_JACKET = /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth/corporate,
 		WEAR_WAIST = /obj/item/storage/belt/security/MP/full/synth,
 		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
 		WEAR_HANDS = /obj/item/clothing/gloves/black,
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
-		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
-		WEAR_L_HAND = /obj/item/weapon/classic_baton
+		WEAR_FEET = /obj/item/clothing/shoes/marine/corporate/knife
 	)
 
 	survivor_variant = SECURITY_SURVIVOR

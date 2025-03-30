@@ -286,7 +286,7 @@
 
 /datum/equipment_preset/synth/survivor/pmc/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch/black, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/surgery/scalpel/manager, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/weylandyutani, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_ACCESSORY)
@@ -310,7 +310,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crew_monitor, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/dutch/partial, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/wy/partial, WEAR_WAIST)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/screwdriver/tactical, WEAR_IN_L_STORE)

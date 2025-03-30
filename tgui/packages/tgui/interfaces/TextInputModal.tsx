@@ -1,4 +1,4 @@
-import { KEY } from 'common/keys';
+import { isEscape, KEY } from 'common/keys';
 import { KeyboardEvent, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Section, Stack, TextArea } from 'tgui/components';
@@ -67,7 +67,7 @@ export const TextInputModal = (props) => {
           ) {
             act('submit', { entry: input });
           }
-          if (event.key === KEY.Escape) {
+          if (isEscape(event.key)) {
             act('cancel');
           }
         }}

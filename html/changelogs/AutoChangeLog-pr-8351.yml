@@ -1,0 +1,6 @@
+author: "LC4492"
+delete-after: True
+changes:
+  - code_imp: "Adds new books and new contents for pre-existing ones, including new links and CM conversions. This PR also finally names the nuke and gives it proper specifications (now called the 'Blockbuster'), so they will match to the new version of the nuclear instructions book. Adds ten more Boots! headlines to the game, of which have been proposed by players on the forums."
+  - imageadd: "Updates all books to the contemporary \"pattern\", in_hands included. Also updates the in_hands of folders and notepads to match the current versions of their respective objects. Adds new sprite to the Boots! magazine."
+  - bugfix: "Fixes wiki links on all the manuals, allowing you to actually read them."

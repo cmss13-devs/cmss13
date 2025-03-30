@@ -110,6 +110,12 @@
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
 
+/obj/item/weapon/sword/yautja
+	name = "duelling blade"
+	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
+	icon_state = "yautja_sword"
+	item_state = "yautja_sword"
+
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
 	name = "replica katana"
@@ -183,7 +189,7 @@
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
-		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."), \
+		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."),
 			SPAN_NOTICE("You begin searching your body for shrapnel."))
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))

@@ -35,7 +35,8 @@
 
 /obj/item/reagent_container/hypospray/attack_self(mob/user)
 	..()
-
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if(next_inject > world.time)
 		return
 	next_inject = world.time + inject_cd
@@ -206,7 +207,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(M)] by their cqc skill.</font>")
 		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"), \
+		M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
 			SPAN_WARNING("You knock [user] to the ground before they inject you!"), null, 5)
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		return 0

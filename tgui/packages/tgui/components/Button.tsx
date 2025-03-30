@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -6,7 +5,7 @@
  */
 
 import { Placement } from '@popperjs/core';
-import { KEY } from 'common/keys';
+import { isEscape, KEY } from 'common/keys';
 import { BooleanLike, classes } from 'common/react';
 import {
   ChangeEvent,
@@ -54,6 +53,8 @@ type Props = Partial<{
   iconRotation: number;
   iconSpin: BooleanLike;
   onClick: (e: any) => void;
+  onFocus: (e: any) => void;
+  onBlur: (e: any) => void;
   selected: BooleanLike;
   tooltip: ReactNode;
   tooltipPosition: Placement;
@@ -132,7 +133,7 @@ export const Button = (props: Props) => {
         }
 
         // Refocus layout on pressing escape.
-        if (event.key === KEY.Escape) {
+        if (isEscape(event.key)) {
           event.preventDefault();
         }
       }}
@@ -362,7 +363,7 @@ const ButtonInput = (props: InputProps) => {
             commitResult(event);
             return;
           }
-          if (event.key === KEY.Escape) {
+          if (isEscape(event.key)) {
             setInInput(false);
           }
         }}

@@ -61,4 +61,21 @@
 	. = ..()
 
 	if(SSticker.mode)
-		SSticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)
+		var/ignore_slot_count = whitelist_status == CLAN_RANK_ADMIN || whitelist_status == CLAN_RANK_LEADER || M?.client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL)
+		SSticker.mode.initialize_predator(M, ignore_slot_count)
+
+/datum/job/antag/young_blood
+	title = ERT_JOB_YOUNGBLOOD
+	selection_class = "ert_job_youngblood"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
+	supervisors = "Ancients"
+	flags_whitelist = NO_FLAGS
+	gear_preset = /datum/equipment_preset/yautja/non_wl
+
+	handle_spawn_and_equip = TRUE
+
+/datum/job/antag/young_blood/generate_entry_conditions(mob/living/hunter)
+	. = ..()
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)

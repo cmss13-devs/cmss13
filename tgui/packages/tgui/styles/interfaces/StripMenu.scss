@@ -1,19 +1,19 @@
 @use '../base.scss';
 
-$background-color: rgba(0, 0, 0, 0.33) !default;
+$background-color: hsla(0, 0%, 0%, 0.33) !default;
 
 .StripMenu__cornertext_left {
   position: relative;
   left: 2px;
   text-align: left;
-  text-shadow: 1px 1px 1px #555;
+  text-shadow: 1px 1px 1px hsl(0, 0%, 33%);
 }
 
 .StripMenu__cornertext_right {
   position: relative;
   left: -2px;
   text-align: right;
-  text-shadow: 1px 1px 1px #555;
+  text-shadow: 1px 1px 1px hsl(0, 0%, 33%);
 }
 
 .StripMenu__iconbox {
@@ -58,7 +58,7 @@ $background-color: rgba(0, 0, 0, 0.33) !default;
 }
 
 .StripMenu__alternativeaction {
-  background: rgba(0, 0, 0, 0.6);
+  background: hsla(0, 0%, 0%, 0.6);
   position: absolute;
   bottom: 0;
   right: 0;

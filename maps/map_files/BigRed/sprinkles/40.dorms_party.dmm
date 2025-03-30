@@ -293,7 +293,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bg" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},

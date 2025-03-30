@@ -307,6 +307,13 @@
 	new /obj/item/reagent_container/glass/bottle/inaprovaline( src )
 	new /obj/item/reagent_container/glass/bottle/dexalin( src )
 
+/obj/item/storage/syringe_case/rmc
+
+/obj/item/storage/syringe_case/rmc/fill_preset_inventory()
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone( src )
+
 //---------SURGICAL CASE---------
 
 
@@ -345,6 +352,39 @@
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
+
+
+/obj/item/storage/surgical_case/rmc_surgical_case
+	name = "\improper RMC surgical case"
+	desc = "It's a medical case for storing basic surgical tools. It comes with a brief description for treating common internal bleeds. This one was made specifically for Royal Marine Commandos, allowing them to suture their wounds during prolonged operations.\
+		\nBefore surgery: Verify correct location and patient is adequately numb to pain.\
+		\nStep one: Open an incision at the site with the scalpel.\
+		\nStep two: Clamp bleeders with the hemostat.\
+		\nStep three: Draw back the skin with the retracter.\
+		\nStep four: Patch the damaged vein with a surgical line.\
+		\nStep five: Close the incision with a surgical line."
+	icon = 'icons/obj/items/storage/medical.dmi'
+	icon_state = "surgical_case"
+	throw_speed = SPEED_FAST
+	throw_range = 8
+	storage_slots = 5
+	w_class = SIZE_SMALL
+	can_hold = list(
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/FixOVein,
+	)
+
+/obj/item/storage/surgical_case/rmc_surgical_case/full/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/synthgraft(src)
+
 
 //---------PILL BOTTLES---------
 
@@ -398,12 +438,12 @@
 
 /obj/item/storage/pill_bottle/Initialize()
 	. = ..()
-	if(display_maptext == FALSE)
+	if(!display_maptext)
 		verbs -= /obj/item/storage/pill_bottle/verb/set_maptext
 
 /obj/item/storage/pill_bottle/fill_preset_inventory()
 	if(pill_type_to_fill)
-		for(var/i=1 to max_storage_space)
+		for(var/i in 1 to max_storage_space)
 			new pill_type_to_fill(src)
 
 /obj/item/storage/pill_bottle/update_icon()
@@ -445,7 +485,7 @@
 	if(user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need an empty hand to take out a pill."))
 		return
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return
 	if(length(contents))
@@ -462,6 +502,11 @@
 		to_chat(user, SPAN_WARNING("The [name] is empty."))
 		return
 
+/obj/item/storage/pill_bottle/shake(mob/user, turf/tile)
+	if(!can_storage_interact(user))
+		error_idlock(user)
+		return
+	return ..()
 
 /obj/item/storage/pill_bottle/attackby(obj/item/storage/pill_bottle/W, mob/user)
 	if(istype(W))
@@ -474,7 +519,7 @@
 
 
 /obj/item/storage/pill_bottle/open(mob/user)
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return
 	..()
@@ -482,7 +527,7 @@
 /obj/item/storage/pill_bottle/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	. = ..()
 	if(.)
-		if(skilllock && !skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		if(!can_storage_interact(user))
 			error_idlock(usr)
 			return
 
@@ -494,7 +539,7 @@
 	var/obj/item/storage/belt/medical/M = loc
 	if(!M.mode)
 		return FALSE
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return FALSE
 	if(user.get_active_hand())
@@ -540,7 +585,7 @@
 	if(!ishuman(user))
 		return ..()
 
-	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!can_storage_interact(user))
 		error_idlock(user)
 		return FALSE
 
@@ -578,6 +623,11 @@
 		maptext_label = str
 		to_chat(usr, SPAN_NOTICE("You label \the [src] with '[str]' in big, blocky letters."))
 		update_icon()
+
+/obj/item/storage/pill_bottle/can_storage_interact(mob/user)
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		return FALSE
+	return ..()
 
 /obj/item/storage/pill_bottle/kelotane
 	name = "\improper Kelotane pill bottle"

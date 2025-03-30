@@ -38,8 +38,9 @@
 		if(!istype(W, /obj/item/spacecash/bundle))
 			var/obj/item/spacecash/cash = W
 			user.temp_drop_inv_item(cash)
-			bundle = new (src.loc)
+			bundle = new(src.loc)
 			bundle.worth += cash.worth
+			bundle.counterfeit = counterfeit
 			bundle.update_value()
 			qdel(cash)
 		else //is bundle
@@ -87,25 +88,27 @@
 /obj/item/spacecash/bundle/attack_self(mob/user)
 	..()
 	var/oldloc = loc
-	var/amount = tgui_input_number(user, "How many dollars do you want to take? (0 to [src.worth])", "Take Money", 0, src.worth, 0)
-	amount = floor(clamp(amount, 0, src.worth))
+	var/amount = tgui_input_number(user, "How many dollars do you want to take? (0 to [worth])", "Take Money", 0, worth, 0)
+	amount = floor(clamp(amount, 0, worth))
 	if(amount == 0)
 		return
 	if(QDELETED(src) || loc != oldloc)
 		return
 
-	src.worth -= amount
-	src.update_icon()
+	worth -= amount
+	update_icon()
 	if(!worth)
 		usr.temp_drop_inv_item(src)
 
 	if(amount in list(1000,500,200,100,50,20,1))
 		var/cashtype = text2path("/obj/item/spacecash/c[amount]")
-		var/obj/cash = new cashtype (usr.loc)
+		var/obj/item/spacecash/cash = new cashtype(usr.loc)
+		cash.counterfeit = counterfeit
 		user.put_in_hands(cash)
 	else
-		var/obj/item/spacecash/bundle/bundle = new (usr.loc)
+		var/obj/item/spacecash/bundle/bundle = new(usr.loc)
 		bundle.worth = amount
+		bundle.counterfeit = counterfeit
 		bundle.update_icon()
 		user.put_in_hands(bundle)
 

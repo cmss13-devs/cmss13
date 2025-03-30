@@ -46,8 +46,12 @@
 #define ALCOHOL_METABOLISM AMOUNT_PER_TIME(1, 5 SECONDS)
 #define RAPID_METABOLISM AMOUNT_PER_TIME(1, 2 SECONDS)
 
-// Factor of how fast mob nutrition decreases
+/// How fast mob nutrition normally decreases
 #define HUNGER_FACTOR 0.05
+/// Additional mob nutrition cost when regenerating blood
+#define BLOOD_NUTRITION_COST 0.25
+/// Additional mob nutrition cost when cold
+#define COLD_NUTRITION_COST 1
 
 // Nutrition levels
 #define NUTRITION_MAX 550
@@ -256,9 +260,9 @@
 #define PROPERTY_TYPE_COMBUSTIBLE 512
 
 // Defines for pain applied pr tick by chems
-#define PROPERTY_PAINING_PAIN 0.5
-#define PROPERTY_PAINING_PAIN_OD 1
-#define PROPERTY_DEFIBRILLATING_PAIN_OD 1
+#define PROPERTY_PAINING_PAIN 1
+#define PROPERTY_PAINING_PAIN_OD 2
+#define PROPERTY_DEFIBRILLATING_PAIN_OD 2
 #define PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL 3
 
 // Injectors

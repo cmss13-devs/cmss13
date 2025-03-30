@@ -105,7 +105,7 @@
 		data["occupant"]["toxLoss"] = round(mob_occupant.getToxLoss(), 1)
 		data["occupant"]["fireLoss"] = round(mob_occupant.getFireLoss(), 1)
 		data["occupant"]["bodyTemperature"] = round(mob_occupant.bodytemperature, 1)
-		if(mob_occupant.bodytemperature < 255)
+		if(mob_occupant.bodytemperature <= BODYTEMP_CRYO_LIQUID_THRESHOLD)
 			data["occupant"]["temperaturestatus"] = "good"
 		else if(mob_occupant.bodytemperature < T0C)
 			data["occupant"]["temperaturestatus"] = "average"
@@ -228,7 +228,7 @@
 				occupant.apply_damage(-1, OXY)
 
 			//severe damage should heal waaay slower without proper chemicals
-			if(occupant.bodytemperature < 225)
+			if(occupant.bodytemperature <= BODYTEMP_CRYO_LIQUID_THRESHOLD)
 				if(occupant.getToxLoss())
 					occupant.apply_damage(max(-1, -20/occupant.getToxLoss()), TOX)
 				var/heal_brute = occupant.getBruteLoss() ? min(1, 20/occupant.getBruteLoss()) : 0
@@ -281,8 +281,8 @@
 			occupant.forceMove(get_step(loc, WEST))
 		else
 			occupant.forceMove(get_step(loc, SOUTH))
-	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70)
-		occupant.bodytemperature = 261
+	if(occupant.bodytemperature < BODYTEMP_CRYO_LIQUID_THRESHOLD)
+		occupant.bodytemperature = BODYTEMP_CRYO_LIQUID_THRESHOLD
 		occupant.recalculate_move_delay = TRUE
 	if(auto_eject) //Turn off and announce if auto-ejected because patient is recovered or dead.
 		on = FALSE
@@ -384,3 +384,7 @@
 #undef DEATH_STAGE_EARLY
 #undef DEATH_STAGE_WARNING
 #undef DEATH_STAGE_CRITICAL
+
+/obj/structure/machinery/cryo_cell/yautja
+	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
+	icon_state = "pred_cell"

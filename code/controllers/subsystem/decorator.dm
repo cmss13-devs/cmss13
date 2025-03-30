@@ -69,7 +69,8 @@ SUBSYSTEM_DEF(decorator)
 		var/datum/weakref/ref = currentrun[length(currentrun)]
 		currentrun.len--
 		var/atom/A = ref?.resolve()
-		if(A) A.Decorate(deferable = FALSE)
+		if(A)
+			A.Decorate(deferable = FALSE)
 		if(MC_TICK_CHECK)
 			return
 

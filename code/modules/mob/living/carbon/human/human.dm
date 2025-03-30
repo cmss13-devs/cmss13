@@ -96,7 +96,8 @@
 	. = ..()
 
 	. += ""
-	. += "Security Level: [uppertext(get_security_level())]"
+	if(ishumansynth_strict(src)) // So that yautja or other species dont see the ships security alert
+		. += "Security Level: [uppertext(get_security_level())]"
 
 	if(species?.has_species_tab_items)
 		var/list/species_tab_items = species.get_status_tab_items(src)
@@ -137,8 +138,6 @@
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-
-
 	var/b_loss = 0
 	var/f_loss = 0
 
@@ -157,6 +156,10 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
 		return
 
+	if(HAS_TRAIT(src, TRAIT_HAULED)) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
+		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
+		return
+
 	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
@@ -166,18 +169,28 @@
 
 	if(severity >= 30)
 		flash_eyes(flash_timer = 4 SECONDS * bomb_armor_mult)
-
-	// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
-	var/knockdown_value = severity * 0.1
-	var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
 	var/obj/item/item1 = get_active_hand()
 	var/obj/item/item2 = get_inactive_hand()
-	apply_effect(floor(knockdown_minus_armor), WEAKEN)
-	apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+	var/knockdown_value = severity * 0.1
 	var/knockout_value = damage * 0.1
-	var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
-	apply_effect(floor(knockout_minus_armor), PARALYZE)
-	apply_effect(floor(knockout_minus_armor) * 2, DAZE)
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions_fire)) //explosions slow down but way less stun
+		var/knockdown_minus_armor = min(max(knockdown_value * bomb_armor_mult - 0.5 SECONDS, 0), 0.5 SECONDS) //only explosions with more then 20 severity stun
+		apply_effect(floor(knockdown_minus_armor), WEAKEN)
+		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+		var/slowdown_minus_armor =min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS)
+		apply_effect(floor(slowdown_minus_armor), SUPERSLOW)
+		apply_effect(floor(slowdown_minus_armor) * 2, SLOW)
+		damage *= 0.5 //we reduce after checking eye flash and stun and slow
+		severity *= 0.5
+	else
+		// Stuns are multiplied by 1 reduced by their medium armor value. So a medium of 30 would mean a 30% reduction.
+		var/knockdown_minus_armor = min(knockdown_value * bomb_armor_mult, 1 SECONDS)
+		apply_effect(floor(knockdown_minus_armor), WEAKEN)
+		apply_effect(floor(knockdown_minus_armor), STUN) // Remove this to let people crawl after an explosion. Funny but perhaps not desirable.
+
+		var/knockout_minus_armor = min(knockout_value * bomb_armor_mult * 0.5, 0.5 SECONDS) // the KO time is halved from the knockdown timer. basically same stun time, you just spend less time KO'd.
+		apply_effect(floor(knockout_minus_armor), PARALYZE)
+		apply_effect(floor(knockout_minus_armor) * 2, DAZE)
 	explosion_throw(severity, direction)
 
 	if(item1 && isturf(item1.loc))
@@ -255,7 +268,8 @@
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
-	if(!CONFIG_GET(flag/use_loyalty_implants) && !override) return // Nuh-uh.
+	if(!CONFIG_GET(flag/use_loyalty_implants) && !override)
+		return // Nuh-uh.
 
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(M)
 	L.imp_in = M
@@ -377,7 +391,8 @@
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
-	if(status_flags & GODMODE) return FALSE //godmode
+	if(status_flags & GODMODE)
+		return FALSE //godmode
 
 	if(!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -821,6 +836,9 @@
 		holo_card_color = null
 		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
 	else if(newcolor != holo_card_color)
+		if(newcolor == "black" && is_revivable() && check_tod())
+			to_chat(user, SPAN_WARNING("They are yet saveable."))
+			return
 		holo_card_color = newcolor
 		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 	hud_set_holocard()
@@ -1280,6 +1298,11 @@
 			if(cmp_job?.active_cmp)
 				H = cmp_job.active_cmp
 			tracking_suffix = "_cmp"
+		if(TRACKER_WARDEN)
+			var/datum/job/command/warden/warden_job = GLOB.RoleAuthority.roles_for_mode[JOB_WARDEN]
+			if(warden_job?.active_warden)
+				H = warden_job.active_warden
+			tracking_suffix = "_warden"
 		if(TRACKER_CL)
 			var/datum/job/civilian/liaison/liaison_job = GLOB.RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
 			if(liaison_job?.active_liaison)
@@ -1308,7 +1331,8 @@
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 
 /mob/living/carbon/proc/locate_nearest_nuke()
-	if(!GLOB.bomb_set) return
+	if(!GLOB.bomb_set)
+		return
 	var/obj/structure/machinery/nuclearbomb/N
 	for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 		if(!istype(N) || N.z != src.z )
@@ -1332,7 +1356,8 @@
 	sync_lighting_plane_alpha()
 
 /mob/living/carbon/human/update_sight()
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT) return
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT)
+		return
 
 	sight &= ~BLIND // Never have blind on by default
 
@@ -1476,7 +1501,7 @@
 					if(new_splint.amount == 0)
 						qdel(new_splint) //we only removed nano splints
 					msg = "[user == target ? "their own":"\proper [target]'s"]"
-					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."), \
+					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
 						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
 					target.update_med_icon()
 			else
@@ -1534,13 +1559,13 @@
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"),
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(4, WEAKEN)
 		spin(35, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -1549,7 +1574,7 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
 			SPAN_NOTICE("You extinguish yourself."), null, 5)
 
 /mob/living/carbon/human/resist_acid()
@@ -1557,21 +1582,21 @@
 	if(isyautja(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"),
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
 		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)
 
 	sleep(sleep_amount)
 
 	if( extinguish_acid() )
-		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"),
 				SPAN_NOTICE("You get rid of the acid."), max_distance = 5)
 	else
-		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"), \
+		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"),
 				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), max_distance = 5)
 
 	return
@@ -1592,14 +1617,14 @@
 	last_special = world.time + 10
 	var/can_break_cuffs
 	if(iszombie(src))
-		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."), \
+		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."),
 		SPAN_NOTICE("You use your superior zombie strength to start breaking [restraint]..."))
 		if(!do_after(src, 100, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
-		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"), \
+		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"),
 			SPAN_NOTICE("You tear [restraint] in half!"))
 		restraint = null
 		if(handcuffed)
@@ -1694,7 +1719,7 @@
 	HTML += "<hr />"
 	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
-	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 300)
 
 /mob/living/carbon/human/throw_item(atom/target)
 	if(!throw_allowed)
@@ -1799,3 +1824,5 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+
+

@@ -80,7 +80,12 @@ export const CrewManifest = (props, context) => {
           // Remove duplicates then
           // Sort and filter crew list based on search term
           const filteredCrewList = crewList
-            .filter((crew1, index, arr) => arr.findIndex(crew2 => ['name', 'rank'].every(key => crew2[key] === crew1[key])) === index)
+            .filter(
+              (crew1, index, arr) =>
+                arr.findIndex((crew2) =>
+                  ['name', 'rank'].every((key) => crew2[key] === crew1[key]),
+                ) === index,
+            )
             .filter(
               (crew) =>
                 crew.name.toLowerCase().includes(searchTerm) ||

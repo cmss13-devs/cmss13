@@ -162,9 +162,9 @@
 /obj/item/weapon/gun/m60/update_icon()
 	. = ..()
 	if(cover_open)
-		overlays += image("+[base_gun_icon]_cover_open", pixel_x = -2, pixel_y = 8)
+		overlays += image(icon, src, "+[base_gun_icon]_cover_open", pixel_x = -2, pixel_y = 8)
 	else
-		overlays += image("+[base_gun_icon]_cover_closed", pixel_x = -10, pixel_y = 0)
+		overlays += image(icon, src, "+[base_gun_icon]_cover_closed", pixel_x = -10, pixel_y = 0)
 
 /obj/item/weapon/gun/m60/able_to_fire(mob/living/user)
 	. = ..()

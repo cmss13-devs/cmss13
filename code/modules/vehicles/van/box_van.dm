@@ -89,7 +89,7 @@
 
 /obj/vehicle/multitile/box_van/crew_mousedown(datum/source, atom/object, turf/location, control, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
 		return
 
 	switch(get_mob_seat(source))

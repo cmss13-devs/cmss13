@@ -1,0 +1,4 @@
+author: "IroquoisLou"
+delete-after: True
+changes:
+  - balance: "Lowered the L23's damage and gave it falloff."

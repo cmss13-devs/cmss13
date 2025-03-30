@@ -77,8 +77,10 @@ export const CrewManifest = (props, context) => {
           const roleOrder = data.departments_with_jobs[department] || [];
           const supervisorRank = roleOrder[0];
 
+          // Remove duplicates then
           // Sort and filter crew list based on search term
-          const filteredCrewList = [...crewList]
+          const filteredCrewList = crewList
+            .filter((crew1, index, arr) => arr.findIndex(crew2 => ['name', 'rank'].every(key => crew2[key] === crew1[key])) === index)
             .filter(
               (crew) =>
                 crew.name.toLowerCase().includes(searchTerm) ||

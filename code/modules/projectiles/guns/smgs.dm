@@ -158,6 +158,11 @@
 
 /obj/item/weapon/gun/smg/m39/elite/compact
 	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible, /obj/item/attachable/suppressor, /obj/item/attachable/reflex, /obj/item/attachable/lasersight)
+	current_mag = /obj/item/ammo_magazine/smg/m39/ap
+	random_spawn_under = null
+
+/obj/item/weapon/gun/smg/m39/elite/compact/heap
+	starting_attachment_types = list(/obj/item/attachable/stock/smg/collapsible, /obj/item/attachable/suppressor, /obj/item/attachable/reflex, /obj/item/attachable/lasersight)
 	current_mag = /obj/item/ammo_magazine/smg/m39/heap
 	random_spawn_under = null
 

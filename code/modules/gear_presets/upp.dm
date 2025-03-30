@@ -2759,6 +2759,13 @@
 	paygrades = list(PAY_SHORT_UO10 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/upp/commander
 
+/datum/equipment_preset/upp/officer/flag/gen/dressed
+	name = "UPP General Armii"
+	assignment = JOB_UPP_GENERAL
+	rank = JOB_UPP_GENERAL
+	role_comm_title = "Gen."
+	minimap_icon = "upp_co"
+
 /datum/equipment_preset/upp/officer/flag/gen/dressed/New()
 	.=..()
 	access = get_access(ACCESS_LIST_UPP_ALL)

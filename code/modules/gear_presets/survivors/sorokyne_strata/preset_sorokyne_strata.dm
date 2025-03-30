@@ -76,7 +76,6 @@
 	assignment = "UPP Narodnyy Vooruzhennyy Politsioner"
 	minimap_icon = "upp_sec"
 	minimap_background = "background_upp"
-	origin_override = ORIGIN_UPP
 	paygrades = list(PAY_SHORT_UCM = JOB_PLAYTIME_TIER_0)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -109,7 +108,6 @@
 	name = "Survivor - UPP - Army Reservist"
 	assignment = "UPP Armiyskiy Rezervist"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
-	origin_override = ORIGIN_UPP
 	rank = JOB_SURVIVOR
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)

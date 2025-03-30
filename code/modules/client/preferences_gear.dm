@@ -166,8 +166,12 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/glasses/regular/hippie
 
 /datum/gear/eyewear/aviators
-	display_name = "Aviator shades"
+	display_name = "Aviator shades, gold"
 	path = /obj/item/clothing/glasses/sunglasses/aviator
+
+/datum/gear/eyewear/aviators/silver
+	display_name = "Aviator shades, silver"
+	path = /obj/item/clothing/glasses/sunglasses/aviator/silver
 
 /datum/gear/eyewear/new_bimex/black
 	display_name = "BiMex tactical shades, black"

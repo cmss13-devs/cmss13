@@ -169,11 +169,11 @@
 "aF" = (
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/machinery/power/apc/power/west,
-/turf/open/jungle,
+/turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "aG" = (
 /obj/structure/machinery/power/apc/power/south,
-/turf/open/mars,
+/turf/open/floor/plating,
 /area/bigredv2/outside/s)
 "aH" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1845,6 +1845,9 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/bigredv2/caves_research)
+"gk" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/s)
 "gl" = (
 /obj/structure/bookcase,
 /obj/effect/decal/cleanable/dirt,
@@ -3237,10 +3240,6 @@
 /obj/structure/largecrate/supply,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"py" = (
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/whiteblue/east,
-/area/bigredv2/outside/general_offices)
 "pA" = (
 /turf/open/floor/whitepurple/southeast,
 /area/bigredv2/caves_research)
@@ -164458,7 +164457,7 @@ Ov
 ce
 gO
 gO
-py
+tA
 tA
 bW
 tA
@@ -176251,11 +176250,11 @@ ut
 ut
 ut
 ut
-ut
-ut
-ut
-ut
-ut
+gk
+gk
+gk
+gk
+gk
 ut
 ut
 ut
@@ -176504,7 +176503,7 @@ aG
 Rm
 Bx
 Rm
-ut
+gk
 ut
 ut
 ut
@@ -176749,11 +176748,11 @@ ut
 ut
 ut
 ut
-ut
+gk
 Rz
 Ix
 Rz
-ut
+gk
 ut
 ut
 ut
@@ -176998,11 +176997,11 @@ ut
 ut
 ut
 ut
-ut
+gk
 Rz
 Ix
 Rz
-ut
+gk
 ut
 ut
 ut
@@ -177247,11 +177246,11 @@ ut
 ut
 ut
 ut
-ut
+gk
 Rz
 Ix
 Rz
-ut
+gk
 ut
 ut
 ut

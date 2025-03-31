@@ -499,6 +499,11 @@
 	desc = "A fire-resistant shoulder patch, worn by the men and women of the 1st Cavalry Division."
 	icon_state = "infantrypatch"
 
+/obj/item/clothing/accessory/patch/army/armor
+	name = "Army Armor patch"
+	desc = "A fire-resistant shoulder patch, worn by the men and women of the 32nd Armor Brigade."
+	icon_state = "armorpatch"
+
 /obj/item/clothing/accessory/patch/wy
 	name = "Weyland-Yutani patch"
 	desc = "A fire-resistant black shoulder patch featuring the Weyland-Yutani logo. A symbol of loyalty to the corporation, or perhaps ironic mockery, depending on your viewpoint."

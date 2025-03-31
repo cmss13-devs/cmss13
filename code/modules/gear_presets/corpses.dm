@@ -1715,5 +1715,5 @@
 	..()
 
 /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst
-	name = "Corpse - Burst - US Army - Trooper"
+	name = "Corpse - Burst - US Army - Medic"
 	xenovictim = TRUE

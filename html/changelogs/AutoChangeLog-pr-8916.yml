@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - ui: "Tweaked the size of gauges in the ping relay browser"

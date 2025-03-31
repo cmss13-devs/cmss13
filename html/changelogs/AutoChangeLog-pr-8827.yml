@@ -1,0 +1,4 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - balance: "Lowered the burn damage of the Antiparasitic chemical property by 25%."

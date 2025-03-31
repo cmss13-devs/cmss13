@@ -34,4 +34,4 @@
 
 //job/role helpers
 #define ismarinejob(J) (istype(J, /datum/job/marine))
-#define issurvivorjob(J) (J == JOB_SURVIVOR)
+#define issurvivorjob(J) ((J == JOB_SURVIVOR) || (J == JOB_SYNTH_SURVIVOR))

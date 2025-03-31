@@ -212,7 +212,7 @@ var/list/medium_end_abilities = list(
 
 /datum/action/xeno_action/activable/lets_go_gambling
 
-	name = "I can't stop winning"
+	name = "Let's go gambling"
 	action_icon_state = "gardener_plant"
 	plasma_cost = 0 // it costs NOTHING to gamble
 	macro_path = ""

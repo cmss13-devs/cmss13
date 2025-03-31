@@ -1,48 +1,3 @@
-var/list/jackpot = list(
-	/datum/action/xeno_action/activable/gut,
-	/datum/action/xeno_action/onclick/screech,
-	/datum/action/xeno_action/activable/fluff_ability_2,
-	/datum/action/xeno_action/activable/fluff_ability_3,
-)
-
-
-var/list/high_end_abilities = list(
-	/datum/action/xeno_action/onclick/crusher_shield,
-	/datum/action/xeno_action/activable/prae_abduct,
-	/datum/action/xeno_action/onclick/empower,
-	/datum/action/xeno_action/onclick/apprehend,
-	/datum/action/xeno_action/onclick/feralrush,
-	/datum/action/xeno_action/activable/feralfrenzy,
-	/datum/action/xeno_action/onclick/predalien_roar,
-	/datum/action/xeno_action/activable/prae_retrieve,
-	/datum/action/xeno_action/activable/lunge,
-	/datum/action/xeno_action/onclick/lurker_invisibility,
-	/datum/action/xeno_action/activable/fluff_ability_3,
-	/datum/action/xeno_action/activable/fluff_ability_4,
-	)
-
-
-var/list/medium_end_abilities = list(
-	/datum/action/xeno_action/activable/warrior_punch,
-	/datum/action/xeno_action/activable/fling,
-	/datum/action/xeno_action/activable/pounce/base_prae_dash,
-	/datum/action/xeno_action/activable/prae_acid_ball,
-	/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
-	/datum/action/xeno_action/activable/pierce,
-	/datum/action/xeno_action/onclick/crusher_stomp,
-	/datum/action/xeno_action/activable/cleave,
-	/datum/action/xeno_action/activable/oppressor_punch,
-	/datum/action/xeno_action/activable/tail_lash,
-	/datum/action/xeno_action/activable/pounce/crusher_charge,
-	/datum/action/xeno_action/activable/scissor_cut,
-	/datum/action/xeno_action/activable/high_gallop,
-	/datum/action/xeno_action/onclick/tremor,
-	/datum/action/xeno_action/activable/boiler_trap,
-	/datum/action/xeno_action/activable/pounce/runner,
-	/datum/action/xeno_action/onclick/lurker_assassinate,
-	/datum/action/xeno_action/activable/fluff_ability_1,
-)
-
 /datum/xeno_strain/gambler
 
 	name = DRONE_GAMBLER
@@ -220,6 +175,51 @@ var/list/medium_end_abilities = list(
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 10 SECONDS
 
+	var/list/jackpot = list(
+		/datum/action/xeno_action/activable/gut,
+		/datum/action/xeno_action/onclick/screech,
+		/datum/action/xeno_action/activable/fluff_ability_2,
+		/datum/action/xeno_action/activable/fluff_ability_3,
+	)
+
+
+	var/list/high_end_abilities = list(
+		/datum/action/xeno_action/onclick/crusher_shield,
+		/datum/action/xeno_action/activable/prae_abduct,
+		/datum/action/xeno_action/onclick/empower,
+		/datum/action/xeno_action/onclick/apprehend,
+		/datum/action/xeno_action/onclick/feralrush,
+		/datum/action/xeno_action/activable/feralfrenzy,
+		/datum/action/xeno_action/onclick/predalien_roar,
+		/datum/action/xeno_action/activable/prae_retrieve,
+		/datum/action/xeno_action/activable/lunge,
+		/datum/action/xeno_action/onclick/lurker_invisibility,
+		/datum/action/xeno_action/activable/fluff_ability_3,
+		/datum/action/xeno_action/activable/fluff_ability_4,
+	)
+
+
+	var/list/medium_end_abilities = list(
+		/datum/action/xeno_action/activable/warrior_punch,
+		/datum/action/xeno_action/activable/fling,
+		/datum/action/xeno_action/activable/pounce/base_prae_dash,
+		/datum/action/xeno_action/activable/prae_acid_ball,
+		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/activable/pierce,
+		/datum/action/xeno_action/onclick/crusher_stomp,
+		/datum/action/xeno_action/activable/cleave,
+		/datum/action/xeno_action/activable/oppressor_punch,
+		/datum/action/xeno_action/activable/tail_lash,
+		/datum/action/xeno_action/activable/pounce/crusher_charge,
+		/datum/action/xeno_action/activable/scissor_cut,
+		/datum/action/xeno_action/activable/high_gallop,
+		/datum/action/xeno_action/onclick/tremor,
+		/datum/action/xeno_action/activable/boiler_trap,
+		/datum/action/xeno_action/activable/pounce/runner,
+		/datum/action/xeno_action/onclick/lurker_assassinate,
+		/datum/action/xeno_action/activable/fluff_ability_1,
+	)
+
 
 /datum/action/xeno_action/activable/lets_go_gambling/use_ability()
 	var/mob/living/carbon/xenomorph/enterpanuer_drone = owner //buy my books
@@ -310,7 +310,6 @@ var/list/medium_end_abilities = list(
 	apply_cooldown()
 	..()
 
-
 /datum/action/xeno_action/activable/fluff_ability_3
 	name = "Mystery Ability"
 	action_icon_state = "gardener_plant"
@@ -329,7 +328,6 @@ var/list/medium_end_abilities = list(
 	var/datum/cause_data/cause_data = create_cause_data("trolled", gamba_drone)
 
 	cell_explosion(gamba_drone, 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) // just a rocket like deal, doesnt kill anyone else.
-
 
 	apply_cooldown()
 	..()

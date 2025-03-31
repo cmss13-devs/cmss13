@@ -83,7 +83,7 @@
 			break
 		animate(user, pixel_z = -2, time = 3, delay = 3)
 		animate(pixel_z = -4, time = 3)
-		sleep(9 DECISECONDS)
+		addtimer(9 DECISECONDS)
 		playsound(user, 'sound/effects/spring.ogg', 40, TRUE, 2)
 
 /obj/structure/weightmachine/weightlifter
@@ -139,16 +139,16 @@
 	else
 		icon_state = "back_off"
 
-/obj/structure/machinery/treadmill/Crossed(O)
+/obj/structure/machinery/treadmill/Crossed(Mobon)
 	. = ..()
-	var/mob/entering_mob = O
+	var/mob/entering_mob = Mobon
 	if(!istype(entering_mob))
 		return
 	entering_mob.pixel_z += pixel_y + 2
 
-/obj/structure/machinery/treadmill/Uncrossed(O)
+/obj/structure/machinery/treadmill/Uncrossed(Mobon)
 	. = ..()
-	var/mob/exiting_mob = O
+	var/mob/exiting_mob = Mobon
 	if(!istype(exiting_mob))
 		return
 	exiting_mob.pixel_z -= pixel_y + 2
@@ -186,10 +186,10 @@
 
 /obj/structure/machinery/treadmill/console/Initialize(mapload, ...)
 	. = ..()
-	var/turf/T = get_step(src, turn(dir, 180))
-	for(var/obj/O in T)
-		if(O.type == /obj/structure/machinery/treadmill)
-			var/obj/structure/machinery/treadmill/sec_half = O
+	var/turf/Turf = get_step(src, turn(dir, 180))
+	for(var/obj/Mobon in Turf)
+		if(Mobon.type == /obj/structure/machinery/treadmill)
+			var/obj/structure/machinery/treadmill/sec_half = Mobon
 			second_half_ref = WEAKREF(sec_half)
 			sec_half.second_half_ref = WEAKREF(src)
 			return

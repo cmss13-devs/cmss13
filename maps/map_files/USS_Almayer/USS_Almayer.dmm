@@ -42604,7 +42604,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible{
 	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
-	name = "Holy Bible";
 	pixel_x = -3;
 	pixel_y = 9
 	},
@@ -44627,8 +44626,7 @@
 "lTE" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/bible{
-	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
-	name = "Holy Bible"
+	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'."
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
@@ -49377,7 +49375,8 @@
 	pixel_x = 1;
 	layer = 3
 	},
-/obj/structure/platform_decoration/metal/post_small/west{
+/obj/structure/platform_decoration/metal/post_small/east{
+	pixel_x = 28;
 	pixel_y = 2
 	},
 /turf/open/floor/almayer/arena/north,

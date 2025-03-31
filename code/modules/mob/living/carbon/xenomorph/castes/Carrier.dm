@@ -62,7 +62,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction,
@@ -85,6 +85,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Carrier_1","Carrier_2","Carrier_3")
 	weed_food_states_flipped = list("Carrier_1","Carrier_2","Carrier_3")
+
+	skull = /obj/item/skull/carrier
+	pelt = /obj/item/pelt/carrier
 
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon

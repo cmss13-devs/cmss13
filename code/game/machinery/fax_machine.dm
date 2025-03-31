@@ -4,7 +4,7 @@
 
 GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
-#define FAX_DEPARTMENT_WY "Weyland-Yutani"
+#define FAX_DEPARTMENT_WY_HC "Weyland-Yutani Directorate"
 #define FAX_DEPARTMENT_HC "USCM High Command"
 #define FAX_DEPARTMENT_CMB "CMB Incident Command Center, Local Operations"
 #define FAX_DEPARTMENT_PROVOST "USCM Provost Office"
@@ -13,13 +13,15 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 #define FAX_DEPARTMENT_UPP "Union of Progress Peoples"
 #define FAX_DEPARTMENT_CLF "Colonial Liberation Front"
 #define FAX_DEPARTMENT_SPECIFIC_CODE "Specific Machine Code"//Used to send to a single specific machine.
-#define FAX_HIGHCOM_DEPARTMENTS list(FAX_DEPARTMENT_WY, FAX_DEPARTMENT_HC, FAX_DEPARTMENT_CMB, FAX_DEPARTMENT_PROVOST, FAX_DEPARTMENT_PRESS, FAX_DEPARTMENT_TWE, FAX_DEPARTMENT_UPP, FAX_DEPARTMENT_CLF)
+#define FAX_HIGHCOM_DEPARTMENTS list(FAX_DEPARTMENT_WY_HC, FAX_DEPARTMENT_HC, FAX_DEPARTMENT_CMB, FAX_DEPARTMENT_PROVOST, FAX_DEPARTMENT_PRESS, FAX_DEPARTMENT_TWE, FAX_DEPARTMENT_UPP, FAX_DEPARTMENT_CLF)
 
 #define FAX_DEPARTMENT_ALMAYER "USS Almayer"
 #define FAX_DEPARTMENT_ALMAYER_COMMAND "USS Almayer Command"
 #define FAX_DEPARTMENT_ALMAYER_BRIG "USS Almayer Brig"
 #define FAX_DEPARTMENT_ALMAYER_AICORE "USS Almayer AI Core"
 #define FAX_DEPARTMENT_GENERAL_PUBLIC "General Public"
+#define FAX_DEPARTMENT_WY "Weyland-Yutani Local Operations"
+#define FAX_DEPARTMENT_USCM "USCM Local Operations"
 
 #define FAX_NET_USCM "USCM Encrypted Network"
 #define FAX_NET_USCM_HC "USCM High Command Quantum Relay"
@@ -70,7 +72,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	var/radio_alert_tag = null
 
 	/// Target department
-	var/target_department = FAX_DEPARTMENT_WY
+	var/target_department = FAX_DEPARTMENT_WY_HC
 	var/target_machine_id = "No ID Selected"
 	var/target_machine = "Undefined"
 
@@ -121,29 +123,29 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if(FAX_NET_USCM)
 			id_tag_prefix = "UA-M"//United Americas Military
 		if(FAX_NET_USCM_HC)
-			id_tag_final = FAX_NET_USCM_HC
+			id_tag_final = "UA-MHC"
 		if(FAX_NET_CMB)
-			id_tag_final = FAX_NET_CMB
+			id_tag_final = "CMB-R"
 		if(FAX_NET_WY)
 			id_tag_prefix = "WY-SCN"//Weyland Yutani Secure Corporate Network
 		if(FAX_NET_WY_COL)
 			id_tag_prefix = "WYC"//Weyland Yutani Communications
 		if(FAX_NET_WY_HC)
-			id_tag_final = FAX_NET_WY_HC
+			id_tag_final = "WY-DIR"
 		if(FAX_NET_TWE)
 			id_tag_prefix = "ICN"//Imperial Communication Network
 		if(FAX_NET_TWE_HC)
-			id_tag_final = FAX_NET_TWE_HC
+			id_tag_prefix = "ICN-HC"
 		if(FAX_NET_UPP)
 			id_tag_prefix = "UFR"//Union Fax Relay
 		if(FAX_NET_UPP_HC)
-			id_tag_final = FAX_NET_UPP_HC
+			id_tag_prefix = "UFR-HC"
 		if(FAX_NET_CLF)
 			id_tag_prefix = "PRD"//PeRiDia
 		if(FAX_NET_CLF_HC)
-			id_tag_final = FAX_NET_CLF_HC
+			id_tag_prefix = "PRD-SCN"
 		if(FAX_NET_PRESS_HC)
-			id_tag_final = FAX_NET_PRESS_HC
+			id_tag_prefix = "FPA"
 
 	if(!id_tag_final)
 		id_tag_final = "[id_tag_prefix]-[id_tag_suffix]"
@@ -153,7 +155,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 
 	machine_id_tag = id_tag_final
 	identity_name = sub_name ? "[sub_name], [machine_id_tag]" : machine_id_tag
-	if(machine_id_tag == network)
+	if(network in FAX_HC_NETWORKS)
 		return TRUE
 	GLOB.fax_network.all_faxcodes[id_tag_final] = src
 	return TRUE
@@ -239,8 +241,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/proc/update_departments()
 	if(!(FAX_DEPARTMENT_SPECIFIC_CODE in GLOB.fax_network.all_departments))
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_SPECIFIC_CODE] = list()
-	if(!(FAX_DEPARTMENT_WY in GLOB.fax_network.all_departments))
-		GLOB.fax_network.all_departments[FAX_DEPARTMENT_WY] = list()
+	if(!(FAX_DEPARTMENT_WY_HC in GLOB.fax_network.all_departments))
+		GLOB.fax_network.all_departments[FAX_DEPARTMENT_WY_HC] = list()
 	if(!(FAX_DEPARTMENT_HC in GLOB.fax_network.all_departments))
 		GLOB.fax_network.all_departments[FAX_DEPARTMENT_HC] = list()
 	if(!(FAX_DEPARTMENT_PROVOST in GLOB.fax_network.all_departments))
@@ -537,7 +539,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if(FAX_DEPARTMENT_CMB)
 			GLOB.CMBFaxes.Add("<a href='byond://?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [user.real_name], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CMBFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
-		if(FAX_DEPARTMENT_WY)
+		if(FAX_DEPARTMENT_WY_HC)
 			GLOB.WYFaxes.Add("<a href='byond://?FaxView=\ref[faxcontents]'>\['[original_fax.name]' from [user.real_name], [scan] at [time2text(world.timeofday, "hh:mm:ss")]\]</a> <a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>REPLY</a>")
 			msg_admin += "(<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];WYFaxReply=\ref[user];originfax=\ref[src]'>RPLY</a>)</b>: "
 		if(FAX_DEPARTMENT_PRESS)
@@ -676,10 +678,11 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	name = "\improper CMB Incident Command Center Fax Machine"
 	network = FAX_NET_CMB
 	department = FAX_DEPARTMENT_CMB
+	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/corporate
 	name = "\improper W-Y Corporate Fax Machine"
-	department = "W-Y Local Office"
+	department = FAX_DEPARTMENT_WY
 	network = FAX_NET_WY
 
 /obj/structure/machinery/faxmachine/corporate/liaison
@@ -691,14 +694,14 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	radio_alert_tag = ":Y"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
-	department = FAX_DEPARTMENT_WY
+	department = FAX_DEPARTMENT_WY_HC
 	target_department = FAX_DEPARTMENT_ALMAYER
 	network = FAX_NET_WY_HC
 	can_send_priority = TRUE
 
 /obj/structure/machinery/faxmachine/uscm
 	name = "\improper USCM Military Fax Machine"
-	department = "USCM Local Operations"
+	department = FAX_DEPARTMENT_USCM
 	network = FAX_NET_USCM
 	target_department = FAX_DEPARTMENT_HC
 
@@ -912,7 +915,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			target_job = JOB_FAX_RESPONDER_TWE
 		if(FAX_DEPARTMENT_UPP)
 			target_job = JOB_FAX_RESPONDER_UPP
-		if(FAX_DEPARTMENT_WY)
+		if(FAX_DEPARTMENT_WY_HC)
 			target_job = JOB_FAX_RESPONDER_WY
 
 	for(var/mob/living/carbon/human/responder in SSticker.mode.fax_responders)

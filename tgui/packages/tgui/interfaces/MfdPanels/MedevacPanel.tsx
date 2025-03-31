@@ -62,7 +62,9 @@ export const MedevacMfdPanel = (props: MfdProps) => {
   const medevac_mapper = (x: number) => {
     const target = medevacs.length > x ? medevacs[x] : undefined;
     return {
-      children: target ? target.occupant?.split(' ')[0] ?? 'Empty' : undefined,
+      children: target
+        ? (target.occupant?.split(' ')[0] ?? 'Empty')
+        : undefined,
       onClick: () =>
         act('medevac-target', {
           equipment_id: result?.mount_point,

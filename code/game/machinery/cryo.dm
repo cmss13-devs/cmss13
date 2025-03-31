@@ -384,3 +384,7 @@
 #undef DEATH_STAGE_EARLY
 #undef DEATH_STAGE_WARNING
 #undef DEATH_STAGE_CRITICAL
+
+/obj/structure/machinery/cryo_cell/yautja
+	icon = 'icons/obj/structures/machinery/cryogenics2.dmi'
+	icon_state = "pred_cell"

@@ -10,7 +10,7 @@
 	tier = /datum/tier/four
 
 	announce_name = "ПОЛУЧЕНИЕ ЯДЕРНОГО АРСЕНАЛА"
-	announce_message = "Ядерное устройство было авторизовано и будет доставлено в Requisitions через систему ASRS."
+	announce_message = "Ядерное устройство было авторизовано и будет доставлено в Requisitions Department через систему ASRS."
 
 	flags = TREE_FLAG_MARINE
 

@@ -32,6 +32,12 @@
 	
 	if(!ispath(cause_path)
 		return COMPONENT_INCOMPATIBLE
+	src.cause_path = cause_path
+	src.synth_dmg_mult = synth_dmg_mult
+	src.pred_dmg_mult = pred_dmg_mult
+	
+	if(!ispath(cause_path)
+		return COMPONENT_INCOMPATIBLE
 
 	if(human_parent.stat == DEAD)
 		return COMPONENT_INCOMPATIBLE

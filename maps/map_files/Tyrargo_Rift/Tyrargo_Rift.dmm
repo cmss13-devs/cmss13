@@ -1281,7 +1281,7 @@
 /area/tyrargo/landing_zone_2/east_trench)
 "adW" = (
 /obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "adX" = (
@@ -14682,6 +14682,10 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/underground/bunker/north)
+"aLQ" = (
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/admin/ground)
 "aLR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/darkgreencorner/north,
@@ -15496,7 +15500,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNK" = (
@@ -23231,6 +23235,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bcd" = (
@@ -43898,6 +43903,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/purplecorner/north,
 /area/tyrargo/underground/bunker/south)
+"bYf" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
 "bYg" = (
 /obj/structure/sign/safety/one{
 	pixel_x = 32;
@@ -152886,7 +152896,7 @@ aCK
 cwP
 cwG
 aCq
-aCh
+bYf
 ctk
 aBS
 aBL
@@ -154348,7 +154358,7 @@ csR
 csR
 aBA
 aBn
-ctn
+aLQ
 csR
 kGY
 aAi

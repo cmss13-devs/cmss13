@@ -372,3 +372,11 @@
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper/burst
 	name = "Corpse - Burst - US Army - Trooper"
 	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_trooper/burst
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic
+	name = "Corpse - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic
+
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_medic/burst
+	name = "Corpse - Burst - US Army - Trooper"
+	equip_path = /datum/equipment_preset/corpse/tyrargo/us_army_medic/burst

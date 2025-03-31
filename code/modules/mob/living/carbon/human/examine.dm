@@ -152,23 +152,25 @@
 		if(istype(human_with_gun.r_hand, /obj/item/weapon/gun) || istype(human_with_gun.l_hand, /obj/item/weapon/gun))
 			var/obj/item/weapon/gun/gun_with_iff
 			var/found_iff = FALSE
-			gun_with_iff = human_with_gun.get_active_hand()
-			if(gun_with_iff.GetComponent(/datum/component/iff_fire_prevention))
-				for(var/obj/item/attachable/attachment in gun_with_iff.contents)
-					if(locate(/datum/element/bullet_trait_iff) in attachment.traits_to_give)
-						found_iff = TRUE
-						break
-				if(gun_with_iff.traits_to_give != null)
-					if(gun_with_iff.traits_to_give.Find("iff"))
-						found_iff = TRUE
-				if(gun_with_iff.in_chamber != null && gun_with_iff.in_chamber.bullet_traits != null )
-					if(gun_with_iff.in_chamber.bullet_traits.Find("iff"))
-						found_iff = TRUE
-				if(found_iff)
-					if(get_target_lock(human_with_gun.get_id_faction_group()) > 0)
-						msg += SPAN_HELPFUL("[capitalize(t_He)] is compatible with your weapon's IFF.\n")
-					else
-						msg += SPAN_DANGER("[capitalize(t_He)] is not compatible with your weapon's IFF. They will be shot by your weapon!\n")
+			if(istype(human_with_gun.get_active_hand(), /obj/item/weapon/gun))
+				gun_with_iff = human_with_gun.get_active_hand()
+			else
+				gun_with_iff = human_with_gun.get_inactive_hand()
+			for(var/obj/item/attachable/attachment in gun_with_iff.contents)
+				if(locate(/datum/element/bullet_trait_iff) in attachment.traits_to_give)
+					found_iff = TRUE
+					break
+			if(gun_with_iff.traits_to_give != null)
+				if(gun_with_iff.traits_to_give.Find("iff") || LAZYFIND(gun_with_iff.traits_to_give,/datum/element/bullet_trait_iff))
+					found_iff = TRUE
+			if(gun_with_iff.in_chamber != null && gun_with_iff.in_chamber.bullet_traits != null )
+				if(gun_with_iff.in_chamber.bullet_traits.Find("iff") || LAZYFIND(gun_with_iff.in_chamber.bullet_traits,/datum/element/bullet_trait_iff))
+					found_iff = TRUE
+			if(found_iff)
+				if(get_target_lock(human_with_gun.get_id_faction_group()) > 0)
+					msg += SPAN_HELPFUL("[capitalize(t_He)] is compatible with your weapon's IFF.\n")
+				else
+					msg += SPAN_DANGER("[capitalize(t_He)] is not compatible with your weapon's IFF. They will be shot by your weapon!\n")
 	//Restraints
 	if(handcuffed)
 		msg += SPAN_ORANGE("[t_His] руки в [handcuffed.declent_ru(PREPOSITIONAL)].\n")
@@ -178,12 +180,12 @@
 
 	//Admin-slept
 	if(sleeping > 8000000)
-		msg += SPAN_HIGHDANGER("<B>Этот игрок был усыплен администрацией.</B>\n")
+		msg += SPAN_HIGHDANGER(SPAN_BOLD("Этот игрок был усыплен администрацией.\n"))
 
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
-			msg += SPAN_WARNING("<B>[t_He] бьется в конвульсиях!</B>\n")
+			msg += SPAN_WARNING(SPAN_BOLD("[t_He] бьется в конвульсиях!\n"))
 		else if(jitteriness >= 200)
 			msg += SPAN_WARNING("[t_He] сильно дергается.\n")
 		else if(jitteriness >= 100)
@@ -221,7 +223,7 @@
 		if(paralyzed > 1 && distance <= 3)
 			msg += SPAN_WARNING("[t_He] совершенно неподвижен.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
-			user.visible_message("<b>[capitalize(user.declent_ru(NOMINATIVE))]</b> проверяет [t_his] пульс.", "Вы проверили [t_his] пульс.", null, 4)
+			user.visible_message("[SPAN_BOLD("[capitalize(user.declent_ru(NOMINATIVE))]")] проверяет [t_his] пульс.", "Вы проверили [t_his] пульс.", null, 4)
 		spawn(15)
 			if(user && src && distance <= 1)
 				get_pulse(GETPULSE_HAND) // to update it
@@ -250,7 +252,7 @@
 		if(temp)
 			if(temp.status & LIMB_DESTROYED)
 				is_destroyed["[temp.display_name]"] = 1
-				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("<b>У [t_theirs] отсутствует [temp.declent_ru(NOMINATIVE)].</b>\n")
+				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("У [t_theirs] отсутствует [temp.declent_ru(NOMINATIVE)].\n"))
 				continue
 			if(temp.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 				if(!(temp.brute_dam + temp.burn_dam))
@@ -399,62 +401,62 @@
 		display_foot_right = 1
 
 	if (display_head)
-		msg += SPAN_WARNING("Кровь капает с [t_his] <b>лица</b>!\n")
+		msg += SPAN_WARNING("Кровь капает с [t_his] [SPAN_BOLD("лица!")]\n")
 
 	if (display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-		msg += SPAN_WARNING("Кровь капает через [t_his] одежду <b>всего тела</b>!\n")
+		msg += SPAN_WARNING("Кровь капает через [t_his] одежду с каждой части [t_his] [SPAN_BOLD("всего тела!")]\n")
 	else
 		if (display_chest && display_arm_left && display_arm_right && display_hand_left && display_hand_right)
-			msg += SPAN_WARNING("Кровь капает через [t_his] одежду <b>всего торса</b>!\n")
+			msg += SPAN_WARNING("Кровь капает через [t_his] одежду с каждой части [t_his] [SPAN_BOLD("всего торса!")]\n")
 		else
 			if (display_chest)
-				msg += SPAN_WARNING("Кровь капает через [t_his] <b>футболку</b>!\n")
+				msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("футболку!")]\n")
 			if (display_arm_left && display_arm_right && display_hand_left && display_hand_left)
-				msg += SPAN_WARNING("Кровь капает через [t_his] <b>перчатки</b> и <b>рукава</b>!\n")
+				msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("перчатки")] и [SPAN_BOLD("рукава!")]\n")
 			else
 				if (display_arm_left && display_arm_right)
-					msg += SPAN_WARNING("Кровь капает через [t_his] <b>рукава</b>!\n")
+					msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("рукава!")]\n")
 				else
 					if (display_arm_left)
-						msg += SPAN_WARNING("Кровь капает через [t_his] <b>левый рукав</b>!\n")
+						msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("левый рукав!")]\n")
 					if (display_arm_right)
-						msg += SPAN_WARNING("Кровь капает через [t_his] <b>правый рукав</b>!\n")
+						msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("правый рукав!")]\n")
 				if (display_hand_left && display_hand_right)
-					msg += SPAN_WARNING("Кровь течёт из-под [t_his] <b>перчаток</b>!\n")
+					msg += SPAN_WARNING("Кровь течёт из-под [t_his] [SPAN_BOLD("перчаток!")]\n")
 				else
 					if (display_hand_left)
-						msg += SPAN_WARNING("Кровь течёт из-под [t_his] <b>левой перчатки</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из-под [t_his] [SPAN_BOLD("левой перчатки!")]\n")
 					if (display_hand_right)
-						msg += SPAN_WARNING("Кровь течёт из-под [t_his] <b>правой перчатки</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из-под [t_his] [SPAN_BOLD("правой перчатки!")]\n")
 
 		if (display_groin && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-			msg += SPAN_WARNING("Кровь капает через [t_his] одежду <b>с нижней половины тела</b>!\n") //?
+			msg += SPAN_WARNING("Кровь капает через [t_his] одежду с каждой части [t_his] [SPAN_BOLD("нижней половины тела!")]\n")
 		else
 			if (display_groin)
-				msg += SPAN_WARNING("Кровь течёт из [t_his] <b>паха</b>!\n")
+				msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("паха!")]\n")
 			if (display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-				msg += SPAN_WARNING("Кровь течёт из [t_his] <b>штанов</b> и <b>ботинок</b>!\n")
+				msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("штанов")] и [SPAN_BOLD("ботинок!")]\n")
 			else
 				if (display_leg_left && display_leg_right)
-					msg += SPAN_WARNING("Кровь течёт из [t_his] <b>штанов</b>!\n")
+					msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("штанов!")]\n")
 				else
 					if (display_leg_left)
-						msg += SPAN_WARNING("Кровь течёт из [t_his] <b>левой штанины</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("левой штанины!")]\n")
 					if (display_leg_right)
-						msg += SPAN_WARNING("Кровь течёт из [t_his] <b>правой штанины</b>!\n")
+						msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("правой штанины!")]\n")
 				if (display_foot_left && display_foot_right)
-					msg += SPAN_WARNING("Кровь собирается вокруг [t_his] <b>ботинок</b>!\n")
+					msg += SPAN_WARNING("Кровь собирается вокруг [t_his] [SPAN_BOLD("ботинок!")]\n")
 				else
 					if (display_foot_left)
-						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] <b>левого ботинка</b>!\n")
+						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] [SPAN_BOLD("левого ботинка!")]\n")
 					if (display_foot_right)
-						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] <b>правого ботинка</b>!\n")
+						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] [SPAN_BOLD("правого ботинка!")]\n")
 
 	if(chestburst == 2)
-		msg += SPAN_WARNING("<b>У [t_theirs] огромное отверстие в груди!</b>\n")
+		msg += SPAN_WARNING(SPAN_BOLD("У [t_theirs] огромное отверстие в груди!\n"))
 
 	for(var/obj/implant in get_visible_implants())
-		msg += SPAN_WARNING("<b>[capitalize(implant.declent_ru(NOMINATIVE))] торчит из-под [t_his] кожи!</b>\n")
+		msg += SPAN_WARNING(SPAN_BOLD("[capitalize(implant.declent_ru(NOMINATIVE))] торчит из-под [t_his] кожи!</b>\n"))
 
 	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
@@ -531,7 +533,7 @@
 	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
-			. += SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>.")
+			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name].")]")
 		. += SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")

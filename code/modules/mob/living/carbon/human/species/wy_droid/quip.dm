@@ -24,3 +24,9 @@
 	sound = 'sound/voice/wy_droid/voicelines/eliminate_the_xenomorphs.ogg'
 	say_message = "Eliminate the xenomorphs."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/quip/no_escape
+	key = "droidnoescape"
+	sound = 'sound/voice/wy_droid/voicelines/no_escape.ogg'
+	say_message = "There is no escape."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

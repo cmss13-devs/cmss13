@@ -19,6 +19,12 @@
 	say_message = "Asset procurement protocol override."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/perimeter
+	key = "secureperimeter"
+	sound = 'sound/voice/wy_droid/voicelines/maintain_secure_perimeter.ogg'
+	say_message = "Maintain secure perimeter."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/allocated_tasks
 	key = "allocatedtasks"
 	sound = 'sound/voice/wy_droid/voicelines/continue_with_allocated_tasks.ogg'
@@ -49,10 +55,28 @@
 	say_message = "Hunter target aquired."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/alert_weyland
+	key = "alertweyland"
+	sound = 'sound/voice/wy_droid/voicelines/alert_weyland.ogg'
+	say_message = "Hunter detected, alert Weyland."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/hunter_threat
 	key = "hunterthreat"
 	sound = 'sound/voice/wy_droid/voicelines/hunter_threat_confirmed.ogg'
 	say_message = "Hunter threat confirmed."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/hunter_detected
+	key = "hunterdetected"
+	sound = 'sound/voice/wy_droid/voicelines/hunter_detected.ogg'
+	say_message = "Hunter detected, initiate contact procurement."
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/matriarch
+	key = "matriarchfacility"
+	sound = 'sound/voice/wy_droid/voicelines/matriarch_facility.ogg'
+	say_message = "Target entering matriarch holding facility."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/colonial/wy_droid/status/massive_xenomorph

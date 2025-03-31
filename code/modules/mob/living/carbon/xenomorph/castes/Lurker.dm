@@ -278,8 +278,6 @@
 	xeno.recalculate_speed()
 
 	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
-	if(!istype(behavior))
-		CRASH("lurker_base behavior_delegate missing/invalid for [xeno]!")
 
 	var/recharge_time = behavior.invis_recharge_time
 	if(behavior.invis_start_time > 0) // Sanity

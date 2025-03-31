@@ -1,7 +1,3 @@
-#define HOT_WATER_DAMAGE 0.5
-#define HOT_WATER_TEMP_EFFECT 5
-#define HOT_WATER_TARGET_TEMP T90C
-#define HOT_WATER_DAMAGE_TYPE BURN
 
 /obj/effect/blocker/sorokyne_hot_water
 	anchored = TRUE
@@ -14,28 +10,17 @@
 
 	icon_state = "map_blocker_hazard"
 
-	var/dam_amount = HOT_WATER_DAMAGE
-	var/dam_type = HOT_WATER_DAMAGE_TYPE
-	var/target_temp = HOT_WATER_TARGET_TEMP
-	var/temp_delta = HOT_WATER_TEMP_EFFECT
+	var/dam_amount = 0.5
+	var/dam_type = BURN
+	var/target_temp = T90C
+	var/temp_delta = 5
 
 /obj/effect/blocker/sorokyne_hot_water/Initialize(mapload, ...)
 	. = ..()
 	invisibility = 101
 
 
-/obj/effect/blocker/sorokyne_hot_water/Crossed(mob/living/M as mob)
+/obj/effect/blocker/sorokyne_hot_water/Crossed(mob/living/affected_mob)
+	if(affected_mob.stat != DEAD && !isxeno(affected_mob))
+		affected_mob.AddComponent(/datum/component/damage_over_time, /obj/effect/blocker/sorokyne_hot_water, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult=0, pred_dmg_mult=0)
 
-	if(!istype(M))
-		return
-
-	if(!istype(M.loc, /turf))
-		return
-
-	if(!M.GetExactComponent(/datum/component/damage_over_time) && M.stat != DEAD && !isxeno(M))
-		M.AddComponent(/datum/component/damage_over_time, dam_amount, dam_type, target_temp, temp_delta)
-
-#undef HOT_WATER_DAMAGE
-#undef HOT_WATER_TEMP_EFFECT
-#undef HOT_WATER_TARGET_TEMP
-#undef HOT_WATER_DAMAGE_TYPE

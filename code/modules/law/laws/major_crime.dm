@@ -1,10 +1,7 @@
-/datum/law/major_law
-	severity = MAJOR_CRIME
-
 /datum/law/major_law/damage_to_government_property
 	name = "Damage to Government Property"
 	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a major level, such as destroying/dismantling multiple walls or windows."
-	special_punishment = "Repairation"
+	special_punishment = "Reparation"
 	brig_time = 10
 
 /datum/law/major_law/disorderly_conduct
@@ -20,19 +17,13 @@
 /datum/law/major_law/contraband
 	name = "Contraband"
 	desc = "Possessing, or distributing controlled substances or unauthorized items or weapons as defined in Standard Operating Procedure or impairing, intoxicating or addictive drugs such as Mindbreaker, this does not include custom mixes or dosages of medicinal drugs."
-	special_punishment = "Contraband Confiscation"
+	special_punishment = "Confiscation of Contraband"
 	brig_time = 15
 
 /datum/law/major_law/insubordination
 	name = "Insubordination"
 	desc = "Failing to follow a lawful order from a superior that is personally directed at you."
 	brig_time = 15
-
-/datum/law/major_law/civil_insubordination
-	name = "Civil Insubordination"
-	desc = "Failing to follow a lawful order from the Commander or Duty Officer (or assigned department head, if any) during an active Military Operation."
-	special_punishment = "Only Applicable to Non-USCM personnel."
-	brig_time = 10
 
 /datum/law/major_law/interference
 	name = "Interference"

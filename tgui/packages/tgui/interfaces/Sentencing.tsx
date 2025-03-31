@@ -202,6 +202,11 @@ const NewCharge = (props) => {
                     {law.special_punishment}
                   </LabeledList.Item>
                 )}
+                {law.conditions && (
+                  <LabeledList.Item label="Conditions">
+                    {law.conditions}
+                  </LabeledList.Item>
+                )}
               </LabeledList>
               <Button
                 bold

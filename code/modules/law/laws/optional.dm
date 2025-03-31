@@ -1,6 +1,3 @@
-/datum/law/optional_law
-	severity = OPTIONAL_CRIME
-
 /datum/law/optional_law/minor_unruly
 	name = "Minor Disorderly Conduct in Confinement"
 	desc = "To cause disruption in a minor manner while in the Brig and under arrest. Disruption is considered breaking a Minor Law. This can be added on to any charge."

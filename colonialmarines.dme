@@ -1924,6 +1924,7 @@
 #include "code\modules\law\incident.dm"
 #include "code\modules\law\law.dm"
 #include "code\modules\law\laws\capital_crime.dm"
+#include "code\modules\law\laws\civil_crime.dm"
 #include "code\modules\law\laws\major_crime.dm"
 #include "code\modules\law\laws\minor_crime.dm"
 #include "code\modules\law\laws\optional.dm"

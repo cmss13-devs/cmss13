@@ -29,20 +29,8 @@
 	src.cause_path = cause_path
 	src.synth_dmg_mult = synth_dmg_mult
 	src.pred_dmg_mult = pred_dmg_mult
-	
-	if(!ispath(cause_path)
-		return COMPONENT_INCOMPATIBLE
-	src.cause_path = cause_path
-	src.synth_dmg_mult = synth_dmg_mult
-	src.pred_dmg_mult = pred_dmg_mult
-	
-	if(!ispath(cause_path)
-		return COMPONENT_INCOMPATIBLE
-	src.cause_path = cause_path
-	src.synth_dmg_mult = synth_dmg_mult
-	src.pred_dmg_mult = pred_dmg_mult
-	
-	if(!ispath(cause_path)
+
+	if(!ispath(cause_path))
 		return COMPONENT_INCOMPATIBLE
 
 	if(human_parent.stat == DEAD)
@@ -86,7 +74,7 @@
 		return
 
 	if(issynth(human_parent) || isyautja(human_parent))
-		dam_amount = max(dam_mount - 0.5, 0)
+		dam_amount = max(dam_amount - 0.5, 0)
 	if(human_parent.body_position == STANDING_UP)
 		human_parent.apply_damage(dam_amount,dam_type,"l_leg")
 		human_parent.apply_damage(dam_amount,dam_type,"l_foot")

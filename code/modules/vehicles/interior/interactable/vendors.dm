@@ -229,9 +229,9 @@
 		list("84mm Anti-Armor Rocket", 0, /obj/item/ammo_magazine/rocket/ap, VENDOR_ITEM_REGULAR),
 		list("84mm High-Explosive Rocket", 0, /obj/item/ammo_magazine/rocket, VENDOR_ITEM_REGULAR),
 		list("84mm White-Phosphorus Rocket", 0, /obj/item/ammo_magazine/rocket/wp, VENDOR_ITEM_REGULAR),
-		list("Large Incinerator Tank", 0, /obj/item/ammo_magazine/flamer_tank/large, VENDOR_ITEM_REGULAR),
-		list("Large Incinerator Tank (B) (Green Flame)", 0, /obj/item/ammo_magazine/flamer_tank/large/B, VENDOR_ITEM_REGULAR),
-		list("Large Incinerator Tank (X) (Blue Flame)", 0, /obj/item/ammo_magazine/flamer_tank/large/X, VENDOR_ITEM_REGULAR),
+		list("M240 Large Incinerator Tank", 0, /obj/item/ammo_magazine/flamer_tank/large, VENDOR_ITEM_REGULAR),
+		list("M240 Large Incinerator Tank (B) (Green Flame)", 0, /obj/item/ammo_magazine/flamer_tank/large/B, VENDOR_ITEM_REGULAR),
+		list("M240 Large Incinerator Tank (X) (Blue Flame)", 0, /obj/item/ammo_magazine/flamer_tank/large/X, VENDOR_ITEM_REGULAR),
 
 		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
 		list("M2C Box Magazine", 0, /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),

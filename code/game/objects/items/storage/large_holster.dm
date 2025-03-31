@@ -257,11 +257,11 @@
 	var/obj/item/ammo_magazine/flamer_tank/large/B/fuelB
 	var/obj/item/ammo_magazine/flamer_tank/large/X/fuelX
 	var/obj/item/ammo_magazine/flamer_tank/large/active_fuel
-	var/obj/item/weapon/gun/flamer/M240T/linked_flamer
+	var/obj/item/weapon/gun/flamer/m240/spec/linked_flamer
 	var/toggling = FALSE
 	var/image/flamer_overlay
 	actions_types = list(/datum/action/item_action/specialist/toggle_fuel)
-	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
+	can_hold = list(/obj/item/weapon/gun/flamer/m240/spec)
 
 /obj/item/storage/large_holster/fuelpack/Initialize()
 	. = ..()
@@ -385,7 +385,7 @@
 		switch_fuel(A, user)
 		return
 
-	var/obj/item/weapon/gun/flamer/M240T/F = A
+	var/obj/item/weapon/gun/flamer/m240/spec/F = A
 	if(istype(F) && !(F.fuelpack))
 		F.link_fuelpack(user)
 		if(F.current_mag && !(F.current_mag in list(fuel,fuelB,fuelX)))

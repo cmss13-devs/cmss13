@@ -193,7 +193,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/brown(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather(new_human), WEAR_FACE)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer, WEAR_R_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/survivor, WEAR_R_HAND)
 	add_survivor_weapon_civilian(new_human)
 	..()
 
@@ -585,7 +585,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/brown, WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/science, WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headband/tan, WEAR_HEAD)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer, WEAR_R_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/survivor, WEAR_R_HAND)
 	add_survivor_weapon_civilian(new_human)
 	add_random_survivor_research_gear(new_human)
 	..()

@@ -1,5 +1,5 @@
 #define HUNTER_BEST_ITEM  pick(\
-								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer), \
+								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer/m240), \
 								100; list(/obj/item/weapon/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
 								50; list(/obj/item/weapon/yautja/chained/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \

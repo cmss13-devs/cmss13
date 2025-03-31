@@ -273,8 +273,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/whiteout, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/flammenwerfer, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/flammenwerfer, WEAR_IN_BACK)
 
 
 	//face

@@ -13,8 +13,8 @@
 	category = MOBA_ARCHETYPE_FIGHTER
 	icon_state = "vampire"
 	ideal_roles = list(MOBA_LANE_TOP, MOBA_LANE_JUNGLE)
-	starting_health = 500
-	ending_health = 2000
+	starting_health = 400
+	ending_health = 1600
 	starting_health_regen = 1.5
 	ending_health_regen = 6
 	starting_plasma = 400
@@ -25,7 +25,7 @@
 	ending_armor = 20
 	starting_acid_armor = 0
 	ending_acid_armor = 15
-	speed = 0.8
+	speed = 0.3
 	attack_delay_modifier = 0
 	starting_attack_damage = 40
 	ending_attack_damage = 65

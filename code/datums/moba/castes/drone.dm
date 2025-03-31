@@ -13,8 +13,8 @@
 	category = MOBA_ARCHETYPE_CONTROLLER
 	icon_state = "drone"
 	ideal_roles = list(MOBA_LANE_SUPPORT)
-	starting_health = 500
-	ending_health = 2000
+	starting_health = 450
+	ending_health = 1500
 	starting_health_regen = 1.5
 	ending_health_regen = 6
 	starting_plasma = 400
@@ -25,7 +25,7 @@
 	ending_armor = 15
 	starting_acid_armor = 0
 	ending_acid_armor = 10
-	speed = 1
+	speed = 0.5
 	attack_delay_modifier = 0
 	starting_attack_damage = 37.5
 	ending_attack_damage = 60

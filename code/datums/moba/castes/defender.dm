@@ -13,8 +13,8 @@
 	category = MOBA_ARCHETYPE_TANK
 	icon_state = "defender"
 	ideal_roles = list(MOBA_LANE_TOP)
-	starting_health = 600
-	ending_health = 2400
+	starting_health = 540
+	ending_health = 1800
 	starting_health_regen = 2
 	ending_health_regen = 8
 	starting_plasma = 250
@@ -25,7 +25,7 @@
 	ending_armor = 35
 	starting_acid_armor = 0
 	ending_acid_armor = 25
-	speed = 1.2
+	speed = 0.7
 	attack_delay_modifier = 0
 	starting_attack_damage = 37.5
 	ending_attack_damage = 52.5
@@ -154,7 +154,8 @@
 			continue
 		if(target.stat == DEAD)
 			continue
-		target.apply_status_effect(/datum/status_effect/slow, slow, debuff_duration)
+		//target.apply_status_effect(/datum/status_effect/slow, slow, debuff_duration)
+		target.Slow(2)
 		var/turf/destination = get_step(target, get_dir(xeno, target))
 		if(LinkBlocked(target, target.loc, destination))
 			SEND_SIGNAL(xeno, COMSIG_MOBA_STUN_GIVEN, target)

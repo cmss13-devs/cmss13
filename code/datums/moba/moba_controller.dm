@@ -357,7 +357,7 @@
 	var/mob/living/carbon/xenomorph/xeno = new found_playerdata.caste.equivalent_xeno_path
 	xeno.forceMove(player_datum.right_team ? right_base : left_base)
 	xeno.set_hive_and_update(player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT)
-	var/datum/component/moba_player/player_comp = xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, TRUE)
+	var/datum/component/moba_player/player_comp = xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, player_datum.right_team)
 	xeno.got_evolution_message = TRUE
 	ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)

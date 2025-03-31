@@ -272,7 +272,7 @@
 	name = "Queen Mother's Hubris"
 	description = "<br><b>Body Stacking</b><br>Killing an enemy grants you 10 + (4 x total enemies killed while holding this) extra attack damage for 90 seconds."
 	icon_state = "queen_mothers_hubris"
-	gold_cost = MOBA_GOLD_PER_MINUTE * 1.25
+	gold_cost = MOBA_GOLD_PER_MINUTE * 1
 	unique = TRUE
 	instanced = TRUE
 	component_items = list(
@@ -283,7 +283,7 @@
 	)
 
 	ability_cooldown_reduction = 0.8
-	attack_damage = 60
+	attack_damage = 55
 	slash_penetration = 10
 	speed = -0.1
 	var/kills = 0

@@ -53,7 +53,10 @@
 
 	for(var/mob/living/carbon/xenomorph/xeno as anything in awarding_xenos)
 		if(gold && !gold_award_to_killer)
-			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_GOLD, floor(gold / length(awarding_xenos)))
+			var/gold_mult = 1
+			if(HAS_TRAIT(parent, TRAIT_MOBA_MINION) && HAS_TRAIT(xeno, TRAIT_MOBA_SUPPORT))
+				gold_mult = 0.5
+			SEND_SIGNAL(xeno, COMSIG_MOBA_GIVE_GOLD, floor((gold / length(awarding_xenos)) * gold_mult))
 
 		if(xp)
 			if(parent_level != -1)

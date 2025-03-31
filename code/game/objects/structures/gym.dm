@@ -172,10 +172,10 @@
 	if(inoperable())
 		return PROCESS_KILL
 	var/items_moved = 0
-	for(var/atom/movable/A in loc.contents - src)
-		if(!A.anchored)
-			if(A.loc == src.loc)
-				INVOKE_NEXT_TICK(src, PROC_REF(move_thing), A) // to prevent instant movement
+	for(var/atom/movable/Anchored in loc.contents - src)
+		if(!Anchored.anchored)
+			if(Anchored.loc == src.loc)
+				INVOKE_NEXT_TICK(src, PROC_REF(move_thing), Anchored) // to prevent instant movement
 				items_moved++
 		if(items_moved >= 10)
 			break

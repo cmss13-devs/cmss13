@@ -210,12 +210,11 @@
 // Nyooom vrrrrrrmmmmm
 /datum/action/xeno_action/onclick/in_the_zone
 	name = "In The Zone"
-	desc = "For 6/8/10 seconds, gain a -0.5 speed bonus and ignore 15/25/35% of all attacks targeted at you. Cooldown 120/105/90 seconds. Plasma cost of 100."
 	action_icon_state = "tumble"
 	xeno_cooldown = 120 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_cost = 100
-	var/speed_bonus = -0.5
+	var/speed_bonus = -0.4
 	var/evasion = 15 // %
 	var/duration = 6 SECONDS
 
@@ -237,4 +236,4 @@
 	evasion = src::evasion + ((new_level - 1) * 10)
 	duration = src::duration + ((new_level - 1) * (2 SECONDS))
 
-	desc = "For [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 6, 8, 10)] seconds, gain a -0.5 speed bonus and ignore [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 15, 25, 35)]% of all attacks targeted at you. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 105, 90)] seconds. Plasma cost of 100."
+	desc = "For [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 6, 8, 10)] seconds, gain a -0.4 speed bonus and ignore [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 15, 25, 35)]% of all attacks targeted at you. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 105, 90)] seconds. Plasma cost of 100."

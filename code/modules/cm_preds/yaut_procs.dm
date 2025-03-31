@@ -262,7 +262,6 @@
 				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
-				elder_overseer_message("Good work, new blood.")
 
 /area/yautja
 	name = "\improper Yautja Ship"

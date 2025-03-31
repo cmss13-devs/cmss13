@@ -53782,6 +53782,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/bed/roller/heavy,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
 "pYu" = (

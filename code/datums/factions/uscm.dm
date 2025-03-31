@@ -66,6 +66,8 @@
 
 		if(!marine_rk)
 			marine_rk = current_human.rank_fallback
+		if(current_human.rank_override)
+			marine_rk = current_human.rank_override
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
 			if(squad_clr)
@@ -236,6 +238,8 @@
 				marine_rk = "tl"
 			if(JOB_SQUAD_LEADER)
 				marine_rk = "leader"
+		if(current_human.rank_override)
+			marine_rk = current_human.rank_override
 
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")

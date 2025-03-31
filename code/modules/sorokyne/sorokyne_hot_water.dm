@@ -19,8 +19,11 @@
 	. = ..()
 	invisibility = 101
 
-
 /obj/effect/blocker/sorokyne_hot_water/Crossed(mob/living/affected_mob)
-	if(affected_mob.stat != DEAD && !isxeno(affected_mob))
-		affected_mob.AddComponent(/datum/component/damage_over_time, /obj/effect/blocker/sorokyne_hot_water, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult=0, pred_dmg_mult=0)
+	if(affected_mob.stat == DEAD)
+		return
+	if(!ishuman(affected_mob))
+		return
+
+	affected_mob.AddComponent(/datum/component/damage_over_time, /obj/effect/blocker/sorokyne_hot_water, dam_amount, dam_type, target_temp, temp_delta, synth_dmg_mult=0, pred_dmg_mult=0)
 

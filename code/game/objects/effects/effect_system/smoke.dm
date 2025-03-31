@@ -581,6 +581,7 @@
 	time_to_live = 3
 	randomize_ttl = FALSE
 	opacity = FALSE
+	alpha = 200
 	var/poison_dot = 5
 	var/penetration = 0
 	var/friendly_hive

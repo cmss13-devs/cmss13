@@ -1,0 +1,4 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - bugfix: "universal speak is working again"

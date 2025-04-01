@@ -553,6 +553,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/prop/helmetgarb/chaplain_patch
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/helmet_garb/cat_ears
+	display_name = "Cat ears (Squad)"
+	path = /obj/item/prop/helmetgarb/cat_ears
+	slot = WEAR_IN_BACK
+
 /datum/gear/paperwork
 	category = "Paperwork"
 	fluff_cost = 1
@@ -1278,12 +1283,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/eyewear/sunglasses/hippie_shades/pink
 	display_name = "Suntex-Sightware rounded shades, pink"
 	path = /obj/item/clothing/glasses/sunglasses/hippie
-/datum/gear/cat_ears
-	display_name = "Cat ears (Squad)"
-	path = /obj/item/prop/helmetgarb/cat_ears
-	cost = 3
-	slot = WEAR_IN_BACK
-
 
 /datum/gear/eyewear/sunglasses/hippie_shades/green
 	display_name = "Suntex-Sightware rounded shades, green"

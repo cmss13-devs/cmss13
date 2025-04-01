@@ -59729,7 +59729,6 @@
 /turf/open/floor/strata/fake_wood,
 /area/tyrargo/indoors/bar/upper)
 "cYy" = (
-/obj/structure/prop/tyrargo/illuminator,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
@@ -59737,14 +59736,25 @@
 	dir = 1
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 6;
+	light_power = 2
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
 "cYz" = (
-/obj/structure/prop/tyrargo/illuminator,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 6;
+	light_power = 2
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "cYA" = (
@@ -61112,11 +61122,21 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
 "dcI" = (
-/obj/structure/prop/tyrargo/illuminator,
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 6;
+	light_power = 2
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "dcJ" = (
-/obj/structure/prop/tyrargo/illuminator,
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 6;
+	light_power = 2
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/west)
 "dcK" = (

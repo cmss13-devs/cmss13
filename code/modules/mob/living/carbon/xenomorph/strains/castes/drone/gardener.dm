@@ -241,7 +241,7 @@
 	if (!xeno.check_state(TRUE))
 		return
 
-	if(mods["click_catcher"])
+	if(mods[CLICK_CATCHER])
 		return
 
 	if(ismob(target_atom)) // to prevent using thermal vision to bypass clickcatcher

@@ -1,0 +1,7 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Mouse 4/5 is now ignored for firing and vehicles"
+  - bugfix: "Vendor vend buttons now only respond to left click"
+  - code_imp: "All mouse modifiers in code have been macroified"
+  - ui: "Button has a new prop allowAnyClick which can allow any click to cause an onClick otherwise it will only occur for left click"

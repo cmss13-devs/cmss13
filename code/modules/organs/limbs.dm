@@ -897,6 +897,7 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_l_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
+				owner.lip_style = null
 				owner.update_hair()
 				if(owner.species)
 					owner.species.handle_head_loss(owner)

@@ -228,6 +228,11 @@
 	emp_proof = TRUE
 	openspeed = 6
 
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open
+	density = FALSE
+
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/emp_act(power, severity)
+	if(emp_proof)
+		return FALSE
 	..()
 	return TRUE

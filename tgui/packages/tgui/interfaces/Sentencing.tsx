@@ -14,6 +14,7 @@ type Law = {
   desc: String;
   brig_time: number;
   special_punishment: string;
+  conditions: string;
   ref: string;
 };
 

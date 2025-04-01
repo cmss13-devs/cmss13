@@ -694,7 +694,9 @@
 /obj/item/prop/helmetgarb/cat_ears
 	name = "Cat Ears"
 	desc = "The USCM antidepression team used to issue this attachment to soldiers in order to boost morale among the marines. Discontinued after a scientific analysis proved them useless."
-	icon_state = "cat_ears%SQUAD%"
+	icon_state = "cat_ears"
+	item_state = "cat_ears"
+	var/dummy_icon_state = "cat_ears%SQUAD%"
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cat_ears.dmi',
 	)
@@ -720,4 +722,6 @@
 		var/squad_name = lowertext(wearer.assigned_squad.name)
 		if("cat_ears[squad_name]" in valid_icon_states)
 			squad_color = squad_name
-	ears.icon_state = replacetext(initial(icon_state), "%SQUAD%", squad_color)
+	ears.icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
+	ears.item_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
+

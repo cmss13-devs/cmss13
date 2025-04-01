@@ -125,7 +125,7 @@
 		. += SPAN_INFO("[SPAN_HELPFUL("CTRL + Click")] \the [src] to start re-stocking it with supplies near vendor.")
 
 /obj/structure/machinery/cm_vending/sorted/vehicle_supply/clicked(mob/user, list/mods)
-	if(mods["ctrl"])
+	if(mods[CTRL_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		initiate_autorestock(user)

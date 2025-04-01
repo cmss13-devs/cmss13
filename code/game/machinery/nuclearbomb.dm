@@ -1,7 +1,7 @@
 GLOBAL_VAR_INIT(bomb_set, FALSE)
 /obj/structure/machinery/nuclearbomb
-	name = "\improper Nuclear Fission Explosive"
-	desc = "Nuke the entire site from orbit, it's the only way to be sure. Too bad we don't have any orbital nukes."
+	name = "\improper 'Blockbuster' Large Atomic Fission Demolition Device (LAFDEDE)"
+	desc = "Mainly intended as a demolition charge, this device, also called 'W-135', is primarily used by USCM space vessels that don't have the equipment to remotely nuke planets from orbit. According to the Nuclear Regulatory Commission of the United Americas, this device have an estimated yield of 15 to 30 kilotonnes of TNT, enough to flatten everything that moves in a 6.30 kilometer, or 3.9 mile range. It also weighs 422 kilograms, or 930 pounds."
 	icon = 'icons/obj/structures/machinery/nuclearbomb.dmi'
 	icon_state = "nuke"
 	density = TRUE
@@ -16,6 +16,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	var/being_used = FALSE
 	var/end_round = TRUE
 	var/timer_announcements_flags = NUKE_SHOW_TIMER_ALL
+	var/decryption_time = 0
+	var/decryption_end_time = null
+	var/decrypting = FALSE
 	pixel_x = -16
 	use_power = USE_POWER_NONE
 	req_access = list()
@@ -168,6 +171,11 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 				return
 
 			if(!ishuman(ui.user))
+				return
+
+			if(decryption_time != 0) //This should never get called unless the decryption process is still ongoing, in which case a user has modified their client.
+				to_chat(ui.user, SPAN_INFO("The encryption process must be completed first!"))
+				message_admins("[key_name(ui.user, 1)] [ADMIN_JMP_USER(ui.user)] attempted to activate [src] before it is ready, this shouldn't be possible.")
 				return
 
 			if(!allowed(ui.user))
@@ -446,9 +454,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	return ..()
 
 /obj/structure/machinery/nuclearbomb/tech
-	var/decryption_time = 10 MINUTES
-	var/decryption_end_time = null
-	var/decrypting = FALSE
+	decryption_time = 10 MINUTES
+	decryption_end_time = null
+	decrypting = FALSE
 
 	timeleft = 3 MINUTES
 	timer_announcements_flags = NUKE_DECRYPT_SHOW_TIMER_ALL

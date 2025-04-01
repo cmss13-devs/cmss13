@@ -1,0 +1,4 @@
+author: "ChampionDragos, detectivegoogle"
+delete-after: True
+changes:
+  - rscadd: "A new lorebook spawns in the pilot bunks."

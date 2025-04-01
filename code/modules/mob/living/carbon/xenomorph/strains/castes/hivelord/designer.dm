@@ -1,7 +1,7 @@
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
-	description = "You lose your ability to build, sacrifice chunk of your plasma pool, have slightly less health in exchange for stronger pheromones, ability to create Design Nodes that benefit other builders. Now you can design nodes that increase building speed or decrease cost. You gain ability to call Greater Resin Surge on your Design Nodes location."
-	flavor_description = "You are designer, you inspire our builders, let our hive expand byond limits!"
+	description = "You relinquish your ability to build resin secretions and sacrifice a portion of your plasma pool, alongside a slight reduction in health. In return, you gain significantly stronger pheromones, enhanced long-range vision, and the ability to place up to 12 Design Nodes that enhance the efficiency of other builders. Additionally, you can remotely reinforce resin structures, control doors from a distance, and unleash a powerful Greater Resin Surge, transforming Design Nodes into temporary reflective walls to fortify your hive."
+	flavor_description = "You are hive's designer, while you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
 	icon_state_prefix = "Designer"
 
 	actions_to_remove = list(
@@ -13,11 +13,11 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/place_design, //macro 2, macro 1 is for weeds
-		/datum/action/xeno_action/onclick/change_design, //macro 3
+		/datum/action/xeno_action/onclick/change_design,
+		/datum/action/xeno_action/activable/greater_resin_surge, //macro 3
 		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 4
-		/datum/action/xeno_action/activable/greater_resin_surge, // macro 5
+		/datum/action/xeno_action/active_toggle/toggle_speed, // macro 5
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
-		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
@@ -37,11 +37,15 @@
 	hivelord.tacklestrength_max = 6 // increase by +1
 	hivelord.recalculate_everything()
 
-	// Also change the primacy value for our place construction ability (because we want it in the same place but have another primacy ability)
+	// Also change the primacy value for our abilities (because we want the same place but have another primacy ability)
 	for(var/datum/action/xeno_action/action in hivelord.actions)
 		if(istype(action, /datum/action/xeno_action/activable/place_construction))
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
-			break // Don't need to keep looking
+		if(istype(action, /datum/action/xeno_action/active_toggle/toggle_meson_vision))
+			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
+		if(istype(action, /datum/action/xeno_action/active_toggle/toggle_speed))
+			action.ability_primacy = XENO_PRIMARY_ACTION_5
+			break // Stop looking for other ones
 
 // ""animations"" (effects)
 /obj/effect/resin_construct/fastweak
@@ -179,7 +183,7 @@
 	xeno_cooldown = 30 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/greater_resin_surge/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -313,6 +317,83 @@
 	if(xeno.selected_design && xeno.selected_design.plasma_cost)
 		plasma_cost = xeno.selected_design.plasma_cost
 
+	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/remote))
+		if(!istype(target_atom, /obj/structure/mineral_door/resin))
+			to_chat(xeno, SPAN_XENOWARNING("We can only do this on resin doors!"))
+			return
+		if(!check_and_use_plasma_owner(plasma_cost))
+			return
+		var/obj/structure/mineral_door/resin/resin_door = target_atom
+		if(resin_door.TryToSwitchState(owner))
+			if(resin_door.open)
+				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+			else
+				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+		return
+
+	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
+		if(!(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane) || istype(target_atom, /obj/structure/mineral_door/resin)))
+			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membrane and doors!"))
+			return
+
+		if(!check_and_use_plasma_owner(plasma_cost))
+			return
+
+		if(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane))
+			var/turf/closed/wall/resin/wall = target_atom
+			if(wall.hivenumber != xeno.hivenumber)
+				to_chat(xeno, SPAN_XENOWARNING("[wall] does not belong to our hive!"))
+				return
+
+			if(wall.type == /turf/closed/wall/resin)
+				var/obj/thick_wall = new /obj/effect/resin_construct/thickfast(target_turf, src, xeno)
+				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					qdel(thick_wall)
+					return
+				qdel(thick_wall)
+				wall.ChangeTurf(/turf/closed/wall/resin/thick)
+			else if(wall.type == /turf/closed/wall/resin/membrane)
+				var/obj/thick_membrane = new /obj/effect/resin_construct/transparent/thickfast(target_turf, src, xeno)
+				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					qdel(thick_membrane)
+					return
+				qdel(thick_membrane)
+				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
+			else
+				to_chat(xeno, SPAN_XENOWARNING("[wall] can't be made thicker."))
+				return
+
+		else if(istype(target_atom, /obj/structure/mineral_door/resin))
+			var/obj/structure/mineral_door/resin/door = target_atom
+
+			if(door.hivenumber != xeno.hivenumber)
+				to_chat(xeno, SPAN_XENOWARNING("[door] does not belong to your hive!"))
+				return
+
+			if(door.hardness == 1.5) // Normal resin door
+				var/obj/thick_door = new /obj/effect/resin_construct/thickdoorfast(target_turf, src, xeno)
+				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+					qdel(thick_door)
+					return
+				qdel(thick_door)
+				var/oldloc = door.loc
+				qdel(door)
+				new /obj/structure/mineral_door/resin/thick(oldloc, door.hivenumber)
+			else
+				to_chat(xeno, SPAN_XENOWARNING("[door] can't be made thicker."))
+				return
+
+		else
+			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin structures!"))
+			return
+
+		xeno.visible_message(SPAN_XENONOTICE("Weeds around [target_atom] start to twitch and pump substance towards it, thickening it in process!"),
+			SPAN_XENONOTICE("We start to channel nutrients towards [target_atom], using [plasma_cost] plasma."), null, 5)
+		playsound(target_atom, "alien_resin_build", 25)
+
+		target_atom.add_hiddenprint(xeno) // Tracks who reinforced it for admins
+		return TRUE
+
 	if(check_and_use_plasma_owner(plasma_cost))
 		var/selected_design = xeno.selected_design
 		if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined. (12)
@@ -349,75 +430,6 @@
 			playsound(xeno.loc, "alien_resin_build", 25)
 			xeno.current_design.Add(design)
 
-		if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/remote))
-			if(istype(target_atom, /obj/structure/mineral_door/resin))
-				var/obj/structure/mineral_door/resin/resin_door = target_atom
-				if(resin_door.TryToSwitchState(owner))
-					if(resin_door.open)
-						to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
-					else
-						to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
-			else
-				to_chat(xeno, SPAN_XENOWARNING("We can only do this on resin doors!"))
-			return
-
-		if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
-			if(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane))
-				var/turf/closed/wall/resin/wall = target_atom
-
-				if(wall.hivenumber != xeno.hivenumber)
-					to_chat(xeno, SPAN_XENOWARNING("[wall] does not belong to our hive!"))
-					return
-
-				if(wall.type == /turf/closed/wall/resin)
-					var/obj/thick_wall = new /obj/effect/resin_construct/thickfast(target_turf, src, xeno)
-					if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-						qdel(thick_wall)
-						return
-					qdel(thick_wall)
-					wall.ChangeTurf(/turf/closed/wall/resin/thick)
-				else if(wall.type == /turf/closed/wall/resin/membrane)
-					var/obj/thick_membrane = new /obj/effect/resin_construct/transparent/thickfast(target_turf, src, xeno)
-					if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-						qdel(thick_membrane)
-						return
-					qdel(thick_membrane)
-					wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-				else
-					to_chat(xeno, SPAN_XENOWARNING("[wall] can't be made thicker."))
-					return
-
-			else if(istype(target_atom, /obj/structure/mineral_door/resin))
-				var/obj/structure/mineral_door/resin/door = target_atom
-
-				if(door.hivenumber != xeno.hivenumber)
-					to_chat(xeno, SPAN_XENOWARNING("[door] does not belong to your hive!"))
-					return
-
-				if(door.hardness == 1.5) // Normal resin door
-					var/obj/thick_door = new /obj/effect/resin_construct/thickdoorfast(target_turf, src, xeno)
-					if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-						qdel(thick_door)
-						return
-					qdel(thick_door)
-					var/oldloc = door.loc
-					qdel(door)
-					new /obj/structure/mineral_door/resin/thick(oldloc, door.hivenumber)
-				else
-					to_chat(xeno, SPAN_XENOWARNING("[door] can't be made thicker."))
-					return
-
-			else
-				to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin structures!"))
-				return
-
-			xeno.visible_message(SPAN_XENONOTICE("Weeds around [target_atom] start to twitch and pump substance towards it, thickening it in process!"),
-				SPAN_XENONOTICE("We start to channel nutrients towards [target_atom], using [plasma_cost] plasma."), null, 5)
-			playsound(target_atom, "alien_resin_build", 25)
-
-			target_atom.add_hiddenprint(xeno) // Tracks who reinforced it for admins
-			return TRUE
-
 	apply_cooldown()
 	return ..()
 
@@ -432,7 +444,7 @@
 
 /datum/action/xeno_action/onclick/change_design
 	name = "Choose Action"
-	action_icon_state = "blank"
+	action_icon_state = "static_speednode"
 	plasma_cost = 0
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
@@ -443,8 +455,8 @@
 	. = ..()
 
 	button.overlays.Cut()
-	button.overlays += image(icon_file, button, action_icon_state)
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, initial(xeno.selected_design.icon_state))
+	button.overlays += image(icon_file, button, action_icon_state)
 
 /datum/action/xeno_action/onclick/change_design/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

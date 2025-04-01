@@ -3290,12 +3290,13 @@
 /turf/open/floor/plating,
 /area/almayer/medical/operating_room_one)
 "ahy" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/closed/wall/almayer,
+/turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
 "ahz" = (
 /obj/structure/machinery/light{
@@ -8411,7 +8412,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "avV" = (
-/obj/structure/machinery/power/apc/almayer/north,
 /obj/structure/bed/chair,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -36066,6 +36066,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
+"ivR" = (
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/starboard_garden)
 "ivS" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /obj/structure/machinery/light,
@@ -104468,7 +104472,7 @@ aaa
 aaa
 aaa
 acv
-aiH
+ivR
 alg
 bBC
 bBC
@@ -105073,7 +105077,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 acv
@@ -105483,7 +105487,7 @@ aaa
 aaa
 aaa
 acf
-ahy
+aet
 avZ
 ipK
 ipK
@@ -105687,7 +105691,7 @@ aaa
 aaa
 acf
 aet
-aIx
+ahy
 ipK
 ceC
 eRR

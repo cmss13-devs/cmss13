@@ -1298,6 +1298,14 @@
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"afa" = (
 /obj/structure/prop/tower,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1307,14 +1315,6 @@
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
-"afc" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/tool,
-/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "afd" = (
 /obj/structure/fence,
 /turf/open/floor/warning/east,
@@ -44458,7 +44458,7 @@ abm
 abm
 abm
 aef
-afc
+aeZ
 aeU
 aeK
 aeo
@@ -44686,7 +44686,7 @@ abm
 abm
 abm
 aef
-aeZ
+afa
 aeK
 aeM
 aep

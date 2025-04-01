@@ -19,7 +19,8 @@
 		/datum/status_effect/reapers_call = SPAN_GREEN("Reaper's Call"),
 		/datum/status_effect/poisoned = "Poisoned",
 		/datum/status_effect/overdrive = "Overdrive",
-		/datum/status_effect/passive_gold = "Passive Gold",
+		/datum/status_effect/passive_gold/support = "3/s Passive Gold",
+		/datum/status_effect/passive_gold = "1/s Passive Gold",
 	)
 
 	var/static/list/level_up_thresholds = list(

@@ -753,7 +753,7 @@
 				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
 			else
 				sound_to_use = 'sound/effects/pred_cloakon.ogg'
-			playsound(M.loc, sound_to_use, 15, 1, 10)
+			playsound(M.loc, sound_to_use, 15, 1, 4)
 
 		if(!instant)
 			animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)

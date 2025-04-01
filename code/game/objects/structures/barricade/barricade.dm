@@ -430,7 +430,7 @@
 	update_icon()
 
 /obj/structure/barricade/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		rotate(user)
 		return TRUE
 

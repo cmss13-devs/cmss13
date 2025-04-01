@@ -378,7 +378,7 @@
 
 /obj/item/storage/pouch/pistol/command/attack_hand(mob/user, mods) //Mostly copied from gunbelt.
 	if(current_gun && ishuman(user) && loc == user)
-		if(mods && mods["alt"] && length(contents) > 1) //Withdraw the most recently inserted nongun item if possible.
+		if(mods && mods[ALT_CLICK] && length(contents) > 1) //Withdraw the most recently inserted nongun item if possible.
 			var/obj/item/I = contents[length(contents)]
 			if(isgun(I))
 				I = contents[length(contents) - 1]

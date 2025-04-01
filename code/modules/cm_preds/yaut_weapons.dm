@@ -205,6 +205,135 @@
 	attack_speed = 1 SECONDS
 	unacidable = TRUE
 
+	var/parrying
+	var/parrying_duration = 1.5 SECONDS
+	var/cur_parrying_cooldown
+	var/parrying_delay = 11 SECONDS // effectively 8, starts counting on activation
+
+/obj/item/weapon/yautja/sword/attack(mob/living/target, mob/living/carbon/human/user, riposte)
+	if(parrying && !riposte)
+		to_chat(user, SPAN_WARNING("You're a bit busy concentrating to hit something."))
+		return
+	. = ..()
+
+	if(!.)
+		return
+	if((human_adapted || isyautja(user)) && isxeno(target))
+		var/mob/living/carbon/xenomorph/xenomorph = target
+		xenomorph.AddComponent(/datum/component/status_effect/interference, 15, 15)
+
+
+/obj/item/weapon/yautja/sword/attack_self(mob/living/carbon/human/user)
+	..()
+	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		if(do_after(user, 0.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			var/wield_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+			if(!prob(wield_chance))
+				user.visible_message(SPAN_DANGER("[user] tries to hold \the [src] steadily but drops it!"),SPAN_DANGER("You focus on \the [src], attempting to hold it steadily, but its heavy weight makes you lose your grip!"))
+				user.hand ? user.drop_l_hand() : user.drop_r_hand()
+				return
+	if(cur_parrying_cooldown > world.time)
+		to_chat(user, SPAN_WARNING("You've attempted to parry too soon, you must wait a bit before regaining your focus."))
+		return
+	cur_parrying_cooldown = world.time + parrying_delay
+	parry(user)
+
+/obj/item/weapon/yautja/sword/proc/parry(mob/living/carbon/human/user)
+	user.visible_message(SPAN_HIGHDANGER("[user] starts holding \the [src] steadily..."),SPAN_DANGER("You focus on \the [src], holding it to parry any incoming attacks."))
+	flags_item |= NODROP
+	parrying = TRUE
+
+	var/filt_color = COLOR_WHITE
+	var/filt_alpha = 70
+	filt_color += num2text(filt_alpha, 2, 16)
+	user.add_filter("parry_sword", 1, list("type" = "outline", "color" = filt_color, "size" = 2))
+
+	RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, .proc/deflect_bullet)
+	RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/riposte_slash)
+	RegisterSignal(user, COMSIG_ITEM_ATTEMPT_ATTACK, .proc/riposte_melee)
+	addtimer(CALLBACK(src, .proc/end_parry, user), parrying_duration)
+
+/obj/item/weapon/yautja/sword/proc/deflect_bullet(mob/living/carbon/human/user, x, y, obj/projectile/P,)
+	SIGNAL_HANDLER
+	var/parry_chance = 100
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+
+	if(P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT || P.projectile_override_flags & AMMO_NO_DEFLECT)
+		return
+
+	if(!prob(parry_chance))
+		user.visible_message(SPAN_DANGER("[user] fails to deflect \the [P]!"),SPAN_DANGER("You fail to deflect \the [P]!"))
+		return
+
+	if(!P.runtime_iff_group)
+		user.visible_message(SPAN_DANGER("[user] blocks \the [P] and deflects it back at [P.firer]!"),SPAN_DANGER("You parry \the [P] and deflect it at [P.firer]!"))
+
+		var/obj/projectile/new_proj = new(src)
+		new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags | AMMO_NO_DEFLECT)
+		new_proj.firer = user
+
+		// Move back to who fired you.
+		new_proj.jank_wrapper()
+
+		new_proj.fire_at(P.firer, user, src, 10, speed = P.ammo.shell_speed)
+	return COMPONENT_CANCEL_BULLET_ACT
+
+/obj/item/weapon/yautja/sword/proc/riposte_slash(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/xenomorph)
+	SIGNAL_HANDLER
+	if(user.is_mob_incapacitated())
+		return
+
+	var/parry_chance = 100
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+
+	if(!prob(parry_chance))
+		user.visible_message(SPAN_DANGER("[user] fails to block the slash!"),SPAN_DANGER("You fail to parry the slash!"))
+		return
+
+	user.visible_message(SPAN_DANGER("[user] blocks the slash and counterattacks!"),SPAN_DANGER("You parry the slash and initiate a riposte attack!"))
+	slashdata["n_damage"] = 0
+	attack(xenomorph, user, riposte = TRUE)
+
+/obj/item/weapon/yautja/sword/proc/riposte_melee(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	SIGNAL_HANDLER
+	if(user.is_mob_incapacitated())
+		return
+
+	if(user == target)
+		return
+
+	var/parry_chance = 100
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+
+	if(!prob(parry_chance))
+		user.visible_message(SPAN_DANGER("[user] fails to block the slash!"),SPAN_DANGER("You fail to parry the slash!"))
+		return
+
+	target.animation_attack_on(user)
+	user.visible_message(SPAN_DANGER("[user] blocks the slash and counterattacks!"),SPAN_DANGER("You parry the slash and initiate a riposte attack!"))
+	attack(target, user, riposte = TRUE)
+	return COMPONENT_CANCEL_ATTACK
+
+/obj/item/weapon/yautja/sword/proc/end_parry(mob/living/carbon/human/user)
+	user.visible_message(SPAN_HIGHDANGER("[user] lowers \the [src]."),SPAN_DANGER("You lower \the [src], no longer parrying."))
+	flags_item &= ~NODROP
+	parrying = FALSE
+
+	user.remove_filter("parry_sword")
+
+	UnregisterSignal(user, list(COMSIG_HUMAN_XENO_ATTACK, COMSIG_HUMAN_BULLET_ACT, COMSIG_ITEM_ATTEMPT_ATTACK))
+
+/obj/projectile/proc/jank_wrapper()
+	RegisterSignal(src, COMSIG_BULLET_PRE_HANDLE_MOB, .proc/bullet_ignore_mob)
+
+/obj/projectile/proc/bullet_ignore_mob(mob/M, obj/projectile/P)
+	SIGNAL_HANDLER
+	if(M == firer)
+		return COMPONENT_BULLET_PASS_THROUGH
+
 /obj/item/weapon/yautja/sword/alt_1
 	name = "rending sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
@@ -222,12 +351,6 @@
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp and capable of cutting flesh into ribbons. Commonly carried by aggressive and lethal hunters."
 	icon_state = "clansword_alt3"
 	item_state = "clansword_alt3"
-
-/obj/item/weapon/yautja/sword/attack(mob/target, mob/living/user)
-	. = ..()
-	if((human_adapted || isyautja(user)) && isxeno(target))
-		var/mob/living/carbon/xenomorph/xenomorph = target
-		xenomorph.AddComponent(/datum/component/status_effect/interference, 30, 30)
 
 /obj/item/weapon/yautja/scythe
 	name = "dual war scythe"

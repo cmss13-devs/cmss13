@@ -1,7 +1,7 @@
 /datum/xeno_strain/gambler
 
 	name = DRONE_GAMBLER
-	description = "I CANT STOP WINNING"
+	description = "WE ARE GOING TO MAKE A XILLION BUCKS!!"
 	flavor_description = "I cant stop winning."
 	icon_state_prefix = "Fancy"
 
@@ -23,7 +23,6 @@
 	gamba.plasma_max = XENO_PLASMA_TIER_GAMBLER
 	gamba.recalculate_everything()
 	playsound(gamba, 'sound/voice/play_on_init_gamble.ogg', 50)
-
 
 /datum/behavior_delegate/drone_gambler // copy paste spam so the caste can handle abilities.
 
@@ -175,6 +174,12 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 10 SECONDS
 
+
+	var/list/real_jackpot = list(  // uber ultra super duper rare stuff
+		/datum/action/xeno_action/activable/destroy,
+		/datum/action/xeno_action/activable/fluff_ability_5,
+	)
+
 	var/list/jackpot = list(
 		/datum/action/xeno_action/activable/gut,
 		/datum/action/xeno_action/onclick/screech,
@@ -230,8 +235,10 @@
 	if (!action_cooldown_check())
 		return
 
-	var/list_result = pick(20;high_end_abilities, 75;medium_end_abilities, 5;jackpot)
+	var/list_result = pick(20;high_end_abilities, 75;medium_end_abilities, 4;jackpot, 1;real_jackpot)
 
+	if(list_result == real_jackpot)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), enterpanuer_drone,'sound/voice/play_on_actual_win.ogg'), 1.25 SECONDS)
 	if(list_result == jackpot)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), enterpanuer_drone,'sound/voice/play_on_rare.ogg'), 1.25 SECONDS)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), enterpanuer_drone, 'sound/voice/play_on_jackpot.ogg'), 1.25 SECONDS)
@@ -357,3 +364,81 @@
 
 	apply_cooldown()
 	..()
+
+
+/datum/action/xeno_action/activable/fluff_ability_5
+	name = "Mystery Ability"
+	action_icon_state = "gardener_plant"
+	plasma_cost = 0
+	action_type = XENO_ACTION_CLICK
+
+
+	var/datum/hive_status/hive
+	var/list/transported_xenos
+
+
+/datum/action/xeno_action/activable/fluff_ability_5/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/drone/Q = owner
+	if(!Q.check_state())
+		return FALSE
+
+	if(Q.action_busy)
+		return FALSE
+
+	var/turf/T = get_turf(A)
+	if(!check_turf(Q, T))
+		return FALSE
+	if(!do_after(Q, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		return FALSE
+	if(!check_turf(Q, T))
+		return FALSE
+
+	for(var/i in transported_xenos)
+		UnregisterSignal(i, COMSIG_MOVABLE_PRE_MOVE)
+
+	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the queen beacon!"))
+	LAZYCLEARLIST(transported_xenos)
+	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(tunnel_xeno))
+	for(var/xeno in Q.hive.totalXenos)
+		tunnel_xeno(src, xeno)
+
+	addtimer(CALLBACK(src, PROC_REF(transport_xenos), T), 3 SECONDS)
+	return ..()
+
+/datum/action/xeno_action/activable/fluff_ability_5/proc/tunnel_xeno(datum/source, mob/living/carbon/xenomorph/X)
+	SIGNAL_HANDLER
+	if(X.z == owner.z)
+		to_chat(X, SPAN_XENONOTICE("You begin tunneling towards the queen beacon!"))
+		RegisterSignal(X, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(cancel_movement))
+		LAZYADD(transported_xenos, X)
+		playsound(X, 'sound/voice/alien_echoroar_3.ogg', 35)
+		xeno_message(SPAN_XENOANNOUNCE("[owner] has used a queen beacon, PREPARE TO TELEPORT."), hivenumber = X.hive.hivenumber)
+
+/datum/action/xeno_action/activable/fluff_ability_5/proc/transport_xenos(turf/target)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
+	for(var/xeno in transported_xenos)
+		var/mob/living/carbon/xenomorph/X = xeno
+		to_chat(X, SPAN_XENONOTICE("You tunnel to the queen beacon!"))
+		UnregisterSignal(X, COMSIG_MOVABLE_PRE_MOVE)
+		if(target)
+			X.forceMove(target)
+
+/datum/action/xeno_action/activable/fluff_ability_5/proc/cancel_movement()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_MOVE
+
+/datum/action/xeno_action/activable/fluff_ability_5/proc/check_turf(mob/living/carbon/xenomorph/queen/Q, turf/T)
+	if(!T || T.density)
+		to_chat(Q, SPAN_XENOWARNING("You can't place a queen beacon here."))
+		return FALSE
+
+	if(T.z != Q.z)
+		to_chat(Q, SPAN_XENOWARNING("That's too far away!"))
+		return FALSE
+
+	var/obj/effect/alien/weeds/located_weeds = locate() in T
+	if(!located_weeds)
+		to_chat(Q, SPAN_XENOWARNING("You need to place the queen beacon on weeds."))
+		return FALSE
+
+	return TRUE

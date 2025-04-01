@@ -22,6 +22,10 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 	if(pulledby)
 		pulledby.stop_pulling()
 
+	if(istype(src.strain, /datum/xeno_strain/gambler))
+		var/turf = get_turf(src)
+		playsound(turf, 'sound/voice/play_on_death.ogg', 50)
+
 	if(!gibbed)
 		if(hud_used && hud_used.healths)
 			hud_used.healths.icon_state = "health_dead"

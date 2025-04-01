@@ -1,0 +1,4 @@
+author: "Djvarik"
+delete-after: True
+changes:
+  - bugfix: "Fixed a typo in the munition prep vendor."

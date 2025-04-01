@@ -341,6 +341,26 @@
 /obj/structure/platform/metal/strata/west
 	dir = WEST
 
+// Hunter Platforms
+
+/obj/structure/platform/metal/hunter
+	icon_state = "hunter_platform"
+	name = "raised metal edge"
+	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+
+/obj/structure/platform/metal/hunter/north
+	dir = NORTH
+/obj/structure/platform/metal/hunter/east
+	dir = EAST
+/obj/structure/platform/metal/hunter/west
+	dir = WEST
+
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_left
+	icon_state = "hunter_platform_stair"
+
+/obj/structure/prop/hunter/fake_platform/hunter/stair_cut/hunter_right
+	icon_state = "hunter_platform_stair_alt"
+
 //------------------------------------//
 //       Rock based Platforms         //
 //------------------------------------//
@@ -476,6 +496,21 @@
 /obj/structure/platform_decoration/metal/strata/east
 	dir = EAST
 /obj/structure/platform_decoration/metal/strata/west
+	dir = WEST
+
+// Hunter Deco
+
+/obj/structure/platform_decoration/metal/hunter
+	name = "raised metal corner"
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	icon_state = "hunter_platform_deco"
+	layer = LOWER_ITEM_LAYER
+
+/obj/structure/platform_decoration/metal/hunter/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/hunter/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/hunter/west
 	dir = WEST
 
 //------------------------------------//

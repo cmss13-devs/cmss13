@@ -129,7 +129,7 @@
 	empty_sound = 'sound/weapons/gun_empty.ogg'
 
 /obj/item/weapon/gun/m60/clicked(mob/user, list/mods)
-	if(!mods["alt"] || !CAN_PICKUP(user, src))
+	if(!mods[ALT_CLICK] || !CAN_PICKUP(user, src))
 		return ..()
 	else
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
@@ -255,7 +255,7 @@
 	empty_sound = 'sound/weapons/gun_empty.ogg'
 
 /obj/item/weapon/gun/pkp/clicked(mob/user, list/mods)
-	if(!mods["alt"] || !CAN_PICKUP(user, src))
+	if(!mods[ALT_CLICK] || !CAN_PICKUP(user, src))
 		return ..()
 	else
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))

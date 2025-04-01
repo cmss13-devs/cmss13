@@ -1,0 +1,5 @@
+author: "Thwomper, ihatethisengine, DawsonKeyes"
+delete-after: True
+changes:
+  - rscadd: "introduced hunting bow as a secondary weapon for yautja."
+  - balance: "yanking out objects speed now depends on the size of the object"

@@ -287,7 +287,7 @@ export const SquadInfo = () => {
   const fireteams = ['FT1', 'FT2', 'FT3', 'Unassigned'];
 
   return (
-    <Window theme="usmc" width={680} height={675}>
+    <Window theme="usmc" width={710} height={675}>
       <Window.Content className="SquadInfo">
         <Flex fill={1} justify="space-around" direction="column">
           <Flex.Item>
@@ -299,7 +299,7 @@ export const SquadInfo = () => {
           </Flex.Item>
           <Flex.Item>
             <Section title="Fireteams">
-              <Box className="ftlFlex">
+              <Box width="100%" className="ftlFlex" fillPositionedParent>
                 {fireteams.map((x) => (
                   <FireTeam ft={x} key={x} />
                 ))}

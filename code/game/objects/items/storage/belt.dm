@@ -1212,7 +1212,7 @@
 /obj/item/storage/belt/gun/attack_hand(mob/user, mods)
 	if(length(holstered_guns) && ishuman(user) && loc == user)
 		var/obj/item/I
-		if(mods && mods["alt"] && length(contents) > length(holstered_guns)) //Withdraw the most recently inserted magazine, if possible.
+		if(mods && mods[ALT_CLICK] && length(contents) > length(holstered_guns)) //Withdraw the most recently inserted magazine, if possible.
 			var/list/magazines = contents - holstered_guns
 			I = magazines[length(magazines)]
 		else //Otherwise find and draw the last-inserted gun.
@@ -2222,6 +2222,7 @@
 	name="\improper M276 pattern mortar operator belt"
 	desc="An M276 load-bearing rig configured to carry ammunition for the M402 mortar, along with a sidearm."
 	icon_state="mortarbelt"
+	storage_slots = 9
 	holster_slots = list("1" = list("icon_x" = 11))
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,

@@ -331,7 +331,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			break
 
 /obj/item/stack/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return
 		if(amount <= 1)

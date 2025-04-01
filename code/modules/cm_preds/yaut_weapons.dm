@@ -248,10 +248,10 @@
 	filt_color += num2text(filt_alpha, 2, 16)
 	user.add_filter("parry_sword", 1, list("type" = "outline", "color" = filt_color, "size" = 2))
 
-	RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, .proc/deflect_bullet)
-	RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/riposte_slash)
-	RegisterSignal(user, COMSIG_ITEM_ATTEMPT_ATTACK, .proc/riposte_melee)
-	addtimer(CALLBACK(src, .proc/end_parry, user), parrying_duration)
+	RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, PROC_REF(deflect_bullet))
+	RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(riposte_slash))
+	RegisterSignal(user, COMSIG_ITEM_ATTEMPT_ATTACK, PROC_REF(riposte_melee))
+	addtimer(CALLBACK(src, PROC_REF(end_parry), user), parrying_duration)
 
 /obj/item/weapon/yautja/sword/proc/deflect_bullet(mob/living/carbon/human/user, x, y, obj/projectile/P,)
 	SIGNAL_HANDLER
@@ -327,7 +327,7 @@
 	UnregisterSignal(user, list(COMSIG_HUMAN_XENO_ATTACK, COMSIG_HUMAN_BULLET_ACT, COMSIG_ITEM_ATTEMPT_ATTACK))
 
 /obj/projectile/proc/jank_wrapper()
-	RegisterSignal(src, COMSIG_BULLET_PRE_HANDLE_MOB, .proc/bullet_ignore_mob)
+	RegisterSignal(src, COMSIG_BULLET_PRE_HANDLE_MOB, PROC_REF(bullet_ignore_mob))
 
 /obj/projectile/proc/bullet_ignore_mob(mob/M, obj/projectile/P)
 	SIGNAL_HANDLER

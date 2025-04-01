@@ -63,7 +63,11 @@
 	if(client)
 		client.change_view(GLOB.world_view_size) //just so we never get stuck with a large view somehow
 
-	if(istype(src, /mob/living/simple_animal/hostile/carp && /mob/living/simple_animal/cat && /mob/living/simple_animal/hostile/retaliate/giant_lizard))
+	if(istype(src, /mob/living/simple_animal/hostile/retaliate/giant_lizard))
+		src.gib()
+	else if(istype(src, /mob/living/simple_animal/cat))
+		src.gib()
+	else if(istype(src, /mob/living/simple_animal/hostile/carp))
 		src.gib()
 
 	if(s_active) //Close inventory screens.

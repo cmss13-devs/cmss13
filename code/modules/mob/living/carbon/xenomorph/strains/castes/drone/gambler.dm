@@ -1,3 +1,4 @@
+
 /datum/xeno_strain/gambler
 
 	name = DRONE_GAMBLER
@@ -15,6 +16,7 @@
 
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/lets_go_gambling,
+		/datum/action/xeno_action/activable/fluff_ability_4,
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/drone_gambler
@@ -277,16 +279,16 @@
 
 /datum/action/xeno_action/activable/fluff_ability_1/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/gamba_drone = owner
-	var/spawn_amount = 5 // reasonable right
 
 	if(!gamba_drone.check_state())
 		return
 
 	target = get_turf(gamba_drone)
 
-	for(var/fish_in = 1, fish_in <= spawn_amount, fish_in++)
-		playsound(src, 'sound/effects/phasein.ogg', 25, 1)
-		new /mob/living/simple_animal/hostile/carp(target)
+	playsound(src, 'sound/effects/phasein.ogg', 25, 1)
+	new /mob/living/simple_animal/hostile/carp(target)
+	new /mob/living/simple_animal/hostile/carp(target)
+	new /mob/living/simple_animal/hostile/carp(target)
 
 	apply_cooldown()
 	..()
@@ -303,16 +305,16 @@
 
 /datum/action/xeno_action/activable/fluff_ability_2/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/gamba_drone = owner
-	var/spawn_amount = 5 // reasonable right
 
 	if(!gamba_drone.check_state())
 		return
 
 	target = get_turf(gamba_drone)
 
-	for(var/cats_in = 1, cats_in <= spawn_amount, cats_in++)
-		playsound(src, 'sound/effects/phasein.ogg', 25, 1)
-		new /mob/living/simple_animal/cat(target)
+	playsound(src, 'sound/effects/phasein.ogg', 25, 1)
+	new /mob/living/simple_animal/cat(target)
+	new /mob/living/simple_animal/cat(target)
+	new /mob/living/simple_animal/cat(target)
 
 	apply_cooldown()
 	..()
@@ -351,16 +353,16 @@
 
 /datum/action/xeno_action/activable/fluff_ability_4/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/gamba_drone = owner
-	var/spawn_amount = 2 // reasonable right
 
 	if(!gamba_drone.check_state())
 		return
 
 	target = get_turf(gamba_drone)
 
-	for(var/cats_in = 1, cats_in <= spawn_amount, cats_in++)
-		playsound(src, 'sound/effects/phasein.ogg', 25, 1)
-		new /mob/living/simple_animal/hostile/retaliate/giant_lizard(target)
+	playsound(src, 'sound/effects/phasein.ogg', 25, 1)
+	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(target)
+	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(target)
+	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(target)
 
 	apply_cooldown()
 	..()
@@ -397,6 +399,7 @@
 		UnregisterSignal(i, COMSIG_MOVABLE_PRE_MOVE)
 
 	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the queen beacon!"))
+	xeno_message(SPAN_XENOANNOUNCE("[owner] has used a queen beacon, PREPARE TO TELEPORT."), hivenumber = Q.hive.hivenumber)
 	LAZYCLEARLIST(transported_xenos)
 	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, PROC_REF(tunnel_xeno))
 	for(var/xeno in Q.hive.totalXenos)
@@ -412,7 +415,6 @@
 		RegisterSignal(X, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(cancel_movement))
 		LAZYADD(transported_xenos, X)
 		playsound(X, 'sound/voice/alien_echoroar_3.ogg', 35)
-		xeno_message(SPAN_XENOANNOUNCE("[owner] has used a queen beacon, PREPARE TO TELEPORT."), hivenumber = X.hive.hivenumber)
 
 /datum/action/xeno_action/activable/fluff_ability_5/proc/transport_xenos(turf/target)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)

@@ -36067,7 +36067,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "ivR" = (
-/obj/structure/machinery/power/apc/almayer/east,
+/obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/starboard_garden)
 "ivS" = (
@@ -104472,7 +104472,7 @@ aaa
 aaa
 aaa
 acv
-ivR
+aiH
 alg
 bBC
 bBC
@@ -105290,7 +105290,7 @@ uli
 uli
 uli
 uli
-aiH
+ivR
 aet
 lhX
 acl

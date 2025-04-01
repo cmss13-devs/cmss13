@@ -72065,6 +72065,9 @@
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1
 	},
+/obj/structure/machinery/sensortower{
+	pixel_x = 6
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "wFN" = (

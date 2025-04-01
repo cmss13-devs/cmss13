@@ -169,13 +169,18 @@
 /datum/component/moba_player/process(delta_time)
 	handle_effects()
 
+	var/is_in_fountain = FALSE
+	if(istype(get_area(parent_xeno), /area/misc/moba/base/fountain))
+		is_in_fountain = TRUE
+		xeno.flick_heal_overlay(1 SECONDS, "#00B800")
+
 	if(parent_xeno.health < parent_xeno.maxHealth && parent_xeno.last_hit_time + parent_xeno.caste.heal_delay_time <= world.time && (!parent_xeno.caste || (parent_xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !parent_xeno.fire_stacks))
 		var/damage_to_heal = 0
 		if(parent_xeno.body_position == LYING_DOWN || parent_xeno.resting)
 			damage_to_heal = healing_value_standing * MOBA_RESTING_HEAL_MULTIPLIER
 		else
 			damage_to_heal = healing_value_standing
-		if(istype(get_area(parent_xeno), /area/misc/moba/base/fountain))
+		if(is_in_fountain)
 			damage_to_heal *= MOBA_FOUNTAIN_HEAL_MULTIPLIER
 		parent_xeno.gain_health(damage_to_heal)
 		parent_xeno.updatehealth()

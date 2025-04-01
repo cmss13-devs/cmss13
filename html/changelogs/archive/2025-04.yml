@@ -1,0 +1,14 @@
+2025-04-01:
+  Djvarik:
+  - bugfix: Fixed a typo in the munition prep vendor.
+  - bugfix: The Staff Officer vendor's green beret is now actually green.
+  Drathek:
+  - ui: Tweaked the size of gauges in the ping relay browser
+  JackieEstegado:
+  - balance: Lowered the burn damage of the Antiparasitic chemical property by 25%.
+  Kashargul:
+  - bugfix: chat icon scaling
+  Red-byte3D:
+  - qol: cades playsound when hit by bullets
+  kiVts:
+  - bugfix: universal speak is working again

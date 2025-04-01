@@ -56,8 +56,8 @@
 /// PMC-VS, Vehicle Specialist
 #define PAY_SHORT_PMC_VS "PMC-VS"
 
-/// PMC-XS, Xeno Specialist (Handler)
-#define PAY_SHORT_PMC_XS "PMC-XS"
+/// PMC-CCS, Crowd Control Specialist
+#define PAY_SHORT_PMC_CCS "PMC-CCS"
 
 /// PMC-TL, Team Leader
 #define PAY_SHORT_PMC_TL "PMC-TL"

@@ -16,7 +16,6 @@
 
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/lets_go_gambling,
-		/datum/action/xeno_action/activable/fluff_ability_4,
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/drone_gambler

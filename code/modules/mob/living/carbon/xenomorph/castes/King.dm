@@ -406,7 +406,11 @@
 			continue
 
 		log_attack("[key_name(xeno)] hit [key_name(carbon)] with [name]")
-		carbon.gib()
+		if(istype(xeno, /mob/living/carbon/xenomorph/drone))
+			var/datum/cause_data/cause_data = create_cause_data("trolled", xeno)
+			carbon.death(cause_data, FALSE, "trolled")
+		else if(istype(xeno, /mob/living/carbon/xenomorph/king))
+			carbon.gib()
 
 	// Any items get thrown away
 	for(var/obj/item/item in orange(1, owner))

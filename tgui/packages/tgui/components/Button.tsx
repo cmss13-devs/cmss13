@@ -224,39 +224,33 @@ const ButtonConfirm = (props: ConfirmProps) => {
     confirmIcon,
     ellipsis = true,
     icon,
+    onBlur,
     onClick,
     onConfirmChange,
     ...rest
   } = props;
   const [clickedOnce, setClickedOnce] = useState(false);
 
-  const handleClick = (
-    newState: boolean,
-    event: MouseEvent<HTMLDivElement> | undefined,
-  ) => {
-    setClickedOnce(newState);
-    if (newState) {
-      setTimeout(() => window.addEventListener('click', handleClickOff));
-    } else {
-      window.removeEventListener('click', handleClickOff);
-      if (event && (props.allowAnyClick || event.button === 0)) {
-        onClick?.(event);
-      }
-    }
-    onConfirmChange?.(newState);
-  };
+  function handleBlur(event: FocusEvent) {
+    setClickedOnce(false);
+    onBlur?.(event);
+  }
 
-  function handleClickOff() {
-    handleClick(false, undefined);
+  function handleClick(event: MouseEvent<HTMLDivElement>) {
+    if (!clickedOnce) {
+      setClickedOnce(true);
+      return;
+    }
+    onClick?.(event);
+    setClickedOnce(false);
   }
 
   return (
     <Button
       icon={clickedOnce ? confirmIcon : icon}
       color={clickedOnce ? confirmColor : color}
-      onClick={(event: MouseEvent<HTMLDivElement>) => {
-        handleClick(!clickedOnce, event);
-      }}
+      onBlur={handleBlur}
+      onClick={handleClick}
       {...rest}
     >
       {clickedOnce && confirmContent ? confirmContent : children}

@@ -922,7 +922,7 @@
 /obj/item/weapon/gun/flamer/flammenwerfer3
 	name = "\improper Flammenwerfer 3 Heavy Incineration Unit"
 	desc = "A heavy industrial incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Often found among foliage cleaning missions on frontier colonies, usually aren't seen in combat, but devastating when actually used."
-	desc_lore = "This century-old is seeing a comeback in flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
 	icon_state = "fl3"
 	item_state = "fl3"

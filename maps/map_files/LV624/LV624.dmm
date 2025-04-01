@@ -818,9 +818,9 @@
 /area/lv624/lazarus/fitness)
 "adq" = (
 /obj/item/reagent_container/food/drinks/cans/ale{
-	step_x = -2;
-	step_y = 10;
-	open = 1
+	open = 1;
+	pixel_x = null;
+	pixel_y = 10
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
@@ -868,13 +868,6 @@
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
-"adB" = (
-/obj/item/reagent_container/food/drinks/cans/ale{
-	step_x = -8;
-	step_y = -3
-	},
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/caves/north_central_caves)
 "adC" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -944,18 +937,18 @@
 "adL" = (
 /obj/item/stack/sheet/wood{
 	layer = 3.01;
-	step_y = -9
+	pixel_y = -9
 	},
 /obj/item/reagent_container/food/drinks/cans/ale{
-	step_x = 8;
-	step_y = -4
+	pixel_x = 8;
+	pixel_y = -4
 	},
 /obj/item/reagent_container/food/drinks/cans/ale{
-	step_x = -8;
-	step_y = -3
+	pixel_y = -3;
+	pixel_x = -8
 	},
 /obj/item/reagent_container/food/drinks/cans/ale{
-	step_y = -2
+	pixel_y = -2
 	},
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/north_central_caves)
@@ -48340,7 +48333,7 @@ aaw
 aaw
 aaw
 aaF
-adB
+aaF
 aaF
 aaF
 aaw

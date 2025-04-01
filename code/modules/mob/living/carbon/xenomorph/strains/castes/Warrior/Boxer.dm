@@ -20,6 +20,8 @@
 
 /datum/xeno_strain/boxer/apply_strain(mob/living/carbon/xenomorph/warrior/warrior)
 
+	warrior.health_modifier += XENO_HEALTH_MOD_MED
+	warrior.armor_modifier += XENO_ARMOR_MOD_SMALL
 	warrior.recalculate_everything()
 
 /datum/behavior_delegate/boxer
@@ -253,7 +255,7 @@
 	action_icon_state = "rav_clothesline"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 10 SECONDS
+	xeno_cooldown = 25 SECONDS
 	var/base_damage = 15
 	var/base_knockback = 40
 	var/base_knockdown = 0.25
@@ -434,14 +436,6 @@
 	if(carbon_target.mob_size >= MOB_SIZE_BIG)
 		to_chat(upper_cut, SPAN_XENOWARNING("[carbon_target] is too big for you to uppercut!"))
 		return
-
-	var/datum/action/xeno_action/activable/jab/jab_action = get_action(upper_cut, /datum/action/xeno_action/activable/jab)
-	if(istype(jab_action))
-		jab_action.apply_cooldown(jab_action.xeno_cooldown)
-
-	var/datum/action/xeno_action/activable/boxer_punch/punch_action = get_action(upper_cut, /datum/action/xeno_action/activable/boxer_punch)
-	if(istype(punch_action))
-		punch_action.apply_cooldown(punch_action.xeno_cooldown)
 
 	carbon_target.last_damage_data = create_cause_data(initial(upper_cut.caste_type), upper_cut)
 

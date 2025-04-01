@@ -1,8 +1,8 @@
 #define is_hive_living(hive) (!hive.hardcore || hive.living_xeno_queen)
 
 /datum/game_mode/xenovs
-	name = "Hive Wars"
-	config_tag = "Hive Wars"
+	name = GAMEMODE_HIVE_WARS
+	config_tag = GAMEMODE_HIVE_WARS
 	required_players = 4 //Need at least 4 players
 	xeno_required_num = 4 //Need at least four xenos.
 	monkey_amount = 0.2 // Amount of monkeys per player
@@ -24,25 +24,28 @@
 	votable = FALSE // broken
 
 /* Pre-pre-startup */
-/datum/game_mode/xenovs/can_start()
+/datum/game_mode/xenovs/can_start(bypass_checks = FALSE)
 	for(var/hivename in SSmapping.configs[GROUND_MAP].xvx_hives)
-		if(readied_players > SSmapping.configs[GROUND_MAP].xvx_hives[hivename])
+		if(GLOB.readied_players > SSmapping.configs[GROUND_MAP].xvx_hives[hivename])
 			hives += hivename
-	xeno_starting_num = readied_players
-	if(!initialize_starting_xenomorph_list(hives, TRUE))
+	xeno_starting_num = GLOB.readied_players
+	if(!initialize_starting_xenomorph_list(hives, bypass_checks))
 		hives.Cut()
-		return
+		return FALSE
 	return TRUE
 
 /datum/game_mode/xenovs/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+/datum/game_mode/xenovs/get_roles_list()
+	return GLOB.ROLES_XENO
+
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 	if(monkey_amount)
-		if(monkey_types.len)
-			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)
+		if(length(monkey_types))
+			for(var/i = min(floor(monkey_amount*length(GLOB.clients)), length(GLOB.monkey_spawns)), i > 0, i--)
 
 				var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))
 				var/monkey_to_spawn = pick(monkey_types)
@@ -70,15 +73,12 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
+		SSitem_cleanup.percentage_of_garbage_to_delete = 1
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)
 			//Deleting Almayer, for performance!
 			SSitem_cleanup.delete_almayer()
-	if(SSxenocon)
-		//Don't need XENOCON
-		SSxenocon.wait = 30 MINUTES
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -91,15 +91,19 @@
 	initialize_post_xenomorph_list(GLOB.xeno_hive_spawns)
 
 	round_time_lobby = world.time
-	for(var/area/A in all_areas)
-		if(!(A.is_resin_allowed))
-			A.is_resin_allowed = TRUE
+
+	if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/lz_weeding))
+		MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
+	for(var/area/cur_area as anything in GLOB.all_areas)
+		if(cur_area.flags_area & AREA_UNWEEDABLE)
+			continue
+		cur_area.unoviable_timer = FALSE
 
 	open_podlocks("map_lockdown")
 
 	..()
 
-/datum/game_mode/xenovs/proc/initialize_post_xenomorph_list(var/list/hive_spawns = GLOB.xeno_spawns)
+/datum/game_mode/xenovs/proc/initialize_post_xenomorph_list(list/hive_spawns = GLOB.xeno_spawns)
 	var/list/hive_spots = list()
 	for(var/hive in hives)
 		var/turf/spot = get_turf(pick(hive_spawns))
@@ -120,17 +124,16 @@
 		M.current.close_spawn_windows()
 
 	for(var/datum/hive_status/hive in hive_spots)
-		new/obj/effect/alien/resin/special/pool(hive_spots[hive], hive) // Spawn a hive pool so they all get fair xenos
 		var/obj/effect/alien/resin/special/pylon/core/C = new(hive_spots[hive], hive)
 		C.hardcore = TRUE // This'll make losing the hive core more detrimental than losing a Queen
 		hive_cores += C
 
-/datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL, var/should_spawn_nest = TRUE)
+/datum/game_mode/xenovs/proc/transform_xeno(datum/mind/ghost_mind, turf/xeno_turf, hivenumber = XENO_HIVE_NORMAL, should_spawn_nest = TRUE)
 	if(should_spawn_nest)
 		var/mob/living/carbon/human/original = ghost_mind.current
 
 		original.first_xeno = TRUE
-		original.stat = 1
+		original.set_stat(UNCONSCIOUS)
 		transform_survivor(ghost_mind, xeno_turf = xeno_turf) //Create a new host
 		original.apply_damage(50, BRUTE)
 		original.spawned_corpse = TRUE
@@ -142,7 +145,6 @@
 		original.statistic_exempt = TRUE
 		original.buckled = start_nest
 		original.setDir(start_nest.dir)
-		original.update_canmove()
 		start_nest.buckled_mob = original
 		start_nest.afterbuckle(original)
 
@@ -153,16 +155,18 @@
 		if(original && !original.first_xeno)
 			qdel(original)
 	else
-		var/mob/living/carbon/Xenomorph/Larva/L = new(xeno_turf, null, hivenumber)
+		var/mob/living/carbon/xenomorph/larva/L = new(xeno_turf, null, hivenumber)
 		ghost_mind.transfer_to(L)
 
-/datum/game_mode/xenovs/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+/datum/game_mode/xenovs/pick_queen_spawn(mob/player, hivenumber = XENO_HIVE_NORMAL)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	// Spawn additional hive structures
 	var/turf/T  = .
 	var/area/AR = get_area(T)
-	if(!AR) return
+	if(!AR)
+		return
 	for(var/obj/effect/landmark/structure_spawner/xvx_hive/SS in AR)
 		SS.apply()
 		qdel(SS)
@@ -183,7 +187,7 @@
 			if(world.time > round_time_larva_interval)
 				for(var/hive in hives)
 					GLOB.hive_datum[hive].stored_larva++
-					GLOB.hive_datum[hive].hive_ui.update_pooled_larva()
+					GLOB.hive_datum[hive].hive_ui.update_burrowed_larva()
 
 				round_time_larva_interval = world.time + hive_larva_interval_gain
 
@@ -194,12 +198,12 @@
 					qdel(C)
 				hive_cores = list()
 
-			if(round_should_check_for_win)
+			if(GLOB.round_should_check_for_win)
 				check_win()
 			round_checkwin = 0
 
 
-/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED, ZTRAIT_MARINE_MAIN_SHIP)))
 	var/list/list/hivenumbers = list()
 	var/datum/hive_status/HS
 	for(var/hivenumber in GLOB.hive_datum)
@@ -207,8 +211,8 @@
 		hivenumbers += list(HS.name = list())
 
 	for(var/mob/M in GLOB.player_list)
-		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
-			var/mob/living/carbon/Xenomorph/X = M
+		if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space) && !istype(M.loc, /area/adminlevel/ert_station/fax_response_station)) //If they have a z var, they are on a turf.
+			var/mob/living/carbon/xenomorph/X = M
 			var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
 			if(!hive)
 				continue
@@ -259,30 +263,32 @@
 /datum/game_mode/xenovs/declare_completion()
 	announce_ending()
 	var/musical_track
-	musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+	musical_track = pick('sound/theme/neutral_melancholy1.ogg', 'sound/theme/neutral_melancholy2.ogg')
 
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()
 	calculate_end_statistics()
 	declare_fun_facts()
 
+	GLOB.round_statistics?.save()
+
 	return TRUE
 
 /datum/game_mode/xenovs/announce_ending()
-	if(round_statistics)
-		round_statistics.track_round_end()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
 	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
-	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]\nThe game-mode was: [GLOB.master_mode]!\n[CONFIG_GET(string/endofroundblurb)]"))
 
 // for the toolbox
 /datum/game_mode/xenovs/end_round_message()

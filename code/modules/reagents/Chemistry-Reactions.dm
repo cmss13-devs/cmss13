@@ -6,31 +6,33 @@
 	var/list/required_reagents = new/list()
 	var/list/required_catalysts = new/list()
 
-	var/mob_react = TRUE //Determines if a chemical reaction can occur inside a mob
+	/// Determines if a chemical reaction can occur inside a mob
+	var/mob_react = TRUE
+	/// The container path required for the reaction to happen
+	var/required_container = null
 
-	// both vars below are currently unused
-	var/atom/required_container = null // the container required for the reaction to happen
-	var/required_other = 0 // an integer required for the reaction to happen
-
-	var/result_amount = 0 //I recommend you set the result amount to the total volume of all components.
-	var/secondary = 0 // set to nonzero if secondary reaction
-	var/list/secondary_results = list()		//additional reagents produced by the reaction
+	/// The resulting amount: Recommended to be set to the total volume of all components
+	var/result_amount = 0
+	/// set to nonzero if secondary reaction
+	var/secondary = 0
+	/// additional reagents produced by the reaction
+	var/list/secondary_results = list()
 	var/requires_heating = 0
 
-/datum/chemical_reaction/proc/on_reaction(var/datum/reagents/holder, var/created_volume)
+/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume)
 	return
 
-/datum/chemical_reaction/proc/add_to_filtered_list(var/reset = FALSE)
+/datum/chemical_reaction/proc/add_to_filtered_list(reset = FALSE)
 	if(reset)
-		for(var/R in chemical_reactions_filtered_list)
-			LAZYREMOVE(chemical_reactions_filtered_list[R], src)
+		for(var/R in GLOB.chemical_reactions_filtered_list)
+			LAZYREMOVE(GLOB.chemical_reactions_filtered_list[R], src)
 	for(var/R in required_reagents)
-		LAZYADD(chemical_reactions_filtered_list[R], src)
+		LAZYADD(GLOB.chemical_reactions_filtered_list[R], src)
 
 /datum/chemical_reaction/proc/check_duplicate()
 	for(var/R in required_reagents)
-		if(chemical_reactions_filtered_list[R])
-			for(var/reaction in chemical_reactions_filtered_list[R])//We filter the chemical_reactions_filtered_list so we don't have to search through as much
+		if(GLOB.chemical_reactions_filtered_list[R])
+			for(var/reaction in GLOB.chemical_reactions_filtered_list[R])//We filter the GLOB.chemical_reactions_filtered_list so we don't have to search through as much
 				var/datum/chemical_reaction/C = reaction
 				var/matches = 0
 				for(var/B in required_reagents)
@@ -43,7 +45,7 @@
 // To prevent such a situation, if ALL reagent inside a reaction are medical chemicals, the recipe is considered flawed.
 /datum/chemical_reaction/proc/check_reaction_uses_all_default_medical()
 	for(var/R in required_reagents)
-		var/datum/reagent/M = chemical_reagents_list[R]
+		var/datum/reagent/M = GLOB.chemical_reagents_list[R]
 		if(!(initial(M.flags) & REAGENT_TYPE_MEDICAL))
 			return FALSE
 	return TRUE

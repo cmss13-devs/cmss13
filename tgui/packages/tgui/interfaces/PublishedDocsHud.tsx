@@ -1,19 +1,22 @@
-import { useBackend } from '../backend';
-import { Section, Stack } from '../components';
-import { Window } from '../layouts';
-import { DocumentLog, CompoundTable, DocumentRecord } from './ResearchTerminal';
+import { useBackend } from 'tgui/backend';
+import { Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
+import { CompoundTable, DocumentLog, DocumentRecord } from './ResearchTerminal';
 
 interface TerminalProps {
-  "published_documents": DocumentLog;
-  "terminal_view": number;
+  published_documents: DocumentLog;
+  terminal_view: number;
 }
 
-export const PublishedDocsHud = (_, context) => {
-  const { data } = useBackend<TerminalProps>(context);
+export const PublishedDocsHud = () => {
+  const { data } = useBackend<TerminalProps>();
   const published = Object.keys(data.published_documents)
-    .map(x => {
+    .map((x) => {
       const output = data.published_documents[x] as DocumentRecord[];
-      output.forEach(y => { y.category = x; });
+      output.forEach((y) => {
+        y.category = x;
+      });
       return output;
     })
     .flat() as DocumentRecord[];
@@ -27,11 +30,12 @@ export const PublishedDocsHud = (_, context) => {
                 className="PublishedDocs"
                 docs={published}
                 timeLabel="Published"
-                canPrint={false} />
+                canPrint={false}
+              />
             </Stack.Item>
           </Stack>
         </Section>
-
       </Window.Content>
-    </Window>);
+    </Window>
+  );
 };

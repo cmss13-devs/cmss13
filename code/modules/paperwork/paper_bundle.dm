@@ -44,8 +44,8 @@
 	else
 		if(HAS_TRAIT(W, TRAIT_TOOL_PEN) || istype(W, /obj/item/toy/crayon))
 			close_browser(usr, name) //Closes the dialog
-		if(page < contents.len)
-			page = contents.len
+		if(page < length(contents))
+			page = length(contents)
 		P = contents[page]
 		P.attackby(W, user)
 
@@ -60,12 +60,12 @@
 		if(istype(P, /obj/item/tool/lighter/zippo))
 			class = "<span class='rose'>"
 
-		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!</span>", \
+		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!</span>",
 		"[class]You hold \the [P] up to \the [src], burning it slowly.</span>")
 
 		spawn(20)
 			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.heat_source)
-				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
+				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>",
 				"[class]You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
 
 				if(user.get_inactive_hand() == src)
@@ -95,15 +95,15 @@
 	switch(screen)
 		if(0)
 			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='byond://?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(1)
-			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='byond://?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='byond://?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
 		if(2)
-			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='byond://?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='byond://?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV><BR><HR>"
 			dat+= "<DIV STYLE='float;left; text-align:right; with:33.33333%'></DIV>"
 	if(istype(src[page], /obj/item/paper))
 		var/obj/item/paper/P = src[page]
@@ -148,8 +148,8 @@
 			page--
 			playsound(src.loc, "pageturn", 15, 1)
 		if(href_list["remove"])
-			if(contents.len < page)
-				page = contents.len
+			if(length(contents) < page)
+				page = length(contents)
 			var/obj/item/W = contents[page]
 			usr.put_in_hands(W)
 			to_chat(usr, SPAN_NOTICE("You remove the [W.name] from the bundle."))
@@ -175,6 +175,9 @@
 	else
 		to_chat(usr, SPAN_NOTICE("You need to hold it in your hands!"))
 
+/obj/item/paper_bundle/proc/operator[](index_num)
+	return contents[index_num]
+
 /obj/item/paper_bundle/verb/rename()
 	set name = "Rename bundle"
 	set category = "Object"
@@ -198,13 +201,13 @@
 	qdel(src)
 
 /obj/item/paper_bundle/update_icon()
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/I = contents[1]
 		icon_state = I.icon_state
 		overlays = I.overlays
 	underlays = 0
 	var/i = 0
-	var/photo
+	var/photo = 0
 	for(var/obj/O in src)
 		var/image/IMG = image('icons/obj/items/paper.dmi')
 		if(istype(O, /obj/item/paper))
@@ -218,14 +221,17 @@
 		else if(istype(O, /obj/item/photo))
 			var/obj/item/photo/PH = O
 			IMG = PH.tiny
-			photo = 1
+			photo++
 			overlays += IMG
 	if(i>1)
 		desc =  "[i] papers clipped to each other."
 	else
 		desc = "A single sheet of paper."
 	if(photo)
-		desc += "\nThere is a photo attached to it."
+		if(photo > 1)
+			desc += "\nThere are also [photo] photos attached to it."
+		else
+			desc += "\nThere is also a photo attached to it."
 	overlays += image('icons/obj/items/paper.dmi', "clip")
 
 /obj/item/paper_bundle/proc/attach_doc(obj/item/I, mob/living/user, no_message)

@@ -7,9 +7,10 @@
 @use '../functions.scss' as *;
 
 $text-color: base.$color-fg !default;
-$background-color: #0a0a0a !default;
-$border-color: #88bfff !default;
+$background-color: hsl(0, 0%, 4%) !default;
+$border-color: hsl(212, 100%, 77%) !default;
 $border-radius: base.$border-radius !default;
+$font-family: Verdana, sans-serif !default;
 
 .Input {
   position: relative;
@@ -51,15 +52,21 @@ $border-radius: base.$border-radius !default;
   height: base.em(17px);
   margin: 0;
   padding: 0 0.5em;
-  font-family: Verdana, sans-serif;
+  font-family: $font-family;
   background-color: transparent;
   color: $text-color;
   color: inherit;
 
+  &::placeholder {
+    font-style: italic;
+    color: hsl(0, 0%, 47%);
+    color: hsla(0, 0%, 100%, 0.45);
+  }
+
   &:-ms-input-placeholder {
     font-style: italic;
-    color: #777;
-    color: rgba(255, 255, 255, 0.45);
+    color: hsl(0, 0%, 47%);
+    color: hsla(0, 0%, 100%, 0.45);
   }
 }
 

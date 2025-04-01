@@ -15,7 +15,7 @@
 	for(var/k in 1 to length(macro_set))
 		var/list/split_name = splittext(macro_set[k], ".")
 
-		if(findtext(split_name[2], "srvkeybinds-") == 1)
+		if((length(split_name) >= 2) && (findtext(split_name[2], "srvkeybinds-") == 1))
 			var/macro_name = "[split_name[1]].[split_name[2]]" // [3] is "command"
 			erase_output = "[erase_output];[macro_name].parent=null"
 	winset(src, null, erase_output)
@@ -44,3 +44,12 @@ GLOBAL_LIST_INIT(keybind_combos, list(
 	"Ctrl",
 	"Shift"
 ))
+
+/// Manually clears any held keys, in case due to lag or other undefined behavior a key gets stuck.
+/client/proc/reset_held_keys()
+	for(var/key in keys_held)
+		keyUp(key)
+
+	//In case one got stuck and the previous loop didn't clean it, somehow.
+	for(var/key in key_combos_held)
+		keyUp(key_combos_held[key])

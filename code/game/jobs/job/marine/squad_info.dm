@@ -9,15 +9,15 @@
 	return GLOB.not_incapacitated_state
 
 /datum/squad/ui_data(mob/user)
-	if(!squad_info_data.len)					//initial first update of data
+	if(!length(squad_info_data)) //initial first update of data
 		update_all_squad_info()
-	if(squad_info_data["total_mar"] != count)	//updates for new marines
+	if(squad_info_data["total_mar"] != count) //updates for new marines
 		update_free_mar()
 		if(squad_leader && squad_info_data["sl"]["name"] != squad_leader.real_name)
 			update_squad_leader()
 	var/list/data = squad_info_data.Copy()
 	data["squad"] = name
-	data["squad_color"] = squad_colors[color]
+	data["squad_color"] = equipment_color
 	data["is_lead"] = get_leadership(user)
 	data["objective"] = list(
 		"primary" = primary_objective,
@@ -36,7 +36,7 @@
 				return fireteam
 	return FALSE
 
-/datum/squad/proc/get_marine_from_name(var/name)
+/datum/squad/proc/get_marine_from_name(name)
 	for(var/mob/living/carbon/human/marine in marines_list)
 		if(marine.name == name)
 			return marine
@@ -130,7 +130,7 @@
 
 //fireteam and TL update
 /datum/squad/proc/update_fireteam(team)
-	squad_info_data["fireteams"][team]["total"] = fireteams[team].len
+	squad_info_data["fireteams"][team]["total"] = length(fireteams[team])
 	if(squad_info_data["fireteams"][team]["total"] < 1)
 		squad_info_data["fireteams"][team]["tl"] = list()
 		squad_info_data["fireteams"][team]["mar"] = list()
@@ -146,7 +146,7 @@
 			if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 				Med = TRUE
 			else
-				if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+				if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 					Eng = TRUE
 		ID = H.get_idcard()
 		squad_info_data["fireteams"][team]["tl"] = list(
@@ -169,8 +169,8 @@
 					rank = "SG"
 				if(JOB_SQUAD_SPECIALIST)
 					rank = "Spc"
-				if(JOB_SQUAD_RTO)
-					rank = "RTO"
+				if(JOB_SQUAD_TEAM_LEADER)
+					rank = "TL"
 				if(JOB_SQUAD_LEADER)
 					rank = "SL"
 				else
@@ -197,7 +197,7 @@
 	squad_info_data["total_kia"] = 0
 	var/mar_free = count
 	for(var/team in fireteams)
-		mar_free -= fireteams[team].len
+		mar_free -= length(fireteams[team])
 	if(squad_leader)
 		mar_free--
 	for(var/list/freeman in squad_info_data["mar_free"])
@@ -223,7 +223,7 @@
 				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 					Med = TRUE
 				else
-					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 						Eng = TRUE
 			mar[H.real_name] = list(
 					"name" = H.real_name,
@@ -246,8 +246,8 @@
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
 						rank = "Spc"
-					if(JOB_SQUAD_RTO)
-						rank = "RTO"
+					if(JOB_SQUAD_TEAM_LEADER)
+						rank = "TL"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else
@@ -270,7 +270,7 @@
 				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 					Med = TRUE
 				else
-					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+					if(skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE))
 						Eng = TRUE
 			mar[H.real_name] = list(
 				"name" = H.real_name,
@@ -293,8 +293,8 @@
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
 						rank = "Spc"
-					if(JOB_SQUAD_RTO)
-						rank = "RTO"
+					if(JOB_SQUAD_TEAM_LEADER)
+						rank = "TL"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else

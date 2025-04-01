@@ -1,4 +1,4 @@
-#define UPGRADE_COOLDOWN	2 SECONDS
+#define UPGRADE_COOLDOWN 2 SECONDS
 
 /obj/item/grab
 	name = "grab"
@@ -33,19 +33,25 @@
 /obj/item/grab/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!user)
 		return
-	if(user.pulling == user.buckled) return //can't move the thing you're sitting on.
+	if(user.pulling == user.buckled)
+		return //can't move the thing you're sitting on.
 	if(user.grab_level >= GRAB_CARRY)
 		return
 	if(istype(target, /obj/effect))//if you click a blood splatter with a grab instead of the turf,
-		target = get_turf(target)	//we still try to move the grabbed thing to the turf.
+		target = get_turf(target) //we still try to move the grabbed thing to the turf.
 	if(isturf(target))
 		var/turf/T = target
 		if(!T.density && T.Adjacent(user))
+			var/data = SEND_SIGNAL(user.pulling, COMSIG_MOVABLE_PULLED, src)
+			if(!(data & COMPONENT_IGNORE_ANCHORED) && user.pulling.anchored)
+				user.stop_pulling()
+				return
 			var/move_dir = get_dir(user.pulling.loc, T)
 			step(user.pulling, move_dir)
 			var/mob/living/pmob = user.pulling
 			if(istype(pmob))
 				SEND_SIGNAL(pmob, COMSIG_MOB_MOVE_OR_LOOK, TRUE, move_dir, move_dir)
+			return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 
 /obj/item/grab/attack_self(mob/user)
@@ -59,14 +65,21 @@
 		return
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
-		if (isXeno(user))
-			var/mob/living/carbon/Xenomorph/X = user
-			X.pull_power(grabbed_thing)
+		if (isxeno(user))
+			var/mob/living/carbon/xenomorph/xeno = user
+			xeno.pull_power(grabbed_thing)
 		return
 
 
 	var/mob/victim = grabbed_thing
-	if(victim.mob_size > user.mob_size || !(victim.status_flags & CANPUSH))
+	var/max_grab_size = user.mob_size
+	/// Amazing what you can do with a bit of dexterity.
+	if(HAS_TRAIT(user, TRAIT_DEXTROUS))
+		max_grab_size++
+	/// Strong mobs can lift above their own weight.
+	if(HAS_TRAIT(user, TRAIT_SUPER_STRONG))//NB; this will mean Yautja can bodily lift MOB_SIZE_XENO(3) and Synths can lift MOB_SIZE_XENO_SMALL(2)
+		max_grab_size++
+	if(victim.mob_size > max_grab_size || !(victim.status_flags & CANPUSH))
 		return //can't tighten your grip on mobs bigger than you and mobs you can't push.
 	last_upgrade = world.time
 
@@ -76,74 +89,71 @@
 		if(GRAB_AGGRESSIVE)
 			progress_aggressive(user, victim)
 
-/obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/victim)
+	if(user.grab_level >= GRAB_AGGRESSIVE)
+		ADD_TRAIT(victim, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
+
+/obj/item/grab/proc/progress_passive(mob/living/carbon/human/user, mob/living/victim)
+	if(SEND_SIGNAL(victim, COMSIG_MOB_AGGRESSIVELY_GRABBED, user) & COMSIG_MOB_AGGRESIVE_GRAB_CANCEL)
+		to_chat(user, SPAN_WARNING("You can't grab [victim] aggressively!"))
+		return
+
 	user.grab_level = GRAB_AGGRESSIVE
 	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] has grabbed [victim] aggressively!"), null, null, 5)
-	victim.update_canmove()
 
-/obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/victim)
+/obj/item/grab/proc/progress_aggressive(mob/living/carbon/human/user, mob/living/victim)
 	user.grab_level = GRAB_CHOKE
-	playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
+	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
 
-	victim.update_canmove()
-
-/obj/item/grab/attack(mob/living/M, mob/living/user)
-	if(M == grabbed_thing)
+/obj/item/grab/attack(mob/living/dragged_mob, mob/living/user)
+	if(dragged_mob == grabbed_thing)
 		attack_self(user)
-	else if(M == user && user.pulling && isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
-		var/mob/living/carbon/pulled = X.pulling
+	else if(dragged_mob == user && user.pulling && isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		var/mob/living/carbon/pulled = xeno.pulling
 		if(!istype(pulled))
 			return
-		if(isXeno(pulled) || isSynth(pulled))
-			to_chat(X, SPAN_WARNING("That wouldn't taste very good."))
+		if(isxeno(pulled) || issynth(pulled))
+			to_chat(xeno, SPAN_WARNING("That wouldn't serve a purpose."))
 			return 0
 		if(pulled.buckled)
-			to_chat(X, SPAN_WARNING("[pulled] is buckled to something."))
+			to_chat(xeno, SPAN_WARNING("[pulled] is buckled to something."))
 			return 0
 		if(pulled.stat == DEAD && !pulled.chestburst)
-			to_chat(X, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
+			to_chat(xeno, SPAN_WARNING("Ew, [pulled] is already starting to rot."))
 			return 0
-		if(X.stomach_contents.len) //Only one thing in the stomach at a time, please
-			to_chat(X, SPAN_WARNING("You already have something in your belly, there's no way that will fit."))
+		if(xeno.hauled_mob?.resolve()) // We can't carry more than one mob
+			to_chat(xeno, SPAN_WARNING("You already are carrying something, there's no way that will work."))
 			return 0
-			/* Saving this in case we want to allow devouring of dead bodies UNLESS their client is still online somewhere
+		if(HAS_TRAIT(pulled, TRAIT_HAULED))
+			to_chat(xeno, SPAN_WARNING("They are already being hauled by someone else."))
+			return 0
+			/* Saving this in case we want to allow hauling of dead bodies UNLESS their client is still online somewhere
 			if(pulled.client) //The client is still inside the body
 			else // The client is observing
 				for(var/mob/dead/observer/G in player_list)
 					if(ckey(G.mind.original.ckey) == pulled.ckey)
-						to_chat(src, "You start to devour [pulled] but realize \he is already dead.")
+						to_chat(src, "You start to haul [pulled] but realize \he is already dead.")
 						return */
 		if(user.action_busy)
-			to_chat(X, SPAN_WARNING("You are already busy with something."))
+			to_chat(xeno, SPAN_WARNING("We are already busy with something."))
 			return
-		X.visible_message(SPAN_DANGER("[X] starts to devour [pulled]!"), \
-		SPAN_DANGER("You start to devour [pulled]!"), null, 5)
-		if(do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			if(isXeno(pulled.loc) && !X.stomach_contents.len)
-				to_chat(X, SPAN_WARNING("Someone already ate \the [pulled]."))
+		SEND_SIGNAL(xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+		xeno.visible_message(SPAN_DANGER("[xeno] starts to restrain [pulled]!"),
+		SPAN_DANGER("We start restraining [pulled]!"), null, 5)
+		if(HAS_TRAIT(xeno, TRAIT_CLOAKED)) //cloaked don't show the visible message, so we gotta work around
+			to_chat(pulled, FONT_SIZE_HUGE(SPAN_DANGER("[xeno] is trying to restrain you!")))
+		if(do_after(xeno, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			if((isxeno(pulled.loc) && !xeno.hauled_mob) || HAS_TRAIT(pulled, TRAIT_HAULED))
+				to_chat(xeno, SPAN_WARNING("Someone already took \the [pulled]."))
 				return 0
-			if(X.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !X.stomach_contents.len) //make sure you've still got them in your claws, and alive
-				if(SEND_SIGNAL(pulled, COMSIG_MOB_DEVOURED, X) & COMPONENT_CANCEL_DEVOUR)
+			if(xeno.pulling == pulled && !pulled.buckled && (pulled.stat != DEAD || pulled.chestburst) && !xeno.hauled_mob?.resolve()) //make sure you've still got them in your claws, and alive
+				if(SEND_SIGNAL(pulled, COMSIG_MOB_HAULED, xeno) & COMPONENT_CANCEL_HAUL)
 					return FALSE
+				xeno.haul(pulled)
+				xeno.stop_pulling()
 
-				X.visible_message(SPAN_WARNING("[X] devours [pulled]!"), \
-					SPAN_WARNING("You devour [pulled]!"), null, 5)
-
-				//IMPORTANT CODER NOTE: Due to us using the old lighting engine, we need to hacky hack hard to get this working properly
-				//So we're just going to get the lights out of here by forceMoving them to a far-away place
-				//They will be recovered when regurgitating, since this also calls forceMove
-				pulled.moveToNullspace()
-
-				//Then, we place the mob where it ought to be
-				X.stomach_contents.Add(pulled)
-				X.devour_timer = world.time + 500 + rand(0,200) // 50-70 seconds
-				pulled.forceMove(X)
-				return TRUE
-		if(!(pulled in X.stomach_contents))
-			to_chat(X, SPAN_WARNING("You stop devouring \the [pulled]. \He probably tasted gross anyways."))
-		return 0

@@ -2,7 +2,14 @@
 /obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/mob/animal.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/critters.dmi',
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/critters_shoulder.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/critters_shoulder.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/critters_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/critters_righthand.dmi'
+	)
 	flags_equip_slot = SLOT_HEAD
 
 /obj/item/holder/Initialize()
@@ -15,7 +22,7 @@
 
 /obj/item/holder/process()
 
-	if(istype(loc,/turf) || !(contents.len))
+	if(istype(loc,/turf) || !(length(contents)))
 
 		for(var/mob/M in contents)
 
@@ -30,17 +37,26 @@
 	for(var/mob/M in src.contents)
 		M.attackby(W,user)
 
-/obj/item/holder/proc/show_message(var/message, var/m_type)
+/obj/item/holder/proc/show_message(message, m_type)
 	for(var/mob/living/M in contents)
 		M.show_message(message,m_type)
+
+/obj/item/holder/get_examine_text(mob/user)
+	. = list()
+	. += "[icon2html(src, user)] That's \a [src]."
+	if(desc)
+		. += desc
+	if(desc_lore)
+		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
+
 
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/proc/get_scooped(var/mob/living/carbon/grabber)
+/mob/living/proc/get_scooped(mob/living/carbon/grabber)
 	if(!holder_type)
 		return
-	if(isXeno(grabber))
+	if(isxeno(grabber))
 		to_chat(grabber, SPAN_WARNING("You leave [src] alone. It cannot be made a host, so there is no use for it."))
 		return
 	if(locate(/obj/item/explosive/plastic) in contents)
@@ -48,8 +64,10 @@
 		return
 
 	var/obj/item/holder/mob_holder = new holder_type(loc)
-	src.forceMove(mob_holder)
-	mob_holder.name = loc.name
+	forceMove(mob_holder)
+	mob_holder.name = name
+	mob_holder.desc = desc
+	mob_holder.gender = gender
 	mob_holder.attack_hand(grabber)
 
 	to_chat(grabber, "You scoop up [src].")
@@ -59,44 +77,102 @@
 
 //Mob specific holders.
 
-/obj/item/holder/drone
-	name = "maintenance drone"
-	desc = "It's a small maintenance robot."
-	icon_state = "drone"
-
-/obj/item/holder/Runtime
-	name = "Runtime"
-	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
-	icon_state = "cat"
-
 /obj/item/holder/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
-	icon_state = "cat2"
+	icon_state = "cat2_rest"
+	item_state = "cat2"
+	item_state_slots = list(WEAR_HEAD = "cat2")
 
-/obj/item/holder/blackcat
-	name = "black cat"
-	desc = "It's a cat, now in black!"
-	icon_state = "cat"
-
-/obj/item/holder/Jones
-	name = "Jones"
-	desc = "A tough, old stray whose origin no one seems to know."
-	icon_state = "cat2"
-
-/obj/item/holder/kitten
+/obj/item/holder/cat/kitten
 	name = "kitten"
 	desc = "D'aaawwww"
-	icon_state = "cat2"
+	icon_state = "kitten_rest"
+
+/obj/item/holder/cat/Jones
+	name = "\improper Jones"
+	desc = "A tough, old stray whose origin no one seems to know."
+
+/obj/item/holder/cat/blackcat
+	name = "black cat"
+	desc = "It's a cat, now in black!"
+	icon_state = "cat_rest"
+	item_state = "cat"
+	item_state_slots = list(WEAR_HEAD = "cat")
+
+/obj/item/holder/cat/blackcat/Runtime
+	name = "\improper Runtime"
+	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
 
 /obj/item/holder/mouse
 	name = "mouse"
 	desc = "It's a small mouse."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_white"
-	w_class = SIZE_TINY;
-	flags_equip_slot = null
+	w_class = SIZE_TINY
+	flags_equip_slot = SLOT_HEAD|SLOT_EAR
 
-/obj/item/holder/mouse/Doc
+/obj/item/holder/mouse/white
+	icon_state = "mouse_white"
+
+/obj/item/holder/mouse/gray
+	icon_state = "mouse_gray"
+
+/obj/item/holder/mouse/brown
+	icon_state = "mouse_brown"
+
+/obj/item/holder/mouse/white/Doc
 	name = "Doc"
 	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+
+/obj/item/holder/mouse/brown/Tom
+	name = "Tom"
+	desc = "Jerry the cat is not amused."
+
+/obj/item/holder/corgi
+	name = "corgi"
+	desc = "It's a corgi."
+	icon_state = "corgi"
+
+/obj/item/holder/corgi/Ian
+	name = "Ian"
+
+/obj/item/holder/corgi/Lisa
+	name = "Ian"
+	icon_state = "lisa"
+
+/obj/item/holder/corgi/puppy
+	name = "puppy"
+	icon_state = "puppy"
+	item_state_slots = list(WEAR_HEAD = "puppy")
+
+// Rat
+
+/obj/item/holder/rat
+	name = "rat"
+	desc = "It's a big rat."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "rat_white"
+	w_class = SIZE_TINY
+	flags_equip_slot = null
+
+/obj/item/holder/rat/white
+	icon_state = "rat_white"
+
+/obj/item/holder/rat/gray
+	icon_state = "rat_gray"
+
+/obj/item/holder/rat/brown
+	icon_state = "rat_brown"
+
+/obj/item/holder/rat/black
+	icon_state = "rat_black"
+
+
+/obj/item/holder/rat/white/Milky
+	name = "Milky"
+	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."
+
+/obj/item/holder/rat/brown/Old_Timmy
+	name = "Old Timmy"
+	desc = "An ancient looking rat from the old days of the colony."

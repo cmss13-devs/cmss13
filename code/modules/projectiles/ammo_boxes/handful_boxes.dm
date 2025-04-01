@@ -15,8 +15,8 @@
 /obj/item/ammo_box/magazine/shotgun/update_icon()
 	if(overlays)
 		overlays.Cut()
-	overlays += image(icon, icon_state = "[icon_state]_lid")				//adding lid
-	overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
+	overlays += image(icon, icon_state = "[icon_state]_lid") //adding lid
+	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
 /obj/item/ammo_box/magazine/shotgun/empty
 	empty = TRUE
@@ -48,6 +48,15 @@
 /obj/item/ammo_box/magazine/shotgun/incendiary/empty
 	empty = TRUE
 
+/obj/item/ammo_box/magazine/shotgun/incendiarybuck
+	name = "\improper shotgun shell box (Incendiary buckshot x 100)"
+	icon_state = "base_incbuck"
+	overlay_content = "_incenbuck"
+	magazine_type = /obj/item/ammo_magazine/shotgun/incendiarybuck
+
+/obj/item/ammo_box/magazine/shotgun/incendiarybuck/empty
+	empty = TRUE
+
 /obj/item/ammo_box/magazine/shotgun/beanbag
 	name = "\improper shotgun shell box (Beanbag x 100)"
 	icon_state = "base_bean"
@@ -57,6 +66,68 @@
 
 
 /obj/item/ammo_box/magazine/shotgun/beanbag/empty
+	empty = TRUE
+//-----------------------TYPE 23 SHELL BOXES-----------------------
+
+/obj/item/ammo_box/magazine/shotgun/upp
+	name = "\improper Type 23 shotgun shell box (Slugs 8g x 100)"
+	icon_state = "base_slug_upp"
+	overlay_gun_type = "_type23"
+	overlay_content = "_upp_slug"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/slug
+
+/obj/item/ammo_box/magazine/shotgun/upp/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot
+	name = "\improper Type 23 shotgun shell box (Buckshot 8g x 100)"
+	icon_state = "base_buck_upp"
+	overlay_content = "_upp_buck"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/buckshot
+
+/obj/item/ammo_box/magazine/shotgun/upp/buckshot/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/flechette
+	name = "\improper Type 23 shotgun shell box (Flechette 8g x 100)"
+	icon_state = "base_flech_upp"
+	overlay_content = "_upp_flech"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/flechette
+
+/obj/item/ammo_box/magazine/shotgun/upp/flechette/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/incendiary
+	name = "\improper Type 23 shotgun shell box (Dragon's breath 8g x 100)"
+	icon_state = "base_inc_upp"
+	overlay_content = "_upp_incen"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/incendiary
+
+/obj/item/ammo_box/magazine/shotgun/upp/incendiary/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag
+	name = "\improper Type 23 shotgun shell box (Beanbag 8g x 100)"
+	icon_state = "base_bean_upp"
+	overlay_content = "_upp_bean"
+	magazine_type = /obj/item/ammo_magazine/shotgun/heavy/beanbag
+	can_explode = FALSE
+
+/obj/item/ammo_box/magazine/shotgun/upp/beanbag/empty
+	empty = TRUE
+
+
+//-----------------------16 GAUGE SHOTGUN SHELL BOXES-----------------------
+
+/obj/item/ammo_box/magazine/shotgun/light/breaching
+	name = "\improper 16-gauge shotgun shell box (Breaching x 120)"
+	icon_state = "base_breach"
+	overlay_content = "_breach"
+	magazine_type = /obj/item/ammo_magazine/shotgun/light/breaching
+	num_of_magazines = 120 //10 full mag reloads.
+	can_explode = FALSE
+
+/obj/item/ammo_box/magazine/shotgun/light/breaching/empty
 	empty = TRUE
 
 //-----------------------R4T Lever-action rifle handfuls box-----------------------

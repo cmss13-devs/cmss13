@@ -4,15 +4,17 @@
 /obj/structure/morgue
 	name = "morgue"
 	desc = "Used to keep bodies in until someone fetches them."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morgue1"
 	dir = EAST
-	density = 1
+	density = TRUE
 	var/obj/structure/morgue_tray/connected = null
 	var/morgue_type = "morgue"
 	var/tray_path = /obj/structure/morgue_tray
 	var/morgue_open = 0
-	anchored = 1
+	var/exit_stun = 2
+	var/update_name = TRUE
+	anchored = TRUE
 	throwpass = 1
 
 /obj/structure/morgue/Initialize()
@@ -29,7 +31,7 @@
 	if(morgue_open)
 		icon_state = "[morgue_type]0"
 	else
-		if(contents.len > 1) //not counting the morgue tray
+		if(length(contents) > 1) //not counting the morgue tray
 			icon_state = "[morgue_type]2"
 		else
 			icon_state = "[morgue_type]1"
@@ -50,25 +52,27 @@
 
 /obj/structure/morgue/proc/toggle_morgue(mob/user)
 	add_fingerprint(user)
-	if(!connected) return
+	if(!connected)
+		return
 	if(morgue_open)
 		for(var/atom/movable/A in connected.loc)
 			if(!A.anchored)
 				A.forceMove(src)
 		connected.forceMove(src)
-		name = "morgue"
-		var/mob/living/L = locate(/mob/living) in contents
-		if(L)
-			name = "morgue ([L])"
-		else
-			var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
-			if(B)
-				L = locate(/mob/living) in B.contents
-				if(L)
-					name = "morgue ([L])"
+		if(update_name)
+			name = initial(name)
+			var/mob/living/L = locate(/mob/living) in contents
+			if(L)
+				name = "[name] ([L])"
+			else
+				var/obj/structure/closet/bodybag/B = locate(/obj/structure/closet/bodybag) in contents
+				if(B)
+					L = locate(/mob/living) in B.contents
+					if(L)
+						name = "[name] ([L])"
 
 	else
-		name = "morgue"
+		name = initial(name)
 		connected.forceMove(loc)
 		if(step(connected, dir))
 			connected.setDir(dir)
@@ -95,7 +99,7 @@
 		if(tmp_label == "" || !tmp_label)
 			if(labelcomponent)
 				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."),
 				SPAN_NOTICE("You remove the label from \the [src]."))
 				return
 			else
@@ -103,17 +107,22 @@
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
 		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
+			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
 			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
 			AddComponent(/datum/component/label, tmp_label)
 			playsound(src, "paper_writing", 15, TRUE)
 	else
 		. = ..()
 
-/obj/structure/morgue/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE))
+/obj/structure/morgue/relaymove(mob/living/user)
+	if(user.is_mob_incapacitated())
 		return
-	toggle_morgue(user)
+	if(exit_stun)
+		user.apply_effect(exit_stun, STUN)
+		if(user.mobility_flags & MOBILITY_MOVE)
+			user.visible_message(SPAN_WARNING("[user] suddenly gets out of [src]!"),
+			SPAN_WARNING("You get out of [src] and get your bearings!"))
+		toggle_morgue(user)
 
 
 /*
@@ -123,13 +132,13 @@
 /obj/structure/morgue_tray
 	name = "morgue tray"
 	desc = "Apply corpse before closing."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/morgue.dmi'
 	icon_state = "morguet"
 	var/icon_tray = ""
-	density = 1
+	density = TRUE
 	layer = OBJ_LAYER
 	var/obj/structure/morgue/linked_morgue = null
-	anchored = 1
+	anchored = TRUE
 	throwpass = 1
 	var/bloody = FALSE
 
@@ -176,7 +185,7 @@
 
 /obj/structure/morgue/crematorium
 	name = "crematorium"
-	desc = "A human incinerator. Works well on barbeque nights."
+	desc = "A human incinerator. Works well on barbecue nights."
 	icon_state = "crema1"
 	dir = SOUTH
 	tray_path = /obj/structure/morgue_tray/crematorium
@@ -193,7 +202,8 @@
 
 
 /obj/structure/morgue/crematorium/relaymove(mob/user)
-	if(cremating) return
+	if(cremating)
+		return
 	..()
 
 
@@ -209,7 +219,7 @@
 	if(cremating)
 		return
 
-	if(contents.len <= 1) //1 because the tray is inside.
+	if(length(contents) <= 1) //1 because the tray is inside.
 		visible_message(SPAN_DANGER("You hear a hollow crackle."))
 	else
 		visible_message(SPAN_DANGER("You hear a roar as the crematorium activates."))
@@ -234,7 +244,8 @@
 			qdel(M)
 
 		for(var/obj/O in contents)
-			if(istype(O, /obj/structure/morgue_tray)) continue
+			if(istype(O, /obj/structure/morgue_tray))
+				continue
 			qdel(O)
 
 		new /obj/effect/decal/cleanable/ash(src)
@@ -274,11 +285,12 @@
  */
 
 /obj/structure/morgue/sarcophagus
-    name = "sarcophagus"
-    desc = "Used to store predators."
-    icon_state = "sarcophagus1"
-    morgue_type = "sarcophagus"
-    tray_path = /obj/structure/morgue_tray/sarcophagus
+	name = "sarcophagus"
+	desc = "Used to store fallen warriors."
+	icon_state = "sarcophagus1"
+	morgue_type = "sarcophagus"
+	tray_path = /obj/structure/morgue_tray/sarcophagus
+	update_name = FALSE
 
 
 /*
@@ -286,6 +298,6 @@
  */
 
 /obj/structure/morgue_tray/sarcophagus
-    name = "sarcophagus tray"
-    desc = "Apply corpse before closing."
-    icon_state = "sarcomat"
+	name = "sarcophagus tray"
+	desc = "Apply corpse before closing."
+	icon_state = "sarcomat"

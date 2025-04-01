@@ -12,14 +12,14 @@
 
 	ert_message = "Several characters have been offered up to be played by the admins"
 
-/datum/emergency_call/custom/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/custom/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
 
-	if(!players_to_offer.len)
+	if(!length(players_to_offer))
 		return // No more players
 
 	var/mob/living/carbon/human/H = pick(players_to_offer)

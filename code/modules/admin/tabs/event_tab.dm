@@ -23,7 +23,7 @@
 	faction = temp_list[faction]
 
 	if(!GLOB.custom_event_info_list[faction])
-		to_chat(usr, "Error has occured, [faction] category is not found.")
+		to_chat(usr, "Error has occurred, [faction] category is not found.")
 		return
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list[faction]
@@ -34,13 +34,30 @@
 
 	if(input == "" || !input)
 		CEI.msg = ""
-		message_staff("[key_name_admin(usr)] has removed the event message for \"[faction]\" category.")
+		message_admins("[key_name_admin(usr)] has removed the event message for \"[faction]\" category.")
 		return
 
 	CEI.msg = html_encode(input)
-	message_staff("[key_name_admin(usr)] has changed the event message for \"[faction]\" category.")
+	message_admins("[key_name_admin(usr)] has changed the event message for \"[faction]\" category.")
 
 	CEI.handle_event_info_update(faction)
+
+/client/proc/get_whitelisted_clients()
+	set name = "Find Whitelisted Players"
+	set category = "Admin.Events"
+	if(!admin_holder)
+		return
+
+	var/flag = tgui_input_list(src, "Which flag?", "Whitelist Flags", GLOB.bitfields["whitelist_status"])
+
+	var/list/ckeys = list()
+	for(var/client/test_client in GLOB.clients)
+		if(test_client.check_whitelist_status(GLOB.bitfields["whitelist_status"][flag]))
+			ckeys += test_client.ckey
+	if(!length(ckeys))
+		to_chat(src, SPAN_NOTICE("There are no players with that whitelist online"))
+		return
+	to_chat(src, SPAN_NOTICE("Whitelist holders: [ckeys.Join(", ")]."))
 
 /client/proc/change_security_level()
 	if(!check_rights(R_ADMIN))
@@ -56,10 +73,10 @@
 
 	if(CONFIG_GET(flag/remove_gun_restrictions))
 		to_chat(src, "<b>Enabled gun restrictions.</b>")
-		message_staff("Admin [key_name_admin(usr)] has enabled WY gun restrictions.")
+		message_admins("Admin [key_name_admin(usr)] has enabled WY gun restrictions.")
 	else
 		to_chat(src, "<b>Disabled gun restrictions.</b>")
-		message_staff("Admin [key_name_admin(usr)] has disabled WY gun restrictions.")
+		message_admins("Admin [key_name_admin(usr)] has disabled WY gun restrictions.")
 	CONFIG_SET(flag/remove_gun_restrictions, !CONFIG_GET(flag/remove_gun_restrictions))
 
 /client/proc/togglebuildmodeself()
@@ -77,7 +94,12 @@
 	set category = "Admin.Fun"
 
 	var/turf/epicenter = mob.loc
+	handle_bomb_drop(epicenter)
+
+/client/proc/handle_bomb_drop(atom/epicenter)
 	var/custom_limit = 5000
+	var/power_warn_threshold = 500
+	var/falloff_warn_threshold = 0.05
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
 	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
@@ -110,9 +132,15 @@
 
 			if(power > custom_limit)
 				return
+
+			if((power >= power_warn_threshold) && ((1 / (power / falloff)) <= falloff_warn_threshold) && (explosion_shape == EXPLOSION_FALLOFF_SHAPE_LINEAR)) // The lag can be a bit situational, but a large-power explosion with minimal (linear) falloff can absolutely bring the server to a halt in certain cases.
+				if(tgui_input_list(src, "This bomb has the potential to lag the server. Are you sure you wish to drop it?", "Drop confirm", list("Yes", "No")) != "Yes")
+					return
+
 			cell_explosion(epicenter, power, falloff, explosion_shape, null, cause_data)
-			message_staff("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
-	message_staff("[ckey] used 'Drop Bomb' at [epicenter.loc].")
+			message_admins("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
+	message_admins("[ckey] used 'Drop Bomb' at [epicenter.loc].")
+
 
 /client/proc/cmd_admin_emp(atom/O as obj|mob|turf in world)
 	set name = "EM Pulse"
@@ -132,7 +160,7 @@
 		return
 
 	empulse(O, heavy, light)
-	message_staff("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
+	message_admins("[key_name_admin(usr)] created an EM PUlse ([heavy],[light]) at ([O.x],[O.y],[O.z])")
 	return
 
 /datum/admins/proc/admin_force_ERT_shuttle()
@@ -145,51 +173,37 @@
 	if(!check_rights(R_EVENT))
 		return
 
-	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", list("Distress", "Distress_PMC", "Distress_UPP", "Distress_Big", "Distress_Small"))
-	if(!tag) return
-
-	var/datum/shuttle/ferry/ert/shuttle = shuttle_controller.shuttles[tag]
-	if(!shuttle || !istype(shuttle))
-		message_staff("Warning: Distress shuttle not found. Aborting.")
+	var/list/shuttle_map = list()
+	for(var/obj/docking_port/mobile/emergency_response/ert_shuttles in SSshuttle.mobile)
+		shuttle_map[ert_shuttles.name] = ert_shuttles.id
+	var/tag = tgui_input_list(usr, "Which ERT shuttle should be force launched?", "Select an ERT Shuttle:", shuttle_map)
+	if(!tag)
 		return
 
-	if(shuttle.location) //in start zone in admin z level
-		var/dock_id
-		var/dock_list = list("Port", "Starboard", "Aft")
-		if(shuttle.use_umbilical)
-			dock_list = list("Port Hangar", "Starboard Hangar")
-		if(shuttle.use_small_docks)
-			dock_list = list("Port Engineering", "Starboard Engineering")
-		var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
-		switch(dock_name)
-			if("Port") dock_id = /area/shuttle/distress/arrive_2
-			if("Starboard") dock_id = /area/shuttle/distress/arrive_1
-			if("Aft") dock_id = /area/shuttle/distress/arrive_3
-			if("Port Hangar") dock_id = /area/shuttle/distress/arrive_s_hangar
-			if("Starboard Hangar") dock_id = /area/shuttle/distress/arrive_n_hangar
-			if("Port Engineering") dock_id = /area/shuttle/distress/arrive_s_engi
-			if("Starboard Engineering") dock_id = /area/shuttle/distress/arrive_n_engi
-			else return
-		for(var/datum/shuttle/ferry/ert/F in shuttle_controller.process_shuttles)
-			if(F != shuttle)
-				//other ERT shuttles already docked on almayer or about to be
-				if(!F.location || F.moving_status != SHUTTLE_IDLE)
-					if(F.area_station.type == dock_id)
-						message_staff("Warning: That docking zone is already taken by another shuttle. Aborting.")
-						return
-
-		for(var/area/A in all_areas)
-			if(A.type == dock_id)
-				shuttle.area_station = A
-				break
-
-	if(!shuttle.can_launch())
-		message_staff("Warning: Unable to launch this Distress shuttle at this moment. Aborting.")
+	var/shuttleId = shuttle_map[tag]
+	var/list/docks = SSshuttle.stationary
+	var/list/targets = list()
+	var/list/target_names = list()
+	var/obj/docking_port/mobile/emergency_response/ert = SSshuttle.getShuttle(shuttleId)
+	for(var/obj/docking_port/stationary/emergency_response/dock in docks)
+		var/can_dock = ert.canDock(dock)
+		if(can_dock == SHUTTLE_CAN_DOCK)
+			targets += list(dock)
+			target_names +=  list(dock.name)
+	var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", target_names)
+	var/launched = FALSE
+	if(!dock_name)
+		return
+	for(var/obj/docking_port/stationary/emergency_response/dock as anything in targets)
+		if(dock.name == dock_name)
+			var/obj/docking_port/stationary/target = SSshuttle.getDock(dock.id)
+			ert.request(target)
+			launched=TRUE
+	if(!launched)
+		to_chat(usr, SPAN_WARNING("Unable to launch this Distress shuttle at this moment. Aborting."))
 		return
 
-	shuttle.launch()
-
-	message_staff("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
+	message_admins("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
 
 /datum/admins/proc/admin_force_distress()
 	set name = "Distress Beacon"
@@ -227,26 +241,27 @@
 
 	if(!istype(chosen_ert))
 		return
+	var/quiet_launch = TRUE
+	var/ql_prompt = tgui_alert(usr, "Would you like to broadcast the beacon launch? This will reveal the distress beacon to all players.", "Announce distress beacon?", list("Yes", "No"), 20 SECONDS)
+	if(ql_prompt == "Yes")
+		quiet_launch = FALSE
 
-	var/is_announcing = TRUE
-	switch(alert(src, "Would you like to announce the distress beacon to the server population? This will reveal the distress beacon to all players.", "Announce distress beacon?", "Yes", "No", "Cancel"))
-		if("Cancel")
-			qdel(chosen_ert)
-			return
-		if("No")
-			is_announcing = FALSE
+	var/announce_receipt = FALSE
+	var/ar_prompt = tgui_alert(usr, "Would you like to announce the beacon received message? This will reveal the distress beacon to all players.", "Announce beacon received?", list("Yes", "No"), 20 SECONDS)
+	if(ar_prompt == "Yes")
+		announce_receipt = TRUE
 
 	var/turf/override_spawn_loc
-	switch(alert(usr, "Spawn at their assigned spawnpoints, or at your location?", "Spawnpoint Selection", "Assigned Spawnpoint", "Current Location", "Cancel"))
-		if("Cancel")
-			qdel(chosen_ert)
-			return
-		if("Current Location")
-			override_spawn_loc = get_turf(usr)
+	var/prompt = tgui_alert(usr, "Spawn at their assigned spawn, or at your location?", "Spawnpoint Selection", list("Spawn", "Current Location"), 0)
+	if(!prompt)
+		qdel(chosen_ert)
+		return
+	if(prompt == "Current Location")
+		override_spawn_loc = get_turf(usr)
 
-	chosen_ert.activate(is_announcing, override_spawn_loc)
+	chosen_ert.activate(quiet_launch, announce_receipt, override_spawn_loc)
 
-	message_staff("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
+	message_admins("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
 /datum/admins/proc/admin_force_evacuation()
 	set name = "Trigger Evacuation"
@@ -256,9 +271,9 @@
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
 	set_security_level(SEC_LEVEL_RED)
-	EvacuationAuthority.initiate_evacuation()
+	SShijack.initiate_evacuation()
 
-	message_staff("[key_name_admin(usr)] forced an emergency evacuation.")
+	message_admins("[key_name_admin(usr)] forced an emergency evacuation.")
 
 /datum/admins/proc/admin_cancel_evacuation()
 	set name = "Cancel Evacuation"
@@ -267,23 +282,9 @@
 
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
-	EvacuationAuthority.cancel_evacuation()
+	SShijack.cancel_evacuation()
 
-	message_staff("[key_name_admin(usr)] canceled an emergency evacuation.")
-
-/datum/admins/proc/disable_shuttle_console()
-	set name = "Disable Shuttle Console"
-	set desc = "Prevents a shuttle control console from being accessed."
-	set category = "Admin.Events"
-	if(!SSticker.mode || !check_rights(R_ADMIN))
-		return
-
-	var/obj/structure/machinery/computer/shuttle_control/input = tgui_input_list(usr, "Choose which console to disable", "Shuttle Controls", GLOB.shuttle_controls)
-	if(!input)
-		return
-	input.disabled = !input.disabled
-
-	message_staff("[key_name_admin(usr)] set [input]'s disabled to [input.disabled].")
+	message_admins("[key_name_admin(usr)] canceled an emergency evacuation.")
 
 /datum/admins/proc/add_req_points()
 	set name = "Add Requisitions Points"
@@ -293,19 +294,54 @@
 		return
 
 	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
-	if(points_to_add == 0)
+	if(!points_to_add)
 		return
-	else if((supply_controller.points + points_to_add) < 0)
-		supply_controller.points = 0
-	else if((supply_controller.points + points_to_add) > 99999)
-		supply_controller.points = 99999
+	else if((GLOB.supply_controller.points + points_to_add) < 0)
+		GLOB.supply_controller.points = 0
+	else if((GLOB.supply_controller.points + points_to_add) > 99999)
+		GLOB.supply_controller.points = 99999
 	else
-		supply_controller.points += points_to_add
+		GLOB.supply_controller.points += points_to_add
 
 
-	message_staff("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
+	message_admins("[key_name_admin(usr)] granted requisitions [points_to_add] points.")
 	if(points_to_add >= 0)
 		shipwide_ai_announcement("Additional Supply Budget has been authorised for this operation.")
+	message_admins("[key_name_admin(usr)] granted UPP requisitions [points_to_add] points.")
+
+/datum/admins/proc/add_upp_req_points()
+	set name = "Add UPP Requisitions Points"
+	set desc = "Add points to the UPP ship requisitions department."
+	set category = "Admin.Events"
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+
+	var/points_to_add = tgui_input_real_number(usr, "Enter the amount of points to give, or a negative number to subtract. 1 point = $100.", "Points", 0)
+	if(!points_to_add)
+		return
+	else if((GLOB.supply_controller_upp.points + points_to_add) < 0)
+		GLOB.supply_controller_upp.points = 0
+	else if((GLOB.supply_controller_upp.points + points_to_add) > 99999)
+		GLOB.supply_controller_upp.points = 99999
+	else
+		GLOB.supply_controller.points += points_to_add
+	message_admins("[key_name_admin(usr)] granted UPP requisitions [points_to_add] points.")
+
+
+/datum/admins/proc/check_req_heat()
+	set name = "Check Requisitions Heat"
+	set desc = "Check how close the CMB is to arriving to search Requisitions."
+	set category = "Admin.Events"
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+
+	var/req_heat_change = tgui_input_real_number(usr, "Set the new requisitions black market heat. ERT is called at 100, disabled at -1. Current Heat: [GLOB.supply_controller.black_market_heat]", "Modify Req Heat", 0, 100, -1)
+	if(!req_heat_change)
+		return
+
+	GLOB.supply_controller.black_market_heat = req_heat_change
+	message_admins("[key_name_admin(usr)] set requisitions heat to [req_heat_change].")
+
 
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self-Destruct"
@@ -320,17 +356,21 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff("[key_name_admin(usr)] admin-started self-destruct system.")
+	message_admins("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
-	set name = "View Faxes"
+	set name = "Reply to Faxes"
 	set desc = "View faxes from this round"
 	set category = "Admin.Events"
 
 	if(!admin_holder)
 		return
 
-	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Other", "Cancel")
+	var/list/options = list(
+		"Weyland-Yutani", "High Command", "Provost", "Press",
+		"Colonial Marshal Bureau", "Union of Progressive Peoples",
+		"Three World Empire", "Colonial Liberation Front",
+		"Other", "Cancel")
 	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
 		if("Weyland-Yutani")
@@ -341,7 +381,8 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", width = 300, height = 600)
+
 		if("High Command")
 			var/body = "<body>"
 
@@ -350,7 +391,8 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", width = 300, height = 600)
+
 		if("Provost")
 			var/body = "<body>"
 
@@ -359,7 +401,58 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", width = 300, height = 600)
+
+		if("Press")
+			var/body = "<body>"
+
+			for(var/text in GLOB.PressFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", width = 300, height = 600)
+
+		if("Colonial Marshal Bureau")
+			var/body = "<body>"
+
+			for(var/text in GLOB.CMBFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", width = 300, height = 600)
+
+		if("Union of Progressive Peoples")
+			var/body = "<body>"
+
+			for(var/text in GLOB.UPPFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", width = 300, height = 600)
+
+		if("Three World Empire")
+			var/body = "<body>"
+
+			for(var/text in GLOB.TWEFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", width = 300, height = 600)
+
+		if("Colonial Liberation Front")
+			var/body = "<body>"
+
+			for(var/text in GLOB.CLFFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", width = 300, height = 600)
+
 		if("Other")
 			var/body = "<body>"
 
@@ -368,7 +461,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", "size=300x600")
+			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", width = 300, height = 600)
 		if("Cancel")
 			return
 
@@ -389,7 +482,7 @@
 	var/datum/hive_status/hive
 	for(var/hivenumber in GLOB.hive_datum)
 		hive = GLOB.hive_datum[hivenumber]
-		if(hive.totalXenos.len > 0 || hive.totalDeadXenos.len > 0)
+		if(length(hive.totalXenos) > 0 || length(hive.total_dead_xenos) > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
 
@@ -405,6 +498,30 @@
 
 	give_jelly_award(last_hive_checked, as_admin=TRUE)
 
+/client/proc/give_nuke()
+	if(!check_rights(R_ADMIN))
+		return
+	var/nukename = "Decrypted Operational Nuke"
+	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
+	if(encrypt == "Encrypted")
+		nukename = "Encrypted Operational Nuke"
+	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
+	if(prompt != "Yes")
+		return
+
+	var/nuketype = GLOB.supply_packs_types[nukename]
+
+	var/datum/supply_order/new_order = new()
+	new_order.ordernum = GLOB.supply_controller.ordernum++
+	new_order.objects = list(GLOB.supply_packs_datums[nuketype])
+	new_order.orderedby = MAIN_AI_SYSTEM
+	new_order.approvedby = MAIN_AI_SYSTEM
+	GLOB.supply_controller.shoppinglist += new_order
+
+	marine_announcement("A nuclear device has been supplied and will be delivered to requisitions via ASRS.", "NUCLEAR ARSENAL ACQUIRED", 'sound/misc/notice2.ogg')
+	message_admins("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
+	log_game("[key_name_admin(usr)] admin-spawned \a [encrypt] nuke.")
+
 /client/proc/turn_everyone_into_primitives()
 	var/random_names = FALSE
 	if (alert(src, "Do you want to give everyone random numbered names?", "Confirmation", "Yes", "No") == "Yes")
@@ -419,62 +536,36 @@
 		if(random_names)
 			var/random_name = "[lowertext(H.species.name)] ([rand(1, 999)])"
 			H.change_real_name(H, random_name)
-			if(H.wear_id)
-				var/obj/item/card/id/card = H.wear_id
+			var/obj/item/card/id/card = H.get_idcard()
+			if(card)
 				card.registered_name = H.real_name
-				card.name = "[card.registered_name]'s ID Card ([card.assignment])"
+				card.name = "[card.registered_name]'s [card.id_type] ([card.assignment])"
 
-	message_staff("Admin [key_name(usr)] has turned everyone into a primitive")
+	message_admins("Admin [key_name(usr)] has turned everyone into a primitive")
 
-/client/proc/force_shuttle()
-	set name = "Force Dropship"
-	set desc = "Force a dropship to launch"
+/client/proc/force_hijack()
+	set name = "Force Hijack"
+	set desc = "Force a dropship to be hijacked"
 	set category = "Admin.Shuttles"
 
-	var/tag = tgui_input_list(usr, "Which dropship should be force launched?", "Select a dropship:", list("Dropship 1", "Dropship 2"))
-	if(!tag) return
-	var/crash = 0
-	switch(alert("Would you like to force a crash?", , "Yes", "No", "Cancel"))
-		if("Yes") crash = 1
-		if("No") crash = 0
-		else return
-
-	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles[MAIN_SHIP_NAME + " " + tag]
-	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN"))
-		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
-		return
-
-	if(crash && dropship.location != 1)
-		switch(alert("Error: Shuttle is on the ground. Proceed with standard launch anyways?", , "Yes", "No"))
-			if("Yes")
-				dropship.process_state = WAIT_LAUNCH
-				log_admin("[usr] ([usr.key]) forced a [dropship.iselevator? "elevator" : "shuttle"] using the Force Dropship verb")
-			if("No")
-				to_chat(src, SPAN_WARNING("Aborting shuttle launch."))
-				return
-	else if(crash)
-		dropship.process_state = FORCE_CRASH
-	else
-		dropship.process_state = WAIT_LAUNCH
-
-/client/proc/force_ground_shuttle()
-	set name = "Force Ground Transport"
-	set desc = "Force a ground transport vehicle to launch"
-	set category = "Admin.Shuttles"
-
-	var/tag = tgui_input_list(usr, "Which vehicle should be force launched?", "Select a dropship:", list("Transport 1"))
+	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
+	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
 	if(!tag)
 		return
 
-	var/datum/shuttle/ferry/marine/dropship = shuttle_controller.shuttles["Ground" + " " + tag]
+	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
+
 	if(!dropship)
-		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN_2</span>"))
-		to_chat(src, SPAN_DANGER("This is expected if map != CORSAT.</span>"))
-		log_admin("Error: Attempted to force a dropship launch but the shuttle datum was null. Code: MSD_FSV_DIN")
+		to_chat(src, SPAN_DANGER("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN"))
+		log_admin("Error: Attempted to force a dropship hijack but the shuttle datum was null. Code: MSD_FSV_DIN")
 		return
 
-	dropship.process_state = WAIT_LAUNCH
+	var/confirm = tgui_alert(usr, "Are you sure you want to hijack [dropship]?", "Force hijack", list("Yes", "No")) == "Yes"
+	if(!confirm)
+		return
+
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/computer = dropship.getControlConsole()
+	computer.hijack(usr, force = TRUE)
 
 /client/proc/cmd_admin_create_centcom_report()
 	set name = "Report: Faction"
@@ -495,24 +586,24 @@
 	if(!customname)
 		customname = "[faction] Update"
 	if(faction == FACTION_MARINE)
-		for(var/obj/structure/machinery/computer/almayer_control/C in machines)
+		for(var/obj/structure/machinery/computer/almayer_control/C in GLOB.machines)
 			if(!(C.inoperable()))
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
-				P.name = "'[command_name] Update.'"
+				P.name = "'[customname].'"
 				P.info = input
 				P.update_icon()
-				C.messagetitle.Add("[command_name] Update")
+				C.messagetitle.Add("[customname]")
 				C.messagetext.Add(P.info)
 
 		if(alert("Press \"Yes\" if you want to announce it to ship crew and marines. Press \"No\" to keep it only as printed report on communication console.",,"Yes","No") == "Yes")
 			if(alert("Do you want PMCs (not Death Squad) to see this announcement?",,"Yes","No") == "Yes")
-				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
+				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, TRUE)
 			else
 				marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction, FALSE)
 	else
 		marine_announcement(input, customname, 'sound/AI/commandreport.ogg', faction)
 
-	message_staff("[key_name_admin(src)] has created a [faction] command report")
+	message_admins("[key_name_admin(src)] has created \a [faction] command report")
 	log_admin("[key_name_admin(src)] [faction] command report: [input]")
 
 /client/proc/cmd_admin_xeno_report()
@@ -551,7 +642,7 @@
 	else
 		xeno_announcement(input, hivenumber, SPAN_ANNOUNCEMENT_HEADER_BLUE("[hive_prefix][QUEEN_MOTHER_ANNOUNCE]"))
 
-	message_staff("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
+	message_admins("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 	log_admin("[key_name_admin(src)] Queen Mother ([hive_choice]): [input]")
 
 /client/proc/cmd_admin_create_AI_report()
@@ -560,24 +651,52 @@
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
-		return
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
 	var/input = input(usr, "This is a standard message from the ship's AI. It uses Almayer General channel and won't be heard by humans without access to Almayer General channel (headset or intercom). Check with online staff before you send this. Do not use html.", "What?", "") as message|null
 	if(!input)
 		return FALSE
 
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Update")
-			C.messagetext.Add(input)
-			ai_announcement(input)
-			message_staff("[key_name_admin(src)] has created an AI comms report")
-			log_admin("AI comms report: [input]")
-		else
-			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
+	if(!ares_can_interface())
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			return FALSE
+
+	ai_announcement(input)
+	message_admins("[key_name_admin(src)] has created an AI comms report")
+	log_admin("AI comms report: [input]")
+
+
+/client/proc/cmd_admin_create_AI_apollo_report()
+	set name = "Report: ARES Apollo"
+	set category = "Admin.Factions"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return FALSE
+
+	if(!ares_is_active())
+		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is destroyed, and cannot talk!"))
+		return FALSE
+
+	var/input = tgui_input_text(usr, "This is a broadcast from the ship AI to Working Joes and Maintenance Drones. Do not use html.", "What?", "")
+	if(!input)
+		return FALSE
+
+	if(!ares_can_apollo())
+		var/prompt = tgui_alert(src, "ARES APOLLO processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt != "Yes")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's APOLLO processor may be offline or destroyed."))
+			return FALSE
+
+	ares_apollo_talk(input)
+	message_admins("[key_name_admin(src)] has created an AI APOLLO report")
+	log_admin("AI APOLLO report: [input]")
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
 	set name = "Report: ARES Shipwide"
@@ -589,18 +708,14 @@
 	var/input = input(usr, "This is an announcement type message from the ship's AI. This will be announced to every conscious human on Almayer z-level. Be aware, this will work even if ARES unpowered/destroyed. Check with online staff before you send this.", "What?", "") as message|null
 	if(!input)
 		return FALSE
-
-	for(var/obj/structure/machinery/computer/almayer_control/C in machines)
-		if(!(C.inoperable()))
-//			var/obj/item/paper/P = new /obj/item/paper(C.loc)//Don't need a printed copy currently.
-//			P.name = "'[MAIN_AI_SYSTEM] Update.'"
-//			P.info = input
-//			P.update_icon()
-			C.messagetitle.Add("[MAIN_AI_SYSTEM] Shipwide Update")
-			C.messagetext.Add(input)
+	if(!ares_can_interface())
+		var/prompt = tgui_alert(src, "ARES interface processor is offline or destroyed, send the message anyways?", "Choose.", list("Yes", "No"), 20 SECONDS)
+		if(prompt == "No")
+			to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It's interface processor may be offline or destroyed."))
+			return
 
 	shipwide_ai_announcement(input)
-	message_staff("[key_name_admin(src)] has created an AI shipwide report")
+	message_admins("[key_name_admin(src)] has created an AI shipwide report")
 	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
@@ -614,7 +729,7 @@
 	if(!input)
 		return FALSE
 	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
-	message_staff("[key_name_admin(src)] has created a predator ship AI report")
+	message_admins("[key_name_admin(src)] has created a predator ship AI report")
 	log_admin("[key_name_admin(src)] predator ship AI report: [input]")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
@@ -631,7 +746,7 @@
 		return
 
 	to_chat_spaced(world, html = SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	message_staff("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]")
+	message_admins("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]")
 
 
 /client
@@ -641,24 +756,24 @@
 	set name = "Toggle Remote Control"
 	set category = "Admin.Events"
 
-	if(!check_rights(R_SPAWN))
+	if(!check_rights(R_MOD|R_DEBUG))
 		return
 
 	remote_control = !remote_control
-	message_staff("[key_name_admin(src)] has toggled remote control [remote_control? "on" : "off"] for themselves")
+	message_admins("[key_name_admin(src)] has toggled remote control [remote_control? "on" : "off"] for themselves")
 
 /client/proc/enable_event_mob_verbs()
 	set name = "Mob Event Verbs - Show"
 	set category = "Admin.Events"
 
-	add_verb(src, admin_mob_event_verbs_hideable)
+	add_verb(src, GLOB.admin_mob_event_verbs_hideable)
 	remove_verb(src, /client/proc/enable_event_mob_verbs)
 
 /client/proc/hide_event_mob_verbs()
 	set name = "Mob Event Verbs - Hide"
 	set category = "Admin.Events"
 
-	remove_verb(src, admin_mob_event_verbs_hideable)
+	remove_verb(src, GLOB.admin_mob_event_verbs_hideable)
 	add_verb(src, /client/proc/enable_event_mob_verbs)
 
 // ----------------------------
@@ -671,35 +786,40 @@
 
 	var/dat = {"
 		<B>Ship</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=securitylevel'>Set Security Level</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=distress'>Send a Distress Beacon</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=selfdestruct'>Activate Self-Destruct</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=evacuation_start'>Trigger Evacuation</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=securitylevel'>Set Security Level</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=distress'>Send a Distress Beacon</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=selfdestruct'>Activate Self-Destruct</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=evacuation_start'>Trigger Evacuation</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=evacuation_cancel'>Cancel Evacuation</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=add_req_points'>Add Requisitions Points</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=add_upp_req_points'>Add UPP Requisitions Points</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=check_req_heat'>Modify Requisitions Heat</A><BR>
 		<BR>
 		<B>Research</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=give_research_credits'>Give Research Credits</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=change_clearance'>Change Research Clearance</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=give_research_credits'>Give Research Credits</A><BR>
 		<BR>
 		<B>Power</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=unpower'>Unpower ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=powershipreactors'>Power all ship reactors</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=unpower'>Unpower ship SMESs and APCs</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=power'>Power ship SMESs and APCs</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=quickpower'>Power ship SMESs</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=powereverything'>Power ALL SMESs and APCs everywhere</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=powershipreactors'>Repair and power all ship reactors</A><BR>
 		<BR>
 		<B>Events</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=blackout'>Break all lights</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=whiteout'>Repair all lights</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=comms_blackout'>Trigger a Communication Blackout</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=destructible_terrain'>Toggle destructible terrain</A><BR>
 		<BR>
 		<B>Misc</B><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=medal'>Award a medal</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=jelly'>Award a royal jelly</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=nuke'>Spawn a nuke</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
 		<BR>
 		"}
 
@@ -715,28 +835,29 @@
 
 
 /datum/admins/proc/chempanel()
-	if(!check_rights(R_MOD)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/dat
 	if(check_rights(R_MOD,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=view_reagent'>View Reagent</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=view_reagent'>View Reagent</A><br>
 				"}
 	if(check_rights(R_VAREDIT,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=view_reaction'>View Reaction</A><br>"}
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=sync_filter'>Sync Reaction</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=view_reaction'>View Reaction</A><br>"}
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=sync_filter'>Sync Reaction</A><br>
 				<br>"}
 	if(check_rights(R_SPAWN,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
-				<A href='?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=spawn_reagent'>Spawn Reagent in Container</A><br>
+				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=make_report'>Make Chem Report</A><br>
 				<br>"}
 	if(check_rights(R_ADMIN,0))
-		dat += {"<A href='?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
+		dat += {"<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_random_reagent'>Generate Reagent</A><br>
 				<br>
-				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
-				<A href='?src=\ref[src];[HrefToken()];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
+				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_custom_reagent'>Create Custom Reagent</A><br>
+				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
 				"}
 
-	show_browser(usr, dat, "Chem Panel", "chempanel", "size=210x300")
+	show_browser(usr, dat, "Chem Panel", "chempanel", width = 210, height = 300)
 	return
 
 /client/proc/chem_panel()
@@ -747,7 +868,7 @@
 	return
 
 /datum/admins/var/create_humans_html = null
-/datum/admins/proc/create_humans(var/mob/user)
+/datum/admins/proc/create_humans(mob/user)
 	if(!GLOB.gear_name_presets_list)
 		return
 
@@ -757,7 +878,7 @@
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x630")
+	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", width = 450, height = 720)
 
 /client/proc/create_humans()
 	set name = "Create Humans"
@@ -766,7 +887,7 @@
 		admin_holder.create_humans(usr)
 
 /datum/admins/var/create_xenos_html = null
-/datum/admins/proc/create_xenos(var/mob/user)
+/datum/admins/proc/create_xenos(mob/user)
 	if(!create_xenos_html)
 		var/hive_types = jointext(ALL_XENO_HIVES, ";")
 		var/xeno_types = jointext(ALL_XENO_CASTES, ";")
@@ -775,7 +896,7 @@
 		create_xenos_html = replacetext(create_xenos_html, "null /* xeno paths */", "\"[xeno_types]\"")
 		create_xenos_html = replacetext(create_xenos_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", "size=450x630")
+	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", width = 450, height = 630)
 
 /client/proc/create_xenos()
 	set name = "Create Xenos"
@@ -824,86 +945,113 @@
 			custom = FALSE
 			var/list/warheads = subtypesof(/obj/structure/ob_ammo/warhead/)
 			var/choice = tgui_input_list(usr, "Select the warhead:", "Warhead to use", warheads)
+			if(!choice)
+				return
 			warhead = new choice
 		if("Custom HE")
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "HE orbital warhead")
-			if(!OBShell.name) return//null check to cancel
-			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200)
-			if(isnull(OBShell.clear_power)) return
+			if(!OBShell.name)
+				return//null check to cancel
+			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
-			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600)
-			if(isnull(OBShell.standard_power)) return
+			if(isnull(OBShell.clear_falloff))
+				return
+			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600, 3000)
+			if(isnull(OBShell.standard_power))
+				return
 			OBShell.standard_falloff = tgui_input_number(src, "How much falloff should the main blasts have?", "Set blast falloff", 30)
-			if(isnull(OBShell.standard_falloff)) return
+			if(isnull(OBShell.standard_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
+			if(isnull(OBShell.clear_delay))
+				return
 			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
-			if(isnull(OBShell.double_explosion_delay)) return
+			if(isnull(OBShell.double_explosion_delay))
+				return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
-			qdel(OBShell)
 		if("Custom Cluster")
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.total_amount = tgui_input_number(src, "How many salvos should be fired?", "Set cluster number", 60)
-			if(isnull(OBShell.total_amount)) return
+			if(isnull(OBShell.total_amount))
+				return
 			OBShell.instant_amount = tgui_input_number(src, "How many shots per salvo? (Max 10)", "Set shot count", 3)
-			if(isnull(OBShell.instant_amount)) return
+			if(isnull(OBShell.instant_amount))
+				return
 			if(OBShell.instant_amount > 10)
 				OBShell.instant_amount = 10
-			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300)
-			if(isnull(OBShell.explosion_power)) return
+			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300, 1500)
+			if(isnull(OBShell.explosion_power))
+				return
 			OBShell.explosion_falloff = tgui_input_number(src, "How much falloff should the blasts have?", "Set blast falloff", 150)
-			if(isnull(OBShell.explosion_falloff)) return
+			if(isnull(OBShell.explosion_falloff))
+				return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
-			qdel(OBShell)
 		if("Custom Incendiary")
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
-			if(!OBShell.name) return//null check to cancel
-			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200)
-			if(isnull(OBShell.clear_power)) return
+			if(!OBShell.name)
+				return//null check to cancel
+			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
+			if(isnull(OBShell.clear_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
-			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18)
-			if(isnull(OBShell.distance)) return
+			if(isnull(OBShell.clear_delay))
+				return
+			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18, 30)
+			if(isnull(OBShell.distance))
+				return
 			if(OBShell.distance > 30)
 				OBShell.distance = 30
 			OBShell.fire_level = tgui_input_number(src, "How long should the fire last?", "Set fire duration", 70)
-			if(isnull(OBShell.fire_level)) return
+			if(isnull(OBShell.fire_level))
+				return
 			OBShell.burn_level = tgui_input_number(src, "How damaging should the fire be?", "Set fire strength", 80)
-			if(isnull(OBShell.burn_level)) return
+			if(isnull(OBShell.burn_level))
+				return
 			var/list/firetypes = list("white","blue","red","green","custom")
 			OBShell.fire_type = tgui_input_list(usr, "Select the fire color:", "Fire color", firetypes)
-			if(isnull(OBShell.fire_type)) return
+			if(isnull(OBShell.fire_type))
+				return
 			OBShell.fire_color = null
 			if(OBShell.fire_type == "custom")
 				OBShell.fire_type = "dynamic"
 				OBShell.fire_color = input(src, "Please select Fire color.", "Fire color") as color|null
-				if(isnull(OBShell.fire_color)) return
+				if(isnull(OBShell.fire_color))
+					return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."
 			warhead = OBShell
-			qdel(OBShell)
 
 	if(custom)
-		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes") return
-		message_staff(statsmessage)
+		if(!warhead)
+			return
+		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
+		message_admins(statsmessage)
 
 	var/turf/target = get_turf(usr.loc)
 
 	if(alert(usr, "Fire or Spawn Warhead?", "Mode", "Fire", "Spawn") == "Fire")
-		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes") return
-		message_staff("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
+		if(alert("Are you SURE you want to do this? It will create an OB explosion!",, "Yes", "No") != "Yes")
+			qdel(warhead)
+			return
+
+		message_admins("[key_name(usr)] has fired \an [warhead.name] at ([target.x],[target.y],[target.z]).")
 		warhead.warhead_impact(target)
-		QDEL_IN(warhead, OB_CRASHING_DOWN)
+
 	else
-		warhead.loc = target
+		warhead.forceMove(target)
 
 /client/proc/change_taskbar_icon()
 	set name = "Set Taskbar Icon"
@@ -919,7 +1067,7 @@
 
 	SSticker.mode.taskbar_icon = taskbar_icon
 	SSticker.set_clients_taskbar_icon(taskbar_icon)
-	message_staff("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")
+	message_admins("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")
 
 /client/proc/change_weather()
 	set name = "Change Weather"
@@ -955,3 +1103,52 @@
 		to_chat(src, SPAN_WARNING("Could not start the weather event at present!"))
 		return
 	to_chat(src, SPAN_BOLDNOTICE("Success! The weather event should start shortly."))
+
+
+/client/proc/cmd_admin_create_bioscan()
+	set name = "Report: Bioscan"
+	set category = "Admin.Factions"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	var/choice = tgui_alert(usr, "Are you sure you want to trigger a bioscan?", "Bioscan?", list("Yes", "No"))
+	if(choice != "Yes")
+		return
+	else
+		var/faction = tgui_input_list(usr, "What faction do you wish to provide a bioscan for?", "Bioscan Faction", list("Xeno","Marine","Yautja"), 20 SECONDS)
+		var/variance = tgui_input_number(usr, "How variable do you want the scan to be? (+ or - an amount from truth)", "Variance", 2, 10, 0, 20 SECONDS)
+		message_admins("BIOSCAN: [key_name(usr)] admin-triggered a bioscan for [faction].")
+		GLOB.bioscan_data.get_scan_data()
+		switch(faction)
+			if("Xeno")
+				GLOB.bioscan_data.qm_bioscan(variance)
+			if("Marine")
+				var/force_status = FALSE
+				if(!ares_can_interface()) //proc checks if ARES is dead or if ARES cannot do announcements
+					var/force_check = tgui_alert(usr, "ARES is currently unable to properly display and/or perform the Bioscan, do you wish to force ARES to display the bioscan?", "Display force", list("Yes", "No"), 20 SECONDS)
+					if(force_check == "Yes")
+						force_status = TRUE
+				GLOB.bioscan_data.ares_bioscan(force_status, variance)
+			if("Yautja")
+				GLOB.bioscan_data.yautja_bioscan()
+
+/client/proc/admin_blurb()
+	set name = "Global Blurb Message"
+	set category = "Admin.Events"
+
+	if(!check_rights(R_ADMIN|R_DEBUG))
+		return FALSE
+	var/duration = 5 SECONDS
+	var/message = "ADMIN TEST"
+	var/text_input = tgui_input_text(usr, "Announcement message", "Message Contents", message, timeout = 5 MINUTES)
+	if(!text_input)
+		return // Early return here so people dont have to go through the whole process just to cancel it.
+	message = text_input
+	duration = tgui_input_number(usr, "Set the duration of the alert in deci-seconds.", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
+	var/confirm = tgui_alert(usr, "Are you sure you wish to send '[message]' to all players for [(duration / 10)] seconds?", "Confirm", list("Yes", "No"), 20 SECONDS)
+	if(confirm != "Yes")
+		return FALSE
+	show_blurb(GLOB.player_list, duration, message, TRUE, "center", "center", "#bd2020", "ADMIN")
+	message_admins("[key_name(usr)] sent an admin blurb alert to all players. Alert reads: '[message]' and lasts [(duration / 10)] seconds.")

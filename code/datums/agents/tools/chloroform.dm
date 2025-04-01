@@ -1,7 +1,7 @@
-/obj/item/weapon/melee/chloroform
+/obj/item/weapon/chloroform
 	name = "cloth"
 	desc = "A piece of cloth. It smells funny"
-
+	icon = 'icons/obj/janitor.dmi'
 	icon_state = "rag"
 
 	var/uses = 8
@@ -9,17 +9,17 @@
 
 	var/obj/item/clothing/mask/cloth/mask_item
 
-/obj/item/weapon/melee/chloroform/get_examine_text(mob/user)
+/obj/item/weapon/chloroform/get_examine_text(mob/user)
 	. = ..()
 
 	if(skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		. += SPAN_BLUE("It has [uses] use\s left.")
 
-/obj/item/weapon/melee/chloroform/attack(mob/living/M, mob/living/user)
+/obj/item/weapon/chloroform/attack(mob/living/M, mob/living/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return . = ..()
 
-	if(!isHumanStrict(M) || !(user.a_intent & INTENT_DISARM) || M == user)
+	if(!ishuman_strict(M) || !(user.a_intent & INTENT_DISARM) || M == user)
 		return . = ..()
 
 	if(M.stat != CONSCIOUS)
@@ -45,12 +45,13 @@
 
 	uses--
 
-/obj/item/weapon/melee/chloroform/proc/grab_stun(var/mob/living/M, var/mob/living/user)
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
+
+/obj/item/weapon/chloroform/proc/grab_stun(mob/living/M, mob/living/user)
 	M.anchored = TRUE
-	M.frozen = TRUE
-	M.density = FALSE
+	ADD_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)
+	ADD_TRAIT(M, TRAIT_UNDENSE, CHLOROFORM_TRAIT)
 	M.able_to_speak = FALSE
-	M.update_canmove()
 
 	M.drop_inv_item_on_ground(M.wear_mask, force = TRUE)
 
@@ -76,13 +77,13 @@
 
 	animate(M, pixel_x = target_x, pixel_y = target_y, time = 0.2 SECONDS, easing = QUAD_EASING)
 
-/obj/item/weapon/melee/chloroform/proc/remove_stun(var/mob/living/M)
+/obj/item/weapon/chloroform/proc/remove_stun(mob/living/M)
 	animate(M, pixel_x = 0, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
 	M.anchored = FALSE
-	M.density = TRUE
 	M.able_to_speak = TRUE
 	M.layer = MOB_LAYER
-	M.unfreeze()
+	REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, CHLOROFORM_TRAIT)
+	REMOVE_TRAIT(M, TRAIT_UNDENSE, CHLOROFORM_TRAIT)
 
 	QDEL_NULL(mask_item)
 

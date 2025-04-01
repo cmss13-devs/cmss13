@@ -54,13 +54,13 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							slots_free += ui_datum.ui_storage1
 						if(!H.r_store)
 							slots_free += ui_datum.ui_storage2
-					if(slots_free.len)
+					if(length(slots_free))
 						halitem.screen_loc = pick(slots_free)
 						halitem.layer = 50
 						switch(rand(1,6))
 							if(1) //revolver
-								halitem.icon = 'icons/obj/items/weapons/guns/gun.dmi'
-								halitem.icon_state = "revolver"
+								halitem.icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
+								halitem.icon_state = "m44r"
 								halitem.name = "Revolver"
 							if(2) //c4
 								halitem.icon = 'icons/obj/items/assemblies.dmi'
@@ -69,11 +69,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								if(prob(25))
 									halitem.icon_state = "c4small_1"
 							if(3) //sword
-								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/melee/swords.dmi'
 								halitem.icon_state = "sword1"
 								halitem.name = "Sword"
 							if(4) //stun baton
-								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 								halitem.icon_state = "stunbaton"
 								halitem.name = "Stun Baton"
 							if(5) //emag
@@ -85,19 +85,19 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								halitem.icon_state = "flashbang1"
 								halitem.name = "Flashbang"
 						if(client)
-							client.screen += halitem
+							client.add_to_screen(halitem)
 						spawn(rand(100,250))
 							if(client)
-								client.screen -= halitem
+								client.remove_from_screen(halitem)
 							halitem = null
 			if(26 to 40)
 				//Flashes of danger
 				//to_chat(src, "Danger Flash")
 				if(!halimage)
 					var/list/possible_points = list()
-					for(var/turf/open/floor/F in view(src,world_view_size))
+					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 
 						switch(rand(1,3))
@@ -124,22 +124,31 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//Strange audio
 				//to_chat(src, "Strange Audio")
 				switch(rand(1,12))
-					if(1) src << 'sound/machines/airlock.ogg'
+					if(1)
+						src << 'sound/machines/airlock.ogg'
 					if(2)
 						if(prob(50))src << 'sound/effects/Explosion1.ogg'
-						else src << 'sound/effects/Explosion2.ogg'
-					if(3) src << 'sound/effects/explosionfar.ogg'
-					if(4) src << 'sound/effects/Glassbr1.ogg'
-					if(5) src << 'sound/effects/Glassbr2.ogg'
-					if(6) src << 'sound/effects/Glassbr3.ogg'
-					if(7) src << 'sound/machines/twobeep.ogg'
-					if(8) src << 'sound/machines/windowdoor.ogg'
+						else
+							src << 'sound/effects/Explosion2.ogg'
+					if(3)
+						src << 'sound/effects/explosionfar.ogg'
+					if(4)
+						src << 'sound/effects/Glassbr1.ogg'
+					if(5)
+						src << 'sound/effects/Glassbr2.ogg'
+					if(6)
+						src << 'sound/effects/Glassbr3.ogg'
+					if(7)
+						src << 'sound/machines/twobeep.ogg'
+					if(8)
+						src << 'sound/machines/windowdoor.ogg'
 					if(9)
 						//To make it more realistic, I added two gunshots (enough to kill)
 						src << 'sound/weapons/Gunshot.ogg'
 						spawn(rand(10,30))
 							src << 'sound/weapons/Gunshot.ogg'
-					if(10) src << 'sound/weapons/smash.ogg'
+					if(10)
+						src << 'sound/weapons/smash.ogg'
 					if(11)
 						//Same as above, but with tasers.
 						src << 'sound/weapons/Taser.ogg'
@@ -159,30 +168,32 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//to_chat(src, "Danger Flash")
 				if(!halbody)
 					var/list/possible_points = list()
-					for(var/turf/open/floor/F in view(src,world_view_size))
+					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 						switch(rand(1,3))
 							if(1)
 								halbody = image('icons/mob/humans/human.dmi',target,"husk_l",TURF_LAYER)
 							if(2,3)
 								halbody = image('icons/mob/humans/human.dmi',target,"husk_s",TURF_LAYER)
-	//						if(5)
-	//							halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
+	// if(5)
+	// halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 
-						if(client) client.images += halbody
+						if(client)
+							client.images += halbody
 						spawn(rand(50,80)) //Only seen for a brief moment.
-							if(client) client.images -= halbody
+							if(client)
+								client.images -= halbody
 							halbody = null
 			if(71 to 72)
 				//Fake death
-//				src.sleeping_willingly = 1
+// src.sleeping_willingly = 1
 				src.sleeping = 20
 				hal_crit = 1
 				hal_screwyhud = 1
 				spawn(rand(50,100))
-//					src.sleeping_willingly = 0
+// src.sleeping_willingly = 0
 					src.sleeping = 0
 					hal_crit = 0
 					hal_screwyhud = 0
@@ -203,18 +214,18 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		"Play Charades","Oxygen","Inject BeAcOs","Ninja Lizards","Limit Break","Build Sentry")
 
 		if(mid_txts)
-			while(mid_txts.len)
+			while(length(mid_txts))
 				var/mid_txt = pick(mid_txts)
 				mocktxt += mid_txt
 				mid_txts -= mid_txt
 
-		while(buttons.len)
+		while(length(buttons))
 
 			var/button = pick(buttons)
 
 			var/button_txt = pick(possible_txt)
 
-			mocktxt += "<a href='?src=\ref[src];[button]'>[button_txt]</a><br>"
+			mocktxt += "<a href='byond://?src=\ref[src];[button]'>[button_txt]</a><br>"
 
 			buttons -= button
 			possible_txt -= button_txt
@@ -232,9 +243,9 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	icon_state = null
 	name = ""
 	desc = ""
-	density = 0
-	anchored = 1
-	opacity = 0
+	density = FALSE
+	anchored = TRUE
+	opacity = FALSE
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
 	var/obj/item/weap = null
@@ -247,23 +258,23 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 	health = 100
 
-	attackby(var/obj/item/P as obj, mob/user as mob)
+/obj/effect/fake_attacker/attackby(obj/item/P as obj, mob/user as mob)
+	step_away(src,my_target,2)
+	for(var/mob/M in oviewers(GLOB.world_view_size,my_target))
+		to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
+	my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
+
+	src.health -= P.force
+
+
+	return
+
+/obj/effect/fake_attacker/Crossed(mob/M, somenumber)
+	if(M == my_target)
 		step_away(src,my_target,2)
-		for(var/mob/M in oviewers(world_view_size,my_target))
-			to_chat(M, SPAN_WARNING("<B>[my_target] flails around wildly.</B>"))
-		my_target.show_message(SPAN_DANGER("<B>[src] has been attacked by [my_target] </B>"), SHOW_MESSAGE_VISIBLE) //Lazy.
-
-		src.health -= P.force
-
-
-		return
-
-	Crossed(var/mob/M, somenumber)
-		if(M == my_target)
-			step_away(src,my_target,2)
-			if(prob(30))
-				for(var/mob/O in oviewers(world_view_size , my_target))
-					to_chat(O, SPAN_DANGER("<B>[my_target] stumbles around.</B>"))
+		if(prob(30))
+			for(var/mob/O in oviewers(GLOB.world_view_size , my_target))
+				to_chat(O, SPAN_DANGER("<B>[my_target] stumbles around.</B>"))
 
 /obj/effect/fake_attacker/New()
 	..()
@@ -281,60 +292,60 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	weap = null
 	currentimage = null
 	left = null
+	right = null
 	up = null
 	down = null
 	return ..()
 
-/obj/effect/fake_attacker
-	proc/updateimage()
-
-		if(src.dir == NORTH)
-			src.currentimage = new /image(up,src)
-		else if(src.dir == SOUTH)
-			src.currentimage = new /image(down,src)
-		else if(src.dir == EAST)
-			src.currentimage = new /image(right,src)
-		else if(src.dir == WEST)
-			src.currentimage = new /image(left,src)
-		my_target << currentimage
+/obj/effect/fake_attacker/proc/updateimage()
+	if(src.dir == NORTH)
+		src.currentimage = new /image(up,src)
+	else if(src.dir == SOUTH)
+		src.currentimage = new /image(down,src)
+	else if(src.dir == EAST)
+		src.currentimage = new /image(right,src)
+	else if(src.dir == WEST)
+		src.currentimage = new /image(left,src)
+	my_target << currentimage
 
 
-	proc/attack_loop()
-		while(1)
-			sleep(rand(5,10))
-			if(src.health < 0)
-				collapse()
-				continue
-			if(get_dist(src,my_target) > 1)
-				setDir(get_dir(src,my_target))
-				step_towards(src,my_target)
-				updateimage()
-			else
-				if(prob(15))
-					if(weapon_name)
-						my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
-						my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
-						my_target.halloss += 8
-						if(prob(20)) my_target.AdjustEyeBlur(3)
-						if(prob(33))
-							if(!locate(/obj/effect/overlay) in my_target.loc)
-								fake_blood(my_target)
-					else
-						my_target << sound(pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'))
-						my_target.show_message(SPAN_DANGER("<B>[src.name] has punched [my_target]!</B>"), SHOW_MESSAGE_VISIBLE)
-						my_target.halloss += 4
-						if(prob(33))
-							if(!locate(/obj/effect/overlay) in my_target.loc)
-								fake_blood(my_target)
-
+/obj/effect/fake_attacker/proc/attack_loop()
+	while(1)
+		sleep(rand(5,10))
+		if(src.health < 0)
+			collapse()
+			continue
+		if(get_dist(src,my_target) > 1)
+			setDir(get_dir(src,my_target))
+			step_towards(src,my_target)
+			updateimage()
+		else
 			if(prob(15))
-				step_away(src,my_target,2)
+				if(weapon_name)
+					my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
+					my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
+					my_target.halloss += 8
+					if(prob(20))
+						my_target.AdjustEyeBlur(3)
+					if(prob(33))
+						if(!locate(/obj/effect/overlay) in my_target.loc)
+							fake_blood(my_target)
+				else
+					my_target << sound(pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'))
+					my_target.show_message(SPAN_DANGER("<B>[src.name] has punched [my_target]!</B>"), SHOW_MESSAGE_VISIBLE)
+					my_target.halloss += 4
+					if(prob(33))
+						if(!locate(/obj/effect/overlay) in my_target.loc)
+							fake_blood(my_target)
 
-	proc/collapse()
-		collapse = 1
-		updateimage()
+		if(prob(15))
+			step_away(src,my_target,2)
 
-/proc/fake_blood(var/mob/target)
+/obj/effect/fake_attacker/proc/collapse()
+	collapse = 1
+	updateimage()
+
+/proc/fake_blood(mob/target)
 	var/obj/effect/overlay/O = new/obj/effect/overlay(target.loc)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
@@ -342,33 +353,35 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	QDEL_IN(O, 30 SECONDS)
 	return
 
-var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\
+GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/device/aicard,\
 	/obj/item/clothing/shoes/magboots, /obj/item/disk/nuclear,\
-	/obj/item/clothing/suit/space/uscm, /obj/item/tank)
+	/obj/item/clothing/suit/space/uscm, /obj/item/tank))
 
-/proc/fake_attack(var/mob/living/target)
-//	var/list/possible_clones = new/list()
+/proc/fake_attack(mob/living/target)
+// var/list/possible_clones = new/list()
 	var/mob/living/carbon/human/clone = null
 	var/clone_weapon = null
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(H.stat || H.lying) continue
-//		possible_clones += H
+		if(H.stat)
+			continue
+// possible_clones += H
 		clone = H
-		break	//changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
+		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
 
-//	if(!possible_clones.len) return
-//	clone = pick(possible_clones)
-	if(!clone)	return
+// if(!length(possible_clones)) return
+// clone = pick(possible_clones)
+	if(!clone)
+		return
 
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)
 	if(clone.l_hand)
-		if(!(locate(clone.l_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.l_hand) in GLOB.non_fakeattack_weapons))
 			clone_weapon = clone.l_hand.name
 			F.weap = clone.l_hand
 	else if (clone.r_hand)
-		if(!(locate(clone.r_hand) in non_fakeattack_weapons))
+		if(!(locate(clone.r_hand) in GLOB.non_fakeattack_weapons))
 			clone_weapon = clone.r_hand.name
 			F.weap = clone.r_hand
 

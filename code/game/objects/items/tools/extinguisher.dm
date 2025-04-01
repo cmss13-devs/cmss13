@@ -4,7 +4,12 @@
 /obj/item/tool/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
+	)
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
@@ -15,12 +20,12 @@
 	w_class = SIZE_MEDIUM
 	throw_speed = SPEED_SLOW
 	throw_range = 10
-	force = 10.0
+	force = 10
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	var/max_water = 50
-	var/last_use = 1.0
+	var/last_use = 1
 	var/safety = 1
 	var/sprite_name = "fire_extinguisher"
 	var/power = BASE_EXTINGUISHER_PWR
@@ -30,7 +35,8 @@
 	desc = "A light and compact fibreglass-framed model fire extinguisher."
 	icon_state = "miniFE0"
 	item_state = "miniFE"
-	hitsound = null	//it is much lighter, after all.
+	/// it is much lighter, after all.
+	hitsound = null
 	throwforce = 2
 	w_class = SIZE_SMALL
 	force = 3
@@ -45,12 +51,13 @@
 	name = "fire extinguisher"
 	desc = "A heavy-duty fire extinguisher designed for extreme fires."
 	w_class = SIZE_MEDIUM
-	force = 3.0
+	force = 3
 	max_water = 500
 	power = PYRO_EXTINGUISHER_PWR
 
 /obj/item/tool/extinguisher/pyro/atmos_tank
-	max_water = 500000 //so it never runs out, theoretically
+	/// so it never runs out, theoretically
+	max_water = 500000
 
 /obj/item/tool/extinguisher/Initialize()
 	. = ..()
@@ -70,14 +77,17 @@
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
-		return FALSE
+		return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 	else
 		return ..()
 
 /obj/item/tool/extinguisher/afterattack(atom/target, mob/user , flag)
 	if(istype(target, /obj/structure/reagent_dispensers/watertank) && get_dist(user,target) <= 1)
-		var/obj/o = target
-		o.reagents.trans_to(src, 50)
+		var/obj/object = target
+		if(object.reagents.contains_harmful_substances())
+			to_chat(user, SPAN_WARNING("You cannot re-fill the extinguisher with the contents of this."))
+			return
+		object.reagents.trans_to(src, 50)
 		to_chat(user, SPAN_NOTICE(" \The [src] is now refilled"))
 		playsound(user, 'sound/effects/refill.ogg', 25, 1, 3)
 		return
@@ -151,18 +161,18 @@
 	var/list/unpicked_targets = list()
 
 	for(var/a in 0 to (EXTINGUISHER_WATER_USE_AMT-1))
-		if (!unpicked_targets.len)
+		if (!length(unpicked_targets))
 			unpicked_targets += targets
 		var/turf/TT = pick(unpicked_targets)
 		unpicked_targets -= TT
-		INVOKE_ASYNC(src, .proc/release_liquid, TT, user)
+		INVOKE_ASYNC(src, PROC_REF(release_liquid), TT, user)
 
-	if(istype(user.loc, /turf/open/space) || (user.lastarea && user.lastarea.has_gravity == 0))
+	if(istype(user.loc, /turf/open/space))
 		user.inertia_dir = get_dir(target, user)
 		step(user, user.inertia_dir)
 	return
 
-/obj/item/tool/extinguisher/proc/release_liquid(var/turf/target, var/mob/user)
+/obj/item/tool/extinguisher/proc/release_liquid(turf/target, mob/user)
 	var/turf/T = get_turf(user)
 	var/obj/effect/particle_effect/water/W = new /obj/effect/particle_effect/water(T)
 	W.create_reagents(5)

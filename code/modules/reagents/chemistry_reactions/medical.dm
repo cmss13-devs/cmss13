@@ -101,8 +101,8 @@
 	result_amount = 3
 
 /datum/chemical_reaction/ethanoloxidation
-	name = "ethanoloxidation"	//Kind of a placeholder in case someone ever changes it so that chemicals
-	id = "ethanoloxidation"		//	react in the body. Also it would be silly if it didn't exist.
+	name = "ethanoloxidation" //Kind of a placeholder in case someone ever changes it so that chemicals
+	id = "ethanoloxidation" // react in the body. Also it would be silly if it didn't exist.
 	result = "water"
 	required_reagents = list("ethylredoxrazine" = 1, "ethanol" = 1)
 	result_amount = 2
@@ -180,15 +180,6 @@
 	required_reagents = list("bicaridine" = 2, "clonexadone" = 2)
 	required_catalysts = list("phoron" = 5)
 	result_amount = 2
-
-/datum/chemical_reaction/quickclot
-	name = "Quickclot"
-	id = "quickclot"
-	result = "quickclot"
-	required_reagents = list("kelotane" = 2, "clonexadone" = 2)
-	required_catalysts = list("phoron" = 5)
-	result_amount = 1
-
 
 /datum/chemical_reaction/methylphenidate
 	name = "Methylphenidate"

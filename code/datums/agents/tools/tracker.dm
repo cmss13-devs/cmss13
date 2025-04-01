@@ -12,9 +12,9 @@
 	overlays.Cut()
 
 	if(active && tracked_object)
-		overlays += icon(icon, "+tracker_arrow", get_dir(src, tracked_object))
+		overlays += icon(icon, "+tracker_arrow", Get_Compass_Dir(src, tracked_object))
 
-/obj/item/device/tracker/attack_self(var/mob/user)
+/obj/item/device/tracker/attack_self(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return ..()
 
@@ -29,7 +29,7 @@
 	active = TRUE
 	update_icon()
 
-	addtimer(CALLBACK(src, .proc/deactive), ping_duration)
+	addtimer(CALLBACK(src, PROC_REF(deactive)), ping_duration)
 
 /obj/item/device/tracker/proc/deactive()
 	active = FALSE
@@ -39,19 +39,21 @@
 	if(!ishuman(user) || !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return ..()
 
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		select_object(user)
 		return TRUE
 
 	return ..()
 
-/obj/item/device/tracker/proc/select_object(var/mob/user)
-	if(!LAZYLEN(objects_of_interest))
+/obj/item/device/tracker/proc/select_object(mob/user)
+	if(!LAZYLEN(GLOB.objects_of_interest))
 		to_chat(user, SPAN_WARNING("There are nothing of interest to track."))
 		return
 
 	var/list/object_choices = list()
-	for(var/obj/O in objects_of_interest)
+	for(var/obj/O in GLOB.objects_of_interest)
 		var/z_level_to_compare_from = O.z
 		if(istype(O.loc, /obj/structure/surface))
 			z_level_to_compare_from = O.loc.z

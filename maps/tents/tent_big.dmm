@@ -1,0 +1,82 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/tent/big,
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/obj/structure/tent_curtain,
+/turf/template_noop,
+/area/template_noop)
+"k" = (
+/obj/structure/blocker/tent/full_tile,
+/turf/template_noop,
+/area/template_noop)
+"n" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/turf/template_noop,
+/area/template_noop)
+"s" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"v" = (
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"x" = (
+/obj/structure/tent_curtain,
+/turf/template_noop,
+/area/template_noop)
+"G" = (
+/obj/structure/blocker/tent{
+	dir = 4
+	},
+/obj/structure/tent_curtain,
+/turf/template_noop,
+/area/template_noop)
+"J" = (
+/obj/structure/blocker/tent{
+	dir = 8
+	},
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/turf/template_noop,
+/area/template_noop)
+"O" = (
+/turf/template_noop,
+/area/template_noop)
+"S" = (
+/obj/structure/blocker/tent{
+	dir = 1
+	},
+/turf/template_noop,
+/area/template_noop)
+
+(1,1,1) = {"
+k
+J
+v
+a
+"}
+(2,1,1) = {"
+k
+S
+O
+x
+"}
+(3,1,1) = {"
+k
+n
+s
+G
+"}

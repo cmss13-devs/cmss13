@@ -1,7 +1,7 @@
 /* Teleportation devices.
  * Contains:
- *		Locator
- *		Hand-tele
+ * Locator
+ * Hand-tele
  */
 
 /*
@@ -14,7 +14,7 @@
 	var/temp = null
 	var/frequency = 1451
 	var/broadcasting = null
-	var/listening = 1.0
+	var/listening = 1
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
 	item_state = "electronic"
@@ -37,7 +37,7 @@
 		<A href='byond://?src=\ref[src];freq=2'>+</A>
 		<A href='byond://?src=\ref[src];freq=10'>+</A><BR>
 
-		<A href='?src=\ref[src];refresh=1'>Refresh</A>
+		<A href='byond://?src=\ref[src];refresh=1'>Refresh</A>
 		"}
 	show_browser(user, dat, "Persistent Signal Locator", "radio")
 	onclose(user, "radio")
@@ -48,8 +48,8 @@
 	if (usr.stat || usr.is_mob_restrained())
 		return
 	var/turf/current_location = get_turf(usr)//What turf is the user on?
-	if(!current_location || is_admin_level(current_location.z))//If turf was not found or they're on z level 2.
-		to_chat(usr, "The [src] is malfunctioning.")
+	if(!current_location || should_block_game_interaction(current_location))//If turf was not found or they're on z level 2.
+		to_chat(usr, "[src] is malfunctioning.")
 		return
 	if ((usr.contents.Find(src) || (in_range(src, usr) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
@@ -140,28 +140,30 @@
 	..()
 
 	var/turf/current_location = get_turf(user)//What turf is the user on?
-	if(!current_location || is_admin_level(current_location.z))//If turf was not found or they're on z level 2
+	if(!current_location || should_block_game_interaction(current_location))//If turf was not found or they're on z level 2
 		to_chat(user, SPAN_NOTICE("\The [src] is malfunctioning."))
 		return
 	var/list/L = list(  )
-	for(var/obj/structure/machinery/teleport/hub/R in machines)
+	for(var/obj/structure/machinery/teleport/hub/R in GLOB.machines)
 		var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(R.x - 2, R.y, R.z))
 		if (istype(com, /obj/structure/machinery/computer/teleporter) && com.locked && !com.one_time_use)
 			if(R.icon_state == "tele1")
 				L["[com.id] (Active)"] = com.locked
 			else
 				L["[com.id] (Inactive)"] = com.locked
-	var/list/turfs = list(	)
-	for(var/turf/T in orange(10))
-		if(T.x>world.maxx-8 || T.x<8)	continue	//putting them at the edge is dumb
-		if(T.y>world.maxy-8 || T.y<8)	continue
+	var/list/turfs = list( )
+	for(var/turf/T as anything in ORANGE_TURFS(10, src))
+		if(T.x>world.maxx-8 || T.x<8)
+			continue //putting them at the edge is dumb
+		if(T.y>world.maxy-8 || T.y<8)
+			continue
 		turfs += T
-	if(turfs.len)
+	if(length(turfs))
 		L["None (Dangerous)"] = pick(turfs)
 	var/t1 = tgui_input_list(user, "Please select a teleporter to lock in on.", "Hand Teleporter", L)
 	if ((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))
 		return
-	var/count = 0	//num of portals from this teleport in the world
+	var/count = 0 //num of portals from this teleport in the world
 	for(var/i in GLOB.portal_list)
 		var/obj/effect/portal/PO = i
 		if(PO.creator == src)
@@ -177,4 +179,3 @@
 	P.creator = src
 	src.add_fingerprint(user)
 	return
-

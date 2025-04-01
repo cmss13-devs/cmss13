@@ -3,7 +3,7 @@
 
 Itching
 
-	Not noticable or unnoticable.
+	Not noticeable or unnoticeable.
 	Resistant.
 	Increases stage speed.
 	Little transmittable.
@@ -25,7 +25,7 @@ BONUS
 	transmittable = 1
 	level = 1
 
-/datum/symptom/itching/Activate(var/datum/disease/advance/A)
+/datum/symptom/itching/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob

@@ -1,27 +1,21 @@
 //Refer to life.dm for caller
 
-/mob/living/carbon/human/handle_regular_status_updates(regular_update = TRUE)
+/mob/living/carbon/human/handle_regular_status_updates(regular_update = TRUE) // you're next, evil proc --fira
 
 	if(status_flags & GODMODE)
 		return 0
 
 	if(stat == DEAD) //DEAD. BROWN BREAD. SWIMMING WITH THE SPESS CARP
-		blinded = 1
+		blinded = TRUE
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
-		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
-			death(last_damage_data)
-			blinded = 1
-			silent = 0
-			return 1
-
 		if(regular_update)
 			if(hallucination)
 				if(hallucination >= 20)
 					if(prob(3))
 						fake_attack(src)
 					if(!handling_hal)
-						INVOKE_ASYNC(src, /mob/living/carbon.proc/handle_hallucinations)
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob/living/carbon, handle_hallucinations))
 
 				if(hallucination <= 2)
 					hallucination = 0
@@ -35,7 +29,7 @@
 					qdel(a)
 
 				if(halloss > 100)
-					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
+					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."),
 					SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
 					apply_effect(10, PARALYZE)
 					setHalLoss(99)
@@ -53,13 +47,11 @@
 			if(!already_in_crit)
 				new /datum/effects/crit/human(src)
 
-		if(knocked_out)
-			blinded = 1
-			stat = UNCONSCIOUS
+		if(IsKnockOut())
+			blinded = TRUE
 			if(regular_update && halloss > 0)
 				apply_damage(-3, HALLOSS)
 		else if(sleeping)
-			speech_problem_flag = 1
 			if(regular_update)
 				handle_dreams()
 				apply_damage(-3, HALLOSS)
@@ -67,30 +59,31 @@
 					if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
 						sleeping = max(sleeping - 1, 0)
 				if(prob(2) && health && !hal_crit)
-					addtimer(CALLBACK(src, .proc/emote, "snore"))
-			blinded = 1
-			stat = UNCONSCIOUS
+					addtimer(CALLBACK(src, PROC_REF(emote), "snore"))
+			blinded = TRUE
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 
-		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
+		if(in_stasis == STASIS_IN_CRYO_CELL)
+			blinded = TRUE //Always blinded while in stasisTUBES
 
 		if(!regular_update)
 			return
 		//Eyes
 		if(!species.has_organ["eyes"]) //Presumably if a species has no eyes, they see via something else.
-			eye_blind = 0
+			SetEyeBlind(0)
 			if(stat == CONSCIOUS) //even with 'eye-less' vision, unconsciousness makes you blind
-				blinded = 0
+				blinded = FALSE
 			SetEyeBlur(0)
-		else if(!has_eyes())           //Eyes cut out? Permablind.
-			eye_blind =  1
-			blinded =    1
+		else if(!has_eyes()) //Eyes cut out? Permablind.
+			SetEyeBlind(1)
+			blinded = 1
 			// we don't need to blur vision if they are blind...
-		else if(eye_blind)		       //Blindness, heals slowly over time
-			eye_blind =  max(eye_blind - 1, 0)
-			blinded =    1
-		else if(eye_blurry)	           //Blurry eyes heal slowly
+		else if(eye_blind) //Blindness, heals slowly over time
+			ReduceEyeBlind(1)
+			blinded = TRUE
+		else if(eye_blurry) //Blurry eyes heal slowly
 			ReduceEyeBlur(1)
 
 		//Ears
@@ -101,12 +94,13 @@
 
 			AdjustEarDeafness(-1)
 
-			if(!ear_deaf && client && client.soundOutput)
-				client.soundOutput.status_flags ^= EAR_DEAF_MUTE
-				client.soundOutput.apply_status()
-
 		else if(ear_damage)
 			ear_damage = max(ear_damage - 0.05, 0)
+
+		// This should be done only on updates abvoe, or even better in the AdjsutEarDeafnes handlers
+		if(!ear_deaf && (client?.soundOutput?.status_flags & EAR_DEAF_MUTE))
+			client.soundOutput.status_flags ^= EAR_DEAF_MUTE
+			client.soundOutput.apply_status()
 
 		//Resting
 		if(resting)
@@ -122,10 +116,9 @@
 		handle_statuses()
 
 		if(paralyzed)
-			speech_problem_flag = 1
 			apply_effect(1, WEAKEN)
 			silent = 1
-			blinded = 1
+			blinded = TRUE
 			use_me = 0
 			pain.apply_pain_reduction(PAIN_REDUCTION_FULL)
 			paralyzed--

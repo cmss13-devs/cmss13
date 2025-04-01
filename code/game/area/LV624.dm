@@ -4,6 +4,7 @@
 	can_build_special = TRUE
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_JUNGLE
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/lv624/ground
 	name = "Ground"
@@ -11,6 +12,9 @@
 	always_unpowered = 1 //Will this mess things up? God only knows
 
 //Jungle
+/area/lv624/ground/jungle
+	minimap_color = MINIMAP_AREA_JUNGLE
+
 /area/lv624/ground/jungle/south_east_jungle
 	name ="\improper Southeast Jungle"
 	icon_state = "southeast"
@@ -26,10 +30,17 @@
 	icon_state = "southwest"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
+/area/lv624/ground/jungle/south_west_jungle/ceiling
+	ceiling = CEILING_GLASS
+
 /area/lv624/ground/jungle/west_jungle
 	name ="\improper Western Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ2
+
+/area/lv624/ground/jungle/west_jungle/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/jungle/east_jungle
 	name ="\improper Eastern Jungle"
@@ -60,6 +71,7 @@
 	name ="\improper West Central Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/east_central_jungle
 	name ="\improper East Central Jungle"
@@ -78,10 +90,16 @@
 	icon_state = "west"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
+/area/lv624/ground/barrens/west_barrens/ceiling
+	ceiling = CEILING_GLASS
+
 /area/lv624/ground/barrens/east_barrens
 	name = "\improper Eastern Barrens"
 	icon_state = "east"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/barrens/east_barrens/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/barrens/containers
 	name = "\improper Containers"
@@ -92,6 +110,9 @@
 	name = "\improper North Eastern Barrens"
 	icon_state = "northeast"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/barrens/north_east_barrens/ceiling
+	ceiling = CEILING_GLASS
 
 /area/lv624/ground/barrens/south_west_barrens
 	name = "\improper South Western Barrens"
@@ -106,31 +127,31 @@
 /area/lv624/ground/barrens/south_eastern_barrens
 	name = "\improper South Eastern Barrens"
 	icon_state = "southeast"
-//	ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+// ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
 /area/lv624/ground/barrens/south_eastern_jungle_barrens
 	name = "\improper South East Jungle Barrens"
 	icon_state = "southeast"
-//	ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+// ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
 /area/lv624/ground/river
 	name = "\improper River"
 	icon_state = "blueold"
-//	ambience = list('sound/ambience/jungle_amb1.ogg')
+// ambience = list('sound/ambience/jungle_amb1.ogg')
 
 /area/lv624/ground/river/west_river
 	name = "\improper Western River"
 	icon_state = "blueold"
-//	ambience = list('sound/ambience/jungle_amb1.ogg')
+// ambience = list('sound/ambience/jungle_amb1.ogg')
 /area/lv624/ground/river/central_river
 	name = "\improper Central River"
 	icon_state = "purple"
-//	ambience = list('sound/ambience/jungle_amb1.ogg')
+// ambience = list('sound/ambience/jungle_amb1.ogg')
 
 /area/lv624/ground/river/east_river
 	name = "\improper Eastern River"
 	icon_state = "bluenew"
-//	ambience = list('sound/ambience/jungle_amb1.ogg')
+// ambience = list('sound/ambience/jungle_amb1.ogg')
 
 
 //Colony Areas
@@ -157,27 +178,31 @@
 /area/lv624/ground/colony/north_tcomms_road
 	name = "\improper North T-Comms Road"
 	icon_state = "north"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/colony/west_tcomms_road
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/colony/telecomm
 	name = "\improper LZ1 Communications Relay"
 	icon_state = "ass_line"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
 	always_unpowered = FALSE
 
 /area/lv624/ground/colony/telecomm/cargo
 	name = "\improper Far North Storage Dome Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 
 /area/lv624/ground/colony/telecomm/sw_lz1
 	name = "\improper South-West LZ1 Communications Relay"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/colony/telecomm/tcommdome
 	name = "\improper Telecomms Dome Communications Relay"
@@ -189,8 +214,9 @@
 /area/lv624/ground/colony/telecomm/sw_lz2
 	name = "\improper South-West LZ2 Communications Relay"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ2
 
-//	ambience = list('sound/ambience/jungle_amb1.ogg')
+// ambience = list('sound/ambience/jungle_amb1.ogg')
 
 
 //The Caves
@@ -203,6 +229,8 @@
 	soundscape_interval = 25
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
 
 /area/lv624/ground/caves/west_caves
 	name ="\improper Western Caves"
@@ -257,14 +285,15 @@
 
 /area/lv624/lazarus/landing_zones
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
 /area/lv624/lazarus/landing_zones/lz1
 	name = "\improper Alamo Landing Zone"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/landing_zones/lz2
 	name = "\improper Normandy Landing Zone"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus
 	name = "\improper Lazarus"
@@ -274,6 +303,7 @@
 /area/lv624/lazarus/corporate_dome
 	name = "\improper Corporate Dome"
 	icon_state = "green"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/yggdrasil
 	name = "\improper Yggdrasil Tree"
@@ -283,37 +313,42 @@
 /area/lv624/lazarus/medbay
 	name = "\improper Medbay"
 	icon_state = "medbay"
+	minimap_color = MINIMAP_AREA_MEDBAY
 
 /area/lv624/lazarus/armory
 	name = "\improper Armory"
 	icon_state = "armory"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv624/lazarus/security
 	name = "\improper Security"
 	icon_state = "security"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
 	icon_state = "captain"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv624/lazarus/hop
 	name = "\improper Head of Personnel's Office"
 	icon_state = "head_quarters"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/lv624/lazarus/kitchen
 	name = "\improper Kitchen"
 	icon_state = "kitchen"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/canteen
 	name = "\improper Canteen"
 	icon_state = "cafeteria"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/main_hall
 	name = "\improper Main Hallway"
 	icon_state = "hallC1"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
@@ -335,46 +370,50 @@
 /area/lv624/lazarus/sleep_female
 	name = "\improper Female Dorm"
 	icon_state = "Sleep"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/quart
 	name = "\improper Quartermasters"
 	icon_state = "quart"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/quartstorage
 	name = "\improper Cargo Bay"
 	icon_state = "quartstorage"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/quartstorage/outdoors
 	name = "\improper Cargo Bay Area"
 	icon_state = "purple"
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	always_unpowered = TRUE
 
 /area/lv624/lazarus/engineering
 	name = "\improper Engineering"
 	icon_state = "engine_smes"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/comms
 	name = "\improper Communications Relay"
 	icon_state = "tcomsatcham"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/lv624/lazarus/secure_storage
 	name = "\improper Secure Storage"
 	icon_state = "storage"
 	flags_area = AREA_NOTUNNEL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/robotics
 	name = "\improper Robotics"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/research
 	name = "\improper Research Lab"
 	icon_state = "toxlab"
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/lv624/lazarus/fitness
 	name = "\improper Fitness Room"

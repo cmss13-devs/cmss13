@@ -2,7 +2,7 @@
 	name = "clothing"
 	pickupvol = 40
 	dropvol = 40
-	var/eye_protection = 0 //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
+	var/eye_protection = EYE_PROTECTION_NONE //used for headgear, masks, and glasses, to see how much they protect eyes from bright lights.
 	var/armor_melee = 0
 	var/armor_bullet = 0
 	var/armor_laser = 0
@@ -26,10 +26,10 @@
 	for(var/obj/item/clothing/accessory/accessory in accessories)
 		if(accessory.high_visibility)
 			ties += "\a [accessory.get_examine_line(user)]"
-	if(ties.len)
+	if(length(ties))
 		.+= " with [english_list(ties)] attached"
-	if(LAZYLEN(accessories) > ties.len)
-		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
+	if(LAZYLEN(accessories) > length(ties))
+		.+= ". <a href='byond://?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
@@ -44,14 +44,31 @@
 		return
 
 /obj/item/clothing/attack_hand(mob/user as mob)
-	if (drag_unequip && ishuman(usr) && src.loc == user)	//make it harder to accidentally undress yourself
+	//only forward to the attached accessory if the clothing is equipped (not in a storage)
+	if(LAZYLEN(accessories) && loc == user)
+		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armor vests with medals, but can't hurt in general.
+		for(var/obj/item/clothing/accessory/A in accessories)
+			if(A.attack_hand(user))
+				delegated = TRUE
+		if(delegated)
+			return
+
+	if(drag_unequip && ishuman(usr) && loc == user) //make it harder to accidentally undress yourself
 		return
 
+	..()
+
+/obj/item/clothing/hear_talk(mob/M, msg)
+	for(var/obj/item/clothing/accessory/attached in accessories)
+		attached.hear_talk(M, msg)
 	..()
 
 /obj/item/clothing/proc/get_armor(armortype)
 	var/armor_total = 0
 	var/armor_count = 0
+	if(!isnum(armortype))
+		log_debug("Armortype parsed as non-number! ([armortype], mob: [src.loc]) @ clothing.dm line 56.")
+		return 0
 	if(armortype & ARMOR_MELEE)
 		armor_total += armor_melee
 		armor_count++
@@ -84,7 +101,7 @@
 /obj/item/clothing/proc/update_clothing_icon()
 	return
 
-/obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
+/obj/item/clothing/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
 	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
@@ -121,25 +138,33 @@
 	desc = "Protects your hearing from loud noises, and quiet ones as well."
 	icon_state = "earmuffs"
 	item_state = "earmuffs"
+	icon = 'icons/obj/items/radio.dmi'
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
+	)
 	flags_equip_slot = SLOT_EAR
 	clothing_traits = list(TRAIT_EAR_PROTECTION)
+	black_market_value = 20
 
 /obj/item/clothing/ears/earmuffs/New()
 	. = ..()
 
-	LAZYADD(objects_of_interest, src)
+	LAZYADD(GLOB.objects_of_interest, src)
 
 /obj/item/clothing/ears/earmuffs/Destroy()
 	. = ..()
 
-	LAZYREMOVE(objects_of_interest, src)
+	LAZYREMOVE(GLOB.objects_of_interest, src)
 
 
 ///////////////////////////////////////////////////////////////////////
 //Suit
 /obj/item/clothing/suit
-	icon = 'icons/obj/items/clothing/suits.dmi'
 	name = "suit"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
 	var/fire_resist = T0C+100
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	allowed = list(
@@ -162,6 +187,10 @@
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_0.dmi')
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
+	)
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -183,13 +212,6 @@
 			return 0
 	return 1
 
-/obj/item/clothing/suit/proc/get_collar()
-	var/icon/C = new('icons/mob/humans/onmob/collar.dmi')
-	if(icon_state in C.IconStates())
-		var/image/I = image(C, icon_state)
-		I.color = color
-		return I
-
 /////////////////////////////////////////////////////////
 //Gloves
 /obj/item/clothing/gloves
@@ -197,12 +219,18 @@
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	w_class = SIZE_SMALL
 	icon = 'icons/obj/items/clothing/gloves.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/gloves_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/gloves_righthand.dmi',
+	)
 	siemens_coefficient = 0.50
 	var/wired = 0
 	var/obj/item/cell/cell = 0
 	flags_armor_protection = BODY_FLAG_HANDS
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
+	valid_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R) // To prevent infinitely putting watches/wrist accessories on your gloves. That can be reserved for uniforms, where you have the whole ARM to put shit on
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 	blood_overlay_type = "hands"
 	var/gloves_blood_amt = 0 //taken from blood.dm
@@ -214,6 +242,7 @@
 		M.update_inv_gloves()
 
 /obj/item/clothing/gloves/emp_act(severity)
+	. = ..()
 	if(cell)
 		//why is this not part of the powercell code?
 		cell.charge -= 1000 / severity
@@ -221,10 +250,9 @@
 			cell.charge = 0
 		if(cell.reliability != 100 && prob(50/severity))
 			cell.reliability -= 10 / severity
-	..()
 
 // Called just before an attack_hand(), in mob/UnarmedAttack()
-/obj/item/clothing/gloves/proc/Touch(var/atom/A, var/proximity)
+/obj/item/clothing/gloves/proc/Touch(atom/A, proximity)
 	return 0 // return 1 to cancel attack_hand()
 
 
@@ -232,10 +260,14 @@
 //Mask
 /obj/item/clothing/mask
 	name = "mask"
-	icon = 'icons/obj/items/clothing/masks.dmi'
+	icon = 'icons/obj/items/clothing/masks/masks.dmi'
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	blood_overlay_type = "mask"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
+	)
 	var/anti_hug = 0
 
 /obj/item/clothing/mask/update_clothing_icon()
@@ -265,7 +297,7 @@
 	else
 		var/list/nicename = null
 		var/list/tankcheck = null
-		var/breathes = "oxygen"    //default, we'll check later
+		var/breathes = "oxygen" //default, we'll check later
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			breathes = H.species.breath_type
@@ -276,7 +308,7 @@
 			tankcheck = list(C.r_hand, C.l_hand, C.back)
 		var/best = 0
 		var/bestpressure = 0
-		for(var/i=1, i<tankcheck.len+1, ++i)
+		for(var/i=1, i<length(tankcheck)+1, ++i)
 			if(istype(tankcheck[i], /obj/item/tank))
 				var/obj/item/tank/t = tankcheck[i]
 				var/goodtank
@@ -325,47 +357,97 @@
 	siemens_coefficient = 0.9
 	flags_armor_protection = BODY_FLAG_FEET
 	flags_equip_slot = SLOT_FEET
-	permeability_coefficient = 0.50
+
 	slowdown = SHOES_SLOWDOWN
 	blood_overlay_type = "feet"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/boots_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/boots_righthand.dmi'
+	)
+	/// The currently inserted item.
 	var/obj/item/stored_item
-	var/list/items_allowed
+	/// List of item types that can be inserted.
+	var/list/allowed_items_typecache
+	/// An item which should be inserted when the shoes are spawned.
+	var/obj/item/spawn_item_type
 	var/shoes_blood_amt = 0
 
+/obj/item/clothing/shoes/Initialize(mapload, ...)
+	. = ..()
+	if(allowed_items_typecache)
+		allowed_items_typecache = typecacheof(allowed_items_typecache)
+	if(spawn_item_type)
+		_insert_item(new spawn_item_type(src))
+
+/// Returns a boolean indicating if `item_to_insert` can be inserted into the shoes.
+/obj/item/clothing/shoes/proc/can_be_inserted(obj/item/item_to_insert)
+	// If the shoes can't actually hold an item.
+	if(allowed_items_typecache == null)
+		return FALSE
+	// If there's already an item inside.
+	if(stored_item)
+		return FALSE
+	// If `item_to_insert` isn't in the whitelist.
+	if(!is_type_in_typecache(item_to_insert, allowed_items_typecache))
+		return FALSE
+	// If all of those passed, `item_to_insert` can be inserted.
+	return TRUE
+
+/**
+ * Try to insert `item_to_insert` into the shoes.
+ *
+ * Returns `TRUE` if it succeeded, or `FALSE` if [/obj/item/clothing/shoes/proc/can_be_inserted] failed, or `user` couldn't drop the item.
+ */
+/obj/item/clothing/shoes/proc/attempt_insert_item(mob/user, obj/item/item_to_insert)
+	if(!can_be_inserted(item_to_insert))
+		return FALSE
+	// Try to drop the item and place it inside `src`.
+	if(!user.drop_inv_item_to_loc(item_to_insert, src))
+		return FALSE
+	_insert_item(item_to_insert)
+	to_chat(user, SPAN_NOTICE("You slide [item_to_insert] into [src]."))
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+	return TRUE
+
+/// Insert `item_to_insert` directly into the shoes without bothering with any checks.
+/// (In the majority of cases [/obj/item/clothing/shoes/proc/attempt_insert_item()] should be used instead of this.)
+/obj/item/clothing/shoes/proc/_insert_item(obj/item/item_to_insert)
+	PROTECTED_PROC(TRUE)
+	stored_item = item_to_insert
+	update_icon()
+
+/// Remove `stored_item` from the shoes, and place it into the `user`'s active hand.
+/obj/item/clothing/shoes/proc/remove_item(mob/user)
+	if(!stored_item || !user.put_in_active_hand(stored_item))
+		return
+	to_chat(user, SPAN_NOTICE("You slide [stored_item] out of [src]."))
+	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+	stored_item = null
+	update_icon()
+
 /obj/item/clothing/shoes/update_clothing_icon()
-	if (ismob(src.loc))
-		var/mob/M = src.loc
-		M.update_inv_shoes()
+	if(ismob(loc))
+		var/mob/user = loc
+		user.update_inv_shoes()
 
 /obj/item/clothing/shoes/Destroy()
-	if(stored_item)
-		qdel(stored_item)
-		stored_item = null
+	QDEL_NULL(stored_item)
+	return ..()
+
+/obj/item/clothing/shoes/get_examine_text(mob/user)
 	. = ..()
+	if(stored_item)
+		. += "\nIt is storing \a [stored_item]."
 
-/obj/item/clothing/shoes/attack_hand(var/mob/living/M)
-	if(stored_item && src.loc == M && !M.is_mob_incapacitated()) //Only allow someone to take out the stored_item if it's being worn or held. So you can pick them up off the floor
-		if(M.put_in_active_hand(stored_item))
-			to_chat(M, SPAN_NOTICE("You slide [stored_item] out of [src]."))
-			playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-			stored_item = 0
-			update_icon()
-			desc = initial(desc)
-		return
-	..()
+/obj/item/clothing/shoes/attack_hand(mob/living/user)
+	// Only allow someone to take out the `stored_item` if it's being worn or held, so that you can pick them up off the floor.
+	if(!stored_item || loc != user || user.is_mob_incapacitated())
+		return ..()
+	remove_item(user)
 
-/obj/item/clothing/shoes/attackby(var/obj/item/I, var/mob/living/M)
-	if(items_allowed && items_allowed.len)
-		for (var/i in items_allowed)
-			if(istype(I, i))
-				if(stored_item)	return
-				stored_item = I
-				M.drop_inv_item_to_loc(I, src)
-				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
-				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
-				update_icon()
-				desc = initial(desc) + "\nIt is storing \a [stored_item]."
-				break
+/obj/item/clothing/shoes/attackby(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	attempt_insert_item(user, attacking_item)
 
 /obj/item/clothing/equipped(mob/user, slot, silent)
 	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?
@@ -388,9 +470,14 @@
 		return S.hold
 	return null
 
-/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+/obj/item/clothing/clicked(mob/user, list/mods)
+	if(mods[ALT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		for(var/V in verbs)
+			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
+				return
+
 	var/obj/item/storage/internal/pockets = get_pockets()
-	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+	if(pockets && !mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		pockets.open(user)
 		return TRUE
 

@@ -1,4 +1,4 @@
-/datum/hud/human/yautja/draw_locator_spot(var/datum/custom_hud/ui_datum)
+/datum/hud/human/yautja/draw_locator_spot(datum/custom_hud/ui_datum)
 	pred_power_icon = new /atom/movable/screen()
 	pred_power_icon.icon = 'icons/mob/hud/hud_yautja.dmi'
 	pred_power_icon.icon_state = "powerbar10"
@@ -6,6 +6,9 @@
 	pred_power_icon.screen_loc = ui_predator_power
 	infodisplay += pred_power_icon
 
+/mob/living/carbon/human/yautja
+	skin_color = "tan"
+	body_type = "pred"
 
 /mob/living/carbon/human/yautja/create_hud()
 	if(client && !hud_used)

@@ -2,8 +2,8 @@
 
 /obj/structure/machinery/computer/operating
 	name = "Operating Computer"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	icon_state = "operating"
 	circuit = /obj/item/circuitboard/computer/operating
 	var/mob/living/carbon/human/victim = null
@@ -41,7 +41,7 @@
 
 	user.set_interaction(src)
 	var/dat = "<HEAD><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
-	dat += "<A HREF='?src=\ref[user];mach_close=op'>Close</A><br><br>" //| <A HREF='?src=\ref[user];update=1'>Update</A>"
+	dat += "<A href='byond://?src=\ref[user];mach_close=op'>Close</A><br><br>" //| <A href='byond://?src=\ref[user];update=1'>Update</A>"
 	if(src.table && src.table.buckled_mob)
 		src.victim = src.table.buckled_mob
 		dat += {"

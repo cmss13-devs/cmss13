@@ -6,7 +6,7 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH)
 
-/obj/structure/pipes/standard/simple/color_cache_name(var/obj/structure/pipes/node)
+/obj/structure/pipes/standard/simple/color_cache_name(obj/structure/pipes/node)
 	return node.pipe_color
 
 /obj/structure/pipes/standard/simple/Initialize()
@@ -35,7 +35,7 @@
 	else if(dir == 12)
 		setDir(EAST)
 
-/obj/structure/pipes/standard/simple/update_icon(var/safety = 0)
+/obj/structure/pipes/standard/simple/update_icon(safety = 0)
 	..()
 
 	if(!check_icon_cache())
@@ -83,7 +83,7 @@
 
 /obj/structure/pipes/standard/simple/hidden
 	icon_state = "intact"
-	alpha = 128		//set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
+	alpha = 128 //set for the benefit of mapping - this is reset to opaque when the pipe is spawned in game
 
 /obj/structure/pipes/standard/simple/hidden/update_icon()
 	level = 1
@@ -104,6 +104,11 @@
 	layer = ATMOS_PIPE_SUPPLY_LAYER
 	color = PIPE_COLOR_BLUE
 
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom
+	name = "Reinforced Air supply pipe"
+	explodey = FALSE
+	color = PIPE_COLOR_PURPLE
+
 /obj/structure/pipes/standard/simple/hidden/yellow
 	color = PIPE_COLOR_YELLOW
 
@@ -116,6 +121,8 @@
 /obj/structure/pipes/standard/simple/hidden/purple
 	color = PIPE_COLOR_PURPLE
 
+/obj/structure/pipes/standard/simple/hidden/dark
+	color = PIPE_COLOR_DARKGREY
 
 /obj/structure/pipes/standard/simple/insulated
 	icon = 'icons/obj/pipes/red_pipe.dmi'

@@ -1,10 +1,10 @@
 
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
-/mob/living/proc/getarmor(var/def_zone, var/type)
+/mob/living/proc/getarmor(def_zone, type)
 	return 0
 
 //Handles the effects of "stun" weapons
-/mob/living/proc/stun_effect_act(var/stun_amount, var/agony_amount, var/def_zone, var/used_weapon=null)
+/mob/living/proc/stun_effect_act(stun_amount, agony_amount, def_zone, used_weapon=null)
 	flash_pain()
 
 	if (stun_amount)
@@ -18,14 +18,14 @@
 		apply_effect(STUTTER, agony_amount/10)
 		apply_effect(EYE_BLUR, agony_amount/10)
 
-/mob/living/proc/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0)
+/mob/living/proc/electrocute_act(shock_damage, obj/source, siemens_coeff = 1.0)
 	return 0 //only carbon liveforms have this proc
 
 /mob/living/emp_act(severity)
+	. = ..()
 	var/list/L = src.get_contents()
 	for(var/obj/O in L)
 		O.emp_act(severity)
-	..()
 
 //this proc handles being hit by a thrown atom
 /mob/living/hitby(atom/movable/AM)
@@ -40,8 +40,10 @@
 	var/impact_damage = (1 + O.throwforce*THROWFORCE_COEFF)*O.throwforce*THROW_SPEED_IMPACT_COEFF*O.cur_speed
 
 	var/datum/launch_metadata/LM = O.launch_metadata
+	var/launch_meta_valid = istype(LM)
+
 	var/dist = 2
-	if(istype(LM))
+	if(launch_meta_valid)
 		dist = LM.dist
 	var/miss_chance = min(15*(dist - 2), 0)
 
@@ -62,10 +64,10 @@
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, falloff = 2)
 
-	O.throwing = 0		//it hit, so stop moving
+	O.throwing = 0 //it hit, so stop moving
 
 	var/mob/M
-	if(ismob(LM.thrower))
+	if(launch_meta_valid && ismob(LM.thrower))
 		M = LM.thrower
 		if(damage_done > 5)
 			M.track_hit(initial(O.name))
@@ -73,19 +75,24 @@
 				M.track_friendly_fire(initial(O.name))
 		var/client/assailant = M.client
 		if(assailant)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with a [O], thrown by [key_name(M)]</font>")
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been hit with \a [O], thrown by [key_name(M)]</font>")
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
-				msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+				if(src.loc)
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+				else
+					msg_admin_attack("[key_name(src)] was hit by \a [O], thrown by [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 	if(last_damage_source)
 		last_damage_data = create_cause_data(last_damage_source, M)
 
-/mob/living/mob_launch_collision(var/mob/living/L)
-	L.Move(get_step_away(L, src))
+/mob/living/mob_launch_collision(mob/living/L)
+	if(!L.anchored)
+		L.Move(get_step_away(L, src))
 
-/mob/living/obj_launch_collision(var/obj/O)
+/mob/living/obj_launch_collision(obj/O)
 	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
+	var/launch_meta_valid = istype(LM)
+	if(!rebounding && (!launch_meta_valid || LM.thrower != src))
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
@@ -93,9 +100,10 @@
 	..()
 
 //This is called when the mob or human is thrown into a dense turf or wall
-/mob/living/turf_launch_collision(var/turf/T)
+/mob/living/turf_launch_collision(turf/T)
 	var/datum/launch_metadata/LM = launch_metadata
-	if(!rebounding && LM.thrower != src)
+	var/launch_meta_valid = istype(LM)
+	if(!rebounding && (!launch_meta_valid || LM.thrower != src))
 		if(LM.thrower)
 			last_damage_data = create_cause_data("wall tossing", LM.thrower)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
@@ -104,7 +112,7 @@
 		playsound(T,"slam", 50, 1)
 	..()
 
-/mob/living/proc/near_wall(var/direction,var/distance=1)
+/mob/living/proc/near_wall(direction, distance=1)
 	var/turf/T = get_step(get_turf(src),direction)
 	var/turf/last_turf = src.loc
 	var/i = 1
@@ -138,14 +146,13 @@
 /mob/living/carbon/human/IgniteMob()
 	. = ..()
 	if((. & IGNITE_IGNITED) && !stat && pain.feels_pain)
-		INVOKE_ASYNC(src, /mob.proc/emote, "scream")
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "scream")
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
 		on_fire = FALSE
 		fire_stacks = 0
 		update_fire()
-		SetLuminosity(0)
 		return TRUE
 	return FALSE
 
@@ -156,7 +163,7 @@
 /mob/living/proc/update_fire()
 	return
 
-/mob/living/proc/adjust_fire_stacks(add_fire_stacks, var/datum/reagent/R, var/min_stacks = MIN_FIRE_STACKS) //Adjusting the amount of fire_stacks we have on person
+/mob/living/proc/adjust_fire_stacks(add_fire_stacks, datum/reagent/R, min_stacks = MIN_FIRE_STACKS) //Adjusting the amount of fire_stacks we have on person
 	if(R)
 		if( \
 			!on_fire || !fire_reagent || \
@@ -172,7 +179,7 @@
 	switch(fire_reagent.fire_type)
 		if(FIRE_VARIANT_TYPE_B)
 			max_stacks = 10 //Armor Shredding Greenfire caps at 1 resist/pat
-	fire_stacks = Clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
+	fire_stacks = clamp(fire_stacks + add_fire_stacks, min_stacks, max_stacks)
 
 	if(on_fire && fire_stacks <= 0)
 		ExtinguishMob()
@@ -185,7 +192,7 @@
 		return TRUE
 	if(fire_stacks > 0)
 		adjust_fire_stacks(-0.5, min_stacks = 0) //the fire is consumed slowly
-	if(current_weather_effect_type)
+	if(current_weather_effect_type && SSweather && SSweather.weather_event_instance)
 		adjust_fire_stacks(-SSweather.weather_event_instance.fire_smothering_strength, min_stacks = 0)
 
 /mob/living/fire_act()
@@ -200,11 +207,11 @@
 
 //Mobs on Fire end
 
-/mob/living/proc/handle_weather(var/delta_time = 1)
+/mob/living/proc/handle_weather(delta_time = 1)
 	var/starting_weather_type = current_weather_effect_type
 	var/area/area = get_area(src)
 	// Check if we're supposed to be something affected by weather
-	if(!SSweather.weather_event_instance || !SSweather.map_holder.should_affect_area(area))
+	if(!SSweather.weather_event_instance || !SSweather.map_holder.should_affect_area(area) || !area.weather_enabled)
 		current_weather_effect_type = null
 	else
 		current_weather_effect_type = SSweather.weather_event_type
@@ -216,7 +223,7 @@
 		else
 			clear_fullscreen("weather")
 
-/mob/living/handle_flamer_fire(obj/flamer_fire/fire, var/damage, var/delta_time)
+/mob/living/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	. = ..()
 	fire.set_on_fire(src)
 

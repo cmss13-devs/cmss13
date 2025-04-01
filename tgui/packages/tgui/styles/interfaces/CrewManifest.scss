@@ -1,0 +1,63 @@
+@use 'sass:string';
+@use '../colors.scss';
+
+$departmental-colors: (
+  'Command': hsl(220, 84%, 41%),
+  'Auxiliary': hsl(220, 69%, 60%),
+  'Marines': hsl(81, 44%, 41%),
+  'Alpha': hsl(0, 72%, 50%),
+  'Bravo': hsl(39, 85%, 42%),
+  'Charlie': hsl(300, 33%, 50%),
+  'Delta': hsl(203, 100%, 41%),
+  'Echo': hsl(143, 41%, 48%),
+  'Foxtrot': hsl(22, 38%, 44%),
+  'Intel': hsl(142, 92%, 30%),
+  'Security': hsl(0, 62%, 41%),
+  'Engineering': hsl(32, 78%, 44%),
+  'Requisitions': hsl(28, 34%, 45%),
+  'Medical': hsl(137, 48%, 41%),
+  'Miscellaneous': hsl(0, 0%, 61%),
+);
+
+$status-colors: (
+  'active': colors.$green,
+  'inactive': colors.$orange,
+  'ssd': colors.$yellow,
+  'unfit': colors.$pink,
+  'disabled': colors.$grey,
+  'deceased': colors.$red,
+);
+
+.row-even {
+  background-color: hsla(0, 0%, 50%, 0.1); // Light background for even rows
+}
+
+.row-odd {
+  background-color: hsla(0, 0%, 0%, 0.1); // Dark background for odd rows
+}
+
+@each $dept, $color in $departmental-colors {
+  .text-dept-#{string.to-lower-case($dept)} {
+    color: $color !important;
+  }
+  .bg-dept-#{string.to-lower-case($dept)} {
+    background-color: $color !important;
+  }
+  .border-dept-#{string.to-lower-case($dept)} {
+    border-color: $color !important;
+    .Section {
+      &__title {
+        border-color: $color;
+      }
+      &__titleText {
+        color: $color;
+      }
+    }
+  }
+}
+
+@each $status, $color in $status-colors {
+  .manifest-indicator-#{$status} {
+    color: $color !important;
+  }
+}

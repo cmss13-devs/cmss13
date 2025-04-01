@@ -21,8 +21,13 @@
 	// Tracked information
 	var/dist = 0
 
+/datum/launch_metadata/Destroy(force, ...)
+	target = null
+	thrower = null
+	return ..()
 
-/datum/launch_metadata/proc/get_collision_callbacks(var/atom/A)
+
+/datum/launch_metadata/proc/get_collision_callbacks(atom/A)
 	var/highest_matching = null
 	var/list/matching = list()
 
@@ -49,6 +54,16 @@
 			matching_procs += collision_callbacks[path]
 		return matching_procs
 
+/// Invoke end_throw_callbacks on this metadata.
+/// Takes argument of type /atom/movable
+/datum/launch_metadata/proc/invoke_end_throw_callbacks(atom/movable/movable_atom)
+	if(length(end_throw_callbacks))
+		for(var/datum/callback/callback as anything in end_throw_callbacks)
+			if(istype(callback, /datum/callback/dynamic))
+				callback.Invoke(movable_atom)
+			else
+				callback.Invoke()
+
 /atom/movable/var/datum/launch_metadata/launch_metadata = null
 
 //called when src is thrown into hit_atom
@@ -56,7 +71,7 @@
 	if (isnull(launch_metadata))
 		CRASH("launch_impact called without any stored metadata")
 
-	var/list/collision_callbacks = launch_metadata.get_collision_callbacks(hit_atom)
+	var/list/collision_callbacks = launch_metadata?.get_collision_callbacks(hit_atom)
 	if (islist(collision_callbacks))
 		for(var/datum/callback/CB as anything in collision_callbacks)
 			if(istype(CB, /datum/callback/dynamic))
@@ -75,31 +90,31 @@
 	throwing = FALSE
 	rebounding = FALSE
 
-/atom/movable/proc/mob_launch_collision(var/mob/living/L)
+/atom/movable/proc/mob_launch_collision(mob/living/L)
 	if (!rebounding)
 		L.hitby(src)
 
-/atom/movable/proc/obj_launch_collision(var/obj/O)
-	if (!O.anchored && !rebounding && !isXeno(src))
+/atom/movable/proc/obj_launch_collision(obj/O)
+	if (!O.anchored && !rebounding && !isxeno(src))
 		O.Move(get_step(O, dir))
 	else if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
-		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
 	if (!rebounding)
 		O.hitby(src)
 
-/atom/movable/proc/turf_launch_collision(var/turf/T)
+/atom/movable/proc/turf_launch_collision(turf/T)
 	if (!rebounding && rebounds)
 		var/oldloc = loc
 		var/launched_speed = cur_speed
-		addtimer(CALLBACK(src, .proc/rebound, oldloc, launched_speed), 0.5)
+		addtimer(CALLBACK(src, PROC_REF(rebound), oldloc, launched_speed), 0.5)
 
 	if (!rebounding)
 		T.hitby(src)
 
-/atom/movable/proc/rebound(var/oldloc, var/launched_speed)
+/atom/movable/proc/rebound(oldloc, launched_speed)
 	if (loc == oldloc)
 		rebounding = TRUE
 		var/datum/launch_metadata/LM = new()
@@ -111,11 +126,11 @@
 
 		launch_towards(LM)
 
-/atom/movable/proc/try_to_throw(var/mob/living/user)
+/atom/movable/proc/try_to_throw(mob/living/user)
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
@@ -130,14 +145,26 @@
 	LM.speed = speed
 	LM.thrower = thrower
 	LM.spin = spin
+	if(end_throw_callbacks)
+		LM.end_throw_callbacks = end_throw_callbacks
+	if(collision_callbacks)
+		LM.collision_callbacks = collision_callbacks
 
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
 		return
 
-	launch_towards(LM)
+	flags_atom |= NO_ZFALL
+
+	launch_towards(LM, tracking)
+
+	flags_atom &= ~NO_ZFALL
+	var/turf/end_turf = get_turf(src)
+	if(end_turf)
+		end_turf.on_throw_end(src)
+
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(var/datum/launch_metadata/LM)
+/atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE)
 	if (!istype(LM))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!LM.target || !src)
@@ -155,7 +182,7 @@
 		animation_spin(5, 1 + min(1, LM.range/20))
 
 	var/old_speed = cur_speed
-	cur_speed = Clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
+	cur_speed = clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
 	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
 	var/pass_flags = LM.pass_flags
 
@@ -164,7 +191,7 @@
 	add_temp_pass_flags(pass_flags)
 
 	var/turf/start_turf = get_step_towards(src, LM.target)
-	var/list/turf/path = getline2(start_turf, LM.target)
+	var/list/turf/path = get_line(start_turf, LM.target)
 	var/last_loc = loc
 
 	var/early_exit = FALSE
@@ -195,15 +222,26 @@
 				if(A == LM.target)
 					hit_atom = A
 					break
+			if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
+				hit_atom = LM.target
 		launch_impact(hit_atom)
 	if (loc)
 		throwing = FALSE
 		rebounding = FALSE
 		cur_speed = old_speed
 		remove_temp_pass_flags(pass_flags)
-		if(length(LM.end_throw_callbacks))
-			for(var/datum/callback/CB as anything in LM.end_throw_callbacks)
-				if(istype(CB, /datum/callback/dynamic))
-					CB.Invoke(src)
-				else
-					CB.Invoke()
+		LM.invoke_end_throw_callbacks(src)
+	QDEL_NULL(launch_metadata)
+
+/atom/movable/proc/throw_random_direction(range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS)
+	var/throw_direction = pick(CARDINAL_ALL_DIRS)
+
+	var/turf/furthest_turf = get_turf(src)
+	var/turf/temp_turf = get_turf(src)
+	for (var/x in 1 to range)
+		temp_turf = get_step(furthest_turf, throw_direction)
+		if (!temp_turf)
+			break
+		furthest_turf = temp_turf
+
+	throw_atom(furthest_turf, range, speed, thrower, spin, launch_type, pass_flags)

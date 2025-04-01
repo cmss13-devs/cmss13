@@ -1,17 +1,17 @@
 /*
- *	These absorb the functionality of the plant bag, ore satchel, etc.
- *	They use the use_to_pickup, quick_gather, and quick_empty functions
- *	that were already defined in weapon/storage, but which had been
- *	re-implemented in other classes.
+ * These absorb the functionality of the plant bag, ore satchel, etc.
+ * They use the use_to_pickup, quick_gather, and quick_empty functions
+ * that were already defined in weapon/storage, but which had been
+ * re-implemented in other classes.
  *
- *	Contains:
- *		Trash Bag
- *		Mining Satchel
- *		Plant Bag
- *		Sheet Snatcher
- *		Cash Bag
+ * Contains:
+ * Trash Bag
+ * Mining Satchel
+ * Plant Bag
+ * Sheet Snatcher
+ * Cash Bag
  *
- *	-Sayu
+ * -Sayu
  */
 
 //  Generic non-item
@@ -20,37 +20,48 @@
 	flags_equip_slot = SLOT_WAIST
 
 // -----------------------------
-//          Trash bag
+//   Trash bag
 // -----------------------------
 /obj/item/storage/bag/trash
 	name = "trash bag"
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
 	icon = 'icons/obj/janitor.dmi'
-	icon_state = "trashbag0"
-	item_state = "trashbag"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
+	icon_state = "trashbag"
 
 	w_class = SIZE_LARGE
-	max_w_class = SIZE_SMALL
-	storage_slots = 21
+	max_w_class = SIZE_MEDIUM
+	storage_slots = null
+	max_storage_space = 21 //equivalent to an IMP backpack
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
+	flags_equip_slot = NONE
 
-/obj/item/storage/bag/trash/update_icon()
-	if(contents.len == 0)
-		icon_state = "trashbag0"
-	else if(contents.len < 12)
-		icon_state = "trashbag1"
-	else if(contents.len < 21)
-		icon_state = "trashbag2"
-	else icon_state = "trashbag3"
+/obj/item/storage/bag/trash/update_icon(mob/living/carbon/human/user)
+	var/sum_storage_cost = 0
+	for(var/obj/item/item in contents)
+		sum_storage_cost += item.get_storage_cost()
 
-/obj/item/storage/bag/trash/open(mob/user)
-	return
+	if(!sum_storage_cost)
+		icon_state = "trashbag_empty"
+		item_state = "trashbag_empty"
+	else if(sum_storage_cost < floor(max_storage_space * 0.35))
+		icon_state = "trashbag_small"
+		item_state = "trashbag_small"
+	else if(sum_storage_cost < floor(max_storage_space * 0.7))
+		icon_state = "trashbag_mid"
+		item_state = "trashbag_mid"
+	else
+		icon_state = "trashbag_full"
+		item_state = "trashbag_full"
 
 // -----------------------------
-//        Plastic Bag
+// Plastic Bag
 // -----------------------------
 
 /obj/item/storage/bag/plasticbag
@@ -64,10 +75,10 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/throwing_knife)
 
 // -----------------------------
-//        Mining Satchel
+// Mining Satchel
 // -----------------------------
 
 /obj/item/storage/bag/ore
@@ -85,11 +96,11 @@
 
 
 // -----------------------------
-//          Plant bag
+//   Plant bag
 // -----------------------------
 
 /obj/item/storage/bag/plants
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "plantbag"
 	name = "Plant Bag"
 	storage_slots = 50; //the number of plant pieces it can carry.
@@ -100,12 +111,12 @@
 	can_hold = list(
 		/obj/item/reagent_container/food/snacks/grown,
 		/obj/item/seeds,
-		/obj/item/grown
+		/obj/item/grown,
 	)
 
 
 // -----------------------------
-//        Sheet Snatcher
+// Sheet Snatcher
 // -----------------------------
 // Because it stacks stacks, this doesn't operate normally.
 // However, making it a storage/bag allows us to reuse existing code in some places. -Sayu
@@ -124,7 +135,7 @@
 /obj/item/storage/bag/sheetsnatcher/Initialize()
 	. = ..()
 
-/obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
+/obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
 	if(!istype(W,/obj/item/stack/sheet) || istype(W,/obj/item/stack/sheet/mineral/sandstone) || istype(W,/obj/item/stack/sheet/wood))
 		if(!stop_messages)
 			to_chat(usr, "The snatcher does not accept [W].")
@@ -142,7 +153,8 @@
 // Modified handle_item_insertion & _item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	var/amount
 	var/inserted = 0
@@ -156,7 +168,7 @@
 
 	for(var/obj/item/stack/sheet/sheet in contents)
 		if(S.type == sheet.type) // we are violating the amount limitation because these are not sane objects
-			sheet.amount += amount	// they should only be removed through procs in this file, which split them up.
+			sheet.amount += amount // they should only be removed through procs in this file, which split them up.
 			S.amount -= amount
 			inserted = 1
 			break
@@ -183,7 +195,7 @@
 //Turned numbered display on. Appears to work as intended, despite above comment -- Vanagandr.
 
 /obj/item/storage/bag/sheetsnatcher/orient2hud()
-	var/adjusted_contents = contents.len
+	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
@@ -199,13 +211,13 @@
 	var/row_num = 0
 	var/col_count = min(7,storage_slots) -1
 	if (adjusted_contents > 7)
-		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+		row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 	slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
 
 // Modified quick_empty verb drops appropriate sized stacks
-/obj/item/storage/bag/sheetsnatcher/empty(var/mob/user)
+/obj/item/storage/bag/sheetsnatcher/empty(mob/user)
 	var/location = get_turf(src)
 	for(var/obj/item/stack/sheet/S in contents)
 		while(S.amount)
@@ -221,7 +233,8 @@
 // modified remove_from_storage and _item_removal.
 /obj/item/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	//I would prefer to drop a new stack, but the item/attack_hand code
 	// that calls this can't receive a different object than you clicked on.
@@ -236,7 +249,7 @@
 	return ..(S,new_location)
 
 // -----------------------------
-//    Sheet Snatcher (Cyborg)
+// Sheet Snatcher (Cyborg)
 // -----------------------------
 
 /obj/item/storage/bag/sheetsnatcher/borg
@@ -245,11 +258,11 @@
 	capacity = 500//Borgs get more because >specialization
 
 // -----------------------------
-//           Cash Bag
+//    Cash Bag
 // -----------------------------
 
 /obj/item/storage/bag/cash
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/bags.dmi'
 	icon_state = "cashbag"
 	name = "Cash bag"
 	desc = "A bag for carrying lots of cash. It's got a big dollar sign printed on the front."

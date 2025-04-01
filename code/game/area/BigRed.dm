@@ -1,10 +1,12 @@
 //Areas for BigRed - Minijar
+// old icon state no longer in use. ("hydro","heads_quarters")
 /area/bigred
 	can_build_special = TRUE
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_BIGRED
 	soundscape_playlist = SCAPE_PL_THUNDER
 	soundscape_interval = 50
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/bigred/ground
 	name = "ground"
@@ -18,6 +20,7 @@
 	name = "\improper Garage Workshop"
 	icon_state = "green"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigred/ground/ship
 	name = "\improper Crashed Vessel"
@@ -26,6 +29,9 @@
 /area/bigred/ground/nexus
 	name = "\improper Central Nexus"
 	icon_state = "hallC1"
+
+/area/bigred/ground/engineering
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/bigred/ground/engineering/engineering_hall
 	name = "\improper Engineering Hallway"
@@ -247,42 +253,52 @@
 	name = "\improper Corporate Saferoom"
 	icon_state = "vault"
 
-/area/bigred/uground/lambda_labs/airlock
-	name = "\improper Lambda Labs Airlock"
+// Lambda areas below:
+
+// Laboratory proper
+/area/bigredv2/caves/lambda
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_ALMAYER
+	sound_environment = SOUND_ENVIRONMENT_ROOM
+	soundscape_playlist = list()
+	minimap_color = MINIMAP_AREA_RESEARCH
+	unoviable_timer = FALSE
+
+/area/bigredv2/caves/lambda/virology
+	name = "\improper Lambda Virology"
+	icon_state = "lam_virology"
+
+/area/bigredv2/caves/lambda/research
+	name = "\improper Lambda Research"
+	icon_state = "lam_research"
+
+/area/bigredv2/caves/lambda/breakroom
+	name = "\improper Lambda Breakroom"
+	icon_state = "lam_break"
+
+/area/bigredv2/caves/lambda/xenobiology
+	name = "\improper Lambda Xenobiology"
+	icon_state = "lam_xeno"
+
+// cave around the laboratory.
+/area/bigredv2/caves_lambda
+	name = "\improper Lambda Lab Caves"
+	icon_state = "caves_lambda"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
+	ceiling_muffle = FALSE
+	ambience_exterior = AMBIENCE_CAVE
+	soundscape_playlist = SCAPE_PL_CAVE
+	base_muffle = MUFFLE_HIGH
+	unoviable_timer = FALSE
+
+// serve for the security checkpoint.
+/area/bigredv2/outside/lambda_cave_cas
+	name = "\improper Lambda Lockdown Caves Entrance"
 	icon_state = "decontamination"
-
-/area/bigred/uground/lambda_labs/lobby
-	name = "\improper Lambda Labs Reception"
-	icon_state = "bluenew"
-
-/area/bigred/uground/lambda_labs/office
-	name = "\improper Lambda Labs Administration"
-	icon_state = "heads_quarters"
-
-/area/bigred/uground/lambda_labs/laser_lab
-	name = "\improper Lambda Laser Laboratory"
-	icon_state = "toxmisc"
-
-/area/bigred/uground/lambda_labs/hydro_office
-	name = "\improper Lambda Labs Bio-Dome"
-	icon_state = "hydro"
-
-/area/bigred/uground/lambda_labs/hydro_lab
-	name = "\improper Lambda Labs Hydrophonics"
-	icon_state = "garden"
-
-/area/bigred/uground/lambda_labs/fridge
-	name = "\improper Lambda Labs Refrigeration"
-	icon_state = "kitchen"
-
-/area/bigred/uground/lambda_labs/maintenance
-	name = "\improper Unknown Area"
-	icon_state = "yellow"
-
-/area/bigred/uground/lambda_labs/maintenance2
-	name = "\improper Unknown Area"
-	icon_state = "blue"
-
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_SEC
 
 //Big Red V2
 /area/bigredv2
@@ -296,8 +312,9 @@
 	ceiling = CEILING_MAX
 	icon = 'icons/turf/area_kutjevo.dmi'
 	icon_state = "oob"
+	requires_power = FALSE
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 	can_build_special = FALSE
 	soundscape_interval = 0
 
@@ -316,8 +333,11 @@
 /area/bigredv2/outside/nw
 	name = "\improper Northwest Colony Grounds"
 	icon_state = "northwest"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	soundscape_playlist = SCAPE_PL_DESERT_STORM
+
+/area/bigredv2/outside/nw/ceiling
+	ceiling = CEILING_GLASS
 
 /area/bigredv2/outside/c
 	name = "\improper Central Colony Grounds"
@@ -332,7 +352,7 @@
 /area/bigredv2/outside/w
 	name = "\improper Western Colony Grounds"
 	icon_state = "west"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/e
 	name = "\improper Eastern Colony Grounds"
@@ -352,7 +372,7 @@
 /area/bigredv2/outside/sw
 	name = "\improper Southwest Colony Grounds"
 	icon_state = "southwest"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	soundscape_playlist = SCAPE_PL_DESERT_STORM
 
 /area/bigredv2/caves
@@ -365,12 +385,13 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
 	base_muffle = MUFFLE_HIGH
+	minimap_color = MINIMAP_AREA_CAVES
 
 /area/bigredv2/caves/mining
 	name = "\improper Southwest Abandoned Mining Caves"
 	icon_state = "bluenew"
 	color = "purple"
-
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves/eta
 	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
@@ -378,6 +399,7 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	sound_environment = SOUND_ENVIRONMENT_ROOM
 	soundscape_playlist = list()
+	unoviable_timer = FALSE
 
 /area/bigredv2/outside/eta
 	name = "\improper Eta Labs Compound"
@@ -405,33 +427,39 @@
 	name = "\improper Cargo"
 	icon_state = "storage"
 	ceiling = CEILING_METAL
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/general_store
 	name = "\improper General Store"
 	icon_state = "blueold"
 	ceiling = CEILING_METAL
-
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/marshal_office
 	name = "\improper Marshal Offices"
 	icon_state = "brig"
 	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/medical
 	name = "\improper Hospital"
 	icon_state = "CMO"
 	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_MEDBAY
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/admin_building
 	name = "\improper Administration"
 	icon_state = "bridge"
 	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/bigredv2/outside/filtration_plant
 	name = "\improper Filtration Plant"
 	icon_state = "atmos"
 	ceiling = CEILING_METAL
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/bigredv2/outside/virology
 	name = "\improper Virology Lab"
@@ -439,6 +467,8 @@
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_MEDIUM
+	minimap_color = MINIMAP_AREA_MEDBAY
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/dorms
 	name = "\improper Dormitories"
@@ -473,52 +503,68 @@
 /area/bigredv2/outside/space_port
 	name = "\improper Space Port"
 	icon_state = "green"
-	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
+	ceiling = CEILING_GLASS
+	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 
 /area/bigredv2/outside/space_port_lz2
 	name = "\improper Cargo Landing Pad"
 	icon_state = "green"
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
+	minimap_color = MINIMAP_AREA_LZ
 
 
 /area/bigredv2/outside/telecomm
 	name = "\improper LZ1 Communications Relay"
 	icon_state = "ass_line"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
+	is_landing_zone = TRUE
 
 /area/bigredv2/outside/telecomm/lz2_cave
 	name = "\improper Central Grounds Communications Relay"
+	is_landing_zone = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/telecomm/n_cave
 	name = "\improper North Cave Communications Relay"
+	is_landing_zone = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/telecomm/warehouse
 	name = "\improper Warehouse Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/security
 	name = "\improper Security Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/store
 	name = "\improper General Store Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/admin
 	name = "\improper Administrative Communications Relay"
+	is_landing_zone = FALSE
 
 /area/bigredv2/outside/telecomm/engi
 	name = "\improper Engineering Communications Relay"
+	is_landing_zone = FALSE
 
 
 /area/bigredv2/outside/engineering
 	name = "\improper Engineering Complex"
 	icon_state = "engine"
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
+
+/area/bigredv2/outside/engineering/reactor
+	name = "\improper Main Reactor"
+	linked_lz = null
 
 /area/bigredv2/outside/storage
 	name = "\improper Storage"
@@ -534,29 +580,6 @@
 	name = "\improper Atmospheric Stabilizer"
 	icon_state = "party"
 	ceiling = CEILING_METAL
-
-/area/bigredv2/caves/lambda
-	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
-	ceiling_muffle = FALSE
-	ambience_exterior = AMBIENCE_ALMAYER
-	sound_environment = SOUND_ENVIRONMENT_ROOM
-	soundscape_playlist = list()
-
-/area/bigredv2/caves/lambda/virology
-	name = "\improper Lambda Virology"
-	icon_state = "lam_virology"
-
-/area/bigredv2/caves/lambda/research
-	name = "\improper Lambda Research"
-	icon_state = "lam_research"
-
-/area/bigredv2/caves/lambda/breakroom
-	name = "\improper Lambda Breakroom"
-	icon_state = "lam_break"
-
-/area/bigredv2/caves/lambda/xenobiology
-	name = "\improper Lambda Xenobiology"
-	icon_state = "lam_xeno"
 
 /area/bigredv2/outside/general_offices
 	name = "\improper General Offices"
@@ -592,6 +615,8 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves_se
 	name = "\improper Southeastern Caves"
@@ -602,6 +627,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves_east
 	name = "\improper Eastern Caves"
@@ -612,16 +638,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
-
-/area/bigredv2/caves_lambda
-	name = "\improper Lambda Lab Caves"
-	icon_state = "caves_lambda"
-	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
-	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
-	ceiling_muffle = FALSE
-	ambience_exterior = AMBIENCE_CAVE
-	soundscape_playlist = SCAPE_PL_CAVE
-	base_muffle = MUFFLE_HIGH
+	unoviable_timer = FALSE
 
 /area/bigredv2/caves_north
 	name = "\improper Northern Caves"
@@ -633,15 +650,16 @@
 	soundscape_playlist = SCAPE_PL_CAVE
 	base_muffle = MUFFLE_HIGH
 
+/area/bigredv2/landing
+	minimap_color = MINIMAP_AREA_LZ
+	icon_state = "tcomsatcham"
+	requires_power = FALSE
+
 /area/bigredv2/landing/console
 	name = "\improper LZ1 'Telecomms'"
-	icon_state = "tcomsatcham"
-	requires_power = 0
 
 /area/bigredv2/landing/console2
 	name = "\improper LZ2 'Cargo'"
-	icon_state = "tcomsatcham"
-	requires_power = 0
 
 //Custom zones for cave CAS removal PR - Sose96
 
@@ -649,28 +667,27 @@
 	name = "\improper Northern Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/lz1_telecomm_cas
 	name = "\improper Virology Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	linked_lz = DROPSHIP_LZ1
 
 /area/bigredv2/outside/lz2_west_cas
 	name = "\improper Southwestern Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/lz2_south_cas
 	name = "\improper ETA Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+	linked_lz = DROPSHIP_LZ2
 
 /area/bigredv2/outside/filtration_cave_cas
 	name = "\improper Filtration Lockdown Caves Entrance"
-	icon_state = "garden"
-	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-
-/area/bigredv2/outside/lambda_cave_cas
-	name = "\improper Lambda Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS

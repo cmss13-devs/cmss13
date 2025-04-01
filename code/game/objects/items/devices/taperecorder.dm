@@ -29,18 +29,17 @@
 	///Seconds under which to warn that the tape is almost up.
 	var/time_left_warning = 60 SECONDS
 
-	///Sound loop that plays when recording or playing back. I will add this in once the MC port is in.
-	//var/datum/looping_sound/tape_recorder_hiss/soundloop
+	var/datum/looping_sound/tape_recorder_hiss/soundloop
 
 /obj/item/device/taperecorder/Initialize(mapload)
 	. = ..()
 	if(starting_tape_type)
 		mytape = new starting_tape_type(src)
-	//soundloop = new(src)
+	soundloop = new(src)
 	update_icon()
 
 /obj/item/device/taperecorder/Destroy()
-	//QDEL_NULL(soundloop)
+	QDEL_NULL(soundloop)
 	QDEL_NULL(mytape)
 	return ..()
 
@@ -50,7 +49,7 @@
 			return SPAN_NOTICE("<b>PLAYING</b>")
 		else
 			var/time = mytape.used_capacity / 10 //deciseconds / 10 = seconds
-			var/mins = round(time / 60)
+			var/mins = floor(time / 60)
 			var/secs = time - mins * 60
 			return SPAN_NOTICE("<b>[mins]</b>m <b>[secs]</b>s")
 	return SPAN_NOTICE("<b>NO TAPE INSERTED</b>")
@@ -68,7 +67,7 @@
 	if(!playing && !recording)
 		icons_available += list("Record" = image(radial_icon_file,"record"))
 		icons_available += list("Play" = image(radial_icon_file,"play"))
-		if(canprint && mytape?.storedinfo.len)
+		if(canprint && length(mytape?.storedinfo))
 			icons_available += list("Print Transcript" = image(radial_icon_file,"print"))
 
 	if(playing || recording)
@@ -77,13 +76,13 @@
 	if(mytape)
 		icons_available += list("Eject" = image(radial_icon_file,"eject"))
 
-/*
+
 /obj/item/device/taperecorder/proc/update_sound()
-	if(!playing && !recording)
+	if(!playing)
 		soundloop.stop()
 	else
 		soundloop.start()
-*/
+
 
 /obj/item/device/taperecorder/attackby(obj/item/I, mob/user, params)
 	if(!mytape && istype(I, /obj/item/tape))
@@ -119,9 +118,9 @@
 	eject(user)
 
 /obj/item/device/taperecorder/clicked(mob/user, list/mods)
-	if(!ishuman(usr))
-		return
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		if(loc == user)
 			play()
 			return TRUE
@@ -169,7 +168,7 @@
 		mytape.timestamp += mytape.used_capacity
 		var/language_known = (M.universal_speak || (speaking && (speaking.name in known_languages)))
 		var/mob_name = language_known ? M.GetVoice() : "Unknown"
-		var/message = language_known ? msg : speaking.scramble(msg)
+		var/message = (!speaking || language_known) ? msg : speaking.scramble(msg)
 		mytape.storedinfo += "\[[time2text(mytape.used_capacity,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
 
 
@@ -191,7 +190,7 @@
 	if(mytape.used_capacity < mytape.max_capacity)
 		recording = TRUE
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] Recording started."))
-		//update_sound()
+		update_sound()
 		update_icon()
 		var/used = mytape.used_capacity //to stop runtimes when you eject the tape
 		var/max = mytape.max_capacity
@@ -227,7 +226,7 @@
 		playing = FALSE
 	time_warned = FALSE
 	update_icon()
-	//update_sound()
+	update_sound()
 
 /obj/item/device/taperecorder/verb/play()
 	set name = "Play Tape"
@@ -242,13 +241,13 @@
 	if(playing)
 		return
 
-	if(mytape.storedinfo.len < 1)
+	if(length(mytape.storedinfo) < 1)
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] Tape has no data."))
 		return
 
 	playing = TRUE
 	update_icon()
-	//update_sound()
+	update_sound()
 	audible_message(SPAN_MAROON("[icon2html(src, usr)] Playback started."))
 	playsound(src, 'sound/items/taperecorder/taperecorder_play.ogg', 50, FALSE)
 	var/used = mytape.used_capacity //to stop runtimes when you eject the tape
@@ -258,15 +257,15 @@
 			break
 		if(playing == FALSE)
 			break
-		if(mytape.storedinfo.len < i)
+		if(length(mytape.storedinfo) < i)
 			audible_message(SPAN_MAROON("[icon2html(src, usr)] End of recording."))
 			break
 
-		var/list/heard = get_mobs_in_view(world_view_size, src)
+		var/list/heard = get_mobs_in_view(GLOB.world_view_size, src)
 		langchat_speech(mytape.storedinfo[i], heard, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 
 		audible_message(SPAN_MAROON("[icon2html(src, usr)] [mytape.storedinfo[i]]"))//We want to display this properly, don't double encode
-		if(mytape.storedinfo.len < i + 1)
+		if(length(mytape.storedinfo) < i + 1)
 			playsleepseconds = 1
 			sleep(1 SECONDS)
 		else
@@ -311,7 +310,7 @@
 	set name = "Print Transcript"
 	set category = "Object"
 
-	if(!mytape.storedinfo.len)
+	if(!length(mytape.storedinfo))
 		return
 	if(!can_use(usr))
 		return
@@ -327,7 +326,7 @@
 	playsound(src, 'sound/items/taperecorder/taperecorder_print.ogg', 50, FALSE)
 	var/obj/item/paper/sheet_of_paper = new /obj/item/paper(get_turf(src))
 	var/t1 = "<B>Transcript:</B><BR><BR>"
-	for(var/i in 1 to mytape.storedinfo.len)
+	for(var/i in 1 to length(mytape.storedinfo))
 		t1 += "[mytape.storedinfo[i]]<BR>"
 	sheet_of_paper.info = t1
 	var/tapename = mytape.name
@@ -369,8 +368,12 @@
 	var/unspooled = FALSE
 	var/list/icons_available = list()
 	var/radial_icon_file = 'icons/mob/radial_tape.dmi'
-	var/list/cassette_colours = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
+	var/list/cassette_colors = list("blue", "gray", "green", "orange", "pink_stripe", "purple", "rainbow", "red_black", "red_stripe", "camo", "rising_sun", "orange", "blue", "ocean", "aesthetic")
 	var/list/cassette_map_themes = list("solaris", "ice", "lz", "dam", "worstmap")
+	inherent_traits = list(TRAIT_ITEM_RENAME_SPECIAL) //used to make the rename component work specially.
+	///used to store the tape's name for one side and the other side
+	var/flipped_name
+	var/unflipped_name
 
 
 /obj/item/tape/get_examine_text(mob/user)
@@ -379,7 +382,7 @@
 		if(unspooled)
 			. += SPAN_WARNING("It's had all its magnetic tape pulled out! Maybe you can wind it back in with a screwdriver.")
 		else
-			var/used_tape_percent = round((used_capacity / max_capacity)*100)
+			var/used_tape_percent = floor((used_capacity / max_capacity)*100)
 			switch(used_tape_percent)
 				if(0 to 5)
 					. += SPAN_NOTICE("It's unused.")
@@ -410,6 +413,8 @@
 	initial_icon_state = icon_state //random tapes will set this after choosing their icon
 	if(prob(50))
 		tapeflip()
+	flipped_name = name
+	unflipped_name = name
 
 /obj/item/tape/proc/update_available_icons()
 	icons_available = list()
@@ -484,15 +489,19 @@
 
 	if(icon_state == initial_icon_state)
 		icon_state = "cassette_flip"
+		unflipped_name = name
+		name = flipped_name
 	else if(icon_state == "cassette_flip") //so flipping doesn't overwrite an unexpected icon_state (e.g. an admin's)
 		icon_state = initial_icon_state
+		flipped_name = name
+		name = unflipped_name
 
-//Random colour tapes
+//Random color tapes
 /obj/item/tape/random
-	icon_state = "random_tape"
+	icon_state = "cassette_rainbow"
 
 /obj/item/tape/random/Initialize(mapload)
-	icon_state = "cassette_[pick(cassette_colours)]"
+	icon_state = "cassette_[pick(cassette_colors)]"
 	. = ..()
 
 /obj/item/tape/regulation

@@ -1,25 +1,25 @@
 // patient_exam defines
-#define PATIENT_NOT_AWAKE		1
-#define	PATIENT_LOW_BLOOD		2
-#define PATIENT_LOW_NUTRITION	4
+#define PATIENT_NOT_AWAKE 1
+#define PATIENT_LOW_BLOOD 2
+#define PATIENT_LOW_NUTRITION 4
 
 /obj/structure/machinery/optable
 	name = "Operating Table"
 	desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/structures/machinery/surgery.dmi'
 	icon_state = "table2-idle"
-	density = 1
+	density = TRUE
 	layer = TABLE_LAYER
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	climbable = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1
 	active_power_usage = 5
-	var/strapped = 0.0
+	var/strapped = 0
 	can_buckle = TRUE
-	buckle_lying = TRUE
+	buckle_lying = 90
 	var/buckling_y = -4
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_IDEAL //Ideal surface for surgery.
 	var/patient_exam = 0
@@ -38,9 +38,10 @@
 
 /obj/structure/machinery/optable/Destroy()
 	QDEL_NULL(anes_tank)
+	QDEL_NULL(computer)
 	. = ..()
 
-/obj/structure/machinery/optable/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/optable/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
@@ -50,7 +51,7 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				src.density = 0
+				src.density = FALSE
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(50))
 				deconstruct(FALSE)
@@ -58,8 +59,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/structure/machinery/optable/get_examine_text(mob/user)
 	. = ..()
@@ -77,6 +76,14 @@
 		to_chat(user, SPAN_NOTICE("You remove \the [anes_tank] from \the [src]."))
 		anes_tank = null
 
+// Removing marines connected to anesthetic
+/obj/structure/machinery/optable/attack_alien(mob/living/carbon/xenomorph/alien, mob/living/user)
+	if(buckled_mob)
+		to_chat(alien, SPAN_XENONOTICE("You rip the tubes away from the host, releasing it!"))
+		playsound(alien, "alien_claw_flesh", 25, 1)
+		unbuckle(user)
+	else
+		. = ..()
 
 /obj/structure/machinery/optable/buckle_mob(mob/living/carbon/human/H, mob/living/user)
 	if(!istype(H) || !ishuman(user) || H == user || H.buckled || user.action_busy || user.is_mob_incapacitated() || buckled_mob)
@@ -135,7 +142,10 @@
 		var/obj/item/M = H.wear_mask
 		H.drop_inv_item_on_ground(M)
 		qdel(M)
-		H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+		if(ishuman(user)) //Checks for whether a xeno is unbuckling from the operating table
+			H.visible_message(SPAN_NOTICE("[user] turns off the anesthetic and removes the mask from [H]."))
+		else
+			H.visible_message(SPAN_WARNING("The anesthesia mask is ripped away from [H]'s face!"))
 		stop_processing()
 		patient_exam = 0
 		..()
@@ -161,10 +171,6 @@
 	else if(ismob(A))
 		..()
 
-/obj/structure/machinery/optable/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/optable/update_icon()
 	if(inoperable())
 		icon_state = "table2-idle"
@@ -186,7 +192,7 @@
 	// Check for blood
 	if(H.blood_volume < BLOOD_VOLUME_SAFE)
 		if(!(patient_exam & PATIENT_LOW_BLOOD))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [round(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [H.blood_type].")
+			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low blood level: [floor(H.blood_volume / BLOOD_VOLUME_NORMAL * 100)]%. Type: [H.blood_type].")
 			patient_exam |= PATIENT_LOW_BLOOD
 	else
 		patient_exam &= ~PATIENT_LOW_BLOOD
@@ -194,7 +200,7 @@
 	// Check for nutrition
 	if(H.nutrition < NUTRITION_LOW)
 		if(!(patient_exam & PATIENT_LOW_NUTRITION))
-			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [round(H.nutrition / NUTRITION_MAX * 100)]%.")
+			visible_message("[icon2html(src, viewers(src))] <b>The [src] beeps,</b> Warning: Patient has a dangerously low nutrition level: [floor(H.nutrition / NUTRITION_MAX * 100)]%.")
 			patient_exam |= PATIENT_LOW_NUTRITION
 	else
 		patient_exam &= ~PATIENT_LOW_NUTRITION
@@ -214,7 +220,7 @@
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
-		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), \
+		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."),
 			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
 		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)
@@ -275,3 +281,6 @@
 		return FALSE
 
 	return TRUE
+
+/obj/structure/machinery/optable/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

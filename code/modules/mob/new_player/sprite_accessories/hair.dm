@@ -1,5 +1,5 @@
 /datum/sprite_accessory/hair
-	icon = 'icons/mob/humans/human_hair.dmi'	  // default icon for all hairs
+	icon = 'icons/mob/humans/human_hair.dmi'   // default icon for all hairs
 
 /datum/sprite_accessory/hair/crew
 	name = "Crewcut"
@@ -12,7 +12,7 @@
 	gender = MALE
 
 /datum/sprite_accessory/hair/short
-	name = "Short Hair"	  // try to capatilize the names please~
+	name = "Short Hair"   // try to capatilize the names please~
 	icon_state = "hair_shorthair" // you do not need to define _s or _l sub-states, game automatically does this for you
 
 /datum/sprite_accessory/hair/cut
@@ -27,17 +27,9 @@
 	name = "Shoulder-length Hair"
 	icon_state = "hair_long_shoulder"
 
-/datum/sprite_accessory/hair/longalt
-	name = "Shoulder-length Hair Alt"
-	icon_state = "hair_longfringe"
-
 /datum/sprite_accessory/hair/longer
 	name = "Long Hair"
 	icon_state = "hair_vlong"
-
-/datum/sprite_accessory/hair/longeralt
-	name = "Long Hair Alt"
-	icon_state = "hair_vlongfringe"
 
 /datum/sprite_accessory/hair/longest
 	name = "Very Long Hair"
@@ -685,6 +677,16 @@
 	icon_state = "hair_scully2"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/scully2alt
+	name = "Scully 2 Alt"
+	icon_state = "hair_scully2alt"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/ponytail8
+	name = "Ponytail 8"
+	icon_state = "hair_ponytail8"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/chelsea
 	name = "Punk Shave, Chelsea"
 	icon_state = "hair_punk_chelsea"
@@ -716,3 +718,105 @@
 /datum/sprite_accessory/hair/oxton
 	name = "Oxton"
 	icon_state = "hair_oxton"
+
+/datum/sprite_accessory/hair/row_braid
+	name = "Row Braid"
+	icon_state = "hair_row_braid"
+
+/datum/sprite_accessory/hair/croft
+	name = "Croft"
+	icon_state = "hair_croft"
+
+/datum/sprite_accessory/hair/aviator
+	name = "Aviator"
+	icon_state = "hair_aviator"
+
+/datum/sprite_accessory/hair/gantleponytail
+	name = "Gentle Ponytail"
+	icon_state = "hair_gantleponytail"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/edgar
+	name = "Edgar"
+	icon_state = "hair_edgar"
+
+/datum/sprite_accessory/hair/emobun
+	name = "Emo Little Bun"
+	icon_state = "hair_emobun"
+
+/datum/sprite_accessory/hair/taper
+	name = "Taper"
+	icon_state = "hair_taper"
+
+/datum/sprite_accessory/hair/gentlebraid
+	name = "Gentle Braid"
+	icon_state = "hair_braid3"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/close_cut
+	name = "Closecut"
+	icon_state = "hair_close_cut"
+	gender = MALE
+
+/datum/sprite_accessory/hair/shortbangs2
+	name = "Short Bangs 2"
+	icon_state = "hair_short_bangs"
+
+/datum/sprite_accessory/hair/bangs
+	name = "Long Bangs"
+	icon_state = "hair_bangs"
+
+/datum/sprite_accessory/hair/bangsreversed
+	name = "Long Bangs (Reversed)"
+	icon_state = "hair_reversed_bangs"
+
+/datum/sprite_accessory/hair/flowey
+	name = "Flowey Sides"
+	icon_state = "hair_flowey_sides"
+
+/datum/sprite_accessory/hair/twirly
+	name = "Twirly Hair"
+	icon_state = "hair_twirly"
+
+/datum/sprite_accessory/hair/ponytail9
+	name = "Ponytail 9"
+	icon_state = "hair_ponytail_9"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/ponytail10
+	name = "Ponytail 10"
+	icon_state = "hair_top_ponytail"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/firecracker
+	name = "Firecracker"
+	icon_state = "hair_firecracker"
+
+/datum/sprite_accessory/hair/slimtop
+	name = "Slim Top"
+	icon_state = "hair_slim_top"
+	gender = MALE
+
+/datum/sprite_accessory/hair/bun3
+	name = "Double Bun"
+	icon_state = "hair_space_buns"
+
+/datum/sprite_accessory/hair/diagonalbangs
+	name = "Diagonal Bangs"
+	icon_state = "hair_diagonal_bangs"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/bobcutovereye
+	name = "Bobcut Overeye"
+	icon_state = "hair_bobcut_overeye"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/shorthime
+	name = "Hime Cut Short"
+	icon_state = "hair_short_hime"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/emofringe
+	name = "Emo Fringe"
+	icon_state = "hair_emo_fringe"
+	gender = FEMALE

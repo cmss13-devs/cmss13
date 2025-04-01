@@ -1,22 +1,22 @@
 #define HUNTER_BEST_ITEM  pick(\
 								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer), \
-								100; list(/obj/item/weapon/melee/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
-								50; list(/obj/item/weapon/melee/yautja/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
+								100; list(/obj/item/weapon/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
+								50; list(/obj/item/weapon/yautja/chained/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \
-								50; list(/obj/item/clothing/under/marine/veteran/PMC/commando, /obj/item/clothing/suit/storage/marine/veteran/PMC/commando, /obj/item/clothing/gloves/marine/veteran/PMC/commando, /obj/item/clothing/shoes/veteran/PMC/commando, /obj/item/clothing/head/helmet/marine/veteran/PMC/commando), \
-								125; list(/obj/item/weapon/melee/yautja/chain, /obj/item/weapon/melee/yautja/knife, /obj/item/weapon/melee/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
+								50; list(/obj/item/clothing/under/marine/veteran/pmc/commando, /obj/item/clothing/suit/storage/marine/veteran/pmc/commando, /obj/item/clothing/gloves/marine/veteran/pmc/commando, /obj/item/clothing/shoes/veteran/pmc/commando, /obj/item/clothing/head/helmet/marine/veteran/pmc/commando), \
+								125; list(/obj/item/weapon/yautja/chain, /obj/item/weapon/yautja/knife, /obj/item/weapon/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
 								75; list(/obj/item/weapon/gun/revolver/mateba/general, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
-								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/melee/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
+								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
 								)
 
 #define HUNTER_GOOD_ITEM  pick(\
 								50; /obj/item/weapon/shield/riot, \
-								100; /obj/item/weapon/melee/claymore, \
-								100; /obj/item/weapon/melee/katana, \
-								100; /obj/item/weapon/melee/harpoon/yautja, \
-								150; /obj/item/weapon/melee/claymore/mercsword, \
-								200; /obj/item/weapon/melee/claymore/mercsword/machete, \
-								125; /obj/item/weapon/melee/twohanded/fireaxe, \
+								100; /obj/item/weapon/sword, \
+								100; /obj/item/weapon/sword/katana, \
+								100; /obj/item/weapon/harpoon/yautja, \
+								150; /obj/item/weapon/sword, \
+								200; /obj/item/weapon/sword/machete, \
+								125; /obj/item/weapon/twohanded/fireaxe, \
 \
 								100; /obj/item/device/binoculars, \
 \
@@ -24,17 +24,17 @@
 								25; /obj/item/explosive/grenade/flashbang, \
 								25; /obj/item/hunting_trap, \
 								50; /obj/item/explosive/plastic, \
-								100; /obj/item/explosive/grenade/HE, \
-								100; /obj/item/explosive/grenade/HE/frag, \
+								100; /obj/item/explosive/grenade/high_explosive, \
+								100; /obj/item/explosive/grenade/high_explosive/frag, \
 								100; /obj/item/explosive/grenade/incendiary, \
 \
 								170; /obj/item/clothing/suit/armor/vest/security, \
 								165; /obj/item/clothing/head/helmet/riot, \
-								160; /obj/item/clothing/gloves/marine/veteran/PMC, \
+								160; /obj/item/clothing/gloves/marine/veteran/pmc, \
 \
 								50; /obj/item/storage/firstaid/regular, \
 								50; /obj/item/storage/firstaid/fire, \
-								75; /obj/item/storage/box/wy_mre, \
+								75; /obj/item/storage/box/mre/wy, \
 \
 								100; /obj/item/storage/backpack/commando, \
 								100; /obj/item/storage/backpack/yautja, \
@@ -45,17 +45,17 @@
 
 #define HUNTER_OKAY_ITEM  pick(\
 								300; /obj/item/tool/crowbar, \
-								200; /obj/item/weapon/melee/baseballbat, \
-								100; /obj/item/weapon/melee/baseballbat/metal, \
-								100; /obj/item/weapon/melee/butterfly, \
+								200; /obj/item/weapon/baseballbat, \
+								100; /obj/item/weapon/baseballbat/metal, \
+								100; /obj/item/weapon/butterfly, \
 								300; /obj/item/tool/hatchet, \
 								100; /obj/item/tool/scythe, \
 								100; /obj/item/tool/kitchen/knife/butcher, \
-								50; /obj/item/weapon/melee/katana/replica, \
-								100; /obj/item/weapon/melee/harpoon, \
+								50; /obj/item/weapon/sword/katana/replica, \
+								100; /obj/item/weapon/harpoon, \
 								75; /obj/item/attachable/bayonet, \
-								200; /obj/item/weapon/melee/throwing_knife, \
-								400; /obj/item/weapon/melee/twohanded/spear, \
+								200; /obj/item/weapon/throwing_knife, \
+								400; /obj/item/weapon/twohanded/spear, \
 \
 								250; /obj/item/device/flashlight/flare, \
 								75; /obj/item/device/flashlight, \
@@ -83,15 +83,13 @@
 								100; /obj/item/clothing/suit/storage/CMB \
 								)
 
-var/waiting_for_drop_votes = 0
-
 //Digging through this is a pain. I'm leaving it mostly alone until a full rework takes place.
 
 /datum/game_mode/huntergames
 	name = "Hunter Games"
 	config_tag = "Hunter Games"
 	required_players = 1
-	flags_round_type	= MODE_NO_LATEJOIN
+	flags_round_type = MODE_NO_LATEJOIN
 	latejoin_larva_drop = 0 //You never know
 
 	var/checkwin_counter = 0
@@ -105,17 +103,21 @@ var/waiting_for_drop_votes = 0
 	var/ticks_passed = 0
 	var/drops_disabled = 0
 
+	var/waiting_for_drop_votes = FALSE
+
 	votable = FALSE // borkeds
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
-/obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/Xenomorph/Hellhound/H)
-	if(istype(H)) H.gib() //No mercy.
+/obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/H)
+	if(istype(H))
+		H.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()
 	return TRUE
 
 /obj/effect/landmark/hunter_primary
 	name = "hunter_primary"
+	icon_state = "hunter_primary"
 
 /obj/effect/landmark/hunter_primary/Initialize(mapload, ...)
 	. = ..()
@@ -127,6 +129,7 @@ var/waiting_for_drop_votes = 0
 
 /obj/effect/landmark/hunter_secondary
 	name = "hunter_secondary"
+	icon_state = "hunter_secondary"
 
 /obj/effect/landmark/hunter_secondary/Initialize(mapload, ...)
 	. = ..()
@@ -138,6 +141,7 @@ var/waiting_for_drop_votes = 0
 
 /obj/effect/landmark/crap_item
 	name = "crap_item"
+	icon_state = "item_crap"
 
 /obj/effect/landmark/crap_item/Initialize(mapload, ...)
 	. = ..()
@@ -149,6 +153,7 @@ var/waiting_for_drop_votes = 0
 
 /obj/effect/landmark/good_item
 	name = "good_item"
+	icon_state = "item_good"
 
 /obj/effect/landmark/good_item/Initialize(mapload, ...)
 	. = ..()
@@ -167,7 +172,6 @@ var/waiting_for_drop_votes = 0
 	for(var/i in GLOB.good_items)
 		place_drop(get_turf(i), "good")
 
-	QDEL_LIST(GLOB.fog_blockers)
 	QDEL_LIST(GLOB.xeno_tunnels)
 
 	for(var/G in GLOB.gun_list)
@@ -197,7 +201,7 @@ var/waiting_for_drop_votes = 0
 
 	spawn(10)
 		to_world("<B>The current game mode is - HUNTER GAMES!</B>")
-		to_world("You have been dropped off on a Weyland-Yutani colony overrun with alien Predators who have turned it into a game preserve..")
+		to_world("You have been dropped off on a Weyland-Yutani colony overrun with alien Predators who have turned it into a game preserve.")
 		to_world("And you are both the hunter and the hunted!")
 		to_world("Be the <B>last survivor</b> and <B>win glory</B>! Fight in any way you can! Team up or be a loner, it's up to you.")
 		to_world("Be warned though - if someone hasn't died in 3 minutes, the watching Predators get irritated!")
@@ -208,18 +212,18 @@ var/waiting_for_drop_votes = 0
 
 	return ..()
 
-/datum/game_mode/huntergames/proc/spawn_contestant(var/mob/M)
+/datum/game_mode/huntergames/proc/spawn_contestant(mob/M)
 
 	var/mob/living/carbon/human/H
 	var/turf/picked
 
-	if(GLOB.hunter_primaries.len)
+	if(length(GLOB.hunter_primaries))
 		picked = get_turf(pick_n_take(GLOB.hunter_primaries))
 	else
-		if(GLOB.hunter_secondaries.len)
+		if(length(GLOB.hunter_secondaries))
 			picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
 		else
-			message_admins("There were no spawn points available for a contestant..")
+			message_admins("There were no spawn points available for a contestant.")
 
 	if(QDELETED(picked)) //???
 		message_admins("Warning, null picked spawn in spawn_contestant")
@@ -227,7 +231,7 @@ var/waiting_for_drop_votes = 0
 
 	if(istype(M,/mob/living/carbon/human)) //somehow?
 		H = M
-		if(H.contents.len)
+		if(length(H.contents))
 			for(var/obj/item/I in H.contents)
 				qdel(I)
 		H.forceMove(picked)
@@ -235,7 +239,8 @@ var/waiting_for_drop_votes = 0
 		H = new(picked)
 
 	H.key = M.key
-	if(H.client) H.client.change_view(world_view_size)
+	if(H.client)
+		H.client.change_view(GLOB.world_view_size)
 
 	if(!H.mind)
 		H.mind = new(H.key)
@@ -245,7 +250,8 @@ var/waiting_for_drop_votes = 0
 
 	H.skills = null //no restriction on what the contestants can do
 
-	H.apply_effect(15, WEAKEN)
+	H.KnockDown(15)
+	H.Stun(15)
 	H.nutrition = NUTRITION_NORMAL
 
 	var/randjob = rand(0,10)
@@ -262,10 +268,10 @@ var/waiting_for_drop_votes = 0
 		if(3) //CL
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(4) //PMC!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
+		if(4) //pmc!
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-			H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC(H), WEAR_FACE)
+			H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc(H), WEAR_FACE)
 		if(5) //Merc!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
 			if(prob(50))
@@ -281,17 +287,14 @@ var/waiting_for_drop_votes = 0
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 			H.remove_language(LANGUAGE_ENGLISH)
 			H.add_language(LANGUAGE_RUSSIAN)
-		if(7) //Highlander!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), WEAR_FEET)
-		if(8) //Assassin!
+		if(7) //Assassin!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(9) //Corporate guy
+		if(8) //Corporate guy
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(10) //Colonial Marshal
+		if(9) //Colonial Marshal
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
@@ -315,7 +318,7 @@ var/waiting_for_drop_votes = 0
 			last_drop = world.time
 			waiting_for_drop_votes = 1
 			sleep(600)
-			if(!supply_votes.len)
+			if(!length(supply_votes))
 				to_world(SPAN_ROUNDBODY("Nobody got anything! .. weird."))
 				waiting_for_drop_votes = 0
 				supply_votes = list()
@@ -340,7 +343,8 @@ var/waiting_for_drop_votes = 0
 	. = ..()
 	checkwin_counter++
 	ticks_passed++
-	if(prob(2)) dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
+	if(prob(2))
+		dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
 
 	if(round_started > 0) //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 		round_started--
@@ -394,12 +398,12 @@ var/waiting_for_drop_votes = 0
 //Announces the end of the game with all relevant information stated//
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/huntergames/declare_completion()
-	if(round_statistics)
-		round_statistics.track_round_end()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.track_round_end()
 	var/mob/living/carbon/winner = null
 
 	for(var/mob/living/carbon/human/Q in GLOB.alive_mob_list)
-		if(istype(Q) && Q.stat == 0 && !isYautja(Q) && !istype(get_area(Q.loc),/area/centcom) && !istype(get_area(Q.loc),/area/tdome))
+		if(istype(Q) && Q.stat == 0 && !isyautja(Q) && !istype(get_area(Q.loc),/area/centcom) && !istype(get_area(Q.loc),/area/tdome))
 			winner = Q
 			break
 
@@ -416,12 +420,13 @@ var/waiting_for_drop_votes = 0
 		to_world("<FONT size = 3><B>There was a winner, but they died before they could receive the prize!! Bummer.</B></FONT>")
 		world << 'sound/misc/sadtrombone.ogg'
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = count_humans()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = count_humans()
 
-		round_statistics.log_round_statistics()
+		GLOB.round_statistics.log_round_statistics()
+		GLOB.round_statistics.save()
 
 	return 1
 
@@ -432,7 +437,8 @@ var/waiting_for_drop_votes = 0
 	if(!istype(T))
 		return FALSE
 
-	if(OT == "good" && !in_crate && prob(15)) in_crate = 1 //Place some good drops in crates.
+	if(OT == "good" && !in_crate && prob(15))
+		in_crate = 1 //Place some good drops in crates.
 
 	var/obj_type //Object path.
 	var/atom/location = in_crate ? new /obj/structure/closet/crate(T) : T //Where it's going to be placed.

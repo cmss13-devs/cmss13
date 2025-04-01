@@ -3,16 +3,27 @@
 
 	//Health and life related vars
 	var/maxHealth = 100 //Maximum health that should be possible.
-	var/health = 100 	//A mob's health
+	var/health = 100 //A mob's health
 
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
-	var/bruteloss = 0.0	//Brutal damage caused by brute force (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)
-	var/oxyloss = 0.0	//Oxygen depravation damage (no air in lungs)
-	var/toxloss = 0.0	//Toxic damage caused by being poisoned or radiated
-	var/fireloss = 0.0	//Burn damage caused by being way too hot, too cold or burnt.
-	var/cloneloss = 0	//Damage caused by being cloned or ejected from the cloner early
-	var/brainloss = 0	//'Retardation' damage caused by someone hitting you in the head with a bible or being infected with brainrot.
-	var/halloss = 0		//Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
+	var/bruteloss = 0 //Brutal damage caused by brute force (punching, being clubbed by a toolbox ect... this also accounts for pressure damage)
+	var/oxyloss = 0 //Oxygen depravation damage (no air in lungs)
+	var/toxloss = 0 //Toxic damage caused by being poisoned or radiated
+	var/fireloss = 0 //Burn damage caused by being way too hot, too cold or burnt.
+	var/cloneloss = 0 //Damage caused by being cloned or ejected from the cloner early
+	var/brainloss = 0 //'Retardation' damage caused by someone hitting you in the head with a bible or being infected with brainrot.
+	var/halloss = 0 //Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
+
+	// please don't use these directly, use the procs
+	var/dazed = 0
+	var/slowed = 0 // X_SLOW_AMOUNT
+	var/superslowed = 0 // X_SUPERSLOW_AMOUNT
+	var/sleeping = 0
+
+	///a list of all status effects the mob has
+	var/list/status_effects
+	/// Cooldown for manually toggling resting to avoid spamming
+	COOLDOWN_DECLARE(rest_cooldown)
 
 	var/hallucination = 0 //Directly affects how long a mob will hallucinate for
 	var/list/atom/hallucinations = list() //A list of hallucinated people that try to attack the mob. See /obj/effect/fake_attacker in hallucinations.dm
@@ -25,13 +36,15 @@
 
 	var/tod = null // Time of death
 
-	var/silent = null 		//Can't talk. Value goes down every life proc.
+	var/silent = null //Can't talk. Value goes down every life proc.
 
 	// Putting these here for attack_animal().
 	var/melee_damage_lower = 0
 	var/melee_damage_upper = 0
 	var/attacktext = "attacks"
 	var/attack_sound = null
+	/// Custom sound if the mob gets slashed by a xenomorph
+	var/custom_slashed_sound
 	var/friendly = "nuzzles"
 	var/wall_smash = 0
 
@@ -57,7 +70,7 @@
 
 	COOLDOWN_DECLARE(zoom_cooldown) //Cooldown on using zooming items, to limit spam
 
-	var/do_bump_delay = 0	// Flag to tell us to delay movement because of being bumped
+	var/do_bump_delay = 0 // Flag to tell us to delay movement because of being bumped
 
 	var/reagent_move_delay_modifier = 0 //negative values increase movement speed
 
@@ -75,12 +88,16 @@
 		/obj/item/alien_embryo
 	)
 	//blood.dm
-	var/blood_volume = 0 //how much blood the mob has
-	var/max_blood = BLOOD_VOLUME_NORMAL  // how much they should have
+	///How much blood the mob has
+	var/blood_volume = 0
+	///How much blood the mob should ideally have
+	var/max_blood = BLOOD_VOLUME_NORMAL
+	///How much blood the mob can have
+	var/limit_blood = BLOOD_VOLUME_MAXIMUM
 
 	var/hivenumber
 
-	var/datum/pain/pain	//Pain datum for the mob, set on New()
+	var/datum/pain/pain //Pain datum for the mob, set on New()
 	var/datum/stamina/stamina
 
 	var/action_delay //for do_after
@@ -92,3 +109,38 @@
 	var/list/incision_depths = DEFENSE_ZONES_LIVING
 
 	var/current_weather_effect_type
+
+	var/slash_verb = "attack"
+	var/slashes_verb = "attacks"
+
+	///what icon the mob uses for speechbubbles
+	var/bubble_icon = "default"
+	var/bubble_icon_x_offset = 0
+	var/bubble_icon_y_offset = 0
+
+	/// This is what the value is changed to when the mob dies. Actual BMV definition in atom/movable.
+	var/dead_black_market_value = 0
+
+	/// Variable to track the body position of a mob, regardgless of the actual angle of rotation (usually matching it, but not necessarily).
+	var/body_position = STANDING_UP
+	/// For knowing when was the body position changed
+	var/body_position_changed = 0
+	/// Number of degrees of rotation of a mob. 0 means no rotation, up-side facing NORTH. 90 means up-side rotated to face EAST, and so on.
+	VAR_PROTECTED/lying_angle = 0
+	/// Value of lying lying_angle before last change. TODO: Remove the need for this.
+	var/lying_prev = 0
+	/// Does the mob rotate when lying
+	var/rotate_on_lying = FALSE
+
+	/// Flags that determine the potential of a mob to perform certain actions. Do not change this directly.
+	var/mobility_flags = MOBILITY_FLAGS_DEFAULT
+
+	/// icon for weed_food states
+	var/weed_food_icon = 'icons/mob/xenos/weeds.dmi'
+	/// icon_states for weed_food (needs to be the same length as weed_food_states_flipped)
+	var/list/weed_food_states = list("human_1","human_2","human_3","human_4","human_5")
+	/// flipped icon_states for weed_food (needs to be the same length as weed_food_states)
+	var/list/weed_food_states_flipped = list("human_1_f","human_2_f","human_3_f","human_4_f","human_5_f")
+
+	// for multiz looking up
+	var/atom/observed_atom

@@ -105,23 +105,29 @@
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
-	properties = list(PROPERTY_TOXIC = 1)
+	properties = list()
 	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(!.) return
+	if(!. || deleted)
+		return
 	M.status_flags |= FAKEDEATH
+	ADD_TRAIT(M, TRAIT_IMMOBILIZED, FAKEDEATH_TRAIT)
 	M.apply_damage(0.5*REM, OXY)
-	M.apply_effect(10, WEAKEN)
+	M.KnockDown(2)
+	M.Stun(2)
 	M.silent = max(M.silent, 10)
-	M.tod = worldtime2text()
 
-/datum/reagent/toxin/zombiepowder/Destroy()
-	if(holder && ismob(holder.my_atom))
-		var/mob/M = holder.my_atom
-		M.status_flags &= ~FAKEDEATH
+/datum/reagent/toxin/zombiepowder/on_delete()
 	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/holder_mob = .
+
+	holder_mob.status_flags &= ~FAKEDEATH
+	REMOVE_TRAIT(holder_mob, TRAIT_IMMOBILIZED, FAKEDEATH_TRAIT)
 
 /datum/reagent/toxin/mindbreaker
 	name = "Mindbreaker Toxin"
@@ -179,7 +185,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 10)
+	properties = list(PROPERTY_SEDATIVE = 2, PROPERTY_PAINKILLING = 5)
 	flags = REAGENT_SCANNABLE
 
 /datum/reagent/toxin/chloralhydrate
@@ -199,10 +205,10 @@
 	id = "potassium_chloride"
 	description = "A bitter tasting salt that can be used as a spice, but can cause cardiac arrest in larger quantities. It has for this reason been used as a component in lethal injections for many years."
 	reagent_state = SOLID
-	color = "#FFFFFF" // rgb: 255,255,255
+	color = COLOR_WHITE
 	chemfiresupp = TRUE
 	intensitymod = 0.1
-	burncolor = "#800080"
+	burncolor = COLOR_PURPLE
 	burncolormod = 5
 	overdose = 30
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -213,12 +219,12 @@
 	id = "potassium_chlorophoride"
 	description = "A specific chemical based on Potassium Chloride used to stop the heart for surgery. Causes instant cardiac arrest. Not safe to eat!"
 	reagent_state = SOLID
-	color = "#FFFFFF" // rgb: 255,255,255
+	color = COLOR_WHITE
 	overdose = 20
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
-/datum/reagent/toxin/beer2	//disguised as normal beer for use by emagged brobots
+/datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots
 	name = "Beer"
 	id = "beer2"
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water. The fermentation appears to be incomplete." //If the players manage to analyze this, they deserve to know something is wrong.
@@ -255,7 +261,7 @@
 	name = "Formaldehyde"
 	id = "formaldehyde"
 	description = "Formaldehyde is a toxic organic gas that is mostly used in making resins, polymers and explosives. It is known to be a natural carcinogen."
-	color = "#808080" // rgb: 128, 128, 128
+	color = COLOR_GRAY
 	reagent_state = GAS
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CARCINOGENIC = 1)
@@ -276,4 +282,4 @@
 	color = "#669900"
 	reagent_state = LIQUID
 	chemclass = CHEM_CLASS_NONE
-	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_CORROSIVE = 2, PROPERTY_TOXIC = 1, PROPERTY_CROSSMETABOLIZING = 3)

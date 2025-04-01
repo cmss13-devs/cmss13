@@ -3,72 +3,98 @@
 	set name = "Toggle Inquisitiveness"
 	set desc = "Sets whether your ghost examines everything on click by default"
 	set category = "Ghost.Settings"
-	if(!client) return
+	if(!client)
+		return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
 		to_chat(src, SPAN_NOTICE(" You will now examine everything you click on."))
 	else
 		to_chat(src, SPAN_NOTICE(" You will no longer examine things you click on."))
 
-/mob/dead/observer/click(var/atom/A, var/list/mods)
+/mob/dead/observer/click(atom/target, list/mods)
 	if(..())
-		return 1
-
-	if (mods["shift"] && mods["middle"])
-		point_to(A)
 		return TRUE
 
-	if(mods["ctrl"])
-		if(A == src)
+	if (mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
+		point_to(target)
+		return TRUE
+
+	if(mods[CTRL_CLICK])
+		if(target == src)
 			if(!can_reenter_corpse || !mind || !mind.current)
 				return
 			if(alert(src, "Are you sure you want to re-enter your corpse?", "Confirm", "Yes", "No") == "Yes")
 				reenter_corpse()
-				return 1
+				return TRUE
 
-		if(ismob(A) || isVehicle(A))
-			if(isXeno(A) && SSticker.mode.check_xeno_late_join(src))		//if it's a xeno and all checks are alright, we are gonna try to take their body
-				var/mob/living/carbon/Xenomorph/X = A
-				if(X.stat == DEAD || is_admin_level(X.z) || X.aghosted)
-					to_chat(src, SPAN_WARNING("You cannot join as [X]."))
-					return
+		if(ismob(target) || isVehicle(target))
+			if(isxeno(target) && SSticker.mode.check_xeno_late_join(src)) //if it's a xeno and all checks are alright, we are gonna try to take their body
+				var/mob/living/carbon/xenomorph/xeno = target
+				if(xeno.stat == DEAD || should_block_game_interaction(xeno) || xeno.aghosted)
+					to_chat(src, SPAN_WARNING("You cannot join as [xeno]."))
+					do_observe(xeno)
+					return FALSE
+
+				if(xeno.health <= 0)
+					to_chat(src, SPAN_WARNING("You cannot join if the xenomorph is in critical condition or unconscious."))
+					do_observe(xeno)
+					return FALSE
+
+				var/required_leave_time = XENO_LEAVE_TIMER
+				var/required_dead_time = XENO_JOIN_DEAD_TIME
+				if(islarva(xeno))
+					required_leave_time = XENO_LEAVE_TIMER_LARVA
+					required_dead_time = XENO_JOIN_DEAD_LARVA_TIME
+
+				if(xeno.away_timer < required_leave_time)
+					var/to_wait = required_leave_time - xeno.away_timer
+					if(to_wait > 60 SECONDS) // don't spam for clearly non-AFK xenos
+						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
+					do_observe(target)
+					return FALSE
+
 				if(!SSticker.mode.xeno_bypass_timer)
 					var/deathtime = world.time - timeofdeath
-					if(deathtime < 2.5 MINUTES)
-						var/message = "You have been dead for [DisplayTimeText(deathtime)]."
-						message = SPAN_WARNING("[message]")
-						to_chat(src, message)
-						to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
+					if(deathtime < required_dead_time && !bypass_time_of_death_checks)
+						to_chat(src, SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)]."))
+						to_chat(src, SPAN_WARNING("You must wait at least [required_dead_time / 600] minute\s before rejoining the game!"))
+						do_observe(target)
 						return FALSE
-					if((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
-						var/to_wait = XENO_LEAVE_TIMER - X.away_timer
-						if(isXenoLarva(X))
-							to_wait = XENO_LEAVE_TIMER_LARVA - X.away_timer
-						to_chat(src, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-						return FALSE
-				if(alert(src, "Are you sure you want to transfer yourself into [X]?", "Confirm Transfer", "Yes", "No") != "Yes")
+
+				if(xeno.hive)
+					for(var/mob_name in xeno.hive.banished_ckeys)
+						if(xeno.hive.banished_ckeys[mob_name] == ckey)
+							to_chat(src, SPAN_WARNING("You are banished from the [xeno.hive], you may not rejoin unless the Queen re-admits you or dies."))
+							do_observe(target)
+							return FALSE
+
+				if(tgui_alert(src, "Are you sure you want to transfer yourself into [xeno]?", "Confirm Transfer", list("Yes", "No")) != "Yes")
 					return FALSE
-				if(((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA)) || X.stat == DEAD) // Do it again, just in case
+
+				if(xeno.away_timer < required_leave_time || xeno.stat == DEAD || !(xeno in GLOB.living_xeno_list)) // Do it again, just in case
 					to_chat(src, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
 					return FALSE
-				SSticker.mode.transfer_xeno(src, X)
+
+				SSticker.mode.transfer_xeno(src, xeno)
 				return TRUE
-			ManualFollow(A)
+
+			do_observe(target)
 			return TRUE
 
-		following = null
-		abstract_move(get_turf(A))
-		return 1
+		if(!istype(target, /atom/movable/screen))
+			following = null
+			abstract_move(get_turf(target))
+			return TRUE
 
 	if(world.time <= next_move)
-		return 1
+		return TRUE
 
 	next_move = world.time + 8
 	// You are responsible for checking config.ghost_interaction when you override this function
 	// Not all of them require checking, see below
-	if(!mods["shift"])
-		A.attack_ghost(src)
-	return 1
+	if(!mods[SHIFT_CLICK])
+		target.attack_ghost(src)
+	return FALSE
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
 /atom/proc/attack_ghost(mob/dead/observer/user)
@@ -119,8 +145,8 @@
 */
 
 /* This allows Observers to click on disconnected Larva and become them, but not all Larva are clickable due to hiding
-/mob/living/carbon/Xenomorph/Larva/attack_ghost(mob/user as mob)
-	if(!istype(src, /mob/living/carbon/Xenomorph/Larva))
+/mob/living/carbon/xenomorph/larva/attack_ghost(mob/user as mob)
+	if(!istype(src, /mob/living/carbon/xenomorph/larva))
 		return
 
 	// if(src.key || src.mind || !src.client.is_afk())

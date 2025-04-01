@@ -1,0 +1,37 @@
+@use 'sass:meta';
+
+$light: hsl(0, 67%, 51%);
+$dark: hsl(240, 100%, 3%);
+
+@use '../../base.scss' with (
+  $color-bg: $dark,
+  $color-fg: $light
+);
+
+@use '../crt.scss';
+
+.theme-crtred {
+  @extend %theme-crt;
+
+  @keyframes redConfirmFlicker {
+    0% {
+      background-color: $light;
+      color: $dark;
+    }
+    50% {
+      background-color: $dark;
+      color: $light;
+    }
+    100% {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  .Button.ConfirmButton {
+    animation: redConfirmFlicker 5s infinite;
+    &:hover {
+      animation: none;
+    }
+  }
+}

@@ -1,13 +1,18 @@
 /obj/item/storage/toolbox
 	name = "toolbox"
 	desc = "Danger. Very robust."
+	icon = 'icons/obj/items/storage/toolbox.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/toolboxes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/toolboxes_righthand.dmi',
+	)
 	icon_state = "red"
 	item_state = "toolbox_red"
 	pickup_sound = 'sound/handling/toolbox_pickup.ogg'
 	drop_sound = 'sound/handling/toolbox_drop.ogg'
-	flags_atom = FPRINT|CONDUCT
-	force = 5.0
-	throwforce = 10.0
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
+	force = 5
+	throwforce = 10
 	throw_speed = SPEED_FAST
 	throw_range = 7
 	w_class = SIZE_LARGE
@@ -56,7 +61,7 @@
 	var/color = pick("red","yellow","green","blue","pink","orange","cyan","white")
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wirecutters(src)
-	new /obj/item/device/t_scanner(src)
+	new /obj/item/circuitboard/apc(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/stack/cable_coil(src,30,color)
 	new /obj/item/stack/cable_coil(src,30,color)
@@ -70,7 +75,7 @@
 	icon_state = "syndicate"
 	item_state = "toolbox_syndi"
 
-	force = 7.0
+	force = 7
 
 /obj/item/storage/toolbox/syndicate/fill_preset_inventory()
 	var/color = pick("red","yellow","green","blue","pink","orange","cyan","white")

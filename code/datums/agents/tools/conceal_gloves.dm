@@ -5,13 +5,11 @@
 
 	icon_state = "black"
 	item_state = "bgloves"
-
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
-	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
+	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
-	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
+	max_heat_protection_temperature = GLOVES_MAX_HEAT_PROT
 
 	hide_prints = TRUE
 

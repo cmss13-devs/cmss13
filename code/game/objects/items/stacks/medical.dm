@@ -1,7 +1,12 @@
 /obj/item/stack/medical
 	name = "medical pack"
 	singular_name = "medical pack"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/medical_stacks.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	amount = 10
 	max_amount = 10
 	w_class = SIZE_SMALL
@@ -21,7 +26,7 @@
 		to_chat(user, SPAN_DANGER("\The [src] cannot be applied to [M]!"))
 		return 1
 
-	if(!ishuman(user) && !isrobot(user))
+	if(!ishuman(user))
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return 1
 
@@ -56,7 +61,7 @@
 	singular_name = "medical gauze"
 	desc = "Some sterile gauze to wrap around bloody stumps and lacerations."
 	icon_state = "brutepack"
-
+	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
 	stack_id = "bruise pack"
 
 /obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -95,14 +100,17 @@
 				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
 				return TRUE
 
+/obj/item/stack/medical/bruise_pack/two
+	amount = 2
+
 /obj/item/stack/medical/ointment
 	name = "ointment"
 	desc = "Used to treat burns, infected wounds, and relieve itching in unusual places."
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
-	heal_burn = 1
-
+	item_state_slots = list(WEAR_AS_GARB = "ointment")
+	heal_burn = 5
 	stack_id = "ointment"
 
 /obj/item/stack/medical/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -120,7 +128,7 @@
 					return 1
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than an ointment!"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -131,6 +139,7 @@
 					SPAN_HELPFUL("You <b>salve the burns</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the burns</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the burns on [possessive_their] [affecting.display_name]."))
+				affecting.heal_damage(burn = heal_burn)
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 			if(WOUNDS_ALREADY_TREATED)
@@ -141,10 +150,11 @@
 				return TRUE
 
 /obj/item/stack/medical/advanced/bruise_pack
-	name = "advanced trauma kit"
-	singular_name = "advanced trauma kit"
-	desc = "An advanced trauma kit for severe injuries."
+	name = "trauma kit"
+	singular_name = "trauma kit"
+	desc = "A trauma kit for severe injuries."
 	icon_state = "traumakit"
+	item_state = "brutekit"
 	heal_brute = 12
 
 	stack_id = "advanced bruise pack"
@@ -166,7 +176,7 @@
 				heal_amt = 3 //non optimal application means less healing
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a trauma kit!"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -195,6 +205,7 @@
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "brute_herbs"
+	item_state = "brute_herbs"
 	heal_brute = 15
 	stack_id = "mending herbs"
 	alien = TRUE
@@ -204,17 +215,19 @@
 	desc = "A poultice made of cold, blue petals that is rubbed on burns."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "burn_herbs"
+	item_state = "burn_herbs"
 	heal_burn = 15
 	stack_id = "soothing herbs"
 	alien = TRUE
 /obj/item/stack/medical/advanced/ointment
-	name = "advanced burn kit"
-	singular_name = "advanced burn kit"
-	desc = "An advanced treatment kit for severe burns."
+	name = "burn kit"
+	singular_name = "burn kit"
+	desc = "A treatment kit for severe burns."
 	icon_state = "burnkit"
+	item_state = "burnkit"
 	heal_burn = 12
 
-	stack_id = "advanced burn kit"
+	stack_id = "burn kit"
 
 /obj/item/stack/medical/advanced/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(..())
@@ -233,7 +246,7 @@
 				heal_amt = 3 //non optimal application means less healing
 
 		if(affecting.get_incision_depth())
-			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a burn kit!"))
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
@@ -261,14 +274,23 @@
 	singular_name = "medical splint"
 	desc = "A collection of different splints and securing gauze. What, did you think we only broke legs out here?"
 	icon_state = "splint"
+	item_state = "splint"
 	amount = 5
 	max_amount = 5
 	stack_id = "splint"
 
 	var/indestructible_splints = FALSE
 
+/obj/item/stack/medical/splint/Initialize(mapload, amount)
+	. = ..()
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/indestructible_splints))
+		icon_state = "nanosplint"
+		indestructible_splints = TRUE
+		update_icon()
+
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M, mob/user)
-	if(..()) return 1
+	if(..())
+		return 1
 
 	if(user.action_busy)
 		return

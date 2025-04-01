@@ -2,31 +2,27 @@
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms."
 	icon_state = "r_wall_mapicon"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
 
 	damage_cap = HEALTH_WALL_REINFORCED
-	max_temperature = 6000
 
 	walltype = WALL_REINFORCED
 
 	claws_minimum = CLAW_TYPE_VERY_SHARP
 
 /turf/closed/wall/r_wall/attackby(obj/item/W, mob/user)
-	if(hull)
-		return
-
-	if (!(istype(user, /mob/living/carbon/human) || isrobot(user) || SSticker) && SSticker.mode.name != "monkey")
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+	if(turf_flags & TURF_HULL)
 		return
 
 	//get the user's location
-	if( !istype(user.loc, /turf) )	return	//can't do this stuff whilst inside objects and such
+	if( !istype(user.loc, /turf) )
+		return //can't do this stuff whilst inside objects and such
 
 	//THERMITE related stuff. Calls src.thermitemelt() which handles melting walls and the relevant effects
 	if(thermite)
 		if(W.heat_source >= 1000)
-			if(hull)
+			if(turf_flags & TURF_HULL)
 				to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
 			else
 				if(iswelder(W))
@@ -38,11 +34,12 @@
 	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
 		return
 
-	if(istype(W, /obj/item/weapon/melee/twohanded/breacher))
+	if(istype(W, /obj/item/weapon/twohanded/breacher))
+		var/obj/item/weapon/twohanded/breacher/current_hammer = W
 		if(user.action_busy)
 			return
-		if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-			to_chat(user, SPAN_WARNING("You can't use \the [W] properly!"))
+		if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG) || !current_hammer.really_heavy))
+			to_chat(user, SPAN_WARNING("You can't use \the [current_hammer] properly!"))
 			return
 
 		to_chat(user, SPAN_NOTICE("You start taking down \the [src]."))
@@ -131,7 +128,7 @@
 		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
 		SPAN_NOTICE("You start repairing the damage to [src]."))
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
-		if(do_after(user, max(5, round(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
+		if(do_after(user, max(5, floor(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall/r_wall))
 			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
 			SPAN_NOTICE("You finish repairing the damage to [src]."))
 			take_damage(-damage)
@@ -175,7 +172,7 @@
 
 
 /turf/closed/wall/r_wall/can_be_dissolved()
-	if(hull)
+	if(turf_flags & TURF_HULL)
 		return 0
 	else
 		return 2
@@ -189,14 +186,14 @@
 /turf/closed/wall/r_wall/dense
 	icon_state = "iron0"
 	walltype = WALL_REINFORCED_IRON
-	hull = 1
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/r_wall/unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon_state = "heavy_r_wall_mapicon"
 	walltype = WALL_REINFORCED
-	hull = 1
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/r_wall/unmeltable/attackby() //This should fix everything else. No cables, etc
 	return
@@ -239,9 +236,9 @@
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
 	icon = 'icons/turf/walls/prison.dmi'
-	icon_state = "rwall"
+	icon_state = "hwall"
 	walltype = WALL_REINFORCED
-	hull = 1
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/r_wall/prison_unmeltable/ex_act(severity) //Should make it indestructible
 		return
@@ -263,7 +260,8 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable
 	name = "heavy reinforced wall"
 	desc = "A huge chunk of ultra-reinforced metal used to separate rooms. Looks virtually indestructible."
-	hull = 1
+	icon_state = "h_dome"
+	turf_flags = TURF_HULL
 
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable/ex_act(severity) //Should make it indestructible
 		return

@@ -13,7 +13,8 @@
 		{ "weight": 2, "type": "def", "values": { "lvevent": "none"       } },
 		{ "weight": 4, "type": "def", "values": { "lvevent": "last_stand" } },
 		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "bridge"  } },
-		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "right" } }
+		{ "weight": 2, "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "right" } },
+		{ "weight": 2, "type": "def", "values": { "lvevent": "asset_protection", "mainpath": "left" } }
 	]
 }
 ]

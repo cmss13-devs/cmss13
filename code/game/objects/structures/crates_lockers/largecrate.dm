@@ -3,12 +3,12 @@
 	desc = "A hefty wooden crate."
 	icon = 'icons/obj/structures/crates.dmi'
 	icon_state = "densecrate"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	var/parts_type = /obj/item/stack/sheet/wood
 	var/unpacking_sound = 'sound/effects/woodhit.ogg'
 
-/obj/structure/largecrate/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/largecrate/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND
@@ -18,38 +18,52 @@
 	return
 
 /obj/structure/largecrate/proc/unpack()
-	for(var/atom/movable/A in contents)
-		A.forceMove(loc)
+	var/turf/current_turf = get_turf(src) // Get the turf the crate is on
+
 	playsound(src, unpacking_sound, 35)
+
+	// Move the contents back to the turf
+	for(var/atom/movable/moving_atom as anything in contents)
+		moving_atom.forceMove(current_turf)
+
+	if(parts_type) // Create the crate material
+		new parts_type(current_turf, 2)
+
 	deconstruct(TRUE)
 
 /obj/structure/largecrate/deconstruct(disassembled = TRUE)
-	if(disassembled)
-		if(parts_type)
-			new parts_type(loc, 2)
-	else
-		new /obj/item/stack/sheet/wood(loc)
+	if(!disassembled)
+		new parts_type(loc)
 	return ..()
 
 
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		unpack()
-		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
+		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."),
 							SPAN_NOTICE("You pry open \the [src]."))
 	else
 		return attack_hand(user)
 
-/obj/structure/largecrate/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/structure/largecrate/attack_alien(mob/living/carbon/xenomorph/M)
 	M.animation_attack_on(src)
 	unpack()
-	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
-					  SPAN_DANGER("You smash [src] apart!"), 5, CHAT_TYPE_XENO_COMBAT)
+	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
+					  SPAN_DANGER("You smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
-/obj/structure/largecrate/ex_act(var/power)
+/obj/structure/largecrate/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
 		unpack()
+
+/obj/structure/largecrate/proc/take_damage(damage)
+	health -= damage
+	if(health <= 0)
+		unpack()
+
+/obj/structure/largecrate/bullet_act(obj/projectile/P)
+	take_damage(P.calculate_damage(P.damage))
+	return TRUE
 
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
@@ -57,10 +71,10 @@
 /obj/structure/largecrate/lisa
 	icon_state = "lisacrate"
 
-/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob)	//ugly but oh well
+/obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob) //ugly but oh well
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/cow
 	name = "cow crate"
@@ -69,7 +83,7 @@
 /obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/cow(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/goat
 	name = "goat crate"
@@ -78,7 +92,7 @@
 /obj/structure/largecrate/goat/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/hostile/retaliate/goat(loc)
-	..()
+	. = ..()
 
 /obj/structure/largecrate/chick
 	name = "chicken crate"
@@ -89,7 +103,7 @@
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
 			new /mob/living/simple_animal/chick(loc)
-	..()
+	. = ..()
 
 
 // CM largecrates
@@ -113,7 +127,8 @@
 
 /obj/structure/largecrate/random/Initialize()
 	. = ..()
-	if(!num_things) num_things = rand(0,3)
+	if(!num_things)
+		num_things = rand(0,3)
 
 	for(var/i in 1 to num_things)
 		var/obj/item/thing = pick(stuff)
@@ -124,7 +139,7 @@
 	name = "small crate"
 	desc = "The large supply crate's cousin, 1st removed."
 	icon_state = "mini_crate"
-	density = 0
+	density = FALSE
 
 /obj/structure/largecrate/random/mini/chest
 	desc = "A small plastic crate wrapped with securing elastic straps."
@@ -161,35 +176,39 @@
 	desc = "A small metal crate. Here, Freeman ammo!"
 	name = "small ammocase"
 	icon_state = "mini_ammo"
-	stuff = list(/obj/item/ammo_magazine/pistol,
-				/obj/item/ammo_magazine/revolver,
-				/obj/item/ammo_magazine/rifle,
-				/obj/item/ammo_magazine/rifle/extended,
-				/obj/item/ammo_magazine/shotgun,
-				/obj/item/ammo_magazine/shotgun/buckshot,
-				/obj/item/ammo_magazine/shotgun/flechette,
-				/obj/item/ammo_magazine/smg/m39,
-				/obj/item/ammo_magazine/smg/m39/extended,)
+	stuff = list(
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended,
+		/obj/item/ammo_magazine/shotgun,
+		/obj/item/ammo_magazine/shotgun/buckshot,
+		/obj/item/ammo_magazine/shotgun/flechette,
+		/obj/item/ammo_magazine/smg/m39,
+		/obj/item/ammo_magazine/smg/m39/extended,
+	)
 
 /obj/structure/largecrate/random/mini/med
 	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
 	icon_state = "mini_medcase"
 	name = "small medcase"
 	num_things = 1 //funny lootbox tho.
-	stuff = list(/obj/item/stack/medical/bruise_pack,
-				/obj/item/storage/pill_bottle/packet/tricordrazine,
-				/obj/item/tool/crowbar/red,
-				/obj/item/device/flashlight,
-				/obj/item/reagent_container/hypospray/autoinjector/skillless,
-				/obj/item/storage/pill_bottle/packet/tramadol,
-				/obj/item/stack/medical/ointment,
-				/obj/item/stack/medical/splint,
-				/obj/item/device/healthanalyzer,
-				/obj/item/stack/medical/advanced/ointment,
-				/obj/item/stack/medical/advanced/bruise_pack,
-				/obj/item/tool/extinguisher/mini,
-				/obj/item/tool/shovel/etool,
-				/obj/item/tool/screwdriver)
+	stuff = list(
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/storage/pill_bottle/packet/tricordrazine,
+		/obj/item/tool/crowbar/red,
+		/obj/item/device/flashlight,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/storage/pill_bottle/packet/tramadol,
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/splint,
+		/obj/item/device/healthanalyzer,
+		/obj/item/stack/medical/advanced/ointment,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/tool/extinguisher/mini,
+		/obj/item/tool/shovel/etool,
+		/obj/item/tool/screwdriver,
+	)
 
 /obj/structure/largecrate/random/case
 	name = "storage case"
@@ -217,35 +236,129 @@
 
 /obj/structure/largecrate/random/barrel
 	name = "blue barrel"
-	desc = "A blue storage barrel"
+	desc = "A blue storage barrel."
+	icon = 'icons/obj/structures/barrels.dmi'
 	icon_state = "barrel_blue"
+	var/strap_overlay = "+straps"
 	parts_type = /obj/item/stack/sheet/metal
 	unpacking_sound = 'sound/effects/metalhit.ogg'
+	var/straps = FALSE
+
+/obj/structure/largecrate/random/barrel/true_random
+	name = "barrel"
+	desc = "A barrel."
+	icon_state = "barrel_recolorable"
+	desc_lore = "From the future."
+	var/cap_doodad_state = ""
+	var/center_doodad_state = ""
+	var/color_override = null
+
+
+GLOBAL_LIST_EMPTY(rbarrel_cap_states) // Will be set up in generate_barrel_states
+GLOBAL_LIST_INIT(rbarrel_center_states, generate_barrel_states())
+GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
+	COLOR_FLOORTILE_GRAY,
+	COLOR_MAROON,
+	COLOR_SOFT_RED,
+	COLOR_LIGHT_GRAYISH_RED,
+	COLOR_VERY_SOFT_YELLOW,
+	COLOR_OLIVE,
+	COLOR_DARK_MODERATE_LIME_GREEN,
+	COLOR_TEAL,
+	COLOR_MODERATE_BLUE,
+	COLOR_PURPLE,
+	COLOR_STRONG_VIOLET,
+	LIGHT_BEIGE,
+	COLOR_DARK_MODERATE_ORANGE,
+	COLOR_BROWN,
+	COLOR_DARK_BROWN))
+
+/proc/generate_barrel_states()
+	var/list/rbarrel_center_states = list()
+	var/icon/icon = new('icons/obj/structures/barrels.dmi')
+	var/list/icon_list = icon_states(icon)
+	for(var/state in icon_list)
+		if(findtext(state,"+cap"))
+			GLOB.rbarrel_cap_states.Add(state)
+		if(findtext(state,"+center"))
+			rbarrel_center_states.Add(state)
+	// We are returning rbarrel_center_states (rather than setting GLOB) because we are called by the global initializer to set it
+	return rbarrel_center_states
+
+/obj/structure/largecrate/random/barrel/true_random/Initialize()
+	. = ..()
+
+	var/image/center_coloring = image(icon, src,"+_center")
+
+	if(!color_override)
+		center_coloring.color = pick(GLOB.rbarrel_color_list)
+
+	center_coloring.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += center_coloring
+	if(prob(25))
+		cap_doodad_state = pick(GLOB.rbarrel_cap_states)
+		overlays += image(icon,src,cap_doodad_state)
+	if(prob(50))
+		center_doodad_state = pick(GLOB.rbarrel_center_states)
+		overlays += image(icon,src,center_doodad_state)
+
+/obj/structure/largecrate/random/barrel/Initialize()
+	. = ..()
+	if(overlays)
+		overlays.Cut()
+	if(straps)
+		overlays += image(icon,icon_state = "+straps")
+
+/obj/structure/largecrate/random/barrel/unpack()
+	if(overlays)
+		overlays.Cut()
+	. = ..()
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"
-	desc = "A blue storage barrel"
+	desc = "A blue storage barrel."
 	icon_state = "barrel_blue"
 
 /obj/structure/largecrate/random/barrel/red
 	name = "red barrel"
-	desc = "A red storage barrel"
+	desc = "A red storage barrel."
 	icon_state = "barrel_red"
+	straps = TRUE//the original sprite had straps, anyway, this is a harmless instance
 
 /obj/structure/largecrate/random/barrel/green
 	name = "green barrel"
-	desc = "A green storage barrel"
+	desc = "A green storage barrel."
 	icon_state = "barrel_green"
 
 /obj/structure/largecrate/random/barrel/yellow
 	name = "yellow barrel"
-	desc = "A yellow storage barrel"
+	desc = "A yellow storage barrel."
 	icon_state = "barrel_yellow"
 
 /obj/structure/largecrate/random/barrel/white
 	name = "white barrel"
-	desc = "A white storage barrel"
+	desc = "A white storage barrel."
 	icon_state = "barrel_white"
+
+/obj/structure/largecrate/random/barrel/medical
+	name = "white barrel"
+	desc = "A white storage barrel."
+	icon_state = "barrel_medical"
+
+/obj/structure/largecrate/random/barrel/black
+	name = "black barrel"
+	desc = "A black storage barrel."
+	icon_state = "barrel_wy"
+
+/obj/structure/largecrate/random/barrel/brown
+	name = "brown barrel"
+	desc = "A brown storage barrel."
+	icon_state = "barrel_tan"
+
+/obj/structure/largecrate/random/barrel/purewhite
+	name = "white barrel"
+	desc = "A white storage barrel."
+	icon_state = "barrel_purewhite"
 
 /obj/structure/largecrate/random/secure
 	name = "secure supply crate"
@@ -253,9 +366,9 @@
 	icon_state = "secure_crate_strapped"
 	var/strapped = 1
 
-/obj/structure/largecrate/random/secure/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/largecrate/random/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if (!strapped)
-		..()
+		. = ..()
 		return
 
 	if (!W.sharp)
@@ -302,20 +415,20 @@
 	num_guns = 3
 	num_mags = 3
 	name = "\improper Hyperdyne firearm crate"
-	stuff = list(	/obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
-					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
+	stuff = list( /obj/item/weapon/gun/revolver/upp = /obj/item/ammo_magazine/revolver/upp,
+					/obj/item/weapon/gun/pistol/np92 = /obj/item/ammo_magazine/pistol/np92,
 					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40/extended,
 					/obj/item/weapon/gun/rifle/sniper/svd = /obj/item/ammo_magazine/sniper/svd,
-					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh
+					/obj/item/weapon/gun/smg/pps43 = /obj/item/ammo_magazine/smg/pps43
 				)
 
 /obj/structure/largecrate/guns/merc
 	num_guns = 1
 	num_mags = 5
 	name = "\improper Black market firearm crate"
-	stuff = list(	/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
+	stuff = list( /obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
 					/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 					/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 					/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
@@ -323,82 +436,20 @@
 					/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/weapon/gun/shotgun/merc = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/weapon/gun/shotgun/double/with_stock = /obj/item/ammo_magazine/handful/shotgun/buckshot,
 					/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
-					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
+					/obj/item/weapon/gun/smg/bizon = /obj/item/ammo_magazine/smg/bizon,
 					/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 					/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
-					/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
 					/obj/item/weapon/gun/rifle/mar40/carbine = /obj/item/ammo_magazine/rifle/mar40,
-					/obj/item/weapon/gun/smg/ppsh = /obj/item/ammo_magazine/smg/ppsh,
-					/obj/item/weapon/gun/rifle/hunting = /obj/item/ammo_magazine/rifle/hunting,
+					/obj/item/weapon/gun/smg/pps43 = /obj/item/ammo_magazine/smg/pps43,
+					/obj/item/weapon/gun/rifle/l42a = /obj/item/ammo_magazine/rifle/l42a,
+					/obj/item/weapon/gun/rifle/l42a/abr40 = /obj/item/ammo_magazine/rifle/l42a/abr40,
 					/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
 					/obj/item/weapon/gun/rifle/m16 = /obj/item/ammo_magazine/rifle/m16,
 					/obj/item/weapon/gun/rifle/ar10 = /obj/item/ammo_magazine/rifle/ar10,
 					/obj/item/weapon/gun/rifle/type71 = /obj/item/ammo_magazine/rifle/type71,
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 				)
-
-/obj/structure/largecrate/merc/clothing
-	name = "\improper Black market clothing crate"
-
-/obj/structure/largecrate/merc/clothing/Initialize()
-	. = ..()
-	var/i = pick(1,5)
-	switch(i)
-		if(1) //pmc
-			new /obj/item/clothing/under/marine/veteran/PMC(src)
-			new /obj/item/clothing/head/helmet/marine/veteran/PMC(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/PMC(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-			new /obj/item/clothing/mask/rebreather/scarf(src)
-		if(2) //dutch's
-			new /obj/item/clothing/head/helmet/marine/veteran/dutch(src)
-			new /obj/item/clothing/under/marine/veteran/dutch(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/dutch(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(3) //pizza
-			new /obj/item/clothing/under/pizza(src)
-			new /obj/item/clothing/head/soft/red(src)
-		if(4) //clf
-			new /obj/item/clothing/under/colonist/clf(src)
-			new /obj/item/clothing/suit/storage/militia(src)
-			new /obj/item/clothing/head/militia(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-		if(5) //freelancer
-			new /obj/item/clothing/under/marine/veteran/freelancer(src)
-			new /obj/item/clothing/suit/storage/marine/faction/freelancer(src)
-			new /obj/item/clothing/head/cmbandana(src)
-			new /obj/item/clothing/gloves/marine/veteran(src)
-
-/obj/structure/largecrate/merc/ammo
-	name = "\improper Black market ammo crate"
-
-/datum/supply_packs/merc/ammo
-	name = "Black market ammo crate"
-	randomised_num_contained = 6
-	contains = list(
-					/obj/item/ammo_magazine/pistol/holdout,
-					/obj/item/ammo_magazine/pistol/highpower,
-					/obj/item/ammo_magazine/pistol/m1911,
-					/obj/item/ammo_magazine/pistol/heavy,
-					/obj/item/ammo_magazine/revolver/small,
-					/obj/item/ammo_magazine/revolver/cmb,
-					/obj/item/ammo_magazine/handful/shotgun/buckshot,
-					/obj/item/ammo_magazine/smg/mp27,
-					/obj/item/ammo_magazine/pistol/skorpion,
-					/obj/item/ammo_magazine/smg/mac15,
-					/obj/item/ammo_magazine/m60,
-					/obj/item/ammo_magazine/rifle/mar40,
-					/obj/item/ammo_magazine/smg/ppsh,
-					/obj/item/ammo_magazine/rifle/hunting,
-					/obj/item/ammo_magazine/smg/mp5,
-					/obj/item/ammo_magazine/rifle/m16,
-					/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
-					/obj/item/ammo_magazine/rifle/type71,
-					/obj/item/ammo_magazine/smg/fp9000,
-					)
 
 /obj/structure/largecrate/hunter_games_construction
 	name = "construction crate"
@@ -446,7 +497,6 @@
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pouch/medical(src)
 	new /obj/item/storage/pouch/firstaid/full(src)
-	new /obj/item/storage/box/quickclot(src)
 
 /obj/structure/largecrate/hunter_games_surgery
 	name = "surgery crate"
@@ -491,12 +541,12 @@
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/attachable/bayonet(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/weapon/melee/throwing_knife(src)
-	new /obj/item/storage/box/uscm_mre(src)
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/weapon/throwing_knife(src)
+	new /obj/item/storage/box/mre(src)
 	new /obj/item/storage/box/donkpockets(src)
-	new /obj/item/storage/box/MRE(src)
-	new /obj/item/storage/box/MRE(src)
+	new /obj/item/storage/box/mre(src)
+	new /obj/item/storage/box/mre(src)
 	new /obj/item/storage/box/pizza(src)
 
 
@@ -555,9 +605,9 @@
 		new /obj/item/weapon/gun/rifle/mar40(src)
 		new /obj/item/ammo_magazine/rifle/mar40(src)
 		new /obj/item/ammo_magazine/rifle/mar40(src)
-	new /obj/item/weapon/gun/pistol/skorpion(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
+	new /obj/item/weapon/gun/smg/bizon(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
 	new /obj/item/weapon/gun/shotgun/combat(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
@@ -601,8 +651,8 @@
 	new /obj/item/ammo_magazine/rifle(src)
 	new /obj/item/ammo_magazine/rifle/mar40(src)
 	new /obj/item/ammo_magazine/rifle/mar40(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
-	new /obj/item/ammo_magazine/pistol/skorpion(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
+	new /obj/item/ammo_magazine/smg/bizon(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 

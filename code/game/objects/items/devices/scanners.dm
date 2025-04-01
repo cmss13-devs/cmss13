@@ -8,6 +8,7 @@ PLANT ANALYZER
 MASS SPECTROMETER
 REAGENT SCANNER
 FORENSIC SCANNER
+K9 SCANNER
 */
 /obj/item/device/t_scanner
 	name = "\improper T-ray scanner"
@@ -71,6 +72,11 @@ FORENSIC SCANNER
 	name = "\improper HF2 health analyzer"
 	icon_state = "health"
 	item_state = "analyzer"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi'
+	)
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -145,10 +151,11 @@ FORENSIC SCANNER
 /obj/item/device/healthanalyzer/alien
 	name = "\improper YMX scanner"
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "Tracker"
+	icon_state = "scanner"
 	item_state = "analyzer"
 	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	alien = TRUE
+	black_market_value = 35
 
 /obj/item/device/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."
@@ -190,7 +197,7 @@ FORENSIC SCANNER
 		user.show_message(SPAN_DANGER("Pressure: [round(env_pressure,0.1)] kPa"), 1)
 	if(env_pressure > 0)
 		user.show_message(SPAN_NOTICE("Gas Type: [env_gas]"), 1)
-		user.show_message(SPAN_NOTICE("Temperature: [round(env_temp-T0C)]&deg;C"), 1)
+		user.show_message(SPAN_NOTICE("Temperature: [floor(env_temp-T0C)]&deg;C"), 1)
 
 	src.add_fingerprint(user)
 	return
@@ -275,7 +282,7 @@ FORENSIC SCANNER
 
 	if(!QDELETED(O.reagents))
 		var/dat = ""
-		if(O.reagents.reagent_list.len > 0)
+		if(length(O.reagents.reagent_list) > 0)
 			var/one_percent = O.reagents.total_volume / 100
 			for (var/datum/reagent/R in O.reagents.reagent_list)
 				if(prob(reliability))
@@ -328,7 +335,7 @@ FORENSIC SCANNER
 	if(!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You do not know how to use the [name]."))
 		return
 	if(!istype(O))
@@ -339,6 +346,21 @@ FORENSIC SCANNER
 	ex_potential = 0
 	int_potential = 0
 	rad_potential = 0
+
+	if(istype(O, /obj/item/ammo_magazine/flamer_tank))
+		var/obj/item/ammo_magazine/flamer_tank/tank = O
+		if(!length(tank.reagents.reagent_list))
+			to_chat(user, SPAN_NOTICE("No fuel detected in [O]"))
+			return
+		var/result
+		var/datum/reagent/chem = tank.reagents.reagent_list[1]
+		result += SPAN_BLUE("Fuel Statistics:")
+		result += SPAN_BLUE("<br>Intensity: [min(chem.intensityfire, tank.max_intensity)]")
+		result += SPAN_BLUE("<br>Duration: [min(chem.durationfire, tank.max_duration)]")
+		result += SPAN_BLUE("<br>Range: [min(chem.rangefire, tank.max_range)]")
+		to_chat(user, SPAN_NOTICE("[result]"))
+		return
+
 	if(istype(O,/obj/item/explosive))
 		var/obj/item/explosive/E = O
 		if(!E.customizable)
@@ -377,10 +399,10 @@ FORENSIC SCANNER
 		to_chat(user, SPAN_NOTICE("No active chemical agents found in [O]."))
 	return
 
-/obj/item/device/demo_scanner/proc/scan(var/obj/O)
+/obj/item/device/demo_scanner/proc/scan(obj/O)
 	if(QDELETED(O.reagents))
 		return
-	if(O.reagents.reagent_list.len > 0)
+	if(length(O.reagents.reagent_list) > 0)
 		for(var/datum/reagent/R in O.reagents.reagent_list)
 			dat += SPAN_BLUE("<br>[R.name]: [R.volume]u")
 			if(R.explosive)
@@ -401,3 +423,134 @@ FORENSIC SCANNER
 		printing.name = scan_name
 		printing.info = "Chemicals found: [dat]"
 		user.put_in_hands(printing)
+
+/obj/item/device/black_market_scanner
+	name = "suspicious device"
+	desc = "This is... seemingly a makeshift combination between an autopsy scanner, an ancient t-ray scanner, and some sort of robotic clamp, but you can see a lightbulb inside it. What the hell is this?"
+	icon_state = "mendoza_scanner"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT|CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 20
+	matter = list("metal" = 60, "glass" = 30)
+
+/obj/item/device/black_market_scanner/Initialize()
+	. = ..()
+	update_icon()
+
+/obj/item/device/black_market_scanner/update_icon(scan_value = 0, scanning = FALSE)
+	. = ..()
+	overlays.Cut()
+	overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_flash")
+	if(scanning)
+		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_on")
+		switch(scan_value)
+			if(0)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_red")
+			if(1 to 15)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_orange")
+			if(15 to 20)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_yellow")
+			if(25 to 30)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_green")
+			if(35 to 49)
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_cyan")
+			else
+				overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_value_white")
+		addtimer(CALLBACK(src, PROC_REF(update_icon)), 1 SECONDS)
+	else
+		overlays += image('icons/obj/items/devices.dmi', "+mendoza_scanner_clamp_off")
+
+/obj/item/device/black_market_scanner/afterattack(atom/hit_atom, mob/user, proximity)
+	if(!proximity)
+		return
+	if(!ismovable(hit_atom))
+		return ..()
+	var/market_value = get_black_market_value(hit_atom)
+	if(isnull(market_value))
+		return ..()
+	market_value = POSITIVE(market_value)
+	user.visible_message(SPAN_WARNING("[user] presses a button on [src] and holds it over [hit_atom]..."), SPAN_WARNING("You scan [hit_atom]..."))
+	update_icon(market_value, TRUE)
+	playsound(user, 'sound/machines/twobeep.ogg', 15, TRUE)
+	to_chat(user, SPAN_NOTICE("You scan [hit_atom] and notice a reading on [src]'s pad, it says:<b> ITEM HAS [market_value] VALUE <b>"))
+
+/obj/item/device/black_market_hacking_device
+	name = "modified security access tuner"
+	desc = "A security access tuner with wires and electrical pins sticking out at odd angles. A handwritten label on the bottom says something about the ASRS system."
+	icon_state = "bm_hacker"
+	item_state = "analyzer"
+	icon = 'icons/obj/items/tools.dmi'
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT
+	flags_equip_slot = SLOT_WAIST
+	inherent_traits = list(TRAIT_TOOL_BLACKMARKET_HACKER)
+
+/obj/item/device/cmb_black_market_tradeband
+	name = "\improper CMB Tradeband Compliance Device"
+	desc = "A device used to reset any tampering done to trading devices' signal range. Occasionally used to fix any signal chips damaged in an accident, but often for malpractice in trading. Use this with caution, as it will also reset any evidence of potential illicit trade. Created to fulfill a joint-organization requirement for CMB-ICC teams on the frontier, where tampered machinery was difficult to move and refurbish. Smugglers beware."
+	icon_state = "cmb_scanner"
+	item_state = "analyzer"
+	w_class = SIZE_SMALL
+	flags_atom = FPRINT
+	flags_equip_slot = SLOT_WAIST
+	inherent_traits = list(TRAIT_TOOL_TRADEBAND)
+
+/obj/item/device/k9_scanner
+	name = "\improper K9 tracking device"
+	desc = "A small handheld tool used to track Synthetic K9 helpers, they tend to run off to strange places at inopportune times..."
+	icon_state = "tracking0"
+	item_state = "tracking1"
+	pickup_sound = 'sound/handling/multitool_pickup.ogg'
+	drop_sound = 'sound/handling/multitool_drop.ogg'
+	flags_atom = FPRINT
+	force = 5
+	w_class = SIZE_TINY
+	throwforce = 5
+	throw_range = 15
+	throw_speed = SPEED_VERY_FAST
+
+	matter = list("metal" = 50,"glass" = 20)
+
+	var/mob/living/carbon/human/tracked_k9
+
+/obj/item/device/k9_scanner/Destroy()
+	. = ..()
+	tracked_k9 = null
+
+/obj/item/device/k9_scanner/attack(mob/attacked_mob as mob, mob/user as mob)
+	if(!isk9synth(attacked_mob))
+		to_chat(user, SPAN_BOLDWARNING("ERROR: Cannot Sync To This."))
+		return
+	//we now know the attacked mob is a k9
+	tracked_k9 = attacked_mob
+	icon_state = "tracking1"
+	to_chat(user, SPAN_WARNING("[src] is now synced to: [attacked_mob]."))
+
+/obj/item/device/k9_scanner/attack_self(mob/user)
+	. = ..()
+	if (!tracked_k9)
+		to_chat(user, SPAN_WARNING("ERROR: No K9 unit currently tracked. Use scanner on K9 unit to track them."))
+		return
+
+	var/turf/self_turf = get_turf(src)
+	var/turf/scanner_turf = get_turf(tracked_k9)
+	var/area/self_area = get_area(self_turf)
+	var/area/scanner_area = get_area(scanner_turf)
+
+	if(self_turf.z != scanner_turf.z || self_area.fake_zlevel != scanner_area.fake_zlevel)
+		to_chat(user, SPAN_BOLDWARNING("The [src] lights up: <b>UNABLE TO REACH LINKED K9!<b>"))
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 15, TRUE)
+		return
+
+	var/dist = get_dist(self_turf, scanner_turf)
+	var/direction = dir2text(Get_Compass_Dir(self_turf, scanner_turf))
+	if(dist > 1)
+		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: [tracked_k9] is <b>'[dist] meters to the [direction]</b>'"))
+	else
+		to_chat(user, SPAN_BOLDNOTICE("[src] lights up: <b>--><--</b>"))
+	playsound(src, 'sound/machines/ping.ogg', 15, TRUE)
+

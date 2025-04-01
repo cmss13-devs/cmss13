@@ -1,26 +1,26 @@
 // Vanguard shields rapidly decay after the first hit.
 /datum/xeno_shield/vanguard
 	var/hit_yet = FALSE
-	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERYLARGE
+	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERY_LARGE
+	var/minimal_damage = 5
 	amount = 800
-
 
 /datum/xeno_shield/vanguard/on_hit(damage)
 	notify_xeno()
 
-	if (!hit_yet)
+	if (!hit_yet && damage > minimal_damage)
 		hit_yet = TRUE
-		rapid_decay()
-		return 0
+		addtimer(CALLBACK(src, PROC_REF(rapid_decay)),  0.4 SECONDS, TIMER_LOOP)
+		return
 	else
-		return ..(damage)
+		. = ..()
+		if (amount <= 0)
+			rapid_decay() // Reuse its cleanup logic
 
 /datum/xeno_shield/vanguard/Destroy()
-	if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
-		var/mob/living/carbon/Xenomorph/X = linked_xeno
-		X.explosivearmor_modifier -= explosive_armor_amount
-		X.recalculate_armor()
-
+	if (linked_xeno)
+		linked_xeno.explosivearmor_modifier -= explosive_armor_amount
+		linked_xeno.recalculate_armor()
 	return ..()
 
 /// Decay is suppressed for Vanguard Shield and triggered on hit
@@ -30,34 +30,24 @@
 	return PROCESS_KILL // REALLY, don't process us!
 
 /datum/xeno_shield/vanguard/proc/rapid_decay()
-	set waitfor = 0
-	while(amount > 0)
+	if(amount > 0)
 		amount *= 0.70
 		amount -= 50
-
-		notify_xeno()
-		sleep(0.4 SECONDS)
-
-	if (amount <= 0)
-		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
-			var/mob/living/carbon/Xenomorph/X = linked_xeno
-
-			if (QDELETED(X) || !istype(X))
-				return
-
-			qdel(src)
-			X.overlay_shields()
-
-			var/datum/action/xeno_action/activable/cleave/cAction = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/cleave)
-			if (istype(cAction))
-				addtimer(CALLBACK(cAction, /datum/action/xeno_action/activable/cleave.proc/remove_buff), 7, TIMER_UNIQUE)
-
-/datum/xeno_shield/vanguard/proc/notify_xeno()
-	var/mob/living/carbon/Xenomorph/X = linked_xeno
-	if (!istype(X))
 		return
 
-	if (X.mutation_type == PRAETORIAN_VANGUARD)
-		var/datum/behavior_delegate/praetorian_vanguard/BD = X.behavior_delegate
-		if (istype(BD))
-			BD.last_combat_time = world.time
+	qdel(src)
+	if (QDELETED(linked_xeno) || !istype(linked_xeno))
+		return
+
+	linked_xeno.overlay_shields()
+	var/datum/action/xeno_action/activable/cleave/cAction = get_action(linked_xeno, /datum/action/xeno_action/activable/cleave)
+	if (istype(cAction))
+		addtimer(CALLBACK(cAction, TYPE_PROC_REF(/datum/action/xeno_action/activable/cleave, remove_buff)), 7, TIMER_UNIQUE)
+
+/datum/xeno_shield/vanguard/proc/notify_xeno()
+	if (!istype(linked_xeno))
+		return
+
+	var/datum/behavior_delegate/praetorian_vanguard/behavior = linked_xeno.behavior_delegate
+	if (istype(behavior))
+		behavior.last_combat_time = world.time

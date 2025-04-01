@@ -1,20 +1,13 @@
-/obj/effect/decal
-	plane = FLOOR_PLANE
-
-// Used for spray that you spray at walls, tables, hydrovats etc
-/obj/effect/decal/spraystill
-	density = 0
-	anchored = 1
-	layer = FLY_LAYER
-
 //Used by spraybottles.
 /obj/effect/decal/chempuff
 	name = "chemicals"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chempuff"
+	keep_as_object = TRUE
 	var/mob/source_user
 
-/obj/effect/decal/chempuff/initialize_pass_flags(var/datum/pass_flags_container/PF)
+
+/obj/effect/decal/chempuff/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_AROUND|PASS_UNDER|PASS_THROUGH
@@ -26,7 +19,7 @@
 		check_reactions()
 	tiles_left--
 	if(tiles_left)
-		addtimer(CALLBACK(src, .proc/move_towards, A, move_delay, tiles_left), move_delay)
+		addtimer(CALLBACK(src, PROC_REF(move_towards), A, move_delay, tiles_left), move_delay)
 	else
 		qdel(src)
 
@@ -64,12 +57,12 @@
 	name = "Exosuit wreckage"
 	desc = "Remains of some unfortunate mecha. Completely unrepairable."
 	icon = 'icons/obj/structures/props/mech.dmi'
-	density = 1
-	anchored = 0
-	opacity = 0
+	density = TRUE
+	anchored = FALSE
+	opacity = FALSE
 	unacidable = FALSE
 
-/obj/effect/decal/mecha_wreckage/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/effect/decal/mecha_wreckage/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -79,10 +72,10 @@
 		deconstruct(FALSE)
 	return
 
-/obj/effect/decal/mecha_wreckage/bullet_act(var/obj/item/projectile/Proj)
+/obj/effect/decal/mecha_wreckage/bullet_act(obj/projectile/Proj)
 	return 1
 
-/obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/xenomorph/M)
 	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
@@ -95,11 +88,11 @@
 	return ..()
 
 /obj/effect/decal/mecha_wreckage/gygax
-	name = "Gygax wreckage"
+	name = "MAX wreckage"
 	icon_state = "gygax-broken"
 
 /obj/effect/decal/mecha_wreckage/gygax/dark
-	name = "Dark Gygax wreckage"
+	name = "Dark MAX wreckage"
 	icon_state = "darkgygax-broken"
 
 /obj/effect/decal/mecha_wreckage/marauder
@@ -116,7 +109,7 @@
 	icon_state = "seraph-broken"
 
 /obj/effect/decal/mecha_wreckage/ripley
-	name = "Ripley wreckage"
+	name = "P-1000 wreckage"
 	icon_state = "ripley-broken"
 
 /obj/effect/decal/mecha_wreckage/ripley/firefighter
@@ -124,11 +117,11 @@
 	icon_state = "firefighter-broken"
 
 /obj/effect/decal/mecha_wreckage/ripley/deathripley
-	name = "Death-Ripley wreckage"
+	name = "Death-P-1000 wreckage"
 	icon_state = "deathripley-broken"
 
 /obj/effect/decal/mecha_wreckage/durand
-	name = "Durand wreckage"
+	name = "MOX wreckage"
 	icon_state = "durand-broken"
 
 /obj/effect/decal/mecha_wreckage/phazon
@@ -136,7 +129,7 @@
 	icon_state = "phazon-broken"
 
 /obj/effect/decal/mecha_wreckage/odysseus
-	name = "Odysseus wreckage"
+	name = "Alice wreckage"
 	icon_state = "odysseus-broken"
 
 /obj/effect/decal/mecha_wreckage/hoverpod

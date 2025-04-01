@@ -1,17 +1,17 @@
 /*
 NOTE: IF YOU UPDATE THE REAGENT-SYSTEM, ALSO UPDATE THIS README.
 
-Structure: ///////////////////          //////////////////////////
-		   // Mob or object // -------> // Reagents var (datum) // 	    Is a reference to the datum that holds the reagents.
-		   ///////////////////          //////////////////////////
-		   			|				    			 |
-    The object that holds everything.   			 V
-		   							      reagent_list var (list)   	A List of datums, each datum is a reagent.
+Structure: ///////////////////   //////////////////////////
+		   // Mob or object // -------> // Reagents var (datum) // Is a reference to the datum that holds the reagents.
+		   ///////////////////   //////////////////////////
+					|  |
+	The object that holds everything.  V
+										reagent_list var (list) A List of datums, each datum is a reagent.
 
-		   							     |        |         |
-		   							      V          V          V
+										| |  |
+										V V  V
 
-		   							         reagents (datums)	    	Reagents. I.e. Water , antitoxins or mercury.
+											reagents (datums) Reagents. I.e. Water , antitoxins or mercury.
 
 
 Random important notes:
@@ -24,22 +24,22 @@ About the Holder:
 	The holder (reagents datum) is the datum that holds a list of all reagents
 	currently in the object.It also has all the procs needed to manipulate reagents
 
-		remove_any(var/amount)
+		remove_any(amount)
 			This proc removes reagents from the holder until the passed amount
 			is matched. It'll try to remove some of ALL reagents contained.
 
-		trans_to(var/obj/target, var/amount)
+		trans_to(obj/target, amount)
 			This proc equally transfers the contents of the holder to another
 			objects holder. You need to pass it the object (not the holder) you want
 			to transfer to and the amount you want to transfer. Its return value is the
 			actual amount transfered (if one of the objects is full/empty)
 
-		trans_id_to(var/obj/target, var/reagent, var/amount)
+		trans_id_to(obj/target, reagent, amount)
 			Same as above but only for a specific reagent in the reagent list.
 			If the specified amount is greater than what is available, it will use
 			the amount of the reagent that is available. If no reagent exists, returns null.
 
-		metabolize(var/mob/M)
+		metabolize(mob/M)
 			This proc is called by the mobs life proc. It simply calls on_mob_life for
 			all contained reagents. You shouldnt have to use this one directly.
 
@@ -49,11 +49,11 @@ About the Holder:
 			Currently, this proc is automatically called by trans_to.
 			- Modified from the original to preserve reagent data across reactions (originally for xenoarchaeology)
 
-		isolate_reagent(var/reagent)
+		isolate_reagent(reagent)
 			Pass it a reagent id and it will remove all reagents but that one.
 			It's that simple.
 
-		del_reagent(var/reagent)
+		del_reagent(reagent)
 			Completely remove the reagent with the matching id.
 
 		reaction_fire(exposed_temp)
@@ -66,7 +66,7 @@ About the Holder:
 		clear_reagents()
 			This proc removes ALL reagents from the holder.
 
-		reaction(var/atom/A, var/method=TOUCH, var/volume_modifier=0)
+		reaction(atom/A, method=TOUCH, volume_modifier=0)
 			This proc calls the appropriate reaction procs of the reagents.
 			I.e. if A is an object, it will call the reagents reaction_obj
 			proc. The method var is used for reaction on mobs. It simply tells
@@ -79,22 +79,22 @@ About the Holder:
 			contact with the reagents of a holder. (in the 'splash' part of a beaker i.e.)
 			More on the reaction in the reagent part of this readme.
 
-		add_reagent(var/reagent, var/amount, var/data)
+		add_reagent(reagent, amount, data)
 			Attempts to add X of the matching reagent to the holder.
 			You wont use this much. Mostly in new procs for pre-filled
 			objects.
 
-		remove_reagent(var/reagent, var/amount)
+		remove_reagent(reagent, amount)
 			The exact opposite of the add_reagent proc.
 			- Modified from original to return the reagent's data, in order to preserve reagent data across reactions (originally for xenoarchaeology)
 
-		has_reagent(var/reagent, var/amount)
+		has_reagent(reagent, amount)
 			Returns 1 if the holder contains this reagent.
 			Or 0 if not.
 			If you pass it an amount it will additionally check
 			if the amount is matched. This is optional.
 
-		get_reagent_amount(var/reagent)
+		get_reagent_amount(reagent)
 			Returns the amount of the matching reagent inside the
 			holder. Returns 0 if the reagent is missing.
 
@@ -120,26 +120,26 @@ About Reagents:
 	Reagents are all the things you can mix and fille in bottles etc. This can be anything from
 	rejuvs over water to ... iron. Each reagent also has a few procs - i'll explain those below.
 
-		reaction_mob(var/mob/M, var/method=TOUCH)
+		reaction_mob(mob/M, method=TOUCH)
 			This is called by the holder's reation proc.
 			This version is only called when the reagent
 			reacts with a mob. The method var can be either
 			TOUCH or INGEST. You'll want to put stuff like
 			acid-facemelting in here.
 
-		reaction_obj(var/obj/O)
+		reaction_obj(obj/O)
 			This is called by the holder's reation proc.
 			This version is called when the reagents reacts
 			with an object. You'll want to put stuff like
 			object melting in here ... or something. i dunno.
 
-		reaction_turf(var/turf/T)
+		reaction_turf(turf/T)
 			This is called by the holder's reaction proc.
 			This version is called when the reagents reacts
 			with a turf. You'll want to put stuff like extra
 			slippery floors for lube or something in here.
 
-		on_mob_life(var/mob/M)
+		on_mob_life(mob/M)
 			This proc is called everytime the mobs life proc executes.
 			This is the place where you put damage for toxins ,
 			drowsyness for sleep toxins etc etc.
@@ -182,7 +182,7 @@ About Recipes:
 	Recipes are simple datums that contain a list of required reagents and a result.
 	They also have a proc that is called when the recipe is matched.
 
-		on_reaction(var/datum/reagents/holder, var/created_volume)
+		on_reaction(datum/reagents/holder, created_volume)
 			This proc is called when the recipe is matched.
 			You'll want to add explosions etc here.
 			To find the location you'll have to do something
@@ -229,7 +229,7 @@ About the Tools:
 		R.my_atom = src <<<<< set the holders my_atom to src so that we know where we are.
 
 		This can also be done by calling a convenience proc:
-		atom/proc/create_reagents(var/max_volume)
+		atom/proc/create_reagents(max_volume)
 
 	Other important stuff:
 

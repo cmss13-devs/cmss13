@@ -1,37 +1,28 @@
 /obj/effect/portal
 	name = "portal"
 	desc = "Looks unstable. Best to test it with the clown."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/effects/portals.dmi'
 	icon_state = "portal"
-	density = 1
+	density = TRUE
 	unacidable = TRUE//Can't destroy energy portals.
 	var/failchance = 5
 	var/obj/item/target = null
 	var/creator = null
-	anchored = 1.0
+	anchored = TRUE
 
 /obj/effect/portal/Collided(atom/movable/AM)
-	spawn(0)
-		teleport(AM)
-		return
-	return
+	INVOKE_ASYNC(src, PROC_REF(teleport), AM)
 
 /obj/effect/portal/Crossed(AM as mob|obj)
-	spawn(0)
-		src.teleport(AM)
-		return
-	return
+	INVOKE_ASYNC(src, PROC_REF(teleport), AM)
 
 /obj/effect/portal/attack_hand(mob/user as mob)
-	spawn(0)
-		src.teleport(user)
-		return
-	return
+	INVOKE_ASYNC(src, PROC_REF(teleport), user)
 
 /obj/effect/portal/Initialize(mapload, ...)
 	. = ..()
 	GLOB.portal_list += src
-	QDEL_IN(src, 30 SECONDS)
+	AddElement(/datum/element/temporary, 30 SECONDS)
 
 /obj/effect/portal/Destroy()
 	GLOB.portal_list -= src

@@ -12,22 +12,25 @@
 	name = "experimental hoverpack"
 	desc = "This prototype hoverpack allows marines to quickly jump over to strategic locations on the battlefield, at the cost of their backpack. You think you could change the settings with a screwdriver."
 	icon = 'icons/obj/items/devices.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	icon_state = "hoverpack"
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	actions_types = list(/datum/action/item_action/hover)
 	var/hover_cooldown = 7.5 SECONDS
-	 /// If you can use it, used for cooldowns.
+	/// If you can use it, used for cooldowns.
 	var/can_hover = TRUE
 
 	// These vars change in attackby().
 	var/fuel_multiplier = 1
-	 ///How quick you will fly
+	///How quick you will fly
 	var/speed = 5
-	 ///How many tiles you can leap to at once.
+	///How many tiles you can leap to at once.
 	var/max_distance = 4
 
-	 /// Reservoir that stores the reagents that fuel the propellant for the hoverpack. Or something like that..
+	/// Reservoir that stores the reagents that fuel the propellant for the hoverpack. Or something like that..
 	var/obj/item/reagent_container/glass/beaker/reservoir/reservoir
 
 	var/last_fuel
@@ -49,7 +52,7 @@
 
 /obj/item/hoverpack/attack_self(mob/user)
 	..()
-	to_chat(user, SPAN_NOTICE("You start dumping the contents of [src]'s reservoir.."))
+	to_chat(user, SPAN_NOTICE("You start dumping the contents of [src]'s reservoir..."))
 	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
 	to_chat(user, SPAN_NOTICE("You dump the contents of [src]'s reservoir."))
@@ -96,7 +99,7 @@
 	. += SPAN_NOTICE("A meter next to the tank intake indicates it has [round(reservoir.reagents.total_volume/reservoir.reagents.maximum_volume * 100, 0.1)]% propellant left. You see on a readout:")
 	. += SPAN_BOLDNOTICE(" DISTANCE: [max_distance] METERS <br/> SPEED: [speed] METERS PER SECOND <br/> USAGE: [fuel_multiplier * 100]% PROPELLANT USAGE <br/> COOLDOWN: [hover_cooldown * 0.1] SECONDS")
 
-/obj/item/hoverpack/proc/expend_fuel(var/mob/user) //jesus
+/obj/item/hoverpack/proc/expend_fuel(mob/user) //jesus
 	if(!reservoir.reagents.total_volume)
 		to_chat(user, SPAN_NOTICE("\The [reservoir] is empty!"))
 		return NO_FUEL
@@ -112,7 +115,7 @@
 					OP = P
 
 	if(prob(boom_chance))
-		to_chat(user, SPAN_DANGER("Something feels wrong.."))
+		to_chat(user, SPAN_DANGER("Something feels wrong..."))
 		return KABOOM
 
 	if(!OP)
@@ -125,7 +128,7 @@
 	last_fuel = final_expense
 	return FUELED
 
-/obj/item/hoverpack/proc/hover(var/mob/living/carbon/human/user, atom/A)
+/obj/item/hoverpack/proc/hover(mob/living/carbon/human/user, atom/A)
 	var/result = can_use_hoverpack(user)
 
 	if( !A || A.layer >= FLY_LAYER)
@@ -142,9 +145,9 @@
 		do_after(user, 3 SECONDS, INTERRUPT_NONE, BUSY_ICON_HOSTILE, src, INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 		src.visible_message(SPAN_HIGHDANGER("[src] explodes!"))
 		var/datum/cause_data/cause_data = create_cause_data("hoverpack explosion", user)
-		INVOKE_ASYNC(GLOBAL_PROC, /atom.proc/cell_explosion, get_turf(src), 90, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
+		INVOKE_ASYNC(GLOBAL_PROC, TYPE_PROC_REF(/atom, cell_explosion), get_turf(src), 90, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
 		color = initial(color)
-		addtimer(CALLBACK(src, .proc/end_cooldown, user), hover_cooldown)
+		addtimer(CALLBACK(src, PROC_REF(end_cooldown), user), hover_cooldown)
 		return
 
 	var/fuel_used = FUEL_USAGE
@@ -160,31 +163,31 @@
 	calculate_warning_turf(warning, user, t_turf)
 
 	//has sleep
-	RegisterSignal(user, COMSIG_CLIENT_MOB_MOVE, .proc/disable_flying_movement)
+	RegisterSignal(user, COMSIG_CLIENT_MOB_MOVE, PROC_REF(disable_flying_movement))
 	user.throw_atom(t_turf, max_distance, speed, launch_type = HIGH_LAUNCH)
 	UnregisterSignal(user, COMSIG_CLIENT_MOB_MOVE)
 	qdel(warning)
 	last_fuel = null
-	addtimer(CALLBACK(src, .proc/end_cooldown, user), hover_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(end_cooldown), user), hover_cooldown)
 
-/obj/item/hoverpack/proc/disable_flying_movement(var/mob/living/carbon/human/user)
+/obj/item/hoverpack/proc/disable_flying_movement(mob/living/carbon/human/user)
 	SIGNAL_HANDLER
 	return COMPONENT_OVERRIDE_MOVE
 
-/obj/item/hoverpack/proc/end_cooldown(var/mob/living/carbon/human/user)
+/obj/item/hoverpack/proc/end_cooldown(mob/living/carbon/human/user)
 	can_hover = TRUE
 	update_icon()
 	playsound(src, 'sound/items/jetpack_beep.ogg', 60, FALSE)
 
-/obj/item/hoverpack/proc/calculate_warning_turf(var/obj/effect/warning/warning, var/mob/living/user, var/turf/t_turf)
+/obj/item/hoverpack/proc/calculate_warning_turf(obj/effect/warning/warning, mob/living/user, turf/t_turf)
 	var/t_dist = get_dist(user, t_turf)
 	if(!(t_dist > max_distance))
 		return
-	var/list/turf/path = getline2(user, t_turf, FALSE)
+	var/list/turf/path = get_line(user, t_turf, FALSE)
 	warning.forceMove(path[max_distance])
 
 /obj/item/hoverpack/proc/can_use_hoverpack(mob/living/carbon/human/user)
-	if(user.is_mob_incapacitated() || user.lying)
+	if(user.is_mob_incapacitated())
 		to_chat(user, SPAN_WARNING("You're a bit too incapacitated for that."))
 		return FALSE
 
@@ -194,7 +197,7 @@
 
 	return expend_fuel(user)
 
-/datum/action/item_action/hover/New(var/mob/living/user, var/obj/item/holder)
+/datum/action/item_action/hover/New(mob/living/user, obj/item/holder)
 	..()
 	name = "Use Hoverpack"
 	button.name = name
@@ -204,24 +207,23 @@
 
 /datum/action/item_action/hover/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(!H.is_mob_incapacitated() && !H.lying && holder_item == H.back)
+	if(!H.is_mob_incapacitated() && holder_item == H.back)
 		return TRUE
 
 /datum/action/item_action/hover/action_activate()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+			H.set_selected_ability(null)
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		H.set_selected_ability(src)
 
 /datum/action/item_action/hover/update_button_icon()
 	var/obj/item/hoverpack/HP = holder_item
@@ -240,12 +242,12 @@
 	var/obj/item/hoverpack/HP = holder_item
 	HP.hover(H, A)
 	update_button_icon()
-	addtimer(CALLBACK(src, .proc/update_button_icon), HP.hover_cooldown)
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), HP.hover_cooldown)
 
 /datum/action/item_action/hover/remove_from(mob/living/carbon/human/H)
 	..()
 	if(H.selected_ability == src)
-		H.selected_ability = null
+		H.set_selected_ability(null)
 		update_button_icon()
 		button.icon_state = "template"
 

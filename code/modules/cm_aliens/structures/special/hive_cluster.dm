@@ -23,19 +23,25 @@
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
 	node = place_node()
+	update_minimap_icon()
+
+/obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
+	SSminimaps.remove_marker(src)
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "cluster")
 
 /obj/effect/alien/resin/special/cluster/Destroy()
 	QDEL_NULL(node)
+	SSminimaps.remove_marker(src)
 	return ..()
 
-/obj/effect/alien/resin/special/cluster/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
+/obj/effect/alien/resin/special/cluster/attack_alien(mob/living/carbon/xenomorph/M)
+	if(isxeno_builder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
 		do_repair(M) //This handles the delay itself.
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
 
-/obj/effect/alien/resin/special/cluster/proc/do_repair(mob/living/carbon/Xenomorph/xeno)
+/obj/effect/alien/resin/special/cluster/proc/do_repair(mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
 		return
 	if(!xeno.plasma_max)
@@ -45,7 +51,7 @@
 		to_chat(xeno, SPAN_XENONOTICE("\The [name] is in good condition, you don't need to repair it."))
 		return
 
-	to_chat(xeno, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
+	to_chat(xeno, SPAN_XENONOTICE("We begin adding the plasma to \the [name] to repair it."))
 	xeno_attack_delay(xeno)
 	if(!do_after(xeno, CLUSTER_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !can_repair)
 		return
@@ -69,9 +75,9 @@
 			continue
 		if(istype(W, /obj/effect/alien/weeds/weedwall))
 			continue
-		addtimer(CALLBACK(W, /obj/effect/alien/weeds.proc/weed_expand, node), CLUSTER_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
+		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), node), CLUSTER_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
-	to_chat(xeno, SPAN_XENONOTICE("You have successfully repaired \the [name]."))
+	to_chat(xeno, SPAN_XENONOTICE("We have successfully repaired \the [name]."))
 	playsound(loc, "alien_resin_build", 25)
 
 /obj/effect/alien/resin/special/cluster/proc/place_node()

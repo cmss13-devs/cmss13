@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_inviews(var/href)
+/datum/admins/proc/topic_inviews(href)
 	switch(href)
 		if("rejuvenateall")
 			owner.rejuvenate_all_in_view()
@@ -18,3 +18,5 @@
 			subtlemessageall()
 		if("alertall")
 			alertall()
+		if("stripall")
+			owner.strip_all_in_view()

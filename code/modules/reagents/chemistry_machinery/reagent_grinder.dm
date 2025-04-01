@@ -3,8 +3,8 @@
 	icon = 'icons/obj/structures/machinery/kitchen.dmi'
 	icon_state = "juicer1"
 	layer = ABOVE_TABLE_LAYER
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
@@ -68,7 +68,10 @@
 
 /obj/structure/machinery/reagentgrinder/Destroy()
 	cleanup()
-	. = ..()
+
+	QDEL_NULL(beaker)
+
+	return ..()
 
 /obj/structure/machinery/reagentgrinder/update_icon()
 	icon_state = "juicer"+num2text(!isnull(beaker))
@@ -87,17 +90,18 @@
 		updateUsrDialog()
 		return 0
 
-	if(holdingitems && holdingitems.len >= limit)
+	if(LAZYLEN(holdingitems) >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 		return 1
 
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
-		if(B.contents.len > 0)
+		if(length(B.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You start dumping the contents of [B] into [src]."))
-			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
 			for(var/obj/item/I in B)
-				if(holdingitems && holdingitems.len >= limit)
+				if(LAZYLEN(holdingitems) >= limit)
 					to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
 					break
 				else
@@ -149,7 +153,7 @@
 			var/anything = 0
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
 				anything = 1
-				beaker_contents += "[R.volume] - [R.name] <A href='?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
+				beaker_contents += "[R.volume] - [R.name] <A href='byond://?src=\ref[src];bottle=[R.id]'>Bottle</a><A href='byond://?src=\ref[src];dispose=[R.id]'>Dispose</a><br>"
 			if(!anything)
 				beaker_contents += "Nothing<br>"
 
@@ -160,14 +164,14 @@
 	[beaker_contents]<hr>
 	"}
 		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
-			dat += "<A href='?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
-			dat += "<A href='?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
-		if(holdingitems && holdingitems.len > 0)
-			dat += "<A href='?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
+		if(LAZYLEN(holdingitems) > 0)
+			dat += "<A href='byond://?src=\ref[src];action=eject'>Eject the reagents</a><BR>"
 		if(beaker)
-			dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
 		if(!linked_storage && tether_range > 0)
-			dat += "<A href='?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
+			dat += "<A href='byond://?src=\ref[src];action=connect'>Connect to smartfridge</a><BR>"
 	else
 		dat += "Please wait..."
 	show_browser(user, "<HEAD><TITLE>[name]</TITLE></HEAD><TT>[dat]</TT>", name, "reagentgrinder")
@@ -237,47 +241,47 @@
 		return
 	linked_storage = locate(/obj/structure/machinery/smartfridge/chemistry) in range(tether_range, src)
 	if(linked_storage)
-		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(linked_storage, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Smartfridge connected."))
 
-/obj/structure/machinery/reagentgrinder/proc/is_allowed(var/obj/item/reagent_container/O)
+/obj/structure/machinery/reagentgrinder/proc/is_allowed(obj/item/reagent_container/O)
 	for(var/i in blend_items)
 		if(istype(O, i))
 			return 1
 	return 0
 
-/obj/structure/machinery/reagentgrinder/proc/get_allowed_by_id(var/obj/item/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_by_id(obj/item/grown/O)
 	for(var/i in blend_items)
 		if(istype(O, i))
 			return blend_items[i]
 
-/obj/structure/machinery/reagentgrinder/proc/get_allowed_snack_by_id(var/obj/item/reagent_container/food/snacks/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_snack_by_id(obj/item/reagent_container/food/snacks/O)
 	for(var/i in blend_items)
 		if(istype(O, i))
 			return blend_items[i]
 
-/obj/structure/machinery/reagentgrinder/proc/get_allowed_juice_by_id(var/obj/item/reagent_container/food/snacks/O)
+/obj/structure/machinery/reagentgrinder/proc/get_allowed_juice_by_id(obj/item/reagent_container/food/snacks/O)
 	for(var/i in juice_items)
 		if(istype(O, i))
 			return juice_items[i]
 
-/obj/structure/machinery/reagentgrinder/proc/get_grownweapon_amount(var/obj/item/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_grownweapon_amount(obj/item/grown/O)
 	if(!istype(O))
 		return 5
 	else if(O.potency == -1)
 		return 5
 	else
-		return round(O.potency)
+		return floor(O.potency)
 
-/obj/structure/machinery/reagentgrinder/proc/get_juice_amount(var/obj/item/reagent_container/food/snacks/grown/O)
+/obj/structure/machinery/reagentgrinder/proc/get_juice_amount(obj/item/reagent_container/food/snacks/grown/O)
 	if(!istype(O))
 		return 5
 	else if(O.potency == -1)
 		return 5
 	else
-		return round(5*sqrt(O.potency))
+		return floor(5*sqrt(O.potency))
 
-/obj/structure/machinery/reagentgrinder/proc/remove_object(var/obj/item/O)
+/obj/structure/machinery/reagentgrinder/proc/remove_object(obj/item/O)
 	holdingitems -= O
 	qdel(O)
 
@@ -345,7 +349,7 @@
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
 				else
 					if(O.reagents != null && O.reagents.has_reagent("nutriment"))
-						beaker.reagents.add_reagent(r_id, min(round(O.reagents.get_reagent_amount("nutriment")*abs(amount)), space))
+						beaker.reagents.add_reagent(r_id, min(floor(O.reagents.get_reagent_amount("nutriment")*abs(amount)), space))
 						O.reagents.remove_reagent("nutriment", min(O.reagents.get_reagent_amount("nutriment"), space))
 
 			else
@@ -354,7 +358,7 @@
 			if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
 				break
 
-		if(O.reagents.reagent_list.len == 0)
+		if(length(O.reagents.reagent_list) == 0)
 			remove_object(O)
 
 	//Sheets

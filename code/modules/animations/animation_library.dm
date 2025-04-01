@@ -7,8 +7,14 @@ functions so that other people won't have to wonder what it actually does.
 /*
 This is something like a gun spin, where the user spins it in the hand.
 Instead of being uniform, it starts out a littler slower, goes fast in the middle, then slows down again.
-4 ticks * 5 = 2.0 seconds. Doesn't loop on default, and spins right.
+4 ticks * 5 = 2 seconds. Doesn't loop on default, and spins right.
 */
+
+/proc/send_animating_signal(atom/A) //following code is intended for signalling pixel shifting animations, unsure of function to others
+	if(istype(A, /mob/living/carbon/human))
+		var/mob/living/carbon/human/H = A
+		SEND_SIGNAL(H, COMSIG_HUMAN_ANIMATING)
+
 /proc/animation_wrist_flick(atom/A, direction = 1, loop_num = 0) //-1 for a left spin.
 	animate(A, transform = matrix(120 * direction, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)
 	animate(transform = matrix(240 * direction, MATRIX_ROTATE), time = 1)
@@ -47,22 +53,22 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 	animate(A, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
 
 //Flashes a color, then goes back to regular.
-/proc/animation_flash_color(atom/A, flash_color = "#FF0000", speed = 3) //Flashes red on default.
+/proc/animation_flash_color(atom/A, flash_color = COLOR_RED, speed = 3) //Flashes red on default.
 	var/oldcolor = A.color
 	animate(A, color = flash_color, time = speed, flags = ANIMATION_PARALLEL)
 	animate(color = oldcolor, time = speed)
 
 /* fuck this, only halloween uses this -spookydonut
 //Gives it a spooky overlay and animation. Same as above, mostly, only adds a cool overlay effect.
-/proc/animation_horror_flick(atom/A, flash_color = "#000000", speed = 4)
+/proc/animation_horror_flick(atom/A, flash_color = COLOR_BLACK, speed = 4)
 	animate(A, color = flash_color, time = speed)
-	animate(color = "#FFFFFF", time = speed)
+	animate(color = COLOR_WHITE, time = speed)
 	var/image/I = image('icons/mob/mob.dmi',A,"spook")
 	I.flick_overlay(A,7)
 
 /proc/animation_blood_spatter(atom/A, flash_color = "#8A0707", speed = 4)
 	animate(A, color = flash_color, time = speed)
-	animate(color = "#FFFFFF", time = speed)
+	animate(color = COLOR_WHITE, time = speed)
 	var/image/I = image('icons/mob/mob.dmi',A,"blood_spatter")
 	if(prob(50))
 		I.transform = matrix(rand(0,45), MATRIX_ROTATE)
@@ -91,13 +97,13 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 /proc/animation_teleport_quick_in(atom/A, speed = 10)
 	A.transform = matrix(0, 4, MATRIX_SCALE)
 	A.alpha = 0 //Start with transparency, just in case.
-	animate(A, alpha = 255, transform = null, color = "#FFFFFF", time = speed, easing = BACK_EASING)
+	animate(A, alpha = 255, transform = null, color = COLOR_WHITE, time = speed, easing = BACK_EASING)
 
 /*A magical teleport animation, for when the person is transported with some magic. Good for Halloween type events.
 Can look good elsewhere as well.*/
 /*proc/animation_teleport_magic_out(atom/A, speed = 6)
 	animate(A, transform = matrix(1.5, 0, MATRIX_SCALE), time = speed, easing = BACK_EASING)
-	animate(transform = matrix(0, 4, MATRIX_SCALE) * matrix(0, 6, MATRIX_TRANSLATE), color = "#FFFF00", time = speed, alpha = 100, easing = BOUNCE_EASING|EASE_IN)
+	animate(transform = matrix(0, 4, MATRIX_SCALE) * matrix(0, 6, MATRIX_TRANSLATE), color = COLOR_YELLOW, time = speed, alpha = 100, easing = BOUNCE_EASING|EASE_IN)
 	animate(alpha = 0, time = speed)
 	var/image/I = image('icons/effects/effects.dmi',A,"sparkle")
 	I.flick_overlay(A,9)
@@ -106,8 +112,8 @@ Can look good elsewhere as well.*/
 /proc/animation_teleport_magic_in(atom/A, speed = 6)
 	A.transform = matrix(0,3.5, MATRIX_SCALE)
 	A.alpha = 0
-	animate(A, alpha = 255, color = "#FFFF00", time = speed, easing = BACK_EASING)
-	animate(transform = matrix(1.5, 0, MATRIX_SCALE), color = "#FFFFFF", time = speed, easing = CIRCULAR_EASING|EASE_OUT)
+	animate(A, alpha = 255, color = COLOR_YELLOW, time = speed, easing = BACK_EASING)
+	animate(transform = matrix(1.5, 0, MATRIX_SCALE), color = COLOR_WHITE, time = speed, easing = CIRCULAR_EASING|EASE_OUT)
 	animate(transform = null, time = speed-1)
 	var/image/I = image('icons/effects/effects.dmi',A,"sparkle")
 	I.flick_overlay(A,10)
@@ -115,7 +121,7 @@ Can look good elsewhere as well.*/
 //A spooky teleport for evil dolls, horrors, and whatever else. Halloween type stuff.
 /proc/animation_teleport_spooky_out(atom/A, speed = 6, sleep_duration = 0)
 	animate(A, transform = matrix() * 1.5, color = "#551a8b", time = speed, easing = BACK_EASING)
-	animate(transform = matrix() * 0.2, alpha = 100, color = "#000000", time = speed, easing = BACK_EASING)
+	animate(transform = matrix() * 0.2, alpha = 100, color = COLOR_BLACK, time = speed, easing = BACK_EASING)
 	animate(alpha = 0, time = speed)
 	var/image/I = image('icons/effects/effects.dmi',A,"spooky")
 	I.flick_overlay(A,9,RESET_COLOR|RESET_ALPHA|TILE_BOUND)
@@ -125,25 +131,25 @@ Can look good elsewhere as well.*/
 	A.transform *= 1.2
 	A.alpha = 0
 	animate(A, alpha = 255, color = "#551a8b", time = speed)
-	animate(transform = null, color = "#FFFFFF", time = speed, easing = QUAD_EASING|EASE_OUT)
+	animate(transform = null, color = COLOR_WHITE, time = speed, easing = QUAD_EASING|EASE_OUT)
 	var/image/I = image('icons/effects/effects.dmi',A,"spooky")
 	I.flick_overlay(A,10)*/
 
 //Regular fadeout disappear, for most objects.
 /proc/animation_destruction_fade(atom/A, speed = 12)
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0 //We don't want them to click this while the animation is still playing.
-	A.density = 0 //So it doesn't block anything.
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT //We don't want them to click this while the animation is still playing.
+	A.density = FALSE //So it doesn't block anything.
 	var/i = 1 + (0.1 * rand(1,5))
-	animate(A, transform = matrix() * i, color = "#808080", time = speed, easing = SINE_EASING)
+	animate(A, transform = matrix() * i, color = COLOR_GRAY, time = speed, easing = SINE_EASING)
 	animate(alpha = 0, time = speed)
 	return speed
 
 //Fadeout when something gets hit. Not completely done yet, as offset doesn't want to cooperate.
 /proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n = rand(10,18))
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0
-	A.density = 0
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	A.density = FALSE
 	var/x_o = initial(A.pixel_x)
 	var/y_o = initial(A.pixel_y)
 	animate(A, transform = matrix() * 1.2,  alpha = 100, pixel_x = x_o + pick(x_n,-x_n), pixel_y = y_o + pick(y_n,-y_n), time = speed, easing = QUAD_EASING|EASE_IN)
@@ -154,8 +160,8 @@ Can look good elsewhere as well.*/
 //Work in progress animation. Needs byond 511 parallel animation to look nice.
 /proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	A.flags_atom |= NOINTERACT
-	A.mouse_opacity = 0
-	A.density = 0
+	A.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	A.density = FALSE
 	var/x_o = initial(A.pixel_x)
 	var/y_o = initial(A.pixel_y)
 	animate(A, pixel_x = x_o+rand(-x_n, x_n), pixel_y = y_o+rand(-y_n, y_n), time = speed, easing = ELASTIC_EASING|EASE_IN)
@@ -166,22 +172,24 @@ Can look good elsewhere as well.*/
 	animate(alpha = 100, matrix(rand(45,90) * pick(1,-1), MATRIX_ROTATE), time = speed)
 	animate(pixel_x = x_o+rand(-x_n, x_n), pixel_y = y_o+rand(-y_n, y_n), time = speed, easing = ELASTIC_EASING|EASE_IN)
 	animate(pixel_x = x_o, pixel_y = y_o, time = speed, easing = CIRCULAR_EASING|EASE_OUT)
-	animate(alpha = 0, color = "#808080", time = speed)
+	animate(alpha = 0, color = COLOR_GRAY, time = speed)
 	var/image/I = image('icons/effects/effects.dmi',A,"red_particles")
 	I.flick_overlay(A,25)
 	return speed*9*/
 
 
 
-/mob/living/proc/animation_attack_on(atom/A, var/pixel_offset = 8)
+/mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
+	send_animating_signal(src)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
-	if(buckled || anchored) return //it would look silly.
+	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED)) //it would look silly.
+		return 
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)
-	pixel_offset = round(pixel_offset) // Just to be safe
+	pixel_offset = floor(pixel_offset) // Just to be safe
 	switch(direction)
 		if(NORTH)
 			pixel_y_diff = pixel_offset
@@ -205,7 +213,6 @@ Can look good elsewhere as well.*/
 			pixel_y_diff = -pixel_offset
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2, flags = ANIMATION_PARALLEL)
 	animate(pixel_x = initial(pixel_x), pixel_y = initial(pixel_y), time = 2)
-
 
 /atom/proc/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	if(!sections)
@@ -237,8 +244,9 @@ Can look good elsewhere as well.*/
 /atom/proc/animation_cancel()
 	animate(src)
 
-/atom/proc/sway_jitter(var/times = 3, var/steps = 3, var/strength = 3, var/sway = 5)
+/atom/proc/sway_jitter(times = 3, steps = 3, strength = 3, sway = 5)
 	var/sway_dir = 1 //left to right
+	send_animating_signal(src)
 	animate(src, transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING, flags = ANIMATION_PARALLEL)
 	for(var/i in 1 to steps)
 		animate(transform = turn(matrix(transform), sway*2 * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING)
@@ -249,7 +257,7 @@ Can look good elsewhere as well.*/
 	var/pre_rappel_alpha = alpha
 	alpha = 20
 	dir = WEST
-	canmove = FALSE
+	ADD_TRAIT(src, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)
 	var/matrix/initial_matrix = matrix()
 	initial_matrix.Turn(45)
 	apply_transform(initial_matrix)
@@ -257,4 +265,4 @@ Can look good elsewhere as well.*/
 	var/matrix/reset_matrix = matrix()
 	animate(src, 3, transform = reset_matrix, pixel_y = 0, alpha = pre_rappel_alpha, flags = ANIMATION_PARALLEL)
 	sleep(3)
-	canmove = TRUE
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, INTERACTION_TRAIT)

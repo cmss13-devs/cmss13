@@ -27,6 +27,11 @@
 	for(var/obj/vehicle/train/T in orange(1, src))
 		latch(T)
 
+/obj/vehicle/train/Destroy(force)
+	. = ..()
+	lead = null
+	tow = null
+
 /obj/vehicle/train/Move()
 	var/old_loc = get_turf(src)
 	. = ..()
@@ -54,8 +59,8 @@
 //-------------------------------------------
 
 
-/obj/vehicle/train/MouseDrop_T(var/atom/movable/C, mob/user as mob)
-	if(user.buckled || user.stat || user.is_mob_restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
+/obj/vehicle/train/MouseDrop_T(atom/movable/C, mob/living/user as mob)
+	if(user.buckled || user.stat || user.is_mob_restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !(user.mobility_flags & MOBILITY_MOVE)))
 		return
 	if(istype(C,/obj/vehicle/train))
 		latch(C, user)
@@ -71,7 +76,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !Adjacent(usr))
+	if(usr.is_mob_incapacitated() || !Adjacent(usr))
 		return
 
 	unattach(usr)
@@ -144,11 +149,11 @@
 	if(!istype(T) || !Adjacent(T))
 		return 0
 
-	var/T_dir = get_dir(src, T)	//figure out where T is wrt src
+	var/T_dir = get_dir(src, T) //figure out where T is wrt src
 
-	if(dir == T_dir) 	//if car is ahead
+	if(dir == T_dir) //if car is ahead
 		src.attach_to(T, user)
-	else if(reverse_direction(dir) == T_dir)	//else if car is behind
+	else if(reverse_direction(dir) == T_dir) //else if car is behind
 		T.attach_to(src, user)
 
 //returns 1 if this is the lead car of the train
@@ -188,5 +193,5 @@
 		T.update_car(train_length, active_engines)
 		T = T.lead
 
-/obj/vehicle/train/proc/update_car(var/train_length, var/active_engines)
+/obj/vehicle/train/proc/update_car(train_length, active_engines)
 	return

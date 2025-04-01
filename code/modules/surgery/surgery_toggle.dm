@@ -3,7 +3,7 @@
 	action_icon_state = "surgery_toggle"
 	var/original_help_safety
 
-/datum/action/surgery_toggle/give_to(var/mob/living/L)
+/datum/action/surgery_toggle/give_to(mob/living/L)
 	..()
 	update_surgery_skill()
 
@@ -18,6 +18,7 @@
 
 // Called when the action is clicked on.
 /datum/action/surgery_toggle/action_activate()
+	. = ..()
 	if(owner.mob_flags & SURGERY_MODE_ON)
 		button.icon_state = "template"
 		owner.mob_flags &= ~SURGERY_MODE_ON

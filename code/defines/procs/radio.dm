@@ -1,9 +1,9 @@
-/proc/get_frequency_name(var/display_freq)
+/proc/get_frequency_name(display_freq)
 	var/freq_text
 
 	// the name of the channel
-	for(var/channel in radiochannels)
-		if(radiochannels[channel] == display_freq)
+	for(var/channel in GLOB.radiochannels)
+		if(GLOB.radiochannels[channel] == display_freq)
 			freq_text = channel
 			break
 

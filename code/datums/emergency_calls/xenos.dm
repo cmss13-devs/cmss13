@@ -9,16 +9,16 @@
 
 /datum/emergency_call/xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal.. oh god, they're in the vent---... Priority Warning: Signal lost."
+	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
 	objectives = "For the Empress!"
 
 
 /datum/emergency_call/xenos/spawn_items()
-	var/turf/drop_spawn	= get_spawn_point(TRUE)
+	var/turf/drop_spawn = get_spawn_point(TRUE)
 	if(istype(drop_spawn))
 		new /obj/effect/alien/weeds/node(drop_spawn) //drop some weeds for xeno plasma regen.
 
-/datum/emergency_call/xenos/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/xenos/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -26,12 +26,12 @@
 
 	var/mob/current_mob = M.current
 
-	var/mob/living/carbon/Xenomorph/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 	if(!leader)
-		new_xeno = new /mob/living/carbon/Xenomorph/Ravager(spawn_loc)
+		new_xeno = new /mob/living/carbon/xenomorph/ravager(spawn_loc)
 		leader = new_xeno
 	else
-		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Spitter, /mob/living/carbon/Xenomorph/Lurker)
+		var/picked = pick(/mob/living/carbon/xenomorph/drone, /mob/living/carbon/xenomorph/spitter, /mob/living/carbon/xenomorph/lurker)
 		new_xeno = new picked(spawn_loc)
 
 	M.transfer_to(new_xeno, TRUE)

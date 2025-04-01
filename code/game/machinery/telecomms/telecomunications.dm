@@ -26,17 +26,17 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/traffic = 0 // value increases as traffic increases
 	var/netspeed = 5 // how much traffic to lose per tick (50 gigabytes/second * netspeed)
 	var/list/autolinkers = list() // list of text/number values to link with
-	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
+	var/list/freq_listening = list(UNIVERSAL_FREQ) // list of frequencies to tune into: if universal frequency is included, will listen to all
 	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
 	var/delay = 10 // how many process() ticks to delay per heat
-	var/long_range_link = 0	// Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
+	var/long_range_link = 0 // Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
 	var/circuitboard = null // string pointing to a circuitboard type
-	var/listening_level = 0	// 0 = auto set in New() - this is the z level that the machine is listening to.
+	var/listening_level = 0 // 0 = auto set in New() - this is the z level that the machine is listening to.
 
-	var/tcomms_machine = FALSE 			// Set to true if the machine is enabling tcomms
-	var/toggled = TRUE 					// Is it toggled on
-	var/on = TRUE						// Is it actually on
-	var/hide = FALSE					// Is it a hidden machine?
+	var/tcomms_machine = FALSE // Set to true if the machine is enabling tcomms
+	var/toggled = TRUE // Is it toggled on
+	var/on = TRUE // Is it actually on
+	var/hide = FALSE // Is it a hidden machine?
 
 //Never allow tecommunications machinery being blown up
 /obj/structure/machinery/telecomms/ex_act(severity)
@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	else
 		icon_state = "[initial(icon_state)]_off"
 
-/obj/structure/machinery/telecomms/power_change(var/area/master_area = null)
+/obj/structure/machinery/telecomms/power_change(area/master_area = null)
 	. = ..()
 	update_state()
 
@@ -71,6 +71,9 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 // When effectively shut down
 /obj/structure/machinery/telecomms/proc/tcomms_shutdown()
 	on = FALSE
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF)
+
 	if(tcomms_machine)
 		SSradio.remove_tcomm_machine(src)
 
@@ -90,13 +93,13 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	update_state()
 
 /obj/structure/machinery/telecomms/emp_act(severity)
+	. = ..()
 	if(prob(100/severity))
 		if(!(stat & EMPED))
 			stat |= EMPED
 			var/duration = (300 * 10)/severity
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
 				stat &= ~EMPED
-	..()
 
 /*
 	The receiver idles and receives messages from subspace-compatible radio equipment;
@@ -108,11 +111,11 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/receiver
 	name = "Subspace Receiver"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "broadcast receiver"
 	desc = "This machine has a dish-like shape and green lights. It is designed to detect and process subspace radio activity."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 1
@@ -130,11 +133,11 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/hub
 	name = "Telecommunication Hub"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "hub"
 	desc = "A mighty piece of hardware used to send/receive massive amounts of data."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1600
 	machinetype = 7
@@ -153,11 +156,11 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/relay
 	name = "Telecommunication Relay"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "relay"
 	desc = "A mighty piece of hardware used to send massive amounts of data far away."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 8
@@ -179,11 +182,11 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/bus
 	name = "Bus Mainframe"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "bus"
 	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 1000
 	machinetype = 2
@@ -201,11 +204,11 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/processor
 	name = "Processor Unit"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "processor"
 	desc = "This machine is used to process large quantities of information."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 600
 	machinetype = 3
@@ -223,11 +226,11 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/server
 	name = "Telecommunication Server"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "comm_server"
 	desc = "A machine used to store data and network statistics."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 300
 	machinetype = 4
@@ -238,13 +241,13 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/logs = 0 // number of logs
 	var/totaltraffic = 0 // gigabytes (if > 1024, divide by 1024 -> terrabytes)
 
-	var/list/memory = list()	// stored memory
-	var/rawcode = ""	// the code to compile (raw text)
-	var/datum/TCS_Compiler/Compiler	// the compiler that compiles and runs the code
-	var/autoruncode = 0		// 1 if the code is set to run every time a signal is picked up
+	var/list/memory = list() // stored memory
+	var/rawcode = "" // the code to compile (raw text)
+	var/datum/TCS_Compiler/Compiler // the compiler that compiles and runs the code
+	var/autoruncode = 0 // 1 if the code is set to run every time a signal is picked up
 
 	var/encryption = "null" // encryption key: ie "password"
-	var/salt = "null"		// encryption salt: ie "123comsat"
+	var/salt = "null" // encryption salt: ie "123comsat"
 							// would add up to md5("password123comsat")
 	var/language = "human"
 	var/obj/item/device/radio/headset/server_radio = null

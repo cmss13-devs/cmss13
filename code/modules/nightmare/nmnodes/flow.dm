@@ -44,9 +44,9 @@
 		node.invoke(context)
 
 /// Same as branch, but selects a subset of the given nodes
-///    amount: how many items to pick
-///    choices: nested nodes to pick from
-///    each node should have a 'weight' key if you want to use weighted pick
+/// amount: how many items to pick
+/// choices: nested nodes to pick from
+/// each node should have a 'weight' key if you want to use weighted pick
 /datum/nmnode/picker
 	id = "pick"
 	var/amount = 1
@@ -64,15 +64,18 @@
 
 /datum/nmnode/picker/resolve(datum/nmcontext/context)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	var/list/datum/nmnode/pickables = choices.Copy()
 	for(var/datum/nmnode/node as anything in pickables)
-		if(isnum(node.raw["weight"]))
-			pickables[node] = node.raw["weight"]
+		pickables[node] = isnum(node.raw["weight"]) ? node.raw["weight"] : 1
 	var/list/datum/nmnode/picked = list()
 	var/remaining = src.amount
+#if defined(UNIT_TESTS)
+	remaining = length(pickables) // Force all to be picked for testing (this could potentially make false positives though)
+#endif
 	while(length(pickables) && remaining > 0)
-		var/datum/nmnode/node = pickweight(pickables)
+		var/datum/nmnode/node = pick_weight(pickables)
 		remaining--
 		pickables -= node
 		picked += node

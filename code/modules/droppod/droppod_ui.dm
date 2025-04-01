@@ -42,6 +42,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/background/cam_background
 	var/map_name
+	var/list/cam_plane_masters
 
 	var/list/ordered_area = list()
 	var/list/launch_list = list()
@@ -76,7 +77,8 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 /datum/admin_podlauncher/proc/refresh_bay()
 	bay = locate(/area/admin/droppod/loading) in GLOB.sorted_areas
 	if(!bay)
-		to_chat(SPAN_WARNING("There's no /area/admin/droppod/loading. You can make one yourself, but yell at the mappers to fix this."))
+		if(holder)
+			to_chat(holder, SPAN_WARNING("There's no /area/admin/droppod/loading. You can make one yourself, but yell at the mappers to fix this."))
 		CRASH("No /area/admin/droppod/loading has been mapped into the admin z-level!")
 	ordered_area = list()
 	for(var/turf/T in bay)
@@ -88,7 +90,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	var/list/acceptableTurfs = list()
 	for (var/t in ordered_area) //Go through the orderedArea list
 		var/turf/unchecked_turf = t
-		if (typecache_filter_list_reverse(unchecked_turf.contents, ignored_atoms).len != 0) //if there is something in this turf that isn't in the blacklist, we consider this turf "acceptable" and add it to the acceptableTurfs list
+		if (length(typecache_filter_list_reverse(unchecked_turf.contents, ignored_atoms)) != 0) //if there is something in this turf that isn't in the blacklist, we consider this turf "acceptable" and add it to the acceptableTurfs list
 			acceptableTurfs.Add(unchecked_turf) //Because orderedArea was an ordered linear list, acceptableTurfs will be as well.
 
 	launch_list = list() //Anything in launch_list will go into the supplypod when it is launched
@@ -131,17 +133,37 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	map_name = "admin_supplypod_bay_[REF(src)]_map"
 	// Initialize map objects
 	cam_screen = new
+	cam_screen.icon = null
 	cam_screen.name = "screen"
 	cam_screen.assigned_map = map_name
 	cam_screen.del_on_map_removal = TRUE
 	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_screen.appearance_flags |= TILE_BOUND
 
 	cam_background = new
 	cam_background.assigned_map = map_name
 	cam_background.del_on_map_removal = TRUE
+	cam_background.appearance_flags |= TILE_BOUND
+
+	cam_plane_masters = list()
+	for(var/plane in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/instance = new plane()
+		add_plane(instance)
+
 	refresh_view()
 	holder.register_map_obj(cam_screen)
 	holder.register_map_obj(cam_background)
+	for(var/plane_id in cam_plane_masters)
+		holder.register_map_obj(cam_plane_masters[plane_id])
+
+/datum/admin_podlauncher/proc/add_plane(atom/movable/screen/plane_master/instance)
+	instance.assigned_map = map_name
+	instance.appearance_flags |= TILE_BOUND
+	instance.del_on_map_removal = FALSE
+	if(instance.blend_mode_override)
+		instance.blend_mode = instance.blend_mode_override
+	instance.screen_loc = "[map_name]:CENTER"
+	cam_plane_masters["[instance.plane]"] = instance
 
 /datum/admin_podlauncher/proc/refresh_view()
 	switch(tab_index)
@@ -174,17 +196,17 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
 
-/datum/admin_podlauncher/proc/set_target_mode(var/mode)
+/datum/admin_podlauncher/proc/set_target_mode(mode)
 	if(mode == target_mode)
 		return
 
 	switch(mode)
 		if(TARGET_MODE_DROPOFF)
-			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, .proc/mouse_dropoff, TRUE)
-			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, .proc/select_dropoff_target, TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, PROC_REF(mouse_dropoff), TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, PROC_REF(select_dropoff_target), TRUE)
 		if(TARGET_MODE_LAUNCH)
-			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, .proc/mouse_launch, TRUE)
-			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, .proc/select_launch_target, TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_RESET_VIEW, PROC_REF(mouse_launch), TRUE)
+			RegisterSignal(holder, COMSIG_CLIENT_PRE_CLICK, PROC_REF(select_launch_target), TRUE)
 		else
 			UnregisterSignal(holder, list(
 				COMSIG_CLIENT_RESET_VIEW,
@@ -193,10 +215,10 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	holder.mob.reset_view()
 	target_mode = mode
 
-/datum/admin_podlauncher/proc/select_launch_target(var/client/C, var/atom/target, var/list/mods)
+/datum/admin_podlauncher/proc/select_launch_target(client/C, atom/target, list/mods)
 	SIGNAL_HANDLER
 
-	var/left_click = mods["left"]
+	var/left_click = mods[LEFT_CLICK]
 
 	if(!left_click || istype(target,/atom/movable/screen))
 		return
@@ -205,27 +227,28 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	target = get_turf(target)
 	launch(target)
 
-	message_staff("[key_name_admin(C)] launched a droppod", target.x, target.y, target.z)
+	message_admins("[key_name_admin(C)] launched a droppod", target.x, target.y, target.z)
 	return COMPONENT_INTERRUPT_CLICK
 
-/datum/admin_podlauncher/proc/mouse_launch(var/client/C)
+/datum/admin_podlauncher/proc/mouse_launch(client/C)
 	SIGNAL_HANDLER
 	C.mouse_pointer_icon = 'icons/effects/mouse_pointer/supplypod_target.dmi' //Icon for when mouse is released
 
-/datum/admin_podlauncher/proc/select_dropoff_target(var/client/C, var/atom/target, var/list/mods)
+/datum/admin_podlauncher/proc/select_dropoff_target(client/C, atom/target, list/mods)
 	SIGNAL_HANDLER
-	var/left_click = mods["left"]
+	var/left_click = mods[LEFT_CLICK]
 
 	if(!left_click || istype(target,/atom/movable/screen))
 		return
 
 	custom_dropoff = TRUE
 	temp_pod.dropoff_point = get_turf(target)
-	to_chat(SPAN_NOTICE("You have selected [temp_pod.dropoff_point] as your dropoff location."))
+	if(holder)
+		to_chat(holder, SPAN_NOTICE("You have selected [temp_pod.dropoff_point] as your dropoff location."))
 	SStgui.update_uis(src)
 	return COMPONENT_INTERRUPT_CLICK
 
-/datum/admin_podlauncher/proc/mouse_dropoff(var/client/C)
+/datum/admin_podlauncher/proc/mouse_dropoff(client/C)
 	SIGNAL_HANDLER
 	C.mouse_pointer_icon = 'icons/effects/mouse_pointer/supplypod_pickturf.dmi' //Icon for when mouse is released
 
@@ -324,7 +347,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 				old_location = M.loc
 			var/turf/target_turf = pick(get_area_turfs(bay))
 			M.forceMove(target_turf)
-			message_staff("[key_name_admin(usr)] jumped to [bay].")
+			message_admins("[key_name_admin(usr)] jumped to [bay].")
 			. = TRUE
 		if("goto_dropoff")
 			var/mob/M = holder.mob //We teleport whatever mob the client is attached to at the point of clicking
@@ -333,7 +356,7 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 			if (current_location != dropoff_turf)
 				old_location = current_location
 			M.forceMove(dropoff_turf) //Perform the actual teleport
-			message_staff("[key_name(usr)] jumped to [get_area(dropoff_turf)]")
+			message_admins("[key_name(usr)] jumped to [get_area(dropoff_turf)]")
 			. = TRUE
 		if("goto_prev_turf")
 			var/mob/M = holder.mob
@@ -430,4 +453,5 @@ GLOBAL_LIST_INIT(droppod_target_mode, list(
 	user.client?.clear_map(map_name)
 	QDEL_NULL(cam_screen)
 	QDEL_NULL(cam_background)
+	QDEL_LIST_ASSOC_VAL(cam_plane_masters)
 	qdel(src)

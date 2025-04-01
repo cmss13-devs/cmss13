@@ -7,17 +7,15 @@
 	var/obj/item/locked = null
 	var/id = null
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
-						 //Setting this to 1 will set src.locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
+						//Setting this to 1 will set src.locked to null after a player enters the portal and will not allow hand-teles to open portals to that location.
 
 /obj/structure/machinery/computer/teleporter/Initialize()
 	. = ..()
+
 	src.id = "[rand(1000, 9999)]"
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "telecomp-wires")
-	return
 
-/obj/structure/machinery/computer/teleporter/Initialize()
-	. = ..()
 	var/obj/structure/machinery/teleport/station/station = locate(/obj/structure/machinery/teleport/station, get_step(src, dir))
 	var/obj/structure/machinery/teleport/hub/hub
 	if(station)
@@ -31,6 +29,10 @@
 		hub.com = src
 		hub.setDir(dir)
 
+/obj/structure/machinery/computer/teleporter/Destroy()
+	QDEL_NULL(locked)
+	. = ..()
+
 /obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
 		var/obj/item/card/data/C = I
@@ -41,8 +43,10 @@
 
 		for(var/i in GLOB.teleporter_landmarks)
 			var/obj/effect/landmark/sloc = i
-			if(sloc.name != C.data) continue
-			if(locate(/mob/living) in sloc.loc) continue
+			if(sloc.name != C.data)
+				continue
+			if(locate(/mob/living) in sloc.loc)
+				continue
 			L = sloc
 			break
 
@@ -74,12 +78,12 @@
 
 			src.add_fingerprint(usr)
 	else
-		..()
+		. = ..()
 
 	return
 
-/obj/structure/machinery/teleport/station/attack_remote()
-	src.attack_hand()
+/obj/structure/machinery/computer/teleport/station/attack_remote()
+	attack_hand()
 
 /obj/structure/machinery/computer/teleporter/attack_hand()
 	if(inoperable())
@@ -93,7 +97,7 @@
 		var/turf/T = get_turf(R)
 		if (!T)
 			continue
-		if(is_admin_level(T.z))
+		if(should_block_game_interaction(T))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])
@@ -112,8 +116,10 @@
 				if (M.timeofdeath + 6000 < world.time)
 					continue
 			var/turf/T = get_turf(M)
-			if(T)	continue
-			if(is_admin_level(T.z))	continue
+			if(T)
+				continue
+			if(should_block_game_interaction(T))
+				continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
@@ -146,18 +152,19 @@
 	return
 
 /proc/find_loc(obj/R as obj)
-	if (!R)	return null
+	if (!R) return null
 	var/turf/T = R.loc
 	while(!istype(T, /turf))
 		T = T.loc
-		if(!T || istype(T, /area))	return null
+		if(!T || istype(T, /area))
+			return null
 	return T
 
 /obj/structure/machinery/teleport
 	name = "teleport"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	var/lockeddown = 0
 
 
@@ -176,6 +183,11 @@
 	. = ..()
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "tele-wires")
+
+/obj/structure/machinery/teleport/hub/Destroy()
+	QDEL_NULL(com)
+	. = ..()
+
 
 /obj/structure/machinery/teleport/hub/Collided(atom/movable/AM)
 	spawn()
@@ -205,7 +217,7 @@
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
-		spawn(5 MINUTES)	accurate = 0 //Accurate teleporting for 5 minutes
+		spawn(5 MINUTES) accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
 			B.show_message(SPAN_NOTICE("Test fire completed."), SHOW_MESSAGE_AUDIBLE)
 	return
@@ -313,7 +325,11 @@
 	overlays.Cut()
 	overlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "controller-wires")
 
-/obj/structure/machinery/teleport/station/attackby(var/obj/item/W)
+/obj/structure/machinery/teleport/station/Destroy()
+	QDEL_NULL(com)
+	. = ..()
+
+/obj/structure/machinery/teleport/station/attackby(obj/item/W)
 	src.attack_hand()
 
 /obj/structure/machinery/teleport/station/attack_remote()
@@ -388,8 +404,8 @@
 	name = "laser"
 	desc = "IT BURNS!!!"
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
-	var/damage = 0.0
-	var/range = 10.0
+	var/damage = 0
+	var/range = 10
 
 
 /obj/effect/laser/Collide(atom/A)

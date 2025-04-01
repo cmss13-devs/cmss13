@@ -2,10 +2,10 @@
 	var/name = ""
 	var/id = FLAMESHAPE_NONE
 
-/datum/flameshape/proc/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
+/datum/flameshape/proc/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	return
 
-/datum/flameshape/proc/generate_fire(var/turf/T, var/obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call, var/skip_flame = FALSE, var/fuel_pressure = 1)
+/datum/flameshape/proc/generate_fire(turf/T, obj/flamer_fire/F2, new_spread_amt, fs, should_call, skip_flame = FALSE, fuel_pressure = 1)
 	var/obj/flamer_fire/foundflame = locate() in T
 	if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
 		return
@@ -25,10 +25,10 @@
 	name = "Default"
 	id = FLAMESHAPE_DEFAULT
 
-/datum/flameshape/default/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
+/datum/flameshape/default/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	var/turf/T
 	var/turf/source_turf = get_turf(F.loc)
-	for(var/dirn in cardinal)
+	for(var/dirn in GLOB.cardinals)
 		T = get_step(source_turf, dirn)
 		if(istype(T, /turf/open/space))
 			continue
@@ -52,7 +52,7 @@
 					break
 				new_spread_amt = 0
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure), 0)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure), 0)
 
 
 /datum/flameshape/default/irregular
@@ -64,21 +64,22 @@
 	id = FLAMESHAPE_STAR
 
 /datum/flameshape/star/proc/dirs_to_use()
-	return alldirs
+	return GLOB.alldirs
 
-/datum/flameshape/star/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
-	fire_spread_amount = Floor(fire_spread_amount * 1.5) // branch 'length'
+/datum/flameshape/star/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
+	fire_spread_amount = floor(fire_spread_amount * 1.5) // branch 'length'
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/list/dirs = dirs_to_use()
 
 	for(var/dirn in dirs)
 		var/endturf = get_ranged_target_turf(F, dirn, fire_spread_amount)
-		var/list/turfs = getline2(source_turf, endturf)
+		var/list/turfs = get_line(source_turf, endturf)
 
 		var/turf/prev_T = source_turf
 		for(var/turf/T in turfs)
-			if(istype(T,/turf/open/space)) continue
+			if(istype(T,/turf/open/space))
+				continue
 			if(T == F.loc)
 				prev_T = T
 				continue
@@ -93,7 +94,7 @@
 				if (A.flags_atom & ON_BORDER)
 					break
 
-			addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_MINORSTAR, null, FALSE, fuel_pressure), 0)
+			addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_MINORSTAR, null, FALSE, fuel_pressure), 0)
 			prev_T = T
 
 /datum/flameshape/star/minor
@@ -102,29 +103,23 @@
 
 /datum/flameshape/star/minor/dirs_to_use()
 	if(prob(50))
-		return cardinal
+		return GLOB.cardinals
 	else
-		return diagonals
+		return GLOB.diagonals
 
 /datum/flameshape/line
 	name = "Line"
 	id = FLAMESHAPE_LINE
 
-/datum/flameshape/line/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
+/datum/flameshape/line/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	var/turf/source_turf = get_turf(F.loc)
 
-	var/turf/prev_T = F.loc
-
-	var/mob/user
-	if(F.weapon_cause_data)
-		user = F.weapon_cause_data.resolve_mob()
-	if(user)
-		prev_T = user.loc
+	var/turf/prev_T
 
 	var/distance = 1
 	var/stop_at_turf = FALSE
 
-	var/list/turfs = getline2(source_turf, F.target_clicked)
+	var/list/turfs = get_line(source_turf, F.target_clicked)
 	for(var/turf/T in turfs)
 		if(istype(T, /turf/open/space))
 			break
@@ -135,7 +130,7 @@
 		if(T.density)
 			T.flamer_fire_act(burn_dam, F.weapon_cause_data)
 			stop_at_turf = TRUE
-		else
+		else if(prev_T)
 			var/obj/flamer_fire/temp = new()
 			var/atom/A = LinkBlocked(temp, prev_T, T)
 
@@ -145,13 +140,13 @@
 					break
 				stop_at_turf = TRUE
 
-		if(T == F.loc || (user && T == user.loc))
+		if(T == F.loc)
 			if(stop_at_turf)
 				break
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape, null, TRUE, fuel_pressure), distance)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, F.flameshape, null, TRUE, fuel_pressure), distance)
 		if(stop_at_turf)
 			break
 
@@ -165,19 +160,14 @@
 	name = "Triangle"
 	id = FLAMESHAPE_TRIANGLE
 
-/datum/flameshape/triangle/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
+/datum/flameshape/triangle/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	set waitfor = 0
 
-	var/mob/user
-
-	if(F.weapon_cause_data)
-		user = F.weapon_cause_data.resolve_mob()
-
-	var/unleash_dir = user.dir
-	var/list/turf/turfs = getline2(F, F.target_clicked)
+	var/unleash_dir = get_cardinal_dir(F, F.target_clicked)
+	var/list/turf/turfs = get_line(F, F.target_clicked)
 	var/distance = 1
 	var/hit_dense_atom_mid = FALSE
-	var/turf/prev_T = user.loc
+	var/turf/prev_T
 
 	for(var/turf/T in turfs)
 		if(distance > fire_spread_amount)
@@ -203,7 +193,7 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
+		addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
 		prev_T = T
 		sleep(1)
 

@@ -5,6 +5,10 @@
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "grenade"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi',
+	)
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	flags_atom = FPRINT|CONDUCT
@@ -13,19 +17,19 @@
 	allowed_sensors = list(/obj/item/device/assembly/timer)
 	max_container_volume = 60
 	var/det_time = 40
-	var/dangerous = 0		//Make an danger overlay for humans?
+	var/dangerous = FALSE //Make an danger overlay for humans?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/has_arm_sound = TRUE
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
-	harmful = TRUE	//Is it harmful? Are they banned for synths?
-	antigrief_protection = TRUE	//Should it be checked by antigrief?
+	harmful = TRUE //Is it harmful? Are they banned for synths?
+	antigrief_protection = TRUE //Should it be checked by antigrief?
+	ground_offset_x = 7
+	ground_offset_y = 6
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
 	det_time = max(0, rand(det_time - 5, det_time + 5))
-	pixel_y = rand(-6, 6)
-	pixel_x = rand(-7, 7)
 
 /obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)
@@ -36,8 +40,11 @@
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return FALSE
 
-	if(harmful && !user.allow_gun_usage)
+	if(harmful && ishuman(user) && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+		return FALSE
+
+	if(HAS_TRAIT(user, TRAIT_HAULED)) // If somehow they have a grenade in hand while hauled, we don't want them to prime it
 		return FALSE
 
 	return TRUE
@@ -63,7 +70,7 @@
 	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
 		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
-		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 		return
 
 	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)
@@ -75,7 +82,7 @@
 
 	cause_data = create_cause_data(initial(name), user)
 
-	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
+	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"),
 	SPAN_WARNING("You prime \a [name]!"))
 	msg_admin_attack("[key_name(user)] primed \a grenade ([name]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'> [key_name(user)] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z])</font>")
@@ -106,11 +113,11 @@
 		activate_sensors()
 	else
 		active = TRUE
-		det_time ? addtimer(CALLBACK(src, .proc/prime), det_time) : prime()
+		det_time ? addtimer(CALLBACK(src, PROC_REF(prime)), det_time) : prime()
 	w_class = SIZE_MASSIVE // We cheat a little, primed nades become massive so they cant be stored anywhere
 	update_icon()
 
-/obj/item/explosive/grenade/prime(var/force = FALSE)
+/obj/item/explosive/grenade/prime(force = FALSE)
 	..()
 	if(!QDELETED(src))
 		w_class = initial(w_class)
@@ -118,10 +125,10 @@
 /obj/item/explosive/grenade/update_icon()
 	if(active && dangerous)
 		overlays+=new/obj/effect/overlay/danger
-		dangerous = 0
+		dangerous = FALSE
 	. = ..()
 
-/obj/item/explosive/grenade/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/explosive/grenade/launch_towards(datum/launch_metadata/LM)
 	if(active && ismob(LM.thrower))
 		var/mob/M = LM.thrower
 		M.count_niche_stat(STATISTICS_NICHE_GRENADES)

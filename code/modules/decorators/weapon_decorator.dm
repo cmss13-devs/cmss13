@@ -14,7 +14,7 @@
 /datum/decorator/manual/weapon_decorator/get_decor_types()
 	return list(text2path(weapon_type))
 
-/datum/decorator/manual/weapon_decorator/decorate(var/atom/object)
+/datum/decorator/manual/weapon_decorator/decorate(atom/object)
 	var/obj/item/weapon/gun/G = object
 	if(!istype(G))
 		return
@@ -47,7 +47,7 @@
 /datum/decorator/manual/item_decorator/get_decor_types()
 	return list(text2path(item_type))
 
-/datum/decorator/manual/item_decorator/decorate(var/atom/object)
+/datum/decorator/manual/item_decorator/decorate(atom/object)
 	var/obj/item/I = object
 	if(icon)
 		I.icon = icon

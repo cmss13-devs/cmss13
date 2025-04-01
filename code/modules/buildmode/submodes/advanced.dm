@@ -15,8 +15,8 @@
 	var/list/ignore_vars = list("old_turf", "loc", "ckey", "key", "vars", "verbs", \
 		"locs", "contents", "vis_locs", "vis_contents", "client", "linked_pylons", \
 		"x", "y", "z", "disposed")
- 	// Might be better to move to a whitelist system instead. If there are too many runtimes/issues,
- 	// turn this into a whitelist system and whitelist vars like icon_state, overlays and ids
+	// Might be better to move to a whitelist system instead. If there are too many runtimes/issues,
+	// turn this into a whitelist system and whitelist vars like icon_state, overlays and ids
 
 	var/list/ignore_types = list(/atom)
 
@@ -61,7 +61,7 @@
 			var/obj/A = new objholder (get_turf(object))
 			A.setDir(BM.build_dir)
 			if(shift_click)
-				addtimer(CALLBACK(src, .proc/apply_copied_vars_shallow, A), 1)
+				addtimer(CALLBACK(src, PROC_REF(apply_copied_vars_shallow), A), 1)
 			log_admin("Build Mode: [key_name(c)] modified [A]'s [COORD(A)] dir to [BM.build_dir]")
 		else
 			to_chat(c, SPAN_WARNING("Select object type first."))
@@ -70,7 +70,7 @@
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")
 			qdel(object)
 
-/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(var/atom/A)
+/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(atom/A)
 	if(ismob(A))
 		return
 
@@ -85,16 +85,19 @@
 
 		A.vars[variable] = temp_value
 
-/datum/buildmode_mode/advanced/proc/filter_vars(var/atom/A)
+/datum/buildmode_mode/advanced/proc/filter_vars(atom/A)
 	var/list/filtered_vars = list()
 
 	for(var/variable in A.vars)
 		if(!(variable in must_include))
-			if(variable in ignore_vars) continue
-			if(A.vars[variable] == initial(A.vars[variable])) continue
+			if(variable in ignore_vars)
+				continue
+			if(A.vars[variable] == initial(A.vars[variable]))
+				continue
 
 			for(var/type in ignore_types)
-				if(istype(A.vars[variable], type)) continue
+				if(istype(A.vars[variable], type))
+					continue
 
 		filtered_vars += list("[variable]" = A.vars[variable])
 

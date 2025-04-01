@@ -8,7 +8,7 @@
 	if(alert("Confirm deadmin? This procedure can be reverted at any time and will not carry over to next round, but you will lose all your admin powers in the meantime.", , "Yes", "No") != "Yes")
 		return
 
-	message_staff("[src] de-admined themselves.")
+	message_admins("[src] de-admined themselves.")
 	add_verb(src, /client/proc/readmin_self)
 	deadmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You are now a normal player. You can ascend back to adminhood at any time using the 'Re-admin Self' verb in your Admin panel.</big></span><br>")
@@ -20,7 +20,7 @@
 	remove_verb(src, /client/proc/readmin_self)
 	readmin()
 	to_chat(src, "<br><br><span class='centerbold'><big>You have ascended back to adminhood. All your verbs should be back where you left them.</big></span><br>")
-	message_staff("[src] re-admined themselves.")
+	message_admins("[src] re-admined themselves.")
 
 /client/proc/becomelarva()
 	set name = "Lose Larva Protection"
@@ -29,21 +29,12 @@
 
 	if(!admin_holder)
 		return
+	if(!isobserver(mob))
+		to_chat(usr, SPAN_WARNING("You must be a ghost to use this."))
 
-	if(istype(mob,/mob/dead/observer))
-		var/mob/dead/observer/ghost = mob
-		if(ghost.adminlarva == 0)
-			ghost.adminlarva = 1
-			to_chat(usr, SPAN_BOLDNOTICE("You have disabled your larva protection."))
-		else if(ghost.adminlarva == 1)
-			ghost.adminlarva = 0
-			to_chat(usr, SPAN_BOLDNOTICE("You have re-activated your larva protection."))
-		else
-			to_chat(usr, SPAN_BOLDNOTICE("Something went wrong tell a coder"))
-	else if(istype(mob,/mob/new_player))
-		to_chat(src, "<font color='red'>Error: Lose larva Protection: Can't lose larva protection whilst in the lobby. Observe first.</font>")
-	else
-		to_chat(src, "<font color='red'>Error: Lose larva Protection: You must be a ghost to use this.</font>")
+	var/mob/dead/observer/ghost = mob
+	ghost.admin_larva_protection = !ghost.admin_larva_protection
+	to_chat(usr, SPAN_BOLDNOTICE("You have [ghost.admin_larva_protection ? "en" : "dis"]abled your larva protection."))
 
 /client/proc/unban_panel()
 	set name = "Unban Panel"
@@ -52,6 +43,12 @@
 	if(admin_holder)
 		admin_holder.unbanpanel()
 	return
+
+/client/proc/stickyban_panel()
+	set name = "Stickyban Panel"
+	set category = "Admin.Panels"
+
+	admin_holder?.stickypanel()
 
 /client/proc/player_panel_new()
 	set name = "Player Panel"
@@ -95,9 +92,9 @@
 	var/mob/body = mob
 	body.ghostize(TRUE, TRUE)
 	if(body && !body.key)
-		body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
+		body.key = "@[key]" //Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		if(body.client)
-			body.client.change_view(world_view_size) //reset view range to default.
+			body.client.change_view(GLOB.world_view_size) //reset view range to default.
 
 		//re-open STUI
 	if(new_STUI)
@@ -121,7 +118,7 @@
 		if(isobserver(mob))
 			mob.invisibility = INVISIBILITY_MAXIMUM
 			mob.alpha = 0
-			mob.mouse_opacity = 0
+			mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 	admin_holder.invisimined = !admin_holder.invisimined
 
@@ -142,7 +139,7 @@
 		to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ANNOUNCEMENT_HEADER_ADMIN(" <b>[usr.client.admin_holder.fakekey ? "Administrator" : usr.key] Announces:</b>\n \t [message]"))
 		log_admin("Announce: [key_name(usr)] : [message]")
 
-/datum/admins/proc/player_notes_show(var/key as text)
+/datum/admins/proc/player_notes_show(key as text)
 	set name = "Player Notes Show"
 	set category = "Admin"
 	if (!istype(src,/datum/admins))
@@ -156,8 +153,22 @@
 		to_chat(usr, "Error: notes not yet migrated for that key. Please try again in 5 minutes.")
 		return
 
-	var/dat = "<html>"
-	dat += "<body>"
+	var/dat = {"
+	<table width='100%'>
+	<tr>
+	<td width='20%'>
+	<div align='center'>
+	<b>Search:</b>
+	</div>
+	</td>
+	<td width='80%'>
+	<input type='search' id='filter' onkeyup='handle_filter()' onblur='handle_filter()' name='filter_text' value='' style='width:99%;'>
+	</td>
+	</tr>
+	</table>
+	<br>
+	<table border=0 rules=all frame=void cellspacing=0 cellpadding=3 id='searchable'>
+	"}
 
 	var/list/datum/view_record/note_view/NL = DB_VIEW(/datum/view_record/note_view, DB_COMP("player_ckey", DB_EQUALS, key))
 	for(var/datum/view_record/note_view/N as anything in NL)
@@ -169,26 +180,48 @@
 		if(N.is_ban)
 			var/ban_text = N.ban_time ? "Banned for [N.ban_time] | " : ""
 			color = "#880000"
-			dat += "<font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
+			dat += "<tr><td><font color=[color]>[ban_text][N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
 		else
 			if(N.is_confidential)
 				color = "#AA0055"
 
-			dat += "<font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date]</i></font> "
-		dat += "<br><br>"
+			dat += "<tr><td><font color=[color]>[N.text]</font> <i>by [admin_ckey] ([N.admin_rank])</i>[confidential_text] on <i><font color=blue>[N.date] [NOTE_ROUND_ID(N)]</i></font> "
+		dat += "</td></tr>"
 
-	dat += "<br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
-	dat += "<A href='?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
+	dat += "</table><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info=[key]'>Add Note</A><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
+	dat += "<A href='byond://?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
 
-	dat += "</body></html>"
-	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
+	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", width = 480, height = 480)
+
+/datum/admins/proc/check_ckey(target_key as text)
+	set name = "Check CKey"
+	set category = "Admin"
+
+	var/mob/user = usr
+	if (!istype(src, /datum/admins))
+		src = user.client.admin_holder
+	if (!istype(src, /datum/admins) || !(rights & R_MOD))
+		to_chat(user, "Error: you are not an admin!")
+		return
+	target_key = ckey(target_key)
+	if(!target_key)
+		to_chat(user, "Error: No key detected!")
+		return
+	to_chat(user, SPAN_WARNING("Checking Ckey: [target_key]"))
+	var/list/keys = analyze_ckey(target_key)
+	if(!keys)
+		to_chat(user, SPAN_WARNING("No results for [target_key]."))
+		return
+	to_chat(user, SPAN_WARNING("Check CKey Results: [keys.Join(", ")]"))
+
+	log_admin("[key_name(user)] analyzed ckey '[target_key]'")
 
 /datum/admins/proc/sleepall()
 	set name = "Sleep All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(0))
 		return
@@ -200,12 +233,12 @@
 		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
 		M.AddSleepingIcon()
 
-	message_staff("[key_name(usr)] used Toggle Sleep In View.")
+	message_admins("[key_name(usr)] used Toggle Sleep In View.")
 
 /datum/admins/proc/wakeall()
 	set name = "Wake All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!check_rights(0))
 		return
@@ -216,31 +249,55 @@
 		M.sleeping = 0 //set their sleep to zero and remove their icon
 		M.RemoveSleepingIcon()
 
-	message_staff("[key_name(usr)] used Toggle Wake In View.")
+	message_admins("[key_name(usr)] used Toggle Wake In View.")
+
+/client/proc/cmd_mod_say(msg as text)
+	set name = "Msay" // This exists for ease of admins who were used to using msay instead of asay
+	set category = "Admin"
+	set hidden = TRUE
+
+	cmd_admin_say(msg)
 
 /client/proc/cmd_admin_say(msg as text)
 	set name = "Asay" //Gave this shit a shorter name so you only have to time out "asay" rather than "admin say" to use it --NeoFite
 	set category = "Admin"
-	set hidden = 1
+	set hidden = TRUE
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN|R_MOD))
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	if(!msg)
+
+	if (!msg)
 		return
 
-	log_adminpm("ADMIN : [key_name(src)] : [msg]")
+	REDIS_PUBLISH("byond.asay", "author" = src.key, "message" = strip_html(msg), "admin" = CLIENT_HAS_RIGHTS(src, R_ADMIN), "rank" = admin_holder.rank)
 
-	var/color = "adminsay"
-	if(ishost(usr))
-		color = "headminsay"
+	if(findtext(msg, "@") || findtext(msg, "#"))
+		var/list/link_results = check_asay_links(msg)
+		if(length(link_results))
+			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
+			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
+			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
+			for(var/iter_ckey in pinged_admin_clients)
+				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
+				if(!iter_admin_client?.admin_holder)
+					continue
+				window_flash(iter_admin_client)
+				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
 
-	if(check_rights(R_ADMIN,0))
-		msg = "<span class='[color]'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>"
-		for(var/client/C in GLOB.admins)
-			if(R_ADMIN & C.admin_holder.rights)
-				to_chat(C, msg)
+	log_adminpm("ADMIN: [key_name(src)] : [msg]")
+
+	var/color = "mod"
+	if(check_rights(R_PERMISSIONS, show_msg = FALSE))
+		color = "adminmod"
+
+	var/channel = "ADMIN:"
+	channel = "[admin_holder.rank]:"
+	var/ooc_prefix = handle_ooc_prefix()
+	for(var/client/client as anything in GLOB.admins)
+		if((R_ADMIN|R_MOD) & client.admin_holder.rights)
+			to_chat(client, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM>[key_name(src,1)]</EM> [ADMIN_JMP_USER(mob)]: <span class='message'>[msg]</span></span>")
 
 /datum/admins/proc/alertall()
 	set name = "Alert All"
@@ -251,14 +308,16 @@
 		return
 
 	var/message = input(src, "Input your custom admin alert text:", "Message") as text|null
-	if(!message) return
+	if(!message)
+		return
 	var/color = input(src, "Input your message color:", "Color Selector") as color|null
-	if(!color) return
+	if(!color)
+		return
 
 	for(var/mob/living/mob in view(usr.client))
 		show_blurb(mob, 15, message, null, "center", "center", color, null, null, 1)
 	log_admin("[key_name(src)] sent an In View admin alert with custom message [message].")
-	message_staff("[key_name(src)] sent an In View admin alert with custom message [message].")
+	message_admins("[key_name(src)] sent an In View admin alert with custom message [message].")
 
 /datum/admins/proc/directnarrateall()
 	set name = "Direct Narrate All"
@@ -274,8 +333,8 @@
 
 	for(var/mob/living/mob in view(usr.client))
 		to_chat(mob, SPAN_ANNOUNCEMENT_HEADER_BLUE(message))
-	log_admin("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
-	message_staff("[key_name(src)] sent a Direct Narrate in View with custom message \"[message]\".")
+	log_admin("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
+	message_admins("[key_name(usr)] sent a Direct Narrate in View with custom message \"[message]\".")
 
 #define SUBTLE_MESSAGE_IN_HEAD "Voice in Head"
 #define SUBTLE_MESSAGE_WEYLAND "Weyland-Yutani"
@@ -292,11 +351,11 @@
 
 	var/list/subtle_message_options = list(SUBTLE_MESSAGE_IN_HEAD, SUBTLE_MESSAGE_WEYLAND, SUBTLE_MESSAGE_USCM, SUBTLE_MESSAGE_FACTION)
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
+	if(!message_option)
+		return
 
 	if(message_option == SUBTLE_MESSAGE_FACTION)
 		var/faction = input("Choose which faction", "") as text|null
-		if(!faction)
-			return
 		message_option = faction
 
 	var/input = input("Contents of the message", text("Subtle PM to In View")) as text|null
@@ -308,7 +367,7 @@
 		if(SUBTLE_MESSAGE_IN_HEAD)
 			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("You hear a voice in your head... [input]")
 		else
-			message = SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
+			message = SPAN_ANNOUNCEMENT_HEADER_BLUE("Message received through headset. [message_option] Transmission <b>\"[input]\"</b>")
 
 	for(var/mob/living/carbon/human/mob in view(usr.client))
 		if(message_option == SUBTLE_MESSAGE_IN_HEAD)
@@ -316,7 +375,7 @@
 		else
 			if(mob.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(mob, message)
-	message_staff("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\".")
+	message_admins(SPAN_STAFF_IC("[key_name(usr)] used Subtle Message All In View from [message_option], saying \"[input]\"."))
 
 #undef SUBTLE_MESSAGE_IN_HEAD
 #undef SUBTLE_MESSAGE_WEYLAND
@@ -327,51 +386,9 @@
 	var/msg = input(src, null, "asay \"text\"") as text|null
 	cmd_admin_say(msg)
 
-/client/proc/cmd_mod_say(msg as text)
-	set name = "Msay"
-	set category = "Admin"
-	set hidden = 1
-
-	if(!check_rights(R_ADMIN|R_MOD))
-		return
-
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-
-	if (!msg)
-		return
-
-	if(findtext(msg, "@") || findtext(msg, "#"))
-		var/list/link_results = check_asay_links(msg)
-		if(length(link_results))
-			msg = link_results[ASAY_LINK_NEW_MESSAGE_INDEX]
-			link_results[ASAY_LINK_NEW_MESSAGE_INDEX] = null
-			var/list/pinged_admin_clients = link_results[ASAY_LINK_PINGED_ADMINS_INDEX]
-			for(var/iter_ckey in pinged_admin_clients)
-				var/client/iter_admin_client = pinged_admin_clients[iter_ckey]
-				if(!iter_admin_client?.admin_holder)
-					continue
-				window_flash(iter_admin_client)
-				SEND_SOUND(iter_admin_client.mob, sound('sound/misc/asay_ping.ogg'))
-
-	log_adminpm("MOD: [key_name(src)] : [msg]")
-
-	var/color = "mod"
-	if (check_rights(R_ADMIN,0))
-		color = "adminmod"
-
-	var/channel = "MOD:"
-	channel = "[admin_holder.rank]:"
-	for(var/client/C in GLOB.admins)
-		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
-
-/client/proc/get_mod_say()
-	var/msg = input(src, null, "msay \"text\"") as text|null
-	cmd_mod_say(msg)
-
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
-	set category = "OOC"
+	set category = "Admin.Mentor"
 	set hidden = 0
 
 	if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))
@@ -388,11 +405,11 @@
 	var/channel = "Mentor:"
 	channel = "[admin_holder.rank]:"
 	if(check_rights(R_MOD|R_ADMIN,0))
-		color = "staffsay"
-
+		color = "mentorstaff"
+	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
-			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> [ooc_prefix]<span class='prefix'><EM><EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
 
 /client/proc/get_mentor_say()
 	var/msg = input(src, null, "mentorsay \"text\"") as text|null
@@ -402,28 +419,53 @@
 	set name = "Admin Verbs - Show"
 	set category = "Admin"
 
-	add_verb(src, admin_verbs_hideable)
+	add_verb(src, GLOB.admin_verbs_hideable)
 	remove_verb(src, /client/proc/enable_admin_verbs)
 
 	if(!(admin_holder.rights & R_DEBUG))
-		remove_verb(src, /client/proc/proccall_atom)
+		remove_verb(src, /client/proc/callproc_datum)
 	if(!(admin_holder.rights & R_POSSESS))
 		remove_verb(src, /client/proc/release)
 		remove_verb(src, /client/proc/possess)
-	if(!(admin_holder.rights & R_EVENT))
-		remove_verb(src, /client/proc/cmd_admin_object_narrate)
 
 /client/proc/hide_admin_verbs()
 	set name = "Admin Verbs - Hide"
 	set category = "Admin"
 
-	remove_verb(src, admin_verbs_hideable)
+	remove_verb(src, GLOB.admin_verbs_hideable)
 	add_verb(src, /client/proc/enable_admin_verbs)
+
+/client/proc/strip_all_in_view()
+	set name = "Strip All"
+	set category = "Admin.InView"
+	set hidden = TRUE
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(tgui_alert(src, "This will strip ALL mobs within your view range. Are you sure?", "Confirmation", list("Yes", "Cancel")) != "Yes")
+		return
+
+	var/strip_self = FALSE
+	if(tgui_alert(src, "Do you want to strip yourself as well?", "Confirmation", list("Yes", "No")) == "Yes")
+		strip_self = TRUE
+
+	for(var/mob/living/current_mob in view(src))
+		if(!strip_self && usr == current_mob)
+			continue
+		for (var/obj/item/current_item in current_mob)
+			//no more deletion of ID cards
+			if(istype(current_item, /obj/item/card/id))
+				continue
+			qdel(current_item)
+
+	message_admins(WRAP_STAFF_LOG(usr, "stripped everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_in_view()
 	set name = "Rejuvenate All"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -432,16 +474,16 @@
 	if(alert("This will rejuvenate ALL mobs within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/M in view())
+	for(var/mob/living/M in view(src))
 		M.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed everyone in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 
 /client/proc/rejuvenate_all_humans_in_view()
 	set name = "Rejuvenate All Humans"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -450,15 +492,15 @@
 	if(alert("This will rejuvenate ALL humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/human/M in view())
+	for(var/mob/living/carbon/human/M in view(src))
 		M.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_revivable_humans_in_view()
 	set name = "Rejuvenate Revivable Human"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -467,8 +509,8 @@
 	if(alert("This will rejuvenate ALL revivable humans within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/human/M in view())
-		if(!isHumanStrict(M) && !isHumanSynthStrict(M))
+	for(var/mob/living/carbon/human/M in view(src))
+		if(!ishuman_strict(M) && !ishumansynth_strict(M))
 			continue
 
 		if(M.stat != DEAD)
@@ -479,12 +521,12 @@
 			M.rejuvenate(FALSE)
 			continue
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all revivable humans in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 /client/proc/rejuvenate_all_xenos_in_view()
 	set name = "Rejuvenate Xenos"
 	set category = "Admin.InView"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -493,10 +535,10 @@
 	if(alert("This will rejuvenate ALL xenos within your view range. Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
 
-	for(var/mob/living/carbon/Xenomorph/X in view())
+	for(var/mob/living/carbon/xenomorph/X in view(src))
 		X.rejuvenate(FALSE)
 
-	message_staff(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
+	message_admins(WRAP_STAFF_LOG(usr, "ahealed all xenos in [get_area(usr)] ([usr.x],[usr.y],[usr.z])"), usr.x, usr.y, usr.z)
 
 // ----------------------------
 // PANELS
@@ -506,20 +548,20 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_area'>Jump to Area</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_turf'>Jump to Turf</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_mob'>Jump to Mob</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_obj'>Jump to Object</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_key'>Jump to Ckey</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=get_mob'>Teleport Mob to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=get_key'>Teleport Ckey to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_area'>Jump to Area</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_turf'>Jump to Turf</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_mob'>Jump to Mob</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_obj'>Jump to Object</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_key'>Jump to Ckey</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=get_mob'>Teleport Mob to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=get_key'>Teleport Ckey to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mobs_in_range'>Mass Teleport Mobs in Range</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_mobs_by_faction'>Mass Teleport Mobs to You by Faction</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_corpses'>Mass Teleport Corpses to You</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];teleport=teleport_items_by_type'>Mass Teleport Items to You by Type</A><BR>
 		<BR>
 		"}
 
@@ -540,9 +582,9 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
 		Forcibly removes vehicle clamp from vehicle selected from a list. Drops it under the vehicle.<BR>
-		<A href='?src=\ref[src];[HrefToken()];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
 		Fully restores vehicle modules and hull health.<BR>
 		"}
 
@@ -560,24 +602,75 @@
 
 /datum/admins/proc/in_view_panel()
 	var/dat = {"
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenateall'>Rejuvenate All Mobs In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
-	 	<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenatemarine'>Rejuvenate Only Humans In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenaterevivemarine'>Rejuvenate Only Revivable Humans In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=rejuvenatexeno'>Rejuvenate Only Xenos In View</A><BR>
 		<BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=sleepall'>Sleep All In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=wakeall'>Wake All In View</A><BR>
 
-		<A href='?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
-		<A href='?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=directnarrateall'>Direct Narrate In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=alertall'>Alert Message In View</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=subtlemessageall'>Subtle Message In View</A><BR>
+		<BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];inviews=stripall'>Strip All Mobs In View</A><BR>
 		<BR>
 		"}
 
 	show_browser(usr, dat, "In View Panel", "inviews")
 	return
+
+/datum/admins/proc/imaginary_friend()
+	set category = "Admin.Mentor"
+	set name = "Imaginary Friend"
+
+	var/mob/user = usr
+
+	if(!check_rights(R_MOD|R_MENTOR))
+		return
+
+	if(istype(user, /mob/camera/imaginary_friend))
+		var/mob/camera/imaginary_friend/friend = user
+		friend.deactivate()
+		return
+
+	if(!isobserver(user))
+		to_chat(user, SPAN_WARNING("Can only become an imaginary friend while observing or aghosted."))
+		return
+
+	var/mob/living/befriended_mob
+	switch(tgui_input_list(user, "Select by:", "Imaginary Friend", list("Key", "Mob")))
+		if("Key")
+			var/client/selected_client = tgui_input_list(user, "Select a key", "Imaginary Friend", GLOB.clients)
+			if(!selected_client)
+				return
+			befriended_mob = selected_client.mob
+		if("Mob")
+			var/list/cliented_mobs = GLOB.living_mob_list.Copy()
+			for(var/mob/checking_mob as anything in cliented_mobs)
+				if(checking_mob.client)
+					continue
+				cliented_mobs -= checking_mob
+			var/mob/selected_mob = tgui_input_list(user, "Select a mob", "Imaginary Friend", cliented_mobs)
+			if(!selected_mob)
+				return
+			befriended_mob = selected_mob
+
+	if(!isobserver(user))
+		return
+
+	if(!istype(befriended_mob))
+		return
+
+	var/mob/camera/imaginary_friend/friend = new(get_turf(befriended_mob), befriended_mob)
+	friend.aghosted_original_mob = user.mind?.original
+	user.mind.transfer_to(friend)
+
+	log_admin("[key_name(friend)] started being imaginary friend of [key_name(befriended_mob)].")
+	message_admins("[key_name_admin(friend)] started being imaginary friend of [key_name_admin(befriended_mob)].")
 
 /client/proc/in_view_panel()
 	set name = "In View Panel"
@@ -587,148 +680,3 @@
 		return
 
 	admin_holder.in_view_panel()
-
-/client/proc/toggle_lz_resin()
-	set name = "Toggle LZ Weeding"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
-	message_staff("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
-
-/proc/set_lz_resin_allowed(var/allowed = TRUE)
-	if(allowed)
-		for(var/area/A in all_areas)
-			A.is_resin_allowed = TRUE
-		msg_admin_niche("Areas close to landing zones are now weedable.")
-	else
-		for(var/area/A in all_areas)
-			A.is_resin_allowed = initial(A.is_resin_allowed)
-		msg_admin_niche("Areas close to landing zones cannot be weeded now.")
-	GLOB.resin_lz_allowed = allowed
-
-/client/proc/toggle_ob_spawn() // not really a flag but i'm cheating here
-	set name = "Toggle OB Spawn"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	GLOB.spawn_ob = !GLOB.spawn_ob
-	message_staff("[src] has [GLOB.spawn_ob ? "allowed OBs to spawn" : "prevented OBs from spawning"] at roundstart.")
-
-/client/proc/toggle_sniper_upgrade()
-	set name = "Toggle Engi Sniper Upgrade"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_SNIPER_SENTRY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY) ? "disallowed engineers from picking" : "allowed engineers to pick"] long-range sentry upgrades.")
-
-/client/proc/toggle_attack_dead()
-	set name = "Toggle Attack Dead"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_ATTACK_DEAD
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) ? "prevented dead mobs from being" : "allowed dead mobs to be"] attacked.")
-
-/client/proc/toggle_strip_drag()
-	set name = "Toggle Strip/Drag Dead"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_STRIPDRAG_ENEMY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) ? "prevented dead humans from being" : "allowed dead humans to be"] stripped and dragged around by non-matching IFF players.")
-
-/client/proc/toggle_uniform_strip()
-	set name = "Toggle Uniform Strip Dead"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_STRIP_NONUNIFORM_ENEMY
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRIP_NONUNIFORM_ENEMY) ? "allowed dead humans to be stripped of everything but their uniform, boots, armor, helmet, and ID" : "prevented dead humans from being stripped of anything"].")
-	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY))
-		message_staff("WARNING: Dead enemy players can still be stripped of everything, as the Strip/Drag toggle flag isn't active.")
-
-/client/proc/toggle_strong_defibs()
-	set name = "Toggle Strong Defibs"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_STRONG_DEFIBS
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_STRONG_DEFIBS) ? "allowed defibs to ignore armor" : "made defibs operate normally"].")
-
-/client/proc/toggle_blood_optimization()
-	set name = "Toggle Blood Optimization"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_BLOOD_OPTIMIZATION
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION) ? "toggled blood optimization on" : "toggled blood optimization off"].")
-
-/client/proc/toggle_combat_cas()
-	set name = "Toggle Combat CAS Equipment"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_NO_COMBAT_CAS
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_COMBAT_CAS) ? "toggled combat CAS off" : "toggled combat CAS on"].")
-
-/client/proc/toggle_lz_protection()
-	set name = "Toggle LZ Mortar Protection"
-	set category = "Admin.Flags"
-
-	if(!admin_holder || !check_rights(R_MOD, FALSE))
-		return
-
-	if(!SSticker.mode)
-		to_chat(usr, SPAN_WARNING("A mode hasn't been selected yet!"))
-		return
-
-	SSticker.mode.toggleable_flags ^= MODE_LZ_PROTECTION
-	message_staff("[src] has [MODE_HAS_TOGGLEABLE_FLAG(MODE_LZ_PROTECTION) ? "toggled LZ protection on, mortars can no longer fire there" : "toggled LZ protection off, mortars can now fire there"].")

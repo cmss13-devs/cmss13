@@ -1,4 +1,4 @@
-/datum/admins/proc/topic_vehicles(var/href)
+/datum/admins/proc/topic_vehicles(href)
 	switch(href)
 		if("remove_clamp")
 			owner.cmd_admin_remove_clamp()
@@ -11,7 +11,7 @@
 
 	for(var/obj/vehicle/multitile/CA in view())
 		CA.handle_all_modules_broken()
-		message_staff("[src] forcibly removed all players from [CA]")
+		message_admins("[src] forcibly removed all players from [CA]")
 
 /client/proc/cmd_admin_remove_clamp()
 	set name = "Remove Vehicle Clamp"
@@ -31,7 +31,7 @@
 
 	Vehicle.detach_clamp()
 
-	message_staff(WRAP_STAFF_LOG(usr, "forcibly removed vehicle clamp from [Vehicle] in [get_area(Vehicle)] ([Vehicle.x],[Vehicle.y],[Vehicle.z])."), Vehicle.x, Vehicle.y, Vehicle.z)
+	message_admins(WRAP_STAFF_LOG(usr, "forcibly removed vehicle clamp from [Vehicle] in [get_area(Vehicle)] ([Vehicle.x],[Vehicle.y],[Vehicle.z])."), Vehicle.x, Vehicle.y, Vehicle.z)
 
 /client/proc/cmd_admin_repair_multitile()
 	set name = "Repair Vehicle"
@@ -53,7 +53,7 @@
 
 	Vehicle.rejuvenate_vehicle()
 
-	message_staff(WRAP_STAFF_LOG(usr, "admin-repaired [Vehicle] in [get_area(Vehicle)]. ([Vehicle.x],[Vehicle.y],[Vehicle.z])"), Vehicle.x, Vehicle.y, Vehicle.z)
+	message_admins(WRAP_STAFF_LOG(usr, "admin-repaired [Vehicle] in [get_area(Vehicle)]. ([Vehicle.x],[Vehicle.y],[Vehicle.z])"), Vehicle.x, Vehicle.y, Vehicle.z)
 
 //used only for admin verb proc that repairs vehicles.
 /obj/vehicle/multitile/proc/rejuvenate_vehicle()

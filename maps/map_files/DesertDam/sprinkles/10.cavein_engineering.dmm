@@ -4,8 +4,7 @@
 /area/template_noop)
 "c" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -29,8 +28,7 @@
 /area/template_noop)
 "y" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+	icon_state = "N"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
@@ -42,8 +40,7 @@
 /area/template_noop)
 "G" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61,8 +58,7 @@
 /area/template_noop)
 "O" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	tag = "icon-S"
+	icon_state = "S"
 	},
 /obj/structure/disposalpipe/broken{
 	dir = 8;

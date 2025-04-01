@@ -1,6 +1,6 @@
 
 // Special cases abound, handled below or in subclasses
-/obj/vehicle/multitile/attackby(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/attackby(obj/item/O, mob/user)
 	// Are we trying to install stuff?
 	if(istype(O, /obj/item/hardpoint))
 		var/obj/item/hardpoint/HP = O
@@ -66,7 +66,7 @@
 		return
 
 	//try to fit something in vehicle without getting in ourselves
-	if(istype(O, /obj/item/grab) && ishuman(user))	//only humans are allowed to fit dragged stuff inside
+	if(istype(O, /obj/item/grab) && ishuman(user)) //only humans are allowed to fit dragged stuff inside
 		if(user.a_intent == INTENT_HELP)
 			var/mob_x = user.x - src.x
 			var/mob_y = user.y - src.y
@@ -77,7 +77,7 @@
 					var/atom/dragged_atom = G.grabbed_thing
 					if(istype(/obj/item/explosive/grenade, dragged_atom))
 						var/obj/item/explosive/grenade/nade = dragged_atom
-						if(!nade.active)		//very creative, but no.
+						if(!nade.active) //very creative, but no.
 							break
 
 					handle_fitting_pulled_atom(user, dragged_atom)
@@ -134,7 +134,7 @@
 	take_damage_type(O.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
 
 // Frame repairs on the vehicle itself
-/obj/vehicle/multitile/proc/handle_repairs(var/obj/item/O, var/mob/user)
+/obj/vehicle/multitile/proc/handle_repairs(obj/item/O, mob/user)
 	if(user.action_busy)
 		return
 	var/max_hp = initial(health)
@@ -196,6 +196,8 @@
 			return
 
 		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
+		if(!lighting_holder.light)
+			lighting_holder.set_light_on(TRUE)
 
 		if(WT)
 			WT.remove_fuel(1, user)
@@ -209,14 +211,14 @@
 		to_chat(user, SPAN_NOTICE("Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%."))
 
 	health = initial(health)
-	SetLuminosity(initial(luminosity))
+	lighting_holder.set_light_range(vehicle_light_range)
 	toggle_cameras_status(TRUE)
 	update_icon()
 	user.visible_message(SPAN_NOTICE("[user] finishes [repair_message] on \the [src]."), SPAN_NOTICE("You finish [repair_message] on \the [src]. Hull integrity is at [SPAN_HELPFUL(100.0*health/max_hp)]%. "))
 	return
 
 //Special case for entering the vehicle without using the verb
-/obj/vehicle/multitile/attack_hand(var/mob/user)
+/obj/vehicle/multitile/attack_hand(mob/user)
 	var/mob_x = user.x - src.x
 	var/mob_y = user.y - src.y
 	for(var/entrance in entrances)
@@ -236,7 +238,7 @@
 
 	user.forceMove(middle)
 
-/obj/vehicle/multitile/attack_alien(var/mob/living/carbon/Xenomorph/X)
+/obj/vehicle/multitile/attack_alien(mob/living/carbon/xenomorph/X)
 	// If they're on help intent, attempt to enter the vehicle
 	if(X.a_intent == INTENT_HELP)
 		handle_player_entrance(X)
@@ -248,7 +250,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(X.mob_size < mob_size_required_to_hit)
-		to_chat(X, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		to_chat(X, SPAN_XENOWARNING("We're too small to do any significant damage to this vehicle!"))
 		return XENO_NO_DELAY_ACTION
 
 	var/damage = (X.melee_vehicle_damage + rand(-5,5)) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
@@ -268,12 +270,12 @@
 	//Somehow we will deal no damage on this attack
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"), \
-		SPAN_DANGER("You swipe at \the [src] to no effect!"))
+		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"),
+		SPAN_DANGER("We swipe at \the [src] to no effect!"))
 		return XENO_ATTACK_ACTION
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"), \
-	SPAN_DANGER("You slash \the [src]!"))
+	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"),
+	SPAN_DANGER("We slash \the [src]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	take_damage_type(damage * damage_mult, "slash", X)
@@ -283,7 +285,7 @@
 
 //Differentiates between damage types from different bullets
 //Applies a linear transformation to bullet damage that will generally decrease damage done
-/obj/vehicle/multitile/bullet_act(var/obj/item/projectile/P)
+/obj/vehicle/multitile/bullet_act(obj/projectile/P)
 	var/dam_type = "bullet"
 	var/damage = P.damage
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -295,9 +297,9 @@
 	if(P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
 		return
 
-	if(ammo_flags & AMMO_ANTISTRUCT)
+	if(ammo_flags & (AMMO_ANTISTRUCT|AMMO_ANTIVEHICLE))
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
-		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
+		damage = floor(damage*ANTISTRUCT_DMG_MULT_TANK)
 	if(ammo_flags & AMMO_ACIDIC)
 		dam_type = "acid"
 
@@ -315,7 +317,7 @@
 	healthcheck()
 
 //to handle IFF bullets
-/obj/vehicle/multitile/proc/get_target_lock(var/access_to_check)
+/obj/vehicle/multitile/proc/get_target_lock(access_to_check)
 	if(isnull(access_to_check) || !vehicle_faction)
 		return FALSE
 
@@ -324,89 +326,71 @@
 
 	return vehicle_faction in access_to_check
 
-/obj/vehicle/multitile/ex_act(var/severity)
+/obj/vehicle/multitile/ex_act(severity)
 	take_damage_type(severity * 0.5, "explosive")
 	take_damage_type(severity * 0.1, "slash")
 
 	healthcheck()
 
-/obj/vehicle/multitile/handle_click(var/mob/living/user, var/atom/A, var/list/mods)
+/obj/vehicle/multitile/on_set_interaction(mob/user)
+	RegisterSignal(user, COMSIG_MOB_MOUSEDOWN, PROC_REF(crew_mousedown))
+	RegisterSignal(user, COMSIG_MOB_MOUSEDRAG, PROC_REF(crew_mousedrag))
+	RegisterSignal(user, COMSIG_MOB_MOUSEUP, PROC_REF(crew_mouseup))
 
-	var/seat
-	for(var/vehicle_seat in seats)
-		if(seats[vehicle_seat] == user)
-			seat = vehicle_seat
-			break
+/obj/vehicle/multitile/on_unset_interaction(mob/user)
+	UnregisterSignal(user, list(COMSIG_MOB_MOUSEUP, COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEDRAG))
 
-	if(istype(A, /atom/movable/screen) || !seat)
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(user)
+	if(hardpoint)
+		SEND_SIGNAL(hardpoint, COMSIG_GUN_INTERRUPT_FIRE) //abort fire when crew leaves
+
+/// Relays crew mouse release to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mouseup(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
 		return
 
-	if(seat == VEHICLE_DRIVER)
-		if(mods["shift"] && !mods["alt"])
-			A.examine(user)
-			return
+	hardpoint.stop_fire(source, object, location, control, params)
 
-		if(mods["ctrl"] && !mods["alt"])
-			activate_horn()
-			return
+/// Relays crew mouse movement to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mousedrag(datum/source, atom/src_object, atom/over_object, turf/src_location, turf/over_location, src_control, over_control, params)
+	SIGNAL_HANDLER
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
+		return
 
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
+	hardpoint.change_target(source, src_object, over_object, src_location, over_location, src_control, over_control, params)
 
-		if(!HP.can_activate(user, A))
-			return
+/// Checks for special control keybinds, else relays crew mouse press to active hardpoint.
+/obj/vehicle/multitile/proc/crew_mousedown(datum/source, atom/object, turf/location, control, params)
+	SIGNAL_HANDLER
 
-		HP.activate(user, A)
+	var/list/modifiers = params2list(params)
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
+		return
 
-	if(seat == VEHICLE_GUNNER)
-		if(mods["shift"] && !mods["middle"])
-			if(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER)
-				shoot_other_weapon(user, seat, A)
-			else
-				A.examine(user)
-			return
-		if(mods["middle"] && !mods["shift"])
-			if(!(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
-				shoot_other_weapon(user, seat, A)
-			return
-		if(mods["alt"])
-			toggle_gyrostabilizer()
-			return
-		if(mods["ctrl"])
-			activate_support_module(user, seat, A)
-			return
+	var/seat = get_mob_seat(source)
+	switch(seat)
+		if(VEHICLE_DRIVER)
+			if(modifiers[LEFT_CLICK] && modifiers[CTRL_CLICK])
+				activate_horn()
+				return
+		if(VEHICLE_GUNNER)
+			if(modifiers[LEFT_CLICK] && modifiers[ALT_CLICK])
+				toggle_gyrostabilizer()
+				return
 
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
+	var/obj/item/hardpoint/hardpoint = get_mob_hp(source)
+	if(!hardpoint)
+		to_chat(source, SPAN_WARNING("Please select an active hardpoint first."))
+		return
 
-		if(!HP.can_activate(user, A))
-			return
+	hardpoint.start_fire(source, object, location, control, params)
 
-		HP.activate(user, A)
-
-	if(seat == VEHICLE_SUPPORT_GUNNER_ONE || seat == VEHICLE_SUPPORT_GUNNER_TWO)
-		if(mods["shift"])
-			A.examine(user)
-			return
-		if(mods["middle"] || mods["alt"] || mods["ctrl"])
-			return
-
-		var/obj/item/hardpoint/HP = active_hp[seat]
-		if(!HP)
-			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
-			return
-
-		if(!HP.can_activate(user, A))
-			return
-
-		HP.activate(user, A)
-
-/obj/vehicle/multitile/proc/handle_player_entrance(var/mob/M)
-	if(!M || M.client == null) return
+/obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
+	if(!M || M.client == null)
+		return
 
 	var/mob_x = M.x - src.x
 	var/mob_y = M.y - src.y
@@ -419,29 +403,29 @@
 
 	var/enter_time = 0
 	// door locks break when hull is destroyed. Xenos enter slower, but their speed is not affected by anything and they ignore locks
-	if(isXeno(M))
+	if(isxeno(M))
 		enter_time = 3 SECONDS
 	else
-		if(door_locked && health > 0)	//check if lock on and actually works
+		if(door_locked && health > 0) //check if lock on and actually works
 			if(ishuman(M))
 				var/mob/living/carbon/human/user = M
-				if(!allowed(user) || !get_target_lock(user.faction_group))	//if we are human, we check access and faction
+				if(!allowed(user) || !get_target_lock(user.faction_group)) //if we are human, we check access and faction
 					to_chat(user, SPAN_WARNING("\The [src] is locked!"))
 					return
 			else
-				to_chat(M, SPAN_WARNING("\The [src] is locked!"))	//animals are not allowed inside without supervision
+				to_chat(M, SPAN_WARNING("\The [src] is locked!")) //animals are not allowed inside without supervision
 				return
 
 
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
 		return
-	else if(!entrance_used && !isXeno(M))
+	else if(!entrance_used && !isxeno(M))
 		return
 
-	var/enter_msg = "You start climbing into \the [src]..."
-	if(health <= 0 && isXeno(M))
-		enter_msg = "You start prying away loose plates, squeezing into \the [src]..."
+	var/enter_msg = "We start climbing into \the [src]..."
+	if(health <= 0 && isxeno(M))
+		enter_msg = "We start prying away loose plates, squeezing into \the [src]..."
 
 	// Check if drag anything
 	var/atom/dragged_atom
@@ -453,7 +437,7 @@
 		dragged_atom = G.grabbed_thing
 
 	if(!enter_time)
-		enter_time = entrance_speed SECONDS
+		enter_time = entrance_speed
 		if(dragged_atom)
 			enter_time = 2 SECONDS
 
@@ -489,7 +473,7 @@
 			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
 
 //try to fit something into the vehicle
-/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/living/carbon/human/user, var/atom/dragged_atom)
+/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(mob/living/carbon/human/user, atom/dragged_atom)
 	if(!ishuman(user))
 		return
 	if(door_locked && health > 0 && (!allowed(user) || !get_target_lock(user.faction_group)))
@@ -526,7 +510,7 @@
 
 	var/success = interior.enter(dragged_atom, entrance_used)
 	if(success)
-		to_chat(user, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+		to_chat(user, SPAN_NOTICE("You successfully fit [dragged_atom] inside \the [src]."))
 	else
 		to_chat(user, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]! It's either too big or vehicle is out of space!"))
 	return
@@ -539,22 +523,22 @@
 	next_move = world.time + move_delay
 	qdel(O)
 	update_icon()
-	message_staff("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
+	message_admins("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
 
-/obj/vehicle/multitile/proc/detach_clamp(var/mob/user)
+/obj/vehicle/multitile/proc/detach_clamp(mob/user)
 	clamped = FALSE
 	move_delay = initial(move_delay)
 
 	var/obj/item/hardpoint/locomotion/Loco
 	for(Loco in hardpoints)
-		Loco.on_install(src)	//we restore speed respective to wheels/treads if any installed
+		Loco.on_install(src) //we restore speed respective to wheels/treads if any installed
 
 	next_move = world.time + move_delay
 	var/obj/item/vehicle_clamp/O = new(get_turf(src))
 	if(user)
 		O.forceMove(get_turf(user))
-		message_staff("[key_name(user)] ([user.job]) detached vehicle clamp from \the [src]")
+		message_admins("[key_name(user)] ([user.job]) detached vehicle clamp from \the [src]")
 	else
 		O.forceMove(get_turf(src))
-		message_staff("Vehicle clamp was detached from \the [src].")
+		message_admins("Vehicle clamp was detached from \the [src].")
 	update_icon()

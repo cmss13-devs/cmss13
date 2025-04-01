@@ -16,6 +16,9 @@ Remember: something that is self-evident to you might not be to others. Explain 
 
 # Testing Photographs and Procedure
 <!-- Include any screenshots/videos/debugging steps of the modified code functioning successfully, ideally including edge cases. -->
+
+<!-- !! If you are modifying sprites, you **must** include one or more in-game screenshots or videos of the new sprites. !! -->
+
 <details>
 <summary>Screenshots & Videos</summary>
 
@@ -26,8 +29,8 @@ Put screenshots and videos here with an empty line between the screenshots and t
 
 # Changelog
 
-<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
-<!-- If you add a name after the ':cl', that name will be used in the changelog. You must add your CKEY after the CL if your GitHub name doesn't match. Be sure to properly mark your PRs to prevent unnecessary GBP loss. Maintainers freely reserve the right to remove and add tags should they deem it appropriate. -->
+<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly label your changes in the changelog. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
+<!-- If you add a name after the ':cl', that name will be used in the changelog. You must add your CKEY after the CL if your GitHub name doesn't match. Maintainers freely reserve the right to remove and add tags should they deem it appropriate. -->
 
 :cl:
 add: Added something
@@ -35,13 +38,16 @@ del: Removed old things
 qol: made something easier to use
 balance: rebalanced something
 fix: fixed a few things
+spellcheck: fixed a few typos
+ui: changed something relating to user interfaces
+code: changed some code
+refactor: refactored some code
 soundadd: added a new sound thingy
 sounddel: removed an old sound thingy
 imageadd: added some icons and images
 imagedel: deleted some icons and images
-spellcheck: fixed a few typos
-code: changed some code
-refactor: refactored some code
+mapadd: added a new map or section to a map
+maptweak: tweaked a map
 config: changed some config setting
 admin: messed with admin stuff
 server: something server ops should know

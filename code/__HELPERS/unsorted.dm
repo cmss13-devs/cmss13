@@ -3,8 +3,6 @@
  */
 
 // GLOBAL DEFINES //
-#define is_hot(I) (I?:heat_source)
-
 //Whether or not the given item counts as sharp in terms of dealing damage
 #define is_sharp(I) (isitem(I) && I?:sharp && I?:edge)
 
@@ -17,42 +15,45 @@
 							HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
 						)
 
-//Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
-#define between(low, middle, high) (max(min(middle, high), low))
-
 //Offuscate x for coord system
-#define obfuscate_x(x) (x + obfs_x)
+#define obfuscate_x(x) ((x) + GLOB.obfs_x)
 
 //Offuscate y for coord system
-#define obfuscate_y(y) (y + obfs_y)
+#define obfuscate_y(y) ((y) + GLOB.obfs_y)
+
+//Offuscate z for the coord system
+#define obfuscate_z(z) ((z) + GLOB.obfs_z)
 
 //Deoffuscate x for coord system
-#define deobfuscate_x(x) (x - obfs_x)
+#define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
-#define deobfuscate_y(y) (y - obfs_y)
+#define deobfuscate_y(y) ((y) - GLOB.obfs_y)
+
+//Deoffuscate z for the coord system
+#define deobfuscate_z(z) ((z) - GLOB.obfs_z)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
 // For the purpose of a skillcheck, not having a skillset counts as being skilled in everything (!user.skills check)
 // Note that is_skilled() checks if the skillset contains the skill internally, so a has_skill check is unnecessary
-#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level)))
-#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled(skill, req_level, TRUE)))
+#define skillcheck(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level))))
+#define skillcheckexplicit(user, skill, req_level) ((!user.skills || user.skills.is_skilled((skill), (req_level), TRUE)))
 
 // Ensure the frequency is within bounds of what it should be sending/receiving at
-// Sets f within bounds via `Clamp(round(f), 1441, 1489)`
+// Sets f within bounds via `clamp(floor(f), 1441, 1489)`
 // If f is even, adds 1 to its value to make it odd
-#define sanitize_frequency(f) 	((Clamp(round(f), 1441, 1489) % 2) == 0 ? \
-									Clamp(round(f), 1441, 1489) + 1 : \
-									Clamp(round(f), 1441, 1489) \
+#define sanitize_frequency(f) ((clamp(floor(f), 1441, 1489) % 2) == 0 ? \
+									clamp(floor(f), 1441, 1489) + 1 : \
+									clamp(floor(f), 1441, 1489) \
 								)
 
 //Turns 1479 into 147.9
-#define format_frequency(f) "[round(f / 10)].[f % 10]"
+#define format_frequency(f) "[floor((f) / 10)].[(f) % 10]"
 
-#define reverse_direction(direction) 	( \
-											( dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0 ) | \
-											( dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0 ) \
+#define reverse_direction(direction) ( \
+											( direction & (NORTH|SOUTH) ? ~direction & (NORTH|SOUTH) : 0 ) | \
+											( direction & (EAST|WEST) ? ~direction & (EAST|WEST) : 0 ) \
 										)
 
 // The sane, counter-clockwise angle to turn to get from /direction/ A to /direction/ B
@@ -60,16 +61,6 @@
 
 
 // GLOBAL PROCS //
-
-//Returns the middle-most value
-/proc/dd_range(var/low, var/high, var/num)
-	return max(low,min(high,num))
-
-//Returns whether or not A is the middle most value
-/proc/InRange(var/A, var/lower, var/upper)
-	if(A < lower) return 0
-	if(A > upper) return 0
-	return 1
 
 /// Gives X position on pixel grid of an object, accounting for offsets
 /proc/get_pixel_position_x(atom/subject, relative = FALSE)
@@ -99,38 +90,29 @@
 		var/atom/movable/big_subject = subject
 		. += (big_subject.bound_height  - world.icon_size) / 2
 
-/proc/Get_Angle(atom/start,atom/end, var/tile_bound = FALSE)//For beams.
-	if(!start || !end) return 0
-	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dx
-	var/dy
-	if(tile_bound)
-		dy=end.y-start.y
-		dx=end.x-start.x
-	else
-		dy = get_pixel_position_y(end) - get_pixel_position_y(start)
-		dx = get_pixel_position_x(end) - get_pixel_position_x(start)
-	if(!dy)
-		return (dx>=0)?90:270
-	.=arctan(dx/dy)
-	if(dy<0)
-		.+=180
-	else if(dx<0)
-		.+=360
+/// Calculate the angle between two atoms. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
+/proc/Get_Angle(atom/start, atom/end)//For beams.
+	if(!start || !end)
+		return 0
+	if(!start.z)
+		start = get_turf(start)
+		if(!start)
+			return 0 //Atoms are not on turfs.
+	if(!end.z)
+		end = get_turf(end)
+		if(!end)
+			return 0 //Atoms are not on turfs.
+	var/dy = get_pixel_position_y(end) - get_pixel_position_y(start)
+	var/dx = get_pixel_position_x(end) - get_pixel_position_x(start)
+	return delta_to_angle(dx, dy)
 
-/proc/Get_Compass_Dir(atom/start,atom/end)//get_dir() only considers an object to be north/south/east/west if there is zero deviation. This uses rounding instead.
-	if(!start || !end) return 0
-	if(!start.z || !end.z) return 0 //Atoms are not on turfs.
-	var/dy=end.y-start.y
-	var/dx=end.x-start.x
-	if(!dy)
-		return (dx>=0)?4:8
-	var/angle=arctan(dx/dy)
-	if(dy<0)
-		angle+=180
-	else if(dx<0)
-		angle+=360
+/// Calculate the angle produced by a pair of x and y deltas. Uses north-clockwise convention: NORTH = 0, EAST = 90, etc.
+/proc/delta_to_angle(dx, dy)
+	. = arctan(dy, dx) //y-then-x results in north-clockwise convention: https://en.wikipedia.org/wiki/Atan2#East-counterclockwise,_north-clockwise_and_south-clockwise_conventions,_etc.
+	if(. < 0)
+		. += 360
 
+/proc/angle_to_dir(angle)
 	switch(angle) //diagonal directions get priority over straight directions in edge cases
 		if (22.5 to 67.5)
 			return NORTHEAST
@@ -151,26 +133,28 @@
 		else
 			return NORTH
 
+/proc/Get_Compass_Dir(atom/start, atom/end)//get_dir() only considers an object to be north/south/east/west if there is zero deviation. This uses rounding instead.
+	return angle_to_dir(Get_Angle(get_turf(start), get_turf(end)))
 
 // Among other things, used by flamethrower and boiler spray to calculate if flame/spray can pass through.
 // Returns an atom for specific effects (primarily flames and acid spray) that damage things upon contact
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(var/atom/movable/mover, var/turf/start_turf, var/turf/target_turf, var/list/atom/forget)
+/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget)
 	if (!mover)
 		return null
 
+	/// the actual dir between the start and target turf
 	var/fdir = get_dir(start_turf, target_turf)
 	if (!fdir)
 		return null
 
-
-	var/fd1 = fdir&(fdir-1)
+	var/fd1 = fdir & (fdir-1)
 	var/fd2 = fdir - fd1
 
-
-	var/blocking_dir = 0 // The direction that mover's path is being blocked by
+	/// The direction that mover's path is being blocked by
+	var/blocking_dir = 0
 
 	var/obstacle
 	var/turf/T
@@ -236,7 +220,9 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
+			return A
+		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
 			return A
 
 	return null // Nothing found to block the link of mover from start_turf to target_turf
@@ -249,9 +235,6 @@
 	return 0
 
 
-
-/proc/sign(x)
-	return x!=0?x/abs(x):0
 
 //Returns whether or not a player is a guest using their ckey as an input
 /proc/IsGuestKey(key)
@@ -271,17 +254,19 @@
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
-/mob/proc/fully_replace_character_name(var/oldname,var/newname)
-	if(!newname)	return 0
+/mob/proc/fully_replace_character_name(oldname, newname)
+	if(!newname)
+		return 0
 	change_real_name(src, newname)
 
 	if(oldname)
 		//update the datacore records! This is goig to be a bit costly.
 		var/mob_ref = WEAKREF(src)
 		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
-			for(var/datum/data/record/R in L)
-				if(R.fields["ref"] == mob_ref)
-					R.fields["name"] = newname
+			for(var/datum/data/record/record_entry in L)
+				if(record_entry.fields["ref"] == mob_ref)
+					record_entry.fields["name"] = newname
+					record_entry.name = newname
 					break
 
 		//update our pda and id if we have them on our person
@@ -290,109 +275,15 @@
 		var/search_pda = 1
 
 		for(var/A in searching)
-			if( search_id && istype(A,/obj/item/card/id) )
+			if(search_id && istype(A, /obj/item/card/id))
 				var/obj/item/card/id/ID = A
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
-					ID.name = "[newname]'s ID Card ([ID.assignment])"
-					if(!search_pda)	break
+					ID.name = "[newname]'s [ID.id_type] ([ID.assignment])"
+					if(!search_pda)
+						break
 					search_id = 0
 	return 1
-
-
-
-//Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
-//Last modified by Carn
-/mob/proc/rename_self(var/role, var/allow_numbers=0)
-	var/oldname = real_name
-	var/time_passed = world.time
-
-	var/newname
-	for(var/i=1,i<=3,i++)	//we get 3 attempts to pick a suitable name.
-		newname = input(src,"You are a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
-		if((world.time-time_passed)>300)
-			return	//took too long
-		newname = reject_bad_name(newname,allow_numbers)	//returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
-		for(var/mob/living/M in GLOB.alive_mob_list)
-			if(M == src)
-				continue
-
-			if(!newname || M.real_name == newname)
-				newname = null
-				break
-
-		if(newname)
-			break	//That's a suitable name!
-		to_chat(src, "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken.")
-
-	if(!newname)	//we'll stick with the oldname then
-		return
-
-	if(cmptext("ai",role))
-		if(isAI(src))
-			var/mob/living/silicon/ai/A = src
-			oldname = null//don't bother with the records update crap
-			A.SetName(newname)
-
-	fully_replace_character_name(oldname,newname)
-
-
-
-//When a borg is activated, it can choose which AI it wants to be slaved to
-/proc/active_ais()
-	. = list()
-	for(var/mob/living/silicon/ai/A in GLOB.alive_mob_list)
-		if(A.stat == DEAD)
-			continue
-		if(A.control_disabled == 1)
-			continue
-		. += A
-	return .
-
-//Find an active ai with the least borgs. VERBOSE PROCNAME HUH!
-/proc/select_active_ai_with_fewest_borgs()
-	var/mob/living/silicon/ai/selected
-	var/list/active = active_ais()
-	for(var/mob/living/silicon/ai/A in active)
-		if(!selected || (selected.connected_robots > A.connected_robots))
-			selected = A
-
-	return selected
-
-/proc/select_active_ai(var/mob/user)
-	var/list/ais = active_ais()
-	if(ais.len)
-		if(user)	. = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
-		else		. = pick(ais)
-	return .
-
-/proc/get_sorted_mobs()
-	var/list/old_list = getmobs()
-	var/list/AI_list = list()
-	var/list/Dead_list = list()
-	var/list/keyclient_list = list()
-	var/list/key_list = list()
-	var/list/logged_list = list()
-	for(var/named in old_list)
-		var/mob/M = old_list[named]
-		if(isSilicon(M))
-			AI_list |= M
-		else if(isobserver(M) || M.stat == 2)
-			Dead_list |= M
-		else if(M.key && M.client)
-			keyclient_list |= M
-		else if(M.key)
-			key_list |= M
-		else
-			logged_list |= M
-		old_list.Remove(named)
-	var/list/new_list = list()
-	new_list += AI_list
-	new_list += keyclient_list
-	new_list += key_list
-	new_list += logged_list
-	new_list += Dead_list
-	return new_list
 
 //Returns a list of all mobs with their name
 /proc/getmobs()
@@ -405,150 +296,6 @@
 		if(M.invisibility == INVISIBILITY_MAXIMUM && M.alpha == 0)
 			continue
 
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getxenos()
-	var/list/mobs = sortxenos()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if(isobserver(M))
-			name += " \[ghost\]"
-		else if(M.stat == DEAD)
-			name += " \[dead\]"
-		creatures[name] = M
-	return creatures
-
-/proc/getpreds()
-	var/list/mobs = sortpreds()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(!isYautja(M)) continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/gethumans()
-	var/list/mobs = sorthumans()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
-		if(iszombie(M))	continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getsurvivors()
-	var/list/mobs = sortsurvivors()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
-		if(iszombie(M))	continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getertmembers()
-	var/list/mobs = sortertmembers()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
-		if(iszombie(M))	continue
-		var/name = M.name
-		if (name in names)
-			namecounts[name]++
-			name = "[name] ([namecounts[name]])"
-		else
-			names.Add(name)
-			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
-			name += " \[ghost\]"
-		creatures[name] = M
-
-	return creatures
-
-/proc/getsynths()
-	var/list/mobs = sortsynths()
-	var/list/names = list()
-	var/list/creatures = list()
-	var/list/namecounts = list()
-	for(var/mob/M in mobs)
-		if(isYautja(M)) continue
-		if(iszombie(M))	continue
 		var/name = M.name
 		if (name in names)
 			namecounts[name]++
@@ -592,22 +339,6 @@
 
 	return vehicles
 
-/proc/get_holograms()
-	var/list/holograms = list()
-	var/list/namecounts = list()
-	for(var/i in GLOB.hologram_list)
-		var/mob/hologram/H = i
-		var/name = H.name
-		if(name in namecounts)
-			namecounts[name]++
-			name = "[name] #([namecounts[name]])"
-		else
-			namecounts[name] = 1
-
-		holograms[name] = H
-
-	return holograms
-
 //Orders mobs by type then by name
 /proc/sortmobs()
 	var/list/moblist = list()
@@ -620,7 +351,7 @@
 		moblist.Add(M)
 	for(var/mob/living/brain/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/carbon/Xenomorph/M in sortmob)
+	for(var/mob/living/carbon/xenomorph/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/dead/observer/M in sortmob)
 		moblist.Add(M)
@@ -630,70 +361,17 @@
 		moblist.Add(M)
 	for(var/mob/living/simple_animal/M in sortmob)
 		moblist.Add(M)
+	for(var/mob/camera/imaginary_friend/friend in sortmob)
+		moblist += friend
 	return moblist
 
-/proc/sortxenos()
-	var/list/xenolist = list()
-	var/list/sortmob = sortAtom(GLOB.xeno_mob_list)
-	for(var/mob/living/carbon/Xenomorph/M in sortmob)
-		if(!M.client)
-			continue
-		xenolist.Add(M)
-	return xenolist
-
-/proc/sortpreds()
-	var/list/predlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !M.species.name == "Yautja")
-			continue
-		predlist.Add(M)
-	return predlist
-
-/proc/sorthumans()
-	var/list/humanlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || M.species.name == "Yautja")
-			continue
-		humanlist.Add(M)
-	return humanlist
-
-/proc/sortsurvivors()
-	var/list/survivorlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || M.species.name == "Yautja")
-			continue
-		if(M.faction == FACTION_SURVIVOR)
-			survivorlist.Add(M)
-	return survivorlist
-
-/proc/sortertmembers()
-	var/list/ertmemberlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client)
-			continue
-		if(M.faction in FACTION_LIST_ERT)
-			ertmemberlist.Add(M)
-	return ertmemberlist
-
-/proc/sortsynths()
-	var/list/synthlist = list()
-	var/list/sortmob = sortAtom(GLOB.human_mob_list)
-	for(var/mob/living/carbon/human/M in sortmob)
-		if(!M.client || !isSynth(M))
-			continue
-		synthlist.Add(M)
-	return synthlist
-
-/proc/key_name(var/whom, var/include_link = null, var/include_name = 1, var/highlight_special_characters = 1)
+/proc/key_name(whom, include_link = null, include_name = 1, highlight_special_characters = 1)
 	var/mob/M
 	var/client/C
 	var/key
 
-	if(!whom)	return "*null*"
+	if(!whom)
+		return "*null*"
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
@@ -712,13 +390,13 @@
 
 	if(key)
 		if(include_link && C)
-			. += "<a href='?priv_msg=[C.ckey]'>"
+			. += "<a href='byond://?priv_msg=[C.ckey]'>"
 
 		. += key
 
 		if(include_link)
-			if(C)	. += "</a>"
-			else	. += " (DC)"
+			if(C) . += "</a>"
+			else . += " (DC)"
 	else
 		. += "*no key*"
 
@@ -734,13 +412,13 @@
 
 	return .
 
-/proc/key_name_admin(var/whom, var/include_name = 1)
+/proc/key_name_admin(whom, include_name = 1)
 	return key_name(whom, 1, include_name)
 
 
 // returns the turf located at the map edge in the specified direction relative to A
 // used for mass driver
-/proc/get_edge_target_turf(var/atom/A, var/direction)
+/proc/get_edge_target_turf(atom/A, direction)
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	if(!A || !target)
@@ -760,29 +438,43 @@
 
 	return target
 
-/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+/**
+ * An alternative to orange() that should perform better for distances >= 5 because
+ * of ORANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, excluding center (and
+ * its contents). Ignores visibility (like orange).
+ */
+/proc/long_orange(dist=0, atom/center)
 	if(!dist)
-		if(!orange)
-			return list(center)
-		else
-			return list()
+		return list()
 
-	var/list/turfs = RANGE_TURFS(dist, center)
-	if(orange)
-		turfs -= get_turf(center)
+	var/list/turfs = ORANGE_TURFS(dist, center)
 	. = list()
-	for(var/V in turfs)
-		var/turf/T = V
-		. += T
-		. += T.contents
-		if(areas)
-			. |= T.loc
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
+	. -= center // If center isn't a turf
+
+/**
+ * An alternative to range() that should perform better for distances >= 5 because
+ * of RANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, including center (and its
+ * contents if a turf). Ignores visibility (like range).
+ */
+/proc/long_range(dist=0, atom/center)
+	var/list/turfs = RANGE_TURFS(dist, center)
+	. = list()
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
 // note range is non-pythagorean
 // used for disposal system
-/proc/get_ranged_target_turf(var/atom/A, var/direction, var/range)
+/proc/get_ranged_target_turf(atom/A, direction, range)
 
 	var/x = A.x
 	var/y = A.y
@@ -799,7 +491,7 @@
 
 // returns turf relative to A for a given clockwise angle at set range
 // result is bounded to map size
-/proc/get_angle_target_turf(var/atom/A, var/angle, var/range)
+/proc/get_angle_target_turf(atom/A, angle, range)
 	if(!istype(A))
 		return null
 	var/x = A.x
@@ -840,7 +532,7 @@
 
 // returns turf relative to A offset in dx and dy tiles
 // bound to map limits
-/proc/get_offset_target_turf(var/atom/A, var/dx, var/dy)
+/proc/get_offset_target_turf(atom/A, dx, dy)
 	var/x = min(world.maxx, max(1, A.x + dx))
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
@@ -862,13 +554,23 @@
 		animation.master = target
 		flick(flick_anim, animation)
 
-//Will return the contents of an atom recursivly to a depth of 'searchDepth'
+///Will return the contents of an atom recursivly to a depth of 'searchDepth', not including starting atom
 /atom/proc/GetAllContents(searchDepth = 5, list/toReturn = list())
 	for(var/atom/part as anything in contents)
 		toReturn += part
-		if(part.contents.len && searchDepth)
+		if(length(part.contents) && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
+
+///Returns the src and all recursive contents as a list. Includes the starting atom.
+/atom/proc/get_all_contents(ignore_flag_1)
+	. = list(src)
+	var/i = 0
+	while(i < length(.))
+		var/atom/checked_atom = .[++i]
+		if(checked_atom.flags_atom & ignore_flag_1)
+			continue
+		. += checked_atom.contents
 
 /// Returns list of contents of a turf recursively, much like GetAllContents
 /// We only get containing atoms in the turf, excluding multitiles bordering on it
@@ -877,12 +579,12 @@
 		if(part.loc != src) // That's a multitile atom, and it's not actually here stricto sensu
 			continue
 		toReturn += part
-		if(part.contents.len && searchDepth)
+		if(length(part.contents) && searchDepth)
 			part.GetAllContents(searchDepth - 1, toReturn)
 	return toReturn
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
-/proc/can_see(var/atom/source, var/atom/target, var/length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+/proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
 	var/steps = 0
@@ -890,20 +592,23 @@
 	if(ismob(source))
 		var/mob/M = source
 		has_nightvision = M.see_in_dark >= 12
-	if(!has_nightvision && target_turf.lighting_lumcount == 0)
+	if(!has_nightvision && target_turf.get_lumcount() == 0)
 		return FALSE
 
 	while(current != target_turf)
-		if(steps > length) return FALSE
-		if(!current || current.opacity) return FALSE
+		if(steps > length)
+			return FALSE
+		if(!current || current.opacity)
+			return FALSE
 		for(var/atom/A in current)
-			if(A && A.opacity) return FALSE
+			if(A && A.opacity)
+				return FALSE
 		current = get_step_towards(current, target_turf)
 		steps++
 
 	return TRUE
 
-/proc/is_blocked_turf(var/turf/T)
+/proc/is_blocked_turf(turf/T)
 	if(T.density)
 		return TRUE
 	for(var/atom/A in T)
@@ -912,120 +617,137 @@
 	return FALSE
 
 
-var/global/image/busy_indicator_clock
-var/global/image/busy_indicator_medical
-var/global/image/busy_indicator_build
-var/global/image/busy_indicator_friendly
-var/global/image/busy_indicator_hostile
-var/global/image/emote_indicator_highfive
-var/global/image/emote_indicator_fistbump
-var/global/image/emote_indicator_headbutt
-var/global/image/emote_indicator_tailswipe
-var/global/image/emote_indicator_rock_paper_scissors
-var/global/image/emote_indicator_rock
-var/global/image/emote_indicator_paper
-var/global/image/emote_indicator_scissors
-var/global/image/action_red_power_up
-var/global/image/action_green_power_up
-var/global/image/action_blue_power_up
-var/global/image/action_purple_power_up
+GLOBAL_DATUM(busy_indicator_clock, /image)
+GLOBAL_DATUM(busy_indicator_medical, /image)
+GLOBAL_DATUM(busy_indicator_build, /image)
+GLOBAL_DATUM(busy_indicator_friendly, /image)
+GLOBAL_DATUM(busy_indicator_hostile, /image)
+GLOBAL_DATUM(emote_indicator_highfive, /image)
+GLOBAL_DATUM(emote_indicator_fistbump, /image)
+GLOBAL_DATUM(emote_indicator_headbutt, /image)
+GLOBAL_DATUM(emote_indicator_tailswipe, /image)
+GLOBAL_DATUM(emote_indicator_rock_paper_scissors, /image)
+GLOBAL_DATUM(emote_indicator_rock, /image)
+GLOBAL_DATUM(emote_indicator_paper, /image)
+GLOBAL_DATUM(emote_indicator_scissors, /image)
+GLOBAL_DATUM(action_red_power_up, /image)
+GLOBAL_DATUM(action_green_power_up, /image)
+GLOBAL_DATUM(action_blue_power_up, /image)
+GLOBAL_DATUM(action_purple_power_up, /image)
 
 /proc/get_busy_icon(busy_type)
 	if(busy_type == BUSY_ICON_GENERIC)
-		if(!busy_indicator_clock)
-			busy_indicator_clock = image('icons/mob/mob.dmi', null, "busy_generic", "pixel_y" = 22)
-			busy_indicator_clock.layer = FLY_LAYER
-		return busy_indicator_clock
+		if(!GLOB.busy_indicator_clock)
+			GLOB.busy_indicator_clock = image('icons/mob/do_afters.dmi', null, "busy_generic", "pixel_y" = 22)
+			GLOB.busy_indicator_clock.layer = FLY_LAYER
+			GLOB.busy_indicator_clock.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_clock
 	else if(busy_type == BUSY_ICON_MEDICAL)
-		if(!busy_indicator_medical)
-			busy_indicator_medical = image('icons/mob/mob.dmi', null, "busy_medical", "pixel_y" = 0) //This shows directly on top of the mob, no offset!
-			busy_indicator_medical.layer = FLY_LAYER
-		return busy_indicator_medical
+		if(!GLOB.busy_indicator_medical)
+			GLOB.busy_indicator_medical = image('icons/mob/do_afters.dmi', null, "busy_medical", "pixel_y" = 0) //This shows directly on top of the mob, no offset!
+			GLOB.busy_indicator_medical.layer = FLY_LAYER
+			GLOB.busy_indicator_medical.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_medical
 	else if(busy_type == BUSY_ICON_BUILD)
-		if(!busy_indicator_build)
-			busy_indicator_build = image('icons/mob/mob.dmi', null, "busy_build", "pixel_y" = 22)
-			busy_indicator_build.layer = FLY_LAYER
-		return busy_indicator_build
+		if(!GLOB.busy_indicator_build)
+			GLOB.busy_indicator_build = image('icons/mob/do_afters.dmi', null, "busy_build", "pixel_y" = 22)
+			GLOB.busy_indicator_build.layer = FLY_LAYER
+			GLOB.busy_indicator_build.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_build
 	else if(busy_type == BUSY_ICON_FRIENDLY)
-		if(!busy_indicator_friendly)
-			busy_indicator_friendly = image('icons/mob/mob.dmi', null, "busy_friendly", "pixel_y" = 22)
-			busy_indicator_friendly.layer = FLY_LAYER
-		return busy_indicator_friendly
+		if(!GLOB.busy_indicator_friendly)
+			GLOB.busy_indicator_friendly = image('icons/mob/do_afters.dmi', null, "busy_friendly", "pixel_y" = 22)
+			GLOB.busy_indicator_friendly.layer = FLY_LAYER
+			GLOB.busy_indicator_friendly.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_friendly
 	else if(busy_type == BUSY_ICON_HOSTILE)
-		if(!busy_indicator_hostile)
-			busy_indicator_hostile = image('icons/mob/mob.dmi', null, "busy_hostile", "pixel_y" = 22)
-			busy_indicator_hostile.layer = FLY_LAYER
-		return busy_indicator_hostile
+		if(!GLOB.busy_indicator_hostile)
+			GLOB.busy_indicator_hostile = image('icons/mob/do_afters.dmi', null, "busy_hostile", "pixel_y" = 22)
+			GLOB.busy_indicator_hostile.layer = FLY_LAYER
+			GLOB.busy_indicator_hostile.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_hostile
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
-		if(!emote_indicator_highfive)
-			emote_indicator_highfive = image('icons/mob/mob.dmi', null, "emote_highfive", "pixel_y" = 22)
-			emote_indicator_highfive.layer = FLY_LAYER
-		return emote_indicator_highfive
+		if(!GLOB.emote_indicator_highfive)
+			GLOB.emote_indicator_highfive = image('icons/mob/do_afters.dmi', null, "emote_highfive", "pixel_y" = 22)
+			GLOB.emote_indicator_highfive.layer = FLY_LAYER
+			GLOB.emote_indicator_highfive.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_highfive
 	else if(busy_type == EMOTE_ICON_FISTBUMP)
-		if(!emote_indicator_fistbump)
-			emote_indicator_fistbump = image('icons/mob/mob.dmi', null, "emote_fistbump", "pixel_y" = 22)
-			emote_indicator_fistbump.layer = FLY_LAYER
-		return emote_indicator_fistbump
+		if(!GLOB.emote_indicator_fistbump)
+			GLOB.emote_indicator_fistbump = image('icons/mob/do_afters.dmi', null, "emote_fistbump", "pixel_y" = 22)
+			GLOB.emote_indicator_fistbump.layer = FLY_LAYER
+			GLOB.emote_indicator_fistbump.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_fistbump
 	else if(busy_type == EMOTE_ICON_ROCK_PAPER_SCISSORS)
-		if(!emote_indicator_rock_paper_scissors)
-			emote_indicator_rock_paper_scissors = image('icons/mob/mob.dmi', null, "emote_rps", "pixel_y" = 22)
-			emote_indicator_rock_paper_scissors.layer = FLY_LAYER
-		return emote_indicator_rock_paper_scissors
+		if(!GLOB.emote_indicator_rock_paper_scissors)
+			GLOB.emote_indicator_rock_paper_scissors = image('icons/mob/do_afters.dmi', null, "emote_rps", "pixel_y" = 22)
+			GLOB.emote_indicator_rock_paper_scissors.layer = FLY_LAYER
+			GLOB.emote_indicator_rock_paper_scissors.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_rock_paper_scissors
 	else if(busy_type == EMOTE_ICON_ROCK)
-		if(!emote_indicator_rock)
-			emote_indicator_rock = image('icons/mob/mob.dmi', null, "emote_rock", "pixel_y" = 22)
-			emote_indicator_rock.layer = FLY_LAYER
-		return emote_indicator_rock
+		if(!GLOB.emote_indicator_rock)
+			GLOB.emote_indicator_rock = image('icons/mob/do_afters.dmi', null, "emote_rock", "pixel_y" = 22)
+			GLOB.emote_indicator_rock.layer = FLY_LAYER
+			GLOB.emote_indicator_rock.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_rock
 	else if(busy_type == EMOTE_ICON_PAPER)
-		if(!emote_indicator_paper)
-			emote_indicator_paper = image('icons/mob/mob.dmi', null, "emote_paper", "pixel_y" = 22)
-			emote_indicator_paper.layer = FLY_LAYER
-		return emote_indicator_paper
+		if(!GLOB.emote_indicator_paper)
+			GLOB.emote_indicator_paper = image('icons/mob/do_afters.dmi', null, "emote_paper", "pixel_y" = 22)
+			GLOB.emote_indicator_paper.layer = FLY_LAYER
+			GLOB.emote_indicator_paper.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_paper
 	else if(busy_type == EMOTE_ICON_SCISSORS)
-		if(!emote_indicator_scissors)
-			emote_indicator_scissors = image('icons/mob/mob.dmi', null, "emote_scissors", "pixel_y" = 22)
-			emote_indicator_scissors.layer = FLY_LAYER
-		return emote_indicator_scissors
+		if(!GLOB.emote_indicator_scissors)
+			GLOB.emote_indicator_scissors = image('icons/mob/do_afters.dmi', null, "emote_scissors", "pixel_y" = 22)
+			GLOB.emote_indicator_scissors.layer = FLY_LAYER
+			GLOB.emote_indicator_scissors.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_scissors
 	else if(busy_type == EMOTE_ICON_HEADBUTT)
-		if(!emote_indicator_headbutt)
-			emote_indicator_headbutt = image('icons/mob/mob.dmi', null, "emote_headbutt", "pixel_y" = 22)
-			emote_indicator_headbutt.layer = FLY_LAYER
-		return emote_indicator_headbutt
+		if(!GLOB.emote_indicator_headbutt)
+			GLOB.emote_indicator_headbutt = image('icons/mob/do_afters.dmi', null, "emote_headbutt", "pixel_y" = 22)
+			GLOB.emote_indicator_headbutt.layer = FLY_LAYER
+			GLOB.emote_indicator_headbutt.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_headbutt
 	else if(busy_type == EMOTE_ICON_TAILSWIPE)
-		if(!emote_indicator_tailswipe)
-			emote_indicator_tailswipe = image('icons/mob/mob.dmi', null, "emote_tailswipe", "pixel_y" = 22)
-			emote_indicator_tailswipe.layer = FLY_LAYER
-		return emote_indicator_tailswipe
+		if(!GLOB.emote_indicator_tailswipe)
+			GLOB.emote_indicator_tailswipe = image('icons/mob/do_afters.dmi', null, "emote_tailswipe", "pixel_y" = 22)
+			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
+			GLOB.emote_indicator_tailswipe.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_tailswipe
 	else if(busy_type == ACTION_RED_POWER_UP)
-		if(!action_red_power_up)
-			action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
-			action_red_power_up.layer = FLY_LAYER
-		return action_red_power_up
+		if(!GLOB.action_red_power_up)
+			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
+			GLOB.action_red_power_up.layer = FLY_LAYER
+			GLOB.action_red_power_up.plane = ABOVE_GAME_PLANE
+		return GLOB.action_red_power_up
 	else if(busy_type == ACTION_GREEN_POWER_UP)
-		if(!action_green_power_up)
-			action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
-			action_green_power_up.layer = FLY_LAYER
-		return action_green_power_up
+		if(!GLOB.action_green_power_up)
+			GLOB.action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
+			GLOB.action_green_power_up.layer = FLY_LAYER
+			GLOB.action_green_power_up.plane = ABOVE_GAME_PLANE
+		return GLOB.action_green_power_up
 	else if(busy_type == ACTION_BLUE_POWER_UP)
-		if(!action_blue_power_up)
-			action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
-			action_blue_power_up.layer = FLY_LAYER
-		return action_blue_power_up
+		if(!GLOB.action_blue_power_up)
+			GLOB.action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
+			GLOB.action_blue_power_up.layer = FLY_LAYER
+			GLOB.action_blue_power_up.plane = ABOVE_GAME_PLANE
+		return GLOB.action_blue_power_up
 	else if(busy_type == ACTION_PURPLE_POWER_UP)
-		if(!action_purple_power_up)
-			action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
-			action_purple_power_up.layer = FLY_LAYER
-		return action_purple_power_up
+		if(!GLOB.action_purple_power_up)
+			GLOB.action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
+			GLOB.action_purple_power_up.layer = FLY_LAYER
+			GLOB.action_purple_power_up.plane = ABOVE_GAME_PLANE
+		return GLOB.action_purple_power_up
 
 
 /*
- *	do_after handles timed actions
- *	The flags indicate which actions from the user and a target (if there is a target) interrupt a given action.
- *	This proc can handle timed actions with one person alone or one person and a target atom.
+ * do_after handles timed actions
+ * The flags indicate which actions from the user and a target (if there is a target) interrupt a given action.
+ * This proc can handle timed actions with one person alone or one person and a target atom.
  *
- *	show_remaining_time: If TRUE, return the percentage of time remaining in the timed action.
- *	numticks: 	If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
- *				Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
+ * show_remaining_time: If TRUE, return the percentage of time remaining in the timed action.
+ * numticks: If a value is given, denotes how often the timed action checks for interrupting actions. By default, there are 5 checks every delay/5 deciseconds.
+ * Note: 'delay' should be divisible by numticks in order for the timing to work as intended. numticks should also be a whole number.
  */
 /proc/do_after(mob/user, delay, user_flags = INTERRUPT_ALL, show_busy_icon, atom/movable/target, target_flags = INTERRUPT_MOVED, show_target_icon, max_dist = 1, \
 		show_remaining_time = FALSE, numticks = DA_DEFAULT_NUM_TICKS) // These args should primarily be named args, since you only modify them in niche situations
@@ -1041,8 +763,8 @@ var/global/image/action_purple_power_up
 		has_target = TRUE
 
 	// Only living mobs can perform timed actions.
-	var/mob/living/L = user
-	if(!istype(L))
+	var/mob/living/busy_user = user
+	if(!istype(busy_user))
 		return FALSE
 
 	// This var will only be used for checks that require target to be living.
@@ -1055,41 +777,37 @@ var/global/image/action_purple_power_up
 	if(show_busy_icon)
 		busy_icon = get_busy_icon(show_busy_icon)
 		if(busy_icon)
-			busy_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			busy_icon.alpha = 255
-			L.overlays += busy_icon
+			busy_user.overlays += busy_icon
 
 	var/image/target_icon
 	if(show_target_icon) //putting a busy overlay on top of the target
 		target_icon = get_busy_icon(show_target_icon)
 		if(target_icon)
-			target_icon.appearance_flags = RESET_ALPHA|KEEP_APART
-			target_icon.alpha = 255
 			target.overlays += target_icon
 
 	if(user_flags & BEHAVIOR_IMMOBILE)
-		L.status_flags |= IMMOBILE_ACTION
+		busy_user.status_flags |= IMMOBILE_ACTION
 
-	L.action_busy++ // target is not tethered by action, the action is tethered by target though
-	L.resisting = FALSE
-	L.clicked_something = list()
+	busy_user.action_busy++ // target is not tethered by action, the action is tethered by target though
+	busy_user.resisting = FALSE
+	busy_user.clicked_something = list()
 	if(has_target && target_is_mob)
 		T.resisting = FALSE
 		T.clicked_something = list()
 
-	var/cur_user_zone_sel = L.zone_selected
+	var/cur_user_zone_sel = busy_user.zone_selected
 	var/cur_target_zone_sel
-	var/delayfraction = Ceiling(delay/numticks)
-	var/user_orig_loc = L.loc
-	var/user_orig_turf = get_turf(L)
+	var/delayfraction = ceil(delay/numticks)
+	var/user_orig_loc = busy_user.loc
+	var/user_orig_turf = get_turf(busy_user)
 	var/target_orig_loc
 	var/target_orig_turf
 	if(has_target)
 		target_orig_loc = target.loc
 		target_orig_turf = get_turf(target)
-	var/obj/user_holding = L.get_active_hand()
+	var/obj/user_holding = busy_user.get_active_hand()
 	var/obj/target_holding
-	var/cur_user_lying = L.lying
+	var/cur_user_lying = busy_user.body_position
 	var/cur_target_lying
 	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
@@ -1097,52 +815,52 @@ var/global/image/action_purple_power_up
 	if(has_target && istype(T))
 		cur_target_zone_sel = T.zone_selected
 		target_holding = T.get_active_hand()
-		cur_target_lying = T.lying
+		cur_target_lying = T.body_position
 
 	. = TRUE
 	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
-		if(!istype(L) || has_target && !istype(target)) // Checks if L exists and is not dead and if the target exists and is not destroyed
+		if(!istype(busy_user) || has_target && !istype(target)) // Checks if busy_user exists and is not dead and if the target exists and is not destroyed
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_LOC && L.loc != user_orig_loc || \
+		if(user_flags & INTERRUPT_DIFF_LOC && busy_user.loc != user_orig_loc || \
 			has_target && (target_flags & INTERRUPT_DIFF_LOC && target.loc != target_orig_loc)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(L) != user_orig_turf || \
+		if(user_flags & INTERRUPT_DIFF_TURF && get_turf(busy_user) != user_orig_turf || \
 			has_target && (target_flags & INTERRUPT_DIFF_TURF && get_turf(target) != target_orig_turf)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_UNCONSCIOUS && L.stat || \
+		if(user_flags & INTERRUPT_UNCONSCIOUS && busy_user.stat || \
 			target_is_mob && (target_flags & INTERRUPT_UNCONSCIOUS && T.stat)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_KNOCKED_DOWN && L.knocked_down || \
-			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && T.knocked_down)
+		if(user_flags & INTERRUPT_KNOCKED_DOWN && HAS_TRAIT(busy_user, TRAIT_FLOORED) || \
+			target_is_mob && (target_flags & INTERRUPT_KNOCKED_DOWN && HAS_TRAIT(T, TRAIT_FLOORED))
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_STUNNED && L.stunned || \
-			target_is_mob && (target_flags & INTERRUPT_STUNNED && T.stunned)
+		if(user_flags & INTERRUPT_STUNNED && HAS_TRAIT(busy_user, TRAIT_INCAPACITATED)|| \
+			target_is_mob && (target_flags & INTERRUPT_STUNNED && HAS_TRAIT(T, TRAIT_INCAPACITATED))
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DAZED && L.dazed)
+		if(user_flags & INTERRUPT_DAZED && HAS_TRAIT(busy_user, TRAIT_DAZED))
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_EMOTE && !L.flags_emote)
+		if(user_flags & INTERRUPT_EMOTE && !busy_user.flags_emote)
 			. = FALSE
 			break
 		if(user_flags & INTERRUPT_NEEDHAND)
 			if(user_holding)
-				if(!user_holding.loc || L.get_active_hand() != user_holding) //no longer holding the required item
+				if(!user_holding.loc || busy_user.get_active_hand() != user_holding) //no longer holding the required item in active hand
 					. = FALSE
 					break
-			else if(L.get_active_hand()) //something in active hand when we need it to stay empty
+			else if(busy_user.get_active_hand()) //something in active hand when we need it to stay empty
 				. = FALSE
 				break
 		if(target_is_mob && target_flags & INTERRUPT_NEEDHAND)
@@ -1153,81 +871,87 @@ var/global/image/action_purple_power_up
 			else if(T.get_active_hand())
 				. = FALSE
 				break
-		if(user_flags & INTERRUPT_RESIST && L.resisting || \
+		if(user_flags & INTERRUPT_NO_NEEDHAND)
+			if(user_holding)
+				if(!user_holding.loc || (busy_user.l_hand != user_holding && busy_user.r_hand != user_holding)) //no longer holding the required item in either hand
+					. = FALSE
+					break
+		if(user_flags & INTERRUPT_RESIST && busy_user.resisting || \
 			target_is_mob && (target_flags & INTERRUPT_RESIST && T.resisting)
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != L.zone_selected || \
+		if(user_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_user_zone_sel != busy_user.zone_selected || \
 			target_is_mob && (target_flags & INTERRUPT_DIFF_SELECT_ZONE && cur_target_zone_sel != T.zone_selected)
 		)
 			. = FALSE
 			break
-		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(L, target) > max_dist)
+		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(busy_user, target) > max_dist)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_LCLICK && L.clicked_something["left"] || \
-			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
+		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something[LEFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something[LEFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_RCLICK && L.clicked_something["right"] || \
-			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
+		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something[RIGHT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something[RIGHT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_SHIFTCLICK && L.clicked_something["left"] && L.clicked_something["shift"] || \
-			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
+		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[SHIFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[SHIFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_ALTCLICK && L.clicked_something["left"] && L.clicked_something["alt"] || \
-			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
+		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[ALT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[ALT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CTRLCLICK && L.clicked_something["left"] && L.clicked_something["ctrl"] || \
-			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
+		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[CTRL_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[CTRL_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_MIDDLECLICK && L.clicked_something["middle"] || \
-			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something[MIDDLE_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something[MIDDLE_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CHANGED_LYING && L.lying != cur_user_lying || \
-			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.lying != cur_target_lying)
+		if(user_flags & INTERRUPT_CHANGED_LYING && busy_user.body_position != cur_user_lying || \
+			target_is_mob && (target_flags & INTERRUPT_CHANGED_LYING && T.body_position != cur_target_lying)
 		)
 			. = FALSE
 			break
 
-	if(L && busy_icon)
-		L.overlays -= busy_icon
+	if(busy_user && busy_icon)
+		busy_user.overlays -= busy_icon
 	if(target && target_icon)
 		target.overlays -= target_icon
 
-	L.action_busy--
-	L.resisting = FALSE
+	busy_user.action_busy--
+	busy_user.resisting = FALSE
 	if(target_is_mob)
 		T.resisting = FALSE
-	L.status_flags &= ~IMMOBILE_ACTION
+	busy_user.status_flags &= ~IMMOBILE_ACTION
 
 	if (show_remaining_time)
 		return (. ? 0 : time_remaining/expected_total_time) // If action was not interrupted, return 0 for no time left, otherwise return ratio of time remaining
 
 //Takes: Anything that could possibly have variables and a varname to check.
 //Returns: 1 if found, 0 if not.
-/proc/hasvar(var/datum/A, var/varname)
-	if(A.vars.Find(lowertext(varname))) return 1
-	else return 0
+/proc/hasvar(datum/A, varname)
+	if(A.vars.Find(lowertext(varname)))
+		return 1
+	else
+		return 0
 
-//Returns: all the non-lighting areas in the world, sorted.
+//Returns: all the areas in the world, sorted.
 /proc/return_sorted_areas()
 	var/list/area/AL = list()
 	for(var/area/A in GLOB.sorted_areas)
-		if(!A.lighting_subarea)
-			AL += A
+		AL += A
 	return AL
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -1247,13 +971,8 @@ var/global/image/action_purple_power_up
 	var/area/A = GLOB.areas_by_type[areatype]
 
 	// Fix it up with /area/var/related due to lighting shenanigans
-	var/list/area/LA
-	if(!length(A.related))
-		LA = list(A)
-	else LA = A.related
-	for(var/area/Ai in LA)
-		for(var/turf/T in Ai)
-			turfs += T
+	for(var/turf/T in A)
+		turfs += T
 
 	return turfs
 
@@ -1262,7 +981,7 @@ var/global/image/action_purple_power_up
 	var/y_pos = null
 	var/z_pos = null
 
-/datum/coords/New(var/turf/location)
+/datum/coords/New(turf/location)
 	. = ..()
 	if(location)
 		x_pos = location.x
@@ -1275,14 +994,15 @@ var/global/image/action_purple_power_up
 
 	return locate(x_pos, y_pos, z_pos)
 
-/area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
+/area/proc/move_contents_to(area/A, turftoleave=null, direction = null)
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.
 	//Notes: Attempts to move the contents of one area to another area.
-	//       Movement based on lower left corner. Tiles that do not fit
-	//		 into the new area will not be moved.
+	//    Movement based on lower left corner. Tiles that do not fit
+	//  into the new area will not be moved.
 
-	if(!A || !src) return 0
+	if(!A || !src)
+		return 0
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)
@@ -1290,14 +1010,18 @@ var/global/image/action_purple_power_up
 	var/src_min_x = 0
 	var/src_min_y = 0
 	for (var/turf/T in turfs_src)
-		if(T.x < src_min_x || !src_min_x) src_min_x	= T.x
-		if(T.y < src_min_y || !src_min_y) src_min_y	= T.y
+		if(T.x < src_min_x || !src_min_x)
+			src_min_x = T.x
+		if(T.y < src_min_y || !src_min_y)
+			src_min_y = T.y
 
 	var/trg_min_x = 0
 	var/trg_min_y = 0
 	for (var/turf/T in turfs_trg)
-		if(T.x < trg_min_x || !trg_min_x) trg_min_x	= T.x
-		if(T.y < trg_min_y || !trg_min_y) trg_min_y	= T.y
+		if(T.x < trg_min_x || !trg_min_x)
+			trg_min_x = T.x
+		if(T.y < trg_min_y || !trg_min_y)
+			trg_min_y = T.y
 
 	var/list/refined_src = new/list()
 	for(var/turf/T in turfs_src)
@@ -1341,8 +1065,8 @@ var/global/image/action_purple_power_up
 						// Spawn a new shuttle corner object
 						var/obj/corner = new()
 						corner.forceMove(X)
-						corner.density = 1
-						corner.anchored = 1
+						corner.density = TRUE
+						corner.anchored = TRUE
 						corner.icon = X.icon
 						corner.icon_state = replacetext(X.icon_state, "_s", "_f")
 						corner.tag = "delete me"
@@ -1367,17 +1091,19 @@ var/global/image/action_purple_power_up
 							X.name = "wall"
 							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
-						if(!istype(O,/obj)) continue
+						if(!istype(O,/obj))
+							continue
 						O.forceMove(X)
 					for(var/mob/M in T)
-						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
+						if(!istype(M,/mob) || istype(M, /mob/aiEye))
+							continue // If we need to check for more mobs, I'll add a variable
 						M.forceMove(X)
 
-//					var/area/AR = X.loc
+// var/area/AR = X.loc
 
-//					if(AR.lighting_use_dynamic)							//TODO: rewrite this code so it's not messed by lighting ~Carn
-//						X.opacity = !X.opacity
-//						X.SetOpacity(!X.opacity)
+// if(AR.lighting_use_dynamic) //TODO: rewrite this code so it's not messed by lighting ~Carn
+// X.opacity = !X.opacity
+// X.set_opacity(!X.opacity)
 
 					toupdate += X
 
@@ -1392,7 +1118,7 @@ var/global/image/action_purple_power_up
 
 	var/list/doors = new/list()
 
-	if(toupdate.len)
+	if(length(toupdate))
 		for(var/turf/T1 in toupdate)
 			for(var/obj/structure/machinery/door/D2 in T1)
 				doors += D2
@@ -1401,7 +1127,7 @@ var/global/image/action_purple_power_up
 			else
 				air_master.tiles_to_update += T1*/
 
-	if(fromupdate.len)
+	if(length(fromupdate))
 		for(var/turf/T2 in fromupdate)
 			for(var/obj/structure/machinery/door/D2 in T2)
 				doors += D2
@@ -1410,14 +1136,20 @@ var/global/image/action_purple_power_up
 			else
 				air_master.tiles_to_update += T2*/
 
-/proc/get_cardinal_dir(atom/A, atom/B)
-	var/dx = abs(B.x - A.x)
-	var/dy = abs(B.y - A.y)
-	return get_dir(A, B) & (rand() * (dx+dy) < dy ? 3 : 12)
+/// Returns the nearest cardinal dir between two atoms. Favors NORTH/SOUTH on perfect diagonals. Consistent and reversible.
+/proc/get_cardinal_dir(atom/start, atom/end) as num
+	var/dx = end.x - start.x
+	var/dy = end.y - start.y
+	if(!(dx || dy))
+		return 0 //returns 0 when on same x/y, consistent with get_dir()
 
+	if(abs(dx) > abs(dy))
+		return dx < 0 ? WEST : EAST
+	else
+		return dy < 0 ? SOUTH : NORTH
 
 //Returns the 2 dirs perpendicular to the arg
-/proc/get_perpen_dir(var/dir)
+/proc/get_perpen_dir(dir)
 	if(dir & (dir-1))
 		return 0 //diagonals
 	if(dir & (EAST|WEST))
@@ -1427,7 +1159,8 @@ var/global/image/action_purple_power_up
 
 
 /proc/parse_zone(zone)
-	if(zone == "r_hand") return "right hand"
+	if(zone == "r_hand")
+		return "right hand"
 	else if (zone == "l_hand") return "left hand"
 	else if (zone == "l_arm") return "left arm"
 	else if (zone == "r_arm") return "right arm"
@@ -1439,9 +1172,10 @@ var/global/image/action_purple_power_up
 	else if (zone == "r_hand") return "right hand"
 	else if (zone == "l_foot") return "left foot"
 	else if (zone == "r_foot") return "right foot"
-	else return zone
+	else
+		return zone
 
-/proc/get_true_location(var/atom/loc)
+/proc/get_true_location(atom/loc)
 	var/atom/subLoc = loc
 	while(subLoc.z == 0)
 		if (istype(subLoc.loc, /atom))
@@ -1454,19 +1188,27 @@ var/global/image/action_purple_power_up
 
 /proc/reverse_nearby_direction(direction)
 	switch(direction)
-		if(NORTH) 		return list(SOUTH,     SOUTHEAST, SOUTHWEST)
-		if(NORTHEAST) 	return list(SOUTHWEST, SOUTH,     WEST)
-		if(EAST) 		return list(WEST,      SOUTHWEST, NORTHWEST)
-		if(SOUTHEAST) 	return list(NORTHWEST, NORTH,     WEST)
-		if(SOUTH) 		return list(NORTH,     NORTHEAST, NORTHWEST)
-		if(SOUTHWEST) 	return list(NORTHEAST, NORTH,     EAST)
-		if(WEST) 		return list(EAST,      NORTHEAST, SOUTHEAST)
-		if(NORTHWEST) 	return list(SOUTHEAST, SOUTH,     EAST)
+		if(NORTH)
+			return list(SOUTH,  SOUTHEAST, SOUTHWEST)
+		if(NORTHEAST)
+			return list(SOUTHWEST, SOUTH,  WEST)
+		if(EAST)
+			return list(WEST,   SOUTHWEST, NORTHWEST)
+		if(SOUTHEAST)
+			return list(NORTHWEST, NORTH,  WEST)
+		if(SOUTH)
+			return list(NORTH,  NORTHEAST, NORTHWEST)
+		if(SOUTHWEST)
+			return list(NORTHEAST, NORTH,  EAST)
+		if(WEST)
+			return list(EAST,   NORTHEAST, SOUTHEAST)
+		if(NORTHWEST)
+			return list(SOUTHEAST, SOUTH,  EAST)
 
 /*
 Checks if that loc and dir has a item on the wall
 */
-var/list/WALLITEMS = list(
+GLOBAL_LIST_INIT(WALLITEMS, list(
 	/obj/structure/machinery/power/apc,
 	/obj/structure/machinery/alarm,
 	/obj/item/device/radio/intercom,
@@ -1479,18 +1221,19 @@ var/list/WALLITEMS = list(
 	/obj/structure/machinery/firealarm,
 	/obj/structure/noticeboard,
 	/obj/structure/machinery/door_control,
-	/obj/structure/machinery/computer/security/telescreen,
+	/obj/structure/machinery/computer/cameras/telescreen,
 	/obj/item/storage/secure/safe,
 	/obj/structure/machinery/brig_cell,
 	/obj/structure/machinery/flasher,
 	/obj/structure/machinery/keycard_auth,
 	/obj/structure/mirror,
 	/obj/structure/closet/fireaxecabinet,
-	/obj/structure/machinery/computer/security/telescreen/entertainment,
-	)
+	/obj/structure/machinery/computer/cameras/telescreen/entertainment,
+	))
+
 /proc/gotwallitem(loc, dir)
 	for(var/obj/O in loc)
-		for(var/item in WALLITEMS)
+		for(var/item in GLOB.WALLITEMS)
 			if(istype(O, item))
 				//Direction works sometimes
 				if(O.dir == dir)
@@ -1514,7 +1257,7 @@ var/list/WALLITEMS = list(
 
 	//Some stuff is placed directly on the wallturf (signs)
 	for(var/obj/O in get_step(loc, dir))
-		for(var/item in WALLITEMS)
+		for(var/item in GLOB.WALLITEMS)
 			if(istype(O, item))
 				if(O.pixel_x == 0 && O.pixel_y == 0)
 					return 1
@@ -1523,88 +1266,52 @@ var/list/WALLITEMS = list(
 /proc/format_text(text)
 	return replacetext(replacetext(text,"\proper ",""),"\improper ","")
 
-/proc/getline(atom/M, atom/N, include_from_atom = TRUE)//Ultra-Fast Bresenham Line-Drawing Algorithm
-	var/px=M.x		//starting x
-	var/py=M.y
-	var/line[] = list(locate(px,py,M.z))
-	var/dx=N.x-px	//x distance
-	var/dy=N.y-py
-	var/dxabs=abs(dx)//Absolute value of x distance
-	var/dyabs=abs(dy)
-	var/sdx=sign(dx)	//Sign of x distance (+ or -)
-	var/sdy=sign(dy)
-	var/x=dxabs>>1	//Counters for steps taken, setting to distance/2
-	var/y=dyabs>>1	//Bit-shifting makes me l33t.  It also makes getline() unnessecarrily fast.
-	var/j			//Generic integer for counting
-	if(dxabs>=dyabs)	//x distance is greater than y
-		for(j=0;j<dxabs;j++)//It'll take dxabs steps to get there
-			y+=dyabs
-			if(y>=dxabs)	//Every dyabs steps, step once in y direction
-				y-=dxabs
-				py+=sdy
-			px+=sdx		//Step on in x direction
-			if(j > 0 || include_from_atom)
-				line+=locate(px,py,M.z)//Add the turf to the list
+/**
+ * Get a list of turfs in a line from `start_atom` to `end_atom`.
+ *
+ * Based on a linear interpolation method from [Red Blob Games](https://www.redblobgames.com/grids/line-drawing/#optimization).
+ *
+ * Arguments:
+ * * start_atom - starting point of the line
+ * * end_atom - ending point of the line
+ * * include_start_atom - when truthy includes start_atom in the list, default TRUE
+ *
+ * Returns:
+ * list - turfs from start_atom (in/exclusive) to end_atom (inclusive)
+ */
+/proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
+	var/turf/start_turf = get_turf(start_atom)
+	var/turf/end_turf = get_turf(end_atom)
+	var/start_z
+
+	if(end_atom.z > start_atom.z)
+		start_z = end_atom.z
 	else
-		for(j=0;j<dyabs;j++)
-			x+=dxabs
-			if(x>=dyabs)
-				x-=dyabs
-				px+=sdx
-			py+=sdy
-			if(j > 0 || include_from_atom)
-				line+=locate(px,py,M.z)
+		start_z = start_atom.z
+
+	var/list/line = list()
+	if(include_start_atom)
+		line += start_turf
+
+	var/step_count = get_dist(start_turf, end_turf)
+	if(!step_count)
+		return line
+
+	//as step_count and step size (1) are known can pre-calculate a lerp step, tiny number (1e-5) for rounding consistency
+	var/step_x = (end_turf.x - start_turf.x) / step_count + 1e-5
+	var/step_y = (end_turf.y - start_turf.y) / step_count + 1e-5
+
+	//locate() truncates the fraction, adding 0.5 so its effectively rounding to nearest coords for free
+	var/x = start_turf.x + 0.5
+	var/y = start_turf.y + 0.5
+	for(var/step in 1 to (step_count - 1)) //increment then locate() skips start_turf (in 1), since end_turf is known can skip that step too (step_count - 1)
+		x += step_x
+		y += step_y
+		line += locate(x, y, start_z)
+
+	line += end_turf
+
 	return line
-
-//Bresenham's algorithm. This one deals efficiently with all 8 octants.
-//Just don't ask me how it works.
-/proc/getline2(atom/from_atom, atom/to_atom, include_from_atom = TRUE)
-	if(!from_atom || !to_atom) return 0
-	var/list/turf/turfs = list()
-
-	var/cur_x = from_atom.x
-	var/cur_y = from_atom.y
-
-	var/w = to_atom.x - from_atom.x
-	var/h = to_atom.y - from_atom.y
-	var/dx1 = 0
-	var/dx2 = 0
-	var/dy1 = 0
-	var/dy2 = 0
-	if(w < 0)
-		dx1 = -1
-		dx2 = -1
-	else if(w > 0)
-		dx1 = 1
-		dx2 = 1
-	if(h < 0) dy1 = -1
-	else if(h > 0) dy1 = 1
-	var/longest = abs(w)
-	var/shortest = abs(h)
-	if(!(longest > shortest))
-		longest = abs(h)
-		shortest = abs(w)
-		if(h < 0) dy2 = -1
-		else if (h > 0) dy2 = 1
-		dx2 = 0
-
-	var/numerator = longest >> 1
-	var/i
-	for(i = 0; i <= longest; i++)
-		if(i > 0 || include_from_atom)
-			turfs += locate(cur_x,cur_y,from_atom.z)
-		numerator += shortest
-		if(!(numerator < longest))
-			numerator -= longest
-			cur_x += dx1
-			cur_y += dy1
-		else
-			cur_x += dx2
-			cur_y += dy2
-
-
-	return turfs
-
 
 //Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm.
 
@@ -1622,41 +1329,20 @@ var/list/WALLITEMS = list(
 	. = 0
 	var/i = DS2TICKS(initial_delay)
 	do
-		. += CEILING(i*DELTA_CALC, 1)
+		. += ceil(i*DELTA_CALC)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (TICK_USAGE > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
 
 #undef DELTA_CALC
 
-/proc/get_random_turf_in_range(var/atom/origin, var/outer_range, var/inner_range)
+/proc/get_random_turf_in_range(atom/origin, outer_range, inner_range)
 	origin = get_turf(origin)
 	if(!origin)
 		return
-	var/list/turfs = list()
-	for(var/turf/T in orange(origin, outer_range))
-		if(!inner_range || get_dist(origin, T) >= inner_range)
-			turfs += T
-	if(turfs.len)
+	var/list/turfs = (RANGE_TURFS(outer_range, origin) - RANGE_TURFS(inner_range - 1, origin))
+	if(length(turfs))
 		return pick(turfs)
-
-/proc/input_marked_datum(var/list/marked_datums)
-	if(!marked_datums.len)
-		return null
-
-	var/list/options = list()
-	for(var/datum/D in marked_datums)
-		options += "Marked datum ([D] - \ref[D])"
-	var/choice = tgui_input_list(usr, "Select marked datum", "Marked datums", options)
-
-	if(!choice)
-		return null
-
-	for(var/datum/D in marked_datums)
-		if(findtext(choice, "\ref[D]"))
-			return D
-
-	return null
 
 // Returns true if arming a given explosive might be considered grief
 // Explosives are considered "griefy" if they are primed when all the following are true:
@@ -1665,11 +1351,11 @@ var/list/WALLITEMS = list(
 // * The dropship crash hasn't happened yet
 // * An admin hasn't disabled explosive antigrief
 // Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
-/proc/explosive_antigrief_check(var/obj/item/explosive/explosive, var/mob/user)
+/proc/explosive_antigrief_check(obj/item/explosive/explosive, mob/user)
 	var/turf/Turf = get_turf(explosive)
 	if(!(Turf.loc.type in GLOB.explosive_antigrief_exempt_areas))
-		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured)
+		var/crash_occurred = (SSticker?.mode?.is_in_endgame)
+		if((Turf.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_RESERVED))) && (GLOB.security_level < SEC_LEVEL_RED) && !crash_occurred)
 			switch(CONFIG_GET(number/explosive_antigrief))
 				if(ANTIGRIEF_DISABLED)
 					return FALSE
@@ -1680,89 +1366,12 @@ var/list/WALLITEMS = list(
 					return TRUE
 	return FALSE
 
-// Returns only the perimeter of the block given by the min and max turfs
-/proc/blockhollow(var/turf/min, var/turf/max)
-	var/list/perimeter_turfs = list()
-
-	// Upper/lower perimeters
-	for(var/x_coord = min.x to max.x)
-		perimeter_turfs += locate(x_coord, min.y, min.z)
-		perimeter_turfs += locate(x_coord, max.y, min.z)
-
-	// Left/right perimeters
-	for(var/y_coord = min.y + 1 to max.y - 1)
-		perimeter_turfs += locate(min.x, y_coord, min.z)
-		perimeter_turfs += locate(max.x, y_coord, min.z)
-
-	return perimeter_turfs
-
-/proc/flick_overlay(var/atom/target, overlay, time)
+/proc/flick_overlay(atom/target, overlay, time)
 	target.overlays += overlay
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_timed_overlay, target, overlay), time)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_timed_overlay), target, overlay), time)
 
-/proc/remove_timed_overlay(var/atom/target, overlay)
+/proc/remove_timed_overlay(atom/target, overlay)
 	target.overlays -= overlay
-
-/*
-	Returns a list of random-looking, zero-sum variances.
-
-	Imagine a straight line divided up into n segments,
-	then divide each segment into 2 subsegments again, so each original segment gets "its own point" that divides the subsegments
-	Then displace the first segment's dividing point by e.g. 5.
-	Then displace the second segment's dividing point by -5.
-	Then displace the third segment's dividing point by 5, and so on, alternating between a displacement of 5 and -5
-	(If there's an odd number of segments just don't displace the last point at all)
-
-	At the end, you'll have a zig-zaggy line. You then go through each segment end and
-	take away/add some random amount of displacement from its point. If you keep track of how much
-	net displacement has been added/removed, you can distribute it among other points
-	and end up with net 0 displacement (i.e. 0 total variance)
-
-	Basically, this is what happens: https://i.imgur.com/AuY7HHd.png
-*/
-/proc/get_random_zero_sum_variances(var/amount, var/max_variance)
-	// Displace each "point" to max variance
-	var/list/variances[amount]
-	for(var/i in 1 to variances.len)
-		if(i == variances.len && (variances.len % 2))
-			variances[i] = 0
-		else
-			variances[i] = (i % 2 ? 1 : -1) * max_variance
-
-	// Jiggle each variance a random amount towards the "center line"/0 variance
-	var/net_displacement = 0
-	for(var/i in 1 to variances.len)
-		var/to_redistribute = (i % 2 ? -1 : 1) * rand(0, max_variance/2)
-
-		net_displacement += to_redistribute
-		variances[i] += to_redistribute
-
-	// Lucky! Everything jiggled towards 0 in a way that left 0 net displacement
-	if(!net_displacement)
-		return variances
-
-	// Redistribute the net displacement evenly on the side of the center line that needs it
-	// Only half the points are gonna be affected.
-	var/to_redistribute = abs(Ceiling(net_displacement / (variances.len/2)))
-	for(var/i in 1 to variances.len)
-		if(!net_displacement)
-			break
-
-		// Positive net displacement, only distribute to points that were given negative variance to begin with
-		if(net_displacement > 0 && !(i % 2))
-			variances[i] -= min(abs(net_displacement), to_redistribute)
-			net_displacement -= to_redistribute
-		// Negative net displacement, only distribute to points that were given positive variance to begin with
-		else if(net_displacement < 0 && i % 2)
-			variances[i] += min(abs(net_displacement), to_redistribute)
-			net_displacement += to_redistribute
-
-	return variances
-
-/proc/check_bitflag(var/flag, var/bit)
-	if(flag & bit)
-		return TRUE
-	return FALSE
 
 // A proc purely for a callback that returns TRUE (and does nothing else)
 /proc/_callback_true()
@@ -1779,34 +1388,147 @@ var/list/WALLITEMS = list(
 		if(location == src)
 			return TRUE
 
+GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
+
+/// Version of view() which ignores darkness, because BYOND doesn't have it (I actually suggested it but it was tagged redundant, BUT HEARERS IS A T- /rant).
+/proc/dview(range = world.view, atom/center, invis_flags = 0)
+	if(!center)
+		return
+
+	GLOB.dview_mob.loc = isturf(center) ? center : center.loc
+	GLOB.dview_mob.see_invisible = invis_flags
+
+	. = oview(range, GLOB.dview_mob)
+	GLOB.dview_mob.loc = null
+
+/// Version of oview() which ignores darkness
+/proc/doview(range, atom/center, invis_flags)
+	if(!center)
+		return
+
+	return dview(range, center, invis_flags) - center
+
+/mob/dview
+	name = "INTERNAL DVIEW MOB"
+	invisibility = INVISIBILITY_ABSTRACT
+	density = FALSE
+	see_in_dark = INFINITY
+	var/ready_to_die = FALSE
+
+/mob/dview/Initialize() //Properly prevents this mob from gaining huds or joining any global lists
+	SHOULD_CALL_PARENT(FALSE)
+	if(CHECK_BITFIELD(flags_atom, INITIALIZED))
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	ENABLE_BITFIELD(flags_atom, INITIALIZED)
+	return INITIALIZE_HINT_NORMAL
+
+/mob/dview/Destroy(force = FALSE)
+	if(!ready_to_die)
+		stack_trace("ALRIGHT WHICH FUCKER TRIED TO DELETE *MY* DVIEW?")
+
+		if (!force)
+			return QDEL_HINT_LETMELIVE
+
+		log_world("EVACUATE THE SHITCODE IS TRYING TO STEAL MUH JOBS")
+		GLOB.dview_mob = new
+	return ..()
+
+
+#define FOR_DVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in oview(range, GLOB.dview_mob))
+
+#define FOR_DVIEW_END GLOB.dview_mob.loc = null
+
+#define FOR_DOVIEW(type, range, center, invis_flags) \
+	GLOB.dview_mob.loc = isturf(center) ? (center) : (center).loc; \
+	GLOB.dview_mob.see_invisible = invis_flags; \
+	for(type in oview(range, GLOB.dview_mob) - (center))
+
+#define FOR_DOVIEW_END FOR_DVIEW_END
+
+/proc/get_turf_pixel(atom/AM)
+	if(!istype(AM))
+		return
+
+	//Find AM's matrix so we can use it's X/Y pixel shifts
+	var/matrix/M = matrix(AM.transform)
+
+	var/pixel_x_offset = AM.pixel_x + M.get_x_shift()
+	var/pixel_y_offset = AM.pixel_y + M.get_y_shift()
+
+	//Irregular objects
+	var/icon/AMicon = icon(AM.icon, AM.icon_state)
+	var/AMiconheight = AMicon.Height()
+	var/AMiconwidth = AMicon.Width()
+	if(AMiconheight != world.icon_size || AMiconwidth != world.icon_size)
+		pixel_x_offset += ((AMiconwidth/world.icon_size)-1)*(world.icon_size*0.5)
+		pixel_y_offset += ((AMiconheight/world.icon_size)-1)*(world.icon_size*0.5)
+
+	//DY and DX
+	var/rough_x = floor(round(pixel_x_offset,world.icon_size)/world.icon_size)
+	var/rough_y = floor(round(pixel_y_offset,world.icon_size)/world.icon_size)
+
+	//Find coordinates
+	var/turf/T = get_turf(AM) //use AM's turfs, as it's coords are the same as AM's AND AM's coords are lost if it is inside another atom
+	if(!T)
+		return null
+	var/final_x = T.x + rough_x
+	var/final_y = T.y + rough_y
+
+	if(final_x || final_y)
+		return locate(final_x, final_y, T.z)
+
 //used to check if a mob can examine an object
-/atom/proc/can_examine(var/mob/user)
+/atom/proc/can_examine(mob/user)
 	if(!user.client)
 		return FALSE
 	if(isRemoteControlling(user))
 		return TRUE
 	// If the user is not a xeno (with active ability) with the shift click pref on, we examine. God forgive me for snowflake
-	if(user.client?.prefs && !(user.client?.prefs?.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/X = user
+	if(user.get_ability_mouse_key() == XENO_ABILITY_CLICK_SHIFT)
+		if(isxeno(user))
+			var/mob/living/carbon/xenomorph/X = user
 			if(X.selected_ability)
 				return FALSE
 		else if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.selected_ability)
 				return FALSE
-	if(user.client.eye == user)
+	if(user.client.eye == user && !user.is_mob_incapacitated(TRUE))
 		user.face_atom(src)
 	return TRUE
 
-#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, /proc/___callbackvarset, ##datum, NAMEOF(##datum, ##var), ##var_value)
+#define VARSET_LIST_CALLBACK(target, var_name, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##target, ##var_name, ##var_value)
+#define VARSET_LIST_REMOVE_CALLBACK(target, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarsetlistremove), ##target, ##var_value)
+//dupe code because dm can't handle 3 level deep macros
+#define VARSET_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), ##datum, NAMEOF(##datum, ##var), ##var_value)
+/// Same as VARSET_CALLBACK, but uses a weakref to the datum.
+/// Use this if the timer is exceptionally long.
+#define VARSET_WEAK_CALLBACK(datum, var, var_value) CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(___callbackvarset), WEAKREF(##datum), NAMEOF(##datum, ##var), ##var_value)
 
 /proc/___callbackvarset(list_or_datum, var_name, var_value)
 	if(length(list_or_datum))
 		list_or_datum[var_name] = var_value
 		return
-	var/datum/D = list_or_datum
-	D.vars[var_name] = var_value
+
+	var/datum/datum = list_or_datum
+
+	if (isweakref(datum))
+		var/datum/weakref/datum_weakref = datum
+		datum = datum_weakref.resolve()
+		if (isnull(datum))
+			return
+
+	if(IsAdminAdvancedProcCall())
+		datum.vv_edit_var(var_name, var_value) //same result generally, unless badmemes
+	else
+		datum.vars[var_name] = var_value
+
+/proc/___callbackvarsetlistremove(list, var_value)
+	if(length(list))
+		list -= var_value
 
 //don't question just accept
 /proc/pass(...)
@@ -1851,10 +1573,21 @@ var/list/WALLITEMS = list(
 
 #define UNTIL(X) while(!(X)) stoplag()
 
-/proc/IsValidSrc(datum/D)
-	if(istype(D))
-		return !QDELETED(D)
-	return FALSE
+/// Macro for cases where an UNTIL() may go on forever (such as for an http request)
+#define UNTIL_OR_TIMEOUT(X, __time) \
+	do { \
+		if(__time <= 0) {; \
+			CRASH("UNTIL_OR_TIMEOUT given invalid time"); \
+		} \
+		var/__start_time = world.time; \
+		do { \
+			if(__start_time + __time <= world.time) {; \
+				CRASH("UNTIL_OR_TIMEOUT hit timeout limit of [__time]"); \
+			} else { \
+				stoplag(); \
+			} \
+		} while(!(X)) \
+	} while(FALSE)
 
 //Repopulates sortedAreas list
 /proc/repopulate_sorted_areas()
@@ -1863,14 +1596,14 @@ var/list/WALLITEMS = list(
 	for(var/area/A in world)
 		GLOB.sorted_areas.Add(A)
 
-	sortTim(GLOB.sorted_areas, /proc/cmp_name_asc)
+	sortTim(GLOB.sorted_areas, GLOBAL_PROC_REF(cmp_name_asc))
 
 /atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
 	if(!length(ignore_typecache))
 		return GetAllContents()
 	var/list/processing = list(src)
 	var/list/assembled = list()
-	while(processing.len)
+	while(length(processing))
 		var/atom/A = processing[1]
 		processing.Cut(1,2)
 		if(!ignore_typecache[A.type])
@@ -1897,8 +1630,6 @@ var/list/WALLITEMS = list(
 		region_y2["[i]"] = TRUE
 
 	return list(region_x1 & region_x2, region_y1 & region_y2)
-
-#define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
 
 //Vars that will not be copied when using /DuplicateObject
 GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
@@ -1935,12 +1666,6 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		M.overlays.Cut()
 		M.regenerate_icons()
 	return O
-
-/proc/convert_to_json_text(var/json_file_string)
-	var/json_file = file(json_file_string)
-	json_file = file2text(json_file)
-	json_file = json_decode(json_file)
-	return json_file
 
 ///Returns a list of all items of interest with their name
 /proc/getpois(mobs_only = FALSE, skip_mindless = FALSE, specify_dead_role = TRUE)
@@ -1990,3 +1715,45 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		if(stop_type && istype(turf_to_check, stop_type))
 			break
 	return turf_to_check
+
+/// Given a direction, return the direction and the +-45 degree directions next to it
+/proc/get_related_directions(direction = NORTH)
+	switch(direction)
+		if(NORTH)
+			return list(NORTH, NORTHEAST, NORTHWEST)
+
+		if(EAST)
+			return list(EAST, NORTHEAST, SOUTHEAST)
+
+		if(SOUTH)
+			return list(SOUTH, SOUTHEAST, SOUTHWEST)
+
+		if(WEST)
+			return list(WEST, NORTHWEST, SOUTHWEST)
+
+		if(NORTHEAST)
+			return list(NORTHEAST, NORTH, EAST)
+
+		if(SOUTHEAST)
+			return list(SOUTHEAST, EAST, SOUTH)
+
+		if(SOUTHWEST)
+			return list(SOUTHWEST, SOUTH, WEST)
+
+		if(NORTHWEST)
+			return list(NORTHWEST, NORTH, WEST)
+
+/// Returns TRUE if the target is somewhere that the game should not interact with if possible
+/// In this case, admin Zs and tutorial areas
+/proc/should_block_game_interaction(atom/target, include_hunting_grounds = FALSE)
+	if(is_admin_level(target.z))
+		return TRUE
+
+	var/area/target_area = get_area(target)
+	if(target_area?.block_game_interaction)
+		return TRUE
+
+	if(include_hunting_grounds && target_area?.flags_area & AREA_YAUTJA_HUNTING_GROUNDS)
+		return TRUE
+
+	return FALSE

@@ -1,7 +1,11 @@
 /obj/item/implanter
 	name = "implanter"
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "implanter0"
+	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
+	icon_state = "implanter_alt0"
 	item_state = "syringe_0"
 	throw_speed = SPEED_FAST
 	throw_range = 5
@@ -9,20 +13,15 @@
 	var/obj/item/implant/imp = null
 
 /obj/item/implanter/proc/update()
-
-
-/obj/item/implanter/update()
-	if (src.imp)
-		src.icon_state = "implanter1"
+	if(imp)
+		icon_state = "implanter_alt1"
 	else
-		src.icon_state = "implanter0"
-	return
-
+		icon_state = "implanter_alt0"
 
 /obj/item/implanter/attack(mob/M as mob, mob/user as mob)
 	if (!istype(M, /mob/living/carbon/human))
 		return
-	if(isYautja(M))
+	if(isyautja(M))
 		return
 	if (user && src.imp)
 		user.visible_message(SPAN_WARNING("[user] is attemping to implant [M]."), SPAN_NOTICE("You're attemping to implant [M]."))
@@ -101,7 +100,7 @@
 
 /obj/item/implanter/compressed/attack(mob/M as mob, mob/user as mob)
 	var/obj/item/implant/compressed/c = imp
-	if (!c)	return
+	if (!c) return
 	if (c.scanned == null)
 		to_chat(user, "Please scan an object with the implanter first.")
 		return

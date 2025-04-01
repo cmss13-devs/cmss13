@@ -1,10 +1,15 @@
 // Fulton baloon deployment devices, used to gather and send crates, dead things, and other objective-based items into space for collection.
 
-var/global/list/deployed_fultons = list() // A list of fultons currently airborne.
+/// A list of fultons currently airborne.
+GLOBAL_LIST_EMPTY(deployed_fultons)
 
 /obj/item/stack/fulton
 	name = "fulton recovery device"
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "fulton"
 	amount = 20
 	max_amount = 20
@@ -21,8 +26,10 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	var/atom/movable/attached_atom = null
 	var/turf/original_location = null
 	var/attachable_atoms = list(/obj/structure/closet/crate)
+	var/datum/turf_reservation/reservation
+	var/faction
 
-/obj/item/stack/fulton/New(loc, amount, var/atom_to_attach)
+/obj/item/stack/fulton/New(loc, amount, atom_to_attach)
 	..()
 	if(amount)
 		src.amount = amount
@@ -34,7 +41,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 		attached_atom = null
 	if(original_location)
 		original_location = null
-	deployed_fultons -= src
+	GLOB.deployed_fultons -= src
 	. = ..()
 
 /obj/item/stack/fulton/update_icon()
@@ -55,7 +62,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 		return
 
 /obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
-	return
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
 	if (attached_atom)
@@ -86,15 +93,15 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	if(isliving(target_atom))
 		if(ishuman(target_atom))
 			var/mob/living/carbon/human/H = target_atom
-			if(isYautja(H) && H.stat == DEAD)
+			if(isyautja(H) && H.stat == DEAD)
 				can_attach = TRUE
-			else if((H.stat != DEAD || H.mind && H.check_tod() && H.is_revivable()))
+			else if((H.stat != DEAD || H.check_tod() && H.is_revivable()))
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else
 				can_attach = TRUE
-		else if(isXeno(target_atom))
-			var/mob/living/carbon/Xenomorph/X = target_atom
+		else if(isxeno(target_atom))
+			var/mob/living/carbon/xenomorph/X = target_atom
 			if(X.stat != DEAD)
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], kill it first!"))
 				return
@@ -110,7 +117,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 				break
 
 	if(can_attach)
-		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."), \
+		user.visible_message(SPAN_WARNING("[user] begins attaching [src] onto [target_atom]."),
 					SPAN_WARNING("You begin to attach [src] onto [target_atom]."))
 		if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_INTEL), INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			if(!amount || get_dist(target_atom,user) > 1)
@@ -123,6 +130,7 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 			F.add_fingerprint(user)
 			user.count_niche_stat(STATISTICS_NICHE_FULTON)
 			use(1)
+			F.faction = user.faction
 			F.deploy_fulton()
 	else
 		to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom]."))
@@ -131,14 +139,19 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	if(!attached_atom)
 		return
 	var/image/I = image(icon, icon_state)
-	if(isXeno(attached_atom))
-		var/mob/living/carbon/Xenomorph/X = attached_atom
+	if(isxeno(attached_atom))
+		var/mob/living/carbon/xenomorph/X = attached_atom
 		I.pixel_x = (X.pixel_x * -1)
 	attached_atom.overlays += I
 	sleep(30)
 	original_location = get_turf(attached_atom)
 	playsound(loc, 'sound/items/fulton.ogg', 50, 1)
-	var/turf/space_tile = pick(get_area_turfs(/area/space/highalt))
+	reservation = SSmapping.request_turf_block_reservation(3, 3, 1, turf_type_override = /turf/open/space)
+	var/turf/bottom_left_turf = reservation.bottom_left_turfs[1]
+	var/turf/top_right_turf = reservation.top_right_turfs[1]
+	var/middle_x = bottom_left_turf.x + floor((top_right_turf.x - bottom_left_turf.x) / 2)
+	var/middle_y = bottom_left_turf.y + floor((top_right_turf.y - bottom_left_turf.y) / 2)
+	var/turf/space_tile = locate(middle_x, middle_y, bottom_left_turf.z)
 	if(!space_tile)
 		visible_message(SPAN_WARNING("[src] begins beeping like crazy. Something is wrong!"))
 		return
@@ -149,25 +162,27 @@ var/global/list/deployed_fultons = list() // A list of fultons currently airborn
 	attached_atom.forceMove(space_tile)
 
 	forceMove(attached_atom)
-	deployed_fultons += src
+	GLOB.deployed_fultons += src
 	attached_atom.overlays -= I
 
-	addtimer(CALLBACK(src, .proc/return_fulton, original_location), 150 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(return_fulton), original_location), 150 SECONDS)
 
-/obj/item/stack/fulton/proc/return_fulton(var/turf/return_turf)
+/obj/item/stack/fulton/proc/return_fulton(turf/return_turf)
 
-	// Fulton is not in space, it must have been collected.
-	if(!istype(get_area(attached_atom), /area/space/highalt))
+	// Fulton is not in reservation, it must have been collected.
+	if(!(get_turf(src) in reservation.reserved_turfs))
 		return
 
 	attached_atom.forceMove(return_turf)
 	attached_atom.anchored = FALSE
 	playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
 
-	if(intel_system)
+	if(GLOB.intel_system)
 		if (!LAZYISIN(GLOB.failed_fultons, attached_atom))
 			//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
 			var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
-			intel_system.store_single_objective(objective)
+			GLOB.intel_system.store_single_objective(objective)
+
+	qdel(reservation)
 	qdel(src)
 	return

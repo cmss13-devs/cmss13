@@ -5,14 +5,17 @@
 	icon_state = "chemstorage"
 	active_power_usage = 1000
 	layer = BELOW_OBJ_LAYER
-	density = 1
+	density = TRUE
 	bound_x = 32
 
 	var/network = "Ground"
 	var/recharge_cooldown = 15
 	var/recharge_rate = 10
 	var/energy = 50
-	var/max_energy = 50
+	var/max_energy = 100
+
+	unslashable = TRUE
+	unacidable = TRUE
 
 /obj/structure/machinery/chem_storage/medbay
 	name = "Chemical Storage System (Medbay)"
@@ -28,13 +31,17 @@
 
 /obj/structure/machinery/chem_storage/Initialize()
 	. = ..()
-	chemical_data.add_chem_storage(src)
+	GLOB.chemical_data.add_chem_storage(src)
 	start_processing()
+
+/obj/structure/machinery/chem_storage/Destroy()
+	GLOB.chemical_data.remove_chem_storage(src)
+	return ..()
 
 /obj/structure/machinery/chem_storage/get_examine_text(mob/user)
 	. = ..()
 	if(in_range(user, src) || istype(user, /mob/dead/observer))
-		var/charge = round((energy / max_energy) * 100)
+		var/charge = floor((energy / max_energy) * 100)
 		. += SPAN_NOTICE("The charge meter reads [charge]%")
 
 /obj/structure/machinery/chem_storage/process()
@@ -50,4 +57,4 @@
 	if(energy >= max_energy)
 		return
 	energy = min(energy + recharge_rate, max_energy)
-	use_power(1500) // This thing uses up alot of power (this is still low as shit for creating reagents from thin air)
+	use_power(1500) // This thing uses up a lot of power (this is still low as shit for creating reagents from thin air)

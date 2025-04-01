@@ -30,15 +30,16 @@
 
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
 	return
+
 /mob/verb/view_stats()
-	set category = "OOC"
+	set category = "OOC.Records"
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
 	if(!SSentity_manager.ready)
 		to_chat(src, "DB is still starting up, please wait")
 		return
 	if(client && client.player_entity)
-		client.player_data.ui_interact(src)
+		client.player_data.tgui_interact(src)
 
 /mob/verb/toggle_high_toss()
 	set name = "Toggle High Toss"
@@ -49,34 +50,33 @@
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
 	return
 
-/mob/proc/point_to(atom/A in view())
+/mob/proc/point_to(atom/target in view())
 	//set name = "Point To"
 	//set category = "Object"
 
-	if(!isturf(src.loc) || !(A in view(src)))//target is no longer visible to us
-		return 0
+	if(!isturf(src.loc) || !(target in view(src)))//target is no longer visible to us
+		return FALSE
 
-	if(!A.mouse_opacity)//can't click it? can't point at it.
-		return 0
+	if(!target.mouse_opacity)//can't click it? can't point at it.
+		return FALSE
 
 	if(is_mob_incapacitated() || (status_flags & FAKEDEATH)) //incapacitated, can't point
-		return 0
+		return FALSE
 
-	var/tile = get_turf(A)
-	if (!tile)
-		return 0
+	var/tile = get_turf(target)
+	if(!tile)
+		return FALSE
 
 	if(recently_pointed_to > world.time)
-		return 0
+		return FALSE
+
+	if(SEND_SIGNAL(src, COMSIG_MOB_TRY_POINT, target) & COMPONENT_OVERRIDE_POINT)
+		return FALSE
 
 	next_move = world.time + 2
 
-	point_to_atom(A, tile)
-	return 1
-
-
-
-
+	point_to_atom(target, tile)
+	return TRUE
 
 /mob/verb/memory()
 	set name = "Notes"
@@ -97,8 +97,8 @@
 		if(length(mind.memory) < 4000)
 			mind.store_memory(msg)
 		else
-			src.sleeping = 9999999
-			message_staff("[key_name(usr)] auto-slept for attempting to exceed mob memory limit. (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			message_admins("[key_name(usr)] warned for attempting to exceed mob memory limit.]", loc.x, loc.y, loc.z)
+			to_chat(src, "You have exceeded the maximum memory limit. Sorry!")
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
@@ -121,7 +121,7 @@
 		return
 	else
 		var/deathtime = world.time - src.timeofdeath
-		var/deathtimeminutes = round(deathtime / 600)
+		var/deathtimeminutes = floor(deathtime / 600)
 		var/pluralcheck = "minute"
 		if(deathtimeminutes == 0)
 			pluralcheck = ""
@@ -154,11 +154,12 @@
 		return
 
 	M.key = key
-	if(M.client) M.client.change_view(world_view_size)
-//	M.Login()	//wat
+	if(M.client)
+		M.client.change_view(GLOB.world_view_size)
+// M.Login() //wat
 	return
 
-/*/mob/dead/observer/verb/observe()
+/mob/dead/observer/verb/observe()
 	set name = "Observe"
 	set category = "Ghost"
 
@@ -168,7 +169,7 @@
 	if(!target)
 		return
 
-	do_observe(target) */ //disabled thanks to le exploiterinos
+	do_observe(target)
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
@@ -181,36 +182,36 @@
 			M.cameraFollow = null
 
 /mob/verb/eastface()
-	set hidden = 1
-	return facedir(EAST)
+	set hidden = TRUE
+	return face_dir(EAST)
 
 /mob/verb/westface()
-	set hidden = 1
-	return facedir(WEST)
+	set hidden = TRUE
+	return face_dir(WEST)
 
 /mob/verb/northface()
-	set hidden = 1
-	return facedir(NORTH)
+	set hidden = TRUE
+	return face_dir(NORTH)
 
 /mob/verb/southface()
-	set hidden = 1
-	return facedir(SOUTH)
+	set hidden = TRUE
+	return face_dir(SOUTH)
 
 
 /mob/verb/northfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(NORTH)
 
 /mob/verb/southfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(SOUTH)
 
 /mob/verb/eastfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(EAST)
 
 /mob/verb/westfaceperm()
-	set hidden = 1
+	set hidden = TRUE
 	set_face_dir(WEST)
 
 
@@ -221,6 +222,7 @@
 	set category = "IC"
 
 	if(pulling)
+		REMOVE_TRAIT(pulling, TRAIT_FLOORED, CHOKEHOLD_TRAIT)
 		var/mob/M = pulling
 		pulling.pulledby = null
 		pulling = null
@@ -243,4 +245,23 @@
 				//so we must undo it here so the victim can move right away
 				M.client.next_movement = world.time
 			M.update_transform(TRUE)
-			M.update_canmove()
+
+/mob/living/verb/look_up()
+	set name = "Look Up"
+	set category = "IC"
+
+	if(observed_atom)
+		var/atom/to_delete = observed_atom
+		observed_atom = null
+		qdel(to_delete)
+		return
+
+	var/turf/above = locate(x, y, z+1)
+
+	if(!istransparentturf(above))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
+		return
+
+	var/mob/hologram/look_up/observed_hologram = new(above, src)
+
+	observed_atom = observed_hologram

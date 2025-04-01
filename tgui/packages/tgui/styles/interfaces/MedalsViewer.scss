@@ -1,0 +1,13 @@
+.MedalsViewer {
+  .medal-icon {
+    vertical-align: -50%;
+  }
+
+  .xeno-medal {
+    background-color: hsl(284, 25%, 29%);
+
+    .Section__title {
+      border-bottom: 0.1666666667em solid hsl(285, 32%, 36%);
+    }
+  }
+}

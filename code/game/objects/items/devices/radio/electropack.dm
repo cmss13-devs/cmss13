@@ -3,12 +3,18 @@
 	desc = "Dance my monkeys! DANCE!!!"
 	icon_state = "electropack0"
 	item_state = "electropack"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	frequency = 1457
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_HUGE
 
 	matter = list("metal" = 10000,"glass" = 2500)
+	black_market_value = 20
 
 	var/code = 2
 	var/mob_move_time = 0
@@ -34,7 +40,7 @@
 		else
 			if(href_list["code"])
 				code += text2num(href_list["code"])
-				code = round(code)
+				code = floor(code)
 				code = min(100, code)
 				code = max(1, code)
 			else
@@ -68,7 +74,7 @@
 		var/mob/M = loc
 		var/turf/T = M.loc
 		if(istype(T, /turf))
-			if( (world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir)
+			if((world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir && M.stat == CONSCIOUS)
 				mob_move_time = world.time
 				step(M, M.last_move_dir)
 		to_chat(M, SPAN_DANGER("You feel a sharp shock!"))
@@ -89,9 +95,9 @@
 		return
 	user.set_interaction(src)
 	var/dat = {"<TT>
-<A href='?src=\ref[src];power=1'>Turn [on ? "Off" : "On"]</A><BR>
+<A href='byond://?src=\ref[src];power=1'>Turn [on ? "Off" : "On"]</A><BR>
 <B>Frequency/Code</B> for electropack:<BR>
-Frequency: [format_frequency(frequency)]<BR>
+Frequency: [format_frequency(frequency)] kHz<BR>
 
 Code:
 <A href='byond://?src=\ref[src];code=-5'>-</A>

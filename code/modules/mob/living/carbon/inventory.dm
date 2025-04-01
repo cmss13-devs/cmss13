@@ -4,11 +4,18 @@
 	if(handcuffed)
 		drop_held_items()
 		stop_pulling()
+		throw_alert(ALERT_HANDCUFFED, /atom/movable/screen/alert/restrained/handcuffed, new_master = handcuffed)
+	else
+		clear_alert(ALERT_HANDCUFFED)
 	update_inv_handcuffed()
+
 
 /mob/living/carbon/proc/legcuff_update()
 	if(legcuffed)
 		set_movement_intent(MOVE_INTENT_WALK)
+		throw_alert(ALERT_LEGCUFFED, /atom/movable/screen/alert/restrained/legcuffed, new_master = handcuffed)
+	else
+		clear_alert(ALERT_LEGCUFFED)
 	update_inv_legcuffed()
 
 

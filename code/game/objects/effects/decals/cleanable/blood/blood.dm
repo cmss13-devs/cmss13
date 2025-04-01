@@ -2,10 +2,10 @@
 	name = "blood"
 	desc = "It's thick and gooey. This probably isn't a safe place to be."
 	gender = PLURAL
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	layer = ABOVE_WEED_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
@@ -31,7 +31,7 @@
 		basecolor = b_color
 	update_icon()
 
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		amount = 0
 		return
 
@@ -40,16 +40,16 @@
 			dry()
 			return
 		dry_start_time = world.time
-		addtimer(CALLBACK(src, .proc/dry), drying_time * (amount+1))
+		addtimer(CALLBACK(src, PROC_REF(dry)), drying_time * (amount+1))
 
 /obj/effect/decal/cleanable/blood/Crossed(atom/movable/AM)
 	. = ..()
 	// Check if the blood is dry and only humans
 	// can make footprints
-	if(!amount || !ishuman(AM))
+	if(!amount || !ishuman(AM) || QDELETED(AM))
 		return
 
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		return
 
 	var/mob/living/carbon/human/H = AM
@@ -112,7 +112,7 @@
 
 /obj/effect/decal/cleanable/blood/writing/New()
 	..()
-	if(random_icon_states.len)
+	if(length(random_icon_states))
 		for(var/obj/effect/decal/cleanable/blood/writing/W in loc)
 			random_icon_states.Remove(W.icon_state)
 		icon_state = pick(random_icon_states)
@@ -127,31 +127,34 @@
 	name = "gibs"
 	desc = "They look bloody and gruesome."
 	gender = PLURAL
-	density = 0
-	anchored = 1
-	layer = TURF_LAYER
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_WEED_LAYER
 	icon = 'icons/effects/blood.dmi'
-	icon_state = "gibbl5"
+	icon_state = ""
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	cleanable_type = CLEANABLE_BLOOD_GIBS
 	var/fleshcolor = "#830303"
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
+	overlays.Cut()
+
+	if(basecolor == "rainbow")
+		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
+	color = basecolor
+
 	var/image/giblets = new(base_icon, "[icon_state]_flesh", dir)
 	if(!fleshcolor || fleshcolor == "rainbow")
 		fleshcolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
 	giblets.color = fleshcolor
 
-	if(basecolor == "rainbow") basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-	color = basecolor
-
 	overlays += giblets
 
 /obj/effect/decal/cleanable/blood/gibs/up
-	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibup1","gibup1","gibup1")
+	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibup1", "gibup1", "gibup1")
 
 /obj/effect/decal/cleanable/blood/gibs/down
-	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibdown1","gibdown1","gibdown1")
+	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibdown1", "gibdown1", "gibdown1")
 
 /obj/effect/decal/cleanable/blood/gibs/body
 	random_icon_states = list("gibhead", "gibtorso")
@@ -163,7 +166,7 @@
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
 
 
-/obj/effect/decal/cleanable/blood/gibs/proc/streak(var/list/directions)
+/obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)
 	var/direction = pick(directions)
 	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
 		sleep(3)

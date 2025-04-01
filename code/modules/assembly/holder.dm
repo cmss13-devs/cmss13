@@ -1,6 +1,10 @@
 /obj/item/device/assembly_holder
 	name = "Assembly"
 	icon = 'icons/obj/items/new_assemblies.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
+	)
 	icon_state = "holder"
 	item_state = "assembly"
 	flags_atom = FPRINT|CONDUCT
@@ -24,22 +28,39 @@
 	. = ..()
 	flags_atom |= USES_HEARING
 
-/obj/item/device/assembly_holder/proc/attach_special(var/obj/O, var/mob/user)
-	return
+/obj/item/device/assembly_holder/proc/attach_special(obj/O, mob/user)
+	if(!O)
+		return FALSE
+	if(!O.IsSpecialAssembly())
+		return FALSE
 
-/obj/item/device/assembly_holder/proc/process_activation(var/obj/item/device/D)
-	return
+/obj/item/device/assembly_holder/proc/process_activation(obj/item/device/D, normal = TRUE, special = TRUE)
+	if(!D)
+		return FALSE
+	if(!secured)
+		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
+	if((normal) && (a_right) && (a_left))
+		if(a_right != D)
+			a_right.pulsed(0)
+		if(a_left && a_left != D) //check a_left again, a_right.pulsed() might've qdel'd the assembly
+			a_left.pulsed(0)
+	if(master)
+		master.receive_signal()
+	return TRUE
 
 /obj/item/device/assembly_holder/proc/detached()
 	return
 
 /obj/item/device/assembly_holder/IsAssemblyHolder()
-	return 1
+	return TRUE
 
-/obj/item/device/assembly_holder/proc/attach(var/obj/item/device/D, var/obj/item/device/D2, var/mob/user)
-	if((!D)||(!D2))	return 0
-	if((!isassembly(D))||(!isassembly(D2)))	return 0
-	if((D:secured)||(D2:secured))	return 0
+/obj/item/device/assembly_holder/proc/attach(obj/item/device/D, obj/item/device/D2, mob/user)
+	if((!D)||(!D2))
+		return 0
+	if((!isassembly(D))||(!isassembly(D2)))
+		return 0
+	if((D:secured)||(D2:secured))
+		return 0
 	if(user)
 		user.temp_drop_inv_item(D)
 		if(D2.loc == user)
@@ -59,10 +80,6 @@
 	usr.put_in_hands(src)
 
 	return 1
-
-/obj/item/device/assembly_holder/attach_special(var/obj/O, var/mob/user)
-	if(!O)	return
-	if(!O.IsSpecialAssembly())	return 0
 
 /obj/item/device/assembly_holder/update_icon()
 	overlays.Cut()
@@ -151,9 +168,13 @@
 			to_chat(user, SPAN_DANGER("Assembly part missing!"))
 			return
 		if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
-			switch(alert("Which side would you like to use?",,"Left","Right"))
-				if("Left")	a_left.attack_self(user)
-				if("Right")	a_right.attack_self(user)
+			var/response = tgui_alert(user, "Which side would you like to use?", "Side selection", list("Left","Right"))
+			if(response && (user.l_hand == src || user.r_hand == src))
+				switch(response)
+					if("Left")
+						a_left.attack_self(user)
+					if("Right")
+						a_right.attack_self(user)
 			return
 		else
 			if(!istype(a_left,/obj/item/device/assembly/igniter))
@@ -173,19 +194,6 @@
 			a_right.forceMove(T)
 			a_right = null
 		qdel(src)
-
-/obj/item/device/assembly_holder/process_activation(var/obj/D, var/normal = 1, var/special = 1)
-	if(!D)	return 0
-	if(!secured)
-		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
-	if((normal) && (a_right) && (a_left))
-		if(a_right != D)
-			a_right.pulsed(0)
-		if(a_left && a_left != D) //check a_left again, a_right.pulsed() might've qdel'd the assembly
-			a_left.pulsed(0)
-	if(master)
-		master.receive_signal()
-	return 1
 
 /obj/item/device/assembly_holder/hear_talk(mob/living/M as mob, msg)
 	if(a_right)

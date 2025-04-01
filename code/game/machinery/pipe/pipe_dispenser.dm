@@ -1,9 +1,10 @@
 /obj/structure/machinery/pipedispenser
 	name = "Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	desc = "A large machine used for dispensing pipes. Bolts anchor it to the ground, but you can move it around if you unwrench them."
 	icon_state = "pipe_d"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/unwrenched = 0
 	var/wait = 0
 
@@ -13,55 +14,55 @@
 ///// Z-Level stuff
 	var/dat = {"
 <b>Regular pipes:</b><BR>
-<A href='?src=\ref[src];make=0;dir=1'>Pipe</A><BR>
-<A href='?src=\ref[src];make=1;dir=5'>Bent Pipe</A><BR>
-<A href='?src=\ref[src];make=5;dir=1'>Manifold</A><BR>
-<A href='?src=\ref[src];make=8;dir=1'>Manual Valve</A><BR>
-<A href='?src=\ref[src];make=20;dir=1'>Pipe Cap</A><BR>
-<A href='?src=\ref[src];make=19;dir=1'>4-Way Manifold</A><BR>
-<A href='?src=\ref[src];make=18;dir=1'>Manual T-Valve</A><BR>
-<A href='?src=\ref[src];make=21;dir=1'>Upward Pipe</A><BR>
-<A href='?src=\ref[src];make=22;dir=1'>Downward Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=0;dir=1'>Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=1;dir=5'>Bent Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=5;dir=1'>Manifold</A><BR>
+<A href='byond://?src=\ref[src];make=8;dir=1'>Manual Valve</A><BR>
+<A href='byond://?src=\ref[src];make=20;dir=1'>Pipe Cap</A><BR>
+<A href='byond://?src=\ref[src];make=19;dir=1'>4-Way Manifold</A><BR>
+<A href='byond://?src=\ref[src];make=18;dir=1'>Manual T-Valve</A><BR>
+<A href='byond://?src=\ref[src];make=21;dir=1'>Upward Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=22;dir=1'>Downward Pipe</A><BR>
 <b>Supply pipes:</b><BR>
-<A href='?src=\ref[src];make=29;dir=1'>Pipe</A><BR>
-<A href='?src=\ref[src];make=30;dir=5'>Bent Pipe</A><BR>
-<A href='?src=\ref[src];make=33;dir=1'>Manifold</A><BR>
-<A href='?src=\ref[src];make=41;dir=1'>Pipe Cap</A><BR>
-<A href='?src=\ref[src];make=35;dir=1'>4-Way Manifold</A><BR>
-<A href='?src=\ref[src];make=37;dir=1'>Upward Pipe</A><BR>
-<A href='?src=\ref[src];make=39;dir=1'>Downward Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=29;dir=1'>Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=30;dir=5'>Bent Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=33;dir=1'>Manifold</A><BR>
+<A href='byond://?src=\ref[src];make=41;dir=1'>Pipe Cap</A><BR>
+<A href='byond://?src=\ref[src];make=35;dir=1'>4-Way Manifold</A><BR>
+<A href='byond://?src=\ref[src];make=37;dir=1'>Upward Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=39;dir=1'>Downward Pipe</A><BR>
 <b>Scrubbers pipes:</b><BR>
-<A href='?src=\ref[src];make=31;dir=1'>Pipe</A><BR>
-<A href='?src=\ref[src];make=32;dir=5'>Bent Pipe</A><BR>
-<A href='?src=\ref[src];make=34;dir=1'>Manifold</A><BR>
-<A href='?src=\ref[src];make=42;dir=1'>Pipe Cap</A><BR>
-<A href='?src=\ref[src];make=36;dir=1'>4-Way Manifold</A><BR>
-<A href='?src=\ref[src];make=38;dir=1'>Upward Pipe</A><BR>
-<A href='?src=\ref[src];make=40;dir=1'>Downward Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=31;dir=1'>Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=32;dir=5'>Bent Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=34;dir=1'>Manifold</A><BR>
+<A href='byond://?src=\ref[src];make=42;dir=1'>Pipe Cap</A><BR>
+<A href='byond://?src=\ref[src];make=36;dir=1'>4-Way Manifold</A><BR>
+<A href='byond://?src=\ref[src];make=38;dir=1'>Upward Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=40;dir=1'>Downward Pipe</A><BR>
 <b>Devices:</b><BR>
-<A href='?src=\ref[src];make=28;dir=1'>Universal pipe adapter</A><BR>
-<A href='?src=\ref[src];make=4;dir=1'>Connector</A><BR>
-<A href='?src=\ref[src];make=7;dir=1'>Unary Vent</A><BR>
-<A href='?src=\ref[src];make=9;dir=1'>Gas Pump</A><BR>
-<A href='?src=\ref[src];make=15;dir=1'>Pressure Regulator</A><BR>
-<A href='?src=\ref[src];make=16;dir=1'>High Power Gas Pump</A><BR>
-<A href='?src=\ref[src];make=10;dir=1'>Scrubber</A><BR>
-<A href='?src=\ref[src];makemeter=1'>Meter</A><BR>
-<A href='?src=\ref[src];make=13;dir=1'>Gas Filter</A><BR>
-<A href='?src=\ref[src];make=23;dir=1'>Gas Filter-Mirrored</A><BR>
-<A href='?src=\ref[src];make=14;dir=1'>Gas Mixer</A><BR>
-<A href='?src=\ref[src];make=25;dir=1'>Gas Mixer-Mirrored</A><BR>
-<A href='?src=\ref[src];make=24;dir=1'>Gas Mixer-T</A><BR>
-<A href='?src=\ref[src];make=26;dir=1'>Omni Gas Mixer</A><BR>
-<A href='?src=\ref[src];make=27;dir=1'>Omni Gas Filter</A><BR>
+<A href='byond://?src=\ref[src];make=28;dir=1'>Universal pipe adapter</A><BR>
+<A href='byond://?src=\ref[src];make=4;dir=1'>Connector</A><BR>
+<A href='byond://?src=\ref[src];make=7;dir=1'>Unary Vent</A><BR>
+<A href='byond://?src=\ref[src];make=9;dir=1'>Gas Pump</A><BR>
+<A href='byond://?src=\ref[src];make=15;dir=1'>Pressure Regulator</A><BR>
+<A href='byond://?src=\ref[src];make=16;dir=1'>High Power Gas Pump</A><BR>
+<A href='byond://?src=\ref[src];make=10;dir=1'>Scrubber</A><BR>
+<A href='byond://?src=\ref[src];makemeter=1'>Meter</A><BR>
+<A href='byond://?src=\ref[src];make=13;dir=1'>Gas Filter</A><BR>
+<A href='byond://?src=\ref[src];make=23;dir=1'>Gas Filter-Mirrored</A><BR>
+<A href='byond://?src=\ref[src];make=14;dir=1'>Gas Mixer</A><BR>
+<A href='byond://?src=\ref[src];make=25;dir=1'>Gas Mixer-Mirrored</A><BR>
+<A href='byond://?src=\ref[src];make=24;dir=1'>Gas Mixer-T</A><BR>
+<A href='byond://?src=\ref[src];make=26;dir=1'>Omni Gas Mixer</A><BR>
+<A href='byond://?src=\ref[src];make=27;dir=1'>Omni Gas Filter</A><BR>
 <b>Heat exchange:</b><BR>
-<A href='?src=\ref[src];make=2;dir=1'>Pipe</A><BR>
-<A href='?src=\ref[src];make=3;dir=5'>Bent Pipe</A><BR>
-<A href='?src=\ref[src];make=6;dir=1'>Junction</A><BR>
-<A href='?src=\ref[src];make=17;dir=1'>Heat Exchanger</A><BR>
+<A href='byond://?src=\ref[src];make=2;dir=1'>Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=3;dir=5'>Bent Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=6;dir=1'>Junction</A><BR>
+<A href='byond://?src=\ref[src];make=17;dir=1'>Heat Exchanger</A><BR>
 <b>Insulated pipes:</b><BR>
-<A href='?src=\ref[src];make=11;dir=1'>Pipe</A><BR>
-<A href='?src=\ref[src];make=12;dir=5'>Bent Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=11;dir=1'>Pipe</A><BR>
+<A href='byond://?src=\ref[src];make=12;dir=5'>Bent Pipe</A><BR>
 
 "}
 ///// Z-Level stuff
@@ -74,7 +75,7 @@
 /obj/structure/machinery/pipedispenser/Topic(href, href_list)
 	if(..())
 		return
-	if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+	if(unwrenched || usr.is_mob_incapacitated() || !in_range(loc, usr))
 		close_browser(usr, "pipedispenser")
 		return
 	usr.set_interaction(src)
@@ -95,7 +96,7 @@
 			addtimer(VARSET_CALLBACK(src, wait, FALSE), 1.5 SECONDS)
 	return
 
-/obj/structure/machinery/pipedispenser/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/pipedispenser/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(usr)
 	if (istype(W, /obj/item/pipe) || istype(W, /obj/item/pipe_meter))
 		to_chat(usr, SPAN_NOTICE(" You put [W] back to [src]."))
@@ -107,11 +108,11 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE(" You begin to unfasten \the [src] from the floor..."))
 			if (do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					"[user] unfastens \the [src].", \
-					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
+				user.visible_message(
+					"[user] unfastens \the [src].",
+					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."),
 					"You hear ratchet.")
-				src.anchored = 0
+				src.anchored = FALSE
 				src.stat |= MAINT
 				src.unwrenched = 1
 				if (usr.interactee==src)
@@ -120,11 +121,11 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE(" You begin to fasten \the [src] to the floor..."))
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					"[user] fastens \the [src].", \
-					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."), \
+				user.visible_message(
+					"[user] fastens \the [src].",
+					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."),
 					"You hear ratchet.")
-				src.anchored = 1
+				src.anchored = TRUE
 				src.stat &= ~MAINT
 				src.unwrenched = 0
 				power_change()
@@ -135,12 +136,12 @@
 	name = "Disposal Pipe Dispenser"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "pipe_d"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 
 /*
 //Allow you to push disposal pipes into it (for those with density 1)
-/obj/structure/machinery/pipedispenser/disposal/Crossed(var/obj/structure/disposalconstruct/pipe as obj)
+/obj/structure/machinery/pipedispenser/disposal/Crossed(obj/structure/disposalconstruct/pipe as obj)
 	if(istype(pipe) && !pipe.anchored)
 		qdel(pipe)
 
@@ -148,8 +149,8 @@ Nah
 */
 
 //Allow you to drag-drop disposal pipes into it
-/obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(var/obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+/obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
+	if(usr.is_mob_incapacitated())
 		return
 
 	if (!istype(pipe) || get_dist(usr, src) > 1 || get_dist(src,pipe) > 1 )
@@ -166,16 +167,16 @@ Nah
 
 ///// Z-Level stuff
 	var/dat = {"<b>Disposal Pipes</b><br><br>
-<A href='?src=\ref[src];dmake=0'>Pipe</A><BR>
-<A href='?src=\ref[src];dmake=1'>Bent Pipe</A><BR>
-<A href='?src=\ref[src];dmake=2'>Junction</A><BR>
-<A href='?src=\ref[src];dmake=3'>Y-Junction</A><BR>
-<A href='?src=\ref[src];dmake=4'>Trunk</A><BR>
-<A href='?src=\ref[src];dmake=5'>Bin</A><BR>
-<A href='?src=\ref[src];dmake=6'>Outlet</A><BR>
-<A href='?src=\ref[src];dmake=7'>Chute</A><BR>
-<A href='?src=\ref[src];dmake=21'>Upwards</A><BR>
-<A href='?src=\ref[src];dmake=22'>Downwards</A><BR>
+<A href='byond://?src=\ref[src];dmake=0'>Pipe</A><BR>
+<A href='byond://?src=\ref[src];dmake=1'>Bent Pipe</A><BR>
+<A href='byond://?src=\ref[src];dmake=2'>Junction</A><BR>
+<A href='byond://?src=\ref[src];dmake=3'>Y-Junction</A><BR>
+<A href='byond://?src=\ref[src];dmake=4'>Trunk</A><BR>
+<A href='byond://?src=\ref[src];dmake=5'>Bin</A><BR>
+<A href='byond://?src=\ref[src];dmake=6'>Outlet</A><BR>
+<A href='byond://?src=\ref[src];dmake=7'>Chute</A><BR>
+<A href='byond://?src=\ref[src];dmake=21'>Upwards</A><BR>
+<A href='byond://?src=\ref[src];dmake=22'>Downwards</A><BR>
 "}
 ///// Z-Level stuff
 
@@ -191,7 +192,7 @@ Nah
 	usr.set_interaction(src)
 	src.add_fingerprint(usr)
 	if(href_list["dmake"])
-		if(unwrenched || !usr.canmove || usr.stat || usr.is_mob_restrained() || !in_range(loc, usr))
+		if(unwrenched || usr.is_mob_incapacitated() || !in_range(loc, usr))
 			close_browser(usr, "pipedispenser")
 			return
 		if(!wait)
@@ -210,13 +211,13 @@ Nah
 					C.ptype = 5
 				if(5)
 					C.ptype = 6
-					C.density = 1
+					C.density = TRUE
 				if(6)
 					C.ptype = 7
-					C.density = 1
+					C.density = TRUE
 				if(7)
 					C.ptype = 8
-					C.density = 1
+					C.density = TRUE
 ///// Z-Level stuff
 				if(21)
 					C.ptype = 11
@@ -231,9 +232,9 @@ Nah
 
 // adding a pipe dispensers that spawn unhooked from the ground
 /obj/structure/machinery/pipedispenser/orderable
-	anchored = 0
+	anchored = FALSE
 	unwrenched = 1
 
 /obj/structure/machinery/pipedispenser/disposal/orderable
-	anchored = 0
+	anchored = FALSE
 	unwrenched = 1

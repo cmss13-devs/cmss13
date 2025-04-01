@@ -113,6 +113,10 @@
 
 	switch(action)
 		if("print")
+			if(working)
+				//If we're already printing something then we're too busy to multi task.
+				to_chat(usr, SPAN_NOTICE("[src] is busy at the moment."))
+				return FALSE
 			var/recipe = params["recipe_id"]
 			var/valid_recipe = FALSE
 			for(var/datum/bioprinter_recipe/product_recipes in products)
@@ -121,9 +125,13 @@
 					break
 			if(!valid_recipe)
 				log_admin("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
-				message_staff("[key_name(usr)] attempted to print an invalid recipe ([recipe]) on \the [src].")
+				message_admins("[key_name(usr)] attempted to print an invalid recipe on \the [src].")
 				return FALSE
 			var/datum/bioprinter_recipe/recipe_datum = new recipe
+			if(stored_metal < recipe_datum.metal)
+				to_chat(usr, SPAN_NOTICE("[src] does not have enough stored metal."))
+				QDEL_NULL(recipe_datum)
+				return FALSE
 			stored_metal -= recipe_datum.metal
 			to_chat(usr, SPAN_NOTICE("\The [src] is now printing the selected organ. Please hold."))
 			working = TRUE
@@ -131,7 +139,7 @@
 			var/new_organ = recipe_datum.path
 			print_time = world.time + recipe_datum.time
 			printing_item = recipe_datum
-			addtimer(CALLBACK(src, .proc/print_limb, new_organ), recipe_datum.time)
+			addtimer(CALLBACK(src, PROC_REF(print_limb), new_organ), recipe_datum.time)
 			QDEL_NULL(recipe_datum)
 			return TRUE
 		if("eject")
@@ -144,8 +152,10 @@
 			return TRUE
 
 
-/obj/structure/machinery/bioprinter/proc/print_limb(var/limb_path)
+/obj/structure/machinery/bioprinter/proc/print_limb(limb_path)
 	if(inoperable())
+		//In case we lose power or anything between the print and the callback we don't want to permenantly break the printer
+		working = FALSE
 		return
 	new limb_path(get_turf(src))
 	working = FALSE
@@ -169,10 +179,10 @@
 	title = "synthetic right arm"
 	path = /obj/item/robot_parts/arm/r_arm
 
-/datum/bioprinter_recipe/l_leg
-	title = "synthetic left leg"
-	path = /obj/item/robot_parts/leg/l_leg
-
 /datum/bioprinter_recipe/r_leg
 	title = "synthetic right leg"
 	path = /obj/item/robot_parts/leg/r_leg
+
+/datum/bioprinter_recipe/l_leg
+	title = "synthetic left leg"
+	path = /obj/item/robot_parts/leg/l_leg

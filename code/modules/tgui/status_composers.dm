@@ -28,7 +28,7 @@
 	if(isobserver(user))
 		// If they turn on ghost AI control, admins can always interact.
 		//if(isAdminGhostAI(user))
-		//	return UI_INTERACTIVE
+		// return UI_INTERACTIVE
 
 		// Regular ghosts can always at least view if in range.
 		var/client/client = user.client
@@ -55,17 +55,6 @@
 /// the given source. Called by `ui_status_silicon_has_access`.
 /mob/living/silicon/proc/get_ui_access(atom/source)
 	return UI_INTERACTIVE // Ubiquitous networking. Do not abuse.
-
-/// Returns UI_INTERACTIVE if the user is conscious and lying down.
-/// Returns UI_UPDATE otherwise.
-/proc/ui_status_user_is_conscious_and_lying_down(mob/user)
-	if (!isliving(user))
-		return UI_UPDATE
-
-	var/mob/living/living_user = user
-	return (living_user.lying && living_user.stat == CONSCIOUS) \
-		? UI_INTERACTIVE \
-		: UI_UPDATE
 
 /// Return UI_INTERACTIVE if the user is strictly adjacent to the target atom, whether they can see it or not.
 /// Return UI_CLOSE otherwise.

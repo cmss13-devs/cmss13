@@ -2,8 +2,8 @@
 	icon = 'icons/obj/structures/machinery/scoreboard.dmi'
 	icon_state = "scoreboard"
 	name = "basketball scoreboard"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	var/id = ""
@@ -16,19 +16,18 @@
 	update_display()
 
 /obj/structure/machinery/scoreboard/proc/update_display()
-	if(overlays.len)
-		overlays.Cut()
+	LAZYCLEARLIST(overlays)
 
-	var/score_state = "s[( round(scoreleft/10) > scoreleft/10 ? round(scoreleft/10)-1 : round(scoreleft/10) )]a"
+	var/score_state = "s[( floor(scoreleft/10) > scoreleft/10 ? floor(scoreleft/10)-1 : floor(scoreleft/10) )]a"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
 	score_state = "s[scoreleft%10]b"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
-	score_state = "s[( round(scoreright/10) > scoreright/10 ? round(scoreright/10)-1 : round(scoreright/10) )]c"
+	score_state = "s[( floor(scoreright/10) > scoreright/10 ? floor(scoreright/10)-1 : floor(scoreright/10) )]c"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
 	score_state = "s[scoreright%10]d"
 	overlays += image('icons/obj/structures/machinery/scoreboard.dmi', icon_state=score_state)
 
-/obj/structure/machinery/scoreboard/proc/score(var/side, var/points=2)
+/obj/structure/machinery/scoreboard/proc/score(side, points=2)
 	switch(side)
 		if("left")
 			scoreleft += points
@@ -48,11 +47,11 @@
 /obj/structure/machinery/scoreboard_button
 	name = "scoreboard button"
 	desc = "A remote control button to reset a scoreboard."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	var/id = null
 	var/active = 0
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4
@@ -68,7 +67,7 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/scoreboard/X in machines)
+	for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 		if(X.id == id)
 			X.reset_scores()
 

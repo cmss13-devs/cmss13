@@ -12,8 +12,8 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 		setDir(angle2dir(rotation+dir2angle(dir)))
 
 	//resmooth if need be.
-//	if(smooth && (params & ROTATE_SMOOTH))
-//		queue_smooth(src)
+// if(smooth && (params & ROTATE_SMOOTH))
+// queue_smooth(src)
 
 	//rotate the pixel offsets too.
 	if((pixel_x || pixel_y) && (params & ROTATE_OFFSET))
@@ -24,6 +24,14 @@ If ever any of these procs are useful for non-shuttles, rename it to proc/rotate
 			var/oldPY = pixel_y
 			pixel_x = oldPY
 			pixel_y = (oldPX*(-1))
+
+
+/* ***********************************Object rotate procs*********************************** */
+
+/obj/vehicle/multitile/shuttleRotate(rotation, params)
+	params &= ~ROTATE_OFFSET
+	return ..()
+
 
 /* ***********************************Turf rotate procs*********************************** */
 

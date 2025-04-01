@@ -1,10 +1,10 @@
 /obj/structure/displaycase
 	name = "display case"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/furniture/display_case.dmi'
 	icon_state = "glassbox1"
 	desc = "A display case for prized possessions. It taunts you to kick it."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	unacidable = FALSE
 	health = 30
 	var/occupied = 1
@@ -30,7 +30,7 @@
 		occupied = 0
 	return ..()
 
-/obj/structure/displaycase/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/displaycase/bullet_act(obj/projectile/Proj)
 	health -= Proj.ammo.damage
 	..()
 	src.healthcheck()
@@ -39,7 +39,7 @@
 /obj/structure/displaycase/proc/healthcheck()
 	if (src.health <= 0)
 		if (!( src.destroyed ))
-			src.density = 0
+			src.density = FALSE
 			src.destroyed = 1
 			new /obj/item/shard( src.loc )
 			playsound(src, "windowshatter", 25, 1)
@@ -57,9 +57,9 @@
 
 
 /obj/structure/displaycase/attackby(obj/item/W as obj, mob/user as mob)
-	src.health -= W.force
+	src.health -= W.force * W.demolition_mod
 	src.healthcheck()
-	..()
+	. = ..()
 	return
 
 /obj/structure/displaycase/attack_hand(mob/user as mob)

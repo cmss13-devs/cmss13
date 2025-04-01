@@ -1,7 +1,7 @@
 /datum/buildmode_mode/copy
 	key = "copy"
 	help = "Left Mouse Button on obj/turf/mob = Spawn a Copy of selected target\n\
-    Right Mouse Button on obj/mob = Select target to copy"
+	Right Mouse Button on obj/mob = Select target to copy"
 	var/atom/movable/stored = null
 
 /datum/buildmode_mode/copy/Destroy()

@@ -4,7 +4,8 @@
 	name = "\improper Suspicious Automated Guns Rack"
 	desc = "While similar in function to ColMarTech automated racks, this one is clearly not of USCM origin. Contains various weapons, ammunition and explosives."
 	icon_state = "antag_guns"
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 	use_snowflake_points = TRUE
 
@@ -14,7 +15,7 @@
 	. = ..()
 	vend_flags |= VEND_FACTION_THEMES
 
-/obj/structure/machinery/cm_vending/gear/antag_guns/get_listed_products(var/mob/user)
+/obj/structure/machinery/cm_vending/gear/antag_guns/get_listed_products(mob/user)
 	var/list/factions = GLOB.faction_datums
 	if(!user)
 		var/list/all_equipment = list()
@@ -35,14 +36,6 @@
 
 //--------------ESSENTIALS------------------------
 
-/obj/effect/essentials_set/medic/upp
-	spawned_gear_list = list(
-		/obj/item/bodybag/cryobag,
-		/obj/item/device/defibrillator,
-		/obj/item/storage/firstaid/adv,
-		/obj/item/device/healthanalyzer,
-		/obj/item/roller,
-	)
 
 /obj/effect/essentials_set/upp_heavy
 	spawned_gear_list = list(
@@ -51,12 +44,21 @@
 		/obj/item/ammo_magazine/minigun,
 	)
 
+/obj/effect/essentials_set/upp_heavy_pkp
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+	)
+
 /obj/effect/essentials_set/leader/upp
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range,
 		/obj/item/map/current_map,
-		/obj/item/storage/box/zipcuffs
+		/obj/item/storage/box/zipcuffs,
 	)
 
 /obj/effect/essentials_set/kit/svd
@@ -65,7 +67,7 @@
 		/obj/item/ammo_magazine/sniper/svd,
 		/obj/item/ammo_magazine/sniper/svd,
 		/obj/item/ammo_magazine/sniper/svd,
-		/obj/item/ammo_magazine/sniper/svd
+		/obj/item/ammo_magazine/sniper/svd,
 	)
 
 /obj/effect/essentials_set/kit/custom_shotgun
@@ -73,7 +75,7 @@
 		/obj/item/weapon/gun/shotgun/merc,
 		/obj/item/ammo_magazine/shotgun/incendiary,
 		/obj/item/ammo_magazine/shotgun,
-		/obj/item/ammo_magazine/shotgun/flechette
+		/obj/item/ammo_magazine/shotgun/flechette,
 	)
 
 /obj/effect/essentials_set/kit/m60
@@ -81,17 +83,17 @@
 		/obj/item/weapon/gun/m60,
 		/obj/item/ammo_magazine/m60,
 		/obj/item/ammo_magazine/m60,
-		/obj/item/ammo_magazine/m60
+		/obj/item/ammo_magazine/m60,
 	)
 
 /obj/effect/essentials_set/random/clf_melee
 	spawned_gear_list = list(
-					/obj/item/tool/hatchet,
-					/obj/item/tool/hatchet,
-					/obj/item/weapon/melee/baseballbat,
-					/obj/item/weapon/melee/baseballbat,
-					/obj/item/weapon/melee/baseballbat/metal,
-					/obj/item/weapon/melee/twohanded/spear,
-					/obj/item/weapon/melee/twohanded/spear,
-					/obj/item/weapon/melee/twohanded/fireaxe,
-					)
+		/obj/item/tool/hatchet,
+		/obj/item/tool/hatchet,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat,
+		/obj/item/weapon/baseballbat/metal,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/spear,
+		/obj/item/weapon/twohanded/fireaxe,
+	)

@@ -7,7 +7,11 @@ LINEN BINS
 /obj/item/bedsheet
 	name = "bedsheet"
 	desc = "A surprisingly soft linen bedsheet."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/bedsheets.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bedsheets_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bedsheets_righthand.dmi',
+	)
 	icon_state = "sheet"
 	item_state = "bedsheet"
 	layer = MOB_LAYER
@@ -75,15 +79,16 @@ LINEN BINS
 /obj/item/bedsheet/brown
 	icon_state = "sheetbrown"
 
-
+/obj/item/bedsheet/colorable
+	icon_state = "sheetce"
 
 
 /obj/structure/bedsheetbin
 	name = "linen bin"
 	desc = "A linen bin. It looks rather cosy."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "linenbin-full"
-	anchored = 1
+	anchored = TRUE
 	var/amount = 20
 	var/list/sheets = list()
 	var/obj/item/hidden = null
@@ -100,10 +105,14 @@ LINEN BINS
 
 
 /obj/structure/bedsheetbin/update_icon()
-	switch(amount)
-		if(0)				icon_state = "linenbin-empty"
-		if(1 to amount / 2)	icon_state = "linenbin-half"
-		else				icon_state = "linenbin-full"
+	if(amount == 0)
+		icon_state = "linenbin-empty"
+		return
+	if(amount >= 1 && amount < initial(amount) / 2)
+		icon_state = "linenbin-half"
+		return
+
+	icon_state = "linenbin-full"
 
 
 /obj/structure/bedsheetbin/attackby(obj/item/I as obj, mob/user as mob)
@@ -113,7 +122,7 @@ LINEN BINS
 			sheets.Add(I)
 			amount++
 			to_chat(user, SPAN_NOTICE("You put [I] in [src]."))
-	else if(amount && !hidden && I.w_class < 4)	//make sure there's sheets to hide it among, make sure nothing else is hidden in there.
+	else if(amount && !hidden && I.w_class < 4) //make sure there's sheets to hide it among, make sure nothing else is hidden in there.
 		if(user.drop_held_item())
 			I.forceMove(src)
 			hidden = I
@@ -124,8 +133,8 @@ LINEN BINS
 		amount--
 
 		var/obj/item/bedsheet/B
-		if(sheets.len > 0)
-			B = sheets[sheets.len]
+		if(length(sheets) > 0)
+			B = sheets[length(sheets)]
 			sheets.Remove(B)
 
 		else

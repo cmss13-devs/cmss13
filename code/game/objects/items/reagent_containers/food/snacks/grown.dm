@@ -22,7 +22,7 @@
 /obj/item/reagent_container/food/snacks/grown/Initialize()
 	. = ..()
 	GLOB.grown_snacks_list += src
-	addtimer(CALLBACK(src, .proc/update_from_seed), 1)
+	addtimer(CALLBACK(src, PROC_REF(update_from_seed)), 1)
 
 /obj/item/reagent_container/food/snacks/grown/Destroy()
 	GLOB.grown_snacks_list -= src
@@ -30,7 +30,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/proc/update_from_seed()// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
-		var/datum/seed/S = seed_types[plantname]
+		var/datum/seed/S = GLOB.seed_types[plantname]
 		if(!S)
 			return
 		name = S.seed_name //Copies the name from the seed, important for renamed plants
@@ -42,7 +42,7 @@
 			var/list/reagent_data = S.chems[rid]
 			var/rtotal = reagent_data[1]
 			if(length(reagent_data) > 1 && potency > 0)
-				rtotal += round(potency/reagent_data[2])
+				rtotal += floor(potency/reagent_data[2])
 			if(reagents)
 				reagents.add_reagent(rid, max(1, rtotal))
 
@@ -62,7 +62,7 @@
 	name = "cherries"
 	desc = "Great for toppings!"
 	icon_state = "cherry"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	gender = PLURAL
 	plantname = "cherry"
 
@@ -73,6 +73,7 @@
 	potency = 30
 	filling_color = "#CC6464"
 	plantname = "poppies"
+	black_market_value = 25
 
 /obj/item/reagent_container/food/snacks/grown/harebell
 	name = "harebell"
@@ -89,18 +90,6 @@
 	potency = 25
 	filling_color = "#E6E8DA"
 	plantname = "potato"
-
-/obj/item/reagent_container/food/snacks/grown/potato/attackby(obj/item/W as obj, mob/user as mob)
-	..()
-	if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/C = W
-		if(C.use(5))
-			to_chat(user, SPAN_NOTICE("You add some cable to the potato and slide it inside the battery encasing."))
-			var/obj/item/cell/potato/pocell = new /obj/item/cell/potato(user.loc)
-			pocell.maxcharge = src.potency * 10
-			pocell.charge = pocell.maxcharge
-			qdel(src)
-			return
 
 /obj/item/reagent_container/food/snacks/grown/grapes
 	name = "bunch of grapes"
@@ -188,26 +177,16 @@
 /obj/item/reagent_container/food/snacks/grown/glowberries
 	name = "bunch of glow-berries"
 	desc = "Nutritious!"
-	var/light_on = 1
 	var/brightness_on = 2 //luminosity when on
 	filling_color = "#D3FF9E"
 	icon_state = "glowberrypile"
 	plantname = "glowberries"
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/Destroy()
-	if(istype(loc,/mob))
-		loc.SetLuminosity(0, FALSE, src)
+/obj/item/reagent_container/food/snacks/grown/glowberries/Initialize()
 	. = ..()
 
-/obj/item/reagent_container/food/snacks/grown/glowberries/pickup(mob/user)
-	. = ..()
-	src.SetLuminosity(0)
-	user.SetLuminosity(round((potency/5),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/glowberries/dropped(mob/user)
-	user.SetLuminosity(0, FALSE, src)
-	src.SetLuminosity(round(potency/5,1))
-	..()
+	set_light_range(brightness_on)
+	set_light_on(TRUE)
 
 /obj/item/reagent_container/food/snacks/grown/cocoapod
 	name = "cocoa pod"
@@ -236,7 +215,7 @@
 
 /obj/item/reagent_container/food/snacks/grown/deathberries
 	name = "bunch of death-berries"
-	desc = "Taste so good, you could die!"
+	desc = "Taste so good, you will die!"
 	icon_state = "deathberrypile"
 	gender = PLURAL
 	potency = 50
@@ -292,6 +271,7 @@
 	potency = 15
 	filling_color = "#F5CB42"
 	plantname = "goldapple"
+	black_market_value = 30
 
 /obj/item/reagent_container/food/snacks/grown/watermelon
 	name = "watermelon"
@@ -354,7 +334,7 @@
 /obj/item/reagent_container/food/snacks/grown/banana
 	name = "banana"
 	desc = "It's an excellent prop for a comedy."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	icon_state = "banana"
 	item_state = "banana"
 	filling_color = "#FCF695"
@@ -365,7 +345,7 @@
 	name = "chili"
 	desc = "It's spicy! Wait... IT'S BURNING ME!!"
 	icon_state = "chilipepper"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "chili"
 
 /obj/item/reagent_container/food/snacks/grown/eggplant
@@ -387,14 +367,14 @@
 	name = "tomato"
 	desc = "I say to-mah-to, you say tom-mae-to."
 	icon_state = "tomato"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 10
 	plantname = "tomato"
 
 /obj/item/reagent_container/food/snacks/grown/tomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/tomato_smudge(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 	qdel(src)
 	return
 
@@ -403,7 +383,7 @@
 	desc = "I say to-mah-to, you say tom-mae-to... OH GOD IT'S EATING MY LEGS!!"
 	icon_state = "killertomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	potency = 30
 	plantname = "killertomato"
 
@@ -422,13 +402,13 @@
 	desc = "So bloody...so...very...bloody....AHHHH!!!!"
 	icon_state = "bloodtomato"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "bloodtomato"
 
 /obj/item/reagent_container/food/snacks/grown/bloodtomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/splatter(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
@@ -446,7 +426,7 @@
 /obj/item/reagent_container/food/snacks/grown/bluetomato/launch_impact(atom/hit_atom)
 	..()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 	src.reagents.reaction(get_turf(hit_atom))
 	for(var/atom/A in get_turf(hit_atom))
 		src.reagents.reaction(A)
@@ -510,7 +490,7 @@
 	desc = "<I>Amanita Muscaria</I>: Learn poisonous mushrooms by heart. Only pick mushrooms you know."
 	icon_state = "amanita"
 	potency = 10
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	plantname = "amanita"
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/angel
@@ -550,6 +530,7 @@
 	filling_color = "#DAFF91"
 	potency = 30
 	plantname = "glowshroom"
+	black_market_value = 20
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/attack_self(mob/user)
 	..()
@@ -564,22 +545,6 @@
 	qdel(src)
 
 	to_chat(user, SPAN_NOTICE("You plant the glowshroom."))
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/Destroy()
-	if(istype(loc,/mob))
-		loc.SetLuminosity(0, FALSE, src)
-	. = ..()
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
-	. = ..()
-	SetLuminosity(0)
-	user.SetLuminosity(round((potency/10),1), FALSE, src)
-
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/dropped(mob/user)
-	user.SetLuminosity(0, FALSE, src)
-	SetLuminosity(round(potency/10,1))
-	..()
-
 
 // *************************************
 // Complex Grown Object Defines -
@@ -604,24 +569,24 @@
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	if(inner_teleport_radius < 1) //Wasn't potent enough, it just splats.
 		new/obj/effect/decal/cleanable/blood/oil(src.loc)
-		src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),"<span class='moderate'>You hear a smack.</span>")
+		src.visible_message(SPAN_NOTICE("The [src.name] has been squashed."),SPAN_MODERATE("You hear a smack."))
 		qdel(src)
 		return
-	for(var/turf/T in orange(M,outer_teleport_radius))
-		if(T in orange(M,inner_teleport_radius)) continue
-		if(istype(T,/turf/open/space)) continue
-		if(T.density) continue
-		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius)	continue
-		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius)	continue
+	for(var/turf/T as anything in (RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M)))
+		if(istype(T,/turf/open/space))
+			continue
+		if(T.density)
+			continue
+		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius)
+			continue
+		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius)
+			continue
 		turfs += T
-	if(!turfs.len)
-		var/list/turfs_to_pick_from = list()
-		for(var/turf/T in orange(M,outer_teleport_radius))
-			if(!(T in orange(M,inner_teleport_radius)))
-				turfs_to_pick_from += T
-		turfs += pick(/turf in turfs_to_pick_from)
+	if(!length(turfs))
+		turfs += pick(RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M))
 	var/turf/picked = pick(turfs)
-	if(!isturf(picked)) return
+	if(!isturf(picked))
+		return
 	switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.
 		if(1) // Teleports the person who threw the tomato.
 			s.set_up(3, 1, M)
@@ -641,6 +606,6 @@
 				s.set_up(3, 1, A)
 				s.start()
 	new/obj/effect/decal/cleanable/blood/oil(src.loc)
-	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed, causing a distortion in space-time."),"<span class='moderate'>You hear a splat and a crackle.</span>")
+	src.visible_message(SPAN_NOTICE("The [src.name] has been squashed, causing a distortion in space-time."),SPAN_MODERATE("You hear a splat and a crackle."))
 	qdel(src)
 	return

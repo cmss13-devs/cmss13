@@ -10,7 +10,7 @@
 
 	var/datum/tech/info
 
-/obj/effect/node/Initialize(mapload, var/datum/tech/tech)
+/obj/effect/node/Initialize(mapload, datum/tech/tech)
 	. = ..()
 	if(!tech)
 		stack_trace("Tech node initialized without a tech to attach to! (Expected /datum/tech type, got [tech])")
@@ -19,6 +19,7 @@
 	info = tech
 	name = tech.name
 	tech.node = src
+
 	tech.update_icon(src)
 
 /obj/effect/node/update_icon()

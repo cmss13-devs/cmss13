@@ -4,7 +4,7 @@
 	var/destroyed = 0
 
 /obj/structure/machinery/portable_atmospherics/proc/disconnect()
-	anchored = 0
+	anchored = FALSE
 	return 1
 
 
@@ -48,5 +48,5 @@
 		cell = null
 		return
 
-	..()
+	. = ..()
 

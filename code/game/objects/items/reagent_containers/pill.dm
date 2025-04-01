@@ -7,7 +7,8 @@
 	var/list/picks
 	var/list/mappings = list()
 	for(var/icon_class in PILL_ICON_CLASSES)
-		if(!picks) picks = init_list_range(PILL_ICON_CHOICES, 1)
+		if(!picks)
+			picks = init_list_range(PILL_ICON_CHOICES, 1)
 		mappings[icon_class] = "pill[pick_n_take(picks)]"
 	// Keep extra as padding for random pills
 	picks += init_list_range(PILL_ICON_CHOICES, 1)
@@ -17,16 +18,23 @@
 /obj/item/reagent_container/pill
 	name = "pill"
 	icon = 'icons/obj/items/chemistry.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = null
 	item_state = "pill"
 	possible_transfer_amounts = null
 	w_class = SIZE_TINY
 	volume = 60
-	reagent_desc_override = TRUE		//it has a special examining mechanic
-	var/identificable = TRUE			//can medically trained people tell what's in it?
-	var/pill_desc = "An unknown pill."	// The real description of the pill, shown when examined by a medically trained person
-	var/pill_icon_class = "random"		// Pills with the same icon class share icons
-	var/list/pill_initial_reagents		// Default reagents if any
+	reagent_desc_override = TRUE //it has a special examining mechanic
+	ground_offset_x = 7
+	ground_offset_y = 7
+	var/identificable = TRUE //can medically trained people tell what's in it?
+	var/pill_desc = "An unknown pill." // The real description of the pill, shown when examined by a medically trained person
+	var/pill_icon_class = "random" // Pills with the same icon class share icons
+	var/list/pill_initial_reagents // Default reagents if any
+	var/fluff_text = "pill" //what this object is logically, used for actions descriptions like force feeding
 
 /obj/item/reagent_container/pill/Initialize(mapload, ...)
 	. = ..()
@@ -48,7 +56,7 @@
 			. += pill_info
 
 /obj/item/reagent_container/pill/display_contents(mob/user)
-	if(isXeno(user))
+	if(isxeno(user))
 		return
 	if(!identificable)
 		return
@@ -62,7 +70,7 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
-				to_chat(H, SPAN_DANGER("You can't eat pills."))
+				to_chat(H, SPAN_DANGER("You can't eat [fluff_text]s."))
 				return
 
 		M.visible_message(SPAN_NOTICE("[user] swallows [src]."),
@@ -87,9 +95,9 @@
 			return
 
 		user.affected_message(M,
-			SPAN_HELPFUL("You <b>start feeding</b> [M] a pill."),
-			SPAN_HELPFUL("[user] <b>starts feeding</b> you a pill."),
-			SPAN_NOTICE("[user] starts feeding [M] a pill."))
+			SPAN_HELPFUL("You <b>start feeding</b> [M] a [fluff_text]."),
+			SPAN_HELPFUL("[user] <b>starts feeding</b> you a [fluff_text]."),
+			SPAN_NOTICE("[user] starts feeding [M] a [fluff_text]."))
 
 		var/ingestion_time = 30
 		if(user.skills)
@@ -103,9 +111,9 @@
 		user.drop_inv_item_on_ground(src) //icon update
 
 		user.affected_message(M,
-			SPAN_HELPFUL("You <b>fed</b> [M] a pill."),
-			SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
-			SPAN_NOTICE("[user] fed [M] a pill."))
+			SPAN_HELPFUL("You <b>fed</b> [M] a [fluff_text]."),
+			SPAN_HELPFUL("[user] <b>fed</b> you a [fluff_text]."),
+			SPAN_NOTICE("[user] fed [M] a [fluff_text]."))
 		user.count_niche_stat(STATISTICS_NICHE_PILLS)
 
 		var/rgt_list_text = get_reagent_list_text()
@@ -124,18 +132,19 @@
 	return 0
 
 /obj/item/reagent_container/pill/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(target.is_open_container() != 0 && target.reagents)
 		if(!target.reagents.total_volume)
-			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve pill."))
+			to_chat(user, SPAN_DANGER("[target] is empty. Can't dissolve [fluff_text]."))
 			return
-		to_chat(user, SPAN_NOTICE("You dissolve the pill in [target]"))
+		to_chat(user, SPAN_NOTICE("You dissolve the [fluff_text] in [target]"))
 
 		var/rgt_list_text = get_reagent_list_text()
 
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Spiked \a [target] with a pill. Reagents: [rgt_list_text]</font>")
-		msg_admin_attack("[key_name(user)] spiked \a [target] with a pill (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Spiked \a [target] with a [fluff_text]. Reagents: [rgt_list_text]</font>")
+		msg_admin_attack("[key_name(user)] spiked \a [target] with a [fluff_text] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 		reagents.trans_to(target, reagents.total_volume)
 		for(var/mob/O in viewers(2, user))
@@ -166,10 +175,6 @@
 	pill_initial_reagents = list("cyanide" = 50)
 	pill_icon_class = "tox"
 
-/obj/item/reagent_container/pill/adminordrazine
-	pill_desc = "An Adminordrazine pill. It's magic. We don't have to explain it."
-	pill_initial_reagents = list("adminordrazine" = 50)
-
 /obj/item/reagent_container/pill/stox
 	pill_desc = "A sleeping pill commonly used to treat insomnia."
 	pill_initial_reagents = list("stoxin" = 15)
@@ -181,9 +186,9 @@
 	pill_icon_class = "kelo"
 
 /obj/item/reagent_container/pill/oxycodone
-    pill_desc = "A Oxycodone pill. A powerful painkiller."
-    pill_initial_reagents = list("oxycodone" = 15)
-    pill_icon_class = "oxy"
+	pill_desc = "A Oxycodone pill. A powerful painkiller."
+	pill_initial_reagents = list("oxycodone" = 15)
+	pill_icon_class = "oxy"
 
 /obj/item/reagent_container/pill/paracetamol
 	pill_desc = "A Paracetamol pill. Painkiller for the ages."
@@ -225,6 +230,12 @@
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
 	pill_icon_class = "drug"
 
+/obj/item/reagent_container/pill/zombie_powder
+	desc = "A strange pill that smells like death itself."
+	pill_desc = "A strange pill that smells like death itself."
+	pill_initial_reagents = list("zombiepowder" = 8, "copper" = 2) //roughly two minutes of death
+	pill_icon_class = "drug"
+
 /obj/item/reagent_container/pill/russianRed
 	pill_desc = "A Russian Red pill. A very dangerous radiation-countering substance."
 	pill_initial_reagents = list("russianred" = 10)
@@ -248,11 +259,6 @@
 	pill_desc = "A Bicaridine pill. Heals brute damage."
 	pill_initial_reagents = list("bicaridine" = 15)
 	pill_icon_class = "bica"
-
-/obj/item/reagent_container/pill/quickclot
-	pill_desc = "A Quickclot pill. Stabilizes internal bleeding temporarily."
-	pill_initial_reagents = list("quickclot" = 7)
-	pill_icon_class = "qc"
 
 /obj/item/reagent_container/pill/ultrazine
 	pill_desc = "An Ultrazine pill. A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."

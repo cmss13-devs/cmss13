@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/Login()
+/mob/living/carbon/xenomorph/Login()
 	..()
 	if(client)
 		set_lighting_alpha_from_prefs(client)
@@ -6,3 +6,5 @@
 			generate_name()
 	if(SSticker.mode)
 		SSticker.mode.xenomorphs |= mind
+	if(selected_ability)
+		set_selected_ability(null)

@@ -14,8 +14,8 @@
 	var/pixel_y = -16
 	var/pixel_x = -16
 
-	var/crystals_required = 0
-	var/crystals_stored = 0
+	var/plasma_required = 0
+	var/plasma_stored = 0
 	var/materials_required = list() //Example resource requirements i.e. MATERIAL_METAL = 1
 	var/extras_required = list() //Example extra requirements i.e. /obj/item = 1
 
@@ -28,59 +28,39 @@
 	build_loc = null
 	return ..()
 
+///runs in /obj/effect/alien/resin/construction/proc/set_template() for logic needed to occur then
+/datum/construction_template/proc/on_template_creation()
+	return
+
 /datum/construction_template/proc/set_structure_image()
 	return
 
 /datum/construction_template/proc/get_structure_image()
 	return image(build_icon, build_icon_state)
 
-/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/xeno)
+/datum/construction_template/proc/add_crystal(mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))
 		return
 	if(!xeno.plasma_max)
 		return
-	if(crystals_stored >= crystals_required)
+	if(plasma_stored >= plasma_required)
 		to_chat(xeno, SPAN_WARNING("\The [name] does not require plasma."))
 		return
-	to_chat(xeno, SPAN_NOTICE("You begin adding \the plasma to \the [name]."))
+	to_chat(xeno, SPAN_NOTICE("We begin adding \the plasma to \the [name]."))
 	xeno_attack_delay(xeno)
 	if(!do_after(xeno, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	//double-check amount required
-	if(crystals_stored >= crystals_required)
+	if(plasma_stored >= plasma_required)
 		to_chat(xeno, SPAN_WARNING("\The [name] has enough plasma."))
 		return
-	var/amount_to_use = min(xeno.plasma_stored, (crystals_required - crystals_stored))
-	crystals_stored += amount_to_use
+	var/amount_to_use = min(xeno.plasma_stored, (plasma_required - plasma_stored))
+	plasma_stored += amount_to_use
 	xeno.plasma_stored -= amount_to_use
-	to_chat(xeno, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more plasma."))
+	to_chat(xeno, SPAN_WARNING("\The [name] requires [plasma_required - plasma_stored] more plasma."))
 	check_completion()
 
-// Xeno ressource collection
-/*
-/datum/construction_template/proc/add_crystal(var/mob/living/carbon/Xenomorph/M)
-	if(!istype(M))
-		return
-	if(!M.crystal_stored)
-		to_chat(M, SPAN_WARNING("You have no [MATERIAL_CRYSTAL] stored."))
-		return
-	if(crystals_stored >= crystals_required)
-		to_chat(M, SPAN_WARNING("\The [name] does not require [MATERIAL_CRYSTAL]."))
-		return
-	to_chat(M, SPAN_NOTICE("You begin adding \the [MATERIAL_CRYSTAL] to \the [name]."))
-	if(!do_after(M, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return
-	//double-check amount required
-	if(crystals_stored >= crystals_required)
-		to_chat(M, SPAN_WARNING("\The [name] has enough [MATERIAL_CRYSTAL]."))
-		return
-	var/amount_to_use = min(M.crystal_stored, (crystals_required - crystals_stored))
-	crystals_stored += amount_to_use
-	M.crystal_stored -= amount_to_use
-	to_chat(M, SPAN_WARNING("\The [name] requires [crystals_required - crystals_stored] more [MATERIAL_CRYSTAL]."))
-	check_completion() */
-
-/datum/construction_template/proc/add_material(var/mob/user, var/obj/item/I)
+/datum/construction_template/proc/add_material(mob/user, obj/item/I)
 	if(isStack(I))
 		var/obj/item/stack/S = I
 		if(!(S.stack_id in materials_required))
@@ -119,7 +99,7 @@
 	check_completion()
 
 /datum/construction_template/proc/check_completion()
-	if(crystals_stored < crystals_required)
+	if(plasma_stored < plasma_required)
 		return FALSE
 	for(var/material_req in materials_required)
 		if(materials_required[material_req] > 0)

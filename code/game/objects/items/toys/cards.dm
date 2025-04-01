@@ -4,7 +4,7 @@
 	var/back_icon = "card_back"
 	var/sort_index = 0
 
-/datum/playing_card/New(var/set_name, var/set_card_icon, var/set_back_icon, var/set_sort_index)
+/datum/playing_card/New(set_name, set_card_icon, set_back_icon, set_sort_index)
 	..()
 	if(set_name)
 		name = set_name
@@ -20,8 +20,12 @@
 	desc = "A simple deck of playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
+	item_state_slots = list(WEAR_AS_GARB = "card_deck")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi',
+		)
 	w_class = SIZE_TINY
-	flags_item = NOTABLEMERGE
+	flags_obj = OBJ_IS_HELMET_GARB
 
 	var/base_icon = "deck"
 	var/max_cards = 52
@@ -30,6 +34,10 @@
 /obj/item/toy/deck/Initialize()
 	. = ..()
 	populate_deck()
+
+/obj/item/toy/deck/Destroy(force)
+	. = ..()
+	QDEL_NULL_LIST(cards)
 
 /obj/item/toy/deck/get_examine_text(mob/user)
 	. = ..()
@@ -46,7 +54,9 @@
 	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
 	icon_state = "deck_uno"
 	base_icon = "deck_uno"
+	item_state_slots = list(WEAR_AS_GARB = "card_uno")
 	max_cards = 108
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/toy/deck/uno/populate_deck()
 	var/card_id = 1
@@ -76,6 +86,7 @@
 		var/obj/item/toy/handcard/H = O
 		for(var/datum/playing_card/P as anything in H.cards)
 			cards += P
+			H.cards -= P
 		update_icon()
 		qdel(O)
 		user.visible_message(SPAN_NOTICE("<b>[user]</b> places their cards on the bottom of \the [src]."), SPAN_NOTICE("You place your cards on the bottom of the deck."))
@@ -84,9 +95,12 @@
 
 /obj/item/toy/deck/update_icon()
 	var/cards_length = length(cards)
-	if(cards_length == max_cards) icon_state = base_icon
-	else if(!cards_length) icon_state = "[base_icon]_empty"
-	else icon_state = "[base_icon]_open"
+	if(cards_length == max_cards)
+		icon_state = base_icon
+	else if(!cards_length)
+		icon_state = "[base_icon]_empty"
+	else
+		icon_state = "[base_icon]_open"
 
 /obj/item/toy/deck/verb/draw_card()
 	set category = "Object"
@@ -97,7 +111,7 @@
 	if(usr.stat || !Adjacent(usr))
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	var/mob/living/carbon/human/user = usr
@@ -122,11 +136,12 @@
 
 	handle_draw_cards(usr)
 
-/obj/item/toy/deck/proc/handle_draw_cards(var/mob/mob)
-	if(mob.stat || !ishuman(mob) || !Adjacent(mob))
+/obj/item/toy/deck/proc/handle_draw_cards(mob/living/carbon/user)
+	if(user.stat || !Adjacent(user))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
+		return
 
 	var/cards_length = length(cards)
 	if(!cards_length)
@@ -168,10 +183,13 @@
 	set category = "Object"
 	set src in view(1)
 
-	if(usr.stat || !ishuman(usr) || !Adjacent(usr))
+	if(usr.stat || !Adjacent(usr))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		return
+
+	var/mob/living/carbon/user = usr
 
 	var/cards_length = length(cards)
 	if(!cards_length)
@@ -198,6 +216,9 @@
 	set src in view(1)
 
 	if(usr.stat || !Adjacent(usr))
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(!length(cards))
@@ -234,7 +255,7 @@
 		user.visible_message(SPAN_NOTICE("\The [user] deals a card to \the [target]."), SPAN_NOTICE("You deal a card to \the [target]."))
 	H.throw_atom(get_step(target,target.dir), 10, SPEED_VERY_FAST, H)
 
-/obj/item/toy/deck/attack_self(var/mob/user)
+/obj/item/toy/deck/attack_self(mob/user)
 	..()
 	var/list/newcards = list()
 	for(var/i = 1 to length(cards))
@@ -247,7 +268,10 @@
 	if(!usr || !over)
 		return
 
-	if(!ishuman(over) || get_dist(usr, over) > 3)
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		return
+
+	if(get_dist(usr, over) > 3)
 		return
 
 	if(!length(cards))
@@ -261,8 +285,10 @@
 	desc = "Some playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
+	item_icons = list(WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi')
+	item_state_slots = list(WEAR_AS_GARB = "card_card")
 	w_class = SIZE_TINY
-	flags_item = NOTABLEMERGE
+	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 
 	var/concealed = FALSE
 	var/pile_state = FALSE
@@ -273,25 +299,34 @@
 	if(!concealed)
 		. += " ([length(cards)] card\s)"
 
+/obj/item/toy/handcard/Destroy(force)
+	. = ..()
+	QDEL_NULL_LIST(cards)
+
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
 	desc = "An Ace of Spades"
+	item_state_slots = list(WEAR_AS_GARB = "ace_of_spades")
 
 /obj/item/toy/handcard/uno_reverse_red
 	icon_state = "red_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "red_reverse")
 
 /obj/item/toy/handcard/uno_reverse_blue
 	icon_state = "blue_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "blue_reverse")
 
 /obj/item/toy/handcard/uno_reverse_yellow
 	icon_state = "yellow_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "yellow_reverse")
 
 /obj/item/toy/handcard/uno_reverse_purple
 	icon_state = "purple_reverse"
-	desc = "Always handy to have one or three of these up your sleeve.."
+	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "purple_reverse")
 
 /obj/item/toy/handcard/verb/toggle_discard_state()
 	set name = "Toggle Pile State"
@@ -299,7 +334,10 @@
 	set category = "Object"
 	set src in usr
 
-	if(usr.stat || !ishuman(usr))
+	if(usr.stat)
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	pile_state = !pile_state
@@ -312,11 +350,17 @@
 	set desc = "Sort this hand by deck's initial order."
 	set src in usr
 
-	if(usr.stat || !ishuman(usr))
+	if(usr.stat)
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
 	var/cards_length = length(cards)
+	if(cards_length >= 200)
+		to_chat(usr, SPAN_WARNING("Your hand is too big to sort. Remove some cards."))
+		return
 	for(var/i = 1 to cards_length)
 		for(var/k = 2 to cards_length)
 			if(cards[i].sort_index > cards[k].sort_index)
@@ -333,6 +377,7 @@
 		var/cards_length = length(H.cards)
 		for(var/datum/playing_card/P in H.cards)
 			cards += P
+			H.cards -= P
 		qdel(O)
 		if(pile_state)
 			if(concealed)
@@ -341,6 +386,9 @@
 				user.visible_message(SPAN_NOTICE("\The [user] adds [cards_length > 1 ? "their hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."), SPAN_NOTICE("You add [cards_length > 1 ? "your hand" : "<b>[cards[length(cards)].name]</b>"] to \the [src]."))
 		else
 			if(loc != user)
+				if(isstorage(loc))
+					var/obj/item/storage/storage = loc
+					storage.remove_from_storage(src)
 				user.put_in_hands(src)
 		update_icon()
 		return
@@ -383,15 +431,25 @@
 		return
 	return ..()
 
-/obj/item/toy/handcard/attack_self(var/mob/user)
+/obj/item/toy/handcard/attack_self(mob/user)
 	..()
 	concealed = !concealed
 	update_icon()
 	user.visible_message(SPAN_NOTICE("\The [user] [concealed ? "conceals" : "reveals"] their hand."), SPAN_NOTICE("You [concealed ? "conceal" : "reveal"] your hand."))
 
 /obj/item/toy/handcard/MouseDrop(atom/over)
-	if(usr != over || !Adjacent(usr))
+	if(usr != over || !Adjacent(over))
 		return
+	if(ismob(loc))
+		return
+	if(usr.stat)
+		return
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
+		return
+
+	if(isstorage(loc))
+		var/obj/item/storage/storage = loc
+		storage.remove_from_storage(src)
 	usr.put_in_hands(src)
 
 /obj/item/toy/handcard/get_examine_text(mob/user)
@@ -408,7 +466,7 @@
 			. += SPAN_NOTICE("The cards are: [english_list(card_names)]")
 
 
-/obj/item/toy/handcard/update_icon(var/direction = 0)
+/obj/item/toy/handcard/update_icon(direction = 0)
 	var/cards_length = length(cards)
 	if(pile_state)
 		if(concealed)
@@ -425,6 +483,12 @@
 			name = "a playing card"
 			desc = "A playing card."
 
+	if(length(cards) >= 200)
+		// BYOND will flat out choke when using thousands of cards for some unknown reason,
+		// possibly due to the transformed overlay stacking below. Nobody's gonna see the
+		// difference past 40 or so anyway.
+		return
+
 	overlays.Cut()
 
 	if(!cards_length)
@@ -436,7 +500,7 @@
 		overlays += I
 		return
 
-	var/offset = Floor(80/cards_length)
+	var/offset = floor(80/cards_length)
 
 	var/matrix/M = matrix()
 	if(direction)
@@ -456,13 +520,13 @@
 		var/image/I = new(src.icon, (concealed ? P.back_icon : P.card_icon))
 		switch(direction)
 			if(SOUTH)
-				I.pixel_x = 8 - Floor(offset*i/4)
+				I.pixel_x = 8 - floor(offset*i/4)
 			if(WEST)
-				I.pixel_y = -6 + Floor(offset*i/4)
+				I.pixel_y = -6 + floor(offset*i/4)
 			if(EAST)
-				I.pixel_y = 8 - Floor(offset*i/4)
+				I.pixel_y = 8 - floor(offset*i/4)
 			else
-				I.pixel_x = -7 + Floor(offset*i/4)
+				I.pixel_x = -7 + floor(offset*i/4)
 		I.transform = M
 		overlays += I
 		i++
@@ -479,7 +543,7 @@
 	update_icon()
 
 
-/proc/get_or_make_user_hand(var/mob/living/user, var/obj/item/toy/handcard/ignore_hand)
+/proc/get_or_make_user_hand(mob/living/user, obj/item/toy/handcard/ignore_hand)
 	var/obj/item/toy/handcard/H
 	if(istype(user.l_hand, /obj/item/toy/handcard) && user.l_hand != ignore_hand)
 		H = user.l_hand

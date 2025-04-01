@@ -1,8 +1,8 @@
-#define STAMINA_SPEED_VERYSLOW        4.50
-#define STAMINA_SPEED_SLOW            3.75
-#define STAMINA_SPEED_HIGH            2.75
-#define STAMINA_SPEED_MED            1.50
-#define STAMINA_SPEED_LOW            1
+#define STAMINA_SPEED_VERYSLOW 4.50
+#define STAMINA_SPEED_SLOW 3.75
+#define STAMINA_SPEED_HIGH 2.75
+#define STAMINA_SPEED_MED 1.50
+#define STAMINA_SPEED_LOW 1
 
 /datum/effects/stamina
 	effect_name = "stamina"
@@ -10,7 +10,7 @@
 	duration = 30
 	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
 
-/datum/effects/stamina/validate_atom(var/atom/A)
+/datum/effects/stamina/validate_atom(atom/A)
 	if(isobj(A))
 		return FALSE
 	. = ..()

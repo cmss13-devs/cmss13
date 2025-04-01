@@ -1,7 +1,7 @@
-#define INPUT_CONTAINER	0
-#define INPUT_TURING	1
+#define INPUT_CONTAINER 0
+#define INPUT_TURING 1
 
-#define MODE_SPLIT 		0
+#define MODE_SPLIT 0
 #define MODE_DISTRIBUTE 1
 
 /obj/structure/machinery/centrifuge
@@ -31,7 +31,7 @@
 		return
 	connected_turing = locate(/obj/structure/machinery/autodispenser) in range(tether_range, src)
 	if(connected_turing)
-		RegisterSignal(connected_turing, COMSIG_PARENT_QDELETING, .proc/cleanup)
+		RegisterSignal(connected_turing, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 		visible_message(SPAN_NOTICE("<b>The [src] beeps:</b> Turing Dispenser connected."))
 
 /obj/structure/machinery/centrifuge/attackby(obj/item/B, mob/living/user)
@@ -89,7 +89,7 @@
 		tgui_interact(user)
 		return
 	if(output_container)
-		to_chat(user, SPAN_NOTICE("You remove the [output_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove [output_container] from the [src]."))
 		user.put_in_active_hand(output_container)
 		output_container = null
 		if(input_container)
@@ -97,7 +97,7 @@
 		else
 			icon_state = "centrifuge_empty_open"
 	else if(input_container)
-		to_chat(user, SPAN_NOTICE("You remove the [input_container] from the [src]."))
+		to_chat(user, SPAN_NOTICE("You remove [input_container] from the [src]."))
 		user.put_in_active_hand(input_container)
 		input_container = null
 		icon_state = "centrifuge_empty_open"
@@ -110,6 +110,7 @@
 	if(!ui)
 		ui = new(user, src, "Centrifuge", "[src.name]")
 		ui.open()
+
 /obj/structure/machinery/centrifuge/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
@@ -175,17 +176,18 @@
 		cleanup()
 		return FALSE
 
-	if(status == 0 && input_source == INPUT_TURING && connected_turing && connected_turing.outputmode == 2 && (connected_turing.programs[1].len || connected_turing.programs[2].len))
+	if(status == 0 && input_source == INPUT_TURING && connected_turing && connected_turing.outputmode == 2 && (length(connected_turing.programs[1]) || length(connected_turing.programs[2])))
 		return TRUE
 	return FALSE
 
 /obj/structure/machinery/centrifuge/proc/centrifuge()
-	if(!output_container.contents.len) return //Is output empty?
+	if(!length(output_container.contents))
+		return //Is output empty?
 
 	var/obj/item/reagent_container/source_container = input_container
 	if(input_source == INPUT_TURING)
 		source_container = connected_turing
-	var/initial_reagents = source_container.reagents.reagent_list.len
+	var/initial_reagents = length(source_container.reagents.reagent_list)
 	var/list/vials = list()
 	for(var/obj/item/reagent_container/V in output_container.contents)
 		vials += V
@@ -202,17 +204,17 @@
 			var/obj/item/reagent_container/hypospray/autoinjector/A = V
 			if(autolabel)
 				A.name = "autoinjector ([autolabel])"
-			else if(!(A.reagents.reagent_list.len))
+			else if(!length(A.reagents.reagent_list))
 				A.name = "autoinjector"
 			else
 				A.name = "autoinjector (" + A.reagents.reagent_list[1].name + ")"
 			var/numberOfUses = A.reagents.total_volume / A.amount_per_transfer_from_this
-			A.uses_left = round(numberOfUses) == numberOfUses ? numberOfUses : round(numberOfUses) + 1
+			A.uses_left = floor(numberOfUses) == numberOfUses ? numberOfUses : floor(numberOfUses) + 1
 			A.update_icon()
 		else
 			if(autolabel)
 				V.name = "vial ([autolabel])"
-			else if(!(V.reagents.reagent_list.len) || (V.reagents.reagent_list.len > 1))
+			else if(!length(V.reagents.reagent_list) || (length(V.reagents.reagent_list) > 1))
 				V.name = "vial"
 			else
 				V.name = "vial (" + V.reagents.reagent_list[1].name + ")"
@@ -222,7 +224,7 @@
 	output_container.contents = vials
 
 
-/obj/structure/machinery/centrifuge/proc/split(var/obj/item/source_container, var/list/vials)
+/obj/structure/machinery/centrifuge/proc/split(obj/item/source_container, list/vials)
 //Split reagent types best possible, if we have move volume that types available, split volume best possible
 	for(var/datum/reagent/R in source_container.reagents.reagent_list)
 
@@ -256,7 +258,7 @@
 			V.update_icon()
 
 
-/obj/structure/machinery/centrifuge/proc/distribute(var/obj/item/source_container, var/list/vials)
+/obj/structure/machinery/centrifuge/proc/distribute(obj/item/source_container, list/vials)
 	for(var/obj/item/reagent_container/V in vials)
 		if(source_container.reagents.total_volume <= 0) //We're out
 			break

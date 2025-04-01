@@ -10,8 +10,8 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
-	icon_state = "disk"
-	item_state = "pred_disk"
+	icon_state = "disc"
+	item_state = "pred_disc"
 	w_class = SIZE_TINY
 	det_time = 30
 	unacidable = TRUE
@@ -20,19 +20,19 @@
 	force = 15
 	throwforce = 25
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(var/datum/launch_metadata/LM)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_towards(datum/launch_metadata/LM)
 	..()
 	var/mob/user = usr
-	if(!active && isYautja(user) && (icon_state == initial(icon_state)))
+	if(!active && isyautja(user) && (icon_state == initial(icon_state)))
 		boomerang(user)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/boomerang(mob/user)
 	var/mob/living/L = find_target(user)
 	icon_state = initial(icon_state) + "_active"
 	if(L)
-		throw_atom(L.loc, 4, SPEED_FAST, usr)
-	throw_atom(usr, 12, SPEED_SLOW, usr)
-	addtimer(CALLBACK(src, .proc/clear_boomerang), 3 SECONDS)
+		throw_atom(get_turf(L), 4, SPEED_FAST, user)
+	throw_atom(user, 12, SPEED_SLOW, user)
+	addtimer(CALLBACK(src, PROC_REF(clear_boomerang)), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)
@@ -46,7 +46,7 @@
 			var/mob/living/L = A
 			if(L.faction == user.faction)
 				continue
-			else if(isYautja(L))
+			else if(isyautja(L))
 				continue
 			else if (L.stat == DEAD)
 				continue
@@ -55,26 +55,26 @@
 				break
 	return T
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(var/dist = 3)
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/listtargets(dist = 3)
 	var/list/L = hearers(src, dist)
 	return L
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/attack_self(mob/user)
-	..()
+	. = ..()
 
 	if(active)
 		return
 
-	if(!isYautja(user))
+	if(!isyautja(user))
 		if(prob(75))
 			to_chat(user, SPAN_WARNING("You fiddle with the disc, but nothing happens. Try again maybe?"))
 			return
 	to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
 	activate(user)
 	add_fingerprint(user)
-	var/mob/living/carbon/C = user
-	if(istype(C) && !C.throw_mode)
-		C.toggle_throw_mode(THROW_MODE_NORMAL)
+	var/mob/living/carbon/carbon_user = user
+	if(istype(carbon_user) && !carbon_user.throw_mode)
+		carbon_user.toggle_throw_mode(THROW_MODE_NORMAL)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/activate(mob/user)
 	if(active)
@@ -102,9 +102,9 @@
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/launch_impact(atom/hit_atom)
-	if(isYautja(hit_atom))
-		var/mob/living/carbon/human/H = hit_atom
-		if(H.put_in_hands(src))
+	if(isyautja(hit_atom))
+		var/mob/living/carbon/human/hooman = hit_atom
+		if(hooman.put_in_hands(src))
 			hit_atom.visible_message("[hit_atom] expertly catches [src] out of the air.","You catch [src] easily.")
 			throwing = FALSE
 		return
@@ -114,10 +114,10 @@
 	name = "smart-disc"
 	desc = "A furious, whirling array of blades and alien technology."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "disk_active"
-	icon_living = "disk_active"
-	icon_dead = "disk"
-	icon_gib = "disk"
+	icon_state = "disc_active"
+	icon_living = "disc_active"
+	icon_dead = "disc"
+	icon_gib = "disc"
 	speak_chance = 0
 	turns_per_move = 1
 	response_help = "stares at the"
@@ -127,7 +127,7 @@
 	maxHealth = 60
 	health = 60
 	attack_same = 0
-	density = 0
+	density = FALSE
 	mob_size = MOB_SIZE_SMALL
 
 	harm_intent_damage = 10
@@ -157,13 +157,14 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 25
 	..()
-/mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(var/check_drift = 0)
+
+/mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(check_drift = 0)
 	return 1
 
 /mob/living/simple_animal/hostile/smartdisc/Collided(atom/movable/AM)
 	return
 
-/mob/living/simple_animal/hostile/smartdisc/bullet_act(var/obj/item/projectile/Proj)
+/mob/living/simple_animal/hostile/smartdisc/bullet_act(obj/projectile/Proj)
 	if(prob(60 - Proj.damage))
 		return 0
 
@@ -174,14 +175,15 @@
 	return 1
 
 /mob/living/simple_animal/hostile/smartdisc/death()
-	visible_message("\The [src] stops whirring and spins out onto the floor.")
-	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
-	..()
+	visible_message("[src] stops whirring and spins out onto the floor.")
+	new /obj/item/explosive/grenade/spawnergrenade/smartdisc(loc)
+	. = ..()
 	spawn(1)
-		if(src) qdel(src)
+		if(src)
+			qdel(src)
 
-/mob/living/simple_animal/hostile/smartdisc/gib(var/cause = "gibbing")
-	visible_message("\The [src] explodes!")
+/mob/living/simple_animal/hostile/smartdisc/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	visible_message("[src] explodes!")
 	..(cause, icon_gib,1)
 	spawn(1)
 		if(src)
@@ -199,9 +201,9 @@
 			var/mob/living/L = A
 			if(L.faction == faction)
 				continue
-			else if(L in friends)
+			else if(WEAKREF(L) in friends)
 				continue
-			else if(isYautja(L))
+			else if(isyautja(L))
 				continue
 			else if (L.stat == DEAD)
 				continue
@@ -212,7 +214,7 @@
 					break
 	return T
 
-/mob/living/simple_animal/hostile/smartdisc/ListTargets(var/dist = 7)
+/mob/living/simple_animal/hostile/smartdisc/ListTargets(dist = 7)
 	var/list/L = hearers(src, dist)
 	return L
 
@@ -236,18 +238,10 @@
 		qdel(src)
 		return
 
-	for(var/mob/living/carbon/C in range(6))
-		if(C.target_locked)
-			var/image/I = C.target_locked
-			if(I.icon_state == "locked-y" && !isYautja(C) && C.stat != DEAD)
-				stance = HOSTILE_STANCE_ATTACK
-				target_mob = C
-				break
-
 	if(!stat)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
-				target_mob = FindTarget()
+				target_mob_ref = WEAKREF(FindTarget())
 
 			if(HOSTILE_STANCE_ATTACK)
 				MoveToTarget()
@@ -256,26 +250,29 @@
 				AttackTarget()
 
 /mob/living/simple_animal/hostile/smartdisc/AttackTarget()
-	stop_automated_movement = 1
+	stop_automated_movement = TRUE
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!target_mob || SA_attackable(target_mob))
 		LoseTarget()
-		return 0
+		return FALSE
 	if(!(target_mob in ListTargets(5)) || prob(20) || target_mob.stat)
 		stance = HOSTILE_STANCE_IDLE
-		return 0
-	if(get_dist(src, target_mob) <= 1)	//Attacking
+		return FALSE
+	if(get_dist(src, target_mob) <= 1) //Attacking
 		AttackingTarget()
-		return 1
+		return TRUE
 
 /mob/living/simple_animal/hostile/smartdisc/AttackingTarget()
-	if(QDELETED(target_mob))  return
-	if(!Adjacent(target_mob))  return
+	var/mob/living/target_mob = target_mob_ref?.resolve()
+	if(!target_mob)
+		return
+	if(!Adjacent(target_mob))
+		return
 	if(isliving(target_mob))
-		var/mob/living/L = target_mob
-		L.attack_animal(src)
+		target_mob.attack_animal(src)
 		if(prob(5))
-			L.apply_effect(3, WEAKEN)
-			L.visible_message(SPAN_DANGER("\The [src] viciously slashes at \the [L]!"))
-			log_attack("[key_name(L)] was knocked down by [src]")
-		log_attack("[key_name(L)] was attacked by [src]")
-		return L
+			target_mob.apply_effect(3, WEAKEN)
+			target_mob.visible_message(SPAN_DANGER("[src] viciously slashes at [target_mob]!"))
+			log_attack("[key_name(target_mob)] was knocked down by [src]")
+		log_attack("[key_name(target_mob)] was attacked by [src]")
+		return target_mob

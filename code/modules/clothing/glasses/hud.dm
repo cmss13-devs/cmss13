@@ -1,5 +1,10 @@
 /obj/item/clothing/glasses/hud
 	name = "HUD"
+	icon = 'icons/obj/items/clothing/glasses/huds.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/huds.dmi',
+	)
+	gender = NEUTER
 	desc = "A heads-up display that provides important info in (almost) real time."
 	flags_atom = null //doesn't protect eyes because it's a monocle, duh
 
@@ -8,6 +13,7 @@
 	name = "\improper HealthMate HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
+	item_state = "healthhud"
 	deactive_state = "degoggles"
 	flags_armor_protection = 0
 	toggleable = TRUE
@@ -35,10 +41,11 @@
 	return
 
 /datum/action/item_action/view_publications/can_use_action()
-	if(owner && !owner.is_mob_incapacitated() && !owner.lying && owner.faction != FACTION_SURVIVOR)
+	if(owner && !owner.is_mob_incapacitated() && owner.faction != FACTION_SURVIVOR)
 		return TRUE
 
 /datum/action/item_action/view_publications/action_activate()
+	. = ..()
 	var/obj/item/clothing/glasses/hud/health/hud = holder_item
 	hud.tgui_interact(owner)
 
@@ -47,7 +54,7 @@
 
 /obj/item/clothing/glasses/hud/health/ui_data(mob/user)
 	var/list/data = list(
-		"published_documents" = chemical_data.research_publications,
+		"published_documents" = GLOB.chemical_data.research_publications,
 		"terminal_view" = FALSE
 	)
 	return data
@@ -73,7 +80,7 @@
 		if ("read_document")
 			var/print_type = params["print_type"]
 			var/print_title = params["print_title"]
-			var/obj/item/paper/research_report/report = chemical_data.get_report(print_type, print_title)
+			var/obj/item/paper/research_report/report = GLOB.chemical_data.get_report(print_type, print_title)
 			if(report)
 				report.read_paper(user)
 			return
@@ -97,9 +104,34 @@
 		return
 
 	if(href_list["read_document"])
-		var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
+		var/obj/item/paper/research_report/report = GLOB.chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 		if(report)
 			report.read_paper(user)
+
+/obj/item/clothing/glasses/hud/health/basic
+	name = "\improper Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one is a simpler model."
+	hud_type = MOB_HUD_MEDICAL_BASIC
+	req_skill = NONE
+	req_skill_level = NONE
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/hud/health/basic/prescription
+	name = "\improper Prescription Basic HealthMate HUD"
+	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This simpler model contains prescription lenses."
+	prescription = TRUE
+
+/obj/item/clothing/glasses/hud/health/science
+	name = "custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO
+	desc = "These HealthMate HUD googles are modified with a light-weight titantium-alloy frame that is custom fitted with extra wiring and low profile components from a reagent analyzer, allowing them to combine the functionality of a HealthMate and reagent scanner HUD without compromising on the form of the googles."
+	req_skill = SKILL_RESEARCH
+	req_skill_level = SKILL_RESEARCH_TRAINED
+	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+
+/obj/item/clothing/glasses/hud/health/science/prescription
+	name = "prescription custom HealthMate HUD" // combined HealthMateHUD and Reagent Scanner HUD for CMO but prescription
+	desc = parent_type::desc + " This pair contains prescription lenses."
+	prescription = TRUE
 
 /obj/item/clothing/glasses/hud/sensor
 	name = "\improper SensorMate HUD"
@@ -108,7 +140,7 @@
 	deactive_state = "sensorhud_d"
 	flags_armor_protection = 0
 	toggleable = TRUE
-	hud_type = MOB_HUD_MEDICAL_BASIC
+	hud_type = MOB_HUD_MEDICAL_ADVANCED
 	actions_types = list(/datum/action/item_action/toggle)
 	req_skill = SKILL_MEDICAL
 	req_skill_level = SKILL_MEDICAL_DEFAULT
@@ -135,7 +167,12 @@
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "augmented shades"
+	gender = PLURAL
 	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
 	vision_flags = SEE_MOBS

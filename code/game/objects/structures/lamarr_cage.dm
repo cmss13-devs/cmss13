@@ -1,10 +1,10 @@
 /obj/structure/lamarr
 	name = "Lab Cage"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/furniture/display_case.dmi'
 	icon_state = "labcage1"
 	desc = "A glass lab container for storing interesting creatures."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	unacidable = FALSE
 	health = 30
 	var/occupied = 1
@@ -26,7 +26,7 @@
 			deconstruct(FALSE)
 
 
-/obj/structure/lamarr/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/lamarr/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	src.healthcheck()
@@ -35,7 +35,7 @@
 /obj/structure/lamarr/proc/healthcheck()
 	if (src.health <= 0)
 		if (!( src.destroyed ))
-			src.density = 0
+			src.density = FALSE
 			src.destroyed = 1
 			new /obj/item/shard( src.loc )
 			playsound(src, "shatter", 25, 1)
@@ -53,9 +53,9 @@
 
 
 /obj/structure/lamarr/attackby(obj/item/W as obj, mob/user as mob)
-	src.health -= W.force
-	src.healthcheck()
-	..()
+	health -= W.force * W.demolition_mod
+	healthcheck()
+	. = ..()
 	return
 
 /obj/structure/lamarr/attack_hand(mob/user as mob)
@@ -80,8 +80,9 @@
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
 	desc = "The worst she might do is attempt to... couple with your head."//hope we don't get sued over a harmless reference, rite?
-	sterile = 1
+	sterile = TRUE
 	gender = FEMALE
+	black_market_value = 50
 
 /obj/item/clothing/mask/facehugger/lamarr/die()
 	if(stat == DEAD)

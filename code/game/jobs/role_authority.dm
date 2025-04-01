@@ -11,33 +11,31 @@ When a round starts, the roles are assigned based on the round, from another lis
 by name can be kept for things like job bans, while the round may add or remove roles as needed.If you need to equip a mob for a job, always
 use roles_by_path as it is an accurate account of every specific role path (with specific equipment).
 */
-var/global/datum/authority/branch/role/RoleAuthority
+GLOBAL_DATUM(RoleAuthority, /datum/authority/branch/role)
 
 #define GET_RANDOM_JOB 0
 #define BE_MARINE 1
 #define RETURN_TO_LOBBY 2
 #define BE_XENOMORPH 3
 
-#define NEVER_PRIORITY 	0
-#define HIGH_PRIORITY 	1
-#define MED_PRIORITY 	2
-#define LOW_PRIORITY	3
+#define NEVER_PRIORITY 0
+#define HIGH_PRIORITY 1
+#define MED_PRIORITY 2
+#define LOW_PRIORITY 3
 
-#define SHIPSIDE_ROLE_WEIGHT 0.5
+#define SHIPSIDE_ROLE_WEIGHT 0.25
 
-var/global/players_preassigned = 0
+GLOBAL_VAR_INIT(players_preassigned, 0)
 
-
-/proc/guest_jobbans(var/job)
-	return (job in ROLES_COMMAND)
+/proc/guest_jobbans(job)
+	return (job in GLOB.ROLES_COMMAND)
 
 /datum/authority/branch/role
 	var/name = "Role Authority"
 
-	var/list/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
-	var/list/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
+	var/list/datum/job/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
+	var/list/datum/job/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
-	var/list/roles_whitelist //Associated list of lists, by ckey. Checks to see if a person is whitelisted for a specific role.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
 
@@ -58,7 +56,9 @@ var/global/players_preassigned = 0
 											/datum/job/logistics,
 											/datum/job/marine,
 											/datum/job/antag,
-											/datum/job/special
+											/datum/job/special,
+											/datum/job/special/provost,
+											/datum/job/special/uscm,
 											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
@@ -112,65 +112,15 @@ var/global/players_preassigned = 0
 		squads += S
 		squads_by_type[S.type] = S
 
-	load_whitelist()
-
-
-/datum/authority/branch/role/proc/load_whitelist(filename = "config/role_whitelist.txt")
-	var/L[] = file2list(filename)
-	var/P[]
-	var/W[] = new //We want a temporary whitelist list, in case we need to reload.
-
-	var/i
-	var/r
-	var/ckey
-	var/role
-	roles_whitelist = list()
-	for(i in L)
-		if(!i)	continue
-		i = trim(i)
-		if(!length(i)) continue
-		else if (copytext(i, 1, 2) == "#") continue
-
-		P = splittext(i, "+")
-		if(!P.len) continue
-		ckey = ckey(P[1]) //Converting their key to canonical form. ckey() does this by stripping all spaces, underscores and converting to lower case.
-
-		role = NO_FLAGS
-		r = 1
-		while(++r <= P.len)
-			switch(ckey(P[r]))
-				if("yautja") 						role |= WHITELIST_YAUTJA
-				if("yautjalegacy") 					role |= WHITELIST_YAUTJA_LEGACY
-				if("yautjacouncil")					role |= WHITELIST_YAUTJA_COUNCIL
-				if("yautjacouncillegacy")			role |= WHITELIST_YAUTJA_COUNCIL_LEGACY
-				if("yautjaleader")					role |= WHITELIST_YAUTJA_LEADER
-				if("commander") 					role |= WHITELIST_COMMANDER
-				if("commandercouncil")				role |= WHITELIST_COMMANDER_COUNCIL
-				if("commandercouncillegacy")		role |= WHITELIST_COMMANDER_COUNCIL_LEGACY
-				if("commanderleader")				role |= WHITELIST_COMMANDER_LEADER
-				if("synthetic") 					role |= WHITELIST_SYNTHETIC
-				if("syntheticcouncil")				role |= WHITELIST_SYNTHETIC_COUNCIL
-				if("syntheticcouncillegacy")		role |= WHITELIST_SYNTHETIC_COUNCIL_LEGACY
-				if("syntheticleader")				role |= WHITELIST_SYNTHETIC_LEADER
-				if("advisor")						role |= WHITELIST_MENTOR
-				if("allgeneral")					role |= WHITELISTS_GENERAL
-				if("allcouncil")					role |= (WHITELISTS_COUNCIL|WHITELISTS_GENERAL)
-				if("alllegacycouncil")				role |= (WHITELISTS_LEGACY_COUNCIL|WHITELISTS_GENERAL)
-				if("everything", "allleader") 		role |= WHITELIST_EVERYTHING
-
-		W[ckey] = role
-
-	roles_whitelist = W
-
 //#undef FACTION_TO_JOIN
 
- /*
- Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
- I hope it's easier to tell what the heck this proc is even doing, unlike previously.
+/*
+Consolidated into a better collection of procs. It was also calling too many loops, and I tried to fix that as well.
+I hope it's easier to tell what the heck this proc is even doing, unlike previously.
  */
 
 
-/datum/authority/branch/role/proc/setup_candidates_and_roles(var/list/overwritten_roles_for_mode)
+/datum/authority/branch/role/proc/setup_candidates_and_roles(list/overwritten_roles_for_mode)
 	//===============================================================\\
 	//PART I: Get roles relevant to the mode
 
@@ -230,39 +180,51 @@ var/global/players_preassigned = 0
 
 	// Get balancing weight for the readied players.
 	// Squad marine roles have a weight of 1, and shipside roles have a lower weight of SHIPSIDE_ROLE_WEIGHT.
-	players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
+	GLOB.players_preassigned = assign_roles(temp_roles_for_mode.Copy(), unassigned_players.Copy(), TRUE)
 
 	// Even though we pass a copy of temp_roles_for_mode, job counters still change, so we reset them here.
 	for(var/title in temp_roles_for_mode)
 		var/datum/job/J = temp_roles_for_mode[title]
 		J.current_positions = 0
 
-    // Set up limits for other roles based on our balancing weight number.
+	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
-		XJ.set_spawn_positions(players_preassigned)
+		XJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Limit the number of SQUAD MARINE roles players can roll initially
 	var/datum/job/SMJ = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 	if(istype(SMJ))
-		SMJ.set_spawn_positions(players_preassigned)
+		SMJ.set_spawn_positions(GLOB.players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
-		SJ.set_spawn_positions(players_preassigned)
+		SJ.set_spawn_positions(GLOB.players_preassigned)
 
 	var/datum/job/CO_surv_job = temp_roles_for_mode[JOB_CO_SURVIVOR]
 	if(istype(CO_surv_job))
-		CO_surv_job.set_spawn_positions(players_preassigned)
+		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
-	if(SSnightmare.get_scenario_value("predator_round"))
+	var/chance = trim(file2text("data/predchance.txt"))
+	if(chance)
+		chance = text2num(chance)
+	else
+		chance = 20
+
+	if((prob(chance) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
-			PJ.set_spawn_positions(players_preassigned)
+			PJ.set_spawn_positions(GLOB.players_preassigned)
+		REDIS_PUBLISH("byond.round", "type" = "predator-round", "map" = SSmapping.configs[GROUND_MAP].map_name)
+		chance = 0
+
+	chance += 20
+	fdel("data/predchance.txt")
+	WRITE_FILE(file("data/predchance.txt"), chance)
 
 	// Assign the roles, this time for real, respecting limits we have established.
 	var/list/roles_left = assign_roles(temp_roles_for_mode, unassigned_players)
@@ -301,18 +263,18 @@ var/global/players_preassigned = 0
 * Assign roles to the players. Return roles that are still avialable.
 * If count is true, return role balancing weight instead.
 */
-/datum/authority/branch/role/proc/assign_roles(var/list/roles_for_mode, var/list/unassigned_players, count = FALSE)
+/datum/authority/branch/role/proc/assign_roles(list/roles_for_mode, list/unassigned_players, count = FALSE)
 	var/list/roles_left = list()
 	var/assigned = 0
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		// Assigning xenos first.
-		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_XENO, unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_XENO, unassigned_players)
 		// Assigning special roles second. (survivor, predator)
-		assigned += assign_initial_roles(priority, roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL), unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL), unassigned_players)
 		// Assigning command third.
-		assigned += assign_initial_roles(priority, roles_for_mode & ROLES_COMMAND, unassigned_players)
+		assigned += assign_initial_roles(priority, roles_for_mode & GLOB.ROLES_COMMAND, unassigned_players)
 		// Assigning the rest
-		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & ROLES_XENO) - (roles_for_mode & ROLES_COMMAND) - (roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
+		var/rest_roles_for_mode = roles_for_mode - (roles_for_mode & GLOB.ROLES_XENO) - (roles_for_mode & GLOB.ROLES_COMMAND) - (roles_for_mode & (GLOB.ROLES_WHITELISTED|GLOB.ROLES_SPECIAL))
 		if(count)
 			assigned += assign_initial_roles(priority, rest_roles_for_mode, unassigned_players)
 		else
@@ -321,7 +283,7 @@ var/global/players_preassigned = 0
 		return assigned
 	return roles_left
 
-/datum/authority/branch/role/proc/assign_initial_roles(var/priority, var/list/roles_to_iterate, var/list/unassigned_players, count = TRUE)
+/datum/authority/branch/role/proc/assign_initial_roles(priority, list/roles_to_iterate, list/unassigned_players, count = TRUE)
 	var/assigned = 0
 	if(!length(roles_to_iterate) || !length(unassigned_players))
 		return
@@ -360,10 +322,12 @@ var/global/players_preassigned = 0
 * people late joining. This weight also controls the size of local wildlife population,
 * survivors and the number of roundstart Squad Rifleman slots.
 */
-/datum/authority/branch/role/proc/calculate_role_weight(var/datum/job/J)
-	if(ROLES_MARINES.Find(J.title))
+/datum/authority/branch/role/proc/calculate_role_weight(datum/job/J)
+	if(!J)
+		return 0
+	if(GLOB.ROLES_MARINES.Find(J.title))
 		return 1
-	if(ROLES_XENO.Find(J.title))
+	if(GLOB.ROLES_XENO.Find(J.title))
 		return 1
 	if(J.title == JOB_SURVIVOR)
 		return 1
@@ -376,7 +340,8 @@ var/global/players_preassigned = 0
 		var/i = 0
 		var/j
 		while(++i < 3) //Get two passes.
-			if(!roles_to_iterate.len || prob(65)) break //Base chance to become a marine when being assigned randomly, or there are no roles available.
+			if(!length(roles_to_iterate) || prob(65))
+				break //Base chance to become a marine when being assigned randomly, or there are no roles available.
 			j = pick(roles_to_iterate)
 			J = roles_to_iterate[j]
 
@@ -386,7 +351,8 @@ var/global/players_preassigned = 0
 				continue
 
 			if(assign_role(M, J)) //Check to see if they can actually get it.
-				if(J.current_positions >= J.spawn_positions) roles_to_iterate -= j
+				if(J.current_positions >= J.spawn_positions)
+					roles_to_iterate -= j
 				return roles_to_iterate
 
 	//If they fail the two passes, or no regular roles are available, they become a marine regardless.
@@ -400,19 +366,24 @@ var/global/players_preassigned = 0
 			J.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, faction)
 	if(jobban_isbanned(M, J.title))
 		return FALSE
 	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
 		return FALSE
 	if(!J.can_play_role(M.client))
 		return FALSE
-	if(J.flags_startup_parameters & ROLE_WHITELISTED && !(roles_whitelist[M.ckey] & J.flags_whitelist))
+	if(!J.can_play_role_in_scenario(M.client))
+		return FALSE
+	if(!J.check_whitelist_status(M))
 		return FALSE
 	if(J.total_positions != -1 && J.get_total_positions(latejoin) <= J.current_positions)
 		return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
+	if(faction && faction != J.faction_menu)
+		return FALSE
+
 	return TRUE
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
@@ -420,65 +391,35 @@ var/global/players_preassigned = 0
 		J.current_positions--
 		return 1
 
-/datum/authority/branch/role/proc/free_role_admin(var/datum/job/J, var/latejoin = 1, var/user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
-	if(!istype(J) || J.total_positions == -1)
+/datum/authority/branch/role/proc/free_role_admin(datum/job/job, latejoin = TRUE, user) //Specific proc that used for admin "Free Job Slots" verb (round tab)
+	if(!istype(job) || job.total_positions == -1)
 		return
-	if(J.current_positions < 1)	//this should be filtered earlier, but we still check just in case
-		to_chat(user, "There are no [J] job slots occupied.")
+	if(job.current_positions < 1) //this should be filtered earlier, but we still check just in case
+		to_chat(user, "There are no [job] job slots occupied.")
 		return
 
 //here is the main reason this proc exists - to remove freed squad jobs from squad,
 //so latejoining person ends in the squad which's job was freed and not random one
-	var/datum/squad/sq = null
-	if(job_squad_roles.Find(J.title))
+	var/datum/squad/squad = null
+	if(GLOB.job_squad_roles.Find(job.title))
 		var/list/squad_list = list()
-		for(sq in RoleAuthority.squads)
-			if(sq.usable)
-				squad_list += sq
-		sq = null
-		sq = input(user, "Select squad you want to free [J.title] slot from.", "Squad Selection")  as null|anything in squad_list
-		if(!sq)
+		for(squad in GLOB.RoleAuthority.squads)
+			if(squad.roundstart && squad.usable && squad.name != "Root")
+				squad_list += squad
+		squad = null
+		squad = tgui_input_list(user, "Select squad you want to free [job.title] slot from.", "Squad Selection", squad_list)
+		if(!squad)
 			return
-		switch(J.title)
-			if(JOB_SQUAD_ENGI)
-				if(sq.num_engineers > 0)
-					sq.num_engineers--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_MEDIC)
-				if(sq.num_medics > 0)
-					sq.num_medics--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_SPECIALIST)
-				if(sq.num_specialists > 0)
-					sq.num_specialists--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_SMARTGUN)
-				if(sq.num_smartgun > 0)
-					sq.num_smartgun--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_RTO)
-				if(sq.num_rto > 0)
-					sq.num_rto--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-			if(JOB_SQUAD_LEADER)
-				if(sq.num_leaders > 0)
-					sq.num_leaders--
-				else
-					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
-					return
-	J.current_positions--
-	message_staff("[key_name(user)] freed the [J.title] job slot[sq ? " in [sq.name] Squad" : ""].")
-	return 1
+
+		if(squad.roles_in[job.title] > 0)
+			squad.roles_in[job.title]--
+		else
+			to_chat(user, "There are no [job.title] slots occupied in [squad.name] Squad.")
+			return
+
+	job.current_positions--
+	message_admins("[key_name(user)] freed the [job.title] job slot[squad ? " in [squad.name] Squad" : ""].")
+	return TRUE
 
 /datum/authority/branch/role/proc/modify_role(datum/job/J, amount)
 	if(!istype(J))
@@ -495,306 +436,201 @@ var/global/players_preassigned = 0
 		M.job = null
 
 
-/datum/authority/branch/role/proc/equip_role(mob/living/M, datum/job/J, turf/late_join)
-	if(!istype(M) || !istype(J))
+/datum/authority/branch/role/proc/equip_role(mob/living/new_mob, datum/job/new_job, turf/late_join)
+	if(!istype(new_mob) || !istype(new_job))
 		return
 
 	. = TRUE
 
-	if(!ishuman(M))
+	if(!ishuman(new_mob))
 		return
 
-	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/new_human = new_mob
 
-	var/job_whitelist = J.title
-	var/whitelist_status = J.get_whitelist_status(roles_whitelist, H.client)
+	if(!late_join)
+		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
+
+	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
+		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
+
+	var/job_whitelist = new_job.title
+	var/whitelist_status = new_job.get_whitelist_status(new_human.client)
 
 	if(whitelist_status)
-		job_whitelist = "[J.title][whitelist_status]"
+		job_whitelist = "[new_job.title][whitelist_status]"
 
-	H.job = J.title //TODO Why is this a mob variable at all?
+	new_human.job = new_job.title //TODO Why is this a mob variable at all?
 
-	if(J.gear_preset_whitelist[job_whitelist])
-		arm_equipment(H, J.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
-		var/generated_account = J.generate_money_account(H)
-		J.announce_entry_message(H, generated_account, whitelist_status) //Tell them their spawn info.
-		J.generate_entry_conditions(H, whitelist_status) //Do any other thing that relates to their spawn.
+	if(new_job.gear_preset_whitelist[job_whitelist])
+		arm_equipment(new_human, new_job.gear_preset_whitelist[job_whitelist], FALSE, TRUE)
+		var/generated_account = new_job.generate_money_account(new_human)
+		new_job.announce_entry_message(new_human, generated_account, whitelist_status) //Tell them their spawn info.
+		new_job.generate_entry_conditions(new_human, whitelist_status) //Do any other thing that relates to their spawn.
 	else
-		arm_equipment(H, J.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
-		var/generated_account = J.generate_money_account(H)
-		J.announce_entry_message(H, generated_account) //Tell them their spawn info.
-		J.generate_entry_conditions(H) //Do any other thing that relates to their spawn.
+		arm_equipment(new_human, new_job.gear_preset, FALSE, TRUE) //After we move them, we want to equip anything else they should have.
+		var/generated_account = new_job.generate_money_account(new_human)
+		new_job.announce_entry_message(new_human, generated_account) //Tell them their spawn info.
+		new_job.generate_entry_conditions(new_human) //Do any other thing that relates to their spawn.
 
-	if(J.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
-		randomize_squad(H)
+	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
+		randomize_squad(new_human)
 
-	if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job)))	//activates self setting proc for marine headsets for WO
+	if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(new_human.job))) //activates self setting proc for marine headsets for WO
 		var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
-		WO.self_set_headset(H)
+		WO.self_set_headset(new_human)
 
 	var/assigned_squad
-	if(ishuman(H))
-		var/mob/living/carbon/human/human = H
+	if(ishuman(new_human))
+		var/mob/living/carbon/human/human = new_human
 		if(human.assigned_squad)
 			assigned_squad = human.assigned_squad.name
 
 	if(isturf(late_join))
-		H.forceMove(late_join)
+		new_human.forceMove(late_join)
 	else if(late_join)
 		var/turf/late_join_turf
 		if(GLOB.latejoin_by_squad[assigned_squad])
 			late_join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
+		else if(GLOB.latejoin_by_job[new_job.title])
+			late_join_turf = get_turf(pick(GLOB.latejoin_by_job[new_job.title]))
 		else
 			late_join_turf = get_turf(pick(GLOB.latejoin))
-		H.forceMove(late_join_turf)
+		new_human.forceMove(late_join_turf)
 	else
 		var/turf/join_turf
-		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][J.type])
-			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][J.type]))
-		else if(GLOB.spawns_by_job[J.type])
-			join_turf = get_turf(pick(GLOB.spawns_by_job[J.type]))
+		if(assigned_squad && GLOB.spawns_by_squad_and_job[assigned_squad] && GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type]))
+		else if(GLOB.spawns_by_job[new_job.type])
+			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.type]))
+		else if(GLOB.spawns_by_job[new_job.title])
+			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.title]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
-		H.forceMove(join_turf)
+		new_human.forceMove(join_turf)
+
+	new_job.load_loadout(new_human)
 
 	for(var/cardinal in GLOB.cardinals)
-		var/obj/structure/machinery/cryopod/pod = locate() in get_step(H, cardinal)
+		var/obj/structure/machinery/cryopod/pod = locate() in get_step(new_human, cardinal)
 		if(pod)
-			pod.go_in_cryopod(H, silent = TRUE)
+			pod.go_in_cryopod(new_human, silent = TRUE)
 			break
 
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+	new_human.sec_hud_set_ID()
+	new_human.hud_set_squad()
 
-	SSround_recording.recorder.track_player(H)
-
-//Find which squad has the least population. If all 4 squads are equal it should just use a random one
-/datum/authority/branch/role/proc/get_lowest_squad(mob/living/carbon/human/H)
-	if(!squads.len) //Something went wrong, our squads aren't set up.
-		to_world("Warning, something messed up in get_lowest_squad(). No squads set up!")
-		return null
-
-
-	//we make a list of squad that is randomized so alpha isn't always lowest squad.
-	var/list/squads_copy = squads.Copy()
-	var/list/mixed_squads = list()
-
-	for(var/i= 1 to squads_copy.len)
-		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
-			mixed_squads += S
-
-	var/datum/squad/lowest = pick(mixed_squads)
-
-	var/datum/pref_squad_name
-	if(H && H.client && H.client.prefs.preferred_squad && H.client.prefs.preferred_squad != "None")
-		pref_squad_name = H.client.prefs.preferred_squad
-
-	for(var/datum/squad/L in mixed_squads)
-		if(L.usable)
-			if(pref_squad_name && L.name == pref_squad_name)
-				lowest = L
-				break
-
-
-	if(!lowest)
-		to_world("Warning! Bug in get_random_squad()!")
-		return null
-
-	var/lowest_count = lowest.count
-	var/current_count = 0
-
-	if(!pref_squad_name)
-		//Loop through squads.
-		for(var/datum/squad/S in mixed_squads)
-			if(!S)
-				to_world("Warning: Null squad in get_lowest_squad. Call a coder!")
-				break //null squad somehow, let's just abort
-			current_count = S.count //Grab our current squad's #
-			if(current_count >= (lowest_count - 2)) //Current squad count is not much lower than the chosen one. Skip it.
-				continue
-			lowest_count = current_count //We found a winner! This squad is much lower than our default. Make it the new default.
-			lowest = S //'Select' this squad.
-
-	return lowest //Return whichever squad won the competition.
+	SEND_SIGNAL(new_human, COMSIG_POST_SPAWN_UPDATE)
+	SSround_recording.recorder.track_player(new_human)
 
 //This proc is a bit of a misnomer, since there's no actual randomization going on.
-/datum/authority/branch/role/proc/randomize_squad(var/mob/living/carbon/human/H, var/skip_limit = FALSE)
-	if(!H)
+/datum/authority/branch/role/proc/randomize_squad(mob/living/carbon/human/human, skip_limit = FALSE)
+	if(!human)
 		return
 
-	if(!squads.len)
-		to_chat(H, "Something went wrong with your squad randomizer! Tell a coder!")
+	if(!length(squads))
+		to_chat(human, "Something went wrong with your squad randomizer! Tell a coder!")
 		return //Shit, where's our squad data
 
-	if(H.assigned_squad) //Wait, we already have a squad. Get outta here!
+	if(human.assigned_squad) //Wait, we already have a squad. Get outta here!
 		return
 
-	//we make a list of squad that is randomized so alpha isn't always lowest squad.
-	var/list/squads_copy = squads.Copy()
-	var/list/mixed_squads = list()
-	// The following code removes non useable squads from the lists of squads we assign marines too.
-	for(var/i= 1 to squads_copy.len)
-		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.roundstart && S.usable && S.faction == H.faction && S.name != "Root")
-			mixed_squads += S
-
-	//Deal with non-standards first.
-	//Non-standards are distributed regardless of squad population.
-	//If the number of available positions for the job are more than max_whatever, it will break.
-	//Ie. 8 squad medic jobs should be available, and total medics in squads should be 8.
-	if(H.job != JOB_SQUAD_MARINE && H.job != "Reinforcements")
-		var/pref_squad_name
-		if(H && H.client && H.client.prefs.preferred_squad && H.client.prefs.preferred_squad != "None")
-			pref_squad_name = H.client.prefs.preferred_squad
-
-		var/datum/squad/lowest
-
-		switch(H.job)
-			if(JOB_SQUAD_ENGI)
-				for(var/datum/squad/S in mixed_squads)
-					if(S.usable && S.roundstart)
-						if(!skip_limit && S.num_engineers >= S.max_engineers) continue
-						if(pref_squad_name && S.name == pref_squad_name)
-							S.put_marine_in_squad(H) //fav squad has a spot for us, no more searching needed.
-							return
-
-						if(!lowest)
-							lowest = S
-						else if(S.num_engineers < lowest.num_engineers)
-							lowest = S
-
-			if(JOB_SQUAD_MEDIC)
-				for(var/datum/squad/S in mixed_squads)
-					if(S.usable && S.roundstart)
-						if(!skip_limit && S.num_medics >= S.max_medics) continue
-						if(pref_squad_name && S.name == pref_squad_name)
-							S.put_marine_in_squad(H) //fav squad has a spot for us.
-							return
-
-						if(!lowest)
-							lowest = S
-						else if(S.num_medics < lowest.num_medics)
-							lowest = S
-
-			if(JOB_SQUAD_LEADER)
-				for(var/datum/squad/S in mixed_squads)
-					if(S.usable && S.roundstart)
-						if(!skip_limit && S.num_leaders >= S.max_leaders) continue
-						if(pref_squad_name && S.name == pref_squad_name)
-							S.put_marine_in_squad(H) //fav squad has a spot for us.
-							return
-
-						if(!lowest)
-							lowest = S
-						else if(S.num_leaders < lowest.num_leaders)
-							lowest = S
-
-			if(JOB_SQUAD_SPECIALIST)
-				for(var/datum/squad/S in mixed_squads)
-					if(S.usable && S.roundstart)
-						if(!skip_limit && S.num_specialists >= S.max_specialists) continue
-						if(pref_squad_name && S.name == pref_squad_name)
-							S.put_marine_in_squad(H) //fav squad has a spot for us.
-							return
-
-						if(!lowest)
-							lowest = S
-						else if(S.num_specialists < lowest.num_specialists)
-							lowest = S
-
-			if(JOB_SQUAD_RTO)
-				for(var/datum/squad/S in mixed_squads)
-					if(S.usable && S.roundstart)
-						if(!skip_limit && S.num_rto >= S.max_rto) continue
-						if(pref_squad_name && S.name == pref_squad_name)
-							S.put_marine_in_squad(H) //fav squad has a spot for us.
-							return
-
-						if(!lowest)
-							lowest = S
-						else if(S.num_rto < lowest.num_rto)
-							lowest = S
-
-			if(JOB_SQUAD_SMARTGUN)
-				for(var/datum/squad/S in mixed_squads)
-					if(S.usable && S.roundstart)
-						if(!skip_limit && S.num_smartgun >= S.max_smartgun) continue
-						if(pref_squad_name && S.name == pref_squad_name)
-							S.put_marine_in_squad(H) //fav squad has a spot for us.
-							return
-
-						if(!lowest)
-							lowest = S
-						else if(S.num_smartgun < lowest.num_smartgun)
-							lowest = S
-		if(!lowest)
-			var/ranpick = rand(1,4)
-			lowest = mixed_squads[ranpick]
-		if(lowest)	lowest.put_marine_in_squad(H)
-		else to_chat(H, "Something went badly with randomize_squad()! Tell a coder!")
-
-	else
-		//Deal with marines. They get distributed to the lowest populated squad.
-		var/datum/squad/given_squad = get_lowest_squad(H)
-		if(!given_squad || !istype(given_squad)) //Something went horribly wrong!
-			to_chat(H, "Something went wrong with randomize_squad()! Tell a coder!")
+	//Deal with IOs first
+	if(human.job == JOB_INTEL)
+		var/datum/squad/intel_squad = get_squad_by_name(SQUAD_MARINE_INTEL)
+		if(!intel_squad || !istype(intel_squad)) //Something went horribly wrong!
+			to_chat(human, "Something went wrong with randomize_squad()! Tell a coder!")
 			return
-		given_squad.put_marine_in_squad(H) //Found one, finish up
+		intel_squad.put_marine_in_squad(human)
+		return
 
-/datum/authority/branch/role/proc/get_caste_by_text(var/name)
-	var/mob/living/carbon/Xenomorph/M
+	var/slot_check
+	if(human.job != "Reinforcements")
+		slot_check = GET_DEFAULT_ROLE(human.job)
+
+	//we make a list of squad that is randomized so alpha isn't always lowest squad.
+	var/list/mixed_squads = list()
+	for(var/datum/squad/squad in squads)
+		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
+			mixed_squads += squad
+
+	var/preferred_squad = human.client?.prefs?.preferred_squad
+	if(preferred_squad == "None")
+		preferred_squad = null
+
+	var/datum/squad/lowest
+	for(var/datum/squad/squad in mixed_squads)
+		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
+			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
+				continue
+
+		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
+			if(squad.put_marine_in_squad(human))
+				return
+
+		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
+			lowest = squad
+	if(!lowest)
+		lowest = locate(/datum/squad/marine/cryo) in squads
+	lowest.put_marine_in_squad(human)
+	return
+
+/datum/authority/branch/role/proc/get_caste_by_text(name)
+	var/mob/living/carbon/xenomorph/M
 	switch(name) //ADD NEW CASTES HERE!
 		if(XENO_CASTE_LARVA)
-			M = /mob/living/carbon/Xenomorph/Larva
+			M = /mob/living/carbon/xenomorph/larva
 		if(XENO_CASTE_PREDALIEN_LARVA)
-			M = /mob/living/carbon/Xenomorph/Larva/predalien
+			M = /mob/living/carbon/xenomorph/larva/predalien
 		if(XENO_CASTE_FACEHUGGER)
-			M = /mob/living/carbon/Xenomorph/Facehugger
+			M = /mob/living/carbon/xenomorph/facehugger
+		if(XENO_CASTE_LESSER_DRONE)
+			M = /mob/living/carbon/xenomorph/lesser_drone
 		if(XENO_CASTE_RUNNER)
-			M = /mob/living/carbon/Xenomorph/Runner
+			M = /mob/living/carbon/xenomorph/runner
 		if(XENO_CASTE_DRONE)
-			M = /mob/living/carbon/Xenomorph/Drone
+			M = /mob/living/carbon/xenomorph/drone
 		if(XENO_CASTE_CARRIER)
-			M = /mob/living/carbon/Xenomorph/Carrier
+			M = /mob/living/carbon/xenomorph/carrier
 		if(XENO_CASTE_HIVELORD)
-			M = /mob/living/carbon/Xenomorph/Hivelord
+			M = /mob/living/carbon/xenomorph/hivelord
 		if(XENO_CASTE_BURROWER)
-			M = /mob/living/carbon/Xenomorph/Burrower
+			M = /mob/living/carbon/xenomorph/burrower
 		if(XENO_CASTE_PRAETORIAN)
-			M = /mob/living/carbon/Xenomorph/Praetorian
+			M = /mob/living/carbon/xenomorph/praetorian
 		if(XENO_CASTE_RAVAGER)
-			M = /mob/living/carbon/Xenomorph/Ravager
+			M = /mob/living/carbon/xenomorph/ravager
 		if(XENO_CASTE_SENTINEL)
-			M = /mob/living/carbon/Xenomorph/Sentinel
+			M = /mob/living/carbon/xenomorph/sentinel
 		if(XENO_CASTE_SPITTER)
-			M = /mob/living/carbon/Xenomorph/Spitter
+			M = /mob/living/carbon/xenomorph/spitter
 		if(XENO_CASTE_LURKER)
-			M = /mob/living/carbon/Xenomorph/Lurker
+			M = /mob/living/carbon/xenomorph/lurker
 		if(XENO_CASTE_WARRIOR)
-			M = /mob/living/carbon/Xenomorph/Warrior
+			M = /mob/living/carbon/xenomorph/warrior
 		if(XENO_CASTE_DEFENDER)
-			M = /mob/living/carbon/Xenomorph/Defender
+			M = /mob/living/carbon/xenomorph/defender
 		if(XENO_CASTE_QUEEN)
-			M = /mob/living/carbon/Xenomorph/Queen
+			M = /mob/living/carbon/xenomorph/queen
 		if(XENO_CASTE_CRUSHER)
-			M = /mob/living/carbon/Xenomorph/Crusher
+			M = /mob/living/carbon/xenomorph/crusher
 		if(XENO_CASTE_BOILER)
-			M = /mob/living/carbon/Xenomorph/Boiler
+			M = /mob/living/carbon/xenomorph/boiler
 		if(XENO_CASTE_PREDALIEN)
-			M =	/mob/living/carbon/Xenomorph/Predalien
+			M = /mob/living/carbon/xenomorph/predalien
 		if(XENO_CASTE_HELLHOUND)
-			M =	/mob/living/carbon/Xenomorph/Hellhound
+			M = /mob/living/carbon/xenomorph/hellhound
+		if(XENO_CASTE_KING)
+			M = /mob/living/carbon/xenomorph/king
 	return M
 
 
-/proc/get_desired_status(var/desired_status, var/status_limit)
+/proc/get_desired_status(desired_status, status_limit)
 	var/found_desired = FALSE
 	var/found_limit = FALSE
 
-	for(var/status in whitelist_hierarchy)
+	for(var/status in GLOB.whitelist_hierarchy)
 		if(status == desired_status)
 			found_desired = TRUE
 			break
@@ -809,12 +645,12 @@ var/global/players_preassigned = 0
 
 	return desired_status
 
-/proc/transfer_marine_to_squad(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad, var/datum/squad/old_squad, var/obj/item/card/id/ID)
+/proc/transfer_marine_to_squad(mob/living/carbon/human/transfer_marine, datum/squad/new_squad, datum/squad/old_squad, obj/item/card/id/ID)
 	if(old_squad)
 		if(transfer_marine.assigned_fireteam)
 			if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
 				old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE, FALSE)
-			old_squad.unassign_fireteam(transfer_marine, TRUE)	//reset fireteam assignment
+			old_squad.unassign_fireteam(transfer_marine, TRUE) //reset fireteam assignment
 		old_squad.remove_marine_from_squad(transfer_marine, ID)
 		old_squad.update_free_mar()
 	. = new_squad.put_marine_in_squad(transfer_marine, ID)
@@ -830,24 +666,8 @@ var/global/players_preassigned = 0
 		transfer_marine.hud_set_squad()
 
 // returns TRUE if transfer_marine's role is at max capacity in the new squad
-/datum/authority/branch/role/proc/check_squad_capacity(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad)
-	switch(transfer_marine.job)
-		if(JOB_SQUAD_LEADER)
-			if(new_squad.num_leaders >= new_squad.max_leaders)
-				return TRUE
-		if(JOB_SQUAD_SPECIALIST)
-			if(new_squad.num_specialists >= new_squad.max_specialists)
-				return TRUE
-		if(JOB_SQUAD_ENGI)
-			if(new_squad.num_engineers >= new_squad.max_engineers)
-				return TRUE
-		if(JOB_SQUAD_MEDIC)
-			if(new_squad.num_medics >= new_squad.max_medics)
-				return TRUE
-		if(JOB_SQUAD_SMARTGUN)
-			if(new_squad.num_smartgun >= new_squad.max_smartgun)
-				return TRUE
-		if(JOB_SQUAD_RTO)
-			if(new_squad.num_rto >= new_squad.max_rto)
-				return TRUE
+/datum/authority/branch/role/proc/check_squad_capacity(mob/living/carbon/human/transfer_marine, datum/squad/new_squad)
+	if(!isnull(new_squad.roles_cap[transfer_marine.job]))
+		if(new_squad.roles_in[transfer_marine.job] >= new_squad.roles_cap[transfer_marine.job])
+			return TRUE
 	return FALSE

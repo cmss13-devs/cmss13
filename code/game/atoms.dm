@@ -10,7 +10,13 @@
 	var/list/fingerprintshidden
 	var/fingerprintslast = null
 
+	/// determines whether or not the object can be destroyed by xeno acid
 	var/unacidable = FALSE
+	/// determines whether or not the object can be destroyed by an explosion
+	var/explo_proof = FALSE
+	/// determines whether or not the object can be affected by EMPs
+	var/emp_proof = FALSE
+
 	var/last_bumped = 0
 
 	// The cached datum for the permanent pass flags for any given atom
@@ -33,8 +39,11 @@
 
 	var/list/filter_data //For handling persistent filters
 
-	// Base transform matrix
-	var/matrix/base_transform = null
+	/// Base transform matrix, edited by admin tooling and such
+	var/matrix/base_transform
+	/// Last transform used before being compound with base_transform
+	/// This allows us to re-create transform if only base_transform changes
+	var/matrix/raw_transform
 
 	///Chemistry.
 	var/datum/reagents/reagents = null
@@ -59,6 +68,39 @@
 	///Default pixel y shifting for the atom's icon.
 	var/base_pixel_y = 0
 
+	//light stuff
+
+	///Light systems, only one of the three should be active at the same time.
+	var/light_system = STATIC_LIGHT
+	///Range of the light in tiles. Zero means no light.
+	var/light_range = 0
+	///Intensity of the light. The stronger, the less shadows you will see on the lit area.
+	var/light_power = 1
+	///Hexadecimal RGB string representing the colour of the light. White by default.
+	var/light_color = COLOR_WHITE
+	///Boolean variable for toggleable lights. Has no effect without the proper light_system, light_range and light_power values.
+	var/light_on = FALSE
+	///Bitflags to determine lighting-related atom properties.
+	var/light_flags = NONE
+	///Our light source. Don't fuck with this directly unless you have a good reason!
+	var/tmp/datum/dynamic_light_source/light
+	///Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
+	var/tmp/list/hybrid_light_sources
+
+	//Values should avoid being close to -16, 16, -48, 48 etc.
+	//Best keep them within 10 units of a multiple of 32, as when the light is closer to a wall, the probability
+	//that a shadow extends to opposite corners of the light mask square is increased, resulting in more shadow
+	//overlays.
+	///x offset for dynamic lights on this atom
+	var/light_pixel_x
+	///y offset for dynamic lights on this atom
+	var/light_pixel_y
+	///typepath for the lighting maskfor dynamic light sources
+	var/light_mask_type = null
+
+	///The color this atom will be if we choose to draw it on the minimap
+	var/minimap_color = MINIMAP_SOLID
+
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)
@@ -74,7 +116,7 @@ Make sure the return value equals the return value of the parent so that the
 directive is properly returned.
 */
 //===========================================================================
-/atom/Destroy()
+/atom/Destroy(force)
 	orbiters = null // The component is attached to us normally and will be deleted elsewhere
 	QDEL_NULL(reagents)
 	QDEL_NULL(light)
@@ -83,7 +125,14 @@ directive is properly returned.
 
 //===========================================================================
 
-
+// TODO make all atoms use set_density, do not rely on it at present
+///Setter for the `density` variable to append behavior related to its changing.
+/atom/proc/set_density(new_value)
+	SHOULD_CALL_PARENT(TRUE)
+	if(density == new_value)
+		return
+	. = density
+	density = new_value
 
 //atmos procs
 
@@ -108,15 +157,27 @@ directive is properly returned.
 	if(loc)
 		return loc.return_gas()
 
-// Updates the atom's transform
-/atom/proc/apply_transform(var/matrix/M)
-	if(!base_transform)
-		transform = M
-		return
+/// Updates the atom's transform compounding it with [/atom/var/base_transform]
+/atom/proc/apply_transform(matrix/new_transform, time = 0, easing = (EASE_IN|EASE_OUT))
+	var/matrix/base_copy
+	if(base_transform)
+		base_copy = matrix(base_transform)
+	else
+		base_copy = matrix()
+	raw_transform = matrix(new_transform) // Keep a copy to replay if needed
 
-	var/matrix/base_copy = matrix(base_transform)
 	// Compose the base and applied transform in that order
-	transform = base_copy.Multiply(M)
+	var/matrix/complete = base_copy.Multiply(raw_transform)
+
+	if(!time)
+		transform = complete
+		return
+	animate(src, transform = complete, time = time, easing = easing, flags = ANIMATION_PARALLEL)
+
+/// Upates the base_transform which will be compounded with other transforms
+/atom/proc/update_base_transform(matrix/new_transform, time = 0)
+	base_transform = matrix(new_transform)
+	apply_transform(raw_transform, time)
 
 /atom/proc/on_reagent_change()
 	return
@@ -149,8 +210,13 @@ directive is properly returned.
 /atom/proc/HasProximity(atom/movable/AM as mob|obj)
 	return
 
-/atom/proc/emp_act(var/severity)
-	return
+/atom/proc/emp_act(severity)
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(emp_proof)
+		return FALSE
+
+	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 /atom/proc/in_contents_of(container)//can take class or object instance as argument
 	if(ispath(container))
@@ -161,11 +227,11 @@ directive is properly returned.
 	return
 
 /*
- *	atom/proc/search_contents_for(path,list/filter_path=null)
+ * atom/proc/search_contents_for(path,list/filter_path=null)
  * Recursevly searches all atom contens (including contents contents and so on).
  *
  * ARGS: path - search atom contents for atoms of this type
- *	   list/filter_path - if set, contents of atoms not of types in this list are excluded from search.
+ *    list/filter_path - if set, contents of atoms not of types in this list are excluded from search.
  *
  * RETURNS: list of found atoms
  */
@@ -181,7 +247,7 @@ directive is properly returned.
 				pass |= istype(A, type)
 			if(!pass)
 				continue
-		if(A.contents.len)
+		if(length(A.contents))
 			found += A.search_contents_for(path,filter_path)
 	return found
 
@@ -190,8 +256,8 @@ directive is properly returned.
 	if(!examine_strings)
 		log_debug("Attempted to create an examine block with no strings! Atom : [src], user : [user]")
 		return
-	to_chat(user, examine_block(examine_strings.Join("\n")))
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, examine_strings)
+	to_chat(user, boxed_message(examine_strings.Join("\n")))
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()
@@ -211,6 +277,9 @@ directive is properly returned.
 		A.ex_act(severity)
 
 /atom/proc/ex_act(severity)
+	if(explo_proof)
+		return
+
 	contents_explosion(severity)
 
 /atom/proc/fire_act()
@@ -271,7 +340,7 @@ directive is properly returned.
 
 
 
-/atom/proc/transfer_fingerprints_to(var/atom/A)
+/atom/proc/transfer_fingerprints_to(atom/A)
 
 	if(!istype(A.fingerprintshidden,/list))
 		A.fingerprintshidden = list()
@@ -285,10 +354,10 @@ directive is properly returned.
 
 
 
-/atom/proc/add_vomit_floor(mob/living/carbon/M, var/toxvomit = 0)
+/atom/proc/add_vomit_floor(mob/living/carbon/M, toxvomit = 0)
 	return
 
-/turf/add_vomit_floor(mob/living/carbon/M, var/toxvomit = 0)
+/turf/add_vomit_floor(mob/living/carbon/M, toxvomit = 0)
 	var/obj/effect/decal/cleanable/vomit/this = new /obj/effect/decal/cleanable/vomit(src)
 
 	// Make toxins vomit look different
@@ -297,7 +366,7 @@ directive is properly returned.
 
 
 //Generalized Fire Proc.
-/atom/proc/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1, var/datum/cause_data/flame_cause_data)
+/atom/proc/flamer_fire_act(dam = BURN_LEVEL_TIER_1, datum/cause_data/flame_cause_data)
 	return
 
 /atom/proc/acid_spray_act()
@@ -318,15 +387,23 @@ Parameters are passed from New.
 */
 /atom/proc/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+
 	if(flags_atom & INITIALIZED)
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
 
-	pass_flags = pass_flags_cache[type]
+	if(light_system != MOVABLE_LIGHT && light_system != DIRECTIONAL_LIGHT && light_power && light_range)
+		update_light()
+	if(isturf(loc) && opacity)
+		var/turf/opaque_turf = loc
+		opaque_turf.directional_opacity = ALL_CARDINALS // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
+
+	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
 		pass_flags = new()
 		initialize_pass_flags(pass_flags)
-		pass_flags_cache[type] = pass_flags
+		GLOB.pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
 	Decorate(mapload)
@@ -353,7 +430,7 @@ Parameters are passed from New.
 	T.appearance = src.appearance
 	T.setDir(src.dir)
 
-	clones_t.Add(src)
+	GLOB.clones_t.Add(src)
 	src.clone = T
 
 // EFFECTS
@@ -394,7 +471,7 @@ Parameters are passed from New.
 				flags_pass_temp &= ~flag
 
 // This proc is for initializing pass flags (allows for inheriting pass flags and list-based pass flags)
-/atom/proc/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/atom/proc/initialize_pass_flags(datum/pass_flags_container/PF)
 	return
 
 /atom/proc/enable_pixel_scaling()
@@ -434,17 +511,17 @@ Parameters are passed from New.
 		return TRUE
 
 	if(href_list["desc_lore"])
-		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, "size=500x200")
+		show_browser(usr, "<BODY><TT>[replacetext(desc_lore, "\n", "<BR>")]</TT></BODY>", name, name, width = 500, height = 500)
 		onclose(usr, "[name]")
 
 ///This proc is called on atoms when they are loaded into a shuttle
-/atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
+/atom/proc/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	return
 
 /**
  * Hook for running code when a dir change occurs
  *
- * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ * Not recommended to override, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
  */
 /atom/proc/setDir(newdir)
 	SHOULD_CALL_PARENT(TRUE)
@@ -461,7 +538,7 @@ Parameters are passed from New.
 
 /atom/proc/update_filters()
 	filters = null
-	filter_data = sortTim(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = sortTim(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()
@@ -469,7 +546,17 @@ Parameters are passed from New.
 		filters += filter(arglist(arguments))
 	UNSETEMPTY(filter_data)
 
-/atom/proc/transition_filter(name, time, list/new_params, easing, loop)
+/** Update a filter's parameter and animate this change. If the filter doesnt exist we won't do anything.
+ * Basically a [datum/proc/modify_filter] call but with animations. Unmodified filter parameters are kept.
+ *
+ * Arguments:
+ * * name - Filter name
+ * * new_params - New parameters of the filter
+ * * time - time arg of the BYOND animate() proc.
+ * * easing - easing arg of the BYOND animate() proc.
+ * * loop - loop arg of the BYOND animate() proc.
+ */
+/atom/proc/transition_filter(name, list/new_params, time, easing, loop)
 	var/filter = get_filter(name)
 	if(!filter)
 		return
@@ -522,7 +609,7 @@ Parameters are passed from New.
 
 
 //Shamelessly stolen from TG
-/atom/proc/Shake(var/pixelshiftx = 15, var/pixelshifty = 15, var/duration = 250)
+/atom/proc/Shake(pixelshiftx = 15, pixelshifty = 15, duration = 250)
 	var/initialpixelx = pixel_x
 	var/initialpixely = pixel_y
 	var/shiftx = rand(-pixelshiftx,pixelshiftx)
@@ -551,15 +638,178 @@ Parameters are passed from New.
 
 // returns a modifier for how much the tail stab should be cooldowned by
 // returning a 0 makes it do nothing
-/atom/proc/handle_tail_stab(var/mob/living/carbon/Xenomorph/xeno)
+/atom/proc/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
 	return TAILSTAB_COOLDOWN_NONE
 
-/atom/proc/handle_flamer_fire(var/obj/flamer_fire/fire, var/damage, var/delta_time)
+/atom/proc/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
 	return
 
-/atom/proc/handle_flamer_fire_crossed(var/obj/flamer_fire/fire)
+/atom/proc/handle_flamer_fire_crossed(obj/flamer_fire/fire)
 	return
 
 /atom/proc/get_orbit_size()
 	var/icon/I = icon(icon, icon_state, dir)
 	return (I.Width() + I.Height()) * 0.5
+
+/**
+ * If this object has lights, turn it on/off.
+ * user: the mob actioning this
+ * toggle_on: if TRUE, will try to turn ON the light. Opposite if FALSE
+ * cooldown: how long until you can toggle the light on/off again
+ * sparks: if a spark effect will be generated
+ * forced: if TRUE and toggle_on = FALSE, will cause the light to turn on in cooldown second
+ * originated_turf: if not null, will check if the obj_turf is closer than distance_max to originated_turf, and the proc will return if not
+ * distance_max: used to check if originated_turf is close to obj.loc
+*/
+/atom/proc/turn_light(mob/user, toggle_on , cooldown = 1 SECONDS, sparks = FALSE, forced = FALSE, light_again = FALSE)
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_LIGHT) && !forced)
+		return STILL_ON_COOLDOWN
+	if(cooldown <= 0)
+		cooldown = 1 SECONDS
+	TIMER_COOLDOWN_START(src, COOLDOWN_LIGHT, cooldown)
+	if(toggle_on == light_on)
+		return NO_LIGHT_STATE_CHANGE
+	if(light_again && !toggle_on) //Is true when turn light is called by nightfall and the light is already on
+		addtimer(CALLBACK(src, PROC_REF(reset_light)), cooldown + 1)
+	if(sparks && light_on)
+		var/datum/effect_system/spark_spread/spark_system = new
+		spark_system.set_up(5, 0, src)
+		spark_system.attach(src)
+		spark_system.start(src)
+	return CHECKS_PASSED
+
+///Turn on the light, should be called by a timer
+/atom/proc/reset_light()
+	turn_light(null, TRUE, 1 SECONDS, FALSE, TRUE)
+
+/**
+ * Return the markup to for the dropdown list for the VV panel for this atom
+ *
+ * Override in subtypes to add custom VV handling in the VV panel
+ */
+/atom/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "-----ATOM-----")
+	if(!ismovable(src))
+		var/turf/curturf = get_turf(src)
+		if(curturf)
+			. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Jump To</option>"
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
+	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EMP, "EMP Pulse")
+	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_FILTERS, "Edit Filters")
+	VV_DROPDOWN_OPTION(VV_HK_EDIT_COLOR_MATRIX, "Edit Color as Matrix")
+	VV_DROPDOWN_OPTION(VV_HK_ENABLEPIXELSCALING, "Enable Pixel Scaling")
+
+/atom/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ADD_REAGENT] && check_rights(R_VAREDIT))
+		if(!reagents)
+			var/amount = input(usr, "Specify the reagent size of [src]", "Set Reagent Size", 50) as num|null
+			if(amount)
+				create_reagents(amount)
+
+		if(reagents)
+			var/chosen_id
+			switch(tgui_alert(usr, "Choose a method.", "Add Reagents", list("Search", "Choose from a list", "I'm feeling lucky")))
+				if("Search")
+					var/valid_id
+					while(!valid_id)
+						chosen_id = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
+						if(isnull(chosen_id)) //Get me out of here!
+							break
+						if (!ispath(text2path(chosen_id)))
+							chosen_id = pick_closest_path(chosen_id, make_types_fancy(subtypesof(/datum/reagent)))
+							if (ispath(chosen_id))
+								valid_id = TRUE
+						else
+							valid_id = TRUE
+						if(!valid_id)
+							to_chat(usr, SPAN_WARNING("A reagent with that ID doesn't exist!"))
+				if("Choose from a list")
+					chosen_id = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in sort_list(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc))
+				if("I'm feeling lucky")
+					chosen_id = pick(subtypesof(/datum/reagent))
+			if(chosen_id)
+				var/amount = input(usr, "Choose the amount to add.", "Choose the amount.", reagents.maximum_volume) as num|null
+				if(amount)
+					reagents.add_reagent(chosen_id, amount)
+					log_admin("[key_name(usr)] has added [amount] units of [chosen_id] to [src]")
+					message_admins(SPAN_NOTICE("[key_name(usr)] has added [amount] units of [chosen_id] to [src]"))
+
+	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_ADMIN))
+		usr.client.handle_bomb_drop(src)
+
+	if(href_list[VV_HK_TRIGGER_EMP] && check_rights(R_ADMIN))
+		usr.client.cmd_admin_emp(src)
+
+	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
+		var/result = tgui_input_list(usr, "Choose the transformation to apply","Transform Mod", list("Scale","Translate","Rotate", "Reflect X Axis", "Reflect Y Axis"))
+		if(!result)
+			return
+		if(!result)
+			return
+		switch(result)
+			if("Scale")
+				var/x = tgui_input_real_number(usr, "Choose x mod","Transform Mod")
+				var/y = tgui_input_real_number(usr, "Choose y mod","Transform Mod")
+				if(isnull(x) || isnull(y))
+					return
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Scale(x,y))
+			if("Translate")
+				var/x = tgui_input_real_number(usr, "Choose x mod (negative = left, positive = right)","Transform Mod")
+				var/y = tgui_input_real_number(usr, "Choose y mod (negative = down, positive = up)","Transform Mod")
+				if(isnull(x) || isnull(y))
+					return
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Translate(x,y))
+			if("Rotate")
+				var/angle = tgui_input_real_number(usr, "Choose angle to rotate","Transform Mod")
+				if(isnull(angle))
+					return
+				var/matrix/base_matrix = matrix(base_transform)
+				update_base_transform(base_matrix.Turn(angle))
+			if("Reflect X Axis")
+				var/matrix/current = matrix(base_transform)
+				var/matrix/reflector = matrix()
+				reflector.a = -1
+				reflector.d = 0
+				reflector.b = 0
+				reflector.e = 1
+				update_base_transform(current * reflector)
+			if("Reflect Y Axis")
+				var/matrix/current = matrix(base_transform)
+				var/matrix/reflector = matrix()
+				reflector.a = 1
+				reflector.d = 0
+				reflector.b = 0
+				reflector.e = -1
+				update_base_transform(current * reflector)
+		SEND_SIGNAL(src, COMSIG_ATOM_VV_MODIFY_TRANSFORM)
+
+	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_VAREDIT))
+		var/newname = tgui_input_text(usr, "What do you want to rename this to?", "Automatic Rename", name, encode = FALSE)
+		if(newname)
+			name = newname
+
+	if(href_list[VV_HK_EDIT_FILTERS] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_filter_editor(src)
+
+	if(href_list[VV_HK_EDIT_COLOR_MATRIX] && check_rights(R_VAREDIT))
+		var/client/C = usr.client
+		C?.open_color_matrix_editor(src)
+
+	if(href_list[VV_HK_ENABLEPIXELSCALING])
+		if(!check_rights(R_DEBUG|R_VAREDIT))
+			return
+
+		enable_pixel_scaling()
+
+/atom/vv_get_header()
+	. = ..()
+	var/refid = REF(src)
+	. += "[VV_HREF_TARGETREF(refid, VV_HK_AUTO_RENAME, "<b id='name'>[src]</b>")]"
+	. += "<br><font size='1'><a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='byond://?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir' id='dir'>[dir2text(dir) || dir]</a> <a href='byond://?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"

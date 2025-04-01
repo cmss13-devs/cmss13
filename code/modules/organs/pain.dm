@@ -8,7 +8,7 @@
 
 // partname is the name of a body part
 // amount is a num from 1 to 100
-/mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0)
+/mob/living/carbon/proc/pain(partname, amount, force, burning = 0)
 	if(stat >= DEAD || (world.time < next_pain_time && !force))
 		return
 	if(pain.reduction_pain > 0)
@@ -24,11 +24,15 @@
 			msg = "You [pick("wince","shiver","grimace")] in pain"
 			var/i
 			for(var/obj/limb/O in list(right_hand, left_hand))
-				if(!O || !O.is_usable()) continue //Not if the organ can't possibly function.
-				if(O.name == "l_hand") 	drop_l_hand()
-				else 					drop_r_hand()
+				if(!O || !O.is_usable())
+					continue //Not if the organ can't possibly function.
+				if(O.name == "l_hand")
+					drop_l_hand()
+				else
+					drop_r_hand()
 				i++
-			if(i) msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
+			if(i)
+				msg += ", [pick("fumbling with","struggling with","losing control of")] your [i < 2 ? "hand" : "hands"]"
 			to_chat(H, SPAN_WARNING("[msg]."))
 
 	if(burning)
@@ -73,7 +77,8 @@
 		return
 
 	var/msg = SPAN_DANGER("[message]")
-	if(flash_strength >= 1) msg = SPAN_HIGHDANGER("[message]")
+	if(flash_strength >= 1)
+		msg = SPAN_HIGHDANGER("[message]")
 
 	// Anti message spam checks
 	if(msg && ((msg != last_pain_message) || (world.time >= next_pain_time)))
@@ -84,7 +89,7 @@
 
 /mob/living/carbon/human/proc/handle_pain()
 	if(stat >= UNCONSCIOUS)
-		return 	// not when sleeping
+		return // not when sleeping
 	if(!pain.feels_pain)
 		return
 	if(pain.reduction_pain >= PAIN_REDUCTION_HEAVY)

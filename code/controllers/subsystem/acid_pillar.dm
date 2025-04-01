@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(acid_pillar)
-	name          = "Acid Pillar"
-	wait          = 0.3 SECONDS
-	priority      = SS_PRIORITY_ACID_PILLAR
-	flags		  = SS_NO_INIT
+	name   = "Acid Pillar"
+	wait   = 0.3 SECONDS
+	priority   = SS_PRIORITY_ACID_PILLAR
+	flags   = SS_NO_INIT
 
 	var/list/queuedrun = list()
 	var/list/currentrun = list()
@@ -11,8 +11,8 @@ SUBSYSTEM_DEF(acid_pillar)
 	if (!resumed)
 		currentrun = queuedrun.Copy()
 
-	while (currentrun.len)
-		var/hash = currentrun[currentrun.len]
+	while (length(currentrun))
+		var/hash = currentrun[length(currentrun)]
 		var/datum/acid_spray_info/data = currentrun[hash]
 		currentrun.len--
 
@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(acid_pillar)
 			return
 
 
-/datum/controller/subsystem/acid_pillar/proc/queue_attack(var/obj/effect/alien/resin/acid_pillar/P, var/atom/target)
+/datum/controller/subsystem/acid_pillar/proc/queue_attack(obj/effect/alien/resin/acid_pillar/P, atom/target)
 	var/hash  = "([REF(P)])|([REF(target)])"
 
 	if(queuedrun[hash])

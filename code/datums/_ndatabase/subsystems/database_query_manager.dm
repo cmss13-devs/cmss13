@@ -19,15 +19,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-var/datum/controller/subsystem/database_query_manager/SSdatabase
-
+GLOBAL_REAL(SSdatabase, /datum/controller/subsystem/database_query_manager)
 /datum/controller/subsystem/database_query_manager
-	name          = "Database QM"
-	wait		  = 1
-	init_order    = SS_INIT_DATABASE
-	init_stage    = INITSTAGE_EARLY
-	priority      = SS_PRIORITY_DATABASE // Low prio SS_TICKER
-	flags         = SS_TICKER
+	name   = "Database QM"
+	wait   = 1
+	init_order = SS_INIT_DATABASE
+	init_stage = INITSTAGE_EARLY
+	priority   = SS_PRIORITY_DATABASE // Low prio SS_TICKER
+	flags  = SS_TICKER|SS_NO_INIT
 
 	var/datum/db/connection/connection
 	var/datum/db/connection_settings/settings
@@ -52,19 +51,18 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	queries_active = list()
 	queries_current = list()
 	queries_standby = list()
-	var/list/result = loadsql("config/dbconfig.txt")
-	settings = connection_settings_from_config(result)
 	NEW_SS_GLOBAL(SSdatabase)
 
-/datum/controller/subsystem/database_query_manager/Initialize()
-	set waitfor=0
+/datum/controller/subsystem/database_query_manager/proc/start_up()
+	set waitfor = FALSE
+
+	settings = connection_settings_from_config(CONFIG_GET(string/db_provider))
 	connection = settings.create_connection()
 	connection.keep()
-	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/database_query_manager/stat_entry(msg)
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")
-	msg = "[text], AQ:[queries_active.len]; SQ:[queries_standby.len]; P:[queries_current.len]; C:[in_callback]"
+	msg = "[text], AQ:[length(queries_active)]; SQ:[length(queries_standby)]; P:[length(queries_current)]; C:[in_callback]"
 	return ..()
 
 /datum/controller/subsystem/database_query_manager/fire(resumed = FALSE)
@@ -178,7 +176,8 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	var/list/Lines = file2list(filename)
 	var/list/result = list()
 	for(var/t in Lines)
-		if(!t)	continue
+		if(!t)
+			continue
 
 		t = trim(t)
 		if(length(t) == 0)

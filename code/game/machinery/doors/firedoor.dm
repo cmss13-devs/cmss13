@@ -1,14 +1,11 @@
 // Door open and close constants
-/var/const
-	CLOSED = 2
-
 #define FIREDOOR_MAX_PRESSURE_DIFF 25 // kPa
 #define FIREDOOR_MAX_TEMP 50 // °C
 #define FIREDOOR_MIN_TEMP 0
 
 // Bitflags
-#define FIREDOOR_ALERT_HOT      1
-#define FIREDOOR_ALERT_COLD     2
+#define FIREDOOR_ALERT_HOT   1
+#define FIREDOOR_ALERT_COLD  2
 
 
 /obj/structure/machinery/door/firedoor
@@ -17,8 +14,8 @@
 	icon = 'icons/obj/structures/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
-	opacity = 0
-	density = 0
+	opacity = FALSE
+	density = FALSE
 	layer = FIREDOOR_OPEN_LAYER
 	open_layer = FIREDOOR_OPEN_LAYER // Just below doors when open
 	closed_layer = FIREDOOR_CLOSED_LAYER // Just above doors when closed
@@ -57,7 +54,7 @@
 	A.all_doors.Add(src)
 	areas_added = list(A)
 
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		A = get_area(get_step(src,direction))
 		if(istype(A) && !(A in areas_added))
 			A.all_doors.Add(src)
@@ -78,7 +75,7 @@
 		. += SPAN_WARNING("WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!")
 
 	. += "<b>Sensor readings:</b>"
-	for(var/index = 1; index <= tile_info.len; index++)
+	for(var/index = 1; index <= length(tile_info); index++)
 		var/o = "&nbsp;&nbsp;"
 		switch(index)
 			if(1)
@@ -104,10 +101,10 @@
 		o += "[pressure]kPa</span></li>"
 		. += o
 
-	if(islist(users_to_open) && users_to_open.len)
+	if(islist(users_to_open) && length(users_to_open))
 		var/users_to_open_string = users_to_open[1]
-		if(users_to_open.len >= 2)
-			for(var/i = 2 to users_to_open.len)
+		if(length(users_to_open) >= 2)
+			for(var/i = 2 to length(users_to_open))
 				users_to_open_string += ", [users_to_open[i]]"
 		. += "These people have opened \the [src] during an alert: [users_to_open_string]."
 
@@ -128,15 +125,14 @@
 		return
 
 	var/alarmed = lockdown
-	for(var/area/A in areas_added)		//Checks if there are fire alarms in any areas associated with that firedoor
+	for(var/area/A in areas_added) //Checks if there are fire alarms in any areas associated with that firedoor
 		if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 			alarmed = 1
-
-	var/answer = alert(user, "Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
-	"\The [src]", "Yes, [density ? "open" : "close"]", "No")
-	if(answer == "No")
+	if(tgui_alert(user,\
+	"Would you like to [density ? "open" : "close"] this [src.name]?[ alarmed && density ? "\nNote that by doing so, you acknowledge any damages from opening this\n[src.name] as being your own fault, and you will be held accountable under the law." : ""]",\
+	"\The [src]", list("Yes", "No")) != "Yes")
 		return
-	if(user.is_mob_incapacitated() || (!user.canmove && !isRemoteControlling(user)) || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
+	if(user.is_mob_incapacitated() || (get_dist(src, user) > 1  && !isRemoteControlling(user)))
 		to_chat(user, "Sorry, you must remain able bodied and close to \the [src] in order to use it.")
 		return
 	if(density && (inoperable())) //can still close without power
@@ -147,8 +143,8 @@
 		to_chat(user, SPAN_WARNING("Access denied.  Please wait for authorities to arrive, or for the alert to clear."))
 		return
 	else
-		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),\
-		"\The [src] [density ? "open" : "close"]s.",\
+		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),
+		"\The [src] [density ? "open" : "close"]s.",
 		"You hear a beep, and a door opening.")
 
 	var/needs_to_close = 0
@@ -157,14 +153,14 @@
 			// Accountability!
 			users_to_open |= user.name
 			needs_to_close = 1
-		INVOKE_ASYNC(src, .proc/open, TRUE)
+		INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 	else
-		INVOKE_ASYNC(src, .proc/close)
+		INVOKE_ASYNC(src, PROC_REF(close))
 
 	if(needs_to_close)
 		spawn(50)
 			alarmed = 0
-			for(var/area/A in areas_added)		//Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
+			for(var/area/A in areas_added) //Just in case a fire alarm is turned off while the firedoor is going through an autoclose cycle
 				if(A.flags_alarm_state & ALARM_WARNING_FIRE || A.air_doors_activated)
 					alarmed = 1
 			if(alarmed)
@@ -179,8 +175,8 @@
 		var/obj/item/tool/weldingtool/W = C
 		if(W.remove_fuel(0, user))
 			blocked = !blocked
-			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),\
-			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
+			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),
+			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",
 			"You hear something being welded.")
 			update_icon()
 			return
@@ -190,19 +186,20 @@
 			return
 
 		if(blocked)
-			user.visible_message(SPAN_DANGER("\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!"),\
-			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
+			user.visible_message(SPAN_DANGER("\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!"),
+			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",
 			"You hear someone struggle and metal straining.")
 			return
 
-		user.visible_message(SPAN_DANGER("\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!"),\
-				SPAN_NOTICE("You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!"),\
+		user.visible_message(SPAN_DANGER("\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!"),
+				SPAN_NOTICE("You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!"),
 				"You hear metal strain.")
 		var/old_density = density
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(blocked || density != old_density) return
-			user.visible_message(SPAN_DANGER("\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!"),\
-				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),\
+			if(blocked || density != old_density)
+				return
+			user.visible_message(SPAN_DANGER("\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!"),
+				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),
 				"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			spawn(0)
 				if(density)
@@ -217,17 +214,17 @@
 	if(istype(C, /obj/item/weapon/zombie_claws))
 		if(operating)
 			return
-		user.visible_message(SPAN_DANGER("\The zombie starts to force \the [src] [density ? "open" : "closed"] with it's claws!!!"),\
-				"You start forcing \the [src] [density ? "open" : "closed"] with your claws!",\
+		user.visible_message(SPAN_DANGER("\The zombie starts to force \the [src] [density ? "open" : "closed"] with it's claws!!!"),
+				"You start forcing \the [src] [density ? "open" : "closed"] with your claws!",
 				"You hear metal strain.")
 		if(do_after(user, 150, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_DANGER("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),\
-			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
+			user.visible_message(SPAN_DANGER("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),
+			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",
 			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
-				INVOKE_ASYNC(src, .proc/open, TRUE)
+				INVOKE_ASYNC(src, PROC_REF(open), TRUE)
 			else
-				INVOKE_ASYNC(src, .proc/close)
+				INVOKE_ASYNC(src, PROC_REF(close))
 			return
 
 /obj/structure/machinery/door/firedoor/try_to_activate_door(mob/user)
@@ -236,6 +233,7 @@
 /obj/structure/machinery/door/firedoor/proc/latetoggle()
 	if(operating || !nextstate)
 		return
+
 	switch(nextstate)
 		if(OPEN)
 			nextstate = null
@@ -245,14 +243,14 @@
 			close()
 	return
 
-/obj/structure/machinery/door/firedoor/close()
+/obj/structure/machinery/door/firedoor/close(forced = FALSE)
 	latetoggle()
 	return ..()
 
-/obj/structure/machinery/door/firedoor/open(var/forced = FALSE)
+/obj/structure/machinery/door/firedoor/open(forced = FALSE)
 	if(!forced)
 		if(inoperable())
-			return //needs power to open unless it was forced
+			return FALSE //needs power to open unless it was forced
 		else
 			use_power(360)
 	latetoggle()
@@ -278,8 +276,8 @@
 			overlays += "palert"
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
-				var/cdir = cardinal[d]
-				for(var/i=1;i<=ALERT_STATES.len;i++)
+				var/cdir = GLOB.cardinals[d]
+				for(var/i=1;i<=length(ALERT_STATES);i++)
 					if(dir_alerts[d] & (1<<(i-1)))
 						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 	else

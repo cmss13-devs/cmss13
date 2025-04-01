@@ -14,7 +14,7 @@
 
 /datum/cm_objective/retrieve_data/New()
 	. = ..()
-	decryption_password = "[pick(alphabet_uppercase)][rand(100,999)][pick(alphabet_uppercase)][rand(10,99)]"
+	decryption_password = "[pick(GLOB.alphabet_uppercase)][rand(100,999)][pick(GLOB.alphabet_uppercase)][rand(10,99)]"
 
 /datum/cm_objective/retrieve_data/pre_round_start()
 	SSobjectives.statistics["data_retrieval_total_instances"]++
@@ -42,7 +42,7 @@
 	var/uploading = FALSE
 	value = OBJECTIVE_EXTREME_VALUE
 
-/datum/cm_objective/retrieve_data/terminal/New(var/obj/structure/machinery/computer/objective/D)
+/datum/cm_objective/retrieve_data/terminal/New(obj/structure/machinery/computer/objective/D)
 	. = ..()
 	terminal = D
 	initial_area = get_area(terminal)
@@ -101,7 +101,7 @@
 	var/obj/item/disk/objective/disk
 	value = OBJECTIVE_HIGH_VALUE
 
-/datum/cm_objective/retrieve_data/disk/New(var/obj/item/disk/objective/O)
+/datum/cm_objective/retrieve_data/disk/New(obj/item/disk/objective/O)
 	. = ..()
 	disk = O
 	initial_area = get_area(disk)
@@ -117,29 +117,14 @@
 /datum/cm_objective/retrieve_data/disk/process()
 	var/obj/structure/machinery/computer/disk_reader/reader = disk.loc
 	if(!reader.powered())
-		reader.visible_message(SPAN_WARNING("\The [reader] powers down mid-operation as the area looses power."))
-		playsound(reader, 'sound/machines/terminal_shutdown.ogg', 25, 1)
-		SSobjectives.stop_processing_objective(src)
-		disk.forceMove(reader.loc)
-		reader.disk = null
+		SEND_SIGNAL(reader, COMSIG_INTEL_DISK_LOST_POWER)
 		return
 
 	..()
 
 /datum/cm_objective/retrieve_data/disk/complete()
 	state = OBJECTIVE_COMPLETE
-	var/obj/structure/machinery/computer/disk_reader/reader = disk.loc
-	reader.visible_message("\The [reader] pings softly as the upload finishes and ejects the disk.")
-	playsound(reader, 'sound/machines/screen_output1.ogg', 25, 1)
-	disk.forceMove(reader.loc)
-	disk.name = "[disk.name] (complete)"
-	reader.disk = null
-	award_points()
-
-	// Now enable the objective to store this disk in the lab.
-	disk.retrieve_objective.state = OBJECTIVE_ACTIVE
-	disk.retrieve_objective.activate()
-
+	SEND_SIGNAL(disk.loc, COMSIG_INTEL_DISK_COMPLETED)
 	..()
 
 /datum/cm_objective/retrieve_data/disk/get_tgui_data()
@@ -171,12 +156,14 @@
 	var/label = ""
 	desc = "A boring looking computer disk. The name label is just a gibberish collection of letters and numbers."
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	is_objective = TRUE
 	var/datum/cm_objective/retrieve_data/disk/objective
 	var/datum/cm_objective/retrieve_item/document/retrieve_objective
 	var/display_color = "white"
 	var/disk_color = "White"
+	ground_offset_x = 9
+	ground_offset_y = 8
 
 /obj/item/disk/objective/Initialize(mapload, ...)
 	. = ..()
@@ -206,12 +193,10 @@
 			disk_color = "Bloodied blue"
 			display_color = "#5296e3"
 
-	label = "[pick(greek_letters)]-[rand(100,999)]"
+	label = "[pick(GLOB.greek_letters)]-[rand(100,999)]"
 	name = "[disk_color] computer disk [label]"
 	objective = new /datum/cm_objective/retrieve_data/disk(src)
 	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 	w_class = SIZE_TINY
 
 /obj/item/disk/objective/Destroy()
@@ -232,12 +217,12 @@
 	icon_state = "medlaptop"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/datum/cm_objective/retrieve_data/terminal/objective
 
 /obj/structure/machinery/computer/objective/Initialize()
 	. = ..()
-	label = "[pick(greek_letters)]-[rand(100,999)]"
+	label = "[pick(GLOB.greek_letters)]-[rand(100,999)]"
 	name = "data terminal [label]"
 	objective = new /datum/cm_objective/retrieve_data/terminal(src)
 
@@ -295,34 +280,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/computer/disk_reader/attack_hand(mob/living/user)
-	if(isXeno(user))
-		return
-	if(disk)
-		to_chat(user, SPAN_NOTICE("[disk] is currently being uploaded to ARES."))
-
-/obj/structure/machinery/computer/disk_reader/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/disk/objective))
-		if(istype(disk))
-			to_chat(user, SPAN_WARNING("There is a disk in the drive being uploaded already!"))
-			return FALSE
-		var/obj/item/disk/objective/newdisk = W
-		if(newdisk.objective.state == OBJECTIVE_COMPLETE)
-			to_chat(user, SPAN_WARNING("The reader displays a message stating this disk has already been read and refuses to accept it."))
-			return FALSE
-		if(input(user,"Enter the encryption key","Decrypting [newdisk]","") != newdisk.objective.decryption_password)
-			to_chat(user, SPAN_WARNING("The reader asks for the encryption key for this disk, not having the correct key you eject the disk."))
-			return FALSE
-		if(istype(disk))
-			to_chat(user, SPAN_WARNING("There is a disk in the drive being uploaded already!"))
-			return FALSE
-
-		if(!(newdisk in user.contents))
-			return FALSE
-
-		newdisk.objective.activate()
-
-		user.drop_inv_item_to_loc(W, src)
-		disk = W
-		to_chat(user, SPAN_NOTICE("You insert \the [W] and enter the decryption key."))
-		user.count_niche_stat(STATISTICS_NICHE_DISK)
+/obj/structure/machinery/computer/disk_reader/Initialize()
+	. = ..()
+	AddComponent(/datum/component/disk_reader)

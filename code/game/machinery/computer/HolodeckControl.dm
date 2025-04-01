@@ -14,6 +14,12 @@
 /turf/open/floor/holofloor/attackby(obj/item/W as obj, mob/user as mob)
 	return
 
+/turf/open/floor/holofloor/cult
+	icon_state = "cult"
+
+/turf/open/floor/holofloor/cult/south
+	dir = SOUTH
+
 /turf/open/floor/holofloor/grass
 	name = "lush grass"
 	icon_state = "grass1"
@@ -22,14 +28,14 @@
 	. = ..()
 	icon_state = "grass[pick("1","2","3","4")]"
 	update_icon()
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(istype(get_step(src, direction), /turf/open/floor))
 			var/turf/open/floor/FF = get_step(src,direction)
 			FF.update_icon() //so siding get updated properly
 
 /turf/open/floor/holofloor/grass/update_icon()
 	. = ..()
-	if(!broken && !burnt)
+	if(!(turf_flags & TURF_BROKEN) && !(turf_flags & TURF_BURNT))
 		if(!(icon_state in list("grass1", "grass2", "grass3", "grass4")))
 			icon_state = "grass[pick("1", "2", "3", "4")]"
 
@@ -49,9 +55,9 @@
 	name = "table"
 	desc = "A square piece of metal standing on four metal legs. It can not move."
 	icon_state = "table"
-	density = 1
-	anchored = 1.0
-	throwpass = 1	//You can throw objects over this, despite it's density.
+	density = TRUE
+	anchored = TRUE
+	throwpass = 1 //You can throw objects over this, despite it's density.
 
 /obj/structure/surface/table/holotable/attack_animal(mob/living/user as mob) //Removed code for larva since it doesn't work. Previous code is now a larva ability. /N
 	return attack_hand(user)
@@ -77,25 +83,13 @@
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
-	if(isborg(user))
-		return
-
-	..()
+	. = ..()
 
 /obj/structure/surface/table/holotable/wood
 	name = "table"
 	desc = "A square piece of wood standing on four wooden legs. It can not move."
 	icon_state = "woodtable"
 	table_prefix = "wood"
-
-/obj/structure/holostool
-	name = "stool"
-	desc = "Apply butt."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "stool"
-	anchored = 1.0
-	flags_atom = FPRINT
-
 
 /obj/item/clothing/gloves/boxing/hologlove
 	name = "boxing gloves"
@@ -108,12 +102,12 @@
 	icon = 'icons/turf/walls/windows.dmi'
 	icon_state = "rwindow"
 	desc = "A window."
-	density = 1
+	density = TRUE
 	layer = WINDOW_LAYER
-	anchored = 1.0
+	anchored = TRUE
 	flags_atom = ON_BORDER
 
-/obj/structure/holowindow/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/holowindow/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
@@ -130,10 +124,10 @@
 /obj/structure/holohoop
 	name = "basketball hoop"
 	desc = "Boom, Shakalaka!"
-	icon = 'icons/obj/structures/props/misc.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "hoop"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	throwpass = 1
 	var/side = ""
 	var/id = ""
@@ -148,29 +142,29 @@
 				return
 			M.forceMove(loc)
 			M.apply_effect(5, WEAKEN)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 				if(X.id == id)
 					X.score(side, 3)// 3 points for dunking a mob
 					// no break, to update multiple scoreboards
-			visible_message(SPAN_DANGER("[user] dunks [M] into the [src]!"))
+			visible_message(SPAN_DANGER("[user] dunks [M] into [src]!"))
 		return
 	else if (istype(W, /obj/item) && get_dist(src,user)<2)
 		user.drop_inv_item_to_loc(W, loc)
-		for(var/obj/structure/machinery/scoreboard/X in machines)
+		for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 			if(X.id == id)
 				X.score(side)
 				// no break, to update multiple scoreboards
-		visible_message(SPAN_NOTICE("[user] dunks [W] into the [src]!"))
+		visible_message(SPAN_NOTICE("[user] dunks [W] into [src]!"))
 		return
 
 /obj/structure/holohoop/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(istype(mover,/obj/item) && mover.throwing)
 		var/obj/item/I = mover
-		if(istype(I, /obj/item/projectile))
+		if(istype(I, /obj/projectile))
 			return BLOCKED_MOVEMENT
 		if(prob(50))
 			I.forceMove(src.loc)
-			for(var/obj/structure/machinery/scoreboard/X in machines)
+			for(var/obj/structure/machinery/scoreboard/X in GLOB.machines)
 				if(X.id == id)
 					X.score(side)
 					// no break, to update multiple scoreboards
@@ -191,7 +185,7 @@
 	var/area/currentarea = null
 	var/eventstarted = 0
 
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6

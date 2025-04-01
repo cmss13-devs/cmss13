@@ -26,9 +26,21 @@
 	tackle_max = 5
 	tackle_chance = 45
 
+	available_strains = list(
+		/datum/xeno_strain/dancer,
+		/datum/xeno_strain/oppressor,
+		/datum/xeno_strain/vanguard,
+		/datum/xeno_strain/valkyrie,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
-/mob/living/carbon/Xenomorph/Praetorian
+	minimum_evolve_time = 15 MINUTES
+
+	minimap_icon = "praetorian"
+
+	royal_caste = TRUE
+
+/mob/living/carbon/xenomorph/praetorian
 	caste_type = XENO_CASTE_PRAETORIAN
 	name = XENO_CASTE_PRAETORIAN
 	desc = "A huge, looming beast of an alien."
@@ -40,11 +52,11 @@
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3
-	mutation_type = PRAETORIAN_NORMAL
+	organ_value = 3000
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -52,14 +64,22 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	icon_xeno = 'icons/mob/xenos/praetorian.dmi'
-	icon_xenonid = 'icons/mob/xenonids/praetorian.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/praetorian.dmi'
+
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	weed_food_states = list("Praetorian_1","Praetorian_2","Praetorian_3")
+	weed_food_states_flipped = list("Praetorian_1","Praetorian_2","Praetorian_3")
+
+	skull = /obj/item/skull/praetorian
+	pelt = /obj/item/pelt/praetorian
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"
-	 ///reward for hitting shots instead of spamming acid ball
+	///reward for hitting shots instead of spamming acid ball
 	var/reward_shield = 15
 
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)

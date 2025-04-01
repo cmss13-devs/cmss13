@@ -6,30 +6,36 @@
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 	unacidable = TRUE
-	indestructible = TRUE
-	req_access = list(ACCESS_MARINE_COMMANDER)
+	explo_proof = TRUE
+	req_access = list(ACCESS_MARINE_SENIOR)
 	var/on = TRUE // 0 for off
-	var/mob/living/carbon/human/current_mapviewer
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
 
 	var/tablet_name = "Commanding Officer's Tablet"
 
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
-	var/add_pmcs = TRUE
+	var/add_pmcs = FALSE
 
-	var/tacmap_type = TACMAP_DEFAULT
-	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
-	var/tacmap_additional_parameter = null
-	var/minimap_name = "Marine Minimap"
+	var/datum/tacmap/tacmap
+	var/minimap_type = MINIMAP_FLAG_USCM
+
 	COOLDOWN_DECLARE(announcement_cooldown)
 	COOLDOWN_DECLARE(distress_cooldown)
 
 /obj/item/device/cotablet/Initialize()
+	if(announcement_faction == FACTION_MARINE)
+		tacmap = new /datum/tacmap/drawing(src, minimap_type)
+	else
+		tacmap = new(src, minimap_type) // Non-drawing version
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		add_pmcs = FALSE
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
-		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, .proc/disable_pmc)
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
+	return ..()
+
+/obj/item/device/cotablet/Destroy()
+	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/item/device/cotablet/proc/disable_pmc()
@@ -37,10 +43,11 @@
 		add_pmcs = FALSE
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP)
 
-/obj/item/device/cotablet/attack_self(mob/user as mob)
+/obj/item/device/cotablet/attack_self(mob/living/carbon/human/user as mob)
 	..()
 
-	if(src.allowed(user))
+	var/obj/item/card/id/card = user.get_idcard()
+	if(allowed(user) && card?.check_biometrics(user))
 		tgui_interact(user)
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
@@ -50,17 +57,17 @@
 
 	data["faction"] = announcement_faction
 	data["cooldown_message"] = cooldown_between_messages
+	data["distresstimelock"] = DISTRESS_TIME_LOCK
 
 	return data
 
 /obj/item/device/cotablet/ui_data(mob/user)
 	var/list/data = list()
 
-	data["alert_level"] = security_level
-	data["evac_status"] = EvacuationAuthority.evac_status
+	data["alert_level"] = GLOB.security_level
+	data["evac_status"] = SShijack.evac_status
 	data["endtime"] = announcement_cooldown
 	data["distresstime"] = distress_cooldown
-	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["worldtime"] = world.time
 
 	return data
@@ -81,103 +88,85 @@
 		ui = new(user, src, "CommandTablet", "Command Tablet")
 		ui.open()
 
-/obj/item/device/cotablet/ui_close(mob/user)
-	. = ..()
-	if(current_mapviewer)
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
 /obj/item/device/cotablet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
-
+	var/mob/user = ui.user
 	switch(action)
 		if("announce")
+			if(user.client.prefs.muted & MUTE_IC)
+				to_chat(user, SPAN_DANGER("You cannot send Announcements (muted)."))
+				return
+
 			if(!COOLDOWN_FINISHED(src, announcement_cooldown))
-				to_chat(usr, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
+				to_chat(user, SPAN_WARNING("Please wait [COOLDOWN_TIMELEFT(src, announcement_cooldown)/10] second\s before making your next announcement."))
 				return FALSE
 
-			var/input = stripped_multiline_input(usr, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
-			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(usr in view(1, src)))
+			var/input = stripped_multiline_input(user, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
+			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null
-			if(ishuman(usr))
-				var/mob/living/carbon/human/H = usr
-				var/obj/item/card/id/id = H.wear_id
-				if(istype(id))
-					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+			if(ishuman(user))
+				var/mob/living/carbon/human/human_user = user
+				var/obj/item/card/id/id = human_user.get_idcard()
+				if(id)
+					var/paygrade = get_paygrades(id.paygrade, FALSE, human_user.gender)
 					signed = "[paygrade] [id.registered_name]"
 
 			marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
-			message_staff("[key_name(usr)] has made a command announcement.")
-			log_announcement("[key_name(usr)] has announced the following: [input]")
+			message_admins("[key_name(user)] has made a command announcement.")
+			log_announcement("[key_name(user)] has announced the following: [input]")
 			COOLDOWN_START(src, announcement_cooldown, cooldown_between_messages)
 			. = TRUE
 
 		if("award")
 			if(announcement_faction != FACTION_MARINE)
 				return
-			print_medal(usr, src)
+			open_medal_panel(user, src)
 			. = TRUE
 
 		if("mapview")
-			if(current_mapviewer)
-				update_mapview(TRUE)
-				. = TRUE
-				return
-			current_mapviewer = usr
-			update_mapview()
+			tacmap.tgui_interact(user)
 			. = TRUE
 
 		if("evacuation_start")
 			if(announcement_faction != FACTION_MARINE)
 				return
 
-			if(security_level < SEC_LEVEL_RED)
-				to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 				return FALSE
 
-			if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
-				to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+			if(SShijack.evac_admin_denied)
+				to_chat(user, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 				return FALSE
 
-			if(!EvacuationAuthority.initiate_evacuation())
-				to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+			if(!SShijack.initiate_evacuation())
+				to_chat(user, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
 				return FALSE
 
-			log_game("[key_name(usr)] has called for an emergency evacuation.")
-			message_staff("[key_name_admin(usr)] has called for an emergency evacuation.")
+			log_game("[key_name(user)] has called for an emergency evacuation.")
+			message_admins("[key_name_admin(user)] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", user)
 			. = TRUE
 
 		if("distress")
 			if(!SSticker.mode)
 				return FALSE //Not a game mode?
 
-			if(security_level == SEC_LEVEL_DELTA)
-				to_chat(usr, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
+				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
 				return FALSE
 
 			for(var/client/C in GLOB.admins)
 				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
-			message_staff("[key_name(usr)] has requested a Distress Beacon! (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[usr]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[usr]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[usr]'>DENY</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[usr]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[usr]'>RPLY</A>)")
-			to_chat(usr, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+			SSticker.mode.request_ert(user)
+			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
-
-/obj/item/device/cotablet/proc/update_mapview(var/close = 0)
-	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
-		close_browser(current_mapviewer, "marineminimap")
-		current_mapviewer = null
-		return
-
-	var/icon/O = overlay_tacmap(tacmap_type, tacmap_base_type, tacmap_additional_parameter)
-	if(O)
-		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 /obj/item/device/cotablet/pmc
 	desc = "A special device used by corporate PMC directors."
@@ -186,8 +175,17 @@
 
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
+	add_pmcs = TRUE
+	minimap_type = MINIMAP_FLAG_WY
 
-	tacmap_type = TACMAP_FACTION
-	tacmap_base_type = TACMAP_BASE_OPEN
-	tacmap_additional_parameter = FACTION_PMC
-	minimap_name = "PMC Minimap"
+/obj/item/device/cotablet/upp
+
+	desc = "A special device used by field UPP commanders."
+
+	tablet_name = "UPP Field Commander's Tablet"
+
+	announcement_title = UPP_COMMAND_ANNOUNCE
+	announcement_faction = FACTION_UPP
+	req_access = list(ACCESS_UPP_LEADERSHIP)
+
+	minimap_type = MINIMAP_FLAG_UPP

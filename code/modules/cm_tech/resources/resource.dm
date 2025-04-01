@@ -25,7 +25,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	indestructible = TRUE
+	explo_proof = TRUE
 	anchored = TRUE
 
 	density = TRUE
@@ -37,7 +37,7 @@
 /obj/structure/resource_node/area_controller
 	is_area_controller = TRUE
 
-/obj/structure/resource_node/Initialize(mapload, var/play_ambient_noise = TRUE)
+/obj/structure/resource_node/Initialize(mapload, play_ambient_noise = TRUE)
 	. = ..()
 	bound_width = width * world.icon_size
 	bound_height = height * world.icon_size
@@ -54,6 +54,12 @@
 
 		controlled_area = A
 		A.r_node = src
+
+/obj/structure/resource_node/Destroy()
+	if(controlled_area && controlled_area.r_node == src)
+		controlled_area.r_node = null
+	controlled_area = null
+	return ..()
 
 /obj/structure/resource_node/initialize_pass_flags(datum/pass_flags_container/PF)
 	. = ..()
@@ -75,11 +81,11 @@
 	STOP_PROCESSING(SSobj, src)
 	update_icon()
 
-/obj/structure/resource_node/proc/take_damage(var/damage)
-	health = Clamp(health - damage, 0, max_health)
+/obj/structure/resource_node/proc/take_damage(damage)
+	health = clamp(health - damage, 0, max_health)
 	healthcheck()
 
-/obj/structure/resource_node/bullet_act(obj/item/projectile/P)
+/obj/structure/resource_node/bullet_act(obj/projectile/P)
 	take_damage(P.damage)
 
 /obj/structure/resource_node/ex_act(severity, direction)
@@ -134,7 +140,7 @@
 		to_chat(H, SPAN_WARNING("You're already performing an action!"))
 		return
 
-	H.visible_message(SPAN_DANGER("[H] starts to set up [src]."),\
+	H.visible_message(SPAN_DANGER("[H] starts to set up [src]."),
 	SPAN_NOTICE("You begin to set up [src]."), max_distance = 3)
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 
@@ -143,11 +149,11 @@
 		return
 
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	H.visible_message(SPAN_DANGER("[H] sets up [src]."),\
+	H.visible_message(SPAN_DANGER("[H] sets up [src]."),
 	SPAN_NOTICE("You set up [src]."), max_distance = 3)
 
-/obj/structure/resource_node/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(!isXenoBuilder(M))
+/obj/structure/resource_node/attack_alien(mob/living/carbon/xenomorph/M)
+	if(!isxeno_builder(M))
 		to_chat(M, SPAN_XENOWARNING("You can't build onto [src]."))
 		return XENO_NO_DELAY_ACTION
 
@@ -159,7 +165,7 @@
 		to_chat(M, SPAN_WARNING("You're already performing an action!"))
 		return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_DANGER("[M] starts secreting resin over [src]."),\
+	M.visible_message(SPAN_DANGER("[M] starts secreting resin over [src]."),
 	SPAN_XENONOTICE("You begin to connect [src] to the hive."), max_distance = 3)
 	xeno_attack_delay(M)
 
@@ -167,7 +173,7 @@
 		to_chat(M, SPAN_XENOWARNING("You decide not to connect [src] to the hive."))
 		return XENO_NO_DELAY_ACTION
 
-	M.visible_message(SPAN_DANGER("[M] secretes resin over [src]."),\
+	M.visible_message(SPAN_DANGER("[M] secretes resin over [src]."),
 	SPAN_XENONOTICE("You connect [src] to the hive."), max_distance = 3)
 
 	return XENO_NO_DELAY_ACTION

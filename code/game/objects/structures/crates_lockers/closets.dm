@@ -3,8 +3,9 @@
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/structures/closet.dmi'
 	icon_state = "closed"
-	density = 1
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
 	var/opened = 0
@@ -24,17 +25,14 @@
 	var/fill_from_loc = TRUE //Whether items from the tile are automatically moved inside the closet.
 	var/exit_stun = 2 //stun time upon exiting, if at all
 
-	anchored = 1 //Yep
+	anchored = TRUE //Yep
 
 	var/mob_size = 15
 
 /obj/structure/closet/Initialize()
 	. = ..()
-	if(!opened && fill_from_loc)		// if closed, any item at the crate's loc is put in the contents
-		for(var/obj/item/I in src.loc)
-			if(I.density || I.anchored || I == src)
-				continue
-			I.forceMove(src)
+	if(!opened && fill_from_loc) // if closed, any item at the crate's loc is put in the contents
+		store_items()
 	GLOB.closet_list += src
 	flags_atom |= USES_HEARING
 
@@ -43,7 +41,7 @@
 	GLOB.closet_list -= src
 	return ..()
 
-/obj/structure/closet/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/closet/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND
@@ -65,13 +63,17 @@
 		return 0
 	return 1
 
-/obj/structure/closet/proc/can_close()
+/obj/structure/closet/proc/can_close(mob/user)
 	for(var/obj/structure/closet/closet in get_turf(src))
 		if(closet != src && !closet.wall_mounted)
-			return 0
-	for(var/mob/living/carbon/Xenomorph/Xeno in get_turf(src))
-		return 0
-	return 1
+			return FALSE
+	for(var/mob/living/carbon/xenomorph/xeno in get_turf(src))
+		return FALSE
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy))
+		for(var/mob/living/carbon/human/closed_mob in get_turf(src))
+			if((closed_mob.stat == DEAD || closed_mob.health < HEALTH_THRESHOLD_CRIT) && !closed_mob.get_target_lock(user.faction_group) && !(closed_mob.status_flags & PERMANENTLY_DEAD)&& !(closed_mob.status_flags & PERMANENTLY_DEAD))
+				return FALSE
+	return TRUE
 
 /obj/structure/closet/proc/dump_contents()
 
@@ -81,11 +83,12 @@
 	for(var/mob/M in src)
 		M.forceMove(loc)
 		if(exit_stun)
-			M.apply_effect(exit_stun, PARALYZE) //Action delay when going out of a closet
-		M.update_canmove() //Force the delay to go in action immediately
-		if(!M.lying)
-			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
-			SPAN_WARNING("You get out of [src] and get your bearings!"))
+			M.apply_effect(exit_stun, STUN) //Action delay when going out of a closet
+		if(isliving(M))
+			var/mob/living/living_M = M
+			if(living_M.mobility_flags & MOBILITY_MOVE)
+				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
+				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
 /obj/structure/closet/proc/open()
 	if(opened)
@@ -96,17 +99,17 @@
 
 	dump_contents()
 
-	UnregisterSignal(src, COMSIG_OBJ_FLASHBANGED)
+	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
-	density = 0
+	density = FALSE
 	return 1
 
-/obj/structure/closet/proc/close()
+/obj/structure/closet/proc/close(mob/user)
 	if(!src.opened)
 		return 0
-	if(!src.can_close())
+	if(!src.can_close(user))
 		return 0
 
 	var/stored_units = 0
@@ -114,22 +117,24 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
-		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, .proc/flashbang)
+		RegisterSignal(src, COMSIG_CLOSET_FLASHBANGED, PROC_REF(flashbang))
 
 	opened = 0
 	update_icon()
 
 	playsound(src.loc, close_sound, 15, 1)
-	density = 1
+	density = TRUE
 	return 1
 
-/obj/structure/closet/proc/store_items(var/stored_units)
+/obj/structure/closet/proc/store_items(stored_units)
 	for(var/obj/item/I in src.loc)
 		if(istype(I, /obj/item/explosive/plastic)) //planted c4 may not go in closets
 			var/obj/item/explosive/plastic/P = I
 			if(P.active)
 				continue
-		var/item_size = Ceiling(I.w_class / 2)
+		if(istype(I, /obj/item/phone))
+			continue
+		var/item_size = ceil(I.w_class / 2)
 		if(stored_units + item_size > storage_capacity)
 			continue
 		if(!I.anchored)
@@ -137,31 +142,38 @@
 			stored_units += item_size
 	return stored_units
 
-/obj/structure/closet/proc/store_mobs(var/stored_units)
-	for(var/mob/M in src.loc)
+/obj/structure/closet/proc/store_mobs(stored_units)
+	for(var/mob/cur_mob in src.loc)
 		if(stored_units + mob_size > storage_capacity)
 			break
-		if(istype (M, /mob/dead/observer))
+		if(istype (cur_mob, /mob/dead/observer))
 			continue
-		if(M.buckled)
+		if(cur_mob.buckled)
+			continue
+		if(cur_mob.anchored)
 			continue
 
-		M.forceMove(src)
+		cur_mob.forceMove(src)
 		stored_units += mob_size
 	return stored_units
 
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
-	if(!(src.opened ? src.close() : src.open()))
+	if(!(src.opened ? src.close(user) : src.open()))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 
 
 /obj/structure/closet/proc/take_damage(damage)
+	if(health <= 0)
+		return
+
 	health = max(health - damage, 0)
 	if(health <= 0)
-		for(var/atom/movable/A as anything in src)
-			A.forceMove(src.loc)
+		for(var/atom/movable/movable as anything in src)
+			if(!loc)
+				break
+			movable.forceMove(loc)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 		qdel(src)
 
@@ -180,13 +192,13 @@
 			contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
 			deconstruct(FALSE)
 
-/obj/structure/closet/proc/flashbang(var/datum/source, var/obj/item/explosive/grenade/flashbang/FB)
+/obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER
 	for(var/mob/living/C in contents)
 		FB.bang(get_turf(FB), C)
 	open()
 
-/obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/closet/bullet_act(obj/projectile/Proj)
 	take_damage(Proj.damage*0.3)
 	if(prob(30))
 		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
@@ -195,7 +207,7 @@
 
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
-		visible_message(SPAN_DANGER("[user] destroys the [src]. "))
+		visible_message(SPAN_DANGER("[user] destroys [src]."))
 		for(var/atom/movable/A as mob|obj in src)
 			A.forceMove(src.loc)
 		qdel(src)
@@ -203,10 +215,11 @@
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
-			if(isXeno(user)) return
+			if(isxeno(user))
+				return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
-				src.MouseDrop_T(G.grabbed_thing, user)      //act like they were dragged onto the closet
+				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
 			return
 		if(W.flags_item & ITEM_ABSTRACT)
 			return 0
@@ -239,37 +252,38 @@
 				user.visible_message(SPAN_NOTICE("[user] has pried apart [src] with [W]."), "You pry apart [src].")
 				qdel(src)
 				return
-		if(isrobot(user))
-			return
 		user.drop_inv_item_to_loc(W,loc)
 
 	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/explosive/plastic))
 		return
 	else if(iswelder(W))
+		if(material != MATERIAL_METAL && material != MATERIAL_PLASTEEL)
+			to_chat(user, SPAN_WARNING("You cannot weld [material]!"))
+			return FALSE//Can't weld wood/plastic.
 		if(!HAS_TRAIT(W, TRAIT_TOOL_BLOWTORCH))
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
-			return
+			return FALSE
 		var/obj/item/tool/weldingtool/WT = W
 		if(!WT.isOn())
 			to_chat(user, SPAN_WARNING("\The [WT] needs to be on!"))
-			return
+			return FALSE
 		if(!WT.remove_fuel(0, user))
 			to_chat(user, SPAN_NOTICE("You need more welding fuel to complete this task."))
-			return
+			return FALSE
 		playsound(src, 'sound/items/Welder.ogg', 25, 1)
 		if(!do_after(user, 10 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			return
+			return FALSE
 		welded = !welded
 		update_icon()
 		for(var/mob/M as anything in viewers(src))
 			M.show_message(SPAN_WARNING("[src] has been [welded?"welded shut":"unwelded"] by [user.name]."), SHOW_MESSAGE_VISIBLE, "You hear welding.", SHOW_MESSAGE_AUDIBLE)
 	else
-		if(isXeno(user))
-			var/mob/living/carbon/Xenomorph/opener = user
+		if(isxeno(user))
+			var/mob/living/carbon/xenomorph/opener = user
 			src.attack_alien(opener)
-			return
+			return FALSE
 		src.attack_hand(user)
-	return
+	return TRUE
 
 /obj/structure/closet/MouseDrop_T(atom/movable/O, mob/user)
 	if(!opened)
@@ -279,6 +293,8 @@
 	if(user.is_mob_incapacitated())
 		return
 	if(O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1)
+		return
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 	if(!isturf(user.loc))
 		return
@@ -301,8 +317,10 @@
 
 
 /obj/structure/closet/relaymove(mob/user)
-	if(!isturf(src.loc)) return
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(!isturf(src.loc))
+		return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	user.next_move = world.time + 5
 
 	var/obj/item/I = user.get_active_hand()
@@ -321,7 +339,7 @@
 			addtimer(VARSET_CALLBACK(src, lastbang, FALSE), 3 SECONDS)
 
 /obj/structure/closet/attack_hand(mob/living/user)
-	if(opened && isXeno(user))
+	if(opened && isxeno(user))
 		return // stop xeno closing things
 	add_fingerprint(user)
 	toggle(user)
@@ -331,7 +349,7 @@
 	set category = "Object"
 	set name = "Toggle Open"
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+	if(usr.is_mob_incapacitated())
 		return
 
 	if(usr.loc == src)
@@ -340,8 +358,6 @@
 	if(ishuman(usr))
 		src.add_fingerprint(usr)
 		src.toggle(usr)
-	else
-		to_chat(usr, SPAN_WARNING("This mob type can't use this verb."))
 
 /obj/structure/closet/update_icon()//Putting the welded stuff in updateicon() so it's easy to overwrite for special cases (Fridges, cabinets, and whatnot)
 	overlays.Cut()
@@ -368,3 +384,13 @@
 	if(!opened)
 		welded = 0
 		open()
+
+/obj/structure/closet/yautja
+	name = "alien closet"
+	desc = "A suspicious dark metal alien closet, what horrors can be stored inside?"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	storage_capacity = 100
+
+/obj/structure/closet/yautja/big
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
+	storage_capacity = 100

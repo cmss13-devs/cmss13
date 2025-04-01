@@ -2,7 +2,7 @@
 //----Ice walls Structure Versions----//
 //Ice Thin Wall
 /obj/structure/ice
-	density = 1
+	density = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -11,7 +11,7 @@
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
-	opacity = 0
+	opacity = FALSE
 
 /obj/structure/ice/thin/indestructible/ex_act(severity, direction)
 	return
@@ -34,11 +34,6 @@
 /obj/structure/ice/thin/intersection
 	icon_state = "Intersection"
 
-
-//Ice Secret Wall
-/obj/structure/ice/secret
-	icon_state = "ice_wall_0"
-	desc = "There is something inside..."
 
 //ROCK WALLS------------------------------//
 /obj/structure/ice/ice_rock

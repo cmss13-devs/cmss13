@@ -18,10 +18,7 @@
 /obj/item/clothing/mask/rebreather,
 /obj/item/tank/emergency_oxygen/engi,
 /obj/item/clothing/mask/rebreather,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "t" = (
 /obj/structure/flora/bush/snow{
@@ -36,14 +33,10 @@
 /turf/closed/wall/shiva/prefabricated/reinforced/hull,
 /area/shiva/exterior/lz2_fortress)
 "C" = (
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "Z" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 
 (1,1,1) = {"

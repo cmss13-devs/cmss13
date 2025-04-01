@@ -11,15 +11,15 @@
 	target_areas = list(
 		/area/almayer/command/securestorage,
 		/area/almayer/command/computerlab,
-		/area/almayer/medical/medical_science
+		/area/almayer/medical/medical_science,
 	)
 
-/datum/cm_objective/retrieve_item/New(var/T)
-	..()
-	if(T)
-		target_item = T
+/datum/cm_objective/retrieve_item/New(atom/target)
+	. = ..()
+	if(target)
+		target_item = target
 		initial_area = get_area(target_item)
-	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, .proc/clean_up_ref)
+	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, PROC_REF(clean_up_ref))
 
 /datum/cm_objective/retrieve_item/Destroy()
 	target_item = null
@@ -74,7 +74,7 @@
 	qdel(src)
 	return
 
-/datum/cm_objective/retrieve_item/fulton/New()
+/datum/cm_objective/retrieve_item/fulton/New(atom/target)
 	. = ..()
 	GLOB.failed_fultons += target_item
 	activate()
@@ -83,7 +83,7 @@
 	return SPAN_DANGER("Retrieve lost fulton of [target_item] in [initial_area]")
 
 /datum/cm_objective/retrieve_item/fulton/get_tgui_data()
-	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, .proc/clean_up_fulton, override = TRUE)
+	RegisterSignal(target_item, COMSIG_PARENT_PREQDELETED, PROC_REF(clean_up_fulton), override = TRUE)
 
 	var/list/clue = list()
 
@@ -92,10 +92,6 @@
 	clue["location"] = initial_area.name
 
 	return clue
-
-/datum/cm_objective/retrieve_item/fulton/complete()
-	..()
-
 
 // -----------------------------------------------------------
 // *** Documents and data disks after they have been read ***

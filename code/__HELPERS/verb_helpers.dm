@@ -10,7 +10,7 @@
 	if(!target)
 		CRASH("add_verb called without a target")
 	if(IsAdminAdvancedProcCall())
-		return
+		return PROC_BLOCKED
 	var/mob/mob_target = null
 
 	if(ismob(target))
@@ -56,7 +56,7 @@
  */
 /proc/remove_verb(client/target, verb_or_list_to_remove)
 	if(IsAdminAdvancedProcCall())
-		return
+		return PROC_BLOCKED
 
 	var/mob/mob_target = null
 	if(ismob(target))

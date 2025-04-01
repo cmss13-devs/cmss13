@@ -5,8 +5,8 @@
 	. = ..()
 	if(!isitem(target))
 		return ELEMENT_INCOMPATIBLE
-	RegisterSignal(target, COMSIG_ITEM_PICKUP, .proc/item_picked_up)
-	RegisterSignal(target, COMSIG_ITEM_DROPPED, .proc/item_dropped)
+	RegisterSignal(target, COMSIG_ITEM_PICKUP, PROC_REF(item_picked_up))
+	RegisterSignal(target, COMSIG_ITEM_DROPPED, PROC_REF(item_dropped))
 
 
 	if(!is_honorable_carrier(recursive_holder_check(target)))
@@ -34,10 +34,10 @@
 	if(!is_honorable_carrier(recursive_holder_check(dropped_item)))
 		add_to_missing_pred_gear(dropped_item)
 
-/proc/is_honorable_carrier(var/mob/living/carbon/human/carrier)
-	if(isYautja(carrier))
+/proc/is_honorable_carrier(mob/living/carbon/human/carrier)
+	if(isyautja(carrier))
 		return TRUE
-	if(isHumanSynthStrict(carrier) && (carrier.hunter_data.honored || carrier.hunter_data.thralled) && !(carrier.hunter_data.dishonored || carrier.stat == DEAD))
+	if(ishumansynth_strict(carrier) && (carrier.hunter_data.honored || carrier.hunter_data.thralled) && !(carrier.hunter_data.dishonored || carrier.stat == DEAD))
 		return TRUE
 	if(istype(carrier, /mob/hologram/falcon))
 		return TRUE

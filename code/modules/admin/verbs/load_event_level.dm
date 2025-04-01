@@ -1,6 +1,6 @@
 /client/proc/load_event_level()
 	set category = "Admin.Events"
-	set name = "Load Event Level"
+	set name = "Map Template - New Z"
 	set desc = "Load a Map Template as a new event Z-Level"
 
 	var/datum/map_template/template
@@ -22,10 +22,8 @@
 		boundaries = template.preload_size(template.mappath)
 
 	// Get dims & guesstimate center turf (in practice, current implem means min is always 1)
-	var/dim_x     = boundaries[MAP_MAXX] - boundaries[MAP_MINX] + 1
-	var/dim_y     = boundaries[MAP_MAXY] - boundaries[MAP_MINY] + 1
-	var/center_x  = boundaries[MAP_MINX] + round(dim_x / 2) // Technically off by 0.5 due to above +1. Whatever
-	var/center_y  = boundaries[MAP_MINY] + round(dim_y / 2)
+	var/dim_x  = boundaries[MAP_MAXX] - boundaries[MAP_MINX] + 1
+	var/dim_y  = boundaries[MAP_MAXY] - boundaries[MAP_MINY] + 1
 
 	var/prompt = alert(C, "Are you SURE you want to load this template as level ? This is SLOW and can freeze server for a bit. Dimensions are: [dim_x] x [dim_y]", "Template Confirm" ,"Yes","Nope!")
 	if(prompt != "Yes")
@@ -40,8 +38,11 @@
 			to_chat(C, "Failed to load the template to a Z-Level! Sorry!")
 		return
 
+	var/center_x = floor(loaded.bounds[MAP_MAXX] / 2) // Technically off by 0.5 due to above +1. Whatever
+	var/center_y = floor(loaded.bounds[MAP_MAXY] / 2)
+
 	// Now notify the staff of the load - this goes in addition to the generic template load game log
-	message_staff("Successfully loaded template as new Z-Level by ckey: [logckey], template name: [template.name]", center_x, center_y, loaded.z_value)
+	message_admins("Successfully loaded template as new Z-Level by ckey: [logckey], template name: [template.name]", center_x, center_y, loaded.z_value)
 	if(isobserver(C?.mob))
 		var/turf/T = locate(center_x, center_y, loaded.z_value)
 		if(T) // ???? surely that'd never happen

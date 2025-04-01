@@ -4,12 +4,13 @@
 	ceiling = CEILING_GLASS
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
 
 //SECURITY
 /area/prison/security
 	name = "\improper Security Department"
 	icon_state = "security"
-	is_resin_allowed = FALSE
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/security/briefing
 	name = "\improper Briefing"
@@ -33,7 +34,6 @@
 
 /area/prison/security/monitoring
 	icon_state = "sec_prison"
-	is_resin_allowed = TRUE
 
 /area/prison/security/monitoring/lowsec/ne
 	name = "\improper Northeast Low-Security Monitoring"
@@ -62,7 +62,6 @@
 
 /area/prison/security/checkpoint
 	icon_state = "checkpoint1"
-	is_resin_allowed = TRUE
 
 /area/prison/security/checkpoint/medsec
 	name = "\improper Medium-Security Checkpoint"
@@ -87,7 +86,7 @@
 
 /area/prison/security/checkpoint/hangar
 	name = "\improper Main Hangar Traffic Control"
-	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/prison/storage
 	icon_state = "engine_storage"
@@ -134,10 +133,12 @@
 /area/prison/holding/holding1
 	name = "\improper Holding Cell 1"
 	icon_state = "blue-red2"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/holding/holding2
 	name = "\improper Holding Cell 2"
 	icon_state = "blue-red-d"
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/prison/cleaning
 	name = "\improper Custodial Supplies"
@@ -163,7 +164,6 @@
 
 /area/prison/toilet/security
 	name = "\improper Security Restooms"
-	is_resin_allowed = FALSE
 
 /area/prison/toilet/research
 	name = "\improper Research Restooms"
@@ -197,7 +197,6 @@
 /area/prison/maintenance/staff_research
 	name = "\improper Staff-Research Maintenance"
 	icon_state = "maint_research_starboard"
-	is_resin_allowed = FALSE
 
 /area/prison/maintenance/research_medbay
 	name = "\improper Research-Infirmary Maintenance"
@@ -206,7 +205,7 @@
 /area/prison/maintenance/hangar_barracks
 	name = "\improper Hangar-Barracks Maintenance"
 	icon_state = "maint_e_shuttle"
-	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/prison/canteen
 	name = "\improper Canteen"
@@ -227,6 +226,7 @@
 /area/prison/engineering
 	name = "\improper Engineering"
 	icon_state = "engine"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/prison/engineering/atmos
 	name = "\improper Atmospherics"
@@ -255,7 +255,6 @@
 /area/prison/hallway/entrance
 	name = "\improper Entrance Hallway"
 	icon_state = "entry"
-	is_resin_allowed = FALSE
 
 /area/prison/hallway/central
 	name = "\improper Central Ring"
@@ -284,6 +283,7 @@
 /area/prison/hallway/engineering
 	name = "\improper Engineering Hallway"
 	icon_state = "dk_yellow"
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/prison/quarters/staff
 	name = "\improper Staff Quarters"
@@ -296,6 +296,10 @@
 /area/prison/quarters/research
 	name = "\improper Research Dorms"
 	icon_state = "purple"
+	minimap_color = MINIMAP_AREA_SEC
+
+/area/prison/cellblock/lowsec
+	minimap_color = MINIMAP_AREA_CELL_LOW
 
 /area/prison/cellblock/lowsec/nw
 	name = "\improper Northwest Low-Security Cellblock"
@@ -316,6 +320,7 @@
 /area/prison/cellblock/mediumsec
 	name = "\improper Medium-Security Cellblock"
 	icon_state = "cells_med"
+	minimap_color = MINIMAP_AREA_CELL_MED
 
 /area/prison/cellblock/mediumsec/north
 	name = "\improper Medium-Security Cellblock North"
@@ -333,6 +338,9 @@
 	name = "\improper Medium-Security Cellblock West"
 	icon_state = "cells_med_w"
 
+/area/prison/cellblock/highsec
+	minimap_color = MINIMAP_AREA_CELL_HIGH
+
 /area/prison/cellblock/highsec/north/north
 	name = "\improper North High-Security Cellblock North"
 	icon_state = "cells_high_nn"
@@ -349,6 +357,9 @@
 	name = "\improper South High-Security Cellblock South"
 	icon_state = "cells_high_ss"
 
+/area/prison/cellblock/maxsec
+	minimap_color = MINIMAP_AREA_CELL_MAX
+
 /area/prison/cellblock/maxsec/north
 	name = "\improper Maximum-Security Panopticon Cellblock"
 	icon_state = "cells_max_n"
@@ -360,10 +371,12 @@
 /area/prison/cellblock/vip
 	name = "\improper VIP Cells"
 	icon_state = "cells_vip"
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/prison/cellblock/protective
 	name = "\improper Protective Custody"
 	icon_state = "cells_protective"
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/prison/disposal
 	name = "\improper Disposals"
@@ -388,17 +401,14 @@
 /area/prison/research
 	name = "\improper Biological Research Department"
 	icon_state = "research"
-	is_resin_allowed = FALSE
 
 /area/prison/research/RD
 	name = "\improper Research Director's office"
 	icon_state = "disposal"
-	is_resin_allowed = FALSE
 
 /area/prison/research/secret
 	name = "\improper Classified Research"
 	icon_state = "toxlab"
-	is_resin_allowed = TRUE
 
 /area/prison/research/secret/dissection
 	name = "\improper Dissection"
@@ -437,21 +447,20 @@
 
 /area/prison/monorail/east
 	name = "\improper East Monorail Station"
-	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
 
 /area/prison/monorail/west
 	name = "\improper West Monorail Station"
 
-/area/prison/hanger
-	is_resin_allowed = FALSE
-
 /area/prison/hanger/main
 	name = "\improper Main Hanger"
 	icon_state = "hangar_alpha"
+	is_landing_zone = TRUE
 
 /area/prison/hanger/research
 	name = "\improper Research Hanger"
 	icon_state = "hangar_beta"
+	is_landing_zone = TRUE
 
 /area/prison/hangar_storage/main
 	name = "\improper Main Hangar Storage"
@@ -460,12 +469,15 @@
 /area/prison/hangar_storage/research
 	name = "\improper Research Hangar Storage"
 	icon_state = "toxstorage"
-	is_resin_allowed = FALSE
+	is_landing_zone = TRUE
+
+/area/prison/hangar_storage/research/shuttle
+	name = "Corporate Shuttle"
+	is_landing_zone = FALSE
 
 /area/prison/telecomms
 	name = "\improper Telecommunications"
 	icon_state = "tcomsatcham"
-	is_resin_allowed = FALSE
 
 /area/prison/pirate
 	name = "Tramp Freighter \"Rocinante\""

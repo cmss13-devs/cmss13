@@ -3,7 +3,7 @@
 	name = "Ban"
 	permissions_required = R_BAN
 
-/datum/player_action/ban/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/ban/act(client/user, mob/target, list/params)
 	user.cmd_admin_do_ban(target)
 	return TRUE
 
@@ -13,7 +13,7 @@
 	name = "Job-ban"
 	permissions_required = R_BAN
 
-/datum/player_action/jobban/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/jobban/act(client/user, mob/target, list/params)
 	user.cmd_admin_job_ban(target)
 	return TRUE
 
@@ -22,8 +22,9 @@
 	name = "EORG Ban"
 	permissions_required = R_BAN
 
-/datum/player_action/eorgban/act(var/client/user, var/mob/target, var/list/params)
-	if(target.client && target.client.admin_holder)	return	//admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+/datum/player_action/eorgban/act(client/user, mob/target, list/params)
+	if(target.client && target.client.admin_holder)
+		return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!target.ckey)
 		to_chat(user, SPAN_DANGER("<B>Warning: Mob ckey for [target.name] not found.</b>"))
@@ -34,7 +35,7 @@
 	switch(alert("Are you sure you want to EORG ban [target.ckey]?", , "Yes", "No"))
 		if("Yes")
 			mins = 180
-			reason = "EORG"
+			reason = "EORG - Generating combat logs with, or otherwise griefing, friendly/allied players."
 		if("No")
 			return
 
@@ -45,12 +46,64 @@
 
 	return TRUE
 
+/datum/player_action/permanent_ban
+	action_tag = "permanent_ban"
+	name = "Permanent Ban"
+	permissions_required = R_BAN
+
+/datum/player_action/permanent_ban/act(client/user, mob/target, list/params)
+	var/reason = tgui_input_text(user, "What message should be given to the permabanned user?", "Permanent Ban", encode = FALSE)
+	if(!reason)
+		return
+
+	var/internal_reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "Permanent Ban", multiline = TRUE, encode = FALSE)
+	if(!internal_reason)
+		return
+
+	var/datum/entity/player/target_entity = target.client?.player_data
+	if(!target_entity)
+		target_entity = get_player_from_key(target.ckey || target.persistent_ckey)
+
+	if(!target_entity)
+		return
+
+	if(!target_entity.add_perma_ban(reason, internal_reason, user.player_data))
+		to_chat(user, SPAN_ADMIN("The user is already permabanned! If necessary, you can remove the permaban, and place a new one."))
+
+/datum/player_action/sticky_ban
+	action_tag = "sticky_ban"
+	name = "Sticky Ban"
+	permissions_required = R_BAN
+
+/datum/player_action/sticky_ban/act(client/user, mob/target, list/params)
+	var/datum/entity/player/player = get_player_from_key(target.ckey || target.persistent_ckey)
+	if(!player)
+		return
+
+	var/persistent_ip = target.client?.address || player.last_known_ip
+	var/persistent_cid = target.client?.computer_id || player.last_known_cid
+
+	var/message = tgui_input_text(user, "What message should be given to the impacted users?", "BuildABan", encode = FALSE)
+	if(!message)
+		return
+
+	var/reason = tgui_input_text(user, "What's the reason for the ban? This is shown internally, and not displayed in public notes and ban messages. Include as much detail as necessary.", "BuildABan", multiline = TRUE, encode = FALSE)
+	if(!reason)
+		return
+
+	user.cmd_admin_do_stickyban(target.ckey, reason, message, impacted_ckeys = list(target.ckey), impacted_cids = list(persistent_cid), impacted_ips = list(persistent_ip))
+	player.add_note("Stickybanned | [message]", FALSE, NOTE_ADMIN, TRUE)
+	player.add_note("Internal reason: [reason]", TRUE, NOTE_ADMIN)
+
+	if(target.client)
+		qdel(target.client)
+
 /datum/player_action/mute
 	action_tag = "mob_mute"
 	name = "Mute"
 
 
-/datum/player_action/mute/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/mute/act(client/user, mob/target, list/params)
 	if(!target.client)
 		return
 
@@ -63,19 +116,27 @@
 	name = "Show Notes"
 
 
-/datum/player_action/show_notes/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/show_notes/act(client/user, mob/target, list/params)
 	user.admin_holder.player_notes_show(target.ckey)
 	return TRUE
 
+/datum/player_action/check_ckey
+	action_tag = "check_ckey"
+	name = "Check Ckey"
+
+
+/datum/player_action/check_ckey/act(client/user, mob/target, list/params)
+	user.admin_holder.check_ckey(target.ckey)
+	return TRUE
 
 /datum/player_action/reset_xeno_name
 	action_tag = "reset_xeno_name"
 	name = "Reset Xeno Name"
 
 
-/datum/player_action/reset_xeno_name/act(var/client/user, var/mob/target, var/list/params)
-	var/mob/living/carbon/Xenomorph/X = target
-	if(!isXeno(X))
+/datum/player_action/reset_xeno_name/act(client/user, mob/target, list/params)
+	var/mob/living/carbon/xenomorph/X = target
+	if(!isxeno(X))
 		to_chat(user, SPAN_WARNING("[target.name] is not a xeno!"))
 		return
 
@@ -86,7 +147,7 @@
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [X.name] not found."))
 		return
 
-	message_staff("[user.ckey] has reset [X.ckey] xeno name")
+	message_admins("[user.ckey] has reset [X.ckey] xeno name")
 
 	to_chat(X, SPAN_DANGER("Warning: Your xeno name has been reset by [user.ckey]."))
 
@@ -105,7 +166,7 @@
 
 
 
-/datum/player_action/xeno_name_ban/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/xeno_name_ban/act(client/user, mob/target, list/params)
 	if(!target.client)
 		return
 
@@ -118,13 +179,13 @@
 		targetClient.prefs.xeno_name_ban = FALSE
 
 		targetClient.prefs.save_preferences()
-		message_staff("[user.ckey] has unbanned [target.ckey] from using xeno names")
+		message_admins("[user.ckey] has unbanned [target.ckey] from using xeno names")
 
 		notes_add(target.ckey, "Xeno Name Unbanned by [user.ckey]", user.mob)
 		to_chat(target, SPAN_DANGER("Warning: You can use xeno names again."))
 		return
 
-	if(!isXeno(target))
+	if(!isxeno(target))
 		to_chat(user, SPAN_DANGER("Target is not a xenomorph. Aborting."))
 		return
 
@@ -135,7 +196,7 @@
 		to_chat(user, SPAN_DANGER("Warning: Mob ckey for [target.name] not found."))
 		return
 
-	message_staff("[user.ckey] has banned [target.ckey] from using xeno names")
+	message_admins("[user.ckey] has banned [target.ckey] from using xeno names")
 
 	notes_add(target.ckey, "Xeno Name Banned by [user.ckey]|Reason: Xeno name was [target.name]", user.mob)
 
@@ -150,7 +211,7 @@
 
 	targetClient.prefs.save_preferences()
 
-	var/mob/living/carbon/Xenomorph/X = target
+	var/mob/living/carbon/xenomorph/X = target
 	X.generate_name()
 
 /datum/player_action/reset_human_name
@@ -158,13 +219,13 @@
 	name = "Reset Human Name"
 
 
-/datum/player_action/reset_human_name/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/reset_human_name/act(client/user, mob/target, list/params)
 	var/mob/target_mob = target
 	if(!ismob(target_mob))
 		to_chat(user, SPAN_WARNING("[target.name] is not a mob!"))
 		return
 
-	if(isXeno(target_mob))
+	if(isxeno(target_mob))
 		to_chat(user, SPAN_WARNING("[target.name] is a xeno!"))
 		return
 
@@ -204,18 +265,20 @@
 		return
 
 	target_mob.change_real_name(target_mob, new_name)
+	GLOB.data_core.manifest_modify(new_name, WEAKREF(target_mob))
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/target_human = target_mob
-		if(target_human.wear_id && target_human.wear_id.registered_ref == WEAKREF(target_human))
-			target_human.wear_id.name = "[target_human.real_name]'s ID Card"
-			target_human.wear_id.registered_name = "[target_human.real_name]"
-			if(target_human.wear_id.assignment)
-				target_human.wear_id.name += " ([target_human.wear_id.assignment])"
+		var/obj/item/card/id/card = target_human.get_idcard()
+		if(card?.registered_ref == WEAKREF(target_human))
+			card.name = "[target_human.real_name]'s [card.id_type]"
+			card.registered_name = "[target_human.real_name]"
+			if(card.assignment)
+				card.name += " ([card.assignment])"
 
 	target_mob.client.prefs.real_name = new_name
 	target_mob.client.prefs.save_character()
 
-	message_staff("[user.ckey] has reset [target_mob.ckey]'s name.")
+	message_admins("[user.ckey] has reset [target_mob.ckey]'s name.")
 
 	to_chat(target_mob, FONT_SIZE_HUGE(SPAN_ADMINHELP("Warning: Your name has been reset by [user.ckey].")))
 
@@ -227,7 +290,7 @@
 	permissions_required = R_BAN
 
 
-/datum/player_action/ban_human_name/act(var/client/user, var/mob/target, var/list/params)
+/datum/player_action/ban_human_name/act(client/user, mob/target, list/params)
 	if(!target.client || !target.ckey)
 		to_chat(user, SPAN_NOTICE("Target is lacking either client or ckey. Aborting."))
 		return
@@ -246,7 +309,7 @@
 		target_client.prefs.human_name_ban = FALSE
 
 		target_client.prefs.save_preferences()
-		message_staff("[user.ckey] has unbanned [target.ckey] from using human names.")
+		message_admins("[user.ckey] has unbanned [target.ckey] from using human names.")
 
 		notes_add(target.ckey, "Human Name Unbanned by [user.ckey]", user.mob)
 
@@ -261,7 +324,7 @@
 		to_chat(user, SPAN_NOTICE("Target is lacking either client or ckey. Aborting."))
 		return
 
-	message_staff("[user.ckey] has banned [target.ckey] from using human names.")
+	message_admins("[user.ckey] has banned [target.ckey] from using human names.")
 
 	notes_add(target.ckey, "Human Name Banned by [user.ckey]", user.mob)
 

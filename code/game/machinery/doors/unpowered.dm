@@ -11,12 +11,13 @@
 /obj/structure/machinery/door/unpowered/attackby(obj/item/I as obj, mob/user as mob)
 	if(src.locked)
 		return
-	..()
+	. = ..()
 	return
 
 /obj/structure/machinery/door/unpowered/shuttle
 	icon = 'icons/turf/shuttle.dmi'
 	name = "door"
 	icon_state = "door1"
-	opacity = 1
-	density = 1
+	opacity = TRUE
+	density = TRUE
+

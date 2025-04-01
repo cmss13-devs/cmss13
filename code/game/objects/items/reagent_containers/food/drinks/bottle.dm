@@ -11,21 +11,22 @@
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
 	///This excludes all the juices and dairy in cartons that are also defined in this file.
 	var/isGlass = TRUE
+	black_market_value = 25
 
-/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/item/projectile/P)
+/obj/item/reagent_container/food/drinks/bottle/bullet_act(obj/projectile/P)
 	. = ..()
 	if(isGlass)
 		smash()
 
 ///Audio/visual bottle breaking effects start here
 /obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target, mob/living/user)
-	var/obj/item/weapon/melee/broken_bottle/B
+	var/obj/item/weapon/broken_bottle/B
 	if(user)
 		user.temp_drop_inv_item(src)
-		B = new /obj/item/weapon/melee/broken_bottle(user.loc)
+		B = new /obj/item/weapon/broken_bottle(user.loc)
 		user.put_in_active_hand(B)
 	else
-		B = new /obj/item/weapon/melee/broken_bottle(src.loc)
+		B = new /obj/item/weapon/broken_bottle(src.loc)
 	if(prob(33))
 		if(target)
 			new/obj/item/shard(target.loc) // Create a glass shard at the target's location!
@@ -34,7 +35,7 @@
 
 	B.icon_state = icon_state
 
-	var/icon/I = new('icons/obj/items/drinks.dmi', icon_state)
+	var/icon/I = new('icons/obj/items/food/drinks.dmi', icon_state)
 	I.Blend(B.broken_outline, ICON_OVERLAY, rand(5), 1)
 	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	B.icon = I
@@ -60,7 +61,7 @@
 
 	target.apply_damage(force, BRUTE, affecting, sharp=0)
 
-	if(affecting == "head" && iscarbon(target) && !isXeno(target))
+	if(affecting == "head" && iscarbon(target) && !isxeno(target))
 		for(var/mob/O in viewers(user, null))
 			if(target != user)
 				O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), SHOW_MESSAGE_VISIBLE)
@@ -92,7 +93,7 @@
 /obj/item/reagent_container/food/drinks/bottle/attackby(obj/item/I, mob/living/user)
 	if(!isGlass || !istype(I, /obj/item/paper))
 		return ..()
-	if(!reagents || !reagents.reagent_list.len)
+	if(!reagents || !length(reagents.reagent_list))
 		to_chat(user, SPAN_NOTICE("\The [src] is empty..."))
 		return
 	var/alcohol_potency = 0
@@ -106,7 +107,7 @@
 	if(alcohol_potency < BURN_LEVEL_TIER_1)
 		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in \the [src]!"))
 		return
-	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
+	alcohol_potency = clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
 
 	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
@@ -122,6 +123,7 @@
 	name = "\improper Griffeater Gin"
 	desc = "A bottle of high-quality gin, produced in the New London Space Station."
 	icon_state = "ginbottle"
+
 	center_of_mass = "x=16;y=4"
 
 /obj/item/reagent_container/food/drinks/bottle/gin/Initialize()
@@ -132,6 +134,7 @@
 	name = "\improper Uncle Git's Special Reserve"
 	desc = "A premium single-malt whiskey, gently matured for four years by hillbillies in the backwaters of Alabama."
 	icon_state = "whiskeybottle"
+	item_state = "whiskeybottle"
 	center_of_mass = "x=16;y=3"
 
 /obj/item/reagent_container/food/drinks/bottle/whiskey/Initialize()
@@ -142,6 +145,7 @@
 	name = "\improper Weyland-Yutani Sake"
 	desc = "Sake made with ancient techniques passed down for thousands of years. Fermented in Iowa by the Weyland-Yutani Corporation."
 	icon_state = "sakebottle"
+	item_state = "sakebottle"
 	center_of_mass = "x=17;y=7"
 
 /obj/item/reagent_container/food/drinks/bottle/sake/Initialize()
@@ -164,6 +168,7 @@
 	name = "\improper Red Star Vodka promotional bottle"
 	desc = "A promotional chess themed bottle of Red Star Vodka."
 	icon_state = "chess"
+	black_market_value = 15
 
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn
 	name = "\improper Black Pawn bottle"
@@ -213,10 +218,18 @@
 	name = "\improper White Queen bottle"
 	icon_state = "w_queen"
 
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/random/Initialize()
+	. = ..()
+	var/newbottle = pick(subtypesof(/obj/item/reagent_container/food/drinks/bottle/vodka/chess))
+	new newbottle(loc)
+	qdel(src)
+
+
 /obj/item/reagent_container/food/drinks/bottle/tequila
 	name = "\improper Caccavo Guaranteed Quality tequila"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"
 	icon_state = "tequilabottle"
+	item_state = "tequilabottle"
 	center_of_mass = "x=16;y=3"
 
 /obj/item/reagent_container/food/drinks/bottle/tequila/Initialize()
@@ -257,6 +270,7 @@
 	name = "Captain Pete's Cuban Spiced Rum"
 	desc = "Named after the famed Captain 'Cuban' Pete, this rum is about as volatile as his final mission."
 	icon_state = "rumbottle"
+	item_state = "rumbottle"
 	center_of_mass = "x=16;y=8"
 
 /obj/item/reagent_container/food/drinks/bottle/rum/Initialize()
@@ -267,6 +281,7 @@
 	name = "Flask of Holy Water"
 	desc = "A flask of the chaplain's holy water."
 	icon_state = "holyflask"
+	item_state = "holyflask"
 	center_of_mass = "x=17;y=10"
 
 /obj/item/reagent_container/food/drinks/bottle/holywater/Initialize()
@@ -287,6 +302,7 @@
 	name = "Robert Robust's Coffee Liqueur"
 	desc = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936, HONK"
 	icon_state = "kahluabottle"
+	item_state = "kahluabottle"
 	center_of_mass = "x=17;y=3"
 
 /obj/item/reagent_container/food/drinks/bottle/kahlua/Initialize()
@@ -317,6 +333,7 @@
 	name = "Doublebeard Bearded Special Wine"
 	desc = "A faint aura of unease and asspainery surrounds the bottle."
 	icon_state = "winebottle"
+	item_state = "winebottle"
 	center_of_mass = "x=16;y=4"
 
 /obj/item/reagent_container/food/drinks/bottle/wine/Initialize()
@@ -332,6 +349,16 @@
 /obj/item/reagent_container/food/drinks/bottle/absinthe/Initialize()
 	. = ..()
 	reagents.add_reagent("absinthe", 100)
+
+/obj/item/reagent_container/food/drinks/bottle/blackout //used for testing alcohol code
+	name = "Blackout Stout"
+	desc = "Renowned through space and time, a bottle of Blackout is enough to knock out almost anyone. A true test for the true drunkard."
+	icon_state = "pwineglass"
+	center_of_mass = "x=16;y=6"
+
+/obj/item/reagent_container/food/drinks/bottle/blackout/Initialize()
+	. = ..()
+	reagents.add_reagent("blackout", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/melonliquor
 	name = "Emeraldine Melon Liquor"
@@ -426,7 +453,11 @@
 	name = "Orange Juice"
 	desc = "Full of vitamins and deliciousness!"
 	icon_state = "orangejuice"
-	item_state = "carton"
+	item_state = "orangejuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=7"
 	isGlass = 0
 
@@ -446,7 +477,11 @@
 	name = "Milk Cream"
 	desc = "It's cream. Made from milk. What else did you think you'd find in there?"
 	icon_state = "cream"
-	item_state = "carton"
+	item_state = "cream"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
@@ -458,7 +493,11 @@
 	name = "Tomato Juice"
 	desc = "Well, at least it LOOKS like tomato juice. You can't tell with all that redness."
 	icon_state = "tomatojuice"
-	item_state = "carton"
+	item_state = "tomatojuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 
@@ -470,7 +509,11 @@
 	name = "Lime Juice"
 	desc = "Sweet-sour goodness."
 	icon_state = "limejuice"
-	item_state = "carton"
+	item_state = "limejuice"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
 	center_of_mass = "x=16;y=8"
 	isGlass = 0
 

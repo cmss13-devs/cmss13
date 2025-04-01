@@ -1,10 +1,10 @@
 /obj/effect/decal/remains/human
 	name = "remains"
-	desc = "They look like human remains. They have a strange aura about them."
+	desc = "They look like human remains. Eerie..."
 	gender = PLURAL
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "remains"
-	anchored = 1
+	anchored = TRUE
 	layer = BELOW_OBJ_LAYER //Puts them under most objects.
 
 /obj/effect/decal/remains/xeno
@@ -13,8 +13,16 @@
 	gender = PLURAL
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "remainsxeno"
-	anchored = 1
+	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
+
+/obj/effect/decal/remains/xeno/Initialize(mapload, icon, icon_state, pixel_x)
+	. = ..()
+
+	src.icon = icon
+	src.icon_state = icon_state
+	src.pixel_x = pixel_x
+
 
 /obj/effect/decal/remains/robot
 	name = "remains"
@@ -22,5 +30,5 @@
 	gender = PLURAL
 	icon = 'icons/mob/robots.dmi'
 	icon_state = "remainsrobot"
-	anchored = 1
+	anchored = TRUE
 	layer = BELOW_OBJ_LAYER

@@ -1,8 +1,8 @@
 /obj/structure/machinery/r_n_d
 	name = "R&D Device"
 	icon = 'icons/obj/structures/machinery/research.dmi'
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	var/list/parts_to_build
 
@@ -132,10 +132,10 @@
 
 /obj/structure/machinery/computer/WYresearch
 	name = "R&D Console"
-	icon = 'icons/obj/structures/machinery/mainframe.dmi'
-	icon_state = "aimainframe"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "comm_traffic"
 	circuit = /obj/item/circuitboard/computer/rdconsole  //It will eventually need it's own circuit.
-	req_access = list(ACCESS_MARINE_RESEARCH)	//Data and setting manipulation requires scientist access.
+	req_access = list(ACCESS_MARINE_RESEARCH) //Data and setting manipulation requires scientist access.
 
 
 /obj/structure/machinery/r_n_d/organic_analyzer
@@ -170,11 +170,11 @@
 
 
 /obj/structure/machinery/blackbox_recorder
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "blackbox"
 	name = "Blackbox Recorder"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100
@@ -184,8 +184,8 @@
 	icon = 'icons/obj/structures/machinery/research.dmi'
 	icon_state = "server"
 	name = "Messaging Server"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 100

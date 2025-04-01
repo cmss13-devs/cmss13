@@ -1,49 +1,53 @@
 /datum/paygrade/freelancer
 	name = "Freelancer Paygrade"
+	fprefix = "Frl."
 	pay_multiplier = 0.75 //these are shitty mercs.
 
 /datum/paygrade/freelancer/standard
-	paygrade = "Freelancer Standard"
-	name = "Freelancer Standard"
+	name = "Freelancer"
+	paygrade = PAY_SHORT_FL_S
 	prefix = "Merc."
 
 /datum/paygrade/freelancer/medic
-	paygrade = "Freelancer Medic"
 	name = "Freelancer Medic"
+	paygrade = PAY_SHORT_FL_M
 	prefix = "Med."
 
 /datum/paygrade/freelancer/leader
-	paygrade = "Freelancer Leader"
 	name = "Freelancer Leader"
+	paygrade = PAY_SHORT_FL_WL
 	prefix = "Warlord"
 	pay_multiplier = 1
+	officer_grade = GRADE_OFFICER
 
 /datum/paygrade/freelancer/elite
 	name = "Elite Freelancer Paygrade"
+	fprefix = "Elt."
 	pay_multiplier = 1.25
 
 /datum/paygrade/freelancer/elite/standard
-	paygrade = "Elite Freelancer Standard"
-	name = "Elite Freelancer Standard"
-	prefix = "MRC."
+	name = "Elite Freelancer"
+	paygrade = PAY_SHORT_EFL_S
+	prefix = "Merc."
 
 /datum/paygrade/freelancer/elite/heavy
-	paygrade = "Elite Freelancer Heavy"
 	name = "Elite Freelancer Heavy"
-	prefix = "HVY."
+	paygrade = PAY_SHORT_EFL_H
+	prefix = "Hvy."
 
 /datum/paygrade/freelancer/elite/engineer
-	paygrade = "Elite Freelancer Engineer"
 	name = "Elite Freelancer Engineer"
-	prefix = "ENGI."
+	paygrade = PAY_SHORT_EFL_E
+	prefix = "Eng."
 
 /datum/paygrade/freelancer/elite/medic
-	paygrade = "Elite Freelancer Medic"
 	name = "Elite Freelancer Medic"
-	prefix = "MED."
+	paygrade = PAY_SHORT_EFL_M
+	prefix = "Med."
 
 /datum/paygrade/freelancer/elite/leader
-	paygrade = "Elite Freelancer Leader"
 	name = "Elite Freelancer Leader"
+	paygrade = PAY_SHORT_EFL_TL
 	prefix = "Warlord"
 	pay_multiplier = 1.5
+	officer_grade = GRADE_OFFICER

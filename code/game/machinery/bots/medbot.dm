@@ -8,8 +8,8 @@
 	desc = "A little medical robot. He looks somewhat underwhelmed."
 	icon = 'icons/obj/structures/machinery/aibots.dmi'
 	icon_state = "medibot0"
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	health = 20
 	maxhealth = 20
 	req_access =list(ACCESS_MARINE_MEDBAY)
@@ -50,21 +50,30 @@
 
 
 
-/obj/structure/machinery/bot/medbot/New()
-	..()
+/obj/structure/machinery/bot/medbot/Initialize(mapload, ...)
+	. = ..()
 	src.icon_state = "medibot[src.on]"
 
-	spawn(4)
-		if(src.skin)
-			src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "medskin_[src.skin]")
-
-		src.botcard = new /obj/item/card/id(src)
-		if(isnull(src.botcard_access) || (src.botcard_access.len < 1))
-			var/datum/job/J = RoleAuthority ? RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
-			botcard.access = J.get_access()
-		else
-			src.botcard.access = src.botcard_access
+	addtimer(CALLBACK(src, PROC_REF(setup_bot)), 0.4 SECONDS)
 	start_processing()
+
+/obj/structure/machinery/bot/medbot/proc/setup_bot()
+	if(src.skin)
+		src.overlays += image('icons/obj/structures/machinery/aibots.dmi', "medskin_[src.skin]")
+
+	src.botcard = new /obj/item/card/id(src)
+	if(!LAZYLEN(src.botcard_access))
+		var/datum/job/J = GLOB.RoleAuthority ? GLOB.RoleAuthority.roles_by_path[/datum/job/civilian/doctor] : new /datum/job/civilian/doctor
+		botcard.access = J.get_access()
+	else
+		src.botcard.access = src.botcard_access
+
+/obj/structure/machinery/bot/medbot/Destroy()
+	botcard_access = null
+	patient = null
+	oldpatient = null
+	path = null
+	return ..()
 
 /obj/structure/machinery/bot/medbot/turn_on()
 	. = ..()
@@ -88,40 +97,40 @@
 		return
 	var/dat
 	dat += "<TT><B>Automatic Medical Unit v1.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];power=1'>[src.on ? "On" : "Off"]</A><BR>"
+	dat += "Status: <A href='byond://?src=\ref[src];power=1'>[src.on ? "On" : "Off"]</A><BR>"
 	dat += "Maintenance panel is [src.open ? "opened" : "closed"]<BR>"
 	dat += "Beaker: "
 	if (src.reagent_glass)
-		dat += "<A href='?src=\ref[src];eject=1'>Loaded \[[src.reagent_glass.reagents.total_volume]/[src.reagent_glass.reagents.maximum_volume]\]</a>"
+		dat += "<A href='byond://?src=\ref[src];eject=1'>Loaded \[[src.reagent_glass.reagents.total_volume]/[src.reagent_glass.reagents.maximum_volume]\]</a>"
 	else
 		dat += "None Loaded"
 	dat += "<br>Behaviour controls are [src.locked ? "locked" : "unlocked"]<hr>"
 	if(!src.locked || isRemoteControlling(user))
 		dat += "<TT>Healing Threshold: "
-		dat += "<a href='?src=\ref[src];adj_threshold=-10'>--</a> "
-		dat += "<a href='?src=\ref[src];adj_threshold=-5'>-</a> "
+		dat += "<a href='byond://?src=\ref[src];adj_threshold=-10'>--</a> "
+		dat += "<a href='byond://?src=\ref[src];adj_threshold=-5'>-</a> "
 		dat += "[src.heal_threshold] "
-		dat += "<a href='?src=\ref[src];adj_threshold=5'>+</a> "
-		dat += "<a href='?src=\ref[src];adj_threshold=10'>++</a>"
+		dat += "<a href='byond://?src=\ref[src];adj_threshold=5'>+</a> "
+		dat += "<a href='byond://?src=\ref[src];adj_threshold=10'>++</a>"
 		dat += "</TT><br>"
 
 		dat += "<TT>Injection Level: "
-		dat += "<a href='?src=\ref[src];adj_inject=-5'>-</a> "
+		dat += "<a href='byond://?src=\ref[src];adj_inject=-5'>-</a> "
 		dat += "[src.injection_amount] "
-		dat += "<a href='?src=\ref[src];adj_inject=5'>+</a> "
+		dat += "<a href='byond://?src=\ref[src];adj_inject=5'>+</a> "
 		dat += "</TT><br>"
 
 		dat += "<TT>OD Protection: "
 		dat += "<b>[safety_checks ? "On" : "Off"]</b> : "
-		dat += "<a href='?src=\ref[src];togglesafety=1'>Toggle?</a>"
+		dat += "<a href='byond://?src=\ref[src];togglesafety=1'>Toggle?</a>"
 		dat += "</TT><br>"
 
 		dat += "Reagent Source: "
-		dat += "<a href='?src=\ref[src];use_beaker=1'>[src.use_beaker ? "Loaded Beaker (When available)" : "Internal Synthesizer"]</a><br>"
+		dat += "<a href='byond://?src=\ref[src];use_beaker=1'>[src.use_beaker ? "Loaded Beaker (When available)" : "Internal Synthesizer"]</a><br>"
 
-		dat += "Treatment report is [src.declare_treatment ? "on" : "off"]. <a href='?src=\ref[src];declaretreatment=[1]'>Toggle</a><br>"
+		dat += "Treatment report is [src.declare_treatment ? "on" : "off"]. <a href='byond://?src=\ref[src];declaretreatment=[1]'>Toggle</a><br>"
 
-		dat += "The speaker switch is [src.shut_up ? "off" : "on"]. <a href='?src=\ref[src];togglevoice=[1]'>Toggle</a><br>"
+		dat += "The speaker switch is [src.shut_up ? "off" : "on"]. <a href='byond://?src=\ref[src];togglevoice=[1]'>Toggle</a><br>"
 
 	show_browser(user, dat, "Medibot v1.0 controls", "automed")
 	return
@@ -202,7 +211,7 @@
 		return
 
 	else
-		..()
+		. = ..()
 		if (health < maxhealth && !HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && W.force)
 			step_to(src, (get_step_away(src,user)))
 
@@ -239,7 +248,7 @@
 			src.speak(message)
 
 		for (var/mob/living/carbon/C in view(7,src)) //Time to find a patient!
-			if ((C.stat == 2) || !isHumanStrict(C))
+			if ((C.stat == 2) || !ishuman_strict(C))
 				continue
 
 			if ((C == src.oldpatient) && (world.time < src.last_found + 100))
@@ -254,9 +263,9 @@
 					src.speak(message)
 					src.visible_message("<b>[src]</b> points at [C.name]!")
 					src.last_newpatient_speak = world.time
-//					if(declare_treatment)
-//						var/area/location = get_area(src)
-//						broadcast_medical_hud_message("[src.name] is treating <b>[C]</b> in <b>[location]</b>", src)
+// if(declare_treatment)
+// var/area/location = get_area(src)
+// broadcast_medical_hud_message("[src.name] is treating <b>[C]</b> in <b>[location]</b>", src)
 				break
 			else
 				continue
@@ -269,31 +278,31 @@
 			src.medicate_patient(src.patient)
 		return
 
-	else if(src.patient && (src.path.len) && (get_dist(src.patient,src.path[src.path.len]) > 2))
+	else if(src.patient && (length(src.path)) && (get_dist(src.patient,src.path[length(src.path)]) > 2))
 		src.path = new()
 		src.currently_healing = 0
 		src.last_found = world.time
 
-	if(src.patient && src.path.len == 0 && (get_dist(src,src.patient) > 1))
+	if(src.patient && length(src.path) == 0 && (get_dist(src,src.patient) > 1))
 		spawn(0)
 			src.path = AStar(src.loc, get_turf(src.patient), /turf/proc/CardinalTurfsWithAccess, /turf/proc/Distance, 0, 30,id=botcard)
 			if (!path) path = list()
-			if(src.path.len == 0)
+			if(length(src.path) == 0)
 				src.oldpatient = src.patient
 				src.patient = null
 				src.currently_healing = 0
 				src.last_found = world.time
 		return
 
-	if(src.path.len > 0 && src.patient)
+	if(length(src.path) > 0 && src.patient)
 		step_to(src, src.path[1])
 		src.path -= src.path[1]
 		spawn(3)
-			if(src.path.len)
+			if(length(src.path))
 				step_to(src, src.path[1])
 				src.path -= src.path[1]
 
-	if(src.path.len > 8 && src.patient)
+	if(length(src.path) > 8 && src.patient)
 		src.frustration++
 
 	return
@@ -420,12 +429,12 @@
 			src.currently_healing = 0
 			return
 
-//	src.speak(reagent_id)
+// src.speak(reagent_id)
 	reagent_id = null
 	return
 
 
-/obj/structure/machinery/bot/medbot/proc/speak(var/message)
+/obj/structure/machinery/bot/medbot/proc/speak(message)
 	if((!src.on) || (!message))
 		return
 	visible_message("[src] beeps, \"[message]\"")
@@ -468,17 +477,17 @@
 
 
 /*
- *	Medbot Assembly -- Can be made out of all three medkits.
+ * Medbot Assembly -- Can be made out of all three medkits.
  */
 
-/obj/item/storage/firstaid/attackby(var/obj/item/robot_parts/S, mob/user as mob)
+/obj/item/storage/firstaid/attackby(obj/item/robot_parts/S, mob/user as mob)
 
 	if ((!istype(S, /obj/item/robot_parts/arm/l_arm)) && (!istype(S, /obj/item/robot_parts/arm/r_arm)))
 		..()
 		return
 
 	//Making a medibot!
-	if(src.contents.len >= 1)
+	if(length(src.contents) >= 1)
 		to_chat(user, SPAN_NOTICE("You need to empty [src] out first."))
 		return
 

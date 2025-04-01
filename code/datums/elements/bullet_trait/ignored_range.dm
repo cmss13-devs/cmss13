@@ -12,17 +12,17 @@
 /datum/element/bullet_trait_ignored_range/Attach(datum/target, range_to_ignore)
 	. = ..()
 	ignored_range = range_to_ignore
-	if(!istype(target, /obj/item/projectile))
+	if(!istype(target, /obj/projectile))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(target, COMSIG_BULLET_CHECK_MOB_SKIPPING, .proc/check_distance)
+	RegisterSignal(target, COMSIG_BULLET_CHECK_MOB_SKIPPING, PROC_REF(check_distance))
 
 /datum/element/bullet_trait_ignored_range/Detach(datum/target)
 	UnregisterSignal(target, COMSIG_BULLET_CHECK_MOB_SKIPPING)
 
 	return ..()
 
-/datum/element/bullet_trait_ignored_range/proc/check_distance(obj/item/projectile/P, mob/living/carbon/human/projectile_target)
+/datum/element/bullet_trait_ignored_range/proc/check_distance(obj/projectile/P, mob/living/carbon/human/projectile_target)
 	SIGNAL_HANDLER
 
 	if(P.distance_travelled <= ignored_range)

@@ -5,8 +5,17 @@
 	desc = "A cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "walkman"
+	item_icons = list(
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_IN_J_STORE = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
+		)
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR
+	flags_obj = OBJ_IS_HELMET_GARB
+	black_market_value = 15
 	actions_types = list(/datum/action/item_action/walkman/play_pause,/datum/action/item_action/walkman/next_song,/datum/action/item_action/walkman/restart_song)
 	var/obj/item/device/cassette_tape/tape
 	var/paused = TRUE
@@ -17,12 +26,6 @@
 	var/pl_index = 1
 	var/volume = 25
 	var/design = 1 // What kind of walkman design style to use
-	item_icons = list(
-			WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
-			WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
-			WEAR_WAIST = 'icons/mob/humans/onmob/ears.dmi',
-			WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi'
-			)
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
@@ -79,7 +82,8 @@
 	update_song(break_sound, current_listener, 0)
 
 /obj/item/device/walkman/proc/update_song(sound/S, mob/M, flags = SOUND_UPDATE)
-	if(!istype(M) || !istype(S)) return
+	if(!istype(M) || !istype(S))
+		return
 	if(M.ear_deaf > 0)
 		flags |= SOUND_MUTE
 	S.status = flags
@@ -88,29 +92,31 @@
 	sound_to(M,S)
 
 /obj/item/device/walkman/proc/pause(mob/user)
-	if(!current_song) return
+	if(!current_song)
+		return
 	paused = TRUE
 	update_song(current_song,current_listener, SOUND_PAUSED | SOUND_UPDATE)
 
 /obj/item/device/walkman/proc/play()
 	if(!current_song)
-		if(current_playlist.len > 0)
+		if(length(current_playlist) > 0)
 			current_song = sound(current_playlist[pl_index], 0, 0, SOUND_CHANNEL_WALKMAN, volume)
 			current_song.status = SOUND_STREAM
 		else
 			return
 	paused = FALSE
 	if(current_song.status & SOUND_PAUSED)
-		to_chat(current_listener,SPAN_INFO("Resuming [pl_index] of [current_playlist.len]"))
+		to_chat(current_listener,SPAN_INFO("Resuming [pl_index] of [length(current_playlist)]"))
 		update_song(current_song,current_listener)
 	else
-		to_chat(current_listener,SPAN_INFO("Now playing [pl_index] of [current_playlist.len]"))
+		to_chat(current_listener,SPAN_INFO("Now playing [pl_index] of [length(current_playlist)]"))
 		update_song(current_song,current_listener,0)
 
 	update_song(current_song,current_listener)
 
 /obj/item/device/walkman/proc/insert_tape(obj/item/device/cassette_tape/CT)
-	if(tape || !istype(CT)) return
+	if(tape || !istype(CT))
+		return
 
 	tape = CT
 	if(ishuman(CT.loc))
@@ -129,7 +135,8 @@
 
 
 /obj/item/device/walkman/proc/eject_tape(mob/user)
-	if(!tape) return
+	if(!tape)
+		return
 
 	break_sound()
 
@@ -145,11 +152,12 @@
 
 /obj/item/device/walkman/proc/next_song(mob/user)
 
-	if(user.is_mob_incapacitated() || current_playlist.len == 0) return
+	if(user.is_mob_incapacitated() || length(current_playlist) == 0)
+		return
 
 	break_sound()
 
-	if(pl_index + 1 <= current_playlist.len)
+	if(pl_index + 1 <= length(current_playlist))
 		pl_index++
 	else
 		pl_index = 1
@@ -174,7 +182,7 @@
 		var/mob/living/carbon/human/H = loc
 		H.regenerate_icons()
 
-/obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot)
+/obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 	if((slot == WEAR_L_EAR || slot == WEAR_R_EAR) && !paused)
 		var/image/I = overlay_image(ret.icon, "+music", color, RESET_COLOR)
@@ -202,7 +210,8 @@
 	set category = "Object"
 	set src in usr
 
-	if(usr.is_mob_incapacitated()) return
+	if(usr.is_mob_incapacitated())
+		return
 
 	attack_self(usr)
 
@@ -225,17 +234,22 @@
 	set category = "Object"
 	set src in usr
 
-	if(usr.is_mob_incapacitated() || !current_song) return
+	if(usr.is_mob_incapacitated() || !current_song)
+		return
 
 	var/tmp = tgui_input_number(usr,"Change the volume (0 - 100)","Volume", volume, 100, 0)
-	if(tmp == null) return
-	if(tmp > 100) tmp = 100
-	if(tmp < 0) tmp = 0
+	if(tmp == null)
+		return
+	if(tmp > 100)
+		tmp = 100
+	if(tmp < 0)
+		tmp = 0
 	volume = tmp
 	update_song(current_song, current_listener)
 
 /obj/item/device/walkman/proc/restart_song(mob/user)
-	if(user.is_mob_incapacitated() || !current_song) return
+	if(user.is_mob_incapacitated() || !current_song)
+		return
 
 	update_song(current_song, current_listener, 0)
 	to_chat(user,SPAN_INFO("You restart the song"))
@@ -268,6 +282,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/play_pause/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.attack_self(owner)
@@ -281,6 +296,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/next_song/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.next_song(owner)
@@ -294,6 +310,7 @@
 	button.name = name
 
 /datum/action/item_action/walkman/restart_song/action_activate()
+	. = ..()
 	if(target)
 		var/obj/item/device/walkman/WM = target
 		WM.restart_song(owner)
@@ -306,7 +323,12 @@
 	desc = "A cassette tape"
 	icon = 'icons/obj/items/walkman.dmi'
 	icon_state = "cassette_flip"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/walkman.dmi',
+		)
 	w_class = SIZE_SMALL
+	flags_obj = OBJ_IS_HELMET_GARB
+	black_market_value = 15
 	var/side1_icon = "cassette"
 	var/flipped = FALSE //Tape side
 	var/list/songs = list()
@@ -339,7 +361,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop1/1-1-1.ogg",\
 								"sound/music/walkman/pop1/1-1-2.ogg",\
 								"sound/music/walkman/pop1/1-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop1/1-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop1/1-2-1.ogg",\
 								"sound/music/walkman/pop1/1-2-2.ogg",\
 								"sound/music/walkman/pop1/1-2-3.ogg"))
 
@@ -352,7 +374,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop2/2-1-1.ogg",\
 								"sound/music/walkman/pop2/2-1-2.ogg",\
 								"sound/music/walkman/pop2/2-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop2/2-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop2/2-2-1.ogg",\
 								"sound/music/walkman/pop2/2-2-2.ogg",\
 								"sound/music/walkman/pop2/2-2-3.ogg"))
 
@@ -365,7 +387,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop3/3-1-1.ogg",\
 								"sound/music/walkman/pop3/3-1-2.ogg",\
 								"sound/music/walkman/pop3/3-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop3/3-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop3/3-2-1.ogg",\
 								"sound/music/walkman/pop3/3-2-2.ogg",\
 								"sound/music/walkman/pop3/3-2-3.ogg"))
 
@@ -378,7 +400,7 @@
 	songs = list("side1" = list("sound/music/walkman/pop4/4-1-1.ogg",\
 								"sound/music/walkman/pop4/4-1-2.ogg",\
 								"sound/music/walkman/pop4/4-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/pop4/4-2-1.ogg",\
+				"side2" = list("sound/music/walkman/pop4/4-2-1.ogg",\
 								"sound/music/walkman/pop4/4-2-2.ogg",\
 								"sound/music/walkman/pop4/4-2-3.ogg"))
 
@@ -391,7 +413,7 @@
 	songs = list("side1" = list("sound/music/walkman/heavymetal/5-1-1.ogg",\
 								"sound/music/walkman/heavymetal/5-1-2.ogg",\
 								"sound/music/walkman/heavymetal/5-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/heavymetal/5-2-1.ogg",\
+				"side2" = list("sound/music/walkman/heavymetal/5-2-1.ogg",\
 								"sound/music/walkman/heavymetal/5-2-2.ogg",\
 								"sound/music/walkman/heavymetal/5-2-3.ogg"))
 
@@ -404,7 +426,7 @@
 	songs = list("side1" = list("sound/music/walkman/hairmetal/6-1-1.ogg",\
 								"sound/music/walkman/hairmetal/6-1-2.ogg",\
 								"sound/music/walkman/hairmetal/6-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/hairmetal/6-2-1.ogg",\
+				"side2" = list("sound/music/walkman/hairmetal/6-2-1.ogg",\
 								"sound/music/walkman/hairmetal/6-2-2.ogg",\
 								"sound/music/walkman/hairmetal/6-2-3.ogg"))
 
@@ -417,7 +439,7 @@
 	songs = list("side1" = list("sound/music/walkman/indie/7-1-1.ogg",\
 								"sound/music/walkman/indie/7-1-2.ogg",\
 								"sound/music/walkman/indie/7-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/indie/7-2-1.ogg",\
+				"side2" = list("sound/music/walkman/indie/7-2-1.ogg",\
 								"sound/music/walkman/indie/7-2-2.ogg",\
 								"sound/music/walkman/indie/7-2-3.ogg"))
 
@@ -430,7 +452,7 @@
 	songs = list("side1" = list("sound/music/walkman/hiphop/8-1-1.ogg",\
 								"sound/music/walkman/hiphop/8-1-2.ogg",\
 								"sound/music/walkman/hiphop/8-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/hiphop/8-2-1.ogg",\
+				"side2" = list("sound/music/walkman/hiphop/8-2-1.ogg",\
 								"sound/music/walkman/hiphop/8-2-2.ogg",\
 								"sound/music/walkman/hiphop/8-2-3.ogg"))
 
@@ -443,7 +465,7 @@
 	songs = list("side1" = list("sound/music/walkman/nam/9-1-1.ogg",\
 								"sound/music/walkman/nam/9-1-2.ogg",\
 								"sound/music/walkman/nam/9-1-3.ogg"),\
-				 "side2" = list("sound/music/walkman/nam/9-2-1.ogg",\
+				"side2" = list("sound/music/walkman/nam/9-2-1.ogg",\
 								"sound/music/walkman/nam/9-2-2.ogg",\
 								"sound/music/walkman/nam/9-2-3.ogg"))
 
@@ -457,7 +479,7 @@
 								"sound/music/walkman/surf/10-1-2.ogg",\
 								"sound/music/walkman/surf/10-1-3.ogg",\
 								"sound/music/walkman/surf/10-1-4.ogg"),\
-				 "side2" = list("sound/music/walkman/surf/10-2-1.ogg",\
+				"side2" = list("sound/music/walkman/surf/10-2-1.ogg",\
 								"sound/music/walkman/surf/10-2-2.ogg",\
 								"sound/music/walkman/surf/10-2-3.ogg",\
 								"sound/music/walkman/surf/10-2-4.ogg"))

@@ -9,11 +9,11 @@
 	var/mob/mymob
 	var/datum/custom_hud/ui_datum
 
-	var/hud_version = HUD_STYLE_STANDARD	//the hud version used (standard, reduced, none)
-	var/hud_shown = TRUE			//Used for the HUD toggle (F12)
-	var/inventory_shown = TRUE		//the inventory
+	var/hud_version = HUD_STYLE_STANDARD //the hud version used (standard, reduced, none)
+	var/hud_shown = TRUE //Used for the HUD toggle (F12)
+	var/inventory_shown = TRUE //the inventory
 	var/show_intent_icons = 0
-	var/hotkey_ui_hidden = 0	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
+	var/hotkey_ui_hidden = 0 //This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
 	var/atom/movable/screen/r_hand_hud_object
 	var/atom/movable/screen/l_hand_hud_object
@@ -31,6 +31,7 @@
 
 	var/atom/movable/screen/slowed_icon
 	var/atom/movable/screen/bleeding_icon
+	var/atom/movable/screen/transfusion_icon
 	var/atom/movable/screen/shrapnel_icon
 	var/atom/movable/screen/tethering_icon
 	var/atom/movable/screen/tethered_icon
@@ -45,7 +46,7 @@
 	var/atom/movable/screen/toggle_burst
 	var/atom/movable/screen/unique_action
 
-	var/atom/movable/screen/zone_sel
+	var/atom/movable/screen/zone_sel/zone_sel
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/throw_icon
 	var/atom/movable/screen/oxygen_icon
@@ -77,8 +78,14 @@
 	mymob = owner
 	hide_actions_toggle = new
 
-	for(var/mytype in subtypesof(/atom/movable/screen/plane_master)- /atom/movable/screen/plane_master/rendering_plate)
+	for(var/mytype in subtypesof(/atom/movable/screen/plane_master)- /atom/movable/screen/plane_master/rendering_plate - /atom/movable/screen/plane_master/open_space)
 		var/atom/movable/screen/plane_master/instance = new mytype()
+		plane_masters["[instance.plane]"] = instance
+		if(owner.client)
+			instance.backdrop(mymob)
+
+	for(var/z_level in 0 to OPEN_SPACE_PLANE_START - OPEN_SPACE_PLANE_END)
+		var/atom/movable/screen/plane_master/open_space/instance = new(null, z_level)
 		plane_masters["[instance.plane]"] = instance
 		if(owner.client)
 			instance.backdrop(mymob)
@@ -90,23 +97,24 @@
 /datum/hud/Destroy()
 	if(mymob.hud_used == src)
 		mymob.hud_used = null
-	if(static_inventory.len)
+	if(length(static_inventory))
 		for(var/thing in static_inventory)
 			qdel(thing)
 		static_inventory.Cut()
-	if(toggleable_inventory.len)
+	if(length(toggleable_inventory))
 		for(var/thing in toggleable_inventory)
 			qdel(thing)
 		toggleable_inventory.Cut()
-	if(hotkeybuttons.len)
+	if(length(hotkeybuttons))
 		for(var/thing in hotkeybuttons)
 			qdel(thing)
 		hotkeybuttons.Cut()
-	if(infodisplay.len)
+	if(length(infodisplay))
 		for(var/thing in infodisplay)
 			qdel(thing)
 		infodisplay.Cut()
 
+	mymob = null
 	qdel(hide_actions_toggle)
 	hide_actions_toggle = null
 
@@ -128,6 +136,7 @@
 	slowed_icon = null
 	shrapnel_icon = null
 	bleeding_icon = null
+	transfusion_icon = null
 	tethering_icon = null
 	tethered_icon = null
 
@@ -167,66 +176,67 @@
 /datum/hud/proc/show_hud(version = 0, mob/viewmob)
 	if(!ismob(mymob))
 		return FALSE
-//	if(!mymob.client)
-//		return FALSE
+// if(!mymob.client)
+// return FALSE
 	var/mob/screenmob = viewmob || mymob
 	if(!screenmob.client)
 		return FALSE
 
-	screenmob.client.screen = list()
+	screenmob.client.clear_screen()
 	screenmob.client.apply_clickcatcher()
 
 	var/display_hud_version = version
-	if(!display_hud_version)	//If 0 or blank, display the next hud version
+	if(!display_hud_version) //If 0 or blank, display the next hud version
 		display_hud_version = hud_version + 1
-	if(display_hud_version > HUD_VERSIONS)	//If the requested version number is greater than the available versions, reset back to the first version
+	if(display_hud_version > HUD_VERSIONS) //If the requested version number is greater than the available versions, reset back to the first version
 		display_hud_version = 1
 
 	switch(display_hud_version)
-		if(HUD_STYLE_STANDARD)	//Default HUD
-			hud_shown = 1	//Governs behavior of other procs
-			if(static_inventory.len)
-				screenmob.client.screen += static_inventory
-			if(toggleable_inventory.len && inventory_shown)
-				screenmob.client.screen += toggleable_inventory
-			if(hotkeybuttons.len && !hotkey_ui_hidden)
-				screenmob.client.screen += hotkeybuttons
-			if(infodisplay.len)
-				screenmob.client.screen += infodisplay
+		if(HUD_STYLE_STANDARD) //Default HUD
+			hud_shown = 1 //Governs behavior of other procs
+			if(length(static_inventory))
+				screenmob.client.add_to_screen(static_inventory)
+			if(length(toggleable_inventory) && inventory_shown)
+				screenmob.client.add_to_screen(toggleable_inventory)
+			if(length(hotkeybuttons) && !hotkey_ui_hidden)
+				screenmob.client.add_to_screen(hotkeybuttons)
+			if(length(infodisplay))
+				screenmob.client.add_to_screen(infodisplay)
 
-		if(HUD_STYLE_REDUCED)	//Reduced HUD
-			hud_shown = 0	//Governs behavior of other procs
-			if(static_inventory.len)
-				screenmob.client.screen -= static_inventory
-			if(toggleable_inventory.len)
-				screenmob.client.screen -= toggleable_inventory
-			if(hotkeybuttons.len)
-				screenmob.client.screen -= hotkeybuttons
-			if(infodisplay.len)
-				screenmob.client.screen += infodisplay
+		if(HUD_STYLE_REDUCED) //Reduced HUD
+			hud_shown = 0 //Governs behavior of other procs
+			if(length(static_inventory))
+				screenmob.client.remove_from_screen(static_inventory)
+			if(length(toggleable_inventory))
+				screenmob.client.remove_from_screen(toggleable_inventory)
+			if(length(hotkeybuttons))
+				screenmob.client.remove_from_screen(hotkeybuttons)
+			if(length(infodisplay))
+				screenmob.client.add_to_screen(infodisplay)
 
 			//These ones are a part of 'static_inventory', 'toggleable_inventory' or 'hotkeybuttons' but we want them to stay
 			if(l_hand_hud_object)
-				screenmob.client.screen += l_hand_hud_object	//we want the hands to be visible
+				screenmob.client.add_to_screen(l_hand_hud_object) //we want the hands to be visible
 			if(r_hand_hud_object)
-				screenmob.client.screen += r_hand_hud_object	//we want the hands to be visible
+				screenmob.client.add_to_screen(r_hand_hud_object) //we want the hands to be visible
 			if(action_intent)
-				screenmob.client.screen += action_intent		//we want the intent switcher visible
+				screenmob.client.add_to_screen(action_intent) //we want the intent switcher visible
 
-		if(HUD_STYLE_NOHUD)	//No HUD
-			hud_shown = 0	//Governs behavior of other procs
-			if(static_inventory.len)
-				screenmob.client.screen -= static_inventory
-			if(toggleable_inventory.len)
-				screenmob.client.screen -= toggleable_inventory
-			if(hotkeybuttons.len)
-				screenmob.client.screen -= hotkeybuttons
-			if(infodisplay.len)
-				screenmob.client.screen -= infodisplay
+		if(HUD_STYLE_NOHUD) //No HUD
+			hud_shown = 0 //Governs behavior of other procs
+			if(length(static_inventory))
+				screenmob.client.remove_from_screen(static_inventory)
+			if(length(toggleable_inventory))
+				screenmob.client.remove_from_screen(toggleable_inventory)
+			if(length(hotkeybuttons))
+				screenmob.client.remove_from_screen(hotkeybuttons)
+			if(length(infodisplay))
+				screenmob.client.remove_from_screen(infodisplay)
 
 	hud_version = display_hud_version
 	persistent_inventory_update(screenmob)
 	mymob.update_action_buttons(TRUE)
+	reorganize_alerts(screenmob)
 	mymob.reload_fullscreens()
 
 	// ensure observers get an accurate and up-to-date view
@@ -244,7 +254,7 @@
 	for(var/thing in plane_masters)
 		var/atom/movable/screen/plane_master/PM = plane_masters[thing]
 		PM.backdrop(mymob)
-		mymob.client.screen += PM
+		mymob.client.add_to_screen(PM)
 
 /datum/hud/human/show_hud(version = 0, mob/viewmob)
 	. = ..()
@@ -264,7 +274,7 @@
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"
-	set hidden = 1
+	set hidden = TRUE
 
 	if(hud_used && client)
 		hud_used.show_hud()
@@ -273,7 +283,7 @@
 		to_chat(usr, SPAN_WARNING("This mob type does not use a HUD."))
 
 
-/datum/hud/proc/draw_act_intent(var/datum/custom_hud/ui_datum, var/ui_alpha)
+/datum/hud/proc/draw_act_intent(datum/custom_hud/ui_datum, ui_alpha)
 	var/atom/movable/screen/using = new /atom/movable/screen/act_intent/corner()
 	using.icon = ui_datum.ui_style_icon
 	if(ui_alpha)
@@ -283,7 +293,7 @@
 	static_inventory += using
 	action_intent = using
 
-/datum/hud/proc/draw_mov_intent(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_mov_intent(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/mov_intent()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_movi
@@ -295,7 +305,7 @@
 	static_inventory += using
 	move_intent = using
 
-/datum/hud/proc/draw_drop(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_drop(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/drop()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_drop_throw
@@ -305,7 +315,7 @@
 		using.color = ui_color
 	static_inventory += using
 
-/datum/hud/proc/draw_throw(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_throw(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	throw_icon = new /atom/movable/screen/throw_catch()
 	throw_icon.icon = ui_datum.ui_style_icon
 	throw_icon.screen_loc = ui_datum.ui_drop_throw
@@ -315,14 +325,14 @@
 		throw_icon.color = ui_color
 	hotkeybuttons += throw_icon
 
-/datum/hud/proc/draw_pull(var/datum/custom_hud/ui_datum)
+/datum/hud/proc/draw_pull(datum/custom_hud/ui_datum)
 	pull_icon = new /atom/movable/screen/pull()
 	pull_icon.icon = ui_datum.ui_style_icon
 	pull_icon.screen_loc = ui_datum.ui_pull
 	pull_icon.update_icon(mymob)
 	hotkeybuttons += pull_icon
 
-/datum/hud/proc/draw_resist(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_resist(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/resist()
 	using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_resist
@@ -332,7 +342,7 @@
 		using.color = ui_color
 	hotkeybuttons += using
 
-/datum/hud/proc/draw_left_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_left_hand(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_L_HAND
 	inv_box.icon = ui_datum.ui_style_icon
@@ -350,14 +360,14 @@
 	l_hand_hud_object = inv_box
 	static_inventory += inv_box
 
-/datum/hud/proc/draw_right_hand(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_right_hand(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_R_HAND
 	inv_box.icon = ui_datum.ui_style_icon
 	inv_box.setDir(WEST)
 	inv_box.screen_loc = ui_datum.ui_rhand
 	inv_box.icon_state = "hand_inactive"
-	if(mymob && !mymob.hand)	//This being 0 or null means the right hand is in use
+	if(mymob && !mymob.hand) //This being 0 or null means the right hand is in use
 		inv_box.icon_state = "hand_active"
 	if(ui_alpha)
 		inv_box.alpha = ui_alpha
@@ -368,7 +378,7 @@
 	r_hand_hud_object = inv_box
 	static_inventory += inv_box
 
-/datum/hud/proc/draw_swaphand(var/handswap_part, var/handswap_part_loc, var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_swaphand(handswap_part, handswap_part_loc, datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	var/atom/movable/screen/using = new /atom/movable/screen/inventory()
 	using.name = "hand"
 	using.icon = ui_datum.ui_style_icon
@@ -381,13 +391,13 @@
 	using.layer = HUD_LAYER
 	static_inventory += using
 
-/datum/hud/proc/draw_healths(var/datum/custom_hud/ui_datum, var/ui_alpha)
+/datum/hud/proc/draw_healths(datum/custom_hud/ui_datum, ui_alpha)
 	healths = new /atom/movable/screen/healths()
 	healths.icon = ui_datum.ui_style_icon
 	healths.screen_loc = ui_datum.UI_HEALTH_LOC
 	infodisplay += healths
 
-/datum/hud/proc/draw_zone_sel(var/datum/custom_hud/ui_datum, var/ui_alpha, var/ui_color)
+/datum/hud/proc/draw_zone_sel(datum/custom_hud/ui_datum, ui_alpha, ui_color)
 	zone_sel = new /atom/movable/screen/zone_sel()
 	zone_sel.icon = ui_datum.ui_style_icon
 	zone_sel.screen_loc = ui_datum.ui_zonesel
@@ -397,3 +407,50 @@
 		zone_sel.color = ui_color
 	zone_sel.update_icon(mymob)
 	static_inventory += zone_sel
+
+// Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
+/datum/hud/proc/reorganize_alerts(mob/viewmob)
+	var/mob/screenmob = viewmob || mymob
+	if(!screenmob.client)
+		return
+	var/list/alerts = mymob.alerts
+	if(!length(alerts))
+		return FALSE
+	if(!hud_shown)
+		for(var/category in alerts)
+			var/atom/movable/screen/alert/alert = alerts[category]
+			screenmob.client.remove_from_screen(alert)
+		return TRUE
+	var/c = 0
+	for(var/category in alerts)
+		var/atom/movable/screen/alert/alert = alerts[category]
+		c++
+		switch(c)
+			if(1)
+				. = ui_alert1
+			if(2)
+				. = ui_alert2
+			if(3)
+				. = ui_alert3
+			if(4)
+				. = ui_alert4
+			if(5)
+				. = ui_alert5 // Right now there's 5 slots
+			else
+				. = ""
+		alert.screen_loc = .
+		screenmob.client.add_to_screen(alert)
+	if(!viewmob)
+		for(var/obs in mymob.observers)
+			reorganize_alerts(obs)
+	return TRUE
+
+/// Wrapper for adding anything to a client's screen
+/client/proc/add_to_screen(screen_add)
+	screen += screen_add
+	SEND_SIGNAL(src, COMSIG_CLIENT_SCREEN_ADD, screen_add)
+
+/// Wrapper for removing anything from a client's screen
+/client/proc/remove_from_screen(screen_remove)
+	screen -= screen_remove
+	SEND_SIGNAL(src, COMSIG_CLIENT_SCREEN_REMOVE, screen_remove)

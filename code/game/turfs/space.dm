@@ -12,7 +12,7 @@
 	layer = UNDER_TURF_LAYER
 	supports_surgery = FALSE
 
-/turf/open/space/basic/New()	//Do not convert to Initialize
+/turf/open/space/basic/New() //Do not convert to Initialize
 	//This is used to optimize the map loader
 	return
 
@@ -77,7 +77,10 @@
 
 /turf/open/space/Entered(atom/movable/A)
 	..()
-	if ((!(A) || src != A.loc))	return
+	if(isnewplayer(A))
+		return
+
+	if ((!(A) || src != A.loc)) return
 
 	inertial_drift(A)
 
@@ -85,8 +88,9 @@
 
 
 		// Okay, so let's make it so that people can travel z levels but not nuke disks!
-		// if(ticker.mode.name == "nuclear emergency")	return
-		if(A.z > 6) return
+		// if(ticker.mode.name == "nuclear emergency") return
+		if(A.z > 6)
+			return
 		if(A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE - 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE - 1))
 
 			if(istype(A, /obj/item/disk/nuclear)) // Don't let nuke disks travel Z levels  ... And moving this shit down here so it only fires when they're actually trying to change z-level.

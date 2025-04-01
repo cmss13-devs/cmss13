@@ -6,21 +6,25 @@ SUBSYSTEM_DEF(ticker)
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME
 
-	var/current_state = GAME_STATE_STARTUP	//State of current round used by process()
-	var/force_ending = FALSE					//Round was ended by admin intervention
-	var/bypass_checks = FALSE 				//Bypass mode init checks
-	var/setup_failed = FALSE 				//If the setup has failed at any point
+	var/current_state = GAME_STATE_STARTUP //State of current round used by process()
+	var/force_ending = FALSE //Round was ended by admin intervention
+
+	/// If TRUE, there is no lobby phase, the game starts immediately.
+	var/start_immediately = FALSE
+
+	var/bypass_checks = FALSE //Bypass mode init checks
+	var/setup_failed = FALSE //If the setup has failed at any point
 	var/setup_started = FALSE
 
 	var/datum/game_mode/mode = null
 
-	var/list/login_music = null						//Music played in pregame lobby
+	var/list/login_music = null //Music played in pregame lobby
 
-	var/delay_end = FALSE					//If set true, the round will not restart on it's own
+	var/delay_end = FALSE //If set true, the round will not restart on it's own
 	var/delay_start = FALSE
-	var/admin_delay_notice = ""				//A message to display to anyone who tries to restart the world after a delay
+	var/admin_delay_notice = "" //A message to display to anyone who tries to restart the world after a delay
 
-	var/time_left							//Pre-game timer
+	var/time_left //Pre-game timer
 	var/start_at
 
 	var/roundend_check_paused = FALSE
@@ -32,7 +36,7 @@ SUBSYSTEM_DEF(ticker)
 	var/graceful = FALSE //Will this server gracefully shut down?
 
 	var/queue_delay = 0
-	var/list/queued_players = list()		//used for join queues when the server exceeds the hard population cap
+	var/list/queued_players = list() //used for join queues when the server exceeds the hard population cap
 
 	// TODO: move this into mapview ss
 	var/toweractive = FALSE
@@ -41,11 +45,12 @@ SUBSYSTEM_DEF(ticker)
 
 	var/automatic_delay_end = FALSE
 
-	 ///If we have already done tip of the round.
+	///If we have already done tip of the round.
 	var/tipped
 
-	var/totalPlayers = 0					//used for pregame stats on statpanel
-	var/totalPlayersReady = 0				//used for pregame stats on statpanel
+	var/totalPlayers = 0 //used for pregame stats on statpanel
+	var/totalPlayersReady = 0 //used for pregame stats on statpanel
+	var/tutorial_disabled = FALSE
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
@@ -64,7 +69,7 @@ SUBSYSTEM_DEF(ticker)
 			if(isnull(start_at))
 				start_at = time_left || world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 2, margin_bottom = 0, html = SPAN_ROUNDHEADER("Welcome to the pre-game lobby of [CONFIG_GET(string/servername)]!"))
-			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Please, setup your character and select ready. Game will start in [round(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Please, setup your character and select ready. Game will start in [floor(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PREGAME_LOBBY)
 			current_state = GAME_STATE_PREGAME
 			fire()
@@ -77,8 +82,12 @@ SUBSYSTEM_DEF(ticker)
 			totalPlayersReady = 0
 			for(var/i in GLOB.new_player_list)
 				var/mob/new_player/player = i
-				if(player.ready) // TODO: port this     == PLAYER_READY_TO_PLAY)
+				if(player.ready) // TODO: port this  == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
+
+			if(start_immediately)
+				time_left = 0
+
 			if(time_left < 0 || delay_start)
 				return
 
@@ -97,25 +106,25 @@ SUBSYSTEM_DEF(ticker)
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
-				ooc_allowed = TRUE
+				GLOB.ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
+				REDIS_PUBLISH("byond.round", "type" = "round-complete", "round_name" = GLOB.round_statistics.round_name)
 				flash_clients()
-				if(text2num(SSperf_logging?.round?.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
-					addtimer(CALLBACK(
-						SSvote,
-						/datum/controller/subsystem/vote/proc/initiate_vote,
-						"gamemode",
-						"SERVER",
-						CALLBACK(src, .proc/handle_map_reboot)
-					), 3 SECONDS)
-				else
-					handle_map_reboot()
+				addtimer(CALLBACK(
+					SSvote,
+					/datum/controller/subsystem/vote/proc/initiate_vote,
+					"gamemode",
+					"SERVER",
+					CALLBACK(src, PROC_REF(handle_map_reboot)),
+					TRUE
+				), 3 SECONDS)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
 /// Attempt to start game asynchronously if applicable
 /datum/controller/subsystem/ticker/proc/request_start()
 	if(current_state == GAME_STATE_PREGAME)
 		time_left = 0
+		delay_start = FALSE
 
 	// Killswitch if hanging or interrupted
 	if(SSnightmare.stat != NIGHTMARE_STATUS_DONE)
@@ -123,7 +132,7 @@ SUBSYSTEM_DEF(ticker)
 			SSnightmare.stat = NIGHTMARE_STATUS_DONE
 			log_admin("Nightmare setup was cancelled as it took more than 30 seconds! Game might be inconsistent!")
 		else
-			var/ret = INVOKE_ASYNC(SSnightmare, /datum/controller/subsystem/nightmare.proc/prepare_game)
+			var/ret = INVOKE_ASYNC(SSnightmare, TYPE_PROC_REF(/datum/controller/subsystem/nightmare, prepare_game))
 			if(!ret)
 				return // Wait for completion
 			log_debug("Nightmare setup finished")
@@ -131,11 +140,9 @@ SUBSYSTEM_DEF(ticker)
 	if(current_state != GAME_STATE_PREGAME)
 		return
 	current_state = GAME_STATE_SETTING_UP
-	INVOKE_ASYNC(src, .proc/setup_start)
+	INVOKE_ASYNC(src, PROC_REF(setup_start))
 
-	for(var/client/C in GLOB.admins)
-		remove_verb(C, roundstart_mod_verbs)
-	admin_verbs_minor_event -= roundstart_mod_verbs
+	REDIS_PUBLISH("byond.round", "type" = "round-start")
 
 	return TRUE
 
@@ -158,7 +165,8 @@ SUBSYSTEM_DEF(ticker)
 		/datum/controller/subsystem/vote/proc/initiate_vote,
 		"groundmap",
 		"SERVER",
-		CALLBACK(src, .proc/Reboot)
+		CALLBACK(src, PROC_REF(Reboot)),
+		TRUE
 	), 3 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/setup()
@@ -169,22 +177,42 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 	if(!mode.can_start(bypass_checks))
-		to_chat(world, "Reverting to pre-game lobby.")
+		to_chat(world, "Requirements to start [GLOB.master_mode] not met. Reverting to pre-game lobby.")
+		// Make only one more attempt
+		if(world.time - 2 * wait > CONFIG_GET(number/lobby_countdown) SECONDS)
+			flash_clients()
+			delay_start = TRUE
+			var/active_admins = 0
+			for(var/client/admin_client in GLOB.admins)
+				if(!admin_client.is_afk() && check_client_rights(admin_client, R_SERVER, FALSE))
+					active_admins = TRUE
+					break
+			if(active_admins)
+				to_chat(world, SPAN_CENTERBOLD("The game start has been delayed."))
+				message_admins(SPAN_ADMINNOTICE("Alert: Insufficent players ready to start [GLOB.master_mode].\nEither change mode and map or start round and bypass checks."))
+			else
+				var/fallback_mode = CONFIG_GET(string/gamemode_default)
+				SSticker.save_mode(fallback_mode)
+				GLOB.master_mode = fallback_mode
+				to_chat(world, SPAN_BOLDNOTICE("Notice: The Gamemode for next round has been set to [fallback_mode]"))
+				handle_map_reboot()
+		else
+			to_chat(world, "Attempting again...")
 		QDEL_NULL(mode)
-		RoleAuthority.reset_roles()
+		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
 	CHECK_TICK
 	if(!mode.pre_setup() && !bypass_checks)
 		QDEL_NULL(mode)
 		to_chat(world, "<b>Error in pre-setup for [GLOB.master_mode].</b> Reverting to pre-game lobby.")
-		RoleAuthority.reset_roles()
+		GLOB.RoleAuthority.reset_roles()
 		return FALSE
 
 	CHECK_TICK
 	mode.announce()
 	if(mode.taskbar_icon)
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, .proc/handle_mode_icon)
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_mode_icon))
 		set_clients_taskbar_icon(mode.taskbar_icon)
 
 	if(GLOB.perf_flags & PERF_TOGGLE_LAZYSS)
@@ -192,7 +220,9 @@ SUBSYSTEM_DEF(ticker)
 
 
 	if(CONFIG_GET(flag/autooocmute))
-		ooc_allowed = FALSE
+		GLOB.ooc_allowed = FALSE
+
+	round_start_time = world.time
 
 	CHECK_TICK
 	for(var/I in round_start_events)
@@ -209,7 +239,7 @@ SUBSYSTEM_DEF(ticker)
 		var/roles_to_roll = null
 		if(length(mode.roles_to_roll))
 			roles_to_roll = mode.roles_to_roll
-		RoleAuthority.setup_candidates_and_roles(roles_to_roll) //Distribute jobs
+		GLOB.RoleAuthority.setup_candidates_and_roles(roles_to_roll) //Distribute jobs
 		if(mode.flags_round_type & MODE_NEW_SPAWN)
 			create_characters() // Create and equip characters
 		else
@@ -217,9 +247,7 @@ SUBSYSTEM_DEF(ticker)
 			equip_characters()
 
 	GLOB.data_core.manifest()
-
 	log_world("Game start took [(world.timeofday - init_start) / 10]s")
-	round_start_time = world.time
 	//SSdbcore.SetRoundStart()
 
 	current_state = GAME_STATE_PLAYING
@@ -228,12 +256,9 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		INVOKE_ASYNC(np, /mob/new_player.proc/new_player_panel_proc, TRUE)
-
 	setup_economy()
 
-	shuttle_controller?.setup_shuttle_docks()
+	SSoldshuttle.shuttle_controller?.setup_shuttle_docks()
 
 	PostSetup()
 	return TRUE
@@ -249,16 +274,17 @@ SUBSYSTEM_DEF(ticker)
 	// Switch back to default automatically
 	save_mode(CONFIG_GET(string/gamemode_default))
 
-	if(round_statistics)
-		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.round_name]</B>")))
+	if(GLOB.round_statistics)
+		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [GLOB.round_statistics.round_name]</B>")))
 
-	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
+	GLOB.supply_controller.start_processing()
+	GLOB.supply_controller_upp.start_processing()
 
 	for(var/i in GLOB.closet_list) //Set up special equipment for lockers and vendors, depending on gamemode
 		var/obj/structure/closet/C = i
-		INVOKE_ASYNC(C, /obj/structure/closet.proc/select_gamemode_equipment, mode.type)
-	for(var/obj/structure/machinery/vending/V in machines)
-		INVOKE_ASYNC(V, /obj/structure/machinery/vending.proc/select_gamemode_equipment, mode.type)
+		INVOKE_ASYNC(C, TYPE_PROC_REF(/obj/structure/closet, select_gamemode_equipment), mode.type)
+	for(var/obj/structure/machinery/vending/V in GLOB.machines)
+		INVOKE_ASYNC(V, TYPE_PROC_REF(/obj/structure/machinery/vending, select_gamemode_equipment), mode.type)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_POST_SETUP)
 
@@ -315,12 +341,12 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/GetTimeLeft()
 	if(isnull(SSticker.time_left))
-		return round(max(0, start_at - world.time) / 10)
-	return round(time_left / 10)
+		return floor(max(0, start_at - world.time) / 10)
+	return floor(time_left / 10)
 
 
 /datum/controller/subsystem/ticker/proc/SetTimeLeft(newtime)
-	if(newtime >= 0 && isnull(time_left))	//remember, negative means delayed
+	if(newtime >= 0 && isnull(time_left)) //remember, negative means delayed
 		start_at = world.time + newtime
 	else
 		time_left = newtime
@@ -348,7 +374,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(graceful)
 		to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Shutting down...")]</h3>")
-		world.Reboot(FALSE)
+		world.Reboot()
 		return
 
 	if(!delay)
@@ -371,32 +397,38 @@ SUBSYSTEM_DEF(ticker)
 	log_game("Rebooting World. [reason]")
 	to_chat_forced(world, "<h3>[SPAN_BOLDNOTICE("Rebooting...")]</h3>")
 
-	world.Reboot(TRUE)
+	world.Reboot()
 
 /datum/controller/subsystem/ticker/proc/create_characters()
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		return
 
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
 
-		INVOKE_ASYNC(src, .proc/spawn_and_equip_char, player)
+		INVOKE_ASYNC(src, PROC_REF(spawn_and_equip_char), player)
 
-/datum/controller/subsystem/ticker/proc/spawn_and_equip_char(var/mob/new_player/player)
-	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
+/datum/controller/subsystem/ticker/proc/spawn_and_equip_char(mob/new_player/player)
+	var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[player.job]
+
+	player.client?.prefs.update_slot(J.title, 10 SECONDS)
+
+	if(J.job_options && player?.client?.prefs?.pref_special_job_options[J.title])
+		J.handle_job_options(player.client.prefs.pref_special_job_options[J.title])
 	if(J.handle_spawn_and_equip)
 		J.spawn_and_equip(player)
 	else
 		var/mob/M = J.spawn_in_player(player)
 		if(istype(M))
 			J.equip_job(M)
-			EquipCustomItems(M)
+			if(player.ckey in GLOB.donator_items)
+				to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 
 			if(M.client)
 				var/client/C = M.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
-					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 	QDEL_IN(player, 5)
 
 /datum/controller/subsystem/ticker/proc/old_create_characters()
@@ -417,15 +449,17 @@ SUBSYSTEM_DEF(ticker)
 
 	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
 		if(player.mind)
-			if(player.job == "Commanding Officers")
+			if(player.job == JOB_CO)
 				captainless = FALSE
 			if(player.job)
-				RoleAuthority.equip_role(player, RoleAuthority.roles_by_name[player.job], late_join = FALSE)
-				EquipCustomItems(player)
+				INVOKE_ASYNC(GLOB.RoleAuthority, TYPE_PROC_REF(/datum/authority/branch/role, equip_role), player, GLOB.RoleAuthority.roles_by_name[player.job], FALSE)
+				if(player.ckey in GLOB.donator_items)
+					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+
 			if(player.client)
 				var/client/C = player.client
 				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
-					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 				if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
 					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
 	if(captainless)
@@ -443,7 +477,7 @@ SUBSYSTEM_DEF(ticker)
 		CRASH("send_tip_of_the_round() failed somewhere")
 
 	if(message)
-		to_chat(world, "<span class='purple'><b>Tip of the round: </b>[html_encode(message)]</span>")
+		to_chat(world, SPAN_PURPLE("<b>Tip of the round: </b>[html_encode(message)]"))
 		return TRUE
 	else
 		return FALSE
@@ -457,19 +491,24 @@ SUBSYSTEM_DEF(ticker)
 	 * SScellauto: can't touch this because it would directly affect explosion spread speed
 	 */
 
-	SSquadtree?.wait           = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
-	SSlighting?.wait           = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
-	SSstatpanels?.wait         = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
-	SSsoundscape?.wait         =   2 SECONDS // From 1, soudscape triggering checks, scales on player count
-	SStgui?.wait               = 1.2 SECONDS // From 0.9, UI refresh rate
+	SSquadtree?.wait    = 0.8 SECONDS // From 0.5, relevant based on player movement speed (higher = more error in sound location, motion detector pings, sentries target acquisition)
+	SSlighting?.wait    = 0.6 SECONDS // From 0.4, same but also heavily scales on player/scene density (higher = less frequent lighting updates which is very noticeable as you move)
+	SSstatpanels?.wait  = 1.5 SECONDS // From 0.6, refresh rate mainly matters for ALT+CLICK turf contents (which gens icons, intensive)
+	SSsoundscape?.wait  =   2 SECONDS // From 1, soudscape triggering checks, scales on player count
+	SStgui?.wait    = 1.2 SECONDS // From 0.9, UI refresh rate
 
 	log_debug("Switching to lazy Subsystem timings for performance")
 
-/datum/controller/subsystem/ticker/proc/set_clients_taskbar_icon(var/taskbar_icon)
+/datum/controller/subsystem/ticker/proc/set_clients_taskbar_icon(taskbar_icon)
 	for(var/client/C as anything in GLOB.clients)
 		winset(C, null, "mainwindow.icon=[taskbar_icon]")
 
-/datum/controller/subsystem/ticker/proc/handle_mode_icon(var/dcs, var/client/C)
+/datum/controller/subsystem/ticker/proc/handle_mode_icon(dcs, client/C)
 	SIGNAL_HANDLER
 
 	winset(C, null, "mainwindow.icon=[SSticker.mode.taskbar_icon]")
+
+/datum/controller/subsystem/ticker/proc/hijack_ocurred()
+	if(mode)
+		mode.is_in_endgame = TRUE
+		mode.force_end_at = (world.time + 25 MINUTES)

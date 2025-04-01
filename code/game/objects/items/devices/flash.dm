@@ -2,17 +2,18 @@
 	name = "flash"
 	desc = "Used for blinding and being an asshole. Recharges one flash every 30 seconds. You must wait 1 second between uses for the capacitor to recharge."
 	icon_state = "flash"
-	item_state = "flash_device"	//Replace me later
+	item_state = "flash_device1" //Replace me later (Yes sir! *Salute*)
 	throwforce = 5
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
+	black_market_value = 10
 
 	var/skilllock = SKILL_POLICE_FLASH
 	var/flashes_stored = 5
 	var/max_flashes_stored = 5 //how many you can do per minute
-	var/broken = FALSE     //Is the flash burnt out?
+	var/broken = FALSE  //Is the flash burnt out?
 	var/last_used = 0 //last world.time it was used.
 	var/recharge_time_per_flash = 30 SECONDS
 	var/cooldown_between_flashes = 0.5 SECONDS
@@ -20,6 +21,7 @@
 /obj/item/device/flash/update_icon()
 	if(broken)
 		icon_state = "[icon_state]_burnt"
+		item_state = "flashburnt1"
 
 /obj/item/device/flash/get_examine_text(mob/user)
 	. = ..()
@@ -34,7 +36,7 @@
 	flashes_stored++
 	if(flashes_stored <= max_flashes_stored)
 		visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] pings as it recharges!"), SPAN_NOTICE("You hear a ping"), 3)
-	flashes_stored = min(max_flashes_stored, round(flashes_stored)) //sanity
+	flashes_stored = min(max_flashes_stored, floor(flashes_stored)) //sanity
 
 /obj/item/device/flash/proc/check_if_can_use_flash(mob/user) //checks for using the flash
 	if(!ishuman(user))
@@ -50,7 +52,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, var/aoe = FALSE) //actually does the stun and logs it
+/obj/item/device/flash/proc/do_flash(mob/living/M, mob/user, aoe = FALSE) //actually does the stun and logs it
 	//spamming the flash before it's fully charged increases the chance of it  breaking
 	//It will never break on the first use.
 	if(flashes_stored)
@@ -59,12 +61,12 @@
 			return
 		last_used = world.time
 		flashes_stored--
-		if(prob(10 - (flashes_stored*2)))	//it has a 10% chance to break on the final flash
+		if(prob(10 - (flashes_stored*2))) //it has a 10% chance to break on the final flash
 			broken = TRUE
 			to_chat(user, SPAN_WARNING("The bulb has burnt out!"))
 			update_icon()
 			return
-		addtimer(CALLBACK(src, .proc/add_charge), recharge_time_per_flash)
+		addtimer(CALLBACK(src, PROC_REF(add_charge)), recharge_time_per_flash)
 		to_chat(user, SPAN_DANGER("[flashes_stored] / [max_flashes_stored] flashes remaining."))
 	else
 		to_chat(user, SPAN_WARNING("*click* *click*"))
@@ -93,24 +95,14 @@
 		if(iscarbon(M))
 			flashfail = !M.flash_eyes()
 			if(!flashfail)
-				M.apply_effect(10, WEAKEN)
+				M.KnockDown(10)
+				M.Stun(10)
 
 		else if(isSilicon(M))
 			M.apply_effect(rand(5,10), WEAKEN)
 
 		else //if not carbon or sillicn
 			flashfail = TRUE
-
-		if(isrobot(user))
-			spawn(0)
-				var/atom/movable/overlay/animation = new(user.loc)
-				animation.layer = user.layer + 1
-				animation.icon_state = "blank"
-				animation.icon = 'icons/mob/mob.dmi'
-				animation.master = user
-				flick("blspell", animation)
-				sleep(5)
-				qdel(animation)
 
 		if(!flashfail)
 			if(!isSilicon(M))
@@ -128,11 +120,13 @@
 //targeted flash
 
 /obj/item/device/flash/attack(mob/living/M, mob/user)
-	if(!user || !M)	return	//sanity
-	if(!istype(M)) return
+	if(!user || !M)
+		return //sanity
+	if(!istype(M))
+		return
 
 	if(check_if_can_use_flash(user))
-		if(isXeno(M))
+		if(isxeno(M))
 			to_chat(user, SPAN_WARNING("You can't find any eyes!"))
 			return
 
@@ -141,6 +135,8 @@
 			return
 
 		do_flash(M, user, FALSE)
+
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 //AOE flash
 
@@ -154,7 +150,9 @@
 		do_flash(user = user, aoe = TRUE)
 
 /obj/item/device/flash/emp_act(severity)
-	if(broken)	return
+	. = ..()
+	if(broken)
+		return
 	switch(flashes_stored)
 		if(0 to 5)
 			if(prob(20 - (2*flashes_stored)))
@@ -166,28 +164,5 @@
 				var/mob/living/carbon/M = loc
 				if(M.flash_eyes())
 					M.apply_effect(10, WEAKEN)
-					M.visible_message("<span class='disarm'>[M] is blinded by \the [src]!</span>")
-	..()
+					M.visible_message(SPAN_DISARM("[M] is blinded by \the [src]!"))
 
-/obj/item/device/flash/synthetic
-	name = "synthetic flash"
-	desc = "When a problem arises, SCIENCE is the solution. Only good for one use."
-	icon_state = "sflash"
-
-/obj/item/device/flash/synthetic/attack(mob/living/M as mob, mob/user as mob)
-	..()
-	if(!broken)
-		broken = TRUE
-		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		update_icon()
-
-/obj/item/device/flash/synthetic/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
-	..()
-	if(!broken)
-		broken = TRUE
-		to_chat(user, SPAN_DANGER("The bulb has burnt out!"))
-		update_icon()
-
-/obj/item/device/flash/old
-	name = "old-looking flash"
-	icon_state = "flash_old"

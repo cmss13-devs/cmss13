@@ -12,10 +12,10 @@
 	var/target_rotation = 0
 	var/list/shuttle_turfs = null
 
-	var/docking_controller_tag	//tag of the controller used to coordinate docking
-	var/datum/computer/file/embedded_program/docking/docking_controller	//the controller itself. (micro-controller, not game controller)
+	var/docking_controller_tag //tag of the controller used to coordinate docking
+	var/datum/computer/file/embedded_program/docking/docking_controller //the controller itself. (micro-controller, not game controller)
 
-	var/arrive_time = 0	//the time at which the shuttle arrives when long jumping
+	var/arrive_time = 0 //the time at which the shuttle arrives when long jumping
 
 	//Important note: Shuttle code is a mess, recharge vars will only work fully on ferry type shuttles, aka everything but specops snowflake
 	var/recharge_time = SHUTTLE_RECHARGE //Default recharge time attached to the shuttle itself
@@ -29,37 +29,37 @@
 	var/iselevator = 0 //Used to remove some shuttle related procs and texts to make it compatible with elevators
 	var/almayerelevator = 0 //elevators on the almayer without limitations
 
-	var/list/last_passangers = list() //list of living creatures that were our last passengers
-
 	var/require_link = FALSE
 	var/linked = FALSE
 	var/ambience_muffle = MUFFLE_HIGH
 
-/datum/shuttle/proc/short_jump(var/area/origin,var/area/destination)
-	if(moving_status != SHUTTLE_IDLE) return
+/datum/shuttle/proc/short_jump(area/origin, area/destination)
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	//it would be cool to play a sound here
 	moving_status = SHUTTLE_WARMUP
 	spawn(warmup_time)
 		if (moving_status == SHUTTLE_IDLE)
-			return	//someone cancelled the launch
+			return //someone cancelled the launch
 
 		moving_status = SHUTTLE_INTRANSIT //shouldn't matter but just to be safe
 		move(origin, destination)
 		moving_status = SHUTTLE_IDLE
 
-/datum/shuttle/proc/long_jump(var/area/departing, var/area/destination, var/area/interim, var/travel_time, var/direction)
-	if(moving_status != SHUTTLE_IDLE) return
+/datum/shuttle/proc/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 	spawn(warmup_time)
 		if (moving_status == SHUTTLE_IDLE)
 			recharging = 0
-			return	//someone canceled the launch
+			return //someone canceled the launch
 
 		if(transit_optimized)
 			arrive_time = world.time + travel_time * SHUTTLE_OPTIMIZE_FACTOR_TRAVEL
@@ -67,7 +67,7 @@
 			arrive_time = world.time + travel_time
 		moving_status = SHUTTLE_INTRANSIT
 		move(departing, interim, direction)
-		addtimer(CALLBACK(src, .proc/close_doors, interim), 1)
+		addtimer(CALLBACK(src, PROC_REF(close_doors), interim), 1)
 
 		while (world.time < arrive_time)
 			sleep(5)
@@ -75,7 +75,7 @@
 		sleep(100)
 
 		move(interim, destination, direction)
-		addtimer(CALLBACK(src, .proc/open_doors, destination), 1)
+		addtimer(CALLBACK(src, PROC_REF(open_doors), destination), 1)
 
 		moving_status = SHUTTLE_IDLE
 
@@ -88,31 +88,32 @@
 		transit_optimized = 0 //De-optimize the flight plans
 
 /* Pseudo-code. Auto-bolt shuttle airlocks when in motion.
-/datum/shuttle/proc/toggle_doors(var/close_doors, var/bolt_doors, var/area/whatArea)
-	if(!whatArea) return <-- logic checks!
-  		for(all doors in whatArea)
-  			if(door.id is the same as src.id)
+/datum/shuttle/proc/toggle_doors(close_doors, bolt_doors, area/whatArea)
+	if(!whatArea)
+		return <-- logic checks!
+		for(all doors in whatArea)
+			if(door.id is the same as src.id)
 				if(close_doors)
-			    	toggle dat shit
-			   	if(bolt_doors)
-			   		bolt dat shit
+					toggle dat shit
+				if(bolt_doors)
+					bolt dat shit
 */
 
 //Actual code. lel
-/datum/shuttle/proc/close_doors(var/area/area)
+/datum/shuttle/proc/close_doors(area/area)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!area || !istype(area)) //somehow
 		return
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(!D.density && !D.locked)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(!P.density)
-			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)
+			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 
-	if (iselevator)	// Super snowflake code
+	if (iselevator) // Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_on()
 
@@ -120,28 +121,28 @@
 			G.start()
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
-			INVOKE_ASYNC(src, .proc/force_close_launch, D)
+			INVOKE_ASYNC(src, PROC_REF(force_close_launch), D)
 
-/datum/shuttle/proc/force_close_launch(var/obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
+/datum/shuttle/proc/force_close_launch(obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
 	AL.safe = FALSE
 	AL.unlock()
 	AL.close()
 	AL.lock()
 	AL.safe = TRUE
 
-/datum/shuttle/proc/open_doors(var/area/area)
+/datum/shuttle/proc/open_doors(area/area)
 	if(!area || !istype(area)) //somehow
 		return
 
 	for(var/obj/structure/machinery/door/unpowered/D in area)
 		if(D.density && !D.locked)
-			INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 	for(var/obj/structure/machinery/door/poddoor/shutters/P in area)
 		if(P.density)
-			INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/open)
+			INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
-	if (iselevator)	// Super snowflake code
+	if (iselevator) // Super snowflake code
 		for (var/obj/structure/machinery/computer/shuttle_control/ice_colony/C in area)
 			C.animate_off()
 
@@ -150,9 +151,9 @@
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
 			if (D.locked)
-				INVOKE_ASYNC(D, /obj/structure/machinery/door/airlock/.proc/unlock)
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, unlock))
 			if (D.density)
-				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(D, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 
 /datum/shuttle/proc/dock()
 	if (!docking_controller)
@@ -174,13 +175,13 @@
 
 /datum/shuttle/proc/skip_docking_checks()
 	if (!docking_controller || !current_dock_target())
-		return 1	//shuttles without docking controllers or at locations without docking ports act like old-style shuttles
+		return 1 //shuttles without docking controllers or at locations without docking ports act like old-style shuttles
 	return 0
 
 //just moves the shuttle from A to B, if it can be moved
 //A note to anyone overriding move in a subtype. move() must absolutely not, under any circumstances, fail to move the shuttle.
 //If you want to conditionally cancel shuttle launches, that logic must go in short_jump() or long_jump()
-/datum/shuttle/proc/move(var/area/origin, var/area/destination, var/direction=null)
+/datum/shuttle/proc/move(area/origin, area/destination, direction=null)
 
 	if(origin == destination)
 		return
@@ -195,16 +196,14 @@
 		T.ScrapeAway()
 
 	for(var/mob/living/carbon/bug in destination)
-		bug.gib(create_cause_data(initial(origin.name)))
+		bug.gib(create_cause_data("squashing", initial(origin.name)))
 
 	for(var/mob/living/simple_animal/pest in destination)
-		pest.gib(create_cause_data(initial(origin.name)))
+		pest.gib(create_cause_data("squashing", initial(origin.name)))
 
 	origin.move_contents_to(destination, direction=direction)
 
-	last_passangers.Cut()
-	for(var/mob/M in destination)
-		last_passangers += M
+	for(var/mob/living/M in destination)
 		if(M.client)
 			spawn(0)
 				if(M.buckled && !iselevator)
@@ -215,17 +214,18 @@
 					shake_camera(M, iselevator? 2 : 10, 1)
 		if(istype(M, /mob/living/carbon) && !iselevator)
 			if(!M.buckled)
-				M.apply_effect(3, WEAKEN)
+				M.Stun(3)
+				M.KnockDown(3)
 
 	for(var/turf/T in origin) // WOW so hacky - who cares. Abby
 		if(iselevator)
 			if(istype(T,/turf/open/space))
 				if(is_mainship_level(T.z))
-					new /turf/open/floor/almayer/empty(T)
+					T.ChangeTurf(/turf/open/floor/almayer/empty/requisitions)
 				else
-					new /turf/open/gm/empty(T)
+					T.ChangeTurf(/turf/open/gm/empty)
 		else if(istype(T,/turf/open/space))
-			new /turf/open/floor/plating(T)
+			T.ChangeTurf(/turf/open/floor/plating)
 
 	return
 

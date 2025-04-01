@@ -1,21 +1,18 @@
 ///////////////////////////////////////////////Condiments
 //Notes by Darem: The condiments food-subtype is for stuff you don't actually eat but you use to modify existing food. They all
-//	leave empty containers when used up and can be filled/re-filled with other items. Formatting for first section is identical
-//	to mixed-drinks code. If you want an object that starts pre-loaded, you need to make it in addition to the other code.
+// leave empty containers when used up and can be filled/re-filled with other items. Formatting for first section is identical
+// to mixed-drinks code. If you want an object that starts pre-loaded, you need to make it in addition to the other code.
 
 //Food items that aren't eaten normally and leave an empty container behind.
 /obj/item/reagent_container/food/condiment
 	name = "Condiment Container"
 	desc = "Just your average condiment container."
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	icon_state = "emptycondiment"
 	flags_atom = FPRINT|OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = "x=16;y=6"
 	volume = 50
-
-/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/user)
-	return
 
 /obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
@@ -23,7 +20,7 @@
 		return FALSE
 
 	if(M == user)
-		to_chat(M, SPAN_NOTICE(" You swallow some of contents of the [src]."))
+		to_chat(M, SPAN_NOTICE("You swallow some of contents of [src]."))
 
 	else if(istype(M, /mob/living/carbon/human))
 		user.affected_message(M,
@@ -52,7 +49,7 @@
 	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 	return TRUE
 
-/obj/item/reagent_container/food/condiment/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/living/user, list/mods)
 	return
 
 /obj/item/reagent_container/food/condiment/afterattack(obj/target, mob/user , flag)
@@ -80,7 +77,7 @@
 			to_chat(user, SPAN_DANGER("[src] is empty."))
 			return
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, SPAN_DANGER("you can't add anymore to [target]."))
+			to_chat(user, SPAN_DANGER("You can't add any more to [target]."))
 			return
 		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
@@ -88,7 +85,7 @@
 /obj/item/reagent_container/food/condiment/on_reagent_change()
 	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco" || icon_state == "coldsauce_cole")
 		return
-	if(reagents.reagent_list.len > 0)
+	if(length(reagents.reagent_list) > 0)
 		switch(reagents.get_master_reagent_id())
 			if("ketchup")
 				name = "Ketchup"
@@ -131,7 +128,7 @@
 				center_of_mass = "x=16;y=6"
 			else
 				name = "Misc Condiment Bottle"
-				if (reagents.reagent_list.len==1)
+				if (length(reagents.reagent_list)==1)
 					desc = "Looks like it is [reagents.get_master_reagent_name()], but you are not sure."
 				else
 					desc = "A mixture of various condiments. [reagents.get_master_reagent_name()] is one of them."
@@ -159,8 +156,8 @@
 	. = ..()
 	reagents.add_reagent("sugar", 50)
 
-/obj/item/reagent_container/food/condiment/saltshaker		//Separate from above since it's a small shaker rather then
-	name = "Salt Shaker"											//	a large one.
+/obj/item/reagent_container/food/condiment/saltshaker //Separate from above since it's a small shaker rather then
+	name = "Salt Shaker" // a large one.
 	desc = "Salt. From space oceans, presumably."
 	icon_state = "saltshakersmall"
 	possible_transfer_amounts = list(1,20) //for clown turning the lid off
@@ -184,7 +181,7 @@
 	reagents.add_reagent("blackpepper", 20)
 
 /obj/item/reagent_container/food/condiment/hotsauce
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/condiments.dmi'
 	name = "hotsauce parent object"
 	possible_transfer_amounts = list(1,5,60) //60 allows marines to chug the bottle in one go.
 	volume = 60
@@ -202,6 +199,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce/franks
 	name = "\improper Frank's Red Hot bottle"
 	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
+	desc_lore = "Supposedly designed as a middle-ground flavor between ketchup and cayenne, this brand of spicy goodness achieved critical acclaim throughout UA space within both colonies and vessels alike. The sudden and widespread adoption was curiously timed with the near-simultaneous shelving of the original Frank's 'ULTRA' hot sauce."
 	icon_state = "hotsauce_franks"
 	item_state = "hotsauce_franks"
 
@@ -216,6 +214,16 @@
 	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
 	icon_state = "hotsauce_tabasco"
 	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho
+	name = "\improper Frank's ULTRA Hot bottle"
+	desc = "A bottle of Weyland-Yutani brand Frank's ULTRA Hot sauce, taken off the market after reports of what was described as 'something closer to ignition than digestion' happening to those who drink it."
+	icon_state = "hotsauce_franks"
+	item_state = "hotsauce_franks"
+
+/obj/item/reagent_container/food/condiment/hotsauce/franks/macho/Initialize()
+	. = ..()
+	reagents.add_reagent("machosauce", 60)
 
 /obj/item/reagent_container/food/condiment/coldsauce
 	name = "Cole's Cold bottle"

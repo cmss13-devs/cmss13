@@ -1,9 +1,9 @@
 /datum/mind
 	var/key
 	var/ckey
-	var/name				//replaces mob/var/original_name
+	var/name //replaces mob/var/original_name
 	var/mob/living/current
-	var/mob/living/original	//TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
+	var/mob/living/original //TODO: remove.not used in any meaningful way ~Carn. First I'll need to tweak the way silicon-mobs handle minds.
 	var/mob/dead/observer/ghost_mob = null // If we're in a ghost, a reference to it
 	var/active = FALSE
 	var/roundstart_picked = FALSE
@@ -20,7 +20,7 @@
 	var/datum/objective_memory_interface/objective_interface
 	var/datum/research_objective_memory_interface/research_objective_interface
 
-/datum/mind/New(var/key, var/ckey)
+/datum/mind/New(key, ckey)
 	src.key = key
 	src.ckey = ckey
 	player_entity = setup_player_entity(ckey)
@@ -29,19 +29,26 @@
 	research_objective_interface = new()
 
 /datum/mind/Destroy()
+	QDEL_NULL(initial_account)
 	QDEL_NULL(objective_memory)
 	QDEL_NULL(objective_interface)
 	QDEL_NULL(research_objective_interface)
+	current = null
+	original = null
+	ghost_mob = null
+	player_entity = null
 	return ..()
 
-/datum/mind/proc/transfer_to(mob/living/new_character, var/force = FALSE)
+/datum/mind/proc/transfer_to(mob/living/new_character, force = FALSE)
 	if(QDELETED(new_character))
 		msg_admin_niche("[key]/[ckey] has tried to transfer to deleted [new_character].")
 		return
 
+	var/mob/old_current = current
 	if(current)
-		current.mind = null	//remove ourself from our old body's mind variable
-		nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+		current.mind = null //remove ourself from our old body's mind variable
+		SSnano.nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
+		SStgui.on_transfer(current, new_character) // and active TGUI instances
 
 	if(key)
 		if(new_character.key != key)
@@ -52,16 +59,16 @@
 	if(new_character.mind)
 		new_character.mind.current = null //remove any mind currently in our new body's mind variable
 
-	current = new_character		//link ourself to our new body
+	current = new_character //link ourself to our new body
 	original = new_character
-	new_character.mind = src	//and link our new body to ourself
+	new_character.mind = src //and link our new body to ourself
 
 	if(active || force)
-		new_character.key = key		//now transfer the key to link the client to our new body
+		new_character.key = key //now transfer the key to link the client to our new body
 		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
 			new_character.client.init_verbs()
-			new_character.client.change_view(world_view_size) //reset view range to default.
+			new_character.client.change_view(GLOB.world_view_size) //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
 			if(usr && usr.open_uis)
@@ -71,8 +78,11 @@
 						continue
 			player_entity = setup_player_entity(ckey)
 
-	new_character.refresh_huds(current)					//inherit the HUDs from the old body
-	new_character.aghosted = FALSE						//reset aghost and away timer
+	SEND_SIGNAL(src, COMSIG_MIND_TRANSFERRED, old_current)
+	SEND_SIGNAL(new_character, COMSIG_MOB_NEW_MIND, current.client)
+
+	new_character.refresh_huds(current) //inherit the HUDs from the old body
+	new_character.aghosted = FALSE //reset aghost and away timer
 	new_character.away_timer = 0
 
 
@@ -118,14 +128,18 @@
 
 //Initialisation procs
 /mob/proc/mind_initialize()
-	if(mind) mind.key = key
+	if(mind)
+		mind.key = key
 	else
 		mind = new /datum/mind(key, ckey)
 		mind.original = src
-		if(SSticker) SSticker.minds += mind
-		else world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
+		if(SSticker)
+			SSticker.minds += mind
+		else
+			world.log << "## DEBUG: mind_initialize(): No ticker ready yet! Please inform Carn"
 		. = 1 //successfully created a new mind
-	if(!mind.name)	mind.name = real_name
+	if(!mind.name)
+		mind.name = real_name
 	mind.current = src
 
 //this is an objective that the player has just completed

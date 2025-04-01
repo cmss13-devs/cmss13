@@ -5,13 +5,19 @@
 /obj/item/ammo_magazine/flamer_tank
 	name = "incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. Handle with care."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/flamers.dmi'
 	icon_state = "flametank_custom"
 	item_state = "flametank"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
 	max_rounds = 100
 	default_ammo = /datum/ammo/flamethrower //doesn't actually need bullets. But we'll get null ammo error messages if we don't
 	w_class = SIZE_MEDIUM //making sure you can't sneak this onto your belt.
 	gun_type = /obj/item/weapon/gun/flamer
 	caliber = "UT-Napthal Fuel" //Ultra Thick Napthal Fuel, from the lore book.
+	var/custom = FALSE //accepts custom fuels if true
 
 	var/flamer_chem = "utnapthal"
 	flags_magazine = AMMUNITION_HIDE_AMMO
@@ -22,6 +28,8 @@
 
 	var/fuel_pressure = 1 //How much fuel is used per tile fired
 	var/max_pressure = 10
+
+	var/stripe_icon = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/empty
 	flamer_chem = null
@@ -57,6 +65,7 @@
 
 	reagents.clear_reagents()
 
+	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 	to_chat(usr, SPAN_NOTICE("You empty out [src]"))
 	update_icon()
 
@@ -70,35 +79,39 @@
 			G.update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/afterattack(obj/target, mob/user , flag) //refuel at fueltanks when we run out of ammo.
-	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
-		return ..()
 	if(get_dist(user,target) > 1)
 		return ..()
+	if(!istype(target, /obj/structure/reagent_dispensers/fueltank) && !istype(target, /obj/item/tool/weldpack) && !istype(target, /obj/item/storage/backpack/marine/engineerpack))
+		return ..()
 
-	var/obj/O = target
-	if(!O.reagents || O.reagents.reagent_list.len < 1)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+	if(!target.reagents || length(target.reagents.reagent_list) < 1)
+		to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
 	if(!reagents)
 		create_reagents(max_rounds)
 
-	var/datum/reagent/to_add = O.reagents.reagent_list[1]
+	var/datum/reagent/to_add = target.reagents.reagent_list[1]
 
-	if(!istype(to_add) || (length(reagents.reagent_list) && flamer_chem != to_add.id) || length(O.reagents.reagent_list) > 1)
+	if(!istype(to_add) || (length(reagents.reagent_list) && flamer_chem != to_add.id) || length(target.reagents.reagent_list) > 1)
 		to_chat(user, SPAN_WARNING("You can't mix fuel mixtures!"))
 		return
 
-	if(!to_add.intensityfire)
+	if(istype(to_add, /datum/reagent/generated) && !custom)
+		to_chat(user, SPAN_WARNING("[src] cannot accept custom fuels!"))
+		return
+
+	if(!to_add.intensityfire && to_add.id != "stablefoam" && !istype(src, /obj/item/ammo_magazine/flamer_tank/smoke))
 		to_chat(user, SPAN_WARNING("This chemical is not potent enough to be used in a flamethrower!"))
 		return
 
-	var/fuel_amt_to_remove = Clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
+	var/fuel_amt_to_remove = clamp(to_add.volume, 0, max_rounds - reagents.get_reagent_amount(to_add.id))
 	if(!fuel_amt_to_remove)
-		to_chat(user, SPAN_WARNING("[O] is empty!"))
+		if(!max_rounds)
+			to_chat(user, SPAN_WARNING("[target] is empty!"))
 		return
 
-	O.reagents.remove_reagent(to_add.id, fuel_amt_to_remove)
+	target.reagents.remove_reagent(to_add.id, fuel_amt_to_remove)
 	reagents.add_reagent(to_add.id, fuel_amt_to_remove)
 	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
 	caliber = to_add.name
@@ -108,6 +121,9 @@
 	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/update_icon()
+	if(!stripe_icon)
+		return
+
 	overlays.Cut()
 
 	var/image/I = image(icon, icon_state="[icon_state]_strip")
@@ -126,7 +142,7 @@
 /obj/item/ammo_magazine/flamer_tank/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("It contains:")
-	if(reagents && reagents.reagent_list.len)
+	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
 			. += SPAN_NOTICE(" [R.volume] units of [R.name].")
 	else
@@ -159,6 +175,7 @@
 	max_rounds = 100
 	max_range = 5
 	fuel_pressure = 1
+	custom = TRUE
 
 /obj/item/ammo_magazine/flamer_tank/custom/verb/set_fuel_pressure()
 	set name = "Change Fuel Pressure"
@@ -169,7 +186,7 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	var/set_pressure = Clamp(tgui_input_number(usr, "Change fuel pressure to: (max: [max_pressure])", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
+	var/set_pressure = clamp(tgui_input_number(usr, "Change fuel pressure to: (max: [max_pressure])", "Fuel pressure", fuel_pressure, 10, 1), 1 ,max_pressure)
 	if(!set_pressure)
 		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
 	else
@@ -234,3 +251,42 @@
 	max_intensity = 60
 	max_range = 8
 	max_duration = 50
+
+/obj/item/ammo_magazine/flamer_tank/smoke
+	name = "custom incinerator smoke tank"
+	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it."
+	matter = list("metal" = 3750)
+	flamer_chem = null
+	custom = TRUE
+
+//tanks printable by the research biomass machine
+/obj/item/ammo_magazine/flamer_tank/custom/upgraded
+	name = "upgraded custom incinerator tank"
+	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a larger and more sophisticated internal propellant tank, allowing for bigger capacity and stronger fuels."
+	matter = list("metal" = 50) // no free metal
+	flamer_chem = null
+	max_rounds = 200
+	max_range = 7
+	fuel_pressure = 1
+	max_duration = 50
+	max_intensity = 60
+	custom = TRUE
+
+/obj/item/ammo_magazine/flamer_tank/smoke/upgraded
+	name = "large custom incinerator smoke tank"
+	desc = "A tank holding powdered smoke that expands when exposed to an open flame and carries any chemicals along with it. This one has been outfitted with an upgraded internal compressor, allowing for bigger capacity."
+	matter = list("metal" = 50) //no free metal
+	flamer_chem = null
+	custom = TRUE
+	max_rounds = 150
+
+/obj/item/ammo_magazine/flamer_tank/survivor
+	name = "improvised flamer tank"
+	desc = "A repurposed tank from heavy welding equipment, holds a mix similar to napalm."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/flamers.dmi'
+	icon_state = "flamer_fuel"
+	gun_type = /obj/item/weapon/gun/flamer/survivor
+	stripe_icon = FALSE
+
+/obj/item/ammo_magazine/flamer_tank/survivor/empty
+	flamer_chem = null

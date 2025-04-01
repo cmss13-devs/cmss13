@@ -54,9 +54,10 @@
 //don't see anywhere else to put these, maybe together they could be used to make the xenos suit?
 /obj/item/stack/sheet/xenochitin
 	name = "alien chitin"
-	desc = "A piece of the hide of a terrible creature."
+	desc = "A piece of chitin from a terrible creature."
 	singular_name = "alien hide piece"
 	icon_state = "chitin"
+	icon = 'icons/obj/items/Marine_Research.dmi'
 	sheettype = "chitin"
 	stack_id = "alien chitin"
 
@@ -64,13 +65,13 @@
 	name = "alien claw"
 	desc = "The claw of a terrible creature."
 	icon_state = "claw"
-
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/weed_extract
 	name = "weed extract"
-	desc = "A piece of slimy, purplish weed."
+	desc = "A piece of slimy, greenish weed."
 	icon_state = "weed_extract"
-
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 /obj/item/stack/sheet/hairlesshide
 	name = "hairless hide"
@@ -104,7 +105,7 @@
 
 /obj/item/stack/sheet/animalhide/attackby(obj/item/W, mob/user)
 	if(W.sharp)
-		//visible message on mobs is defined as visible_message(var/message, var/self_message, var/blind_message)
+		//visible message on mobs is defined as visible_message(message, self_message, blind_message)
 		user.visible_message(SPAN_NOTICE("\the [usr] starts cutting hair off \the [src]"), SPAN_NOTICE("You start cutting the hair off \the [src]"), "You hear the sound of a knife rubbing against flesh")
 		if(do_after(user,50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			to_chat(user, SPAN_NOTICE(" You cut the hair from this [src.singular_name]"))

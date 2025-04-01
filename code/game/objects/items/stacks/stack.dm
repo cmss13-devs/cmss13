@@ -1,8 +1,8 @@
 /* Stack type objects!
  * Contains:
- * 		Stacks
- * 		Recipe datum
- * 		Recipe list datum
+ * Stacks
+ * Recipe datum
+ * Recipe list datum
  */
 
 /*
@@ -15,15 +15,19 @@
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
 	var/amount = 1
-	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
-	var/stack_id //used to determine if two stacks are of the same kind.
-	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
-	var/display_maptext = TRUE //does it show amount on top of the icon
+	///also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
+	var/max_amount
+	///used to determine if two stacks are of the same kind.
+	var/stack_id
+	///does it have sprites for extra amount, like metal, plasteel, or wood
+	var/amount_sprites = FALSE
+	///does it show amount on top of the icon
+	var/display_maptext = TRUE
 	//Coords for contents display, to make it play nice with inventory borders.
 	maptext_x = 4
 	maptext_y = 3
 
-/obj/item/stack/Initialize(mapload, var/amount = null)
+/obj/item/stack/Initialize(mapload, amount = null)
 	. = ..()
 	if(amount)
 		src.amount = amount
@@ -36,7 +40,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 /obj/item/stack/update_icon()
 	..()
 	if((isstorage(loc) || ismob(loc)) && display_maptext)
-		maptext = "<span class='langchat'>[(amount > 1)? "[amount]" : ""]</span>"
+		maptext = SPAN_LANGCHAT("[(amount > 1)? "[amount]" : ""]")
 	else
 		maptext = ""
 
@@ -89,7 +93,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
 		recipe_list = srl.recipes
 	var/t1 = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.amount)
-	for(var/i = 1; i <= recipe_list.len, i++)
+	for(var/i = 1; i <= length(recipe_list), i++)
 		var/E = recipe_list[i]
 		if(isnull(E))
 			t1 += "<hr>"
@@ -101,13 +105,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(istype(E, /datum/stack_recipe_list))
 			var/datum/stack_recipe_list/srl = E
 			if(src.amount >= srl.req_amount)
-				t1 += "<a href='?src=\ref[src];sublist=[i]'>[srl.title] ([srl.req_amount] [src.singular_name]\s)</a>"
+				t1 += "<a href='byond://?src=\ref[src];sublist=[i]'>[srl.title] ([srl.req_amount] [src.singular_name]\s)</a>"
 			else
 				t1 += "[srl.title] ([srl.req_amount] [src.singular_name]\s)<br>"
 
 		if(istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
-			var/max_multiplier = round(src.amount / R.req_amount)
+			var/max_multiplier = floor(src.amount / R.req_amount)
 			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier > 0)
@@ -117,22 +121,22 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				title += "[R.title]"
 			title+= " ([R.req_amount] [src.singular_name]\s)"
 			if(can_build)
-				t1 += text("<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
+				t1 += text("<A href='byond://?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
 			else
 				t1 += text("[]", title)
 				continue
 			if(R.max_res_amount>1 && max_multiplier > 1)
-				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
+				max_multiplier = min(max_multiplier, floor(R.max_res_amount/R.res_amount))
 				t1 += " |"
 				var/list/multipliers = list(5, 10, 25)
 				for (var/n in multipliers)
 					if (max_multiplier>=n)
-						t1 += " <A href='?src=\ref[src];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
+						t1 += " <A href='byond://?src=\ref[src];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
 				if(!(max_multiplier in multipliers))
-					t1 += " <A href='?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
+					t1 += " <A href='byond://?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
 
 	t1 += "</TT></body></HTML>"
-	show_browser(user, t1, "Construction using [src]", "stack")
+	show_browser(user, t1, "Construction using [src]", "stack", width = 440, height = 500)
 	return
 
 /obj/item/stack/Topic(href, href_list)
@@ -144,7 +148,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		list_recipes(usr, text2num(href_list["sublist"]))
 
 	if(href_list["make"])
-		if(amount < 1) qdel(src) //Never should happen
+		if(amount < 1)
+			qdel(src) //Never should happen
+			return
 
 		var/list/recipes_list = recipes
 		if(href_list["sublist"])
@@ -152,9 +158,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			recipes_list = srl.recipes
 		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])
-		if(!isnum(multiplier))
+		if(multiplier != multiplier) // isnan
+			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
 			return
-		multiplier = round(multiplier)
+		if(!isnum(multiplier)) // this used to block nan...
+			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
+			return
+		multiplier = floor(multiplier)
 		if(multiplier < 1)
 			return  //href exploit protection
 		if(R.skill_lvl)
@@ -174,13 +184,25 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
-			if(!OT.allow_construction)
+			var/area/area = get_area(usr)
+			if(!OT.allow_construction || !area.allow_construction)
 				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
 				return
 
 			if(AC)
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
 				return
+
+			var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in usr.loc
+			if(tunnel)
+				to_chat(usr, SPAN_WARNING("The [R.title] cannot be constructed on a tunnel!"))
+				return
+
+			if(R.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
+				for(var/obj/object in usr.loc)
+					if(object.density || istype(object, /obj/structure/machinery/door/airlock))
+						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [R.title]!"))
+						return
 
 		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
 			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
@@ -190,7 +212,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(usr.action_busy)
 				return
 			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
-			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
+			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."),
 				SPAN_NOTICE("You start assembling \a [R.title]."))
 			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
@@ -202,13 +224,21 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(check_one_per_turf(R,usr))
 				return
 
-		var/atom/O = new R.result_type(usr.loc, usr)
-		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [O]."),
-		SPAN_NOTICE("You assemble \a [O]."))
-		O.setDir(usr.dir)
+		var/atom/new_item
+		if(ispath(R.result_type, /turf))
+			var/turf/current_turf = get_turf(usr)
+			if(!current_turf)
+				return
+			new_item = current_turf.ChangeTurf(R.result_type)
+		else
+			new_item = new R.result_type(usr.loc, usr)
+
+		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [new_item]."),
+		SPAN_NOTICE("You assemble \a [new_item]."))
+		new_item.setDir(usr.dir)
 		if(R.max_res_amount > 1)
-			var/obj/item/stack/new_item = O
-			new_item.amount = R.res_amount * multiplier
+			var/obj/item/stack/new_stack = new_item
+			new_stack.amount = R.res_amount * multiplier
 		amount -= R.req_amount * multiplier
 		update_icon()
 
@@ -218,30 +248,30 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			usr.drop_inv_item_on_ground(oldsrc)
 			qdel(oldsrc)
 
-		if(istype(O,/obj/item/stack))	//floor stacking convenience
-			var/obj/item/stack/S = O
-			for(var/obj/item/stack/F in usr.loc)
-				if(S.stack_id == F.stack_id && S != F)
-					var/diff = F.max_amount - F.amount
-					if (S.amount < diff)
-						F.amount += S.amount
-						qdel(S)
+		if(istype(new_item,/obj/item/stack)) //floor stacking convenience
+			var/obj/item/stack/stack_item = new_item
+			for(var/obj/item/stack/found_item in usr.loc)
+				if(stack_item.stack_id == found_item.stack_id && stack_item != found_item)
+					var/diff = found_item.max_amount - found_item.amount
+					if (stack_item.amount < diff)
+						found_item.amount += stack_item.amount
+						qdel(stack_item)
 					else
-						S.amount -= diff
-						F.amount += diff
+						stack_item.amount -= diff
+						found_item.amount += diff
 					break
 
-		O?.add_fingerprint(usr)
+		new_item?.add_fingerprint(usr)
 
 		//BubbleWrap - so newly formed boxes are empty
-		if(isstorage(O))
-			for (var/obj/item/I in O)
-				qdel(I)
+		if(isstorage(new_item))
+			for (var/obj/item/found_item in new_item)
+				qdel(found_item)
 		//BubbleWrap END
 	if(src && usr.interactee == src) //do not reopen closed window
-		INVOKE_ASYNC(src, .proc/interact, usr)
+		INVOKE_ASYNC(src, PROC_REF(interact), usr)
 
-/obj/item/stack/proc/check_one_per_turf(var/datum/stack_recipe/R, var/mob/user)
+/obj/item/stack/proc/check_one_per_turf(datum/stack_recipe/R, mob/user)
 	switch(R.one_per_turf)
 
 		if(ONE_TYPE_PER_TURF)
@@ -262,16 +292,20 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 /obj/item/stack/proc/use(used)
 	if(used > amount) //If it's larger than what we have, no go.
-		return 0
+		return FALSE
 	amount -= used
-	update_icon()
 	if(amount <= 0)
-		if(usr && loc == usr)
-			usr.temp_drop_inv_item(src)
+		if(loc == usr)
+			usr?.temp_drop_inv_item(src)
+		else if(isstorage(loc))
+			var/obj/item/storage/storage = loc
+			storage.remove_from_storage(src)
 		qdel(src)
-	return 1
+	else
+		update_icon()
+	return TRUE
 
-/obj/item/stack/proc/add(var/extra)
+/obj/item/stack/proc/add(extra)
 	if(amount + extra > max_amount)
 		return FALSE
 	amount += extra
@@ -296,44 +330,59 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(!oldsrc)
 			break
 
+/obj/item/stack/clicked(mob/user, list/mods)
+	if(mods[ALT_CLICK])
+		if(!CAN_PICKUP(user, src))
+			return
+		if(amount <= 1)
+			return
+		var/desired = tgui_input_number(user, "How much would you like to split off from this stack?", "How much?", 1, amount-1, 1)
+		if(!desired)
+			return
+		if(!use(desired))
+			return
+		var/obj/item/stack/newstack = new type(user, desired)
+		transfer_fingerprints_to(newstack)
+		user.put_in_hands(newstack)
+		add_fingerprint(user)
+		newstack.add_fingerprint(user)
+		if(!QDELETED(src) && user.interactee == src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+		return TRUE
+
+	return ..()
+
 /obj/item/stack/attack_hand(mob/user as mob)
-	if (user.get_inactive_hand() == src)
-		var/obj/item/stack/F = new src.type(user, 1)
-		transfer_fingerprints_to(F)
-		user.put_in_hands(F)
-		src.add_fingerprint(user)
-		F.add_fingerprint(user)
+	if(user.get_inactive_hand() == src)
+		var/obj/item/stack/new_stack = new type(user, 1)
+		transfer_fingerprints_to(new_stack)
+		user.put_in_hands(new_stack)
+		add_fingerprint(user)
+		new_stack.add_fingerprint(user)
 		use(1)
-		if (src && usr.interactee==src)
-			INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
-	else
-		..()
-	return
+		if(!QDELETED(src) && user.interactee == src)
+			INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
+		return
+
+	return ..()
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/stack))
-		var/obj/item/stack/S = W
-		if(S.stack_id == stack_id) //same stack type
-			if(S.amount >= max_amount)
-				to_chat(user, SPAN_NOTICE("The stack is full!"))
+	if(istype(W, /obj/item/stack))
+		var/obj/item/stack/other_stack = W
+		if(other_stack.stack_id == stack_id) //same stack type
+			if(other_stack.amount >= max_amount)
+				to_chat(user, SPAN_WARNING("The stack is full!"))
 				return TRUE
-			var/to_transfer
-			if(user.get_inactive_hand() == src)
-				var/desired = tgui_input_number(user, "How much would you like to transfer from this stack?", "How much?", 1, amount, 1)
-				if(!desired)
-					return
-				to_transfer = Clamp(desired, 0, min(amount, S.max_amount-S.amount))
-			else
-				to_transfer = min(src.amount, S.max_amount-S.amount)
+			var/to_transfer = min(amount, other_stack.max_amount - other_stack.amount)
 			if(to_transfer <= 0)
 				return
 			to_chat(user, SPAN_INFO("You transfer [to_transfer] between the stacks."))
-			S.add(to_transfer)
-			if (S && usr.interactee==S)
-				INVOKE_ASYNC(S, /obj/item/stack/.proc/interact, usr)
-			src.use(to_transfer)
-			if (src && usr.interactee==src)
-				INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
+			other_stack.add(to_transfer)
+			if(other_stack && user.interactee == other_stack)
+				INVOKE_ASYNC(other_stack, TYPE_PROC_REF(/obj/item/stack, interact), user)
+			use(to_transfer)
+			if(!QDELETED(src) && user.interactee == src)
+				INVOKE_ASYNC(src, TYPE_PROC_REF(/obj/item/stack, interact), user)
 			user.next_move = world.time + 0.3 SECONDS
 			return TRUE
 
@@ -377,7 +426,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	var/title = "ERROR"
 	var/list/recipes = null
 	var/req_amount = 1
-	New(title, recipes, req_amount = 1)
-		src.title = title
-		src.recipes = recipes
-		src.req_amount = req_amount
+
+/datum/stack_recipe_list/New(title, recipes, req_amount = 1)
+	src.title = title
+	src.recipes = recipes
+	src.req_amount = req_amount

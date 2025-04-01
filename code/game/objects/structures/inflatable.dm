@@ -8,6 +8,10 @@
 
 /obj/item/inflatable/attack_self(mob/user)
 	..()
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))
+		return
 	var/turf/open/T = user.loc
 	if(!(istype(T) && T.allow_construction))
 		to_chat(user, SPAN_WARNING("[src] must be inflated on a proper surface!"))
@@ -34,17 +38,17 @@
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
-	density = 1
-	anchored = 1
-	opacity = 0
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "wall"
 
-	health = 50.0
+	health = 50
 	var/deflated = FALSE
 
-/obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/inflatable/bullet_act(obj/projectile/Proj)
 	health -= Proj.damage
 	..()
 	if(health <= 0 && !deflated)
@@ -67,34 +71,37 @@
 	return
 
 
-/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0)	//used by attack_animal
+/obj/structure/inflatable/proc/attack_generic(mob/living/user, damage = 0) //used by attack_animal
 	health -= damage
 	user.animation_attack_on(src)
 	if(health <= 0)
 		user.visible_message(SPAN_DANGER("[user] tears open [src]!"))
 		deflate(1)
-	else	//for nicer text~
+	else //for nicer text~
 		user.visible_message(SPAN_DANGER("[user] tears at [src]!"))
 
 /obj/structure/inflatable/attack_animal(mob/user as mob)
-	if(!isanimal(user)) return
+	if(!isanimal(user))
+		return
 	var/mob/living/simple_animal/M = user
-	if(M.melee_damage_upper <= 0) return
+	if(M.melee_damage_upper <= 0)
+		return
 	attack_generic(M, M.melee_damage_upper)
 
 
 /obj/structure/inflatable/attackby(obj/item/W as obj, mob/user as mob)
-	if(!istype(W)) return
+	if(!istype(W))
+		return
 
 	if (can_puncture(W))
 		visible_message(SPAN_DANGER("<b>[user] pierces [src] with [W]!</b>"))
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
 		hit(W.force)
-		..()
+		. = ..()
 	return
 
-/obj/structure/inflatable/proc/hit(var/damage, var/sound_effect = 1)
+/obj/structure/inflatable/proc/hit(damage, sound_effect = 1)
 	health = max(0, health - damage)
 	if(sound_effect)
 		playsound(loc, 'sound/effects/Glasshit_old.ogg', 25, 1)
@@ -102,7 +109,7 @@
 		deflate(1)
 
 
-/obj/structure/inflatable/proc/deflate(var/violent=0)
+/obj/structure/inflatable/proc/deflate(violent=0)
 	set waitfor = 0
 	if(deflated)
 		return
@@ -112,12 +119,12 @@
 		visible_message("[src] rapidly deflates!")
 		flick("wall_popping", src)
 		sleep(10)
-		deconstruct(TRUE)
+		deconstruct(FALSE)
 	else
 		visible_message("[src] slowly deflates.")
 		flick("wall_deflating", src)
 		spawn(50)
-			deconstruct(FALSE)
+			deconstruct(TRUE)
 
 
 /obj/structure/inflatable/deconstruct(disassembled = TRUE)
@@ -136,7 +143,7 @@
 
 	if(isobserver(usr)) //to stop ghosts from deflating
 		return
-	if(isXeno(usr))
+	if(isxeno(usr))
 		return
 
 	if(!deflated)
@@ -148,8 +155,8 @@
 /obj/structure/inflatable/popped
 	name = "popped inflatable wall"
 	desc = "It used to be an inflatable wall, now it's just a mess of plastic."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	deflated = TRUE
 
 	icon = 'icons/obj/items/inflatable.dmi'
@@ -166,31 +173,30 @@
 
 /obj/structure/inflatable/door //Based on mineral door code
 	name = "inflatable door"
-	density = 1
-	anchored = 1
-	opacity = 0
+	density = TRUE
+	anchored = TRUE
+	opacity = FALSE
 
 	icon = 'icons/obj/items/inflatable.dmi'
 	icon_state = "door_closed"
 
-	var/state = 0 //closed, 1 == open
-	var/isSwitchingStates = 0
+	var/open = FALSE
+	var/isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/attack_remote(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
 	if(isRemoteControlling(user)) //so the AI can't open it
 		return
-	else if(isrobot(user)) //but cyborgs can
-		if(get_dist(user,src) <= 1) //not remotely though
-			return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/attack_hand(mob/user as mob)
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
-	if(isSwitchingStates) return
+	if(isSwitchingStates)
+		return
 	if(ismob(user))
 		var/mob/M = user
-		if(world.time - user.last_bumped <= 60) return //NOTE do we really need that?
+		if(world.time - user.last_bumped <= 60)
+			return //NOTE do we really need that?
 		if(M.client)
 			if(iscarbon(M))
 				var/mob/living/carbon/C = M
@@ -200,41 +206,48 @@
 				SwitchState()
 
 /obj/structure/inflatable/door/proc/SwitchState()
-	if(state)
-		Close()
+	if(open)
+		close()
 	else
-		Open()
+		open()
 
-
-/obj/structure/inflatable/door/proc/Open()
-	isSwitchingStates = 1
+/obj/structure/inflatable/door/proc/open()
+	isSwitchingStates = TRUE
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_opening",src)
-	sleep(10)
-	density = 0
-	opacity = 0
-	state = 1
-	update_icon()
-	isSwitchingStates = 0
+	addtimer(CALLBACK(src, PROC_REF(finish_open)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
-/obj/structure/inflatable/door/proc/Close()
-	isSwitchingStates = 1
+/obj/structure/inflatable/door/proc/finish_open()
+	if(!loc)
+		return
+	density = FALSE
+	opacity = FALSE
+	open = TRUE
+	update_icon()
+	isSwitchingStates = FALSE
+
+/obj/structure/inflatable/door/proc/close()
+	isSwitchingStates = TRUE
 	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 25, 1)
 	flick("door_closing",src)
-	sleep(10)
-	density = 1
-	opacity = 0
-	state = 0
+	addtimer(CALLBACK(src, PROC_REF(finish_close)), 1 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/structure/inflatable/door/proc/finish_close()
+	if(!loc)
+		return
+	density = TRUE
+	opacity = FALSE
+	open = FALSE
 	update_icon()
-	isSwitchingStates = 0
+	isSwitchingStates = FALSE
 
 /obj/structure/inflatable/door/update_icon()
-	if(state)
+	if(open)
 		icon_state = "door_open"
 	else
 		icon_state = "door_closed"
 
-/obj/structure/inflatable/door/deflate(var/violent=0)
+/obj/structure/inflatable/door/deflate(violent=0)
 	set waitfor = 0
 	playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
 	if(violent)
@@ -262,8 +275,13 @@
 /obj/item/storage/briefcase/inflatable
 	name = "inflatable barrier box"
 	desc = "Contains inflatable walls and doors."
+	icon = 'icons/obj/items/storage/boxes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
 	icon_state = "inf_box"
-	item_state = "syringe_kit"
+	item_state = "box"
 	max_storage_space = 21
 
 /obj/item/storage/briefcase/inflatable/Initialize()
@@ -275,3 +293,6 @@
 	new /obj/item/inflatable(src)
 	new /obj/item/inflatable(src)
 	new /obj/item/inflatable(src)
+
+/obj/item/storage/briefcase/inflatable/small
+	w_class = SIZE_MEDIUM

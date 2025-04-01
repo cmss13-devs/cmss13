@@ -1,7 +1,7 @@
 /* Gifts and wrapping paper
  * Contains:
- *		Gifts
- *		Wrapping Paper
+ * Gifts
+ * Wrapping Paper
  */
 
 /*
@@ -10,7 +10,7 @@
 /obj/item/a_gift
 	name = "gift"
 	desc = "PRESENTS!!!! eek!"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/gifts.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"
 
@@ -72,7 +72,7 @@
 		/obj/item/storage/belt/champion,
 		/obj/item/tool/soap/deluxe,
 		/obj/item/tool/pickaxe/silver,
-		/obj/item/tool/pen/invisible,
+		/obj/item/tool/pen/white,
 		/obj/item/explosive/grenade/smokebomb,
 		/obj/item/corncob,
 		/obj/item/poster,
@@ -80,7 +80,7 @@
 		/obj/item/book/manual/chef_recipes,
 		/obj/item/toy/bikehorn,
 		/obj/item/toy/beach_ball,
-		/obj/item/weapon/melee/banhammer,
+		/obj/item/weapon/banhammer,
 		/obj/item/toy/balloon,
 		/obj/item/toy/blink,
 		/obj/item/toy/crossbow,
@@ -103,7 +103,8 @@
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
 		/obj/item/clothing/accessory/horrible)
 
-	if(!ispath(gift_type,/obj/item))	return
+	if(!ispath(gift_type,/obj/item))
+		return
 
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)
@@ -118,9 +119,9 @@
 /obj/item/wrapping_paper
 	name = "wrapping paper"
 	desc = "You can use this to wrap items in."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrap_paper"
-	var/amount = 20.0
+	var/amount = 20
 
 /obj/item/wrapping_paper/attackby(obj/item/W as obj, mob/user as mob)
 	..()

@@ -1,5 +1,5 @@
-#define PREFFILE_VERSION_MIN	3
-#define PREFFILE_VERSION_MAX	3
+#define PREFFILE_VERSION_MIN 3
+#define PREFFILE_VERSION_MAX 3
 
 /datum/entity/statistic
 	var/name = null
@@ -8,8 +8,8 @@
 /datum/entity/player_entity
 	var/name
 	var/ckey // "cakey"
-	var/list/datum/entity/player_stats = list()
-	var/list/datum/entity/statistic/death/death_stats = list()
+	var/list/player_stats = list() //! Indeed list of /datum/entity/player_stats
+	var/list/death_stats = list() //! Indexed list of /datum/entity/statistic/death
 	var/menu = 0
 	var/subMenu = 0
 	var/dataMenu = 0
@@ -18,7 +18,12 @@
 	var/savefile_version
 	var/save_loaded = FALSE
 
-/datum/entity/player_entity/proc/get_playtime(var/branch, var/type)
+/datum/entity/player_entity/Destroy(force)
+	QDEL_LIST_ASSOC_VAL(player_stats)
+	QDEL_LIST_ASSOC_VAL(death_stats)
+	return ..()
+
+/datum/entity/player_entity/proc/get_playtime(branch, type)
 	var/playtime = 0
 	if(player_stats["[branch]"])
 		var/datum/entity/player_stats/branch_stat = player_stats["[branch]"]

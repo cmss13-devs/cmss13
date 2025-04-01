@@ -2,9 +2,16 @@
 	{
 		"type": "map_insert",
 		"landmark": "clfship",
-		"chance": 0.2,
+		"chance": 0.3,
 		"path": "standalone/clfship.dmm",
 		"when": { "lvevent": "fallen_ship" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "corporatedome",
+		"chance": 0.5,
+		"path": "standalone/corporatedome.dmm",
+		"when": { "lvevent": "asset_protection" }
 	},
 	{
 		"type": "map_insert",

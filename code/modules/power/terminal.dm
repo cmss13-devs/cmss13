@@ -9,8 +9,8 @@
 	desc = "It's an underfloor wiring terminal for power equipment."
 	level = 1
 	var/obj/structure/machinery/power/master = null
-	anchored = 1
-	directwired = 0		// must have a cable on same turf connecting to terminal
+	anchored = TRUE
+	directwired = 0 // must have a cable on same turf connecting to terminal
 	layer = WIRE_TERMINAL_LAYER
 	unacidable = TRUE //so xenos can't melt visible SMES terminals on the planet to break the SMES
 
@@ -18,7 +18,8 @@
 /obj/structure/machinery/power/terminal/Initialize()
 	. = ..()
 	var/turf/T = src.loc
-	if(level==1) hide(T.intact_tile)
+	if(level==1)
+		hide(T.intact_tile)
 
 /obj/structure/machinery/power/terminal/Destroy()
 	if(master)
@@ -29,7 +30,7 @@
 	. = ..()
 
 
-/obj/structure/machinery/power/terminal/hide(var/i)
+/obj/structure/machinery/power/terminal/hide(i)
 	if(i)
 		invisibility = 101
 		icon_state = "term-f"

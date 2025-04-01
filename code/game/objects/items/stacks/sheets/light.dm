@@ -3,15 +3,16 @@
 	singular_name = "wired glass floor tile"
 	desc = "A glass tile, which is wired, somehow."
 	icon_state = "glass_wire"
+	icon = 'icons/obj/items/floor_tiles.dmi'
 	w_class = SIZE_MEDIUM
-	force = 3.0
-	throwforce = 5.0
+	force = 3
+	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 60
 	stack_id = "wired glass tile"
 
-/obj/item/stack/light_w/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/stack/light_w/attackby(obj/item/O as obj, mob/user as mob)
 	..()
 	if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)

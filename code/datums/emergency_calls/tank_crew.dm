@@ -10,13 +10,14 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
-/datum/emergency_call/tank_crew/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/tank_crew/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
@@ -24,10 +25,10 @@
 	sleep(5)
 	arm_equipment(H, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
 	to_chat(H, SPAN_ROLE_HEADER("You are a Vehicle Crewman in the USCM"))
-	to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+	to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
+	to_chat(H, SPAN_BOLDWARNING("If you wish to cryo or ghost upon spawning in, you must ahelp and inform staff so you can be replaced."))
 
 	sleep(10)
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
-

@@ -2,6 +2,11 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH, WEST)
 
+/obj/structure/pipes/trinary/Initialize(mapload, ...)
+	. = ..()
+	if(!mapload)
+		update_icon()
+
 /obj/structure/pipes/trinary/create_valid_directions()
 	switch(dir)
 		if(NORTH)
@@ -17,19 +22,15 @@
 /obj/structure/pipes/trinary/filter
 	icon = 'icons/obj/pipes/filter.dmi'
 	icon_state = "map"
-	density = 0
+	density = FALSE
 	level = 1
 	name = "Gas filter"
 
-/obj/structure/pipes/trinary/filter/Initialize()
-	. = ..()
-	icon_state = ""
-
 /obj/structure/pipes/trinary/filter/update_icon()
 	if(length(connected_to))
-		icon_state += "on"
+		icon_state = "on"
 	else
-		icon_state += "off"
+		icon_state = "off"
 
 /obj/structure/pipes/trinary/filter/update_underlays()
 	if(..())
@@ -47,7 +48,7 @@
 
 		add_underlay(T, dir)
 
-/obj/structure/pipes/trinary/filter/hide(var/invis)
+/obj/structure/pipes/trinary/filter/hide(invis)
 	update_underlays()
 
 /obj/structure/pipes/trinary/filter/m_filter
@@ -55,9 +56,11 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH, EAST)
 
-/obj/structure/pipes/trinary/filter/m_filter/Initialize()
-	. = ..()
-	icon_state = "m"
+/obj/structure/pipes/trinary/filter/m_filter/update_icon()
+	if(length(connected_to))
+		icon_state = "mon"
+	else
+		icon_state = "moff"
 
 /obj/structure/pipes/trinary/filter/m_filter/create_valid_directions()
 	switch(dir)
@@ -74,19 +77,15 @@
 /obj/structure/pipes/trinary/mixer
 	icon = 'icons/obj/pipes/mixer.dmi'
 	icon_state = "map"
-	density = 0
+	density = FALSE
 	level = 1
 	name = "Gas mixer"
 
-/obj/structure/pipes/trinary/filter/Initialize()
-	. = ..()
-	icon_state = ""
-
-/obj/structure/pipes/trinary/mixer/update_icon(var/safety = 0)
+/obj/structure/pipes/trinary/mixer/update_icon()
 	if(length(connected_to))
-		icon_state += "on"
+		icon_state = "on"
 	else
-		icon_state += "off"
+		icon_state = "off"
 
 /obj/structure/pipes/trinary/mixer/update_underlays()
 	if(..())
@@ -107,7 +106,7 @@
 
 		add_underlay(T, dir)
 
-/obj/structure/pipes/trinary/mixer/hide(var/invis)
+/obj/structure/pipes/trinary/mixer/hide(invis)
 	update_underlays()
 
 
@@ -116,9 +115,11 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH, EAST, WEST)
 
-/obj/structure/pipes/trinary/mixer/t_mixer/Initialize()
-	. = ..()
-	icon_state = "t"
+/obj/structure/pipes/trinary/mixer/t_mixer/update_icon()
+	if(length(connected_to))
+		icon_state = "ton"
+	else
+		icon_state = "toff"
 
 /obj/structure/pipes/trinary/mixer/t_mixer/create_valid_directions()
 	switch(dir)
@@ -131,14 +132,17 @@
 		if(WEST)
 			valid_directions = list(WEST, NORTH, SOUTH)
 
+
 /obj/structure/pipes/trinary/mixer/m_mixer
 	icon_state = "mmap"
 	dir = SOUTH
 	valid_directions = list(SOUTH, NORTH, EAST)
 
-/obj/structure/pipes/trinary/mixer/m_mixer/Initialize()
-	. = ..()
-	icon_state = "m"
+/obj/structure/pipes/trinary/mixer/m_mixer/update_icon()
+	if(length(connected_to))
+		icon_state = "mon"
+	else
+		icon_state = "moff"
 
 /obj/structure/pipes/trinary/mixer/m_mixer/create_valid_directions()
 	switch(dir)

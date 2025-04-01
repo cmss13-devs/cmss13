@@ -1,6 +1,6 @@
 /obj/structure/machinery/keycard_auth
 	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	desc = "This device is used to trigger station functions, which require multiple swipes of an ID card to authenticate."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	unacidable = TRUE
@@ -16,7 +16,7 @@
 	var/channel = "almayer" // Which channel are we on? Needs to be set for these to properly work.
 	//1 = select event
 	//2 = authenticate
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
@@ -32,12 +32,12 @@
 		return
 	if(istype(W,/obj/item/card/id))
 		var/obj/item/card/id/ID = W
-		if(ACCESS_MARINE_BRIDGE in ID.access)
+		if(ACCESS_MARINE_COMMAND in ID.access)
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
 					event_source.confirmed = 1
-					event_source.event_confirmed_by = usr
+					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
@@ -64,16 +64,16 @@
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
 		if(!CONFIG_GET(flag/ert_admin_call_only))
-			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
+			dat += "<li><A href='byond://?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
 
-		dat += "<li><A href='?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
 		dat += "</ul>"
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
-		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
+		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
 	show_browser(user, dat, name, "keycard_auth")
 	return
 
@@ -108,20 +108,21 @@
 
 /obj/structure/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/structure/machinery/keycard_auth/KA in machines)
-		if(KA == src || KA.channel != channel) continue
+	for(var/obj/structure/machinery/keycard_auth/KA in GLOB.machines)
+		if(KA == src || KA.channel != channel)
+			continue
 		KA.reset()
-		INVOKE_ASYNC(KA, /obj/structure/machinery/keycard_auth.proc/receive_request, src)
+		INVOKE_ASYNC(KA, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth, receive_request), src)
 
 	sleep(confirm_delay)
 	if(confirmed)
 		confirmed = 0
 		trigger_event(event)
 		log_game("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]")
-		message_staff("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
+		message_admins("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
-/obj/structure/machinery/keycard_auth/proc/receive_request(var/obj/structure/machinery/keycard_auth/source)
+/obj/structure/machinery/keycard_auth/proc/receive_request(obj/structure/machinery/keycard_auth/source)
 	if(inoperable())
 		return
 	event_source = source
@@ -146,17 +147,18 @@
 			revoke_maint_all_access()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
-	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
+	if(CONFIG_GET(flag/ert_admin_call_only))
+		return 1
 	return SSticker.mode && SSticker.mode.ert_disabled
 
-var/global/maint_all_access = 1
+GLOBAL_VAR_INIT(maint_all_access, TRUE)
 
 /proc/make_maint_all_access()
-	maint_all_access = 1
+	GLOB.maint_all_access = TRUE
 	ai_announcement("The maintenance access requirement has been removed on all airlocks.")
 
 /proc/revoke_maint_all_access()
-	maint_all_access = 0
+	GLOB.maint_all_access = FALSE
 	ai_announcement("The maintenance access requirement has been added on all airlocks.")
 
 // Keycard reader at the CORSAT locks
@@ -209,18 +211,18 @@ var/global/maint_all_access = 1
 
 /obj/structure/machinery/keycard_auth/lockdown/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/structure/machinery/keycard_auth/lockdown/KA in machines)
+	for(var/obj/structure/machinery/keycard_auth/lockdown/KA in GLOB.machines)
 		if(KA == src || KA.channel != channel)
 			continue
 		KA.reset()
-		INVOKE_ASYNC(KA, .proc/receive_request, src)
+		INVOKE_ASYNC(KA, PROC_REF(receive_request), src)
 
 	sleep(confirm_delay)
 	if(confirmed)
 		confirmed = 0
 		trigger_event(event)
 		log_game("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]")
-		message_staff("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
+		message_admins("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
 /obj/structure/machinery/keycard_auth/lockdown/attack_hand(mob/user as mob)
@@ -238,20 +240,20 @@ var/global/maint_all_access = 1
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
 		dat += "</ul>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
-		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	return
 
-/obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(var/timeleft = 0)
+/obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(timeleft = 0)
 	if(!timeleft)
-		for(var/obj/structure/machinery/door/poddoor/M in machines)
+		for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 			if(M.id == podlock_id && M.density)
-				INVOKE_ASYNC(M, /obj/structure/machinery/door.proc/open)
+				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		return
 
 	if(istype(SSticker.mode, /datum/game_mode/colonialmarines))
@@ -273,12 +275,12 @@ var/global/maint_all_access = 1
 	var/title = announce_title
 	marine_announcement(input, title, 'sound/AI/commandreport.ogg')
 	for(var/mob/M in GLOB.player_list)
-		if(isXeno(M))
+		if(isxeno(M))
 			sound_to(M, sound(get_sfx("queen"), wait = 0, volume = 50))
 			to_chat(M, SPAN_XENOANNOUNCE("The Queen Mother reaches into your mind from worlds away."))
 			to_chat(M, SPAN_XENOANNOUNCE("To my children and their Queen. I sense the large doors that trap us will open in [text_timeleft]."))
 	var/new_timeleft = timeleft - next_interval
-	addtimer(CALLBACK(src, /obj/structure/machinery/keycard_auth/lockdown.proc/timed_countdown, new_timeleft), next_interval)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth/lockdown, timed_countdown), new_timeleft), next_interval)
 
 /obj/structure/machinery/keycard_auth/lockdown/trigger_event()
 	set waitfor = 0

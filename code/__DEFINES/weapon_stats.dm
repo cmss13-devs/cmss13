@@ -1,13 +1,13 @@
-#define HUMAN_UNIVERSAL_DAMAGEMULT 1.0
+#define HUMAN_UNIVERSAL_DAMAGEMULT 1
 
 #define RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER 0.1
+#define BASE_VELOCITY_BONUS 0
 
+#define PROJ_BASE_ACCURACY_MULT 0.01
+#define PROJ_BASE_DAMAGE_MULT 0.01
 
-#define PROJ_BASE_ACCURACY_MULT	 	0.01
-#define PROJ_BASE_DAMAGE_MULT		0.01
-
-#define PROJ_VARIANCE_HIGH	105
-#define PROJ_VARIANCE_LOW	98
+#define PROJ_VARIANCE_HIGH 105
+#define PROJ_VARIANCE_LOW 98
 
 /*
 ////ACCURACY////
@@ -18,42 +18,42 @@ Accuracy determines if your bullets will hit whatever you're shooting at. Think 
 It DOES NOT control where your bullets go, that's scatter and projectile variance.
 
 .../update_projectiles/guns/code.dm
-var/accuracy_mult //Base firearm accuracy when firing from a 2-hand, "secure", wielded, etc, whatever grip.
-var/accuracy_mult_unwielded //Base firearm accuracy when firing from hip. Both of these default to 1, with additions or subtractions from the mult vars.
+	var/accuracy_mult //Base firearm accuracy when firing from a 2-hand, "secure", wielded, etc, whatever grip.
+	var/accuracy_mult_unwielded //Base firearm accuracy when firing from hip. Both of these default to 1, with additions or subtractions from the mult vars.
 
 .../updated_projectiles/ammo_datums.dm
-var/accuracy //This is added to the firearm's base accuracy when the specific ammo is shot.
-var/accuracy_var_low //These two vars are used for the upper and lower bounds of accuracy variance when a bullet is fired. Bullet 'wobble' if you will.
-var/accuracy_var_high
+	var/accuracy //This is added to the firearm's base accuracy when the specific ammo is shot.
+	var/accuracy_var_low //These two vars are used for the upper and lower bounds of accuracy variance when a bullet is fired. Bullet 'wobble' if you will.
+	var/accuracy_var_high
 
 .../updated_projectiles/gun_attachables.dm
-var/accuracy_mult //Attachments ADD an additional multiplier to the base config value. Only ever use accuracy_mult config references.
-var/accuracy_mult_unwielded
+	var/accuracy_mult //Attachments ADD an additional multiplier to the base config value. Only ever use accuracy_mult config references.
+	var/accuracy_mult_unwielded
 */
 
-#define HIT_ACCURACY_TIER_1		5
-#define HIT_ACCURACY_TIER_2		10
-#define HIT_ACCURACY_TIER_3		15
-#define HIT_ACCURACY_TIER_4		20
-#define HIT_ACCURACY_TIER_5		25
-#define HIT_ACCURACY_TIER_6		30
-#define HIT_ACCURACY_TIER_7 	35
-#define HIT_ACCURACY_TIER_8 	40
-#define HIT_ACCURACY_TIER_9 	45
-#define HIT_ACCURACY_TIER_10 	50
-#define HIT_ACCURACY_TIER_MAX	100
+#define HIT_ACCURACY_TIER_1 5
+#define HIT_ACCURACY_TIER_2 10
+#define HIT_ACCURACY_TIER_3 15
+#define HIT_ACCURACY_TIER_4 20
+#define HIT_ACCURACY_TIER_5 25
+#define HIT_ACCURACY_TIER_6 30
+#define HIT_ACCURACY_TIER_7 35
+#define HIT_ACCURACY_TIER_8 40
+#define HIT_ACCURACY_TIER_9 45
+#define HIT_ACCURACY_TIER_10 50
+#define HIT_ACCURACY_TIER_MAX 100
 
 #define BASE_ACCURACY_MULT 1
-#define HIT_ACCURACY_MULT_TIER_1 	0.05
-#define HIT_ACCURACY_MULT_TIER_2 	0.10
-#define HIT_ACCURACY_MULT_TIER_3 	0.15
-#define HIT_ACCURACY_MULT_TIER_4 	0.20
-#define HIT_ACCURACY_MULT_TIER_5 	0.25
-#define HIT_ACCURACY_MULT_TIER_6 	0.30
-#define HIT_ACCURACY_MULT_TIER_7 	0.35
-#define HIT_ACCURACY_MULT_TIER_8 	0.40
-#define HIT_ACCURACY_MULT_TIER_9 	0.45
-#define HIT_ACCURACY_MULT_TIER_10 	0.50
+#define HIT_ACCURACY_MULT_TIER_1 0.05
+#define HIT_ACCURACY_MULT_TIER_2 0.10
+#define HIT_ACCURACY_MULT_TIER_3 0.15
+#define HIT_ACCURACY_MULT_TIER_4 0.20
+#define HIT_ACCURACY_MULT_TIER_5 0.25
+#define HIT_ACCURACY_MULT_TIER_6 0.30
+#define HIT_ACCURACY_MULT_TIER_7 0.35
+#define HIT_ACCURACY_MULT_TIER_8 0.40
+#define HIT_ACCURACY_MULT_TIER_9 0.45
+#define HIT_ACCURACY_MULT_TIER_10 0.50
 
 #define MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1 5
 #define MOVEMENT_ACCURACY_PENALTY_MULT_TIER_2 4
@@ -66,7 +66,7 @@ var/accuracy_mult_unwielded
 ////SCATTER////
 */
 
-#define SCATTER_AMOUNT_NEURO 60
+#define SCATTER_AMOUNT_NEURO 45
 #define SCATTER_AMOUNT_TIER_1 15
 #define SCATTER_AMOUNT_TIER_2 10
 #define SCATTER_AMOUNT_TIER_3 8
@@ -84,16 +84,16 @@ var/accuracy_mult_unwielded
 // How many shots on full auto before you hit max full auto scatter
 */
 
-#define FULL_AUTO_SCATTER_PEAK_TIER_1	10
-#define FULL_AUTO_SCATTER_PEAK_TIER_2	20
-#define FULL_AUTO_SCATTER_PEAK_TIER_3	30
-#define FULL_AUTO_SCATTER_PEAK_TIER_4	40
-#define FULL_AUTO_SCATTER_PEAK_TIER_5	50
-#define FULL_AUTO_SCATTER_PEAK_TIER_6	60
-#define FULL_AUTO_SCATTER_PEAK_TIER_7	70
-#define FULL_AUTO_SCATTER_PEAK_TIER_8	80
-#define FULL_AUTO_SCATTER_PEAK_TIER_9	90
-#define FULL_AUTO_SCATTER_PEAK_TIER_10	100
+#define FULL_AUTO_SCATTER_PEAK_TIER_1 10
+#define FULL_AUTO_SCATTER_PEAK_TIER_2 20
+#define FULL_AUTO_SCATTER_PEAK_TIER_3 30
+#define FULL_AUTO_SCATTER_PEAK_TIER_4 40
+#define FULL_AUTO_SCATTER_PEAK_TIER_5 50
+#define FULL_AUTO_SCATTER_PEAK_TIER_6 60
+#define FULL_AUTO_SCATTER_PEAK_TIER_7 70
+#define FULL_AUTO_SCATTER_PEAK_TIER_8 80
+#define FULL_AUTO_SCATTER_PEAK_TIER_9 90
+#define FULL_AUTO_SCATTER_PEAK_TIER_10 100
 
 /*
 ////RECOIL////
@@ -120,55 +120,71 @@ As such, don't expect any values assigned to common firearms to even consider ho
 */
 
 #define BASE_BULLET_DAMAGE_MULT 1
-#define BULLET_DAMAGE_MULT_TIER_1 	0.05
-#define BULLET_DAMAGE_MULT_TIER_2 	0.10
-#define BULLET_DAMAGE_MULT_TIER_3 	0.15
-#define BULLET_DAMAGE_MULT_TIER_4 	0.20
-#define BULLET_DAMAGE_MULT_TIER_5 	0.25
-#define BULLET_DAMAGE_MULT_TIER_6 	0.30
-#define BULLET_DAMAGE_MULT_TIER_7 	0.35
-#define BULLET_DAMAGE_MULT_TIER_8 	0.40
-#define BULLET_DAMAGE_MULT_TIER_9 	0.45
-#define BULLET_DAMAGE_MULT_TIER_10 	0.50
+#define BULLET_DAMAGE_MULT_TIER_1 0.05
+#define BULLET_DAMAGE_MULT_TIER_2 0.10
+#define BULLET_DAMAGE_MULT_TIER_3 0.15
+#define BULLET_DAMAGE_MULT_TIER_4 0.20
+#define BULLET_DAMAGE_MULT_TIER_5 0.25
+#define BULLET_DAMAGE_MULT_TIER_6 0.30
+#define BULLET_DAMAGE_MULT_TIER_7 0.35
+#define BULLET_DAMAGE_MULT_TIER_8 0.40
+#define BULLET_DAMAGE_MULT_TIER_9 0.45
+#define BULLET_DAMAGE_MULT_TIER_10 0.50
 
 /*
 ////FIRE DELAY////
 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 */
 
-#define FIRE_DELAY_TIER_1 	10
-#define FIRE_DELAY_TIER_2 	9
-#define FIRE_DELAY_TIER_3 	8
-#define FIRE_DELAY_TIER_4 	7
-#define FIRE_DELAY_TIER_5 	6
-#define FIRE_DELAY_TIER_6 	5
-#define FIRE_DELAY_TIER_7 	4
-#define FIRE_DELAY_TIER_8 	3
-#define FIRE_DELAY_TIER_9 	2
-#define FIRE_DELAY_TIER_LMG 1.5
-#define FIRE_DELAY_TIER_SG 	1.5
-#define FIRE_DELAY_TIER_SMG	1.3
-#define FIRE_DELAY_TIER_10 	1
+/// Sniper/DMR Delays
+#define FIRE_DELAY_TIER_AMR 30
+#define FIRE_DELAY_TIER_VULTURE 20
+#define FIRE_DELAY_TIER_SNIPER 15
+
+/// Shotgun Delays
+#define FIRE_DELAY_TIER_SHOTGUN_SLOW 2.5 SECONDS // Heavy or damaged shotguns, KS-23, etc.
+#define FIRE_DELAY_TIER_SHOTGUN_BASE 2 SECONDS // Replaces previous shotgun value which was Tier_7 (5)*4
+#define FIRE_DELAY_TIER_SHOTGUN_COLONY 1.6 SECONDS // Used by the HG shotguns.
+#define FIRE_DELAY_TIER_SHOTGUN_COMBAT 1.4 SECONDS // Replaces previous combat shotgun value which was Tier_5 (7)*2 ...Wow that's confusing.
+#define FIRE_DELAY_TIER_SHOTGUN_DEATHSQUAD 0.6 SECONDS // For adminspawn ERTs, MARSOC, etc.
+
+/// General Delay Tiers
+#define FIRE_DELAY_TIER_1 12
+#define FIRE_DELAY_TIER_2 10
+#define FIRE_DELAY_TIER_3 9
+#define FIRE_DELAY_TIER_4 8
+#define FIRE_DELAY_TIER_5 7
+#define FIRE_DELAY_TIER_6 6
+#define FIRE_DELAY_TIER_7 5
+#define FIRE_DELAY_TIER_8 4
+#define FIRE_DELAY_TIER_9 3.5
+#define FIRE_DELAY_TIER_10 3
+#define FIRE_DELAY_TIER_11 2.5
+#define FIRE_DELAY_TIER_LMG 2
+#define FIRE_DELAY_TIER_SG 2
+#define FIRE_DELAY_TIER_SMG 1.5
+#define FIRE_DELAY_TIER_12 1
 
 /*
 ////RANGE RELATED////
 */
 
-#define DAMAGE_FALLOFF_BLANK 	30
-#define DAMAGE_FALLOFF_TIER_1 	10
-#define DAMAGE_FALLOFF_TIER_2 	9
-#define DAMAGE_FALLOFF_TIER_3 	8
-#define DAMAGE_FALLOFF_TIER_4 	7
-#define DAMAGE_FALLOFF_TIER_5 	6
-#define DAMAGE_FALLOFF_TIER_6 	5
-#define DAMAGE_FALLOFF_TIER_7 	4
-#define DAMAGE_FALLOFF_TIER_8 	3
-#define DAMAGE_FALLOFF_TIER_9 	2
-#define DAMAGE_FALLOFF_TIER_10 	1
+#define DAMAGE_FALLOFF_BLANK 30
+#define DAMAGE_FALLOFF_TIER_1 10
+#define DAMAGE_FALLOFF_TIER_2 9
+#define DAMAGE_FALLOFF_TIER_3 8
+#define DAMAGE_FALLOFF_TIER_4 7
+#define DAMAGE_FALLOFF_TIER_5 6
+#define DAMAGE_FALLOFF_TIER_6 5
+#define DAMAGE_FALLOFF_TIER_7 4
+#define DAMAGE_FALLOFF_TIER_8 3
+#define DAMAGE_FALLOFF_TIER_9 2
+#define DAMAGE_FALLOFF_TIER_9_5 1.5
+#define DAMAGE_FALLOFF_TIER_10 1
 
-#define DAMAGE_BUILDUP_TIER_1	1
-#define DAMAGE_BUILDUP_TIER_2	2
-#define DAMAGE_BUILDUP_TIER_3	3
+#define DAMAGE_BUILDUP_TIER_1 1
+#define DAMAGE_BUILDUP_TIER_2 2
+#define DAMAGE_BUILDUP_TIER_3 3
 
 //Defaulting to the legacy damage falloff method
 #define EFFECTIVE_RANGE_OFF 0
@@ -221,76 +237,76 @@ As such, don't expect any values assigned to common firearms to even consider ho
 // % chance for shrapnel generation when getting hit by something.
 */
 
-#define SHRAPNEL_CHANCE_TIER_1		10
-#define SHRAPNEL_CHANCE_TIER_2		20
-#define SHRAPNEL_CHANCE_TIER_3		30
-#define SHRAPNEL_CHANCE_TIER_4		40
-#define SHRAPNEL_CHANCE_TIER_5		50
-#define SHRAPNEL_CHANCE_TIER_6		60
-#define SHRAPNEL_CHANCE_TIER_7		70
-#define SHRAPNEL_CHANCE_TIER_8		80
-#define SHRAPNEL_CHANCE_TIER_9		90
-#define SHRAPNEL_CHANCE_TIER_10		100
+#define SHRAPNEL_CHANCE_TIER_1 10
+#define SHRAPNEL_CHANCE_TIER_2 20
+#define SHRAPNEL_CHANCE_TIER_3 30
+#define SHRAPNEL_CHANCE_TIER_4 40
+#define SHRAPNEL_CHANCE_TIER_5 50
+#define SHRAPNEL_CHANCE_TIER_6 60
+#define SHRAPNEL_CHANCE_TIER_7 70
+#define SHRAPNEL_CHANCE_TIER_8 80
+#define SHRAPNEL_CHANCE_TIER_9 90
+#define SHRAPNEL_CHANCE_TIER_10 100
 
 /*
 ////AMMO TRAVEL SPEED////
 //How many tiles it travels per tick.
 */
 
-#define AMMO_SPEED_TIER_1	1
-#define AMMO_SPEED_TIER_2	2
-#define AMMO_SPEED_TIER_3	3
-#define AMMO_SPEED_TIER_4	4
-#define AMMO_SPEED_TIER_5	5
-#define AMMO_SPEED_TIER_6	6
+#define AMMO_SPEED_TIER_1 1
+#define AMMO_SPEED_TIER_2 2
+#define AMMO_SPEED_TIER_3 3
+#define AMMO_SPEED_TIER_4 4
+#define AMMO_SPEED_TIER_5 5
+#define AMMO_SPEED_TIER_6 6
 
 /*
 ////ARMOR PENETRATION////
 //See Neth's armor comments for how this works. Higher is better.
 */
 
-#define ARMOR_PENETRATION_TIER_1 	5
-#define ARMOR_PENETRATION_TIER_2 	10
-#define ARMOR_PENETRATION_TIER_3 	15
-#define ARMOR_PENETRATION_TIER_4 	20
-#define ARMOR_PENETRATION_TIER_5 	25
-#define ARMOR_PENETRATION_TIER_6 	30
-#define ARMOR_PENETRATION_TIER_7 	35
-#define ARMOR_PENETRATION_TIER_8 	40
-#define ARMOR_PENETRATION_TIER_9 	45
-#define ARMOR_PENETRATION_TIER_10 	50
+#define ARMOR_PENETRATION_TIER_1 5
+#define ARMOR_PENETRATION_TIER_2 10
+#define ARMOR_PENETRATION_TIER_3 15
+#define ARMOR_PENETRATION_TIER_4 20
+#define ARMOR_PENETRATION_TIER_5 25
+#define ARMOR_PENETRATION_TIER_6 30
+#define ARMOR_PENETRATION_TIER_7 35
+#define ARMOR_PENETRATION_TIER_8 40
+#define ARMOR_PENETRATION_TIER_9 45
+#define ARMOR_PENETRATION_TIER_10 50
 
 /*
 ////EXTRA PROJECTILES////
 //Extra bullets to shoot when you shoot. Mostly for shotguns.
 */
 
-#define EXTRA_PROJECTILES_TIER_1	1
-#define EXTRA_PROJECTILES_TIER_2	2
-#define EXTRA_PROJECTILES_TIER_3	3
-#define EXTRA_PROJECTILES_TIER_4	4
-#define EXTRA_PROJECTILES_TIER_5	5
-#define EXTRA_PROJECTILES_TIER_6	6
-#define EXTRA_PROJECTILES_TIER_7	7
-#define EXTRA_PROJECTILES_TIER_8	8
-#define EXTRA_PROJECTILES_TIER_9	9
-#define EXTRA_PROJECTILES_TIER_10	10
+#define EXTRA_PROJECTILES_TIER_1 1
+#define EXTRA_PROJECTILES_TIER_2 2
+#define EXTRA_PROJECTILES_TIER_3 3
+#define EXTRA_PROJECTILES_TIER_4 4
+#define EXTRA_PROJECTILES_TIER_5 5
+#define EXTRA_PROJECTILES_TIER_6 6
+#define EXTRA_PROJECTILES_TIER_7 7
+#define EXTRA_PROJECTILES_TIER_8 8
+#define EXTRA_PROJECTILES_TIER_9 9
+#define EXTRA_PROJECTILES_TIER_10 10
 
 /*
 ////PROJECTILE VARIANCE////
 //How much do we want to make a value variable? Used for accuracy, damage variance. Used in ammo_datums.dm
 */
 
-#define PROJECTILE_VARIANCE_TIER_1	18
-#define PROJECTILE_VARIANCE_TIER_2	16
-#define PROJECTILE_VARIANCE_TIER_3	14
-#define PROJECTILE_VARIANCE_TIER_4	12
-#define PROJECTILE_VARIANCE_TIER_5	10
-#define PROJECTILE_VARIANCE_TIER_6	8
-#define PROJECTILE_VARIANCE_TIER_7	6
-#define PROJECTILE_VARIANCE_TIER_8	4
-#define PROJECTILE_VARIANCE_TIER_9	2
-#define PROJECTILE_VARIANCE_TIER_10	0
+#define PROJECTILE_VARIANCE_TIER_1 18
+#define PROJECTILE_VARIANCE_TIER_2 16
+#define PROJECTILE_VARIANCE_TIER_3 14
+#define PROJECTILE_VARIANCE_TIER_4 12
+#define PROJECTILE_VARIANCE_TIER_5 10
+#define PROJECTILE_VARIANCE_TIER_6 8
+#define PROJECTILE_VARIANCE_TIER_7 6
+#define PROJECTILE_VARIANCE_TIER_8 4
+#define PROJECTILE_VARIANCE_TIER_9 2
+#define PROJECTILE_VARIANCE_TIER_10 0
 
 /*
 ////FLAMER STUFF////

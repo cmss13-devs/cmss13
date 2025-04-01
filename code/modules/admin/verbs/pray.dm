@@ -3,7 +3,8 @@
 	set name = "Pray"
 
 	msg = strip_html(msg)
-	if(!msg)	return
+	if(!msg)
+		return
 
 	if(usr.client)
 		if(usr.client.prefs.muted & MUTE_PRAY)
@@ -12,26 +13,25 @@
 		if(src.client.handle_spam_prevention(msg,MUTE_PRAY))
 			return
 
-	var/liaison = 0
-	if(job == "Corporate Liaison")
-		liaison = 1
+	var/prefix = SPAN_PURPLE("PRAY: ")
+	var/receipt = "Your prayers have been received by the gods."
+	if(job == JOB_CORPORATE_LIAISON)
+		prefix = SPAN_PURPLE("LIAISON: ")
+		receipt = "Your corporate overlords at Weyland-Yutani have received your message."
 
-	if(liaison)
-		msg = SPAN_NOTICE("<b><font color=purple>LIAISON: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>SC</a>):</b> [msg]")
-	else
-		msg = SPAN_NOTICE("<b><font color=purple>PRAY: </font>[key_name(src, 1)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ahelp=mark=\ref[src]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo;extra=\ref[src]'>?</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[src]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[src]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[src]'>SM</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[src]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminspawncookie=\ref[src]'>SC</a>):</b> [msg]")
+	msg = SPAN_BIGNOTICE("[prefix][key_name(src, 1)] [CC_MARK(src)] [ADMIN_PP(src)] [ADMIN_VV(src)] [ADMIN_SM(src)] [ADMIN_JMP_USER(src)] [ADMIN_SC(src)]: [msg]")
 	log_admin(msg)
-	for(var/client/C in GLOB.admins)
-		if(AHOLD_IS_MOD(C.admin_holder) && C.prefs.toggles_chat & CHAT_PRAYER)
-			to_chat(C, msg)
-	if(liaison)
-		to_chat(usr, "Your corporate overlords at Weyland-Yutani have received your message.")
-	else
-		to_chat(usr, "Your prayers have been received by the gods.")
+	for(var/client/admin in GLOB.admins)
+		if(AHOLD_IS_MOD(admin.admin_holder))
+			to_chat(admin, SPAN_STAFF_IC(msg))
+			if(admin.prefs.toggles_sound & SOUND_ARES_MESSAGE)
+				admin << 'sound/machines/terminal_alert.ogg'
 
-/proc/high_command_announce(var/text , var/mob/Sender , var/iamessage)
+	to_chat(usr, receipt)
+
+/proc/high_command_announce(text , mob/Sender , iamessage)
 	var/msg = copytext(sanitize(text), 1, MAX_MESSAGE_LEN)
-	msg = "<b>[SPAN_NOTICE("<font color=orange>USCM[iamessage ?  "IA" : ""]:</font>")][key_name(Sender, 1)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayeropts=\ref[Sender]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];subtlemessage=\ref[Sender]'>SM</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservejump=\ref[Sender]'>JMP</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];CentcommReply=\ref[Sender]'>RPLY</A>):</b> [msg]"
+	msg = "<b><big>[SPAN_STAFF_IC("<font color=orange>USCM[iamessage ?  "IA" : ""]:</font>")][key_name(Sender, 1)] [CC_MARK(Sender)] [ADMIN_PP(Sender)] [ADMIN_VV(Sender)] [ADMIN_SM(Sender)] [ADMIN_JMP_USER(Sender)] [CC_REPLY(Sender)]: [msg]</big></b>"
 	log_admin(msg)
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)

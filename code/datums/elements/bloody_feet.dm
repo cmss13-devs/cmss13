@@ -24,15 +24,15 @@
 	H.bloody_footsteps = steps_to_take
 	LAZYADD(entered_bloody_turf, target)
 
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/on_moved)
-	RegisterSignal(target, COMSIG_HUMAN_BLOOD_CROSSED, .proc/blood_crossed)
-	RegisterSignal(target, COMSIG_HUMAN_CLEAR_BLOODY_FEET, .proc/clear_blood)
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved), override = TRUE)
+	RegisterSignal(target, COMSIG_HUMAN_BLOOD_CROSSED, PROC_REF(blood_crossed), override = TRUE)
+	RegisterSignal(target, COMSIG_HUMAN_CLEAR_BLOODY_FEET, PROC_REF(clear_blood), override = TRUE)
 	if(shoes)
 		LAZYSET(target_shoes, target, shoes)
-		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, .proc/on_shoes_removed)
+		RegisterSignal(shoes, COMSIG_ITEM_DROPPED, PROC_REF(on_shoes_removed), override = TRUE)
 
 	if(dry_time)
-		addtimer(CALLBACK(src, .proc/clear_blood, target), dry_time)
+		addtimer(CALLBACK(src, PROC_REF(clear_blood), target), dry_time)
 
 /datum/element/bloody_feet/Detach(datum/target, force)
 	UnregisterSignal(target, list(
@@ -53,7 +53,7 @@
 
 /datum/element/bloody_feet/proc/on_moved(mob/living/carbon/human/target, oldLoc, direction)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, .proc/add_tracks, target, oldLoc, direction)
+	INVOKE_ASYNC(src, PROC_REF(add_tracks), target, oldLoc, direction)
 
 /datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/human/target, oldLoc, direction)
 	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)

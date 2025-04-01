@@ -1,14 +1,14 @@
 /*
- *	Absorbs /obj/item/secstorage.
- *	Reimplements it only slightly to use existing storage functionality.
+ * Absorbs /obj/item/secstorage.
+ * Reimplements it only slightly to use existing storage functionality.
  *
- *	Contains:
- *		Secure Briefcase
- *		Wall Safe
+ * Contains:
+ * Secure Briefcase
+ * Wall Safe
  */
 
 // -----------------------------
-//         Generic Item
+//  Generic Item
 // -----------------------------
 /obj/item/storage/secure
 	name = "secstorage"
@@ -37,7 +37,7 @@
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				open =! open
 				var/msg_open_status = "[open ? "open" : "close"]"
-				user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."), SHOW_MESSAGE_VISIBLE)
+				user.show_message(SPAN_NOTICE("You [msg_open_status ] the service panel."), SHOW_MESSAGE_VISIBLE)
 			return
 		if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && open == 1 && !l_hacking)
 			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), SHOW_MESSAGE_VISIBLE)
@@ -53,7 +53,8 @@
 				else
 					user.show_message(text(SPAN_DANGER("Unable to reset internal memory.")), SHOW_MESSAGE_VISIBLE)
 					l_hacking = 0
-			else	l_hacking = 0
+			else
+				l_hacking = 0
 			return
 		//At this point you have exhausted all the special things to do when locked
 		// ... but it's still locked.
@@ -82,7 +83,7 @@
 	message = text("[]", code)
 	if (!locked)
 		message = "*****"
-	dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
+	dat += text("<HR>\n>[]<BR>\n<A href='byond://?src=\ref[];type=1'>1</A>-<A href='byond://?src=\ref[];type=2'>2</A>-<A href='byond://?src=\ref[];type=3'>3</A><BR>\n<A href='byond://?src=\ref[];type=4'>4</A>-<A href='byond://?src=\ref[];type=5'>5</A>-<A href='byond://?src=\ref[];type=6'>6</A><BR>\n<A href='byond://?src=\ref[];type=7'>7</A>-<A href='byond://?src=\ref[];type=8'>8</A>-<A href='byond://?src=\ref[];type=9'>9</A><BR>\n<A href='byond://?src=\ref[];type=R'>R</A>-<A href='byond://?src=\ref[];type=0'>0</A>-<A href='byond://?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
 	user << browse(dat, "window=caselock;size=300x280")
 
 /obj/item/storage/secure/Topic(href, href_list)
@@ -97,7 +98,7 @@
 			else if ((code == l_code) && (l_set == 1))
 				locked = 0
 				overlays = null
-				overlays += image('icons/obj/items/storage.dmi', icon_opened)
+				overlays += image('icons/obj/items/storage/briefcases.dmi', icon_opened)
 				code = null
 			else
 				code = "ERROR"
@@ -119,15 +120,19 @@
 	return
 
 // -----------------------------
-//        Secure Briefcase
+// Secure Briefcase
 // -----------------------------
 /obj/item/storage/secure/briefcase
 	name = "secure briefcase"
-	icon = 'icons/obj/items/storage.dmi'
+	icon = 'icons/obj/items/storage/briefcases.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_righthand.dmi'
+	)
 	icon_state = "secure"
 	item_state = "sec-case"
 	desc = "A large briefcase with a digital locking system."
-	force = 8.0
+	force = 8
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_LARGE
@@ -150,22 +155,22 @@
 	add_fingerprint(user)
 
 // -----------------------------
-//        Secure Safe
+// Secure Safe
 // -----------------------------
 
 /obj/item/storage/secure/safe
 	name = "secure safe"
-	icon = 'icons/obj/items/storage.dmi'
-	icon_state = "safe"
+	icon = 'icons/obj/structures/safes.dmi'
+	icon_state = "wallsafe"
 	icon_opened = "safe0"
 	icon_locking = "safeb"
 	icon_sparking = "safespark"
-	flags_atom = FPRINT|CONDUCT
-	force = 8.0
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
+	force = 8
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_LARGE
-	anchored = 1.0
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	cant_hold = list(/obj/item/storage/secure/briefcase)
 
 /obj/item/storage/secure/safe/fill_preset_inventory()

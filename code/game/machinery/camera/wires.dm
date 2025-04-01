@@ -26,11 +26,11 @@
 		flagIndex+=1
 	return wires
 
-/obj/structure/machinery/camera/proc/isWireColorCut(var/wireColor)
+/obj/structure/machinery/camera/proc/isWireColorCut(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	return ((src.wires & wireFlag) == 0)
 
-/obj/structure/machinery/camera/proc/isWireCut(var/wireIndex)
+/obj/structure/machinery/camera/proc/isWireCut(wireIndex)
 	var/wireFlag = IndexToFlag[wireIndex]
 	return ((src.wires & wireFlag) == 0)
 
@@ -40,7 +40,7 @@
 	else
 		return 0
 
-/obj/structure/machinery/camera/proc/cut(var/wireColor)
+/obj/structure/machinery/camera/proc/cut(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	var/wireIndex = WireColorToIndex[wireColor]
 	wires &= ~wireFlag
@@ -60,7 +60,7 @@
 
 	src.interact(usr)
 
-/obj/structure/machinery/camera/proc/mend(var/wireColor)
+/obj/structure/machinery/camera/proc/mend(wireColor)
 	var/wireFlag = WireColorToFlag[wireColor]
 	var/wireIndex = WireColorToIndex[wireColor]
 	wires |= wireFlag
@@ -81,7 +81,7 @@
 	src.interact(usr)
 
 
-/obj/structure/machinery/camera/proc/pulse(var/wireColor)
+/obj/structure/machinery/camera/proc/pulse(wireColor)
 	var/wireIndex = WireColorToIndex[wireColor]
 	switch(wireIndex)
 		if(CAMERA_WIRE_FOCUS)
@@ -117,10 +117,10 @@
 		var/is_uncut = src.wires & WireColorToFlag[wires[wiredesc]]
 		t1 += "[wiredesc] wire: "
 		if(!is_uncut)
-			t1 += "<a href='?src=\ref[src];wires=[wires[wiredesc]]'>Mend</a>"
+			t1 += "<a href='byond://?src=\ref[src];wires=[wires[wiredesc]]'>Mend</a>"
 		else
-			t1 += "<a href='?src=\ref[src];wires=[wires[wiredesc]]'>Cut</a> "
-			t1 += "<a href='?src=\ref[src];pulse=[wires[wiredesc]]'>Pulse</a> "
+			t1 += "<a href='byond://?src=\ref[src];wires=[wires[wiredesc]]'>Cut</a> "
+			t1 += "<a href='byond://?src=\ref[src];pulse=[wires[wiredesc]]'>Pulse</a> "
 		t1 += "<br>"
 
 	t1 += "<br>\n[(src.view_range == initial(view_range) ? "The focus light is on." : "The focus light is off.")]"
@@ -128,7 +128,7 @@
 	t1 += "<br>\n[(light_disabled ? "The camera light is off." : "The camera light is on.")]"
 	t1 += "<br>\n[(alarm_on ? "The alarm light is on." : "The alarm light is off.")]"
 
-	t1 += "<p><a href='?src=\ref[src];close2=1'>Close</a></p>\n"
+	t1 += "<p><a href='byond://?src=\ref[src];close2=1'>Close</a></p>\n"
 	show_browser(user, t1, "Camera Access Panel", "wires")
 
 
@@ -141,7 +141,7 @@
 			var/t1 = text2num(href_list["wires"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
-				to_chat(usr, "You need wirecutters!")
+				to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 				return
 			if (src.isWireColorCut(t1))
 				src.mend(t1)
@@ -151,10 +151,10 @@
 			var/t1 = text2num(href_list["pulse"])
 			var/obj/item/held_item = usr.get_held_item()
 			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
-				to_chat(usr, "You need a multitool!")
+				to_chat(usr, SPAN_WARNING("You need a multitool!"))
 				return
 			if (src.isWireColorCut(t1))
-				to_chat(usr, "You can't pulse a cut wire.")
+				to_chat(usr, SPAN_WARNING("You can't pulse a cut wire."))
 				return
 			else
 				src.pulse(t1)

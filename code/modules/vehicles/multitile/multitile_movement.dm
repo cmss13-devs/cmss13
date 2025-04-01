@@ -3,7 +3,7 @@
 	It had actual momentum, rolling thanks to momentum and so on. We had to cut out any rolling, cause it made vehicle controls
 	pretty inconvenient even without lags. The reason why it wasn't removed entirely is because I want vehicles to keep the ability
 	to achieve top speed, to be able to move actually FAST in long-range travel on big maps, but not have sonic speed during engagements.
-	 - Jeser
+	- Jeser
 
 	original description:
 		Vehicles have momentum, which makes the movement code a bit complex.
@@ -26,7 +26,7 @@
 */
 
 // Called when someone tries to move the vehicle
-/obj/vehicle/multitile/relaymove(var/mob/user, var/direction)
+/obj/vehicle/multitile/relaymove(mob/user, direction)
 	if(user != seats[VEHICLE_DRIVER])
 		return
 
@@ -37,7 +37,7 @@
 	return pre_movement(direction)
 
 // This determines what type of movement to execute
-/obj/vehicle/multitile/proc/pre_movement(var/direction)
+/obj/vehicle/multitile/proc/pre_movement(direction)
 	if(world.time < next_move)
 		return FALSE
 
@@ -57,7 +57,7 @@
 	return success
 
 // Attempts to execute the given movement input
-/obj/vehicle/multitile/proc/try_move(var/direction, var/force=FALSE)
+/obj/vehicle/multitile/proc/try_move(direction, force=FALSE)
 	if(!can_move(direction))
 		return FALSE
 
@@ -71,8 +71,9 @@
 	var/turf/old_turf = get_turf(src)
 	forceMove(get_step(src, direction))
 
+	var/turf/current_loc = get_turf(src)
 	for(var/obj/item/hardpoint/H in hardpoints)
-		H.on_move(old_turf, get_turf(src), direction)
+		H.on_move(old_turf, current_loc, direction)
 
 	if(movement_sound && world.time > move_next_sound_play)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)
@@ -83,7 +84,7 @@
 	return TRUE
 
 // Rotates the vehicle by deg degrees if possible
-/obj/vehicle/multitile/proc/try_rotate(var/deg)
+/obj/vehicle/multitile/proc/try_rotate(deg)
 	if(!can_rotate(deg))
 		return FALSE
 
@@ -98,7 +99,7 @@
 	rotate_hardpoints(deg)
 	rotate_entrances(deg)
 	rotate_bounds(deg)
-	setDir(turn(dir, deg))
+	setDir(turn(dir, deg), TRUE)
 
 	last_move_dir = dir
 
@@ -110,8 +111,13 @@
 
 	return TRUE
 
+/obj/vehicle/multitile/setDir(newdir, real_rotate = FALSE)
+	if(!real_rotate)
+		return
+	. = ..()
+
 // Increases/decreases the vehicle's momentum according to whether or not the user is steppin' on the gas or not
-/obj/vehicle/multitile/proc/update_momentum(var/direction)
+/obj/vehicle/multitile/proc/update_momentum(direction)
 	// If we've stood still for long enough we go back to 0 momentum
 	if(world.time > next_move + move_delay*move_momentum_build_factor)
 		move_momentum = 0
@@ -138,18 +144,21 @@
 
 
 // This just checks if the vehicle can physically move in the given direction
-/obj/vehicle/multitile/proc/can_move(var/direction)
+/obj/vehicle/multitile/proc/can_move(direction)
 	var/can_move = TRUE
 
-	var/turf/min_turf = locate(x + bound_x / world.icon_size, y + bound_y / world.icon_size, z)
-	var/turf/max_turf = locate(min_turf.x + (bound_width / world.icon_size) - 1, min_turf.y + (bound_height / world.icon_size) - 1, z)
-	var/list/old_turfs = block(min_turf, max_turf)
+	var/bound_x_tiles = bound_x / world.icon_size
+	var/bound_y_tiles = bound_y / world.icon_size
+	var/turf/min_turf = locate(x + bound_x_tiles, y + bound_y_tiles, z)
+
+	var/bound_width_tiles = bound_width / world.icon_size
+	var/bound_height_tiles = bound_height / world.icon_size
+	var/list/old_turfs = CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles)
 
 	var/turf/new_loc = get_step(src, direction)
-	min_turf = locate(new_loc.x + bound_x / world.icon_size, new_loc.y + bound_y / world.icon_size, z)
-	max_turf = locate(min_turf.x + (bound_width / world.icon_size) - 1, min_turf.y + (bound_height / world.icon_size) - 1, z)
+	min_turf = locate(new_loc.x + bound_x_tiles, new_loc.y + bound_y_tiles, z)
 
-	for(var/turf/T in block(min_turf, max_turf))
+	for(var/turf/T as anything in CORNER_BLOCK(min_turf, bound_width_tiles, bound_height_tiles))
 		// only check the turfs we're moving to
 		if(T in old_turfs)
 			continue
@@ -159,22 +168,22 @@
 
 	// Crashed with something that stopped us
 	if(!can_move)
-		move_momentum = Floor(move_momentum/2)
+		move_momentum = floor(move_momentum/2)
 		update_next_move()
 		interior_crash_effect()
 
 	return can_move
 
-/obj/vehicle/multitile/proc/can_rotate(var/deg)
+/obj/vehicle/multitile/proc/can_rotate(deg)
 	if(bound_width == bound_height)
 		return TRUE
 	//VHCLTODO: Add non-square checks here
 	return FALSE
 
-/obj/vehicle/multitile/proc/rotate_entrances(var/deg)
+/obj/vehicle/multitile/proc/rotate_entrances(deg)
 	entrances = rotate_origins(deg, entrances)
 
-/obj/vehicle/multitile/proc/rotate_hardpoints(var/deg, var/update_icons = TRUE, var/list/specific_hardpoints = null)
+/obj/vehicle/multitile/proc/rotate_hardpoints(deg, update_icons = TRUE, list/specific_hardpoints = null)
 	if(specific_hardpoints)
 		for(var/obj/item/hardpoint/H in specific_hardpoints)
 			H.rotate(deg)
@@ -187,7 +196,7 @@
 		update_icon()
 
 // Rotates a list of relative coordinates around the center of the vehicle
-/obj/vehicle/multitile/proc/rotate_origins(var/deg, var/list/origins, var/list/specific_indexes)
+/obj/vehicle/multitile/proc/rotate_origins(deg, list/origins, list/specific_indexes)
 	//apply entry coord rotations
 	for(var/origin in origins)
 		//Don't rotate restricted origin points, unless we're doing a restricted only rotation
@@ -236,7 +245,7 @@
 		origins[origin] = new_origin
 	return origins
 
-/obj/vehicle/multitile/proc/rotate_bounds(var/deg)
+/obj/vehicle/multitile/proc/rotate_bounds(deg)
 	//If the vehicle isn't a perfect square, rotate the bounds around
 	if(bound_width != bound_height && (dir != turn(dir, (deg + 180)) && dir != turn(dir, deg)))
 		var/bound_swapped = bound_width
@@ -254,7 +263,7 @@
 	if(abs(move_momentum) <= 1)
 		return
 
-	var/fling_distance = Ceiling(move_momentum/move_max_momentum) * 2
+	var/fling_distance = ceil(move_momentum/move_max_momentum) * 2
 	var/turf/target = interior.get_middle_turf()
 
 	for (var/x in 0 to fling_distance-1)
@@ -264,7 +273,7 @@
 			break
 
 	var/list/bounds = interior.get_bound_turfs()
-	for(var/turf/T in block(bounds[1], bounds[2]))
+	for(var/turf/T as anything in block(bounds[1], bounds[2]))
 		for(var/atom/movable/A in T)
 			if(A.anchored)
 				continue
@@ -272,16 +281,16 @@
 			if(isliving(A))
 				var/mob/living/M = A
 
-				shake_camera(M, 2, Ceiling(move_momentum/move_max_momentum) * 1)
+				shake_camera(M, 2, ceil(move_momentum/move_max_momentum) * 1)
 				if(!M.buckled)
 					M.apply_effect(1, STUN)
 					M.apply_effect(2, WEAKEN)
 
 			// YOU'RE LIKE A CAR CRASH IN SLOW MOTION!
 			// IT'S LIKE I'M WATCHIN' YA FLY THROUGH A WINDSHIELD!
-			INVOKE_ASYNC(A, /atom/movable.proc/throw_atom, target, fling_distance, SPEED_VERY_FAST, src, TRUE)
+			INVOKE_ASYNC(A, TYPE_PROC_REF(/atom/movable, throw_atom), target, fling_distance, SPEED_VERY_FAST, src, TRUE)
 
-/obj/vehicle/multitile/proc/at_munition_interior_explosion_effect(var/explosion_strength = 75, var/explosion_falloff = 50, var/shrapnel = TRUE, var/shrapnel_count = 48, var/datum/cause_data/cause_data)
+/obj/vehicle/multitile/proc/at_munition_interior_explosion_effect(explosion_strength = 75, explosion_falloff = 50, shrapnel = TRUE, shrapnel_count = 48, datum/cause_data/cause_data)
 	if(!interior)
 		return
 

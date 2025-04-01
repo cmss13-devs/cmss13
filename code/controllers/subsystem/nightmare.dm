@@ -1,7 +1,7 @@
 GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(nightmare_node_map, /datum/nmnode, id)
 
 SUBSYSTEM_DEF(nightmare)
-	name       = "Nightmare"
+	name    = "Nightmare"
 	init_order = SS_INIT_NIGHTMARE
 	flags = SS_NO_FIRE
 
@@ -12,6 +12,8 @@ SUBSYSTEM_DEF(nightmare)
 	var/list/contexts = list()
 	/// List of parsed file nodes
 	var/list/roots = list()
+	/// Associated list of scenarios that indicate hostile survivor spawning
+	var/list/hostile_survivor_scenarios = NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR
 
 /datum/controller/subsystem/nightmare/Initialize(start_timeofday)
 	var/global_nightmare_path = CONFIG_GET(string/nightmare_path)
@@ -41,6 +43,9 @@ SUBSYSTEM_DEF(nightmare)
 	//
 	// this is the only way i've found to make this work, other than going
 	// full cooperative scheduling with the tasks / a ticking SS
+
+	if(!initialized)
+		message_admins("Nightmare subsystem is performing prepare_game prior to initialization! No nightmare inserts will be loaded.")
 
 	if(stat == NIGHTMARE_STATUS_DONE)
 		return TRUE
@@ -108,22 +113,27 @@ SUBSYSTEM_DEF(nightmare)
 	if(!data)
 		log_debug("Nightmare: Failed to read config file: [filename]")
 		CRASH("Could not get requested nightmare config file!")
-	if(data) data = file2text(data)
-	if(data) data = json_decode(data)
+	if(data)
+		data = file2text(data)
+	if(data)
+		data = json_decode(data)
 	return parse_tree(data)
 
 /// Instanciates nmnodes from parsed JSON
 /datum/controller/subsystem/nightmare/proc/parse_tree(list/parsed)
 	RETURN_TYPE(/list/datum/nmnode)
-	if(!islist(parsed)) return
+	if(!islist(parsed))
+		return
 	var/list/datum/nmnode/nodes = list()
 	if(!parsed["type"]) // This is a JSON array
 		for(var/list/spec as anything in parsed)
 			var/datum/nmnode/N = read_node(spec)
-			if(N) nodes += N
+			if(N)
+				nodes += N
 	else // This is a JSON hash
 		var/datum/nmnode/N = read_node(parsed)
-		if(N) nodes += N
+		if(N)
+			nodes += N
 	return nodes
 
 /// Instanciate a single nmnode from its JSON definition
@@ -136,3 +146,13 @@ SUBSYSTEM_DEF(nightmare)
 	else
 		CRASH("Tried to instanciate an invalid node type")
 
+/// Returns whether the ground context indicates a hostile survivor scenario
+/datum/controller/subsystem/nightmare/proc/get_scenario_is_hostile_survivor()
+	// Assumption: Only ground context is relevant
+	var/datum/nmcontext/ground_context = contexts[NIGHTMARE_CTX_GROUND]
+	for(var/key in hostile_survivor_scenarios)
+		var/scenario = ground_context.get_scenario_value(key)
+		for(var/value in hostile_survivor_scenarios[key])
+			if(scenario == value)
+				return TRUE
+	return FALSE

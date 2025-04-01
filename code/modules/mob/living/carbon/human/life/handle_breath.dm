@@ -79,14 +79,14 @@
 
 	switch(air_info[1])
 		if(GAS_TYPE_N2O)
-			if(!isYautja(src)) // Prevent Predator anesthetic memes
+			if(!isyautja(src)) // Prevent Predator anesthetic memes
 				var/SA_pp = air_info[3]
 				if(SA_pp > 20) // Enough to make us paralysed for a bit
 					apply_effect(3, PARALYZE) // 3 gives them one second to wake up and run away a bit!
 					//Enough to make us sleep as well
 					if(SA_pp > 30)
 						sleeping = min(sleeping+4, 10)
-				else if(SA_pp > 1)	// There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
+				else if(SA_pp > 1) // There is sleeping gas in their lungs, but only a little, so give them a bit of a warning
 					if(prob(20))
 						spawn(0) emote(pick("giggle", "laugh"))
 	apply_damage(-2, OXY)

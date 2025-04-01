@@ -6,9 +6,9 @@ FIRE ALARM
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "fire0"
-	var/detecting = 1.0
-	var/working = 1.0
-	anchored = 1.0
+	var/detecting = 1
+	var/working = 1
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 6
@@ -19,7 +19,24 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
 	. = ..()
 	if(is_mainship_level(z))
-		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
+
+	if(dir)
+		setDir(dir)
+
+	if(building)
+		buildstage = 0
+		wiresexposed = 1
+		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
+		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
+
+	if(!is_mainship_level(z))
+		if(GLOB.security_level)
+			overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_[get_security_level()]")
+		else
+			overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
+
+	update_icon()
 
 /obj/structure/machinery/firealarm/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
@@ -47,13 +64,13 @@ FIRE ALARM
 
 	if(stat & BROKEN)
 		icon_state = "firex"
-	else if(stat & NOPOWER & (security_level != SEC_LEVEL_RED))
+	else if(stat & NOPOWER & (GLOB.security_level != SEC_LEVEL_RED))
 		icon_state = "firep"
 
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
 	if(src.detecting)
 		if(temperature > T0C+200)
-			src.alarm()			// added check of detector status here
+			src.alarm() // added check of detector status here
 	return
 
 /obj/structure/machinery/firealarm/attack_remote(mob/user as mob)
@@ -63,8 +80,9 @@ FIRE ALARM
 	return src.alarm()
 
 /obj/structure/machinery/firealarm/emp_act(severity)
-	if(prob(50/severity)) alarm()
-	..()
+	. = ..()
+	if(prob(50/severity))
+		alarm()
 
 /obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -122,12 +140,8 @@ FIRE ALARM
 					qdel(src)
 		return
 
-	..()
+	. = ..()
 	return
-
-/obj/structure/machinery/firealarm/power_change()
-	..()
-	addtimer(CALLBACK(src, .proc/update_icon), rand(0,15))
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())
@@ -139,8 +153,10 @@ FIRE ALARM
 	var/area/area = get_area(src)
 
 	if (area.flags_alarm_state & ALARM_WARNING_FIRE)
+		user.visible_message("[user] deactivates [src].", "You deactivate [src].")
 		reset()
 	else
+		user.visible_message("[user] activates [src].", "You activate [src].")
 		alarm()
 
 	return
@@ -166,23 +182,3 @@ FIRE ALARM
 	area.firealert()
 	update_icon()
 	return
-
-/obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
-	. = ..()
-
-	if(dir)
-		src.setDir(dir)
-
-	if(building)
-		buildstage = 0
-		wiresexposed = 1
-		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
-		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
-
-	if(!is_mainship_level(z))
-		if(security_level)
-			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_[get_security_level()]")
-		else
-			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
-
-	update_icon()

@@ -1,0 +1,591 @@
+2023-12-01:
+  Birdtalon:
+  - bugfix: Eggsac fragile eggs can be placed on hardy weeds.
+  Morrow:
+  - rscdel: Removed flame particles. Possibly increases performance for some players.
+  Zonespace27:
+  - bugfix: Resin holes can no longer be planted below stairs
+2023-12-02:
+  567Turtle:
+  - rscadd: Brown boots and gloves are now vendable from the surplus vendors.
+  Birdtalon:
+  - rscadd: '"Infernal" name prefix for xeno who rolls number 666'
+  - code_imp: Refactors xeno name generation. Larva name generation and removes some
+      istype(src)
+  - bugfix: 'Restricts burrower tunnels to alphanumeric characters as some other characters
+      break the tunnel.
+
+      code; Adds new proc to replace non alphanumeric or space characters.'
+  Morrow:
+  - code_imp: Corrected a check to avoid repeat work in /datum/asset/spritesheet/vending_products/register()
+  realforest2001:
+  - rscadd: Added disguisable listening bugs/devices. MPs have two outside CMP office,
+      the CL has two in their bedroom.
+  - bugfix: Fixes incorrect frequencies being used to display channel names on radios.
+  - bugfix: Radios and tape recorders placed on tables or placed inside webbing can
+      now hear speech again.
+2023-12-03:
+  BadAtThisGame302:
+  - rscadd: Added a flavor diary entry from the Director of Lambda
+  - mapadd: added back the old vault nightmare insert on Solaris which was removed
+      due to the creation of static comms where it spawned
+  - maptweak: tweaked the Lambda Director's Office
+  - maptweak: tweaked the Lambda Administration Office
+  - maptweak: tweaked the Lambda Relaxation Room
+  SpartanBobby:
+  - maptweak: Redetails Almayer Squad briefing rooms
+  blackdragonTOW:
+  - maptweak: Standardized the names of LZs to include the name of the LZ.
+  stalkerino:
+  - bugfix: fixes the skull facepaint, black mask, blue mask
+2023-12-04:
+  Birdtalon:
+  - bugfix: "Upgraded resin walls can now nest hosts.\n/\U0001F191"
+  - rscadd: Radial Menu for xeno Evolve
+  IowaPotatoFarmer:
+  - rscadd: Added a Corporate Liaison survivor to Sorokyne.
+  - rscadd: Added a modified version of the liaison's winter coat that allows it to
+      holster guns and a few other things. Only available to the Sorokyne Strata Corporate
+      Liaison for now.
+  - spellcheck: Fixed a typo in the Sorokyne Strata Political Prisoner's ID tag.
+  MrDas:
+  - bugfix: Observer minimap should no longer occasionally show wrong / no map.
+  SabreML:
+  - ui: Removed the scrollbar from the 'Player setup' menu.
+  cuberound:
+  - bugfix: fixed a runtime in /datum/component/healing_reduction/process(delta_time)
+  ihatethisengine:
+  - rscadd: Whiskey outpost is voteable less often and requires 140 players.
+  realforest2001:
+  - bugfix: Fixes /spec_kit/asrs (now /spec_kit/rifleman) not allowing use.
+  - code_imp: Adds back-end functionality for token redeeming on cm_vending vendors,
+      and moves synth experimental tools token to use it.
+  - rscadd: Spec tokens are real.
+2023-12-05:
+  Birdtalon:
+  - bugfix: "Fixes a runtime in vendors\n/\U0001F191"
+  Huffie56:
+  - rscadd: added new sections(Binoculars, Utilities, Helmet Optics, Radio keys, and
+      fill them with items already in the vendor.
+  - qol: move the section called pouches just above utilities section.
+  - qol: changed the section called "Supplies" to "engineering supplies" and fill
+      it with C4 and APC circuit board .
+  SabreML:
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 1)
+  Tsurupeta:
+  - bugfix: fixed saving of certain preferences.
+  silencer_pl:
+  - admin: Recieving prayers now makes a sound
+  - admin: Prayers and USCM emergency messages are now better highlighted for mods/admins
+2023-12-06:
+  Birdtalon:
+  - bugfix: "Fixes runtime in spiders.dm\n/\U0001F191"
+  Blundir:
+  - rscadd: added new ammo boxes for various weapons and ammo
+2023-12-07:
+  Doubleumc:
+  - refactor: vehicle weapons can fire full-auto
+  - rscdel: no more controls for firing vehicle non-selected weapons
+  Drathek:
+  - bugfix: Fix some errors regarding the nano subystem
+  - code_imp: Reduced most preference re-saving when preferences are initially loaded
+  Ediblebomb:
+  - rscadd: M5 Helmet Gasmask now functions as a gasmask when in a marine helmet (and
+      yes, gasmasks do still have some functionality)
+  SabreML:
+  - admin: Fixed a freeze when opening the the 'Create Object' interface.
+  - admin: Adjusted the size and positioning of the 'Create Object/Mob/Turf' panels
+      so that everything fits into the window.
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 2)
+  VileBeggar:
+  - soundadd: The XM88 now has a scaling hit sound for every direct hit you manage
+      to land with it.
+  realforest2001:
+  - admin: Added a Check Ckey verb to analyze for multikey. We're watching you Wazowski.
+      Always watching.
+  - code_imp: Cleaned up 1 letter vars in the global datacore. Also made the entry
+      names reflect the real name of who they relate to, for VV purposes.
+  - code_imp: Paygrade shorthands now use defines.
+  - bugfix: CLF and Survivors are no longer privates.
+  - bugfix: Civillian Mr/Ms/Mx prefix now works correctly, and is the default for
+      new ID cards.
+  - bugfix: Fixes custom sent ERTs broadcasting when they shouldn't.
+  - bugfix: Fixes UPP friendly ERT telling staff it's hostile.
+  zzzmike:
+  - bugfix: disarm chance wasn't calculating properly
+  zzzmike, drathek, ihatethisengine2:
+  - rscadd: Lifeboat launch now has an ARES announcement followed by a 10 second delay
+      before doors close. The current launch functionality is preserved as Emergency
+      Launch.
+2023-12-08:
+  Birdtalon:
+  - bugfix: Wall weeds now destroyed when closed wall turfs are changed.
+  - code_imp: Reorganises some xeno code from xeno_defines.dm
+  Doubleumc:
+  - code_imp: projectiles smoothly animate their movement
+  Firartix, Birdtalon:
+  - bugfix: Fixed a logic error in Warrior code causing lunging some M2C/M56D users
+      to semi-permanently brick lunge.
+  Huffie56:
+  - maptweak: added a button inside the CL office to open the shutter for the door
+      and rearranged other buttons.
+  - maptweak: separated shutter for cl office door and for the windows.
+  - maptweak: add three lights in CL office and quarter.
+  - balance: add document and sling pouch to ASO vendor.
+  - balance: add shoulder webbing to ASO vendor.
+  - balance: add a bag section to ASO vendor and add leather satchel to it.
+  SabreML:
+  - spellcheck: Fixed instances of "The the" and "A the" in chat messages so that
+      they're just "The" instead. (Part 3)
+  alexguinea atticus-rezzer:
+  - rscadd: Adds alarm sound for lifeboats when launching
+  fira:
+  - bugfix: Cryoing someone now properly takes into account role weights for the purpose
+      of latejoin larvas. This should very slightly increase larvas amount.
+  - bugfix: Roundstart distributed amount of gear and ASRS points now takes shipside
+      role weights into account. This should moderately decrease budget and starting
+      gear.
+  - bugfix: Roundstart distributed amount of gear and ASRS points does not count Survivors
+      and Monkeys anymore. This should moderatly decrease budget and starting gear.
+  - rscadd: Main marine vendors and ASRS now get matching supply for every additional
+      marine latejoining, similar to larvas. This should be a substantial increase
+      over the course of a round. Supplies given are 60% of what a roundstart marine
+      would give.
+  - balance: Amount of gear in main marine vendors and ASRS supplies have been decreased
+      by 40% to help counteract added supplies the marines will get in latejoining.
+      Hopefully this also keeps reqs active to dispatch new supplies.
+  - bugfix: Altered a few items vendor stock scalings to be linear for use with the
+      new system, such as RTO pack, Drop Pouch and Machete Pouch.
+  - rscadd: Introduced ASRS supply pools. As proof of concept, ASRS now spawns a crate
+      of food ingredients every 30 minutes, in addition to regular gear.
+  - balance: ASRS now keeps track of partial crates awarded. This means if you should
+      receive 2.5 then 2.5 crates, you now get 2 then 3, rather than 2 and 2. This
+      is intended to result in smoother, more reliable transitions and scaling with
+      varying amount of Xenos on map.
+  - balance: Amount of ASRS crates awarded was reduced by about 15.5% to make up for
+      crates carrying over. Overall this should result in an about 5-10% reduction
+      in highpop crates, and ~10% increase in lowpop. Pop being based on xeno count.
+  - code_imp: Refactored part of ASRS supply code to be less of a painful, antique
+      artifact.
+  - bugfix: Fixed incorrect weighting in the ASRS supply code, effects on crate distributions
+      are unknown.
+  - bugfix: Fixed HPR ammo ASRS packs failing to spawn and ending up as MK1s instead.
+  - bugfix: Fixed ASRS order numbers not increasing the order IDs... This whole time..
+  ihatethisengine:
+  - balance: PO can remove queens dropship override again.
+  private-tristan:
+  - qol: Gun safety messages now use balloon alerts.
+2023-12-09:
+  InsaneRed:
+  - balance: Oppressor tail abduct changed to 15 seconds and lowers the windup to
+      7 deciseconds
+  - balance: ' Changes around the punch effect so that instead of having to meet demonic
+      standards, you only need to punch to lower your tail/hook on oppressor.'
+  - bugfix: You will now automatically punch chest if the target you are aiming at
+      is delimbed instead of doing nothing
+  harryob:
+  - rscdel: removes a nanoui debug verb that no one has ever used, ever
+  zzzmike:
+  - spellcheck: tablestun text is more clear that it stuns
+  - soundadd: unequip noise added to uniform, backpack, shoes.
+  - soundadd: sound added to tablestun
+  - sounddel: for disarms, whoosh only triggers on stun. otherwise, the miss sound
+      plays
+2023-12-10:
+  Birdtalon:
+  - bugfix: Resting once again cancels xenomorph evolve.
+  SabreML:
+  - bugfix: Fixed resin walls/membranes showing a welder deconstruction hint.
+  Zonespace27:
+  - balance: You cannot plant eggs inside vehicles.
+  - balance: Eggs can no longer be planted on tiles with objects that would obscure
+      them.
+  harryob:
+  - bugfix: xenos can construct in dropships during transport again
+  ihatethisengine:
+  - rscadd: locking lifeboats open the docks
+2023-12-11:
+  ihatethisengine:
+  - bugfix: fusion reactors cannot be destroyed with explosions
+2023-12-12:
+  InsaneRed:
+  - bugfix: M44 Heavy bullets no longer display a "4" when you get hit by them
+2023-12-13:
+  BadAtThisGame302:
+  - bugfix: fixed Engie not showing up an Engie Area on tacmap on LV-624
+  - bugfix: Fixed Research not showing up as a Research Area on tacmap on LV-624
+  Birdtalon:
+  - bugfix: Fixes a missing area on Almayer
+  NateDross:
+  - spellcheck: Edited 'M56 Battery' to 'M56 DV9 Battery' in requisitions munition
+      vendor
+  NessiePendragon:
+  - rscadd: Adds a new braid hairstyle.
+  blackdragonTOW:
+  - balance: GAU RoF doubled
+  harryob:
+  - rscadd: added a historical medal viewer
+  realforest2001:
+  - rscadd: Added a new almayer hull type (heavy reinforced) which is indestructible
+      by normal means until after hijack collision.
+  - rscadd: Added a new subtype of shutter that automatically opens or closes depending
+      on security level.
+  - maptweak: Maps both of the above around the engineering storeroom. Also adds the
+      walls between the firing ranges and around uniform vendors.
+  - maptweak: Manual control button for shutters over engineering storage in the CEs
+      office.
+  - code_imp: Changes hijack structural changes (walls/windows/windoors/ladders) to
+      use signals.
+  - ui: Shuttle manipulator UI is now slightly wider on initial startup.
+2023-12-14:
+  Contrabang:
+  - rscadd: The compass headgear will now tell you what direction you're facing when
+      on a planet.
+  - code_imp: Added a new ground environmental trait for a ground level in space.
+  InsaneRed:
+  - balance: Vanguard dash now restores your shield if you hit ANYONE instead of 2
+      people.
+  - balance: Vanguard buffed root now roots you for 2.5 seconds, unbuffed for 1 second
+  - qol: Vanguard's pierce has now a hit sound for better feedback
+  Nanu308:
+  - balance: Adjusted how much light is given by standard marine armor.
+  - balance: Light Armor remains the same range & power, Medium armor now gives a
+      bit more light, Leader B12 armor gives a bit more light & range, M4 (rto) gives
+      a bit more light, and Heavy armor give the most light and range compared to
+      before.
+  - code_imp: Changed inheritance for medium armor as the different sprite versions
+      were laid directly under the parent type instead of the medium one and so forth.
+  NateDross:
+  - bugfix: fixed hardhat action item icon
+  fira:
+  - bugfix: Some Xeno throws now immobilize their targets, ensuring they do not walk
+      out of the toss mid-flight.
+  realforest2001:
+  - bugfix: M56D can no longer be used by the dead.
+2023-12-15:
+  BeagleGaming1:
+  - imageadd: New sprite for Santa hats
+  Drathek:
+  - bugfix: Fix dead nested mobs disappearing when weeded
+  LTNTS:
+  - maptweak: remapped brig to be more concise, more interconnected, and easier to
+      navigate. And added more cells for when needed.
+  - qol: adds RiotTech (SecTech but for Riot Control with Rubber Bullets - obvs Code
+      Blue+ only)
+  - qol: CMP's locker requires Armory access to open now
+  - qol: suspects are now colored nardo gray in security list
+  NateDross:
+  - bugfix: Fixed hard hat user inventory head icon
+  SabreML:
+  - bugfix: Fixed camera sprites changing to their mapping helper after being EMPed.
+  Triiodine:
+  - rscadd: randomized barrels for mappers. You can instance the straps on and off!
+  - imageadd: 'Resprited the following: traffic cone, goldschlager bottle, cream carton,
+      oj carton, lime juice carton, tomato juice carton, pineapple juice carton, tequila
+      bottle, kahlua bottle, bottle of nothing, cognac bottle, critter crate (now
+      lore accurate), secgear crate, cm barrels, phoron crate, riot shield inhands,'
+  - imageadd: 'Added unique sprites for the following: vodka bottle, gin bottle,'
+  - imageadd: Fixed stray pixels on fridgeopen, open_plastic
+  - imagedel: Removed some unused legacy icons.
+  - bugfix: Hotdogs and burritos now properly appear when worn in a helmet in packaged
+      and unpackaged states.
+  - imageadd: The ME3 hand welder and industrial welder now have unique sprites and
+      inhands.
+  - imageadd: Differentiates synth graft and surgical line, color coded now to represent
+      the damage they fix.
+2023-12-16:
+  Birdtalon:
+  - rscadd: Xenomorph telegraph effects can now be any rgb colour.
+  GoldenAlpharex:
+  - bugfix: Chat highlights now escape special RegEx characters from non-RegEx highlights.
+  - bugfix: Broken RegEx expressions no longer cause the chat to bluescreen, allowing
+      you to properly fix them.
+  InsaneRed:
+  - spellcheck: Xenomorph text is now WE/OUR instead of YOU/YOUR
+  blackdragonTOW:
+  - rscadd: Added Radio Keys to the CL's briefcase
+2023-12-17:
+  BadAtThisGame302:
+  - rscadd: Added a LV-624 Corporate Liaison Survivor.
+  - rscadd: Added a Flight Control Operator Survivor to Solaris Ridge (for now, might
+      be added to more maps soon!).
+  - qol: made survivor.dm easier to use by moving the basic security surv with the
+      engineer/scientist/doctor which it wierdly enough it wasn't with.
+  - balance: rebalanced CL a lockable satchel.
+  - bugfix: fixed the survivor.dm comments falsely saying that some surv types are
+      not used anywhere when they are.
+  - spellcheck: fixed the LV-624 announcement text, made it roll off the tongue easier.
+  - code_imp: changed CL and ICC survs shoes from centcom? To laceup.
+  Drathek:
+  - rscadd: Implemented xeno corpse weed merging
+  - imageadd: Added 48 sprites, 3 stages per caste silhouette, for xeno weeded corpses
+  - bugfix: Fixes ghosts not displaying their name on hover if weeded and weird behavior
+      when orbited via ctrl+click
+  Huffie56:
+  - balance: For SG,IO,medic,comtech standartize the binoculars section as fallow
+      (Binoculars=5, Range Finder =10, Laser Designator=15).
+  - balance: reduce the number of stages from 5 to 3. each stage take 6 min or 360s.
+  - balance: rework the logic that handle the disease progress
+  - balance: A-Set stage_prob to zero to prevent random stage increase.
+  - balance: B-add a stage_level variable that when is at-least 360 make an increase
+      of the disease stage...
+  - balance: C-add an infection_rate variable that handle how fast the stage_level
+      increase passively.
+  - balance: D-infection_rate is quadruple when the host is dead.
+  - balance: E-I also added that the goo messages (you feel warm ....) give a boost
+      to stage_level to add some randomness to the infection progress.
+  SpartanBobby, LCMS1:
+  - maptweak: Numerous Fixes for new brig
+  cuberound:
+  - balance: DS doorgun can shoot over cades
+2023-12-18:
+  Huffie56:
+  - bugfix: added landing zone camera on trijent.
+  - bugfix: fixed landing zone camera on all map in rotation.
+  sleepynecrons:
+  - imageadd: marine snow uniforms and armors given a new look
+2023-12-19:
+  Drathek:
+  - balance: Added the possibility of surgery steps failing based on tool and surface
+      suitability compensated by surgery skill.
+  Huffie56:
+  - bugfix: fix a nightmare insert that had a wall and a door on same tile.
+  NateDross:
+  - bugfix: Requisitions elevator lighting fix
+  NessiePendragon:
+  - rscadd: Added new sprites for Warrior.
+  PurpleCIoud:
+  - imageadd: added chocolate bar new sprite
+  - imagedel: deleted old chocolate bar sprite
+  SabreML:
+  - rscadd: Updated the 'help' message for xeno special structure construction.
+  - qol: Added a 'remaining' counter when constructing special structures to let players
+      know how many can still be built.
+  - qol: Added a 'Ghost' button for dead xenomorphs.
+  realforest2001:
+  - rscadd: Added a proc for comparing the registered name of an ID, to the real name
+      of a mob. Also checks registered_ref if one exists.
+  - rscadd: Evacuation can no longer be cancelled without passing above check.
+  - rscadd: People forced into escape-pod stasis bays against their wishes can now
+      eject themselves.
+  - bugfix: Xenos can no longer force humans into escape-pod stasis bays.
+  - bugfix: Escape-pod stasis bays no longer accept corpses.
+  stalkerino:
+  - balance: fixes the balance of the game by making hair gradient trait free
+2023-12-20:
+  Birdtalon, Fira:
+  - bugfix: Fixes hive UI crash upon pylon giving new larva.
+  Contrabang:
+  - bugfix: Matches now do burn damage instead of brute, when you accidently burn
+      your own hand.
+  InsaneRed:
+  - spellcheck: Converted more "YOU" to "WE"  for xenomorphs.
+  LTNTS:
+  - qol: makes suspect nardo gray
+  fira:
+  - rscadd: Added Buckled, Handcuffed and Legcuffed screen alerts
+  - code_imp: Ported /tg/ status effects backend, modified with timers to let effects
+      end at appropriate time
+  - code_imp: Stun, Knockdown and Knockout now use the new effects backend
+  - balance: Due to backend change, all KO/KD/Stuns may behave differently timing
+      wise. This is of course subject to adjustments.
+  - balance: Endurance is now set at 8% effect duration reduction per level above
+      1. However it now compounds with species bonus. Feel free to adjust.
+  - balance: Knockdowns are not inherently incapacitating anymore and many sources
+      of it have been updated to also stun to make up for it.
+  - bugfix: KO/KD/Stuns do not artificially and randomly ''stack'' due to incorrect
+      timer offset calculation anymore.
+  - bugfix: Stuns now correctly apply Stun reduction values instead of Knockdown reductions.
+  - bugfix: Crawling can now be interrupted by a normal move, if you are fit enough
+      to do so.
+  realforest2001:
+  - maptweak: Various doors around the Almayer will now close their opposites for
+      better security.
+2023-12-21:
+  Birdtalon:
+  - bugfix: Lurker can tail jab over ledges and window frames.
+  Drathek:
+  - imageadd: Update weeded warrior sprites to be compatible with knight strain sprite
+2023-12-22:
+  Ben10083:
+  - rscdel: ' Working Joes can no longer drink'
+  Cthulhu80:
+  - ui: tacmap ui tweaks
+  Doubleumc:
+  - bugfix: Fixed security tuner not dispalying direction to room's APC
+  - refactor: Refactored code handling angles
+  InsaneRed:
+  - code_imp: Converts xenomorph cooldowns into SECONDS
+  SabreML:
+  - bugfix: Fixed being able to remove multiple stacks of fire by spamming resist.
+  Steelpoint:
+  - rscadd: Factions are now properly separated in the observe menu as a ghost.
+  cuberound:
+  - bugfix: bad DS doorgun placement
+  fira:
+  - bugfix: Fix Xmas helmets getting overriden by map camouflage.
+  realforest2001:
+  - bugfix: Hijack should no longer end the round immediately.
+  - rscadd: Ghosts can now toggle hearing listening devices or not. This is dependant
+      on hearing radios and will not function to allow hearing devices without also
+      hearing radios.
+2023-12-23:
+  BadAtThisGame302:
+  - balance: rebalanced goon skillset to include construction 1
+  - spellcheck: fixed Liason area typos to Liaison
+  - spellcheck: fixed the ICC Liason to ICC Liaison typo
+  fira:
+  - bugfix: Fixed X-mas barricade wiring not applying properly.
+  private-tristan:
+  - balance: xenos can now acid all window frames.
+2023-12-24:
+  BadAtThisGame302:
+  - rscadd: Added a windbreaker to the Flight Control Operator surv.
+  - rscadd: Added W-Y Flight Control access to the Flight Control Operator surv.
+  - bugfix: fixed the Flight Control Operator path.
+  Cthulhu80:
+  - rscadd: human mobs now scream whenever they get lunged at by a warrior.
+  - soundadd: added a new scream sound and put it into the existing scream list.
+  Drathek:
+  - bugfix: Fix crusher charge and tumble abilities going over unwired cades
+  Huffie56:
+  - bugfix: removed an extra light in bravo cryo room(to do just saw it)
+  - maptweak: added more areas (stern_point_defense, Lower Deck Stern Hull, Upper
+      Deck port Hallway Upper Deck starboard Hallway)
+  SabreML:
+  - rscdel: Removed the green overlay from camera consoles.
+  - rscadd: Allowed Xenomorphs to turn off the dropship's launch alarm by hitting
+      the nav computer.
+  - spellcheck: Made the `xenoboldnotice` span class bold rather than italic.
+  cuberound:
+  - bugfix: DS doorgun no longer drops the gun when destroyed
+  ihatethisengine:
+  - balance: "New healer drone ability \u2014 sacrifice. Healer drone can instantly\
+      \ transfer 75% of its current health, but for the great cost of the healer\u2019\
+      s own life."
+2023-12-25:
+  InsaneRed:
+  - balance: Tweaks down the buffed root of vanguard down to 1.8 from 2.5
+2023-12-26:
+  Ben10083:
+  - rscadd: If ARES is destroyed, systems such as bioscan also shut down, this will
+      be expanded in the future
+  - rscadd: ARES plays an announcement when destroyed
+  - code_imp: Procs to check for APOLLO processor and if ARES is alive added
+  - refactor: ARES subsystems modified to utilize new procs
+  - admin: Prompt to force a Marine Bioscan only shows when ARES is unable to perform
+      the bioscan.
+  Drathek:
+  - bugfix: Fix queen death not fully readmitting any banished xenos
+  - bugfix: Fixed resisting acid
+  SabreML:
+  - code_imp: Made the Tech Tree subsystem initialise faster.
+  Steelpoint:
+  - rscadd: The Executive Officer now has a personal weapons vendor. It includes the
+      ability to acquire a full suite of combat and support gear, giving the XO more
+      agency in customizing their loadout.
+  - rscadd: Adds a new set of belts to the Executive Officer's uniform vendor.
+  mullenpaul:
+  - ui: tgui dropship weapons console
+  - refactor: added MFD panel
+  - refactor: creates datum component to manage camera code
+  - qol: CAS weapons operator can see camera in UI
+  - rscadd: CAS can offset in X and Y coordinates
+  - refactor: CAS can offset in different direction to attack vector
+  realforest2001:
+  - bugfix: Yautja bracer lock can now properly unlock thrall bracers.
+2023-12-27:
+  Birdtalon:
+  - rscdel: Removed old crystal code from xenos
+  - code_imp: Renames still used vars from crystal to plasma
+  - code_imp: Removes crystal define in place of plasma string
+  Drathek:
+  - bugfix: Fix xeno wounds layering over weeds when merged with the weeds
+  InsaneRed:
+  - spellcheck: More WE/YOU fixes for xenomorph side.
+  - bugfix: Spitter's charge spit abiltiy now properly adds and removes the 5 armor
+      like its supposed to initially.
+  SabreML:
+  - bugfix: Fixed the Queen Eye still showing as "Immature" after the Queen ages.
+  - bugfix: Fixed carriers being unable to reduce their 'reserved facehuggers' number.
+  - bugfix: Fixed being able to vend infinite alcohol.
+  - bugfix: Fixed the death message from GAU-21 and Laser Cannon strikes saying that
+      the player was killed by the ammo crate.
+  cuberound:
+  - balance: launchbay price 400 -> 200
+  - balance: DS installed sentrygun price lowered to 200
+  realforest2001:
+  - code_imp: Added a new span class that combines bold and big.
+  - code_imp: Tweaked the way prayer sends notifications to be more efficient.
+  - admin: Moved the prayer notification sound to a toggle preference, combined with
+      ARES Interface notifications.
+2023-12-28:
+  InsaneRed:
+  - bugfix: Synths are no longer immune to lunges / dragging while in 'critical state'
+      since they dont go into crit.
+  SabreML:
+  - bugfix: Fixed inserting/removing an item from shoes sometimes acting weirdly.
+  - refactor: Refactored shoe item storage.
+  fira:
+  - bugfix: Fixed XRF Scanner bricking if people were adding and removing vials at
+      same time.
+2023-12-29:
+  sleepynecrons:
+  - imageadd: new sprites for predalien, predlarva and weeded corpse
+  - imageadd: added predalien wound overlays
+2023-12-30:
+  Birdtalon:
+  - bugfix: Runtime in inventory.dm
+  Cthulhu80:
+  - bugfix: fixes immobilized mobs being able to buckle themselves
+  InsaneRed:
+  - qol: '"View Playtime" is now under the "Records" section under OOC'
+  - qol: '"Remove Your Splints" is now under the "IC" section.'
+  SabreML:
+  - bugfix: Fixed the CAS laser cannon only setting fire to a single tile, rather
+      a 7x7 range.
+  - qol: Made the designation of a tunnel display in chat when a player enters it.
+  - bugfix: Fixed the pyro spec's fuel pack sometimes giving weird failure messages
+      when trying to switch fuel.
+  Zonespace27:
+  - rscadd: Added a tutorial system for various roles (and just general information),
+      find it in the lobby screen.
+  cuberound:
+  - bugfix: m56d can not longer shoot backwards when facing north
+  mullenpaul:
+  - refactor: tgui js components now jsx
+2023-12-31:
+  AnonHault:
+  - spellcheck: fixed a typo
+  BeagleGaming1:
+  - qol: Adds the ability to hide your action buttons
+  Birdtalon:
+  - bugfix: Fixes a runtime on decapping one's self.
+  - bugfix: Runtime with milk and possibly other reagent's on_mob_life()
+  - bugfix: Fixes runtime calling post_attack() on a mob which has already been qdeleted
+      via gibbing.
+  - code_imp: Refactors some code to new throw_carbon proc
+  Cthulhu80:
+  - bugfix: Fixes movement delay stacking on weeds
+  - bugfix: Fixes evac pods launching with more than the occupant limit
+  Huffie56:
+  - qol: creating a new section called engineering supplies for the rifleman and the
+      team leader.
+  - balance: added standard binocular to the rifleman vendor at a cost of 5.
+  - balance: added Range Finder and Laser Designator binoculars to Team leader at
+      a cost of 10 and 20.
+  - balance: added ES-11 Mobile Fuel Canister and ME3 hand welder to Team leader and
+      rifleman for 5 each.
+  InsaneRed:
+  - balance: Properly tweaks predator stun resist back to what it should have been.
+  SabreML:
+  - bugfix: Fixed the Hive Status window showing an error message when the Queen dies.
+  - qol: Added a 'Time Since Death' counter to the status tab for ghosts.
+  blackdragonTOW:
+  - rscadd: Max CL Headset radio keys from 3 to 5.  (+2 increase)
+  cuberound:
+  - balance: gives trucker engineer level construction skill
+  mullenpaul:
+  - refactor: sentry laptop now uses camera manager component

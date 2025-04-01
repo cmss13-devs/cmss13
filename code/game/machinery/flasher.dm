@@ -3,7 +3,7 @@
 /obj/structure/machinery/flasher
 	name = "Mounted flash"
 	desc = "A wall-mounted flashbulb device."
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/flasher.dmi'
 	icon_state = "mflash1"
 	var/id = null
 	var/range = 2 //this is roughly the size of brig cell
@@ -11,25 +11,25 @@
 	var/last_flash = 0 //Don't want it getting spammed like regular flashes
 	var/strength = 10 //How knocked down targets are when flashed.
 	var/base_state = "mflash"
-	anchored = 1
+	anchored = TRUE
 
 /obj/structure/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
 	name = "portable flasher"
 	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
 	icon_state = "pflash1"
 	strength = 8
-	anchored = 0
+	anchored = FALSE
 	base_state = "pflash"
-	density = 1
+	density = TRUE
 
 /obj/structure/machinery/flasher/power_change()
 	..()
 	if ( !(stat & NOPOWER) )
 		icon_state = "[base_state]1"
-//		src.sd_SetLuminosity(2)
+// src.sd_set_light(2)
 	else
 		icon_state = "[base_state]1-p"
-//		src.sd_SetLuminosity(0)
+// src.sd_set_light(0)
 
 //Don't want to render prison breaks impossible
 /obj/structure/machinery/flasher/attackby(obj/item/W as obj, mob/user as mob)
@@ -60,7 +60,7 @@
 	src.last_flash = world.time
 	use_power(1500)
 
-	for (var/mob/O in viewers(src, null))
+	for (var/mob/living/O in viewers(src, null))
 		if (get_dist(src, O) > src.range)
 			continue
 
@@ -69,27 +69,28 @@
 			if(H.get_eye_protection() > 0)
 				continue
 
-		if (istype(O, /mob/living/carbon/Xenomorph))//So aliens don't get flashed (they have no external eyes)/N
+		if (istype(O, /mob/living/carbon/xenomorph))//So aliens don't get flashed (they have no external eyes)/N
 			continue
 
-		O.apply_effect(strength, WEAKEN)
+		O.KnockDown(strength)
+		O.Stun(strength)
+
 		if (istype(O, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = O
 			var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
 			if (E && (E.damage > E.min_bruised_damage && prob(E.damage + 50)))
 				H.flash_eyes()
-				E.damage += rand(1, 5)
+				E.take_damage(rand(1, 5))
 		else
 			O.flash_eyes()
 
 
 /obj/structure/machinery/flasher/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	if(prob(75/severity))
 		flash()
-	..(severity)
 
 /obj/structure/machinery/flasher/portable/HasProximity(atom/movable/AM as mob|obj)
 	if ((src.disable) || (src.last_flash && world.time < src.last_flash + 150))
@@ -134,9 +135,9 @@
 	active = 1
 	icon_state = "launcheract"
 
-	for(var/obj/structure/machinery/flasher/M in machines)
+	for(var/obj/structure/machinery/flasher/M in GLOB.machines)
 		if(M.id == src.id)
-			INVOKE_ASYNC(M, /obj/structure/machinery/flasher.proc/flash)
+			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/flasher, flash))
 
 	sleep(50)
 

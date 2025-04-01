@@ -1,6 +1,10 @@
 /obj/item/device/assembly/mousetrap
 	name = "mousetrap"
 	desc = "A handy little spring-loaded trap for catching pesty rodents."
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "mousetrap"
 	matter = list("metal" = 100, "waste" = 10)
 
@@ -22,7 +26,7 @@
 	if(holder)
 		holder.update_icon()
 
-/obj/item/device/assembly/mousetrap/proc/triggered(mob/target as mob, var/type = "feet")
+/obj/item/device/assembly/mousetrap/proc/triggered(mob/target as mob, type = "feet")
 	if(!armed)
 		return
 	var/obj/limb/affecting = null
@@ -45,7 +49,8 @@
 		var/mob/living/simple_animal/mouse/M = target
 		visible_message(SPAN_DANGER("<b>SPLAT!</b>"))
 		M.splat()
-	if(!target) return
+	if(!target)
+		return
 	playsound(target.loc, 'sound/effects/snap.ogg', 25, 1)
 	layer = MOB_LAYER - 0.2
 	armed = 0
@@ -99,7 +104,7 @@
 	if(armed)
 		finder.visible_message(SPAN_WARNING("[finder] accidentally sets off [src], breaking their fingers."),SPAN_WARNING("You accidentally trigger [src]!"))
 		triggered(finder, finder.hand ? "l_hand" : "r_hand")
-		return 1	//end the search!
+		return 1 //end the search!
 	return 0
 
 

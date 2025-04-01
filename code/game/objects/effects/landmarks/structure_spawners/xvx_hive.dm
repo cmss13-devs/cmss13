@@ -30,8 +30,3 @@
 	name = "XvX Hive core spawner"
 	icon_state = "core"
 	path_to_spawn = /obj/effect/alien/resin/special/pylon/core
-
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool
-	name = "XvX Hive pool spawner"
-	icon_state = "pool"
-	path_to_spawn = /obj/effect/alien/resin/special/pool

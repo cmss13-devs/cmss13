@@ -1,13 +1,13 @@
 /datum/stamina
-	var/mob/living/source_mob         = null
+	var/mob/living/source_mob  = null
 
-	var/current_stamina     = 100
-	var/max_stamina         = 100
+	var/current_stamina  = 100
+	var/max_stamina  = 100
 
-	var/stamina_slowdown    = 0
-	var/current_level       = STAMINA_LEVEL_1
+	var/stamina_slowdown = 0
+	var/current_level    = STAMINA_LEVEL_1
 
-	var/has_stamina         = TRUE
+	var/has_stamina  = TRUE
 	var/stamina_rest_period = 0
 
 	var/list/stamina_levels = list(
@@ -18,7 +18,7 @@
 		STAMINA_LEVEL_5 = 0 // 0 - 9
 	)
 
-/datum/stamina/New(var/mob/owner)
+/datum/stamina/New(mob/owner)
 	. = ..()
 
 	if(istype(owner))
@@ -27,23 +27,21 @@
 	else
 		qdel(src)
 
-/datum/stamina/proc/apply_rest_period(var/amount)
+/datum/stamina/proc/apply_rest_period(amount)
 	stamina_rest_period = max(world.time + amount, stamina_rest_period)
 
-/datum/stamina/proc/apply_damage(var/amount = 0)
+/datum/stamina/proc/apply_damage(amount = 0)
 	if(!has_stamina)
 		return
 
-	current_stamina = Clamp(current_stamina - amount, 0, max_stamina)
+	current_stamina = clamp(current_stamina - amount, 0, max_stamina)
 
 	if(current_stamina < max_stamina)
-		if(!(src in active_staminas))
-			active_staminas.Add(src)
-
+		START_PROCESSING(SSobj, src)
 		if(amount > 0)
 			apply_rest_period(STAMINA_REST_PERIOD)
 	else
-		active_staminas.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 
 	update_stamina_level()
@@ -68,7 +66,7 @@
 
 			break
 
-/datum/stamina/proc/activate_stamina_debuff(var/tier)
+/datum/stamina/proc/activate_stamina_debuff(tier)
 	for(var/datum/effects/stamina/prev_S in source_mob.effects_list)
 		qdel(prev_S)
 

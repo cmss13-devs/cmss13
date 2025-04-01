@@ -1,57 +1,53 @@
 #define DEFAULT_MAP_SIZE 15
 
-/obj/structure/machinery/computer/security
-	name = "Security Cameras Console"
+/obj/structure/machinery/computer/cameras
+	name = "security cameras console"
 	desc = "Used to access the various cameras on the station."
 	icon_state = "cameras"
 	var/obj/structure/machinery/camera/current
 	var/list/network = list(CAMERA_NET_MILITARY)
-	circuit = /obj/item/circuitboard/computer/security
+	circuit = /obj/item/circuitboard/computer/cameras
 
 	/// The turf where the camera was last updated.
 	var/turf/last_camera_turf
 	var/list/concurrent_users = list()
 
 	// Stuff needed to render the map
-	var/map_name
-	var/atom/movable/screen/map_view/cam_screen
-	var/atom/movable/screen/background/cam_background
-
-	/// All turfs within range of the currently active camera
-	var/list/range_turfs = list()
+	var/camera_map_name
 
 	var/colony_camera_mapload = TRUE
+	var/admin_console = FALSE
+	var/stay_connected = FALSE
 
-/obj/structure/machinery/computer/security/Initialize(mapload)
+/obj/structure/machinery/computer/cameras/Initialize(mapload)
 	. = ..()
-	// Map name has to start and end with an A-Z character,
-	// and definitely NOT with a square bracket or even a number.
-	// I wasted 6 hours on this. :agony:
-	map_name = "camera_console_[REF(src)]_map"
+
+	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
+
+	// camera setup
+	AddComponent(/datum/component/camera_manager)
+	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
 
-	// Initialize map objects
-	cam_screen = new
-	cam_screen.name = "screen"
-	cam_screen.assigned_map = map_name
-	cam_screen.del_on_map_removal = FALSE
-	cam_screen.screen_loc = "[map_name]:1,1"
-	cam_background = new
-	cam_background.assigned_map = map_name
-	cam_background.del_on_map_removal = FALSE
 
-/obj/structure/machinery/computer/security/Destroy()
-	qdel(cam_screen)
-	qdel(cam_background)
+/obj/structure/machinery/computer/cameras/Destroy()
+	SStgui.close_uis(src)
+	current = null
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
+	last_camera_turf = null
+	concurrent_users = null
 	return ..()
 
-/obj/structure/machinery/computer/security/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/cameras/proc/camera_mapname_update(source, value)
+	camera_map_name = value
+
+/obj/structure/machinery/computer/cameras/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/security/attack_hand(mob/user)
-	if(is_admin_level(z))
+/obj/structure/machinery/computer/cameras/attack_hand(mob/user)
+	if(!admin_console && should_block_game_interaction(src))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the ship!"))
 		return
 	if(inoperable())
@@ -60,17 +56,20 @@
 		user.set_interaction(src)
 	tgui_interact(user)
 
-/obj/structure/machinery/computer/security/ui_status(mob/user, datum/ui_state/state)
+/obj/structure/machinery/computer/cameras/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 	if(inoperable())
 		return UI_DISABLED
 
-/obj/structure/machinery/computer/security/tgui_interact(mob/user, datum/tgui/ui)
+//Closes UI if you move away from console.
+/obj/structure/machinery/computer/cameras/ui_state(mob/user)
+	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/computer/cameras/tgui_interact(mob/user, datum/tgui/ui)
 	// Update UI
 	ui = SStgui.try_update_ui(user, src, ui)
 
-	// Update the camera, showing static if necessary and updating data if the location has moved.
-	update_active_camera_screen()
+	SEND_SIGNAL(src, COMSIG_CAMERA_REFRESH)
 
 	if(!ui)
 		var/user_ref = WEAKREF(user)
@@ -82,14 +81,14 @@
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)
 			update_use_power(USE_POWER_ACTIVE)
-		// Register map objects
-		user.client.register_map_obj(cam_screen)
-		user.client.register_map_obj(cam_background)
+
+		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
+
 		// Open UI
 		ui = new(user, src, "CameraConsole", name)
 		ui.open()
 
-/obj/structure/machinery/computer/security/ui_data()
+/obj/structure/machinery/computer/cameras/ui_data()
 	var/list/data = list()
 	data["network"] = network
 	data["activeCamera"] = null
@@ -100,9 +99,9 @@
 		)
 	return data
 
-/obj/structure/machinery/computer/security/ui_static_data()
+/obj/structure/machinery/computer/cameras/ui_static_data()
 	var/list/data = list()
-	data["mapRef"] = map_name
+	data["mapRef"] = camera_map_name
 	var/list/cameras = get_available_cameras()
 	data["cameras"] = list()
 	for(var/i in cameras)
@@ -113,7 +112,7 @@
 
 	return data
 
-/obj/structure/machinery/computer/security/ui_act(action, params)
+/obj/structure/machinery/computer/cameras/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -136,91 +135,31 @@
 		if(!selected_camera)
 			return TRUE
 
-		update_active_camera_screen()
+		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, selected_camera, selected_camera.view_range, selected_camera.view_range)
 
 		return TRUE
 
-/obj/structure/machinery/computer/security/proc/update_active_camera_screen()
-	// Show static if can't use the camera
-	if(!current?.can_use())
-		show_camera_static()
-		return
 
-	// Is this camera located in or attached to a living thing, Vehicle or helmet? If so, assume the camera's loc is the living (or non) thing.
-	var/cam_location = current
-	if(isliving(current.loc) || isVehicle(current.loc))
-		cam_location = current.loc
-	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
-
-	// If we're not forcing an update for some reason and the cameras are in the same location,
-	// we don't need to update anything.
-	// Most security cameras will end here as they're not moving.
-	var/newturf = get_turf(cam_location)
-	if(last_camera_turf == newturf)
-		return
-
-	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
-	last_camera_turf = get_turf(cam_location)
-
-	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
-
-	var/list/visible_turfs = list()
-	range_turfs.Cut()
-	var/area/A
-	for(var/turf/visible_turf in visible_things)
-		range_turfs += visible_turf
-		A = visible_turf.loc
-		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-			visible_turfs += visible_turf
-
-	var/list/bbox = get_bbox_of_atoms(visible_turfs)
-	var/size_x = bbox[3] - bbox[1] + 1
-	var/size_y = bbox[4] - bbox[2] + 1
-
-	cam_screen.vis_contents = visible_turfs
-	cam_background.icon_state = "clear"
-	cam_background.fill_rect(1, 1, size_x, size_y)
-
-	START_PROCESSING(SSfastobj, src) // fastobj to somewhat keep pace with lighting updates
-
-/obj/structure/machinery/computer/security/process()
-	if(current)
-		var/list/visible_turfs = list()
-		var/area/A
-		for(var/turf/visible_turf as anything in range_turfs)
-			A = visible_turf.loc
-			if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
-				visible_turfs += visible_turf
-		cam_screen.vis_contents = visible_turfs
-
-/obj/structure/machinery/computer/security/ui_close(mob/user)
+/obj/structure/machinery/computer/cameras/ui_close(mob/user)
 	var/user_ref = WEAKREF(user)
 	var/is_living = isliving(user)
 	// Living creature or not, we remove you anyway.
 	concurrent_users -= user_ref
 	// Unregister map objects
-	user.client.clear_map(map_name)
+	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	// Turn off the console
-	if(length(concurrent_users) == 0 && is_living)
+	if(length(concurrent_users) == 0 && is_living && !stay_connected)
 		current = null
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 		last_camera_turf = null
-		range_turfs = list()
 		if(use_power)
 			update_use_power(USE_POWER_IDLE)
-		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
-/obj/structure/machinery/computer/security/proc/show_camera_static()
-	cam_screen.vis_contents.Cut()
-	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
-
 // Returns the list of cameras accessible from this computer
-/obj/structure/machinery/computer/security/proc/get_available_cameras()
+/obj/structure/machinery/computer/cameras/proc/get_available_cameras()
 	var/list/D = list()
-	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
+	for(var/obj/structure/machinery/camera/C in GLOB.all_cameras)
 		if(!C.network)
 			stack_trace("Camera in a cameranet has no camera network")
 			continue
@@ -228,140 +167,266 @@
 			stack_trace("Camera in a cameranet has a non-list camera network")
 			continue
 		var/list/tempnetwork = C.network & network
-		if(tempnetwork.len)
+		if(length(tempnetwork))
 			D["[C.c_tag]"] = C
 	return D
 
-/obj/structure/machinery/computer/security/telescreen
+/obj/structure/machinery/computer/cameras/telescreen
 	name = "Telescreen"
 	desc = "Used for watching an empty arena."
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
-	density = 0
+	density = FALSE
 	circuit = null
 
-/obj/structure/machinery/computer/security/telescreen/update_icon()
+/obj/structure/machinery/computer/cameras/telescreen/update_icon()
 	icon_state = initial(icon_state)
 	if(stat & BROKEN)
 		icon_state += "b"
 	return
 
-/obj/structure/machinery/computer/security/telescreen/entertainment
+/obj/structure/machinery/computer/cameras/telescreen/entertainment
 	name = "entertainment monitor"
 	desc = "Damn, why do they never have anything interesting on these things?"
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "entertainment"
 	circuit = null
 
-/obj/structure/machinery/computer/security/wooden_tv
+/obj/structure/machinery/computer/cameras/wooden_tv
 	name = "Security Cameras"
 	desc = "An old TV hooked into the station's camera network."
 	icon_state = "security_det"
 	circuit = null
 
-/obj/structure/machinery/computer/security/wooden_tv/almayer
+/obj/structure/machinery/computer/cameras/wooden_tv/almayer
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/security/wooden_tv/prop
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast
 	name = "Television Set"
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
-	network = null
+	network = list(CAMERA_NET_CORRESPONDENT)
+	stay_connected = TRUE
+	wrenchable = TRUE
+	circuit = /obj/item/circuitboard/computer/cameras/tv
+	var/obj/item/device/broadcasting/broadcastingcamera = null
 
-/obj/structure/machinery/computer/security/wooden_tv/ot
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/Destroy()
+	broadcastingcamera = null
+	return ..()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_state(mob/user)
+	return GLOB.in_view
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_act(action, params)
+	. = ..()
+	if(action != "switch_camera")
+		return
+	if(broadcastingcamera)
+		clear_camera()
+	if(!istype(current, /obj/structure/machinery/camera/correspondent))
+		return
+	var/obj/structure/machinery/camera/correspondent/corr_cam = current
+	if(!corr_cam.linked_broadcasting)
+		return
+	broadcastingcamera = corr_cam.linked_broadcasting
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_GO_LIVE, PROC_REF(go_back_live))
+	RegisterSignal(broadcastingcamera, COMSIG_COMPONENT_ADDED, PROC_REF(handle_rename))
+	RegisterSignal(broadcastingcamera, COMSIG_PARENT_QDELETING, PROC_REF(clear_camera))
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_HEAR_TALK, PROC_REF(transfer_talk))
+	RegisterSignal(broadcastingcamera, COMSIG_BROADCAST_SEE_EMOTE, PROC_REF(transfer_emote))
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/ui_close(mob/user)
+	. = ..()
+	if(!broadcastingcamera)
+		return
+	if(!current)
+		clear_camera()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/inoperable(additional_flags = 0)
+	return ..(MAINT|additional_flags)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/attackby(obj/item/wrench, mob/user)
+	if(HAS_TRAIT(wrench, TRAIT_TOOL_WRENCH))
+		if(user.action_busy)
+			return TRUE
+		toggle_anchored(wrench, user)
+		return TRUE
+	. = ..()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/toggle_anchored(obj/item/wrench, mob/user)
+	. = ..()
+	if(!.)
+		return
+	if(!anchored)
+		stat |= MAINT
+		clear_camera()
+		current = null
+		SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
+	else
+		stat &= ~MAINT
+	update_icon()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/update_icon()
+	. = ..()
+	if(stat & BROKEN)
+		return
+	if(stat & MAINT)
+		icon_state = initial(icon_state)
+		icon_state += "0"
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/clear_camera()
+	SIGNAL_HANDLER
+	UnregisterSignal(broadcastingcamera, list(COMSIG_BROADCAST_GO_LIVE, COMSIG_PARENT_QDELETING, COMSIG_COMPONENT_ADDED, COMSIG_BROADCAST_HEAR_TALK, COMSIG_BROADCAST_SEE_EMOTE))
+	broadcastingcamera = null
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/go_back_live(obj/item/device/broadcasting/broadcastingcamera)
+	SIGNAL_HANDLER
+	if(current.c_tag == broadcastingcamera.get_broadcast_name())
+		current = broadcastingcamera.linked_cam
+		SEND_SIGNAL(src, COMSIG_CAMERA_SET_TARGET, broadcastingcamera.linked_cam, broadcastingcamera.linked_cam.view_range, broadcastingcamera.linked_cam.view_range)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(inoperable())
+		return
+	if(show_message_above_tv)
+		langchat_speech(message, get_mobs_in_view(7, src), language, sourcemob.langchat_color, FALSE, LANGCHAT_FAST_POP, list(sourcemob.langchat_styles))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && !user.client.prefs.lang_chat_disabled && !user.ear_deaf && user.say_understands(sourcemob, language))
+			sourcemob.langchat_display_image(user)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/transfer_emote(obj/item/camera, mob/living/sourcemob, emote, audible = FALSE, show_message_above_tv = FALSE)
+	SIGNAL_HANDLER
+	if(inoperable())
+		return
+	if(show_message_above_tv)
+		langchat_speech(emote, get_mobs_in_view(7, src), skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("emote"))
+	for(var/datum/weakref/user_ref in concurrent_users)
+		var/mob/user = user_ref.resolve()
+		if(user?.client?.prefs && (user.client.prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) && (!audible || !user.ear_deaf))
+			sourcemob.langchat_display_image(user)
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/examine(mob/user)
+	. = ..()
+	attack_hand(user) //watch tv on examine
+
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast/proc/handle_rename(obj/item/camera, datum/component/label)
+	SIGNAL_HANDLER
+	if(!istype(label, /datum/component/label))
+		return
+	current.c_tag = broadcastingcamera.get_broadcast_name()
+
+/obj/structure/machinery/computer/cameras/wooden_tv/ot
 	name = "Mortar Monitoring Set"
 	desc = "A Console linked to Mortar launched cameras."
 	network = list(CAMERA_NET_MORTAR)
 
-/obj/structure/machinery/computer/security/mining
+/obj/structure/machinery/computer/cameras/mining
 	name = "Outpost Cameras"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to access the various cameras on the outpost."
-	icon_state = "miningcameras"
+	icon_state = "cameras"
 	network = list("MINE")
-	circuit = /obj/item/circuitboard/computer/security/mining
+	circuit = /obj/item/circuitboard/computer/cameras/mining
 
-/obj/structure/machinery/computer/security/engineering
+/obj/structure/machinery/computer/cameras/engineering
 	name = "Engineering Cameras"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to monitor fires and breaches."
-	icon_state = "engineeringcameras"
+	icon_state = "cameras"
 	network = list("Engineering","Power Alarms","Atmosphere Alarms","Fire Alarms")
-	circuit = /obj/item/circuitboard/computer/security/engineering
+	circuit = /obj/item/circuitboard/computer/cameras/engineering
 
-/obj/structure/machinery/computer/security/nuclear
+/obj/structure/machinery/computer/cameras/nuclear
 	name = "Mission Monitor"
+	icon = 'icons/obj/structures/machinery/computer.dmi'
 	desc = "Used to access the built-in cameras in helmets."
 	icon_state = "syndicam"
 	network = list("NUKE")
 	circuit = null
 
 
-/obj/structure/machinery/computer/security/almayer
-	density = 0
+/obj/structure/machinery/computer/cameras/almayer
+	density = FALSE
 	icon_state = "security_cam"
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/security/almayer/containment
+/obj/structure/machinery/computer/cameras/almayer/containment
 	name = "Containment Cameras"
 	network = list(CAMERA_NET_CONTAINMENT)
 
-/obj/structure/machinery/computer/security/almayer/vehicle
+/obj/structure/machinery/computer/cameras/almayer/ares
+	name = "ARES Core Cameras"
+	network = list(CAMERA_NET_ARES)
+
+/obj/structure/machinery/computer/cameras/almayer/vehicle
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/computer/security/hangar
+/obj/structure/machinery/computer/cameras/hangar
 	name = "Dropship Security Cameras Console"
 	icon_state = "security_cam"
 	density = FALSE
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_NORMANDY)
 
-/obj/structure/machinery/computer/security/containment
+/obj/structure/machinery/computer/cameras/containment
 	name = "Containment Cameras"
 	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH)
 
-/obj/structure/machinery/computer/security/containment/hidden
+/obj/structure/machinery/computer/cameras/containment/hidden
 	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_CONTAINMENT_HIDDEN, CAMERA_NET_RESEARCH)
 
-/obj/structure/machinery/computer/security/almayer_network
+/obj/structure/machinery/computer/cameras/almayer_network
 	network = list(CAMERA_NET_ALMAYER)
 
-/obj/structure/machinery/computer/security/almayer_network/vehicle
+/obj/structure/machinery/computer/cameras/almayer_network/vehicle
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/computer/security/mortar
+/obj/structure/machinery/computer/cameras/almayer_brig
+	name = "Brig Cameras Console"
+	network = list(CAMERA_NET_BRIG)
+
+/obj/structure/machinery/computer/cameras/mortar
 	name = "Mortar Camera Interface"
 	alpha = 0
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	density = FALSE
 	use_power = USE_POWER_NONE
 	idle_power_usage = 0
 	active_power_usage = 0
 	needs_power = FALSE
 	network = list(CAMERA_NET_MORTAR)
-	exproof = TRUE
+	explo_proof = TRUE
 	colony_camera_mapload = FALSE
 
-/obj/structure/machinery/computer/security/mortar/emp_act(severity)
-	return FALSE
+/obj/structure/machinery/computer/cameras/mortar/set_broken()
+	return
 
-/obj/structure/machinery/computer/security/dropship
+/obj/structure/machinery/computer/cameras/dropship
 	name = "abstract dropship camera computer"
 	desc = "A computer to monitor cameras linked to the dropship."
-	density = 1
+	density = TRUE
 	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
 	icon_state = "consoleleft"
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 
 
-/obj/structure/machinery/computer/security/dropship/one
+/obj/structure/machinery/computer/cameras/dropship/one
 	name = "\improper 'Alamo' camera controls"
 	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
 
-/obj/structure/machinery/computer/security/dropship/two
+/obj/structure/machinery/computer/cameras/dropship/two
 	name = "\improper 'Normandy' camera controls"
 	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
+
+/obj/structure/machinery/computer/cameras/dropship/three
+	name = "\improper 'Saipan' camera controls"
+	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 
 #undef DEFAULT_MAP_SIZE

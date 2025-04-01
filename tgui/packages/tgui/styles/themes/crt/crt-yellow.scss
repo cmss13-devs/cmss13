@@ -1,7 +1,7 @@
 @use 'sass:meta';
 
-$light: #FFBF00;
-$dark: #111100;
+$light: hsl(45, 100%, 50%);
+$dark: hsl(60, 100%, 3%);
 
 @use '../../base.scss' with (
   $color-bg: $dark,
@@ -31,7 +31,7 @@ $dark: #111100;
   .Button.ConfirmButton {
     animation: yellowConfirmFlicker 5s infinite;
     &:hover {
-      animation:none;
+      animation: none;
     }
   }
 }

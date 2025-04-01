@@ -49,8 +49,8 @@
 	visuals.icon = icon
 	visuals.icon_state = icon_state
 	Draw()
-	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, .proc/redrawing)
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/redrawing)
+	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
 
 /**
  * Triggered by signals set up when the beam is set up. If it's still sane to create a beam, it removes the old beam, creates a new one. Otherwise it kills the beam.
@@ -81,8 +81,8 @@
  */
 /datum/beam/proc/Draw()
 	if(always_turn)
-		origin.setDir(get_dir(origin, target))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
-	var/Angle = round(Get_Angle(origin,target))
+		origin.setDir(get_dir(origin, target)) //Causes the source of the beam to rotate to continuosly face the BeamTarget.
+	var/Angle = floor(Get_Angle(origin,target))
 	var/matrix/rot_matrix = matrix()
 	var/turf/origin_turf = get_turf(origin)
 	rot_matrix.Turn(Angle)
@@ -91,7 +91,7 @@
 	var/DX = get_pixel_position_x(target) - get_pixel_position_x(origin)
 	var/DY = get_pixel_position_y(target) - get_pixel_position_y(origin)
 	var/N = 0
-	var/length = round(sqrt((DX)**2+(DY)**2)) //hypotenuse of the triangle formed by target and origin's displacement
+	var/length = floor(sqrt((DX)**2+(DY)**2)) //hypotenuse of the triangle formed by target and origin's displacement
 
 	for(N in 0 to length-1 step world.icon_size)//-1 as we want < not <=, but we want the speed of X in Y to Z and step X
 		if(QDELETED(src))
@@ -116,20 +116,20 @@
 		if(DX == 0)
 			Pixel_x = 0
 		else
-			Pixel_x = round(sin(Angle) + world.icon_size*sin(Angle)*(N+world.icon_size/2) / world.icon_size)
+			Pixel_x = floor(sin(Angle) + world.icon_size*sin(Angle)*(N+world.icon_size/2) / world.icon_size)
 		if(DY == 0)
 			Pixel_y = 0
 		else
-			Pixel_y = round(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
+			Pixel_y = floor(cos(Angle) + world.icon_size*cos(Angle)*(N+world.icon_size/2) / world.icon_size)
 
 		//Position the effect so the beam is one continous line
 		var/a
 		if(abs(Pixel_x)>world.icon_size)
-			a = Pixel_x > 0 ? round(Pixel_x/32) : CEILING(Pixel_x/world.icon_size, 1)
+			a = Pixel_x > 0 ? floor(Pixel_x/32) : ceil(Pixel_x/world.icon_size)
 			X.x += a
 			Pixel_x %= world.icon_size
 		if(abs(Pixel_y)>world.icon_size)
-			a = Pixel_y > 0 ? round(Pixel_y/32) : CEILING(Pixel_y/world.icon_size, 1)
+			a = Pixel_y > 0 ? floor(Pixel_y/32) : ceil(Pixel_y/world.icon_size)
 			X.y += a
 			Pixel_y %= world.icon_size
 
@@ -143,20 +143,59 @@
 	anchored = TRUE
 	var/datum/beam/owner
 
+/obj/effect/ebeam/laser
+	name = "laser beam"
+	desc = "A laser beam!"
+	alpha = 200
+	var/strength = EYE_PROTECTION_FLAVOR
+	var/probability = 20
+
+/obj/effect/ebeam/laser/Crossed(atom/movable/AM)
+	. = ..()
+	if(! (prob(probability) && ishuman(AM)) )
+		return
+	var/mob/living/carbon/human/moving_human = AM
+	var/laser_protection = moving_human.get_eye_protection()
+	var/rand_laser_power = rand(EYE_PROTECTION_FLAVOR, strength)
+	if(rand_laser_power > laser_protection)
+		//ouch!
+		INVOKE_ASYNC(moving_human, /mob/proc/emote, "pain")
+		visible_message(SPAN_DANGER("[moving_human] screams out in pain as \the [src] moves across their eyes!"), SPAN_NOTICE("Aurgh!!! \The [src] moves across your unprotected eyes for a split-second!"))
+	else
+		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
+			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
+			//drip = bonus balloonchat
+			moving_human.balloon_alert_to_viewers("the laser bounces off [moving_human.gender == MALE ? "his" : "her"] BiMex© personal shades!", "the laser bounces off your BiMex© personal shades!")
+		else
+			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
+
+/obj/effect/ebeam/laser/intense
+	name = "intense laser beam"
+	alpha = 255
+	strength = EYE_PROTECTION_FLASH
+	probability = 35
+
+/obj/effect/ebeam/laser/weak
+	name = "weak laser beam"
+	alpha = 150
+	strength = EYE_PROTECTION_FLAVOR
+	probability = 5
+
 /obj/effect/ebeam/Destroy()
 	owner = null
 	return ..()
 
 /obj/effect/overlay/beam //Not actually a projectile, just an effect.
 	name="beam"
-	icon='icons/effects/beam.dmi'
+	icon = 'icons/effects/beam.dmi'
 	icon_state="b_beam"
 	mouse_opacity = FALSE
 
 	var/tmp/atom/BeamSource
-	Initialize()
-		..()
-		QDEL_IN(src, 10)
+
+/obj/effect/overlay/beam/Initialize()
+	. = ..()
+	QDEL_IN(src, 10)
 
 /**
  * This is what you use to start a beam. Example: origin.Beam(target, args). **Store the return of this proc if you don't set maxdist or time, you need it to delete the beam.**
@@ -170,19 +209,13 @@
  * maxdistance: how far the beam will go before stopping itself. Used mainly for two things: preventing lag if the beam may go in that direction and setting a range to abilities that use beams.
  * beam_type: The type of your custom beam. This is for adding other wacky stuff for your beam only. Most likely, you won't (and shouldn't) change it.
  */
-/atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon='icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
+/atom/proc/beam(atom/BeamTarget, icon_state="b_beam", icon = 'icons/effects/beam.dmi', time = BEAM_INFINITE_DURATION, maxdistance = INFINITY, beam_type=/obj/effect/ebeam, always_turn = TRUE)
 	var/datum/beam/newbeam = new(src, BeamTarget, icon, icon_state, time, maxdistance, beam_type, always_turn)
-	INVOKE_ASYNC(newbeam, /datum/beam/.proc/Start)
+	INVOKE_ASYNC(newbeam, TYPE_PROC_REF(/datum/beam, Start))
 	return newbeam
 
-/proc/zap_beam(var/atom/source, var/zap_range, var/damage, var/list/blacklistmobs)
-	var/list/zap_data = list()
-	for(var/mob/living/carbon/Xenomorph/beno in oview(zap_range, source))
-		zap_data += beno
-	for(var/xeno in zap_data)
-		var/mob/living/carbon/Xenomorph/living = xeno
-		if(!living)
-			return
+/proc/zap_beam(atom/source, zap_range, damage, list/blacklistmobs)
+	FOR_DOVIEW(var/mob/living/carbon/xenomorph/living, zap_range, source, HIDE_INVISIBLE_OBSERVER)
 		if(living.stat == DEAD)
 			continue
 		if(living in blacklistmobs)
@@ -190,3 +223,4 @@
 		source.beam(living, icon_state="lightning[rand(1,12)]", time = 3, maxdistance = zap_range + 2)
 		living.set_effect(2, SLOW)
 		log_attack("[living] was zapped by [source]")
+	FOR_DOVIEW_END

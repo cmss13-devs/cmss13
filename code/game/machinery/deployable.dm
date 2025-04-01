@@ -11,19 +11,19 @@
 	name = "deployable barrier"
 	desc = "A deployable barrier. Swipe your ID card to lock/unlock it."
 	icon = 'icons/obj/objects.dmi'
-	anchored = 0.0
-	density = 1
+	anchored = FALSE
+	density = TRUE
 	icon_state = "barrier0"
-	health = 100.0
-	var/maxhealth = 100.0
-	var/locked = 0.0
-//	req_access = list(access_maint_tunnels)
+	health = 100
+	var/maxhealth = 100
+	var/locked = 0
+// req_access = list(access_maint_tunnels)
 
 /obj/structure/machinery/deployable/barrier/Initialize(mapload, ...)
 	. = ..()
 	src.icon_state = "barrier[src.locked]"
 
-/obj/structure/machinery/deployable/barrier/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/deployable/barrier/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_UNDER
@@ -51,13 +51,12 @@
 	else
 		switch(W.damtype)
 			if("fire")
-				src.health -= W.force * 0.75
+				health -= W.force * W.demolition_mod * 0.75
 			if("brute")
-				src.health -= W.force * 0.5
-			else
-		if (src.health <= 0)
-			src.explode()
-		..()
+				health -= W.force * W.demolition_mod * 0.5
+		if (health <= 0)
+			explode()
+		. = ..()
 
 /obj/structure/machinery/deployable/barrier/ex_act(severity)
 	src.health -= severity/2
@@ -66,6 +65,7 @@
 	return
 
 /obj/structure/machinery/deployable/barrier/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	if(prob(50/severity))

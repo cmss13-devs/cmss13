@@ -17,9 +17,10 @@
 	return ..()
 
 /obj/item/device/assembly/timer/activate()
-	if(!..())	return 0//Cooldown check
+	if(!..())
+		return 0//Cooldown check
 
-	time = clamp(round(time), TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
+	time = clamp(floor(time), TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
 	timing = !timing
 	if(timing)
 		START_PROCESSING(SSobj, src)
@@ -42,12 +43,13 @@
 
 
 /obj/item/device/assembly/timer/proc/timer_end()
-	if(!secured)	return 0
+	if(!secured)
+		return 0
 	pulse(0)
 	if(!holder)
 		visible_message("[icon2html(src, hearers(src))] *beep* *beep*", "*beep* *beep*")
 	cooldown = 2
-	addtimer(CALLBACK(src, .proc/process_cooldown), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 1 SECONDS)
 	STOP_PROCESSING(SSobj, src)
 	return
 
@@ -103,7 +105,7 @@
 			ui.set_autoupdate(timing)
 
 			if(!timing)
-				time = clamp(round(time), TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
+				time = clamp(floor(time), TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
 				STOP_PROCESSING(SSobj, src)
 			else
 				START_PROCESSING(SSobj, src)
@@ -112,7 +114,7 @@
 			. = TRUE
 
 		if("set_time")
-			time = clamp(round(text2num(params["time"])) SECONDS, TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
+			time = clamp(floor(text2num(params["time"])) SECONDS, TIMER_MINIMUM_TIME, TIMER_MAXIMUM_TIME)
 			. = TRUE
 
 /obj/item/device/assembly/timer/ui_data(mob/user)

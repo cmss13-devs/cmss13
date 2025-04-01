@@ -1,210 +1,163 @@
-//Landmarks and other helpers which speed up the mapping process and reduce the number of unique instances/subtypes of items/turf/ect
+/// Generic system for processing events after a certain time on multiple turfs, and
+/// announcing them together.
+/obj/effect/timed_event
+	icon = 'icons/landmarks.dmi'
+	icon_state = "o_red"
 
+	var/static/list/notification_areas = list()
 
+	/// How long to wait until the event should occur
+	var/time
 
-/obj/effect/baseturf_helper //Set the baseturfs of every turf in the /area/ it is placed.
-	name = "baseturf editor"
-	icon = 'icons/effects/mapping_helpers.dmi'
-	icon_state = ""
-
-	var/list/baseturf_to_replace
-	var/baseturf
-
-	layer = POINT_LAYER
-
-/obj/effect/baseturf_helper/Initialize()
+/obj/effect/timed_event/Initialize(mapload, ...)
 	. = ..()
-	return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/baseturf_helper/LateInitialize()
-	if(!baseturf_to_replace)
-		baseturf_to_replace = typecacheof(/turf/open/space)
-	else if(!length(baseturf_to_replace))
-		baseturf_to_replace = list(baseturf_to_replace = TRUE)
-	else if(baseturf_to_replace[baseturf_to_replace[1]] != TRUE) // It's not associative
-		var/list/formatted = list()
-		for(var/i in baseturf_to_replace)
-			formatted[i] = TRUE
-		baseturf_to_replace = formatted
+	icon = null
 
-	var/area/our_area = get_area(src)
-	for(var/i in get_area_turfs(our_area, z))
-		replace_baseturf(i)
+	if(isnull(time))
+		log_mapping("[type] (x: [x], y: [y], z: [z]) was created without a time.")
+		return INITIALIZE_HINT_QDEL
+
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(handle_round_start)))
+
+/obj/effect/timed_event/proc/handle_round_start()
+	var/actual_time = time MINUTES
+
+	if(!check_valid_type())
+		return
+
+	addtimer(generate_callback(), actual_time)
+
+	if(notification_areas[type]?["[actual_time]"])
+		LAZYORASSOCLIST(notification_areas[type], "[actual_time]", get_area(src))
+		qdel(src)
+	else
+		addtimer(CALLBACK(src, PROC_REF(announce_event), actual_time), actual_time)
+		LAZYORASSOCLIST(notification_areas[type], "[actual_time]", get_area(src))
+
+/// Checks that the type this is acting on is valid, to prevent errors when adding the timer
+/obj/effect/timed_event/proc/check_valid_type()
+	return TRUE
+
+/// To be overridden to generate the callback that should be inserted into the timer
+/obj/effect/timed_event/proc/generate_callback()
+	return
+
+/// When the timer is completed, what global announcement of the event should occur
+/obj/effect/timed_event/proc/announce_event(time_to_grab)
+	return
+
+/// Mapping helper placed on turfs to remove the turf after a specified duration.
+/obj/effect/timed_event/scrapeaway
+	icon_state = "o_blue"
+
+/obj/effect/timed_event/scrapeaway/generate_callback()
+	return CALLBACK(get_turf(src), TYPE_PROC_REF(/turf, ScrapeAway))
+
+/obj/effect/timed_event/scrapeaway/announce_event(time_to_grab)
+	var/announcement_areas = english_list(notification_areas[type]["[time_to_grab]"])
+
+	var/marine_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
+		? "Structural collapse detected in [announcement_areas]. Be advised that new routes may be accessible." \
+		: "Geological shifts detected in [announcement_areas]. Be advised that new routes may be accessible."
+
+	marine_announcement(marine_announcement_text, "Priority Announcement")
+
+	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
+		? "The shattered metal of this place has collapsed, providing new routes in [announcement_areas]." \
+		: "The ground of this world trembles, and new routes are accessible in [announcement_areas]."
+
+	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
 
 	qdel(src)
 
-/obj/effect/baseturf_helper/proc/replace_baseturf(turf/thing)
-	var/list/baseturf_cache = thing.baseturfs
-	if(length(baseturf_cache))
-		for(var/i in baseturf_cache)
-			if(baseturf_to_replace[i])
-				baseturf_cache -= i
-		if(!baseturf_cache.len)
-			thing.assemble_baseturfs(baseturf)
-		else
-			thing.PlaceOnBottom(null, baseturf)
-	else if(baseturf_to_replace[thing.baseturfs])
-		thing.assemble_baseturfs(baseturf)
-	else
-		thing.PlaceOnBottom(null, baseturf)
+/// Mapping helper placed on turfs that toggles the destructiblity of the turf after a specified duration.
+/obj/effect/timed_event/destructible
+
+/obj/effect/timed_event/destructible/check_valid_type()
+	if(istype(get_turf(src), /turf/closed/wall))
+		return TRUE
+
+	return FALSE
+
+/obj/effect/timed_event/destructible/generate_callback()
+	return CALLBACK(get_turf(src), TYPE_PROC_REF(/turf, remove_flag), TURF_HULL)
+
+/obj/effect/timed_event/destructible/announce_event(time_to_grab)
+	var/announcement_areas = english_list(notification_areas[type]["[time_to_grab]"])
+
+	var/marine_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
+		? "Structural collapse detected in [announcement_areas], allowing dismantlement. Be advised that new routes may be created." \
+		: "Geological shifts detected in [announcement_areas], allowing excavation. Be advised that new routes may be created."
+
+	marine_announcement(marine_announcement_text, "Priority Announcement")
+
+	var/xeno_announcement_text = SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE] \
+		? "The shattered metal of this place has collapsed, and we can create routes through [announcement_areas]." \
+		: "The ground of this world trembles, and new routes may be created through [announcement_areas]."
+
+	xeno_announcement(SPAN_XENOANNOUNCE(xeno_announcement_text), "everything", XENO_GENERAL_ANNOUNCE)
+
+	qdel(src)
+
+GLOBAL_LIST_INIT_TYPED(sentry_spawns, /obj/effect/sentry_landmark, list())
+
+/// Allows a mapper to override the location of turrets on specific LZs, in specific placements. If multiple
+/// are placed, it picks randomly.
+/obj/effect/sentry_landmark
+	icon = 'icons/landmarks.dmi'
+	icon_state = "map_sentry"
+
+	var/abstract_type = /obj/effect/sentry_landmark
+
+	/// Which landing zone this landmark should be connected to
+	var/landing_zone
+
+	/// Which position this sentry should spawn at
+	var/position
 
 
-
-/obj/effect/baseturf_helper/space
-	name = "space baseturf editor"
-	baseturf = /turf/open/space
-/*
-/obj/effect/baseturf_helper/asteroid
-	name = "asteroid baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid
-
-/obj/effect/baseturf_helper/asteroid/airless
-	name = "asteroid airless baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid/airless
-
-/obj/effect/baseturf_helper/asteroid/basalt
-	name = "asteroid basalt baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid/basalt
-
-/obj/effect/baseturf_helper/asteroid/snow
-	name = "asteroid snow baseturf editor"
-	baseturf = /turf/open/floor/plating/asteroid/snow
-
-/obj/effect/baseturf_helper/beach/sand
-	name = "beach sand baseturf editor"
-	baseturf = /turf/open/floor/plating/beach/sand
-
-/obj/effect/baseturf_helper/beach/water
-	name = "water baseturf editor"
-	baseturf = /turf/open/floor/plating/beach/water
-
-/obj/effect/baseturf_helper/lava
-	name = "lava baseturf editor"
-	baseturf = /turf/open/lava/smooth
-
-/obj/effect/baseturf_helper/lava_land/surface
-	name = "lavaland baseturf editor"
-	baseturf = /turf/open/lava/smooth/lava_land_surface
-*/
-
-/obj/effect/mapping_helpers
-	icon = 'icons/effects/mapping_helpers.dmi'
-	icon_state = ""
-	var/late = FALSE
-
-/obj/effect/mapping_helpers/Initialize()
+/obj/effect/sentry_landmark/Initialize(mapload, ...)
 	. = ..()
-	return late ? INITIALIZE_HINT_LATELOAD : INITIALIZE_HINT_QDEL
 
+	if(type == abstract_type)
+		#if !defined(UNIT_TESTS)
+		log_mapping("A [type] was created that should not have been! Use a subtype instead.")
+		#endif
+		return INITIALIZE_HINT_QDEL
 
-//airlock helpers
-/obj/effect/mapping_helpers/airlock
-	layer = DOOR_HELPER_LAYER
+	LAZYADDASSOCLIST(GLOB.sentry_spawns[landing_zone], position, get_turf(src))
 
-/obj/effect/mapping_helpers/airlock/cyclelink_helper
-	name = "airlock cyclelink helper"
-	icon_state = "airlock_cyclelink_helper"
+	return INITIALIZE_HINT_QDEL
 
-/obj/effect/mapping_helpers/airlock/cyclelink_helper/Initialize(mapload)
-	. = ..()
-	if(!mapload)
-		log_world("### MAP WARNING, [src] spawned outside of mapload!")
-		return
-	//var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in loc
-	//if(airlock)
-	//	if(airlock.cyclelinkeddir)
-	//		log_world("### MAP WARNING, [src] at [AREACOORD(src)] tried to set [airlock] cyclelinkeddir, but it's already set!")
-	//	else
-	//		airlock.cyclelinkeddir = dir
-	//else
-		//log_world("### MAP WARNING, [src] failed to find an airlock at [AREACOORD(src)]")
+/obj/effect/sentry_landmark/lz_1
+	abstract_type = /obj/effect/sentry_landmark/lz_1
+	landing_zone = /obj/docking_port/stationary/marine_dropship/lz1
 
+/obj/effect/sentry_landmark/lz_1/top_left
+	position = SENTRY_TOP_LEFT
 
-/obj/effect/mapping_helpers/airlock/locked
-	name = "airlock lock helper"
-	icon_state = "airlock_locked_helper"
+/obj/effect/sentry_landmark/lz_1/top_right
+	position = SENTRY_TOP_RIGHT
 
-/obj/effect/mapping_helpers/airlock/locked/Initialize(mapload)
-	. = ..()
-	if(!mapload)
-		log_world("### MAP WARNING, [src] spawned outside of mapload!")
-		return
-	var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in loc
-	if(airlock)
-		if(airlock.locked)
-			log_world("### MAP WARNING, [src] at [AREACOORD(src)] tried to bolt [airlock] but it's already locked!")
-		else
-			airlock.locked = TRUE
-	else
-		log_world("### MAP WARNING, [src] failed to find an airlock at [AREACOORD(src)]")
+/obj/effect/sentry_landmark/lz_1/bottom_left
+	position = SENTRY_BOTTOM_LEFT
 
-/obj/effect/mapping_helpers/airlock/unres
-	name = "airlock unresctricted side helper"
-	icon_state = "airlock_unres_helper"
+/obj/effect/sentry_landmark/lz_1/bottom_right
+	position = SENTRY_BOTTOM_RIGHT
 
-/obj/effect/mapping_helpers/airlock/unres/Initialize(mapload)
-	. = ..()
-	if(!mapload)
-		log_world("### MAP WARNING, [src] spawned outside of mapload!")
-		return
-//	var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in loc
-//	if(airlock)
-//		airlock.unres_sides ^= dir
-//	else
-//		log_world("### MAP WARNING, [src] failed to find an airlock at [AREACOORD(src)]")
+/obj/effect/sentry_landmark/lz_2
+	abstract_type = /obj/effect/sentry_landmark/lz_2
+	landing_zone = /obj/docking_port/stationary/marine_dropship/lz2
 
+/obj/effect/sentry_landmark/lz_2/top_left
+	position = SENTRY_TOP_LEFT
 
-//needs to do its thing before spawn_rivers() is called
-/*
-INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_lava)
+/obj/effect/sentry_landmark/lz_2/top_right
+	position = SENTRY_TOP_RIGHT
 
-/obj/effect/mapping_helpers/no_lava
-	icon_state = "no_lava"
+/obj/effect/sentry_landmark/lz_2/bottom_left
+	position = SENTRY_BOTTOM_LEFT
 
-/obj/effect/mapping_helpers/no_lava/Initialize()
-	. = ..()
-	var/turf/T = get_turf(src)
-	T.flags_1 |= NO_LAVA_GEN_1
-*/
-
-/*
-//This helper applies components to things on the map directly.
-/obj/effect/mapping_helpers/component_injector
-	name = "Component Injector"
-	late = TRUE
-	var/target_type
-	var/target_name
-	var/component_type
-
-//Late init so everything is likely ready and loaded (no warranty)
-/obj/effect/mapping_helpers/component_injector/LateInitialize()
-	if(!ispath(component_type,/datum/component))
-		CRASH("Wrong component type in [type] - [component_type] is not a component")
-	var/turf/T = get_turf(src)
-	for(var/atom/A in T.GetAllContents())
-		if(A == src)
-			continue
-		if(target_name && A.name != target_name)
-			continue
-		if(target_type && !istype(A,target_type))
-			continue
-		var/cargs = build_args()
-		A.AddComponent(arglist(cargs))
-		qdel(src)
-		return
-
-/obj/effect/mapping_helpers/component_injector/proc/build_args()
-	return list(component_type)
-
-/obj/effect/mapping_helpers/component_injector/infective
-	name = "Infective Injector"
-	icon_state = "component_infective"
-	component_type = /datum/component/infective
-	var/disease_type
-
-/obj/effect/mapping_helpers/component_injector/infective/build_args()
-	if(!ispath(disease_type,/datum/disease))
-		CRASH("Wrong disease type passed in.")
-	var/datum/disease/D = new disease_type()
-	return list(component_type,D)
-	*/
+/obj/effect/sentry_landmark/lz_2/bottom_right
+	position = SENTRY_BOTTOM_RIGHT

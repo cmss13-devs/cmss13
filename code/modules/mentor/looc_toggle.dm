@@ -13,6 +13,7 @@
 
 // Called when the action is clicked on.
 /datum/action/looc_toggle/action_activate()
+	. = ..()
 	if(owner.looc_overhead)
 		button.icon_state = "template"
 		owner.looc_overhead = FALSE

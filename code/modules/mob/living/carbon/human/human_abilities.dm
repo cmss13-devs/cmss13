@@ -1,35 +1,35 @@
-/datum/action/human_action/update_button_icon()
-	if(action_cooldown_check())
-		button.color = rgb(120,120,120,200)
-	else
-		button.color = rgb(255,255,255,255)
-
-/datum/action/human_action/proc/action_cooldown_check()
-	return FALSE
-
+/mob/living/carbon/human/proc/set_selected_ability(datum/action/human_action/activable/ability)
+	if(!ability)
+		selected_ability = null
+		client?.set_right_click_menu_mode(shift_only = FALSE)
+		return
+	selected_ability = ability
+	if(get_ability_mouse_key() == XENO_ABILITY_CLICK_RIGHT)
+		client?.set_right_click_menu_mode(shift_only = TRUE)
 
 /datum/action/human_action/issue_order
 	name = "Issue Order"
 	action_icon_state = "order"
 	var/order_type = "help"
 
-/datum/action/human_action/issue_order/give_to(var/mob/living/L)
+/datum/action/human_action/issue_order/give_to(mob/living/L)
 	..()
 	if(!ishuman(L))
 		return
 	cooldown = COMMAND_ORDER_COOLDOWN
 
 /datum/action/human_action/issue_order/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
-	var/mob/living/carbon/human/H = owner
-	H.issue_order(order_type)
+	var/mob/living/carbon/human/my_owner = owner
+	my_owner.issue_order(order_type)
 
 /datum/action/human_action/issue_order/action_cooldown_check()
 	if(!ishuman(owner))
 		return FALSE
-	var/mob/living/carbon/human/H = owner
-	return !H.command_aura_available
+	var/mob/living/carbon/human/my_owner = owner
+	return my_owner.command_aura_available
 
 /datum/action/human_action/issue_order/move
 	name = "Issue Order - Move"
@@ -46,112 +46,89 @@
 	action_icon_state = "order_focus"
 	order_type = COMMAND_ORDER_FOCUS
 
+/datum/action/human_action/psychic_whisper
+	name = "Psychic Whisper"
+	action_icon_state = "cultist_channel_hivemind"
 
-/datum/action/human_action/smartpack/action_cooldown_check()
+/datum/action/human_action/psychic_whisper/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return FALSE
-	var/mob/living/carbon/human/H = owner
-	if(istype(H.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = H.back
-		return cooldown_check(S)
-	else
+	var/mob/living/carbon/human/human_owner = owner
+
+	if(human_owner.client.prefs.muted & MUTE_IC)
+		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
 		return FALSE
 
-/datum/action/human_action/smartpack/action_activate()
-	if(!istype(owner, /mob/living/carbon/human))
-		return
-	var/mob/living/carbon/human/H = owner
-	if(istype(H.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = H.back
-		form_call(S, H)
+	if(human_owner.stat == DEAD)
+		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
 
-/datum/action/human_action/smartpack/give_to(var/mob/living/L)
-	..()
-	if(!ishuman(L))
-		return
-	var/mob/living/carbon/human/H = L
-	if(istype(H.back, /obj/item/storage/backpack/marine/smartpack))
-		var/obj/item/storage/backpack/marine/smartpack/S = H.back
-		cooldown = set_cooldown(S)
-	else
-		return
+	var/list/target_list = list()
+	for(var/mob/living/carbon/possible_target in view(7, human_owner))
+		if(possible_target == human_owner || !possible_target.client)
+			continue
+		target_list += possible_target
 
-/datum/action/human_action/smartpack/proc/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
-	return
+	var/mob/living/carbon/target_mob = tgui_input_list(human_owner, "Target", "Send a Psychic Whisper to whom?", target_list, theme = "wizard")
+	if(!target_mob)
+		return FALSE
 
-/datum/action/human_action/smartpack/proc/set_cooldown(var/obj/item/storage/backpack/marine/smartpack/S)
-	return
-
-/datum/action/human_action/smartpack/proc/cooldown_check(var/obj/item/storage/backpack/marine/smartpack/S)
-	return S.activated_form
+	human_owner.psychic_whisper(target_mob)
 
 
-/datum/action/human_action/smartpack/protective_form
-	name = "Protective Form"
-	action_icon_state = "smartpack_protect"
+/datum/action/human_action/psychic_radiance
+	name = "Psychic Radiance"
+	action_icon_state = "cultist_channel_hivemind"
 
-/datum/action/human_action/smartpack/protective_form/set_cooldown(var/obj/item/storage/backpack/marine/smartpack/S)
-	return S.protective_form_cooldown
+/datum/action/human_action/psychic_radiance/action_activate(atom/A)
+	. = ..()
+	if(!ishuman(owner))
+		return FALSE
+	var/mob/living/carbon/human/human_owner = owner
 
-/datum/action/human_action/smartpack/protective_form/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
-	S.protective_form(H)
+	if(human_owner.client.prefs.muted & MUTE_IC)
+		to_chat(human_owner, SPAN_DANGER("You cannot whisper (muted)."))
+		return FALSE
 
-/datum/action/human_action/smartpack/immobile_form
-	name = "Immobile Form"
-	action_icon_state = "smartpack_immobile"
+	if(human_owner.stat == DEAD)
+		to_chat(human_owner, SPAN_WARNING("You cannot talk while dead."))
+		return FALSE
 
-/datum/action/human_action/smartpack/immobile_form/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
-	S.immobile_form(H)
-
-/datum/action/human_action/smartpack/repair_form
-	name = "Repair Form"
-	action_icon_state = "smartpack_repair"
-
-/datum/action/human_action/smartpack/repair_form/set_cooldown(var/obj/item/storage/backpack/marine/smartpack/S)
-	return S.repair_form_cooldown
-
-/datum/action/human_action/smartpack/repair_form/form_call(var/obj/item/storage/backpack/marine/smartpack/S, var/mob/living/carbon/human/H)
-	S.repair_form(H)
-
-/datum/action/human_action/smartpack/repair_form/cooldown_check(var/obj/item/storage/backpack/marine/smartpack/S)
-	return S.repairing
+	human_owner.psychic_radiance()
 
 /*
 CULT
 */
-/datum/action/human_action/activable
-	var/ability_used_time = 0
-
 /datum/action/human_action/activable/can_use_action()
 	var/mob/living/carbon/human/H = owner
-	if(istype(H) && !H.is_mob_incapacitated() && !H.dazed)
+	if(istype(H) && !H.is_mob_incapacitated() && !HAS_TRAIT(H, TRAIT_DAZED))
 		return TRUE
 
 // Called when the action is clicked on.
 /datum/action/human_action/activable/action_activate()
+	. = ..()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.selected_ability == src)
-		to_chat(H, "You will no longer use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will no longer use [name] with [H.get_ability_mouse_name()].")
 		button.icon_state = "template"
-		H.selected_ability = null
+		H.set_selected_ability(null)
 	else
-		to_chat(H, "You will now use [name] with \
-			[H.client && H.client.prefs && H.client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK ? "middle-click" : "shift-click"].")
+		to_chat(H, "You will now use [name] with [H.get_ability_mouse_name()].")
 		if(H.selected_ability)
 			H.selected_ability.button.icon_state = "template"
-			H.selected_ability = null
+			H.set_selected_ability(null)
 		button.icon_state = "template_on"
-		H.selected_ability = src
+		H.set_selected_ability(src)
 
 /datum/action/human_action/activable/remove_from(mob/living/carbon/human/H)
 	..()
 	if(H.selected_ability == src)
-		H.selected_ability = null
+		H.set_selected_ability(null)
 
-/datum/action/human_action/activable/proc/use_ability(var/mob/M)
+/datum/action/human_action/activable/proc/use_ability(mob/M)
 	return
 
 /datum/action/human_action/activable/update_button_icon()
@@ -162,23 +139,13 @@ CULT
 	else
 		button.color = rgb(255,255,255,255)
 
-/datum/action/human_action/activable/action_cooldown_check()
-	return ability_used_time <= world.time
-
-/datum/action/human_action/activable/proc/enter_cooldown(var/amount = cooldown)
-	ability_used_time = world.time + amount
-
-	update_button_icon()
-
-	addtimer(CALLBACK(src, .proc/update_button_icon), amount)
-
 /datum/action/human_action/activable/droppod
 	name = "Call Droppod"
 	action_icon_state = "techpod_deploy"
 
 	var/obj/structure/droppod/tech/assigned_droppod
 
-/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(var/turf/T)
+/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(turf/T)
 	var/mob/living/carbon/human/H = owner
 	if(assigned_droppod)
 		return
@@ -221,7 +188,7 @@ CULT
 				return
 
 			if(!(assigned_droppod.droppod_flags & (DROPPOD_DROPPING|DROPPOD_RETURNING)))
-				message_staff("[key_name_admin(H)] recalled a tech droppod at [get_area(assigned_droppod)].")
+				message_admins("[key_name_admin(H)] recalled a tech droppod at [get_area(assigned_droppod)].")
 				assigned_droppod.recall()
 			else
 				to_chat(H, SPAN_WARNING("It's too late to recall the droppod now!"))
@@ -248,13 +215,13 @@ CULT
 	var/list/to_send_to = H.assigned_squad?.marines_list
 	if(!to_send_to)
 		to_send_to = list(H)
-	message_staff("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
+	message_admins("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
-		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
-	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, .proc/handle_droppod_deleted)
+		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [floor(land_time*0.1)] seconds."))
+	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, PROC_REF(handle_droppod_deleted))
 */
 
-/datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(var/obj/structure/droppod/tech/T)
+/datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(obj/structure/droppod/tech/T)
 	SIGNAL_HANDLER
 	if(T != assigned_droppod)
 		return
@@ -273,7 +240,7 @@ CULT
 
 	var/mob/living/carbon/human/H = user
 
-	if(H.job != JOB_SQUAD_RTO)
+	if(H.job != JOB_SQUAD_TEAM_LEADER)
 		return FALSE
 
 	return ..()
@@ -286,6 +253,7 @@ CULT
 	action_icon_state = "cultist_channel_hivemind"
 
 /datum/action/human_action/activable/cult/speak_hivemind/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -316,18 +284,19 @@ CULT
 	var/list/items_to_spawn = list(/obj/item/clothing/suit/cultist_hoodie/, /obj/item/clothing/head/cultist_hood/)
 
 /datum/action/human_action/activable/cult/obtain_equipment/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
 	var/mob/living/carbon/human/H = owner
 
-	var/input = alert(H, "Once obtained, you'll be unable to take it off. Confirm selection.", "Obtain Equipment","Yes","No")
+	var/input = tgui_alert(H, "Once obtained, you'll be unable to take it off. Confirm selection.", "Obtain Equipment", list("Yes","No"))
 
-	if(input == "No")
+	if(input != "Yes")
 		to_chat(H, SPAN_WARNING("You have decided not to obtain your equipment."))
 		return
 
-	H.visible_message(SPAN_DANGER("[H] gets onto their knees and begins praying."), \
+	H.visible_message(SPAN_DANGER("[H] gets onto their knees and begins praying."),
 	SPAN_WARNING("You get onto your knees to pray."))
 
 	if(!do_after(H, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -356,7 +325,7 @@ CULT
 /datum/action/human_action/activable/cult_leader
 	name = "Activable Leader Ability"
 
-/datum/action/human_action/activable/cult_leader/proc/can_target(var/mob/living/carbon/human/H)
+/datum/action/human_action/activable/cult_leader/proc/can_target(mob/living/carbon/human/H)
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/Hu = owner
@@ -369,7 +338,7 @@ CULT
 		to_chat(Hu, SPAN_WARNING("This target is too far away!"))
 		return
 
-	return H.stat != DEAD && istype(H) && isHumanStrict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())
+	return H.stat != DEAD && istype(H) && ishuman_strict(H) && H.hivenumber != Hu.hivenumber && !isnull(get_hive())
 
 /datum/action/human_action/activable/cult_leader/proc/get_hive()
 	if(!ishuman(owner))
@@ -388,7 +357,7 @@ CULT
 	name = "Convert"
 	action_icon_state = "cultist_channel_convert"
 
-/datum/action/human_action/activable/cult_leader/convert/use_ability(var/mob/M)
+/datum/action/human_action/activable/cult_leader/convert/use_ability(mob/M)
 	var/datum/hive_status/hive = get_hive()
 
 	if(!istype(hive))
@@ -414,8 +383,8 @@ CULT
 		return
 
 	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist]
-	preset.load_race(chosen, H.hivenumber)
-	preset.load_status(chosen)
+	preset.load_race(chosen)
+	preset.load_status(chosen, H.hivenumber)
 
 	to_chat(chosen, SPAN_ROLE_HEADER("You are now a Xeno Cultist!"))
 	to_chat(chosen, SPAN_ROLE_BODY("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself."))
@@ -434,7 +403,7 @@ CULT
 
 	cooldown = 1 MINUTES
 
-/datum/action/human_action/activable/cult_leader/stun/use_ability(var/mob/M)
+/datum/action/human_action/activable/cult_leader/stun/use_ability(mob/M)
 	if(!action_cooldown_check())
 		return
 
@@ -455,22 +424,20 @@ CULT
 		return
 
 	to_chat(chosen, SPAN_HIGHDANGER("You feel a dangerous presence in the back of your head. You find yourself unable to move!"))
-
-	chosen.frozen = TRUE
-	chosen.update_canmove()
+	ADD_TRAIT(chosen, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 	chosen.update_xeno_hostile_hud()
 
 	if(!do_after(H, 2 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE, chosen, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(H, SPAN_XENOMINORWARNING("You decide not to stun [chosen]."))
-		unroot_human(chosen)
+		unroot_human(chosen, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 		enter_cooldown(5 SECONDS)
 		return
 
 	enter_cooldown()
 
-	unroot_human(chosen)
+	unroot_human(chosen, TRAIT_SOURCE_ABILITY("Cultist Stun"))
 
 	chosen.apply_effect(10, PARALYZE)
 	chosen.make_jittery(105)
@@ -488,7 +455,7 @@ CULT
 
 	var/list/converted = list()
 
-/datum/action/human_action/activable/mutineer/mutineer_convert/use_ability(var/mob/M)
+/datum/action/human_action/activable/mutineer/mutineer_convert/use_ability(mob/M)
 	if(!can_use_action())
 		return
 
@@ -504,25 +471,26 @@ CULT
 
 	to_chat(H, SPAN_NOTICE("Mutiny join request sent to [chosen]!"))
 
-	if(tgui_alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", list("Yes", "No")) == "No")
+	if(tgui_alert(chosen, "Do you want to be a mutineer?", "Become Mutineer", list("Yes", "No")) != "Yes")
 		return
 
 	converted += chosen
 	to_chat(chosen, SPAN_WARNING("You'll become a mutineer when the mutiny begins. Prepare yourself and do not cause any harm until you've been made into a mutineer."))
 
-	message_staff("[key_name_admin(chosen)] has been converted into a mutineer by [key_name_admin(H)].")
+	message_admins("[key_name_admin(chosen)] has been converted into a mutineer by [key_name_admin(H)].")
 
 /datum/action/human_action/activable/mutineer/mutineer_begin
 	name = "Begin Mutiny"
 	action_icon_state = "mutineer_begin"
 
 /datum/action/human_action/activable/mutineer/mutineer_begin/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
 	var/mob/living/carbon/human/H = owner
 
-	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) == "No")
+	if(tgui_alert(H, "Are you sure you want to begin the mutiny?", "Begin Mutiny?", list("Yes", "No")) != "Yes")
 		return
 
 	shipwide_ai_announcement("DANGER: Communications received; a mutiny is in progress. Code: Detain, Arrest, Defend.")
@@ -534,7 +502,7 @@ CULT
 			XC.load_status(chosen)
 		converted.remove_from(H)
 
-	message_staff("[key_name_admin(H)] has begun the mutiny.")
+	message_admins("[key_name_admin(H)] has begun the mutiny.")
 	remove_from(H)
 
 
@@ -544,13 +512,14 @@ CULT
 
 /datum/action/human_action/cancel_view/give_to(user)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from) // will delete the button even if you reset view by resisting or the verb
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from)) // will delete the button even if you reset view by resisting or the verb
 
 /datum/action/human_action/cancel_view/remove_from(mob/L)
 	. = ..()
 	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
 
 /datum/action/human_action/cancel_view/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -558,25 +527,26 @@ CULT
 
 	H.cancel_camera()
 	H.reset_view()
-	H.client.change_view(world_view_size, target)
+	H.client.change_view(GLOB.world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 
- //Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
- //Unbuckles them, which handles the view and offsets resets and other stuff.
+//Similar to a cancel-camera-view button, but for mobs that were buckled to special vehicle seats.
+//Unbuckles them, which handles the view and offsets resets and other stuff.
 /datum/action/human_action/vehicle_unbuckle
 	name = "Vehicle Unbuckle"
 	action_icon_state = "unbuckle"
 
 /datum/action/human_action/vehicle_unbuckle/give_to(user)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from)//since unbuckling from special vehicle seats also resets the view, gonna use same signal
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from))//since unbuckling from special vehicle seats also resets the view, gonna use same signal
 
 /datum/action/human_action/vehicle_unbuckle/remove_from(mob/L)
 	. = ..()
 	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
 
 /datum/action/human_action/vehicle_unbuckle/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
@@ -590,7 +560,7 @@ CULT
 		remove_from(H)
 
 	H.unset_interaction()
-	H.client.change_view(world_view_size, target)
+	H.client.change_view(GLOB.world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0
 	H.reset_view()
@@ -602,8 +572,33 @@ CULT
 	action_icon_state = "cancel_view"
 
 /datum/action/human_action/mg_exit/action_activate()
+	. = ..()
 	if(!can_use_action())
 		return
 
 	var/mob/living/carbon/human/human_user = owner
 	SEND_SIGNAL(human_user, COMSIG_MOB_MG_EXIT)
+
+/datum/action/human_action/toggle_arc_antenna
+	name = "Toggle Sensor Antenna"
+	action_icon_state = "recoil_compensation"
+
+/datum/action/human_action/toggle_arc_antenna/give_to(mob/user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, PROC_REF(remove_from))
+
+/datum/action/human_action/toggle_arc_antenna/remove_from(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+
+/datum/action/human_action/toggle_arc_antenna/action_activate()
+	. = ..()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/human_user = owner
+	if(istype(human_user.buckled, /obj/structure/bed/chair/comfy/vehicle))
+		var/obj/structure/bed/chair/comfy/vehicle/vehicle_chair = human_user.buckled
+		if(istype(vehicle_chair.vehicle, /obj/vehicle/multitile/arc))
+			var/obj/vehicle/multitile/arc/vehicle = vehicle_chair.vehicle
+			vehicle.toggle_antenna(human_user)

@@ -11,6 +11,13 @@
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper"
 	item_state = "paper"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	item_state_slots = list(WEAR_HEAD = "paper")
 	pickup_sound = 'sound/handling/paper_pickup.ogg'
 	drop_sound = 'sound/handling/paper_drop.ogg'
 	throwforce = 0
@@ -19,29 +26,41 @@
 	flags_equip_slot = SLOT_HEAD
 	flags_armor_protection = BODY_FLAG_HEAD
 	attack_verb = list("bapped")
+	ground_offset_x = 9
+	ground_offset_y = 8
 
-	var/info		//What's actually written on the paper.
-	var/info_links	//A different version of the paper which includes html links at fields and EOF
-	var/stamps		//The (text for the) stamps on the paper.
-	var/fields		//Amount of user created fields
+	var/info //What's actually written on the paper.
+	var/info_links //A different version of the paper which includes html links at fields and EOF
+	var/stamps //The (text for the) stamps on the paper.
+	var/fields //Amount of user created fields
 	var/list/stamped
-	var/ico[0]      //Icons and
+	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
 	var/rigged = 0
 	var/spam_flag = 0
 
+	// any photos that might be attached to the paper
+	var/list/photo_list
+
 	var/deffont = "Verdana"
 	var/signfont = "Times New Roman"
 	var/crayonfont = "Comic Sans MS"
 
+	/// If this paper imports a prefab on instance.
+	var/is_prefab = FALSE
+	/// Category of the paper.
+	var/document_category
+	/// Name of the document.
+	var/document_title
+	var/datum/prefab_document/doc_datum_type
+
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
-/obj/item/paper/Initialize()
+/obj/item/paper/Initialize(mapload, photo_list)
 	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 	stamps = ""
+	src.photo_list = photo_list
 
 	if(info != initial(info))
 		info = html_encode(info)
@@ -50,38 +69,54 @@
 
 	update_icon()
 	updateinfolinks()
+	if(is_prefab)
+		compile_paper()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune")
+	switch(icon_state)
+		if("paper_talisman", "paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
+			return
+
+	if(!info)
+		icon_state = "paper"
 		return
-	if(info)
-		if(icon_state == "paper_wy")
+
+	switch(icon_state)
+		if("paper_wy")
 			icon_state = "paper_wy_words"
 			return
-		if(icon_state == "paper_uscm")
+		if("paper_uscm")
 			icon_state = "paper_uscm_words"
 			return
-		icon_state = "paper_words"
-		return
-	icon_state = "paper"
+		if("paper_flag")
+			icon_state = "paper_flag_words"
+			item_state = "paper_flag"
+			return
+		else
+			icon_state = "paper_words"
+	return
 
 /obj/item/paper/get_examine_text(mob/user)
 	. = ..()
-	if(in_range(user, src) || istype(user, /mob/dead/observer))
+	if(in_range(user, src) || isobserver(user))
 		if(!(istype(user, /mob/dead/observer) || istype(user, /mob/living/carbon/human) || isRemoteControlling(user)))
 			// Show scrambled paper if they aren't a ghost, human, or silicone.
-			show_browser(user, "<BODY class='paper'>[stars(info)][stamps]</BODY>", name, name)
-			onclose(user, name)
+			read_paper(user,scramble = TRUE)
 		else
 			read_paper(user)
 	else
 		. += SPAN_NOTICE("It is too far away.")
 
-/obj/item/paper/proc/read_paper(mob/user)
+/obj/item/paper/proc/read_paper(mob/user, scramble = FALSE)
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/paper)
 	asset_datum.send(user)
-
-	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", name, name)
+	if(photo_list)
+		for(var/photo in photo_list)
+			user << browse_rsc(photo_list[photo], photo)
+	var/paper_info = info
+	if(scramble)
+		paper_info = stars_decode_html(info)
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 650, height = 700)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -100,12 +135,9 @@
 	..()
 	read_paper(user)
 
-/obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
+/obj/item/paper/attack_remote(mob/living/silicon/ai/user as mob)
 	var/dist
-	if(istype(user) && user.camera) //is AI
-		dist = get_dist(src, user.camera)
-	else //cyborg or AI not seeing through a camera
-		dist = get_dist(src, user)
+	dist = get_dist(src, user)
 	if(dist < 2)
 		read_paper(user)
 	else
@@ -114,10 +146,14 @@
 		onclose(user, name)
 	return
 
-/obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+
 	if(user.zone_selected == "eyes")
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]. "), \
-			SPAN_NOTICE(" [user] holds up a paper and shows it to [M]. "))
+		if(!ishumansynth_strict(M))
+			return
+
+		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
+		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
 		examine(M)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
@@ -128,20 +164,20 @@
 				H.lip_style = null
 				H.update_body()
 			else
-				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
-								 	 SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
-				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//user needs to keep their active hand, H does not.
-					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
-										 SPAN_NOTICE("You wipe off [H]'s face paint."))
+				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."),
+									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
+				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
+					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."),
+										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
 
-/obj/item/paper/get_vv_options()
+/obj/item/paper/vv_get_dropdown()
 	. = ..()
 	. += "<option value>-----PAPER-----</option>"
 	. += "<option value='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];customise_paper=\ref[src]'>Customise content</option>"
 
-/obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
+/obj/item/paper/proc/addtofield(id, text, links = 0)
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1
@@ -186,8 +222,8 @@
 /obj/item/paper/proc/updateinfolinks()
 	info_links = info
 	for(var/i=1,  i<=min(fields, MAX_FIELDS), i++)
-		addtofield(i, "<font face=\"[deffont]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
-	info_links = info_links + "<font face=\"[deffont]\"><A href='?src=\ref[src];write=end'>write</A></font>"
+		addtofield(i, "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=[i]'>write</A></font>", 1)
+	info_links = info_links + "<font face=\"[deffont]\"><A href='byond://?src=\ref[src];write=end'>write</A></font>"
 
 
 /obj/item/paper/proc/clearpaper()
@@ -199,78 +235,88 @@
 	update_icon()
 
 
-/obj/item/paper/proc/parsepencode(var/t, var/obj/item/tool/pen/P, mob/user as mob, var/iscrayon = 0)
-	t = replacetext(t, "\[center\]", "<center>")
-	t = replacetext(t, "\[/center\]", "</center>")
-	t = replacetext(t, "\[br\]", "<BR>")
-	t = replacetext(t, "\[b\]", "<B>")
-	t = replacetext(t, "\[/b\]", "</B>")
-	t = replacetext(t, "\[i\]", "<I>")
-	t = replacetext(t, "\[/i\]", "</I>")
-	t = replacetext(t, "\[u\]", "<U>")
-	t = replacetext(t, "\[/u\]", "</U>")
-	t = replacetext(t, "\[large\]", "<font size=\"4\">")
-	t = replacetext(t, "\[/large\]", "</font>")
-	t = replacetext(t, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
-	t = replacetext(t, "\[date\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [game_year]")]</i></font>")
-	t = replacetext(t, "\[shortdate\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "DD/MM/[game_year]")]</i></font>")
-	t = replacetext(t, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
-	t = replacetext(t, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [game_year]")]</i></font>")
-	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
+/obj/item/paper/proc/parsepencode(paper_text, obj/item/tool/pen/P, mob/user as mob, iscrayon = 0)
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 
-	t = replacetext(t, "\[h1\]", "<H1>")
-	t = replacetext(t, "\[/h1\]", "</H1>")
-	t = replacetext(t, "\[h2\]", "<H2>")
-	t = replacetext(t, "\[/h2\]", "</H2>")
-	t = replacetext(t, "\[h3\]", "<H3>")
-	t = replacetext(t, "\[/h3\]", "</H3>")
+	paper_text = replacetext(paper_text, "\[center\]", "<center>")
+	paper_text = replacetext(paper_text, "\[/center\]", "</center>")
+	paper_text = replacetext(paper_text, "\[br\]", "<BR>")
+	paper_text = replacetext(paper_text, "\[b\]", "<B>")
+	paper_text = replacetext(paper_text, "\[/b\]", "</B>")
+	paper_text = replacetext(paper_text, "\[i\]", "<I>")
+	paper_text = replacetext(paper_text, "\[/i\]", "</I>")
+	paper_text = replacetext(paper_text, "\[u\]", "<U>")
+	paper_text = replacetext(paper_text, "\[/u\]", "</U>")
+	paper_text = replacetext(paper_text, "\[large\]", "<font size=\"4\">")
+	paper_text = replacetext(paper_text, "\[/large\]", "</font>")
+	paper_text = replacetext(paper_text, "\[sign\]", "<font face=\"[signfont]\"><i>[user ? user.real_name : "Anonymous"]</i></font>")
+	paper_text = replacetext(paper_text, "\[date\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
+	paper_text = replacetext(paper_text, "\[shortdate\]", "<font face=\"[signfont]\"><i>[time2text(REALTIMEOFDAY, "DD/MM/[GLOB.game_year]")]</i></font>")
+	paper_text = replacetext(paper_text, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
+	paper_text = replacetext(paper_text, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
+	paper_text = replacetext(paper_text, "\[field\]", "<span class=\"paper_field\"></span>")
+
+	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")
+	paper_text = replacetext(paper_text, "\[/h1\]", "</H1>")
+	paper_text = replacetext(paper_text, "\[h2\]", "<H2>")
+	paper_text = replacetext(paper_text, "\[/h2\]", "</H2>")
+	paper_text = replacetext(paper_text, "\[h3\]", "<H3>")
+	paper_text = replacetext(paper_text, "\[/h3\]", "</H3>")
 
 	if(!iscrayon)
-		t = replacetext(t, "\[*\]", "<li>")
-		t = replacetext(t, "\[hr\]", "<HR>")
-		t = replacetext(t, "\[small\]", "<font size = \"1\">")
-		t = replacetext(t, "\[/small\]", "</font>")
-		t = replacetext(t, "\[list\]", "<ul>")
-		t = replacetext(t, "\[/list\]", "</ul>")
-		t = replacetext(t, "\[table\]", "<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>")
-		t = replacetext(t, "\[/table\]", "</td></tr></table>")
-		t = replacetext(t, "\[grid\]", "<table>")
-		t = replacetext(t, "\[/grid\]", "</td></tr></table>")
-		t = replacetext(t, "\[row\]", "</td><tr>")
-		t = replacetext(t, "\[cell\]", "<td>")
-		t = replacetext(t, "\[logo\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[wy\]", "<img src = wylogo.png>")
-		t = replacetext(t, "\[uscm\]", "<img src = uscmlogo.png>")
+		paper_text = replacetext(paper_text, "\[*\]", "<li>")
+		paper_text = replacetext(paper_text, "\[hr\]", "<HR>")
+		paper_text = replacetext(paper_text, "\[small\]", "<font size = \"1\">")
+		paper_text = replacetext(paper_text, "\[/small\]", "</font>")
+		paper_text = replacetext(paper_text, "\[list\]", "<ul>")
+		paper_text = replacetext(paper_text, "\[/list\]", "</ul>")
+		paper_text = replacetext(paper_text, "\[table\]", "<table border=1 cellspacing=0 cellpadding=3 style='border: 1px solid black;'>")
+		paper_text = replacetext(paper_text, "\[/table\]", "</td></tr></table>")
+		paper_text = replacetext(paper_text, "\[grid\]", "<table>")
+		paper_text = replacetext(paper_text, "\[/grid\]", "</td></tr></table>")
+		paper_text = replacetext(paper_text, "\[row\]", "</td><tr>")
+		paper_text = replacetext(paper_text, "\[cell\]", "<td>")
+		paper_text = replacetext(paper_text, "\[wy\]", "<img src = [asset.get_url_mappings()["logo_wy.png"]]>")
+		paper_text = replacetext(paper_text, "\[wy_inv\]", "<img src = [asset.get_url_mappings()["logo_wy_inv.png"]]>")
+		paper_text = replacetext(paper_text, "\[uscm\]", "<img src = [asset.get_url_mappings()["logo_uscm.png"]]>")
+		paper_text = replacetext(paper_text, "\[upp\]", "<img src = [asset.get_url_mappings()["logo_upp.png"]]>")
+		paper_text = replacetext(paper_text, "\[cmb\]", "<img src = [asset.get_url_mappings()["logo_cmb.png"]]>")
 
-		t = "<font face=\"[deffont]\" color=[P ? P.pen_colour : "black"]>[t]</font>"
+		paper_text = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[paper_text]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
-		t = replacetext(t, "\[*\]", "")
-		t = replacetext(t, "\[hr\]", "")
-		t = replacetext(t, "\[small\]", "")
-		t = replacetext(t, "\[/small\]", "")
-		t = replacetext(t, "\[list\]", "")
-		t = replacetext(t, "\[/list\]", "")
-		t = replacetext(t, "\[table\]", "")
-		t = replacetext(t, "\[/table\]", "")
-		t = replacetext(t, "\[row\]", "")
-		t = replacetext(t, "\[cell\]", "")
-		t = replacetext(t, "\[logo\]", "")
+		paper_text = replacetext(paper_text, "\[*\]", "")
+		paper_text = replacetext(paper_text, "\[hr\]", "")
+		paper_text = replacetext(paper_text, "\[small\]", "")
+		paper_text = replacetext(paper_text, "\[/small\]", "")
+		paper_text = replacetext(paper_text, "\[list\]", "")
+		paper_text = replacetext(paper_text, "\[/list\]", "")
+		paper_text = replacetext(paper_text, "\[table\]", "")
+		paper_text = replacetext(paper_text, "\[/table\]", "")
+		paper_text = replacetext(paper_text, "\[row\]", "")
+		paper_text = replacetext(paper_text, "\[cell\]", "")
+		paper_text = replacetext(paper_text, "\[wy\]", "")
+		paper_text = replacetext(paper_text, "\[wy_inv\]", "")
+		paper_text = replacetext(paper_text, "\[uscm\]", "")
+		paper_text = replacetext(paper_text, "\[upp\]", "")
+		paper_text = replacetext(paper_text, "\[cmb\]", "")
 
-		t = "<font face=\"[crayonfont]\" color=[P ? P.pen_colour : "black"]><b>[t]</b></font>"
+		paper_text = "<font face=\"[crayonfont]\" color=[P ? P.pen_color : "black"]><b>[paper_text]</b></font>"
 
-//	t = replacetext(t, "#", "") // Junk converted to nothing!
 
-//Count the fields
+	//Count the fields
+	calculate_fields(paper_text)
+	return paper_text
+
+/obj/item/paper/proc/calculate_fields(message)
+	var/check_text = message ? message : info
 	var/laststart = 1
 	while(1)
-		var/i = findtext(t, "<span class=\"paper_field\">", laststart)
+		var/i = findtext(check_text, "<span class=\"paper_field\">", laststart)
 		if(i==0)
 			break
 		laststart = i+1
 		fields = min(fields+1, MAX_FIELDS)
 		//NOTE: The max here will include the auto-created field when hitting a paper with a pen. So it should be [your_desired_number]+1.
-	return t
-
 
 /obj/item/paper/proc/openhelp(mob/user as mob)
 	var/dat = {"<HTML>
@@ -304,12 +350,12 @@
 		if(istype(P, /obj/item/tool/lighter/zippo))
 			class = "<span class='rose'>"
 
-		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!", \
+		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!",
 		"[class]You hold \the [P] up to \the [src], burning it slowly.")
 
 		spawn(20)
 			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.heat_source)
-				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.", \
+				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.",
 				"[class]You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.")
 
 				if(user.get_inactive_hand() == src)
@@ -321,10 +367,40 @@
 			else
 				to_chat(user, SPAN_DANGER("You must hold \the [P] steady to burn \the [src]."))
 
+/obj/item/paper/verb/seal_paper()
+	set name = "Seal paper"
+	set category = "Object"
+	set src in usr
+
+	if(tgui_alert(usr, "Are you sure you wish to seal this document? Note: This will prevent the edit of any fields on the paper, excluding the end of the page.", "Confirm", list("Yes", "No"), 20 SECONDS) != "Yes")
+		return FALSE
+	info = replacetext(info, "<span class=\"paper_field\">", "<span class=\"sealed_paper_field\">")
+	calculate_fields()
+	updateinfolinks()
+	return TRUE
+
+/obj/item/paper/proc/compile_paper()
+	if(!is_prefab)
+		return FALSE
+	if(!document_category || !doc_datum_type)
+		return FALSE
+
+	var/datum/prefab_document/prefab = new doc_datum_type
+	info = prefab.contents
+	qdel(prefab)
+
+	calculate_fields()
+	updateinfolinks()
+	update_icon()
+	return TRUE
 
 /obj/item/paper/Topic(href, href_list)
 	..()
 	if(!usr || (usr.stat || usr.is_mob_restrained()))
+		return
+
+	if(usr.client.prefs.muted & MUTE_IC)
+		to_chat(usr, SPAN_DANGER("You cannot write on paper (muted)."))
 		return
 
 	if(href_list["write"])
@@ -341,8 +417,8 @@
 			iscrayon = 1
 
 
-		// if paper is not in usr, then it must be near them, or in a clipboard or folder, which must be in or near usr
-		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
+		// if paper is not in usr, then it must be near them, or in a clipboard, noticeboard or folder, which must be in or near usr
+		if(src.loc != usr && !src.Adjacent(usr) && !((istype(src.loc, /obj/item/clipboard) || istype(src.loc, /obj/structure/noticeboard) || istype(src.loc, /obj/item/folder)) && (src.loc.loc == usr || src.loc.Adjacent(usr)) ) )
 			return
 
 		t = replacetext(t, "\n", "<BR>")
@@ -361,9 +437,6 @@
 
 /obj/item/paper/attackby(obj/item/P, mob/user)
 	..()
-	var/clown = 0
-	if(user.mind && (user.job == "Clown"))
-		clown = 1
 
 	if(istype(P, /obj/item/paper) || istype(P, /obj/item/photo))
 		if (istype(P, /obj/item/paper/carbon))
@@ -372,7 +445,8 @@
 				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
-		if(loc != user) return
+		if(loc != user)
+			return
 		var/obj/item/paper_bundle/B = new(get_turf(user))
 		if (name != "paper")
 			B.name = name
@@ -391,10 +465,7 @@
 			if(!p.on)
 				to_chat(user, SPAN_NOTICE("Your pen is not on!"))
 				return
-		if ( istype(P, /obj/item/tool/pen/robopen) && P:mode == 2 )
-			P:RenamePaper(user,src)
-		else
-			show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
+		show_browser(user, "<BODY class='paper'>[info_links][stamps]</BODY>", name, name) // Update the window
 		//openhelp(user)
 		return
 
@@ -403,11 +474,12 @@
 			return
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [P.name].</i>"
+		playsound(src, 'sound/effects/alien_footstep_medium3.ogg', 20, TRUE, 6)
 
 		var/image/stampoverlay = image('icons/obj/items/paper.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/centcomm))
+		if(istype(P, /obj/item/tool/stamp/captain) || istype(P, /obj/item/tool/stamp/weyyu))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else
@@ -417,11 +489,6 @@
 		offset_y += y
 		stampoverlay.pixel_x = x
 		stampoverlay.pixel_y = y
-
-		if(istype(P, /obj/item/tool/stamp/clown))
-			if(!clown)
-				to_chat(user, SPAN_NOTICE("You are totally unable to use the stamp. HONK!"))
-				return
 
 		if(!ico)
 			ico = new
@@ -486,14 +553,13 @@
 	name = "DJ Listening Outpost"
 	info = "<B>Welcome new owner!</B><BR><BR>You have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies. Here is a step by step guide to start listening in on those saucy radio channels:<br><ol><li>Equip yourself with a multi-tool</li><li>Use the multitool on each machine, that is the broadcaster, receiver and the relay.</li><li>Turn all the machines on, it has already been configured for you to listen on.</li></ol> Simple as that. Now to listen to the private channels, you'll have to configure the intercoms, located on the front desk. Here is a list of frequencies for you to listen on.<br><ul><li>145.7 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Mining Channel</li><li>134.7 - Cargo Channel</li>"
 
-/obj/item/paper/warhead_recycle
-	name = "USCM Recycling Efforts"
-	info = "<B>Hello USCM Orbital Cannon System Owner!</B><BR><BR>We regret to inform you that a communications mishap has resulted in your orbital bombardment warheads being recycled for spare metal! Worry not, the metal has been put to good use in High Command's chest freezer."
-
 /obj/item/paper/flag
-	icon_state = "flag_neutral"
-	item_state = "paper"
-	anchored = 1.0
+	name = "paper flag"
+	desc = "Somebody crudely glued a piece of paper to a stick. You feel like waving it around like an idiot."
+	icon_state = "paper_flag"
+	item_state = "paper_flag"
+
+	anchored = TRUE
 
 /obj/item/paper/jobs
 	name = "Job Information"
@@ -502,7 +568,7 @@
 /obj/item/paper/photograph
 	name = "photo"
 	icon_state = "photo"
-	var/photo_id = 0.0
+	var/photo_id = 0
 	item_state = "paper"
 
 /obj/item/paper/sop
@@ -511,7 +577,7 @@
 
 /obj/item/paper/prison_station/test_log
 	name = "paper- 'Test Log'"
-	info = "<p style=\"text-align: center;\"><sub>TEST LOG</sub></p><p>SPECIMEN: Bioweapon candidate Kappa. Individual 3</p><BR>\n<p>-</p><p>PROCEDURE: Observation</p><p>RESULTS: Specimen paces around cell. Appears agitated. Vocalisations.</p><p>-</p><p>PROCEDURE: Simian test subject</p><p>RESULTS: Devoured by specimen. No significant difference from last simian test.</p><p><em>Note: Time to amp it up</em></p><p>-</p><p>PROCEDURE: Human test subject (D-1). Instructed to \"pet it like a dog\"</p><p>RESULTS: Specimen and D-1 stare at each other for approximately two seconds. D-1 screams and begins pounding on observation window, begging to be released. Specimen pounces on D-1. Specimen kills D-1 with multiple slashes from its foreclaws.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Two human test subjects (D-2, D-3). Instructed to subdue specimen</p><p>RESULTS: D-2 and D-3 slowly approach specimen. D-3 punches specimen on forehead to no noticeable effect. Specimen pounces on D-3, then kills him with multiple slashes from its foreclaws. D-2 screams and begins pounding on observation window. Specimen pounces on D-2, then kills him with multiple slashes from its foreclaws.</p><p>Specimen begins slashing at observation access doors. Exhibiting an unexpected amount of strength, it is able to d~</p>"
+	info = "<p style=\"text-align: center;\"><sub>TEST LOG</sub></p><p>SPECIMEN: Bioweapon candidate Kappa. Individual 3</p><BR>\n<p>-</p><p>PROCEDURE: Observation</p><p>RESULTS: Specimen paces around cell. Appears agitated. Vocalisations.</p><p>-</p><p>PROCEDURE: Simian test subject</p><p>RESULTS: Nested by specimen. No significant difference from last simian test.</p><p><em>Note: Time to amp it up</em></p><p>-</p><p>PROCEDURE: Human test subject (D-1). Instructed to \"pet it like a dog\"</p><p>RESULTS: Specimen and D-1 stare at each other for approximately two seconds. D-1 screams and begins pounding on observation window, begging to be released. Specimen pounces on D-1. Specimen kills D-1 with multiple slashes from its foreclaws.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Two human test subjects (D-2, D-3). Instructed to subdue specimen</p><p>RESULTS: D-2 and D-3 slowly approach specimen. D-3 punches specimen on forehead to no noticeable effect. Specimen pounces on D-3, then kills him with multiple slashes from its foreclaws. D-2 screams and begins pounding on observation window. Specimen pounces on D-2, then kills him with multiple slashes from its foreclaws.</p><p>Specimen begins slashing at observation access doors. Exhibiting an unexpected amount of strength, it is able to d~</p>"
 
 /obj/item/paper/prison_station/interrogation_log
 	name = "paper- 'Test Log'"
@@ -538,16 +604,23 @@
 	name = "paper= 'Captain's log'"
 	info = "<p>We found him.</p><p>His location, anyway. Figures that he'd end up in the Fop, given our reputation.</p><p>As good an escape artist he is, he ain't getting out by himself. Too many security measures, and no way off without a ship. They're prepared for anything coming from inside.</p><p>They AREN'T prepared for a \"tramp freighter\" ramming straight through their hull.</p><p>Hang tight, Jack. We're coming for you."
 
+/obj/item/paper/prison_station/pirate_note/clfship
+	info = "<p>We're hit!</p><p>MAYDAY! MAYDAY! We have been hit by the -... .</p><p>We're on a planet somewhere, seems there is a colony to our south. Might head on over there and see if there is any USCM presence. Our ship is fucking busted beyond normal means of repair, still waiting for a damage assessment tho.</p><p>Coby and Ryan died today from their wounds... \"Fucking USCM.\" I'll have my revenge someday...</p><p>And the colonies will be freed one day from the oppressive regime of Wey-Yu and USCM henchmen."
+
 /obj/item/paper/prison_station/nursery_rhyme
 	info = "<p>Mary had a little lamb,<BR>\nits fleece was white as snow;<BR>\nAnd everywhere that Mary went,<BR>\nthe lamb was sure to go.</p><p>It followed her to school one day,<BR>\nwhich was against the rule;<BR>\nIt made the children laugh and play,<BR>\nto see a lamb at school.</p><p>And so the teacher turned it out,<BR>\nbut still it lingered near,<BR>\nAnd waited patiently about,<BR>\ntill Mary did appear.</p><p>\"Why does the lamb love Mary so?\"<BR>\nthe eager children cry;<BR>\n\"Why, Mary loves the lamb, you know\",<BR>\nthe teacher did reply."
 
 /obj/item/paper/lv_624/cheese
-	name = "paper= 'Note on the contents of the armoury'"
-	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
+	name = "paper= 'Note on the contents of the armory'"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armory for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshal Johnson"
 
 /obj/item/paper/bigred/walls
 	name = "crumpled note"
 	info = "<b>there is cotten candy in the walls</b>"
+
+/obj/item/paper/bigred/lambda
+	name = "ripped diary entry"
+	info = "Director Smith's Diary\nEntry Date: 15 December 2181\nToday, I've felt true progress! The XX-121 reproduction program is in full effect, and Administrator Cooper have given us the all clear to continue producing specimens. To think that all this is coming from just that first specimen, a single 'Queen' form... It's grown to almost 5 meters tall and shows no signs of ceasing egg production! These creatures will be the next Synthetic of our time, we'll show those Seegson bastards."
 
 /obj/item/paper/bigred/union
 	name = "Shaft miners union"
@@ -581,6 +654,31 @@
 	color = "green"
 	info =  "<p> I could not do it, the fucking marshals, the minions of THEM, have gotten a whiff of my co-workers plans and started raiding us pre-emptively. We managed to get word of it and erected a few barricades to slow them down, but it is too late. Our plan, my plan to save humanity has turned to dust. </p> As I lay and write this, they are gassing the entire area with tear gas, while gunshots echo around the caves. \n  They have gotten to my mind already, their voices are... laughing, saying that, \" it's over \" and that \n “we have risen\". Their voices are mocking me as I could do nothing to prevent their rise \n Just as I am about to finish my final entry, I overhear a few panicked radio calls from a dead officer's radio, about a code red lambda breach, and \" X-RAYS OUT OF CONTAINMENT\". \n However, not a single one of their cries has been met with a response as their fellow officers are too preoccupied with beating up poor miners... \n <b> They have won.... they have PLANNED THIS all along.... </b> \n only God may save us now..."
 
+/obj/item/paper/bigred/upp
+	name = "UPP Orders"
+
+/obj/item/paper/bigred/clf
+	name = "Log Entry"
+	info = "The agitation went as planned and the miners went on strike. It turned violent but we held back the jackbooted scum well enough. The problem is we've stopped receiving outside communication from the rest of the colony, and people have been going missing. I'm ordering everyone to hunker down until we can figure out what's going on."
+
+/obj/item/paper/trijent/clf
+	name = "Log Entry"
+	info = "Our ship is lost. Our pods have crashed on a company-occupied planet. It appears the colony is overrun with hostile creatures, and many of the men are already dead. Our fight for freedom cannot end like this! We will live on, for the liberation!"
+
+/obj/item/paper/varadero/clf
+	name = "SOS!"
+	info = "Mayday! Mayday! To all nearby CLF frequencies, we are under attack! Unknown creatures have overrun New Varadero outpost and our shuttle is damaged beyond repair! We ne-"
+
+/obj/item/paper/soro/clf
+	name = "TOP SECRET: FOR CELL LEAD ONLY"
+	info = "Your request for extraction has been recieved. We have no assets in the region available. Await further instruction."
+
+/obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center> <img src = [asset.get_url_mappings()["logo_upp.png"]]> <br> <b><small>Union Of Progressive People's Fourth Fleet</b></small> <br> <b><large>Orders For 173rd Airborne Reconnaissance: 2nd Platoon</large></b> <br> <small>No.52</small></center> <hr> <b>Order of Military Officer of the UPP</b><br><b>Kolonel <redacted> Ganbaatar </b><br><b>Commander of MV-35</b> <br> Date: 2182 <br> <b><large>On Special Mission<large></b>  <hr>  The actions of the hostile Weyland-Yutani corporation on the fringes of the Neroid sector have grown increasingly intolerable. However, evidence suggesting they are researching into the creation and deployment of some form of biological weapons program represent an unacceptable risk to the security of UPP interests in this sector. The risk of these items falling into UA/USCM hands is unacceptable. <br><br> Orders for the Boris squad of the 173rd Airborne Recon are as follows. Initiate airborne reconnaissance of WY colony Oxley's Buttle, Trijent Dam, location on planet Raijin  (UA Code: LV-670). Ascertain veracity of onsight biological weapons program. If positive confirmation of the weapons program is identified, authorization for rapid assault and recovery is granted. Avoid all contact with UA/USCM military forces, abort missions if UA/USCM forces are encountered. <hr><center><b>Authorizing Officer: Gaanbatar</b><br>Name and Rank: Kolonel </center>  <hr><small><i>FOR SANCTIONED USE ONLY</i></small>"
+
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"
@@ -596,11 +694,21 @@
 
 /obj/item/paper/wy
 	icon_state = "paper_wy"
-	info = "<center><img src = wylogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/wy/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/uscm
 	icon_state = "paper_uscm"
-	info = "<center><img src = uscmlogo.png></center><BR>\n<span class=\"paper_field\"></span>"
+
+/obj/item/paper/uscm/Initialize(mapload, photo_list)
+	. = ..()
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = "<center><img src = [asset.get_url_mappings()["logo_uscm.png"]]></center><BR>\n<span class=\"paper_field\"></span>"
 
 /obj/item/paper/research_notes
 	icon_state = "paper_wy_words"
@@ -627,33 +735,34 @@
 	if(!C)
 		var/random_chem
 		if(tier)
-			random_chem = pick(chemical_gen_classes_list[tier])
+			random_chem = pick(GLOB.chemical_gen_classes_list[tier])
 		else
 			if(note_type == "test")
-				random_chem = pick(chemical_gen_classes_list["T4"])
+				random_chem = pick(GLOB.chemical_gen_classes_list["T4"])
 			else
-				random_chem = pick(	prob(55);pick(chemical_gen_classes_list["T2"]),
-									prob(30);pick(chemical_gen_classes_list["T3"]),
-									prob(15);pick(chemical_gen_classes_list["T4"]))
+				random_chem = pick( prob(55);pick(GLOB.chemical_gen_classes_list["T2"]),
+									prob(30);pick(GLOB.chemical_gen_classes_list["T3"]),
+									prob(15);pick(GLOB.chemical_gen_classes_list["T4"]))
 		if(!random_chem)
-			random_chem = pick(chemical_gen_classes_list["T1"])
-		C = chemical_reagents_list["[random_chem]"]
-	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
+			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
+		C = GLOB.chemical_reagents_list["[random_chem]"]
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
-			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
+			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[C.id]
 			name = "Synthesis of [C.name]"
 			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in G.required_reagents)
-				var/datum/reagent/R = chemical_reagents_list["[I]"]
+				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-			if(G.required_catalysts && G.required_catalysts.len)
+			if(LAZYLEN(G.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
 				for(var/I in G.required_catalysts)
-					var/datum/reagent/R = chemical_reagents_list["[I]"]
+					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					var/U = G.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
@@ -730,19 +839,19 @@
 /obj/item/paper/research_notes/unique/Initialize()
 	//Each one of these get a new unique chem
 	var/datum/reagent/generated/C = new /datum/reagent/generated
-	C.id = "tau-[length(chemical_gen_classes_list["tau"])]"
+	C.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
 	C.generate_name()
 	C.chemclass = CHEM_CLASS_RARE
 	if(gen_tier)
 		C.gen_tier = gen_tier
 	else
-		C.gen_tier = chemical_data.clearance_level
+		C.gen_tier = GLOB.chemical_data.clearance_level
 	C.generate_stats()
-	chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
-	chemical_reagents_list[C.id] = C
+	GLOB.chemical_gen_classes_list["tau"] += C.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+	GLOB.chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
-	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
+	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
 	. = ..()
 
 /obj/item/paper/research_notes/grant
@@ -757,13 +866,13 @@
 	var/datum/reagent/data
 	var/completed = FALSE
 
-/obj/item/paper/research_report/proc/generate(var/datum/reagent/S, var/info_only = FALSE)
+/obj/item/paper/research_report/proc/generate(datum/reagent/S, info_only = FALSE)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
-		if(chemical_data.clearance_level >= S.gen_tier || info_only)
+		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units\n"
@@ -773,7 +882,7 @@
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
-	else if(S.chemclass == CHEM_CLASS_SPECIAL && !chemical_data.clearance_x_access && !info_only)
+	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
 	else if(S.description)
@@ -785,31 +894,30 @@
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
-	if(S.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[S.id] && !info_only)
+	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
-	if(chemical_reactions_list[S.id])
-		var/datum/chemical_reaction/C = chemical_reactions_list[S.id]
+	if(GLOB.chemical_reactions_list[S.id])
+		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
-			var/datum/reagent/R = chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
+			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
 			else
 				var/U = C.required_reagents[I]
 				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-		if(C.required_catalysts)
-			if(C.required_catalysts.len)
-				info += "<BR>Reaction would require the following catalysts:<BR>\n"
-				for(var/I in C.required_catalysts)
-					var/datum/reagent/R = chemical_reagents_list["[I]"]
-					if(R.chemclass >= CHEM_CLASS_SPECIAL && !chemical_data.chemical_identified_list[R.id] && !info_only)
-						info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
-						completed = FALSE
-					else
-						var/U = C.required_catalysts[I]
-						info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-	else if(chemical_gen_classes_list["C1"].Find(S.id))
+		if(LAZYLEN(C.required_catalysts))
+			info += "<BR>Reaction would require the following catalysts:<BR>\n"
+			for(var/I in C.required_catalysts)
+				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
+				if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+					info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
+					completed = FALSE
+				else
+					var/U = C.required_catalysts[I]
+					info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+	else if(GLOB.chemical_gen_classes_list["C1"].Find(S.id))
 		info += "<font size = \"2\"><I> - [S.name]</I></font><BR>\n"
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
@@ -820,18 +928,19 @@
 	else
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
-		if(S.chemclass == CHEM_CLASS_SPECIAL && chemical_data.clearance_x_access)
+		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 
 	data = S
 
 /obj/item/paper/incident
 	name = "incident report"
+	icon_state = "paper_uscm_words"
 	var/datum/crime_incident/incident
 
 /obj/item/paper/incident/Initialize()
 	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]
+	var/template = {"\[center\]\[uscm\]\[/center\]
 		\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
 		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
 		\[barcode\]\[/center\]"}
@@ -846,10 +955,13 @@
 
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
+	icon_state = "paper_uscm_words"
 
-/obj/item/paper/fingerprint/Initialize(mapload, var/list/prints)
-	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]"}
+//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
+/obj/item/paper/fingerprint/Initialize(mapload, list/prints)
+	// To not block initialization construct object like below
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
 
 	var/i = 0
 	for(var/obj/effect/decal/prints/print_set in prints)
@@ -865,4 +977,89 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
+	update_icon()
+
+
+/obj/item/paper/personalrecord
+	name = "personal record"
+	icon_state = "paper_uscm_words"
+
+//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
+/obj/item/paper/personalrecord/Initialize(mapload, datum/data/record/general_record, datum/data/record/security_record)
+	// To not block initialization construct object like below
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
+
+	template += {"\[center\]\[b\]Personal Record\[/b\]\[/center\]"}
+
+	if(general_record)
+		template += {"
+		Name: [general_record.fields["name"]]\[br\] `
+		ID: [general_record.fields["id"]]\[br\]
+		Sex: [general_record.fields["sex"]]\[br\]
+		Age: [general_record.fields["age"]]\[br\]
+		Rank: [general_record.fields["rank"]]\[br\]
+		Physical Status: [general_record.fields["p_stat"]]\[br\]
+		Mental Status: [general_record.fields["m_stat"]]\[br\]
+		Criminal Status: [general_record.fields["criminal"]]\[br\]
+		"}
+
+		if (security_record)
+			template += {"\[center\]\[b\]Security Data\[/b\]\[/center\]"}
+			template += {"Incidents: [security_record.fields["incident"]]\[br\]"}
+			template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
+
+			if(islist(security_record.fields["comments"]) || length(security_record.fields["comments"]) > 0)
+				for(var/com_i in security_record.fields["comments"])
+					var/comment = security_record.fields["comments"][com_i]
+					// What a wacky and jolly creation
+					// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+					var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
+					if (isnull(comment["deleted_by"]))
+						comment_markup += "[comment["entry"]]"
+					else
+						comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
+					template += {"[comment_markup]\[br\]\[br\]"}
+			else
+				template += {"\[b\]No comments\[/b\]\[br\]"}
+		else
+			template += {"\[b\]Security Record Lost!\[/b\]\[br\]"}
+
+	info = parsepencode(template, null, null, FALSE)
+	update_icon()
+
 #undef MAX_FIELDS
+
+/obj/item/paper/colonial_grunts
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "paper_stack_words"
+	name = "Colonial Space Grunts"
+	desc = "A tabletop game based around the USCM, easy to get into, simple to play, and most inportantly fun for the whole squad."
+
+/obj/item/paper/colonial_grunts/Initialize(mapload, photo_list)
+	..()
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/item/paper/colonial_grunts/LateInitialize()
+	. = ..()
+	info = "<div> <img style='align:middle' src='[SSassets.transport.get_asset_url("colonialspacegruntsEZ.png")]'>"
+
+/obj/item/paper/colonial_grunts/update_icon()
+	return // Keep original icon_state
+
+/obj/item/paper/liaison_brief
+	name = "Liaison Colony Briefing"
+	desc = "A brief from the Company about the colony the ship is responding to."
+	icon_state = "paper_wy_words"
+
+	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"
+
+/obj/item/paper/liaison_brief/Initialize(mapload, ...)
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].liaison_briefing)
+		info = file2text(SSmapping.configs[GROUND_MAP].liaison_briefing)
+	else
+		info = file2text(placeholder)
+
+	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
+	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["logo_wy.png"])

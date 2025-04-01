@@ -1,9 +1,15 @@
-/datum/paygrade/misc/operator
+/datum/paygrade/misc/operative
+	name = "Operator"
+	prefix = "OPR."
+	paygrade = PAY_SHORT_OPR
+	pay_multiplier = 1 //????
+
+/datum/paygrade/misc/codenamed
 	name = "Operative"
-	paygrade = "O"
+	paygrade = PAY_SHORT_CDNM
 	pay_multiplier = 1 //????
 
 /datum/paygrade/misc/synth
 	name = "Synthetic"
-	paygrade = "SYN"
+	paygrade = PAY_SHORT_SYN
 	pay_multiplier = 1

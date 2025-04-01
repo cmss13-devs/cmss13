@@ -1,8 +1,8 @@
 /obj/structure/machinery/gear
 	name = "\improper gear"
 	icon_state = "gear"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	unslashable = TRUE
 	unacidable = TRUE
 	use_power = USE_POWER_NONE
@@ -18,12 +18,12 @@
 /obj/structure/machinery/elevator_strut
 	name = "\improper strut"
 	icon = 'icons/turf/elevator_strut.dmi'
-	anchored = 1
+	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-	density = 0
+	density = FALSE
 	use_power = USE_POWER_NONE
-	opacity = 1
+	opacity = TRUE
 	layer = ABOVE_MOB_LAYER
 	var/id
 

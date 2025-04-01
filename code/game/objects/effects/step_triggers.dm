@@ -4,11 +4,11 @@
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
 	invisibility = 101 // nope cant see this shit
-	anchored = 1
+	anchored = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "trigger"
 
-/obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/proc/Trigger(atom/movable/A)
 	return 0
 
 /obj/effect/step_trigger/Crossed(H as mob|obj)
@@ -25,20 +25,21 @@
 
 /obj/effect/step_trigger/thrower
 	var/direction = SOUTH // the direction of throw
-	var/tiles = 3	// if 0: forever until atom hits a stopper
+	var/tiles = 3 // if 0: forever until atom hits a stopper
 	var/immobilize = 1 // if nonzero: prevents mobs from moving while they're being flung
-	var/speed = 1	// delay of movement
+	var/speed = 1 // delay of movement
 	var/facedir = 0 // if 1: atom faces the direction of movement
 	var/nostop = 0 // if 1: will only be stopped by teleporters
 	var/list/affecting = list()
 
-/obj/effect/step_trigger/thrower/Trigger(var/atom/A)
+/obj/effect/step_trigger/thrower/Trigger(atom/A)
 	if(!A || !istype(A, /atom/movable))
 		return
 
 	if(!istype(A,/obj) && !istype(A,/mob)) //mobs and objects only.
 		return
-	if(istype(A,/obj/effect)) return
+	if(istype(A,/obj/effect))
+		return
 
 	var/atom/movable/AM = A
 	var/curtiles = 0
@@ -50,7 +51,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(immobilize)
-			M.canmove = 0
+			ADD_TRAIT(M, TRAIT_IMMOBILIZED, STEP_TRIGGER_TRAIT)
 
 	affecting.Add(AM)
 	while(AM && !stopthrow)
@@ -87,7 +88,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(immobilize)
-			M.canmove = 1
+			REMOVE_TRAIT(M, TRAIT_IMMOBILIZED, STEP_TRIGGER_TRAIT)
 
 /* Stops things thrown by a thrower, doesn't do anything */
 
@@ -98,19 +99,19 @@
 /obj/effect/step_trigger/clone_cleaner
 	icon_state = "cleaner"
 
-/obj/effect/step_trigger/clone_cleaner/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/clone_cleaner/Trigger(atom/movable/A)
 	if(A.clone)
 		A.destroy_clone()
 
 /* Seamless vector teleporter - to be used with projectors */
 
 /obj/effect/step_trigger/teleporter_vector
-	var/vector_x = 0	//Teleportation vector
+	var/vector_x = 0 //Teleportation vector
 	var/vector_y = 0
 	var/vector_z = 0
 	affect_ghosts = 1
 
-/obj/effect/step_trigger/teleporter_vector/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter_vector/Trigger(atom/movable/A)
 	if(A && A.loc && A.type != /atom/movable/clone) //Prevent clones from teleporting
 		var/lx = A.x
 		var/ly = A.y
@@ -146,11 +147,11 @@
 /obj/effect/step_trigger/teleporter
 	icon = 'icons/old_stuff/debug_group.dmi'
 	icon_state = "red"
-	var/teleport_x = 0	// teleportation coordinates (if one is null, then no teleport!)
+	var/teleport_x = 0 // teleportation coordinates (if one is null, then no teleport!)
 	var/teleport_y = 0
 	var/teleport_z = 0
 
-/obj/effect/step_trigger/teleporter/Trigger(var/atom/movable/A, teleportation_type)
+/obj/effect/step_trigger/teleporter/Trigger(atom/movable/A, teleportation_type)
 	set waitfor = 0
 
 	if(!istype(A,/obj) && !istype(A,/mob)) //mobs and objects only.
@@ -188,17 +189,61 @@
 
 /* Predator Ship Teleporter - set in each individual gamemode */
 
-/obj/effect/step_trigger/teleporter/yautja_ship/Trigger(atom/movable/A)
-	var/turf/destination
-	if(length(GLOB.yautja_teleports))	//We have some possible locations.
-		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs)	//Pick one of them in the list.)
-		destination = GLOB.yautja_teleport_descs[pick]
-	if(!destination || (A.loc != loc))
+/obj/effect/step_trigger/teleporter/yautja_ship/Trigger(mob/living/user) // For whitelised preds
+
+	var/mob/living/traveler = user
+
+	if(!istype(traveler))
 		return
-	teleport_x = destination.x	//Configure the destination locations.
+
+	if(traveler.faction == FACTION_YAUTJA_YOUNG)
+		to_chat(traveler, SPAN_WARNING("You do not wish to make your elders angry do you?"))
+		return
+
+	if(!HAS_TRAIT(traveler, TRAIT_YAUTJA_TECH))
+		to_chat(traveler, SPAN_WARNING("You better not try to use this, you might lose half of your body in the process!"))
+		return
+
+	var/turf/destination
+	if(length(GLOB.yautja_teleports)) //We have some possible locations.
+		var/pick = tgui_input_list(traveler, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs) //Pick one of them in the list.)
+		destination = GLOB.yautja_teleport_descs[pick]
+	if(!destination || (traveler.loc != loc))
+		return
+	teleport_x = destination.x //Configure the destination locations.
 	teleport_y = destination.y
 	teleport_z = destination.z
-	..(A, 1)	//Run the parent proc for teleportation. Tell it to play the animation.
+	..(traveler, 1) //Run the parent proc for teleportation.
+
+/obj/effect/step_trigger/teleporter/yautja_young/Trigger(mob/living/user) // For un-whitelisted yougbloods to enter the hunting grounds only
+
+	var/mob/living/young_hunter = user
+
+	if(!istype(young_hunter))
+		return
+
+	if(!HAS_TRAIT(young_hunter, TRAIT_YAUTJA_TECH))
+		to_chat(young_hunter, SPAN_WARNING("You better not try to use this, you might lose half of your body in the process!"))
+		return
+
+	var/turf/place
+	if(length(GLOB.yautja_young_teleports))
+		var/pick = tgui_input_list(young_hunter, "Where do you want to go today?", "Locations", GLOB.yautja_young_descs)
+		place = GLOB.yautja_young_descs[pick]
+	if(!place || (young_hunter.loc != loc))
+		return
+
+	var/choice = tgui_alert(young_hunter, "Youngbloods are not able to return back to the ship until they complete their trial, choose wisely.", "Are you ready?", list("Deploy", "Stay"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "Stay")
+		return
+
+	teleport_x = place.x
+	teleport_y = place.y
+	teleport_z = place.z
+	..(young_hunter, 1)
 
 /* Random teleporter, teleports atoms to locations ranging from teleport_x - teleport_x_offset, etc */
 
@@ -207,9 +252,10 @@
 	var/teleport_y_offset = 0
 	var/teleport_z_offset = 0
 
-/obj/effect/step_trigger/teleporter/random/Trigger(var/atom/movable/A)
+/obj/effect/step_trigger/teleporter/random/Trigger(atom/movable/A)
 	if(istype(A, /obj)) //mobs and objects only.
-		if(istype(A, /obj/effect)) return
+		if(istype(A, /obj/effect))
+			return
 		qdel(A)
 	else if(isliving(A)) //Hacked it up so it just deletes it
 		to_chat(A, SPAN_DANGER("You get lost into the depths of space, never to be seen again."))

@@ -6,11 +6,11 @@
 
 /obj/structure/machinery/cm_vending/clothing/dress/proc/get_listed_products_for_role(list/role_specific_uniforms)
 	. = list()
-	for(var/category_type in uniform_categories)
+	for(var/category_type in GLOB.uniform_categories)
 		var/display_category = FALSE
-		if(!uniform_categories[category_type])
+		if(!GLOB.uniform_categories[category_type])
 			continue
-		for(var/category in uniform_categories[category_type])
+		for(var/category in GLOB.uniform_categories[category_type])
 			if((category in role_specific_uniforms) && role_specific_uniforms[category])
 				display_category = TRUE
 				break
@@ -19,7 +19,7 @@
 		. += list(
 			list(category_type, 0, null, null, null)
 		)
-		for(var/object_type in uniform_categories[category_type])
+		for(var/object_type in GLOB.uniform_categories[category_type])
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
@@ -29,7 +29,7 @@
 					list(name, 0, uniform_path, NO_FLAGS, VENDOR_ITEM_REGULAR)
 				)
 
-/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(var/list/presets)
+/obj/structure/machinery/cm_vending/clothing/dress/proc/get_products_preset(list/presets)
 	. = list()
 	for(var/preset in presets)
 		var/datum/equipment_preset/pre = new preset()
@@ -45,18 +45,18 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/id_card = H.wear_id
+	var/obj/item/card/id/id_card = H.get_idcard()
 	var/list/role_specific_uniforms
 	var/list/vended_items
 	var/list/display_list = list()
-	if(istype(id_card))
+	if(id_card)
 		role_specific_uniforms = id_card.uniform_sets
 		vended_items = id_card.vended_items
-	for(var/category_type in uniform_categories)
+	for(var/category_type in GLOB.uniform_categories)
 		var/display_category = FALSE
-		if(!uniform_categories[category_type])
+		if(!GLOB.uniform_categories[category_type])
 			continue
-		for(var/category in uniform_categories[category_type])
+		for(var/category in GLOB.uniform_categories[category_type])
 			if((category in role_specific_uniforms) && role_specific_uniforms[category])
 				display_category = TRUE
 				break
@@ -65,7 +65,7 @@
 		display_list += list(
 			list(category_type, 0, null, null, null)
 		)
-		for(var/object_type in uniform_categories[category_type])
+		for(var/object_type in GLOB.uniform_categories[category_type])
 			if(!role_specific_uniforms[object_type])
 				continue
 			for(var/uniform_path in role_specific_uniforms[object_type])
@@ -73,8 +73,8 @@
 				var/can_vend = TRUE
 				if(uniform_path in vended_items)
 					can_vend = FALSE
-				var/name = sanitize(initial(O.name))
-				var/flags = can_vend ? NO_FLAGS : MARINE_CAN_BUY_ALL
+				var/name = sanitize(strip_improper(initial(O.name)))
+				var/flags = can_vend ? null : MARINE_CAN_BUY_DRESS
 				display_list += list(
 					list(name, 0, uniform_path, flags, VENDOR_ITEM_REGULAR)
 				)
@@ -83,9 +83,9 @@
 /obj/structure/machinery/cm_vending/clothing/dress/ui_data(mob/user)
 
 	var/mob/living/carbon/human/H = user
-	var/obj/item/card/id/id_card = H.wear_id
+	var/obj/item/card/id/id_card = H.get_idcard()
 	var/list/vended_items
-	if(istype(id_card))
+	if(id_card)
 		vended_items = id_card.vended_items
 
 	var/list/data = list()
@@ -93,7 +93,7 @@
 	var/list/stock_values = list()
 	for (var/i in 1 to length(ui_listed_products))
 		var/prod_available = TRUE
-		var/list/myprod = ui_listed_products[i]	//we take one list from listed_products
+		var/list/myprod = ui_listed_products[i] //we take one list from listed_products
 		var/uniform_path = myprod[3]
 		if(uniform_path in vended_items)
 			prod_available = FALSE
@@ -120,9 +120,9 @@
 
 			var/item_path = L[3]
 
-			var/obj/item/card/id/id_card = H.wear_id
+			var/obj/item/card/id/id_card = H.get_idcard()
 
-			if(!istype(id_card)) //not wearing an ID
+			if(!id_card) //not wearing an ID
 				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
 				return
 
@@ -134,10 +134,10 @@
 				to_chat(H, SPAN_WARNING("This machine isn't for you."))
 				return
 
-			for(var/category in uniform_categories) // Very Hacky fix
+			for(var/category in GLOB.uniform_categories) // Very Hacky fix
 				if(!exploiting)
 					break
-				for(var/specific_category in uniform_categories[category])
+				for(var/specific_category in GLOB.uniform_categories[category])
 					if(!exploiting)
 						break
 					if(!(specific_category in id_card.uniform_sets))
@@ -156,17 +156,17 @@
 			LAZYADD(id_card.vended_items, item_path)
 			return TRUE
 
-//A clothing vendor for admins and devs to test all the clothes in the game
+//A clothing vendor for admins and devs to test all the items in the game
 /obj/structure/machinery/cm_vending/clothing/super_snowflake
 	name = "\improper Super Snowflake Vendor"
-	desc = "WARNING: The quantity of clothes contained within can slow down reality."
+	desc = "WARNING: The quantity of items contained within can slow down reality."
 	icon_state = "snowflake"
 	use_points = TRUE //"use points", but everything is free
 	show_points = FALSE
 	use_snowflake_points = FALSE
 	vendor_theme = VENDOR_THEME_COMPANY
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_TO_HAND
-	vend_delay = 10
+	vend_delay = 1 SECONDS
 	var/list/items
 	var/list/obj/item/item_types
 
@@ -197,11 +197,11 @@
 		if(findtext("[path]", item))
 			matches += path
 
-	if(matches.len==0)
+	if(length(matches)==0)
 		return
 
 	var/obj/item/chosen
-	if(matches.len==1)
+	if(length(matches)==1)
 		chosen = matches[1]
 	else
 		//If we have multiple options, let them select which one they meant
@@ -209,13 +209,22 @@
 
 	return chosen
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(var/obj/item/item_type)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items(obj/item/item_type)
 	for(var/obj/item/I as anything in typesof(item_type))
 		items += list(list(initial(I.name), 0, I, null, VENDOR_ITEM_REGULAR))
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/get_vv_options()
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/vv_get_dropdown()
 	. = ..()
-	. += "<option value='?_src_=vars;add_items_to_vendor=\ref[src]'>Add Items To Vendor</option>"
+	VV_DROPDOWN_OPTION("", "----SNOWFLAKE VENDOR-----")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_ITEMS_TO_VENDOR, "Add Items to Vendor")
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_ADD_ITEMS_TO_VENDOR])
+		var/obj/structure/machinery/cm_vending/clothing/super_snowflake/vendor = locate(href_list["add_items_to_vendor"])
+		if(!istype(vendor))
+			return
+		vendor.add_items_to_vendor()
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/proc/add_items_to_vendor()
 	if(!check_rights(R_MOD))
@@ -230,26 +239,56 @@
 	log_admin("[key_name(usr)] added an item [chosen] to [src].")
 	msg_admin_niche("[key_name(usr)] added an item [chosen] to [src].")
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
-	name = "\improper Super Snowflake Vendor, Uniforms"
-	item_types = list(/obj/item/clothing/under)
+//Vendor types
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/accessory
+	name = "\improper Super Snowflake Vendor, Accessories"
+	item_types = list(/obj/item/clothing/accessory)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/ammo
+	name = "\improper Super Snowflake Vendor, Ammunition"
+	item_types = list(/obj/item/ammo_magazine)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
+	name = "\improper Super Snowflake Vendor, Backpacks"
+	item_types = list(/obj/item/storage/backpack)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/belt
+	name = "\improper Super Snowflake Vendor, Belts"
+	item_types = list(/obj/item/storage/belt)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/glasses
 	name = "\improper Super Snowflake Vendor, Glasses"
 	item_types = list(/obj/item/clothing/glasses)
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
-	name = "\improper Super Snowflake Vendor, Shoes"
-	item_types = list(/obj/item/clothing/shoes)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/gloves
+	name = "\improper Super Snowflake Vendor, Gloves"
+	item_types = list(/obj/item/clothing/gloves)
 
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/helmet
 	name = "\improper Super Snowflake Vendor, Helmets"
 	item_types = list(/obj/item/clothing/head)
 
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/mask
+	name = "\improper Super Snowflake Vendor, Masks"
+	item_types = list(/obj/item/clothing/mask)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/pouch
+	name = "\improper Super Snowflake Vendor, Pouches"
+	item_types = list(/obj/item/storage/pouch)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/shoes
+	name = "\improper Super Snowflake Vendor, Shoes"
+	item_types = list(/obj/item/clothing/shoes)
+
 /obj/structure/machinery/cm_vending/clothing/super_snowflake/suit
 	name = "\improper Super Snowflake Vendor, Suits"
 	item_types = list(/obj/item/clothing/suit)
 
-/obj/structure/machinery/cm_vending/clothing/super_snowflake/backpack
-	name = "\improper Super Snowflake Vendor, Backpacks"
-	item_types = list(/obj/item/storage/backpack)
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/uniform
+	name = "\improper Super Snowflake Vendor, Uniforms"
+	item_types = list(/obj/item/clothing/under)
+
+/obj/structure/machinery/cm_vending/clothing/super_snowflake/weapon
+	name = "\improper Super Snowflake Vendor, Weapons"
+	item_types = list(/obj/item/weapon)

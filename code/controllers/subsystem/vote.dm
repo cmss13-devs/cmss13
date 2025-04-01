@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/fire()
 	if(mode)
-		time_remaining = round((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
+		time_remaining = floor((started_time + CONFIG_GET(number/vote_period) - world.time)/10)
 
 		if(time_remaining < 0)
 			result()
@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(vote)
 	voting.Cut()
 	remove_action_buttons()
 
-	UnregisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN)
 
 	for(var/c in GLOB.player_list)
 		update_static_data(c)
@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(vote)
 				active_admins = TRUE
 				break
 		if(!active_admins)
-			world.Reboot("Restart vote successful.")
+			world.Reboot()
 		else
 			to_chat(world, "<span style='boltnotice'>Notice:Restart vote will not restart the server automatically because there are active admins on.</span>")
 			message_admins("A restart vote has passed, but there are active admins on with +SERVER, so it has been canceled. If you wish, you may restart the server.")
@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(vote)
 	return .
 
 
-/datum/controller/subsystem/vote/proc/handle_client_joining(var/dcs, var/client/C)
+/datum/controller/subsystem/vote/proc/handle_client_joining(dcs, client/C)
 	SIGNAL_HANDLER
 
 	var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
@@ -231,9 +231,11 @@ SUBSYSTEM_DEF(vote)
 
 		carryover[i] += vote.total_votes
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end)
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end, send_clients_vote = FALSE)
 	var/vote_sound = 'sound/ambience/alarm4.ogg'
 	var/vote_sound_vol = 5
+	var/randomize_entries = FALSE
+
 	if(!mode)
 		var/admin = FALSE
 		var/ckey = ckey(initiator_key)
@@ -269,16 +271,21 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Restart Round", "Continue Playing")
 			if("gamemode")
 				question = "Gamemode vote"
+				randomize_entries = TRUE
 				for(var/mode_type in config.gamemode_cache)
-					var/datum/game_mode/M = initial(mode_type)
-					if(initial(M.config_tag))
-						var/vote_cycle_met = !initial(M.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(M.vote_cycle) == 0)
-						if(initial(M.votable) && vote_cycle_met)
-							choices += initial(M.config_tag)
+					var/datum/game_mode/cur_mode = mode_type
+					if(initial(cur_mode.config_tag))
+						cur_mode = new mode_type
+						var/vote_cycle_met = !initial(cur_mode.vote_cycle) || (text2num(SSperf_logging?.round?.id) % initial(cur_mode.vote_cycle) == 0)
+						var/min_players_met = length(GLOB.clients) >= cur_mode.required_players
+						if(initial(cur_mode.votable) && vote_cycle_met && min_players_met)
+							choices += initial(cur_mode.config_tag)
+						qdel(cur_mode)
 			if("groundmap")
 				question = "Ground map vote"
 				vote_sound = 'sound/voice/start_your_voting.ogg'
 				vote_sound_vol = 15
+				randomize_entries = TRUE
 				var/list/maps = list()
 				for(var/i in config.maplist[GROUND_MAP])
 					var/datum/map_config/VM = config.maplist[GROUND_MAP][i]
@@ -301,12 +308,13 @@ SUBSYSTEM_DEF(vote)
 				choices.Add(maps)
 				if(!length(choices))
 					return FALSE
-				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, .proc/carry_over_callback))
+				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, PROC_REF(carry_over_callback)))
 
 				if(CONFIG_GET(flag/allow_vote_adjustment_callback))
-					vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
+					vote_adjustment_callback = CALLBACK(src, PROC_REF(map_vote_adjustment))
 			if("shipmap")
 				question = "Ship map vote"
+				randomize_entries = TRUE
 				var/list/maps = list()
 				for(var/i in config.maplist[SHIP_MAP])
 					var/datum/map_config/VM = config.maplist[SHIP_MAP][i]
@@ -331,8 +339,15 @@ SUBSYSTEM_DEF(vote)
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
+
+				if(tgui_input_list(usr, "Do you want to randomize the vote option order?", "Randomize", list("Yes", "No")) == "Yes")
+					randomize_entries = TRUE
+
 			else
 				return FALSE
+
+		if(randomize_entries)
+			choices = shuffle(choices)
 
 		for(var/i in choices)
 			choices[i] = 0
@@ -347,23 +362,25 @@ SUBSYSTEM_DEF(vote)
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
 		SEND_SOUND(world, sound(vote_sound, channel = SOUND_CHANNEL_VOX, volume = vote_sound_vol))
-		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'<b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
-		time_remaining = round(vp/10)
+		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'><b>[text]</b><br>Type <b>vote</b> or click <a href='byond://?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
+		time_remaining = floor(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
 			var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
 			if(question)
 				V.set_name("Vote: [question]")
 			C.player_details.player_actions += V
+			if(send_clients_vote)
+				C.mob.vote()
 
-		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, .proc/handle_client_joining)
+		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(handle_client_joining))
 		SStgui.update_uis(src)
 		return TRUE
 	return FALSE
 
 /datum/controller/subsystem/vote/proc/map_vote_adjustment(current_votes, carry_over, total_votes)
 	// Get 10% of the total map votes and remove them from the pool
-	var/total_vote_adjustment = round(total_votes * CONFIG_GET(number/vote_adjustment_callback))
+	var/total_vote_adjustment = floor(total_votes * CONFIG_GET(number/vote_adjustment_callback))
 
 	// Do not remove more votes than were made for the map
 	return -(min(current_votes, total_vote_adjustment))
@@ -387,7 +404,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/action/innate/vote/give_to(mob/M)
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, .proc/remove_vote_action)
+	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, PROC_REF(remove_vote_action))
 
 /datum/action/innate/vote/proc/remove_vote_action(datum/source)
 	SIGNAL_HANDLER
@@ -397,6 +414,7 @@ SUBSYSTEM_DEF(vote)
 	qdel(src)
 
 /datum/action/innate/vote/action_activate()
+	. = ..()
 	owner.vote()
 
 /datum/action/innate/vote/proc/remove_from_client()
@@ -437,11 +455,11 @@ SUBSYSTEM_DEF(vote)
 
 // possible_vote_types JSON TABLE FOR THE CLIENT MENU
 // PARAMETERS
-// name					string		display name
-// icon					string		font awesome icon
-// color 				string		color, not in hex
-// admin_only			boolean		controls whether an option is admin_only
-// variable_required	string		The vote may not be activated (by non-admins) if a variable passed in data does not evaluate to true.
+// name string display name
+// icon string font awesome icon
+// color string color, not in hex
+// admin_only boolean controls whether an option is admin_only
+// variable_required string The vote may not be activated (by non-admins) if a variable passed in data does not evaluate to true.
 GLOBAL_LIST_INIT(possible_vote_types, list(
 	"restart" = list(
 		"name" = "Restart Vote",
@@ -508,7 +526,7 @@ GLOBAL_LIST_INIT(possible_vote_types, list(
 			if(!(params["vote_type"] in GLOB.possible_vote_types))
 				return
 
-			if(!check_rights(R_ADMIN))
+			if(!check_rights(R_MOD))
 				var/list/vote_type = GLOB.possible_vote_types[params["vote_type"]]
 				if(vote_type["admin_only"])
 					return

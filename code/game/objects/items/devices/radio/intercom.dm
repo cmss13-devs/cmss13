@@ -2,7 +2,7 @@
 	name = "station intercom"
 	desc = "Talk through this. To speak directly into an intercom next to you, use :i."
 	icon_state = "intercom"
-	anchored = 1
+	anchored = TRUE
 	w_class = SIZE_LARGE
 	canhear_range = 2
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
@@ -64,12 +64,45 @@
 			on = FALSE
 		else
 			var/area/A = src.loc.loc
-			if(!A || !isarea(A) || !A.master)
+			if(!A || !isarea(A))
 				on = FALSE
 			else
-				on = A.master.powered(POWER_CHANNEL_EQUIP) // set "on" to the power status
+				on = A.powered(POWER_CHANNEL_EQUIP) // set "on" to the power status
 
 		if(!on)
 			icon_state = "intercom-p"
 		else
 			icon_state = "intercom"
+
+/obj/item/device/radio/intercom/alamo
+	name = "dropship alamo intercom"
+	frequency = DS1_FREQ
+
+/obj/item/device/radio/intercom/normandy
+	name = "dropship normandy intercom"
+	frequency = DS2_FREQ
+
+/obj/item/device/radio/intercom/saipan
+	name = "dropship saipan intercom"
+	frequency = DS3_FREQ
+
+/obj/item/device/radio/intercom/morana
+	name = "dropship morana intercom"
+	frequency = UPP_DS1_FREQ
+
+/obj/item/device/radio/intercom/devana
+	name = "dropship devana intercom"
+	frequency = UPP_DS2_FREQ
+
+/obj/item/device/radio/intercom/fax
+	name = "Monitoring Frequency Speaker"
+	canhear_range = 4
+
+/obj/item/device/radio/intercom/fax/wy
+	frequency = FAX_WY_FREQ
+
+/obj/item/device/radio/intercom/fax/uscm_hc
+	frequency = FAX_USCM_HC_FREQ
+
+/obj/item/device/radio/intercom/fax/uscm_pvst
+	frequency = FAX_USCM_PVST_FREQ

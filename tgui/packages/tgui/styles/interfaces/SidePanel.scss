@@ -1,0 +1,21 @@
+@use 'sass:color';
+@use '../base.scss';
+@use '../functions.scss' as *;
+
+.SidePanel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  color: base.$color-fg;
+  background-color: base.$color-bg;
+  background-image: linear-gradient(
+    to bottom,
+    base.$color-bg-start 0%,
+    base.$color-bg-end 100%
+  );
+}
+
+.Test {
+  border: 1px solid red;
+}

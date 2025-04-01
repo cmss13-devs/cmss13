@@ -1,5 +1,5 @@
- // Reference: http://www.teuse.net/personal/harrington/hh_bible.htm
- // http://www.trmn.org/portal/images/uniforms/rmn/rmn_officer_srv_dress_lrg.png
+// Reference: http://www.teuse.net/personal/harrington/hh_bible.htm
+// http://www.trmn.org/portal/images/uniforms/rmn/rmn_officer_srv_dress_lrg.png
 
 /obj/item/clothing/head/beret/centcom/officer
 	name = "officers beret"
@@ -34,6 +34,6 @@
 /obj/item/clothing/under/rank/centcom/captain
 	desc = "Gold trim on space-black cloth, this uniform displays the rank of \"Admiral\" and bears \"N.C.V. Fearless CV-286\" on the left shoulder."
 	name = "\improper Wey-Yu Admiral Uniform"
-	icon_state = "centcom"
-	item_state = "dg_suit"
+	icon_state = "officer"
+	item_state = "g_suit"
 	displays_id = 0

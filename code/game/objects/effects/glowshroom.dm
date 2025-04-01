@@ -2,9 +2,9 @@
 
 /obj/effect/glowshroom
 	name = "glowshroom"
-	anchored = 1
-	opacity = 0
-	density = 0
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
 	icon = 'icons/obj/items/lighting.dmi'
 	icon_state = "glowshroomf"
 	layer = ABOVE_TURF_LAYER
@@ -39,18 +39,14 @@
 	else //if on the floor, glowshroom on-floor sprite
 		icon_state = "glowshroomf"
 
-	SetLuminosity(round(potency/15))
+	set_light(floor(potency/15))
 	lastTick = world.timeofday
-
-/obj/effect/glowshroom/Destroy()
-	SetLuminosity(0)
-	. = ..()
 
 /obj/effect/glowshroom/proc/CalcDir(turf/location = loc)
 	set background = 1
 	var/direction = 16
 
-	for(var/wallDir in cardinal)
+	for(var/wallDir in GLOB.cardinals)
 		var/turf/newTurf = get_step(location,wallDir)
 		if(istype(newTurf, /turf/closed/wall))
 			direction |= wallDir
@@ -69,7 +65,7 @@
 		if(direction & i)
 			dirList += i
 
-	if(dirList.len)
+	if(length(dirList))
 		var/newDir = pick(dirList)
 		if(newDir == 16)
 			floor = 1
@@ -99,8 +95,6 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 			return
-		else
-	return
 
 /obj/effect/glowshroom/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)

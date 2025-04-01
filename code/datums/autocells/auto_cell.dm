@@ -6,7 +6,7 @@
 */
 
 // No neighbors
-#define NEIGHBORS_NONE     0
+#define NEIGHBORS_NONE  0
 // Cardinal neighborhood
 #define NEIGHBORS_CARDINAL 1
 // Ordinal neighborhood
@@ -21,7 +21,7 @@
 	// This affects what neighbors you'll get passed in update_state()
 	var/neighbor_type = NEIGHBORS_CARDINAL
 
-/datum/automata_cell/New(var/turf/T)
+/datum/automata_cell/New(turf/T)
 	..()
 
 	if(!istype(T))
@@ -37,7 +37,7 @@
 	in_turf = T
 	LAZYADD(in_turf.autocells, src)
 
-	cellauto_cells += src
+	GLOB.cellauto_cells += src
 
 	birth()
 
@@ -48,7 +48,7 @@
 		LAZYREMOVE(in_turf.autocells, src)
 		in_turf = null
 
-	cellauto_cells -= src
+	GLOB.cellauto_cells -= src
 
 	death()
 
@@ -61,7 +61,7 @@
 	return
 
 // Transfer this automata cell to another turf
-/datum/automata_cell/proc/transfer_turf(var/turf/new_turf)
+/datum/automata_cell/proc/transfer_turf(turf/new_turf)
 	if(QDELETED(new_turf))
 		return
 
@@ -75,7 +75,7 @@
 // Use this proc to merge this cell with another one if the other cell enters the same turf
 // Return TRUE if this cell should survive the merge (the other one will die/be qdeleted)
 // Return FALSE if this cell should die and be replaced by the other cell
-/datum/automata_cell/proc/merge(var/datum/automata_cell/other_cell)
+/datum/automata_cell/proc/merge(datum/automata_cell/other_cell)
 	return TRUE
 
 // Returns a list of neighboring cells
@@ -88,7 +88,7 @@
 
 	// Get cardinal neighbors
 	if(neighbor_type & NEIGHBORS_CARDINAL)
-		for(var/dir in cardinal)
+		for(var/dir in GLOB.cardinals)
 			var/turf/T = get_step(in_turf, dir)
 			if(QDELETED(T))
 				continue
@@ -100,7 +100,7 @@
 
 	// Get ordinal/diagonal neighbors
 	if(neighbor_type & NEIGHBORS_ORDINAL)
-		for(var/dir in diagonals)
+		for(var/dir in GLOB.diagonals)
 			var/turf/T = get_step(in_turf, dir)
 			if(QDELETED(T))
 				continue
@@ -114,7 +114,7 @@
 // Create a new cell in the given direction
 // Obviously override this if you want custom propagation,
 // but I figured this is pretty useful as a basic propagation function
-/datum/automata_cell/proc/propagate(var/dir)
+/datum/automata_cell/proc/propagate(dir)
 	if(!dir)
 		return
 
@@ -127,6 +127,6 @@
 	return C
 
 // Update the state of this cell
-/datum/automata_cell/proc/update_state(var/list/turf/neighbors)
+/datum/automata_cell/proc/update_state(list/turf/neighbors)
 	// just fucking DIE
 	qdel(src)

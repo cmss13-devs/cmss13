@@ -3,6 +3,7 @@
 	desc = "It can hold a few small and personal things."
 	storage_slots = 10
 	icon_state = "wallet"
+	icon = 'icons/obj/items/storage/bags.dmi'
 	w_class = SIZE_TINY
 	can_hold = list(
 		/obj/item/spacecash,
@@ -23,7 +24,7 @@
 		/obj/item/photo,
 		/obj/item/reagent_container/dropper,
 		/obj/item/tool/screwdriver,
-		/obj/item/tool/stamp
+		/obj/item/tool/stamp,
 	)
 	flags_equip_slot = SLOT_ID
 

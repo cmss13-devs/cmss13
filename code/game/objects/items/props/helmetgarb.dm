@@ -1,10 +1,11 @@
 // Holds props for helmet garb
 
 /obj/item/prop/helmetgarb
-	name = "Placeholder"
-	desc = "placeholder"
-	icon = 'icons/obj/items/helmet_garb.dmi'
-	icon_state = "placeholder"
+	icon = 'icons/obj/items/clothing/helmet_garb.dmi'
+	icon_state = null
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+		)
 	w_class = SIZE_TINY
 	garbage = TRUE
 
@@ -22,31 +23,83 @@
 	name = "combat netting"
 	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
 	icon_state = "netting"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+		)
+
+/obj/item/prop/helmetgarb/netting/desert
+	name = "desert combat netting"
+	icon_state = "netting_desert"
+
+/obj/item/prop/helmetgarb/netting/jungle
+	name = "jungle combat netting"
+	icon_state = "netting_jungle"
+
+/obj/item/prop/helmetgarb/netting/urban
+	name = "urban combat netting"
+	icon_state = "netting_urban"
 
 /obj/item/prop/helmetgarb/spent_buckshot
 	name = "spent buckshot"
 	desc = "Three spent rounds of good ol' buckshot. You know they used to paint these green? Strange times."
 	icon_state = "spent_buckshot"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+		)
 
 /obj/item/prop/helmetgarb/spent_slug
 	name = "spent slugs"
+	gender = PLURAL
 	desc = "For when you need to knock your target down with superior stopping power. These three have already been fired."
 	icon_state = "spent_slug"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+		)
 
 /obj/item/prop/helmetgarb/spent_flech
 	name = "spent flechette"
 	desc = "The more you fire these, the more you're reminded that a fragmentation grenade is probably more effective at fulfilling the same purpose. Say, aren't these supposed to eject from your gun?"
 	icon_state = "spent_flech"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+		)
+
+/obj/item/prop/helmetgarb/cartridge
+	name = "cartridge"
+	desc = "This is the bullet from a Type 71 Pulse Rifle. It is deformed from impact against an armored surface. It's been reduced to a lucky keepsake now."
+	icon_state = "cartridge"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "bullet")
 
 /obj/item/prop/helmetgarb/prescription_bottle
-	name = "perscription medication"
+	name = "prescription medication"
 	desc = "Anti-anxiety meds? Amphetamines? The cure for Sudden Sleep Disorder? The label can't be read, leaving the now absent contents forever a mystery. The cap is screwed on tighter than any ID lock."
 	icon_state = "prescription_bottle"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+	)
 
 /obj/item/prop/helmetgarb/raincover
 	name = "raincover"
 	desc = "The standard M10 combat helmet is already water-resistant at depths of up to 10 meters. This makes the top potentially water-proof. At least it's something."
 	icon_state = "raincover"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
+	)
+
+/obj/item/prop/helmetgarb/raincover/jungle
+	name = "jungle raincover"
+	icon_state = "raincover_jungle"
+
+/obj/item/prop/helmetgarb/raincover/desert
+	name = "desert raincover"
+	icon_state = "raincover_desert"
+
+/obj/item/prop/helmetgarb/raincover/urban
+	name = "urban raincover"
+	icon_state = "raincover_urban"
 
 /obj/item/prop/helmetgarb/rabbitsfoot
 	name = "Rabbit's Foot"
@@ -55,28 +108,33 @@
 
 /obj/item/prop/helmetgarb/rosary
 	name = "rosary"
-	desc = "The Emperor Protects! I mean, Jesus Saves!"
+	desc = "Jesus Saves Lives!"
 	icon_state = "rosary"
+	item_state_slots = list(WEAR_AS_GARB = "rosary")
 
 /obj/item/prop/helmetgarb/lucky_feather
 	name = "\improper Red Lucky Feather"
 	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every Corporate Liaison's spine is made of."
 	icon_state = "lucky_feather"
+	item_state_slots = list(WEAR_AS_GARB = "lucky_feather")
 	color = "red"
 
 /obj/item/prop/helmetgarb/lucky_feather/blue
 	name = "\improper Blue Lucky Feather"
 	desc = "It is a brilliant blue color. You think you might have seen a bluejay in a holo-theatre once."
+	item_state_slots = list(WEAR_AS_GARB = "lucky_feather_blue")
 	color = "blue"
 
 /obj/item/prop/helmetgarb/lucky_feather/purple
 	name = "\improper Purple Lucky Feather"
 	desc = "It is a plucky purple color. Legend has it a station AI known as Shakespeare simulated 1000 monkeys typing gibberish in order to replicate the actual works of Shakespeare. Art critics are on the fence if this is the first instance of true artificial abstract art."
+	item_state_slots = list(WEAR_AS_GARB = "lucky_feather_purple")
 	color = "purple"
 
 /obj/item/prop/helmetgarb/lucky_feather/yellow
 	name = "\improper Yellow Lucky Feather"
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
+	item_state_slots = list(WEAR_AS_GARB = "lucky_feather_yellow")
 	color = "yellow"
 
 #define NVG_SHAPE_COSMETIC 1
@@ -88,6 +146,9 @@
 	name = "\improper M2 night vision goggles"
 	desc = "USCM standard M2 Night vision goggles for military operations. Requires a battery in order to work"
 	icon_state = "nvg"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/goggles.dmi',
+	)
 	gender = PLURAL
 	garbage = FALSE
 	w_class = SIZE_MEDIUM
@@ -95,10 +156,8 @@
 	var/nvg_maxhealth = 125
 	var/nvg_health = 125
 
-	var/nvg_maxcharge = 2500
-	var/nvg_charge = 2500
-	var/nvg_drain = 8 // has a 5 minute duration but byond may give it a couple of irl time due to lag
-	var/infinite_charge = FALSE
+	/// How much charge the cell should have at most. -1 is infinite
+	var/cell_max_charge = 2500
 
 	var/activated = FALSE
 	var/nightvision = FALSE
@@ -112,6 +171,14 @@
 	var/obj/item/clothing/head/attached_item
 	var/mob/living/attached_mob
 	var/lighting_alpha = 100
+	var/matrix_color = NV_COLOR_GREEN
+
+/obj/item/prop/helmetgarb/helmet_nvg/Initialize(mapload, ...)
+	. = ..()
+	if(shape != NVG_SHAPE_COSMETIC)
+		AddComponent(/datum/component/cell, cell_max_charge, TRUE, charge_drain = 8)
+		RegisterSignal(src, COMSIG_CELL_TRY_RECHARGING, PROC_REF(cell_try_recharge))
+		RegisterSignal(src, COMSIG_CELL_OUT_OF_CHARGE, PROC_REF(on_power_out))
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/S)
 	..()
@@ -127,50 +194,38 @@
 
 	attached_item = MO
 
-	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
-	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, .proc/toggle_check)
+	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
+	RegisterSignal(attached_item, COMSIG_ITEM_EQUIPPED, PROC_REF(toggle_check))
 
 	if(ismob(attached_item.loc))
 		set_attached_mob(attached_item.loc)
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/attackby(var/obj/item/A as obj, mob/user as mob)
-	if(istype(A,/obj/item/cell))
-		recharge(A, user)
-
+/obj/item/prop/helmetgarb/helmet_nvg/attackby(obj/item/A as obj, mob/user as mob)
 	if(HAS_TRAIT(A, TRAIT_TOOL_SCREWDRIVER))
 		repair(user)
 
 	else
 		..()
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/recharge(var/obj/item/cell/C, mob/user as mob)
-	if(user.action_busy)
-		return
-	if(src != user.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to recharge them."))
-		return
-	if(shape == NVG_SHAPE_COSMETIC)
-		to_chat(user, SPAN_WARNING("There is no connector for the power cell inside \the [src]."))
-		return
-	if(shape == NVG_SHAPE_BROKEN)
-		to_chat(user, SPAN_WARNING("You need to repair \the [src] first."))
-		return
-	if(nvg_charge == nvg_maxcharge)
-		to_chat(user, SPAN_WARNING("\The [src] are already fully charged."))
-		return
+/obj/item/prop/helmetgarb/helmet_nvg/proc/cell_try_recharge(datum/source, mob/living/user)
+	SIGNAL_HANDLER
 
-	while(nvg_charge < nvg_maxcharge)
-		if(C.charge <= 0)
-			to_chat(user, SPAN_WARNING("\The [C] is completely dry."))
-			break
-		if(!do_after(user, 1 SECONDS, (INTERRUPT_ALL & (~INTERRUPT_MOVED)), BUSY_ICON_BUILD, C, INTERRUPT_DIFF_LOC))
-			to_chat(user, SPAN_WARNING("You were interrupted."))
-			break
-		var/to_transfer = min(400, C.charge, (nvg_maxcharge - nvg_charge))
-		if(C.use(to_transfer))
-			nvg_charge += to_transfer
-			to_chat(user, "You transfer some power between \the [C] and \the [src]. The gauge now reads: [round(100.0*nvg_charge/nvg_maxcharge) ]%.")
+	if(user.action_busy)
+		return COMPONENT_CELL_NO_RECHARGE
+
+	if(src != user.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("You need to hold [src] in hand in order to recharge them."))
+		return COMPONENT_CELL_NO_RECHARGE
+
+	if(shape == NVG_SHAPE_COSMETIC)
+		to_chat(user, SPAN_WARNING("There is no connector for the power cell inside [src]."))
+		return COMPONENT_CELL_NO_RECHARGE
+
+	if(shape == NVG_SHAPE_BROKEN)
+		to_chat(user, SPAN_WARNING("You need to repair [src] first."))
+		return COMPONENT_CELL_NO_RECHARGE
+
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/repair(mob/user as mob)
 	if(user.action_busy)
@@ -179,12 +234,12 @@
 	if(src != user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need to hold \the [src] in hand in order to repair them."))
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 2 is enough to repair damaged NVG
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE)) // level 2 is enough to repair damaged NVG
 		to_chat(user, SPAN_WARNING("You are not trained to repair electronics..."))
 		return
 
 	if(shape == NVG_SHAPE_BROKEN)
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI)) // level 3 is needed to repair broken NVG
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)) // level 3 is needed to repair broken NVG
 			to_chat(user, SPAN_WARNING("Repair of this complexity is too difficult for you, find someone more trained."))
 			return
 
@@ -198,7 +253,6 @@
 		to_chat(user, "You successfully patch \the [src].")
 		nvg_maxhealth = 65
 		nvg_health = 65
-		nvg_drain = initial(nvg_drain) * 2
 		return
 
 	else if(nvg_health == nvg_maxhealth)
@@ -208,7 +262,7 @@
 			to_chat(user, SPAN_WARNING("Nothing to fix."))
 		else if(shape == NVG_SHAPE_COSMETIC)
 
-			to_chat(user, SPAN_WARNING("it's nothing but a husk of what it used to be."))
+			to_chat(user, SPAN_WARNING("It's nothing but a husk of what it used to be."))
 
 	else
 		to_chat(user, "You begin to repair \the [src].")
@@ -240,21 +294,18 @@
 		else if(nvg_health_procent >= 0)
 			. += "They are falling apart."
 
-	if (get_dist(user, src) <= 1 && (shape == NVG_SHAPE_FINE || shape == NVG_SHAPE_PATCHED))
-		. += "A small gauge in the corner reads: Power: [round(100.0*nvg_charge/nvg_maxcharge) ]%."
-
 /obj/item/prop/helmetgarb/helmet_nvg/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()
 	return ..()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(var/mob/User)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(mob/User)
 	attached_mob = User
 	activation = new /datum/action/item_action/toggle(src, attached_item)
 	activation.give_to(attached_mob)
 	add_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
-	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, .proc/break_nvg)
-	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, .proc/remove_attached_mob)
+	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(break_nvg))
+	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, PROC_REF(remove_attached_mob))
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/remove_attached_item()
 	SIGNAL_HANDLER
@@ -286,25 +337,27 @@
 	remove_nvg()
 	attached_mob = null
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_check(var/obj/item/I, var/mob/living/carbon/human/user, slot)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_check(obj/item/I, mob/living/carbon/human/user, slot)
 	SIGNAL_HANDLER
 
 	if(attached_mob != user && slot == WEAR_HEAD)
 		set_attached_mob(user)
 
-	if(slot == WEAR_HEAD && !nightvision && activated && nvg_charge > 0 && shape > NVG_SHAPE_BROKEN)
+	if(slot == WEAR_HEAD && !nightvision && activated && !SEND_SIGNAL(src, COMSIG_CELL_CHECK_CHARGE) && shape > NVG_SHAPE_BROKEN)
 		enable_nvg(user)
 	else
 		remove_nvg()
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/enable_nvg(var/mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/enable_nvg(mob/living/carbon/human/user)
 	if(nightvision)
 		remove_nvg()
 
-	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/update_sight)
+	RegisterSignal(user, COMSIG_HUMAN_POST_UPDATE_SIGHT, PROC_REF(update_sight))
 
-	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string("#7aff7a")))
+	if(user.client?.prefs?.night_vision_preference)
+		matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
+	user.add_client_color_matrix("nvg", 99, color_matrix_multiply(color_matrix_saturation(0), color_matrix_from_string(matrix_color)))
 	user.overlay_fullscreen("nvg", /atom/movable/screen/fullscreen/flash/noise/nvg)
 	user.overlay_fullscreen("nvg_blur", /atom/movable/screen/fullscreen/brute/nvg, 3)
 	playsound(user, 'sound/handling/toggle_nv1.ogg', 25)
@@ -315,10 +368,10 @@
 	attached_item.update_icon()
 	activation.update_button_icon()
 
-	START_PROCESSING(SSobj, src)
+	SEND_SIGNAL(src, COMSIG_CELL_START_TICK_DRAIN)
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(var/mob/M)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/update_sight(mob/M)
 	SIGNAL_HANDLER
 
 	if(lighting_alpha < 255)
@@ -349,20 +402,15 @@
 
 		attached_mob.update_sight()
 
-		STOP_PROCESSING(SSobj, src)
+		SEND_SIGNAL(src, COMSIG_CELL_STOP_TICK_DRAIN)
 
 
 /obj/item/prop/helmetgarb/helmet_nvg/process(delta_time)
-	if(nvg_charge > 0 && !infinite_charge)
-		nvg_charge = max(0, nvg_charge - nvg_drain * delta_time)
-
 	if(!attached_mob)
 		return PROCESS_KILL
 
-	if(!activated || !attached_item || nvg_charge <= 0 || attached_mob.is_dead())
-		if(activated && !attached_mob.is_dead())
-			to_chat(attached_mob, SPAN_WARNING("\The [src] emit a low power warning and immediately shut down!"))
-		remove_nvg()
+	if(!activated || !attached_item || attached_mob.is_dead())
+		on_power_out()
 		return
 
 	if(!attached_item.has_garb_overlay())
@@ -371,7 +419,14 @@
 		return
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(var/mob/owner, var/obj/item/holder)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/on_power_out(datum/source)
+	SIGNAL_HANDLER
+
+	if(activated && !attached_mob.is_dead())
+		to_chat(attached_mob, SPAN_WARNING("[src] emit a low power warning and immediately shut down!"))
+	remove_nvg()
+
+/obj/item/prop/helmetgarb/helmet_nvg/ui_action_click(mob/owner, obj/item/holder)
 	toggle_nods(owner)
 
 
@@ -386,7 +441,7 @@
 			break
 
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(var/mob/living/carbon/human/user)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/toggle_nods(mob/living/carbon/human/user)
 	if(user.is_mob_incapacitated())
 		return
 
@@ -406,7 +461,7 @@
 	if(activated)
 		to_chat(user, SPAN_NOTICE("You flip the goggles down."))
 		icon_state = active_icon_state
-		if(nvg_charge > 0 && user.head == attached_item && shape > NVG_SHAPE_BROKEN)
+		if(!SEND_SIGNAL(src, COMSIG_CELL_CHECK_CHARGE) && user.head == attached_item && shape > NVG_SHAPE_BROKEN)
 			enable_nvg(user)
 		else
 			icon_state = active_icon_state
@@ -414,7 +469,7 @@
 			activation.update_button_icon()
 
 		if(shape != NVG_SHAPE_COSMETIC)
-			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, .proc/change_view) // will flip non-cosmetic nvgs back up when zoomed
+			RegisterSignal(user, COMSIG_MOB_CHANGE_VIEW, PROC_REF(change_view)) // will flip non-cosmetic nvgs back up when zoomed
 
 	else
 		to_chat(user, SPAN_NOTICE("You push \the [src] back up onto your helmet."))
@@ -426,13 +481,13 @@
 		remove_nvg()
 		UnregisterSignal(user, COMSIG_MOB_CHANGE_VIEW)
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/change_view(var/mob/M, var/new_size)
+/obj/item/prop/helmetgarb/helmet_nvg/proc/change_view(mob/M, new_size)
 	SIGNAL_HANDLER
 
 	if(new_size > 7) // cannot use binos with NVG
 		toggle_nods(M)
 
-/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/Xeno) //xenos can break NVG if aim head
+/obj/item/prop/helmetgarb/helmet_nvg/proc/break_nvg(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/Xeno) //xenos can break NVG if aim head
 	SIGNAL_HANDLER
 
 	if(check_zone(Xeno.zone_selected) == "head" && user == attached_mob)
@@ -455,10 +510,13 @@
 	shape = NVG_SHAPE_COSMETIC
 	garbage = TRUE
 
+/obj/item/prop/helmetgarb/helmet_nvg/cosmetic/break_nvg(mob/living/carbon/human/user, list/slashdata, mob/living/carbon/xenomorph/Xeno)
+	return
+
 /obj/item/prop/helmetgarb/helmet_nvg/marsoc //for Marine Raiders
 	name = "\improper Tactical M3 night vision goggles"
 	desc = "With an integrated self-recharging battery, nothing can stop you. Put them on your helmet and press the button and it's go-time."
-	infinite_charge = TRUE
+	cell_max_charge = -1
 
 #undef NVG_SHAPE_COSMETIC
 #undef NVG_SHAPE_BROKEN
@@ -469,21 +527,33 @@
 	name = "\improper Initech flair"
 	desc = "Flair for some weird tech company back on Earth. How did they get promotional material this far out in the rim?"
 	icon_state = "flair_initech"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
+	)
 
 /obj/item/prop/helmetgarb/flair_io
 	name = "\improper Io flair"
 	desc = "The Arcturians might be our allies now, but Io is forever a stain on trans-species relations. Never forget those who gave their lives aboard the USS Doramin."
 	icon_state = "flair_io"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
+	)
 
 /obj/item/prop/helmetgarb/flair_peace
 	name = "\improper Peace flair"
 	desc = "Doesn't matter when it's Arcturian, baby."
 	icon_state = "flair_peace_smiley"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
+	)
 
 /obj/item/prop/helmetgarb/flair_uscm
 	name = "\improper USCM flair"
 	desc = "These pins get handed out like candy at enlistment offices. Wear it with pride marine."
 	icon_state = "flair_uscm"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
+	)
 
 /obj/item/prop/helmetgarb/spacejam_tickets
 	name = "\improper Tickets to Space Jam"
@@ -493,13 +563,42 @@
 /obj/item/prop/helmetgarb/riot_shield
 	name = "\improper RC6 riot shield"
 	desc = "The complimentary, but sold separate face shield associated with the RC6 riot helmet."
-	icon_state = "helmet_riot_shield"
-
+	icon_state = "riot_shield"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
+	)
 
 /obj/item/prop/helmetgarb/helmet_gasmask
 	name = "\improper M5 integrated gasmask"
 	desc = "The USCM had its funding pulled for these when it became apparent that not every deployed enlisted was wearing a helmet 24/7; much to the bafflement of UA High Command."
-	icon_state = "helmet_gasmask"
+	icon_state = "gasmask"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/visors.dmi',
+	)
+
+/obj/item/prop/helmetgarb/helmet_gasmask/on_enter_storage(obj/item/storage/internal/helmet_internal_inventory)
+	..()
+	if(!istype(helmet_internal_inventory))
+		return
+	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+
+	if(!istype(helmet_item))
+		return
+
+	helmet_item.flags_inventory |= BLOCKGASEFFECT
+	helmet_item.flags_inv_hide |= HIDEFACE
+
+/obj/item/prop/helmetgarb/helmet_gasmask/on_exit_storage(obj/item/storage/internal/helmet_internal_inventory)
+	..()
+	if(!istype(helmet_internal_inventory))
+		return
+	var/obj/item/clothing/head/helmet/helmet_item = helmet_internal_inventory.master_object
+
+	if(!istype(helmet_item))
+		return
+
+	helmet_item.flags_inventory &= ~(BLOCKGASEFFECT)
+	helmet_item.flags_inv_hide &= ~(HIDEFACE)
 
 /obj/item/prop/helmetgarb/trimmed_wire
 	name = "trimmed barbed wire"
@@ -507,9 +606,113 @@
 	icon_state = "trimmed_wire"
 
 /obj/item/prop/helmetgarb/bullet_pipe
-	name = "10x99mm XM42B casing pipe"
-	desc = "The XM42B was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
+	name = "10x99mm XM43E1 casing pipe"
+	desc = "The XM43E1 was an experimental weapons platform briefly fielded by the USCM and Wey-Yu PMC teams. It was manufactured by ARMAT systems at the Atlas weapons facility. Unfortunately the project had its funding pulled alongside the M5 integrated gasmask program. This spent casing has been converted into a pipe, but there is too much tar in the mouthpiece for it to be useable."
 	icon_state = "bullet_pipe"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/ammo.dmi',
+	)
+
+/obj/item/prop/helmetgarb/chaplain_patch
+	name = "\improper USCM chaplain helmet patch"
+	desc = "This patch is all that remains of the Chaplaincy of the USS Almayer, along with the Chaplains themselves. Both no longer exist as a result of losses suffered during Operation Tychon Tackle."
+	icon_state = "chaplain_patch"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/patches_flairs.dmi',
+		)
+	flags_obj = OBJ_NO_HELMET_BAND
+
+/obj/item/prop/helmetgarb/family_photo
+	name = "family photo"
+	desc = ""
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "photo_item"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "paper") //PLACEHOLDER
+	///The human who spawns with the photo
+	var/datum/weakref/owner
+	///The belonging human name
+	var/owner_name
+	///The belonging human faction
+	var/owner_faction
+	///Text written on the back
+	var/scribble
+
+/obj/item/prop/helmetgarb/family_photo/pickup(mob/user, silent)
+	. = ..()
+	if(!owner)
+		RegisterSignal(user, COMSIG_POST_SPAWN_UPDATE, PROC_REF(set_owner), override = TRUE)
+
+
+///Sets the owner of the family photo to the human it spawns with, needs var/source for signals
+/obj/item/prop/helmetgarb/family_photo/proc/set_owner(datum/source)
+	SIGNAL_HANDLER
+	UnregisterSignal(source, COMSIG_POST_SPAWN_UPDATE)
+	var/mob/living/carbon/human/user = source
+	owner = WEAKREF(user)
+	owner_name = user.name
+	owner_faction = user.faction
+
+/obj/item/prop/helmetgarb/family_photo/get_examine_text(mob/user)
+	. = ..()
+	if(scribble)
+		. += "\"[scribble]\" is written on the back of the photo."
+	if(user.weak_reference == owner)
+		. += "A photo of you and your family."
+		return
+	if(user.faction == owner_faction)
+		. += "A photo of [owner_name] and their family."
+		return
+	. += "A photo of a family you do not know."
+
+/obj/item/prop/helmetgarb/family_photo/attackby(obj/item/attacking_item, mob/user)
+	. = ..()
+	if(HAS_TRAIT(attacking_item, TRAIT_TOOL_PEN) || istype(attacking_item, /obj/item/toy/crayon))
+		if(scribble)
+			to_chat(user, SPAN_NOTICE("[src] has already been written on."))
+			return
+		var/new_text = copytext(strip_html(tgui_input_text(user, "What would you like to write on the back of [src]?", "Photo Writing")), 1, 128)
+
+		if(!loc == user)
+			to_chat(user, SPAN_NOTICE("You need to be holding [src] to write on it."))
+			return
+		if(!user.stat == CONSCIOUS)
+			to_chat(user, SPAN_NOTICE("You cannot write on [src] in this state."))
+			return
+		scribble = new_text
+		playsound(src, "paper_writing", 15, TRUE)
+	return TRUE
+
+/obj/item/prop/helmetgarb/compass
+	name = "compass"
+	desc = "It always faces north. Are you sure it is not broken?"
+	icon = 'icons/obj/items/tools.dmi'
+	icon_state = "compass"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	item_state_slots = list(WEAR_AS_GARB = "paper") //PLACEHOLDER
+	w_class = SIZE_SMALL
+
+/obj/item/prop/helmetgarb/compass/get_examine_text(mob/user)
+	. = ..()
+	if(is_ground_level(user.z) && !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_IN_SPACE])
+		. += SPAN_NOTICE("It seems you are facing [dir2text(user.dir)].")
+		return
+	. += SPAN_NOTICE("The needle is not moving.")
+
+/obj/item/prop/helmetgarb/bug_spray
+	name = "insect repellent"
+	desc = "A store-brand insect repellent, to keep any variety of pest or mosquito away from you."
+	icon = 'icons/obj/items/spray.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
+	)
+	icon_state = "pestspray"
+	item_state_slots = list(WEAR_AS_GARB = "canteen") //PLACEHOLDER
+	w_class = SIZE_SMALL
 
 /obj/item/prop/helmetgarb/cat_ears
 	name = "Cat Ears"

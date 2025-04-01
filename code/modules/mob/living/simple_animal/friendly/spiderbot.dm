@@ -6,7 +6,6 @@
 	minbodytemp = 0
 	maxbodytemp = 500
 
-	var/obj/item/device/radio/borg/radio = null
 	var/mob/living/silicon/ai/connected_ai = null
 	var/obj/item/cell/cell = null
 	var/obj/structure/machinery/camera/camera = null
@@ -36,11 +35,11 @@
 	response_harm   = "stomps on"
 
 	var/obj/item/held_item = null //Storage for single item they can hold.
-	speed = -1                    //Spiderbots gotta go fast.
+	speed = -1 //Spiderbots gotta go fast.
 	mob_size = MOB_SIZE_SMALL
 	speak_emote = list("beeps","clicks","chirps")
 
-/mob/living/simple_animal/spiderbot/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/mob/living/simple_animal/spiderbot/attackby(obj/item/O as obj, mob/user as mob)
 
 	if(istype(O, /obj/item/device/mmi))
 		var/obj/item/device/mmi/B = O
@@ -133,15 +132,15 @@
 				if ((M.client && !( M.blinded )))
 					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
-/mob/living/simple_animal/spiderbot/proc/transfer_personality(var/obj/item/device/mmi/M as obj)
+/mob/living/simple_animal/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
+	src.mind = M.brainmob.mind
+	src.mind.key = M.brainmob.key
+	src.ckey = M.brainmob.ckey
+	if(client)
+		client.change_view(GLOB.world_view_size)
+	src.name = "Spider-bot ([M.brainmob.name])"
 
-		src.mind = M.brainmob.mind
-		src.mind.key = M.brainmob.key
-		src.ckey = M.brainmob.ckey
-		if(client) client.change_view(world_view_size)
-		src.name = "Spider-bot ([M.brainmob.name])"
-
-/mob/living/simple_animal/spiderbot/proc/explode(var/cause = "exploding") //When emagged.
+/mob/living/simple_animal/spiderbot/proc/explode(cause = "exploding") //When emagged.
 	for(var/mob/M as anything in viewers(src, null))
 		if ((M.client && !( M.blinded )))
 			M.show_message(SPAN_DANGER("[src] makes an odd warbling noise, fizzles, and explodes."), SHOW_MESSAGE_VISIBLE)
@@ -163,7 +162,8 @@
 		var/turf/T = get_turf(loc)
 		if(T)
 			mmi.forceMove(T)
-		if(mind)	mind.transfer_to(mmi.brainmob)
+		if(mind)
+			mind.transfer_to(mmi.brainmob)
 		mmi = null
 		src.name = "Spider-bot"
 		update_icon()
@@ -174,7 +174,6 @@
 
 /mob/living/simple_animal/spiderbot/New()
 
-	radio = new /obj/item/device/radio/borg(src)
 	camera = new /obj/structure/machinery/camera(src)
 	camera.c_tag = "Spiderbot-[real_name]"
 	camera.network = list("SS13")

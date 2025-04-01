@@ -9,11 +9,11 @@
 
 /obj/structure/machinery/telecomms/broadcaster
 	name = "Subspace Broadcaster"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 25
 	machinetype = 5
@@ -79,11 +79,11 @@
 
 */
 
-/proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
-						var/vmask, var/vmessage, var/obj/item/device/radio/radio,
-						var/message, var/name, var/job, var/realname, var/vname,
-						var/data, var/compression, var/list/level, var/freq, var/verbage = "says",
-						var/datum/language/speaking = null, var/volume = RADIO_VOLUME_QUIET)
+/proc/Broadcast_Message(datum/radio_frequency/connection, mob/M,
+						vmask, vmessage, obj/item/device/radio/radio,
+						message, name, job, realname, vname,
+						data, compression, list/level, freq, verbage = "says",
+						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = NOT_LISTENING_BUG)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq
@@ -94,14 +94,20 @@
 
 	// --- Broadcast only to intercom devices ---
 	if(data == RADIO_FILTER_TYPE_INTERCOM)
-		for (var/obj/item/device/radio/intercom/R in connection.devices["[RADIO_CHAT]"])
+		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
+			var/obj/item/device/radio/intercom/R = device_ref.resolve()
+			if(!R)
+				continue
 			var/atom/loc = R.loc
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
 
 	// --- Broadcast only to intercoms and shortwave radios ---
 	else if(data == RADIO_FILTER_TYPE_INTERCOM_AND_BOUNCER)
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
+			var/obj/item/device/radio/R = device_ref.resolve()
+			if(!R)
+				continue
 			if(istype(R, /obj/item/device/radio/headset))
 				continue
 			var/atom/loc = R.loc
@@ -121,7 +127,10 @@
 
 	// --- Broadcast to ALL radio devices ---
 	else
-		for (var/obj/item/device/radio/R in connection.devices["[RADIO_CHAT]"])
+		for (var/datum/weakref/device_ref as anything in connection.devices["[RADIO_CHAT]"])
+			var/obj/item/device/radio/R = device_ref.resolve()
+			if(!R)
+				continue
 			var/atom/loc = R.loc
 			if(R.receive_range(display_freq, level) > -1 && OBJECTS_CAN_REACH(loc, radio_loc))
 				radios += R
@@ -131,18 +140,16 @@
 
 	/* ###### Organize the receivers into categories for displaying the message ###### */
 
-  	// Understood the message:
-	var/list/heard_masked 	= list() // masked name or no real name
-	var/list/heard_normal 	= list() // normal message
+	// Understood the message:
+	var/list/heard_masked = list() // masked name or no real name
+	var/list/heard_normal = list() // normal message
 
 	// Did not understand the message:
-	var/list/heard_voice 	= list() // voice message	(ie "chimpers")
-	var/list/heard_garbled	= list() // garbled message (ie "f*c* **u, **i*er!")
+	var/list/heard_voice = list() // voice message (ie "chimpers")
+	var/list/heard_garbled = list() // garbled message (ie "f*c* **u, **i*er!")
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	if(M)
-		if(isAI(M))
-			volume = RADIO_VOLUME_CRITICAL
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
@@ -166,13 +173,16 @@
 			volume = RADIO_VOLUME_CRITICAL
 
 	for (var/mob/R in receive)
+		var/is_ghost = istype(R, /mob/dead/observer)
 		/* --- Loop through the receivers and categorize them --- */
 		if (R.client && !(R.client.prefs.toggles_chat & CHAT_RADIO)) //Adminning with 80 people on can be fun when you're trying to talk and all you can hear is radios.
 			continue
 		if(istype(R, /mob/new_player)) // we don't want new players to hear messages. rare but generates runtimes.
 			continue
 		// Ghosts hearing all radio chat don't want to hear syndicate intercepts, they're duplicates
-		if(data == 3 && istype(R, /mob/dead/observer) && R.client && (R.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
+		if(data == 3 && is_ghost && R.client && (R.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
+			continue
+		if(is_ghost && ((listening_device && !(R.client.prefs.toggles_chat & CHAT_LISTENINGBUG)) || listening_device == LISTENING_BUG_NEVER))
 			continue
 		// --- Check for compression ---
 		if(compression > 0)
@@ -223,7 +233,7 @@
 
 		/* ###### Send the message ###### */
 
-	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
+		/* --- Process all the mobs that heard a masked voice (understood) --- */
 		if (length(heard_masked))
 			for (var/mob/R in heard_masked)
 				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, volume)

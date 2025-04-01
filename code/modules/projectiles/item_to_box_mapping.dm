@@ -15,7 +15,7 @@
 	var/list/datum/item_box_pairing/box_to_item_list = list()
 
 //Adding an item-box pairing
-/datum/item_to_box_mapping/proc/add_pairing(var/datum/item_box_pairing/item_box_pairing)
+/datum/item_to_box_mapping/proc/add_pairing(datum/item_box_pairing/item_box_pairing)
 	//Box always maps to one item
 	box_to_item_list[item_box_pairing.box] = item_box_pairing
 
@@ -29,12 +29,9 @@
 
 /datum/item_to_box_mapping/New()
 	//Ammo magazine boxes, minus loose ammo boxes
-	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine))
+	for(var/obj/item/ammo_box/magazine/ammo_box as anything in typesof(/obj/item/ammo_box/magazine) - /obj/item/ammo_box/magazine/misc - /obj/item/ammo_box/magazine/shotgun/light)
 		if(initial(ammo_box.empty))
 			//Ignore all the empty boxes
-			continue
-		if(initial(ammo_box.handfuls))
-			//Ignore all the loose ammo boxes because they map with really bad numbers
 			continue
 		var/datum/item_box_pairing/item_box_pairing = new()
 		item_box_pairing.box = ammo_box
@@ -42,7 +39,11 @@
 		if(!item_box_pairing.item)
 			//if the item is null somehow
 			continue
-		item_box_pairing.items_in_box = initial(ammo_box.num_of_magazines)
+		if(initial(ammo_box.handfuls))
+			//If we are using handfuls we need to do some wonky conversion
+			item_box_pairing.items_in_box = initial(ammo_box.num_of_magazines) / initial(ammo_box.magazine_type.max_rounds)
+		else
+			item_box_pairing.items_in_box = initial(ammo_box.num_of_magazines)
 		add_pairing(item_box_pairing)
 
 	//Grenade packets
@@ -84,11 +85,11 @@
 	..()
 
 //For fetching item->boxes mapping
-/datum/item_to_box_mapping/proc/get_item_to_box_mapping(var/I)
+/datum/item_to_box_mapping/proc/get_item_to_box_mapping(I)
 	return item_to_box_list[I]
 
 //For fetching box->item mapping
-/datum/item_to_box_mapping/proc/get_box_to_item_mapping(var/I)
+/datum/item_to_box_mapping/proc/get_box_to_item_mapping(I)
 	return box_to_item_list[I]
 
 

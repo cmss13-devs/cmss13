@@ -3,7 +3,7 @@
 	name = "advanced weapon kit"
 	desc = "It seems to be a kit to choose an advanced weapon"
 
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 
 	var/gun_type = /obj/item/weapon/gun/shotgun/pump
@@ -26,7 +26,7 @@
 	name = "advanced weapon kit"
 	desc = "It seems to be a kit to choose an advanced weapon"
 
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 
 	gun_type = /obj/item/weapon/gun/rifle/techweb_railgun
@@ -39,8 +39,15 @@
 	desc = "A poggers hellbliterator"
 	icon_state = "m42a"
 	item_state = "m42a"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+	)
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 
 	fire_sound = 'sound/weapons/gun_sniper.ogg'
 	current_mag = /obj/item/ammo_magazine/techweb_railgun
@@ -55,14 +62,15 @@
 	// Hellpullverizer ready or not??
 	var/charged = FALSE
 
-/obj/item/weapon/gun/rifle/techweb_railgun/Initialize(mapload, spawn_empty)
-	. = ..()
-	AddElement(/datum/element/bullet_trait_iff)
+/obj/item/weapon/gun/rifle/techweb_railgun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/weapon/gun/rifle/techweb_railgun/able_to_fire()
 	return charged
 
-/obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(var/user)
+/obj/item/weapon/gun/rifle/techweb_railgun/proc/start_charging(user)
 	if (charged)
 		to_chat(user, SPAN_WARNING("Your railgun is already charged."))
 		return
@@ -82,7 +90,7 @@
 		abort_charge()
 	. = ..()
 
-/obj/item/weapon/gun/rifle/techweb_railgun/proc/abort_charge(var/user)
+/obj/item/weapon/gun/rifle/techweb_railgun/proc/abort_charge(user)
 	if (!charged)
 		return
 	charged = FALSE
@@ -100,8 +108,8 @@
 
 /obj/item/weapon/gun/rifle/techweb_railgun/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6*5
-	burst_amount = BURST_AMOUNT_TIER_1
+	set_fire_delay(FIRE_DELAY_TIER_6*5)
+	set_burst_amount(BURST_AMOUNT_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
 	scatter = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -129,6 +137,7 @@
 	name = "Start Charging"
 
 /datum/action/item_action/techweb_railgun_start_charge/action_activate()
+	. = ..()
 	if (target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.start_charging(owner)
@@ -137,6 +146,7 @@
 	name = "Abort Charge"
 
 /datum/action/item_action/techweb_railgun_abort_charge/action_activate()
+	. = ..()
 	if (target)
 		var/obj/item/weapon/gun/rifle/techweb_railgun/TR = target
 		TR.abort_charge(owner)
@@ -146,6 +156,7 @@
 	desc = "A magazine ammo for the poggers Railgun."
 	caliber = "14mm"
 	icon_state = "m42c" //PLACEHOLDER
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	w_class = SIZE_MEDIUM
 	max_rounds = 5
 	default_ammo = /datum/ammo/bullet/sniper/railgun
@@ -167,5 +178,5 @@
 	damage_falloff = 0
 
 /datum/ammo/bullet/sniper/railgun/on_hit_mob(mob/M, _unused)
-	if (isXeno(M))
+	if (isxeno(M))
 		M.apply_effect(1, SLOW)

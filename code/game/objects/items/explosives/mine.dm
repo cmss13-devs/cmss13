@@ -6,21 +6,22 @@
 	desc = "The M20 Claymore is a directional proximity-triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. The mine is triggered by movement both on the mine itself, and on the space immediately in front of it. Detonation sprays shrapnel forwards in a 120-degree cone. The words \"FRONT TOWARD ENEMY\" are embossed on the front."
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "m20"
-	force = 5.0
+	force = 5
 	w_class = SIZE_SMALL
 	//layer = MOB_LAYER - 0.1 //You can't just randomly hide claymores under boxes. Booby-trapping bodies is fine though
-	throwforce = 5.0
+	throwforce = 5
 	throw_range = 6
 	throw_speed = SPEED_VERY_FAST
 	unacidable = TRUE
 	flags_atom = FPRINT|CONDUCT
+	antigrief_protection = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/prox_sensor)
 	max_container_volume = 120
-	reaction_limits = list(	"max_ex_power" = 105,	"base_ex_falloff" = 60,	"max_ex_shards" = 32,
-							"max_fire_rad" = 5,		"max_fire_int" = 12,	"max_fire_dur" = 18,
-							"min_fire_rad" = 2,		"min_fire_int" = 3,		"min_fire_dur" = 3
+	reaction_limits = list( "max_ex_power" = 100, "base_ex_falloff" = 80, "max_ex_shards" = 40,
+							"max_fire_rad" = 4, "max_fire_int" = 20, "max_fire_dur" = 18,
+							"min_fire_rad" = 2, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
-	angle = 60
+	shrapnel_spread = 60
 	use_dir = TRUE
 	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
@@ -33,6 +34,8 @@
 	. = ..()
 	if(map_deployed)
 		deploy_mine(null)
+	else
+		cause_data = create_cause_data(initial(name))
 
 /obj/item/explosive/mine/Destroy()
 	QDEL_NULL(tripwire)
@@ -42,6 +45,7 @@
 	prime() //We don't care about how strong the explosion was.
 
 /obj/item/explosive/mine/emp_act()
+	. = ..()
 	prime() //Same here. Don't care about the effect strength.
 
 
@@ -53,7 +57,7 @@
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return TRUE
-	if(user.z == GLOB.interior_manager.interior_z)
+	if(SSinterior.in_interior(user))
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return TRUE
 
@@ -70,10 +74,15 @@
 	if(active || user.action_busy)
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+		to_chat(user, SPAN_WARNING("\The [name]'s safe-area accident inhibitor prevents you from planting!"))
+		msg_admin_niche("[key_name(user)] attempted to plant \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		return
+
+	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You start deploying [src]."))
 	if(!do_after(user, 40, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] stops deploying [src]."),
 			SPAN_NOTICE("You stop deploying \the [src]."))
 		return
 
@@ -83,12 +92,12 @@
 	if(check_for_obstacles(user))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."),
 		SPAN_NOTICE("You finish deploying [src]."))
 
 	deploy_mine(user)
 
-/obj/item/explosive/mine/proc/deploy_mine(var/mob/user)
+/obj/item/explosive/mine/proc/deploy_mine(mob/user)
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
@@ -109,26 +118,26 @@
 			if(user.action_busy)
 				return
 			if(user.faction == iff_signal)
-				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."), \
+				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
 				SPAN_NOTICE("You start disarming [src]."))
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."), \
+				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."),
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
-				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."), \
+				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
 					SPAN_WARNING("You stop disarming [src]."))
 				return
 			if(user.faction != iff_signal) //ow!
 				if(prob(75))
 					triggered = TRUE
 					if(tripwire)
-						var/direction = reverse_dir[src.dir]
+						var/direction = GLOB.reverse_dir[src.dir]
 						var/step_direction = get_step(src, direction)
 						tripwire.forceMove(step_direction)
 					prime()
 			if(!active)//someone beat us to it
 				return
-			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
 
@@ -163,7 +172,8 @@
 			return
 		else
 			..()
-			use_dir = FALSE // Claymore defaults to radial in these case. Poor man C4
+			// Claymore defaults to radial in these case. Poor man C4
+			use_dir = FALSE
 			triggered = TRUE // Delegating the tripwire/crossed function to the sensor.
 
 
@@ -196,10 +206,12 @@
 		return
 	if(L.stat == DEAD)
 		return
-	if(L.get_target_lock(iff_signal) || isrobot(L))
+	if(L.get_target_lock(iff_signal))
 		return
-	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
-	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
+	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
+		return
+	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
+	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
 	SPAN_DANGER("You hear a click."))
 
 	triggered = TRUE
@@ -213,7 +225,7 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 12, dir, angle, , cause_data)
+		create_shrapnel(loc, 12, dir, shrapnel_spread, , cause_data)
 		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
 	else
@@ -222,7 +234,7 @@
 			disarm()
 
 
-/obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
+/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
 	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 
@@ -231,14 +243,14 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 
 	//We move the tripwire randomly in either of the four cardinal directions
 	triggered = TRUE
 	if(tripwire)
-		var/direction = pick(cardinal)
+		var/direction = pick(GLOB.cardinals)
 		var/step_direction = get_step(src, direction)
 		tripwire.forceMove(step_direction)
 	prime()
@@ -256,13 +268,15 @@
 /obj/effect/mine_tripwire
 	name = "claymore tripwire"
 	anchored = TRUE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = 101
 	unacidable = TRUE //You never know
 	var/obj/item/explosive/mine/linked_claymore
 
 /obj/effect/mine_tripwire/Destroy()
 	if(linked_claymore)
+		if(linked_claymore.tripwire == src)
+			linked_claymore.tripwire = null
 		linked_claymore = null
 	. = ..()
 
@@ -306,9 +320,25 @@
 	map_deployed = TRUE
 
 /obj/item/explosive/mine/custom
-	name = "Custom mine"
+	name = "custom mine"
 	desc = "A custom chemical mine built from an M20 casing."
 	icon_state = "m20_custom"
 	customizable = TRUE
 	matter = list("metal" = 3750)
 	has_blast_wave_dampener = TRUE
+
+/obj/item/explosive/mine/sebb
+	name = "\improper G2 Electroshock grenade"
+	icon_state = "grenade_sebb_planted"
+	desc = "A G2 electroshock grenade planted as a landmine."
+	pixel_y = -5
+	anchored = TRUE // this is supposed to be planeted already when spawned
+
+/obj/item/explosive/mine/sebb/disarm()
+	. = ..()
+	new /obj/item/explosive/grenade/sebb(get_turf(src))
+	qdel(src)
+
+/obj/item/explosive/mine/sebb/prime()
+	new /obj/item/explosive/grenade/sebb/primed(get_turf(src))
+	qdel(src)

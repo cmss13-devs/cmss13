@@ -7,7 +7,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	// The vehicle this seat is tied to
 	var/obj/vehicle/multitile/vehicle = null
@@ -15,7 +15,7 @@
 /obj/structure/interior_viewport/ex_act()
 	return
 
-/obj/structure/interior_viewport/attack_hand(var/mob/M)
+/obj/structure/interior_viewport/attack_hand(mob/M)
 	if(!vehicle)
 		return
 

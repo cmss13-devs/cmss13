@@ -1,5 +1,5 @@
-/obj/item/frame/matrix
-	name = "Matrix frame"
+/obj/item/frame/matrix_frame
+	name = "matrix frame"
 	desc = "An assembly for the dropship camera matrix, installed into the weapons console. Has a complex series of lenses which allow light to pass through the fluid. \nBecause the fluids of the vial are spread evenly inside, it cannot be removed after it has been inserted. "
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "matrix"
@@ -9,14 +9,16 @@
 	var/power //power of the property
 	var/matrixcol // related to the upgrade color and zoom amount
 	var/matrixsize
+
 //Upgrade types
 //Matrix default - the default dropship camera system you start with
 //Matrix NVG - guidance camera gets NVG filter depending on the potency of the property
 //Matrix wide - gives a wider view which depends on the potency of the proeprty
-/obj/item/frame/matrix/attackby(var/obj/item/W, mob/user as mob)
+
+/obj/item/frame/matrix_frame/attackby(obj/item/W, mob/user as mob)
 	switch(state)
 		if(ASSEMBLY_EMPTY)
-			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30 && W.reagents.reagent_list.len == 1)
+			if(istype(W, /obj/item/reagent_container/glass/beaker/vial) && W.reagents.total_volume == 30 && length(W.reagents.reagent_list) == 1)
 				user.drop_held_item(W)
 				W.forceMove(src)
 				state = ASSEMBLY_UNLOCKED
@@ -43,7 +45,7 @@
 			else if(W.reagents.total_volume < 30)
 				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires to be fully filled!"))
 				return
-			else if (W.reagents.reagent_list.len > 1)
+			else if (length(W.reagents.reagent_list) > 1)
 				to_chat(user, SPAN_WARNING("The testing indicator lights up with red! The container requires a pure sample!"))
 
 		if(ASSEMBLY_UNLOCKED)

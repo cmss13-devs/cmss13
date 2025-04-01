@@ -6,11 +6,15 @@
 	name = "hypospray"
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
 	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	item_state = "hypo"
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	possible_transfer_amounts = list(5,10,15,30)
+	possible_transfer_amounts = list(3, 5, 10, 15, 30)
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
 	flags_item = NOBLUDGEON
@@ -25,17 +29,24 @@
 	var/next_inject = 0
 	var/inject_cd = 0.75 SECONDS
 
+/obj/item/reagent_container/hypospray/Destroy()
+	QDEL_NULL(mag)
+	. = ..()
+
 /obj/item/reagent_container/hypospray/attack_self(mob/user)
 	..()
-
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if(next_inject > world.time)
 		return
 	next_inject = world.time + inject_cd
 	attack(user, user)
 
 //Transfer amount switch//
-/obj/item/reagent_container/hypospray/clicked(var/mob/user, var/list/mods)
-	if(!isnull(possible_transfer_amounts) && mods["alt"] && ishuman(user) && !user.is_mob_incapacitated() && user.Adjacent(src)) //Autoinjectors aren't supposed to have toggleable transfer amounts.
+/obj/item/reagent_container/hypospray/clicked(mob/user, list/mods)
+	if(!isnull(possible_transfer_amounts) && mods[ALT_CLICK]) //Autoinjectors aren't supposed to have toggleable transfer amounts.
+		if(!CAN_PICKUP(user, src))
+			return ..()
 		amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 20, 1, 3)
 		to_chat(user, SPAN_NOTICE("You set [src]'s dose to [amount_per_transfer_from_this] units."))
@@ -52,7 +63,7 @@
 	update_icon()
 
 //Loads the vial, transfers reagents to hypo, but does not move the vial anywhere itself.
-/obj/item/reagent_container/hypospray/proc/hypoload(var/obj/item/reagent_container/glass/beaker/vial/V)
+/obj/item/reagent_container/hypospray/proc/hypoload(obj/item/reagent_container/glass/beaker/vial/V)
 	flags_atom |= OPENCONTAINER
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
 	if(V.reagents.total_volume)
@@ -61,7 +72,7 @@
 	update_icon()
 
 //Unloads vial, if any, to a hand or the floor, waits, loads in a defined new one. Early-aborts if user has no medical skills.
-/obj/item/reagent_container/hypospray/proc/hypotacreload(var/obj/item/reagent_container/glass/beaker/vial/V, var/mob/living/carbon/human/H)
+/obj/item/reagent_container/hypospray/proc/hypotacreload(obj/item/reagent_container/glass/beaker/vial/V, mob/living/carbon/human/H)
 	if(H.action_busy)
 		return
 	if(!skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
@@ -191,12 +202,12 @@
 			return 0
 		if(!M.Adjacent(user))
 			return 0
-	if(M != user && M.stat != DEAD && M.a_intent != INTENT_HELP && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED) || isYautja(M))) // preds have null skills
+	if(M != user && M.stat != DEAD && M.a_intent != INTENT_HELP && !M.is_mob_incapacitated() && (skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED) || isyautja(M))) // preds have null skills
 		user.apply_effect(3, WEAKEN)
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(M)] by their cqc skill.</font>")
 		msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"), \
+		M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
 			SPAN_WARNING("You knock [user] to the ground before they inject you!"), null, 5)
 		playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 		return 0
@@ -204,6 +215,7 @@
 	to_chat(user, SPAN_NOTICE(" You inject [M] with [src]."))
 	to_chat(M, SPAN_WARNING("You feel a tiny prick!"))
 	playsound(loc, injectSFX, injectVOL, 1)
+	SEND_SIGNAL(M, COMSIG_LIVING_HYPOSPRAY_INJECTED, src)
 
 	reagents.reaction(M, INGEST)
 	if(M.reagents)
@@ -221,7 +233,7 @@
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
 		else
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
-	return TRUE
+	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 /obj/item/reagent_container/hypospray/Initialize()
 	. = ..()
@@ -233,6 +245,9 @@
 
 /obj/item/reagent_container/hypospray/tricordrazine
 	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
+
+/obj/item/reagent_container/hypospray/epinephrine
+	starting_vial = /obj/item/reagent_container/glass/beaker/vial/epinephrine
 
 /obj/item/reagent_container/hypospray/sedative
 	name = "Sedative Hypospray"

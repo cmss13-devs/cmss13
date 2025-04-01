@@ -1,11 +1,12 @@
 #define HYDRO_SPEED_MULTIPLIER 1
+#define HYDRO_WATER_CONSUMPTION_MULTIPLIER 1.5
 
 /obj/structure/machinery/portable_atmospherics/hydroponics
 	name = "hydroponics tray"
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "hydrotray3"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	unslashable = FALSE
 	health = 100
 	flags_atom = OPENCONTAINER
@@ -15,30 +16,30 @@
 	var/draw_warnings = 1 //Set to 0 to stop it from drawing the alert lights.
 
 	// Plant maintenance vars.
-	var/waterlevel = 100       // Water (max 100)
-	var/nutrilevel = 100       // Nutrient (max 100)
-	var/pestlevel = 0          // Pests (max 10)
-	var/weedlevel = 0          // Weeds (max 10)
+	var/waterlevel = 100    // Water (max 100)
+	var/nutrilevel = 100    // Nutrient (max 100)
+	var/pestlevel = 0   // Pests (max 10)
+	var/weedlevel = 0   // Weeds (max 10)
 
 	// Tray state vars.
-	var/dead = 0               // Is it dead?
-	var/harvest = 0            // Is it ready to harvest?
-	var/age = 0                // Current plant age
-	var/sampled = 0            // Have wa taken a sample?
+	var/dead = 0    // Is it dead?
+	var/harvest = 0 // Is it ready to harvest?
+	var/age = 0 // Current plant age
+	var/sampled = 0 // Have wa taken a sample?
 
 	// Harvest/mutation mods.
-	var/yield_mod = 0          // Modifier to yield
-	var/mutation_mod = 0       // Modifier to mutation chance
-	var/toxins = 0             // Toxicity in the tray?
-	var/mutation_level = 0     // When it hits 100, the plant mutates.
+	var/yield_mod = 0   // Modifier to yield
+	var/mutation_mod = 0    // Modifier to mutation chance
+	var/toxins = 0  // Toxicity in the tray?
+	var/mutation_level = 0  // When it hits 100, the plant mutates.
 
 	// Mechanical concerns.
-	var/plant_health = 0             // Plant health.
-	var/lastproduce = 0        // Last time tray was harvested
-	var/lastcycle = 0          // Cycle timing/tracking var.
-	var/cycledelay = 150       // Delay per cycle.
-	var/closed_system          // If set, the tray will attempt to take atmos from a pipe.
-	var/force_update           // Set this to bypass the cycle time check.
+	var/plant_health = 0  // Plant health.
+	var/lastproduce = 0 // Last time tray was harvested
+	var/lastcycle = 0   // Cycle timing/tracking var.
+	var/cycledelay = 150    // Delay per cycle.
+	var/closed_system   // If set, the tray will attempt to take atmos from a pipe.
+	var/force_update    // Set this to bypass the cycle time check.
 	var/obj/temp_chem_holder   // Something to hold reagents during process_reagents()
 
 	// Seed details/line data.
@@ -47,83 +48,83 @@
 	// Reagent information for process(), consider moving this to a controller along
 	// with cycle information under 'mechanical concerns' at some point.
 	var/global/list/toxic_reagents = list(
-		"anti_toxin" =     -2,
-		"arithrazine" =    -1.5,
-		"carbon" =         -1,
-		"silicon" =        -0.5,
-		"chlorine" =        1.5,
-		"sulphuric acid" =           1.5,
-		"fuel" =            2,
-		"toxin" =           2,
-		"radium" =          2,
+		"anti_toxin" =  -2,
+		"arithrazine" = -1.5,
+		"carbon" =  -1,
+		"silicon" = -0.5,
+		"chlorine" = 1.5,
+		"sulphuric acid" =    1.5,
+		"fuel" = 2,
+		"toxin" =    2,
+		"radium" =   2,
 		"dinitroaniline" =  2,
-		"mutagen" =         2.5,
-		"fluorine" =        2.5,
-		"pacid" =           3,
-		"plantbgone" =      3,
+		"mutagen" =  2.5,
+		"fluorine" = 2.5,
+		"pacid" =    3,
+		"plantbgone" =   3,
 		"chlorine trifluoride" = 8
 		)
 	var/global/list/nutrient_reagents = list(
-		"milk" =            0.1,
-		"phosphorus" =      0.1,
-		"sugar" =           0.1,
-		"sodawater" =       0.1,
-		"beer" =            0.25,
-		"nutriment" =       1,
+		"milk" = 0.1,
+		"phosphorus" =   0.1,
+		"sugar" =    0.1,
+		"sodawater" =    0.1,
+		"beer" = 0.25,
+		"nutriment" =    1,
 		"adminordrazine" =  1,
-		"eznutrient" =      1,
+		"eznutrient" =   1,
 		"robustharvest" =   1,
-		"left4zed" =        1,
-		"ammonia" =         2,
-		"diethylamine" =    3
+		"left4zed" = 1,
+		"ammonia" =  2,
+		"diethylamine" = 3
 		)
 	var/global/list/weedkiller_reagents = list(
-		"plantbgone" =     -8,
+		"plantbgone" =  -8,
 		"dinitroaniline" = -6,
 		"adminordrazine" = -5,
-		"pacid" =          -4,
-		"fluorine" =       -4,
-		"chlorine" =       -3,
-		"sulphuric acid" =          -2,
-		"phosphorus" =     -2,
-		"sugar" =           2
+		"pacid" =   -4,
+		"fluorine" =    -4,
+		"chlorine" =    -3,
+		"sulphuric acid" =   -2,
+		"phosphorus" =  -2,
+		"sugar" =    2
 		)
 	var/global/list/pestkiller_reagents = list(
 		"adminordrazine" = -5,
 		"dinitroaniline" = -3,
 		"diethylamine" =   -2,
-		"sugar" =           2
+		"sugar" =    2
 		)
 	var/global/list/water_reagents = list(
-		"water" =           1,
+		"water" =    1,
 		"adminordrazine" =  1,
-		"milk" =            0.9,
-		"beer" =            0.7,
-		"flourine" =       -0.5,
-		"chlorine" =       -0.5,
-		"phosphorus" =     -0.5,
-		"water" =           1,
-		"sodawater" =       1,
+		"milk" = 0.9,
+		"beer" = 0.7,
+		"flourine" =    -0.5,
+		"chlorine" =    -0.5,
+		"phosphorus" =  -0.5,
+		"water" =    1,
+		"sodawater" =    1,
 		)
 
 	// Beneficial reagents also have values for modifying yield_mod and mut_mod (in that order).
 	var/global/list/beneficial_reagents = list(
-		"beer" =           list( -0.05, 0,   0   ),
-		"fluorine" =       list( -2,    0,   0   ),
-		"chlorine" =       list( -1,    0,   0   ),
-		"phosphorus" =     list( -0.75, 0,   0   ),
-		"sodawater" =      list(  0.1,  0,   0   ),
-		"sulphuric acid" =          list( -1,    0,   0   ),
-		"pacid" =          list( -2,    0,   0   ),
-		"plantbgone" =     list( -2,    0,   0.2 ),
+		"beer" =    list( -0.05, 0,   0   ),
+		"fluorine" =    list( -2, 0,   0   ),
+		"chlorine" =    list( -1, 0,   0   ),
+		"phosphorus" =  list( -0.75, 0,   0   ),
+		"sodawater" =   list(  0.1,  0,   0   ),
+		"sulphuric acid" =   list( -1, 0,   0   ),
+		"pacid" =   list( -2, 0,   0   ),
+		"plantbgone" =  list( -2, 0,   0.2 ),
 		"dinitroaniline" = list( -0.5,  0,   0.1 ),
-		"ammonia" =        list(  0.5,  0,   0   ),
-		"diethylamine" =   list(  2,    0,   0   ),
-		"nutriment" =      list(  0.5,  0.1,   0 ),
-		"radium" =         list( -1.5,  0,   0.2 ),
-		"adminordrazine" = list(  1,    1,   1   ),
-		"robustharvest" =  list(  0,    0.2, 0   ),
-		"left4zed" =       list(  0,    0,   0.2 )
+		"ammonia" = list(  0.5,  0,   0   ),
+		"diethylamine" =   list(  2, 0,   0   ),
+		"nutriment" =   list(  0.5,  0.1,   0 ),
+		"radium" =  list( -1.5,  0,   0.2 ),
+		"adminordrazine" = list(  1, 1,   1   ),
+		"robustharvest" =  list(  0, 0.2, 0   ),
+		"left4zed" =    list(  0, 0,   0.2 )
 		)
 
 	// Mutagen list specifies minimum value for the mutation to take place, rather
@@ -143,12 +144,12 @@
 	update_icon()
 	start_processing()
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags(var/datum/pass_flags_container/PF)
+/obj/structure/machinery/portable_atmospherics/hydroponics/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_TYPE_CRAWLER
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/machinery/portable_atmospherics/hydroponics/bullet_act(obj/projectile/Proj)
 
 	//Don't act on seeds like dionaea that shouldn't change.
 	if(seed && seed.immutable > 0)
@@ -185,16 +186,19 @@
 	// If there is no seed data (and hence nothing planted),
 	// or the plant is dead, process nothing further.
 	if(!seed || dead)
-		if(draw_warnings) update_icon() //Harvesting would fail to set alert icons properly.
+		if(draw_warnings)
+			update_icon() //Harvesting would fail to set alert icons properly.
 		return
 
 	// Advance plant age.
-	if(prob(30)) age += 1 * HYDRO_SPEED_MULTIPLIER
+	if(prob(30) && nutrilevel > 0 && waterlevel > 0)
+		age += 1 * HYDRO_SPEED_MULTIPLIER
 
 	//Highly mutable plants have a chance of mutating every tick.
 	if(seed.immutable == -1)
 		var/mut_prob = rand(1,100)
-		if(mut_prob <= 5) mutate(mut_prob == 1 ? 2 : 1)
+		if(mut_prob <= 5)
+			mutate(mut_prob == 1 ? 2 : 1)
 
 	// Other plants also mutate if enough mutagenic compounds have been added.
 	if(!seed.immutable)
@@ -206,36 +210,24 @@
 	if(seed.nutrient_consumption > 0 && nutrilevel > 0 && prob(25))
 		nutrilevel -= max(0,seed.nutrient_consumption * HYDRO_SPEED_MULTIPLIER)
 	if(seed.water_consumption > 0 && waterlevel > 0  && prob(25))
-		waterlevel -= max(0,seed.water_consumption * HYDRO_SPEED_MULTIPLIER)
+		waterlevel -= floor(max(0,(seed.water_consumption * HYDRO_WATER_CONSUMPTION_MULTIPLIER) * HYDRO_SPEED_MULTIPLIER))
 
 	// Make sure the plant is not starving or thirsty. Adequate
 	// water and nutrients will cause a plant to become healthier.
+	// Checks if there are sufficient enough nutrients, if not the plant dies.
 	var/healthmod = rand(1,3) * HYDRO_SPEED_MULTIPLIER
 	if(seed.requires_nutrients && prob(35))
 		plant_health += (nutrilevel < 2 ? -healthmod : healthmod)
 	if(seed.requires_water && prob(35))
 		plant_health += (waterlevel < 10 ? -healthmod : healthmod)
 
-	// Check that pressure, heat and light are all within bounds.
+	// Check that pressure, heat are all within bounds.
 	// First, handle an open system or an unconnected closed system.
-
-	var/turf/T = loc
-
-	// Handle light requirements.
-	var/area/A = T.loc
-	if(A)
-		var/light_available
-		if(A.lighting_use_dynamic)
-			light_available = max(0,min(10,T.lighting_lumcount)-5)
-		else
-			light_available =  5
-		if(abs(light_available - seed.ideal_light) > seed.light_tolerance)
-			plant_health -= healthmod
 
 	// Toxin levels beyond the plant's tolerance cause damage, but
 	// toxins are sucked up each tick and slowly reduce over time.
 	if(toxins > 0)
-		var/toxin_uptake = max(1,round(toxins/10))
+		var/toxin_uptake = max(1,floor(toxins/10))
 		if(toxins > seed.toxins_tolerance)
 			plant_health -= toxin_uptake
 		toxins -= toxin_uptake
@@ -271,7 +263,7 @@
 		pestlevel = 0
 
 	// If enough time (in cycles, not ticks) has passed since the plant was harvested, we're ready to harvest again.
-	else if(seed.products && seed.products.len && age > seed.production && (age - lastproduce) > seed.production && (!harvest && !dead))
+	else if(LAZYLEN(seed.products) && age > seed.production && (age - lastproduce) > seed.production && (!harvest && !dead))
 		harvest = 1
 		lastproduce = age
 
@@ -285,7 +277,8 @@
 //Process reagents being input into the tray.
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/process_reagents()
 
-	if(!reagents) return
+	if(!reagents)
+		return
 
 	if(reagents.total_volume <= 0)
 		return
@@ -299,7 +292,7 @@
 		if(seed && !dead)
 			//Handle some general level adjustments.
 			if(toxic_reagents[R.id])
-				toxins += toxic_reagents[R.id]         * reagent_total
+				toxins += toxic_reagents[R.id]  * reagent_total
 			if(weedkiller_reagents[R.id])
 				weedlevel += weedkiller_reagents[R.id] * reagent_total
 			if(pestkiller_reagents[R.id])
@@ -307,8 +300,8 @@
 
 			// Beneficial reagents have a few impacts along with health buffs.
 			if(beneficial_reagents[R.id])
-				plant_health += beneficial_reagents[R.id][1]       * reagent_total
-				yield_mod += beneficial_reagents[R.id][2]    * reagent_total
+				plant_health += beneficial_reagents[R.id][1]    * reagent_total
+				yield_mod += beneficial_reagents[R.id][2] * reagent_total
 				mutation_mod += beneficial_reagents[R.id][3] * reagent_total
 
 			// Mutagen is distinct from the previous types and mostly has a chance of proccing a mutation.
@@ -328,14 +321,14 @@
 
 		// Water dilutes toxin level.
 		if(water_added > 0)
-			toxins -= round(water_added/4)
+			toxins -= floor(water_added/4)
 
 	temp_chem_holder.reagents.clear_reagents()
 	check_level_sanity()
 	update_icon()
 
 //Harvests the product of a plant.
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/harvest(var/mob/user)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/harvest(mob/user)
 
 	//Harvest the product of the plant,
 	if(!seed || !harvest || !user)
@@ -364,11 +357,12 @@
 	return
 
 //Clears out a dead plant.
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/remove_dead(var/mob/user)
-	if(!user || !dead) return
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/remove_dead(mob/user)
+	if(!user || !dead)
+		return
 
 	if(closed_system)
-		to_chat(user, "You can't remove the dead plant while the lid is shut.")
+		to_chat(user, SPAN_WARNING("You can't remove the dead plant while the lid is shut."))
 		return
 
 	seed = null
@@ -378,10 +372,9 @@
 	yield_mod = 0
 	mutation_mod = 0
 
-	to_chat(user, "You remove the dead plant from the [src].")
+	to_chat(user, SPAN_NOTICE("You remove the dead plant from [src]."))
 	check_level_sanity()
 	update_icon()
-	return
 
 //Refreshes the icon and sets the luminosity
 /obj/structure/machinery/portable_atmospherics/hydroponics/update_icon()
@@ -400,7 +393,7 @@
 			overlays += "[seed.plant_icon]-harvest"
 		else if(age < seed.maturation)
 
-			var/t_growthstate = round(age/seed.maturation * seed.growth_stages)
+			var/t_growthstate = floor(age/seed.maturation * seed.growth_stages)
 			overlays += "[seed.plant_icon]-grow[t_growthstate]"
 			lastproduce = age
 		else
@@ -424,19 +417,21 @@
 	// Update bioluminescence.
 	if(seed)
 		if(seed.biolum)
-			SetLuminosity(round(seed.potency/10))
+			set_light(floor(seed.potency/10))
 			return
 
-	SetLuminosity(0)
+	set_light(0)
 	return
 
- // If a weed growth is sufficient, this proc is called.
+// If a weed growth is sufficient, this proc is called.
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/weed_invasion()
 
 	//Remove the seed if something is already planted.
-	if(seed) seed = null
-	seed = seed_types[pick(list("mushrooms","plumphelmet","harebells","poppies","grass","weeds"))]
-	if(!seed) return //Weed does not exist, someone fucked up.
+	if(seed)
+		seed = null
+	seed = GLOB.seed_types[pick(list("mushrooms","plumphelmet","harebells","poppies","grass","weeds"))]
+	if(!seed)
+		return //Weed does not exist, someone fucked up.
 
 	dead = 0
 	age = 0
@@ -451,21 +446,21 @@
 
 	return
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate(var/severity)
+/obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate(severity)
 
 	// No seed, no mutations.
 	if(!seed)
 		return
 
 	// Check if we should even bother working on the current seed datum.
-	if(seed.mutants && seed.mutants.len && severity > 1)
+	if(LAZYLEN(seed.mutants) && severity > 1)
 		mutate_species()
 		return
 
 	// We need to make sure we're not modifying one of the global seed datums.
 	// If it's not in the global list, then no products of the line have been
 	// harvested yet and it's safe to assume it's restricted to this tray.
-	if(!isnull(seed_types[seed.name]))
+	if(!isnull(GLOB.seed_types[seed.name]))
 		seed = seed.diverge()
 	seed.mutate(severity,get_turf(src))
 
@@ -474,24 +469,24 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/check_level_sanity()
 	//Make sure various values are sane.
 	if(seed)
-		plant_health =     max(0,min(seed.endurance,plant_health))
+		plant_health =  max(0,min(seed.endurance,plant_health))
 	else
 		plant_health = 0
 		dead = 0
 
 	mutation_level = max(0,min(mutation_level,100))
-	nutrilevel =     max(0,min(nutrilevel,10))
-	waterlevel =     max(0,min(waterlevel,100))
-	pestlevel =      max(0,min(pestlevel,10))
-	weedlevel =      max(0,min(weedlevel,10))
-	toxins =         max(0,min(toxins,10))
+	nutrilevel =  max(0,min(nutrilevel,10))
+	waterlevel =  max(0,min(waterlevel,100))
+	pestlevel =   max(0,min(pestlevel,10))
+	weedlevel =   max(0,min(weedlevel,10))
+	toxins =  max(0,min(toxins,10))
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate_species()
 
 	var/previous_plant = seed.display_name
 	var/newseed = seed.get_mutant_variant()
-	if(newseed in seed_types)
-		seed = seed_types[newseed]
+	if(newseed in GLOB.seed_types)
+		seed = GLOB.seed_types[newseed]
 	else
 		return
 
@@ -508,7 +503,7 @@
 
 	return
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/attackby(obj/item/O as obj, mob/user as mob)
 
 	if (O.is_open_container())
 		return 0
@@ -536,8 +531,7 @@
 
 		// Bookkeeping.
 		check_level_sanity()
-		force_update = 1
-		process()
+
 
 		return
 
@@ -588,7 +582,7 @@
 				dead = 0
 				age = 1
 				//Snowflakey, maybe move this to the seed datum
-				plant_health = (istype(S, /obj/item/seeds/cutting) ? round(seed.endurance/rand(2,5)) : seed.endurance)
+				plant_health = (istype(S, /obj/item/seeds/cutting) ? floor(seed.endurance/rand(2,5)) : seed.endurance)
 
 				lastcycle = world.time
 
@@ -603,11 +597,30 @@
 	else if (istype(O, /obj/item/tool/minihoe))  // The minihoe
 
 		if(weedlevel > 0)
-			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from the [src]."))
+			user.visible_message(SPAN_DANGER("[user] starts uprooting the weeds."), SPAN_DANGER("You remove the weeds from [src]."))
 			weedlevel = 0
 			update_icon()
 		else
 			to_chat(user, SPAN_DANGER("This plot is completely devoid of weeds. It doesn't need uprooting."))
+
+	else if (istype(O, /obj/item/tool/shovel/spade))
+		if(isnull(seed))
+			return
+		user.visible_message(SPAN_DANGER("[user] starts to uproot the plant."), SPAN_DANGER("You begin removing plant from [src]..."))
+		if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY))
+			return
+		to_chat(user, SPAN_NOTICE("You remove the plant from [src]."))
+		seed = null
+		dead = 0
+		sampled = 0
+		age = 0
+		harvest = 0
+		toxins = 0
+		yield_mod = 0
+		mutation_mod = 0
+
+		check_level_sanity()
+		update_icon()
 
 	else if (istype(O, /obj/item/storage/bag/plants))
 
@@ -615,7 +628,7 @@
 
 		var/obj/item/storage/bag/plants/S = O
 		for (var/obj/item/reagent_container/food/snacks/grown/G in locate(user.x,user.y,user.z))
-			if(!S.can_be_inserted(G))
+			if(!S.can_be_inserted(G, user))
 				return
 			S.handle_item_insertion(G, TRUE, user)
 
@@ -666,23 +679,9 @@
 
 	return info
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/soil/show_hydro_info(mob/user as mob)
-	var/info = ..()
-	var/turf/T = loc
-	var/area/A = T.loc
-	var/light_available
-	if(A)
-		if(A.lighting_use_dynamic)
-			light_available = max(0,min(10,T.lighting_lumcount)-5)
-		else
-			light_available =  5
-
-	info += "The tray's sensor suite is reporting a light level of [light_available] lumens.\n"
-	return info
-
 /obj/structure/machinery/portable_atmospherics/hydroponics/attack_hand(mob/user as mob)
 
-	if(istype(usr,/mob/living/silicon))
+	if(istype(user, /mob/living/silicon))
 		return
 
 	if(harvest)
@@ -690,19 +689,7 @@
 	else if(dead)
 		remove_dead(user)
 	else
-		to_chat(usr, show_hydro_info(user))
-
-/obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid()
-	set name = "Toggle Tray Lid"
-	set category = "Object"
-	set src in view(1)
-
-	if(!usr || usr.stat || usr.is_mob_restrained())
-		return
-
-	closed_system = !closed_system
-	to_chat(usr, "You [closed_system ? "close" : "open"] the tray's lid.")
-	update_icon()
+		to_chat(user, show_hydro_info(user))
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/verb/flush() //used to reset the tray
 	set name = "Flush Tray"
@@ -722,7 +709,7 @@
 	toxins = 0
 	yield_mod = 0
 	mutation_mod = 0
-	waterlevel = 100
+	waterlevel = 0
 	nutrilevel = 0
 	pestlevel = 0
 	weedlevel = 0
@@ -736,21 +723,21 @@
 	name = "soil"
 	icon = 'icons/obj/structures/machinery/hydroponics.dmi'
 	icon_state = "soil"
-	density = 0
+	density = FALSE
 	use_power = USE_POWER_NONE
 	draw_warnings = 0
 
-/obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/structure/machinery/portable_atmospherics/hydroponics/soil/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/tool/shovel))
 		to_chat(user, "You clear up [src]!")
 		qdel(src)
 	else if(istype(O,/obj/item/tool/shovel) || istype(O,/obj/item/tank))
 		return
 	else
-		..()
-
-/obj/structure/machinery/portable_atmospherics/hydroponics/soil/Initialize()
-	. = ..()
-	verbs -= /obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid
+		. = ..()
 
 #undef HYDRO_SPEED_MULTIPLIER
+#undef HYDRO_WATER_CONSUMPTION_MULTIPLIER
+
+/obj/structure/machinery/portable_atmospherics/hydroponics/yautja
+	icon_state = "yautja_tray"

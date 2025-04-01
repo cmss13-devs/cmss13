@@ -14,17 +14,27 @@
 	to_world("<B>If you die as a zombie, you come back.  NO MATTER HOW MUCH DAMAGE.</B>")
 	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
+/datum/game_mode/infection/get_roles_list()
+	return GLOB.ROLES_USCM
+
 /datum/game_mode/infection/pre_setup()
 	return ..()
 
 /datum/game_mode/infection/post_setup()
 	initialize_post_survivor_list()
 	initialize_post_marine_gear_list()
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		np.new_player_panel_proc()
-	spawn(50)
-		marine_announcement("We've lost contact with the Weyland-Yutani's research facility, [name]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
+
+	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	return ..()
+
+/datum/game_mode/infection/proc/map_announcement()
+	if(SSmapping.configs[GROUND_MAP].infection_announce_text)
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].infection_announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+	else if(SSmapping.configs[GROUND_MAP].announce_text) //if we missed a infection text for above, or just don't need a special one, we just use default announcement
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 /datum/game_mode/infection/proc/initialize_post_survivor_list()
 	if(synth_survivor)
@@ -32,11 +42,10 @@
 	for(var/datum/mind/survivor in survivors)
 		if(transform_survivor(survivor) == 1)
 			survivors -= survivor
-	tell_survivor_story()
 
-/datum/game_mode/infection/can_start()
+/datum/game_mode/infection/can_start(bypass_checks = FALSE)
 	initialize_starting_survivor_list()
-	return 1
+	return TRUE
 
 //We don't actually need survivors to play, so long as aliens are present.
 /datum/game_mode/infection/proc/initialize_starting_survivor_list()
@@ -50,7 +59,7 @@
 			possible_synth_survivors -= A
 			continue
 
-		if(RoleAuthority.roles_whitelist[ckey(A.key)] & WHITELIST_SYNTHETIC)
+		if(A.current.client?.check_whitelist_status(WHITELIST_SYNTHETIC))
 			if(A in possible_survivors)
 				continue //they are already applying to be a survivor
 			else
@@ -60,16 +69,16 @@
 		possible_synth_survivors -= A
 
 	possible_survivors = shuffle(possible_survivors) //Shuffle them up a bit
-	if(possible_survivors.len) //We have some, it looks like.
+	if(length(possible_survivors)) //We have some, it looks like.
 		for(var/datum/mind/A in possible_survivors) //Strip out any xenos first so we don't double-dip.
 			if(A.roundstart_picked)
 				possible_survivors -= A
 
-		if(possible_survivors.len) //We may have stripped out all the contendors, so check again.
+		if(length(possible_survivors)) //We may have stripped out all the contendors, so check again.
 			var/i = surv_starting_num
 			var/datum/mind/new_survivor
 			while(i > 0)
-				if(!possible_survivors.len)
+				if(!length(possible_survivors))
 					break  //Ran out of candidates! Can't have a null pick(), so just stick with what we have.
 				new_survivor = pick(possible_survivors)
 				if(!new_survivor)
@@ -84,7 +93,7 @@
 				possible_survivors -= new_survivor //either we drafted a survivor, or we're skipping over someone, either or - remove them
 
 /datum/game_mode/infection/check_win()
-	var/living_player_list[] = count_humans_and_xenos(EvacuationAuthority.get_affected_zlevels())
+	var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/zed = living_player_list[2]
 
@@ -92,7 +101,8 @@
 		round_finished = MODE_INFECTION_ZOMBIE_WIN
 
 /datum/game_mode/infection/check_finished()
-	if(round_finished) return 1
+	if(round_finished)
+		return 1
 
 /datum/game_mode/infection/process()
 	. = ..()
@@ -109,13 +119,16 @@
 	var/musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 	world << musical_track
 
-	if(round_statistics)
-		round_statistics.game_mode = name
-		round_statistics.round_length = world.time
-		round_statistics.end_round_player_population = GLOB.clients.len
-		round_statistics.log_round_statistics()
+	if(GLOB.round_statistics)
+		GLOB.round_statistics.game_mode = name
+		GLOB.round_statistics.round_length = world.time
+		GLOB.round_statistics.end_round_player_population = length(GLOB.clients)
+		GLOB.round_statistics.log_round_statistics()
 
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
+
+	GLOB.round_statistics?.save()
+
 	return 1

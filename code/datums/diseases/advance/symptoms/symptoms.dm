@@ -1,9 +1,7 @@
 // Symptoms are the effects that engineered advanced diseases do.
 
-var/list/list_symptoms = typesof(/datum/symptom) - /datum/symptom
-var/list/dictionary_symptoms = list()
-
-var/global/const/SYMPTOM_ACTIVATION_PROB = 3
+GLOBAL_LIST_INIT(list_symptoms, typesof(/datum/symptom) - /datum/symptom)
+GLOBAL_LIST_EMPTY(dictionary_symptoms)
 
 /datum/symptom
 	// Buffs/Debuffs the symptom has to the overall engineered disease.
@@ -18,21 +16,21 @@ var/global/const/SYMPTOM_ACTIVATION_PROB = 3
 	var/id = ""
 
 /datum/symptom/New()
-	var/list/S = list_symptoms
-	for(var/i = 1; i <= S.len; i++)
+	var/list/S = GLOB.list_symptoms
+	for(var/i = 1; i <= length(S); i++)
 		if(src.type == S[i])
 			id = "[i]"
 			return
 	CRASH("We couldn't assign an ID!")
 
 // Called when processing of the advance disease, which holds this symptom, starts.
-/datum/symptom/proc/Start(var/datum/disease/advance/A)
+/datum/symptom/proc/Start(datum/disease/advance/A)
 	return
 
 // Called when the advance disease is going to be deleted or when the advance disease stops processing.
-/datum/symptom/proc/End(var/datum/disease/advance/A)
+/datum/symptom/proc/End(datum/disease/advance/A)
 	return
 
-/datum/symptom/proc/Activate(var/datum/disease/advance/A)
+/datum/symptom/proc/Activate(datum/disease/advance/A)
 	return
 

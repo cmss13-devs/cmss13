@@ -3,15 +3,15 @@
 */
 
 /datum/teleporter
-	var/list/locations          // Complex list of turfs by ID
-	var/list/linked_consoles    // Consoles linked to this abstract teleporter
-	var/id                      // Our teleporter UUID string
+	var/list/locations   // Complex list of turfs by ID
+	var/list/linked_consoles // Consoles linked to this abstract teleporter
+	var/id   // Our teleporter UUID string
 
 	COOLDOWN_DECLARE(next_teleport_time)
 
-	var/cooldown                // int to cool down
+	var/cooldown // int to cool down
 
-	var/name                    // User-friendly name
+	var/name // User-friendly name
 
 /datum/teleporter/New()
 	locations = list()
@@ -25,16 +25,16 @@
 	. = ..()
 
 // Teleport (NO SAFETY CHECKS)
-/datum/teleporter/proc/teleport(var/location_source, var/location_dest)
+/datum/teleporter/proc/teleport(location_source, location_dest)
 	var/list/turf/source_turfs = locations[location_source]
 	var/list/turf/dest_turfs = locations[location_dest]
 
-	if(!source_turfs || source_turfs.len == 0)
+	if(!LAZYLEN(source_turfs))
 		log_debug("Invalid source location ID [location_source] handed to teleporter [id]. Error code: TELEPORTER_3")
 		log_admin("Invalid source location ID [location_source] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_3")
 		return FALSE
 
-	if(!dest_turfs || dest_turfs.len == 0)
+	if(!LAZYLEN(dest_turfs))
 		log_debug("Invalid destination location ID [location_dest] handed to teleporter [id]. Error code: TELEPORTER_3")
 		log_admin("Invalid destination location ID [location_dest] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_3")
 		return FALSE
@@ -51,7 +51,7 @@
 
 // Checks every turf in the location to make sure it contains no dense things (safe to teleport to)
 // Returns: 1 = safe, 0 = unsafe
-/datum/teleporter/proc/safety_check_destination(var/location_id)
+/datum/teleporter/proc/safety_check_destination(location_id)
 	var/list/turf/turfs_to_check = locations[location_id]
 
 	if(!turfs_to_check)
@@ -74,7 +74,7 @@
 	return TRUE
 
 // Checks every turf in the Location to make sure it contains no objects banned from teleporting
-/datum/teleporter/proc/safety_check_source(var/location_id)
+/datum/teleporter/proc/safety_check_source(location_id)
 	var/list/turf/turfs_to_check = locations[location_id]
 
 	if(!turfs_to_check)
@@ -115,7 +115,7 @@
 // no current list of its linked objects
 // As always, 1 = safe, 0 = unsafe
 
-/datum/teleporter/proc/check_vehicle_safety(var/obj/vehicle/multitile/vehicle, var/location_id)
+/datum/teleporter/proc/check_vehicle_safety(obj/vehicle/multitile/vehicle, location_id)
 	var/list/turf/location_turfs = locations[location_id]
 
 	var/parts_count = (vehicle.bound_width / world.icon_size) * (vehicle.bound_height / world.icon_size)
@@ -139,12 +139,12 @@
 	return FALSE
 
 // Unsafe proc to get the list of turfs from a location
-/datum/teleporter/proc/get_turfs_by_location(var/location_id)
+/datum/teleporter/proc/get_turfs_by_location(location_id)
 	return locations[location_id]
 
 #define ANIMATION_DURATION 18
 // Handler proc for VFX. mostly some easy timing maths
-/datum/teleporter/proc/apply_vfx(var/location_id, var/time_to_fire = 30)
+/datum/teleporter/proc/apply_vfx(location_id, time_to_fire = 30)
 	if(!(location_id in locations))
 		log_debug("Invalid location ID [location_id] handed to teleporter [id]. Error code: TELEPORTER_6")
 		log_admin("Invalid location ID [location_id] handed to teleporter [id]. Tell the devs. Error code: TELEPORTER_6")
@@ -156,7 +156,7 @@
 	return
 
 // Backend proc that actually applies the animation
-/datum/teleporter/proc/apply_animation(var/location_id)
+/datum/teleporter/proc/apply_animation(location_id)
 	var/list/turfs_to_do = locations[location_id]
 
 	if(!turfs_to_do)
@@ -171,7 +171,7 @@
 		flick(animation_holder.icon_state, animation_holder)
 
 /obj/effect/teleporter_vfx
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "teleport"
 	var/animation_duration = ANIMATION_DURATION // 18 frames long
@@ -179,8 +179,6 @@
 /obj/effect/teleporter_vfx/New()
 	set waitfor = 0
 	sleep(animation_duration)
-	var/turf/T = get_turf(src)
-	T.contents -= src
 	qdel(src)
 
 #undef ANIMATION_DURATION

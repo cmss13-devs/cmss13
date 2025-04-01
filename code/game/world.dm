@@ -1,24 +1,21 @@
 
-var/world_view_size = 7
-var/lobby_view_size = 16
+GLOBAL_VAR_INIT(world_view_size, 7)
+GLOBAL_VAR_INIT(lobby_view_size, 16)
 
-var/internal_tick_usage = 0
-
-var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
+GLOBAL_LIST_INIT(reboot_sfx, file2list("config/reboot_sfx.txt"))
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space/basic
 	area = /area/space
 	view = "15x15"
-	cache_lifespan = 0	//stops player uploaded stuff from being kept in the rsc past the current session
+	cache_lifespan = 0 //stops player uploaded stuff from being kept in the rsc past the current session
 	hub = "Exadv1.spacestation13"
 
 /world/New()
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
-		call(debug_server, "auxtools_init")()
+		call_ext(debug_server, "auxtools_init")()
 		enable_debugging()
-	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
 
 #ifdef BYOND_TRACY
@@ -26,92 +23,78 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 	prof_init()
 #endif
 
-	//logs
-	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
-	var/year_string = time2text(world.realtime, "YYYY")
-	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	diary << "[log_end]\n[log_end]\nStarting up. [time2text(world.timeofday, "hh:mm.ss")][log_end]\n---------------------[log_end]"
-	round_stats = file("data/logs/[year_string]/round_stats.log")
-	round_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	round_scheduler_stats = file("data/logs/[year_string]/round_scheduler_stats.log")
-	round_scheduler_stats << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	mutator_logs = file("data/logs/[year_string]/mutator_logs.log")
-	mutator_logs << "[log_end]\nStarting up - [time2text(world.realtime,"YYYY-MM-DD (hh:mm:ss)")][log_end]\n---------------------[log_end]"
-	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
-	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
-
-	GLOB.revdata = new
-	initialize_tgs()
-	initialize_marine_armor()
+	GLOB.config_error_log = GLOB.world_attack_log = GLOB.world_href_log = GLOB.world_attack_log = "data/logs/config_error.[GUID()].log"
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
-	if(CONFIG_GET(flag/log_runtime))
-		log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
+	SSdatabase.start_up()
+
+	SSentity_manager.start_up()
+	SSentity_manager.setup_round_id()
+
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
+
+	initialize_tgs()
+
+	#ifdef UNIT_TESTS
+	GLOB.test_log = "data/logs/tests.log"
+	#endif
 
 	load_admins()
 	jobban_loadbanfile()
 	LoadBans()
 	load_motd()
 	load_tm_message()
-	load_mode()
-	loadShuttleInfoDatums()
 	populate_gear_list()
 	initialize_global_regex()
 
 	//Emergency Fix
 	//end-emergency fix
 
-	. = ..()
+	init_global_referenced_datums()
 
 	var/testing_locally = (world.params && world.params["local_test"])
 	var/running_tests = (world.params && world.params["run_tests"])
+	#if defined(AUTOWIKI) || defined(UNIT_TESTS)
+	running_tests = TRUE
+	#endif
 	// Only do offline sleeping when the server isn't running unit tests or hosting a local dev test
 	sleep_offline = (!running_tests && !testing_locally)
 
-	if(!RoleAuthority)
-		RoleAuthority = new /datum/authority/branch/role()
+	if(!GLOB.RoleAuthority)
+		GLOB.RoleAuthority = new /datum/authority/branch/role()
 		to_world(SPAN_DANGER("\b Job setup complete"))
 
-	if(!EvacuationAuthority)		EvacuationAuthority = new
+	initiate_minimap_icons()
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
-	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
+
+	// As of byond 515.1637 time2text now treats 0 like it does negative numbers so the hour is wrong
+	// We could instead use world.timezone but IMO better to not assume lummox will keep time2text in parity with it
+	GLOB.timezoneOffset = text2num(time2text(10,"hh")) * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
+
+	#ifdef UNIT_TESTS
+	HandleTestRun()
+	#endif
+
+	#ifdef AUTOWIKI
+	setup_autowiki()
+	#endif
+
 	update_status()
 
 	//Scramble the coords obsfucator
-	obfs_x = rand(-500, 500) //A number between -100 and 100
-	obfs_y = rand(-500, 500) //A number between -100 and 100
-
-	spawn(3000)		//so we aren't adding to the round-start lag
-		if(CONFIG_GET(flag/ToRban))
-			ToRban_autoupdate()
-
-	// Allow the test manager to run all unit tests if this is being hosted just to run unit tests
-	if(running_tests)
-		test_executor.host_tests()
+	GLOB.obfs_x = rand(-500, 500) //A number between -500 and 500
+	GLOB.obfs_y = rand(-500, 500) //A number between -500 and 500
+	GLOB.obfs_z = rand(-10, 10)   //A number between -10 and 10
 
 	// If the server's configured for local testing, get everything set up ASAP.
 	// Shamelessly stolen from the test manager's host_tests() proc
 	if(testing_locally)
-		master_mode = "extended"
-
-		// If a test environment was specified, initialize it
-		if(fexists("test_environment.txt"))
-			var/test_environment = file2text("test_environment.txt")
-
-			var/env_type = null
-			for(var/type in subtypesof(/datum/test_environment))
-				if("[type]" == test_environment)
-					env_type = type
-					break
-
-			if(env_type)
-				var/datum/test_environment/env = new env_type()
-				env.initialize()
+		GLOB.master_mode = "Extended"
 
 		// Wait for the game ticker to initialize
 		while(!SSticker.initialized)
@@ -121,8 +104,52 @@ var/list/reboot_sfx = file2list("config/reboot_sfx.txt")
 		SSticker.request_start()
 	return
 
-var/world_topic_spam_protect_ip = "0.0.0.0"
-var/world_topic_spam_protect_time = world.timeofday
+/proc/start_logging()
+	GLOB.round_id = SSentity_manager.round.id
+
+	GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM-Month/DD-Day")]/round-"
+
+	if(GLOB.round_id)
+		GLOB.log_directory += GLOB.round_id
+	else
+		GLOB.log_directory += "[replacetext(time_stamp(), ":", ".")]"
+
+	runtime_logging_ready = TRUE // Setting up logging now, so disabling early logging
+	#if !defined(UNIT_TESTS) && !defined(AUTOWIKI)
+	world.log = file("[GLOB.log_directory]/dd.log")
+	#endif
+	backfill_runtime_log()
+
+	GLOB.logger.init_logging()
+
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
+	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
+	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
+	GLOB.round_stats = "[GLOB.log_directory]/round_stats.log"
+	GLOB.scheduler_stats = "[GLOB.log_directory]/round_scheduler_stats.log"
+	GLOB.mapping_log = "[GLOB.log_directory]/mapping.log"
+	GLOB.strain_logs = "[GLOB.log_directory]/strain_logs.log"
+
+	start_log(GLOB.tgui_log)
+	start_log(GLOB.world_href_log)
+	start_log(GLOB.world_game_log)
+	start_log(GLOB.world_attack_log)
+	start_log(GLOB.world_runtime_log)
+	start_log(GLOB.round_stats)
+	start_log(GLOB.scheduler_stats)
+	start_log(GLOB.mapping_log)
+	start_log(GLOB.strain_logs)
+
+	if(fexists(GLOB.config_error_log))
+		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
+		fdel(GLOB.config_error_log)
+
+	if(GLOB.round_id)
+		log_game("Round ID: [GLOB.round_id]")
+
+	log_runtime(GLOB.revdata.get_log_message())
 
 /world/proc/initialize_tgs()
 	TgsNew(new /datum/tgs_event_handler/impl, TGS_SECURITY_TRUSTED)
@@ -131,75 +158,74 @@ var/world_topic_spam_protect_time = world.timeofday
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC
 
-	if (T == "ping")
-		var/x = 1
-		for (var/client/C)
-			x++
-		return x
 
-	else if(T == "players")
-		return length(GLOB.clients)
+	var/list/response = list()
 
-	else if (T == "status")
-		var/list/s = list()
-		s["version"] = game_version
-		s["mode"] = master_mode
-		s["respawn"] = CONFIG_GET(flag/respawn)
-		s["enter"] = enter_allowed
-		s["vote"] = CONFIG_GET(flag/allow_vote_mode)
-		s["ai"] = CONFIG_GET(flag/allow_ai)
-		s["host"] = host ? host : null
-		s["players"] = list()
-		s["stationtime"] = duration2text()
-		var/n = 0
-		var/admins = 0
+	if(length(T) > CONFIG_GET(number/topic_max_size))
+		response["statuscode"] = 413
+		response["response"] = "Payload too large"
+		return json_encode(response)
 
-		for(var/client/C in GLOB.clients)
-			if(C.admin_holder)
-				if(C.admin_holder.fakekey)
-					continue	//so stealthmins aren't revealed by the hub
-				admins++
-			s["player[n]"] = C.key
-			n++
-		s["players"] = n
+	var/logging = CONFIG_GET(flag/log_world_topic)
+	var/topic_decoded = rustg_url_decode(T)
+	if(!rustg_json_is_valid(topic_decoded))
+		if(logging)
+			log_topic("(NON-JSON) \"[topic_decoded]\", from:[addr], master:[master], key:[key]")
+		// Fallback check for spacestation13.com requests
+		if(topic_decoded == "status")
+			return list2params(list("players" = length(GLOB.clients)))
+		response["statuscode"] = 400
+		response["response"] = "Bad Request - Invalid JSON format"
+		return json_encode(response)
 
-		s["admins"] = admins
+	var/list/params = json_decode(topic_decoded)
+	params["addr"] = addr
+	var/query = params["query"]
+	var/auth = params["auth"]
+	var/source = params["source"]
 
-		return list2params(s)
+	if(logging)
+		var/list/censored_params = params.Copy()
+		censored_params["auth"] = "***[copytext(params["auth"], -4)]"
+		log_topic("\"[json_encode(censored_params)]\", from:[addr], master:[master], auth:[censored_params["auth"]], key:[key], source:[source]")
 
-	// Used in external requests for player data.
-	else if (T == "pinfo")
-		var/retdata = ""
-		if(addr != "127.0.0.1")
-			return "Nah ah ah, you didn't say the magic word"
-		for(var/client/C in GLOB.clients)
-			retdata  += C.key+","+C.address+","+C.computer_id+"|"
+	if(!source)
+		response["statuscode"] = 400
+		response["response"] = "Bad Request - No source specified"
+		return json_encode(response)
 
-		return retdata
+	if(!query)
+		response["statuscode"] = 400
+		response["response"] = "Bad Request - No endpoint specified"
+		return json_encode(response)
 
-	else if(copytext(T,1,6) == "notes")
-		if(addr != "127.0.0.1")
-			return "Nah ah ah, you didn't say the magic word"
-		if(!SSdatabase.connection.connection_ready())
-			return "Database is not yet ready. Please wait."
-		var/input[] = params2list(T)
-		var/ckey = trim(input["ckey"])
-		var/dat = "Notes for [ckey]:<br/><br/>"
-		var/datum/entity/player/P = get_player_from_key(ckey)
-		if(!P)
-			return ""
-		P.load_refs()
-		if(!P.notes || !P.notes.len)
-			return dat + "No information found on the given key."
+	if(!LAZYACCESS(GLOB.topic_tokens["[auth]"], "[query]"))
+		response["statuscode"] = 401
+		response["response"] = "Unauthorized - Bad auth"
+		return json_encode(response)
 
-		for(var/datum/entity/player_note/N in P.notes)
-			var/admin_name = (N.admin && N.admin.ckey) ? "[N.admin.ckey]" : "-LOADING-"
-			var/ban_text = N.ban_time ? "Banned for [N.ban_time] minutes | " : ""
-			var/confidential_text = N.is_confidential ? " \[CONFIDENTIALLY\]" : ""
-			dat += "[ban_text][N.text]<br/>by [admin_name] ([N.admin_rank])[confidential_text] on [N.date]<br/><br/>"
-		return dat
+	var/datum/world_topic/command = GLOB.topic_commands["[query]"]
+	if(!command)
+		response["statuscode"] = 501
+		response["response"] = "Not Implemented"
+		return json_encode(response)
 
-/world/Reboot(var/reason)
+	if(command.CheckParams(params))
+		response["statuscode"] = command.statuscode
+		response["response"] = command.response
+		response["data"] = command.data
+		return json_encode(response)
+	else
+		command.Run(params)
+		response["statuscode"] = command.statuscode
+		response["response"] = command.response
+		response["data"] = command.data
+		return json_encode(response)
+
+/world/Reboot(reason)
+	if(reason == 1 || reason == 2) // host/topic
+		return
+
 	Master.Shutdown()
 	send_reboot_sound()
 	var/server = CONFIG_GET(string/server)
@@ -208,56 +234,47 @@ var/world_topic_spam_protect_time = world.timeofday
 			continue
 		var/client/C = thing
 		C?.tgui_panel?.send_roundrestart()
-		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+		if(server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
+
+	#ifdef UNIT_TESTS
+	FinishTestRun()
+	return
+	#endif
+
+	shutdown_logging()
 
 	if(TgsAvailable())
 		send_tgs_restart()
-
 		TgsReboot()
 		TgsEndProcess()
 	else
 		shutdown()
 
 /world/proc/send_tgs_restart()
-	if(CONFIG_GET(string/new_round_alert_channel) && CONFIG_GET(string/new_round_alert_role_id))
-		if(round_statistics)
-			send2chat("[round_statistics.round_name] completed!", CONFIG_GET(string/new_round_alert_channel))
-		if(SSmapping.next_map_configs)
-			var/datum/map_config/next_map = SSmapping.next_map_configs[GROUND_MAP]
-			if(next_map)
-				send2chat("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Restarting! Next map is [next_map.map_name]", CONFIG_GET(string/new_round_alert_channel))
-		else
-			send2chat("<@&[CONFIG_GET(string/new_round_alert_role_id)]> Restarting!", CONFIG_GET(string/new_round_alert_channel))
-	return
+	if(!CONFIG_GET(string/new_round_alert_channel))
+		return
+
+	if(!GLOB.round_statistics)
+		return
+
+	send2chat(new /datum/tgs_message_content("[GLOB.round_statistics.round_name][GLOB.round_id ? " (Round [GLOB.round_id])" : ""] completed!"), CONFIG_GET(string/new_round_alert_channel))
 
 /world/proc/send_reboot_sound()
-	var/reboot_sound = SAFEPICK(reboot_sfx)
+	var/reboot_sound = SAFEPICK(GLOB.reboot_sfx)
 	if(reboot_sound)
 		var/sound/reboot_sound_ref = sound(reboot_sound)
 		for(var/client/client as anything in GLOB.clients)
 			if(client?.prefs.toggles_sound & SOUND_REBOOT)
 				SEND_SOUND(client, reboot_sound_ref)
 
-/world/proc/load_mode()
-	var/list/Lines = file2list("data/mode.txt")
-	if(Lines.len)
-		if(Lines[1])
-			master_mode = Lines[1]
-			log_misc("Saved mode is '[master_mode]'")
-
-/world/proc/save_mode(var/the_mode)
-	var/F = file("data/mode.txt")
-	fdel(F)
-	F << the_mode
-
 /world/proc/load_motd()
-	join_motd = file2text("config/motd.txt")
+	GLOB.join_motd = file2text("config/motd.txt")
 
 /world/proc/load_tm_message()
 	var/datum/getrev/revdata = GLOB.revdata
-	if(revdata.testmerge.len)
-		current_tms = revdata.GetTestMergeInfo()
+	if(length(revdata.testmerge))
+		GLOB.current_tms = revdata.GetTestMergeInfo()
 
 /world/proc/update_status()
 	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
@@ -275,34 +292,12 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	world.status = s
 
-#define FAILED_DB_CONNECTION_CUTOFF 1
-var/failed_db_connections = 0
-var/failed_old_db_connections = 0
-
-// /hook/startup/proc/connectDB()
-// 	if(!setup_database_connection())
-// 		world.log << "Your server failed to establish a connection with the feedback database."
-// 	else
-// 		world.log << "Feedback database connection established."
-// 	return 1
-
-var/datum/BSQL_Connection/connection
-/proc/setup_database_connection()
-
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
-
-
-	return .
-
 /proc/set_global_view(view_size)
-	world_view_size = view_size
+	GLOB.world_view_size = view_size
 	for(var/client/c in GLOB.clients)
-		c.view = world_view_size
+		c.view = GLOB.world_view_size
 
-#undef FAILED_DB_CONNECTION_CUTOFF
-
-/proc/give_image_to_client(var/obj/O, icon_text)
+/proc/give_image_to_client(obj/O, icon_text)
 	var/image/I = image(null, O)
 	I.maptext = icon_text
 	for(var/client/c in GLOB.clients)
@@ -331,12 +326,38 @@ var/datum/BSQL_Connection/connection
 /world/proc/on_tickrate_change()
 	SStimer.reset_buckets()
 
+/**
+ * Handles incresing the world's maxx var and intializing the new turfs and assigning them to the global area.
+ * If map_load_z_cutoff is passed in, it will only load turfs up to that z level, inclusive.
+ * This is because maploading will handle the turfs it loads itself.
+ */
+/world/proc/increase_max_x(new_maxx, map_load_z_cutoff = maxz)
+	if(new_maxx <= maxx)
+		return
+//	var/old_max = world.maxx
+	maxx = new_maxx
+	if(!map_load_z_cutoff)
+		return
+//	var/area/global_area = GLOB.areas_by_type[world.area] // We're guaranteed to be touching the global area, so we'll just do this
+//	var/list/to_add = block(old_max + 1, 1, 1, maxx, maxy, map_load_z_cutoff)
+//	global_area.contained_turfs += to_add
+
+/world/proc/increase_max_y(new_maxy, map_load_z_cutoff = maxz)
+	if(new_maxy <= maxy)
+		return
+//	var/old_maxy = maxy
+	maxy = new_maxy
+	if(!map_load_z_cutoff)
+		return
+//	var/area/global_area = GLOB.areas_by_type[world.area] // We're guarenteed to be touching the global area, so we'll just do this
+//	var/list/to_add = block(1, old_maxy + 1, 1, maxx, maxy, map_load_z_cutoff)
+//	global_area.contained_turfs += to_add
+
 /world/proc/incrementMaxZ()
 	maxz++
-	//SSmobs.MaxZChanged()
 
 /** For initializing and starting byond-tracy when BYOND_TRACY is defined
- *	byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
+ * byond-tracy is a useful profiling tool that allows the user to view the CPU usage and execution time of procs as they run.
 */
 /world/proc/prof_init()
 	var/lib
@@ -349,6 +370,63 @@ var/datum/BSQL_Connection/connection
 		else
 			CRASH("unsupported platform")
 
-	var/init = call(lib, "init")()
+	var/init = call_ext(lib, "init")()
 	if("0" != init)
 		CRASH("[lib] init error: [init]")
+
+/world/proc/HandleTestRun()
+	// Wait for the game ticker to initialize
+	Master.sleep_offline_after_initializations = FALSE
+
+#ifdef UNIT_TESTS
+	SSticker.delay_start = TRUE
+#else
+	SSticker.start_immediately = TRUE
+#endif
+	UNTIL(SSticker.initialized)
+
+	// Run unit tests on lobby as neeeded
+#ifdef UNIT_TESTS
+	RunUnitTests(TEST_STAGE_PREGAME)
+	UNTIL(!SSticker.delay_start)
+	SSticker.start_immediately = TRUE
+#endif
+
+	//trigger things to run the whole process
+	SSticker.request_start()
+	CONFIG_SET(number/round_end_countdown, 0)
+
+	var/datum/callback/cb
+#ifdef UNIT_TESTS
+	cb = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(RunUnitTests), TEST_STAGE_GAME)
+#else
+	cb = VARSET_CALLBACK(SSticker, force_ending, TRUE)
+#endif
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), cb, 10 SECONDS))
+
+/world/proc/FinishTestRun()
+	set waitfor = FALSE
+	var/list/fail_reasons
+	if(!GLOB)
+		fail_reasons = list("Missing GLOB!")
+	else if(total_runtimes)
+		fail_reasons = list("Total runtimes: [total_runtimes]")
+#ifdef UNIT_TESTS
+	if(GLOB.failed_any_test)
+		LAZYADD(fail_reasons, "Unit Tests failed!")
+#endif
+	if(!fail_reasons)
+		text2file("Success!", "data/logs/ci/clean_run.lk")
+	else
+		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
+	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src) //shut it down
+
+
+/proc/backfill_runtime_log()
+	if(length(full_init_runtimes))
+		world.log << "========= EARLY RUNTIME ERRORS ========"
+		for(var/line in full_init_runtimes)
+			world.log << line
+		world.log << "======================================="
+		world.log << ""

@@ -2,6 +2,12 @@
 
 //wall
 
+/obj/structure/interior_wall/Initialize()
+	. = ..()
+
+	if(loc.opacity)
+		loc.opacity = FALSE
+
 /obj/structure/interior_wall/apc
 	name = "\improper APC interior wall"
 	icon = 'icons/obj/vehicles/interiors/apc.dmi'
@@ -32,7 +38,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/vehicle/firing_port_weapon
 	name = "M56 FPW handle"
@@ -55,7 +61,7 @@
 	if(!SG_seat)
 		SG_seat = locate() in get_turf(src)
 		if(!SG_seat)
-			. += SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!")
+			. += SPAN_WARNING("ERROR HAS OCCURRED! NO SEAT FOUND, TELL A DEV!")
 			return
 	for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in SG_seat.vehicle.hardpoints)
 		if(FPW.allowed_seat == SG_seat.seat)
@@ -64,13 +70,13 @@
 				break
 	. += SPAN_HELPFUL("Clicking on the [name] while being adjacent to support gunner seat will buckle you in and give you the control of the M56 FPW.")
 
-/obj/structure/prop/vehicle/firing_port_weapon/attack_hand(var/mob/living/carbon/human/H)
+/obj/structure/prop/vehicle/firing_port_weapon/attack_hand(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 	if(!SG_seat)
 		SG_seat = locate() in get_turf(src)
 		if(!SG_seat)
-			to_chat(H, SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!"))
+			to_chat(H, SPAN_WARNING("ERROR HAS OCCURRED! NO SEAT FOUND, TELL A DEV!"))
 			return
 	if(!SG_seat.buckled_mob && !H.buckled)
 		SG_seat.do_buckle(H, H)

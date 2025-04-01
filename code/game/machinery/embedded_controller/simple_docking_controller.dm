@@ -9,13 +9,17 @@
 	docking_program = new/datum/computer/file/embedded_program/docking/simple(src)
 	program = docking_program
 
+/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/Destroy()
+	QDEL_NULL(docking_program)
+	return ..()
+
 //A docking controller program for a simple door based docking port
 /datum/computer/file/embedded_program/docking/simple
 	var/tag_door
 
-/datum/computer/file/embedded_program/docking/simple/New(var/obj/structure/machinery/embedded_controller/M)
+/datum/computer/file/embedded_program/docking/simple/New(obj/structure/machinery/embedded_controller/M)
 	..(M)
-	memory["door_status"] = list(state = "closed", lock = "locked")		//assume closed and locked in case the doors dont report in
+	memory["door_status"] = list(state = "closed", lock = "locked") //assume closed and locked in case the doors dont report in
 
 	if (istype(M, /obj/structure/machinery/embedded_controller/radio/simple_docking_controller))
 		var/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/controller = M
@@ -23,13 +27,14 @@
 		tag_door = controller.tag_door? controller.tag_door : "[id_tag]_hatch"
 
 		spawn(10)
-			signal_door("update")		//signals connected doors to update their status
+			signal_door("update") //signals connected doors to update their status
 
 
 /datum/computer/file/embedded_program/docking/simple/receive_signal(datum/signal/signal, receive_method, receive_param)
 	var/receive_tag = signal.data["tag"]
 
-	if(!receive_tag) return
+	if(!receive_tag)
+		return
 
 	if(receive_tag==tag_door)
 		memory["door_status"]["state"] = signal.data["door_status"]
@@ -52,15 +57,15 @@
 				enable_override()
 
 
-/datum/computer/file/embedded_program/docking/simple/proc/signal_door(var/command)
+/datum/computer/file/embedded_program/docking/simple/proc/signal_door(command)
 	var/datum/signal/signal = new
 	signal.data["tag"] = tag_door
 	signal.data["command"] = command
 	post_signal(signal, RADIO_AIRLOCK)
 
-///datum/computer/file/embedded_program/docking/simple/proc/signal_mech_sensor(var/command)
-//	signal_door(command)
-//	return
+///datum/computer/file/embedded_program/docking/simple/proc/signal_mech_sensor(command)
+// signal_door(command)
+// return
 
 /datum/computer/file/embedded_program/docking/simple/proc/open_door()
 	if(memory["door_status"]["state"] == "closed")
@@ -78,11 +83,11 @@
 
 //tell the docking port to start getting ready for docking - e.g. pressurize
 /datum/computer/file/embedded_program/docking/simple/prepare_for_docking()
-	return		//don't need to do anything
+	return //don't need to do anything
 
 //are we ready for docking?
 /datum/computer/file/embedded_program/docking/simple/ready_for_docking()
-	return 1	//don't need to do anything
+	return 1 //don't need to do anything
 
 //we are docked, open the doors or whatever.
 /datum/computer/file/embedded_program/docking/simple/finish_docking()

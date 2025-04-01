@@ -17,7 +17,7 @@
 		return null
 	return weak_cause.resolve()
 
-/proc/create_cause_data(var/new_cause, var/mob/M = null, var/obj/C = null)
+/proc/create_cause_data(new_cause, mob/M = null, obj/C = null)
 	if(!new_cause)
 		return null
 	var/datum/cause_data/new_data = new()

@@ -7,10 +7,10 @@
 
 // SMES itself
 /obj/structure/machinery/power/smes/buildable
-	var/max_coils = 6 			//30M capacity, 1.5MW input/output when fully upgraded /w default coils
-	var/cur_coils = 1 			// Current amount of installed coils
-	var/safeties_enabled = 1 	// If 0 modifications can be done without discharging the SMES, at risk of critical failure.
-	var/failing = 0 			// If 1 critical failure has occured and SMES explosion is imminent.
+	var/max_coils = 6 //30M capacity, 1.5MW input/output when fully upgraded /w default coils
+	var/cur_coils = 1 // Current amount of installed coils
+	var/safeties_enabled = 1 // If 0 modifications can be done without discharging the SMES, at risk of critical failure.
+	var/failing = 0 // If 1 critical failure has occurred and SMES explosion is imminent.
 	should_be_mapped = 1
 	unslashable = TRUE
 	unacidable = TRUE
@@ -39,7 +39,7 @@
 			capacity += C.ChargeCapacity
 			input_level_max += C.IOCapacity
 			output_level_max += C.IOCapacity
-		charge = between(0, charge, capacity)
+		charge = clamp(charge, 0, capacity)
 		return 1
 	else
 		return 0
@@ -53,7 +53,7 @@
 	// Light Overload - X% chance to overload each lighting circuit in connected powernet. APC based.
 	// APC Failure - X% chance to destroy APC causing very weak explosion too. Won't cause hull breach or serious harm.
 	// SMES Explosion - X% chance to destroy the SMES, in moderate explosion. May cause small hull breach.
-/obj/structure/machinery/power/smes/buildable/proc/total_system_failure(var/intensity = 0, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/proc/total_system_failure(intensity = 0, mob/user as mob)
 	if (!intensity)
 		return
 
@@ -73,7 +73,7 @@
 		if(G.siemens_coefficient == 0)
 			user_protected = 1
 	log_game("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100")
-	message_staff("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 - <A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>")
+	message_admins("SMES FAILURE: <b>[src.x]X [src.y]Y [src.z]Z</b> User: [usr.ckey], Intensity: [intensity]/100 [ADMIN_JMP(src)]")
 
 
 	switch (intensity)
@@ -85,7 +85,7 @@
 			if (user_protected && prob(80))
 				to_chat(h_user, "Small electrical arc almost burns your hand. Luckily you had your gloves on!")
 			else
-				to_chat(h_user, "Small electrical arc sparks and burns your hand as you touch the [src]!")
+				to_chat(h_user, "Small electrical arc sparks and burns your hand as you touch [src]!")
 				h_user.apply_damage(rand(5,10), BURN)
 				h_user.apply_effect(2, PARALYZE)
 			charge = 0
@@ -98,7 +98,7 @@
 			if (user_protected && prob(25))
 				to_chat(h_user, "Medium electrical arc sparks and almost burns your hand. Luckily you had your gloves on!")
 			else
-				to_chat(h_user, "Medium electrical sparks as you touch the [src], severely burning your hand!")
+				to_chat(h_user, "Medium electrical sparks as you touch [src], severely burning your hand!")
 				h_user.apply_damage(rand(10,25), BURN)
 				h_user.apply_effect(5, PARALYZE)
 			spawn(0)
@@ -130,7 +130,7 @@
 			s.set_up(10,1,src)
 			s.start()
 			to_chat(h_user, "Massive electrical arc sparks between you and [src]. Last thing you can think about is \"Oh shit...\"")
-			// Remember, we have few gigajoules of electricity here.. Turn them into crispy toast.
+			// Remember, we have few gigajoules of electricity here... Turn them into crispy toast.
 			h_user.apply_damage(rand(150,195), BURN)
 			h_user.apply_effect(25, PARALYZE)
 			spawn(0)
@@ -142,7 +142,7 @@
 			if (prob(50))
 				// Added admin-notifications so they can stop it when griffed.
 				log_game("SMES explosion imminent.")
-				message_staff("SMES explosion imminent.")
+				message_admins("SMES explosion imminent.")
 				src.ping("DANGER! Magnetic containment field unstable! Containment field failure imminent!")
 				failing = 1
 				// 30 - 60 seconds and then BAM!
@@ -159,7 +159,7 @@
 
 
 	// Gets powernet APCs and overloads lights or breaks the APC completely, depending on percentages.
-/obj/structure/machinery/power/smes/buildable/proc/apcs_overload(var/failure_chance, var/overload_chance)
+/obj/structure/machinery/power/smes/buildable/proc/apcs_overload(failure_chance, overload_chance)
 	if (!src.powernet)
 		return
 
@@ -179,15 +179,16 @@
 	else
 		..()
 
-/obj/structure/machinery/power/smes/buildable/attackby(var/obj/item/W as obj, var/mob/user as mob)
+/obj/structure/machinery/power/smes/buildable/attackby(obj/item/W as obj, mob/user as mob)
 	// No more disassembling of overloaded SMESs. You broke it, now enjoy the consequences.
 	if (failing)
-		to_chat(user, SPAN_WARNING("The [src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
+		to_chat(user, SPAN_WARNING("[src]'s screen is flashing with alerts. It seems to be overloaded! Touching it now is probably not a good idea."))
 		return
 	// If parent returned 1:
 	// - Hatch is open, so we can modify the SMES
 	// - No action was taken in parent function (terminal de/construction atm).
-	if (..())
+	. = ..()
+	if (.)
 
 		// Charged above 1% and safeties are enabled.
 		if((charge > (capacity/100)) && safeties_enabled && !HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
@@ -195,11 +196,11 @@
 			return
 
 		if (outputting || input_attempt)
-			to_chat(user, SPAN_WARNING("Turn off the [src] first!"))
+			to_chat(user, SPAN_WARNING("Turn off [src] first!"))
 			return
 
 		// Probability of failure if safety circuit is disabled (in %)
-		var/failure_probability = round((charge / capacity) * 100)
+		var/failure_probability = floor((charge / capacity) * 100)
 
 		// If failure probability is below 5% it's usually safe to do modifications
 		if (failure_probability < 5)
@@ -212,7 +213,7 @@
 				return
 
 			playsound(get_turf(src), 'sound/items/Crowbar.ogg', 25, 1)
-			to_chat(user, SPAN_WARNING("You begin to disassemble the [src]!"))
+			to_chat(user, SPAN_WARNING("You begin to disassemble [src]!"))
 			if (do_after(usr, 100 * cur_coils * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD)) // More coils = takes longer to disassemble. It's complex so largest one with 5 coils will take 50s
 
 				if (failure_probability && prob(failure_probability))

@@ -5,7 +5,7 @@
 
 	icon_state = "apc_base_med"
 
-	interior_map = "apc_med"
+	interior_map = /datum/map_template/interior/apc_med
 
 
 	passengers_slots = 8
@@ -21,18 +21,18 @@
 
 	seats = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 	active_hp = list(
 		VEHICLE_DRIVER = null,
-		VEHICLE_GUNNER = null
+		VEHICLE_GUNNER = null,
 	)
 
 /obj/vehicle/multitile/apc/medical/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	RRS.roles = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 	RRS.total = 2
 	role_reserved_slots += RRS
 
@@ -42,7 +42,7 @@
 	RRS.total = 1
 	role_reserved_slots += RRS
 
-/obj/vehicle/multitile/apc/medical/add_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/apc/medical/add_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	add_verb(M.client, list(
@@ -59,10 +59,9 @@
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
-/obj/vehicle/multitile/apc/medical/remove_seated_verbs(var/mob/living/M, var/seat)
+/obj/vehicle/multitile/apc/medical/remove_seated_verbs(mob/living/M, seat)
 	if(!M.client)
 		return
 	remove_verb(M.client, list(
@@ -70,6 +69,7 @@
 		/obj/vehicle/multitile/proc/open_controls_guide,
 		/obj/vehicle/multitile/proc/name_vehicle,
 	))
+	SStgui.close_user_uis(M, src)
 	if(seat == VEHICLE_DRIVER)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -79,10 +79,9 @@
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
-/obj/vehicle/multitile/apc/medical/initialize_cameras(var/change_tag = FALSE)
+/obj/vehicle/multitile/apc/medical/initialize_cameras(change_tag = FALSE)
 	if(!camera)
 		camera = new /obj/structure/machinery/camera/vehicle(src)
 	if(change_tag)
@@ -119,7 +118,7 @@
 	APC.update_icon()
 
 //PRESET: only wheels installed
-/obj/effect/vehicle_spawner/apc_med/plain/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+/obj/effect/vehicle_spawner/apc_med/plain/load_hardpoints(obj/vehicle/multitile/apc/medical/V)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints, destroyed
@@ -132,14 +131,14 @@
 	load_damage(APC)
 	APC.update_icon()
 
-/obj/effect/vehicle_spawner/apc_med/decrepit/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+/obj/effect/vehicle_spawner/apc_med/decrepit/load_hardpoints(obj/vehicle/multitile/apc/medical/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
 	V.add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
 
 //PRESET: default hardpoints
-/obj/effect/vehicle_spawner/apc_med/fixed/load_hardpoints(var/obj/vehicle/multitile/apc/medical/V)
+/obj/effect/vehicle_spawner/apc_med/fixed/load_hardpoints(obj/vehicle/multitile/apc/medical/V)
 	V.add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
 	V.add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)

@@ -17,9 +17,9 @@
 	plane = HUD_PLANE
 	layer = ABOVE_HUD_LAYER
 	animate_movement = SLIDE_STEPS
-//	speech_span = SPAN_ROBOT
+// speech_span = SPAN_ROBOT
 	vis_flags = VIS_INHERIT_PLANE
-//	appearance_flags = APPEARANCE_UI
+// appearance_flags = APPEARANCE_UI
 	/// A reference to the object in the slot. Grabs or items, generally.
 	var/obj/master = null
 	/// A reference to the owner HUD, if any.
@@ -37,6 +37,14 @@
 	 * But for now, this works.
 	 */
 	var/del_on_map_removal = TRUE
+
+	/// If FALSE, this will not be cleared when calling /client/clear_screen()
+	var/clear_with_screen = TRUE
+
+/atom/movable/screen/Destroy()
+	master = null
+	hud = null // Not currently ever used
+	return ..()
 
 /**
  * A screen object, which acts as a container for turfs and other things
@@ -100,7 +108,7 @@
 	if(!screen_map.Find(screen_obj))
 		screen_map += screen_obj
 	if(!screen.Find(screen_obj))
-		screen += screen_obj
+		add_to_screen(screen_obj)
 
 /**
  * Clears the map of registered screen objects.
@@ -110,10 +118,11 @@
  * anyway. they're effectively qdel'd.
  */
 /client/proc/clear_map(map_name)
-	if(!map_name || !(map_name in screen_maps))
+	if(!map_name || !screen_maps[map_name])
 		return FALSE
 	for(var/atom/movable/screen/screen_obj in screen_maps[map_name])
 		screen_maps[map_name] -= screen_obj
+		remove_from_screen(screen_obj)
 		if(screen_obj.del_on_map_removal)
 			qdel(screen_obj)
 	screen_maps -= map_name

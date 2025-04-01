@@ -25,28 +25,7 @@
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
 	icon_opened = "syndicate1_open"
-	anchored = 0
-
-/obj/structure/closet/gimmick/russian
-	name = "russian surplus closet"
-	desc = "It's a storage unit for Russian standard-issue surplus."
-	icon_state = "syndicate1"
-	icon_closed = "syndicate1"
-	icon_opened = "syndicate1_open"
-
-/obj/structure/closet/gimmick/russian/Initialize()
-	. = ..()
-	new /obj/item/clothing/head/ushanka(src)
-	new /obj/item/clothing/head/ushanka(src)
-	new /obj/item/clothing/head/ushanka(src)
-	new /obj/item/clothing/head/ushanka(src)
-	new /obj/item/clothing/head/ushanka(src)
-	new /obj/item/clothing/under/soviet(src)
-	new /obj/item/clothing/under/soviet(src)
-	new /obj/item/clothing/under/soviet(src)
-	new /obj/item/clothing/under/soviet(src)
-	new /obj/item/clothing/under/soviet(src)
-
+	anchored = FALSE
 
 /obj/structure/closet/gimmick/tacticool
 	name = "tacticool gear closet"
@@ -70,56 +49,4 @@
 	new /obj/item/clothing/suit/armor/swat(src)
 	new /obj/item/clothing/suit/armor/swat(src)
 
-
-/obj/structure/closet/thunderdome
-	name = "\improper Thunderdome closet"
-	desc = "Everything you need!"
-	icon_state = "syndicate"
-	icon_closed = "syndicate"
-	icon_opened = "syndicate_open"
-	anchored = 1
-/obj/structure/closet/thunderdome/tdred
-	name = "red-team Thunderdome closet"
-
-/obj/structure/closet/thunderdome/tdred/Initialize()
-	. = ..()
-	new /obj/item/clothing/suit/armor/tdome/red(src)
-	new /obj/item/clothing/suit/armor/tdome/red(src)
-	new /obj/item/clothing/suit/armor/tdome/red(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-
-/obj/structure/closet/thunderdome/tdgreen
-	name = "green-team Thunderdome closet"
-	icon_state = "syndicate1"
-	icon_closed = "syndicate1"
-	icon_opened = "syndicate1_open"
-
-/obj/structure/closet/thunderdome/tdgreen/Initialize()
-	. = ..()
-	new /obj/item/clothing/suit/armor/tdome/green(src)
-	new /obj/item/clothing/suit/armor/tdome/green(src)
-	new /obj/item/clothing/suit/armor/tdome/green(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/energy/sword(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/weapon/melee/baton(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/storage/box/flashbangs(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
-	new /obj/item/clothing/head/helmet/thunderdome(src)
 

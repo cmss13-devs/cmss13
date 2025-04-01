@@ -7,7 +7,7 @@
 /datum/decorator/proc/get_decor_types()
 	return null
 
-/datum/decorator/proc/decorate(var/atom/object)
+/datum/decorator/proc/decorate(atom/object)
 	return
 
 // Decorators that are forced during round. They will never initialize

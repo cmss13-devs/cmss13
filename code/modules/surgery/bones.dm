@@ -1,7 +1,7 @@
 //Procedures in this file: Fracture repair surgery
 //Steps will only work in a surgery of /datum/surgery/bone_repair or a child of that due to affected_bone var.
 //////////////////////////////////////////////////////////////////
-//						BONE SURGERY							//
+// BONE SURGERY //
 //////////////////////////////////////////////////////////////////
 
 /datum/surgery/bone_repair
@@ -12,7 +12,7 @@
 	pain_reduction_required = PAIN_REDUCTION_HEAVY
 	steps = list(
 		/datum/surgery_step/mend_bones,
-		/datum/surgery_step/set_bones
+		/datum/surgery_step/set_bones,
 	)
 	var/affected_bone //Used for messaging.
 
@@ -27,7 +27,7 @@
 			if("groin")
 				affected_bone = "pelvis"
 
-/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+/datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, obj/limb/L, obj/item/tool)
 	return L.status & LIMB_BROKEN
 
 //------------------------------------
@@ -37,6 +37,27 @@
 	desc = "repair the fractured bones"
 	tools = SURGERY_TOOLS_BONE_MEND
 	time = 3 SECONDS
+	preop_sound = 'sound/handling/clothingrustle1.ogg'
+	success_sound = 'sound/handling/bandage.ogg'
+	failure_sound = 'sound/surgery/organ2.ogg'
+
+//Use materials to repair bones, same as /datum/surgery_step/mend_encased
+/datum/surgery_step/mend_bones/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
+	. = ..()
+	if(istype(tool, /obj/item/tool/surgery/bonegel)) //If bone gel, use some of the gel
+		var/obj/item/tool/surgery/bonegel/gel = tool
+		if(!gel.use_gel(gel.fracture_fix_cost))
+			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
+			return FALSE
+
+	else //Otherwise, use metal rods
+		var/obj/item/stack/rods/rods = user.get_inactive_hand()
+		if(!istype(rods))
+			to_chat(user, SPAN_BOLDWARNING("You need metal rods in your offhand to repair [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			return FALSE
+		if(!rods.use(2)) //Refunded on failure
+			to_chat(user, SPAN_BOLDWARNING("You need more metal rods to mend [target]'s [surgery.affected_limb.display_name] with [tool]."))
+			return FALSE
 
 /datum/surgery_step/mend_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
@@ -93,6 +114,8 @@
 				SPAN_NOTICE("You slather \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in your [surgery.affected_limb.display_name]."),
 				SPAN_NOTICE("[user] slathers \the [tool] on the broken bones in [target]'s [surgery.affected_limb.display_name]."))
+			user.update_inv_l_hand()
+			user.update_inv_r_hand()
 		else
 			user.affected_message(target,
 				SPAN_NOTICE("You crudely reinforce the bones in [target]'s [surgery.affected_limb.display_name] like [improvised_desc]."),
@@ -115,6 +138,13 @@
 
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to begin repairing bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], aborting [surgery].")
+
+	if(tool_type != /obj/item/tool/surgery/bonegel)
+		to_chat(user, SPAN_NOTICE("The metal rods used on [target]'s [surgery.affected_limb.display_name] fall loose from their [surgery.affected_limb]."))
+		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
+		rods.amount = 2 //Refund 2 rods on failure
+		rods.update_icon()
+
 	return FALSE
 
 //------------------------------------
@@ -124,9 +154,13 @@
 	desc = "set the bones"
 	tools = list(
 		/obj/item/tool/surgery/bonesetter = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE
-		)
+		/obj/item/tool/wrench = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/maintenance_jack = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+	)
 	time = 4 SECONDS
+	preop_sound = 'sound/surgery/hemostat1.ogg'
+	success_sound = 'sound/effects/bone_break6.ogg'
+	failure_sound = 'sound/effects/bone_break1.ogg'
 
 /datum/surgery_step/set_bones/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	switch(surgery.affected_limb.name) //Yet another set of different messages because I just have to be Like This.

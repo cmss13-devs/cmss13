@@ -1,5 +1,0 @@
-author: "ThePiachu"
-delete-after: True
-changes:
-  - qol: "Xenos without plasma won't try building special structures anymore."
-  - code_imp: "Made a variable have a more descriptive name."

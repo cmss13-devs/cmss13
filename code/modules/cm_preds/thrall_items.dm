@@ -9,11 +9,19 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
 	thrall = TRUE
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 	allowed = list(
 		/obj/item/weapon/gun/launcher/spike,
 		/obj/item/weapon/gun/energy/yautja,
-		/obj/item/weapon/melee
+		/obj/item/weapon,
 	)
 
 /obj/item/clothing/suit/armor/yautja/thrall/New(mapload, armor_area = pick("shoulders", "chest", "mix"), armor_number = rand(1,3), armor_material = pick("cloth", "bare"))
@@ -35,11 +43,12 @@
 	)
 	thrall = TRUE
 
-	items_allowed = list(
+	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
-		/obj/item/weapon/melee/throwing_knife,
+		/obj/item/weapon/throwing_knife,
 		/obj/item/weapon/gun/pistol/holdout,
-		/obj/item/weapon/gun/pistol/m43pistol
+		/obj/item/weapon/gun/pistol/clfpistol,
+		/obj/item/weapon/straight_razor,
 	)
 
 /obj/item/clothing/shoes/yautja/thrall/New(mapload, greaves_number = 1, armor_material = pick("cloth", "bare"))
@@ -54,6 +63,13 @@
 	name = "alien mesh suit"
 	color = "#b85440"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight. It has been adapted for human physiology."
+
+/obj/item/clothing/gloves/yautja/thrall
+	name = "thrall bracers"
+	desc = "A pair of strange alien bracers, adapted for human biology."
+
+	color = "#b85440"
+	minimap_icon = "thrall"
 
 /obj/item/storage/box/bracer
 	name = "alien box"

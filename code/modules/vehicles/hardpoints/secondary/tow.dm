@@ -1,17 +1,13 @@
 /obj/item/hardpoint/secondary/towlauncher
-	name = "TOW Launcher"
-	desc = "A secondary weapon for tanks that shoots rockets"
+	name = "\improper TOW Launcher"
+	desc = "A secondary weapon for tanks that shoots rockets. It loads multiple rockets at once."
 
 	icon_state = "tow_launcher"
 	disp_icon = "tank"
 	disp_icon_state = "towlauncher"
 
 	health = 500
-	cooldown = 150
-	accuracy = 0.8
 	firing_arc = 60
-
-	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/towlauncher
 	max_clips = 1
@@ -29,3 +25,7 @@
 		"4" = list(5, -8),
 		"8" = list(-5, 10)
 	)
+
+	scatter = 4
+	fire_delay = 15.0 SECONDS
+

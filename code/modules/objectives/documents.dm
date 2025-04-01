@@ -10,7 +10,7 @@
 	state = OBJECTIVE_ACTIVE
 	controller = TREE_MARINE
 
-/datum/cm_objective/document/New(var/obj/item/document_objective/D)
+/datum/cm_objective/document/New(obj/item/document_objective/D)
 	. = ..()
 	document = D
 	initial_area = get_area(document)
@@ -27,7 +27,7 @@
 /datum/cm_objective/document/get_related_label()
 	return document.label
 
-/datum/cm_objective/document/complete(var/mob/living/carbon/human/user)
+/datum/cm_objective/document/complete(mob/living/carbon/human/user)
 	. = ..()
 
 	SSobjectives.statistics["documents_total_points_earned"] += value
@@ -120,19 +120,19 @@
 	var/reading_time = 10
 	var/objective_type = /datum/cm_objective/document
 	unacidable = TRUE
-	indestructible = 1
+	explo_proof = TRUE
 	is_objective = TRUE
+	ground_offset_x = 9
+	ground_offset_y = 8
 	var/label // label on the document
 	var/renamed = FALSE //Once someone reads a document the item gets renamed based on the objective they are linked to)
 
 /obj/item/document_objective/Initialize(mapload, ...)
 	. = ..()
-	label = "[pick(alphabet_uppercase)][rand(100,999)]"
+	label = "[pick(GLOB.alphabet_uppercase)][rand(100,999)]"
 	objective = new objective_type(src)
 	retrieve_objective = new /datum/cm_objective/retrieve_item/document(src)
 	LAZYADD(objective.enables_objectives, retrieve_objective)
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
 
 /obj/item/document_objective/Destroy()
 	qdel(objective)
@@ -190,6 +190,13 @@
 	desc = "A scrap of paper, you think some of the words might still be readable."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_words"
+	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	w_class = SIZE_TINY
 
 /obj/item/document_objective/report
@@ -197,6 +204,13 @@
 	desc = "A written report from someone for their supervisor about the status of some kind of project."
 	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "paper_p_words"
+	item_state = "paper"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	pickup_sound = 'sound/handling/paper_pickup.ogg'
+	drop_sound = 'sound/handling/paper_drop.ogg'
 	w_class = SIZE_TINY
 	reading_time = 60
 	objective_type = /datum/cm_objective/document/progress_report
@@ -205,6 +219,10 @@
 	name = "Intel folder"
 	desc = "A folder with some documents inside."
 	icon = 'icons/obj/items/paper.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
 	icon_state = "folder"
 	var/folder_color = "white" //display color
 	reading_time = 40
@@ -227,6 +245,7 @@
 		if ("White")
 			folder_color = "#e8eded"
 	icon_state = "folder_[lowertext(col)]"
+	item_state = "folder_[lowertext(col)]"
 	F.color = col
 	F.display_color = folder_color
 	name = "[initial(name)] ([label])"
@@ -241,6 +260,17 @@
 	desc = "A highly specified technical manual, may be of use to someone in the relevant field."
 	icon = 'icons/obj/items/books.dmi'
 	icon_state = "book"
+	item_state = "book_dark"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi',
+	)
+	throw_speed = SPEED_FAST
+	throw_range = 5
+	w_class = SIZE_MEDIUM
+	attack_verb = list("bashed", "whacked", "educated")
+	pickup_sound = "sound/handling/book_pickup.ogg"
+	drop_sound = "sound/handling/book_pickup.ogg"
 	reading_time = 200
 	objective_type = /datum/cm_objective/document/technical_manual
 

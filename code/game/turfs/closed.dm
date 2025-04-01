@@ -1,9 +1,46 @@
-
-
 //turfs with density = TRUE
 /turf/closed
-	density = 1
-	opacity = 1
+	density = TRUE
+	opacity = TRUE
+
+/turf/closed/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/closed/attack_hand(mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return
+
+	var/turf/above_current = SSmapping.get_turf_above(get_turf(src))
+	var/turf/above_user = SSmapping.get_turf_above(get_turf(user))
+
+	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
+		return
+
+	while(above_current.density)
+		above_current = SSmapping.get_turf_above(get_turf(above_current))
+		above_user = SSmapping.get_turf_above(get_turf(above_user))
+
+		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
+			return
+
+	for(var/atom/possible_blocker in above_current)
+		if(possible_blocker.density)
+			return
+
+	if(user.action_busy)
+		return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing up [src]."), SPAN_WARNING("You start climbing up [src]."))
+
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] climbs up [src]."), SPAN_WARNING("You climb up [src]."))
+
+	user.forceMove(above_current)
+	return
+
 
 /turf/closed/insert_self_into_baseturfs()
 	return
@@ -16,6 +53,21 @@
 	icon = 'icons/turf/floors/space.dmi'
 	icon_state = "black"
 	mouse_opacity = FALSE
+
+/// Cordon turf marking z-level boundaries and surrounding reservations
+/turf/closed/cordon
+	name = "world border"
+	icon = 'icons/turf/shuttle.dmi'
+	icon_state = "pwall"
+	layer = ABOVE_TURF_LAYER
+	baseturfs = /turf/closed/cordon
+
+/// Used as placeholder turf when something went really wrong, as per /tg/ string lists handler
+/turf/closed/cordon/debug
+	name = "debug turf"
+	desc = "This turf shouldn't be here and probably result of incorrect turf replacement. Adminhelp about it or report it in an issue."
+	color = "#660088"
+	baseturfs = /turf/closed/cordon/debug
 
 /turf/closed/mineral //mineral deposits
 	name = "Rock"
@@ -30,6 +82,7 @@
 
 		if(istype(turf_to_check,/turf/open))
 			turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
+
 
 //Ground map dense jungle
 /turf/closed/gm
@@ -61,23 +114,15 @@
 		icon_state = "wall2"
 
 
-
-
 //desertdam rock
 /turf/closed/desert_rock
-    name = "rockwall"
-    icon = 'icons/turf/walls/cave.dmi'
-    icon_state = "cavewall1"
-
-
-
-
-
-
-
+	name = "rockwall"
+	icon = 'icons/turf/walls/cave.dmi'
+	icon_state = "cavewall1"
 
 
 //ICE WALLS-----------------------------------//
+
 //Ice Wall
 /turf/closed/ice
 	name = "dense ice wall"
@@ -103,6 +148,27 @@
 /turf/closed/ice/intersection
 	icon_state = "Intersection"
 
+//Ice Secret Wall
+/turf/closed/ice/secret
+	desc = "There is something inside..."
+
+/turf/closed/ice/secret/single
+	icon_state = "Single"
+
+/turf/closed/ice/secret/end
+	icon_state = "End"
+
+/turf/closed/ice/secret/straight
+	icon_state = "Straight"
+
+/turf/closed/ice/secret/corner
+	icon_state = "Corner"
+
+/turf/closed/ice/secret/junction
+	icon_state = "T_Junction"
+
+/turf/closed/ice/secret/intersection
+	icon_state = "Intersection"
 
 
 //Ice Thin Wall
@@ -111,7 +177,7 @@
 	icon = 'icons/turf/walls/icewalllight.dmi'
 	icon_state = "Single"
 	desc = "It is very thin."
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/ice/thin/single
 	icon_state = "Single"
@@ -131,11 +197,27 @@
 /turf/closed/ice/thin/intersection
 	icon_state = "Intersection"
 
-
-//Ice Secret Wall
-/turf/closed/ice/secret
-	icon_state = "ice_wall_0"
+//Thin Ice Secret Wall
+/turf/closed/ice/thin/secret
 	desc = "There is something inside..."
+
+/turf/closed/ice/thin/secret/single
+	icon_state = "Single"
+
+/turf/closed/ice/thin/secret/end
+	icon_state = "End"
+
+/turf/closed/ice/thin/secret/straight
+	icon_state = "Straight"
+
+/turf/closed/ice/thin/secret/corner
+	icon_state = "Corner"
+
+/turf/closed/ice/thin/secret/junction
+	icon_state = "T_Junction"
+
+/turf/closed/ice/thin/secret/intersection
+	icon_state = "Intersection"
 
 
 //ROCK WALLS------------------------------//
@@ -195,11 +277,6 @@
 	icon_state = "corner_overlay"
 
 
-
-
-
-
-
 //SHUTTLE 'WALLS'
 //not a child of turf/closed/wall because shuttle walls are magical, don't smoothes with normal walls, etc
 
@@ -207,6 +284,10 @@
 	name = "wall"
 	icon_state = "wall1"
 	icon = 'icons/turf/shuttle.dmi'
+	layer = ABOVE_TURF_LAYER
+
+/turf/closed/shuttle/is_weedable()
+	return FULLY_WEEDABLE
 
 /turf/closed/shuttle/dropship
 	icon = 'icons/turf/walls/walls.dmi'
@@ -216,14 +297,13 @@
 	icon = 'icons/turf/ert_shuttle.dmi'
 	icon_state = "stan4"
 
-
 /turf/closed/shuttle/dropship1
 	name = "\improper Alamo"
 	icon = 'icons/turf/dropship.dmi'
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship1/transparent
-	opacity = 0
+	opacity = FALSE
 
 /turf/closed/shuttle/dropship2
 	name = "\improper Normandy"
@@ -231,14 +311,45 @@
 	icon_state = "1"
 
 /turf/closed/shuttle/dropship2/transparent
-	opacity = 0
+	opacity = FALSE
 
-/turf/closed/shuttle/dropship2/tornado
-	name = "\improper Tornado"
+/turf/closed/shuttle/twe_dropship
+	name = "\improper UD4-UK"
+	icon = 'icons/turf/twedropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/twe_dropship/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship3
+	name = "\improper Saipan"
 	icon = 'icons/turf/dropship3.dmi'
+	icon_state = "1"
 
-/turf/closed/shuttle/dropship2/tornado/typhoon
+/turf/closed/shuttle/dropship3/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship3/tornado
+	name = "\improper Tornado"
+
+/turf/closed/shuttle/dropship3/tornado/typhoon
 	name = "\improper Typhoon"
+
+/turf/closed/shuttle/upp_dropship
+	name = "\improper Morana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_dropship2
+	name = "\improper Devana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship2/transparent
+	opacity = FALSE
 
 /turf/closed/shuttle/escapepod
 	name = "wall"
@@ -253,7 +364,7 @@
 
 /turf/closed/shuttle/lifeboat/transparent
 	icon_state = "window1"
-	opacity = 0
+	opacity = FALSE
 
 //INSERT EXPLOSION CODE
 /turf/closed/shuttle/lifeboat/proc/transform_crash()
@@ -333,3 +444,15 @@
 
 /turf/closed/shuttle/transit/r_end
 	icon_state = "swall8"
+
+// Hybrisa Shuttles
+
+/turf/closed/shuttle/dropship2/WY/HorizonRunner
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport."
+	icon = 'icons/turf/dropship4.dmi'
+
+/turf/closed/shuttle/dropship2/WY/StarGlider
+	name = "\improper WY-LWI StarGlider SG-200"
+	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, This small dropship is designed for short-range commercial transport."
+	icon = 'icons/turf/dropship4.dmi'

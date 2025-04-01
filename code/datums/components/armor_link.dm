@@ -17,7 +17,7 @@
 
 /datum/component/armor_link/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, .proc/on_equipped)
+	RegisterSignal(parent, COMSIG_ITEM_EQUIPPED, PROC_REF(on_equipped))
 
 /datum/component/armor_link/UnregisterFromParent()
 	. = ..()
@@ -38,8 +38,8 @@
 	if(istype(to_link))
 		link_armor(to_link)
 	else
-		RegisterSignal(M, COMSIG_HUMAN_EQUIPPED_ITEM, .proc/on_human_equipped_item)
-	RegisterSignal(parent, COMSIG_ITEM_DROPPED, .proc/on_unequipped)
+		RegisterSignal(M, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(on_human_equipped_item))
+	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(on_unequipped))
 
 /datum/component/armor_link/proc/on_human_equipped_item(equipper, item, slot)
 	SIGNAL_HANDLER
@@ -51,26 +51,26 @@
 /datum/component/armor_link/proc/link_armor(obj/item/clothing/to_link)
 	var/obj/item/clothing/C = parent
 	if(check_values)
-		C.armor_melee	=			max(C.armor_melee, to_link.armor_melee)
-		C.armor_bullet	=			max(C.armor_bullet, to_link.armor_bullet)
-		C.armor_laser	=			max(C.armor_laser, to_link.armor_laser)
-		C.armor_energy	=			max(C.armor_energy, to_link.armor_energy)
-		C.armor_bomb	=			max(C.armor_bomb, to_link.armor_bomb)
-		C.armor_bio		=			max(C.armor_bio, to_link.armor_bio)
-		C.armor_rad		=			max(C.armor_rad, to_link.armor_rad)
-		C.armor_internaldamage =	max(C.armor_internaldamage, to_link.armor_internaldamage)
+		C.armor_melee = max(C.armor_melee, to_link.armor_melee)
+		C.armor_bullet = max(C.armor_bullet, to_link.armor_bullet)
+		C.armor_laser = max(C.armor_laser, to_link.armor_laser)
+		C.armor_energy = max(C.armor_energy, to_link.armor_energy)
+		C.armor_bomb = max(C.armor_bomb, to_link.armor_bomb)
+		C.armor_bio = max(C.armor_bio, to_link.armor_bio)
+		C.armor_rad = max(C.armor_rad, to_link.armor_rad)
+		C.armor_internaldamage = max(C.armor_internaldamage, to_link.armor_internaldamage)
 	else
-		C.armor_melee	=			to_link.armor_melee
-		C.armor_bullet	=			to_link.armor_bullet
-		C.armor_laser	=			to_link.armor_laser
-		C.armor_energy	=			to_link.armor_energy
-		C.armor_bomb	=			to_link.armor_bomb
-		C.armor_bio		=			to_link.armor_bio
-		C.armor_rad		=			to_link.armor_rad
-		C.armor_internaldamage =	to_link.armor_internaldamage
+		C.armor_melee = to_link.armor_melee
+		C.armor_bullet = to_link.armor_bullet
+		C.armor_laser = to_link.armor_laser
+		C.armor_energy = to_link.armor_energy
+		C.armor_bomb = to_link.armor_bomb
+		C.armor_bio = to_link.armor_bio
+		C.armor_rad = to_link.armor_rad
+		C.armor_internaldamage = to_link.armor_internaldamage
 
 	linked = to_link
-	RegisterSignal(linked, COMSIG_ITEM_DROPPED, .proc/break_link)
+	RegisterSignal(linked, COMSIG_ITEM_DROPPED, PROC_REF(break_link))
 
 /datum/component/armor_link/proc/break_link()
 	SIGNAL_HANDLER
@@ -88,7 +88,7 @@
 	C.reset_armor_rad_value()
 	C.reset_armor_internaldamage_value()
 
-	RegisterSignal(equipped_mob, COMSIG_HUMAN_EQUIPPED_ITEM, .proc/on_human_equipped_item)
+	RegisterSignal(equipped_mob, COMSIG_HUMAN_EQUIPPED_ITEM, PROC_REF(on_human_equipped_item))
 
 /datum/component/armor_link/proc/on_unequipped(parent, unequipper)
 	SIGNAL_HANDLER

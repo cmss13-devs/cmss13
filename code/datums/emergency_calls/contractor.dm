@@ -1,7 +1,7 @@
 /datum/emergency_call/contractors
 	name = "Military Contractors (Squad) (Friendly)"
 	mob_max = 7
-	probability = 20
+	probability = 10
 
 	max_engineers =  1
 	max_medics = 1
@@ -16,7 +16,7 @@
 	objectives = "Ensure the survival of the [MAIN_SHIP_NAME], eliminate any hostiles, and assist the crew in any way possible."
 
 
-/datum/emergency_call/contractors/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/contractors/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -29,7 +29,7 @@
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Contractor Team Leader of Vanguard's Arrow Incorporated!"))
 		arm_equipment(mob, /datum/equipment_preset/contractor/duty/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[mob.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SYNTH) && mob.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Contractor Support Synthetic of Vanguard's Arrow Incorporated!"))
 		arm_equipment(mob, /datum/equipment_preset/contractor/duty/synth, TRUE, TRUE)
@@ -51,11 +51,11 @@
 
 	print_backstory(mob)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/contractors/print_backstory(mob/living/carbon/human/M)
-	if(isHumanStrict(M))
+	if(ishuman_strict(M))
 		to_chat(M, SPAN_BOLD("You were born [pick(60;"in the United States", 20;"on Earth", 20;"on a colony")] to a [pick(75;"average", 15;"poor", 10;"well-established")] family."))
 		to_chat(M, SPAN_BOLD("Joining the USCM gave you a lot of combat experience and useful skills but changed you."))
 		to_chat(M, SPAN_BOLD("After getting out, you couldn't hold a job with the things you saw and did, deciding to put your skills to use you joined a Military Contractor firm."))
@@ -71,7 +71,7 @@
 	to_chat(M, SPAN_BOLD("Under the directive of the VAI executive board, you have been assist in riot control, military aid, and to assist USCMC forces wherever possible."))
 	to_chat(M, SPAN_BOLD("The USCSS Inheritor is staffed with crew of roughly three hundred military contractors, and fifty support personnel."))
 	to_chat(M, SPAN_BOLD("Assist the USCMC Force of the [MAIN_SHIP_NAME] however you can."))
-	to_chat(M, SPAN_BOLD("As a side-objective, VAI has been hired by an unknown benefactor to engage in corporate espionage and sabotage against Weyland-Yutani, avoid direct conflict; you aren't VAISO; but attempt to recover Wey-Yu secrets and plans if possible."))
+	to_chat(M, SPAN_BOLD("As a side-objective, VAI has been hired by an unknown benefactor to engage in corporate espionage and sabotage against Weyland-Yutani, do not get into a fight, but attempt to recover Wey-Yu secrets and plans if possible."))
 
 
 /datum/emergency_call/contractors/platoon
@@ -85,9 +85,9 @@
 	max_synths = 2
 
 /datum/emergency_call/contractors/covert
-	name = "Military Contractors (Covert) (Hostile to WY)"
+	name = "Military Contractors (Covert) (Friendly)"
 	mob_max = 7
-	probability = 0
+	probability = 10
 	max_medics = 1
 	max_engineers = 1
 	max_heavies = 1
@@ -105,7 +105,7 @@
 	objectives += "Sabotage Weyland-Yutani efforts."
 	checked_objective = TRUE
 
-/datum/emergency_call/contractors/covert/create_member(datum/mind/M, var/turf/override_spawn_loc)
+/datum/emergency_call/contractors/covert/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
 	if(!istype(spawn_loc))
@@ -115,15 +115,13 @@
 		check_objective_info()
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(world_view_size)
+	M.transfer_to(H, TRUE)
 
-	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))       //First one spawned is always the leader.
+	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Covert Contractor Team Leader of Vanguard's Arrow Incorporated!"))
 		arm_equipment(H, /datum/equipment_preset/contractor/covert/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Contractor Support Synthetic of Vanguard's Arrow Incorporated!"))
 		arm_equipment(H, /datum/equipment_preset/contractor/covert/synth, TRUE, TRUE)
@@ -145,5 +143,5 @@
 
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
 

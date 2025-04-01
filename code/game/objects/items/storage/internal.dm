@@ -11,10 +11,10 @@
 	name = master_object.name
 
 /obj/item/storage/internal/attack_hand()
-	return		//make sure this is never picked up
+	return //make sure this is never picked up
 
 /obj/item/storage/internal/mob_can_equip()
-	return FALSE	//make sure this is never picked up
+	return FALSE //make sure this is never picked up
 
 //Helper procs to cleanly implement internal storages - storage items that provide inventory slots for other items.
 //These procs are completely optional, it is up to the master item to decide when it's storage get's opened by calling open()
@@ -25,10 +25,10 @@
 //Items that use internal storage have the option of calling this to emulate default storage MouseDrop behaviour.
 //Returns 1 if the master item's parent's MouseDrop() should be called, 0 otherwise. It's strange, but no other way of
 //Doing it without the ability to call another proc's parent, really.
-/obj/item/storage/internal/proc/handle_mousedrop(mob/user as mob, obj/over_object as obj)
+/obj/item/storage/internal/proc/handle_mousedrop(mob/living/carbon/human/user, obj/over_object as obj)
 	if(ishuman(user))
 
-		if(user.lying) //Can't use your inventory when lying
+		if(user.body_position == LYING_DOWN) //Can't use your inventory when lying //what about stuns? don't argue
 			return
 
 		if(QDELETED(master_object))
@@ -42,7 +42,8 @@
 			return FALSE //If we are not in an item, do nothing more.
 
 		var/obj/item/master_item = master_object
-		if(master_item.flags_item & NODROP) return
+		if(master_item.flags_item & NODROP)
+			return
 
 		if(!istype(over_object, /atom/movable/screen))
 			return TRUE
@@ -61,10 +62,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_r_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_r_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 				if("l_hand")
 					if(master_item.time_to_unequip)
 						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
@@ -73,10 +77,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_l_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_l_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 			master_item.add_fingerprint(user)
 			return FALSE
 	return FALSE
@@ -84,13 +91,13 @@
 //Items that use internal storage have the option of calling this to emulate default storage attack_hand behaviour.
 //Returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
 //It's strange, but no other way of doing it without the ability to call another proc's parent, really.
-/obj/item/storage/internal/proc/handle_attack_hand(mob/user as mob, mods)
-	if(user.lying)
+/obj/item/storage/internal/proc/handle_attack_hand(mob/living/user as mob, mods)
+	if(user.body_position == LYING_DOWN) // what about stuns? huh?
 		return FALSE
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.l_store == master_object && !H.get_active_hand())	//Prevents opening if it's in a pocket.
+		if(H.l_store == master_object && !H.get_active_hand()) //Prevents opening if it's in a pocket.
 			H.put_in_hands(master_object)
 			H.l_store = null
 			return FALSE
@@ -102,7 +109,7 @@
 	master_object.add_fingerprint(user)
 	//Checks that it's in the user's inventory somewhere - not safe with items inside storage without additional checks on master_object's end.
 	if(user.contains(master_object))
-		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
+		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]
@@ -121,7 +128,7 @@
 	if(master_object.on_pocket_attackby(W,user))
 		. = ..()
 
-/obj/item/storage/internal/Adjacent(var/atom/neighbor)
+/obj/item/storage/internal/Adjacent(atom/neighbor)
 	return master_object.Adjacent(neighbor)
 
 /obj/item/storage/internal/open(mob/user)
@@ -169,26 +176,26 @@
 
 
 // Marine Helmet Storage
-/obj/item/storage/internal/helmet
+/obj/item/storage/internal/headgear
 	var/list/garb_items
 	var/slots_reserved_for_garb
 
-/obj/item/storage/internal/helmet/can_be_inserted(obj/item/item, stop_messages) //We don't need to stop messages, but it can be left in.
+/obj/item/storage/internal/headgear/can_be_inserted(obj/item/item, mob/user, stop_messages = FALSE) //We don't need to stop messages, but it can be left in.
 	. = ..()
 	if(!.)
 		return
 
 	if(!HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB) && length(contents) - length(garb_items) >= storage_slots - slots_reserved_for_garb)
 		if(!stop_messages)
-			to_chat(usr, SPAN_WARNING("This slot is reserved for helmet accessories!"))
+			to_chat(usr, SPAN_WARNING("This slot is reserved for headgear accessories!"))
 		return FALSE
 
-/obj/item/storage/internal/helmet/_item_insertion(obj/item/item, prevent_warning = FALSE)
+/obj/item/storage/internal/headgear/_item_insertion(obj/item/item, prevent_warning = FALSE)
 	if(HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB))
 		LAZYADD(garb_items, item)
 	return ..()
 
-/obj/item/storage/internal/helmet/_item_removal(obj/item/item, atom/new_location)
+/obj/item/storage/internal/headgear/_item_removal(obj/item/item, atom/new_location)
 	if(HAS_FLAG(item.flags_obj, OBJ_IS_HELMET_GARB))
 		LAZYREMOVE(garb_items, item)
 	return ..()

@@ -1,7 +1,7 @@
-/mob/living/carbon/Xenomorph/say(var/message)
+/mob/living/carbon/xenomorph/say(message)
 	var/verb = "says"
 	var/forced = 0
-	var/message_range = world_view_size
+	var/message_range = GLOB.world_view_size
 
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
@@ -16,23 +16,20 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(dazed > 0)
-		to_chat(src, SPAN_WARNING("You are too dazed to talk."))
-		return
-
 	if(copytext(message, 1, 2) == "*")
-		return emote(copytext(message, 2), player_caused = TRUE)
+		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
+			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
 
 	var/datum/language/speaking = null
 	if(length(message) >= 2)
-		if(can_hivemind_speak && copytext(message,1,2) == ";" && languages.len)
+		if(can_hivemind_speak && copytext(message,1,2) == ";" && length(languages))
 			for(var/datum/language/L in languages)
 				if(L.flags & HIVEMIND)
 					verb = L.speech_verb
 					speaking = L
 					break
 		var/channel_prefix = copytext(message, 1, 3)
-		if(languages.len)
+		if(length(languages))
 			for(var/datum/language/L in languages)
 				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]")
 					verb = L.speech_verb
@@ -56,6 +53,12 @@
 					forced = 1
 					break
 
+	if(!(speaking.flags & HIVEMIND) && HAS_TRAIT(src, TRAIT_LISPING)) // Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
+		var/old_message = message
+		message = lisp_replace(message)
+		if(old_message != message)
+			verb = "lisps"
+
 	if(copytext(message,1,2) == ";")
 		message = trim(copytext(message,2))
 	else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
@@ -78,27 +81,33 @@
 	else
 		hivemind_talk(message)
 
-/mob/living/carbon/Xenomorph/say_understands(var/mob/other,var/datum/language/speaking = null)
+/mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)
 
-	if(isXeno(other))
+	if(isxeno(other))
 		return 1
 	return ..()
 
 
 //General proc for hivemind. Lame, but effective.
-/mob/living/carbon/Xenomorph/proc/hivemind_talk(var/message)
-	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+/mob/living/carbon/xenomorph/proc/hivemind_talk(message)
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_HIVEMIND_TALK, message) & COMPONENT_OVERRIDE_HIVEMIND_TALK)
 		return
 
 	hivemind_broadcast(message, hive)
 
-/mob/living/carbon/proc/hivemind_broadcast(var/message, var/datum/hive_status/hive)
+/mob/living/carbon/proc/hivemind_broadcast(message, datum/hive_status/hive)
 	if(!message || stat || !hive)
 		return
 
-	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions)
+	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions && ROUND_TIME > SSticker.mode.round_time_evolution_ovipositor)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		return
+
+	if(!filter_message(src, message))
 		return
 
 	log_hivemind("[key_name(src)] : [message]")
@@ -117,12 +126,12 @@
 			if(Hu.hivenumber)
 				hear_hivemind = Hu.hivenumber
 
-		if(!QDELETED(S) && (isXeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
-			var/mob/living/carbon/Xenomorph/X = src
+		if(!QDELETED(S) && (isxeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
+			var/mob/living/carbon/xenomorph/X = src
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
-					if(isXenoQueen(src))
+					if(isqueen(src))
 						var/mob/hologram/queen/queen_eye = client?.eye
 						if(istype(queen_eye))
 							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
@@ -136,10 +145,10 @@
 					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
 
 			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
-				if(isXeno(src) && isXeno(S))
+				if(isxeno(src) && isxeno(S))
 					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
-				if(isXenoQueen(src) || hive.leading_cult_sl == src)
+				if(isqueen(src) || hive.leading_cult_sl == src)
 					rendered = SPAN_XENOQUEEN("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else if(istype(X) && IS_XENO_LEADER(X))
 					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")

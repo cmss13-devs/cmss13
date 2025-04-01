@@ -1073,6 +1073,7 @@
 "aeh" = (
 /obj/structure/window_frame/colony,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aei" = (
@@ -1112,6 +1113,7 @@
 /area/lv624/ground/barrens/containers)
 "aeo" = (
 /obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aep" = (
@@ -1208,9 +1210,11 @@
 "aeJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeK" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
@@ -1221,6 +1225,7 @@
 "aeM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/circuitboard/airlock,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeN" = (
@@ -1236,6 +1241,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/tool,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeQ" = (
@@ -1262,6 +1269,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/cable_coil,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeV" = (
@@ -1277,6 +1286,7 @@
 "aeW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeX" = (
@@ -1289,16 +1299,22 @@
 /area/lv624/ground/barrens/containers)
 "aeZ" = (
 /obj/structure/prop/tower,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"afa" = (
-/obj/structure/machinery/power/apc/fully_broken,
-/turf/closed/wall,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "afb" = (
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"afc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "afd" = (
 /obj/structure/fence,
 /turf/open/floor/warning/east,
@@ -44441,8 +44457,8 @@ abm
 abm
 abm
 abm
-afa
-aeP
+aef
+afc
 aeU
 aeK
 aeo

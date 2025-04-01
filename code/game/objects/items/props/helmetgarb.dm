@@ -718,6 +718,10 @@
 	name = "Cat Ears"
 	desc = "The USCM antidepression team used to issue this attachment to soldiers in order to boost morale among the marines. Discontinued after a scientific analysis proved them useless."
 	icon_state = "cat_ears%SQUAD%"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cat_ears.dmi',
+	)
+
 
 	var/static/list/valid_icon_states
 

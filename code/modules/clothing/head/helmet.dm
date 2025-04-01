@@ -293,7 +293,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/family_photo = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/compass = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/bug_spray = NO_GARB_OVERRIDE,
-	/obj/item/prop/helmetgarb/cat_ears = HELMET_GARB_RELAY_ICON_STATE,
+	/obj/item/prop/helmetgarb/cat_ears = PREFIX_HELMET_GARB_OVERRIDE,
 
 	// MISC
 	/obj/item/tool/pen = PREFIX_HELMET_GARB_OVERRIDE, // helmet_

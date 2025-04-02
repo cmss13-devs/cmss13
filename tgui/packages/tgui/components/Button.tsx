@@ -242,16 +242,25 @@ const ButtonConfirm = (props: ConfirmProps) => {
     newState: boolean,
     event: MouseEvent<HTMLDivElement> | undefined,
   ) => {
-    setClickedOnce(newState);
-    if (newState) {
-      setTimeout(() => window.addEventListener('click', handleClickOff));
-    } else {
-      window.removeEventListener('click', handleClickOff);
-      if (event && (props.allowAnyClick || event.button === 0)) {
-        onClick?.(event);
+    if (onConfirmChange) {
+      setClickedOnce(newState);
+      if (newState) {
+        setTimeout(() => window.addEventListener('click', handleClickOff));
+      } else {
+        window.removeEventListener('click', handleClickOff);
+        if (event && (props.allowAnyClick || event.button === 0)) {
+          onClick?.(event);
+        }
       }
+      onConfirmChange(newState);
+    } else {
+      if (!clickedOnce) {
+        setClickedOnce(true);
+        return;
+      }
+      onClick?.(event);
+      setClickedOnce(false);
     }
-    onConfirmChange?.(newState);
   };
 
   function handleClickOff() {

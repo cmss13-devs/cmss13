@@ -215,16 +215,14 @@
 		if(living_mover.ally_of_hivenumber(friendly_hive))
 			return
 
-		//living_mover.apply_status_effect(/datum/status_effect/slow/refresh, slow_amount, 1 SECONDS)
-		living_mover.Slow(1)
+		living_mover.apply_status_effect(/datum/status_effect/slow/refresh, slow_amount, 1 SECONDS)
 
 /obj/effect/xenomorph/slowing_excretion/process()
 	for(var/mob/living/person in loc)
 		if(person.ally_of_hivenumber(friendly_hive))
 			return
 
-		//person.apply_status_effect(/datum/status_effect/slow/refresh, slow_amount, 1 SECONDS)
-		person.Slow(1)
+		person.apply_status_effect(/datum/status_effect/slow/refresh, slow_amount, 1 SECONDS)
 
 
 /datum/action/xeno_action/activable/moba_fling

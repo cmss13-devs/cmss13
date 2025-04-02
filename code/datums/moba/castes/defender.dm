@@ -154,8 +154,7 @@
 			continue
 		if(target.stat == DEAD)
 			continue
-		//target.apply_status_effect(/datum/status_effect/slow, slow, debuff_duration)
-		target.Slow(2)
+		target.apply_status_effect(/datum/status_effect/slow, slow, debuff_duration)
 		var/turf/destination = get_step(target, get_dir(xeno, target))
 		if(LinkBlocked(target, target.loc, destination))
 			SEND_SIGNAL(xeno, COMSIG_MOBA_STUN_GIVEN, target)

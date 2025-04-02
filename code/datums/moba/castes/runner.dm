@@ -65,8 +65,7 @@
 	xeno.a_intent_change(INTENT_HARM)
 	target.attack_alien(xeno)
 	if(isxeno(target))
-		//target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, 1 SECONDS)
-		target.Slow(1)
+		target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, 1 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(additional_slash), target, xeno), 0.3 SECONDS)
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
@@ -109,8 +108,7 @@
 /datum/ammo/xeno/bone_chips/spread/runner_skillshot/moba/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		//M.apply_status_effect(/datum/status_effect/slow, M.cur_speed * slow, duration)
-		M.Slow(floor(duration * 0.1))
+		M.apply_status_effect(/datum/status_effect/slow, M.cur_speed * slow, duration)
 	SEND_SIGNAL(P.firer, COMSIG_XENO_PHYSICAL_ABILITY_HIT, M)
 
 /datum/action/xeno_action/activable/runner_skillshot/moba/level_up_ability(new_level)
@@ -174,8 +172,7 @@
 					is_blocked = TRUE
 			if(is_blocked)
 				continue
-			//target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, duration)
-			target.Slow(floor(duration * 0.1))
+			target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, duration)
 			target.EyeBlur(50)
 			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, ReduceEyeBlur), 50), duration)
 			SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)

@@ -68,7 +68,7 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 			xeno.gib(create_cause_data("enemy team fountain gibbing"))
 
 /obj/effect/moba_instakiller/right
-	hivenumber = XENO_HIVE_MOBA_LEFT
+	bad_hivenumber = XENO_HIVE_MOBA_LEFT
 
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file

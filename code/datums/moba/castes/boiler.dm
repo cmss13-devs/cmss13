@@ -64,6 +64,7 @@
 
 /datum/action/xeno_action/onclick/toggle_acid_trail
 	name = "Gas Trail"
+	desc = "Toggle the release of a trail of acid gas behind you that lingers for 3 seconds. Any enemies stepping into the trail become poisoned for 2 seconds, taking 5/7.5/10 (+15% AP) acid damage every 0.2 seconds. Plasma cost of 15/13/10 per second."
 	action_icon_state = "dump_acid"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -142,6 +143,7 @@
 
 /datum/action/xeno_action/onclick/slowing_excretion
 	name = "Slowing Excretion"
+	desc = "Release slowing secretions in a 1 tile radius centered on yourself, lingering for 3 seconds. All enemies that step into the secretions are slowed by 0.5/0.7/0.9 while they remain inside of it. Cooldown of 12/11/10 seconds. Plasma cost 60/80/100."
 	action_icon_state = "resin_pit"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -227,6 +229,7 @@
 
 /datum/action/xeno_action/activable/moba_fling
 	name = "Fling"
+	desc = "Fling a target several tiles behind you, dealing 50/70/90 (+60% AP) (+7% Target Max HP) acid damage to a target. Cooldown 10/9/8 seconds. Plasma cost 100/80/60."
 	action_icon_state = "fling"
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 10 SECONDS

@@ -53,6 +53,9 @@
 		if (T != X && !should_block_game_interaction(T) && X.hivenumber == T.hivenumber) // Can't overwatch yourself, Xenos in Thunderdome, or Xenos in other hives
 			possible_xenos += T
 
+	if(!length(possible_xenos))
+		return
+
 	var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
 
 	if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || should_block_game_interaction(selected_xeno) || !X.check_state(TRUE))

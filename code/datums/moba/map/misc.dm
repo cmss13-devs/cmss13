@@ -16,6 +16,9 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 /obj/effect/landmark/moba_hive_core
 	var/right_side = FALSE
 
+/obj/effect/landmark/moba_hive_core/right
+	right_side = TRUE
+
 /obj/effect/landmark/moba_hive_core_turret
 
 /obj/effect/landmark/moba_left_boss_spawn

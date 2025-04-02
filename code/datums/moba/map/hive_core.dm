@@ -16,6 +16,7 @@
 	var/map_id
 	var/obj/effect/alien/resin/moba_turret/linked_turret
 	var/turret_type = /obj/effect/alien/resin/moba_turret/left/hive_core
+	var/reuse_obj_spawner_type = /obj/effect/landmark/moba_hive_core
 
 /obj/effect/alien/resin/moba_hive_core/Initialize(mapload, mob/builder)
 	. = ..()
@@ -68,3 +69,4 @@
 	hivenumber = XENO_HIVE_MOBA_RIGHT
 	icon_state = "right_nexus"
 	turret_type = /obj/effect/alien/resin/moba_turret/right/hive_core
+	reuse_obj_spawner_type = /obj/effect/landmark/moba_hive_core/right

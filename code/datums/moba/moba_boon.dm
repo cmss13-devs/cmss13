@@ -11,7 +11,7 @@
 /datum/moba_boon/proc/on_friendly_spawn(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/player_comp)
 	return
 
-/datum/moba_boon/proc/announce_boon(datum/moba_controller/controller, killing_hivenum) //zonenote add warning/vis to towers
+/datum/moba_boon/proc/announce_boon(datum/moba_controller/controller, killing_hivenum)
 	controller.message_team1("The [killing_hivenum == XENO_HIVE_MOBA_LEFT ? "Left Hive" : "Right Hive"] has claimed the [name]. [desc]")
 	controller.message_team2("The [killing_hivenum == XENO_HIVE_MOBA_LEFT ? "Left Hive" : "Right Hive"] has claimed the [name]. [desc]")
 

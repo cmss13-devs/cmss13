@@ -11,7 +11,7 @@
 	if(boon_type)
 		var/datum/moba_boon/boon = new boon_type(controller)
 		boon.on_grant(controller, killing_hive)
-		addtimer(CALLBACK(boon, TYPE_PROC_REF(announce_boon, killing_hive.hivenumber)), 8 SECONDS)
+		addtimer(CALLBACK(boon, TYPE_PROC_REF(/datum/moba_boon, announce_boon), controller, killing_hive.hivenumber), 4 SECONDS)
 		if(killing_hive.hivenumber == XENO_HIVE_MOBA_LEFT)
 			controller.team1_boons += boon
 			for(var/datum/moba_player/player as anything in controller.team1)

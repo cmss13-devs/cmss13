@@ -49,6 +49,7 @@
 // so called metalheads when they meet magnetheads:
 /datum/action/xeno_action/activable/moba_headbutt
 	name = "Headbutt"
+	desc = "Knock back a targeted enemy by 1 tile, stunning them for 1.5/2/2.5 seconds. Additionally deals 30/45/60 (+25% AD) physical damage. Cooldown 8/7.5/7 seconds. Plasma cost 60."
 	action_icon_state = "headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_headbutt
 	action_type = XENO_ACTION_CLICK
@@ -178,6 +179,7 @@
 // "I am fucking invincible" - some bald guy
 /datum/action/xeno_action/onclick/moba_soak
 	name = "Soak"
+	desc = "Take 50% reduced damage from all sources for 3 seconds. During this time, you are unable to attack and have your speed reduced by 0.5. Once the time ends, you gain 125%/150%/175% (+1% bonus HP) of the pre-mitigation damage taken as shields. These shields decay after 4/5/6 seconds. Cooldown of 16/15/14 seconds. Plasma cost 100."
 	action_icon_state = "soak"
 	macro_path = /datum/action/xeno_action/verb/verb_soak
 	action_type = XENO_ACTION_ACTIVATE

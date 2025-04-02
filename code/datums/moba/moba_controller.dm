@@ -146,6 +146,10 @@
 	for(var/obj/effect/moba_camp_spawner/spawner as anything in GLOB.mapless_moba_camps)
 		spawner.set_map_id(map_id)
 
+	for(var/obj/effect/alien/resin/moba_turret/turret as anything in GLOB.mapless_moba_turrets)
+		turret.map_id = map_id
+		GLOB.mapless_moba_turrets -= turret
+
 	for(var/obj/effect/moba_minion_checkpoint/checkpoint as anything in GLOB.uninitialized_moba_checkpoints)
 		checkpoint.set_up_checkpoint(bottom_left_turf)
 
@@ -186,6 +190,19 @@
 
 	for(var/obj/effect/moba_camp_spawner/spawner as anything in GLOB.mapless_moba_camps) // we remake the camp spawners
 		spawner.set_map_id(map_id)
+
+	for(var/obj/effect/alien/resin/moba_turret/turret as anything in GLOB.mapless_moba_turrets)
+		turret.map_id = map_id
+		GLOB.mapless_moba_turrets -= turret
+
+	for(var/obj/effect/landmark/moba_hive_core/nexus in GLOB.landmarks_list)
+		if(nexus.right_side)
+			var/obj/effect/alien/resin/moba_hive_core/right/core = new(get_turf(nexus))
+			core.map_id = map_id
+		else
+			var/obj/effect/alien/resin/moba_hive_core/core = new(get_turf(nexus))
+			core.map_id = map_id
+		qdel(nexus)
 
 	left_base = unused_map.left_base
 	right_base = unused_map.right_base

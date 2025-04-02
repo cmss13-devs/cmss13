@@ -8,6 +8,10 @@
 	},
 /turf/open/floor/hybrisa/engineership/engineer_floor9,
 /area/misc/moba/base)
+"ac" = (
+/obj/effect/alien/resin/moba_turret/right/near_hive,
+/turf/open/gm/dirt,
+/area/misc/moba)
 "ad" = (
 /obj/effect/landmark/moba_hive_core,
 /turf/open/floor/hybrisa/engineership/engineer_floor4,
@@ -27,7 +31,7 @@
 /turf/open/floor/hybrisa/engineership/engineer_floor4,
 /area/misc/moba)
 "ah" = (
-/obj/effect/alien/resin/moba_turret/right,
+/obj/effect/alien/resin/moba_turret/right/front,
 /turf/open/gm/dirt,
 /area/misc/moba)
 "ai" = (
@@ -314,7 +318,7 @@
 /area/misc/moba)
 "bp" = (
 /obj/effect/moba_minion_checkpoint/right/bot_straight1,
-/obj/effect/alien/resin/moba_turret/right,
+/obj/effect/alien/resin/moba_turret/right/back,
 /turf/open/gm/dirt/desert2,
 /area/misc/moba)
 "bq" = (
@@ -9029,9 +9033,21 @@
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /turf/open/space/basic,
 /area/space)
+"AE" = (
+/obj/effect/alien/resin/moba_turret/left/near_hive/top,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
+/area/misc/moba)
+"AF" = (
+/obj/effect/alien/resin/moba_turret/right/near_hive/top,
+/turf/open/gm/dirt,
+/area/misc/moba)
+"AG" = (
+/obj/effect/alien/resin/moba_turret/right/front/top,
+/turf/open/gm/dirt,
+/area/misc/moba)
 "AH" = (
 /obj/effect/moba_minion_checkpoint/right/top_straight1,
-/obj/effect/alien/resin/moba_turret/right,
+/obj/effect/alien/resin/moba_turret/right/back/top,
 /turf/open/gm/dirt/desert_dug,
 /area/misc/moba)
 "AI" = (
@@ -9152,7 +9168,7 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/effect/alien/resin/moba_turret/left,
+/obj/effect/alien/resin/moba_turret/left/back,
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "Be" = (
@@ -9160,11 +9176,11 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/effect/decal/hybrisa/road/lines2,
-/obj/effect/alien/resin/moba_turret/left,
+/obj/effect/alien/resin/moba_turret/left/front,
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "Bf" = (
-/obj/effect/alien/resin/moba_turret/left,
+/obj/effect/alien/resin/moba_turret/left/near_hive,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/misc/moba)
 "Bg" = (
@@ -9245,7 +9261,7 @@
 	icon_state = "road_edge_decal3"
 	},
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/effect/alien/resin/moba_turret/left,
+/obj/effect/alien/resin/moba_turret/left/back/top,
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "Bp" = (
@@ -9253,7 +9269,7 @@
 	icon_state = "road_edge_decal3"
 	},
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/effect/alien/resin/moba_turret/left,
+/obj/effect/alien/resin/moba_turret/left/front/top,
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "Bq" = (
@@ -10449,7 +10465,7 @@ vO
 fB
 gD
 gD
-Bf
+AE
 gD
 gD
 fB
@@ -14652,7 +14668,7 @@ aj
 aj
 aq
 bE
-ah
+AG
 bj
 bj
 aO
@@ -17403,7 +17419,7 @@ wS
 gb
 ga
 fx
-ah
+AF
 qo
 qn
 gC
@@ -17421,7 +17437,7 @@ gC
 gb
 ko
 hE
-ah
+ac
 gU
 gV
 gB

@@ -58,6 +58,7 @@
 
 /datum/action/xeno_action/activable/xeno_spit/marking
 	name = "Marking Spit"
+	desc = "Spit at a target, dealing 27.5/40/52.5 (+60% AP) acid damage and increasing the target's damage taken by 10/15/20% for 3 seconds. Cooldown 5 seconds."
 	action_icon_state = "breathe_fire" // looks cool
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	spit_projectile_type = /obj/projectile/moba_spitter
@@ -128,6 +129,7 @@
 	generated_projectile.ammo.penetration = armorpen_list[1]
 
 /datum/action/xeno_action/activable/spray_acid/moba
+	desc = "Spit a slow-moving blast of acid that leaves a trail behind. Being directly hit by the acid deals 40/60/80 (+70% AP) acid damage. Stepping into the acid trail slows the target and deals 10/15/20 (+30% AP) acid damage per second for 2 seconds. Cooldown 10 seconds."
 	plasma_cost = 90
 	xeno_cooldown = 10 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_2
@@ -196,6 +198,7 @@
 // Perhaps the most boring ability on the planet. Oh Well!
 /datum/action/xeno_action/activable/xeno_spit/moba
 	name = "Acid Spit"
+	desc = "Spit at a target, dealing 25/40/52.5 (+90% AP) acid damage. Cooldown 5/4.5/4 seconds."
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	spit_projectile_type = /obj/projectile/moba_spitter
 	var/real_cooldown = 5 SECONDS

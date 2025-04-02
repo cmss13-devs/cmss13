@@ -151,6 +151,22 @@ const MainTab = () => {
                 throughout the jungle, or by walking back if you think it's
                 safer.
               </Collapsible>
+              <Collapsible title="Why does my health and plasma regenerate so slowly?">
+                You gain extremely fast health and plasma regeneration while in
+                the hazard-marked area in your base. So, if you get low on
+                either, it may be a good idea to go back to your base to refill.
+              </Collapsible>
+              <Collapsible title="Why did I get a caste I didn't pick?">
+                You are not guaranteed to get a caste you picked, especially if
+                there are a lot of people trying to pick that caste.
+              </Collapsible>
+              <Collapsible title="How do I know what my abilities do?">
+                You can examine your ability buttons to see what they do.
+              </Collapsible>
+              <Collapsible title="What are the bosses for?">
+                All bosses grant a very strong temporary or permanent boon to
+                the hive that kills them.
+              </Collapsible>
             </Box>
           </Collapsible>
         </Box>

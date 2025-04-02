@@ -78,7 +78,10 @@
 			parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
 		return
 
-	if(locate(/mob/living/carbon/xenomorph) in range(5, home_turf))
+	var/mob/living/carbon/xenomorph/target_nearby = locate() in range(5, home_turf)
+	if(target_nearby)
+		parent_simplemob.stance = HOSTILE_STANCE_ATTACK
+		parent_simplemob.target_mob_ref = WEAKREF(target_nearby)
 		return
 
 	returning_to_home = TRUE

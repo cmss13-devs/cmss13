@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(mapless_moba_turrets)
+
 /datum/ammo/xeno/acid/turret
 	name = "strong acid spit"
 	icon_state = "xeno_acid_weak"
@@ -30,12 +32,14 @@
 	pixel_y = -32
 
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/map_id
 
 	var/firing_cooldown_time = 2 SECONDS
 	COOLDOWN_DECLARE(firing_cooldown)
 	var/range = 5
 	var/datum/ammo/used_ammo
 	var/datum/weakref/last_fired_target
+	var/turret_name = "unknown turret"
 	/// Every time the turret fires at a player, we add a stack of heat. Heat increases damage by matter of projectile_damage * 1.4^H
 	/// Heat decays after a few seconds of not shooting at anything
 	var/heat_stacks = 0
@@ -44,9 +48,12 @@
 	/// How much gold to give to each person on the enemy team when this tower is destroyed
 	var/global_gold_bounty = 50
 
+	var/attacked_warning_cooldown_time = 15 SECONDS
+	COOLDOWN_DECLARE(attacked_warning_cooldown)
 
 /obj/effect/alien/resin/moba_turret/Initialize(mapload, hivenum, hivecore_turret = FALSE)
 	. = ..()
+	GLOB.mapless_moba_turrets += src
 	used_ammo = new /datum/ammo/xeno/acid/turret
 	if(hivenum)
 		hivenumber = hivenum
@@ -167,6 +174,13 @@
 		if(HAS_TRAIT(M, TRAIT_MOBA_STRUCTURESHRED))
 			health -= MOBA_HIVEBOT_BOON_TRUE_DAMAGE
 		healthcheck()
+		if(COOLDOWN_FINISHED(src, attacked_warning_cooldown) && map_id)
+			var/datum/moba_controller/controller = SSmoba.get_moba_controller(map_id)
+			if(hivenumber == XENO_HIVE_MOBA_LEFT)
+				controller.message_team1("Our [turret_name] is being attacked!", null)
+			else
+				controller.message_team2("Our [turret_name] is being attacked!", null)
+			COOLDOWN_START(src, attacked_warning_cooldown, attacked_warning_cooldown_time)
 		return XENO_ATTACK_ACTION
 
 /obj/effect/alien/resin/moba_turret/healthcheck()
@@ -177,31 +191,60 @@
 	hivenumber = XENO_HIVE_MOBA_LEFT
 	icon_state = "left_turret"
 
+/obj/effect/alien/resin/moba_turret/left/front
+	turret_name = "bottom primary turret"
+
+/obj/effect/alien/resin/moba_turret/left/front/top
+	turret_name = "top primary turret"
+
 /obj/effect/alien/resin/moba_turret/left/back
 	health = 2250
 	gold_bounty = 500
+	turret_name = "bottom secondary turret"
+
+/obj/effect/alien/resin/moba_turret/left/back/top
+	turret_name = "top secondary turret"
 
 /obj/effect/alien/resin/moba_turret/left/near_hive
 	health = 2250
 	gold_bounty = 375
+	turret_name = "bottom teritary turret"
+
+/obj/effect/alien/resin/moba_turret/left/near_hive/top
+	turret_name = "top teritary turret"
 
 /obj/effect/alien/resin/moba_turret/left/hive_core
 	range = 6
 	health = 5125 // 75% more HP than standard
-
+	turret_name = "hivecore turret"
 
 /obj/effect/alien/resin/moba_turret/right
 	hivenumber = XENO_HIVE_MOBA_RIGHT
 	icon_state = "right_turret"
 
+/obj/effect/alien/resin/moba_turret/right/front
+	turret_name = "bottom primary turret"
+
+/obj/effect/alien/resin/moba_turret/right/front/top
+	turret_name = "top primary turret"
+
 /obj/effect/alien/resin/moba_turret/right/back
 	health = 2250
 	gold_bounty = 500
+	turret_name = "bottom secondary turret"
+
+/obj/effect/alien/resin/moba_turret/right/back/top
+	turret_name = "top secondary turret"
 
 /obj/effect/alien/resin/moba_turret/right/near_hive
 	health = 2250
 	gold_bounty = 375
+	turret_name = "bottom teritary turret"
+
+/obj/effect/alien/resin/moba_turret/right/near_hive/top
+	turret_name = "top teritary turret"
 
 /obj/effect/alien/resin/moba_turret/right/hive_core
 	range = 6
 	health = 5125 // 75% more HP than standard
+	turret_name = "hivecore turret"

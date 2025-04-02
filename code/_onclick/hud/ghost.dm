@@ -40,6 +40,8 @@
 	var/client/client = usr.client
 	client.toggle_ghost_hud()
 
+GLOBAL_VAR_INIT(stop_moba, FALSE)
+
 /atom/movable/screen/ghost/moba
 	name = "MOBA"
 	icon_state = "minigames" //placeholder
@@ -51,6 +53,10 @@
 
 	if(SSticker.mode.round_finished)
 		to_chat(usr, SPAN_WARNING("You cannot start a new game after the round has finished."))
+		return
+
+	if(GLOB.stop_moba)
+		to_chat(usr, SPAN_WARNING("The MOBA minigame has been disabled for this round."))
 		return
 
 	var/mob/dead/observer/ghost = usr

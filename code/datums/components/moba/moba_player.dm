@@ -484,6 +484,9 @@
 
 		possible_things += ward
 
+	if(!length(possible_things))
+		return
+
 	var/atom/selected_thing = tgui_input_list(parent_xeno, "Target", "Watch what?", possible_things, theme="hive_status")
 
 	if(isxeno(selected_thing))

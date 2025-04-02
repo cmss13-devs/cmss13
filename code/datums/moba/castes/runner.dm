@@ -25,7 +25,7 @@
 	ending_armor = 5
 	starting_acid_armor = 0
 	ending_acid_armor = 5
-	speed = -0.1
+	speed = 0
 	attack_delay_modifier = 0.6
 	starting_attack_damage = 37.5
 	ending_attack_damage = 60

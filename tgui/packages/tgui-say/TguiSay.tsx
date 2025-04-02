@@ -50,6 +50,7 @@ export function TguiSay() {
   const [position, setPosition] = useState([window.screenX, window.screenY]);
   const [value, setValue] = useState('');
   const [extraChannels, setExtraChennels] = useState<Array<Channel>>([]);
+  const [rescale, setRescale] = useState(false);
 
   function handleArrowKeys(direction: KEY.Up | KEY.Down): void {
     const chat = chatHistory.current;
@@ -228,6 +229,7 @@ export function TguiSay() {
 
     setButtonContent(iterator.current());
     windowOpen(iterator.current(), scale);
+    setRescale(true);
   }
 
   function handleProps(data: ByondProps): void {
@@ -247,7 +249,13 @@ export function TguiSay() {
     setCurrentPrefix(null);
     setButtonContent(channelIterator.current.current());
     setValue('');
+    setRescale(false);
   }
+
+  useEffect(() => {
+    setSize(WindowSize.Small);
+    windowSet(WindowSize.Small, scale);
+  }, [rescale]);
 
   /** Subscribe to Byond messages */
   useEffect(() => {

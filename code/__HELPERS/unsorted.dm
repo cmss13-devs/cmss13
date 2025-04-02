@@ -141,7 +141,7 @@
 //
 // This is a copy-and-paste of the Enter() proc for turfs with tweaks related to the applications
 // of LinkBlocked
-/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget)
+/proc/LinkBlocked(atom/movable/mover, turf/start_turf, turf/target_turf, list/atom/forget, return_list = FALSE)
 	if (!mover)
 		return null
 
@@ -152,6 +152,7 @@
 
 	var/fd1 = fdir & (fdir-1)
 	var/fd2 = fdir - fd1
+	var/list/list_to_return = list()
 
 	/// The direction that mover's path is being blocked by
 	var/blocking_dir = 0
@@ -169,7 +170,10 @@
 		A = obstacle
 		blocking_dir |= A.BlockedExitDirs(mover, fdir)
 		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			return A
+			if(!return_list)
+				return A
+			else
+				list_to_return += A
 
 	// Check for atoms in adjacent turf EAST/WEST
 	if (fd1 && fd1 != fdir)
@@ -177,7 +181,10 @@
 		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 			blocking_dir |= fd1
 			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-				return T
+				if(!return_list)
+					return T
+				else
+					list_to_return += T
 		for (obstacle in T)
 			if(obstacle in forget)
 				continue
@@ -187,7 +194,10 @@
 			if (A.BlockedExitDirs(mover, fd2) || A.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-					return A
+					if(!return_list)
+						return A
+					else
+						list_to_return += A
 				break
 
 	// Check for atoms in adjacent turf NORTH/SOUTH
@@ -196,7 +206,10 @@
 		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 			blocking_dir |= fd2
 			if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-				return T
+				if(!return_list)
+					return T
+				else
+					list_to_return += T
 		for (obstacle in T)
 			if(obstacle in forget)
 				continue
@@ -206,13 +219,19 @@
 			if (A.BlockedExitDirs(mover, fd1) || A.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2
 				if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-					return A
+					if(!return_list)
+						return A
+					else
+						list_to_return += A
 				break
 
 	// Check the turf itself
 	blocking_dir |= target_turf.BlockedPassDirs(mover, fdir)
 	if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-		return target_turf
+		if(!return_list)
+			return target_turf
+		else
+			list_to_return += target_turf
 	for (obstacle in target_turf) // Finally, check atoms in the target turf
 		if(obstacle in forget)
 			continue
@@ -220,11 +239,14 @@
 			continue
 		A = obstacle
 		blocking_dir |= A.BlockedPassDirs(mover, fdir)
-		if((fd1 && blocking_dir == fd1) || (fd2 && blocking_dir == fd2))
-			return A
-		if((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
-			return A
+		if ((!fd1 || blocking_dir & fd1) && (!fd2 || blocking_dir & fd2))
+			if(!return_list)
+				return A
+			else
+				list_to_return += A
 
+	if(return_list)
+		return list_to_return
 	return null // Nothing found to block the link of mover from start_turf to target_turf
 
 
@@ -1768,6 +1790,57 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 
 		if(NORTHWEST)
 			return list(NORTHWEST, NORTH, WEST)
+
+/// Makes a given dir cardinal. If the dir is non-cardinal, it will return both cardinal directions that make up the direction. Else, it will be a single-entry list returned.
+/proc/make_dir_cardinal(direction)
+	switch(direction)
+		if(NORTH)
+			return list(NORTH)
+
+		if(EAST)
+			return list(EAST)
+
+		if(SOUTH)
+			return list(SOUTH)
+
+		if(WEST)
+			return list(WEST)
+
+		if(NORTHEAST)
+			return list(NORTH, EAST)
+
+		if(SOUTHEAST)
+			return list(EAST, SOUTH)
+
+		if(SOUTHWEST)
+			return list(SOUTH, WEST)
+
+		if(NORTHWEST)
+			return list(NORTH, WEST)
+
+//straight directions get priority over diagonal directions in edge cases
+/proc/angle2dir4ai(angle)
+	if(isnull(angle))
+		return null
+	switch(angle) // 80/10 degrees diagonals/cardinals respectively
+		if (40 to 50)
+			return NORTHEAST
+		if (130 to 140)
+			return SOUTHEAST
+		if (220 to 230)
+			return SOUTHWEST
+		if (310 to 320)
+			return NORTHWEST
+		if (0 to 40)
+			return NORTH
+		if (50 to 130)
+			return EAST
+		if (140 to 220)
+			return SOUTH
+		if (230 to 310)
+			return WEST
+		else
+			return NORTH
 
 /// Returns TRUE if the target is somewhere that the game should not interact with if possible
 /// In this case, admin Zs and tutorial areas

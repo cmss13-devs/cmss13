@@ -1,0 +1,5 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - balance: "You can no longer construct resin structures, plant eggs or build barricades within a one tile radius of multiz stairs"
+  - qol: "Moved multiz stairs layer up for visual clarity"

@@ -207,7 +207,14 @@
 
 	for(var/datum/moba_queue_player/player_data as anything in team1_data)
 		var/datum/moba_player/player = player_data.player
-		var/mob/living/carbon/xenomorph/xeno = new player_data.caste.equivalent_xeno_path
+		var/path_to_spawn
+		if(!player_data.caste || !player_data.caste.equivalent_caste_path)
+			player_data.caste = GLOB.moba_castes[/mob/living/carbon/xenomorph/lurker/vampire]
+			path_to_spawn = /mob/living/carbon/xenomorph/lurker/vampire
+			message_admins("PLAYER DATA [player_data] IS FUCKED")
+		else
+			path_to_spawn = player_data.caste.equivalent_xeno_path
+		var/mob/living/carbon/xenomorph/xeno = new path_to_spawn
 		xeno.forceMove(left_base)
 		xeno.set_hive_and_update(XENO_HIVE_MOBA_LEFT)
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, FALSE)
@@ -224,7 +231,14 @@
 	for(var/datum/moba_queue_player/player_data as anything in team2_data)
 		var/datum/moba_player/player = player_data.player
 		player.right_team = TRUE
-		var/mob/living/carbon/xenomorph/xeno = new player_data.caste.equivalent_xeno_path
+		var/path_to_spawn
+		if(!player_data.caste || !player_data.caste.equivalent_caste_path)
+			player_data.caste = GLOB.moba_castes[/mob/living/carbon/xenomorph/lurker/vampire]
+			path_to_spawn = /mob/living/carbon/xenomorph/lurker/vampire
+			message_admins("PLAYER DATA [player_data] IS FUCKED")
+		else
+			path_to_spawn = player_data.caste.equivalent_xeno_path
+		var/mob/living/carbon/xenomorph/xeno = new path_to_spawn
 		xeno.forceMove(right_base)
 		xeno.set_hive_and_update(XENO_HIVE_MOBA_RIGHT)
 		xeno.AddComponent(/datum/component/moba_player, player, map_id, TRUE)
@@ -388,7 +402,7 @@
 		SEND_SIGNAL(player.get_tied_xeno(), COMSIG_MOBA_GET_LEVEL, level_list)
 		total_level_count += level_list[1]
 
-	game_level = clamp(floor(total_level_count * (1 / MOBA_TOTAL_PLAYERS)), 1, 12)
+	game_level = clamp(floor(total_level_count / MOBA_TOTAL_PLAYERS), 1, 12)
 
 /datum/moba_controller/proc/end_game(losing_hive)
 	set waitfor = FALSE

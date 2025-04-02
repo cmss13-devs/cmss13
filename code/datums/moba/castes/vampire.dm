@@ -19,8 +19,8 @@
 	ending_health_regen = 6
 	starting_plasma = 400
 	ending_plasma = 800
-	starting_plasma_regen = 1.2
-	ending_plasma_regen = 3.6
+	starting_plasma_regen = 2.4
+	ending_plasma_regen = 7.2
 	starting_armor = 0
 	ending_armor = 20
 	starting_acid_armor = 0

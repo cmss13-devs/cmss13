@@ -110,9 +110,12 @@ const PlayerEntry = (props) => {
       </Box>
       <Box style={{ marginLeft: '5%' }}>{player.creep_score} CS</Box>
       <Box style={{ marginLeft: '5%', width: '100%' }}>
-        {player.items.map((item) => (
-          <ItemEntry item={item} key={item} />
-        ))}
+        {player.items.length ? (
+          player.items.map((item) => <ItemEntry item={item} key={item} />)
+        ) : (
+          // eslint-disable-next-line react/jsx-no-useless-fragment
+          <></>
+        )}
       </Box>
     </Box>
   );

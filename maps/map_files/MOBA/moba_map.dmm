@@ -8,10 +8,6 @@
 	},
 /turf/open/floor/hybrisa/engineership/engineer_floor9,
 /area/misc/moba/base)
-"ac" = (
-/obj/effect/alien/resin/moba_shop,
-/turf/open/floor/hybrisa/engineership/engineer_floor13/north,
-/area/misc/moba/base)
 "ad" = (
 /obj/effect/landmark/moba_hive_core,
 /turf/open/floor/hybrisa/engineership/engineer_floor4,
@@ -5888,6 +5884,10 @@
 /obj/effect/moba_unslashinator,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/misc/moba)
+"sb" = (
+/obj/effect/alien/resin/moba_shop,
+/turf/open/floor/hybrisa/engineership/engineer_floor13/west,
+/area/misc/moba/base/fountain)
 "sc" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/effect/moba_unslashinator,
@@ -6934,6 +6934,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/misc/moba)
+"uZ" = (
+/obj/effect/alien/resin/moba_shop/right,
+/turf/open/floor/corsat/squareswood/north,
+/area/misc/moba/base/fountain)
 "va" = (
 /obj/effect/moba_camptarget_trigger,
 /turf/open/floor/plating/warnplate/north,
@@ -9478,7 +9482,7 @@ ss
 iH
 ls
 mW
-mW
+sb
 mW
 ic
 mW
@@ -9761,7 +9765,7 @@ uy
 jw
 jx
 ra
-ac
+ra
 ra
 nI
 nI
@@ -18256,7 +18260,7 @@ ju
 lo
 lo
 Ba
-AS
+uZ
 AX
 ne
 AX

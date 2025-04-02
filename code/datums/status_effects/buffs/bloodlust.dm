@@ -19,7 +19,7 @@
 		return
 	var/lifesteal_value = lifesteal_holder[1]
 	lifesteal_value -= given_player_lifesteal
-	given_player_lifesteal = floor(stacks * 0.01) // 1 stack = .1% lifesteal, floored
+	given_player_lifesteal = floor(stacks * 0.001) // 1 stack = .1% lifesteal, floored
 	SEND_SIGNAL(owner, COMSIG_MOBA_SET_LIFESTEAL, (lifesteal_value + given_player_lifesteal))
 	if(owner.hud_used?.locate_leader)
 		owner.hud_used.locate_leader.maptext = "<span class='maptext' style='color: red'>Bloodlust: <b>[stacks]</b></span>"

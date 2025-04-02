@@ -111,6 +111,8 @@
 			held_items += item
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
 
+	parent_xeno.maptext = MAPTEXT("Lv [player_datum.level]")
+
 	START_PROCESSING(SSprocessing, src)
 
 /datum/component/moba_player/Destroy(force, silent)
@@ -165,6 +167,7 @@
 	) // We refresh this because we're a level higher, so more XP on kill
 	parent_xeno.balloon_alert(parent_xeno, "Level up!", "#9723c4")
 	parent_xeno.xeno_jitter(15)
+	parent_xeno.maptext = MAPTEXT("Lv [player_datum.level]")
 
 /datum/component/moba_player/process(delta_time)
 	handle_effects()
@@ -181,7 +184,10 @@
 		parent_xeno.updatehealth()
 
 	if(parent_xeno.plasma_stored < parent_xeno.plasma_max)
-		parent_xeno.plasma_stored += (parent_xeno.body_position == LYING_DOWN || parent_xeno.resting) ? (plasma_value_standing * MOBA_RESTING_HEAL_MULTIPLIER) : plasma_value_standing
+		var/plasma_to_regen = (parent_xeno.body_position == LYING_DOWN || parent_xeno.resting) ? (plasma_value_standing * MOBA_RESTING_HEAL_MULTIPLIER) : plasma_value_standing
+		if(istype(get_area(parent_xeno), /area/misc/moba/base/fountain))
+			plasma_to_regen *= MOBA_FOUNTAIN_HEAL_MULTIPLIER
+		parent_xeno.plasma_stored += plasma_to_regen
 
 /datum/component/moba_player/proc/handle_effects()
 	if(!parent_xeno.hud_used)

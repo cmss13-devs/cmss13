@@ -204,7 +204,7 @@
 		xeno.plasma_stored += plasma
 
 /datum/moba_item/proc/apply_plasma_regen(mob/living/carbon/xenomorph/xeno, datum/moba_player/player, datum/component/moba_player/component)
-	component.healing_value_standing += plasma_regen
+	component.plasma_value_standing += plasma_regen
 
 /datum/moba_item/proc/apply_armor(mob/living/carbon/xenomorph/xeno, datum/moba_player/player)
 	xeno.armor_deflection_buff += armor

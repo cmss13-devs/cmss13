@@ -5,6 +5,7 @@
 	icon_state = "acid_pillar_idle"
 	can_block_movement = TRUE
 	density = TRUE
+	unacidable = TRUE
 	var/hivenumber = XENO_HIVE_MOBA_LEFT
 
 /obj/effect/alien/resin/moba_shop/Initialize(mapload, mob/builder)
@@ -14,7 +15,6 @@
 	set_hive_data(src, hivenumber)
 
 /obj/effect/alien/resin/moba_shop/attack_alien(mob/living/carbon/xenomorph/M)
-	. = ..()
 	if(M.hive.hivenumber != hivenumber)
 		return
 

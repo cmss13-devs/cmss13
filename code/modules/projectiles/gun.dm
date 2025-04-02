@@ -47,6 +47,8 @@
 	var/fire_rattle = null
 	var/unload_sound = 'sound/weapons/flipblade.ogg'
 	var/empty_sound = 'sound/weapons/smg_empty_alarm.ogg'
+	//Sound for when you try to shoot but the gun is empty.
+	var/list/dry_fire_sound = list('sound/weapons/gun_empty.ogg')
 	//We don't want these for guns that don't have them.
 	var/reload_sound = null
 	var/cocked_sound = null
@@ -1207,15 +1209,15 @@ and you're good to go.
 	var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
 
 	if(params) // Apply relative clicked position from the mouse info to offset projectile
-		if(!params["click_catcher"])
-			if(params["vis-x"])
-				projectile_to_fire.p_x = text2num(params["vis-x"])
-			else if(params["icon-x"])
-				projectile_to_fire.p_x = text2num(params["icon-x"])
-			if(params["vis-y"])
-				projectile_to_fire.p_y = text2num(params["vis-y"])
-			else if(params["icon-y"])
-				projectile_to_fire.p_y = text2num(params["icon-y"])
+		if(!params[CLICK_CATCHER])
+			if(params[VIS_X])
+				projectile_to_fire.p_x = text2num(params[VIS_X])
+			else if(params[ICON_X])
+				projectile_to_fire.p_x = text2num(params[ICON_X])
+			if(params[VIS_Y])
+				projectile_to_fire.p_y = text2num(params[VIS_Y])
+			else if(params[ICON_Y])
+				projectile_to_fire.p_y = text2num(params[ICON_Y])
 			var/atom/movable/clicked_target = original_target
 			if(istype(clicked_target))
 				projectile_to_fire.p_x -= clicked_target.bound_width / 2
@@ -1609,6 +1611,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		return TRUE
 	if(user.is_mob_incapacitated())
 		return
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if(world.time < guaranteed_delay_time)
 		return
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0))
@@ -1692,11 +1696,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	return TRUE
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)
-	if(user)
-		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
-		playsound(user, 'sound/weapons/gun_empty.ogg', 25, 1, 5) //5 tile range
+	var/actual_sound = pick(dry_fire_sound)
+	var/dry_fire_text
+	var/obj/item/weapon/gun/current_gun = src
+	if(istype(current_gun, /obj/item/weapon/gun/flamer))
+		dry_fire_text = "<b>*pshhhh*</b>"
 	else
-		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
+		dry_fire_text = "<b>*click*</b>"
+
+	if(user)
+		to_chat(user, SPAN_WARNING(dry_fire_text))
+		playsound(user, actual_sound, 25, 1, 5) //5 tile range
+	else
+		playsound(current_gun, actual_sound, 25, 1, 5)
 
 /obj/item/weapon/gun/proc/display_ammo(mob/user)
 	// Do not display ammo if you have an attachment
@@ -2024,7 +2036,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.

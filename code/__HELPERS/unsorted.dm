@@ -438,22 +438,37 @@
 
 	return target
 
-/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+/**
+ * An alternative to orange() that should perform better for distances >= 5 because
+ * of ORANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, excluding center (and
+ * its contents). Ignores visibility (like orange).
+ */
+/proc/long_orange(dist=0, atom/center)
 	if(!dist)
-		if(!orange)
-			return list(center)
-		else
-			return list()
+		return list()
 
-	var/list/turfs = RANGE_TURFS(dist, center)
-	if(orange)
-		turfs -= get_turf(center)
+	var/list/turfs = ORANGE_TURFS(dist, center)
 	. = list()
-	for(var/turf/T as anything in turfs)
-		. += T
-		. += T.contents
-		if(areas)
-			. |= T.loc
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
+	. -= center // If center isn't a turf
+
+/**
+ * An alternative to range() that should perform better for distances >= 5 because
+ * of RANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, including center (and its
+ * contents if a turf). Ignores visibility (like range).
+ */
+/proc/long_range(dist=0, atom/center)
+	var/list/turfs = RANGE_TURFS(dist, center)
+	. = list()
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
@@ -874,33 +889,33 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(busy_user, target) > max_dist)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something["left"] || \
-			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
+		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something[LEFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something[LEFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something["right"] || \
-			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
+		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something[RIGHT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something[RIGHT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["shift"] || \
-			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
+		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[SHIFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[SHIFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["alt"] || \
-			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
+		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[ALT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[ALT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["ctrl"] || \
-			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
+		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[CTRL_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[CTRL_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something["middle"] || \
-			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something[MIDDLE_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something[MIDDLE_CLICK])
 		)
 			. = FALSE
 			break

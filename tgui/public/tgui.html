@@ -200,14 +200,35 @@
     }
   };
 
+  let MAX_PACKET_SIZE = 1024;
+
   Byond.sendMessage = function (type, payload) {
     var message = typeof type === 'string'
       ? { type: type, payload: payload }
       : type;
     // JSON-encode the payload
+
     if (message.payload !== null && message.payload !== undefined) {
       message.payload = JSON.stringify(message.payload);
+
+      if(!Byond.TRIDENT && message.payload.length > MAX_PACKET_SIZE) {
+        var chunks = [];
+
+        for(var i = 0, charsLength = message.payload.length; i < charsLength; i += MAX_PACKET_SIZE) {
+          chunks.push(message.payload.substring(i, i + MAX_PACKET_SIZE))
+        }
+
+        for(var i = 0; i < chunks.length; i++) {
+          var to_send = chunks[i]
+
+          message = { type: type, packet: to_send, packetId: i + 1, totalPackets: chunks.length, tgui: 1, window_id: Byond.windowId };
+          Byond.topic(message);
+        }
+
+        return;
+      }
     }
+
     // Append an identifying header
     assign(message, {
       tgui: 1,
@@ -325,6 +346,18 @@
       if (!sync) {
         node.media = 'only x';
       }
+      var removeNodeAndRetry = function () {
+        node.parentNode.removeChild(node);
+        node = null;
+        retry();
+      }
+      // 516: Chromium won't call onload() if there is a 404 error
+      // Legacy IE doesn't use onerror, so we retain that
+      // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#stylesheet_load_events
+      node.onerror = function () {
+        node.onerror = null;
+        removeNodeAndRetry();
+      }
       node.onload = function () {
         node.onload = null;
         if (isStyleSheetLoaded(node, url)) {
@@ -332,10 +365,7 @@
           node.media = 'all';
           return;
         }
-        // Try again
-        node.parentNode.removeChild(node);
-        node = null;
-        retry();
+        removeNodeAndRetry();
       };
       injectNode(node);
       return;
@@ -349,6 +379,39 @@
   Byond.loadCss = function (url, sync) {
     loadAsset({ url: url, sync: sync, type: 'css' });
   };
+
+  Byond.saveBlob = function (blob, filename, ext) {
+    if (window.navigator.msSaveBlob) {
+      window.navigator.msSaveBlob(blob, filename)
+    } else if (window.showSaveFilePicker) {
+      var accept = {};
+      accept[blob.type] = [ext];
+
+      var opts = {
+        suggestedName: filename,
+        types: [
+          {
+            description: "SS13 file",
+            accept: accept,
+          }
+        ]
+      }
+
+      try {
+        window.showSaveFilePicker(opts).then(function (fileHandle) {
+          fileHandle.createWritable().then(function (writeableFileHandle) {
+            writeableFileHandle.write(blob).then(function () {
+              writeableFileHandle.close()
+            }).catch(function (e) { console.error(e) });
+          }).catch(function (e) { console.error(e) });
+        }).catch(function (e) { console.error(e) });
+      } catch (e) { console.error(e) }
+
+    }
+  };
+
+  // Icon cache
+  Byond.iconRefMap = {};
 })();
 
 // Error handling
@@ -610,7 +673,7 @@ blink {
 <!-- Fatal error container -->
 <div id="FatalError" class="FatalError">
 <div class="FatalError__logo">
-  \+++++\@@@@@@@@@@/++++\@@@@@@@@@@/+++++/
+ \+++++\@@@@@@@@@@/++++\@@@@@@@@@@/+++++/
   \+++++\@``````@/++*+*+\@``````@/+++++/
    \+++++\@````@/++++++++\@````@/+++++/
     \+++++\@``@/++++++++++\@``@/+++++/

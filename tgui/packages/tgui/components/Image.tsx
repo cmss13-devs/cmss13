@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 import { useRef } from 'react';
 
 import { BoxProps, computeBoxProps } from './Box';
@@ -41,7 +40,6 @@ export function Image(props: Props) {
   const computedProps = computeBoxProps(rest);
   computedProps['style'] = {
     ...computedProps.style,
-    '-ms-interpolation-mode': fixBlur ? 'nearest-neighbor' : 'auto',
     'image-rendering': `${fixBlur ? 'pixelated' : 'auto'}`,
     objectFit,
   };

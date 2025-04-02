@@ -209,9 +209,9 @@
 		var/datum/moba_player/player = player_data.player
 		var/path_to_spawn
 		if(!player_data.caste || !player_data.caste.equivalent_caste_path)
+			message_admins("PLAYER DATA [player_data] IS FUCKED. [player_data.caste] | [player_data.caste?.equivalent_caste_path] | [player_data.player.tied_ckey]")
 			player_data.caste = GLOB.moba_castes[/mob/living/carbon/xenomorph/lurker/vampire]
 			path_to_spawn = /mob/living/carbon/xenomorph/lurker/vampire
-			message_admins("PLAYER DATA [player_data] IS FUCKED")
 		else
 			path_to_spawn = player_data.caste.equivalent_xeno_path
 		var/mob/living/carbon/xenomorph/xeno = new path_to_spawn
@@ -235,9 +235,9 @@
 		player.right_team = TRUE
 		var/path_to_spawn
 		if(!player_data.caste || !player_data.caste.equivalent_caste_path)
+			message_admins("PLAYER DATA [player_data] IS FUCKED. [player_data.caste] | [player_data.caste?.equivalent_caste_path] | [player_data.player.tied_ckey]")
 			player_data.caste = GLOB.moba_castes[/mob/living/carbon/xenomorph/lurker/vampire]
 			path_to_spawn = /mob/living/carbon/xenomorph/lurker/vampire
-			message_admins("PLAYER DATA [player_data] IS FUCKED")
 		else
 			path_to_spawn = player_data.caste.equivalent_xeno_path
 		var/mob/living/carbon/xenomorph/xeno = new path_to_spawn

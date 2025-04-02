@@ -140,7 +140,8 @@ SUBSYSTEM_DEF(moba)
 	// How it works is that we just take a person from the list and force them into a role as needed
 	// First we try to find a caste that fits the role, but if not we go for w/e
 	if((panic_ticks >= panic_tick_max) && length(team1_needed_roles))
-		message_admins("Autofilling team 1 for MOBA")
+		if(running_simulation)
+			message_admins("Autofilling team 1 for MOBA")
 		var/list/available_castes = list()
 		for(var/datum/moba_caste/caste as anything in GLOB.moba_castes)
 			if(caste in already_taken_castes_team1)
@@ -173,7 +174,8 @@ SUBSYSTEM_DEF(moba)
 				randomized_queue -= player
 
 	if((panic_ticks >= panic_tick_max) && length(team2_needed_roles))
-		message_admins("Autofilling team 2 for MOBA")
+		if(running_simulation)
+			message_admins("Autofilling team 2 for MOBA")
 		var/list/available_castes = list()
 		for(var/datum/moba_caste/caste as anything in GLOB.moba_castes)
 			if(caste in already_taken_castes_team2)

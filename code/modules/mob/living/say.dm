@@ -83,15 +83,19 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return TRUE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
-/mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon)
-
-	var/mutable_appearance/speech_bubble = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon][bubble_name]", TYPING_LAYER)
+/mob/living/proc/show_speech_bubble(bubble_name, bubble_type = bubble_icon, looping_bubble = FALSE, bubble_prefix = TRUE)
+	var/mutable_appearance/speech_bubble
+	if(bubble_prefix)
+		speech_bubble = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon][bubble_name]", TYPING_LAYER)
+	else
+		speech_bubble = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_name]", TYPING_LAYER)
 	speech_bubble.pixel_x = bubble_icon_x_offset
 	speech_bubble.pixel_y = bubble_icon_y_offset
 
 	overlays += speech_bubble
 
-	addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
+	if(!looping_bubble)
+		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 /mob/living/proc/remove_speech_bubble(mutable_appearance/speech_bubble, list_of_mobs)
 	overlays -= speech_bubble

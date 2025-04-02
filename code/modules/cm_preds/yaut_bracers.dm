@@ -1248,7 +1248,7 @@
 	set src in usr
 	. = translate_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/caller, forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller || caller.stat)
 		return
 
@@ -1260,9 +1260,9 @@
 		to_chat(caller, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
-	caller.create_typing_indicator()
+	caller.show_speech_bubble(bubble_name = "pred_translator", looping_bubble = TRUE, bubble_prefix = FALSE)
 	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	caller.remove_typing_indicator()
+	caller.remove_speech_bubble()
 	if(!msg || !caller.client)
 		return
 

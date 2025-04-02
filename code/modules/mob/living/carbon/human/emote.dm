@@ -165,7 +165,7 @@
 	if(!.)
 		return FALSE
 
-	user.show_speech_bubble("medic")
+	user.show_speech_bubble("medic", bubble_prefix = FALSE)
 
 /datum/emote/living/carbon/human/medic/run_langchat(mob/user, group)
 	if(!ishuman_strict(user))
@@ -211,7 +211,7 @@
 	if(!.)
 		return FALSE
 
-	user.show_speech_bubble("pain")
+	user.show_speech_bubble("pain", bubble_prefix = FALSE)
 
 /datum/emote/living/carbon/human/pain/run_langchat(mob/user, group)
 	if(!ishuman_strict(user))
@@ -251,7 +251,7 @@
 	if(!.)
 		return FALSE
 
-	user.show_speech_bubble("scream")
+	user.show_speech_bubble("scream", bubble_prefix = FALSE)
 
 /datum/emote/living/carbon/human/scream/run_langchat(mob/user, group)
 	if(!ishuman_strict(user))
@@ -357,7 +357,7 @@
 	if(!.)
 		return FALSE
 
-	user.show_speech_bubble("warcry")
+	user.show_speech_bubble("warcry", bubble_prefix = FALSE)
 
 /datum/emote/living/carbon/human/warcry/get_sound(mob/living/user)
 	if(ishumansynth_strict(user))
@@ -377,7 +377,7 @@
 	if(!.)
 		return
 
-	user.show_speech_bubble("scream")
+	user.show_speech_bubble("scream", bubble_prefix = FALSE)
 
 /datum/emote/living/carbon/human/burstscream
 	key = "burstscream"
@@ -398,4 +398,4 @@
 	if(!.)
 		return FALSE
 
-	user.show_speech_bubble("pain")
+	user.show_speech_bubble("pain", bubble_prefix = FALSE)

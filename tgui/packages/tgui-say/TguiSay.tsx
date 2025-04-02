@@ -253,7 +253,6 @@ export function TguiSay() {
   }
 
   useEffect(() => {
-    setSize(WindowSize.Small);
     windowSet(WindowSize.Small, scale);
   }, [rescale]);
 

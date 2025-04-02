@@ -66,7 +66,7 @@ SYNTHETIC
 	)
 
 /datum/skills/dzho_automaton
-	name = SYNTH_WORKING_JOE
+	name = SYNTH_UPP_JOE
 	skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER, //They are supposed to be kinda robust
 		SKILL_ENGINEER = SKILL_ENGINEER_MASTER, //So they can fully use the Maintenance Jack

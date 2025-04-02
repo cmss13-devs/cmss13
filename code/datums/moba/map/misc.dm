@@ -52,7 +52,7 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 
 /obj/effect/moba_instakiller
 	invisibility = INVISIBILITY_MAXIMUM
-	var/hivenumber = XENO_HIVE_MOBA_LEFT
+	var/bad_hivenumber = XENO_HIVE_MOBA_RIGHT
 
 /obj/effect/moba_instakiller/Initialize()
 	. = ..()
@@ -64,11 +64,11 @@ GLOBAL_LIST_EMPTY(moba_reuse_object_spawners)
 
 	if(isxeno(mover))
 		var/mob/living/carbon/xenomorph/xeno = mover
-		if(xeno.hivenumber != hivenumber)
+		if(xeno.hivenumber == bad_hivenumber)
 			xeno.gib(create_cause_data("enemy team fountain gibbing"))
 
 /obj/effect/moba_instakiller/right
-	hivenumber = XENO_HIVE_MOBA_RIGHT
+	hivenumber = XENO_HIVE_MOBA_LEFT
 
 /obj/structure/flora/grass/tallgrass/jungle/moba
 	cut_level = 1 // Magic number because we don't have the defines in this file

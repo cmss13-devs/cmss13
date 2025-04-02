@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", FLY_LAYER)
+		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", TYPING_LAYER)
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)

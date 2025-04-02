@@ -14186,6 +14186,10 @@
 	pixel_y = -13;
 	pixel_x = -17
 	},
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/ammo_magazine/rifle,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aKt" = (
@@ -14194,6 +14198,10 @@
 	layer = 2.1;
 	pixel_y = -8;
 	pixel_x = -6
+	},
+/obj/effect/landmark/map_item,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -21566,6 +21574,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/map_item,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "aYY" = (
@@ -23109,6 +23118,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
+/obj/effect/landmark/map_item,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "bbQ" = (
@@ -25160,6 +25170,7 @@
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/almayer/blue/southwest,
 /area/tyrargo/landing_zone_2/ceiling)
 "bge" = (
@@ -26644,6 +26655,7 @@
 "bjn" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_box/magazine/misc/mre/empty,
+/obj/effect/landmark/map_item,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "bjo" = (
@@ -38375,6 +38387,7 @@
 /area/tyrargo/landing_zone_1)
 "bJd" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/map_item,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1)
 "bJe" = (
@@ -60909,6 +60922,11 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/oob)
+"dcb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/map_item,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north)
 "dcc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2/west,
@@ -60917,6 +60935,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrowncorners2,
 /area/tyrargo/underground)
+"dce" = (
+/obj/effect/landmark/map_item,
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "dcf" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -60957,6 +60979,10 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
+"dcn" = (
+/obj/effect/landmark/map_item,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "dco" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -67892,6 +67918,7 @@
 	pixel_x = 9;
 	pixel_y = -12
 	},
+/obj/effect/landmark/map_item,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/west)
 "pvN" = (
@@ -70515,6 +70542,7 @@
 	pixel_x = 3;
 	pixel_y = 7
 	},
+/obj/effect/landmark/map_item,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/colony_streets/west)
 "uol" = (
@@ -133628,7 +133656,7 @@ bME
 bNk
 bNk
 bNw
-bNa
+dcn
 bMZ
 bNl
 bMY
@@ -135996,7 +136024,7 @@ bqV
 bMr
 bMr
 adw
-bMG
+dce
 aOY
 bzi
 bzi
@@ -147473,7 +147501,7 @@ cpQ
 cpQ
 coc
 csO
-cpQ
+dcb
 mcG
 crk
 agg

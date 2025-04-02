@@ -13,8 +13,8 @@
 	category = MOBA_ARCHETYPE_CASTER
 	icon_state = "spitter"
 	ideal_roles = list(MOBA_LANE_SUPPORT, MOBA_LANE_BOT)
-	starting_health = 380
-	ending_health = 1520
+	starting_health = 350
+	ending_health = 1200
 	starting_health_regen = 1.2
 	ending_health_regen = 4.8
 	starting_plasma = 400
@@ -25,7 +25,7 @@
 	ending_armor = 0
 	starting_acid_armor = 0
 	ending_acid_armor = 5
-	speed = 1.1
+	speed = 0.6
 	attack_delay_modifier = 0
 	starting_attack_damage = 27
 	ending_attack_damage = 42

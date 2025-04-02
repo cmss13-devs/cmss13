@@ -13,8 +13,8 @@
 	category = MOBA_ARCHETYPE_ASSASSIN
 	icon_state = "runner"
 	ideal_roles = list(MOBA_LANE_JUNGLE)
-	starting_health = 400
-	ending_health = 1600
+	starting_health = 360
+	ending_health = 1200
 	starting_health_regen = 1.3
 	ending_health_regen = 5.1
 	starting_plasma = 300
@@ -25,7 +25,7 @@
 	ending_armor = 5
 	starting_acid_armor = 0
 	ending_acid_armor = 5
-	speed = 0.4
+	speed = -0.1
 	attack_delay_modifier = 0.6
 	starting_attack_damage = 37.5
 	ending_attack_damage = 60
@@ -68,7 +68,8 @@
 /datum/ammo/xeno/bone_chips/spread/runner_skillshot/moba/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		M.apply_status_effect(/datum/status_effect/slow, M.cur_speed * slow, duration)
+		//M.apply_status_effect(/datum/status_effect/slow, M.cur_speed * slow, duration)
+		M.Slow(floor(duration * 0.1))
 	SEND_SIGNAL(P.firer, COMSIG_XENO_PHYSICAL_ABILITY_HIT, M)
 
 /datum/action/xeno_action/activable/runner_skillshot/moba/level_up_ability(new_level)
@@ -118,7 +119,8 @@
 	xeno.a_intent_change(INTENT_HARM)
 	target.attack_alien(xeno)
 	if(isxeno(target))
-		target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, 1 SECONDS)
+		//target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, 1 SECONDS)
+		target.Slow(1)
 
 	addtimer(CALLBACK(src, PROC_REF(additional_slash), target, xeno), 0.3 SECONDS)
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
@@ -168,7 +170,8 @@
 				continue
 			if(LinkBlocked(xeno, get_turf(xeno), target, list(target)))
 				continue
-			target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, duration)
+			//target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, duration)
+			target.Slow(floor(duration * 0.1))
 			target.EyeBlur(25)
 			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, ReduceEyeBlur), 25), duration)
 			SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
@@ -180,7 +183,7 @@
 /datum/action/xeno_action/onclick/moba_kick_dirt/level_up_ability(new_level)
 	xeno_cooldown = src::xeno_cooldown - ((new_level - 1) * (2 SECONDS))
 	slow = src::slow + ((new_level - 1) * 0.05)
-	duration = src::duration + new_level - 1
+	duration = src::duration + ((new_level - 1) * 10)
 
 	desc = "Kick dirt up in an area behind you. All enemies within the region have their vision blurred and their speed reduced by [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 10, 15, 20)]% for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 2, 3, 4)] seconds. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 22, 20, 18)] seconds. Plasma cost of 90."
 
@@ -207,12 +210,11 @@
 // Nyooom vrrrrrrmmmmm
 /datum/action/xeno_action/onclick/in_the_zone
 	name = "In The Zone"
-	desc = "For 6/8/10 seconds, gain a -0.5 speed bonus and ignore 15/25/35% of all attacks targeted at you. Cooldown 120/105/90 seconds. Plasma cost of 100."
 	action_icon_state = "tumble"
 	xeno_cooldown = 120 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	plasma_cost = 100
-	var/speed_bonus = -0.5
+	var/speed_bonus = -0.4
 	var/evasion = 15 // %
 	var/duration = 6 SECONDS
 
@@ -234,4 +236,4 @@
 	evasion = src::evasion + ((new_level - 1) * 10)
 	duration = src::duration + ((new_level - 1) * (2 SECONDS))
 
-	desc = "For [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 6, 8, 10)] seconds, gain a -0.5 speed bonus and ignore [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 15, 25, 35)]% of all attacks targeted at you. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 105, 90)] seconds. Plasma cost of 100."
+	desc = "For [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 6, 8, 10)] seconds, gain a -0.4 speed bonus and ignore [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 15, 25, 35)]% of all attacks targeted at you. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 105, 90)] seconds. Plasma cost of 100."

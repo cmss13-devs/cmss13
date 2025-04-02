@@ -1201,8 +1201,11 @@
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
 "eb" = (
-/turf/open/floor/hybrisa/engineership/engineer_floor8,
-/area/misc/moba/base/fountain)
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/engineership/engineer_floor9,
+/area/misc/moba/base)
 "ec" = (
 /obj/structure/roof/hybrisa/lattice_prop/lattice_3{
 	layer = 8;
@@ -2584,6 +2587,7 @@
 /area/misc/moba)
 "ic" = (
 /obj/effect/landmark/moba_base,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/west,
 /area/misc/moba/base/fountain)
 "id" = (
@@ -4111,9 +4115,11 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform1{
 	dir = 8
 	},
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor9,
 /area/misc/moba/base/fountain)
 "mW" = (
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/west,
 /area/misc/moba/base/fountain)
 "mX" = (
@@ -4161,6 +4167,7 @@
 /obj/effect/landmark/moba_base{
 	right_side = 1
 	},
+/obj/effect/moba_instakiller/right,
 /turf/open/shuttle/red,
 /area/misc/moba/base/fountain)
 "nf" = (
@@ -4368,6 +4375,9 @@
 /area/misc/moba/base)
 "nF" = (
 /obj/effect/decal/hybrisa/hull_angled2,
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor3,
 /area/misc/moba/base/fountain)
 "nG" = (
@@ -5251,6 +5261,9 @@
 /obj/effect/decal/hybrisa/hull_angled2{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor3,
 /area/misc/moba/base/fountain)
 "qu" = (
@@ -5886,6 +5899,8 @@
 /area/misc/moba)
 "sb" = (
 /obj/effect/alien/resin/moba_shop,
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor13/west,
 /area/misc/moba/base/fountain)
 "sc" = (
@@ -6936,6 +6951,8 @@
 /area/misc/moba)
 "uZ" = (
 /obj/effect/alien/resin/moba_shop/right,
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/moba_instakiller/right,
 /turf/open/floor/corsat/squareswood/north,
 /area/misc/moba/base/fountain)
 "va" = (
@@ -9055,50 +9072,61 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/misc/moba)
 "AR" = (
-/turf/open/floor/hybrisa/engineership/engineer_floor1,
-/area/misc/moba/base/fountain)
+/turf/open/floor/hybrisa/engineership/engineer_floor13/west,
+/area/misc/moba/base)
 "AS" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/moba_instakiller/right,
 /turf/open/floor/corsat/squareswood/north,
 /area/misc/moba/base/fountain)
 "AT" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	icon_state = "p_stair_full"
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 8
 	},
-/turf/open/floor/strata/grey_multi_tiles,
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/moba_instakiller,
+/turf/open/floor/hybrisa/engineership/engineer_floor9,
 /area/misc/moba/base/fountain)
 "AU" = (
 /obj/effect/decal/hybrisa/hull_angled,
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor8,
 /area/misc/moba/base/fountain)
 "AV" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform1{
 	dir = 8
 	},
+/obj/effect/moba_instakiller,
 /turf/open/floor/plating/engineer_ship,
 /area/misc/moba/base/fountain)
 "AW" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor4,
 /area/misc/moba/base/fountain)
 "AX" = (
+/obj/effect/moba_instakiller/right,
 /turf/open/shuttle/red,
 /area/misc/moba/base/fountain)
 "AY" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor3,
 /area/misc/moba/base/fountain)
 "AZ" = (
 /obj/effect/decal/hybrisa/hull_angled{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/moba_instakiller,
 /turf/open/floor/hybrisa/engineership/engineer_floor8,
 /area/misc/moba/base/fountain)
 "Ba" = (
-/obj/structure/stairs/perspective{
-	color = "#6b675e";
-	dir = 1;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/strata/grey_multi_tiles,
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/moba_instakiller,
+/turf/open/floor/hybrisa/engineership/engineer_floor13/west,
 /area/misc/moba/base/fountain)
 "Bb" = (
 /obj/structure/flora/grass/tallgrass/jungle/moba{
@@ -9255,10 +9283,20 @@
 	},
 /turf/open/floor/almayer,
 /area/misc/moba)
+"BF" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/moba_instakiller/right,
+/turf/open/shuttle/red,
+/area/misc/moba/base/fountain)
 "BG" = (
 /obj/effect/moba_minion_checkpoint/left/top_straight4,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/misc/moba)
+"Cj" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/moba_instakiller/right,
+/turf/open/floor/corsat/squareswood/north,
+/area/misc/moba/base/fountain)
 "Eh" = (
 /obj/effect/moba_minion_checkpoint/right/top_straight4,
 /turf/open/floor/almayer/blackfull,
@@ -9299,6 +9337,24 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/misc/moba)
+"PF" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N,
+/obj/effect/moba_instakiller/right,
+/turf/open/floor/corsat/squareswood/north,
+/area/misc/moba/base/fountain)
+"Rn" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform1{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/moba_instakiller,
+/turf/open/floor/hybrisa/engineership/engineer_floor9,
+/area/misc/moba/base/fountain)
+"Rs" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/moba_instakiller,
+/turf/open/floor/hybrisa/engineership/engineer_floor13/west,
+/area/misc/moba/base/fountain)
 "RR" = (
 /turf/open/floor,
 /area/misc/moba)
@@ -9306,6 +9362,12 @@
 /obj/effect/moba_camp_spawner/marine,
 /turf/open/floor/almayer/blackfull/west,
 /area/misc/moba)
+"SS" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/moba_instakiller/right,
+/turf/open/floor/corsat/squareswood/north,
+/area/misc/moba/base/fountain)
 "TH" = (
 /obj/effect/moba_minion_checkpoint/left/bot_diag1,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
@@ -9424,13 +9486,13 @@ aa
 tm
 ss
 lZ
-mV
-mV
+eb
+AT
 AV
 mV
 AV
-mV
-mV
+Rn
+eb
 lZ
 jv
 kx
@@ -9481,13 +9543,13 @@ aa
 ss
 iH
 ls
-mW
+AR
 sb
 mW
 ic
 mW
-mW
-mW
+Rs
+AR
 ma
 lp
 jv
@@ -9538,13 +9600,13 @@ ss
 jw
 mb
 iH
-eb
+jz
+Ba
 mW
 mW
 mW
-mW
-mW
-eb
+Rs
+jz
 lp
 lq
 jw
@@ -9595,13 +9657,13 @@ jw
 jx
 ra
 jz
-AR
+mX
 AZ
 mW
 mW
 mW
 AU
-AR
+mX
 jz
 lr
 jx
@@ -18090,10 +18152,10 @@ kw
 ku
 ku
 AS
-AX
-AX
-AX
-AS
+BF
+BF
+BF
+SS
 ku
 ku
 kw
@@ -18145,13 +18207,13 @@ ju
 lo
 ju
 sr
-AS
-AS
+ku
+PF
 AX
 AX
 AX
-AS
-AS
+Cj
+ku
 mU
 ju
 lo
@@ -18202,13 +18264,13 @@ ju
 lo
 ju
 ju
-Ba
-AS
+rF
+PF
 AX
 AX
 AX
-AS
-AT
+Cj
+js
 ju
 ju
 lo
@@ -18259,13 +18321,13 @@ iC
 ju
 lo
 lo
-Ba
+rF
 uZ
 AX
 ne
 AX
-AS
-AT
+Cj
+js
 lo
 lo
 ju
@@ -18316,13 +18378,13 @@ iC
 iC
 ju
 ju
-Ba
-AS
+rF
+PF
 AX
 AX
 AX
-AS
-AT
+Cj
+js
 ju
 ju
 iC

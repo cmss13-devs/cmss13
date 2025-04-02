@@ -226,7 +226,9 @@
 		xeno.play_screen_text("You have been assigned to [player_data.role].")
 		if(player_data.role == MOBA_LANE_SUPPORT) //zonenote should be redone later
 			ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
-			xeno.apply_status_effect(/datum/status_effect/passive_gold, 3)
+			xeno.apply_status_effect(/datum/status_effect/passive_gold/support, 3)
+		else
+			xeno.apply_status_effect(/datum/status_effect/passive_gold, 1)
 
 	for(var/datum/moba_queue_player/player_data as anything in team2_data)
 		var/datum/moba_player/player = player_data.player
@@ -251,6 +253,9 @@
 		if(player_data.role == MOBA_LANE_SUPPORT)
 			ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
 			xeno.apply_status_effect(/datum/status_effect/passive_gold, 3)
+		else
+			xeno.apply_status_effect(/datum/status_effect/passive_gold, 1)
+
 
 	start_game()
 	return TRUE
@@ -371,13 +376,16 @@
 	var/mob/living/carbon/xenomorph/xeno = new found_playerdata.caste.equivalent_xeno_path
 	xeno.forceMove(player_datum.right_team ? right_base : left_base)
 	xeno.set_hive_and_update(player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT)
-	var/datum/component/moba_player/player_comp = xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, TRUE)
+	var/datum/component/moba_player/player_comp = xeno.AddComponent(/datum/component/moba_player, found_playerdata.player, map_id, player_datum.right_team)
 	xeno.got_evolution_message = TRUE
 	ADD_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT)
 	ADD_TRAIT(xeno, TRAIT_MOBA_MAP_PARTICIPANT(map_id), TRAIT_SOURCE_INHERENT)
 	if(found_playerdata.role == MOBA_LANE_SUPPORT)
 		ADD_TRAIT(xeno, TRAIT_MOBA_SUPPORT, TRAIT_SOURCE_INHERENT)
-		xeno.apply_status_effect(/datum/status_effect/passive_gold, 3)
+		xeno.apply_status_effect(/datum/status_effect/passive_gold/support, 3)
+	else
+		xeno.apply_status_effect(/datum/status_effect/passive_gold, 1)
+
 	found_playerdata.player.tied_client.mob.mind.transfer_to(xeno, TRUE)
 
 	qdel(found_playerdata.player.get_tied_xeno())

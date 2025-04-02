@@ -14,3 +14,5 @@
 /datum/status_effect/passive_gold/tick(seconds_between_ticks)
 	. = ..()
 	SEND_SIGNAL(owner, COMSIG_MOBA_GIVE_GOLD, gold_per_5_sec, TRUE)
+
+/datum/status_effect/passive_gold/support

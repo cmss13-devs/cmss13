@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 
 	var/starting_xp_per_mob = 60
 	var/ending_xp_per_mob = 90
-	var/gold_per_mob = 50
+	var/gold_per_mob = 55
 
 /obj/effect/moba_camp_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 	ending_max_health = 1600
 	starting_xp_per_mob = 150
 	ending_xp_per_mob = 225
-	gold_per_mob = 120
+	gold_per_mob = 132
 
 // Just A Guy really
 /obj/effect/moba_camp_spawner/combat_drone
@@ -123,14 +123,14 @@ GLOBAL_LIST_EMPTY(mapless_moba_camps)
 	ending_max_health = 960
 	starting_xp_per_mob = 75
 	ending_xp_per_mob = 110
-	gold_per_mob = 120
+	gold_per_mob = 132
 
 // Applies DoT on hit
 /obj/effect/moba_camp_spawner/marine
 	simplemob_type = /mob/living/simple_animal/hostile/marine
 	amount_to_spawn = 2
-	starting_max_health = 400
-	ending_max_health = 1600
+	starting_max_health = 160
+	ending_max_health = 640
 	starting_xp_per_mob = 75
 	ending_xp_per_mob = 110
-	gold_per_mob = 105
+	gold_per_mob = 115

@@ -14,8 +14,8 @@
 	category = MOBA_ARCHETYPE_TANK
 	icon_state = "boiler"
 	ideal_roles = list(MOBA_LANE_TOP)
-	starting_health = 575
-	ending_health = 2300
+	starting_health = 515
+	ending_health = 1750
 	starting_health_regen = 2
 	ending_health_regen = 8
 	starting_plasma = 350
@@ -26,7 +26,7 @@
 	ending_armor = 15
 	starting_acid_armor = 5
 	ending_acid_armor = 20
-	speed = 0.9
+	speed = 0.4
 	attack_delay_modifier = 0
 	starting_attack_damage = 37.5
 	ending_attack_damage = 52.5
@@ -215,14 +215,16 @@
 		if(living_mover.ally_of_hivenumber(friendly_hive))
 			return
 
-		living_mover.apply_status_effect(/datum/status_effect/slow/replace, slow_amount, 1 SECONDS)
+		//living_mover.apply_status_effect(/datum/status_effect/slow/replace, slow_amount, 1 SECONDS)
+		living_mover.Slow(1)
 
 /obj/effect/xenomorph/slowing_excretion/process()
 	for(var/mob/living/person in loc)
 		if(person.ally_of_hivenumber(friendly_hive))
 			return
 
-		person.apply_status_effect(/datum/status_effect/slow/replace, slow_amount, 1 SECONDS)
+		//person.apply_status_effect(/datum/status_effect/slow/replace, slow_amount, 1 SECONDS)
+		person.Slow(1)
 
 
 /datum/action/xeno_action/activable/moba_fling
@@ -256,6 +258,7 @@
 
 	xeno.setDir(get_cardinal_dir(xeno, target_living))
 
+	var/obj/effect/particle_effect/smoke/xeno_burn/moba/poison_ref
 	var/dir_to_fling = get_dir(target_living, xeno)
 	var/turfs_travelled = 1
 	var/turf/open/turf_to_fling_to = get_turf(xeno)
@@ -269,6 +272,9 @@
 				if(thing.density)
 					break move_loop
 
+			var/obj/effect/particle_effect/smoke/xeno_burn/moba/smoke = locate() in maybe_viable
+			if(smoke)
+				poison_ref = smoke
 			turf_to_fling_to = maybe_viable
 			turfs_travelled++
 
@@ -305,6 +311,8 @@
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target_living)
 	SEND_SIGNAL(xeno, COMSIG_MOBA_ACID_DAMAGE_DEALT, target_living)
 	addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
+	if(smoke)
+		smoke.affect(target_living)
 	apply_cooldown()
 	return ..()
 

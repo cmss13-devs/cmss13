@@ -321,7 +321,7 @@
 /datum/moba_controller/proc/spawn_minions()
 	COOLDOWN_START(src, minion_spawn_cooldown, minion_spawn_time)
 	var/wave_maxhp = /datum/caste_datum/lesser_drone::max_health * min(1 + round(game_duration / 6000, 0.1), 3) // scales up to 3x max HP over 20 minutes
-	var/wave_slashdamage = /datum/caste_datum/lesser_drone::melee_damage_upper * min(1 + (round(game_duration / 6000, 0.1) * 1.5), 4) // scales up to 4x melee damage over 20 minutes
+	var/wave_slashdamage = 10 * min(1 + (round(game_duration / 6000, 0.1) * 1.5), 4) // scales up to 4x melee damage over 20 minutes
 	var/list/minion_spawns = list("topleft", "topright", "botleft", "botright")
 	minion_spawns = shuffle(minion_spawns)
 	for(var/i in 1 to 4) // I know this looks retarded but I actually have a good reason for this

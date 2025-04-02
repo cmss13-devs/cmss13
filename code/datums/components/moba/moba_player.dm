@@ -113,6 +113,7 @@
 		item.apply_stats(parent_xeno, src, player_datum, TRUE)
 
 	parent_xeno.maptext = MAPTEXT("Lv [player_datum.level]")
+	parent_xeno.maptext_x = 32
 
 	START_PROCESSING(SSprocessing, src)
 

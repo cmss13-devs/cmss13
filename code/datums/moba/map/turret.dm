@@ -21,7 +21,7 @@
 	density = TRUE
 	can_block_movement = TRUE
 	layer = BELOW_MOB_LAYER
-	health = 2000
+	health = 3000
 	bound_height = 96
 	bound_width = 64
 	bound_y = -32
@@ -178,16 +178,16 @@
 	icon_state = "left_turret"
 
 /obj/effect/alien/resin/moba_turret/left/back
-	health = 1500
+	health = 2250
 	gold_bounty = 500
 
 /obj/effect/alien/resin/moba_turret/left/near_hive
-	health = 1250
+	health = 2250
 	gold_bounty = 375
 
 /obj/effect/alien/resin/moba_turret/left/hive_core
 	range = 6
-	health = 3500 // 75% more HP than standard
+	health = 5125 // 75% more HP than standard
 
 
 /obj/effect/alien/resin/moba_turret/right
@@ -195,13 +195,13 @@
 	icon_state = "right_turret"
 
 /obj/effect/alien/resin/moba_turret/right/back
-	health = 1500
+	health = 2250
 	gold_bounty = 500
 
 /obj/effect/alien/resin/moba_turret/right/near_hive
-	health = 1250
+	health = 2250
 	gold_bounty = 375
 
 /obj/effect/alien/resin/moba_turret/right/hive_core
 	range = 6
-	health = 3500 // 75% more HP than standard
+	health = 5125 // 75% more HP than standard

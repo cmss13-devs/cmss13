@@ -235,6 +235,7 @@
 	xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC, duration = shield_duration, decay_amount_per_second = shield_amount/4, add_shield_on = TRUE, max_shield = INFINITY) // >:3
 
 	xeno.ability_speed_modifier -= slow
+	xeno.fortify = FALSE
 	damage_accumulated = 0
 
 	to_chat(xeno, SPAN_XENONOTICE("We stop tanking incoming damage."))

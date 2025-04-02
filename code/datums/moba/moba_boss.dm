@@ -11,6 +11,7 @@
 	if(boon_type)
 		var/datum/moba_boon/boon = new boon_type(controller)
 		boon.on_grant(controller, killing_hive)
+		addtimer(CALLBACK(boon, TYPE_PROC_REF(announce_boon, killing_hive.hivenumber)), 8 SECONDS)
 		if(killing_hive.hivenumber == XENO_HIVE_MOBA_LEFT)
 			controller.team1_boons += boon
 			for(var/datum/moba_player/player as anything in controller.team1)
@@ -42,7 +43,7 @@
 	boss_name = "hivebot"
 	boss_type = /mob/living/simple_animal/hostile/hivebot
 	spawn_text = "The hivebot has spawned at <b>Left Side Gateway</b>!"
-	boon_type  = /datum/moba_boon/hivebot
+	boon_type = /datum/moba_boon/hivebot
 
 /datum/moba_boss/hivebot/on_boss_kill(mob/living/simple_animal/hostile/dead_boss, datum/moba_player/killer, datum/hive_status/killing_hive, datum/moba_controller/controller)
 	. = ..()

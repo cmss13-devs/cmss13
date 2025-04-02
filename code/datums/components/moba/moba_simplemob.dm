@@ -73,9 +73,12 @@
 	SIGNAL_HANDLER
 
 	if(returning_to_home || (get_dist(parent_simplemob, home_turf) <= home_dist))
-		if(boss_simplemob && !(locate(/mob/living/carbon/xenomorph) in range(5, home_turf)))
+		if(boss_simplemob)
 			parent_simplemob.health = parent_simplemob.getMaxHealth()
 			parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
+		return
+
+	if(locate(/mob/living/carbon/xenomorph) in range(5, home_turf))
 		return
 
 	returning_to_home = TRUE

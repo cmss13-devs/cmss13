@@ -30,8 +30,8 @@
 	starting_attack_damage = 37.5
 	ending_attack_damage = 60
 	abilities_to_add = list(
-		/datum/action/xeno_action/activable/runner_skillshot/moba,
 		/datum/action/xeno_action/activable/pounce/runner/moba,
+		/datum/action/xeno_action/activable/runner_skillshot/moba,
 		/datum/action/xeno_action/onclick/moba_kick_dirt,
 		/datum/action/xeno_action/onclick/in_the_zone,
 	)
@@ -40,9 +40,50 @@
 	. = ..()
 	xeno.apply_status_effect(/datum/status_effect/stacking/rapid_claws)
 
+// Basic bitch pounce - now with some free slashes!
+/datum/action/xeno_action/activable/pounce/runner/moba
+	desc = "Lunge towards a tile or target within 6 tiles. If you hit an enemy, you automatically make two attacks against them while slowing them by 30/50/70% for 1 second. Cooldown 19/17/15 seconds. Plasma cost of 70."
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 19 SECONDS
+	plasma_cost = 70
+
+	knockdown = FALSE
+	freeze_self = FALSE
+
+	var/slow = 0.3
+
+/datum/action/xeno_action/activable/pounce/runner/moba/use_ability(atom/affected_atom)
+	. = ..()
+	if(!.)
+		return
+	playsound(owner, 'sound/voice/alien_pounce.ogg', 25, TRUE)
+
+/datum/action/xeno_action/activable/pounce/runner/moba/additional_effects(mob/living/living)
+	var/mob/living/carbon/target = living
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	xeno.a_intent_change(INTENT_HARM)
+	target.attack_alien(xeno)
+	if(isxeno(target))
+		//target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, 1 SECONDS)
+		target.Slow(1)
+
+	addtimer(CALLBACK(src, PROC_REF(additional_slash), target, xeno), 0.3 SECONDS)
+	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
+
+/datum/action/xeno_action/activable/pounce/runner/moba/proc/additional_slash(mob/living/carbon/target, mob/living/carbon/xenomorph/xeno)
+	target.attack_alien(xeno)
+	xeno.next_move -= 0.3 SECONDS // redeeming cd from additional slash
+
+/datum/action/xeno_action/activable/pounce/runner/moba/level_up_ability(new_level)
+	xeno_cooldown = src::xeno_cooldown - ((new_level - 1) * (2 SECONDS))
+	slow = src::slow + ((new_level - 1) * 0.2)
+
+	desc = "Lunge towards a tile or target within 6 tiles. If you hit an enemy, you automatically make two attacks against them while slowing them by [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 30, 50, 70)]% for 1 second. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 19, 17, 15)] seconds. Plasma cost of 70."
+
 // [Insert bone joke here]
 /datum/action/xeno_action/activable/runner_skillshot/moba
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 12 SECONDS
 	plasma_cost = 70
 	ammo_type = /datum/ammo/xeno/bone_chips/spread/runner_skillshot/moba
@@ -94,47 +135,6 @@
 	duration = 2 SECONDS
 	slow = 0.7
 
-// Basic bitch pounce - now with some free slashes!
-/datum/action/xeno_action/activable/pounce/runner/moba
-	desc = "Lunge towards a tile or target within 6 tiles. If you hit an enemy, you automatically make two attacks against them while slowing them by 30/50/70% for 1 second. Cooldown 19/17/15 seconds. Plasma cost of 70."
-	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 19 SECONDS
-	plasma_cost = 70
-
-	knockdown = FALSE
-	freeze_self = FALSE
-
-	var/slow = 0.3
-
-/datum/action/xeno_action/activable/pounce/runner/moba/use_ability(atom/affected_atom)
-	. = ..()
-	if(!.)
-		return
-	playsound(owner, 'sound/voice/alien_pounce.ogg', 25, TRUE)
-
-/datum/action/xeno_action/activable/pounce/runner/moba/additional_effects(mob/living/living)
-	var/mob/living/carbon/target = living
-	var/mob/living/carbon/xenomorph/xeno = owner
-
-	xeno.a_intent_change(INTENT_HARM)
-	target.attack_alien(xeno)
-	if(isxeno(target))
-		//target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, 1 SECONDS)
-		target.Slow(1)
-
-	addtimer(CALLBACK(src, PROC_REF(additional_slash), target, xeno), 0.3 SECONDS)
-	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
-
-/datum/action/xeno_action/activable/pounce/runner/moba/proc/additional_slash(mob/living/carbon/target, mob/living/carbon/xenomorph/xeno)
-	target.attack_alien(xeno)
-	xeno.next_move -= 0.3 SECONDS // redeeming cd from additional slash
-
-/datum/action/xeno_action/activable/pounce/runner/moba/level_up_ability(new_level)
-	xeno_cooldown = src::xeno_cooldown - ((new_level - 1) * (2 SECONDS))
-	slow = src::slow + ((new_level - 1) * 0.2)
-
-	desc = "Lunge towards a tile or target within 6 tiles. If you hit an enemy, you automatically make two attacks against them while slowing them by [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 30, 50, 70)]% for 1 second. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 19, 17, 15)] seconds. Plasma cost of 70."
-
 // Send sand in the end
 /datum/action/xeno_action/onclick/moba_kick_dirt
 	name = "Kick Dirt"
@@ -168,12 +168,16 @@
 				continue
 			if(xeno.hive.is_ally(target))
 				continue
-			if(LinkBlocked(xeno, get_turf(xeno), target, list(target)))
+			var/is_blocked = FALSE
+			for(var/turf/path_turf in get_line(xeno, target))
+				if(path_turf.density)
+					is_blocked = TRUE
+			if(is_blocked)
 				continue
 			//target.apply_status_effect(/datum/status_effect/slow, target.cur_speed * slow, duration)
 			target.Slow(floor(duration * 0.1))
-			target.EyeBlur(25)
-			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, ReduceEyeBlur), 25), duration)
+			target.EyeBlur(50)
+			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, ReduceEyeBlur), 50), duration)
 			SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target)
 
 	playsound(get_turf(xeno), 'sound/effects/bamf.ogg', 50, TRUE)

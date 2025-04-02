@@ -215,7 +215,7 @@
 		if(living_mover.ally_of_hivenumber(friendly_hive))
 			return
 
-		//living_mover.apply_status_effect(/datum/status_effect/slow/replace, slow_amount, 1 SECONDS)
+		//living_mover.apply_status_effect(/datum/status_effect/slow/refresh, slow_amount, 1 SECONDS)
 		living_mover.Slow(1)
 
 /obj/effect/xenomorph/slowing_excretion/process()
@@ -223,7 +223,7 @@
 		if(person.ally_of_hivenumber(friendly_hive))
 			return
 
-		//person.apply_status_effect(/datum/status_effect/slow/replace, slow_amount, 1 SECONDS)
+		//person.apply_status_effect(/datum/status_effect/slow/refresh, slow_amount, 1 SECONDS)
 		person.Slow(1)
 
 
@@ -311,8 +311,8 @@
 	SEND_SIGNAL(xeno, COMSIG_XENO_PHYSICAL_ABILITY_HIT, target_living)
 	SEND_SIGNAL(xeno, COMSIG_MOBA_ACID_DAMAGE_DEALT, target_living)
 	addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
-	if(smoke)
-		smoke.affect(target_living)
+	if(poison_ref)
+		poison_ref.affect(target_living)
 	apply_cooldown()
 	return ..()
 

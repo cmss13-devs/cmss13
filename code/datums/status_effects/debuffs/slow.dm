@@ -23,6 +23,6 @@
 	target.ability_speed_modifier -= speed_debuff
 	return ..()
 
-/datum/status_effect/slow/replace
-	id = "slow_replace"
-	status_type = STATUS_EFFECT_REPLACE
+/datum/status_effect/slow/refresh
+	id = "slow_refresh"
+	status_type = STATUS_EFFECT_REFRESH

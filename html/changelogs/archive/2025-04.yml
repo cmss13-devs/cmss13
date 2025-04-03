@@ -34,3 +34,8 @@
   - balance: yanking out objects speed now depends on the size of the object
   fira:
   - bugfix: Fix an issue when concurrently loading identical maps.
+2025-04-03:
+  Git-Nivrak:
+  - balance: You can no longer construct resin structures, plant eggs or build barricades
+      within a one tile radius of multiz stairs
+  - qol: Moved multiz stairs layer up for visual clarity

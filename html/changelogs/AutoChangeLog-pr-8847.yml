@@ -1,0 +1,5 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - bugfix: "fixed spec icons on orbit panel"
+  - bugfix: "fixed spec icons on squad info panel"

@@ -175,17 +175,22 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 				if(M.loc && (M.locs[1] in hearturfs))
 					listening |= M
 
+		var/list/speech_bubble_recipients = list()
+		for(var/mob/M in listening)
+			if(M.client)
+				speech_bubble_recipients.Add(M.client)
 		var/speech_bubble_test = say_test(message)
 		var/image/speech_bubble = image('icons/mob/effects/talk.dmi', src, "[bubble_type][speech_bubble_test]", TYPING_LAYER)
+		speech_bubble.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+		speech_bubble.plane = ABOVE_GAME_PLANE
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay_to_clients), speech_bubble, speech_bubble_recipients, 3 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
 			langchat_speech(message, listening, speaking)
 		for(var/mob/M as anything in listening)
 			M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
-		overlays += speech_bubble
-
-		addtimer(CALLBACK(src, PROC_REF(remove_speech_bubble), speech_bubble), 3 SECONDS)
 
 		for(var/obj/hearing_obj as anything in listening_obj)
 			if(hearing_obj) //It's possible that it could be deleted in the meantime.

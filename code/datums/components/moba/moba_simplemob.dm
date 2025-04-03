@@ -44,7 +44,7 @@
 	return ..()
 
 /datum/component/moba_simplemob/process(delta_time)
-	if(!boss_simplemob)
+	if(!boss_simplemob || parent_simplemob.is_mob_incapacitated())
 		return
 
 	if((boss_ticks_since_last_fighting > 4))
@@ -71,6 +71,9 @@
 
 /datum/component/moba_simplemob/proc/return_to_home(datum/source, atom/oldloc, dir, forced)
 	SIGNAL_HANDLER
+
+	if(parent_simplemob.is_mob_incapacitated())
+		return
 
 	if(returning_to_home || (get_dist(parent_simplemob, home_turf) <= home_dist))
 		if(boss_simplemob)

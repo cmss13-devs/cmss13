@@ -28,8 +28,8 @@
 	ending_acid_armor = 20
 	speed = 0.4
 	attack_delay_modifier = 0
-	starting_attack_damage = 37.5
-	ending_attack_damage = 52.5
+	starting_attack_damage = 40
+	ending_attack_damage = 55
 	abilities_to_add = list(
 		/datum/action/xeno_action/onclick/toggle_acid_trail,
 		/datum/action/xeno_action/activable/moba_fling,
@@ -64,7 +64,7 @@
 
 /datum/action/xeno_action/onclick/toggle_acid_trail
 	name = "Gas Trail"
-	desc = "Toggle the release of a trail of acid gas behind you that lingers for 3 seconds. Any enemies stepping into the trail become poisoned for 2 seconds, taking 5/7.5/10 (+15% AP) acid damage every 0.2 seconds. Plasma cost of 15/13/10 per second."
+	desc = "Toggle the release of a trail of acid gas behind you that lingers for 3 seconds. Any enemies stepping into the trail become poisoned for 2 seconds, taking 5/7.5/10 (+20% AP) acid damage every 0.2 seconds. Plasma cost of 15/13/10 per second."
 	action_icon_state = "dump_acid"
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
@@ -124,7 +124,7 @@
 		var/list/pen_list = list()
 		SEND_SIGNAL(owner, COMSIG_MOBA_GET_ACID_PENETRATION, pen_list)
 		gas.penetration = pen_list[1]
-		gas.poison_dot = damage_over_time + (ap_list[1] * 0.15)
+		gas.poison_dot = damage_over_time + (ap_list[1] * 0.2)
 		gas.color = xeno.hive.color
 		gas.friendly_hive = xeno.hivenumber
 
@@ -138,7 +138,7 @@
 			plasma_cost = 10
 			damage_over_time = 10
 
-	desc = "Toggle the release of a trail of acid gas behind you that lingers for 3 seconds. Any enemies stepping into the trail become poisoned for 2 seconds, taking [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 5, 7.5, 10)] (+15% AP) acid damage every 0.2 seconds. Plasma cost of [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 15, 13, 10)] per second."
+	desc = "Toggle the release of a trail of acid gas behind you that lingers for 3 seconds. Any enemies stepping into the trail become poisoned for 2 seconds, taking [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 5, 7.5, 10)] (+20% AP) acid damage every 0.2 seconds. Plasma cost of [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 15, 13, 10)] per second."
 
 
 /datum/action/xeno_action/onclick/slowing_excretion
@@ -229,7 +229,7 @@
 
 /datum/action/xeno_action/activable/moba_fling
 	name = "Fling"
-	desc = "Fling a target several tiles behind you, dealing 50/70/90 (+60% AP) (+7% Target Max HP) acid damage to a target. Cooldown 10/9/8 seconds. Plasma cost 100/80/60."
+	desc = "Fling a target several tiles behind you, dealing 50/70/90 (+75% AP) (+8% Target Max HP) acid damage to a target. Cooldown 10/9/8 seconds. Plasma cost 100/80/60."
 	action_icon_state = "fling"
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 10 SECONDS
@@ -287,7 +287,7 @@
 	SEND_SIGNAL(xeno, COMSIG_MOBA_GET_ACID_PENETRATION, acidpen_list)
 	var/list/ap_list = list()
 	SEND_SIGNAL(xeno, COMSIG_MOBA_GET_AP, ap_list)
-	target_living.apply_armoured_damage(fling_damage + (target_living.getMaxHealth() * 0.07) + (ap_list[1] * 0.6), ARMOR_MELEE, BURN, penetration = acidpen_list[1])
+	target_living.apply_armoured_damage(fling_damage + (target_living.getMaxHealth() * 0.08) + (ap_list[1] * 0.75), ARMOR_MELEE, BURN, penetration = acidpen_list[1])
 
 	var/old_layer = target_living.layer
 	var/old_pixel_x = target_living.pixel_x
@@ -332,7 +332,7 @@
 	plasma_cost = src::plasma_cost - ((new_level - 1) * 20)
 	fling_damage = src::fling_damage + ((new_level - 1) * 20)
 
-	desc = "Fling a target several tiles behind you, dealing [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 50, 70, 90)] (+60% AP) (+7% Target Max HP) acid damage to a target. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 10, 9, 8)] seconds. Plasma cost [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 100, 80, 60)]."
+	desc = "Fling a target several tiles behind you, dealing [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 50, 70, 90)] (+75% AP) (+8% Target Max HP) acid damage to a target. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 10, 9, 8)] seconds. Plasma cost [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 100, 80, 60)]."
 
 /datum/action/xeno_action/onclick/overdrive
 	name = "Overdrive"

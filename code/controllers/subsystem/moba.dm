@@ -88,6 +88,8 @@ SUBSYSTEM_DEF(moba)
 /// I'm not bothering with MMR or whatever the hell
 /// Pure randomness, this is where boys become men
 /datum/controller/subsystem/moba/proc/do_matchmaking()
+	COOLDOWN_START(src, matchmaking_cooldown, 5 SECONDS)
+
 	var/list/already_taken_castes_team1 = list()
 	var/list/already_taken_castes_team2 = list()
 	var/list/team1_players = list()
@@ -219,7 +221,6 @@ SUBSYSTEM_DEF(moba)
 		currently_creating_map = FALSE
 		panic_ticks = 0
 	else
-		COOLDOWN_START(src, matchmaking_cooldown, 5 SECONDS)
 		panic_ticks++
 		if(running_simulation)
 			message_admins("Game would not be made. Panic [panic_ticks].")
@@ -230,6 +231,8 @@ SUBSYSTEM_DEF(moba)
 	for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
 		remove_from_queue(player.player)
 		to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Your game is now being created."))
+		playsound_client(player.player.tied_client, 'sound/misc/attention_jingle.ogg', vol = 50)
+		window_flash(player.player.tied_client)
 		ADD_TRAIT(player.player.tied_client.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT) // We add this to observers so we can make sure they can't mess with their MOBA prefs and other stuff
 		for(var/datum/tgui/ui as anything in player.player.tied_client.mob.tgui_open_uis)
 			if(!istype(ui.src_object, /datum/moba_join_panel))

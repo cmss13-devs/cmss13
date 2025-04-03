@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY(mapless_moba_turrets)
 	// zonenote check on this once ranged minions are added
 
 /obj/effect/alien/resin/moba_turret/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.a_intent == INTENT_HELP) || (M.hive.hivenumber == hivenumber))
+	if((M.a_intent == INTENT_HELP) || (M.hive.hivenumber == hivenumber) || (M.fortify))
 		return XENO_NO_DELAY_ACTION
 	else
 		M.animation_attack_on(src)

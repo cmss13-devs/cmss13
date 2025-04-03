@@ -189,12 +189,13 @@
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
-			xeno.visible_message(SPAN_DANGER("\The [xeno] [slashes_verb] [src]!"),
-			SPAN_DANGER("You [slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			if(!HAS_TRAIT(src, TRAIT_MOBA_MINION))
+				xeno.visible_message(SPAN_DANGER("\The [xeno] [slashes_verb] [src]!"),
+				SPAN_DANGER("You [slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(xeno)]</font>")
+				xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
+				log_attack("[key_name(xeno)] [slash_verb]ed [key_name(src)]")
 			last_damage_data = create_cause_data(initial(xeno.name), xeno)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(xeno)]</font>")
-			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
-			log_attack("[key_name(xeno)] [slash_verb]ed [key_name(src)]")
 
 			xeno.flick_attack_overlay(src, "slash")
 			if(custom_slashed_sound)

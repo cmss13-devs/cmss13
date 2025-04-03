@@ -27,8 +27,8 @@
 	ending_acid_armor = 25
 	speed = 0.7
 	attack_delay_modifier = 0
-	starting_attack_damage = 37.5
-	ending_attack_damage = 52.5
+	starting_attack_damage = 40
+	ending_attack_damage = 55
 	abilities_to_add = list(
 		/datum/action/xeno_action/activable/moba_headbutt,
 		/datum/action/xeno_action/onclick/moba_tail_sweep,
@@ -49,7 +49,7 @@
 // so called metalheads when they meet magnetheads:
 /datum/action/xeno_action/activable/moba_headbutt
 	name = "Headbutt"
-	desc = "Knock back a targeted enemy by 1 tile, stunning them for 1.5/2/2.5 seconds. Additionally deals 30/45/60 (+25% AD) physical damage. Cooldown 8/7.5/7 seconds. Plasma cost 60."
+	desc = "Knock back a targeted enemy by 1 tile, stunning them for 1.5/2/2.5 seconds. Additionally deals 30/45/60 (+35% AD) physical damage. Cooldown 8/7.5/7 seconds. Plasma cost 60."
 	action_icon_state = "headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_headbutt
 	action_type = XENO_ACTION_CLICK
@@ -103,7 +103,7 @@
 
 	var/list/armorpen_list = list()
 	SEND_SIGNAL(fendy, COMSIG_MOBA_GET_PHYS_PENETRATION, armorpen_list)
-	living_target.apply_armoured_damage(damage + (fendy.melee_damage_upper * 0.25), ARMOR_MELEE, BRUTE, penetration = armorpen_list[1])
+	living_target.apply_armoured_damage(damage + (fendy.melee_damage_upper * 0.35), ARMOR_MELEE, BRUTE, penetration = armorpen_list[1])
 
 	apply_cooldown()
 	return ..()
@@ -113,7 +113,7 @@
 	damage = src::damage + (15 * (new_level - 1))
 	stun = src::stun + ((0.5 SECONDS) * (new_level - 1))
 
-	desc = "Knock back a targeted enemy by 1 tile, stunning them for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "1.5", "2", "2.5")] seconds. Additionally deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "30", "45", "60")] (+25% AD) physical damage. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "8", "7.5", "7")] seconds. Plasma cost 60."
+	desc = "Knock back a targeted enemy by 1 tile, stunning them for [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "1.5", "2", "2.5")] seconds. Additionally deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "30", "45", "60")] (+35% AD) physical damage. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "8", "7.5", "7")] seconds. Plasma cost 60."
 
 // SpiiiiIIiiIeEEeEeEeen
 /datum/action/xeno_action/onclick/moba_tail_sweep
@@ -179,7 +179,7 @@
 // "I am fucking invincible" - some bald guy
 /datum/action/xeno_action/onclick/moba_soak
 	name = "Soak"
-	desc = "Take 50% reduced damage from all sources for 3 seconds. During this time, you are unable to attack and have your speed reduced by 0.5. Once the time ends, you gain 125%/150%/175% (+1% bonus HP) of the pre-mitigation damage taken as shields. These shields decay after 4/5/6 seconds. Cooldown of 16/15/14 seconds. Plasma cost 100."
+	desc = "Take 50% reduced damage from all sources for 3 seconds. During this time, you are unable to attack and have your speed reduced by 0.5. Once the time ends, you gain 175%/200%/225% (+1% bonus HP) of the pre-mitigation damage taken as shields. These shields decay after 4/5/6 seconds. Cooldown of 16/15/14 seconds. Plasma cost 100."
 	action_icon_state = "soak"
 	macro_path = /datum/action/xeno_action/verb/verb_soak
 	action_type = XENO_ACTION_ACTIVATE
@@ -205,15 +205,17 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	RegisterSignal(xeno, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
-	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 3 SECONDS)
-
 	xeno.balloon_alert(xeno, "begins to soak incoming damage!")
 	to_chat(xeno, SPAN_XENONOTICE("We begin to tank incoming damage!"))
-	xeno.fortify = TRUE
 
 	xeno.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
+
+	RegisterSignal(xeno, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 3 SECONDS)
+
+	xeno.fortify = TRUE
+	xeno.update_icons()
 
 	xeno.ability_speed_modifier += slow
 
@@ -233,11 +235,13 @@
 	var/list/bonus_hp_list = list()
 	SEND_SIGNAL(xeno, COMSIG_MOBA_GET_BONUS_HP, bonus_hp_list)
 
-	var/shield_amount = (damage_accumulated * shield_mod) + (bonus_hp_list[1] * 0.01)
-	xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC, duration = shield_duration, decay_amount_per_second = shield_amount/4, add_shield_on = TRUE, max_shield = INFINITY) // >:3
+	var/shield_amount = (damage_accumulated * (shield_mod + (bonus_hp_list[1] * 0.01 * 0.01)))
+	xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC, duration = shield_duration, decay_amount_per_second = shield_amount * 0.25, add_shield_on = TRUE, max_shield = INFINITY) // >:3
+
+	xeno.fortify = FALSE
+	xeno.update_icons()
 
 	xeno.ability_speed_modifier -= slow
-	xeno.fortify = FALSE
 	damage_accumulated = 0
 
 	to_chat(xeno, SPAN_XENONOTICE("We stop tanking incoming damage."))
@@ -249,7 +253,7 @@
 	shield_mod = src::shield_mod + (0.25 * (new_level - 1))
 	shield_duration = src::shield_duration + ((1 SECONDS) * (new_level - 1))
 
-	desc = "Take 50% reduced damage from all sources for 3 seconds. During this time, you are unable to attack and have your speed reduced by 0.5. Once the time ends, you gain [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "125", "150", "175")]% (+1% bonus HP) of the pre-mitigation damage taken as shields. These shields decay after [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "4", "5", "6")] seconds. Cooldown of [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "16", "15", "14")] seconds. Plasma cost 100."
+	desc = "Take 50% reduced damage from all sources for 3 seconds. During this time, you are unable to attack and have your speed reduced by 0.5. Once the time ends, you gain [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "175", "200", "225")]% (+1% bonus HP) of the pre-mitigation damage taken as shields. These shields decay after [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "4", "5", "6")] seconds. Cooldown of [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, "16", "15", "14")] seconds. Plasma cost 100."
 
 // DO THE HARLEM SHAKE
 /datum/action/xeno_action/onclick/moba_tremor

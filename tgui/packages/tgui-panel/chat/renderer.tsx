@@ -211,6 +211,7 @@ class ChatRenderer {
     if (this.isReady() && this.queue.length > 0) {
       this.processBatch(this.queue);
       this.queue = [];
+      this.tryFindScrollable();
       this.scrollToBottom();
     }
   }
@@ -310,7 +311,6 @@ class ChatRenderer {
   }
 
   scrollToBottom() {
-    this.tryFindScrollable();
     // scrollHeight is always bigger than scrollTop and is
     // automatically clamped to the valid range.
     if (this.scrollNode) {

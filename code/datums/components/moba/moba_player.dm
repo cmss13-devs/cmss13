@@ -150,6 +150,7 @@
 	RegisterSignal(parent_xeno, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, PROC_REF(on_armor_damage_apply))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_PHYS_PENETRATION, PROC_REF(get_phys_pen))
 	RegisterSignal(parent_xeno, COMSIG_MOBA_GET_ACID_PENETRATION, PROC_REF(get_acid_pen))
+	RegisterSignal(parent_xeno, COMSIG_LIVING_PRE_GHOSTED, PROC_REF(on_ghost))
 
 /datum/component/moba_player/proc/handle_level_up()
 	player_datum.level_up()
@@ -167,7 +168,7 @@
 		player_datum.right_team ? XENO_HIVE_MOBA_RIGHT : XENO_HIVE_MOBA_LEFT,\
 		TRUE,\
 	) // We refresh this because we're a level higher, so more XP on kill
-	parent_xeno.balloon_alert(parent_xeno, "Level up!", "#9723c4")
+	parent_xeno.balloon_alert(parent_xeno, "level up!", "#9723c4")
 	parent_xeno.xeno_jitter(15)
 	parent_xeno.maptext = MAPTEXT("Lv [player_datum.level]")
 
@@ -544,3 +545,8 @@
 	SIGNAL_HANDLER
 
 	pendata += acid_penetration
+
+/datum/component/moba_player/proc/on_ghost(datum/source)
+	SIGNAL_HANDLER
+
+	return COMPONENT_DISALLOW_GHOSTING

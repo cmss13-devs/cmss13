@@ -597,7 +597,7 @@
 //We set their name first, then update their real_name AND their mind name
 /mob/living/carbon/xenomorph/proc/generate_name()
 	//We don't have a nicknumber yet, assign one to stick with us
-	if(!nicknumber)
+	if(!nicknumber && !HAS_TRAIT(src, TRAIT_MOBA_MINION))
 		generate_and_set_nicknumber()
 	// Even if we don't have the hive datum we usually still have the hive number
 	var/datum/hive_status/in_hive = hive

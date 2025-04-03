@@ -206,7 +206,7 @@
 		to_chat(owner, SPAN_XENOWARNING("We need to target an ally."))
 		return
 
-	if(HAS_TRAIT(possible_healing_target, TRAIT_MOBA_MINION)) // So they dont heal minions
+	if(HAS_TRAIT(possible_healing_target, TRAIT_MOBA_MINION) || (possible_healing_target.stat == DEAD)) // So they dont heal minions
 		return
 
 	if(!action_cooldown_check())

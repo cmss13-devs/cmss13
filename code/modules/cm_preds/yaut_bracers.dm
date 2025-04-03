@@ -1260,21 +1260,24 @@
 		to_chat(caller, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
-	caller.show_speech_bubble(bubble_name = "pred_translator", looping_bubble = TRUE, bubble_prefix = FALSE)
+	var/list/heard = get_mobs_in_view(7, caller)
+	for(var/mob/M in heard)
+		if(M.ear_deaf)
+			heard -= M
+
+	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
+	caller.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
 	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	caller.remove_speech_bubble()
+	caller.remove_speech_bubble(translator_bubble)
 	if(!msg || !caller.client)
 		return
 
 	if(!drain_power(caller, 50))
 		return
 
-	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
+	caller.show_speech_bubble(heard, "pred_translator1")
 
-	var/list/heard = get_mobs_in_view(7, caller)
-	for(var/mob/M in heard)
-		if(M.ear_deaf)
-			heard -= M
+	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"

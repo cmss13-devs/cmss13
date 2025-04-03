@@ -231,6 +231,8 @@ SUBSYSTEM_DEF(moba)
 	for(var/datum/moba_queue_player/player as anything in (team1_players + team2_players))
 		remove_from_queue(player.player)
 		to_chat(player.player.tied_client, SPAN_BOLDNOTICE("Your game is now being created."))
+		playsound_client(player.player.tied_client, 'sound/misc/attention_jingle.ogg', vol = 50)
+		window_flash(player.player.tied_client)
 		ADD_TRAIT(player.player.tied_client.mob, TRAIT_MOBA_PARTICIPANT, TRAIT_SOURCE_INHERENT) // We add this to observers so we can make sure they can't mess with their MOBA prefs and other stuff
 		for(var/datum/tgui/ui as anything in player.player.tied_client.mob.tgui_open_uis)
 			if(!istype(ui.src_object, /datum/moba_join_panel))

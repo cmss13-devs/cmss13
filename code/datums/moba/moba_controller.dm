@@ -663,6 +663,7 @@
 		if(sound)
 			playsound_client(player.tied_client, sound, xeno.loc, 25, FALSE)
 		xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>[message]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+		to_chat(xeno, SPAN_XENODANGER("<span class=\"large\"> [message]</span>"))
 
 /datum/moba_controller/proc/message_team2(message, sound = 'sound/voice/alien_distantroar_3.ogg')
 	for(var/datum/moba_player/player as anything in team2)
@@ -676,3 +677,4 @@
 		if(sound)
 			playsound_client(player.tied_client, sound, xeno.loc, 25, FALSE)
 		xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>[message]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+		to_chat(xeno, SPAN_XENODANGER("<span class=\"big\"> [message]</span>"))

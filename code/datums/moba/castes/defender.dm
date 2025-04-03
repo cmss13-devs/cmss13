@@ -205,15 +205,17 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	RegisterSignal(xeno, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
-	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 3 SECONDS)
-
 	xeno.balloon_alert(xeno, "begins to soak incoming damage!")
 	to_chat(xeno, SPAN_XENONOTICE("We begin to tank incoming damage!"))
-	xeno.fortify = TRUE
 
 	xeno.add_filter("steelcrest_enraging", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
 	playsound(get_turf(xeno), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
+
+	RegisterSignal(xeno, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(damage_accumulate))
+	addtimer(CALLBACK(src, PROC_REF(stop_accumulating)), 3 SECONDS)
+
+	xeno.fortify = TRUE
+	xeno.update_icons()
 
 	xeno.ability_speed_modifier += slow
 
@@ -236,8 +238,10 @@
 	var/shield_amount = (damage_accumulated * (shield_mod + (bonus_hp_list[1] * 0.01 * 0.01)))
 	xeno.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC, duration = shield_duration, decay_amount_per_second = shield_amount * 0.25, add_shield_on = TRUE, max_shield = INFINITY) // >:3
 
-	xeno.ability_speed_modifier -= slow
 	xeno.fortify = FALSE
+	xeno.update_icons()
+
+	xeno.ability_speed_modifier -= slow
 	damage_accumulated = 0
 
 	to_chat(xeno, SPAN_XENONOTICE("We stop tanking incoming damage."))

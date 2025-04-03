@@ -36,7 +36,7 @@
 	return ..()
 
 /obj/effect/alien/resin/moba_hive_core/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.a_intent == INTENT_HELP) || (M.hive.hivenumber == hivenumber))
+	if((M.a_intent == INTENT_HELP) || (M.hive.hivenumber == hivenumber) || (M.fortify))
 		return XENO_NO_DELAY_ACTION
 	else if(linked_turret && !QDELETED(linked_turret))
 		to_chat(M, SPAN_XENOWARNING("We can't attack [src] while its acid pillar is still functional."))

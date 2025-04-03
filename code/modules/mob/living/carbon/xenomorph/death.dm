@@ -149,6 +149,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 		death(cause)
 		return
 
+	if(HAS_TRAIT(src, TRAIT_MOBA_MINION))
+		no_remains = TRUE
+
 	switch(caste.caste_type)
 		if(XENO_CASTE_BOILER)
 			var/mob/living/carbon/xenomorph/boiler/src_boiler = src

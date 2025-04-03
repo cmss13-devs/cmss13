@@ -27,8 +27,8 @@
 	ending_acid_armor = 15
 	speed = 0.3
 	attack_delay_modifier = 0
-	starting_attack_damage = 40
-	ending_attack_damage = 65
+	starting_attack_damage = 35
+	ending_attack_damage = 57.5
 	abilities_to_add = list(
 		/datum/action/xeno_action/activable/pounce/rush/moba,
 		/datum/action/xeno_action/activable/flurry/moba,

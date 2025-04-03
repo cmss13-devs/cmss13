@@ -2,6 +2,7 @@
 
 /datum/moba_player
 	var/tied_ckey
+	var/last_ckey
 	VAR_PRIVATE/mob/living/carbon/xenomorph/tied_xeno
 	var/client/tied_client
 	var/list/datum/moba_player_slot/queue_slots = list()
@@ -25,14 +26,23 @@
 /datum/moba_player/New(ckey, client/new_client)
 	. = ..()
 	tied_ckey = ckey
+	last_ckey = ckey
 	tied_client = new_client
 	RegisterSignal(new_client, COMSIG_PARENT_QDELETING, PROC_REF(on_client_delete))
 
 /datum/moba_player/proc/on_client_delete(datum/source)
 	SIGNAL_HANDLER
 
+	last_ckey = tied_ckey
 	tied_ckey = null
 	tied_client = null
+	RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN, PROC_REF(check_login))
+
+/datum/moba_player/proc/check_login(dcs, client/logged_in)
+	if(logged_in.ckey == last_ckey)
+		tied_ckey = logged_in.ckey
+		tied_client = logged_in
+		UnregisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGGED_IN)
 
 /datum/moba_player/Destroy(force, ...)
 	on_client_delete()

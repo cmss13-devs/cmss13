@@ -1,11 +1,6 @@
 /datum/moba_join_panel
-	#ifdef MOBA_TESTING
-	var/list/picked_castes = list("Drone", "Drone", "Drone")
-	var/list/picked_lanes = list("Jungle", "Jungle", "Jungle")
-	#else
 	var/list/picked_castes = list("", "", "")
 	var/list/picked_lanes = list("", "", "")
-	#endif
 	var/in_queue = FALSE
 	var/datum/moba_player/player
 
@@ -37,6 +32,7 @@
 	var/list/data = list()
 
 	data["picked_castes"] = list()
+	data["picked_castes_names"] = list()
 	for(var/caste_name in picked_castes)
 		var/datum/moba_caste/caste = GLOB.moba_castes_name[caste_name]
 		data["picked_castes"] += list(list(
@@ -46,6 +42,7 @@
 			"category" = caste.category,
 			"ideal_roles" = caste.ideal_roles,
 		))
+		data["picked_castes_names"] += caste.name
 	data["picked_lanes"] = picked_lanes
 	data["in_queue"] = in_queue
 
@@ -116,6 +113,9 @@
 				picked_castes[priority] = ""
 				ui.user.client.moba_picked_castes[priority] = ""
 			else
+				if(caste in picked_castes)
+					return
+
 				picked_castes[priority] = caste
 				ui.user.client.moba_picked_castes[priority] = caste
 			return TRUE

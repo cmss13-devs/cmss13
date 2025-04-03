@@ -88,6 +88,8 @@ SUBSYSTEM_DEF(moba)
 /// I'm not bothering with MMR or whatever the hell
 /// Pure randomness, this is where boys become men
 /datum/controller/subsystem/moba/proc/do_matchmaking()
+	COOLDOWN_START(src, matchmaking_cooldown, 5 SECONDS)
+
 	var/list/already_taken_castes_team1 = list()
 	var/list/already_taken_castes_team2 = list()
 	var/list/team1_players = list()
@@ -219,7 +221,6 @@ SUBSYSTEM_DEF(moba)
 		currently_creating_map = FALSE
 		panic_ticks = 0
 	else
-		COOLDOWN_START(src, matchmaking_cooldown, 5 SECONDS)
 		panic_ticks++
 		if(running_simulation)
 			message_admins("Game would not be made. Panic [panic_ticks].")

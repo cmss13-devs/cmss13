@@ -25,6 +25,7 @@ type BackendContext = {
   can_enter_queue: BooleanLike;
   picked_castes: Caste[];
   picked_lanes: string[];
+  picked_castes_names: string[];
   amount_in_queue: number;
   is_moba_participant: BooleanLike;
 };
@@ -338,8 +339,8 @@ const MobaCasteSelectorButton = (props) => {
   return (
     <Tooltip innerhtml={caste.desc}>
       <Button
+        disabled={data.picked_castes_names.indexOf(caste.name) !== -1}
         onClick={() => {
-          logger.log(priority);
           act('select_caste', { caste: caste.name, priority: priority });
           setCasteSelectorOpen(false);
         }}

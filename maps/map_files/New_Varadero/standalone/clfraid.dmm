@@ -139,10 +139,6 @@
 	pixel_x = 7;
 	pixel_y = 13
 	},
-/obj/item/implantcase/explosive{
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
 	pixel_x = 7;
 	pixel_y = 5

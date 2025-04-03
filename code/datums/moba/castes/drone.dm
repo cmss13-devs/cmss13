@@ -237,6 +237,10 @@
 	return ..()
 
 /datum/action/xeno_action/activable/life_transfer/process(delta_time)
+	if(!healing_target)
+		STOP_PROCESSING(SSobj, src)
+		return
+
 	process_ticks++
 	if((process_ticks % 3) != 0)
 		return

@@ -73,7 +73,7 @@
 	target.apply_armoured_damage(total_damage, ARMOR_MELEE, BRUTE, rand_zone(), armorpen_list[1])
 	playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
 	xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-	xeno.gain_health(total_damage * (heal_percentage + (xeno.melee_damage_upper * 0.05)))
+	xeno.gain_health(total_damage * (heal_percentage + (xeno.melee_damage_upper * 0.0005)))
 	xeno.animation_attack_on(target)
 	if(!bloodlust_effect)
 		bloodlust_effect = xeno.apply_status_effect(/datum/status_effect/stacking/bloodlust)
@@ -125,7 +125,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
-	desc = "Deals 150/200/250 (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 10 stacks of bloodlust and heals for the damage dealt. Cooldown 120/100/80 seconds."
+	desc = "Deals 150/200/250 (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 10 stacks of bloodlust and heals for half the damage dealt. Cooldown 120/100/80 seconds."
 	xeno_cooldown = 120 SECONDS
 	plasma_cost = 120
 	var/true_damage_to_deal = 150
@@ -160,7 +160,7 @@
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_damage(damage_to_deal, BRUTE, "chest") // Ignores armor since it's true damage
 	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
-	xeno.gain_health(damage_to_deal)
+	xeno.gain_health(damage_to_deal * 0.5)
 	xeno.xeno_jitter(1 SECONDS)
 	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
@@ -182,4 +182,4 @@
 	true_damage_to_deal = src::true_damage_to_deal + ((new_level - 1) * 50)
 	xeno_cooldown = src::xeno_cooldown - ((new_level - 1) * (20 SECONDS))
 
-	desc = "Deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 150, 200, 250)] (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 10 stacks of bloodlust and heals for the damage dealt. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 100, 80)] seconds."
+	desc = "Deals [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 150, 200, 250)] (+70% AD) (+150% Bloodlust) true damage to a target. Can only be used if the damage would kill (indicator will be present on target if so). On kill, grants 10 stacks of bloodlust and heals for half the damage dealt. Cooldown [MOBA_LEVEL_ABILITY_DESC_HELPER(new_level, 120, 100, 80)] seconds."

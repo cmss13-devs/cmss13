@@ -211,8 +211,10 @@ class ChatRenderer {
     if (this.isReady() && this.queue.length > 0) {
       this.processBatch(this.queue);
       this.queue = [];
-      this.tryFindScrollable();
-      this.scrollToBottom();
+      setTimeout(() => {
+        this.tryFindScrollable();
+        this.scrollToBottom();
+      });
     }
   }
 

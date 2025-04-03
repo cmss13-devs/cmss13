@@ -232,9 +232,8 @@ const ButtonConfirm = (props: ConfirmProps) => {
   const [clickedOnce, setClickedOnce] = useState(false);
 
   function handleBlur(event: FocusEvent) {
-    if (!onConfirmChange) {
-      setClickedOnce(false);
-    }
+    onConfirmChange?.(false);
+    setClickedOnce(false);
     onBlur?.(event);
   }
 
@@ -242,30 +241,17 @@ const ButtonConfirm = (props: ConfirmProps) => {
     newState: boolean,
     event: MouseEvent<HTMLDivElement> | undefined,
   ) => {
-    if (onConfirmChange) {
+    if (!clickedOnce) {
       setClickedOnce(newState);
-      if (newState) {
-        setTimeout(() => window.addEventListener('click', handleClickOff));
-      } else {
-        window.removeEventListener('click', handleClickOff);
-        if (event && (props.allowAnyClick || event.button === 0)) {
-          onClick?.(event);
-        }
-      }
-      onConfirmChange(newState);
-    } else {
-      if (!clickedOnce) {
-        setClickedOnce(true);
-        return;
-      }
-      onClick?.(event);
-      setClickedOnce(false);
+      onConfirmChange?.(newState);
+      return;
     }
+    if (event && (props.allowAnyClick || event.button === 0)) {
+      onClick?.(event);
+    }
+    setClickedOnce(newState);
+    onConfirmChange?.(newState);
   };
-
-  function handleClickOff() {
-    handleClick(false, undefined);
-  }
 
   return (
     <Button

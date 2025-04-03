@@ -241,13 +241,10 @@ const ButtonConfirm = (props: ConfirmProps) => {
     newState: boolean,
     event: MouseEvent<HTMLDivElement> | undefined,
   ) => {
-    if (!clickedOnce) {
-      setClickedOnce(newState);
-      onConfirmChange?.(newState);
-      return;
-    }
-    if (event && (props.allowAnyClick || event.button === 0)) {
-      onClick?.(event);
+    if (clickedOnce) {
+      if (event && (props.allowAnyClick || event.button === 0)) {
+        onClick?.(event);
+      }
     }
     setClickedOnce(newState);
     onConfirmChange?.(newState);

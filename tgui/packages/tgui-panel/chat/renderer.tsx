@@ -198,6 +198,7 @@ class ChatRenderer {
     else {
       this.rootNode = node;
     }
+    this.tryFindScrollable();
     // Flush the queue
     this.tryFlushQueue();
   }

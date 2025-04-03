@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "You can no longer remove documents from a cabinet when youre away from it"

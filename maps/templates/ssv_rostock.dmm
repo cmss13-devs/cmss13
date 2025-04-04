@@ -173,6 +173,7 @@
 	pixel_x = -17;
 	pixel_y = 7
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "aaz" = (
@@ -1133,6 +1134,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/s_a)
+"adJ" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/security/headquarters_storage)
 "adR" = (
 /turf/open/floor/strata/red4/north,
 /area/rostock/security/headquarters_bunk)
@@ -6398,6 +6403,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
 "epA" = (
@@ -18464,6 +18470,7 @@
 	pixel_x = -17;
 	pixel_y = -7
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "nTV" = (
@@ -19219,6 +19226,7 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/command/cic)
 "oDK" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
 "oEk" = (
@@ -26848,6 +26856,7 @@
 /obj/structure/sign/poster/clf{
 	pixel_x = -30
 	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "uOa" = (
@@ -27762,6 +27771,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/engineering/port_aft_accessway)
 "vtX" = (
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/prep)
 "vuV" = (
@@ -49197,7 +49207,7 @@ aDM
 fjh
 jSu
 wNx
-xvW
+adJ
 vwN
 xvW
 lzQ

@@ -9,6 +9,7 @@ import {
   Stack,
   Tabs,
 } from 'tgui/components';
+import { ByondUi } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 import { CanvasLayer } from './CanvasLayer';
@@ -29,6 +30,7 @@ interface TacMapProps {
   actionQueueChange: number;
   exportedColor: string;
   mapFallback: string;
+  mapRef: string;
   currentMenu: string;
   lastUpdateTime: number;
   canvasCooldownDuration: number;
@@ -194,11 +196,27 @@ export const TacticalMap = (props) => {
 };
 
 const ViewMapPanel = (props) => {
-  const { act } = useBackend<TacMapProps>();
-    
-  act("mapView");
+  const { data } = useBackend<TacMapProps>();
 
-  return "";
+  // byond ui can't resist trying to render
+  if (!data.canViewTacmap || data.mapRef === null) {
+    return <OldMapPanel {...props} />;
+  }
+
+  return (
+    <Section fill fitted height="86%">
+      <ByondUi
+        height="100%"
+        width="100%"
+        params={{
+          id: data.mapRef,
+          type: 'map',
+          'background-color': 'none',
+        }}
+        className="TacticalMap"
+      />
+    </Section>
+  );
 };
 
 const OldMapPanel = (props) => {

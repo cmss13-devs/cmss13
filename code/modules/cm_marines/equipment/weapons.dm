@@ -74,7 +74,7 @@
 	new /obj/item/weapon/gun/smartgun/dirty(src)
 	new /obj/item/smartgun_battery(src)
 	new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc(src)
-	new /obj/item/clothing/head/helmet/marine/veteran/pmc/gunner(src)
+	new /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed(src)
 	new /obj/item/storage/belt/gun/smartgunner/pmc/full(src)
 	update_icon()
 

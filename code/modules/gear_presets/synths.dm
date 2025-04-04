@@ -168,6 +168,9 @@
 
 /datum/equipment_preset/synth/survivor/wy
 	flags = EQUIPMENT_PRESET_STUB
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "wy_syn"
 	minimap_background = "background_goon"
 
 /datum/equipment_preset/synth/survivor/wy/New()
@@ -620,6 +623,7 @@
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_background = "background_cmb"
+	minimap_icon = "cmb_syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
@@ -641,7 +645,9 @@
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/wy/security_synth
-	name = "Survivor - Synthetic - Corporate Security Synth"
+	name = "Survivor - Synthetic - W-Y Security Guard Synthetic"
+	assignment = JOB_WY_SEC_SYNTH
+	rank = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
@@ -659,31 +665,6 @@
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
 		WEAR_L_HAND = /obj/item/weapon/classic_baton
-	)
-
-	survivor_variant = SECURITY_SURVIVOR
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/synth/survivor/wy/protection_synth
-	name = "Survivor - Synthetic - Corporate Protection Synth"
-	idtype = /obj/item/card/id/pmc
-	role_comm_title = "WY Syn"
-	minimap_icon = "pmc_syn"
-	minimap_background = "background_pmc"
-	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc/hvh,
-		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/marine/veteran/pmc,
-		WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
-		WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/flashbang,
-		WEAR_BACK = /obj/item/storage/backpack/lightpack/five_slot,
-		WEAR_IN_BACK = /obj/item/device/binoculars,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
-		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
-		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/pmc,
-		WEAR_FEET = /obj/item/clothing/shoes/veteran/pmc/knife,
-		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
 	survivor_variant = SECURITY_SURVIVOR

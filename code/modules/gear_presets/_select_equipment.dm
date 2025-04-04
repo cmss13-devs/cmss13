@@ -306,7 +306,6 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = null
 
-
 /datum/equipment_preset/proc/spawn_rebel_uniform(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
 		return

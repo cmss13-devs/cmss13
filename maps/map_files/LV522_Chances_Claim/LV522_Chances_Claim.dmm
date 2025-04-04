@@ -19944,7 +19944,7 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/weapon/gun/flamer{
+/obj/item/weapon/gun/flamer/m240{
 	current_mag = null;
 	layer = 3.1
 	},

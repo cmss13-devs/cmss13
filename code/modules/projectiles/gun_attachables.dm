@@ -278,7 +278,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/suppressor/New()
 	..()
 	damage_falloff_mod = 0.1
-	attach_icon = pick("suppressor_a","suppressor2_a")
+
+/obj/item/attachable/suppressor/nsg
+	name = "\improper BL11 firearm muffler"
+	desc = "Threaded steel barrel attachment; slows the escape of propellant gasses, resulting in muffled weapon fire."
+	icon_state = "bl11"
+	attach_icon = "bl11_a"
 
 /obj/item/attachable/suppressor/xm40_integral
 	name = "\improper XM40 integral suppressor"
@@ -332,10 +337,17 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bayonet/upp_replica
 	name = "\improper Type 80 bayonet"
+	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
 	attach_icon = "upp_bayonet_a"
-	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
+
+/obj/item/attachable/bayonet/wy
+	name = "\improper SA120 L7 bayonet"
+	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
+	icon_state = "wy_bayonet"
+	attach_icon = "wy_bayonet_a"
+	unacidable = TRUE
 
 /obj/item/attachable/bayonet/upp
 	name = "\improper Type 80 bayonet"

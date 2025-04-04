@@ -153,10 +153,16 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate_security
-	name = "Survivor - Kutjevo - Synthetic - Corporate Security"
+	name = "Survivor - Kutjevo - Synthetic - Corporate Security Goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
+	assignment = JOB_WY_GOON_SYNTH
+	rank = JOB_WY_GOON_SYNTH
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "goon_synth"
+	minimap_background = "background_goon"
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -180,6 +186,9 @@
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
 	rank = JOB_CMB_SYN
+	minimap_background = "background_cmb"
+	minimap_icon = "cmb_syn"
+
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)

@@ -375,14 +375,11 @@
 	if(wearer.stat == DEAD)
 		if(wearer.undefibbable)
 			background.overlays += image('icons/ui_icons/map_blips_large.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
-			return
 		if(!wearer.mind)
 			var/mob/dead/observer/ghost = wearer.get_ghost(TRUE)
 			if(!ghost?.can_reenter_corpse)
 				background.overlays += image('icons/ui_icons/map_blips_large.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
-				return
 		background.overlays += image('icons/ui_icons/map_blips.dmi', null, "defibbable", ABOVE_FLOAT_LAYER)
-		return
 	if(wearer.assigned_squad)
 		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "squad_underlay")
 		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, wearer.assigned_equipment_preset.minimap_icon)

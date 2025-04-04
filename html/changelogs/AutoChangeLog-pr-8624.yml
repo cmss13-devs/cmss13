@@ -1,0 +1,6 @@
+author: "SpypigDev"
+delete-after: True
+changes:
+  - ui: "converts groundside ops console to TGUI"
+  - rscdel: "Almayer control console merged with groundside ops console"
+  - rscadd: "OB keycard safety system"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { act, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -30,7 +30,6 @@ interface TacMapProps {
   actionQueueChange: number;
   exportedColor: string;
   mapFallback: string;
-  mapRef: string;
   currentMenu: string;
   lastUpdateTime: number;
   canvasCooldownDuration: number;
@@ -196,27 +195,9 @@ export const TacticalMap = (props) => {
 };
 
 const ViewMapPanel = (props) => {
-  const { data } = useBackend<TacMapProps>();
-
-  // byond ui can't resist trying to render
-  if (!data.canViewTacmap || data.mapRef === null) {
-    return <OldMapPanel {...props} />;
-  }
-
-  return (
-    <Section fill fitted height="86%">
-      <ByondUi
-        height="100%"
-        width="100%"
-        params={{
-          id: data.mapRef,
-          type: 'map',
-          'background-color': 'none',
-        }}
-        className="TacticalMap"
-      />
-    </Section>
-  );
+  const { act } = useBackend<TacMapProps>();
+    
+  return act("mapView");
 };
 
 const OldMapPanel = (props) => {

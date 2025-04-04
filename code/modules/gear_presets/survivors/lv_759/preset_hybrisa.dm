@@ -850,7 +850,7 @@
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
 	minimap_icon = "goon_standard"
-	 
+	minimap_background = "background_goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)

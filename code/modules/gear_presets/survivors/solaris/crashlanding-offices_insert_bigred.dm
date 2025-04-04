@@ -13,7 +13,7 @@
 	skills = /datum/skills/civilian/survivor/pmc
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_icon = "pmc_gun"
-	 
+	minimap_background = "background_pmc"
 
 	access = list(
 		ACCESS_WY_GENERAL,
@@ -278,7 +278,7 @@
 	role_comm_title = "WY Syn"
 	skills = /datum/skills/synthetic
 	minimap_icon = "pmc_syn"
-	 
+	minimap_background = "background_pmc"
 
 /datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_GEN_THREE)

@@ -23,6 +23,7 @@
 	var/origin_override
 
 	var/minimap_icon = "private"
+	var/minimap_background = "background"
 	var/always_minimap_visible = TRUE
 
 	//Uniform data

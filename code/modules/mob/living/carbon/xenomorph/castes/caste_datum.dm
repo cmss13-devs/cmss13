@@ -132,6 +132,7 @@
 	var/minimum_evolve_time = 1 MINUTES
 	/// Iconstate for the xeno on the minimap
 	var/minimap_icon = "xeno"
+	var/minimap_background = "background_xeno"
 	///The iconstate for leadered xenos on the minimap, added as overlay
 	var/minimap_leadered_overlay = "xenoleader"
 

@@ -121,6 +121,7 @@
 					var/datum/caste_datum/caste = xeno.caste
 					serialized["caste"] = caste.caste_type
 					serialized["icon"] = caste.minimap_icon
+					serialized["background_icon"] = caste.minimap_background
 					serialized["hivenumber"] = xeno.hivenumber
 					serialized["area_name"] = get_area_name(xeno)
 				xenos += list(serialized)
@@ -147,7 +148,9 @@
 
 				if(human.assigned_squad)
 					serialized["background_icon"] = human.assigned_squad.background_icon
-
+				else
+					serialized["background_icon"] = human.assigned_equipment_preset?.minimap_background
+				
 				if(istype(get_area(human), /area/tdome))
 					in_thunderdome += list(serialized)
 					continue

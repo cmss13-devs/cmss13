@@ -13,7 +13,7 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	origin_override = ORIGIN_CIVILIAN
-	 
+	minimap_background = "background_clf"
 	minimap_icon = "clf_mil"
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
@@ -187,6 +187,7 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	minimap_icon = "clf_synth"
+	minimap_background = "background_clf"
 
 /datum/equipment_preset/synth/survivor/clf/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COLONY_GEN_ONE)

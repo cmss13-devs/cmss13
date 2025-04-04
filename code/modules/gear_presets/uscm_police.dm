@@ -2,6 +2,7 @@
 	name = "USCM (police roles)"
 	faction = FACTION_MARINE
 	minimum_age = 21
+	minimap_background = "background_mp"
 
 //*****************************************************************************************************/
 
@@ -32,7 +33,7 @@
 	skills = /datum/skills/MP
 
 	minimap_icon = "mp"
-
+	
 	utility_under = list(/obj/item/clothing/under/marine/mp)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)

@@ -8364,6 +8364,13 @@
 	pixel_x = -7;
 	pixel_y = 4
 	},
+/obj/item/device/houndcam{
+	pixel_x = 10
+	},
+/obj/item/device/houndcam{
+	pixel_x = 5
+	},
+/obj/item/device/houndcam,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "Ck" = (

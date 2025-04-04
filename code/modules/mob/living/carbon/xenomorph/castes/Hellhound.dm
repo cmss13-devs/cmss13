@@ -59,6 +59,7 @@
 	slash_sound = 'sound/weapons/bite.ogg'
 	organ_value = 1500
 	mob_size = MOB_SIZE_XENO_SMALL
+	var/obj/structure/machinery/camera/camera
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -88,6 +89,8 @@
 	SSmob.living_misc_mobs += src
 	GLOB.hellhound_list += src
 	RegisterSignal(src, COMSIG_MOB_WEED_SLOWDOWN, PROC_REF(handle_weed_slowdown))
+	camera = new /obj/structure/machinery/camera/autoname/yautja(src)
+	camera.c_tag = real_name
 
 /mob/living/carbon/xenomorph/hellhound/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -119,6 +122,7 @@
 /mob/living/carbon/xenomorph/hellhound/Destroy()
 	GLOB.hellhound_list -= src
 	SSmob.living_misc_mobs -= src
+	QDEL_NULL(camera)
 	return ..()
 
 /mob/living/carbon/xenomorph/hellhound/resist_fire()

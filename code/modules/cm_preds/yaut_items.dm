@@ -1612,3 +1612,28 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	new /obj/item/tool/wirecutters/yautja(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool/yautja(src)
+
+/obj/item/device/houndcam
+	name = "Hellhound Observation Pad"
+	desc = "A portable camera console device, used for remotely overwatching Hellhounds."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "houndpad"
+	flags_item = ITEM_PREDATOR
+	flags_atom = FPRINT|CONDUCT
+	w_class = SIZE_SMALL
+	force = 1
+	throwforce = 1
+	unacidable = TRUE
+	var/obj/structure/machinery/computer/cameras/yautja/internal_camera
+
+/obj/item/device/houndcam/Initialize()
+	. = ..()
+	internal_camera = new(src)
+
+/obj/item/device/houndcam/Destroy()
+	QDEL_NULL(internal_camera)
+	return ..()
+
+/obj/item/device/houndcam/attack_hand(mob/user)
+	. = ..()
+	internal_camera.tgui_interact(user)

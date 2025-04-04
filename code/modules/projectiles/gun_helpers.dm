@@ -337,6 +337,9 @@ DEFINES in setup.dm, referenced here.
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 			return
+		if(magazine.loc != user && !istype(magazine.loc, /obj/item/storage))
+			to_chat(user, SPAN_WARNING("[dropping] must be carried to do that."))
+			return
 		//no tactical reload for the untrained.
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0)
 			to_chat(user, SPAN_WARNING("You don't know how to do tactical reloads."))

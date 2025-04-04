@@ -26,9 +26,9 @@
 	var/slot = ACCESSORY_SLOT_DECOR //default slot for accessories, pathed here for use for non-accessories
 	var/accessory_path = /obj/item/clothing/accessory // for pathing to different accessory subtypes with unique mechanics
 
-/obj/item/clothing/proc/convert_to_accessory()
+/obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)
-		to_chat(usr, SPAN_NOTICE("[src] cannot be turned into an accessory."))
+		to_chat(user, SPAN_NOTICE("[src] cannot be turned into an accessory."))
 		return
 
 	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
@@ -51,34 +51,34 @@
 
 	new_accessory.original_item_path = src.type
 
-	if(ismob(loc) && loc == usr)
-		usr.put_in_hands(new_accessory)
+	if(ismob(loc) && loc == user)
+		user.put_in_hands(new_accessory)
 
-	to_chat(usr, SPAN_NOTICE("You will start wearing [src] as an accessory."))
+	to_chat(user, SPAN_NOTICE("You will start wearing [src] as an accessory."))
 	// we dont want duplicates man
 	qdel(src)
 
-/obj/item/clothing/proc/revert_from_accessory()
+/obj/item/clothing/proc/revert_from_accessory(mob/user)
 	var/obj/item/clothing/accessory/access = src
 	if(!access.original_item_path)
-		to_chat(usr, SPAN_NOTICE("[src] cannot be reverted because the original item path is missing."))
+		to_chat(user, SPAN_NOTICE("[src] cannot be reverted because the original item path is missing."))
 		return
 
 	var/obj/item/clothing/original_item = new access.original_item_path(loc)
 	if(!original_item)
-		to_chat(usr, SPAN_NOTICE("Failed to revert [src] to its original item."))
+		to_chat(user, SPAN_NOTICE("Failed to revert [src] to its original item."))
 		return
 
-	if(ismob(loc) && loc == usr)
-		usr.put_in_hands(original_item)
+	if(ismob(loc) && loc == user)
+		user.put_in_hands(original_item)
 
-	to_chat(usr, SPAN_NOTICE("You will start wearing [src] as normal."))
+	to_chat(user, SPAN_NOTICE("You will start wearing [src] as normal."))
 	// ditto
 	qdel(src)
 
 /obj/item/clothing/attack_self(mob/user)
 	if(can_become_accessory)
-		convert_to_accessory()
+		convert_to_accessory(user)
 
 /obj/item/clothing/get_examine_line(mob/user)
 	. = ..()

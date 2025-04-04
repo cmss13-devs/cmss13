@@ -1,6 +1,5 @@
-import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { ComponentProps, useState } from 'react';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,10 +8,9 @@ import {
   Section,
   Stack,
   Tabs,
-} from '../components';
-import { BoxProps } from '../components/Box';
-import { Table, TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Table, TableCell, TableRow } from 'tgui/components/Table';
+import { Window } from 'tgui/layouts';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
@@ -39,7 +37,7 @@ interface TerminalProps {
   printer_toner: number;
 }
 
-interface ConfirmationProps extends BoxProps {
+interface ConfirmationProps extends ComponentProps<typeof Box> {
   readonly onConfirm: () => any;
   readonly onCancel: () => any;
 }
@@ -74,7 +72,7 @@ const NoCompoundsDetected = () => {
   return <span>ERROR: no chemicals have been detected.</span>;
 };
 
-interface CompoundRecordProps extends BoxProps {
+interface CompoundRecordProps extends ComponentProps<typeof Box> {
   readonly compound: CompoundData;
   readonly canPrint: boolean;
 }
@@ -216,7 +214,7 @@ const ResearchReportTable = (props: {
   );
 };
 
-export interface CompoundTableProps extends BoxProps {
+export interface CompoundTableProps extends ComponentProps<typeof Box> {
   readonly docs: DocumentRecord[];
   readonly timeLabel: string;
   readonly canPrint: boolean;

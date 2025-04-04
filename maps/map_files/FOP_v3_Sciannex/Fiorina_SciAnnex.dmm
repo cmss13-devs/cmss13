@@ -35,6 +35,12 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/tumor/ice_lab)
+"aah" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "rocinante"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -2839,7 +2845,7 @@
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/fiorina/lz/near_lzI)
 "cfU" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "cfX" = (
@@ -8818,7 +8824,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/lowsec)
 "gSC" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/prison,
 /area/fiorina/maintenance)
 "gSK" = (
@@ -12823,7 +12829,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/fiorina/station/telecomm/lz1_cargo)
 "jTo" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/prison/whitegreen/east,
 /area/fiorina/station/medbay)
 "jTD" = (
@@ -14286,7 +14292,7 @@
 /obj/structure/toilet{
 	pixel_y = 4
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = 2;
 	pixel_y = 25
 	},
@@ -14482,10 +14488,10 @@
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "lhJ" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/structure/closet/secure_closet/guncabinet,
-/obj/item/ammo_magazine/flamer_tank,
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor,
+/obj/item/ammo_magazine/flamer_tank/survivor,
 /obj/item/storage/pouch/flamertank,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
@@ -26601,7 +26607,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "uvc" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "uvn" = (
@@ -46186,7 +46192,7 @@ wbI
 itN
 baC
 baC
-bQM
+aah
 bQM
 bQM
 bQM

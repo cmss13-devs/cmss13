@@ -459,7 +459,7 @@
 // TOGGLE MODE
 
 /obj/structure/machinery/m56d_hmg/auto/clicked(mob/user, list/mods, atom/A)
-	if (mods["ctrl"])
+	if (mods[CTRL_CLICK])
 		if(operator != user)
 			return ..()
 		if(!CAN_PICKUP(user, src))

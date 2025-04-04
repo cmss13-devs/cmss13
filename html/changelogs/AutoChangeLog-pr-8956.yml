@@ -1,0 +1,5 @@
+author: "Djvarik"
+delete-after: True
+changes:
+  - rscadd: "Added M3 Smooth Marine Armor to Req's Surplus Uniform Vendor"
+  - spellcheck: "Tweaked the capitalization of the M10 magazines in the Req Ammo Vendor."

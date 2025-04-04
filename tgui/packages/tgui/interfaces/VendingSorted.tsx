@@ -1,9 +1,8 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { toFixed } from 'common/math';
 import { classes } from 'common/react';
-import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { ComponentProps, useState } from 'react';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -14,10 +13,9 @@ import {
   ProgressBar,
   Section,
   Tooltip,
-} from '../components';
-import { BoxProps } from '../components/Box';
-import { Table, TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Table, TableCell, TableRow } from 'tgui/components/Table';
+import { Window } from 'tgui/layouts';
 
 const THEME_COMP = 0;
 const THEME_USCM = 1;
@@ -61,7 +59,7 @@ interface VenableItem {
   readonly record: VendingRecord;
 }
 
-interface RecordNameProps extends BoxProps {
+interface RecordNameProps extends ComponentProps<typeof Box> {
   readonly record: VendingRecord;
 }
 
@@ -97,7 +95,7 @@ const DescriptionTooltip = (props: RecordNameProps) => {
   );
 };
 
-interface VendButtonProps extends BoxProps {
+interface VendButtonProps extends ComponentProps<typeof Box> {
   readonly isRecommended: boolean;
   readonly isMandatory: boolean;
   readonly available: boolean;
@@ -116,7 +114,7 @@ const VendButton = (props: VendButtonProps, _) => {
       icon={props.available ? 'circle-down' : 'xmark'}
       onMouseDown={(e) => {
         e.preventDefault();
-        if (props.available) {
+        if (props.available && e.button === 0) {
           props.onClick();
         }
       }}

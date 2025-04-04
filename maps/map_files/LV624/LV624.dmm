@@ -3523,15 +3523,15 @@
 /turf/open/gm/river,
 /area/lv624/lazarus/fitness)
 "ava" = (
-/obj/structure/cargo_container/seegson/left,
+/obj/structure/cargo_container/wy2/left,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage/outdoors)
 "avb" = (
-/obj/structure/cargo_container/seegson/mid,
+/obj/structure/cargo_container/wy2/mid,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage/outdoors)
 "avc" = (
-/obj/structure/cargo_container/seegson/right,
+/obj/structure/cargo_container/wy2/right,
 /turf/open/floor/plating/platebotc,
 /area/lv624/lazarus/quartstorage/outdoors)
 "ave" = (
@@ -9181,7 +9181,7 @@
 /area/lv624/lazarus/secure_storage)
 "aWU" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aWV" = (

@@ -14,6 +14,24 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"ac" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ashtray/glass,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"ae" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
 "am" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -878,6 +896,9 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance)
 "sp" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "su" = (
@@ -886,6 +907,7 @@
 	density = 0;
 	pixel_y = 32
 	},
+/obj/item/reagent_container/food/drinks/shaker,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "sv" = (
@@ -1005,8 +1027,15 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "vq" = (
-/obj/structure/sink,
-/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/obj/structure/mirror{
+	desc = "Do you remember who you are?";
+	icon_state = "mirror_broke";
+	name = "broken mirror";
+	pixel_y = 32
+	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "vy" = (
@@ -1281,6 +1310,15 @@
 "zD" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/bottle/beer/craft/ganucci{
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	icon_state = "shotglass";
+	pixel_x = 3;
+	pixel_y = 20
+	},
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "zM" = (
@@ -2137,6 +2175,14 @@
 	density = 0;
 	pixel_y = 32
 	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_y = 14;
+	pixel_x = -8
+	},
+/obj/item/trash/ceramic_plate,
 /turf/open/floor/grimy,
 /area/desert_dam/building/bar/bar)
 "QI" = (
@@ -2488,6 +2534,7 @@
 /area/desert_dam/building/bar/bar)
 "WG" = (
 /obj/item/stack/sheet/wood,
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/building/bar/bar)
 "WK" = (
@@ -3171,9 +3218,9 @@ xT
 "}
 (14,1,1) = {"
 hv
-sp
+ae
 Vr
-bu
+ad
 jj
 ye
 Xh
@@ -3250,7 +3297,7 @@ hv
 QG
 Ev
 Ev
-zD
+ac
 hY
 Er
 At

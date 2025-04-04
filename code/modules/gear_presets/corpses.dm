@@ -1408,6 +1408,26 @@
 	assignment = "NSPA Constable"
 	xenovictim = TRUE
 
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent
+
+	name = "Corpse - Trijent NSPA Constable"
+
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/load_gear(mob/living/carbon/human/new_human)
+
+	var/unichoice = rand(1,2)
+	switch(unichoice)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer, WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer/warm, WEAR_BODY)
+	..()
+
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/burst
+
+	name = "Corpse - Burst - Trijent NSPA Constable"
+	assignment = "NSPA Constable"
+	xenovictim = TRUE
+
 // KMCC Mining
 
 /datum/equipment_preset/corpse/hybrisa/kelland_miner

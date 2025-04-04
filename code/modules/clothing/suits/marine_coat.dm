@@ -296,8 +296,8 @@
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/jacket/marine/provost
-	name = "\improper Provost Jacket"
-	desc = "A crisp jacket with the Provost sigil."
+	name = "\improper USCM Service 'A' Officer Winter Service Jacket"
+	desc = "A standard issue Service 'A' jacket, this one coming in winter black."
 	icon_state = "provost_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
@@ -305,21 +305,6 @@
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/chief
-	name = "\improper Provost Command Jacket"
-	desc = "A crisp jacket with the Provost sigil."
-	icon_state = "provostci_jacket"
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/coat
-	name = "\improper Provost Coat"
-	desc = "The crisp coat of a Provost Officer."
-	icon_state = "provost_coat"
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/coat/marshal
-	name = "\improper Provost Marshal Coat"
-	icon_state = "provost_coat_marshal"
-
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\

@@ -1100,8 +1100,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
-	name = "\improper Provost Marshal Cap"
-	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep its valuable contents safe."
+	name = "\improper M10 Pattern Military Police Riot Helmet"
+	desc = "A Variant of the M10 for Military Police deployed to deal with riots, often worn by MP's from the Provost Office."
 	icon_state = "pvmarshalhat"
 	item_state = "pvmarshalhat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'

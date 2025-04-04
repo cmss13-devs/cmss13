@@ -832,6 +832,8 @@
 		/obj/item/stock_parts = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		/obj/item/explosive/plastic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 		/obj/item/device/defibrillator/synthetic = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stack/repairable/gunlube = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
+		/obj/item/stack/repairable/gunkit = list(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED),
 	)
 	can_hold_skill_only = TRUE
 
@@ -1296,6 +1298,8 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
 		/obj/item/device/defibrillator/synthetic,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunkit,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,

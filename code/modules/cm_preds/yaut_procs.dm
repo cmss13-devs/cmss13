@@ -43,7 +43,7 @@
 	var/title_personal = "What will you say?"
 	var/title_impersonal = "What Will The Elder Say?"
 
-	var/input = tgui_input_text(usr, is_living_yautja ? message_personal : message_impersonal, is_living_yautja ? title_personal : title_impersonal)
+	var/input = tgui_input_text(src, is_living_yautja ? message_personal : message_impersonal, is_living_yautja ? title_personal : title_impersonal)
 	if(!input)
 		return FALSE
 	if(is_living_yautja)

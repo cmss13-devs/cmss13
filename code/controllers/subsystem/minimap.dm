@@ -1053,22 +1053,22 @@ SUBSYSTEM_DEF(minimaps)
 	drawn_image.icon = mona_lisa
 
 /atom/movable/screen/minimap_tool/draw_tool/red
-	screen_loc = "16,14"
+	screen_loc = "15,14"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_red.dmi'
 	color = MINIMAP_DRAWING_RED
 
 /atom/movable/screen/minimap_tool/draw_tool/yellow
-	screen_loc = "16,13"
+	screen_loc = "15,13"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_yellow.dmi'
 	color = MINIMAP_DRAWING_YELLOW
 
 /atom/movable/screen/minimap_tool/draw_tool/purple
-	screen_loc = "16,12"
+	screen_loc = "15,12"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_purple.dmi'
 	color = MINIMAP_DRAWING_PURPLE
 
 /atom/movable/screen/minimap_tool/draw_tool/blue
-	screen_loc = "16,11"
+	screen_loc = "15,11"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_blue.dmi'
 	color = MINIMAP_DRAWING_BLUE
 
@@ -1076,14 +1076,14 @@ SUBSYSTEM_DEF(minimaps)
 	icon_state = "erase"
 	desc = "Drag to erase a line, middle click to erase a dot. Middle click this button to unselect."
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_erase.dmi'
-	screen_loc = "16,10"
+	screen_loc = "15,10"
 	color = null
 
 /atom/movable/screen/minimap_tool/label
 	icon_state = "label"
 	desc = "Click to place a label. Middle click a label to remove it. Middle click this button to remove all labels."
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/label.dmi'
-	screen_loc = "16,8"
+	screen_loc = "15,8"
 	/// List of turfs that have labels attached to them. kept around so it can be cleared
 	var/list/turf/labelled_turfs = list()
 
@@ -1149,7 +1149,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/clear
 	icon_state = "clear"
 	desc = "Remove all current labels and drawings."
-	screen_loc = "16,9"
+	screen_loc = "15,9"
 
 /atom/movable/screen/minimap_tool/clear/clicked(location, list/modifiers)
 	drawn_image.icon = icon('icons/ui_icons/minimap.dmi')

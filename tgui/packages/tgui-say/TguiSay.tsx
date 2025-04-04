@@ -1,11 +1,17 @@
 import './styles/main.scss';
 
 import { isEscape, KEY } from 'common/keys';
-import { BooleanLike, classes } from 'common/react';
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { type BooleanLike, classes } from 'common/react';
+import {
+  type FormEvent,
+  type KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { dragStartHandler } from 'tgui/drag';
 
-import { Channel, ChannelIterator } from './ChannelIterator';
+import { type Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
 import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
 import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';

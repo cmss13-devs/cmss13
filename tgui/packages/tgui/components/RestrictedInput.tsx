@@ -3,7 +3,7 @@ import { clamp } from 'common/math';
 import { classes } from 'common/react';
 import { Component, createRef } from 'react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 
 const DEFAULT_MIN = 0;
 const DEFAULT_MAX = 10000;

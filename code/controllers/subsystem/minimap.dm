@@ -246,7 +246,7 @@ SUBSYSTEM_DEF(minimaps)
 		actual_z = target.loc.z
 
 	if(!initialized || !(minimaps_by_z["[actual_z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
-		for(var/datum/callback/callback as anything in earlyadds["[actual_z]"])
+		for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, "[actual_z]"))
 			if(callback.arguments[1] == target)
 				return
 		LAZYADDASSOCLIST(earlyadds, "[actual_z]", CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))

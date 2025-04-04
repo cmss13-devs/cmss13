@@ -1,4 +1,4 @@
-import { act, useState } from 'react';
+import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -9,7 +9,6 @@ import {
   Stack,
   Tabs,
 } from 'tgui/components';
-import { ByondUi } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 import { CanvasLayer } from './CanvasLayer';

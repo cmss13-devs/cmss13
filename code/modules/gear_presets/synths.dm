@@ -779,6 +779,7 @@
 	. = ..()
 	new_human.set_species(joe_type)
 	new_human.gender = MALE
+	new_human.flavor_text = ""
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 	new_human.r_eyes = 0
@@ -884,21 +885,6 @@
 /datum/equipment_preset/synth/working_joe/upp/load_skills(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.allow_gun_usage = TRUE
-
-/datum/equipment_preset/synth/working_joe/upp/load_race(mob/living/carbon/human/new_human)
-	. = ..()
-	new_human.set_species(joe_type)
-	new_human.h_style = "Bald"
-	new_human.f_style = "Shaved"
-	new_human.r_eyes = 0
-	new_human.g_eyes = 0
-	new_human.b_eyes = 0
-	new_human.r_hair = 100
-	new_human.g_hair = 88
-	new_human.b_hair = 74
-	new_human.r_facial = 255
-	new_human.g_facial = 255
-	new_human.b_facial = 255
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
 	if(src.faction == FACTION_UPP)

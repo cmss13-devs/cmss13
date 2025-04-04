@@ -196,7 +196,9 @@ export const TacticalMap = (props) => {
 const ViewMapPanel = (props) => {
   const { act } = useBackend<TacMapProps>();
     
-  return act("mapView");
+  act("mapView")
+
+  return ""
 };
 
 const OldMapPanel = (props) => {

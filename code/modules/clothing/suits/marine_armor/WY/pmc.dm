@@ -36,6 +36,7 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/pmc)
 	item_state_slots = list(WEAR_JACKET = "pmc_armor")
 	lamp_icon = "pmc_lamp"
+	light_color = LIGHT_COLOR_FLARE
 	lamp_light_color = LIGHT_COLOR_FLARE
 
 /obj/item/clothing/suit/storage/marine/veteran/pmc/no_lamp

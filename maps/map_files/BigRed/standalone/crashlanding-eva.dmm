@@ -196,6 +196,10 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
+"aP" = (
+/obj/item/storage/belt/medical/lifesaver/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -1780,7 +1784,7 @@ aT
 bs
 be
 bk
-bk
+aP
 aL
 cd
 aC

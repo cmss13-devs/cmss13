@@ -193,6 +193,9 @@ Everything below isn't used or out of place.
 
 	survivor_variant = SECURITY_SURVIVOR
 
+/datum/equipment_preset/survivor/goon/load_vanity(mob/living/carbon/human/new_human)
+	return
+
 /datum/equipment_preset/survivor/goon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate, WEAR_BODY)

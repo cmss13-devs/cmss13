@@ -31,6 +31,9 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
+/datum/equipment_preset/survivor/pmc/load_vanity(mob/living/carbon/human/new_human)
+	return
+
 /datum/equipment_preset/survivor/pmc/standard
 	name = "Survivor - PMC Standard"
 

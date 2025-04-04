@@ -13,6 +13,9 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_GOON)
 
+/datum/equipment_preset/goon/load_vanity(mob/living/carbon/human/new_human)
+	return
+
 /datum/equipment_preset/goon/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE, FEMALE)
 

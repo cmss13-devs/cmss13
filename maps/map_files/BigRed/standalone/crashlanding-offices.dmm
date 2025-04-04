@@ -243,6 +243,10 @@
 	icon_state = "wy18"
 	},
 /area/bigredv2/outside/office_complex)
+"aU" = (
+/obj/item/storage/belt/medical/lifesaver/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -1794,7 +1798,7 @@ dE
 dE
 bc
 bc
-bc
+aU
 bc
 bc
 Gx

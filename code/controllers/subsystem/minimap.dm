@@ -418,7 +418,7 @@ SUBSYSTEM_DEF(minimaps)
 	name = "Minimap"
 	icon = null
 	icon_state = ""
-	layer = ABOVE_HUD_LAYER
+	layer = TACMAP_LAYER
 	screen_loc = "1,1"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	appearance_flags = TILE_BOUND

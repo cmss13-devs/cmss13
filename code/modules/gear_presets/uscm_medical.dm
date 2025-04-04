@@ -41,7 +41,7 @@
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
-	minimap_icon = list("doctor")
+	minimap_icon = "doctor"
 	minimap_background = "background_command"
 	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
 	utility_hat = list()
@@ -70,7 +70,7 @@
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
 
-	minimap_icon = list("doctor")
+	minimap_icon = "doctor"
 	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -134,7 +134,7 @@
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
-	minimap_icon = list("nurse")
+	minimap_icon = "nurse"
 	minimap_background = "background_shipside"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)

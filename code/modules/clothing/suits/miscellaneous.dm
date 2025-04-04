@@ -351,15 +351,6 @@
 	item_state = "red_pyjamas"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 
-/obj/item/clothing/suit/xenos
-	name = "xenos suit"
-	desc = "A suit made out of chitinous alien hide."
-	icon_state = "xenos"
-	item_state = "xenos_suit"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
-	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
-	siemens_coefficient = 2
-
 //swimsuit
 
 /obj/item/clothing/under/swimsuit

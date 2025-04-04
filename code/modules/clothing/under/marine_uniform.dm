@@ -269,8 +269,8 @@
 	flags_atom = FPRINT && NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/general
-	name = "general uniform"
-	desc = "A uniform worn by a fleet general. It comes in a shade of deep black, and has a light shimmer to it. The weave looks strong enough to provide some light protections."
+	name = "USCM Service 'C' Officer Uniform"
+	desc = "A standard issue USCM Officer Service 'C' Uniform, comes with a short a short sleeve button up shirt and green trousers."
 	icon_state = "general_jumpsuit"
 	worn_state = "general_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
@@ -425,8 +425,8 @@
 	flags_jumpsuit = FALSE
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
-	name = "\improper Provost Uniform"
-	desc = "The crisp uniform of a Provost Officer."
+	name = "\improper MP Utility Uniform"
+	desc = "The standard issue uniform of most MP's on USCM Military Stations and bases, worn often by MP enforcers for the provost office."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
@@ -444,23 +444,12 @@
 
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
-/obj/item/clothing/under/marine/mp/provost/senior
-	name = "\improper Provost Senior Uniform"
-	desc = "The crisp uniform of a senior member of the Provost Office."
-	icon_state = "provost_tml"
-	worn_state = "provost_tml"
-
 /obj/item/clothing/under/marine/mp/provost/chief
-	name = "\improper Provost Command Uniform"
-	desc = "The crisp uniform of a commanding member of the Provost Office."
+	name = "\improper Service 'A' Officer Winter Uniform"
+	desc = "The winter version of the Service A uniform, often worn by Officers of the provost office."
 	icon_state = "provost_ci"
 	worn_state = "provost_ci"
 
-/obj/item/clothing/under/marine/mp/provost/marshal
-	name = "\improper Provost Marshal Uniform"
-	desc = "The crisp uniform of a Provost Marshal."
-	icon_state = "provost_marshal"
-	worn_state = "provost_marshal"
 
 //=========================//USCM Survivors\\================================\\
 //=======================================================================\\

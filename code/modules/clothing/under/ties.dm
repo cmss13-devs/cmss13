@@ -460,6 +460,11 @@
 	if(has_suit)
 		has_suit.overlays += get_inv_overlay()
 
+/obj/item/clothing/accessory/armband/mp
+	name = "MP armband"
+	desc = "An armband, worn by MP's on base, usually also worn by those from the provost office."
+	icon_state = "mp"
+
 //patches
 /obj/item/clothing/accessory/patch
 	name = "USCM patch"
@@ -643,6 +648,11 @@
 	name = "CLF patch"
 	desc = "A circular, fire-resistant patch with a white border. The design features three white stars and a tricolor background: green, black, and red, symbolizing the Colonial Liberation Front's fight for independence and unity. This patch is worn by CLF fighters as a badge of defiance against corporate and governmental oppression, representing their struggle for a free and self-determined colonial future. Though feared and reviled by some, it remains a powerful symbol of resistance and revolution."
 	icon_state = "clfpatch"
+
+/obj/item/clothing/accessory/patch/msf_patch
+	name = "Marine Space Force Herculis patch"
+	desc = "A fire-resistant shoulder patch, depicting the logo of Marine Space Force III, Herculis, deployed throughout the Anglo-Japanese arm from the outer veil to the ICSC Network, this patch is often worn by any general assigned to the MSF Herculis, US Space Command and UA Allied Command Generals often have their own patches."
+	icon_state = "msfpatch"
 
 // Misc
 

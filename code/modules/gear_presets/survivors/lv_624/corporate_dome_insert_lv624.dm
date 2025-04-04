@@ -160,7 +160,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	minimap_icon = "pmc_syn"
-	 = "background_goon"
+	 
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	equipment_to_spawn = list(

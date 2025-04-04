@@ -65,7 +65,6 @@
 	role_comm_title = "GEN"
 	minimum_age = 50
 	minimap_icon = "deputy"
-	 = "background_command"
 	skills = /datum/skills/general
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_TSL) //Know your enemy.
 
@@ -193,7 +192,6 @@
 
 	idtype = /obj/item/card/id/provost
 	skills = /datum/skills/provost
-	 = "background_mp"
 
 /datum/equipment_preset/uscm_event/provost/New()
 	. = ..()

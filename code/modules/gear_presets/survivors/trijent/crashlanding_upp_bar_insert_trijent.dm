@@ -10,7 +10,7 @@
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	minimap_icon = "upp_pvt"
-	 = "background_upp"
+	 
 	role_comm_title = "173/RECON"
 	idtype = /obj/item/card/id/dogtag/upp
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -188,7 +188,7 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
 	role_comm_title = "173/RECON Syn"
-	 = "background_upp"
+	 
 	minimap_icon = "upp_synth"
 
 /datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)

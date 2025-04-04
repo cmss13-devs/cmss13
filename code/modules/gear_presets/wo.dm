@@ -23,7 +23,7 @@
 	idtype = /obj/item/card/id/gold
 
 	minimap_icon = "co_wo"
-	 = "background_command"
+	 
 
 	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
@@ -103,7 +103,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "xo_wo"
-	 = "background_command"
+	 
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
@@ -148,7 +148,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "hgsl"
-	 = "background_mp"
+	 
 
 /datum/equipment_preset/wo/cmp/load_gear(mob/living/carbon/human/new_human)
 
@@ -185,7 +185,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "vhg"
-	 = "background_mp"
+	 
 
 /datum/equipment_preset/wo/vhg/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -228,7 +228,7 @@
 	idtype = /obj/item/card/id/gold
 
 	minimap_icon = "hgspec"
-	 = "background_mp"
+	 
 
 /datum/equipment_preset/wo/hgs/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -268,7 +268,7 @@
 	skills = /datum/skills/honor_guard
 
 	minimap_icon = "hg"
-	 = "background_mp"
+	 
 
 /datum/equipment_preset/wo/hg/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel/sec
@@ -303,7 +303,7 @@
 	skills = /datum/skills/mortar_crew
 
 	minimap_icon = "wo_mcrew"
-	 = "background_shipside"
+	 
 
 /datum/equipment_preset/wo/mortar_crew/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -340,7 +340,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "cargo"
-	 = "background_medical"
+	 
 
 /datum/equipment_preset/wo/quartermaster/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -371,7 +371,7 @@
 	idtype = /obj/item/card/id
 
 	minimap_icon = "cargo"
-	 = "background_shipside"
+	 
 
 /datum/equipment_preset/wo/cargo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -406,7 +406,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "cmo_wo"
-	 = "background_medical_WO"
+	 
 
 /datum/equipment_preset/wo/head_surgeon/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -450,7 +450,7 @@
 	idtype = /obj/item/card/id
 
 	minimap_icon = "medic"
-	 = "background_medical_WO"
+	 
 
 /datum/equipment_preset/wo/doctor/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -491,7 +491,7 @@
 	idtype = /obj/item/card/id
 
 	minimap_icon = "chemist_wo"
-	 = "background_medical_WO"
+	 
 
 /datum/equipment_preset/wo/chemist/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/medic
@@ -532,7 +532,7 @@
 	idtype = /obj/item/card/id/silver
 
 	minimap_icon = "ce"
-	 = "background_medical"
+	 
 
 /datum/equipment_preset/wo/bcm/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -567,7 +567,7 @@
 	idtype = /obj/item/card/id
 
 	minimap_icon = "mt"
-	 = "background_shipside"
+	 
 
 /datum/equipment_preset/wo/bc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel/tech
@@ -601,7 +601,7 @@
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "correspondent"
-	 = "background_civillian"
+	 
 
 /datum/equipment_preset/wo/reporter/New()
 	. = ..()
@@ -629,7 +629,7 @@
 /datum/equipment_preset/wo/marine
 	name = "WO Dust Raider" //Stub other Marine equipment stems from
 	flags = EQUIPMENT_PRESET_STUB
-	 = "background_intel"
+	 
 
 //*****************************************************************************************************/
 

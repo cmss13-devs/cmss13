@@ -25,10 +25,6 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
-	var/minimap_flag = get_minimap_flag_for_faction(linked_tower.selected_categories[SENTRY_CATEGORY_IFF])
-	new /obj/effect/temp_visual/minimap_blip(get_turf(target), minimap_flag)
-
-
 /obj/structure/machinery/defenses/bell_tower/Initialize()
 	. = ..()
 
@@ -160,6 +156,9 @@
 		to_apply.set_effect(2, SUPERSLOW)
 		to_chat(to_apply, SPAN_WARNING("You feel very heavy."))
 		sound_to(to_apply, 'sound/items/detector.ogg')
+
+	var/minimap_flag = get_minimap_flag_for_faction(linked_tower.selected_categories[SENTRY_CATEGORY_IFF])
+	new /obj/effect/temp_visual/minimap_blip(get_turf(target), minimap_flag)
 
 /obj/structure/machinery/defenses/bell_tower/md
 	name = "R-1NG motion detector tower"

@@ -39,7 +39,6 @@
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
 	minimap_icon = "co"
-	 = "background_command"
 
 
 /datum/equipment_preset/uscm_co/New()
@@ -315,7 +314,6 @@
 	assignment = JOB_USCM_OBSV
 	rank = JOB_USCM_OBSV
 	role_comm_title = "VO"
-	 = "background_medical_WO"
 
 /datum/equipment_preset/uscm_co/council
 	name = "USCM Commanding Officer (CO+)"

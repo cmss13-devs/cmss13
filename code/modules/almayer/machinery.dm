@@ -128,7 +128,7 @@
 	if(!user.client)
 		return TRUE
 
-	/obj/structure/machinery/prop/almayer/CICmap/on_unset_interaction(mob/user)
+/obj/structure/machinery/prop/almayer/CICmap/on_unset_interaction(mob/user)
 	. = ..()
 	interactees -= user
 	user?.client?.screen -= map

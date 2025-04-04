@@ -96,7 +96,7 @@
 
 /obj/structure/filingcabinet/research
 	name = "automated sorting cabinet"
-	desc = "Marvel of sorting technology. Automatically sorts any research document you place in it. Allows to sort by many diffrent factors and types."
+	desc = "Marvel of sorting technology. Automatically sorts any research document you place in it."
 	icon_state = "chestdrawer"
 	allowed_types = list(/obj/item/paper/research_report)
 	///contains references to all papers in the cabinet, for ease of looping.
@@ -126,13 +126,15 @@
 				"code" = properties_document.code,
 				"level" = properties_document.level))
 		chemical_value += document_report.data.overdose / 5
+		var/list/document_spliced = splittext(document_report.name," ")
 		data["paper_data"] += list(list(
 			"name" = document_report.data.name,
 			"document_id" = document_report.data.id,
 			"completed" = document_report.completed,
 			"overdose" = document_report.data.overdose,
 			"overall_value" = chemical_value,
-			"properties_list" = properties_codes_level //for hopefully highlighting things
+			"document_type" = (document_spliced[1] == "Contract" ? 1 : (document_spliced[1] == "Synthesis" ? 2 : 3)),
+			"properties_list" = properties_codes_level,
 		))
 	if(!length(data["paper_data"]))
 		data["paper_data"] = null

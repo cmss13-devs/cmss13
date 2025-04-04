@@ -19,29 +19,36 @@ interface PaperData {
   completed: boolean;
   overdose: number;
   overall_value: number;
+  document_type: number;
   properties_list: PropertyCode[];
 }
 
 interface PropertyCode {
   code: string;
   level: number;
+  shouldHighlight: boolean;
 }
 
 export const AutosortingCabinet = () => {
   const { data, act } = useBackend<SortingProps>();
   const [selectedSort, setSelectedSort] = useSharedState('NONE', 0);
   const [selectedOrder, setselectedOrder] = useSharedState('ASCENDING', true);
+  let paperDocumentFinal: PaperData[] | null = data.paper_data;
   const [selectedSearch, setSelectedSearch] = useSharedState('SEARCH', '');
-  if (data.paper_data) {
+  const [isCompleted, setIsCompleted] = useSharedState('COMPLETED', false);
+  if (paperDocumentFinal) {
     selectedSort === 1
-      ? data.paper_data.sort((a, b) => a.overall_value - b.overall_value)
+      ? paperDocumentFinal.sort((a, b) => a.overall_value - b.overall_value)
       : selectedSort === 2
-        ? data.paper_data.sort((a, b) => a.overdose - b.overdose)
-        : data.paper_data.sort((a, b) => a.overall_value - b.overall_value);
+        ? paperDocumentFinal.sort((a, b) => a.overdose - b.overdose)
+        : paperDocumentFinal.sort((a, b) => a.document_type - b.document_type);
+    paperDocumentFinal = paperDocumentFinal.filter(
+      (property) => property.completed,
+    );
   }
-  if (data.paper_data) {
+  if (paperDocumentFinal) {
     if (selectedSearch !== '') {
-      data.paper_data = data.paper_data.filter(
+      paperDocumentFinal = paperDocumentFinal.filter(
         (property) =>
           property.properties_list.some(
             (prop) =>
@@ -55,9 +62,37 @@ export const AutosortingCabinet = () => {
           property.overdose.toString() === selectedSearch,
       );
     }
-    selectedOrder === true ? data.paper_data.reverse() : data.paper_data;
+    selectedOrder === true &&
+    paperDocumentFinal !== paperDocumentFinal.toReversed()
+      ? (paperDocumentFinal = paperDocumentFinal.toReversed())
+      : paperDocumentFinal;
+    for (let idoc = 0; idoc < paperDocumentFinal?.length; idoc++) {
+      for (
+        let iprop = 0;
+        iprop < paperDocumentFinal[idoc].properties_list.length;
+        iprop++
+      ) {
+        if (
+          (paperDocumentFinal[idoc].properties_list[iprop].code
+            .toUpperCase()
+            .includes(selectedSearch.toUpperCase().replace(/[ ]/g, '')) ||
+            paperDocumentFinal[idoc].properties_list[iprop].level.toString() ===
+              selectedSearch ||
+            paperDocumentFinal[idoc].properties_list[iprop].code +
+              paperDocumentFinal[idoc].properties_list[iprop].level ===
+              selectedSearch.replace(/[ ]/g, '')) &&
+          (selectedSearch.length >= 3 || !isNaN(parseFloat(selectedSearch)))
+        ) {
+          paperDocumentFinal[idoc].properties_list[iprop].shouldHighlight =
+            true;
+        } else {
+          paperDocumentFinal[idoc].properties_list[iprop].shouldHighlight =
+            false;
+        }
+      }
+    }
   } else {
-    data.paper_data = null;
+    paperDocumentFinal = null;
   }
 
   return (
@@ -67,6 +102,7 @@ export const AutosortingCabinet = () => {
           <Input
             placeholder="Chemical name, Property code, Level, OD, etc..."
             width={'450px'}
+            onEscape={(e) => setSelectedSearch('')}
             onInput={(e, value) => setSelectedSearch(value.toUpperCase())}
           />
           <Button
@@ -114,6 +150,8 @@ export const AutosortingCabinet = () => {
             tooltip={'Only Include chemicals that can be used in the simulator'}
             tooltipPosition="bottom"
             preserveWhitespace
+            selected={isCompleted}
+            onClick={() => setIsCompleted(!isCompleted)}
           >
             {'   '}
           </Button>
@@ -132,18 +170,37 @@ export const AutosortingCabinet = () => {
             {'   '}
           </Button>
           <Divider />
-          {data.paper_data === null ? (
+          {paperDocumentFinal === null ? (
             <NoticeBox info>Cabinet is empty!</NoticeBox>
           ) : (
-            data.paper_data.map((x, b) => (
+            paperDocumentFinal.map((x, b) => (
               <Collapsible
                 key={x.name}
                 title={
                   <>
                     {x.name}{' '}
-                    {x.properties_list
-                      .map((prop) => prop.code + prop.level)
-                      .join(', ')}
+                    {x.properties_list.map((prop, id) => (
+                      <div
+                        key={id}
+                        style={{
+                          whiteSpace: 'pre',
+                          display: 'inline-flex',
+                        }}
+                      >
+                        <div
+                          style={{
+                            backgroundColor:
+                              prop.shouldHighlight === true
+                                ? 'yellow'
+                                : undefined,
+                          }}
+                        >
+                          {prop.code}
+                          {prop.level}
+                        </div>
+                        <div>, </div>
+                      </div>
+                    ))}
                     {}
                   </>
                 }

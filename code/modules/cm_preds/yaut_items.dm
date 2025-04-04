@@ -874,7 +874,6 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	return ..()
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/attack_self(mob/living/carbon/human/user)
-	..()
 	if(!active)
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 			to_chat(user, SPAN_WARNING("What's this thing?"))
@@ -885,6 +884,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
 			C.toggle_throw_mode(THROW_MODE_NORMAL)
+	..()
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
 	if(active)

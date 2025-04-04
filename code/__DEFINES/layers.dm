@@ -269,7 +269,7 @@
 /// HUD layer defines
 #define HUD_PLANE 1000
 #define ABOVE_HUD_PLANE 1100
-
+#define TACMAP_PLANE 1150
 #define CINEMATIC_PLANE 1200
 
 

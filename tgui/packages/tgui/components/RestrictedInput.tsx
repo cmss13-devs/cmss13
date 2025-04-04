@@ -144,7 +144,7 @@ function getClampedNumber(value, minValue, maxValue, allowFloats) {
 export class RestrictedInput extends Component {
   handleBlur: (e: any) => void;
   inputRef: React.RefObject<HTMLInputElement>;
-  props: {
+  declare props: {
     readonly autoSelect?: boolean;
     readonly autoFocus?: boolean;
     readonly maxValue?: number | null;

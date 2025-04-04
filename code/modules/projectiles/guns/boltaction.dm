@@ -90,23 +90,30 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL //why make bolties more useless
+	jam_threshold = GUN_DURABILITY_LOW
 
-/obj/item/weapon/gun/boltaction/unique_action(mob/M)
-	if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
-		to_chat(M, SPAN_DANGER("You can't cycle the bolt again right now."))
+/obj/item/weapon/gun/boltaction/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
+	else if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
+		to_chat(user, SPAN_DANGER("You can't cycle the bolt again right now."))
 		return
 
 	bolted = !bolted
 
 	if(bolted)
-		to_chat(M, SPAN_DANGER("You close the bolt of [src]!"))
+		to_chat(user, SPAN_DANGER("You close the bolt of [src]!"))
 		playsound(get_turf(src), open_bolt_sound, 15, TRUE, 1)
 		ready_in_chamber()
 		recent_cycle = world.time
 	else
-		to_chat(M, SPAN_DANGER("You open the bolt of [src]!"))
+		to_chat(user, SPAN_DANGER("You open the bolt of [src]!"))
 		playsound(get_turf(src), close_bolt_sound, 65, TRUE, 1)
-		unload_chamber(M)
+		unload_chamber(user)
 
 	update_icon()
 
@@ -213,6 +220,11 @@
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	damage_falloff_mult = 0
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE //ok this is an exception
+
 
 /obj/item/weapon/gun/boltaction/vulture/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 24, "under_x" = 25, "under_y" = 14, "stock_x" = 11, "stock_y" = 15)

@@ -116,7 +116,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, "size=650x700")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 650, height = 700)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()

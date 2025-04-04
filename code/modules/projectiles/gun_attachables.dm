@@ -209,6 +209,15 @@ Defined in conflicts.dm of the #defines folder.
 		// Remove bullet traits of attachment from gun's current projectile
 		detaching_gun.in_chamber._RemoveElement(L)
 
+	// Remove any leftover reference to the bullet trait
+	for(var/list/trait_list in detaching_gun.in_chamber.bullet_traits)
+		trait_list.Remove(traits_to_give)
+		if(!length(trait_list))
+			detaching_gun.in_chamber.bullet_traits.Remove(list(trait_list))
+
+	if(!length(detaching_gun.in_chamber.bullet_traits))
+		detaching_gun.in_chamber.bullet_traits = null
+
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)
 	return //success
@@ -511,6 +520,11 @@ Defined in conflicts.dm of the #defines folder.
 	pixel_shift_y = 17
 	hud_offset_mod = -2
 
+/obj/item/attachable/shotgun_choke/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_knockback_disabled)
+	))
+
 /obj/item/attachable/shotgun_choke/New()
 	..()
 	recoil_mod = RECOIL_AMOUNT_TIER_4
@@ -526,18 +540,14 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(attaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
 	attaching_gun.pump_delay -= FIRE_DELAY_TIER_5
-	attaching_gun.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("knockback_disabled", /datum/element/bullet_trait_knockback_disabled))
 	attaching_gun.fire_sound = 'sound/weapons/gun_shotgun_choke.ogg'
-
 	return ..()
 
 /obj/item/attachable/shotgun_choke/Detach(mob/user, obj/item/weapon/gun/shotgun/pump/detaching_gun)
 	if(!istype(detaching_gun, /obj/item/weapon/gun/shotgun/pump))
 		return ..()
 	detaching_gun.pump_delay += FIRE_DELAY_TIER_5
-	detaching_gun.remove_bullet_trait("knockback_disabled")
 	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
-
 	return ..()
 
 /obj/item/attachable/slavicbarrel
@@ -3224,10 +3234,6 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 
 /obj/item/attachable/attached_gun/flamer/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
-	if(get_dist(user,target) > max_range+4)
-		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
-		return
-
 	if(!istype(loc, /obj/item/weapon/gun))
 		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
 		return
@@ -3247,38 +3253,53 @@ Defined in conflicts.dm of the #defines folder.
 	set waitfor = 0
 	var/list/turf/turfs = get_line(user,target)
 	var/distance = 0
-	var/turf/prev_T
+	var/turf/prev_turf
 	var/stop_at_turf = FALSE
 	playsound(user, 'sound/weapons/gun_flamethrower2.ogg', 50, 1)
-	for(var/turf/T in turfs)
-		if(T == user.loc)
-			prev_T = T
-			continue
-		if(!current_rounds || current_rounds < round_usage_per_tile)
-			break
-		if(distance >= max_range)
-			break
+	process_flame_turf(turfs, target, user, distance, prev_turf, stop_at_turf)
 
-		current_rounds -= round_usage_per_tile
-		var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
-		if(T.density)
-			T.flamer_fire_act(0, cause_data)
+/obj/item/attachable/attached_gun/flamer/proc/process_flame_turf(list/turfs, atom/target, mob/living/user, distance, turf/prev_turf, stop_at_turf)
+	if(!length(turfs))
+		return
+	var/turf/current_turf = turfs[1]
+	turfs.Cut(1,2)
+	if(current_turf == user.loc)
+		prev_turf = current_turf
+		addtimer(CALLBACK(src, PROC_REF(process_flame_turf), turfs, target, user, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
+		return
+	if(!current_rounds)
+		return
+	if(distance >= max_range)
+		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+		return
+
+	current_rounds -= min(round_usage_per_tile, current_rounds)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
+	if(current_turf.density)
+		current_turf.flamer_fire_act(0, cause_data)
+		stop_at_turf = TRUE
+	else if(prev_turf)
+		var/atom/movable/temp = new/obj/flamer_fire()
+		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
+		qdel(temp)
+
+		if(blocked)
+			blocked.flamer_fire_act(0, cause_data)
+			if(blocked.flags_atom & ON_BORDER)
+				return
 			stop_at_turf = TRUE
-		else if(prev_T)
-			var/atom/movable/temp = new/obj/flamer_fire()
-			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
-			qdel(temp)
-			if(AM)
-				AM.flamer_fire_act(0, cause_data)
-				if (AM.flags_atom & ON_BORDER)
-					break
-				stop_at_turf = TRUE
-		flame_turf(T, user)
-		if (stop_at_turf)
-			break
-		distance++
-		prev_T = T
-		sleep(1)
+
+	flame_turf(current_turf, user)
+	if(stop_at_turf)
+		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+		return
+
+	distance++
+	prev_turf = current_turf
+
+	if(!length(turfs))
+		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+	addtimer(CALLBACK(src, PROC_REF(process_flame_turf), turfs, target, user, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
 
 
 /obj/item/attachable/attached_gun/flamer/proc/flame_turf(turf/T, mob/living/user)

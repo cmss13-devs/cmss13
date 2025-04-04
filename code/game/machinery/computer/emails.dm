@@ -51,7 +51,7 @@
 					var/datum/fluff_email/FE = mail
 					dat += "<A href='byond://?src=\ref[src];selectmail=[i]'>[FE.title]</A><BR>"
 
-	show_browser(user, dat, "Personal Computer", "email", "size=600x520")
+	show_browser(user, dat, "Personal Computer", "email", width = 600, height = 520)
 
 
 /obj/structure/machinery/computer/emails/Topic(href, href_list)

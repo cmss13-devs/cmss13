@@ -1,7 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - rscadd: "Adds a gun durability and repair system."
-  - rscadd: "A handful of bullets can be used to chamber a gun when it is unchambered, provided the caliber matches."
-  - balance: "Guns can no longer be destroyed by small explosions; this functionality is hooked up with the gun durability system, but guns can still be deleted if the explosion is strong enough i.e. Orbital Bombardments."
-  - balance: "Guns can no longer be deleted when acid is poured into it, instead requiring repairs. Zero durability weapons still get deleted if its acided, however."

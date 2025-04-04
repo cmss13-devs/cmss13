@@ -30,7 +30,9 @@
 	var/decoration_type
 	minimap_color = MINIMAP_BLACK
 
-/turf/closed/mineral/Initialize(mapload)
+/turf/closed/wall/almayer/Initialize(mapload)
+	if(!special_icon && prob(20))
+		decoration_type = rand(0,3)
 	. = ..()
 	for(var/direction in GLOB.cardinals)
 		var/turf/turf_to_check = get_step(src, direction)

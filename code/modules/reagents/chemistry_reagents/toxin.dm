@@ -147,25 +147,60 @@
 	description = "Industrial grade inorganic plant fertilizer."
 	reagent_state = LIQUID
 	color = "#664330" // rgb: 102, 67, 48
-	properties = list(PROPERTY_TOXIC = 0.5)
 
 /datum/reagent/toxin/fertilizer/eznutrient
 	name = "EZ Nutrient"
+	description = "A fertilizer that is proficient in every aspect by a mild amount."
 	id = "eznutrient"
+	properties = list(PROPERTY_TOXIC = 0.5)
+
+/datum/reagent/toxin/fertilizer/eznutrient/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.05*volume
+	processing_tray.yield_mod += 0.01*volume
+	processing_tray.nutrilevel += 1*volume
 
 /datum/reagent/toxin/fertilizer/left4zed
 	name = "Left-4-Zed"
+	description = "A fertilizer that sacrifices most of nutrients in its contents to boost health and to prolong the life expectancy"
 	id = "left4zed"
+
+/datum/reagent/toxin/fertilizer/left4zed/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.seed.lifespan += 0.2*volume
+	processing_tray.plant_health += 0.1*volume
+	processing_tray.nutrilevel += 0.25*volume
 
 /datum/reagent/toxin/fertilizer/robustharvest
 	name = "Robust Harvest"
+	description = "A fertilizer that sacrifices most of nutrients in its contents to boost product yield the plant gives at the cost of plant health."
 	id = "robustharvest"
+
+/datum/reagent/toxin/fertilizer/robustharvest/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health -= 0.01*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 0.5*volume
 
 /datum/reagent/toxin/dinitroaniline
 	name = "Dinitroaniline"
 	id = "dinitroaniline"
 	description = "Dinitroanilines are a class of chemical compounds used industrially in the production of pesticides and herbicides."
 	chemclass = CHEM_CLASS_UNCOMMON
+
+
+/datum/reagent/toxin/fertilizer/dinitroaniline/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.yield_mod += 0.05*volume
+	processing_tray.nutrilevel += 2*volume
 
 /datum/reagent/toxin/plantbgone
 	name = "Plant-B-Gone"
@@ -174,6 +209,12 @@
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
 	properties = list(PROPERTY_TOXIC = 2)
+
+/datum/reagent/toxin/plantbgone/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health -= 2*volume
 
 /datum/reagent/toxin/stoxin
 	name = "Soporific"

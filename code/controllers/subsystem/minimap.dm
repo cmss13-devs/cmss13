@@ -150,12 +150,12 @@ SUBSYSTEM_DEF(minimaps)
 	minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
 
 	//lateload icons
-	if(!earlyadds["[level]"])
+	if(!LAZYACCESS(earlyadds, "[level]"))
 		return
 
-	for(var/datum/callback/callback as anything in earlyadds["[level]"])
+	for(var/datum/callback/callback as anything in LAZYACCESS(earlyadds, "[level]"))
 		callback.Invoke()
-	earlyadds["[level]"] = null //then clear them
+	LAZYREMOVE(earlyadds, "[level]")
 
 /**
  * Adds an atom to the processing updators that will have blips drawn on them
@@ -241,11 +241,15 @@ SUBSYSTEM_DEF(minimaps)
 	if(!isatom(target) || !hud_flags || !blip)
 		CRASH("Invalid marker added to subsystem")
 
-	if(!initialized || !(minimaps_by_z["[target.z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
-		for(var/datum/callback/callback as anything in earlyadds["[target.z]"])
+	var/actual_z = target.z
+	if(!isturf(target.loc))
+		actual_z = target.loc.z
+
+	if(!initialized || !(minimaps_by_z["[actual_z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
+		for(var/datum/callback/callback as anything in earlyadds["[actual_z]"])
 			if(callback.arguments[1] == target)
 				return
-		LAZYADDASSOCLIST(earlyadds, "[target.z]", CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
+		LAZYADDASSOCLIST(earlyadds, "[actual_z]", CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_earlyadd), override = TRUE) //Override required for late z-level loading to prevent hard dels where an atom is initiated during z load, but is qdel'd before it finishes
 		return
 	

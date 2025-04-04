@@ -468,6 +468,17 @@
 	initial_keys = list(/obj/item/device/encryptionkey/ce)
 	volume = RADIO_VOLUME_CRITICAL
 	multibroadcast_cooldown = LOW_MULTIBROADCAST_COOLDOWN
+	misc_tracking = TRUE
+
+	inbuilt_tracking_options = list(
+		"Landing Zone" = TRACKER_LZ,
+		"Alpha SL" = TRACKER_ASL,
+		"Bravo SL" = TRACKER_BSL,
+		"Charlie SL" = TRACKER_CSL,
+		"Delta SL" = TRACKER_DSL,
+		"Echo SL" = TRACKER_ESL,
+		"Foxtrot SL" = TRACKER_FSL,
+	)
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
@@ -526,6 +537,7 @@
 
 	inbuilt_tracking_options = list(
 		"Chief MP" = TRACKER_CMP,
+		"Military Warden" = TRACKER_WARDEN,
 	)
 
 /obj/item/device/radio/headset/almayer/marine/mp_honor
@@ -540,8 +552,25 @@
 
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
 		"Chief MP" = TRACKER_CMP,
-		"Executive Officer" = TRACKER_XO
+		"Military Warden" = TRACKER_WARDEN,
+	)
+
+/obj/item/device/radio/headset/almayer/mwcom
+	name = "marine Military Warden radio headset"
+	desc = "It seems oddly similar to the CMPs'... Smells like donuts too. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	icon_state = "sec_headset"
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
+	volume = RADIO_VOLUME_CRITICAL
+	locate_setting = TRACKER_CMP
+	misc_tracking = TRUE
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Chief MP" = TRACKER_CMP,
 	)
 
 /obj/item/device/radio/headset/almayer/cmpcom
@@ -551,6 +580,14 @@
 	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 	volume = RADIO_VOLUME_CRITICAL
+	locate_setting = TRACKER_CO
+	misc_tracking = TRUE
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Military Warden" = TRACKER_WARDEN,
+	)
 
 /obj/item/device/radio/headset/almayer/mcom
 	name = "marine command radio headset"

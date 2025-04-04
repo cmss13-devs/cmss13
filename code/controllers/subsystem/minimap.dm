@@ -827,8 +827,7 @@ SUBSYSTEM_DEF(minimaps)
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "close"
 	screen_loc = "RIGHT,TOP"
-	/// what minimap table is linked to this button
-	var/obj/structure/machinery/prop/almayer/CICmap/linked_map
+	var/atom/movable/linked_map
 
 /atom/movable/screen/exit_map/Initialize(mapload, linked_map)
 	. = ..()

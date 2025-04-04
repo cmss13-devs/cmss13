@@ -25,6 +25,28 @@
 	var/show_command_squad = FALSE
 
 	var/list/concurrent_users = list()
+	
+	/// List of references to the tools we will be using to shape what the map looks like
+	var/list/atom/movable/screen/drawing_tools = list(
+		/atom/movable/screen/minimap_tool/draw_tool/red,
+		/atom/movable/screen/minimap_tool/draw_tool/yellow,
+		/atom/movable/screen/minimap_tool/draw_tool/purple,
+		/atom/movable/screen/minimap_tool/draw_tool/blue,
+		/atom/movable/screen/minimap_tool/draw_tool/erase,
+		/atom/movable/screen/minimap_tool/label,
+		/atom/movable/screen/minimap_tool/clear,
+	)
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	///by default Zlevel 2, groundside is targetted
+	var/targetted_zlevel = 2
+	///minimap obj ref that we will display to users
+	var/atom/movable/screen/minimap/map
+	///List of currently interacting mobs
+	var/list/mob/interactees = list()
+	///Toggle for scrolling map
+	var/scroll_toggle
+	///Button for closing map
+	var/close_button
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
@@ -220,6 +242,21 @@
 
 	usr.set_interaction(src)
 	switch(href_list["operation"])
+		if("mapview")
+			var/mob/user = usr
+			if(!map)
+				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
+				var/list/atom/movable/screen/actions = list()
+				for(var/path in drawing_tools)
+					actions += new path(null, targetted_zlevel, minimap_flag, map)
+				drawing_tools = actions
+				scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
+				close_button = new /atom/movable/screen/exit_map(null, src)
+			user.client.screen += map
+			interactees += user
+			user.client.screen += drawing_tools
+			user.client.screen += scroll_toggle
+			user.client.screen += close_button
 		if("announce")
 			var/mob/living/carbon/human/human_user = usr
 			var/obj/item/card/id/idcard = human_user.get_active_hand()
@@ -371,6 +408,16 @@
 
 /obj/structure/machinery/computer/groundside_operations/on_unset_interaction(mob/user)
 	..()
+
+	interactees -= user
+	user?.client?.screen -= map
+	user?.client?.screen -= drawing_tools
+	user?.client?.screen -= scroll_toggle
+	user?.client?.screen -= close_button
+	user?.client?.mouse_pointer_icon = null
+	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
+	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
+		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
 
 	if(!isRemoteControlling(user))
 		if(cam)

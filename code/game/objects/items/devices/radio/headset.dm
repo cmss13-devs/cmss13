@@ -409,6 +409,8 @@
 ///Remove all action of type minimap from the wearer, and make him disappear from the minimap
 /obj/item/device/radio/headset/proc/remove_minimap(mob/living/carbon/human/user)
 	SSminimaps.remove_marker(wearer)
+	if(!user)
+		return
 	for(var/datum/action/action as anything in user.actions)
 		if(istype(action, /datum/action/minimap))
 			action.remove_from(user)

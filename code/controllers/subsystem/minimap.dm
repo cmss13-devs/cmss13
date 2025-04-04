@@ -242,7 +242,7 @@ SUBSYSTEM_DEF(minimaps)
 		CRASH("Invalid marker added to subsystem")
 
 	var/actual_z = target.z
-	if(!isturf(target.loc))
+	if(target.loc && !isturf(target.loc))
 		actual_z = target.loc.z
 
 	if(!initialized || !(minimaps_by_z["[actual_z]"])) //the minimap doesn't exist yet, z level was probably loaded after init

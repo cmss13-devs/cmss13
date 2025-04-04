@@ -36,6 +36,11 @@
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
 	start_automatic = TRUE
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	unjam_chance = GUN_UNJAM_CHANCE_FAIR
+	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
@@ -113,6 +118,10 @@
 	QDEL_NULL(battery)
 	. = ..()
 
+/obj/item/weapon/gun/smartgun/cock(mob/user)
+	to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
+	return
+
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
 
@@ -159,7 +168,7 @@
 		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
@@ -413,7 +422,10 @@
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
 		return
-	toggle_ammo_type(usr)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled

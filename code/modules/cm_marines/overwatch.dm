@@ -107,7 +107,7 @@
 
 	if(!ishuman(user))
 		return ..()
-	if(mods["alt"]) //Changing UI theme
+	if(mods[ALT_CLICK]) //Changing UI theme
 		var/tgui_input_theme = tgui_input_list(user, "Choose a UI theme:", "UI Theme", chosen_theme)
 		if(!possible_options)
 			return

@@ -262,6 +262,7 @@
 		bullet.damage = bullet.damage * burn_multiplier
 	else
 		bullet.damage = bullet.damage * brute_projectile_multiplier
+		playsound(src, barricade_hitsound, 35, 1)
 
 	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(floor(50 * burn_multiplier))
@@ -429,7 +430,7 @@
 	update_icon()
 
 /obj/structure/barricade/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		rotate(user)
 		return TRUE
 

@@ -374,14 +374,14 @@
 	
 	if(wearer.stat == DEAD)
 		if(wearer.undefibbable)
-			SSminimaps.add_marker(wearer, minimap_flag, image('icons/ui_icons/map_blips_large.dmi', null, "undefibbable"))
+			background.overlays += image('icons/ui_icons/map_blips_large.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
 			return
 		if(!wearer.mind)
 			var/mob/dead/observer/ghost = wearer.get_ghost(TRUE)
 			if(!ghost?.can_reenter_corpse)
-				SSminimaps.add_marker(wearer, minimap_flag, image('icons/ui_icons/map_blips_large.dmi', null, "undefibbable"))
+				background.overlays += image('icons/ui_icons/map_blips_large.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
 				return
-		SSminimaps.add_marker(wearer, minimap_flag, image('icons/ui_icons/map_blips.dmi', null, "defibbable", ABOVE_FLOAT_LAYER))
+		background.overlays += image('icons/ui_icons/map_blips.dmi', null, "defibbable", ABOVE_FLOAT_LAYER)
 		return
 	if(wearer.assigned_squad)
 		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "squad_underlay")

@@ -1,0 +1,5 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "Armat container and a new WY container"
+  - maptweak: "swapped some existing containers on maps with new ones"

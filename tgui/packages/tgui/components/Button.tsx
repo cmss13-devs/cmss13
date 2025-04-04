@@ -215,7 +215,7 @@ type ConfirmProps = Partial<{
   Props;
 
 /**  Requires user confirmation before triggering its action. */
-const ButtonConfirm = (props: ConfirmProps) => {
+export const ButtonConfirm = (props: ConfirmProps) => {
   const {
     children,
     color,

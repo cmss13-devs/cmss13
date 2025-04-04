@@ -23074,7 +23074,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/river)
 "bqP" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/center)
 "bqQ" = (
@@ -23345,15 +23345,8 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/deep_jungle/hot_springs)
 "brK" = (
-/obj/item/trash/pistachios{
-	pixel_x = -1;
-	pixel_y = 7
-	},
+/obj/item/trash/kepler/flamehot,
 /turf/open/gm/dirt/brown,
-/area/strata/exterior/marsh/center)
-"brL" = (
-/obj/item/trash/sosjerky,
-/turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/center)
 "brM" = (
 /obj/item/reagent_container/food/snacks/donkpocket,
@@ -41192,6 +41185,9 @@
 "haN" = (
 /obj/structure/largecrate/random,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/largecrate/random,
+/obj/item/trash/semki,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "haU" = (
@@ -41902,12 +41898,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/vanyard)
 "ibH" = (
-/obj/item/trash/pistachios{
-	pixel_x = 5;
-	pixel_y = 4
-	},
 /obj/effect/decal/cleanable/blood/gibs/core,
 /obj/effect/decal/cleanable/blood,
+/obj/item/trash/kepler/flamehot,
+/obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/interior/parts_storage)
 "ibP" = (
@@ -53152,6 +53146,10 @@
 	},
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
+"wsj" = (
+/obj/item/trash/semki,
+/turf/open/floor/prison/darkyellowfull2,
+/area/strata/interior/outpost/engi)
 "wsm" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/strata/floor3/east,
@@ -60792,7 +60790,7 @@ aaY
 aaY
 aaY
 bqR
-brL
+bnj
 bme
 bnj
 bnj
@@ -72631,7 +72629,7 @@ bGj
 brT
 bCQ
 axe
-aUV
+wsj
 qJi
 dgB
 aMZ

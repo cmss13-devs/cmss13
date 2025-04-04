@@ -1,0 +1,4 @@
+author: "PhantornRU"
+delete-after: True
+changes:
+  - config: "Add to Config - Block nuclear device invocation until more marines than this percentage are alive. (0-100)"

@@ -1812,7 +1812,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
 "EC" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/eat,
 /turf/open/floor/wood,
 /area/strata/interior/outpost/clf_dorms)
 "Fe" = (

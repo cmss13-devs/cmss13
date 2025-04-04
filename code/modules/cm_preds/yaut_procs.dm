@@ -161,10 +161,10 @@
 				if(xeno_victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
-					var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
+					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
+					pelt.name = "[xeno_victim.real_name] pelt"
+					skull.name = "[xeno_victim.real_name] skull"
 				else if(victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))
@@ -220,16 +220,20 @@
 
 /area/yautja
 	name = "\improper Yautja Ship"
-	icon_state = "teleporter"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "hunter"
 	//music = "signal"
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	unlimited_power = TRUE
-	base_lighting_alpha = 255
+	base_lighting_alpha = 155
+	base_lighting_color = "#ffc49c"
 	flags_area = AREA_YAUTJA_GROUNDS
 
 /area/yautja/lower_deck
-	name = "\improper Yautja Ship Lower Deck"
-	icon_state = "teleporter"
-	base_lighting_alpha = 0
+	name = "\improper Yautja Ship - Lower Deck"
+	base_lighting_alpha = 105
+
+/area/yautja/hangar
+	name = "\improper Yautja Ship - Hangar"
+	base_lighting_alpha = 180

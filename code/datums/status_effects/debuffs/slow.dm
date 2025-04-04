@@ -12,13 +12,16 @@
 
 /datum/status_effect/slow/on_apply()
 	. = ..()
-	if(!owner)
+	if(!isxeno(owner))
 		return
 
 	var/mob/living/carbon/xenomorph/target = owner
 	target.ability_speed_modifier += speed_debuff
 
 /datum/status_effect/slow/on_remove()
+	if(!isxeno(owner))
+		return
+
 	var/mob/living/carbon/xenomorph/target = owner
 	target.ability_speed_modifier -= speed_debuff
 	return ..()

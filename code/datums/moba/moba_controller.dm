@@ -411,6 +411,9 @@
 	for(var/datum/moba_boon/boon as anything in (player_datum.right_team ? team2_boons : team1_boons))
 		boon.on_friendly_spawn(xeno, player_datum, player_comp)
 
+	playsound_client(player_datum.tied_client, 'sound/voice/holy_chorus.ogg', vol = 50)
+	window_flash(player_datum.tied_client)
+
 /datum/moba_controller/proc/move_disconnected_player_to_body(mob/source)
 	SIGNAL_HANDLER
 
@@ -599,13 +602,8 @@
 	boss.AddComponent(/datum/component/moba_simplemob, new_map_id = map_id, boss_simplemob = TRUE)
 	RegisterSignal(boss, COMSIG_MOB_DEATH, PROC_REF(on_boss_kill))
 
-	for(var/datum/moba_player/player as anything in players)
-		if(!player.tied_client)
-			continue
-
-		playsound_client(player.tied_client, 'sound/voice/alien_distantroar_3.ogg', player.get_tied_xeno().loc, 25, FALSE)
-		//player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "The megacarp has spawned at <b>Right Side Robotics</b>!", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
-		player.get_tied_xeno().play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + boss_datum.spawn_text, /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+	message_team1(boss_datum.spawn_text)
+	message_team2(boss_datum.spawn_text)
 
 /datum/moba_controller/proc/on_boss_kill(mob/living/simple_animal/hostile/source, datum/cause_data/cause)
 	SIGNAL_HANDLER

@@ -14,6 +14,7 @@
 	category = MOBA_ARCHETYPE_TANK
 	icon_state = "boiler"
 	ideal_roles = list(MOBA_LANE_TOP)
+	mob_size = MOB_SIZE_BIG
 	starting_health = 515
 	ending_health = 1750
 	starting_health_regen = 2

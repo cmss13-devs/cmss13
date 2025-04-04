@@ -75,27 +75,30 @@
 	if(parent_simplemob.is_mob_incapacitated())
 		return
 
-	if(returning_to_home || (get_dist(parent_simplemob, home_turf) <= home_dist))
-		if(boss_simplemob)
-			parent_simplemob.health = parent_simplemob.getMaxHealth()
-			parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
+	if(returning_to_home)
 		return
 
 	var/mob/living/carbon/xenomorph/target_nearby = locate() in range(5, home_turf)
 	if(target_nearby)
-		parent_simplemob.stance = HOSTILE_STANCE_ATTACK
+		if(get_dist(parent_simplemob, target_nearby) > 1)
+			parent_simplemob.stance = HOSTILE_STANCE_ATTACK
+		else
+			parent_simplemob.stance = HOSTILE_STANCE_ATTACKING
 		parent_simplemob.target_mob_ref = WEAKREF(target_nearby)
+		return
+
+	if(get_dist(parent_simplemob, home_turf) <= home_dist)
+		parent_simplemob.health = parent_simplemob.getMaxHealth()
+		if(boss_simplemob)
+			parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
 		return
 
 	returning_to_home = TRUE
 	RegisterSignal(home_turf, COMSIG_TURF_ENTERED, PROC_REF(on_enter_turf))
 	addtimer(CALLBACK(src, PROC_REF(returned_home)), 5 SECONDS) // in case they get stuck
 	parent_simplemob.LoseTarget()
-	parent_simplemob.health = parent_simplemob.getMaxHealth()
 	walk_to(parent_simplemob, home_turf, 0, parent_simplemob.move_to_delay * 0.5)
 	parent_simplemob.manual_emote("wanders off.")
-	if(boss_simplemob)
-		parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
 
 /datum/component/moba_simplemob/proc/on_enter_turf(datum/source, atom/entering_atom)
 	SIGNAL_HANDLER
@@ -106,10 +109,16 @@
 	returned_home()
 
 /datum/component/moba_simplemob/proc/returned_home()
-	if(returning_to_home)
-		UnregisterSignal(home_turf, COMSIG_TURF_ENTERED)
-		returning_to_home = FALSE
-		parent_simplemob.manual_emote("settles down.")
+	if(!returning_to_home)
+		return
+
+	UnregisterSignal(home_turf, COMSIG_TURF_ENTERED)
+	returning_to_home = FALSE
+	parent_simplemob.manual_emote("settles down.")
+	parent_simplemob.health = parent_simplemob.getMaxHealth()
+
+	if(boss_simplemob)
+		parent_simplemob.maptext = MAPTEXT("<center><h2>[floor(parent_simplemob.health / parent_simplemob.getMaxHealth() * 100)]%</h2></center>")
 
 /datum/component/moba_simplemob/proc/on_death(datum/source)
 	SIGNAL_HANDLER

@@ -14,6 +14,9 @@
 	return ..()
 
 /datum/status_effect/stacking/spit_detonation/stacks_consumed_effect()
+	if(!isxeno(owner))
+		return
+
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
 	var/obj/item/explosive/grenade/xeno_acid_grenade/nodamage/nade = new()

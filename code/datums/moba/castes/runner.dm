@@ -13,6 +13,7 @@
 	category = MOBA_ARCHETYPE_ASSASSIN
 	icon_state = "runner"
 	ideal_roles = list(MOBA_LANE_JUNGLE)
+	mob_size = MOB_SIZE_XENO_SMALL
 	starting_health = 360
 	ending_health = 1200
 	starting_health_regen = 1.3

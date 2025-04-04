@@ -10,7 +10,7 @@
 
 /datum/status_effect/stacking/rended_armor/add_stacks(stacks_added)
 	. = ..()
-	if(!owner)
+	if(!isxeno(owner))
 		return
 
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -19,6 +19,9 @@
 	xeno.armor_integrity_modifier -= armor_shredded
 
 /datum/status_effect/stacking/rended_armor/on_remove()
+	if(!isxeno(owner))
+		return
+
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.armor_integrity_modifier += armor_shredded

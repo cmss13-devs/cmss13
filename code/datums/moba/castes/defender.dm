@@ -13,6 +13,7 @@
 	category = MOBA_ARCHETYPE_TANK
 	icon_state = "defender"
 	ideal_roles = list(MOBA_LANE_TOP)
+	mob_size = MOB_SIZE_BIG
 	starting_health = 540
 	ending_health = 1800
 	starting_health_regen = 2
@@ -71,18 +72,18 @@
 	if(!fendy.check_state())
 		return
 
-	if(!action_cooldown_check())
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
 	var/mob/living/living_target = target_atom
 	if(living_target.stat == DEAD)
 		return
 
 	var/distance = get_dist(fendy, living_target)
 	if(distance > 1)
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	living_target.last_damage_data = create_cause_data(fendy.caste_type, fendy)
@@ -196,10 +197,10 @@
 /datum/action/xeno_action/onclick/moba_soak/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!action_cooldown_check())
+	if(!xeno.check_state())
 		return
 
-	if (!xeno.check_state())
+	if(!action_cooldown_check())
 		return
 
 	if(!check_and_use_plasma_owner())

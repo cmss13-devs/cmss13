@@ -96,13 +96,13 @@
 		to_chat(fruit_planter, SPAN_WARNING("That's too far away."))
 		return
 
+	if(!targetted_atom)
+		return
+
 	if(!action_cooldown_check())
 		return
 
 	if(!check_and_use_plasma_owner())
-		return
-
-	if(!targetted_atom)
 		return
 
 	new /obj/effect/alien/resin/construction/empower(targetted_atom, owner, fruit_planter.hive, speed_buff, attack_delay_buff, fruit_health)
@@ -209,18 +209,18 @@
 	if(HAS_TRAIT(possible_healing_target, TRAIT_MOBA_MINION) || (possible_healing_target.stat == DEAD)) // So they dont heal minions
 		return
 
-	if(!action_cooldown_check())
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
 	if(possible_healing_target == owner)
 		to_chat(src, SPAN_XENOWARNING("We can't heal ourselves."))
 		return
 
 	if(get_dist(healer_xeno, possible_healing_target) > max_range)
 		to_chat(healer_xeno, SPAN_XENOWARNING("We need to be next to an ally to start healing them."))
+		return
+
+	if(!action_cooldown_check())
+		return
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	healer = WEAKREF(healer_xeno)

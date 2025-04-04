@@ -52,6 +52,9 @@
 	if (!action_cooldown_check())
 		return
 
+	if(!check_and_use_plasma_owner())
+		return
+
 	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"),
 	SPAN_XENOWARNING("We unleash a barrage of slashes!"))
 	playsound(xeno, 'sound/effects/alien_tail_swipe2.ogg', 30)
@@ -129,6 +132,9 @@
 		return
 
 	if(distance > 2)
+		return
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/list/turf/path = get_line(xeno, targeted_atom, include_start_atom = FALSE)

@@ -481,4 +481,10 @@
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE
 
+/mob/living/simple_animal/initialize_pain()
+	return // Enough pain can cause flinged/hauled mobs to instantly die
+
+/mob/living/simple_animal/initialize_stamina()
+	return
+
 #undef OVERLAY_FIRE_LAYER

@@ -134,6 +134,9 @@
 	if(!action_cooldown_check())
 		return
 
+	if(!check_and_use_plasma_owner())
+		return
+
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/status_effect/stacking/bloodlust_effect = xeno.has_status_effect(/datum/status_effect/stacking/bloodlust)
 	var/damage_to_deal = true_damage_to_deal + (xeno.melee_damage_upper * 0.7) + (bloodlust_effect ? bloodlust_effect.stacks * 3 : 0)

@@ -16,6 +16,8 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	var/icon_state = ""
 	var/list/ideal_roles = list()
 
+	var/mob_size = MOB_SIZE_XENO
+
 	var/starting_health = 500
 	var/ending_health = 2000
 	// Multiplier on existing health regen
@@ -42,6 +44,7 @@ GLOBAL_LIST_EMPTY(moba_castes_name)
 	var/list/abilities_to_add = list()
 
 /datum/moba_caste/proc/apply_caste(mob/living/carbon/xenomorph/xeno, datum/component/moba_player/player_component, datum/moba_player/player_datum)
+	xeno.mob_size = mob_size
 	xeno.ability_speed_modifier = speed
 	xeno.attack_speed_modifier = attack_delay_modifier
 	handle_level_up(xeno, player_component, player_datum, player_datum.level)

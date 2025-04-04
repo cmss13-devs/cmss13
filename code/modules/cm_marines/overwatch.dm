@@ -1174,6 +1174,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
+	if(!isRemoteControlling(user))
+		if(cam)
+			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
+		user.reset_view(null)
+		concurrent_users -= WEAKREF(user)
 	interactees -= user
 	user?.client?.screen -= map
 	user?.client?.screen -= drawing_tools
@@ -1182,11 +1187,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	user?.client?.mouse_pointer_icon = null
 	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
 		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
-	if(!isRemoteControlling(user))
-		if(cam)
-			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
-		user.reset_view(null)
-		concurrent_users -= WEAKREF(user)
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
 	..()

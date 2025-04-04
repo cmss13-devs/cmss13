@@ -23547,10 +23547,6 @@
 "cUo" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
-"cVb" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north2)
 "cVf" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -37094,10 +37090,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
-"iTd" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/south2)
 "iTe" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -47545,10 +47537,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/corporateliaison)
-"nnX" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/south1)
 "noj" = (
 /obj/structure/largecrate,
 /obj/structure/prop/server_equipment/laptop{
@@ -59743,10 +59731,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
-"stu" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north1)
 "sty" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plate,
@@ -62473,7 +62457,6 @@
 /area/almayer/lifeboat_pumps/south1)
 "tBu" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/machinery/sentry_holder/almayer,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "tBP" = (
@@ -97371,7 +97354,7 @@ awW
 add
 add
 add
-stu
+add
 add
 add
 add
@@ -98792,7 +98775,7 @@ aoC
 add
 add
 add
-stu
+add
 add
 add
 add
@@ -98838,7 +98821,7 @@ baw
 aJU
 aJU
 aJU
-nnX
+aJU
 aJU
 aJU
 aJU
@@ -114625,7 +114608,7 @@ aeA
 aeC
 aeC
 aeC
-cVb
+aeC
 aeC
 aeC
 aeC
@@ -114673,7 +114656,7 @@ lJY
 vcE
 vcE
 vcE
-iTd
+vcE
 vcE
 vcE
 vcE
@@ -116046,7 +116029,7 @@ amH
 aeC
 aeC
 aeC
-cVb
+aeC
 aeC
 aeC
 aeC
@@ -116094,7 +116077,7 @@ kKR
 vcE
 vcE
 vcE
-iTd
+vcE
 vcE
 vcE
 vcE

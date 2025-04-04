@@ -215,7 +215,7 @@
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
 	if(jammed)
 		jam_unique_action(user)
-    
+
 	else if(current_mag && !current_mag.chamber_closed)
 		close_chamber(user)
 

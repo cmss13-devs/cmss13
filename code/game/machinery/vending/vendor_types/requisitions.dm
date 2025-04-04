@@ -274,8 +274,8 @@
 		list("M4A3 AP Magazine (9mm)", floor(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
 
 		list("EXTENDED AMMUNITION", -1, null, null),
-		list("M10 HV extended magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
-		list("M10 HV drum magazine (10x20mm)", floor(scale * 8), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
+		list("M10 HV Extended Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
+		list("M10 HV Drum Magazine (10x20mm)", floor(scale * 8), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M4RA Extended Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/m4ra/extended, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Extended Magazine (10x24mm)", floor(scale * 8), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
@@ -497,6 +497,7 @@
 		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/padless, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/skull, VENDOR_ITEM_REGULAR),
+		list("M3 Pattern Smooth Marine Armor", 20, /obj/item/clothing/suit/storage/marine/medium/smooth, VENDOR_ITEM_REGULAR),
 		list("M3-EOD Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 

@@ -369,6 +369,9 @@
 	SSminimaps.remove_marker(wearer)
 	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
 		return
+
+	var/image/background = image('icons/ui_icons/map_blips.dmi', wearer.assigned_squad?.background_icon ? wearer.assigned_squad.background_icon : wearer.assigned_equipment_preset.minimap_background)
+	
 	if(wearer.stat == DEAD)
 		if(wearer.undefibbable)
 			SSminimaps.add_marker(wearer, minimap_flag, image('icons/ui_icons/map_blips_large.dmi', null, "undefibbable"))
@@ -383,14 +386,14 @@
 	if(wearer.assigned_squad)
 		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "squad_underlay")
 		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, wearer.assigned_equipment_preset.minimap_icon)
-		overlay.color = wearer.assigned_squad.minimap_color
-		underlay.overlays += overlay
+		background.overlays += underlay
+		background.overlays += overlay
 
 		if(wearer.assigned_squad?.squad_leader == wearer)
 			var/image/leader_trim = image('icons/ui_icons/map_blips.dmi', null, "leader_trim")
-			underlay.overlays += leader_trim
+			background.overlays += leader_trim
 
-		SSminimaps.add_marker(wearer, minimap_flag, underlay)
+		SSminimaps.add_marker(wearer, minimap_flag, background)
 		return
 	SSminimaps.add_marker(wearer, minimap_flag, image('icons/ui_icons/map_blips.dmi', null, wearer.assigned_equipment_preset.minimap_icon))
 

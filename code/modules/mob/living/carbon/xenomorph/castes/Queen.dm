@@ -46,6 +46,7 @@
 	minimum_evolve_time = 0
 
 	minimap_icon = "xenoqueen"
+	minimap_background = "xeno_ruler"
 
 	royal_caste = TRUE
 

@@ -172,7 +172,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
 	var/list/data = list()
 	data["distress_time_lock"] = DISTRESS_TIME_LOCK
-	data["mapRef"] = tacmap.map_holder.map_ref
+	var/list/map_refs = list()
+	for(var/datum/tacmap_holder/map_holder in tacmap.map_holders)
+		map_refs += map_holder?.map_ref
+	data["mapRef"] = map_refs
 
 	return data
 

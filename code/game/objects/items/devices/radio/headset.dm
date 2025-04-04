@@ -395,7 +395,9 @@
 
 		SSminimaps.add_marker(wearer, minimap_flag, background)
 		return
-	SSminimaps.add_marker(wearer, minimap_flag, image('icons/ui_icons/map_blips.dmi', null, wearer.assigned_equipment_preset.minimap_icon))
+	
+	background.overlays += image('icons/ui_icons/map_blips.dmi', null, wearer.assigned_equipment_preset.minimap_icon)
+	SSminimaps.add_marker(wearer, minimap_flag, background)
 
 ///Give minimap action to wearer
 /obj/item/device/radio/headset/proc/add_minimap(mob/living/carbon/human/user)

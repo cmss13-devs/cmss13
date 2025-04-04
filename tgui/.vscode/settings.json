@@ -25,5 +25,5 @@
 	},
 	"workbench.editorAssociations": {
 		"*.dmi": "dmiEditor.dmiEditor"
-	},
+	}
 }

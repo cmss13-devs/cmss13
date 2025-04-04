@@ -30,6 +30,10 @@
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
+/obj/item/weapon/gun/minigun/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
+
 /obj/item/weapon/gun/minigun/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_12)
@@ -41,6 +45,11 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_buildup_limit = RECOIL_AMOUNT_TIER_3 / RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_FAIR
+	unjam_chance = GUN_UNJAM_CHANCE_INSUBSTANTIAL
+	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/minigun/handle_starting_attachment()
 	..()
@@ -114,6 +123,10 @@
 /obj/item/weapon/gun/m60/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 0, "rail_y" = 0, "under_x" = 27, "under_y" = 12, "stock_x" = 10, "stock_y" = 14)
 
+/obj/item/weapon/gun/m60/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
+
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_12)
@@ -127,9 +140,14 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	empty_sound = 'sound/weapons/gun_empty.ogg'
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_SEVERE
+	unjam_chance = GUN_UNJAM_CHANCE_LOW
+	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/m60/clicked(mob/user, list/mods)
-	if(!mods["alt"] || !CAN_PICKUP(user, src))
+	if(!mods[ALT_CLICK] || !CAN_PICKUP(user, src))
 		return ..()
 	else
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
@@ -253,9 +271,18 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	empty_sound = 'sound/weapons/gun_empty.ogg'
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_SEVERE
+	unjam_chance = GUN_UNJAM_CHANCE_LOW
+	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
+	jam_threshold = GUN_DURABILITY_HIGH
+
+/obj/item/weapon/gun/pkp/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
 
 /obj/item/weapon/gun/pkp/clicked(mob/user, list/mods)
-	if(!mods["alt"] || !CAN_PICKUP(user, src))
+	if(!mods[ALT_CLICK] || !CAN_PICKUP(user, src))
 		return ..()
 	else
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))

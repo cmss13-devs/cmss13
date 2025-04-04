@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("SHIPSIDE GEAR", 0, null, null, null),
 
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Equipment", 0, list(/obj/item/clothing/gloves/yellow, /obj/item/device/radio/headset/almayer/ce,  /obj/item/clothing/shoes/marine, /obj/item/clothing/glasses/welding, /obj/item/device/working_joe_pda/uscm, /obj/item/weapon/gun/smg/nailgun/compact/tactical), MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+		list("Standard Equipment", 0, list(/obj/item/clothing/gloves/yellow, /obj/item/device/radio/headset/almayer/ce,  /obj/item/clothing/shoes/marine, /obj/item/clothing/glasses/welding, /obj/item/device/working_joe_pda/uscm, /obj/item/weapon/gun/smg/nailgun/compact/tactical, /obj/item/ammo_magazine/smg/nailgun), MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
 		list("Chief Engineer Uniform", 0, /obj/item/clothing/under/marine/officer/ce, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
@@ -132,6 +132,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", 0, /obj/item/storage/pouch/flamertank, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("Engineer kit Pouch", 0, /obj/item/storage/pouch/engikit, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
+		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("M4A3 Service Pistol", 0, /obj/item/storage/belt/gun/m4a3/full, MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
@@ -149,9 +150,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_chief_engineer, list(
 		list("DEPLOYMENT GEAR", 0, null, null, null),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Officer M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/SO, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_COMBAT_SHOES, VENDOR_ITEM_REGULAR),
-		list("Laser Designator", 0, /obj/item/device/binoculars/range/designator, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Officer Deployment Gear", 0, list(/obj/item/clothing/suit/storage/marine/MP/SO, /obj/item/clothing/shoes/marine/knife, /obj/item/device/binoculars/range/designator,), MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Officer M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/MP/SO, MARINE_CAN_BUY_COMBAT_HELMET, VENDOR_ITEM_REGULAR),

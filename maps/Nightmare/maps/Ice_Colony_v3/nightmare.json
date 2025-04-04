@@ -119,6 +119,7 @@
 		"when": { "$gamemode": "Faction Clash UPP CM" }
 	},
     {
+		"type": "map_insert",
 		"landmark": "panic_room",
 		"chance": 1.0,
 		"path": "standalone/clfraid.dmm",

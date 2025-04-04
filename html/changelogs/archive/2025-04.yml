@@ -1,0 +1,57 @@
+2025-04-01:
+  Djvarik:
+  - bugfix: Fixed a typo in the munition prep vendor.
+  - bugfix: The Staff Officer vendor's green beret is now actually green.
+  Drathek:
+  - ui: Tweaked the size of gauges in the ping relay browser
+  JackieEstegado:
+  - balance: Lowered the burn damage of the Antiparasitic chemical property by 25%.
+  Kashargul:
+  - bugfix: chat icon scaling
+  Red-byte3D:
+  - qol: cades playsound when hit by bullets
+  kiVts:
+  - bugfix: universal speak is working again
+2025-04-02:
+  ChampionDragos, detectivegoogle:
+  - rscadd: A new lorebook spawns in the pilot bunks.
+  Detective-Google:
+  - balance: colony boozeomats are no longer always full
+  Drathek:
+  - bugfix: Mouse 4/5 is now ignored for firing and vehicles
+  - bugfix: Vendor vend buttons now only respond to left click
+  - code_imp: All mouse modifiers in code have been macroified
+  - ui: Button has a new prop allowAnyClick which can allow any click to cause an
+      onClick otherwise it will only occur for left click
+  Generallemon07:
+  - bugfix: fixed gutting fish displaying message that user is gutting the knife
+  - bugfix: fixed gutting fish infinitely
+  - bugfix: fixed urchins disappearing when attempting to consume
+  Nihisohel:
+  - balance: CO Pistols no longer get melted or blown up.
+  Thwomper, ihatethisengine, DawsonKeyes:
+  - rscadd: introduced hunting bow as a secondary weapon for yautja.
+  - balance: yanking out objects speed now depends on the size of the object
+  fira:
+  - bugfix: Fix an issue when concurrently loading identical maps.
+2025-04-03:
+  Git-Nivrak:
+  - balance: You can no longer construct resin structures, plant eggs or build barricades
+      within a one tile radius of multiz stairs
+  - qol: Moved multiz stairs layer up for visual clarity
+2025-04-04:
+  Nihisohel:
+  - rscadd: Adds a gun durability and repair system.
+  - rscadd: A handful of bullets can be used to chamber a gun when it is unchambered,
+      provided the caliber matches.
+  - balance: Guns can no longer be destroyed by small explosions; this functionality
+      is hooked up with the gun durability system, but guns can still be deleted if
+      the explosion is strong enough i.e. Orbital Bombardments.
+  - balance: Guns can no longer be deleted when acid is poured into it, instead requiring
+      repairs. Zero durability weapons still get deleted if its acided, however.
+  Red-byte3D:
+  - bugfix: You can no longer remove documents from a cabinet when youre away from
+      it
+  jupyterkat:
+  - bugfix: fixed spec icons on orbit panel
+  - bugfix: fixed spec icons on squad info panel

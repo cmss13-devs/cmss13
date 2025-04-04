@@ -45,14 +45,17 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		/atom/movable/screen/minimap_tool/label,
 		/atom/movable/screen/minimap_tool/clear,
 	)
-	///Toggle for scrolling map
-	var/scroll_toggle
-	///flags that we want to be shown when you interact with this table
 	var/minimap_flag = MINIMAP_FLAG_USCM
 	///by default Zlevel 2, groundside is targetted
 	var/targetted_zlevel = 2
 	///minimap obj ref that we will display to users
 	var/atom/movable/screen/minimap/map
+	///List of currently interacting mobs
+	var/list/mob/interactees = list()
+	///Toggle for scrolling map
+	var/scroll_toggle
+	///Button for closing map
+	var/close_button
 	///Is user currently interacting with minimap
 	var/interacting_minimap = FALSE
 
@@ -177,21 +180,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
-	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
 	var/list/data = list()
 	data["distress_time_lock"] = DISTRESS_TIME_LOCK
-	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
 		if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 			ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
 		else
@@ -589,6 +589,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	var/mob/user = usr
 	switch(action)
+		if("mapview")
+			if(!map)
+				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
+				var/list/atom/movable/screen/actions = list()
+				for(var/path in drawing_tools)
+					actions += new path(null, targetted_zlevel, minimap_flag, map)
+				drawing_tools = actions
+				scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
+				close_button = new /atom/movable/screen/exit_map(null, src)
+			user.client.screen += map
+			interactees += user
+			user.client.screen += drawing_tools
+			user.client.screen += scroll_toggle
+			user.client.screen += close_button
 		if("pick_squad")
 			if(current_squad)
 				return

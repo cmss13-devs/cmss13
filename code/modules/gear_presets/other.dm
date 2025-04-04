@@ -801,7 +801,6 @@
 	rank = "Cultist"
 
 	minimap_icon = "cultist"
-	 = "background_cultist"
 
 /datum/equipment_preset/other/xeno_cultist/New()
 	. = ..()

@@ -56,7 +56,7 @@
 	role_comm_title = "UA RO"
 	faction = FACTION_SURVIVOR
 	minimap_icon = "mp"
-	 = "background_ua"
+	 
 
 /datum/equipment_preset/survivor/colonial_marshal/fiorina/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)

@@ -5,7 +5,6 @@
 	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	 = "background_cmb"
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
 
@@ -809,7 +808,6 @@
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
 	minimap_icon = "private"
-	 = "background_cmb"
 
 /datum/equipment_preset/uscm/cmb/New()
 	. = ..()

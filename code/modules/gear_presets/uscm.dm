@@ -164,7 +164,7 @@
 	skills = /datum/skills/tank_crew
 
 	minimap_icon = "vc"
-	 = "background_intel"
+	 
 
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -222,7 +222,7 @@
 	role_comm_title = "IO"
 	skills = /datum/skills/intel
 	minimap_icon = "io"
-	 = "background_intel"
+	 
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
 

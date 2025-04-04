@@ -13,7 +13,7 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	origin_override = ORIGIN_CIVILIAN
-	 = "background_clf"
+	 
 	minimap_icon = "clf_mil"
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 

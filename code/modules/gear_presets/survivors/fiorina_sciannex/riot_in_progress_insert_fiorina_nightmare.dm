@@ -6,7 +6,7 @@
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/human_versus_human = FALSE
-	 = "background_cmb"
+	 
 	access = list(
 		ACCESS_LIST_UA,
 	)
@@ -100,7 +100,7 @@
 	idtype = /obj/item/card/id/deputy/riot
 	skills = /datum/skills/synthetic/cmb
 	minimap_icon = "cmb_syn"
-	 = "background_cmb"
+	 
 
 /datum/equipment_preset/synth/survivor/cmb/riotsynth/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COLONY)
@@ -160,7 +160,7 @@
 	assignment = "United Americas Police Officer"
 	skills = /datum/skills/civilian/survivor/marshal
 	minimap_icon = "mp"
-	 = "background_ua"
+	 
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/survivor/cmb/ua/load_gear(mob/living/carbon/human/new_human)
@@ -242,7 +242,7 @@
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/colonial_synthetic
 	minimap_icon = "synth"
-	 = "background_ua"
+	 
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/synth/survivor/cmb/ua_synth/load_race(mob/living/carbon/human/new_human)

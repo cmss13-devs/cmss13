@@ -7,7 +7,6 @@
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	 = "background_pmc"
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/pmc
 

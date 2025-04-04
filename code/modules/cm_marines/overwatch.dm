@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	///minimap obj ref that we will display to users
 	var/atom/movable/screen/minimap/map
 	///Is user currently interacting with minimap
-	var/interacting_minimap = FALSEM
+	var/interacting_minimap = FALSE
 
 	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
 	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")

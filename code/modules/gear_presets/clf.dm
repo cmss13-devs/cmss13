@@ -6,7 +6,6 @@
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
-	 = "background_clf"
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/New()

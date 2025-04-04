@@ -7,7 +7,7 @@
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Assistant Operations Manager"
-	 = "background_wy_management"
+	 
 	minimap_icon = "ass_man"
 	rank = JOB_ASSISTANT_MANAGER
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
@@ -57,7 +57,7 @@
 	skills = /datum/skills/civilian/survivor/pmc/commando
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_TSL)
 	minimap_icon = "private"
-	 = "background_pmc"
+	 
 
 	access = list(
 		ACCESS_WY_GENERAL,

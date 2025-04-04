@@ -11,7 +11,7 @@
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
 	minimap_icon = "cl"
-	 = "background_goon"
+	 
 
 /datum/equipment_preset/wy/New()
 	. = ..()
@@ -117,7 +117,7 @@
 	skills = /datum/skills/civilian/manager
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
-	 = "background_wy_management"
+	 
 
 /datum/equipment_preset/wy/manager/New()
 	. = ..()

@@ -3,7 +3,6 @@
 	faction = FACTION_TWE
 	faction_group = list(FACTION_TWE, FACTION_MARINE)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	 = "background_twe"
 
 /datum/equipment_preset/twe/royal_marine/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick_weight(list(MALE = 80, FEMALE = 20,))

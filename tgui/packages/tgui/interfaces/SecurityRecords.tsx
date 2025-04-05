@@ -10,6 +10,7 @@ import {
   Input,
   Modal,
   Section,
+  Stack,
   Table,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -383,7 +384,7 @@ export const SecurityRecords = () => {
   );
 
   const renderRecordDetails = (record: RecordEntry) => (
-    <Section title={`Details for ${record.general_name}`}>
+    <Section m="0" title={`Details for ${record.general_name}`}>
       <Flex direction="column">
         <Flex direction="row" gap={2}>
           <Flex.Item grow={1}>
@@ -399,7 +400,7 @@ export const SecurityRecords = () => {
           </Flex.Item>
 
           <Flex.Item>
-            <Section title="Photo">
+            <Section title="Photo" mr="0.5%" mt="0.5%">
               <Box style={{ textAlign: 'center', padding: '10px' }}>
                 <img
                   src={
@@ -560,7 +561,7 @@ export const SecurityRecords = () => {
   );
 
   const renderRecordsTable = () => (
-    <Section fill pr="0.5%" pl="0.5%">
+    <Section fill m="0" pr="0.5%" pl="0.5%">
       <Flex justify="space-evenly">
         <Box bold fontSize="20px">
           Security Records
@@ -727,16 +728,18 @@ export const SecurityRecords = () => {
   return (
     <Window theme="crtred" width={630} height={700}>
       <Window.Content>
-        <Section fill scrollable>
+        <Section fill p="0" scrollable>
           {viewFingerprintScanner ? (
             renderFingerprintScannerView()
           ) : selectedRecord ? (
             renderRecordDetails(selectedRecord)
           ) : (
-            <Section fitted>
-              {renderFingerprintScannerSection()}
-              {renderRecordsTable()}
-            </Section>
+            <Stack>
+              <Stack.Item width="100%">
+                {renderFingerprintScannerSection()}
+                {renderRecordsTable()}
+              </Stack.Item>
+            </Stack>
           )}
           {editField && renderEditModal()}
           {commentModalOpen && renderCommentModal()}

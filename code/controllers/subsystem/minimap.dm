@@ -275,9 +275,9 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/proc/remove_earlyadd(atom/source)
 	SIGNAL_HANDLER
 	remove_marker(source)
-	var/actual_z = target.z
-	if(target.loc && !isturf(target.loc))
-		actual_z = target.loc.z
+	var/actual_z = source.z
+	if(source.loc && !isturf(source.loc))
+		actual_z = source.loc.z
 	for(var/datum/callback/callback in LAZYACCESS(earlyadds, "[actual_z]"))
 		if(callback.arguments[1] != source)
 			continue

@@ -350,6 +350,12 @@ DEFINES in setup.dm, referenced here.
 		var/obj/item/weapon/gun/shotgun/shotload = src
 		var/obj/item/weapon/gun/revolver/revload = src
 		if(flags_gun_features & GUN_INTERNAL_MAG)
+			if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
+				to_chat(user, SPAN_NOTICE("[src] is already at its maximum capacity!"))
+				return
+			if(magazine.caliber != caliber)
+				to_chat(user, SPAN_NOTICE("This doesn't match the [src]'s caliber!"))
+				return
 			if(magazine.caliber == caliber)
 				if(user.skills)
 					tac_reload_time = 2 //until this can loop, better for it to be in 2 ticks
@@ -360,12 +366,6 @@ DEFINES in setup.dm, referenced here.
 							shotload.reload(user, bullet)
 						else if(revload) // to do: ditto
 							revload.reload(user, bullet)
-				else
-					to_chat(user, SPAN_NOTICE("[src] is already at its maximum capacity!"))
-					return
-			else if(magazine.caliber != caliber)
-				to_chat(user, SPAN_NOTICE("This doesn't match the [src]'s caliber!"))
-				return
 		// actual tactical reloads
 		else if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
 			if(istype(bullet, /obj/item/ammo_magazine/handful))

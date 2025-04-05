@@ -304,7 +304,7 @@
 //folded version of the sadar
 /obj/item/prop/folded_anti_tank_sadar
 	name = "\improper M83 SADAR (folded)"
-	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the Z key."
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded by in-hand activation."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m83a2_folded"
 	w_class = SIZE_MEDIUM

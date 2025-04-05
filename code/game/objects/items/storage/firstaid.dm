@@ -579,7 +579,7 @@
 	if(loc != user)
 		return ..()
 
-	if(!mods || !mods["alt"])
+	if(!mods || !mods[ALT_CLICK])
 		return ..()
 
 	if(!ishuman(user))

@@ -181,6 +181,7 @@
 	var/obj/effect/alien/resin/marker/tracked_marker
 	///The type of minimap this xeno has access too
 	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
+	var/datum/action/minimap/minimap_ref
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -510,8 +511,8 @@
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
-	var/datum/action/minimap/mini = new minimap_type
-	mini.give_to(src, mini)
+	minimap_ref = new minimap_type
+	minimap_ref.give_to(src, minimap_ref)
 
 	creation_time = world.time
 

@@ -345,6 +345,7 @@
 
 /obj/effect/alien/resin/trap/Crossed(atom/A)
 	if((isStructure(A) && istype(A, /obj/structure/bed)) || (isVehicle(A) && !isVehicleMultitile(A)))
+		var/obj/O = A
 		if(O.buckled_mob)
 			var/mob/living/M = O.buckled_mob
 			O.unbuckle()

@@ -416,7 +416,7 @@
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
 
-/datum/reagent/unga
+/datum/reagent/medical/unga
 	name = "Disgusting Mixture"
 	id = "unga"
 	description = " Some sort of... disgusting mixture of medicine. Probably something that shouldn't be consumed but apparently this mixture is considered a delicacy to some for its cornish taste, earning it the nickname of 'unga juice'."

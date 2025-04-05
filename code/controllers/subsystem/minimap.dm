@@ -242,7 +242,7 @@ SUBSYSTEM_DEF(minimaps)
 		CRASH("Invalid marker added to subsystem")
 
 	var/actual_z = target.z
-	if(target.loc && !isturf(target.loc))
+	if(ismob(target) && target.loc && !isturf(target.loc))
 		actual_z = target.loc.z
 
 	if(!initialized || !(minimaps_by_z["[actual_z]"])) //the minimap doesn't exist yet, z level was probably loaded after init
@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 	remove_marker(source)
 	var/actual_z = source.z
-	if(source.loc && !isturf(source.loc))
+	if(ismob(target) && source.loc && !isturf(source.loc))
 		actual_z = source.loc.z
 	for(var/datum/callback/callback in LAZYACCESS(earlyadds, "[actual_z]"))
 		if(callback.arguments[1] != source)

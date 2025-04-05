@@ -158,7 +158,7 @@
 
 	healthcheck()
 
-	return XENO_NONCOMBAT_ACTION
+	return XENO_ATTACK_ACTION // SS220 EDIT - Убрал XENO_NONCOMBAT_ACTION, ибо ксеносы слишком быстро по технике вдаряли
 
 //-------------------------------------------
 // Vehicle procs

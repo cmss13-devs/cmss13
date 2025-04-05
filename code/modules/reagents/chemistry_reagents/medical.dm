@@ -415,3 +415,15 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
+
+/datum/reagent/unga
+	name = "Disgusting Mixture"
+	id = "unga"
+	description = " Some sort of... disgusting mixture of medicine. Probably something that shouldn't be consumed but apparently this mixture is considered a delicacy to some for its cornish taste, earning it the nickname of 'unga'."
+	reagent_state = LIQUID
+	color = "#964B00" // rgb: 150, 75, 0
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_COMMON
+	properties = list(PROPERTY_BALDING = 3, PROPERTY_NUTRITIOUS = 1)
+	flags = REAGENT_SCANNABLE

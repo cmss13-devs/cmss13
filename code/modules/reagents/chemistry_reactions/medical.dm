@@ -201,3 +201,16 @@
 	result = "paroxetine"
 	required_reagents = list("mindbreaker" = 1, "oxygen" = 1, "inaprovaline" = 1)
 	result_amount = 3
+
+/datum/chemical_reaction/unga
+	name = "Disgusting Mixture"
+	id = "unga"
+	result = "unga"
+	required_reagents = list("bicaridine" = 1, "kelotane" = 1)
+	result_amount = 0.1
+	mob_react = FALSE // as much as this would be funny, no its gonna break some balance
+	forbidden_container = list(/obj/item/reagent_container/hypospray/autoinjector/emergency)
+
+/datum/chemical_reaction/unga/ungalicious
+	required_reagents = list("dermaline" = 1, "meralyne" = 1)
+	result_amount = 1

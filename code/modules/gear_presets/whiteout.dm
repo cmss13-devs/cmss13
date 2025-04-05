@@ -9,6 +9,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_FRENCH, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	minimap_icon = "whiteout"
+	minimap_background = "background_mp"
 	idtype = /obj/item/card/id/pmc/ds
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 
@@ -88,7 +89,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Whiteout Team Medic"
 	role_comm_title = "WO-TM"
-	minimap_background = "background_mp"
+	 
 	assignment = JOB_DS_MED
 	rank = JOB_DS_MED
 

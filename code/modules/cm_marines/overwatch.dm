@@ -35,8 +35,30 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/faction = FACTION_MARINE
 	var/obj/structure/orbital_cannon/current_orbital_cannon
 
-	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_USCM
+	/// List of references to the tools we will be using to shape what the map looks like
+	var/list/atom/movable/screen/drawing_tools = list(
+		/atom/movable/screen/minimap_tool/draw_tool/red,
+		/atom/movable/screen/minimap_tool/draw_tool/yellow,
+		/atom/movable/screen/minimap_tool/draw_tool/purple,
+		/atom/movable/screen/minimap_tool/draw_tool/blue,
+		/atom/movable/screen/minimap_tool/draw_tool/erase,
+		/atom/movable/screen/minimap_tool/label,
+		/atom/movable/screen/minimap_tool/clear,
+		/atom/movable/screen/minimap_tool/update
+	)
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	///by default Zlevel 2, groundside is targetted
+	var/targetted_zlevel = 2
+	///minimap obj ref that we will display to users
+	var/atom/movable/screen/minimap/map
+	///List of currently interacting mobs
+	var/list/mob/interactees = list()
+	///Toggle for scrolling map
+	var/scroll_toggle
+	///Button for closing map
+	var/close_button
+	///Is user currently interacting with minimap
+	var/interacting_minimap = FALSE
 
 	var/list/possible_options = list("Blue" = "crtblue", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")
 	var/list/chosen_theme = list("Blue", "Green", "Yellow", "Red")
@@ -83,13 +105,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		GLOB.active_overwatch_consoles += src
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
 		ob_cannon_safety = GLOB.ob_cannon_safety
-		tacmap = new /datum/tacmap/drawing(src, minimap_type)
-	else
-		tacmap = new(src, minimap_type) // Non-drawing version
-
+	
 /obj/structure/machinery/computer/overwatch/Destroy()
-	QDEL_NULL(tacmap)
 	GLOB.active_overwatch_consoles -= src
+	map = null
 	current_orbital_cannon = null
 	concurrent_users = null
 	if(!camera_holder)
@@ -162,29 +181,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
-	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
 	var/list/data = list()
 	data["distress_time_lock"] = DISTRESS_TIME_LOCK
-	data["mapRef"] = tacmap.map_holder.map_ref
 
 	return data
 
-
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
-
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		if(!level[1])
-			return
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
 		if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 			ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
 		else
@@ -581,7 +589,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return
 
 	var/mob/user = usr
-	switch(action)
+	switch(action)			
 		if("pick_squad")
 			if(current_squad)
 				return
@@ -714,7 +722,19 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					z_hidden = HIDE_NONE
 					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
 		if("tacmap_unpin")
-			tacmap.tgui_interact(user)
+			if(!map)
+				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
+				var/list/atom/movable/screen/actions = list()
+				for(var/path in drawing_tools)
+					actions += new path(null, targetted_zlevel, minimap_flag, map)
+				drawing_tools = actions
+				scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
+				close_button = new /atom/movable/screen/exit_map(null, src)
+			user.client.screen += map
+			interactees += user
+			user.client.screen += drawing_tools
+			user.client.screen += scroll_toggle
+			user.client.screen += close_button
 		if("dropbomb")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return
@@ -1160,11 +1180,20 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		user.reset_view(null)
 		concurrent_users -= WEAKREF(user)
+	interactees -= user
+	user?.client?.screen -= map
+	user?.client?.screen -= drawing_tools
+	user?.client?.screen -= scroll_toggle
+	user?.client?.screen -= close_button
+	user?.client?.mouse_pointer_icon = null
+	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
+		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
 
 /obj/structure/machinery/computer/overwatch/ui_close(mob/user)
 	..()
 	if(user.interactee == src)
 		user.unset_interaction()
+	remove_minimap(user)
 
 /// checks if the human has an overwatch camera at all
 /obj/structure/machinery/computer/overwatch/proc/marine_has_camera(mob/living/carbon/human/marine)
@@ -1438,6 +1467,15 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[crate.name]' supply drop launched! Another launch will be available in five minutes.")]")
 	busy = FALSE
 
+/obj/structure/machinery/computer/overwatch/proc/remove_minimap(mob/user)
+	user?.client?.screen -= map
+	user?.client?.screen -= drawing_tools
+	user?.client.screen -= scroll_toggle
+	user?.client?.mouse_pointer_icon = null
+	interacting_minimap = FALSE
+	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
+		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
+
 /obj/structure/machinery/computer/overwatch/almayer
 	density = FALSE
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -1453,10 +1491,11 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/structure/machinery/computer/overwatch/clf
 	faction = FACTION_CLF
 	freq = CLF_FREQ
+
 /obj/structure/machinery/computer/overwatch/upp
 	faction = FACTION_UPP
 	freq = UPP_FREQ
-	minimap_type = MINIMAP_FLAG_UPP
+	minimap_flag = MINIMAP_FLAG_UPP
 	command_channel_key = "#v"
 	ui_theme = "crtupp"
 	possible_options = list("UPP" = "crtupp", "Green" = "crtgreen", "Yellow" = "crtyellow", "Red" = "crtred")

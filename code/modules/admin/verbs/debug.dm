@@ -358,7 +358,8 @@
 		return
 
 	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
-	winset(src, "", "browser-options=byondstorage,find,devtools")
+	winset(src, null, list("browser-options" = "+devtools"))
+	winset(src, null, list("browser-options" = "+find"))
 
 #ifdef TESTING
 GLOBAL_LIST_EMPTY(dirty_vars)

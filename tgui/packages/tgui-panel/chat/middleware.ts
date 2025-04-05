@@ -4,7 +4,8 @@
  * @license MIT
  */
 
-import { storage as realStorage, StorageProxy } from 'common/storage';
+import { storage } from 'common/storage';
+import type { ByondWindow } from 'common/types';
 import DOMPurify from 'dompurify';
 
 import {
@@ -38,14 +39,10 @@ import { selectChat, selectCurrentChatPage } from './selectors';
 // List of blacklisted tags
 const FORBID_TAGS = ['a', 'iframe', 'link', 'video'];
 
-const usingCdnStorage =
-  !Byond.TRIDENT && Byond.storageCdn !== 'tgui:storagecdn';
-const storage = usingCdnStorage ? new StorageProxy(true) : realStorage;
-
 const saveChatToStorage = async (store) => {
   const state = selectChat(store.getState());
 
-  if (usingCdnStorage) {
+  if (!(window as ByondWindow).hubStorage) {
     const indexedDbBackend = await storage.backendPromise;
     indexedDbBackend.processChatMessages(chatRenderer.storeQueue);
   } else {
@@ -69,7 +66,7 @@ const loadChatFromStorage = async (store) => {
   const state = await storage.get('chat-state-cm');
 
   let messages;
-  if (usingCdnStorage) {
+  if (!(window as ByondWindow).hubStorage) {
     messages = await (await storage.backendPromise).getChatMessages();
   } else {
     messages = await storage.get('chat-messages-cm');

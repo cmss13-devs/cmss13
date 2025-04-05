@@ -104,6 +104,10 @@
 				W.acid_spray_act()
 				continue
 
+		if(istype(atm, /obj/item/explosive/mine/sharp))
+			var/obj/item/explosive/mine/sharp/sharp_mine = atm
+			sharp_mine.prime()
+
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm

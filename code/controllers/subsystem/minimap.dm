@@ -787,6 +787,17 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
 
+/datum/action/minimap/xeno/action_activate()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	if(!xeno?.hive?.living_xeno_queen.ovipositor && xeno != xeno?.hive?.living_xeno_queen)
+		to_chat(xeno, SPAN_WARNING("You cannot access that right now, The Queen has shed her ovipositor."))
+		return
+
+	. = ..()
+
 /datum/action/minimap/marine
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM

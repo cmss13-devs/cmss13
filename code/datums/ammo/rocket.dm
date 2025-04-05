@@ -307,3 +307,5 @@
 
 /datum/ammo/rocket/custom/do_at_max_range(obj/projectile/projectile)
 	prime(null, projectile)
+
+

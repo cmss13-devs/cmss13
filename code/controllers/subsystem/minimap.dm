@@ -409,7 +409,8 @@ SUBSYSTEM_DEF(minimaps)
 		return drawn_images[hash]
 	var/image/blip = new // could use MA but yolo
 	blip.icon = icon('icons/ui_icons/minimap.dmi')
-	minimaps_by_z["[zlevel]"].images_raw["[minimap_flag]"] += blip
+	if(minimaps_by_z["[zlevel]"])
+		minimaps_by_z["[zlevel]"].images_raw["[minimap_flag]"] += blip
 	for(var/datum/minimap_updator/updator as anything in update_targets["[minimap_flag]"])
 		if(zlevel == updator.ztarget)
 			updator.raw_blips += blip

@@ -894,6 +894,7 @@
 	pixel_y = 4;
 	pixel_x = -7
 	},
+/obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/wood,
 /area/template_noop)
 "LW" = (
@@ -1075,16 +1076,6 @@
 	pixel_x = -10;
 	pixel_y = 1;
 	layer = 4
-	},
-/turf/open/floor/wood,
-/area/template_noop)
-"Vx" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
-/obj/item/weapon/gun/shotgun/merc{
-	pixel_x = 1;
-	pixel_y = 25
 	},
 /turf/open/floor/wood,
 /area/template_noop)
@@ -1508,7 +1499,7 @@ ni
 ni
 pt
 LI
-Vx
+az
 Wh
 FN
 La

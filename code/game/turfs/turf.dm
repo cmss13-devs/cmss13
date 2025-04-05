@@ -350,10 +350,6 @@
 	SEND_SIGNAL(src, COMSIG_TURF_ENTERED, A)
 	SEND_SIGNAL(A, COMSIG_MOVABLE_TURF_ENTERED, src)
 
-	// Let explosions know that the atom entered
-	for(var/datum/automata_cell/explosion/E in autocells)
-		E.on_turf_entered(A)
-
 /turf/proc/is_plating()
 	return 0
 /turf/proc/is_asteroid_floor()

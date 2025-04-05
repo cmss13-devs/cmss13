@@ -721,18 +721,20 @@ export const SecurityRecords = () => {
   return (
     <Window theme="crtred" width={630} height={700}>
       <Window.Content>
-        {viewFingerprintScanner ? (
-          renderFingerprintScannerView()
-        ) : selectedRecord ? (
-          renderRecordDetails(selectedRecord)
-        ) : (
-          <>
-            {renderFingerprintScannerSection()}
-            {renderRecordsTable()}
-          </>
-        )}
-        {editField && renderEditModal()}
-        {commentModalOpen && renderCommentModal()}
+        <Section fill scrollable>
+          {viewFingerprintScanner ? (
+            renderFingerprintScannerView()
+          ) : selectedRecord ? (
+            renderRecordDetails(selectedRecord)
+          ) : (
+            <>
+              {renderFingerprintScannerSection()}
+              {renderRecordsTable()}
+            </>
+          )}
+          {editField && renderEditModal()}
+          {commentModalOpen && renderCommentModal()}
+        </Section>
       </Window.Content>
     </Window>
   );

@@ -74,12 +74,9 @@
 	
 	interactees -= user
 	user?.client?.screen -= map
-	user?.client?.screen -= drawing_tools
 	user?.client?.screen -= scroll_toggle
 	user?.client?.screen -= close_button
 	user?.client?.mouse_pointer_icon = null
-	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
-		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -527,8 +524,6 @@
 			if(!map)
 				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
 				var/list/atom/movable/screen/actions = list()
-				for(var/path in drawing_tools)
-					actions += new path(null, targetted_zlevel, minimap_flag, map)
 				drawing_tools = actions
 				scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
 				close_button = new /atom/movable/screen/exit_map(null, src)

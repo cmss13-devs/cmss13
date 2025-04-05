@@ -141,6 +141,10 @@
 	message = "laughs!"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/laugh/get_sound(mob/living/user)
+	if(isyautja(user))
+		return pick('sound/voice/pred_laugh1.ogg', 'sound/voice/pred_laugh2.ogg', 'sound/voice/pred_laugh3.ogg', 'sound/voice/pred_laugh4.ogg', 'sound/voice/pred_laugh5.ogg', 'sound/voice/pred_laugh6.ogg')
+
 /datum/emote/living/carbon/human/look
 	key = "look"
 	key_third_person = "looks"

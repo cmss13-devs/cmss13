@@ -741,8 +741,8 @@ export const SecurityRecords = () => {
             </Flex>
           )}
           {editField && renderEditModal()}
-          {commentModalOpen && renderCommentModal()}
         </Section>
+        {commentModalOpen && renderCommentModal()}
       </Window.Content>
     </Window>
   );

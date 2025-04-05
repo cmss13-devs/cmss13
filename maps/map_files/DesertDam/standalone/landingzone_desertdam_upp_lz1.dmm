@@ -1,0 +1,6500 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating,
+/area/desert_dam/building/dorms/hallway_northwing)
+"ar" = (
+/obj/structure/machinery/door_control{
+	id = "warehouse_dam_2";
+	name = "Warehouse Shutters"
+	},
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/cafeteria/loading)
+"as" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"at" = (
+/obj/structure/desertdam/decals/road_stop,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ax" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/building/mining/workshop_foyer)
+"aI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_civilian)
+"bc" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bl" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
+"bs" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
+/obj/item/tool/kitchen/knife/butcher,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bv" = (
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/cafeteria/cafeteria)
+"bx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"bF" = (
+/turf/open/floor/strata/blue3/east,
+/area/event/metal/dynamic/lit)
+"bH" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"bJ" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/prop/server_equipment/laptop/on{
+	pixel_x = 15;
+	pixel_y = 6
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"bV" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"cl" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Restroom"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"cm" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"co" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/desert_dam/building/mining/workshop)
+"cr" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"cB" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"cL" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"cR" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Workshop Foyer"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"cS" = (
+/obj/structure/closet/crate/secure,
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
+"cT" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/desert_dam/building/mining/workshop)
+"cU" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_civilian)
+"cV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"cX" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/bun,
+/obj/item/reagent_container/food/snacks/bun,
+/obj/item/reagent_container/food/snacks/cheesewedge,
+/obj/item/reagent_container/food/snacks/donut,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dc" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"de" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"df" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/reagentgrinder,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dk" = (
+/obj/structure/flora/grass/desert/lightgrass_11,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"dw" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dF" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Mess Hall"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dJ" = (
+/turf/open/floor/prison/darkyellow2/northeast,
+/area/desert_dam/building/mining/workshop)
+"dL" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/cookie,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"dM" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_civilian)
+"dQ" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"ee" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"el" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ez" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_civilian)
+"eC" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"eN" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"eV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"eW" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"eX" = (
+/turf/open/floor/strata/blue3,
+/area/event/metal/dynamic/lit)
+"ff" = (
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"fj" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"fo" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Toilet Unit"
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"fs" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/building/mining/workshop)
+"fv" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/toolcloset,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/darkbrown2/northwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"fy" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"fz" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/building/mining/workshop_foyer)
+"fC" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_civilian)
+"fH" = (
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/building/mining/workshop_foyer)
+"fJ" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "warehouse_dam_2";
+	name = "\improper Warehouse Shutters"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"fK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"fL" = (
+/obj/structure/surface/table,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"fR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"fW" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/prison/darkbrowncorners2/west,
+/area/desert_dam/building/mining/workshop_foyer)
+"gb" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"gg" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"gm" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"gw" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"gx" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"gz" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"gC" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"gK" = (
+/turf/closed/wall/r_wall,
+/area/event/dynamic/lit)
+"gR" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"gS" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"gU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"gV" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 5
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"gW" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"hd" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_civilian)
+"hh" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"hn" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"hC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"hI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"hU" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/event/dynamic/lit)
+"hV" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"hX" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"ia" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ib" = (
+/obj/structure/fence,
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_civilian)
+"id" = (
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_northwing)
+"ig" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ik" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_civilian)
+"iu" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"iw" = (
+/obj/structure/machinery/telecomms/bus,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"iE" = (
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"iG" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/blue3/north,
+/area/event/metal/dynamic/lit)
+"iI" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/valley/valley_civilian)
+"iO" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"iW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"iY" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/building/mining/workshop)
+"ji" = (
+/obj/structure/machinery/light/small,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"jL" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"jM" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"jN" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"jS" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
+"jW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"kb" = (
+/obj/structure/machinery/door_control{
+	id = "warehouse_dam_comm";
+	name = "Warehouse Shutters"
+	},
+/turf/closed/wall/r_wall,
+/area/event/metal/dynamic/lit)
+"kg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"kp" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"kr" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"kt" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"ky" = (
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/obj/structure/machinery/telecomms/hub/preset{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"kE" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "warehouse_dam_comm";
+	name = "\improper Communications Shutters"
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"kJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"kO" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"kP" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"kS" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"kV" = (
+/turf/closed/wall,
+/area/desert_dam/exterior/valley/valley_civilian)
+"kY" = (
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"lb" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"lf" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"lh" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"lk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ln" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_civilian)
+"lq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"lv" = (
+/obj/item/stack/sheet/plasteel{
+	amount = 10
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"lL" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/prison/darkbrowncorners2/east,
+/area/desert_dam/building/mining/workshop_foyer)
+"lU" = (
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"lZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"mf" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/cafeteria/loading)
+"mg" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"mj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"mk" = (
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"mm" = (
+/obj/structure/barricade/wooden,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"mv" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_7"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"mx" = (
+/obj/structure/flora/grass/desert/lightgrass_8,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"mD" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = -18
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full";
+	pixel_y = 14
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"mK" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"mU" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"nl" = (
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"ns" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"nB" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"nF" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"nK" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_civilian)
+"nN" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"nO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "warehouse_dam_2";
+	name = "\improper Warehouse Shutters"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"nR" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Workshop"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"nU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"nW" = (
+/obj/structure/window/framed/hangar/reinforced,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/plating,
+/area/desert_dam/building/mining/workshop)
+"nX" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"ok" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"om" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"oo" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/strata/blue3,
+/area/event/metal/dynamic/lit)
+"os" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Delivery"
+	},
+/turf/open/floor/prison,
+/area/desert_dam/exterior/valley/valley_civilian)
+"oA" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"oG" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"oK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"oO" = (
+/turf/open/floor/prison,
+/area/desert_dam/exterior/valley/valley_civilian)
+"oP" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal,
+/obj/item/stack/sheet/plasteel{
+	amount = 10
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"oV" = (
+/obj/structure/flora/grass/desert/lightgrass_10,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"pf" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"pt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"pG" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_civilian)
+"pH" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"pM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"pO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"pQ" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_civilian)
+"pW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"pZ" = (
+/obj/structure/machinery/light/small,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"qb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "warehouse_dam_2";
+	name = "\improper Warehouse Shutters"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"qh" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/desert_dam/exterior/rock)
+"qk" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"qo" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"qp" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"qC" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"qH" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"qS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"qW" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/building/mining/workshop_foyer)
+"qX" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"rb" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"rl" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/chips,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"rx" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/chips,
+/obj/item/reagent_container/food/snacks/cookie,
+/obj/item/reagent_container/food/snacks/donut,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"ry" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/southwest,
+/area/event/metal/dynamic/lit)
+"rC" = (
+/obj/structure/machinery/chem_master/condimaster,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"rH" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"rR" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_civilian)
+"rX" = (
+/obj/item/frame/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"sf" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"si" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"sl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"sB" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"sD" = (
+/obj/structure/machinery/telecomms/server,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"sK" = (
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/mining/workshop)
+"sL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"sU" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"sW" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"tc" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	req_access = null
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"te" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal3"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"tn" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_civilian)
+"to" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"ts" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/cafeteria)
+"tz" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/candy,
+/obj/item/reagent_container/food/snacks/bun,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"tD" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"tH" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"tJ" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/event/dynamic/lit)
+"tN" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"tQ" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/chips,
+/obj/item/reagent_container/food/snacks/cookie,
+/obj/item/reagent_container/food/snacks/donkpocket,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"tV" = (
+/obj/item/frame/table,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"uk" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/strata/white_cyan1,
+/area/event/metal/dynamic/lit)
+"um" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/food/snacks/bigbiteburger,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"un" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"uw" = (
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"uA" = (
+/turf/open/desert/dirt/rock1,
+/area/desert_dam/exterior/valley/valley_civilian)
+"uC" = (
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"uG" = (
+/obj/structure/window/framed/hangar/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/mining/workshop)
+"uM" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Kitchen"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"uQ" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/donut,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"uW" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/mining/workshop_foyer)
+"uX" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/building/mining/workshop)
+"vc" = (
+/turf/open/floor/prison/darkbrown2/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"ve" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/welding,
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
+"vj" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"vo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1;
+	icon_state = "pipe-j2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"vy" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/strata/blue3/west,
+/area/event/metal/dynamic/lit)
+"vA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"vD" = (
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"vQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"vR" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/cafeteria/backroom)
+"vY" = (
+/obj/structure/closet/crate/secure,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"wb" = (
+/obj/structure/desertdam/decals/road_stop,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wi" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/candy,
+/obj/item/reagent_container/food/snacks/candy,
+/obj/item/reagent_container/food/snacks/candy,
+/obj/item/reagent_container/food/snacks/donkpocket,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"wl" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wm" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wo" = (
+/obj/structure/fence,
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wq" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ww" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wB" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wI" = (
+/turf/open/floor/prison/darkyellowcorners2/north,
+/area/desert_dam/building/mining/workshop)
+"wJ" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_4"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wK" = (
+/turf/template_noop,
+/area/template_noop)
+"wM" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"wN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"wQ" = (
+/turf/open/floor/prison/darkbrown2/southeast,
+/area/desert_dam/building/mining/workshop_foyer)
+"wZ" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/almayer/test_floor5,
+/area/event/dynamic/lit)
+"xc" = (
+/obj/structure/fence,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
+/area/event/dynamic/lit)
+"xd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"xo" = (
+/obj/item/shard/shrapnel,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"xr" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"xF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"xI" = (
+/turf/open/desert/dirt/desert_transition_edge1/southwest,
+/area/desert_dam/exterior/valley/valley_civilian)
+"xK" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"xL" = (
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/mining/workshop)
+"xN" = (
+/obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"yc" = (
+/obj/structure/fence,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"yg" = (
+/obj/structure/lz_sign/dam_sign{
+	pixel_x = 15
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/event/dynamic/lit)
+"yn" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"yF" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
+"yL" = (
+/turf/open/floor/strata/white_cyan1,
+/area/event/metal/dynamic/lit)
+"yS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"yY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"za" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"zf" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"zk" = (
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
+"zl" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_8"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"zu" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"zv" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"zA" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_civilian)
+"zK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"zN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"zP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"zY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"Ah" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/blue3/north,
+/area/event/metal/dynamic/lit)
+"An" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Kitchen"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Av" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_civilian)
+"AA" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"AO" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"AQ" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/dorms/hallway_northwing)
+"AV" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 9
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"AW" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkbrowncorners2/north,
+/area/desert_dam/building/mining/workshop_foyer)
+"Bk" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/southeast,
+/area/event/metal/dynamic/lit)
+"Bt" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/telecomms/relay/preset/tower/all,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"Bu" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 5
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"BI" = (
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/building/mining/workshop)
+"BS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"BW" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"BX" = (
+/turf/open/floor/strata/blue2,
+/area/event/metal/dynamic/lit)
+"BY" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ck" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Cm" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Cn" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Co" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Ct" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Delivery"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/cafeteria/loading)
+"Cv" = (
+/obj/structure/flora/tree/joshua,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Cx" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/cafeteria/backroom)
+"CE" = (
+/turf/open/floor/prison/darkyellowcorners2,
+/area/desert_dam/building/mining/workshop)
+"CJ" = (
+/obj/docking_port/stationary/marine_dropship/upp{
+	name = "South East Landing Zone One"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"CX" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Mess Hall"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Da" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall,
+/area/desert_dam/building/cafeteria/cafeteria)
+"De" = (
+/turf/open/desert/dirt/desert_transition_corner1/east,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Dg" = (
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/desert_dam/building/mining/workshop)
+"Dm" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Dn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"Dy" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/turf/open/asphalt,
+/area/event/dynamic/lit)
+"DF" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_civilian)
+"DN" = (
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall"
+	},
+/area/desert_dam/exterior/rock)
+"DO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"DR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"DX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"DY" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"Ef" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Eg" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ep" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"Et" = (
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/exterior/valley/valley_civilian)
+"EP" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = -7
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/blue3/north,
+/area/event/metal/dynamic/lit)
+"ET" = (
+/turf/open/desert/dirt/desert_transition_corner1/north,
+/area/desert_dam/exterior/valley/valley_civilian)
+"EZ" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/structure/machinery/colony_floodlight,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Fn" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Fu" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Fw" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Fy" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"FC" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"FL" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/cafeteria/cafeteria)
+"FX" = (
+/turf/open/desert/dirt/desert_transition_edge1/southeast,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ga" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/event/dynamic/lit)
+"Gc" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Gg" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"Gs" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/mining/workshop)
+"Gu" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Gv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"GA" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/building/mining/workshop)
+"GG" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Dormitories"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/dorms/hallway_northwing)
+"GM" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Hb" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/crap_item,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Hc" = (
+/obj/structure/window/framed/hangar/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/mining/workshop_foyer)
+"Hd" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"He" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Hh" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Hu" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"Hv" = (
+/obj/structure/fence,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/event/dynamic/lit)
+"Hw" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Hz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"HC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_civilian)
+"HH" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"HR" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/prison/darkbrown2/north,
+/area/desert_dam/building/mining/workshop_foyer)
+"HV" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Fax Machine";
+	department = "FOB Fax";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/strata/blue3/north,
+/area/event/metal/dynamic/lit)
+"Ig" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/northeast,
+/area/event/metal/dynamic/lit)
+"Ik" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Im" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced{
+	req_access = null
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"Is" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Iy" = (
+/turf/closed/wall/r_wall,
+/area/event/metal/dynamic/lit)
+"IA" = (
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/cafeteria)
+"ID" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"IG" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/cafeteria)
+"IH" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"IR" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"IS" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/desert_dam/building/mining/workshop_foyer)
+"IU" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"IY" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"Jf" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Jn" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Jp" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"JG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"JK" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_civilian)
+"JL" = (
+/turf/open/desert/dirt/desert_transition_edge1,
+/area/desert_dam/exterior/valley/valley_civilian)
+"JN" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"JX" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"JY" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Kc" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"Kd" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ks" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"KB" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 11;
+	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	name = "\improper landing zone traffic signal"
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"KJ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 9
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"La" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_4"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Lf" = (
+/turf/open/desert/dirt/desert_transition_edge1/north,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ln" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Lr" = (
+/turf/open/floor/prison/darkbrown2/north,
+/area/desert_dam/building/mining/workshop_foyer)
+"Lx" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"LA" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_civilian)
+"LD" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"LX" = (
+/turf/open/floor/prison/darkbrown2/northeast,
+/area/desert_dam/building/mining/workshop_foyer)
+"Mf" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Mn" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Mp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"MH" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/building/mining/workshop)
+"MK" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"MM" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/darkbrowncorners2/east,
+/area/desert_dam/building/mining/workshop_foyer)
+"MT" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"MV" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"MZ" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/strata/blue3/northwest,
+/area/event/metal/dynamic/lit)
+"Nf" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Nj" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Nq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"Ns" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Nt" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Nz" = (
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/building/mining/workshop)
+"NC" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"NE" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"NI" = (
+/obj/structure/closet/crate/secure,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"NL" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"NQ" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"NW" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Ob" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Oc" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ou" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"OF" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/dorms/hallway_northwing)
+"OM" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 13;
+	layer = 2.7;
+	pixel_x = 14
+	},
+/turf/open/desert/dirt,
+/area/event/dynamic/lit)
+"OS" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/exterior/valley/valley_civilian)
+"OT" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"OV" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"OY" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Toilet Unit"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Pd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"Pi" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Pu" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Pv" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"PI" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"PT" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"PU" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/bun,
+/obj/item/reagent_container/food/snacks/bun,
+/obj/item/reagent_container/food/snacks/cheesewedge,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"PX" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Qc" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"Qf" = (
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/building/mining/workshop_foyer)
+"Qj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Qq" = (
+/obj/item/frame/table,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Qr" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Qt" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Qu" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/poddoor/shutters{
+	dir = 2
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Qv" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/bun,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"QK" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
+/area/desert_dam/exterior/valley/valley_civilian)
+"QL" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 5
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"QO" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"QR" = (
+/turf/closed/wall,
+/area/desert_dam/building/cafeteria/cafeteria)
+"QV" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Rc" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 10
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Rl" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Rq" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Rt" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/donkpocket,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Ry" = (
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"RC" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"RH" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"RI" = (
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_civilian)
+"RM" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"RP" = (
+/turf/open/asphalt,
+/area/desert_dam/building/cafeteria/loading)
+"RR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"RT" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"RU" = (
+/turf/open/floor/prison/darkbrowncorners2/southwest,
+/area/desert_dam/building/mining/workshop_foyer)
+"RY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Sm" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_9"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"So" = (
+/obj/structure/fence,
+/turf/open/desert/dirt/desert_transition_edge1/west,
+/area/desert_dam/exterior/valley/valley_civilian)
+"SG" = (
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"SN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"SP" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/bomb_supply,
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop)
+"SR" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/building/mining/workshop_foyer)
+"SS" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison,
+/area/desert_dam/building/cafeteria/loading)
+"SU" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/building/mining/workshop_foyer)
+"Ti" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"Tl" = (
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Tp" = (
+/turf/open/floor/prison,
+/area/desert_dam/building/mining/workshop_foyer)
+"Ty" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Tz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"TB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"TL" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"TN" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"TT" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ub" = (
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"Uc" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
+/area/event/dynamic/lit)
+"Uf" = (
+/obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/item/tool/mop,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"Uh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Uj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Um" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/cheesewedge,
+/obj/item/reagent_container/food/snacks/chips,
+/obj/item/reagent_container/food/snacks/cookie,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Uq" = (
+/obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
+"Ur" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ut" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/white_cyan1,
+/area/event/metal/dynamic/lit)
+"UJ" = (
+/obj/structure/flora/bush/desert/cactus/multiple{
+	icon_state = "cacti_11"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"UL" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"UU" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/vault2/west,
+/area/desert_dam/building/mining/workshop)
+"UY" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached20,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Vo" = (
+/obj/structure/machinery/vending/cola,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 17
+	},
+/turf/open/floor/strata/blue2,
+/area/event/metal/dynamic/lit)
+"Vs" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Vz" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"VF" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt,
+/area/event/dynamic/lit)
+"Wa" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Wh" = (
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/desert_dam/building/mining/workshop)
+"Wo" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/tile,
+/area/event/dynamic/lit)
+"Wt" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Wy" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"WD" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"WI" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_civilian)
+"WM" = (
+/obj/item/stack/sheet/wood,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Xb" = (
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"Xk" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/candy,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Xl" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Xu" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/event/dynamic/lit)
+"Xx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"XL" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Yc" = (
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Yd" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 5
+	},
+/turf/open/asphalt/tile,
+/area/event/dynamic/lit)
+"Ye" = (
+/turf/open/floor/strata/blue3/north,
+/area/event/metal/dynamic/lit)
+"Yi" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Yj" = (
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Ym" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Yq" = (
+/obj/structure/sink/kitchen,
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Yx" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"YC" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"YD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/desert_dam/exterior/valley/valley_civilian)
+"YG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"YP" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/mining/workshop)
+"YQ" = (
+/obj/structure/surface/rack,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"YV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Zb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Zc" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Mess Hall"
+	},
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
+"Zi" = (
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/building/mining/workshop)
+"Zl" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Zq" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Zt" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tech_supply,
+/obj/effect/spawner/random/tech_supply,
+/turf/open/floor/prison/darkbrown2,
+/area/desert_dam/building/mining/workshop_foyer)
+"Zv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"Zw" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ZI" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/candy,
+/obj/item/reagent_container/food/snacks/candy,
+/obj/item/reagent_container/food/snacks/candy,
+/obj/item/reagent_container/food/snacks/chips,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"ZJ" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ZT" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/barricade/wooden,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ZU" = (
+/obj/structure/machinery/telecomms/broadcaster,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"ZZ" = (
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/desert_dam/building/mining/workshop)
+
+(1,1,1) = {"
+NL
+Sm
+NL
+NL
+NL
+Tl
+Et
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+FL
+QR
+bv
+CX
+QR
+IG
+IG
+IG
+QR
+IG
+IG
+IG
+QR
+QR
+NL
+NL
+Eg
+Wa
+Zv
+kJ
+IH
+nB
+fC
+NL
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(2,1,1) = {"
+NL
+UJ
+NL
+NL
+mv
+NL
+Lf
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+FL
+nF
+Qj
+Qj
+ff
+ff
+ff
+ff
+nF
+ff
+ff
+ff
+bc
+QR
+NL
+NL
+Eg
+Wa
+vD
+vD
+IH
+nB
+fC
+NL
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(3,1,1) = {"
+NL
+NL
+NL
+NL
+NL
+NL
+Tl
+Et
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+Cx
+Cx
+Cx
+ff
+Qj
+Qj
+QV
+QV
+QV
+kY
+kY
+QV
+QV
+QV
+ff
+IG
+NL
+NL
+Eg
+Wa
+vD
+vD
+IH
+nB
+fC
+NL
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(4,1,1) = {"
+xI
+NL
+NL
+NL
+NL
+NL
+NL
+Lf
+BW
+BW
+BW
+BW
+BW
+BW
+Cx
+Cx
+Ry
+Cx
+ff
+Qj
+Qj
+uQ
+tQ
+Um
+kY
+kY
+Qv
+cX
+xo
+ff
+IG
+NL
+Cv
+Eg
+Wa
+Zv
+kJ
+IH
+nB
+fC
+NL
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(5,1,1) = {"
+kV
+So
+ib
+yc
+kV
+yc
+yc
+wo
+kV
+BW
+BW
+BW
+BW
+BW
+Cx
+Ry
+Ry
+hV
+ff
+Qj
+ee
+rl
+tV
+NE
+oK
+oK
+Qv
+fL
+mK
+ff
+IG
+NL
+NL
+Eg
+Wa
+vD
+vD
+IH
+nB
+fC
+NL
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(6,1,1) = {"
+BW
+uA
+De
+xI
+NL
+NL
+NL
+Tl
+BW
+BW
+BW
+BW
+BW
+BW
+Cx
+OV
+Ry
+Cx
+QR
+FC
+ee
+Co
+mg
+Co
+oK
+oK
+mg
+mg
+Fn
+ff
+FL
+jN
+Pu
+Eg
+Wa
+vD
+vD
+IH
+nB
+fC
+KB
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(7,1,1) = {"
+BW
+BW
+Et
+De
+xI
+NL
+NL
+NL
+Lf
+BW
+BW
+BW
+BW
+Cx
+Cx
+Yx
+Ry
+Cx
+Ef
+ff
+xF
+sL
+wM
+Hw
+sL
+vj
+oK
+kY
+oK
+ff
+IA
+NL
+NL
+Eg
+Wa
+Zv
+kJ
+IH
+nB
+fC
+NL
+AQ
+AQ
+AQ
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(8,1,1) = {"
+BW
+BW
+BW
+uA
+JL
+NL
+NL
+NL
+Tl
+BW
+BW
+ET
+Cx
+Cx
+gw
+Ry
+Ry
+Cx
+gS
+ff
+Qr
+QV
+QV
+kt
+He
+kY
+kt
+kt
+kt
+ff
+IA
+eC
+ww
+RT
+Wa
+zN
+te
+IH
+eC
+ww
+ww
+ww
+RT
+AQ
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(9,1,1) = {"
+BW
+BW
+BW
+BW
+De
+xI
+La
+zl
+NL
+Tl
+BW
+JL
+Cx
+Uf
+Ry
+Ry
+YQ
+Cx
+XL
+ff
+Qr
+Hb
+wi
+ZI
+oK
+oK
+NE
+PU
+fL
+ff
+IA
+kO
+JX
+QL
+Lx
+RH
+RH
+Zq
+kO
+zu
+JX
+Bu
+sf
+OF
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(10,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+ww
+gV
+AV
+ww
+ww
+RT
+FX
+Cx
+dQ
+Ry
+Ry
+oA
+Cx
+ff
+Qj
+Qr
+Xk
+Rt
+gC
+oK
+He
+rX
+tz
+NE
+cL
+FL
+FL
+bH
+Fu
+IR
+lk
+SN
+tD
+tn
+DF
+ik
+Gu
+NL
+OF
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(11,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+zu
+zu
+JX
+mD
+sf
+NL
+Cx
+dQ
+Fy
+Ry
+cr
+Cx
+to
+Ty
+si
+Fn
+mg
+mg
+oK
+oK
+mg
+mg
+mg
+Qj
+ff
+IG
+bH
+Fu
+wq
+wb
+vD
+IU
+cm
+sB
+Fu
+Gu
+Pu
+OF
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(12,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+NL
+NL
+dk
+Mn
+gg
+oV
+Cx
+Cx
+Cx
+vR
+Cx
+Cx
+QR
+Hz
+dw
+kY
+oK
+oK
+He
+He
+kY
+oK
+He
+oK
+ff
+Zc
+Ik
+Av
+wq
+vD
+vD
+Yi
+vD
+IH
+Fu
+RC
+Oc
+id
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(13,1,1) = {"
+BW
+BW
+NL
+qh
+eW
+FX
+Pu
+NL
+mx
+kP
+pf
+gg
+JL
+FL
+NC
+ff
+sU
+uM
+Qj
+yS
+dw
+oK
+oK
+kY
+oK
+He
+oK
+oK
+kY
+kY
+ff
+ff
+YD
+Av
+Wa
+Zv
+kJ
+Yi
+vD
+IH
+nB
+hd
+RY
+GG
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(14,1,1) = {"
+BW
+NL
+NL
+Xl
+ia
+NL
+NL
+rH
+Mn
+pf
+pf
+PI
+FX
+FL
+Jn
+Qj
+iW
+Da
+pH
+Ob
+dw
+QR
+QR
+QR
+oK
+oK
+QR
+QR
+QR
+kY
+ff
+IG
+bH
+Fu
+wq
+vD
+vD
+Yi
+vD
+IH
+Ym
+RI
+Pi
+pO
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(15,1,1) = {"
+kr
+lf
+hI
+Kd
+ia
+NL
+nN
+Fw
+kP
+pf
+PI
+dk
+NL
+FL
+um
+ee
+yS
+NW
+ff
+QR
+dw
+QR
+QR
+QR
+oK
+oK
+QR
+QR
+QR
+kY
+ff
+IG
+bH
+Tz
+wq
+zN
+zN
+Yi
+vD
+IH
+Fu
+Wt
+kp
+id
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(16,1,1) = {"
+zN
+vD
+gz
+Xl
+ia
+NL
+NL
+NL
+Rl
+PI
+ZJ
+Fw
+NL
+FL
+bs
+ee
+zK
+NW
+ff
+hX
+dw
+kY
+kY
+kY
+oK
+oK
+oK
+kY
+oK
+kY
+ff
+dF
+Zb
+Av
+wq
+Ou
+dn
+JY
+vD
+IH
+Fu
+Gu
+NL
+OF
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(17,1,1) = {"
+vD
+vD
+gz
+Xl
+TN
+NL
+NL
+NL
+xK
+NL
+NL
+NL
+NL
+FL
+Yq
+ee
+zK
+xr
+ff
+hX
+dw
+oK
+oK
+oK
+oK
+oK
+oK
+oK
+oK
+oK
+Qj
+Qj
+YD
+Av
+wq
+zN
+zN
+JY
+vD
+IH
+Fu
+Gu
+NL
+OF
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(18,1,1) = {"
+vD
+vD
+gz
+ok
+UL
+NL
+NL
+NL
+KB
+NL
+gR
+NL
+NL
+FL
+df
+ee
+zP
+QR
+ff
+hX
+si
+QV
+QV
+QV
+oK
+oK
+kt
+QV
+QV
+ff
+ff
+IG
+bH
+Fu
+Wa
+zN
+zN
+Yi
+vD
+IH
+Fu
+Gu
+NL
+OF
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(19,1,1) = {"
+dc
+dc
+gz
+NL
+KJ
+Cn
+Cn
+Cn
+Cn
+Cn
+Cn
+hh
+NL
+FL
+rC
+ee
+zP
+Qu
+ff
+hX
+si
+fL
+Qq
+Qq
+oK
+oK
+dL
+rx
+Qq
+bc
+QR
+QR
+bH
+Fu
+Wa
+Ou
+dn
+Yi
+vD
+IH
+Fu
+Gu
+NL
+aa
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+wK
+"}
+(20,1,1) = {"
+zN
+vD
+gz
+NL
+Qt
+UY
+zA
+zA
+zA
+HC
+RY
+Gu
+NL
+FL
+lh
+ff
+cV
+An
+jW
+jW
+Uh
+Fn
+Fn
+Fn
+kY
+kY
+Fn
+Fn
+Fn
+ff
+IG
+NL
+Qt
+Fu
+Wa
+nU
+te
+oG
+OT
+TL
+Fu
+Gu
+NL
+kS
+NL
+dM
+WM
+LA
+mm
+NL
+NL
+BW
+BW
+BW
+BW
+"}
+(21,1,1) = {"
+Ks
+vD
+gx
+lf
+zf
+cm
+cm
+cm
+cm
+RM
+Fu
+Gu
+NL
+FL
+FL
+FL
+ts
+FL
+FL
+zv
+ff
+ff
+ff
+ff
+ff
+zv
+ff
+ff
+ff
+bc
+QR
+NL
+Qt
+Fu
+Lx
+as
+RH
+Dm
+Ik
+pQ
+Nf
+Hh
+Nt
+BY
+Nt
+Gc
+Rq
+eN
+ZT
+Nt
+Ck
+BW
+BW
+BW
+BW
+"}
+(22,1,1) = {"
+eV
+wN
+Vz
+sl
+Vz
+Vz
+sl
+Vz
+qS
+IH
+Fu
+Gu
+NL
+OS
+iE
+iE
+cB
+iE
+FL
+FL
+FL
+FL
+FL
+FL
+FL
+FL
+FL
+FL
+cl
+FL
+FL
+NL
+Qt
+Fu
+Jp
+Gv
+SN
+tD
+WD
+DF
+DF
+DF
+DF
+ln
+DF
+DF
+DF
+DF
+DF
+Nf
+nK
+BW
+BW
+BW
+BW
+"}
+(23,1,1) = {"
+xd
+zN
+Ks
+xd
+vD
+vD
+wt
+vD
+yY
+qk
+Fu
+Jf
+Cn
+OS
+iE
+iE
+cB
+iE
+iE
+qo
+iE
+iE
+gU
+iE
+iE
+FL
+iO
+OY
+ff
+ff
+FL
+FL
+FL
+Fu
+Wa
+at
+vD
+IH
+Fu
+iY
+nW
+nW
+nW
+iY
+uG
+uG
+uG
+Zi
+bH
+nB
+nK
+bH
+BW
+BW
+BW
+"}
+(24,1,1) = {"
+OT
+OT
+OT
+OT
+Uj
+OT
+YG
+Zv
+YV
+IH
+nB
+pQ
+pQ
+os
+iE
+iE
+cB
+JN
+iE
+JN
+iE
+xN
+xN
+Qc
+iE
+FL
+FL
+FL
+ff
+ff
+ff
+ff
+FL
+Fu
+Wa
+nU
+vD
+IH
+Fu
+iY
+Dg
+sK
+sK
+uX
+sK
+sK
+ZZ
+Zi
+bH
+nB
+nK
+bH
+BW
+BW
+BW
+"}
+(25,1,1) = {"
+zA
+zA
+zA
+zA
+aI
+RY
+Wa
+vD
+nU
+IH
+nB
+DF
+DF
+oO
+iE
+iE
+pM
+Gg
+fy
+gU
+iE
+Qc
+xN
+ns
+iE
+FL
+gW
+OY
+ff
+zv
+hn
+hn
+FL
+Fu
+Wa
+BS
+kJ
+IH
+Fu
+nW
+Nz
+oP
+Kc
+MK
+Kc
+nX
+BI
+Zi
+bH
+tn
+Pi
+BW
+BW
+BW
+BW
+"}
+(26,1,1) = {"
+Cm
+gm
+Cm
+HH
+sW
+Tz
+Wa
+vD
+nU
+IH
+Fu
+bV
+Cm
+OS
+Hd
+iE
+lZ
+iE
+iE
+iE
+iE
+SG
+SG
+SG
+iE
+FL
+FL
+FL
+FL
+FL
+FL
+FL
+FL
+Fu
+Wa
+nU
+vD
+IH
+Fu
+nW
+Nz
+nX
+Kc
+lv
+Kc
+YP
+BI
+Zi
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(27,1,1) = {"
+NL
+wJ
+NL
+Xl
+ia
+Fu
+wq
+Zv
+YV
+IH
+Fu
+Gu
+NL
+OS
+iE
+iE
+dt
+jM
+jM
+jM
+jM
+jM
+jM
+IY
+za
+un
+iE
+iE
+Iy
+Ut
+yL
+uk
+Iy
+Fu
+Wa
+nU
+vD
+IH
+Fu
+nW
+Nz
+Kc
+Kc
+Kc
+Kc
+Kc
+Wh
+uX
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(28,1,1) = {"
+BW
+BW
+NL
+Xl
+ia
+Fu
+wq
+vD
+nU
+IH
+Fu
+bH
+Iy
+Iy
+YC
+lU
+lU
+Iy
+Iy
+SS
+iE
+iE
+iE
+iE
+fR
+ID
+TB
+iE
+Iy
+Iy
+fo
+Iy
+Iy
+Fu
+Wa
+BS
+kJ
+IH
+Fu
+iY
+fs
+Kc
+Kc
+Kc
+Kc
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(29,1,1) = {"
+BW
+BW
+BW
+Xl
+TN
+Fu
+Wa
+vD
+nU
+IH
+Fu
+bH
+Iy
+ZU
+DR
+uC
+zY
+iw
+Iy
+iu
+kg
+JG
+JG
+mj
+fR
+hC
+Uq
+iE
+MT
+Bk
+bF
+Ig
+Iy
+Fu
+Wa
+nU
+vD
+IH
+Fu
+nW
+Nz
+Kc
+Kc
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(30,1,1) = {"
+BW
+BW
+BW
+qh
+qX
+Fu
+Wa
+Ou
+YV
+IH
+Fu
+bH
+Iy
+DY
+Mp
+Ti
+RR
+ji
+Iy
+Pv
+DO
+RP
+RP
+lq
+iE
+ID
+Qc
+iE
+Im
+eX
+Xb
+HV
+MT
+Fu
+Wa
+nU
+vD
+IH
+Fu
+nW
+Nz
+zk
+zk
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(31,1,1) = {"
+BW
+BW
+BW
+BW
+Qt
+Fu
+Wa
+zN
+nU
+IH
+Fu
+bH
+PT
+zY
+mk
+mk
+mk
+bx
+PT
+iE
+DO
+RP
+RP
+lq
+iE
+LD
+jM
+jM
+lb
+oo
+Dn
+EP
+MT
+Fu
+Wa
+BS
+kJ
+IH
+Fu
+nW
+Nz
+cS
+zk
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(32,1,1) = {"
+BW
+BW
+BW
+BW
+Qt
+Fu
+Wa
+zN
+nU
+IH
+Fu
+bH
+PT
+zY
+mk
+Bt
+mk
+DR
+PT
+iE
+DO
+RP
+RP
+lq
+iE
+lZ
+iE
+iE
+MT
+eX
+Nq
+Ah
+Iy
+Fu
+Wa
+nU
+vD
+IH
+Fu
+iY
+MH
+bl
+zk
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(33,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+Fu
+Wa
+Ou
+YV
+IH
+Fu
+bH
+PT
+zY
+mk
+mk
+mk
+bx
+PT
+Hd
+DO
+RP
+RP
+lq
+jL
+lZ
+iE
+Iy
+Iy
+eX
+Nq
+Ye
+MT
+Fu
+Wa
+nU
+vD
+IH
+Fu
+nW
+Nz
+yF
+zk
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(34,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+Fu
+Wa
+zN
+nU
+IH
+NQ
+bH
+Iy
+bJ
+Pd
+vA
+DX
+pZ
+Iy
+ar
+qb
+fJ
+fJ
+nO
+mf
+Ct
+mf
+Iy
+Vo
+eX
+Nq
+iG
+MT
+Fu
+Wa
+BS
+kJ
+IH
+Fu
+nW
+Nz
+SP
+zk
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(35,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+Fu
+Wa
+vD
+nU
+IH
+Fu
+bH
+Iy
+ky
+pt
+uC
+zY
+sD
+Iy
+QK
+Zl
+wt
+wt
+ig
+PX
+Ns
+bH
+Iy
+BX
+ry
+vy
+MZ
+Iy
+tN
+Wa
+nU
+vD
+IH
+Fu
+nW
+Nz
+jS
+zk
+Kc
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(36,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+Ln
+Xx
+fK
+Zw
+yn
+Nj
+Iy
+kb
+kE
+kE
+kE
+Iy
+Iy
+AO
+Wa
+vD
+vD
+IH
+bH
+Ns
+bH
+Iy
+Iy
+Iy
+tc
+MT
+Iy
+QO
+Ln
+Is
+wm
+Zw
+yn
+iY
+fs
+zk
+zk
+Kc
+Kc
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(37,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+qh
+tH
+vD
+nU
+IH
+Fu
+Gu
+KB
+NL
+NL
+NL
+NL
+NL
+NL
+Eg
+Wa
+vD
+vD
+IU
+cm
+fj
+iI
+NL
+NL
+rH
+ZJ
+NL
+KB
+Eg
+Wa
+BS
+kJ
+IH
+rb
+nW
+Nz
+ve
+zk
+Kc
+Kc
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(38,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+Wa
+vD
+nU
+IH
+Fu
+EZ
+Cn
+Cn
+Cn
+Cn
+Cn
+Cn
+Cn
+el
+Wa
+vD
+vD
+vD
+vD
+de
+Mf
+NL
+NL
+NL
+NL
+NL
+Pu
+Eg
+Wa
+nU
+vD
+IH
+rb
+nW
+Nz
+jS
+zk
+Kc
+Kc
+Kc
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(39,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+Wa
+Zv
+YV
+IH
+tn
+zA
+zA
+zA
+zA
+zA
+zA
+zA
+zA
+Pi
+Wa
+vD
+vD
+vD
+vD
+de
+rR
+TT
+TT
+TT
+TT
+TT
+TT
+JK
+Wa
+nU
+vD
+IH
+rb
+nW
+Nz
+yF
+zk
+zk
+Kc
+Kc
+zk
+UU
+UU
+zk
+BW
+BW
+BW
+BW
+BW
+"}
+(40,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+Wa
+vD
+nU
+IU
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+GM
+vD
+vD
+vD
+vD
+om
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+GM
+BS
+kJ
+IH
+Fu
+iY
+dJ
+xL
+GA
+wI
+Kc
+Kc
+CE
+GA
+xL
+xL
+Gs
+cT
+Zi
+BW
+BW
+"}
+(41,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+Wa
+vD
+pW
+Vz
+sl
+Vz
+Vz
+sl
+Vz
+Vz
+sl
+Vz
+Vz
+sl
+Vz
+Vz
+sl
+Vz
+Vz
+vo
+Vz
+Vz
+sl
+Vz
+Vz
+sl
+Vz
+sl
+Vz
+Ur
+vD
+IH
+WI
+iY
+Zi
+Zi
+Zi
+co
+Kc
+nR
+co
+Zi
+Zi
+Zi
+Zi
+Zi
+Zi
+BW
+BW
+"}
+(42,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+Wa
+vD
+vD
+vD
+wt
+vD
+vD
+wt
+vD
+vD
+wt
+vD
+vD
+wt
+vD
+vD
+wt
+vD
+vD
+wt
+vD
+vD
+wt
+vD
+vD
+wt
+vD
+wt
+vD
+vD
+vD
+IH
+Yc
+kS
+Wy
+SR
+fv
+lL
+Hu
+Hu
+fW
+vc
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(43,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+VF
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+hU
+Dy
+qp
+Rc
+MV
+Hc
+HR
+Tp
+qC
+qC
+Tp
+ax
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(44,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+gK
+xc
+Hv
+gK
+Hv
+Hv
+gK
+Uc
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+tJ
+Nf
+Vs
+MV
+Hc
+HR
+Tp
+qC
+qC
+Tp
+ax
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(45,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+Ga
+Ga
+Ga
+Ga
+Wo
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+Ga
+wl
+ez
+Cn
+uW
+MM
+Tp
+qC
+qC
+Tp
+SU
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(46,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+OM
+Ep
+uw
+wZ
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+wZ
+uw
+uw
+uw
+uw
+uw
+uw
+vQ
+AA
+wB
+cR
+qC
+qC
+qC
+qC
+Tp
+Zt
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(47,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+Ep
+Ep
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+yg
+BW
+pG
+qH
+cU
+qC
+qC
+qC
+qC
+qC
+Tp
+qW
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(48,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+Xu
+BW
+BW
+Yj
+mU
+uW
+AW
+Tp
+Tp
+Tp
+Tp
+fz
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(49,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+Yd
+BW
+BW
+BW
+MV
+Hc
+Lr
+NI
+nl
+nl
+RU
+wQ
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(50,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+uw
+uw
+BW
+BW
+BW
+Hc
+Lr
+gb
+vY
+gb
+Qf
+SR
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(51,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+CJ
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+uw
+uw
+BW
+BW
+BW
+SR
+LX
+fH
+fH
+IS
+wQ
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(52,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+BW
+BW
+SR
+SR
+SR
+SR
+SR
+SR
+SR
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(53,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(54,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+uw
+uw
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(55,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+uw
+uw
+uw
+uw
+uw
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(56,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+wZ
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+Ub
+wZ
+uw
+uw
+uw
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(57,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+uw
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(58,1,1) = {"
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+BW
+"}
+(59,1,1) = {"
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+DN
+"}

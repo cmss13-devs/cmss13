@@ -821,7 +821,6 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/marine
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
-	live = FALSE
 
 /datum/action/minimap/marine/live
 	live = TRUE
@@ -846,6 +845,7 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_XENO|MINIMAP_FLAG_USCM|MINIMAP_FLAG_UPP|MINIMAP_FLAG_PMC
 	marker_flags = NONE
 	has_scroll = FALSE
+	live = TRUE
 
 /datum/action/minimap/observer/action_activate()
 	. = ..()

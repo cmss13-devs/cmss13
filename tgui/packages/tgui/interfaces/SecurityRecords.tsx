@@ -560,8 +560,14 @@ export const SecurityRecords = () => {
   );
 
   const renderRecordsTable = () => (
-    <Section title="Security Records" fill scrollable>
-      <Flex direction="row" gap={2} mb={2}>
+    <Section fill pr="0.5%" pl="0.5%">
+      <Flex justify="space-evenly">
+        <Box bold fontSize="20px">
+          Security Records
+        </Box>
+      </Flex>
+      <Divider />
+      <Flex justify="space-evenly" direction="row" gap={2} mb={2}>
         <Button
           onClick={() => {
             act('new_general_record');
@@ -727,10 +733,10 @@ export const SecurityRecords = () => {
           ) : selectedRecord ? (
             renderRecordDetails(selectedRecord)
           ) : (
-            <>
+            <Section fitted>
               {renderFingerprintScannerSection()}
               {renderRecordsTable()}
-            </>
+            </Section>
           )}
           {editField && renderEditModal()}
           {commentModalOpen && renderCommentModal()}

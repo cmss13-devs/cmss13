@@ -1268,6 +1268,8 @@
 	initial_keys = list(/obj/item/device/encryptionkey/provost)
 	additional_hud_types = list(MOB_HUD_FACTION_CMB)
 	volume = RADIO_VOLUME_CRITICAL
+	has_hud = TRUE
+	hud_type = MOB_HUD_SECURITY_ADVANCED
 
 /obj/item/device/radio/headset/almayer/sof
 	name = "USCM SOF headset"

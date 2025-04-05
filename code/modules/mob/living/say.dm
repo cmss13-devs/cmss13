@@ -83,9 +83,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return TRUE
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
-/mob/living/proc/show_speech_bubble(list/group, bubble_image, looping_bubble = FALSE, bubble_prefix = FALSE, animated = TRUE, image/speech_bubble)
+/mob/living/proc/show_speech_bubble(list/viewers, bubble_image, looping_bubble = FALSE, bubble_prefix = FALSE, animated = TRUE, image/speech_bubble)
 	var/list/speech_bubble_recipients = list()
-	for(var/mob/listener in group)
+	for(var/mob/listener in viewers)
 		if(listener.client)
 			speech_bubble_recipients.Add(listener.client)
 	if(!speech_bubble)

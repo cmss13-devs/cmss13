@@ -24,9 +24,6 @@
 	var/datum/simulator/simulation
 	var/datum/cas_fire_mission/configuration
 
-	// groundside maps
-	var/minimap_type = MINIMAP_FLAG_USCM
-
 	// Cameras
 	var/camera_target_id
 	var/camera_width = 11
@@ -36,6 +33,18 @@
 	var/obj/structure/dropship_equipment/camera_area_equipment = null
 
 	var/registered = FALSE
+
+	var/minimap_flag = MINIMAP_FLAG_USCM
+	///by default Zlevel 2, groundside is targetted
+	var/targetted_zlevel = 2
+	///minimap obj ref that we will display to users
+	var/atom/movable/screen/minimap/map
+	///List of currently interacting mobs
+	var/list/mob/interactees = list()
+	///Toggle for scrolling map
+	var/scroll_toggle
+	///Button for closing map
+	var/close_button
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -59,6 +68,18 @@
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
+
+/obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
+	. = ..()
+	
+	interactees -= user
+	user?.client?.screen -= map
+	user?.client?.screen -= drawing_tools
+	user?.client?.screen -= scroll_toggle
+	user?.client?.screen -= close_button
+	user?.client?.mouse_pointer_icon = null
+	for(var/atom/movable/screen/minimap_tool/tool as anything in drawing_tools)
+		tool.UnregisterSignal(user, list(COMSIG_MOB_MOUSEDOWN, COMSIG_MOB_MOUSEUP))
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -502,6 +523,19 @@
 			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
 			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			return TRUE
+		if("mapview")
+			if(!map)
+				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
+				var/list/atom/movable/screen/actions = list()
+				for(var/path in drawing_tools)
+					actions += new path(null, targetted_zlevel, minimap_flag, map)
+				drawing_tools = actions
+				scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
+				close_button = new /atom/movable/screen/exit_map(null, src)
+			user.client.screen += map
+			interactees += user
+			user.client.screen += scroll_toggle
+			user.client.screen += close_button
 
 /obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)

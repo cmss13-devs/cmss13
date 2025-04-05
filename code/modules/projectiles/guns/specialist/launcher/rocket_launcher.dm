@@ -249,8 +249,8 @@
 
 	attachable_allowed = list()
 
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
@@ -307,6 +307,7 @@
 	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the Z key."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m83a2_folded"
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	w_class = SIZE_MEDIUM
 	garbage = FALSE
 

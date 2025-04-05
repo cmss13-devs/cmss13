@@ -1,5 +1,4 @@
-#define CANVAS_COOLDOWN_TIME 10 SECONDS
-#define FLATTEN_MAP_COOLDOWN_TIME 10 SECONDS
+#define CANVAS_COOLDOWN_TIME 3 MINUTES
 ///A player needs to be unbanned from ALL these roles in order to be able to use the minimap drawing tool
 GLOBAL_LIST_INIT(roles_allowed_minimap_draw, list(JOB_SQUAD_LEADER, JOB_SQUAD_TEAM_LEADER, JOB_SO, JOB_XO, JOB_CO))
 GLOBAL_PROTECT(roles_allowed_minimap_draw)
@@ -75,6 +74,10 @@ SUBSYSTEM_DEF(minimaps)
 		if(depthcount < iteration) //under high load update in chunks
 			depthcount++
 			continue
+
+		var/atom/movable/screen/minimap/target = updator.minimap
+		if(istype(target) && !target.live)
+			update_targets_unsorted -= updator
 		updator.minimap.overlays = updator.raw_blips
 		depthcount++
 		iteration++
@@ -392,11 +395,11 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE)
-	var/hash = "[zlevel]-[flags]-[shifting]"
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE, live=TRUE)
+	var/hash = "[zlevel]-[flags]-[shifting]-[live]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
-	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting)
+	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting, live)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
 		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
@@ -446,8 +449,14 @@ SUBSYSTEM_DEF(minimaps)
 	/// Whether the vertical shift is currently pushing the map southward
 	var/south_y_shift = TRUE
 	var/stop_shifting = FALSE
+	/// Is the minimap live
+	var/live
+	/// Minimap flags
+	var/flags
+	/// Minimap target
+	var/target
 
-/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE)
+/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE, live = TRUE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
@@ -455,6 +464,9 @@ SUBSYSTEM_DEF(minimaps)
 	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
 	SSminimaps.add_to_updaters(src, flags, target)
+	src.flags = flags
+	src.target = target
+	src.live = live
 
 	x_max = SSminimaps.minimaps_by_z["[target]"].x_max
 	y_max = SSminimaps.minimaps_by_z["[target]"].y_max
@@ -466,6 +478,12 @@ SUBSYSTEM_DEF(minimaps)
 	add_filter("border_outline", 1, outline_filter(2, COLOR_BLACK))
 	add_filter("map_glow", 2, drop_shadow_filter(x = 0, y = 0, size = 3, offset = 1, color = "#c0f7ff"))
 	add_filter("overlay", 3, layering_filter(x = 0, y = 0, icon = 'icons/mob/hud/minimap_overlay.dmi', blend_mode = BLEND_INSET_OVERLAY))
+
+/atom/movable/screen/minimap/proc/update()
+	if(live)
+		return
+	
+	SSminimaps.add_to_updaters(src, flags, target)
 
 /atom/movable/screen/minimap/process()
 	if(stop_shifting)
@@ -602,6 +620,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/stop_scroll/scroll_toggle
 	///Does this minimap action get scroll toggle
 	var/has_scroll = TRUE
+	/// Is it live
+	var/live = FALSE
 
 /datum/action/minimap/New(Target, new_minimap_flags, new_marker_flags)
 	. = ..()
@@ -730,11 +750,11 @@ SUBSYSTEM_DEF(minimaps)
 	if(default_overwatch_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting, live)
 		return
 	if(!SSminimaps.minimaps_by_z["[tracking.z]"] || !SSminimaps.minimaps_by_z["[tracking.z]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, shifting)
+	map = SSminimaps.fetch_minimap_object(tracking.z, minimap_flags, shifting, live)
 	if(has_scroll || scroll_toggle)
 		scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
 
@@ -760,7 +780,7 @@ SUBSYSTEM_DEF(minimaps)
 				locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 				minimap_displayed = FALSE
 			return
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting, live)
 		if(minimap_displayed)
 			if(owner.client)
 				owner.client.screen += map
@@ -774,7 +794,7 @@ SUBSYSTEM_DEF(minimaps)
 			locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)
 			minimap_displayed = FALSE
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, shifting)
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, shifting, live)
 	if(scroll_toggle)
 		scroll_toggle.linked_map = map
 	if(minimap_displayed)
@@ -801,6 +821,10 @@ SUBSYSTEM_DEF(minimaps)
 /datum/action/minimap/marine
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
+	live = FALSE
+
+/datum/action/minimap/marine/live
+	live = TRUE
 
 /datum/action/minimap/marine/upp
 	minimap_flags = MINIMAP_FLAG_UPP
@@ -1179,6 +1203,30 @@ SUBSYSTEM_DEF(minimaps)
 	drawn_image.icon = icon('icons/ui_icons/minimap.dmi')
 	var/atom/movable/screen/minimap_tool/label/labels = locate() in usr.client?.screen
 	labels?.clear_labels(usr)
+
+/atom/movable/screen/minimap_tool/update
+	icon_state = "clear"
+	desc = "Send a tacmap update"
+	screen_loc = "15,8"
+	COOLDOWN_DECLARE(update_cooldown)
+
+/atom/movable/screen/minimap_tool/update/clicked(location, list/modifiers)
+	if(!COOLDOWN_FINISHED(src, update_cooldown))
+		to_chat(location, SPAN_WARNING("Wait another [COOLDOWN_SECONDSLEFT(src, update_cooldown)] seconds before sending another update."))
+		return
+	
+	COOLDOWN_START(src, update_cooldown, CANVAS_COOLDOWN_TIME)
+	
+	//Forgive me
+	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
+		var/datum/action/minimap/minimap_action = locate() in player.actions
+
+		if(!minimap_action)
+			continue
+
+		minimap_action.map?.update()
+
+	return TRUE
 
 /// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
 /proc/get_minimap_flag_for_faction(faction)

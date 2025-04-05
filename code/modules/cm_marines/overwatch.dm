@@ -44,6 +44,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		/atom/movable/screen/minimap_tool/draw_tool/erase,
 		/atom/movable/screen/minimap_tool/label,
 		/atom/movable/screen/minimap_tool/clear,
+		/atom/movable/screen/minimap_tool/update
 	)
 	var/minimap_flag = MINIMAP_FLAG_USCM
 	///by default Zlevel 2, groundside is targetted

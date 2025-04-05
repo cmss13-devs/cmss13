@@ -645,6 +645,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
 	volume = RADIO_VOLUME_CRITICAL
+	minimap_type = /datum/action/minimap/marine/live
 
 /obj/item/device/radio/headset/almayer/mcom/sea
 	name = "marine senior enlisted advisor headset"

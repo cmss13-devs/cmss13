@@ -1277,7 +1277,7 @@
 
 	caller.show_speech_bubble(heard, "pred_translator1")
 
-	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
+	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [message] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"

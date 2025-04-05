@@ -22,6 +22,9 @@
 	..()
 
 /obj/structure/curtain/attack_alien(mob/living/carbon/xenomorph/M)
+	if(unslashable)
+		return
+
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"),
 	SPAN_DANGER("You slice [src] apart!"), null, 5)
@@ -131,5 +134,5 @@
 
 /obj/structure/curtain/Initialize()
 	. = ..()
-	if(alpha)
+	if(alpha == 255)
 		set_opacity(0)

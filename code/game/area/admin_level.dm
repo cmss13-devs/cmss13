@@ -188,3 +188,28 @@
 
 /area/misc/tutorial/no_baselight
 	base_lighting_alpha = 0
+
+/area/misc/moba
+	name = "Moba"
+	icon_state = "tutorial"
+	requires_power = FALSE
+	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_UNWEEDABLE
+	statistic_exempt = TRUE
+	ceiling = CEILING_METAL
+	block_game_interaction = TRUE
+	unique = TRUE
+	care_about_reg = FALSE
+
+	base_lighting_alpha = 255
+
+/area/misc/moba/Initialize(mapload, ...)
+	. = ..()
+	update_base_lighting()
+
+/area/misc/moba/base
+	name = "Moba - Base"
+	icon_state = "green"
+
+/area/misc/moba/base/fountain
+	name = "Moba - Fountain"
+	icon_state = "red"

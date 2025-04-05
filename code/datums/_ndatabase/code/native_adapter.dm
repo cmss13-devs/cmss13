@@ -422,6 +422,8 @@
 			return "BLOB"
 		if(DB_FIELDTYPE_DECIMAL)
 			return "NUMERIC"
+		if(DB_FIELDTYPE_JSON)
+			return "TEXT"
 	return FALSE
 
 /datum/db/adapter/native_adapter/proc/fields2text(list/L)

@@ -8,12 +8,16 @@
 			to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
 			return
 
-	message =  trim(strip_html(message))
+	message = trim(strip_html(message))
 
 	if(stat == DEAD)
+		if(HAS_TRAIT(src, TRAIT_MOBA_PARTICIPANT))
+			return hivemind_talk(message)
 		return say_dead(message)
 
 	if(stat == UNCONSCIOUS)
+		if(HAS_TRAIT(src, TRAIT_MOBA_PARTICIPANT))
+			return hivemind_talk(message)
 		return //Unconscious? Nope.
 
 	if(copytext(message, 1, 2) == "*")

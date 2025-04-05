@@ -45,6 +45,6 @@
 	},
 	"tgstationTestExplorer.project.DMEName": "colonialmarines.dme",
 	"dreammaker.tickOnCreate": true,
-	"dreammaker.reparseOnSave": true,
+	"dreammaker.reparseOnSave": false,
 	"dreammaker.autoUpdate": true
 }

@@ -1,6 +1,8 @@
 
 /datum/action
 	var/name = "Generic Action"
+	/// If desc is truthy, then the button can be examined
+	var/desc = ""
 	var/icon_file = 'icons/mob/hud/actions.dmi'
 	var/action_icon_state
 	var/button_icon_state
@@ -53,7 +55,9 @@
 	if(cooldown)
 		enter_cooldown()
 
-	SEND_SIGNAL(src, COMSIG_ACTION_ACTIVATED)
+	if(SEND_SIGNAL(src, COMSIG_ACTION_ACTIVATED) & COMPONENT_BLOCK_ACTIVATION)
+		return FALSE
+	return TRUE
 
 /// handler for when a keybind signal is received by the action, calls the action_activate proc asynchronous
 /datum/action/proc/keybind_activation()

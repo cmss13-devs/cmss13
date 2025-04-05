@@ -8,6 +8,12 @@
 	basecolor = BLOOD_COLOR_XENO
 	amount = 1
 
+/obj/effect/decal/cleanable/blood/xeno/decaying
+
+/obj/effect/decal/cleanable/blood/xeno/decaying/Initialize(mapload, b_color)
+	. = ..()
+	QDEL_IN(src, rand(30 SECONDS, 90 SECONDS))
+
 /obj/effect/decal/cleanable/blood/gibs/xeno
 	name = "steaming gibs"
 	gender = PLURAL

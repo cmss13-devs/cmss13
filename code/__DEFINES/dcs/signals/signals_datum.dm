@@ -17,6 +17,7 @@
 	#define COMPONENT_NO_AFTERATTACK (1<<0)
 ///from base of atom/examine(): (/mob, list/examine_text)
 #define COMSIG_PARENT_EXAMINE "atom_examine"
+	#define COMPONENT_NO_EXAMINE (1<<0)
 /// handler for vv_do_topic (usr, href_list)
 #define COMSIG_VV_TOPIC "vv_topic"
 	#define COMPONENT_VV_HANDLED (1<<0)
@@ -36,6 +37,7 @@
 #define COMSIG_ACTION_UNHIDDEN "action_unhidden"
 /// From base of /datum/action/proc/action_activate() : ()
 #define COMSIG_ACTION_ACTIVATED "action_activated"
+	#define COMPONENT_BLOCK_ACTIVATION (1<<0)
 
 ///from /datum/component/bonus_damage_stack
 #define COMSIG_BONUS_DAMAGE "bonus_damage"
@@ -69,3 +71,7 @@
 
 /// Fired on the lazy template datum when the template is finished loading. (list/loaded_atom_movables, list/loaded_turfs, list/loaded_areas)
 #define COMSIG_LAZY_TEMPLATE_LOADED "lazy_template_loaded"
+
+/// From /datum/action/xeno_action/can_use_action() : (mob/living/carbon/xenomorph/user)
+#define COMSIG_XENO_ACTION_TRY_CAN_USE "xeno_action_try_can_use"
+	#define COMPONENT_BLOCK_ACTION_USE (1<<0)

@@ -20,6 +20,10 @@
 	var/consumed_on_threshold = TRUE
 	/// Set to true once the stack_threshold is crossed, and false once it falls back below
 	var/threshold_crossed = FALSE
+	/// If we should be deleted at 0 stacks
+	var/should_delete_at_no_stacks = TRUE
+	/// If we should refresh the timer for decaying after a stack is added
+	var/refresh_decay_timer_on_stack = TRUE
 
 /*  This implementation is missing effects overlays because we did not have
 	/tg/ overlays backend available at the time. Feel free to add them when we do! */
@@ -82,10 +86,10 @@
 		else if(stacks < stack_threshold && threshold_crossed)
 			threshold_crossed = FALSE //resets threshold effect if we fall below threshold so threshold effect can trigger again
 			on_threshold_drop()
-		if(stacks_added > 0)
+		if(stacks_added > 0 && refresh_decay_timer_on_stack)
 			tick_interval += delay_before_decay //refreshes time until decay
 		stacks = min(stacks, max_stacks)
-	else
+	else if(should_delete_at_no_stacks)
 		fadeout_effect()
 		qdel(src) //deletes status if stacks fall under one
 

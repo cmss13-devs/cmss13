@@ -39,7 +39,7 @@
 
 		hive.tunnels += src
 
-	if(!hive)
+	if(!hive && hivenumber)
 		hive = GLOB.hive_datum[hivenumber]
 
 		hive.tunnels += src
@@ -51,7 +51,8 @@
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
 
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
+	if(hivenumber)
+		SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(hivenumber), "xenotunnel")
 
 /obj/structure/tunnel/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -185,6 +186,7 @@
 			return FALSE
 
 		X.forceMove(T)
+		SEND_SIGNAL(X, COMSIG_XENO_USED_TUNNEL, src)
 		to_chat(X, SPAN_XENONOTICE("We have reached our destination."))
 		return TRUE
 

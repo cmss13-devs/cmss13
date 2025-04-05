@@ -25,6 +25,7 @@
 	var/charge_timer_id = TIMER_ID_NULL
 
 	var/charges = NO_ACTION_CHARGES
+	var/no_timer_color = rgb(200, 65, 115, 200)
 
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
@@ -60,6 +61,7 @@
 	if(!owner)
 		return FALSE
 	track_xeno_ability_stats()
+	SEND_SIGNAL(owner, COMSIG_XENO_USE_XENO_ACTION, src)
 	for(var/datum/action/action in owner.actions)
 		action.update_button_icon()
 	return TRUE
@@ -77,8 +79,11 @@
 	if(!owner)
 		return FALSE
 	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !HAS_TRAIT(X, TRAIT_DAZED) && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
-		return TRUE
+	if(!X || X.is_mob_incapacitated() || HAS_TRAIT(X, TRAIT_DAZED) || X.body_position != STANDING_UP || X.buckled || X.plasma_stored < plasma_cost)
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_XENO_ACTION_TRY_CAN_USE, X) & COMPONENT_BLOCK_ACTION_USE)
+		return FALSE
+	return TRUE
 
 /datum/action/xeno_action/give_to(mob/living/L)
 	..()
@@ -92,7 +97,7 @@
 		button.color = rgb(128,0,0,128)
 	else if(!action_cooldown_check())
 		if(cooldown_timer_id == TIMER_ID_NULL) // if this is null, we're here because we haven't charged up yet
-			button.color = rgb(200, 65, 115, 200)
+			button.color = no_timer_color
 		else
 			button.color = rgb(240,180,0,200)
 	else
@@ -157,6 +162,8 @@
 /datum/action/xeno_action/activable
 
 /datum/action/xeno_action/activable/can_use_action()
+	if(SEND_SIGNAL(src, COMSIG_XENO_ACTION_TRY_CAN_USE, owner) & COMPONENT_BLOCK_ACTION_USE)
+		return FALSE
 	return TRUE
 
 // Called when the action is clicked on.
@@ -164,6 +171,8 @@
 // actually DO the action.
 /datum/action/xeno_action/activable/action_activate()
 	. = ..()
+	if(!.)
+		return
 	if(!owner)
 		return
 	if(hidden)
@@ -214,6 +223,8 @@
 
 /datum/action/xeno_action/onclick/action_activate()
 	. = ..()
+	if(!.)
+		return
 	use_ability_wrapper(null)
 
 // Adds a cooldown to this
@@ -244,7 +255,7 @@
 	if(!cooldown_to_apply)
 		return
 
-	cooldown_to_apply = cooldown_to_apply * (1 - clamp(X.cooldown_reduction_percentage, 0, 0.5))
+	cooldown_to_apply = cooldown_to_apply * (1 - clamp(X.cooldown_reduction_percentage, 0, X.cooldown_reduction_max))
 
 	// Add a unique timer
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -425,6 +436,8 @@
 
 /datum/action/xeno_action/active_toggle/action_activate()
 	. = ..()
+	if(!.)
+		return
 	toggle_toggle()
 
 /datum/action/xeno_action/active_toggle/life_tick()

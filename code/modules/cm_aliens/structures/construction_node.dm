@@ -40,7 +40,7 @@
 
 /obj/effect/alien/resin/construction/get_examine_text(mob/user)
 	. = ..()
-	if((isxeno(user) || isobserver(user)) && linked_hive)
+	if((isxeno(user) || isobserver(user)) && linked_hive && template)
 		var/message = "A [template.name] construction is designated here. It requires [template.plasma_required - template.plasma_stored] more plasma."
 		. += message
 

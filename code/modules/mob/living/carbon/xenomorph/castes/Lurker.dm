@@ -63,9 +63,15 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
-
 	skull = /obj/item/skull/lurker
 	pelt = /obj/item/pelt/lurker
+
+/mob/living/carbon/xenomorph/lurker/vampire
+
+/mob/living/carbon/xenomorph/lurker/vampire/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	var/datum/xeno_strain/vampire/vamp = new()
+	vamp._add_to_xeno(src)
 
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"

@@ -100,6 +100,7 @@
 #define DB_FIELDTYPE_TEXT 9 // any amount of symbols but really inefficient
 #define DB_FIELDTYPE_BLOB 10
 #define DB_FIELDTYPE_DECIMAL 11
+#define DB_FIELDTYPE_JSON 12
 
 #define DB_EQUALS 0
 #define DB_NOTEQUAL 1

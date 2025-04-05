@@ -16,6 +16,9 @@
 	var/brute_multiplier = 3
 
 /obj/structure/prop/hybrisa/vehicles/attack_alien(mob/living/carbon/xenomorph/user)
+	if(unslashable)
+		return
+
 	user.animation_attack_on(src)
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)

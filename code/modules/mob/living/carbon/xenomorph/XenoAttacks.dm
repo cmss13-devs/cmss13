@@ -164,6 +164,12 @@
 
 			xeno.animation_attack_on(src)
 
+			if(prob(slash_evasion))
+				playsound(xeno.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+				xeno.visible_message(SPAN_DANGER("\The [src] dodges out of [xeno] reach!"),
+				SPAN_DANGER("You try to hit [src], but it dodges out of the way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				return XENO_ATTACK_ACTION
+
 			// copypasted from attack_alien.dm
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
 			xeno.track_slashes(xeno.caste_type) //Adds to slash stat.
@@ -183,26 +189,30 @@
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
-			xeno.visible_message(SPAN_DANGER("\The [xeno] [slashes_verb] [src]!"),
-			SPAN_DANGER("You [slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			if(!HAS_TRAIT(src, TRAIT_MOBA_MINION))
+				xeno.visible_message(SPAN_DANGER("\The [xeno] [slashes_verb] [src]!"),
+				SPAN_DANGER("You [slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(xeno)]</font>")
+				xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
+				log_attack("[key_name(xeno)] [slash_verb]ed [key_name(src)]")
 			last_damage_data = create_cause_data(initial(xeno.name), xeno)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(xeno)]</font>")
-			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
-			log_attack("[key_name(xeno)] [slash_verb]ed [key_name(src)]")
 
 			xeno.flick_attack_overlay(src, "slash")
 			if(custom_slashed_sound)
 				playsound(loc, custom_slashed_sound, 25, 1)
 			else
 				playsound(loc, slash_sound, 25, 1)
-			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
+			var/list/armorpen_list = list()
+			SEND_SIGNAL(xeno, COMSIG_MOBA_GET_PHYS_PENETRATION, armorpen_list)
+			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = (HAS_TRAIT(xeno, TRAIT_MOBA_PARTICIPANT) ? 1 : XVX_ARMOR_EFFECTIVEMULT), penetration = (length(armorpen_list) ? armorpen_list[1] : 0))
 
 			if(xeno.behavior_delegate)
 				var/datum/behavior_delegate/MD = xeno.behavior_delegate
 				MD.melee_attack_additional_effects_target(src)
 				MD.melee_attack_additional_effects_self()
 
-			SEND_SIGNAL(xeno, COMSIG_XENO_ALIEN_ATTACK, src)
+			SEND_SIGNAL(xeno, COMSIG_XENO_ALIEN_ATTACK, src, damage)
+			SEND_SIGNAL(src, COMSIG_XENO_ALIEN_ATTACKED, xeno)
 
 		if(INTENT_DISARM)
 			xeno.animation_attack_on(src)

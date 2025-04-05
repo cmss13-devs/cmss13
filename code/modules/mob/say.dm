@@ -87,6 +87,8 @@
 			continue
 		if(!(M?.client?.prefs?.toggles_chat & CHAT_DEAD))
 			continue
+		if(HAS_TRAIT(M, TRAIT_MOBA_PARTICIPANT))
+			continue
 
 		if(isobserver(M) && !orbiting)
 			var/mob/dead/observer/observer = M

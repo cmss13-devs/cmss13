@@ -67,6 +67,8 @@
 	var/bypass_time_of_death_checks = FALSE
 	///Used to bypass time of death checks for a successful hug
 	var/bypass_time_of_death_checks_hugger = FALSE
+	/// Ref to the moba join panel of this observer, if any
+	var/datum/moba_join_panel/moba_join_panel
 
 	alpha = 127
 
@@ -329,6 +331,7 @@
 	following = null
 	observe_target_mob = null
 	observe_target_client = null
+	moba_join_panel = null
 	return ..()
 
 /mob/dead/observer/MouseDrop(atom/A)
@@ -530,6 +533,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	do_ghost()
 
 /mob/living/proc/do_ghost()
+	if(SEND_SIGNAL(src, COMSIG_LIVING_PRE_GHOSTED) & COMPONENT_DISALLOW_GHOSTING)
+		return
+
 	if(stat == DEAD)
 		if(mind && mind.player_entity)
 			mind.player_entity.update_panel_data(GLOB.round_statistics)

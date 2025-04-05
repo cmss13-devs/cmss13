@@ -290,7 +290,7 @@
 			..()
 
 
-/mob/living/simple_animal/death()
+/mob/living/simple_animal/death(datum/cause_data/cause_data, gibbed = 0, deathmessage = "seizes up and falls limp...")
 	. = ..()
 	if(!.)
 		return //was already dead
@@ -480,5 +480,11 @@
 	if(user && error_msg)
 		to_chat(user, SPAN_WARNING("You aren't sure how to inject this animal!"))
 	return FALSE
+
+/mob/living/simple_animal/initialize_pain()
+	return // Enough pain can cause flinged/hauled mobs to instantly die
+
+/mob/living/simple_animal/initialize_stamina()
+	return
 
 #undef OVERLAY_FIRE_LAYER

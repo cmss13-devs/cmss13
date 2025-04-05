@@ -40,6 +40,30 @@
 	var/client/client = usr.client
 	client.toggle_ghost_hud()
 
+GLOBAL_VAR_INIT(stop_moba, FALSE)
+
+/atom/movable/screen/ghost/moba
+	name = "MOBA"
+	icon_state = "minigames" //placeholder
+
+/atom/movable/screen/ghost/moba/Click()
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(usr, SPAN_WARNING("You must wait for the round to start before starting a game."))
+		return
+
+	if(SSticker.mode.round_finished)
+		to_chat(usr, SPAN_WARNING("You cannot start a new game after the round has finished."))
+		return
+
+	if(GLOB.stop_moba)
+		to_chat(usr, SPAN_WARNING("The MOBA minigame has been disabled for this round."))
+		return
+
+	var/mob/dead/observer/ghost = usr
+	if(!ghost.moba_join_panel)
+		ghost.moba_join_panel = new /datum/moba_join_panel
+	ghost.moba_join_panel.tgui_interact(ghost)
+
 /atom/movable/screen/move_up
 	icon = 'icons/mob/screen_ghost.dmi'
 	icon_state = "move_up"
@@ -76,21 +100,25 @@
 	// using.screen_loc = ui_ghost_slot3
 	// static_inventory += using
 
-	using = new /atom/movable/screen/ghost/reenter_corpse()
+	using = new /atom/movable/screen/ghost/moba()
 	using.screen_loc = ui_ghost_slot4
 	static_inventory += using
 
-	using = new /atom/movable/screen/ghost/toggle_huds()
+	using = new /atom/movable/screen/ghost/reenter_corpse()
 	using.screen_loc = ui_ghost_slot5
+	static_inventory += using
+
+	using = new /atom/movable/screen/ghost/toggle_huds()
+	using.screen_loc = ui_ghost_slot6
 	static_inventory += using
 
 	// Using the same slot because they are two parts of the same slot
 	using = new /atom/movable/screen/move_up()
-	using.screen_loc = ui_ghost_slot6
+	using.screen_loc = ui_ghost_slot7
 	static_inventory += using
 
 	using = new /atom/movable/screen/move_down()
-	using.screen_loc = ui_ghost_slot6
+	using.screen_loc = ui_ghost_slot7
 	static_inventory += using
 
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)

@@ -299,7 +299,7 @@ const BaseMfdPanel = (props: MfdProps) => {
         {},
         {
           children: otherPanelState !== 'map' ? 'MAPS' : undefined,
-          onClick: () => act("mapview"),
+          onClick: () => act('mapview'),
         },
         {
           children: otherPanelState !== 'camera' ? 'CAMS' : undefined,

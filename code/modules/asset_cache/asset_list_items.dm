@@ -299,6 +299,7 @@
 		/obj/item/storage/box,
 		/obj/item/ammo_box,
 		/obj/item/reagent_container,
+		/obj/item/reagent_container/glass/beaker/vial,
 		/obj/item/ammo_magazine,
 		/obj/item/device/binoculars,
 		/obj/item/clothing/under/marine,
@@ -313,8 +314,16 @@
 		/obj/item/weapon,
 	)
 
+	var/list/icons_to_always_load = list(
+		/obj/item/storage/pill_bottle,
+	)
+
 /datum/asset/spritesheet/vending_products/register()
-	for (var/current_product in GLOB.vending_products)
+	var/additional_types = list()
+	for(var/add_type in icons_to_always_load)
+		additional_types += typesof(add_type)
+
+	for (var/current_product in additional_types + GLOB.vending_products)
 		var/atom/item = current_product
 		var/icon_file = initial(item.icon)
 		var/icon_state = initial(item.icon_state)

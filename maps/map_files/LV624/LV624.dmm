@@ -814,6 +814,10 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
+"adq" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -833,6 +837,10 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -31213,7 +31221,7 @@ aDv
 aDv
 aDv
 aDv
-aDv
+adv
 aDv
 aDv
 aOB
@@ -54247,7 +54255,7 @@ aGz
 aHM
 aGz
 eaJ
-aGz
+adq
 aHM
 aMq
 eaJ

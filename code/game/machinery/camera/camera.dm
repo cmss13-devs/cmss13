@@ -39,6 +39,8 @@
 	var/autoname = FALSE
 	var/autonumber = 0 //camera number in area
 
+	var/list/owner_factions = FACTION_LIST_NEUTRAL
+
 GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
@@ -321,6 +323,9 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		return INITIALIZE_HINT_QDEL
 	linked_broadcasting = camera_item
 	c_tag = linked_broadcasting.get_broadcast_name()
+
+/obj/structure/machinery/camera/overwatch
+	network = list(CAMERA_NET_OVERWATCH)
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0

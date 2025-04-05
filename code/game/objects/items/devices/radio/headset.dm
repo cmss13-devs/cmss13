@@ -1200,6 +1200,7 @@
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel use :o."
 	frequency = CLF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	minimap_flag = MINIMAP_FLAG_CLF
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CLF
 

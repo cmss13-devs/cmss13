@@ -1267,7 +1267,7 @@
 
 	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
 	caller.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
-	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
+	var/message = tgui_input_text(src, "The bracer beeps and is awaiting to translate", "Translator", multiline = TRUE)
 	caller.remove_speech_bubble(translator_bubble)
 	if(!message || !caller.client)
 		return

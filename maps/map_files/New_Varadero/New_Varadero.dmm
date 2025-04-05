@@ -6483,9 +6483,9 @@
 	pixel_x = 7;
 	pixel_y = 13
 	},
-/obj/item/implantcase/explosive{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/item/implantcase/death_alarm{
+	pixel_y = -3;
+	pixel_x = 3
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)

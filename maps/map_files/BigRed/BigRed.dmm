@@ -4811,9 +4811,6 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "avj" = (
-/obj/structure/showcase{
-	icon_state = "broadcaster_send"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},

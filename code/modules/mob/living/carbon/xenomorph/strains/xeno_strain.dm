@@ -33,6 +33,10 @@
 	for(var/action_path in actions_to_add)
 		give_action(xeno, action_path)
 
+	var/datum/action/minimap/ref = xeno.minimap_ref.resolve()
+	ref.remove_from(xeno)
+	ref.give_to(xeno, ref)
+
 	// Update the xeno's behavior delegate.
 	if(behavior_delegate_type)
 		if(xeno.behavior_delegate)

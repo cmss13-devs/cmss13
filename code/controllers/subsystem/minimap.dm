@@ -792,7 +792,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!istype(xeno))
 		return
 
-	if(!xeno?.hive?.living_xeno_queen.ovipositor && xeno != xeno?.hive?.living_xeno_queen)
+	if(!xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen)
 		to_chat(xeno, SPAN_WARNING("You cannot access that right now, The Queen has shed her ovipositor."))
 		return
 

@@ -524,6 +524,9 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap/proc/on_click(datum/source, atom/A, params)
 	SIGNAL_HANDLER
 	var/list/modifiers = params2list(params)
+	// Only shift click because otherwise this conflicts with clicking on other stuff
+	if(!modifiers[SHIFT_CLICK])
+		return
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
 	var/zlevel = SSminimaps.updators_by_datum[src].ztarget
@@ -619,7 +622,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!map)
 		return FALSE
 
-	if(owner.is_mob_incapacitated())
+	if(!isobserver(owner) && owner.is_mob_incapacitated())
 		return FALSE
 
 	return toggle_minimap()
@@ -893,6 +896,8 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/minimap_tool
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
+	layer = TACMAP_LAYER
+	plane = TACMAP_PLANE
 	///x offset of the minimap icon for this zlevel. mostly used for shorthand
 	var/x_offset
 	///y offset of the minimap icon for this zlevel. mostly used for shorthand

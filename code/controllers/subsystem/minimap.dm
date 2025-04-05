@@ -559,7 +559,8 @@ SUBSYSTEM_DEF(minimaps)
 	name = "You are here"
 	icon = 'icons/ui_icons/map_blips.dmi'
 	icon_state = "locator"
-	layer = INTRO_LAYER // 1 above minimap
+	plane = TACMAP_PLANE
+	layer = INTRO_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/atom/movable/screen/minimap/current_map
 	var/currently_tracking

@@ -172,7 +172,7 @@
 #define ABOVE_HUD_LAYER 20
 #define CINEMATIC_LAYER 21
 #define TACMAP_LAYER 22
-#define INTRO_LAYER 26
+#define INTRO_LAYER 23
 
 /// for areas, so they appear above everything else on map file.
 #define AREAS_LAYER 999

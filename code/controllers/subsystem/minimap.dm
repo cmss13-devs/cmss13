@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 	remove_marker(source)
 	var/actual_z = source.z
-	if(ismob(target) && source.loc && !isturf(source.loc))
+	if(ismob(source) && source.loc && !isturf(source.loc))
 		actual_z = source.loc.z
 	for(var/datum/callback/callback in LAZYACCESS(earlyadds, "[actual_z]"))
 		if(callback.arguments[1] != source)

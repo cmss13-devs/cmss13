@@ -278,6 +278,10 @@
 	icon_state = "snow_b_0"
 	bleed_layer = 0
 
+/turf/open/auto_turf/snow/brown_base/layer0/seabed
+	name = "seabed"
+	desc = "This dirt looks as if it were drudged from the bottom of the ocean..."
+
 /turf/open/auto_turf/snow/brown_base/layer1
 	icon_state = "snow_b_1"
 	bleed_layer = 1

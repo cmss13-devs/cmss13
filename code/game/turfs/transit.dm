@@ -53,6 +53,8 @@
 			var/area/turf_area = get_area(turf)
 			if(!turf_area || CEILING_IS_PROTECTED(turf_area.ceiling, CEILING_PROTECTION_TIER_1))
 				continue
+			if(turf_area.flags_area & AREA_NO_PARA)
+				continue //marines can't swim
 			if(turf.density)
 				continue
 			var/found_dense = FALSE

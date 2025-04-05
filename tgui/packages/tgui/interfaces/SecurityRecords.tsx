@@ -10,7 +10,6 @@ import {
   Input,
   Modal,
   Section,
-  Stack,
   Table,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -734,12 +733,12 @@ export const SecurityRecords = () => {
           ) : selectedRecord ? (
             renderRecordDetails(selectedRecord)
           ) : (
-            <Stack>
-              <Stack.Item width="100%">
+            <Flex>
+              <Flex.Item width="100%">
                 {renderFingerprintScannerSection()}
                 {renderRecordsTable()}
-              </Stack.Item>
-            </Stack>
+              </Flex.Item>
+            </Flex>
           )}
           {editField && renderEditModal()}
           {commentModalOpen && renderCommentModal()}

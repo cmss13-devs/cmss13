@@ -69,7 +69,6 @@
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(unset_range))
 
 /obj/structure/machinery/defenses/sentry/Destroy() //Clear these for safety's sake.
-	SSminimaps.remove_marker(src)
 	targets = null
 	other_targets = null
 	target = null
@@ -196,7 +195,7 @@
 /obj/structure/machinery/defenses/sentry/power_off_action()
 	set_light(0)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] powers down and goes silent.")]")
-	update_minimap_icon()
+	update_minimap_icon(off = TRUE)
 	stop_processing()
 	unset_range()
 
@@ -325,6 +324,7 @@
 	GIVE_BULLET_TRAIT(new_projectile, /datum/element/bullet_trait_iff, faction_group)
 	new_projectile.fire_at(target, owner_mob, src, new_projectile.ammo.max_range, new_projectile.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), target))
+	update_minimap_icon(TRUE)
 	ammo.current_rounds--
 	track_shot()
 	if(ammo.current_rounds == 0)

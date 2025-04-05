@@ -1269,7 +1269,7 @@
 	caller.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
 	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
 	caller.remove_speech_bubble(translator_bubble)
-	if(!msg || !caller.client)
+	if(!message || !caller.client)
 		return
 
 	if(!drain_power(caller, 50))

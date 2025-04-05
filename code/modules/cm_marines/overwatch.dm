@@ -162,29 +162,33 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
-	data["mapRef"] = tacmap.map_holder.map_ref
 
+	var/list/map_refs = list()
+	for(var/datum/tacmap_holder/map_holder in tacmap.map_holders)
+		map_refs += map_holder?.map_ref
+	data["mapRef"] = map_refs
 	return data
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
 	var/list/data = list()
 	data["distress_time_lock"] = DISTRESS_TIME_LOCK
-	data["mapRef"] = tacmap.map_holder.map_ref
+	var/list/map_refs = list()
+	for(var/datum/tacmap_holder/map_holder in tacmap.map_holders)
+		map_refs += map_holder?.map_ref
+	data["mapRef"] = map_refs
 
 	return data
 
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
-
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		if(!level[1])
-			return
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
+	if(!tacmap.map_holders || length(tacmap.map_holders) == 0)
+		tacmap.map_holders = tacmap.fetch_tacmap_data()
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
+		for(var/datum/tacmap_holder/map_holder in tacmap.map_holders)
+			user.client.register_map_obj(map_holder.map)
+
 		if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
 			ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
 		else

@@ -535,7 +535,7 @@ export const SecurityRecords = () => {
         )}
 
         <Divider />
-        <Flex direction="row" gap={2}>
+        <Flex justify="space-between" direction="row" gap={2}>
           <Button
             onClick={() => act('print_personal_record', { id: record.id })}
             color="blue"

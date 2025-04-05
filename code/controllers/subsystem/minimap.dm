@@ -807,6 +807,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
+	live = TRUE
 
 /datum/action/minimap/xeno/action_activate()
 	var/mob/living/carbon/xenomorph/xeno = owner

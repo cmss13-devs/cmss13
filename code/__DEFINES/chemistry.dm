@@ -77,12 +77,14 @@
 #define CHEM_CLASS_COMMON 2
 /// Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_UNCOMMON 3
-/// Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
+/// Chemicals with or without a recipe but can be obtained on the Almayer, or requires rare components
 #define CHEM_CLASS_RARE 4
 /// Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
 #define CHEM_CLASS_SPECIAL 5
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
+/// Rare chemicals ONLY aquired via hydroponics, Those are mostly useless but very important for hard difficulty on contracts.
+#define CHEM_CLASS_HYDRO 7
 
 //chem_effect_flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
@@ -201,6 +203,7 @@
 #define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
 #define PROPERTY_REGULATING "regulating"
 #define PROPERTY_CIPHERING "ciphering"
+#define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
 #define PROPERTY_FIRE_PENETRATING "fire-penetrating"
 //Admin Only Properties
@@ -230,6 +233,9 @@
 #define PROPERTY_UNKNOWN "unknown" //just has an OD effect
 #define PROPERTY_HEMOSITIC "hemositic"
 
+///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
+#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING)
+
 
 //Property rarity
 
@@ -241,7 +247,7 @@
 #define PROPERTY_UNCOMMON 2
 /// can only be generated at specific gen_tiers, but can also be made through specific property combinations
 #define PROPERTY_RARE 3
-/// can strictly only be generated at specific gen_tiers
+/// can strictly only be made through random generated property combinations, hints are found groundside.
 #define PROPERTY_LEGENDARY 4
 /// can only be spawned through admin powers
 #define PROPERTY_ADMIN 5
@@ -273,13 +279,25 @@
 
 /// Scales cost of increasing clearance using credits
 #define RESEARCH_LEVEL_INCREASE_MULTIPLIER 3
+/// Amount of contract chemicals that should be generated
+#define RESEARCH_CONTRACT_CHEM_AMOUNT 3
+///reroll in X minutes if our contract is NOT picked
+#define RESEARCH_CONTRACT_NOT_PICKED 4 MINUTES
+///reroll in X minutes if our contract IS picked
+#define RESEARCH_CONTRACT_PICKED 7 MINUTES
 /// Scales tech level to max amplification level
 #define TECHTREE_LEVEL_MULTIPLIER 2
+/// how many properties to combine into legendary
+#define LEGENDARY_COMBINE_PROPERTIES 3
+/// how many properties to combine into ciphering from encrypted.
+#define CIPHERING_COMBINE_PROPERTIES LEGENDARY_COMBINE_PROPERTIES
 
 //Property cost multipliers for the chemical simulator
 #define PROPERTY_COST_MAX 8
 #define PROPERTY_MULTIPLIER_RARE 2
 #define PROPERTY_MULTIPLIER_ANOMALOUS 5
+#define PROPERTY_MULTIPLIER_ADD_BULK 2 // if you use the add mode if target has X(currently 6) or more properties
+#define PROPERTY_MULTIPLIER_ADD_VALUE 3 // if you use the add mode if the target total value of the properties is above a certain value
 
 /*
 	For minimum potencies for properties

@@ -18,7 +18,7 @@
 #define MINIMAP_FLAG_ALL (1<<17) - 1
 
 ///The minimap zoom scale
-#define MINIMAP_SCALE 1.75
+#define MINIMAP_SCALE 2
 ///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_PIXEL_FROM_WORLD(val) (val * MINIMAP_SCALE - 3)
 

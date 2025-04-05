@@ -619,6 +619,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(!map)
 		return FALSE
 
+	if(owner.is_mob_incapacitated())
+		return FALSE
+
 	return toggle_minimap()
 
 /// Toggles the minimap, has a variable to force on or off (most likely only going to be used to close it)

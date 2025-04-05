@@ -76,8 +76,8 @@ const DrawWeaponEquipment = (props: DropshipEquipment) => {
         desc={props.shorthand}
         sub_desc={`${
           props.shorthand === 'MSL'
-            ? props.ammo_name?.split(' ')[0] ?? 'Empty'
-            : props.ammo ?? 0
+            ? (props.ammo_name?.split(' ')[0] ?? 'Empty')
+            : (props.ammo ?? 0)
         }`}
       />
     </>

@@ -451,10 +451,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "M5 integrated gasmask"
 	path = /obj/item/prop/helmetgarb/helmet_gasmask
 
-/datum/gear/helmet_garb/gunoil
-	display_name = "Gun oil"
-	path = /obj/item/prop/helmetgarb/gunoil
-
 /datum/gear/helmet_garb/netting
 	display_name = "Helmet netting"
 	path = /obj/item/prop/helmetgarb/netting

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;limb - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/limb.html#var">Var Details</a> - <a href="obj/limb.html#proc">Proc Details</a></header>
+<main>
+<h1>limb <aside>/<a href="obj.html">obj</a>/<a href="obj/limb.html">limb</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 4"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/limb.html#var/body_size">body_size</a></th><td>body size of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</td></tr>
+            <tr><th><a href="obj/limb.html#var/body_type">body_type</a></th><td>body muscularity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</td></tr>
+            <tr><th><a href="obj/limb.html#var/cavity">cavity</a></th><td>Name of internal cavity.</td></tr>
+            <tr><th><a href="obj/limb.html#var/encased">encased</a></th><td>Name of bones encasing the limb.</td></tr>
+            <tr><th><a href="obj/limb.html#var/hidden">hidden</a></th><td>Surgically implanted item.</td></tr>
+            <tr><th><a href="obj/limb.html#var/implants">implants</a></th><td>Embedded or implanter implanted items.</td></tr>
+            <tr><th><a href="obj/limb.html#var/limb_gender">limb_gender</a></th><td>defines which sprite the limb should use if dimorphic, set in [/obj/limb/proc/update_limb()]</td></tr>
+            <tr><th><a href="obj/limb.html#var/skin_color">skin_color</a></th><td>skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</td></tr>
+            <tr><th><a href="obj/limb.html#var/species">species</a></th><td>species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/limb.html#proc/add_bleeding">add_bleeding</a></th><td>Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/bandage">bandage</a></th><td><em>bandages brute wounds and removes bleeding. Returns WOUNDS_BANDAGED if at least one wound was bandaged. Returns WOUNDS_ALREADY_TREATED
+if a relevant wound exists but none were treated. Skips wounds that are already bandaged.
+treat_sutured var tells it to apply to sutured but unbandaged wounds, for trauma kits that heal damage directly.</em></td></tr>
+            <tr><th><a href="obj/limb.html#proc/can_emp_delimb">can_emp_delimb</a></th><td>If this limb can be dropped as a result of an EMP</td></tr>
+            <tr><th><a href="obj/limb.html#proc/get_active_limb_surgeries">get_active_limb_surgeries</a></th><td>Returns a description of active surgeries.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/get_damage">get_damage</a></th><td>Returns total damage, or, if broken, the minimum fracture threshold, whichever is higher.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/get_incision_depth">get_incision_depth</a></th><td>Returns a description of opened incisions.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/get_limb_icon">get_limb_icon</a></th><td>generates a list of overlays that should be applied to the owner</td></tr>
+            <tr><th><a href="obj/limb.html#proc/get_limb_icon_key">get_limb_icon_key</a></th><td>generates a key for the purpose of caching the icon to avoid duplicate generations</td></tr>
+            <tr><th><a href="obj/limb.html#proc/is_bandaged">is_bandaged</a></th><td>Checks for bandageable wounds (type = CUT or type = BRUISE). Returns TRUE if all are bandaged, FALSE if not.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/is_salved">is_salved</a></th><td>Checks for salveable wounds (type = BURN). Returns TRUE if all are salved, FALSE if not.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/limb_delimb">limb_delimb</a></th><td>Special delimbs for different limbs</td></tr>
+            <tr><th><a href="obj/limb.html#proc/remove_wound_bleeding">remove_wound_bleeding</a></th><td>Checks if there's any external limb wounds, removes bleeding if there isn't.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/reset_limb_surgeries">reset_limb_surgeries</a></th><td>called when limb is removed or robotized, any ongoing surgery and related vars are reset unless set otherwise.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/salve">salve</a></th><td><em>salves burn wounds. Returns WOUNDS_BANDAGED if at least one wound was salved. Returns WOUNDS_ALREADY_TREATED if a relevant wound exists but none were treated.
+Skips wounds that are already salved.
+treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kits that heal damage directly.</em></td></tr>
+            <tr><th><a href="obj/limb.html#proc/take_damage">take_damage</a></th><td>Describes how limbs (body parts) of human mobs get damage applied.</td></tr>
+            <tr><th><a href="obj/limb.html#proc/update_limb">update_limb</a></th><td>updates the various internal variables of the limb from the owner</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/body_size"><aside class="declaration">var </aside>body_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 78"/></a></h3>
+        <p>body size of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</p><h3 id="var/body_type"><aside class="declaration">var </aside>body_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 81"/></a></h3>
+        <p>body muscularity of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</p><h3 id="var/cavity"><aside class="declaration">var </aside>cavity
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 45"/></a></h3>
+        <p>Name of internal cavity.</p><h3 id="var/encased"><aside class="declaration">var </aside>encased
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 43"/></a></h3>
+        <p>Name of bones encasing the limb.</p><h3 id="var/hidden"><aside class="declaration">var </aside>hidden
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 47"/></a></h3>
+        <p>Surgically implanted item.</p><h3 id="var/implants"><aside class="declaration">var </aside>implants
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 49"/></a></h3>
+        <p>Embedded or implanter implanted items.</p><h3 id="var/limb_gender"><aside class="declaration">var </aside>limb_gender
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L87">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 87"/></a></h3>
+        <p>defines which sprite the limb should use if dimorphic, set in [/obj/limb/proc/update_limb()]</p><h3 id="var/skin_color"><aside class="declaration">var </aside>skin_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 75"/></a></h3>
+        <p>skin color of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</p><h3 id="var/species"><aside class="declaration">var </aside>species
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/species.html">species</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 84"/></a></h3>
+        <p>species of the owner, used for limb appearance, set in [/obj/limb/proc/update_limb()]</p><h2 id="proc">Proc Details</h2><h3 id="proc/add_bleeding"><aside class="declaration">proc </aside>add_bleeding<aside>(/<a href="datum.html">datum</a>/wound/W, internal, damage_amount) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L529">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 529"/></a></aside>
+        </h3>
+        <p>Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.</p><h3 id="proc/bandage"><aside class="declaration">proc </aside>bandage<aside>(treat_sutured) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1034">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1034"/></a></aside>
+        </h3>
+        <p><em>bandages brute wounds and removes bleeding. Returns WOUNDS_BANDAGED if at least one wound was bandaged. Returns WOUNDS_ALREADY_TREATED
+if a relevant wound exists but none were treated. Skips wounds that are already bandaged.
+treat_sutured var tells it to apply to sutured but unbandaged wounds, for trauma kits that heal damage directly.</em></p><h3 id="proc/can_emp_delimb"><aside class="declaration">proc </aside>can_emp_delimb<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L185">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 185"/></a></aside>
+        </h3>
+        <p>If this limb can be dropped as a result of an EMP</p><h3 id="proc/get_active_limb_surgeries"><aside class="declaration">proc </aside>get_active_limb_surgeries<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1010">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1010"/></a></aside>
+        </h3>
+        <p>Returns a description of active surgeries.</p><h3 id="proc/get_damage"><aside class="declaration">proc </aside>get_damage<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1201">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1201"/></a></aside>
+        </h3>
+        <p>Returns total damage, or, if broken, the minimum fracture threshold, whichever is higher.</p><h3 id="proc/get_incision_depth"><aside class="declaration">proc </aside>get_incision_depth<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1002">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1002"/></a></aside>
+        </h3>
+        <p>Returns a description of opened incisions.</p><h3 id="proc/get_limb_icon"><aside class="declaration">proc </aside>get_limb_icon<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L739">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 739"/></a></aside>
+        </h3>
+        <p>generates a list of overlays that should be applied to the owner</p><h3 id="proc/get_limb_icon_key"><aside class="declaration">proc </aside>get_limb_icon_key<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L769">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 769"/></a></aside>
+        </h3>
+        <p>generates a key for the purpose of caching the icon to avoid duplicate generations</p><h3 id="proc/is_bandaged"><aside class="declaration">proc </aside>is_bandaged<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1057">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1057"/></a></aside>
+        </h3>
+        <p>Checks for bandageable wounds (type = CUT or type = BRUISE). Returns TRUE if all are bandaged, FALSE if not.</p><h3 id="proc/is_salved"><aside class="declaration">proc </aside>is_salved<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1090">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1090"/></a></aside>
+        </h3>
+        <p>Checks for salveable wounds (type = BURN). Returns TRUE if all are salved, FALSE if not.</p><h3 id="proc/limb_delimb"><aside class="declaration">proc </aside>limb_delimb<aside>(damage_source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L387">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 387"/></a></aside>
+        </h3>
+        <p>Special delimbs for different limbs</p><h3 id="proc/remove_wound_bleeding"><aside class="declaration">proc </aside>remove_wound_bleeding<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L572">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 572"/></a></aside>
+        </h3>
+        <p>Checks if there's any external limb wounds, removes bleeding if there isn't.</p><h3 id="proc/reset_limb_surgeries"><aside class="declaration">proc </aside>reset_limb_surgeries<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1284">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1284"/></a></aside>
+        </h3>
+        <p>called when limb is removed or robotized, any ongoing surgery and related vars are reset unless set otherwise.</p><h3 id="proc/salve"><aside class="declaration">proc </aside>salve<aside>(treat_grafted) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L1069">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 1069"/></a></aside>
+        </h3>
+        <p><em>salves burn wounds. Returns WOUNDS_BANDAGED if at least one wound was salved. Returns WOUNDS_ALREADY_TREATED if a relevant wound exists but none were treated.
+Skips wounds that are already salved.
+treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kits that heal damage directly.</em></p><h3 id="proc/take_damage"><aside class="declaration">proc </aside>take_damage<aside>(brute, burn, sharp, edge, used_weapon, /list/forbidden_limbs, no_limb_loss, damage_source, /<a href="mob.html">mob</a>/attack_source, brute_reduced_by, burn_reduced_by) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L264">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 264"/></a></aside>
+        </h3>
+        <p>Describes how limbs (body parts) of human mobs get damage applied.</p>
+<p>Any damage past the limb maximum health is transfered onto the next limb up the line, by
+calling this proc recursively. When a hand is too damaged it is passed to the arm,
+then to the chest and so on.</p>
+<p>Since parent limbs usually have more armor than their children, just passing the damage
+directly would allow the attacker to effectively bypass all of that armor. A lurker
+with 35 slash damage repeatedly slashing a hand protected by marine combat gloves
+(20 armor) would do 20 damage to the hand, then would start doing the same 20 to
+the arm, and then the chest. But if the lurker slashes the arm direclty it would only
+do 16 damage, assuming the marine is wearing medium armor which has armor value of 30.</p>
+<p>Thus we have to apply armor damage reduction on each limb to which the damage is
+transfered. When this proc is called recursively for the first damage transfer to the
+parent, we set reduced_by variables to be the armor of the original limb hit. Then we
+compare the parent limb armor with the applicable reduced_by and if it's higher we reduce
+the damage by the difference between the two. Then we set reduced_by to
+the current(parent) limb armor value.</p>
+<p>This generally works ok because our armor calculations are mostly distributive in
+practice: reducing the damage by 20 and then by 10 would generally give the same result
+as reducing by 30. But this is not strictly true, the lower the damage is, the more it
+gets reduced. As an extreme example, a lurker doing his first 35 damage slash on a combat
+gloves covered marine hand would do 30 damage to the hand, transfer 5 to the arm and
+those 5 would get mitigated to 0 by the marine medium armor.</p>
+<p>One problem that still exists here, is that we currently don't have any code
+that allows us to increase the damage when the parent limb armor is lower than the
+initial child limb armor.
+One practical example where this would happen is when a human is wearing a set of armor
+that does not protect legs, like the UPP officer. If a xeno keeps slashing his foot,
+the damage would eventually get transfered to the leg, which has 0 armor. But this damage
+has been already reduced by the boot armor even before this proc got first called.
+So, assuming 35 damage slash, the leg would only be damaged by 21 even though it has
+0 armor. Fixing this would require a new proc that would be able to unapply armor
+from the damage.</p>
+<p>Organ damage and bone break have their own armor damage reduction calculations. Since
+armor is already applied at least once outside of this proc, this means that damage is always
+reduced twice, hence the formulas for those looks so weird.</p>
+<p>Currently all brute damage is reduced by ARMOR_MELEE and GLOB.marine_melee,
+while burn damage is reduced by ARMOR_BIO and GLOB.marine_fire, which may not be correct
+for all cases.</p><h3 id="proc/update_limb"><aside class="declaration">proc </aside>update_limb<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/organs/limbs.dm#L698">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;organs&#x2F;limbs.dm 698"/></a></aside>
+        </h3>
+        <p>updates the various internal variables of the limb from the owner</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/e84fbaa67a4e0c11b655dab64bedf3759a315f38">e84fbaa</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;subsystem&#x2F;minimaps - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/subsystem/minimaps.html#var">Var Details</a> - <a href="datum/controller/subsystem/minimaps.html#proc">Proc Details</a></header>
+<main>
+<h1>Minimaps <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/minimaps.html">minimaps</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 17"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/earlyadds">earlyadds</a></th><td>list of callbacks we need to invoke late because Initialize happens early</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/hashed_minimaps">hashed_minimaps</a></th><td>assoc list of minimap objects that are hashed so we have to update as few as possible</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/hashed_tacmaps">hashed_tacmaps</a></th><td>associated list of tacmap datums with a hash</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/images_by_source">images_by_source</a></th><td>Assoc list of images we hold by their source</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/minimap_added">minimap_added</a></th><td>weakrefs of xenos temporarily added to the marine minimap</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/minimaps_by_z">minimaps_by_z</a></th><td>Minimap hud display datums sorted by zlevel</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/removal_cbs">removal_cbs</a></th><td>Assoc list of removal callbacks to invoke to remove images from the raw lists</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/update_targets">update_targets</a></th><td>the update target datums, sorted by update flag type</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/update_targets_unsorted">update_targets_unsorted</a></th><td>Nonassoc list of targets we want to be stripped of their overlays during the SS fire</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#var/updators_by_datum">updators_by_datum</a></th><td>list of holders for data relating to tracked zlevel and tracked atom</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#proc/add_marker">add_marker</a></th><td>Adds an atom we want to track with blips to the subsystem
+Arguments:</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#proc/add_to_updaters">add_to_updaters</a></th><td>Adds an atom to the processing updators that will have blips drawn on them
+Arguments:</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#proc/fetch_minimap_object">fetch_minimap_object</a></th><td>Fetches a /atom/movable/screen/minimap instance or creates one if none exists
+Note this does not destroy them when the map is unused, might be a potential thing to do?
+Arguments:</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#proc/on_z_change">on_z_change</a></th><td>Called on zlevel change of a blip-atom so we can update the image lists as needed</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#proc/remove_marker">remove_marker</a></th><td>Removes an atom and it's blip from the subsystem.
+Force has no effect on this proc, but is here because we are a COMSIG_PARENT_QDELETING handler.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#proc/remove_updator">remove_updator</a></th><td>Removes a atom from the subsystems updating overlays</td></tr>
+            <tr><th><a href="datum/controller/subsystem/minimaps.html#proc/removeimage">removeimage</a></th><td>removes an image from raw tracked lists, invoked by callback</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/earlyadds"><aside class="declaration">var </aside>earlyadds
+            <aside>&ndash; /list/datum/callback</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 36"/></a></h3>
+        <p>list of callbacks we need to invoke late because Initialize happens early</p><h3 id="var/hashed_minimaps"><aside class="declaration">var </aside>hashed_minimaps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 38"/></a></h3>
+        <p>assoc list of minimap objects that are hashed so we have to update as few as possible</p><h3 id="var/hashed_tacmaps"><aside class="declaration">var </aside>hashed_tacmaps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 40"/></a></h3>
+        <p>associated list of tacmap datums with a hash</p><h3 id="var/images_by_source"><aside class="declaration">var </aside>images_by_source
+            <aside>&ndash; /list/image</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 26"/></a></h3>
+        <p>Assoc list of images we hold by their source</p><h3 id="var/minimap_added"><aside class="declaration">var </aside>minimap_added
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 42"/></a></h3>
+        <p>weakrefs of xenos temporarily added to the marine minimap</p><h3 id="var/minimaps_by_z"><aside class="declaration">var </aside>minimaps_by_z
+            <aside>&ndash; /list/datum/hud_displays</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 24"/></a></h3>
+        <p>Minimap hud display datums sorted by zlevel</p><h3 id="var/removal_cbs"><aside class="declaration">var </aside>removal_cbs
+            <aside>&ndash; /list/datum/callback</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 32"/></a></h3>
+        <p>Assoc list of removal callbacks to invoke to remove images from the raw lists</p><h3 id="var/update_targets"><aside class="declaration">var </aside>update_targets
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 28"/></a></h3>
+        <p>the update target datums, sorted by update flag type</p><h3 id="var/update_targets_unsorted"><aside class="declaration">var </aside>update_targets_unsorted
+            <aside>&ndash; /list/atom</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 30"/></a></h3>
+        <p>Nonassoc list of targets we want to be stripped of their overlays during the SS fire</p><h3 id="var/updators_by_datum"><aside class="declaration">var </aside>updators_by_datum
+            <aside>&ndash; /list/datum/minimap_updator</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 34"/></a></h3>
+        <p>list of holders for data relating to tracked zlevel and tracked atom</p><h2 id="proc">Proc Details</h2><h3 id="proc/add_marker"><aside class="declaration">proc </aside>add_marker<aside>(/<a href="atom.html">atom</a>/target, zlevel, hud_flags, iconstate, icon, /list/overlay_iconstates, /<a href="image.html">image</a>/given_image) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L253">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 253"/></a></aside>
+        </h3>
+        <p>Adds an atom we want to track with blips to the subsystem
+Arguments:</p>
+<ul>
+<li>target: atom we want to track</li>
+<li>zlevel: zlevel we want this atom to be tracked for</li>
+<li>hud_flags: tracked HUDs we want this atom to be displayed on</li>
+<li>iconstate: iconstate for the blip we want to be used for this tracked atom</li>
+<li>icon: icon file we want to use for this blip, 'icons/UI_icons/map_blips.dmi' by default</li>
+<li>overlay_iconstates: list of iconstates to use as overlay. Used for xeno leader icons.</li>
+</ul><h3 id="proc/add_to_updaters"><aside class="declaration">proc </aside>add_to_updaters<aside>(/<a href="atom.html">atom</a>/target, flags, ztarget) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L177">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 177"/></a></aside>
+        </h3>
+        <p>Adds an atom to the processing updators that will have blips drawn on them
+Arguments:</p>
+<ul>
+<li>target: the target we want to be updating the overlays on</li>
+<li>flags: flags for the types of blips we want to be updated</li>
+<li>ztarget: zlevel we want to be updated with</li>
+</ul><h3 id="proc/fetch_minimap_object"><aside class="declaration">proc </aside>fetch_minimap_object<aside>(zlevel, flags, shifting) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L355">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 355"/></a></aside>
+        </h3>
+        <p>Fetches a /atom/movable/screen/minimap instance or creates one if none exists
+Note this does not destroy them when the map is unused, might be a potential thing to do?
+Arguments:</p>
+<ul>
+<li>zlevel: zlevel to fetch map for</li>
+<li>flags: map flags to fetch from</li>
+</ul><h3 id="proc/on_z_change"><aside class="declaration">proc </aside>on_z_change<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/source, oldz, newz) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L301">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 301"/></a></aside>
+        </h3>
+        <p>Called on zlevel change of a blip-atom so we can update the image lists as needed</p><h3 id="proc/remove_marker"><aside class="declaration">proc </aside>remove_marker<aside>(/<a href="atom.html">atom</a>/source, force, minimap_flag) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L330">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 330"/></a></aside>
+        </h3>
+        <p>Removes an atom and it's blip from the subsystem.
+Force has no effect on this proc, but is here because we are a COMSIG_PARENT_QDELETING handler.</p><h3 id="proc/remove_updator"><aside class="declaration">proc </aside>remove_updator<aside>(/<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L188">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 188"/></a></aside>
+        </h3>
+        <p>Removes a atom from the subsystems updating overlays</p><h3 id="proc/removeimage"><aside class="declaration">proc </aside>removeimage<aside>(/<a href="image.html">image</a>/blip, /<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/controllers/subsystem/minimap.dm#L288">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;minimap.dm 288"/></a></aside>
+        </h3>
+        <p>removes an image from raw tracked lists, invoked by callback</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/e84fbaa67a4e0c11b655dab64bedf3759a315f38">e84fbaa</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

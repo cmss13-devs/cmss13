@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;weapon&#x2F;gun&#x2F;smartgun - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/weapon/gun/smartgun.html#var">Var Details</a> - <a href="obj/item/weapon/gun/smartgun.html#proc">Proc Details</a></header>
+<main>
+<h1>M56B smartgun <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/weapon/gun.html">weapon/gun</a>/<a href="obj/item/weapon/gun/smartgun.html">smartgun</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 5"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/ammo_primary">ammo_primary</a></th><td>The current normal ammo datum</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/ammo_primary_alt">ammo_primary_alt</a></th><td>Frontline mode normal ammo datum</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/ammo_primary_def">ammo_primary_def</a></th><td>Non-Frontline mode normal ammo datum</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/ammo_secondary">ammo_secondary</a></th><td>The current AP ammo datum</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/ammo_secondary_alt">ammo_secondary_alt</a></th><td>Frontline mode AP ammo datum</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/ammo_secondary_def">ammo_secondary_def</a></th><td>Non-Frontline mode AP ammo datum</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/frontline_enabled">frontline_enabled</a></th><td>Whether Frontline mode is toggled on</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/iff_enabled">iff_enabled</a></th><td>Whether IFF mode is toggled on</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/requires_battery">requires_battery</a></th><td>Whether the smartgun requires a battery</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/requires_harness">requires_harness</a></th><td>Whether the smartgun requires a harness to use</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/requires_power">requires_power</a></th><td>Whether the smartgun drains the battery (Ignored if requires_battery is false)</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#var/secondary_toggled">secondary_toggled</a></th><td>Whether we are using AP ammo currently</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#proc/Fire">Fire</a></th><td>Having the SG check it's config after toggling frontline mode &amp; IFF is essential, or it won't update properly.
+e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.</td></tr>
+            <tr><th><a href="obj/item/weapon/gun/smartgun.html#proc/able_to_fire">able_to_fire</a></th><td>Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
+Having the SG check it's config after toggling frontline mode &amp; IFF is essential, or it won't update properly.
+e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/ammo_primary"><aside class="declaration">var </aside>ammo_primary
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 69"/></a></h3>
+        <p>The current normal ammo datum</p><h3 id="var/ammo_primary_alt"><aside class="declaration">var </aside>ammo_primary_alt
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L77">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 77"/></a></h3>
+        <p>Frontline mode normal ammo datum</p><h3 id="var/ammo_primary_def"><aside class="declaration">var </aside>ammo_primary_def
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 73"/></a></h3>
+        <p>Non-Frontline mode normal ammo datum</p><h3 id="var/ammo_secondary"><aside class="declaration">var </aside>ammo_secondary
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 71"/></a></h3>
+        <p>The current AP ammo datum</p><h3 id="var/ammo_secondary_alt"><aside class="declaration">var </aside>ammo_secondary_alt
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L79">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 79"/></a></h3>
+        <p>Frontline mode AP ammo datum</p><h3 id="var/ammo_secondary_def"><aside class="declaration">var </aside>ammo_secondary_def
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 75"/></a></h3>
+        <p>Non-Frontline mode AP ammo datum</p><h3 id="var/frontline_enabled"><aside class="declaration">var </aside>frontline_enabled
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L83">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 83"/></a></h3>
+        <p>Whether Frontline mode is toggled on</p><h3 id="var/iff_enabled"><aside class="declaration">var </aside>iff_enabled
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 81"/></a></h3>
+        <p>Whether IFF mode is toggled on</p><h3 id="var/requires_battery"><aside class="declaration">var </aside>requires_battery
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 64"/></a></h3>
+        <p>Whether the smartgun requires a battery</p><h3 id="var/requires_harness"><aside class="declaration">var </aside>requires_harness
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 66"/></a></h3>
+        <p>Whether the smartgun requires a harness to use</p><h3 id="var/requires_power"><aside class="declaration">var </aside>requires_power
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 62"/></a></h3>
+        <p>Whether the smartgun drains the battery (Ignored if requires_battery is false)</p><h3 id="var/secondary_toggled"><aside class="declaration">var </aside>secondary_toggled
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L85">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 85"/></a></h3>
+        <p>Whether we are using AP ammo currently</p><h2 id="proc">Proc Details</h2><h3 id="proc/Fire">Fire<aside>(/<a href="atom.html">atom</a>/target, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user, params, reflex, dual_wield) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L465">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 465"/></a></aside>
+        </h3>
+        <p>Having the SG check it's config after toggling frontline mode &amp; IFF is essential, or it won't update properly.
+e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.</p><h3 id="proc/able_to_fire">able_to_fire<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/e84fbaa67a4e0c11b655dab64bedf3759a315f38/code/modules/projectiles/guns/smartgun.dm#L404">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;projectiles&#x2F;guns&#x2F;smartgun.dm 404"/></a></aside>
+        </h3>
+        <p>Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
+Having the SG check it's config after toggling frontline mode &amp; IFF is essential, or it won't update properly.
+e.g. turning IFF off, firing once, turning IFF on will let the user fire frontline bullets over friendlies if the gun doesn't check.</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/e84fbaa67a4e0c11b655dab64bedf3759a315f38">e84fbaa</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

@@ -618,6 +618,33 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_ship/op
+	name = "USCM Operations Pilot (OP) (Cryo)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
+	assignment = JOB_OPERATIONS_PILOT
+	rank = JOB_OPERATIONS_PILOT
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "OP"
+	skills = /datum/skills/operations_pilot
+
+	minimap_icon = "pilot"
+	minimap_background = "background_command"
+
+/datum/equipment_preset/uscm_ship/op/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/satchel
+	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm_ship/dp/full
 	name = "USCM Dropship Pilot (DP)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useBackend, useSharedState } from 'tgui/backend';
 import { Box, Icon, Stack } from 'tgui/components';
 
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import {
   mfdState,
   useFiremissionXOffsetValue,

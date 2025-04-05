@@ -23,10 +23,10 @@ import {
 } from './helpers';
 import {
   buildSquadObservable,
-  groupSorter,
+  type groupSorter,
   type Observable,
   type OrbitData,
-  splitter,
+  type splitter,
 } from './types';
 
 type search = {

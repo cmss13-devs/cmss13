@@ -5,7 +5,7 @@
  */
 
 import { shallowDiffers } from 'common/react';
-import { Component, createRef, RefObject } from 'react';
+import { Component, createRef, type RefObject } from 'react';
 import { Button } from 'tgui/components';
 
 import { chatRenderer } from './renderer';

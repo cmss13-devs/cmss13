@@ -9,9 +9,9 @@ import {
   applyMiddleware,
   combineReducers,
   createStore,
-  Middleware,
-  Reducer,
-  Store,
+  type Middleware,
+  type Reducer,
+  type Store,
 } from 'common/redux';
 
 import { assetMiddleware } from './assets';

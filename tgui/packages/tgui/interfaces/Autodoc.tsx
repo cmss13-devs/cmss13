@@ -1,5 +1,5 @@
 import { round } from 'common/math';
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import {
   Button,

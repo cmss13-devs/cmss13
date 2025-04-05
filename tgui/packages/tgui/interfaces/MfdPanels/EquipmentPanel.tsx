@@ -1,8 +1,8 @@
 import { useBackend } from 'tgui/backend';
 import { Box } from 'tgui/components';
 
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import type { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState, useWeaponState } from './stateManagers';
 import type { EquipmentContext } from './types';
 

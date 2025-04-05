@@ -1,9 +1,9 @@
 import { randomPick, randomProb } from 'common/random';
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import { storage } from 'common/storage';
 import { capitalizeFirst } from 'common/string';
 import { debounce } from 'common/timer';
-import { ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { resolveAsset } from 'tgui/assets';
 import { useBackend, useSharedState } from 'tgui/backend';
 import {

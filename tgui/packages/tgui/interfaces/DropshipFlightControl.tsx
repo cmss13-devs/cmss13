@@ -14,11 +14,11 @@ import { Window } from 'tgui/layouts';
 import {
   CancelLaunchButton,
   DisabledScreen,
-  DockingPort,
+  type DockingPort,
   InFlightCountdown,
   LaunchButton,
   LaunchCountdown,
-  NavigationProps,
+  type NavigationProps,
   ShuttleRecharge,
 } from './NavigationShuttle';
 

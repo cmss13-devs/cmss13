@@ -1,11 +1,17 @@
 import './styles/main.scss';
 
 import { isEscape, KEY } from 'common/keys';
-import { BooleanLike, classes } from 'common/react';
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { type BooleanLike, classes } from 'common/react';
+import {
+  type FormEvent,
+  type KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { dragStartHandler } from 'tgui/drag';
 
-import { Channel, ChannelIterator } from './ChannelIterator';
+import { type Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
 import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
 import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';
@@ -50,6 +56,7 @@ export function TguiSay() {
   const [position, setPosition] = useState([window.screenX, window.screenY]);
   const [value, setValue] = useState('');
   const [extraChannels, setExtraChennels] = useState<Array<Channel>>([]);
+  const [rescale, setRescale] = useState(false);
 
   function handleArrowKeys(direction: KEY.Up | KEY.Down): void {
     const chat = chatHistory.current;
@@ -228,6 +235,7 @@ export function TguiSay() {
 
     setButtonContent(iterator.current());
     windowOpen(iterator.current(), scale);
+    setRescale(true);
   }
 
   function handleProps(data: ByondProps): void {
@@ -247,7 +255,12 @@ export function TguiSay() {
     setCurrentPrefix(null);
     setButtonContent(channelIterator.current.current());
     setValue('');
+    setRescale(false);
   }
+
+  useEffect(() => {
+    windowSet(WindowSize.Small, scale);
+  }, [rescale]);
 
   /** Subscribe to Byond messages */
   useEffect(() => {

@@ -7,7 +7,7 @@ import { useBackend } from 'tgui/backend';
 import { Box, Button, Flex, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { DataCoreData } from './common/commonTypes';
+import type { DataCoreData } from './common/commonTypes';
 
 type Data = DataCoreData & {
   local_current_menu: string;

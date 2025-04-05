@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import { Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 import { Box, Button, Section, Tooltip } from 'tgui/components';
 
 export const meta = {

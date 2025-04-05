@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { BoxProps, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxProps } from './Box';
 
 type Props = Partial<{
   /** True is default, this fixes an ie thing */

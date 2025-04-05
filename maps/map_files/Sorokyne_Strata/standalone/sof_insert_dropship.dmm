@@ -1,0 +1,1046 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"an" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "7,1"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"az" = (
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"aS" = (
+/obj/item/clipboard,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/interior/outpost/engi/drome)
+"by" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"bJ" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "7,12"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"ci" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"cC" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/closed/shuttle/upp_sof/transparent{
+	icon_state = "3,14"
+	},
+/area/strata/interior/shuttle_sof)
+"dh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 1
+	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/soldier,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"ex" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = 1;
+	buckle_offset_x = -5;
+	buckle_offset_y = 1
+	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/medic,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"eE" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"eT" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/greengrid,
+/area/strata/interior/outpost/engi/drome)
+"fn" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"fq" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 8;
+	buckle_offset_x = 6;
+	buckle_offset_y = 1;
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/sapper,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"fv" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"fF" = (
+/obj/effect/landmark/survivor_spawner/SOF_survivor/soldier,
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"gf" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"gh" = (
+/obj/structure/shuttle/part/upp_sof{
+	icon_state = "2,11"
+	},
+/turf/closed/shuttle/upp_sof{
+	icon_state = "6,2"
+	},
+/area/strata/interior/shuttle_sof)
+"jb" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "8,3"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"jX" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi/drome)
+"li" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	dir = 1;
+	color = "#b09e90"
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/shuttle_sof)
+"ln" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/largecrate/random{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"md" = (
+/turf/closed/shuttle/upp_sof/transparent{
+	icon_state = "2,12"
+	},
+/area/strata/interior/shuttle_sof)
+"mm" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "6,13";
+	density = 0;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"mM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_y = -2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"mQ" = (
+/obj/structure/shuttle/part/upp_sof{
+	icon_state = "2,11"
+	},
+/turf/closed/shuttle/upp_sof{
+	icon_state = "2,2"
+	},
+/area/strata/interior/shuttle_sof)
+"nb" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 3;
+	buckling_x = 1;
+	buckling_y = 3
+	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader,
+/obj/structure/machinery/big_computers/computerblack/computer3{
+	pixel_y = 19;
+	layer = 2;
+	density = 0;
+	icon_state = "blacksensor_comp3_off"
+	},
+/turf/open/floor/strata/grey_multi_tiles,
+/area/strata/interior/shuttle_sof)
+"ni" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"nD" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "0,6"
+	},
+/area/strata/interior/shuttle_sof)
+"od" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	color = "#b09e90"
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/shuttle_sof)
+"oC" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "1,4"
+	},
+/area/strata/interior/shuttle_sof)
+"oN" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_y = 22;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_y = 22;
+	pixel_x = 8
+	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/specialist,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"oY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"pe" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "4,10"
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/shuttle_sof)
+"pn" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"pz" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"pN" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "1,12"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"qL" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "7,3"
+	},
+/area/strata/interior/shuttle_sof)
+"qU" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"rM" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/closed/shuttle/upp_sof/transparent{
+	icon_state = "5,14"
+	},
+/area/strata/interior/shuttle_sof)
+"si" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "5,15"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"sz" = (
+/obj/item/ammo_magazine/rifle/ak4047,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/shuttle_sof)
+"tD" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "2,1"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"ui" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "7,4"
+	},
+/area/strata/interior/shuttle_sof)
+"uj" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "8,6"
+	},
+/area/strata/interior/shuttle_sof)
+"ur" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "8,4"
+	},
+/area/strata/interior/shuttle_sof)
+"uY" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"vl" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "1,0"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"vt" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "6,13";
+	density = 0;
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"vx" = (
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"wd" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "6,1"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"wo" = (
+/obj/structure/shuttle/part/upp_sof{
+	icon_state = "4,1";
+	density = 0;
+	opacity = 0
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"wQ" = (
+/turf/closed/shuttle/upp_sof/transparent{
+	icon_state = "3,13"
+	},
+/area/strata/interior/shuttle_sof)
+"wZ" = (
+/obj/structure/extinguisher_cabinet/alt{
+	pixel_y = -5
+	},
+/turf/closed/shuttle/upp_sof{
+	icon_state = "4,7"
+	},
+/area/strata/interior/shuttle_sof)
+"xr" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"yt" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 5;
+	pixel_y = -4;
+	layer = 3.1
+	},
+/obj/item/clothing/accessory/patch/upp/alt,
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/shuttle_sof)
+"zk" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "0,8"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"zr" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "2,13";
+	density = 0;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"zN" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"Ai" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = 1;
+	buckle_offset_x = -5;
+	buckle_offset_y = 1
+	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/soldier,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"Ao" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "2,0"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"Av" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"AG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/dropship_equipment/mg_holder,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"AX" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"AZ" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/stack/sheet/glass,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Bf" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/interior/outpost/engi/drome)
+"BL" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/greengrid,
+/area/strata/interior/outpost/engi/drome)
+"Cn" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_y = 22;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_y = 22;
+	pixel_x = 8
+	},
+/obj/item/clothing/head/beret/SOF_beret,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"Cr" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "3,15"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"Dz" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 8;
+	buckle_offset_x = 6;
+	buckle_offset_y = 1;
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/effect/landmark/survivor_spawner/SOF_survivor/soldier,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"DO" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "6,0"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"Ek" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "1,11"
+	},
+/area/strata/interior/shuttle_sof)
+"EL" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_y = -2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"Fi" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = 1;
+	buckle_offset_x = -5;
+	buckle_offset_y = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"Ft" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Gi" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "1,1"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"HU" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "2,13";
+	density = 0;
+	pixel_x = 12;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"Ix" = (
+/obj/structure/largecrate/random{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"IE" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "4,15"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"IH" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"IS" = (
+/turf/closed/shuttle/upp_sof/transparent{
+	icon_state = "5,13"
+	},
+/area/strata/interior/shuttle_sof)
+"Jb" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"JF" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"KV" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 1;
+	pixel_y = 28;
+	layer = 3.1
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_y = 6;
+	layer = 3.12
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Ml" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"Mw" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"MK" = (
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/shuttle_sof)
+"NJ" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/closed/shuttle/upp_sof{
+	icon_state = "8,7"
+	},
+/area/strata/interior/shuttle_sof)
+"Og" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "7,6"
+	},
+/area/strata/interior/shuttle_sof)
+"Oo" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/closed/shuttle/upp_sof{
+	icon_state = "4,8"
+	},
+/area/strata/interior/shuttle_sof)
+"OD" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Pc" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"Pg" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/turf/closed/shuttle/upp_sof{
+	icon_state = "0,7"
+	},
+/area/strata/interior/shuttle_sof)
+"PE" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 8;
+	buckle_offset_x = 6;
+	buckle_offset_y = 1;
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/interior/shuttle_sof)
+"Qh" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/dropship_equipment/sentry_holder,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Rp" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "7,2"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"RJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Sx" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "7,0"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"Tk" = (
+/turf/closed/shuttle/upp_sof{
+	icon_state = "0,4"
+	},
+/area/strata/interior/shuttle_sof)
+"To" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Tt" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Ug" = (
+/turf/open/floor/strata,
+/area/strata/interior/outpost/engi/drome)
+"Us" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/outpost/engi/drome)
+"UL" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/effect/landmark/survivor_spawner/SOF_survivor/soldier,
+/turf/open/floor/greengrid,
+/area/strata/interior/outpost/engi/drome)
+"UM" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"UO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 8;
+	pixel_x = -1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"VC" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"VE" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "8,8"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"Wm" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"Wp" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "8,0";
+	density = 0
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/strata/interior/outpost/engi/drome)
+"Xr" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Yn" = (
+/obj/structure/shuttle/part/upp_sof/transparent{
+	icon_state = "1,2"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/shuttle_sof)
+"Ze" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_x = -3
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/outpost/engi/drome)
+"Zp" = (
+/turf/closed/shuttle/upp_sof/transparent{
+	icon_state = "4,14"
+	},
+/area/strata/interior/shuttle_sof)
+
+(1,1,1) = {"
+VC
+eT
+eT
+Bf
+eT
+eT
+aS
+Bf
+eT
+eT
+eT
+eT
+VC
+Ug
+Ug
+jX
+"}
+(2,1,1) = {"
+fn
+BL
+OD
+Ze
+Ft
+qU
+oY
+dh
+qU
+qU
+qU
+qU
+Tt
+KV
+Qh
+IH
+"}
+(3,1,1) = {"
+fn
+xr
+Ix
+pz
+pz
+vx
+Bf
+Bf
+vx
+vx
+vx
+vx
+vx
+vx
+Pc
+IH
+"}
+(4,1,1) = {"
+fn
+Wm
+pn
+vx
+vx
+fF
+zr
+zk
+Pg
+nD
+Tk
+jb
+vx
+Mw
+eE
+IH
+"}
+(5,1,1) = {"
+fn
+Wm
+vx
+UM
+HU
+pN
+od
+Ek
+Ek
+oC
+oC
+Yn
+Gi
+vl
+eE
+IH
+"}
+(6,1,1) = {"
+EL
+ni
+Cr
+cC
+wQ
+md
+Cn
+ex
+Fi
+Ai
+sz
+mQ
+tD
+Ao
+ni
+JF
+"}
+(7,1,1) = {"
+mM
+ni
+IE
+Zp
+nb
+li
+MK
+pe
+Oo
+wZ
+MK
+li
+wo
+Jb
+ni
+JF
+"}
+(8,1,1) = {"
+mM
+ni
+si
+rM
+IS
+md
+oN
+PE
+fq
+Dz
+yt
+gh
+wd
+DO
+Ml
+JF
+"}
+(9,1,1) = {"
+AZ
+Wm
+vx
+fv
+vt
+bJ
+od
+qL
+qL
+ui
+Og
+Rp
+an
+Sx
+eE
+IH
+"}
+(10,1,1) = {"
+AZ
+Wm
+vx
+vx
+vx
+fF
+mm
+VE
+NJ
+uj
+ur
+jb
+by
+Wp
+eE
+IH
+"}
+(11,1,1) = {"
+To
+Us
+ci
+ci
+ci
+ci
+Bf
+Bf
+ci
+ci
+ci
+ci
+uY
+ln
+zN
+IH
+"}
+(12,1,1) = {"
+Av
+eT
+RJ
+gf
+gf
+Xr
+UO
+UO
+fn
+fn
+az
+fn
+AG
+RJ
+RJ
+IH
+"}
+(13,1,1) = {"
+fn
+eT
+eT
+Bf
+eT
+eT
+eT
+Bf
+eT
+UL
+eT
+eT
+Bf
+Ug
+Ug
+jX
+"}
+(14,1,1) = {"
+AX
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+fn
+AX
+fn
+fn
+IH
+"}

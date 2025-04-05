@@ -246,6 +246,12 @@
 /obj/structure/platform/stone/stair_cut/shiva_right
 	icon_state = "strata_platform_stair_alt"
 
+/obj/structure/platform/stone/stair_cut/soro_left
+	icon_state = "strata_rock_platform_stair"
+
+/obj/structure/platform/stone/stair_cut/soro_right
+	icon_state = "strata_rock_platform_stair_alt"
+
 /obj/structure/platform/stone/stair_cut/kutjevo_left
 	icon_state = "kutjevo_rock_stair"
 
@@ -389,6 +395,19 @@
 /obj/structure/platform/stone/strata/west
 	dir = WEST
 
+// Soro Rock
+
+/obj/structure/platform/stone/soro
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "strata_rock_platform"
+
+/obj/structure/platform/stone/soro/north
+	dir = NORTH
+/obj/structure/platform/stone/soro/east
+	dir = EAST
+/obj/structure/platform/stone/soro/west
+	dir = WEST
 
 /obj/structure/platform/stone/mineral
 	icon_state = "stone"
@@ -540,6 +559,18 @@
 /obj/structure/platform_decoration/stone/strata/east
 	dir = EAST
 /obj/structure/platform_decoration/stone/strata/west
+	dir = WEST
+
+/obj/structure/platform_decoration/stone/soro
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "strata_rock_platform_deco"
+
+/obj/structure/platform_decoration/stone/soro/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/soro/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/soro/west
 	dir = WEST
 
 

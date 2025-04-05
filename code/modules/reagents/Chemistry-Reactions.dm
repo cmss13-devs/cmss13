@@ -10,6 +10,8 @@
 	var/mob_react = TRUE
 	/// The container path required for the reaction to happen
 	var/required_container = null
+	/// the container path blacklisted from reactions
+	var/forbidden_container = null
 
 	/// The resulting amount: Recommended to be set to the total volume of all components
 	var/result_amount = 0

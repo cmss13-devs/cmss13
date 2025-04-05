@@ -279,6 +279,8 @@
 
 				if(isliving(my_atom) && !reaction.mob_react) //Makes it so some chemical reactions don't occur in mobs
 					continue
+				if(my_atom.type in reaction.forbidden_container) //ditto but for specific containers
+					continue
 
 				if(!reaction.required_container)
 					matching_container = TRUE

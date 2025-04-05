@@ -429,4 +429,20 @@
 	name = "\improper 'Saipan' camera controls"
 	network = list(CAMERA_NET_RESEARCH, CAMERA_NET_LASER_TARGETS)
 
+/obj/structure/machinery/computer/cameras/yautja
+	name = "Hellhound Observation Interface"
+	alpha = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	density = FALSE
+	use_power = USE_POWER_NONE
+	idle_power_usage = 0
+	active_power_usage = 0
+	needs_power = FALSE
+	network = list(CAMERA_NET_YAUTJA)
+	explo_proof = TRUE
+
+/obj/structure/machinery/computer/cameras/yautja/Initialize()
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, NV_COLOR_RED)
+
 #undef DEFAULT_MAP_SIZE

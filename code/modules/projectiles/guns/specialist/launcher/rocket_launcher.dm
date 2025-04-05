@@ -251,6 +251,7 @@
 
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+	
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()

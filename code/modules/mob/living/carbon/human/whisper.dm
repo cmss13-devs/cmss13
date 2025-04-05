@@ -104,11 +104,13 @@
 	var/not_dead_speaker = (stat != DEAD)
 	for(var/mob/M in listening)
 		M.hear_say(message, verb, speaking, alt_name, italics, src)
+		langchat_speech(message, listening, speaking, langchat_color, FALSE, LANGCHAT_DEFAULT_POP, list("langchat_italic"))
 
 	if (length(eavesdropping))
 		var/new_message = stars(message) //hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
 		for(var/mob/M in eavesdropping)
 			M.hear_say(new_message, verb, speaking, alt_name, italics, src)
+			langchat_speech(message, listening, speaking, langchat_color, FALSE, LANGCHAT_DEFAULT_POP, list("langchat_italic"))
 
 	spawn(30)
 		if(not_dead_speaker)

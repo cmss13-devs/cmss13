@@ -251,7 +251,6 @@
 
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-	
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
@@ -319,6 +318,7 @@
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	w_class = SIZE_MEDIUM
 	garbage = FALSE
+
 /obj/item/prop/folded_anti_tank_sadar/attack_self(mob/user)
 	user.visible_message(SPAN_NOTICE("[user] begins to unfold \the [src]."), SPAN_NOTICE("You start to unfold and expand \the [src]."))
 	playsound(src, 'sound/items/component_pickup.ogg', 20, TRUE, 5)

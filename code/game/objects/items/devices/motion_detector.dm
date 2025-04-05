@@ -43,7 +43,8 @@
 		pulse_icon = "motion_long_pulse"
 	else
 		pulse_icon = "motion_short_pulse"
-	
+	SSminimaps.add_marker(src, minimap_flag, image('icons/ui_icons/map_blips_larger.dmi', null, pulse_icon), -28.25, -28.25)
+
 /obj/effect/temp_visual/minimap_blip
 	icon = null
 	duration = 1 SECONDS
@@ -247,7 +248,6 @@
 
 /obj/item/device/motiondetector/proc/scan()
 	set waitfor = 0
-	new /obj/effect/temp_visual/minimap_pulse(get_turf(src), minimap_flag, detector_mode)
 	if(scanning)
 		return
 	scanning = TRUE

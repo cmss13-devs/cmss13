@@ -163,7 +163,7 @@
 		return
 
 	var/obj/docking_port/stationary/marine_dropship/dropzone = destination
-	if(mode == SHUTTLE_PREARRIVAL && !dropzone.landing_lights_on)
+	if(mode == SHUTTLE_PREARRIVAL && dropzone && !dropzone.landing_lights_on)
 		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
 			dropzone.turn_on_landing_lights()
 		playsound(dropzone.return_center_turf(), landing_sound, 60, 0)
@@ -312,11 +312,18 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
-/obj/docking_port/stationary/marine_dropship/upp_hangar_1
-	name = "UPP Hangar bay 1"
-	id = UPP_DROPSHIP_LZ2
+/obj/docking_port/stationary/marine_dropship/upp/hangar_1
+	name = "Rostock Hangar bay 1"
+	id = UPP_DROPSHIP_LZ1
+	faction = "UPP"
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/morana
+
+/obj/docking_port/stationary/marine_dropship/upp/hangar_2
+	name = "Rostock Hangar bay 2"
+	id = UPP_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/devana
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

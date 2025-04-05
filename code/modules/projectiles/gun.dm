@@ -1904,6 +1904,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				else
 					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 				return
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+				to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+				return FALSE
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))

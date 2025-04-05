@@ -351,6 +351,7 @@
 #define XENO_RESIN_MEMBRANE_COST 70
 #define XENO_RESIN_MEMBRANE_QUEEN_COST 80
 #define XENO_RESIN_MEMBRANE_THICK_COST 95
+#define XENO_RESIN_GELATIN_COST 95
 #define XENO_RESIN_NEST_COST 70
 #define XENO_RESIN_STICKY_COST 30
 #define XENO_RESIN_FAST_COST 10
@@ -379,6 +380,7 @@
 
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+#define HIVELORD_SCULPTOR "Sculptor"
 
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"
@@ -432,6 +434,7 @@
 #define XENO_HEALTH_MOD_LARGE   80
 #define XENO_HEALTH_MOD_VERY_LARGE  100
 #define XENO_HEALTH_MOD_ACIDER  115
+#define XENO_HEALTH_MOD_SCULPTOR	130
 
 // Armor mods. Use the above defines for some guidance
 // In general, +20 armor should be a little more than +20% effective HP, however,
@@ -647,6 +650,7 @@
 #define RESIN_TRAP_ACID1 3
 #define RESIN_TRAP_ACID2 4
 #define RESIN_TRAP_ACID3 5
+#define RESIN_TRAP_PLASMA 6
 
 // HIVECORE COOLDOWN TIME
 #define HIVECORE_COOLDOWN 5 MINUTES

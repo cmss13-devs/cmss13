@@ -164,6 +164,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define FIRE_DELAY_TIER_SG 2
 #define FIRE_DELAY_TIER_SMG 1.5
 #define FIRE_DELAY_TIER_12 1
+#define FIRE_DELAY_TIER_REVOLVER 0.5
 
 /*
 ////RANGE RELATED////
@@ -221,6 +222,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define BURST_AMOUNT_TIER_4 4
 #define BURST_AMOUNT_TIER_5 5
 #define BURST_AMOUNT_TIER_6 6
+#define BURST_AMOUNT_REVOLVER 4 // used for revolver only
 
 /*
 ////EXTRA////

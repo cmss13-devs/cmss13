@@ -34,6 +34,8 @@
 	var/trick_delay = 4 SECONDS
 	var/recent_trick //So they're not spamming tricks.
 	var/russian_roulette = 0 //God help you if you do this.
+	var/can_fan = FALSE // Fan the hammer
+	var/currently_fanning = FALSE
 
 /obj/item/weapon/gun/revolver/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -307,6 +309,39 @@
 		to_chat(user, SPAN_WARNING("You fumble with [src] like an idiot... Uncool."))
 		return FALSE
 
+/datum/action/item_action/fan_the_hammers/New(Target)
+	..()
+	name = "Fan The Hammer"
+	button.name = name
+
+/datum/action/item_action/fan_the_hammers/action_activate()
+	. = ..()
+	var/obj/item/weapon/gun/revolver/revolvers = holder_item
+	revolvers.fan_the_hammer()
+	if(revolvers.currently_fanning)
+		to_chat(owner, SPAN_NOTICE("You will now fan the hammer."))
+		button.icon_state += "_on"
+	else
+		button.icon_state = initial(button.icon_state)
+		to_chat(owner, SPAN_NOTICE("You will no longer fan the hammer."))
+	playsound(owner, 'sound/machines/click.ogg', 15, 1)
+
+/obj/item/weapon/gun/revolver/proc/fan_the_hammer(obj/item/weapon/gun/revolver/fanner, mob/living/user)
+	if(can_fan)
+		if(!currently_fanning)
+			modify_burst_delay(FIRE_DELAY_TIER_REVOLVER)
+			add_firemode(GUN_FIREMODE_BURSTFIRE)
+			set_burst_amount(BURST_AMOUNT_REVOLVER)
+			do_toggle_firemode(GUN_FIREMODE_BURSTFIRE)
+			remove_firemode(GUN_FIREMODE_SEMIAUTO)
+			currently_fanning = TRUE
+			flags_gun_features -= GUN_CAN_POINTBLANK
+		else
+			add_firemode(GUN_FIREMODE_SEMIAUTO)
+			do_toggle_firemode(GUN_FIREMODE_SEMIAUTO)
+			remove_firemode(GUN_FIREMODE_BURSTFIRE)
+			currently_fanning = FALSE
+			flags_gun_features += GUN_CAN_POINTBLANK
 
 //-------------------------------------------------------
 //M44 Revolver
@@ -345,7 +380,8 @@
 		/obj/item/attachable/alt_iff_scope,
 	)
 	var/folded = FALSE // Used for the stock attachment, to check if we can shoot or not
-
+	can_fan = TRUE
+	actions_types = list(/datum/action/item_action/fan_the_hammers)
 /obj/item/weapon/gun/revolver/m44/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 12, "rail_y" = 23, "under_x" = 21, "under_y" = 16, "stock_x" = 16, "stock_y" = 20)
 
@@ -359,11 +395,23 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
-	if (folded)
+	if(folded)
 		to_chat(user, SPAN_NOTICE("You need to unfold the stock to fire!"))//this is stupid
-		return 0
-	else
-		return ..()
+		return FALSE
+	if(!currently_fanning)
+		. = ..()
+	if(user.get_inactive_hand() && !istype(user.get_inactive_hand(), /obj/item/weapon/twohanded/offhand))
+		to_chat(user, SPAN_NOTICE("You can't fan the hammer when something else is in your hand"))
+		return FALSE
+	var/hand_to_check = user.r_hand == src ? "l_hand" : "r_hand"
+	var/mob/living/carbon/human/revolver_wielder = user
+	if(!istype(revolver_wielder))
+		. = ..()
+	var/obj/limb/limb_to_check = revolver_wielder.get_limb(hand_to_check)
+	if(limb_to_check && !limb_to_check.is_usable())
+		to_chat(user, SPAN_NOTICE("You cannot fan the hammer with a missing limb."))
+		return FALSE
+	. = ..()
 
 /obj/item/weapon/gun/revolver/m44/mp //No differences (yet) beside spawning with marksman ammo loaded
 	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman

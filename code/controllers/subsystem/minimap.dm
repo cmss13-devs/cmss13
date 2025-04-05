@@ -275,10 +275,13 @@ SUBSYSTEM_DEF(minimaps)
 /datum/controller/subsystem/minimaps/proc/remove_earlyadd(atom/source)
 	SIGNAL_HANDLER
 	remove_marker(source)
-	for(var/datum/callback/callback in earlyadds["[source.z]"])
+	var/actual_z = target.z
+	if(target.loc && !isturf(target.loc))
+		actual_z = target.loc.z
+	for(var/datum/callback/callback in LAZYACCESS(earlyadds, "[actual_z]"))
 		if(callback.arguments[1] != source)
 			continue
-		earlyadds["[source.z]"] -= callback
+		earlyadds["[actual_z]"] -= callback
 		UnregisterSignal(source, COMSIG_PARENT_QDELETING)
 		return
 
@@ -913,8 +916,8 @@ SUBSYSTEM_DEF(minimaps)
 
 ///Setter for the offsets of the x and y of drawing based on the input z, and the drawn_image
 /atom/movable/screen/minimap_tool/proc/set_zlevel(zlevel, minimap_flag)
-	x_offset = SSminimaps.minimaps_by_z["[zlevel]"].x_offset
-	y_offset = SSminimaps.minimaps_by_z["[zlevel]"].y_offset
+	x_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].x_offset : 0
+	y_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].y_offset : 0
 	drawn_image = SSminimaps.get_drawing_image(zlevel, minimap_flag)
 
 /atom/movable/screen/minimap_tool/MouseEntered(location, control, params)

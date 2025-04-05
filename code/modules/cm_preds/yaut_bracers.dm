@@ -1285,14 +1285,14 @@
 		if(translator_type == "Retro")
 			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
-		msg = replacetext(msg, "a", "@")
-		msg = replacetext(msg, "e", "3")
-		msg = replacetext(msg, "i", "1")
-		msg = replacetext(msg, "o", "0")
-		msg = replacetext(msg, "s", "5")
-		msg = replacetext(msg, "l", "1")
+		message = replacetext(message, "a", "@")
+		message = replacetext(message, "e", "3")
+		message = replacetext(message, "i", "1")
+		message = replacetext(message, "o", "0")
+		message = replacetext(message, "s", "5")
+		message = replacetext(message, "l", "1")
 
-	caller.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
+	caller.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
 
 	var/voice_name = "A strange voice"
 	if(caller.name == caller.real_name && caller.alpha == initial(caller.alpha))
@@ -1300,7 +1300,7 @@
 	for(var/mob/Q as anything in heard)
 		if(Q.stat && !isobserver(Q))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
+		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[message]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

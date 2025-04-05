@@ -209,7 +209,7 @@
 	required_reagents = list("bicaridine" = 1, "kelotane" = 1)
 	result_amount = 0.1
 	mob_react = FALSE // as much as this would be funny, no its gonna break some balance
-	forbidden_container = list(/obj/item/reagent_container/hypospray/autoinjector/emergency)
+	forbidden_container = list(/obj/item/reagent_container/hypospray/autoinjector/emergency, /obj/item/storage/pouch/pressurized_reagent_canister, /obj/item/reagent_container/hypospray/autoinjector/empty/medic)
 
 /datum/chemical_reaction/unga/ungalicious
 	required_reagents = list("dermaline" = 1, "meralyne" = 1)

@@ -523,8 +523,6 @@
 		if("mapview")
 			if(!map)
 				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
-				var/list/atom/movable/screen/actions = list()
-				drawing_tools = actions
 				scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
 				close_button = new /atom/movable/screen/exit_map(null, src)
 			user.client.screen += map

@@ -80,12 +80,17 @@
 	paint_type = "full_camo_urban"
 	icon_state = "full_camo_urban"
 
-
 /obj/item/facepaint/skull
 	name = "skull paint"
 	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
+
+/obj/item/facepaint/clown
+	name = "clown makeup paint"
+	desc = "Paint, for your face. Used for entertainers and alike, or maybe you just feel that way."
+	paint_type = "clown_camo"
+	icon_state = "clown_camo"
 
 /obj/item/facepaint/sunscreen_stick
 	name= "\improper USCM issue sunscreen"

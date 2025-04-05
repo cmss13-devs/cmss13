@@ -780,6 +780,7 @@
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.set_species(joe_type)
+	new_human.bubble_icon = "robot"
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 	if(prob(5))
@@ -891,6 +892,7 @@
 /datum/equipment_preset/synth/working_joe/upp/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.set_species(joe_type)
+	new_human.bubble_icon = "syndibot"
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 	if(prob(5))

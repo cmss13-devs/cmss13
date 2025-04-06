@@ -104,3 +104,6 @@
   - rscadd: Added Terrorism and Terror Association laws to JAS.
   - rscadd: Added Black Marketeering and Arms Dealing laws to JAS.
   - rscadd: Prefab paperwork now uses Courier New font.
+2025-04-06:
+  kiVts:
+  - bugfix: speaking names over the radio are fixed

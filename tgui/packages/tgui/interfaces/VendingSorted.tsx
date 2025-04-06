@@ -336,7 +336,12 @@ export const VendingSorted = () => {
   const reagents = data.reagents ?? 0;
   const reagents_max = data.reagents_max ?? 0;
   return (
-    <Window height={800} width={450} theme={getTheme(data.theme)}>
+    <Window
+      height={800}
+      width={450}
+      title={data.vendor_name}
+      theme={getTheme(data.theme)}
+    >
       <Window.Content
         scrollable
         className="Vendor"
@@ -356,7 +361,7 @@ export const VendingSorted = () => {
               className="Section__title"
             >
               <Flex.Item>
-                <span className="Section__titleText">Search</span>
+                <span className="Section__titleText">Поиск</span>
               </Flex.Item>
               <Flex.Item>
                 <Input
@@ -394,7 +399,7 @@ export const VendingSorted = () => {
               className="Section__title"
             >
               <Flex.Item>
-                <span className="Section__titleText">Points Remaining</span>
+                <span className="Section__titleText">Очков осталось</span>
               </Flex.Item>
               <Flex.Item>
                 <span>{points}</span>
@@ -405,8 +410,8 @@ export const VendingSorted = () => {
 
         {isEmpty && (
           <NoticeBox danger className="ItemContainer">
-            Nothing in here seems to be for you. If this is a mistake contact
-            your local administrator.
+            Здесь нет ничего, подходящего для вас. Если присутствует ошибка,
+            свяжитесь с вашим администратором.
           </NoticeBox>
         )}
 

@@ -136,7 +136,7 @@
 	/// color of the blood on us if there's any.
 	var/blood_color = ""
 	/// taken from blood.dm
-	appearance_flags = KEEP_TOGETHER
+	// appearance_flags = KEEP_TOGETHER // SS220 REMOVE
 	/// lets us know if the item is an objective or not
 	var/is_objective = FALSE
 
@@ -301,18 +301,18 @@
 	var/size
 	switch(w_class)
 		if(SIZE_TINY)
-			size = "tiny"
+			size = "крохотного размера"
 		if(SIZE_SMALL)
-			size = "small"
+			size = "маленького размера"
 		if(SIZE_MEDIUM)
-			size = "normal-sized"
+			size = "обычного размера"
 		if(SIZE_LARGE)
-			size = "bulky"
+			size = "громоздкого размера"
 		if(SIZE_HUGE)
-			size = "huge"
+			size = "огромного размера"
 		if(SIZE_MASSIVE)
-			size = "massive"
-	. += "[p_are() == "are" ? "These are " : "This is a "][blood_color ? blood_color != COLOR_OIL ? "bloody " : "oil-stained " : ""][icon2html(src, user)][src.name]. [p_they(TRUE)] [p_are()] a [size] item."
+			size = "гигантского размера"
+	. += "Это [blood_color ? blood_color != COLOR_OIL ? "окровавленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : "замасленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : ""][icon2html(src, user)][declent_ru(NOMINATIVE)]. Это предмет [size]."
 	if(desc)
 		. += desc
 	if(desc_lore)

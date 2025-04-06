@@ -13895,7 +13895,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/m240,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/electrical)
 "leP" = (

@@ -343,6 +343,7 @@ const uppSort = (a: Observable, b: Observable) => {
 
 const weyyuSplitter = (members: Array<Observable>) => {
   const whiteout: Array<Observable> = [];
+  const wycommando: Array<Observable> = [];
   const pmc: Array<Observable> = [];
   const goons: Array<Observable> = [];
   const other: Array<Observable> = [];
@@ -352,6 +353,8 @@ const weyyuSplitter = (members: Array<Observable>) => {
       whiteout.push(x);
     } else if (x.job?.includes('Death Squad')) {
       whiteout.push(x);
+    } else if (x.job?.includes('W-Y Commando')) {
+      wycommando.push(x);
     } else if (x.job?.includes('PMC')) {
       pmc.push(x);
     } else if (x.job?.includes('Corporate Security')) {
@@ -365,6 +368,7 @@ const weyyuSplitter = (members: Array<Observable>) => {
     buildSquadObservable('PMCs', 'white', pmc),
     buildSquadObservable('Goons', 'orange', goons),
     buildSquadObservable('Corporate', 'white', other),
+    buildSquadObservable('W-Y Commando', 'white', wycommando),
     buildSquadObservable('Whiteout', 'red', whiteout),
   ];
   return squads;

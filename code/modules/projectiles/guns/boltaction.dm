@@ -30,6 +30,7 @@
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/antique,
 		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/wy,
 		/obj/item/attachable/bayonet/custom/red,
 		/obj/item/attachable/bayonet/custom/blue,
 		/obj/item/attachable/bayonet/custom/black,

@@ -60,6 +60,9 @@
 /obj/vehicle/multitile/proc/remove_all_players()
 	return
 
+/obj/vehicle/multitile/proc/can_install_hardpoint(obj/item/hardpoint/hardpoint, mob/user)
+	return TRUE
+
 //Putting on hardpoints
 //Similar to repairing stuff, down to the time delay
 /obj/vehicle/multitile/proc/install_hardpoint(obj/item/O, mob/user)
@@ -93,6 +96,9 @@
 		to_chat(user, SPAN_WARNING("You don't know what to do with [HP] on \the [src]."))
 		return
 
+	if(!can_install_hardpoint(O, user))
+		return
+
 	user.visible_message(SPAN_NOTICE("[user] begins installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."),
 		SPAN_NOTICE("You begin installing \the [HP] on the [HP.slot] hardpoint slot of \the [src]."))
 
@@ -112,6 +118,9 @@
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
+		return
+
+	if(!can_install_hardpoint(O, user))
 		return
 
 	//check to prevent putting two modules on same slot

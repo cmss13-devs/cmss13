@@ -1,0 +1,5 @@
+author: "PhantornRU"
+delete-after: True
+changes:
+  - rscadd: "M83 can carried on the back"
+  - imageadd: "Added sprites for carrying RPG M83 on the back"

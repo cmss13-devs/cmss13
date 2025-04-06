@@ -249,8 +249,8 @@
 
 	attachable_allowed = list()
 
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
@@ -313,6 +313,15 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
 	)
 	icon_state = "m83a2_folded"
+	item_state = "m83a2_folded"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
+	)
+
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	w_class = SIZE_MEDIUM
 	garbage = FALSE
 

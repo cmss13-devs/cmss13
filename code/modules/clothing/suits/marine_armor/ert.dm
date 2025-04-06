@@ -823,7 +823,7 @@
 
 /obj/item/clothing/suit/storage/marine/MP/provost/light/flexi
 	name = "\improper M3 pattern light armor"
-	desc = "A Compact set of M3 Armor, Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	desc = "A regular set of MP M3 Armor in Urban camo, Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	w_class = SIZE_MEDIUM
 	icon_state = "pvlight_2"
 	item_state_slots = list(WEAR_JACKET = "pvlight_2")

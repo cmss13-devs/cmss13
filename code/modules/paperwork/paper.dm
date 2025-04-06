@@ -781,22 +781,22 @@
 					var/U = reaction_generated.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
+				txt += "<BR>Chemical has following reaction indicators:"
+				if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
+					txt += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
+					txt += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
+					txt += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+					txt += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+					txt += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
+				else
+					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
 				txt += "<BR>Overdoses at: [chemical_to_generate.overdose] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
-				info += "<I>Chemical has following reaction indicators:</I>"
-				if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
-					info += "<I>Aggressive foaming. The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection. </I>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
-					info += "<I>Luminesence. The reaction produces light, power of the light is dictated by the amount mixed. </I>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
-					info += "<I>Luminesence. The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker. </I>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
-					info += "<I>Luminesence. The reaction is very exothermic and will cause a small scale combustion. This will not compromise the contents of the beaker.</I>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
-					info += "<I>Luminesence. The reaction is endothermic. This slows down the mixing process significantly.</I>"
-				else
-					info += "<I>Inert. The reaction has no indicators.</I>"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE

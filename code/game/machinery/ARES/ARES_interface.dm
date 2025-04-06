@@ -431,6 +431,14 @@
 				to_chat(user, SPAN_WARNING("The ordnance request frequency is garbled, wait for reset!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
+			var/nuclear_lock = CONFIG_GET(number/nuclear_lock_marines_percentage)
+			if(nuclear_lock > 0 && nuclear_lock != 100)
+				var/marines_count = SSticker.mode.count_marines() // Counting marines on land and on the ship
+				var/marines_peak = GLOB.peak_humans * nuclear_lock / 100
+				if(marines_count >= marines_peak)
+					to_chat(user, SPAN_WARNING("There are still too many Marines and USCM crew alive on this operation!"))
+					playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+					return FALSE
 			if(GLOB.security_level == SEC_LEVEL_DELTA || SSticker.mode.is_in_endgame)
 				to_chat(user, SPAN_WARNING("The mission has failed catastrophically, what do you want a nuke for?!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)

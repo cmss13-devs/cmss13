@@ -318,7 +318,9 @@
 			if(M.stat != DEAD)
 				to_chat(user, SPAN_WARNING("[M] resists your attempt to buckle!"))
 				return
-	do_buckle(M, user)
+		if(M.stat != DEAD)
+			return
+		do_buckle(M, user)
 
 // the actual buckling proc
 // Yes I know this is not style but its unreadable otherwise

@@ -270,7 +270,7 @@
 
 /obj/item/clothing/under/marine/officer/general
 	name = "USCM Service 'C' Officer Uniform"
-	desc = "A standard issue USCM Officer Service 'C' Uniform, comes with a short a short sleeve button up shirt and green trousers."
+	desc = "A standard-issue USCM Officer 'C' service uniform, comes with a short sleeve buttoned-up tan shirt and green trousers."
 	icon_state = "general_jumpsuit"
 	worn_state = "general_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
@@ -425,8 +425,8 @@
 	flags_jumpsuit = FALSE
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
-	name = "\improper MP Utility Uniform"
-	desc = "The standard issue uniform of most MP's on USCM Military Stations and bases, worn often by MP enforcers for the provost office."
+	name = "\improper USCM military police utility uniform"
+	desc = "The standard-issue uniform of most Military Police on USCM military stations and bases. Officers wearing this uniform are usually part of the USCM provost office."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
@@ -445,8 +445,8 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 
 /obj/item/clothing/under/marine/mp/provost/chief
-	name = "\improper Service 'A' Officer Winter Uniform"
-	desc = "The winter version of the Service A uniform, often worn by Officers of the provost office."
+	name = "\improper service 'A' officer winter uniform"
+	desc = "The winter version of the Service A uniform, often worn by officers of the provost office."
 	icon_state = "provost_ci"
 	worn_state = "provost_ci"
 

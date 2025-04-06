@@ -462,7 +462,7 @@
 
 /obj/item/clothing/accessory/armband/mp
 	name = "MP armband"
-	desc = "An armband, worn by MP's on base, usually also worn by those from the provost office."
+	desc = "An armband worn by USCM Military Police officers on military installations. It is usually also worn by those from the provost office"
 	icon_state = "armband_mp"
 
 //patches

@@ -256,8 +256,8 @@
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
-	name = "USCM Service 'A' Officer Service Jacket"
-	desc = "A USCM Officer Service 'A' Jacket, often worn by Officers on official visits."
+	name = "USCM service 'A' officer service jacket"
+	desc = "A USCM Officer Service 'A' Jacket, often worn by Officers on official visits. Very fitting and neatly pressed for a job that needs to be well-done."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	icon_state = "general_jacket"
 	item_icons = list(
@@ -302,8 +302,8 @@
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/jacket/marine/provost
-	name = "\improper USCM Service 'A' Officer Winter Service Jacket"
-	desc = "A standard issue Service 'A' jacket, this one coming in winter black."
+	name = "\improper USCM service 'A' officer winter service jacket"
+	desc = "A rarely-seen 'A' service jacket for USCM officers that do want to stay crisp and warm in a snowy warzone, this one coming in black."
 	icon_state = "provost_jacket"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(

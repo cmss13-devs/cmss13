@@ -291,27 +291,22 @@
 					for(var/required_reagent in reaction.required_reagents)
 						if(!preserved_data)
 							preserved_data = get_data(required_reagent)
-						remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
 
 					var/created_volume = reaction.result_amount*multiplier
+					reaction.on_reaction(src, created_volume, multiplier)
+
 					if(reaction.result)
 
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
-						add_reagent(reaction.result, reaction.result_amount*multiplier)
 						set_data(reaction.result, preserved_data)
 
-						//add secondary products
-						for(var/secondary_result in reaction.secondary_results)
-							add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * multiplier)
 
-					var/list/seen = viewers(4, get_turf(my_atom))
-					for(var/mob/M in seen)
-						to_chat(M, SPAN_NOTICE("[icon2html(my_atom, M)] The solution begins to bubble."))
-
-					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
-
-					reaction.on_reaction(src, created_volume)
-					reaction_occurred = TRUE
+					if(HAS_FLAG(reaction.reaction_type, CHEM_REACTION_CALM))
+						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
+						var/list/seen = viewers(4, get_turf(my_atom))
+						for(var/mob/M in seen)
+							to_chat(M, SPAN_NOTICE("[icon2html(my_atom, M)] The solution begins to bubble."))
+						reaction_occurred = TRUE
 					break
 
 	while(reaction_occurred)

@@ -7,6 +7,7 @@
 	var/sensitivity_threshold = 0
 
 /datum/chemical_reaction/explosive/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	if(created_volume > sensitivity_threshold)
 		holder.trigger_volatiles = TRUE
 	return
@@ -36,6 +37,7 @@
 	mob_react = FALSE
 
 /datum/chemical_reaction/emp_pulse/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	// 100 created volume = 4 heavy range & 7 light range. A few tiles smaller than traitor EMP grandes.
 	// 200 created volume = 8 heavy range & 14 light range. 4 tiles larger than traitor EMP grenades.
@@ -98,6 +100,7 @@
 	id = "thermite"
 	result = "thermite"
 	required_reagents = list("aluminum" = 1, "iron" = 1, "oxygen" = 1)
+	reaction_type = parent_type::reaction_type | CHEM_REACTION_FIRE
 	result_amount = 3
 
 
@@ -159,6 +162,7 @@
 	mob_react = FALSE
 
 /datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/turf/location = get_turf(holder.my_atom)
 	var/datum/effect_system/spark_spread/sparker = new
 	sparker.set_up(2, 1, location)
@@ -186,6 +190,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/chemfire/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	holder.trigger_volatiles = TRUE
 	return
 
@@ -212,6 +217,7 @@
 	result_amount = 3
 
 /datum/chemical_reaction/chlorinetrifluoride/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	holder.trigger_volatiles = TRUE
 	return
 
@@ -283,6 +289,7 @@
 	mob_react = FALSE
 
 /datum/chemical_reaction/chemsmoke/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	var/datum/effect_system/smoke_spread/chem/S = new /datum/effect_system/smoke_spread/chem
 	S.attach(location)
@@ -296,6 +303,7 @@
 	id = "potassium_chloride"
 	result = "potassium_chloride"
 	required_reagents = list("sodiumchloride" = 1, "potassium" = 1)
+	reaction_type = parent_type::reaction_type | CHEM_REACTION_SMOKING
 	result_amount = 2
 
 /datum/chemical_reaction/potassium_chlorophoride
@@ -303,7 +311,16 @@
 	id = "potassium_chlorophoride"
 	result = "potassium_chlorophoride"
 	required_reagents = list("potassium_chloride" = 1, "phoron" = 1, "chloralhydrate" = 1)
+	reaction_type = parent_type::reaction_type | CHEM_REACTION_BUBBLING
 	result_amount = 4
+
+/datum/chemical_reaction/potassium_phorosulfate
+	name = "Potassium Phorosulfate"
+	id = "potassium_phorosulfate"
+	result = "potassium_phorosulfate"
+	required_reagents = list("potassium_chlorophoride" = 1, "sulphuric acid" = 4)
+	reaction_type = CHEM_REACTION_ENDOTHERMIC
+	result_amount = 1
 
 /datum/chemical_reaction/zombiepowder
 	name = "Zombie Powder"
@@ -338,9 +355,11 @@
 	id = "solidphoron"
 	result = null
 	required_reagents = list("iron" = 5, "frostoil" = 5, "phoron" = 20)
+
 	result_amount = 1
 
 /datum/chemical_reaction/phoronsolidification/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 	new /obj/item/stack/sheet/mineral/phoron(location)
 	return
@@ -353,6 +372,7 @@
 	result_amount = 1
 
 /datum/chemical_reaction/plastication/on_reaction(datum/reagents/holder)
+	. = ..()
 	new /obj/item/stack/sheet/mineral/plastic(get_turf(holder.my_atom),10)
 	return
 
@@ -391,10 +411,8 @@
 	mob_react = FALSE
 
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
-	for(var/mob/M as anything in viewers(5, location))
-		to_chat(M, SPAN_WARNING("The solution violently bubbles!"))
-
 	location = get_turf(holder.my_atom)
 
 	for(var/mob/M as anything in viewers(5, location))
@@ -415,6 +433,7 @@
 	result_amount = 5
 
 /datum/chemical_reaction/metal_foam/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M as anything in viewers(5, location))

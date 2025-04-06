@@ -93,6 +93,19 @@
 #define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
 #define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
 
+///REACTION FLAGS
+/// reaction that has nothing to it. this responds to actually making the reaction occur, thus it always must be enabled, or replaced with CHEM_REACTION_ENDOTHERMIC.
+#define CHEM_REACTION_CALM (1<<0)
+/// reaction that bubbles when mixed, causing the person holding it get splashed by it unless wearing protective equipment, mixing small amounts with pipitte needs only gloves, everything else needs suit for complete protection. cannot defend with closing the lid.
+#define CHEM_REACTION_BUBBLING (1<<1)
+/// reaction that glows. nothing to add.
+#define CHEM_REACTION_GLOWING (1<<2)
+/// reaction that sets things around on fire, its still mixed, but everything is on fire. partially protected with lid.
+#define CHEM_REACTION_FIRE (1<<3)
+/// reaction that makes smoke from its contents while mixing. spread of smoke is depending on amount mixed. protect yourself with a gas mask or close the lid quick enough before it starts to smoke.
+#define CHEM_REACTION_SMOKING (1<<4)
+/// potential replacment for CHEM_REACTION_CALM. makes the reaction go slower. no longer will stuff mix instantly.
+#define CHEM_REACTION_ENDOTHERMIC (1<<5)
 
 //Blood plasma
 #define PLASMA_PURPLE "purpleplasma"

@@ -4,7 +4,6 @@
 
 /obj/item/reagent_container/glass
 	name = " "
-	var/base_name = " "
 	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
@@ -16,10 +15,12 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
+	var/splashable = TRUE
 	var/has_lid = TRUE
+	var/base_name = " "
+
 
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
@@ -52,6 +53,7 @@
 /obj/item/reagent_container/glass/Initialize()
 	. = ..()
 	base_name = name
+	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/glass/get_examine_text(mob/user)
 	. = ..()

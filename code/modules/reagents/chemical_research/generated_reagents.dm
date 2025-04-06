@@ -37,6 +37,7 @@
 	make_alike(GLOB.chemical_reactions_list[id])
 
 /datum/chemical_reaction/generated/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/datum/reagent/R = holder.has_reagent(id)
 	if(!R || !R.properties)
 		return

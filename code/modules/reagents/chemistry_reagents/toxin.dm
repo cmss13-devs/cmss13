@@ -265,6 +265,17 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_RELAXING = 8, PROPERTY_HYPOXEMIC = 4, PROPERTY_TOXIC = 2)
 
+/datum/reagent/toxin/potassium_phorosulfate
+	name = "Potassium Phorosulfate"
+	id = "potassium_phorosulfate"
+	description = "A chemical made from a violent reaction using sulphuric acid. Has specific industrial uses in sterelizing surfaces from biological contamination in non human accessible ares. Not used in other areas due to its long lasting corrosive effects unless treated."
+	reagent_state = SOLID
+	color = COLOR_WHITE
+	overdose = 10
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_RELAXING = 10, PROPERTY_HYPOXEMIC = 4, PROPERTY_BIOCIDIC = 5)
+
+
 /datum/reagent/toxin/beer2 //disguised as normal beer for use by emagged brobots
 	name = "Beer"
 	id = "beer2"

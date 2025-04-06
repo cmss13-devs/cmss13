@@ -815,7 +815,7 @@
 	storage_slots = 4
 
 /obj/item/clothing/suit/storage/marine/MP/provost/light
-	name = "\improper M3 pattern Chestplate armor"
+	name = "\improper M3 pattern MP chestplate"
 	desc = "An MP M3 pattern chestplate in urban camo pattern. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "pvlight"
 	item_state_slots = list(WEAR_JACKET = "pvlight")

@@ -1101,7 +1101,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
 	name = "\improper M10 Pattern Military Police Riot Helmet"
-	desc = "A Variant of the M10 for Military Police deployed to deal with riots, often worn by MP's from the Provost Office."
+	desc = "A variant of the M10 for the Military Police deployed to deal with riots, often worn by MPs from the Provost Office."
 	icon_state = "pvmarshalhat"
 	item_state = "pvmarshalhat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'

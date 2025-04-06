@@ -2196,7 +2196,7 @@
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor/nsg
+		/obj/item/attachable/suppressor/nsg,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -2377,7 +2377,7 @@
 
 	random_spawn_chance = 100 //L42A3 always spawns with attachments
 	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor/nsg
+		/obj/item/attachable/suppressor/nsg,
 	)
 
 	random_spawn_under = list(

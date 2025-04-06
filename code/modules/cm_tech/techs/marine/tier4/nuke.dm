@@ -39,6 +39,14 @@
 		to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this node before [ceil((NUKE_UNLOCK_TIME + SSticker.round_start_time) / (1 MINUTES))] minutes into the operation."))
 		return FALSE
 
+	var/nuclear_lock = CONFIG_GET(number/nuclear_lock_marines_percentage)
+	if(nuclear_lock > 0 && nuclear_lock != 100)
+		var/marines_count = SSticker.mode.count_marines() // Counting marines on land and on the ship
+		var/marines_peak = GLOB.peak_humans * nuclear_lock / 100
+		if(marines_count >= marines_peak)
+			to_chat(unlocking_mob, SPAN_WARNING("You cannot purchase this while there are more than [nuclear_lock]% Marines and USCM crew alive on this operation."))
+			return FALSE
+
 	return TRUE
 
 /datum/tech/nuke/proc/handle_description()

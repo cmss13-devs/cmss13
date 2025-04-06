@@ -1535,7 +1535,7 @@
 /obj/item/trash/buritto,
 /obj/item/trash/wy_chips_pepper,
 /obj/item/trash/syndi_cakes,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "aGI" = (
@@ -8317,7 +8317,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/trash/liquidfood,
+/obj/item/trash/burger,
 /obj/item/stack/tile/plasteel{
 	name = "ceiling tile";
 	pixel_x = -5;
@@ -19376,7 +19376,7 @@
 /area/lv522/indoors/c_block/cargo)
 "kug" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/trash/pistachios,
+/obj/item/trash/hotdog,
 /obj/item/trash/kepler,
 /obj/item/trash/chips,
 /obj/item/trash/popcorn,
@@ -19576,7 +19576,7 @@
 "kzr" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/wy_chips_pepper,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "kzu" = (

@@ -10067,11 +10067,10 @@
 /area/almayer/command/cic)
 "aAB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/groundside_operations{
-	dir = 4;
-	pixel_y = 8
-	},
 /obj/structure/machinery/door/window/westright,
+/obj/structure/machinery/computer/overwatch/groundside_operations{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aAC" = (
@@ -10658,11 +10657,6 @@
 	dir = 4;
 	layer = 2.99;
 	pixel_y = 4
-	},
-/obj/structure/machinery/computer/almayer_control{
-	dir = 4;
-	layer = 2.99;
-	pixel_y = 26
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -14455,7 +14449,7 @@
 	pixel_x = 27;
 	serial_number = 11
 	},
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler{
 	layer = 2;
 	pixel_x = 6;
 	pixel_y = -6
@@ -41866,7 +41860,7 @@
 /area/almayer/living/basketball)
 "kQr" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/item/tool/lighter/random{
 	pixel_x = 13
 	},

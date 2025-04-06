@@ -74,7 +74,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
 "aap" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball/cave)
@@ -433,7 +433,7 @@
 /area/strata/ug/interior/jungle/structures/research)
 "abF" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -510,7 +510,7 @@
 /area/strata/ug/interior/jungle/structures/research)
 "abV" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
 "abW" = (
@@ -829,7 +829,7 @@
 "adm" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
 "adn" = (
@@ -2377,8 +2377,8 @@
 "ajm" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/largecrate/random,
-/obj/item/storage/backpack/lightpack,
 /obj/item/storage/belt/shotgun,
+/obj/item/storage/backpack/lightpack/five_slot,
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/mining_outpost/hive)
 "ajn" = (
@@ -3573,7 +3573,7 @@
 "aqz" = (
 /obj/structure/surface/rack,
 /obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "aqA" = (
@@ -3797,14 +3797,14 @@
 	dir = 8
 	},
 /obj/item/stack/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "arE" = (
 /obj/structure/surface/rack,
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
@@ -4029,8 +4029,8 @@
 "asG" = (
 /obj/structure/surface/rack,
 /obj/item/stack/folding_barricade,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/security)
 "asV" = (
@@ -10718,7 +10718,7 @@
 /area/strata/ag/interior/outpost/admin)
 "bfO" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
 "bfP" = (
@@ -13357,10 +13357,10 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/water_marshes)
 "bvt" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
 /obj/effect/landmark/wo_supplies/storage/belts/m41abelt,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
@@ -13626,7 +13626,7 @@
 /area/strata/ag/exterior/landing_zones/near_lz2)
 "bxr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "bxs" = (
@@ -14338,7 +14338,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "bFg" = (
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
 "bFl" = (
@@ -15301,7 +15301,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "bRT" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -15618,7 +15618,7 @@
 "bWi" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/belt/shotgun,
-/obj/item/storage/backpack/lightpack,
+/obj/item/storage/backpack/lightpack/five_slot,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/mining_outpost/central)
 "bWk" = (
@@ -16491,7 +16491,7 @@
 	icon_state = "dogtag_upp_taken"
 	},
 /obj/item/clothing/suit/armor/riot,
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outpost/admin)
@@ -16677,7 +16677,7 @@
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cjj" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen/bar)
@@ -17559,9 +17559,9 @@
 /area/strata/ag/exterior/marsh/river)
 "ctz" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/administration)
 "ctA" = (
@@ -17851,7 +17851,6 @@
 "czw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
-/obj/item/clothing/glasses/thermal/syndi,
 /turf/open/floor/strata/purp1,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "czT" = (
@@ -25274,7 +25273,7 @@
 /area/strata/ag/interior/outpost/admin)
 "mOj" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -28520,7 +28519,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
 "qYZ" = (
-/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/mar40,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/auto_turf/ice/layer1,
 /area/strata/ag/exterior/paths/south_outpost)
@@ -28661,7 +28660,6 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/checkpoints/north)
@@ -30478,7 +30476,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "tJu" = (
-/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball/cave)
 "tJJ" = (
@@ -31073,7 +31071,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/restricted)
 "uul" = (
-/obj/structure/largecrate/guns/russian,
+/obj/structure/largecrate/random,
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
 "uux" = (

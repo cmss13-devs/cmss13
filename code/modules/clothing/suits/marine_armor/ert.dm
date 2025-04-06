@@ -808,7 +808,7 @@
 
 /obj/item/clothing/suit/storage/marine/MP/provost/marshal
 	name = "\improper M3 Pattern Marshal Chestplate"
-	desc = "A M3 Pattern Chestplate in a darker black and with Gold color highlights for clear identification. Useful for letting your men know who is in charge when taking to the field."
+	desc = "A M3 Pattern chestplate in a darker black and with gold color highlights for clear identification. Useful for letting your men know who is in charge when taking to the field."
 	icon_state = "pvmarshal"
 	item_state_slots = list(WEAR_JACKET = "pvmarshal")
 	w_class = SIZE_MEDIUM

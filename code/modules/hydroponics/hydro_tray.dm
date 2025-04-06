@@ -51,6 +51,8 @@
 	var/production_time_counter = 0
 	///used in darkacidic reaction_hydro tray to add chems to plant
 	var/chem_add_counter = 0
+	///Adjust the time between plant cycles Min -140
+	var/metabolism_adjust = 0
 	///if the plant is going to harvest itself once its ready
 	var/autoharvest = FALSE
 
@@ -89,9 +91,10 @@
 	// Update values every cycle rather than every process() tick.
 	if(force_update)
 		force_update = 0
-	else if(world.time < (lastcycle + cycledelay))
+	else if(world.time < (lastcycle + (cycledelay + metabolism_adjust)))
 		return
 	lastcycle = world.time
+	metabolism_adjust = 0
 
 	// Mutation level drops each main tick.
 	mutation_level -= rand(2,4)
@@ -381,6 +384,23 @@
 	pestlevel =   max(0,min(pestlevel,10))
 	weedlevel =   max(0,min(weedlevel,10))
 	toxins =  max(0,min(toxins,10))
+
+	metabolism_adjust = 0
+
+	if(yield_mod>20)
+		seed = seed.diverge()
+		if(yield_mod>70)
+			seed.nutrient_consumption = max(7,seed.nutrient_consumption)
+			seed.water_consumption = max(25,seed.water_consumption)
+		else if(yield_mod>50)
+			seed.nutrient_consumption = max(5,seed.nutrient_consumption)
+			seed.water_consumption = max(20,seed.water_consumption)
+		else if(yield_mod>30)
+			seed.nutrient_consumption = max(2,seed.nutrient_consumption)
+			seed.water_consumption = max(14,seed.water_consumption)
+		else if(yield_mod>20)
+			seed.nutrient_consumption = max(1,seed.nutrient_consumption)
+			seed.water_consumption = max(6,seed.water_consumption)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate_species()
 

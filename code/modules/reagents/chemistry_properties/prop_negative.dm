@@ -483,6 +483,14 @@
 	holder.custom_metabolism = holder.custom_metabolism * (1 + POTENCY_MULTIPLIER_VLOW * level)
 	..()
 
+/datum/chem_property/negative/hypermetabolic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.metabolism_adjust += -10*level
+
+
+
 /datum/chem_property/negative/addictive
 	name = PROPERTY_ADDICTIVE
 	code = "ADT"

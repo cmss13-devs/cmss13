@@ -146,6 +146,18 @@
 /datum/chem_property/positive/hemogenic/process_critical(mob/living/M, potency = 1)
 	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH*potency, 0)
 
+/datum/chem_property/positive/hemogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.sampled == 0)
+		return
+	if(prob(60))
+		processing_tray.sampled = 0
+		var/turf/c_turf = get_turf(processing_tray)
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] Graft scar has healed!"))
+
+
 /datum/chem_property/positive/hemogenic/proc/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)
 	M.nutrition = max(M.nutrition - potency, 0)
 
@@ -858,11 +870,11 @@
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
 
-/datum/chem_property/positive/photosensetive/process(mob/living/M, potency = 1)
+/datum/chem_property/positive/photosensitive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
 	M.apply_internal_damage(potency, "brain")
 
-/datum/chem_property/positive/photosensetive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+/datum/chem_property/positive/photosensitive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
 	. = ..()
 	if(!processing_tray.seed)
 		return
@@ -878,7 +890,7 @@
 		var/turf/c_turf = get_turf(processing_tray)
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.harvest_repeat = 1
-		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] begins to shimmer with a color out of space"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space"))
 		processing_tray.potency_counter = 0
 
 /datum/chem_property/positive/crystallization
@@ -910,7 +922,7 @@
 		var/turf/c_turf = get_turf(processing_tray)
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.harvest_repeat = 1
-		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] begins to shimmer with a color out of space"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space!"))
 		processing_tray.potency_counter = 0
 
 //properties with combat uses

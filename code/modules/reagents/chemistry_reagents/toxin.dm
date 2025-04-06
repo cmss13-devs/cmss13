@@ -208,13 +208,13 @@
 	description = "A harmful toxic mixture used to kill plantlife. Very toxic to animals."
 	reagent_state = LIQUID
 	color = "#49002E" // rgb: 73, 0, 46
-	properties = list(PROPERTY_TOXIC = 2)
+	properties = list(PROPERTY_TOXIC = 4)
 
 /datum/reagent/toxin/plantbgone/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
 	. = ..()
 	if(!processing_tray.seed)
 		return
-	processing_tray.plant_health -= 2*volume
+	processing_tray.plant_health -= 4*volume
 
 /datum/reagent/toxin/stoxin
 	name = "Soporific"

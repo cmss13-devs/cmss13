@@ -54,7 +54,7 @@
 		var/turf/c_turf = get_turf(processing_tray)
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.potency += rand(1,potency*2)
-		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] rustles as its branches bow"))
 		processing_tray.potency_counter = 0
 
 /datum/chem_property/neutral/nutritious
@@ -534,6 +534,12 @@
 /datum/chem_property/neutral/hypometabolic/update_reagent()
 	holder.custom_metabolism = max(holder.custom_metabolism / (1 + 0.35 * level), 0.005)
 	..()
+
+/datum/chem_property/neutral/hypometabolic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.metabolism_adjust = 20*potency
 
 /datum/chem_property/neutral/sedative
 	name = PROPERTY_SEDATIVE

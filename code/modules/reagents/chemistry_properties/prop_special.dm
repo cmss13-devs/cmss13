@@ -291,6 +291,18 @@
 	for(var/datum/internal_organ/I in H.internal_organs)
 		M.apply_internal_damage(-0.5 * potency * delta_time, I)
 
+/datum/chem_property/special/omnipotent/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.nutrilevel += 0.5*(potency*2)*volume
+	processing_tray.weedlevel += -2.5*(potency*2)*volume
+	processing_tray.pestlevel += -2.5*(potency*2)*volume
+	processing_tray.plant_health += 1*(potency*2)*volume
+	processing_tray.yield_mod += 1*(potency*2)*volume
+	processing_tray.mutation_mod += 1*(potency*2)*volume
+
+
 /datum/chem_property/special/radius
 	name = PROPERTY_RADIUS
 	code = "RAD"

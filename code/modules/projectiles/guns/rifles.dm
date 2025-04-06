@@ -195,7 +195,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16,"rail_x" = 18, "rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 11, "rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_config_values()
 	..()
@@ -2205,7 +2205,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 17, "rail_y" = 20, "under_x" = 28, "under_y" = 11, "stock_x" = 5, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 11, "rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
 
 /obj/item/weapon/gun/rifle/l23/set_gun_config_values()
 	..()

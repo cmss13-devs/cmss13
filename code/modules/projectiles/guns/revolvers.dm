@@ -709,6 +709,7 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 
 /obj/item/weapon/gun/revolver/mateba/engraved/tactical
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba
 	starting_attachment_types = list(/obj/item/attachable/mateba, /obj/item/attachable/compensator, /obj/item/attachable/reflex)
 
 /obj/item/weapon/gun/revolver/mateba/cmateba

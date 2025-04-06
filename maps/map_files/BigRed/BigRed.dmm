@@ -1469,7 +1469,7 @@
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
-	icon = 'icons\obj\structures\props\server_equipment.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -4817,7 +4817,7 @@
 	},
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
-	icon = 'icons\obj\structures\props\server_equipment.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)

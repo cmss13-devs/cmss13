@@ -783,7 +783,7 @@
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/marine/MP/provost
-	name = "\improper M3 pattern Urban MP armor"
+	name = "\improper M3 pattern MP urban armor"
 	desc = "A standard M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "pvmedium"
 	item_state_slots = list(WEAR_JACKET = "pvmedium")

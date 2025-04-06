@@ -195,7 +195,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 11, "rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 12,"rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
 
 /obj/item/weapon/gun/rifle/nsg23/set_gun_config_values()
 	..()
@@ -2161,6 +2161,7 @@
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/nsg,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/bayonet/upp,
@@ -2195,7 +2196,7 @@
 		/obj/item/attachable/scope/mini,
 	)
 	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/nsg
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -2205,7 +2206,7 @@
 	update_icon()
 
 /obj/item/weapon/gun/rifle/l23/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 11, "rail_y" = 22, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 14, "rail_y" = 21, "under_x" = 26, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
 
 /obj/item/weapon/gun/rifle/l23/set_gun_config_values()
 	..()
@@ -2312,6 +2313,7 @@
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/nsg,
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
@@ -2375,7 +2377,7 @@
 
 	random_spawn_chance = 100 //L42A3 always spawns with attachments
 	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
+		/obj/item/attachable/suppressor/nsg
 	)
 
 	random_spawn_under = list(

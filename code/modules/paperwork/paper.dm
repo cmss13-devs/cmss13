@@ -762,7 +762,7 @@
 	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
-			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[chemical_to_generate.id]
+			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
 			if(!contract)
 				name = "Synthesis of [chemical_to_generate.name]"
 			else
@@ -770,20 +770,33 @@
 			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
-			for(var/I in G.required_reagents)
+			for(var/I in reaction_generated.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-				var/U = G.required_reagents[I]
+				var/U = reaction_generated.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-			if(LAZYLEN(G.required_catalysts))
+			if(LAZYLEN(reaction_generated.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
-				for(var/I in G.required_catalysts)
+				for(var/I in reaction_generated.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-					var/U = G.required_catalysts[I]
+					var/U = reaction_generated.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
 				txt += "<BR>Overdoses at: [chemical_to_generate.overdose] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
+				info += "<I>Chemical has following reaction indicators:</I>"
+				if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
+					info += "<I>Aggressive foaming. The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection. </I>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
+					info += "<I>Luminesence. The reaction produces light, power of the light is dictated by the amount mixed. </I>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
+					info += "<I>Luminesence. The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker. </I>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+					info += "<I>Luminesence. The reaction is very exothermic and will cause a small scale combustion. This will not compromise the contents of the beaker.</I>"
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+					info += "<I>Luminesence. The reaction is endothermic. This slows down the mixing process significantly.</I>"
+				else
+					info += "<I>Inert. The reaction has no indicators.</I>"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE

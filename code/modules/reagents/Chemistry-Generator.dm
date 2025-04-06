@@ -64,7 +64,15 @@
 	//pick catalyst
 	if(prob(40) || gen_tier >= 4)//chance of requiring a catalyst
 		add_component(null,5,TRUE)
-	ENABLE_BITFIELD(reaction_type, pick_weight(list(CHEM_REACTION_BUBBLING = 2,CHEM_REACTION_FIRE = 3, CHEM_REACTION_ENDOTHERMIC = 1, CHEM_REACTION_GLOWING = 2, CHEM_REACTION_SMOKING = 2, CHEM_REACTION_CALM = 5)))//chance to enable a random reaction indicator
+	var/list/indicator_list= list(
+	"CHEM_REACTION_CALM" = CHEM_REACTION_CALM,
+	"CHEM_REACTION_BUBBLING" = CHEM_REACTION_BUBBLING,
+	"CHEM_REACTION_GLOWING" = CHEM_REACTION_GLOWING,
+	"CHEM_REACTION_FIRE" = CHEM_REACTION_FIRE,
+	"CHEM_REACTION_SMOKING" = CHEM_REACTION_SMOKING,
+	"CHEM_REACTION_ENDOTHERMIC" = CHEM_REACTION_ENDOTHERMIC,)
+	var/picked_flag = indicator_list[pick_weight(list("CHEM_REACTION_BUBBLING" = 2,"CHEM_REACTION_FIRE" = 3, "CHEM_REACTION_ENDOTHERMIC" = 1, "CHEM_REACTION_GLOWING" = 2, "CHEM_REACTION_SMOKING" = 2, "CHEM_REACTION_CALM" = 5))]
+	ENABLE_BITFIELD(reaction_type, picked_flag)//chance to enable a random reaction indicator
 	return TRUE
 
 /datum/chemical_reaction/proc/add_component(my_chemid, my_modifier, is_catalyst, tier, class)
@@ -395,18 +403,6 @@
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous ignition! Beware mixing more than the OD threshold!</I>"
 		else if(P == PROPERTY_EXPLOSIVE)
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
-	var/datum/chemical_reaction/reaction_check = GLOB.chemical_reactions_list[id]
-	info += "<I>Chemical has following reaction indicators:</I>"
-	if(CHECK_BITFIELD(reaction_check.reaction_type, CHEM_REACTION_BUBBLING))
-		info += "<I>Aggressive foaming. The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection. </I>"
-	if(CHECK_BITFIELD(reaction_check.reaction_type, CHEM_REACTION_GLOWING))
-		info += "<I>Luminesence. The reaction produces light, power of the light is dictated by the amount mixed. </I>"
-	if(CHECK_BITFIELD(reaction_check.reaction_type, CHEM_REACTION_SMOKING))
-		info += "<I>Luminesence. The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker. </I>"
-	if(CHECK_BITFIELD(reaction_check.reaction_type, CHEM_REACTION_FIRE))
-		info += "<I>Luminesence. The reaction is very exothermic and will cause a small scale combustion. This will not compromise the contents of the beaker.</I>"
-	if(CHECK_BITFIELD(reaction_check.reaction_type, CHEM_REACTION_FIRE))
-		info += "<I>Luminesence. The reaction is endothermic. This slows down the mixing process significantly.</I>"
 	description = info
 
 /datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)

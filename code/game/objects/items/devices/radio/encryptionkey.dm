@@ -266,6 +266,7 @@
 	name = "\improper Hyperdyne Corporation encryption key"
 	icon_state = "wy_key"
 	channels = list(RADIO_CHANNEL_HYPERDYNE = TRUE)
+	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 
 //---------------------------------------------------
 //UPP Keys

@@ -492,7 +492,7 @@
 	color = "#d1001c" // rgb: 209, 0, 28
 	chemclass = CHEM_CLASS_RARE
 	custom_metabolism = RAPID_METABOLISM
-
+	flags = REAGENT_NO_GENERATION
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_HYPERTHERMIC = 8)

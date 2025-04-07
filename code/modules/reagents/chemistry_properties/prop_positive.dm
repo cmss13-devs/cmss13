@@ -115,10 +115,10 @@
 	. = ..()
 	if(istype(sprayed_object, /obj/structure/barricade))
 		var/obj/structure/barricade/healing_cade = sprayed_object
-		healing_cade.update_health(-potency*POTENCY_MULTIPLIER_HIGH, TRUE)
+		healing_cade.update_health(-potency*POTENCY_MULTIPLIER_VHIGH, TRUE)
 	if(istype(sprayed_object, /obj/structure/machinery/defenses))
 		var/obj/structure/machinery/defenses/healing_defenses = sprayed_object
-		healing_defenses.update_health(-potency*POTENCY_MULTIPLIER_HIGH)
+		healing_defenses.update_health(-potency*POTENCY_MULTIPLIER_VHIGH)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
@@ -155,7 +155,7 @@
 	if(prob(60))
 		processing_tray.sampled = 0
 		var/turf/c_turf = get_turf(processing_tray)
-		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] Graft scar has healed!"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]'s graft scar has healed!"))
 
 
 /datum/chem_property/positive/hemogenic/proc/handle_nutrition_loss(mob/living/M, potency = 1, delta_time)

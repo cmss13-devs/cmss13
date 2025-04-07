@@ -1138,6 +1138,21 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_squad_guns,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/security/headquarters_storage)
+"adK" = (
+/obj/item/trash/wy_chips_pepper{
+	pixel_y = 10;
+	pixel_x = 10
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/rostock/lowerdeck_maint/s_a)
+"adL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/wy_chips_pepper{
+	pixel_y = 10;
+	pixel_x = 10
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/rostock/lowerdeck_maint/p_a)
 "adR" = (
 /turf/open/floor/strata/red4/north,
 /area/rostock/security/headquarters_bunk)
@@ -3229,7 +3244,6 @@
 /area/rostock/req)
 "bKR" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
 /obj/structure/sign/safety/opens_up{
 	pixel_x = -22;
 	pixel_y = -8
@@ -14392,10 +14406,6 @@
 /obj/item/trash/snack_bowl{
 	pixel_x = 9;
 	pixel_y = 9
-	},
-/obj/item/trash/pistachios{
-	pixel_x = -11;
-	pixel_y = -9
 	},
 /obj/structure/sign/safety/opens_up{
 	pixel_x = -22;
@@ -38818,7 +38828,7 @@ ofW
 ofW
 hgp
 kvi
-pbs
+adL
 aAZ
 hqx
 sIW
@@ -40513,7 +40523,7 @@ cOo
 pPQ
 sYA
 sYA
-sYA
+adK
 xfY
 jtG
 ofW

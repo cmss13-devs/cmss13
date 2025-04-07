@@ -274,11 +274,11 @@
 	if(!QDELETED(src))
 		disarm()
 
-/obj/item/explosive/mine/bullet_act(obj/projectile/P)
-	if(!triggered && istype(P.ammo, /datum/ammo/xeno)) //xeno projectile
+/obj/item/explosive/mine/bullet_act(obj/projectile/xenoprojectile)
+	if(!triggered && istype(xenoprojectile.ammo, /datum/ammo/xeno)) //xeno projectile
 		hit_count++
 		if(hit_count >= 2) // Check if hit two times
-			visible_message(SPAN_DANGER("\The [src] is hit by [P] and violently detonates!")) // Acid is hot for claymore
+			visible_message(SPAN_DANGER("\The [src] is hit by [xenoprojectile] and violently detonates!")) // Acid is hot for claymore
 			triggered = TRUE
 			prime()
 			if(!QDELETED(src))

@@ -315,13 +315,12 @@
 							return
 						var/datum/reagent/result_to_splash = GLOB.chemical_reagents_list[reaction.result]
 						var/datum/reagent/recipe_to_splash = GLOB.chemical_reagents_list[pick(reaction.required_reagents)]
-						playsound(get_turf(my_atom), 'sound/effects/bubbles2.ogg', 5, 1)
 						for(var/mob/living/carbon/human/victim in view(1, get_turf(my_atom)))
 							if(prob(20))
 								to_chat(victim, SPAN_WARNING("\a Large [pick("chunk", "drop", "lump")] of foam misses You narrowly!"))
 								return
 							if(victim.wear_suit?.armor_bio != CLOTHING_ARMOR_HARDCORE && created_volume >= 5)
-								playsound(victim, "acid_sizzle", 10, TRUE)
+								playsound(victim, "acid_sizzle", 20, TRUE)
 								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
 								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), floor(created_volume/6)+rand(0,1)))
 								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), floor(created_volume/6)+rand(0,1)))

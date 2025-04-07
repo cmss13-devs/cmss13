@@ -5,7 +5,7 @@
 	mob_max = 10
 	mob_min = 1
 	probability = 0
-	objectives = "Assist the USCM forces"
+	objectives = "Окажите поддержку силам КМП."
 	max_engineers = 2
 	max_medics = 2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
@@ -17,7 +17,7 @@
 	var/datum/squad/marine/cryo/cryo_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/cryo]
 	leaders = cryo_squad.roles_in[JOB_SQUAD_LEADER]
 	. = ..()
-	shipwide_ai_announcement("Successfully deployed [mob_max] Foxtrot marines, of which [length(members)] are ready for duty.")
+	shipwide_ai_announcement("Было успешно развернуто [mob_max] морпехов Фокстрота, готовых к службе: [length(members)].")
 	if(mob_max > length(members))
 		announce_dchat("Some cryomarines were not taken, use the Join As Freed Mob verb to take one of them.")
 

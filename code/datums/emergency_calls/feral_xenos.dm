@@ -12,8 +12,8 @@
 
 /datum/emergency_call/feral_xenos/New()
 	..()
-	arrival_message = "[MAIN_SHIP_NAME], this is USS Vriess respond-- #&...*#&^#.. signal... oh god, they're in the vent---... Priority Warning: Signal lost."
-	objectives = "Destroy everything!"
+	arrival_message = "[MAIN_SHIP_NAME], это ККС \"Вриесс\", ответьте--... #&...*#&^#... сигнал... о боже, они в вентиляции---... Приоритетное предупреждение: Сигнал потерян."
+	objectives = "Уничтожьте всё!"
 
 /datum/emergency_call/feral_xenos/spawn_items()
 	var/turf/drop_spawn = get_spawn_point(TRUE)

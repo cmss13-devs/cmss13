@@ -107,3 +107,52 @@
 2025-04-06:
   kiVts:
   - bugfix: speaking names over the radio are fixed
+2025-04-07:
+  Blundir, Crow, dimdimich1996, Jeser, Frans Feiffer, IroquoisLou, Triiodine:
+  - rscadd: W-Y whiteout has been reworked into AvP 2010 combat androids, they have
+      unique race and armor/items sprites, Working Joe style soundboard and remade
+      presets
+  - rscadd: W-Y commandos has been added
+  - rscadd: W-Y PMC APC has been added (for event purposes)
+  - rscadd: W-Y PMC detainer squad has been reworked visually, Crowd Control Specialist
+      unit was added to it
+  - rscadd: ES-7 Supernova Electrostatic Shockgun, currently only for pmc detainer
+      squad
+  - rscadd: Flammenwerfer 3 Heavy Incineration Unit, currently only for W-Y combat
+      androids
+  - rscadd: added a bunch of W-Y oriented backpacks, belts, pouches, etc
+  - rscadd: armor light color been tweaked slightly to be yellowish
+  - rscadd: all WY sec guards + synth (not goon) now have proper job name, proper
+      faction and a unique minimap icon and hud icon
+  - rscadd: corp dome insert synth is now a goon synth + added goon hud icon for it
+      and kutjevo goon synth
+  - rscdel: old ape suit whiteout and xeno handler pmc were removed and replaced with
+      new alternatives
+  - rscdel: corporate protection synth (synth in pmc clothes but not actually pmc)
+      has been removed
+  - rscdel: cl no longer has deathsquad faction group
+  - bugfix: incorrect mateba attachment offset
+  - bugfix: scout cloak activation cooldown not working
+  - bugfix: cmb synths having incorrect map/orbit icons
+  - balance: Apesuit has been completely reworked to be an anti xeno armor with low
+      bullet and bomb armor
+  - balance: terminator smartgun firerate has been nerfed severely since it's no longer
+      whiteout weapon
+  - balance: pmc fp9000 scatter on automatic mode has been reduced to a playable number
+  - balance: pmc survivors (big red) now have slighly better gear (engineer has big
+      backpack and welding protection helmet, leader has big backpack, normal pmc
+      has 1/3 chance to spawn with a slighly better helmet and big backpack)
+  - balance: pmc balaclava no longer gives hugger protection
+  - balance: non deathsquad whiteout droids no longer have insane armor stats
+  - balance: es4 been buffed slightly, should now be a bit less useless in cl's hands
+  - ui: new crtwhite theme, currently in use by W-Y combat droid voice panel
+  - code_imp: added support for armors to have custom armor lights and light colors
+  - refactor: refactored some injector code, to support custom reagent greyscale icon
+      globally, instead of being snowflake code
+  - soundadd: a collection of phrases W-Y droids can use
+  - soundadd: ES-7, new flamer sounds (from tgmc)
+  PhantornRU:
+  - rscadd: M83 can carried on the back
+  - imageadd: Added sprites for carrying RPG M83 on the back
+  Red-byte3D:
+  - bugfix: King ability destroy can now be chosen again

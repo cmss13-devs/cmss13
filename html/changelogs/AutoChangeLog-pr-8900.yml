@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - admin: "Added logging for joing as facehugger or lesser drone"

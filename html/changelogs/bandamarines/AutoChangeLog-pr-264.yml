@@ -1,5 +1,0 @@
-author: "HavvaMariajmiPalmer"
-delete-after: True
-changes:
-  - rscadd: "Добавлены шапка медведя и сигареты в лодаут"
-  - code_imp: "Добавлено модульный лодаут"

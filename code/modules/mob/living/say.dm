@@ -96,7 +96,6 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	speech_bubble.pixel_x = bubble_icon_x_offset
 	speech_bubble.pixel_y = bubble_icon_y_offset
-	speech_bubble.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	speech_bubble.plane = ABOVE_GAME_PLANE
 
 	if(animated)

@@ -345,6 +345,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/tactical,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 /obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
@@ -614,6 +615,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/double,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG
@@ -901,6 +903,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/mou53,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 	map_specific_decoration = TRUE
 	civilian_usable_override = FALSE

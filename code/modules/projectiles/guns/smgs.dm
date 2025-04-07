@@ -67,6 +67,7 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/stock/smg,
@@ -241,6 +242,7 @@
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade/m203,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -305,6 +307,7 @@
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade/m203,
 		/obj/item/attachable/stock/smg/collapsible/mp5a5,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 
 /obj/item/weapon/gun/smg/mp5/mp5a5/handle_starting_attachment()
@@ -376,6 +379,7 @@
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
@@ -481,6 +485,7 @@
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/magnetic_harness,
 	)
 
@@ -567,6 +572,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/lasersight, // Under
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 	wield_delay = WIELD_DELAY_NONE
 	aim_slowdown = SLOWDOWN_ADS_NONE
@@ -620,6 +626,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/lasersight, // Under
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
@@ -827,6 +834,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/attached_gun/extinguisher, // Underbarrel
 		)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -870,6 +878,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/attached_gun/extinguisher, //Underbarrel
 		)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE

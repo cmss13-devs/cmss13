@@ -525,6 +525,7 @@
 		//Under,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/bipod,
+		/obj/item/attachable/attached_gun/extinguisher,
 		//Integrated,
 		/obj/item/attachable/type88_barrel,
 	)

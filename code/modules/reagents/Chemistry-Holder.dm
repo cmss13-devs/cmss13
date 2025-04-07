@@ -322,8 +322,8 @@
 							if(victim.wear_suit?.armor_bio != CLOTHING_ARMOR_HARDCORE && created_volume >= 5)
 								playsound(victim, "acid_sizzle", 20, TRUE)
 								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
-								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), rand(5,6)))
-								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), rand(5,6)))
+								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), rand(4,6)))
+								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), rand(4,6)))
 								if(result_to_splash.get_property(PROPERTY_CORROSIVE) || recipe_to_splash.get_property(PROPERTY_CORROSIVE))//make a burning sound and flash if the reagents involved are corrosive
 									animation_flash_color(victim, "#FF0000")
 

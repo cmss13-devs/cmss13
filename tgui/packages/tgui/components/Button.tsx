@@ -55,6 +55,7 @@ type Props = Partial<{
   onClick: (e: any) => void;
   onFocus: (e: any) => void;
   onBlur: (e: any) => void;
+  allowAnyClick: BooleanLike;
   selected: BooleanLike;
   tooltip: ReactNode;
   tooltipPosition: Placement;
@@ -82,6 +83,7 @@ export const Button = (props: Props) => {
     iconRotation,
     iconSpin,
     onClick,
+    allowAnyClick,
     selected,
     tooltip,
     tooltipPosition,
@@ -114,7 +116,7 @@ export const Button = (props: Props) => {
       ])}
       tabIndex={!disabled ? 0 : undefined}
       onClick={(event) => {
-        if (!disabled && onClick) {
+        if (!disabled && onClick && (allowAnyClick || event.button === 0)) {
           onClick(event);
         }
       }}
@@ -213,7 +215,7 @@ type ConfirmProps = Partial<{
   Props;
 
 /**  Requires user confirmation before triggering its action. */
-const ButtonConfirm = (props: ConfirmProps) => {
+export const ButtonConfirm = (props: ConfirmProps) => {
   const {
     children,
     color,
@@ -237,7 +239,7 @@ const ButtonConfirm = (props: ConfirmProps) => {
       setTimeout(() => window.addEventListener('click', handleClickOff));
     } else {
       window.removeEventListener('click', handleClickOff);
-      if (event) {
+      if (event && (props.allowAnyClick || event.button === 0)) {
         onClick?.(event);
       }
     }

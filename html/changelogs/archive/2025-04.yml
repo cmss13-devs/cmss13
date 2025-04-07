@@ -1,0 +1,109 @@
+2025-04-01:
+  Djvarik:
+  - bugfix: Fixed a typo in the munition prep vendor.
+  - bugfix: The Staff Officer vendor's green beret is now actually green.
+  Drathek:
+  - ui: Tweaked the size of gauges in the ping relay browser
+  JackieEstegado:
+  - balance: Lowered the burn damage of the Antiparasitic chemical property by 25%.
+  Kashargul:
+  - bugfix: chat icon scaling
+  Red-byte3D:
+  - qol: cades playsound when hit by bullets
+  kiVts:
+  - bugfix: universal speak is working again
+2025-04-02:
+  ChampionDragos, detectivegoogle:
+  - rscadd: A new lorebook spawns in the pilot bunks.
+  Detective-Google:
+  - balance: colony boozeomats are no longer always full
+  Drathek:
+  - bugfix: Mouse 4/5 is now ignored for firing and vehicles
+  - bugfix: Vendor vend buttons now only respond to left click
+  - code_imp: All mouse modifiers in code have been macroified
+  - ui: Button has a new prop allowAnyClick which can allow any click to cause an
+      onClick otherwise it will only occur for left click
+  Generallemon07:
+  - bugfix: fixed gutting fish displaying message that user is gutting the knife
+  - bugfix: fixed gutting fish infinitely
+  - bugfix: fixed urchins disappearing when attempting to consume
+  Nihisohel:
+  - balance: CO Pistols no longer get melted or blown up.
+  Thwomper, ihatethisengine, DawsonKeyes:
+  - rscadd: introduced hunting bow as a secondary weapon for yautja.
+  - balance: yanking out objects speed now depends on the size of the object
+  fira:
+  - bugfix: Fix an issue when concurrently loading identical maps.
+2025-04-03:
+  Git-Nivrak:
+  - balance: You can no longer construct resin structures, plant eggs or build barricades
+      within a one tile radius of multiz stairs
+  - qol: Moved multiz stairs layer up for visual clarity
+2025-04-04:
+  Nihisohel:
+  - rscadd: Adds a gun durability and repair system.
+  - rscadd: A handful of bullets can be used to chamber a gun when it is unchambered,
+      provided the caliber matches.
+  - balance: Guns can no longer be destroyed by small explosions; this functionality
+      is hooked up with the gun durability system, but guns can still be deleted if
+      the explosion is strong enough i.e. Orbital Bombardments.
+  - balance: Guns can no longer be deleted when acid is poured into it, instead requiring
+      repairs. Zero durability weapons still get deleted if its acided, however.
+  Red-byte3D:
+  - bugfix: You can no longer remove documents from a cabinet when youre away from
+      it
+  jupyterkat:
+  - bugfix: fixed spec icons on orbit panel
+  - bugfix: fixed spec icons on squad info panel
+2025-04-05:
+  Aurallianz:
+  - rscadd: Gave CE dropship access
+  - rscadd: Sling strap for CE's apollo maintenance  handheld
+  - qol: Gave CE Squad trackers & LZ tracker
+  - bugfix: CE now has nailgun ammo
+  Blundir:
+  - imageadd: resprites EAT bar
+  - imageadd: resprited many legacy icons
+  - bugfix: gibber stages of operation are now displayed correctly
+  - bugfix: synth charge station having meter incorrectly displayed, resprited it
+  - rscadd: resprites ancient xeno suits and mask, adds a lot of new ones for event
+      purposes
+  - rscadd: Armat container and a new WY container
+  - maptweak: swapped some existing containers on maps with new ones
+  - rscadd: clown facepaint for event purposes
+  Detective-Google:
+  - bugfix: synths buying a normal webbing no longer locks them out of experimental
+      webbings.
+  - bugfix: nukes can be bought again
+  Djvarik:
+  - rscadd: Added M3 Smooth Marine Armor to Req's Surplus Uniform Vendor
+  - spellcheck: Tweaked the capitalization of the M10 magazines in the Req Ammo Vendor.
+  FebrezeNinja:
+  - ui: Replace Autodoc interface with a TGUI one.
+  - code_imp: Moved manual surgery storage from medical record to autodoc.
+  - code_imp: Renamed one-letter variables in Autodoc code.
+  Hahafunnyname:
+  - rscadd: Nurses can now fireman carry
+  MistChristmas:
+  - bugfix: Security Records can now Add Comments again.
+  PhantornRU:
+  - config: Add to Config - Block nuclear device invocation until more marines than
+      this percentage are alive. (0-100)
+  Red-byte3D:
+  - bugfix: Cant buckle alive xenos to things anymore
+  - bugfix: Hellhound callers can only be called by people with TRAIT_YAUTJA_TECH
+  SpypigDev:
+  - ui: converts groundside ops console to TGUI
+  - rscdel: Almayer control console merged with groundside ops console
+  - rscadd: OB keycard safety system
+  Thwomper:
+  - rscdel: Removed automated lifeboat fuel pump sentry guns from USS Almayer.
+  realforest2001:
+  - rscadd: Added Civil Insubordination to JAS.
+  - rscadd: Split Resisting Arrest and Resisting Search laws in JAS.
+  - rscadd: Added Terrorism and Terror Association laws to JAS.
+  - rscadd: Added Black Marketeering and Arms Dealing laws to JAS.
+  - rscadd: Prefab paperwork now uses Courier New font.
+2025-04-06:
+  kiVts:
+  - bugfix: speaking names over the radio are fixed

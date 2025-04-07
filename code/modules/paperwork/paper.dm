@@ -790,7 +790,7 @@
 					txt += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
 				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
 					txt += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_ENDOTHERMIC))
 					txt += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
 				else
 					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
@@ -918,6 +918,8 @@
 	icon_state = "paper_wy_words"
 	var/datum/reagent/data
 	var/completed = FALSE
+	///does the document has the information needed but .
+	var/valid_report = TRUE
 
 /obj/item/paper/research_report/proc/generate(datum/reagent/S, info_only = FALSE)
 	if(!S)
@@ -925,8 +927,22 @@
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
+		var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[S.id]
 		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
+			info += "<BR>Chemical has following reaction indicators:"
+			if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
+				info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
+				info += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
+				info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+				info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+				info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
+			else
+				info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
@@ -935,9 +951,11 @@
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
+			valid_report = FALSE
 	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
+		valid_report = FALSE
 	else if(S.description)
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
@@ -947,6 +965,7 @@
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
+		valid_report = FALSE
 	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
@@ -957,6 +976,7 @@
 			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only && R.chemclass != CHEM_CLASS_HYDRO)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
+				valid_report = FALSE
 			else
 				var/U = C.required_reagents[I]
 				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
@@ -975,12 +995,14 @@
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
 		completed = FALSE
+		valid_report = FALSE
 
 	if(info_only)
 		completed = TRUE
 	else
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
+			valid_report = FALSE
 		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 

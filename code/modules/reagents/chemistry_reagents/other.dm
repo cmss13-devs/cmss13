@@ -80,17 +80,16 @@
 	processing_tray.plant_health += -volume
 	if(prob(10))
 		var/turf/c_turf = get_turf(processing_tray)
-		var/removed_chem = processing_tray.seed.chems[pick(processing_tray.seed.chems)]
-		var/datum/reagent/removed_chem_datum = GLOB.chemical_reagents_list[removed_chem]
+		var/removed_chem = pick(processing_tray.seed.chems)
 		processing_tray.seed = processing_tray.seed.diverge()
 		if(length(processing_tray.seed.chems) > 1)
+			c_turf.visible_message(SPAN_WARNING("[capitalize_first_letters(processing_tray.seed.display_name)] sizzles and pops!"))
 			processing_tray.seed.chems.Remove(removed_chem)
-			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] Sizzles and Pops, you smell [removed_chem_datum.name]"))
 		if(length(processing_tray.seed.chems) <= 1)
 			if (!isnull(processing_tray.seed.chems["xenoblood"]))
 				return
 			processing_tray.seed.chems += list("xenoblood" = list(1,2))
-			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name]'s sizzling sputters out, you smell [name]"))
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)]'s sizzling sputters out, you smell [lowertext(name)]!"))
 
 /datum/reagent/blood/xeno_blood/royal
 	name = "Dark Acidic Blood"
@@ -106,21 +105,17 @@
 	processing_tray.toxins += 6*volume
 	processing_tray.plant_health += -4*volume
 	processing_tray.chem_add_counter += 1*volume
-	if(processing_tray.chem_add_counter >= 10 && prob(60))
+	if(processing_tray.chem_add_counter >= 5 && prob(60))
 		var/turf/c_turf = get_turf(processing_tray)
-		processing_tray.chem_add_counter += -10
+		processing_tray.chem_add_counter += -5
 		processing_tray.seed = processing_tray.seed.diverge()
 		if(length(processing_tray.seed.chems) > 10)
 			return
 		if(!isnull(processing_tray.seed.chems["xenoblood"]))
-			var/new_chem = list(pick( prob(10);pick(GLOB.chemical_gen_classes_list["C1"]),\
-										prob(15);pick(GLOB.chemical_gen_classes_list["C2"]),\
-										prob(25);pick(GLOB.chemical_gen_classes_list["C3"]),\
-										prob(30);pick(GLOB.chemical_gen_classes_list["C4"]),\
-										prob(15);pick(GLOB.chemical_gen_classes_list["T1"])) = list(1,rand(2,3)))
-			var/datum/reagent/new_chem_datum = GLOB.chemical_reagents_list[new_chem]
+			var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(1,rand(2,3)))
+			var/datum/reagent/new_chem_datum = GLOB.chemical_reagents_list[new_chem[1]]
 			processing_tray.seed.chems += new_chem
-			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] flashes an erie green, you smell [new_chem_datum.name]"))
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)] flashes an erie green, you smell [new_chem_datum.name]!"))
 
 /datum/reagent/vaccine
 	//data must contain virus type

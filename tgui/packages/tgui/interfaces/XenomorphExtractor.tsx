@@ -45,7 +45,7 @@ export const XenomorphExtractor = () => {
   const { act, data } = useBackend<Data>();
   const BulkPrint = [2, 5, 10]; // simple but effective
   const dropdownOptions = data.categories;
-  const [selectedTab, setSelectedTab] = useSharedState('NONE', '0');
+  const [selectedTab, setSelectedTab] = useSharedState('NONE', 'None');
 
   return (
     <Window width={850} height={800} theme="crtyellow">

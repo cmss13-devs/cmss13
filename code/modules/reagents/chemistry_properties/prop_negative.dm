@@ -487,7 +487,7 @@
 	. = ..()
 	if(!processing_tray.seed)
 		return
-	processing_tray.metabolism_adjust += -10*level
+	processing_tray.metabolism_adjust += clamp(-20*potency, 0, -130)
 
 
 

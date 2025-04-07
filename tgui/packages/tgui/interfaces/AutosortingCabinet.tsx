@@ -16,7 +16,6 @@ interface SortingProps {
 interface PaperData {
   name: string;
   document_id: string;
-  completed: boolean;
   overdose: number;
   overall_value: number;
   document_type: number;
@@ -42,9 +41,6 @@ export const AutosortingCabinet = () => {
       : selectedSort === 2
         ? paperDocumentFinal.sort((a, b) => a.overdose - b.overdose)
         : paperDocumentFinal.sort((a, b) => a.document_type - b.document_type);
-    paperDocumentFinal = paperDocumentFinal.filter(
-      (property) => property.completed,
-    );
   }
   if (paperDocumentFinal) {
     if (selectedSearch !== '') {
@@ -140,20 +136,6 @@ export const AutosortingCabinet = () => {
             onClick={() => setSelectedSort(3)}
           >
             Sort by Class
-          </Button>
-          <Button
-            fontSize={'11px'}
-            icon={'check'}
-            ml={'1px'}
-            width={5.8}
-            iconPosition="right"
-            tooltip={'Only Include chemicals that can be used in the simulator'}
-            tooltipPosition="bottom"
-            preserveWhitespace
-            selected={isCompleted}
-            onClick={() => setIsCompleted(!isCompleted)}
-          >
-            {'   '}
           </Button>
           <Button
             fontSize={'11px'}

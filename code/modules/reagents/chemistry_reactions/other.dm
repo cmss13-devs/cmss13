@@ -80,6 +80,14 @@
 	required_reagents = list("hydrogen" = 2, "sulfur" = 1, "oxygen" = 4)
 	result_amount = 1
 
+/datum/chemical_reaction/cooper_sulfate
+	name = "Cooper Sulfate"
+	id = "cooper_sulfate"
+	result = "cooper_sulfate"
+	required_reagents = list("cooper" = 2, "sulphuric acid" = 5)
+	reaction_type = parent_type::reaction_type | CHEM_REACTION_SMOKING
+	result_amount = 1
+
 /datum/chemical_reaction/ethanol
 	name = "Ethanol"
 	id = "ethanol"
@@ -100,7 +108,6 @@
 	id = "thermite"
 	result = "thermite"
 	required_reagents = list("aluminum" = 1, "iron" = 1, "oxygen" = 1)
-	reaction_type = parent_type::reaction_type | CHEM_REACTION_FIRE
 	result_amount = 3
 
 
@@ -159,6 +166,7 @@
 	result = null
 	required_reagents = list("aluminum" = 1, "potassium" = 1, "sulfur" = 1 )
 	result_amount = 3
+	reaction_type =  parent_type::reaction_type | CHEM_REACTION_FIRE
 	mob_react = FALSE
 
 /datum/chemical_reaction/flash_powder/on_reaction(datum/reagents/holder, created_volume)
@@ -233,9 +241,19 @@
 	name = "Formaldehyde"
 	id = "formaldehyde"
 	result = "formaldehyde"
+	reaction_type =  parent_type::reaction_type | CHEM_REACTION_SMOKING
 	required_reagents = list("methane" = 1, "oxygen" = 1, "phoron" = 1)
 	required_catalysts = list("silver" = 5)
 	result_amount = 3
+
+/datum/chemical_reaction/phenolformaldehyde_resin
+	name = "Phenolformaldehyde"
+	id = "phenol_formaldehyde"
+	result = "phenol_formaldehyde"
+	required_reagents = list("formaldehyde" = 2, "phenol" = 1)
+	required_catalysts = list("ammonia" = 5)
+	reaction_type = CHEM_REACTION_ENDOTHERMIC
+	result_amount = 1
 
 /datum/chemical_reaction/paraformaldehyde
 	name = "Paraformaldehyde"
@@ -249,6 +267,7 @@
 	id = "hexamine"
 	result = "hexamine"
 	required_reagents = list("ammonia" = 2, "formaldehyde" = 3)
+	reaction_type =  parent_type::reaction_type | CHEM_REACTION_BUBBLING
 	result_amount = 3
 
 /datum/chemical_reaction/ammoniumnitrate

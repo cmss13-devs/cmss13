@@ -298,6 +298,16 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 3)
 
+/datum/reagent/toxin/cooper_sulfate
+	name = "Cooper Sulfate"
+	id = "cooper_sulfate"
+	description = "A common fungicide that is widely used to treat wood and other organic materials to prevent rot, decay, and fungal growth."
+	reagent_state = LIQUID
+	spray_warning = TRUE
+	color = "#1d39db"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_CORROSIVE = 5)
+
 /datum/reagent/toxin/acid/polyacid
 	name = "Polytrinic acid"
 	id = "pacid"
@@ -317,6 +327,16 @@
 	reagent_state = GAS
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CARCINOGENIC = 1)
+
+
+/datum/reagent/toxin/phenolformaldehyde_resin
+	name = "Phenol-Formaldehyde Resin"
+	id = "phenol_formaldehyde"
+	description = "Phenol-Formaldehyde Resin is a common molding polymer used in production of many small parts. It has great stress capacity and proven itself over many decades."
+	reagent_state = SOLID
+	chemclass = CHEM_CLASS_RARE
+	color = "#909648"
+	properties = list(PROPERTY_TOXIC = 3)
 
 /datum/reagent/toxin/paraformaldehyde
 	name = "Paraformaldehyde"

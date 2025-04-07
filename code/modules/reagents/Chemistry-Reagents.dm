@@ -151,6 +151,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 		return
 
 	handle_processing(M, mods, delta_time)
+	if(QDELETED(src)) //proc above could have deleted us
+		return
 	holder.remove_reagent(id, custom_metabolism * delta_time)
 
 	if(adj_temp && M.bodytemperature != target_temp)

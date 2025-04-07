@@ -157,15 +157,22 @@
 		return ..()
 	if(istype(attacked_item, /obj/item/paper/research_notes))
 		var/obj/item/paper/research_notes/note = attacked_item
+		if(note.note_type != "synthesis")
+			return
 		attacked_item = note.convert_to_chem_report()
 	for(var/allowed_type in allowed_types)
 		if(istype(attacked_item, allowed_type))
-			to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
-			user.drop_inv_item_to_loc(attacked_item, src)
-			LAZYADD(paper_contents, attacked_item)
-			icon_state = initial(icon_state)+"-open"
-			addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 0.5 SECONDS)
-			update_static_data_for_all_viewers()
+			var/obj/item/paper/research_report/document_report = attacked_item
+			if(document_report.valid_report)
+				to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
+				user.drop_inv_item_to_loc(attacked_item, src)
+				LAZYADD(paper_contents, attacked_item)
+				icon_state = initial(icon_state)+"-open"
+				addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 0.5 SECONDS)
+				update_static_data_for_all_viewers()
+			else
+				to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but is refused."))
+				return
 
 /*
  * Security Record Cabinets

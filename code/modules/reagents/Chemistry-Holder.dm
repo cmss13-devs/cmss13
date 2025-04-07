@@ -296,11 +296,9 @@
 					reaction.on_reaction(src, created_volume, multiplier)
 
 					if(reaction.result)
-
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
 						set_data(reaction.result, preserved_data)
-
-					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) || (!CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC))) //force the reaction to occur if both options are disabled.
+					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
 						for(var/required_reagent in reaction.required_reagents)
 							remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
 						add_reagent(reaction.result, reaction.result_amount*multiplier)
@@ -310,6 +308,7 @@
 						for(var/mob/seen_mob in seen)
 							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
 						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 5, 1)
+
 
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_BUBBLING))
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
@@ -321,12 +320,12 @@
 							if(prob(20))
 								to_chat(victim, SPAN_WARNING("\a Large [pick("chunk", "drop", "lump")] of foam misses You narrowly!"))
 								return
-							if(!(victim.wear_suit?.armor_bio > CLOTHING_ARMOR_HARDCORE) && created_volume >= 5)
+							if(victim.wear_suit?.armor_bio != CLOTHING_ARMOR_HARDCORE && created_volume >= 5)
+								playsound(victim, "acid_sizzle", 10, TRUE)
 								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
 								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), floor(created_volume/6)+rand(0,1)))
 								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), floor(created_volume/6)+rand(0,1)))
 								if(result_to_splash.get_property(PROPERTY_CORROSIVE) || recipe_to_splash.get_property(PROPERTY_CORROSIVE))//make a burning sound and flash if the reagents involved are corrosive
-									playsound(victim, "acid_sizzle", 25, TRUE)
 									animation_flash_color(victim, "#FF0000")
 
 							else if (created_volume >= 5)
@@ -347,7 +346,7 @@
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
 							return
 						var/datum/reagent/reagent_to_burn = GLOB.chemical_reagents_list[reaction.result]
-						if(timeleft(addtimer(CALLBACK(src, PROC_REF( combust), get_turf(my_atom), 1, 3, 2, 2, reagent_to_burn.burncolor), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound
+						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1, 3, 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound
 							var/list/seen = viewers(3, get_turf(my_atom))
 							for(var/mob/seen_mob in seen)
 								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to smoke heavily!"))
@@ -370,7 +369,7 @@
 						var/list/seen = viewers(0, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
 							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
-						addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 2 SECONDS, TIMER_UNIQUE)//this could easily be in process but I want to control the time
+						addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction, multiplier), 2 SECONDS, TIMER_UNIQUE)//this could easily be in process but I want to control the time
 					break
 
 	while(reaction_occurred)
@@ -386,7 +385,7 @@
 	var/list/seen = viewers(2, get_turf(my_atom))
 	if(!CHECK_BITFIELD(my_atom.flags_atom, OPENCONTAINER))
 		for(var/mob/seen_mob in seen)
-			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] Lid on [src] prevents fumes from spreading around itself."))
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] Lid on [my_atom] prevents fumes from spreading around itself."))
 		return
 	for(var/mob/seen_mob in seen)
 		to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] "))
@@ -398,7 +397,7 @@
 	playsound(location, 'sound/effects/smoke.ogg', 25, 1)
 	INVOKE_ASYNC(smoke_reaction, TYPE_PROC_REF(/datum/effect_system/smoke_spread/chem, start))
 
-/datum/reagents/proc/handle_endothermic_reaction(datum/chemical_reaction/reaction)//HOPEFULLY, we are already clear on stuff like beaker type or holder type by checks made earlier, so we are only checking if we have enough chemicals.
+/datum/reagents/proc/handle_endothermic_reaction(datum/chemical_reaction/reaction, multiplier)//HOPEFULLY, we are already clear on stuff like beaker type or holder type by checks made earlier, so we are only checking if we have enough chemicals.
 	var/required_reagents_present = 0
 	var/required_catalysts_present = 0
 	for(var/datum/reagent/reagent_in_holder in reagent_list)
@@ -415,11 +414,11 @@
 			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution bubbles."))
 			playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 	for(var/required_reagent in reaction.required_reagents)
-		remove_reagent(required_reagent, reaction.required_reagents[required_reagent], safety = TRUE)
-	add_reagent(reaction.result, reaction.result_amount)
+		remove_reagent(required_reagent, reaction.required_reagents[required_reagent] * max(multiplier/5, 2), safety = TRUE)
+	add_reagent(reaction.result, reaction.result_amount * max(multiplier/5, 2))
 	for(var/secondary_result in reaction.secondary_results)
-		add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result])
-	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 2 SECONDS, TIMER_UNIQUE)
+		add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * max(multiplier/5, 2))
+	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 
 /datum/reagents/proc/isolate_reagent(reagent)
 	for(var/datum/reagent/R in reagent_list)
@@ -763,7 +762,7 @@
 
 	return exploded
 
-/datum/reagents/proc/combust(turf/sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating)
+/datum/reagents/proc/combust(turf/sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating, flush_beaker = TRUE)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -800,7 +799,8 @@
 		smoke.start(intensity, max_fire_int)
 		smoke = null
 
-	exploded = TRUE // clears reagents after all reactions processed
+	if(flush_beaker)
+		exploded = TRUE // clears reagents after all reactions processed
 
 	msg_admin_attack("Chemical fire with Intensity: [intensity], Duration: [duration], Radius: [radius], Flameshape: [flameshape] in [sourceturf.loc.name] ([sourceturf.x],[sourceturf.y],[sourceturf.z]).", sourceturf.x, sourceturf.y, sourceturf.z)
 

@@ -539,7 +539,7 @@
 	. = ..()
 	if(!processing_tray.seed)
 		return
-	processing_tray.metabolism_adjust = 20*potency
+	processing_tray.metabolism_adjust += clamp(20*potency, 0, 130)
 
 /datum/chem_property/neutral/sedative
 	name = PROPERTY_SEDATIVE

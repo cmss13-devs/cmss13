@@ -1218,7 +1218,7 @@ SUBSYSTEM_DEF(minimaps)
 	labels?.clear_labels(usr)
 
 /atom/movable/screen/minimap_tool/update
-	icon_state = "clear"
+	icon_state = "update"
 	desc = "Send a tacmap update"
 	screen_loc = "15,8"
 	COOLDOWN_DECLARE(update_cooldown)

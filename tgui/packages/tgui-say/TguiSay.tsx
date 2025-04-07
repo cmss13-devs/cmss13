@@ -42,6 +42,7 @@ export function TguiSay() {
   const channelIterator = useRef(new ChannelIterator());
   const chatHistory = useRef(new ChatHistory());
   const messages = useRef(byondMessages);
+  const scale = useRef(true);
 
   // I initially wanted to make these an object or a reducer, but it's not really worth it.
   // You lose the granulatity and add a lot of boilerplate.
@@ -52,11 +53,9 @@ export function TguiSay() {
   const [size, setSize] = useState(WindowSize.Small);
   const [maxLength, setMaxLength] = useState(1024);
   const [lightMode, setLightMode] = useState(false);
-  const [scale, setScale] = useState(false);
   const [position, setPosition] = useState([window.screenX, window.screenY]);
   const [value, setValue] = useState('');
   const [extraChannels, setExtraChennels] = useState<Array<Channel>>([]);
-  const [rescale, setRescale] = useState(false);
 
   function handleArrowKeys(direction: KEY.Up | KEY.Down): void {
     const chat = chatHistory.current;
@@ -104,7 +103,7 @@ export function TguiSay() {
 
   function handleClose(): void {
     innerRef.current?.blur();
-    windowClose(scale);
+    windowClose(scale.current);
 
     setTimeout(() => {
       chatHistory.current.reset();
@@ -234,15 +233,14 @@ export function TguiSay() {
     }
 
     setButtonContent(iterator.current());
-    windowOpen(iterator.current(), scale);
-    setRescale(true);
+    windowOpen(iterator.current(), scale.current);
   }
 
   function handleProps(data: ByondProps): void {
     setMaxLength(data.maxLength);
     setLightMode(!!data.lightMode);
     setExtraChennels(data.extraChannels);
-    setScale(!!data.scale);
+    scale.current = !!data.scale;
 
     if (!data.scale) {
       window.document.body.style['zoom'] = `${100 / window.devicePixelRatio}%`;
@@ -255,12 +253,7 @@ export function TguiSay() {
     setCurrentPrefix(null);
     setButtonContent(channelIterator.current.current());
     setValue('');
-    setRescale(false);
   }
-
-  useEffect(() => {
-    windowSet(WindowSize.Small, scale);
-  }, [rescale]);
 
   /** Subscribe to Byond messages */
   useEffect(() => {
@@ -284,7 +277,7 @@ export function TguiSay() {
 
     if (size !== newSize) {
       setSize(newSize);
-      windowSet(newSize, scale);
+      windowSet(newSize, scale.current);
     }
   }, [value]);
 
@@ -301,7 +294,12 @@ export function TguiSay() {
       >
         {!lightMode && <div className={`shine shine-${theme}`} />}
       </div>
-      <div className={classes(['content', lightMode && 'content-lightMode'])}>
+      <div
+        className={classes(['content', lightMode && 'content-lightMode'])}
+        style={{
+          zoom: scale.current ? '' : `${100 / window.devicePixelRatio}%`,
+        }}
+      >
         <button
           className={`button button-${theme}`}
           onClick={handleIncrementChannel}

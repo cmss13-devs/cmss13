@@ -114,8 +114,8 @@
 					permit_recipients = permit_hives[1].totalXenos.Copy()
 				if("All Xenos")
 					permit_recipients = GLOB.living_xeno_list.Copy()
-					for(var/H in GLOB.hive_datum)
-						permit_hives += GLOB.hive_datum[H]
+					for(var/hive in GLOB.hive_datum)
+						permit_hives += GLOB.hive_datum[hive]
 
 			var/list/handled_xenos = list()
 
@@ -170,8 +170,8 @@
 					permit_recipients = permit_hives[1].totalXenos.Copy()
 				if("All Xenos")
 					permit_recipients = GLOB.living_xeno_list.Copy()
-					for(var/H in GLOB.hive_datum)
-						permit_hives += GLOB.hive_datum[H]
+					for(var/hive in GLOB.hive_datum)
+						permit_hives += GLOB.hive_datum[hive]
 
 			var/list/handled_xenos = list()
 

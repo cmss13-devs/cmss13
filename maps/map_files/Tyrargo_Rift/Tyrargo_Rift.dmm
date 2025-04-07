@@ -4707,23 +4707,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_west)
-"anA" = (
-/obj/structure/flora/tree/dead/tree_1{
-	pixel_y = -2;
-	layer = 5.7
-	},
-/obj/structure/flora/tree/dead/tree_2{
-	pixel_x = -25;
-	pixel_y = 10;
-	layer = 5.5
-	},
-/obj/structure/flora/tree/dead/tree_3{
-	pixel_x = -6;
-	pixel_y = 12;
-	layer = 5.5
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
 "anB" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/strata_grass,
@@ -13631,20 +13614,6 @@
 /obj/structure/platform/stone/kutjevo/east,
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/fsb_south)
-"aJA" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/structure/platform/stone/kutjevo/west,
-/turf/open_space,
-/area/tyrargo/outdoors/outskirts/fsb_north)
-"aJB" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/structure/platform/stone/kutjevo/east,
-/turf/open_space,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "aJC" = (
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
@@ -17917,92 +17886,12 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
-"aSz" = (
-/obj/structure/flora/tree/dead/tree_2,
-/obj/structure/flora/tree/dead/tree_3{
-	pixel_x = -26;
-	pixel_y = 7;
-	layer = 5.9
-	},
-/obj/structure/flora/tree/dead/tree_4{
-	pixel_y = 7;
-	pixel_x = -5;
-	layer = 5.8
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
 "aSA" = (
 /obj/structure/machinery/shower{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/tyrargo/indoors/apartment/south_ground)
-"aSB" = (
-/obj/structure/flora/tree/dead/tree_4{
-	pixel_x = -15;
-	pixel_y = 1;
-	layer = 5.4
-	},
-/obj/structure/flora/tree/dead/tree_5{
-	pixel_x = -24;
-	pixel_y = 5;
-	layer = 5.3
-	},
-/obj/structure/flora/tree/dead/tree_6{
-	pixel_x = -6;
-	pixel_y = 7;
-	layer = 5.2
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
-"aSC" = (
-/obj/structure/flora/tree/dead/tree_3{
-	layer = 5.1
-	},
-/obj/structure/flora/tree/dead/tree_4{
-	pixel_x = -8;
-	pixel_y = 5;
-	layer = 4.9
-	},
-/obj/structure/flora/tree/dead/tree_5{
-	pixel_x = -28;
-	pixel_y = 5;
-	layer = 5
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
-"aSD" = (
-/obj/structure/flora/tree/dead/tree_4{
-	layer = 4.8
-	},
-/obj/structure/flora/tree/dead/tree_5{
-	pixel_y = 6;
-	pixel_x = -26;
-	layer = 4.7
-	},
-/obj/structure/flora/tree/dead/tree_6{
-	pixel_x = -5;
-	pixel_y = 7;
-	layer = 4.6
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
-"aSE" = (
-/obj/structure/flora/tree/dead/tree_5{
-	layer = 4.5
-	},
-/obj/structure/flora/tree/dead/tree_6{
-	pixel_x = -26;
-	pixel_y = 8;
-	layer = 4.4
-	},
-/obj/structure/flora/tree/dead/tree_1{
-	pixel_x = -8;
-	pixel_y = 7;
-	layer = 4.3
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
 "aSF" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
@@ -58625,9 +58514,6 @@
 "cVS" = (
 /turf/open_space,
 /area/tyrargo/landing_zone_1/comms)
-"cVT" = (
-/turf/open/hybrisa/street/cement2,
-/area/tyrargo/outdoors/outskirts/central)
 "cVU" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
@@ -136041,7 +135927,7 @@ bzi
 bzi
 bLH
 aOf
-aJA
+bKS
 bKS
 aTd
 aTa
@@ -136223,7 +136109,7 @@ aOz
 aOp
 bLt
 aZT
-aJB
+aTg
 aTg
 aTe
 aTa
@@ -174966,13 +174852,13 @@ cSk
 cSk
 cSk
 cSk
-cVT
-aSE
-aSD
-aSC
-aSB
-anA
-aSz
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
 cSk
 cSk
 cSk

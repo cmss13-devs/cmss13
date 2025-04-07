@@ -262,7 +262,7 @@
 //---------------------------------------------------
 //Hyperdyne Keys
 
-/obj/item/device/encryptionkey/HC
+/obj/item/device/encryptionkey/hyperdyne
 	name = "\improper Hyperdyne Corporation encryption key"
 	icon_state = "wy_key"
 	channels = list(RADIO_CHANNEL_HYPERDYNE = TRUE)

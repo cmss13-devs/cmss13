@@ -77,7 +77,7 @@
 
 /datum/equipment_preset/survivor/peoples_armed_police
 	name = "Survivor - UPP - People's Armed Police Officer"
-	assignment = "UPP - Narodnyy Vooruzhennyy Politsioner"
+	assignment = "Narodnyy Vooruzhennyy Politsioner"
 	minimap_icon = "upp_sec"
 	minimap_background = "background_upp_alpha"
 	paygrades = list(PAY_SHORT_UCM = JOB_PLAYTIME_TIER_0)
@@ -111,7 +111,7 @@
 
 /datum/equipment_preset/survivor/upp/army
 	name = "Survivor - UPP - Ministry of Defense - Army Reservist"
-	assignment = "UPP Armiyskiy Rezervist"
+	assignment = "Armiyskiy Rezervist"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	rank = JOB_SURVIVOR
 	skills = /datum/skills/military/survivor/upp_private

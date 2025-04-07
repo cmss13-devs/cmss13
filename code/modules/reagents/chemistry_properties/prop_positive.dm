@@ -378,7 +378,7 @@
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
 	code = "BNM"
-	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
+	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-woven and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/positive/bonemending/process(mob/living/M, potency = 1, delta_time)

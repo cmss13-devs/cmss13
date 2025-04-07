@@ -110,7 +110,7 @@
 	med_hud_set_status()
 
 	update_icons()
-	SEND_SIGNAL(src, COMSIG_MOB_DEATH)
+	SEND_SIGNAL(src, COMSIG_MOB_DEATH, cause_data)
 	return 1
 
 /mob/proc/handle_death_cause(datum/cause_data/cause_data, turf/death_loc)

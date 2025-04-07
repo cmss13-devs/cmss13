@@ -813,8 +813,8 @@
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )
 	playsound(xeno.loc, sound_to_play, 25, 1)
 
-	var/obj/projectile/proj = new (current_turf, create_cause_data(xeno.ammo.name, xeno))
-	proj.generate_bullet(xeno.ammo)
+	var/obj/projectile/proj = new spit_projectile_type(current_turf, create_cause_data(xeno.ammo.name, xeno))
+	proj.generate_bullet(xeno.ammo, bullet_generator = xeno)
 	proj.permutated += xeno
 	proj.def_zone = xeno.get_limbzone_target()
 	proj.fire_at(spit_target, xeno, xeno, xeno.ammo.max_range, xeno.ammo.shell_speed)
@@ -1001,7 +1001,7 @@
 		xeno_attack_delay(stabbing_xeno)
 		return ..()
 
-	if(!isxeno_human(targetted_atom))
+	if(!((limb_targetting && isxeno_human(targetted_atom)) || (!limb_targetting && isliving(targetted_atom))))
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes their tail through the air!"), SPAN_XENOWARNING("We swipe our tail through the air!"))
 		apply_cooldown(cooldown_modifier = 0.1)
 		xeno_attack_delay(stabbing_xeno)
@@ -1016,10 +1016,13 @@
 	if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_NESTED))
 		return FALSE
 
-	var/obj/limb/limb = target.get_limb(check_zone(stabbing_xeno.zone_selected))
-	if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
-		to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
-		return FALSE
+	var/obj/limb/limb = null
+
+	if(limb_targetting)
+		target.get_limb(check_zone(stabbing_xeno.zone_selected))
+		if (ishuman(target) && (!limb || (limb.status & LIMB_DESTROYED)))
+			to_chat(stabbing_xeno, (SPAN_WARNING("What [limb.display_name]?")))
+			return FALSE
 
 	if(!check_and_use_plasma_owner())
 		return FALSE
@@ -1081,7 +1084,7 @@
 		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
 		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
 
-	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
+	apply_damage(stabbing_xeno, target, limb, damage)
 	if(stabbing_xeno.mob_size >= MOB_SIZE_BIG)
 		target.apply_effect(3, DAZE)
 	else if(stabbing_xeno.mob_size == MOB_SIZE_XENO)
@@ -1095,3 +1098,6 @@
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == stabbing_xeno.dir)
 		stabbing_xeno.setDir(last_dir)
+
+/datum/action/xeno_action/activable/tail_stab/proc/apply_damage(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, damage)
+	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")

@@ -7,6 +7,9 @@
 	if(!owner.client)
 		return
 
+	if(HAS_TRAIT(owner, TRAIT_MOBA_PARTICIPANT))
+		return
+
 	var/mob/living/activator = owner
 
 	activator.do_ghost()

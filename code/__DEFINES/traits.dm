@@ -247,6 +247,22 @@
 #define TRAIT_SPEC(spec_type) "t_spec_[spec_type]"
 /// If the mob won't drop items held in face slot when downed
 #define TRAIT_IRON_TEETH "t_iron_teeth"
+/// If the mob is part of the MOBA gamemode
+#define TRAIT_MOBA_PARTICIPANT "t_moba_participant"
+/// If the mob is a part of the MOBA gamemode on a given map ID
+#define TRAIT_MOBA_MAP_PARTICIPANT(map_id) "t_moba_map_participant_[map_id]"
+/// If the mob is in range of a MOBA simplemob camp
+#define TRAIT_MOBA_CAMP_TARGET "t_moba_camp_target"
+/// If the mob has recently attacked a member of the given MOBA hive
+#define TRAIT_MOBA_ATTACKED_HIVE(hive) "t_moba_attacked_hive_[hive]"
+/// If this mob is a minion
+#define TRAIT_MOBA_MINION "t_moba_minion"
+/// If this mob has the hivebot boon
+#define TRAIT_MOBA_STRUCTURESHRED "t_moba_structureshred"
+/// If this mob is about to be executed by reaper boon
+#define TRAIT_MOBA_REAPER_BOON_EXECUTING "t_moba_reaper_boon_executing"
+/// If we're a support player
+#define TRAIT_MOBA_SUPPORT "t_moba_support"
 
 // -- ability traits --
 /// Xenos with this trait cannot have plasma transfered to them

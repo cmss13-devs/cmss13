@@ -27,7 +27,7 @@
 #define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A))
 
 /// Returns true/false based on if the xenomorph can harm the passed carbon mob.
-/mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)
+/mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/attempt_harm_mob)
 	if(!istype(attempt_harm_mob))
 		return FALSE
 
@@ -54,16 +54,16 @@
 	focused_atom.name = "[lowertext(hive.prefix)][focused_atom.name]"
 
 /proc/get_xeno_stun_duration(mob/stun_mob, duration)
-	if(iscarbonsizexeno(stun_mob))
+	if(iscarbonsizexeno(stun_mob) && !HAS_TRAIT(stun_mob, TRAIT_MOBA_PARTICIPANT))
 		return duration * XVX_STUN_LENGTHMULT
 	return duration
 
 /proc/get_xeno_damage_slash(mob/slash_mob, damage)
-	if(iscarbonsizexeno(slash_mob))
+	if(iscarbonsizexeno(slash_mob) && !HAS_TRAIT(slash_mob, TRAIT_MOBA_PARTICIPANT))
 		return damage * XVX_SLASH_DAMAGEMULT
 	return damage
 
 /proc/get_xeno_damage_acid(mob/target_mob, damage)
-	if(isxeno(target_mob))
+	if(isxeno(target_mob) && !HAS_TRAIT(target_mob, TRAIT_MOBA_PARTICIPANT))
 		return damage * XVX_ACID_DAMAGEMULT
 	return damage

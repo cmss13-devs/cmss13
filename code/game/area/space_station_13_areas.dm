@@ -27,6 +27,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 	weather_enabled = FALSE
 	is_resin_allowed = FALSE
+	care_about_reg = FALSE
 
 	//fix for issue https://github.com/cmss13-devs/cmss13/issues/2191
 	base_muffle = AREA_MUTED

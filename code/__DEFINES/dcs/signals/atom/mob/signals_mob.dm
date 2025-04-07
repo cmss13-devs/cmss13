@@ -35,7 +35,7 @@
 #define COMSIG_MOB_FIRED_GUN "mob_fired_gun"
 /// From /projectiles/updated_projectiles/guns/proc/fire_attachment
 #define COMSIG_MOB_FIRED_GUN_ATTACHMENT "mob_fired_gun_attachment"
-/// From /mob/proc/death
+/// From /mob/proc/death (datum/cause_data/cause)
 #define COMSIG_MOB_DEATH "mob_death"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
@@ -185,3 +185,6 @@
 #define COMSIG_MOB_END_TUTORIAL "mob_end_tutorial"
 
 #define COMSIG_MOB_NESTED "mob_nested"
+
+/// From /mob/proc/track_mob_death() : (mob/killed)
+#define COMSIG_MOB_KILLED_MOB "mob_killed_mob"

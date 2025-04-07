@@ -55,3 +55,6 @@
 
 /// Called when an atom has emp_act called on it, from /atom/emp_act: (severity)
 #define COMSIG_ATOM_EMP_ACT "atom_emp_act"
+
+/// (mob/living/hit, obj/projectile/shot)
+#define COMSIG_ATOM_FIRED_PROJECTILE_HIT "atom_fired_projectile_hit"

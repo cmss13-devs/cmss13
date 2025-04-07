@@ -1,7 +1,9 @@
 #define COMSIG_XENO_TAKE_DAMAGE "xeno_take_damage"
 
-/// from /mob/living/carbon/xenomorph/attack_alien()
+/// from /mob/living/carbon/xenomorph/attack_alien() : (mob/living/carbon/xenomorph/attacking, damage)
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+/// from /mob/living/carbon/xenomorph/attack_alien()
+#define COMSIG_XENO_ALIEN_ATTACKED "xeno_alien_attacked"
 
 #define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
 #define COMSIG_XENO_STOP_OVERWATCH "xeno_stop_overwatch"
@@ -95,3 +97,17 @@
 
 /// From /mob/living/carbon/xenomorph/proc/do_evolve()
 #define COMSIG_XENO_EVOLVE_TO_NEW_CASTE "xeno_evolve_to_new_caste"
+
+/// From /obj/structure/tunnel/proc/pick_tunnel() : (obj/structure/used_tunnel)
+#define COMSIG_XENO_USED_TUNNEL "xeno_used_tunnel"
+
+/// From /mob/living/carbon/xenomorph/proc/add_abilities() : ()
+#define COMSIG_XENO_ADD_ABILITIES "xeno_add_abilites"
+	#define COMPONENT_CANCEL_ADDING_ABILITIES (1<<0)
+
+/// From /datum/action/xeno_action/watch_xeno/action_activate() : ()
+#define COMSIG_XENO_TRY_OVERWATCH "xeno_try_overwatch"
+	#define COMPONENT_CANCEL_OVERWATCH (1<<0)
+
+/// From /datum/action/xeno_action/use_ability() : (datum/action/xeno_action/used_ability)
+#define COMSIG_XENO_USE_XENO_ACTION "xeno_use_xeno_action"

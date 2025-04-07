@@ -23,6 +23,11 @@
 	src.icon_state = icon_state
 	src.pixel_x = pixel_x
 
+/obj/effect/decal/remains/xeno/decaying
+
+/obj/effect/decal/remains/xeno/decaying/Initialize(mapload, icon, icon_state, pixel_x)
+	. = ..()
+	QDEL_IN(src, rand(30 SECONDS, 90 SECONDS))
 
 /obj/effect/decal/remains/robot
 	name = "remains"

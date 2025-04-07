@@ -360,6 +360,8 @@
 	var/obj/item/hardpoint/hardpoint = shot_from
 	if(istype(hardpoint))
 		LAZYOR(ignore_list, hardpoint.owner) //if fired from a vehicle, exclude the vehicle's body from the adjacency check
+	if(istype(shot_from, /obj/effect/alien/resin/moba_turret)) // These snowflake checks suck
+		LAZYOR(ignore_list, shot_from)
 
 	// Check we can reach the turf at all based on pathed grid
 	if(check_canhit(current_turf, next_turf, ignore_list))
@@ -550,6 +552,7 @@
 			to_world(SPAN_DEBUG("([L]) Hit."))
 			#endif
 			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
+			SEND_SIGNAL(firer, COMSIG_ATOM_FIRED_PROJECTILE_HIT, L, src)
 
 			// If the ammo should hit the surface of the target and there is a mob blocking
 			// The current turf is the "surface" of the target
@@ -1077,7 +1080,9 @@
 		bullet_message(P, damaging = FALSE)
 		return
 
-	if(isxeno(P.firer) && ammo_flags & (AMMO_ACIDIC|AMMO_XENO)) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
+	var/pre_mitigation_damage = damage_result
+
+	if(isxeno(P.firer) && (ammo_flags & (AMMO_ACIDIC|AMMO_XENO))) //Xenomorph shooting spit. Xenos with thumbs and guns can fully FF.
 		var/mob/living/carbon/xenomorph/X = P.firer
 		if(X.can_not_harm(src))
 			bullet_ping(P)
@@ -1123,10 +1128,12 @@
 
 	bullet_message(P) //Message us about the bullet, since damage was inflicted.
 
+	var/list/result_list = list(damage_result)
 
-
-	if(SEND_SIGNAL(src, COMSIG_XENO_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
+	if(SEND_SIGNAL(src, COMSIG_XENO_BULLET_ACT, result_list, pre_mitigation_damage, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
+
+	damage_result = result_list[1]
 
 	if(damage)
 		//only apply the blood splatter if we do damage

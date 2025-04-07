@@ -94,6 +94,7 @@
 	var/openable_turf_count = 0
 	/// How much destroyable resin currently exists in this area
 	var/current_resin_count = 0
+	var/care_about_reg = TRUE
 
 /area/New()
 	// This interacts with the map loader, so it needs to be set immediately
@@ -111,7 +112,8 @@
 	. = ..()
 	GLOB.active_areas += src
 	GLOB.all_areas += src
-	reg_in_areas_in_z()
+	if(care_about_reg)
+		reg_in_areas_in_z()
 	if(is_mainship_level(z))
 		GLOB.ship_areas += src
 

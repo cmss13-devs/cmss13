@@ -285,7 +285,8 @@
 
 /datum/action/xeno_action/activable/fortify/action_activate()
 	. = ..()
-	..()
+	if(!.)
+		return
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.fortify && xeno.selected_ability != src)
 		button.icon_state = "template_active"

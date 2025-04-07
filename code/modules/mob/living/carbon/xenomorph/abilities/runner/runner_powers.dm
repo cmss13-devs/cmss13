@@ -19,7 +19,7 @@
 
 	var/datum/ammo/ammo_datum = GLOB.ammo_list[ammo_type]
 
-	projectile.generate_bullet(ammo_datum)
+	projectile.generate_bullet(ammo_datum, bullet_generator = xeno)
 
 	projectile.fire_at(target, xeno, xeno, ammo_datum.max_range, ammo_datum.shell_speed)
 

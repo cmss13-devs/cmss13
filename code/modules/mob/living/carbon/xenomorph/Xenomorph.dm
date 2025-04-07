@@ -96,6 +96,8 @@
 	var/plasma_max = 10
 	var/plasma_gain = 5
 	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
+	/// How much cooldowns can be reduced by at most. 1 is 100%.
+	var/cooldown_reduction_max = 0.5
 
 	var/death_fontsize = 3
 
@@ -118,6 +120,7 @@
 	var/next_grace_time = 0
 
 	var/evasion = 0   // RNG "Armor"
+	var/slash_evasion = 0
 
 	// Armor
 	var/armor_deflection = 10 // Most important: "max armor"
@@ -128,6 +131,17 @@
 	var/armor_integrity_max = 100
 	var/armor_integrity_last_damage_time = 0
 	var/armor_integrity_immunity_time = 0
+	// Acid armor
+	// Zonenote look into moving these to the component later, maybe?
+	/// How protected we are against acidic attacks.
+	/// If left unchanged from -1, will default to the xeno's armor_deflection.
+	/// THIS ONLY APPLIES IN THE MOBA GAMEMODE, DOES NOT DO ANYTHING OTHERWISE
+	var/acid_armor = -1
+	/// Temp buffs to acid armor
+	var/acid_armor_buff = 0
+	/// Temp debuffs to acid armor
+	var/acid_armor_debuff = 0
+
 	var/pull_multiplier = 1
 	var/aura_strength = 0 // Pheromone strength
 	var/weed_level = WEED_LEVEL_STANDARD
@@ -350,6 +364,14 @@
 	var/cannot_slash = FALSE
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
+	/// Multiplier for plasma regeneration
+	var/plasma_regeneration_mult = 1
+	/// What gibs this xeno should produce on death
+	var/gibs_path = /obj/effect/decal/remains/xeno
+	/// What blood this xeno should produce
+	var/blood_path = /obj/effect/decal/cleanable/blood/xeno
+	/// If FALSE, blocks passive healing and plasma regen
+	var/passive_healing = TRUE
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
@@ -511,6 +533,9 @@
 
 	creation_time = world.time
 
+	if(acid_armor == -1)
+		acid_armor = armor_deflection
+
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
@@ -572,7 +597,7 @@
 //We set their name first, then update their real_name AND their mind name
 /mob/living/carbon/xenomorph/proc/generate_name()
 	//We don't have a nicknumber yet, assign one to stick with us
-	if(!nicknumber)
+	if(!nicknumber && !HAS_TRAIT(src, TRAIT_MOBA_MINION))
 		generate_and_set_nicknumber()
 	// Even if we don't have the hive datum we usually still have the hive number
 	var/datum/hive_status/in_hive = hive

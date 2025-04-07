@@ -212,14 +212,14 @@
 	forbidden_container = list(/obj/item/reagent_container/hypospray/autoinjector/emergency, /obj/item/reagent_container/glass/pressurized_canister, /obj/item/reagent_container/hypospray/autoinjector/empty/medic)
 
 // until i figure out a better way, itll have to be a subtype
-/datum/chemical_reaction/unga/ungalicious
+/datum/chemical_reaction/unga/unga_recipe_1
 	required_reagents = list("dermaline" = 1, "bicaridine" = 1)
-	result_amount = 1
+	result_amount = 0.5
 
-/datum/chemical_reaction/unga/ungatastic
+/datum/chemical_reaction/unga/unga_recipe_2
 	required_reagents = list("kelotane" = 1, "meralyne" = 1)
-	result_amount = 1
+	result_amount = 0.5
 
-/datum/chemical_reaction/unga/ungamental
+/datum/chemical_reaction/unga/unga_recipe_3
 	required_reagents = list("dermaline" = 1, "meralyne" = 1)
 	result_amount = 1

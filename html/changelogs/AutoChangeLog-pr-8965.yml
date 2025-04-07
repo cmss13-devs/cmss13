@@ -1,0 +1,4 @@
+author: "Doc12693420"
+delete-after: True
+changes:
+  - spellcheck: "fixes a typo in bone-mending chem property, \"Re-wowen\" to \"Re-woven\""

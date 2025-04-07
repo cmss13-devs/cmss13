@@ -31,12 +31,13 @@ $scrollbar-color-multiplier: 0.5 !default;
 
   @include meta.load-css(
     '../components/Input.scss',
+    // Replace this when tgui core has font family fixed as !default
     $with: (
-      'text-color': base.$color-fg,
-      'background-color': base.$color-bg,
-      'border-color': base.$color-fg,
-      'font-family': $font-family
-    )
+        'text-color': base.$color-fg,
+        'background-color': base.$color-bg,
+        'border-color': base.$color-fg,
+        'font-family': $font-family
+      )
   );
 
   @include meta.load-css(
@@ -136,7 +137,7 @@ $scrollbar-color-multiplier: 0.5 !default;
     bottom: 0;
     right: 0;
     background:
-      linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+      linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
       linear-gradient(
         90deg,
         hsla(0, 100%, 50%, 0.06),

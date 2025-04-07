@@ -20,6 +20,10 @@
 
 	unacidable = TRUE
 	explo_proof = TRUE
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_SCOUT
+	unjam_chance = GUN_UNJAM_CHANCE_SCOUT
+	durability_loss = GUN_DURABILITY_LOSS_SCOUT
 	force = 26
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
@@ -46,6 +50,7 @@
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/wy,
 		/obj/item/attachable/bayonet/custom,
 		/obj/item/attachable/bayonet/custom/red,
 		/obj/item/attachable/bayonet/custom/blue,
@@ -56,14 +61,6 @@
 		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/bayonet/antique,
-		/obj/item/attachable/bayonet/custom,
-		/obj/item/attachable/bayonet/custom/red,
-		/obj/item/attachable/bayonet/custom/blue,
-		/obj/item/attachable/bayonet/custom/black,
-		/obj/item/attachable/bayonet/tanto,
-		/obj/item/attachable/bayonet/tanto/blue,
-		/obj/item/attachable/bayonet/rmc_replica,
-		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,

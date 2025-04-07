@@ -1,0 +1,4 @@
+author: "silverplatedelta"
+delete-after: True
+changes:
+  - balance: "Drones can now evolve into any T2 caste before first drop"

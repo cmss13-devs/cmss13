@@ -113,7 +113,7 @@ const VendButton = (props: VendButtonProps, _) => {
       icon={props.available ? 'circle-down' : 'xmark'}
       onMouseDown={(e) => {
         e.preventDefault();
-        if (props.available) {
+        if (props.available && e.button === 0) {
           props.onClick();
         }
       }}

@@ -8,7 +8,7 @@
  * Render relay object assigned to a plane master to be able to relay it's render onto other planes that are not it's own
  */
 /obj/render_plane_relay
-	screen_loc = "CENTER"
+	screen_loc = "1,1"
 	layer = -1
 	plane = 0
 	appearance_flags = PASS_MOUSE | NO_CLIENT_COLOR | KEEP_TOGETHER
@@ -72,13 +72,6 @@
 	relay.render_source = render_target
 	relay.plane = relay_plane
 	relay.layer = (plane + abs(LOWEST_EVER_PLANE))*0.5 //layer must be positive but can be a decimal
-
-	#if MIN_COMPILER_VERSION == 516
-		#error Default relay loc should be "1,1".
-	#endif
-
-	if(mymob.client?.byond_version > 515)
-		relay.screen_loc = "1,1"
 
 	if(blend_mode_override)
 		relay.blend_mode = blend_mode_override

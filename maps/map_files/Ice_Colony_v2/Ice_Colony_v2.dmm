@@ -6673,11 +6673,11 @@
 /area/ice_colony/surface/disposals)
 "axz" = (
 /obj/item/evidencebag,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/floor/plating/warnplate,
 /area/ice_colony/surface/disposals)
 "axA" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/popcorn,
 /turf/open/floor/plating/warnplate,
 /area/ice_colony/surface/disposals)
 "axB" = (
@@ -24354,7 +24354,7 @@
 /area/ice_colony/underground/crew/disposals)
 "bQV" = (
 /obj/item/evidencebag,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bQW" = (

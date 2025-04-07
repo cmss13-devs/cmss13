@@ -1,9 +1,11 @@
 /datum/equipment_preset/survivor/engineer/soro_industry_contractor
-	name = "Survivor - UPP - NORCOMM - Industrial Contractor"
-	assignment = "NORCOMM - Promyshlennyy Podryadchik"
+	name = "Survivor - UPP - Ministry of Industry - Infrastructure Engineer"
+	assignment = "Inzhener Infrastruktury"
 	minimap_icon = "upp_cont"
-	minimap_background = "background_upp"
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	minimap_background = "background_upp_bravo"
+	faction_group = FACTION_LIST_SURVIVOR_UPP
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
@@ -29,11 +31,13 @@
 	..()
 
 /datum/equipment_preset/survivor/engineer/soro_reactor_tech
-	name = "Survivor - UPP - NORCOMM - Reactor Technician"
-	assignment = "NORCOMM - Tekhnik Reaktora"
+	name = "Survivor - UPP - Ministry of Energy - Reactor Technician"
+	assignment = "Tekhnik Reaktora"
 	minimap_icon = "upp_cont"
-	minimap_background = "background_upp"
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	minimap_background = "background_upp_bravo"
+	faction_group = FACTION_LIST_SURVIVOR_UPP
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = ENGINEERING_SURVIVOR
@@ -73,13 +77,13 @@
 
 /datum/equipment_preset/survivor/peoples_armed_police
 	name = "Survivor - UPP - People's Armed Police Officer"
-	assignment = "UPP Narodnyy Vooruzhennyy Politsioner"
+	assignment = "UPP - Narodnyy Vooruzhennyy Politsioner"
 	minimap_icon = "upp_sec"
-	minimap_background = "background_upp"
+	minimap_background = "background_upp_alpha"
 	paygrades = list(PAY_SHORT_UCM = JOB_PLAYTIME_TIER_0)
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	role_comm_title = "MILTSY"
 	skills = /datum/skills/cmb
 	access = list(ACCESS_UPP_GENERAL, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
@@ -90,6 +94,7 @@
 
 /datum/equipment_preset/survivor/peoples_armed_police/load_gear(mob/living/carbon/human/new_human)
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/hyperdyne(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/PaP(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked/police, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
@@ -105,14 +110,14 @@
 	..()
 
 /datum/equipment_preset/survivor/upp/army
-	name = "Survivor - UPP - Army Reservist"
+	name = "Survivor - UPP - Ministry of Defense - Army Reservist"
 	assignment = "UPP Armiyskiy Rezervist"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	rank = JOB_SURVIVOR
 	skills = /datum/skills/military/survivor/upp_private
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	minimap_icon = "upp_pvt"
 	minimap_background = "background_upp"
 	role_comm_title = "202/ARMY"
@@ -136,8 +141,8 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/brown/half_full, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon(new_human), WEAR_L_EAR)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/ak4047(new_human), WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human), WEAR_IN_BACK)
 		if(2)
@@ -150,8 +155,8 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/brown/half_full, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon(new_human), WEAR_L_EAR)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/ak4047(new_human), WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human), WEAR_IN_BACK)
 		if(3)
@@ -163,8 +168,8 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/brown/half_full, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon(new_human), WEAR_L_EAR)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/ak4047(new_human), WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human), WEAR_FACE)
 		if(4)
@@ -176,18 +181,20 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/brown/half_full, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black/five_slot(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon(new_human), WEAR_L_EAR)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/ak4047(new_human), WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human), WEAR_IN_BACK)
 	..()
 
 /datum/equipment_preset/survivor/doctor/soro
-	name = "Survivor - UPP - Ministry of Health Doctor"
+	name = "Survivor - UPP - Ministry of Health - Doctor"
 	assignment = "Doktor Ministerstva Zdravookhraneniya"
 	minimap_icon = "upp_doc"
-	minimap_background = "background_upp"
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	minimap_background = "background_upp_medical"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = MEDICAL_SURVIVOR
@@ -248,11 +255,13 @@
 	..()
 
 /datum/equipment_preset/survivor/scientist/soro
-	name = "Survivor - UPP Cosmos Exploration Corps Researcher"
+	name = "Survivor - UPP - Cosmos Exploration Corps Researcher"
 	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
 	minimap_icon = "upp_sci"
-	minimap_background = "background_upp"
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	minimap_background = "background_upp_charlie"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = SCIENTIST_SURVIVOR
@@ -297,10 +306,11 @@
 
 /datum/equipment_preset/survivor/upp_colonist
 	name = "UPP - Civilian"
-	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_COLONIST
 	assignment = "Grazhdanin"
-	minimap_background = "background_upp"
+	flags = EQUIPMENT_PRESET_EXTRA
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	minimap_background = "background_upp_civillian"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -413,11 +423,13 @@
 	..()
 
 /datum/equipment_preset/survivor/upp_fire_fighter
-	name = "Survivor - UPP - Fire Protection Specialist"
+	name = "Survivor - UPP - Ministry of Public Safety - Fire Protection Specialist"
 	assignment = "Spetsialist Po Pozharnoy Bezopasnosti"
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	role_comm_title = "FPPB"
-	minimap_background = "background_upp"
+	minimap_background = "background_upp_civillian"
 	skills = /datum/skills/civilian/survivor/fire_fighter
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -459,8 +471,10 @@
 /datum/equipment_preset/survivor/upp_miner
 	name = "Survivor - UPP - Jutou Combine - Miner"
 	assignment = "Jùtóu Combine - Shakhtyor"
-	minimap_background = "background_upp"
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	minimap_background = "background_upp_civillian"
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	faction = FACTION_UPP
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 	survivor_variant = CIVILIAN_SURVIVOR
@@ -480,16 +494,20 @@
 	..()
 
 /datum/equipment_preset/survivor/corporate/soro
-	name = "Survivor - UPP - NORCOMM - Corporate Liaison"
-	assignment = "NORCOMM - Korporativnyy Svaznoy"
-	minimap_background = "background_upp"
-	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
+	name = "Survivor - UPP - Hyperdyne - Corporate Liaison"
+	assignment = "Hyperdyne - Corporate Liaison"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	faction = FACTION_HYPERDYNE
+	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	minimap_icon = "hc_cl"
+	minimap_background = "background_hc_management"
 
 	survivor_variant = CORPORATE_SURVIVOR
 
 /datum/equipment_preset/survivor/corporate/soro/load_gear(mob/living/carbon/human/new_human)
 
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/hyperdyne(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)

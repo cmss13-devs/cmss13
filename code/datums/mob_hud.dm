@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
 	MOB_HUD_FACTION_MARINE = new /datum/mob_hud/faction(),
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
+	MOB_HUD_FACTION_HYPERDYNE = new /datum/mob_hud/faction/hyperdyne(),
 	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
@@ -224,6 +225,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /datum/mob_hud/faction/nspa
 	faction_to_check = FACTION_NSPA
+
+/datum/mob_hud/faction/hyperdyne
+	faction_to_check = FACTION_HYPERDYNE
 
 /datum/mob_hud/faction/cmb
 	faction_to_check = FACTION_MARSHAL

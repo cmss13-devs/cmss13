@@ -165,6 +165,9 @@
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/stack/medical/splint(src)
 
+/obj/item/storage/pouch/survival/black
+	icon_state = "soctools"
+
 /obj/item/storage/pouch/survival/full/black
 	icon_state = "soctools"
 
@@ -192,6 +195,17 @@
 	new /obj/item/device/radio(src)
 	new /obj/item/attachable/bayonet(src)
 
+/obj/item/storage/pouch/survival/synth/black
+	icon_state = "soctools"
+
+/obj/item/storage/pouch/survival/synth/black/full/fill_preset_inventory()
+	new /obj/item/tool/crowbar/red(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/stack/sheet/metal/large_stack(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet(src)
+
 /obj/item/storage/pouch/firstaid
 	name = "first-aid pouch"
 	desc = "A small pouch that can hold basic medical equipment, such as autoinjectors and bandages."
@@ -205,6 +219,9 @@
 		/obj/item/stack/medical/splint,
 	)
 
+/obj/item/storage/pouch/firstaid/wy
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full
 	desc = "Contains a variety of autoinjectors for quickly treating injuries."
 
@@ -215,7 +232,6 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
 /obj/item/storage/pouch/firstaid/full/wy
-	name = "W-Y first-aid pouch"
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/alternate
@@ -227,6 +243,9 @@
 	new /obj/item/stack/medical/ointment(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
+/obj/item/storage/pouch/firstaid/full/alternate/wy
+	icon_state = "wy_firstaid"
+
 /obj/item/storage/pouch/firstaid/full/pills
 	desc = "Contains a variety of pill packets for treating many injuries."
 
@@ -235,6 +254,9 @@
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
 	new /obj/item/storage/pill_bottle/packet/tramadol(src)
+
+/obj/item/storage/pouch/firstaid/full/pills/wy
+	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/ert
 	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
@@ -249,7 +271,6 @@
 	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/firstaid/ert/wy
-	name = "W-Y first-aid pouch"
 	icon_state = "wy_firstaid"
 
 ///Pistol pouch.
@@ -1469,6 +1490,15 @@
 	new /obj/item/stack/cable_coil(src)
 
 /obj/item/storage/pouch/tools/uppsynth/fill_preset_inventory()
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/tool/weldingtool(src)
+	new /obj/item/tool/wrench(src)
+
+/obj/item/storage/pouch/tools/uppsynth/black
+	icon_state = "soctools"
+
+/obj/item/storage/pouch/tools/uppsynth/black/full/fill_preset_inventory()
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/tool/wirecutters(src)
 	new /obj/item/tool/weldingtool(src)

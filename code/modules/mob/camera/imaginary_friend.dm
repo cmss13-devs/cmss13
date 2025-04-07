@@ -163,6 +163,8 @@
 			hud = GLOB.huds[MOB_HUD_FACTION_UPP]
 		if("Faction Wey-Yu HUD")
 			hud = GLOB.huds[MOB_HUD_FACTION_WY]
+		if("Faction Hyperdyne HUD")
+			hud = GLOB.huds[MOB_HUD_FACTION_HC]
 		if("Faction TWE HUD")
 			hud = GLOB.huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")

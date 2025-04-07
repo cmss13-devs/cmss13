@@ -127,6 +127,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/obj/structure/machinery/colony_floodlight_switch,
+/turf/closed/wall/strata_outpost,
+/area/strata/interior/outpost/engi)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -7163,6 +7167,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi)
 "auC" = (
@@ -74725,7 +74730,7 @@ bVL
 aqv
 ars
 ass
-oKo
+aau
 bXq
 bXq
 axn

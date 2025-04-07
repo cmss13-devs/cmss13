@@ -907,7 +907,6 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	desc = "A finely crafted beret worn by members of the UPP Space Operations Forces. It signifies service in the void, from deep-space missions to planetary operations, and is a mark of discipline and camaraderie among its wearers."
 	icon_state = "SOF_beret"
 	item_state = "SOF_beret"
-	flags_inv_hide = HIDETOPHAIR
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'

@@ -154,6 +154,10 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 #define MAX_FREE_FREQ 1599 // -------------------------------------------------
 
+//Hyperdyne channels
+
+#define HDC_FREQ 1621
+
 GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_YAUTJA = YAUT_FREQ,
 	RADIO_CHANNEL_VAI = VAI_FREQ,
@@ -221,6 +225,8 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_FAX_WY = FAX_WY_FREQ,
 	RADIO_CHANNEL_FAX_USCM_HC = FAX_USCM_HC_FREQ,
 	RADIO_CHANNEL_FAX_USCM_PVST = FAX_USCM_PVST_FREQ,
+
+	RADIO_CHANNEL_HYPERDYNE = HDC_FREQ,
 ))
 
 // Response Teams

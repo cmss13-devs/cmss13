@@ -307,7 +307,7 @@
 						var/list/seen = viewers(4, get_turf(my_atom))
 						for(var/mob/seen_mob in seen)
 							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
-						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 5, 1)
+						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 20, 1)
 
 
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_BUBBLING))
@@ -316,14 +316,14 @@
 						var/datum/reagent/result_to_splash = GLOB.chemical_reagents_list[reaction.result]
 						var/datum/reagent/recipe_to_splash = GLOB.chemical_reagents_list[pick(reaction.required_reagents)]
 						for(var/mob/living/carbon/human/victim in view(1, get_turf(my_atom)))
-							if(prob(20))
-								to_chat(victim, SPAN_WARNING("\a Large [pick("chunk", "drop", "lump")] of foam misses You narrowly!"))
+							if(prob(30))
+								to_chat(victim, SPAN_WARNING("\A large [pick("chunk", "drop", "lump")] of [pick("foam", "bubbles", "froth")] misses You narrowly!"))
 								return
 							if(victim.wear_suit?.armor_bio != CLOTHING_ARMOR_HARDCORE && created_volume >= 5)
 								playsound(victim, "acid_sizzle", 20, TRUE)
 								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
-								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), floor(created_volume/6)+rand(0,1)))
-								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), floor(created_volume/6)+rand(0,1)))
+								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), rand(5,6)))
+								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), rand(5,6)))
 								if(result_to_splash.get_property(PROPERTY_CORROSIVE) || recipe_to_splash.get_property(PROPERTY_CORROSIVE))//make a burning sound and flash if the reagents involved are corrosive
 									animation_flash_color(victim, "#FF0000")
 

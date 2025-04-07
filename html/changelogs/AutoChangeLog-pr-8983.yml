@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - bugfix: "fixed painkilling OD/Crit OD having halved effects"

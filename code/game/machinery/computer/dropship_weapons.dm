@@ -35,16 +35,6 @@
 	var/registered = FALSE
 
 	var/minimap_flag = MINIMAP_FLAG_USCM
-	///by default Zlevel 2, groundside is targetted
-	var/targetted_zlevel = 2
-	///minimap obj ref that we will display to users
-	var/atom/movable/screen/minimap/map
-	///List of currently interacting mobs
-	var/list/mob/interactees = list()
-	///Toggle for scrolling map
-	var/scroll_toggle
-	///Button for closing map
-	var/close_button
 
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
@@ -59,6 +49,7 @@
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = FALSE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
@@ -72,11 +63,8 @@
 /obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
 	. = ..()
 	
-	interactees -= user
-	user?.client?.screen -= map
-	user?.client?.screen -= scroll_toggle
-	user?.client?.screen -= close_button
-	user?.client?.mouse_pointer_icon = null
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.show_tacmap(user)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -521,14 +509,8 @@
 			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			return TRUE
 		if("mapview")
-			if(!map)
-				map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
-				scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
-				close_button = new /atom/movable/screen/exit_map(null, src)
-			user.client.screen += map
-			interactees += user
-			user.client.screen += scroll_toggle
-			user.client.screen += close_button
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+			tacmap_component.show_tacmap(user)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)

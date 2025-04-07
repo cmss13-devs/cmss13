@@ -875,7 +875,9 @@ SUBSYSTEM_DEF(minimaps)
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "close"
 	screen_loc = "RIGHT,TOP"
-	var/atom/movable/linked_map
+	plane = TACMAP_PLANE
+	layer = INTRO_LAYER
+	var/datum/component/tacmap/linked_map
 
 /atom/movable/screen/exit_map/Initialize(mapload, linked_map)
 	. = ..()
@@ -903,6 +905,8 @@ SUBSYSTEM_DEF(minimaps)
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "scroll"
 	screen_loc = "CENTER,TOP"
+	plane = TACMAP_PLANE
+	layer = INTRO_LAYER
 	/// what minimap screen is linked to this button
 	var/atom/movable/screen/minimap/linked_map
 
@@ -949,9 +953,12 @@ SUBSYSTEM_DEF(minimaps)
 	var/image/drawn_image
 	/// what minimap screen we drawing to
 	var/atom/movable/screen/minimap/linked_map
+	/// datum owner of this minimap tool
+	var/datum/component/tacmap/owner
 
-/atom/movable/screen/minimap_tool/Initialize(mapload, zlevel, minimap_flag, linked_map)
+/atom/movable/screen/minimap_tool/Initialize(mapload, zlevel, minimap_flag, linked_map, owner)
 	. = ..()
+	src.owner = owner
 	src.minimap_flag = minimap_flag
 	src.zlevel = zlevel
 	src.linked_map = linked_map
@@ -959,6 +966,10 @@ SUBSYSTEM_DEF(minimaps)
 		set_zlevel(zlevel, minimap_flag)
 		return
 	LAZYADDASSOCLIST(SSminimaps.earlyadds, "[zlevel]", CALLBACK(src, PROC_REF(set_zlevel), zlevel, minimap_flag))
+
+/atom/movable/screen/minimap_tool/Destroy()
+	owner = null
+	. = ..()
 
 ///Setter for the offsets of the x and y of drawing based on the input z, and the drawn_image
 /atom/movable/screen/minimap_tool/proc/set_zlevel(zlevel, minimap_flag)
@@ -1227,6 +1238,32 @@ SUBSYSTEM_DEF(minimaps)
 			continue
 
 		minimap_action.map?.update()
+
+	return TRUE
+
+/atom/movable/screen/minimap_tool/up
+	icon_state = "up"
+	desc = "Move up a level"
+	screen_loc = "15,7"
+
+/atom/movable/screen/minimap_tool/up/clicked(location, list/modifiers)
+	if(!SSmapping.same_z_map(zlevel, zlevel+1))
+		return
+	
+	owner.move_tacmap_up()
+
+	return TRUE
+
+/atom/movable/screen/minimap_tool/down
+	icon_state = "down"
+	desc = "Move down a level"
+	screen_loc = "15,6"
+
+/atom/movable/screen/minimap_tool/down/clicked(location, list/modifiers)
+	if(!SSmapping.same_z_map(zlevel, zlevel-1))
+		return
+	
+	owner.move_tacmap_down()
 
 	return TRUE
 

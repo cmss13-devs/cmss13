@@ -23,7 +23,8 @@
 	var/on = FALSE
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE
-	var/rotation_on_throw = FALSE //Should the flashlight rotate when thrown?
+	/// Should the flashlight rotate when thrown?
+	var/rotation_on_throw = FALSE
 
 	var/can_be_broken = TRUE //can xenos swipe at this to break it/turn it off?
 	var/breaking_sound = 'sound/handling/click_2.ogg' //sound used when this happens

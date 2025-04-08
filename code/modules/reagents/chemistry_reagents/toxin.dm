@@ -298,6 +298,24 @@
 	chemclass = CHEM_CLASS_BASIC
 	properties = list(PROPERTY_TOXIC = 1, PROPERTY_CORROSIVE = 3)
 
+/datum/reagent/toxin/iron_sulfate
+	name = "Iron Sulfate"
+	id = "iron_sulfate"
+	description = "A reactive sulfide material often used as an intermediate or starting component in various chemical processes"
+	reagent_state = LIQUID
+	color = "#303030"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 1)
+
+/datum/reagent/toxin/iron_phoride_sulfate
+	name = "Iron Phoride Sulfate"
+	id = "iron_phoride_sulfate"
+	description = "Iron Sulfate combined with Phoron to form a robust and durable substance, usually proposed as an additive to armor plates. Saw little actual use due to its flammability."
+	reagent_state = LIQUID
+	color = "#4b1f5e"
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_CORROSIVE = 5, PROPERTY_OXIDIZING = 3, )
+
 /datum/reagent/toxin/cooper_sulfate
 	name = "Cooper Sulfate"
 	id = "cooper_sulfate"

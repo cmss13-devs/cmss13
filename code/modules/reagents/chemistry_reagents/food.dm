@@ -126,6 +126,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#792300" // rgb: 121, 35, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/ketchup
@@ -224,11 +225,11 @@
 /datum/reagent/atropine //poppy
 	name = "Atropine"
 	id = "atropine"
-	description = "Plant based chemical replaced and superseded by Epinephrine, it has a plethora of side effects but is considerably stronger than epinephrine" //I know now stay shush
+	description = "Plant based chemical replaced and superseded by Epinephrine, it has a plethora of side effects but is considerably stronger than epinephrine" //I know, now stay shush
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_ELECTROGENETIC = 6, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 1)
+	properties = list(PROPERTY_ELECTROGENETIC = 7, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 0.5)
 
 /datum/reagent/thymol //some kind of thyme
 	name = "Thymol"

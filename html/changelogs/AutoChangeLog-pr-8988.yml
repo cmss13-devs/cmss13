@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - ui: "Changes Scrollbar colors to mix from both foreground and background colours, Improving visibility. Makes CRT-Red background red instead of blue."

@@ -1,7 +1,7 @@
 import { classes } from 'common/react';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 
-import { Box, BoxProps, unit } from './Box';
+import { type Box, BoxProps, unit } from './Box';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Popper } from './Popper';

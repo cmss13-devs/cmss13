@@ -34,6 +34,7 @@ SUBSYSTEM_DEF(weather)
 	/// List of master areas to use for applying effects
 	var/list/area/weather_areas = list()
 
+	/// List of all cleanables that are outside that will be cleaned up by active weather
 	var/list/obj/effect/decal/cleanable/cleanable_list = list()
 
 /datum/controller/subsystem/weather/Initialize(start_timeofday)
@@ -76,6 +77,7 @@ SUBSYSTEM_DEF(weather)
 			map_holder = new weather_holder
 			setup_weather_areas()
 
+/// Checks that a cleanable should be cleaned up by weather. If so, it is added to the list to be cleaned
 /datum/controller/subsystem/weather/proc/add_cleanable(obj/effect/decal/cleanable/cleanable)
 	if(!SSmapping.configs[GROUND_MAP].weather_holder)
 		return

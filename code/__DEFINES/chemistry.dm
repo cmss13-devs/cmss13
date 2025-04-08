@@ -93,7 +93,7 @@
 #define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
 #define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
 
-///REACTION FLAGS
+//REACTION FLAGS
 /// reaction that has nothing to it. this is whats making the reaction occur, thus it always must be enabled, or replaced with CHEM_REACTION_ENDOTHERMIC.
 #define CHEM_REACTION_CALM (1<<0)
 /// reaction that bubbles when mixed, causing the person holding it get splashed by it unless wearing protective equipment, mixing small amounts (under 5) is safe, everything else needs suit for complete protection. cannot defend with closing the lid.

@@ -100,7 +100,7 @@
 #define CHEM_REACTION_BUBBLING (1<<1)
 /// reaction that glows. nothing to add.
 #define CHEM_REACTION_GLOWING (1<<2)
-/// reaction that sets things around on fire, its still mixed, but everything is on fire. the beaker is set on fire 3 seconds after the reaction. smoke and sound are given immediatly.
+/// reaction that sets things around on fire, its still mixed, but everything is on fire. the beaker is set on fire 3 seconds after the reaction. smoke and sound are given immediatly, countered by having water.
 #define CHEM_REACTION_FIRE (1<<3)
 /// reaction that makes smoke from its contents while mixing. spread of smoke is depending on amount mixed. protect yourself with a gas mask or close the lid quick enough before it starts to smoke.
 #define CHEM_REACTION_SMOKING (1<<4)

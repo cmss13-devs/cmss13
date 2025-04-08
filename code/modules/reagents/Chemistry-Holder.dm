@@ -345,6 +345,12 @@
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
 							return
 						var/datum/reagent/reagent_to_burn = GLOB.chemical_reagents_list[reaction.result]
+						for(var/datum/reagent/water_in_holder in reagent_list)
+							if(water_in_holder.id == "water" && water_in_holder.volume >= created_volume)
+								var/list/seen = viewers(2, get_turf(my_atom))
+								for(var/mob/seen_mob in seen)
+									to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to boil before settling down."))
+								return
 						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1+floor(max(multiplier/6, 0)), 3+floor(max(multiplier/6, 0)), 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound spam
 							var/list/seen = viewers(3, get_turf(my_atom))
 							for(var/mob/seen_mob in seen)

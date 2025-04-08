@@ -579,20 +579,23 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/dead = M
+	var/revivable = dead.check_tod() && dead.is_revivable()
+	if(!revivable)
+		return
 
 	if(revivetimerid)
-		if(!timeleft(revivetimerid))
-			dead.handle_revive();
+		if(dead.health <= HEALTH_THRESHOLD_DEAD) //If the mob got damaged to below the threshold while the timer was ticking then we reset
+			deltimer(revivetimerid)
+			revivetimerid = null
 		return;
 
-	var/revivable = dead.check_tod() && dead.is_revivable()
 	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
 		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
 		if(property)
 			property.trigger(M)
 			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
 			break
-	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
+	if(dead.health > HEALTH_THRESHOLD_DEAD)
 		revivetimerid = addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS, TIMER_STOPPABLE)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
@@ -600,7 +603,7 @@
 		if(ghost?.client)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
 			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
-	else if ((potency >= 1) && revivable && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
+	else if ((potency >= 1) && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)

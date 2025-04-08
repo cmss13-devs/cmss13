@@ -77,6 +77,10 @@
 	add_survivor_weapon_civilian(new_human)
 	..()
 
+
+/datum/job/nrodnyyvooruzhennyypolitsioner
+	title = "Narodnyy Vooruzhennyy Politsioner"
+
 /datum/equipment_preset/survivor/peoples_armed_police
 	name = "Survivor - UPP - People's Armed Police Officer"
 	assignment = "Narodnyy Vooruzhennyy Politsioner"

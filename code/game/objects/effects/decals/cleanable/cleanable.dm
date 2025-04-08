@@ -101,6 +101,7 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 		cleanable_turf.overlays -= overlayed_image
 		overlayed_image = null
 
+/// Gives the cleanable a nice fadeout before disappearing
 /obj/effect/decal/cleanable/proc/fade_and_disappear()
 	var/fade_time = rand(3, 7) SECONDS
 

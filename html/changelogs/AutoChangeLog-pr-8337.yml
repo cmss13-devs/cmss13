@@ -1,0 +1,5 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - rscadd: "TRAIT_CARD_PLAYING_THUMBS to the event panel, allowing xenos to play cards."
+  - admin: "ability grant or revoke card playing thumbs to xenos through the event panel."

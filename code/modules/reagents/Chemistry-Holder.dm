@@ -403,10 +403,10 @@
 	var/required_reagents_present = 0
 	var/required_catalysts_present = 0
 	for(var/datum/reagent/reagent_in_holder in reagent_list)
-		if((reagent_in_holder.id in reaction.required_reagents) && reagent_in_holder.volume >= reaction.required_reagents[reagent_in_holder.id])
+		if((reagent_in_holder.id in reaction.required_reagents) && reagent_in_holder.volume >= reaction.required_reagents[reagent_in_holder.id] * 2)
 			required_reagents_present++
 	for(var/datum/reagent/catalysts_in_holder in reagent_list)
-		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id])
+		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id] * 2)
 			required_catalysts_present++
 	if(!(length(reaction.required_reagents) == required_reagents_present && length(reaction.required_catalysts) == required_catalysts_present))
 		return
@@ -416,10 +416,10 @@
 			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution bubbles."))
 			playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
 	for(var/required_reagent in reaction.required_reagents)
-		remove_reagent(required_reagent, reaction.required_reagents[required_reagent] * floor(max(multiplier/6, 1)), safety = TRUE)
-	add_reagent(reaction.result, reaction.result_amount * floor(max(multiplier/6, 1)))
+		remove_reagent(required_reagent, reaction.required_reagents[required_reagent] * 2, safety = TRUE)
+	add_reagent(reaction.result, reaction.result_amount * 2)
 	for(var/secondary_result in reaction.secondary_results)
-		add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * floor(max(multiplier/6, 1)))
+		add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * 2)
 	var/list/this_turf = viewers(0, get_turf(my_atom))
 	for(var/mob/seen_mob in this_turf)
 		if(prob(50))

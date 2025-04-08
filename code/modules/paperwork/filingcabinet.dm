@@ -129,7 +129,7 @@
 		var/list/document_spliced = splittext(document_report.name," ")
 		data["paper_data"] += list(list(
 			"name" = document_report.data.name,
-			"document_id" = document_report.data?.id, //if this fails you cant take out the document, but its much better than borking the entire cabinet.
+			"document_id" = document_report.data?.id,
 			"completed" = document_report.completed,
 			"overdose" = document_report.data.overdose,
 			"overall_value" = chemical_value,
@@ -144,7 +144,7 @@
 	switch(action)
 		if("take_out_document")
 			for(var/obj/item/paper/research_report/document_report as anything in paper_contents)
-				if(document_report.data.id != params["document_id"])
+				if(document_report.data?.id != params["document_id"])
 					continue
 				ui.user.put_in_hands(document_report)
 				LAZYREMOVE(paper_contents, document_report)

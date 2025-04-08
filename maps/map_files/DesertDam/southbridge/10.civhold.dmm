@@ -4,6 +4,12 @@
 /obj/effect/spawner/random/gun/civ,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"ab" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/medical/morgue)
+"ac" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/medical/maint/north)
 "bA" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/item/weapon/broken_bottle,
@@ -171,10 +177,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
-"iB" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/desert_dam/building/medical/break_room)
 "iJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -241,9 +243,6 @@
 "lk" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/nightmare{
-	insert_tag = "southbridge"
-	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "lr" = (
@@ -270,8 +269,8 @@
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/exterior/river/riverside_east)
 "nz" = (
-/turf/closed/wall/r_wall,
-/area/desert_dam/building/medical/break_room)
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_medical)
 "nQ" = (
 /obj/structure/stairs,
 /obj/structure/platform/metal/almayer/east,
@@ -950,7 +949,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "Rn" = (
 /obj/structure/largecrate/random/case/double,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "RN" = (
 /turf/open/floor/prison,
@@ -964,7 +963,7 @@
 /obj/structure/bed/bedroll,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/colonist/random,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "Sc" = (
 /obj/effect/blocker/toxic_water/Group_2,
@@ -1460,7 +1459,7 @@ NJ
 fF
 MV
 JJ
-nz
+ab
 "}
 (14,1,1) = {"
 Ft
@@ -1486,7 +1485,7 @@ rP
 rc
 MV
 cx
-nz
+ab
 "}
 (15,1,1) = {"
 Ft
@@ -1512,7 +1511,7 @@ Qu
 fF
 MV
 dU
-nz
+ab
 "}
 (16,1,1) = {"
 eo
@@ -1538,7 +1537,7 @@ iJ
 fF
 AE
 dU
-nz
+ab
 "}
 (17,1,1) = {"
 HW
@@ -1564,7 +1563,7 @@ Hr
 fF
 MV
 dU
-nz
+ac
 "}
 (18,1,1) = {"
 RN
@@ -1590,7 +1589,7 @@ Qu
 fF
 MV
 dU
-iB
+ac
 "}
 (19,1,1) = {"
 RN
@@ -1616,7 +1615,7 @@ Od
 fF
 Jv
 dU
-iB
+ac
 "}
 (20,1,1) = {"
 HP
@@ -1642,5 +1641,5 @@ Qs
 fF
 MV
 dU
-iB
+ac
 "}

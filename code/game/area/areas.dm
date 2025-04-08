@@ -467,6 +467,12 @@
 	addtimer(VARSET_CALLBACK(src, unoviable_timer, FALSE), unoviable_timer)
 
 /area/sky
-	name = "Sky"
+	name = "Lower Sky"
 	icon_state = "lv-626"
 	flags_area = AREA_UNWEEDABLE
+
+/area/sky/level4
+	name = "Sky"
+
+/area/sky/level5
+	name = "Upper Sky"

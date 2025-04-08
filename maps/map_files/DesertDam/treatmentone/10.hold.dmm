@@ -162,7 +162,7 @@
 /obj/structure/surface/rack,
 /obj/item/device/radio,
 /turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "aA" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/prison,
@@ -218,44 +218,22 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "aK" = (
-/obj/structure/surface/table,
-/obj/item/stack/rods{
-	pixel_y = 3
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/building/water_treatment_one/hallway)
 "aL" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
-"aM" = (
-/obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
-/obj/item/tool/crowbar/red,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
 "aN" = (
-/obj/structure/machinery/big_computers/computerbrown/computer3,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_one/hallway)
 "aO" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
-"aP" = (
-/obj/structure/machinery/big_computers/computerbrown/computer5,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
-"aQ" = (
-/obj/structure/surface/table,
-/obj/item/paper,
-/obj/item/clothing/head/hardhat{
-	pixel_x = 4;
-	pixel_y = 7
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
 "aR" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -265,6 +243,17 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
+"aS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_one/hallway)
+"aT" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/stairs,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/building/water_treatment_one/hallway)
 "aX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -316,7 +305,7 @@
 "cb" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "cl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -411,14 +400,16 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "gx" = (
 /obj/structure/window/framed/hangar/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/equipment)
 "gD" = (
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/building/water_treatment_one/hallway)
 "gK" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -512,7 +503,14 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "kj" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
 /obj/effect/landmark/objective_landmark/close,
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_y = 38
@@ -615,15 +613,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/garage)
-"nW" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "nZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -647,7 +636,7 @@
 	},
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "oz" = (
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
@@ -657,12 +646,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/equipment)
-"oN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "oQ" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -783,7 +766,7 @@
 	},
 /obj/item/tool/pen/clicky,
 /turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "sc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -903,12 +886,6 @@
 	},
 /turf/open/floor/whiteyellowcorner/west,
 /area/desert_dam/building/water_treatment_one/breakroom)
-"uw" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 1
-	},
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "uz" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -928,7 +905,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "vC" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -1005,16 +982,16 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_hydro)
 "ya" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/building/water_treatment_one/hallway)
 "yr" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "yu" = (
 /obj/structure/machinery/light,
 /turf/open/floor/freezerfloor,
@@ -1024,17 +1001,6 @@
 /obj/item/clothing/head/hardhat/dblue,
 /turf/open/floor/whiteyellow/north,
 /area/desert_dam/building/water_treatment_one/breakroom)
-"zb" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "zP" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
@@ -1051,17 +1017,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/equipment)
-"Ac" = (
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
-/area/desert_dam/building/water_treatment_one/control_room)
 "Aj" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_one/hallway)
 "Am" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -1110,11 +1072,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
-"Cr" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "CA" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_hydro)
@@ -1150,10 +1107,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
-"De" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
 "Dh" = (
 /obj/structure/desertdam/decals/road_stop{
 	icon_state = "stop_decal5"
@@ -1161,15 +1114,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
-"Do" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
-"Dp" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
 "Dz" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -1279,10 +1223,6 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_hydro)
-"He" = (
-/obj/structure/window/framed/hangar,
-/turf/open/floor/plating,
-/area/desert_dam/building/water_treatment_one/control_room)
 "Hj" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -1312,9 +1252,6 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
 "Jv" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1322,13 +1259,6 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
-"Jw" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/filtration_button{
-	id = "filter 1"
-	},
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
 "Kk" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -1396,14 +1326,11 @@
 	dir = 2;
 	name = "\improper Treatment Controlroom"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "ML" = (
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
@@ -1421,9 +1348,6 @@
 "MY" = (
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
-"Nb" = (
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
 "Ne" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -1443,9 +1367,6 @@
 "Nq" = (
 /obj/structure/machinery/light{
 	dir = 4
-	},
-/obj/structure/bed/chair/office/light{
-	dir = 8
 	},
 /turf/open/floor/prison/red/east,
 /area/desert_dam/building/water_treatment_one/lobby)
@@ -1483,10 +1404,6 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Pl" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -1549,14 +1466,14 @@
 /turf/open/floor/whiteyellow,
 /area/desert_dam/building/water_treatment_one/breakroom)
 "QL" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Rl" = (
@@ -1587,7 +1504,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "RF" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal11"
@@ -1595,13 +1512,10 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "RJ" = (
-/obj/structure/machinery/big_computers/computerbrown/computer4,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_one/hallway)
 "RK" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -1714,7 +1628,7 @@
 	pixel_x = -8
 	},
 /turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/area/desert_dam/building/water_treatment_one/hallway)
 "Vm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -1783,9 +1697,6 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "WY" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -1835,9 +1746,11 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "XX" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/prison,
-/area/desert_dam/building/water_treatment_one/control_room)
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/building/water_treatment_one/hallway)
 "XZ" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -2431,7 +2344,7 @@ wI
 Am
 Am
 xh
-ap
+aS
 Gt
 Fl
 CL
@@ -2455,7 +2368,7 @@ IT
 Fl
 Wq
 Am
-Nl
+CZ
 uY
 un
 su
@@ -2551,7 +2464,7 @@ ML
 Ix
 au
 LA
-Nl
+CZ
 Gt
 GK
 na
@@ -2573,11 +2486,11 @@ kj
 Nq
 BI
 Ix
-He
-De
+Fl
+Am
 MD
-He
-Ac
+Fl
+GK
 us
 su
 su
@@ -2591,17 +2504,17 @@ Ec
 "}
 (30,1,1) = {"
 aO
-Ac
+GK
 Ix
 Ix
 Ix
 Ix
 Ix
-Dp
-De
-nW
+ax
+Am
+aS
 az
-Ac
+GK
 na
 su
 su
@@ -2615,17 +2528,17 @@ Ec
 "}
 (31,1,1) = {"
 FB
-Ac
+GK
 RJ
-aM
+aK
 aK
 ya
 XX
-XX
-Do
-zb
+Gt
+Am
+CZ
 cb
-Ac
+GK
 gx
 su
 cz
@@ -2639,17 +2552,17 @@ Ec
 "}
 (32,1,1) = {"
 FB
-Ac
+GK
 aN
-uw
+aT
+aT
 gD
-gD
-De
-Cr
-Cr
+XX
+Gt
+LA
 yr
 Ry
-Ac
+GK
 CI
 CR
 it
@@ -2663,17 +2576,17 @@ Ec
 "}
 (33,1,1) = {"
 FB
-Ac
-aP
-gD
-Cr
-Cr
-oN
-De
-De
+GK
+uY
+Am
+uY
+Am
+uY
+uY
+Am
 gq
 Ve
-Ac
+GK
 CI
 YJ
 CA
@@ -2687,17 +2600,17 @@ sN
 "}
 (34,1,1) = {"
 FB
-Ac
-aQ
-Jw
+GK
+uY
+uY
 Aj
-Nb
-Nb
-Nb
+uY
+uY
+uY
 ox
 vx
 rS
-Ac
+GK
 CI
 YJ
 Sz

@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/white,
+/area/desert_dam/building/medical/garage)
 "ab" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
@@ -142,6 +147,7 @@
 "ay" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "az" = (
@@ -2043,6 +2049,9 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
 	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "Wg" = (
@@ -2948,7 +2957,7 @@ aF
 aF
 aC
 qM
-ax
+aa
 wm
 "}
 (22,1,1) = {"

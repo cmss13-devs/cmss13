@@ -371,6 +371,10 @@
 	name = "Medical Emergency Room"
 	icon_state = "medbay"
 
+/area/desert_dam/building/medical/helipad_triage
+	name = "Medical Helipad Intake"
+	icon_state = "medbay"
+
 /area/desert_dam/building/medical/outgoing
 	name = "Medical Outgoing"
 	icon_state = "medbay2"
@@ -394,6 +398,26 @@
 /area/desert_dam/building/medical/east_wing_hallway
 	name = "Medical East Wing"
 	icon_state = "medbay"
+
+/area/desert_dam/building/medical/upper_hallway
+	name = "Medical Upper Wing"
+	icon_state = "medbay"
+
+/area/desert_dam/building/medical/stairwell
+	name = "Medical Southern Stairwell"
+	icon_state = "medbay2"
+
+/area/desert_dam/building/medical/stairwell/north
+	name = "Medical Northern Stairwell"
+	icon_state = "medbay2"
+
+/area/desert_dam/building/medical/stairwell/upper
+	name = "Medical Upper Southern Stairwell"
+	icon_state = "medbay2"
+
+/area/desert_dam/building/medical/stairwell/upper_north
+	name = "Medical Upper Northern Stairwell"
+	icon_state = "medbay2"
 
 /area/desert_dam/building/medical/primary_storage
 	name = "Medical Primary Storage"
@@ -431,6 +455,10 @@
 	name = "Medical Office Two"
 	icon_state = "blue"
 
+/area/desert_dam/building/medical/office3
+	name = "Medical Office Shared"
+	icon_state = "blue"
+
 /area/desert_dam/building/medical/virology_wing
 	name = "Medical Virology Wing"
 	icon_state = "medbay3"
@@ -443,6 +471,21 @@
 	name = "Medical"
 	icon_state = "medbay2"
 
+/area/desert_dam/building/medical/maint
+	name = "Maint"
+	icon_state = "yellow"
+
+/area/desert_dam/building/medical/maint/north
+	name = "Medical Northern Maintenance."
+
+/area/desert_dam/building/medical/maint/south
+	name = "Medical Southern Maintenance."
+
+/area/desert_dam/building/medical/maint/east
+	name = "Medical Eastern Maintenance."
+
+/area/desert_dam/building/medical/maint/cent
+	name = "Medical Central Maintenance."
 
 //Warehouse
 /area/desert_dam/building/warehouse/warehouse
@@ -514,6 +557,10 @@
 	name = "Water Treatment One Control Room"
 	icon_state = "yellow"
 
+/area/desert_dam/building/water_treatment_one/overlook
+	name = "Water Treatment One Observation Room"
+	icon_state = "yellow"
+
 /area/desert_dam/building/water_treatment_one/purification
 	name = "Water Treatment One Purification"
 	icon_state = "green"
@@ -547,6 +594,10 @@
 	name = "Water Treatment Two Control Room"
 	icon_state = "yellow"
 
+/area/desert_dam/building/water_treatment_two/overlook
+	name = "Water Treatment Two Observation"
+	icon_state = "yellow"
+
 /area/desert_dam/building/water_treatment_two/purification
 	name = "Water Treatment Two Purification"
 	icon_state = "green"
@@ -554,6 +605,9 @@
 /area/desert_dam/building/water_treatment_two/floodgate_control
 	name = "Water Treatment Two Floodgate Control"
 	icon_state = "green"
+
+/area/desert_dam/building/water_treatment_two/floodgate_control/lobby
+	name = "Water Treatment Two Floodgate Control Lobby"
 
 
 //Library UNUSED
@@ -683,6 +737,26 @@
 /area/desert_dam/exterior/rock
 	name = "Rock"
 	icon_state = "cave"
+
+/area/desert_dam/exterior/rock/level1
+	name = "Lower Rock"
+
+/area/desert_dam/exterior/rock/level3
+	name = "Upper Rock"
+
+/area/desert_dam/exterior/rock/level4
+	name = "Mountain Rock"
+
+/area/desert_dam/exterior/rock/level5
+	name = "Upper Mountain Rock"
+
+/area/desert_dam/exterior/roof
+	name = "Lower Roof"
+	always_unpowered = 1
+	icon_state = "dark128"
+
+/area/desert_dam/exterior/roof/level4
+	name = "Upper Roof"
 
 //Landing Pad for the Alamo. THIS IS NOT THE SHUTTLE AREA
 /area/desert_dam/exterior/landing_pad_one

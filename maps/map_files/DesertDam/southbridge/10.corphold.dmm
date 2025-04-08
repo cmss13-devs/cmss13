@@ -17,6 +17,12 @@
 /obj/effect/spawner/random/gun/corporate/highchance,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"ac" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/medical/morgue)
+"ad" = (
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/medical/maint/north)
 "af" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -377,8 +383,8 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
 "pT" = (
-/turf/closed/wall/r_wall,
-/area/desert_dam/building/medical/break_room)
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_medical)
 "pZ" = (
 /obj/structure/largecrate/random/mini/med{
 	pixel_x = 3;
@@ -787,7 +793,7 @@
 "HU" = (
 /obj/structure/bed/roller,
 /obj/structure/closet/bodybag,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
 "Im" = (
 /obj/structure/platform/metal/almayer/west,
@@ -911,7 +917,7 @@
 /obj/item/ammo_magazine/smg/m39{
 	current_rounds = 0
 	},
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_medical)
 "MJ" = (
 /obj/structure/disposalpipe/segment,
@@ -1067,10 +1073,6 @@
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
-"SS" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/desert_dam/building/medical/break_room)
 "Tf" = (
 /obj/structure/platform/metal/almayer,
 /obj/effect/blocker/toxic_water/Group_2,
@@ -1552,7 +1554,7 @@ vg
 Fx
 OG
 qS
-pT
+ac
 "}
 (14,1,1) = {"
 XW
@@ -1578,7 +1580,7 @@ zq
 qv
 yq
 qS
-pT
+ac
 "}
 (15,1,1) = {"
 XW
@@ -1604,7 +1606,7 @@ YJ
 xh
 bW
 qS
-pT
+ac
 "}
 (16,1,1) = {"
 sI
@@ -1630,7 +1632,7 @@ Wj
 xh
 mC
 Pj
-pT
+ac
 "}
 (17,1,1) = {"
 wk
@@ -1656,7 +1658,7 @@ YJ
 sj
 bW
 qS
-pT
+ad
 "}
 (18,1,1) = {"
 XS
@@ -1682,7 +1684,7 @@ ic
 xh
 bW
 qS
-SS
+ad
 "}
 (19,1,1) = {"
 XS
@@ -1708,7 +1710,7 @@ VF
 xh
 bW
 qS
-SS
+ad
 "}
 (20,1,1) = {"
 AN
@@ -1734,5 +1736,5 @@ QV
 dg
 bW
 qS
-SS
+ad
 "}

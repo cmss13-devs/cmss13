@@ -27,9 +27,9 @@
 	name = "Оружейный Специалист"
 	prefix = "ОРЖ.СП"
 
-/datum/paygrade/pmc/handler
-	name = "Ксено-Специалист"
-	prefix = "КСН.СП"
+/datum/paygrade/pmc/crowd_control
+	name = "Специалист по контролю толпы"
+	prefix = "СПКТ"
 
 //PMC Support Staff
 /datum/paygrade/pmc/doctor
@@ -40,27 +40,10 @@
 	name = "Техник Корпорации"
 	prefix = "ТЕХ"
 
-//PMC Elite
-/datum/paygrade/pmc/elite
-	name = "Элитный Штурмовик"
-	prefix = "ЭЛШТ"
-
-/datum/paygrade/pmc/medic/elite
-	name = "Элитный Медик"
-	prefix = "ЭЛМЕД"
-
-/datum/paygrade/pmc/spec/elite
-	name = "Элитный Стрелок"
-	prefix = "ЭЛСТР"
-
 //PMC Command
 /datum/paygrade/pmc/teamlead
 	name = "Лидер Группы"
 	prefix = "ЛГ"
-
-/datum/paygrade/pmc/elitelead
-	name = "Элитный Лидер Группы"
-	prefix = "ЭЛЛГ"
 
 /datum/paygrade/pmc/director
 	name = "Директор Объекта"

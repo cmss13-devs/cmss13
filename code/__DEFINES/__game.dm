@@ -36,9 +36,11 @@
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_TYRARGO_RIFT "Tyrargo Rift"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
+#define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
+#define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
@@ -400,6 +402,8 @@
 #define WALL_DEVWALL_R "devwall_r"
 #define WALL_HUNTERSHIP "metal"//DMI specific name
 #define WALL_AICORE "aiwall"
+#define WALL_UPP_SHIP "uppwall_interior"
+#define WALL_UPP_BASE "uppwall"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1

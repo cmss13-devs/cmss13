@@ -156,3 +156,44 @@
   - imageadd: Added sprites for carrying RPG M83 on the back
   Red-byte3D:
   - bugfix: King ability destroy can now be chosen again
+2025-04-08:
+  Doc12693420:
+  - spellcheck: fixes a typo in bone-mending chem property, "Re-wowen" to "Re-woven"
+  Git-Nivrak:
+  - admin: Added logging for joing as facehugger or lesser drone
+  Steelpoint, Cuberound, Blundir, Zenith, dimdimich1996, .gl0ck, feroxz:
+  - mapadd: The SSV Rostock, a UPP warship equivalent to the USS Almayer, has been
+      added to the game as an admin-spawnable ship.
+  - mapadd: A UPP lifeboat has been added.
+  - rscadd: The SSV Rostock will automatically be spawned in during the 'Faction Clash
+      UPP vs USCM' gamemode, as the primary base of operations for the UPP. This vessel
+      will have spawners allowing the UPP to spawn in from the lobby on to the Rostock.
+  - admin: 'In order for the ship to be loaded, a new Verb in the Server panel has
+      been added. The M: Prepare Events verb. This will restart the server once a
+      gamemode has been selected.'
+  - rscadd: The Rostock will also have a set of UPP dropships, and a custom lifeboat
+      spawned on the vessel when it is loaded for the Faction Clash game mode.
+  - rscadd: UPP Major and Minor victories have been added.
+  - admin: If the 'end-round' function is used, any one of all the victory condition
+      can now be set, instead of the game automatically being considered a draw.
+  - admin: A new modifier has been added, the 'ceasefire'. Prevents all humans from
+      using any firearm or explosives. This is automatically used during the 'Faction
+      Clash' gamemode, and can be activated manually be server staff for events.
+  - code_imp: Conditions for a ceasefire period have been added for the 'Faction Clash
+      UPP USCM' game mode. This institutes a five-minute ceasefire preventing both
+      factions from attacking the other once any faction transport lands on the operations
+      zone. The commencement and cessation of this ceasefire are automatically announced.
+  - code_imp: Once all forces of a single faction have been eliminated on the operations
+      zone during the 'Faction Clash UPP USCM' game mode, the game will automatically
+      declare the other faction as the victory, which will end the round.
+  - rscadd: UPP medical vendors have been added to the game.
+  - rscadd: A suite of UPP ship wall and hull tiles have been added to the game for
+      mapper usage.
+  - rscadd: Heavy cable sprites have been added as a decal for better mapper use.
+  private-tristan:
+  - rscadd: TRAIT_CARD_PLAYING_THUMBS to the event panel, allowing xenos to play cards.
+  - admin: ability grant or revoke card playing thumbs to xenos through the event
+      panel.
+  - bugfix: fixed painkilling OD/Crit OD having halved effects
+  silverplatedelta:
+  - balance: Drones can now evolve into any T2 caste before first drop

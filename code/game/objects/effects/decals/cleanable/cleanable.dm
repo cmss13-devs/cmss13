@@ -104,5 +104,9 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 /obj/effect/decal/cleanable/proc/fade_and_disappear()
 	var/fade_time = rand(3, 7) SECONDS
 
-	animate(overlayed_image ? overlayed_image : src, alpha = 0, time = fade_time)
+	if(overlayed_image)
+		clear_overlay()
+		forceMove(cleanable_turf)
+
+	animate(src, alpha = 0, time = fade_time)
 	QDEL_IN(src, fade_time)

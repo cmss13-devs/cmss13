@@ -345,7 +345,7 @@
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
 							return
 						var/datum/reagent/reagent_to_burn = GLOB.chemical_reagents_list[reaction.result]
-						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1, 3, 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound
+						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1, 3, 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound spam
 							var/list/seen = viewers(3, get_turf(my_atom))
 							for(var/mob/seen_mob in seen)
 								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to smoke heavily!"))
@@ -365,9 +365,6 @@
 						playsound(get_turf(my_atom), 'sound/effects/tankhiss3.ogg', 10, 30000, 4)// what a great sound where did it hide all this time
 
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC))
-						var/list/seen = viewers(0, get_turf(my_atom))
-						for(var/mob/seen_mob in seen)
-							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
 						addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction, multiplier), 2 SECONDS, TIMER_UNIQUE)//this could easily be in process but I want to control the time
 					break
 
@@ -417,6 +414,10 @@
 	add_reagent(reaction.result, reaction.result_amount * floor(max(multiplier/5, 2)))
 	for(var/secondary_result in reaction.secondary_results)
 		add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * floor(max(multiplier/5, 2)))
+	var/list/seen = viewers(0, get_turf(my_atom))
+	for(var/mob/seen_mob in seen)
+		if(prob(50))
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
 	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 
 /datum/reagents/proc/isolate_reagent(reagent)

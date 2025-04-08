@@ -77,9 +77,9 @@
 #define CHEM_CLASS_COMMON 2
 /// Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_UNCOMMON 3
-/// Chemicals with or without a recipe but can be obtained on the Almayer, or requires rare components
+/// Chemicals that are either cant be made or require rare or expandable components.
 #define CHEM_CLASS_RARE 4
-/// Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
+/// Chemicals that cant be made
 #define CHEM_CLASS_SPECIAL 5
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
@@ -94,13 +94,13 @@
 #define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
 
 ///REACTION FLAGS
-/// reaction that has nothing to it. this responds to actually making the reaction occur, thus it always must be enabled, or replaced with CHEM_REACTION_ENDOTHERMIC.
+/// reaction that has nothing to it. this is whats making the reaction occur, thus it always must be enabled, or replaced with CHEM_REACTION_ENDOTHERMIC.
 #define CHEM_REACTION_CALM (1<<0)
-/// reaction that bubbles when mixed, causing the person holding it get splashed by it unless wearing protective equipment, mixing small amounts with pipitte needs only gloves, everything else needs suit for complete protection. cannot defend with closing the lid.
+/// reaction that bubbles when mixed, causing the person holding it get splashed by it unless wearing protective equipment, mixing small amounts (under 5) is safe, everything else needs suit for complete protection. cannot defend with closing the lid.
 #define CHEM_REACTION_BUBBLING (1<<1)
 /// reaction that glows. nothing to add.
 #define CHEM_REACTION_GLOWING (1<<2)
-/// reaction that sets things around on fire, its still mixed, but everything is on fire. partially protected with lid.
+/// reaction that sets things around on fire, its still mixed, but everything is on fire. the beaker is set on fire 3 seconds after the reaction. smoke and sound are given immediatly.
 #define CHEM_REACTION_FIRE (1<<3)
 /// reaction that makes smoke from its contents while mixing. spread of smoke is depending on amount mixed. protect yourself with a gas mask or close the lid quick enough before it starts to smoke.
 #define CHEM_REACTION_SMOKING (1<<4)

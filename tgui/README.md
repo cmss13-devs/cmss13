@@ -193,6 +193,8 @@ Inspection". You can then f12 to open the standard chrome dev tools.
 - `/packages/tgui/routes.tsx` - This is where tgui decides which interface to
   pull and render.
 - `/packages/tgui/styles/main.scss` - CSS entry point.
+- `/packages/tgui/styles/components` - CSS classes which are used in UI
+  components. These stylesheets closely follow the [BEM](https://en.bem.info/methodology/) methodology.
 - `/packages/tgui/styles/functions.scss` - Useful SASS functions. Stuff like
   `lighten`, `darken`, `luminance` are defined here.
 - `/packages/tgui/styles/atomic` - Atomic CSS classes. These are very simple,

@@ -117,7 +117,7 @@
 		var/obj/item/paper/research_report/document_report = document_obj
 		var/chemical_value = 0
 		var/list/properties_codes_level = list()
-		for(var/datum/chem_property/properties_document in document_report.data.properties)
+		for(var/datum/chem_property/properties_document in document_report?.data?.properties)
 			if(document_report.completed) //only evaluate completed documents.
 				var/attitude = (isNegativeProperty(properties_document) ? -1.5 : (isNeutralProperty(properties_document) ? -1 : 1) )
 				//this should give us the absolutely rough estimate of how good paper is, value var on properties are a mess, so nada.
@@ -129,7 +129,7 @@
 		var/list/document_spliced = splittext(document_report.name," ")
 		data["paper_data"] += list(list(
 			"name" = document_report.data.name,
-			"document_id" = document_report.data.id,
+			"document_id" = document_report.data?.id, //if this fails you cant take out the document, but its much better than borking the entire cabinet.
 			"completed" = document_report.completed,
 			"overdose" = document_report.data.overdose,
 			"overall_value" = chemical_value,

@@ -782,15 +782,15 @@
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
 				txt += "<BR>Chemical has following reaction indicators:"
-				if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
+				if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
 					txt += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
 					txt += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
 					txt += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
 					txt += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
-				else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
 					txt += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
 				else
 					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
@@ -931,15 +931,15 @@
 		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<BR>Chemical has following reaction indicators:"
-			if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
+			if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
 				info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
-			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
 				info += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
-			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
 				info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
-			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
 				info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
-			else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
 				info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
 			else
 				info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
@@ -958,15 +958,15 @@
 		valid_report = FALSE
 	else if(S.description)
 		info += "<BR>Chemical has following reaction indicators:"
-		if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
+		if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
 			info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
-		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
 			info += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
-		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
 			info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
-		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
 			info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
-		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
 			info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
 		else
 			info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"

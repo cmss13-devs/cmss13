@@ -21,10 +21,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 /turf/open_space/attack_alien(mob/user)
 	attack_hand(user)
 
-/turf/open_space/attack_hand(mob/user)
-	user.move_intentionally = TRUE
-	Enter(user)
-
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)
 	. = ..()
 
@@ -82,9 +78,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
-
-/turf/open_space/attack_alien(mob/user)
-	attack_hand(user)
 
 /turf/open_space/attack_hand(mob/user)
 	if(user.action_busy)

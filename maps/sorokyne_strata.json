@@ -7,7 +7,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/soro",
         "/datum/equipment_preset/survivor/doctor/soro",
-        "/datum/equipment_preset/survivor/corporate/soro",
+        "/datum/equipment_preset/survivor/hyperdyne",
         "/datum/equipment_preset/survivor/engineer/soro_industry_contractor",
         "/datum/equipment_preset/survivor/engineer/soro_reactor_tech",
         "/datum/equipment_preset/survivor/peoples_armed_police",

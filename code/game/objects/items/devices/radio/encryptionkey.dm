@@ -264,7 +264,7 @@
 
 /obj/item/device/encryptionkey/hyperdyne
 	name = "\improper Hyperdyne Corporation encryption key"
-	icon_state = "wy_key"
+	icon_state = "ce_key"
 	channels = list(RADIO_CHANNEL_HYPERDYNE = TRUE)
 	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 

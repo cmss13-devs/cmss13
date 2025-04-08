@@ -327,6 +327,7 @@ SUBSYSTEM_DEF(radio)
 		"[FAX_WY_FREQ]" = "airadio",
 		"[FAX_USCM_HC_FREQ]" = "aiprivradio",
 		"[FAX_USCM_PVST_FREQ]" = "aiprivradio",
+		"[HDC_FREQ]" = "hdcradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)

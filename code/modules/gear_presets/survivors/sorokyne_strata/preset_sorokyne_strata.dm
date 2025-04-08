@@ -493,27 +493,61 @@
 	add_survivor_weapon_civilian(new_human)
 	..()
 
-/datum/equipment_preset/survivor/corporate/soro
-	name = "Survivor - UPP - Hyperdyne - Corporate Liaison"
+/datum/equipment_preset/survivor/hyperdyne
+	name = "Survivor - UPP - Hyperdyne - Corporate Liaison" // Basically a Corporate Liaison for Hyperdyne instead of Weyland-Yutani. - Hyperdyne should be expanded in the future, more roles ect.
 	assignment = "Hyperdyne - Corporate Liaison"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
-	faction = FACTION_HYPERDYNE
-	faction_group = FACTION_LIST_SURVIVOR_UPP
+	skills = /datum/skills/civilian/survivor
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
+	faction_group = FACTION_HYPERDYNE
+	rank = JOB_HC_EXECUTIVE
+	faction = FACTION_HYPERDYNE
+	faction_group = list(FACTION_HYPERDYNE, FACTION_LIST_SURVIVOR_UPP)
+	idtype = /obj/item/card/id/silver/cl/hyperdyne
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_WY_GENERAL,
+		ACCESS_WY_COLONIAL,
+		ACCESS_WY_EXEC,
+	)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
+	survivor_variant = CORPORATE_SURVIVOR
 	minimap_icon = "hc_cl"
 	minimap_background = "background_hc_management"
 
-	survivor_variant = CORPORATE_SURVIVOR
+/datum/equipment_preset/survivor/hyperdyne/load_rank(mob/living/carbon/human/new_human, client/mob_client)
+	if(paygrades.len == 1)
+		return paygrades[1]
+	var/playtime
+	if(!mob_client)
+		playtime = JOB_PLAYTIME_TIER_1
+	else
+		playtime = get_job_playtime(mob_client, JOB_CORPORATE_LIAISON)
+		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
+			playtime = JOB_PLAYTIME_TIER_1
+	var/final_paygrade
+	for(var/current_paygrade as anything in paygrades)
+		var/required_time = paygrades[current_paygrade]
+		if(required_time - playtime > 0)
+			break
+		final_paygrade = current_paygrade
+	if(!final_paygrade)
+		. = "???"
+		CRASH("[key_name(new_human)] spawned with no valid paygrade.")
 
-/datum/equipment_preset/survivor/corporate/soro/load_gear(mob/living/carbon/human/new_human)
+	return final_paygrade
 
+/datum/equipment_preset/survivor/hyperdyne/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/hyperdyne(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/hyperdyne_patch, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/black(new_human), WEAR_ACCESSORY)
-
+	add_survivor_weapon_civilian(new_human)
+	add_random_cl_survivor_loot(new_human)
+	add_ice_colony_survivor_equipment(new_human)
 	..()

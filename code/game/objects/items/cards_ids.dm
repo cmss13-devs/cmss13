@@ -226,6 +226,11 @@
 	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
 	icon_state = "cl"
 
+/obj/item/card/id/silver/cl/hyperdyne
+	name = "corporate holo-badge"
+	desc = "A corporate holo-badge. It's a unique Corporate orange and black."
+	icon_state = "hyperdyne"
+
 /obj/item/card/id/gold/council
 	name = "identification holo-badge"
 	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes an excellent paperweight."

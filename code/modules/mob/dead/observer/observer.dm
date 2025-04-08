@@ -405,9 +405,6 @@
 				if("Faction Wey-Yu HUD")
 					the_hud= GLOB.huds[MOB_HUD_FACTION_WY]
 					the_hud.add_hud_to(src, src)
-				if("Faction Hyperdyne HUD")
-					the_hud= GLOB.huds[MOB_HUD_FACTION_HC]
-					the_hud.add_hud_to(src, src)
 				if("Faction TWE HUD")
 					the_hud= GLOB.huds[MOB_HUD_FACTION_TWE]
 					the_hud.add_hud_to(src, src)
@@ -419,6 +416,9 @@
 					the_hud.add_hud_to(src, src)
 				if(HUD_MENTOR_SIGHT)
 					the_hud= GLOB.huds[MOB_HUD_NEW_PLAYER]
+					the_hud.add_hud_to(src, src)
+				if("Faction Hyperdyne HUD")
+					the_hud= GLOB.huds[MOB_HUD_FACTION_HC]
 					the_hud.add_hud_to(src, src)
 
 	see_invisible = INVISIBILITY_OBSERVER

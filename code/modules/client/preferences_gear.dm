@@ -1247,6 +1247,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Colonial Liberation Front shoulder patch"
 	path = /obj/item/clothing/accessory/patch/clf_patch
 
+/datum/gear/civilian/patch/hyperdyne
+	display_name = "Hyperdyne Corporation shoulder patch"
+	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
+
 // Cheap Civilian shades - colorful!
 
 /datum/gear/civilian/eyewear/bimax_shades

@@ -1044,12 +1044,11 @@
 /obj/item/device/radio/headset/distress/hyperdyne
 	name = "HC corporate headset"
 	desc = "A headset commonly worn by Hyperdyne corporate personnel."
-	icon_state = "wy_headset"
+	icon_state = "generic_headset"
 	frequency = HDC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/hyperdyne)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_HC
-	additional_hud_types = list(MOB_HUD_FACTION_HC)
 
 /obj/item/device/radio/headset/distress/dutch
 	name = "Dutch's Dozen headset"

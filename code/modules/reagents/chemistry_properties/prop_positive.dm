@@ -553,6 +553,7 @@
 	value = 3
 	cost_penalty = FALSE
 	var/revivetimerid
+	COOLDOWN_DECLARE(revive_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -597,6 +598,9 @@
 			break
 	if(dead.health > HEALTH_THRESHOLD_DEAD)
 		revivetimerid = addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS, TIMER_STOPPABLE)
+		if(!COOLDOWN_FINISHED(src, revive_notif))
+			return
+		COOLDOWN_START(src, revive_notif, 10 SECONDS)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
 		var/mob/dead/observer/ghost = dead.get_ghost()

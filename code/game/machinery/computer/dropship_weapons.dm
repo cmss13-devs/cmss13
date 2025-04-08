@@ -64,7 +64,7 @@
 	. = ..()
 	
 	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-	tacmap_component.show_tacmap(user)
+	tacmap_component.on_unset_interaction(user)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -155,6 +155,9 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
+
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -510,7 +513,10 @@
 			return TRUE
 		if("mapview")
 			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-			tacmap_component.show_tacmap(user)
+			if(user in tacmap_component.interactees)
+				tacmap_component.on_unset_interaction(user)
+			else
+				tacmap_component.show_tacmap(user)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)

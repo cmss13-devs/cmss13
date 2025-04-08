@@ -28,7 +28,7 @@ export function windowClose(scale: boolean): void {
 export function windowSet(size = WindowSize.Small, scale: boolean): void {
   const pixelRatio = scale ? window.devicePixelRatio : 1;
 
-  let sizeStr = `${WindowSize.Width * pixelRatio}x${size * pixelRatio}`;
+  const sizeStr = `${WindowSize.Width * pixelRatio}x${size * pixelRatio}`;
 
   Byond.winset(null, {
     'tgui_say.size': sizeStr,

@@ -284,6 +284,9 @@ export function TguiSay() {
     <>
       <div
         className={`window window-${theme} window-${size}`}
+        style={{
+          zoom: scale.current ? '' : `${100 / window.devicePixelRatio}%`,
+        }}
         onMouseDown={dragStartHandler}
       >
         {!lightMode && <div className={`shine shine-${theme}`} />}

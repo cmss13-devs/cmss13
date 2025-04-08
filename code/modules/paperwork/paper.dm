@@ -925,9 +925,9 @@
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
+	var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[S.id]
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
-		var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[S.id]
 		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<BR>Chemical has following reaction indicators:"
@@ -957,6 +957,19 @@
 		icon_state = "paper_wy_partial_report"
 		valid_report = FALSE
 	else if(S.description)
+		info += "<BR>Chemical has following reaction indicators:"
+		if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_BUBBLING))
+			info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_GLOWING))
+			info += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_SMOKING))
+			info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_FIRE))
+			info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+			info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
+		else
+			info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"

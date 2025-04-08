@@ -4,15 +4,19 @@
 #define HIDE_GROUND 1
 #define HIDE_NONE 0
 
+GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
+
 /obj/structure/machinery/computer/overwatch
 	name = "Overwatch Console"
 	desc = "State of the art machinery for giving orders to a squad."
 	icon_state = "dummy"
-	req_access = list(ACCESS_MARINE_DATABASE)
+	unslashable = TRUE
 	unacidable = TRUE
 
-	var/datum/squad/current_squad = null
+	var/datum/squad/current_squad
+	var/datum/squad/squad
 	var/state = 0
+	var/no_skill_req // should the computer require the OW skill to use
 	var/obj/structure/machinery/camera/cam = null
 	var/obj/item/camera_holder = null
 	var/list/network = list(CAMERA_NET_OVERWATCH)
@@ -45,17 +49,47 @@
 	///Currently selected UI theme
 	var/ui_theme = "crtblue"
 	var/list/concurrent_users = list()
+	var/ob_cannon_safety = FALSE
+	var/announcement_title = COMMAND_ANNOUNCE
+	var/announcement_faction = FACTION_MARINE
+	var/add_pmcs = FALSE
+	var/show_command_squad = FALSE
+	var/tgui_interaction_distance = 1
+
+	/// requesting a distress beacon
+	COOLDOWN_DECLARE(cooldown_request)
+	/// messaging HC (admins)
+	COOLDOWN_DECLARE(cooldown_central)
+	/// making a groundside announcement
+	COOLDOWN_DECLARE(cooldown_message)
+	/// making a shipside announcement
+	COOLDOWN_DECLARE(cooldown_shipside_message)
+	/// 10 minute cooldown between calls for 'general quarters'
+	COOLDOWN_DECLARE(general_quarters)
+
+/obj/structure/machinery/computer/overwatch/groundside_operations
+	name = "Groundside Operations Console"
+	desc = "This can be used for various important functions."
+	icon_state = "comm"
+	req_access = list(ACCESS_MARINE_SENIOR)
+	// should be usable even without OW training
+	no_skill_req = TRUE
+	show_command_squad = TRUE
+	tgui_interaction_distance = 3
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
 	if(faction == FACTION_MARINE)
+		GLOB.active_overwatch_consoles += src
 		current_orbital_cannon = GLOB.almayer_orbital_cannon
+		ob_cannon_safety = GLOB.ob_cannon_safety
 		tacmap = new /datum/tacmap/drawing(src, minimap_type)
 	else
 		tacmap = new(src, minimap_type) // Non-drawing version
 
 /obj/structure/machinery/computer/overwatch/Destroy()
 	QDEL_NULL(tacmap)
+	GLOB.active_overwatch_consoles -= src
 	current_orbital_cannon = null
 	concurrent_users = null
 	if(!camera_holder)
@@ -81,6 +115,10 @@
 /obj/structure/machinery/computer/overwatch/bullet_act(obj/projectile/Proj) //Can't shoot it
 	return FALSE
 
+/obj/structure/machinery/computer/overwatch/proc/toggle_ob_cannon_safety()
+	playsound(loc, 'sound/machines/ping.ogg', 75)
+	ob_cannon_safety = GLOB.ob_cannon_safety
+
 /obj/structure/machinery/computer/overwatch/attack_remote(mob/user as mob)
 	return attack_hand(user)
 
@@ -91,9 +129,14 @@
 	if(istype(src, /obj/structure/machinery/computer/overwatch/almayer/broken))
 		return
 
-	if(!isSilicon(usr) && !skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
+	if(!skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) && !no_skill_req)
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
+
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Console access denied."))
+		return
+
 	if((user.contents.Find(src) || (in_range(src, user) && istype(loc, /turf))) || (isSilicon(user)))
 		user.set_interaction(src)
 	tgui_interact(user)
@@ -120,7 +163,16 @@
 /obj/structure/machinery/computer/overwatch/ui_static_data(mob/user)
 	var/list/data = list()
 	data["mapRef"] = tacmap.map_holder.map_ref
+
 	return data
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_static_data(mob/user)
+	var/list/data = list()
+	data["distress_time_lock"] = DISTRESS_TIME_LOCK
+	data["mapRef"] = tacmap.map_holder.map_ref
+
+	return data
+
 
 /obj/structure/machinery/computer/overwatch/tgui_interact(mob/user, datum/tgui/ui)
 
@@ -133,11 +185,13 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		user.client.register_map_obj(tacmap.map_holder.map)
-		ui = new(user, src, "OverwatchConsole", "Overwatch Console")
+		if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
+			ui = new(user, src, "CentralOverwatchConsole", "Groundside Operations Console")
+		else
+			ui = new(user, src, "OverwatchConsole", "Overwatch Console")
 		ui.open()
 
-
-/obj/structure/machinery/computer/overwatch/proc/count_marines(list/data)
+/obj/structure/machinery/computer/overwatch/proc/count_marines(list/data, datum/squad/index_squad, variable_format)
 	var/leader_count = 0
 	var/ftl_count = 0
 	var/spec_count = 0
@@ -157,6 +211,11 @@
 	var/specialist_type
 
 	var/SL_z //z level of the Squad Leader
+
+	if(index_squad && index_squad.name == "Root")
+		var/list/command_data = get_command_squad(data)
+		return command_data
+
 	if(current_squad.squad_leader)
 		var/turf/SL_turf = get_turf(current_squad.squad_leader)
 		SL_z = SL_turf.z
@@ -293,6 +352,8 @@
 		if(is_squad_leader)
 			if(!data["squad_leader"])
 				data["squad_leader"] = marine_data[1]
+				leader_count++
+				marine_count--
 
 	data["total_deployed"] = leader_count + ftl_count + spec_count + medic_count + engi_count + smart_count + marine_count
 	data["living_count"] = leaders_alive + ftl_alive + spec_alive + medic_alive + engi_alive + smart_alive + marines_alive
@@ -311,6 +372,98 @@
 	data["engi_alive"] = engi_alive
 	data["smart_alive"] = smart_alive
 	data["specialist_type"] = specialist_type ? specialist_type : "NONE"
+
+	return data
+
+
+/obj/structure/machinery/computer/overwatch/proc/get_command_squad(list/data)
+	var/list/marine_leaders = list()
+
+	var/co_count = 0
+	var/xo_count = 0
+	var/so_count = 0
+
+	var/co_alive = 0
+	var/xo_alive = 0
+	var/so_alive = 0
+
+	if(!show_command_squad)
+		return
+
+	marine_leaders = list(GLOB.marine_leaders[JOB_CO], GLOB.marine_leaders[JOB_XO])
+	marine_leaders |= (GLOB.marine_leaders[JOB_SO])
+
+	for(var/marine in marine_leaders)
+		if(!marine)
+			continue //just to be safe
+		var/mob_name = "unknown"
+		var/mob_state = ""
+		var/has_helmet = TRUE
+		var/role = "unknown"
+		var/area_name = "???"
+		var/mob/living/carbon/human/marine_human
+
+		if(ishuman(marine))
+			marine_human = marine
+		if(istype(marine_human.loc, /obj/structure/machinery/cryopod)) //We don't care much for these
+			continue
+		mob_name = marine_human.real_name
+		var/area/current_area = get_area(marine_human)
+		var/turf/current_turf = get_turf(marine_human)
+		if(!current_turf)
+			continue
+		if(current_area)
+			area_name = sanitize_area(current_area.name)
+
+		switch(z_hidden)
+			if(HIDE_ALMAYER)
+				if(is_mainship_level(current_turf.z))
+					continue
+			if(HIDE_GROUND)
+				if(is_ground_level(current_turf.z))
+					continue
+
+		var/obj/item/card/id/card = marine_human.get_idcard()
+		if(marine_human.job)
+			role = marine_human.job
+		else if(card?.rank) //decapitated marine is mindless,
+			role = card.rank
+
+		switch(marine_human.stat)
+			if(CONSCIOUS)
+				mob_state = "Conscious"
+
+			if(UNCONSCIOUS)
+				mob_state = "Unconscious"
+
+			if(DEAD)
+				mob_state = "Dead"
+
+		if(!marine_has_camera(marine_human))
+			has_helmet = FALSE
+
+		switch(role)
+			if(JOB_CO)
+				co_count++
+				if(mob_state != "Dead")
+					co_alive++
+
+			if(JOB_XO)
+				xo_count++
+				if(mob_state != "Dead")
+					xo_alive++
+
+			if(JOB_SO)
+				so_count++
+				if(mob_state != "Dead")
+					so_alive++
+
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "area_name" = area_name, "ref" = REF(marine)))
+		data["marines"] += marine_data
+
+	data["total_deployed"] = co_count + xo_count + so_count
+	data["living_count"] = co_alive + xo_alive + so_alive
+
 	return data
 
 /obj/structure/machinery/computer/overwatch/ui_data(mob/user)
@@ -351,14 +504,76 @@
 	if(current_orbital_cannon)
 		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
 		data["ob_loaded"] = current_orbital_cannon.chambered_tray
+		data["ob_safety"] = ob_cannon_safety
 
 	data["supply_cooldown"] = COOLDOWN_TIMELEFT(current_squad, next_supplydrop)
 	data["operator"] = operator.name
 
 	return data
 
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = ui_theme
+
+	if(!current_squad)
+		data["squad_list"] = list()
+		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+			if(current_squad.active && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+				data["squad_list"] += current_squad.name
+		return data
+
+	data["current_squad"] = current_squad.name
+
+	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
+		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
+			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
+			data["squad_data"] += squad_data
+
+	data["z_hidden"] = z_hidden
+
+	data["can_launch_obs"] = current_orbital_cannon
+	if(current_orbital_cannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
+		data["ob_loaded"] = current_orbital_cannon.chambered_tray
+		data["ob_safety"] = ob_cannon_safety
+		if(current_orbital_cannon.tray.warhead)
+			data["ob_warhead"] = current_orbital_cannon.tray.warhead.warhead_kind
+	if(GLOB.almayer_aa_cannon.protecting_section)
+		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
+
+	data["marines"] = list()
+	data = count_marines(data, current_squad)
+
+	if(operator)
+		data["operator"] = operator.name
+
+	if(SSticker.mode.active_lz)
+		data["primary_lz"] = SSticker.mode.active_lz
+	data["alert_level"] = GLOB.security_level
+	data["evac_status"] = SShijack.evac_status
+	data["world_time"] = world.time
+
+	data["time_request"] = cooldown_request
+
+	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
+	data["echo_squad_active"] = echo_squad.active
+
+	return data
+
 /obj/structure/machinery/computer/overwatch/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
+
+/obj/structure/machinery/computer/overwatch/ui_status(mob/user)
+	if(!(isatom(src)))
+		return UI_INTERACTIVE
+
+	var/dist = get_dist(src, user)
+	if(dist <= tgui_interaction_distance)
+		return UI_INTERACTIVE
+	else
+		return UI_CLOSE
 
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -372,7 +587,7 @@
 				return
 			var/datum/squad/selected_squad
 			for(var/datum/squad/searching_squad in GLOB.RoleAuthority.squads)
-				if(searching_squad.active && !searching_squad.overwatch_officer && searching_squad.faction == faction && searching_squad.name != "Root" && searching_squad.name == params["squad"])
+				if(searching_squad.active && !searching_squad.overwatch_officer && searching_squad.faction == faction && searching_squad.name == params["squad"])
 					selected_squad = searching_squad
 					break
 
@@ -382,11 +597,19 @@
 			if(selected_squad.assume_overwatch(user))
 				current_squad = selected_squad
 				operator = user
-				current_squad.send_squad_message("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.", displayed_icon = src)
-				current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
+				if(current_squad.name == "Root")
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Welcome [operator.name], access credentials verified. All tactical functions initialized.")]")
+				else
+					current_squad.send_squad_message("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.", displayed_icon = src)
+					current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
 				return TRUE
 		if("logout")
+			if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
+				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
+					if(resolve_root.name == "Root" && resolve_root.faction == faction)
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+						break
 			if(current_squad?.release_overwatch())
 				if(isSilicon(user))
 					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)
@@ -446,22 +669,28 @@
 
 		if("set_primary")
 			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective"))
-			if(current_squad && input)
-				current_squad.primary_objective = "[input] ([worldtime2text()])"
-				current_squad.send_message("Your primary objective has been changed to '[input]'. See Status pane for details.")
-				current_squad.send_maptext(input, "Primary Objective Updated:")
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[current_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [current_squad]'s primary objective to '[input]'.")
+			var/datum/squad/target_squad = current_squad
+			if(params["target_squad_ref"])
+				target_squad = locate(params["target_squad_ref"])
+			if(target_squad && input)
+				target_squad.primary_objective = "[input] ([worldtime2text()])"
+				target_squad.send_message("Your primary objective has been changed to '[input]'. See Status pane for details.")
+				target_squad.send_maptext(input, "Primary Objective Updated:")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[target_squad]' set to '[input]'.")]")
+				log_overwatch("[key_name(usr)] set [target_squad]'s primary objective to '[input]'.")
 				return TRUE
 
 		if("set_secondary")
 			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective"))
+			var/datum/squad/target_squad = current_squad
+			if(params["target_squad_ref"])
+				target_squad = locate(params["target_squad_ref"])
 			if(input)
-				current_squad.secondary_objective = input + " ([worldtime2text()])"
-				current_squad.send_message("Your secondary objective has been changed to '[input]'. See Status pane for details.")
-				current_squad.send_maptext(input, "Secondary Objective Updated:")
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[current_squad]' set to '[input]'.")]")
-				log_overwatch("[key_name(usr)] set [current_squad]'s secondary objective to '[input]'.")
+				target_squad.secondary_objective = input + " ([worldtime2text()])"
+				target_squad.send_message("Your secondary objective has been changed to '[input]'. See Status pane for details.")
+				target_squad.send_maptext(input, "Secondary Objective Updated:")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[target_squad]' set to '[input]'.")]")
+				log_overwatch("[key_name(usr)] set [target_squad]'s secondary objective to '[input]'.")
 				return TRUE
 		if("replace_lead")
 			if(!params["ref"])
@@ -575,16 +804,226 @@
 				if(operator && isSilicon(operator))
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("AI override in progress. Access denied.")]")
 					return
+				if(istype(src, /obj/structure/machinery/computer/overwatch/groundside_operations))
+					for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
+						if(resolve_root.name == "Root" && resolve_root.faction == faction)
+							current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+							break
 				if(!current_squad || current_squad.assume_overwatch(user))
 					operator = user
 				if(isSilicon(user))
 					to_chat(user, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
 					current_squad?.send_squad_message("Attention. [operator.name] has engaged overwatch system control override.", displayed_icon = src)
 				else
-					var/mob/living/carbon/human/H = operator
-					var/obj/item/card/id/ID = H.get_idcard()
+					var/mob/living/carbon/human/human = operator
+					var/obj/item/card/id/ID = human.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
 					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
+
+		// groundside ops functions
+
+		if("red_alert")
+			set_security_level(SEC_LEVEL_RED)
+
+		if("change_sec_level")
+			var/list/alert_list = list(num2seclevel(SEC_LEVEL_GREEN), num2seclevel(SEC_LEVEL_BLUE))
+			switch(GLOB.security_level)
+				if(SEC_LEVEL_GREEN)
+					alert_list -= num2seclevel(SEC_LEVEL_GREEN)
+				if(SEC_LEVEL_BLUE)
+					alert_list -= num2seclevel(SEC_LEVEL_BLUE)
+				if(SEC_LEVEL_DELTA)
+					return
+
+			var/level_selected = tgui_input_list(user, "What alert would you like to set it as?", "Alert Level", alert_list)
+			if(!level_selected)
+				return
+
+			set_security_level(seclevel2num(level_selected), log = ARES_LOG_NONE)
+			log_game("[key_name(user)] has changed the security level to [get_security_level()].")
+			message_admins("[key_name_admin(user)] has changed the security level to [get_security_level()].")
+			log_ares_security("Manual Security Update", "Changed the security level to [get_security_level()].", user)
+
+		if("gather_index_squad_data")
+			var/squad = params["squad"]
+			if(!squad)
+				return
+			if(squad == "root" && show_command_squad)
+				for(var/datum/squad/resolve_root in GLOB.RoleAuthority.squads)
+					if(resolve_root.name == "Root" && resolve_root.faction == faction)
+						current_squad = resolve_root	// manually overrides the target squad to 'root', since goc's dont know how
+			else
+				current_squad = locate(params["squad"])
+
+		if("announce")
+			var/mob/living/carbon/human/human_user = usr	// does not use operator, in case they are not operating, and cannot be operated by another operator, on behalf of the operator
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			var/announcement_type = params["announcement_type"]
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
+			if(usr.client.prefs.muted & MUTE_IC)
+				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
+				return
+
+			if((!COOLDOWN_FINISHED(src, cooldown_message) && announcement_type == "groundside") || (!COOLDOWN_FINISHED(src, cooldown_shipside_message) && announcement_type == "shipside"))
+				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
+				return FALSE
+			if(announcement_faction != FACTION_MARINE && usr.faction != announcement_faction)
+				to_chat(usr, SPAN_WARNING("Access denied."))
+				return
+			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
+			if(!input || !(usr in dview(1, src)))
+				return FALSE
+
+			var/signed = null
+			if(ishuman(usr))
+				var/mob/living/carbon/human/human = usr
+				var/obj/item/card/id/id = human.get_idcard()
+				if(id)
+					var/paygrade = get_paygrades(id.paygrade, FALSE, human.gender)
+					signed = "[paygrade] [id.registered_name]"
+
+				if(announcement_type == "shipside")
+					shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
+					message_admins("[key_name(user)] has made a shipwide annoucement.")
+					log_announcement("[key_name(user)] has announced the following to the ship: [input]")
+					COOLDOWN_START(src, cooldown_shipside_message, COOLDOWN_COMM_MESSAGE)
+				else
+					marine_announcement(input, announcement_title, faction_to_display = announcement_faction, add_PMCs = add_pmcs, signature = signed)
+					message_admins("[key_name(usr)] has made a command announcement.")
+					log_announcement("[key_name(usr)] has announced the following: [input]")
+					COOLDOWN_START(src, cooldown_message, COOLDOWN_COMM_MESSAGE)
+
+		if("selectlz")
+			if(SSticker.mode.active_lz)
+				return
+			var/lz_choices = list("lz1", "lz2")
+			var/new_lz = tgui_input_list(usr, "Select primary LZ", "LZ Select", lz_choices)
+			if(!new_lz)
+				return
+			if(new_lz == "lz1")
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))
+			else
+				SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
+
+		if("messageUSCM")
+			if(!COOLDOWN_FINISHED(src, cooldown_central))
+				to_chat(user, SPAN_WARNING("Arrays are re-cycling.  Please stand by."))
+				return FALSE
+			var/input = stripped_input(user, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
+			if(!input || !(user in dview(1, src)) || !COOLDOWN_FINISHED(src, cooldown_central))
+				return FALSE
+
+			high_command_announce(input, user)
+			to_chat(user, SPAN_NOTICE("Message transmitted."))
+			log_announcement("[key_name(user)] has made an USCM announcement: [input]")
+			COOLDOWN_START(src, cooldown_central, COOLDOWN_COMM_CENTRAL)
+
+		if("award")
+			open_medal_panel(user, src)
+
+		if("activate_echo")
+			var/mob/living/carbon/human/human_user = usr
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!idcard)
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
+			var/reason = strip_html(input(usr, "What is the purpose of Echo Squad?", "Activation Reason"))
+			if(!reason)
+				return
+			if(alert(usr, "Confirm activation of Echo Squad for [reason]", "Confirm Activation", "Yes", "No") != "Yes") return
+			var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
+			if(!echo_squad)
+				visible_message(SPAN_BOLDNOTICE("ERROR: Unable to locate Echo Squad database."))
+				return
+			echo_squad.engage_squad(TRUE)
+			message_admins("[key_name(usr)] activated Echo Squad for '[reason]'.")
+
+		if("distress")
+			if(!SSticker.mode)
+				return FALSE //Not a game mode?
+
+			if(GLOB.security_level == SEC_LEVEL_DELTA)
+				to_chat(user, SPAN_WARNING("The ship is already undergoing self destruct procedures!"))
+				return FALSE
+
+			for(var/client/C in GLOB.admins)
+				if((R_ADMIN|R_MOD) & C.admin_holder.rights)
+					playsound_client(C,'sound/effects/sos-morse-code.ogg',10)
+			SSticker.mode.request_ert(user)
+			to_chat(user, SPAN_NOTICE("A distress beacon request has been sent to USCM Central Command."))
+			COOLDOWN_START(src, cooldown_request, COOLDOWN_COMM_REQUEST)
+			return TRUE
+
+		if("evacuation_start")
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				to_chat(user, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
+				return FALSE
+
+			if(SShijack.evac_admin_denied)
+				to_chat(user, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
+				return FALSE
+
+			if(!SShijack.initiate_evacuation())
+				to_chat(user, SPAN_WARNING("You are unable to initiate an evacuation procedure right now!"))
+				return FALSE
+
+			log_game("[key_name(user)] has called for an emergency evacuation.")
+			message_admins("[key_name_admin(user)] has called for an emergency evacuation.")
+			log_ares_security("Initiate Evacuation", "Called for an emergency evacuation.", user)
+
+		if("evacuation_cancel")
+			var/mob/living/carbon/human/human_user = user
+			var/obj/item/card/id/idcard = human_user.get_active_hand()
+			var/bio_fail = FALSE
+			if(!istype(idcard))
+				idcard = human_user.get_idcard()
+			if(!istype(idcard))
+				bio_fail = TRUE
+			else if(!idcard.check_biometrics(human_user))
+				bio_fail = TRUE
+			if(bio_fail)
+				to_chat(human_user, SPAN_WARNING("Biometrics failure! You require an authenticated ID card to perform this action!"))
+				return FALSE
+
+			if(!SShijack.cancel_evacuation())
+				to_chat(user, SPAN_WARNING("You are unable to cancel the evacuation right now!"))
+				return FALSE
+
+			log_game("[key_name(user)] has canceled the emergency evacuation.")
+			message_admins("[key_name_admin(user)] has canceled the emergency evacuation.")
+			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
+
+		if("general_quarters")
+			if(!COOLDOWN_FINISHED(src, general_quarters))
+				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				return FALSE
+			if(GLOB.security_level < SEC_LEVEL_RED)
+				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			log_game("[key_name(user)] has called for general quarters via the groundside operations console.")
+			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
+			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
+			COOLDOWN_START(src, general_quarters, 10 MINUTES)
+			. = TRUE
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)
 	SIGNAL_HANDLER
@@ -690,7 +1129,7 @@
 
 
 /obj/structure/machinery/computer/overwatch/check_eye(mob/user)
-	if(user.is_mob_incapacitated(TRUE) || get_dist(user, src) > 1 || user.blinded) //user can't see - not sure why canmove is here.
+	if(user.is_mob_incapacitated(TRUE) || ui_status(user) == UI_CLOSE || user.blinded) //user can't see - not sure why canmove is here.
 		user.unset_interaction()
 	else if(!cam || !cam.can_use()) //camera doesn't work, is no longer selected or is gone
 		for(var/datum/weakref/user_ref in concurrent_users)
@@ -823,7 +1262,7 @@
 		return
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD) //gibbed, decapitated, dead
-		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is unable to be transfered!")]")
 		return
 
 	var/obj/item/card/id/card = transfer_marine.get_idcard()
@@ -869,7 +1308,7 @@
 	if(!user)
 		return
 
-	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ob))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ob) || ob_cannon_safety)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("A remote lock has been placed on the orbital cannon.")]")
 		return
 
@@ -919,11 +1358,11 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/structure/machinery/computer/overwatch, fire_bombard), user, T), 6 SECONDS + 6)
 
 /obj/structure/machinery/computer/overwatch/proc/begin_fire()
-	for(var/mob/living/carbon/H in GLOB.alive_mob_list)
-		if(is_mainship_level(H.z) && !H.stat) //USS Almayer decks.
-			to_chat(H, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
-			if(H.client)
-				shake_camera(H, 10, 1)
+	for(var/mob/living/carbon/human in GLOB.alive_mob_list)
+		if(is_mainship_level(human.z) && !human.stat) //USS Almayer decks.
+			to_chat(human, SPAN_WARNING("The deck of the [MAIN_SHIP_NAME] shudders as the orbital cannons open fire on the colony."))
+			if(human.client)
+				shake_camera(human, 10, 1)
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment for squad '[current_squad]' has fired! Impact imminent!")]")
 	current_squad.send_message("WARNING! Ballistic trans-atmospheric launch detected! Get outside of Danger Close!")
 

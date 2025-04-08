@@ -64,6 +64,8 @@
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
+	skull = /obj/item/skull/spitter
+	pelt = /obj/item/pelt/spitter
 
 /datum/action/xeno_action/onclick/charge_spit/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/zenomorf = owner

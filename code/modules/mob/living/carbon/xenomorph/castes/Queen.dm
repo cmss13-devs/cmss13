@@ -51,6 +51,7 @@
 
 	royal_caste = TRUE
 
+
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
 		var/datum/hive_status/hive
@@ -193,7 +194,7 @@
 	if(!istype(T))
 		return
 
-	if(mods["shift"] && mods["middle"])
+	if(mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
 		if(next_point > world.time)
 			return COMPONENT_INTERRUPT_CLICK
 
@@ -212,7 +213,7 @@
 
 		return COMPONENT_INTERRUPT_CLICK
 
-	if(!mods["ctrl"])
+	if(!mods[CTRL_CLICK])
 		return
 
 	if(isxeno(A))
@@ -355,6 +356,9 @@
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
+
+	skull = /obj/item/skull/queen
+	pelt = /obj/item/pelt/queen
 
 	var/queen_aged = FALSE
 	var/queen_age_timer_id = TIMER_ID_NULL

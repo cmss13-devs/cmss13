@@ -73,7 +73,7 @@
 	name = "shooting target"
 	anchored = FALSE
 	desc = "A shooting target."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
 	health = 5000
@@ -206,7 +206,7 @@
 	occupant = /obj/item/clothing/mask/facehugger
 
 /obj/structure/xenoautopsy/tank/hugger/yautja
-	desc = "Someone keeps those for a mere amusement..."
+	desc = "There's something floating in the tank, perhaps it's kept for someones mere amusement..."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	broken_state = /obj/structure/xenoautopsy/tank/broken/yautja
 
@@ -299,10 +299,20 @@
 
 /obj/structure/stairs/multiz
 	var/direction
+	layer = OBJ_LAYER // Cannot be obstructed by weeds
+	var/list/blockers = list()
 
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+	for(var/turf/blocked_turf in range(1, src))
+		blockers += new /obj/effect/build_blocker(blocked_turf, src)
+		new /obj/structure/blocker/anti_cade(blocked_turf)
+
+/obj/structure/stairs/multiz/Destroy()
+	QDEL_LIST(blockers)
+
+	. = ..()
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	if(!istype(enterer, /mob))

@@ -74,7 +74,7 @@
 
 /obj/item/paper/update_icon()
 	switch(icon_state)
-		if("paper_talisman", "paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
+		if("paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
 			return
 
 	if(!info)

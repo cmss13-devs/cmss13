@@ -50,9 +50,6 @@
 
 	var/turf_flags = NO_FLAGS
 
-	// Fishing
-	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
-
 	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
 	var/dynamic_lumcount = 0
 

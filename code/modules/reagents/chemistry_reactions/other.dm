@@ -77,14 +77,14 @@
 	name = "Iron Sulfate"
 	id = "iron_sulfate"
 	result = "iron_sulfate"
-	required_reagents = list("iron" = 2, "sulphuric acid" = 1)
+	required_reagents = list("iron" = 1, "sulphuric acid" = 5)
 	result_amount = 1
 
 /datum/chemical_reaction/iron_phoride_sulfate
 	name = "Iron Phoride Sulfate"
 	id = "iron_phoride_sulfate"
-	result = "iron_sulfate"
-	required_reagents = list("iron_sulfate" = 1, "phoron" = 2)
+	result = "iron_phoride_sulfate"
+	required_reagents = list("iron_sulfate" = 3, "phoron" = 1)
 	reaction_type = parent_type::reaction_type | CHEM_REACTION_FIRE
 	result_amount = 1
 

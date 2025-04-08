@@ -163,7 +163,7 @@
 	for(var/allowed_type in allowed_types)
 		if(istype(attacked_item, allowed_type))
 			var/obj/item/paper/research_report/document_report = attacked_item
-			if(document_report.valid_report)
+			if(document_report.valid_report && !isnull(document_report.data))
 				to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
 				user.drop_inv_item_to_loc(attacked_item, src)
 				LAZYADD(paper_contents, attacked_item)

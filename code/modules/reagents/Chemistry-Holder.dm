@@ -345,7 +345,7 @@
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
 							return
 						var/datum/reagent/reagent_to_burn = GLOB.chemical_reagents_list[reaction.result]
-						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1, 3, 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound spam
+						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1+floor(max(multiplier/6, 1)), 3+floor(max(multiplier/6, 1)), 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound spam
 							var/list/seen = viewers(3, get_turf(my_atom))
 							for(var/mob/seen_mob in seen)
 								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to smoke heavily!"))

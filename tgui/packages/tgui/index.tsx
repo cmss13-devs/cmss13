@@ -17,6 +17,7 @@ import './styles/themes/crt/crt-red.scss';
 import './styles/themes/crt/crt-white.scss';
 import './styles/themes/crt/crt-upp.scss';
 import './styles/themes/crt/crt-yellow.scss';
+import './styles/themes/crt/crt-xeno.scss'; // BANDAMARINES ADDITION
 import './styles/themes/spookyconsole.scss';
 import './styles/themes/hackerman.scss';
 import './styles/themes/malfunction.scss';

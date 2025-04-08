@@ -53,6 +53,12 @@
 /// If an object will fall through open space, use this when dashing \ jumping for example
 #define NO_ZFALL (1<<22)
 
+// BANDASTATION EDIT ADDITION - Bump Attacks
+/// Can this atom be bumped attack
+#define BUMP_ATTACKABLE (1<<23)
+///Whether or not this atom shows screentips when hovered over
+#define NO_SCREENTIPS (1<<24)
+// BANDASTATION EDIT END
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -96,6 +102,10 @@
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
 /// The item will incur click delay if an empty adjacent tile is clicked
 #define ADJACENT_CLICK_DELAY (1<<16)
+// BANDASTATION EDIT ADDITION - Bump Attacks
+/// Item triggers bump attack
+#define CAN_BUMP_ATTACK (1<<17)
+// BANDASTATION EDIT END
 //==========================================================================================
 
 

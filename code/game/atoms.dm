@@ -261,7 +261,7 @@ directive is properly returned.
 
 /atom/proc/get_examine_text(mob/user)
 	. = list()
-	. += "[icon2html(src, user)] That's \a [src]." //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
+	. += "[icon2html(src, user)] [examine_thats] [declent_ru(NOMINATIVE)]." // BANDAMARINES EDIT - translations
 	if(desc)
 		. += desc
 	if(desc_lore)

@@ -1288,6 +1288,22 @@
 		msg = replacetext(msg, "o", "0")
 		msg = replacetext(msg, "s", "5")
 		msg = replacetext(msg, "l", "1")
+		// BANDAMARINES ADD - START
+		msg = replacetext(msg, "а", "@")
+		msg = replacetext(msg, "е", "3")
+		msg = replacetext(msg, "ч", "4")
+		msg = replacetext(msg, "о", "0")
+		msg = replacetext(msg, "з", "3")
+		msg = replacetext(msg, "г", "r")
+		msg = replacetext(msg, "ь", "b")
+		msg = replacetext(msg, "в", "8")
+		msg = replacetext(msg, "и", "u")
+		msg = replacetext(msg, "к", "k")
+		msg = replacetext(msg, "ш", "w")
+		msg = replacetext(msg, "м", "m")
+		msg = replacetext(msg, "п", "n")
+		msg = replacetext(msg, "ы", "Ьl")
+		// BANDAMARINES ADD - END
 
 	caller.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
 

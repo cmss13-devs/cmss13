@@ -241,12 +241,6 @@ export function TguiSay() {
     setLightMode(!!data.lightMode);
     setExtraChennels(data.extraChannels);
     scale.current = !!data.scale;
-
-    if (!data.scale) {
-      window.document.body.style['zoom'] = `${100 / window.devicePixelRatio}%`;
-    } else {
-      window.document.body.style['zoom'] = '';
-    }
   }
 
   function unloadChat(): void {

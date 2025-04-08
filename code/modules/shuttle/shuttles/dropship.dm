@@ -194,15 +194,11 @@
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
 	if(root_console.dropship_control_lost)
 		return
-	if(mode != SHUTTLE_IDLE)
-		return
-	var/obj/docking_port/stationary/dockedAt = get_docked()
-	if(dockedAt.id == automated_hangar_id)
-		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
-	else
-		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
+	var/obj/docking_port/stationary/marine_dropship/dockedAt = get_docked()
+	var/target_id = (dockedAt?.id == automated_hangar_id) ? automated_lz_id : automated_hangar_id
+	SSshuttle.moveShuttle(id, target_id, TRUE)
 	if(faction == FACTION_MARINE)
-		ai_silent_announcement("Dropship '[name]' departing.")
+		ai_silent_announcement("Dropship '[name]' departing from [dockedAt.name]")
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH

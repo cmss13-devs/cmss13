@@ -403,10 +403,10 @@
 	var/required_reagents_present = 0
 	var/required_catalysts_present = 0
 	for(var/datum/reagent/reagent_in_holder in reagent_list)
-		if((reagent_in_holder.id in reaction.required_reagents) && reagent_in_holder.volume >= reaction.required_reagents[reagent_in_holder.id] * floor(max(multiplier/6, 1)))
+		if((reagent_in_holder.id in reaction.required_reagents) && reagent_in_holder.volume >= reaction.required_reagents[reagent_in_holder.id])
 			required_reagents_present++
 	for(var/datum/reagent/catalysts_in_holder in reagent_list)
-		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id] * floor(max(multiplier/6, 1)))
+		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id])
 			required_catalysts_present++
 	if(!(length(reaction.required_reagents) == required_reagents_present && length(reaction.required_catalysts) == required_catalysts_present))
 		return

@@ -144,11 +144,3 @@
 	prefix = "GenArm."
 	pay_multiplier = 7
 	officer_grade = GRADE_FLAG
-
-//UPP Colonists
-
-/datum/paygrade/upp/militsiya
-	paygrade = PAY_SHORT_UCM
-	name = "Militsioner"
-	prefix = "Milit."
-	pay_multiplier = 0.3

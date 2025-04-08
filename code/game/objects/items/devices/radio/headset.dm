@@ -1271,7 +1271,7 @@
 
 /obj/item/device/radio/headset/distress/NSPA
 	name = "NSPA Headset"
-	desc = "NSPA headset."
+	desc = "A special headset used by the NSPA."
 	frequency = RMC_FREQ
 	icon_state = "vai_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
@@ -1334,13 +1334,14 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_UPP
 
-/obj/item/device/radio/headset/distress/UPP/PaP
+/obj/item/device/radio/headset/distress/PaP
 	name = "\improper UPP PaP headset"
 	desc = "A special headset used by the People's Armed Police of the UPP."
 	frequency = UPP_FREQ
 	icon_state = "sec_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/upp)
-	volume = RADIO_VOLUME_QUIET
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp)
 	ignore_z = FALSE
 	has_hud = TRUE
-	hud_type = MOB_HUD_SECURITY_ADVANCED
+	hud_type = MOB_HUD_FACTION_PAP
+	additional_hud_types = list(MOB_HUD_FACTION_UPP)
+	volume = RADIO_VOLUME_IMPORTANT

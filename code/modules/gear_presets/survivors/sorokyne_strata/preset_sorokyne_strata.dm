@@ -4,9 +4,10 @@
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp_bravo"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -36,9 +37,10 @@
 	minimap_icon = "upp_cont"
 	minimap_background = "background_upp_bravo"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = ENGINEERING_SURVIVOR
 
@@ -78,22 +80,22 @@
 /datum/equipment_preset/survivor/peoples_armed_police
 	name = "Survivor - UPP - People's Armed Police Officer"
 	assignment = "Narodnyy Vooruzhennyy Politsioner"
+	faction_group = FACTION_LIST_SURVIVOR_PAP
 	minimap_icon = "upp_sec"
 	minimap_background = "background_upp_alpha"
-	paygrades = list(PAY_SHORT_UCM = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_PAP_MLTS = JOB_PLAYTIME_TIER_0, PAY_SHORT_PAP_SMLTS = JOB_PLAYTIME_TIER_3, PAY_SHORT_PAP_STRSH = JOB_PLAYTIME_TIER_4)
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
-	faction = FACTION_UPP
-	faction_group = FACTION_LIST_SURVIVOR_UPP
-	role_comm_title = "MILTSY"
-	skills = /datum/skills/cmb
+	faction = FACTION_PAP
+	skills = /datum/skills/civilian/survivor/marshal
 	access = list(ACCESS_UPP_GENERAL, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
-	idtype = /obj/item/card/id/silver
+	idtype = /obj/item/card/id/PaP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/survivor/peoples_armed_police/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/PaP(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PaP(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/peaked/police, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/pap(new_human), WEAR_JACKET)
@@ -122,6 +124,7 @@
 	idtype = /obj/item/card/id/dogtag/upp
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_UPP_GENERAL, ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -190,10 +193,11 @@
 	assignment = "Doktor Ministerstva Zdravookhraneniya"
 	minimap_icon = "upp_doc"
 	minimap_background = "background_upp_medical"
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = MEDICAL_SURVIVOR
 
@@ -261,6 +265,7 @@
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = SCIENTIST_SURVIVOR
 
@@ -314,6 +319,7 @@
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 	idtype = /obj/item/card/id
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -431,6 +437,7 @@
 	skills = /datum/skills/civilian/survivor/fire_fighter
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -474,6 +481,7 @@
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_UPP
 
 	survivor_variant = CIVILIAN_SURVIVOR
 
@@ -537,14 +545,22 @@
 	return final_paygrade
 
 /datum/equipment_preset/survivor/hyperdyne/load_gear(mob/living/carbon/human/new_human)
+
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/hyperdyne(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/hyperdyne_patch, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/black(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/hyperdyne_patch, WEAR_ACCESSORY)
+
+	var/random_trenchcoat = rand(1,2)
+	switch(random_trenchcoat)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/brown(new_human), WEAR_JACKET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/trenchcoat/grey(new_human), WEAR_JACKET)
+
 	add_survivor_weapon_civilian(new_human)
 	add_random_cl_survivor_loot(new_human)
 	add_ice_colony_survivor_equipment(new_human)

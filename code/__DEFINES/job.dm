@@ -378,6 +378,17 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_UPP_COMMISSAR "UPP Political Commissar"
 
+//-------- People's Armed Police --------//
+
+#define JOB_PAP_MILITSIONER "UPP Militsioner"
+#define JOB_PAP_STARSHIY_MILITSIONER "UPP Starshiy Militsioner"
+#define JOB_PAP_STARSHINA "UPP Starshina"
+#define JOB_PAP_LEYTENANT "UPP Leytenant Militsii"
+#define JOB_PAP_KAPITAN "UPP Kapitan Militsii"
+#define JOB_PAP_MAYOR "UPP Mayor Militsii"
+#define JOB_PAP_POLITKOMISSAR "UPP Politkomissar"
+#define JOB_PAP_POLKOVNIK "UPP Polkovnik Militsii"
+
 //-------- CLF --------//
 #define JOB_CLF "CLF Guerilla"
 #define JOB_CLF_ENGI "CLF Field Technician"

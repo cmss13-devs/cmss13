@@ -1,4 +1,4 @@
-import { Channel } from './ChannelIterator';
+import type { Channel } from './ChannelIterator';
 import { RADIO_PREFIXES, WindowSize } from './constants';
 
 /**
@@ -28,14 +28,11 @@ export function windowClose(scale: boolean): void {
 export function windowSet(size = WindowSize.Small, scale: boolean): void {
   const pixelRatio = scale ? window.devicePixelRatio : 1;
 
-  let sizeStr = `${WindowSize.Width * pixelRatio}x${size * pixelRatio}`;
+  const sizeStr = `${WindowSize.Width * pixelRatio}x${size * pixelRatio}`;
 
-  Byond.winset('tgui_say', {
-    size: sizeStr,
-  });
-
-  Byond.winset('tgui_say.browser', {
-    size: sizeStr,
+  Byond.winset(null, {
+    'tgui_say.size': sizeStr,
+    'tgui_say.browser.size': sizeStr,
   });
 }
 
@@ -43,15 +40,12 @@ export function windowSet(size = WindowSize.Small, scale: boolean): void {
 function setWindowVisibility(visible: boolean, scale: boolean): void {
   const pixelRatio = scale ? window.devicePixelRatio : 1;
 
-  const sizeString = `${WindowSize.Width * pixelRatio}x${WindowSize.Small * pixelRatio}`;
+  const sizeStr = `${WindowSize.Width * pixelRatio}x${WindowSize.Small * pixelRatio}`;
 
-  Byond.winset('tgui_say', {
-    'is-visible': visible,
-    size: sizeString,
-  });
-
-  Byond.winset('tgui_say.browser', {
-    size: sizeString,
+  Byond.winset(null, {
+    'tgui_say.is-visible': visible,
+    'tgui_say.size': sizeStr,
+    'tgui_say.browser.size': sizeStr,
   });
 }
 

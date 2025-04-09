@@ -1,8 +1,0 @@
-author: "Kashargul"
-delete-after: True
-changes:
-  - bugfix: "Fix fps / tick config not applying individually"
-  - ui: "Buttons now use blur to reset"
-  - ui: "Fix tgsay not scaling correctly when using small scale option"
-  - ui: "Fix edgecase with chat scrolling sometimes breaking when loading in large chat history"
-  - code_imp: "Bump typescript version for tgui"

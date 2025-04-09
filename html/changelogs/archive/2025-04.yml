@@ -197,3 +197,18 @@
   - bugfix: fixed painkilling OD/Crit OD having halved effects
   silverplatedelta:
   - balance: Drones can now evolve into any T2 caste before first drop
+2025-04-09:
+  Blundir:
+  - qol: flashlight, lamps, candles don't rotate when being thrown
+  Detective-Google:
+  - bugfix: things can be buckled again
+  Kashargul:
+  - bugfix: Fix fps / tick config not applying individually
+  - ui: Buttons now use blur to reset
+  - ui: Fix tgsay not scaling correctly when using small scale option
+  - ui: Fix edgecase with chat scrolling sometimes breaking when loading in large
+      chat history
+  - code_imp: Bump typescript version for tgui
+  MistChristmas:
+  - ui: Changes Scrollbar colors to mix from both foreground and background colours,
+      Improving visibility. Makes CRT-Red background red instead of blue.

@@ -673,21 +673,6 @@
 		name = default_name
 		overlays += image("icon"=src.icon,"icon_state"=icon_overlay,"layer"=ABOVE_MOB_LAYER,"dir" = dir)
 
-/turf/open/gm/river/ex_act(severity)
-	if(covered & severity >= EXPLOSION_THRESHOLD_LOW)
-		covered = 0
-		update_icon()
-		spawn(10)
-			for(var/atom/movable/AM in src)
-				src.Entered(AM)
-				for(var/atom/movable/AM1 in src)
-					if(AM == AM1)
-						continue
-					AM1.Crossed(AM)
-	if(!covered && supports_fishing && prob(5))
-		var/obj/item/caught_item = get_fishing_loot(src, get_area(src), 15, 35, 10, 2)
-		caught_item.sway_jitter(3, 6)
-
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
 
@@ -779,6 +764,7 @@
 /turf/open/gm/river/shallow_ocean_shallow_ocean
 	name = "shallow ocean"
 	default_name = "shallow ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean
 	color = "#dae3e2"
@@ -787,6 +773,7 @@
 /turf/open/gm/river/ocean/deep_ocean
 	name = "deep ocean"
 	default_name = "deep ocean"
+	allow_construction = FALSE
 
 /turf/open/gm/river/ocean/Entered(atom/movable/AM)
 	. = ..()
@@ -810,7 +797,8 @@
 	if(world.time % 5)
 		if(ismob(AM))
 			var/mob/rivermob = AM
-			to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
+			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast
 	name = "coastline"
@@ -1215,6 +1203,13 @@
 
 /turf/open/shuttle/bright_red
 	icon_state = "floor4"
+
+/turf/open/shuttle/bright_red/glow
+	icon_state = "floor4"
+	light_on = TRUE
+	light_power = 2
+	light_range = 3
+	light_color = "#ff0000"
 
 /turf/open/shuttle/red
 	icon_state = "floor6"

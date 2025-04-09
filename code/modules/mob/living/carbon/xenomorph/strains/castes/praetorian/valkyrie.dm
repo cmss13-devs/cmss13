@@ -137,6 +137,10 @@
 		to_chat(raging_valkyrie, SPAN_XENOWARNING("[buffing_target] is already enraged!"))
 		return
 
+	if(get_dist(raging_valkyrie, buffing_target) > max_range) // an edge case where you watch somebody from hive status, and move while observing somebody so the buff applies since theres no actual range check.
+		to_chat(raging_valkyrie, SPAN_XENOWARNING("We need to be closer."))
+		return
+
 	if (!action_cooldown_check())
 		return
 

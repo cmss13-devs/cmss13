@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 30
+#define SAVEFILE_VERSION_MAX 31
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -198,6 +198,25 @@
 		be_special &= ~BE_KING
 		S["be_special"] << be_special
 
+	if(savefile_version < 31)
+		for(var/i in 1 to MAX_SAVE_SLOTS)
+			S.cd = "/character[i]"
+
+			var/list/existing_gear
+			S["gear"] >> existing_gear
+
+			var/list/new_list = list()
+			for(var/entry in existing_gear)
+				var/datum/gear/gear = GLOB.gear_datums_by_name[entry]
+				if(!gear)
+					continue
+
+				new_list += "[gear.type]"
+
+			S["gear"] = new_list
+
+		S.cd = "/"
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -261,6 +280,7 @@
 	S["dual_wield_pref"] >> dual_wield_pref
 	S["toggles_flashing"] >> toggles_flashing
 	S["toggles_ert"] >> toggles_ert
+	S["toggles_survivor"] >> toggles_survivor
 	S["toggles_ert_pred"] >> toggles_ert_pred
 	S["toggles_admin"] >> toggles_admin
 	S["UI_style"] >> UI_style
@@ -271,6 +291,7 @@
 	S["pain_overlay_pref_level"] >> pain_overlay_pref_level
 	S["flash_overlay_pref"] >> flash_overlay_pref
 	S["crit_overlay_pref"] >> crit_overlay_pref
+	S["allow_flashing_lights_pref"] >> allow_flashing_lights_pref
 	S["stylesheet"] >> stylesheet
 	S["window_skin"] >> window_skin
 	S["fps"] >> fps
@@ -341,6 +362,10 @@
 	S["tooltips"] >> tooltips
 	S["key_bindings"] >> key_bindings
 
+	S["tgui_lock"] >> tgui_lock
+	S["tgui_fancy"] >> tgui_fancy
+	S["window_scale"] >> window_scale
+
 	var/tutorial_string = ""
 	S["completed_tutorials"] >> tutorial_string
 	tutorial_savestring_to_list(tutorial_string)
@@ -349,6 +374,11 @@
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lastchangelog"] >> lastchangelog
+
+	S["job_loadout"] >> loadout
+	S["job_loadout_names"] >> loadout_slot_names
+
+	S["show_cooldown_messages"] >> show_cooldown_messages
 
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -367,6 +397,7 @@
 	dual_wield_pref = sanitize_integer(dual_wield_pref, 0, 2, initial(dual_wield_pref))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, SHORT_REAL_LIMIT, initial(toggles_flashing))
 	toggles_ert = sanitize_integer(toggles_ert, 0, SHORT_REAL_LIMIT, initial(toggles_ert))
+	toggles_survivor = sanitize_integer(toggles_survivor, 0, SHORT_REAL_LIMIT, initial(toggles_survivor))
 	toggles_ert_pred = sanitize_integer(toggles_ert_pred, 0, SHORT_REAL_LIMIT, initial(toggles_ert_pred))
 	toggles_admin = sanitize_integer(toggles_admin, 0, SHORT_REAL_LIMIT, initial(toggles_admin))
 	UI_style_color = sanitize_hexcolor(UI_style_color, initial(UI_style_color))
@@ -375,6 +406,7 @@
 	pain_overlay_pref_level = sanitize_integer(pain_overlay_pref_level, PAIN_OVERLAY_BLURRY, PAIN_OVERLAY_LEGACY, PAIN_OVERLAY_BLURRY)
 	flash_overlay_pref = sanitize_integer(flash_overlay_pref, FLASH_OVERLAY_WHITE, FLASH_OVERLAY_DARK)
 	crit_overlay_pref = sanitize_integer(crit_overlay_pref, CRIT_OVERLAY_WHITE, CRIT_OVERLAY_DARK)
+	allow_flashing_lights_pref = sanitize_integer(allow_flashing_lights_pref, FALSE, TRUE, FALSE)
 	window_skin = sanitize_integer(window_skin, 0, SHORT_REAL_LIMIT, initial(window_skin))
 	ghost_vision_pref = sanitize_inlist(ghost_vision_pref, list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG), GHOST_VISION_LEVEL_MID_NVG)
 	ghost_orbit = sanitize_inlist(ghost_orbit, GLOB.ghost_orbits, initial(ghost_orbit))
@@ -416,6 +448,10 @@
 	yautja_status = sanitize_inlist(yautja_status, GLOB.whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status = sanitize_inlist(synth_status, GLOB.whitelist_hierarchy, initial(synth_status))
 
+	window_scale = sanitize_integer(window_scale, FALSE, TRUE, initial(window_scale))
+	tgui_lock = sanitize_integer(tgui_lock, FALSE, TRUE, initial(tgui_lock))
+	tgui_fancy = sanitize_integer(tgui_fancy, FALSE, TRUE, initial(tgui_fancy))
+
 	fax_name_uscm = fax_name_uscm ? sanitize_text(fax_name_uscm, initial(fax_name_uscm)) : generate_name(FACTION_MARINE)
 	fax_name_pvst = fax_name_pvst ? sanitize_text(fax_name_pvst, initial(fax_name_pvst)) : generate_name(FACTION_MARINE)
 	fax_name_wy = fax_name_wy ? sanitize_text(fax_name_wy, initial(fax_name_wy)) : generate_name(FACTION_WY)
@@ -431,7 +467,11 @@
 	custom_cursors = sanitize_integer(custom_cursors, FALSE, TRUE, TRUE)
 	pref_special_job_options = sanitize_islist(pref_special_job_options, list())
 	pref_job_slots = sanitize_islist(pref_job_slots, list())
-	vars["fps"] = fps
+
+	loadout = sanitize_loadout(loadout, owner)
+	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
+
+	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -485,6 +525,7 @@
 	S["pain_overlay_pref_level"] << pain_overlay_pref_level
 	S["flash_overlay_pref"] << flash_overlay_pref
 	S["crit_overlay_pref"] << crit_overlay_pref
+	S["allow_flashing_lights_pref"] << allow_flashing_lights_pref
 	S["stylesheet"] << stylesheet
 	S["be_special"] << be_special
 	S["default_slot"] << default_slot
@@ -499,6 +540,7 @@
 	S["dual_wield_pref"] << dual_wield_pref
 	S["toggles_flashing"] << toggles_flashing
 	S["toggles_ert"] << toggles_ert
+	S["toggles_survivor"] << toggles_survivor
 	S["toggles_ert_pred"] << toggles_ert_pred
 	S["toggles_admin"] << toggles_admin
 	S["window_skin"] << window_skin
@@ -575,6 +617,15 @@
 	S["completed_tutorials"] << tutorial_list_to_savestring()
 
 	S["lastchangelog"] << lastchangelog
+
+	S["job_loadout"] << save_loadout(loadout)
+	S["job_loadout_names"] << loadout_slot_names
+
+	S["tgui_fancy"] << tgui_fancy
+	S["tgui_lock"] << tgui_lock
+	S["window_scale"] << window_scale
+
+	S["show_cooldown_messages"] << show_cooldown_messages
 
 	return TRUE
 
@@ -729,6 +780,8 @@
 		for(var/job in job_preference_list)
 			job_preference_list[job] = sanitize_integer(job_preference_list[job], 0, 3, initial(job_preference_list[job]))
 
+	check_slot_prefs()
+
 	if(!organ_data)
 		organ_data = list()
 
@@ -737,7 +790,6 @@
 	traits = sanitize_list(traits)
 	read_traits = FALSE
 	trait_points = initial(trait_points)
-	close_browser(owner, "character_traits")
 
 	if(!origin)
 		origin = ORIGIN_USCM
@@ -814,7 +866,8 @@
 	S["sec_record"] << sec_record
 	S["gen_record"] << gen_record
 	S["organ_data"] << organ_data
-	S["gear"] << gear
+	S["gear"] << save_gear(gear)
+	S["job_loadout"] << save_loadout(loadout)
 	S["origin"] << origin
 	S["faction"] << faction
 	S["religion"] << religion
@@ -860,6 +913,19 @@
 
 	if(length(notadded))
 		addtimer(CALLBACK(src, PROC_REF(announce_conflict), notadded), 5 SECONDS)
+
+/// Checks if any job selected has a loadout, and if this is not selected, prompt the user to select it on the lobby screen
+/datum/preferences/proc/check_slot_prefs()
+	errors = list()
+
+	for(var/job in GLOB.roles_with_gear)
+		if(!job_preference_list[job])
+			continue
+
+		if(has_loadout_for_role(job))
+			continue
+
+		errors += "Job [job] has loadout available, but none has been selected."
 
 /datum/preferences/proc/announce_conflict(list/notadded)
 	to_chat(owner, SPAN_ALERTWARNING("<u>Keybinding Conflict</u>"))

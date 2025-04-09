@@ -1,3 +1,6 @@
+GLOBAL_VAR_INIT(blooding_activated, FALSE)
+GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
+
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.
 //Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
@@ -557,7 +560,6 @@
 	///List of what ERTs can be called
 	var/static/list/potential_prey = list()
 	var/obj/structure/machinery/hunting_ground_selection/hunt
-	COOLDOWN_DECLARE(yautja_hunt_cooldown)
 
 /obj/structure/machinery/hunt_ground_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -580,8 +582,8 @@
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
-	if(!COOLDOWN_FINISHED(src, yautja_hunt_cooldown))
-		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(src, yautja_hunt_cooldown))
+	if(!COOLDOWN_FINISHED(GLOB, hunt_timer_yautja))
+		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, hunt_timer_yautja))
 		to_chat(user, SPAN_WARNING("You may begin another hunt in: [remaining_time]."))
 		return
 
@@ -598,7 +600,8 @@
 	message_all_yautja("[user.real_name] has chosen [choice] as their prey.")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) triggered [choice] inside the hunting grounds"))
 	SSticker.mode.get_specific_call(potential_prey[choice], TRUE, FALSE)
-	COOLDOWN_START(src, yautja_hunt_cooldown, 20 MINUTES)
+	COOLDOWN_START(GLOB, hunt_timer_yautja, 20 MINUTES)
+
 
 /obj/structure/machinery/hunt_ground_escape
 	name = "preserve shutter console"
@@ -674,7 +677,6 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	var/static/list/un_blooded = list()
-	var/blooding_activated = FALSE
 
 /obj/structure/machinery/blooding_spawner/Initialize(mapload, ...)
 	. = ..()
@@ -697,7 +699,7 @@
 		to_chat(user, SPAN_WARNING("This is not for you."))
 		return
 
-	if(blooding_activated) //only one per round unless admins spawn more or var edit the console.
+	if(GLOB.blooding_activated) //only one per round unless admins spawn more or var edit the console.
 		to_chat(user, SPAN_WARNING("A blooding ritual has already taken place. Maybe ask the AI for another."))
 		return
 
@@ -714,7 +716,7 @@
 	message_all_yautja("[user.real_name] has chosen to awaken: [choice].")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT)."))
 	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
-	blooding_activated = TRUE
+	GLOB.blooding_activated = TRUE
 
 //=================//\\=================\\
 //======================================\\
@@ -870,7 +872,6 @@
 	return ..()
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/attack_self(mob/living/carbon/human/user)
-	..()
 	if(!active)
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 			to_chat(user, SPAN_WARNING("What's this thing?"))
@@ -881,6 +882,7 @@
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
 			C.toggle_throw_mode(THROW_MODE_NORMAL)
+	..()
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
 	if(active)
@@ -891,14 +893,17 @@
 	icon_state = initial(icon_state) + "_active"
 	active = 1
 	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
+	addtimer(CALLBACK(src, PROC_REF(prime), user), det_time)
 
-/obj/item/explosive/grenade/spawnergrenade/hellhound/prime()
+/obj/item/explosive/grenade/spawnergrenade/hellhound/prime(mob/user)
 	if(spawner_type && deliveryamt)
 		// Make a quick flash
-		var/turf/T = get_turf(src)
+		var/turf/spawn_turf = get_turf(src)
 		if(ispath(spawner_type))
-			new spawner_type(T)
+			var/mob/living/carbon/xenomorph/hellhound/hound = new spawner_type(spawn_turf)
+			var/datum/behavior_delegate/hellhound_base/hound_owner = hound.behavior_delegate
+			hound_owner.pred_owner = user
+			notify_ghosts(header = "Hellhound", message = "A hellhound has been called in [get_area(user)] by [user.real_name] click play as hellhound to play as one.", extra_large = TRUE)
 	return
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
@@ -1372,10 +1377,10 @@
 		return
 	. = ..()
 
-/// SKULLS
+/// Skulls & Parts
 /obj/item/skull
 	name = "skull"
-	icon = 'icons/obj/items/hunter/prey_skulls.dmi'
+	icon = 'icons/obj/items/hunter/prey_items.dmi'
 	unacidable = TRUE
 
 /obj/item/skull/queen
@@ -1406,12 +1411,179 @@
 /obj/item/skull/corroder
 	name = "Corroder skull"
 	desc = "Skull of an acidic xenomorph, a boiling menace."
-	icon_state = "spitter_skull"
+	icon_state = "corroder_skull"
 
 /obj/item/skull/warrior
 	name = "Warrior skull"
 	desc = "Skull of a strong xenomorph, a swift fighter."
 	icon_state = "warrior_skull"
+
+/obj/item/skull/defender
+	name = "Defender skull"
+	desc = "Skull of a sturdy xenomorph, a bulwark of the hive."
+	icon_state = "defender_skull"
+
+/obj/item/skull/praetorian
+	name = "Praetorian skull"
+	desc = "Skull of a strong xenomorph, jack of all trades, vanguard to the Queen."
+	icon_state = "praetorian_skull"
+
+/obj/item/skull/crusher
+	name = "Crusher skull"
+	desc = "Skull of a powerful xenomorph, capable of shattering defenses."
+	icon_state = "crusher_skull"
+
+/obj/item/skull/ravager
+	name = "Ravager skull"
+	desc = "Skull of a ferocious xenomorph, wielding unmatched destruction."
+	icon_state = "ravager_skull"
+
+/obj/item/skull/boiler
+	name = "Boiler skull"
+	desc = "Skull of a ranged xenomorph, known for explosive acid attacks."
+	icon_state = "boiler_skull"
+
+/obj/item/skull/carrier
+	name = "Carrier skull"
+	desc = "Skull of a diligent xenomorph, a lifeblood worker of the hive."
+	icon_state = "carrier_skull"
+
+/obj/item/skull/hivelord
+	name = "Hivelord skull"
+	desc = "Skull of a nurturing xenomorph, devoted to hive construction."
+	icon_state = "hivelord_skull"
+
+/obj/item/skull/burrower
+	name = "Burrower skull"
+	desc = "Skull of of a digging xenomorph, master of subterranean assault."
+	icon_state = "burrower_skull"
+
+/obj/item/skull/drone
+	name = "Drone skull"
+	desc = "Skull of a weak but essential xenomorph, a hive worker."
+	icon_state = "drone_skull"
+
+/obj/item/skull/runner
+	name = "Runner skull"
+	desc = "Skull of a swift and agile xenomorph, a terror on the prowl."
+	icon_state = "runner_skull"
+
+/obj/item/skull/sentinel
+	name = "Sentinel skull"
+	desc = "Skull of an acidic xenomorph, skilled in ranged combat."
+	icon_state = "sentinel_skull"
+
+/obj/item/skull/spitter
+	name = "Spitter skull"
+	desc = "Skull of a highly acidic xenomorph, a venomous ranged attacker."
+	icon_state = "spitter_skull"
+
+// PELTS
+
+/obj/item/pelt
+	name = "pelt"
+	icon = 'icons/obj/items/hunter/prey_items.dmi'
+	unacidable = TRUE
+
+/obj/item/pelt/queen
+	name = "Queen pelt"
+	desc = "The pelt of a prime hive ruler, mother to many."
+	icon_state = "queen_pelt"
+
+/obj/item/pelt/king
+	name = "King pelt"
+	desc = "The pelt of a militant hive ruler, lord of destruction."
+	icon_state = "king_pelt"
+
+/obj/item/pelt/lurker
+	name = "Lurker pelt"
+	desc = "The pelt of a stealthy xenomorph, an ambushing predator."
+	icon_state = "lurker_pelt"
+
+/obj/item/pelt/hunter
+	name = "Hunter pelt"
+	desc = "The pelt of a swift xenomorph, a fearsome ambushing predator."
+	icon_state = "hunter_pelt"
+
+/obj/item/pelt/deacon
+	name = "Deacon pelt"
+	desc = "The pelt of an unusual xenomorph, a mysterious and rare specimen."
+	icon_state = "deacon_pelt"
+
+/obj/item/pelt/corroder
+	name = "Corroder pelt"
+	desc = "The pelt of an acidic xenomorph, exuding caustic menace."
+	icon_state = "corroder_pelt"
+
+/obj/item/pelt/warrior
+	name = "Warrior pelt"
+	desc = "The pelt of a strong xenomorph, a fast and lethal fighter."
+	icon_state = "warrior_pelt"
+
+/obj/item/pelt/defender
+	name = "Defender pelt"
+	desc = "The pelt of a sturdy xenomorph, a shield of the hive."
+	icon_state = "defender_pelt"
+
+/obj/item/pelt/praetorian
+	name = "Praetorian pelt"
+	desc = "The pelt of a versatile xenomorph, a vanguard to the Queen."
+	icon_state = "praetorian_pelt"
+
+/obj/item/pelt/crusher
+	name = "Crusher pelt"
+	desc = "The pelt of a powerful xenomorph, capable of shattering defenses."
+	icon_state = "crusher_pelt"
+
+/obj/item/pelt/ravager
+	name = "Ravager pelt"
+	desc = "The pelt of a ferocious xenomorph, wielding unmatched destruction."
+	icon_state = "ravager_pelt"
+
+/obj/item/pelt/boiler
+	name = "Boiler pelt"
+	desc = "The pelt of a ranged xenomorph, known for explosive acid attacks."
+	icon_state = "boiler_pelt"
+
+/obj/item/pelt/carrier
+	name = "Carrier pelt"
+	desc = "The pelt of a diligent xenomorph, a lifeblood worker of the hive."
+	icon_state = "carrier_pelt"
+
+/obj/item/pelt/hivelord
+	name = "Hivelord pelt"
+	desc = "The pelt of a nurturing xenomorph, devoted to hive construction."
+	icon_state = "hivelord_pelt"
+
+/obj/item/pelt/burrower
+	name = "Burrower pelt"
+	desc = "The pelt of a digging xenomorph, master of subterranean assault."
+	icon_state = "burrower_pelt"
+
+/obj/item/pelt/drone
+	name = "Drone pelt"
+	desc = "The pelt of a weak but essential xenomorph, a hive worker."
+	icon_state = "drone_pelt"
+
+/obj/item/pelt/runner
+	name = "Runner pelt"
+	desc = "The pelt of a swift and agile xenomorph, a terror on the prowl."
+	icon_state = "runner_pelt"
+
+/obj/item/pelt/sentinel
+	name = "Sentinel pelt"
+	desc = "The pelt of an acidic xenomorph, skilled in ranged combat."
+	icon_state = "sentinel_pelt"
+
+/obj/item/pelt/spitter
+	name = "Spitter pelt"
+	desc = "The pelt of a highly acidic xenomorph, a venomous ranged attacker."
+	icon_state = "spitter_pelt"
+
+/obj/item/pelt/larva
+	name = "Larva pelt"
+	desc = "The hide of a juvenile Xenomorph, a grim trophy from a fledgling that never reached its full potential."
+	icon_state = "larva_pelt"
 
 /// TOOLS
 
@@ -1500,3 +1672,13 @@
 	new /obj/item/tool/wirecutters/yautja(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool/yautja(src)
+
+/obj/item/tool/hatchet/yautja
+	name = "duelling hatchet"
+	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
+	icon_state = "yautja"

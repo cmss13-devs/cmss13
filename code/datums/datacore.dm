@@ -104,7 +104,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_medical.fields["last_scan_time"] = null
 	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
 	record_medical.fields["autodoc_data"] = list()
-	record_medical.fields["autodoc_manual"] = list()
 	record_medical.fields["ref"] = WEAKREF(target)
 
 	if(target.med_record && !jobban_isbanned(target, "Records"))
@@ -200,7 +199,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	//Tail
 	if(H.species.tail)
-		temp = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[H.species.tail]_s")
+		temp = new/icon("icon" = H.species.icobase, "icon_state" = "[H.species.tail]_s")
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 

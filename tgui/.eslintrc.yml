@@ -15,6 +15,7 @@ plugins:
   - react
   - unused-imports
   - simple-import-sort
+  - "@typescript-eslint"
 settings:
   react:
     version: '18.2'
@@ -338,7 +339,7 @@ rules:
   ## Require or disallow named function expressions
   # func-names: error
   ## Enforce the consistent use of either function declarations or expressions
-  func-style: [error, expression]
+  # func-style: [error, expression]
   ## Enforce line breaks between arguments of a function call
   # function-call-argument-newline: error
   ## Enforce consistent line breaks inside function parentheses
@@ -768,3 +769,6 @@ rules:
   ## https://github.com/lydell/eslint-plugin-simple-import-sort/
   simple-import-sort/imports: error
   simple-import-sort/exports: error
+
+  ## Typescript
+  "@typescript-eslint/consistent-type-imports": [error, { fixStyle: inline-type-imports }]

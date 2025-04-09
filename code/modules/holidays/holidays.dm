@@ -193,7 +193,7 @@
 	begin_month = APRIL
 	greet_text = "On this day over 600 years ago, Comrade Yuri Gagarin first ventured into space!"
 
-//Information itself is from the combat manual but the date was never stated, i chose the date of when the CM server was as we know it was established by Apop - 2015, April 20
+//Information itself is from the combat manual but the date was never stated, I chose the date of when the CM server was as we know it was established by Apop - 2015, April 20
 /datum/holiday/uscm_day
 	name = "Day of the Colonial Marines"
 	begin_day = 20
@@ -216,7 +216,7 @@
 	name = "Anzac Day"
 	begin_day = 25
 	begin_month = APRIL
-	begin_month = "TWE holiday celebrated by people from british part of Oceania. Holiday is dedicated to remembrance of the Anzacs at Gallipoli"
+	greet_text = "TWE holiday celebrated by people from the British part of Oceania. Dedicated to remembrance of the Anzacs at Gallipoli"
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/showa
@@ -287,7 +287,7 @@
 	name = "Slavic Unity Day"
 	begin_day = 25
 	begin_month = JUNE
-	greet_text = "On this day all slavic people of the UPP celebrate their shared cultural and language roots."
+	greet_text = "On this day all Slavic people of the UPP celebrate their shared cultural and language roots."
 	holiday_faction = FACTION_UPP
 
 // JULY
@@ -315,7 +315,7 @@
 	timezones = list(TIMEZONE_EDT, TIMEZONE_CDT, TIMEZONE_MDT, TIMEZONE_MST, TIMEZONE_PDT, TIMEZONE_AKDT, TIMEZONE_HDT, TIMEZONE_HST)
 	begin_day = 4
 	begin_month = JULY
-	greet_text = "On this day in the year of 1776, the USA declared independance from the Great Britain, the holiday is celebrated across UA."
+	greet_text = "On this day in the year of 1776, the USA declared independence from Great Britain, the holiday is celebrated across UA."
 	holiday_faction = FACTION_MARINE
 
 /datum/holiday/writer
@@ -355,7 +355,7 @@
 	name = "Paratrooper's Day"
 	begin_day = 2
 	begin_month = AUGUST
-	greet_text = "Originally celebrating USSR and post Soviet VDV forces, this holiday celebrates UPP KVD paratroopers in their heroic and hazardous job."
+	greet_text = "Originally celebrating USSR and post-Soviet VDV forces, this holiday celebrates UPP KVD paratroopers in their heroic and hazardous job."
 	holiday_faction = FACTION_UPP
 
 /datum/holiday/monarchday
@@ -532,7 +532,9 @@
 
 /datum/holiday/easter
 	name = EASTER
-	var/const/days_early = 1 //to make editing the holiday easier
+	///How many additional days before the actual holiday it is also celebrated (limited month rollover)
+	var/const/days_early = 1
+	///How many additional days after the actual holiday it is also celebrated (limited month rollover)
 	var/const/days_extra = 1
 	greet_text = "Greetings! Have a Happy Easter and keep an eye out for Easter Bunnies!"
 

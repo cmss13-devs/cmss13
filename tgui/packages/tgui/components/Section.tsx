@@ -5,10 +5,10 @@
  */
 
 import { canRender, classes } from 'common/react';
-import { forwardRef, ReactNode, RefObject, useEffect } from 'react';
+import { forwardRef, type ReactNode, type RefObject, useEffect } from 'react';
 
 import { addScrollableNode, removeScrollableNode } from '../events';
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type Props = Partial<{
   /** Buttons to render aside the section title. */

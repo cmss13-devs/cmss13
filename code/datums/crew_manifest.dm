@@ -83,7 +83,7 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		ui.open()
 
 /datum/crew_manifest/ui_state(mob/user)
-	if (ishuman(user) && user.faction == FACTION_MARINE)
+	if (ishuman(user) && user.faction == FACTION_MARINE || user.job == JOB_CORPORATE_LIAISON)
 		return GLOB.conscious_state
 	if (isnewplayer(user))
 		return GLOB.new_player_state

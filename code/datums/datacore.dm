@@ -15,10 +15,22 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			sleep(40)
 
 		var/list/jobs_to_check = GLOB.ROLES_CIC + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_POLICE + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES
-		for(var/mob/living/carbon/human/H as anything in GLOB.human_mob_list)
-			if(should_block_game_interaction(H))
+		for (var/mob/living/carbon/human/H as anything in GLOB.human_mob_list)
+			if (should_block_game_interaction(H))
 				continue
-			if(H.job in jobs_to_check)
+
+			var/weakref = WEAKREF(H)
+			var/already_in_manifest = FALSE
+
+			for (var/datum/data/record/R in src.general)
+				if (R.fields["ref"] == weakref)
+					already_in_manifest = TRUE
+					break
+
+			if (already_in_manifest)
+				continue
+
+			if (H.job in jobs_to_check)
 				manifest_inject(H)
 
 /datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)

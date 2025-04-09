@@ -14,8 +14,6 @@
 	var/always_celebrate = FALSE
 	/// Held variable to better calculate when certain holidays may fall on, like easter.
 	var/current_year = 0
-	/// How many years are you offsetting your calculations for begin_day and end_day on. Used for holidays like easter.
-	var/year_offset = 0
 	///Timezones this holiday is celebrated in (defaults to three timezones spanning a 50 hour window covering all timezones)
 	var/list/timezones = list(TIMEZONE_LINT, TIMEZONE_UTC, TIMEZONE_ANYWHERE_ON_EARTH)
 	///Optional custom text of greeting message
@@ -541,7 +539,7 @@
 /datum/holiday/easter/shouldCelebrate(dd, mm, yyyy, ddd)
 	if(!begin_month)
 		current_year = text2num(time2text(world.timeofday, "YYYY"))
-		var/list/easterResults = EasterDate(current_year+year_offset)
+		var/list/easterResults = EasterDate(current_year)
 
 		begin_day = easterResults["day"]
 		begin_month = easterResults["month"]

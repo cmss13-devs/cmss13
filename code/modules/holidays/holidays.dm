@@ -107,7 +107,7 @@
 /datum/holiday/community_manager
 	name = "Community Manager Appreciation Day"
 	begin_day = 27
-	greet_text = "On this day let's celebrate effort of our community managers, who work with media and monitor it endlessly!"
+	greet_text = "On this day let's celebrate the effort of our community managers, who work with the media and monitor it endlessly!"
 	begin_month = JANUARY
 	holiday_faction = FACTION_WY
 

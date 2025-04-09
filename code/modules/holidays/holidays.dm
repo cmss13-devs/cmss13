@@ -380,7 +380,7 @@
 	name = "National IT Professionals Day"
 	begin_day = 16
 	begin_month = SEPTEMBER
-	greet_text = "On this day we recognize the technical experts — network engineers, system administrators, database admins, ethical hackers, and many more types of I.T. professionals — that make sure our computer systems run smoothly.."
+	greet_text = "On this day we recognize the technical experts — network engineers, system administrators, database admins, ethical hackers, and many more types of I.T. professionals — that make sure our computer systems run smoothly."
 	holiday_faction = FACTION_WY
 
 /datum/holiday/equinox

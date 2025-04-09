@@ -289,7 +289,7 @@
 	name = "Slavic Unity Day"
 	begin_day = 25
 	begin_month = JUNE
-	greet_text = "On this day all slavic people of the UPP celebrate their shared cultural and language roots."
+	greet_text = "On this day all Slavic people of the UPP celebrate their shared cultural and language roots."
 	holiday_faction = FACTION_UPP
 
 // JULY

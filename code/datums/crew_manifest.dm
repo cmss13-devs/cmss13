@@ -35,7 +35,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 /datum/crew_manifest/ui_data()
 	. = ..()
 	var/list/data = list()
-	var/list/seen_names = list()
 
 	for(var/datum/data/record/record_entry in GLOB.data_core.general)
 		var/name = record_entry.fields["name"]
@@ -43,10 +42,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		var/squad = record_entry.fields["squad"]
 		if(isnull(name) || isnull(rank))
 			continue
-
-		if (name in seen_names)
-			continue
-		seen_names += name
 
 		if(record_entry.fields["mob_faction"] != FACTION_MARINE && rank != JOB_CORPORATE_LIAISON)
 			continue

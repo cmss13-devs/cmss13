@@ -357,7 +357,7 @@
 	name = "Paratrooper's Day"
 	begin_day = 2
 	begin_month = AUGUST
-	greet_text = "Originally celebrating USSR and post Soviet VDV forces, this holiday celebrates UPP KVD paratroopers in their heroic and hazardous job."
+	greet_text = "Originally celebrating USSR and post-Soviet VDV forces, this holiday celebrates UPP KVD paratroopers in their heroic and hazardous job."
 	holiday_faction = FACTION_UPP
 
 /datum/holiday/monarchday

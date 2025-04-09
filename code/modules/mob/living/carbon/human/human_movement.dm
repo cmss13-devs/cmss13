@@ -50,14 +50,13 @@
 
 	//Equipment slowdowns
 	if(w_uniform)
-		reducible_tally += w_uniform.slowdown
+		reducible_tally += max(0, w_uniform.slowdown + reagent_move_delay_modifier) // MST stim
 		wear_slowdown_reduction += w_uniform.movement_compensation
 
 	if(wear_suit)
-		reducible_tally += wear_suit.slowdown
+		reducible_tally += max(0, wear_suit.slowdown + reagent_move_delay_modifier) //MST stim
 		wear_slowdown_reduction += wear_suit.movement_compensation
 
-	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
 	if(bodytemperature < species.cold_level_1 && !isyautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing

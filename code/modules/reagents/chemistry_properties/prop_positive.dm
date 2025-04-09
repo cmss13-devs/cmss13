@@ -202,10 +202,10 @@
 	value = 3
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, potency = 1)
-	M.adjust_effect(potency*-1, PARALYZE)
+	M.adjust_effect(potency*-0.75, PARALYZE)
 	M.adjust_effect(potency*-1, STUN)
-	M.adjust_effect(potency*-1, WEAKEN)
-	M.adjust_effect(-0.5*potency, STUN)
+	M.adjust_effect(potency*-0.75, WEAKEN)
+	M.adjust_effect(-0.25*potency, STUN)
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)

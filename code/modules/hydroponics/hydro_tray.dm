@@ -217,7 +217,7 @@
 	if(reagents.total_volume <= 0)
 		return
 
-	reagents.trans_to(temp_chem_holder, min(reagents.total_volume,rand(1,3)))
+	reagents.trans_to(temp_chem_holder, min(reagents.total_volume,rand(3,6)))
 	for(var/datum/reagent/processed_reagent in temp_chem_holder.reagents.reagent_list)
 		processed_reagent.reaction_hydro_tray_reagent(src, processed_reagent.volume)
 		for(var/datum/chem_property/chem_property in processed_reagent?.properties)

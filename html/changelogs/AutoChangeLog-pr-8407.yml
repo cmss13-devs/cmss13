@@ -1,5 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - rscadd: "Extended M4RA mags can now be found in vendors, holding an extra 10 bullets per mag, for a total of 35 bullets."
-  - spellcheck: "Extended M4RA mags no longer claim to be armor piercing"

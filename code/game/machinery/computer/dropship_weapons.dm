@@ -666,6 +666,9 @@
 		if(!human_operator.allow_gun_usage)
 			to_chat(human_operator, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
 			return FALSE
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(human_operator, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 	var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
 	if(!selected_equipment || !selected_equipment.is_weapon)
 		to_chat(weapon_operator, SPAN_WARNING("No weapon selected."))

@@ -942,7 +942,7 @@
 	attack_verb = list("chopped", "torn", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 
-/obj/item/weapon/knife/yautja
+/obj/item/weapon/yautja/duelknife
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
 	flags_item = ADJACENT_CLICK_DELAY
@@ -954,9 +954,10 @@
 	)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
-	force = MELEE_FORCE_STRONG
+	force = 25
 	throwforce = MELEE_FORCE_STRONG
 	edge = 1
+	attack_speed = 12
 
 /*#########################################
 ############## Ranged Weapons #############

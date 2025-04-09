@@ -151,6 +151,55 @@
 	speed_bonus_amount =  -0.4 SECONDS
 
 /*#########################################
+########### Duelling Weaponry #############
+#########################################*/
+
+/obj/item/weapon/sword/yautja
+	name = "duelling blade"
+	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
+	icon_state = "yautja_sword"
+	item_state = "yautja_sword"
+	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
+
+/obj/item/weapon/baseballbat/metal/yautja
+	name = "duelling club"
+	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
+	icon_state = "hunter_club"
+	item_state = "hunter_club"
+	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
+
+/obj/item/tool/hatchet/yautja
+	name = "duelling hatchet"
+	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
+	icon_state = "yautja"
+
+/obj/item/weapon/unathiknife
+	name = "duelling knife"
+	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
+	icon = 'icons/obj/items/weapons/melee/knives.dmi'
+	flags_item = ADJACENT_CLICK_DELAY
+	icon_state = "unathiknife"
+	embeddable = FALSE
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("ripped", "torn", "cut")
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_STRONG
+	edge = 1
+
+/*#########################################
 ########### One Handed Weapons ############
 #########################################*/
 /obj/item/weapon/yautja

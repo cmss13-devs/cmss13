@@ -195,7 +195,7 @@
 	begin_month = APRIL
 	greet_text = "On this day over 600 years ago, Comrade Yuri Gagarin first ventured into space!"
 
-//Information itself is from the combat manual but the date was never stated, i chose the date of when the CM server was as we know it was established by Apop - 2015, April 20
+//Information itself is from the combat manual but the date was never stated, I chose the date of when the CM server was as we know it was established by Apop - 2015, April 20
 /datum/holiday/uscm_day
 	name = "Day of the Colonial Marines"
 	begin_day = 20

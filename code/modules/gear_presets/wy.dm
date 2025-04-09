@@ -72,6 +72,8 @@
 
 /datum/equipment_preset/wy/exec_spec/lawyer
 	name = "Corporate - E - Lawyer"
+	assignment = JOB_LEGAL_SPECIALIST
+	rank = JOB_LEGAL_SPECIALIST
 
 /datum/equipment_preset/wy/exec_spec/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
@@ -95,6 +97,8 @@
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
 	name = "Corporate - F - Lawyer"
+	assignment = JOB_LEGAL_SUPERVISOR
+	rank = JOB_LEGAL_SUPERVISOR
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
@@ -123,7 +127,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/vp78(new_human), WEAR_WAIST)
 	..()
 
 /datum/equipment_preset/wy/manager/assistant_manager
@@ -154,15 +158,25 @@
 	. = ..()
 	access = get_access(ACCESS_LIST_WY_ALL)
 
+/datum/equipment_preset/wy/manager/director/deputy
+	name = "Corporate - J - Deputy Director"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_DEPUTY_DIRECTOR
+	rank = JOB_DEPUTY_DIRECTOR
+	minimap_icon = "dep_director"
+	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
+	gun_type = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+
 /datum/equipment_preset/wy/manager/director
-	name = "Corporate - J - Director"
+	name = "Corporate - K - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIRECTOR
 	rank = JOB_DIRECTOR
 	minimap_icon = "director"
-	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WYC11 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
+	var/gun_type = /obj/item/storage/belt/gun/mateba/general
 
 /datum/equipment_preset/wy/manager/director/New()
 	. = ..()
@@ -172,5 +186,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/director(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/director(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new gun_type(new_human), WEAR_WAIST)
 	..()

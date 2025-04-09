@@ -137,7 +137,7 @@
 				prob(2);/obj/item/attachable/suppressor,\
 				prob(2);/obj/item/attachable/burstfire_assembly,\
 				prob(2);/obj/item/attachable/compensator,\
-				prob(1);/obj/item/attachable/scope/mini_iff,\
+				prob(1);/obj/item/attachable/alt_iff_scope,\
 				prob(1);/obj/item/attachable/heavy_barrel,\
 				prob(1);/obj/item/attachable/scope/mini)
 
@@ -579,7 +579,6 @@
 /obj/effect/spawner/random/warhead
 	name = "random orbital warhead"
 	desc = "This is a random orbital warhead."
-	icon = 'icons/obj/items/new_assemblies.dmi'
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "ob_warhead_1"
 	spawn_on_roundstart = TRUE

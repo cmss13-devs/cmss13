@@ -50,6 +50,12 @@
 	if(!send_only_temp)
 		SSassets.transport.send_assets(client, common)
 
+/datum/asset/directory/get_url_mappings()
+	. = ..()
+
+	for (var/asset_name in common)
+		.[asset_name] = SSassets.transport.get_asset_url(asset_name)
+
 /datum/asset/directory/nanoui
 	common_dirs = list(
 		"nano/css/",
@@ -264,6 +270,10 @@
 		list("medk9", "hudsquad_medk9"),
 		list("SG", "hudsquad_gun"),
 		list("Spc", "hudsquad_spec"),
+		list("SpcDem", "hudsquad_spec_demo"),
+		list("SpcSn", "hudsquad_spec_sniper"),
+		list("SpcGr", "hudsquad_spec_grenadier"),
+		list("SpcPy", "hudsquad_spec_pyro"),
 		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
 	)
@@ -470,4 +480,9 @@
 /datum/asset/simple/vv
 	assets = list(
 		"view_variables.css" = 'html/admin/view_variables.css'
+	)
+
+/datum/asset/directory/book_assets
+	common_dirs = list(
+		"html/book_assets/",
 	)

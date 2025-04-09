@@ -70,7 +70,8 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 
 	var/amount_left = amount
 	for(var/datum/breach/B in valid_breaches)
-		if(!amount_left) break
+		if(!amount_left)
+			break
 
 		if(B.class <= amount_left)
 			amount_left -= B.class
@@ -92,11 +93,14 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 	if(!breaches)
 		breaches = list()
 
-	if(damage > 25) return //We don't need to keep tracking it when it's at 250% pressure loss, really.
+	if(damage > 25)
+		return //We don't need to keep tracking it when it's at 250% pressure loss, really.
 
-	if(!loc) return
+	if(!loc)
+		return
 	var/turf/T = get_turf(src)
-	if(!T) return
+	if(!T)
+		return
 
 	amount = amount * src.resilience
 

@@ -174,6 +174,11 @@
 	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
 	light_color = LIGHT_COLOR_XENON
 
+/obj/structure/machinery/light/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
+
 // the smaller bulb light fixture
 
 /obj/structure/machinery/light/small
@@ -476,12 +481,14 @@
 	return A.lightswitch && A.power_light
 
 /obj/structure/machinery/light/proc/flicker(amount = rand(10, 20))
-	if(flickering) return
+	if(flickering)
+		return
 	flickering = 1
 	spawn(0)
 		if(on && status == LIGHT_OK)
 			for(var/i = 0; i < amount; i++)
-				if(status != LIGHT_OK) break
+				if(status != LIGHT_OK)
+					break
 				on = !on
 				update(0)
 				sleep(rand(5, 15))
@@ -500,7 +507,8 @@
 	return
 
 /obj/structure/machinery/light/attack_animal(mob/living/M)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		to_chat(M, SPAN_WARNING("That object is useless to you."))
 		return
@@ -764,7 +772,8 @@
 // now only shatter if the intent was harm
 
 /obj/item/light_bulb/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /obj/structure/machinery/light))
 		return
 	if(user.a_intent != INTENT_HARM)
@@ -774,7 +783,7 @@
 
 /obj/item/light_bulb/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message(SPAN_DANGER("[name] shatters."),SPAN_DANGER("You hear a small glass object shatter."))
+		visible_message(SPAN_DANGER("[src] shatters."), SPAN_DANGER("You hear a small glass object shatter."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
@@ -824,6 +833,12 @@
 /obj/structure/machinery/landinglight/ds2
 	id = "USS Almayer Dropship 2" // ID for landing zone
 
+/obj/structure/machinery/landinglight/upp_ds1
+	id = "SSV Rostock Dropship 1" // ID for landing zone
+
+/obj/structure/machinery/landinglight/upp_ds2
+	id = "SSV Rostock Dropship 2" // ID for landing zone
+
 /obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = initial(icon_state) + "0"
 	set_light(2)
@@ -849,6 +864,30 @@
 	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
 	set_light(2)
 

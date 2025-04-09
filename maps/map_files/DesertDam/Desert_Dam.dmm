@@ -263,7 +263,7 @@
 "abd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abe" = (
@@ -879,6 +879,19 @@
 "adF" = (
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/dam_interior/north_tunnel)
+"adG" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/desert_dam/exterior/valley/valley_hydro)
+"adH" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfpods"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
@@ -6815,7 +6828,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDR" = (
 /obj/structure/machinery/power/apc/no_power/east,
-/turf/open/asphalt/cement/cement15,
+/turf/open/floor/corsat/spiralplate,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDS" = (
 /obj/structure/machinery/sentry_holder/colony{
@@ -9764,10 +9777,6 @@
 "aRN" = (
 /turf/open/desert/dirt/desert_transition_corner1/west,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"aRO" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
-/area/desert_dam/exterior/valley/valley_hydro)
 "aRP" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -21576,7 +21585,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYy" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -21690,7 +21699,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYY" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /obj/item/trash/raisins,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -43021,7 +43030,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "iqs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "iqv" = (
@@ -43938,7 +43947,7 @@
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/tool/kitchen/utensil/spoon,
 /obj/structure/machinery/power/apc/fully_broken/no_cell/north,
-/turf/open/desert/rock/deep/rock4,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "kAV" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
@@ -72825,7 +72834,7 @@ cRg
 cRg
 cRg
 cOH
-aRO
+hOK
 bYV
 hzC
 hzC
@@ -73527,7 +73536,7 @@ cRi
 cRi
 cSu
 cOH
-mGo
+adG
 vDJ
 hzC
 rdW
@@ -77959,7 +77968,7 @@ clE
 dTs
 dTs
 dTs
-dTs
+adH
 dTs
 dTs
 dTs

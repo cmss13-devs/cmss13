@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -6,7 +5,7 @@
  */
 
 import { Placement } from '@popperjs/core';
-import { KEY } from 'common/keys';
+import { isEscape, KEY } from 'common/keys';
 import { BooleanLike, classes } from 'common/react';
 import {
   ChangeEvent,
@@ -54,6 +53,9 @@ type Props = Partial<{
   iconRotation: number;
   iconSpin: BooleanLike;
   onClick: (e: any) => void;
+  onFocus: (e: any) => void;
+  onBlur: (e: any) => void;
+  allowAnyClick: BooleanLike;
   selected: BooleanLike;
   tooltip: ReactNode;
   tooltipPosition: Placement;
@@ -81,6 +83,7 @@ export const Button = (props: Props) => {
     iconRotation,
     iconSpin,
     onClick,
+    allowAnyClick,
     selected,
     tooltip,
     tooltipPosition,
@@ -113,7 +116,7 @@ export const Button = (props: Props) => {
       ])}
       tabIndex={!disabled ? 0 : undefined}
       onClick={(event) => {
-        if (!disabled && onClick) {
+        if (!disabled && onClick && (allowAnyClick || event.button === 0)) {
           onClick(event);
         }
       }}
@@ -132,7 +135,7 @@ export const Button = (props: Props) => {
         }
 
         // Refocus layout on pressing escape.
-        if (event.key === KEY.Escape) {
+        if (isEscape(event.key)) {
           event.preventDefault();
         }
       }}
@@ -212,7 +215,7 @@ type ConfirmProps = Partial<{
   Props;
 
 /**  Requires user confirmation before triggering its action. */
-const ButtonConfirm = (props: ConfirmProps) => {
+export const ButtonConfirm = (props: ConfirmProps) => {
   const {
     children,
     color,
@@ -236,7 +239,7 @@ const ButtonConfirm = (props: ConfirmProps) => {
       setTimeout(() => window.addEventListener('click', handleClickOff));
     } else {
       window.removeEventListener('click', handleClickOff);
-      if (event) {
+      if (event && (props.allowAnyClick || event.button === 0)) {
         onClick?.(event);
       }
     }
@@ -362,7 +365,7 @@ const ButtonInput = (props: InputProps) => {
             commitResult(event);
             return;
           }
-          if (event.key === KEY.Escape) {
+          if (isEscape(event.key)) {
             setInInput(false);
           }
         }}

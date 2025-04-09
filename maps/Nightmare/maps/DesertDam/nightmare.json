@@ -19,5 +19,12 @@
 		"chance": 1.0,
 		"path": "standalone/crashlanding-upp-alt1.dmm",
 		"when": { "lvevent": "uppcrash" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "clfpods",
+		"chance": 1.0,
+		"path": "standalone/clfpods.dmm",
+		"when": { "lvevent": "clfpods" }
 	}
 ]

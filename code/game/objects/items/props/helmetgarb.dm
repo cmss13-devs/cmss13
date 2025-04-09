@@ -14,11 +14,6 @@
 	if(garbage)
 		flags_obj |= OBJ_IS_HELMET_GARB
 
-/obj/item/prop/helmetgarb/gunoil
-	name = "gun oil"
-	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
-	icon_state = "gunoil"
-
 /obj/item/prop/helmetgarb/netting
 	name = "combat netting"
 	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."
@@ -26,6 +21,18 @@
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
 		)
+
+/obj/item/prop/helmetgarb/netting/desert
+	name = "desert combat netting"
+	icon_state = "netting_desert"
+
+/obj/item/prop/helmetgarb/netting/jungle
+	name = "jungle combat netting"
+	icon_state = "netting_jungle"
+
+/obj/item/prop/helmetgarb/netting/urban
+	name = "urban combat netting"
+	icon_state = "netting_urban"
 
 /obj/item/prop/helmetgarb/spent_buckshot
 	name = "spent buckshot"
@@ -76,6 +83,18 @@
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
 	)
+
+/obj/item/prop/helmetgarb/raincover/jungle
+	name = "jungle raincover"
+	icon_state = "raincover_jungle"
+
+/obj/item/prop/helmetgarb/raincover/desert
+	name = "desert raincover"
+	icon_state = "raincover_desert"
+
+/obj/item/prop/helmetgarb/raincover/urban
+	name = "urban raincover"
+	icon_state = "raincover_urban"
 
 /obj/item/prop/helmetgarb/rabbitsfoot
 	name = "Rabbit's Foot"

@@ -474,7 +474,8 @@
 /proc/can_hug(mob/living/carbon/M, hivenumber)
 	if(!istype(M) || isxeno(M) || issynth(M) || iszombie(M) || isHellhound(M) || M.stat == DEAD || !M.huggable)
 		return FALSE
-
+	if(HAS_TRAIT(M, TRAIT_HAULED))
+		return FALSE
 	if(M.ally_of_hivenumber(hivenumber))
 		return FALSE
 
@@ -519,6 +520,15 @@
 
 	if(species && !species.handle_hugger_attachment(src, hugger, mob_hugger))
 		return FALSE
+
+	var/obj/item/device/overwatch_camera/cam_gear
+	if(istype(wear_l_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_l_ear
+	else if(istype(wear_r_ear, /obj/item/device/overwatch_camera))
+		cam_gear = wear_r_ear
+	if(cam_gear && !(cam_gear.flags_item & NODROP))
+		drop_inv_item_on_ground(cam_gear)
+		update_inv_ears()
 
 	if(head && !(head.flags_item & NODROP))
 		var/obj/item/clothing/head/D = head

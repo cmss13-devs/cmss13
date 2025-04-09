@@ -104,7 +104,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_medical.fields["last_scan_time"] = null
 	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
 	record_medical.fields["autodoc_data"] = list()
-	record_medical.fields["autodoc_manual"] = list()
 	record_medical.fields["ref"] = WEAKREF(target)
 
 	if(target.med_record && !jobban_isbanned(target, "Records"))
@@ -191,7 +190,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
 	for(var/obj/limb/E in H.limbs)
-		if(E.status & LIMB_DESTROYED) continue
+		if(E.status & LIMB_DESTROYED)
+			continue
 		temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, E.name, skin_color_icon))
 		if(E.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
@@ -199,7 +199,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	//Tail
 	if(H.species.tail)
-		temp = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[H.species.tail]_s")
+		temp = new/icon("icon" = H.species.icobase, "icon_state" = "[H.species.tail]_s")
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 

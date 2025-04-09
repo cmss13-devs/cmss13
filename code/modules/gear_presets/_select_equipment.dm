@@ -93,7 +93,7 @@
 
 /datum/equipment_preset/proc/load_age(mob/living/carbon/human/new_human, client/mob_client)
 	if(minimum_age && new_human.age < minimum_age)
-		new_human.age = minimum_age
+		new_human.age = minimum_age + 2
 
 /datum/equipment_preset/proc/load_rank(mob/living/carbon/human/new_human, client/mob_client)//Beagle-Code
 	if(paygrades.len == 1)
@@ -201,18 +201,9 @@
 /datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
 	if(!new_human.client || !new_human.client.prefs || !new_human.client.prefs.gear)
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.
-	for(var/gear_name in new_human.client.prefs.gear)
-		var/datum/gear/current_gear = GLOB.gear_datums_by_name[gear_name]
-		if(current_gear)
-			if(current_gear.allowed_roles && !(assignment in current_gear.allowed_roles))
-				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Role"))
-				return
-			if(current_gear.allowed_origins && !(new_human.origin in current_gear.allowed_origins))
-				to_chat(new_human, SPAN_WARNING("Custom gear [current_gear.display_name] cannot be equipped: Invalid Origin"))
-				return
-			if(!(current_gear.slot && new_human.equip_to_slot_or_del(new current_gear.path, current_gear.slot)))
-				var/obj/equipping_gear = new current_gear.path
-				new_human.equip_to_slot_or_del(equipping_gear, WEAR_IN_BACK)
+	for(var/gear_type in new_human.client.prefs.gear)
+		var/datum/gear/current_gear = GLOB.gear_datums_by_type[gear_type]
+		current_gear.equip_to_user(new_human)
 
 	//Gives ranks to the ranked
 	var/current_rank = paygrades[1]
@@ -315,9 +306,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = null
 
-
 /datum/equipment_preset/proc/spawn_rebel_uniform(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/uniformpath = pick(
 		/obj/item/clothing/under/colonist/clf,
 		)
@@ -325,7 +316,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_suit(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/suitpath = pick(
 		/obj/item/clothing/suit/storage/militia,
 		/obj/item/clothing/suit/storage/militia/vest,
@@ -338,7 +330,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_helmet(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/helmetpath = pick(
 		/obj/item/clothing/head/militia,
 		/obj/item/clothing/head/militia/bucket,
@@ -356,7 +349,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_shoes(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/shoespath = pick(
 		/obj/item/clothing/shoes/black,
 		/obj/item/clothing/shoes/brown,
@@ -369,7 +363,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_gloves(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/glovespath = pick(
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/gloves/swat,
@@ -380,7 +375,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_belt(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/beltpath = pick(
 		/obj/item/storage/belt/utility/full,
 		/obj/item/storage/belt/knifepouch,
@@ -393,7 +389,8 @@
 
 
 /datum/equipment_preset/proc/spawn_rebel_weapon(atom/M, sidearm = 0, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/rebel_firearms = list(
 		/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/handful/shotgun/buckshot,
@@ -458,7 +455,7 @@
 		/obj/item/tool/hatchet = null,
 		/obj/item/tool/hatchet = null,
 		/obj/item/tool/hatchet = null,
-		/obj/item/storage/box/MRE = null,
+		/obj/item/storage/box/mre = null,
 		/obj/item/clothing/glasses/night/m42_night_goggles/upp = null,
 		/obj/item/storage/box/handcuffs = null,
 		/obj/item/storage/pill_bottle/happy = null,
@@ -474,7 +471,8 @@
 	return 1
 
 /datum/equipment_preset/proc/spawn_rebel_specialist_weapon(atom/M, ammo_amount = 4)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/rebel_gunner_firearms = list(
 		/obj/item/weapon/gun/m60 = /obj/item/ammo_magazine/m60,
@@ -522,7 +520,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	))
 
 /datum/equipment_preset/proc/spawn_rebel_smg(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/gunpath = pick(GLOB.rebel_smgs)
 	var/ammopath = GLOB.rebel_smgs[gunpath]
@@ -532,7 +531,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_rebel_shotgun(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/gunpath = pick(GLOB.rebel_shotguns)
 	var/ammopath = GLOB.rebel_shotguns[gunpath]
@@ -542,7 +542,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_rebel_rifle(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/gunpath = pick(GLOB.rebel_rifles)
 	var/ammopath = GLOB.rebel_rifles[gunpath]
@@ -552,7 +553,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_merc_helmet(mob/living/carbon/human/new_human)
-	if(!istype(new_human)) return
+	if(!istype(new_human))
+		return
 	var/helmetpath = pick(
 		/obj/item/clothing/head/freelancer,
 		/obj/item/clothing/head/helmet/skullcap,
@@ -568,7 +570,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 
 
 /datum/equipment_preset/proc/spawn_merc_weapon(atom/M, sidearm = 0, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/merc_sidearms = list(
 		/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,
@@ -601,7 +604,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	return 1
 
 /datum/equipment_preset/proc/spawn_merc_shotgun(atom/M, ammo_amount = 24)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/merc_shotguns = list(
 		/obj/item/weapon/gun/shotgun/merc = pick(GLOB.shotgun_handfuls_12g),
@@ -615,7 +619,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
 
 /datum/equipment_preset/proc/spawn_merc_rifle(atom/M, ammo_amount = 12)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/merc_rifles = list(
 		/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
@@ -631,7 +636,8 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	spawn_weapon(gunpath, ammopath, M, 0, ammo_amount)
 
 /datum/equipment_preset/proc/spawn_merc_elite_weapon(atom/M, ammo_amount = 12, shotgun_chance = 50, spawn_belt = 1)
-	if(!M) return
+	if(!M)
+		return
 
 	var/list/elite_merc_rifles = list(
 	/obj/item/weapon/gun/smg/m39/elite = /obj/item/ammo_magazine/smg/m39/ap,
@@ -708,12 +714,21 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/proc/add_ice_colony_survivor_equipment(mob/living/carbon/human/new_human)
 	if((SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD]) && (SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT))
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(new_human), WEAR_HEAD)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/survivor(new_human), WEAR_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_FACE)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
+
+/datum/equipment_preset/proc/add_ice_colony_rebel_equipment(mob/living/carbon/human/new_human)
+	if((SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD]) && (SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT))
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/head/militia(new_human), WEAR_HEAD)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(new_human), WEAR_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(new_human), WEAR_FACE)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
@@ -1090,6 +1105,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP (new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/webbing(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/upp, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/device/flashlight(new_human), WEAR_J_STORE)
 		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP (new_human), WEAR_BODY)
@@ -1099,6 +1115,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP (new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/support(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/upp, WEAR_IN_JACKET)
 
 /datum/equipment_preset/proc/spawn_random_upp_belt(mob/living/carbon/human/new_human)
 	var/random_gun = rand(1, 4)

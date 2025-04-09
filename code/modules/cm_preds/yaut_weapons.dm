@@ -775,7 +775,7 @@
 	. = ..()
 	if(proximity_flag && !busy_fishing && isturf(target))
 		var/turf/T = target
-		if(!T.supports_fishing)
+		if(!T.fishing_allowed)
 			return
 		busy_fishing = TRUE
 		user.visible_message(SPAN_NOTICE("[user] starts aiming \the [src] at the water..."), SPAN_NOTICE("You prepare to catch something in the water..."), max_distance = 3)
@@ -790,8 +790,10 @@
 				user.visible_message(SPAN_NOTICE("[user] quickly stabs \the [T] and pulls out \a <b>[caught_item]</b> with their free hand!"), SPAN_NOTICE("You quickly stab \the [T] and pull out \a <b>[caught_item]</b> with your free hand!"), max_distance = 3)
 				var/image/trick = image(caught_item.icon, user, caught_item.icon_state, BIG_XENO_LAYER)
 				switch(pick(1,2))
-					if(1) animation_toss_snatch(trick)
-					if(2) animation_toss_flick(trick, pick(1,-1))
+					if(1)
+						animation_toss_snatch(trick)
+					if(2)
+						animation_toss_flick(trick, pick(1,-1))
 				caught_item.invisibility = 100
 				var/list/client/displayed_for = list()
 				for(var/mob/M in viewers(user))
@@ -985,7 +987,8 @@
 
 /obj/item/weapon/gun/launcher/spike/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) spikes++
+	if(refund)
+		spikes++
 	return TRUE
 
 
@@ -1032,7 +1035,8 @@
 	if(charge_time < 100)
 		charge_time++
 		if(charge_time == 99)
-			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
+			if(ismob(loc))
+				to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
 		update_icon()
 
 
@@ -1136,7 +1140,8 @@
 	if(charge_time < 40)
 		charge_time++
 		if(charge_time == 39)
-			if(ismob(loc)) to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
+			if(ismob(loc))
+				to_chat(loc, SPAN_NOTICE("[src] hums as it achieves maximum charge."))
 
 
 
@@ -1390,6 +1395,203 @@
 		var/mob/living/carbon/human/user = usr //Hacky...
 		user.update_power_display(perc)
 	return TRUE
+
+/obj/item/weapon/gun/bow
+	name = "hunting bow"
+	desc = "An abnormal-sized weapon with an exeptionally tight string. Requires extraordinary strength to draw."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "bow"
+	item_state = "bow"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	current_mag = /obj/item/ammo_magazine/internal/bow
+	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
+	fire_sound = 'sound/weapons/bow_shot.ogg'
+	aim_slowdown = 0
+	flags_equip_slot = SLOT_BACK
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY|GUN_UNUSUAL_DESIGN
+	gun_category = GUN_CATEGORY_HEAVY
+	muzzle_flash = null
+	w_class = SIZE_LARGE
+	explo_proof = TRUE
+	unacidable = TRUE
+	flags_item = TWOHANDED|ITEM_PREDATOR
+
+/obj/item/weapon/gun/bow/Initialize(mapload, spawn_empty)
+	spawn_empty = TRUE
+	. = ..()
+
+/obj/item/weapon/gun/bow/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	accuracy_mult = BASE_ACCURACY_MULT
+	scatter = 0
+	recoil = RECOIL_AMOUNT_TIER_4
+
+/obj/item/weapon/gun/bow/reload_into_chamber(mob/user)
+	. = ..()
+	update_icon()
+	update_item_state(user)
+
+/obj/item/weapon/gun/bow/unload(mob/user)
+	if(!current_mag || !current_mag.current_rounds)
+		return
+	var/obj/item/arrow/unloaded_arrow = new ammo.handful_type(get_turf(src))
+	playsound(user, reload_sound, 25, TRUE)
+	current_mag.current_rounds--
+	if(user)
+		to_chat(user, SPAN_NOTICE("You unload [unloaded_arrow] from [src]."))
+		user.put_in_hands(unloaded_arrow)
+	update_icon()
+	update_item_state(user)
+
+/obj/item/weapon/gun/bow/update_icon()
+	..()
+	if (!current_mag || current_mag.current_rounds == 0 || !istype(ammo, /datum/ammo/arrow))
+		item_state = "bow"
+		if(flags_item & WIELDED)
+			item_state += "_w"
+		return
+	var/datum/ammo/arrow/arrow = ammo
+	if (arrow.activated)
+		icon_state = "bow_expl"
+		item_state = "bow_expl"
+	else
+		icon_state = "bow_loaded"
+		item_state = "bow_loaded"
+	if(flags_item & WIELDED)
+		item_state += "_w"
+
+/obj/item/weapon/gun/bow/attackby(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/arrow))
+		to_chat(user, SPAN_WARNING("That's not an arrow!"))
+		return
+	if(!current_mag || current_mag.current_rounds == 1)
+		to_chat(user, SPAN_WARNING("[src] is already loaded!"))
+		return
+	var/obj/item/arrow/attacking_arrow = attacking_item
+	if (user.r_hand != src && user.l_hand != src)
+		to_chat(user, SPAN_WARNING("You need to hold [src] in your hand in order to nock [attacking_arrow]!"))
+		return
+	if (!isyautja(user))
+		to_chat(user, SPAN_WARNING("You're not nearly strong enough to pull back [src]'s drawstring!"))
+		return
+	ammo = GLOB.ammo_list[attacking_arrow.ammo_datum]
+	playsound(user, reload_sound, 25, 1)
+	to_chat(user, SPAN_NOTICE("You nock [attacking_arrow] onto [src]."))
+	current_mag.current_rounds++
+	qdel(attacking_arrow)
+	update_icon()
+	update_item_state(user)
+
+/obj/item/weapon/gun/bow/proc/update_item_state(mob/user)
+	if(!user)
+		return
+	var/hand = user.hand
+	if(user.get_inactive_hand() == src)
+		hand = !hand
+	if(hand)
+		user.update_inv_l_hand()
+	else
+		user.update_inv_r_hand()
+
+/obj/item/weapon/gun/bow/dropped(mob/user)
+	. = ..()
+	if(!current_mag || !current_mag.current_rounds)
+		return
+	to_chat(user, SPAN_WARNING("The projectile falls out of [src]!"))
+	unload()
+
+/obj/item/weapon/gun/bow/click_empty(mob/user)
+	update_icon()
+	update_item_state(user)
+	return
+
+/obj/item/ammo_magazine/internal/bow
+	name = "bow internal magazine"
+	caliber = "arrow"
+	max_rounds = 1
+	default_ammo = /datum/ammo/arrow
+
+/obj/item/arrow
+	name = "arrow"
+	w_class = SIZE_SMALL
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "arrow"
+	item_state = "arrow"
+	sharp = IS_SHARP_ITEM_ACCURATE
+	edge = TRUE
+	force = 20
+	explo_proof = TRUE
+	unacidable = TRUE
+
+	var/activated = FALSE
+	var/ammo_datum = /datum/ammo/arrow
+
+/obj/item/arrow/expl
+	name = "\improper activated arrow"
+	activated = TRUE
+	icon_state = "arrow_expl"
+	ammo_datum = /datum/ammo/arrow/expl
+
+/obj/item/arrow/attack_self(mob/user)
+	. = ..()
+	if (!isyautja(user))
+		to_chat(user, SPAN_NOTICE("You attempt to [activated ? "deactivate" : "activate"] [src], but nothing happens."))
+		return
+	if (activated)
+		activated = FALSE
+		icon_state = "arrow"
+		ammo_datum = /datum/ammo/arrow
+		to_chat(user, SPAN_NOTICE("You deactivate [src]."))
+		return
+	activated = TRUE
+	icon_state = "arrow_expl"
+	ammo_datum = /datum/ammo/arrow/expl
+	to_chat(user, SPAN_NOTICE("You activate [src]."))
+
+
+/obj/item/storage/belt/gun/quiver
+	name = "quiver strap"
+	desc = "A strap that can hold a bow with a quiver for arrows."
+	storage_slots = 8
+	max_storage_space = 20
+	icon_state = "quiver"
+	item_state = "s_marinebelt"
+	flags_equip_slot = SLOT_WAIST|SLOT_SUIT_STORE
+	max_w_class = SIZE_LARGE
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	can_hold = list(
+		/obj/item/weapon/gun/bow,
+		/obj/item/arrow,
+	)
+	explo_proof = TRUE
+	unacidable = TRUE
+	skip_fullness_overlays = TRUE
+
+/obj/item/storage/belt/gun/quiver/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/bow())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/arrow(src)
+
+/obj/item/storage/belt/gun/quiver/update_icon()
+	overlays.Cut()
+	if(content_watchers && flap)
+		icon_state = "quiver_open"
+		return
+	var/magazines = length(contents) - length(holstered_guns)
+	if(!magazines)
+		icon_state = "quiver_open"
+		return
+	icon_state = "quiver"
+
 
 #undef FLAY_STAGE_SCALP
 #undef FLAY_STAGE_STRIP

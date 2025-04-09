@@ -151,14 +151,19 @@ Additional game mode variables.
 
 	var/mob/new_player/new_pred
 	for(var/mob/player in GLOB.player_list)
-		if(!player.client) continue //No client. DCed.
-		if(isyautja(player)) continue //Already a predator. Might be dead, who knows.
+		if(!player.client)
+			continue //No client. DCed.
+		if(isyautja(player))
+			continue //Already a predator. Might be dead, who knows.
 		if(readied) //Ready check for new players.
 			new_pred = player
-			if(!istype(new_pred)) continue //Have to be a new player here.
-			if(!new_pred.ready) continue //Have to be ready.
+			if(!istype(new_pred))
+				continue //Have to be a new player here.
+			if(!new_pred.ready)
+				continue //Have to be ready.
 		else
-			if(!istype(player,/mob/dead)) continue //Otherwise we just want to grab the ghosts.
+			if(!istype(player,/mob/dead))
+				continue //Otherwise we just want to grab the ghosts.
 
 		if(player?.client.check_whitelist_status(WHITELIST_PREDATOR))  //Are they whitelisted?
 			if(!player.client.prefs)
@@ -175,11 +180,13 @@ Additional game mode variables.
 
 /datum/game_mode/proc/attempt_to_join_as_predator(mob/pred_candidate)
 	var/mob/living/carbon/human/new_predator = transform_predator(pred_candidate) //Initialized and ready.
-	if(!new_predator) return
+	if(!new_predator)
+		return
 
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
-	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+	if(pred_candidate)
+		pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/calculate_pred_max()
 	return floor(length(GLOB.player_list) / pred_per_players) + pred_count_modifier + pred_start_count
@@ -724,6 +731,8 @@ Additional game mode variables.
 		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
 		morpher.join_as_facehugger_from_this(xeno_candidate)
 
+	msg_admin_niche("[xeno_candidate.key] has joined as a facehugger.")
+
 	return TRUE
 
 /datum/game_mode/proc/attempt_to_join_as_lesser_drone(mob/xeno_candidate)
@@ -780,6 +789,8 @@ Additional game mode variables.
 	var/obj/effect/alien/resin/special/pylon/selected_structure = selection_list_structure[selection_list.Find(prompt)]
 
 	selected_structure.spawn_lesser_drone(xeno_candidate)
+
+	msg_admin_niche("[xeno_candidate.key] has joined as a lesser drone.")
 
 	return TRUE
 
@@ -1048,7 +1059,8 @@ Additional game mode variables.
 			if(length(survivor_multi_story)) //Unlikely.
 				var/datum/mind/another_survivor = pick(current_survivors - survivor) // We don't want them to be picked twice.
 				current_survivors -= another_survivor
-				if(!istype(another_survivor)) continue//If somehow this thing screwed up, we're going to run another pass.
+				if(!istype(another_survivor))
+					continue//If somehow this thing screwed up, we're going to run another pass.
 				story = pick(survivor_multi_story)
 				survivor_multi_story -= story
 				story = replacetext(story, "{name}", "[random_name]")

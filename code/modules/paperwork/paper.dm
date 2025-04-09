@@ -929,6 +929,8 @@
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
 		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
+			for(var/datum/chem_property/scanned_property in S.properties)
+				name += " "+scanned_property.code+"[scanned_property.level]"
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
 			info += "<BR>Chemical has following reaction indicators:"
 			if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))

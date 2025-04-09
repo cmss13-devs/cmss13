@@ -362,6 +362,23 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //-------- TWE --------//
 #define JOB_TWE_REPRESENTATIVE "TWE Representative"
 
+//IASF
+
+#define JOB_TWE_IASF_PARA "IASF Paratrooper"
+#define JOB_TWE_IASF_PARA_SNIPER "IASF Paratrooper (Marksman)"
+#define JOB_TWE_IASF_PARA_PILOT "IASF Fleet Air Arm (Dropship Pilot)"
+#define JOB_TWE_IASF_PARA_SMARTGUNNER "IASF Paratrooper (Smartgunner)"
+#define JOB_TWE_IASF_PARA_SPECIALIST "IASF Paratrooper (Specialist)"
+#define JOB_TWE_IASF_PARA_ENGI "IASF Paratrooper (Combat Engineer)"
+#define JOB_TWE_IASF_PARA_MEDIC "IASF Paratrooper (Combat Medical Technician)"
+#define JOB_TWE_IASF_PARA_SQUAD_LEADER "IASF Paratrooper (Squad Leader)"
+#define JOB_TWE_IASF_PARA_LIEUTENANT "IASF Lieutenant"
+#define JOB_TWE_IASF_PARA_CAPTAIN "IASF Captain"
+#define JOB_TWE_IASF_PARA_MAJOR "IASF Major"
+#define JOB_TWE_IASF_PARA_COMMANDER "IASF Commanding Officer"
+
+#define TWE_IASF_JOB_LIST list(JOB_TWE_IASF_PARA, JOB_TWE_IASF_PARA_ENGI, JOB_TWE_IASF_PARA_MEDIC, JOB_TWE_IASF_PARA_PILOT, JOB_TWE_IASF_PARA_SNIPER , JOB_TWE_IASF_PARA_SQUAD_LEADER, JOB_TWE_IASF_PARA_LIEUTENANT, JOB_TWE_IASF_PARA_CAPTAIN, JOB_TWE_IASF_PARA_MAJOR, JOB_TWE_IASF_PARA_COMMANDER)
+
 //RMC
 #define JOB_TWE_RMC_RIFLEMAN "RMC Rifleman"
 #define JOB_TWE_RMC_MARKSMAN "RMC Marksman"

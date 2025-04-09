@@ -267,6 +267,11 @@
 	desc = "A supply crate containing sixty W-Y brand ration packets."
 	supplies = list(/obj/item/ammo_box/magazine/misc/mre/wy = 5)
 
+/obj/structure/largecrate/supply/supplies/mre/twe
+	name = "\improper TWE ORP rations crate (x60)"
+	desc = "A supply crate containing sixty TWE ORP ration packets."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre/twe = 5)
+
 /obj/structure/largecrate/supply/supplies/wy_emergency_food
 	name = "\improper WY emergency nutrition briquettes crate (x100)"
 	desc = "A supply crate containing one hundred WY emergency nutrition briquettes."

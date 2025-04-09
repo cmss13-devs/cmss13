@@ -1024,8 +1024,8 @@
 	new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest(src)
 	new /obj/item/clothing/under/hybrisa/nspa_officer(src)
 	new /obj/item/storage/backpack/security(src)
-	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/storage/belt/gun/l54(src)
 
 // Miner Closet
 

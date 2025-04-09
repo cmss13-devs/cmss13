@@ -1,0 +1,3038 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"am" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"aI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"bf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"bm" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "wy_rightengine"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"bD" = (
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsleft,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"bL" = (
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"bN" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"cc" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"cd" = (
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing4";
+	opacity = 0;
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"ce" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/tool/mop{
+	pixel_y = 23
+	},
+/turf/open/hybrisa/dropship/dropship4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"ci" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"cr" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "92"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"cO" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"cR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/prop/hybrisa/airport/dropshipnosecone{
+	dir = 4
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"cS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/prop/hybrisa/airport/dropshipnosecone{
+	dir = 1
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"dm" = (
+/obj/structure/bed/chair/comfy/hybrisa/brown{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/sign/safety/storage{
+	pixel_x = 32
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"dr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/shutters/almayer,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"dx" = (
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"dA" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/horizon_runner)
+"dE" = (
+/turf/closed/shuttle/dropship2/transparent{
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	icon = 'icons/turf/dropship4.dmi';
+	icon_state = "98";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"dZ" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ek" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/reinforced{
+	autoname = 1;
+	name = "\improper Reinforced Airlock"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"es" = (
+/turf/closed/wall/hybrisa/spaceport,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ex" = (
+/obj/structure/platform/metal/strata,
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ez" = (
+/obj/structure/machinery/big_computers/computerblack/computer2{
+	pixel_y = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"eB" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"eD" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue1,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"eJ" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/hybrisa/dropship/dropship2,
+/area/lv759/indoors/spaceport/horizon_runner)
+"eP" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"fa" = (
+/obj/structure/sign/safety/bulkhead_door,
+/obj/structure/sign/safety/airlock{
+	pixel_x = 11
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo)
+"ff" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"fi" = (
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/hybrisa/dropship/dropship2,
+/area/lv759/indoors/spaceport/horizon_runner)
+"fp" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"fz" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"fC" = (
+/obj/structure/machinery/light/spot/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"fN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"fT" = (
+/obj/item/ammo_casing,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"fU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/strata/yellow3/northeast,
+/area/lv759/indoors/spaceport/cargo)
+"gg" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"gj" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
+/area/lv759/indoors/spaceport/horizon_runner)
+"gk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods,
+/obj/item/clothing/head/hardhat{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil1";
+	color = "#550d0d"
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/lv759/indoors/spaceport/cargo)
+"go" = (
+/obj/structure/sign/safety/synth_storage{
+	pixel_x = -17
+	},
+/turf/closed/wall/hybrisa/spaceport/unmeltable,
+/area/lv759/oob)
+"gI" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"gU" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/item/stool{
+	layer = 2;
+	pixel_x = -4;
+	pixel_y = 23
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"hb" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hm" = (
+/obj/structure/bed/chair/comfy/hybrisa/brown{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hG" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "62"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"hP" = (
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hQ" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 8
+	},
+/obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ii" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"il" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jh" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/yellow3,
+/area/lv759/indoors/spaceport/cargo)
+"jx" = (
+/obj/structure/prop/hybrisa/airport/dropshipventright,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jP" = (
+/obj/structure/machinery/light/spot/blue{
+	dir = 4;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/comfy/hybrisa/brown{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jY" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"kb" = (
+/obj/structure/platform/metal/strata/north,
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"kc" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"kd" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"kf" = (
+/obj/structure/platform/metal/strata/east,
+/obj/structure/machinery/light/spot/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"kq" = (
+/obj/effect/decal/hybrisa/lattice/full,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"kZ" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light/spot/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"lo" = (
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"lx" = (
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"lN" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	icon_state = "grime4"
+	},
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/hybrisa/dropship/dropship4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"mg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/WY/WY1{
+	pixel_y = 16
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mi" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"mp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mD" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mQ" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"nn" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ns" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper WY-LWI Horizon Runner HR-150 Cargo Hold"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"nL" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsright,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"nV" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/structure/machinery/light/spot/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"nX" = (
+/obj/structure/machinery/light/blue,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"nY" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ol" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ov" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ox" = (
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/horizon_runner)
+"oF" = (
+/obj/structure/prop/hybrisa/airport/dropshipwingleft,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"oQ" = (
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"oT" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopleft";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"po" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"pH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/platform_decoration/metal/almayer{
+	layer = 2.9
+	},
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"pP" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"pX" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/hybrisa/dropship/dropship2,
+/area/lv759/indoors/spaceport/horizon_runner)
+"qk" = (
+/turf/template_noop,
+/area/template_noop)
+"ql" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "37"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"qv" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = -8
+	},
+/turf/open/hybrisa/dropship/dropship2,
+/area/lv759/indoors/spaceport/horizon_runner)
+"qC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qG" = (
+/obj/structure/sign/safety/opens_up,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qJ" = (
+/obj/structure/prop/hybrisa/airport/dropshipventright,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"rl" = (
+/obj/item/tool/wet_sign{
+	layer = 4;
+	pixel_x = -9;
+	pixel_y = 17
+	},
+/turf/open/hybrisa/dropship/dropship4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"rt" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"ru" = (
+/obj/structure/prop/hybrisa/airport/dropshipventleft,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"rC" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"rX" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer,
+/obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"st" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"sT" = (
+/obj/structure/machinery/door/airlock/dropship_hatch/two{
+	name = "\improper WY-LWI Horizon Runner HR-150 airlock"
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/horizon_runner)
+"sW" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"tt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"uf" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/yellow3/southeast,
+/area/lv759/indoors/spaceport/cargo)
+"uh" = (
+/turf/closed/shuttle/dropship2/transparent{
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	dir = 1;
+	icon = 'icons/turf/dropship4.dmi';
+	icon_state = "110";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"um" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ur" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/machinery/light/spot/blue{
+	dir = 4;
+	pixel_x = 8
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"uu" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 2
+	},
+/obj/structure/machinery/light/blue,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"uT" = (
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"uV" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"uX" = (
+/obj/structure/prop/dam/crane{
+	dir = 4
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"vd" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"vu" = (
+/obj/item/stack/rods,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"vv" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor{
+	explo_proof = 1;
+	needs_power = 0;
+	unacidable = 1;
+	name = "\improper Lockdown";
+	emp_proof = 1
+	},
+/turf/closed/wall/hybrisa/spaceport/unmeltable,
+/area/lv759/oob)
+"vN" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "zwing0"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"vR" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"vW" = (
+/obj/structure/bed/chair/comfy/hybrisa/brown{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 32;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"wc" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"wd" = (
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing2";
+	opacity = 0;
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"wg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/strata/yellow3,
+/area/lv759/indoors/spaceport/cargo)
+"wq" = (
+/obj/structure/window/framed/hybrisa/spaceport,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"xb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"xm" = (
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"xC" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"xO" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"yb" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"yA" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/horizon_runner)
+"yD" = (
+/obj/structure/stairs{
+	color = "#a6aeab"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"yG" = (
+/obj/structure/platform/metal/stair_cut/strata_left,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"yH" = (
+/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/kitchen)
+"zb" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/horizon_runner)
+"zh" = (
+/turf/closed/shuttle/dropship2/transparent{
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	icon = 'icons/turf/dropship4.dmi';
+	icon_state = "89";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"zi" = (
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing8";
+	opacity = 0;
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"zx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ab" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Aq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ar" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "48"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Aw" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "95"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"AA" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/plate,
+/area/lv759/indoors/spaceport/kitchen)
+"AR" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"AT" = (
+/obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"AW" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"AX" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Bg" = (
+/turf/closed/shuttle/dropship2/transparent{
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	icon = 'icons/turf/dropship4.dmi';
+	icon_state = "110";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Bu" = (
+/obj/structure/prop/hybrisa/airport/dropshipwingright,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"BR" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"BS" = (
+/obj/structure/platform/metal/stair_cut/strata_right,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"BZ" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Cg" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue1,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Cx" = (
+/turf/closed/wall/hybrisa/spaceport/unmeltable,
+/area/lv759/oob)
+"CI" = (
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"CM" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"CO" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"CY" = (
+/obj/structure/cable{
+	icon_state = "2-6";
+	color = "#550d0d"
+	},
+/obj/structure/cable{
+	icon_state = "1-9";
+	color = "#550d0d"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"Da" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced/colony{
+	autoname = 1;
+	name = "autoname reinforced";
+	locked = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Dc" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"Dk" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Dp" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"DB" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Er" = (
+/turf/closed/shuttle/dropship2/transparent{
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	icon = 'icons/turf/dropship4.dmi';
+	icon_state = "96";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Ew" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"EL" = (
+/obj/structure/prop/hybrisa/airport/dropshipventleft,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ES" = (
+/obj/structure/sign/nosmoking_1,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Fj" = (
+/obj/structure/cable{
+	icon_state = "1-4";
+	level = 2;
+	color = "#550d0d"
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"Fl" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"Fs" = (
+/obj/item/tool/weldingtool,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"Fx" = (
+/obj/structure/janitorialcart,
+/turf/open/hybrisa/dropship/dropship4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"FG" = (
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"FJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"FO" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"FR" = (
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"FU" = (
+/obj/structure/sign/safety/bulkhead_door,
+/obj/structure/sign/safety/airlock{
+	pixel_x = 11
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Gf" = (
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"GX" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"GZ" = (
+/turf/open/hybrisa/dropship/dropship4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"Hh" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/machinery/light/spot/blue{
+	dir = 4;
+	pixel_x = 8
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ho" = (
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Hz" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"HG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"HR" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 14
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ic" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "67"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Ie" = (
+/obj/structure/cable{
+	icon_state = "8-10";
+	color = "#550d0d"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"Ih" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	name = "Weakened Emergency Lockdown";
+	needs_power = 0
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"Ix" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"Iz" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"IG" = (
+/obj/structure/machinery/door/airlock/almayer/secure/autoname{
+	dir = 1;
+	name = "\improper WY-LWI Horizon Runner HR-150 cockpit";
+	locked = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/horizon_runner)
+"IH" = (
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/obj/structure/machinery/light/spot/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"IJ" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"IS" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"Jq" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"JB" = (
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/hybrisa/dropship/dropship2,
+/area/lv759/indoors/spaceport/horizon_runner)
+"JN" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"JO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/strata/yellow3/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"JU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"JW" = (
+/obj/structure/closet/crate/foodcart,
+/obj/item/trash/tray{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/trash/tray,
+/turf/open/hybrisa/dropship/dropship4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"Ke" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "rightengine_3"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Kh" = (
+/obj/structure/platform/metal/strata,
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Kk" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "leftengine_1"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Kt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/obj/structure/prop/hybrisa/airport/dropshipnosecone,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Kx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"KI" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"La" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "73"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Le" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "75"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Lh" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"LC" = (
+/obj/structure/machinery/light/small/blue{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"LK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/platform/metal/stair_cut/strata_left,
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"LR" = (
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"LU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/port_gen,
+/obj/structure/cable{
+	icon_state = "11-6";
+	color = "#550d0d"
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"Ma" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"Mi" = (
+/turf/open/hybrisa/dropship/dropship3,
+/area/lv759/indoors/spaceport/horizon_runner)
+"Mj" = (
+/obj/effect/spawner/random/sentry/highchance,
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/horizon_runner)
+"Mv" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"MB" = (
+/obj/structure/cable{
+	icon_state = "4-9";
+	color = "#550d0d"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"Na" = (
+/obj/structure/barricade/sandbags/wired,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"Nt" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"NG" = (
+/obj/structure/stairs{
+	color = "#a6aeab"
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/greywyright{
+	layer = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"NJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/platform_decoration/metal/almayer/north{
+	layer = 2.9
+	},
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"Oa" = (
+/obj/structure/platform/metal/strata/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ob" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"Og" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ol" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Oo" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "99"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Op" = (
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing6";
+	opacity = 0;
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Oq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/wirecutters,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"OK" = (
+/obj/structure/platform/metal/strata/east,
+/obj/structure/machinery/light/spot/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"OM" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"OU" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Pe" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Pg" = (
+/turf/closed/shuttle/dropship2/transparent{
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	icon = 'icons/turf/dropship4.dmi';
+	icon_state = "103";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Pj" = (
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/horizon_runner)
+"Pq" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ps" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "wy_leftengine"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"PL" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Qe" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/communications_office)
+"Qf" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "rightengine_1"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Qg" = (
+/turf/closed/shuttle/dropship2/transparent{
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	icon = 'icons/turf/dropship4.dmi';
+	icon_state = "86";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Qt" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "69"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"QA" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle/white{
+	dir = 1;
+	pixel_x = 8
+	},
+/turf/open/hybrisa/dropship/dropship2,
+/area/lv759/indoors/spaceport/horizon_runner)
+"QD" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"QM" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"QV" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"Rp" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "83"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Rt" = (
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Rv" = (
+/obj/structure/window/framed/hybrisa/spaceport,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"RD" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/item/tool/warning_cone,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"RF" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "brokendropshipconsole1";
+	opacity = 0
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"RS" = (
+/obj/structure/largecrate/empty/case/double,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/horizon_runner)
+"RU" = (
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"RX" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "64"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Sd" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "94"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Sg" = (
+/obj/structure/machinery/light/spot/blue{
+	dir = 4;
+	pixel_x = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Sh" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "78"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Sr" = (
+/obj/structure/machinery/light/spot/blue{
+	dir = 4;
+	pixel_x = 8
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"SD" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/kitchen)
+"SK" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"SN" = (
+/obj/structure/prop/structure_lattice{
+	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days.";
+	dir = 4;
+	icon = 'icons/obj/structures/machinery/comm_tower2.dmi';
+	icon_state = "construct_9_1";
+	layer = 5;
+	level = 5;
+	name = "destroyed comms tower"
+	},
+/obj/structure/cable{
+	icon_state = "2-8";
+	level = 2;
+	color = "#550d0d"
+	},
+/obj/structure/cable{
+	icon_state = "5-9";
+	color = "#550d0d"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"SO" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "leftengine_3"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Tm" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Tv" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"TA" = (
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing7";
+	opacity = 0;
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"TO" = (
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"TP" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Uw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/spot/blue{
+	dir = 8;
+	pixel_x = -8
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"UB" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"UX" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"Vl" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"VG" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"VX" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "36"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Wf" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Wn" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"Wu" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "wy2"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Wx" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"WE" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "47"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"WM" = (
+/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+	icon_state = "brokendropshipconsole3";
+	opacity = 0
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"WW" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/item/stack/rods,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"Xh" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 12
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -6;
+	pixel_y = -5
+	},
+/obj/item/ammo_box/magazine/misc/mre/emergency{
+	pixel_x = 9;
+	pixel_y = -3
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/horizon_runner)
+"Xl" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Xw" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"XC" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"XR" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/cable{
+	icon_state = "2-6";
+	color = "#550d0d"
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Yc" = (
+/turf/closed/shuttle/dropship2/WY/StarGlider{
+	icon_state = "zwing3";
+	opacity = 0;
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	},
+/area/lv759/indoors/spaceport/horizon_runner)
+"Yf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/cargo_container/hybrisa/containersextended/greywyleft{
+	layer = 4
+	},
+/turf/open/floor/strata/yellow3/northwest,
+/area/lv759/indoors/spaceport/cargo)
+"Yh" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	pixel_x = 1
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Yo" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo)
+"Yv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"YN" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/plating/platingdmg3,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"YP" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"YX" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Zi" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Zt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Zw" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"ZL" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ZO" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+
+(1,1,1) = {"
+go
+Jq
+Jq
+LK
+TO
+Cx
+Cx
+Rt
+il
+TP
+Rt
+il
+Jq
+Jq
+Jq
+Jq
+lo
+dZ
+Jq
+hQ
+hQ
+hQ
+Jq
+"}
+(2,1,1) = {"
+Cx
+ES
+ii
+Pq
+Lh
+po
+nV
+RD
+wc
+wc
+wc
+FJ
+IH
+kZ
+OM
+OM
+Lh
+ZL
+OM
+VG
+VG
+Mv
+ci
+"}
+(3,1,1) = {"
+Cx
+qG
+HR
+Ew
+RU
+Sr
+RU
+RU
+RU
+ol
+RU
+RU
+ol
+ol
+qC
+RU
+ol
+RU
+Sr
+RU
+RU
+Wf
+lo
+"}
+(4,1,1) = {"
+Cx
+FU
+OU
+AX
+hP
+es
+BZ
+BZ
+hP
+hP
+hP
+hP
+BZ
+BZ
+Dk
+hP
+hP
+hP
+es
+hP
+hP
+um
+Jq
+"}
+(5,1,1) = {"
+vv
+Kx
+kc
+QD
+ov
+OK
+Ab
+Pe
+Xl
+ov
+ov
+CM
+Ab
+Pe
+eD
+ov
+ov
+eD
+kf
+ov
+Nt
+bN
+rX
+"}
+(6,1,1) = {"
+vv
+xb
+UB
+ex
+am
+Ho
+BS
+mQ
+Ho
+BR
+Ho
+am
+BS
+mQ
+BR
+Ho
+Ho
+Ho
+Ho
+am
+FO
+nY
+Qe
+"}
+(7,1,1) = {"
+vv
+xb
+UB
+fz
+Ho
+Ho
+FR
+FR
+oF
+wd
+cd
+Yc
+FR
+EL
+Le
+VX
+Ps
+SO
+Kk
+Ho
+FO
+nY
+Qe
+"}
+(8,1,1) = {"
+vv
+xb
+UB
+Zt
+Ho
+Ho
+ru
+Le
+vN
+Ic
+Ic
+hG
+sT
+Bg
+Sh
+Mj
+WE
+Ps
+Kk
+Ho
+FO
+zx
+Rv
+"}
+(9,1,1) = {"
+vv
+xb
+UB
+Kt
+Aw
+cr
+Qg
+Sh
+fi
+qv
+eJ
+QA
+ox
+eJ
+Pg
+Xh
+yA
+Wu
+mD
+AW
+PL
+Og
+Rv
+"}
+(10,1,1) = {"
+vv
+xb
+UB
+cR
+Er
+RF
+gj
+Pg
+ce
+Fx
+lN
+rl
+GZ
+JW
+ns
+Pj
+Pj
+ns
+JN
+mp
+mg
+Aq
+ek
+"}
+(11,1,1) = {"
+vv
+xb
+UB
+cR
+dE
+WM
+gj
+IG
+Mi
+Mi
+Mi
+Mi
+Mi
+Mi
+ns
+Pj
+Pj
+ns
+Ho
+mp
+fN
+bf
+CI
+"}
+(12,1,1) = {"
+vv
+xb
+UB
+cS
+Oo
+Sd
+zh
+Sh
+JB
+qv
+eJ
+pX
+ox
+eJ
+Pg
+zb
+dA
+Wu
+mD
+lx
+Oa
+tt
+Rv
+"}
+(13,1,1) = {"
+vv
+xb
+UB
+Zt
+Ho
+Ho
+qJ
+Rp
+La
+Qt
+Qt
+RX
+sT
+uh
+Sh
+RS
+Ar
+bm
+Qf
+XC
+FO
+eB
+wq
+"}
+(14,1,1) = {"
+vv
+xb
+UB
+Yh
+Ho
+Ho
+FR
+FR
+Bu
+Op
+zi
+TA
+FR
+jx
+Rp
+ql
+bm
+Ke
+Qf
+Ho
+kb
+nY
+Qe
+"}
+(15,1,1) = {"
+vv
+xb
+UB
+Kh
+am
+Ho
+yG
+YX
+Ho
+Xw
+Ho
+am
+yG
+YX
+Xw
+Ho
+Ho
+Ho
+Ho
+am
+FO
+nY
+Qe
+"}
+(16,1,1) = {"
+vv
+hl
+hb
+yb
+st
+Hh
+ZO
+xO
+gI
+st
+st
+KI
+ZO
+xO
+Cg
+st
+st
+Cg
+ur
+st
+Dp
+um
+Qe
+"}
+(17,1,1) = {"
+Cx
+FU
+vR
+oT
+xm
+es
+BZ
+BZ
+xm
+xm
+xm
+xm
+BZ
+BZ
+xm
+xm
+xm
+xm
+es
+xm
+xm
+um
+SD
+"}
+(18,1,1) = {"
+Cx
+qG
+QM
+Ew
+RU
+fC
+RU
+RU
+RU
+ol
+ol
+RU
+RU
+RU
+RU
+RU
+RU
+RU
+Uw
+RU
+RU
+GX
+AA
+"}
+(19,1,1) = {"
+Cx
+Jq
+Tm
+Zi
+jh
+Sg
+jh
+qT
+Hz
+jh
+dm
+vW
+jP
+Sg
+hm
+hm
+hm
+gg
+xC
+nn
+xC
+cc
+yH
+"}
+(20,1,1) = {"
+Cx
+Yo
+AT
+AT
+AT
+Yo
+AT
+Wn
+cO
+AT
+Yo
+rC
+rC
+rC
+rC
+Jq
+Jq
+Da
+Jq
+Jq
+Jq
+Jq
+SD
+"}
+(21,1,1) = {"
+Cx
+fa
+ez
+gU
+sW
+FG
+Gf
+Wn
+Wx
+yD
+dx
+fp
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(22,1,1) = {"
+vv
+Iz
+Vl
+uf
+kd
+Tv
+Yv
+JU
+Yv
+fU
+Ma
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(23,1,1) = {"
+vv
+Ob
+eP
+wg
+bL
+IS
+bL
+Dc
+IJ
+mi
+Ma
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(24,1,1) = {"
+vv
+Zw
+uT
+wg
+LU
+ff
+LR
+rt
+LR
+UX
+nX
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(25,1,1) = {"
+vv
+Ob
+uT
+wg
+XR
+CY
+Fj
+Na
+bL
+UX
+Ma
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(26,1,1) = {"
+vv
+Zw
+AR
+wg
+LR
+MB
+SN
+Na
+LR
+UX
+Ma
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(27,1,1) = {"
+vv
+Zw
+uT
+jq
+DB
+Ie
+fT
+Na
+bL
+UX
+uu
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(28,1,1) = {"
+vv
+Ob
+uT
+wg
+IS
+pP
+LR
+Ol
+LR
+NJ
+uX
+dr
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(29,1,1) = {"
+vv
+Zw
+eP
+wg
+DB
+LR
+bL
+Dc
+bL
+pH
+uT
+dr
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(30,1,1) = {"
+vv
+LC
+uT
+JO
+HG
+vu
+Fs
+Fl
+aI
+Yf
+bD
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(31,1,1) = {"
+Cx
+fa
+vd
+Ix
+SK
+oQ
+gk
+Oq
+Wx
+NG
+nL
+YP
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(32,1,1) = {"
+Cx
+rC
+rC
+CO
+uV
+CO
+CO
+CO
+CO
+CO
+CO
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(33,1,1) = {"
+qk
+qk
+qk
+rC
+jY
+QV
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(34,1,1) = {"
+qk
+qk
+qk
+rC
+WW
+YN
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(35,1,1) = {"
+qk
+qk
+qk
+rC
+Ih
+rC
+kq
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}

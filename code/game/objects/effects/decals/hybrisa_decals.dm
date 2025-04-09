@@ -224,3 +224,15 @@
 	icon_state = "colorable_rug"
 	layer = TURF_LAYER
 	density = FALSE
+
+/// Large TWE Logo
+
+/obj/effect/decal/hybrisa/TWE_logo_large
+	icon = 'icons/effects/3WE_logo_tile.dmi'
+	icon_state = "twe_logo_c"
+
+/obj/effect/decal/hybrisa/TWE_logo_large/directional
+	icon_state = "twe_logo_directional"
+
+/obj/effect/decal/hybrisa/TWE_logo_large/directional_1
+	icon_state = "twe_logo_directional1"

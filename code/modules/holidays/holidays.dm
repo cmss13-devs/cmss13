@@ -218,7 +218,7 @@
 	name = "Anzac Day"
 	begin_day = 25
 	begin_month = APRIL
-	begin_month = "TWE holiday celebrated by people from british part of Oceania. Holiday is dedicated to remembrance of the Anzacs at Gallipoli"
+	greet_text = "TWE holiday celebrated by people from the British part of Oceania. Dedicated to remembrance of the Anzacs at Gallipoli"
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/showa

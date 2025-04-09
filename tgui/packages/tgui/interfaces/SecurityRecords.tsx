@@ -399,7 +399,7 @@ export const SecurityRecords = () => {
           </Flex.Item>
 
           <Flex.Item>
-            <Section title="Photo" mr="0.5%" mt="0.5%">
+            <Section title="Photo" m="0">
               <Box style={{ textAlign: 'center', padding: '10px' }}>
                 <img
                   src={
@@ -727,7 +727,7 @@ export const SecurityRecords = () => {
   return (
     <Window theme="crtred" width={630} height={700}>
       <Window.Content>
-        <Section fill p="0" scrollable>
+        <Section fill scrollable>
           {viewFingerprintScanner ? (
             renderFingerprintScannerView()
           ) : selectedRecord ? (

@@ -15,8 +15,8 @@
 		/datum/action/xeno_action/activable/place_design, //macro 2, macro 1 is for weeds
 		/datum/action/xeno_action/onclick/change_design,
 		/datum/action/xeno_action/activable/greater_resin_surge, //macro 3
-		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 4
-		/datum/action/xeno_action/active_toggle/toggle_speed, // macro 5
+		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 5
+		/datum/action/xeno_action/active_toggle/toggle_speed, // macro 4
 		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
@@ -33,7 +33,8 @@
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
-	hivelord.plasmapool_modifier = 0.7 // -50% plasma pool
+	hivelord.speed_modifier += XENO_SPEED_TIER_3 // Lost 30% plasma in sac, you lost some weight
+	hivelord.plasmapool_modifier = 0.7 // -30% plasma pool
 	hivelord.tacklestrength_max = 6 // increase by +1
 	hivelord.recalculate_everything()
 
@@ -43,8 +44,6 @@
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 		if(istype(action, /datum/action/xeno_action/active_toggle/toggle_meson_vision))
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
-		if(istype(action, /datum/action/xeno_action/active_toggle/toggle_speed))
-			action.ability_primacy = XENO_PRIMARY_ACTION_5
 			break // Stop looking for other ones
 
 // ""animations"" (effects)
@@ -62,6 +61,7 @@
 
 /obj/effect/resin_construct/thickdoorfast
 	icon_state = "ThickDoorConstructFast"
+	layer = FIREDOOR_CLOSED_LAYER
 
 /obj/effect/resin_construct/transparent/thickfast
 	icon_state = "WeakTransparentConstructFast"
@@ -70,7 +70,7 @@
 /datum/action/xeno_action/onclick/toggle_long_range/designer
 	handles_movement = FALSE
 	should_delay = FALSE
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 	delay = 0
 
 //////////////////////////
@@ -84,7 +84,7 @@
 	icon_state = "static_speednode"
 	density = FALSE
 	opacity = FALSE
-	layer = RESIN_STRUCTURE_LAYER
+	layer = RESIN_UNDER_STRUCTURE_LAYER
 	plane = FLOOR_PLANE
 	health = HEALTH_RESIN_XENO_STICKY
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -128,9 +128,9 @@
 	return ..()
 
 /obj/effect/alien/resin/design/speed_node
-	name = "Design Optimized Node (100)"
+	name = "Design Optimized Node (70)"
 	icon_state = "static_speednode"
-	plasma_cost = 100
+	plasma_cost = 70
 
 /obj/effect/alien/resin/design/speed_node/get_examine_text(mob/user)
 	. = ..()
@@ -140,9 +140,9 @@
 		. += "You sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
 
 /obj/effect/alien/resin/design/cost_node
-	name = "Design Flexible Node (125)"
+	name = "Design Flexible Node (75)"
 	icon_state = "static_costnode"
-	plasma_cost = 125
+	plasma_cost = 75
 
 /obj/effect/alien/resin/design/cost_node/get_examine_text(mob/user)
 	. = ..()
@@ -152,11 +152,11 @@
 		. += "You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
 
 /obj/effect/alien/resin/design/remote
-	name = "Remote Door Control (50)"
+	name = "Remote Door Control (25)"
 	desc = "Open and Closes Doors"
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "door_control"
-	plasma_cost = 50
+	plasma_cost = 25
 
 /obj/effect/alien/resin/design/upgrade
 	name = "Thicken Resin (75)"
@@ -261,7 +261,7 @@
 	macro_path = /datum/action/xeno_action/verb/place_design
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 0.5 SECONDS
+	xeno_cooldown = 0
 	var/max_reach = 10
 
 /datum/action/xeno_action/verb/place_design()
@@ -394,47 +394,79 @@
 		target_atom.add_hiddenprint(xeno) // Tracks who reinforced it for admins
 		return TRUE
 
-	if(check_and_use_plasma_owner(plasma_cost))
-		var/selected_design = xeno.selected_design
-		if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined. (12)
-			to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
-			var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list.
-			xeno.current_design.Remove(old_design) //Removes first node stored inside list.
-			qdel(old_design) //Delete node.
+	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined. (12)
+		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
+		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list.
+		xeno.current_design.Remove(old_design) //Removes first node stored inside list.
+		qdel(old_design) //Delete node.
 
-		if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node)) //Check path you selected from list.
-			var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay.
-			if(!do_after(xeno, 0.6 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
-				qdel(speed_warn) //Delete "Animation" overlay after defined time.
-				return
-			qdel(speed_warn) //Delete again just in case overlay don't get deleted.
-			xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channel nutrients and shape it into a node!"))
-			var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list.
-			if(!design)
-				to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
-				return
-			playsound(xeno.loc, "alien_resin_build", 25)
-			xeno.current_design.Add(design) //Add Node to list.
+	var/selected_design = xeno.selected_design
 
-		if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/cost_node))
-			var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf, src, xeno)
-			if(!do_after(xeno, 0.6 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
-				qdel(cost_warn)
-				return
+	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node)) //Check path you selected from list.
+		if(!is_turf_clean(target_turf)) // Check if the turf is clean before continuing
+			to_chat(src, SPAN_WARNING("There's something built here already."))
+			return
+		var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay.
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
+			qdel(speed_warn) //Delete "Animation" overlay after defined time.
+			return
+		qdel(speed_warn) //Delete again just in case overlay don't get deleted.
+		if(!is_turf_clean(target_turf)) // Recheck the turf again just in case
+			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			return
+		if(!check_and_use_plasma_owner(plasma_cost))
+			return
+		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channel nutrients and shape it into a node!"))
+		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list.
+		if(!design)
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			return
+		playsound(xeno.loc, "alien_resin_build", 25)
+		xeno.current_design.Add(design) //Add Node to list.
+
+	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/cost_node))
+		if(!is_turf_clean(target_turf))
+			to_chat(src, SPAN_WARNING("There's something built here already."))
+			return
+		var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf, src, xeno)
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
 			qdel(cost_warn)
-			xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channel nutrients and shape it into a node!"))
-			var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
-			if(!design)
-				to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
-				return
-			playsound(xeno.loc, "alien_resin_build", 25)
-			xeno.current_design.Add(design)
-
+			return
+		qdel(cost_warn)
+		if(!is_turf_clean(target_turf))
+			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			return
+		if(!check_and_use_plasma_owner(plasma_cost))
+			return
+		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
+		if(!design)
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			return
+		playsound(xeno.loc, "alien_resin_build", 25)
+		xeno.current_design.Add(design)
 	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/place_design/proc/can_remote_build()
 	if(!locate(/obj/effect/alien/weeds) in get_turf(owner))
+		return FALSE
+	return TRUE
+
+/datum/action/xeno_action/activable/place_design/proc/is_turf_clean(turf/current_turf, check_resin_additions = FALSE, check_doors = FALSE)
+	var/has_obstacle = FALSE
+	for(var/obj/target in current_turf)
+		if(check_doors)
+			if(istype(target, /obj/structure/machinery/door))
+				to_chat(src, SPAN_WARNING("[target] is blocking the resin! There's not enough space to build that here."))
+				return FALSE
+		if(check_resin_additions)
+			if(istype(target, /obj/effect/alien/resin/sticky) || istype(target, /obj/effect/alien/resin/spike) || istype(target, /obj/effect/alien/resin/sticky/fast))
+				has_obstacle = TRUE
+				to_chat(src, SPAN_WARNING("[target] is blocking the resin!"))
+				return FALSE
+	if(current_turf.density || has_obstacle || locate(/obj/effect/alien/resin/design) in current_turf)
+		to_chat(src, SPAN_WARNING("There's something built here already."))
 		return FALSE
 	return TRUE
 

@@ -167,7 +167,7 @@
 	name = "Holi"
 	begin_day = 14
 	begin_month = MARCH
-	greet_text = "Holiday celebrated in Hindu parts of the TWE. Holi also known as Festival of Colours, the holiday celebrates the eternal and divine love of the deities Radha and Krishna."
+	greet_text = "Holiday celebrated in Hindu parts of the TWE. Holi, also known as Festival of Colours, the holiday celebrates the eternal and divine love of the deities Radha and Krishna."
 	holiday_faction = FACTION_TWE
 
 /datum/holiday/no_this_is_patrick

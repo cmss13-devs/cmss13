@@ -154,8 +154,27 @@
 	name = "Set Name"
 
 /datum/player_action/set_name/act(client/user, mob/target, list/params)
-	target.name = params["name"]
+	if(!params["name"])
+		to_chat(user, "The Name field cannot be empty")
+
+		return FALSE
+
+	var/mob/living/C = target
+
+	if(istype(C, /mob/living/carbon))
+		C.real_name = params["name"]
+
+	C.name = params["name"]
+
+	if(ishuman(C))
+		var/mob/living/carbon/human/H = C
+		var/obj/item/card/id/card = H.get_idcard()
+		if(card)
+			card.registered_name = H.name
+			card.name = "[H.name]'s [card.id_type][card.assignment ? " ([card.assignment])" : ""]"
+
 	message_admins("[key_name_admin(user)] set [key_name_admin(target)]'s name to [params["name"]]")
+
 	return TRUE
 
 /datum/player_action/set_ckey

@@ -1,7 +1,7 @@
 //Adapted from a free algorithm written in BASIC (https://www.assa.org.au/edm#Computer)
-/proc/EasterDate(y)
+/proc/easter_date(y)
 	var/FirstDig, Remain19, temp //Intermediate Results
-	var/tA, tB, tC, tD, tE //Table A-E results
+	var/table_a, table_b, table_c, table_d, table_e //Table A-E results
 	var/d, m //Day and Month returned
 
 	FirstDig = round((y / 100))
@@ -16,23 +16,23 @@
 			temp -= 2
 	temp %= 30
 
-	tA = temp + 21
+	table_a = temp + 21
 	if(temp == 29)
-		tA -= 1
+		table_a -= 1
 	if(temp == 28 && (Remain19 > 10))
-		tA -= 1
-	tB = (tA - 19) % 7
+		table_a -= 1
+	table_b = (table_a - 19) % 7
 
-	tC = (40 - FirstDig) % 4
-	if(tC == 3)
-		tC += 1
-	if(tC > 1)
-		tC += 1
+	table_c = (40 - FirstDig) % 4
+	if(table_c == 3)
+		table_c += 1
+	if(table_c > 1)
+		table_c += 1
 	temp = y % 100
-	tD = (temp + round((temp / 4))) % 7
+	table_d = (temp + round((temp / 4))) % 7
 
-	tE = ((20 - tB - tC - tD) % 7) + 1
-	d = tA + tE
+	table_e = ((20 - table_b - table_c - table_d) % 7) + 1
+	d = table_a + table_e
 	if(d > 31)
 		d -= 31
 		m = 4

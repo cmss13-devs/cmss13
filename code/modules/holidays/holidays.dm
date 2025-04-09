@@ -20,7 +20,7 @@
 	var/list/timezones = list(TIMEZONE_LINT, TIMEZONE_UTC, TIMEZONE_ANYWHERE_ON_EARTH)
 	///Custom text of greet message
 	var/greet_text
-	///Faction specific holidays
+	///Faction specific holidays; leave unspecified to apply to any faction.
 	var/holiday_faction
 
 // When the round starts, this proc is ran to get a text message to display to everyone to wish them a happy holiday

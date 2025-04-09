@@ -285,6 +285,7 @@
 		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
+		list("Deluxe MRE",10,/obj/item/storage/box/mre/pmc,"white","A High end MRE, proper business dinner or incentive for Marines?"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
 
 		list("SMOKABLES", 0, null, null, null),

@@ -121,6 +121,7 @@
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
 #define CORRUPTED_ALLY (1<<21)
+#define FAKESOUL (1<<22) // Lets things without souls pretend like they do
 
 // =============================
 // hive types

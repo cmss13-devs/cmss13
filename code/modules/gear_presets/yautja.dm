@@ -36,8 +36,8 @@
 
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	var/caster_material = "ebony"
-	var/translator_type = "Modern"
-	var/invisibility_sound = "Modern"
+	var/translator_type = PRED_TECH_MODERN
+	var/invisibility_sound = PRED_TECH_MODERN
 
 	if(!mob_client)
 		mob_client = new_human.client

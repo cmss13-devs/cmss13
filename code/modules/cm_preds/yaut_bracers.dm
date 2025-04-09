@@ -256,8 +256,8 @@
 	var/disc_timer = 0
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/name_active = TRUE
-	var/translator_type = "Modern"
-	var/invisibility_sound = "Modern"
+	var/translator_type = PRED_TECH_MODERN
+	var/invisibility_sound = PRED_TECH_MODERN
 	var/caster_material = "ebony"
 
 	var/obj/item/card/id/bracer_chip/embedded_id
@@ -749,7 +749,7 @@
 		if(!silent)
 			M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 			var/sound_to_use
-			if(invisibility_sound == "Modern")
+			if(invisibility_sound == PRED_TECH_MODERN)
 				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
 			else
 				sound_to_use = 'sound/effects/pred_cloakon.ogg'
@@ -805,11 +805,11 @@
 	log_game("[key_name_admin(user)] has disabled their cloaking device.")
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
 	var/sound_to_use
-	if(invisibility_sound == "Modern")
+	if(invisibility_sound == PRED_TECH_MODERN)
 		sound_to_use = 'sound/effects/pred_cloakoff_modern.ogg'
 	else
 		sound_to_use = 'sound/effects/pred_cloakoff.ogg'
-	playsound(user.loc, sound_to_use, 15, 1, 10)
+	playsound(user.loc, sound_to_use, 15, 1, 4)
 	user.alpha = initial(user.alpha)
 	if(true_cloak)
 		user.invisibility = initial(user.invisibility)
@@ -1284,8 +1284,8 @@
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
-	if(translator_type != "Modern")
-		if(translator_type == "Retro")
+	if(translator_type != PRED_TECH_MODERN)
+		if(translator_type == PRED_TECH_RETRO)
 			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")

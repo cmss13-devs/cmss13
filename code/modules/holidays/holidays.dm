@@ -54,9 +54,9 @@
 			return TRUE
 
 	else // starts in one year, ends in the next
-		if(mm >= begin_month && dd >= begin_day) // Holiday ends next year
+		if(mm >= begin_month) // Holiday ends next year
 			return TRUE
-		if(mm <= end_month && dd <= end_day) // Holiday started last year
+		if(mm <= end_month) // Holiday started last year
 			return TRUE
 
 	return FALSE

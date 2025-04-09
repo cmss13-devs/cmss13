@@ -18,7 +18,7 @@
 	var/year_offset = 0
 	///Timezones this holiday is celebrated in (defaults to three timezones spanning a 50 hour window covering all timezones)
 	var/list/timezones = list(TIMEZONE_LINT, TIMEZONE_UTC, TIMEZONE_ANYWHERE_ON_EARTH)
-	///Custom text of greet message
+	///Optional custom text of greeting message
 	var/greet_text
 	///Faction specific holidays; leave unspecified to apply to any faction.
 	var/holiday_faction

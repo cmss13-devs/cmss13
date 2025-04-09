@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useBackend, useSharedState } from '../backend';
 import {
   Button,
@@ -33,8 +35,7 @@ export const AutosortingCabinet = () => {
   const [selectedSort, setSelectedSort] = useSharedState('NONE', 0);
   const [selectedOrder, setselectedOrder] = useSharedState('ASCENDING', true);
   let paperDocumentFinal: PaperData[] | null = data.paper_data;
-  const [selectedSearch, setSelectedSearch] = useSharedState('SEARCH', '');
-  const [isCompleted, setIsCompleted] = useSharedState('COMPLETED', false);
+  const [selectedSearch, setSelectedSearch] = useState('');
   if (paperDocumentFinal) {
     selectedSort === 1
       ? paperDocumentFinal.sort((a, b) => a.overall_value - b.overall_value)

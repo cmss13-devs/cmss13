@@ -1,6 +1,0 @@
-author: "Generallemon07"
-delete-after: True
-changes:
-  - bugfix: "fixed gutting fish displaying message that user is gutting the knife"
-  - bugfix: "fixed gutting fish infinitely"
-  - bugfix: "fixed urchins disappearing when attempting to consume"

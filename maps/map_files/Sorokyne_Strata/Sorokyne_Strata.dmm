@@ -12570,7 +12570,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/south_outpost)
 "bqP" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
 "bqQ" = (
@@ -12721,11 +12721,11 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "brK" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/center)
 "brL" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "brM" = (
@@ -21175,7 +21175,7 @@
 /area/strata/ag/exterior/outpost_decks)
 "haN" = (
 /obj/structure/largecrate/random,
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
@@ -21866,7 +21866,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/vanyard)
 "ibH" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/engineering/parts_storage)
@@ -32558,7 +32558,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "wsj" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "wsm" = (

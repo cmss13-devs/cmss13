@@ -11,19 +11,17 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 /datum/datacore/proc/manifest(nosleep = 0)
 	spawn()
-		if (!nosleep)
+		if(!nosleep)
 			sleep(40)
 
-		var/list/jobs_to_check = GLOB.ROLES_USCM
-
-		for (var/mob/living/carbon/human/current_human as anything in GLOB.human_mob_list)
-			if (should_block_game_interaction(current_human))
+		for(var/mob/living/carbon/human/current_human as anything in GLOB.human_mob_list)
+			if(should_block_game_interaction(current_human))
 				continue
 
-			if (is_in_manifest(current_human))
+			if(is_in_manifest(current_human))
 				continue
 
-			if (current_human.job in jobs_to_check)
+			if(current_human.job)
 				manifest_inject(current_human)
 
 /datum/datacore/proc/is_in_manifest(mob/living/carbon/human/current_human)

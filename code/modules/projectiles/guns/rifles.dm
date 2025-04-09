@@ -909,7 +909,7 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 
 /obj/item/weapon/gun/rifle/mar40/lmg/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 16, "rail_y" = 20, "under_x" = 30, "under_y" = 16, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 41, "muzzle_y" = 18, "rail_x" = 16, "rail_y" = 20, "under_x" = 30, "under_y" = 16, "stock_x" = 24, "stock_y" = 13)
 
 /obj/item/weapon/gun/rifle/mar40/lmg/set_gun_config_values()
 	..()
@@ -1186,6 +1186,8 @@
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 18, "rail_x" = 5, "rail_y" = 20, "under_x" = 15, "under_y" = 13, "stock_x" = 11, "stock_y" = 14)
+	// attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 18, "rail_x" = 5, "rail_y" = 20, "under_x" = 15, "under_y" = 13, "stock_x" = 11, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18, "rail_x" = 8, "rail_y" = 20, "under_x" = 18, "under_y" = 13, "stock_x" = 14, "stock_y" = 14)
 
 /obj/item/weapon/gun/rifle/xm177/set_gun_config_values()
 	..()
@@ -1787,6 +1789,8 @@
 	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 	map_specific_decoration = TRUE
+	pixel_x = -5
+	hud_offset = -5
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 43, "muzzle_y" = 17,"rail_x" = 22, "rail_y" = 21, "under_x" = 30, "under_y" = 13, "stock_x" = 24, "stock_y" = 13, "special_x" = 37, "special_y" = 16)

@@ -336,6 +336,8 @@
 	map_specific_decoration = TRUE
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
+	pixel_x = -6
+	hud_offset = -6
 
 /obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
 	set name = "Toggle Scope Zoom Level"

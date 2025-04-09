@@ -75,6 +75,8 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/flashlight/grip,
 	)
+	pixel_x = -5
+	hud_offset = -5
 
 
 /obj/item/weapon/gun/rifle/m4ra_custom/set_gun_attachment_offsets()

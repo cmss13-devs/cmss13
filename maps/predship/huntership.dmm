@@ -123,24 +123,24 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 6
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -5;
@@ -3703,7 +3703,7 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
 "mH" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 2;
@@ -7659,7 +7659,7 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	anchored = 1;
 	pixel_x = -1;
 	pixel_y = 3
@@ -8088,24 +8088,24 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 6
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -5;
@@ -8154,24 +8154,24 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 6
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = -5;
@@ -11919,7 +11919,7 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 2;
@@ -12569,7 +12569,7 @@
 	pixel_y = 11
 	},
 /obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/knife/yautja{
 	attack_speed = 12;
 	force = 25;
 	pixel_x = 6;

@@ -2608,7 +2608,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "arO" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	name = "ceremonial knife"
 	},
 /turf/open/auto_turf/ice/layer1,

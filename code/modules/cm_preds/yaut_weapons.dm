@@ -151,55 +151,6 @@
 	speed_bonus_amount =  -0.4 SECONDS
 
 /*#########################################
-########### Duelling Weaponry #############
-#########################################*/
-
-/obj/item/weapon/sword/yautja
-	name = "duelling blade"
-	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
-	icon_state = "yautja_sword"
-	item_state = "yautja_sword"
-	flags_item = ADJACENT_CLICK_DELAY
-	embeddable = FALSE
-
-/obj/item/weapon/baseballbat/metal/yautja
-	name = "duelling club"
-	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
-	icon_state = "hunter_club"
-	item_state = "hunter_club"
-	flags_item = ADJACENT_CLICK_DELAY
-	embeddable = FALSE
-
-/obj/item/tool/hatchet/yautja
-	name = "duelling hatchet"
-	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
-	icon = 'icons/obj/items/weapons/melee/axes.dmi'
-	flags_item = ADJACENT_CLICK_DELAY
-	embeddable = FALSE
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
-	)
-	icon_state = "yautja"
-
-/obj/item/weapon/unathiknife
-	name = "duelling knife"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
-	icon = 'icons/obj/items/weapons/melee/knives.dmi'
-	flags_item = ADJACENT_CLICK_DELAY
-	icon_state = "unathiknife"
-	embeddable = FALSE
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
-	)
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("ripped", "torn", "cut")
-	force = MELEE_FORCE_STRONG
-	throwforce = MELEE_FORCE_STRONG
-	edge = 1
-
-/*#########################################
 ########### One Handed Weapons ############
 #########################################*/
 /obj/item/weapon/yautja
@@ -935,6 +886,77 @@
 	desc = "A frighteningly big axe. The blade edge is chipped and gnarled from thousands of bone-crushing blows."
 	icon_state = "longaxe"
 	item_state = "longaxe"
+
+/*#########################################
+########### Duelling Weaponry #############
+#########################################*/
+
+/obj/item/weapon/yautja/duelsword
+	name = "duelling blade"
+	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
+	flags_item = ADJACENT_CLICK_DELAY
+	icon_state = "duelling_sword"
+	item_state = "duelling_sword"
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_WEAK
+	sharp = IS_SHARP_ITEM_BIG
+	edge = 1
+	w_class = SIZE_LARGE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
+
+/obj/item/weapon/yautja/duelclub
+	name = "duelling club"
+	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
+	flags_item = ADJACENT_CLICK_DELAY
+	icon_state = "duelling_club"
+	item_state = "duelling_club"
+	sharp = 0
+	edge = 0
+	w_class = SIZE_MEDIUM
+	force = MELEE_FORCE_STRONG
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 7
+	throwforce = 7
+	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
+	hitsound = 'sound/weapons/genhit3.ogg'
+
+/obj/item/weapon/yautja/duelaxe
+	name = "duelling hatchet"
+	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
+	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
+	icon_state = "duelling_hatchet"
+	force = MELEE_FORCE_NORMAL
+	w_class = SIZE_SMALL
+	throwforce = 20
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 4
+	sharp = IS_SHARP_ITEM_BIG
+	edge = 1
+	attack_verb = list("chopped", "torn", "cut")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+
+/obj/item/weapon/knife/yautja
+	name = "duelling knife"
+	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
+	flags_item = ADJACENT_CLICK_DELAY
+	icon_state = "duelling_knife"
+	embeddable = FALSE
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+	)
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("ripped", "torn", "cut")
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_STRONG
+	edge = 1
 
 /*#########################################
 ############## Ranged Weapons #############

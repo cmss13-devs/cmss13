@@ -357,7 +357,7 @@
 /turf/open/floor/prison/whitepurple/west,
 /area/fiorina/station/research_cells/west)
 "ane" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	name = "ceremonial knife"
 	},
 /turf/open/floor/wood,

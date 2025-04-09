@@ -317,7 +317,7 @@
 	timezones = list(TIMEZONE_EDT, TIMEZONE_CDT, TIMEZONE_MDT, TIMEZONE_MST, TIMEZONE_PDT, TIMEZONE_AKDT, TIMEZONE_HDT, TIMEZONE_HST)
 	begin_day = 4
 	begin_month = JULY
-	greet_text = "On this day in the year of 1776, the USA declared independance from the Great Britain, the holiday is celebrated across UA."
+	greet_text = "On this day in the year of 1776, the USA declared independence from Great Britain, the holiday is celebrated across UA."
 	holiday_faction = FACTION_MARINE
 
 /datum/holiday/writer

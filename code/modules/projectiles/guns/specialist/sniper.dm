@@ -403,6 +403,7 @@
 	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
@@ -418,8 +419,8 @@
 	//Kaga: Fixed back to half the M42A's firerate (3 seconds), using a new define.
 	//This outright deals less DPS than the normal sniper rifle, 125 vs 140 per 3s.
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
-	scatter = SCATTER_AMOUNT_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + 2*(HIT_ACCURACY_MULT_TIER_10 + HIT_ACCURACY_MULT_TIER_2) - HIT_ACCURACY_MULT_TIER_1//Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
+	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 

@@ -3481,6 +3481,15 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 	return .
 
+/obj/item/attachable/bipod/vulture/bipod/New()
+	..()
+
+	delay_mod = FIRE_DELAY_TIER_11
+	wield_delay_mod = WIELD_DELAY_FAST
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
+	scatter_mod = SCATTER_AMOUNT_NONE
+	recoil_mod = RECOIL_AMOUNT_TIER_5
+
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"
 	desc = "A small angled piece of fine machinery that increases the burst count on some weapons, and grants the ability to others. \nIncreases weapon scatter."

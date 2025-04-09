@@ -26,11 +26,11 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			if (current_human.job in jobs_to_check)
 				manifest_inject(current_human)
 
-/datum/datacore/proc/is_in_manifest(mob/living/carbon/human/H)
-	var/weakref = WEAKREF(H)
+/datum/datacore/proc/is_in_manifest(mob/living/carbon/human/current_human)
+	var/weakref = WEAKREF(current_human)
 
-	for (var/datum/data/record/R in general)
-		if (R.fields["ref"] == weakref)
+	for (var/datum/data/record/current_record in general)
+		if (current_record.fields["ref"] == weakref)
 			return TRUE
 
 	return FALSE

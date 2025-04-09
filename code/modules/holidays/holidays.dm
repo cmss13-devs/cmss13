@@ -540,7 +540,7 @@
 
 /datum/holiday/easter/shouldCelebrate(dd, mm, yyyy, ddd)
 	current_year = text2num(time2text(world.timeofday, "YYYY"))
-	var/list/easterResults = EasterDate(current_year)
+	var/list/easterResults = easter_date(current_year)
 
 	begin_day = easterResults["day"]
 	begin_month = easterResults["month"]

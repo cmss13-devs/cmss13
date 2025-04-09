@@ -187,7 +187,7 @@
 	name = "International Fun at Work Day"
 	begin_month = APRIL
 	begin_day = 1
-	greet_text = "Today is one of the best work days in the year, because what other day are we going to get the chance to party and work at the same time?"
+	greet_text = "Today is one of the best workdays in the year, because what other day are we going to get the chance to party and work at the same time?"
 
 /datum/holiday/spess
 	name = "Cosmonautics Day"

@@ -84,6 +84,7 @@ export const WYComputer = (props) => {
 };
 
 const Login = (props) => {
+  const { data, act } = useBackend<Data>();
   return (
     <Flex
       direction="column"
@@ -118,6 +119,7 @@ const Login = (props) => {
 };
 
 const MainMenu = (props) => {
+  const { data, act } = useBackend<Data>();
   const {
     logged_in,
     access_text,
@@ -314,6 +316,7 @@ const MainMenu = (props) => {
 };
 
 const SecVents = (props) => {
+  const { data, act } = useBackend<Data>();
   const {
     logged_in,
     access_text,

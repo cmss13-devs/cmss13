@@ -202,10 +202,6 @@
 		if(!can_not_harm(mob))
 			mob.apply_effect(1, WEAKEN)
 
-	var/datum/action/xeno_action/activable/burrow/burrow_action = get_action(src, /datum/action/xeno_action/activable/burrow)
-	if(burrow_action)
-		burrow_action.apply_cooldown()
-
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_icons()
 

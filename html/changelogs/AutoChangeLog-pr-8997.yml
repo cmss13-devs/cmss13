@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "nailgun can now be held on belt slot"
-  - bugfix: "fixed nailgun having no inhand sprites"

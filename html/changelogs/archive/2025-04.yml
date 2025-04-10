@@ -212,3 +212,13 @@
   MistChristmas:
   - ui: Changes Scrollbar colors to mix from both foreground and background colours,
       Improving visibility. Makes CRT-Red background red instead of blue.
+2025-04-10:
+  Blundir:
+  - rscadd: nailgun can now be held on belt slot
+  - bugfix: fixed nailgun having no inhand sprites
+  - rscadd: normal mateba ammo can now battle execute
+  Spypig23, detectivegoogle, harryob:
+  - rscadd: HM Challenge Tutorial
+  - mapadd: Added medical-themed 15x10 tutorial map
+  - refactor: Reworked code for roller beds to allow continuous tracking
+  - bugfix: IA pill bottles and Vials now display working icons in vendor UI

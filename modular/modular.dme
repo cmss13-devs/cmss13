@@ -25,5 +25,7 @@
 #include "supply_packs/_supply_packs.dme"
 #include "roundstart_spawns/_roundstart_spawns.dme"
 #include "attachments/_attachments.dme"
+#include "clothing/_clothing.dme"
 #include "loadout_preferences_gear/_loadout.dme"
 #include "ltb_rework/_ltb_rework.dme"
+

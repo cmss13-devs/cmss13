@@ -1,11 +1,17 @@
 import './styles/main.scss';
 
 import { isEscape, KEY } from 'common/keys';
-import { BooleanLike, classes } from 'common/react';
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react';
+import { type BooleanLike, classes } from 'common/react';
+import {
+  type FormEvent,
+  type KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { dragStartHandler } from 'tgui/drag';
 
-import { Channel, ChannelIterator } from './ChannelIterator';
+import { type Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
 import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
 import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';
@@ -36,6 +42,7 @@ export function TguiSay() {
   const channelIterator = useRef(new ChannelIterator());
   const chatHistory = useRef(new ChatHistory());
   const messages = useRef(byondMessages);
+  const scale = useRef(true);
 
   // I initially wanted to make these an object or a reducer, but it's not really worth it.
   // You lose the granulatity and add a lot of boilerplate.
@@ -46,7 +53,6 @@ export function TguiSay() {
   const [size, setSize] = useState(WindowSize.Small);
   const [maxLength, setMaxLength] = useState(1024);
   const [lightMode, setLightMode] = useState(false);
-  const [scale, setScale] = useState(false);
   const [position, setPosition] = useState([window.screenX, window.screenY]);
   const [value, setValue] = useState('');
   const [extraChannels, setExtraChennels] = useState<Array<Channel>>([]);
@@ -97,7 +103,7 @@ export function TguiSay() {
 
   function handleClose(): void {
     innerRef.current?.blur();
-    windowClose(scale);
+    windowClose(scale.current);
 
     setTimeout(() => {
       chatHistory.current.reset();
@@ -227,20 +233,14 @@ export function TguiSay() {
     }
 
     setButtonContent(iterator.current());
-    windowOpen(iterator.current(), scale);
+    windowOpen(iterator.current(), scale.current);
   }
 
   function handleProps(data: ByondProps): void {
     setMaxLength(data.maxLength);
     setLightMode(!!data.lightMode);
     setExtraChennels(data.extraChannels);
-    setScale(!!data.scale);
-
-    if (!data.scale) {
-      window.document.body.style['zoom'] = `${100 / window.devicePixelRatio}%`;
-    } else {
-      window.document.body.style['zoom'] = '';
-    }
+    scale.current = !!data.scale;
   }
 
   function unloadChat(): void {
@@ -271,7 +271,7 @@ export function TguiSay() {
 
     if (size !== newSize) {
       setSize(newSize);
-      windowSet(newSize, scale);
+      windowSet(newSize, scale.current);
     }
   }, [value]);
 
@@ -284,11 +284,19 @@ export function TguiSay() {
     <>
       <div
         className={`window window-${theme} window-${size}`}
+        style={{
+          zoom: scale.current ? '' : `${100 / window.devicePixelRatio}%`,
+        }}
         onMouseDown={dragStartHandler}
       >
         {!lightMode && <div className={`shine shine-${theme}`} />}
       </div>
-      <div className={classes(['content', lightMode && 'content-lightMode'])}>
+      <div
+        className={classes(['content', lightMode && 'content-lightMode'])}
+        style={{
+          zoom: scale.current ? '' : `${100 / window.devicePixelRatio}%`,
+        }}
+      >
         <button
           className={`button button-${theme}`}
           onClick={handleIncrementChannel}

@@ -5424,7 +5424,7 @@
 /area/bigredv2/outside/medical)
 "ayo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/hotdog,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ayp" = (
@@ -6741,7 +6741,7 @@
 /area/bigred/ground/garage_workshop)
 "aEZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
+/obj/item/trash/cheesie,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -12961,7 +12961,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhL" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhT" = (
@@ -14198,7 +14198,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "boK" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
@@ -19000,7 +19000,7 @@
 /area/bigredv2/outside/general_offices)
 "dsU" = (
 /obj/item/trash/cheesie,
-/obj/item/trash/pistachios,
+/obj/item/trash/raisins,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
@@ -19047,7 +19047,7 @@
 /turf/open/floor/whitegreencorner,
 /area/bigredv2/outside/medical)
 "dvq" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -11;
 	pixel_y = -9
 	},
@@ -22197,7 +22197,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "gJk" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -11;
 	pixel_y = -9
 	},
@@ -33878,7 +33878,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/lambda_cave_cas)
 "sMP" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -3;
 	pixel_y = 11
 	},
@@ -38224,7 +38224,7 @@
 /area/bigredv2/caves/mining)
 "xlD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios{
+/obj/item/trash/hotdog{
 	pixel_y = -21;
 	pixel_x = -6
 	},
@@ -38996,7 +38996,7 @@
 /area/bigredv2/caves/mining)
 "xYw" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/obj/item/trash/pistachios{
+/obj/item/trash/hotdog{
 	pixel_x = -3;
 	pixel_y = 11
 	},

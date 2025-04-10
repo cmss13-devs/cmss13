@@ -27,6 +27,8 @@
 	var/list/evolves_to = list()
 	/// what caste or castes to de-evolve to.
 	var/list/deevolves_to = list()
+	///This is where you add castes drones can evolve to before first drop.
+	var/list/early_evolves_to
 	///If they can use consoles, etc. Set on Queen
 	var/is_intelligent = 0
 	var/caste_desc = null

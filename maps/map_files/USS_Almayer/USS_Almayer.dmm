@@ -73362,6 +73362,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/l3closet,
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/lower/workshop/hangar)
 "xXr" = (

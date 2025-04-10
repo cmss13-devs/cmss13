@@ -256,7 +256,10 @@ SUBSYSTEM_DEF(minimaps)
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_earlyadd), override = TRUE) //Override required for late z-level loading to prevent hard dels where an atom is initiated during z load, but is qdel'd before it finishes
 		return
 	
+	
 	var/turf/target_turf = get_turf(target)
+	if(ismob(target) && target.loc && !isturf(target.loc))
+		target_turf = get_turf(target.loc)
 
 	blip.pixel_x = MINIMAP_PIXEL_FROM_WORLD(target_turf.x) + minimaps_by_z["[target_turf.z]"].x_offset + image_x
 	blip.pixel_y = MINIMAP_PIXEL_FROM_WORLD(target_turf.y) + minimaps_by_z["[target_turf.z]"].y_offset + image_y

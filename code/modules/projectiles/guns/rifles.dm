@@ -907,6 +907,8 @@
 	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
+	hud_offset = -4
+	pixel_x = -4
 
 /obj/item/weapon/gun/rifle/mar40/lmg/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 41, "muzzle_y" = 18, "rail_x" = 16, "rail_y" = 20, "under_x" = 30, "under_y" = 16, "stock_x" = 24, "stock_y" = 13)
@@ -916,7 +918,7 @@
 	set_fire_delay(FIRE_DELAY_TIER_LMG)
 	set_burst_amount(BURST_AMOUNT_TIER_5)
 	set_burst_delay(FIRE_DELAY_TIER_LMG)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_9
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8

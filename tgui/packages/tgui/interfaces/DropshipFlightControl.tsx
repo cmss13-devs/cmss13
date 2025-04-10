@@ -78,6 +78,7 @@ const DropshipDoorControl = () => {
             {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
               <Button
                 disabled={disable_door_controls}
+                width="100%"
                 onClick={() =>
                   act('door-control', {
                     interaction: 'force-lock',
@@ -93,6 +94,7 @@ const DropshipDoorControl = () => {
             {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
               <Button
                 disabled={disable_door_controls}
+                width="100%"
                 onClick={() =>
                   act('door-control', {
                     interaction: 'unlock',
@@ -107,22 +109,24 @@ const DropshipDoorControl = () => {
           </>
         ))}
     >
-      <Stack className="DoorControlStack">
+      <Stack justify="space-between" className="DoorControlStack">
         {data.door_status
           .filter((x) => x.id !== 'all')
           .map((x) => {
             const name = x.id.substr(0, 1).toLocaleUpperCase() + x.id.substr(1);
             return (
-              <Stack.Item key={x.id}>
+              <Stack.Item key={x.id} grow>
                 <>
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_BROKEN && (
-                    <Button disabled icon="ban">
+                    <Button disabled icon="ban" width="100%" textAlign="center">
                       No response
                     </Button>
                   )}
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
                     <Button
                       disabled={disable_door_controls}
+                      width="100%"
+                      textAlign="center"
                       onClick={() =>
                         act('door-control', {
                           interaction: 'force-lock',
@@ -137,6 +141,8 @@ const DropshipDoorControl = () => {
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
                     <Button
                       disabled={disable_door_controls}
+                      width="100%"
+                      textAlign="center"
                       onClick={() =>
                         act('door-control', {
                           interaction: 'unlock',

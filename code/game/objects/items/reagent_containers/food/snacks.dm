@@ -76,8 +76,8 @@
 		if(fullness > NUTRITION_HIGH && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return FALSE
-		if(issynth(C))
-			fullness = 200 //Synths never get full
+		if(issynth(C) || isyautja(C))
+			fullness = 200 //Synths and yautja never get full
 
 		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
 			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))

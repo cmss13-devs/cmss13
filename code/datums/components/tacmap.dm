@@ -63,9 +63,10 @@
 /datum/component/tacmap/proc/on_unset_interaction(mob/user)
 	interactees -= user
 	user?.client?.screen -= map
+	user?.client?.screen -= scroll_toggle
+	
 	if(has_drawing_tools)
 		user?.client?.screen -= drawing_actions
-		user?.client?.screen -= scroll_toggle
 		user?.client?.screen -= close_button
 		user?.client?.mouse_pointer_icon = null
 
@@ -81,9 +82,9 @@
 
 	if(has_drawing_tools)
 		user.client.screen += drawing_actions
-		user.client.screen += scroll_toggle
 		user.client.screen += close_button
 
+	user.client.screen += scroll_toggle
 	user.client.screen += map
 	interactees += user
 

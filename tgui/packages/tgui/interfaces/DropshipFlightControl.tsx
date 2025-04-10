@@ -397,6 +397,8 @@ const DropshipButton = (props: {
 
   return (
     <Button
+      width="30%"
+      textAlign="center"
       disabled={match || props.disable}
       onClick={() => {
         act('change_shuttle', { new_shuttle: props.shipId });

@@ -151,7 +151,8 @@
 "be" = (
 /obj/structure/reagent_dispensers/water_cooler{
 	pixel_x = 11;
-	pixel_y = 3
+	pixel_y = 3;
+	density = 0
 	},
 /turf/open/floor/almayer/blackfull/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -203,6 +204,9 @@
 /obj/structure/machinery/mech_bay_recharge_port{
 	name = "Power Port"
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer/orangefull,
 /area/lv759/indoors/twe_souter_outpost/maint)
 "bD" = (
@@ -217,6 +221,10 @@
 	},
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -353,11 +361,15 @@
 	pixel_x = -16
 	},
 /obj/item/book/codebook/twe{
-	pixel_x = -1;
-	pixel_y = 5
+	pixel_x = 2;
+	pixel_y = 6
 	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#848484"
+	},
+/obj/item/stack/repairable/gunlube{
+	pixel_x = -9;
+	pixel_y = 4
 	},
 /turf/open/floor/strata/red3,
 /area/lv759/indoors/twe_souter_outpost/armoury)
@@ -573,9 +585,7 @@
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "et" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
-	welded = 1;
-	locked = 1
+	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
@@ -906,6 +916,13 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5";
 	pixel_y = 12
+	},
+/obj/structure/machinery/door_control{
+	id = "twe_hangar_lockdown";
+	name = "Flight Control - Lockdown";
+	pixel_y = 9;
+	pixel_x = 24;
+	layer = 4
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -2805,6 +2822,10 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
+/obj/item/stack/repairable/gunlube{
+	pixel_x = 10;
+	pixel_y = -6
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "BT" = (
@@ -3074,7 +3095,8 @@
 /area/lv759/indoors/twe_souter_outpost/flight)
 "EX" = (
 /obj/structure/shuttle/part/twe_cosmetic1/transparent{
-	icon_state = "4,1"
+	icon_state = "4,1";
+	density = 0
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -3995,6 +4017,10 @@
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
+"Rl" = (
+/obj/item/ammo_magazine/smg/p90/twe,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
 "Rq" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "souter_west";
@@ -4189,9 +4215,6 @@
 /obj/item/tool/wrench{
 	pixel_x = 1;
 	pixel_y = 10
-	},
-/obj/structure/machinery/light/small{
-	dir = 8
 	},
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
 	pixel_x = 6;
@@ -5446,7 +5469,7 @@ Sn
 kW
 Um
 Pg
-Td
+Rl
 au
 xl
 DA

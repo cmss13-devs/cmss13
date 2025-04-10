@@ -8,8 +8,8 @@
 	rank = JOB_SURVIVOR
 	skills = /datum/skills/iasf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	faction = FACTION_TWE
-	faction_group = list(FACTION_TWE, FACTION_MARINE, FACTION_SURVIVOR)
+	faction = FACTION_IASF
+	faction_group = FACTION_LIST_SURVIVOR_IASF
 	minimap_icon = "rmc_rifleman"
 	minimap_background = "background_twe"
 	role_comm_title = "24/PARA"
@@ -21,18 +21,20 @@
 
 /datum/equipment_preset/survivor/iasf/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/royal_marine/iasf/uniform = new()
-	var/random_number = rand(1,3)
+	var/random_number = rand(1,4)
 	switch(random_number)
 		if(1)
 			uniform.roll_suit_jacket(new_human)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/brown, WEAR_FACE)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf, WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic(new_human), WEAR_IN_BACK)
 		if(2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/brown, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf, WEAR_JACKET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic(new_human), WEAR_IN_BACK)
 		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/brown, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_combat_jacket, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic(new_human), WEAR_IN_BACK)
+		if(4)
 			uniform.roll_suit_sleeves(new_human)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/iasf, WEAR_ACCESSORY)
@@ -41,24 +43,28 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/royal_marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/royal_marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/iasf(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/twe, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_combat_jacket, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf, WEAR_JACKET)
 
 ///////////////////////////////////////////////////////////////////
 
-/datum/equipment_preset/survivor/iasf
+/datum/equipment_preset/survivor/iasf/paratrooper
 	name = "Survivor - IASF Paratrooper"
 	paygrades = list(PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_1)
 	assignment = "IASF - Paratrooper"
 	rank = JOB_TWE_IASF_PARA
 	skills = /datum/skills/iasf
 
-/datum/equipment_preset/survivor/iasf/soldier/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/iasf/paratrooper/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/royal_marine/iasf/uniform = new()
 	var/random_number = rand(1,2)
 	switch(random_number)
@@ -73,7 +79,7 @@
 
 ///////////////////////////////////////////////////////////////////
 
-/datum/equipment_preset/survivor/iasf/sapper
+/datum/equipment_preset/survivor/iasf/engi
 	name = "Survivor - IASF Combat Engineer"
 	paygrades = list(PAY_SHORT_IASFE3 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Combat Engineer"
@@ -81,9 +87,9 @@
 
 	minimap_icon = "rmc_breacher"
 
-	skills = /datum/skills/iasf/breacher
+	skills = /datum/skills/iasf/engi
 
-/datum/equipment_preset/survivor/iasf/sapper/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/iasf/engi/load_gear(mob/living/carbon/human/new_human)
 
 	var/obj/item/clothing/under/marine/veteran/royal_marine/iasf/uniform = new()
 	var/R = rand(1,2)
@@ -98,6 +104,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/royal_marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 
 	..()
@@ -127,6 +136,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/rmc/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/p90/twe, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90/twe, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90/twe, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/rmc/medium/medic(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_IN_BACK)
@@ -146,11 +158,12 @@
 	skills = /datum/skills/iasf/pilot
 
 /datum/equipment_preset/survivor/iasf/pilot/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic (new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot (new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/iasf (new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer(new_human), WEAR_L_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/p90/twe, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90/twe, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90/twe, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 
 	..()
@@ -172,7 +185,9 @@
 /datum/equipment_preset/survivor/iasf/squad_leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/royal_marine/iasf (new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/rmc_f90, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/rmc_f90, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/iasf_beret/tl(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 
@@ -182,12 +197,12 @@
 
 /datum/equipment_preset/synth/survivor/iasf_synth
 	name = "Survivor - IASF - Support Synthetic"
+	assignment = "IASF - Support Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = ALL_SYNTH_LANGUAGES
-	assignment = "IASF - Support Synthetic"
-	rank = JOB_SYNTH_SURVIVOR
-	faction = FACTION_TWE
-	faction_group = list(FACTION_TWE, FACTION_SURVIVOR)
+	rank = JOB_TWE_IASF_PARA_SYNTH
+	faction = FACTION_IASF
+	faction_group = FACTION_LIST_SURVIVOR_IASF
 	skills = /datum/skills/colonial_synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
@@ -231,8 +246,9 @@
 /datum/equipment_preset/survivor/hybrisa/iasf_commander
 	name = "Survivor - IASF Commander"
 	assignment = "IASF - Commander"
-	faction_group = list(FACTION_TWE, FACTION_MARINE, FACTION_SURVIVOR)
-	skills = /datum/skills/commander
+	faction = FACTION_IASF
+	faction_group = FACTION_LIST_SURVIVOR_IASF
+	skills = /datum/skills/iasf/commander
 	paygrades = list(PAY_SHORT_IASFO5 = JOB_PLAYTIME_TIER_0)
 	rank = JOB_TWE_IASF_PARA_COMMANDER
 	minimap_icon = "rmc_commander"
@@ -252,6 +268,7 @@
 
 /datum/equipment_preset/survivor/hybrisa/iasf_commander/load_gear(mob/living/carbon/human/new_human)
 
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/black, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/brown, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/royal_marine(new_human), WEAR_HANDS)
@@ -263,10 +280,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain(new_human), WEAR_IN_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/iasf_commander_cap(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/iasf_para_belt/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_JACKET)
 
 	..()

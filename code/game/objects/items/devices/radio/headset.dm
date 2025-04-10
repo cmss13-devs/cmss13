@@ -1239,12 +1239,13 @@
 
 /obj/item/device/radio/headset/distress/iasf
 	name = "IASF Headset"
-	desc = "A sleek headset used by the IASF. Low profile enough to fit under their unique helmets."
+	desc = "A sleek headset used by the IASF. Low profile enough to fit under any headgear."
 	frequency = RMC_FREQ
 	icon_state = "vai_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/royal_marine)
 	has_hud = TRUE
-	hud_type = MOB_HUD_FACTION_TWE
+	hud_type = MOB_HUD_FACTION_IASF
+	additional_hud_types = list(MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_IMPORTANT
 
 //CMB Headsets

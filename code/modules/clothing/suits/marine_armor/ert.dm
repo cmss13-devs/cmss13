@@ -771,7 +771,7 @@
 	desc = "A lightweight, high-mobility flak vest designed for the Imperial Armed Space Force’s airborne troops. Developed by Alphatech, the Goshawk offers crucial protection while ensuring paratroopers retain full freedom of movement during high-risk insertions. Advanced composite plating and reinforced webbing make it effective against shrapnel and small-arms fire, striking the perfect balance between defense and agility for those who strike fast and strike hard."
 	icon_state = "iasf_light"
 	item_state = "iasf_light"
-	storage_slots = 4
+	storage_slots = 3
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW // Goon stats
 	armor_bullet = CLOTHING_ARMOR_MEDIUM

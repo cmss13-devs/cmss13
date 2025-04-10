@@ -1,6 +1,6 @@
 /datum/faction/iasf
-	name = "IASF Paratrooper"
-	faction_tag = FACTION_TWE
+	name = "TWE - Imperial Armed Space Force"
+	faction_tag = FACTION_IASF
 
 /datum/faction/iasf/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
@@ -33,5 +33,9 @@
 			hud_icon_state = "commander"
 		if(JOB_TWE_IASF_PARA_MAJOR)
 			hud_icon_state = "major"
+		if (JOB_TWE_IASF_PARA_COMMANDER)
+			hud_icon_state = "commander"
+		if (JOB_TWE_IASF_PARA_SYNTH)
+			hud_icon_state = "synth"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "iasf_[hud_icon_state]")

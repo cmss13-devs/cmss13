@@ -45,6 +45,7 @@
 	var/list/synth_survivor_types_by_variant
 
 	var/list/CO_survivor_types
+	var/list/CO_survivor_types_by_variant
 
 	var/list/defcon_triggers = list(5150, 4225, 2800, 1000, 0.0)
 

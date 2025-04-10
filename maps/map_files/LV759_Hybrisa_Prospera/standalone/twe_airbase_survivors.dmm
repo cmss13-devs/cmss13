@@ -155,6 +155,7 @@
 /area/lv759/indoors/twe_souter_outpost/reception)
 "aM" = (
 /obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "aT" = (
@@ -444,9 +445,7 @@
 	dir = 4;
 	pixel_y = 1
 	},
-/obj/structure/barricade/sandbags/wired{
-	pixel_y = -2
-	},
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/prison/darkred2/southwest,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "da" = (
@@ -641,6 +640,12 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	health = 140;
+	icon_state = "folding_2";
+	pixel_y = 2
+	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "dU" = (
@@ -861,6 +866,7 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
+/obj/item/shard,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "fE" = (
@@ -1038,6 +1044,13 @@
 	layer = 4
 	},
 /turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"hb" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "hc" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -1431,6 +1444,7 @@
 /obj/structure/window_frame/hybrisa/marshalls/reinforced,
 /obj/item/shard,
 /obj/item/shard,
+/obj/item/shard,
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/reception)
 "kP" = (
@@ -1439,6 +1453,10 @@
 	welded = 1
 	},
 /obj/structure/window/framed/hybrisa/marshalls/reinforced,
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	pixel_x = -11
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost)
 "kQ" = (
@@ -2072,6 +2090,13 @@
 /obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
+"nU" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	pixel_x = -11
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
 "nX" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -2953,6 +2978,10 @@
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "zo" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/item/ammo_magazine/smg/p90/twe{
+	pixel_x = 2;
+	pixel_y = 5
+	},
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "zr" = (
@@ -3119,6 +3148,8 @@
 	pixel_x = 3;
 	pixel_y = 27
 	},
+/obj/item/shard,
+/obj/item/shard,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Be" = (
@@ -3464,6 +3495,7 @@
 "EY" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/item/stack/rods,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "EZ" = (
@@ -3905,7 +3937,8 @@
 	dir = 8
 	},
 /obj/structure/barricade/sandbags/wired{
-	dir = 8
+	dir = 8;
+	pixel_y = 2
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -4092,9 +4125,7 @@
 /area/lv759/indoors/twe_souter_outpost/maint)
 "Li" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/structure/barricade/sandbags/wired{
-	pixel_y = -2
-	},
+/obj/structure/barricade/deployable,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "LD" = (
@@ -4115,6 +4146,7 @@
 	pixel_x = 16;
 	pixel_y = 9
 	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Mp" = (
@@ -4426,9 +4458,7 @@
 	dir = 8;
 	pixel_y = 1
 	},
-/obj/structure/barricade/sandbags/wired{
-	pixel_y = -2
-	},
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/prison/darkred2/northeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "Qv" = (
@@ -4545,7 +4575,9 @@
 /turf/open/floor/prison/darkred2/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "Sk" = (
-/obj/structure/barricade/sandbags/wired,
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -2
+	},
 /turf/open/hybrisa/street/sidewalk/southeast,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Sn" = (
@@ -4572,9 +4604,17 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/obj/structure/barricade/sandbags/wired,
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -2
+	},
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"SH" = (
+/obj/structure/window_frame/hybrisa/marshalls/reinforced,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/reception)
 "SP" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
@@ -4859,7 +4899,8 @@
 	damage_state = 2;
 	dir = 8;
 	health = 140;
-	icon_state = "folding_2"
+	icon_state = "folding_2";
+	pixel_y = 2
 	},
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
@@ -5012,6 +5053,8 @@
 /area/lv759/indoors/twe_souter_outpost)
 "Xi" = (
 /obj/item/ammo_casing/bullet,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Xj" = (
@@ -5169,6 +5212,11 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/reception)
+"Zn" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
 "Zr" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
@@ -5240,6 +5288,9 @@
 	pixel_y = 8
 	},
 /obj/item/shard,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 
@@ -5352,7 +5403,7 @@ dS
 aM
 DD
 Bq
-Wq
+Zn
 Tt
 uK
 hy
@@ -5475,11 +5526,11 @@ Ak
 Ak
 Ak
 kK
-kK
+SH
 Ak
 Ak
 iD
-sB
+nU
 kP
 iD
 uK
@@ -5649,7 +5700,7 @@ kc
 zR
 Tz
 ac
-gA
+hb
 Qt
 ab
 VQ

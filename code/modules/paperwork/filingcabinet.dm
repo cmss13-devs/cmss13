@@ -164,6 +164,14 @@
 		if(istype(attacked_item, allowed_type))
 			var/obj/item/paper/research_report/document_report = attacked_item
 			if(document_report.valid_report && !isnull(document_report.data))
+				var/duplicate = FALSE
+				for(var/obj/item/paper/research_report/document_inside in paper_contents)
+					if(document_inside.data.id == document_report.data.id)
+						duplicate = TRUE
+						to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but there is identical document already in the array."))
+						break
+				if(duplicate)
+					return
 				to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
 				user.drop_inv_item_to_loc(attacked_item, src)
 				LAZYADD(paper_contents, attacked_item)

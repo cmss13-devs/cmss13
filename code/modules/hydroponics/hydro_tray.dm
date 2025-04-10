@@ -129,7 +129,7 @@
 
 	// Other plants also mutate if enough mutagenic compounds have been added.
 	if(!seed.immutable)
-		if(prob(min(max(mutation_level, 2)/2, 100)))
+		if(prob(min(max(mutation_level, 0), 100)))
 			mutate((rand(100) < 15) ? 2 : 1, mutation_level)
 			mutation_level = 0
 

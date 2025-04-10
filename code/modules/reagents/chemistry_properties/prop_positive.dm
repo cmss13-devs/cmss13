@@ -229,7 +229,7 @@
 /datum/chem_property/positive/musclestimulating
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
-	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
+	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength, this provides increase in carry weight increase at zero cost of speed. High doses might exhaust the cardiac muscles."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 

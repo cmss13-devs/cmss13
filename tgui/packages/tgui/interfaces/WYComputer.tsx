@@ -20,14 +20,14 @@ type Data = {
   last_page: string;
   access_text: string;
   logged_in: string;
-  access_level: BooleanLike;
+  access_level: number;
   has_hidden_cell: BooleanLike;
   has_room_divider: BooleanLike;
   open_divider: BooleanLike;
   open_cell_door: BooleanLike;
   open_cell_shutters: BooleanLike;
-  cell_flash_cooldown: BooleanLike;
-  sec_flash_cooldown: BooleanLike;
+  cell_flash_cooldown: number;
+  sec_flash_cooldown: number;
   security_vents: VentRecord[];
 };
 
@@ -176,7 +176,7 @@ const MainMenu = (props) => {
       </Section>
 
       <Section>
-        <h1 align="center">Navigation Menu</h1>
+        <h1 style={{ textAlign: 'center' }}>Navigation Menu</h1>
 
         {access_level >= 4 && (
           <Stack>
@@ -201,7 +201,7 @@ const MainMenu = (props) => {
       </Section>
       {(access_level === 3 || access_level >= 5) && (
         <Section>
-          <h1 align="center">Security Protocols</h1>
+          <h1 style={{ textAlign: 'center' }}>Security Protocols</h1>
           {!!has_room_divider && !has_hidden_cell && (
             <Button.Confirm
               align="center"
@@ -251,7 +251,7 @@ const MainMenu = (props) => {
       )}
       {(access_level === 3 || access_level >= 5) && !!has_hidden_cell && (
         <Section>
-          <h1 align="center">Hidden Cell Controls</h1>
+          <h1 style={{ textAlign: 'center' }}>Hidden Cell Controls</h1>
           {!!has_room_divider && (
             <Button.Confirm
               align="center"
@@ -367,7 +367,7 @@ const SecVents = (props) => {
       </Section>
 
       <Section>
-        <h1 align="center">Security Vent Controls</h1>
+        <h1 style={{ textAlign: 'center' }}>Security Vent Controls</h1>
       </Section>
       <Section>
         {security_vents.map((vent, i) => {

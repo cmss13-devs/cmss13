@@ -452,6 +452,15 @@
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
+"abe" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/cells)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -10500,6 +10509,11 @@
 	pixel_x = 8;
 	pixel_y = 16
 	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 29;
+	pixel_x = -4;
+	layer = 2.9
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/numbertwobunks)
 "aBM" = (
@@ -14534,6 +14548,11 @@
 	name = "Brig Lockdown Shutters";
 	pixel_y = 24;
 	req_access_txt = "3"
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27;
+	pixel_x = 19;
+	layer = 2.9
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/brig/chief_mp_office)
@@ -22444,6 +22463,11 @@
 /area/almayer/shipboard/brig/cryo)
 "cuq" = (
 /obj/structure/machinery/computer/arcade,
+/obj/structure/machinery/alarm/almayer{
+	dir = 1;
+	pixel_x = 31;
+	pixel_y = -6
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "cus" = (
@@ -33594,6 +33618,9 @@
 	pixel_y = 3;
 	pixel_x = -10
 	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/hydroponics)
 "hnt" = (
@@ -34279,8 +34306,9 @@
 /turf/open/floor/almayer/greencorner/east,
 /area/almayer/hallways/lower/port_fore_hallway)
 "hEl" = (
-/obj/structure/machinery/alarm/almayer{
-	dir = 1
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29;
+	pixel_x = -12
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -34884,9 +34912,6 @@
 /obj/structure/sign/safety/synth_storage{
 	pixel_x = 8;
 	pixel_y = 36
-	},
-/obj/item/frame/light_fixture/small{
-	pixel_y = 17
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)
@@ -35638,6 +35663,10 @@
 /obj/item/tool/pen/blue/clicky{
 	pixel_x = -6;
 	pixel_y = -3
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 30;
+	pixel_x = 2
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
@@ -36631,6 +36660,9 @@
 /obj/item/clipboard,
 /obj/item/device/flash,
 /obj/item/device/binoculars,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "iKI" = (
@@ -44075,6 +44107,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cic_hallway)
 "lPO" = (
+/obj/structure/noticeboard{
+	pixel_y = 31
+	},
 /turf/open/floor/almayer/plating_stripedcorner/north,
 /area/almayer/command/securestorage)
 "lPY" = (
@@ -47769,11 +47804,16 @@
 	pixel_y = 11
 	},
 /obj/structure/sign/ROcreed{
-	pixel_y = 30
+	pixel_y = 30;
+	pixel_x = -3
 	},
 /obj/item/device/flashlight/lamp{
 	pixel_y = -11;
 	pixel_x = 7
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 31;
+	pixel_x = 20
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
@@ -50122,6 +50162,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/computerlab)
 "oqw" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 30;
+	pixel_x = 2;
+	layer = 2.9
+	},
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18";
 	pixel_y = 18;
@@ -51486,9 +51531,6 @@
 	name = "broken M57 'Larry's Will' smartgun";
 	pixel_x = -7;
 	pixel_y = 3
-	},
-/obj/item/frame/light_fixture/small{
-	pixel_y = 17
 	},
 /obj/structure/machinery/door_control{
 	id = "crate_room4";
@@ -55165,6 +55207,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "qyZ" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
+	},
 /turf/open/floor/almayer/silver/northwest,
 /area/almayer/command/securestorage)
 "qzc" = (
@@ -61497,7 +61542,8 @@
 /area/almayer/squads/req)
 "tiF" = (
 /obj/structure/machinery/keycard_auth{
-	pixel_y = 25
+	pixel_y = 27;
+	pixel_x = 8
 	},
 /obj/structure/filingcabinet/documentation/military_police{
 	pixel_y = 16;
@@ -62622,7 +62668,7 @@
 "tFS" = (
 /obj/structure/machinery/computer/supply/asrs,
 /obj/structure/sign/safety/terminal{
-	pixel_x = 8;
+	pixel_x = 16;
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/green/north,
@@ -70221,7 +70267,6 @@
 	req_access_txt = "26"
 	},
 /obj/structure/sign/safety/hvac_old{
-	pixel_x = 8;
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/cargo,
@@ -73598,6 +73643,9 @@
 /obj/structure/surface/table/almayer,
 /obj/item/pizzabox/margherita{
 	pixel_y = 8
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 27
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
@@ -84184,7 +84232,7 @@ xkd
 uvY
 duT
 xkd
-eZH
+abe
 jVa
 jVa
 moB

@@ -605,6 +605,13 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/lv522/indoors/b_block/bar)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -9801,6 +9808,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "flN" = (
@@ -20570,6 +20580,10 @@
 /area/lv522/indoors/a_block/security)
 "kZe" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29;
+	pixel_x = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo)
 "kZj" = (
@@ -34188,12 +34202,11 @@
 /area/lv522/outdoors/colony_streets/south_street)
 "rSG" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = 5;
-	pixel_y = -6
+	pixel_x = 2
 	},
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = 10
+	pixel_x = -13;
+	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -41505,8 +41518,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "vyD" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = -6
+	pixel_x = -6
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/bar)
@@ -59659,7 +59671,7 @@ jaO
 lYR
 wmI
 mBF
-wDy
+aco
 hds
 mBF
 mBF

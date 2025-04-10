@@ -211,13 +211,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/nw)
-"dV" = (
-/obj/item/trash/pistachios{
-	pixel_x = -3;
-	pixel_y = 11
-	},
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/nw)
 "ee" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4
@@ -4263,7 +4256,7 @@ DO
 VT
 nl
 nl
-nl
+ZX
 nl
 Zo
 Zo
@@ -4620,7 +4613,7 @@ so
 um
 Yn
 ak
-dV
+so
 VA
 so
 vA

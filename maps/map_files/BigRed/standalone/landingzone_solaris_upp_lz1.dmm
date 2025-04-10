@@ -699,10 +699,6 @@
 /area/event/metal/dynamic/lit)
 "tb" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/roller_holder,
-/obj/item/roller_holder,
-/obj/item/roller_holder,
-/obj/item/roller_holder,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -899,6 +895,7 @@
 /turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/s)
 "xu" = (
+/obj/structure/bed/roller,
 /turf/open/floor/white,
 /area/event/metal/dynamic/lit)
 "xD" = (

@@ -2205,6 +2205,13 @@
 	pixel_x = -1;
 	pixel_y = 30
 	},
+/obj/item/prop/tableflag/uscm{
+	pixel_x = 12;
+	pixel_y = 17;
+	layer = 3.2;
+	name = "TWE table flag";
+	desc = "A miniature table flag bearing the insignia of the Three World Empire, representing the unity of Earth, Mars, and Titan."
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "sN" = (
@@ -2921,13 +2928,19 @@
 /turf/open/floor/almayer/floor,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Dh" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3"
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
 	},
-/obj/effect/decal/hybrisa/road/lines3,
-/obj/effect/decal/hybrisa/road/lines1,
-/turf/open/hybrisa/street/asphalt,
-/area/lv759/outdoors/colony_streets/north_west_street)
+/obj/structure/reagent_dispensers/fueltank/spacecraft{
+	layer = 3.1
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/twe_souter_outpost/hangar)
 "Di" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
@@ -4337,13 +4350,6 @@
 /obj/structure/largecrate/empty/case/double,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/north_west_street)
-"VC" = (
-/obj/structure/machinery/colony_floodlight/traffic/alt{
-	dir = 4;
-	pixel_y = 12
-	},
-/turf/open/hybrisa/street/sidewalk/north,
-/area/lv759/outdoors/colony_streets/north_west_street)
 "VD" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -4740,8 +4746,8 @@ fZ
 fZ
 "}
 (2,1,1) = {"
-Dh
-VC
+fZ
+Tb
 DF
 CE
 gb
@@ -5682,7 +5688,7 @@ xl
 xl
 xl
 hc
-hc
+Dh
 xl
 xl
 xl

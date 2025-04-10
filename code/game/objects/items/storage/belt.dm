@@ -2665,8 +2665,8 @@
 /obj/item/storage/belt/gun/l54
 	name = "\improper pistol belt"
 	desc = "A dark brown leather pistol belt commonly issued to NSPA officers. Although designed for the L54 service pistol, it accommodates most sidearms along with spare magazines. Standard issue across TWE law enforcement, military, and security forces."
-	icon_state = "l54_pistol"
-	item_state = "l54_belt"
+	icon_state = "l54_holster"
+	item_state = "l54_holster"
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',

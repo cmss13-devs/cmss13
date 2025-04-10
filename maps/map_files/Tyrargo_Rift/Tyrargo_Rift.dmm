@@ -1,17 +1,17 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aab" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aac" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aad" = (
 /obj/effect/landmark/xeno_npc_spawn,
@@ -1942,7 +1942,7 @@
 "afS" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "afT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3258,6 +3258,9 @@
 /obj/item/stack/rods,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northwest,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"ajp" = (
+/turf/open/gm/river/desert/tyrargo/deep,
+/area/tyrargo/oob)
 "ajq" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northeast,
@@ -14560,7 +14563,7 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "aLf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14857,7 +14860,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "aMl" = (
 /obj/structure/machinery/light/small{
@@ -18145,6 +18148,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
+"aTb" = (
+/turf/open/gm/river/desert/deep/no_slowdown,
+/area/tyrargo/indoors/sewer_treatment/lower)
 "aTc" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_3";
@@ -25422,7 +25428,7 @@
 /turf/open/floor/corsat/marked,
 /area/tyrargo/underground/bunker/north)
 "bgQ" = (
-/turf/open/gm/river/desert/deep/covered,
+/turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/oob)
 "bgR" = (
 /turf/open/asphalt,
@@ -25474,7 +25480,7 @@
 /area/tyrargo/landing_zone_2/road)
 "bgZ" = (
 /obj/structure/blocker/invisible_wall/water,
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "bha" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
@@ -26357,7 +26363,7 @@
 "biT" = (
 /obj/structure/blocker/invisible_wall/water,
 /obj/effect/decal/grass_overlay/grass1/dark,
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "biU" = (
 /obj/structure/tent/big,
@@ -43003,7 +43009,7 @@
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVz" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -43341,14 +43347,14 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bWG" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bWH" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
@@ -43383,7 +43389,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bWO" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -43681,11 +43687,11 @@
 "bXF" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXG" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXH" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -43800,12 +43806,12 @@
 "bXT" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXU" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXV" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
@@ -43819,11 +43825,11 @@
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXW" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXX" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXY" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -44305,7 +44311,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "bZw" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44620,7 +44626,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = 10
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "cap" = (
 /turf/open/floor/corsat/blue/north,
@@ -44632,14 +44638,14 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = 10
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "car" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cas" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44649,7 +44655,7 @@
 "cat" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cau" = (
 /turf/closed/wall/wood,
@@ -44681,7 +44687,7 @@
 	layer = 2.98;
 	dir = 4
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cax" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
@@ -44726,7 +44732,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caF" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
@@ -44735,22 +44741,22 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caG" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caH" = (
 /obj/structure/platform/stone/hybrisa/rockdark,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caI" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caJ" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -44784,14 +44790,14 @@
 "caP" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caQ" = (
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caR" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caS" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44805,7 +44811,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caV" = (
 /turf/open/floor/corsat,
@@ -44814,18 +44820,18 @@
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caX" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caY" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caZ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44868,7 +44874,7 @@
 	pixel_y = -1;
 	dir = 8
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cbc" = (
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -44912,7 +44918,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cbk" = (
 /turf/closed/wall/r_wall/bunker/floodgate{
@@ -44978,7 +44984,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/east,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cbv" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -45031,7 +45037,7 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cbF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -45181,7 +45187,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "ccf" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
@@ -45190,7 +45196,7 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "ccg" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
@@ -45198,7 +45204,7 @@
 	},
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cch" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
@@ -45207,7 +45213,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark,
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cci" = (
 /obj/effect/decal/warning_stripes{
@@ -45238,7 +45244,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "ccm" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
@@ -45404,7 +45410,7 @@
 	pixel_x = 4;
 	pixel_y = 7
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "ccI" = (
 /obj/structure/prop/invuln/overhead_pipe{
@@ -45789,7 +45795,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cdG" = (
 /obj/structure/ore_box,
@@ -45841,7 +45847,7 @@
 	pixel_x = 4;
 	pixel_y = -2
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cdO" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -45897,7 +45903,7 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = 10
 	},
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cdY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -46116,7 +46122,7 @@
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "ceG" = (
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
 "ceH" = (
 /obj/effect/landmark/objective_landmark/far,
@@ -46138,7 +46144,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "ceN" = (
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "ceO" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -47279,7 +47285,7 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "ciY" = (
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/underground)
 "ciZ" = (
 /obj/effect/decal/cleanable/generic,
@@ -49063,6 +49069,9 @@
 /obj/structure/stairs,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/apartment/north_ground)
+"cpE" = (
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
+/area/tyrargo/oob)
 "cpF" = (
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
@@ -49275,6 +49284,9 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
+"cqy" = (
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/oob)
 "cqz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement,
@@ -54761,7 +54773,7 @@
 	pixel_y = 5;
 	density = 0
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
 "cJT" = (
 /turf/open/gm/river/desert/shallow_edge/east,
@@ -54782,7 +54794,7 @@
 	pixel_x = 7;
 	density = 0
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
 "cJW" = (
 /obj/structure/floodgate{
@@ -54827,7 +54839,7 @@
 /obj/structure/prop/rock{
 	density = 0
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
 "cKe" = (
 /turf/open/gm/river/desert/shallow_corner,
@@ -54853,7 +54865,7 @@
 	icon_state = "brown_alt";
 	density = 0
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
 "cKj" = (
 /obj/structure/prop/rock{
@@ -54871,7 +54883,7 @@
 	pixel_y = -1;
 	density = 0
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/outdoors/outskirts/river)
 "cKl" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -59871,7 +59883,7 @@
 /area/tyrargo/oob)
 "cYR" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "cYS" = (
 /turf/open/floor/prison/darkyellow2/west,
@@ -59893,7 +59905,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "cYV" = (
 /turf/open/floor/prison/darkyellow2/east,
@@ -59921,7 +59933,7 @@
 	desc = "A huge rock pileup. It's looks unstable, best not touch it.";
 	name = "huge rock pileup"
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "cYY" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
@@ -59962,7 +59974,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground)
 "cZg" = (
-/turf/open/gm/river/desert/deep/covered,
+/turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/underground)
 "cZh" = (
 /obj/effect/decal/cleanable/dirt,
@@ -60479,7 +60491,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "daL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -61524,17 +61536,17 @@
 /area/tyrargo/oob)
 "ddO" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "ddP" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "ddQ" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/east,
-/turf/open/gm/river/no_overlay/sewage,
+/turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "ddR" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
@@ -63199,7 +63211,7 @@
 /obj/structure/floodgate{
 	icon_state = "0,2"
 	},
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/oob)
 "dib" = (
 /obj/structure/girder,
@@ -66265,7 +66277,7 @@
 /turf/open/floor/strata/cyan4/north,
 /area/tyrargo/underground)
 "iFy" = (
-/turf/open/gm/river/desert/deep,
+/turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/oob)
 "iFB" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -98187,7 +98199,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -98369,7 +98381,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -98551,7 +98563,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -98733,7 +98745,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -98915,7 +98927,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -99097,7 +99109,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -99279,7 +99291,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -99461,7 +99473,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -99643,7 +99655,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -99825,7 +99837,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -100007,7 +100019,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -100061,9 +100073,9 @@ bsw
 ahW
 bFL
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 bFL
 ahW
@@ -100189,7 +100201,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -100243,9 +100255,9 @@ ahW
 ahW
 bgJ
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 bgE
 ahW
@@ -100371,7 +100383,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -100425,9 +100437,9 @@ anA
 iVJ
 hNj
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 jxl
 bvP
@@ -100553,7 +100565,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -100607,9 +100619,9 @@ anA
 iVJ
 hNj
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 jxl
 bvP
@@ -100735,7 +100747,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -100789,9 +100801,9 @@ anA
 iVJ
 hNj
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 jxl
 bvP
@@ -100917,7 +100929,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -100971,9 +100983,9 @@ anA
 iVJ
 hNj
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 jxl
 bvP
@@ -101099,7 +101111,7 @@ bgG
 bgG
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -101153,9 +101165,9 @@ anA
 iVJ
 hNj
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 jxl
 bvP
@@ -101281,7 +101293,7 @@ bgG
 bgG
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -101335,9 +101347,9 @@ anA
 iVJ
 hNj
 cYB
-ceN
-ceN
-ceN
+aTb
+aTb
+aTb
 cYA
 jxl
 bvP
@@ -101463,7 +101475,7 @@ bgG
 bgG
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgD
@@ -101645,7 +101657,7 @@ pQM
 bgG
 bgD
 eMV
-iFy
+ajp
 eMV
 eMV
 bgD
@@ -101827,8 +101839,8 @@ pQM
 bgG
 bgD
 eMV
-iFy
-iFy
+ajp
+ajp
 eMV
 eMV
 eMV
@@ -102009,46 +102021,46 @@ pQM
 bgC
 bgD
 eMV
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
 bgQ
 bgQ
 bgQ
-iFy
-iFy
-iFy
-iFy
+ajp
+ajp
+ajp
+ajp
 bgQ
 bgQ
 bgQ
-iFy
-iFy
-iFy
-iFy
+ajp
+ajp
+ajp
+ajp
 bgQ
 bgQ
 bgQ
-iFy
-iFy
-iFy
-iFy
-iFy
+ajp
+ajp
+ajp
+ajp
+ajp
 bgQ
 bgQ
 bgD
@@ -102191,8 +102203,8 @@ bgC
 bgC
 bgD
 eMV
-iFy
-iFy
+ajp
+ajp
 eMV
 eMV
 eMV
@@ -102373,7 +102385,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 eMV
 bgD
@@ -102555,7 +102567,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgD
@@ -102597,7 +102609,7 @@ bgC
 eMV
 hjg
 bgD
-iFy
+ajp
 bgD
 iez
 bgC
@@ -102737,7 +102749,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 eMV
 bgC
@@ -102779,7 +102791,7 @@ bgC
 bgC
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 dis
@@ -102919,7 +102931,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 eMV
 bgC
@@ -102961,7 +102973,7 @@ bsw
 bgC
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 dis
@@ -103101,7 +103113,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -103143,7 +103155,7 @@ bsw
 bgC
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bgC
@@ -103283,7 +103295,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -103465,7 +103477,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -103647,7 +103659,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -103689,7 +103701,7 @@ bgC
 bgC
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bgC
@@ -103829,7 +103841,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -103871,7 +103883,7 @@ bgC
 fIx
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 dis
@@ -104011,7 +104023,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -104053,7 +104065,7 @@ bgC
 fIx
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 dis
@@ -104193,7 +104205,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -104235,7 +104247,7 @@ bgC
 bgC
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bgC
@@ -104375,7 +104387,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -104557,7 +104569,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -104739,7 +104751,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -104921,7 +104933,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -105103,7 +105115,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -105145,7 +105157,7 @@ bta
 fIx
 qVt
 daH
-iFy
+ajp
 daH
 iez
 dau
@@ -105285,7 +105297,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -105467,7 +105479,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -105649,7 +105661,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -105831,7 +105843,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -106013,7 +106025,7 @@ bgC
 bgD
 bgD
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -106079,19 +106091,19 @@ cZg
 cZg
 ciY
 ciY
-iFy
+ajp
 cYX
 cYU
 cYR
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
 bgD
 bgC
 bsw
@@ -106195,7 +106207,7 @@ bgD
 bgD
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -106376,8 +106388,8 @@ eMV
 eMV
 eMV
 eMV
-iFy
-iFy
+ajp
+ajp
 eMV
 bgD
 bgC
@@ -106531,35 +106543,35 @@ bsw
 bsw
 bgC
 bgD
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
-iFy
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
+ajp
 eMV
 bgD
 bgC
@@ -106740,8 +106752,8 @@ eMV
 eMV
 eMV
 eMV
-iFy
-iFy
+ajp
+ajp
 eMV
 bgD
 bgC
@@ -106923,7 +106935,7 @@ bgD
 bgD
 eMV
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -107105,7 +107117,7 @@ bgC
 bgD
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -107287,7 +107299,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -107469,7 +107481,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -107651,7 +107663,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -107833,7 +107845,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -108015,7 +108027,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -108197,7 +108209,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -108379,7 +108391,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -108561,7 +108573,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -108743,7 +108755,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -108925,7 +108937,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -109107,7 +109119,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -109289,7 +109301,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -109471,7 +109483,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -109653,7 +109665,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -109835,7 +109847,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -110017,7 +110029,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -110199,7 +110211,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -110381,7 +110393,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -110563,7 +110575,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -110745,7 +110757,7 @@ bsw
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -110927,7 +110939,7 @@ bgC
 bgC
 bgD
 eMV
-iFy
+ajp
 eMV
 bgD
 bgC
@@ -111109,7 +111121,7 @@ bgC
 oyg
 eMV
 eMV
-iFy
+ajp
 eMV
 eMV
 mAQ
@@ -111837,7 +111849,7 @@ bsw
 bta
 mAQ
 bgD
-iFy
+ajp
 bgD
 oyg
 bta
@@ -114749,7 +114761,7 @@ bsw
 bta
 dcu
 bgD
-iFy
+ajp
 cYY
 dcl
 bta
@@ -115113,7 +115125,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -115155,7 +115167,7 @@ cLT
 bta
 qVt
 bgD
-iFy
+ajp
 cYY
 iez
 bta
@@ -115295,7 +115307,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -115477,7 +115489,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -115519,7 +115531,7 @@ bsw
 bta
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bta
@@ -115659,7 +115671,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -115701,7 +115713,7 @@ bsw
 bta
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bta
@@ -115841,7 +115853,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -115883,7 +115895,7 @@ bsw
 bta
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bta
@@ -116023,7 +116035,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -116065,7 +116077,7 @@ bsw
 bta
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bta
@@ -116205,7 +116217,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -116247,7 +116259,7 @@ bsw
 bta
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bta
@@ -116387,7 +116399,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -116429,7 +116441,7 @@ bsw
 bta
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bta
@@ -116569,7 +116581,7 @@ bsw
 bgC
 dcu
 bgD
-iFy
+ajp
 bgD
 dcl
 bgC
@@ -116611,7 +116623,7 @@ bsw
 bta
 qVt
 bgD
-iFy
+ajp
 bgD
 iez
 bta
@@ -141059,14 +141071,14 @@ buc
 bsZ
 bsZ
 bsZ
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cpE
+cpE
 bsZ
 bsZ
 bsZ
@@ -141241,14 +141253,14 @@ buc
 buc
 bsZ
 bsZ
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cpE
+cpE
 bsZ
 bsZ
 bsZ
@@ -141423,14 +141435,14 @@ buc
 buc
 bsZ
 bsZ
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cpE
+cpE
 bsZ
 bsZ
 bsw
@@ -141605,14 +141617,14 @@ buc
 buc
 buc
 bsZ
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cpE
+cpE
 bsZ
 bsZ
 bsw
@@ -141969,14 +141981,14 @@ buc
 buc
 buc
 buc
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cqy
+cqy
 bsZ
 bsZ
 bsw
@@ -142151,14 +142163,14 @@ buc
 buc
 buc
 buc
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cqy
+cqy
 bsZ
 bsZ
 bsw
@@ -142333,14 +142345,14 @@ bsZ
 buc
 buc
 buc
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cqy
+cqy
 bsZ
 bsw
 bsw
@@ -142515,14 +142527,14 @@ bsZ
 buc
 buc
 buc
-buc
+bgQ
+bgQ
 bsZ
+ajp
+ajp
 bsZ
-bsZ
-bsZ
-bsZ
-bsZ
-bsZ
+cqy
+cqy
 bsZ
 bsw
 bsw

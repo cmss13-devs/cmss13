@@ -19,7 +19,6 @@ $background-color: hsla(0, 0%, 0%, 0.33) !default;
 .StripMenu__iconbox {
   height: 100%;
   width: 100%;
-  -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
   vertical-align: middle;
 }

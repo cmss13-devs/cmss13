@@ -54,6 +54,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		alert.delink()
 	..()
 
+
 /* BELOW ARE IN AdminAres.dm
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)
 /datum/ares_link/ui_data(mob/user)

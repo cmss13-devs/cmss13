@@ -565,7 +565,7 @@
 
 	if(length(R.required_reagents) > 2 && !recipe_targets[recipe_target]) //we only replace if the recipe isn't small and the target is not set TRUE to being elevated
 		LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
-	R.add_component(recipe_target)
+	R.add_component(recipe_target, text2num(pick_weight(list("1" = 30, "2" = 15, "3" = 15, "4" = 5))))
 
 	//Handle new overdose
 	C.overdose = new_od_level

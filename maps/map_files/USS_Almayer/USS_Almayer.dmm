@@ -26778,11 +26778,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/lobby)
 "epJ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
 /obj/structure/disposalpipe/junction{
 	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -29124,14 +29124,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"fnH" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 1;
-	vent_tag = "WY Liaison Office";
-	network_id = "CL_Security"
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "fnI" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
@@ -30323,9 +30315,6 @@
 /area/almayer/command/airoom)
 "fQS" = (
 /obj/structure/bed/chair/comfy/orange,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -30337,6 +30326,9 @@
 	pixel_x = -15;
 	pixel_y = 30;
 	mouse_opacity = 0
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -38931,10 +38923,12 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/hallways/lower/port_midship_hallway)
 "jDO" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/light,
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	dir = 8;
+	vent_tag = "WY Liaison Quarters";
+	network_id = "CL_Security"
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "jEA" = (
@@ -39243,10 +39237,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/starboard)
-"jML" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "jMQ" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -46106,11 +46096,6 @@
 	},
 /obj/structure/machinery/door_control/cl/quarter/backdoor{
 	pixel_x = 25
-	},
-/obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 8;
-	vent_tag = "WY Liaison Quarters";
-	network_id = "CL_Security"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -56995,6 +56980,11 @@
 	pixel_y = 3
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	dir = 1;
+	vent_tag = "WY Liaison Office";
+	network_id = "CL_Security"
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "rlZ" = (
@@ -106315,9 +106305,9 @@ kVV
 vQR
 vQR
 epJ
-jML
-jML
-fnH
+eAN
+eAN
+eAN
 dbM
 rLv
 pRy
@@ -107938,7 +107928,7 @@ fKh
 eYn
 nQA
 nQA
-vEG
+eAN
 mlP
 eAN
 eAN
@@ -108141,7 +108131,7 @@ fKh
 wvo
 nQA
 nQA
-vEG
+eAN
 pBG
 skR
 oxc
@@ -108344,7 +108334,7 @@ fKh
 lDa
 eAN
 eAN
-vEG
+eAN
 pBG
 pBG
 pBG
@@ -108547,7 +108537,7 @@ pBG
 aGs
 eAN
 eAN
-vEG
+eAN
 vrJ
 xOs
 kOH

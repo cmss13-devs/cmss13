@@ -489,6 +489,13 @@
 	name = "USASF Airbase Anderson - Underground Cave Network"
 	requires_power = FALSE
 
+// Underground Sewer
+
+/area/tyrargo/underground/sewer
+	name = "City Sewer"
+	icon_state = "security"
+	minimap_color = MINIMAP_AREA_COMMS
+
 // Saipan
 
 /area/tyrargo/indoors/saipan

@@ -411,6 +411,55 @@
 	desc = "An armband, worn by the rookie nurses to display they are still not doctors. This one is dark red."
 	icon_state = "nurse"
 
+/obj/item/clothing/accessory/armband/squad
+	name = "squad armband"
+	desc = "An armband in squad colors, worn for ease of idenfication."
+	icon_state = "armband_squad"
+	var/dummy_icon_state = "armband_%SQUAD%"
+	var/static/list/valid_icon_states
+	item_state_slots = null
+
+/obj/item/clothing/accessory/armband/squad/Initialize(mapload, ...)
+	. = ..()
+	if(!valid_icon_states)
+		valid_icon_states = icon_states(icon)
+	adapt_to_squad()
+
+/obj/item/clothing/accessory/armband/squad/proc/update_clothing_wrapper(mob/living/carbon/human/wearer)
+	SIGNAL_HANDLER
+
+	var/is_worn_by_wearer = recursive_holder_check(src) == wearer
+	if(is_worn_by_wearer)
+		update_clothing_icon()
+	else
+		UnregisterSignal(wearer, COMSIG_SET_SQUAD)
+
+/obj/item/clothing/accessory/armband/squad/update_clothing_icon()
+	adapt_to_squad()
+
+/obj/item/clothing/accessory/armband/squad/pickup(mob/user, silent)
+	. = ..()
+	adapt_to_squad()
+
+/obj/item/clothing/accessory/armband/squad/equipped(mob/user, slot, silent)
+	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
+	adapt_to_squad()
+	return ..()
+
+/obj/item/clothing/accessory/armband/squad/proc/adapt_to_squad()
+	if(has_suit)
+		has_suit.overlays -= get_inv_overlay()
+	var/squad_color = "squad"
+	var/mob/living/carbon/human/wearer = recursive_holder_check(src)
+	if(istype(wearer) && wearer.assigned_squad)
+		var/squad_name = lowertext(wearer.assigned_squad.name)
+		if("armband_[squad_name]" in valid_icon_states)
+			squad_color = squad_name
+	icon_state = replacetext(initial(dummy_icon_state), "%SQUAD%", squad_color)
+	inv_overlay = image("icon" = inv_overlay_icon, "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
+	if(has_suit)
+		has_suit.overlays += get_inv_overlay()
+
 //patches
 /obj/item/clothing/accessory/patch
 	name = "USCM patch"
@@ -676,7 +725,7 @@
 	return ..()
 
 /obj/item/clothing/accessory/storage/clicked(mob/user, list/mods)
-	if(mods["alt"] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+	if(mods[ALT_CLICK] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		return
 	. = ..()
 
@@ -825,6 +874,8 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
 		/obj/item/stack/rods,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunkit,
 	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small
@@ -963,7 +1014,7 @@
 	hold = /obj/item/storage/internal/accessory/knifeharness
 
 /obj/item/clothing/accessory/storage/knifeharness/attack_hand(mob/user, mods)
-	if(!mods || !mods["alt"] || !length(hold.contents))
+	if(!mods || !mods[ALT_CLICK] || !length(hold.contents))
 		return ..()
 
 	hold.contents[length(contents)].attack_hand(user, mods)
@@ -1012,6 +1063,10 @@
 
 	hold = /obj/item/storage/internal/accessory/drop_pouch
 
+/obj/item/clothing/accessory/storage/droppouch/black
+	name = "black drop pouch"
+	icon_state = "drop_pouch_black"
+
 /obj/item/storage/internal/accessory/drop_pouch
 	w_class = SIZE_LARGE //Allow storage containers that's medium or below
 	storage_slots = null
@@ -1058,7 +1113,7 @@
 /obj/item/clothing/accessory/storage/holster/attack_hand(mob/user, mods)
 	var/obj/item/storage/internal/accessory/holster/H = hold
 	if(H.current_gun && ishuman(user) && (loc == user || has_suit))
-		if(mods && mods["alt"] && length(H.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+		if(mods && mods[ALT_CLICK] && length(H.contents) > 1) //Withdraw the most recently inserted magazine, if possible.
 			var/obj/item/I = H.contents[length(H.contents)]
 			if(isgun(I))
 				I = H.contents[length(H.contents) - 1]

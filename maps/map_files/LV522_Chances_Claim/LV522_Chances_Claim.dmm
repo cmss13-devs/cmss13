@@ -1543,7 +1543,7 @@
 /obj/item/trash/buritto,
 /obj/item/trash/wy_chips_pepper,
 /obj/item/trash/syndi_cakes,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "aGI" = (
@@ -8325,7 +8325,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/trash/liquidfood,
+/obj/item/trash/burger,
 /obj/item/stack/tile/plasteel{
 	name = "ceiling tile";
 	pixel_x = -5;
@@ -19384,7 +19384,7 @@
 /area/lv522/indoors/c_block/cargo)
 "kug" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/trash/pistachios,
+/obj/item/trash/hotdog,
 /obj/item/trash/kepler,
 /obj/item/trash/chips,
 /obj/item/trash/popcorn,
@@ -19584,7 +19584,7 @@
 "kzr" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/wy_chips_pepper,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "kzu" = (
@@ -19952,7 +19952,7 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/weapon/gun/flamer{
+/obj/item/weapon/gun/flamer/m240{
 	current_mag = null;
 	layer = 3.1
 	},
@@ -27316,7 +27316,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "oxK" = (
-/obj/structure/cargo_container/wy/left,
+/obj/structure/cargo_container/wy2/left,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/containers)
 "oyf" = (
@@ -28588,7 +28588,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/fitness/glass)
 "pjn" = (
-/obj/structure/cargo_container/wy/mid,
+/obj/structure/cargo_container/wy2/mid,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/containers)
 "pjM" = (
@@ -47042,7 +47042,7 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
 "yjN" = (
-/obj/structure/cargo_container/wy/right,
+/obj/structure/cargo_container/wy2/right,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/containers)
 "yjP" = (

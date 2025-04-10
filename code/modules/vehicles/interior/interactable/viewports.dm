@@ -22,6 +22,9 @@
 	M.reset_view(vehicle)
 	give_action(M, /datum/action/human_action/vehicle_unbuckle)
 
+/obj/structure/interior_viewport/wy
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+
 /obj/structure/interior_viewport/simple
 	name = "viewport"
 	desc = "Hey, I can see my base from here!"

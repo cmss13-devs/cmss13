@@ -48,7 +48,7 @@
 
 /obj/structure/machinery/computer/wy_intranet/Destroy()
 	targets = null
-	..()
+	. = ..()
 
 /obj/structure/machinery/computer/wy_intranet/proc/get_targets()
 	targets = list()

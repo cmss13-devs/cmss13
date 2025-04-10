@@ -40,7 +40,7 @@
 			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H)) //base human checks
 				targets.Remove(H)
 				continue
-			if(is_mainship_level(H.z)) // People on ship see everything
+			if(is_mainship_level(H.z) && istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash )) // People on ship see everything, unless it is faction clash
 				continue
 
 			// If they have iff AND a marine headset they will recieve announcements
@@ -129,10 +129,11 @@
 //to ensure that all humans on ship hear it regardless of comms and power
 /proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature, ares_logging = ARES_LOG_MAIN, quiet = FALSE)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/target in targets)
+	for(var/mob/target as anything in targets)
 		if(isobserver(target))
 			continue
-		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target.z))
+		var/turf/target_turf = get_turf(target)
+		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target_turf?.z))
 			targets.Remove(target)
 
 	if(!isnull(signature))
@@ -156,7 +157,7 @@
 			continue
 
 		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
-		if(!quiet)
+		if(!quiet && sound_to_play)
 			if(isobserver(target) && !(target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
 				continue
 			playsound_client(target.client, sound_to_play, target, vol = 45)

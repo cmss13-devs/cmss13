@@ -8,7 +8,7 @@
 @use '../functions.scss' as *;
 
 $fg-map: colors.$fg-map !default;
-$ring-color: #6a96c9 !default;
+$ring-color: hsl(212, 47%, 60%) !default;
 
 .RoundGauge {
   font-size: 1rem;
@@ -22,7 +22,7 @@ $pi: 3.1416;
 
 .RoundGauge__ringTrack {
   fill: transparent;
-  stroke: rgba(255, 255, 255, 0.1);
+  stroke: hsla(0, 0%, 100%, 0.1);
   stroke-width: 10;
   stroke-dasharray: 50 * $pi;
   stroke-dashoffset: 50 * $pi;
@@ -51,7 +51,7 @@ $pi: 3.1416;
   clip-rule: evenodd;
   stroke-linejoin: round;
   stroke-miterlimit: 2;
-  fill: rgba(255, 255, 255, 0.1);
+  fill: hsla(0, 0%, 100%, 0.1);
 }
 
 .RoundGauge__alert.max {

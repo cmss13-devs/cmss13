@@ -9846,7 +9846,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = 3;
 	pixel_y = 10
 	},
@@ -10174,11 +10174,10 @@
 /area/almayer/command/cic)
 "aAB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/groundside_operations{
-	dir = 4;
-	pixel_y = 8
-	},
 /obj/structure/machinery/door/window/westright,
+/obj/structure/machinery/computer/overwatch/groundside_operations{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aAC" = (
@@ -10765,11 +10764,6 @@
 	dir = 4;
 	layer = 2.99;
 	pixel_y = 4
-	},
-/obj/structure/machinery/computer/almayer_control{
-	dir = 4;
-	layer = 2.99;
-	pixel_y = 26
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -13942,7 +13936,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = -8
 	},
 /turf/open/floor/almayer,
@@ -14556,7 +14550,7 @@
 	pixel_x = 27;
 	serial_number = 11
 	},
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler{
 	layer = 2;
 	pixel_x = 6;
 	pixel_y = -6
@@ -16099,7 +16093,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "bjR" = (
-/obj/structure/cargo_container/arious/right,
+/obj/structure/cargo_container/armat/right,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bjS" = (
@@ -19061,11 +19055,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "bKt" = (
-/obj/structure/cargo_container/arious/left,
+/obj/structure/cargo_container/armat/left,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bKu" = (
-/obj/structure/cargo_container/arious/mid,
+/obj/structure/cargo_container/armat/mid,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bKz" = (
@@ -22118,7 +22112,7 @@
 	pixel_y = 13;
 	density = 0
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_y = 30;
 	pixel_x = 9
 	},
@@ -23636,10 +23630,6 @@
 "cUo" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
-"cVb" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north2)
 "cVf" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -33040,10 +33030,11 @@
 	pixel_x = -17
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/fancy/cigar/tarbacktube,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/lore_book/punch_out,
+/obj/item/storage/fancy/cigar/tarbacktube,
 /turf/open/floor/carpet,
 /area/almayer/living/pilotbunks)
 "haY" = (
@@ -37175,10 +37166,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
-"iTd" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/south2)
 "iTe" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -41955,7 +41942,7 @@
 /area/almayer/living/basketball)
 "kQr" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/item/tool/lighter/random{
 	pixel_x = 13
 	},
@@ -43515,7 +43502,7 @@
 "lzt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/screwdriver,
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = -7;
 	pixel_y = 12
 	},
@@ -47362,6 +47349,7 @@
 	pixel_x = 10;
 	pixel_y = 5
 	},
+/obj/item/lore_book/punch_out,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "niY" = (
@@ -47625,10 +47613,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/corporateliaison)
-"nnX" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/south1)
 "noj" = (
 /obj/structure/largecrate,
 /obj/structure/prop/server_equipment/laptop{
@@ -53860,6 +53844,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/bed/roller/heavy,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
 "pYu" = (
@@ -59806,10 +59791,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
-"stu" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north1)
 "sty" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plate,
@@ -62536,7 +62517,6 @@
 /area/almayer/lifeboat_pumps/south1)
 "tBu" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/machinery/sentry_holder/almayer,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "tBP" = (
@@ -64475,7 +64455,7 @@
 /obj/effect/spawner/prop_gun/m41aMK1{
 	pixel_y = 7
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = -10;
 	pixel_y = 1
 	},
@@ -72247,7 +72227,7 @@
 	pixel_x = -5;
 	pixel_y = 20
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = 3;
 	pixel_y = 16
@@ -73475,17 +73455,17 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "xZk" = (
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = -10;
 	pixel_y = 10
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = 4;
 	pixel_y = 9
@@ -97417,7 +97397,7 @@ awW
 add
 add
 add
-stu
+add
 add
 add
 add
@@ -98838,7 +98818,7 @@ aoC
 add
 add
 add
-stu
+add
 add
 add
 add
@@ -98884,7 +98864,7 @@ baw
 aJU
 aJU
 aJU
-nnX
+aJU
 aJU
 aJU
 aJU
@@ -114671,7 +114651,7 @@ aeA
 aeC
 aeC
 aeC
-cVb
+aeC
 aeC
 aeC
 aeC
@@ -114719,7 +114699,7 @@ lJY
 vcE
 vcE
 vcE
-iTd
+vcE
 vcE
 vcE
 vcE
@@ -116092,7 +116072,7 @@ amH
 aeC
 aeC
 aeC
-cVb
+aeC
 aeC
 aeC
 aeC
@@ -116140,7 +116120,7 @@ kKR
 vcE
 vcE
 vcE
-iTd
+vcE
 vcE
 vcE
 vcE

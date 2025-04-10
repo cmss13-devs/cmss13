@@ -127,7 +127,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/manager(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/manager(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/manager(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/vp78(new_human), WEAR_WAIST)
 	..()
 
 /datum/equipment_preset/wy/manager/assistant_manager

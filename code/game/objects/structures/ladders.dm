@@ -285,3 +285,16 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+
+/obj/structure/ladder/multiz/LateInitialize()
+	. = ..()
+
+	up = locate(/obj/structure/ladder) in SSmapping.get_turf_above(get_turf(src))
+	down = locate(/obj/structure/ladder) in SSmapping.get_turf_below(get_turf(src))
+
+	update_icon()
+
+/obj/structure/ladder/yautja
+	name = "ladder"
+	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

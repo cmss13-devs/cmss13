@@ -174,6 +174,11 @@
 	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
 	light_color = LIGHT_COLOR_XENON
 
+/obj/structure/machinery/light/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
+
 // the smaller bulb light fixture
 
 /obj/structure/machinery/light/small
@@ -778,7 +783,7 @@
 
 /obj/item/light_bulb/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message(SPAN_DANGER("[name] shatters."),SPAN_DANGER("You hear a small glass object shatter."))
+		visible_message(SPAN_DANGER("[src] shatters."), SPAN_DANGER("You hear a small glass object shatter."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
@@ -828,6 +833,12 @@
 /obj/structure/machinery/landinglight/ds2
 	id = "USS Almayer Dropship 2" // ID for landing zone
 
+/obj/structure/machinery/landinglight/upp_ds1
+	id = "SSV Rostock Dropship 1" // ID for landing zone
+
+/obj/structure/machinery/landinglight/upp_ds2
+	id = "SSV Rostock Dropship 2" // ID for landing zone
+
 /obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = initial(icon_state) + "0"
 	set_light(2)
@@ -853,6 +864,30 @@
 	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
 	set_light(2)
 

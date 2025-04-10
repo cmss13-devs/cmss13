@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		switch(cryo_human.job)
 			if(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
-			if(JOB_NURSE, JOB_DOCTOR, JOB_RESEARCHER, JOB_CMO)
+			if(JOB_NURSE, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_RESEARCHER, JOB_CMO)
 				dept_console = GLOB.frozen_items["Med"]
 			if(JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 				dept_console = GLOB.frozen_items["Eng"]
@@ -609,3 +609,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	occupant.mind.transfer_to(new_player)
 	SEND_SIGNAL(occupant, COMSIG_MOB_END_TUTORIAL)
+
+/obj/structure/machinery/cryopod/no_store/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/machinery/cryopod/no_store/right/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	dir = WEST

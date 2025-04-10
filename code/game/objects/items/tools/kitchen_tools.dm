@@ -8,6 +8,7 @@
  * Butcher's cleaver
  * Rolling Pins
  * Trays
+ * Can openers
  */
 
 /obj/item/tool/kitchen
@@ -50,6 +51,8 @@
 
 	if (reagents.total_volume > 0)
 		var/fullness = M.nutrition + (M.reagents.get_reagent_amount("nutriment") * 25)
+		if(issynth(M) || isyautja(M))
+			fullness = 200 //Synths and yautja never get full
 		if(fullness > NUTRITION_HIGH)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return
@@ -94,6 +97,16 @@
 	icon_state = "pspoon"
 	item_state = "pspoon"
 	attack_verb = list("attacked", "poked")
+
+/obj/item/tool/kitchen/utensil/mre_spork
+	name = "MRE spork"
+	desc = "It's a plastic brown spork. Very robust for what it is, legends tell about stranded marines who dug trenches with those."
+	icon_state = "mre_spork"
+	attack_verb = list("attacked", "poked")
+
+/obj/item/tool/kitchen/utensil/mre_spork/fsr
+	name = "FSR spork"
+	desc = "It's a plastic brown spork. Very robust for what it is, legends tell about stranded marines who dug trenches with those."
 
 /*
  * Knives
@@ -295,3 +308,55 @@
 			cooldown = world.time
 	else
 		..()
+
+/*
+ * Can opener
+ */
+/obj/item/tool/kitchen/can_opener //it has code connected to it in /obj/item/reagent_container/food/drinks/cans/attackby
+	name = "can opener"
+	desc = "A simple can opener, popular tool among UPP due to their doctrine of food preservation."
+	icon = 'icons/obj/items/kitchen_tools.dmi'
+	icon_state = "can_opener"
+	w_class = SIZE_SMALL
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	sharp = IS_SHARP_ITEM_SIMPLE
+	edge = 1
+	force = MELEE_FORCE_TIER_2
+	attack_verb = list("pinched", "nipped", "cut")
+
+/obj/item/tool/kitchen/can_opener/compact
+	name = "folding can opener"
+	desc = "A small compact can opener, can be folded into a safe and easy to store form, popular tool among UPP due to their doctrine of food preservation."
+	icon_state = "can_opener_compact"
+	w_class = SIZE_TINY
+	var/active = 0
+	hitsound = null
+	force = 0
+	edge = 0
+	sharp = 0
+	attack_verb = list("patted", "tapped")
+
+/obj/item/tool/kitchen/can_opener/compact/attack_self(mob/user)
+	..()
+
+	active = !active
+	if(active)
+		to_chat(user, SPAN_NOTICE("You flip out your [src]."))
+		playsound(user, 'sound/weapons/flipblade.ogg', 15, 1)
+		force = MELEE_FORCE_TIER_2
+		edge = 1
+		sharp = IS_SHARP_ITEM_SIMPLE
+		hitsound = 'sound/weapons/bladeslice.ogg'
+		icon_state += "_open"
+		w_class = SIZE_SMALL
+		attack_verb = list("pinched", "nipped", "cut")
+	else
+		to_chat(user, SPAN_NOTICE("[src] can now be concealed."))
+		force = initial(force)
+		edge = 0
+		sharp = 0
+		hitsound = initial(hitsound)
+		icon_state = initial(icon_state)
+		w_class = initial(w_class)
+		attack_verb = initial(attack_verb)
+		add_fingerprint(user)

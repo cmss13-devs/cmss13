@@ -1,7 +1,0 @@
-author: "BartDrown"
-delete-after: True
-changes:
-  - bugfix: "security records console resets sorting on data update"
-  - bugfix: "security records wrong sort indicators"
-  - qol: "security records default sorting by name"
-  - qol: "change displaying of rank to position"

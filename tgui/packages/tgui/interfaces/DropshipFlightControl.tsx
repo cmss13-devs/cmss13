@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,16 +8,17 @@ import {
   ProgressBar,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import {
   CancelLaunchButton,
   DisabledScreen,
-  DockingPort,
+  type DockingPort,
   InFlightCountdown,
   LaunchButton,
   LaunchCountdown,
-  NavigationProps,
+  type NavigationProps,
   ShuttleRecharge,
 } from './NavigationShuttle';
 
@@ -66,7 +66,6 @@ const DropshipDoorControl = () => {
   const in_flight =
     data.shuttle_mode === 'called' || data.shuttle_mode === 'pre-arrival';
   const disable_door_controls = in_flight;
-  const disable_normal_control = data.locked_down === 1;
   return (
     <Section
       title="Door Controls"
@@ -441,7 +440,7 @@ const DropshipSelector = () => {
 const RenderScreen = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
-    <>
+    <Section fill scrollable>
       {data.alternative_shuttles.length > 0 && <DropshipSelector />}
       {data.shuttle_mode === 'idle' && <DropshipDestinationSelection />}
       {data.shuttle_mode === 'idle' && data.can_set_automated === 1 && (
@@ -461,7 +460,7 @@ const RenderScreen = () => {
       )}
       {data.door_status.length > 0 && <DropshipDoorControl />}
       {data.alternative_shuttles.length === 0 && <LaunchAnnouncementAlarm />}
-    </>
+    </Section>
   );
 };
 
@@ -479,7 +478,7 @@ export const DropshipFlightControl = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Window theme="crtgreen" height={500} width={700}>
-      <Window.Content className="NavigationMenu" scrollable>
+      <Window.Content className="NavigationMenu">
         {data.is_disabled === 0 ? <RenderScreen /> : <DropshipDisabledScreen />}
       </Window.Content>
     </Window>

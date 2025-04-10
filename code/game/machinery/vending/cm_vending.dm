@@ -324,6 +324,17 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
+	// repair item handling
+	else if(istype(item_to_stock, /obj/item/stack/repairable/gunkit))
+		var/obj/item/stack/repairable/stack = item_to_stock
+		if(stack.amount != 5)
+			to_chat(user, SPAN_WARNING("\The [stack] isn't full. You need to fill it before you can restock it."))
+			return
+	else if(istype(item_to_stock, /obj/item/stack/repairable/gunlube))
+		var/obj/item/stack/repairable/stack = item_to_stock
+		if(stack.amount != 10)
+			to_chat(user, SPAN_WARNING("The [stack] isn't full. You need to fill it before you can restock it."))
+			return
 	return TRUE //Item IS good to restock!
 
 //------------MAINTENANCE PROCS---------------
@@ -844,7 +855,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	icon_state = "gear"
 	use_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
-	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_TO_HAND
+	vend_flags = VEND_CLUTTER_PROTECTION|VEND_CATEGORY_CHECK|VEND_UNIFORM_AUTOEQUIP
 
 /obj/structure/machinery/cm_vending/gear/ui_static_data(mob/user)
 	. = ..(user)

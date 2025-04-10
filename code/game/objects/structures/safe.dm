@@ -129,7 +129,7 @@ FLOOR SAFES
 			var/obj/item/P = contents[i]
 			dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 		dat += "</table></center>"
-	show_browser(user, dat, name, "safe", "size=350x300")
+	show_browser(user, dat, name, "safe", width = 350, height = 300)
 	onclose(user, "safe")
 
 /obj/structure/safe/Topic(href, href_list)
@@ -248,5 +248,7 @@ FLOOR SAFES
 	new /obj/item/clothing/accessory/storage/holster(src)
 	new /obj/item/spacecash/c1000/counterfeit(src)
 	new /obj/item/spacecash/c1000/counterfeit(src)
+	new /obj/item/storage/box/mre/wy(src)
+	new /obj/item/storage/box/mre/wy(src)
 	new /obj/item/coin/platinum(src)
 	new /obj/item/device/defibrillator/synthetic/noskill(src)

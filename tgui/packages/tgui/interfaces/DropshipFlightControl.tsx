@@ -68,6 +68,8 @@ const DropshipDoorControl = () => {
   const disable_door_controls = in_flight;
   return (
     <Section
+      m="0"
+      mb="6px"
       title="Door Controls"
       buttons={data.door_status
         .filter((x) => x.id === 'all')
@@ -163,6 +165,8 @@ export const DropshipDestinationSelection = () => {
   );
   return (
     <Section
+      m="0"
+      mb="6px"
       title="Flight Controls"
       buttons={
         <>
@@ -234,7 +238,11 @@ const DestinationSelector = (props: DestinationProps) => {
 export const TouchdownCooldown = () => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Section title={`Final Approach: ${data.target_destination}`}>
+    <Section
+      m="0"
+      mb="6px"
+      title={`Final Approach: ${data.target_destination}`}
+    >
       <div className="InFlightCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -267,6 +275,8 @@ const AutopilotConfig = () => {
   );
   return (
     <Section
+      m="0"
+      mb="6px"
       title="Autopilot Control"
       buttons={
         <>
@@ -362,6 +372,8 @@ const LaunchAnnouncementAlarm = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Section
+      m="0"
+      fitted
       title="Launch Announcement Alarm"
       buttons={
         !data.playing_launch_announcement_alarm ? (
@@ -413,8 +425,8 @@ const DropshipSelector = () => {
   }, [refreshTimeout]);
 
   return (
-    <Section title="Select Dropship">
-      <Stack>
+    <Section m="0" mb="6px" title="Select Dropship">
+      <Stack justify="space-evenly">
         {data.alternative_shuttles
           .sort((a, b) => a.id.localeCompare(b.id))
           .map((x) => (

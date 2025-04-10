@@ -246,6 +246,8 @@
 	VAR_PROTECTED/autofire_slow_mult = 1
 	/// enables jamming code, default should be false, change the vars in parent gun or individually to enable jamming
 	var/can_jam = FALSE
+	/// enables misfiring, default is true, ditto above
+	var/can_misfire = TRUE
 	/// if gun is currently jammed
 	var/jammed = FALSE
 	/// guns inherent chance to jam
@@ -260,6 +262,8 @@
 	var/durability_loss = GUN_DURABILITY_LOSS_DEFAULT
 	/// Durability of a gun that determines jam chance.
 	var/gun_durability = GUN_DURABILITY_MAX
+	/// chance to misfire when actions allow it
+	var/misfire_chance = 0
 
 
 
@@ -676,6 +680,24 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, get it repaired!"))
 				balloon_alert(user, "*worn-out*")
 
+/obj/item/weapon/gun/proc/gun_misfire(mob/living/user)
+	if(can_misfire)
+		if(prob(misfire_chance)) // somehow ill figure out a way to make this fire when dropped
+			var/obj/item/weapon/gun/misfired_gun = src
+			var/list/turfs = list()
+			for(var/turf/turfs_to_misfire in view())
+				turfs += turfs_to_misfire
+			var/turf/target = pick(turfs)
+			if(misfired_gun.caliber == "rocket")
+				user.visible_message(SPAN_HIGHDANGER("[user]'s [name] misfires from its resulting damages!"), SPAN_HIGHDANGER("Your [name] has misfired from its resulting damages... oh Lord!"))
+			else
+				user.visible_message(SPAN_WARNING("[user]'s [name] misfires from its resulting damages!"), SPAN_HIGHDANGER("Your [name] has misfired from its resulting damages!"))
+			set_gun_user(user)
+			misfired_gun.Fire(target, user)
+
+			user.attack_log += "\[[time_stamp()]\] <b>[user]</b> misfired <b>[name]</b> in [get_area(src)]."
+			msg_admin_attack("[user] misfired <b>[name]</b> in [get_area(src)]. ([src.loc.x],[src.loc.y],[src.loc.z]")
+
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
 	if(!can_jam)
 		return
@@ -698,6 +720,11 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		scaled_jam_chance = initial_jam_chance * ((jam_threshold - gun_durability) ** 0.75) // exponentially scale jam chance by 3/4ths based on durability after passing weapons jam threshold
 	else
 		scaled_jam_chance = 0
+
+	if(gun_durability < GUN_DURABILITY_MEDIUM)
+		misfire_chance = bullet_duraloss + durability_loss * ((GUN_DURABILITY_MEDIUM - gun_durability) ** 0.25) // misfires become a problem at below 50 durability
+	else
+		misfire_chance = 0
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -793,13 +820,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(gun_durability >= GUN_DURABILITY_BROKEN)
 		switch(gun_durability)
 			if((GUN_DURABILITY_BROKEN + 1) to GUN_DURABILITY_LOW)
-				durability_text = "poor condition."
+				durability_text = "bad condition."
 			if((GUN_DURABILITY_LOW + 1) to GUN_DURABILITY_MEDIUM)
-				durability_text = "an okay-ish condition."
+				durability_text = "poor condition."
 			if((GUN_DURABILITY_MEDIUM + 1) to GUN_DURABILITY_HIGH)
-				durability_text = "good condition."
+				durability_text = "normal condition."
 			if((GUN_DURABILITY_HIGH + 1) to 99)
-				durability_text = "fine condition."
+				durability_text = "good condition."
 			if(GUN_DURABILITY_MAX)
 				durability_text = "perfect condition!"
 		. += SPAN_INFO("[src] is in [durability_text]")
@@ -1138,6 +1165,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
+	if(can_misfire)
+		gun_misfire(user)
 
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
@@ -1325,6 +1354,8 @@ and you're good to go.
 				if(bullet.current_rounds <= 0)
 					QDEL_NULL(bullet)
 				playsound(src, 'sound/weapons/handling/gun_boltaction_close.ogg', 15)
+				if(can_misfire)
+					gun_misfire(user)
 		else
 			to_chat(user, SPAN_WARNING("The [bullet] doesn't match [src]'s caliber!"))
 
@@ -2210,7 +2241,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		damage_gun_durability(dam)
 		if(prob(1)) // as to not spam your chat of flames every goddamn second
 			visible_message(SPAN_WARNING("\The [src] burns within the flames!"))
-	if(!flamed_gun_warning && gun_durability == GUN_DURABILITY_BROKEN)
+	if(gun_durability == GUN_DURABILITY_BROKEN)
 		if(prob(5))
 			visible_message(SPAN_WARNING("Majority of \the [src]'s working parts have burned off!"))
 

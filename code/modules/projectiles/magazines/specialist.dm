@@ -211,6 +211,8 @@
 		playsound(demoman, in_hand.reload_sound, 25, 1)
 	else
 		playsound(demoman,'sound/machines/click.ogg', 25, 1)
+	if(in_hand.can_misfire)
+		in_hand.gun_misfire(demoman)
 
 	return 1
 

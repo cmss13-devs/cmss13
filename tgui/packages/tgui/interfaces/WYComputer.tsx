@@ -32,13 +32,13 @@ type Data = {
 };
 
 export const WYComputer = (props) => {
-  const { data } = useBackend<Data>();
+  const { data, act } = useBackend<Data>();
   const { current_menu, last_page, access_text, logged_in } = data;
   const PageComponent = PAGES[current_menu]();
 
   return (
     <Window theme="weyland" width={800} height={725}>
-      {!!current_menu === 'Login' && (
+      {current_menu === 'Login' && (
         <Section>
           <Flex align="center">
             <Box>
@@ -84,8 +84,6 @@ export const WYComputer = (props) => {
 };
 
 const Login = (props) => {
-  const { act } = useBackend<Data>();
-
   return (
     <Flex
       direction="column"
@@ -120,7 +118,6 @@ const Login = (props) => {
 };
 
 const MainMenu = (props) => {
-  const { data, act } = useBackend<Data>();
   const {
     logged_in,
     access_text,
@@ -317,7 +314,6 @@ const MainMenu = (props) => {
 };
 
 const SecVents = (props) => {
-  const { data, act } = useBackend<Data>();
   const {
     logged_in,
     access_text,

@@ -31695,7 +31695,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen/clicky{
 	pixel_x = 14;
-	plane = -5;
 	pixel_y = 2
 	},
 /obj/item/tool/pen/clicky{
@@ -48300,8 +48299,7 @@
 /obj/item/storage/photo_album,
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
-	pixel_x = -17;
-	plane = -5
+	pixel_x = -17
 	},
 /obj/item/device/camera_film{
 	pixel_x = -3

@@ -1317,10 +1317,8 @@
 /obj/structure/sign/poster/clf{
 	pixel_y = 32
 	},
-/obj/item/roller_holder,
-/obj/item/roller_holder,
-/obj/item/roller_holder,
-/obj/item/roller_holder,
+/obj/item/roller,
+/obj/item/roller,
 /turf/open/floor/almayer/sterile_green,
 /area/event/metal/dynamic/lit)
 "wS" = (

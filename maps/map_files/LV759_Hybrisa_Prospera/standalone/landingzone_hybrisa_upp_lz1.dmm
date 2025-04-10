@@ -1584,7 +1584,6 @@
 /turf/open/floor/strata/orange_icorner/north,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "iA" = (
-/obj/item/trash/pistachios,
 /obj/item/trash/cigbutt{
 	pixel_x = -1;
 	pixel_y = 17
@@ -6705,6 +6704,7 @@
 /area/lv759/indoors/spaceport/baggagehandling)
 "LI" = (
 /obj/structure/platform_decoration/metal/strata/east,
+/obj/structure/largecrate/random/mini/small_case,
 /turf/open/floor/strata/orange_edge/north,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "LM" = (

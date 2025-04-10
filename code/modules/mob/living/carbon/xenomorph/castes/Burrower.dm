@@ -28,9 +28,9 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	burrow_cooldown = 20
-	tunnel_cooldown = 70
-	widen_cooldown = 70
+	burrow_cooldown = 2 SECONDS
+	tunnel_cooldown = 7 SECONDS
+	widen_cooldown = 7 SECONDS
 
 
 	minimum_evolve_time = 7 MINUTES
@@ -201,6 +201,10 @@
 	for(var/mob/living/carbon/mob in loc)
 		if(!can_not_harm(mob))
 			mob.apply_effect(2, WEAKEN)
+
+	var/datum/action/xeno_action/activable/burrow/burrow_action = get_action(src, /datum/action/xeno_action/activable/burrow)
+	if(burrow_action)
+		burrow_action.apply_cooldown()
 
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_icons()

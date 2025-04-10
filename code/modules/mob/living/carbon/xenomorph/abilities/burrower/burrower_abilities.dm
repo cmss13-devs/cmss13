@@ -21,7 +21,6 @@
 
 	if(HAS_TRAIT(xenomorph, TRAIT_ABILITY_BURROWED))
 		xenomorph.tunnel(get_turf(A))
-		apply_cooldown()
 	else
 		xenomorph.burrow()
 	return ..()

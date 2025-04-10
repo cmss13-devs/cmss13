@@ -2,9 +2,12 @@
 // Please ensure when updating this menu, changes are reflected in AresAdmin.js
 // -------------------------------------------------------------------- //
 
+import type { BooleanLike } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
+import type { VentRecord } from './common/commonTypes';
 
 const PAGES = {
   login: () => Login,
@@ -12,8 +15,24 @@ const PAGES = {
   vents: () => SecVents,
 };
 
+type Data = {
+  current_menu: string;
+  last_page: string;
+  access_text: string;
+  logged_in: string;
+  access_level: BooleanLike;
+  has_hidden_cell: BooleanLike;
+  has_room_divider: BooleanLike;
+  open_divider: BooleanLike;
+  open_cell_door: BooleanLike;
+  open_cell_shutters: BooleanLike;
+  cell_flash_cooldown: BooleanLike;
+  sec_flash_cooldown: BooleanLike;
+  security_vents: VentRecord[];
+};
+
 export const WYComputer = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { current_menu, last_page, access_text, logged_in } = data;
   const PageComponent = PAGES[current_menu]();
 
@@ -65,7 +84,7 @@ export const WYComputer = (props) => {
 };
 
 const Login = (props) => {
-  const { act } = useBackend();
+  const { act } = useBackend<Data>();
 
   return (
     <Flex
@@ -101,7 +120,7 @@ const Login = (props) => {
 };
 
 const MainMenu = (props) => {
-  const { data, act } = useBackend();
+  const { data, act } = useBackend<Data>();
   const {
     logged_in,
     access_text,
@@ -298,7 +317,7 @@ const MainMenu = (props) => {
 };
 
 const SecVents = (props) => {
-  const { data, act } = useBackend();
+  const { data, act } = useBackend<Data>();
   const {
     logged_in,
     access_text,

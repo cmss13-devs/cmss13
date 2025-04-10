@@ -1,7 +1,7 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { toFixed } from 'common/math';
 import { classes } from 'common/react';
-import { ComponentProps, useState } from 'react';
+import { type ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -113,7 +113,7 @@ const VendButton = (props: VendButtonProps, _) => {
       icon={props.available ? 'circle-down' : 'xmark'}
       onMouseDown={(e) => {
         e.preventDefault();
-        if (props.available) {
+        if (props.available && e.button === 0) {
           props.onClick();
         }
       }}

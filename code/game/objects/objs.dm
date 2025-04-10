@@ -318,6 +318,8 @@
 			if(M.stat != DEAD)
 				to_chat(user, SPAN_WARNING("[M] resists your attempt to buckle!"))
 				return
+		if(M.stat != DEAD)
+			return
 	do_buckle(M, user)
 
 // the actual buckling proc

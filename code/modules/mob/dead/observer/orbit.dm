@@ -148,6 +148,8 @@
 					for(var/key in icon)
 						icon = key
 						break
+				if(human.rank_override)
+					icon = human.rank_override
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)

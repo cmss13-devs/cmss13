@@ -61,3 +61,38 @@
 	desc = "OH GOD OH FUCK"
 	default_ammo = /datum/ammo/hugger_container
 	ammo_band_color = AMMO_BAND_COLOR_SUPER
+
+//pill gun
+
+/obj/item/ammo_magazine/internal/pillgun
+	name = "pill tube"
+	desc = "An internal magazine. It is not supposed to be seen or removed."
+	default_ammo = /datum/ammo/pill
+	caliber = "pill"
+	max_rounds = 1
+	chamber_closed = FALSE
+
+	var/list/pills
+
+/obj/item/ammo_magazine/internal/pillgun/Initialize(mapload, spawn_empty)
+	. = ..()
+	current_rounds = LAZYLEN(pills)
+
+/obj/item/ammo_magazine/internal/pillgun/Entered(Obj, OldLoc)
+	. = ..()
+	if(!istype(Obj, /obj/item/reagent_container/pill))
+		return
+
+	LAZYADD(pills, Obj)
+	current_rounds = LAZYLEN(pills)
+
+/obj/item/ammo_magazine/internal/pillgun/Exited(Obj, newloc)
+	. = ..()
+	if(!istype(Obj, /obj/item/reagent_container/pill))
+		return
+
+	LAZYREMOVE(pills, Obj)
+	current_rounds = LAZYLEN(pills)
+
+/obj/item/ammo_magazine/internal/pillgun/super
+	max_rounds = 5

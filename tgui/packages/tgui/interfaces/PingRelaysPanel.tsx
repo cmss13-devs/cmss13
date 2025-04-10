@@ -1,6 +1,6 @@
 import { round } from 'common/math';
 import { Ping } from 'common/ping';
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import { Component } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Flex, Icon, RoundGauge, Stack } from 'tgui/components';

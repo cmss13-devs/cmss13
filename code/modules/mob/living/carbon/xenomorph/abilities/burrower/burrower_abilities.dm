@@ -7,7 +7,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_burrow
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 3 SECONDS
+	xeno_cooldown = 2 SECONDS
 
 /datum/action/xeno_action/activable/burrow/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/xenomorph = owner
@@ -21,9 +21,9 @@
 
 	if(HAS_TRAIT(xenomorph, TRAIT_ABILITY_BURROWED))
 		xenomorph.tunnel(get_turf(A))
+		apply_cooldown()
 	else
 		xenomorph.burrow()
-	apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/onclick/tremor

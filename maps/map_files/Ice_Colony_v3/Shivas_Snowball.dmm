@@ -165,11 +165,11 @@
 /area/shiva/exterior/cp_lz2)
 "aaJ" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/flamer_tank{
-	pixel_x = -5
-	},
-/obj/item/ammo_magazine/flamer_tank{
+/obj/item/ammo_magazine/flamer_tank/survivor{
 	pixel_x = 4
+	},
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = -5
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
@@ -178,7 +178,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "aaN" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/structure/surface/rack,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
@@ -2863,11 +2863,11 @@
 /area/shiva/interior/valley_huts/disposals)
 "atF" = (
 /obj/item/evidencebag,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atG" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/popcorn,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atH" = (
@@ -6984,7 +6984,10 @@
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "cTY" = (
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = -10;
+	pixel_y = -7
+	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "cUl" = (
@@ -11781,9 +11784,12 @@
 "iWS" = (
 /obj/structure/prop/invuln/dense{
 	desc = "Gonzo is trying to drill his way to freedom. He made this himself.";
-	icon = 'icons/obj/structures/props/mining.dmi';
-	icon_state = "gigadrill";
-	name = "Gigadrill"
+	icon = 'icons/obj/structures/props/gigadrill.dmi';
+	icon_state = "drillcat";
+	name = "Gigadrill";
+	dir = 4;
+	pixel_x = 20;
+	pixel_y = 5
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
@@ -15320,7 +15326,9 @@
 /turf/open/floor/shiva/green/east,
 /area/shiva/interior/colony/botany)
 "naG" = (
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = 4
+	},
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
@@ -15355,7 +15363,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/warehouse)
 "ncY" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "ndJ" = (

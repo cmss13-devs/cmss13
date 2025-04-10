@@ -1,5 +1,5 @@
 import { classes } from 'common/react';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Flex, Icon, NoticeBox, Stack } from 'tgui/components';
 import { Table, TableRow } from 'tgui/components/Table';

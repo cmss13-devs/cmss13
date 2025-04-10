@@ -451,10 +451,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "M5 integrated gasmask"
 	path = /obj/item/prop/helmetgarb/helmet_gasmask
 
-/datum/gear/helmet_garb/gunoil
-	display_name = "Gun oil"
-	path = /obj/item/prop/helmetgarb/gunoil
-
 /datum/gear/helmet_garb/netting
 	display_name = "Helmet netting"
 	path = /obj/item/prop/helmetgarb/netting
@@ -1180,6 +1176,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc/patch_uscm/medic_patch
 	display_name = "Field Medic shoulder patch"
 	path = /obj/item/clothing/accessory/patch/medic_patch
+
+/datum/gear/misc/armband
+	display_name = "Armband, squad specific"
+	path = /obj/item/clothing/accessory/armband/squad
+	fluff_cost = 1
 
 /datum/gear/misc/family_photo
 	display_name = "Family photo"

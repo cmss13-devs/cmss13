@@ -500,7 +500,7 @@ const DropshipDisabledScreen = () => {
 export const DropshipFlightControl = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
-    <Window theme="crtgreen" height={500} width={700}>
+    <Window theme="crtgreen" height={550} width={700}>
       <Window.Content className="NavigationMenu">
         {data.is_disabled === 0 ? <RenderScreen /> : <DropshipDisabledScreen />}
       </Window.Content>

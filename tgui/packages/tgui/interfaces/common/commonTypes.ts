@@ -25,7 +25,7 @@ export type DataCoreData = {
   maintenance_tickets: MaintTicketRecord[];
   access_tickets: AccessTicketRecord[];
   faction_options: string[];
-  sentry_setting: string[];
+  sentry_setting: string;
 };
 
 type MaintTicketRecord = {

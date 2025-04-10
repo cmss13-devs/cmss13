@@ -95,11 +95,11 @@
 	required_reagents = list("hydrogen" = 2, "sulfur" = 1, "oxygen" = 4)
 	result_amount = 1
 
-/datum/chemical_reaction/cooper_sulfate
-	name = "Cooper Sulfate"
-	id = "cooper_sulfate"
-	result = "cooper_sulfate"
-	required_reagents = list("cooper" = 2, "sulphuric acid" = 5)
+/datum/chemical_reaction/copper_sulfate
+	name = "Copper Sulfate"
+	id = "copper_sulfate"
+	result = "copper_sulfate"
+	required_reagents = list("copper" = 2, "sulphuric acid" = 3)
 	reaction_type = parent_type::reaction_type | CHEM_REACTION_SMOKING
 	result_amount = 1
 

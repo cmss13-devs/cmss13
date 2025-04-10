@@ -316,9 +316,9 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_CORROSIVE = 5, PROPERTY_OXIDIZING = 3, )
 
-/datum/reagent/toxin/cooper_sulfate
-	name = "Cooper Sulfate"
-	id = "cooper_sulfate"
+/datum/reagent/toxin/copper_sulfate
+	name = "Copper Sulfate"
+	id = "copper_sulfate"
 	description = "A common fungicide that is widely used to treat wood and other organic materials to prevent rot, decay, and fungal growth."
 	reagent_state = LIQUID
 	spray_warning = TRUE

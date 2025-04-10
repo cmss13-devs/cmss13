@@ -3,6 +3,7 @@ import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
+  Divider,
   Flex,
   Icon,
   ProgressBar,
@@ -170,17 +171,19 @@ export const DropshipDestinationSelection = () => {
     undefined,
   );
   return (
-    <Section
-      m="0"
-      mb="6px"
-      title="Flight Controls"
-      buttons={
-        <>
+    <Section m="0" mb="6px" title="Flight Controls">
+      <Stack justify="space-evenly">
+        <Stack.Item align="center">
           <CancelLaunchButton />
+        </Stack.Item>
+        <Stack.Item>
+          <Divider vertical />
+        </Stack.Item>
+        <Stack.Item align="center">
           <LaunchButton />
-        </>
-      }
-    >
+        </Stack.Item>
+      </Stack>
+      <Divider />
       <Stack vertical className="DestinationSelector">
         <DestinationSelector
           options={data.destinations}

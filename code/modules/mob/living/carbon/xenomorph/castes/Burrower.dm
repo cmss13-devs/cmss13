@@ -200,7 +200,7 @@
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)
 		if(!can_not_harm(mob))
-			mob.apply_effect(2, WEAKEN)
+			mob.apply_effect(1, WEAKEN)
 
 	var/datum/action/xeno_action/activable/burrow/burrow_action = get_action(src, /datum/action/xeno_action/activable/burrow)
 	if(burrow_action)

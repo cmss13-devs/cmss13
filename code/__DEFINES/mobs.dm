@@ -121,6 +121,7 @@
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
 #define CORRUPTED_ALLY (1<<21)
+#define FAKESOUL (1<<22) // Lets things without souls pretend like they do
 
 // =============================
 // hive types
@@ -190,6 +191,7 @@
 #define MUTINEER (1<<4)  // Part of the Mutiny Gang
 #define GIVING (1<<5) // Is currently trying to give an item to someone
 #define NOBIOSCAN (1<<6)
+#define HAS_SPAWNED_PET (1<<7) // Has spawned their special pet.
 
 //=================================================
 

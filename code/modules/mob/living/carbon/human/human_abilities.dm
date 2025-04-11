@@ -528,16 +528,16 @@ CULT
 	if(forced)
 		switch(forced_side)
 			if(MUTINY_MUTINEER)
-				var/datum/equipment_preset/other/mutiny/mutineer/XC = new()
-				XC.load_status(src)
+				var/datum/equipment_preset/other/mutiny/mutineer/preset = new()
+				preset.load_status(src)
 				return TRUE
 			if(MUTINY_LOYALIST)
-				var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
-				XC.load_status(src)
+				var/datum/equipment_preset/other/mutiny/loyalist/preset = new()
+				preset.load_status(src)
 				return TRUE
 			if(MUTINY_NONCOMBAT)
-				var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
-				XC.load_status(src)
+				var/datum/equipment_preset/other/mutiny/noncombat/preset = new()
+				preset.load_status(src)
 				return TRUE
 
 	var/options = list("MUTINEERS", "LOYALISTS", "REFUSE TO FIGHT")
@@ -545,16 +545,16 @@ CULT
 		options -= "MUTINEERS"
 	switch(tgui_alert(src, "A mutiny has been started, with whom do you stand?", "Choose a Side", options, 20 SECONDS))
 		if("MUTINEERS")
-			var/datum/equipment_preset/other/mutiny/mutineer/XC = new()
-			XC.load_status(src)
+			var/datum/equipment_preset/other/mutiny/mutineer/preset = new()
+			preset.load_status(src)
 			return TRUE
 		if("LOYALISTS")
-			var/datum/equipment_preset/other/mutiny/loyalist/XC = new()
-			XC.load_status(src)
+			var/datum/equipment_preset/other/mutiny/loyalist/preset = new()
+			preset.load_status(src)
 			return TRUE
 		else
-			var/datum/equipment_preset/other/mutiny/noncombat/XC = new()
-			XC.load_status(src)
+			var/datum/equipment_preset/other/mutiny/noncombat/preset = new()
+			preset.load_status(src)
 			return TRUE
 
 /datum/action/human_action/cancel_view // cancel-camera-view, but a button

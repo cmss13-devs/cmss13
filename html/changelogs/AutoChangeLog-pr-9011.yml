@@ -1,0 +1,4 @@
+author: "biologed"
+delete-after: True
+changes:
+  - bugfix: "added size property for box of zip cuffs with value MEDIUM (normal)"

@@ -947,7 +947,7 @@ Additional game mode variables.
 	else
 		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
 	if(is_CO)
-		survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].CO_survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].CO_survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].CO_survivor_types
+		survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)

@@ -361,7 +361,7 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 
 
 /obj/item/weapon/gun/pistol/t73/leader
@@ -1019,7 +1019,7 @@ L54 service pistol
 		/obj/item/attachable/burstfire_assembly,
 	)
 
-/obj/item/weapon/gun/pistol/l54/set_gun_attachment_offsets()
+/obj/item/weapon/gun/pistol/l54/custom/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 21, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/l54/custom/set_gun_config_values()

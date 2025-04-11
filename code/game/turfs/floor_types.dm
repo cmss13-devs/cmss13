@@ -320,6 +320,12 @@
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
 
+/turf/open/floor/plating/plating_catwalk/prison/dark
+	color = "#aba39d"
+
+/turf/open/floor/plating/plating_catwalk/prison/green
+	color = "#74ff8dff"
+
 /turf/open/floor/plating/plating_catwalk/strata
 	icon = 'icons/turf/floors/strata_floor.dmi'
 
@@ -356,6 +362,52 @@
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 
 	. = ..()
+
+
+/turf/open/floor/plating/catwalk/grate
+	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
+	icon_state = "solidgrate1"
+
+//turf/open/floor/plating/catwalk/grate/is_weedable()
+//	return NOT_WEEDABLE
+
+/turf/open/floor/plating/catwalk/grate/alt
+	icon_state = "solidgrate5"
+
+/turf/open/floor/plating/catwalk/grate/net
+	name = "safety net"
+	desc = "Special net intended to catch anyone, or anything, that falls off the rig. Difficult to move around in, but preferable to falling into the endless ocean below."
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	icon_state = "soil_grid"
+	allow_construction = FALSE
+	var/slow_amt = 4
+
+/turf/open/floor/plating/catwalk/grate/net/is_weedable()
+	return NOT_WEEDABLE
+
+/turf/open/floor/plating/catwalk/grate/net/Entered(atom/movable/AM)
+	if(iscarbon(AM))
+		var/mob/living/carbon/C = AM
+		var/slow_amount = 0.75
+		var/can_stuck = 1
+		if(istype(C, /mob/living/carbon/xenomorph)||isyautja(C))
+			slow_amount = 0.5
+			can_stuck = 0
+		var/new_slowdown = C.next_move_slowdown + slow_amount
+		if(prob(2))
+			to_chat(C, SPAN_WARNING("Moving through the [src] slows you down.")) //Warning only
+		else if(can_stuck == 4 && prob(2))
+			to_chat(C, SPAN_WARNING("You get stuck in the [src] for a moment!"))
+			new_slowdown += 10
+		C.next_move_slowdown = new_slowdown
+	..()
+
+/turf/open/floor/plating/catwalk/grate/lattice
+	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
+	icon_state = "latticefull"
+
+/turf/open/floor/plating/catwalk/grate/lattice/is_weedable()
+	return NOT_WEEDABLE
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
@@ -2178,6 +2230,39 @@
 	dir = WEST
 
 /turf/open/floor/almayer_hull/outerhull_dir/northwest
+	dir = NORTHWEST
+
+//Outerhull Weedable
+
+/turf/open/floor/roof_weedable
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "outerhull"
+	name = "roof"
+	turf_flags = TURF_HULL
+	allow_construction = FALSE
+
+/turf/open/floor/roof_weedable/outerhull_dir
+	icon_state = "outerhull_dir"
+
+/turf/open/floor/roof_weedable/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/roof_weedable/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/roof_weedable/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/roof_weedable/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/roof_weedable/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/roof_weedable/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/roof_weedable/outerhull_dir/northwest
 	dir = NORTHWEST
 
 
@@ -4888,3 +4973,35 @@
 
 /turf/open/gm/grass/grass2/pred
 	icon_state = "grass2"
+
+// Half Plate
+
+/turf/open/floor/half_plate
+	icon = 'icons/turf/half_plate.dmi'
+	icon_state = "green_plate"
+	plating_type = /turf/open/floor/plating/almayer
+
+/turf/open/floor/half_plate/green
+	dir = SOUTH
+
+/turf/open/floor/half_plate/green/north
+	dir = NORTH
+
+/turf/open/floor/half_plate/green/east
+	dir = EAST
+
+/turf/open/floor/half_plate/green/west
+	dir = WEST
+
+/turf/open/floor/half_plate/dark_yellow
+	icon_state = "darkyellow_plate"
+	dir = SOUTH
+
+/turf/open/floor/half_plate/dark_yellow/north
+	dir = NORTH
+
+/turf/open/floor/half_plate/dark_yellow/east
+	dir = EAST
+
+/turf/open/floor/half_plate/dark_yellow/west
+	dir = WEST

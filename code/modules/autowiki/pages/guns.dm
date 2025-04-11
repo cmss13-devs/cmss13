@@ -164,7 +164,7 @@
 
 		var/icon/generated_icon = getFlatIcon(generating_gun, no_anim = TRUE)
 		if(generated_icon)
-			upload_icon(generated_icon, filename)
+			upload_icon(generated_icon, filename, center_width=64, center_height=32)
 			gun_data["icon"] = filename
 
 		var/page_name = SANITIZE_FILENAME(replacetext(strip_improper(generating_gun.name), " ", "_"))

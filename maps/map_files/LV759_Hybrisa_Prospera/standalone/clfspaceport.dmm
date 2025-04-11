@@ -217,6 +217,16 @@
 	},
 /turf/open/floor/almayer,
 /area/lv759/indoors/spaceport/cargo)
+"fg" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -1;
+	pixel_y = 34
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
 "fi" = (
 /obj/structure/bed/chair/vehicle/white{
 	pixel_x = 8
@@ -2738,7 +2748,7 @@ qk
 "}
 (24,1,1) = {"
 vv
-Zw
+fg
 uT
 wg
 LU
@@ -2813,7 +2823,7 @@ qk
 "}
 (27,1,1) = {"
 vv
-Zw
+fg
 uT
 jq
 DB

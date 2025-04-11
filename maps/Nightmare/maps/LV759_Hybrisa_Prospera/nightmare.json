@@ -12,6 +12,13 @@
     },
     {
 		"type": "map_insert",
+		"landmark": "clfspaceport_queen",
+		"chance": 1.0,
+		"path": "standalone/clfspaceport_queen.dmm",
+		"when": { "lvevent": "clfraid" }
+    },
+    {
+		"type": "map_insert",
 		"landmark": "iasf_souter_airbase",
 		"chance": 0.28,
 		"path": "standalone/twe_airbase.dmm",

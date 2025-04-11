@@ -727,6 +727,16 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/filt)
+"acR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_2)
+"acS" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_1)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -52494,7 +52504,7 @@ wuK
 xfW
 wuK
 xcY
-sAT
+acS
 sAT
 pnj
 uiM
@@ -77447,7 +77457,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78052,7 +78062,7 @@ gRp
 iGr
 iGr
 uIn
-uIn
+acR
 rqn
 qvA
 lhE

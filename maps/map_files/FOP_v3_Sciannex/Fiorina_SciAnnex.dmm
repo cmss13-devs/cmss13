@@ -41,6 +41,14 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
+"aai" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzII)
+"aaj" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/darkyellow2/north,
+/area/fiorina/lz/near_lzI)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
@@ -63767,7 +63775,7 @@ fAf
 nZB
 kEx
 fAf
-nZB
+aai
 nZB
 fAf
 nZB
@@ -79803,7 +79811,7 @@ nGZ
 mSP
 nGZ
 nGZ
-qaL
+aaj
 uYi
 nGZ
 nGZ

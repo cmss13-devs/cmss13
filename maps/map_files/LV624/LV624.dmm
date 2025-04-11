@@ -1315,10 +1315,20 @@
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"afc" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv624/lazarus/landing_zones/lz1)
 "afd" = (
 /obj/structure/fence,
 /turf/open/floor/warning/east,
 /area/lv624/ground/barrens/containers)
+"afe" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/lv624/lazarus/landing_zones/lz2)
 "aff" = (
 /obj/structure/cargo_container/wy/left,
 /turf/open/floor,
@@ -31183,7 +31193,7 @@ niV
 niV
 hdA
 niV
-niV
+afe
 niV
 niV
 niV
@@ -54672,7 +54682,7 @@ aHu
 aGz
 aGz
 aGz
-uVx
+afc
 aGz
 aGz
 aGz

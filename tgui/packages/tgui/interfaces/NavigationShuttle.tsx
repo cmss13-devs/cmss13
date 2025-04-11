@@ -125,7 +125,7 @@ export const DestionationSelection = () => {
 export const ShuttleRecharge = () => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Section title="Refueling in progress">
+    <Section m="0" title="Refueling in progress">
       <div className="LaunchCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -150,7 +150,7 @@ export const ShuttleRecharge = () => {
 export const LaunchCountdown = () => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Section title="Launch in progress">
+    <Section m="0" title="Launch in progress">
       <div className="LaunchCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -178,6 +178,7 @@ export const InFlightCountdown = () => {
   return (
     <Section
       title={`In flight: ${data.target_destination}`}
+      m="0"
       buttons={
         data.target_destination === 'Flyby' && (
           <Button onClick={() => act('cancel-flyby')}>Cancel</Button>

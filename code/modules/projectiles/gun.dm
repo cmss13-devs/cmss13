@@ -816,19 +816,19 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
-	var/durability_text = "broken condition..."
+	var/durability_text = SPAN_RED("broken condition...")
 	if(gun_durability >= GUN_DURABILITY_BROKEN)
 		switch(gun_durability)
 			if((GUN_DURABILITY_BROKEN + 1) to GUN_DURABILITY_LOW)
-				durability_text = "bad condition."
+				durability_text = SPAN_RED("bad condition.")
 			if((GUN_DURABILITY_LOW + 1) to GUN_DURABILITY_MEDIUM)
-				durability_text = "poor condition."
+				durability_text = SPAN_ORANGE("poor condition.")
 			if((GUN_DURABILITY_MEDIUM + 1) to GUN_DURABILITY_HIGH)
-				durability_text = "normal condition."
+				durability_text = SPAN_ORANGE("normal condition.")
 			if((GUN_DURABILITY_HIGH + 1) to 99)
-				durability_text = "good condition."
+				durability_text = SPAN_GREEN("good condition.")
 			if(GUN_DURABILITY_MAX)
-				durability_text = "perfect condition!"
+				durability_text = SPAN_GREEN("perfect condition!")
 		. += SPAN_INFO("[src] is in [durability_text]")
 
 	if(flags_gun_features & GUN_NO_DESCRIPTION)

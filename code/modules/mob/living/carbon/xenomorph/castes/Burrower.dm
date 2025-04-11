@@ -29,7 +29,7 @@
 	tacklestrength_max = 5
 
 	burrow_cooldown = 2 SECONDS
-	tunnel_cooldown = 5 SECONDS
+	tunnel_cooldown = 7 SECONDS
 
 	minimum_evolve_time = 7 MINUTES
 

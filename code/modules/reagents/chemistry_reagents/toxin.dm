@@ -323,7 +323,7 @@
 	reagent_state = LIQUID
 	spray_warning = TRUE
 	color = "#1d39db"
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_CORROSIVE = 5)
 
 /datum/reagent/toxin/acid/polyacid

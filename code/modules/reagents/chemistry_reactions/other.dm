@@ -99,7 +99,7 @@
 	name = "Copper Sulfate"
 	id = "copper_sulfate"
 	result = "copper_sulfate"
-	required_reagents = list("copper" = 2, "sulphuric acid" = 3)
+	required_reagents = list("copper" = 2, "sulphuric acid" = 5)
 	reaction_type = parent_type::reaction_type | CHEM_REACTION_SMOKING
 	result_amount = 1
 

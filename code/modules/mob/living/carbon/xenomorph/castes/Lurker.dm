@@ -224,8 +224,7 @@
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(lurker_invis)
-		lurker_invis.invisibility_off(0.5, FALSE) // // If the lurker is cloaked when pouncing, reveal them at the end with a minor refund.
-		to_chat(xeno, SPAN_XENODANGER("We pounced and lost our invisibility!"))
+		lurker_invis.invisibility_off(0.5) // If the lurker is cloaked when pouncing, reveal them at the end with a  refund.
 
 
 /datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)

@@ -2239,10 +2239,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
 	if(gun_durability > GUN_DURABILITY_BROKEN)
 		damage_gun_durability(dam)
-		if(prob(1)) // as to not spam your chat of flames every goddamn second
+		if(prob(10)) // as to not spam your chat of flames every goddamn second
 			visible_message(SPAN_WARNING("\The [src] burns within the flames!"))
 	if(gun_durability == GUN_DURABILITY_BROKEN)
-		if(prob(5))
+		if(prob(15))
 			visible_message(SPAN_WARNING("Majority of \the [src]'s working parts have burned off!"))
 
 /obj/item/weapon/gun/attack_alien(mob/living/carbon/xenomorph/xeno)

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var">Var Details</a></header>
+<main>
+<h1>Marine - Hospital Corpsman (Sandbox) <aside>/<a href="datum.html">datum</a>/<a href="datum/tutorial.html">tutorial</a>/<a href="datum/tutorial/marine/hospital_corpsman_sandbox.html">marine/hospital_corpsman_sandbox</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 29"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/CMO_npc">CMO_npc</a></th><td>holder for the CMO NPC</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/active_agent">active_agent</a></th><td>Ref to any patient NPC actively moving</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/active_agents">active_agents</a></th><td>List of ACTIVELY MOVING patient NPCs</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/agent_healing_tasks">agent_healing_tasks</a></th><td>List of injuries on patient NPCs that must be treated before fully healed. Is only tested AFTER they pass 65% health</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/agent_spawn_location">agent_spawn_location</a></th><td>Spawn point for all NPCs except the CMO</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/agents">agents</a></th><td>List of patient NPCs. Stored in relation to their end destination turf</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/booboo_agent">booboo_agent</a></th><td>Ref to late-spawned patient NPC that has a chance to appear during a treatment phase</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/booboo_timer">booboo_timer</a></th><td>Holds a random timer per survival wave for a booboo agent to spawn</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/cleanup">cleanup</a></th><td>List of NPC inventory items that needs to be removed when they asked to leave</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/difficulties">difficulties</a></th><td>List of injury severity levels in sequence</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/dragging_agent">dragging_agent</a></th><td>Ref to any dragging NPC, bringing a patient to the player</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/dragging_agents">dragging_agents</a></th><td>List of active dragging NPCs. Mobs on this list are ACTIVELY dragging a wounded marine</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/last_masscas_round">last_masscas_round</a></th><td>Wave number when the last mass-casualty (nightmare) phase triggered. Will wait 3 waves before rolling again</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/last_resupply_round">last_resupply_round</a></th><td>Wave number when the last resupply phase triggered. Will wait 3 waves before rolling again</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/max_survival_agents">max_survival_agents</a></th><td>Max amount of patient NPCs per survival wave (NOT including booboo NPCs)</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/min_survival_agents">min_survival_agents</a></th><td>Min amount of patient NPCs per survival wave (NOT including booboo NPCs)</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/premeds">premeds</a></th><td>Lists possible chemicals that can appear pre-medicated in patient NPCs in harder difficulties</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/stage">stage</a></th><td>Current step of the tutorial we're at</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/supply_vendors">supply_vendors</a></th><td>List of supply room vendors to be restocked before a supply phase</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/survival_difficulty">survival_difficulty</a></th><td>Current survival wave difficulty (in terms of injury severity)</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/survival_wave">survival_wave</a></th><td>Current survival wave</td></tr>
+            <tr><th><a href="datum/tutorial/marine/hospital_corpsman_sandbox.html#var/terminate_movement_timer">terminate_movement_timer</a></th><td>Holds a timer which forces agents to stop processing movement, in case they are misbehaving</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/CMO_npc"><aside class="declaration">var </aside>CMO_npc
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 38"/></a></h3>
+        <p>holder for the CMO NPC</p><h3 id="var/active_agent"><aside class="declaration">var </aside>active_agent
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/realistic_dummy</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 50"/></a></h3>
+        <p>Ref to any patient NPC actively moving</p><h3 id="var/active_agents"><aside class="declaration">var </aside>active_agents
+            <aside>&ndash; /list/mob/living/carbon/human/realistic_dummy</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 46"/></a></h3>
+        <p>List of ACTIVELY MOVING patient NPCs</p><h3 id="var/agent_healing_tasks"><aside class="declaration">var </aside>agent_healing_tasks
+            <aside>&ndash; /list/mob/living/carbon/human/realistic_dummy</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 80"/></a></h3>
+        <p>List of injuries on patient NPCs that must be treated before fully healed. Is only tested AFTER they pass 65% health</p><h3 id="var/agent_spawn_location"><aside class="declaration">var </aside>agent_spawn_location
+            <aside>&ndash; /<a href="turf.html">turf</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 56"/></a></h3>
+        <p>Spawn point for all NPCs except the CMO</p><h3 id="var/agents"><aside class="declaration">var </aside>agents
+            <aside>&ndash; /list/mob/living/carbon/human/realistic_dummy</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 42"/></a></h3>
+        <p>List of patient NPCs. Stored in relation to their end destination turf</p><h3 id="var/booboo_agent"><aside class="declaration">var </aside>booboo_agent
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/realistic_dummy</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 52"/></a></h3>
+        <p>Ref to late-spawned patient NPC that has a chance to appear during a treatment phase</p><h3 id="var/booboo_timer"><aside class="declaration">var </aside>booboo_timer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 76"/></a></h3>
+        <p>Holds a random timer per survival wave for a booboo agent to spawn</p><h3 id="var/cleanup"><aside class="declaration">var </aside>cleanup
+            <aside>&ndash; /list/obj/item/clothing/suit/storage/marine/medium</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 48"/></a></h3>
+        <p>List of NPC inventory items that needs to be removed when they asked to leave</p><h3 id="var/difficulties"><aside class="declaration">var </aside>difficulties
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 58"/></a></h3>
+        <p>List of injury severity levels in sequence</p><h3 id="var/dragging_agent"><aside class="declaration">var </aside>dragging_agent
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 54"/></a></h3>
+        <p>Ref to any dragging NPC, bringing a patient to the player</p><h3 id="var/dragging_agents"><aside class="declaration">var </aside>dragging_agents
+            <aside>&ndash; /list/mob/living/carbon/human</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 44"/></a></h3>
+        <p>List of active dragging NPCs. Mobs on this list are ACTIVELY dragging a wounded marine</p><h3 id="var/last_masscas_round"><aside class="declaration">var </aside>last_masscas_round
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 84"/></a></h3>
+        <p>Wave number when the last mass-casualty (nightmare) phase triggered. Will wait 3 waves before rolling again</p><h3 id="var/last_resupply_round"><aside class="declaration">var </aside>last_resupply_round
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 82"/></a></h3>
+        <p>Wave number when the last resupply phase triggered. Will wait 3 waves before rolling again</p><h3 id="var/max_survival_agents"><aside class="declaration">var </aside>max_survival_agents
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 68"/></a></h3>
+        <p>Max amount of patient NPCs per survival wave (NOT including booboo NPCs)</p><h3 id="var/min_survival_agents"><aside class="declaration">var </aside>min_survival_agents
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L70">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 70"/></a></h3>
+        <p>Min amount of patient NPCs per survival wave (NOT including booboo NPCs)</p><h3 id="var/premeds"><aside class="declaration">var </aside>premeds
+            <aside>&ndash; /static/list/datum/reagent/medical</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 86"/></a></h3>
+        <p>Lists possible chemicals that can appear pre-medicated in patient NPCs in harder difficulties</p><h3 id="var/stage"><aside class="declaration">var </aside>stage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 40"/></a></h3>
+        <p>Current step of the tutorial we're at</p><h3 id="var/supply_vendors"><aside class="declaration">var </aside>supply_vendors
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L93">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 93"/></a></h3>
+        <p>List of supply room vendors to be restocked before a supply phase</p><h3 id="var/survival_difficulty"><aside class="declaration">var </aside>survival_difficulty
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 74"/></a></h3>
+        <p>Current survival wave difficulty (in terms of injury severity)</p><h3 id="var/survival_wave"><aside class="declaration">var </aside>survival_wave
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 72"/></a></h3>
+        <p>Current survival wave</p><h3 id="var/terminate_movement_timer"><aside class="declaration">var </aside>terminate_movement_timer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/719226897d118810c6b7ee09909c8ee990b5d12d/code/datums/tutorial/marine/hospital_corpsman_sandbox.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;tutorial&#x2F;marine&#x2F;hospital_corpsman_sandbox.dm 78"/></a></h3>
+        <p>Holds a timer which forces agents to stop processing movement, in case they are misbehaving</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/719226897d118810c6b7ee09909c8ee990b5d12d">7192268</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

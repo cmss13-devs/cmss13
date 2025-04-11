@@ -58,6 +58,8 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_1/sentinel.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/sentinel.dmi'
 
+	acid_overlay = icon('icons/mob/xenos/castes/tier_1/sentinel.dmi', "Sentinel-Spit")
+
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
@@ -153,6 +155,26 @@
 	apply_cooldown()
 	return ..()
 
+/datum/action/xeno_action/activable/slowing_spit/action_activate()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
+	var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
+	..()
+	var/is_selected_now = (xeno.selected_ability == src)
+	if(!was_selected_before && is_selected_now)
+		xeno.overlays += xeno.acid_overlay
+	else if(was_selected_before && !is_selected_now)
+		xeno.overlays -= xeno.acid_overlay
+
+/datum/action/xeno_action/activable/slowing_spit/action_deselect()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
+	if(istype(xeno, /mob/living/carbon/xenomorph/sentinel))
+		xeno.overlays -= icon('icons/mob/xenos/castes/tier_1/sentinel.dmi', "Sentinel-Spit")
+
 /datum/action/xeno_action/activable/scattered_spit/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/scatterspit_user = owner
 	if(!scatterspit_user.check_state())
@@ -184,6 +206,26 @@
 
 	apply_cooldown()
 	return ..()
+
+/datum/action/xeno_action/activable/scattered_spit/action_activate()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
+	var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
+	..()
+	var/is_selected_now = (xeno.selected_ability == src)
+	if(!was_selected_before && is_selected_now)
+		xeno.overlays += xeno.acid_overlay
+	else if(was_selected_before && !is_selected_now)
+		xeno.overlays -= xeno.acid_overlay
+
+/datum/action/xeno_action/activable/scattered_spit/action_deselect()
+	..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno)
+		return
+	if(istype(xeno, /mob/living/carbon/xenomorph/sentinel))
+		xeno.overlays -= xeno.acid_overlay
 
 /datum/action/xeno_action/onclick/paralyzing_slash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/paraslash_user = owner

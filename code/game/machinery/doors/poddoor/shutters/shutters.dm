@@ -110,6 +110,8 @@
 	id = "Yautja Preserve"
 	needs_power = FALSE
 	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
 	explo_proof = TRUE
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds/Initialize()

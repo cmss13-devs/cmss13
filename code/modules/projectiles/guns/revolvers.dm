@@ -204,10 +204,21 @@
 		current_mag.current_rounds++
 	return TRUE
 
-// FLUFF
+/obj/item/weapon/gun/revolver/proc/close_chamber(mob/user)
+	if(current_mag && !current_mag.chamber_closed)
+		current_mag.chamber_closed = TRUE
+		to_chat(user, SPAN_NOTICE("You close the cylinder of [src]."))
+		playsound(user, chamber_close_sound, 25, 1)
+		update_icon()
+
+// FLUFF, kinda
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
 	if(jammed)
 		jam_unique_action(user)
+
+	else if(current_mag && !current_mag.chamber_closed)
+		close_chamber(user)
+
 	else
 		spin_cylinder(user)
 

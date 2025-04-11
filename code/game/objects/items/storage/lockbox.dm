@@ -27,7 +27,7 @@
 		if(src.broken)
 			to_chat(user, SPAN_DANGER("It appears to be broken."))
 			return
-		if(src.allowed(user))
+		if(can_storage_interact(user))
 			src.locked = !( src.locked )
 			if(src.locked)
 				src.icon_state = src.icon_locked

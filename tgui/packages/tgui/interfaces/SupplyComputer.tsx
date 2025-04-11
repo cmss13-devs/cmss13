@@ -627,15 +627,13 @@ const BlackMarketMenu = () => {
 
   return (
     <Stack vertical fill align="center" justify="space-evenly">
-      <Box
-        position="absolute"
-        right="20px"
-        top="20px"
-        p={2}
-        style={{ border: '1px solid' }}
-      >
-        WY${dollars}
-      </Box>
+      <Stack.Item mr="3%" align="end">
+        <Stack justify="space-evenly">
+          <Box p={2} style={{ border: '1px solid' }}>
+            WY${dollars}
+          </Box>
+        </Stack>
+      </Stack.Item>
       <Stack.Item height="25%" width="75%">
         {blackmarketCategory ? (
           <Section fill scrollable width="100%">

@@ -360,7 +360,7 @@
 	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
 	winset(src, null, list("browser-options" = "+devtools"))
 	winset(src, null, list("browser-options" = "+find"))
-  winset(src, null, list("browser-options" = "+refresh"))
+	winset(src, null, list("browser-options" = "+refresh"))
 
 #ifdef TESTING
 GLOBAL_LIST_EMPTY(dirty_vars)

@@ -71,7 +71,8 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "pI" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	needs_power = 0
 	},
 /turf/open/asphalt/cement/cement2,
 /area/bigredv2/outside/filtration_cave_cas)
@@ -267,7 +268,8 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "RA" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	needs_power = 0
 	},
 /turf/open/asphalt/cement/cement4,
 /area/bigredv2/outside/filtration_cave_cas)

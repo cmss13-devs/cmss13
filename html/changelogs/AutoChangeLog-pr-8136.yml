@@ -1,0 +1,5 @@
+author: "Steelpoint, Blundir"
+delete-after: True
+changes:
+  - rscadd: "Adds a UPP Squad gun and ammo vendor. Similar in function to the USCM squad vendor. Supplies UPP soldiers with their weapons and munitions."
+  - rscadd: "Shotgun shell boxes for UPP shotgun ammunition have been added to the game, they have also been added to all UPP vendors."

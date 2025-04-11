@@ -14,6 +14,7 @@
 		/datum/gamemode_modifier/indestructible_splints,
 		/datum/gamemode_modifier/mortar_laser_warning,
 		/datum/gamemode_modifier/no_body_c4,
+		/datum/gamemode_modifier/heavy_specialists,
 		/datum/gamemode_modifier/weaker_explosions_fire,
 	)
 

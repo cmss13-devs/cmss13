@@ -268,11 +268,64 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	return TRUE
 
+/mob/living/carbon/xenomorph/proc/transmute_verb()
+	set name = "Transmute"
+	set desc = "Transmute into a different caste of the same tier"
+	set category = "Alien"
+
+	if(!check_state())
+		return
+	if(is_ventcrawling)
+		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
+		return
+	if(!isturf(loc))
+		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
+		return
+	if(health < maxHealth)
+		to_chat(src, SPAN_XENOWARNING("We are too weak to transmute, we must regain our health first."))
+		return
+	if(tier == 0 || tier == 4)
+		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
+		return
+	if(lock_evolve)
+		if(banished)
+			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
+		else
+			to_chat(src, SPAN_WARNING("We can't transmute."))
+		return FALSE
+
+	var/newcaste
+	var/list/options = list()
+	var/static/list/option_images = list()
+
+	if(tier == 1)
+		options = XENO_T1_CASTES
+	else if (tier == 2)
+		options = XENO_T2_CASTES
+	else if (tier == 3)
+		options = XENO_T3_CASTES
+
+	if(!option_images["[tier]"])
+		option_images["[tier]"] = collect_xeno_images(options)
+
+	if(!client.prefs.no_radial_labels_preference)
+		newcaste = show_radial_menu(src, src, option_images["[tier]"])
+	else
+		newcaste = tgui_input_list(src, "Choose a caste you want to transmute to.", "Transmute", options, theme="hive_status")
+
+	if(!newcaste)
+		return
+
+	transmute(newcaste, "We transmute into a new form.")
+
 // The queen de-evo, but on yourself.
 /mob/living/carbon/xenomorph/verb/Deevolve()
 	set name = "De-Evolve"
 	set desc = "De-evolve into a lesser form."
 	set category = "Alien"
+
+	var/newcaste
+	var/alleged_queens = 0
 
 	if(!check_state())
 		return
@@ -295,8 +348,25 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
 
+	for(var/mob/living/carbon/xenomorph/xenos_to_check in GLOB.living_xeno_list)
+		if(hivenumber != xenos_to_check.hivenumber)
+			continue
 
-	var/newcaste
+		switch(xenos_to_check.tier)
+			if(0)
+				if(islarva(xenos_to_check) && !ispredalienlarva(xenos_to_check))
+					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
+						alleged_queens++
+				continue
+			if(1)
+				if(isdrone(xenos_to_check))
+					if(xenos_to_check.client && xenos_to_check.ckey && !jobban_isbanned(xenos_to_check, XENO_CASTE_QUEEN))
+						alleged_queens++
+
+	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))
+		to_chat(src, SPAN_XENONOTICE("The hive currently has no sister able to become Queen! The survival of the hive requires you to be a Drone!"))
+		return FALSE
+
 	if(length(caste.deevolves_to) == 1)
 		newcaste = caste.deevolves_to[1]
 	else if(length(caste.deevolves_to) > 1)
@@ -331,7 +401,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(new_xeno.ckey)
 		GLOB.deevolved_ckeys += new_xeno.ckey
 
-/mob/living/carbon/xenomorph/proc/transmute(newcaste)
+/mob/living/carbon/xenomorph/proc/transmute(newcaste, message="We regress into our previous form.")
 	// We have to delete the organ before creating the new xeno because all old_xeno contents are dropped to the ground on Initalize()
 	var/obj/item/organ/xeno/organ = locate() in src
 	if(!isnull(organ))
@@ -382,7 +452,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		remove_verb(new_xeno, /mob/living/carbon/xenomorph/verb/Deevolve)
 
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [src]."),
-	SPAN_XENODANGER("We regress into our previous form."))
+	SPAN_XENODANGER(message))
 
 	transfer_observers_to(new_xeno)
 	new_xeno._status_traits = src._status_traits

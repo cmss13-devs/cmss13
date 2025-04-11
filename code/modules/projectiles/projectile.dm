@@ -11,7 +11,7 @@
 	density = FALSE
 	unacidable = TRUE
 	anchored = TRUE //You will not have me, space wind!
-	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
+	flags_atom = NOINTERACT|NO_ZFALL //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
@@ -187,7 +187,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE)
+/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
@@ -231,7 +231,7 @@
 	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
 		randomize_speed = FALSE
-		ammo.fire_bonus_projectiles(src)
+		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
@@ -579,7 +579,8 @@
 			. = TRUE
 		else if(L.body_position != LYING_DOWN)
 			animatation_displace_reset(L)
-			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
+			if(ammo.sound_miss)
+				playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 			var/log_message = "[src] narrowly missed [key_name(L)]"
@@ -841,7 +842,7 @@
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
 	if(HAS_TRAIT(src, TRAIT_NO_STRAY) && src != P.original)
 		return FALSE
-	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS)
+	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS && !P.ammo.hits_lying_mobs)
 		return FALSE // Fixes for buckshot projectiles not hitting stunned targets
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
@@ -870,7 +871,7 @@
 			. -= mobility_aura * 5
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
-			if(shooter_human.faction == faction && !(ammo_flags & AMMO_ALWAYS_FF))
+			if(is_ally_of(shooter_human) && !(ammo_flags & AMMO_ALWAYS_FF))
 				. -= FF_hit_evade
 
 			if(ammo_flags & AMMO_MP)
@@ -1014,7 +1015,8 @@
 			damage_result = 0
 			bullet_ping(P)
 			visible_message(SPAN_AVOIDHARM("[src]'s armor deflects [P]!"))
-			if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
+			if(P.ammo.sound_armor)
+				playsound(src, P.ammo.sound_armor, 50, 1)
 
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
@@ -1102,6 +1104,7 @@
 			"armour_break_flat" = P.ammo.damage_armor_punch,
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
+			"armour_type" = GLOB.xeno_ranged,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1231,7 +1234,8 @@
 	if(!P || !P.ammo.ping)
 		return
 
-	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
+	if(P.ammo.sound_bounce)
+		playsound(src, P.ammo.sound_bounce, 50, 1)
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)
 	var/offset_x = clamp(P.pixel_x + pixel_x_offset, -10, 10)
 	var/offset_y = clamp(P.pixel_y + pixel_y_offset, -10, 10)

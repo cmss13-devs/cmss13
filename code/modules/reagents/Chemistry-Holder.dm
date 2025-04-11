@@ -42,10 +42,13 @@
 	current_list_element = rand(1,length(reagent_list))
 
 	while(total_transfered != amount)
-		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !length(reagent_list)) break
+		if(total_transfered >= amount)
+			break
+		if(total_volume <= 0 || !length(reagent_list))
+			break
 
-		if(current_list_element > length(reagent_list)) current_list_element = 1
+		if(current_list_element > length(reagent_list))
+			current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		remove_reagent(current_reagent.id, 1)
@@ -65,14 +68,18 @@
 	current_list_element = rand(1, length(reagent_list))
 
 	while(total_transfered != amount)
-		if(total_transfered >= amount) break
-		if(total_volume <= 0 || !length(reagent_list)) break
+		if(total_transfered >= amount)
+			break
+		if(total_volume <= 0 || !length(reagent_list))
+			break
 
-		if(current_list_element > length(reagent_list)) current_list_element = 1
+		if(current_list_element > length(reagent_list))
+			current_list_element = 1
 		var/datum/reagent/current_reagent = reagent_list[current_list_element]
 
 		if(current_reagent.id == reagent_to_ignore)
-			if(length(reagent_list) == 1) break //if the reagent to be avoided is the only one in the list, we're done here.
+			if(length(reagent_list) == 1)
+				break //if the reagent to be avoided is the only one in the list, we're done here.
 			if(current_list_element == 1)
 				current_reagent = reagent_list[current_list_element + 1] //if the selected reagent was number 1, we don't want it trying to draw id.0, so we add 1
 			else
@@ -478,7 +485,8 @@
 /datum/reagents/proc/get_reagents()
 	var/res = ""
 	for(var/datum/reagent/A in reagent_list)
-		if(res != "") res += ","
+		if(res != "")
+			res += ","
 		res += A.name
 
 	return res

@@ -50,9 +50,11 @@ They're all essentially identical when it comes to getting the job done.
 	GLOB.ammo_magazine_list += src
 	base_mag_icon = icon_state
 	base_mag_item = item_state
-	if(spawn_empty) current_rounds = 0
+	if(spawn_empty)
+		current_rounds = 0
 	switch(current_rounds)
-		if(-1) current_rounds = max_rounds //Fill it up. Anything other than -1 and 0 will just remain so.
+		if(-1)
+			current_rounds = max_rounds //Fill it up. Anything other than -1 and 0 will just remain so.
 		if(0)
 			icon_state += "_e" //In case it spawns empty instead.
 			item_state += "_e"
@@ -113,7 +115,8 @@ They're all essentially identical when it comes to getting the job done.
 			if (current_rounds > 0)
 				if(create_handful(user))
 					return
-			else to_chat(user, "[src] is empty. Nothing to grab.")
+			else
+				to_chat(user, "[src] is empty. Nothing to grab.")
 			return
 	return ..() //Do normal stuff.
 
@@ -150,7 +153,8 @@ They're all essentially identical when it comes to getting the job done.
 		if(user)
 			user.temp_drop_inv_item(source)
 		qdel(source) //Dangerous. Can mean future procs break if they reference the source. Have to account for this.
-	else source.update_icon()
+	else
+		source.update_icon()
 
 	if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun) && !istype(source, /obj/item/ammo_magazine/shotgun)) //if we are shotgun or revolver or whatever not using normal mag system
 		playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
@@ -185,7 +189,8 @@ They're all essentially identical when it comes to getting the job done.
 			user.put_in_hands(new_handful)
 			to_chat(user, SPAN_NOTICE("You grab <b>[amount_to_transfer]</b> round\s from [obj_name]."))
 
-		else new_handful.forceMove(get_turf(src))
+		else
+			new_handful.forceMove(get_turf(src))
 		update_icon(-amount_to_transfer) //Update the other one.
 	return amount_to_transfer //Give the number created.
 
@@ -288,7 +293,8 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	if(istype(transfer_from)) // We have a handful. They don't need to hold it.
 		if(default_ammo == transfer_from.default_ammo) //Has to match.
 			transfer_ammo(transfer_from,user, transfer_from.current_rounds) // Transfer it from currently held to src
-		else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
+		else
+			to_chat(user, "Those aren't the same rounds. Better not mix them up.")
 
 /obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, new_max_rounds, new_rounds, new_gun_type)
 	var/datum/ammo/A = GLOB.ammo_list[new_ammo]
@@ -347,7 +353,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //This does most of the heavy lifting. It updates the icon and name if needed, then changes .dir to simulate new casings.
 /obj/item/ammo_casing/update_icon()
 	if(max_casings >= current_casings)
-		if(current_casings == 2) name += "s" //In case there is more than one.
+		if(current_casings == 2)
+			name += "s" //In case there is more than one.
 		if(floor((current_casings-1)/8) > current_icon)
 			current_icon++
 			icon_state += "_[current_icon]"
@@ -357,8 +364,10 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		var/base_direction = current_casings - (current_icon * 8)
 		setDir(base_direction + floor(base_direction)/3)
 		switch(current_casings)
-			if(3 to 5) w_class = SIZE_SMALL //Slightly heavier.
-			if(9 to 10) w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.
+			if(3 to 5)
+				w_class = SIZE_SMALL //Slightly heavier.
+			if(9 to 10)
+				w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.
 
 
 //Making child objects so that locate() and istype() doesn't screw up.

@@ -636,7 +636,7 @@ const BlackMarketMenu = () => {
       >
         WY${dollars}
       </Box>
-      <Stack.Item height="25%" width="80%">
+      <Stack.Item height="25%" width="75%">
         {blackmarketCategory ? (
           <Section fill scrollable width="100%">
             <Box>
@@ -704,14 +704,14 @@ const MendozaDialogue = () => {
 
   if (!mendoza_status) {
     return (
-      <Stack vertical justify="space-around">
+      <Stack vertical fill justify="space-around">
         <Stack.Item>.......</Stack.Item>
       </Stack>
     );
   }
 
   return stateFirst ? (
-    <Stack vertical justify="space-around">
+    <Stack vertical fill justify="space-around">
       <Stack.Item>
         {
           "Hold on- holy shit, what? Hey, hey! Finally! I've set THAT circuit board for replacement shipping off god knows who long ago. I had totally given up on it."
@@ -744,7 +744,7 @@ const MendozaDialogue = () => {
       </Stack.Item>
     </Stack>
   ) : (
-    <Stack vertical justify="space-around">
+    <Stack vertical fill justify="space-around">
       <Stack.Item>{pickedDialogue}</Stack.Item>
     </Stack>
   );

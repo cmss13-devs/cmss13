@@ -2316,6 +2316,23 @@
 	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/webley(src)
 
+/obj/item/storage/belt/gun/iasf_para_belt/custom
+	name = "\improper IASF custom paratrooper belt"
+	desc = "A modified IASF paratrooper belt featuring a black leather holster with gold inlay, originally designed for a Webley revolver but reworked to fit a custom L54 pistol. A large utility pouch and smaller compartments provide space for .455 speedloaders, L54 magazines, and other field essentials—standard kit for airborne troops in hostile territory."
+	icon_state = "iasf_pistol_para_custom"
+	item_state = "iasf_pistol_para_custom"
+	can_hold = list(
+		/obj/item/weapon/gun/revolver/m44/custom/webley,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/weapon/gun/pistol/l54,
+		/obj/item/ammo_magazine/pistol/l54,
+	)
+
+/obj/item/storage/belt/gun/iasf_para_belt/custom/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54/custom())
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/l54(src)
+
 /obj/item/storage/belt/gun/smartgunner
 	name = "\improper M802 pattern smartgunner sidearm rig"
 	desc = "The M802 is a limited-issue mark of USCM load-bearing equipment, designed to carry smartgun ammunition and a sidearm."

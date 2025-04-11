@@ -948,6 +948,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/outdoors/colony_streets/central_streets)
 "gf" = (
+/obj/item/shard,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "gh" = (
@@ -1451,7 +1452,7 @@
 	dir = 1;
 	welded = 1
 	},
-/obj/structure/window/framed/hybrisa/marshalls/reinforced,
+/obj/item/shard,
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/twe_souter_outpost)
 "kQ" = (
@@ -3386,8 +3387,7 @@
 	pixel_y = 28
 	},
 /obj/structure/bed/bedroll{
-	dir = 9;
-	layer = 4
+	dir = 9
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/blue/north,
@@ -4050,6 +4050,10 @@
 	},
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
+"KI" = (
+/obj/item/shard,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
 "KK" = (
 /obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
 /obj/structure/stairs{
@@ -4883,13 +4887,12 @@
 	dir = 1
 	},
 /obj/structure/barricade/sandbags/wired{
-	dir = 8
+	dir = 8;
+	pixel_y = 4
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/item/shard,
 /obj/structure/machinery/power/apc/power/south,
-/obj/item/shard,
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/lv759/indoors/twe_souter_outpost)
 "VH" = (
@@ -4999,12 +5002,13 @@
 	icon_state = "cargo"
 	},
 /obj/structure/barricade/sandbags/wired{
-	dir = 8
+	dir = 8;
+	pixel_y = -4
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/item/shard,
 /obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/obj/item/shard,
 /obj/item/shard,
 /turf/open/floor/prison,
 /area/lv759/indoors/twe_souter_outpost)
@@ -5357,7 +5361,7 @@ KK
 uS
 "}
 (3,1,1) = {"
-TO
+fZ
 Tb
 rR
 Kz
@@ -5528,7 +5532,7 @@ SH
 Ak
 Ak
 iD
-sB
+KI
 kP
 iD
 uK

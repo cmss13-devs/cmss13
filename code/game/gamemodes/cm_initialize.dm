@@ -113,25 +113,7 @@ Additional game mode variables.
 /datum/game_mode/proc/get_roles_list()
 	return GLOB.ROLES_USCM
 
-//===================================================\\
 
-				//GAME MODE INITIATLIZE\\
-
-//===================================================\\
-
-/datum/game_mode/proc/initialize_special_clamps()
-	xeno_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
-	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
-	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
-			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(marine_starting_num)
-			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(marine_starting_num)
-
-	for(var/i in GLOB.RoleAuthority.roles_by_name)
-		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]
-		if(J.scaled)
-			J.set_spawn_positions(marine_starting_num)
 
 
 //===================================================\\
@@ -144,6 +126,7 @@ Additional game mode variables.
 	predators[new_predator.ckey] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	if(!ignore_pred_num)
 		pred_current_num++
+
 
 /datum/game_mode/proc/get_whitelisted_predators(readied = 1)
 	// Assemble a list of active players who are whitelisted.
@@ -298,7 +281,7 @@ Additional game mode variables.
 
 	for(var/job in FAX_RESPONDER_JOB_LIST)
 		var/datum/job/fax_responder_job = GLOB.RoleAuthority.roles_by_name[job]
-		var/job_max = fax_responder_job.total_positions
+		var/job_max = fax_responder_job.total_positions_so_far
 		if((fax_responder_job.current_positions < job_max) && fax_responder_job.can_play_role(responder_candidate.client))
 			options += job
 	return options
@@ -1190,7 +1173,7 @@ Additional game mode variables.
 
 	// council doesn't count towards this conditional.
 	if(joe_job.get_whitelist_status(joe_candidate.client) == WHITELIST_NORMAL)
-		var/joe_max = joe_job.total_positions
+		var/joe_max = joe_job.total_positions_so_far
 		if((joe_job.current_positions >= joe_max) && !MODE_HAS_MODIFIER(/datum/gamemode_modifier/ignore_wj_restrictions))
 			if(show_warning)
 				to_chat(joe_candidate, SPAN_WARNING("Only [joe_max] Working Joes may spawn per round."))

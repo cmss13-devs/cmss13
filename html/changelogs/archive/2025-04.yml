@@ -222,3 +222,12 @@
   - mapadd: Added medical-themed 15x10 tutorial map
   - refactor: Reworked code for roller beds to allow continuous tracking
   - bugfix: IA pill bottles and Vials now display working icons in vendor UI
+2025-04-11:
+  SpartanBobby:
+  - maptweak: Fixes bugs in LV522 buttons, adds more ammo
+  biologed:
+  - bugfix: added size property for box of zip cuffs with value MEDIUM (normal)
+  nauticall:
+  - bugfix: Crew manifest will no longer stay open for hostiles or non-USCM (xenos,
+      survivors, UPP, etc) joining the game from the lobby.
+  - bugfix: Fixed duplicate entries on the crew manifest.

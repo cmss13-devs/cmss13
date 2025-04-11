@@ -228,7 +228,7 @@
 			stop_processing()
 		update_icon()
 		M.visible_message(SPAN_DANGER("[M] pulls apart \the [src]'s panels and breaks all its internal wiring and tubing!"),
-		msg_admin_niche("[M.key] has destroyed the sensor tower.")
+		msg_admin_niche("[key_name(M)] has destroyed the sensor tower.")
 		SPAN_DANGER("You pull apart \the [src]'s panels and break all its internal wiring and tubing!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 	else

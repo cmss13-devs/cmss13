@@ -723,7 +723,7 @@ Additional game mode variables.
 		to_chat(xeno_candidate, SPAN_WARNING("Picked choice is not available anymore, try again!"))
 		return FALSE
 
-	msg_admin_niche("[xeno_candidate.key] has joined as a facehugger.")
+	msg_admin_niche("[key_name(xeno_candidate)] has joined as a facehugger.")
 
 	//Call the appropriate procs to spawn with
 	if(iscarrier(facehugger_choice))
@@ -788,7 +788,7 @@ Additional game mode variables.
 
 	var/obj/effect/alien/resin/special/pylon/selected_structure = selection_list_structure[selection_list.Find(prompt)]
 
-	msg_admin_niche("[xeno_candidate.key] has joined as a lesser drone.")
+	msg_admin_niche("[key_name(xeno_candidate)] has joined as a lesser drone.")
 
 	selected_structure.spawn_lesser_drone(xeno_candidate)
 

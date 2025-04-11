@@ -1,5 +1,0 @@
-author: "nauticall"
-delete-after: True
-changes:
-  - bugfix: "Crew manifest will no longer stay open for hostiles or non-USCM (xenos, survivors, UPP, etc) joining the game from the lobby."
-  - bugfix: "Fixed duplicate entries on the crew manifest."

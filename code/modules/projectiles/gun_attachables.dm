@@ -278,7 +278,12 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/suppressor/New()
 	..()
 	damage_falloff_mod = 0.1
-	attach_icon = pick("suppressor_a","suppressor2_a")
+
+/obj/item/attachable/suppressor/nsg
+	name = "\improper BL11 firearm muffler"
+	desc = "Threaded steel barrel attachment; slows the escape of propellant gasses, resulting in muffled weapon fire."
+	icon_state = "bl11"
+	attach_icon = "bl11_a"
 
 /obj/item/attachable/suppressor/xm40_integral
 	name = "\improper XM40 integral suppressor"
@@ -332,10 +337,17 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bayonet/upp_replica
 	name = "\improper Type 80 bayonet"
+	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
 	attach_icon = "upp_bayonet_a"
-	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
+
+/obj/item/attachable/bayonet/wy
+	name = "\improper SA120 L7 bayonet"
+	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
+	icon_state = "wy_bayonet"
+	attach_icon = "wy_bayonet_a"
+	unacidable = TRUE
 
 /obj/item/attachable/bayonet/upp
 	name = "\improper Type 80 bayonet"
@@ -3234,10 +3246,6 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_WARNING("[src] can only be refilled with an incinerator tank."))
 
 /obj/item/attachable/attached_gun/flamer/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
-	if(get_dist(user,target) > max_range+4)
-		to_chat(user, SPAN_WARNING("Too far to fire the attachment!"))
-		return
-
 	if(!istype(loc, /obj/item/weapon/gun))
 		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
 		return
@@ -3257,38 +3265,53 @@ Defined in conflicts.dm of the #defines folder.
 	set waitfor = 0
 	var/list/turf/turfs = get_line(user,target)
 	var/distance = 0
-	var/turf/prev_T
+	var/turf/prev_turf
 	var/stop_at_turf = FALSE
 	playsound(user, 'sound/weapons/gun_flamethrower2.ogg', 50, 1)
-	for(var/turf/T in turfs)
-		if(T == user.loc)
-			prev_T = T
-			continue
-		if(!current_rounds || current_rounds < round_usage_per_tile)
-			break
-		if(distance >= max_range)
-			break
+	process_flame_turf(turfs, target, user, distance, prev_turf, stop_at_turf)
 
-		current_rounds -= round_usage_per_tile
-		var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
-		if(T.density)
-			T.flamer_fire_act(0, cause_data)
+/obj/item/attachable/attached_gun/flamer/proc/process_flame_turf(list/turfs, atom/target, mob/living/user, distance, turf/prev_turf, stop_at_turf)
+	if(!length(turfs))
+		return
+	var/turf/current_turf = turfs[1]
+	turfs.Cut(1,2)
+	if(current_turf == user.loc)
+		prev_turf = current_turf
+		addtimer(CALLBACK(src, PROC_REF(process_flame_turf), turfs, target, user, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
+		return
+	if(!current_rounds)
+		return
+	if(distance >= max_range)
+		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+		return
+
+	current_rounds -= min(round_usage_per_tile, current_rounds)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
+	if(current_turf.density)
+		current_turf.flamer_fire_act(0, cause_data)
+		stop_at_turf = TRUE
+	else if(prev_turf)
+		var/atom/movable/temp = new/obj/flamer_fire()
+		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
+		qdel(temp)
+
+		if(blocked)
+			blocked.flamer_fire_act(0, cause_data)
+			if(blocked.flags_atom & ON_BORDER)
+				return
 			stop_at_turf = TRUE
-		else if(prev_T)
-			var/atom/movable/temp = new/obj/flamer_fire()
-			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
-			qdel(temp)
-			if(AM)
-				AM.flamer_fire_act(0, cause_data)
-				if (AM.flags_atom & ON_BORDER)
-					break
-				stop_at_turf = TRUE
-		flame_turf(T, user)
-		if (stop_at_turf)
-			break
-		distance++
-		prev_T = T
-		sleep(1)
+
+	flame_turf(current_turf, user)
+	if(stop_at_turf)
+		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+		return
+
+	distance++
+	prev_turf = current_turf
+
+	if(!length(turfs))
+		to_chat(user, SPAN_WARNING("The meter reads: <b>[floor(current_rounds)]</b> fuel blocks remaining!"))
+	addtimer(CALLBACK(src, PROC_REF(process_flame_turf), turfs, target, user, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
 
 
 /obj/item/attachable/attached_gun/flamer/proc/flame_turf(turf/T, mob/living/user)

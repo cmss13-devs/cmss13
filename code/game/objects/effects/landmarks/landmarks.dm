@@ -116,6 +116,10 @@
 	name = "distress_groundside_xeno"
 	icon_state = "spawn_distress_xeno"
 
+/obj/effect/landmark/ert_spawns/groundside_army
+	name = "distress_groundside_army"
+	icon_state = "spawn_distress_wo"
+
 /obj/effect/landmark/monkey_spawn
 	name = "monkey_spawn"
 	icon_state = "monkey_spawn"
@@ -167,6 +171,15 @@
 	new /mob/living/simple_animal/hostile/retaliate/giant_lizard(loc)
 
 #undef MAXIMUM_LIZARD_AMOUNT
+
+/obj/effect/landmark/xeno_npc_spawn
+	name = "xeno npc spawn"
+	icon_state = "xeno_spawn"
+
+/obj/effect/landmark/xeno_npc_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(prob(80))
+		new /mob/living/simple_animal/hostile/alien(loc)
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"

@@ -157,6 +157,11 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military warden"
 
+/obj/item/clothing/under/marine/army
+	name = "US Army uniform"
+	desc = "Standard-issue Army uniform. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
+	specialty = "US Army"
+
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
 	desc = "Softer than silk. Lighter than feather. More protective than Kevlar. Fancier than a regular jumpsuit, too. It has shards of light Kevlar to help protect against stabbing weapons and bullets."

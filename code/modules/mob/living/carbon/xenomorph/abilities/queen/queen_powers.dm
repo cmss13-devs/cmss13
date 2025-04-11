@@ -771,13 +771,6 @@
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
 
-
-/mob/living/carbon/xenomorph/proc/xeno_tacmap()
-	set name = "View Xeno Tacmap"
-	set desc = "This opens a tactical map, where you can see where every xenomorph is."
-	set category = "Alien"
-	hive.tacmap.tgui_interact(src)
-
 /datum/action/xeno_action/onclick/screech/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 
@@ -991,9 +984,3 @@
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
 	xeno.hive_message()
 	return ..()
-
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	xeno.xeno_tacmap()
-	return ..()
-

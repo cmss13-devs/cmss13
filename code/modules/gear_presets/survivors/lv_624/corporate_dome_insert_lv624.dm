@@ -162,6 +162,8 @@
 	rank = JOB_WY_GOON_SYNTH
 	minimap_icon = "goon_synth"
 	role_comm_title = "WY Syn"
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,

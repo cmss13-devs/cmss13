@@ -43,7 +43,6 @@
 	var/stat_msg1
 	var/stat_msg2
 
-	var/datum/tacmap/drawing/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
 
 	processing = TRUE
@@ -51,10 +50,8 @@
 /obj/structure/machinery/computer/communications/Initialize()
 	. = ..()
 	start_processing()
-	tacmap = new(src, minimap_type)
 
 /obj/structure/machinery/computer/communications/Destroy()
-	QDEL_NULL(tacmap)
 	return ..()
 
 /obj/structure/machinery/computer/communications/process()
@@ -67,9 +64,6 @@
 
 	usr.set_interaction(src)
 	switch(href_list["operation"])
-		if("mapview")
-			tacmap.tgui_interact(usr)
-
 		if("main")
 			state = STATE_DEFAULT
 

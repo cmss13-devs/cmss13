@@ -290,10 +290,6 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
-"aaY" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ag/exterior/landing_zones/near_lz2)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -366,10 +362,10 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
-"abm" = (
+"abn" = (
 /obj/effect/landmark/spycam_start,
-/turf/open/floor/strata,
-/area/strata/ag/interior/landing_zones/near_lz1)
+/turf/open/asphalt/cement/cement4,
+/area/strata/ag/exterior/landing_zones/lz2)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -378,6 +374,11 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+"abq" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -37237,7 +37238,7 @@ aol
 aol
 aol
 aol
-aol
+abq
 aol
 cso
 aol
@@ -37582,7 +37583,7 @@ cqE
 cqE
 cqE
 cqE
-abm
+cqE
 cqE
 cqE
 cqE
@@ -43255,7 +43256,7 @@ pAZ
 bvE
 bvE
 xTU
-eFa
+abn
 bJI
 vsp
 hue
@@ -43602,7 +43603,7 @@ wSb
 wSb
 bvD
 bvD
-aaY
+bvD
 xgU
 bvD
 xTU

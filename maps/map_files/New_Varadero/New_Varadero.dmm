@@ -218,10 +218,6 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
-"aaQ" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/gm/dirt,
-/area/varadero/exterior/lz2_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -24092,6 +24088,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "tfc" = (
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
 "tfj" = (
@@ -41836,7 +41833,7 @@ wMw
 wMw
 wMw
 wMw
-aaP
+wMw
 xcE
 wMw
 wMw
@@ -43119,7 +43116,7 @@ bZU
 bZU
 xsH
 mrC
-wMw
+aaP
 wMw
 wMw
 wMw
@@ -55287,7 +55284,7 @@ lTg
 wlB
 wlB
 wlB
-aaQ
+wlB
 wlB
 lTg
 wlB

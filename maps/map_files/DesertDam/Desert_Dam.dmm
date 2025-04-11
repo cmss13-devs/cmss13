@@ -895,20 +895,18 @@
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
-"adJ" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/landing_pad_two)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
-"adL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
+"adM" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_two)
+"adN" = (
+/obj/structure/desertdam/decals/road_edge,
 /obj/effect/landmark/spycam_start,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
@@ -53944,7 +53942,7 @@ lIt
 lIt
 lIt
 lIt
-adJ
+lIt
 lIt
 lIt
 lIt
@@ -56802,7 +56800,7 @@ aQW
 aQW
 aQW
 aQW
-adL
+aQW
 aQW
 aQW
 aQW
@@ -57442,7 +57440,7 @@ cDX
 cDX
 cDX
 cDX
-cDX
+adM
 cDX
 cDX
 cDX
@@ -60547,7 +60545,7 @@ iKp
 iKp
 iKp
 iKp
-iKp
+adN
 iKp
 iKp
 iKp

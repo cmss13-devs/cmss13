@@ -41,20 +41,20 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
-"aai" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/prison,
-/area/fiorina/lz/near_lzII)
-"aaj" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/lz/near_lzI)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/servers)
+"aal" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzII)
+"aam" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/darkyellow2/north,
+/area/fiorina/lz/near_lzI)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/prison,
@@ -63775,7 +63775,7 @@ fAf
 nZB
 kEx
 fAf
-nZB
+aal
 nZB
 fAf
 nZB
@@ -67176,7 +67176,7 @@ fAf
 nZB
 nZB
 nZB
-aai
+fAf
 nZB
 nZB
 nZB
@@ -79811,7 +79811,7 @@ nGZ
 mSP
 nGZ
 nGZ
-qaL
+aam
 uYi
 nGZ
 nGZ
@@ -83213,7 +83213,7 @@ nGZ
 nGZ
 qaL
 fDJ
-aaj
+fDJ
 uYi
 cUd
 cUd

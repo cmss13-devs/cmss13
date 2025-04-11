@@ -158,9 +158,9 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
-"aaP" = (
+"aaQ" = (
 /obj/effect/landmark/spycam_start,
-/turf/open/auto_turf/sand/layer1,
+/turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/lz_pad)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -20102,7 +20102,7 @@ gAM
 gAM
 gAM
 wGH
-aaO
+wGH
 wGH
 wGH
 wGH
@@ -20175,7 +20175,7 @@ ppX
 ppX
 hzN
 wXf
-jGF
+aaQ
 dmy
 dmy
 dmy
@@ -20423,7 +20423,7 @@ wGH
 wGH
 prJ
 wGH
-wGH
+aaO
 wGH
 prJ
 wGH
@@ -21167,7 +21167,7 @@ lKk
 lKk
 lKk
 lKk
-aaP
+lKk
 lKk
 lKk
 lKk

@@ -159,19 +159,19 @@
 
 		return FALSE
 
-	var/mob/living/C = target
+	var/mob/living/living_target = target
 
-	if(istype(C, /mob/living/carbon))
-		C.real_name = params["name"]
+	if(istype(living_target, /mob/living/carbon))
+		living_target.real_name = params["name"]
 
-	C.name = params["name"]
+	living_target.name = params["name"]
 
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		var/obj/item/card/id/card = H.get_idcard()
+	if(ishuman(living_target))
+		var/mob/living/carbon/human/human_target = living_target
+		var/obj/item/card/id/card = human_target.get_idcard()
 		if(card)
-			card.registered_name = H.name
-			card.name = "[H.name]'s [card.id_type][card.assignment ? " ([card.assignment])" : ""]"
+			card.registered_name = human_target.name
+			card.name = "[human_target.name]'s [card.id_type][card.assignment ? " ([card.assignment])" : ""]"
 
 	message_admins("[key_name_admin(user)] set [key_name_admin(target)]'s name to [params["name"]]")
 

@@ -145,6 +145,8 @@
 	playsound(new_drone, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	new_drone.generate_name()
 
+	msg_admin_niche("[key_name(new_drone)] has joined as a lesser drone at ([x],[y],[z]).")
+
 	return TRUE
 
 /obj/effect/alien/resin/special/pylon/endgame

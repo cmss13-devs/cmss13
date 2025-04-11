@@ -950,6 +950,7 @@
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
+	msg_admin_niche("[key_name(hugger)] has joined as a facehugger at ([A.x],[A.y],[A.z]).")
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	var/countable_xeno_iterator = 0

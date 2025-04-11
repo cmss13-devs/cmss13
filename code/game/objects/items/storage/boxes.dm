@@ -319,7 +319,6 @@
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 
-
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
@@ -335,6 +334,44 @@
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
+
+/obj/item/storage/box/teabags
+	name = "box of Earl Grey tea bags"
+	desc = "A box of instant tea bags."
+	icon_state = "teabag_box"
+	item_state = "teabag_box"
+	can_hold = list(/obj/item/reagent_container/pill/teabag)
+	w_class = SIZE_SMALL
+	storage_slots = 8
+
+/obj/item/storage/box/teabags/fill_preset_inventory()
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+
+/obj/item/storage/box/lemondrop
+	name = "box of Lemon Drop candies"
+	desc = "A box of lemon flavored hard candies."
+	icon_state = "lemon_drop_box"
+	item_state = "lemon_drop_box"
+	can_hold = list(/obj/item/reagent_container/food/snacks/lemondrop)
+	w_class = SIZE_SMALL
+	storage_slots = 8
+
+/obj/item/storage/box/lemondrop/fill_preset_inventory()
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
 
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
@@ -426,6 +463,7 @@
 /obj/item/storage/box/zipcuffs
 	name = "box of zip cuffs"
 	desc = "A box full of zip cuffs."
+	w_class = SIZE_MEDIUM
 	icon_state = "handcuff"
 	item_state = "handcuff"
 
@@ -854,82 +892,6 @@
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
-
-/obj/item/storage/box/MRE
-	name = "\improper USCM MRE"
-	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
-	icon_state = "mealpack"
-	item_state = "mealpack"
-	icon = 'icons/obj/items/storage/mre.dmi'
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
-	)
-	w_class = SIZE_SMALL
-	can_hold = list()
-	storage_slots = 7
-	max_w_class = 0
-	use_sound = "rip"
-	var/isopened = FALSE
-
-/obj/item/storage/box/MRE/fill_preset_inventory()
-	pickflavor()
-
-/obj/item/storage/box/MRE/proc/pickflavor()
-	var/main = pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
-	var/second = pick("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
-	var/side = pick("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
-	var/desert = pick("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
-	name = "[initial(name)] ([main])"
-	//1 in 3 chance of getting a fortune cookie
-	var/cookie = rand(1,3)
-	var/matches_type = rand(1, 5)
-	if(cookie == 1)
-		storage_slots = 8
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, main)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, second)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, side)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, desert)
-	new /obj/item/reagent_container/food/drinks/cans/waterbottle(src)
-	if(cookie == 1)
-		new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(src)
-	new /obj/item/storage/fancy/cigarettes/lucky_strikes_4(src)
-	switch(matches_type)
-		if(1)
-			new /obj/item/storage/fancy/cigar/matchbook(src)
-		if(2)
-			new /obj/item/storage/fancy/cigar/matchbook/koorlander(src)
-		if(3)
-			new /obj/item/storage/fancy/cigar/matchbook/exec_select(src)
-		if(4)
-			new /obj/item/storage/fancy/cigar/matchbook/wy_gold(src)
-		if(5)
-			new /obj/item/storage/fancy/cigar/matchbook/brown(src)
-
-/obj/item/storage/box/MRE/Initialize()
-	. = ..()
-	isopened = FALSE
-	icon_state = "mealpack"
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
-
-/obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
-	SIGNAL_HANDLER
-
-	if(!isturf(loc))
-		return
-
-	if(locate(/obj/item/reagent_container/food/snacks/packaged_meal) in src)
-		return
-
-	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
-	storage_close(user)
-	to_chat(user, SPAN_NOTICE("You throw away [src]."))
-	qdel(src)
-
-/obj/item/storage/box/MRE/update_icon()
-	if(!isopened)
-		isopened = TRUE
-		icon_state = "mealpackopened"
 
 //food boxes for storage in bulk
 

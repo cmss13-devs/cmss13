@@ -83,10 +83,18 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 	"thunder",
 	"ERT",
 	"NUKE",
+	CAMERA_NET_CONTAINMENT_HIDDEN,
 	CAMERA_NET_LADDER,
+	CAMERA_NET_MORANA,
+	CAMERA_NET_DEVANA,
 	CAMERA_NET_COLONY,
 	CAMERA_NET_OVERWATCH,
 	CAMERA_NET_ARES,
+	CAMERA_NET_POWER_ALARMS,
+	CAMERA_NET_ATMOSPHERE_ALARMS,
+	CAMERA_NET_FIRE_ALARMS,
+	CAMERA_NET_SIMULATION,
+	CAMERA_NET_YAUTJA,
 	))
 
 #define STASIS_IN_BAG 1
@@ -105,6 +113,38 @@ GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be 
 #define IS_SHARP_ITEM_ACCURATE 2 //knife, scalpel
 #define IS_SHARP_ITEM_BIG 3 //fireaxe, hatchet, energy sword
 
+///can opener defines
+///can open a can without issues
+#define CAN_OPENER_EFFECTIVE list(\
+	/obj/item/tool/kitchen/can_opener,\
+	/obj/item/tool/kitchen/can_opener/compact,\
+	/obj/item/weapon/bracer_attachment/wristblades\
+	)
+
+///slow can opening with a chance of jamming
+#define CAN_OPENER_CRUDE list(\
+	/obj/item/attachable/bayonet,\
+	/obj/item/attachable/bayonet/upp,\
+	/obj/item/attachable/bayonet/rmc,\
+	/obj/item/attachable/bayonet/antique,\
+	/obj/item/attachable/bayonet/custom,\
+	/obj/item/attachable/bayonet/custom/red,\
+	/obj/item/attachable/bayonet/custom/blue,\
+	/obj/item/attachable/bayonet/custom/black,\
+	/obj/item/tool/kitchen/knife,\
+	/obj/item/tool/kitchen/knife/butcher,\
+	/obj/item/bracer_attachments/scimitars,\
+	/obj/item/bracer_attachments/scimitars_alt,\
+	/obj/item/weapon/yautja/sword,\
+	/obj/item/weapon/yautja/sword/alt_1,\
+	/obj/item/weapon/yautja/sword/alt_2,\
+	/obj/item/weapon/yautja/sword/alt_3,\
+	/obj/item/weapon/sword,\
+	/obj/item/weapon/sword/claymore,\
+	/obj/item/weapon/sword/ceremonial,\
+	/obj/item/weapon/sword/machete,\
+	/obj/item/weapon/sword/machete/arnold\
+	)
 
 //pry capable item defines
 #define IS_PRY_CAPABLE_SIMPLE 1

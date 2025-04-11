@@ -352,6 +352,11 @@
 	desc = "Cats really don't like these things."
 	turf_flags = NO_FLAGS // platingdmg && panelscorched icon_state does not exist in this icon
 
+/turf/open/floor/plating/catwalk/Initialize(mapload, ...)
+	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
+
+	. = ..()
+
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'
 	icon_state = "default"
@@ -2132,6 +2137,12 @@
 /turf/open/floor/almayer/fake_outerhull
 	icon_state = "outerhull"
 
+/turf/open/floor/almayer/research/containment/yautja
+	icon ='icons/turf/floors/corsat.dmi'
+	icon_state = "box"
+
+/turf/open/floor/almayer/research/containment/yautja/alt
+	icon_state = "squares"
 
 //Outerhull
 
@@ -2173,6 +2184,77 @@
 
 //////////////////////////////////////////////////////////////////////
 
+//Outerhull UPP
+
+/turf/open/floor/upp_hull_rostock
+	icon = 'icons/turf/walls/upp_hull.dmi'
+	icon_state = "outerhull_upp_rostock"
+	name = "hull"
+	turf_flags = TURF_HULL
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir
+	icon_state = "outerhull_dir_upp_rostock"
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northwest
+	dir = NORTHWEST
+
+
+//Outerhull Reskin Almayer UPP
+
+/turf/open/floor/upp_hull
+	icon = 'icons/turf/walls/upp_hull.dmi'
+	icon_state = "outerhull_upp"
+	name = "hull"
+	turf_flags = TURF_HULL
+
+/turf/open/floor/upp_hull/outerhull_dir
+	icon_state = "outerhull_dir_upp"
+
+/turf/open/floor/upp_hull/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/upp_hull/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/upp_hull/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/upp_hull/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/upp_hull/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/upp_hull/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/upp_hull/outerhull_dir/northwest
+	dir = NORTHWEST
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
 
 
 

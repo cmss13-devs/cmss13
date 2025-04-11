@@ -27,7 +27,7 @@
   .sectionLoad {
     animation: section-loading 1s forwards;
     box-shadow: 0 0 15px;
-    background-color: rgba(0, 17, 0, 0.7);
+    background-color: hsla(120, 100%, 3%, 0.7);
   }
 
   .dividerEffect {
@@ -87,15 +87,13 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background: linear-gradient(
-            rgba(18, 16, 16, 0) 50%,
-            rgba(0, 0, 0, 0.25) 50%
-          ),
+        background:
+          linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
           linear-gradient(
             90deg,
-            rgba(255, 0, 0, 0.06),
-            rgba(0, 255, 0, 0.02),
-            rgba(0, 0, 255, 0.06)
+            hsla(0, 100%, 50%, 0.06),
+            hsla(120, 100%, 50%, 0.02),
+            hsla(240, 100%, 50%, 0.06)
           );
         z-index: 2;
         background-size:
@@ -112,14 +110,14 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background: rgba(18, 16, 16, 0.1);
+        background: hsla(0, 6%, 7%, 0.1);
         opacity: 0;
         z-index: 2;
         pointer-events: none;
       }
 
       @supports (not (-webkit-hyphens: none)) and (not (-moz-appearance: none)) {
-        box-shadow: 0 0 500px 25px rgba(0, 0, 0, 0.9) inset;
+        box-shadow: 0 0 500px 25px hsla(0, 0%, 0%, 0.9) inset;
       }
     }
   }
@@ -136,12 +134,12 @@
     }
 
     .sectionLoad {
-      border: 3px solid #384e68;
-      background-color: rgba(0, 0, 0, 0.7);
+      border: 3px solid hsl(213, 30%, 31%);
+      background-color: hsla(0, 0%, 0%, 0.7);
     }
 
     .dividerEffect {
-      border-color: #384e68;
+      border-color: hsl(213, 30%, 31%);
     }
   }
 }
@@ -185,6 +183,10 @@
       vertical-align: middle;
       margin-bottom: 3px;
     }
+  }
+
+  .messageHolder {
+    pointer-events: none;
   }
 }
 

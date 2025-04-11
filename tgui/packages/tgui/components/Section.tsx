@@ -5,10 +5,10 @@
  */
 
 import { canRender, classes } from 'common/react';
-import { forwardRef, ReactNode, RefObject, useEffect } from 'react';
+import { forwardRef, type ReactNode, type RefObject, useEffect } from 'react';
 
 import { addScrollableNode, removeScrollableNode } from '../events';
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type Props = Partial<{
   /** Buttons to render aside the section title. */
@@ -27,6 +27,10 @@ type Props = Partial<{
   container_id: string;
   /** @member Callback function for the `scroll` event */
   onScroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  /** Callback for the Selection Start */
+  onSelectStart: () => void;
+  /** Tab Index */
+  tabIndex: number;
 }> &
   BoxProps;
 

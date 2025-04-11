@@ -1,11 +1,12 @@
-import { useBackend } from '../../backend';
-import { Dropdown, NumberInput, Stack } from '../../components';
+import { useBackend } from 'tgui/backend';
+import { Dropdown, NumberInput, Stack } from 'tgui/components';
+
 import {
-  GeneratorProps,
+  type GeneratorProps,
   GeneratorTypes,
   GeneratorTypesNoVectors,
   P_DATA_GENERATOR,
-  ParticleUIData,
+  type ParticleUIData,
   RandToNumber,
   RandTypes,
 } from './data';

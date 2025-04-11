@@ -197,3 +197,37 @@
   - bugfix: fixed painkilling OD/Crit OD having halved effects
   silverplatedelta:
   - balance: Drones can now evolve into any T2 caste before first drop
+2025-04-09:
+  Blundir:
+  - qol: flashlight, lamps, candles don't rotate when being thrown
+  Detective-Google:
+  - bugfix: things can be buckled again
+  Kashargul:
+  - bugfix: Fix fps / tick config not applying individually
+  - ui: Buttons now use blur to reset
+  - ui: Fix tgsay not scaling correctly when using small scale option
+  - ui: Fix edgecase with chat scrolling sometimes breaking when loading in large
+      chat history
+  - code_imp: Bump typescript version for tgui
+  MistChristmas:
+  - ui: Changes Scrollbar colors to mix from both foreground and background colours,
+      Improving visibility. Makes CRT-Red background red instead of blue.
+2025-04-10:
+  Blundir:
+  - rscadd: nailgun can now be held on belt slot
+  - bugfix: fixed nailgun having no inhand sprites
+  - rscadd: normal mateba ammo can now battle execute
+  Spypig23, detectivegoogle, harryob:
+  - rscadd: HM Challenge Tutorial
+  - mapadd: Added medical-themed 15x10 tutorial map
+  - refactor: Reworked code for roller beds to allow continuous tracking
+  - bugfix: IA pill bottles and Vials now display working icons in vendor UI
+2025-04-11:
+  SpartanBobby:
+  - maptweak: Fixes bugs in LV522 buttons, adds more ammo
+  biologed:
+  - bugfix: added size property for box of zip cuffs with value MEDIUM (normal)
+  nauticall:
+  - bugfix: Crew manifest will no longer stay open for hostiles or non-USCM (xenos,
+      survivors, UPP, etc) joining the game from the lobby.
+  - bugfix: Fixed duplicate entries on the crew manifest.

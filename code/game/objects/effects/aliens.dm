@@ -545,9 +545,11 @@
 	var/message = null
 	var/mob/living/carbon/xenomorph/linked_xeno = null
 	var/hivenumber = XENO_HIVE_NORMAL
-	var/empowered = FALSE
+	var/effect_sound = "acid_strike"
+	var/extra_visual_effects = TRUE
+	var/damage_cades = TRUE
 
-/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, empowered = FALSE, message = null, mob/living/carbon/xenomorph/linked_xeno = null)
+/obj/effect/xenomorph/acid_damage_delay/New(loc, damage = 20, delay = 10, message = null, mob/living/carbon/xenomorph/linked_xeno = null)
 	..(loc)
 
 	addtimer(CALLBACK(src, PROC_REF(die)), delay)
@@ -556,66 +558,45 @@
 	src.linked_xeno = linked_xeno
 	if(src.linked_xeno)
 		hivenumber = src.linked_xeno.hivenumber
-	if(empowered)
-		icon_state = "boiler_bombard_danger"
-		src.empowered = empowered
+
+/obj/effect/xenomorph/acid_damage_delay/proc/extra_visual_effects()
+	var/datum/effect_system/smoke_spread/xeno_visual_acid/gas_visual
+	gas_visual = new /datum/effect_system/smoke_spread/xeno_visual_acid
+	gas_visual.set_up(1, 0, loc, null, 3)
+	gas_visual.start()
 
 /obj/effect/xenomorph/acid_damage_delay/proc/deal_damage()
-	var/xeno_empower_modifier = 1
-	var/immobilized_multiplier = 1.45
-	if(empowered)
-		xeno_empower_modifier = 1.25
-	for (var/mob/living/carbon/H in loc)
-		if (H.stat == DEAD)
+	for(var/obj/structure/barricade/cade in loc)
+		if(damage_cades)
+			cade.take_acid_damage(damage * 2)
+
+	for(var/mob/living/carbon/target in loc)
+		if(target.stat == DEAD)
 			continue
 
-		if(H.ally_of_hivenumber(hivenumber))
+		if(target.ally_of_hivenumber(hivenumber))
 			continue
 
-		animation_flash_color(H)
+		animation_flash_color(target)
 
-		if(isxeno(H))
-			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
+		if(isxeno(target))
+			target.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT, ARMOR_BIO, BURN)
 		else
-			if(empowered)
-				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
-			var/found = null
-			for (var/datum/effects/boiler_trap/F in H.effects_list)
-				if (F.cause_data && F.cause_data.resolve_mob() == linked_xeno)
-					found = F
-					break
-			if(found)
-				H.apply_armoured_damage(damage*immobilized_multiplier, ARMOR_BIO, BURN)
-			else
-				H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
+			target.apply_armoured_damage(damage, ARMOR_BIO, BURN, null, 10)
 
-		if (message)
-			to_chat(H, SPAN_XENODANGER(message))
+		if(message)
+			to_chat(target, SPAN_XENODANGER(message))
 
 		. = TRUE
 
 /obj/effect/xenomorph/acid_damage_delay/proc/die()
 	deal_damage()
+	if(extra_visual_effects)
+		extra_visual_effects()
+	if(effect_sound)
+		playsound(src.loc, effect_sound, 25, 1)
 	qdel(src)
 
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine
-
-/obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
-	var/total_hits = 0
-	for (var/obj/structure/barricade/B in loc)
-		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
-
-	for (var/mob/living/carbon/H in loc)
-		if (H.stat == DEAD)
-			continue
-
-		if(H.ally_of_hivenumber(hivenumber))
-			continue
-
-		total_hits++
-
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
-
-	trap.reduce_cooldown(total_hits*4 SECONDS)
-
-	return ..()
+/obj/effect/xenomorph/acid_damage_delay/extra
+	effect_sound = null
+	extra_visual_effects = FALSE

@@ -138,7 +138,7 @@
 
 	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
 		var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = sniper_rifle
-		if((amr.focused_fire_counter >= 1 && amr.focused_fire_counter < 3) && (target == amr.focused_fire_target?.resolve()))
+		if(amr.focused_fire_counter == 1 && target == amr.focused_fire_target?.resolve())
 			sniper_rifle.enable_aimed_shot_icon_alt = TRUE
 		else
 			sniper_rifle.enable_aimed_shot_icon_alt = FALSE

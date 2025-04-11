@@ -2,13 +2,14 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 6 SECONDS
+	xeno_cooldown = 8 SECONDS
 	plasma_cost = 20
 
 	// Config options
-	knockdown = FALSE
-	knockdown_duration = 2.5
-	freeze_time = 15
+	knockdown = TRUE
+	freeze_self = TRUE
+	knockdown_duration = 1 // increased to 2.5 by cloak pouncing
+	freeze_time = 5 // increased to 15 by cloak pouncing
 	can_be_shield_blocked = TRUE
 
 /datum/action/xeno_action/onclick/lurker_invisibility

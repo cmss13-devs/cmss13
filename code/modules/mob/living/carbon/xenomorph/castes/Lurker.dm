@@ -75,7 +75,7 @@
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 30 SECONDS // so we can display how long the lurker is invisible to it
 	var/buffed_slash_damage_ratio = 1.2
-	var/slash_slow_duration = 35
+	var/slash_slow_duration = 25
 
 	// State
 	var/next_slash_buffed = FALSE
@@ -131,8 +131,9 @@
 /datum/behavior_delegate/lurker_base/proc/on_invisibility()
 	var/datum/action/xeno_action/activable/pounce/lurker/lurker_pounce_action = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
 	if(lurker_pounce_action)
-		lurker_pounce_action.knockdown = TRUE // pounce knocks down
-		lurker_pounce_action.freeze_self = TRUE
+		lurker_pounce_action.knockdown_duration = 2.5 // pounce is empowered
+		lurker_pounce_action.freeze_time = 15 // but you're stuck there for longer
+
 	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 	RegisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak_handler))
 	bound_xeno.stealth = TRUE
@@ -142,8 +143,8 @@
 /datum/behavior_delegate/lurker_base/proc/on_invisibility_off()
 	var/datum/action/xeno_action/activable/pounce/lurker/lurker_pounce_action = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
 	if(lurker_pounce_action)
-		lurker_pounce_action.knockdown = FALSE // pounce no longer knocks down
-		lurker_pounce_action.freeze_self = FALSE
+		lurker_pounce_action.knockdown_duration = 1 // pounce is reverted to runner level
+		lurker_pounce_action.freeze_time = 5
 	bound_xeno.stealth = FALSE
 	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 	UnregisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
@@ -192,7 +193,7 @@
 		return
 
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
-	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
+	lurker_invisibility_action.invisibility_off(0.5, FALSE) // partial refund of remaining time
 
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
@@ -211,8 +212,20 @@
 
 	if(found)
 		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-		if(lurker_invis)
-			lurker_invis.invisibility_off() // Full cooldown
+		if(lurker_invis && xeno.stealth)
+			lurker_invis.invisibility_off(0, FALSE) // Full cooldown on successful pounce
+			to_chat(xeno, SPAN_XENODANGER("We use our invisibility to empower our pounce!"))
+
+
+/datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno))
+		return
+
+	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if(lurker_invis)
+		lurker_invis.invisibility_off(0.5) // If the lurker is cloaked when pouncing, reveal them at the end with a  refund.
+
 
 /datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
@@ -263,7 +276,7 @@
 /// Implementation for disabling invisibility.
 /// (refund_multiplier) indicates how much cooldown to refund based on time remaining
 /// 0 indicates full cooldown; 0.5 indicates 50% of remaining time is refunded
-/datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off(refund_multiplier = 0.0)
+/datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off(refund_multiplier = 0.0, show_text = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))
@@ -276,7 +289,8 @@
 		invis_timer_id = TIMER_ID_NULL
 
 	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
+	if(show_text)
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
 
 	button.icon_state = "template"
 	xeno.update_icons()

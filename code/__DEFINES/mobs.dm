@@ -190,9 +190,10 @@
 #define SURGERY_MODE_ON (1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
 #define GIVING (1<<4) // Is currently trying to give an item to someone
 #define NOBIOSCAN (1<<5)
-#define MUTINY_MUTINEER (1<<6)  // Part of the Mutiny Gang
-#define MUTINY_LOYALIST (1<<7) // Allied with command.
-#define MUTINY_NONCOMBAT (1<<8) // NON COMBATANT.
+#define HAS_SPAWNED_PET (1<<6) // Has spawned their special pet.
+#define MUTINY_MUTINEER (1<<7)  // Part of the Mutiny Gang
+#define MUTINY_LOYALIST (1<<8) // Allied with command.
+#define MUTINY_NONCOMBAT (1<<9) // NON COMBATANT.
 
 //=================================================
 

@@ -113,7 +113,7 @@
 	joe_flag = WORKING_JOE_EMOTE|HAZARD_JOE_EMOTE
 
 /datum/emote/living/carbon/human/synthetic/working_joe/task_update/just_want_to_help
-	key = "wanttohelp"
+	key = "justwanttohelp"
 	sound = 'sound/voice/joe/want_to_help.ogg'
 	say_message = "I just want to help."
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE

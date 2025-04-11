@@ -212,7 +212,7 @@
 
 	if(found)
 		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-		if(lurker_invis)
+		if(lurker_invis && xeno.stealth)
 			lurker_invis.invisibility_off(0, FALSE) // Full cooldown on successful pounce
 			to_chat(xeno, SPAN_XENODANGER("We use our invisibility to empower our pounce!"))
 

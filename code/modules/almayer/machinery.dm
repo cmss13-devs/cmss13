@@ -295,3 +295,85 @@
 	new /obj/item/clothing/under/shorts/red(src)
 	new /obj/item/clothing/under/shorts/blue(src)
 	new /obj/item/clothing/under/shorts/green(src)
+
+// --- CIC Map Table --- //
+
+/obj/structure/machinery/prop/almayer/CICmap/table
+	name = "map table"
+	desc = "A large flat map table used for planning operations. It's large enough it can even be used as a proper table."
+	icon = 'icons/obj/structures/props/almayer/almayer_props96.dmi'
+	icon_state = "maptable"
+	layer = TABLE_LAYER
+	light_system = STATIC_LIGHT
+	light_color = "#DAE2FF"
+	light_power = 1
+	light_range = 2.5
+	light_pixel_x = 16
+	light_pixel_y = 32
+	bound_width = 64
+	bound_height = 96
+
+/obj/structure/machinery/prop/almayer/CICmap/table/attackby(obj/item/attacking_item, mob/user, click_data)
+	if(!user.drop_inv_item_to_loc(attacking_item, loc))
+		return
+
+	auto_align(attacking_item, click_data)
+	user.next_move = world.time + 2
+	return TRUE
+
+/obj/structure/machinery/prop/almayer/CICmap/table/proc/auto_align(obj/item/new_item, click_data)
+	if(!new_item.center_of_mass) // Clothing, material stacks, generally items with large sprites where exact placement would be unhandy.
+		new_item.pixel_x = rand(-new_item.randpixel, new_item.randpixel)
+		new_item.pixel_y = rand(-new_item.randpixel, new_item.randpixel)
+		new_item.pixel_z = 0
+		return
+
+	if(!click_data)
+		return
+
+	if(!click_data["icon-x"] || !click_data["icon-y"])
+		return
+
+	// Calculation to apply new pixelshift.
+	var/mouse_x = text2num(click_data["icon-x"])-1 // Ranging from 0 to 31
+	var/mouse_y = text2num(click_data["icon-y"])-1
+
+	var/cell_x = clamp(floor(mouse_x/CELLSIZE), 0, CELLS-1) // Ranging from 0 to CELLS-1
+	var/cell_y = clamp(floor(mouse_y/CELLSIZE), 0, CELLS-1)
+
+	var/list/center = cached_key_number_decode(new_item.center_of_mass)
+
+	new_item.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
+	new_item.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
+	new_item.pixel_z = 0
+
+/obj/structure/machinery/prop/almayer/CICmap/table/update_icon()
+	..()
+
+	overlays.Cut()
+
+	if(!(stat & NOPOWER))
+		var/image/source_image = image(src.icon, icon_state = "[icon_state]_e")
+		overlays += emissive_appearance(source_image.icon, source_image.icon_state)
+		overlays += mutable_appearance(source_image.icon, source_image.icon_state)
+		light_power = 1
+	else return
+
+/obj/structure/machinery/prop/almayer/CICmap/table/horizontal
+	icon_state = "h_maptable"
+	bound_width = 96
+	bound_height = 64
+	light_pixel_x = 32
+	light_pixel_y = 16
+
+/obj/structure/machinery/prop/almayer/CICmap/table/horizontal/update_icon()
+	..()
+
+	overlays.Cut()
+
+	if(!(stat & NOPOWER))
+		var/image/source_image = image(src.icon, icon_state = "[icon_state]_e")
+		overlays += emissive_appearance(source_image.icon, source_image.icon_state)
+		overlays += mutable_appearance(source_image.icon, source_image.icon_state)
+		light_power = 1
+	else return

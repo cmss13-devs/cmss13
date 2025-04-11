@@ -193,7 +193,7 @@
 		return
 
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
-	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
+	lurker_invisibility_action.invisibility_off(0.5, FALSE) // partial refund of remaining time
 
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/living_mob)
@@ -213,7 +213,9 @@
 	if(found)
 		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 		if(lurker_invis)
-			lurker_invis.invisibility_off() // Full cooldown
+			lurker_invis.invisibility_off(0, FALSE) // Full cooldown on successful pounce
+			to_chat(xeno, SPAN_XENODANGER("We use our invisibility to empower our pounce!"))
+
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -222,7 +224,9 @@
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(lurker_invis)
-		lurker_invis.invisibility_off() // // If the lurker is cloaked when pouncing, reveal them at the end.
+		lurker_invis.invisibility_off(0.5, FALSE) // // If the lurker is cloaked when pouncing, reveal them at the end with a minor refund.
+		to_chat(xeno, SPAN_XENODANGER("We pounced and lost our invisibility!"))
+
 
 /datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
@@ -273,7 +277,7 @@
 /// Implementation for disabling invisibility.
 /// (refund_multiplier) indicates how much cooldown to refund based on time remaining
 /// 0 indicates full cooldown; 0.5 indicates 50% of remaining time is refunded
-/datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off(refund_multiplier = 0.0)
+/datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off(refund_multiplier = 0.0, show_text = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))
@@ -286,7 +290,8 @@
 		invis_timer_id = TIMER_ID_NULL
 
 	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
-	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
+	if(show_text)
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
 
 	button.icon_state = "template"
 	xeno.update_icons()

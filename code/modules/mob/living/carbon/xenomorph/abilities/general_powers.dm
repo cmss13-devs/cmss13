@@ -400,7 +400,7 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
+	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide them
 		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(xeno, /datum/action/xeno_action/onclick/xenohide)
 		if(hide)
 			hide.post_attack()

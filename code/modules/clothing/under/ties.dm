@@ -644,6 +644,11 @@
 	desc = "A circular, fire-resistant patch with a white border. The design features three white stars and a tricolor background: green, black, and red, symbolizing the Colonial Liberation Front's fight for independence and unity. This patch is worn by CLF fighters as a badge of defiance against corporate and governmental oppression, representing their struggle for a free and self-determined colonial future. Though feared and reviled by some, it remains a powerful symbol of resistance and revolution."
 	icon_state = "clfpatch"
 
+/obj/item/clothing/accessory/patch/hyperdyne_patch
+	name = "Hyperdyne Corporation patch"
+	desc = "A sleek corporate patch bearing the logo of the Hyperdyne Corporation—one of the most powerful conglomerates. Known for synthetic production, AI research, and deep-space logistics. Wearing this patch implies loyalty to profit over people."
+	icon_state = "hyperdynepatch"
+
 // Misc
 
 /obj/item/clothing/accessory/dogtags

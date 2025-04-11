@@ -1,7 +1,7 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { toFixed } from 'common/math';
 import { classes } from 'common/react';
-import { ComponentProps, useState } from 'react';
+import { type ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,

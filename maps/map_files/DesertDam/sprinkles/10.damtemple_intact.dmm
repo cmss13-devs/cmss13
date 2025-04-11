@@ -638,7 +638,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/unathiknife,
+/obj/item/weapon/yautja/duelknife,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "RB" = (

@@ -375,7 +375,7 @@
 			L.handle_xeno_leader_pheromones()
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!action_cooldown_check())
 		return
@@ -386,27 +386,27 @@
 	if(A.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
 
-	if(!isturf(X.loc))
-		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
+	if(!isturf(xeno.loc))
+		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return
 
-	if(!X.check_state())
+	if(!xeno.check_state())
 		return
 
-	if(X.legcuffed)
-		to_chat(X, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
+	if(xeno.legcuffed)
+		to_chat(xeno, SPAN_XENODANGER("We can't [action_text] with that thing on our leg!"))
 		return
 
 	if(!check_and_use_plasma_owner())
 		return
 
-	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
-		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(X, /datum/action/xeno_action/onclick/xenohide)
+	if(xeno.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
+		var/datum/action/xeno_action/onclick/xenohide/hide = get_action(xeno, /datum/action/xeno_action/onclick/xenohide)
 		if(hide)
 			hide.post_attack()
 
-	if(isravager(X))
-		X.emote("roar")
+	if(isravager(xeno))
+		xeno.emote("roar")
 
 	if (!tracks_target)
 		A = get_turf(A)
@@ -414,32 +414,32 @@
 	apply_cooldown()
 
 	if (windup)
-		X.set_face_dir(get_cardinal_dir(X, A))
+		xeno.set_face_dir(get_cardinal_dir(xeno, A))
 		if (!windup_interruptable)
-			ADD_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
-			X.anchored = TRUE
+			ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+			xeno.anchored = TRUE
 		pre_windup_effects()
 
-		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-			to_chat(X, SPAN_XENODANGER("We cancel our [action_text]!"))
+		if (!do_after(xeno, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("We cancel our [action_text]!"))
 			if (!windup_interruptable)
-				REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
-				X.anchored = FALSE
+				REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+				xeno.anchored = FALSE
 			post_windup_effects(interrupted = TRUE)
 			return
 
 		if (!windup_interruptable)
-			REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
-			X.anchored = FALSE
+			REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+			xeno.anchored = FALSE
 		post_windup_effects()
 
-	X.visible_message(SPAN_XENOWARNING("\The [X] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [action_text] at [A]!"))
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] [action_text][findtext(action_text, "e", -1) || findtext(action_text, "p", -1) ? "s" : "es"] at [A]!"), SPAN_XENOWARNING("We [action_text] at [A]!"))
 
 	pre_pounce_effects()
 
-	X.pounce_distance = get_dist(X, A)
-	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
-	X.update_icons()
+	xeno.pounce_distance = get_dist(xeno, A)
+	xeno.throw_atom(A, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	xeno.update_icons()
 
 	additional_effects_always()
 	..()

@@ -471,10 +471,10 @@
 
 /obj/item/bracer_attachments/shield
 	name ="shield bracer attachment"
-	desc ="A large tribal shield made of a strange metal alloy. The face of the shield bears three skulls, two human, one alien."
+	desc ="A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "shield"
-	item_state = "shield"
+	icon_state = "bracer_shield_off"
+	item_state = "bracer_shield_off"
 	attached_weapon_type = /obj/item/weapon/shield/riot/yautja/bracer_shield
 	deployment_sound = 'sound/weapons/wristblades_on.ogg'
 	retract_sound = 'sound/weapons/wristblades_off.ogg'

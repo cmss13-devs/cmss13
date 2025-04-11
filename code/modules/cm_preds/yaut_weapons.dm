@@ -792,12 +792,12 @@
 
 
 /obj/item/weapon/shield/riot/yautja/bracer_shield
-	name = "clan shield"
-	desc = "A large tribal shield made of a strange metal alloy. The face of the shield bears three skulls, two human, one alien."
+	name = "bracer shield"
+	desc = "A shield made of concentric metal alloy plates. The plates fold into one another for compact storage while still providing superior protection."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "shield"
-	base_icon_state = "shield"
-	item_state = "shield"
+	icon_state = "bracer_shield"
+	base_icon_state = "bracer_shield"
+	item_state = "bracer_shield"
 	flags_equip_slot = NO_FLAGS
 
 /*#########################################

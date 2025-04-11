@@ -38,7 +38,7 @@
 	singular_name = "essential firearms-tool"
 	desc = "A small kit containing the necessary tools to repair any broken firearm. Shamefully, the tools inside are a tad bit too small for use outside of firearms repair."
 	icon = 'icons/obj/items/storage/kits.dmi'
-	icon_state = "upgradekit" //for now
+	icon_state = "repair_kit"
 	amount = 5
 	max_amount = 5
 	stack_id = "gunkit"

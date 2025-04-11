@@ -348,6 +348,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#865e2a" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/coco_drink
@@ -358,6 +359,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#61450e" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/psilocybin

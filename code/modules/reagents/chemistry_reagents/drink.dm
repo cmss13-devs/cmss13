@@ -715,3 +715,4 @@
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#2ca314" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION

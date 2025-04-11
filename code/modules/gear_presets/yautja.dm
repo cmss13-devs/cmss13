@@ -45,6 +45,11 @@
 		translator_type = mob_client.prefs.predator_translator_type
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, caster_material, clan_rank), WEAR_HANDS)
+	if(new_human.client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/overseer(new_human), WEAR_L_EAR)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
@@ -69,10 +74,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	clan_rank = CLAN_RANK_UNBLOODED_INT
 
-/datum/equipment_preset/yautja/youngblood/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
-
 /datum/equipment_preset/yautja/youngblood/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
 	var/new_name = "Young [new_human.real_name]"
@@ -85,10 +86,6 @@
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 	clan_rank = CLAN_RANK_BLOODED_INT
 
-/datum/equipment_preset/yautja/blooded/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
-
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
@@ -96,10 +93,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 	clan_rank = CLAN_RANK_ELITE_INT
-
-/datum/equipment_preset/yautja/elite/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
 
 /datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
@@ -119,10 +112,6 @@
 	var/new_name = "Elder [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
 
-/datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(new_human), WEAR_L_EAR)
-	return ..()
-
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
 	name = "Yautja Leader"
@@ -135,10 +124,6 @@
 	. = ..()
 	var/new_name = "Clan Leader [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
-
-/datum/equipment_preset/yautja/leader/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(new_human), WEAR_L_EAR)
-	return ..()
 
 // ANCIENT
 /datum/equipment_preset/yautja/ancient
@@ -153,10 +138,6 @@
 	var/new_name = "Ancient [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
 
-/datum/equipment_preset/yautja/ancient/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(new_human), WEAR_L_EAR)
-	return ..()
-
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
 	name = "Yautja Young (non-WL)"
 	minimap_icon = "predator_young"
@@ -169,10 +150,6 @@
 	var/new_name = "Young [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
 
-/datum/equipment_preset/yautja/non_wl/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
-
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
 	name = "Yautja Youngblood pack leader (non-WL)"
 	minimap_icon = "predator_young"
@@ -184,7 +161,3 @@
 	. = ..()
 	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
 	new_human.change_real_name(new_human, new_name)
-
-/datum/equipment_preset/yautja/non_wl_leader/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()

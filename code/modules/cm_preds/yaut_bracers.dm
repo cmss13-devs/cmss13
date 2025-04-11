@@ -1066,7 +1066,7 @@
 
 	var/mob/living/target_youngblood = target_list[choice]
 
-	var/reason = tgui_input_text(caller, "Provide a reason for terminating [target_youngblood.real_name].")
+	var/reason = tgui_input_text(caller, "Youngblood Terminator", "Provide a reason for terminating [target_youngblood.real_name].")
 	if(!reason)
 		to_chat(caller, SPAN_WARNING("You must provide a reason for terminating [target_youngblood.real_name]."))
 		return

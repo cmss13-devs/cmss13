@@ -3,14 +3,16 @@ import { Box, Icon, Tooltip } from 'tgui/components';
 
 // this file should probably not be in interfaces, should move it later.
 type PaintCanvasProps = {
-  readonly onDraw: () => void;
+  readonly onDraw: (newSvgData: Line[][]) => void;
   readonly imageSrc: string;
   readonly selection: string;
   readonly onImageExport: (img) => void;
-  readonly onUndo: (e) => void;
+  readonly onUndo: (e, newSvgData: Line[][]) => void;
 } & Partial<{
   canvasRef: HTMLCanvasElement;
   actionQueueChange: number;
+  zlevel: number;
+  storedData: Line[][];
 }>;
 
 type Line = [
@@ -19,6 +21,7 @@ type Line = [
   number,
   number,
   string | CanvasGradient | CanvasPattern,
+  number,
 ];
 
 export class CanvasLayer extends Component<PaintCanvasProps> {
@@ -32,6 +35,8 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   lastX: number | null;
   lastY: number | null;
   complexity: number;
+  zlevel: number;
+  storedData: Line[][];
   state: { selection: string | undefined; mapLoad: boolean };
   constructor(props) {
     super(props);
@@ -58,6 +63,14 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
+    if (this.props.zlevel !== undefined) {
+      this.zlevel = this.props.zlevel;
+    } else {
+      this.zlevel = 0;
+    }
+    if (this.props.storedData !== undefined) {
+      this.storedData = this.props.storedData;
+    }
 
     this.complexity = 0;
   }
@@ -74,6 +87,7 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
 
       this.img.onload = () => {
         this.setState({ mapLoad: true });
+        this.drawCanvas();
       };
 
       this.img.onerror = () => {
@@ -89,9 +103,17 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
     }
     this.isPainting = true;
 
-    const rect = this.canvasRef.current!.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const rect = this.canvasRef.current?.getBoundingClientRect();
+
+    if (this.canvasRef.current === null || rect === undefined) {
+      return;
+    }
+
+    const scaleX = this.canvasRef.current.width / rect.width;
+    const scaleY = this.canvasRef.current.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
 
     this.ctx.beginPath();
     this.ctx.moveTo(this.lastX || 0, this.lastY || 0);
@@ -100,23 +122,24 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   };
 
   handleMouseMove = (e) => {
-    if (!this.isPainting || !this.state.selection) {
-      return;
-    }
+    if (!this.isPainting || !this.state.selection) return;
     if (e.buttons === 0) {
       // We probably dragged off the window - lets not get stuck drawing
       this.handleMouseUp(e);
       return;
     }
 
-    if (!this.ctx) {
+    if (!this.ctx || this.canvasRef.current === null) {
       return;
     }
     this.ctx.strokeStyle = this.state.selection;
 
-    const rect = this.canvasRef.current!.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const rect = this.canvasRef.current?.getBoundingClientRect();
+    const scaleX = this.canvasRef.current.width / rect.width;
+    const scaleY = this.canvasRef.current.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
 
     if (this.lastX !== null && this.lastY !== null) {
       // this controls how often we make new strokes
@@ -133,6 +156,7 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
         x,
         y,
         this.ctx.strokeStyle,
+        this.zlevel,
       ]);
     }
 
@@ -142,42 +166,44 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
 
   handleMouseUp = (e) => {
     if (
-      this.isPainting &&
-      this.state.selection &&
-      this.lastX !== null &&
-      this.lastY !== null
+      !this.isPainting ||
+      this.canvasRef.current === null ||
+      this.ctx === null ||
+      this.lastX === null ||
+      this.lastY === null
     ) {
-      const rect = this.canvasRef.current!.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      if (!this.ctx) {
-        return;
-      }
-      this.ctx.moveTo(this.lastX, this.lastY);
-      this.ctx.lineTo(x, y);
-      this.ctx.stroke();
-      this.currentLine.push([
-        this.lastX,
-        this.lastY,
-        x,
-        y,
-        this.ctx.strokeStyle,
-      ]);
+      return;
     }
+
+    const rect = this.canvasRef.current.getBoundingClientRect();
+    const scaleX = this.canvasRef.current.width / rect.width;
+    const scaleY = this.canvasRef.current.height / rect.height;
+
+    const x = (e.clientX - rect.left) * scaleX;
+    const y = (e.clientY - rect.top) * scaleY;
+
+    this.ctx.moveTo(this.lastX, this.lastY);
+    this.ctx.lineTo(x, y);
+    this.ctx.stroke();
+    this.currentLine.push([
+      this.lastX,
+      this.lastY,
+      x,
+      y,
+      this.ctx.strokeStyle,
+      this.zlevel,
+    ]);
 
     this.isPainting = false;
     this.lastX = null;
     this.lastY = null;
 
-    if (this.currentLine.length === 0) {
-      return;
-    }
+    if (this.currentLine.length === 0) return;
 
     this.lineStack.push([...this.currentLine]);
     this.currentLine = [];
     this.complexity = this.getComplexity();
-    this.props.onDraw();
+    this.props.onDraw(this.getSVG());
   };
 
   handleSelectionChange = () => {
@@ -231,18 +257,20 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
       this.ctx.globalCompositeOperation = 'source-over';
 
       this.lineStack.forEach((currentLine) => {
-        currentLine.forEach(([lastX, lastY, x, y, colorSelection]) => {
-          this.ctx!.strokeStyle = colorSelection;
-          this.ctx!.beginPath();
-          this.ctx!.moveTo(lastX, lastY);
-          this.ctx!.lineTo(x, y);
-          this.ctx!.stroke();
+        currentLine.forEach(([lastX, lastY, x, y, colorSelection, zlevel]) => {
+          if (zlevel === this.zlevel && this.ctx !== null) {
+            this.ctx.strokeStyle = colorSelection;
+            this.ctx.beginPath();
+            this.ctx.moveTo(lastX, lastY);
+            this.ctx.lineTo(x, y);
+            this.ctx.stroke();
+          }
         });
       });
 
       this.complexity = this.getComplexity();
       this.setState({ selection: prevColor });
-      this.props.onUndo(prevColor);
+      this.props.onUndo(prevColor, this.lineStack);
       return;
     }
 
@@ -262,32 +290,78 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   }
 
   drawCanvas() {
-    if (this.img) {
-      this.img.onload = () => {
-        // this onload may or may not be causing problems.
-        this.ctx?.drawImage(
-          this.img!,
-          0,
-          0,
-          this.canvasRef.current?.width || 0,
-          this.canvasRef.current?.height || 0,
-        );
-      };
+    if (this.img === null) {
+      return;
     }
+
+    this.img.onload = () => {
+      // this onload may or may not be causing problems.
+      if (
+        this.ctx === null ||
+        this.img === null ||
+        this.canvasRef.current?.width === undefined ||
+        this.canvasRef.current?.height === undefined
+      ) {
+        return;
+      }
+      this.ctx.drawImage(
+        this.img,
+        0,
+        0,
+        this.canvasRef.current?.width,
+        this.canvasRef.current?.height,
+      );
+
+      this.setSVG(this.storedData);
+    };
   }
 
   convertToSVG() {
     const lines = this.lineStack.flat();
     const combinedArray = lines.flatMap(
-      ([lastX, lastY, x, y, colorSelection]) => [
+      ([lastX, lastY, x, y, colorSelection, zlevel]) => [
         lastX,
         lastY,
         x,
         y,
         colorSelection,
+        zlevel,
       ],
     );
     return combinedArray;
+  }
+
+  getSVG() {
+    return this.lineStack;
+  }
+
+  setSVG(svg) {
+    this.redrawSVG(svg);
+  }
+
+  redrawSVG(lineStack) {
+    if (this.ctx === null || lineStack === null || lineStack === undefined) {
+      return;
+    }
+
+    lineStack.forEach((stack) => {
+      const newStack: Line[] = [];
+      stack.forEach((line) => {
+        const [lastX, lastY, x, y, color, zlevel] = line;
+        if (zlevel === this.zlevel && this.ctx !== null) {
+          this.ctx.strokeStyle = color;
+          this.ctx.lineWidth = 4;
+          this.ctx.lineCap = 'round';
+          this.ctx.beginPath();
+          this.ctx.moveTo(lastX, lastY);
+          this.ctx.lineTo(x, y);
+          this.ctx.stroke();
+        }
+        newStack.push([lastX, lastY, x, y, color, zlevel]);
+      });
+
+      this.lineStack.push(newStack);
+    });
   }
 
   getComplexity() {
@@ -299,6 +373,8 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
   }
 
   displayCanvas() {
+    const size = this.getSize();
+
     return (
       <div>
         {this.complexity > 500 && (
@@ -325,6 +401,11 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
           ref={this.canvasRef}
           width={684}
           height={684}
+          className="TacticalMap"
+          style={{
+            width: size.width,
+            height: size.height,
+          }}
           onMouseDown={(e) => this.handleMouseDown(e)}
           onMouseUp={(e) => this.handleMouseUp(e)}
           onMouseMove={(e) => this.handleMouseMove(e)}
@@ -343,6 +424,14 @@ export class CanvasLayer extends Component<PaintCanvasProps> {
         </Box>
       </div>
     );
+  }
+
+  getSize() {
+    const ratio = Math.min(
+      (self.innerWidth - 16) / 684,
+      (self.innerHeight - 166) / 684,
+    );
+    return { width: 684 * ratio, height: 684 * ratio };
   }
 
   render() {

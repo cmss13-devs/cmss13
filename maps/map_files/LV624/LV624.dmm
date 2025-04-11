@@ -814,6 +814,12 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
+"adq" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv624/lazarus/landing_zones/lz1)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -833,6 +839,10 @@
 	icon_state = "wall3"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/lv624/lazarus/landing_zones/lz2)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -844,19 +854,9 @@
 "ady" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
-"adz" = (
-/obj/structure/machinery/floodlight/landing,
-/obj/effect/decal/warning_stripes,
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
-/area/lv624/lazarus/landing_zones/lz1)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
-"adB" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/plating/asteroidwarning/east,
-/area/lv624/lazarus/landing_zones/lz2)
 "adC" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/mineral/gold{
@@ -30994,7 +30994,7 @@ niV
 niV
 hdA
 niV
-adB
+adv
 niV
 niV
 niV
@@ -54483,7 +54483,7 @@ aHu
 aGz
 aGz
 aGz
-adz
+adq
 aGz
 aGz
 aGz

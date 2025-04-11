@@ -1027,6 +1027,10 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
+"adY" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1149,6 +1153,13 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"aet" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/space_port)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1263,10 +1274,6 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
-"aeR" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1319,13 +1326,6 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
-"afe" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidwarning/west,
-/area/bigredv2/outside/space_port)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -46434,7 +46434,7 @@ aaT
 aap
 aav
 aaG
-afe
+aet
 aap
 aav
 aaG
@@ -46948,7 +46948,7 @@ beP
 beP
 aSB
 tVp
-aeR
+adY
 tVp
 tVp
 bgX

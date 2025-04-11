@@ -636,9 +636,9 @@ const BlackMarketMenu = () => {
       >
         WY${dollars}
       </Box>
-      <Stack.Item height="25%" width="70%">
+      <Stack.Item height="25%" width="80%">
         {blackmarketCategory ? (
-          <Section fill scrollable>
+          <Section fill scrollable width="100%">
             <Box>
               <RenderCategory
                 category={blackmarketCategory}
@@ -864,8 +864,8 @@ const RenderPack = (props: {
   }
 
   return (
-    <Stack.Item key={item.name}>
-      <Stack>
+    <Stack.Item grow key={item.name}>
+      <Stack fill>
         {orderedQuantity ? (
           <Stack.Item>
             <Box p={1} width="30px" textAlign="right" inline>
@@ -922,12 +922,12 @@ const RenderPack = (props: {
           {item.dollar_cost ? `WY$${item.dollar_cost}` : `$${item.cost * 100}`}
         </Stack.Item>
 
-        <Stack.Item p={1}>
-          <Stack vertical>
-            <Stack.Item>
-              <Stack justify="space-between">
-                <Stack.Item>
-                  <Stack>
+        <Stack.Item grow p={1}>
+          <Stack fill vertical>
+            <Stack.Item grow>
+              <Stack fill justify="space-between">
+                <Stack.Item grow>
+                  <Stack fill>
                     <Stack.Item>
                       {item.icon && (
                         <DmIcon
@@ -937,9 +937,7 @@ const RenderPack = (props: {
                         />
                       )}
                     </Stack.Item>
-                    <Stack.Item width={orderedQuantity ? '575px' : '500px'}>
-                      {item.name}
-                    </Stack.Item>
+                    <Stack.Item grow>{item.name}</Stack.Item>
                   </Stack>
                 </Stack.Item>
                 {item.contains.length > 0 && (

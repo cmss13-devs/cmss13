@@ -154,6 +154,24 @@
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
+"aaO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/shuttle/drop1/kutjevo)
+"aaP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south)
+"aaQ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -16197,7 +16215,7 @@ dxF
 dxF
 dxF
 dxF
-dxF
+aaQ
 dxF
 dxF
 dxF
@@ -18582,7 +18600,7 @@ lAI
 lAI
 lAI
 lAI
-lAI
+aaO
 lAI
 lAI
 lAI
@@ -43618,7 +43636,7 @@ bpj
 bpj
 bpj
 bpj
-bpj
+aaP
 bpj
 bpj
 bpj

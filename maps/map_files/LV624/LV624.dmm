@@ -1315,10 +1315,22 @@
 /obj/structure/cargo_container/grant/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"afc" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
 "afd" = (
 /obj/structure/fence,
 /turf/open/floor/warning/east,
 /area/lv624/ground/barrens/containers)
+"afe" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
 "aff" = (
 /obj/structure/cargo_container/wy/left,
 /turf/open/floor,
@@ -26413,7 +26425,7 @@ aPf
 aKf
 aKf
 aVK
-aKb
+afe
 aKb
 hUs
 hUs
@@ -50591,7 +50603,7 @@ wpw
 wpw
 wpw
 lBw
-wpw
+afc
 wpw
 ajY
 ifF

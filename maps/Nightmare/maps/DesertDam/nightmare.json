@@ -20,6 +20,27 @@
 		"path": "standalone/crashlanding-upp-alt1.dmm",
 		"when": { "lvevent": "uppcrash" }
 	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhupplz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_desertdam_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_desertdam_uscm_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz2",
+		"chance": 1.0,
+		"path": "standalone/landingzone_desertdam_uscm_lz2.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
     {
 		"type": "map_insert",
 		"landmark": "clfpods",

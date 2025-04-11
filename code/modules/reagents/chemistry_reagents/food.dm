@@ -17,6 +17,16 @@
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
 
+/datum/reagent/nutriment/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.5*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 1*volume
+
+
+
 /datum/reagent/nutriment/egg
 	name = "Egg"
 	id = "egg"
@@ -39,7 +49,7 @@
 	name = "Meat Protein"
 	id = "meatprotein"
 	description = "Proteins found in various types of meat."
-	flags = REAGENT_NO_GENERATION
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/meat/fish
 	name = "Fish Meat"
@@ -51,7 +61,7 @@
 	name = "Plant Matter"
 	id = "plantmatter"
 	description = "Some sort of plant."
-	flags = REAGENT_NO_GENERATION
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/grown/vegetable
 	name = "Vegetable"
@@ -116,6 +126,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#792300" // rgb: 121, 35, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/ketchup
@@ -209,6 +220,94 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPOTHERMIC = 6)
 
+// HYDRO HARD TIER CHEMS
+
+/datum/reagent/atropine //poppy
+	name = "Atropine"
+	id = "atropine"
+	description = "Plant based chemical replaced and superseded by Epinephrine, it has a plethora of side effects but is considerably stronger than epinephrine" //I know, now stay shush
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ELECTROGENETIC = 7, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 0.5)
+
+/datum/reagent/thymol //some kind of thyme
+	name = "Thymol"
+	id = "thymol"
+	description = "Known chemical used in the 20th century as innovative way to combat hookworm parasites and generally all kinds of infections, it was since used as natural pesticide."
+	reagent_state = LIQUID
+	color = "#badb9e" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ANTIPARASITIC = 0.5)
+
+/datum/reagent/psoralen //cabbage, doesnt make sense but eh
+	name = "Psoralen"
+	id = "psoralen"
+	description = "Naturally occuring carcinogenic, used commonly as mutagen for DNA research."
+	reagent_state = LIQUID
+	color = "#c9ca75" // rgb: 139, 166, 233
+
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARCINOGENIC = 6)
+
+/datum/reagent/coniine //carrot
+	name = "Coniine"
+	id = "coniine"
+	description = "Potent neurotoxic chemical commonly used as a murder weapon, death is caused by respiration failure and paralysis"
+	reagent_state = LIQUID
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	color = "#8f947b" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_SEDATIVE = 5)
+
+/datum/reagent/zygacine
+	name = "Zygacine"
+	id = "zygacine"
+	description = "Causes convulsing of the heart muscles before blocking the contractions entirely"
+	reagent_state = LIQUID
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	color = "#aaaaaa" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARDIOTOXIC = 3)
+
+/datum/reagent/digoxin
+	name = "Digoxin"
+	id = "digoxin"
+	description = "One of the oldest chemicals to enter field in treating many heart conditions, besides few sides effects, it can be used to great effect."
+	reagent_state = LIQUID
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
+	color = "#9ec265" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+
+/datum/reagent/urishiol
+	name = "Urishiol"
+	id = "urishiol"
+	description = "Potent skin and tissue irratant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poision Ivy, Poison Oak, and simular"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	custom_metabolism = AMOUNT_PER_TIME(15, 20 MINUTES)
+	reagent_state = LIQUID
+	color = "#c0bf90" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ALLERGENIC = 6, PROPERTY_CORROSIVE = 3)
+
+/datum/reagent/phenol
+	name = "Phenol"
+	id = "phenol"
+	description = "Skin analgesic used for targeted operation and mild pain relief of an area. While safe on the skin, extremely lethal on injection."
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
+	reagent_state = LIQUID
+	color = "#c095c9" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 5)
+
+
+//HARD TIER HYDRO END.
 /datum/reagent/sodiumchloride
 	name = "Table Salt"
 	id = "sodiumchloride"
@@ -249,6 +348,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#865e2a" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/coco_drink
@@ -259,6 +359,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#61450e" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/psilocybin

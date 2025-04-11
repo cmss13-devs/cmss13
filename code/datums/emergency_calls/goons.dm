@@ -48,7 +48,7 @@
 /datum/emergency_call/goon/chem_retrieval/New()
 	..()
 	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. Our squad is boarding to retrieve all samples of a chemical recently scanned from your research department. You should already have received a significant sum of money for your department's discovery. In return we ask that you cooperate and provide everything related to the chemical to our retrieval team."
-	objectives = "Secure all documents, samples, and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department and return them to Response Team Station."
+	objectives = "Secure all documents and samples of chemical 'Xenogenetic Catalyst' from [MAIN_SHIP_NAME] research department. Ensure the vial stays intact, contains 30 units and return them to Response Team Station."
 
 /datum/emergency_call/goon/chem_retrieval/proc/check_objective_info()
 	if(objective_info)

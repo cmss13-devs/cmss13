@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Dimmer,
+  Divider,
   Flex,
   Icon,
   ProgressBar,
@@ -78,15 +79,19 @@ export const DestionationSelection = () => {
     undefined,
   );
   return (
-    <Section
-      title="Select Destination"
-      buttons={
-        <>
+    <Section title="Select Destination">
+      <Stack fill justify="space-evenly">
+        <Stack.Item align="center">
           <CancelLaunchButton />
+        </Stack.Item>
+        <Stack.Item>
+          <Divider vertical />
+        </Stack.Item>
+        <Stack.Item align="center">
           <LaunchButton />
-        </>
-      }
-    >
+        </Stack.Item>
+      </Stack>
+      <Divider />
       <Stack vertical className="DestinationSelector">
         {data.destinations
           .filter((x) => x.available === 1)
@@ -237,21 +242,25 @@ const DoorControls = () => {
         </>
       }
     >
-      <Stack className="DoorControlStack">
-        <Stack.Item>
+      <Stack justify="space-evenly" align="center" className="DoorControlStack">
+        <Stack.Item grow>
           <Button
             disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('open')}
             icon="door-open"
+            width="100%"
+            textAlign="center"
           >
             Force Open
           </Button>
         </Stack.Item>
-        <Stack.Item>
+        <Stack.Item grow>
           <Button
             disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('close')}
             icon="door-closed"
+            width="100%"
+            textAlign="center"
           >
             Force Close
           </Button>

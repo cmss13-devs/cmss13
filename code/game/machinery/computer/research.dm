@@ -215,13 +215,13 @@
 			if(!GLOB.chemical_data.picked_chem)
 				var/chem_id = params["id"]
 				var/new_id = GLOB.chemical_data.legalize_chem(GLOB.chemical_data.contract_chems[chem_id])
-				new /obj/item/paper/research_notes(photocopier.loc, GLOB.chemical_reagents_list[new_id], "synthesis", TRUE)
+				new /obj/item/paper/research_notes(photocopier ? photocopier.loc : loc, GLOB.chemical_reagents_list[new_id], "synthesis", TRUE)
 				GLOB.chemical_data.picked_chem = TRUE
 				GLOB.chemical_data.next_reroll = world.time + RESEARCH_CONTRACT_PICKED
 				last_picked_contract = GLOB.chemical_reagents_list[new_id]
 		if("reprint_last_contract")
 			if(last_picked_contract)
-				new /obj/item/paper/research_notes(photocopier.loc, last_picked_contract, "synthesis")
+				new /obj/item/paper/research_notes(photocopier ? photocopier.loc : loc, last_picked_contract, "synthesis")
 				playsound(loc, 'sound/machines/twobeep.ogg', 5, 1)
 			else
 				playsound(loc, 'sound/machines/buzz-two.ogg', 5, 1)

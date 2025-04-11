@@ -62,7 +62,6 @@
 	req_access = null;
 	req_one_access = null
 	},
-/obj/structure/medical_supply_link,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/misc/tutorial/no_baselight)
 "fi" = (
@@ -233,7 +232,6 @@
 	req_access = null;
 	req_one_access = null
 	},
-/obj/structure/medical_supply_link,
 /turf/open/floor/prison/whitegreen,
 /area/misc/tutorial/no_baselight)
 "tL" = (
@@ -428,7 +426,6 @@
 /area/misc/tutorial/no_baselight)
 "PK" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
-/obj/structure/medical_supply_link,
 /turf/open/floor/prison/whitegreen/north,
 /area/misc/tutorial/no_baselight)
 "QS" = (

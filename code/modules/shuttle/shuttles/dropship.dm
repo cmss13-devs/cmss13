@@ -194,6 +194,8 @@
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = getControlConsole()
 	if(root_console.dropship_control_lost)
 		return
+	if(mode != SHUTTLE_IDLE)
+		return
 	var/obj/docking_port/stationary/marine_dropship/dockedAt = get_docked()
 	var/target_id = (dockedAt?.id == automated_hangar_id) ? automated_lz_id : automated_hangar_id
 	SSshuttle.moveShuttle(id, target_id, TRUE)

@@ -927,11 +927,8 @@
 	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
 	flags_item = ADJACENT_CLICK_DELAY
 	embeddable = FALSE
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
-	)
 	icon_state = "duelling_hatchet"
+	item_state = "duelling_hatchet"
 	force = MELEE_FORCE_NORMAL
 	w_class = SIZE_SMALL
 	throwforce = 20
@@ -947,11 +944,8 @@
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
 	flags_item = ADJACENT_CLICK_DELAY
 	icon_state = "duelling_knife"
+	item_state = "duelling_knife"
 	embeddable = FALSE
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
-	)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
 	force = 25

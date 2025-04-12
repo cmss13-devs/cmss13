@@ -182,8 +182,9 @@
 		return
 
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
+		var/obj/docking_port/stationary/marine_dropship/dockedAt = get_docked()
 		if(faction == FACTION_MARINE)
-			ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+			ai_silent_announcement("The [name] will automatically depart from [dockedAt.name] in [automated_delay * 0.1] seconds.")
 
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
 
@@ -200,7 +201,7 @@
 	var/target_id = (dockedAt?.id == automated_hangar_id) ? automated_lz_id : automated_hangar_id
 	SSshuttle.moveShuttle(id, target_id, TRUE)
 	if(faction == FACTION_MARINE)
-		ai_silent_announcement("Dropship '[name]' departing from [dockedAt.name]")
+		ai_silent_announcement("Dropship '[name]' departing from [dockedAt.name].")
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH

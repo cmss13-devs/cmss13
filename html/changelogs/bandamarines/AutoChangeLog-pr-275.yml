@@ -1,0 +1,4 @@
+author: "konushi"
+delete-after: True
+changes:
+  - bugfix: "Фиксы переводов фракций."

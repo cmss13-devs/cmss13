@@ -1,0 +1,4 @@
+author: "Aurallianz"
+delete-after: True
+changes:
+  - bugfix: "fixed an object on Solaris whose sprite is broken in lambda labs."

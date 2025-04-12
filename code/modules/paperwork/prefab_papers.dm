@@ -114,6 +114,8 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 //########################################
 /obj/item/paper/prefab // Abstract type (document_title and doc_datum_type are null)
 	is_prefab = TRUE
+	deffont = "Courier New"
+	signfont = "Times New Roman"
 
 /obj/item/paper/prefab/Initialize()
 	. = ..()

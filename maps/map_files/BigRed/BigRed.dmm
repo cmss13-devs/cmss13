@@ -1486,7 +1486,8 @@
 /area/bigredv2/outside/telecomm)
 "afL" = (
 /obj/structure/showcase{
-	icon_state = "broadcaster_send"
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -4829,11 +4830,12 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "avj" = (
-/obj/structure/showcase{
-	icon_state = "broadcaster_send"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/showcase{
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)

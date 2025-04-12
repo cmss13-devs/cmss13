@@ -290,6 +290,12 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/strata/ag/exterior/landing_zones/lz2)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -362,6 +368,19 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abm" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
+"abn" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -34271,7 +34290,7 @@ alz
 alz
 alz
 aac
-aac
+abm
 aac
 aac
 aac
@@ -42035,7 +42054,7 @@ jWs
 jWs
 jWs
 jWs
-jWs
+aaY
 jWs
 jWs
 jWs
@@ -70654,7 +70673,7 @@ jUA
 jUA
 jUA
 cei
-chj
+abn
 cei
 jUA
 jUA

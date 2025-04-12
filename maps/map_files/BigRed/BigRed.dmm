@@ -1027,6 +1027,12 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
+"adY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1149,6 +1155,12 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"aet" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1263,6 +1275,12 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
+"aeR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1468,7 +1486,8 @@
 /area/bigredv2/outside/telecomm)
 "afL" = (
 /obj/structure/showcase{
-	icon_state = "broadcaster_send"
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -4811,11 +4830,12 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "avj" = (
-/obj/structure/showcase{
-	icon_state = "broadcaster_send"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/showcase{
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -39942,7 +39962,7 @@ aao
 aao
 aao
 aao
-aao
+aeR
 aao
 aao
 aao
@@ -46302,7 +46322,7 @@ bie
 bie
 bie
 bmM
-bie
+aet
 bie
 bie
 bie
@@ -58317,7 +58337,7 @@ jrD
 jcR
 jrD
 jrD
-jrD
+adY
 jrD
 jrD
 jrD

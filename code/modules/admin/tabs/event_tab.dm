@@ -820,6 +820,7 @@
 		<A href='byond://?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=xenocards'>Give or take card playing abilities from xenos</A><BR>
 		<BR>
 		"}
 
@@ -919,12 +920,15 @@
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H.mob_flags & MUTINEER)
-			H.mob_flags &= ~MUTINEER
-			H.hud_set_squad()
+		if(H.mob_flags & MUTINY_MUTINEER)
+			H.mob_flags &= ~MUTINY_MUTINEER
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
 				A.remove_from(H)
+
+		H.mob_flags &= ~MUTINY_LOYALIST
+		H.mob_flags &= ~MUTINY_NONCOMBAT
+		H.hud_set_squad()
 
 /client/proc/cmd_fun_fire_ob()
 	set category = "Admin.Fun"

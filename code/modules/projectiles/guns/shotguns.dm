@@ -912,7 +912,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	set_fire_delay(FIRE_DELAY_TIER_11)
+	set_fire_delay(FIRE_DELAY_TIER_6)
 	if(SSticker.mode && MODE_HAS_FLAG(MODE_FACTION_CLASH))
 		set_fire_delay(FIRE_DELAY_TIER_1)
 	accuracy_mult = BASE_ACCURACY_MULT

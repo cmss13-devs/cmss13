@@ -218,13 +218,14 @@
 
 
 /datum/action/xeno_action/activable/pounce/lurker/additional_effects_always()
+	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!istype(xeno))
 		return
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(lurker_invis)
-		lurker_invis.invisibility_off(0.5) // If the lurker is cloaked when pouncing, reveal them at the end with a  refund.
+		lurker_invis.invisibility_off(0.5) // If the lurker is cloaked when pouncing, reveal them at the end with a refund.
 
 
 /datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)

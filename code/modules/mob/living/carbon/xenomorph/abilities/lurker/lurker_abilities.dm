@@ -11,6 +11,7 @@
 	knockdown_duration = 1 // increased to 2.5 by cloak pouncing
 	freeze_time = 5 // increased to 15 by cloak pouncing
 	can_be_shield_blocked = TRUE
+	move_during_pounce = FALSE
 
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"

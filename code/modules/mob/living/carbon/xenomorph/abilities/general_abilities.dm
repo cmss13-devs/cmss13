@@ -35,8 +35,8 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/xeno_resting/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/xeno_resting/give_to(mob/living/living_mob)
@@ -55,8 +55,8 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/shift_spits/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
 		return TRUE
 
 // release_haul
@@ -98,9 +98,9 @@
 	if(!.)
 		return FALSE
 
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X)
-		return X.selected_resin
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno)
+		return xeno.selected_resin
 	else
 		return FALSE
 
@@ -181,8 +181,8 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/emit_pheromones/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated() && (!X.current_aura || X.plasma_stored >= plasma_cost))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated() && (!xeno.current_aura || xeno.plasma_stored >= plasma_cost))
 		return TRUE
 
 // Pounce
@@ -210,6 +210,8 @@
 	var/freeze_time = 5 // 5 for runners, 15 for lurkers
 	var/freeze_timer_id = TIMER_ID_NULL // Timer to cancel the end freeze if it can be cancelled earlier
 	var/freeze_play_sound = TRUE
+
+	var/move_during_pounce = TRUE  // Can you move while pouncing to cancel it?
 
 	var/windup = FALSE // Is there a do_after before we pounce?
 	var/windup_duration = 20 // How long to wind up, if applicable
@@ -244,22 +246,28 @@
 
 /// Additional effects to apply even if we don't hit anything
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!move_during_pounce)
+		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 	return
 
 /**
  * Effects to apply *inmediately* before pouncing.
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!move_during_pounce)
+		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 	return
 
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
-	var/mob/living/carbon/xenomorph/X = owner
-	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
-	to_chat(X, SPAN_XENONOTICE("Slashing frenzies us! We feel free to move immediately!"))
+	to_chat(xeno, SPAN_XENONOTICE("Slashing frenzies us! We feel free to move immediately!"))
 
 /// Any effects to apply to the xenomorph before the windup occurs
 /datum/action/xeno_action/activable/pounce/proc/pre_windup_effects()

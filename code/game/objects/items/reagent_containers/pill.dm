@@ -276,3 +276,9 @@
 /obj/item/reagent_container/pill/stimulant
 	pill_initial_reagents = list("antag_stimulant" = 10)
 	pill_icon_class = "stim"
+
+/obj/item/reagent_container/pill/imialky
+	pill_desc = "An Imidazoline-Alkysine (2:1) pill. Heals brain and eye damage."
+	pill_initial_reagents = list("imidazoline" = 10, "alkysine" = 5)
+	pill_icon_class = "alky"
+

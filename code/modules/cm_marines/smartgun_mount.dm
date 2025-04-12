@@ -888,6 +888,9 @@
 		if(!human.allow_gun_usage)
 			to_chat(user, SPAN_WARNING("You aren't allowed to use firearms!"))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(human, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 	// If the user isn't actually allowed to use guns.
 	else if (!HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [src]!"))
@@ -1023,7 +1026,7 @@
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/clicked(mob/user, list/mods)
-	if (mods["ctrl"])
+	if (mods[CTRL_CLICK])
 		if(operator != user)
 			return ..()//only the operatore can toggle fire mode
 		if(!CAN_PICKUP(user, src))
@@ -1131,7 +1134,7 @@
 		return
 
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] || modifiers["middle"] || modifiers["right"])
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5])
 		return
 
 	// Don't allow doing anything else if inside a container of some sort, like a locker.

@@ -298,7 +298,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M5 'Night Raider' bayonet"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "bayonet"
-	item_state = "combat_knife"
+	item_state = "combat_bayonet"
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -346,6 +346,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper SA120 L7 bayonet"
 	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
 	icon_state = "wy_bayonet"
+	item_state = "wy_bayonet"
 	attach_icon = "wy_bayonet_a"
 	unacidable = TRUE
 

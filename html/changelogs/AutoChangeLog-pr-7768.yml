@@ -1,0 +1,7 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - mapadd: "During the Faction Clash gamemode. A UPP forward operating base and Landing Zone will be automatically placed on the planet. This will apply to all current ground maps."
+  - mapadd: "Furthermore, the USCM FOB will start pre-fortified. However, only one USCM landing zone will be available to use."
+  - bugfix: "Fixed trolly vehicle hard deletes (Drathek)"
+  - bugfix: "Fixed roof_master_node error issue. (cuberound)"

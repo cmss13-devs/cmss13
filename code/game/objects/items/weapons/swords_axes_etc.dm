@@ -105,7 +105,7 @@
 	return
 
 /obj/item/weapon/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
-	if(target.check_shields(src, 0, "[user]'s [name]"))
+	if(target.check_shields(src, 0, "[user]'s [name]", user.dir))
 		return FALSE
 	// Visuals and sound
 	playsound(target, 'sound/weapons/baton.ogg', 50, TRUE, 7)

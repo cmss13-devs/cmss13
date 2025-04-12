@@ -895,6 +895,7 @@
 	name = "duelling blade"
 	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
 	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
 	icon_state = "duelling_sword"
 	item_state = "duelling_sword"
 	force = MELEE_FORCE_STRONG
@@ -943,9 +944,9 @@
 	name = "duelling knife"
 	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
 	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
 	icon_state = "duelling_knife"
 	item_state = "duelling_knife"
-	embeddable = FALSE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("ripped", "torn", "cut")
 	force = 25

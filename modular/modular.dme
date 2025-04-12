@@ -20,6 +20,8 @@
 #include "stats_viewer/_stats_viewer.dme"
 #include "speech_filter/_speech_filter.dme"
 #include "text_to_speech/_tts.dme"
+#include "wy_special/_wy_special.dme"
+#include "paper/_paper.dme"
 #include "vehicles/_vehicles.dme"
 #include "skills/_skills.dme"
 #include "supply_packs/_supply_packs.dme"

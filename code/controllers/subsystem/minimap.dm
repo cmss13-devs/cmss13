@@ -1147,7 +1147,7 @@ SUBSYSTEM_DEF(minimaps)
 	icon_state = "label"
 	desc = "Click to place a label. Middle click a label to remove it. Middle click this button to remove all labels."
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/label.dmi'
-	screen_loc = "15,8"
+	screen_loc = "15,9"
 	/// List of turfs that have labels attached to them. kept around so it can be cleared
 	var/list/turf/labelled_turfs = list()
 
@@ -1213,7 +1213,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/clear
 	icon_state = "clear"
 	desc = "Remove all current labels and drawings."
-	screen_loc = "15,9"
+	screen_loc = "15,8"
 
 /atom/movable/screen/minimap_tool/clear/clicked(location, list/modifiers)
 	drawn_image.icon = icon('icons/ui_icons/minimap.dmi')
@@ -1223,7 +1223,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/update
 	icon_state = "update"
 	desc = "Send a tacmap update"
-	screen_loc = "15,8"
+	screen_loc = "15,7"
 	COOLDOWN_DECLARE(update_cooldown)
 
 /atom/movable/screen/minimap_tool/update/clicked(location, list/modifiers)
@@ -1247,7 +1247,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/up
 	icon_state = "up"
 	desc = "Move up a level"
-	screen_loc = "15,7"
+	screen_loc = "15,6"
 
 /atom/movable/screen/minimap_tool/up/clicked(location, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel+1))
@@ -1260,7 +1260,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/down
 	icon_state = "down"
 	desc = "Move down a level"
-	screen_loc = "15,6"
+	screen_loc = "15,5"
 
 /atom/movable/screen/minimap_tool/down/clicked(location, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel-1))

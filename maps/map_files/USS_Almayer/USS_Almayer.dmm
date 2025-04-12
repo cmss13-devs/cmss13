@@ -453,9 +453,9 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "abe" = (
-/obj/structure/closet/firecloset,
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
+/obj/structure/machinery/power/apc/almayer/hardened/south,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/starboard_garden)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -617,18 +617,14 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
 "abF" = (
-/obj/structure/surface/rack,
-/obj/item/tool/weldingtool/simple{
-	pixel_y = 6;
-	pixel_x = -6
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
 	},
-/obj/item/tool/weldingtool/simple{
-	pixel_y = 6;
-	pixel_x = 8
-	},
-/obj/item/tool/weldpack/minitank,
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -1329,14 +1325,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north1)
 "ade" = (
-/obj/structure/surface/rack,
-/obj/item/tool/mop,
-/obj/item/tool/mop{
-	pixel_x = 6
-	},
-/obj/item/tool/mop{
-	pixel_x = -6
-	},
+/obj/structure/closet/firecloset,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "adf" = (
@@ -1961,7 +1950,16 @@
 /turf/open/floor/almayer/blue/east,
 /area/almayer/living/basketball)
 "aeJ" = (
-/obj/structure/reagent_dispensers/watertank,
+/obj/structure/surface/rack,
+/obj/item/tool/weldingtool/simple{
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/obj/item/tool/weldingtool/simple{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/item/tool/weldpack/minitank,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aeK" = (
@@ -2303,7 +2301,14 @@
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "afy" = (
-/obj/structure/janitorialcart,
+/obj/structure/surface/rack,
+/obj/item/tool/mop,
+/obj/item/tool/mop{
+	pixel_x = 6
+	},
+/obj/item/tool/mop{
+	pixel_x = -6
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "afz" = (
@@ -2502,23 +2507,21 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/cafeteria_officer)
 "afM" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/cell_charger{
-	pixel_y = 8
-	},
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "afN" = (
-/obj/structure/closet/secure_closet/engineering_welding,
-/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
+/obj/structure/janitorialcart,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "afO" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
 "afP" = (
-/obj/structure/safe{
-	name = "stored weapons safe"
+/obj/structure/surface/table,
+/obj/structure/machinery/cell_charger{
+	pixel_y = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -2941,12 +2944,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "agI" = (
-/obj/structure/closet/secure_closet/engineering_electrical,
-/obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	autoname = 0;
-	c_tag = "AI - SecVault";
-	dir = 8
-	},
+/obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
 /area/almayer/command/airoom)
 "agJ" = (
@@ -3157,18 +3155,8 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/lower_medical_medbay)
 "ahc" = (
-/obj/structure/surface/rack,
-/obj/item/device/defibrillator/synthetic/seegson,
-/obj/item/device/defibrillator/synthetic/seegson{
-	pixel_y = -7
-	},
-/obj/item/cell/high{
-	pixel_y = 16;
-	pixel_x = 5
-	},
-/obj/item/cell/high{
-	pixel_y = 16;
-	pixel_x = -7
+/obj/structure/safe{
+	name = "stored weapons safe"
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -3223,22 +3211,13 @@
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
 "ahh" = (
-/obj/structure/surface/rack,
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = 7
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/machinery/camera/autoname/almayer/containment/ares{
+	autoname = 0;
+	c_tag = "AI - SecVault";
+	dir = 8
 	},
-/obj/item/reagent_container/spray/cleaner{
-	pixel_x = -5
-	},
-/obj/item/tool/soap{
-	pixel_y = 13;
-	pixel_x = -6
-	},
-/obj/item/reagent_container/glass/rag{
-	pixel_y = 13;
-	pixel_x = 5
-	},
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
 /area/almayer/command/airoom)
 "ahi" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
@@ -3386,13 +3365,21 @@
 /turf/open/floor/plating,
 /area/almayer/medical/operating_room_one)
 "ahy" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
+/obj/structure/surface/rack,
+/obj/item/device/defibrillator/synthetic/seegson,
+/obj/item/device/defibrillator/synthetic/seegson{
+	pixel_y = -7
 	},
-/turf/closed/wall/almayer,
-/area/almayer/living/starboard_garden)
+/obj/item/cell/high{
+	pixel_y = 16;
+	pixel_x = 5
+	},
+/obj/item/cell/high{
+	pixel_y = 16;
+	pixel_x = -7
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "ahz" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3485,7 +3472,20 @@
 /area/almayer/medical/chemistry)
 "ahJ" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/glass/watertank/atmos,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 7
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -5
+	},
+/obj/item/tool/soap{
+	pixel_y = 13;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/glass/rag{
+	pixel_y = 13;
+	pixel_x = 5
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ahK" = (
@@ -3550,24 +3550,8 @@
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
 "ahS" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/structure/machinery/disposal/delivery{
-	density = 0;
-	desc = "A pneumatic delivery unit.";
-	icon_state = "delivery_engi";
-	name = "Returns";
-	pixel_x = 25;
-	pixel_y = 28
-	},
 /obj/structure/surface/rack,
-/obj/item/device/t_scanner{
-	pixel_x = -5
-	},
-/obj/item/device/t_scanner{
-	pixel_x = 8
-	},
+/obj/item/reagent_container/glass/watertank/atmos,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "ahT" = (
@@ -3647,15 +3631,23 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
 "aid" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/machinery/disposal/delivery{
+	density = 0;
+	desc = "A pneumatic delivery unit.";
+	icon_state = "delivery_engi";
+	name = "Returns";
+	pixel_x = 25;
+	pixel_y = 28
+	},
 /obj/structure/surface/rack,
-/obj/item/maintenance_jack{
-	pixel_y = 6
+/obj/item/device/t_scanner{
+	pixel_x = -5
 	},
-/obj/item/maintenance_jack{
-	pixel_y = 13
-	},
-/obj/item/maintenance_jack{
-	pixel_y = -1
+/obj/item/device/t_scanner{
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
@@ -3683,6 +3675,19 @@
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/starboard_missiles)
+"aih" = (
+/obj/structure/surface/rack,
+/obj/item/maintenance_jack{
+	pixel_y = 6
+	},
+/obj/item/maintenance_jack{
+	pixel_y = 13
+	},
+/obj/item/maintenance_jack{
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aii" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/transmitter/rotary{
@@ -8546,7 +8551,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "avV" = (
-/obj/structure/machinery/power/apc/almayer/north,
 /obj/structure/bed/chair,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -9874,7 +9878,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = 3;
 	pixel_y = 10
 	},
@@ -10202,11 +10206,10 @@
 /area/almayer/command/cic)
 "aAB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/groundside_operations{
-	dir = 4;
-	pixel_y = 8
-	},
 /obj/structure/machinery/door/window/westright,
+/obj/structure/machinery/computer/overwatch/groundside_operations{
+	dir = 4
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aAC" = (
@@ -10793,11 +10796,6 @@
 	dir = 4;
 	layer = 2.99;
 	pixel_y = 4
-	},
-/obj/structure/machinery/computer/almayer_control{
-	dir = 4;
-	layer = 2.99;
-	pixel_y = 26
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
@@ -13976,7 +13974,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = -8
 	},
 /turf/open/floor/almayer,
@@ -14590,7 +14588,7 @@
 	pixel_x = 27;
 	serial_number = 11
 	},
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler{
 	layer = 2;
 	pixel_x = 6;
 	pixel_y = -6
@@ -16133,7 +16131,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "bjR" = (
-/obj/structure/cargo_container/arious/right,
+/obj/structure/cargo_container/armat/right,
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bjS" = (
@@ -19095,11 +19093,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/navigation)
 "bKt" = (
-/obj/structure/cargo_container/arious/left,
+/obj/structure/cargo_container/armat/left,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bKu" = (
-/obj/structure/cargo_container/arious/mid,
+/obj/structure/cargo_container/armat/mid,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bKz" = (
@@ -22164,7 +22162,7 @@
 	pixel_y = 13;
 	density = 0
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_y = 30;
 	pixel_x = 9
 	},
@@ -23667,10 +23665,6 @@
 "cUo" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
-"cVb" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north2)
 "cVf" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -33078,10 +33072,11 @@
 	pixel_x = -17
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/storage/fancy/cigar/tarbacktube,
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/lore_book/punch_out,
+/obj/item/storage/fancy/cigar/tarbacktube,
 /turf/open/floor/carpet,
 /area/almayer/living/pilotbunks)
 "haY" = (
@@ -37224,10 +37219,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
-"iTd" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/south2)
 "iTe" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -42004,7 +41995,7 @@
 /area/almayer/living/basketball)
 "kQr" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/item/tool/lighter/random{
 	pixel_x = 13
 	},
@@ -43564,7 +43555,7 @@
 "lzt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/screwdriver,
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = -7;
 	pixel_y = 12
 	},
@@ -47411,6 +47402,7 @@
 	pixel_x = 10;
 	pixel_y = 5
 	},
+/obj/item/lore_book/punch_out,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "niY" = (
@@ -47674,10 +47666,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/command/corporateliaison)
-"nnX" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/south1)
 "noj" = (
 /obj/structure/largecrate,
 /obj/structure/prop/server_equipment/laptop{
@@ -59872,10 +59860,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
-"stu" = (
-/obj/structure/machinery/sentry_holder/almayer,
-/turf/open/floor/almayer/mono,
-/area/almayer/lifeboat_pumps/north1)
 "sty" = (
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/almayer/plate,
@@ -62594,7 +62578,6 @@
 /area/almayer/lifeboat_pumps/south1)
 "tBu" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/machinery/sentry_holder/almayer,
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "tBP" = (
@@ -64533,7 +64516,7 @@
 /obj/effect/spawner/prop_gun/m41aMK1{
 	pixel_y = 7
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	pixel_x = -10;
 	pixel_y = 1
 	},
@@ -72322,7 +72305,7 @@
 	pixel_x = -5;
 	pixel_y = 20
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = 3;
 	pixel_y = 16
@@ -73550,17 +73533,17 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "xZk" = (
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = -10;
 	pixel_y = 10
 	},
-/obj/item/prop/helmetgarb/gunoil{
+/obj/item/stack/repairable/gunlube{
 	layer = 4.2;
 	pixel_x = 4;
 	pixel_y = 9
@@ -97492,7 +97475,7 @@ awW
 add
 add
 add
-stu
+add
 add
 add
 add
@@ -98913,7 +98896,7 @@ aoC
 add
 add
 add
-stu
+add
 add
 add
 add
@@ -98959,7 +98942,7 @@ baw
 aJU
 aJU
 aJU
-nnX
+aJU
 aJU
 aJU
 aJU
@@ -105196,7 +105179,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 acv
@@ -105409,7 +105392,7 @@ uli
 uli
 uli
 uli
-aiH
+abe
 aet
 lhX
 acl
@@ -105606,7 +105589,7 @@ aaa
 aaa
 aaa
 acf
-ahy
+aet
 avZ
 ipK
 ipK
@@ -105810,7 +105793,7 @@ aaa
 aaa
 acf
 aet
-aIx
+abF
 ipK
 ceC
 eRR
@@ -114746,7 +114729,7 @@ aeA
 aeC
 aeC
 aeC
-cVb
+aeC
 aeC
 aeC
 aeC
@@ -114794,7 +114777,7 @@ lJY
 vcE
 vcE
 vcE
-iTd
+vcE
 vcE
 vcE
 vcE
@@ -116167,7 +116150,7 @@ amH
 aeC
 aeC
 aeC
-cVb
+aeC
 aeC
 aeC
 aeC
@@ -116215,7 +116198,7 @@ kKR
 vcE
 vcE
 vcE
-iTd
+vcE
 vcE
 vcE
 vcE
@@ -133082,9 +133065,9 @@ bdH
 lmz
 lmz
 daz
+ahy
 ahc
 afP
-afM
 hWM
 ebN
 daz
@@ -133285,10 +133268,10 @@ bdH
 lmz
 lmz
 daz
-ahh
+ahJ
 fVx
 fVx
-abF
+aeJ
 ebN
 tId
 ltc
@@ -133488,10 +133471,10 @@ bdH
 bdH
 bdH
 izf
-ahJ
+ahS
 qQS
 qQS
-ade
+afy
 ebN
 tId
 fVx
@@ -133499,7 +133482,7 @@ qQS
 ebN
 naj
 itg
-abe
+ade
 daz
 daz
 daz
@@ -133691,10 +133674,10 @@ aaa
 bdH
 bdH
 vVk
-ahS
+aid
 fVx
 fVx
-aeJ
+afM
 ebN
 tId
 qQS
@@ -134097,10 +134080,10 @@ bdH
 bdH
 bdH
 daz
-aid
+aih
+ahh
 agI
 afN
-afy
 daz
 daz
 daz

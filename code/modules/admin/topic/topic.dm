@@ -892,7 +892,7 @@
 			to_chat(usr, "This player's faction must equal '[FACTION_MARINE]' to make them a mutineer.")
 			return
 
-		var/datum/equipment_preset/other/mutineer/leader/leader_preset = new()
+		var/datum/equipment_preset/other/mutiny/mutineer/leader/leader_preset = new()
 		leader_preset.load_status(H)
 
 		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
@@ -2005,10 +2005,10 @@
 		var/mob/ref_person = locate(href_list["nukeapprove"])
 		if(!istype(ref_person))
 			return FALSE
-		var/nukename = "Encrypted Operational Nuke"
+		var/nukename = "Encrypted Operational Blockbuster"
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
-			nukename = "Decrypted Operational Nuke"
+			nukename = "Decrypted Operational Blockbuster"
 		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
 		if(prompt != "Yes")
 			return

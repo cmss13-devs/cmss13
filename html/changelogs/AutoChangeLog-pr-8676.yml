@@ -1,5 +1,0 @@
-author: "Kashargul"
-delete-after: True
-changes:
-  - code_imp: "update tgui dependencies"
-  - code_imp: "update tgui say"

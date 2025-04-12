@@ -31,16 +31,16 @@
 
 //UPP Commandos
 /datum/paygrade/upp/uc1
-	name = "Младший Коммандос"
-	prefix = "МлКОМС"
+	name = "Сержант СПЕЦНАЗ"
+	prefix = "СержСПЦ"
 
 /datum/paygrade/upp/uc2
-	name = "Коммандос"
-	prefix = "КОМС"
+	name = "Лейтенант СПЕЦНАЗ"
+	prefix = "ЛейСПЦ"
 
 /datum/paygrade/upp/uc3
-	name = "Старший Коммандос"
-	prefix = "СтКОМС"
+	name = "Старший Лейтенант СПЕЦНАЗ"
+	prefix = "СтЛейСПЦ"
 
 //UPP Officers
 /datum/paygrade/upp/uo1

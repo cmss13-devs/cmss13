@@ -31,6 +31,10 @@
 	disp_title = JOB_CHIEF_EXECUTIVE_RU
 	supervisors = "Директорат Вейланд-Ютани"
 
+/datum/job/special/wey_yu/corporate/deputy_director
+	disp_title = JOB_DEPUTY_DIRECTOR_RU
+	supervisors = "Директорат Вейланд-Ютани"
+
 /datum/job/special/wey_yu/corporate/director
 	disp_title = JOB_DIRECTOR_RU
 	supervisors = "Директорат Вейланд-Ютани"
@@ -64,6 +68,9 @@
 /datum/job/special/wey_yu/pmc/lead_invest
 	disp_title = JOB_PMC_LEAD_INVEST_RU
 
+/datum/job/special/wey_yu/pmc/crowd_control
+	disp_title = JOB_PMC_CROWD_CONTROL_RU
+
 /datum/job/special/wey_yu/pmc/detainer
 	disp_title = JOB_PMC_DETAINER_RU
 
@@ -81,3 +88,16 @@
 
 /datum/job/special/wey_yu/pmc/director
 	disp_title = JOB_PMC_DIRECTOR_RU
+
+// COMMANDO //
+/datum/job/special/wey_yu/pmc/commando
+	disp_title = JOB_WY_COMMANDO_STANDARD_RU
+
+/datum/job/special/wey_yu/pmc/commando_leader
+	disp_title = JOB_WY_COMMANDO_LEADER_RU
+
+/datum/job/special/wey_yu/pmc/commando_gunner
+	disp_title = JOB_WY_COMMANDO_GUNNER_RU
+
+/datum/job/special/wey_yu/pmc/commando_dogcatcher
+	disp_title = JOB_WY_COMMANDO_DOG_CATCHER_RU

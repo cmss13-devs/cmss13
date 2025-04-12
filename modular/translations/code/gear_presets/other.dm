@@ -16,23 +16,23 @@
 
 /datum/equipment_preset/other/elite_merc/standard
 	//name = "Elite Mercenary (Standard Miner)"
-	assignment = "Наемный Шахтер"
+	assignment = "Элитный Наемник"
 
 /datum/equipment_preset/other/elite_merc/heavy
 	//name = "Elite Mercenary (Heavy)"
-	assignment = "Тяжеловооруженный Наемник"
+	assignment = "Элитный Тяжеловооруженный Наемник"
 
 /datum/equipment_preset/other/elite_merc/engineer
 	//name = "Elite Mercenary (Engineer)"
-	assignment = "Наемный Инженер"
+	assignment = "Элитный Наемный Инженер"
 
 /datum/equipment_preset/other/elite_merc/medic
 	//name = "Elite Mercenary (Medic)"
-	assignment = "Наемный Медик"
+	assignment = "Элитный Наемный Медик"
 
 /datum/equipment_preset/other/elite_merc/leader
 	//name = "Elite Mercenary (Leader)"
-	assignment = "Наемный Военачальник"
+	assignment = "Элитный Наемный Военачальник"
 
 /datum/equipment_preset/other/business_person
 	//name = "Business Person"

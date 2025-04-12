@@ -10,6 +10,10 @@
 	//name = "Weyland-Yutani Corporate Security Technician (Goon Engineer)"
 	assignment = JOB_WY_GOON_TECH_RU
 
+/datum/equipment_preset/goon/medic
+	//name = "Weyland-Yutani Corporate Security Medic (Goon Engineer)"
+	assignment = JOB_WY_GOON_MEDIC_RU
+
 /datum/equipment_preset/goon/lead
 	//name = "Weyland-Yutani Corporate Security Lead (Goon Lead)"
 	assignment = JOB_WY_GOON_LEAD_RU
@@ -17,3 +21,7 @@
 /datum/equipment_preset/goon/researcher
 	//name = "Weyland-Yutani Corporate Research Consultant (Goon Researcher)"
 	assignment = JOB_WY_GOON_RESEARCHER_RU
+
+/datum/equipment_preset/goon/researcher/lead
+	//name = "Weyland-Yutani Corporate Research Consultant (Lead)"
+	assignment = JOB_WY_GOON_RESEARCHER_LEAD_RU

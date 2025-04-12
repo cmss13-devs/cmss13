@@ -54,6 +54,10 @@
 	//name = "Weyland-Yutani PMC (Trauma Surgeon)"
 	assignment = JOB_PMC_DOCTOR_RU
 
+/datum/equipment_preset/pmc/pmc_riot_control
+	//name = "Weyland-Yutani PMC (Crowd Control Specialist)"
+	assignment = JOB_PMC_CROWD_CONTROL_RU
+
 /*****************************************************************************************************/
 /datum/equipment_preset/pmc/technician
 	//name = "Weyland-Yutani PMC (Corporate Technician)"
@@ -69,3 +73,21 @@
 /datum/equipment_preset/pmc/synth
 	//name = "Weyland-Yutani PMC (Support Synthetic)"
 	assignment = JOB_PMC_SYNTH_RU
+
+//*****************************************************************************************************/
+//WY Commandos
+/datum/equipment_preset/pmc/commando/standard
+	//name = "Weyland-Yutani Commando (Standard)"
+	assignment = JOB_WY_COMMANDO_STANDARD_RU
+
+/datum/equipment_preset/pmc/commando/gunner
+	//name = "Weyland-Yutani Commando (Gunner)"
+	assignment = JOB_WY_COMMANDO_LEADER_RU
+
+/datum/equipment_preset/pmc/commando/leader
+	//name = "Weyland-Yutani Commando (Leader)"
+	assignment = JOB_WY_COMMANDO_GUNNER_RU
+
+/datum/equipment_preset/pmc/commando/dogcatcher
+	//name = "Weyland-Yutani Commando (Dog Catcher)"
+	assignment = JOB_WY_COMMANDO_DOG_CATCHER_RU

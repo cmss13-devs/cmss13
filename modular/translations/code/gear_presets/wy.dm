@@ -24,7 +24,7 @@
 
 /datum/equipment_preset/wy/exec_spec/lawyer
 	//name = "Corporate - E - Lawyer"
-	assignment = JOB_EXECUTIVE_SPECIALIST_RU
+	assignment = JOB_LAWYER_WY_RU
 
 /datum/equipment_preset/wy/exec_supervisor
 	//name = "Corporate - F - Executive Supervisor"
@@ -32,7 +32,7 @@
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
 	//name = "Corporate - F - Lawyer"
-	assignment = JOB_EXECUTIVE_SUPERVISOR_RU
+	assignment = JOB_LAWYER_WY_RU
 
 /datum/equipment_preset/wy/manager
 	//name = "Manager"

@@ -24,6 +24,7 @@
 #include "code/faction_rank/uscm/marine.dm"
 #include "code/faction_rank/uscm/navy.dm"
 #include "code/faction_rank/uscm/provost.dm"
+#include "code/faction_rank/wy/commando.dm"
 #include "code/faction_rank/wy/pmc.dm"
 #include "code/faction_rank/wy/wy.dm"
 

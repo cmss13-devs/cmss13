@@ -5,32 +5,32 @@
 
 /datum/paygrade/nspa/constable
 	name = "Констебль"
-	prefix = "Конст"
+	prefix = "КНСТ"
 
 /datum/paygrade/nspa/senior_constable
 	name = "Старший Констебль"
-	prefix = "СтКонст"
+	prefix = "СТ.КНСТ"
 
 /datum/paygrade/nspa/sergeant
 	name = "Сержант"
-	prefix = "Серж"
+	prefix = "СЕРЖ"
 
 /datum/paygrade/nspa/inspector
 	name = "Инспектор"
-	prefix = "Инсп"
+	prefix = "ИНСП"
 
 /datum/paygrade/nspa/chief_inspector
 	name = "Главный Инспектор"
-	prefix = "ГлИнсп"
+	prefix = "ГЛ.ИНСП"
 
 /datum/paygrade/nspa/commander
 	name = "Коммандор"
-	prefix = "Кмдр"
+	prefix = "КМДР"
 
 /datum/paygrade/nspa/deputy_commissioner
 	name = "Заместитель Коммисара"
-	prefix = "ЗамКом"
+	prefix = "ЗАМ.КОММ"
 
 /datum/paygrade/nspa/commissioner
 	name = "Комиссар"
-	prefix = "Ком"
+	prefix = "КОММ"

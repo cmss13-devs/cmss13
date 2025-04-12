@@ -7,19 +7,19 @@
 
 /datum/paygrade/contractors/standard
 	name = "ВЭИ Наемник"
-	prefix = "Наем"
+	prefix = "НАЕМ"
 
 /datum/paygrade/contractors/med
 	name = "ВЭИ Медик-Специалист"
-	prefix = "Мед"
+	prefix = "МЕД"
 
 /datum/paygrade/contractors/mg
 	name = "ВЭИ Пулеметчик"
-	prefix = "Пул"
+	prefix = "ПУЛ"
 
 /datum/paygrade/contractors/engi
 	name = "ВЭИ Инженер-Специалист"
-	prefix = "Инж"
+	prefix = "ИНЖ"
 
 /datum/paygrade/contractors/syn
 	name = "ВЭИ Синтетик"

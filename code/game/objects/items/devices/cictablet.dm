@@ -165,11 +165,6 @@
 			COOLDOWN_START(src, distress_cooldown, COOLDOWN_COMM_REQUEST)
 			return TRUE
 
-/obj/item/device/cotablet/ui_close(mob/user)
-	..()
-	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-	tacmap_component.on_unset_interaction(user)
-
 /obj/item/device/cotablet/pmc
 	desc = "A special device used by corporate PMC directors."
 

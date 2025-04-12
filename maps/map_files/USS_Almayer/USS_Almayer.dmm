@@ -452,6 +452,10 @@
 /obj/effect/step_trigger/clone_cleaner,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
+"abe" = (
+/obj/structure/machinery/power/apc/almayer/hardened/south,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/starboard_garden)
 "abf" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
@@ -612,6 +616,15 @@
 "abE" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/basketball)
+"abF" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 28
+	},
+/turf/open/floor/grass,
+/area/almayer/living/starboard_garden)
 "abG" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = 3;
@@ -3289,14 +3302,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/operating_room_one)
-"ahy" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/turf/closed/wall/almayer,
-/area/almayer/living/starboard_garden)
 "ahz" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -8411,7 +8416,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "avV" = (
-/obj/structure/machinery/power/apc/almayer/north,
 /obj/structure/bed/chair,
 /turf/open/floor/grass,
 /area/almayer/living/starboard_garden)
@@ -105052,7 +105056,7 @@ aaa
 aaa
 aaa
 aaa
-aaa
+bdH
 aaa
 aaa
 acv
@@ -105265,7 +105269,7 @@ uli
 uli
 uli
 uli
-aiH
+abe
 aet
 lhX
 acl
@@ -105462,7 +105466,7 @@ aaa
 aaa
 aaa
 acf
-ahy
+aet
 avZ
 ipK
 ipK
@@ -105666,7 +105670,7 @@ aaa
 aaa
 acf
 aet
-aIx
+abF
 ipK
 ceC
 eRR

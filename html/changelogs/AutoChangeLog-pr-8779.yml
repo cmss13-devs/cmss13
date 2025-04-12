@@ -1,0 +1,9 @@
+author: "Joe Lampost, Forest2001"
+delete-after: True
+changes:
+  - rscadd: "Changes the Ai announcement to an elder overseer that only: Yautja, thralls and hellhounds can see"
+  - rscadd: "Adds a button for yautja council members to message all alive preds yautja."
+  - rscdel: "Removed the Yautja AI announcement"
+  - bugfix: "The youngblood terminator now displays what it is in the text input"
+  - soundadd: "added four sounds for the elder overseer"
+  - code_imp: "moves the whitelist panel to a new tab in the OOC panel"

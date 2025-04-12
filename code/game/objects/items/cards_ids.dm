@@ -250,9 +250,14 @@
 	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
+/obj/item/card/id/pmc/commando
+	name = "\improper W-Y Commando holo-badge"
+	assignment = "Corporate Commando"
+	icon_state = "commando"
+
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
-	desc = "It lists a callsign and a blood type. Issued to Whiteout protocol teams only."
+	desc = "It lists a callsign and a series number. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
 	item_state = "ds_id"
 

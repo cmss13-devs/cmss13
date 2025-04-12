@@ -73,7 +73,7 @@
 	name = "shooting target"
 	anchored = FALSE
 	desc = "A shooting target."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
 	health = 5000
@@ -339,7 +339,7 @@
 		actual_turf = SSmapping.get_turf_above(target_turf)
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
-	
+
 	if(actual_turf)
 		if(istype(mover, /mob))
 			var/mob/mover_mob = mover

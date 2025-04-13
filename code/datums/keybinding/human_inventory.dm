@@ -107,14 +107,23 @@
 	human_user.pickup_recent()
 	return TRUE
 
-/* /datum/keybinding/human/inventory/interact_other_hand
+/datum/keybinding/human/inventory/interact_other_hand
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "interact_other_hand"
 	full_name = "Interact With Other Hand"
-	keybind_signal = COMSIG_KB_HUMAN_INTERACT_OTHER_HAND */
+	keybind_signal = COMSIG_KB_HUMAN_INTERACT_OTHER_HAND
 
-/* /datum/keybinding/human/inventory/interact_other_hand/down(client/user)
+/datum/keybinding/human/inventory/interact_other_hand/down(client/user)
+	var/mob/living/carbon/human/human_mob = user.mob
+	if(!human_mob)
+		return
+
+	var/obj/item/active_item = human_mob.get_active_hand()
+	if(istype(active_item, /obj/item/ammo_magazine) || istype(active_item, /obj/item/explosive/grenade))
+		to_chat(user, SPAN_WARNING("You can't use this hotkey with ammo or explosives!"))
+		return TRUE // Stops the hotkey if there's ammo or a grenade in the active hand, accounts for shotgun shells.
+
 	. = ..()
 	if(.)
 		return
@@ -127,7 +136,7 @@
 	if(!inactive_hand)
 		return
 	human_user.click_adjacent(inactive_hand, active_hand)
-	return TRUE */
+	return TRUE
 
 #define INTERACT_KEYBIND_COOLDOWN_TIME (0.2 SECONDS)
 #define COOLDOWN_SLOT_INTERACT_KEYBIND "slot_interact_keybind_cooldown"

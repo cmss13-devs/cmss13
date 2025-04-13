@@ -1960,7 +1960,7 @@
 	pixel_x = -12;
 	pixel_y = 9
 	},
-/obj/effect/landmark/survivor_spawner/twe/iasf/commander,
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
 /turf/open/floor/prison/blue/north,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "ny" = (

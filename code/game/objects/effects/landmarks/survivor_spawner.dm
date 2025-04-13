@@ -673,13 +673,3 @@
     "<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
 	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-
-/obj/effect/landmark/survivor_spawner/twe/iasf/commander
-	equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
-	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
-	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
-	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are the Commander of the IASF Parachute Regiment!</h2>",\
-    "<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
-    "<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
-	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
-	spawn_priority = SPAWN_PRIORITY_VERY_HIGH

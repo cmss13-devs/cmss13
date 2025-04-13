@@ -700,7 +700,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 					to_chat(user, "[icon2html(src, usr)] [SPAN_NOTICE("No location is ignored anymore.")]")
 		if("tacmap_unpin")
 			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
-			tacmap_component.show_tacmap(user)
+			if(user in tacmap_component.interactees)
+				tacmap_component.on_unset_interaction(user)
+			else
+				tacmap_component.show_tacmap(user)
 		if("dropbomb")
 			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
 				return

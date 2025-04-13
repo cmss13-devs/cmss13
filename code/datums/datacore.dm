@@ -14,12 +14,26 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		if(!nosleep)
 			sleep(40)
 
-		var/list/jobs_to_check = GLOB.ROLES_CIC + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_POLICE + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES
-		for(var/mob/living/carbon/human/H as anything in GLOB.human_mob_list)
-			if(should_block_game_interaction(H))
+		var/list/jobs_to_check = GLOB.ROLES_USCM + GLOB.ROLES_WO
+
+		for(var/mob/living/carbon/human/current_human as anything in GLOB.human_mob_list)
+			if(should_block_game_interaction(current_human))
 				continue
-			if(H.job in jobs_to_check)
-				manifest_inject(H)
+
+			if(is_in_manifest(current_human))
+				continue
+
+			if(current_human.job in jobs_to_check)
+				manifest_inject(current_human)
+
+/datum/datacore/proc/is_in_manifest(mob/living/carbon/human/current_human)
+	var/weakref = WEAKREF(current_human)
+
+	for(var/datum/data/record/current_record as anything in general)
+		if(current_record.fields["ref"] == weakref)
+			return TRUE
+
+	return FALSE
 
 /datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
 	var/datum/data/record/foundrecord
@@ -104,7 +118,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_medical.fields["last_scan_time"] = null
 	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
 	record_medical.fields["autodoc_data"] = list()
-	record_medical.fields["autodoc_manual"] = list()
 	record_medical.fields["ref"] = WEAKREF(target)
 
 	if(target.med_record && !jobban_isbanned(target, "Records"))

@@ -14,6 +14,10 @@
 @each $channel, $color in colors.$channel-map {
   $darkened: color.adjust($color, $lightness: -20%, $space: hsl);
 
+  .button {
+    user-select: none;
+  }
+
   .button-#{$channel} {
     border-color: color.adjust($color, $lightness: -10%, $space: hsl);
     color: $color;

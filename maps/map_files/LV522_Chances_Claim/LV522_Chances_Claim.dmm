@@ -728,11 +728,17 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/lv522/atmos/filt)
 "acR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
+"acS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_2)
-"acS" = (
+"acT" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
@@ -14663,6 +14669,9 @@
 /area/lv522/atmos/east_reactor/south)
 "hXW" = (
 /obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/hallway)
 "hYf" = (
@@ -52504,7 +52513,7 @@ wuK
 xfW
 wuK
 xcY
-acS
+acT
 sAT
 pnj
 uiM
@@ -78062,7 +78071,7 @@ gRp
 iGr
 iGr
 uIn
-acR
+acS
 rqn
 qvA
 lhE
@@ -79918,7 +79927,7 @@ aIp
 aIp
 aIp
 aIp
-aIp
+acR
 aIp
 aIp
 aIp

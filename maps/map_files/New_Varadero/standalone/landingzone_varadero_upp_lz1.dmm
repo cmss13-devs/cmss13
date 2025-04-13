@@ -1,0 +1,7309 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door/poddoor{
+	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
+	id = "tunnel3";
+	name = "\improper Tunnel Entrance";
+	unacidable = 1
+	},
+/turf/closed/wall/rock/brown,
+/area/event/dynamic/lit)
+"aj" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"ak" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/blue3/north,
+/area/event/metal/dynamic/lit)
+"ao" = (
+/obj/structure/platform_decoration/metal/kutjevo/east,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"aq" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"ax" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11";
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"aB" = (
+/obj/structure/ladder,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/farocean)
+"aK" = (
+/obj/structure/machinery/floodlight{
+	name = "Floodlight"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"aL" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 5
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"aM" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"aO" = (
+/turf/closed/wall,
+/area/varadero/interior/toilets)
+"aQ" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/farocean)
+"aW" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10";
+	pixel_y = -4
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"aZ" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"bf" = (
+/obj/structure/machinery/telecomms/broadcaster,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"bg" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat,
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"bo" = (
+/obj/structure/prop/ice_colony/dense/planter_box/hydro{
+	density = 0;
+	name = "barge float";
+	desc = "A supportive lattice connected to two floating pontoons."
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"bv" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior_protected/caves/central)
+"bw" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = -7
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/blue3/west,
+/area/event/metal/dynamic/lit)
+"bL" = (
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/monsoon)
+"bN" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"bO" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"bT" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"ci" = (
+/obj/structure/platform_decoration/metal/kutjevo/north,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"cx" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"cA" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"cH" = (
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"cO" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"cQ" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"cS" = (
+/obj/effect/overlay/palmtree_r{
+	icon_state = "palm2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"cV" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"cX" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"dq" = (
+/obj/structure/prop/dam/crane/damaged,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/farocean)
+"ds" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"du" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp1"
+	},
+/area/event/metal/dynamic)
+"dG" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/farocean)
+"dH" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"dI" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"dK" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"dQ" = (
+/obj/structure/reagent_dispensers/fueltank/gas,
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"dR" = (
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/rainbow{
+	pixel_y = 12
+	},
+/obj/item/bedsheet/rainbow{
+	layer = 3.4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"dS" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	name = "Emergency NanoMed";
+	pixel_x = 30;
+	req_access = null
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"dT" = (
+/obj/structure/bed/bedroll,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"dX" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"dZ" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/event/dynamic/lit)
+"eg" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp27"
+	},
+/area/event/metal/dynamic)
+"eh" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"ev" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
+"eQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"eS" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior_protected/caves/central)
+"eW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"fe" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4";
+	pixel_y = -4
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"fu" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"fZ" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 11;
+	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	name = "\improper landing zone traffic signal"
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"gi" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp5"
+	},
+/area/event/metal/dynamic)
+"gj" = (
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"gq" = (
+/obj/item/tool/warning_cone,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"gC" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"gD" = (
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"gI" = (
+/obj/structure/platform/metal/strata,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"gL" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"gR" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -1;
+	pixel_y = 9;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"gZ" = (
+/obj/structure/closet/crate/construction,
+/obj/item/grown/log,
+/turf/open/gm/dirt/desert2,
+/area/varadero/exterior/monsoon)
+"ha" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/largecrate/random/case/small,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"hj" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"hr" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal2";
+	pixel_y = -11
+	},
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"hs" = (
+/obj/structure/surface/rack,
+/obj/item/tool/crowbar/red,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ht" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"hx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/stack/medical/advanced/bruise_pack,
+/obj/item/stack/medical/advanced/bruise_pack,
+/obj/item/stack/medical/advanced/ointment,
+/obj/item/stack/medical/advanced/ointment,
+/turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic/lit)
+"hD" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"hO" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 8;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"hP" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"hT" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp3"
+	},
+/area/event/metal/dynamic)
+"ia" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"ib" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"ip" = (
+/obj/structure/prop/rock/brown_degree,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"ir" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"it" = (
+/obj/item/lightstick/variant/planted,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ix" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/interior/oob)
+"iy" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"iF" = (
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"iH" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"iT" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp16"
+	},
+/area/event/metal/dynamic)
+"iV" = (
+/obj/structure/prop/brazier/campfire,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"iZ" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"ji" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"jl" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"jp" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"jq" = (
+/obj/structure/prop/rock/black_ground,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"jt" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ju" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/farocean)
+"jB" = (
+/turf/open/floor/strata/blue3/west,
+/area/event/metal/dynamic/lit)
+"jG" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"jW" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic/lit)
+"kg" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"kj" = (
+/obj/item/tool/pickaxe/borgdrill{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/stack/sandbags_empty/small_stack{
+	pixel_x = 13;
+	pixel_y = -6
+	},
+/obj/structure/prop/rock/black_ground,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"kk" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"km" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/varadero/interior/toilets)
+"kt" = (
+/obj/structure/prop/rock/black_ground/dense{
+	density = 0
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"kB" = (
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"kF" = (
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"kP" = (
+/obj/structure/machinery/colony_floodlight{
+	name = "Light Pole"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"kR" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp9"
+	},
+/area/event/metal/dynamic)
+"kY" = (
+/obj/structure/bed/chair/vehicle,
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"kZ" = (
+/obj/structure/platform/metal/kutjevo_smooth/north{
+	climb_delay = 1
+	},
+/obj/structure/barricade/handrail{
+	desc = "Your platforms look pretty heavy king, let me support them for you.";
+	dir = 1;
+	icon_state = "hr_kutjevo";
+	name = "support struts"
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"lb" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"le" = (
+/turf/open/floor/plating/asteroidwarning/north,
+/area/event/dynamic/lit)
+"lh" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/item/clothing/head/hardhat/orange{
+	pixel_x = -12;
+	pixel_y = -9
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"ll" = (
+/obj/item/tool/warning_cone,
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"lq" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/farocean)
+"ls" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/largecrate/random/case/double,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"lv" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5;
+	pixel_y = 4
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"lD" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/monsoon)
+"lI" = (
+/obj/structure/surface/rack,
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"lL" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"lQ" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/sign/safety/electronics{
+	pixel_x = 12
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"lR" = (
+/obj/item/reagent_container/food/drinks/bottle/vodka{
+	pixel_x = 13;
+	pixel_y = -7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ms" = (
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"mv" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"mx" = (
+/obj/structure/sign/nosmoking_2{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/optable{
+	desc = "This maybe could be used for advanced medical procedures.";
+	name = "Exam Table"
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/event/metal/dynamic/lit)
+"mD" = (
+/obj/structure/prop/rock/black_ground,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"mO" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/prop/server_equipment/laptop/on{
+	pixel_x = 15;
+	pixel_y = 6
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"mQ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"mR" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/eastocean)
+"mT" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"mX" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"nd" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ne" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"ni" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"nk" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"nm" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp23"
+	},
+/area/event/metal/dynamic)
+"ns" = (
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"nv" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"nx" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"nz" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"nC" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"nD" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 4
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"nM" = (
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"nN" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/event/dynamic/lit)
+"nP" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/farocean)
+"nW" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"oa" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"ol" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/west,
+/area/varadero/exterior/farocean)
+"on" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"op" = (
+/obj/structure/machinery/telecomms/server,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"oB" = (
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"oD" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"oR" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"oW" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/farocean)
+"oX" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -7;
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"oY" = (
+/turf/open/gm/coast/south,
+/area/varadero/interior/oob)
+"pu" = (
+/obj/item/tool/shovel,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"pD" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4;
+	pixel_x = -8;
+	pixel_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 4;
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"pJ" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"pP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"pR" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"pV" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"pY" = (
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/monsoon)
+"qb" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/north,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"qc" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"qd" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"qv" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"qw" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic/lit)
+"qB" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/west,
+/area/varadero/exterior/farocean)
+"qE" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"qL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"qP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"qV" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"rc" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/event/metal/dynamic/lit)
+"rd" = (
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/wire,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"rj" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 11
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"rn" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"rM" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"rN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"rR" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"rX" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"sb" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"so" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"ss" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"sx" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"sH" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown,
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"sT" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp25"
+	},
+/area/event/metal/dynamic)
+"tn" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all{
+	pixel_x = 11;
+	pixel_y = 20
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"tq" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"ty" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"tC" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"tF" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"tM" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"tO" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"tT" = (
+/obj/structure/prop/server_equipment/yutani_server,
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"tU" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"tZ" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ue" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"uf" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"ul" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"um" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/monsoon)
+"un" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"uq" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ut" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"uF" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"uP" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"vf" = (
+/turf/open/floor/plating/asteroidwarning/east,
+/area/event/dynamic/lit)
+"vx" = (
+/obj/structure/prop/rock/black_ground,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"vy" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/item/mortar_shell/flare,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"vA" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4";
+	pixel_y = -4
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"vF" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/strata/blue3,
+/area/event/metal/dynamic/lit)
+"vI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"wt" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"wz" = (
+/turf/open/gm/dirt/desert2,
+/area/varadero/exterior/monsoon)
+"wD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"wQ" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_x = 4;
+	pixel_y = -20
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"wR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/obj/item/roller,
+/obj/item/roller,
+/turf/open/floor/almayer/sterile_green,
+/area/event/metal/dynamic/lit)
+"wS" = (
+/obj/structure/largecrate/random/case,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"xd" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"xe" = (
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/beachcorner/south_east,
+/area/varadero/exterior/farocean)
+"xk" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"xl" = (
+/turf/open/gm/coast/south,
+/area/varadero/exterior/monsoon)
+"xn" = (
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/monsoon)
+"xz" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"xP" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/caves/east)
+"yi" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"ym" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"yn" = (
+/obj/structure/machinery/light/small,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"yz" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp20"
+	},
+/area/event/metal/dynamic)
+"yE" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"yF" = (
+/obj/structure/bed/roller,
+/turf/open/floor/almayer/sterile_green,
+/area/event/metal/dynamic/lit)
+"yJ" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"yP" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp22"
+	},
+/area/event/metal/dynamic)
+"yT" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	pixel_y = 18
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"yU" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"yW" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"zh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"zy" = (
+/turf/open/floor/plating/asteroidwarning/west,
+/area/event/dynamic/lit)
+"zF" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "South East Landing Zone";
+	faction = "UPP"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"zG" = (
+/obj/structure/blocker/fog,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/farocean)
+"zH" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"zS" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"zU" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"zX" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Ad" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic/lit)
+"Ap" = (
+/turf/open/floor/almayer/test_floor5,
+/area/event/metal/dynamic)
+"Av" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"AO" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"AP" = (
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"AR" = (
+/turf/open/floor/plating/asteroidfloor,
+/area/event/dynamic/lit)
+"Ba" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"Bq" = (
+/obj/effect/spawner/random/tool,
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"Bv" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"BK" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/strata/blue3/east,
+/area/event/metal/dynamic/lit)
+"BL" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Fax Machine";
+	department = "FOB Fax";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/strata/blue3/west,
+/area/event/metal/dynamic/lit)
+"BM" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"BN" = (
+/obj/structure/barricade/handrail/wire,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"BQ" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"BS" = (
+/obj/structure/surface/rack,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"BU" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"BY" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/farocean)
+"Ci" = (
+/obj/structure/prop/rock/brown,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Cw" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/west,
+/area/varadero/exterior/farocean)
+"CT" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/varadero/interior/oob)
+"De" = (
+/obj/structure/flora/bush/ausbushes/var3/fernybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"Dj" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Ds" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Du" = (
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/monsoon)
+"DI" = (
+/obj/structure/prop/dam/crane/damaged,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"DZ" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"Ea" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/varadero/exterior/farocean)
+"Ed" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
+"Em" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Eo" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"Ep" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"Er" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"EE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	icon_state = "sparsegrass_3"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"EM" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"Fd" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner/south_west,
+/area/event/dynamic/lit)
+"Fo" = (
+/obj/structure/platform/metal/strata,
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"Fr" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/security/south)
+"FH" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/south,
+/area/varadero/exterior/farocean)
+"FN" = (
+/obj/structure/prop/rock/black_ground,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"FY" = (
+/obj/structure/prop/rock/black_ground,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"FZ" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/obj/structure/prop/rock/brown,
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"Gd" = (
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 7
+	},
+/obj/structure/machinery/telecomms/hub/preset{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"Gk" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Gm" = (
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/rainbow{
+	pixel_y = 12
+	},
+/obj/item/bedsheet/rainbow{
+	layer = 3.4
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"GJ" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/monsoon)
+"GL" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 11;
+	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	name = "\improper landing zone traffic signal"
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"GQ" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/caves/east)
+"GT" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"Ha" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"Hc" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/maintenance/security/south)
+"Hd" = (
+/obj/structure/curtain/medical,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"Hy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/stack/medical/advanced/bruise_pack/upgraded,
+/obj/item/stack/medical/advanced/bruise_pack/upgraded,
+/turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic/lit)
+"HF" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"HG" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"HH" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/central)
+"HJ" = (
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"HP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"HS" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/west,
+/area/varadero/exterior/farocean)
+"HU" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"Id" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"Ir" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Iv" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"ID" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"IL" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"IX" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = -17
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Jf" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"Jh" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/event/dynamic/lit)
+"Js" = (
+/obj/structure/blocker/invisible_wall/water,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/farocean)
+"Jz" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	name = "Medical Cabinet";
+	pixel_x = 7;
+	pixel_y = 27
+	},
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"JT" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior_protected/caves/central)
+"Ke" = (
+/turf/open/gm/dirt/desert1,
+/area/varadero/exterior/monsoon)
+"Kg" = (
+/turf/open/floor/plating/asteroidwarning,
+/area/event/dynamic/lit)
+"Ki" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/farocean)
+"Kk" = (
+/obj/structure/machinery/telecomms/bus,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"Kq" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"KD" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"KE" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"KM" = (
+/obj/item/tool/warning_cone,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"KN" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Li" = (
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"Lm" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"Lp" = (
+/obj/structure/blocker/fog,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"LC" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"LG" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12";
+	pixel_y = -4;
+	pixel_x = 4
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"LH" = (
+/turf/open/floor/almayer/silverfull,
+/area/event/metal/dynamic/lit)
+"LK" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"LT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"LW" = (
+/obj/item/storage/belt/gun/mortarbelt,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"LX" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottom";
+	pixel_y = 18
+	},
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"Ma" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"Mh" = (
+/obj/structure/largecrate/supply/medicine/iv,
+/turf/open/floor/almayer/sterile_green,
+/area/event/metal/dynamic/lit)
+"Mi" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/mre/upp,
+/obj/item/storage/box/mre/upp,
+/obj/item/storage/box/mre/upp,
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/floor3/east,
+/area/event/metal/dynamic/lit)
+"Mk" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt,
+/area/varadero/interior/caves/east)
+"Mu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/portadialysis,
+/obj/item/storage/surgical_tray,
+/turf/open/floor/almayer/sterile_green,
+/area/event/metal/dynamic/lit)
+"MG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint{
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/varadero/interior/toilets)
+"MS" = (
+/obj/structure/machinery/storm_siren{
+	dir = 8;
+	pixel_x = 3
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"MY" = (
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Nh" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Ni" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Np" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"Nu" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/monsoon)
+"Ny" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/obj/structure/desertdam/decals/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"NH" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/structure/prop/rock/brown,
+/turf/open/gm/river/ocean/deep_ocean,
+/area/varadero/exterior/farocean)
+"NI" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"NN" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"NT" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"NX" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp8"
+	},
+/area/event/metal/dynamic)
+"Od" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Of" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/gm/dirt,
+/area/varadero/interior/caves/east)
+"Og" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/maintenance/south)
+"Ok" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"Ou" = (
+/obj/structure/fence,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"OB" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Pd" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Pe" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/dirt/desert0,
+/area/varadero/exterior/monsoon)
+"Pg" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"Pi" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Pn" = (
+/obj/structure/machinery/storm_siren{
+	dir = 4;
+	pixel_x = -3
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"PJ" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/gm/dirt,
+/area/event/dynamic/lit)
+"PL" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"PO" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = -18
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full";
+	pixel_y = 14
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"PR" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -1;
+	pixel_y = 9;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"PY" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Qa" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/item/stack/tile/plasteel{
+	layer = 2.89;
+	pixel_x = 17;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"Qp" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"Qq" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Qu" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/event/dynamic/lit)
+"Qx" = (
+/obj/structure/girder,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"QB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"QI" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"QJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/monsoon)
+"QS" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_box/magazine/misc/flashlight,
+/turf/open/floor/strata/blue3/east,
+/area/event/metal/dynamic/lit)
+"QV" = (
+/obj/structure/sign/safety/fire_haz{
+	pixel_y = 7
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"QZ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"Ra" = (
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"Rc" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"Rg" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/caves/east)
+"Rn" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7;
+	pixel_x = 15
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"Rp" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"Rz" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	dir = 2;
+	req_access = null
+	},
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"RF" = (
+/obj/structure/prop/rock/brown,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"RI" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"RL" = (
+/obj/structure/lz_sign/new_varadero,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"RQ" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/farocean)
+"RT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"RW" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"Sf" = (
+/turf/open/auto_turf/sand_white/layer0,
+/area/event/dynamic/lit)
+"Sn" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"Sx" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Sz" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal12"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"SJ" = (
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"SV" = (
+/turf/closed/wall/r_wall,
+/area/varadero/interior/maintenance/security/south)
+"Tb" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/event/metal/dynamic)
+"TF" = (
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/exterior/monsoon)
+"TI" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/item/tool/pickaxe{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"TT" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Ui" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Uj" = (
+/obj/structure/machinery/light/small,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"Uq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/blue3/east,
+/area/event/metal/dynamic/lit)
+"Ux" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Uz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"UL" = (
+/obj/structure/platform/metal/kutjevo_smooth/west{
+	climb_delay = 1
+	},
+/turf/open/floor/plating/bare_catwalk,
+/area/varadero/exterior/farocean)
+"UP" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/item/mortar_shell/frag,
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"Vi" = (
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/farocean)
+"Vk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"Vn" = (
+/turf/closed/shuttle/ert{
+	icon_state = "upp4"
+	},
+/area/event/metal/dynamic)
+"VG" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"VL" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"VO" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"VU" = (
+/obj/structure/machinery/door/poddoor{
+	desc = "A podlock that leads to the main Marine base on LV-624. It requires power from the outpost to stay shut. Better not let anything get through this...";
+	id = "tunnel3";
+	name = "\improper Tunnel Entrance";
+	unacidable = 1
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"VX" = (
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"We" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"Wh" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"Wk" = (
+/turf/open/gm/dirt,
+/area/varadero/interior/caves/east)
+"Wn" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"Wy" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/turf/open/floor/almayer/sterile_green,
+/area/event/metal/dynamic/lit)
+"WN" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/event/dynamic/lit)
+"WP" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"WR" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/event/metal/dynamic/lit)
+"WS" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/monsoon)
+"WW" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"Xb" = (
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior_protected/maintenance/south)
+"Xm" = (
+/obj/structure/platform/metal/kutjevo_smooth{
+	climb_delay = 1
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -1;
+	pixel_y = 9;
+	explo_proof = 1;
+	unacidable = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east{
+	climb_delay = 1
+	},
+/turf/open/gm/river/shallow_ocean_shallow_ocean,
+/area/varadero/exterior/farocean)
+"Xs" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	layer = 3.1;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent4";
+	pixel_y = 25
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "windsock";
+	pixel_x = 18;
+	pixel_y = 23
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"Xy" = (
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"XC" = (
+/turf/closed/wall,
+/area/varadero/interior/caves/east)
+"XL" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"XM" = (
+/obj/item/lightstick/variant/planted,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/monsoon)
+"Yk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
+/turf/open/floor/strata/floor2,
+/area/event/metal/dynamic/lit)
+"YC" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"YD" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"YI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"YP" = (
+/obj/structure/curtain/red,
+/turf/open/floor/corsat/marked,
+/area/event/metal/dynamic/lit)
+"YQ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"YS" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+"YT" = (
+/obj/structure/blocker/invisible_wall/water,
+/obj/item/lightstick/variant/planted,
+/turf/open/gm/coast/south,
+/area/varadero/exterior/farocean)
+"Zi" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/event/dynamic/lit)
+"ZD" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_ew_half_cap";
+	pixel_y = 9
+	},
+/turf/open/floor/interior/wood,
+/area/event/dynamic/lit)
+"ZF" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt/cement,
+/area/varadero/interior_protected/caves/central)
+"ZI" = (
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior/caves/east)
+"ZS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/plating,
+/area/event/dynamic/lit)
+"ZX" = (
+/turf/open/floor/interior/wood,
+/area/varadero/interior_protected/caves/central)
+
+(1,1,1) = {"
+GQ
+SV
+SV
+pJ
+cL
+pJ
+pJ
+XC
+wt
+EM
+aO
+aO
+aO
+aO
+MG
+km
+aO
+km
+MG
+aO
+aO
+aO
+aO
+HU
+hD
+ev
+HJ
+HJ
+HH
+HH
+jq
+HH
+HH
+HH
+HH
+HH
+HH
+HJ
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+HH
+HJ
+HH
+HH
+VX
+VX
+VX
+"}
+(2,1,1) = {"
+GQ
+SV
+aj
+pJ
+Qa
+xz
+xz
+xz
+xz
+xz
+QZ
+xz
+xz
+xz
+aq
+xz
+qd
+xz
+aq
+ht
+xz
+mQ
+mQ
+Np
+ev
+Ed
+HJ
+HJ
+tM
+tM
+HH
+HH
+tM
+tM
+tM
+tM
+HH
+Ba
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+HJ
+HH
+HH
+HH
+VX
+VX
+VX
+"}
+(3,1,1) = {"
+GQ
+SV
+Rc
+pJ
+cL
+pJ
+uf
+pJ
+pJ
+Hc
+pJ
+pJ
+pJ
+pJ
+pJ
+Hc
+pJ
+pJ
+pJ
+pJ
+pJ
+hD
+iF
+Wh
+Og
+ev
+HJ
+HJ
+HJ
+kF
+HH
+kF
+HH
+tM
+kF
+kF
+HH
+HH
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+HH
+HH
+HH
+HH
+VX
+VX
+VX
+"}
+(4,1,1) = {"
+GQ
+SV
+SV
+pJ
+cL
+Ma
+uf
+MS
+pJ
+pJ
+BS
+Hc
+Hc
+pJ
+pJ
+pJ
+Pg
+uf
+Hc
+pR
+pJ
+hD
+hD
+Xb
+hD
+ev
+HH
+HH
+HH
+HH
+HH
+ZF
+HH
+HH
+HH
+Jf
+HH
+HH
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+eS
+HH
+HH
+HH
+HH
+HH
+VX
+VX
+VX
+"}
+(5,1,1) = {"
+GQ
+GQ
+SV
+pJ
+cL
+pJ
+xP
+xP
+xP
+EM
+EM
+xP
+Rg
+Rg
+Rg
+Rg
+xP
+xP
+xP
+bv
+bv
+bv
+bv
+HH
+HH
+eS
+eS
+HH
+HH
+HH
+HH
+HH
+eS
+HH
+HH
+HH
+kF
+HH
+eS
+eS
+eS
+eS
+bN
+HJ
+HJ
+HJ
+HH
+HH
+HH
+jq
+HH
+VX
+VX
+VX
+VX
+"}
+(6,1,1) = {"
+GQ
+GQ
+GQ
+aZ
+cL
+pJ
+xP
+GQ
+GQ
+EM
+EM
+EM
+EM
+EM
+EM
+Wk
+Wk
+GQ
+GQ
+eS
+bT
+eS
+eS
+HJ
+HJ
+eS
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+YQ
+fe
+HH
+HH
+eS
+eS
+HJ
+ty
+HJ
+HJ
+HJ
+HH
+HH
+HH
+HH
+HH
+VX
+VX
+VX
+VX
+"}
+(7,1,1) = {"
+GQ
+GQ
+GQ
+pJ
+Fr
+pJ
+xP
+GQ
+EM
+vx
+EM
+EM
+EM
+EM
+EM
+BM
+EM
+EM
+EM
+HH
+HH
+HH
+HJ
+ty
+HJ
+HJ
+HJ
+HJ
+HH
+HH
+HH
+eS
+eS
+eS
+HH
+HH
+HH
+Kq
+HH
+eS
+eS
+FY
+HJ
+HJ
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+VX
+VX
+VX
+VX
+"}
+(8,1,1) = {"
+SV
+SV
+SV
+pJ
+cL
+pJ
+xP
+GQ
+Wk
+EM
+Wk
+wt
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+HH
+HH
+HH
+HJ
+HJ
+HJ
+HJ
+HJ
+De
+HH
+HH
+HH
+eS
+eS
+eS
+eS
+YQ
+HH
+Kq
+HH
+eS
+eS
+HJ
+HJ
+HJ
+HH
+HH
+HH
+HH
+HH
+HH
+VX
+VX
+VX
+VX
+VX
+"}
+(9,1,1) = {"
+pJ
+pJ
+pJ
+pJ
+Fr
+pJ
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+HH
+HH
+HH
+oD
+HH
+HH
+HJ
+HH
+HH
+HH
+HH
+eS
+eS
+eS
+De
+HH
+HH
+kF
+HH
+HH
+HJ
+HJ
+HJ
+HJ
+HH
+HH
+oD
+HH
+HH
+HH
+HH
+jp
+VX
+VX
+VX
+VX
+"}
+(10,1,1) = {"
+Iv
+xz
+xz
+xz
+YI
+pJ
+EM
+wt
+EM
+EM
+EM
+EM
+EM
+VX
+VX
+EM
+vx
+EM
+EM
+HH
+HH
+HH
+HH
+eS
+eS
+HH
+HH
+HH
+HH
+HJ
+eS
+eS
+eS
+HH
+HH
+HH
+HH
+jq
+HH
+HH
+HJ
+ty
+HH
+HH
+HH
+HH
+HJ
+HH
+HH
+HH
+VX
+VX
+VX
+VX
+VX
+"}
+(11,1,1) = {"
+uf
+pJ
+pJ
+pJ
+pR
+Hc
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+VX
+VX
+VX
+VX
+VX
+EM
+HH
+HJ
+HJ
+HH
+eS
+eS
+HH
+HH
+HH
+HH
+HJ
+HJ
+eS
+HH
+HH
+HH
+HH
+fe
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(12,1,1) = {"
+Ep
+Ep
+SV
+EM
+EM
+EM
+xP
+EM
+EM
+EM
+Wk
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+De
+HJ
+HJ
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HJ
+HJ
+HH
+HH
+HH
+HH
+HH
+HH
+tM
+HH
+HH
+HJ
+tM
+tM
+tM
+tM
+HH
+tM
+gL
+VU
+VO
+mX
+mX
+Sz
+aa
+"}
+(13,1,1) = {"
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+jq
+HJ
+ty
+HJ
+HH
+HH
+HH
+HH
+jq
+HH
+HH
+HH
+HH
+HH
+HH
+YQ
+HH
+kF
+kF
+tM
+kF
+HH
+tM
+HH
+HH
+tM
+kF
+kF
+ji
+VU
+zX
+IX
+kB
+Pi
+aa
+"}
+(14,1,1) = {"
+EM
+VL
+EM
+EM
+EM
+Wk
+EM
+EM
+EM
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+HJ
+HJ
+JT
+HJ
+HJ
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+oD
+Wn
+ZF
+HH
+HH
+ZF
+ZF
+Jf
+HJ
+yU
+ZF
+ZF
+ZF
+ZF
+Ny
+VU
+lL
+Gk
+Gk
+zS
+aa
+"}
+(15,1,1) = {"
+GQ
+EM
+EM
+EM
+EM
+ZI
+EM
+EM
+Of
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+jq
+HH
+HH
+HH
+HH
+oD
+HH
+GL
+HH
+HH
+Kq
+HH
+HH
+VX
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(16,1,1) = {"
+GQ
+GQ
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+YQ
+kF
+HH
+HH
+kP
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(17,1,1) = {"
+EM
+EM
+EM
+wt
+Wk
+VL
+Wk
+EM
+EM
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+HJ
+HJ
+HH
+jq
+HH
+HH
+HH
+VX
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HH
+HJ
+HJ
+HH
+kP
+HH
+HH
+fe
+Kq
+HH
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(18,1,1) = {"
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+HJ
+HJ
+HH
+oD
+HH
+HH
+HH
+VX
+HH
+HH
+ty
+HH
+HH
+HH
+HH
+HH
+HJ
+HJ
+ty
+CT
+CT
+mT
+YQ
+kF
+Kq
+HH
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(19,1,1) = {"
+EM
+Wk
+VL
+EM
+EM
+EM
+EM
+nx
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+ty
+JT
+HJ
+HH
+HH
+HH
+HH
+VX
+VX
+VX
+HH
+HJ
+HJ
+HH
+HH
+HJ
+HJ
+ty
+VX
+VX
+VX
+VX
+fu
+WN
+dK
+Qp
+jt
+CT
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(20,1,1) = {"
+EM
+VX
+VX
+nx
+EM
+Wk
+EM
+VX
+VX
+VX
+VX
+VX
+VX
+cX
+oa
+oa
+oa
+oa
+pP
+aL
+ZD
+pP
+pP
+pP
+pP
+VX
+VX
+VX
+VX
+VX
+aL
+ZD
+pP
+pP
+pP
+pP
+VX
+Qq
+Xy
+Xy
+TT
+zX
+vA
+Pi
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(21,1,1) = {"
+VX
+VX
+VX
+VX
+Wk
+Mk
+VX
+VX
+VX
+VX
+VX
+VX
+cX
+ZX
+ZX
+ZX
+YS
+YS
+uP
+uP
+uP
+lv
+PO
+uP
+Xy
+VX
+VX
+CT
+Qu
+Ux
+uP
+uP
+lv
+PO
+uP
+uP
+uP
+uP
+uP
+TT
+yW
+WN
+dK
+Qp
+jt
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(22,1,1) = {"
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+CT
+Rn
+ZX
+tO
+NI
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+BQ
+Xy
+Xy
+Qq
+Xy
+TT
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+aK
+yW
+zX
+yW
+Pi
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(23,1,1) = {"
+CT
+CT
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+CT
+NN
+ZX
+YS
+WP
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+BQ
+Xy
+Xy
+TT
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+zX
+vA
+Pi
+yW
+yW
+RF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(24,1,1) = {"
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+NN
+NI
+VX
+VX
+VX
+VX
+aK
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Nh
+nW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+FN
+yW
+yW
+yW
+yW
+zX
+kB
+Pi
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(25,1,1) = {"
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+NN
+NI
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Nh
+nW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+zX
+kB
+Pi
+yW
+yW
+yW
+kt
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(26,1,1) = {"
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+NN
+NI
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+FN
+yW
+yW
+yW
+ID
+Xy
+nW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+zX
+vA
+Pi
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(27,1,1) = {"
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+HP
+nW
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Nh
+Xy
+nW
+yW
+yW
+yW
+aK
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+zX
+kB
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(28,1,1) = {"
+QJ
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+jl
+yW
+gj
+yW
+sx
+nW
+gj
+WW
+yW
+gj
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Nh
+Xy
+nW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+kB
+Pi
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(29,1,1) = {"
+rN
+gq
+rN
+cH
+cH
+Nu
+GJ
+cH
+gj
+yW
+it
+gj
+HP
+nW
+yW
+it
+yW
+yW
+yW
+yW
+yW
+it
+yW
+yW
+yW
+Nh
+Xy
+nW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+FN
+yW
+kt
+VX
+VX
+VX
+VX
+VX
+"}
+(30,1,1) = {"
+ms
+cH
+cH
+ms
+TF
+cH
+cH
+TF
+yW
+gj
+gj
+gj
+HP
+Ui
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+rc
+xd
+on
+xd
+rc
+Em
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+"}
+(31,1,1) = {"
+gZ
+cH
+cH
+pY
+TF
+cH
+TF
+cH
+gj
+yW
+gj
+yW
+HP
+Ui
+yW
+gj
+yW
+FN
+yW
+yW
+yW
+yW
+yW
+rc
+rc
+ne
+SJ
+sb
+rc
+rc
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+zX
+kB
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+"}
+(32,1,1) = {"
+rN
+Bq
+rN
+cH
+cH
+cH
+TF
+TF
+gj
+gj
+yW
+yW
+HP
+nW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+WR
+SJ
+SJ
+nM
+SJ
+SJ
+KD
+pP
+pP
+aL
+ZD
+pP
+pP
+pP
+pP
+pP
+OB
+yW
+zX
+vA
+Pi
+yW
+cA
+pP
+pP
+pP
+TI
+VX
+xk
+VX
+VX
+VX
+"}
+(33,1,1) = {"
+cS
+cH
+cH
+cH
+TF
+TF
+TF
+cH
+yW
+yW
+WW
+yW
+HP
+nW
+yW
+yW
+yW
+yW
+it
+RF
+yW
+yW
+yW
+qc
+SJ
+nM
+GT
+Mi
+SJ
+rM
+Xy
+Xy
+Xy
+Xy
+Xy
+Xy
+Qq
+Xy
+Xy
+nW
+yW
+yW
+kB
+Pi
+yW
+Nh
+Qq
+Xy
+Xy
+Xy
+Sf
+kj
+VX
+VX
+VX
+"}
+(34,1,1) = {"
+pu
+rN
+cH
+cH
+TF
+cH
+cH
+cH
+VX
+RF
+gj
+VX
+NN
+NI
+VX
+VX
+aK
+yW
+yW
+yW
+yW
+it
+yW
+WR
+dS
+SJ
+Mi
+SJ
+SJ
+KD
+uP
+uP
+uP
+uP
+uP
+uP
+uP
+lv
+PO
+TT
+yW
+zX
+kB
+Pi
+yW
+Sx
+lv
+PO
+uP
+lh
+uP
+KN
+VX
+VX
+VX
+"}
+(35,1,1) = {"
+Xs
+Sn
+cH
+gq
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+NN
+NI
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+rc
+rc
+ne
+SJ
+sb
+rc
+rc
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+zX
+vA
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+"}
+(36,1,1) = {"
+Pn
+XM
+Ke
+wz
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+NN
+NI
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+rc
+Rp
+ia
+nv
+rc
+yE
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+FN
+yW
+yW
+yW
+Pi
+yW
+yW
+yW
+hP
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+"}
+(37,1,1) = {"
+EE
+cH
+qv
+TF
+qv
+VX
+VX
+VX
+VX
+VX
+VX
+CT
+NN
+NI
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Nh
+Xy
+nW
+yW
+yW
+yW
+rc
+rc
+BU
+BU
+rc
+rc
+yW
+yW
+yW
+yW
+yW
+kB
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+"}
+(38,1,1) = {"
+cH
+cH
+cH
+TF
+cH
+VX
+VX
+VX
+VX
+VX
+VX
+CT
+YD
+ZX
+zU
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Nh
+Xy
+nW
+yW
+yW
+yW
+rc
+bf
+vI
+LT
+Kk
+rc
+yW
+yW
+yW
+WW
+zX
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+"}
+(39,1,1) = {"
+cH
+cH
+cH
+TF
+cH
+cH
+VX
+VX
+VX
+VX
+VX
+CT
+Lm
+tO
+ZX
+oa
+YC
+pP
+aL
+ZD
+pP
+pP
+pP
+pP
+pP
+Qq
+Xy
+nW
+yW
+aK
+yW
+rc
+nC
+Yk
+eW
+Uj
+rc
+yW
+yW
+yW
+yW
+zX
+kB
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(40,1,1) = {"
+cH
+cH
+cH
+cH
+TF
+qv
+cH
+VX
+VX
+VX
+VX
+VX
+VX
+Lm
+YS
+YS
+QI
+uP
+uP
+uP
+uP
+lv
+PO
+uP
+uP
+uP
+uP
+PL
+yW
+Jh
+Jh
+AP
+wD
+lb
+tn
+vI
+AP
+Jh
+Jh
+yW
+yW
+zX
+kB
+yW
+yW
+yW
+yW
+yW
+aK
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(41,1,1) = {"
+cH
+cH
+cH
+cH
+TF
+TF
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+CT
+Ni
+yW
+yW
+yW
+yW
+Jh
+yW
+yW
+yW
+yW
+yW
+yW
+Jh
+Jh
+AP
+LT
+lb
+lb
+RT
+AP
+Jh
+Jh
+oR
+yW
+yW
+vA
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(42,1,1) = {"
+bL
+cH
+Pe
+cH
+TF
+TF
+cH
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VG
+yW
+yW
+yW
+Jh
+Jh
+yW
+Jh
+Jh
+Jh
+yW
+Jh
+Jh
+WW
+rc
+mO
+Ha
+Vk
+yn
+rc
+FN
+Jh
+oR
+yW
+yW
+kB
+Pi
+yW
+yW
+FN
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(43,1,1) = {"
+xl
+cH
+cH
+cH
+cH
+cH
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+kt
+yW
+yW
+yW
+yW
+Jh
+Jh
+Jh
+yW
+yW
+Jh
+Jh
+Jh
+Jh
+yW
+rc
+Gd
+Er
+LT
+op
+rc
+yW
+Jh
+oR
+yW
+yW
+kB
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(44,1,1) = {"
+um
+bL
+cH
+cH
+cH
+qv
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+yW
+Jh
+oR
+yW
+FN
+yW
+yW
+yW
+yW
+yW
+rc
+rc
+BU
+BU
+rc
+rc
+aK
+yW
+Jh
+yW
+zX
+yW
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(45,1,1) = {"
+xn
+xl
+cH
+qv
+cH
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+yW
+aK
+yW
+FN
+yW
+yW
+Jh
+oR
+yW
+yW
+RF
+PY
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Jh
+Jh
+yW
+zX
+yW
+Pi
+yW
+yW
+lR
+gD
+yW
+dT
+yW
+yW
+VX
+VX
+VX
+"}
+(46,1,1) = {"
+Du
+xl
+cH
+cH
+TF
+TF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+kt
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+Jh
+yW
+aK
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+Ci
+Jh
+yW
+yW
+zX
+kB
+Pi
+yW
+yW
+yW
+iV
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+"}
+(47,1,1) = {"
+Du
+xl
+qv
+TF
+lD
+cH
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+gj
+yW
+yW
+rR
+vy
+UP
+ss
+Jh
+Jh
+rc
+rc
+mx
+yF
+qw
+Hy
+BU
+zh
+We
+bO
+dR
+rc
+Zi
+Jh
+Jh
+yW
+yW
+vA
+Pi
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+"}
+(48,1,1) = {"
+mR
+WS
+bL
+ip
+cH
+TF
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+gj
+gj
+yW
+yW
+gj
+Nh
+Xy
+Xy
+Ui
+Jh
+yW
+rc
+Wy
+LH
+LH
+Ad
+LH
+Hd
+LX
+nM
+nM
+qL
+YP
+tZ
+Jh
+yW
+yW
+zX
+kB
+Pi
+yW
+yW
+dT
+dT
+yW
+FN
+yW
+VX
+VX
+VX
+VX
+"}
+(49,1,1) = {"
+KE
+IL
+dG
+Ea
+VX
+VX
+VX
+VX
+VX
+yW
+yW
+yW
+yW
+yW
+gj
+gj
+FN
+yW
+yW
+Nh
+LW
+Xy
+Ui
+Jh
+yW
+rc
+Mh
+Ad
+LH
+LH
+LH
+Hd
+yT
+qL
+nM
+nM
+YP
+tZ
+Jh
+oR
+yW
+zX
+kB
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+RF
+VX
+VX
+VX
+"}
+(50,1,1) = {"
+pV
+Ok
+Eo
+Js
+Ea
+VX
+VX
+VX
+RF
+yW
+LK
+gj
+gj
+gj
+gj
+yW
+yW
+yW
+yW
+ul
+uP
+uP
+TT
+yW
+yW
+rc
+rc
+wR
+Mu
+jW
+hx
+BU
+ir
+bO
+bO
+Gm
+rc
+jG
+Jh
+yW
+yW
+zX
+vA
+Pi
+WW
+yW
+yW
+yW
+yW
+yW
+yW
+RF
+VX
+VX
+VX
+"}
+(51,1,1) = {"
+Eo
+pV
+dH
+Eo
+Js
+VX
+VX
+VX
+Id
+gj
+gj
+gj
+gj
+LK
+gj
+gj
+gj
+gj
+yW
+yW
+yW
+yW
+yW
+Jh
+yW
+aK
+rc
+rc
+rc
+rc
+rc
+rc
+rc
+BU
+BU
+rc
+rc
+Dj
+Jh
+oR
+yW
+zX
+kB
+Pi
+fZ
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+"}
+(52,1,1) = {"
+pV
+Eo
+cO
+dH
+tU
+NH
+DZ
+Ki
+qB
+ol
+HS
+ol
+Cw
+ol
+Ea
+yW
+gj
+gj
+yW
+yW
+yW
+yW
+yW
+Jh
+Jh
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+hs
+oB
+WW
+Jh
+oR
+yW
+zX
+kB
+un
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+Sz
+yW
+yW
+VX
+"}
+(53,1,1) = {"
+pV
+Eo
+pV
+cO
+dH
+Eo
+kk
+cO
+dH
+dH
+dH
+pV
+Ok
+dH
+FH
+gj
+yW
+gj
+gj
+yW
+yW
+hP
+Qx
+Jh
+Jh
+Jh
+Jh
+Jh
+Jh
+Jh
+yW
+Jh
+Jh
+Jh
+Jh
+Jh
+Jh
+Jh
+yW
+Jh
+yW
+yW
+aW
+kB
+wQ
+kB
+kB
+nD
+nD
+kB
+LG
+Pi
+yW
+yW
+VX
+"}
+(54,1,1) = {"
+pV
+pV
+pV
+pV
+dH
+dH
+pV
+dH
+dH
+pV
+dH
+dH
+dH
+dH
+YT
+RF
+mv
+mv
+yW
+yW
+yW
+Qx
+Jh
+Jh
+yW
+yW
+cV
+yW
+cV
+cV
+Jh
+Jh
+Jh
+Jh
+Jh
+yW
+Jh
+Jh
+Jh
+Jh
+FN
+yW
+Gk
+Gk
+Gk
+Gk
+Gk
+Gk
+Gk
+nk
+kB
+Pi
+yW
+yW
+VX
+"}
+(55,1,1) = {"
+Eo
+pV
+pV
+Eo
+pV
+pV
+dH
+pV
+dH
+dH
+pV
+dH
+pV
+Ok
+FH
+KM
+mv
+mv
+gj
+aK
+gj
+Jh
+yW
+yW
+yW
+yW
+yW
+FN
+yW
+WW
+yW
+yW
+yW
+Jh
+Jh
+Jh
+yW
+yW
+yW
+yW
+yW
+aK
+yW
+yW
+FN
+yW
+yW
+yW
+RL
+zX
+kB
+Pi
+yW
+VX
+VX
+"}
+(56,1,1) = {"
+pV
+pV
+Eo
+pV
+dH
+dH
+dH
+dH
+pV
+dH
+dH
+dH
+pV
+dH
+FH
+LK
+mv
+mv
+gj
+yW
+yW
+Jh
+Jh
+ni
+XL
+PJ
+XL
+XL
+XL
+XL
+XL
+XL
+nd
+RI
+RI
+RI
+HF
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+XL
+dI
+yW
+zX
+vA
+Pi
+yW
+yW
+VX
+"}
+(57,1,1) = {"
+pV
+pV
+pV
+dH
+pV
+dH
+dH
+pV
+dH
+dH
+pV
+dH
+dH
+dH
+Js
+Ea
+gj
+gj
+gj
+yW
+yW
+yW
+oR
+gI
+AR
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+vf
+AR
+iy
+yW
+zX
+kB
+Pi
+yW
+VX
+VX
+"}
+(58,1,1) = {"
+qE
+iH
+UL
+iH
+iH
+iH
+iH
+iH
+UL
+iH
+iH
+iH
+iH
+iH
+iH
+sH
+Jh
+Jh
+Jh
+Jh
+Jh
+Jh
+oR
+gI
+Kg
+ym
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+ym
+le
+iy
+yW
+yW
+kB
+Pi
+yW
+yW
+VX
+"}
+(59,1,1) = {"
+dH
+dH
+bo
+dH
+dH
+dH
+dH
+dH
+bo
+dH
+dH
+dH
+dH
+dH
+bo
+FH
+yW
+aM
+mv
+gj
+aM
+yW
+oR
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+iy
+yW
+zX
+vA
+Pi
+yW
+VX
+VX
+"}
+(60,1,1) = {"
+dH
+dH
+bo
+dH
+yz
+Vn
+iT
+Vn
+Vn
+du
+dH
+dH
+dH
+dH
+bo
+Js
+Fd
+gj
+yW
+gj
+yW
+Jh
+gj
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+tF
+yW
+zX
+kB
+Pi
+yW
+VX
+VX
+"}
+(61,1,1) = {"
+pV
+dH
+bo
+dH
+eg
+lI
+pD
+pD
+pD
+NX
+Vn
+Vn
+du
+dH
+bo
+dH
+Js
+dZ
+aM
+mv
+mv
+yW
+Jh
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+tZ
+Od
+ax
+kB
+Pi
+yW
+VX
+VX
+"}
+(62,1,1) = {"
+dH
+dH
+bo
+yz
+yP
+oX
+Li
+Li
+Li
+Li
+Li
+Ap
+bg
+dH
+bo
+dH
+dH
+Js
+nN
+yW
+gj
+Jh
+yW
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+tZ
+hr
+kB
+vA
+Pi
+yW
+VX
+VX
+"}
+(63,1,1) = {"
+pV
+dH
+bo
+eg
+RW
+Tb
+kY
+Li
+Li
+ut
+Li
+Ap
+Li
+dH
+bo
+dH
+dH
+dH
+FH
+yW
+mv
+yW
+Jh
+Fo
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+zF
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+tZ
+cx
+kB
+kB
+Pi
+yW
+VX
+VX
+"}
+(64,1,1) = {"
+pV
+dH
+bo
+sT
+nm
+Jz
+Li
+Li
+Li
+Li
+Li
+Ap
+Li
+dH
+bo
+dH
+dH
+dH
+Js
+nN
+gj
+Jh
+gC
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+tZ
+hr
+kB
+kB
+Pi
+WW
+yW
+VX
+"}
+(65,1,1) = {"
+pV
+dH
+bo
+dH
+eg
+rn
+hO
+hO
+hO
+kR
+gi
+gi
+hT
+dH
+bo
+dH
+dH
+dH
+Ok
+FH
+yW
+gj
+yW
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+tZ
+Pd
+yW
+vA
+Pi
+uq
+VX
+VX
+"}
+(66,1,1) = {"
+pV
+dH
+bo
+dH
+sT
+gi
+gi
+gi
+gi
+hT
+dH
+dH
+dH
+dH
+bo
+dH
+dH
+dH
+oW
+aQ
+aM
+yW
+Jh
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+rX
+yW
+zX
+kB
+Pi
+yJ
+Qu
+VX
+"}
+(67,1,1) = {"
+dH
+dH
+bo
+dH
+dH
+dH
+dH
+dH
+bo
+dH
+dH
+dH
+dH
+dH
+bo
+dH
+dH
+nP
+lq
+RQ
+yW
+Jh
+aM
+gI
+Kg
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+le
+iy
+yW
+zX
+kB
+un
+ue
+VU
+VX
+"}
+(68,1,1) = {"
+qE
+ns
+eh
+ns
+ns
+ns
+ns
+ns
+eh
+ns
+ns
+ns
+ns
+ns
+eh
+ns
+ns
+FZ
+qV
+Jh
+Jh
+Jh
+Jh
+gI
+Kg
+ym
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+Ra
+ym
+le
+iy
+yW
+yW
+un
+kB
+MY
+VU
+VX
+"}
+(69,1,1) = {"
+pV
+dH
+gR
+pV
+dH
+pV
+pV
+dH
+dH
+pV
+iZ
+Xm
+Vi
+dq
+kZ
+dH
+PR
+FH
+LK
+gj
+gj
+aK
+yW
+Fo
+AR
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+zy
+AR
+iy
+yW
+lL
+kB
+FN
+uF
+VU
+VX
+"}
+(70,1,1) = {"
+pV
+pV
+dH
+pV
+pV
+pV
+dH
+dH
+dH
+dH
+qE
+aB
+Vi
+Vi
+kZ
+dH
+pV
+YT
+gj
+ll
+gj
+yW
+FN
+zH
+HG
+HG
+HG
+HG
+HG
+tq
+HG
+HG
+LC
+Bv
+Bv
+Bv
+qb
+cQ
+ha
+ds
+ls
+NT
+ls
+HG
+HG
+HG
+HG
+Ds
+yW
+yW
+yW
+yW
+FN
+Qu
+VX
+"}
+(71,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+pV
+dH
+dH
+pV
+dH
+ci
+AO
+hj
+hj
+ao
+dH
+BY
+lq
+gj
+gj
+gj
+gj
+rc
+rc
+rc
+rc
+rc
+Uz
+yW
+eQ
+yW
+FN
+yW
+Jh
+Jh
+Jh
+yW
+yW
+yE
+wS
+Av
+yW
+yW
+FN
+VX
+VX
+VX
+VX
+CT
+nz
+yW
+yW
+FN
+VX
+VX
+"}
+(72,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+dH
+dH
+dH
+dH
+pV
+dH
+dH
+dH
+dH
+dH
+oW
+lq
+gj
+gj
+gj
+gj
+rc
+rc
+Uq
+QS
+BK
+rc
+rc
+nz
+eQ
+Jh
+yW
+Jh
+yW
+Jh
+Jh
+yW
+yW
+yW
+FN
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+FN
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(73,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+pV
+dH
+pV
+dH
+dH
+dH
+dH
+dH
+dH
+oW
+ju
+ll
+gj
+FN
+yW
+yW
+rc
+vF
+nM
+qL
+nM
+ak
+Rz
+ZS
+QB
+Jh
+Jh
+Jh
+Jh
+yW
+BN
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+RF
+yW
+RF
+yW
+yW
+yW
+DI
+VX
+VX
+VX
+"}
+(74,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+pV
+dH
+dH
+pV
+dH
+dH
+dH
+dH
+Ok
+YT
+gj
+LK
+gj
+yW
+gj
+yW
+rc
+rc
+jB
+BL
+bw
+rc
+rc
+nz
+eQ
+Jh
+yW
+yW
+cV
+mD
+rd
+yW
+yW
+yW
+yW
+yW
+FN
+VX
+VX
+RF
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+VX
+VX
+"}
+(75,1,1) = {"
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+Lp
+zG
+xe
+VX
+VX
+VX
+VX
+yW
+gj
+yW
+rc
+rc
+rc
+rc
+rc
+Uz
+yW
+eQ
+yW
+yW
+yW
+yW
+yW
+yW
+WW
+yW
+yW
+yW
+yW
+FN
+VX
+VX
+RF
+yW
+yW
+yW
+yW
+yW
+yW
+RF
+VX
+VX
+VX
+"}
+(76,1,1) = {"
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+oY
+VX
+VX
+VX
+VX
+VX
+yW
+yW
+FN
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+eQ
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+VX
+RF
+yW
+yW
+yW
+yW
+yW
+yW
+RF
+VX
+VX
+VX
+VX
+"}
+(77,1,1) = {"
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+oY
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+yW
+FN
+yW
+yW
+yW
+kg
+lQ
+qP
+rj
+so
+Ou
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+FN
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(78,1,1) = {"
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+oY
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+dX
+RF
+VX
+VX
+VX
+tT
+Ra
+Ra
+tC
+yi
+VX
+VX
+aK
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+yW
+RF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(79,1,1) = {"
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+oY
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+ib
+dQ
+QV
+VX
+VX
+VX
+VX
+RF
+RF
+yW
+yW
+yW
+yW
+Ir
+yW
+yW
+yW
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}
+(80,1,1) = {"
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+ix
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+yW
+yW
+VX
+RF
+RF
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+VX
+"}

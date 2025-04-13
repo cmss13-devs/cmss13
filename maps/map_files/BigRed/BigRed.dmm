@@ -1028,9 +1028,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
 "adY" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1154,12 +1156,11 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aet" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
 	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidwarning/west,
-/area/bigredv2/outside/space_port)
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1274,6 +1275,12 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
+"aeR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1326,6 +1333,10 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"afe" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1335,6 +1346,13 @@
 "afg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"afh" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -1479,7 +1497,8 @@
 /area/bigredv2/outside/telecomm)
 "afL" = (
 /obj/structure/showcase{
-	icon_state = "broadcaster_send"
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -4822,11 +4841,12 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "avj" = (
-/obj/structure/showcase{
-	icon_state = "broadcaster_send"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/showcase{
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -39953,7 +39973,7 @@ aao
 aao
 aao
 aao
-aao
+aeR
 aao
 aao
 aao
@@ -46313,7 +46333,7 @@ bie
 bie
 bie
 bmM
-bie
+aet
 bie
 bie
 bie
@@ -46434,7 +46454,7 @@ aaT
 aap
 aav
 aaG
-aet
+afh
 aap
 aav
 aaG
@@ -46948,7 +46968,7 @@ beP
 beP
 aSB
 tVp
-adY
+afe
 tVp
 tVp
 bgX
@@ -58328,7 +58348,7 @@ jrD
 jcR
 jrD
 jrD
-jrD
+adY
 jrD
 jrD
 jrD

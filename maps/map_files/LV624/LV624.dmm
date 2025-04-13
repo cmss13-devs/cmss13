@@ -1316,19 +1316,21 @@
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "afc" = (
-/obj/structure/machinery/floodlight/landing,
-/obj/effect/decal/warning_stripes,
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
-/area/lv624/lazarus/landing_zones/lz1)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
 "afd" = (
 /obj/structure/fence,
 /turf/open/floor/warning/east,
 /area/lv624/ground/barrens/containers)
 "afe" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/plating/asteroidwarning/east,
-/area/lv624/lazarus/landing_zones/lz2)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
 "aff" = (
 /obj/structure/cargo_container/wy/left,
 /turf/open/floor,
@@ -1341,6 +1343,16 @@
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"afi" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv624/lazarus/landing_zones/lz1)
+"afj" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/lv624/lazarus/landing_zones/lz2)
 "afk" = (
 /obj/item/ammo_casing,
 /turf/open/gm/dirt,
@@ -12258,7 +12270,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/west_nexus_road)
 "fja" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
 	name = "\improper alien blade";
@@ -16191,7 +16203,7 @@
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "nED" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	desc = "A curved blade made of a strange material. It looks both old and very sharp.";
 	force = 30;
 	name = "\improper alien blade";
@@ -26423,7 +26435,7 @@ aPf
 aKf
 aKf
 aVK
-aKb
+afe
 aKb
 hUs
 hUs
@@ -31193,7 +31205,7 @@ niV
 niV
 hdA
 niV
-afe
+afj
 niV
 niV
 niV
@@ -50601,7 +50613,7 @@ wpw
 wpw
 wpw
 lBw
-wpw
+afc
 wpw
 ajY
 ifF
@@ -54682,7 +54694,7 @@ aHu
 aGz
 aGz
 aGz
-afc
+afi
 aGz
 aGz
 aGz

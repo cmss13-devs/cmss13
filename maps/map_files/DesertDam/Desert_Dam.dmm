@@ -896,9 +896,11 @@
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "adJ" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/desert_dam/exterior/landing_pad_two)
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
@@ -906,16 +908,32 @@
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "adL" = (
-/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
+"adM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"adN" = (
 /obj/effect/landmark/spycam_start,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_two)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
+"adP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -54966,7 +54984,7 @@ bht
 bht
 bht
 bht
-afc
+adM
 afc
 dTs
 dTs
@@ -55573,7 +55591,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+adL
 cDY
 cDY
 cDY
@@ -57440,7 +57458,7 @@ cDX
 cDX
 cDX
 cDX
-adJ
+adN
 cDX
 cDX
 cDX
@@ -60545,7 +60563,7 @@ iKp
 iKp
 iKp
 iKp
-adL
+adP
 iKp
 iKp
 iKp
@@ -94423,7 +94441,7 @@ dBr
 dBr
 dBr
 dBr
-dBr
+adJ
 eaQ
 dZn
 dHE

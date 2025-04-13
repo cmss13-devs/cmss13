@@ -155,10 +155,28 @@
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
 "aaO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/shuttle/drop1/kutjevo)
+"aaP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/colony_south)
+"aaQ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"aaR" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_dunes)
-"aaP" = (
+"aaS" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/lz_pad)
@@ -16205,7 +16223,7 @@ dxF
 dxF
 dxF
 dxF
-dxF
+aaQ
 dxF
 dxF
 dxF
@@ -18590,7 +18608,7 @@ lAI
 lAI
 lAI
 lAI
-lAI
+aaO
 lAI
 lAI
 lAI
@@ -20175,7 +20193,7 @@ ppX
 ppX
 hzN
 wXf
-aaP
+aaS
 dmy
 dmy
 dmy
@@ -20423,7 +20441,7 @@ wGH
 wGH
 prJ
 wGH
-aaO
+aaR
 wGH
 prJ
 wGH
@@ -43626,7 +43644,7 @@ bpj
 bpj
 bpj
 bpj
-bpj
+aaP
 bpj
 bpj
 bpj

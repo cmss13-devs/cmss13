@@ -156,6 +156,8 @@
 "aM" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "aT" = (
@@ -1958,7 +1960,7 @@
 	pixel_x = -12;
 	pixel_y = 9
 	},
-/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/obj/effect/landmark/survivor_spawner/twe/iasf/commander,
 /turf/open/floor/prison/blue/north,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "ny" = (
@@ -3230,6 +3232,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Ca" = (
@@ -3436,6 +3439,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "DF" = (
@@ -4574,6 +4578,7 @@
 "RM" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/hybrisa/street/sidewalk/west,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "RT" = (
@@ -5057,6 +5062,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Xj" = (
@@ -5192,6 +5198,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/cement2,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "Zf" = (
@@ -5293,6 +5300,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood,
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 

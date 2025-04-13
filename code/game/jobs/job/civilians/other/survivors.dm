@@ -211,16 +211,29 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
-	if(length(CO_survivor_types))
+	var/list/CO_insert_survivor_types = SSmapping.configs[GROUND_MAP].CO_insert_survivor_types
+	if(length(CO_survivor_types) || length(CO_insert_survivor_types))
 		total_positions = 1
 		spawn_positions = 1
 	return spawn_positions
 
 /datum/job/civilian/survivor/commanding_officer/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
-	if(picked_spawner.CO_equipment)
+	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	if(picked_spawner.CO_equipment) //insert with CO
 		arm_equipment(equipping_human, picked_spawner.CO_equipment, FALSE, TRUE)
 		return
-	else
-		var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	else if(length(CO_survivor_types)) //map with guarenteed CO slot
 		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
+		return
+	else //map that has an insert that enabled rolling for CO but the insert didn't fire and there is no default CO equipment, thus equip as a normal survivor
+		var/preferred_variant = ANY_SURVIVOR
+		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
+			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
+			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+				preferred_variant = ANY_SURVIVOR
+
+		var/list/survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
+
+		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 		return

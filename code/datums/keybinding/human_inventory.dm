@@ -114,7 +114,7 @@
 	full_name = "Interact With Other Hand"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_OTHER_HAND */
 
-/datum/keybinding/human/inventory/interact_other_hand/down(client/user)
+/* /datum/keybinding/human/inventory/interact_other_hand/down(client/user)
 	. = ..()
 	if(.)
 		return
@@ -127,7 +127,7 @@
 	if(!inactive_hand)
 		return
 	human_user.click_adjacent(inactive_hand, active_hand)
-	return TRUE
+	return TRUE */
 
 #define INTERACT_KEYBIND_COOLDOWN_TIME (0.2 SECONDS)
 #define COOLDOWN_SLOT_INTERACT_KEYBIND "slot_interact_keybind_cooldown"
@@ -174,8 +174,8 @@
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_BACK
 	storage_slot = WEAR_BACK
 
-/datum/keybinding/human/inventory/interact_slot/back/check_slot(mob/living/carbon/human/user)
-	return user.back
+/* /datum/keybinding/human/inventory/interact_slot/back/check_slot(mob/living/carbon/human/user)
+	return user.back */
 
 /* /datum/keybinding/human/inventory/interact_slot/belt
 	name = "interact_storage_belt"
@@ -183,8 +183,8 @@
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_BELT
 	storage_slot = WEAR_WAIST */
 
-/datum/keybinding/human/inventory/interact_slot/belt/check_slot(mob/living/carbon/human/user)
-	return user.belt
+/* /datum/keybinding/human/inventory/interact_slot/belt/check_slot(mob/living/carbon/human/user)
+	return user.belt */
 
 /* /datum/keybinding/human/inventory/interact_slot/pouch_left
 	name = "interact_storage_pouch_left"
@@ -192,8 +192,8 @@
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_LEFT_POUCH
 	storage_slot = WEAR_L_STORE */
 
-/datum/keybinding/human/inventory/interact_slot/pouch_left/check_slot(mob/living/carbon/human/user)
-	return user.l_store
+/* /datum/keybinding/human/inventory/interact_slot/pouch_left/check_slot(mob/living/carbon/human/user)
+	return user.l_store */
 
 /* /datum/keybinding/human/inventory/interact_slot/pouch_right
 	name = "interact_storage_pouch_right"
@@ -201,26 +201,26 @@
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_RIGHT_POUCH
 	storage_slot = WEAR_R_STORE */
 
-/datum/keybinding/human/inventory/interact_slot/pouch_right/check_slot(mob/living/carbon/human/user)
-	return user.r_store
+/* /datum/keybinding/human/inventory/interact_slot/pouch_right/check_slot(mob/living/carbon/human/user)
+	return user.r_store */
 
-/datum/keybinding/human/inventory/interact_slot/uniform
+/* /datum/keybinding/human/inventory/interact_slot/uniform
 	name = "interact_storage_uniform"
 	full_name = "Interact With Uniform Slot"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_UNIFORM
-	storage_slot = WEAR_BODY
+	storage_slot = WEAR_BODY */
 
-/datum/keybinding/human/inventory/interact_slot/uniform/check_slot(mob/living/carbon/human/user)
-	return user.w_uniform
+/* /datum/keybinding/human/inventory/interact_slot/uniform/check_slot(mob/living/carbon/human/user)
+	return user.w_uniform */
 
-/datum/keybinding/human/inventory/interact_slot/suit
+/* /datum/keybinding/human/inventory/interact_slot/suit
 	name = "interact_storage_suit"
 	full_name = "Interact With Suit Slot"
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_SUIT
-	storage_slot = WEAR_JACKET
+	storage_slot = WEAR_JACKET */
 
-/datum/keybinding/human/inventory/interact_slot/suit/check_slot(mob/living/carbon/human/user)
-	return user.wear_suit
+/* /datum/keybinding/human/inventory/interact_slot/suit/check_slot(mob/living/carbon/human/user)
+	return user.wear_suit */
 
 /datum/keybinding/human/inventory/interact_slot/helmet
 	name = "interact_storage_helmet"

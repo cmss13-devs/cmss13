@@ -92,6 +92,17 @@
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
+/mob/living/carbon/xenomorph/facehugger/Logout()
+	. = ..()
+
+	if(stat == DEAD)
+		return
+
+	if(!aghosted)
+		// Become a npc once again
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
+
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()
 	if(throwing)

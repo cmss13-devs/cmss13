@@ -1,4 +1,0 @@
-author: "MiraHell"
-delete-after: True
-changes:
-  - rscdel: "Убран ТТС компонент у синтетиков вайтаута"

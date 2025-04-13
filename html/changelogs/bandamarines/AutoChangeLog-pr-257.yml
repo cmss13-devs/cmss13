@@ -1,4 +1,0 @@
-author: "MiraHell"
-delete-after: True
-changes:
-  - rscadd: "Добавлен специальный ключ рестарта синтетика для связного"

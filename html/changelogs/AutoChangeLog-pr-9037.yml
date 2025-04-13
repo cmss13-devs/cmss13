@@ -1,4 +1,0 @@
-author: "Git-Nivrak"
-delete-after: True
-changes:
-  - admin: "Fixed lesser and facehugger logging, added logging for destroyed the sensor tower"

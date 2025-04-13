@@ -1116,6 +1116,16 @@ SUBSYSTEM_DEF(minimaps)
 			mona_lisa.DrawBox(draw_color, start_x*2, start_y*2, start_x*2 + 1, start_y*2 + 1)
 	drawn_image.icon = mona_lisa
 
+/atom/movable/screen/minimap_tool/draw_tool/green
+	screen_loc = "14,14"
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_green.dmi'
+	color = MINIMAP_DRAWING_GREEN
+
+/atom/movable/screen/minimap_tool/draw_tool/black
+	screen_loc = "14,13"
+	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_black.dmi'
+	color = MINIMAP_DRAWING_BLACK
+
 /atom/movable/screen/minimap_tool/draw_tool/red
 	screen_loc = "15,14"
 	active_mouse_icon = 'icons/ui_icons/minimap_mouse/draw_red.dmi'

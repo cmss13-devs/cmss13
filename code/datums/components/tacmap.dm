@@ -10,6 +10,8 @@
 		/atom/movable/screen/minimap_tool/draw_tool/yellow,
 		/atom/movable/screen/minimap_tool/draw_tool/purple,
 		/atom/movable/screen/minimap_tool/draw_tool/blue,
+		/atom/movable/screen/minimap_tool/draw_tool/green,
+		/atom/movable/screen/minimap_tool/draw_tool/black,
 		/atom/movable/screen/minimap_tool/draw_tool/erase,
 		/atom/movable/screen/minimap_tool/label,
 		/atom/movable/screen/minimap_tool/clear,

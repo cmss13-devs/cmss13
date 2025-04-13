@@ -266,9 +266,9 @@
 	id = "phenol_formaldehyde"
 	result = "phenol_formaldehyde"
 	required_reagents = list("formaldehyde" = 2, "phenol" = 1)
-	required_catalysts = list("ammonia" = 5)
+	required_catalysts = list("methane" = 5)
 	reaction_type = CHEM_REACTION_ENDOTHERMIC
-	result_amount = 1
+	result_amount = 3
 
 /datum/chemical_reaction/paraformaldehyde
 	name = "Paraformaldehyde"

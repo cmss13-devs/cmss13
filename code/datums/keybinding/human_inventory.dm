@@ -183,8 +183,8 @@
 	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_BACK
 	storage_slot = WEAR_BACK
 
-/* /datum/keybinding/human/inventory/interact_slot/back/check_slot(mob/living/carbon/human/user)
-	return user.back */
+/datum/keybinding/human/inventory/interact_slot/back/check_slot(mob/living/carbon/human/user)
+	return user.back
 
 /* /datum/keybinding/human/inventory/interact_slot/belt
 	name = "interact_storage_belt"

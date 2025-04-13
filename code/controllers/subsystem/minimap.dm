@@ -142,8 +142,8 @@ SUBSYSTEM_DEF(minimaps)
 	icon_gen.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1) //then trim it down also cutting anything unused on the bottom left
 
 	// Determine and assign the offsets
-	minimaps_by_z["[level]"].x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / MINIMAP_SCALE) - xmin
-	minimaps_by_z["[level]"].y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / MINIMAP_SCALE) - ymin
+	minimaps_by_z["[level]"].x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / 2) - xmin
+	minimaps_by_z["[level]"].y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / 2) - ymin
 	minimaps_by_z["[level]"].x_max = xmax
 	minimaps_by_z["[level]"].y_max = ymax
 
@@ -551,8 +551,8 @@ SUBSYSTEM_DEF(minimaps)
 	// we only care about absolute coords because the map is fixed to 1,1 so no client stuff
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
 	var/zlevel = SSminimaps.updators_by_datum[src].ztarget
-	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + cur_x_shift)  / 2
-	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + cur_y_shift)  / 2
+	var/x = (pixel_coords[1] - SSminimaps.minimaps_by_z["[zlevel]"].x_offset + cur_x_shift)  / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - SSminimaps.minimaps_by_z["[zlevel]"].y_offset + cur_y_shift)  / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 	choices_by_mob[source] = list(c_x, c_y)
@@ -585,8 +585,8 @@ SUBSYSTEM_DEF(minimaps)
 	SIGNAL_HANDLER
 	link_locator()
 	var/turf/mover_turf = get_turf(currently_tracking)
-	var/x_coord = mover_turf.x * 2
-	var/y_coord = mover_turf.y * 2
+	var/x_coord = mover_turf.x * MINIMAP_SCALE
+	var/y_coord = mover_turf.y * MINIMAP_SCALE
 	x_coord += SSminimaps.minimaps_by_z["[mover_turf.z]"].x_offset - shift_x
 	y_coord += SSminimaps.minimaps_by_z["[mover_turf.z]"].y_offset - shift_y
 	// + 1 because tiles start at 1
@@ -1174,8 +1174,8 @@ SUBSYSTEM_DEF(minimaps)
 	// want to also cancel the click if they click src and I cant be bothered to make it even more generic rn
 	var/list/modifiers = params2list(params)
 	var/list/pixel_coords = params2screenpixel(modifiers["screen-loc"])
-	var/x = (pixel_coords[1] - x_offset + linked_map.cur_x_shift) / 2
-	var/y = (pixel_coords[2] - y_offset + linked_map.cur_y_shift) / 2
+	var/x = (pixel_coords[1] - x_offset + linked_map.cur_x_shift) / MINIMAP_SCALE
+	var/y = (pixel_coords[2] - y_offset + linked_map.cur_y_shift) / MINIMAP_SCALE
 	var/c_x = clamp(CEILING(x, 1), 1, world.maxx)
 	var/c_y = clamp(CEILING(y, 1), 1, world.maxy)
 	var/turf/target = locate(c_x, c_y, zlevel)

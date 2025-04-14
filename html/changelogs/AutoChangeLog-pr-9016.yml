@@ -1,5 +1,0 @@
-author: "Lagomorphica"
-delete-after: True
-changes:
-  - balance: "yautja duelling weapons now have click delay"
-  - refactor: "moves predator duelling weapons into proper predator files for both icons and code"

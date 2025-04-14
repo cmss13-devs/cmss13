@@ -351,7 +351,7 @@
 			return
 		to_chat(user, SPAN_NOTICE("You begin linking your laser designator to the [src].."))
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(linked_designator) // Unregister the pervious laser designator signal, if switching linked laser designator
+			if(linked_designator) // Unregister the previous laser designator signal, if switching linked laser designator
 				UnregisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE)
 				UnregisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF)
 			linked_designator = item

@@ -913,7 +913,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "EC" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/eat,
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_dorms)
 "Fe" = (

@@ -201,9 +201,9 @@
 	if(!isxeno(user) || !isfriendly(user))
 		return ..()
 	var/mob/living/carbon/xenomorph/X = user
-	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
+	if(mods[CTRL_CLICK] && pick_tunnel(X))//Returning to original tunnel
 		return TRUE
-	else if(mods["alt"] && exit_tunnel(X))//Exiting the tunnel
+	else if(mods[ALT_CLICK] && exit_tunnel(X))//Exiting the tunnel
 		return TRUE
 	. = ..()
 

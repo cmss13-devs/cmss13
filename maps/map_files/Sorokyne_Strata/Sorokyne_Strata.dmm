@@ -291,11 +291,11 @@
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
 "aaY" = (
-/obj/structure/sign/calendar/upp{
-	pixel_y = 29
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
 	},
-/turf/open/floor/strata/floor2,
-/area/strata/ag/interior/outpost/med)
+/turf/open/floor/plating,
+/area/strata/ag/exterior/landing_zones/lz2)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -369,18 +369,18 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "abm" = (
-/obj/structure/sign/calendar/upp{
-	pixel_y = 29
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
 	},
-/turf/open/floor/strata/white_cyan1/east,
-/area/strata/ag/interior/outpost/canteen)
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "abn" = (
-/obj/structure/machinery/space_heater,
-/obj/structure/sign/calendar/upp{
-	pixel_y = 29
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
 	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outpost/security)
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -390,14 +390,11 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "abq" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outpost/security)
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -426,8 +423,15 @@
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
-/turf/open/floor/strata/fake_wood,
-/area/strata/ag/interior/landing_zones/near_lz1)
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/outpost/canteen)
+"abx" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -473,6 +477,15 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
+"abG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "abH" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/explosive_mines,
@@ -520,6 +533,12 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abO" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "abP" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -12607,7 +12626,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/south_outpost)
 "bqP" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
 "bqQ" = (
@@ -12758,11 +12777,11 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "brK" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/center)
 "brL" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "brM" = (
@@ -21218,7 +21237,7 @@
 /area/strata/ag/exterior/outpost_decks)
 "haN" = (
 /obj/structure/largecrate/random,
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
@@ -21909,7 +21928,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/vanyard)
 "ibH" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/engineering/parts_storage)
@@ -32601,7 +32620,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "wsj" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "wsm" = (
@@ -34314,7 +34333,7 @@ alz
 alz
 alz
 aac
-aac
+abm
 aac
 aac
 aac
@@ -38127,7 +38146,7 @@ aoj
 cnv
 cru
 azx
-abw
+abO
 ard
 arV
 dCq
@@ -42078,7 +42097,7 @@ jWs
 jWs
 jWs
 jWs
-jWs
+aaY
 jWs
 jWs
 jWs
@@ -52511,7 +52530,7 @@ blb
 iNi
 boV
 blb
-aaY
+abq
 byF
 bBX
 ryK
@@ -56508,7 +56527,7 @@ atJ
 ddK
 bWM
 ijo
-abq
+abG
 gAm
 gAm
 gAm
@@ -57910,7 +57929,7 @@ ijo
 awf
 ceI
 ijo
-abn
+abx
 aCd
 aDf
 cea
@@ -62461,7 +62480,7 @@ cjn
 cjn
 bFx
 cjn
-abm
+abw
 jnt
 chd
 aFz
@@ -70697,7 +70716,7 @@ jUA
 jUA
 jUA
 cei
-chj
+abn
 cei
 jUA
 jUA

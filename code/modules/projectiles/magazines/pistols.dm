@@ -416,6 +416,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	bonus_overlay = "m10_drum_overlay"
 	max_rounds = 92
 	gun_type = /obj/item/weapon/gun/pistol/m10
+	mag_jam_modifier = MAG_JAM_MOD_PISTOL_CRITICAL //cant handle this shit brap brap brap
 
 //--------------------------------------------------------
 //VP76 magazine

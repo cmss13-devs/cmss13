@@ -359,7 +359,6 @@
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF, PROC_REF(lost_laser_target))
 			verbs += /obj/structure/mortar/proc/unlink_designator
 			balloon_alert(user, "linked")
-			return
 		return
 
 	if(istype(item, /obj/item/mortar_shell))

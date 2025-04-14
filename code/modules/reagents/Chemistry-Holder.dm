@@ -316,19 +316,18 @@
 						var/datum/reagent/result_to_splash = GLOB.chemical_reagents_list[reaction.result]
 						var/datum/reagent/recipe_to_splash = GLOB.chemical_reagents_list[pick(reaction.required_reagents)]
 						for(var/mob/living/carbon/human/victim in view(1, get_turf(my_atom)))
-							if(prob(30))
+							if(prob(20))
 								to_chat(victim, SPAN_WARNING("\A large [pick("chunk", "drop", "lump")] of [pick("foam", "bubbles", "froth")] misses You narrowly!"))
 								return
-							if(victim.wear_suit?.armor_bio != CLOTHING_ARMOR_HARDCORE && created_volume >= 5)
+							if(!prob(min(victim.getarmor(null, ARMOR_BIO)*2, 100)) && created_volume >= 5)
 								playsound(victim, "acid_sizzle", 15, TRUE)
 								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
 								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), rand(4,6)))
 								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), rand(4,6)))
 								if(result_to_splash.get_property(PROPERTY_CORROSIVE) || recipe_to_splash.get_property(PROPERTY_CORROSIVE))//make a burning sound and flash if the reagents involved are corrosive
 									animation_flash_color(victim, "#FF0000")
-
 							else if (created_volume >= 5)
-								to_chat(victim, SPAN_WARNING("[my_atom] starts to bubble and fizzle violently!"))
+								to_chat(victim, SPAN_WARNING("Your gear protects you from [pick("chunk", "drop", "lump")] of foam and bubbles!"))
 
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_GLOWING))
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
@@ -338,7 +337,7 @@
 						for(var/mob/seen_mob in seen)
 							if(prob(50))
 								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] starts to glow!"))
-						var/obj/item/device/flashlight/flare/on/illumination/chemical/chem_light = new(my_atom, max(1,created_volume/2), result_chemical.burncolor)
+						var/obj/item/device/flashlight/flare/on/illumination/chemical/chem_light = new(my_atom, max(1,created_volume*2), result_chemical.burncolor)
 						chem_light.set_light_color(result_chemical.burncolor)
 
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_FIRE))
@@ -422,7 +421,7 @@
 		add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * 2)
 	var/list/this_turf = viewers(0, get_turf(my_atom))
 	for(var/mob/seen_mob in this_turf)
-		if(prob(50))
+		if(prob(15))
 			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
 	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 

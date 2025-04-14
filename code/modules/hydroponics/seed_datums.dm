@@ -741,7 +741,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	seed_name = "berry"
 	display_name = "berry bush"
 	products = list(/obj/item/reagent_container/food/snacks/grown/berries)
-	mutants = list("glowberries","poisonberries")
+	mutants = list("glowberries","poisonberries","deathberries")
 	packet_icon = "seed-berry"
 	plant_icon = "berry"
 	harvest_repeat = 1
@@ -774,7 +774,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	seed_name = "poison berry"
 	display_name = "poison berry bush"
 	products = list(/obj/item/reagent_container/food/snacks/grown/poisonberries)
-	mutants = list("deathberries")
+	mutants = null
 	packet_icon = "seed-poisonberry"
 	plant_icon = "poisonberry"
 	chems_special = list("thymol")
@@ -789,7 +789,7 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	packet_icon = "seed-deathberry"
 	plant_icon = "deathberry"
 	chems_special = list("thymol")
-	chems = list("fruit" = list(1), "toxin" = list(3,3), "lexorin" = list(1,5))
+	chems = list("fruit" = list(1), "lexorin" = list(1,3))
 
 	yield = 3
 	potency = 50

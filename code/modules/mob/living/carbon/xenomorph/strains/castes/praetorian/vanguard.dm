@@ -24,7 +24,6 @@
 	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	prae.health_modifier -= XENO_HEALTH_MOD_MED
 	prae.claw_type = CLAW_TYPE_SHARP
-
 	prae.recalculate_everything()
 
 /datum/behavior_delegate/praetorian_vanguard

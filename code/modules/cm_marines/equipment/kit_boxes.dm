@@ -170,7 +170,7 @@
 	new /obj/item/clothing/suit/storage/marine/M35(src)
 	new /obj/item/clothing/head/helmet/marine/pyro(src)
 	new /obj/item/storage/large_holster/fuelpack(src)
-	new /obj/item/weapon/gun/flamer/M240T(src)
+	new /obj/item/weapon/gun/flamer/m240/spec(src)
 	new /obj/item/ammo_magazine/flamer_tank/large(src)
 	new /obj/item/storage/pouch/flamertank(src)
 	new /obj/item/tool/extinguisher(src)
@@ -419,7 +419,7 @@
 
 /obj/item/storage/box/kit/mini_pyro/fill_preset_inventory()
 	new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
-	new /obj/item/weapon/gun/flamer/underextinguisher(src)
+	new /obj/item/weapon/gun/flamer/m240/underextinguisher(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank/gellied(src)
@@ -567,7 +567,7 @@
 	new /obj/item/weapon/gun/pistol/mod88/flashlight(src)
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/tool/crowbar/red(src)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender"))
+	new /obj/item/mre_food_packet/entree/uscm(src)
 
 /obj/item/storage/box/kit/exp_trooper
 	name = "\improper Experimental Trooper Kit"

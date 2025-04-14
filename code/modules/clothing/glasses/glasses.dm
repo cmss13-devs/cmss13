@@ -128,12 +128,12 @@
 	..()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
-	if(hud_type && active && istype(user))
-		if(src == user.glasses) //dropped is called before the inventory reference is updated.
+	if(istype(user) && src == user.glasses)
+		if(hud_type && active)
 			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			H.remove_hud_from(user, src)
-			user.glasses = null
-			user.update_inv_glasses()
+		user.glasses = null
+		user.update_inv_glasses()
 	user.update_sight()
 	return ..()
 
@@ -475,6 +475,10 @@
 		animate(color = onmob_colors["base"], time = 0.3 SECONDS)
 
 	if(!user.client) //Shouldn't happen but can't hurt to check.
+		return
+
+	if(!user.client.prefs?.allow_flashing_lights_pref)
+		to_chat(user, SPAN_NOTICE("Your preferences don't allow the effect from [src]."))
 		return
 
 	var/base_colors

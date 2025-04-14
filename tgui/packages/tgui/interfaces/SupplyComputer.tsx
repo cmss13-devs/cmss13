@@ -1,12 +1,11 @@
 import { randomPick, randomProb } from 'common/random';
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import { storage } from 'common/storage';
 import { capitalizeFirst } from 'common/string';
 import { debounce } from 'common/timer';
-import { ReactNode, useEffect, useState } from 'react';
-
-import { resolveAsset } from '../assets';
-import { useBackend, useSharedState } from '../backend';
+import { type ReactNode, useEffect, useState } from 'react';
+import { resolveAsset } from 'tgui/assets';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button as NativeButton,
@@ -20,9 +19,10 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../components';
-import { ButtonCheckbox } from '../components/Button';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { ButtonCheckbox } from 'tgui/components/Button';
+import { Window } from 'tgui/layouts';
+
 import { LoadingScreen } from './common/LoadingToolbox';
 
 type SupplyComputerData = {

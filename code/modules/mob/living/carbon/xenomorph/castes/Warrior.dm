@@ -46,7 +46,7 @@
 	organ_value = 2000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/warrior_punch,
@@ -63,6 +63,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Warrior_1","Warrior_2","Warrior_3")
 	weed_food_states_flipped = list("Warrior_1","Warrior_2","Warrior_3")
+
+	skull = /obj/item/skull/warrior
+	pelt = /obj/item/pelt/warrior
 
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 
@@ -285,7 +288,7 @@
 
 	lunge_user.visible_message(SPAN_XENOWARNING("[lunge_user] lunges towards [carbon]!"), SPAN_XENOWARNING("We lunge at [carbon]!"))
 
-	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user)
+	lunge_user.throw_atom(get_step_towards(affected_atom, lunge_user), grab_range, SPEED_FAST, lunge_user, tracking=TRUE)
 
 	if (lunge_user.Adjacent(carbon))
 		lunge_user.start_pulling(carbon,1)

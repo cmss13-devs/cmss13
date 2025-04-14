@@ -56,7 +56,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -82,6 +82,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
 	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
+
+	skull = /obj/item/skull/burrower
+	pelt = /obj/item/pelt/burrower
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -146,6 +149,12 @@
 	invisibility = 101
 	alpha = 100
 	anchored = TRUE
+
+	var/mob/living/carbon/human/hauled = hauled_mob?.resolve()
+
+	if(hauled)
+		hauled.forceMove(src)
+
 	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
 		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 		RegisterSignal(src, list(
@@ -183,6 +192,11 @@
 	invisibility = FALSE
 	alpha = initial(alpha)
 	anchored = FALSE
+
+	var/mob/living/carbon/human/hauled = hauled_mob?.resolve()
+	if(hauled)
+		hauled.forceMove(loc)
+
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)
 		if(!can_not_harm(mob))

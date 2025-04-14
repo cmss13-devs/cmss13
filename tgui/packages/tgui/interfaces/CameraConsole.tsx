@@ -1,9 +1,7 @@
-import { filter, sort } from 'common/collections';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Button,
   ByondUi,
@@ -11,8 +9,8 @@ import {
   NoticeBox,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type Data = {
   activeCamera: Camera & { status: BooleanLike };
@@ -69,15 +67,15 @@ const prevNextCamera = (
  * Filters cameras, applies search terms and sorts the alphabetically.
  */
 const selectCameras = (cameras: Camera[], searchText = ''): Camera[] => {
-  let queriedCameras = filter(cameras, (camera: Camera) => !!camera.name);
+  let queriedCameras = cameras.filter((camera: Camera) => !!camera.name);
   if (searchText) {
     const testSearch = createSearch(
       searchText,
       (camera: Camera) => camera.name,
     );
-    queriedCameras = filter(queriedCameras, testSearch);
+    queriedCameras = queriedCameras.filter(testSearch);
   }
-  queriedCameras = sort(queriedCameras);
+  queriedCameras.sort();
 
   return queriedCameras;
 };

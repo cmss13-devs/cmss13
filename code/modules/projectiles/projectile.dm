@@ -11,7 +11,7 @@
 	density = FALSE
 	unacidable = TRUE
 	anchored = TRUE //You will not have me, space wind!
-	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
+	flags_atom = NOINTERACT|NO_ZFALL //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
@@ -1104,6 +1104,7 @@
 			"armour_break_flat" = P.ammo.damage_armor_punch,
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
+			"armour_type" = GLOB.xeno_ranged,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1270,7 +1271,8 @@
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
-				msg_admin_ff(ff_msg, ff_living)
+				if(!(((mob_flags & MUTINY_MUTINEER) && (firingMob.mob_flags & MUTINY_LOYALIST)) || ((mob_flags & MUTINY_LOYALIST) && (firingMob.mob_flags & MUTINY_MUTINEER))))
+					msg_admin_ff(ff_msg, ff_living)
 				if(ishuman(firingMob) && P.weapon_cause_data)
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(P.weapon_cause_data.cause_name)
@@ -1321,6 +1323,13 @@
 	SIGNAL_HANDLER
 
 	accuracy = HIT_ACCURACY_TIER_2 // flat 10% chance if you're desperate and try to fire this thing without a bipod
+
+/obj/projectile/pill
+	var/obj/item/reagent_container/pill/source_pill
+
+/obj/projectile/pill/Destroy()
+	. = ..()
+	source_pill = null
 
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE

@@ -1,5 +1,5 @@
-/datum/supply_packs/upp/medical_upp
-	name = "medical crate"
+/datum/supply_packs/upp/medical
+	name = "UPP medical crate"
 	contains = list(
 		/obj/item/storage/box/syringes,
 		/obj/item/reagent_container/glass/bottle/inaprovaline,
@@ -22,8 +22,8 @@
 	containername = "medical crate"
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/medical_restock_cart_upp
-	name = "medical restock cart"
+/datum/supply_packs/upp/medical_restock_cart
+	name = "UPP medical restock cart"
 	contains = list(
 		/obj/structure/restock_cart/medical,
 	)
@@ -32,8 +32,8 @@
 	containername = "medical restock cart"
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/medical_reagent_cart_upp
-	name = "medical reagent restock cart"
+/datum/supply_packs/upp/medical_reagent_cart
+	name = "UPP medical reagent restock cart"
 	contains = list(
 		/obj/structure/restock_cart/medical/reagent,
 	)
@@ -42,8 +42,8 @@
 	containername = "medical reagent restock cart"
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/pillbottle_upp
-	name = "pill bottle crate (x2 each)"
+/datum/supply_packs/upp/pillbottle
+	name = "UPP pill bottle crate (x2 each)"
 	contains = list(
 		/obj/item/storage/pill_bottle/inaprovaline,
 		/obj/item/storage/pill_bottle/antitox,
@@ -67,8 +67,8 @@
 	containername = "medical crate"
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/firstaid_upp
-	name = "first aid kit crate (x2 each)"
+/datum/supply_packs/upp/firstaid
+	name = "UPP first aid kit crate (x2 each)"
 	contains = list(
 		/obj/item/storage/firstaid/regular,
 		/obj/item/storage/firstaid/regular,
@@ -86,8 +86,8 @@
 	containername = "medical crate"
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/bodybag_upp
-	name = "body bag crate (x28)"
+/datum/supply_packs/upp/bodybag
+	name = "UPP body bag crate (x28)"
 	contains = list(
 		/obj/item/storage/box/bodybags,
 		/obj/item/storage/box/bodybags,
@@ -99,8 +99,8 @@
 	containername = "body bag crate"
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/cryobag_upp
-	name = "stasis bag crate (x3)"
+/datum/supply_packs/upp/cryobag
+	name = "UPP stasis bag crate (x3)"
 	contains = list(
 		/obj/item/bodybag/cryobag,
 		/obj/item/bodybag/cryobag,
@@ -111,8 +111,8 @@
 	containername = "stasis bag crate"
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/surgery_upp
-	name = "surgery crate(tray,anesthetic,surgeon gear)"
+/datum/supply_packs/upp/surgery
+	name = "UPP surgery crate(tray,anesthetic,surgeon gear)"
 	contains = list(
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,
@@ -127,13 +127,13 @@
 	access = ACCESS_MARINE_MEDBAY
 	group = "UPP Medical"
 
-/datum/supply_packs/upp/upgraded_medical_kits_upp
-	name = "upgraded medical equipment crate (x4)"
+/datum/supply_packs/upp/upgraded_medical_kits
+	name = "UPP upgraded medical equipment crate (x4)"
 	contains = list(
-		/obj/item/storage/box/czsp/medic_upgraded_kits,
-		/obj/item/storage/box/czsp/medic_upgraded_kits,
-		/obj/item/storage/box/czsp/medic_upgraded_kits,
-		/obj/item/storage/box/czsp/medic_upgraded_kits,
+		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
+		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
+		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
+		/obj/item/storage/box/czsp/medic_upgraded_kits/full,
 	)
 	cost = 0
 	buyable = FALSE

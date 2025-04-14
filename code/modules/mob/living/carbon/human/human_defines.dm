@@ -115,6 +115,7 @@
 	var/shield_slowdown = 0 // Slowdown from readying shields
 
 	var/datum/equipment_preset/assigned_equipment_preset
+	var/rank_override
 	var/rank_fallback
 
 	var/datum/squad/assigned_squad //the squad this human is assigned to
@@ -175,6 +176,12 @@
 
 	// Are we currently using inherent zoom vision?
 	var/is_zoomed = FALSE
+
+	// Xenomorph that is hauling us if we are hauled
+	var/mob/living/carbon/xenomorph/hauling_xeno
+
+	// Haul resist cooldown
+	var/next_haul_resist
 
 /client/var/cached_human_playtime
 

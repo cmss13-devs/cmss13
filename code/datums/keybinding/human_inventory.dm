@@ -186,51 +186,6 @@
 /datum/keybinding/human/inventory/interact_slot/back/check_slot(mob/living/carbon/human/user)
 	return user.back
 
-/* /datum/keybinding/human/inventory/interact_slot/belt
-	name = "interact_storage_belt"
-	full_name = "Interact With Belt Slot"
-	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_BELT
-	storage_slot = WEAR_WAIST */
-
-/* /datum/keybinding/human/inventory/interact_slot/belt/check_slot(mob/living/carbon/human/user)
-	return user.belt */
-
-/* /datum/keybinding/human/inventory/interact_slot/pouch_left
-	name = "interact_storage_pouch_left"
-	full_name = "Interact With Left Pouch Slot"
-	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_LEFT_POUCH
-	storage_slot = WEAR_L_STORE */
-
-/* /datum/keybinding/human/inventory/interact_slot/pouch_left/check_slot(mob/living/carbon/human/user)
-	return user.l_store */
-
-/* /datum/keybinding/human/inventory/interact_slot/pouch_right
-	name = "interact_storage_pouch_right"
-	full_name = "Interact With Right Pouch Slot"
-	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_RIGHT_POUCH
-	storage_slot = WEAR_R_STORE */
-
-/* /datum/keybinding/human/inventory/interact_slot/pouch_right/check_slot(mob/living/carbon/human/user)
-	return user.r_store */
-
-/* /datum/keybinding/human/inventory/interact_slot/uniform
-	name = "interact_storage_uniform"
-	full_name = "Interact With Uniform Slot"
-	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_UNIFORM
-	storage_slot = WEAR_BODY */
-
-/* /datum/keybinding/human/inventory/interact_slot/uniform/check_slot(mob/living/carbon/human/user)
-	return user.w_uniform */
-
-/* /datum/keybinding/human/inventory/interact_slot/suit
-	name = "interact_storage_suit"
-	full_name = "Interact With Suit Slot"
-	keybind_signal = COMSIG_KB_HUMAN_INTERACT_SLOT_SUIT
-	storage_slot = WEAR_JACKET */
-
-/* /datum/keybinding/human/inventory/interact_slot/suit/check_slot(mob/living/carbon/human/user)
-	return user.wear_suit */
-
 /datum/keybinding/human/inventory/interact_slot/helmet
 	name = "interact_storage_helmet"
 	full_name = "Interact With Head Slot"

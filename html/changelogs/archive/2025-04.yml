@@ -197,3 +197,93 @@
   - bugfix: fixed painkilling OD/Crit OD having halved effects
   silverplatedelta:
   - balance: Drones can now evolve into any T2 caste before first drop
+2025-04-09:
+  Blundir:
+  - qol: flashlight, lamps, candles don't rotate when being thrown
+  Detective-Google:
+  - bugfix: things can be buckled again
+  Kashargul:
+  - bugfix: Fix fps / tick config not applying individually
+  - ui: Buttons now use blur to reset
+  - ui: Fix tgsay not scaling correctly when using small scale option
+  - ui: Fix edgecase with chat scrolling sometimes breaking when loading in large
+      chat history
+  - code_imp: Bump typescript version for tgui
+  MistChristmas:
+  - ui: Changes Scrollbar colors to mix from both foreground and background colours,
+      Improving visibility. Makes CRT-Red background red instead of blue.
+2025-04-10:
+  Blundir:
+  - rscadd: nailgun can now be held on belt slot
+  - bugfix: fixed nailgun having no inhand sprites
+  - rscadd: normal mateba ammo can now battle execute
+  Spypig23, detectivegoogle, harryob:
+  - rscadd: HM Challenge Tutorial
+  - mapadd: Added medical-themed 15x10 tutorial map
+  - refactor: Reworked code for roller beds to allow continuous tracking
+  - bugfix: IA pill bottles and Vials now display working icons in vendor UI
+2025-04-11:
+  SpartanBobby:
+  - maptweak: Fixes bugs in LV522 buttons, adds more ammo
+  biologed:
+  - bugfix: added size property for box of zip cuffs with value MEDIUM (normal)
+  nauticall:
+  - bugfix: Crew manifest will no longer stay open for hostiles or non-USCM (xenos,
+      survivors, UPP, etc) joining the game from the lobby.
+  - bugfix: Fixed duplicate entries on the crew manifest.
+2025-04-12:
+  Aurallianz:
+  - bugfix: Fixes Intercom and APC in the Memorial Garden Area
+  DoguhanOzgurAkca:
+  - rscadd: Addeded a new area to LV lake house area that isn't underground.
+  MeH0y:
+  - bugfix: the yautja bow now counts as one of your two secondary choices
+  Red-byte3D:
+  - rscdel: New varadero no longer has explosive implant cases, they are now replaced
+      with death alarms
+  SpypigDev:
+  - bugfix: HM tutorial progression no longer counts towards fun facts
+  - bugfix: HM tutorial AI behavioral bugfixes
+  - bugfix: HM tutorial general gameplay bugfixes
+  - rscadd: HM tutorial restocking mechanics
+  realforest2001:
+  - rscadd: Added the reward for winning rat competition from Frozen.
+  - rscadd: Added sprites and function for having rats on your shoulder.
+  - rscadd: Added a faction-wide mutiny system.
+2025-04-13:
+  Aurallianz:
+  - bugfix: fixed an object on Solaris whose sprite is broken in lambda labs.
+  Drathek:
+  - code_imp: DMI merge hook will now try to retain positioning of sprites when handling
+      some conflicts
+  Drulikar:
+  - balance: AMR now resets aimed shot count every 3rd shot (rather than 4th)
+  - balance: AMR no longer applies daze/slow/superslow/knockdown on first aimed shot
+  Git-Nivrak:
+  - admin: Fixed lesser and facehugger logging, added logging for destroyed the sensor
+      tower
+  Joe Lampost, Forest2001:
+  - rscadd: 'Changes the Ai announcement to an elder overseer that only: Yautja, thralls
+      and hellhounds can see'
+  - rscadd: Adds a button for yautja council members to message all alive preds yautja.
+  - rscdel: Removed the Yautja AI announcement
+  - bugfix: The youngblood terminator now displays what it is in the text input
+  - soundadd: added four sounds for the elder overseer
+  - code_imp: moves the whitelist panel to a new tab in the OOC panel
+  Lagomorphica:
+  - balance: yautja duelling weapons now have click delay
+  - refactor: moves predator duelling weapons into proper predator files for both
+      icons and code
+  Nihisohel:
+  - rscadd: A preference for spoken leadership orders have been added. Fulfill your
+      milsim larp fantasies with this. Set to on as default.
+  Steelpoint:
+  - mapadd: During the Faction Clash gamemode. A UPP forward operating base and Landing
+      Zone will be automatically placed on the planet. This will apply to all current
+      ground maps.
+  - mapadd: Furthermore, the USCM FOB will start pre-fortified. However, only one
+      USCM landing zone will be available to use.
+  - bugfix: Fixed trolly vehicle hard deletes (Drathek)
+  - bugfix: Fixed roof_master_node error issue. (cuberound)
+  biologed:
+  - bugfix: fixed the functionality of changing character name via PP

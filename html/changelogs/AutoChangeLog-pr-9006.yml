@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - qol: "flashlight, lamps, candles don't rotate when being thrown"

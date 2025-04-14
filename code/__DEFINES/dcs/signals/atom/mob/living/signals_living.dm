@@ -40,6 +40,8 @@
 
 ///from base of mob/living/set_buckled(): (new_buckled)
 #define COMSIG_LIVING_SET_BUCKLED "living_set_buckled"
+/// From /obj/structure/bed/buckle_mob() : (mob/living/carbon/human/mob)
+#define COMSIG_LIVING_BED_BUCKLED "living_bed_buckled"
 ///from base of mob/living/set_body_position()
 #define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
 
@@ -50,3 +52,6 @@
 #define COMSIG_LIVING_SHIMMY_LAYER "structure_shimmy_layer"
 	/// Sent when a shimmy component is currently overriding the layer
 	#define COMSIG_LIVING_SHIMMY_LAYER_CANCEL (1<<0)
+
+// From /obj/limb/proc/apply_splints() : (mob/living/user)
+#define COMSIG_LIVING_LIMB_SPLINTED "living_limb_splinted"

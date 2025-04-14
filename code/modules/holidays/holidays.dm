@@ -12,8 +12,6 @@
 	var/end_month = 0
 	/// for christmas neverending, or testing. Forces a holiday to be celebrated.
 	var/always_celebrate = FALSE
-	/// Held variable to better calculate when certain holidays may fall on, like easter.
-	var/current_year = 0
 	///Timezones this holiday is celebrated in (defaults to three timezones spanning a 50 hour window covering all timezones)
 	var/list/timezones = list(TIMEZONE_LINT, TIMEZONE_UTC, TIMEZONE_ANYWHERE_ON_EARTH)
 	///Optional custom text of greeting message
@@ -54,9 +52,11 @@
 			return TRUE
 
 	else // starts in one year, ends in the next
-		if(mm >= begin_month) // Holiday ends next year
+		if(mm >= begin_month && dd >= begin_day) // Holiday ends next year
 			return TRUE
-		if(mm <= end_month) // Holiday started last year
+		if(mm <= end_month && dd <= end_day) // Holiday started last year
+			return TRUE
+		else if(mm in begin_month to end_month) //holiday spans 3+ months and we're in the middle, day doesn't matter at all
 			return TRUE
 
 	return FALSE
@@ -539,7 +539,7 @@
 	greet_text = "Greetings! Have a Happy Easter and keep an eye out for Easter Bunnies!"
 
 /datum/holiday/easter/shouldCelebrate(dd, mm, yyyy, ddd)
-	current_year = text2num(time2text(world.timeofday, "YYYY"))
+	var/current_year = text2num(time2text(world.timeofday, "YYYY"))
 	var/list/easterResults = easter_date(current_year)
 
 	begin_day = easterResults["day"]

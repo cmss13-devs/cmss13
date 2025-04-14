@@ -348,7 +348,7 @@
 			return
 		if(aimed)
 			to_chat(user, SPAN_WARNING("The [src] is currently targeting something!"))
-			retur
+			return
 		to_chat(user, SPAN_NOTICE("You begin linking your laser designator to the [src].."))
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			if(linked_designator) // Unregister the pervious laser designator signal, if switching linked laser designator

@@ -19,6 +19,9 @@
 	SIGNAL_HANDLER
 	active_cmo = null
 
+/datum/job/civilian/professor/get_active_player_on_job()
+	return active_cmo
+
 AddTimelock(/datum/job/civilian/professor, list(
 	JOB_MEDIC_ROLES = 10 HOURS
 ))

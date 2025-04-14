@@ -19,6 +19,9 @@
 	SIGNAL_HANDLER
 	active_dropship_pilot = null
 
+/datum/job/command/pilot/dropship_pilot/get_active_player_on_job()
+	return active_dropship_pilot
+
 // Dropship Roles is both DP, GP and DCC combined to not force people to backtrack
 AddTimelock(/datum/job/command/pilot/dropship_pilot, list(
 	JOB_DROPSHIP_ROLES = 2 HOURS

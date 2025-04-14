@@ -15,6 +15,8 @@
 	SIGNAL_HANDLER
 	active_chief_engineer = null
 
+/datum/job/logistics/engineering/get_active_player_on_job()
+	return active_chief_engineer
 
 AddTimelock(/datum/job/logistics/engineering, list(
 	JOB_ENGINEER_ROLES = 10 HOURS,

@@ -17,6 +17,9 @@
 	SIGNAL_HANDLER
 	active_auxiliary_officer = null
 
+/datum/job/command/auxiliary_officer/get_active_player_on_job()
+	return active_auxiliary_officer
+
 AddTimelock(/datum/job/command/auxiliary_officer, list(
 	JOB_SQUAD_ROLES = 5 HOURS,
 	JOB_REQUISITION_ROLES = 5 HOURS,

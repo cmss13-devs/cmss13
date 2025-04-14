@@ -19,6 +19,9 @@
 	SIGNAL_HANDLER
 	active_cas_pilot = null
 
+/datum/job/command/pilot/cas_pilot/get_active_player_on_job()
+	return active_cas_pilot
+
 /datum/job/command/pilot/whiskey
 	total_positions = 2
 	spawn_positions = 2

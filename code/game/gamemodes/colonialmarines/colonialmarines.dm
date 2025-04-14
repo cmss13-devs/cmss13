@@ -137,7 +137,7 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
-	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 30 SECONDS)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 
 	return ..()
@@ -362,17 +362,11 @@
 /datum/game_mode/proc/ares_command_check()
 	var/role_in_charge
 	var/mob/living/carbon/human/person_in_charge
-	var/update_id = FALSE
-	var/doesnotneedheadset = FALSE
+
+	var/list/role_needs_id = list(JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+	var/list/role_needs_comms = list(JOB_CHIEF_POLICE, JOB_CMO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
 	var/announce_addendum
 
-
-	var/datum/job/command/auxiliary_officer/aso_job = GLOB.RoleAuthority.roles_for_mode[JOB_AUXILIARY_OFFICER]
-	var/datum/job/command/warrant/cmp_job = GLOB.RoleAuthority.roles_for_mode[JOB_CHIEF_POLICE]
-	var/datum/job/civilian/professor/cmo_job = GLOB.RoleAuthority.roles_for_mode[JOB_CMO]
-	var/datum/job/command/pilot/dropship_pilot/dp_job = GLOB.RoleAuthority.roles_for_mode[JOB_DROPSHIP_PILOT]
-	var/datum/job/command/pilot/cas_pilot/gs_job = GLOB.RoleAuthority.roles_for_mode[JOB_CAS_PILOT]
-	var/datum/job/logistics/engineering/ce_job = GLOB.RoleAuthority.roles_for_mode[JOB_CHIEF_ENGINEER]
 	var/datum/squad/intel_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/intel]
 	var/list/intel_officers = intel_squad.marines_list
 
@@ -383,53 +377,40 @@
 		return
 	//If we have a CO or XO, we're good no need to announce anything.
 
-	else if(aso_job.active_auxiliary_officer)
-		role_in_charge = JOB_AUXILIARY_OFFICER
-		person_in_charge = aso_job.active_auxiliary_officer
-		doesnotneedheadset = TRUE
-	else if(cmp_job.active_cmp)
-		role_in_charge = JOB_CHIEF_POLICE
-		person_in_charge = cmp_job.active_cmp
-	else if(cmo_job.active_cmo)
-		role_in_charge = JOB_CMO
-		person_in_charge = cmo_job.active_cmo
-	else if(GLOB.marine_leaders[JOB_SO])
-		update_id = TRUE
-		role_in_charge = JOB_SO
-		person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
-		doesnotneedheadset = TRUE
-	else if(ce_job.active_chief_engineer)
-		update_id = TRUE
-		role_in_charge = JOB_CHIEF_ENGINEER
-		person_in_charge = ce_job.active_chief_engineer
-	else if(dp_job.active_dropship_pilot)
-		update_id = TRUE
-		role_in_charge = JOB_DROPSHIP_PILOT
-		person_in_charge = dp_job.active_dropship_pilot
-	else if(gs_job.active_cas_pilot)
-		update_id = TRUE
-		role_in_charge = JOB_CAS_PILOT
-		person_in_charge = gs_job.active_cas_pilot
-	else if(intel_officers)
-		update_id = TRUE
-		role_in_charge = JOB_INTEL
-		person_in_charge = pick(intel_officers)
-		message_admins(intel_officers)
-	// if you have no one up to this point you are cooked and CIC literally dosent matter
+	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+		role_in_charge = job_by_chain
 
-	if(!role_in_charge)
+		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
+			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
+			break
+		if(job_by_chain == JOB_INTEL && !!length(intel_officers))
+			person_in_charge = pick(intel_officers)
+			break
+		//If the job is a list we have to stop here
+		if(person_in_charge)
+			continue
+
+		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+		person_in_charge = job_datum.get_active_player_on_job()
+		if(!isnull(person_in_charge))
+			break
+
+	if(isnull(person_in_charge))
 		return
 
-	if(!doesnotneedheadset)
-		announce_addendum += "\nA Command headset key is availible in the CIC Command Tablet cabinet."
+	if(LAZYFIND(role_needs_comms, role_in_charge))
+		//If the role needs comms we let them know about the headset.
+		announce_addendum += "\nA Command headset is availible in the CIC Command Tablet cabinet."
 
-	//adding permssions to the newly desinated commanders headset
-	if(update_id)
+	if(LAZYFIND(role_needs_id, role_in_charge))
+		//If the role needs senior command access, we need to add it to the ID card.
 		var/obj/item/card/id/card = person_in_charge.get_idcard()
+		if(!card)
+			return
+
 		var/list/access = card.access
 		access.Add(ACCESS_MARINE_SENIOR)
 		announce_addendum += "\nSenior Command access added to ID."
-
 
 	//does an announcement to the crew about the commander & alerts admins to that change for logs.
 	shipwide_ai_announcement("Due to the absence of command staff, commander authority now falls to [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')

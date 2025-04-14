@@ -248,6 +248,12 @@
 				return
 
 			prefs.predator_invisibility_sound = selected
+			var/sound_to_use
+			if(selected == PRED_TECH_MODERN)
+				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
+			else
+				sound_to_use = 'sound/effects/pred_cloakon.ogg'
+			playsound_client(ui.user.client, sound_to_use, null, 35)
 
 		if("legacy")
 			var/selected = params["selected"]

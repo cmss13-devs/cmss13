@@ -237,8 +237,8 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/xr(new_human), WEAR_L_STORE)
 
 		if(7 to 9)
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/xm51/avp(new_human), WEAR_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/avp(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/xm51/zx76(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/zx76(new_human), WEAR_L_STORE)
 
 
 /datum/equipment_preset/cia/owlf/sci

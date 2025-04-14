@@ -2628,9 +2628,9 @@
 	starting_attachment_types = list(/obj/item/attachable/flashlight/grip, /obj/item/attachable/reflex)
 
 ///OWLF GEAR
-/obj/item/weapon/gun/rifle/xm51/avp
+/obj/item/weapon/gun/rifle/xm51/zx76
 	name = "\improper ZX-76A Double Barrel Shotgun"
-	desc = "."
+	desc = "Originally Designed by Weyland-Yutani for Corporate security teams, the ZX76 is currently undergoing trials by the USCM as a replacement for the M37A2, It's been adopted by some UA agencies due to it's heavy firepower compared to most other shotguns."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/shotguns.dmi',
@@ -2643,7 +2643,7 @@
 	fire_sound = 'sound/weapons/gun_shotgun_xm51.ogg'
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/xm51/avp
+	current_mag = /obj/item/ammo_magazine/rifle/xm51/zx76
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
@@ -2667,10 +2667,10 @@
 	burst_delay = 0 //So doubleshotty can doubleshot
 	additional_fire_group_delay = 1.5 SECONDS
 
-/obj/item/weapon/gun/rifle/xm51/avp/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/xm51/zx76/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18, "rail_x" = 12, "rail_y" = 20, "under_x" = 24, "under_y" = 13, "stock_x" = 15, "stock_y" = 16)
 
-/obj/item/weapon/gun/rifle/xm51/avp/set_gun_config_values()
+/obj/item/weapon/gun/rifle/xm51/zx76/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_2)
 	set_fire_delay(FIRE_DELAY_TIER_11)
@@ -2686,7 +2686,7 @@
 
 /obj/item/weapon/gun/rifle/m41a/elite/xr
 	name = "\improper XR81-C rifle"
-	desc = "."
+	desc = "Designed by OWLF R&D, this rifle has been made specially made to fit the needs of OWLF Field Teams."
 	icon_state = "xr81"
 	item_state = "xr81"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'

@@ -672,7 +672,7 @@
 
 //OWLF Ammo
 
-/obj/item/ammo_magazine/rifle/xm51/avp
+/obj/item/ammo_magazine/rifle/xm51/zx76
 	name = "\improper ZX-76 magazine"
 	desc = "A 12 gauge pump-action shotgun magazine."
 	icon_state = "zx76"
@@ -680,7 +680,7 @@
 	w_class = SIZE_MEDIUM
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
 	max_rounds = 8
-	gun_type = /obj/item/weapon/gun/rifle/xm51/avp
+	gun_type = /obj/item/weapon/gun/rifle/xm51/zx76
 	transfer_handful_amount = 6
 
 

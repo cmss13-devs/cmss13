@@ -309,11 +309,11 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "bT" = (
-/obj/structure/machinery/power/apc/no_power/west,
 /obj/item/ammo_box/magazine/p90/empty{
 	pixel_x = -4;
 	pixel_y = -6
 	},
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/strata/red3/west,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "bU" = (
@@ -1623,12 +1623,6 @@
 	pixel_x = -6;
 	pixel_y = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning";
-	layer = 2.5;
-	dir = 8;
-	pixel_x = -2
-	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "lN" = (
@@ -2419,16 +2413,6 @@
 "sl" = (
 /obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
 /turf/open/floor/plating,
-/area/lv759/indoors/twe_souter_outpost/hangar)
-"sn" = (
-/obj/structure/pipes/standard/simple/hidden/dark,
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning";
-	layer = 2.5;
-	dir = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "sv" = (
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -3568,6 +3552,10 @@
 /obj/item/trash/hybrisa/cuppa_joes/empty_cup,
 /turf/open/floor/prison/blue/north,
 /area/lv759/indoors/twe_souter_outpost/flight)
+"FH" = (
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "FZ" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
 	dir = 1
@@ -3896,7 +3884,7 @@
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/lv759/outdoors/colony_streets/central_streets)
 "IJ" = (
-/obj/item/clothing/shoes/royal_marine{
+/obj/item/clothing/shoes/marine/royal_marine{
 	pixel_x = -5;
 	pixel_y = 11
 	},
@@ -6120,7 +6108,7 @@ eT
 TI
 zJ
 WQ
-fq
+FH
 bQ
 bQ
 bQ
@@ -6241,7 +6229,7 @@ FD
 GI
 IP
 et
-sn
+RB
 VD
 RB
 RB

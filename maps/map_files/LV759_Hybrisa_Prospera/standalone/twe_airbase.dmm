@@ -1045,7 +1045,7 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/item/clothing/shoes/royal_marine{
+/obj/item/clothing/shoes/marine/royal_marine{
 	pixel_x = 6;
 	pixel_y = -3
 	},
@@ -1160,6 +1160,10 @@
 	pixel_y = 16;
 	buckle_offset_x = -7;
 	buckle_offset_y = 16
+	},
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot/alt{
+	pixel_x = -7;
+	pixel_y = 10
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
@@ -1463,12 +1467,6 @@
 /obj/effect/hybrisa/misc/fake/wire/red{
 	pixel_x = -6;
 	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning";
-	layer = 2.5;
-	dir = 8;
-	pixel_x = -2
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/twe_souter_outpost/hangar)
@@ -2183,16 +2181,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
-"sn" = (
-/obj/structure/pipes/standard/simple/hidden/dark,
-/obj/effect/decal/warning_stripes{
-	icon_state = "door_warning";
-	layer = 2.5;
-	dir = 1;
-	pixel_y = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/lv759/indoors/twe_souter_outpost/hangar)
 "sv" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -2645,6 +2633,10 @@
 /area/lv759/indoors/twe_souter_outpost/maint)
 "yE" = (
 /obj/structure/machinery/big_computers/messaging_server/black,
+/obj/item/clothing/head/beret/iasf_commander_cap{
+	pixel_x = -3;
+	pixel_y = 10
+	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "zj" = (
@@ -3489,7 +3481,7 @@
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/lv759/outdoors/colony_streets/central_streets)
 "IJ" = (
-/obj/item/clothing/shoes/royal_marine{
+/obj/item/clothing/shoes/marine/royal_marine{
 	pixel_x = -5;
 	pixel_y = 11
 	},
@@ -5650,7 +5642,7 @@ FD
 GI
 IP
 et
-sn
+RB
 VD
 RB
 RB

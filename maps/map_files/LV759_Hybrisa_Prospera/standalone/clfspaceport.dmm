@@ -60,16 +60,6 @@
 	name = "\improper WY-LWI Horizon Runner HR-150"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
-"ce" = (
-/obj/item/reagent_container/glass/bucket{
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/obj/item/tool/mop{
-	pixel_y = 23
-	},
-/turf/open/hybrisa/dropship/dropship4,
-/area/lv759/indoors/spaceport/horizon_runner)
 "ci" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
 	dir = 8
@@ -129,7 +119,6 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/indoors/spaceport/cargo)
 "dA" = (
-/obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/horizon_runner)
 "dE" = (
@@ -156,16 +145,8 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/communications_office)
-"es" = (
-/turf/closed/wall/hybrisa/spaceport,
-/area/lv759/indoors/spaceport/docking_bay_2)
 "ex" = (
 /obj/structure/platform/metal/strata,
-/obj/effect/decal/medical_decals{
-	dir = 1;
-	icon_state = "triagedecaldir";
-	pixel_x = 1
-	},
 /turf/open/floor/strata/blue3/north,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "ez" = (
@@ -250,19 +231,7 @@
 "fz" = (
 /obj/structure/platform/metal/strata,
 /obj/structure/platform/metal/strata/east,
-/obj/effect/decal/medical_decals{
-	dir = 1;
-	icon_state = "triagedecaldir";
-	pixel_x = 1
-	},
 /turf/open/floor/strata/blue3/north,
-/area/lv759/indoors/spaceport/docking_bay_2)
-"fC" = (
-/obj/structure/machinery/light/spot/blue{
-	dir = 8;
-	pixel_x = -8
-	},
-/turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "fN" = (
 /obj/effect/decal/warning_stripes{
@@ -295,7 +264,9 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "gj" = (
 /obj/structure/bed/chair/dropship/pilot{
-	dir = 1
+	dir = 1;
+	pixel_y = 8;
+	buckling_y = 8
 	},
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_left_to_right,
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -422,14 +393,13 @@
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "jP" = (
-/obj/structure/machinery/light/spot/blue{
-	dir = 4;
-	pixel_x = 8
-	},
 /obj/structure/bed/chair/comfy/hybrisa/brown{
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "jY" = (
@@ -472,14 +442,6 @@
 	},
 /turf/open/floor/strata/yellow3/east,
 /area/lv759/indoors/spaceport/cargo)
-"kf" = (
-/obj/structure/platform/metal/strata/east,
-/obj/structure/machinery/light/spot/blue{
-	dir = 8;
-	pixel_x = -8
-	},
-/turf/open/floor/strata/blue3/east,
-/area/lv759/indoors/spaceport/docking_bay_2)
 "kq" = (
 /obj/effect/decal/hybrisa/lattice/full,
 /turf/closed/wall/hybrisa/spaceport/reinforced,
@@ -489,11 +451,10 @@
 	pixel_x = 5;
 	pixel_y = 13
 	},
-/obj/structure/machinery/light/spot/blue{
-	dir = 8;
-	pixel_x = -8
-	},
 /obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "lo" = (
@@ -510,7 +471,6 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime4"
 	},
-/obj/effect/decal/strata_decals/grime/grime4,
 /turf/open/hybrisa/dropship/dropship4,
 /area/lv759/indoors/spaceport/horizon_runner)
 "mg" = (
@@ -624,10 +584,6 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
 "oT" = (
-/obj/effect/decal/medical_decals{
-	icon_state = "triagedecaltopleft";
-	color = "#d3d3d3"
-	},
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -715,14 +671,6 @@
 	},
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
-"rl" = (
-/obj/item/tool/wet_sign{
-	layer = 4;
-	pixel_x = -9;
-	pixel_y = 17
-	},
-/turf/open/hybrisa/dropship/dropship4,
-/area/lv759/indoors/spaceport/horizon_runner)
 "rt" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
@@ -798,14 +746,6 @@
 	dir = 4
 	},
 /turf/open/floor/strata/floor3,
-/area/lv759/indoors/spaceport/docking_bay_2)
-"ur" = (
-/obj/structure/platform/metal/strata/west,
-/obj/structure/machinery/light/spot/blue{
-	dir = 4;
-	pixel_x = 8
-	},
-/turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "uu" = (
 /obj/structure/barricade/handrail{
@@ -937,20 +877,11 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "yb" = (
 /obj/structure/platform_decoration/metal/strata/north,
-/obj/effect/decal/medical_decals{
-	dir = 1;
-	icon_state = "triagedecaldir";
-	pixel_x = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 5
 	},
 /turf/open/floor/strata/blue3/north,
 /area/lv759/indoors/spaceport/docking_bay_2)
-"yA" = (
-/obj/structure/largecrate/empty/secure,
-/turf/open/floor/almayer/test_floor5,
-/area/lv759/indoors/spaceport/horizon_runner)
 "yD" = (
 /obj/structure/stairs{
 	color = "#a6aeab"
@@ -969,13 +900,6 @@
 /obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/kitchen)
-"zb" = (
-/obj/structure/largecrate/random/mini/small_case{
-	pixel_x = 4;
-	pixel_y = 10
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/lv759/indoors/spaceport/horizon_runner)
 "zh" = (
 /turf/closed/shuttle/dropship2/transparent{
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -1057,10 +981,6 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "AX" = (
-/obj/effect/decal/medical_decals{
-	icon_state = "triagedecaltopright";
-	color = "#d3d3d3"
-	},
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
@@ -1208,10 +1128,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/yellow3/west,
 /area/lv759/indoors/spaceport/cargo)
-"Fx" = (
-/obj/structure/janitorialcart,
-/turf/open/hybrisa/dropship/dropship4,
-/area/lv759/indoors/spaceport/horizon_runner)
 "FG" = (
 /obj/structure/machinery/light/blue{
 	dir = 8
@@ -1263,12 +1179,11 @@
 /turf/open/hybrisa/dropship/dropship4,
 /area/lv759/indoors/spaceport/horizon_runner)
 "Hh" = (
-/obj/structure/platform/metal/strata/west,
-/obj/structure/machinery/light/spot/blue{
-	dir = 4;
-	pixel_x = 8
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 8
 	},
-/turf/open/floor/strata/blue3/north,
+/turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Ho" = (
 /turf/open/floor/plating,
@@ -1357,10 +1272,6 @@
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
 	},
-/obj/structure/machinery/light/spot/blue{
-	dir = 8;
-	pixel_x = -8
-	},
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -1415,15 +1326,6 @@
 	},
 /turf/open/floor/strata/yellow3/east,
 /area/lv759/indoors/spaceport/cargo)
-"JW" = (
-/obj/structure/closet/crate/foodcart,
-/obj/item/trash/tray{
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/obj/item/trash/tray,
-/turf/open/hybrisa/dropship/dropship4,
-/area/lv759/indoors/spaceport/horizon_runner)
 "Ke" = (
 /turf/closed/shuttle/dropship2/WY/HorizonRunner{
 	icon_state = "rightengine_3"
@@ -1434,11 +1336,6 @@
 /obj/item/tool/warning_cone{
 	pixel_x = -9;
 	pixel_y = 20
-	},
-/obj/effect/decal/medical_decals{
-	dir = 1;
-	icon_state = "triagedecaldir";
-	pixel_x = 1
 	},
 /turf/open/floor/strata/blue3/north,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -1533,7 +1430,6 @@
 /turf/open/hybrisa/dropship/dropship3,
 /area/lv759/indoors/spaceport/horizon_runner)
 "Mj" = (
-/obj/effect/spawner/random/sentry/highchance,
 /obj/structure/machinery/light/small{
 	dir = 8;
 	pixel_x = -11;
@@ -1652,14 +1548,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/indoors/spaceport/cargo)
-"OK" = (
-/obj/structure/platform/metal/strata/east,
-/obj/structure/machinery/light/spot/blue{
-	dir = 8;
-	pixel_x = -8
-	},
-/turf/open/floor/strata/blue3/north,
-/area/lv759/indoors/spaceport/docking_bay_2)
 "OM" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/strata/blue3/west,
@@ -1759,11 +1647,6 @@
 /area/lv759/indoors/spaceport/horizon_runner)
 "QD" = (
 /obj/structure/platform_decoration/metal/strata,
-/obj/effect/decal/medical_decals{
-	dir = 1;
-	icon_state = "triagedecaldir";
-	pixel_x = 1
-	},
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 9
 	},
@@ -1818,7 +1701,6 @@
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
 "RS" = (
-/obj/structure/largecrate/empty/case/double,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
@@ -1838,11 +1720,10 @@
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
 "Sg" = (
-/obj/structure/machinery/light/spot/blue{
-	dir = 4;
-	pixel_x = 8
-	},
 /obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Sh" = (
@@ -1850,13 +1731,6 @@
 	icon_state = "78"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
-"Sr" = (
-/obj/structure/machinery/light/spot/blue{
-	dir = 4;
-	pixel_x = 8
-	},
-/turf/open/floor/strata/multi_tiles,
-/area/lv759/indoors/spaceport/docking_bay_2)
 "SD" = (
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/kitchen)
@@ -1943,14 +1817,6 @@
 	},
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv759/indoors/spaceport/docking_bay_2)
-"Uw" = (
-/obj/effect/decal/hybrisa/dirt,
-/obj/structure/machinery/light/spot/blue{
-	dir = 8;
-	pixel_x = -8
-	},
-/turf/open/floor/strata/multi_tiles,
-/area/lv759/indoors/spaceport/docking_bay_2)
 "UB" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "docstripingdir";
@@ -2032,20 +1898,6 @@
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cargo_maintenance)
-"Xh" = (
-/obj/structure/largecrate/random/mini/ammo{
-	pixel_y = 12
-	},
-/obj/structure/largecrate/random/mini/small_case{
-	pixel_x = -6;
-	pixel_y = -5
-	},
-/obj/item/ammo_box/magazine/misc/mre/emergency{
-	pixel_x = 9;
-	pixel_y = -3
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/lv759/indoors/spaceport/horizon_runner)
 "Xl" = (
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/blue3,
@@ -2058,10 +1910,6 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "XC" = (
-/obj/item/tool/warning_cone{
-	pixel_x = -13;
-	pixel_y = 11
-	},
 /obj/item/tool/warning_cone{
 	pixel_x = -4;
 	pixel_y = 8
@@ -2097,11 +1945,6 @@
 "Yh" = (
 /obj/structure/platform/metal/strata,
 /obj/structure/platform/metal/strata/west,
-/obj/effect/decal/medical_decals{
-	dir = 1;
-	icon_state = "triagedecaldir";
-	pixel_x = 1
-	},
 /turf/open/floor/strata/blue3/north,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Yo" = (
@@ -2211,7 +2054,7 @@ wc
 FJ
 IH
 kZ
-OM
+Hh
 OM
 Lh
 ZL
@@ -2227,7 +2070,7 @@ qG
 HR
 Ew
 RU
-Sr
+RU
 RU
 RU
 RU
@@ -2240,7 +2083,7 @@ qC
 RU
 ol
 RU
-Sr
+RU
 RU
 RU
 Wf
@@ -2252,7 +2095,7 @@ FU
 OU
 AX
 hP
-es
+hP
 BZ
 BZ
 hP
@@ -2265,7 +2108,7 @@ Dk
 hP
 hP
 hP
-es
+hP
 hP
 hP
 um
@@ -2277,7 +2120,7 @@ Kx
 kc
 QD
 ov
-OK
+CM
 Ab
 Pe
 Xl
@@ -2290,7 +2133,7 @@ eD
 ov
 ov
 eD
-kf
+ov
 ov
 Nt
 bN
@@ -2387,8 +2230,8 @@ QA
 ox
 eJ
 Pg
-Xh
-yA
+dA
+dA
 Wu
 mD
 AW
@@ -2405,12 +2248,12 @@ Er
 RF
 gj
 Pg
-ce
-Fx
-lN
-rl
 GZ
-JW
+GZ
+lN
+GZ
+GZ
+GZ
 ns
 Pj
 Pj
@@ -2462,7 +2305,7 @@ pX
 ox
 eJ
 Pg
-zb
+dA
 dA
 Wu
 mD
@@ -2552,7 +2395,7 @@ hl
 hb
 yb
 st
-Hh
+KI
 ZO
 xO
 gI
@@ -2565,7 +2408,7 @@ Cg
 st
 st
 Cg
-ur
+st
 st
 Dp
 um
@@ -2577,12 +2420,6 @@ FU
 vR
 oT
 xm
-es
-BZ
-BZ
-xm
-xm
-xm
 xm
 BZ
 BZ
@@ -2590,7 +2427,13 @@ xm
 xm
 xm
 xm
-es
+BZ
+BZ
+xm
+xm
+xm
+xm
+xm
 xm
 xm
 um
@@ -2602,7 +2445,7 @@ qG
 QM
 Ew
 RU
-fC
+RU
 RU
 RU
 RU
@@ -2615,7 +2458,7 @@ RU
 RU
 RU
 RU
-Uw
+ol
 RU
 RU
 GX

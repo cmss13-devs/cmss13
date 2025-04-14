@@ -37,7 +37,6 @@
     ],
     "CO_insert_survivor_types": [
         "/datum/equipment_preset/survivor/hybrisa/iasf_commander"
-
     ],
     "defcon_triggers": [
         3750,

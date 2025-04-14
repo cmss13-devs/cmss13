@@ -1677,7 +1677,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_marine_helmet = HELMET_GARB_OVERLAY
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot
-	name = "\improper PH-4 “Spitfire” flight helmet"
+	name = "\improper PH-4 'Spitfire' flight helmet"
 	desc = "Standard flight helmet used across the Three World Empire’s aerospace forces, from fighter pilots to atmospheric crews. This PH-4 variant is tailored for dropship operations in space, featuring reinforced plating, HUD optics, and encrypted comms. Essential for high-risk insertions, landings, and exfil missions. Nicknamed “Spitfire” for its reliability under fire."
 	icon_state = "pilot_helm"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH

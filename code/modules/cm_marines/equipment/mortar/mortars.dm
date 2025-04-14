@@ -348,10 +348,10 @@
 			return
 		if(aimed)
 			to_chat(user, SPAN_WARNING("The [src] is currently targeting something!"))
-			return
+			retur
 		to_chat(user, SPAN_NOTICE("You begin linking your laser designator to the [src].."))
 		if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(linked_designator) // Unregister the previous laser designator signal, if switching linked laser designator
+			if(linked_designator) // Unregister the pervious laser designator signal, if switching linked laser designator
 				UnregisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE)
 				UnregisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF)
 			linked_designator = item
@@ -359,7 +359,7 @@
 			RegisterSignal(linked_designator, COMSIG_DESIGNATOR_LASE_OFF, PROC_REF(lost_laser_target))
 			verbs += /obj/structure/mortar/proc/unlink_designator
 			balloon_alert(user, "linked")
-		return
+	return
 
 	if(istype(item, /obj/item/mortar_shell))
 		var/obj/item/mortar_shell/mortar_shell = item

@@ -405,12 +405,10 @@
 	if(LAZYFIND(role_needs_id, role_in_charge))
 		//If the role needs senior command access, we need to add it to the ID card.
 		var/obj/item/card/id/card = person_in_charge.get_idcard()
-		if(!card)
-			return
-
-		var/list/access = card.access
-		access.Add(ACCESS_MARINE_SENIOR)
-		announce_addendum += "\nSenior Command access added to ID."
+		if(card)
+			var/list/access = card.access
+			access.Add(ACCESS_MARINE_SENIOR)
+			announce_addendum += "\nSenior Command access added to ID."
 
 	//does an announcement to the crew about the commander & alerts admins to that change for logs.
 	shipwide_ai_announcement("Due to the absence of command staff, commander authority now falls to [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')

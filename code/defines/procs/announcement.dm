@@ -5,13 +5,11 @@
 #define QUEEN_ANNOUNCE "Слова Королевы звучат у вас в голове..."
 #define QUEEN_MOTHER_ANNOUNCE "Экстрасенсорная директива Королевы-Матери"
 #define XENO_GENERAL_ANNOUNCE "Вы чувствуете нечто необычное..." //general xeno announcement that don't involve Queen, for nuke for example
-#define YAUTJA_ANNOUNCE "Вы получаете сообщение от ИИ вашего корабля..." //preds announcement
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
 
 // SS220 ADD START - TTS
 #define TTS_DEFAULT_ANNOUNCER new /datum/announcer
 #define TTS_ARES_ANNOUNCER new /datum/announcer/ares
-#define TTS_YAUTJA_ANNOUNCER new /datum/announcer/yautja
 #define TTS_QUEEN_MOTHER_ANNOUNCER new /datum/announcer/queen_mother
 // SS220 ADD END - TTS
 
@@ -87,18 +85,6 @@
 		message += "<br><br><i> Авторизация, <br> [signature]</i>"
 
 	announcement_helper(message, title, targets, sound_to_play, announcer = TTS_ARES_ANNOUNCER) // SS220 EDIT - TTS
-
-//yautja ship AI announcement
-/proc/yautja_announcement(message, title = YAUTJA_ANNOUNCE, sound_to_play = sound('sound/misc/notice1.ogg'))
-	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/M in targets)
-		if(isobserver(M)) //observers see everything
-			continue
-		var/mob/living/carbon/human/H = M
-		if(!isyautja(H) || H.stat != CONSCIOUS)
-			targets.Remove(H)
-
-	announcement_helper(message, title, targets, sound_to_play, announcer = TTS_YAUTJA_ANNOUNCER) // SS220 EDIT - TTS
 
 //AI announcement that uses talking into comms
 /proc/ai_announcement(message, sound_to_play = sound('sound/misc/interference.ogg'), logging = ARES_LOG_MAIN)

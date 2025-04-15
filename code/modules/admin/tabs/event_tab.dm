@@ -719,18 +719,16 @@
 	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
-	set name = "Report: Yautja AI"
+	set name = "Report: Yautja Overseer"
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
+	var/input = tgui_input_text(usr, "Это сообщение от Древнего Смотрителя Яутжа. Они не ИИ, но они стали свидетелями всего, что произошло в этом раунде глазами всех хищников, как живых, так и мертвых. Это сообщение появится на экранах всех живых мобов-хищников. Перед отправкой проверьте онлайн персонала.", "Что скажет древний?") // SS220 EDIT - TRANSLATE
 	if(!input)
 		return FALSE
-	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
-	message_admins("[key_name_admin(src)] has created a predator ship AI report")
-	log_admin("[key_name_admin(src)] predator ship AI report: [input]")
+	elder_overseer_message(input, elder_user = "[key_name(src)]")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "Narrate to Everyone"
@@ -920,12 +918,15 @@
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H.mob_flags & MUTINEER)
-			H.mob_flags &= ~MUTINEER
-			H.hud_set_squad()
+		if(H.mob_flags & MUTINY_MUTINEER)
+			H.mob_flags &= ~MUTINY_MUTINEER
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
 				A.remove_from(H)
+
+		H.mob_flags &= ~MUTINY_LOYALIST
+		H.mob_flags &= ~MUTINY_NONCOMBAT
+		H.hud_set_squad()
 
 /client/proc/cmd_fun_fire_ob()
 	set category = "Admin.Fun"

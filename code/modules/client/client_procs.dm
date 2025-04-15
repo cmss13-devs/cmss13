@@ -58,6 +58,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_crit_type,
 	/client/proc/set_flashing_lights_pref,
 	/client/proc/toggle_shout_orders, // BANDAMARINES ADD
+	/client/proc/toggle_leadership_spoken_orders,
 ))
 
 /client/proc/reduce_minute_count()

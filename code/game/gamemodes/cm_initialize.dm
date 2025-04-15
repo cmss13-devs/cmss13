@@ -266,6 +266,9 @@ Additional game mode variables.
 
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
+	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
+
 	return new_predator
 
 //===================================================\\
@@ -732,8 +735,6 @@ Additional game mode variables.
 		var/obj/effect/alien/resin/special/eggmorph/morpher = facehugger_choice
 		morpher.join_as_facehugger_from_this(xeno_candidate)
 
-	msg_admin_niche("[xeno_candidate.key] has joined as a facehugger.")
-
 	return TRUE
 
 /datum/game_mode/proc/attempt_to_join_as_lesser_drone(mob/xeno_candidate)
@@ -790,8 +791,6 @@ Additional game mode variables.
 	var/obj/effect/alien/resin/special/pylon/selected_structure = selection_list_structure[selection_list.Find(prompt)]
 
 	selected_structure.spawn_lesser_drone(xeno_candidate)
-
-	msg_admin_niche("[xeno_candidate.key] has joined as a lesser drone.")
 
 	return TRUE
 

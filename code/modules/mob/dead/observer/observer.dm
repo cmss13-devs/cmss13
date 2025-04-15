@@ -861,7 +861,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(src, "<span style='color: blue;'>Gas type: [env_gas]</span>")
 	to_chat(src, "<span style='color: blue;'>Temperature: [round(env_temperature-T0C,0.1)]&deg;C</span>")
 
-
 /mob/dead/observer/verb/toggle_zoom()
 	set name = "Toggle Zoom"
 	set category = "Ghost.Settings"

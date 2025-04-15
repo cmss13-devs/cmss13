@@ -45,13 +45,13 @@
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human),WEAR_WAIST)
 
 /datum/equipment_preset/us_army/proc/spawn_random_headgear(mob/living/carbon/human/new_human)
-	var/i = rand(1,5)
+	var/i = rand(1,4)
 	switch(i)
 		if (1)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(new_human), WEAR_HEAD)
 		if (2)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/black/army(new_human), WEAR_HEAD)
-		if (3 , 5)
+		if (3 , 4)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/army(new_human), WEAR_HEAD)
 
 

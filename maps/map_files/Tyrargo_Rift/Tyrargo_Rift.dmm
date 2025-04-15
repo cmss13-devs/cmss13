@@ -747,7 +747,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/indoors/engineering/ground)
 "acG" = (
-/obj/item/ammo_magazine/pistol/vp78,
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "acH" = (
@@ -1144,12 +1144,6 @@
 /obj/structure/platform_decoration/stone/kutjevo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central)
-"adH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/interior/wood/alt,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "adI" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
@@ -2147,14 +2141,17 @@
 "agn" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "ago" = (
@@ -6712,7 +6709,8 @@
 "arL" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
@@ -15493,18 +15491,21 @@
 "aNC" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
 /turf/open/floor/almayer/black/west,
 /area/tyrargo/underground/bunker/south)
 "aND" = (
@@ -16177,6 +16178,7 @@
 	dir = 8;
 	pixel_x = -9
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOX" = (
@@ -16282,12 +16284,19 @@
 	},
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPh" = (
@@ -16358,7 +16367,6 @@
 /obj/item/prop/colony/usedbandage{
 	dir = 5
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPn" = (
@@ -16383,7 +16391,6 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPq" = (
@@ -16529,7 +16536,6 @@
 	pixel_x = 5;
 	pixel_y = 15
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPD" = (
@@ -16937,29 +16943,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
-"aQt" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -6
-	},
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
-/obj/structure/closet/crate/ammo{
-	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
-	pixel_x = -2;
-	pixel_y = 11
-	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
-/turf/open/floor/interior/wood,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "aQu" = (
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
@@ -17021,6 +17004,7 @@
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQA" = (
 /obj/item/trash/uscm_mre,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQB" = (
@@ -17079,7 +17063,6 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQH" = (
@@ -27276,20 +27259,23 @@
 "bkL" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkM" = (
@@ -28688,6 +28674,7 @@
 /obj/structure/largecrate/random{
 	layer = 3.1
 	},
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnn" = (
@@ -28697,14 +28684,17 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bno" = (
@@ -28911,9 +28901,8 @@
 	dir = 8
 	},
 /obj/effect/landmark/objective_landmark/medium,
-/obj/effect/landmark/objective_landmark/medium,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnH" = (
@@ -30829,12 +30818,17 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bro" = (
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
 /obj/structure/closet/crate/ammo{
-	pixel_y = -1
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "brp" = (
@@ -40812,7 +40806,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/item/ammo_magazine/pistol/vp78,
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/north)
 "bPF" = (
@@ -43652,15 +43646,20 @@
 "bXw" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /obj/effect/landmark/objective_landmark/far,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXx" = (
@@ -43998,14 +43997,19 @@
 "bYr" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bYs" = (
@@ -44167,8 +44171,9 @@
 	name = "dirt"
 	},
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bYT" = (
@@ -45107,14 +45112,19 @@
 "cbL" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/north)
 "cbM" = (
@@ -45921,7 +45931,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
-/obj/item/ammo_magazine/smg/m39,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "cdW" = (
@@ -49109,15 +49119,18 @@
 "cpE" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/pistol/vp78,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/north)
 "cpF" = (
@@ -50372,16 +50385,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
-"cug" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	pixel_y = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/interior/wood,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "cuh" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -51118,16 +51121,6 @@
 "cwQ" = (
 /turf/open/floor/prison/green/southeast,
 /area/tyrargo/indoors/admin/ground)
-"cwR" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/interior/wood,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "cwS" = (
 /obj/structure/flora/tree/dead/tree_4{
 	layer = 4.8
@@ -51190,13 +51183,21 @@
 "cxb" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "cxc" = (
@@ -51499,14 +51500,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/colony_exterior/north_east)
-"cyc" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -6
-	},
-/obj/effect/landmark/survivor_spawner,
-/turf/open/floor/interior/wood/alt,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "cyd" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
 	dir = 10
@@ -59338,7 +59331,8 @@
 "cXu" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
 /obj/item/ammo_magazine/rifle/lmg/holo_target,
 /turf/open/auto_turf/strata_grass,
@@ -61293,14 +61287,19 @@
 "dcU" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "dcV" = (
@@ -61311,19 +61310,23 @@
 "dcW" = (
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dcX" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_magazine/smg/m39,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dcY" = (
@@ -63974,13 +63977,50 @@
 "dkj" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_magazine/pistol/vp78,
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "dkk" = (
-/obj/item/ammo_magazine/pistol/vp78,
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/tyrargo/indoors/engineering/upper/external)
+"dkl" = (
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
+"dkm" = (
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"dkn" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
+"dko" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/fsb_north)
+"dkp" = (
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/closet/crate/ammo{
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "dkH" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -65618,12 +65658,17 @@
 	pixel_y = 4;
 	layer = 4
 	},
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
 /obj/structure/closet/crate/ammo{
-	pixel_y = -1
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
 "gAB" = (
@@ -65888,18 +65933,17 @@
 	},
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
-	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
 	},
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/rifle/m4ra,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
-/obj/item/ammo_magazine/smg/m39,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "gUQ" = (
@@ -73004,7 +73048,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/item/ammo_magazine/smg/m39,
+/obj/effect/landmark/ammo_spawn/smg_ammo,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "uJL" = (
@@ -75125,7 +75169,7 @@
 	icon_state = "trash_15";
 	pixel_y = 14
 	},
-/obj/item/ammo_magazine/pistol/vp78,
+/obj/effect/landmark/ammo_spawn/vp78_ammo,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "ygk" = (
@@ -130609,7 +130653,7 @@ bnU
 bnM
 bDe
 bCV
-bxr
+dkl
 bBM
 bnm
 bnk
@@ -135278,7 +135322,7 @@ bBE
 bBE
 aQl
 aQc
-cwR
+bMk
 bOr
 bMk
 bMl
@@ -135457,7 +135501,7 @@ aKI
 bBE
 bBE
 bLH
-bLQ
+dkp
 aQn
 bLS
 bMr
@@ -135644,7 +135688,7 @@ aQo
 adC
 bMr
 bME
-bME
+dko
 bME
 bME
 bNk
@@ -135821,7 +135865,7 @@ aQV
 aQO
 aQG
 aQx
-aQt
+aJE
 bMr
 bMr
 bOz
@@ -136180,7 +136224,7 @@ bPG
 byQ
 bzi
 aQZ
-adH
+aQs
 aQW
 aKH
 aQH
@@ -136562,9 +136606,9 @@ bNa
 bNn
 bNc
 bME
-bMF
+cvE
 bMr
-cug
+bMj
 bLV
 bLF
 bBD
@@ -136910,7 +136954,7 @@ bIq
 bzi
 aKG
 bNe
-cyc
+mpl
 bOz
 bME
 bOY
@@ -137276,7 +137320,7 @@ bzi
 bMT
 bLV
 bMr
-bMr
+dkn
 bOS
 aQp
 bcJ
@@ -138552,7 +138596,7 @@ aQT
 aQJ
 bLS
 bMr
-bME
+dko
 aQh
 bNH
 bNa
@@ -138739,7 +138783,7 @@ bMF
 bME
 bNc
 bME
-bMr
+dkn
 aJQ
 bLt
 bLS
@@ -149310,7 +149354,7 @@ bta
 bta
 aEx
 kFO
-cqG
+dkm
 cqd
 adX
 tvN

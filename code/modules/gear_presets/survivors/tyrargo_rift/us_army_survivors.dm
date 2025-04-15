@@ -8,7 +8,7 @@
 	rank = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_EXTRA
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -38,8 +38,6 @@
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium/rto/army(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/army(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/marine(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical(new_human), WEAR_IN_JACKET)
@@ -48,6 +46,46 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/army(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/fake/orange(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
+
+/datum/equipment_preset/survivor/army/proc/spawn_pouch(mob/living/carbon/human/new_human)
+	var/i = rand(1,10)
+	switch(i)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/alternate(new_human), WEAR_L_STORE)
+		if (2 , 3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tricord(new_human), WEAR_IN_L_STORE)
+		if (4)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/ointment(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/kelotane(new_human), WEAR_IN_L_STORE)
+		if (5 , 6)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tramadol(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(new_human), WEAR_IN_L_STORE)
+		if (7 , 8)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/ointment(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/kelotane(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency(new_human), WEAR_IN_L_STORE)
+		if (9 , 10)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tricord(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/tramadol(new_human), WEAR_IN_L_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(new_human), WEAR_IN_L_STORE)
 
 /datum/equipment_preset/survivor/army/add_survivor_weapon_security(mob/living/carbon/human/new_human)
 	return
@@ -138,6 +176,7 @@
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
+	spawn_pouch(new_human)
 
 ///*****************************//
 
@@ -155,6 +194,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/army/engi(new_human), WEAR_HEAD)
 	add_army_weapon(new_human)
+	spawn_pouch(new_human)
 
 /datum/equipment_preset/survivor/army/medic
 	name = "Survivor - US Army Combat Medical Technician"
@@ -174,6 +214,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
 	add_army_weapon(new_human)
+	spawn_pouch(new_human)
 
 /datum/equipment_preset/survivor/army/marksman
 	name = "Survivor - US Army Marksman"
@@ -186,10 +227,11 @@
 /datum/equipment_preset/survivor/army/marksman/load_gear(mob/living/carbon/human/new_human)
 	..()
 	add_army_weapon_pistol(new_human)
+	spawn_pouch(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/black/army(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m4ra_custom(new_human), WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/custom(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/extended(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m4ra/extended(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/army/gunner
@@ -210,6 +252,7 @@
 	new_human.equip_to_slot(new /obj/item/smartgun_battery(new_human), WEAR_IN_BACK)
 	spawn_random_headgear(new_human)
 	add_army_weapon(new_human)
+	spawn_pouch(new_human)
 
 /datum/equipment_preset/survivor/army/sl
 	name = "Survivor - US Army Squad Leader"
@@ -225,6 +268,7 @@
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
+	spawn_pouch(new_human)
 
 ///*****************************//
 /// Army Commander ///
@@ -250,6 +294,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/tequila(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/black/army(new_human), WEAR_HEAD)
+	spawn_pouch(new_human)
 
 ///*****************************//
 /// Army Synthetic ///

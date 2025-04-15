@@ -747,6 +747,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/indoors/engineering/ground)
 "acG" = (
+/obj/item/ammo_magazine/pistol/vp78,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "acH" = (
@@ -2071,7 +2072,6 @@
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
 	},
-/obj/item/ammo_magazine/smartgun,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "agh" = (
@@ -14256,6 +14256,7 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
+/obj/item/ammo_magazine/pistol/vp78,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aKu" = (
@@ -28911,6 +28912,8 @@
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnH" = (
@@ -40809,6 +40812,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/pistol/vp78,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/north)
 "bPF" = (
@@ -44163,7 +44167,8 @@
 	name = "dirt"
 	},
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/m56d,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bYT" = (
@@ -45916,6 +45921,7 @@
 /obj/structure/barricade/deployable{
 	dir = 4
 	},
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "cdW" = (
@@ -49100,6 +49106,20 @@
 /obj/structure/stairs,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/apartment/north_ground)
+"cpE" = (
+/obj/structure/closet/crate/ammo{
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use."
+	},
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/pistol/vp78,
+/turf/open/floor/corsat/squares,
+/area/tyrargo/underground/bunker/north)
 "cpF" = (
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
@@ -50954,9 +50974,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
-	},
-/obj/item/weapon/gun/rifle/m41aMK1{
-	pixel_y = -9
 	},
 /obj/item/weapon/gun/rifle/m41aMK1{
 	pixel_y = 5
@@ -61306,6 +61323,7 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dcX" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dcY" = (
@@ -63953,6 +63971,16 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open_space,
 /area/tyrargo/landing_zone_1)
+"dkj" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/pistol/vp78,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/apartment/north_upper)
+"dkk" = (
+/obj/item/ammo_magazine/pistol/vp78,
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/tyrargo/indoors/engineering/upper/external)
 "dkH" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -65868,6 +65896,10 @@
 /obj/item/ammo_magazine/rifle,
 /obj/item/ammo_magazine/rifle/m4ra,
 /obj/item/ammo_magazine/rifle/m4ra,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "gUQ" = (
@@ -72256,10 +72288,6 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/item/ammo_magazine/rifle/m41aMK1{
-	pixel_x = -8;
-	pixel_y = 11
-	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "twg" = (
@@ -72976,6 +73004,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
+/obj/item/ammo_magazine/smg/m39,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "uJL" = (
@@ -75096,6 +75125,7 @@
 	icon_state = "trash_15";
 	pixel_y = 14
 	},
+/obj/item/ammo_magazine/pistol/vp78,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/north_ground)
 "ygk" = (
@@ -88470,7 +88500,7 @@ cdT
 cdJ
 cbo
 cdA
-cbL
+cpE
 caM
 cdm
 cbs
@@ -187145,7 +187175,7 @@ cVs
 cVA
 cFh
 cFe
-cEX
+dkk
 asP
 asP
 cBz
@@ -191699,7 +191729,7 @@ cUW
 cDR
 oDA
 vXn
-eTG
+dkj
 gUQ
 cDy
 cDy

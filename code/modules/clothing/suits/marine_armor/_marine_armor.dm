@@ -281,9 +281,13 @@
 	specialty = "M4 pattern marine"
 
 /obj/item/clothing/suit/storage/marine/medium/rto/army
-	icon_state = "army_armor"
 	name = "\improper Personal Body Armor System"
 	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
+	icon_state = "army_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+	)
 	specialty = "Personal Body Armor System"
 	storage_slots = 3
 	flags_atom = NO_GAMEMODE_SKIN

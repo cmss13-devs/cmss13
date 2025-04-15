@@ -933,6 +933,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "army_helmet"
 	item_state = "army_helmet"
 	specialty = "Personal body armor system"
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/rto/army/engi
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)

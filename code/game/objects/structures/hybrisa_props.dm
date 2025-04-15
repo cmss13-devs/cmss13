@@ -1338,7 +1338,7 @@
 	icon_state = "pictureframe"
 
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
-	name = "Weyland-Yutani 'Ape-Suit' showcase"
+	name = "Weyland-Yutani 'M5X Apesuit' showcase"
 	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."
 	icon_state = "dogcatchersuitempty1"
 

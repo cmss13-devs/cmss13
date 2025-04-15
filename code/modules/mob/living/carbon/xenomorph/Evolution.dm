@@ -28,6 +28,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
 		castes_available |= XENO_CASTE_QUEEN
 
+	// Allow drones to evo into any T2 before first drop
+	if(caste_type == XENO_CASTE_DRONE && !SSobjectives.first_drop_complete)
+		castes_available = caste.early_evolves_to.Copy()
+
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste

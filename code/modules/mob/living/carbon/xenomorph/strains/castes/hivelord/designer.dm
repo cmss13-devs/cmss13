@@ -561,7 +561,6 @@
 				to_chat(src, SPAN_WARNING("[target] is blocking the resin!"))
 				return FALSE
 	if(current_turf.density || has_obstacle || locate(/obj/effect/alien/resin/design) in current_turf)
-		to_chat(src, SPAN_WARNING("There's something built here already."))
 		return FALSE
 	return TRUE
 

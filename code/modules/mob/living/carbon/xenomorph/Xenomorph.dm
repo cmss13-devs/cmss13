@@ -309,6 +309,7 @@
 	var/list/available_design = list()
 	var/list/current_design = list()
 	var/max_design_nodes = 0
+	var/selected_design_mark
 
 	var/icon_xeno
 	var/icon_xenonid
@@ -584,6 +585,7 @@
 
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
+	hud_set_design_marks()
 
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
@@ -809,6 +811,7 @@
 	hud_set_plasma()
 	hud_set_pheromone()
 	hud_set_marks()
+	hud_set_design_marks()
 
 
 	//and display them

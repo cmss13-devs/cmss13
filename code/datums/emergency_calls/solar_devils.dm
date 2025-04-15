@@ -3,7 +3,6 @@
 	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
 	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
 	home_base = /datum/lazy_template/ert/solar_devils_station
-	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_solar_devils
 	probability = 0
 	mob_min = 3
@@ -48,7 +47,6 @@
 	arrival_message = "This is the Solar Devils of the USCM 2nd Division, responding to your distress beacon. Don't worry, the grown-ups are here to clean up your mess."
 	objectives = "Assist local Marine forces in dealing with whatever issue they can't handle. Further orders may be forthcoming."
 	home_base = /datum/lazy_template/ert/solar_devils_station
-	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_solar_devils
 	probability = 10
 	mob_min = 3

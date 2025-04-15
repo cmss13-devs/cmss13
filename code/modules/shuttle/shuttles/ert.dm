@@ -195,31 +195,6 @@
 	if(!starboard_door)
 		WARNING("No starboard door found for [src]")
 
-// ERT Shuttle 5
-
-/obj/docking_port/mobile/emergency_response/ert5
-	name = "Midway (Distress)"
-	id = MOBILE_SHUTTLE_ID_ERT5
-	width = 9
-	height = 16
-	preferred_direction = SOUTH
-	port_direction = NORTH
-	var/port_door
-
-/obj/docking_port/mobile/emergency_response/ert5/Initialize(mapload)
-	. = ..()
-	external_doors = list()
-	for(var/place in shuttle_areas)
-		for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds5/air in place)
-			if(air.id == "port_door")
-				air.breakable = FALSE
-				air.explo_proof = TRUE
-				air.unacidable = TRUE
-				external_doors += list(air)
-				port_door = air
-	if(!port_door)
-		WARNING("No port door found for [src]")
-
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
 	width  = 9
@@ -406,9 +381,6 @@
 	name = "TWE Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
 
-/datum/map_template/shuttle/ert5
-	name = "Midway (distress)"
-	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"

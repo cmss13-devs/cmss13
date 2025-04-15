@@ -725,7 +725,7 @@
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = tgui_input_text(usr, "This is a message from the Yautja Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
+	var/input = tgui_input_text(usr, "Это сообщение от Древнего Смотрителя Яутжа. Они не ИИ, но они стали свидетелями всего, что произошло в этом раунде глазами всех хищников, как живых, так и мертвых. Это сообщение появится на экранах всех живых мобов-хищников. Перед отправкой проверьте онлайн персонала.", "Что скажет древний?") // SS220 EDIT - TRANSLATE
 	if(!input)
 		return FALSE
 	elder_overseer_message(input, elder_user = "[key_name(src)]")

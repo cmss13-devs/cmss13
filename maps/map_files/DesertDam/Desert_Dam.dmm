@@ -263,7 +263,7 @@
 "abd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abe" = (
@@ -886,15 +886,39 @@
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/exterior/valley/valley_hydro)
+"adH" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfpods"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"adJ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"adL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
+"adM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
@@ -21579,7 +21603,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYy" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -21693,7 +21717,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYY" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /obj/item/trash/raisins,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -43024,7 +43048,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "iqs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "iqv" = (
@@ -54951,7 +54975,7 @@ bht
 bht
 bht
 bht
-afc
+adM
 afc
 dTs
 dTs
@@ -55558,7 +55582,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+adL
 cDY
 cDY
 cDY
@@ -77962,7 +77986,7 @@ clE
 dTs
 dTs
 dTs
-dTs
+adH
 dTs
 dTs
 dTs
@@ -94408,7 +94432,7 @@ dBr
 dBr
 dBr
 dBr
-dBr
+adJ
 eaQ
 dZn
 dHE

@@ -5,30 +5,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/other/mutineer
-	name = "Mutineer"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/mutineer/load_status(mob/living/carbon/human/new_human)
-	. = ..()
-	new_human.mob_flags |= MUTINEER
-	new_human.hud_set_squad()
-
-	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
-	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
-
-/datum/equipment_preset/other/mutineer/leader
-	name = "Mutineer Leader"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/mutineer/leader/load_status(mob/living/carbon/human/new_human)
-	for(var/datum/action/human_action/activable/mutineer/A in new_human.actions)
-		A.remove_from(new_human)
-
-	var/list/abilities = subtypesof(/datum/action/human_action/activable/mutineer)
-	for(var/type in abilities)
-		give_action(new_human, type)
-
 /datum/equipment_preset/other/freelancer
 	name = "Freelancer"
 
@@ -71,7 +47,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/freelancer_patch, WEAR_ACCESSORY)
 	spawn_merc_helmet(new_human)
 	//storage and specific stuff, they all get an ERT medpouch.
@@ -152,7 +128,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/freelancer_patch, WEAR_ACCESSORY)
 	spawn_merc_helmet(new_human)
 
@@ -250,7 +226,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/pmc, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	spawn_merc_helmet(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
@@ -1008,7 +984,7 @@
 /datum/equipment_preset/tutorial/fed
 	name = "Tutorial (Fed)"
 	underfed = FALSE
-
+	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/uscm/tutorial_rifleman
 	name = "Tutorial Rifleman"
@@ -1020,6 +996,15 @@
 	skills = /datum/skills/pfc/crafty
 	minimap_icon = "private"
 
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm/tutorial_rifleman/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "[random_name(new_human.gender)]"
+	new_human.change_real_name(new_human, mob_name)
+	var/datum/preferences/preferences = new
+	preferences.randomize_appearance(new_human)
+
 /datum/equipment_preset/uscm/tutorial_rifleman/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(new_human), WEAR_HEAD)
@@ -1028,3 +1013,20 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 
+/datum/equipment_preset/uscm/tutorial_rifleman/mrdummy
+	name = "Tutorial Rifleman (Dummy)"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm/tutorial_rifleman/mrdummy/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.change_real_name(new_human, "Dummy")
+
+/datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc
+	name = "Chief Medical Officer (NPC)"
+	uses_special_name = TRUE
+
+/datum/equipment_preset/uscm_ship/uscm_medical/cmo/npc/load_name(mob/living/carbon/human/new_human, randomise)
+	new_human.gender = pick(MALE, FEMALE)
+	var/mob_name = "[random_name(new_human.gender)]"
+	new_human.change_real_name(new_human, mob_name)
+	var/datum/preferences/preferences = new
+	preferences.randomize_appearance(new_human)

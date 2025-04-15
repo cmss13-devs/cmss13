@@ -1,9 +1,8 @@
-import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
-import { BooleanLike } from 'common/react';
+import { hexToHsva, type HsvaColor, hsvaToHex } from 'common/color';
+import type { BooleanLike } from 'common/react';
 import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -16,8 +15,9 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { ColorSelector } from './ColorPickerModal';
 import { HairPickerElement } from './HairPicker';
 

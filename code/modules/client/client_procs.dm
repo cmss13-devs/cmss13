@@ -57,6 +57,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_flash_type,
 	/client/proc/set_crit_type,
 	/client/proc/set_flashing_lights_pref,
+	/client/proc/toggle_leadership_spoken_orders,
 ))
 
 /client/proc/reduce_minute_count()
@@ -418,8 +419,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI.show_player_event_info(src)
 
 	connection_time = world.time
+
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
 	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
+
+	acquire_dpi()
 
 	send_assets()
 
@@ -541,6 +545,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
+
+/client/proc/acquire_dpi()
+	set waitfor = FALSE
+
+	// Remove with 516
+	if(byond_version < 516)
+		return
+
+	window_scaling = text2num(winget(src, null, "dpi"))
 
 /proc/setup_player_entity(ckey)
 	if(!ckey)
@@ -942,7 +955,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
 
+GLOBAL_VAR(ooc_rank_dmi)
+GLOBAL_LIST_INIT(ooc_rank_iconstates, setup_ooc_rank_icons())
 GLOBAL_LIST_INIT(community_awards, get_community_awards())
+
+/proc/setup_ooc_rank_icons()
+	var/ooc_dmi_path = "config/ooc.dmi"
+	if(!fexists(ooc_dmi_path))
+		return list()
+	GLOB.ooc_rank_dmi = icon(file(ooc_dmi_path))
+	return icon_states(GLOB.ooc_rank_dmi)
 
 /proc/get_community_awards()
 	var/list/awards_file = file2list("config/community_awards.txt")
@@ -978,5 +1000,5 @@ GLOBAL_LIST_INIT(community_awards, get_community_awards())
 	if(GLOB.community_awards[ckey])
 		var/full_prefix = ""
 		for(var/award in GLOB.community_awards[ckey])
-			full_prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, award)]"
+			full_prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, award)]"
 		return full_prefix

@@ -193,7 +193,7 @@
 	dat += "<A href='byond://?src=\ref[src];[HrefToken()];add_player_info_confidential=[key]'>Add Confidential Note</A><br>"
 	dat += "<A href='byond://?src=\ref[src];[HrefToken()];player_notes_all=[key]'>Show Complete Record</A><br>"
 
-	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", "size=480x480")
+	show_browser(usr, dat, "Admin record for [key]", "adminplayerinfo", width = 480, height = 480)
 
 /datum/admins/proc/check_ckey(target_key as text)
 	set name = "Check CKey"
@@ -351,11 +351,11 @@
 
 	var/list/subtle_message_options = list(SUBTLE_MESSAGE_IN_HEAD, SUBTLE_MESSAGE_WEYLAND, SUBTLE_MESSAGE_USCM, SUBTLE_MESSAGE_FACTION)
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
+	if(!message_option)
+		return
 
 	if(message_option == SUBTLE_MESSAGE_FACTION)
 		var/faction = input("Choose which faction", "") as text|null
-		if(!faction)
-			return
 		message_option = faction
 
 	var/input = input("Contents of the message", text("Subtle PM to In View")) as text|null

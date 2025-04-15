@@ -475,7 +475,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
 		data["ssd"] = "Subject has taken extreme amounts of brain damage."
-	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob))
+	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob) && !(target_mob.status_flags & FAKESOUL))
 		if(!target_mob.key)
 			data["ssd"] = "No soul detected." // they ghosted
 		else if(!target_mob.client)
@@ -755,7 +755,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		dat = replacetext(dat, "class='scannerb'", "style='font-weight: bold;' class='[INTERFACE_RED]'")
 		dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
 		dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
-		show_browser(user, dat, name, "handscanner", "size=500x400")
+		show_browser(user, dat, name, "handscanner", width = 500, height = 400)
 	else
 		user.show_message(dat, 1)
 

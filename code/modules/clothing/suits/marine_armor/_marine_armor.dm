@@ -281,11 +281,10 @@
 	specialty = "M4 pattern marine"
 
 /obj/item/clothing/suit/storage/marine/medium/rto/army
-	name = "\improper M4 pattern trooper armor"
-	desc = "Whilst it saw limited field-testing amongst the USCMC, the US Army adopted the M4 series pattern armor across the board. Surprisingly uncomfortable, even compared to the old M3 series armor."
-	specialty = "M4 pattern trooper"
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	icon_state = "army_armor"
+	name = "\improper Personal Body Armor System"
+	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
+	specialty = "Personal Body Armor System"
 	storage_slots = 3
 
 /obj/item/clothing/suit/storage/marine/MP

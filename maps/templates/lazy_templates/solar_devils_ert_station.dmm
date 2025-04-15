@@ -183,10 +183,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/soalar_devils_station)
-"ar" = (
-/obj/docking_port/stationary/emergency_response/Garrow_port,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "as" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -787,8 +783,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
 "cs" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
-/turf/open/floor/almayer/test_floor5,
+/obj/effect/decal/cleanable/cobweb,
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ct" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
@@ -3157,10 +3154,6 @@
 	pixel_x = 1;
 	icon_state = "screwdriver4"
 	},
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_y = 15;
-	pixel_x = -14
-	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "kY" = (
@@ -3653,6 +3646,10 @@
 	pixel_y = 2;
 	pixel_x = -2;
 	layer = 3.2
+	},
+/obj/item/stack/repairable/gunlube{
+	pixel_x = 7;
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/edge/smooth/west,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -8121,10 +8118,7 @@
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Ao" = (
-/obj/structure/bed/chair/dropship/passenger/folded{
-	pixel_y = 8;
-	buckling_y = 8
-	},
+/obj/structure/bed/chair/dropship/passenger,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Ap" = (
@@ -9365,7 +9359,9 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/decal/cleanable/cobweb2{
+	dir = 9
+	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Eh" = (
@@ -11415,6 +11411,10 @@
 	icon_state = "0-8";
 	layer = 2.36
 	},
+/obj/item/stack/repairable/gunlube{
+	pixel_x = 7;
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
 "KI" = (
@@ -12833,11 +12833,6 @@
 	pixel_y = 5;
 	pixel_x = 4;
 	randpixel = 0
-	},
-/obj/item/prop/helmetgarb/gunoil{
-	pixel_y = 23;
-	pixel_x = 9;
-	layer = 3.3
 	},
 /obj/item/storage/fancy/cigar/matchbook{
 	pixel_y = 8;
@@ -22467,7 +22462,7 @@ WN
 WN
 WN
 WN
-ar
+WN
 WN
 WN
 ha

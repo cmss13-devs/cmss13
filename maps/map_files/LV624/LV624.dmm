@@ -817,13 +817,11 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/fitness)
 "adq" = (
-/obj/item/reagent_container/food/drinks/cans/ale{
-	open = 1;
-	pixel_x = null;
-	pixel_y = 10
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_central_caves)
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
 "adr" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -844,12 +842,11 @@
 	},
 /area/lv624/lazarus/crashed_ship_containers)
 "adv" = (
-/obj/item/fishing_pole,
-/obj/structure/bed/chair/wood/wings{
-	dir = 8
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
 	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_central_caves)
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/south_west_jungle)
 "adw" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/gm/dirt,
@@ -862,14 +859,21 @@
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
 "adz" = (
-/obj/structure/prop/brazier/frame/full/campfire,
+/obj/item/reagent_container/food/drinks/cans/ale{
+	open = 1;
+	pixel_x = null;
+	pixel_y = 10
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "adA" = (
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
 "adB" = (
-/obj/item/device/flashlight/lantern,
+/obj/item/fishing_pole,
+/obj/structure/bed/chair/wood/wings{
+	dir = 8
+	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "adC" = (
@@ -909,7 +913,7 @@
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adG" = (
-/obj/structure/bed/chair/wood/wings,
+/obj/structure/prop/brazier/frame/full/campfire,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "adH" = (
@@ -935,25 +939,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
 "adK" = (
-/obj/item/stack/sheet/wood{
-	layer = 3.01;
-	pixel_y = -9
-	},
-/obj/item/reagent_container/food/drinks/cans/ale{
-	pixel_x = 8;
-	pixel_y = -4
-	},
-/obj/item/reagent_container/food/drinks/cans/ale{
-	pixel_y = -3;
-	pixel_x = -8
-	},
-/obj/item/reagent_container/food/drinks/cans/ale{
-	pixel_y = -2
-	},
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/obj/item/device/flashlight/lantern,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "adL" = (
-/obj/structure/surface/table/woodentable/poor,
+/obj/structure/bed/chair/wood/wings,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
 "adM" = (
@@ -971,8 +961,23 @@
 /turf/open/floor/vault2/west,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "adO" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+/obj/item/stack/sheet/wood{
+	layer = 3.01;
+	pixel_y = -9
+	},
+/obj/item/reagent_container/food/drinks/cans/ale{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/reagent_container/food/drinks/cans/ale{
+	pixel_y = -3;
+	pixel_x = -8
+	},
+/obj/item/reagent_container/food/drinks/cans/ale{
+	pixel_y = -2
+	},
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
+/area/lv624/ground/caves/north_central_caves)
 "adP" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -1007,10 +1012,11 @@
 /turf/open/floor/airless/asteroidfloor/northeast,
 /area/lv624/ground/barrens/north_east_barrens)
 "adV" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+/obj/structure/surface/table/woodentable/poor,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/north_central_caves)
 "adW" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "adX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -1034,8 +1040,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "aea" = (
-/obj/item/stack/rods,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeb" = (
 /obj/item/hunting_trap{
@@ -1061,20 +1066,18 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "aee" = (
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aef" = (
-/turf/closed/wall,
+/obj/item/stack/rods,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeg" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "aeh" = (
-/obj/structure/window_frame/colony,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aei" = (
 /obj/structure/surface/rack,
@@ -1112,25 +1115,18 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/containers)
 "aeo" = (
+/turf/closed/wall,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aep" = (
+/obj/structure/window_frame/colony,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aeq" = (
 /obj/structure/girder,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidplating,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"aep" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/airlock/almayer/engineering/colony{
-	density = 0;
-	dir = 1;
-	icon_state = "door_open";
-	name = "\improper Storage Dome";
-	req_access_txt = "100";
-	req_one_access = null
-	},
-/turf/open/floor/asteroidplating,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"aeq" = (
-/turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aer" = (
 /obj/structure/stairs/perspective{
@@ -1148,16 +1144,24 @@
 /turf/open/floor/warning/west,
 /area/lv624/ground/barrens/containers)
 "aeu" = (
-/obj/structure/barricade/sandbags/wired,
-/turf/open/gm/dirtgrassborder/south,
-/area/lv624/ground/caves/north_central_caves)
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	density = 0;
+	dir = 1;
+	icon_state = "door_open";
+	name = "\improper Storage Dome";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/asteroidplating,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aev" = (
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_west,
 /area/lv624/ground/caves/sand_temple)
 "aew" = (
-/obj/structure/barricade/sandbags/wired,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
-/area/lv624/ground/caves/north_central_caves)
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aex" = (
 /turf/open/floor/bot/north,
 /area/lv624/ground/barrens/containers)
@@ -1174,7 +1178,7 @@
 /area/lv624/ground/barrens/containers)
 "aeB" = (
 /obj/structure/barricade/sandbags/wired,
-/turf/open/gm/grass/grass1,
+/turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/north_central_caves)
 "aeC" = (
 /obj/structure/cargo_container/wy/right,
@@ -1194,7 +1198,7 @@
 /area/lv624/ground/barrens/containers)
 "aeG" = (
 /obj/structure/barricade/sandbags/wired,
-/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
 /area/lv624/ground/caves/north_central_caves)
 "aeH" = (
 /obj/structure/largecrate/random,
@@ -1202,31 +1206,28 @@
 /area/lv624/ground/barrens/containers)
 "aeI" = (
 /obj/structure/barricade/sandbags/wired,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/north_central_caves)
+"aeJ" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
+/area/lv624/ground/caves/north_central_caves)
+"aeK" = (
+/obj/structure/barricade/sandbags/wired,
 /obj/structure/barricade/sandbags/wired{
 	dir = 4
 	},
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/north_central_caves)
-"aeJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"aeK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidplating,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeL" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/circuitboard/airlock,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidplating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeN" = (
 /obj/effect/landmark/hunter_primary,
@@ -1240,10 +1241,7 @@
 "aeP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/tool,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
+/turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeQ" = (
 /obj/vehicle/train/cargo/engine,
@@ -1267,27 +1265,25 @@
 /area/lv624/ground/caves/south_east_caves)
 "aeU" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/airlock,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidplating,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aeV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/tool,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aeW" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/cable_coil,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"aeV" = (
-/obj/item/frame/light_fixture{
-	anchored = 1;
-	desc = "A broken fluorescent tube light.";
-	dir = 8;
-	icon_state = "tube-broken";
-	name = "broken light fixture"
-	},
-/turf/closed/wall,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"aeW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidplating,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aeX" = (
 /obj/structure/cargo_container/grant/left,
@@ -1298,6 +1294,26 @@
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "aeZ" = (
+/obj/item/frame/light_fixture{
+	anchored = 1;
+	desc = "A broken fluorescent tube light.";
+	dir = 8;
+	icon_state = "tube-broken";
+	name = "broken light fixture"
+	},
+/turf/closed/wall,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"afa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/engineer,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidplating,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"afb" = (
+/obj/structure/cargo_container/grant/right,
+/turf/open/floor,
+/area/lv624/ground/barrens/containers)
+"afc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/tool,
@@ -1305,32 +1321,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"afa" = (
-/obj/structure/prop/tower,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor,
-/area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"afb" = (
-/obj/structure/cargo_container/grant/right,
-/turf/open/floor,
-/area/lv624/ground/barrens/containers)
-"afc" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
 "afd" = (
 /obj/structure/fence,
 /turf/open/floor/warning/east,
 /area/lv624/ground/barrens/containers)
 "afe" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/closed/wall/strata_ice/jungle,
-/area/lv624/ground/jungle/south_west_jungle)
+/obj/structure/prop/tower,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "aff" = (
 /obj/structure/cargo_container/wy/left,
 /turf/open/floor,
@@ -26425,7 +26425,7 @@ aPf
 aKf
 aKf
 aVK
-afe
+adv
 aKb
 hUs
 hUs
@@ -41736,7 +41736,7 @@ aaw
 aaw
 aaw
 aaw
-aeu
+aeB
 aah
 aah
 aah
@@ -41964,7 +41964,7 @@ aaw
 aaw
 aaw
 aaw
-aew
+aeG
 aaT
 aah
 aah
@@ -42192,7 +42192,7 @@ aaw
 aaw
 aaw
 aaw
-aeB
+aeI
 aaH
 aah
 aah
@@ -42420,7 +42420,7 @@ abm
 aaw
 aaw
 aaw
-aeG
+aeJ
 aaV
 aah
 aah
@@ -42648,7 +42648,7 @@ abm
 abm
 aaw
 aaw
-aeu
+aeB
 aah
 aah
 aah
@@ -42876,7 +42876,7 @@ abm
 abm
 aaw
 aaw
-aeI
+aeK
 aah
 aah
 aah
@@ -43332,7 +43332,7 @@ aaw
 aaw
 abm
 abm
-aee
+aeh
 aaT
 aah
 aah
@@ -43560,8 +43560,8 @@ aaw
 aaw
 abm
 abm
-aeq
-adW
+aew
+aee
 aah
 aah
 aah
@@ -43788,9 +43788,9 @@ aaw
 aaw
 abm
 abm
-aeq
-aee
-adV
+aew
+aeh
+aea
 aah
 aah
 aaY
@@ -44013,13 +44013,13 @@ abm
 abm
 abm
 aaw
-aeK
-aeK
-aef
-aef
-aef
+aeP
+aeP
+aeo
+aeo
+aeo
+aee
 adW
-adO
 aah
 aaY
 abb
@@ -44241,14 +44241,14 @@ abm
 abm
 abm
 abm
+aeo
+afa
+aeV
+aeM
+aep
 aef
-aeW
-aeP
-aeJ
-aeh
-aea
-adO
-adO
+adW
+adW
 aaY
 abb
 abb
@@ -44469,14 +44469,14 @@ abm
 abm
 abm
 abm
-aef
-aeZ
-aeU
-aeK
 aeo
+afc
+aeW
+aeP
+aeq
+aee
 adW
-adO
-adO
+adW
 aaY
 abb
 abb
@@ -44697,14 +44697,14 @@ abm
 abm
 abm
 abm
-aef
-afa
-aeK
-aeM
-aep
+aeo
+afe
+aeP
+aeU
+aeu
+aee
 adW
-adO
-adO
+adW
 aaY
 abb
 abb
@@ -44925,13 +44925,13 @@ abm
 abm
 abm
 abm
-aef
-aef
-aeV
-aef
-aef
+aeo
+aeo
+aeZ
+aeo
+aeo
+aee
 adW
-adO
 aah
 aaY
 abb
@@ -45153,12 +45153,12 @@ abm
 abm
 abm
 abm
-aeq
-aeq
-aeq
-aeq
-aeq
-adW
+aew
+aew
+aew
+aew
+aew
+aee
 aah
 aah
 aaZ
@@ -45381,11 +45381,11 @@ abm
 abm
 abm
 abm
-aeq
-aeq
-aeq
-aeq
-aeq
+aew
+aew
+aew
+aew
+aew
 aaH
 aah
 aah
@@ -45609,9 +45609,9 @@ abm
 abm
 abm
 abm
-aeq
-aeq
-aeq
+aew
+aew
+aew
 aaw
 aaw
 aaH
@@ -45624,10 +45624,10 @@ abb
 abb
 abb
 aau
-adB
+adK
 aah
-adv
-adq
+adB
+adz
 aah
 aah
 aah
@@ -45837,7 +45837,7 @@ abm
 abm
 abm
 abm
-aeq
+aew
 aaw
 aaw
 aaw
@@ -45852,8 +45852,8 @@ abf
 abf
 abf
 aav
+adL
 adG
-adz
 aah
 aah
 aah
@@ -46079,8 +46079,8 @@ aah
 aah
 aah
 aah
-adL
-adK
+adV
+adO
 aaW
 aaW
 aaW
@@ -50603,7 +50603,7 @@ wpw
 wpw
 wpw
 lBw
-afc
+adq
 wpw
 ajY
 ifF

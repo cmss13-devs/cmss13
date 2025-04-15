@@ -197,6 +197,13 @@
 		if(lock_overridable)
 			. += "This lock can be overridden with command-level access."
 
+/obj/item/storage/backpack/Destroy()
+	for (var/obj/item/I in contents)
+		I.loc = get_turf(src)
+	contents.Cut()
+
+	return ..()
+
 /*
  * Backpack Types
  */

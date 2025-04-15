@@ -32,7 +32,7 @@
 	)
 	hivelord.selected_design = /obj/effect/alien/resin/design/speed_node
 	hivelord.selected_design_mark = /datum/design_mark/resin_wall
-	hivelord.max_design_nodes = 12
+	hivelord.max_design_nodes = 36
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
@@ -167,21 +167,7 @@
 	if(!choosenMark || !mark_meaning)
 		return
 
-	var/image/new_image = image(icon, src.loc, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
-	new_image.plane = ABOVE_HUD_PLANE
-
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	if(!hive)
-		return
-
-	for(var/mob/living/carbon/xenomorph/X in hive.totalXenos)
-		if(!X.client)
-			continue
-		X.client.images -= choosenMark
-		X.client.images += new_image
-		X.hud_set_design_marks()
-
-	choosenMark = new_image
+	choosenMark.icon_state = mark_meaning.icon_state
 
 /obj/effect/alien/resin/design/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -278,13 +264,14 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	// Create overlays for all nodes on list
 	for(var/obj/effect/alien/resin/design/node in xeno.current_design)
+		if(get_dist(xeno, node) > 7)
+			continue
+
 		var/turf/node_loc = get_turf(node.loc)
 		if(node_loc)
 			create_animation_overlay(node_loc, /obj/effect/resin_construct/fastweak)
 
-	// Wait 1 second, then replace the nodes
 	addtimer(CALLBACK(src, PROC_REF(replace_nodes)), 1 SECONDS)
 	apply_cooldown()
 	xeno_cooldown = initial(xeno_cooldown)
@@ -292,22 +279,28 @@
 
 /datum/action/xeno_action/activable/greater_resin_surge/proc/replace_nodes()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	for(var/obj/effect/alien/resin/design/node in xeno.current_design)
+	for(var/obj/effect/alien/resin/design/node in xeno.current_design.Copy()) // use Copy() to safely modify the list
+		if(get_dist(xeno, node) > 7)
+			continue
+
 		var/turf/node_loc = get_turf(node.loc)
 		if(!node_loc)
 			continue
+
 		var/obj/effect/alien/weeds/target_weeds = node_loc.weeds
 		if(target_weeds && target_weeds.hivenumber == xeno.hivenumber)
 			xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
-			SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
+				SPAN_XENONOTICE("We surge the resin, creating an unstable wall!"), null, 5)
+
 			node_loc.PlaceOnTop(/turf/closed/wall/resin/reflective/weak)
 			var/turf/closed/wall/resin/reflective/weak/good_wall = node_loc
 			if(good_wall)
 				good_wall.hivenumber = xeno.hivenumber
-				set_hive_data(good_wall, xeno.hivenumber) // Ensure proper hive linking
+				set_hive_data(good_wall, xeno.hivenumber)
 			playsound(node_loc, "alien_resin_build", 25)
+
 		qdel(node)
-	xeno.current_design.Cut()
+		xeno.current_design -= node
 
 /datum/action/xeno_action/activable/greater_resin_surge/proc/create_animation_overlay(turf/target_turf, animation_type)
 	if(!istype(target_turf, /turf)) // Ensure the target is a valid turf

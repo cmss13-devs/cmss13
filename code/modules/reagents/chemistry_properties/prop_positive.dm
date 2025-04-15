@@ -576,10 +576,10 @@
 		return
 	M.apply_internal_damage(0.5 * potency * delta_time, "heart")
 
-/datum/chem_property/positive/defibrillating/process_dead(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
+/datum/chem_property/positive/defibrillating/process_dead(mob/living/affected_mob, potency = 1, delta_time)
+	if(!ishuman(affected_mob))
 		return
-	var/mob/living/carbon/human/dead = M
+	var/mob/living/carbon/human/dead = affected_mob
 	var/revivable = dead.check_tod() && dead.is_revivable()
 	if(!revivable)
 		return
@@ -588,13 +588,13 @@
 		if(dead.health <= HEALTH_THRESHOLD_DEAD) //If the mob got damaged to below the threshold while the timer was ticking then we reset
 			deltimer(revivetimerid)
 			revivetimerid = null
-		return;
+		return
 
-	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
+	for(var/datum/reagent/electrogenetic_reagent in affected_mob.reagents.reagent_list)
 		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
 		if(property)
-			property.trigger(M)
-			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
+			property.trigger(affected_mob)
+			affected_mob.reagents.remove_reagent(electrogenetic_reagent.id, 1)
 			break
 	if(dead.health > HEALTH_THRESHOLD_DEAD)
 		revivetimerid = addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS, TIMER_STOPPABLE)

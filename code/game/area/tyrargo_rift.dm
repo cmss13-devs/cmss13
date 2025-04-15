@@ -53,6 +53,10 @@
 	requires_power = FALSE
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
 
+/area/tyrargo/landing_zone_1/no_tunnel
+	icon_state = "dk_yellow"
+	flags_area = AREA_NOTUNNEL
+
 /area/tyrargo/landing_zone_1/ceiling
 	ceiling = CEILING_METAL
 
@@ -93,6 +97,16 @@
 	name = "USASF Airbase Anderson - Road"
 	icon_state = "shuttle3"
 	minimap_color = MINIMAP_AREA_SHIP
+
+/area/tyrargo/landing_zone_2/strip
+	name = "USASF Airbase Anderson - Airstrip"
+	icon_state = "shuttle3"
+	minimap_color = MINIMAP_AREA_COMMS
+	flags_area = AREA_NOTUNNEL
+
+/area/tyrargo/landing_zone_2/no_tunnel
+	icon_state = "dk_yellow"
+	flags_area = AREA_NOTUNNEL
 
 /area/tyrargo/landing_zone_2/ceiling
 	ceiling = CEILING_METAL

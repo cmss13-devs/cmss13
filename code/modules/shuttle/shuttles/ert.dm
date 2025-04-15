@@ -357,13 +357,6 @@
 	id = ADMIN_LANDING_PAD_6
 	roundstart_template = /datum/map_template/shuttle/response_ert
 
-/obj/docking_port/stationary/emergency_response/Garrow_port
-	name = "Golden Arrow Landing Pad 1"
-	dir = NORTH
-	id = ADMIN_LANDING_PAD_7
-	width = 9
-	height = 16
-	roundstart_template = /datum/map_template/shuttle/ert5
 
 /datum/map_template/shuttle/response_ert
 	name = "Response Shuttle"

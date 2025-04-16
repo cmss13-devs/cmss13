@@ -202,7 +202,7 @@
 		I.loc = get_turf(src)
 	contents.Cut()
 
-	return ..()
+	. = ..()
 
 /*
  * Backpack Types

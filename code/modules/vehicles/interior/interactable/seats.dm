@@ -107,6 +107,9 @@
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 
 	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
@@ -233,6 +236,9 @@
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 	. = ..()
 
 	update_icon()

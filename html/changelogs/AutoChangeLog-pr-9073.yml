@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "UPP squad ammo vendors, and cargo vendors, will now be able to vend repair oil and repair kits."

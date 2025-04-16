@@ -7401,7 +7401,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/bed/roller,
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
-/obj/item/stack/medical/bruise_pack/two,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "atA" = (
@@ -10663,7 +10662,7 @@
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	pixel_y = 4
 	},
-/obj/item/stack/medical/bruise_pack/two,
+/obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/floor/prison/blue,
 /area/tyrargo/indoors/admin/ground)
 "aBH" = (
@@ -10941,7 +10940,7 @@
 /turf/open/floor/prison/green/west,
 /area/tyrargo/indoors/admin/ground)
 "aCu" = (
-/obj/item/stack/medical/bruise_pack/two,
+/obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "aCv" = (
@@ -15355,6 +15354,9 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/item/stack/medical/splint/random_amount{
+	pixel_y = -2
+	},
 /turf/open/floor/almayer/black,
 /area/tyrargo/underground/bunker/south)
 "aNq" = (
@@ -15792,6 +15794,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOh" = (
@@ -25161,6 +25164,7 @@
 /turf/open/floor/plating,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgc" = (
+/obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/floor/almayer/blue/north,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgd" = (
@@ -26637,6 +26641,9 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/generic,
+/obj/item/stack/medical/splint/random_amount{
+	pixel_y = -2
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
 "bjs" = (
@@ -28882,6 +28889,10 @@
 	dir = 4;
 	pixel_y = 11
 	},
+/obj/item/stack/medical/bruise_pack/random_amount{
+	pixel_x = 3;
+	pixel_y = 4
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnF" = (
@@ -28975,6 +28986,7 @@
 /obj/item/ammo_box/magazine/misc/mre/empty,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/item/stack/sheet/metal/med_small_stack,
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bnO" = (
@@ -29214,6 +29226,13 @@
 	layer = 5.78
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
+"boj" = (
+/obj/item/stack/medical/bruise_pack/random_amount{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bok" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -39188,6 +39207,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/stack/medical/ointment/random_amount{
+	pixel_x = 6;
+	pixel_y = 7
+	},
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/north_south)
 "bLf" = (
@@ -42473,6 +42496,10 @@
 "bTz" = (
 /turf/open/floor/almayer_hull,
 /area/tyrargo/landing_zone_2)
+"bTA" = (
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
 "bTB" = (
 /turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors/outskirts/central)
@@ -44544,6 +44571,10 @@
 	dir = 1;
 	pixel_x = 7;
 	pixel_y = -7
+	},
+/obj/item/stack/medical/ointment/random_amount{
+	pixel_x = 6;
+	pixel_y = 7
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -47736,6 +47767,7 @@
 	},
 /obj/structure/barricade/deployable,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ckl" = (
@@ -49328,6 +49360,7 @@
 /area/tyrargo/oob)
 "cqu" = (
 /obj/item/ammo_casing/bullet,
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cqv" = (
@@ -57448,6 +57481,11 @@
 "cSe" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts_road/central)
+"cSf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount,
+/turf/open/floor/interior/wood,
+/area/tyrargo/outdoors/outskirts/fsb_south)
 "cSg" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/east)
@@ -64216,6 +64254,76 @@
 /obj/structure/blocker/invisible_wall,
 /turf/closed/wall/wood,
 /area/tyrargo/landing_zone_1)
+"dkM" = (
+/obj/item/stack/medical/splint/random_amount{
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts_road/east)
+"dkN" = (
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/admin/ground)
+"dkO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/stack/medical/ointment/random_amount,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dkP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dkQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/stack/medical/bruise_pack/random_amount,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dkR" = (
+/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dkS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dkT" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/item/stack/medical/bruise_pack/random_amount{
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/fsb_north)
+"dkU" = (
+/obj/item/stack/medical/bruise_pack/random_amount{
+	pixel_x = 3;
+	pixel_y = -7
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/north_trench)
+"dkV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/stack/medical/bruise_pack/random_amount{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/indoors/apartment/north_upper)
+"dkW" = (
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount{
+	pixel_y = 6;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/tyrargo/indoors/admin/upper)
 "dll" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -66948,6 +67056,9 @@
 /area/tyrargo/indoors/apartment/north_ground)
 "iOu" = (
 /obj/item/ammo_casing/bullet,
+/obj/item/stack/medical/splint/random_amount{
+	pixel_y = -2
+	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "iOv" = (
@@ -67280,6 +67391,9 @@
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
+	},
+/obj/item/stack/medical/splint/random_amount{
+	pixel_y = -2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
@@ -69861,7 +69975,6 @@
 /area/tyrargo/outdoors/walkway_access/power_sewer)
 "oDA" = (
 /obj/item/storage/firstaid/adv/empty,
-/obj/item/stack/medical/bruise_pack,
 /obj/structure/surface/table/woodentable{
 	color = "#8B7B5B"
 	},
@@ -69885,6 +69998,10 @@
 	pixel_y = -9
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount{
+	pixel_y = 6;
+	pixel_x = 1
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "oFM" = (
@@ -70210,6 +70327,10 @@
 /obj/item/trash/cigbutt{
 	pixel_x = -1;
 	pixel_y = 17
+	},
+/obj/item/stack/medical/bruise_pack/random_amount{
+	pixel_x = 3;
+	pixel_y = 4
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/north_ground)
@@ -71125,6 +71246,7 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "qVq" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount,
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/tyrargo/indoors/apartment/north_ground)
 "qVt" = (
@@ -73786,6 +73908,7 @@
 	name = "spent casings";
 	dir = 6
 	},
+/obj/item/stack/medical/bruise_pack/random_amount,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "vBa" = (
@@ -73864,6 +73987,7 @@
 /area/tyrargo/outdoors/colony_exterior/south_west)
 "vDv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/apartment/north_ground)
 "vDS" = (
@@ -74255,6 +74379,7 @@
 	name = "Medical Cabinet";
 	pixel_y = -32
 	},
+/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
 "whx" = (
@@ -129843,7 +129968,7 @@ bSx
 bLx
 htK
 bRe
-bRd
+dkU
 brM
 bRx
 bQV
@@ -131022,7 +131147,7 @@ bxr
 bBM
 bnn
 bcc
-bxr
+boj
 bxW
 bmS
 bmS
@@ -136835,7 +136960,7 @@ bBg
 bNi
 bLo
 cXB
-bBg
+bTA
 bOq
 cXh
 bBh
@@ -136958,7 +137083,7 @@ aQX
 bOo
 bMr
 bME
-bOS
+dkT
 arV
 bNa
 aKr
@@ -136984,7 +137109,7 @@ bBn
 bBn
 bHe
 bqm
-diI
+dkM
 diI
 diI
 bBl
@@ -138812,7 +138937,7 @@ bmj
 aNN
 aNI
 bFP
-bFP
+cSf
 cQG
 aNA
 aNv
@@ -152626,7 +152751,7 @@ cnS
 cuF
 cus
 csR
-ctn
+dkN
 aAb
 azP
 csR
@@ -154069,7 +154194,7 @@ cvd
 cxD
 cvC
 csR
-cto
+dkS
 cto
 cto
 cto
@@ -154445,8 +154570,8 @@ aBw
 bbv
 aAY
 csR
-aAv
-aAv
+dkP
+dkO
 ctn
 ctl
 csR
@@ -156265,7 +156390,7 @@ aBA
 aBm
 ctp
 csR
-aAv
+dkQ
 aZW
 ctn
 ctn
@@ -156619,7 +156744,7 @@ cxt
 csR
 aCN
 aCF
-ctC
+dkR
 aNd
 aCl
 csR
@@ -191773,7 +191898,7 @@ cUW
 cUW
 cEn
 oJk
-cEb
+dkV
 bih
 eTG
 rAQ
@@ -199393,7 +199518,7 @@ cHA
 elH
 cGF
 cHi
-cGg
+dkW
 cFB
 cFB
 cGy

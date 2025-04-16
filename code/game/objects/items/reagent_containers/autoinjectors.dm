@@ -96,6 +96,25 @@
 	display_maptext = TRUE
 	maptext_label = "Tc"
 
+/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/tricord/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 4)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("tricordrazine", -45)
+			uses_left = 0
+			update_icon()
+		if(2)
+			reagents.add_reagent("tricordrazine", -30)
+			uses_left = 1
+			update_icon()
+		if(3)
+			reagents.add_reagent("tricordrazine", -15)
+			uses_left = 2
+			update_icon()
+
 /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
 	name = "tricordrazine EZ autoinjector"
 	desc = "An EZ autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage. Doesn't require any training to use."
@@ -144,6 +163,25 @@
 	display_maptext = TRUE
 	maptext_label = "Tr"
 
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 4)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("tramadol", -45)
+			uses_left = 0
+			update_icon()
+		if(2)
+			reagents.add_reagent("tramadol", -30)
+			uses_left = 1
+			update_icon()
+		if(3)
+			reagents.add_reagent("tramadol", -15)
+			uses_left = 2
+			update_icon()
+
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
 	name = "tramadol EZ autoinjector"
 	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
@@ -174,6 +212,25 @@
 	display_maptext = TRUE
 	maptext_label = "Kl"
 
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 4)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("kelotane", -45)
+			uses_left = 0
+			update_icon()
+		if(2)
+			reagents.add_reagent("kelotane", -30)
+			uses_left = 1
+			update_icon()
+		if(3)
+			reagents.add_reagent("kelotane", -15)
+			uses_left = 2
+			update_icon()
+
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless
 	name = "kelotane EZ autoinjector"
 	desc = "An EZ autoinjector loaded with 3 uses of Kelotane, a common burn medicine. Doesn't require any training to use."
@@ -194,6 +251,25 @@
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Bi"
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/random_amount/Initialize()
+	. = ..()
+	var/amount = rand(1, 4)
+	switch(amount)
+		if(1)
+			reagents.add_reagent("bicaridine", -45)
+			uses_left = 0
+			update_icon()
+		if(2)
+			reagents.add_reagent("bicaridine", -30)
+			uses_left = 1
+			update_icon()
+		if(3)
+			reagents.add_reagent("bicaridine", -15)
+			uses_left = 2
+			update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
 	name = "bicaridine EZ autoinjector"

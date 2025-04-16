@@ -60,3 +60,8 @@
 #define COMSIG_DROPSHIP_REMOVE_EQUIPMENT "dropship_remove_equipment"
 
 #define COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED "structure_crate_squad_launched"
+
+/// from /obj/structure/machinery/proc/power_change(area/master_area = null)
+#define COMSIG_AREA_POWER_ON "area_power_on"
+
+#define COMSIG_AREA_POWER_OFF "area_power_off"

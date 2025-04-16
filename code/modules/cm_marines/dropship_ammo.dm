@@ -367,7 +367,7 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 75, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS) // Second minor explosion to complete the thermobaric reaction
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.5 SECONDS) //Stronger than Napalm but lasts for a smaller amount of time
 	for(var/mob/living/carbon/victim in orange(5, impact))
-		victim.throw_atom(impact, 3, 15, src, TRUE) // Implosion throws affected towards center of vacuum
+		victim.throw_atom(impact, 2, 15, src, TRUE) // Implosion throws affected towards center of vacuum
 	QDEL_IN(src, 0.5 SECONDS)
 
 

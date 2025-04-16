@@ -25481,22 +25481,6 @@
 	},
 /turf/closed/wall/rock,
 /area/tyrargo/oob)
-"bgX" = (
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -17;
-	pixel_y = 2;
-	layer = 5.94
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/landing_zone_2/road)
-"bgY" = (
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -15;
-	pixel_y = 5;
-	layer = 5.93
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/landing_zone_2/road)
 "bgZ" = (
 /obj/structure/blocker/invisible_wall/water,
 /turf/open/gm/river/desert/deep/no_slowdown,
@@ -51167,6 +51151,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
+/obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/no_tunnel)
 "cwS" = (
@@ -61141,19 +61126,7 @@
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/oob)
 "dcx" = (
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -14;
-	pixel_y = -1;
-	layer = 5.93
-	},
-/turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/landing_zone_2/no_tunnel)
-"dcy" = (
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -15;
-	pixel_y = 2;
-	layer = 5.94
-	},
+/obj/structure/fence/dark,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/landing_zone_2/no_tunnel)
 "dcz" = (
@@ -64473,6 +64446,14 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
+"dly" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/tyrargo/landing_zone_2/no_tunnel)
+"dlz" = (
+/obj/structure/fence/dark,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_2/no_tunnel)
 "dmc" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
@@ -121363,9 +121344,9 @@ bte
 bte
 bta
 bta
-aQt
-aQt
-aQt
+dly
+dly
+dly
 adH
 bsy
 bsA
@@ -121547,7 +121528,7 @@ bta
 bsJ
 cug
 aQt
-aQt
+dly
 adH
 bsz
 bsy
@@ -121729,7 +121710,7 @@ bsJ
 bsJ
 cug
 aQt
-aQt
+dly
 adH
 bsy
 bsz
@@ -121911,7 +121892,7 @@ bsX
 bsJ
 bsJ
 cug
-aQt
+dly
 adH
 bsA
 bsy
@@ -122093,7 +122074,7 @@ bsJ
 bsJ
 bhp
 cug
-aQt
+dly
 adH
 bsA
 bsA
@@ -122275,7 +122256,7 @@ bsL
 dcA
 bsJ
 cug
-cug
+dlz
 adH
 bsy
 bsx
@@ -122457,7 +122438,7 @@ bas
 bsJ
 bsJ
 cug
-cug
+dlz
 adH
 bsz
 bsy
@@ -122639,7 +122620,7 @@ btk
 bsJ
 bsX
 cug
-aQt
+dly
 aQt
 bsy
 bsz
@@ -122821,7 +122802,7 @@ bsJ
 bsJ
 bsJ
 cug
-aQt
+dly
 aQt
 bsA
 bsy
@@ -123003,7 +122984,7 @@ bsJ
 bsJ
 bsJ
 cug
-aQt
+dly
 aQt
 bsA
 bsA
@@ -123185,7 +123166,7 @@ bsJ
 bsJ
 bsJ
 cug
-aQt
+dly
 aQt
 bsy
 bsA
@@ -123367,7 +123348,7 @@ btj
 bsJ
 bsJ
 cug
-cug
+dlz
 adH
 bsz
 bsy
@@ -123549,7 +123530,7 @@ bsU
 bsJ
 sZl
 cug
-cug
+dlz
 adH
 bsy
 bsz
@@ -123731,7 +123712,7 @@ btk
 bsJ
 bsJ
 cug
-aQt
+dly
 adH
 bsA
 bsy
@@ -123913,7 +123894,7 @@ bsJ
 btf
 bsJ
 cug
-aQt
+dly
 adH
 bsA
 bsA
@@ -124095,7 +124076,7 @@ bsJ
 bsJ
 bsJ
 cug
-aQt
+dly
 adH
 bsy
 bsx
@@ -124277,7 +124258,7 @@ ivt
 bsX
 bsJ
 cug
-cug
+dlz
 adH
 bsz
 bsy
@@ -124459,7 +124440,7 @@ ast
 bsJ
 bsJ
 cug
-cug
+dlz
 adH
 bsy
 bsz
@@ -124641,7 +124622,7 @@ ast
 bsJ
 bsJ
 cyc
-cug
+dlz
 adH
 bsA
 bsy
@@ -124823,7 +124804,7 @@ ast
 bsJ
 bsJ
 cug
-cug
+dlz
 adH
 bsA
 bsA
@@ -125005,7 +124986,7 @@ ast
 bsJ
 bsJ
 cug
-aQt
+dly
 adH
 bsy
 bsA
@@ -125187,7 +125168,7 @@ ast
 bsJ
 btb
 cug
-aQt
+dly
 adH
 bsz
 bsy
@@ -125369,7 +125350,7 @@ ast
 avK
 asE
 asz
-cug
+dlz
 adH
 bsy
 bsz
@@ -125733,7 +125714,7 @@ btl
 asF
 bsN
 dkr
-cug
+dlz
 adH
 bsA
 bsA
@@ -125915,7 +125896,7 @@ asv
 bsN
 asF
 dks
-aQt
+dly
 adH
 bsy
 bsx
@@ -126097,7 +126078,7 @@ ast
 awu
 asF
 dkq
-aQt
+dly
 adH
 bsz
 bsy
@@ -126279,7 +126260,7 @@ ast
 avK
 btc
 dkr
-cug
+dlz
 adH
 bsy
 bsz
@@ -126461,7 +126442,7 @@ ast
 axA
 asG
 dkr
-cug
+dlz
 adH
 bsA
 bsy
@@ -126643,7 +126624,7 @@ ast
 awu
 bsN
 dkt
-aQt
+dly
 adH
 bsA
 bsA
@@ -126825,7 +126806,7 @@ ast
 avK
 asH
 dku
-cug
+dlz
 adH
 bsy
 bsA
@@ -127007,7 +126988,7 @@ ast
 axA
 asI
 asA
-cug
+dlz
 adH
 bsz
 bsy
@@ -127189,7 +127170,7 @@ oDR
 btg
 asF
 dkq
-aQt
+dly
 adH
 bsy
 bsz
@@ -127371,7 +127352,7 @@ sZl
 bsJ
 asJ
 dkr
-cug
+dlz
 adH
 bsA
 bsy
@@ -127553,7 +127534,7 @@ bsJ
 bth
 asF
 dkr
-cug
+dlz
 adH
 bsA
 bsA
@@ -127735,7 +127716,7 @@ bsJ
 btc
 bsN
 dkq
-aQt
+dly
 adH
 bsy
 bsA
@@ -127917,7 +127898,7 @@ aDG
 cLa
 cLa
 dkr
-cug
+dlz
 dcx
 bsO
 bsw
@@ -128100,15 +128081,15 @@ cLd
 asK
 asB
 cLe
-bgX
+cLa
 bgW
 buc
 buc
 buc
 buc
 buc
-bsw
-bsw
+buc
+buc
 bsw
 "}
 (50,1,2) = {"
@@ -128289,8 +128270,8 @@ buc
 buc
 buc
 buc
-bsw
-bsw
+buc
+buc
 bsw
 "}
 (51,1,2) = {"
@@ -128464,15 +128445,15 @@ aBQ
 cLc
 cLb
 cLa
-bgY
+cLa
 bgW
 buc
 buc
 buc
 buc
 buc
-bsw
-bsw
+buc
+buc
 bsw
 "}
 (52,1,2) = {"
@@ -128645,8 +128626,8 @@ bsJ
 bsJ
 bsJ
 dkv
-aQt
-dcy
+dly
+dcx
 bsO
 bsA
 bsw
@@ -128827,7 +128808,7 @@ aKO
 bsJ
 bsX
 cug
-aQt
+dly
 adH
 bsA
 bsx
@@ -129009,7 +128990,7 @@ bsJ
 bsJ
 bsJ
 cug
-aQt
+dly
 adH
 bsA
 bsy
@@ -129191,7 +129172,7 @@ bsX
 bsJ
 bsT
 cug
-aQt
+dly
 adH
 bsy
 bsz
@@ -129373,7 +129354,7 @@ bsJ
 bsJ
 btd
 cug
-cug
+dlz
 adH
 bsz
 bsy
@@ -129555,7 +129536,7 @@ bsJ
 bsJ
 btd
 dkw
-aQt
+dly
 adH
 bsz
 bsA
@@ -129737,7 +129718,7 @@ bsJ
 bti
 dcz
 cug
-aQt
+dly
 adH
 bsy
 bsA
@@ -129919,7 +129900,7 @@ btm
 bsJ
 bsJ
 cug
-aQt
+dly
 adH
 bsA
 bsy
@@ -130101,7 +130082,7 @@ btj
 bsJ
 bsX
 cug
-cug
+dlz
 adH
 bsA
 bsz
@@ -130283,7 +130264,7 @@ bsU
 bsJ
 bsX
 cug
-cug
+dlz
 adH
 bsy
 bsy
@@ -130465,7 +130446,7 @@ aLF
 aCa
 bsJ
 cug
-cug
+dlz
 adH
 bsz
 bsA
@@ -130647,7 +130628,7 @@ aMD
 aCa
 bsJ
 cug
-aQt
+dly
 adH
 bsy
 bsx
@@ -130829,7 +130810,7 @@ aMD
 aCa
 bsJ
 aQt
-aQt
+dly
 adH
 bsA
 bsy
@@ -131011,7 +130992,7 @@ aMD
 bsO
 aQt
 aQt
-aQt
+dly
 adH
 bsA
 bsz
@@ -131193,7 +131174,7 @@ aMD
 bsO
 aQt
 aQt
-aQt
+dly
 adH
 bsy
 bsy

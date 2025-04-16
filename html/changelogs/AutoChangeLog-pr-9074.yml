@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "UPP personal vendors for combat roles will now be able to dispense repair oil."

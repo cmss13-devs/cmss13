@@ -1,5 +1,5 @@
-import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
-import { BooleanLike } from 'common/react';
+import { hexToHsva, type HsvaColor, hsvaToHex } from 'common/color';
+import type { BooleanLike } from 'common/react';
 import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';

@@ -1,4 +1,0 @@
-author: "biologed"
-delete-after: True
-changes:
-  - ui: "перевод авто ответов MentorHelp и AdminHelp,  части связанных системных сообщений и интерфейса"

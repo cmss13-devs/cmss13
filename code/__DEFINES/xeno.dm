@@ -408,6 +408,9 @@
 #define PRAETORIAN_VALKYRIE "Valkyrie"
 #define PRAETORIAN_OPPRESSOR "Oppressor"
 
+// Sentinel strain flags
+#define SENTINEL_MANGONEL "Mangonel"
+
 /////////////////////////////////////////////////////////////////////////////////////
 //
 // Modifiers

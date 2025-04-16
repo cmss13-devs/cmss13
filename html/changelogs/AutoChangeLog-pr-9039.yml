@@ -1,0 +1,4 @@
+author: "efzapa"
+delete-after: True
+changes:
+  - maptweak: "Hunting Ground Evac Shutters are now properly indestructable."

@@ -4969,6 +4969,7 @@
 "aof" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/largecrate/supply/supplies/wy_emergency_food,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/west)
 "aog" = (
@@ -6106,9 +6107,9 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/item/clothing/head/helmet/marine{
-	pixel_x = 6;
-	pixel_y = 7
+/obj/item/clothing/head/helmet/marine/rto/army{
+	pixel_x = 7;
+	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/indoors/comms/ground)
@@ -12528,6 +12529,9 @@
 	icon_state = "trash_8";
 	pixel_y = 12
 	},
+/obj/item/ammo_magazine/smg/mp5{
+	current_rounds = 0
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aGE" = (
@@ -14540,6 +14544,7 @@
 /area/tyrargo/indoors/museum_storage/upper)
 "aLa" = (
 /obj/effect/decal/cleanable/generic,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison/blue/west,
 /area/tyrargo/indoors/museum_storage/upper)
 "aLb" = (
@@ -16586,8 +16591,8 @@
 /turf/closed/wall/rock,
 /area/tyrargo/oob)
 "aPH" = (
-/obj/item/clothing/head/beret/eng,
 /obj/effect/decal/cleanable/generic,
+/obj/item/clothing/head/beret/cm/black/army,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPI" = (
@@ -25309,9 +25314,6 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/m56d_hmg{
-	dir = 1
-	},
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/landing_zone_2/ceiling)
 "bgw" = (
@@ -41024,6 +41026,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/central)
 "bPZ" = (
+/obj/item/clothing/head/beret/cm/black/army,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/landing_zone_1/comms)
 "bQa" = (
@@ -48875,6 +48878,7 @@
 /area/tyrargo/outdoors/outskirts/east)
 "coE" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/device/defibrillator/upgraded,
 /turf/open/floor/plating,
 /area/tyrargo/indoors/apartment/north_ground)
 "coF" = (
@@ -56794,10 +56798,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison/whitegreenfull,
 /area/tyrargo/indoors/mall)
 "cPw" = (
 /obj/structure/machinery/cm_vending/sorted/medical/bolted,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/tyrargo/indoors/mall)
 "cPx" = (
@@ -56805,6 +56811,7 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/prison/whitegreen,
 /area/tyrargo/indoors/mall)
 "cPy" = (
@@ -62032,9 +62039,8 @@
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "deI" = (
-/obj/item/ammo_magazine/smg/mp5{
-	current_rounds = 0
-	},
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "deJ" = (
@@ -64324,10 +64330,149 @@
 	},
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/admin/upper)
+"dkX" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 1
+	},
+/obj/item/prop/alien/hugger,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors/colony_exterior/south_west)
+"dkY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
+/turf/open/hybrisa/street/sidewalk,
+/area/tyrargo/outdoors/colony_streets/south_east)
+"dkZ" = (
+/obj/item/prop/alien/hugger,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/tyrargo/outdoors/colony_streets/south_east)
+"dla" = (
+/obj/item/prop/alien/hugger,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_exterior/south_west)
+"dlb" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/museum_storage/ground)
+"dlc" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/west)
+"dld" = (
+/obj/item/prop/alien/hugger,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_exterior/west)
+"dle" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/m56d,
+/obj/item/ammo_magazine/m56d,
+/obj/item/device/m56d_gun,
+/obj/item/device/m56d_post,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/west)
+"dlf" = (
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/west)
+"dlg" = (
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/west)
+"dlh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/hypospray/autoinjector/emergency{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/west)
+"dli" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_streets/west)
+"dlj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/m41a{
+	current_mag = null
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/colony_streets/west)
+"dlk" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/prison/whitegreen/north,
+/area/tyrargo/indoors/mall)
 "dll" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
+"dlm" = (
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/west)
+"dln" = (
+/obj/item/storage/surgical_tray/empty,
+/turf/open/floor/plating/platingdmg1,
+/area/tyrargo/indoors/apartment/north_ground)
+"dlo" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_west)
+"dlp" = (
+/obj/structure/largecrate/supply/supplies/metal,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north)
+"dlq" = (
+/obj/structure/largecrate/supply/supplies/wy_emergency_food,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/admin/ground)
+"dlr" = (
+/obj/structure/prop/tyrargo/boards{
+	pixel_x = -12;
+	dir = 8;
+	pixel_y = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/east)
+"dls" = (
+/obj/structure/prop/tyrargo/boards{
+	pixel_x = -12;
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/east)
+"dlt" = (
+/obj/structure/prop/tyrargo/boards{
+	pixel_x = -12;
+	pixel_y = -4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/east)
+"dlu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dlv" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/prison/ramptop/east,
+/area/tyrargo/indoors/museum_storage/upper)
+"dlw" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/prison/blue/east,
+/area/tyrargo/indoors/museum_storage/upper)
+"dlx" = (
+/obj/item/prop/alien/hugger,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall/upper)
 "dmc" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
@@ -67231,6 +67376,13 @@
 /obj/effect/decal/hybrisa/trash{
 	pixel_y = 12
 	},
+/obj/structure/largecrate/supply/ammo/m41a/half{
+	pixel_x = 5
+	},
+/obj/item/storage/box/guncase/m41a{
+	pixel_y = 5;
+	pixel_x = 6
+	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "jkB" = (
@@ -68550,21 +68702,21 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/item/clothing/head/beret/marine/commander{
+/obj/item/ammo_magazine/revolver/mateba/highimpact{
+	pixel_x = -9;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/revolver/mateba/highimpact{
+	pixel_x = -9;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/revolver/mateba/highimpact{
+	pixel_x = -9;
+	pixel_y = -5
+	},
+/obj/item/clothing/head/beret/marine/commander/black/army{
 	pixel_x = 7;
-	pixel_y = 9
-	},
-/obj/item/ammo_magazine/revolver/mateba/highimpact{
-	pixel_x = -9;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/revolver/mateba/highimpact{
-	pixel_x = -9;
-	pixel_y = -5
-	},
-/obj/item/ammo_magazine/revolver/mateba/highimpact{
-	pixel_x = -9;
-	pixel_y = -5
+	pixel_y = 10
 	},
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -72063,9 +72215,9 @@
 /area/tyrargo/indoors/apartment/north_upper)
 "sva" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/clothing/head/helmet/marine{
-	pixel_y = 2;
-	pixel_x = -7
+/obj/item/clothing/head/helmet/marine/rto/army{
+	pixel_x = 7;
+	pixel_y = -5
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -74358,6 +74510,7 @@
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "wfl" = (
+/obj/item/prop/alien/hugger,
 /turf/open/floor/prison/damaged1,
 /area/tyrargo/indoors/museum_storage/upper)
 "wfw" = (
@@ -74410,6 +74563,7 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
+/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "wkt" = (
@@ -139099,9 +139253,9 @@ bzi
 bzi
 bzi
 bzi
-bzi
-bzi
-bzi
+dlt
+dls
+dlr
 bzi
 bzi
 byQ
@@ -142773,7 +142927,7 @@ ckP
 ckP
 ckP
 ckQ
-ckP
+dld
 ckP
 ckP
 ckP
@@ -143299,7 +143453,7 @@ cri
 cri
 kgb
 hPM
-cpb
+dlo
 cpJ
 cpy
 ckP
@@ -143342,7 +143496,7 @@ chb
 chb
 chb
 chb
-chb
+dla
 chb
 chb
 chb
@@ -144456,7 +144610,7 @@ ahz
 ahl
 bIv
 ceJ
-anf
+dkX
 cgi
 abV
 cfu
@@ -146048,7 +146202,7 @@ abZ
 cjI
 cjI
 cjI
-cjI
+dlf
 cjI
 cnc
 bix
@@ -146414,7 +146568,7 @@ cjI
 cjI
 cjI
 cjI
-oXy
+dlc
 cmM
 fnR
 cmC
@@ -146777,7 +146931,7 @@ kAk
 cjO
 cjO
 cjs
-cjs
+dle
 cjt
 cmN
 cmN
@@ -146947,7 +147101,7 @@ cpi
 cpj
 ldl
 mzv
-cjz
+dlm
 cjs
 cjs
 bzI
@@ -146955,10 +147109,10 @@ hZH
 vel
 cjs
 bOf
-cnu
-cnu
-cnu
-cjz
+dlj
+dli
+dli
+dlg
 cnk
 cjt
 cmN
@@ -147140,7 +147294,7 @@ vpz
 cnu
 wqs
 cnu
-qWy
+dlh
 jjm
 tAo
 cmN
@@ -147675,7 +147829,7 @@ tEs
 qWL
 uvl
 lIP
-cpY
+dln
 xmr
 clB
 iNI
@@ -151481,7 +151635,7 @@ csR
 csR
 csR
 csR
-coc
+dlp
 cpQ
 iCi
 pET
@@ -154274,7 +154428,7 @@ ciH
 ciI
 ciH
 deP
-chz
+dkY
 cil
 aGR
 aGF
@@ -155180,7 +155334,7 @@ aHC
 chx
 dfN
 dfh
-ciN
+dkZ
 dfi
 ciI
 chH
@@ -155649,7 +155803,7 @@ cxW
 awi
 cuu
 csR
-cto
+dlu
 ctC
 cwP
 cwG
@@ -155684,7 +155838,7 @@ alY
 cVX
 ceX
 cPo
-cQt
+dlk
 cQv
 dja
 cPS
@@ -156576,7 +156730,7 @@ aAL
 baW
 aAh
 wFN
-ctn
+dlq
 csR
 csG
 csk
@@ -157010,7 +157164,7 @@ cic
 aGK
 chH
 chz
-jez
+xEB
 abK
 abK
 cDq
@@ -157192,7 +157346,7 @@ cid
 chR
 chH
 chA
-jez
+xEB
 cgg
 abK
 akR
@@ -157374,7 +157528,7 @@ aGT
 chT
 chH
 chx
-jez
+xEB
 aFK
 abK
 rVH
@@ -157908,8 +158062,8 @@ ciI
 ciI
 cjc
 ciI
-aak
-aak
+cig
+cio
 cgF
 uEK
 xEB
@@ -158090,7 +158244,7 @@ cjc
 cjc
 cjc
 cjc
-aak
+chW
 cjc
 cjc
 ciQ
@@ -158801,7 +158955,7 @@ ckE
 ckE
 clG
 cls
-clf
+dlb
 ckL
 ckE
 chH
@@ -159000,7 +159154,7 @@ cjc
 cjc
 ciI
 chj
-aak
+cif
 cjc
 cjc
 cjc
@@ -160233,7 +160387,7 @@ cpl
 cpl
 ckE
 aJt
-clf
+dlb
 aJn
 aJh
 ayo
@@ -198822,7 +198976,7 @@ cOx
 cOx
 cOw
 cUl
-cOw
+dlx
 cOx
 cMv
 cOx
@@ -199176,7 +199330,7 @@ cWw
 cMv
 cOw
 cOw
-cOw
+dlx
 cOx
 cOw
 cRj
@@ -202111,7 +202265,7 @@ cCj
 cCm
 rDA
 cCu
-cCl
+dlv
 cCc
 cBR
 cBI
@@ -203376,7 +203530,7 @@ cCx
 cCx
 cEc
 cCT
-cCx
+dlw
 cCx
 cCj
 cDg

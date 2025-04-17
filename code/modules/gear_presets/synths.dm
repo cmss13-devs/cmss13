@@ -733,6 +733,7 @@
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_L_HAND = /obj/item/weapon/telebaton
 	)
+	skills = /datum/skills/synthetic
 	preset_generation_support = FALSE
 	survivor_variant = CORPORATE_SURVIVOR
 

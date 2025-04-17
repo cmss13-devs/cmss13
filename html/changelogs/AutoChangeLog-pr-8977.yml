@@ -1,0 +1,6 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - bugfix: "Flamers can now discharge properly"
+  - bugfix: "Skill locked weapons now respect skill checks when attempting a discharge"
+  - bugfix: "Weapons on safety no longer discharge"

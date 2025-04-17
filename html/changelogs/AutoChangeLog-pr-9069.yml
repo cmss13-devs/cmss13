@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed m81 riot grenade launcher not having onmob icons"

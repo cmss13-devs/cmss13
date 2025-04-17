@@ -453,9 +453,9 @@
 	set_burst_delay(FIRE_DELAY_TIER_12)
 
 
-/obj/item/weapon/gun/revolver/m44/custom/webley //Van Bandolier's Webley.
-	name = "\improper Webley Mk VI service pistol"
-	desc = "A heavy top-break revolver. Bakelite grips, and older than most nations. .455 was good enough for angry tribesmen and <i>les boche</i>, and by Gum it'll do for Colonial Marines and xenomorphs as well."
+/obj/item/weapon/gun/revolver/m44/custom/webley
+	name = "\improper Webley SRV-80"
+	desc = "A top-break revolver used by the Imperial Armed Space Force’s 24th Para Regiment, and sometimes seen in the hands of other TWE military forces. Fires .455 Magnum. Archaic, yes, but brutally effective. Vacuum-sealed internals, Bakelite-style grips, and a recoil like getting kicked by a mule. Still puts things down. Hard."
 	current_mag = /obj/item/ammo_magazine/internal/revolver/webley
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/revolvers.dmi'
 	icon_state = "webley"

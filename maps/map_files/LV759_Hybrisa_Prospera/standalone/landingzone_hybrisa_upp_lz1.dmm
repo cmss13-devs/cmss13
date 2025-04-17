@@ -250,7 +250,7 @@
 /turf/open/floor/strata/orange_edge/north,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "bq" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "47"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -693,7 +693,7 @@
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/spaceport/heavyequip)
 "dR" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "leftengine_3"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -791,7 +791,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/spaceport/communications_office)
 "ev" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "rightengine_3"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -902,7 +902,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/spaceport/communications_office)
 "fh" = (
-/turf/closed/shuttle/dropship2/WY/StarGlider{
+/turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing3";
 	opacity = 0;
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -1182,7 +1182,7 @@
 /turf/open/floor/strata/blue3/north,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "gK" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "92"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -1367,7 +1367,7 @@
 /turf/open/floor/strata/red3/west,
 /area/lv759/indoors/spaceport/security_office)
 "hy" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "64"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -1682,7 +1682,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/heavyequip)
 "iU" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "36"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -2052,7 +2052,7 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/lv759/indoors/spaceport/baggagehandling)
 "kI" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "99"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -2291,7 +2291,7 @@
 /turf/closed/wall/hybrisa/spaceport/unmeltable,
 /area/lv759/oob)
 "mp" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "83"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -2565,7 +2565,7 @@
 /turf/open/floor/strata/orange_edge/north,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "of" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "37"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -3091,7 +3091,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "rq" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "62"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -3216,7 +3216,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/horizon_runner)
 "sh" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "leftengine_1"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -3444,7 +3444,7 @@
 /turf/open/floor/strata/orange_edge/west,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "ty" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "rightengine_1"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -3452,7 +3452,7 @@
 /turf/open/floor/hybrisa/misc/wysmallright,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "tA" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "75"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -3571,7 +3571,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/communications_office)
 "up" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "brokendropshipconsole3";
 	opacity = 0
 	},
@@ -3651,7 +3651,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "uJ" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "69"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -4073,7 +4073,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "wR" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "94"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -4161,7 +4161,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "xq" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "wy2"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -4198,7 +4198,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/lv759/indoors/spaceport/heavyequip)
 "xF" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "48"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -4792,7 +4792,7 @@
 /turf/open/floor/corsat,
 /area/lv759/indoors/spaceport/engineering)
 "Bj" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "73"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -4928,7 +4928,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "BY" = (
-/turf/closed/shuttle/dropship2/WY/StarGlider{
+/turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing6";
 	opacity = 0;
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -5480,7 +5480,7 @@
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/cuppajoes)
 "Fa" = (
-/turf/closed/shuttle/dropship2/WY/StarGlider{
+/turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing8";
 	opacity = 0;
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -5550,7 +5550,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/spaceport/communications_office)
 "Fm" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "wy_rightengine"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -5887,7 +5887,7 @@
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/lv759/indoors/spaceport/flight_control_room)
 "GQ" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "78"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -6536,7 +6536,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "Ks" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "zwing0"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -6644,12 +6644,12 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Lh" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "wy_leftengine"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
 "Lj" = (
-/turf/closed/shuttle/dropship2/WY/StarGlider{
+/turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing2";
 	opacity = 0;
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -6728,7 +6728,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/spaceport/heavyequip)
 "LU" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "67"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -7344,7 +7344,7 @@
 /turf/open/floor/strata/orange_edge/east,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "PD" = (
-/turf/closed/shuttle/dropship2/WY/StarGlider{
+/turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing7";
 	opacity = 0;
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -7997,7 +7997,7 @@
 /turf/open/floor/prison/ramptop/north,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "TM" = (
-/turf/closed/shuttle/dropship2/WY/StarGlider{
+/turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing4";
 	opacity = 0;
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -8384,7 +8384,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/security)
 "WB" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "95"
 	},
 /area/lv759/indoors/spaceport/horizon_runner)
@@ -8406,7 +8406,7 @@
 /turf/open/floor/strata/orange_icorner,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "WN" = (
-/turf/closed/shuttle/dropship2/WY/HorizonRunner{
+/turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "brokendropshipconsole1";
 	opacity = 0
 	},

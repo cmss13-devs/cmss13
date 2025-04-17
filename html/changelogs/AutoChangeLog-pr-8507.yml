@@ -1,5 +1,0 @@
-author: "Diegoflores31"
-delete-after: True
-changes:
-  - rscadd: "Added the ability to build new airlock types (engi , med, cmd , generic ,sec)"
-  - rscdel: "Removed old legacy ss13 assemblies"

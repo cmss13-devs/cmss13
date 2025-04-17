@@ -435,8 +435,8 @@ L54 service pistol
 	w_class = SIZE_SMALL
 	default_ammo = /datum/ammo/bullet/pistol
 	gun_type = /obj/item/weapon/gun/pistol/l54
-	ammo_band_icon = "+m4a3_band"
-	ammo_band_icon_empty = "+m4a3_band_e"
+	ammo_band_icon = "+l54_band"
+	ammo_band_icon_empty = "+l54_band_e"
 
 /obj/item/ammo_magazine/pistol/l54/hp
 	name = "\improper L54 hollowpoint magazine (9mm)"

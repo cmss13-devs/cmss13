@@ -1,0 +1,4 @@
+author: "efzapa"
+delete-after: True
+changes:
+  - rscadd: "Fax Responders now spawn with a pen in their ear slot."

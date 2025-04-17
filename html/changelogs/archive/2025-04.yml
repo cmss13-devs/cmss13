@@ -287,3 +287,28 @@
   - bugfix: Fixed roof_master_node error issue. (cuberound)
   biologed:
   - bugfix: fixed the functionality of changing character name via PP
+2025-04-17:
+  Blundir:
+  - bugfix: fixed m81 riot grenade launcher not having onmob icons
+  Drathek:
+  - balance: Lessers and Huggers now have a 5 minute respawn timer for non-lesser/hugger
+      deaths/ghosting
+  Mikrel0712:
+  - rscadd: Added a laser targetting mode to the M402 Mortar. You can now link a laser
+      designator to the mortar, and fire directly on laser targets as an alternative
+      to firing on coordinates.
+  Stakeyng:
+  - rscdel: Removed "MOVEMENT ORDER!", "HOLD ORDER!", "FOCUS ORDER!", "WE HOLD THIS
+      GROUND IN THE NAME OF GOD!", "PACK IT UP PEOPLE!", and "STRIFE!" as order phrases
+  - spellcheck: '"SHOOT EM'' DEAD!" is now "SHOOT ''EM DEAD!"'
+  - spellcheck: '"AIM FOR THE KILL!" is now "GO FOR THE KILL!"'
+  - spellcheck: Asterisks used to bold orders close before punctuation.
+  Steelpoint:
+  - rscadd: UPP squad ammo vendors, and cargo vendors, will now be able to vend repair
+      oil and repair kits.
+  - rscadd: UPP personal vendors for combat roles will now be able to dispense repair
+      oil.
+  cuberound:
+  - bugfix: prevents harmful spray during ceasefire
+  efzapa:
+  - maptweak: Hunting Ground Evac Shutters are now properly indestructable.

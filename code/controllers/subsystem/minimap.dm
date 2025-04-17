@@ -255,8 +255,8 @@ SUBSYSTEM_DEF(minimaps)
 		LAZYADDASSOCLIST(earlyadds, "[actual_z]", CALLBACK(src, PROC_REF(add_marker), target, hud_flags, blip))
 		RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_earlyadd), override = TRUE) //Override required for late z-level loading to prevent hard dels where an atom is initiated during z load, but is qdel'd before it finishes
 		return
-	
-	
+
+
 	var/turf/target_turf = get_turf(target)
 	if(ismob(target) && target.loc && !isturf(target.loc))
 		target_turf = get_turf(target.loc)
@@ -398,13 +398,13 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE, live=TRUE)
-	var/hash = "[zlevel]-[flags]-[shifting]-[live]"
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE, live=TRUE, popup=FALSE)
+	var/hash = "[zlevel]-[flags]-[shifting]-[live]-[popup]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
-	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting, live)
+	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting, live, popup)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
-		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
+		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
 
@@ -459,10 +459,11 @@ SUBSYSTEM_DEF(minimaps)
 	/// Minimap target
 	var/target
 
-/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE, live = TRUE)
+/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE, live = TRUE, popup = FALSE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
+
 	choices_by_mob = list()
 	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
@@ -485,7 +486,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap/proc/update()
 	if(live)
 		return
-	
+
 	SSminimaps.add_to_updaters(src, flags, target)
 
 /atom/movable/screen/minimap/process()
@@ -1240,9 +1241,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(!COOLDOWN_FINISHED(src, update_cooldown))
 		to_chat(location, SPAN_WARNING("Wait another [COOLDOWN_SECONDSLEFT(src, update_cooldown)] seconds before sending another update."))
 		return
-	
+
 	COOLDOWN_START(src, update_cooldown, CANVAS_COOLDOWN_TIME)
-	
+
 	//Forgive me
 	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
 		var/datum/action/minimap/minimap_action = locate() in player.actions
@@ -1262,7 +1263,7 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/up/clicked(location, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel+1))
 		return
-	
+
 	owner.move_tacmap_up()
 
 	return TRUE
@@ -1275,8 +1276,18 @@ SUBSYSTEM_DEF(minimaps)
 /atom/movable/screen/minimap_tool/down/clicked(location, list/modifiers)
 	if(!SSmapping.same_z_map(zlevel, zlevel-1))
 		return
-	
+
 	owner.move_tacmap_down()
+
+	return TRUE
+
+/atom/movable/screen/minimap_tool/popout
+	icon_state = "popout"
+	desc = "Pop the minimap to a window"
+	screen_loc = "15,4"
+
+/atom/movable/screen/minimap_tool/popout/clicked(location, list/modifiers)
+	owner.popout()
 
 	return TRUE
 

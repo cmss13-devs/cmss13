@@ -4,20 +4,25 @@
  * @license MIT
  */
 
-import { Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 import { isEscape, KEY } from 'common/keys';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import {
-  ChangeEvent,
+  type ChangeEvent,
   createRef,
-  MouseEvent,
-  ReactNode,
+  type MouseEvent,
+  type ReactNode,
   useEffect,
   useRef,
   useState,
 } from 'react';
 
-import { Box, BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import {
+  Box,
+  type BoxProps,
+  computeBoxClassName,
+  computeBoxProps,
+} from './Box';
 import { Icon } from './Icon';
 import { Tooltip } from './Tooltip';
 
@@ -55,6 +60,7 @@ type Props = Partial<{
   onClick: (e: any) => void;
   onFocus: (e: any) => void;
   onBlur: (e: any) => void;
+  allowAnyClick: BooleanLike;
   selected: BooleanLike;
   tooltip: ReactNode;
   tooltipPosition: Placement;
@@ -82,6 +88,7 @@ export const Button = (props: Props) => {
     iconRotation,
     iconSpin,
     onClick,
+    allowAnyClick,
     selected,
     tooltip,
     tooltipPosition,
@@ -114,7 +121,7 @@ export const Button = (props: Props) => {
       ])}
       tabIndex={!disabled ? 0 : undefined}
       onClick={(event) => {
-        if (!disabled && onClick) {
+        if (!disabled && onClick && (allowAnyClick || event.button === 0)) {
           onClick(event);
         }
       }}
@@ -213,7 +220,7 @@ type ConfirmProps = Partial<{
   Props;
 
 /**  Requires user confirmation before triggering its action. */
-const ButtonConfirm = (props: ConfirmProps) => {
+export const ButtonConfirm = (props: ConfirmProps) => {
   const {
     children,
     color,
@@ -222,36 +229,37 @@ const ButtonConfirm = (props: ConfirmProps) => {
     confirmIcon,
     ellipsis = true,
     icon,
+    onBlur,
     onClick,
     onConfirmChange,
     ...rest
   } = props;
   const [clickedOnce, setClickedOnce] = useState(false);
 
+  function handleBlur(event: FocusEvent) {
+    onConfirmChange?.(false);
+    setClickedOnce(false);
+    onBlur?.(event);
+  }
+
   const handleClick = (
     newState: boolean,
     event: MouseEvent<HTMLDivElement> | undefined,
   ) => {
-    setClickedOnce(newState);
-    if (newState) {
-      setTimeout(() => window.addEventListener('click', handleClickOff));
-    } else {
-      window.removeEventListener('click', handleClickOff);
-      if (event) {
+    if (clickedOnce) {
+      if (event && (props.allowAnyClick || event.button === 0)) {
         onClick?.(event);
       }
     }
+    setClickedOnce(newState);
     onConfirmChange?.(newState);
   };
-
-  function handleClickOff() {
-    handleClick(false, undefined);
-  }
 
   return (
     <Button
       icon={clickedOnce ? confirmIcon : icon}
       color={clickedOnce ? confirmColor : color}
+      onBlur={handleBlur}
       onClick={(event: MouseEvent<HTMLDivElement>) => {
         handleClick(!clickedOnce, event);
       }}

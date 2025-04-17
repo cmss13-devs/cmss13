@@ -325,7 +325,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/clicked(mob/user, list/mods)
 	. = ..()
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		var/text = "You toggle overdose protection "
 		if(od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
 			od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_OFF

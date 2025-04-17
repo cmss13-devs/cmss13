@@ -13337,6 +13337,15 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/museum_storage/ground)
+"aIu" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/central)
 "aIv" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/darkred2/north,
@@ -44083,7 +44092,7 @@
 	},
 /obj/structure/ladder{
 	id = "bunker_lad";
-	height = 2
+	height = 1
 	},
 /turf/open/floor/almayer,
 /area/tyrargo/underground/bunker/south)
@@ -55601,7 +55610,7 @@
 "cLM" = (
 /obj/structure/ladder{
 	id = "bunker_lad";
-	height = 1
+	height = 2
 	},
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
@@ -56060,6 +56069,12 @@
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/mall)
+"cNd" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
 "cNe" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	name = "access barrier"
@@ -64677,12 +64692,153 @@
 /obj/structure/surface/table,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/upper)
+"dlU" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/flora/grass/tallgrass/ice,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/central)
+"dlV" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -24;
+	pixel_y = 2
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -15;
+	pixel_y = 15;
+	layer = 5.88
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -6;
+	pixel_y = 6;
+	layer = 5.99
+	},
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dlW" = (
+/obj/structure/flora/grass/tallgrass/ice,
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dlX" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -8;
+	pixel_y = 19;
+	layer = 5.95
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.96
+	},
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dlY" = (
+/obj/structure/flora/tree/tyrargo,
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.9
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -7;
+	pixel_y = 16;
+	layer = 5.89
+	},
+/obj/structure/flora/grass/tallgrass/ice,
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dlZ" = (
+/obj/structure/flora/grass/tallgrass/ice,
+/obj/structure/flora/grass/tallgrass/ice,
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dma" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dmb" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 6
+	},
+/turf/closed/wall/rock,
+/area/tyrargo/oob)
 "dmc" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1
 	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/tyrargo/indoors/security/upper)
+"dmd" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -23;
+	pixel_y = 15;
+	layer = 5.96
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -9;
+	pixel_y = 19;
+	layer = 5.95
+	},
+/obj/structure/flora/grass/tallgrass/ice/corner,
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dme" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -23;
+	pixel_y = 15;
+	layer = 5.99
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -9;
+	pixel_y = 19;
+	layer = 5.98
+	},
+/obj/structure/flora/grass/tallgrass/ice/corner,
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
+"dmf" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -24;
+	pixel_y = 2
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -8;
+	pixel_y = 9;
+	layer = 5.89
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -20;
+	pixel_y = 15;
+	layer = 5.99
+	},
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/central)
 "dmi" = (
 /turf/open/floor/strata/green3/north,
 /area/tyrargo/indoors/market/ground)
@@ -66849,10 +67005,6 @@
 	pixel_x = -14
 	},
 /turf/open/auto_turf/strata_grass,
-/area/tyrargo/oob)
-"hzY" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/turf/open_space,
 /area/tyrargo/oob)
 "hBr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -121288,7 +121440,7 @@ aTc
 bzk
 bxJ
 dkf
-bxJ
+bFv
 bxJ
 bxJ
 bxJ
@@ -122391,7 +122543,7 @@ bBJ
 bBJ
 bBB
 bxJ
-bxJ
+bFv
 bzk
 bAZ
 byS
@@ -123139,7 +123291,7 @@ bBJ
 bxJ
 bxJ
 bBr
-bxJ
+byD
 bxJ
 bxJ
 bxJ
@@ -124222,7 +124374,7 @@ bzk
 bxJ
 bxJ
 byk
-bxJ
+bFv
 bxJ
 bxJ
 bxJ
@@ -125853,7 +126005,7 @@ bxz
 bDR
 bxz
 bDD
-bxz
+bzX
 bxz
 bzk
 byC
@@ -133807,9 +133959,9 @@ bFj
 bHu
 aPO
 aPG
-bsw
-bGu
-bGY
+dmb
+dlX
+dlV
 bFj
 bEL
 bBg
@@ -133989,9 +134141,9 @@ bFj
 aPT
 bOk
 bsw
-bGS
-bGI
-bFj
+dmd
+dlY
+dlW
 bNu
 bBg
 adT
@@ -134171,9 +134323,9 @@ bFj
 bFj
 bsw
 bGu
-bGo
-bFj
-bEL
+dme
+dlZ
+bKO
 bEL
 bBg
 bBg
@@ -134353,8 +134505,8 @@ bEL
 bFj
 bFj
 bGG
-bGt
-bFj
+dmf
+dma
 bEL
 bBg
 bBg
@@ -135495,8 +135647,8 @@ bEg
 bEg
 cex
 bDV
-bDX
-bBO
+dlU
+aIu
 bDN
 bBg
 bBg
@@ -135677,8 +135829,8 @@ bEg
 bEg
 bEg
 bDV
-bBg
-bBg
+bHc
+cNd
 bBg
 bBg
 bBg
@@ -135859,8 +136011,8 @@ bEg
 bEg
 bEg
 bDV
-bBg
-bBg
+bHc
+cNd
 bDx
 bBg
 bBg
@@ -136041,8 +136193,8 @@ bEg
 bEg
 bEg
 bDV
-bBg
-bBg
+bHv
+bGT
 bBg
 bBg
 bBg
@@ -195912,7 +196064,7 @@ cDs
 cDs
 cDs
 cDd
-hzY
+cWh
 cWe
 cWe
 cMv

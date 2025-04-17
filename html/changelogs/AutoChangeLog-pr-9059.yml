@@ -1,7 +1,0 @@
-author: "Stakeyng"
-delete-after: True
-changes:
-  - rscdel: "Removed \"MOVEMENT ORDER!\", \"HOLD ORDER!\", \"FOCUS ORDER!\", \"WE HOLD THIS GROUND IN THE NAME OF GOD!\", \"PACK IT UP PEOPLE!\", and \"STRIFE!\" as order phrases"
-  - spellcheck: "\"SHOOT EM' DEAD!\" is now \"SHOOT 'EM DEAD!\""
-  - spellcheck: "\"AIM FOR THE KILL!\" is now \"GO FOR THE KILL!\""
-  - spellcheck: "Asterisks used to bold orders close before punctuation."

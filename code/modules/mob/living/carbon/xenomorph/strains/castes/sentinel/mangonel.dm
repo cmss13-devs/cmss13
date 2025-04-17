@@ -60,7 +60,7 @@
 				weed_strength_message = "! The [turf_weeds] greatly reinforce us!"
 
 /datum/behavior_delegate/sentinel_mangonel/proc/entrench_effects(effects_active)
-	last_armor_buff = 5 + (5 * weed_strength)
+	last_armor_buff = 15 + (5 * weed_strength)
 
 	if(effects_active)
 		RegisterSignal(bound_xeno, COMSIG_XENO_ENTER_CRIT, PROC_REF(entrench_unconscious_check))
@@ -107,12 +107,13 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!check_and_use_plasma_owner())
-		return
-
 	if(!beh_del.entrenched)
+		if(!check_and_use_plasma_owner())
+			return
+
 		if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return
+
 		playsound(xeno.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		xeno.visible_message(SPAN_XENODANGER("[xeno] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place[beh_del.weed_strength_message]"))
 		beh_del.entrench_effects(TRUE)
@@ -163,6 +164,7 @@
 	playsound(xeno.loc, "acid_spit", 25, 1)
 
 	var/datum/ammo/ammoDatum
+	var/cooldown_modifier = 1
 
 	if(beh_del.entrenched)
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] spits a bolt of acid at [target]!"),
@@ -170,10 +172,12 @@
 		ammoDatum = new /datum/ammo/xeno/acid/mangonel_siege()
 		if(beh_del.weed_strength > 0)
 			ammoDatum.damage = ammoDatum.damage + (5 * beh_del.weed_strength)
+		cooldown_modifier = 1.5
 	else
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] spits a blast of acid at [target]!"),
 		SPAN_XENOWARNING("We spit a blast of acid at [target]!"))
 		ammoDatum = new /datum/ammo/xeno/acid/mangonel_shotgun()
+		cooldown_modifier = 1
 
 	var/obj/projectile/proj = new /obj/projectile(current_turf, create_cause_data(initial(xeno.caste_type), xeno))
 	proj.generate_bullet(ammoDatum)
@@ -181,7 +185,7 @@
 	proj.def_zone = xeno.get_limbzone_target()
 	proj.fire_at(target, xeno, xeno, ammoDatum.max_range, ammoDatum.shell_speed)
 
-	apply_cooldown()
+	apply_cooldown(cooldown_modifier)
 	return ..()
 
 // Gas Shroud

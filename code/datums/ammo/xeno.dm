@@ -208,8 +208,9 @@
 	damage = 30
 
 /datum/ammo/xeno/acid/mangonel_siege/on_hit_obj(obj/target, obj/projectile/proj)
+	var/obj/structure/barricade/cade = target
 	if(istype(target, /obj/structure/barricade))
-		damage = damage * 2
+		cade.take_acid_damage(damage)
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"

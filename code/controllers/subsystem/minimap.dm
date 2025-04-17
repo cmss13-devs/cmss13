@@ -1237,13 +1237,20 @@ SUBSYSTEM_DEF(minimaps)
 	screen_loc = "15,7"
 	COOLDOWN_DECLARE(update_cooldown)
 
+/atom/movable/screen/minimap_tool/update/Initialize(mapload, zlevel, minimap_flag, linked_map, owner)
+	. = ..()
+
+/atom/movable/screen/minimap_tool/update/proc/cooldown_finished()
+	icon_state = initial(icon_state)
+
 /atom/movable/screen/minimap_tool/update/clicked(location, list/modifiers)
 	if(!COOLDOWN_FINISHED(src, update_cooldown))
 		to_chat(location, SPAN_WARNING("Wait another [COOLDOWN_SECONDSLEFT(src, update_cooldown)] seconds before sending another update."))
 		return
 
 	COOLDOWN_START(src, update_cooldown, CANVAS_COOLDOWN_TIME)
-
+	addtimer(CALLBACK(src, PROC_REF(cooldown_finished)), CANVAS_COOLDOWN_TIME)
+	icon_state = "update_cooldown"
 	//Forgive me
 	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
 		var/datum/action/minimap/minimap_action = locate() in player.actions

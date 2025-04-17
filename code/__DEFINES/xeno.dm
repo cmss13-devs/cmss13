@@ -324,6 +324,7 @@
 #define XENO_SPEED_TIER_9 -1.6
 #define XENO_SPEED_TIER_10 -1.8
 #define XENO_SPEED_RUNNER -2
+#define XENO_SPEED_CRUSHER 0.1
 
 // Xeno damage categories
 #define XENO_DAMAGE_TIER_1 20 * XENO_UNIVERSAL_DAMAGEMULT

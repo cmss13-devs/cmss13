@@ -41,23 +41,23 @@
 	var/obj/effect/alien/weeds/turf_weeds = locate() in bound_xeno.loc
 	if(!turf_weeds)
 		weed_strength = 0
-		weed_strength_message = "! The lack of weeds belonging to our hive makes for poor reinforcement!"
+		weed_strength_message = "! There are no weeds to reinforce us!"
 		return
 
-	if(turf_weeds.linked_hive.hivenumber == bound_xeno.hivenumber)
+	if(HIVE_ALLIED_TO_HIVE(turf_weeds.linked_hive.hivenumber, bound_xeno.hivenumber))
 		switch(turf_weeds.weed_strength)
 			if(WEED_LEVEL_WEAK)
 				weed_strength = 1
-				weed_strength_message = "! The [turf_weeds] barely reinforce us!"
+				weed_strength_message = "! [turf_weeds] slightly reinforce us!"
 			if(WEED_LEVEL_STANDARD)
 				weed_strength = 2
-				weed_strength_message = "! The [turf_weeds] reinforce us!"
+				weed_strength_message = "! [turf_weeds] reinforce us!"
 			if(WEED_LEVEL_HARDY)
 				weed_strength = 3
-				weed_strength_message = "! The [turf_weeds] strongly reinforce us!"
+				weed_strength_message = "! [turf_weeds] strongly reinforce us!"
 			if(WEED_LEVEL_HIVE)
 				weed_strength = 4
-				weed_strength_message = "! The [turf_weeds] greatly reinforce us!"
+				weed_strength_message = "! [turf_weeds] greatly reinforce us!"
 
 /datum/behavior_delegate/sentinel_mangonel/proc/entrench_effects(effects_active)
 	last_armor_buff = 15 + (5 * weed_strength)
@@ -94,12 +94,8 @@
 // Entrench
 /datum/action/xeno_action/onclick/entrench/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!istype(xeno))
-		return
-
 	var/datum/behavior_delegate/sentinel_mangonel/beh_del = xeno.behavior_delegate
-	if(!istype(beh_del))
-		return
+
 
 	if(!xeno.check_state())
 		return
@@ -127,12 +123,7 @@
 
 /datum/action/xeno_action/onclick/entrench/life_tick()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!istype(xeno))
-		return
-
 	var/datum/behavior_delegate/sentinel_mangonel/beh_del = xeno.behavior_delegate
-	if(!istype(beh_del))
-		return
 
 	if(beh_del.entrenched)
 		. = check_and_use_plasma_owner(plasma_cost)
@@ -144,12 +135,7 @@
 // Adaptive Spit
 /datum/action/xeno_action/activable/adaptive_spit/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno.check_state())
-		return
-
 	var/datum/behavior_delegate/sentinel_mangonel/beh_del = xeno.behavior_delegate
-	if(!istype(beh_del))
-		return
 
 	if(!action_cooldown_check())
 		return
@@ -193,9 +179,6 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	var/datum/effect_system/smoke_spread/xeno_slow_smokescreen/smokescreen
 	smokescreen = new /datum/effect_system/smoke_spread/xeno_slow_smokescreen
-
-	if(!isxeno(owner))
-		return
 
 	if(!action_cooldown_check())
 		return

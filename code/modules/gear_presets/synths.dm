@@ -36,7 +36,7 @@
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/new_human, client/mob_client)
 	new_human.allow_gun_usage = FALSE
 
-	if(preset_generation_support)
+	if(preset_generation_support && new_human.client)
 		switch(new_human.client?.prefs?.synthetic_type)
 			if(SYNTH_GEN_ONE, SYNTH_GEN_TWO)
 				new_human.set_skills(/datum/skills/colonial_synthetic)
@@ -128,6 +128,7 @@
 	assignment = JOB_SYNTH
 	rank = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/colonial_synthetic
+	preset_generation_support = TRUE
 
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,
@@ -732,7 +733,7 @@
 		WEAR_FEET = /obj/item/clothing/shoes/dress,
 		WEAR_L_HAND = /obj/item/weapon/telebaton
 	)
-
+	preset_generation_support = FALSE
 	survivor_variant = CORPORATE_SURVIVOR
 
 //*****************************************************************************************************/

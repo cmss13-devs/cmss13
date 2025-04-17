@@ -1400,7 +1400,7 @@
 	},
 /obj/item/storage/box/m56d_hmg,
 /obj/structure/machinery/power/apc/power/west,
-/turf/open/floor/plating,
+/turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/clf_dropship)
 "sT" = (
 /obj/structure/shuttle/part/dropship_clf{
@@ -2877,7 +2877,7 @@
 /area/lv759/indoors/spaceport/clf_dropship)
 "Pj" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/almayer/test_floor4,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Pq" = (
 /obj/structure/pipes/standard/manifold/hidden/dark{

@@ -1232,7 +1232,7 @@
 /area/lv759/outdoors/colony_streets/central_streets)
 "ie" = (
 /obj/structure/machinery/power/apc/no_power/east,
-/turf/open/shuttle/elevator,
+/turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "ij" = (
 /obj/structure/machinery/door_control{
@@ -2196,7 +2196,7 @@
 /turf/open/floor/hybrisa/metal/stripe_red/east,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "oR" = (
-/turf/open/shuttle/elevator,
+/turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "pb" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,

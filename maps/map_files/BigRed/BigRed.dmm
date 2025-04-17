@@ -19330,7 +19330,6 @@
 	dir = 4
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -34974,7 +34973,6 @@
 "tQo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -35021,17 +35019,14 @@
 /area/bigredv2/outside/c)
 "tRV" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
 	},
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
@@ -38928,17 +38923,14 @@
 /area/bigredv2/caves/lambda/research)
 "xWr" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)

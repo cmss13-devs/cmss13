@@ -1,25 +1,35 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ai" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
 	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"ai" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "aE" = (
 /obj/item/shard,
 /turf/open/floor/prison/darkyellowcorners2,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "aK" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "cK" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -28,9 +38,9 @@
 /area/desert_dam/interior/dam_interior/smes_backup)
 "ds" = (
 /obj/structure/disposalpipe/segment,
-/obj/item/stack/rods,
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/desert_dam/interior/dam_interior/control_room)
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "dA" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/burnt_platingdmg3,
@@ -38,27 +48,21 @@
 "dC" = (
 /obj/structure/window/framed/hangar,
 /turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "dQ" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/smes_main)
 "dZ" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
 /obj/structure/machinery/floodlight,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
-"ei" = (
-/obj/structure/machinery/computer3/powermonitor,
-/turf/open/floor/darkyellow2/north,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "ew" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
@@ -69,8 +73,9 @@
 	level = 3;
 	pixel_y = 17
 	},
+/obj/item/ammo_casing,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "eH" = (
 /turf/template_noop,
 /area/template_noop)
@@ -90,21 +95,12 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "gm" = (
-/obj/structure/largecrate/random/case/small{
-	pixel_y = 6;
-	pixel_x = 3
-	},
-/obj/structure/sign/poster/safety{
-	pixel_y = 32
-	},
-/turf/open/floor/darkyellowcorners2/east,
-/area/desert_dam/interior/dam_interior/control_room)
+/turf/open/floor/prison/darkyellowcorners2/north,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "gR" = (
 /obj/structure/machinery/power/apc/no_power/west,
-/obj/structure/surface/table,
-/obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison/darkyellow2/west,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "hm" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -122,75 +118,39 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "id" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/surface/table,
-/obj/item/device/analyzer{
-	pixel_x = -5
-	},
-/obj/effect/spawner/random/powercell{
-	pixel_x = 5
-	},
 /turf/open/floor/prison/darkyellow2/west,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "iu" = (
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/desert_dam/interior/dam_interior/smes_backup)
-"iN" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/item/prop/alien/hugger,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
-"jk" = (
-/obj/structure/window/framed/hangar,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/engine_room)
 "jz" = (
 /obj/structure/window/framed/hangar,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_main)
 "jC" = (
-/obj/structure/barricade/wooden{
-	dir = 4
-	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "kl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/wooden{
-	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
-	dir = 1;
-	health = 25000;
-	layer = 5;
-	level = 3;
-	pixel_y = 17
-	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "kV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "mc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
-"mk" = (
-/obj/item/stack/cable_coil,
-/obj/item/stack/rods,
-/obj/item/shard,
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/desert_dam/interior/dam_interior/engine_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "mp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing,
@@ -199,27 +159,23 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "ni" = (
-/obj/item/shard,
-/turf/open/floor/prison/darkyellow2/east,
-/area/desert_dam/interior/dam_interior/control_room)
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/stairs,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "ns" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
-"nN" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/cell_charger{
-	pixel_y = 4;
-	pixel_x = 2
+/obj/structure/closet/emcloset{
+	pixel_x = 4
 	},
-/turf/open/floor/prison/darkyellow2,
-/area/desert_dam/interior/dam_interior/control_room)
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"nN" = (
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard,
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "nP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -230,17 +186,6 @@
 /obj/item/shard,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/desert_dam/interior/dam_interior/engine_room)
-"nT" = (
-/obj/structure/surface/table,
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = 7
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = -7;
-	pixel_y = 4
-	},
-/turf/open/floor/darkyellow2/north,
-/area/desert_dam/interior/dam_interior/control_room)
 "oj" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -264,14 +209,12 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "qR" = (
-/obj/structure/machinery/computer/atmos_alert,
-/obj/structure/surface/table,
 /turf/open/floor/prison/darkyellow2/northeast,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "re" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/darkyellowcorners2/west,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "sf" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/plating,
@@ -286,14 +229,7 @@
 "sD" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/darkyellow2,
-/area/desert_dam/interior/dam_interior/control_room)
-"sP" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop/colony/used_flare,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "tH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -305,7 +241,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "uQ" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /obj/effect/landmark/objective_landmark/close,
@@ -327,7 +263,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "yn" = (
 /obj/structure/largecrate/empty/case/double,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -344,51 +280,43 @@
 	},
 /obj/item/shard,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "zE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "zX" = (
-/obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /obj/effect/landmark/corpsespawner/engineer,
+/obj/item/ammo_casing,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "AC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
-"AE" = (
-/turf/open/floor/prison/darkyellow2/east,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "AQ" = (
-/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "AU" = (
 /obj/structure/window_frame/hangar,
 /obj/item/prop/alien/hugger,
 /obj/item/shard,
 /turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "BW" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/smes_backup)
 "Cm" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/closet/firecloset{
+	pixel_x = -4
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/desert_dam/interior/dam_interior/control_room)
+/turf/open/floor/prison/darkyellow2/east,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Cn" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -400,18 +328,12 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "Dl" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /obj/effect/spawner/random/gun/civ/highchance,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
-"Ex" = (
-/obj/structure/bed/chair/office/light{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "EV" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/phoron/medium_stack,
@@ -420,7 +342,7 @@
 "EW" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/darkyellowcorners2/east,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Fm" = (
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
@@ -450,21 +372,22 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 1;
+	health = 25000;
+	layer = 5;
+	level = 3;
+	pixel_y = 17
+	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Gw" = (
-/obj/structure/machinery/colony_floodlight_switch{
-	pixel_y = 30
-	},
-/obj/effect/decal/warning_stripes{
-	pixel_y = 30
-	},
-/obj/structure/largecrate/random/mini/small_case{
-	pixel_x = -9;
-	pixel_y = 10
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25"
 	},
 /turf/open/floor/prison/darkyellow2/west,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "GI" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
@@ -474,7 +397,7 @@
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Ji" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -484,7 +407,7 @@
 	name = "\improper Engineering Hallway"
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "JB" = (
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
@@ -492,10 +415,8 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/turf/open/floor/plating/burnt_platingdmg3,
-/area/desert_dam/interior/dam_interior/control_room)
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Lp" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -508,12 +429,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
-"LC" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/desert_dam/interior/dam_interior/engine_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "LR" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/largecrate/random/barrel/yellow{
@@ -538,19 +456,16 @@
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Ra" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Rx" = (
-/obj/structure/surface/table,
-/obj/item/stack/cable_coil,
-/obj/effect/spawner/random/tool,
 /turf/open/floor/prison/darkyellow2,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "RI" = (
 /turf/open/floor/plating/warnplate/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
@@ -564,7 +479,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Sf" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -585,9 +500,10 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_main)
 "VT" = (
-/obj/item/shard,
-/turf/open/floor/prison/darkyellowcorners2/north,
-/area/desert_dam/interior/dam_interior/control_room)
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "VU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper SMES"
@@ -595,13 +511,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Wb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/ammo_casing,
 /turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "WM" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/disposalpipe/segment{
@@ -618,16 +533,13 @@
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/smes_backup)
 "XW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/prop/colony/used_flare,
-/turf/open/floor/prison/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs,
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "YL" = (
-/obj/structure/machinery/power/monitor{
-	name = "Core Power Monitoring"
-	},
-/turf/open/floor/darkyellow2/north,
-/area/desert_dam/interior/dam_interior/control_room)
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Zb" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /obj/effect/landmark/corpsespawner/engineer,
@@ -647,8 +559,10 @@
 /area/desert_dam/interior/dam_interior/smes_backup)
 "Zm" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/turf/closed/wall/hangar{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "Zn" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -670,14 +584,9 @@
 /area/desert_dam/interior/dam_interior/smes_backup)
 "ZL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/interior/dam_interior/control_room)
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 
 (1,1,1) = {"
 dQ
@@ -716,7 +625,7 @@ BW
 (3,1,1) = {"
 VU
 Ra
-sP
+Ra
 Lu
 Ra
 hr
@@ -731,9 +640,9 @@ pj
 BW
 "}
 (4,1,1) = {"
-Zm
-Zm
-Zm
+kl
+kl
+kl
 Gd
 kl
 ZL
@@ -783,12 +692,12 @@ FU
 "}
 (7,1,1) = {"
 SM
-nT
-mc
+YL
+ab
 mc
 mc
 jC
-Sd
+aa
 OS
 FU
 uQ
@@ -800,8 +709,8 @@ BW
 "}
 (8,1,1) = {"
 jz
-ei
-Ex
+YL
+XW
 XW
 kV
 Zm
@@ -818,10 +727,10 @@ BW
 (9,1,1) = {"
 dQ
 qR
-AE
+ni
 ni
 VT
-iN
+Zm
 Cm
 nN
 BW
@@ -834,13 +743,13 @@ BW
 "}
 (10,1,1) = {"
 oj
-jk
-jk
-yR
-yR
-mk
+oj
+oj
+oj
+oj
+oj
 nP
-LC
+yR
 BW
 BW
 BW

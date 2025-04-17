@@ -53,6 +53,12 @@
 	},
 /turf/open/floor/floor4,
 /area/desert_dam/exterior/roof)
+"k" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
 "l" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/prop/alien/hugger,
@@ -61,6 +67,10 @@
 "m" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
 /turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"n" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
 "o" = (
 /obj/effect/decal/cleanable/dirt,
@@ -106,6 +116,10 @@
 /obj/structure/platform/metal/kutjevo_smooth,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
+"w" = (
+/obj/item/clothing/head/cmcap/wy_cap,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
 "x" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -123,6 +137,13 @@
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 3;
 	pixel_y = 17
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"B" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 4
 	},
 /turf/open/floor/dark,
 /area/desert_dam/exterior/roof)
@@ -289,7 +310,7 @@ O
 c
 o
 b
-H
+w
 H
 H
 c
@@ -361,7 +382,7 @@ c
 H
 d
 c
-H
+k
 c
 c
 U
@@ -372,10 +393,10 @@ V
 m
 h
 t
-c
+B
 X
 H
-H
+n
 F
 U
 R

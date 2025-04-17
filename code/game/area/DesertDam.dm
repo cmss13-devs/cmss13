@@ -87,6 +87,18 @@
 	name = "Engineering Main Substation"
 	icon_state = "purple"
 
+/area/desert_dam/interior/dam_interior/lower_stairwell
+	name = "Engineering Lower Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/interior/dam_interior/upper_stairwell
+	name = "Engineering Upper Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/interior/dam_interior/break_room/upper
+	name = "Engineering Upper Breakroom"
+	icon_state = "purple"
+
 /area/desert_dam/interior/dam_interior/smes_backup
 	name = "Engineering Secondary Backup Substation"
 	icon_state = "green"
@@ -252,6 +264,9 @@
 /area/desert_dam/building/substation/southwest
 	name = "Command Substation"
 	icon_state = "southwestern_ss"
+
+/area/desert_dam/building/substation/southwest/solar
+	name = "Solar Power Monitering"
 
 /area/desert_dam/building/substation/west
 	name = "Command Substation"
@@ -500,6 +515,11 @@
 
 /area/desert_dam/building/warehouse/breakroom
 	name = "Warehouse Breakroom"
+	icon_state = "green"
+	linked_lz = DROPSHIP_LZ2
+
+/area/desert_dam/building/warehouse/office
+	name = "Warehouse Overlook Office"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ2
 

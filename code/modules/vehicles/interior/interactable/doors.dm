@@ -67,13 +67,13 @@
 			msg_admin_niche("[key_name(user)] attempted to prime \a [nade.name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
 			return
 
-		user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
-		SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
+		user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door."),
+		SPAN_WARNING("You take position to throw [nade] through the door."))
 		if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 
-		user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
-		SPAN_WARNING("You throw [nade] through the door of the [src]"))
+		user.visible_message(SPAN_WARNING("[user] throws [nade] through the door!"),
+		SPAN_WARNING("You throw [nade] through the door."))
 
 		var/turf/exit_turf = get_exit_turf()
 		user.drop_held_item()

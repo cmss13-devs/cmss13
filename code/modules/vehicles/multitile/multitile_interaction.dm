@@ -115,7 +115,7 @@
 			return
 
 		user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
-		SPAN_WARNING("You throw [nade] through the door of the [src]"))
+		SPAN_WARNING("You throw [nade] through the door of the [src]."))
 
 		user.drop_held_item()
 		interior.enter(nade, entrance_used)

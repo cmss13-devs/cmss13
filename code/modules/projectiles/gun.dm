@@ -826,7 +826,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			if((GUN_DURABILITY_MEDIUM + 1) to GUN_DURABILITY_HIGH)
 				durability_text = SPAN_ORANGE("normal condition.")
 			if((GUN_DURABILITY_HIGH + 1) to 99)
-				durability_text = SPAN_GREEN("good condition.")
+				durability_text = SPAN_GREEN("fine condition.")
 			if(GUN_DURABILITY_MAX)
 				durability_text = SPAN_GREEN("perfect condition!")
 		. += SPAN_INFO("[src] is in [durability_text]")

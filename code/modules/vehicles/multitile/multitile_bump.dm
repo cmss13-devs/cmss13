@@ -595,11 +595,15 @@
 	var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
 	var/dmg = FALSE
 
+	var/mob_moved = FALSE
+	var/mob_knocked_down = is_mob_incapacitated()
+
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
-		if(driver && get_target_lock(driver.faction))
-			apply_effect(0.5, WEAKEN)
-		else
-			apply_effect(1, WEAKEN)
+		if(!mob_knocked_down)
+			var/direction_taken = pick(45, 0, -45)
+			mob_moved = step(src, turn(V.last_move_dir, direction_taken))
+			if(!mob_moved)
+				mob_moved = step(src, turn(V.last_move_dir, -direction_taken))
 	else if(V.vehicle_flags & VEHICLE_CLASS_LIGHT)
 		dmg = TRUE
 		if(get_target_lock(driver.faction))
@@ -629,6 +633,11 @@
 			msg_admin_ff("[key_name(driver)] rammed and damaged member of allied faction [key_name(src)] with \the [V] in [get_area(src)] [ADMIN_JMP(driver)] [ADMIN_PM(driver)]")
 	else
 		log_attack("[key_name(src)] was friendly pushed by [key_name(driver)] with [V].") //to be able to determine whether vehicle was pushing friendlies
+
+	if(mob_knocked_down)
+		return TRUE
+	else if (mob_moved)
+		playsound(loc, "punch", 25, 1)
 
 	return TRUE
 

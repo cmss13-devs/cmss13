@@ -1,0 +1,6 @@
+author: "Killfish"
+delete-after: True
+changes:
+  - rscdel: "Removed two entirely unused variables"
+  - balance: "Burrower now has a minimum travel time of 1 second, and unburrow stun has been reduced from 2 to 1.5. No more stunlocking, and surprise solocapping in FOB is now a bit harder."
+  - balance: "Tremor has had its cooldown reduced from 45 seconds to 30 seconds."

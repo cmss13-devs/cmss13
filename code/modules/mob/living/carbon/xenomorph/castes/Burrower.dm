@@ -263,9 +263,7 @@
 		to_chat(src, SPAN_NOTICE("We cannot tunnel to there!"))
 	tunnel = TRUE
 	to_chat(src, SPAN_NOTICE("We start tunneling!"))
-	var/target_distance = get_dist(src, target)
-	if(target_distance == 0)
-		target_distance = 1 // This is to prevent stunlocking
+	var/target_distance = max(get_dist(src, target), 1) // Min distance of 1 is to prevent stunlocking
 	tunnel_timer = (target_distance*10) + world.time
 	process_tunnel(target)
 

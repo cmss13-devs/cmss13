@@ -2818,9 +2818,7 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
 	},
-/obj/item/ore/uranium{
-	
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "RP" = (

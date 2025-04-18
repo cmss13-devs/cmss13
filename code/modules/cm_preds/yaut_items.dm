@@ -330,6 +330,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	ignore_z = TRUE
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
+	minimap_flag = MINIMAP_FLAG_YAUTJA
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.

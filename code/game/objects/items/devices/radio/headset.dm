@@ -370,8 +370,15 @@
 	if(!wearer.assigned_equipment_preset || !wearer.assigned_equipment_preset.minimap_icon)
 		return
 
+	var/obj/item/card/id/ID = wearer.get_idcard()
+	var/icon_to_use
+	if(ID.minimap_icon_override)
+		icon_to_use = ID.minimap_icon_override
+	else
+		icon_to_use = wearer.assigned_equipment_preset.minimap_icon ? wearer.assigned_equipment_preset.minimap_icon : "unknown"
+
 	var/image/background = image('icons/ui_icons/map_blips.dmi', wearer.assigned_squad?.background_icon ? wearer.assigned_squad.background_icon : wearer.assigned_equipment_preset.minimap_background)
-	
+
 	if(wearer.stat == DEAD)
 		if(wearer.undefibbable)
 			background.overlays += image('icons/ui_icons/map_blips.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
@@ -383,7 +390,7 @@
 				background.overlays += image('icons/ui_icons/map_blips.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
 	if(wearer.assigned_squad)
 		var/image/underlay = image('icons/ui_icons/map_blips.dmi', null, "squad_underlay")
-		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, wearer.assigned_equipment_preset.minimap_icon)
+		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, icon_to_use)
 		background.overlays += underlay
 		background.overlays += overlay
 
@@ -393,8 +400,8 @@
 
 		SSminimaps.add_marker(wearer, minimap_flag, background)
 		return
-	
-	background.overlays += image('icons/ui_icons/map_blips.dmi', null, wearer.assigned_equipment_preset.minimap_icon)
+
+	background.overlays += image('icons/ui_icons/map_blips.dmi', null, icon_to_use)
 	SSminimaps.add_marker(wearer, minimap_flag, background)
 
 ///Give minimap action to wearer

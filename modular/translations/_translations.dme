@@ -144,7 +144,3 @@
 #include "code/research/code/prop_special.dm"
 
 #include "code/~undefs.dm"
-
-// Modules
-// admin
-#include "code/modules/admin/autoreply.dm"

@@ -1139,7 +1139,8 @@
 "At" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
@@ -1150,7 +1151,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/maintenance/research)
@@ -1211,7 +1213,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 8;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/research)
@@ -1543,7 +1546,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)

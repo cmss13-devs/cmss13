@@ -132,7 +132,8 @@
 "aO" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
@@ -291,7 +292,8 @@
 "fX" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
@@ -893,7 +895,8 @@
 "xC" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/shiva/interior/colony/s_admin)
@@ -976,7 +979,8 @@
 /area/shiva/interior/garage)
 "Ay" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
@@ -1189,7 +1193,8 @@
 /area/shiva/interior/colony/s_admin)
 "EQ" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -1859,7 +1864,8 @@
 "WF" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)

@@ -591,7 +591,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -601,7 +602,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 8;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -919,7 +921,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 8;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1440,7 +1443,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 1;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1628,7 +1632,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1819,7 +1824,8 @@
 	},
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
+	faction_group = list("CLF");
+	selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)

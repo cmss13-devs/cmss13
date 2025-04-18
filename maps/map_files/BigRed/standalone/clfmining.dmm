@@ -2763,6 +2763,7 @@
 	pixel_y = 9
 	},
 /obj/item/ore/uranium{
+	
 	},
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
@@ -2818,6 +2819,7 @@
 	dir = 4
 	},
 /obj/item/ore/uranium{
+	
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)

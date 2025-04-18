@@ -143,7 +143,7 @@
 "aB" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF")
+	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -304,7 +304,7 @@
 "aZ" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF")
+	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
@@ -697,7 +697,7 @@
 "mH" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF")
+	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -952,7 +952,7 @@
 "xk" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 8;
-	faction_group = list("CLF")
+	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -1507,7 +1507,7 @@
 "OB" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4;
-	faction_group = list("CLF")
+	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
 	},
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,

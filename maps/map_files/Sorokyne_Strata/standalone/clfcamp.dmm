@@ -445,7 +445,7 @@
 "mz" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 8;
-	faction_group = list("CLF")
+	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
@@ -1005,7 +1005,7 @@
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Ho" = (
 /obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF")
+	faction_group = list("CLF"),selected_categories = list("IFF STATUS" = "CLF")
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/exterior/paths/far_north_outpost)

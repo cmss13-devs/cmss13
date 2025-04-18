@@ -8251,7 +8251,8 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
@@ -26286,7 +26287,8 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
@@ -49758,7 +49760,8 @@
 /obj/structure/machinery/door/poddoor/almayer{
 	id = "n_umbilical";
 	name = "\improper Umbillical Airlock";
-	unacidable = 1
+	unacidable = 1;
+	explo_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_umbilical)

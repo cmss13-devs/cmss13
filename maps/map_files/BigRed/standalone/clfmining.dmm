@@ -2762,9 +2762,7 @@
 	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/item/ore/uranium{
-	
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "Rg" = (

@@ -19329,9 +19329,7 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
 	},
-/obj/item/ore/uranium{
-	
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dIH" = (
@@ -35027,9 +35025,7 @@
 	pixel_x = 4;
 	pixel_y = 15
 	},
-/obj/item/ore/uranium{
-	
-	},
+/obj/item/ore/uranium,
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
 "tSY" = (
@@ -38932,9 +38928,7 @@
 	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/item/ore/uranium{
-	
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xWz" = (

@@ -312,3 +312,12 @@
   - bugfix: prevents harmful spray during ceasefire
   efzapa:
   - maptweak: Hunting Ground Evac Shutters are now properly indestructable.
+2025-04-18:
+  BOBAMAx:
+  - bugfix: CO survs on NV will no longer be UASF COs in the CLF insert
+  Nihisohel:
+  - bugfix: Flamers can now discharge properly
+  - bugfix: Skill locked weapons now respect skill checks when attempting a discharge
+  - bugfix: Weapons on safety no longer discharge
+  efzapa:
+  - rscadd: Fax Responders now spawn with a pen in their ear slot.

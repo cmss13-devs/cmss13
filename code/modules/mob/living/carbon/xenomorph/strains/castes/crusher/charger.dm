@@ -34,7 +34,7 @@
 /datum/xeno_strain/charger/apply_strain(mob/living/carbon/xenomorph/crusher/crusher)
 	crusher.small_explosives_stun = FALSE
 	crusher.health_modifier += XENO_HEALTH_MOD_LARGE
-	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
+	crusher.speed_modifier += XENO_SPEED_FASTMOD_TIER_1
 	crusher.armor_modifier -= XENO_ARMOR_MOD_SMALL
 	crusher.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 	crusher.ignore_aura = "frenzy" // no funny crushers going 7 morbillion kilometers per second

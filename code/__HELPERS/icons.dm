@@ -757,8 +757,12 @@ world
 			icon_state = ""
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
-	if(istype(thing, /obj/item/weapon/gun))
-		center_icon(icon2collapse, 32, 32)
+
+	var/width = icon2collapse.Width()
+	var/height = icon2collapse.Height()
+	if(width != height)
+		var/new_dimension = min(width, height)
+		center_icon(icon2collapse, new_dimension, new_dimension)
 
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 

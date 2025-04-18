@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - code_imp: "lunging is now behavior delegate var"
+  - balance: "You can no longer tackle while lunging"

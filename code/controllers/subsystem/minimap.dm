@@ -1054,17 +1054,18 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/modifiers = params2list(params)
 	var/list/end_coords = params2screenpixel(modifiers["screen-loc"])
 	end_coords = list(end_coords[1] + linked_map.cur_x_shift, end_coords[2] + linked_map.cur_y_shift)
-	draw_line(starting_coords, end_coords)
+	draw_line(starting_coords, end_coords, source)
 	last_drawn = list(starting_coords, end_coords)
 
 /// proc for drawing a line from list(startx, starty) to list(endx, endy) on the screen. yes this is aa ripoff of [/proc/getline]
-/atom/movable/screen/minimap_tool/draw_tool/proc/draw_line(list/start_coords, list/end_coords, draw_color = color)
+/atom/movable/screen/minimap_tool/draw_tool/proc/draw_line(list/start_coords, list/end_coords, mob/source, draw_color = color)
 	// converts these into the unscaled minimap version so we have to do less calculating
 	var/start_x = FLOOR(start_coords[1]/2, 1)
 	var/start_y = FLOOR(start_coords[2]/2, 1)
 	var/end_x = FLOOR(end_coords[1]/2, 1)
 	var/end_y = FLOOR(end_coords[2]/2, 1)
 	var/icon/mona_lisa = icon(drawn_image.icon)
+	msg_admin_niche("[key_name(source)] has drawn a line from ([start_x],[start_y]) to ([end_x],[end_y]) with color [draw_color].")
 
 	//special case 1, straight line
 	if(start_x == end_x)
@@ -1219,6 +1220,7 @@ SUBSYSTEM_DEF(minimaps)
 	labelled_turfs += target
 	var/image/blip = image('icons/ui_icons/map_blips.dmi', null, "label", ABOVE_FLOAT_LAYER)
 	blip.overlays += textbox
+	msg_admin_niche("[key_name(source)] has crated a label at ([target.x],[target.y]) with text: [label_text].")
 	SSminimaps.add_marker(target, minimap_flag, blip)
 
 /atom/movable/screen/minimap_tool/clear

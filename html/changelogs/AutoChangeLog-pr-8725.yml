@@ -1,4 +1,0 @@
-author: "Mikrel0712"
-delete-after: True
-changes:
-  - rscadd: "Added a laser targetting mode to the M402 Mortar. You can now link a laser designator to the mortar, and fire directly on laser targets as an alternative to firing on coordinates."

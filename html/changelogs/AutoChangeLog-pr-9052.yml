@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Lessers and Huggers now have a 5 minute respawn timer for non-lesser/hugger deaths/ghosting"

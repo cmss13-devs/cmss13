@@ -757,6 +757,8 @@ world
 			icon_state = ""
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
+	if(istype(thing, /obj/item/weapon/gun))
+		center_icon(icon2collapse, 32, 32)
 
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 

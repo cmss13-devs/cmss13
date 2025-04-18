@@ -22,7 +22,7 @@
 	caste_desc = "A fast, powerful backline combatant."
 	evolves_to = list(XENO_CASTE_RAVAGER)
 
-	heal_resting = 1.5
+	heal_resting = 2.5
 
 	minimum_evolve_time = 9 MINUTES
 
@@ -133,7 +133,7 @@
 	if(lurker_pounce_action)
 		lurker_pounce_action.knockdown_duration = 2.5 // pounce is empowered
 		lurker_pounce_action.freeze_time = 15 // but you're stuck there for longer
-
+		lurker_pounce_action.throw_speed = SPEED_REALLY_FAST // pounce moves very quick
 	ADD_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 	RegisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(decloak_handler))
 	bound_xeno.stealth = TRUE
@@ -145,6 +145,7 @@
 	if(lurker_pounce_action)
 		lurker_pounce_action.knockdown_duration = 1 // pounce is reverted to runner level
 		lurker_pounce_action.freeze_time = 5
+		lurker_pounce_action.throw_speed = SPEED_FAST
 	bound_xeno.stealth = FALSE
 	REMOVE_TRAIT(bound_xeno, TRAIT_CLOAKED, TRAIT_SOURCE_ABILITY("cloak"))
 	UnregisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)

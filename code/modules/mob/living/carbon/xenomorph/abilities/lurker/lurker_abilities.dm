@@ -2,7 +2,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 8 SECONDS
+	xeno_cooldown = 7 SECONDS
 	plasma_cost = 20
 
 	// Config options
@@ -12,6 +12,7 @@
 	freeze_time = 5 // increased to 15 by cloak pouncing
 	can_be_shield_blocked = TRUE
 	move_during_pounce = FALSE
+	throw_speed = SPEED_FAST // increased to VERYFAST by cloak pouncing
 
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"

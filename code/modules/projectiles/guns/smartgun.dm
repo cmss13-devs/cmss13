@@ -585,9 +585,7 @@
 	var/list/conscious_targets = list()
 	var/list/unconscious_targets = list()
 
-	var/list/targets = GLOB.mob_list.Copy() & range(range, target_turf) & hearers(7, user)
-
-	for(var/mob/living/M in targets)
+	for(var/mob/living/M in orange(range, target_turf))
 		if((M.stat & DEAD))
 			continue // No dead or non living.
 

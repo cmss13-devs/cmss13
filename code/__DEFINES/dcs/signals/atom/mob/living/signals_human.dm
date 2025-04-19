@@ -86,6 +86,3 @@
 
 /// From /mob/living/carbon/human/UnarmedAttack()
 #define COMSIG_HUMAN_UNARMED_ATTACK "human_unarmed_attack"
-
-/// from /modules/animations/animations_library.dm
-#define COMSIG_HUMAN_ANIMATING "human_animating"

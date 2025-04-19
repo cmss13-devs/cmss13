@@ -308,3 +308,15 @@
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM // yeah this thing is gonna rattle inside the barrel when fired
 	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
+// Used by VP76 (OWLF)
+/datum/ammo/bullet/pistol/powerful
+	name = "powerful pistol bullet"
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	debilitate = list(0,0,0,0,0,0,0,2)
+
+	accuracy = HIT_ACCURACY_TIER_2
+	damage = 50
+	penetration = ARMOR_PENETRATION_TIER_6
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
+	effective_range_max = 3 //hopefully this fixes the damage woes.
+	damage_falloff = DAMAGE_FALLOFF_TIER_6

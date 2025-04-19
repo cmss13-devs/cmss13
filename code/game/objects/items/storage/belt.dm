@@ -1715,6 +1715,7 @@
 	gun_has_gamemode_skin = TRUE
 	storage_slots = 8
 	max_w_class = 5
+	cant_hold = list(/obj/item/ammo_magazine/rifle/xm51/zx76, /obj/item/weapon/gun/rifle/xm51/zx76)
 	can_hold = list(
 		/obj/item/weapon/gun/rifle/xm51,
 		/obj/item/ammo_magazine/rifle/xm51,

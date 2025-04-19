@@ -52,6 +52,7 @@
 /obj/structure/machinery/defenses/Destroy()
 	owner_mob = null
 	HD = null // FIXME: Might also need to delete. Unsure.
+	GLOB.all_active_defenses -= src
 	if(linked_laptop)
 		linked_laptop.unpair_sentry(src)
 		linked_laptop = null
@@ -102,6 +103,8 @@
 	if(!(placed||static))
 		return FALSE
 
+	GLOB.all_active_defenses += src
+
 	msg_admin_niche("[key_name(usr)] turned on [src] at [get_location_in_text(src)] [ADMIN_JMP(loc)]")
 	turned_on = TRUE
 	power_on_action()
@@ -113,6 +116,7 @@
 	power_off_action()
 	update_icon()
 
+	GLOB.all_active_defenses -= src
 /**
  * Update state category for this structure.
  * @param user: user who has initiated this change.

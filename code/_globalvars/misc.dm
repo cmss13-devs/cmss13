@@ -134,5 +134,8 @@ GLOBAL_VAR(obfs_y)
 /// A number between -10 and 10
 GLOBAL_VAR(obfs_z)
 
-/// List of giant lizards that are alive.
-GLOBAL_LIST_EMPTY(giant_lizards_alive)
+/// The current amount of giant lizards that are alive.
+GLOBAL_VAR_INIT(giant_lizards_alive, 0)
+
+/// Whether AI Xenos should weed or not
+GLOBAL_VAR_INIT(ai_xeno_weeding, TRUE)

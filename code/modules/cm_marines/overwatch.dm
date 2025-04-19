@@ -874,6 +874,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				to_chat(usr, SPAN_DANGER("You cannot send Announcements (muted)."))
 				return
 
+			//Denys access to shipside announcements should the game mode be set to Faction Clash UPP CM, as both maps are considered the "Master Shipmap"
+			if(GLOB.master_mode == GAMEMODE_FACTION_CLASH_UPP_CM && announcement_type == "shipside")
+				to_chat(user, SPAN_WARNING("You cannot make a shipwide announcement due to Operational Security."))
+				return FALSE
+			//
+
 			if((!COOLDOWN_FINISHED(src, cooldown_message) && announcement_type == "groundside") || (!COOLDOWN_FINISHED(src, cooldown_shipside_message) && announcement_type == "shipside"))
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE

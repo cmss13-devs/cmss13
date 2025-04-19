@@ -21,6 +21,7 @@
 	var/add_pmcs = FALSE
 	var/lz_selection = TRUE
 	var/has_squad_overwatch = TRUE
+	var/echo_enabled = TRUE
 	var/faction = FACTION_MARINE
 	var/freq = CRYO_FREQ
 	var/show_command_squad = FALSE
@@ -83,7 +84,7 @@
 	dat += "<BR><A href='byond://?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
 	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
-	if(!echo_squad.active && faction == FACTION_MARINE)
+	if(echo_enabled && !echo_squad.active && faction == FACTION_MARINE)
 		dat += "<BR><A href='byond://?src=\ref[src];operation=activate_echo'>Designate Echo Squad</A>"
 		dat += "<BR><hr>"
 
@@ -429,6 +430,7 @@
 	has_squad_overwatch = FALSE
 	minimap_type = MINIMAP_FLAG_UPP
 	freq = UPP_FREQ
+	echo_enabled = FALSE
 
 /obj/structure/machinery/computer/groundside_operations/clf
 	announcement_title = CLF_COMMAND_ANNOUNCE

@@ -727,6 +727,59 @@
 		if(smoke.amount > 0)
 			smoke.spread_smoke()
 
+/obj/effect/particle_effect/smoke/xeno_slow_gas
+	time_to_live = 12
+	color = "#43D382" // Algea color, for distinction
+	anchored = TRUE
+	spread_speed = 6
+	smokeranking = SMOKE_RANK_HIGH
+
+	var/hivenumber = XENO_HIVE_NORMAL
+
+/obj/effect/particle_effect/smoke/xeno_slow_gas/Initialize(mapload, amount, datum/cause_data/cause_data)
+	if(istype(cause_data))
+		var/datum/ui_state/hive_state/cause_data_hive_state = GLOB.hive_state[cause_data.faction]
+		var/new_hive_number = cause_data_hive_state?.hivenumber
+		if(new_hive_number)
+			hivenumber = new_hive_number
+			set_hive_data(src, new_hive_number)
+
+	return ..()
+
+//No effect when merely entering the smoke turf, for balance reasons
+/obj/effect/particle_effect/smoke/xeno_slow_gas/Crossed(mob/living/carbon/affected_mob as mob)
+	return
+
+/obj/effect/particle_effect/smoke/xeno_slow_gas/affect(mob/living/carbon/affected_mob)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(affected_mob.stat == DEAD)
+		return FALSE
+	if(affected_mob.ally_of_hivenumber(hivenumber))
+		return FALSE
+	if(isyautja(affected_mob) && prob(75))
+		return FALSE
+
+	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob))
+		affected_mob.coughedtime = world.time + 1.5 SECONDS
+		if(prob(50))
+			affected_mob.emote("cough")
+
+	var/effect_amt = floor(6 + amount*6)
+	affected_mob.eye_blurry = max(affected_mob.eye_blurry, effect_amt)
+	affected_mob.EyeBlur(max(affected_mob.eye_blurry, effect_amt))
+
+	var/mob/living/carbon/human/human_mob
+	if(ishuman(affected_mob))
+		human_mob = affected_mob
+		if(human_mob.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+			return FALSE
+
+	to_chat(affected_mob, SPAN_DANGER("Your body feels tingly and slowed!"))
+	affected_mob.Slow(1)
+
+	return TRUE
 
 /////////////////////////////////////////////
 // Smoke spread
@@ -838,3 +891,6 @@
 		smoke.time_to_live = lifetime
 	if(smoke.amount > 0)
 		smoke.spread_smoke(direction)
+
+/datum/effect_system/smoke_spread/xeno_slow_smokescreen
+	smoke_type = /obj/effect/particle_effect/smoke/xeno_slow_gas

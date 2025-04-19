@@ -29,3 +29,35 @@
 	plasma_cost = 50
 
 	var/buff_duration = 50
+
+// Mangonel Abilities
+
+// Entrench
+/datum/action/xeno_action/onclick/entrench
+	name = "Entrench"
+	action_icon_state = "agility_on"
+	macro_path = /datum/action/xeno_action/verb/verb_entrench
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 5 SECONDS
+	plasma_cost = 15
+
+// Adaptive Spit
+/datum/action/xeno_action/activable/adaptive_spit
+	name = "Adaptive Spit"
+	action_icon_state = "xeno_spit"
+	macro_path = /datum/action/xeno_action/verb/verb_adaptive_spit
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	xeno_cooldown = 5 SECONDS
+	plasma_cost = 30
+
+// Gas Shroud
+/datum/action/xeno_action/onclick/gas_shroud
+	name = "Gas Shroud"
+	action_icon_state = "acid_shroud"
+	macro_path = /datum/action/xeno_action/verb/verb_gas_shroud
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 15 SECONDS
+	plasma_cost = 20

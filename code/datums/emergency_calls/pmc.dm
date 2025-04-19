@@ -101,7 +101,7 @@
 /datum/emergency_call/pmc/chem_retrieval/New()
 	..()
 	dispatch_message = "[MAIN_SHIP_NAME], this is USCSS Royce. We are sending a second squad aboard to retrieve all samples of a chemical recently scanned from your research department. If you do not cooperate, the team is authorized to use lethal force and terminate the research department."
-	objectives = "Secure all documents, samples and chemicals containing the property DNA_Disintegrating from [MAIN_SHIP_NAME] research department."
+	objectives = "Secure all documents and samples of chemical 'Xenogenetic Catalyst' from [MAIN_SHIP_NAME] research department. Ensure the vial stays intact and contains 30 units."
 
 /datum/emergency_call/pmc/chem_retrieval/proc/check_objective_info()
 	if(objective_info)

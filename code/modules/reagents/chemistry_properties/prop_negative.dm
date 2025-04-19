@@ -58,20 +58,6 @@
 	if(istype(O,/obj/effect/plantsegment))
 		if(prob(50))
 			qdel(O)
-		return
-	if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
-		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
-
-		if(!tray.seed)
-			return
-		tray.health -= rand(30,50)
-		if(tray.pestlevel > 0)
-			tray.pestlevel -= 2
-		if(tray.weedlevel > 0)
-			tray.weedlevel -= 3
-		tray.toxins += 4
-		tray.check_level_sanity()
-		tray.update_icon()
 
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/M, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(M))
@@ -80,6 +66,13 @@
 	if(C.wear_mask) // Wearing a mask
 		return
 	C.apply_damage(potency, TOX)  // applies potency toxin damage
+
+/datum/chem_property/negative/toxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.health += -1.5*(potency*2)*volume
+	processing_tray.toxins += (potency*2)*volume
 
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE
@@ -165,6 +158,17 @@
 			to_chat(M, SPAN_WARNING("\The [O] melts."))
 		qdel(O)
 
+/datum/chem_property/negative/corrosive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.weedlevel > 0)
+		processing_tray.weedlevel += -1*(potency*2)*volume
+	if(processing_tray.pestlevel > 0)
+		processing_tray.pestlevel += -1*(potency*2)*volume
+
+
+
 /datum/chem_property/negative/biocidic
 	name = PROPERTY_BIOCIDIC
 	code = "BCD"
@@ -182,6 +186,15 @@
 
 /datum/chem_property/negative/biocidic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency)
+
+/datum/chem_property/negative/biocidic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.weedlevel > 0)
+		processing_tray.weedlevel += -1*(potency*2)*volume
+	if(processing_tray.pestlevel > 0)
+		processing_tray.pestlevel += -1*(potency*2)*volume
 
 /datum/chem_property/negative/paining
 	name = PROPERTY_PAINING
@@ -283,6 +296,14 @@
 /datum/chem_property/negative/hemorrhaging/reaction_mob(mob/M, method = TOUCH, volume, potency)
 	M.AddComponent(/datum/component/status_effect/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
 
+/datum/chem_property/negative/hemorrhaging/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += -1*(potency*2)*volume
+	processing_tray.mutation_mod+= 0.2*(potency*2)*volume
+
+
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC
 	code = "CRG"
@@ -298,6 +319,14 @@
 
 /datum/chem_property/negative/carcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
+
+/datum/chem_property/negative/carcinogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 1.5*(potency*2)*volume
+	processing_tray.mutation_level += 10*(potency*2)*volume + processing_tray.mutation_mod
+
 
 /datum/chem_property/negative/hepatotoxic
 	name = PROPERTY_HEPATOTOXIC
@@ -320,17 +349,21 @@
 /datum/chem_property/negative/intravenous
 	name = PROPERTY_INTRAVENOUS
 	code = "INV"
-	description = "Due to chemical composition, this chemical can only be administered intravenously."
+	description = "Due to chemical composition, this chemical can only be administered intravenously. The side effect is improving absorption on the chemical, although this is less effective than natural absorption"
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
+
+/datum/chem_property/negative/intravenous/pre_process(mob/living/M)
+	return list(REAGENT_BOOST = level)
 
 /datum/chem_property/negative/intravenous/reset_reagent()
 	holder.flags = initial(holder.flags)
+	holder.custom_metabolism = initial(holder.custom_metabolism)
 	return ..()
 
 /datum/chem_property/negative/intravenous/update_reagent()
 	holder.flags |= REAGENT_NOT_INGESTIBLE
+	holder.custom_metabolism = holder.custom_metabolism * (level)
 	return ..()
 
 /datum/chem_property/negative/nephrotoxic
@@ -454,6 +487,14 @@
 /datum/chem_property/negative/hypermetabolic/update_reagent()
 	holder.custom_metabolism = holder.custom_metabolism * (1 + POTENCY_MULTIPLIER_VLOW * level)
 	..()
+
+/datum/chem_property/negative/hypermetabolic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.metabolism_adjust += clamp(-20*potency, 0, -130)
+
+
 
 /datum/chem_property/negative/addictive
 	name = PROPERTY_ADDICTIVE

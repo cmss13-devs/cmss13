@@ -10,17 +10,19 @@
 	var/mob_react = TRUE
 	/// The container path required for the reaction to happen
 	var/required_container = null
-
 	/// The resulting amount: Recommended to be set to the total volume of all components
 	var/result_amount = 0
 	/// set to nonzero if secondary reaction
 	var/secondary = 0
 	/// additional reagents produced by the reaction
 	var/list/secondary_results = list()
-	var/requires_heating = 0
+	///flags of indicator of the reaction does this reaction has. potentially violent.
+	var/reaction_type = CHEM_REACTION_CALM
 
-/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume)
-	return
+/datum/chemical_reaction/proc/on_reaction(datum/reagents/holder, created_volume, multiplier)
+	SHOULD_CALL_PARENT(TRUE)
+
+
 
 /datum/chemical_reaction/proc/add_to_filtered_list(reset = FALSE)
 	if(reset)
@@ -49,3 +51,4 @@
 		if(!(initial(M.flags) & REAGENT_TYPE_MEDICAL))
 			return FALSE
 	return TRUE
+

@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { useBackend } from 'tgui/backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
+  Collapsible,
   Divider,
   Dropdown,
   Flex,
@@ -23,6 +23,11 @@ type Upgrade = {
   price_change: number;
 };
 
+type Queue = {
+  name: string;
+  id: string;
+};
+
 type Data = {
   points: number;
   current_clearance: number;
@@ -32,23 +37,15 @@ type Data = {
   value?: number;
   categories: string[];
   upgrades: Upgrade[];
+  print_queue: Queue[];
+  is_processing: boolean;
 };
 
 export const XenomorphExtractor = () => {
   const { act, data } = useBackend<Data>();
-
-  const {
-    organ,
-    points,
-    upgrades,
-    caste,
-    value,
-    categories,
-    current_clearance,
-    is_x_level,
-  } = data;
-  const dropdownOptions = categories;
-  const [selectedTab, setSelectedTab] = useState('NONE');
+  const BulkPrint = [2, 5, 10]; // simple but effective
+  const dropdownOptions = data.categories;
+  const [selectedTab, setSelectedTab] = useSharedState('NONE', 'None');
 
   return (
     <Window width={850} height={800} theme="crtyellow">
@@ -61,33 +58,35 @@ export const XenomorphExtractor = () => {
                   <Button
                     fluid
                     icon="eject"
-                    disabled={!organ}
+                    disabled={!data.organ}
                     onClick={() => act('eject_organ')}
                   >
-                    {!organ ? 'Eject Biomass' : 'Eject ' + caste + ' biomass'}
+                    {!data.organ
+                      ? 'Eject Biomass'
+                      : 'Eject ' + data.caste + ' biomass'}
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
                   <Button
                     fluid
                     icon="eject"
-                    disabled={!organ}
+                    disabled={!data.organ}
                     onClick={() => act('process_organ')}
                   >
-                    {!organ
+                    {!data.organ
                       ? 'Process Biomass'
-                      : 'Process Biomass, Expected value : ' + value}
+                      : 'Process Biomass, Expected value : ' + data.value}
                   </Button>
                 </Stack.Item>
                 <Stack.Item>
-                  <NoticeBox info>Biological Matter : {points}</NoticeBox>
+                  <NoticeBox info>Biological Matter : {data.points}</NoticeBox>
                 </Stack.Item>
               </Stack>
             </Section>
           </Stack.Item>
           <Stack.Item>
             <Section title="Biological Material">
-              {!organ ? (
+              {!data.organ ? (
                 <NoticeBox danger>
                   Recepticle is empty, analyzing is impossible!
                 </NoticeBox>
@@ -96,6 +95,53 @@ export const XenomorphExtractor = () => {
               )}
             </Section>
           </Stack.Item>
+          <Collapsible
+            title={'Process Queue'}
+            buttons={
+              <Button
+                onClick={() => act('toggle_processing')}
+                bold
+                icon={data.is_processing ? 'pause' : 'play'}
+              >
+                {data.is_processing ? 'STOP' : 'START'}
+              </Button>
+            }
+          >
+            <Section mx={3}>
+              <Flex direction={'column-reverse'}>
+                {data.print_queue === null ? (
+                  <span>
+                    <Box>Queue is empty</Box>
+                  </span>
+                ) : (
+                  data.print_queue.map((print_queue) => (
+                    <>
+                      <Flex.Item key={print_queue.name}>
+                        <Box bold italic>
+                          {print_queue.name}
+                          <Button
+                            fluid
+                            onClick={() =>
+                              act('remove_from_queue', {
+                                upgrade_id: print_queue.id,
+                              })
+                            }
+                            bold
+                            ml={100}
+                            top={'-5px'}
+                            textAlign={'center'}
+                          >
+                            Cancel
+                          </Button>
+                        </Box>
+                      </Flex.Item>
+                      <Divider />
+                    </>
+                  ))
+                )}
+              </Flex>
+            </Section>
+          </Collapsible>
           <Divider />
           <Stack.Item>
             <Section title={<span> Select Technology to print.</span>}>
@@ -105,6 +151,7 @@ export const XenomorphExtractor = () => {
                   options={dropdownOptions}
                   color={'#876500'}
                   onSelected={(value) => setSelectedTab(value)}
+                  dropdownTextColor="#ffbf00"
                 />
               </Box>
             </Section>
@@ -116,7 +163,7 @@ export const XenomorphExtractor = () => {
                   <Box m={2} bold>
                     {selectedTab !== 'NONE' && (
                       <LabeledList>
-                        {upgrades.map((upgrades) =>
+                        {data.upgrades.map((upgrades) =>
                           upgrades.category === selectedTab ? (
                             <LabeledList.Item
                               key={upgrades.name}
@@ -128,7 +175,7 @@ export const XenomorphExtractor = () => {
                                 </Box>
                               }
                               buttons={
-                                <Box preserveWhitespace>
+                                <Box preserveWhitespace mb={4}>
                                   {' '}
                                   <Button
                                     fluid
@@ -138,11 +185,31 @@ export const XenomorphExtractor = () => {
                                     onClick={() =>
                                       act('produce', {
                                         ref: upgrades.ref,
+                                        amount: 1,
                                       })
                                     }
                                   >
                                     Print ({upgrades.cost})
                                   </Button>
+                                  <Divider />
+                                  {BulkPrint.map((buttons) => (
+                                    <Button
+                                      key={buttons}
+                                      mr={'1px'}
+                                      width={'35px'}
+                                      tooltip={upgrades.desc}
+                                      tooltipPosition="left"
+                                      textAlign="center"
+                                      onClick={() =>
+                                        act('produce', {
+                                          ref: upgrades.ref,
+                                          amount: buttons,
+                                        })
+                                      }
+                                    >
+                                      x{buttons}
+                                    </Button>
+                                  ))}
                                 </Box>
                               }
                             >

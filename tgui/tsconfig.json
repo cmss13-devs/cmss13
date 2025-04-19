@@ -5,7 +5,7 @@
     "checkJs": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext", "ScriptHost"],
     "module": "ESNext",
@@ -17,5 +17,5 @@
     "strictNullChecks": true,
     "target": "ESNext"
   },
-  "include": ["./*.d.ts", "./packages"]
+  "include": ["./*.d.ts", "./packages", "vitest.config.mts"]
 }

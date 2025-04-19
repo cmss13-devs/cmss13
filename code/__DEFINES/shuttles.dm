@@ -117,6 +117,8 @@
 #define DROPSHIP_SAIPAN "dropship_saipan"
 #define DROPSHIP_MORANA "dropship_morana"
 #define DROPSHIP_DEVANA "dropship_devana"
+#define DROPSHIP_MIDWAY "dropship_midway"
+#define DROPSHIP_TRIPOLI "dropship_tripoli"
 
 #define ALMAYER_DROPSHIP_LZ1 "almayer-hangar-lz1"
 #define ALMAYER_DROPSHIP_LZ2 "almayer-hangar-lz2"
@@ -150,3 +152,4 @@
 #define ADMIN_LANDING_PAD_4 "base-ert4"
 #define ADMIN_LANDING_PAD_5 "base-ert5"
 #define ADMIN_LANDING_PAD_6 "base-ert6"
+#define ADMIN_LANDING_PAD_7 "base-ert7"

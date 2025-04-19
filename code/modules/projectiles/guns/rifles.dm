@@ -171,6 +171,7 @@
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/suppressor/nsg,
 		/obj/item/attachable/attached_gun/shotgun/af13,
@@ -446,6 +447,7 @@
 		/obj/item/attachable/attached_gun/grenade/mk1,
 		/obj/item/attachable/stock/rifle/collapsible,
 		/obj/item/attachable/attached_gun/shotgun,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -1429,6 +1431,7 @@
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY|GUN_SUPPORT_PLATFORM
@@ -1675,6 +1678,7 @@
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/verticalgrip, // Underbarrel
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 
 	random_spawn_muzzle = list() //no default bayonet
@@ -1808,6 +1812,7 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/alt_iff_scope,
 		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -2219,6 +2224,7 @@
 		/obj/item/attachable/attached_gun/grenade/u1rmc,
 		/obj/item/attachable/attached_gun/shotgun,
 		/obj/item/attachable/attached_gun/shotgun/af13,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/scope/mini/nsg23,
@@ -2511,6 +2517,7 @@
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/flashlight,

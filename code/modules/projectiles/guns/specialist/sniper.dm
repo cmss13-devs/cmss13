@@ -15,6 +15,10 @@
 
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_SLOW
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_SNIPER
+	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE
+	durability_loss = GUN_DURABILITY_LOSS_SNIPER
 
 	var/has_aimed_shot = TRUE
 	var/aiming_time = 1.25 SECONDS
@@ -134,7 +138,7 @@
 
 	if(istype(sniper_rifle, /obj/item/weapon/gun/rifle/sniper/XM43E1))
 		var/obj/item/weapon/gun/rifle/sniper/XM43E1/amr = sniper_rifle
-		if((amr.focused_fire_counter >= 1 && amr.focused_fire_counter < 3) && (target == amr.focused_fire_target?.resolve()))
+		if(amr.focused_fire_counter == 1 && target == amr.focused_fire_target?.resolve())
 			sniper_rifle.enable_aimed_shot_icon_alt = TRUE
 		else
 			sniper_rifle.enable_aimed_shot_icon_alt = FALSE
@@ -509,6 +513,7 @@
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/wy,
 		/obj/item/attachable/bayonet/custom,
 		/obj/item/attachable/bayonet/custom/red,
 		/obj/item/attachable/bayonet/custom/blue,

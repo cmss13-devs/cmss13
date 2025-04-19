@@ -367,6 +367,12 @@
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops. This one has straps interweaved with the plates, that allow the user to fire a captured smartgun, if a bit uncomfortably."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
+/obj/item/clothing/suit/storage/militia/gambeson
+	name = "colonial militia gambeson"
+	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops."
+	icon_state = "coordinator_armor"
+	storage_slots = 2
+
 //===========================//CMB\\================================\\
 //=====================================================================\\
 

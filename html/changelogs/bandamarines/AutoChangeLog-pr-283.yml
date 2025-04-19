@@ -1,4 +1,0 @@
-author: "biologed"
-delete-after: True
-changes:
-  - bugfix: "переход по ссылкам в авто-ответах менторов"

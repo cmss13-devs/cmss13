@@ -582,8 +582,12 @@
 	if(!auto_aim)
 		return target_turf
 
-	var/list/conscious_targets = list()
-	var/list/unconscious_targets = list()
+
+	var/dist_unconscious = 9999
+	var/dist_conscious = 9999
+
+	var/mob/living/unconscious_target = null
+	var/mob/living/conscious_target = null
 
 	for(var/mob/living/M in viewers(range, target_turf) & oviewers(9, user))
 		if((M.stat & DEAD))
@@ -595,15 +599,19 @@
 		if(M.stat == DEAD)
 			continue
 
-		if(M.stat == UNCONSCIOUS)
-			unconscious_targets += M
-		else
-			conscious_targets += M
+		var/dist = get_dist_sqrd(user, M)
 
-	if(length(conscious_targets))
-		. = pick(conscious_targets)
-	else if(length(unconscious_targets))
-		. = pick(unconscious_targets)
+		if(M.stat == UNCONSCIOUS && dist_unconscious > dist)
+			dist_unconscious = dist
+			unconscious_target = M
+		else if(dist_conscious > dist)
+			dist_conscious = dist
+			conscious_target = M
+
+	if(conscious_target)
+		. = conscious_target
+	else
+		. = unconscious_target
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")

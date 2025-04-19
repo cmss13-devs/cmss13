@@ -124,3 +124,17 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/TWE.dmi'
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+/obj/item/clothing/mask/gas/clf
+	name = "carbon mask"
+	desc = "Used for obscurity on the frontier."
+	icon_state = "carbon_mask"
+	item_state = "balaclava"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/CLF.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/CLF.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
+	)
+	vision_impair = VISION_IMPAIR_NONE
+	flags_inv_hide = HIDEEARS|HIDEFACE

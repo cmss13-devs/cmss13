@@ -360,6 +360,12 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
+/obj/item/attachable/bayonet/colony
+	name = "survival knife"
+	desc = "Mass produced utility knife."
+	icon_state = "colony_bayonet"
+	attach_icon = "colony_bayonet_a"
+
 /obj/item/attachable/bayonet/co2
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."

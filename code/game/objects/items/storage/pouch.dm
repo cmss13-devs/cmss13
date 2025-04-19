@@ -162,7 +162,7 @@
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/device/radio(src)
-	new /obj/item/attachable/bayonet(src)
+	new /obj/item/attachable/bayonet/colony(src)
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/survival/full/black

@@ -95,7 +95,7 @@
 	mob_min = 2
 	probability = 0
 	max_medics = 2
-	max_smartgunners = 1
+	max_smartgunners = 0
 	var/checked_objective = FALSE
 
 /datum/emergency_call/pmc/chem_retrieval/New()

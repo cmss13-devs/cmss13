@@ -544,12 +544,14 @@
 /obj/item/storage/backpack/marine/satchel/intel/leathersatchel
 	name = "\improper USCM expedition leather satchel"
 	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers."
+	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	icon_state = "satchel"
 	max_storage_space = 20
 
 /obj/item/storage/backpack/marine/satchel/intel/leathersatchelblack
 	name = "\improper USCM expedition leather black satchel"
 	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers. It's black because you're just so unique and gloomy."
+	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	icon_state = "satchel_black"
 	max_storage_space = 20
 

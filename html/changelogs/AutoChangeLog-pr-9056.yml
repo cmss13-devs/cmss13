@@ -1,4 +1,0 @@
-author: "BOBAMAx"
-delete-after: True
-changes:
-  - bugfix: "CO survs on NV will no longer be UASF COs in the CLF insert"

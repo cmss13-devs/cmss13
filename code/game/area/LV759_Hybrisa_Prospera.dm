@@ -568,6 +568,12 @@
 	requires_power = FALSE
 	minimap_color = MINIMAP_AREA_COLONY
 
+/area/lv759/indoors/spaceport/clf_dropship
+	name = "UD-9M 'Dogbite'"
+	icon_state = "wydropship"
+	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
+
 // Garage
 
 /area/lv759/indoors/garage_reception

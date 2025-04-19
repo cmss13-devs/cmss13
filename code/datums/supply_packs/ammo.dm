@@ -533,3 +533,35 @@
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper surplus ammo crate"
 	group = "Ammo"
+
+//------------------------For  L54----------------
+
+/datum/supply_packs/ammo_l54_mag_box
+	name = "Magazine box (L54, 16x regular mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/l54,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper L54 magazines crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_l54_mag_box_ap
+	name = "Magazine box (L54, 16x AP mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/l54/ap,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper L54 AP magazines crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_l54_mag_box_hp
+	name = "Magazine box (L54, 16x HP mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/l54/hp,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper L54 HP magazines crate"
+	group = "Ammo"

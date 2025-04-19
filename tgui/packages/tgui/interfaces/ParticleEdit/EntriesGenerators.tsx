@@ -14,7 +14,7 @@ import {
   type FloatGeneratorColorProps,
   type FloatGeneratorProps,
   P_DATA_GENERATOR,
-  ParticleUIData,
+  type ParticleUIData,
   RandToNumber,
 } from './data';
 import { GeneratorListEntry } from './Generators';

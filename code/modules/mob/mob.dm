@@ -614,7 +614,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/dizzy_process()
 	is_dizzy = 1
 	while(dizziness > 100)
-		SEND_SIGNAL(src, COMSIG_HUMAN_ANIMATING)
+		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		if(client)
 			if(buckled || resting)
 				client.pixel_x = 0
@@ -655,7 +655,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/jittery_process()
 	is_jittery = 1
 	while(jitteriness > 100)
-		SEND_SIGNAL(src, COMSIG_HUMAN_ANIMATING)
+		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		var/amplitude = min(4, jitteriness / 100)
 		pixel_x = old_x + rand(-amplitude, amplitude)
 		pixel_y = old_y + rand(-amplitude/3, amplitude/3)
@@ -804,7 +804,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			return FALSE
 		to_chat(usr, SPAN_WARNING("You attempt to get a good grip on [selection] in [src]'s body."))
 
-	if(!do_after(usr, 80 * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(usr, 2 SECONDS * selection.w_class * usr.get_skill_duration_multiplier(SKILL_SURGERY), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return
 	if(!selection || !src || !usr || !istype(selection))
 		return
@@ -842,7 +842,8 @@ note dizziness decrements automatically in the mob's Life() proc.
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 
-	selection.forceMove(get_turf(src))
+	playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
+	usr.put_in_hands(selection)
 	return TRUE
 
 ///Can this mob resist (default FALSE)

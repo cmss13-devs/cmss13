@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { BoxProps, computeBoxProps } from './Box';
+import { type BoxProps, computeBoxProps } from './Box';
 
 type Props = Partial<{
   /** True is default, this fixes an ie thing */
@@ -40,7 +40,6 @@ export function Image(props: Props) {
   const computedProps = computeBoxProps(rest);
   computedProps['style'] = {
     ...computedProps.style,
-    '-ms-interpolation-mode': fixBlur ? 'nearest-neighbor' : 'auto',
     'image-rendering': `${fixBlur ? 'pixelated' : 'auto'}`,
     objectFit,
   };

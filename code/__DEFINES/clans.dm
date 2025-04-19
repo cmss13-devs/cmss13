@@ -42,6 +42,7 @@
 #define CLAN_RANK_ELDER_INT 5
 #define CLAN_RANK_LEADER_INT 6
 #define CLAN_RANK_ADMIN_INT 7
+#define CLAN_RANK_SUPERADMIN_INT 10
 
 /// Hard limit
 #define CLAN_LIMIT_NUMBER 1
@@ -75,7 +76,7 @@
 
 #define NO_CLAN_LIST list(\
 			clan_id = null,\
-			clan_name = "Clanless",\
+			clan_name = CLAN_NAME_CLANLESS,\
 			clan_description = "This is a list of players without a clan",\
 			clan_honor = null,\
 			clan_keys = list(),\
@@ -92,3 +93,14 @@
 #define CLAN_SHIP_PUBLIC -1
 
 #define ERT_JOB_YOUNGBLOOD "Young Blood"
+
+#define CLAN_ANCILLARY_NONE "None"
+#define CLAN_ANCILLARY_ENFORCER "Enforcer"
+#define CLAN_ANCILLARY_HOUND_MASTER "Hound Master"
+#define CLAN_ANCILLARY_TASK_MASTER "Task Master"
+#define CLAN_ANCILLARY_ADJUTANT "Adjutant"
+#define CLAN_ANCILLARY_SHAMAN "Shaman"
+#define CLAN_ANCILLARY_HIGH_ENFORCER "High Enforcer"
+#define CLAN_ANCILLARY_HIGH_SHAMAN "High Shaman"
+
+#define CLAN_NAME_CLANLESS "Clanless"

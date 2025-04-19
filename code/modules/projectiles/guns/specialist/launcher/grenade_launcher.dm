@@ -109,6 +109,10 @@
 
 
 /obj/item/weapon/gun/launcher/grenade/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/stack/repairable))
+		attempt_repair(user, I)
+		return
+
 	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
 		attach_to_gun(user,I)
 		return

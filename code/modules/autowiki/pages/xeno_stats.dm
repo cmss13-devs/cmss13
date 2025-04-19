@@ -65,7 +65,7 @@
 
 		for(var/stat_comparison in xeno_data)
 			if(xeno_data[stat_comparison] != strain_data[stat_comparison])
-				var/difference = strain_data[stat_comparison] - xeno_data[stat_comparison]
+				var/difference = round(strain_data[stat_comparison] - xeno_data[stat_comparison], 0.01)
 				if(difference > 0)
 					difference = "<span style='color:green'>+[difference]</span>"
 				else

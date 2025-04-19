@@ -381,7 +381,9 @@
 
 	if(wearer.stat == DEAD)
 		var/defib_icon_to_use
-		if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 1 MINUTES)
+		if(wearer.undefibbable)
+			defib_icon_to_use = "undefibbable"
+		else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 1 MINUTES)
 			defib_icon_to_use = "defibbable4"
 		else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 2 MINUTES)
 			defib_icon_to_use = "defibbable3"

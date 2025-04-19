@@ -74,6 +74,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)
+	add_pmc_survivor_weapon(new_human)
+	add_random_survivor_equipment(new_human)
 
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_medic
 
@@ -118,7 +120,8 @@
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health/prescription(new_human), WEAR_EYES)
 	else
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
-	..()
+	add_pmc_survivor_weapon(new_human)
+	add_random_survivor_equipment(new_human)
 
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer
 
@@ -157,7 +160,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_R_HAND)
-	..()
+	add_pmc_survivor_weapon(new_human)
+	add_random_survivor_equipment(new_human)
+
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader
 
 /datum/equipment_preset/survivor/pmc/pmc_leader
@@ -195,7 +200,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)
 	//eyewear
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(new_human), WEAR_EYES)
-	..()
+	add_pmc_survivor_weapon(new_human)
+	add_random_survivor_equipment(new_human)
 
 // /obj/effect/landmark/survivor_spawner/bigred_crashed_cl
 

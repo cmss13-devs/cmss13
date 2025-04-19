@@ -41,11 +41,29 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
+"aai" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/floor/carpet,
+/area/fiorina/station/security/wardens)
+"aaj" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/lz/near_lzI)
 "aak" = (
 /obj/effect/decal/hefa_cult_decals/d32{
 	icon_state = "4"
 	},
 /turf/closed/wall/r_wall/prison_unmeltable,
+/area/fiorina/tumor/servers)
+"aal" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/servers)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
@@ -357,7 +375,7 @@
 /turf/open/floor/prison/whitepurple/west,
 /area/fiorina/station/research_cells/west)
 "ane" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	name = "ceremonial knife"
 	},
 /turf/open/floor/wood,
@@ -39052,7 +39070,7 @@ agi
 agi
 agi
 agi
-agi
+aal
 agi
 agi
 agi
@@ -61244,7 +61262,7 @@ ipa
 rJO
 rJO
 ipa
-rJO
+aai
 rJO
 iqB
 rJO
@@ -81285,7 +81303,7 @@ xeO
 xeO
 xeO
 xeO
-xeO
+aaj
 xeO
 xeO
 xeO

@@ -83,7 +83,7 @@
 			break
 		animate(user, pixel_z = -2, time = 3, delay = 3)
 		animate(pixel_z = -4, time = 3)
-		addtimer(9 DECISECONDS)
+		stoplag(9 DECISECONDS)
 		playsound(user, 'sound/effects/spring.ogg', 40, TRUE, 2)
 
 /obj/structure/weightmachine/weightlifter
@@ -100,11 +100,11 @@
 		if(user.loc != src.loc)
 			break
 		for(var/innerReps = max(reps, 1), innerReps > 0, innerReps--)
-			sleep(3 DECISECONDS)
+			stoplag(3 DECISECONDS)
 			animate(user, pixel_z = (user.pixel_z == 3) ? 5 : 3, time = 3)
 		playsound(user, 'sound/effects/spring.ogg', 40, TRUE, 2)
 	animate(user, pixel_z = 2, time = 3, delay = 3)
-	sleep(6 DECISECONDS)
+	stoplag(6 DECISECONDS)
 	overlays -= swole_overlay
 
 // Treadmill
@@ -139,16 +139,16 @@
 	else
 		icon_state = "back_off"
 
-/obj/structure/machinery/treadmill/Crossed(Mobon)
+/obj/structure/machinery/treadmill/Crossed(atom/movable/thing)
 	. = ..()
-	var/mob/entering_mob = Mobon
+	var/mob/entering_mob = thing
 	if(!istype(entering_mob))
 		return
 	entering_mob.pixel_z += pixel_y + 2
 
-/obj/structure/machinery/treadmill/Uncrossed(Mobon)
+/obj/structure/machinery/treadmill/Uncrossed(atom/movable/thing)
 	. = ..()
-	var/mob/exiting_mob = Mobon
+	var/mob/exiting_mob = thing
 	if(!istype(exiting_mob))
 		return
 	exiting_mob.pixel_z -= pixel_y + 2
@@ -172,10 +172,10 @@
 	if(inoperable())
 		return PROCESS_KILL
 	var/items_moved = 0
-	for(var/atom/movable/Anchored in loc.contents - src)
-		if(!Anchored.anchored)
-			if(Anchored.loc == src.loc)
-				INVOKE_NEXT_TICK(src, PROC_REF(move_thing), Anchored) // to prevent instant movement
+	for(var/atom/movable/object in loc.contents - src)
+		if(!object.anchored)
+			if(object.loc == src.loc)
+				INVOKE_NEXT_TICK(src, PROC_REF(move_thing), object) // to prevent instant movement
 				items_moved++
 		if(items_moved >= 10)
 			break
@@ -186,10 +186,10 @@
 
 /obj/structure/machinery/treadmill/console/Initialize(mapload, ...)
 	. = ..()
-	var/turf/Turf = get_step(src, turn(dir, 180))
-	for(var/obj/Mobon in Turf)
-		if(Mobon.type == /obj/structure/machinery/treadmill)
-			var/obj/structure/machinery/treadmill/sec_half = Mobon
+	var/turf/back_turf = get_step(src, turn(dir, 180))
+	for(var/obj/object in back_turf)
+		if(object.type == /obj/structure/machinery/treadmill)
+			var/obj/structure/machinery/treadmill/sec_half = object
 			second_half_ref = WEAKREF(sec_half)
 			sec_half.second_half_ref = WEAKREF(src)
 			return

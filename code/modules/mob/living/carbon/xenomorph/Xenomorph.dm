@@ -179,6 +179,9 @@
 
 	/// this is the resin mark that is currently being tracked by the xeno
 	var/obj/effect/alien/resin/marker/tracked_marker
+	///The type of minimap this xeno has access too
+	var/datum/action/minimap/minimap_type = /datum/action/minimap/xeno
+	var/datum/weakref/minimap_ref
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -480,7 +483,7 @@
 	time_of_birth = world.time
 
 	//Minimap
-	if(z && hivenumber != XENO_HIVE_TUTORIAL)
+	if(hivenumber != XENO_HIVE_TUTORIAL)
 		INVOKE_NEXT_TICK(src, PROC_REF(add_minimap_marker))
 
 	//Sight
@@ -508,6 +511,9 @@
 	// This can happen if a xeno gets made before the game starts
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
+	minimap_ref = WEAKREF(new minimap_type)
+	var/datum/action/minimap/ref = minimap_ref.resolve()
+	ref.give_to(src, ref)
 
 	creation_time = world.time
 
@@ -526,10 +532,16 @@
 /mob/living/carbon/xenomorph/proc/add_minimap_marker(flags)
 	if(!flags)
 		flags = get_minimap_flag_for_faction(hivenumber)
+	
+	var/image/background = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_background)
+	var/image/xeno = image('icons/ui_icons/map_blips.dmi', null, caste.minimap_icon)
+	background.overlays += xeno
 	if(IS_XENO_LEADER(src))
-		SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon(), overlay_iconstates = list(caste.minimap_leadered_overlay))
+		var/image/overlay = image('icons/ui_icons/map_blips.dmi', null, "xenoleader")
+		background.overlays += overlay
+		SSminimaps.add_marker(src, flags, background)
 		return
-	SSminimaps.add_marker(src, z, hud_flags = flags, given_image = caste.get_minimap_icon())
+	SSminimaps.add_marker(src, flags, background)
 
 /mob/living/carbon/xenomorph/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()

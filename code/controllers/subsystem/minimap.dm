@@ -905,7 +905,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /atom/movable/screen/stop_scroll
 	name = "Stop Scrolling"
-	desc = "Stop the scrolling of the minimap(shared)"
+	desc = "Stop the scrolling of the minimap"
 	icon = 'icons/ui_icons/minimap_buttons.dmi'
 	icon_state = "scroll"
 	screen_loc = "CENTER,TOP"

@@ -1308,6 +1308,13 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Suntex-Sightware rounded shades, bloodred"
 	path = /obj/item/clothing/glasses/sunglasses/hippie/bloodred
 
+// Headband
+
+/datum/gear/civilian/headwear/headband_rebel
+	display_name = "CLF headband"
+	path = /obj/item/clothing/head/headband/rebel
+	fluff_cost = 2
+
 // Civilian shoes
 
 /datum/gear/civilian/shoes

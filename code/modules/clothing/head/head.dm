@@ -307,6 +307,10 @@
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CLF.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CLF.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/headbands.dmi',
+	)
+	item_state_slots = list(
+		WEAR_AS_GARB = "headbandrebel", // will be prefixed with either hat_ or helmet_
 	)
 	item_state_slots = null
 	flags_atom = NO_GAMEMODE_SKIN

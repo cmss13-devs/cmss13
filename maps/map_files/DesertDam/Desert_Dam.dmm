@@ -5631,6 +5631,9 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/item/phone,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayH" = (
@@ -29099,6 +29102,9 @@
 /area/desert_dam/building/medical/virology_wing)
 "cIN" = (
 /obj/structure/machinery/computer/crew,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "cIO" = (

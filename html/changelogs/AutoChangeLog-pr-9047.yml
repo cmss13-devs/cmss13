@@ -1,4 +1,0 @@
-author: "Lagomorphica"
-delete-after: True
-changes:
-  - bugfix: "podlock doors on almayer and tdome no longer blow up from a stiff breeze"

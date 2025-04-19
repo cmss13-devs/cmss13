@@ -1,4 +1,0 @@
-author: "MistChristmas, Drathek"
-delete-after: True
-changes:
-  - qol: "Autowiki: Ignores most bayonets, and other misc. attachments. Compares difference in base vs strain stats. Switches to using isnull so armour damage table populates 0s."

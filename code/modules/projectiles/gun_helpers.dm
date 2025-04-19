@@ -351,10 +351,10 @@ DEFINES in setup.dm, referenced here.
 		var/obj/item/weapon/gun/revolver/revload = src
 		if(flags_gun_features & GUN_INTERNAL_MAG)
 			if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
-				to_chat(user, SPAN_NOTICE("[src] is already at its maximum capacity!"))
+				to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
 				return
 			if(magazine.caliber != caliber)
-				to_chat(user, SPAN_NOTICE("This doesn't match the [src]'s caliber!"))
+				to_chat(user, SPAN_WARNING("This doesn't match the [src]'s caliber!"))
 				return
 			if(magazine.caliber == caliber)
 				if(user.skills)
@@ -368,8 +368,8 @@ DEFINES in setup.dm, referenced here.
 							revload.reload(user, bullet)
 		// actual tactical reloads
 		else if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
-			if(istype(bullet, /obj/item/ammo_magazine/handful))
-				to_chat(user, SPAN_NOTICE("You can't reload with [bullet]!"))
+			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
+				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing the [src]'s chamber!"))
 				return
 			if(current_mag)
 				unload(user, FALSE, TRUE)
@@ -383,7 +383,7 @@ DEFINES in setup.dm, referenced here.
 					master_storage.remove_from_storage(magazine)
 				reload(user, magazine)
 		else
-			to_chat(user, SPAN_NOTICE("This doesn't fit in [src]!"))
+			to_chat(user, SPAN_WARNING("The [magazine] doesn't fit in the [src]!"))
 			return
 	else
 		..()

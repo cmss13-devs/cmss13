@@ -185,6 +185,7 @@
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic
+	preset_generation_support = FALSE
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag/upp
 	role_comm_title = "173/RECON Syn"

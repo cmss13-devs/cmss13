@@ -182,6 +182,7 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic
+	preset_generation_support = FALSE
 	assignment = JOB_CLF_SYNTH
 	rank = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)

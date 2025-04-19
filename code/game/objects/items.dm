@@ -317,6 +317,8 @@
 		. += desc
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
+	if(HAS_TRAIT(src, TRAIT_ITEM_DISSOLVING))
+		. += SPAN_WARNING("It is currently dissolving into bits!")
 
 /obj/item/attack_hand(mob/user)
 	if (!user)
@@ -354,7 +356,6 @@
 /obj/item/attackby(obj/item/W, mob/user)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACKED, W, user) & COMPONENT_CANCEL_ITEM_ATTACK)
 		return
-
 	if(istype(W,/obj/item/storage))
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))

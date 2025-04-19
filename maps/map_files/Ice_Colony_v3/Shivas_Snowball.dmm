@@ -175,6 +175,10 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
+"aaI" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/lz1_valley)
 "aaJ" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/flamer_tank/survivor{
@@ -189,6 +193,10 @@
 /obj/item/tool/pickaxe/drill,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaL" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/shiva/floor3,
+/area/shiva/exterior/lz2_fortress)
 "aaN" = (
 /obj/item/weapon/gun/flamer/survivor,
 /obj/structure/surface/rack,
@@ -28075,7 +28083,7 @@ pGg
 mhP
 otV
 iuK
-iuK
+aaL
 iuK
 iuK
 iuK
@@ -29142,7 +29150,7 @@ kLM
 kLM
 iQq
 iQq
-kLM
+aaI
 iQq
 iQq
 kLM

@@ -1333,6 +1333,10 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"afe" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1342,6 +1346,13 @@
 "afg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
+"afh" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -46443,7 +46454,7 @@ aaT
 aap
 aav
 aaG
-aaT
+afh
 aap
 aav
 aaG
@@ -46957,7 +46968,7 @@ beP
 beP
 aSB
 tVp
-tVp
+afe
 tVp
 tVp
 bgX

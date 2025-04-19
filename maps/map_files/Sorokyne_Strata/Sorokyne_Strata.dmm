@@ -389,6 +389,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+"abq" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement/cement4,
+/area/strata/ag/exterior/landing_zones/lz2)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -413,6 +417,11 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abw" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -37248,7 +37257,7 @@ aol
 aol
 aol
 aol
-aol
+abw
 aol
 cso
 aol
@@ -43266,7 +43275,7 @@ pAZ
 bvE
 bvE
 xTU
-eFa
+abq
 bJI
 vsp
 hue

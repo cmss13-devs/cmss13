@@ -8,6 +8,7 @@
 	icon_state = "marine_jumpsuit"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/jungle.dmi'
 	worn_state = "marine_jumpsuit"
+	w_class = SIZE_LARGE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE

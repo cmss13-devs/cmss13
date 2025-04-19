@@ -207,14 +207,12 @@
 		remove_action(buckled_mob, /datum/action/human_action/mg_exit_vc)
 		UnregisterSignal(buckled_mob, COMSIG_MOB_MG_ENTER_VC)
 		UnregisterSignal(buckled_mob, COMSIG_MOB_MG_EXIT_VC)
-		UnregisterSignal(buckled_mob, list(COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH)) // Чтобы при смерти тоже выходил
 		if(mounted) mounted.on_unset_interaction(buckled_mob)
 
 	// Даем сигналы мобу, если прикручен пулемет и моб сидит и не мертв
 	else if(mounted && !buckled_mob.stat)
 		RegisterSignal(buckled_mob, COMSIG_MOB_MG_ENTER_VC, PROC_REF(on_set_gun_interaction))	// Теперь мы можем перезайти за пулемет
 		RegisterSignal(buckled_mob, COMSIG_MOB_MG_EXIT_VC, PROC_REF(on_unset_gun_interaction))
-		RegisterSignal(buckled_mob, list(COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH), PROC_REF(unbuckle)) // Чтобы при смерти тоже выходил
 		give_action(buckled_mob, /datum/action/human_action/mg_enter_vc)
 
 /obj/structure/bed/chair/stroller/proc/on_set_gun_interaction()

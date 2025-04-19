@@ -43,10 +43,10 @@
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Lead!"))
-		arm_equipment(mob, /datum/equipment_preset/goon/lead, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/goon/lead/bodyguard, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Officer!"))
-		arm_equipment(mob, /datum/equipment_preset/goon/standard, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/goon/standard/bodyguard, TRUE, TRUE)
 
 	print_backstory(mob)
 

@@ -380,10 +380,17 @@
 	var/image/background = image('icons/ui_icons/map_blips.dmi', wearer.assigned_squad?.background_icon ? wearer.assigned_squad.background_icon : wearer.assigned_equipment_preset.minimap_background)
 
 	if(wearer.stat == DEAD)
-		if(wearer.undefibbable)
-			background.overlays += image('icons/ui_icons/map_blips.dmi', null, "undefibbable", ABOVE_FLOAT_LAYER)
+		var/defib_icon_to_use
+		if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 1 MINUTES)
+			defib_icon_to_use = "defibbable4"
+		else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 2 MINUTES)
+			defib_icon_to_use = "defibbable3"
+		else if(world.time > wearer.timeofdeath + wearer.revive_grace_period - 3 MINUTES)
+			defib_icon_to_use = "defibbable2"
 		else
-			background.overlays += image('icons/ui_icons/map_blips.dmi', null, "defibbable", ABOVE_FLOAT_LAYER)
+			defib_icon_to_use = "defibbable"
+
+		background.overlays += image('icons/ui_icons/map_blips.dmi', null, defib_icon_to_use, ABOVE_FLOAT_LAYER)
 		if(!wearer.mind)
 			var/mob/dead/observer/ghost = wearer.get_ghost(TRUE)
 			if(!ghost?.can_reenter_corpse)

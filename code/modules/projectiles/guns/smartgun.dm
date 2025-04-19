@@ -601,11 +601,9 @@
 			conscious_targets += M
 
 	if(length(conscious_targets))
-		sort_list_dist(conscious_targets, user)
-		. = conscious_targets[1]
+		. = pick(conscious_targets)
 	else if(length(unconscious_targets))
-		sort_list_dist(unconscious_targets, user)
-		. = unconscious_targets[1]
+		. = pick(unconscious_targets)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")

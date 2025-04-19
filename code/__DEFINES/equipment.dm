@@ -475,6 +475,9 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 
 //=================================================
+/// Default accessory slot for non-accessory specific clothing
+#define ACCESSORY_SLOT_DEFAULT "Accessory"
+
 #define ACCESSORY_SLOT_UTILITY "Utility"
 #define ACCESSORY_SLOT_ARMBAND "Armband"
 #define ACCESSORY_SLOT_RANK "Rank"

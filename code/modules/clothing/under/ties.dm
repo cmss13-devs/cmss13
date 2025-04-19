@@ -23,7 +23,7 @@
 
 /obj/item/clothing/accessory/attack_self(mob/user)
 	if(can_become_accessory)
-		revert_from_accessory()
+		revert_from_accessory(user)
 
 /obj/item/clothing/accessory/Initialize()
 	. = ..()

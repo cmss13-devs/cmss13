@@ -327,7 +327,6 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	can_become_accessory = TRUE
-	slot = ACCESSORY_SLOT_MASK
 
 /obj/item/clothing/mask/tornscarf/smock/classic
 	icon_state = "smock_classic"

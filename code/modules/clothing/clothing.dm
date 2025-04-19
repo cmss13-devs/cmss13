@@ -17,14 +17,16 @@
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
 
-	// accessory stuff
+	/// accessory stuff
 	var/list/accessories
 	var/list/valid_accessory_slots = list()
 	var/list/restricted_accessory_slots = list()
-	// vars below related to converting clothing to accessories
-	var/can_become_accessory = FALSE //can this clothing item be turned into an accessory?
-	var/slot = ACCESSORY_SLOT_DECOR //default slot for accessories, pathed here for use for non-accessories
-	var/accessory_path = /obj/item/clothing/accessory // for pathing to different accessory subtypes with unique mechanics
+	/// vars below related to converting clothing to accessories
+	var/can_become_accessory = FALSE
+	/// default slot for accessories, pathed here for use for non-accessories
+	var/slot = ACCESSORY_SLOT_DEFAULT
+	/// for pathing to different accessory subtypes with unique mechanics
+	var/accessory_path = /obj/item/clothing/accessory
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)

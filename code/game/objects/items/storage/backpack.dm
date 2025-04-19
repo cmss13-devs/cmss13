@@ -546,9 +546,9 @@
 	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers."
 	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
-    WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
-    WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-    WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 	)
 	icon_state = "satchel"
 	max_storage_space = 20
@@ -558,9 +558,9 @@
 	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers. It's black because you're just so unique and gloomy."
 	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
 	item_icons = list(
-    WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
-    WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-	WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
 	)
 	icon_state = "satchel_black"
 	max_storage_space = 20

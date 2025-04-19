@@ -231,3 +231,142 @@
   - bugfix: Crew manifest will no longer stay open for hostiles or non-USCM (xenos,
       survivors, UPP, etc) joining the game from the lobby.
   - bugfix: Fixed duplicate entries on the crew manifest.
+2025-04-12:
+  Aurallianz:
+  - bugfix: Fixes Intercom and APC in the Memorial Garden Area
+  DoguhanOzgurAkca:
+  - rscadd: Addeded a new area to LV lake house area that isn't underground.
+  MeH0y:
+  - bugfix: the yautja bow now counts as one of your two secondary choices
+  Red-byte3D:
+  - rscdel: New varadero no longer has explosive implant cases, they are now replaced
+      with death alarms
+  SpypigDev:
+  - bugfix: HM tutorial progression no longer counts towards fun facts
+  - bugfix: HM tutorial AI behavioral bugfixes
+  - bugfix: HM tutorial general gameplay bugfixes
+  - rscadd: HM tutorial restocking mechanics
+  realforest2001:
+  - rscadd: Added the reward for winning rat competition from Frozen.
+  - rscadd: Added sprites and function for having rats on your shoulder.
+  - rscadd: Added a faction-wide mutiny system.
+2025-04-13:
+  Aurallianz:
+  - bugfix: fixed an object on Solaris whose sprite is broken in lambda labs.
+  Drathek:
+  - code_imp: DMI merge hook will now try to retain positioning of sprites when handling
+      some conflicts
+  Drulikar:
+  - balance: AMR now resets aimed shot count every 3rd shot (rather than 4th)
+  - balance: AMR no longer applies daze/slow/superslow/knockdown on first aimed shot
+  Git-Nivrak:
+  - admin: Fixed lesser and facehugger logging, added logging for destroyed the sensor
+      tower
+  Joe Lampost, Forest2001:
+  - rscadd: 'Changes the Ai announcement to an elder overseer that only: Yautja, thralls
+      and hellhounds can see'
+  - rscadd: Adds a button for yautja council members to message all alive preds yautja.
+  - rscdel: Removed the Yautja AI announcement
+  - bugfix: The youngblood terminator now displays what it is in the text input
+  - soundadd: added four sounds for the elder overseer
+  - code_imp: moves the whitelist panel to a new tab in the OOC panel
+  Lagomorphica:
+  - balance: yautja duelling weapons now have click delay
+  - refactor: moves predator duelling weapons into proper predator files for both
+      icons and code
+  Nihisohel:
+  - rscadd: A preference for spoken leadership orders have been added. Fulfill your
+      milsim larp fantasies with this. Set to on as default.
+  Steelpoint:
+  - mapadd: During the Faction Clash gamemode. A UPP forward operating base and Landing
+      Zone will be automatically placed on the planet. This will apply to all current
+      ground maps.
+  - mapadd: Furthermore, the USCM FOB will start pre-fortified. However, only one
+      USCM landing zone will be available to use.
+  - bugfix: Fixed trolly vehicle hard deletes (Drathek)
+  - bugfix: Fixed roof_master_node error issue. (cuberound)
+  biologed:
+  - bugfix: fixed the functionality of changing character name via PP
+2025-04-17:
+  Blundir:
+  - bugfix: fixed m81 riot grenade launcher not having onmob icons
+  Drathek:
+  - balance: Lessers and Huggers now have a 5 minute respawn timer for non-lesser/hugger
+      deaths/ghosting
+  Mikrel0712:
+  - rscadd: Added a laser targetting mode to the M402 Mortar. You can now link a laser
+      designator to the mortar, and fire directly on laser targets as an alternative
+      to firing on coordinates.
+  Stakeyng:
+  - rscdel: Removed "MOVEMENT ORDER!", "HOLD ORDER!", "FOCUS ORDER!", "WE HOLD THIS
+      GROUND IN THE NAME OF GOD!", "PACK IT UP PEOPLE!", and "STRIFE!" as order phrases
+  - spellcheck: '"SHOOT EM'' DEAD!" is now "SHOOT ''EM DEAD!"'
+  - spellcheck: '"AIM FOR THE KILL!" is now "GO FOR THE KILL!"'
+  - spellcheck: Asterisks used to bold orders close before punctuation.
+  Steelpoint:
+  - rscadd: UPP squad ammo vendors, and cargo vendors, will now be able to vend repair
+      oil and repair kits.
+  - rscadd: UPP personal vendors for combat roles will now be able to dispense repair
+      oil.
+  cuberound:
+  - bugfix: prevents harmful spray during ceasefire
+  efzapa:
+  - maptweak: Hunting Ground Evac Shutters are now properly indestructable.
+2025-04-18:
+  BOBAMAx:
+  - bugfix: CO survs on NV will no longer be UASF COs in the CLF insert
+  Nihisohel:
+  - bugfix: Flamers can now discharge properly
+  - bugfix: Skill locked weapons now respect skill checks when attempting a discharge
+  - bugfix: Weapons on safety no longer discharge
+  efzapa:
+  - rscadd: Fax Responders now spawn with a pen in their ear slot.
+2025-04-19:
+  Drathek:
+  - code_imp: Cleaned up signal usage for wall leaning
+  Killfish:
+  - rscdel: Removed two entirely unused variables
+  - balance: Burrower now has a minimum travel time of 1 second, and unburrow stun
+      has been reduced from 2 to 1.5. No more stunlocking, and surprise solocapping
+      in FOB is now a bit harder.
+  - balance: Tremor has had its cooldown reduced from 45 seconds to 30 seconds.
+  Lagomorphica:
+  - bugfix: podlock doors on almayer and tdome no longer blow up from a stiff breeze
+  MistChristmas:
+  - ui: Adds scalability to the Supply Console so it can be resized and the elements
+      will resize with the window.
+  MistChristmas, Drathek:
+  - qol: 'Autowiki: Ignores most bayonets, and other misc. attachments. Compares difference
+      in base vs strain stats. Switches to using isnull so armour damage table populates
+      0s.'
+  Red-byte3D:
+  - code_imp: lunging is now behavior delegate var
+  - balance: You can no longer tackle while lunging
+  TrollerNoob:
+  - rscadd: A new shipment of Urban, Snow, Classic and Desert variants for the M70B1
+      light flak jacket and the M3-VL pattern flak vest have arrived. Pilots and DCC,
+      rejoice!
+  - rscadd: A new shipment of Urban and Snow variants for the tactical pilot officer
+      flightsuits have also arrived.
+  - rscadd: Classic and Desert variants of the M70 flak jacket have been found in
+      the Almayer's cargo hold, encased in cobwebs.
+  - rscadd: The fine military tailors stationed on Chinook 91 GSO station have finally
+      figured out how to weave buttons into the M70 flak jacket. They can now be unbuttoned
+      and have pockets.
+  - imageadd: Added all map variants for the M70B1 light flak jacket and the M3-VL
+      pattern flak vest.
+  - imageadd: Added Urban/Snow variants for the Tactical Pilot Officer Flightsuit.
+  - imageadd: Added item states for the M70B1 light flak jacket and Tactical Pilot
+      Officer Flightsuit.
+  - imageadd: Added Classic/Desert variants for the standard M70 flak jacket.
+  - imageadd: Added the ability to unbutton the standard M70 flak jacket.
+  - balance: M70 flak jacket now has two item storage slots like the M70B1 light flak
+      jacket, up from zero.
+  - refactor: Removed pilot_alt and pilot_flightsuit_alt icons from uniforms/suits_by_faction
+      and added them to their respective map variants in uniforms/suits_by_map.
+  - refactor: Removed VL_FLAK icons from suits_by_faction and added them to their
+      respective map variants in suits_by_map.
+  - refactor: Moved the M70 flak jacket from armor.dm to marine_coat.dm to standardize
+      its location with the M70B1 light flak jacket.
+  - refactor: Changed the M70 flak jacket's file pathing to jacket/marine/pilot/armor
+      to standardize it with M70B1 light flak jacket's jacket/marine/pilot pathing.

@@ -73,7 +73,7 @@
 			var/iterator = 1
 			for(var/header in gun_ammo_data["damage_armor_profile_headers"])
 				var/damage = gun_ammo_data["damage_armor_profile_marine"][iterator]
-				if(!damage)
+				if(isnull(damage))
 					break
 				armor_data["armor-[header]"] = damage
 				iterator++
@@ -143,6 +143,9 @@
 
 			for(var/attachment_typepath in attachments_by_slot[slot])
 				var/obj/item/attachable/generating_attachment = new attachment_typepath()
+
+				if(IS_AUTOWIKI_SKIP(generating_attachment))
+					continue
 
 				var/attachment_filename = SANITIZE_FILENAME(escape_value(format_text(generating_attachment.name)))
 

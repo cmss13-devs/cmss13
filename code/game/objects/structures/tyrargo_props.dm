@@ -81,3 +81,14 @@
 	density = TRUE
 	layer = ABOVE_FLY_LAYER
 	bound_height = 32
+
+/obj/structure/prop/tyrargo/watchtower
+	name = "Watchtower"
+	desc = "UA military watchtower. Who watches the watchers?"
+	icon = 'icons/obj/structures/props/industrial/watchtower.dmi'
+	icon_state = "watchtower"
+	health = 500
+	density = TRUE
+	layer = ABOVE_FLY_LAYER
+	bound_height = 64
+	bound_width = 64

@@ -784,8 +784,8 @@
 	duration_per_level = 8
 
 	intensitymod_per_level = -0.1
-	durationmod_per_level = 0.3
-	radiusmod_per_level = 0.02
+	durationmod_per_level = 0.2
+	radiusmod_per_level = 0.01
 
 /datum/chem_property/positive/fire/fueling/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
@@ -810,9 +810,9 @@
 	intensity_per_level = 8
 	duration_per_level = -3
 
-	intensitymod_per_level = 0.3
-	durationmod_per_level = -0.15
-	radiusmod_per_level = -0.02
+	intensitymod_per_level = 0.2
+	durationmod_per_level = -0.1
+	radiusmod_per_level = -0.01
 
 	var/static/ignite_threshold = 4
 
@@ -837,9 +837,9 @@
 	value = 1
 	range_per_level = 2
 
-	intensitymod_per_level = -0.08
-	radiusmod_per_level = 0.1
-	durationmod_per_level = -0.08
+	intensitymod_per_level = -0.05
+	radiusmod_per_level = 0.05
+	durationmod_per_level = -0.05
 
 /datum/chem_property/positive/explosive
 	name = PROPERTY_EXPLOSIVE

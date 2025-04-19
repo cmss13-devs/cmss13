@@ -758,7 +758,7 @@
 	overdose_critical = 20
 	chemclass = CHEM_CLASS_SPECIAL
 	flags = REAGENT_NO_GENERATION
-	properties = list(PROPERTY_DNA_DISINTEGRATING = 5, PROPERTY_HEMOSITIC = 1)
+	properties = list(PROPERTY_DNA_DISINTEGRATING = 5, PROPERTY_HEMOSITIC = 2)
 
 
 // Chemfire supplements

@@ -231,11 +231,11 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_shell_box_breaching
-	name = "Shell box (16g) (120x breaching shells)"
+	name = "Shell box (16g) (60x breaching shells)"
 	contains = list(
 		/obj/item/ammo_box/magazine/shotgun/light/breaching,
 	)
-	cost = 40
+	cost = 35
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper shotgun breaching crate"
 	group = "Ammo"

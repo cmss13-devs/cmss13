@@ -535,6 +535,24 @@
 	icon_state = "intel_chestrig"
 	max_storage_space = 20
 
+/obj/item/storage/backpack/marine/satchel/intel/satchel
+	name = "\improper USCM expedition satchel"
+	desc = "A heavy-duty IMP based satchel, can quickly be accessed with only one hand. Reinforced with Kevlar so it doesn't rip. Usually issued to USCM intelligence officers."
+	icon_state = "marinesatch"
+	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/satchel/intel/leathersatchel
+	name = "\improper USCM expedition leather satchel"
+	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers."
+	icon_state = "satchel"
+	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/satchel/intel/leathersatchelblack
+	name = "\improper USCM expedition leather black satchel"
+	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers. It's black because you're just so unique and gloomy."
+	icon_state = "satchel_black"
+	max_storage_space = 20
+
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
 	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."

@@ -47,6 +47,7 @@
 	desc = "These marine gloves will protect the wearer from electric shocks and shrapnal. Standard issue for properly-equipped Marines."
 	icon_state = "black"
 	item_state = "black"
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"

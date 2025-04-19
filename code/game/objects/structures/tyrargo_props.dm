@@ -53,26 +53,50 @@
 // tents
 
 /obj/structure/prop/tyrargo/large_tents
-
+	name = "Tent"
 	icon = 'icons/obj/structures/props/large_tent_props.dmi'
 	icon_state = "medical_tent"
-	unacidable = TRUE
-	unslashable = TRUE
-	explo_proof = TRUE
-	health = 1000000
+	health = 300
+	layer = ABOVE_FLY_LAYER
+	bound_height = 96
+	bound_width = 96
+	density = TRUE
+
+/obj/structure/prop/tyrargo/large_tents/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/items/paper_ripped.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/prop/tyrargo/large_tents/medical
+	name = "Medical Tent"
 	icon_state = "medical_tent"
+
 /obj/structure/prop/tyrargo/large_tents/command
+	name = "Command Tent"
 	icon_state = "command_tent"
+
 /obj/structure/prop/tyrargo/large_tents/supply
+	name = "Supply Tent"
 	icon_state = "supply_tent"
+
 /obj/structure/prop/tyrargo/large_tents/small
+	name = "Tent"
 	icon_state = "small_tent"
+
 /obj/structure/prop/tyrargo/large_tents/small_closed
+	name = "Tent"
 	icon_state = "small_closed_tent"
+
 /obj/structure/prop/tyrargo/large_tents/small_closed/back
+	name = "Tent"
 	icon_state = "small_closed_tent_back"
+
+// Military Light Source
 
 /obj/structure/prop/tyrargo/illuminator
 	icon = 'icons/obj/structures/props/industrial/illuminator.dmi'
@@ -81,6 +105,18 @@
 	density = TRUE
 	layer = ABOVE_FLY_LAYER
 	bound_height = 32
+
+/obj/structure/prop/tyrargo/illuminator/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
+// Watchtower
 
 /obj/structure/prop/tyrargo/watchtower
 	name = "Watchtower"
@@ -92,3 +128,25 @@
 	layer = ABOVE_FLY_LAYER
 	bound_height = 64
 	bound_width = 64
+
+/obj/structure/prop/tyrargo/watchtower/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
+// Signs
+
+/obj/structure/prop/tyrargo/military_alert_sign
+	name = "ICC quarantine notice"
+	desc = "A quarantine poster, bearing the ICC's logo, it reads: This area is designated a secure transit zone by the ICC and US Military. Non-compliance with military directives is punishable under the interplanetary biohazard preparedness act."
+	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
+	icon_state = "military_sign"
+	layer = WALL_OBJ_LAYER
+
+/obj/structure/prop/tyrargo/military_alert_sign/alt
+	icon_state = "military_sign_alt"

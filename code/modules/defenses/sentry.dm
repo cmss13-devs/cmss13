@@ -286,6 +286,7 @@
 
 	if(omni_directional)
 		setDir(get_dir(src, A))
+
 	for(var/i in 1 to burst)
 		if(actual_fire(A))
 			break

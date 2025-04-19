@@ -13,18 +13,30 @@
 	var/datum/supply_packs/reference_package
 
 //===================================
-// Rounds
+// Loose Rounds
 /datum/supply_packs_asrs/ammo_rounds_box_rifle
 	reference_package = /datum/supply_packs/ammo_rounds_box_rifle
 	cost = ASRS_MEDIUM_WEIGHT
 
-/datum/supply_packs_asrs/ammo_rounds_box_rifle_ap
-	reference_package = /datum/supply_packs/ammo_rounds_box_rifle_ap
-	cost = ASRS_LOW_WEIGHT
-
 /datum/supply_packs_asrs/ammo_rounds_box_xm88
 	reference_package = /datum/supply_packs/ammo_rounds_box_xm88
 	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs_asrs/ammo_shell_box
+	reference_package = /datum/supply_packs/ammo_shell_box
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs_asrs/ammo_shell_box_buck
+	reference_package = /datum/supply_packs/ammo_shell_box_buck
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs_asrs/ammo_shell_box_flechette
+	reference_package = /datum/supply_packs/ammo_shell_box_flechette
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs_asrs/ammo_shell_box_breaching
+	reference_package = /datum/supply_packs/ammo_shell_box_breaching
+	cost = ASRS_VERY_LOW_WEIGHT
 
 //===================================
 // Magazines
@@ -48,30 +60,12 @@
 	reference_package = /datum/supply_packs/ammo_mag_box
 	cost = ASRS_VERY_LOW_WEIGHT
 
-/datum/supply_packs_asrs/ammo_mag_box_ap
-	reference_package = /datum/supply_packs/ammo_mag_box_ap
+/datum/supply_packs_asrs/ammo_mag_box_ext
+	reference_package = /datum/supply_packs/ammo_mag_box_ext
+	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_m4ra_mag_box
 	reference_package = /datum/supply_packs/ammo_m4ra_mag_box
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_m4ra_mag_box_ap
-	reference_package = /datum/supply_packs/ammo_m4ra_mag_box_ap
-
-/datum/supply_packs_asrs/ammo_shell_box
-	reference_package = /datum/supply_packs/ammo_shell_box
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_shell_box_buck
-	reference_package = /datum/supply_packs/ammo_shell_box_buck
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_shell_box_flechette
-	reference_package = /datum/supply_packs/ammo_shell_box_flechette
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_shell_box_breaching
-	reference_package = /datum/supply_packs/ammo_shell_box_breaching
 	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_xm51

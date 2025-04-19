@@ -86,7 +86,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/corporate/no_lock, WEAR_J_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 
 /datum/equipment_preset/survivor/goon/engineer
 	name = "Survivor - Corporate Security Goon Technician"
@@ -119,7 +119,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock, WEAR_J_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 
 /datum/equipment_preset/survivor/goon/lead
 	name = "Survivor - Corporate Security Goon Lead"
@@ -152,7 +152,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/no_lock/stripped, WEAR_J_STORE)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 
 // only used on the spawner of all of those above...
 /datum/equipment_preset/synth/survivor/wy/security_synth/goon

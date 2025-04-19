@@ -18,6 +18,10 @@
 	reference_package = /datum/supply_packs/ammo_rounds_box_rifle
 	cost = ASRS_MEDIUM_WEIGHT
 
+/datum/supply_packs_asrs/ammo_rounds_box_rifle_ap
+	reference_package = /datum/supply_packs/ammo_rounds_box_rifle_ap
+	cost = ASRS_LOW_WEIGHT
+
 /datum/supply_packs_asrs/ammo_rounds_box_xm88
 	reference_package = /datum/supply_packs/ammo_rounds_box_xm88
 	cost = ASRS_LOW_WEIGHT
@@ -66,6 +70,10 @@
 
 /datum/supply_packs_asrs/ammo_m4ra_mag_box
 	reference_package = /datum/supply_packs/ammo_m4ra_mag_box
+	cost = ASRS_LOW_WEIGHT
+
+/datum/supply_packs_asrs/ammo_m4ra_mag_box_ap
+	reference_package = /datum/supply_packs/ammo_m4ra_mag_box_ap
 	cost = ASRS_VERY_LOW_WEIGHT
 
 /datum/supply_packs_asrs/ammo_xm51

@@ -225,9 +225,15 @@
 		return
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
-	if(lurker_invis)
-		lurker_invis.invisibility_off(0.5) // If the lurker is cloaked when pouncing, reveal them at the end with a refund.
+	if(lurker_invis && xeno.stealth)
+		lurker_invis.invisibility_off(0.5, TRUE, FALSE) // If the lurker is cloaked when pouncing, reveal them at the end with a refund.
+		addtimer(CALLBACK(lurker_invis, TYPE_PROC_REF(/datum/action/xeno_action/onclick/lurker_invisibility, remove_speed), xeno), pounce_speed_buff)
 
+/datum/action/xeno_action/onclick/lurker_invisibility/proc/remove_speed(mob/living/carbon/xenomorph/xeno)
+	to_chat(xeno, SPAN_XENODANGER("Our invisibility's speed boost ends!"))
+	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	xeno.speed_modifier += lurker_invis.speed_buff
+	xeno.recalculate_speed()
 
 /datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)
 	SIGNAL_HANDLER
@@ -278,7 +284,7 @@
 /// Implementation for disabling invisibility.
 /// (refund_multiplier) indicates how much cooldown to refund based on time remaining
 /// 0 indicates full cooldown; 0.5 indicates 50% of remaining time is refunded
-/datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off(refund_multiplier = 0.0, show_text = TRUE)
+/datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off(refund_multiplier = 0.0, show_text = TRUE, decrease_speed = TRUE)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if(!istype(xeno))
@@ -297,8 +303,9 @@
 	button.icon_state = "template"
 	xeno.update_icons()
 
-	xeno.speed_modifier += speed_buff
-	xeno.recalculate_speed()
+	if(decrease_speed)
+		xeno.speed_modifier += speed_buff
+		xeno.recalculate_speed()
 
 	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
 	if(!istype(behavior))

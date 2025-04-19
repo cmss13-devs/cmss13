@@ -585,7 +585,7 @@
 	var/list/conscious_targets = list()
 	var/list/unconscious_targets = list()
 
-	for(var/mob/living/M in orange(range, target_turf))
+	for(var/mob/living/M in viewers(range, target_turf) & oviewers(9, user))
 		if((M.stat & DEAD))
 			continue // No dead or non living.
 

@@ -663,9 +663,9 @@
 	update_overlays()
 
 /turf/open/gm/river/proc/update_overlays()
-	overlays.Cut()
 	if(no_overlay)
 		return
+	overlays.Cut()
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
@@ -873,6 +873,28 @@
 /turf/open/gm/river/no_overlay/sewage
 	name = "sewage"
 
+/turf/open/gm/river/no_overlay/ocean
+	name = "ocean"
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "deep"
+
+/turf/open/gm/river/no_overlay/ocean/Entered(atom/movable/AM)
+	..()
+	if(!isobserver(AM) && !isliving(AM) && istype(AM, /obj/item) && !istype(AM, /obj/item/lightstick))
+//	if(!isobserver(AM) && !istype(AM, /obj/effect/elevator) && !istype(AM, /obj/docking_port))
+		addtimer(CALLBACK(src, PROC_REF(enter_depths), AM), 0.2 SECONDS)
+
+/turf/open/gm/river/no_overlay/ocean/proc/enter_depths(atom/movable/AM)
+	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/gm/river/no_overlay/ocean))
+		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
+//		if(!ishuman(AM))
+		qdel(AM)
+
+/turf/open/gm/river/no_overlay/ocean_no_slowdown
+	name = "ocean"
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "deep"
+	base_river_slowdown = 0
 
 //ELEVATOR SHAFT-----------------------------------//
 /turf/open/gm/empty
@@ -885,7 +907,11 @@
 /turf/open/gm/empty/is_weedable()
 	return NOT_WEEDABLE
 
+/turf/open/gm/empty/navalis
+	desc = "The Xenomorphs appear to have emerged from this gaping maw. However, it appears they not only have refused to retreat back in here, they have barricaded it……"
 
+/turf/open/gm/empty/navalis/dig
+	desc = "Worse than Xenomorphs lurk the deepest, darkest, pits of this world. These nameless things await in the dark. Pray they don't find this escape."
 
 //Nostromo turfs
 

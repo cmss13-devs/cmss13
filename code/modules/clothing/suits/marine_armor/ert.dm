@@ -367,6 +367,60 @@
 	desc = "The hauberk of a colonist militia member, created from boiled leather and some modern armored plates. While not the most powerful form of armor, and primitive compared to most modern suits of armor, it gives the wearer almost perfect mobility, which suits the needs of the local colonists. It is also quick to don, easy to hide, and cheap to produce in large workshops. This one has straps interweaved with the plates, that allow the user to fire a captured smartgun, if a bit uncomfortably."
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
+// -- CLF Spec Ops -- //
+
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf
+	name = "\improper UA-M1 repainted body armor"
+	desc = "A stolen set of UA-M1 body armor that is typically used by UA security forces. This set of armor has been repainted with dark brown colours and has had additional kneepads and armpads added to it. It is used by the more professional forces of the Colonial Liberation Front"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CLF.dmi'
+	icon_state = "clf_ua"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CLF.dmi'
+	)
+	storage_slots = 3
+	flags_armor_protection = BODY_FLAG_ALL_BUT_HEAD
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	uniform_restricted = list(/obj/item/clothing/under/colonist/clf)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf/jacket
+	name = "\improper camouflaged hunter gear rig"
+	desc = "A camouflaged hunter gear rig that has an armor plate on the Body while it sports custom made kneepads, this armor is sometimes seen in the hands of the more professional forces of the Colonial Liberation Front."
+	icon_state = "clf_hunter"
+	storage_slots = 4
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT  // it is lighter
+
+
+/obj/item/clothing/suit/storage/marine/veteran/ua_riot/clf/heavy
+	name = "\improper heavy plated combat armor"
+	desc = "An extremely heavy-duty set of body armor made out of customised armor plates and repurposed surplus ballistic vests, heavy and highly resistant, used by the professional members of the Colonial Liberation Front, for when subterfuge is not the answer."
+	icon_state = "clf_heavy"
+	storage_slots = 2
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	flags_inventory = BLOCKSHARPOBJ|BLOCK_KNOCKDOWN
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS // it is heavier
+
 //===========================//CMB\\================================\\
 //=====================================================================\\
 

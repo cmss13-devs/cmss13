@@ -58,6 +58,9 @@
 
 	var/time_to_dispel = 25 MINUTES
 
+/obj/effect/landmark/lv624/fog_blocker/infinite
+	time_to_dispel = 24 HOURS
+
 /obj/effect/landmark/lv624/fog_blocker/short
 	time_to_dispel = 15 MINUTES
 

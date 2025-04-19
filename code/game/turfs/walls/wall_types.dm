@@ -1266,6 +1266,23 @@
 	walltype = WALL_THICKMEMBRANE
 	alpha = 210
 
+/turf/closed/wall/resin/membrane/gelatin
+	name = "resin gelatin"
+	desc = "Weird thick slime just translucent enough to let light pass through."
+	damage_cap = HEALTH_WALL_XENO_GELATIN
+	icon_state = "gelatin"
+	walltype = WALL_GELATIN
+	var/slow_amt = 1.2
+
+/turf/closed/wall/resin/membrane/gelatin/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_TURF_ENTER, PROC_REF(passage_check))
+
+/turf/closed/wall/resin/membrane/gelatin/proc/passage_check(turf/T, mob/living/carbon/mover)
+	if(istype(mover) && mover.ally_of_hivenumber(hivenumber))
+		mover.next_move_slowdown += slow_amt
+		return COMPONENT_TURF_ALLOW_MOVEMENT
+	return COMPONENT_TURF_DENY_MOVEMENT
 
 /turf/closed/wall/resin/hitby(atom/movable/AM)
 	..()

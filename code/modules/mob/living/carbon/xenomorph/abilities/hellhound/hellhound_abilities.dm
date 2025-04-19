@@ -8,6 +8,7 @@
 
 	freeze_self = FALSE
 	can_be_shield_blocked = FALSE
+	move_during_pounce = FALSE
 	var/gorge_damage = 30
 
 /datum/action/xeno_action/onclick/sense_owner // tells them where the pred is

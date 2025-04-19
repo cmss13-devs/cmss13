@@ -35,8 +35,8 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/xeno_resting/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
 		return TRUE
 
 /datum/action/xeno_action/onclick/xeno_resting/give_to(mob/living/living_mob)
@@ -55,8 +55,8 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/shift_spits/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
 		return TRUE
 
 // release_haul
@@ -98,9 +98,9 @@
 	if(!.)
 		return FALSE
 
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X)
-		return X.selected_resin
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno)
+		return xeno.selected_resin
 	else
 		return FALSE
 
@@ -181,8 +181,8 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/emit_pheromones/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated() && (!X.current_aura || X.plasma_stored >= plasma_cost))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated() && (!xeno.current_aura || xeno.plasma_stored >= plasma_cost))
 		return TRUE
 
 // Pounce
@@ -197,31 +197,50 @@
 	plasma_cost = 10
 
 	// Config options
-	var/distance = 6 // 6 for runners, 4 for ravagers and praes
-
-	var/knockdown = TRUE // Should we knock down the target?
-	var/knockdown_duration = 1 // 1 for runners, 3 for lurkers.
+	// Pounce distance, 6 for runners and prae, 5 for ravagers
+	var/distance = 6
+	// Should we knock down the target?
+	var/knockdown = TRUE
+	// 1 for runners, 2.5 for lurkers.
+	var/knockdown_duration = 1
 										// ONLY USED IF THE POUNCE KNOCKS DOWN
 
-	var/slash = FALSE // Do we slash upon reception?
-	var/slash_bonus_damage = 0 // Any bonus damage to apply on the tackle slash, if applicable
+	// Do we automatically slash upon successful pounce?
+	var/slash = FALSE
+	// Any bonus damage to apply on the tackle slash, if applicable
+	var/slash_bonus_damage = 0
 
-	var/freeze_self = TRUE // Should we freeze ourselves after the lunge?
-	var/freeze_time = 5 // 5 for runners, 15 for lurkers
-	var/freeze_timer_id = TIMER_ID_NULL // Timer to cancel the end freeze if it can be cancelled earlier
+	// Should we freeze ourselves after the lunge?
+	var/freeze_self = TRUE
+	// 5 for runners, 15 for lurkers
+	var/freeze_time = 5
+	// Timer to cancel the end freeze if it can be cancelled earlier
+	var/freeze_timer_id = TIMER_ID_NULL
 	var/freeze_play_sound = TRUE
 
-	var/windup = FALSE // Is there a do_after before we pounce?
-	var/windup_duration = 20 // How long to wind up, if applicable
-	var/windup_interruptable = TRUE // Can the windup be interrupted?
+	// Can you move while pouncing to cancel it?
+	var/move_during_pounce = TRUE
 
-	var/can_be_shield_blocked = FALSE // Some legacy stuff, self explanatory
-	var/should_destroy_objects = FALSE  // Only used for ravager charge
-	var/pounce_pass_flags // Pounce flags to customize what pounce can go over/through
-	var/throw_speed = SPEED_FAST // Throw speed
-	var/tracks_target = TRUE // Does it track the target atom?
+	// Is there a do_after before we pounce?
+	var/windup = FALSE
+	// How long to wind up, if applicable
+	var/windup_duration = 20
+	// Can the windup be interrupted?
+	var/windup_interruptable = TRUE
 
-	var/list/pounce_callbacks = null // Specific callbacks to invoke when a pounce lands on an atom of a specific type
+	// Some legacy stuff, self explanatory
+	var/can_be_shield_blocked = FALSE
+	// Only used for ravager charge
+	var/should_destroy_objects = FALSE
+	// Pounce flags to customize what pounce can go over/through
+	var/pounce_pass_flags
+	// How fast the pounce is
+	var/throw_speed = SPEED_FAST
+	// Does the pounce hit, even if the target moves a tile?
+	var/tracks_target = TRUE
+
+	// Specific callbacks to invoke when a pounce lands on an atom of a specific type
+	var/list/pounce_callbacks = null
 										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
 
 /datum/action/xeno_action/activable/pounce/New()
@@ -244,22 +263,28 @@
 
 /// Additional effects to apply even if we don't hit anything
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!move_during_pounce)
+		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 	return
 
 /**
  * Effects to apply *inmediately* before pouncing.
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!move_during_pounce)
+		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 	return
 
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
 	if(freeze_timer_id == TIMER_ID_NULL)
 		return
-	var/mob/living/carbon/xenomorph/X = owner
-	REMOVE_TRAIT(X, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
+	var/mob/living/carbon/xenomorph/xeno = owner
+	REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
-	to_chat(X, SPAN_XENONOTICE("Slashing frenzies us! We feel free to move immediately!"))
+	to_chat(xeno, SPAN_XENONOTICE("Slashing frenzies us! We feel free to move immediately!"))
 
 /// Any effects to apply to the xenomorph before the windup occurs
 /datum/action/xeno_action/activable/pounce/proc/pre_windup_effects()

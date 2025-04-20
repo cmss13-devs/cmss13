@@ -594,6 +594,9 @@
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acm" = (
@@ -1333,6 +1336,12 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"afe" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1343,6 +1352,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"afh" = (
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/telecomm)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -8136,6 +8151,9 @@
 "aLJ" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "aLM" = (
@@ -16116,6 +16134,9 @@
 "bzG" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/darkblue2/north,
 /area/bigredv2/caves/eta/research)
 "bzH" = (
@@ -20764,6 +20785,9 @@
 "fhy" = (
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
 	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
@@ -38733,6 +38757,9 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "xLd" = (
@@ -41010,7 +41037,7 @@ acA
 aas
 aas
 acQ
-ade
+afh
 ade
 ade
 aeb
@@ -76191,7 +76218,7 @@ arG
 ara
 atf
 amk
-aqc
+afe
 aqc
 ass
 aqc

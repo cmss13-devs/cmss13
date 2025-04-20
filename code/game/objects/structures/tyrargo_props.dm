@@ -205,3 +205,5 @@
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_trr.dmi'
 	icon_state = "armored_truck_trr"
 	bound_height = 32
+	layer = 4.2
+

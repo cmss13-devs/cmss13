@@ -3,15 +3,15 @@
 	name = "US Army (32nd Armor)"
 	home_base = /datum/lazy_template/ert/uscm_station
 	mob_min = 1
-	mob_max = 20
+	mob_max = 14
 	probability = 0
 	shuttle_id = ""
 	chance_hidden = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_army
 
 	max_heavies = 2
-	max_medics = 4
-	max_smartgunners = 1
+	max_medics = 2
+	max_smartgunners = 2
 
 /datum/emergency_call/us_army/New()
 	..()

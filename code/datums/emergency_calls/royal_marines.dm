@@ -1,6 +1,6 @@
 /datum/emergency_call/royal_marines
 	name = "Royal Marines Commando (Squad) (Friendly)"
-	mob_max = 7
+	mob_max = 5
 	probability = 15
 	home_base = /datum/lazy_template/ert/twe_station
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
@@ -8,7 +8,7 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_twe/item
 	max_engineers =  1
 	max_medics = 1
-	max_heavies = 2
+	max_heavies = 1
 
 /datum/emergency_call/royal_marines/New()
 	..()

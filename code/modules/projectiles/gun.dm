@@ -288,7 +288,6 @@
 	if(current_mag)
 		if(spawn_empty && !(flags_gun_features & GUN_INTERNAL_MAG)) //Internal mags will still spawn, but they won't be filled.
 			current_mag = null
-			update_icon()
 		else
 			current_mag = new current_mag(src, spawn_empty? 1:0)
 			replace_ammo(null, current_mag)

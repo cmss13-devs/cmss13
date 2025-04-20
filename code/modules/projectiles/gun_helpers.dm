@@ -481,7 +481,7 @@ DEFINES in setup.dm, referenced here.
 		if(current_mag.bonus_overlay_icon)
 			gun_image = image(current_mag.bonus_overlay_icon, src, current_mag.bonus_overlay)
 		else
-			gun_image = image(src, src, current_mag.bonus_overlay)
+			gun_image = image(icon, src, current_mag.bonus_overlay)
 		gun_image.pixel_x += bonus_overlay_x
 		gun_image.pixel_y += bonus_overlay_y
 		attachable_overlays["mag"] = gun_image

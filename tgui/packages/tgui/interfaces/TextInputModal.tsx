@@ -110,6 +110,7 @@ const InputArea = (props: {
       autoSelect
       height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
       maxLength={max_length}
+      noResize
       onEscape={() => act('cancel')}
       onEnter={(event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (visualMultiline && event.shiftKey) {

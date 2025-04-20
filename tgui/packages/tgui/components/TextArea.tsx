@@ -28,6 +28,7 @@ type Props = Partial<{
   fluid: boolean;
   maxLength: number;
   noborder: boolean;
+  noResize: boolean;
   /** Fires when user is 'done typing': Clicked out, blur, enter key (but not shift+enter) */
   onChange: (event: SyntheticEvent<HTMLTextAreaElement>, value: string) => void;
   /** Fires once the enter key is pressed */
@@ -62,7 +63,13 @@ export const TextArea = forwardRef(
       value,
       ...boxProps
     } = props;
-    const { className, fluid, nowrap, ...rest } = boxProps;
+    const {
+      className,
+      fluid,
+      nowrap,
+      noResize,
+      ...rest
+    } = boxProps;
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [scrolledAmount, setScrolledAmount] = useState(0);
@@ -105,6 +112,11 @@ export const TextArea = forwardRef(
       }
     };
 
+    const handleChange = (event: SyntheticEvent<HTMLTextAreaElement>, value: string) => {
+      const sanitizedValue = value.replace(/[<>"']/g, '');
+      onInput?.(event, sanitizedValue);
+    };
+
     useImperativeHandle(
       forwardedRef,
       () => textareaRef.current as HTMLTextAreaElement,
@@ -131,10 +143,14 @@ export const TextArea = forwardRef(
     /** Updates the initial value on props change */
     useEffect(() => {
       const input = textareaRef.current;
-      if (!input) return;
+      if (!input) {
+        return;
+      }
 
       const newValue = toInputValue(value);
-      if (input.value === newValue) return;
+      if (input.value === newValue) {
+        return;
+      }
 
       input.value = newValue;
     }, [value]);
@@ -145,6 +161,7 @@ export const TextArea = forwardRef(
           'TextArea',
           fluid && 'TextArea--fluid',
           noborder && 'TextArea--noborder',
+          noResize && 'TextArea--noresize',
           className,
         ])}
         {...rest}
@@ -162,6 +179,7 @@ export const TextArea = forwardRef(
               className={classes([
                 'TextArea__textarea',
                 'TextArea__textarea_custom',
+                noResize && 'TextArea--noresize',
               ])}
               style={{
                 transform: `translateY(-${scrolledAmount}px)`,
@@ -176,10 +194,11 @@ export const TextArea = forwardRef(
             'TextArea__textarea',
             scrollbar && 'TextArea__textarea--scrollable',
             nowrap && 'TextArea__nowrap',
+            noResize && 'TextArea--noresize',
           ])}
           maxLength={maxLength}
           onBlur={(event) => onChange?.(event, event.target.value)}
-          onChange={(event) => onInput?.(event, event.target.value)}
+          onChange={(event) => handleChange(event, event.target.value)}
           onKeyDown={handleKeyDown}
           onScroll={() => {
             if (displayedValue && textareaRef.current) {

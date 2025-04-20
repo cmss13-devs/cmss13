@@ -15646,6 +15646,10 @@
 "ybd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine,
+/obj/structure/sign/calendar{
+	pixel_y = 29;
+	pixel_x = 9
+	},
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "ybh" = (

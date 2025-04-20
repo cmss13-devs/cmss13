@@ -170,6 +170,12 @@
 			upload_icon(generated_icon, filename)
 			gun_data["icon"] = filename
 
+		// If its a two hander, don't include unwielded data
+		if(gun_data["two_handed_only"])
+			gun_data["unwielded_recoil"] = "N/A"
+			gun_data["unwielded_scatter"] = "N/A"
+			gun_data["unwielded_accuracy"] = "N/A"
+
 		var/page_name = SANITIZE_FILENAME(replacetext(strip_improper(generating_gun.name), " ", "_"))
 		var/to_add = list(title = "Template:Autowiki/Content/Gun/[page_name]", text = include_template("Autowiki/Gun", gun_data))
 		output += list(to_add)

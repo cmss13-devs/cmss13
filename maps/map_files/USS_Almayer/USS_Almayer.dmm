@@ -8283,7 +8283,8 @@
 /area/almayer/lifeboat_pumps/south2)
 "aui" = (
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
-	pixel_y = 6
+	pixel_y = 6;
+	network = list("Combat Correspondent Live","WY")
 	},
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
@@ -8720,6 +8721,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/almayer/living/intel)
+"avs" = (
+/obj/effect/decal/floor_symbol/wey_yu/mid{
+	dir = 1
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/almayer/medical/containment/cell/cl)
 "avt" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/engineering/upper_engineering/port)
@@ -8772,6 +8779,12 @@
 "avB" = (
 /turf/open/floor/almayer/redcorner/west,
 /area/almayer/shipboard/navigation)
+"avC" = (
+/obj/effect/decal/floor_symbol/wey_yu/right{
+	dir = 1
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/almayer/medical/containment/cell/cl)
 "avD" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/bridgebunks)
@@ -8826,6 +8839,22 @@
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_p)
+"avN" = (
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
+	dir = 1;
+	name = "ship-grade camera";
+	network = list("WY")
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
+"avO" = (
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
+	dir = 8;
+	name = "ship-grade camera";
+	network = list("WY")
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/upper/u_m_p)
 "avQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -17793,11 +17822,6 @@
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
-/obj/item/desk_bell{
-	anchored = 1;
-	pixel_y = 9;
-	pixel_x = 12
-	},
 /obj/item/clock{
 	pixel_y = 13;
 	pixel_x = -2
@@ -17807,6 +17831,10 @@
 	pixel_y = -3
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/desk_bell/corp_liaison{
+	pixel_x = 12;
+	pixel_y = 9
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bvX" = (
@@ -25089,7 +25117,8 @@
 	dir = 4;
 	layer = 3.2;
 	pixel_x = -15;
-	pixel_y = 1
+	pixel_y = 1;
+	network = list("Combat Correspondent Live","WY")
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -58670,6 +58699,11 @@
 /obj/effect/decal/floor_symbol/wey_yu{
 	dir = 1
 	},
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
+	dir = 1;
+	name = "ship-grade camera";
+	network = list("WY")
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/midship_hallway)
 "rRU" = (
@@ -62861,6 +62895,11 @@
 "tGT" = (
 /obj/structure/machinery/atm{
 	pixel_y = 32
+	},
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
+	dir = 8;
+	name = "ship-grade camera";
+	network = list("WY")
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -68681,6 +68720,9 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
 "vZw" = (
+/obj/effect/decal/floor_symbol/wey_yu{
+	dir = 1
+	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/almayer/medical/containment/cell/cl)
 "vZI" = (
@@ -105860,7 +105902,7 @@ eAN
 jVg
 gyI
 and
-eAN
+avN
 pBG
 aij
 ahJ
@@ -107488,7 +107530,7 @@ eAN
 nFc
 cNH
 vzp
-vZw
+avs
 erd
 cHu
 pBG
@@ -107691,7 +107733,7 @@ eAN
 nFc
 rfb
 bHk
-vZw
+avC
 bHk
 cHu
 pBG
@@ -109308,7 +109350,7 @@ jtU
 vpf
 ycM
 tne
-jtU
+avO
 jtU
 vpf
 ycM

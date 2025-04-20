@@ -102,5 +102,16 @@
 /obj/item/desk_bell/ares/ring_bell(mob/living/user)
 	if(broken_ringer)
 		return FALSE
-	ares_apollo_talk("Attendence requested at AI Core Reception.")
+	ares_apollo_talk("Attendance requested at AI Core Reception.")
+	return ..()
+
+/obj/item/desk_bell/corp_liaison
+	name = "corporate liaison reception bell"
+	desc = "The cornerstone of any customer service job. This one is linked to ARES and will notify the Corporate Liaison upon being rung."
+	ring_cooldown_length = 60 SECONDS // Prevents spam
+
+/obj/item/desk_bell/corp_liaison/ring_bell(mob/living/user)
+	if(broken_ringer)
+		return FALSE
+	ai_silent_announcement("Attendance requested at Corporate Liaison office.", ":Y", TRUE)
 	return ..()

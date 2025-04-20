@@ -150,3 +150,58 @@
 
 /obj/structure/prop/tyrargo/military_alert_sign/alt
 	icon_state = "military_sign_alt"
+
+/obj/structure/prop/tyrargo/military_evac_sign
+	name = "US military evacuation notice"
+	desc = "A evacuation poster, it reads: All residents of Tyrargo Rift and outlying areas are required to evacuate by 5:45pm/2182. All evacuees will be asked to provide identification and may be subject to medical testing. Evacuees resisting offical direction will be detained. Evacuation is mandatory."
+	icon = 'icons/obj/structures/props/wall_decorations/tyrargo32x64_signs.dmi'
+	icon_state = "evac_sign"
+	layer = WALL_OBJ_LAYER
+
+/obj/structure/prop/tyrargo/military_checkpoint_sign
+	name = "US military checkpoint notice"
+	desc = "A military notice poster, it reads: Halt. US army checkpoint ahead. Comply or be shot."
+	icon = 'icons/obj/structures/props/wall_decorations/tyrargo64x64_signs.dmi'
+	icon_state = "tyrargo_checkpoint_sign"
+	layer = WALL_OBJ_LAYER
+	density = TRUE
+	bound_width = 64
+
+/obj/structure/prop/tyrargo/military_checkpoint_sign/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/tyrargo/military_checkpoint_sign/bullet_act(obj/projectile/P)
+	health -= P.damage
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/tyrargo/military_checkpoint_sign/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/tyrargo/military_checkpoint_sign/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/tyrargo/military_checkpoint_sign/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/trr
+	name = "Throop Rescue and Recovery truck"
+	desc = "Emergency response vehicle used by the Throop Rescue and Recovery organization. A private group that assists in rapid response, search and rescue operations."
+	icon = 'icons/obj/structures/props/vehicles/armored_truck_trr.dmi'
+	icon_state = "armored_truck_trr"
+	bound_height = 32

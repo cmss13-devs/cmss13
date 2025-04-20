@@ -6713,9 +6713,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
 "aqf" = (
-/obj/structure/machinery/door/airlock/almayer/generic/corporate{
-	id_tag = "cl_office_doors"
-	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -24401,7 +24398,7 @@
 "dbM" = (
 /obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	dir = 1;
-	name = "Bedroom"
+	name = "Corporate Security Bedroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)

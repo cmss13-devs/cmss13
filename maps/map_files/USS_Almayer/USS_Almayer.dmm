@@ -5469,23 +5469,31 @@
 	id = "cl_office_door";
 	name = "Office Door Control";
 	normaldoorcontrol = 1;
-	pixel_y = -3;
+	pixel_y = -2;
 	req_one_access_txt = "200";
 	pixel_x = -4
 	},
 /obj/structure/machinery/door_control/cl/office/office_door{
 	pixel_x = 6;
-	pixel_y = -3
+	pixel_y = -2
 	},
 /obj/structure/machinery/door_control/cl/office/lobby_door{
 	pixel_x = -4;
-	pixel_y = 4
+	pixel_y = 5
 	},
 /obj/structure/machinery/door_control/cl/office/lobby_window{
 	pixel_x = 6;
-	pixel_y = 4
+	pixel_y = 5
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary{
+	name = "CL Security Telephone";
+	phone_category = "Offices";
+	phone_id = "CL Security";
+	pixel_x = -4;
+	pixel_y = 20;
+	do_not_disturb = 1
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "amZ" = (
@@ -6639,14 +6647,27 @@
 	},
 /obj/structure/machinery/door_control/cl/office/office_window{
 	pixel_x = -6;
-	pixel_y = -2;
+	pixel_y = -3;
 	name = "Office Internal Windows Shutters";
 	id = "cl_office_windows2"
 	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/door_control/cl/office/office_window{
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 4;
+	name = "Office External Windows Shutters"
+	},
+/obj/structure/machinery/door_control{
+	id = "cl_office_door";
+	name = "Office Door Control";
+	normaldoorcontrol = 1;
+	pixel_y = -3;
+	req_one_access_txt = "200";
+	pixel_x = -16
+	},
+/obj/structure/machinery/door_control/cl/office/office_door{
+	pixel_x = -16;
+	pixel_y = 4
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -8666,6 +8687,12 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/intel)
+"avo" = (
+/obj/structure/sign/safety/refridgeration{
+	pixel_y = -32
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "avp" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -25328,6 +25355,9 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/ce_room)
 "dzp" = (
+/obj/structure/machinery/computer/working_joe{
+	pixel_y = 24
+	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
 "dzt" = (
@@ -105373,7 +105403,7 @@ cHG
 nQA
 bvS
 drP
-eAN
+avo
 pBG
 aid
 cHG

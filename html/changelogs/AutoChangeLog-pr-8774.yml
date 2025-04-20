@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - rscadd: "weather now cleans up blood and other cleanables from the floor"

@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(weather)
 
 	// If there's a weather event, return
 	if (is_weather_event)
-		if(!weather_event_instance.cleaning)
+		if(!weather_event_instance.cleaning || !SSobjectives.first_drop_complete)
 			return
 
 		for(var/obj/effect/decal/cleanable/cleanable as anything in cleanable_list)

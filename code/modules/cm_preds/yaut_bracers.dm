@@ -211,7 +211,6 @@
 	. = ..()
 	. += SPAN_NOTICE("They currently have <b>[charge]/[charge_max]</b> charge.")
 
-
 // Toggle the notification sound
 /obj/item/clothing/gloves/yautja/verb/toggle_notification_sound()
 	set name = "Toggle Bracer Sound"
@@ -220,10 +219,6 @@
 
 	notification_sound = !notification_sound
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
-
-
-
-
 
 /obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
 	if(!ishuman(owner))
@@ -261,7 +256,8 @@
 	var/disc_timer = 0
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/name_active = TRUE
-	var/translator_type = "Modern"
+	var/translator_type = PRED_TECH_MODERN
+	var/invisibility_sound = PRED_TECH_MODERN
 	var/caster_material = "ebony"
 
 	var/obj/item/card/id/bracer_chip/embedded_id
@@ -284,13 +280,15 @@
 	if(right_bracer_attachment)
 		. += SPAN_NOTICE("The right bracer attachment is [right_bracer_attachment.attached_weapon].")
 
-/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_caster_material, new_owner_rank)
+/obj/item/clothing/gloves/yautja/hunter/Initialize(mapload, new_translator_type, new_invis_sound, new_caster_material, new_owner_rank)
 	. = ..()
 	if(new_owner_rank)
 		owner_rank = new_owner_rank
 	embedded_id = new(src)
 	if(new_translator_type)
 		translator_type = new_translator_type
+	if(new_invis_sound)
+		invisibility_sound = new_invis_sound
 	if(new_caster_material)
 		caster_material = new_caster_material
 	caster = new(src, FALSE, caster_material)
@@ -599,7 +597,6 @@
 				bracer_attachment_deployed = TRUE
 				playsound(loc,right_bracer_attachment.deployment_sound, 25, TRUE)
 
-
 /obj/item/clothing/gloves/yautja/hunter/proc/retract_bracer_attachments(mob/living/carbon/human/caller) //if the attachments weapon is in the callers hands, retract them back into the attachments
 	if(left_bracer_attachment && left_bracer_attachment.attached_weapon.loc == caller)
 		caller.drop_inv_item_to_loc(left_bracer_attachment.attached_weapon, left_bracer_attachment, FALSE, TRUE)
@@ -698,7 +695,6 @@
 		to_chat(hunter, SPAN_NOTICE("There are no signatures that require your attention."))
 	return TRUE
 
-
 /obj/item/clothing/gloves/yautja/hunter/verb/cloaker()
 	set name = "Toggle Cloaking Device"
 	set desc = "Activate your suit's cloaking device. It will malfunction if the suit takes damage or gets excessively wet."
@@ -752,7 +748,12 @@
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		if(!silent)
 			M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
-			playsound(M.loc,'sound/effects/pred_cloakon.ogg', 15, 1)
+			var/sound_to_use
+			if(invisibility_sound == PRED_TECH_MODERN)
+				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
+			else
+				sound_to_use = 'sound/effects/pred_cloakon.ogg'
+			playsound(M.loc, sound_to_use, 15, 1, 4)
 
 		if(!instant)
 			animate(M, alpha = new_alpha, time = 1.5 SECONDS, easing = SINE_EASING|EASE_OUT)
@@ -803,7 +804,12 @@
 	REMOVE_TRAIT(user, TRAIT_CLOAKED, TRAIT_SOURCE_EQUIPMENT(WEAR_HANDS))
 	log_game("[key_name_admin(user)] has disabled their cloaking device.")
 	user.visible_message(SPAN_WARNING("[user] shimmers into existence!"), SPAN_WARNING("Your cloaking device deactivates."))
-	playsound(user.loc, 'sound/effects/pred_cloakoff.ogg', 15, 1)
+	var/sound_to_use
+	if(invisibility_sound == PRED_TECH_MODERN)
+		sound_to_use = 'sound/effects/pred_cloakoff_modern.ogg'
+	else
+		sound_to_use = 'sound/effects/pred_cloakoff.ogg'
+	playsound(user.loc, sound_to_use, 15, 1, 4)
 	user.alpha = initial(user.alpha)
 	if(true_cloak)
 		user.invisibility = initial(user.invisibility)
@@ -816,7 +822,6 @@
 	XI.add_to_hud(user)
 
 	anim(user.loc, user, 'icons/mob/mob.dmi', null, "uncloak", null, user.dir)
-
 
 /obj/item/clothing/gloves/yautja/hunter/verb/caster()
 	set name = "Use Plasma Caster"
@@ -864,7 +869,6 @@
 				break
 
 	return TRUE
-
 
 /obj/item/clothing/gloves/yautja/hunter/proc/explode(mob/living/carbon/victim)
 	set waitfor = 0
@@ -1078,6 +1082,7 @@
 	message_admins(FONT_SIZE_LARGE("ALERT: [caller.real_name] ([caller.key]) Terminated [target_youngblood.real_name] ([target_youngblood.key]) in [location.name] for: '[reason]' [ADMIN_JMP(floor)]</font>"))
 
 #define YAUTJA_CREATE_CRYSTAL_COOLDOWN "yautja_create_crystal_cooldown"
+
 /obj/item/clothing/gloves/yautja/hunter/verb/injectors()
 	set name = "Create Stabilising Crystal"
 	set category = "Yautja.Utility"
@@ -1149,6 +1154,7 @@
 	caller.put_in_active_hand(O)
 	playsound(src, 'sound/machines/click.ogg', 15, 1)
 	return TRUE
+
 #undef YAUTJA_CREATE_CAPSULE_COOLDOWN
 
 /obj/item/clothing/gloves/yautja/hunter/verb/call_disc()
@@ -1278,8 +1284,8 @@
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
-	if(translator_type != "Modern")
-		if(translator_type == "Retro")
+	if(translator_type != PRED_TECH_MODERN)
+		if(translator_type == PRED_TECH_RETRO)
 			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
 		msg = replacetext(msg, "a", "@")

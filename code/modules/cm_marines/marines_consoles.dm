@@ -999,7 +999,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SYNTH_K9 = 71,
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
-				JOB_PASSENGER = 141,
+				JOB_CORPORATE_SECURITY = 141,
+				JOB_PASSENGER = 142,
 				// Non Almayer jobs lower then registered
 				JOB_SYNTH_SURVIVOR = 150,
 				JOB_SURVIVOR = 151,

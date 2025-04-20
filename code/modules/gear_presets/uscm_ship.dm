@@ -72,6 +72,64 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_ship/corp_sec
+	name = "USCM Corporate Security (CS)"
+	faction = FACTION_WY
+	faction_group =	FACTION_LIST_MARINE_WY
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_CIVILIAN
+
+	idtype = /obj/item/card/id/silver/cl
+	access = list(
+		ACCESS_WY_GENERAL,
+		ACCESS_MARINE_COMMAND,
+		ACCESS_MARINE_RESEARCH,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_WY_FLIGHT,
+		ACCESS_CIVILIAN_COMMAND,
+	)
+	assignment = JOB_CORPORATE_SECURITY
+	rank = JOB_CORPORATE_SECURITY
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "CS"
+	skills = /datum/skills/civilian
+
+	minimap_icon = "goon_standard"
+	minimap_background = "background_goon"
+
+/datum/equipment_preset/uscm_ship/corp_sec/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_LIAISON)
+
+/datum/equipment_preset/uscm_ship/corp_sec/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl/sec, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/corporate, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate/knife, WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/wy, WEAR_IN_BACK)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs/zip, WEAR_IN_L_STORE)
+
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm_ship/reporter
 	name = "Combat Correspondent (Press)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

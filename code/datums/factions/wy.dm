@@ -11,7 +11,7 @@
 	else if(id_card)
 		role = id_card.rank
 	switch(role)
-		if(JOB_WY_GOON)
+		if(JOB_WY_GOON, JOB_CORPORATE_SECURITY)
 			hud_icon_state = "goon_normal"
 		if(JOB_WY_GOON_LEAD)
 			hud_icon_state = "goon_leader"

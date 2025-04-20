@@ -1170,37 +1170,9 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS
 
-/datum/gear/misc/patch_uscm/falcon_squad
+/datum/gear/misc/patch_uscm
 	display_name = "Falling Falcons shoulder patch, squad specific"
 	path = /obj/item/clothing/accessory/patch/falcon/squad_main
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/misc/patch_uscm/falcon
-	display_name = "Falling Falcons shoulder patch"
-	path = /obj/item/clothing/accessory/patch/falcon
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/misc/patch_uscm
-	display_name = "USCM shoulder patch"
-	path = /obj/item/clothing/accessory/patch
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/misc/patch_uscm/ua
-	display_name = "United Americas shoulder patch"
-	path = /obj/item/clothing/accessory/patch/ua
-	fluff_cost = 1
-	slot = WEAR_IN_ACCESSORY
-	allowed_origins = USCM_ORIGINS
-
-/datum/gear/misc/patch_uscm/ua_large
-	display_name = "United Americas large patch"
-	path = /obj/item/clothing/accessory/patch/uasquare
 	fluff_cost = 1
 	slot = WEAR_IN_ACCESSORY
 	allowed_origins = USCM_ORIGINS

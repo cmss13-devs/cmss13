@@ -14,7 +14,7 @@
 	move_during_pounce = FALSE
 	throw_speed = SPEED_FAST // increased to VERYFAST by cloak pouncing
 
-	// how long the speedbuff from invisiblity lasts after a pounce
+	/// how long the speedbuff from invisiblity lasts after a pounce
 	var/pounce_speed_buff = 4 SECONDS
 
 /datum/action/xeno_action/onclick/lurker_invisibility

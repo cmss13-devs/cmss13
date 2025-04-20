@@ -197,49 +197,49 @@
 	plasma_cost = 10
 
 	// Config options
-	// Pounce distance, 6 for runners and prae, 5 for ravagers
+	/// Pounce distance, 6 for runners and prae, 5 for ravagers
 	var/distance = 6
-	// Should we knock down the target?
+	/// Should we knock down the target?
 	var/knockdown = TRUE
-	// 1 for runners, 2.5 for lurkers.
+	/// 1 for runners, 2.5 for lurkers.
 	var/knockdown_duration = 1
 										// ONLY USED IF THE POUNCE KNOCKS DOWN
 
-	// Do we automatically slash upon successful pounce?
+	/// Do we automatically slash upon successful pounce?
 	var/slash = FALSE
-	// Any bonus damage to apply on the tackle slash, if applicable
+	/// Any bonus damage to apply on the tackle slash, if applicable
 	var/slash_bonus_damage = 0
 
-	// Should we freeze ourselves after the lunge?
+	/// Should we freeze ourselves after the lunge?
 	var/freeze_self = TRUE
-	// 5 for runners, 15 for lurkers
+	/// 5 for runners, 15 for lurkers
 	var/freeze_time = 5
-	// Timer to cancel the end freeze if it can be cancelled earlier
+	/// Timer to cancel the end freeze if it can be cancelled earlier
 	var/freeze_timer_id = TIMER_ID_NULL
 	var/freeze_play_sound = TRUE
 
-	// Can you move while pouncing to cancel it?
+	/// Can you move while pouncing to cancel it?
 	var/move_during_pounce = TRUE
 
-	// Is there a do_after before we pounce?
+	/// Is there a do_after before we pounce?
 	var/windup = FALSE
-	// How long to wind up, if applicable
+	/// How long to wind up, if applicable
 	var/windup_duration = 20
-	// Can the windup be interrupted?
+	/// Can the windup be interrupted?
 	var/windup_interruptable = TRUE
 
-	// Some legacy stuff, self explanatory
+	/// Some legacy stuff, self explanatory
 	var/can_be_shield_blocked = FALSE
-	// Only used for ravager charge
+	/// Only used for ravager charge
 	var/should_destroy_objects = FALSE
-	// Pounce flags to customize what pounce can go over/through
+	/// Pounce flags to customize what pounce can go over/through
 	var/pounce_pass_flags
-	// How fast the pounce is
+	/// How fast the pounce is
 	var/throw_speed = SPEED_FAST
-	// Does the pounce hit, even if the target moves a tile?
+	/// Does the pounce hit, even if the target moves a tile?
 	var/tracks_target = TRUE
 
-	// Specific callbacks to invoke when a pounce lands on an atom of a specific type
+	/// Specific callbacks to invoke when a pounce lands on an atom of a specific type
 	var/list/pounce_callbacks = null
 										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
 

@@ -117,7 +117,8 @@ const InputArea = (props: {
           return;
         }
         event.preventDefault();
-        act('submit', { entry: input });
+
+        act('submit', { entry: input.replace(/"/g, '') });
       }}
       onChange={(_, value) => onType(value)}
       onInput={(_, value) => onType(value)}

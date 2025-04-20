@@ -112,11 +112,6 @@ export const TextArea = forwardRef(
       }
     };
 
-    const handleChange = (event: SyntheticEvent<HTMLTextAreaElement>, value: string) => {
-      const sanitizedValue = value.replace(/[<>"']/g, '');
-      onInput?.(event, sanitizedValue);
-    };
-
     useImperativeHandle(
       forwardedRef,
       () => textareaRef.current as HTMLTextAreaElement,
@@ -161,7 +156,6 @@ export const TextArea = forwardRef(
           'TextArea',
           fluid && 'TextArea--fluid',
           noborder && 'TextArea--noborder',
-          noResize && 'TextArea--noresize',
           className,
         ])}
         {...rest}
@@ -179,7 +173,6 @@ export const TextArea = forwardRef(
               className={classes([
                 'TextArea__textarea',
                 'TextArea__textarea_custom',
-                noResize && 'TextArea--noresize',
               ])}
               style={{
                 transform: `translateY(-${scrolledAmount}px)`,
@@ -198,7 +191,7 @@ export const TextArea = forwardRef(
           ])}
           maxLength={maxLength}
           onBlur={(event) => onChange?.(event, event.target.value)}
-          onChange={(event) => handleChange(event, event.target.value)}
+          onChange={(event) => onInput?.(event, event.target.value.replace(/"/g, ''))}
           onKeyDown={handleKeyDown}
           onScroll={() => {
             if (displayedValue && textareaRef.current) {

@@ -535,38 +535,6 @@
 	icon_state = "intel_chestrig"
 	max_storage_space = 20
 
-/obj/item/storage/backpack/marine/satchel/intel/satchel
-	name = "\improper USCM expedition satchel"
-	desc = "A heavy-duty IMP based satchel, can quickly be accessed with only one hand. Reinforced with Kevlar so it doesn't rip. Usually issued to USCM intelligence officers."
-	icon_state = "marinesatch"
-	max_storage_space = 20
-
-/obj/item/storage/backpack/marine/satchel/intel/satchel/brown
-	name = "\improper USCM expedition leather satchel"
-	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers."
-	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
-	)
-	icon_state = "satchel"
-	flags_atom = NO_GAMEMODE_SKIN
-	max_storage_space = 20
-
-/obj/item/storage/backpack/marine/satchel/intel/satchel/black
-	name = "\improper USCM expedition leather black satchel"
-	desc = "A kevlar reinforced IMP based satchel, can quickly be accessed with only one hand. It's made out of a kevlar-leather mix. Usually issued to USCM intelligence officers. It's black because you're just so unique and gloomy."
-	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
-	)
-	icon_state = "satchel_black"
-	flags_atom = NO_GAMEMODE_SKIN
-	max_storage_space = 20
-
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
 	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."

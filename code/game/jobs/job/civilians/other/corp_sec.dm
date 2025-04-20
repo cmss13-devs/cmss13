@@ -14,5 +14,5 @@
 	job = /datum/job/civilian/corp_sec
 
 AddTimelock(/datum/job/civilian/corp_sec, list(
-	JOB_CORPORATE_ROLES = 20 HOURS,
+	JOB_CORPORATE_ROLES = 30 HOURS,
 ))

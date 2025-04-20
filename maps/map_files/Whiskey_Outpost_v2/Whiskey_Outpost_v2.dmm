@@ -134,9 +134,6 @@
 	},
 /turf/open/floor/asteroidfloor/north,
 /area/whiskey_outpost/outside/north)
-"at" = (
-/turf/open/jungle/clear,
-/area/whiskey_outpost/outside/south)
 "au" = (
 /obj/structure/closet/secure_closet/commander,
 /turf/open/floor/wood,
@@ -511,6 +508,9 @@
 	},
 /turf/open/floor/prison/kitchen,
 /area/whiskey_outpost/inside/cic)
+"bI" = (
+/turf/open/jungle/clear,
+/area/whiskey_outpost/outside/south)
 "bK" = (
 /obj/structure/cargo_container/watatsumi/leftmid,
 /turf/open/jungle/clear,
@@ -22078,7 +22078,7 @@ lf
 lf
 lf
 lf
-at
+bI
 xG
 ZB
 kV
@@ -22280,7 +22280,7 @@ kV
 lf
 lf
 lf
-at
+bI
 RD
 ZB
 lf
@@ -22482,7 +22482,7 @@ oq
 kV
 lf
 lf
-at
+bI
 QH
 ZB
 lf
@@ -23899,7 +23899,7 @@ kV
 kV
 UP
 ZB
-at
+bI
 ay
 kV
 Zf
@@ -24101,7 +24101,7 @@ lf
 kV
 kV
 ZB
-at
+bI
 aa
 kV
 kV
@@ -24303,7 +24303,7 @@ lf
 lf
 kV
 ZB
-at
+bI
 Od
 kV
 kV
@@ -28340,7 +28340,7 @@ lf
 kV
 ac
 kV
-at
+bI
 bK
 ZB
 RP
@@ -28542,7 +28542,7 @@ lf
 lf
 lf
 lf
-at
+bI
 aZ
 ZB
 RP
@@ -28744,7 +28744,7 @@ lf
 kV
 lf
 lf
-at
+bI
 BM
 ZB
 RP

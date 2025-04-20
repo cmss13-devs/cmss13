@@ -23,7 +23,9 @@
 	return active_cmo
 
 AddTimelock(/datum/job/civilian/professor, list(
-	JOB_MEDIC_ROLES = 10 HOURS
+	JOB_DOCTOR_ROLES = 10 HOURS,
+	JOB_MEDIC_ROLES = 10 HOURS,
+	JOB_RESEARCH_ROLES = 5 HOURS,
 ))
 
 /obj/effect/landmark/start/professor

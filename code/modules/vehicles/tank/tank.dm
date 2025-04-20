@@ -145,8 +145,8 @@
 	if(user == seats[VEHICLE_DRIVER])
 		// Check if treads are installed
 		var/has_treads = FALSE
-		for(var/h in hardpoints)
-			if(istype(h, /obj/item/hardpoint/locomotion/treads))
+		for(var/hardpoint in hardpoints)
+			if(istype(hardpoint, /obj/item/hardpoint/locomotion/treads))
 				has_treads = TRUE
 				break
 		if(!has_treads)

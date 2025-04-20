@@ -5512,6 +5512,10 @@
 /area/almayer/living/cryo_cells)
 "and" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control/cl/quarter/windows{
+	pixel_y = -12;
+	pixel_x = -4
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "ane" = (
@@ -6170,10 +6174,16 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/door_control/cl/office/office_window{
-	pixel_y = -3;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = -2;
+	name = "Office Internal Windows Shutters";
+	id = "cl_office_windows2"
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control/cl/office/office_window{
+	pixel_x = -6;
+	pixel_y = 6
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "aoQ" = (
@@ -7960,13 +7970,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
-"atf" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "atg" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/almayer,
@@ -8654,6 +8657,15 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/intel)
+"avo" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/office_window{
+	dir = 4;
+	id = "cl_office_windows2"
+	},
+/turf/open/floor/plating,
+/area/almayer/command/corporateliaison)
 "avp" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/poddoor/almayer{
@@ -8678,6 +8690,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/almayer/living/intel)
+"avs" = (
+/obj/structure/machinery/atm{
+	pixel_y = 32
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "avt" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/engineering/upper_engineering/port)
@@ -28453,9 +28471,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/vehiclehangar)
 "eQJ" = (
-/obj/structure/sign/poster/ad{
-	pixel_x = 30
-	},
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -42377,6 +42392,9 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "kVW" = (
@@ -44743,9 +44761,6 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
-	},
-/obj/structure/machinery/light{
-	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -106368,10 +106383,10 @@ poD
 bBH
 bvX
 maO
-lPm
+eAN
 ari
 apX
-eAN
+lPm
 eAN
 eAN
 ajL
@@ -106570,8 +106585,8 @@ lXl
 poD
 bBH
 pBG
-pBG
-pBG
+avo
+avo
 pBG
 aqf
 pBG
@@ -106774,12 +106789,12 @@ poD
 qmW
 pBG
 auW
-atf
+vQR
 arj
 qRr
 pBG
-pBG
-pBG
+avo
+avo
 pBG
 lEf
 gel
@@ -106980,8 +106995,8 @@ eAN
 eAN
 oNY
 vEG
-eAN
 cHG
+eAN
 eAN
 nFc
 rfb
@@ -107788,7 +107803,7 @@ lRh
 poD
 qmW
 pBG
-eAN
+avs
 aui
 apX
 xUa

@@ -238,17 +238,17 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/pmc/pmc_detainer
-	name = "Weyland-Yutani PMC (Detainer)"
+/datum/equipment_preset/pmc/pmc_security
+	name = "Weyland-Yutani PMC (Security)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = JOB_PMC_DETAINER
-	rank = JOB_PMC_DETAINER
+	assignment = JOB_PMC_SECURITY
+	rank = JOB_PMC_SECURITY
 	minimap_icon = "pmc_mp"
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
-/datum/equipment_preset/pmc/pmc_detainer/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/pmc/pmc_security/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc/guard, WEAR_BODY)
@@ -286,7 +286,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/zipcuffs/small, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_BACK)
 
-/datum/equipment_preset/pmc/pmc_detainer/get_antag_clothing_equipment()
+/datum/equipment_preset/pmc/pmc_security/get_antag_clothing_equipment()
 	return list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/veteran/pmc/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
@@ -336,7 +336,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Vertical Grip", 0, /obj/item/attachable/verticalgrip, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
 	)
 
-/datum/equipment_preset/pmc/pmc_detainer/get_antag_gear_equipment()
+/datum/equipment_preset/pmc/pmc_security/get_antag_gear_equipment()
 	return list(
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_RECOMMENDED),

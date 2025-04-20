@@ -192,7 +192,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PMC_MEDIC "PMC Corporate Medic"
 #define JOB_PMC_DOCTOR "PMC Trauma Surgeon"
 #define JOB_PMC_INVESTIGATOR "PMC Medical Investigator"
-#define JOB_PMC_DETAINER "PMC Security Enforcer"
+#define JOB_PMC_SECURITY "PMC Security Enforcer"
 #define JOB_PMC_CROWD_CONTROL "PMC Crowd Control Specialist"
 #define JOB_PMC_GUNNER "PMC Support Weapons Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
 #define JOB_PMC_SNIPER "PMC Weapons Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
@@ -204,7 +204,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define ROLES_WY_PMC list(JOB_PMC_LEADER, JOB_PMC_SNIPER, JOB_PMC_GUNNER, JOB_PMC_ENGINEER, JOB_PMC_MEDIC, JOB_PMC_STANDARD)
 #define ROLES_WY_PMC_AUX list(JOB_PMC_SYNTH, JOB_PMC_CREWMAN, JOB_PMC_DOCTOR)
-#define ROLES_WY_PMC_INSPEC list(JOB_PMC_LEAD_INVEST, JOB_PMC_INVESTIGATOR, JOB_PMC_DETAINER, JOB_PMC_CROWD_CONTROL)
+#define ROLES_WY_PMC_INSPEC list(JOB_PMC_LEAD_INVEST, JOB_PMC_INVESTIGATOR, JOB_PMC_SECURITY, JOB_PMC_CROWD_CONTROL)
 #define ROLES_WY_PMC_ALL ROLES_WY_PMC + ROLES_WY_PMC_AUX + ROLES_WY_PMC_INSPEC
 
 //-------- COMMANDOS --------//

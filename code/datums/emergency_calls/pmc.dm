@@ -135,7 +135,7 @@
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_security, TRUE, TRUE)
 
 	print_backstory(H)
 

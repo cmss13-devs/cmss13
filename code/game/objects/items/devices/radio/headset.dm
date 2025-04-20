@@ -630,7 +630,8 @@
 
 /obj/item/device/radio/headset/almayer/mcl/Initialize()
 	. = ..()
-	spy_bug.nametag = "CL Radio"
+	if(spy_bug)
+		spy_bug.nametag = "CL Radio"
 
 /obj/item/device/radio/headset/almayer/mcl/sec
 	name = "corporate security radio headset"

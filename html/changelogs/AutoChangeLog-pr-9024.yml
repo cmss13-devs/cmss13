@@ -1,7 +1,0 @@
-author: "SpypigDev"
-delete-after: True
-changes:
-  - bugfix: "HM tutorial progression no longer counts towards fun facts"
-  - bugfix: "HM tutorial AI behavioral bugfixes"
-  - bugfix: "HM tutorial general gameplay bugfixes"
-  - rscadd: "HM tutorial restocking mechanics"

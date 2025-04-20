@@ -336,6 +336,8 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
 /obj/item/attachable/bayonet/upp_replica
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 	icon_state = "upp_bayonet"
@@ -343,6 +345,8 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "upp_bayonet_a"
 
 /obj/item/attachable/bayonet/wy
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper SA120 L7 bayonet"
 	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
 	icon_state = "wy_bayonet"
@@ -350,6 +354,8 @@ Defined in conflicts.dm of the #defines folder.
 	unacidable = TRUE
 
 /obj/item/attachable/bayonet/upp
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
 	icon_state = "upp_bayonet"
@@ -361,6 +367,8 @@ Defined in conflicts.dm of the #defines folder.
 	pry_delay = 1 SECONDS
 
 /obj/item/attachable/bayonet/co2
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
 	icon_state = "co2_knife"
@@ -368,6 +376,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/filled = FALSE
 
 /obj/item/attachable/bayonet/rmc
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
 	icon_state = "twe_bayonet"
@@ -379,6 +389,8 @@ Defined in conflicts.dm of the #defines folder.
 	pry_delay = 1 SECONDS
 
 /obj/item/attachable/bayonet/antique
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper antique bayonet"
 	desc = "An antique-style bayonet, has a long blade, wooden handle with brass fittings, reflecting historical craftsmanship."
 	icon_state = "antique_bayonet"
@@ -386,6 +398,8 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "antique_bayonet_a"
 
 /obj/item/attachable/bayonet/rmc_replica
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
 	icon_state = "twe_bayonet"
@@ -393,6 +407,8 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "twe_bayonet_a"
 
 /obj/item/attachable/bayonet/custom
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper M5 'Raven's Claw' tactical bayonet"
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool."
 	icon_state = "bayonet_custom"
@@ -400,24 +416,32 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "bayonet_custom_a"
 
 /obj/item/attachable/bayonet/custom/red
+	AUTOWIKI_SKIP(TRUE)
+
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a red grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_red"
 	item_state = "combat_knife"
 	attach_icon = "bayonet_custom_red_a"
 
 /obj/item/attachable/bayonet/custom/blue
+	AUTOWIKI_SKIP(TRUE)
+
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a blue grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_blue"
 	item_state = "combat_knife"
 	attach_icon = "bayonet_custom_blue_a"
 
 /obj/item/attachable/bayonet/custom/black
+	AUTOWIKI_SKIP(TRUE)
+
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a black grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_black"
 	item_state = "combat_knife"
 	attach_icon = "bayonet_custom_black_a"
 
 /obj/item/attachable/bayonet/tanto
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper T9 tactical bayonet"
 	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
 	icon_state = "bayonet_tanto"
@@ -425,11 +449,15 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "bayonet_tanto_a"
 
 /obj/item/attachable/bayonet/tanto/blue
+	AUTOWIKI_SKIP(TRUE)
+
 	icon_state = "bayonet_tanto_alt"
 	item_state = "combat_knife"
 	attach_icon = "bayonet_tanto_alt_a"
 
 /obj/item/attachable/bayonet/van_bandolier
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Fairbairn-Sykes fighting knife"
 	desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
 
@@ -563,6 +591,8 @@ Defined in conflicts.dm of the #defines folder.
 	return ..()
 
 /obj/item/attachable/slavicbarrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "sniper barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "slavicbarrel"
@@ -602,6 +632,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/l56a2_smartgun
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "l56a2 barrel"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "magsg_barrel_a"
@@ -613,6 +645,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/sniperbarrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "sniper barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "sniperbarrel"
@@ -627,6 +661,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/pmc_sniperbarrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "sniper barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "pmc_sniperbarrel"
@@ -646,6 +682,8 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = -1
 
 /obj/item/attachable/m60barrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "M60 barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "m60barrel"
@@ -660,6 +698,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/mar50barrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "MAR-50 barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "mar50barrel"
@@ -674,6 +714,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/smartbarrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "smartgun barrel"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "m56_barrel"
@@ -2048,6 +2090,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
 
 /obj/item/attachable/stock/hunting
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "wooden stock"
 	desc = "The non-detachable stock of a Basira-Armstrong rifle."
 	icon_state = "huntingstock"
@@ -2069,6 +2113,8 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
 
 /obj/item/attachable/stock/hg3712
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "hg3712 stock"
 	desc = "The non-detachable stock of a HG 37-12 pump shotgun."
 	icon_state = "hg3712_stock"
@@ -2092,6 +2138,7 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = WIELD_DELAY_NONE
 
 /obj/item/attachable/stock/hg3712/m3717
+	AUTOWIKI_SKIP(TRUE)
 	name = "hg3717 stock"
 	desc = "The non-detachable stock of a M37-17 pump shotgun."
 	icon_state = "hg3717_stock"
@@ -2331,6 +2378,8 @@ Defined in conflicts.dm of the #defines folder.
 	return .
 
 /obj/item/attachable/stock/mod88
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Mod 88 burst stock"
 	desc = "Increases the fire rate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
 	icon_state = "mod88_stock"
@@ -2433,6 +2482,8 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
 
 /obj/item/attachable/m4ra_barrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "M4RA barrel"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "m4ra_barrel"
@@ -2466,6 +2517,8 @@ Defined in conflicts.dm of the #defines folder.
 	return .
 
 /obj/item/attachable/m4ra_barrel_custom
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "custom M4RA barrel"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon_state = "m4ra_custom_barrel"
@@ -2499,6 +2552,8 @@ Defined in conflicts.dm of the #defines folder.
 	return .
 
 /obj/item/attachable/upp_rpg_breech
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "HJRA-12 Breech"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
@@ -2511,6 +2566,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/pkpbarrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "QYJ-72 Barrel"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
@@ -2523,6 +2580,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/stock/pkpstock
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "QYJ-72 Stock"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
@@ -2535,6 +2594,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/type88_barrel
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "Type-88 Barrel"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
@@ -2547,6 +2608,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/type73suppressor
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "Type 73 Integrated Suppressor"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
@@ -2559,6 +2622,8 @@ Defined in conflicts.dm of the #defines folder.
 	size_mod = 0
 
 /obj/item/attachable/stock/type71
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "Type 71 Stock"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
@@ -2574,6 +2639,8 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 
 /obj/item/attachable/stock/m60
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "M60 stock"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
@@ -2587,6 +2654,8 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/stock/ppsh
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "PPSh-17b stock"
 	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
 	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
@@ -2852,6 +2921,8 @@ Defined in conflicts.dm of the #defines folder.
 		R.flags_equip_slot |= SLOT_WAIST
 
 /obj/item/attachable/stock/nsg23
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "NSG 23 stock"
 	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
 	icon_state = "nsg23_stock"
@@ -2864,6 +2935,8 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 2
 
 /obj/item/attachable/stock/l23
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "L23 stock"
 	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
 	icon_state = "l23_stock"

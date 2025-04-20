@@ -283,6 +283,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 /obj/item/weapon/gun/shotgun/es7/Initialize(mapload, spawn_empty)
@@ -900,6 +901,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/mou53,
 	)

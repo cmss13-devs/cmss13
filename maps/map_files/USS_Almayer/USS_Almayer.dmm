@@ -3218,7 +3218,6 @@
 	pixel_x = -7;
 	pixel_y = -2
 	},
-/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp/green{
 	pixel_y = 4;
 	pixel_x = 4
@@ -3226,6 +3225,7 @@
 /obj/item/weapon/pole/fancy_cane{
 	pixel_x = 5
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "ahi" = (
@@ -5395,7 +5395,6 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
 "amM" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/door_control{
 	id = "cl_office_door";
 	name = "Office Door Control";
@@ -5416,6 +5415,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "amN" = (
@@ -6162,7 +6162,6 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/stern_point_defense)
 "aoP" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary{
 	name = "CL Office Telephone";
 	phone_category = "Offices";
@@ -6174,6 +6173,7 @@
 	pixel_y = -3;
 	pixel_x = -6
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "aoQ" = (
@@ -7170,7 +7170,6 @@
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "arl" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/skills{
 	req_one_access_txt = "200";
 	dir = 4
@@ -7178,6 +7177,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "arm" = (
@@ -7993,7 +7993,6 @@
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "atk" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin/wy{
 	pixel_x = 14;
 	pixel_y = 6
@@ -8006,6 +8005,7 @@
 	pixel_x = 14;
 	pixel_y = 2
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "atl" = (
@@ -8152,10 +8152,10 @@
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cic)
 "atP" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	pixel_y = 6
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "atQ" = (
@@ -17738,7 +17738,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/general_equipment)
 "bvS" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
@@ -17755,6 +17754,7 @@
 	pixel_x = -5;
 	pixel_y = -3
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bvX" = (
@@ -32072,11 +32072,11 @@
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "gyI" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp/green{
 	pixel_x = 5;
 	pixel_y = 3
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "gyN" = (
@@ -38996,11 +38996,11 @@
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/hallways/lower/port_fore_hallway)
 "jvM" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/item/spacecash/c500,
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "jvP" = (
@@ -43800,13 +43800,13 @@
 /obj/item/device/camera_film{
 	pixel_x = -3
 	},
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/door_display/research_cell{
 	id = "Containment Cell 4";
 	name = "Control Panel";
 	pixel_y = 24;
 	req_access = list(200)
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "lDk" = (
@@ -53338,7 +53338,6 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_medbay)
 "pLa" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/fancy/cigarettes/wypacket{
 	pixel_x = 6;
 	pixel_y = 3
@@ -53354,6 +53353,7 @@
 	pixel_y = 9
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "pLt" = (
@@ -69703,11 +69703,10 @@
 	pixel_y = 3
 	},
 /obj/item/device/camera,
-/obj/structure/surface/table/woodentable/fancy,
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	pixel_y = 24
 	},
+/obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "wvu" = (

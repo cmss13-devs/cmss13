@@ -1,0 +1,4 @@
+author: "PhantornRU"
+delete-after: True
+changes:
+  - bugfix: "fix propelled chair when not wheeled chair"

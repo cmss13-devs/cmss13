@@ -370,3 +370,16 @@
       its location with the M70B1 light flak jacket.
   - refactor: Changed the M70 flak jacket's file pathing to jacket/marine/pilot/armor
       to standardize it with M70B1 light flak jacket's jacket/marine/pilot pathing.
+2025-04-20:
+  DarkLordCabbage:
+  - balance: 'Underbarrel extinguishers can now be attached to the m39, M4RA, mou,
+      breaching shotty, and others.
+
+      qol:'
+  Detective-Google:
+  - bugfix: CO council can vend bomber jackets again
+  Lagomorphica:
+  - balance: Security on Hybrisia Prospera have had buget cuts and no longer have
+      large magazine pouches.
+  PhantornRU:
+  - bugfix: fix propelled chair when not wheeled chair

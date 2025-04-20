@@ -74,6 +74,7 @@
 		/obj/item/attachable/scope,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 /obj/item/weapon/gun/rifle/m4ra_custom/handle_starting_attachment()

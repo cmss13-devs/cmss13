@@ -108,7 +108,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
 	var/predator_use_legacy = "None"
-	var/predator_translator_type = "Modern"
+	var/predator_translator_type = PRED_TECH_MODERN
+	var/predator_invisibility_sound = PRED_TECH_MODERN
 	var/predator_mask_type = 1
 	var/predator_accessory_type = 0
 	var/predator_armor_type = 1
@@ -1310,6 +1311,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!new_translator_type)
 						return
 					predator_translator_type = new_translator_type
+				if("pred_invis_sound")
+					var/new_invis_sound = tgui_input_list(user, "Choose your invisibility sound.", "Invisibility Sound", PRED_INVIS_SOUNDS)
+					if(!new_invis_sound)
+						return
+					predator_translator_type = new_invis_sound
 				if("pred_mask_type")
 					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, PRED_MASK_TYPE_MAX, 1)
 					if(new_predator_mask_type)

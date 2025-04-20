@@ -90,6 +90,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/provost, WEAR_R_EAR)
 	. = ..()
 
 /datum/equipment_preset/fax_responder/uscm/provost
@@ -111,6 +112,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/red(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/provost, WEAR_R_EAR)
 	. = ..()
 
 //*****************************************************************************************************/
@@ -131,6 +133,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/black(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -161,6 +164,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/green(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -184,6 +188,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -209,6 +214,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/black(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -238,6 +244,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/red(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -263,5 +270,6 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()

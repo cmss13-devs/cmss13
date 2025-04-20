@@ -1093,6 +1093,7 @@
 		if(delete_mobs == "Yes")
 			for(var/mob/living/mob in current_area)
 				qdel(mob) //Clear mobs
+				stoplag(4)
 		for(var/obj/obj in current_area)
 			qdel(obj) //Clear objects
 

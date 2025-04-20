@@ -50,14 +50,6 @@
 "K" = (
 /turf/open/floor/tdome/w_y2/north,
 /area/template_noop)
-"L" = (
-/obj/structure/window/framed/almayer/hull,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "tdome_observer";
-	name = "\improper Observer Shutters"
-	},
-/turf/open/floor/tdome/northeast,
-/area/template_noop)
 "N" = (
 /turf/template_noop,
 /area/template_noop)
@@ -288,7 +280,7 @@ N
 P
 "}
 (12,1,1) = {"
-m
+N
 m
 p
 p
@@ -305,7 +297,7 @@ N
 P
 "}
 (13,1,1) = {"
-m
+N
 p
 p
 p
@@ -322,7 +314,7 @@ N
 P
 "}
 (14,1,1) = {"
-m
+N
 p
 p
 p
@@ -339,7 +331,7 @@ N
 P
 "}
 (15,1,1) = {"
-m
+N
 p
 p
 p
@@ -356,7 +348,7 @@ N
 P
 "}
 (16,1,1) = {"
-m
+N
 p
 p
 p
@@ -373,7 +365,7 @@ N
 P
 "}
 (17,1,1) = {"
-m
+N
 p
 p
 p
@@ -390,7 +382,7 @@ N
 P
 "}
 (18,1,1) = {"
-L
+N
 p
 p
 p
@@ -407,7 +399,7 @@ N
 P
 "}
 (19,1,1) = {"
-L
+N
 p
 p
 p
@@ -424,7 +416,7 @@ N
 P
 "}
 (20,1,1) = {"
-L
+N
 p
 p
 p
@@ -441,7 +433,7 @@ N
 P
 "}
 (21,1,1) = {"
-L
+N
 p
 p
 p
@@ -458,7 +450,7 @@ N
 P
 "}
 (22,1,1) = {"
-L
+N
 p
 p
 p
@@ -475,7 +467,7 @@ N
 P
 "}
 (23,1,1) = {"
-m
+N
 p
 p
 p
@@ -492,7 +484,7 @@ N
 P
 "}
 (24,1,1) = {"
-m
+N
 p
 p
 p
@@ -509,7 +501,7 @@ N
 P
 "}
 (25,1,1) = {"
-m
+N
 p
 p
 p
@@ -526,7 +518,7 @@ N
 P
 "}
 (26,1,1) = {"
-m
+N
 p
 p
 p
@@ -543,7 +535,7 @@ N
 P
 "}
 (27,1,1) = {"
-m
+N
 p
 p
 p
@@ -560,7 +552,7 @@ N
 P
 "}
 (28,1,1) = {"
-m
+N
 m
 p
 p

@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - bugfix: "CO council can vend bomber jackets again"

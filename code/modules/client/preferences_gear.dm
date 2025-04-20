@@ -1089,6 +1089,18 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Blue lighter, zippo"
 	path = /obj/item/tool/lighter/zippo/blue
 
+/datum/gear/smoking/zippo/bullet
+	display_name = "Bullet lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/bullet
+
+/datum/gear/smoking/zippo/heart
+	display_name = "Heart lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/heart
+
+/datum/gear/smoking/zippo/vintage
+	display_name = "Vintage lighter, zippo"
+	path = /obj/item/tool/lighter/zippo/vintage
+
 /datum/gear/smoking/electronic_cigarette
 	display_name = "Electronic cigarette"
 	path = /obj/item/clothing/mask/electronic_cigarette

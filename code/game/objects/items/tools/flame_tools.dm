@@ -806,6 +806,34 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "execzippo"
 	black_market_value = 40
 
+
+/obj/item/tool/lighter/zippo/bullet
+	name = "bullet Zippo lighter"
+	desc = "A snazzy zippo in the shape of a bullet. Rarely found at Weymarts as a novelty."
+	icon_state = "bulletzippo"
+	item_state = "bulletzippo"
+	icon_on = "bulletzippoon"
+	icon_off = "bulletzippo"
+	black_market_value = 30
+
+/obj/item/tool/lighter/zippo/heart
+	name = "heart Zippo lighter"
+	desc = "A silver zippo lighter in the shape of a heart. Adorable."
+	icon_state = "heartzippo"
+	item_state = "heartzippo"
+	icon_on = "heartzippoon"
+	icon_off = "heartzippo"
+	black_market_value = 30
+
+/obj/item/tool/lighter/zippo/vintage
+	name = "vintage Zippo lighter"
+	desc = "A rather old, but reliable zippo. Did you steal this thing from a retirement home?"
+	icon_state = "vintagezippo"
+	item_state = "vintagezippo"
+	icon_on = "vintagezippoon"
+	icon_off = "vintagezippo"
+	black_market_value = 30
+
 /obj/item/tool/lighter/random
 
 /obj/item/tool/lighter/random/Initialize()

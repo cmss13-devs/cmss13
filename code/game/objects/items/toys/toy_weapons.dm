@@ -109,8 +109,10 @@
 
 
 /obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!isturf(target.loc) || target == user) return
-	if(flag) return
+	if(!isturf(target.loc) || target == user)
+		return
+	if(flag)
+		return
 
 	if (locate (/obj/structure/surface/table, src.loc))
 		return
@@ -124,20 +126,24 @@
 
 		for(var/i=0, i<6, i++)
 			if (D)
-				if(D.loc == trg) break
+				if(D.loc == trg)
+					break
 				step_towards(D,trg)
 
 				for(var/mob/living/M in D.loc)
-					if(!istype(M,/mob/living)) continue
-					if(M == user) continue
-					for(var/mob/O in viewers(world_view_size, D))
+					if(!istype(M,/mob/living))
+						continue
+					if(M == user)
+						continue
+					for(var/mob/O in viewers(GLOB.world_view_size, D))
 						O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
 					new /obj/item/toy/crossbow_ammo(M.loc)
 					qdel(D)
 					return
 
 				for(var/atom/A in D.loc)
-					if(A == user) continue
+					if(A == user)
+						continue
 					if(A.density)
 						new /obj/item/toy/crossbow_ammo(A.loc)
 						qdel(D)
@@ -152,14 +158,14 @@
 		return
 	else if (bullets == 0)
 		user.apply_effect(5, WEAKEN)
-		for(var/mob/O in viewers(world_view_size, user))
+		for(var/mob/O in viewers(GLOB.world_view_size, user))
 			O.show_message(SPAN_DANGER("[user] realized they were out of ammo and starting scrounging for some!"), SHOW_MESSAGE_VISIBLE)
 
 
-/obj/item/toy/crossbow/attack(mob/M as mob, mob/user as mob)
+/obj/item/toy/crossbow/attack(mob/living/M as mob, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (src.bullets > 0 && M.lying)
+	if (src.bullets > 0 && M.body_position == LYING_DOWN)
 
 		for(var/mob/O in viewers(M, null))
 			if(O.client)
@@ -169,7 +175,7 @@
 		playsound(user.loc, 'sound/items/syringeproj.ogg', 15, 1)
 		new /obj/item/toy/crossbow_ammo(M.loc)
 		src.bullets--
-	else if (M.lying && src.bullets == 0)
+	else if (M.body_position == LYING_DOWN && src.bullets == 0)
 		for(var/mob/O in viewers(M, null))
 			if (O.client)
 				O.show_message(SPAN_DANGER("<B>[user] casually lines up a shot with [M]'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</B>"), SHOW_MESSAGE_VISIBLE, SPAN_DANGER("You hear someone fall"), SHOW_MESSAGE_AUDIBLE)
@@ -198,7 +204,7 @@
 /obj/item/toy/sword
 	name = "toy sword"
 	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/energy.dmi'
 	icon_state = "sword0"
 	item_state = "sword0"
 	var/active = 0
@@ -233,7 +239,7 @@
 /obj/item/toy/katana
 	name = "replica katana"
 	desc = "Woefully underpowered in D20."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/swords.dmi'
 	icon_state = "katana"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOSHIELD

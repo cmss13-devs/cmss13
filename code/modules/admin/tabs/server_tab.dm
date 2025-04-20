@@ -6,10 +6,6 @@
 	if (!usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		return
 
-	if(!check_rights(R_DEBUG, FALSE) && SSticker.current_state != GAME_STATE_FINISHED)
-		to_chat(usr, "You can't restart the world until the round has ended!")
-		return
-
 	var/confirm = alert("Restart the game world?", "Restart", "Yes", "Cancel")
 	if(confirm == "Cancel")
 		return
@@ -25,8 +21,8 @@
 	set desc = "Players can still log into the server, but players won't be able to join the game as a new mob."
 	set category = "Server"
 
-	enter_allowed = !enter_allowed
-	if(!enter_allowed)
+	GLOB.enter_allowed = !GLOB.enter_allowed
+	if(!GLOB.enter_allowed)
 		to_world("<B>New players may no longer join the game.</B>")
 	else
 		to_world("<B>New players may now join the game.</B>")
@@ -38,8 +34,8 @@
 	set desc = "Globally Toggles Deadchat"
 	set category = "Server"
 
-	dsay_allowed = !dsay_allowed
-	if(dsay_allowed)
+	GLOB.dsay_allowed = !GLOB.dsay_allowed
+	if(GLOB.dsay_allowed)
 		to_world("<B>Deadchat has been globally enabled!</B>")
 	else
 		to_world("<B>Deadchat has been globally disabled!</B>")
@@ -50,8 +46,8 @@
 	set desc = "Globally Toggles OOC"
 	set category = "Server"
 
-	ooc_allowed = !ooc_allowed
-	if(ooc_allowed)
+	GLOB.ooc_allowed = !GLOB.ooc_allowed
+	if(GLOB.ooc_allowed)
 		to_world("<B>The OOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The OOC channel has been globally disabled!</B>")
@@ -62,8 +58,8 @@
 	set desc = "Globally Toggles LOOC"
 	set category = "Server"
 
-	looc_allowed = !looc_allowed
-	if(looc_allowed)
+	GLOB.looc_allowed = !GLOB.looc_allowed
+	if(GLOB.looc_allowed)
 		to_world("<B>The LOOC channel has been globally enabled!</B>")
 	else
 		to_world("<B>The LOOC channel has been globally disabled!</B>")

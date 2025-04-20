@@ -12,6 +12,7 @@
 	emote_see = list("shakes its head", "shivers")
 	speak_chance = 1
 	turns_per_move = 10
+	holder_type = /obj/item/holder/corgi
 	meat_type = /obj/item/reagent_container/food/snacks/meat/corgi
 	meat_amount = 3
 	response_help  = "pets the"
@@ -23,7 +24,19 @@
 	dead_black_market_value = 0
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
-	var/facehugger
+
+/mob/living/simple_animal/corgi/MouseDrop(atom/over_object)
+	if(!CAN_PICKUP(usr, src))
+		return ..()
+	var/mob/living/carbon/H = over_object
+	if(!istype(H) || !Adjacent(H) || H != usr)
+		return ..()
+
+	if(H.a_intent == INTENT_HELP)
+		get_scooped(H)
+		return
+	else
+		return ..()
 
 //IAN! SQUEEEEEEEEE~
 /mob/living/simple_animal/corgi/Ian
@@ -31,6 +44,7 @@
 	real_name = "Ian" //Intended to hold the name without altering it.
 	gender = MALE
 	desc = "It's a corgi."
+	holder_type = /obj/item/holder/corgi/Ian
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	response_help  = "pets"
@@ -81,7 +95,7 @@
 						movement_target.attack_animal(src)
 					else if(ishuman(movement_target.loc) )
 						if(prob(20))
-							INVOKE_ASYNC(src, PROC_REF(emote), "stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
+							INVOKE_ASYNC(src, PROC_REF(emote), "stares at [movement_target] that [movement_target.loc] has with a sad puppy-face")
 
 		if(prob(1))
 			INVOKE_ASYNC(src, PROC_REF(emote), pick("dances around","chases its tail"))
@@ -92,7 +106,8 @@
 
 /mob/living/simple_animal/corgi/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -137,12 +152,6 @@
 		if(back_icon)
 			overlays += back_icon
 
-	if(facehugger)
-		if(istype(src, /mob/living/simple_animal/corgi/puppy))
-			overlays += image('icons/mob/humans/onmob/mask.dmi',"facehugger_corgipuppy")
-		else
-			overlays += image('icons/mob/humans/onmob/mask.dmi',"facehugger_corgi")
-
 	return
 
 
@@ -171,6 +180,7 @@
 	icon_state = "lisa"
 	icon_living = "lisa"
 	icon_dead = "lisa_dead"
+	holder_type = /obj/item/holder/corgi/Lisa
 	response_help  = "pets"
 	response_disarm = "bops"
 	response_harm   = "kicks"
@@ -204,8 +214,6 @@
 					alone = 0
 					break
 			if(alone && ian && puppies < 4)
-				if(near_camera(src) || near_camera(ian))
-					return
 				new /mob/living/simple_animal/corgi/puppy(loc)
 
 

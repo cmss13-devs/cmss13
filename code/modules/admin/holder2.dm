@@ -1,4 +1,4 @@
-var/list/datum/admins/admin_datums = list()
+GLOBAL_LIST_INIT_TYPED(admin_datums, /datum/admins, list())
 
 GLOBAL_VAR_INIT(href_token, GenerateToken())
 GLOBAL_PROTECT(href_token)
@@ -9,11 +9,6 @@ GLOBAL_PROTECT(href_token)
 	var/client/owner = null
 	var/rights = 0
 	var/fakekey = null
-
-	var/admincaster_screen = 0 //See newscaster.dm under machinery for a full description
-	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message   //These two will act as admin_holders.
-	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
-	var/admincaster_signature //What you'll sign the newsfeeds as
 
 	var/href_token
 
@@ -31,29 +26,32 @@ GLOBAL_PROTECT(href_token)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
-	admincaster_signature = "Weyland-Yutani Officer #[rand(0,9)][rand(0,9)][rand(0,9)]"
 	rank = initial_rank
 	rights = initial_rights
 	href_token = GenerateToken()
-	admin_datums[ckey] = src
+	GLOB.admin_datums[ckey] = src
 	extra_titles = new_extra_titles
+	if(rights & R_PROFILER)
+		log_debug("Adding [ckey] to APP/admin.")
+		world.SetConfig("APP/admin", ckey, "role=admin")
 
 // Letting admins edit their own permission giver is a poor idea
 /datum/admins/vv_edit_var(var_name, var_value)
 	return FALSE
+
+/datum/admins/can_vv_get(var_name)
+	if(var_name == NAMEOF(src, href_token))
+		return FALSE
+	return ..()
 
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
 		owner = C
 		owner.admin_holder = src
 		owner.add_admin_verbs()
-		owner.add_admin_whitelists()
 		owner.tgui_say.load()
 		owner.update_special_keybinds()
 		GLOB.admins |= C
-		if(owner.admin_holder.rights & R_PROFILER)
-			if(!world.GetConfig("admin", C.ckey))
-				world.SetConfig("APP/admin", C.ckey, "role = coder")
 
 /datum/admins/proc/disassociate()
 	if(owner)
@@ -71,7 +69,8 @@ if it doesn't return 1 and show_msg=1 it will prints a message explaining why th
 generally it would be used like so:
 
 /proc/admin_proc()
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_ADMIN))
+		return
 	to_world("you have enough rights!")
 
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
@@ -129,31 +128,32 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return 0
 
 /client/proc/deadmin()
+	if(IsAdminAdvancedProcCall())
+		alert_proccall("deadmin")
+		return PROC_BLOCKED
 	if(admin_holder)
 		admin_holder.disassociate()
 		QDEL_NULL(admin_holder)
-	return 1
+	return TRUE
 
 /client/proc/readmin()
-	if(admin_datums[ckey])
-		admin_datums[ckey].associate(src)
-	return 1
+	if(GLOB.admin_datums[ckey])
+		GLOB.admin_datums[ckey].associate(src)
+	return TRUE
 
 /datum/admins/proc/check_for_rights(rights_required)
 	if(rights_required && !(rights_required & rights))
 		return FALSE
 	return TRUE
 
-/// gets the role dependant data for tgui-say
-/datum/admins/proc/get_tgui_say_roles()
-	var/roles = list()
-	if(check_for_rights(R_ADMIN))
-		roles += "Admin"
-	if(check_for_rights(R_MOD))
-		roles += "Mod"
+/// gets any additional channels for tgui-say (admin & mentor)
+/datum/admins/proc/get_tgui_say_extra_channels()
+	var/extra_channels = list()
+	if(check_for_rights(R_ADMIN) || check_for_rights(R_MOD))
+		extra_channels += ADMIN_CHANNEL
 	if(check_for_rights(R_MENTOR))
-		roles += "Mentor"
-	return roles
+		extra_channels += MENTOR_CHANNEL
+	return extra_channels
 
 /datum/proc/CanProcCall(procname)
 	return TRUE

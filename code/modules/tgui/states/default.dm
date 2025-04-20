@@ -25,12 +25,3 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 	//if(. == UI_INTERACTIVE && !src.IsAdvancedToolUser())) // unhandy living mobs can only look, not touch.
 	// return UI_UPDATE
 
-/mob/living/silicon/ai/default_can_use_topic(src_object)
-	. = shared_ui_interaction(src_object)
-	if(. < UI_INTERACTIVE)
-		return
-
-	// The AI can interact with anything it can see nearby, or with cameras while wireless control is enabled.
-	if(!control_disabled && can_see(src_object))
-		return UI_INTERACTIVE
-	return UI_CLOSE

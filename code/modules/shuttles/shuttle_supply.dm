@@ -1,32 +1,88 @@
+/obj/effect/landmark/supply_elevator
+	icon_state = "elevator"
+	var/faction = FACTION_MARINE
+
+/obj/effect/landmark/supply_elevator/upp
+	icon_state = "elevator_upp"
+	faction = FACTION_UPP
+
 /obj/effect/landmark/supply_elevator/Initialize(mapload, ...)
 	. = ..()
-	GLOB.supply_elevator = get_turf(src)
+	switch(faction)
+		if(FACTION_MARINE)
+			GLOB.supply_controller.supply_elevator = get_turf(src)
+		if(FACTION_UPP)
+			GLOB.supply_controller_upp.supply_elevator = get_turf(src)
+		else
+			GLOB.supply_controller.supply_elevator = get_turf(src)
 	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/supply_elevator/LateInitialize()
+	. = ..()
+	GLOB.supply_controller_upp.supply_elevator = get_turf(src)
+	var/datum/shuttle/ferry/supply/shuttle = SSoldshuttle.shuttle_controller.shuttles["Supply upp"]
+	if(shuttle.pick_loc())
+		shuttle.Elevator_x = shuttle.pick_loc().x
+		shuttle.Elevator_y = shuttle.pick_loc().y
+		shuttle.Elevator_z = shuttle.pick_loc().z
+		shuttle.SW = new /obj/effect/elevator(locate(shuttle.Elevator_x-2,shuttle.Elevator_y-2,shuttle.Elevator_z))
+		shuttle.SW.vis_contents += shuttle.elevator_animation
+		shuttle.SE = new /obj/effect/elevator(locate(shuttle.Elevator_x+2,shuttle.Elevator_y-2,shuttle.Elevator_z))
+		shuttle.SE.pixel_x = -128
+		shuttle.SE.vis_contents += shuttle.elevator_animation
+		shuttle.NW = new /obj/effect/elevator(locate(shuttle.Elevator_x-2,shuttle.Elevator_y+2,shuttle.Elevator_z))
+		shuttle.NW.pixel_y = -128
+		shuttle.NW.vis_contents += shuttle.elevator_animation
+		shuttle.NE = new /obj/effect/elevator(locate(shuttle.Elevator_x+2,shuttle.Elevator_y+2,shuttle.Elevator_z))
+		shuttle.NE.pixel_x = -128
+		shuttle.NE.pixel_y = -128
+		shuttle.NE.vis_contents += shuttle.elevator_animation
+	return INITIALIZE_HINT_QDEL
+
+
 
 /datum/shuttle/ferry/supply
 	iselevator = 1
+	location = 1
+	warmup_time = 1
+	move_time = ELEVATOR_TRANSIT_DURATION
 	var/away_location = 1 //the location to hide at while pretending to be in-transit
 	var/late_chance = 0
 	var/max_late_time = 300
 	var/railing_id = "supply_elevator_railing"
 	var/gear_id = "supply_elevator_gear"
-	var/obj/effect/elevator/supply/SW //elevator effects (four so the entire elevator doesn't vanish when
-	var/obj/effect/elevator/supply/SE //there's one opaque obstacle between you and the actual elevator loc).
-	var/obj/effect/elevator/supply/NW
-	var/obj/effect/elevator/supply/NE
+	var/obj/effect/elevator/SW //elevator effects (four so the entire elevator doesn't vanish when
+	var/obj/effect/elevator/SE //there's one opaque obstacle between you and the actual elevator loc).
+	var/obj/effect/elevator/NW
+	var/obj/effect/elevator/NE
 	var/Elevator_x
 	var/Elevator_y
 	var/Elevator_z
 	var/elevator_loc
 	///Used to mirrors the turfs (and their contents) on the elevator when raising/lowering, so they don't instantly teleport or vanish.
 	var/obj/effect/elevator/animation_overlay/elevator_animation
+	var/datum/controller/supply/linked_supply_controller
+	var/faction = FACTION_MARINE
+
+/datum/shuttle/ferry/supply/upp
+	faction= FACTION_UPP
+	railing_id = "supply_elevator_railing_upp"
+	gear_id = "supply_elevator_gear_upp"
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
 	RETURN_TYPE(/turf)
-	return GLOB.supply_elevator
+	return linked_supply_controller.supply_elevator
 
 /datum/shuttle/ferry/supply/New()
 	..()
+	switch(faction)
+		if(FACTION_MARINE)
+			linked_supply_controller = GLOB.supply_controller
+		if(FACTION_UPP)
+			linked_supply_controller = GLOB.supply_controller_upp
+		else
+			linked_supply_controller = GLOB.supply_controller
+	linked_supply_controller.shuttle = src
 	elevator_animation = new()
 	elevator_animation.pixel_x = 160 //Matches the slope on the sprite.
 	elevator_animation.pixel_y = -80
@@ -34,15 +90,15 @@
 		Elevator_x = pick_loc().x
 		Elevator_y = pick_loc().y
 		Elevator_z = pick_loc().z
-		SW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
+		SW = new /obj/effect/elevator(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
 		SW.vis_contents += elevator_animation
-		SE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
+		SE = new /obj/effect/elevator(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
 		SE.pixel_x = -128
 		SE.vis_contents += elevator_animation
-		NW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
+		NW = new /obj/effect/elevator(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
 		NW.pixel_y = -128
 		NW.vis_contents += elevator_animation
-		NE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
+		NE = new /obj/effect/elevator(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
 		NE.pixel_x = -128
 		NE.pixel_y = -128
 		NE.vis_contents += elevator_animation
@@ -77,7 +133,7 @@
 				lower_railings()
 				return
 		else //at centcom
-			supply_controller.buy()
+			linked_supply_controller.buy()
 
 		//We pretend it's a long_jump by making the shuttle stay at centcom for the "in-transit" period.
 		var/area/away_area = get_location_area(away_location)
@@ -87,6 +143,11 @@
 		teleported and then cosmetically animated as lowering; otherwise, it will be animated as raising, then teleported afterwards. Either way, it's all on the admin level.*/
 		for(var/turf/T in away_area)
 			elevator_animation.vis_contents += T
+
+		for(var/turf/vis_turf in elevator_animation.vis_contents)
+			for(var/atom/movable/vis_content in vis_turf.contents)
+				vis_content.blocks_emissive = FALSE
+				vis_content.update_emissive_block()
 
 		//If we are at the away_area then we are just pretending to move, otherwise actually do the move
 		if (origin != away_area)
@@ -126,6 +187,12 @@
 
 		moving_status = SHUTTLE_IDLE
 		stop_gears()
+
+		for(var/turf/vis_turf in elevator_animation.vis_contents)
+			for(var/atom/movable/vis_content in vis_turf.contents)
+				vis_content.blocks_emissive = initial(vis_content.blocks_emissive)
+				vis_content.update_emissive_block()
+
 		elevator_animation.vis_contents.Cut()
 
 		if (!at_station()) //at centcom
@@ -137,14 +204,14 @@
 			recharging = 0
 
 /datum/shuttle/ferry/supply/proc/handle_sell()
-	supply_controller.sell()
+	linked_supply_controller.sell() // fix this make it expandable
 
 // returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/ferry/supply/proc/forbidden_atoms_check()
 	if (!at_station())
 		return 0 //if badmins want to send mobs or a nuke on the supply shuttle from centcom we don't care
 
-	return supply_controller.forbidden_atoms_check(get_location_area())
+	return linked_supply_controller.forbidden_atoms_check(get_location_area())
 
 /datum/shuttle/ferry/supply/proc/at_station()
 	return (!location)
@@ -155,7 +222,7 @@
 
 /datum/shuttle/ferry/supply/proc/raise_railings()
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == railing_id && !M.density)
 			effective = 1
 			spawn()
@@ -165,7 +232,7 @@
 
 /datum/shuttle/ferry/supply/proc/lower_railings()
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == railing_id && M.density)
 			effective = 1
 			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
@@ -173,26 +240,14 @@
 		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
 /datum/shuttle/ferry/supply/proc/start_gears(direction = 1)
-	for(var/obj/structure/machinery/gear/M in machines)
+	for(var/obj/structure/machinery/gear/M in GLOB.machines)
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear_moving"
 				M.setDir(direction)
 
 /datum/shuttle/ferry/supply/proc/stop_gears()
-	for(var/obj/structure/machinery/gear/M in machines)
+	for(var/obj/structure/machinery/gear/M in GLOB.machines)
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear"
-
-/obj/effect/landmark/vehicleelevator/Initialize(mapload, ...)
-	. = ..()
-	GLOB.vehicle_elevator = get_turf(src)
-	return INITIALIZE_HINT_QDEL
-
-/datum/shuttle/ferry/supply/vehicle
-	railing_id = "vehicle_elevator_railing"
-	gear_id = "vehicle_elevator_gears"
-
-/datum/shuttle/ferry/supply/vehicle/pick_loc()
-	return GLOB.vehicle_elevator

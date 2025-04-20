@@ -82,6 +82,7 @@ Implant Specifics:<BR>"}
 		return dat
 
 /obj/item/implant/tracking/emp_act(severity)
+	. = ..()
 	if (malfunction) //no, dawg, you can't malfunction while you are malfunctioning
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -124,7 +125,8 @@ Implant Specifics:<BR>"}
 
 
 /obj/item/implant/dexplosive/activate(cause)
-	if((!cause) || (!src.imp_in)) return 0
+	if((!cause) || (!src.imp_in))
+		return 0
 	explosion(src, -1, 0, 2, 3, 0)//This might be a bit much, dono will have to see.
 	if(src.imp_in)
 		src.imp_in.gib()
@@ -139,6 +141,7 @@ Implant Specifics:<BR>"}
 	var/elevel = "Localized Limb"
 	var/phrase = "supercalifragilisticexpialidocious"
 	icon_state = "implant_evil"
+	flags_atom = USES_HEARING
 
 /obj/item/implant/explosive/get_data()
 	var/dat = {"
@@ -216,6 +219,7 @@ Implant Specifics:<BR>"}
 	return 1
 
 /obj/item/implant/explosive/emp_act(severity)
+	. = ..()
 	if (malfunction)
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -264,6 +268,7 @@ Implant Specifics:<BR>"}
 /obj/item/implant/chem/Initialize()
 	. = ..()
 	GLOB.chem_implant_list += src
+	create_reagents(50)
 
 /obj/item/implant/chem/Destroy()
 	GLOB.chem_implant_list -= src
@@ -296,7 +301,8 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 
 /obj/item/implant/chem/activate(cause)
-	if((!cause) || (!src.imp_in)) return 0
+	if((!cause) || (!src.imp_in))
+		return 0
 	var/mob/living/carbon/R = src.imp_in
 	src.reagents.trans_to(R, cause)
 	to_chat(R, "You hear a faint *beep*.")
@@ -307,6 +313,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return
 
 /obj/item/implant/chem/emp_act(severity)
+	. = ..()
 	if (malfunction)
 		return
 	malfunction = MALFUNCTION_TEMPORARY
@@ -321,10 +328,6 @@ the implant may become unstable and either pre-maturely inject the subject or si
 
 	spawn(20)
 		malfunction--
-
-/obj/item/implant/chem/Initialize()
-	. = ..()
-	create_reagents(50)
 
 /obj/item/implant/loyalty
 	name = "loyalty implant"
@@ -344,8 +347,10 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	return dat
 
 /obj/item/implant/loyalty/implanted(mob/M)
-	if(!ishuman(M)) return
-	if(isyautja(M)) return
+	if(!ishuman(M))
+		return
+	if(isyautja(M))
+		return
 	var/mob/living/carbon/human/H = M
 	to_chat(H, SPAN_NOTICE("You are now tagged as a WY loyalist and will be monitored by their central headquarters. You retain your free will and mental faculties."))
 	return 1
@@ -432,6 +437,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 			STOP_PROCESSING(SSobj, src)
 
 /obj/item/implant/death_alarm/emp_act(severity) //for some reason alarms stop going off in case they are emp'd, even without this
+	. = ..()
 	if (malfunction) //so I'm just going to add a meltdown chance here
 		return
 	malfunction = MALFUNCTION_TEMPORARY

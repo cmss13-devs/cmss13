@@ -53,7 +53,7 @@
 		return
 
 	bleed_layer = max(0, new_layer)
-	for(var/direction in alldirs)
+	for(var/direction in GLOB.alldirs)
 		var/turf/open/T = get_step(src, direction)
 		if(istype(T))
 			T.update_icon()
@@ -74,6 +74,19 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(bleed_layer)
 				addtimer(CALLBACK(src, PROC_REF(changing_layer), 0), 1)
+
+/turf/open/auto_turf/scorch(heat_level)
+	if(bleed_layer <= 0)
+		return
+	switch(heat_level)
+		if(1 to 19)
+			var/new_bleed_layer = min(0, bleed_layer - 1)
+			addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
+		if(20 to 39)
+			var/new_bleed_layer = max(bleed_layer - 2, 0)
+			addtimer(CALLBACK(src, PROC_REF(changing_layer), new_bleed_layer), 1)
+		if(40 to INFINITY)
+			addtimer(CALLBACK(src, PROC_REF(changing_layer), 0), 1)
 
 
 //Actual auto-turfs now
@@ -146,6 +159,7 @@
 
 //Ice colony snow
 /turf/open/auto_turf/snow
+	scorchable = TRUE
 	name = "auto-snow"
 	icon = 'icons/turf/floors/snow2.dmi'
 	icon_state = "snow_0"
@@ -169,7 +183,7 @@
 	if(istype(I, /obj/item/lightstick))
 		var/obj/item/lightstick/L = I
 		if(locate(/obj/item/lightstick) in get_turf(src))
-			to_chat(user, "There's already a [L]  at this position!")
+			to_chat(user, "There's already \a [L] at this position!")
 			return
 
 		to_chat(user, "Now planting \the [L].")
@@ -183,7 +197,7 @@
 		L.forceMove(src)
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
-		L.SetLuminosity(2)
+		L.set_light(2)
 		playsound(user, 'sound/weapons/Genhit.ogg', 25, 1)
 
 //Digging up snow
@@ -198,7 +212,8 @@
 
 	while(bleed_layer > 0)
 		xeno_attack_delay(M)
-		if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		var/size = max(M.mob_size, 1)
+		if(!do_after(M, 12/size, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 			return XENO_NO_DELAY_ACTION
 
 		if(!bleed_layer)
@@ -220,12 +235,13 @@
 				slow_amount = 0.15
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
-			if(prob(2))
-				to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
-			else if(can_stuck && bleed_layer == 4 && prob(2))
-				to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
-				new_slowdown += 10
-			C.next_move_slowdown = new_slowdown
+			if(!HAS_TRAIT(C, TRAIT_HAULED))
+				if(prob(2))
+					to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
+				else if(can_stuck && bleed_layer == 4 && prob(2))
+					to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
+					new_slowdown += 10
+				C.next_move_slowdown = new_slowdown
 	..()
 
 /turf/open/auto_turf/snow/layer0 //still have to manually define the layers for the editor
@@ -315,9 +331,6 @@
 	layer_name = list("wind blown dirt", "volcanic plate rock", "volcanic plate and rock", "this layer does not exist")
 	icon = 'icons/turf/floors/auto_shale.dmi'
 	icon_prefix = "shale"
-
-/turf/open/auto_turf/shale/is_weedable()
-	return SEMI_WEEDABLE
 
 /turf/open/auto_turf/shale/get_dirt_type()
 	return DIRT_TYPE_SHALE

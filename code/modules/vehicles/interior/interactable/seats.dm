@@ -4,7 +4,7 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	can_rotate = FALSE
 
 	//you want these chairs to not be easily obscured by objects
@@ -40,10 +40,10 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -56,7 +56,7 @@
 			M.client.change_view(8, vehicle)
 
 /obj/structure/bed/chair/comfy/vehicle/clicked(mob/user, list/mods) // If you're buckled, you can shift-click on the seat in order to return to camera-view
-	if(user == buckled_mob && mods["shift"] && !user.is_mob_incapacitated())
+	if(user == buckled_mob && mods[SHIFT_CLICK] && !user.is_mob_incapacitated())
 		user.client.change_view(8, vehicle)
 		vehicle.set_seated_mob(seat, user)
 		return TRUE
@@ -107,8 +107,11 @@
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use heavy weaponry."))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 
-	for(var/obj/item/I in user.contents) //prevents shooting while zoomed in, but zoom can still be activated and used without shooting
+	for(var/obj/item/I in user.contents)		//prevents shooting while zoomed in, but zoom can still be activated and used without shooting
 		if(I.zoom)
 			I.zoom(user)
 
@@ -137,7 +140,7 @@
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/driver/armor/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -159,7 +162,7 @@
 	var/image/over_image = null
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -174,10 +177,10 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 	else
@@ -200,7 +203,6 @@
 	if(buckled_mob)
 		overlays += over_image
 
-
 //armored vehicles support gunner seat
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner
@@ -219,7 +221,7 @@
 	. = ..()
 
 /obj/structure/bed/chair/comfy/vehicle/support_gunner/Initialize(mapload)
-	over_image = image('icons/obj/vehicles/interiors/general.dmi', "armor_chair_buckled")
+	over_image = image(icon, "armor_chair_buckled")
 	over_image.layer = ABOVE_MOB_LAYER
 
 	return ..()
@@ -234,6 +236,9 @@
 			else
 				to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 	. = ..()
 
 	update_icon()
@@ -252,10 +257,10 @@
 		return
 
 	if(QDELETED(buckled_mob))
-		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
+		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(world_view_size, vehicle)
+			M.client.change_view(GLOB.world_view_size, vehicle)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -316,7 +321,7 @@
 
 /obj/structure/bed/chair/vehicle/Initialize()
 	. = ..()
-	chairbar = image('icons/obj/vehicles/interiors/general.dmi', "vehicle_bars")
+	chairbar = image(icon, "vehicle_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
 	addtimer(CALLBACK(src, PROC_REF(setup_buckle_offsets)), 1 SECONDS)
@@ -376,28 +381,17 @@
 			//if both seats on same tile have buckled mob, we become dense, otherwise, not dense.
 			if(buckled_mob)
 				if(VS.buckled_mob)
-					buckled_mob.density = TRUE
-					VS.buckled_mob.density = TRUE
+					REMOVE_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
+					REMOVE_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 				else
-					buckled_mob.density = FALSE
+					ADD_TRAIT(buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 			else
 				if(VS.buckled_mob)
-					VS.buckled_mob.density = FALSE
-				M.density = TRUE
+					ADD_TRAIT(VS.buckled_mob, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
+				REMOVE_TRAIT(M, TRAIT_UNDENSE, DOUBLE_SEATS_TRAIT)
 			break
 
 	handle_rotation()
-
-/obj/structure/bed/chair/vehicle/unbuckle()
-	if(buckled_mob && buckled_mob.buckled == src)
-		buckled_mob.buckled = null
-		buckled_mob.anchored = initial(buckled_mob.anchored)
-		buckled_mob.update_canmove()
-
-		var/M = buckled_mob
-		buckled_mob = null
-
-		afterbuckle(M)
 
 //attack handling
 
@@ -442,7 +436,7 @@
 //MISC
 
 /obj/structure/bed/chair/vehicle/ex_act(severity)
-	if(broken || indestructible)
+	if(broken || explo_proof)
 		return
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -453,3 +447,10 @@
 				break_seat()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			break_seat()
+
+// White chairs
+
+/obj/structure/bed/chair/vehicle/white
+	name = "passenger seat"
+	desc = "A sturdy chair with a brace that lowers over your body. Prevents being flung around in vehicle during crash being injured as a result. Fasten your seatbelts, kids! Fix with welding tool in case of damage."
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'

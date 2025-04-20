@@ -3,8 +3,13 @@
 	desc = "Some rods. Can be used for building, or something."
 	singular_name = "metal rod"
 	icon_state = "rods"
+	icon = 'icons/obj/items/stacks.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/material_stacks_righthand.dmi',
+	)
 	flags_atom = FPRINT|CONDUCT
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 9
 	throwforce = 15
 	throw_speed = SPEED_VERY_FAST
@@ -54,13 +59,7 @@ GLOBAL_LIST_INIT(rod_recipes, list (
 	singular_name = "plasteel rod"
 	icon_state = "rods_plasteel"
 	flags_atom = FPRINT
-	w_class = SIZE_MEDIUM
-	force = 9
-	throwforce = 15
-	throw_speed = SPEED_VERY_FAST
-	throw_range = 20
 	matter = list("plasteel" = 3750)
-	max_amount = 60
 	attack_verb = list("hit", "bludgeoned", "whacked")
 	stack_id = "plasteel rod"
 	sheet_path = /obj/item/stack/sheet/plasteel

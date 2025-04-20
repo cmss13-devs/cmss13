@@ -1,0 +1,1519 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi,
+/turf/open/floor/plating/platingdmg2,
+/area/lv624/lazarus/corporate_dome)
+"ab" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"ac" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_y = -3;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 12;
+	pixel_x = 6
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"ad" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_y = 8;
+	pixel_x = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"ae" = (
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"af" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
+"ag" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"aQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Corporation Dome";
+	req_access_txt = "100"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"bm" = (
+/obj/structure/surface/rack,
+/obj/item/spacecash/c1000/counterfeit,
+/obj/item/spacecash/c1000/counterfeit,
+/obj/item/spacecash/c1000/counterfeit,
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"bA" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"bD" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/west_tcomms_road)
+"bE" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/shard,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"cm" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/barricade/sandbags{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"cn" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"cA" = (
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"cB" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"cR" = (
+/obj/structure/flora/jungle/vines/light_2,
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"da" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 20
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/template_noop,
+/area/template_noop)
+"dq" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_y = 8
+	},
+/obj/item/folder/yellow{
+	pixel_y = 4
+	},
+/obj/item/folder/red,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteyellow/east,
+/area/lv624/lazarus/corporate_dome)
+"dH" = (
+/obj/structure/machinery/blackbox_recorder,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"dI" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/west_tcomms_road)
+"dO" = (
+/obj/item/weapon/pole/fancy_cane,
+/obj/item/shard,
+/turf/open/floor/whiteyellow/east,
+/area/lv624/lazarus/corporate_dome)
+"ev" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"eF" = (
+/obj/structure/barricade/deployable{
+	damage_state = 1;
+	health = 245;
+	icon_state = "folding_1"
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"fm" = (
+/obj/effect/vehicle_spawner/van/decrepit,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"fq" = (
+/obj/effect/acid_hole,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"ft" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"fH" = (
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
+"gx" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"gz" = (
+/obj/item/shard,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_central_jungle)
+"gX" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Garage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"ha" = (
+/turf/open/floor/whiteyellow/southwest,
+/area/lv624/lazarus/corporate_dome)
+"hc" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/marine/veteran/pmc/corporate{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"he" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"hf" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"is" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/whiteyellow/east,
+/area/lv624/lazarus/corporate_dome)
+"iF" = (
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/reagent_container/food/snacks/packaged_hdogs,
+/obj/item/reagent_container/food/snacks/packaged_hdogs,
+/obj/item/reagent_container/food/snacks/packaged_burrito,
+/obj/item/reagent_container/food/snacks/packaged_burrito,
+/obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/item/reagent_container/food/snacks/packaged_burger,
+/turf/open/floor/whitebluecorner/west,
+/area/lv624/lazarus/corporate_dome)
+"iT" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteyellow/southwest,
+/area/lv624/lazarus/corporate_dome)
+"jH" = (
+/obj/structure/bookcase/manuals/medical,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/medical_diagnostics_manual,
+/obj/item/book/manual/research_and_development,
+/turf/open/floor/whiteyellow/east,
+/area/lv624/lazarus/corporate_dome)
+"jJ" = (
+/obj/item/shard,
+/turf/open/floor/whiteyellow/west,
+/area/lv624/lazarus/corporate_dome)
+"kl" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteblue/east,
+/area/lv624/lazarus/corporate_dome)
+"kU" = (
+/obj/structure/machinery/door_control{
+	id = "garage_lv";
+	name = "Garage Shutters";
+	pixel_y = -28
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
+/turf/template_noop,
+/area/template_noop)
+"ln" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 9;
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_y = -4;
+	pixel_x = -9
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"lG" = (
+/obj/item/storage/firstaid/adv/empty,
+/obj/structure/transmitter/colony_net{
+	phone_category = "Lazarus Landing";
+	phone_color = "blue";
+	phone_id = "Corporate Office";
+	pixel_y = 24
+	},
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"lX" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg1,
+/area/lv624/lazarus/corporate_dome)
+"mg" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"mi" = (
+/turf/open/floor/plating/platingdmg1,
+/area/lv624/lazarus/corporate_dome)
+"mp" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"ms" = (
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/corporate_dome)
+"mw" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"mK" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/west_tcomms_road)
+"ny" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/glasses/sunglasses/blindfold,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"oj" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Corporation Office";
+	req_access_txt = "100"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"oq" = (
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"pg" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/liaison_suit/blazer{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/head/manager{
+	icon = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/shoes/laceup{
+	anchored = 1;
+	icon = 'icons/mob/humans/onmob/clothing/feet.dmi'
+	},
+/turf/open/floor/whiteblue,
+/area/lv624/lazarus/corporate_dome)
+"pR" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"qn" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/closet/bodybag,
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"qH" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Workshop Storage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"qI" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin/wy{
+	pixel_y = 8
+	},
+/obj/item/tool/pen/clicky,
+/obj/item/device/flashlight/lamp{
+	pixel_x = -7;
+	pixel_y = 15
+	},
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"qJ" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Storage Room"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"qM" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/machinery/door_control{
+	id = "garage_lv";
+	name = "Garage Shutters";
+	pixel_x = -28
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"sc" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl,
+/turf/open/floor/whitebluecorner/north,
+/area/lv624/lazarus/corporate_dome)
+"sm" = (
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"sH" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/stack/rods,
+/turf/open/floor/plating/platingdmg1,
+/area/lv624/lazarus/corporate_dome)
+"sX" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating/platingdmg2,
+/area/lv624/lazarus/corporate_dome)
+"vf" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Corporate Liaison";
+	locked = 1
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"vC" = (
+/obj/structure/prop/server_equipment/yutani_server/off,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"vW" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/corporate_dome)
+"wy" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Workshop Storage";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"wW" = (
+/obj/structure/closet/bodybag,
+/obj/effect/landmark/corpsespawner/security/marshal,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"xk" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"xG" = (
+/obj/structure/machinery/photocopier,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"yJ" = (
+/turf/open/floor/plating/platingdmg2,
+/area/lv624/lazarus/corporate_dome)
+"zm" = (
+/obj/structure/safe{
+	spawnkey = 0
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"zs" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"zw" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder/black{
+	name = "Weyland-Yutani Classified folder";
+	desc = "A black folder which has the Weyland-Yutani symbol inside it, along with CLASSIFIED in giant red letters."
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"zx" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"zz" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/tool/pen/red/clicky,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"Aj" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/structure/prop/invuln/pipe_water{
+	dir = 8;
+	pixel_y = -12;
+	pixel_x = 6
+	},
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"AG" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"AT" = (
+/obj/item/shard,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Bh" = (
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"BL" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 8;
+	id = "garage_lv";
+	name = "\improper Garage"
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"Ct" = (
+/obj/structure/window_frame/colony/reinforced,
+/turf/open/floor/plating/platingdmg1,
+/area/lv624/lazarus/corporate_dome)
+"CF" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	locked = 1;
+	name = "\improper Corporate Liaison"
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Df" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/corporate_dome)
+"Dn" = (
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/item/ammo_magazine/smg/mp5,
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/weapon/gun/smg/mp5,
+/obj/item/weapon/gun/smg/mp5,
+/turf/open/floor/whitebluecorner/east,
+/area/lv624/lazarus/corporate_dome)
+"Dp" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/roller,
+/obj/effect/landmark/corpsespawner/wysec,
+/obj/item/prop/colony/usedbandage{
+	dir = 9;
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"DU" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 6
+	},
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"Ez" = (
+/obj/structure/machinery/light_construct{
+	dir = 4
+	},
+/obj/item/stack/cable_coil,
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"EM" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"Fh" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/cigarettes/emeraldgreen,
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/whitebluecorner,
+/area/lv624/lazarus/corporate_dome)
+"Fk" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/template_noop,
+/area/template_noop)
+"Fl" = (
+/turf/open/floor/whitebluecorner/north,
+/area/lv624/lazarus/corporate_dome)
+"Fu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/storage/firstaid/adv,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"FP" = (
+/obj/item/shard,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/whiteyellow/southeast,
+/area/lv624/lazarus/corporate_dome)
+"FZ" = (
+/obj/structure/machinery/faxmachine/corporate/liaison,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"Gi" = (
+/obj/structure/prop/server_equipment/yutani_server/broken,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"Gt" = (
+/obj/structure/machinery/light_construct/small{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/lv624/lazarus/corporate_dome)
+"GM" = (
+/turf/open/floor/whiteyellowcorner/north,
+/area/lv624/lazarus/corporate_dome)
+"GV" = (
+/turf/open/floor/whiteblue/west,
+/area/lv624/lazarus/corporate_dome)
+"Hn" = (
+/obj/item/ammo_casing/bullet{
+	icon_state = "cartridge_9_1"
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Ho" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/corporate_dome)
+"Hv" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/cigar,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/whiteyellow/northwest,
+/area/lv624/lazarus/corporate_dome)
+"HK" = (
+/obj/structure/machinery/power/apc/power/north,
+/obj/effect/spawner/random/powercell,
+/obj/item/tool/crowbar/red{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/tool/screwdriver,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"Ii" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/west_tcomms_road)
+"IM" = (
+/obj/item/shard,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods{
+	amount = 15
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Jg" = (
+/obj/structure/machinery/light,
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"Jq" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	locked = 1;
+	name = "\improper Corporation Dome";
+	req_access_txt = "100"
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"JL" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage{
+	dir = 10
+	},
+/turf/open/floor/whiteyellow,
+/area/lv624/lazarus/corporate_dome)
+"Kv" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/gm/dirt,
+/area/lv624/ground/colony/west_tcomms_road)
+"KG" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Le" = (
+/obj/effect/acid_hole{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"Lh" = (
+/obj/item/stack/cable_coil,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/item/shard,
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Li" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"Ln" = (
+/obj/structure/barricade/plasteel/metal{
+	health = 250
+	},
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"LZ" = (
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/corporate_dome)
+"Ml" = (
+/obj/structure/machinery/atm{
+	name = "Weyland-Yutani Automatic Teller Machine";
+	pixel_y = 30
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"OH" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_x = 29
+	},
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/stack/sheet/metal/med_small_stack,
+/obj/item/stack/sheet/plasteel/med_small_stack,
+/obj/item/stack/sandbags/small_stack,
+/obj/item/device/motiondetector/hacked/pmc,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"Pa" = (
+/obj/structure/closet/toolcloset,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"Pr" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteyellowcorner/east,
+/area/lv624/lazarus/corporate_dome)
+"Qi" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"Rn" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/marine/veteran/pmc{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/mask/gas/pmc{
+	icon = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi';
+	anchored = 1
+	},
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"RF" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"RN" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/prop/server_equipment/laptop/on,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"Sb" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"SO" = (
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"SV" = (
+/turf/open/floor/greengrid,
+/area/lv624/lazarus/corporate_dome)
+"Tc" = (
+/obj/item/paper_bin/wy{
+	pixel_y = 8
+	},
+/obj/item/frame/table/wood/fancy,
+/turf/open/floor/whiteyellow/northeast,
+/area/lv624/lazarus/corporate_dome)
+"Uo" = (
+/obj/item/shard,
+/turf/open/floor/plating/asteroidfloor/north,
+/area/lv624/lazarus/corporate_dome)
+"Uz" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"UF" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/whiteblue/southeast,
+/area/lv624/lazarus/corporate_dome)
+"Vj" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ashtray/glass,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/whitebluecorner/east,
+/area/lv624/lazarus/corporate_dome)
+"Wx" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/whiteyellowcorner,
+/area/lv624/lazarus/corporate_dome)
+"Xc" = (
+/obj/structure/barricade/metal{
+	dir = 4;
+	health = 200
+	},
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"Xf" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/plating/platingdmg3,
+/area/lv624/lazarus/corporate_dome)
+"Xp" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/under/colonist{
+	icon = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/WY.dmi';
+	anchored = 1
+	},
+/obj/item/clothing/shoes/stompers{
+	icon = 'icons/mob/humans/onmob/clothing/feet.dmi';
+	anchored = 1
+	},
+/turf/open/floor/whiteblue/southwest,
+/area/lv624/lazarus/corporate_dome)
+"Xt" = (
+/turf/template_noop,
+/area/template_noop)
+"XC" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/whiteyellowcorner/west,
+/area/lv624/lazarus/corporate_dome)
+"XG" = (
+/turf/closed/wall/r_wall,
+/area/lv624/lazarus/corporate_dome)
+"Ye" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/whiteblue/northeast,
+/area/lv624/lazarus/corporate_dome)
+"Yg" = (
+/obj/item/moneybag,
+/obj/structure/surface/rack,
+/obj/item/coin/diamond,
+/turf/open/floor/whiteblue/northwest,
+/area/lv624/lazarus/corporate_dome)
+"Yv" = (
+/obj/item/frame/table/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/corporate_dome)
+"YN" = (
+/turf/open/gm/dirt,
+/area/lv624/lazarus/landing_zones/lz2)
+"ZG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/scientist,
+/obj/item/restraint/handcuffs,
+/turf/open/floor/dark,
+/area/lv624/lazarus/corporate_dome)
+"ZO" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+"ZT" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
+
+(1,1,1) = {"
+Xt
+Xt
+Xt
+Fk
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(2,1,1) = {"
+Xt
+Xt
+Xt
+Xt
+da
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(3,1,1) = {"
+Xt
+Xt
+Xt
+Xt
+Xt
+kU
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(4,1,1) = {"
+Xt
+Xt
+XG
+BL
+BL
+BL
+XG
+he
+Bh
+fm
+he
+XG
+XG
+XG
+LZ
+yJ
+Xt
+Xt
+Xt
+Xt
+"}
+(5,1,1) = {"
+Xt
+Xt
+XG
+Bh
+Bh
+Bh
+qM
+Uz
+ft
+Bh
+Bh
+XG
+Pa
+Gt
+LZ
+LZ
+Xt
+Xt
+Xt
+Xt
+"}
+(6,1,1) = {"
+Xt
+Xt
+XG
+ny
+Bh
+mw
+Bh
+Bh
+Bh
+Bh
+Bh
+qH
+Uo
+aa
+LZ
+mi
+Xt
+Xt
+Xt
+Xt
+"}
+(7,1,1) = {"
+Xt
+Xt
+XG
+ZG
+cB
+mw
+wW
+qn
+OH
+Bh
+ac
+XG
+Yv
+Aj
+mi
+XG
+Xt
+Xt
+Xt
+Xt
+"}
+(8,1,1) = {"
+Xt
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+gX
+XG
+XG
+XG
+XG
+wy
+XG
+XG
+Xt
+Xt
+Xt
+"}
+(9,1,1) = {"
+YN
+XG
+ln
+ae
+GV
+cn
+XG
+Rn
+Fl
+cA
+iF
+Xp
+XG
+Ml
+GV
+eF
+fq
+Ii
+Ii
+Ii
+"}
+(10,1,1) = {"
+YN
+Lh
+hf
+ev
+cA
+ab
+Jq
+cA
+cA
+ab
+cA
+cA
+aQ
+ab
+Hn
+Ln
+aQ
+Kv
+Ii
+Ii
+"}
+(11,1,1) = {"
+YN
+mp
+sm
+RF
+ab
+KG
+cA
+cA
+cA
+Sb
+ab
+cA
+cA
+cA
+Sb
+AG
+cA
+Ii
+dI
+mK
+"}
+(12,1,1) = {"
+ag
+XG
+xk
+af
+fH
+ad
+XG
+hc
+Dn
+cA
+cA
+pg
+XG
+Ye
+kl
+DU
+XG
+Ii
+Ii
+bD
+"}
+(13,1,1) = {"
+Xt
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+XG
+cA
+oj
+XG
+XG
+XG
+XG
+XG
+XG
+Xt
+Xt
+Xt
+"}
+(14,1,1) = {"
+Xt
+Xt
+Xt
+XG
+XG
+Yg
+bm
+FZ
+gx
+cA
+ab
+cn
+XG
+Gi
+vC
+XG
+Xt
+Xt
+Xt
+Xt
+"}
+(15,1,1) = {"
+Xt
+Xt
+XG
+XG
+HK
+Fl
+ZT
+ms
+IM
+ab
+ab
+cA
+qJ
+SV
+Jg
+XG
+Xt
+Xt
+Xt
+Xt
+"}
+(16,1,1) = {"
+Xt
+Xt
+XG
+RN
+sc
+bA
+cA
+ms
+gx
+cm
+Sb
+UF
+XG
+Fu
+dH
+EM
+Xt
+Xt
+Xt
+Xt
+"}
+(17,1,1) = {"
+Xt
+Xt
+XG
+qI
+Vj
+xG
+Fh
+zw
+XG
+cA
+oj
+XG
+XG
+XG
+XG
+Qi
+Xt
+Xt
+Xt
+Xt
+"}
+(18,1,1) = {"
+Xt
+Xt
+XG
+XG
+XG
+CF
+XG
+XG
+XG
+KG
+bA
+XC
+jJ
+iT
+Xf
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(19,1,1) = {"
+Xt
+Xt
+XG
+Hv
+GM
+bA
+Df
+ha
+zz
+AT
+mg
+cA
+bA
+vW
+zs
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(20,1,1) = {"
+Xt
+Xt
+XG
+zm
+Pr
+zx
+Dp
+JL
+oq
+cA
+cA
+cA
+Ho
+FP
+sH
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(21,1,1) = {"
+Xt
+Xt
+XG
+XG
+lG
+Pr
+cA
+ZO
+vf
+bE
+Xc
+Wx
+Ez
+SO
+cR
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(22,1,1) = {"
+Xt
+Xt
+Xt
+XG
+XG
+Tc
+dq
+dO
+Xf
+jH
+is
+pR
+SO
+SO
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(23,1,1) = {"
+Xt
+Xt
+Xt
+Xt
+XG
+Li
+sX
+Ct
+Le
+sX
+lX
+sX
+SO
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(24,1,1) = {"
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+gz
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+"}
+(25,1,1) = {"
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+"}

@@ -22,9 +22,11 @@
 		icon_state = on_icon
 
 /obj/structure/machinery/holosign/power_change()
+	. = ..()
 	if(stat & NOPOWER)
-		lit = 0
-	update_icon()
+		if(lit)
+			lit = FALSE
+			update_icon()
 
 /obj/structure/machinery/holosign/surgery
 	name = "surgery holosign"
@@ -63,7 +65,7 @@
 	else
 		icon_state = "light0"
 
-	for(var/obj/structure/machinery/holosign/M in machines)
+	for(var/obj/structure/machinery/holosign/M in GLOB.machines)
 		if (M.id == src.id)
 			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/holosign, toggle))
 

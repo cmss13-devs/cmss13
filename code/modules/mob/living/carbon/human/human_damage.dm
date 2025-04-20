@@ -23,6 +23,11 @@
 	med_hud_set_armor()
 	med_hud_set_status()
 
+	if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
+		death(last_damage_data)
+		blinded = TRUE
+		silent = 0
+		return
 
 
 /mob/living/carbon/human/adjustBrainLoss(amount)
@@ -34,7 +39,7 @@
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
 			sponge.take_damage(amount)
-			sponge.damage = Clamp(sponge.damage, 0, maxHealth*2)
+			sponge.damage = clamp(sponge.damage, 0, maxHealth*2)
 			brainloss = sponge.damage
 		else
 			brainloss = 200
@@ -49,7 +54,7 @@
 	if(species.has_organ["brain"])
 		var/datum/internal_organ/brain/sponge = internal_organs_by_name["brain"]
 		if(sponge)
-			sponge.damage = Clamp(amount, 0, maxHealth*2)
+			sponge.damage = clamp(amount, 0, maxHealth*2)
 			brainloss = sponge.damage
 		else
 			brainloss = 200
@@ -177,9 +182,10 @@
 		if(prob(mut_prob))
 			var/list/obj/limb/candidates = list()
 			for(var/obj/limb/O in limbs)
-				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED|LIMB_SYNTHSKIN)) continue
+				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED|LIMB_SYNTHSKIN))
+					continue
 				candidates |= O
-			if(candidates.len)
+			if(length(candidates))
 				var/obj/limb/O = pick(candidates)
 				O.mutate()
 				to_chat(src, SPAN_NOTICE("Something is not right with your [O.display_name]..."))
@@ -260,7 +266,7 @@
 //It automatically updates health status
 /mob/living/carbon/human/heal_limb_damage(brute, burn)
 	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
-	if(!parts.len)
+	if(!length(parts))
 		return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
@@ -279,7 +285,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //It automatically updates health status
 /mob/living/carbon/human/take_limb_damage(brute, burn, sharp = 0, edge = 0)
 	var/list/obj/limb/parts = get_damageable_limbs()
-	if(!parts.len) return
+	if(!length(parts))
+		return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
 		apply_damage(brute, BRUTE, picked, sharp, edge)
@@ -287,7 +294,6 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		apply_damage(burn, BURN, picked, sharp, edge)
 	UpdateDamageIcon()
 	updatehealth()
-	speech_problem_flag = 1
 
 
 //Heal MANY limbs, in random order
@@ -295,7 +301,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
 
 	var/update = 0
-	while(parts.len && (brute>0 || burn>0) )
+	while(length(parts) && (brute>0 || burn>0) )
 		var/obj/limb/picked = pick(parts)
 
 		var/brute_was = picked.brute_dam
@@ -308,22 +314,23 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 		parts -= picked
 	updatehealth()
-	speech_problem_flag = 1
-	if(update) UpdateDamageIcon()
+
+	if(update)
+		UpdateDamageIcon()
 
 // damage MANY limbs, in random order
-/mob/living/carbon/human/take_overall_damage(brute, burn, sharp = 0, edge = 0, used_weapon = null)
+/mob/living/carbon/human/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
 	if(status_flags & GODMODE)
 		return //godmode
-	var/list/obj/limb/parts = get_damageable_limbs(80)
+	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
 	var/amount_of_parts = length(parts)
 	for(var/obj/limb/L as anything in parts)
-		L.take_damage(brute / amount_of_parts, burn / amount_of_parts, sharp, edge, used_weapon)
+		L.take_damage(brute / amount_of_parts, burn / amount_of_parts, sharp = FALSE, edge = FALSE, used_weapon = used_weapon)
 	updatehealth()
 	UpdateDamageIcon()
 
-// damage MANY LIMBS, in random order
-/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armour_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
+// damage MANY LIMBS, in random order, but consider armor
+/mob/living/carbon/human/proc/take_overall_armored_damage(damage, armour_type = ARMOR_MELEE, damage_type = BRUTE, limb_damage_chance = 80, penetration = 0)
 	if(status_flags & GODMODE)
 		return //godmode
 	var/list/obj/limb/parts = get_damageable_limbs(limb_damage_chance)
@@ -331,10 +338,16 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 	var/armour_config = GLOB.marine_ranged
 	if(armour_type == ARMOR_MELEE)
 		armour_config = GLOB.marine_melee
+	if(armour_type == ARMOR_BOMB)
+		armour_config = GLOB.marine_explosive
 	for(var/obj/limb/L as anything in parts)
 		var/armor = getarmor(L, armour_type)
 		var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
-		L.take_damage(modified_damage / amount_of_parts)
+		if(damage_type == BURN)
+			L.take_damage(burn = modified_damage / amount_of_parts)
+		else
+			L.take_damage(modified_damage / amount_of_parts)
+
 	updatehealth()
 	UpdateDamageIcon()
 
@@ -372,7 +385,7 @@ This function restores all limbs.
 /mob/living/carbon/human/get_limb(zone)
 	RETURN_TYPE(/obj/limb)
 	zone = check_zone(zone)
-	return (locate(limb_types_by_name[zone]) in limbs)
+	return (locate(GLOB.limb_types_by_name[zone]) in limbs)
 
 
 /mob/living/carbon/human/apply_armoured_damage(damage = 0, armour_type = ARMOR_MELEE, damage_type = BRUTE, def_zone = null, penetration = 0, armour_break_pr_pen = 0, armour_break_flat = 0)
@@ -408,7 +421,7 @@ This function restores all limbs.
 	permanent_kill = FALSE, mob/firer = null, force = FALSE
 )
 	if(protection_aura && damage > 0)
-		damage = round(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
+		damage = floor(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
 
 	//Handle other types of damage
 	if(damage < 0 || (damagetype != BRUTE) && (damagetype != BURN))
@@ -420,7 +433,8 @@ This function restores all limbs.
 		return TRUE
 
 	var/list/damagedata = list("damage" = damage)
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
+		return
 	damage = damagedata["damage"]
 
 	var/obj/limb/organ = null
@@ -514,11 +528,3 @@ This function restores all limbs.
 		damage_to_deal *= 0.25 // Massively reduced effectiveness
 
 	stamina.apply_damage(damage_to_deal)
-
-/mob/living/carbon/human/knocked_out_start()
-	..()
-	sound_environment_override = SOUND_ENVIRONMENT_PSYCHOTIC
-
-/mob/living/carbon/human/knocked_out_callback()
-	. = ..()
-	sound_environment_override = SOUND_ENVIRONMENT_NONE

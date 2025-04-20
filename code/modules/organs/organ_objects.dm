@@ -2,16 +2,26 @@
 	name = "organ"
 	desc = "It looks like it probably just plopped out."
 	icon = 'icons/obj/items/organs.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/organs_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/organs_righthand.dmi',
+	)
 	icon_state = "appendix"
 
-	health = 100   // Process() ticks before death.
-
-	var/fresh = 3  // Squirts of blood left in it.
-	var/dead_icon  // Icon used when the organ dies.
-	var/robotic    // Is the limb prosthetic?
-	var/organ_tag  // What slot does it go in?
-	var/organ_type = /datum/internal_organ // Used to spawn the relevant organ data when produced via a machine or spawn().
-	var/datum/internal_organ/organ_data    // Stores info when removed.
+	/// Process() ticks before death.
+	health = 100
+	/// Squirts of blood left in it.
+	var/fresh = 3
+	/// Icon used when the organ dies.
+	var/dead_icon
+	/// Is the limb prosthetic?
+	var/robotic
+	/// What slot does it go in?
+	var/organ_tag
+	/// Used to spawn the relevant organ data when produced via a machine or spawn().
+	var/organ_type = /datum/internal_organ
+	/// Stores info when removed.
+	var/datum/internal_organ/organ_data
 	black_market_value = 25
 
 /obj/item/organ/attack_self(mob/user)
@@ -62,7 +72,8 @@
 
 /obj/item/organ/proc/die()
 	name = "dead [initial(name)]"
-	if(dead_icon) icon_state = dead_icon
+	if(dead_icon)
+		icon_state = dead_icon
 	health = 0
 	STOP_PROCESSING(SSobj, src)
 	//TODO: Grey out the icon state.
@@ -73,6 +84,7 @@
 /obj/item/organ/heart
 	name = "heart"
 	icon_state = "heart-on"
+	item_state = "heart"
 	organ_tag = "heart"
 	fresh = 6 // Juicy.
 	dead_icon = "heart-off"
@@ -82,6 +94,7 @@
 /obj/item/organ/lungs
 	name = "lungs"
 	icon_state = "lungs"
+	item_state = "lungs"
 	gender = PLURAL
 	organ_tag = "lungs"
 	organ_type = /datum/internal_organ/lungs
@@ -89,6 +102,7 @@
 /obj/item/organ/kidneys
 	name = "kidneys"
 	icon_state = "kidneys"
+	item_state = "kidney"
 	gender = PLURAL
 	organ_tag = "kidneys"
 	organ_type = /datum/internal_organ/kidneys
@@ -100,13 +114,26 @@
 	gender = PLURAL
 	organ_tag = "eyes"
 	organ_type = /datum/internal_organ/eyes
-	var/eye_colour
+	var/eyes_color
 
 /obj/item/organ/liver
 	name = "liver"
 	icon_state = "liver"
+	item_state = "liver"
 	organ_tag = "liver"
 	organ_type = /datum/internal_organ/liver
+
+/obj/item/organ/xeno
+	name = "acidic heart"
+	desc = "Acidic heart removed from a xenomorph. It spews droplets of acid every so often."
+	icon_state = "heart_t1"
+	item_state = "heart_t1"
+	organ_tag = "heart"
+	black_market_value = 60
+	///value of the organ in the recycler, heavily varies from size and tier
+	var/research_value = 1 //depending on the size and tier
+	///the caste in a string, which is used in a xenoanalyzer
+	var/caste_origin // used for desc in xenoanalyzer
 
 //These are here so they can be printed out via the fabricator.
 /obj/item/organ/heart/prosthetic
@@ -164,13 +191,13 @@
 
 /obj/item/organ/eyes/removed(mob/living/target, mob/living/user)
 
-	if(!eye_colour)
-		eye_colour = list(0,0,0)
+	if(!eyes_color)
+		eyes_color = list(0,0,0)
 
 	..() //Make sure target is set so we can steal their eye color for later.
 	var/mob/living/carbon/human/H = target
 	if(istype(H))
-		eye_colour = list(
+		eyes_color = list(
 			H.r_eyes ? H.r_eyes : 0,
 			H.g_eyes ? H.g_eyes : 0,
 			H.b_eyes ? H.b_eyes : 0
@@ -189,10 +216,10 @@
 
 	// Apply our eye color to the target.
 	var/mob/living/carbon/human/H = target
-	if(istype(H) && eye_colour)
-		H.r_eyes = eye_colour[1]
-		H.g_eyes = eye_colour[2]
-		H.b_eyes = eye_colour[3]
+	if(istype(H) && eyes_color)
+		H.r_eyes = eyes_color[1]
+		H.g_eyes = eyes_color[2]
+		H.b_eyes = eyes_color[3]
 		H.update_body()
 
 /obj/item/organ/proc/bitten(mob/user)
@@ -215,8 +242,10 @@
 	// Pass over the blood.
 	reagents.trans_to(O, reagents.total_volume)
 
-	if(fingerprintshidden) O.fingerprintshidden = fingerprintshidden.Copy()
-	if(fingerprintslast) O.fingerprintslast = fingerprintslast
+	if(fingerprintshidden)
+		O.fingerprintshidden = fingerprintshidden.Copy()
+	if(fingerprintslast)
+		O.fingerprintslast = fingerprintslast
 
 	user.put_in_active_hand(O)
 	qdel(src)

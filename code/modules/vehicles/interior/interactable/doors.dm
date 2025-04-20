@@ -7,14 +7,14 @@
 
 	unacidable = TRUE
 	unslashable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	// The interior interior this exit is tied to
 	var/datum/interior/interior = null
 	// Which entrance to exit through
 	var/entrance_id = null
 
-/obj/structure/interior_exit/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/interior_exit/get_projectile_hit_boolean(obj/projectile/P)
 	return FALSE
 
 /obj/structure/interior_exit/attack_hand(mob/M)

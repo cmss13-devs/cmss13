@@ -4,13 +4,12 @@
 /obj/structure/machinery/deployable
 	name = "deployable"
 	desc = "deployable"
-	icon = 'icons/obj/objects.dmi'
 	req_access = list(ACCESS_MARINE_PREP)//I'm changing this until these are properly tested./N
 
 /obj/structure/machinery/deployable/barrier
 	name = "deployable barrier"
 	desc = "A deployable barrier. Swipe your ID card to lock/unlock it."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/items/security.dmi'
 	anchored = FALSE
 	density = TRUE
 	icon_state = "barrier0"
@@ -51,13 +50,12 @@
 	else
 		switch(W.damtype)
 			if("fire")
-				src.health -= W.force * 0.75
+				health -= W.force * W.demolition_mod * 0.75
 			if("brute")
-				src.health -= W.force * 0.5
-			else
-		if (src.health <= 0)
-			src.explode()
-		..()
+				health -= W.force * W.demolition_mod * 0.5
+		if (health <= 0)
+			explode()
+		. = ..()
 
 /obj/structure/machinery/deployable/barrier/ex_act(severity)
 	src.health -= severity/2
@@ -66,6 +64,7 @@
 	return
 
 /obj/structure/machinery/deployable/barrier/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	if(prob(50/severity))

@@ -34,16 +34,14 @@
 	if(!has_stamina)
 		return
 
-	current_stamina = Clamp(current_stamina - amount, 0, max_stamina)
+	current_stamina = clamp(current_stamina - amount, 0, max_stamina)
 
 	if(current_stamina < max_stamina)
-		if(!(src in active_staminas))
-			active_staminas.Add(src)
-
+		START_PROCESSING(SSobj, src)
 		if(amount > 0)
 			apply_rest_period(STAMINA_REST_PERIOD)
 	else
-		active_staminas.Remove(src)
+		STOP_PROCESSING(SSobj, src)
 
 
 	update_stamina_level()

@@ -3,7 +3,7 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	item_state = "brown"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 	var/list/clothing_choices = list()
@@ -48,31 +48,10 @@
 	flags_heat_protection = BODY_FLAG_FEET
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
-/obj/item/clothing/shoes/space_ninja
-	name = "ninja shoes"
-	desc = "A pair of running shoes. Excellent for running and even better for smashing skulls."
-	icon_state = "s-ninja"
-	permeability_coefficient = 0.01
-	flags_inventory = NOSLIPPING
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_HIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	siemens_coefficient = 0.2
-
-	flags_cold_protection = BODY_FLAG_FEET
-	min_cold_protection_temperature = SHOE_MIN_COLD_PROT
-	flags_heat_protection = BODY_FLAG_FEET
-	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
-
 /obj/item/clothing/shoes/sandal
 	desc = "A pair of rather plain, wooden sandals."
 	name = "sandals"
-	icon_state = "wizard"
+	icon_state = "sandals"
 	flags_armor_protection = 0
 
 /obj/item/clothing/shoes/sandal/marisa
@@ -85,7 +64,7 @@
 	desc = "Rubber boots"
 	name = "galoshes"
 	icon_state = "galoshes"
-	permeability_coefficient = 0.05
+
 	flags_inventory = NOSLIPPING
 
 /obj/item/clothing/shoes/clown_shoes
@@ -140,6 +119,10 @@
 	desc = "The height of fashion, and they're pre-polished!"
 	icon_state = "laceups"
 
+/obj/item/clothing/shoes/laceup/brown
+	name = "brown laceup shoes"
+	icon_state = "laceups_brown"
+
 /obj/item/clothing/shoes/swimmingfins
 	desc = "Help you swim good."
 	name = "swimming fins"
@@ -159,8 +142,8 @@
 	max_heat_protection_temperature = SHOE_MAX_HEAT_PROT
 
 /obj/item/clothing/shoes/souto
-	name = "\improper Souto Man's boots. Harder than the kick of Souto Red."
-	desc = "Souto Man boots"
+	name = "Souto Man boots"
+	desc = "\improper Souto Man's boots. Harder than the kick of Souto Red"
 	icon_state = "souto_man"
 	item_state = "souto_man"
 	flags_inventory = CANTSTRIP|NOSLIPPING

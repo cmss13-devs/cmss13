@@ -28,6 +28,26 @@
 /obj/structure/interior_exit/vehicle/apc/rear/right
 	icon_state = "door_rear_right"
 
+/obj/structure/interior_wall/apc_pmc
+	name = "\improper APC interior wall"
+	icon = 'icons/obj/vehicles/interiors/apc_pmc.dmi'
+	icon_state = "apc_right_1"
+
+/obj/structure/interior_exit/vehicle/apc_pmc
+	name = "APC side door"
+	icon = 'icons/obj/vehicles/interiors/apc_pmc.dmi'
+	icon_state = "exit_door"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear
+	name = "APC rear hatch"
+	icon_state = "door_rear_center"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear/left
+	icon_state = "door_rear_left"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear/right
+	icon_state = "door_rear_right"
+
 /obj/structure/prop/vehicle
 	name = "Generic vehicle prop"
 	desc = "Adds more flavour to vehicle interior."
@@ -38,7 +58,7 @@
 	unacidable = TRUE
 	unslashable = TRUE
 	breakable = FALSE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/structure/prop/vehicle/firing_port_weapon
 	name = "M56 FPW handle"
@@ -61,7 +81,7 @@
 	if(!SG_seat)
 		SG_seat = locate() in get_turf(src)
 		if(!SG_seat)
-			. += SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!")
+			. += SPAN_WARNING("ERROR HAS OCCURRED! NO SEAT FOUND, TELL A DEV!")
 			return
 	for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in SG_seat.vehicle.hardpoints)
 		if(FPW.allowed_seat == SG_seat.seat)
@@ -76,7 +96,7 @@
 	if(!SG_seat)
 		SG_seat = locate() in get_turf(src)
 		if(!SG_seat)
-			to_chat(H, SPAN_WARNING("ERROR HAS OCCURED! NO SEAT FOUND, TELL A DEV!"))
+			to_chat(H, SPAN_WARNING("ERROR HAS OCCURRED! NO SEAT FOUND, TELL A DEV!"))
 			return
 	if(!SG_seat.buckled_mob && !H.buckled)
 		SG_seat.do_buckle(H, H)

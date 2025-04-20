@@ -4,7 +4,7 @@
 /obj/item/tool/shovel
 	name = "shovel"
 	desc = "A large tool for digging and moving dirt."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "shovel"
 	item_state = "shovel"
 	flags_atom = FPRINT|CONDUCT
@@ -26,12 +26,17 @@
 
 /obj/item/tool/shovel/update_icon()
 	var/image/I = image(icon,src,dirt_overlay)
-	switch(dirt_type) // We can actually shape the color for what enviroment we dig up our dirt in.
-		if(DIRT_TYPE_GROUND) I.color = "#512A09"
-		if(DIRT_TYPE_MARS) I.color = "#FF5500"
-		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
-		if(DIRT_TYPE_SAND) I.color = "#ab804b"
-		if(DIRT_TYPE_SHALE) I.color = "#1c2142"
+	switch(dirt_type) // We can actually shape the color for what environment we dig up our dirt in.
+		if(DIRT_TYPE_GROUND)
+			I.color = "#512A09"
+		if(DIRT_TYPE_MARS)
+			I.color = "#FF5500"
+		if(DIRT_TYPE_SNOW)
+			I.color = "#EBEBEB"
+		if(DIRT_TYPE_SAND)
+			I.color = "#ab804b"
+		if(DIRT_TYPE_SHALE)
+			I.color = "#1c2142"
 	overlays -= I
 	if(dirt_amt)
 		overlays += I
@@ -151,7 +156,7 @@
 
 /obj/item/tool/shovel/proc/dump_shovel(atom/target, mob/user)
 	var/turf/T = target
-	to_chat(user, SPAN_NOTICE("you dump the [dirt_type_to_name(dirt_type)]!"))
+	to_chat(user, SPAN_NOTICE("You dump the [dirt_type_to_name(dirt_type)]!"))
 	playsound(user.loc, "rustle", 30, 1, 6)
 	if(dirt_type == DIRT_TYPE_SNOW)
 		var/obj/item/stack/snow/S = locate() in T
@@ -183,6 +188,10 @@
 /obj/item/tool/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_righthand.dmi',
+	)
 	icon_state = "spade"
 	item_state = "spade"
 	force = 5
@@ -192,6 +201,8 @@
 	shovelspeed = 60
 	dirt_amt_per_dig = 1
 
+/obj/item/tool/shovel/spade/yautja
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 
 //Snow Shovel----------
 /obj/item/tool/shovel/snow
@@ -208,7 +219,7 @@
 /obj/item/tool/shovel/etool
 	name = "entrenching tool"
 	desc = "Used to dig holes and bash heads in. Folds in to fit in small spaces."
-	icon = 'icons/obj/items/marine-items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "etool"
 	item_state = "etool"
 	force = 30
@@ -233,7 +244,7 @@
 /obj/item/tool/shovel/etool/attack_self(mob/user as mob)
 	folded = !folded
 	if(folded)
-		w_class = SIZE_MEDIUM
+		w_class = SIZE_SMALL
 		force = 2
 	else
 		w_class = SIZE_LARGE
@@ -242,7 +253,7 @@
 
 /obj/item/tool/shovel/etool/folded
 	folded = TRUE
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_SMALL
 	force = 2
 	icon_state = "etool_c"
 	item_state = "etool_c"

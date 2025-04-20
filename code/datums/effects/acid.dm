@@ -41,7 +41,7 @@
 
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD)
+		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD || HAS_TRAIT(H, TRAIT_HAULED))
 			return FALSE
 
 	. = ..()
@@ -95,7 +95,8 @@
 	acid_goopiness--
 	if(acid_goopiness <= 0)
 		return TRUE
-	else return FALSE
+	else
+		return FALSE
 
 /datum/effects/acid/proc/handle_weather()
 	SIGNAL_HANDLER
@@ -104,7 +105,7 @@
 	if(!acids_area)
 		return
 
-	if(SSweather.is_weather_event && locate(acids_area.master) in SSweather.weather_areas)
+	if(SSweather.is_weather_event && locate(acids_area) in SSweather.weather_areas)
 		//smothering_strength is 1-10, we use this to take a proportional amount off the stats
 		duration = duration - (duration * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))
 		damage_in_total_human = damage_in_total_human - (damage_in_total_human * (SSweather.weather_event_instance.fire_smothering_strength * 0.1))

@@ -1,6 +1,6 @@
 /obj/structure/machinery/portable_atmospherics/powered/scrubber
 	name = "Portable Air Scrubber"
-
+	needs_power = FALSE
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "pscrubber:0"
 	density = TRUE
@@ -18,15 +18,13 @@
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 
 	if(prob(50/severity))
 		on = !on
 		update_icon()
-
-	..(severity)
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/update_icon()
 	src.overlays = 0
@@ -94,7 +92,7 @@
 	if(istype(I, /obj/item/tank))
 		return
 
-	..()
+	. = ..()
 
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary
@@ -105,4 +103,4 @@
 		to_chat(user, SPAN_NOTICE(" The bolts are too tight for you to unscrew!"))
 		return
 
-	..()
+	. = ..()

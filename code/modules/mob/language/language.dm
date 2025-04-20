@@ -23,7 +23,7 @@
 
 /datum/language/proc/broadcast(mob/living/speaker, message, speaker_mask)
 
-	log_say("[key_name(speaker)] : ([name]) [message]")
+	log_say("[key_name(speaker)] : ([name]) [message] (AREA: [get_area_name(speaker)])")
 
 	for(var/mob/player in GLOB.player_list)
 
@@ -35,7 +35,8 @@
 			understood = 1
 
 		if(understood)
-			if(!speaker_mask) speaker_mask = speaker.name
+			if(!speaker_mask)
+				speaker_mask = speaker.name
 			var/msg = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span> <span class='message'>[speech_verb], \"<span class='[color]'>[message]</span><span class='message'>\"</span></span></span></i>"
 			to_chat(player, "[msg]")
 
@@ -60,12 +61,12 @@
 /datum/language/proc/add_to_cache(input, scrambled_text)
 	// Add it to cache, cutting old entries if the list is too long
 	scramble_cache[input] = scrambled_text
-	if(scramble_cache.len > SCRAMBLE_CACHE_LEN)
-		scramble_cache.Cut(1, scramble_cache.len-SCRAMBLE_CACHE_LEN-1)
+	if(length(scramble_cache) > SCRAMBLE_CACHE_LEN)
+		scramble_cache.Cut(1, length(scramble_cache)-SCRAMBLE_CACHE_LEN-1)
 
 /datum/language/proc/scramble(input)
 
-	if(!syllables || !syllables.len)
+	if(!LAZYLEN(syllables))
 		return stars(input)
 
 	// If the input is cached already, move it to the end of the cache and return it

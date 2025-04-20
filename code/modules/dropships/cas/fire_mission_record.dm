@@ -5,6 +5,11 @@
 	/// List of transverse offsets for each firing step - null meaning not shooting
 	var/list/offsets
 
+/datum/cas_fire_mission_record/ui_data(mob/user)
+	. = list()
+	.["weapon"] = weapon.ship_base.attach_id
+	.["offsets"] = offsets
+
 /// Get offset range allowed when firing weapon in this configuration
 /datum/cas_fire_mission_record/proc/get_offsets()
 	if(!weapon?.ship_base)
@@ -26,7 +31,7 @@
 	var/used = 0
 	var/max_ammo = 0
 	if(weapon.ammo_equipped)
-		for(var/step = 1; step<=offsets.len; step++)
+		for(var/step = 1; step<=length(offsets); step++)
 			if(offsets[step]!=null && offsets[step]!="-")
 				used += weapon.ammo_equipped.ammo_used_per_firing
 		max_ammo = weapon.ammo_equipped.max_ammo_count

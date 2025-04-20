@@ -1,5 +1,5 @@
 /// This is the iff_group
-/obj/item/projectile/var/runtime_iff_group
+/obj/projectile/var/runtime_iff_group
 
 /datum/element/bullet_trait_iff
 	// General bullet trait vars
@@ -13,7 +13,7 @@
 
 /datum/element/bullet_trait_iff/Attach(datum/target, iff_group)
 	. = ..()
-	if(!istype(target, /obj/item/projectile))
+	if(!istype(target, /obj/projectile))
 		return ELEMENT_INCOMPATIBLE
 
 	if(!iff_group)
@@ -39,14 +39,14 @@
 /datum/element/bullet_trait_iff/proc/set_iff(datum/target, mob/living/carbon/human/firer)
 	SIGNAL_HANDLER
 
-	var/obj/item/projectile/P = target
+	var/obj/projectile/P = target
 	P.runtime_iff_group = get_user_iff_group(firer)
 
 // We have a "cache" to avoid getting ID card iff every shot,
 // The cache is reset when the user drops their ID
 /datum/element/bullet_trait_iff/proc/get_user_iff_group(mob/living/carbon/human/user)
 	if(!ishuman(user))
-		return user.faction_group
+		return user?.faction_group
 
 	var/iff_group = LAZYACCESS(iff_group_cache, user)
 	if(isnull(iff_group))

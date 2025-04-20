@@ -57,6 +57,28 @@
 
 	syllables = list("die", "das", "wein", "mir", "und", "wir", "ein", "nein", "gen", "en", "sauen", "bin", "nein", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "bei", "der", "sie", "sch", "kein", "nur", "ach", "kann", "volk", "vau", "gelb", "grun", "macht", "zwei", "vier", "nacht", "tag")
 
+/datum/language/scandinavian
+	name = LANGUAGE_SCANDINAVIAN
+	desc = "While not technically one language, Scandinavian languages have grown similar and are nearly indistinguishable from one another unless you actually know the languages."
+	speech_verb = "blubbers"
+	ask_verb = "queries"
+	exclaim_verb = "yelps"
+	color = "scandinavian"
+	key = "0"
+
+	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ing", "gen", "et", "pur", "ke", "er", "nei", "hjort", "tysk", "de", "kjae", "en", "stein", "ja", "ull", "sil", "pa", "hun", "kjo", "erg", "ba", "re", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fi", "re", "dag", "god", "jul", "ild", "fem", "jeg", "deg", "bjor", "en", "russ", "land", "sve", "rig", "nor", "ge", "dan", "is")
+
+/datum/language/french
+	name = LANGUAGE_FRENCH
+	desc = "Standard French, spoken by the French Republic, one of the few independent countries left on Earth."
+	speech_verb = "declares"
+	ask_verb = "inquires"
+	exclaim_verb = "exclaims"
+	color = "french"
+	key = "9"
+
+	syllables = list("le", "en", "es", "de", "re", "ai", "an", "ar", "au", "ou", "nt", "on", "er", "ur", "an", "it", "te", "me", "la", "is", "ou", "nt", "on", "er", "ur", "an", "it", "te", "et", "me", "is", "qu", "se", "il", "ent", "que", "ait", "les", "lle", "our", "men", "ais", "est", "tre", "mai", "ous", "par", "ant", "ion", "eme", "tai", "ans", "pas", "ell", "vou", "tou", "pou", "eur", "ont", "res", "dan", "une", "ien", "sur", "son", "mme", "tio", "des")
+
 /datum/language/spanish
 	name = LANGUAGE_SPANISH
 	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
@@ -113,7 +135,7 @@
 	ask_verb = "chimpers"
 	exclaim_verb = "screeches"
 	color = "monkey"
-	key = "9"
+	key = "_"
 
 /datum/language/xenomorph
 	name = LANGUAGE_XENOMORPH
@@ -123,6 +145,7 @@
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	key = "x"
+	syllables = list("sss", "sSs", "SSS")
 	flags = RESTRICTED
 
 /datum/language/xenos
@@ -147,7 +170,7 @@
 
 /datum/language/apollo
 	name = LANGUAGE_APOLLO
-	desc = "The Apollo Link is an AI subprocessor designed by SEEGSON, allowing for coordination of maintenance drones and Working Joes. WY denies claims the processor was stolen for ARES."
+	desc = "The APOLLO Link is an AI subprocessor designed by SEEGSON, allowing for coordination of maintenance drones and Working Joes. WY denies claims the processor was stolen for ARES."
 	color = "skrell"
 	speech_verb = "states"
 	ask_verb = "queries"
@@ -162,22 +185,31 @@
 	if (!message)
 		return
 
+	///Font size
+	var/scale = "message"
+	if(isARES(speaker))
+		scale = "large"
+
 	var/message_start = "<i><span class='game say'>[name], <span class='name'>[speaker.name]</span>"
 	var/message_body = "<span class='message'>broadcasts, \"[message]\"</span></span></i>"
+	var/full_message = "<span class='[scale]'><span class='[color]'>[message_start] [message_body]</span></span>"
+
+
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FFFF00'>APOLLO: [key_name(speaker)] : [message]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+	log_say("[speaker.name != "Unknown" ? speaker.name : "([speaker.real_name])"] \[APOLLO\]: [message] (CKEY: [speaker.key]) (JOB: [speaker.job]) (AREA: [get_area_name(speaker)])")
+	log_ares_apollo(speaker.real_name, message)
 	for (var/mob/dead in GLOB.dead_mob_list)
 		if(!istype(dead,/mob/new_player) && !istype(dead,/mob/living/brain)) //No meta-evesdropping
-			dead.show_message("<span class='[color]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
+			var/dead_message = "<span class='[scale]'><span class='[color]'>[message_start](<a href='byond://?src=\ref[dead];track=\ref[speaker]'>F</a>) [message_body]</span></span>"
+			dead.show_message(dead_message, SHOW_MESSAGE_VISIBLE)
 
 	for (var/mob/living/listener in GLOB.alive_mob_list)
 
 		if (!listener.hear_apollo())
 			continue
-		else if(isAI(listener))
-			message_start = "<i><span class='game say'>[name], <a href='byond://?src=\ref[listener];track2=\ref[listener];track=\ref[speaker];trackname=[html_encode(speaker.name)]'><span class='name'>[speaker.name]</span></a>"
 
-		listener.show_message("<span class='[color]'>[message_start] [message_body]</span>", SHOW_MESSAGE_VISIBLE)
+		listener.show_message(full_message, SHOW_MESSAGE_VISIBLE)
 
 	var/list/listening = hearers(1, src)
 	listening -= src
@@ -186,12 +218,6 @@
 		if(isSilicon(M) || M.hear_apollo())
 			continue
 		M.show_message("<i><span class='game say'><span class='name'>synthesised voice</span> <span class='message'>beeps, \"beep beep beep\"</span></span></i>",2)
-
-	//robot binary xmitter component power usage
-	if (isrobot(speaker))
-		var/mob/living/silicon/robot/R = speaker
-		var/datum/robot_component/C = R.components["comms"]
-		R.cell_use_power(C.active_usage)
 
 /datum/language/event_hivemind
 	name = LANGUAGE_TELEPATH

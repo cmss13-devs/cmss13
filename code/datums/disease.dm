@@ -7,7 +7,7 @@ to null does not delete the object itself. Thank you.
 
 */
 
-var/list/diseases = typesof(/datum/disease) - /datum/disease
+GLOBAL_LIST_INIT(diseases, typesof(/datum/disease) - /datum/disease)
 
 
 /datum/disease
@@ -68,7 +68,8 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 	return
 
 /datum/disease/proc/has_cure()//check if affected_mob has required reagents.
-	if(!cure_id) return 0
+	if(!cure_id)
+		return 0
 	var/result = 1
 	if(cure_list == list(cure_id))
 		if(istype(cure_id, /list))
@@ -104,16 +105,20 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		how_spread = force_spread
 
 	if(how_spread == SPECIAL || how_spread == NON_CONTAGIOUS || how_spread == BLOOD)//does not spread
-		return
+		return FALSE
 
 	if(stage < contagious_period) //the disease is not contagious at this stage
-		return
+		return FALSE
 
 	if(!source)//no holder specified
 		if(affected_mob)//no mob affected holder
 			source = affected_mob
 		else //no source and no mob affected. Rogue disease. Break
-			return
+			return FALSE
+
+	var/mob/source_mob = source
+	if(istype(source_mob) && !source_mob.can_pass_disease())
+		return FALSE
 
 	var/check_range = airborne_range//defaults to airborne - range 2
 
@@ -121,17 +126,18 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		check_range = 1 // everything else, like infect-on-contact things, only infect things on top of it
 
 	if(isturf(source.loc))
-		for(var/mob/living/carbon/M in oview(check_range, source))
-			if(isturf(M.loc))
-				if(AStar(source.loc, M.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
-					M.contract_disease(src, 0, 1, force_spread)
+		FOR_DOVIEW(var/mob/living/carbon/victim, check_range, source, HIDE_INVISIBLE_OBSERVER)
+			if(isturf(victim.loc) && victim.can_pass_disease())
+				if(AStar(source.loc, victim.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance, check_range))
+					victim.contract_disease(src, 0, 1, force_spread)
+		FOR_DOVIEW_END
 
 	return
 
 
 /datum/disease/process()
 	if(!holder)
-		active_diseases -= src
+		SSdisease.all_diseases -= src
 		return
 	if(prob(65))
 		spread(holder)
@@ -173,12 +179,10 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 		var/mob/living/carbon/human/H = affected_mob
 		H.med_hud_set_status()
 
-
-
 /datum/disease/New(process=TRUE)//process = 1 - adding the object to global list. List is processed by master controller.
 	cure_list = list(cure_id) // to add more cures, add more vars to this list in the actual disease's New()
 	if(process)  // Viruses in list are considered active.
-		active_diseases += src
+		SSdisease.all_diseases += src
 	initial_spread = spread
 
 /datum/disease/proc/IsSame(datum/disease/D)
@@ -193,5 +197,5 @@ var/list/diseases = typesof(/datum/disease) - /datum/disease
 /datum/disease/Destroy()
 	affected_mob = null
 	holder = null
-	active_diseases -= src
+	SSdisease.all_diseases -= src
 	. = ..()

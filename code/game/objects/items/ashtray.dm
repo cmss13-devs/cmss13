@@ -1,5 +1,9 @@
 /obj/item/ashtray
-	icon = 'icons/obj/items/ashtray.dmi'
+	icon = 'icons/obj/items/smoking/ashtray.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi'
+	)
 
 	var/max_butts = 0
 	var/empty_desc = ""
@@ -12,7 +16,7 @@
 	if (health < 1)
 		return
 	if (istype(W,/obj/item/trash/cigbutt) || istype(W,/obj/item/clothing/mask/cigarette) || istype(W, /obj/item/tool/match))
-		if (contents.len >= max_butts)
+		if (length(contents) >= max_butts)
 			to_chat(user, "This ashtray is full.")
 			return
 		var/drop = TRUE
@@ -42,10 +46,10 @@
 		user.update_inv_l_hand(0)
 		user.update_inv_r_hand()
 		add_fingerprint(user)
-		if (contents.len == max_butts)
+		if (length(contents) == max_butts)
 			icon_state = icon_full
 			desc = empty_desc + " It's stuffed full."
-		else if (contents.len > max_butts/2)
+		else if (length(contents) > max_butts/2)
 			icon_state = icon_half
 			desc = empty_desc + " It's half-filled."
 	else
@@ -61,7 +65,7 @@
 		if (health < 1)
 			die()
 			return
-		if (contents.len)
+		if (length(contents))
 			src.visible_message(SPAN_DANGER("[src] slams into [hit_atom] spilling its contents!"))
 		for (var/obj/item/clothing/mask/cigarette/O in contents)
 			O.forceMove(src.loc)

@@ -8,7 +8,7 @@
  * Render relay object assigned to a plane master to be able to relay it's render onto other planes that are not it's own
  */
 /obj/render_plane_relay
-	screen_loc = "CENTER"
+	screen_loc = "1,1"
 	layer = -1
 	plane = 0
 	appearance_flags = PASS_MOUSE | NO_CLIENT_COLOR | KEEP_TOGETHER
@@ -39,6 +39,10 @@
 	plane = RENDER_PLANE_GAME
 	render_relay_plane = RENDER_PLANE_MASTER
 
+/atom/movable/screen/plane_master/rendering_plate/game_world/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	add_filter("displacer", 1, displacement_map_filter(render_source = DISPLACEMENT_PLATE_RENDER_TARGET, size = 10))
+
 ///render plate for OOC stuff like ghosts, hud-screen effects, etc
 /atom/movable/screen/plane_master/rendering_plate/non_game
 	name = "non-game rendering plate"
@@ -68,12 +72,13 @@
 	relay.render_source = render_target
 	relay.plane = relay_plane
 	relay.layer = (plane + abs(LOWEST_EVER_PLANE))*0.5 //layer must be positive but can be a decimal
+
 	if(blend_mode_override)
 		relay.blend_mode = blend_mode_override
 	else
 		relay.blend_mode = blend_mode
 	relay.mouse_opacity = mouse_opacity
 	relay.name = render_target
-	mymob.client.screen += relay
+	mymob.client.add_to_screen(relay)
 	if(blend_mode != BLEND_MULTIPLY)
 		blend_mode = BLEND_DEFAULT

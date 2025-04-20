@@ -83,8 +83,7 @@
 		SSdatabase.create_query(query_gettable, CB)
 
 /datum/db/adapter/native_adapter/update_table(table_name, list/values, datum/callback/CB, sync = FALSE)
-	if(!sync)
-		set waitfor = 0
+	set waitfor = FALSE
 
 	for(var/list/vals in values)
 		var/list/qpars = list()
@@ -93,7 +92,7 @@
 
 /datum/db/adapter/native_adapter/insert_table(table_name, list/values, datum/callback/CB, sync = FALSE)
 	set waitfor = 0
-	var/length = values.len
+	var/length = length(values)
 	var/startid = internal_request_insert_allocation(table_name, length)
 	var/list/qpars = list()
 	var/query_inserttable = getquery_insert_table(table_name, values, startid, qpars)
@@ -139,7 +138,7 @@
 	if(table_meta.status != DB_QUERY_FINISHED)
 		issue_log += "Unable to access system table, error: '[table_meta.error]'"
 		return FALSE // OH SHIT OH FUCK
-	if(!table_meta.results.len) // Table doesn't exist
+	if(!length(table_meta.results)) // Table doesn't exist
 		return internal_create_table(table_name, field_types) && internal_record_table_in_sys(type_name, table_name, field_types)
 
 	var/id =  table_meta.results[1][DB_DEFAULT_ID_FIELD]

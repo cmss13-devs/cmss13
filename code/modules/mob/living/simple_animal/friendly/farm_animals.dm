@@ -39,10 +39,10 @@
 	. = ..()
 	if(.)
 		//chance to go crazy and start wacking stuff
-		if(!enemies.len && prob(1))
+		if(!length(enemies) && prob(1))
 			Retaliate()
 
-		if(enemies.len && prob(10))
+		if(length(enemies) && prob(10))
 			enemies = list()
 			LoseTarget()
 			src.visible_message(SPAN_NOTICE("[src] calms down."))
@@ -83,7 +83,7 @@
 		user.visible_message(SPAN_NOTICE("[user] milks [src] using \the [O]."))
 		var/transfered = udder.trans_id_to(G, "milk", rand(5,10))
 		if(G.reagents.total_volume >= G.volume)
-			to_chat(user, SPAN_DANGER("The [O] is full."))
+			to_chat(user, SPAN_DANGER("[O] is full."))
 		if(!transfered)
 			to_chat(user, SPAN_DANGER("The udder is dry. Wait a bit longer..."))
 	else
@@ -143,7 +143,8 @@
 
 /mob/living/simple_animal/cow/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -151,7 +152,7 @@
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
-		M.visible_message(SPAN_WARNING("[M] tips over [src]."), \
+		M.visible_message(SPAN_WARNING("[M] tips over [src]."),
 			SPAN_NOTICE("You tip over [src]."))
 		apply_effect(30, WEAKEN)
 		icon_state = icon_dead
@@ -209,8 +210,8 @@
 			new /mob/living/simple_animal/chicken(src.loc)
 			qdel(src)
 
-var/const/MAX_CHICKENS = 50
-var/global/chicken_count = 0
+GLOBAL_VAR_INIT(MAX_CHICKENS, 50)
+GLOBAL_VAR_INIT(chicken_count, 0)
 
 /mob/living/simple_animal/chicken
 	name = "\improper chicken"
@@ -236,15 +237,15 @@ var/global/chicken_count = 0
 	mob_size = MOB_SIZE_SMALL
 
 /mob/living/simple_animal/chicken/New()
-	..()
 	if(!body_color)
 		body_color = pick( list("brown","black","white") )
 	icon_state = "chicken_[body_color]"
 	icon_living = "chicken_[body_color]"
 	icon_dead = "chicken_[body_color]_dead"
+	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
-	chicken_count++
+	GLOB.chicken_count++
 
 /mob/living/simple_animal/chicken/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -253,7 +254,7 @@ var/global/chicken_count = 0
 
 /mob/living/simple_animal/chicken/death()
 	..()
-	chicken_count--
+	GLOB.chicken_count--
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -282,7 +283,7 @@ var/global/chicken_count = 0
 		var/obj/item/reagent_container/food/snacks/egg/E = new(get_turf(src))
 		E.pixel_x = rand(-6,6)
 		E.pixel_y = rand(-6,6)
-		if(chicken_count < MAX_CHICKENS && prob(10))
+		if(GLOB.chicken_count < GLOB.MAX_CHICKENS && prob(10))
 			START_PROCESSING(SSobj, E)
 
 /obj/item/reagent_container/food/snacks/egg/var/amount_grown = 0

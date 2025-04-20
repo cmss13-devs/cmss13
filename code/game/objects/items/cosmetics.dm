@@ -2,7 +2,7 @@
 	gender = PLURAL
 	name = "facepaint"
 	desc = "Paint, for your face. Wipe it off your face with some paper if you need to. This one is a deep, forest green."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "camo"
 	var/paint_type = "green"
 	w_class = SIZE_TINY
@@ -35,11 +35,62 @@
 	paint_type = "full_camo"
 	icon_state = "full_camo"
 
+/obj/item/facepaint/sniper/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			paint_type = "full_camo_jungle"
+			icon_state = "full_camo_jungle"
+		if("classic")
+			paint_type = "full_camo"
+			icon_state = "full_camo"
+		if("desert")
+			paint_type = "full_camo_desert"
+			icon_state = "full_camo_desert"
+		if("snow")
+			paint_type = "full_camo_snow"
+			icon_state = "full_camo_snow"
+		if("urban")
+			paint_type = "full_camo_urban"
+			icon_state = "full_camo_urban"
+
+/obj/item/facepaint/sniper/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/facepaint/sniper/snow
+	name = "fullbody paint snow"
+	paint_type = "full_camo_snow"
+	icon_state = "full_camo_snow"
+
+/obj/item/facepaint/sniper/desert
+	name = "fullbody paint desert"
+	paint_type = "full_camo_desert"
+	icon_state = "full_camo_desert"
+
+/obj/item/facepaint/sniper/jungle
+	name = "fullbody paint jungle"
+	paint_type = "full_camo_jungle"
+	icon_state = "full_camo_jungle"
+
+/obj/item/facepaint/sniper/urban
+	name = "fullbody paint urban"
+	paint_type = "full_camo_urban"
+	icon_state = "full_camo_urban"
+
 /obj/item/facepaint/skull
 	name = "skull paint"
 	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
+
+/obj/item/facepaint/clown
+	name = "clown makeup paint"
+	desc = "Paint, for your face. Used for entertainers and alike, or maybe you just feel that way."
+	paint_type = "clown_camo"
+	icon_state = "clown_camo"
 
 /obj/item/facepaint/sunscreen_stick
 	name= "\improper USCM issue sunscreen"
@@ -84,7 +135,7 @@
 /obj/item/facepaint/proc/paint_face(mob/living/carbon/human/H, mob/user)
 	if(!H || !user)
 		return //In case they're passed as null.
-	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
+	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."),
 						SPAN_NOTICE("You apply [src]."))
 	H.lip_style = paint_type
 	H.update_body()
@@ -104,6 +155,10 @@
 	paint_type = "red_lipstick"
 	icon_state = "lipstick"
 	item_state = "lipstick"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paint_righthand.dmi'
+	)
 	var/icon_state_open = "lipstick_red"
 	var/icon_state_closed = "lipstick"
 	open = FALSE
@@ -146,3 +201,36 @@
 		sharp = FALSE
 		edge = FALSE
 		force = 0
+
+/obj/item/k9_name_changer
+	name = "K9 name implanter"
+	desc = "Syncs the implanted W-Y Serial Chip to the unit's preferred name."
+	icon = 'icons/obj/items/economy.dmi'
+	icon_state = "efundcard"
+	w_class = SIZE_TINY
+
+/obj/item/k9_name_changer/attack_self(mob/user)
+	. = ..()
+	var/newname = capitalize(tgui_input_text(user, "What do you wish to be named", "Name:", encode = FALSE))
+	if(!newname)
+		return
+
+	var/verify = tgui_input_list(user, "Are you SURE you wish to be named: [newname]?", "Confirm", list("Yes", "No"))
+	if(verify != "Yes")
+		return
+
+	user.change_real_name(user, newname)
+	if(istype(user, /mob/living/carbon/human))
+		var/mob/living/carbon/human/altered_human = user
+		var/obj/item/card/id/ID = altered_human.get_idcard()
+		if(ID)
+			ID.name = "[altered_human.real_name]'s [ID.id_type]"
+			ID.registered_name = "[altered_human.real_name]"
+			if(ID.assignment)
+				ID.name += " ([ID.assignment])"
+
+	var/genderswap = tgui_input_list(user, "Which Gender?", "Gender", list("Male", "Female"))
+	if(!genderswap)
+		return
+	user.gender = lowertext(genderswap)
+	qdel(src)

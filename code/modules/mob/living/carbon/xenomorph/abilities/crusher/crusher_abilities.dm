@@ -1,11 +1,11 @@
 /datum/action/xeno_action/activable/pounce/crusher_charge
 	name = "Charge"
 	action_icon_state = "ready_charge"
-	ability_name = "charge"
+	action_text = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 140
+	xeno_cooldown = 14 SECONDS
 	plasma_cost = 20
 	// Config options
 	distance = 9
@@ -14,7 +14,7 @@
 	slash = FALSE
 	freeze_self = FALSE
 	windup = TRUE
-	windup_duration = 12
+	windup_duration = 1.2 SECONDS
 	windup_interruptable = FALSE
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST
@@ -35,18 +35,17 @@
 /datum/action/xeno_action/onclick/crusher_stomp
 	name = "Stomp"
 	action_icon_state = "stomp"
-	ability_name = "stomp"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_stomp
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 180
+	xeno_cooldown = 18 SECONDS
 	plasma_cost = 30
 
 	var/damage = 65
 
 	var/distance = 2
 	var/effect_type_base = /datum/effects/xeno_slow/superslow
-	var/effect_duration = 10
+	var/effect_duration = 1 SECONDS
 
 /datum/action/xeno_action/onclick/crusher_stomp/charger
 	name = "Crush"
@@ -63,18 +62,18 @@
 /datum/action/xeno_action/onclick/crusher_shield
 	name = "Defensive Shield"
 	action_icon_state = "empower"
-	ability_name = "defensive shield"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_charge
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	plasma_cost = 50
 	xeno_cooldown = 26 SECONDS
 	var/shield_amount = 200
+	var/explosion_immunity_dur = 2.5 SECONDS
+	var/shield_dur = 7 SECONDS
 
 /datum/action/xeno_action/activable/fling/charger
 	name = "Headbutt"
 	action_icon_state = "ram"
-	ability_name = "Headbutt"
 	macro_path = /datum/action/xeno_action/verb/verb_fling
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
@@ -120,6 +119,10 @@
 	var/momentum = 0
 
 
+/datum/action/xeno_action/onclick/charger_charge/proc/handle_position_change(mob/living/carbon/xenomorph/xeno, body_position)
+	SIGNAL_HANDLER
+	if(body_position == LYING_DOWN)
+		handle_movement(xeno)
 
 /datum/action/xeno_action/onclick/charger_charge/proc/handle_movement(mob/living/carbon/xenomorph/Xeno, atom/oldloc, dir, forced)
 	SIGNAL_HANDLER
@@ -133,8 +136,8 @@
 	if(Xeno.is_mob_incapacitated())
 		if(!momentum)
 			return
-		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
-		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), lol, momentum/2, SPEED_FAST, null, TRUE)
+		var/distance_to_throw = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
+		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), distance_to_throw, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return
 	if(!isturf(Xeno.loc))
@@ -178,9 +181,9 @@
 		playsound(Xeno, 'sound/effects/alien_footstep_charge1.ogg', 50)
 
 	for(var/mob/living/carbon/human/Mob in Xeno.loc)
-		if(Mob.lying && Mob.stat != DEAD)
+		if(Mob.body_position == LYING_DOWN && Mob.stat != DEAD)
 			Xeno.visible_message(SPAN_DANGER("[Xeno] runs [Mob] over!"),
-				SPAN_DANGER("You run [Mob] over!")
+				SPAN_DANGER("We run [Mob] over!")
 			)
 			var/ram_dir = pick(get_perpen_dir(Xeno.dir))
 			var/dist = 1
@@ -249,7 +252,6 @@
 
 /datum/action/xeno_action/activable/tumble
 	name = "Tumble"
-	ability_name = "tumble"
 	action_icon_state = "tumble"
 	macro_path = /datum/action/xeno_action/verb/verb_crusher_tumble
 	action_type = XENO_ACTION_CLICK
@@ -267,13 +269,13 @@
 
 /datum/action/xeno_action/activable/tumble/proc/handle_mob_collision(mob/living/carbon/Mob)
 	var/mob/living/carbon/xenomorph/Xeno = owner
-	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("You knock over [Mob] as you sweep to the side!"))
+	Xeno.visible_message(SPAN_XENODANGER("[Xeno] Sweeps to the side, knocking down [Mob]!"), SPAN_XENODANGER("We knock over [Mob] as we sweep to the side!"))
 	var/turf/target_turf = get_turf(Mob)
 	playsound(Mob,'sound/weapons/alien_claw_block.ogg', 50, 1)
 	Mob.apply_damage(15,BRUTE)
 	if(ishuman(Mob))
 		var/mob/living/carbon/human/Human = Mob
-		xeno_throw_human(Human, Xeno, get_dir(Xeno, Human), 1)
+		Xeno.throw_carbon(Human, distance = 1)
 		Human.apply_effect(1, WEAKEN)
 	else
 		Mob.apply_effect(1, WEAKEN)

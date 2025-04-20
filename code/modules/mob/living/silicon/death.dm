@@ -16,7 +16,4 @@
 
 /mob/living/silicon/death(cause, gibbed, deathmessage)
 	SSmob.living_misc_mobs -= src
-	if(in_contents_of(/obj/structure/machinery/recharge_station))//exit the recharge station
-		var/obj/structure/machinery/recharge_station/RC = loc
-		RC.go_out()
-	return ..(cause, gibbed, deathmessage)
+	return ..()

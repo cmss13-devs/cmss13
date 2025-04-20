@@ -54,6 +54,8 @@
 #define SHOCK 8
 #define SAFE 16
 
+#define CLOSED 2
+
 //metal, glass, rod stacks
 #define MAX_STACK_AMOUNT_METAL 50
 #define MAX_STACK_AMOUNT_GLASS 50
@@ -70,21 +72,30 @@
 #define PULSE_SLOW 1 //<60 bpm
 #define PULSE_NORM 2 //60-90 bpm
 #define PULSE_FAST 3 //90-120 bpm
-#define PULSE_2FAST 4 //>120 bpm
+#define PULSE_FASTER 4 //>120 bpm
 #define PULSE_THREADY 5 //occurs during hypovolemic shock
 
 //proc/get_pulse methods
 #define GETPULSE_HAND 0 //less accurate (hand)
 #define GETPULSE_TOOL 1 //more accurate (med scanner, sleeper, etc)
 
-var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.
+GLOBAL_LIST_INIT(RESTRICTED_CAMERA_NETWORKS, list( //Those networks can only be accessed by preexisting terminals. AIs and new terminals can't use them.)
 	"thunder",
 	"ERT",
 	"NUKE",
+	CAMERA_NET_CONTAINMENT_HIDDEN,
 	CAMERA_NET_LADDER,
+	CAMERA_NET_MORANA,
+	CAMERA_NET_DEVANA,
 	CAMERA_NET_COLONY,
 	CAMERA_NET_OVERWATCH,
-	)
+	CAMERA_NET_ARES,
+	CAMERA_NET_POWER_ALARMS,
+	CAMERA_NET_ATMOSPHERE_ALARMS,
+	CAMERA_NET_FIRE_ALARMS,
+	CAMERA_NET_SIMULATION,
+	CAMERA_NET_YAUTJA,
+	))
 
 #define STASIS_IN_BAG 1
 #define STASIS_IN_CRYO_CELL 2
@@ -102,6 +113,38 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define IS_SHARP_ITEM_ACCURATE 2 //knife, scalpel
 #define IS_SHARP_ITEM_BIG 3 //fireaxe, hatchet, energy sword
 
+///can opener defines
+///can open a can without issues
+#define CAN_OPENER_EFFECTIVE list(\
+	/obj/item/tool/kitchen/can_opener,\
+	/obj/item/tool/kitchen/can_opener/compact,\
+	/obj/item/weapon/bracer_attachment/wristblades\
+	)
+
+///slow can opening with a chance of jamming
+#define CAN_OPENER_CRUDE list(\
+	/obj/item/attachable/bayonet,\
+	/obj/item/attachable/bayonet/upp,\
+	/obj/item/attachable/bayonet/rmc,\
+	/obj/item/attachable/bayonet/antique,\
+	/obj/item/attachable/bayonet/custom,\
+	/obj/item/attachable/bayonet/custom/red,\
+	/obj/item/attachable/bayonet/custom/blue,\
+	/obj/item/attachable/bayonet/custom/black,\
+	/obj/item/tool/kitchen/knife,\
+	/obj/item/tool/kitchen/knife/butcher,\
+	/obj/item/bracer_attachments/scimitars,\
+	/obj/item/bracer_attachments/scimitars_alt,\
+	/obj/item/weapon/yautja/sword,\
+	/obj/item/weapon/yautja/sword/alt_1,\
+	/obj/item/weapon/yautja/sword/alt_2,\
+	/obj/item/weapon/yautja/sword/alt_3,\
+	/obj/item/weapon/sword,\
+	/obj/item/weapon/sword/claymore,\
+	/obj/item/weapon/sword/ceremonial,\
+	/obj/item/weapon/sword/machete,\
+	/obj/item/weapon/sword/machete/arnold\
+	)
 
 //pry capable item defines
 #define IS_PRY_CAPABLE_SIMPLE 1
@@ -136,10 +179,15 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define CLEANABLE_MISC "misc" //Anything else
 
 //For nuke announcements
-#define NUKE_SHOW_TIMER_TEN_SEC 1
-#define NUKE_SHOW_TIMER_MINUTE 2
-#define NUKE_SHOW_TIMER_HALF 4
+#define NUKE_SHOW_TIMER_TEN_SEC (1<<0)
+#define NUKE_SHOW_TIMER_MINUTE (1<<1)
+#define NUKE_SHOW_TIMER_HALF (1<<2)
 #define NUKE_SHOW_TIMER_ALL (NUKE_SHOW_TIMER_TEN_SEC|NUKE_SHOW_TIMER_MINUTE|NUKE_SHOW_TIMER_HALF)
+
+#define NUKE_DECRYPT_SHOW_TIMER_COMPLETE (1<<3)
+#define NUKE_DECRYPT_SHOW_TIMER_MINUTE (1<<4)
+#define NUKE_DECRYPT_SHOW_TIMER_HALF (1<<5)
+#define NUKE_DECRYPT_SHOW_TIMER_ALL (NUKE_SHOW_TIMER_TEN_SEC|NUKE_SHOW_TIMER_HALF|NUKE_DECRYPT_SHOW_TIMER_COMPLETE|NUKE_DECRYPT_SHOW_TIMER_MINUTE|NUKE_DECRYPT_SHOW_TIMER_HALF)
 
 //For recipes
 #define ONE_TYPE_PER_TURF 1
@@ -148,7 +196,9 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define RESULT_REQUIRES_SNOW (1<<0)
 
 
+/// Reaction type from touching it
 #define TOUCH 1
+/// Reaction type from eating it
 #define INGEST 2
 
 /// Marks an object as organic. Used for alien structures and any other organic material
@@ -163,3 +213,13 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 // For reinforced table status
 #define RTABLE_WEAKENED 1
 #define RTABLE_NORMAL 2
+
+//Lights define
+#define CHECKS_PASSED 1
+#define STILL_ON_COOLDOWN 2
+#define NO_LIGHT_STATE_CHANGE 3
+
+//tool capabilities or something i don't know
+#define REMOVE_CROWBAR  (1<<0)
+#define BREAK_CROWBAR   (1<<1)
+#define REMOVE_SCREWDRIVER (1<<2)

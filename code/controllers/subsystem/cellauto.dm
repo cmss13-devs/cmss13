@@ -1,4 +1,4 @@
-var/list/cellauto_cells = list()
+GLOBAL_LIST_EMPTY(cellauto_cells)
 
 SUBSYSTEM_DEF(cellauto)
 	name  = "Cellular Automata"
@@ -9,15 +9,15 @@ SUBSYSTEM_DEF(cellauto)
 	var/list/currentrun = list()
 
 /datum/controller/subsystem/cellauto/stat_entry(msg)
-	msg = "C: [cellauto_cells.len]"
+	msg = "C: [length(GLOB.cellauto_cells)]"
 	return ..()
 
 /datum/controller/subsystem/cellauto/fire(resumed = FALSE)
 	if (!resumed)
-		currentrun = cellauto_cells.Copy()
+		currentrun = GLOB.cellauto_cells.Copy()
 
-	while(currentrun.len)
-		var/datum/automata_cell/C = currentrun[currentrun.len]
+	while(length(currentrun))
+		var/datum/automata_cell/C = currentrun[length(currentrun)]
 		currentrun.len--
 
 		if (!C || QDELETED(C))

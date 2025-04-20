@@ -14,6 +14,9 @@
 
 	var/list/overlay_images = list()
 
+	/// Amount of pixels to shift either way in an attempt to make the tracks more organic
+	var/transverse_amplitude = 3
+
 /obj/effect/decal/cleanable/blood/tracks/Crossed()
 	return
 
@@ -21,19 +24,27 @@
 	return FALSE
 
 /obj/effect/decal/cleanable/blood/tracks/proc/add_tracks(direction, tcolor, out)
-	var/image/I = image(icon = icon, icon_state = out ? going_state : coming_state, dir = direction)
-	var/mutable_appearance/MA = new(I)
+	var/image/image = image(icon = icon, icon_state = out ? going_state : coming_state, dir = direction)
+
+	var/mutable_appearance/MA = new(image)
 	MA.color = tcolor
 	MA.layer = layer
 	MA.appearance_flags |= RESET_COLOR
-	I.appearance = MA
-	if(out)
-		LAZYSET(steps_out, "[direction]", I)
-	else
-		LAZYSET(steps_in, "[direction]", I)
+	image.appearance = MA
 
-	overlay_images += I
-	cleanable_turf.overlays += I
+	switch(direction)
+		if(NORTH, SOUTH)
+			image.pixel_x += rand(-transverse_amplitude, transverse_amplitude)
+		if(EAST, WEST)
+			image.pixel_y += rand(-transverse_amplitude, transverse_amplitude)
+
+	if(out)
+		LAZYSET(steps_out, "[direction]", image)
+	else
+		LAZYSET(steps_in, "[direction]", image)
+
+	overlay_images += image
+	cleanable_turf.overlays += image
 
 /obj/effect/decal/cleanable/blood/tracks/clear_overlay()
 	if(length(overlay_images))

@@ -1,7 +1,7 @@
 /obj/structure/ladder
 	name = "ladder"
 	desc = "A sturdy metal ladder."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder11"
 	var/id = null
 	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
@@ -67,8 +67,9 @@
 	else //wtf make your ladders properly assholes
 		icon_state = "ladder00"
 
-/obj/structure/ladder/attack_hand(mob/user)
-	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.lying || user.buckled || user.anchored) return
+/obj/structure/ladder/attack_hand(mob/living/user)
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
+		return
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
@@ -79,22 +80,25 @@
 		if(ladder_dir_name == "Cancel")
 			return
 		ladder_dir_name = lowertext(ladder_dir_name)
-		if(ladder_dir_name == "up") ladder_dest = up
-		else ladder_dest = down
+		if(ladder_dir_name == "up")
+			ladder_dest = up
+		else
+			ladder_dest = down
 	else if(up)
 		ladder_dir_name = "up"
 		ladder_dest = up
 	else if(down)
 		ladder_dir_name = "down"
 		ladder_dest = down
-	else return //just in case
+	else
+		return //just in case
 
 	step(user, get_dir(user, src))
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
 	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
 	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
-		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && !user.lying && !user.buckled && !user.anchored)
+		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
 			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
 			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
 			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
@@ -103,9 +107,9 @@
 	busy = FALSE
 	add_fingerprint(user)
 
-/obj/structure/ladder/check_eye(mob/user)
+/obj/structure/ladder/check_eye(mob/living/user)
 	//Are we capable of looking?
-	if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded || user.lying || !user.client)
+	if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || !user.client)
 		user.unset_interaction()
 
 	//Are ladder cameras ok?
@@ -140,7 +144,7 @@
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr))))
-		if(islarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded || usr.lying)
+		if(islarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded)
 			to_chat(usr, "You can't do that in your current state.")
 			return
 		if(is_watching)
@@ -178,9 +182,6 @@
 
 	add_fingerprint(usr)
 
-/obj/structure/ladder/attack_robot(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/ladder/ex_act(severity)
 	return
 
@@ -196,15 +197,18 @@
 			if(ladder_dir_name == "Cancel")
 				return
 			ladder_dir_name = lowertext(ladder_dir_name)
-			if(ladder_dir_name == "up") ladder_dest = up
-			else ladder_dest = down
+			if(ladder_dir_name == "up")
+				ladder_dest = up
+			else
+				ladder_dest = down
 		else if(up)
 			ladder_dir_name = "up"
 			ladder_dest = up
 		else if(down)
 			ladder_dir_name = "down"
 			ladder_dest = down
-		else return //just in case
+		else
+			return //just in case
 
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [G.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
@@ -234,15 +238,18 @@
 			if(ladder_dir_name == "Cancel")
 				return
 			ladder_dir_name = lowertext(ladder_dir_name)
-			if(ladder_dir_name == "up") ladder_dest = up
-			else ladder_dest = down
+			if(ladder_dir_name == "up")
+				ladder_dest = up
+			else
+				ladder_dest = down
 		else if(up)
 			ladder_dir_name = "up"
 			ladder_dest = up
 		else if(down)
 			ladder_dir_name = "down"
 			ladder_dest = down
-		else return //just in case
+		else
+			return //just in case
 
 		user.visible_message(SPAN_WARNING("[user] takes position to throw [F] [ladder_dir_name] [src]."),
 		SPAN_WARNING("You take position to throw [F] [ladder_dir_name] [src]."))
@@ -262,11 +269,8 @@
 
 /obj/structure/ladder/fragile_almayer/Initialize()
 	. = ..()
-	GLOB.hijack_bustable_ladders += src
-
-/obj/structure/ladder/fragile_almayer/Destroy()
-	GLOB.hijack_bustable_ladders -= src
-	return ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(deconstruct))
 
 /obj/structure/ladder/fragile_almayer/deconstruct()
 	new /obj/structure/prop/broken_ladder(loc)
@@ -275,9 +279,22 @@
 /obj/structure/prop/broken_ladder
 	name = "rickety ladder"
 	desc = "Well, it was only a matter of time."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder00"
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+
+/obj/structure/ladder/multiz/LateInitialize()
+	. = ..()
+
+	up = locate(/obj/structure/ladder) in SSmapping.get_turf_above(get_turf(src))
+	down = locate(/obj/structure/ladder) in SSmapping.get_turf_below(get_turf(src))
+
+	update_icon()
+
+/obj/structure/ladder/yautja
+	name = "ladder"
+	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

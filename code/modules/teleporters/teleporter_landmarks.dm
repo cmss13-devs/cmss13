@@ -41,30 +41,24 @@
 /obj/effect/landmark/teleporter_loc/LateInitialize()
 	. = ..()
 
-	if (SSteleporter)
-		var/datum/teleporter/T = SSteleporter.teleporters_by_id[linked_teleporter]
-		if (T)
-			if (!T.locations[location_id])
-				T.locations[location_id] = list()
+	var/datum/teleporter/T = GLOB.teleporters_by_id[linked_teleporter]
+	if (T)
+		if (!T.locations[location_id])
+			T.locations[location_id] = list()
 
-			var/list/location = T.locations[location_id]
+		var/list/location = T.locations[location_id]
 
-			if (!location)
-				log_debug("Teleporter locations turf list not properly instantiated. Code: TELEPORTER_LANDMARK_1")
-				log_admin("Teleporter locations turf list not properly instantiated. Tell the devs. Code: TELEPORTER_LANDMARK_1")
-				qdel(src)
-				return
-
-			location[index] = get_turf(src)
-
-		else
-			log_debug("Couldn't find teleporter matching ID [linked_teleporter]. Code: TELEPORTER_LANDMARK_2")
-			log_admin("Couldn't find teleporter matching ID [linked_teleporter]. Tell the devs. Code: TELEPORTER_LANDMARK_2")
+		if (!location)
+			log_debug("Teleporter locations turf list not properly instantiated. Code: TELEPORTER_LANDMARK_1")
+			log_admin("Teleporter locations turf list not properly instantiated. Tell the devs. Code: TELEPORTER_LANDMARK_1")
 			qdel(src)
 			return
+
+		location[index] = get_turf(src)
+
 	else
-		log_debug("Couldn't find teleporter SS to register with. Code: TELEPORTER_LANDMARK_3")
-		log_admin("Couldn't find teleporter SS to register with. Tell the devs. Code: TELEPORTER_LANDMARK_3")
+		log_debug("Couldn't find teleporter matching ID [linked_teleporter]. Code: TELEPORTER_LANDMARK_2")
+		log_admin("Couldn't find teleporter matching ID [linked_teleporter]. Tell the devs. Code: TELEPORTER_LANDMARK_2")
 		qdel(src)
 		return
 

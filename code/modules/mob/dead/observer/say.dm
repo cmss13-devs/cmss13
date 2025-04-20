@@ -12,6 +12,9 @@
 		if (src.client.handle_spam_prevention(message, MUTE_DEADCHAT))
 			return
 
+	if(!filter_message(client, message))
+		return
+
 	. = src.say_dead(message)
 
 
@@ -21,7 +24,7 @@
 	if(!client)
 		return
 
-	if(speaker && !speaker.client && client.prefs.toggles_chat & CHAT_GHOSTEARS && speaker.z == z && get_dist(speaker, src) <= world_view_size)
+	if(speaker && !speaker.client && client.prefs.toggles_chat & CHAT_GHOSTEARS && speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size)
 			//Does the speaker have a client?  It's either random stuff that observers won't care about (Experiment 97B says, 'EHEHEHEHEHEHEHE')
 			//Or someone snoring.  So we make it where they won't hear it.
 		return
@@ -52,10 +55,10 @@
 		var/mob/hologram/queen/queen_eye = speaker?.client?.eye
 		if(istype(queen_eye))
 			track += "(<a href='byond://?src=\ref[src];track=\ref[queen_eye]'>E</a>) "
-	if(client && client.prefs && client.prefs.toggles_chat & CHAT_GHOSTEARS && speaker.z == z && get_dist(speaker, src) <= world_view_size)
+	if(client && client.prefs && client.prefs.toggles_chat & CHAT_GHOSTEARS && speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size)
 		message = "<b>[message]</b>"
 
 	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='[style]'>\"[message]\"</span></span></span>")
-	if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
+	if (speech_sound && (get_dist(speaker, src) <= GLOB.world_view_size && src.z == speaker.z))
 		var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 		playsound_client(client, speech_sound, source, sound_vol)

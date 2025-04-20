@@ -20,7 +20,8 @@
 		return FALSE
 
 	var/list/damagedata = list("damage" = damage)
-	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
+		return
 	damage = damagedata["damage"]
 
 	switch(damagetype)
@@ -46,13 +47,20 @@
 	return 1
 
 /mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, halloss = 0, brain = 0, def_zone = null)
-	if(brute) apply_damage(brute, BRUTE, def_zone)
-	if(burn) apply_damage(burn, BURN, def_zone)
-	if(tox) apply_damage(tox, TOX, def_zone)
-	if(oxy) apply_damage(oxy, OXY, def_zone)
-	if(clone) apply_damage(clone, CLONE, def_zone)
-	if(halloss) apply_damage(halloss, HALLOSS, def_zone)
-	if(brain) apply_damage(brain, BRAIN, def_zone)
+	if(brute)
+		apply_damage(brute, BRUTE, def_zone)
+	if(burn)
+		apply_damage(burn, BURN, def_zone)
+	if(tox)
+		apply_damage(tox, TOX, def_zone)
+	if(oxy)
+		apply_damage(oxy, OXY, def_zone)
+	if(clone)
+		apply_damage(clone, CLONE, def_zone)
+	if(halloss)
+		apply_damage(halloss, HALLOSS, def_zone)
+	if(brain)
+		apply_damage(brain, BRAIN, def_zone)
 	return 1
 
 /mob/living/proc/apply_internal_damage(damage = 0, organ)
@@ -65,13 +73,12 @@
 //#define EFFECT_FLAG_XENOMORPH
 //#define EFFECT_FLAG_CHEMICAL
 
+/// Legacy wrapper for effects, DO NOT USE and migrate all code to USING THE STATUS PROCS DIRECTLY
 /mob/proc/apply_effect()
 	return FALSE
 
+// Legacy wrapper for effects, DO NOT USE and migrate all code to USING THE BELOW PROCS DIRECTLY
 /mob/living/apply_effect(effect = 0, effect_type = STUN, effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_APPLY_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
 
 	if(!effect)
 		return FALSE
@@ -98,6 +105,8 @@
 			EyeBlur(effect)
 		if(DROWSY)
 			drowsyness = max(drowsyness, effect)
+		if(ROOT)
+			Root(effect)
 	updatehealth()
 	return TRUE
 
@@ -105,9 +114,6 @@
 	return FALSE
 
 /mob/living/adjust_effect(effect = 0, effect_type = STUN, effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_ADJUST_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
 
 	if(!effect)
 		return FALSE
@@ -134,6 +140,8 @@
 			AdjustEyeBlur(effect)
 		if(DROWSY)
 			drowsyness = POSITIVE(drowsyness + effect)
+		if(ROOT)
+			AdjustRoot(effect)
 	updatehealth()
 	return TRUE
 
@@ -141,9 +149,6 @@
 	return FALSE
 
 /mob/living/set_effect(effect = 0, effect_type = STUN, effect_flags = EFFECT_FLAG_DEFAULT)
-
-	if(SEND_SIGNAL(src, COMSIG_LIVING_SET_EFFECT, effect, effect_type, effect_flags) & COMPONENT_CANCEL_EFFECT)
-		return
 
 	switch(effect_type)
 		if(STUN)
@@ -167,15 +172,26 @@
 			SetEyeBlur(effect)
 		if(DROWSY)
 			drowsyness = POSITIVE(effect)
+		if(ROOT)
+			SetRoot(effect)
 	updatehealth()
 	return TRUE
 
-/mob/living/proc/apply_effects(stun = 0, weaken = 0, paralyze = 0, irradiate = 0, stutter = 0, eyeblur = 0, drowsy = 0, agony = 0)
-	if(stun) apply_effect(stun, STUN)
-	if(weaken) apply_effect(weaken, WEAKEN)
-	if(paralyze) apply_effect(paralyze, PARALYZE)
-	if(stutter) apply_effect(stutter, STUTTER)
-	if(eyeblur) apply_effect(eyeblur, EYE_BLUR)
-	if(drowsy) apply_effect(drowsy, DROWSY)
-	if(agony) apply_effect(agony, AGONY)
+/mob/living/proc/apply_effects(stun = 0, weaken = 0, paralyze = 0, irradiate = 0, stutter = 0, eyeblur = 0, drowsy = 0, agony = 0, root = 0)
+	if(stun)
+		apply_effect(stun, STUN)
+	if(weaken)
+		apply_effect(weaken, WEAKEN)
+	if(paralyze)
+		apply_effect(paralyze, PARALYZE)
+	if(stutter)
+		apply_effect(stutter, STUTTER)
+	if(eyeblur)
+		apply_effect(eyeblur, EYE_BLUR)
+	if(drowsy)
+		apply_effect(drowsy, DROWSY)
+	if(agony)
+		apply_effect(agony, AGONY)
+	if(root)
+		apply_effect(root, ROOT)
 	return 1

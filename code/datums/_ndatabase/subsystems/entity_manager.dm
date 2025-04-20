@@ -19,7 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-var/datum/controller/subsystem/entity_manager/SSentity_manager
+GLOBAL_REAL(SSentity_manager, /datum/controller/subsystem/entity_manager)
 
 /datum/controller/subsystem/entity_manager
 	name   = "Entity Manager"
@@ -102,8 +102,8 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 		currentrun = tables_unsorted.Copy()
 	if(!SSdatabase.connection.connection_ready())
 		return
-	while (currentrun.len)
-		var/datum/entity_meta/Q = currentrun[currentrun.len]
+	while (length(currentrun))
+		var/datum/entity_meta/Q = currentrun[length(currentrun)]
 		do_select(Q)
 		do_insert(Q)
 		do_update(Q)

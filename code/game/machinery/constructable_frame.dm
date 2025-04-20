@@ -8,6 +8,7 @@
 	density = FALSE
 	anchored = TRUE
 	use_power = USE_POWER_NONE
+	needs_power = FALSE
 	var/requirements_left
 	var/obj/item/circuitboard/machine/circuit = null
 	var/list/components = null
@@ -15,7 +16,7 @@
 	var/list/req_component_names = null
 	var/state = CONSTRUCTION_STATE_BEGIN
 	var/required_skill = SKILL_CONSTRUCTION_ENGI
-	var/required_dismantle_skill = SKILL_ENGINEER_ENGI
+	var/required_dismantle_skill = SKILL_ENGINEER_TRAINED
 
 /obj/structure/machinery/constructable_frame/Initialize(mapload, ...)
 	. = ..()
@@ -114,7 +115,7 @@
 				A.amount = 5
 
 		if(CONSTRUCTION_STATE_FINISHED)
-			if(istype(P, /obj/item/tool/crowbar))
+			if(HAS_TRAIT(P, TRAIT_TOOL_CROWBAR))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
@@ -124,7 +125,7 @@
 				state = CONSTRUCTION_STATE_BEGIN
 				circuit.forceMove(loc)
 				circuit = null
-				if(components.len == 0)
+				if(length(components) == 0)
 					to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				else
 					to_chat(user, SPAN_NOTICE("You remove the circuit board and other components."))

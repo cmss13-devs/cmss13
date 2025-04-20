@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/traffic = 0 // value increases as traffic increases
 	var/netspeed = 5 // how much traffic to lose per tick (50 gigabytes/second * netspeed)
 	var/list/autolinkers = list() // list of text/number values to link with
-	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
+	var/list/freq_listening = list(UNIVERSAL_FREQ) // list of frequencies to tune into: if universal frequency is included, will listen to all
 	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
 	var/delay = 10 // how many process() ticks to delay per heat
 	var/long_range_link = 0 // Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
@@ -71,6 +71,9 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 // When effectively shut down
 /obj/structure/machinery/telecomms/proc/tcomms_shutdown()
 	on = FALSE
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_GROUNDSIDE_TELECOMM_TURNED_OFF)
+
 	if(tcomms_machine)
 		SSradio.remove_tcomm_machine(src)
 
@@ -90,13 +93,13 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	update_state()
 
 /obj/structure/machinery/telecomms/emp_act(severity)
+	. = ..()
 	if(prob(100/severity))
 		if(!(stat & EMPED))
 			stat |= EMPED
 			var/duration = (300 * 10)/severity
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
 				stat &= ~EMPED
-	..()
 
 /*
 	The receiver idles and receives messages from subspace-compatible radio equipment;
@@ -108,7 +111,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/receiver
 	name = "Subspace Receiver"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "broadcast receiver"
 	desc = "This machine has a dish-like shape and green lights. It is designed to detect and process subspace radio activity."
 	density = TRUE
@@ -130,7 +133,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/hub
 	name = "Telecommunication Hub"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "hub"
 	desc = "A mighty piece of hardware used to send/receive massive amounts of data."
 	density = TRUE
@@ -153,7 +156,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/relay
 	name = "Telecommunication Relay"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "relay"
 	desc = "A mighty piece of hardware used to send massive amounts of data far away."
 	density = TRUE
@@ -179,7 +182,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/bus
 	name = "Bus Mainframe"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "bus"
 	desc = "A mighty piece of hardware used to send massive amounts of data quickly."
 	density = TRUE
@@ -201,7 +204,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/processor
 	name = "Processor Unit"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "processor"
 	desc = "This machine is used to process large quantities of information."
 	density = TRUE
@@ -223,7 +226,7 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms/server
 	name = "Telecommunication Server"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "comm_server"
 	desc = "A machine used to store data and network statistics."
 	density = TRUE

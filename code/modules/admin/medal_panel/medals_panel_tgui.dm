@@ -19,22 +19,22 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 	var/list/xeno_awards = list()
 	var/list/uscm_award_ckeys = list()
 	var/list/xeno_award_ckeys = list()
-	
+
 	// Break the medals up by recipient and then pack each medal into a string
 	for(var/recipient_name as anything in GLOB.medal_awards)
 		var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient_name]
 		uscm_awards[recipient_name] = list()
 		uscm_award_ckeys[recipient_name] = recipient_award.recipient_ckey ? " ([recipient_award.recipient_ckey])" : ""
-		for(var/i in 1 to recipient_award.medal_names.len) // We're assuming everything is same length
-			uscm_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i]] [recipient_award.giver_name[i]]."
-		
+		for(var/i in 1 to length(recipient_award.medal_names)) // We're assuming everything is same length
+			uscm_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i] ? "[recipient_award.giver_rank[i]] " : ""][recipient_award.giver_name[i] ? "[recipient_award.giver_name[i]] " : ""]([recipient_award.giver_ckey[i]])."
+
 	for(var/recipient_name as anything in GLOB.jelly_awards)
 		var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[recipient_name]
 		xeno_awards[recipient_name] = list()
 		xeno_award_ckeys[recipient_name] = recipient_award.recipient_ckey ? " ([recipient_award.recipient_ckey])" : ""
-		for(var/i in 1 to recipient_award.medal_names.len) // We're assuming everything is same length
-			xeno_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\'[recipient_award.giver_rank[i] ? " by [recipient_award.giver_rank[i]]" : ""][recipient_award.giver_name[i] ? " ([recipient_award.giver_name[i]])" : ""]."
-	
+		for(var/i in 1 to length(recipient_award.medal_names)) // We're assuming everything is same length
+			xeno_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i] ? "[recipient_award.giver_rank[i]] " : ""][recipient_award.giver_name[i] ? "[recipient_award.giver_name[i]] " : ""]([recipient_award.giver_ckey[i]])."
+
 	data["uscm_awards"] = uscm_awards
 	data["xeno_awards"] = xeno_awards
 	data["uscm_award_ckeys"] = uscm_award_ckeys
@@ -61,8 +61,8 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 		if("delete_medal")
 			remove_award(params["recipient"], TRUE, params["index"] + 1) // Why is byond not 0 indexed?
 			return TRUE
-		
+
 		if("delete_jelly")
-			remove_award(params["recipient"], FALSE, params["index"] + 1) // Why is byond not 0 indexed? 
+			remove_award(params["recipient"], FALSE, params["index"] + 1) // Why is byond not 0 indexed?
 			return TRUE
-	
+

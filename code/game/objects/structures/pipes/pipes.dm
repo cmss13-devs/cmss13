@@ -14,6 +14,8 @@
 
 	var/ventcrawl_message_busy = FALSE //Prevent spamming
 
+	/// Whether or not the pipe will explode (when on the Almayer) during hijack
+	var/explodey = TRUE
 	/// The grenade subtypes that pipes will use when they explode
 	var/static/list/exploding_types = list(/obj/item/explosive/grenade/high_explosive/bursting_pipe, /obj/item/explosive/grenade/incendiary/bursting_pipe)
 
@@ -34,13 +36,13 @@
 
 	if(mapload)
 		create_valid_directions()
-
 		search_for_connections()
 
 	if(!is_mainship_level(z))
 		return
 
-	GLOB.mainship_pipes += src
+	if(explodey)
+		GLOB.mainship_pipes += src
 
 /obj/structure/pipes/Destroy()
 	for(var/mob/living/M in src)
@@ -49,6 +51,7 @@
 
 	for(var/obj/structure/pipes/P in connected_to)
 		P.remove_connection(src)
+	connected_to.Cut()
 
 	GLOB.mainship_pipes -= src
 
@@ -93,6 +96,7 @@
 
 /obj/structure/pipes/proc/remove_connection(obj/structure/pipes/P)
 	connected_to -= P
+	P.connected_to -= src
 
 /obj/structure/pipes/proc/get_connection(direction)
 	var/obj/structure/pipes/best_connected_pipe = null
@@ -127,7 +131,8 @@
 
 		ventcrawl_message_busy = world.time + 20
 		playsound(src, pick('sound/effects/alien_ventcrawl1.ogg', 'sound/effects/alien_ventcrawl2.ogg'), 25, 1)
-		visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
+		var/turf/alert_turf = get_turf(src) //Pipe segments aren't guaranteed to be visible
+		alert_turf.visible_message(SPAN_HIGHDANGER("You hear something squeezing through the ducts."))
 		to_chat(user, SPAN_NOTICE("You begin to climb out of [src]"))
 		animate_ventcrawl()
 		user.remove_specific_pipe_image(src)

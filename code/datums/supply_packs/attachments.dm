@@ -84,17 +84,6 @@
 	containername = "extended barrel attachment crate"
 	group = "Attachments"
 
-/datum/supply_packs/muzzle_heavy
-	name = "barrel charger attachment crate (x2)"
-	contains = list(
-		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/heavy_barrel,
-	)
-	cost = 30
-	containertype = /obj/structure/closet/crate
-	containername = "heavy barrel attachment crate"
-	group = "Attachments"
-
 /datum/supply_packs/muzzle_compensator
 	name = "compensator attachment crate (x6)"
 	contains = list(
@@ -108,6 +97,19 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate
 	containername = "compensator attachment crate"
+	group = "Attachments"
+
+/datum/supply_packs/shotgun_choke
+	name = "shotgun choke attachment crate (x4)"
+	contains = list(
+		/obj/item/attachable/shotgun_choke,
+		/obj/item/attachable/shotgun_choke,
+		/obj/item/attachable/shotgun_choke,
+		/obj/item/attachable/shotgun_choke,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate
+	containername = "shotgun choke attachment crate"
 	group = "Attachments"
 
 /datum/supply_packs/underbarrel_foregrip

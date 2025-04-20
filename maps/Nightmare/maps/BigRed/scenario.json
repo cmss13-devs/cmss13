@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "type": "pick", "name": "Big Red Global Event",
+        "choices": [
+            { "weight": 7, "type": "def", "values": { "lvevent": "none"       } },
+            { "weight": 1, "type": "def", "values": { "lvevent": "clf" } },
+            { "weight": 2, "type": "def", "values": { "lvevent": "pmccrash" } }
+        ]
+    }
+
+]

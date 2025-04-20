@@ -5,6 +5,10 @@
 /obj/item/stack/cable_coil
 	name = "cable coil"
 	icon = 'icons/obj/structures/machinery/power.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "coil"
 	amount = MAXCOIL
 	max_amount = MAXCOIL
@@ -20,20 +24,20 @@
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stack_id = "cable coil"
 	attack_speed = 3
+	ground_offset_x = 2
+	ground_offset_y = 2
 
 /obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, param_color = null)
 	. = ..()
 	src.amount = length
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
 		color = param_color
-	pixel_x = rand(-2,2)
-	pixel_y = rand(-2,2)
 	updateicon()
 	update_wclass()
 
 /obj/item/stack/cable_coil/proc/updateicon()
 	if (!color)
-		color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+		color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_ORANGE, COLOR_WHITE, COLOR_MAGENTA, COLOR_YELLOW, COLOR_CYAN)
 	if(amount == 1)
 		icon_state = "coil1"
 		name = "cable piece"
@@ -66,11 +70,12 @@
 	var/mob/M = usr
 
 	if(ishuman(M) && !M.is_mob_incapacitated())
-		if(!istype(usr.loc,/turf)) return
+		if(!istype(usr.loc,/turf))
+			return
 		if(src.amount <= 14)
 			to_chat(usr, SPAN_WARNING("You need at least 15 lengths to make restraints!"))
 			return
-		var/obj/item/handcuffs/cable/B = new /obj/item/handcuffs/cable(usr.loc)
+		var/obj/item/restraint/adjustable/cable/B = new /obj/item/restraint/adjustable/cable(usr.loc)
 		B.color = color
 		to_chat(usr, SPAN_NOTICE("You wind some cable together to make some restraints."))
 		src.use(15)
@@ -276,8 +281,6 @@
 /obj/item/stack/cable_coil/cut/Initialize()
 	. = ..()
 	src.amount = rand(1,2)
-	pixel_x = rand(-2,2)
-	pixel_y = rand(-2,2)
 	updateicon()
 	update_wclass()
 
@@ -300,11 +303,11 @@
 	color = "#a8c1dd"
 
 /obj/item/stack/cable_coil/white
-	color = "#FFFFFF"
+	color = COLOR_WHITE
 
 /obj/item/stack/cable_coil/random/Initialize()
 	. = ..()
-	color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
+	color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_MAGENTA, COLOR_YELLOW, COLOR_CYAN)
 
 /obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
 	if(ishuman(M))
@@ -323,7 +326,7 @@
 
 		if(S.burn_dam > 0 && use(1))
 			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some burn damage on their [S.display_name]."), \
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some burn damage on their [S.display_name]."),
 					SPAN_WARNING("You begin to carefully patch some burn damage on your [S.display_name] so as not to void your warranty."))
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return

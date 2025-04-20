@@ -7,8 +7,8 @@
 
 /obj/item/storage
 	name = "storage"
-	icon = 'icons/obj/items/storage.dmi'
 	w_class = SIZE_MEDIUM
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 	var/list/can_hold = new/list() //List of objects which this item can store (if set, it can't store anything else)
 	var/list/cant_hold = new/list() //List of objects which this item can't store (in effect only if can_hold isn't set)
 	var/list/bypass_w_limit = new/list() //a list of objects which this item can store despite not passing the w_class limit
@@ -22,15 +22,25 @@
 	var/atom/movable/screen/storage/storage_start = null //storage UI
 	var/atom/movable/screen/storage/storage_continue = null
 	var/atom/movable/screen/storage/storage_end = null
-	var/datum/item_storage_box/stored_ISB = null // This contains what previously was known as stored_start, stored_continue, and stored_end
+	var/datum/item_storage_box/stored_ISB //! This contains what previously was known as stored_start, stored_continue, and stored_end
 	var/atom/movable/screen/close/closer = null
 	var/foldable = null
 	var/use_sound = "rustle" //sound played when used. null for no sound.
 	var/opened = FALSE //Has it been opened before?
 	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
-	var/has_gamemode_skin = FALSE ///Whether to use map-variant skins.
 
+	///Special can_holds that require a skill to insert, it is an associated list of typepath = list(skilltype, skilllevel)
+	var/list/can_hold_skill = list()
+
+	///Dictates whether or not we only check for items in can_hold_skill rather than can_hold or free usage
+	var/can_hold_skill_only = FALSE
+
+	/// The required skill for opening this storage if it is inside another storage type
+	var/required_skill_for_nest_opening = null
+
+	/// The required level of a skill for opening this storage if it is inside another storage type
+	var/required_skill_level_for_nest_opening = null
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
@@ -57,14 +67,14 @@
 			add_fingerprint(usr)
 
 /obj/item/storage/clicked(mob/user, list/mods)
-	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
-	if(mods["alt"]  && loc == user && !user.get_active_hand())
+	if(mods[ALT_CLICK]  && loc == user && !user.get_active_hand())
 		return FALSE
 
 	return ..()
@@ -93,25 +103,24 @@
 				return
 	if(user.s_active)
 		user.s_active.hide_from(user)
-	user.client.screen -= boxes
-	user.client.screen -= storage_start
-	user.client.screen -= storage_continue
-	user.client.screen -= storage_end
-	user.client.screen -= closer
-	user.client.screen -= contents
-	user.client.screen += closer
-	user.client.screen += contents
+	user.client.remove_from_screen(boxes)
+	user.client.remove_from_screen(storage_start)
+	user.client.remove_from_screen(storage_continue)
+	user.client.remove_from_screen(storage_end)
+	user.client.remove_from_screen(closer)
+	user.client.remove_from_screen(contents)
+	user.client.add_to_screen(closer)
+	user.client.add_to_screen(contents)
 
 	if(storage_slots)
-		user.client.screen += boxes
+		user.client.add_to_screen(boxes)
 	else
-		user.client.screen += storage_start
-		user.client.screen += storage_continue
-		user.client.screen += storage_end
+		user.client.add_to_screen(storage_start)
+		user.client.add_to_screen(storage_continue)
+		user.client.add_to_screen(storage_end)
 
 	user.s_active = src
 	add_to_watchers(user)
-	return
 
 /obj/item/storage/proc/add_to_watchers(mob/user)
 	if(!(user in content_watchers))
@@ -126,12 +135,12 @@
 ///Used to hide the storage's inventory screen.
 /obj/item/storage/proc/hide_from(mob/user as mob)
 	if(user.client)
-		user.client.screen -= src.boxes
-		user.client.screen -= storage_start
-		user.client.screen -= storage_continue
-		user.client.screen -= storage_end
-		user.client.screen -= src.closer
-		user.client.screen -= src.contents
+		user.client.remove_from_screen(src.boxes)
+		user.client.remove_from_screen(storage_start)
+		user.client.remove_from_screen(storage_continue)
+		user.client.remove_from_screen(storage_end)
+		user.client.remove_from_screen(src.closer)
+		user.client.remove_from_screen(src.contents)
 	if(user.s_active == src)
 		user.s_active = null
 	del_from_watchers(user)
@@ -148,6 +157,12 @@
 /obj/item/storage/proc/open(mob/user)
 	if(user.s_active == src) //Spam prevention.
 		return
+
+	if(istype(loc, /obj/item/storage) && required_skill_for_nest_opening)
+		if(!user || user.skills?.get_skill_level(required_skill_for_nest_opening) < required_skill_level_for_nest_opening)
+			to_chat(user, SPAN_NOTICE("You can't seem to open [src] while it is in [loc]."))
+			return
+
 	if(!opened)
 		orient2hud()
 		opened = 1
@@ -196,16 +211,17 @@
 	if (storage_flags & STORAGE_SHOW_FULLNESS)
 		boxes.update_fullness(src)
 
-var/list/global/item_storage_box_cache = list()
+GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 
 /datum/item_storage_box
-	var/atom/movable/screen/storage/start = null
-	var/atom/movable/screen/storage/continued = null
-	var/atom/movable/screen/storage/end = null
-	/// The index that indentifies me inside item_storage_box_cache
+	var/atom/movable/screen/storage/start
+	var/atom/movable/screen/storage/continued
+	var/atom/movable/screen/storage/end
+	/// The index that indentifies me inside GLOB.item_storage_box_cache
 	var/index
 
 /datum/item_storage_box/New()
+	. = ..()
 	start = new()
 	start.icon_state = "stored_start"
 	continued = new()
@@ -217,7 +233,7 @@ var/list/global/item_storage_box_cache = list()
 	QDEL_NULL(start)
 	QDEL_NULL(continued)
 	QDEL_NULL(end)
-	item_storage_box_cache[index] = null // Or would it be better to -= src?
+	GLOB.item_storage_box_cache -= index
 	return ..()
 
 /obj/item/storage/proc/space_orient_objs(list/obj/item/display_contents)
@@ -242,7 +258,7 @@ var/list/global/item_storage_box_cache = list()
 
 	if(!opened) //initialize background box
 		storage_start.screen_loc = "4:16,2:16"
-		storage_continue.screen_loc = "4:[round(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
+		storage_continue.screen_loc = "4:[floor(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
 		storage_end.screen_loc = "4:[19+storage_width-storage_cap_width],2:16"
 
 	var/startpoint = 0
@@ -255,8 +271,9 @@ var/list/global/item_storage_box_cache = list()
 		click_border_start.Add(startpoint)
 		click_border_end.Add(endpoint)
 
-		if(!item_storage_box_cache[isb_index])
-			var/datum/item_storage_box/box = new()
+		var/datum/item_storage_box/ISB = GLOB.item_storage_box_cache[isb_index]
+		if(QDELETED(ISB))
+			ISB = new()
 			var/matrix/M_start = matrix()
 			var/matrix/M_continue = matrix()
 			var/matrix/M_end = matrix()
@@ -264,20 +281,19 @@ var/list/global/item_storage_box_cache = list()
 			M_continue.Scale((endpoint-startpoint-stored_cap_width*2)/32,1)
 			M_continue.Translate(startpoint+stored_cap_width+(endpoint-startpoint-stored_cap_width*2)/2 - 16,0)
 			M_end.Translate(endpoint-stored_cap_width,0)
-			box.start.apply_transform(M_start)
-			box.continued.apply_transform(M_continue)
-			box.end.apply_transform(M_end)
-			box.index = isb_index
-			item_storage_box_cache[isb_index] = box
+			ISB.start.apply_transform(M_start)
+			ISB.continued.apply_transform(M_continue)
+			ISB.end.apply_transform(M_end)
+			ISB.index = isb_index
+			GLOB.item_storage_box_cache[isb_index] = ISB
 
-		var/datum/item_storage_box/ISB = item_storage_box_cache[isb_index]
 		stored_ISB = ISB
 
 		storage_start.overlays += ISB.start
 		storage_start.overlays += ISB.continued
 		storage_start.overlays += ISB.end
 
-		O.screen_loc = "4:[round((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
+		O.screen_loc = "4:[floor((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
 		O.layer = ABOVE_HUD_LAYER
 		O.plane = ABOVE_HUD_PLANE
 
@@ -293,7 +309,7 @@ var/list/global/item_storage_box_cache = list()
 		var/obj/item/I = user.get_active_hand()
 		var/user_carried_master = user.contains(master)
 		// Placing something in the storage screen
-		if(I && !mods["alt"] && !mods["shift"] && !mods["ctrl"]) //These mods should be caught later on and either examine or do nothing.
+		if(I && !mods[ALT_CLICK] && !mods[SHIFT_CLICK] && !mods[CTRL_CLICK]) //These mods should be caught later on and either examine or do nothing.
 			if(world.time <= user.next_move && !user_carried_master) //Click delay doesn't apply to clicking items in your first-layer inventory.
 				return TRUE
 			user.next_move = world.time
@@ -302,7 +318,7 @@ var/list/global/item_storage_box_cache = list()
 			return TRUE
 
 		// examining or taking something out of the storage screen by clicking on item border overlay
-		var/list/screen_loc_params = splittext(mods["screen-loc"], ",")
+		var/list/screen_loc_params = splittext(mods[SCREEN_LOC], ",")
 		var/list/screen_loc_X = splittext(screen_loc_params[1],":")
 		var/click_x = text2num(screen_loc_X[1])*32+text2num(screen_loc_X[2]) - 144
 
@@ -349,7 +365,7 @@ var/list/global/item_storage_box_cache = list()
 //This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
 /obj/item/storage/proc/orient2hud()
 
-	var/adjusted_contents = contents.len
+	var/adjusted_contents = length(contents)
 
 	//Numbered contents display
 	var/list/datum/numbered_display/numbered_contents
@@ -373,38 +389,73 @@ var/list/global/item_storage_box_cache = list()
 		var/row_num = 0
 		var/col_count = min(7,storage_slots) -1
 		if (adjusted_contents > 7)
-			row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
+			row_num = floor((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
 		slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
 ///Returns TRUE if there is room for the given item. W_class_override allows checking for just a generic W_class, meant for checking shotgun handfuls without having to spawn and delete one just to check.
-/obj/item/storage/proc/has_room(obj/item/W as obj, W_class_override = null)
-	if(storage_slots != null && contents.len < storage_slots)
+/obj/item/storage/proc/has_room(obj/item/new_item, W_class_override = null)
+	for(var/obj/item/cur_item in contents)
+		if(istype(cur_item, /obj/item/stack) && istype(new_item, /obj/item/stack))
+			var/obj/item/stack/cur_stack = cur_item
+			var/obj/item/stack/new_stack = new_item
+
+			if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
+				return TRUE
+
+		else if(istype(cur_item, /obj/item/ammo_magazine/handful) && istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			if(cur_handful.is_transferable(new_handful))
+				return TRUE
+		else
+			continue
+
+	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
+
 	//calculate storage space only for containers that don't have slots
 	if (storage_slots == null)
-		var/sum_storage_cost = W_class_override ? W_class_override : W.get_storage_cost() //Takes the override if there is one, the given item otherwise.
+		var/sum_storage_cost = W_class_override ? W_class_override : new_item.get_storage_cost() //Takes the override if there is one, the given item otherwise.
 		for(var/obj/item/I in contents)
 			sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
 
 		if(sum_storage_cost <= max_storage_space) //Adding this item won't exceed the maximum.
 			return TRUE
 
-/obj/item/storage/proc/can_hold_type(type_to_hold)
+#define SKILL_TYPE_INDEX 1
+#define SKILL_LEVEL_INDEX 2
+
+/obj/item/storage/proc/can_hold_type(type_to_hold, mob/user)
+	if(length(can_hold_skill))
+		for(var/can_hold_skill_typepath in can_hold_skill)
+			if(ispath(type_to_hold, can_hold_skill_typepath) && user.skills?.get_skill_level(can_hold_skill[can_hold_skill_typepath][SKILL_TYPE_INDEX]) >= can_hold_skill[can_hold_skill_typepath][SKILL_LEVEL_INDEX])
+				return TRUE
+		if(can_hold_skill_only)
+			return FALSE
+
 	for(var/A in cant_hold)
 		if(ispath(type_to_hold, A))
 			return FALSE
+
 	if(length(can_hold))
 		for(var/A in can_hold)
 			if(ispath(type_to_hold, A))
 				return TRUE
+
 		return FALSE
+
 	return TRUE
+
+#undef SKILL_TYPE_INDEX
+#undef SKILL_LEVEL_INDEX
 
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
-/obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
-	if(!istype(W) || (W.flags_item & NODROP)) return //Not an item
+/obj/item/storage/proc/can_be_inserted(obj/item/W, mob/user, stop_messages = FALSE)
+	if(!istype(W) || (W.flags_item & NODROP))
+		return //Not an item
 
 	if(src.loc == W)
 		return 0 //Means the item is already in the storage item
@@ -419,13 +470,13 @@ var/list/global/item_storage_box_cache = list()
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return
 
-	if(!can_hold_type(W.type))
+	if(!can_hold_type(W.type, user))
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
 		return
 
 	var/w_limit_bypassed = 0
-	if(bypass_w_limit.len)
+	if(length(bypass_w_limit))
 		for(var/A in bypass_w_limit)
 			if(istype(W, A))
 				w_limit_bypassed = 1
@@ -455,32 +506,67 @@ That's done by can_be_inserted(). Its checks are whether the item exists, is an 
 The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple
 items at once, such as when picking up all the items on a tile with one click.
 user can be null, it refers to the potential mob doing the insertion.**/
-/obj/item/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
-	if(!istype(W))
+/obj/item/storage/proc/handle_item_insertion(obj/item/new_item, prevent_warning = FALSE, mob/user)
+	if(!istype(new_item))
 		return FALSE
-	if(user && W.loc == user)
-		if(!user.drop_inv_item_to_loc(W, src))
+
+	if(user && new_item.loc == user)
+		if(istype(new_item, /obj/item/stack))
+			var/obj/item/stack/new_stack = new_item
+
+			for(var/obj/item/cur_item in contents)
+				if(!istype(cur_item, /obj/item/stack))
+					continue
+				var/obj/item/stack/cur_stack = cur_item
+
+				if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
+					var/amount = min(cur_stack.max_amount - cur_stack.amount, new_stack.amount)
+					new_stack.use(amount)
+					cur_stack.add(amount)
+
+			if(!QDELETED(new_stack) && can_be_inserted(new_stack, user))
+				if(!user.drop_inv_item_to_loc(new_item, src))
+					return FALSE
+			else
+				return TRUE
+		else if(istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			for(var/obj/item/cur_item in contents)
+				if(!istype(cur_item, /obj/item/ammo_magazine/handful))
+					continue
+				var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+				if(cur_handful.is_transferable(new_handful))
+					cur_handful.transfer_ammo(new_handful, user, new_handful.current_rounds)
+
+			if(!QDELETED(new_handful) && can_be_inserted(new_handful, user))
+				if(!user.drop_inv_item_to_loc(new_handful, src))
+					return FALSE
+			else
+				return TRUE
+
+		if(!user.drop_inv_item_to_loc(new_item, src))
 			return FALSE
 	else
-		W.forceMove(src)
+		new_item.forceMove(src)
 
-	_item_insertion(W, prevent_warning, user)
+	_item_insertion(new_item, prevent_warning, user)
 	return TRUE
 
 /**Inserts the item. Separate proc because handle_item_insertion isn't guaranteed to insert
 and it therefore isn't safe to override it before calling parent. Updates icon when done.
 Can be called directly but only if the item was spawned inside src - handle_item_insertion is safer.
 W is always an item. stop_warning prevents messaging. user may be null.**/
-/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
+/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = FALSE, mob/user)
 	W.on_enter_storage(src)
 	if(user)
 		if (user.client && user.s_active != src)
-			user.client.screen -= W
+			user.client.remove_from_screen(W)
 		add_fingerprint(user)
 		if(!prevent_warning)
 			var/visidist = W.w_class >= 3 ? 3 : 1
-			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),\
-								SPAN_NOTICE("You put \the [W] into [src]."),\
+			user.visible_message(SPAN_NOTICE("[user] puts [W] into [src]."),
+								SPAN_NOTICE("You put \the [W] into [src]."),
 								null, visidist)
 	orient2hud()
 	for(var/mob/M in can_see_content())
@@ -488,20 +574,23 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (storage_slots)
 		W.mouse_opacity = MOUSE_OPACITY_OPAQUE //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 ///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location, mob/user)
 	if(!istype(W))
 		return FALSE
 
-	_item_removal(W, new_location)
+	_item_removal(W, new_location, user)
 	return TRUE
 
 ///Separate proc because remove_from_storage isn't guaranteed to finish. Can be called directly if the target atom exists and is an item. Updates icon when done.
-/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location)
+/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location, mob/user)
 	for(var/mob/M in can_see_content())
 		if(M.client)
-			M.client.screen -= W
+			M.client.remove_from_screen(W)
 
 	if(new_location)
 		if(ismob(new_location))
@@ -521,16 +610,14 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		W.maptext = ""
 	W.on_exit_storage(src)
 	update_icon()
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 	W.mouse_opacity = initial(W.mouse_opacity)
 
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-
-	if(isrobot(user))
-		to_chat(user, SPAN_NOTICE(" You're a robot. No."))
-		return //Robots can't interact with storage items.
-
 	return attempt_item_insertion(W, FALSE, user)
 
 /obj/item/storage/equipped(mob/user, slot, silent)
@@ -544,20 +631,22 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	..()
 
 /obj/item/storage/proc/attempt_item_insertion(obj/item/W as obj, prevent_warning = FALSE, mob/user as mob)
-	if(!can_be_inserted(W))
+	if(!can_be_inserted(W, user))
 		return
 
 	W.add_fingerprint(user)
 	return handle_item_insertion(W, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if (loc == user)
-		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
+		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]
 			else
-				I = contents[contents.len]
+				I = contents[length(contents)]
 			I.attack_hand(user)
 		else
 			open(user)
@@ -609,7 +698,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (!isturf(T) || get_dist(src, T) > 1)
 		T = get_turf(src)
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
@@ -625,7 +714,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 	storage_close(user)
 	for (var/obj/item/I in contents)
-		remove_from_storage(I, T)
+		remove_from_storage(I, T, user)
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
 	if (use_sound)
@@ -664,7 +753,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
 		return
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
 		return
@@ -679,10 +768,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 		item_obj = contents[1]
 	else
-		item_obj = contents[contents.len]
+		item_obj = contents[length(contents)]
 	if(!istype(item_obj))
 		return
-	remove_from_storage(item_obj, tile)
+	remove_from_storage(item_obj, tile, user)
 	user.visible_message(SPAN_NOTICE("[user] shakes \the [src] and \a [item_obj] falls out."),
 		SPAN_NOTICE("You shake \the [src] and \a [item_obj] falls out."))
 
@@ -697,11 +786,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds != 0)
-			if(contents.len < storage_slots)
+			if(length(contents) < storage_slots)
 				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
-				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
+				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+					return
 				for(var/i = 1 to handfuls)
-					if(contents.len < storage_slots)
+					if(length(contents) < storage_slots)
 						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
 						//All this because shell types are instances and not their own objects :)
 
@@ -709,7 +799,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
 						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
 						ammo_dumping.current_rounds -= transferred_handfuls
-						handle_item_insertion(new_handful, TRUE,user)
+						handle_item_insertion(new_handful, TRUE, user)
 						update_icon(-transferred_handfuls)
 					else
 						break
@@ -721,25 +811,26 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
 	return TRUE
 
-/obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
+/obj/item/storage/proc/dump_into(obj/item/storage/origin_storage, mob/user)
+
 	if(user.action_busy)
 		return
 
-	if(!M.contents.len)
-		to_chat(user, SPAN_WARNING("[M] is empty."))
+	if(!length(origin_storage.contents))
+		to_chat(user, SPAN_WARNING("[origin_storage] is empty."))
 		return
-	if(!has_room(M.contents[1])) //Does it have room for the first item to be inserted?
+	if(!has_room(origin_storage.contents[1])) //Does it have room for the first item to be inserted?
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return
 
-	to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
+	to_chat(user, SPAN_NOTICE("You start refilling [src] with [origin_storage]."))
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
-	for(var/obj/item/I in M)
-		if(!has_room(I))
+	for(var/obj/item/new_item in origin_storage)
+		if(!has_room(new_item))
 			break
-		M.remove_from_storage(I)
-		handle_item_insertion(I, TRUE, user) //quiet insertion
+		origin_storage.remove_from_storage(new_item, user)
+		handle_item_insertion(new_item, TRUE, user) //quiet insertion
 
 	playsound(user.loc, "rustle", 15, TRUE, 6)
 	return TRUE
@@ -778,13 +869,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	closer = new
 	closer.master = src
 
-	if(has_gamemode_skin)
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(type)
-
 	post_skin_selection()
-
 	fill_preset_inventory()
-
 	update_icon()
 
 /*
@@ -799,9 +887,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	storage_close(watcher)
 
 /obj/item/storage/proc/dump_objectives()
-	for(var/obj/item/I in src)
-		if(I.is_objective)
-			I.forceMove(loc)
+	for(var/obj/item/cur_item in src)
+		if(cur_item.is_objective)
+			remove_from_storage(cur_item, loc)
 
 
 /obj/item/storage/Destroy()
@@ -813,11 +901,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	QDEL_NULL(storage_start)
 	QDEL_NULL(storage_continue)
 	QDEL_NULL(storage_end)
-	QDEL_NULL(stored_ISB)
 	QDEL_NULL(closer)
+	stored_ISB = null
 	return ..()
 
 /obj/item/storage/emp_act(severity)
+	. = ..()
 	if(!istype(src.loc, /mob/living))
 		for(var/obj/O in contents)
 			O.emp_act(severity)
@@ -827,8 +916,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	..()
 
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
-	if(contents.len)
-		empty(user)
+	if(length(contents))
+		if (!(storage_flags & STORAGE_DISABLE_USE_EMPTY))
+			empty(user)
 		return
 
 	//Otherwise we'll try to fold it.
@@ -867,6 +957,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 ///Things to be done after selecting a map skin (if any) and before adding inventory and updating icon for the first time. Most likely saving basic icon state.
 /obj/item/storage/proc/post_skin_selection()
 	return
+
+/obj/item/storage/proc/can_storage_interact(mob/user)
+	if(!allowed(user))
+		return FALSE
+	return TRUE
 
 /**Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.
 Returning 1 == directly inside the container's contents, 2 == inside something which is itself inside the container, etc.

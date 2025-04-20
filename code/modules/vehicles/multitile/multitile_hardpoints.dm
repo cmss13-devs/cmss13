@@ -63,7 +63,7 @@
 //Putting on hardpoints
 //Similar to repairing stuff, down to the time delay
 /obj/vehicle/multitile/proc/install_hardpoint(obj/item/O, mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know what to do with [O] on \the [src]."))
 		return
 
@@ -99,11 +99,16 @@
 	var/num_delays = 1
 
 	switch(HP.slot)
-		if(HDPT_PRIMARY) num_delays = 5
-		if(HDPT_SECONDARY) num_delays = 3
-		if(HDPT_SUPPORT) num_delays = 2
-		if(HDPT_ARMOR) num_delays = 10
-		if(HDPT_TREADS, HDPT_WHEELS) num_delays = 7
+		if(HDPT_PRIMARY)
+			num_delays = 5
+		if(HDPT_SECONDARY)
+			num_delays = 3
+		if(HDPT_SUPPORT)
+			num_delays = 2
+		if(HDPT_ARMOR)
+			num_delays = 10
+		if(HDPT_TREADS, HDPT_WHEELS)
+			num_delays = 7
 
 	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
 		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
@@ -132,7 +137,7 @@
 //User-orientated proc for taking of hardpoints
 //Again, similar to the above ones
 /obj/vehicle/multitile/proc/uninstall_hardpoint(obj/item/O, mob/user)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 		return
 
@@ -149,7 +154,7 @@
 		hps += H
 
 	var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Hardpoint Removal", (hps + "Cancel"))
-	if(chosen_hp == "Cancel" || !chosen_hp)
+	if(chosen_hp == "Cancel" || !chosen_hp || (get_dist(src, user) > 2)) //get_dist uses 2 because the vehicle is 3x3
 		return
 
 	var/obj/item/hardpoint/old = chosen_hp
@@ -158,6 +163,8 @@
 		to_chat(user, SPAN_WARNING("There is nothing installed there."))
 		return
 
+	if(!old.can_be_removed(user))
+		return
 	// It's in a holder
 	if(!(old in hardpoints))
 		for(var/obj/item/hardpoint/holder/H in hardpoints)
@@ -172,13 +179,18 @@
 	var/num_delays = 1
 
 	switch(old.slot)
-		if(HDPT_PRIMARY) num_delays = 5
-		if(HDPT_SECONDARY) num_delays = 3
-		if(HDPT_SUPPORT) num_delays = 2
-		if(HDPT_ARMOR) num_delays = 10
-		if(HDPT_TREADS) num_delays = 7
+		if(HDPT_PRIMARY)
+			num_delays = 5
+		if(HDPT_SECONDARY)
+			num_delays = 3
+		if(HDPT_SUPPORT)
+			num_delays = 2
+		if(HDPT_ARMOR)
+			num_delays = 10
+		if(HDPT_TREADS)
+			num_delays = 7
 
-	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays))
+	if(!do_after(user, 30*num_delays * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = num_delays, target_flags = INTERRUPT_DIFF_LOC, target = old))
 		user.visible_message(SPAN_WARNING("[user] stops removing \the [old] on \the [src]."), SPAN_WARNING("You stop removing \the [old] on \the [src]."))
 		return
 
@@ -230,47 +242,3 @@
 		qdel(old)
 
 	update_icon()
-
-//proc that fires non selected weaponry
-/obj/vehicle/multitile/proc/shoot_other_weapon(mob/living/carbon/human/M, seat, atom/A)
-
-	if(!istype(M))
-		return
-
-	var/list/usable_hps = get_hardpoints_with_ammo(seat)
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(HP == active_hp[seat] || HP.slot != HDPT_PRIMARY && HP.slot != HDPT_SECONDARY)
-			usable_hps.Remove(HP)
-
-	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("No other working weapons detected."))
-		return
-
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(!HP.can_activate(M, A))
-			return
-		HP.activate(M, A)
-		break
-	return
-
-//proc that activates support module if it can be activated and you meet requirements
-/obj/vehicle/multitile/proc/activate_support_module(mob/living/carbon/human/M, seat, atom/A)
-
-	if(!istype(M))
-		return
-
-	var/list/usable_hps = get_activatable_hardpoints(seat)
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(HP.slot != HDPT_SUPPORT)
-			usable_hps.Remove(HP)
-
-	if(!LAZYLEN(usable_hps))
-		to_chat(M, SPAN_WARNING("No activatable support modules detected."))
-		return
-
-	for(var/obj/item/hardpoint/HP in usable_hps)
-		if(!HP.can_activate(M, A))
-			return
-		HP.activate(M, A)
-		break
-	return

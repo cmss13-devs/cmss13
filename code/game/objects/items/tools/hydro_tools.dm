@@ -5,7 +5,11 @@
 
 /obj/item/tool/plantspray
 	icon = 'icons/obj/items/spray.dmi'
-	item_state = "spray"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_righthand.dmi',
+	)
+	item_state = "spraycan"
 	flags_item = NOBLUDGEON
 	flags_equip_slot = SLOT_WAIST
 	throwforce = 4
@@ -31,24 +35,19 @@
 
 /obj/item/tool/plantspray/pests/old
 	name = "bottle of pestkiller"
-	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle16"
 
 /obj/item/tool/plantspray/pests/old/carbaryl
 	name = "bottle of carbaryl"
-	icon_state = "bottle16"
 	toxicity = 4
 	pest_kill_str = 2
 
 /obj/item/tool/plantspray/pests/old/lindane
 	name = "bottle of lindane"
-	icon_state = "bottle18"
 	toxicity = 6
 	pest_kill_str = 4
 
 /obj/item/tool/plantspray/pests/old/phosmet
 	name = "bottle of phosmet"
-	icon_state = "bottle15"
 	toxicity = 8
 	pest_kill_str = 7
 
@@ -57,25 +56,21 @@
 /obj/item/tool/weedkiller
 	name = "bottle of weedkiller"
 	icon = 'icons/obj/items/chemistry.dmi'
-	icon_state = "bottle16"
 	var/toxicity = 0
 	var/weed_kill_str = 0
 
 /obj/item/tool/weedkiller/triclopyr
 	name = "bottle of glyphosate"
-	icon_state = "bottle16"
 	toxicity = 4
 	weed_kill_str = 2
 
 /obj/item/tool/weedkiller/lindane
 	name = "bottle of triclopyr"
-	icon_state = "bottle18"
 	toxicity = 6
 	weed_kill_str = 4
 
 /obj/item/tool/weedkiller/D24
 	name = "bottle of 2,4-D"
-	icon_state = "bottle15"
 	toxicity = 8
 	weed_kill_str = 7
 
@@ -85,7 +80,11 @@
 /obj/item/tool/minihoe // -- Numbers
 	name = "mini hoe"
 	desc = "It's used for removing weeds or scratching your back."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/hydroponics_tools_righthand.dmi',
+	)
 	icon_state = "hoe"
 	item_state = "hoe"
 	flags_atom = FPRINT|CONDUCT
@@ -96,14 +95,18 @@
 	matter = list("metal" = 50)
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
-
-
+/obj/item/tool/minihoe/yautja
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 
 //Hatchets and things to kill kudzu
 /obj/item/tool/hatchet
 	name = "hatchet"
 	desc = "A sharp hand hatchet, commonly used to cut things apart, be it timber or other objects. Often found in the hands of woodsmen, scouts, and looters."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/weapons/melee/axes.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
+	)
 	icon_state = "hatchet"
 	flags_atom = FPRINT|CONDUCT
 	force = MELEE_FORCE_NORMAL
@@ -122,7 +125,12 @@
 /obj/item/tool/scythe
 	name = "scythe"
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
+	)
 	icon_state = "scythe"
 	force = 13
 	throwforce = 5
@@ -136,7 +144,8 @@
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
 /obj/item/tool/scythe/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(A, /obj/effect/plantsegment))
 		for(var/obj/effect/plantsegment/B in orange(A,1))
 			if(prob(80))

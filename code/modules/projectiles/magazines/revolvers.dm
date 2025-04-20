@@ -7,9 +7,13 @@
 	default_ammo = /datum/ammo/bullet/revolver
 	flags_equip_slot = NO_FLAGS
 	caliber = ".44"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/revolvers.dmi'
 	icon_state = "m44"
 	item_state = "generic_speedloader"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
 	w_class = SIZE_SMALL
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/revolver/m44
@@ -24,6 +28,7 @@
 
 /obj/item/ammo_magazine/revolver/heavy
 	name = "\improper M44 heavy speed loader (.44)"
+	desc = "A revolver speed loader containing heavy bullets. While less damaging overall than the traditional rounds, they are more accurate."
 	default_ammo = /datum/ammo/bullet/revolver/heavy
 	caliber = ".44"
 	ammo_band_color = REVOLVER_TIP_COLOR_HEAVY
@@ -50,29 +55,29 @@
 /obj/item/ammo_magazine/revolver/pkd
 	name = "\improper Plfager Katsuma stripper clip (.44)"
 	desc = "Flip up the two side latches (three on PKL) and push after aligning with feed lips on blaster. Clip can be re-used."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/revolvers.dmi'
 	icon_state = "pkd_44"
 	caliber = ".44 sabot"
 
 /obj/item/ammo_magazine/revolver/upp
-	name = "\improper N-Y speed loader (7.62x38mmR)"
-	default_ammo = /datum/ammo/bullet/revolver/nagant
+	name = "\improper ZHNK-72 speed loader (7.62x38mmR)"
+	default_ammo = /datum/ammo/bullet/revolver/upp
 	caliber = "7.62x38mmR"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/upp.dmi'
-	icon_state = "ny762"
-	gun_type = /obj/item/weapon/gun/revolver/nagant
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/revolvers.dmi'
+	icon_state = "zhnk72loader"
+	gun_type = /obj/item/weapon/gun/revolver/upp
 
 /obj/item/ammo_magazine/revolver/upp/shrapnel
-	name = "\improper N-Y shrapnel-shot speed loader (7.62x38mmR)"
+	name = "\improper ZHNK-72 shrapnel-shot speed loader (7.62x38mmR)"
 	desc = "This speedloader contains seven 'shrapnel-shot' bullets, cheap recycled casings picked up off the ground and refilled with gunpowder and random scrap metal. Acts similarly to flechette."
-	default_ammo = /datum/ammo/bullet/revolver/nagant/shrapnel
-	icon_state = "ny762_shrapnel"
+	default_ammo = /datum/ammo/bullet/revolver/upp/shrapnel
+	icon_state = "zhnk72loader_shrapnel"
 
 /obj/item/ammo_magazine/revolver/small
 	name = "\improper S&W speed loader (.38)"
 	default_ammo = /datum/ammo/bullet/revolver/small
 	caliber = ".38"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/revolvers.dmi'
 	icon_state = "38"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/small
@@ -82,7 +87,7 @@
 	desc = "This speedloader was created for the Colonial Marshals' most commonly issued sidearm, loaded with hollowpoint rounds either for colonies with wildlife problems or orbital stations, which favor the lesser penetration over other ammunition to lessen the risk of hull breaches. In exchange, they're near useless against armored targets, but what's the chance of that being a problem on a space station?"
 	default_ammo = /datum/ammo/bullet/revolver/small/hollowpoint
 	caliber = ".357"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/revolvers.dmi'
 	icon_state = "cmb_hp"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
@@ -90,7 +95,7 @@
 /obj/item/ammo_magazine/revolver/cmb/normalpoint //put these in the marshal ert - ok sure :)
 	name = "\improper Spearhead speed loader (.357)"
 	desc = "This speedloader is fitted with standard .357 revolver bullets. A surprising rarity, as most CMB revolvers are issued to Marshals on colonies with wildlife, or weakly-hulled space stations."
-	default_ammo = /datum/ammo/bullet/revolver/small
+	default_ammo = /datum/ammo/bullet/revolver/small/cmb
 	icon_state = "cmb"
 
 /**
@@ -133,7 +138,7 @@
 	desc = ".455 Webley, the last decent pistol calibre. Loaded with Mk III dum-dum bullets, because Marines are not human and the Hague Conventions do not apply to them."
 	default_ammo = /datum/ammo/bullet/revolver/webley
 	caliber = ".455"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/revolvers.dmi'
 	icon_state = "357"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/m44/custom/webley
@@ -167,13 +172,13 @@
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 
 /obj/item/ammo_magazine/internal/revolver/upp
-	default_ammo = /datum/ammo/bullet/revolver/nagant
+	default_ammo = /datum/ammo/bullet/revolver/upp
 	caliber = "7.62x38mmR"
 	max_rounds = 7
-	gun_type = /obj/item/weapon/gun/revolver/nagant
+	gun_type = /obj/item/weapon/gun/revolver/upp
 
 /obj/item/ammo_magazine/internal/revolver/upp/shrapnel
-	default_ammo = /datum/ammo/bullet/revolver/nagant/shrapnel
+	default_ammo = /datum/ammo/bullet/revolver/upp/shrapnel
 
 
 //-------------------------------------------------------
@@ -205,7 +210,7 @@
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
 /obj/item/ammo_magazine/internal/revolver/cmb
-	default_ammo = /datum/ammo/bullet/revolver/small
+	default_ammo = /datum/ammo/bullet/revolver/small/cmb
 	caliber = ".357"
 	gun_type = /obj/item/weapon/gun/revolver/cmb
 

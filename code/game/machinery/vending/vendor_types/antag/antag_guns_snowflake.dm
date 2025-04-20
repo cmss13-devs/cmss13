@@ -4,7 +4,8 @@
 	name = "\improper Suspicious Automated Guns Rack"
 	desc = "While similar in function to ColMarTech automated racks, this one is clearly not of USCM origin. Contains various weapons, ammunition and explosives."
 	icon_state = "antag_guns"
-	req_access = list(ACCESS_ILLEGAL_PIRATE)
+	req_one_access = list(ACCESS_ILLEGAL_PIRATE, ACCESS_UPP_GENERAL, ACCESS_CLF_GENERAL)
+	req_access = null
 
 	use_snowflake_points = TRUE
 
@@ -35,20 +36,21 @@
 
 //--------------ESSENTIALS------------------------
 
-/obj/effect/essentials_set/medic/upp
-	spawned_gear_list = list(
-		/obj/item/bodybag/cryobag,
-		/obj/item/device/defibrillator,
-		/obj/item/storage/firstaid/adv,
-		/obj/item/device/healthanalyzer,
-		/obj/item/roller,
-	)
 
 /obj/effect/essentials_set/upp_heavy
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/minigun/upp,
 		/obj/item/ammo_magazine/minigun,
 		/obj/item/ammo_magazine/minigun,
+	)
+
+/obj/effect/essentials_set/upp_heavy_pkp
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
 	)
 
 /obj/effect/essentials_set/leader/upp

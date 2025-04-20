@@ -180,7 +180,7 @@
 			var/list/possible_xenos = list()
 			possible_xenos |= FunkTownOhyea
 			for(var/mob/living/carbon/xenomorph/T in GLOB.living_xeno_list)
-				if (T != X && !is_admin_level(T.z) && X.hivenumber == T.hivenumber)
+				if (T != X && !should_block_game_interaction(T) && X.hivenumber == T.hivenumber)
 					possible_xenos += T
 
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph?", possible_xenos, theme="hive_status")
@@ -188,18 +188,18 @@
 			if(selected_xeno == FunkTownOhyea)
 				for(var/mob/living/carbon/xenomorph/forced_xeno in X.hive.totalXenos)
 					forced_xeno.stop_tracking_resin_mark(FALSE, TRUE)
-					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
+					to_chat(forced_xeno, SPAN_XENOANNOUNCE("Hive! Your queen commands: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 					forced_xeno.start_tracking_resin_mark(mark_to_force)
 					forced_xeno.hud_used.locate_marker.overlays.Cut()
 					flick("marker_alert", forced_xeno.hud_used.locate_marker)
 					. = TRUE
 				update_all_data()
 				return
-			if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno.stat == DEAD || is_admin_level(selected_xeno.z) || !X.check_state(1))
+			if (!selected_xeno || QDELETED(selected_xeno) || selected_xeno.stat == DEAD || should_block_game_interaction(selected_xeno) || !X.check_state(1))
 				return
 			else
 				selected_xeno.stop_tracking_resin_mark(FALSE, TRUE)
-				to_chat(selected_xeno, SPAN_XENOBOLDNOTICE("Your queen commands you to follow: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
+				to_chat(selected_xeno, SPAN_XENOBOLDNOTICE("Your queen commands you to follow: [mark_to_force.mark_meaning.desc] in [get_area_name(mark_to_force)]. (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[mark_to_force]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[mark_to_force]'>Track</a>)"))
 				selected_xeno.start_tracking_resin_mark(mark_to_force)
 				update_all_data()
 				. = TRUE

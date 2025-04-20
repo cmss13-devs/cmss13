@@ -10,9 +10,18 @@
         "/datum/equipment_preset/survivor/engineer/kutjevo",
         "/datum/equipment_preset/survivor/colonial_marshal/kutjevo",
         "/datum/equipment_preset/survivor/trucker/kutjevo",
-        "/datum/equipment_preset/survivor/security/kutjevo",
-        "/datum/equipment_preset/survivor/clf",
+        "/datum/equipment_preset/survivor/goon/kutjevo",
+        "/datum/equipment_preset/survivor/corporate/kutjevo",
         "/datum/equipment_preset/survivor/civilian"
+    ],
+    "synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/kutjevo/civilian",
+        "/datum/equipment_preset/synth/survivor/kutjevo/engineer",
+        "/datum/equipment_preset/synth/survivor/kutjevo/medical",
+        "/datum/equipment_preset/synth/survivor/kutjevo/corporate_security",
+        "/datum/equipment_preset/synth/survivor/kutjevo/cmb_synth",
+        "/datum/equipment_preset/synth/survivor/kutjevo/scientist",
+        "/datum/equipment_preset/synth/survivor/kutjevo/corporate"
     ],
     "defcon_triggers": [
         4250,
@@ -23,6 +32,7 @@
     ],
     "map_item_type": "/obj/item/map/kutjevo_map",
     "announce_text": "An automated distress signal has been received from Weyland-Yutani colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The ###SHIPNAME### has been dispatched to investigate.",
+    "liaison_briefing": "maps/map_briefings/cl_brief_kutjevo.html",
     "monkey_types": [
         "neaera",
         "stok"

@@ -30,7 +30,7 @@
 	var/turf/dropoff_point
 
 /obj/structure/droppod/container/post_land()
-	indestructible = TRUE
+	explo_proof = TRUE
 	for(var/object in loc)
 		if(object == src)
 			continue
@@ -52,7 +52,7 @@
 		addtimer(CALLBACK(src, PROC_REF(recall)), return_time)
 
 	addtimer(CALLBACK(src, PROC_REF(open)), open_time)
-	indestructible = FALSE
+	explo_proof = FALSE
 
 /obj/structure/droppod/container/warn_turf(turf/T)
 	if(!stealth)
@@ -72,7 +72,8 @@
 /obj/structure/droppod/container/attackby(obj/item/W, mob/user)
 	if(droppod_flags & DROPPOD_OPEN)
 		if(istype(W, /obj/item/grab))
-			if(isxeno(user)) return
+			if(isxeno(user))
+				return
 			var/obj/item/grab/G = W
 			if(G.grabbed_thing)
 				src.MouseDrop_T(G.grabbed_thing, user)   //act like they were dragged onto the closet
@@ -126,7 +127,7 @@
 	. = ..()
 	if(loc)
 		collect_objects(loc.contents)
-	density = TRUE
+	set_density(TRUE)
 
 /obj/structure/droppod/container/proc/collect_objects(list/L)
 	for(var/atom/movable/A in L)
@@ -151,7 +152,7 @@
 	return ..()
 
 /obj/structure/droppod/container/ex_act(severity, direction)
-	if(!indestructible)
+	if(!explo_proof)
 		return ..()
 
 

@@ -5,9 +5,13 @@
 	icon = 'icons/obj/items/backpack_sprayers.dmi'
 	icon_state = "backpack_sprayer"
 	item_state = "backpack_sprayer"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/sprayers.dmi'
+	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = OPENCONTAINER
+	possible_transfer_amounts = null//no point giving it possibility when mister can't it just confuse people
 	volume = 500
 	var/fill_reagent = "water"
 	var/spawn_empty = FALSE
@@ -77,13 +81,15 @@
 /obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
 	if(W == noz)
 		remove_noz()
-	else
-		. = ..()
+		return TRUE
+	return ..()
 
 /obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
 	set category = "Object"
+	set src in usr
 	toggle_mister(usr)
+
 
 /obj/item/reagent_container/glass/watertank/MouseDrop(obj/over_object as obj)
 	if(!CAN_PICKUP(usr, src))
@@ -101,13 +107,6 @@
 			usr.drop_inv_item_on_ground(src)
 			usr.put_in_l_hand(src)
 	add_fingerprint(usr)
-
-/obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
-	if(W == noz)
-		remove_noz()
-		return 1
-	else
-		return ..()
 
 /obj/item/reagent_container/glass/watertank/dropped(mob/user)
 	..()
@@ -128,11 +127,15 @@
 	name = "water mister"
 	desc = "A mister nozzle attached to a water tank. This is what your reagents come out of."
 	icon = 'icons/obj/items/backpack_sprayers.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "nozzle"
 	item_state = "nozzle"
 	w_class = SIZE_LARGE
 	flags_equip_slot = null
-	amount_per_transfer_from_this = 50
+	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	spray_size = 5
 	volume = 500
@@ -330,7 +333,7 @@
 				return
 		//actually firing the launcher
 		if(tank.launcher_cooldown > world.time)
-			to_chat(user, SPAN_WARNING("\The [tank] cannot fire another foam ball just yet. Wait [round(tank.launcher_cooldown/10)] seconds."))
+			to_chat(user, SPAN_WARNING("\The [tank] cannot fire another foam ball just yet. Wait [floor(tank.launcher_cooldown/10)] seconds."))
 			return
 		if(tank.reagents.has_reagent("water", launcher_cost))
 			tank.reagents.remove_reagent("water", launcher_cost)

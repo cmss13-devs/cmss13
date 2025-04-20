@@ -21,6 +21,23 @@ FIRE ALARM
 	if(is_mainship_level(z))
 		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, PROC_REF(sec_changed))
 
+	if(dir)
+		setDir(dir)
+
+	if(building)
+		buildstage = 0
+		wiresexposed = 1
+		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
+		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
+
+	if(!is_mainship_level(z))
+		if(GLOB.security_level)
+			overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_[get_security_level()]")
+		else
+			overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
+
+	update_icon()
+
 /obj/structure/machinery/firealarm/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
 	switch(new_sec)
@@ -47,7 +64,7 @@ FIRE ALARM
 
 	if(stat & BROKEN)
 		icon_state = "firex"
-	else if(stat & NOPOWER & (security_level != SEC_LEVEL_RED))
+	else if(stat & NOPOWER & (GLOB.security_level != SEC_LEVEL_RED))
 		icon_state = "firep"
 
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
@@ -63,8 +80,9 @@ FIRE ALARM
 	return src.alarm()
 
 /obj/structure/machinery/firealarm/emp_act(severity)
-	if(prob(50/severity)) alarm()
-	..()
+	. = ..()
+	if(prob(50/severity))
+		alarm()
 
 /obj/structure/machinery/firealarm/attackby(obj/item/held_object as obj, mob/user as mob)
 	src.add_fingerprint(user)
@@ -122,12 +140,8 @@ FIRE ALARM
 					qdel(src)
 		return
 
-	..()
+	. = ..()
 	return
-
-/obj/structure/machinery/firealarm/power_change()
-	..()
-	addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(0,15))
 
 /obj/structure/machinery/firealarm/attack_hand(mob/user as mob)
 	if(user.stat || inoperable())
@@ -168,23 +182,3 @@ FIRE ALARM
 	area.firealert()
 	update_icon()
 	return
-
-/obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
-	. = ..()
-
-	if(dir)
-		src.setDir(dir)
-
-	if(building)
-		buildstage = 0
-		wiresexposed = 1
-		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
-		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
-
-	if(!is_mainship_level(z))
-		if(security_level)
-			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_[get_security_level()]")
-		else
-			src.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
-
-	update_icon()

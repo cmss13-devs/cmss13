@@ -32,7 +32,7 @@
 	)
 	/// The cat will 'play' with dead hunted targets near it until this counter reaches a certain value.
 	var/play_counter = 0
-	min_oxy = 16 //Require atleast 16kPA oxygen
+	min_oxy = 16 //Require at least 16kPA oxygen
 	minbodytemp = 223 //Below -50 Degrees Celcius
 	maxbodytemp = 323 //Above 50 Degrees Celcius
 	holder_type = /obj/item/holder/cat
@@ -101,7 +101,8 @@
 
 /mob/living/simple_animal/cat/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -134,7 +135,8 @@
 	if(!CAN_PICKUP(usr, src))
 		return ..()
 	var/mob/living/carbon/H = over_object
-	if(!istype(H) || !Adjacent(H) || H != usr) return ..()
+	if(!istype(H) || !Adjacent(H) || H != usr)
+		return ..()
 
 	if(H.a_intent == INTENT_HELP)
 		get_scooped(H)

@@ -24,14 +24,16 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	name = "commanding officer's secure box"
 	req_access = list(ACCESS_MARINE_CO)
 	desc = "A safe for the Commanding Officer to store any equipment they need to have ready at a moment's notice. There's a note inside saying that whatever was inside it before was moved out."
-	icon = 'icons/obj/structures/marine_closet.dmi'
-	icon_state = "commander_safe"
-	icon_opened = "commander_safe_open"
-	icon_closed = "commander_safe"
-	icon_locked = "commander_safe"
+	icon = 'icons/obj/structures/safes.dmi'
+	icon_state = "safe"
+	icon_opened = "safe-open"
+	icon_closed = "safe"
+	icon_locked = "safe"
 
 /obj/structure/closet/secure_closet/securecom/Initialize()
 	. = ..()
+	new /obj/item/storage/box/kit/honorguard(src)
+	new /obj/item/storage/box/kit/honorguard(src)
 	GLOB.co_secure_boxes += src
 
 /obj/structure/closet/secure_closet/securecom/Destroy()
@@ -52,18 +54,16 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	. = ..()
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm(src)
-	new /obj/item/clothing/head/cmcap/ro(src)
-	new /obj/item/clothing/head/cmcap/ro(src)
+	new /obj/item/clothing/head/cmcap/bridge(src)
+	new /obj/item/clothing/head/cmcap/bridge(src)
 	new /obj/item/clothing/under/marine/officer/bridge(src)
 	new /obj/item/clothing/under/marine/officer/bridge(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/storage/belt/marine(src)
 	new /obj/item/storage/belt/marine(src)
-	new /obj/item/clothing/under/marine/officer/command(src)
-	new /obj/item/clothing/under/marine/officer/command(src)
-	new /obj/item/clothing/suit/storage/webbing(src)
-	new /obj/item/clothing/suit/storage/webbing(src)
+	new /obj/item/clothing/under/marine/officer/boiler(src)
+	new /obj/item/clothing/under/marine/officer/boiler(src)
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/clothing/gloves/combat(src)
 
@@ -100,13 +100,13 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	. = ..()
 	new /obj/item/clothing/head/beret/cm(src)
 	new /obj/item/clothing/head/beret/cm/tan(src)
-	new /obj/item/clothing/head/cmcap/ro(src)
+	new /obj/item/clothing/head/cmcap/bridge(src)
 	new /obj/item/clothing/head/helmet/marine/rto/intel(src)
 	new /obj/item/clothing/under/marine/officer/intel(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/storage/belt/gun/m4a3(src)
 	new /obj/item/storage/backpack/marine/satchel/intel(src)
-	new /obj/item/clothing/suit/storage/marine/rto/intel(src)
+	new /obj/item/clothing/suit/storage/marine/medium/rto/intel(src)
 	new /obj/item/storage/pouch/document(src)
 	new /obj/item/storage/pouch/document(src)
 	new /obj/item/device/motiondetector/intel(src)
@@ -133,8 +133,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/clothing/head/helmet/marine/pilot(src)
 	new /obj/item/clothing/under/marine/officer/pilot(src)
 	new /obj/item/clothing/shoes/marine(src)
-	new /obj/item/clothing/suit/armor/vest/pilot(src)
-	new /obj/item/storage/large_holster/m39(src)
+	new /obj/item/clothing/suit/storage/jacket/marine/pilot/armor(src)
+	new /obj/item/storage/belt/gun/m39(src)
 	new /obj/item/storage/backpack/marine/satchel(src)
 	new /obj/item/clothing/gloves/yellow(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
@@ -170,7 +170,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/weapon/gun/energy/taser(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/device/flash(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
 	new /obj/item/storage/pouch/general/medium(src)
 	if(prob(50))
@@ -180,7 +180,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/warrant_officer
 	name = "chief MP's locker"
-	req_access = list(ACCESS_MARINE_BRIG)
+	req_access = list(ACCESS_MARINE_ARMORY)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"
 	icon_locked = "secure_locked_warrant"
@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/backpack/satchel/sec(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/reagent_container/spray/pepper(src)
-	new /obj/item/handcuffs(src)
+	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/storage/pouch/general/large(src)
 
 /obj/structure/closet/secure_closet/military_officer_spare
@@ -254,6 +254,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/storage/belt/medical/full(src)
 	new /obj/item/clothing/under/rank/medical/green(src)
 	new /obj/item/clothing/under/rank/medical/blue(src)
+	new /obj/item/clothing/under/rank/medical/lightblue(src)
 	new /obj/item/clothing/under/rank/medical/purple(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/head/surgery/green(src)
@@ -306,8 +307,8 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/req_officer/Initialize()
 	. = ..()
-	new /obj/item/device/radio/headset/almayer/ro(src)
-	new /obj/item/clothing/under/rank/ro_suit(src)
+	new /obj/item/device/radio/headset/almayer/qm(src)
+	new /obj/item/clothing/under/rank/qm_suit(src)
 	new /obj/item/clothing/shoes/marine(src)
 	new /obj/item/storage/belt/marine(src)
 	new /obj/item/clothing/head/cmcap/req(src)

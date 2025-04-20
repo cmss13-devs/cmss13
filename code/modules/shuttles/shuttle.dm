@@ -29,14 +29,13 @@
 	var/iselevator = 0 //Used to remove some shuttle related procs and texts to make it compatible with elevators
 	var/almayerelevator = 0 //elevators on the almayer without limitations
 
-	var/list/last_passangers = list() //list of living creatures that were our last passengers
-
 	var/require_link = FALSE
 	var/linked = FALSE
 	var/ambience_muffle = MUFFLE_HIGH
 
 /datum/shuttle/proc/short_jump(area/origin, area/destination)
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	//it would be cool to play a sound here
 	moving_status = SHUTTLE_WARMUP
@@ -49,11 +48,12 @@
 		moving_status = SHUTTLE_IDLE
 
 /datum/shuttle/proc/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 	spawn(warmup_time)
@@ -89,7 +89,8 @@
 
 /* Pseudo-code. Auto-bolt shuttle airlocks when in motion.
 /datum/shuttle/proc/toggle_doors(close_doors, bolt_doors, area/whatArea)
-	if(!whatArea) return <-- logic checks!
+	if(!whatArea)
+		return <-- logic checks!
 		for(all doors in whatArea)
 			if(door.id is the same as src.id)
 				if(close_doors)
@@ -202,9 +203,7 @@
 
 	origin.move_contents_to(destination, direction=direction)
 
-	last_passangers.Cut()
-	for(var/mob/M in destination)
-		last_passangers += M
+	for(var/mob/living/M in destination)
 		if(M.client)
 			spawn(0)
 				if(M.buckled && !iselevator)
@@ -215,17 +214,18 @@
 					shake_camera(M, iselevator? 2 : 10, 1)
 		if(istype(M, /mob/living/carbon) && !iselevator)
 			if(!M.buckled)
-				M.apply_effect(3, WEAKEN)
+				M.Stun(3)
+				M.KnockDown(3)
 
 	for(var/turf/T in origin) // WOW so hacky - who cares. Abby
 		if(iselevator)
 			if(istype(T,/turf/open/space))
 				if(is_mainship_level(T.z))
-					new /turf/open/floor/almayer/empty(T)
+					T.ChangeTurf(/turf/open/floor/almayer/empty/requisitions)
 				else
-					new /turf/open/gm/empty(T)
+					T.ChangeTurf(/turf/open/gm/empty)
 		else if(istype(T,/turf/open/space))
-			new /turf/open/floor/plating(T)
+			T.ChangeTurf(/turf/open/floor/plating)
 
 	return
 

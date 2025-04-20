@@ -3,6 +3,7 @@
 	mob_min = 1
 	mob_max = 4
 	hostility = TRUE
+	shuttle_id = ""
 	name_of_spawn = /obj/effect/landmark/ert_spawns/groundside_xeno
 	objectives = "You have been left behind to safeguard the abandoned colony. Do not allow trespassers."
 

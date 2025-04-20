@@ -21,10 +21,10 @@
 	return
 
 /obj/effect/spider/attackby(obj/item/W, mob/user)
-	if(W.attack_verb.len)
-		visible_message(SPAN_DANGER("<B>\The [src] have been [pick(W.attack_verb)] with \the [W][(user ? "by [user]." : ".")]"))
+	if(LAZYLEN(W.attack_verb))
+		visible_message(SPAN_DANGER("[src] has been [pick(W.attack_verb)] with [W][(user ? " by [user]." : ".")]"))
 	else
-		visible_message(SPAN_DANGER("<B>\The [src] have been attacked with \the [W][(user ? "by [user]." : ".")]"))
+		visible_message(SPAN_DANGER("[src] has been attacked with [W][(user ? " by [user]." : ".")]"))
 
 	var/damage = W.force / 4
 
@@ -38,7 +38,7 @@
 	health -= damage
 	healthcheck()
 
-/obj/effect/spider/bullet_act(obj/item/projectile/Proj)
+/obj/effect/spider/bullet_act(obj/projectile/Proj)
 	..()
 	health -= Proj.ammo.damage
 	healthcheck()
@@ -67,7 +67,7 @@
 		if(prob(50))
 			to_chat(mover, SPAN_WARNING("You get stuck in [src] for a moment."))
 			return BLOCKED_MOVEMENT
-	else if(istype(mover, /obj/item/projectile))
+	else if(istype(mover, /obj/projectile))
 		if(prob(30))
 			return BLOCKED_MOVEMENT
 	return NO_BLOCKED_MOVEMENT
@@ -144,7 +144,7 @@
 	//=================
 	if(prob(25))
 		var/list/nearby = oview(5, src)
-		if(nearby.len)
+		if(length(nearby))
 			var/target_atom = pick(nearby)
 			walk_to(src, target_atom, 5)
 			if(prob(25))
@@ -170,7 +170,7 @@
 	//=================
 	if(prob(25))
 		var/list/nearby = oview(5, src)
-		if(nearby.len)
+		if(length(nearby))
 			var/target_atom = pick(nearby)
 			walk_to(src, target_atom, 5)
 			if(prob(25))

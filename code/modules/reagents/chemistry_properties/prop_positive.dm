@@ -69,7 +69,7 @@
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
 	code = "REP"
-	description = "Repairs cybernetic organs by <B>REDACTED</B>."
+	description = "Repairs cybernetic organs by the use of REDACTED property of REDACTED element."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_MEDICINE
 	value = 2
@@ -201,7 +201,7 @@
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, potency = 1)
 	M.reagent_move_delay_modifier -= POTENCY_MULTIPLIER_VLOW * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR)
+	M.nutrition = max(0, M.nutrition - 0.5 * HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 
@@ -216,7 +216,7 @@
 /datum/chem_property/positive/musclestimulating/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	if(!isxeno_human(M))
 		return
-	M.AddComponent(/datum/component/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
+	M.AddComponent(/datum/component/status_effect/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
 
 /datum/chem_property/positive/painkilling
 	name = PROPERTY_PAINKILLING
@@ -225,6 +225,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/painkilling/on_delete(mob/living/M)
 	..()
@@ -242,13 +243,13 @@
 		return
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
 	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
-	M.hallucination = max(M.hallucination, effective_potency) //Hallucinations and tox damage
-	M.apply_damage(0.5 *  effective_potency * delta_time, TOX)
+	M.hallucination = max(M.hallucination, POTENCY_MULTIPLIER_MEDIUM * effective_potency) //Hallucinations and tox damage
+	M.apply_damage(effective_potency * delta_time, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, potency = 1)
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
-	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * effective_potency, "liver")
-	M.apply_damage(effective_potency, BRAIN)
+	M.apply_internal_damage(POTENCY_MULTIPLIER_VVHIGH * effective_potency, "liver")
+	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM * effective_potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -377,7 +378,7 @@
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
 	code = "BNM"
-	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
+	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-woven and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/positive/bonemending/process(mob/living/M, potency = 1, delta_time)
@@ -399,7 +400,7 @@
 				L.time_to_knit = 600 // 6 mins
 		if(L.time_to_knit && (L.status & LIMB_BROKEN) && L.knitting_time == -1)
 			if(!(L.status & LIMB_SPLINTED))
-				potency -= 2.5 // It'll work, but we're effectively 5 level lower.
+				potency -= 1 // It'll work, but we're effectively 2 levels lower.
 			if(potency > 0)
 				var/total_knitting_time = world.time + L.time_to_knit - min(150*potency, L.time_to_knit - 50)
 				L.knitting_time = total_knitting_time
@@ -433,7 +434,7 @@
 		if(L.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 			L.take_damage(0, potency)
 			return
-		if(L.implants && L.implants.len > 0)
+		if(LAZYLEN(L.implants) > 0)
 			var/obj/implanted_object = pick(L.implants)
 			if(implanted_object)
 				L.implants -= implanted_object
@@ -450,15 +451,16 @@
 	description = "Causes a temporal freeze of all neurological processes and cellular respirations in the brain. This allows the brain to be preserved for long periods of time."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
 	M.apply_effect(20, PARALYZE)
-	M.stunned = max(M.stunned,21)
+	M.apply_effect(20, STUN)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
+	M.bodytemperature = max(BODYTEMP_CRYO_LIQUID_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
 
 /datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_damage(2.5 * potency * delta_time, BRAIN)
@@ -473,7 +475,7 @@
 /datum/chem_property/positive/neurocryogenic/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	if(!isxeno_human(M))
 		return
-	M.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
+	M.AddComponent(/datum/component/status_effect/speed_modifier, potency * volume * 0.5) //Brainfreeze
 
 /datum/chem_property/positive/antiparasitic
 	name = PROPERTY_ANTIPARASITIC
@@ -481,24 +483,24 @@
 	description = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/antiparasitic/process(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
+/datum/chem_property/positive/antiparasitic/process(mob/living/current_mob, potency = 1, delta_time)
+	if(!ishuman(current_mob))
 		return
-	var/mob/living/carbon/human/H = M
-	for(var/content in H.contents)
-		var/obj/item/alien_embryo/A = content
-		if(A && istype(A))
-			if(A.counter > 0)
-				A.counter = A.counter - potency
-				H.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+	var/mob/living/carbon/human/current_human = current_mob
+	for(var/content in current_human.contents)
+		var/obj/item/alien_embryo/embryo = content
+		if(embryo && istype(embryo))
+			if(embryo.counter > 0)
+				embryo.counter = embryo.counter - (potency * delta_time)
+				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
 			else
-				A.stage--
-				if(A.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
-					qdel(A)
-					H.take_limb_damage(0,rand(20,40))
-					H.vomit()
+				embryo.stage--
+				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
+					qdel(embryo)
+					current_human.take_limb_damage(0,rand(20,40))
+					current_human.vomit()
 				else
-					A.counter = 90
+					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)
@@ -528,17 +530,18 @@
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
-	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator. Can not be ingested."
+	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/electrogenetic/trigger(A)
 	if(isliving(A))
 		var/mob/living/M = A
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BRUTE)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BURN)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, TOX)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BRUTE)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BURN)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, TOX)
 		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
@@ -548,7 +551,8 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
-	max_level = 1
+	cost_penalty = FALSE
+	COOLDOWN_DECLARE(ghost_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -574,19 +578,39 @@
 /datum/chem_property/positive/defibrillating/process_dead(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	H.apply_damage(-H.getOxyLoss(), OXY)
-	if(H.check_tod() && H.is_revivable() && H.health > HEALTH_THRESHOLD_DEAD)
-		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
-		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
-		addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 50, TIMER_UNIQUE)
-	else if (potency > POTENCY_MAX_TIER_1 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 7 or greater
-		to_chat(H, SPAN_NOTICE("You feel a faint spark in your chest."))
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
-		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
-		H.apply_damage(-H.getOxyLoss(), OXY)
+	var/mob/living/carbon/human/dead = M
+	var/revivable = dead.check_tod() && dead.is_revivable()
+	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
+		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
+		if(property)
+			property.trigger(M)
+			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
+			break
+	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
+		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
+		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
+		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
+	else if ((potency >= 1) && revivable && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
+		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, TOX)
+		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, CLONE)
+		dead.apply_damage(-dead.getOxyLoss(), OXY)
+		if(potency > CREATE_MAX_TIER_1) //heal more if higher levels
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
+			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
+		if(dead.health < HEALTH_THRESHOLD_DEAD)
+			return
+		if(!COOLDOWN_FINISHED(src, ghost_notif))
+			return
+		var/mob/dead/observer/ghost = dead.get_ghost()
+		if(ghost?.client)
+			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
+			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -633,7 +657,7 @@
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_RESIST_NEURO
 	to_chat(M, SPAN_NOTICE("Your skull feels incredibly thick."))
-	M.dazed = 0
+	M.SetDaze(0)
 
 /datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!ishuman(M))
@@ -670,6 +694,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
 	value = 2
+	cost_penalty = FALSE
 
 	var/intensitymod_per_level = 0
 	var/radiusmod_per_level = 0
@@ -708,6 +733,11 @@
 	holder.rangefire = max(holder.rangefire, 1)
 	holder.durationfire = max(holder.durationfire, 1)
 	holder.intensityfire = max(holder.intensityfire, 1)
+
+	if(holder.intensityfire >= 50 && istype(holder, /datum/reagent/generated))
+		holder.burncolor = "#ffffff"
+	else
+		holder.burncolor = holder.color
 
 /datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING
@@ -749,12 +779,20 @@
 	durationmod_per_level = -0.1
 	radiusmod_per_level = -0.01
 
+	var/static/ignite_threshold = 4
+
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(mob/M, method = TOUCH, volume, potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
-		if(potency > 4)
+		if(potency > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
 			L.IgniteMob(TRUE)
+
+/datum/chem_property/positive/fire/oxidizing/can_cause_harm()
+	. = ..()
+
+	if(level * LEVEL_TO_POTENCY_MULTIPLIER > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
+		return TRUE
 
 /datum/chem_property/positive/fire/flowing
 	name = PROPERTY_FLOWING
@@ -763,8 +801,6 @@
 	rarity = PROPERTY_COMMON
 	value = 1
 	range_per_level = 1
-	duration_per_level = -1
-	intensity_per_level = -1
 
 	intensitymod_per_level = -0.05
 	radiusmod_per_level = 0.05
@@ -797,6 +833,7 @@
 	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	max_level = 1
 
 /datum/chem_property/positive/photosensetive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
@@ -808,6 +845,7 @@
 	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer"
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	max_level = 1
 
 /datum/chem_property/positive/crystallization/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
@@ -821,6 +859,7 @@
 	description = "Disrupts certain neurological processes related to communication in animals."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/disrupting/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_NOTICE("Your mind feels oddly... quiet."))
@@ -834,8 +873,8 @@
 /datum/chem_property/positive/disrupting/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	if(!isxeno(M))
 		return
-	var/mob/living/carbon/xenomorph/X = M
-	X.interference += (volume * potency)
+	var/mob/living/carbon/xenomorph/xeno = M
+	xeno.AddComponent(/datum/component/status_effect/interference, volume * potency, 90)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -843,6 +882,7 @@
 	description = "Neutralizes certain reactive chemicals and plasmas on contact. Unsafe to administer intravenously."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/neutralizing/process(mob/living/M, potency = 1)
 	M.apply_damages(0, potency, potency * POTENCY_MULTIPLIER_LOW)
@@ -859,8 +899,9 @@
 	var/mob/living/L = M
 	L.ExtinguishMob() //Extinguishes mobs on contact
 	if(isxeno(L))
-		var/mob/living/carbon/xenomorph/X = M
-		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)
+		var/mob/living/carbon/xenomorph/xeno = M
+		xeno.plasma_stored = max(xeno.plasma_stored - POTENCY_MULTIPLIER_HIGH * volume * potency, 0)
+		to_chat(xeno, SPAN_WARNING("You feel your plasma reserves being drained!"))
 
 /datum/chem_property/positive/neutralizing/reaction_turf(turf/T, volume, potency)
 	if(!istype(T))
@@ -888,7 +929,7 @@
 	if(!..())
 		return
 
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER_SMALL * potency)
 
 	if(M.losebreath >= 10)
 		M.losebreath = max(10, M.losebreath - 2.5 * potency * delta_time)
@@ -924,10 +965,6 @@
 /datum/chem_property/positive/aiding/process(mob/living/M, potency = 1, delta_time)
 	M.disabilities = 0
 	M.sdisabilities = 0
-	M.status_flags &= ~DISFIGURED
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.name = H.get_visible_name()
 
 /datum/chem_property/positive/aiding/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.confused = max(M.confused, 20 * potency) //Confusion and some toxins
@@ -978,3 +1015,37 @@
 
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
+
+/datum/chem_property/positive/regulating
+	name = PROPERTY_REGULATING
+	code = "REG"
+	description = "The chemical regulates its own metabolization, any amount overdosed is turned into sugar."
+	rarity = PROPERTY_COMMON
+	category = PROPERTY_TYPE_METABOLITE
+	max_level = 1
+	value = 1
+
+/datum/chem_property/positive/regulating/reset_reagent()
+	holder.flags = initial(holder.flags)
+	..()
+
+/datum/chem_property/positive/regulating/update_reagent()
+	holder.flags |= REAGENT_CANNOT_OVERDOSE
+	..()
+
+/datum/chem_property/positive/firepenetrating
+	name = PROPERTY_FIRE_PENETRATING
+	code = "PTR"
+	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
+	rarity = PROPERTY_RARE
+	category = PROPERTY_TYPE_REACTANT
+	value = 8
+	max_level = 1
+
+/datum/chem_property/positive/firepenetrating/reset_reagent()
+	holder.fire_penetrating = initial(holder.fire_penetrating)
+	..()
+
+/datum/chem_property/positive/firepenetrating/update_reagent()
+	holder.fire_penetrating = TRUE
+	..()

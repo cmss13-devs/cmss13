@@ -74,10 +74,10 @@ These are the few directives we have for project maintainers.
     - Try to get secondary maintainer approval before merging if you are able to.
   - PRs with empty commits intended to generate a changelog.
 - Do not merge PRs that contain content from the [banned content list](./CONTRIBUTING.md#banned-content).
-- Do not merge PRs that contain balance changes without GA approval. Exceptions include:
-  - Any PR that has been un-reviewed by a GA for 7 days.
+- Do not merge PRs that contain balance changes without Maintainer Manager approval. Exceptions include:
+  - Any PR that has been un-reviewed by a Maintainer Manager for 7 days.
 - Do not remove the DNM label that another Maintainer has applied. Exceptions include:
-  - GAs removing a DNM label placed by a Maintainer for Balance/Design reasons
+  - Maintainer Managers removing a DNM label placed by a Maintainer for Balance/Design reasons
 
 These are not steadfast rules as maintainers are expected to use their best judgement when operating.
 
@@ -159,6 +159,10 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers should convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
+* We ask that you refrain from pinging staff about getting your pull request reviewed until after it is automatically marked stale pending review. If it ends up stale exempt, give it a week, but usually this situation will be explained such as when a relevant maintainer is currently unavailable.
+
+* Whenever sprites are added, please include screenshots or video(s) of them in game in the pull request description.
+
 ### A note on balance impacting PRs
 
 Certain PRs, such as those which directly change number values (i.e. health, recoil, damage) or add large pieces of content to the game (i.e. a new gun, a new dropship weapon, or a new xeno structure) can have the potential to highly impact game balance or gameflow.
@@ -167,20 +171,6 @@ Certain PRs, such as those which directly change number values (i.e. health, rec
 
 * We understand that having something you have worked on for quite some time being denied can be frustrating. Therefore, it is recommended that you check with a maintainer before beginning to code your PR if you have any doubts that it will be accepted. This will save everyone's time and energy.
 
-## Good Boy Points
-
-Each GitHub account has a score known as Good Boy Points, or GBP. This is a system we use to ensure that the codebase stays maintained and that contributors fix bugs as well as add features.
-
-The GBP gain or loss for a PR depends on the type of changes the PR makes, represented by the tags assigned to the PR by the CM-SS13 github bot or maintainers. Generally speaking, fixing bugs, updating sprites, or improving maps increases your GBP score, while adding mechanics, or rebalancing things will cost you GBP.
-
-The GBP change of a PR is the sum of greatest positive and lowest negative values it has. For example, a PR that has tags worth +10, +4, -1, -7, will net 3 GBP (10 - 7).
-
-Negative GBP increases the likelihood of a maintainer closing your PR. With that chance being higher the lower your GBP is. Be sure to use the proper tags in the changelog to prevent unnecessary GBP loss. Maintainers reserve the right to change tags as they deem appropriate.
-
-There is no benefit to having a higher positive GBP score, since GBP only comes into consideration when it is negative.
-
-You can see each tag and their GBP values [Here](https://github.com/cmss13-devs/cmss13/blob/master/.github/gbp.toml).
-
 ## Porting features/sprites/sounds/tools from other codebases
 
 If you are porting features/tools from other codebases, you must give them credit where it's due. Typically, crediting them in your pull request and the changelog is the recommended way of doing it. Take note of what license they use though, porting stuff from AGPLv3 and GPLv3 codebases are allowed.
@@ -188,7 +178,7 @@ If you are porting features/tools from other codebases, you must give them credi
 Regarding sprites & sounds, you must credit the artist and possibly the codebase.
 
 ## Things you can work on
-The following list is non-exhaustive, but should give you a good idea of what the dev team would like to see in Pull Requests.
+The following list is non-exhaustive, but should give you a good idea of what we would like to see in Pull Requests.
 
 ### Spriting
 
@@ -213,7 +203,7 @@ The following list is non-exhaustive, but should give you a good idea of what th
 - Bug fixes and inconsistency fixes
 
 **A note on new maps.**
-Entirely new maps are generally considered to be stepping stones into the Development team’s mapping dept. proper. However, making a new map is a months long process that requires dedication and constant communication and oversight from mappers on the Maintainer team. Mapping, like spriting and coding is an acquired skill, and it is highly likely your first map is going to suck. Maps are fluid entities that are never absolutely complete, don’t wed yourself to your initial layout, always be prepared to remap half the project when going in.
+Entirely new maps are generally considered to be stepping stones into the maintainers’ mapping dept. proper. However, making a new map is a months long process that requires dedication and constant communication and oversight from mappers on the Maintainer team. Mapping, like spriting and coding is an acquired skill, and it is highly likely your first map is going to suck. Maps are fluid entities that are never absolutely complete, don’t wed yourself to your initial layout, always be prepared to remap half the project when going in.
 
 
 ### Coding
@@ -230,7 +220,7 @@ Entirely new maps are generally considered to be stepping stones into the Develo
 - New TGUI
 
 ## What we don't want
-The following list is non-exhaustive, but should give you a good idea of what the dev team don't want to see in Pull Requests.
+The following list is non-exhaustive, but should give you a good idea of what we don't want to see in Pull Requests.
 
 ### Spriting
 - Resprites of recently updated content, such as uniforms, guns, marine armor
@@ -250,7 +240,10 @@ The following list is non-exhaustive, but should give you a good idea of what th
 - Player-facing HTML UIs
 - Prior denied content/PRs (without approval)
 
-Remember that the following lists are not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
+### Frozen
+- See pinned [issues](https://github.com/cmss13-devs/cmss13/issues) for anything that requires explicit permission.
+
+Remember that the list is not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:

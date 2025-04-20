@@ -21,7 +21,13 @@ Basics, the most important.
 
 /datum/config_entry/string/wikiurl
 
+/datum/config_entry/string/wikiarticleurl
+
 /datum/config_entry/string/forumurl
+
+/datum/config_entry/string/staffreport
+
+/datum/config_entry/string/playerreport
 
 /datum/config_entry/string/rulesurl
 
@@ -30,6 +36,8 @@ Basics, the most important.
 /datum/config_entry/string/discordurl
 
 /datum/config_entry/string/banappeals
+
+/datum/config_entry/string/endofroundblurb
 
 /datum/config_entry/string/dburl
 
@@ -263,11 +271,7 @@ Voting
 
 // Gamemode to auto-switch to at the start of the round
 /datum/config_entry/string/gamemode_default
-	config_entry_value = "extended"
-
-// Rounds needed for gamemode vote
-/datum/config_entry/number/gamemode_rounds_needed
-	config_entry_value = 5
+	config_entry_value = "Extended"
 
 /datum/config_entry/number/rounds_until_hard_restart
 	config_entry_value = -1 // -1 is disabled by default, 0 is every round, x is after so many rounds
@@ -320,7 +324,7 @@ Master controller and performance related.
 		sync_validate = TRUE
 		var/datum/config_entry/number/ticklag/TL = config.entries_by_type[/datum/config_entry/number/ticklag]
 		if(!TL.sync_validate)
-			TL.ValidateAndSet(10 / config_entry_value)
+			TL.ValidateAndSet("[10 / config_entry_value]")
 		sync_validate = FALSE
 
 /datum/config_entry/number/ticklag
@@ -339,7 +343,7 @@ Master controller and performance related.
 		sync_validate = TRUE
 		var/datum/config_entry/number/fps/FPS = config.entries_by_type[/datum/config_entry/number/fps]
 		if(!FPS.sync_validate)
-			FPS.ValidateAndSet(10 / config_entry_value)
+			FPS.ValidateAndSet("[10 / config_entry_value]")
 		sync_validate = FALSE
 
 /datum/config_entry/number/tick_limit_mc_init //SSinitialization throttling
@@ -365,6 +369,12 @@ The default value assumes youtube-dl is in your system PATH
 /datum/config_entry/string/invoke_youtubedl
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/datum/config_entry/string/cobalt_base_api
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+
+/datum/config_entry/string/cobalt_api_key
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 /datum/config_entry/number/error_cooldown // The "cooldown" time for each occurrence of a unique error
 	config_entry_value = 600
@@ -487,8 +497,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/flag/respawn
 
-/datum/config_entry/flag/ToRban
-
 /datum/config_entry/flag/ooc_country_flags
 
 /datum/config_entry/flag/record_rounds
@@ -521,6 +529,8 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/regular_adminhelp_webhook_url
 
+/datum/config_entry/string/profiler_webhook_url
+
 /datum/config_entry/string/adminhelp_webhook_pfp
 
 /datum/config_entry/string/adminhelp_webhook_name
@@ -528,6 +538,27 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/adminhelp_ahelp_link
 
 /datum/config_entry/string/round_results_webhook_url
+
+/datum/config_entry/string/important_log_channel
+
+/// InfluxDB v2 Host to connect to for sending statistics (over HTTP API)
+/datum/config_entry/string/influxdb_host
+/// InfluxDB v2 Bucket to send staistics to
+/datum/config_entry/string/influxdb_bucket
+/// InfluxDB v2 Organization to access buckets of
+/datum/config_entry/string/influxdb_org
+/// InfluxDB v2 API Token to access the organization and bucket
+/datum/config_entry/string/influxdb_token
+
+/// How often to snapshot general game statistics to influxdb driver
+/datum/config_entry/number/influxdb_stats_period
+	config_entry_value = 30
+/// How often to snapshot MC statistics
+/datum/config_entry/number/influxdb_mcstats_period
+	config_entry_value = 60
+/// How often to send queued influxdb statistics
+/datum/config_entry/number/influxdb_send_period
+	config_entry_value = 10
 
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
@@ -602,3 +633,50 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/instance_name
 	config_entry_value = "game"
 	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
+/datum/config_entry/flag/guest_ban
+
+/datum/config_entry/flag/auto_profile
+
+/// Relay Ping Browser configuration
+/datum/config_entry/keyed_list/connection_relay_ping
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/keyed_list/connection_relay_con
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+
+/datum/config_entry/number/client_warn_version
+	default = null
+	min_val = 500
+
+/datum/config_entry/number/client_warn_build
+	default = null
+	min_val = 0
+
+/datum/config_entry/string/client_warn_message
+	default = "Your version of BYOND may have issues or be blocked from accessing this server in the future."
+
+/datum/config_entry/flag/client_warn_popup
+
+/datum/config_entry/number/client_error_version
+	default = null
+	min_val = 500
+
+/datum/config_entry/number/client_error_build
+	default = null
+	min_val = 0
+
+/datum/config_entry/string/client_error_message
+	default = "Your version of BYOND is too old, may have issues, and is blocked from accessing this server."
+
+// GitHub API, used for anonymous bug report handling.
+/datum/config_entry/string/github_app_api
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/string/repo_name
+
+/datum/config_entry/string/org

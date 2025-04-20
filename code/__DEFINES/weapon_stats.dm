@@ -1,7 +1,7 @@
 #define HUMAN_UNIVERSAL_DAMAGEMULT 1
 
 #define RECOIL_BUILDUP_VIEWPUNCH_MULTIPLIER 0.1
-
+#define BASE_VELOCITY_BONUS 0
 
 #define PROJ_BASE_ACCURACY_MULT 0.01
 #define PROJ_BASE_DAMAGE_MULT 0.01
@@ -18,17 +18,17 @@ Accuracy determines if your bullets will hit whatever you're shooting at. Think 
 It DOES NOT control where your bullets go, that's scatter and projectile variance.
 
 .../update_projectiles/guns/code.dm
-var/accuracy_mult //Base firearm accuracy when firing from a 2-hand, "secure", wielded, etc, whatever grip.
-var/accuracy_mult_unwielded //Base firearm accuracy when firing from hip. Both of these default to 1, with additions or subtractions from the mult vars.
+	var/accuracy_mult //Base firearm accuracy when firing from a 2-hand, "secure", wielded, etc, whatever grip.
+	var/accuracy_mult_unwielded //Base firearm accuracy when firing from hip. Both of these default to 1, with additions or subtractions from the mult vars.
 
 .../updated_projectiles/ammo_datums.dm
-var/accuracy //This is added to the firearm's base accuracy when the specific ammo is shot.
-var/accuracy_var_low //These two vars are used for the upper and lower bounds of accuracy variance when a bullet is fired. Bullet 'wobble' if you will.
-var/accuracy_var_high
+	var/accuracy //This is added to the firearm's base accuracy when the specific ammo is shot.
+	var/accuracy_var_low //These two vars are used for the upper and lower bounds of accuracy variance when a bullet is fired. Bullet 'wobble' if you will.
+	var/accuracy_var_high
 
 .../updated_projectiles/gun_attachables.dm
-var/accuracy_mult //Attachments ADD an additional multiplier to the base config value. Only ever use accuracy_mult config references.
-var/accuracy_mult_unwielded
+	var/accuracy_mult //Attachments ADD an additional multiplier to the base config value. Only ever use accuracy_mult config references.
+	var/accuracy_mult_unwielded
 */
 
 #define HIT_ACCURACY_TIER_1 5
@@ -66,7 +66,7 @@ var/accuracy_mult_unwielded
 ////SCATTER////
 */
 
-#define SCATTER_AMOUNT_NEURO 60
+#define SCATTER_AMOUNT_NEURO 45
 #define SCATTER_AMOUNT_TIER_1 15
 #define SCATTER_AMOUNT_TIER_2 10
 #define SCATTER_AMOUNT_TIER_3 8
@@ -136,19 +136,34 @@ As such, don't expect any values assigned to common firearms to even consider ho
 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 */
 
-#define FIRE_DELAY_TIER_1 10
-#define FIRE_DELAY_TIER_2 9
-#define FIRE_DELAY_TIER_3 8
-#define FIRE_DELAY_TIER_4 7
-#define FIRE_DELAY_TIER_5 6
-#define FIRE_DELAY_TIER_6 5
-#define FIRE_DELAY_TIER_7 4
-#define FIRE_DELAY_TIER_8 3
-#define FIRE_DELAY_TIER_9 2
-#define FIRE_DELAY_TIER_LMG 1.5
-#define FIRE_DELAY_TIER_SG 1.5
-#define FIRE_DELAY_TIER_SMG 1.3
-#define FIRE_DELAY_TIER_10 1
+/// Sniper/DMR Delays
+#define FIRE_DELAY_TIER_AMR 30
+#define FIRE_DELAY_TIER_VULTURE 20
+#define FIRE_DELAY_TIER_SNIPER 15
+
+/// Shotgun Delays
+#define FIRE_DELAY_TIER_SHOTGUN_SLOW 2.5 SECONDS // Heavy or damaged shotguns, KS-23, etc.
+#define FIRE_DELAY_TIER_SHOTGUN_BASE 2 SECONDS // Replaces previous shotgun value which was Tier_7 (5)*4
+#define FIRE_DELAY_TIER_SHOTGUN_COLONY 1.6 SECONDS // Used by the HG shotguns.
+#define FIRE_DELAY_TIER_SHOTGUN_COMBAT 1.4 SECONDS // Replaces previous combat shotgun value which was Tier_5 (7)*2 ...Wow that's confusing.
+#define FIRE_DELAY_TIER_SHOTGUN_DEATHSQUAD 0.6 SECONDS // For adminspawn ERTs, MARSOC, etc.
+
+/// General Delay Tiers
+#define FIRE_DELAY_TIER_1 12
+#define FIRE_DELAY_TIER_2 10
+#define FIRE_DELAY_TIER_3 9
+#define FIRE_DELAY_TIER_4 8
+#define FIRE_DELAY_TIER_5 7
+#define FIRE_DELAY_TIER_6 6
+#define FIRE_DELAY_TIER_7 5
+#define FIRE_DELAY_TIER_8 4
+#define FIRE_DELAY_TIER_9 3.5
+#define FIRE_DELAY_TIER_10 3
+#define FIRE_DELAY_TIER_11 2.5
+#define FIRE_DELAY_TIER_LMG 2
+#define FIRE_DELAY_TIER_SG 2
+#define FIRE_DELAY_TIER_SMG 1.5
+#define FIRE_DELAY_TIER_12 1
 
 /*
 ////RANGE RELATED////
@@ -164,6 +179,7 @@ As such, don't expect any values assigned to common firearms to even consider ho
 #define DAMAGE_FALLOFF_TIER_7 4
 #define DAMAGE_FALLOFF_TIER_8 3
 #define DAMAGE_FALLOFF_TIER_9 2
+#define DAMAGE_FALLOFF_TIER_9_5 1.5
 #define DAMAGE_FALLOFF_TIER_10 1
 
 #define DAMAGE_BUILDUP_TIER_1 1
@@ -322,3 +338,91 @@ Fire Variant = Markers for special fire types that behave outside of chemfire co
 #define FIRE_VARIANT_TYPE_B 1
 // Lowers burn damage to humans
 #define HUMAN_BURN_DIVIDER 5
+
+//gun.dm durabilty flags
+#define GUN_DURABILITY_MAX 100
+#define GUN_DURABILITY_HIGH 80
+#define GUN_DURABILITY_MEDIUM 50
+#define GUN_DURABILITY_LOW 20
+#define GUN_DURABILITY_BROKEN 0
+
+//gun innate durability loss defines, note that GUN_DURABILITY_LOSS_NONE also disables misfiring
+#define GUN_DURABILITY_LOSS_NONE 0
+#define GUN_DURABILITY_LOSS_DEFAULT 0.05
+#define GUN_DURABILITY_LOSS_INSUBSTANTIAL 0.15
+#define GUN_DURABILITY_LOSS_LOW 0.20
+#define GUN_DURABILITY_LOSS_FAIR 0.35
+#define GUN_DURABILITY_LOSS_MEDIUM 0.40
+#define GUN_DURABILITY_LOSS_HIGH 0.55
+#define GUN_DURABILITY_LOSS_SEVERE 0.60
+#define GUN_DURABILITY_LOSS_CRITICAL 0.65
+#define GUN_DURABILITY_LOSS_DESTRUCTIVE 0.70
+#define GUN_DURABILITY_LOSS_SCOUT 10
+#define GUN_DURABILITY_LOSS_SNIPER 25
+#define GUN_DURABILITY_LOSS_SMARTGUN 1
+#define GUN_DURABILITY_LOSS_GUARANTEED 100
+
+//gun innate unjam chance
+#define GUN_UNJAM_CHANCE_INSUBSTANTIAL 25
+#define GUN_UNJAM_CHANCE_LOW 50
+#define GUN_UNJAM_CHANCE_FAIR 75
+#define GUN_UNJAM_CHANCE_MEDIUM 85
+#define GUN_UNJAM_CHANCE_HIGH 90
+#define GUN_UNJAM_CHANCE_DEFAULT 95
+#define GUN_UNJAM_CHANCE_RELIABLE 100
+#define GUN_UNJAM_CHANCE_SCOUT 69
+
+//gun innate jam chance
+#define GUN_JAM_CHANCE_INSUBSTANTIAL 0.01
+#define GUN_JAM_CHANCE_LOW 0.05
+#define GUN_JAM_CHANCE_FAIR 0.10
+#define GUN_JAM_CHANCE_MEDIUM 0.15
+#define GUN_JAM_CHANCE_HIGH 0.20
+#define GUN_JAM_CHANCE_SEVERE 0.25
+#define GUN_JAM_CHANCE_CRITICAL 0.30
+#define GUN_JAM_CHANCE_SCOUT 0.25
+#define GUN_JAM_CHANCE_SNIPER 0.05
+
+
+//bullet durability loss defines
+#define BULLET_DURABILITY_LOSS_INSUBSTANTIAL 0.05
+#define BULLET_DURABILITY_LOSS_LOW 0.10
+#define BULLET_DURABILITY_LOSS_FAIR 0.15
+#define BULLET_DURABILITY_LOSS_MEDIUM 0.20
+#define BULLET_DURABILITY_LOSS_HIGH 0.25
+#define BULLET_DURABILITY_LOSS_SEVERE 0.30
+#define BULLET_DURABILITY_LOSS_CRITICAL 0.35
+#define BULLET_DURABILITY_LOSS_SMALL_RUBBER 0.35
+#define BULLET_DURABILITY_LOSS_LONG_RUBBER 0.50
+#define BULLET_DURABILITY_LOSS_SPECIAL 0.50
+
+//bullet durability damage defines
+#define BULLET_DURABILITY_DAMAGE_DEFAULT 1
+#define BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL 2
+#define BULLET_DURABILITY_DAMAGE_LOW 3
+#define BULLET_DURABILITY_DAMAGE_FAIR 4
+#define BULLET_DURABILITY_DAMAGE_MEDIUM 5
+#define BULLET_DURABILITY_DAMAGE_HIGH 6
+#define BULLET_DURABILITY_DAMAGE_SEVERE 7
+#define BULLET_DURABILITY_DAMAGE_CRITICAL 8
+#define BULLET_DURABILITY_DAMAGE_DESTRUCTIVE 9
+#define BULLET_DURABILITY_DAMAGE_SPECIAL 10
+
+
+//magazine jamming loss defines
+#define MAG_JAM_MOD_PISTOL_LOW 0.05
+#define MAG_JAM_MOD_PISTOL_FAIR 0.10
+#define MAG_JAM_MOD_PISTOL_MEDIUM 0.15
+#define MAG_JAM_MOD_PISTOL_HIGH 0.20
+#define MAG_JAM_MOD_PISTOL_CRITICAL 0.30
+#define MAG_JAM_MOD_PISTOL_RUBBER 0.25
+
+#define MAG_JAM_MOD_RIFLE_INSUBSTANTIAL 0.10
+#define MAG_JAM_MOD_RIFLE_LOW 0.15
+#define MAG_JAM_MOD_RIFLE_FAIR 0.20
+#define MAG_JAM_MOD_RIFLE_MEDIUM 0.25
+#define MAG_JAM_MOD_RIFLE_HIGH 0.30
+#define MAG_JAM_MOD_RIFLE_CRITICAL 0.35
+#define MAG_JAM_MOD_RIFLE_RUBBER 0.50
+
+

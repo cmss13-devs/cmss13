@@ -47,18 +47,6 @@ Global river status var, maybe
 Each var depends on others
 
 
-var/global/riverend_west = 0
-var/global/riverend_north = 0
-var/global/river_central = 0
-var/global/cannal = 0
-var/global/dam_underpass = 0
-var/global/south_river = 0
-var/global/south_filtration = 0
-var/global/east_river = 0
-var/global/east_filtration = 0
-var/global/south_riverstart = 0
-var/global/east_riverstart = 0
-
 /proc/filtration_check()
 	if(east_filtration)
 
@@ -136,10 +124,9 @@ var/global/east_riverstart = 0
 	else
 		return
 
-	if(ismob(A))
+	if(isliving(A))
 		var/mob/living/M = A
 
-		// Inside a xeno for example
 		if(!istype(M.loc, /turf))
 			return
 
@@ -147,6 +134,9 @@ var/global/east_riverstart = 0
 			if(M.pulling)
 				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
 				M.stop_pulling()
+
+		if(HAS_TRAIT(M, TRAIT_HAULED))
+			return
 
 		cause_damage(M)
 		START_PROCESSING(SSobj, src)
@@ -198,7 +188,7 @@ var/global/east_riverstart = 0
 		M.apply_damage(0.5,BURN)
 	else
 		var/dam_amount = 3
-		if(M.lying)
+		if(M.body_position == LYING_DOWN)
 			M.apply_damage(dam_amount,BURN)
 			M.apply_damage(dam_amount,BURN)
 			M.apply_damage(dam_amount,BURN)
@@ -211,7 +201,8 @@ var/global/east_riverstart = 0
 			M.apply_damage(dam_amount,BURN,"r_foot")
 			M.apply_damage(dam_amount,BURN,"groin")
 		M.apply_effect(20,IRRADIATE,0)
-		if( !issynth(M) ) to_chat(M, SPAN_DANGER("The water burns!"))
+		if( !issynth(M) )
+			to_chat(M, SPAN_DANGER("The water burns!"))
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
@@ -219,8 +210,9 @@ var/global/east_riverstart = 0
 	if(dispersing || !toxic)
 		return
 
-	for(var/direction in alldirs)
-		if(direction == from_dir) continue //doesn't check backwards
+	for(var/direction in GLOB.alldirs)
+		if(direction == from_dir)
+			continue //doesn't check backwards
 
 		var/effective_spread_delay
 		switch(direction)
@@ -275,7 +267,7 @@ var/global/east_riverstart = 0
 
 /obj/structure/machinery/filtration_button
 	name = "\improper Filtration Activation"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/stationobjs.dmi'
 	icon_state = "launcherbtt"
 	desc = "Activates the filtration mechanism."
 	var/id = null
@@ -303,7 +295,7 @@ var/global/east_riverstart = 0
 	//var/area/A = get_area(src)
 	//A.ambience_exterior = 'sound/ambience/ambiatm1.ogg'
 
-	for(var/obj/structure/machinery/dispersal_initiator/M in machines)
+	for(var/obj/structure/machinery/dispersal_initiator/M in GLOB.machines)
 		if (M.id == src.id)
 			M.initiate()
 

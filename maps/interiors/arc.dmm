@@ -1,0 +1,113 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"dH" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/arc;
+	name = "ARC exit door";
+	pixel_y = -10;
+	tag = "right"
+	},
+/turf/open/floor,
+/area/interior/vehicle/arc)
+"sE" = (
+/turf/open/void/vehicle,
+/area/space)
+"yX" = (
+/obj/effect/landmark/interior/spawn/telephone{
+	pixel_x = -12;
+	pixel_y = 15
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
+	dir = 4
+	},
+/obj/item/device/megaphone,
+/turf/open/floor,
+/area/interior/vehicle/arc)
+"Dn" = (
+/obj/structure/machinery/prop/almayer/CICmap/computer{
+	dir = 4;
+	layer = 2.98;
+	pixel_x = -13;
+	pixel_y = 4
+	},
+/obj/structure/machinery/computer/groundside_operations/arc{
+	dir = 4;
+	layer = 2.981;
+	pixel_x = -13;
+	pixel_y = -9
+	},
+/obj/structure/bed/chair/comfy/arc{
+	dir = 8
+	},
+/turf/open/floor,
+/area/interior/vehicle/arc)
+"DG" = (
+/obj/structure/machinery/computer/overwatch/almayer/small{
+	dir = 4;
+	layer = 2.982;
+	pixel_x = -13;
+	pixel_y = 10
+	},
+/obj/structure/machinery/computer/intel/disk_reader{
+	dir = 4;
+	layer = 2.983;
+	pixel_x = -13;
+	pixel_y = -3
+	},
+/obj/structure/bed/chair/comfy/arc{
+	dir = 8
+	},
+/turf/open/floor,
+/area/interior/vehicle/arc)
+"Ly" = (
+/obj/effect/landmark/interior/spawn/weapons_loader{
+	pixel_x = -2
+	},
+/turf/open/floor,
+/area/interior/vehicle/arc)
+"NS" = (
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	layer = 2.98;
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7
+	},
+/turf/open/floor,
+/area/interior/vehicle/arc)
+"Rb" = (
+/obj/structure/prop/vehicle/arc,
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+sE
+sE
+sE
+Rb
+"}
+(2,1,1) = {"
+sE
+Dn
+DG
+sE
+"}
+(3,1,1) = {"
+sE
+NS
+dH
+sE
+"}
+(4,1,1) = {"
+sE
+yX
+Ly
+sE
+"}
+(5,1,1) = {"
+sE
+sE
+sE
+sE
+"}

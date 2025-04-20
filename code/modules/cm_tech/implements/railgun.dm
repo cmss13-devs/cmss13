@@ -6,6 +6,8 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/effect/landmark/railgun_computer
 	name = "Railgun computer landmark"
+	icon_state = "computer_spawn"
+	desc = "A computer with an orange interface, it's idly blinking, awaiting a password."
 
 /obj/effect/landmark/railgun_computer/Initialize(mapload, ...)
 	. = ..()
@@ -15,6 +17,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/effect/landmark/railgun_camera_pos
 	name = "Railgun camera position landmark"
+	icon_state = "railgun_cam"
 
 /obj/effect/landmark/railgun_camera_pos/Initialize(mapload, ...)
 	. = ..()
@@ -62,7 +65,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 /obj/structure/machinery/computer/railgun/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/railgun/bullet_act(obj/item/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/railgun/bullet_act(obj/projectile/Proj) //Can't shoot it
 	return FALSE
 
 /obj/structure/machinery/computer/railgun/proc/set_operator(mob/living/carbon/human/H)
@@ -87,13 +90,13 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	RegisterSignal(eye, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_and_set_zlevel))
 	RegisterSignal(eye, COMSIG_PARENT_QDELETING, PROC_REF(remove_current_operator))
 
-/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(mob/hologram/railgun/H, turf/NewLoc, direction)
+/obj/structure/machinery/computer/railgun/proc/check_and_set_zlevel(mob/hologram/railgun/hologram, turf/NewLoc, direction)
 	SIGNAL_HANDLER
 	if(!start_location)
 		start_location = GLOB.railgun_eye_location.get_turf_from_coord()
 
-	if(!NewLoc || (NewLoc.z != target_z && H.z != target_z))
-		H.loc = start_location
+	if(!NewLoc || (NewLoc.z != target_z && hologram.z != target_z))
+		hologram.forceMove(start_location)
 		return COMPONENT_OVERRIDE_MOVE
 
 /obj/structure/machinery/computer/railgun/proc/can_fire(mob/living/carbon/human/H, turf/T)
@@ -174,7 +177,8 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 /obj/structure/machinery/computer/railgun/proc/remove_current_operator()
 	SIGNAL_HANDLER
-	if(!operator) return
+	if(!operator)
+		return
 
 	if(eye)
 		last_location = eye.loc
@@ -185,7 +189,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	UnregisterSignal(operator, list(
 		COMSIG_PARENT_QDELETING,
-		COMSIG_MOVABLE_PRE_MOVE,
+		COMSIG_MOVABLE_MOVED,
 		COMSIG_MOB_POST_CLICK
 	))
 	operator.update_sight()
@@ -223,7 +227,12 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 /mob/hologram/railgun
 	name = "Camera"
 	density = FALSE
-	mouse_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
+
+/mob/hologram/railgun/handle_view(mob/M, atom/target)
+	. = ..()
+
+	if(M.client?.prefs?.custom_cursors)
+		M.client.mouse_pointer_icon = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 
 /mob/hologram/railgun/Initialize(mapload, mob/M)
 	. = ..()
@@ -263,7 +272,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	if(istype(to_enter, /turf/closed/wall))
 		var/turf/closed/wall/W = to_enter
-		if(W.hull)
+		if(W.turf_flags & TURF_HULL)
 			return COMPONENT_TURF_DENY_MOVEMENT
 
 	return COMPONENT_TURF_ALLOW_MOVEMENT

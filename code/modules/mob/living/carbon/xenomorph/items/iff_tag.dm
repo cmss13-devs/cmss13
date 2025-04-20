@@ -1,7 +1,7 @@
 /obj/item/iff_tag
 	name = "xenomorph IFF tag"
 	desc = "A tag containing a small IFF computer that gets inserted into the carapace of a xenomorph. You can modify the IFF groups by using an access tuner on it, or on the xeno if it's already implanted."
-	icon = 'icons/obj/items/xeno_tag.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "xeno_tag"
 	var/list/faction_groups = list()
 
@@ -19,6 +19,8 @@
 		injector.visible_message(SPAN_NOTICE("[injector] forces \the [src] into [xeno]'s carapace!"), SPAN_NOTICE("You force \the [src] into [xeno]'s carapace!"))
 		xeno.iff_tag = src
 		injector.drop_inv_item_to_loc(src, xeno)
+		if(xeno.hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+			to_chat(xeno, SPAN_NOTICE("With the insertion of the device into your carapace, your instincts have changed compelling you to protect [english_list(faction_groups, "no one")]."))
 		return
 	return ..()
 
@@ -48,6 +50,8 @@
 		if("Remove")
 			faction_groups = list()
 	to_chat(programmer, SPAN_NOTICE("You <b>[option]</b> the IFF group data, the IFF group on the tag now reads as: [english_list(faction_groups, "None")]"))
+	if(xeno?.hive.hivenumber == XENO_HIVE_RENEGADE) //it's important to know their IFF settings for renegade
+		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(faction_groups, "no one")]."))
 	return TRUE
 
 /obj/item/iff_tag/pmc_handler
@@ -57,7 +61,7 @@
 /obj/item/storage/xeno_tag_case
 	name = "xenomorph tag case"
 	desc = "A sturdy case designed to store and charge xenomorph IFF tags. Provided by the Wey-Yu Research and Data(TM) Division."
-	icon = 'icons/obj/items/xeno_tag.dmi'
+	icon = 'icons/obj/items/Marine_Research.dmi'
 	icon_state = "tag_box"
 	use_sound = "toolbox"
 	storage_slots = 8

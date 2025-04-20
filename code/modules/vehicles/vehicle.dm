@@ -5,8 +5,8 @@
 	density = TRUE
 	anchored = TRUE
 	animate_movement = 1
-	luminosity = 2
 	can_buckle = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	// The mobs that are in each position/seat of the vehicle
 	var/list/mob/seats = list(
@@ -19,20 +19,29 @@
 	var/maxhealth = 100
 	var/fire_dam_coeff = 1
 	var/brute_dam_coeff = 1
-	var/open = 0 //Maint panel
+	///Maint panel
+	var/open = 0
 	var/locked = TRUE
 	var/stat = 0
-	var/powered = 0 //set if vehicle is powered and should use fuel when moving
-	var/move_delay = 1 //set this to limit the speed of the vehicle
+	///set if vehicle is powered and should use fuel when moving
+	var/powered = 0
+	///set this to limit the speed of the vehicle
+	var/move_delay = 1
 	var/buckling_y = 0
 
 	var/obj/item/cell/cell
-	var/charge_use = 5 //set this to adjust the amount of power the vehicle uses per move
+	///set this to adjust the amount of power the vehicle uses per move
+	var/charge_use = 5
 	can_block_movement = TRUE
 
 //-------------------------------------------
 // Standard procs
 //-------------------------------------------
+
+/obj/vehicle/Destroy(force)
+	. = ..()
+	if(!QDELETED(cell))
+		QDEL_NULL(cell)
 
 /obj/vehicle/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -40,8 +49,10 @@
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/vehicle/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated()) return
-	if(seats[VEHICLE_DRIVER] != user) return
+	if(user.is_mob_incapacitated())
+		return
+	if(seats[VEHICLE_DRIVER] != user)
+		return
 
 	if(world.time > l_move_time + move_delay)
 		if(on && powered && cell && cell.charge < charge_use)
@@ -81,17 +92,18 @@
 	else if(W.force)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * fire_dam_coeff
+				health -= W.force * W.demolition_mod * fire_dam_coeff
 			if("brute")
-				health -= W.force * brute_dam_coeff
-		playsound(src.loc, "smash.ogg", 25, 1)
+				health -= W.force * W.demolition_mod * brute_dam_coeff
+		playsound(loc, "smash.ogg", 25, 1)
 		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
 	else
 		..()
 
 /obj/vehicle/attack_animal(mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 	health -= M.melee_damage_upper
 	src.visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
@@ -99,7 +111,7 @@
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
 
-/obj/vehicle/bullet_act(obj/item/projectile/P)
+/obj/vehicle/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()
@@ -113,6 +125,7 @@
 	return
 
 /obj/vehicle/emp_act(severity)
+	. = ..()
 	var/was_on = on
 	stat |= EMPED
 	new /obj/effect/overlay/temp/emp_sparks (loc)
@@ -126,6 +139,27 @@
 /obj/vehicle/attack_remote(mob/user as mob)
 	return
 
+/obj/vehicle/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(attacking_xeno.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	var/damage = (attacking_xeno.melee_vehicle_damage + rand(-5,5)) * brute_dam_coeff
+
+	health -= damage
+
+	healthcheck()
+
+	return XENO_NONCOMBAT_ACTION
+
 //-------------------------------------------
 // Vehicle procs
 //-------------------------------------------
@@ -134,10 +168,11 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.forceMove(src)
 	M.set_interaction(src)
+	return TRUE
 
 /obj/vehicle/proc/turn_on()
 	if(stat)
@@ -145,13 +180,13 @@
 	if(powered && cell.charge < charge_use)
 		return 0
 	on = 1
-	SetLuminosity(initial(luminosity))
+	set_light(initial(light_range))
 	update_icon()
 	return 1
 
 /obj/vehicle/proc/turn_off()
 	on = 0
-	SetLuminosity(0)
+	set_light(0)
 	update_icon()
 
 /obj/vehicle/proc/explode()
@@ -221,7 +256,6 @@
 /obj/vehicle/proc/RunOver(mob/living/carbon/human/H)
 	return //write specifics for different vehicles
 
-
 /obj/vehicle/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)
@@ -232,8 +266,6 @@
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 
-/obj/vehicle/afterbuckle(mob/M)
-	. = ..()
 	if(seats[VEHICLE_DRIVER] == null)
 		seats[VEHICLE_DRIVER] = M
 
@@ -241,57 +273,8 @@
 	. = ..()
 	seats[VEHICLE_DRIVER] = null
 
-/obj/vehicle/Destroy()
-	SetLuminosity(0)
-	. = ..()
-
 //-------------------------------------------------------
 // Stat update procs
 //-------------------------------------------------------
 /obj/vehicle/proc/update_stats()
 	return
-
-/obj/vehicle/souto
-	name = "\improper Soutomobile"
-	icon_state = "soutomobile"
-	desc = "Almost, but not quite, the best ride in the universe."
-	move_delay = 3 //The speed of a fed but shoeless pajamarine, or a bit slower than a heavy-armor marine.
-	buckling_y = 4
-	layer = ABOVE_LYING_MOB_LAYER //Allows it to drive over people, but is below the driver.
-
-/obj/vehicle/souto/Initialize()
-	. = ..()
-	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = ABOVE_MOB_LAYER) //over mobs
-	overlays += I
-
-/obj/vehicle/souto/manual_unbuckle(mob/user)
-	if(buckled_mob && buckled_mob != user)
-		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			..()
-	else ..()
-
-/obj/vehicle/souto/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated()) return
-	if(world.time > l_move_time + move_delay)
-		. = step(src, direction)
-
-
-/obj/vehicle/souto/super
-	desc = "The best ride in the universe, for the one-and-only Souto Man!"
-	health = 1000
-	locked = FALSE
-	unacidable = TRUE
-	indestructible = TRUE
-
-/obj/vehicle/souto/super/explode()
-	for(var/mob/M as anything in viewers(7, src))
-		M.show_message("Somehow, [src] still looks as bright and shiny as a new can of Souto Classic.", SHOW_MESSAGE_VISIBLE)
-	health = initial(health) //Souto Man never dies, and neither does his bike.
-
-/obj/vehicle/souto/super/buckle_mob(mob/M, mob/user)
-	if(!locked) //Vehicle is unlocked until first being mounted, since the Soutomobile is faction-locked and otherwise Souto Man cannot automatically buckle in on spawn as his equipment is spawned before his ID.
-		locked = TRUE
-	else if(M == user && M.faction != FACTION_SOUTO && locked == TRUE) //Are you a cool enough dude to drive this bike? Nah, nobody's THAT cool.
-		to_chat(user, SPAN_WARNING("Somehow, as you take hold of the handlebars, [src] manages to glare at you. You back off. We didn't sign up for haunted motorbikes, man."))
-		return
-	..()

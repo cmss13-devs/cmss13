@@ -20,7 +20,7 @@
 	desc = "A monitor depicting the ship's current status. It flickers every so often."
 	anchored = TRUE
 	density = FALSE
-	use_power = FALSE
+	use_power = USE_POWER_NONE
 	idle_power_usage = 10
 	var/mode = 0 // 0 = Blank
 					// 1 = Shuttle timer
@@ -78,11 +78,13 @@
 			return 1
 		if(STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME) //emergency shuttle timer
 			message1 = "EVAC"
-			message2 = EvacuationAuthority.get_status_panel_eta()
+			message2 = SShijack.get_evac_eta()
 			if(message2)
-				if(length(message2) > CHARS_PER_LINE) message2 = "Error"
+				if(length(message2) > CHARS_PER_LINE)
+					message2 = "Error"
 				update_display(message1, message2)
-			else remove_display()
+			else
+				remove_display()
 			return 1
 		if(STATUS_DISPLAY_MESSAGE) //custom messages
 			var/line1
@@ -146,7 +148,7 @@
 		maptext = new_text
 
 /obj/structure/machinery/status_display/proc/get_supply_shuttle_timer()
-	var/datum/shuttle/ferry/supply/shuttle = supply_controller.shuttle
+	var/datum/shuttle/ferry/supply/shuttle = GLOB.supply_controller.shuttle
 	if (!shuttle)
 		return "Error"
 
@@ -158,10 +160,18 @@
 	return ""
 
 /obj/structure/machinery/status_display/proc/remove_display()
-	if(overlays.len)
-		overlays.Cut()
+	LAZYCLEARLIST(overlays)
 	if(maptext)
 		maptext = ""
+
+/obj/structure/machinery/status_display/proc/set_sec_level_picture()
+	switch(GLOB.security_level)
+		if(SEC_LEVEL_GREEN)
+			set_picture("default")
+		if(SEC_LEVEL_BLUE)
+			set_picture("bluealert")
+		if(SEC_LEVEL_RED, SEC_LEVEL_DELTA)
+			set_picture("redalert")
 
 /obj/structure/machinery/ai_status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
@@ -179,11 +189,10 @@
 	var/emotion = "Neutral"
 
 /obj/structure/machinery/ai_status_display/emp_act(severity)
+	. = ..()
 	if(inoperable())
-		..(severity)
 		return
 	set_picture("ai_bsod")
-	..(severity)
 
 /obj/structure/machinery/ai_status_display/proc/update()
 	if(mode==0) //Blank
@@ -233,8 +242,7 @@
 
 /obj/structure/machinery/ai_status_display/proc/set_picture(state)
 	picture_state = state
-	if(overlays.len)
-		overlays.Cut()
+	LAZYCLEARLIST(overlays)
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 #undef DEFAULT_FONT_COLOR

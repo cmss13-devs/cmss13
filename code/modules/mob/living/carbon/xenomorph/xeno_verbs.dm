@@ -1,18 +1,18 @@
 //// Holds Xeno verbs that don't belong anywhere else.
 /mob/living/carbon/xenomorph/verb/hive_status()
 	set name = "Hive Status"
-	set desc = "Check the status of your current hive."
+	set desc = "Check the status of our current hive."
 	set category = "Alien"
 
 	if(!hive)
 		return
 
 	if((!hive.living_xeno_queen || SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST) && !hive.allow_no_queen_actions) //No Hive status on WO
-		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		to_chat(src, SPAN_WARNING("There is no Queen. We are alone."))
 		return
 
-	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
 	hive.hive_ui.open_hive_status(src)
@@ -25,12 +25,19 @@
 	if(!hive)
 		return
 
+	if(hive.hivenumber == XENO_HIVE_RENEGADE) //Renegade's ability to attack someone depends on IFF settings, not on alliance
+		if(!iff_tag)
+			to_chat(src, SPAN_NOTICE("You are not obligated to protect anyone."))
+			return
+		to_chat(src, SPAN_NOTICE("You seem compelled to protect [english_list(iff_tag.faction_groups, "no one")]."))
+		return
+
 	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
-	if(interference)
-		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our psychic connection has been temporarily disabled!"))
 		return
 
 	hive.faction_ui.tgui_interact(src)
@@ -74,11 +81,11 @@
 	set desc = "Toggles the health and plasma HUD appearing above Xenomorphs."
 	set category = "Alien"
 
-	var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_STATUS]
 	if (xeno_mobhud)
-		H.remove_hud_from(usr)
+		H.remove_hud_from(usr, usr)
 	else
-		H.add_hud_to(usr)
+		H.add_hud_to(usr, usr)
 
 	xeno_mobhud = !xeno_mobhud
 
@@ -87,29 +94,45 @@
 	set desc = "Toggles the HUD that renders various negative status effects inflicted on humans."
 	set category = "Alien"
 
-	var/datum/mob_hud/H = huds[MOB_HUD_XENO_HOSTILE]
+	var/datum/mob_hud/H = GLOB.huds[MOB_HUD_XENO_HOSTILE]
 	if (xeno_hostile_hud)
-		H.remove_hud_from(usr)
+		H.remove_hud_from(usr, usr)
 	else
-		H.add_hud_to(usr)
+		H.add_hud_to(usr, usr)
 
 	xeno_hostile_hud = !xeno_hostile_hud
 
+/mob/living/carbon/xenomorph/verb/toggle_auto_shove()
+	set name = "Toggle Automatic Shove"
+	set desc = "Toggles whethever you will automatically shove people as the Queen"
+	set category = "Alien"
 
-/mob/living/carbon/xenomorph/verb/middle_mouse_toggle()
-	set name = "Toggle Middle/Shift Clicking"
-	set desc = "Toggles between using middle mouse click and shift click for selected ability use."
+
+	if (!client || !client.prefs)
+		return
+
+	client.prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
+	client.prefs.save_preferences()
+	if (client.prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
+		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen."))
+	else
+		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen."))
+
+
+/mob/living/carbon/xenomorph/verb/ability_deactivation_toggle()
+	set name = "Toggle Ability Deactivation"
+	set desc = "Toggles whether you can deactivate your currently active ability when re-selecting it."
 	set category = "Alien"
 
 	if (!client || !client.prefs)
 		return
 
-	client.prefs.toggle_prefs ^= TOGGLE_MIDDLE_MOUSE_CLICK
+	client.prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
 	client.prefs.save_preferences()
-	if (client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with middle mouse clicking."))
+	if (client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
+		to_chat(src, SPAN_NOTICE("Your current ability can no longer be toggled off when re-selected."))
 	else
-		to_chat(src, SPAN_NOTICE("The selected xeno ability will now be activated with shift clicking."))
+		to_chat(src, SPAN_NOTICE("Your current ability can be toggled off when re-selected."))
 
 /mob/living/carbon/xenomorph/verb/directional_attack_toggle()
 	set name = "Toggle Directional Attacks"

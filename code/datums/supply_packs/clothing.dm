@@ -57,6 +57,19 @@
 	containername = "Webbing Crate"
 	group = "Clothing"
 
+/datum/supply_packs/webbing_large_black
+	name = "Black Webbing Crate (x4)"
+	contains = list(
+		/obj/item/clothing/accessory/storage/webbing/black,
+		/obj/item/clothing/accessory/storage/webbing/black,
+		/obj/item/clothing/accessory/storage/webbing/black,
+		/obj/item/clothing/accessory/storage/webbing/black,
+	)
+	cost = 20
+	containertype = /obj/structure/closet/crate/green
+	containername = "Black Webbing Crate"
+	group = "Clothing"
+
 /datum/supply_packs/drop_pouches
 	name = "Drop Pouch Crate (x4)"
 	contains = list(
@@ -96,24 +109,12 @@
 	containername = "Shoulder Holster Crate"
 	group = "Clothing"
 
-/datum/supply_packs/gunslinger_holster
-	contains = list(
-		/obj/item/storage/belt/gun/m44/gunslinger,
-		/obj/item/storage/belt/gun/m44/gunslinger,
-	)
-	name = "Red Ranger Cowboy Gunbelt Crate (x2)"
-	cost = 20
-	contraband = 1
-	containertype = /obj/structure/closet/crate
-	containername = "Cowboy Costume Crate"
-	group = "Clothing"
-
 /datum/supply_packs/officer_outfits//lmao this shit is so hideously out of date
 	contains = list(
-		/obj/item/clothing/under/rank/ro_suit,
+		/obj/item/clothing/under/rank/qm_suit,
 		/obj/item/clothing/under/marine/officer/bridge,
 		/obj/item/clothing/under/marine/officer/bridge,
-		/obj/item/clothing/under/marine/officer/exec,
+		/obj/item/clothing/under/marine/dress,
 		/obj/item/clothing/under/marine/officer/ce,
 	)
 	name = "officer outfit crate"

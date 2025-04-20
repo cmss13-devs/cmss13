@@ -33,7 +33,7 @@ tank [un]loading stuff
 turn on/off
 
 /obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
-display round(lastgen) and phorontank amount
+display floor(lastgen) and phorontank amount
 
 */
 
@@ -102,6 +102,30 @@ display round(lastgen) and phorontank amount
 	else
 		. += SPAN_NOTICE("The generator is off.")
 
+/obj/structure/machinery/power/port_gen/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(!active && !anchored)
+		return ..()
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to affect this!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	if(active)
+		active = FALSE
+		stop_processing()
+		icon_state = initial(icon_state)
+		visible_message(SPAN_NOTICE("[src] sputters to a stop!"))
+		return XENO_NONCOMBAT_ACTION
+
+	if(anchored)
+		anchored = FALSE
+		visible_message(SPAN_NOTICE("[src]'s bolts are dislodged!"))
+		return XENO_NONCOMBAT_ACTION
+
 //A power generator that runs on solid plasma sheets.
 /obj/structure/machinery/power/port_gen/pacman
 	name = "P.A.C.M.A.N.-type Portable Generator"
@@ -144,8 +168,8 @@ display round(lastgen) and phorontank amount
 			temp_rating += SP.rating
 	for(var/obj/item/CP in component_parts)
 		temp_reliability += CP.reliability
-	reliability = min(round(temp_reliability / 4), 100)
-	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
+	reliability = min(floor(temp_reliability / 4), 100)
+	power_gen = floor(initial(power_gen) * (max(2, temp_rating) / 2))
 
 /obj/structure/machinery/power/port_gen/pacman/get_examine_text(mob/user)
 	. = ..()
@@ -172,8 +196,8 @@ display round(lastgen) and phorontank amount
 	var/temp = min(needed_sheets, sheet_left)
 	needed_sheets -= temp
 	sheet_left -= temp
-	sheets -= round(needed_sheets)
-	needed_sheets -= round(needed_sheets)
+	sheets -= floor(needed_sheets)
+	needed_sheets -= floor(needed_sheets)
 	if (sheet_left <= 0 && sheets > 0)
 		sheet_left = 1 - needed_sheets
 		sheets--
@@ -240,7 +264,7 @@ display round(lastgen) and phorontank amount
 				to_chat(user, SPAN_NOTICE(" You open the access panel."))
 			else
 				to_chat(user, SPAN_NOTICE(" You close the access panel."))
-		else if(istype(O, /obj/item/tool/crowbar) && open)
+		else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) && open)
 			var/obj/structure/machinery/constructable_frame/new_frame = new /obj/structure/machinery/constructable_frame(src.loc)
 			for(var/obj/item/I in component_parts)
 				if(I.reliability < 100)
@@ -281,16 +305,16 @@ display round(lastgen) and phorontank amount
 
 	var/dat = text("<b>[name]</b><br>")
 	if (active)
-		dat += text("Generator: <A href='?src=\ref[src];action=disable'>On</A><br>")
+		dat += text("Generator: <A href='byond://?src=\ref[src];action=disable'>On</A><br>")
 	else
-		dat += text("Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>")
-	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='?src=\ref[src];action=eject'>Eject</A><br>")
+		dat += text("Generator: <A href='byond://?src=\ref[src];action=enable'>Off</A><br>")
+	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='byond://?src=\ref[src];action=eject'>Eject</A><br>")
 	var/stack_percent = round(sheet_left * 100, 1)
 	dat += text("Current stack: [stack_percent]% <br>")
-	dat += text("Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=\ref[src];action=higher_power'>+</A><br>")
+	dat += text("Power output: <A href='byond://?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='byond://?src=\ref[src];action=higher_power'>+</A><br>")
 	dat += text("Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>")
 	dat += text("Heat: [heat]<br>")
-	dat += "<br><A href='?src=\ref[src];action=close'>Close</A>"
+	dat += "<br><A href='byond://?src=\ref[src];action=close'>Close</A>"
 	user << browse("[dat]", "window=port_gen")
 	onclose(user, "port_gen")
 

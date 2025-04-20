@@ -1,15 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/gloves/marine/veteran/pmc{
-	pixel_x = 2;
-	pixel_y = -3
-	},
-/obj/item/clothing/gloves/marine/veteran/pmc,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "f" = (
 /obj/structure/surface/rack,
@@ -20,9 +12,7 @@
 	pixel_x = -6
 	},
 /obj/item/tool/shovel/etool,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "i" = (
 /obj/structure/surface/rack,
@@ -35,19 +25,13 @@
 	pixel_y = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "A" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/accessory/storage/black_vest/brown_vest,
 /obj/item/clothing/accessory/storage/black_vest/brown_vest,
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "C" = (
 /obj/structure/surface/rack,
@@ -62,10 +46,7 @@
 	},
 /obj/item/poster,
 /obj/item/clothing/glasses/sunglasses,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "E" = (
 /turf/open/floor/vault,
@@ -74,9 +55,7 @@
 /obj/structure/surface/rack,
 /obj/item/stack/folding_barricade,
 /obj/item/facepaint/skull,
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "R" = (
 /obj/structure/surface/rack,
@@ -85,10 +64,7 @@
 /obj/effect/landmark/wo_supplies/storage/webbing,
 /obj/item/poster,
 /obj/item/clothing/glasses/sunglasses,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "vault"
-	},
+/turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "V" = (
 /obj/structure/surface/rack,
@@ -98,9 +74,7 @@
 /obj/item/explosive/grenade/high_explosive/frag{
 	pixel_x = 6
 	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
+/turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 
 (1,1,1) = {"

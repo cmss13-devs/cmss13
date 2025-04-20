@@ -19,9 +19,9 @@
 	desc = "These tactical gloves are somewhat fire and impact-resistant."
 	name = "\improper SWAT Gloves"
 	icon_state = "black"
-	item_state = "swat_gl"
+	item_state = "black"
 	siemens_coefficient = 0.6
-	permeability_coefficient = 0.05
+
 
 	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
@@ -32,9 +32,9 @@
 	desc = "These tactical gloves are somewhat fire and impact resistant."
 	name = "combat gloves"
 	icon_state = "black"
-	item_state = "swat_gl"
+	item_state = "black"
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
+
 	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS
@@ -44,16 +44,15 @@
 	name = "latex gloves"
 	desc = "Sterile latex gloves."
 	icon_state = "latex"
-	item_state = "lgloves"
+	item_state = "latex"
 	siemens_coefficient = 0.30
-	permeability_coefficient = 0.01
+	armor_bio = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/gloves/botanic_leather
 	desc = "These leather gloves protect against thorns, barbs, prickles, spikes and other harmful objects of floral origin."
 	name = "botanist's leather gloves"
 	icon_state = "leather"
 	item_state = "ggloves"
-	permeability_coefficient = 0.9
 	siemens_coefficient = 0.9
 
 
@@ -88,7 +87,7 @@
 					playsound(loc, knockout_sound, 50, FALSE)
 					M.show_message(FONT_SIZE_LARGE(SPAN_WARNING("KNOCKOUT!")), SHOW_MESSAGE_VISIBLE)
 					return 1
-				if (L.lying == 1 || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
+				if (L.body_position == LYING_DOWN || L.stat == UNCONSCIOUS)//Can't beat 'em while they're down.
 					to_chat(M, SPAN_WARNING("You can't box with [A], they're already down!"))
 					return 1
 				M.visible_message(SPAN_DANGER("[M] [boxing_verb] [A]!"))

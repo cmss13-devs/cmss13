@@ -3,8 +3,13 @@
 /obj/item/storage/lockbox
 	name = "lockbox"
 	desc = "A locked box."
+	icon = 'icons/obj/items/storage/briefcases.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
 	icon_state = "lockbox+l"
-	item_state = "syringe_kit"
+	item_state = "box"
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 14 //The sum of the w_classes of all the items in this storage item.
@@ -22,7 +27,7 @@
 		if(src.broken)
 			to_chat(user, SPAN_DANGER("It appears to be broken."))
 			return
-		if(src.allowed(user))
+		if(can_storage_interact(user))
 			src.locked = !( src.locked )
 			if(src.locked)
 				src.icon_state = src.icon_locked
@@ -51,14 +56,13 @@
 
 /obj/item/storage/lockbox/loyalty
 	name = "\improper Wey-Yu equipment lockbox"
-	req_access = list(ACCESS_WY_CORPORATE)
+	req_access = null
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
 
 /obj/item/storage/lockbox/loyalty/fill_preset_inventory()
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
-
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
+	new /obj/item/ammo_magazine/pistol/es4(src)
 
 /obj/item/storage/lockbox/cluster
 	name = "lockbox of cluster flashbangs"

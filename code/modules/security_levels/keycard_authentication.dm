@@ -1,6 +1,6 @@
 /obj/structure/machinery/keycard_auth
 	name = "Keycard Authentication Device"
-	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
+	desc = "This device is used to trigger station functions, which require multiple swipes of an ID card to authenticate."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "auth_off"
 	unacidable = TRUE
@@ -21,6 +21,8 @@
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = POWER_CHANNEL_ENVIRON
+	// so that folks dont constantly spam their ID, and play an 'id rejected' noise over and over
+	COOLDOWN_DECLARE(id_scan_cooldown)
 
 /obj/structure/machinery/keycard_auth/attack_remote(mob/user as mob)
 	to_chat(user, "The station AI is not to interact with these devices.")
@@ -32,14 +34,19 @@
 		return
 	if(istype(W,/obj/item/card/id))
 		var/obj/item/card/id/ID = W
-		if(ACCESS_MARINE_COMMAND in ID.access)
+		if((ACCESS_MARINE_COMMAND in ID.access) && (COOLDOWN_FINISHED(src, id_scan_cooldown)))
 			if(active == 1)
 				//This is not the device that made the initial request. It is the device confirming the request.
 				if(event_source)
 					event_source.confirmed = 1
-					event_source.event_confirmed_by = usr
+					event_source.event_confirmed_by = user
 			else if(screen == 2)
 				event_triggered_by = usr
+				if((event == "toggle_ob_safety") && !(ACCESS_MARINE_SENIOR in ID.access))	// need to be senior CIC staff to toggle ob safety
+					balloon_alert_to_viewers("Error! Insufficient clearence!")
+					playsound(loc, 'sound/items/defib_failed.ogg')
+					COOLDOWN_START(src, id_scan_cooldown, 1 SECONDS)
+					return
 				broadcast_request() //This is the device making the initial event request. It needs to broadcast to other devices
 
 /obj/structure/machinery/keycard_auth/power_change()
@@ -64,16 +71,17 @@
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Red alert'>Red alert</A></li>"
 		if(!CONFIG_GET(flag/ert_admin_call_only))
-			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
+			dat += "<li><A href='byond://?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
 
-		dat += "<li><A href='?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=toggle_ob_safety'>Toggle OB Cannon Safety</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=enable_maint_sec'>Enable Maintenance Security</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=disable_maint_sec'>Disable Maintenance Security</A></li>"
 		dat += "</ul>"
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
-		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
+		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
 	show_browser(user, dat, name, "keycard_auth")
 	return
 
@@ -108,8 +116,9 @@
 
 /obj/structure/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/structure/machinery/keycard_auth/KA in machines)
-		if(KA == src || KA.channel != channel) continue
+	for(var/obj/structure/machinery/keycard_auth/KA in GLOB.machines)
+		if(KA == src || KA.channel != channel)
+			continue
 		KA.reset()
 		INVOKE_ASYNC(KA, TYPE_PROC_REF(/obj/structure/machinery/keycard_auth, receive_request), src)
 
@@ -144,20 +153,31 @@
 			make_maint_all_access()
 		if("enable_maint_sec")
 			revoke_maint_all_access()
+		if("toggle_ob_safety")
+			toggle_ob_cannon_safety()
 
 /obj/structure/machinery/keycard_auth/proc/is_ert_blocked()
-	if(CONFIG_GET(flag/ert_admin_call_only)) return 1
+	if(CONFIG_GET(flag/ert_admin_call_only))
+		return 1
 	return SSticker.mode && SSticker.mode.ert_disabled
 
-var/global/maint_all_access = 1
+GLOBAL_VAR_INIT(maint_all_access, TRUE)
 
 /proc/make_maint_all_access()
-	maint_all_access = 1
+	GLOB.maint_all_access = TRUE
 	ai_announcement("The maintenance access requirement has been removed on all airlocks.")
 
 /proc/revoke_maint_all_access()
-	maint_all_access = 0
+	GLOB.maint_all_access = FALSE
 	ai_announcement("The maintenance access requirement has been added on all airlocks.")
+
+GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
+
+/proc/toggle_ob_cannon_safety()
+	GLOB.ob_cannon_safety = !GLOB.ob_cannon_safety
+	for(var/obj/structure/machinery/computer/overwatch/overwatch in GLOB.active_overwatch_consoles)
+		overwatch.toggle_ob_cannon_safety()
+
 
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/lockdown
@@ -209,7 +229,7 @@ var/global/maint_all_access = 1
 
 /obj/structure/machinery/keycard_auth/lockdown/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/structure/machinery/keycard_auth/lockdown/KA in machines)
+	for(var/obj/structure/machinery/keycard_auth/lockdown/KA in GLOB.machines)
 		if(KA == src || KA.channel != channel)
 			continue
 		KA.reset()
@@ -238,18 +258,18 @@ var/global/maint_all_access = 1
 
 	if(screen == 1)
 		dat += "Select an event to trigger:<ul>"
-		dat += "<li><A href='?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
+		dat += "<li><A href='byond://?src=\ref[src];triggerevent=Lift Biohazard Lockdown'>Lift Lockdown</A></li>"
 		dat += "</ul>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	if(screen == 2)
 		dat += "Please swipe your card to authorize the following event: <b>[event]</b>"
-		dat += "<p><A href='?src=\ref[src];reset=1'>Back</A>"
-		show_browser(user, dat, name, "keycard_auth", "size=500x300")
+		dat += "<p><A href='byond://?src=\ref[src];reset=1'>Back</A>"
+		show_browser(user, dat, name, "keycard_auth", width = 500, height = 300)
 	return
 
 /obj/structure/machinery/keycard_auth/lockdown/proc/timed_countdown(timeleft = 0)
 	if(!timeleft)
-		for(var/obj/structure/machinery/door/poddoor/M in machines)
+		for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 			if(M.id == podlock_id && M.density)
 				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
 		return

@@ -32,6 +32,7 @@ require only minor tweaks.
 #define ZTRAIT_FOG "Fog"
 #define ZTRAIT_LOCKDOWN "Lockdown"
 #define ZTRAIT_BASIC_RT "BasicRT"
+#define ZTRAIT_IN_SPACE "InSpace" // Is our ground_level considered in space or on a space station
 
 // boolean - weather types that occur on the level
 #define ZTRAIT_SNOWSTORM "weather_snowstorm"
@@ -117,8 +118,10 @@ require only minor tweaks.
 #define MAP_ARMOR_STYLE_JUNGLE "jungle"
 #define MAP_ARMOR_STYLE_PRISON "prison"
 
-//turf-only flags
-#define NOJAUNT_1 (1<<0)
-#define UNUSED_RESERVATION_TURF (1<<1)
-/// If a turf can be made dirty at roundstart. This is also used in areas.
-#define CAN_BE_DIRTY_1 (1<<2)
+/// A map key that corresponds to being one exclusively for Space.
+#define SPACE_KEY "space"
+
+#define SENTRY_TOP_LEFT "top_left"
+#define SENTRY_TOP_RIGHT "top_right"
+#define SENTRY_BOTTOM_LEFT "bottom_left"
+#define SENTRY_BOTTOM_RIGHT "bottom_right"

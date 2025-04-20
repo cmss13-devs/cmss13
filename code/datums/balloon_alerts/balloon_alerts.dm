@@ -8,15 +8,27 @@
 /// The amount of characters needed before this increase takes into effect
 #define BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN 10
 
-/// Creates text that will float from the atom upwards to the viewer.
-/atom/proc/balloon_alert(mob/viewer, text, text_color)
+/// The world.time the last balloon alert was displayed
+/atom/var/last_balloon_alert_time = 0
+
+/proc/can_display_balloon_alert(atom/source, delay)
+	// Check if enough time has passed since the last alert
+	if (source.last_balloon_alert_time && (world.time - source.last_balloon_alert_time < delay))
+		return FALSE
+	return TRUE
+
+/atom/proc/balloon_alert(mob/viewer, text, text_color, delay = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 
+	if (delay > 0 && !can_display_balloon_alert(src, delay))
+		return
+
+	src.last_balloon_alert_time = world.time
 	INVOKE_ASYNC(src, PROC_REF(balloon_alert_perform), viewer, text, text_color)
 
 /// Create balloon alerts (text that floats up) to everything within range.
 /// Will only display to people who can see.
-/atom/proc/balloon_alert_to_viewers(message, self_message, max_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, text_color)
+/atom/proc/balloon_alert_to_viewers(message, self_message, max_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, text_color, delay = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 
 	var/list/hearers = get_mobs_in_view(max_distance, src)
@@ -25,7 +37,6 @@
 	for(var/mob/hearer in hearers)
 		if(is_blind(hearer))
 			continue
-
 		balloon_alert(hearer, (hearer == src && self_message) || message, text_color)
 
 // Do not use.
@@ -37,20 +48,15 @@
 	if (isnull(viewer_client))
 		return
 
-	var/bound_width = world.icon_size
-	if (ismovable(src))
-		var/atom/movable/movable_source = src
-		bound_width = movable_source.bound_width
-
 	var/image/balloon_alert = image(loc = get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)
 	balloon_alert.plane = RUNECHAT_PLANE
 	balloon_alert.alpha = 0
 	balloon_alert.color = text_color
 	balloon_alert.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM|RESET_ALPHA
 	balloon_alert.maptext = MAPTEXT("<span class='center langchat'>[text]</span>")
-	balloon_alert.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
 	balloon_alert.maptext_height = WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH))
 	balloon_alert.maptext_width = BALLOON_TEXT_WIDTH
+	balloon_alert.maptext_x = get_maxptext_x_offset(balloon_alert)
 	if(appearance_flags & PIXEL_SCALE)
 		balloon_alert.appearance_flags |= PIXEL_SCALE
 	//"<span style='text-align: center; -dm-text-outline: 1px #0005'>[text]</span>"

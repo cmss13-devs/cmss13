@@ -66,7 +66,7 @@
 		return
 
 	if(!src.client.admin_holder || !(client.admin_holder.rights & R_MOD))
-		if(!dsay_allowed)
+		if(!GLOB.dsay_allowed)
 			to_chat(src, SPAN_DANGER("Deadchat is globally muted"))
 			return
 
@@ -104,31 +104,19 @@
 		langchat_speech(message, langchat_listeners, GLOB.all_languages, skip_language_check = TRUE)
 
 /mob/proc/say_understands(mob/other, datum/language/speaking = null)
-	if (src.stat == 2) //Dead
-		return 1
+	if(stat == DEAD) //Dead
+		return TRUE
 
-	//Universal speak makes everything understandable, for obvious reasons.
-	else if(src.universal_speak || src.universal_understand)
-		return 1
-
-	//Languages are handled after.
-	if (!speaking)
-		if(!other)
-			return 1
-		if(other.universal_speak)
-			return 1
-		if(isAI(src))
-			return 1
-		if (istype(other, src.type) || istype(src, other.type))
-			return 1
-		return 0
-
+	if(universal_understand)
+		return TRUE
+	if(other?.universal_speak)
+		return TRUE
 	//Language check.
-	for(var/datum/language/L in src.languages)
-		if(speaking.name == L.name)
-			return 1
+	for(var/datum/language/L in languages)
+		if(speaking?.name == L.name)
+			return TRUE
 
-	return 0
+	return FALSE
 
 /*
 ***Deprecated***
@@ -174,7 +162,7 @@ for it but just ignore it.
 
 	if(length(message) >= 2)
 		var/channel_prefix = copytext(message, 1 ,3)
-		return department_radio_keys[channel_prefix]
+		return GLOB.department_radio_keys[channel_prefix]
 
 	return null
 

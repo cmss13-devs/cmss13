@@ -1,8 +1,8 @@
-import { Component } from 'inferno';
+import { Component } from 'react';
 
 interface TimedCallbackProps {
-  time: number;
-  callback: () => void;
+  readonly time: number;
+  readonly callback: () => void;
 }
 
 interface TimedCallbackState {

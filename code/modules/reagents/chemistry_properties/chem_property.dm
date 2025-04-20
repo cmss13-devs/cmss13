@@ -6,12 +6,14 @@
 	var/rarity = PROPERTY_DISABLED
 	var/category = PROPERTY_TYPE_MEDICINE
 	var/level = 1 //used to calculate potency
-	var/max_level //if there a point where it makes no logical sense to increase the level? Remember potency is level / 2
+	var/max_level = 999 //if there a point where it makes no logical sense to increase the level? Remember potency is level / 2
 	var/value //how much value per level? Negative properties should have a high negative value, neutral should have a value near zero, and positive ones should have a high value
 	var/starter = FALSE //whether or not this is a starter property and should be added to the property database on startup
 	var/updates_stats = FALSE //should the property change other variables in the reagent when added or removed?
 	/// Should reagent with this property explode/start fire when mixed more than overdose threshold at once?
 	var/volatile = FALSE
+	/// a cost penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
+	var/cost_penalty = TRUE
 
 /datum/chem_property/Destroy()
 	holder = null
@@ -105,3 +107,6 @@
 		text += "Anomalous "
 	return text
 
+/// If this property can cause harm, generally
+/datum/chem_property/proc/can_cause_harm()
+	return FALSE

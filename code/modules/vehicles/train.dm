@@ -27,6 +27,11 @@
 	for(var/obj/vehicle/train/T in orange(1, src))
 		latch(T)
 
+/obj/vehicle/train/Destroy(force)
+	. = ..()
+	lead = null
+	tow = null
+
 /obj/vehicle/train/Move()
 	var/old_loc = get_turf(src)
 	. = ..()
@@ -54,8 +59,8 @@
 //-------------------------------------------
 
 
-/obj/vehicle/train/MouseDrop_T(atom/movable/C, mob/user as mob)
-	if(user.buckled || user.stat || user.is_mob_restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !user.canmove))
+/obj/vehicle/train/MouseDrop_T(atom/movable/C, mob/living/user as mob)
+	if(user.buckled || user.stat || user.is_mob_restrained() || !Adjacent(user) || !user.Adjacent(C) || !istype(C) || (user == C && !(user.mobility_flags & MOBILITY_MOVE)))
 		return
 	if(istype(C,/obj/vehicle/train))
 		latch(C, user)
@@ -71,7 +76,7 @@
 	if(!istype(usr, /mob/living/carbon/human))
 		return
 
-	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !Adjacent(usr))
+	if(usr.is_mob_incapacitated() || !Adjacent(usr))
 		return
 
 	unattach(usr)

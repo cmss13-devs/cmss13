@@ -9,9 +9,9 @@
 		return
 
 	var/mob/living/carbon/human/H = target
-	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutineer]
+	var/datum/equipment_preset/preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutiny/mutineer]
 	if(params["leader"])
-		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutineer/leader]
+		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/mutiny/mutineer/leader]
 
 
 	preset.load_status(H)
@@ -56,9 +56,8 @@
 	if(params["leader"])
 		preset = GLOB.gear_path_presets_list[/datum/equipment_preset/other/xeno_cultist/leader]
 
-
-	preset.load_race(H, params["hivenumber"])
-	preset.load_status(H)
+	preset.load_race(H)
+	preset.load_status(H, params["hivenumber"])
 
 	var/title = params["leader"]? "xeno cultist leader" : "cultist"
 

@@ -25,7 +25,10 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/blocker/invisible_wall/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot go this way."))
+	var/msg = desc
+	if(!msg)
+		msg = "You cannot go this way."
+	to_chat(AM, SPAN_WARNING(msg))
 
 /obj/structure/blocker/invisible_wall/New()
 	..()
@@ -34,10 +37,6 @@
 /obj/structure/blocker/invisible_wall/water
 	desc = "You cannot wade out any further"
 	icon_state = "map_blocker"
-
-/obj/structure/blocker/invisible_wall/water/Collided(atom/movable/AM)
-	to_chat(AM, SPAN_WARNING("You cannot wade out any further."))
-
 
 /obj/structure/blocker/fog
 	name = "dense fog"
@@ -62,6 +61,42 @@
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 
+/obj/structure/blocker/preserve_edge
+	name = "dense fog"
+	desc = "You think you can see a way through."
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	opacity = TRUE
+
+/obj/structure/blocker/preserve_edge/attack_hand(mob/user)
+	if(isyautja(user))
+		to_chat(user, SPAN_WARNING("Why would you do this?"))///no leaving for preds
+		return
+
+	if(user.action_busy)
+		return
+
+	var/choice = tgui_alert(user, "Are you sure you want to traverse the fog and escape the preserve?", "[src]", list("No", "Yes"), 15 SECONDS)
+	if(!choice)
+		return
+
+	if(choice == "No")
+		return
+
+	if(choice == "Yes")
+		to_chat(user, SPAN_DANGER("You begin to make your escape!"))
+
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_NOTICE("You lose your way and come back."))
+		return
+
+	announce_dchat("[user.real_name] has escaped from the hunting grounds!")
+	playsound(user, 'sound/misc/fog_escape.ogg')
+	qdel(user)
+
+/obj/structure/blocker/preserve_edge/attack_alien(user)
+	attack_hand(user)
+	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/blocker/forcefield
 	name = "forcefield"
@@ -78,7 +113,7 @@
 	var/list/types = list()
 	var/visible = FALSE
 
-/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/item/projectile/P)
+/obj/structure/blocker/forcefield/get_projectile_hit_boolean(obj/projectile/P)
 	if(!is_whitelist)
 		return FALSE
 	. = ..()
@@ -106,11 +141,33 @@
 /obj/structure/blocker/forcefield/vehicles
 	types = list(/obj/vehicle/)
 
+
+/obj/structure/blocker/forcefield/vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
+	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
+		return TRUE
+	return FALSE
+
 /obj/structure/blocker/forcefield/multitile_vehicles
 	types = list(/obj/vehicle/multitile/)
+
+
+/obj/structure/blocker/forcefield/multitile_vehicles/handle_vehicle_bump(obj/vehicle/multitile/multitile_vehicle)
+	if(multitile_vehicle.vehicle_flags & VEHICLE_BYPASS_BLOCKERS)
+		return TRUE
+	return FALSE
 
 /obj/structure/blocker/forcefield/human
 	types = list(/mob/living/carbon/human)
 	icon_state = "purple_line"
 
 	visible = TRUE
+
+/obj/structure/blocker/forcefield/human/bulletproof/get_projectile_hit_boolean()
+	return TRUE
+
+// for fuel pump since it's a large sprite.
+/obj/structure/blocker/fuelpump
+	name = "\improper Fuel Pump"
+	desc = "It is a machine that pumps fuel around the ship."
+	invisibility = 101
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

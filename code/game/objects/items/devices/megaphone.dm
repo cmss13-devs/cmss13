@@ -2,7 +2,12 @@
 	name = "megaphone"
 	desc = "A device used to project your voice. Loudly."
 	icon_state = "megaphone"
-	item_state = "radio"
+	item_state = "megaphone"
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 
@@ -28,6 +33,10 @@
 	var/message = tgui_input_text(user, "Shout a message?", "Megaphone", multiline = TRUE)
 	if(!message)
 		return
+	// we know user is a human now, so adjust user for this check
+	var/mob/living/carbon/human/humanoid = user
+	var/list/new_message = humanoid.handle_speech_problems(message)
+	message = new_message[1]
 	message = capitalize(message)
 	log_admin("[key_name(user)] used a megaphone to say: >[message]<")
 
@@ -42,6 +51,7 @@
 				continue
 			listener.show_message("<B>[user]</B> broadcasts, [FONT_SIZE_LARGE("\"[message]\"")]", SHOW_MESSAGE_AUDIBLE) // 2 stands for hearable message
 			langchat_long_listeners += listener
+		playsound(loc, 'sound/items/megaphone.ogg', 100, FALSE, TRUE)
 		user.langchat_long_speech(message, langchat_long_listeners, user.get_default_language())
 
 		COOLDOWN_START(src, spam_cooldown, spam_cooldown_time)

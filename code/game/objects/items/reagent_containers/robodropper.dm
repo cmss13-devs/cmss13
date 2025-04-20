@@ -10,7 +10,8 @@
 	var/filled = 0
 
 /obj/item/reagent_container/robodropper/afterattack(obj/target, mob/user , flag)
-	if(!target.reagents) return
+	if(!target.reagents)
+		return
 
 	if(filled)
 
@@ -45,7 +46,7 @@
 						safe_thing.create_reagents(100)
 					trans = src.reagents.trans_to(safe_thing, amount_per_transfer_from_this)
 
-					for(var/mob/O in viewers(world_view_size, user))
+					for(var/mob/O in viewers(GLOB.world_view_size, user))
 						O.show_message(SPAN_DANGER("<B>[user] tries to squirt something into [target]'s eyes, but fails!</B>"), SHOW_MESSAGE_VISIBLE)
 					spawn(5)
 						src.reagents.reaction(safe_thing, TOUCH)
@@ -58,7 +59,7 @@
 					return
 
 
-			for(var/mob/O in viewers(world_view_size, user))
+			for(var/mob/O in viewers(GLOB.world_view_size, user))
 				O.show_message(SPAN_DANGER("<B>[user] squirts something into [target]'s eyes!</B>"), SHOW_MESSAGE_VISIBLE)
 			src.reagents.reaction(target, TOUCH)
 

@@ -12,6 +12,22 @@
 	var/move_momentum_build_factor = 0
 	var/move_turn_momentum_loss_factor = 0
 
+/obj/item/hardpoint/locomotion/p_are(temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "is"
+	if(temp_gender == PLURAL)
+		. = "are"
+
+/obj/item/hardpoint/locomotion/p_they(capitalized, temp_gender)
+	if(!temp_gender)
+		temp_gender = gender
+	. = "it"
+	if(temp_gender == PLURAL)
+		. = "they"
+	if(capitalized)
+		. = capitalize(.)
+
 /obj/item/hardpoint/locomotion/deactivate()
 	owner.move_delay = initial(owner.move_delay)
 	owner.move_max_momentum = initial(owner.move_max_momentum)
@@ -46,7 +62,7 @@
 		//of vehicle enter the spray spawn area, it deals a huge amount of damage. But simply nerfing damage will also nerf it for
 		//acid spraying castes like spitters and praetorians, which is not ideal.
 		if(acid.cause_data.cause_name == "resin acid trap")
-			take_damage = round(take_damage / 3)
+			take_damage = floor(take_damage / 3)
 
 	else if(istype(A, /obj/effect/blocker/toxic_water))
 		//multitile vehicles are, well, multitile and will be receiving damage for each tile, so damage is low per tile.

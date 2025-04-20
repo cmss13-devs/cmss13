@@ -143,7 +143,7 @@
 						dir_sum += 128
 
 	var/table_type = 0 //stand_alone table
-	if((dir_sum%16) in cardinal)
+	if((dir_sum%16) in GLOB.cardinals)
 		table_type = 1 //endtable
 		dir_sum %= 16
 	if((dir_sum%16) in list(3, 12))
@@ -254,39 +254,45 @@
 /obj/structure/surface/table/MouseDrop_T(obj/item/I, mob/user)
 	if (!istype(I) || user.get_active_hand() != I)
 		return ..()
-	if(isrobot(user))
-		return
 	user.drop_held_item()
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
 
 /obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
-	if(!W) return
+	if(!W)
+		return
 
 	if (W.has_special_table_placement)
 		W.set_to_table(src)
 		return
 
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
 			if(user.a_intent == INTENT_HARM)
 				if(user.grab_level > GRAB_AGGRESSIVE)
-					if (prob(15)) M.apply_effect(5, WEAKEN)
+					if (prob(15))
+						M.KnockDown(5)
+						M.Stun(5)
 					M.apply_damage(8, def_zone = "head")
-					user.visible_message(SPAN_DANGER("[user] slams [M]'s face against [src]!"),
-					SPAN_DANGER("You slam [M]'s face against [src]!"))
+					user.visible_message(SPAN_DANGER("<B>[user] slams [M]'s face against [src]!</B>"),
+					SPAN_DANGER("<B>You slam [M]'s face against [src]!</B>"))
 					playsound(src.loc, 'sound/weapons/tablehit1.ogg', 25, 1)
+					return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 				else
 					to_chat(user, SPAN_WARNING("You need a better grip to do that!"))
 					return
 			else if(user.grab_level >= GRAB_AGGRESSIVE)
 				M.forceMove(loc)
-				M.apply_effect(5, WEAKEN)
-				user.visible_message(SPAN_DANGER("[user] throws [M] on [src]."),
-				SPAN_DANGER("You throw [M] on [src]."))
+				M.KnockDown(5)
+				M.Stun(5)
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				user.visible_message(SPAN_DANGER("<B>[user] throws [M] on [src], stunning them!</B>"),
+				SPAN_DANGER("<B>You throw [M] on [src], stunning them!</B>"))
+				return ATTACKBY_HINT_UPDATE_NEXT_MOVE
 		return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP))
@@ -299,10 +305,10 @@
 			deconstruct(TRUE)
 		return
 
-	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
+	if(W.flags_item & ITEM_ABSTRACT)
 		return
 
-	if(istype(W, /obj/item/weapon/wristblades))
+	if(istype(W, /obj/item/weapon/bracer_attachment))
 		if(rand(0, 2) == 0)
 			playsound(src.loc, 'sound/weapons/wristblades_hit.ogg', 25, 1)
 			user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
@@ -321,16 +327,18 @@
 	//clicking the table
 	if(flipped)
 		return
-	..()
+	. = ..()
 
 /// Checks whether a table is a straight line along a given axis
 /obj/structure/surface/table/proc/straight_table_check(direction)
 	var/obj/structure/surface/table/table = src
-	while(table)
+	var/obj/structure/surface/table/side_table
+	var/tables_count = 7 // Lazy extra safety against infinite loops. If table big, can't flip, i guess.
+	while(--tables_count)
 		// Check whether there are connected tables perpendicular to the axis
 		for(var/angle in list(-90, 90))
-			table = locate() in get_step(loc, turn(direction, angle))
-			if(table && !table.flipped)
+			side_table = locate() in get_step(table, turn(direction, angle))
+			if(side_table && !side_table.flipped)
 				return FALSE
 		table = locate() in get_step(table, direction)
 		if(!table || table.flipped)
@@ -339,6 +347,8 @@
 			var/obj/structure/surface/table/reinforced/reinforced_table = table
 			if(reinforced_table.status == RTABLE_NORMAL)
 				return FALSE
+	if(!tables_count)
+		return FALSE
 	return TRUE
 
 /obj/structure/surface/table/verb/do_flip()
@@ -347,7 +357,11 @@
 	set category = "Object"
 	set src in oview(1)
 
-	if(!can_touch(usr) || ismouse(usr))
+	if(!can_touch(usr))
+		return
+
+	if(usr.mob_size == MOB_SIZE_SMALL)
+		to_chat(usr, SPAN_WARNING("[isxeno(usr) ? "We are" : "You're"] too small to flip [src]."))
 		return
 
 	if(usr.a_intent != INTENT_HARM)
@@ -375,9 +389,11 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	for(var/mob/living/mob_behind_table in oview(src, 0))
+	FOR_DOVIEW(var/mob/living/mob_behind_table, 0, src, HIDE_INVISIBLE_OBSERVER)
 		to_chat(usr, SPAN_WARNING("[mob_behind_table] is in the way of [src]."))
+		FOR_DVIEW_END
 		return FALSE
+	FOR_DVIEW_END
 
 	var/list/directions = list()
 	if(direction)
@@ -421,7 +437,7 @@
 		to_chat(usr, SPAN_WARNING("You have moved a table too recently."))
 		return FALSE
 
-	if(!skip_straight_check && (!straight_table_check(turn(direction, 90)) || !straight_table_check(turn(direction, -90))))
+	if(!skip_straight_check && !(straight_table_check(turn(direction, 90)) && straight_table_check(turn(direction, -90))))
 		to_chat(usr, SPAN_WARNING("[src] is too wide to be flipped."))
 		return FALSE
 
@@ -429,8 +445,6 @@
 
 	verbs -= /obj/structure/surface/table/verb/do_flip
 	verbs += /obj/structure/surface/table/proc/do_put
-
-	detach_all()
 
 	var/list/targets = list(get_step(src, dir), get_step(src, turn(dir, 45)), get_step(src, turn(dir, -45)))
 	for(var/atom/movable/movable_on_table in get_turf(src))
@@ -475,7 +489,6 @@
 		var/obj/structure/surface/table/T = locate() in get_step(src.loc,D)
 		if(T && T.flipped && T.dir == src.dir)
 			T.unflip()
-	attach_all()
 	update_icon()
 	update_adjacent()
 
@@ -550,7 +563,8 @@
 				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if (do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn()) return
+					if(!src || !WT.isOn())
+						return
 					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
 					SPAN_NOTICE("You weaken [src]"))
 					src.status = RTABLE_WEAKENED
@@ -559,7 +573,8 @@
 				SPAN_NOTICE("You start welding [src] back together."))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn()) return
+					if(!src || !WT.isOn())
+						return
 					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
 					SPAN_NOTICE("You weld [src] back together."))
 					status = RTABLE_NORMAL
@@ -569,7 +584,7 @@
 	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !(user.a_intent == INTENT_HELP) && status == RTABLE_NORMAL)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/surface/table/reinforced/prison
 	desc = "A square metal surface resting on four legs. This one has side panels, making it useful as a desk, but impossible to flip."
@@ -627,7 +642,7 @@
 /obj/structure/surface/rack
 	name = "rack"
 	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "rack"
 	density = TRUE
 	layer = TABLE_LAYER
@@ -654,8 +669,6 @@
 /obj/structure/surface/rack/MouseDrop_T(obj/item/I, mob/user)
 	if (!istype(I) || user.get_active_hand() != I)
 		return ..()
-	if(isrobot(user))
-		return
 	user.drop_held_item()
 	if(I.loc != loc)
 		step(I, get_dir(I, src))
@@ -665,9 +678,9 @@
 		deconstruct(TRUE)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return
-	if((W.flags_item & ITEM_ABSTRACT) || isrobot(user))
+	if(W.flags_item & ITEM_ABSTRACT)
 		return
-	..()
+	. = ..()
 
 /obj/structure/surface/rack/Crossed(atom/movable/O)
 	..()

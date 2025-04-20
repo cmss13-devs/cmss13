@@ -44,7 +44,7 @@
 	if(!LAZYLEN(locs_land))
 		return TRUE
 
-	if(!main_doors.len && !controls.len)
+	if(!length(main_doors) && !length(controls))
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)
 		for(var/turf/T in turfs)
@@ -56,11 +56,13 @@
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in main_doors)
 		for(var/obj/vehicle/multitile/M in D.loc)
-			if(M) return 0
+			if(M)
+				return 0
 
-		for(var/turf/T in D.get_filler_turfs())
+		for(var/turf/T in D.locs)
 			for(var/obj/vehicle/multitile/M in T)
-				if(M) return 0
+				if(M)
+					return 0
 
 		//No return 1 here in case future elevators have multiple multi_tile doors
 
@@ -72,13 +74,6 @@
 		playsound(control, 'sound/effects/adminhelp-error.ogg', 20) //Arbitrary notification sound
 		control.visible_message(SPAN_WARNING(fail_flavortext))
 		return //Kill it so as not to repeat
-
-/datum/shuttle/ferry/marine/proc/load_datums()
-	if(!(info_tag in s_info))
-		message_admins(SPAN_WARNING("Error with shuttles: Shuttle tag does not exist. Code: MSD10.\n WARNING: DROPSHIP LAUNCH WILL PROBABLY FAIL"))
-
-	var/list/L = s_info[info_tag]
-	info_datums = L.Copy()
 
 /datum/shuttle/ferry/marine/proc/set_automated_launch(bool_v)
 	automated_launch = bool_v
@@ -102,6 +97,7 @@
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
 	ai_silent_announcement("Dropship '[name]' departing.")
+	log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
 
 /*
@@ -125,13 +121,15 @@
 				return .
 			if (skip_docking_checks() || docking_controller.can_launch())
 				if (move_time) long_jump()
-				else short_jump()
+				else
+					short_jump()
 
 				process_state = WAIT_ARRIVE
 
 		if (FORCE_LAUNCH)
 			if (move_time) long_jump()
-			else short_jump()
+			else
+				short_jump()
 
 			process_state = WAIT_ARRIVE
 
@@ -149,16 +147,17 @@
 /datum/shuttle/ferry/marine/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
 	set waitfor = 0
 
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
 	for(var/obj/structure/dropship_equipment/fuel/cooling_system/CS in equipments)
-		recharging = round(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
+		recharging = floor(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
 		break
 
 	//START: Heavy lifting backend
@@ -170,7 +169,7 @@
 	var/int_rot = locs_move[T_int]
 	var/turf/T_trg
 	var/trg_rot
-	if(!locs_land.len) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
+	if(!length(locs_land)) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
 		transit_gun_mission = 1
 
 	if(transit_gun_mission)//gun mission makes you land back where you started.
@@ -200,7 +199,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
+				travel_time  = floor(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
 				break
 	else
 		if(transit_optimized)
@@ -211,7 +210,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
+				travel_time  = floor(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
 				break
 
 	//START: Heavy lifting backend
@@ -224,11 +223,11 @@
 
 	if(!queen_locked)
 		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/xenomorph/X = locate(/mob/living/carbon/xenomorph) in T
-			if(X && X.stat != DEAD)
+			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
-				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg')
+				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 				set_security_level(SEC_LEVEL_RED)
 				break
 
@@ -256,7 +255,8 @@
 
 	close_doors(turfs_int) // adding this for safety.
 
-	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+	// Ever a flyby is possible this way it needs to check for such
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop()
 
 	in_transit_time_left = travel_time
@@ -266,16 +266,10 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
-		return FALSE //If a nuke is in progress, don't attempt a landing.
-
 	playsound_area(get_area(turfs_int[sound_target]), sound_landing, 100)
 	playsound(turfs_trg[sound_target], sound_landing, 100)
 	playsound_area(get_area(turfs_int[sound_target]), channel = SOUND_CHANNEL_AMBIENCE, status = SOUND_UPDATE)
 	sleep(100) //Wait for it to finish.
-
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
-		return FALSE //If a nuke finished, don't land.
 
 	target_turf = T_trg
 	target_rotation = trg_rot
@@ -333,10 +327,11 @@
 /datum/shuttle/ferry/marine/proc/long_jump_crash()
 	set waitfor = 0
 
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
@@ -348,27 +343,29 @@
 
 	var/target_section = crash_target_section
 	if(isnull(target_section))
-		var/list/potential_crash_sections = almayer_ship_sections.Copy()
-		potential_crash_sections -= almayer_aa_cannon.protecting_section
+		var/list/potential_crash_sections = GLOB.almayer_ship_sections.Copy()
+		potential_crash_sections -= GLOB.almayer_aa_cannon.protecting_section
 		target_section = pick(potential_crash_sections)
 
-	var/turf/T_trg = pick(shuttle_controller.locs_crash[target_section])
+	var/turf/T_trg = pick(SSoldshuttle.shuttle_controller.locs_crash[target_section])
 
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		if(istype(E, /obj/structure/dropship_equipment/adv_comp/docking))
 			var/list/crash_turfs = list()
-			for(var/turf/TU in shuttle_controller.locs_crash[target_section])
+			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
-			if(crash_turfs.len) T_trg = pick(crash_turfs)
-			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
+			if(length(crash_turfs))
+				T_trg = pick(crash_turfs)
+			else
+				message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
 		message_admins(SPAN_WARNING("Error with shuttles: Reference turfs not correctly instantiated. Code: MSD04.\n WARNING: DROPSHIP LAUNCH WILL FAIL"))
 
-	shuttle_controller.locs_crash[target_section] -= T_trg
+	SSoldshuttle.shuttle_controller.locs_crash[target_section] -= T_trg
 
 	//END: Heavy lifting backend
 
@@ -414,7 +411,7 @@
 		// At halftime, we announce whether or not the AA forced the dropship to divert
 		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
 		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
-			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System")
+			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
 
 			var/area/shuttle_area
 			for(var/turf/T in turfs_int)
@@ -433,12 +430,9 @@
 
 	in_transit_time_left = 0
 
-	if(EvacuationAuthority.dest_status >= NUKE_EXPLOSION_IN_PROGRESS)
-		return FALSE //If a nuke is in progress, don't attempt a landing.
-
 	//This is where things change and shit gets real
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg')
+	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))
@@ -448,16 +442,14 @@
 
 	sleep(85)
 
-	if(EvacuationAuthority.dest_status == NUKE_EXPLOSION_FINISHED)
-		return FALSE //If a nuke finished, don't land.
-
-	if(security_level < SEC_LEVEL_RED) //automatically set security level to red.
+	if(GLOB.security_level < SEC_LEVEL_RED) //automatically set security level to red.
 		set_security_level(SEC_LEVEL_RED, TRUE)
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
-	for(var/obj/structure/machinery/power/apc/A in machines) //break APCs
-		if(A.z != T_trg.z) continue
+	for(var/obj/structure/machinery/power/apc/A in GLOB.machines) //break APCs
+		if(A.z != T_trg.z)
+			continue
 		if(prob(A.crash_break_probability))
 			A.overload_lighting()
 			A.set_broken()
@@ -472,23 +464,14 @@
 
 	// Break the ultra-reinforced windows.
 	// Break the briefing windows.
-	for(var/i in GLOB.hijack_bustable_windows)
-		var/obj/structure/window/H = i
-		H.deconstruct(FALSE)
 
-	for(var/k in GLOB.hijack_bustable_ladders)
-		var/obj/structure/ladder/fragile_almayer/L = k
-		L.deconstruct()
-
-	// Delete the briefing door(s).
-	for(var/D in GLOB.hijack_deletable_windows)
-		qdel(D)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_HIJACK_IMPACTED)
 
 	// Sleep while the explosions do their job
 	var/explosion_alive = TRUE
 	while(explosion_alive)
 		explosion_alive = FALSE
-		for(var/datum/automata_cell/explosion/E in cellauto_cells)
+		for(var/datum/automata_cell/explosion/E in GLOB.cellauto_cells)
 			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
@@ -531,15 +514,15 @@
 	open_doors_crashed(turfs_trg) //And now open the doors
 
 
-	for (var/obj/structure/machinery/door_display/research_cell/d in machines)
+	for (var/obj/structure/machinery/door_display/research_cell/d in GLOB.machines)
 		if(is_mainship_level(d.z) || is_reserved_level(d.z))
 			d.ion_act() //Breaking xenos out of containment
 
 	//Stolen from events.dm. WARNING: This code is old as hell
-	for (var/obj/structure/machinery/power/apc/APC in machines)
+	for (var/obj/structure/machinery/power/apc/APC in GLOB.machines)
 		if(is_mainship_level(APC.z) || is_reserved_level(APC.z))
 			APC.ion_act()
-	for (var/obj/structure/machinery/power/smes/SMES in machines)
+	for (var/obj/structure/machinery/power/smes/SMES in GLOB.machines)
 		if(is_mainship_level(SMES.z) || is_reserved_level(SMES.z))
 			SMES.ion_act()
 
@@ -556,12 +539,13 @@
 			colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /datum/shuttle/ferry/marine/proc/disable_latejoin()
-	enter_allowed = FALSE
+	GLOB.enter_allowed = FALSE
 
 
 /datum/shuttle/ferry/marine/short_jump()
 
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	//START: Heavy lifting backend
 
@@ -617,14 +601,13 @@
 
 /datum/shuttle/ferry/marine/force_close_launch(obj/structure/machinery/door/AL)
 	if(!iselevator)
-		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
-			if(isliving(M))
-				to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
-				M.apply_effect(4, WEAKEN)
-				for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
-					if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
-						M.forceMove(T)
-						break
+		for(var/mob/living/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+			to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+			M.KnockDown(4)
+			for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
+				if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
+					M.forceMove(T)
+					break
 	return ..() // Sleeps
 
 /datum/shuttle/ferry/marine/open_doors(list/L)
@@ -633,18 +616,21 @@
 
 	for(i in L)
 		T = i
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 
 		//Just so marines can't land with shutters down and turtle the rasputin
 		for(var/obj/structure/machinery/door/poddoor/shutters/P in T)
-			if(!istype(P)) continue
+			if(!istype(P))
+				continue
 			if(P.density)
 				INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 				//No break since transit shutters are the same parent type
 
 		if (iselevator)
 			for(var/obj/structure/machinery/door/airlock/A in T)
-				if(!istype(A)) continue
+				if(!istype(A))
+					continue
 				if(A.locked)
 					A.unlock()
 				if(A.density)
@@ -666,17 +652,20 @@
 
 	for(i in L)
 		T = i
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 
 		if(istype(T, /turf/closed/wall))
 			var/turf/closed/wall/W = T
-			if(prob(20)) W.thermitemelt()
+			if(prob(20))
+				W.thermitemelt()
 			else if(prob(25)) W.take_damage(W.damage_cap) //It should leave a girder
 			continue
 
 		//Just so marines can't land with shutters down and turtle the rasputin
 		for(var/obj/structure/machinery/door/poddoor/shutters/P in T)
-			if(!istype(P)) continue
+			if(!istype(P))
+				continue
 			if(P.density)
 				spawn(0)
 					P.open()
@@ -702,11 +691,13 @@
 
 	for(i in L)
 		T = i
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 
 		for(j in T)
 			M = j
-			if(!istype(M)) continue
+			if(!istype(M))
+				continue
 			shake_camera(M, 30, 1)
 
 /* QUICK INHERITANCE THING FOR ELEVATORS
@@ -739,11 +730,13 @@
 		// that would make this already relatively expensive and inefficent even more so
 		// --MadSnailDisease
 		for(var/obj/vehicle/multitile/M in E.loc)
-			if(M) return 0
+			if(M)
+				return 0
 
 		for(var/turf/T in E.locs) //For some reason elevators use different multidoor code, this should work though
 			for(var/obj/vehicle/multitile/M in T)
-				if(M) return 0
+				if(M)
+					return 0
 
 		//No return 1 here in case future elevators have multiple multi_tile doors
 

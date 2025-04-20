@@ -14,10 +14,18 @@
 /*
  * Wrench
  */
+
+
+/obj/item/tool
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
+
 /obj/item/tool/wrench
 	name = "wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 	pickup_sound = 'sound/handling/wrench_pickup.ogg'
 	drop_sound = 'sound/handling/wrench_drop.ogg'
@@ -29,6 +37,7 @@
 	matter = list("metal" = 150)
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_WRENCH)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 
 /*
@@ -37,7 +46,12 @@
 /obj/item/tool/screwdriver
 	name = "screwdriver"
 	desc = "You can be totally screwy with this."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "screwdriver"
 	pickup_sound = 'sound/handling/multitool_pickup.ogg'
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
@@ -50,37 +64,38 @@
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
+	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
-
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
+	/// If the item should be assigned a random color
+	var/random_color = TRUE
 
 
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
-	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
-		if ("red")
-			icon_state = "screwdriver2"
-			item_state = "screwdriver"
+	if(!random_color)
+		return
+	switch(pick("blue","red","green","yellow","orange","black"))
 		if ("blue")
 			icon_state = "screwdriver"
-			item_state = "screwdriver_blue"
-		if ("purple")
-			icon_state = "screwdriver3"
-			item_state = "screwdriver_purple"
-		if ("brown")
-			icon_state = "screwdriver4"
-			item_state = "screwdriver_brown"
+			item_state = "screwdriver"
+		if ("red")
+			icon_state = "screwdriver2"
+			item_state = "screwdriver2"
 		if ("green")
-			icon_state = "screwdriver5"
-			item_state = "screwdriver_green"
-		if ("cyan")
-			icon_state = "screwdriver6"
-			item_state = "screwdriver_cyan"
+			icon_state = "screwdriver3"
+			item_state = "screwdriver3"
 		if ("yellow")
-			icon_state = "screwdriver7"
-			item_state = "screwdriver_yellow"
+			icon_state = "screwdriver4"
+			item_state = "screwdriver4"
+		if ("orange")
+			icon_state = "screwdriver5"
+			item_state = "screwdriver5"
+		if ("black")
+			icon_state = "tac_screwdriver"
+			item_state = "tac_screwdriver"
 
-	if (prob(75))
-		src.pixel_y = rand(0, 16)
+
 	return
 
 
@@ -96,8 +111,8 @@
 		if(E)
 			var/safety = H.get_eye_protection()
 			if(!safety)
-				to_chat(user, SPAN_DANGER("You stab [H] in the eyes with the [src]!"))
-				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
+				user.visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with [src]!"),
+					SPAN_DANGER("You stab [H] in the eyes with [src]!"))
 				E.take_damage(rand(8,20))
 	return ..()
 /obj/item/tool/screwdriver/tactical
@@ -117,7 +132,7 @@
 	name = "wirecutters"
 	gender = PLURAL
 	desc = "This cuts wires."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
@@ -134,16 +149,18 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 	inherent_traits = list(TRAIT_TOOL_WIRECUTTERS)
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/wirecutters/tactical
 	name = "tactical wirecutters"
 	desc = "This heavy-duty pair seems more fit for cutting barbed wire, but it'll work splendidly on electrical wires."
 	icon_state = "tac_cutters"
+	item_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
-	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
-		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
-		"You cut \the [C]'s restraints with \the [src]!",\
+	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))
+		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",
+		"You cut \the [C]'s restraints with \the [src]!",
 		"You hear cable being cut.")
 		C.handcuffed = null
 		C.handcuff_update()
@@ -156,12 +173,14 @@
  */
 /obj/item/tool/weldingtool
 	name = "blowtorch"
-	icon = 'icons/obj/items/items.dmi'
+	desc = "A blowtorch for welding and cutting metals."
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "welder"
 	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
 	drop_sound = 'sound/handling/weldingtool_drop.ogg'
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	var/base_icon_state = ""
 
 	//Amount of OUCH when it's thrown
 	force = 3
@@ -175,37 +194,39 @@
 
 	inherent_traits = list(TRAIT_TOOL_BLOWTORCH)
 
+	light_range = 2
+	light_power = 2
+
 	//blowtorch specific stuff
 
 	/// Whether or not the blowtorch is off(0), on(1) or currently welding(2)
 	var/welding = 0
 	/// The max amount of fuel the welder can hold
-	var/max_fuel = 20
+	var/max_fuel = 40
+	/// Adding this line of code to determine whether a welder should have fuel when created or not.
+	var/starting_fuel = TRUE
 	/// Used to slowly deplete the fuel when the tool is left on.
 	var/weld_tick = 0
 	var/has_welding_screen = FALSE
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/weldingtool/Initialize()
 	. = ..()
 	create_reagents(max_fuel)
-	reagents.add_reagent("fuel", max_fuel)
-	return
+	if (starting_fuel)
+		reagents.add_reagent("fuel", max_fuel)
 
+	base_icon_state = initial(icon_state)
+	return
 
 /obj/item/tool/weldingtool/Destroy()
 	if(welding)
-		if(ismob(loc))
-			loc.SetLuminosity(0, FALSE, src)
-		else
-			SetLuminosity(0)
 		STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/tool/weldingtool/get_examine_text(mob/user)
 	. = ..()
 	. += "It contains [get_fuel()]/[max_fuel] units of fuel!"
-
-
 
 /obj/item/tool/weldingtool/process()
 	if(QDELETED(src))
@@ -218,72 +239,78 @@
 	else //should never be happening, but just in case
 		toggle(TRUE)
 
+/obj/item/tool/weldingtool/attack(mob/target, mob/user)
 
-/obj/item/tool/weldingtool/attack(mob/M, mob/user)
+	if(ishuman(target))
+		var/mob/living/carbon/human/human = target
+		var/obj/limb/limb = human.get_limb(user.zone_selected)
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/limb/S = H.get_limb(user.zone_selected)
-
-		if (!S) return
-		if(!(S.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
+		if (!limb) return
+		if(!(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)) || user.a_intent != INTENT_HELP)
 			return ..()
 
 		if(user.action_busy)
 			return
 		var/self_fixing = FALSE
 
-		if(H.species.flags & IS_SYNTHETIC && M == user)
+		if(human.species.flags & IS_SYNTHETIC && target == user)
 			self_fixing = TRUE
 
-		if(S.brute_dam && welding)
+		if(limb.brute_dam && welding)
 			remove_fuel(1,user)
 			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [S.display_name]."), \
-					SPAN_WARNING("You begin to carefully patch some dents on your [S.display_name] so as not to void your warranty."))
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [limb.display_name]."),
+					SPAN_WARNING("You begin to carefully patch some dents on your [limb.display_name] so as not to void your warranty."))
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(15, 0, TRUE)
-			H.pain.recalculate_pain()
-			H.UpdateDamageIcon()
-			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \
-								SPAN_WARNING("You patch some dents on \the [H]'s [S.display_name] with \the [src]."))
+			limb.heal_damage(15, 0, TRUE)
+			human.pain.recalculate_pain()
+			human.UpdateDamageIcon()
+			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."),
+								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("Nothing to fix!"))
 
 	else
+		if(ismob(target))
+			remove_fuel(1)
 		return ..()
 
-/obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
+/obj/item/tool/weldingtool/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
+	if (istype(target, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,target) <= 1)
 		if(!welding)
-			O.reagents.trans_to(src, max_fuel)
+			target.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
-			user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] refills [src]."),
 			SPAN_NOTICE("You refill [src]."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
 			message_admins("[key_name_admin(user)] triggered a fueltank explosion with a blowtorch.")
 			log_game("[key_name(user)] triggered a fueltank explosion with a blowtorch.")
 			to_chat(user, SPAN_DANGER("You begin welding on the fueltank, and in a last moment of lucidity realize this might not have been the smartest thing you've ever done."))
-			var/obj/structure/reagent_dispensers/fueltank/tank = O
+			var/obj/structure/reagent_dispensers/fueltank/tank = target
 			tank.explode()
 		return
 	if (welding)
-		remove_fuel(1)
-
-		if(isliving(O))
-			var/mob/living/L = O
+		if(isliving(target))
+			var/mob/living/L = target
 			L.IgniteMob()
 
 
 /obj/item/tool/weldingtool/attack_self(mob/user)
 	..()
 	toggle()
+
+/obj/item/tool/weldingtool/turn_light(mob/user, toggle_on)
+	. = ..()
+	if(. == NO_LIGHT_STATE_CHANGE)
+		return
+
+	set_light_on(toggle_on)
 
 //Returns the amount of fuel in the welder
 /obj/item/tool/weldingtool/proc/get_fuel()
@@ -330,13 +357,11 @@
 			welding = 1
 			if(M)
 				to_chat(M, SPAN_NOTICE("You switch [src] on."))
-				M.SetLuminosity(2, FALSE, src)
-			else
-				SetLuminosity(2)
+			turn_light((M ? M : null), toggle_on = TRUE)
 			weld_tick += 8 //turning the tool on does not consume fuel directly, but it advances the process that regularly consumes fuel.
 			force = 15
 			damtype = "fire"
-			icon_state = "welder1"
+			icon_state = base_icon_state + "_on"
 			w_class = SIZE_LARGE
 			heat_source = 3800
 			START_PROCESSING(SSobj, src)
@@ -348,7 +373,7 @@
 		playsound(loc, 'sound/items/weldingtool_off.ogg', 25)
 		force = 3
 		damtype = "brute"
-		icon_state = "welder"
+		icon_state = base_icon_state
 		welding = 0
 		w_class = initial(w_class)
 		heat_source = 0
@@ -357,13 +382,13 @@
 				to_chat(M, SPAN_NOTICE("You switch [src] off."))
 			else
 				to_chat(M, SPAN_WARNING("[src] shuts off!"))
-			M.SetLuminosity(0, FALSE, src)
 			if(M.r_hand == src)
 				M.update_inv_r_hand()
 			if(M.l_hand == src)
 				M.update_inv_l_hand()
-		else
-			SetLuminosity(0)
+
+		turn_light((M ? M : null), toggle_on = FALSE)
+
 		STOP_PROCESSING(SSobj, src)
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
@@ -380,22 +405,27 @@
 		if(E.robotic == ORGAN_ROBOT)
 			return
 		switch(safety)
-			if(1)
+			if(EYE_PROTECTION_FLASH)
+				to_chat(user, SPAN_DANGER("You see a bright light in the corner of your vision."))
+				E.take_damage(rand(0, 1), TRUE)
+				if(E.damage > 10)
+					E.take_damage(rand(3, 5), TRUE)
+			if(EYE_PROTECTION_FLAVOR)
 				to_chat(user, SPAN_DANGER("Your eyes sting a little."))
 				E.take_damage(rand(1, 2), TRUE)
-				if(E.damage > 12)
-					H.AdjustEyeBlur(3,6)
-			if(0)
+				if(E.damage > 8) // dont abuse your funny flavor glasses
+					E.take_damage(2, TRUE)
+			if(EYE_PROTECTION_NONE)
 				to_chat(user, SPAN_WARNING("Your eyes burn."))
-				E.take_damage(rand(2, 4), TRUE)
+				E.take_damage(rand(3, 4), TRUE)
 				if(E.damage > 10)
 					E.take_damage(rand(4, 10), TRUE)
-			if(-1)
+			if(EYE_PROTECTION_NEGATIVE)
 				to_chat(user, SPAN_WARNING("Your thermals intensify [src]'s glow. Your eyes itch and burn severely."))
 				H.AdjustEyeBlur(12,20)
 				E.take_damage(rand(12, 16), TRUE)
 
-		if(safety < 2)
+		if(safety < EYE_PROTECTION_WELDING)
 			if (E.damage >= E.min_broken_damage)
 				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
 				return FALSE
@@ -406,24 +436,19 @@
 				to_chat(H, SPAN_WARNING("Your eyes are really starting to hurt. This can't be good for you!"))
 				return FALSE
 
-/obj/item/tool/weldingtool/pickup(mob/user)
-	. = ..()
-	if(welding)
-		SetLuminosity(0)
-		user.SetLuminosity(2, FALSE, src)
+/obj/item/tool/weldingtool/empty
+	starting_fuel = FALSE
 
-
-/obj/item/tool/weldingtool/dropped(mob/user)
-	if(welding && loc != user)
-		user.SetLuminosity(0, FALSE, src)
-		SetLuminosity(2)
-	return ..()
-
+/obj/item/tool/weldingtool/screen
+	name = "shielded blowtorch"
+	desc = "A blowtorch, this one has a welding screen installed to prevent eye damage."
+	has_welding_screen = TRUE
 
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
-	max_fuel = 40
+	max_fuel = 60
 	matter = list("metal" = 70, "glass" = 60)
+	icon_state = "welder_c"
 
 
 /obj/item/tool/weldingtool/hugetank
@@ -449,11 +474,10 @@
 
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
-	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field."
 	max_fuel = 5
-	color = "#cc0000"
 	has_welding_screen = TRUE
-	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
+	icon_state = "welder_b"
 
 /*
  * Crowbar
@@ -462,7 +486,7 @@
 /obj/item/tool/crowbar
 	name = "crowbar"
 	desc = "Used to remove floors and to pry open doors."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "crowbar"
 	pickup_sound = 'sound/handling/crowbar_pickup.ogg'
 	drop_sound = 'sound/handling/crowbar_drop.ogg'
@@ -477,9 +501,10 @@
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	inherent_traits = list(TRAIT_TOOL_CROWBAR)
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
+	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/crowbar/red
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "red_crowbar"
 	item_state = "red_crowbar"
 
@@ -495,10 +520,16 @@
 	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
 	icon_state = "maintenance_jack"
 	item_state = "maintenance_jack"
+	item_icons = list(
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	hitsound = "swing_hit"
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
 	flags_equip_slot = SLOT_SUIT_STORE
+	flags_atom = FPRINT|QUICK_DRAWABLE
 	pry_capable = IS_PRY_CAPABLE_FORCE //but not really
 	///Whether the Maintenance Jack is on crowbar or wrench mode
 	var/crowbar_mode = TRUE //False for wrench mode
@@ -557,18 +588,22 @@
 		if(attacked_door.locked) //Bolted
 			to_chat(user, SPAN_DANGER("You can't pry open [attacked_door] while it is bolted shut."))
 			return
-		if(!attacked_door.arePowerSystemsOn()) //Opens like normal if unpowered
-			return FALSE
 
 		if(requires_superstrength_pry)
 			if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG)) //basically IS_PRY_CAPABLE_CROWBAR
 				return
-		if(!attacked_door.density) //If its open
-			return
 		if(attacked_door.heavy) //Unopenable
 			to_chat(usr, SPAN_DANGER("You cannot force [attacked_door] open."))
 			return
 		if(user.action_busy)
+			return
+		if(!attacked_door.density && !attacked_door.arePowerSystemsOn()) //If its open and unpowered
+			attacked_door.close(TRUE)
+			return
+		if(attacked_door.density && !attacked_door.arePowerSystemsOn()) // if its closed and unpowered
+			attacked_door.open(TRUE)
+			return
+		if(!attacked_door.density) //If its open
 			return
 
 		user.visible_message(SPAN_DANGER("[user] jams [src] into [attacked_door] and starts to pry it open."),
@@ -596,13 +631,13 @@
 
 	if(requires_skills_unbolt)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
-			user.visible_message(SPAN_DANGER("[user] begins to search for [attacked_door]'s bolts!"),\
+			user.visible_message(SPAN_DANGER("[user] begins to search for [attacked_door]'s bolts!"),
 			SPAN_NOTICE("You search for [attacked_door]'s bolts."))
 			if(!do_after(user, unskilled_unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
 				to_chat(user, SPAN_WARNING("You fail to find the bolts on [attacked_door]."))
 				return
 
-	user.visible_message(SPAN_DANGER("[user] begins to disable [attacked_door]'s bolts!"),\
+	user.visible_message(SPAN_DANGER("[user] begins to disable [attacked_door]'s bolts!"),
 	SPAN_NOTICE("You start to disable [attacked_door]'s bolts."))
 	playsound(attacked_door, "pry", 25, TRUE)
 
@@ -610,7 +645,7 @@
 		to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [attacked_door]."))
 		return
 
-	user.visible_message(SPAN_DANGER("[user] disables the bolts on [attacked_door]."),\
+	user.visible_message(SPAN_DANGER("[user] disables the bolts on [attacked_door]."),
 	SPAN_NOTICE("You unbolt [attacked_door]."))
 	attacked_door.unlock(TRUE)
 	return
@@ -642,14 +677,14 @@
 
 				user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
 				SPAN_DANGER("You force [resin_door] open with [src]."))
-				resin_door.Open()
+				resin_door.open()
 				return
 
-	if(istype(attacked_obj, /turf/open/floor))
+	else if(istype(attacked_obj, /turf/open/floor))
 		var/turf/open/floor/flooring = attacked_obj
 
 		if(crowbar_mode && user.a_intent == INTENT_HELP) //Only pry flooring on help intent
-			if(flooring.hull_floor) //no interaction for hulls
+			if(flooring.turf_flags & TURF_HULL) //no interaction for hulls
 				return
 			if(flooring.weeds)
 				return attackby(src, user)
@@ -667,7 +702,10 @@ Welding backpack
 	name = "Welding kit"
 	desc = "A heavy-duty, portable welding fluid carrier."
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+	)
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
 	/// More robust liner I guess
@@ -709,17 +747,22 @@ Welding backpack
 	to_chat(user, SPAN_NOTICE("You cannot figure out how to use \the [W] with [src]."))
 	return
 
-/obj/item/tool/weldpack/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) // this replaces and improves the get_dist(src,O) <= 1 checks used previously
+/obj/item/tool/weldpack/afterattack(obj/target as obj, mob/user as mob, proximity)
+	if(!proximity) // this replaces and improves the get_dist(src,target) <= 1 checks used previously
 		return
-	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
-		O.reagents.trans_to(src, max_fuel)
-		to_chat(user, SPAN_NOTICE(" You crack the cap off the top of \the [src] and fill it back up again from the tank."))
-		playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
-		return
-	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
-		to_chat(user, SPAN_NOTICE(" \The [src] is already full!"))
-		return
+	if(istype(target, /obj/structure/reagent_dispensers))
+		if(!(istypestrict(target, /obj/structure/reagent_dispensers/fueltank)))
+			to_chat(user, SPAN_NOTICE("This must be filled with a fuel tank."))
+			return
+		if(reagents.total_volume < max_fuel)
+			target.reagents.trans_to(src, max_fuel)
+			to_chat(user, SPAN_NOTICE("You crack the cap off the top of \the [src] and fill it back up again from the tank."))
+			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			return
+		if (reagents.total_volume >= max_fuel)
+			to_chat(user, SPAN_NOTICE("[src] is already full!"))
+			return
+	..()
 
 /obj/item/tool/weldpack/get_examine_text(mob/user)
 	. = ..()
@@ -729,7 +772,7 @@ Welding backpack
 	else
 		. += "No punctures are seen on \the [src] upon closer inspection."
 
-/obj/item/tool/weldpack/bullet_act(obj/item/projectile/P)
+/obj/item/tool/weldpack/bullet_act(obj/projectile/P)
 	var/damage = P.damage
 	health -= damage
 	..()

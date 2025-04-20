@@ -14,6 +14,10 @@
 	name = "APC"
 	interior_id = "apc"
 
+/datum/map_template/interior/apc_pmc
+	name = "W-Y APC"
+	interior_id = "apc_pmc"
+
 /datum/map_template/interior/apc_command
 	name = "Command APC"
 	interior_id = "apc_command"
@@ -26,10 +30,6 @@
 	name = "APC - No FPW"
 	interior_id = "apc_no_fpw"
 
-/datum/map_template/interior/fancy_locker
-	name = "Fancy Locker"
-	interior_id = "fancylocker"
-
 /datum/map_template/interior/tank
 	name = "Tank"
 	interior_id = "tank"
@@ -37,3 +37,19 @@
 /datum/map_template/interior/van
 	name = "Van"
 	interior_id = "van"
+
+/datum/map_template/interior/clf_van
+	name = "CLF Technical"
+	interior_id = "clf_van"
+
+/datum/map_template/interior/box_van
+	name = "Box Van"
+	interior_id = "box_van"
+
+/datum/map_template/interior/pizza_van
+	name = "Pizza-Galaxy Van"
+	interior_id = "pizza_van"
+
+/datum/map_template/interior/arc
+	name = "ARC"
+	interior_id = "arc"

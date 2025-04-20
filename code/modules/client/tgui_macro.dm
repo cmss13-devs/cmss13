@@ -23,11 +23,12 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 /datum/tgui_macro/ui_data(mob/user)
 	. = list()
-	.["keybinds"] = prefs.key_bindings
+	.["player_keybinds"] = prefs.key_bindings
 
 /datum/tgui_macro/ui_static_data(mob/user)
 	. = list()
 	.["glob_keybinds"] = GLOB.ui_data_keybindings
+	.["byond_keymap"] = GLOB._kbMap
 
 /datum/tgui_macro/ui_state(mob/user)
 	return GLOB.always_state
@@ -45,6 +46,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 	if(!ui)
 		ui = new(user, src, "KeyBinds", "Keybind Preference")
 		ui.open()
+		ui.set_autoupdate(FALSE)
 
 /datum/tgui_macro/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -100,6 +102,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			prefs.save_preferences()
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
+
 		if("clear_keybind")
 			var/list/kbinds = prefs.key_bindings
 			var/kb_name = params["keybinding"]
@@ -110,19 +113,21 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 			for(var/key in keys)
 				if(kbinds[key])
 					kbinds[key] -= kb_name
-					kbinds["Unbound"] += kb_name
 					if(!length(kbinds[key]))
 						kbinds -= key
+			// Add the keybind name to the 'unbound' list if it's not already in there.
+			kbinds["Unbound"] |= kb_name
 
 			prefs.save_preferences()
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
+
 		if("clear_all_keybinds")
 			var/choice = tgui_alert(owner, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))
 			if(choice == "Cancel")
 				return TRUE
 			prefs.hotkeys = (choice == "Hotkey")
-			prefs.key_bindings = (prefs.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+			prefs.key_bindings = (prefs.hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)
 			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			prefs.save_preferences()
 			return TRUE

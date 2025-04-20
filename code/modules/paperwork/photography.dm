@@ -11,20 +11,24 @@
 *******/
 /obj/item/device/camera_film
 	name = "film cartridge"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	desc = "A camera film cartridge. Insert it into a camera to reload it."
 	icon_state = "film"
 	item_state = "electropack"
 	w_class = SIZE_TINY
 
+/** Picture metadata */
+/datum/picture
+	var/name = "image"
+	var/list/fields = list()
 
 /*
 * photo *
 ********/
 /obj/item/photo
 	name = "photo"
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "photo"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "photo_item"
 	item_state = "paper"
 	w_class = SIZE_TINY
 	var/icon/img //Big photo image
@@ -46,21 +50,22 @@
 	..()
 
 /obj/item/photo/get_examine_text(mob/user)
-	if(in_range(user, src))
+	if(in_range(user, src) || isobserver(user))
 		show(user)
 		return list(desc)
 	else
 		return  list(SPAN_NOTICE("It is too far away."))
 
 /obj/item/photo/proc/show(mob/living/user)
-	if(!isicon(img)) return // this should stop a runtime error
+	if(!isicon(img))
+		return // this should stop a runtime error
 	user << browse_rsc(img, "tmp_photo.png")
 	var/dat = "<html>" \
 		+ "<body style='overflow:hidden;margin:0;text-align:center' class='paper'>" \
-		+ "<img src='tmp_photo.png' width='[64*photo_size]' style='-ms-interpolation-mode:nearest-neighbor' />" \
+		+ "<img src='tmp_photo.png' width='[64*photo_size]' style='image-rendering:pixelated'/>" \
 		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
 		+ "</body></html>"
-	show_browser(user, dat, name, name, "size=[80*photo_size]x[(scribble ? 100 : 82)*photo_size]")
+	show_browser(user, dat, name, name, width = 80 * photo_size, height = (scribble ? 100 : 82) *photo_size)
 	onclose(user, name)
 	return
 
@@ -82,11 +87,11 @@
 **************/
 /obj/item/storage/photo_album
 	name = "Photo album"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/paper.dmi'
 	icon_state = "album"
 	item_state = "briefcase"
 	can_hold = list(/obj/item/photo,)
-	storage_slots = 20
+	storage_slots = 28
 
 /obj/item/storage/photo_album/MouseDrop(obj/over_object as obj)
 
@@ -117,10 +122,16 @@
 *********/
 /obj/item/device/camera
 	name = "camera"
-	icon = 'icons/obj/items/items.dmi'
-	desc = "A polaroid camera. 10 photos left."
+	icon = 'icons/obj/items/paper.dmi'
+	desc = "A polaroid camera."
 	icon_state = "camera"
-	item_state = "electropack"
+	item_state = "camera"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/paperwork_righthand.dmi'
+	)
+	flags_item = TWOHANDED
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -128,10 +139,22 @@
 	black_market_value = 20
 	var/pictures_max = 10
 	var/pictures_left = 10
-	var/on = 1
-	var/icon_on = "camera"
-	var/icon_off = "camera_off"
-	var/size = 3
+	var/size = 7
+
+/obj/item/device/camera/get_examine_text(mob/user)
+	. = ..()
+	. += "It has [pictures_left] photos left."
+
+/obj/item/device/camera/attack_self(mob/user) //wielding capabilities
+	. = ..()
+	if(flags_item & WIELDED)
+		unwield(user)
+	else
+		wield(user)
+
+/obj/item/device/camera/dropped(mob/user)
+	..()
+	unwield(user)
 
 /obj/item/device/camera/verb/change_size()
 	set name = "Set Photo Focus"
@@ -145,24 +168,15 @@
 /obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
 	return
 
-/obj/item/device/camera/attack_self(mob/user)
-	..()
-	on = !on
-	if(on)
-		src.icon_state = icon_on
-	else
-		src.icon_state = icon_off
-	to_chat(user, "You switch the camera [on ? "on" : "off"].")
-
 /obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
-		if(pictures_left)
-			to_chat(user, SPAN_NOTICE("[src] still has some film in it!"))
+		if(pictures_left > (pictures_max - 10))
+			to_chat(user, SPAN_NOTICE("[src] cannot fit more film in it!"))
 			return
 		to_chat(user, SPAN_NOTICE("You insert [I] into [src]."))
 		if(user.temp_drop_inv_item(I))
 			qdel(I)
-			pictures_left = pictures_max
+			pictures_left += 10
 		return
 	..()
 
@@ -175,119 +189,150 @@
 	res.Scale(size*32, size*32)
 	// Initialize the photograph to black.
 	res.Blend("#000", ICON_OVERLAY)
+	CHECK_TICK
 
-	var/atoms[] = list()
-	for(var/turf/the_turf in turfs)
-		// Add outselves to the list of stuff to draw
+	var/pixel_size = world.icon_size
+	var/radius = (size - 1) * 0.5
+	var/center_offset = radius * pixel_size + 1
+	var/x_min = center.x - radius
+	var/x_max = center.x + radius
+	var/y_min = center.y - radius
+	var/y_max = center.y + radius
+
+	var/list/atoms = list()
+	for(var/turf/the_turf as anything in turfs)
+		// Add ourselves to the list of stuff to draw
 		atoms.Add(the_turf);
+
 		// As well as anything that isn't invisible.
-		for(var/atom/A in the_turf)
-			if(A.invisibility) continue
-			atoms.Add(A)
+		for(var/atom/cur_atom as anything in the_turf)
+			if(!cur_atom || cur_atom.invisibility)
+				continue
+			atoms.Add(cur_atom)
 
 	// Sort the atoms into their layers
 	var/list/sorted = sort_atoms_by_layer(atoms)
-	var/center_offset = (size-1)/2 * 32 + 1
-	for(var/i; i <= sorted.len; i++)
-		var/atom/A = sorted[i]
-		if(A)
-			var/icon/IM = getFlatIcon(A)//build_composite_icon(A)
+	for(var/atom/cur_atom as anything in sorted)
+		if(QDELETED(cur_atom))
+			continue
 
-			// If what we got back is actually a picture, draw it.
-			if(istype(IM, /icon))
-				// Check if we're looking at a mob that's lying down
-				if(istype(A, /mob/living))
-					var/mob/living/L = A
-					if(!istype(L, /mob/living/carbon/xenomorph)) //xenos don't use icon rotatin for lying.
-						if(L.lying)
-							// If they are, apply that effect to their picture.
-							IM.BecomeLying()
-				// Calculate where we are relative to the center of the photo
-				var/xoff = (A.x - center.x) * 32 + center_offset
-				var/yoff = (A.y - center.y) * 32 + center_offset
-				if (istype(A,/atom/movable))
-					xoff+=A:step_x
-					yoff+=A:step_y
-				res.Blend(IM, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
+		if(cur_atom.x < x_min || cur_atom.x > x_max || cur_atom.y < y_min || cur_atom.y > y_max)
+			// they managed to move out of frame with all this CHECK_TICK...
+			continue
+
+		var/icon/cur_icon = getFlatIcon(cur_atom)//build_composite_icon(cur_atom)
+
+		// If what we got back is actually a picture, draw it.
+		if(istype(cur_icon, /icon))
+			// Check if we're looking at a mob that's lying down
+			if(istype(cur_atom, /mob/living))
+				var/mob/living/cur_mob = cur_atom
+				if(!isxeno(cur_mob) && cur_mob.body_position == LYING_DOWN) //xenos don't use icon rotatin for lying.
+					cur_icon.BecomeLying()
+
+			// Calculate where we are relative to the center of the photo
+			var/xoff = (cur_atom.x - center.x) * pixel_size + center_offset
+			var/yoff = (cur_atom.y - center.y) * pixel_size + center_offset
+			if(istype(cur_atom, /atom/movable))
+				xoff += cur_atom:step_x
+				yoff += cur_atom:step_y
+			res.Blend(cur_icon, blendMode2iconMode(cur_atom.blend_mode),  cur_atom.pixel_x + xoff, cur_atom.pixel_y + yoff)
+
+		CHECK_TICK
 
 	// Lastly, render any contained effects on top.
 	for(var/turf/the_turf as anything in turfs)
 		// Calculate where we are relative to the center of the photo
-		var/xoff = (the_turf.x - center.x) * 32 + center_offset
-		var/yoff = (the_turf.y - center.y) * 32 + center_offset
-		var/image/IM = getFlatIcon(the_turf.loc)
-		if(IM)
-			res.Blend(IM, blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
+		var/xoff = (the_turf.x - center.x) * pixel_size + center_offset
+		var/yoff = (the_turf.y - center.y) * pixel_size + center_offset
+		var/image/cur_icon = getFlatIcon(the_turf.loc)
+		CHECK_TICK
+
+		if(cur_icon)
+			res.Blend(cur_icon, blendMode2iconMode(the_turf.blend_mode), xoff, yoff)
+			CHECK_TICK
 	return res
 
+/obj/item/device/camera/proc/get_mob_descriptions(turf/the_turf, existing_descripion)
+	var/mob_detail = existing_descripion
+	for(var/mob/living/carbon/cur_carbon in the_turf)
+		if(cur_carbon.invisibility)
+			continue
 
-/obj/item/device/camera/proc/get_mobs(turf/the_turf as turf)
-	var/mob_detail
-	for(var/mob/living/carbon/A in the_turf)
-		if(A.invisibility) continue
 		var/holding = null
-		if(A.l_hand || A.r_hand)
-			if(A.l_hand) holding = "They are holding \a [A.l_hand]"
-			if(A.r_hand)
+		if(cur_carbon.l_hand || cur_carbon.r_hand)
+			if(cur_carbon.l_hand)
+				holding = "They are holding \a [cur_carbon.l_hand]"
+			if(cur_carbon.r_hand)
 				if(holding)
-					holding += " and \a [A.r_hand]"
+					holding += " and \a [cur_carbon.r_hand]"
 				else
-					holding = "They are holding \a [A.r_hand]"
+					holding = "They are holding \a [cur_carbon.r_hand]"
+
+		var/hurt = ""
+		if(cur_carbon.health < 75)
+			hurt = prob(25) ? " - they look hurt" : " - [cur_carbon] looks hurt"
 
 		if(!mob_detail)
-			mob_detail = "You can see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
+			mob_detail = "You can see [cur_carbon] in the photo[hurt].[holding ? " [holding]" : "."]."
 		else
-			mob_detail += "You can also see [A] on the photo[A:health < 75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+			mob_detail += " You [prob(50) ? "can" : "also"] see [cur_carbon] in the photo[hurt].[holding ? " [holding]" : "."]."
 	return mob_detail
 
 /obj/item/device/camera/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!on || !pictures_left || ismob(target.loc) || isstorage(target.loc)) return
-	if(user.contains(target) || istype(target, /atom/movable/screen)) return
-	captureimage(target, user, flag)
+	if(pictures_left <= 0)
+		to_chat(user, SPAN_WARNING("There isn't enough film in the [src] to take a photo."))
+		return
+	if(ismob(target.loc) || isstorage(target.loc) || user.contains(target) || istype(target, /atom/movable/screen))
+		return
 
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 15, 1)
-
 	pictures_left--
-	desc = "A polaroid camera. It has [pictures_left] photos left."
 	to_chat(user, SPAN_NOTICE("[pictures_left] photos left."))
-	icon_state = icon_off
-	on = 0
-	spawn(64)
-		icon_state = icon_on
-		on = 1
+
+	addtimer(CALLBACK(src, PROC_REF(captureimage), target, user, flag), 1 SECONDS)
 
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
-	var/mobs = ""
+	var/mob_descriptions = ""
 	var/radius = (size-1)*0.5
-	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(world_view_size + radius, user.client)
-	for(var/turf/T as anything in turfs)
-		mobs += get_mobs(T)
-	var/datum/picture/P = createpicture(target, user, turfs, mobs, flag)
-	printpicture(user, P)
+	var/list/turf/turfs = RANGE_TURFS(radius, target) & view(GLOB.world_view_size + radius, user.client)
+	for(var/turf/the_turf as anything in turfs)
+		mob_descriptions = get_mob_descriptions(the_turf, mob_descriptions)
+	var/datum/picture/the_picture = createpicture(target, user, turfs, mob_descriptions, flag)
 
-/obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, mobs, flag)
+	if(QDELETED(user))
+		return
+
+	printpicture(user, the_picture)
+
+/obj/item/device/camera/proc/createpicture(atom/target, mob/user, list/turfs, description, flag)
 	var/icon/photoimage = get_icon(turfs, target)
+
+	if(!description)
+		description = "A very scenic photo"
 
 	var/icon/small_img = icon(photoimage)
 	var/icon/tiny_img = icon(photoimage)
-	var/icon/ic = icon('icons/obj/items/items.dmi',"photo")
-	var/icon/pc = icon('icons/obj/items/paper.dmi', "photo")
+	var/icon/item_icon = icon('icons/obj/items/paper.dmi',"photo_item")
+	var/icon/paper_icon = icon('icons/obj/items/paper.dmi', "photo")
 	small_img.Scale(8, 8)
 	tiny_img.Scale(4, 4)
-	ic.Blend(small_img,ICON_OVERLAY, 10, 13)
-	pc.Blend(tiny_img,ICON_OVERLAY, 12, 19)
+	item_icon.Blend(small_img, ICON_OVERLAY, 10, 13)
+	CHECK_TICK
+	paper_icon.Blend(tiny_img, ICON_OVERLAY, 12, 19)
+	CHECK_TICK
 
-	var/datum/picture/P = new()
-	P.fields["author"] = user
-	P.fields["icon"] = ic
-	P.fields["tiny"] = pc
-	P.fields["img"] = photoimage
-	P.fields["desc"] = mobs
-	P.fields["pixel_x"] = rand(-10, 10)
-	P.fields["pixel_y"] = rand(-10, 10)
-	P.fields["size"] = size
+	var/datum/picture/the_picture = new()
+	the_picture.fields["author"] = user
+	the_picture.fields["icon"] = item_icon
+	the_picture.fields["tiny"] = paper_icon
+	the_picture.fields["img"] = photoimage
+	the_picture.fields["desc"] = description
+	the_picture.fields["pixel_x"] = rand(-10, 10)
+	the_picture.fields["pixel_y"] = rand(-10, 10)
+	the_picture.fields["size"] = size
 
-	return P
+	return the_picture
 
 /obj/item/device/camera/proc/printpicture(mob/user, datum/picture/P)
 	var/obj/item/photo/Photo = new/obj/item/photo()
@@ -301,10 +346,115 @@
 	name = "Old Camera"
 	desc = "An old, slightly beat-up digital camera, with a cheap photo printer taped on. It's a nice shade of blue."
 	icon_state = "oldcamera"
-	icon_on = "oldcamera"
-	icon_off = "oldcamera_off"
 	pictures_left = 30
 
+/obj/item/device/broadcasting
+	name = "Broadcasting Camera"
+	desc = "Actively document everything you see, from the mundanity of shipside to the brutal battlefields below."
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
+	icon_state = "broadcastingcamera"
+	item_state = "broadcastingcamera"
+	unacidable = TRUE
+	explo_proof = TRUE
+	w_class = SIZE_HUGE
+	flags_item = NO_FLAGS
+	flags_equip_slot = NO_FLAGS //cannot be equiped
+	var/active = FALSE
+	var/obj/structure/machinery/camera/correspondent/linked_cam
+
+/obj/item/device/broadcasting/Initialize(mapload, ...)
+	. = ..()
+	linked_cam = new(loc, src)
+	linked_cam.status = FALSE
+	RegisterSignal(src, COMSIG_COMPONENT_ADDED, PROC_REF(handle_rename))
+
+/obj/item/device/broadcasting/Destroy()
+	clear_broadcast()
+	return ..()
+
+/obj/item/device/broadcasting/update_icon()
+	if(active)
+		item_state = "broadcastingcamera_w"
+	else
+		item_state = "broadcastingcamera"
+	. = ..()
+
+
+/obj/item/device/broadcasting/proc/turn_on(mob/user)
+	active = TRUE
+	flags_atom |= (USES_HEARING|USES_SEEING)
+	handle_move()
+	SEND_SIGNAL(src, COMSIG_BROADCAST_GO_LIVE)
+	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
+	to_chat(user, SPAN_NOTICE("[src] begins to buzz softly as you go live."))
+	update_icon()
+
+/obj/item/device/broadcasting/proc/turn_off(mob/user)
+	active = FALSE
+	flags_atom &= ~(USES_HEARING|USES_SEEING)
+	linked_cam.status = FALSE
+	UnregisterSignal(src, COMSIG_MOVABLE_MOVED)
+	to_chat(user, SPAN_NOTICE("[src] goes silent as the broadcast stops."))
+	update_icon()
+
+/obj/item/device/broadcasting/proc/handle_move()
+	if(!linked_cam || QDELETED(linked_cam))
+		linked_cam = new(loc, src)
+	else
+		linked_cam.status = TRUE
+		linked_cam.forceMove(loc)
+
+/obj/item/device/broadcasting/dropped(mob/user)
+	. = ..()
+	linked_cam.view_range = 4
+
+/obj/item/device/broadcasting/pickup(mob/user, silent)
+	. = ..()
+	linked_cam.view_range = 7
+
+/obj/item/device/broadcasting/attack_self(mob/user)
+	. = ..()
+	if(active)
+		turn_off(user)
+	else
+		turn_on(user)
+
+/obj/item/device/broadcasting/attack_alien(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+	if(!active)
+		return
+	xeno.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src]!"),
+	SPAN_DANGER("We [xeno.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	turn_off(xeno)
+	return XENO_ATTACK_ACTION
+
+/obj/item/device/broadcasting/proc/handle_rename(obj/item/camera, datum/component/label)
+	SIGNAL_HANDLER
+	if(!istype(label, /datum/component/label))
+		return
+	linked_cam.c_tag = get_broadcast_name()
+
+/obj/item/device/broadcasting/proc/clear_broadcast()
+	if(!QDELETED(linked_cam))
+		QDEL_NULL(linked_cam)
+
+/obj/item/device/broadcasting/proc/get_broadcast_name()
+	var/datum/component/label/src_label_component = GetComponent(/datum/component/label)
+	if(src_label_component)
+		return src_label_component.label_name
+	return "Broadcast [serial_number]"
+
+/obj/item/device/broadcasting/hear_talk(mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, get_dist(sourcemob, src) < 3)
+
+/obj/item/device/broadcasting/see_emote(mob/living/sourcemob, emote, audible = FALSE)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, get_dist(sourcemob, src) < 3 && audible)
 
 /obj/item/photo/proc/construct(datum/picture/P)
 	icon = P.fields["icon"]

@@ -52,14 +52,22 @@
 /obj/structure/machinery/door_control/attackby(obj/item/W, mob/user as mob)
 	return src.attack_hand(user)
 
+/obj/structure/machinery/door_control/ex_act(severity)
+	if(explo_proof)
+		return FALSE
+	..()
+
 /obj/structure/machinery/door_control/proc/handle_dropship(ship_id)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(ship_id)
 	if (!istype(shuttle))
 		return
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/comp = shuttle.getControlConsole()
+	if(comp?.dropship_control_lost)
+		return
 	if(is_mainship_level(z)) // on the almayer
 		return
 
-	shuttle.control_doors("lock", "all", force=FALSE)
+	shuttle.control_doors("force-lock", "all", force=FALSE)
 
 /obj/structure/machinery/door_control/proc/handle_door()
 	for(var/obj/structure/machinery/door/airlock/D in range(range))
@@ -90,7 +98,7 @@
 					D.safe = 1
 
 /obj/structure/machinery/door_control/proc/handle_pod()
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			if(M.density)
 				INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
@@ -145,47 +153,6 @@
 	else
 		icon_state = initial(icon_state) + "0"
 
-/obj/structure/machinery/driver_button/attack_remote(mob/user as mob)
-	return src.attack_hand(user)
-
-/obj/structure/machinery/driver_button/attackby(obj/item/W, mob/user as mob)
-	return src.attack_hand(user)
-
-/obj/structure/machinery/driver_button/attack_hand(mob/user as mob)
-
-	src.add_fingerprint(usr)
-	if(inoperable())
-		return
-	if(active)
-		return
-	add_fingerprint(user)
-
-	use_power(5)
-
-	active = 1
-	icon_state = "launcheract"
-
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, open))
-
-	sleep(20)
-
-	for(var/obj/structure/machinery/mass_driver/M in machines)
-		if(M.id == src.id)
-			M.drive()
-
-	sleep(50)
-
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
-		if(M.id == src.id)
-			INVOKE_ASYNC(M, TYPE_PROC_REF(/obj/structure/machinery/door, close))
-
-	icon_state = "launcherbtt"
-	active = 0
-
-	return
-
 // Controls elevator railings
 /obj/structure/machinery/door_control/railings
 	name = "railing controls"
@@ -212,9 +179,9 @@
 		flick(initial(icon_state) + "-denied",src)
 		return
 
-	// safety first
-	if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
-		flick(initial(icon_state) + "-denied",src)
+	// If someone's trying to lower the railings but the elevator isn't in the vehicle bay.
+	if(!desiredstate && !is_mainship_level(SSshuttle.vehicle_elevator.z))
+		flick(initial(icon_state) + "-denied", src) // Safety first!
 		return
 
 	use_power(5)
@@ -223,7 +190,7 @@
 	add_fingerprint(user)
 
 	var/effective = 0
-	for(var/obj/structure/machinery/door/poddoor/M in machines)
+	for(var/obj/structure/machinery/door/poddoor/M in GLOB.machines)
 		if(M.id == id)
 			effective = 1
 			spawn()
@@ -239,6 +206,9 @@
 		busy = FALSE
 		if(!(stat & NOPOWER))
 			icon_state = initial(icon_state) + "0"
+
+/obj/structure/machinery/door_control/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/machinery/door_control/brbutton
 	icon_state = "big_red_button_wallv"
@@ -270,3 +240,65 @@
 
 	desiredstate = !desiredstate
 
+/obj/structure/machinery/door_control/cl
+	req_access_txt = "200"
+// seperating quarter and office because we might want to allow more access to the office than quarter in the future.
+/obj/structure/machinery/door_control/cl/office
+/obj/structure/machinery/door_control/cl/office/door
+	name = "Office Door Shutter"
+	id = "cl_office_door"
+/obj/structure/machinery/door_control/cl/office/window
+	name = "Office Windows Shutters"
+	id = "cl_office_windows"
+/obj/structure/machinery/door_control/cl/office/divider
+	name = "Room Divider"
+	id = "RoomDivider"
+//special button that unlock the cl lock on is evac pod door bypassing general lockdown.
+/obj/structure/machinery/door_control/cl/office/evac
+	name = "Evac Pod Door Control"
+	id = "cl_evac"
+	normaldoorcontrol = 1
+/obj/structure/machinery/door_control/cl/quarter
+/obj/structure/machinery/door_control/cl/quarter/officedoor
+	name = "Quarter Door Shutter"
+	id = "cl_quarter_door"
+/obj/structure/machinery/door_control/cl/quarter/backdoor
+	name = "Maintenance Door Shutter"
+	id = "cl_quarter_maintenance"
+/obj/structure/machinery/door_control/cl/quarter/windows
+	name = "Quarter Windows Shutters"
+	id = "cl_quarter_windows"
+
+// Hybrisa lockdown announcements
+
+/obj/structure/machinery/door_control/colony_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 25 MINUTES
+
+/obj/structure/machinery/door_control/colony_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("The colony-wide lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The colony-wide lockdown has already been lifted."))
+		return
+	. = ..()
+	marine_announcement("The colony-wide lockdown protocols have been lifted.")
+	used = TRUE
+
+// Research
+
+/obj/structure/machinery/door_control/research_lockdown
+	var/used = FALSE
+	var/colony_lockdown_time = 10 MINUTES
+
+/obj/structure/machinery/door_control/research_lockdown/use_button(mob/living/user,force)
+	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
+		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		return
+	if(used)
+		to_chat(user, SPAN_WARNING("The WY-Research-Facility lockdown has already been lifted."))
+		return
+	. = ..()
+	marine_announcement("The WY-Research-Facility lockdown protocols have been lifted.")
+	used = TRUE

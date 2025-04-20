@@ -23,10 +23,10 @@
 	. = ..()
 	if(health <= 0)
 		. += "It's busted!"
-	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
+	else if(isobserver(user) || (ishuman(user) && (skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_NOVICE) || skillcheck(user, SKILL_VEHICLE, SKILL_VEHICLE_CREWMAN))))
 		. += "It's at [round(get_integrity_percent(), 1)]% integrity!"
 	for(var/obj/item/hardpoint/H in hardpoints)
-		. += "There is a [H] module installed on \the [src]."
+		. += "There is \a [H] module installed on [src]."
 		. += H.get_examine_text(user, TRUE)
 
 /obj/item/hardpoint/holder/get_tgui_info()
@@ -43,10 +43,21 @@
 	for(var/obj/item/hardpoint/H in hardpoints)
 		H.take_damage(damage)
 
-/obj/item/hardpoint/holder/on_install(obj/vehicle/multitile/V)
-	for(var/obj/item/hardpoint/HP in hardpoints)
-		HP.owner = V
-	return
+/obj/item/hardpoint/holder/on_install(obj/vehicle/multitile/vehicle)
+	..()
+	if(!vehicle) //in loose holder
+		return
+	for(var/obj/item/hardpoint/hardpoint in hardpoints)
+		hardpoint.owner = vehicle
+		hardpoint.on_install(vehicle)
+
+/obj/item/hardpoint/holder/on_uninstall(obj/vehicle/multitile/vehicle)
+	if(!vehicle) //in loose holder
+		return
+	for(var/obj/item/hardpoint/hardpoint in hardpoints)
+		hardpoint.on_uninstall(vehicle)
+		hardpoint.owner = null
+	..()
 
 /obj/item/hardpoint/holder/proc/can_install(obj/item/hardpoint/H)
 	// Can only have 1 hardpoint of each slot type
@@ -89,7 +100,7 @@
 
 /obj/item/hardpoint/holder/attackby(obj/item/O, mob/user)
 	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
 
@@ -102,7 +113,7 @@
 		return
 
 	if(istype(O, /obj/item/hardpoint))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
 
@@ -121,16 +132,17 @@
 	H.forceMove(src)
 	LAZYADD(hardpoints, H)
 
+	H.on_install(owner)
 	H.rotate(turning_angle(H.dir, dir))
 
 /obj/item/hardpoint/holder/proc/remove_hardpoint(obj/item/hardpoint/H, turf/uninstall_to)
 	if(!hardpoints)
 		return
-	hardpoints -= H
 	H.forceMove(uninstall_to ? uninstall_to : get_turf(src))
 
+	H.on_uninstall(owner)
 	H.reset_rotation()
-
+	hardpoints -= H
 	H.owner = null
 
 	if(H.health <= 0)

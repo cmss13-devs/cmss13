@@ -1,8 +1,8 @@
-var/list/admin_ranks = list() //list of all ranks with associated rights
+GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 //load our rank - > rights associations
 /proc/load_admin_ranks()
-	admin_ranks.Cut()
+	GLOB.admin_ranks.Cut()
 
 	var/previous_rights = 0
 
@@ -11,58 +11,88 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 
 	//process each line separately
 	for(var/line in Lines)
-		if(!length(line)) continue
-		if(copytext(line,1,2) == "#") continue
+		if(!length(line))
+			continue
+		if(copytext(line,1,2) == "#")
+			continue
 
 		var/list/List = splittext(line,"+")
-		if(!List.len) continue
+		if(!length(List))
+			continue
 
 		var/rank = ckeyEx(List[1])
 		switch(rank)
-			if(null,"") continue
-			if("Removed") continue //Reserved
+			if(null,"")
+				continue
+			if("Removed")
+				continue //Reserved
 
 		var/rights = 0
-		for(var/i=2, i<=List.len, i++)
+		for(var/i=2, i<=length(List), i++)
 			switch(ckey(List[i]))
-				if("@","prev") rights |= previous_rights
-				if("buildmode","build") rights |= R_BUILDMODE
-				if("admin") rights |= R_ADMIN
-				if("ban") rights |= R_BAN
-				if("server") rights |= R_SERVER
-				if("debug") rights |= R_DEBUG
-				if("permissions","rights") rights |= R_PERMISSIONS
-				if("possess") rights |= R_POSSESS
-				if("stealth") rights |= R_STEALTH
-				if("rejuv","rejuvinate") rights |= R_REJUVINATE
-				if("color") rights |= R_COLOR
-				if("varedit") rights |= R_VAREDIT
-				if("event") rights |= R_EVENT
-				if("everything","host","all") rights |= (R_HOST|R_BUILDMODE|R_ADMIN|R_BAN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_REJUVINATE|R_COLOR|R_VAREDIT|R_EVENT|R_SOUNDS|R_NOLOCK|R_SPAWN|R_MOD|R_MENTOR)
-				if("sound","sounds") rights |= R_SOUNDS
-				if("nolock") rights |= R_NOLOCK
-				if("spawn","create") rights |= R_SPAWN
-				if("mod") rights |= R_MOD
-				if("mentor") rights |= R_MENTOR
-				if("profiler") rights |= R_PROFILER
+				if("@","prev")
+					rights |= previous_rights
+				if("buildmode","build")
+					rights |= R_BUILDMODE
+				if("admin")
+					rights |= R_ADMIN
+				if("ban")
+					rights |= R_BAN
+				if("server")
+					rights |= R_SERVER
+				if("debug")
+					rights |= R_DEBUG
+				if("permissions","rights")
+					rights |= R_PERMISSIONS
+				if("possess")
+					rights |= R_POSSESS
+				if("stealth")
+					rights |= R_STEALTH
+				if("color")
+					rights |= R_COLOR
+				if("varedit")
+					rights |= R_VAREDIT
+				if("event")
+					rights |= R_EVENT
+				if("sound","sounds")
+					rights |= R_SOUNDS
+				if("nolock")
+					rights |= R_NOLOCK
+				if("spawn","create")
+					rights |= R_SPAWN
+				if("mod")
+					rights |= R_MOD
+				if("mentor")
+					rights |= R_MENTOR
+				if("profiler")
+					rights |= R_PROFILER
+				if("host")
+					rights |= RL_HOST
+				if("everything")
+					rights |= RL_EVERYTHING
 
-		admin_ranks[rank] = rights
+		GLOB.admin_ranks[rank] = rights
 		previous_rights = rights
 
 	#ifdef TESTING
 	var/msg = "Permission Sets Built:\n"
-	for(var/rank in admin_ranks)
-		msg += "\t[rank] - [admin_ranks[rank]]\n"
+	for(var/rank in GLOB.admin_ranks)
+		msg += "\t[rank] - [GLOB.admin_ranks[rank]]\n"
 	testing(msg)
 	#endif
 
 /proc/load_admins()
 	//clear the datums references
-	admin_datums.Cut()
+	GLOB.admin_datums.Cut()
 	for(var/client/C in GLOB.admins)
 		C.remove_admin_verbs()
 		C.admin_holder = null
 	GLOB.admins.Cut()
+
+	//Clear profile access
+	for(var/admin in world.GetConfig("admin"))
+		log_debug("Clearing [admin] from APP/admin.")
+		world.SetConfig("APP/admin", admin, null)
 
 	load_admin_ranks()
 
@@ -78,34 +108,39 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 
 	#ifdef TESTING
 	var/msg = "Admins Built:\n"
-	for(var/ckey in admin_datums)
+	for(var/ckey in GLOB.admin_datums)
 		var/rank
-		var/datum/admins/D = admin_datums[ckey]
-		if(D) rank = D.rank
+		var/datum/admins/D = GLOB.admin_datums[ckey]
+		if(D)
+			rank = D.rank
 		msg += "\t[ckey] - [rank]\n"
 	testing(msg)
 	#endif
 
 /proc/process_rank_file(line, mentor = FALSE)
 	var/list/MentorRanks = file2list("config/mentor_ranks.txt")
-	if(!length(line)) return
-	if(copytext(line,1,2) == "#") return
+	if(!length(line))
+		return
+	if(copytext(line,1,2) == "#")
+		return
 
 	//Split the line at every "-"
 	var/list/List = splittext(line, "-")
-	if(!List.len) return
+	if(!length(List))
+		return
 
 	//ckey is before the first "-"
 	var/ckey = ckey(List[1])
-	if(!ckey) return
+	if(!ckey)
+		return
 
 	//rank follows the first "-"
 	var/rank = ""
-	if(List.len >= 2)
+	if(length(List) >= 2)
 		rank = ckeyEx(List[2])
 
 	var/list/extra_titles = list()
-	if(List.len >= 3)
+	if(length(List) >= 3)
 		extra_titles = List.Copy(3)
 
 	if(mentor)
@@ -115,7 +150,7 @@ var/list/admin_ranks = list() //list of all ranks with associated rights
 			return
 
 	//load permissions associated with this rank
-	var/rights = admin_ranks[rank]
+	var/rights = GLOB.admin_ranks[rank]
 
 	//create the admin datum and store it for later use
 	var/datum/admins/D = new /datum/admins(rank, rights, ckey, extra_titles)

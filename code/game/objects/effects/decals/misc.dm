@@ -1,18 +1,11 @@
-/obj/effect/decal
-	plane = FLOOR_PLANE
-
-// Used for spray that you spray at walls, tables, hydrovats etc
-/obj/effect/decal/spraystill
-	density = FALSE
-	anchored = TRUE
-	layer = FLY_LAYER
-
 //Used by spraybottles.
 /obj/effect/decal/chempuff
 	name = "chemicals"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "chempuff"
+	keep_as_object = TRUE
 	var/mob/source_user
+
 
 /obj/effect/decal/chempuff/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -79,7 +72,7 @@
 		deconstruct(FALSE)
 	return
 
-/obj/effect/decal/mecha_wreckage/bullet_act(obj/item/projectile/Proj)
+/obj/effect/decal/mecha_wreckage/bullet_act(obj/projectile/Proj)
 	return 1
 
 /obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/xenomorph/M)
@@ -95,11 +88,11 @@
 	return ..()
 
 /obj/effect/decal/mecha_wreckage/gygax
-	name = "Gygax wreckage"
+	name = "MAX wreckage"
 	icon_state = "gygax-broken"
 
 /obj/effect/decal/mecha_wreckage/gygax/dark
-	name = "Dark Gygax wreckage"
+	name = "Dark MAX wreckage"
 	icon_state = "darkgygax-broken"
 
 /obj/effect/decal/mecha_wreckage/marauder
@@ -116,7 +109,7 @@
 	icon_state = "seraph-broken"
 
 /obj/effect/decal/mecha_wreckage/ripley
-	name = "Ripley wreckage"
+	name = "P-1000 wreckage"
 	icon_state = "ripley-broken"
 
 /obj/effect/decal/mecha_wreckage/ripley/firefighter
@@ -124,11 +117,11 @@
 	icon_state = "firefighter-broken"
 
 /obj/effect/decal/mecha_wreckage/ripley/deathripley
-	name = "Death-Ripley wreckage"
+	name = "Death-P-1000 wreckage"
 	icon_state = "deathripley-broken"
 
 /obj/effect/decal/mecha_wreckage/durand
-	name = "Durand wreckage"
+	name = "MOX wreckage"
 	icon_state = "durand-broken"
 
 /obj/effect/decal/mecha_wreckage/phazon
@@ -136,7 +129,7 @@
 	icon_state = "phazon-broken"
 
 /obj/effect/decal/mecha_wreckage/odysseus
-	name = "Odysseus wreckage"
+	name = "Alice wreckage"
 	icon_state = "odysseus-broken"
 
 /obj/effect/decal/mecha_wreckage/hoverpod

@@ -6,12 +6,20 @@
 	icon_opened = "coffin_open"
 	material = MATERIAL_WOOD
 	anchored = FALSE
+	layer = BETWEEN_OBJECT_ITEM_LAYER
 
 /obj/structure/closet/coffin/update_icon()
 	if(!opened)
 		icon_state = icon_closed
 	else
 		icon_state = icon_opened
+
+/obj/structure/closet/coffin/uscm
+	name = "\improper USCM coffin"
+	desc = "A burial receptacle for dearly departed Marines, adorned in red and finished with the Corps' emblem on the interior. Semper fi."
+	icon_state = "uscm_coffin"
+	icon_closed = "uscm_coffin"
+	icon_opened = "uscm_coffin_open"
 
 /obj/structure/closet/coffin/predator
 	name = "strange coffin"

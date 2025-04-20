@@ -175,8 +175,11 @@
 /proc/_sin(X)
 	return sin(X)
 
+/proc/_sleep(Delay)
+	sleep(Delay)
+
 /proc/_list_add(list/L, ...)
-	if (args.len < 2)
+	if (length(args) < 2)
 		return
 	L += args.Copy(2)
 
@@ -196,7 +199,7 @@
 	return L.Join(Glue, Start, End)
 
 /proc/_list_remove(list/L, ...)
-	if (args.len < 2)
+	if (length(args) < 2)
 		return
 	L -= args.Copy(2)
 
@@ -262,6 +265,13 @@
 
 /proc/_turn(dir, angle)
 	return turn(dir, angle)
+
+/proc/_icon_states(icon/thing, mode)
+	if(istype(thing))
+		return icon_states(thing, mode)
+	if(isatom(thing))
+		var/atom/atom_thing = thing
+		return icon_states(atom_thing.icon, mode)
 
 /// Auxtools REALLY doesn't know how to handle filters as values;
 /// when passed as arguments to auxtools-called procs, they aren't simply treated as nulls -

@@ -2,8 +2,8 @@
 	name = "\improper Souto Slinger Supremo"
 	desc = "This appears to be a T-shirt cannon modified to fire cans of Souto at speeds fast enough to get them up into the top stands of a stadium. This can't be safe. Cobbled together in Havana."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
-	icon_state = "supremo_w"
-	item_state = "supremo_w"
+	icon_state = "supremo"
+	item_state = "supremo"
 	w_class = SIZE_SMALL
 	fire_sound = 'sound/items/syringeproj.ogg'
 	attachable_allowed = list()
@@ -14,6 +14,8 @@
 	var/obj/item/storage/backpack/souto/soutopack
 	current_mag = null
 	auto_retrieval_slot = WEAR_IN_BACK
+	start_automatic = TRUE
+	autofire_slow_mult = 0.8 //Fires FASTER when in Full Auto, that is the power of Souta
 
 /obj/item/weapon/gun/souto/set_gun_config_values()
 	. = ..()
@@ -27,21 +29,21 @@
 			to_chat(user, "You must equip the specialized Backpack Souto Vending Machine to use the Souto Slinger Supremo!")
 			click_empty(user)
 			unlink_soutopack()
-			return
+			return NONE
 	if(soutopack)
 		if(!current_mag)
 			current_mag = soutopack.internal_mag
 		// Check we're actually firing the right fuel tank
 		if(current_mag != soutopack.internal_mag)
 			current_mag = soutopack.internal_mag
-		..()
+		return ..()
 
 /obj/item/weapon/gun/souto/reload(mob/user, obj/item/ammo_magazine/magazine)
-	to_chat(user, SPAN_WARNING("The [src] feed system cannot be reloaded manually."))
+	to_chat(user, SPAN_WARNING("[src]'s feed system cannot be reloaded manually."))
 	return
 
 /obj/item/weapon/gun/souto/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
-	to_chat(user, SPAN_WARNING("You cannot unload the [src]."))
+	to_chat(user, SPAN_WARNING("You cannot unload [src]."))
 	return
 
 /obj/item/weapon/gun/souto/able_to_fire(mob/user)

@@ -4,7 +4,7 @@
 
 /obj/item/grown // Grown things that are not edible
 	name = "grown_weapon"
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	var/plantname
 	var/potency = 1
 
@@ -15,7 +15,7 @@
 
 	// Fill the object up with the appropriate reagents.
 	if(!isnull(plantname))
-		var/datum/seed/S = seed_types[plantname]
+		var/datum/seed/S = GLOB.seed_types[plantname]
 		if(!S || !S.chems)
 			return
 
@@ -24,8 +24,8 @@
 		for(var/rid in S.chems)
 			var/list/reagent_data = S.chems[rid]
 			var/rtotal = reagent_data[1]
-			if(reagent_data.len > 1 && potency > 0)
-				rtotal += round(potency/reagent_data[2])
+			if(length(reagent_data) > 1 && potency > 0)
+				rtotal += floor(potency/reagent_data[2])
 			reagents.add_reagent(rid,max(1,rtotal))
 
 /obj/item/grown/log
@@ -79,7 +79,7 @@
 /obj/item/grown/nettle // -- Skie
 	plantname = "nettle"
 	desc = "It's probably <B>not</B> wise to touch it with bare hands..."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/harvest.dmi'
 	name = "nettle"
 	icon_state = "nettle"
 	damtype = "fire"
@@ -142,13 +142,15 @@
 
 /obj/item/grown/nettle/attack(mob/living/carbon/M as mob, mob/user as mob)
 
-	if(!..()) return
+	if(!..())
+		return
 
 	lose_leaves(user)
 
 /obj/item/grown/nettle/death/attack(mob/living/carbon/M as mob, mob/user as mob)
 
-	if(!..()) return
+	if(!..())
+		return
 
 	if(istype(M, /mob/living))
 		to_chat(M, SPAN_WARNING("You are stunned by the powerful acid of the deathnettle!"))

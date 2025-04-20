@@ -39,14 +39,13 @@
 	var/building_terminal = 0 //Suggestions about how to avoid clickspam building several terminals accepted!
 	var/should_be_mapped = 0 // If this is set to 0 it will send out warning on New()
 	power_machine = TRUE
+	var/explosion_proof = TRUE
 
 /obj/structure/machinery/power/smes/Initialize()
 	. = ..()
-	if(!powernet)
-		connect_to_network()
 
 	dir_loop:
-		for(var/d in cardinal)
+		for(var/d in GLOB.cardinals)
 			var/turf/T = get_step(src, d)
 			for(var/obj/structure/machinery/power/terminal/term in T)
 				if(term && term.dir == turn(d, 180))
@@ -56,17 +55,35 @@
 		stat |= BROKEN
 		return
 	terminal.master = src
-	if(!terminal.powernet)
-		terminal.connect_to_network()
 	updateicon()
 	start_processing()
 
 	if(!should_be_mapped)
 		warning("Non-buildable or Non-magical SMES at [src.x]X [src.y]Y [src.z]Z")
 
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/structure/machinery/power/smes/ex_act(severity)
+	if(explosion_proof)
+		return
+	else
+		.=..()
+
+/obj/structure/machinery/power/smes/LateInitialize()
+	. = ..()
+
+	if(QDELETED(src))
+		return
+
+	if(!powernet && !connect_to_network())
+		CRASH("[src] has failed to connect to a power network. Check that it has been mapped correctly.")
+	if(terminal && !terminal.powernet)
+		terminal.connect_to_network()
+
 /obj/structure/machinery/power/smes/proc/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN) return
+	if(stat & BROKEN)
+		return
 
 	overlays += image('icons/obj/structures/machinery/power.dmi', "smes_op[outputting]")
 
@@ -85,7 +102,7 @@
 
 
 /obj/structure/machinery/power/smes/proc/chargedisplay()
-	return round(5.5*charge/(capacity ? capacity : 5e6))
+	return floor(5.5*charge/(capacity ? capacity : 5e6))
 
 #define SMESRATE 0.05 // rate of internal charge to external power
 
@@ -236,8 +253,8 @@
 			return 0
 		building_terminal = 0
 		CC.use(10)
-		user.visible_message(\
-				SPAN_NOTICE("[user.name] has added cables to \the [src]."),\
+		user.visible_message(
+				SPAN_NOTICE("[user.name] has added cables to \the [src]."),
 				SPAN_NOTICE("You added cables to \the [src]."))
 		terminal.connect_to_network()
 		stat = 0
@@ -260,8 +277,8 @@
 						building_terminal = 0
 						return 0
 					new /obj/item/stack/cable_coil(loc,10)
-					user.visible_message(\
-						SPAN_NOTICE("[user.name] cut the cables and dismantled the power terminal."),\
+					user.visible_message(
+						SPAN_NOTICE("[user.name] cut the cables and dismantled the power terminal."),
 						SPAN_NOTICE("You cut the cables and dismantle the power terminal."))
 					qdel(terminal)
 					terminal = null
@@ -272,14 +289,13 @@
 // TGUI STUFF \\
 
 /obj/structure/machinery/power/smes/ui_status(mob/user)
-	if(!(stat & BROKEN) && !open_hatch)
-		. = UI_INTERACTIVE
-
-/obj/structure/machinery/power/smes/ui_state(mob/user)
+	. = ..()
 	if(stat & BROKEN)
 		return UI_CLOSE
 	if(open_hatch)
 		return UI_DISABLED
+
+/obj/structure/machinery/power/smes/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/power/smes/tgui_interact(mob/user, datum/tgui/ui)
@@ -390,6 +406,7 @@
 
 
 /obj/structure/machinery/power/smes/emp_act(severity)
+	. = ..()
 	outputting = 0
 	inputting = 0
 	output_level = 0
@@ -400,7 +417,6 @@
 		output_level = initial(output_level)
 		inputting = initial(inputting)
 		outputting = initial(outputting)
-	..()
 
 
 
@@ -416,10 +432,15 @@
 	..()
 
 /proc/rate_control(S, V, C, Min=1, Max=5, Limit=null)
-	var/href = "<A href='?src=\ref[S];rate control=1;[V]"
+	var/href = "<A href='byond://?src=\ref[S];rate control=1;[V]"
 	var/rate = "[href]=-[Max]'>-</A>[href]=-[Min]'>-</A> [(C?C : 0)] [href]=[Min]'>+</A>[href]=[Max]'>+</A>"
-	if(Limit) return "[href]=-[Limit]'>-</A>"+rate+"[href]=[Limit]'>+</A>"
+	if(Limit)
+		return "[href]=-[Limit]'>-</A>"+rate+"[href]=[Limit]'>+</A>"
 	return rate
 
+/obj/structure/machinery/power/smes/magical/yautja
+	name = "Yautja Energy Core"
+	desc = "A highly advanced power source of Yautja design, utilizing unknown technology to generate and distribute energy efficiently throughout the vessel."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 #undef SMESRATE

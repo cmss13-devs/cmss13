@@ -16,7 +16,7 @@
 
 	if(charging && !(inoperable()) )
 
-		var/newlevel = round(charging.percent() * 4 / 99)
+		var/newlevel = floor(charging.percent() * 4 / 99)
 
 		if(chargelevel != newlevel)
 
@@ -80,11 +80,11 @@
 	return
 
 /obj/structure/machinery/cell_charger/emp_act(severity)
+	. = ..()
 	if(inoperable())
 		return
 	if(charging)
 		charging.emp_act(severity)
-	..(severity)
 
 
 /obj/structure/machinery/cell_charger/process()

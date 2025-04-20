@@ -58,7 +58,8 @@
 					playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 
 					if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-						if(!src || !WT.isOn()) return
+						if(!src || !WT.isOn())
+							return
 						to_chat(user, SPAN_NOTICE(" You dissasembled the windoor assembly!"))
 						deconstruct()
 				else
@@ -67,6 +68,10 @@
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !anchored)
+				var/area/area = get_area(W)
+				if(!area.allow_construction)
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				var/turf/open/T = loc
 				if(!(istype(T) && T.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
@@ -75,7 +80,8 @@
 				user.visible_message("[user] secures the windoor assembly to the floor.", "You start to secure the windoor assembly to the floor.")
 
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src) return
+					if(!src)
+						return
 					to_chat(user, SPAN_NOTICE(" You've secured the windoor assembly!"))
 					src.anchored = TRUE
 					if(src.secure)
@@ -89,7 +95,8 @@
 				user.visible_message("[user] unsecures the windoor assembly to the floor.", "You start to unsecure the windoor assembly to the floor.")
 
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src) return
+					if(!src)
+						return
 					to_chat(user, SPAN_NOTICE(" You've unsecured the windoor assembly!"))
 					src.anchored = FALSE
 					if(src.secure)
@@ -128,7 +135,7 @@
 						else
 							src.name = "Wired Windoor Assembly"
 			else
-				..()
+				. = ..()
 
 		if("02")
 
@@ -138,7 +145,8 @@
 				user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src) return
+					if(!src)
+						return
 
 					to_chat(user, SPAN_NOTICE(" You cut the windoor wires!"))
 					new/obj/item/stack/cable_coil(get_turf(user), 1)
@@ -157,7 +165,8 @@
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src) return
+					if(!src)
+						return
 
 					user.drop_held_item()
 					W.forceMove(src)
@@ -173,7 +182,8 @@
 				user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to uninstall electronics from the airlock assembly.")
 
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !src.electronics) return
+					if(!src || !src.electronics)
+						return
 					to_chat(user, SPAN_NOTICE(" You've removed the airlock electronics!"))
 					if(src.secure)
 						src.name = "Secure Wired Windoor Assembly"
@@ -194,7 +204,8 @@
 
 				if(do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 
-					if(!src) return
+					if(!src)
+						return
 
 					density = TRUE //Shouldn't matter but just incase
 					to_chat(user, SPAN_NOTICE(" You finish the windoor!"))
@@ -241,7 +252,7 @@
 
 
 			else
-				..()
+				. = ..()
 
 	//Update to reflect changes(if applicable)
 	update_icon()

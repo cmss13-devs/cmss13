@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/autocannon
-	name = "AC3-E Autocannon"
-	desc = "A primary autocannon for tanks that shoots explosive flak rounds"
+	name = "\improper AC3-E Autocannon"
+	desc = "A primary autocannon for tanks that shoots explosive flak rounds."
 
 	icon_state = "ace_autocannon"
 	disp_icon = "tank"
@@ -8,11 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/autocannon_fire.ogg')
 
 	health = 500
-	cooldown = 7
-	accuracy = 0.98
 	firing_arc = 60
-
-	origins = list(0, -3)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/ace_autocannon
 	max_clips = 2
@@ -23,3 +19,10 @@
 		"4" = list(32, 0),
 		"8" = list(-32, 0)
 	)
+
+	scatter = 1
+	gun_firemode = GUN_FIREMODE_AUTOMATIC
+	gun_firemode_list = list(
+		GUN_FIREMODE_AUTOMATIC,
+	)
+	fire_delay = 0.7 SECONDS

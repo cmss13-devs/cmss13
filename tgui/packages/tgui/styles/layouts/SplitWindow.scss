@@ -1,0 +1,13 @@
+@use 'sass:color';
+@use '../base.scss';
+@use '../functions.scss' as *;
+
+.SplitWindow {
+  color: base.$color-fg;
+  background-color: base.$color-bg;
+  background-image: linear-gradient(
+    to bottom,
+    base.$color-bg-start 0%,
+    base.$color-bg-end 100%
+  );
+}

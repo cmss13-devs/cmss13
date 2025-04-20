@@ -7,59 +7,57 @@ won't recognize the older one, as an example.
 
 */
 
-var/jobban_runonce // Updates legacy bans with new info
-var/jobban_keylist[0] //to store the keys & ranks
+GLOBAL_VAR(jobban_runonce) // Updates legacy bans with new info
+GLOBAL_LIST_EMPTY(jobban_keylist)
 
 /proc/check_jobban_path(X)
 	. = ckey(X)
-	if(!islist(jobban_keylist[.])) //If it's not a list, we're in trouble.
-		jobban_keylist[.] = list()
+	if(!islist(GLOB.jobban_keylist[.])) //If it's not a list, we're in trouble.
+		GLOB.jobban_keylist[.] = list()
 
 /proc/jobban_fullban(mob/M, rank, reason)
 	if (!M || !M.ckey) return
 	rank = check_jobban_path(rank)
-	jobban_keylist[rank][M.ckey] = reason
+	GLOB.jobban_keylist[rank][M.ckey] = reason
 
 /proc/jobban_client_fullban(ckey, rank)
 	if (!ckey || !rank) return
 	rank = check_jobban_path(rank)
-	jobban_keylist[rank][ckey] = "Reason Unspecified"
+	GLOB.jobban_keylist[rank][ckey] = "Reason Unspecified"
 
-//returns a reason if M is banned from rank, returns 0 otherwise
-/proc/jobban_isbanned(mob/M, rank, datum/entity/player/P = null)
+/// Returns a reason if player (mob) is banned from rank, returns null otherwise
+/proc/jobban_isbanned(mob/player, rank, datum/entity/player/player_entity = null)
 	if(!rank)
 		return "Non-existant job"
 	rank = ckey(rank)
-	if(P)
+	if(player_entity)
 		// asking for a friend
-		if(!P.jobbans_loaded)
+		if(!player_entity.jobbans_loaded)
 			return "Not yet loaded"
-		var/datum/entity/player_job_ban/PJB = P.job_bans[rank]
-		return PJB ? PJB.text : null
-	if(M)
-		if(!M.client || !M.client.player_data || !M.client.player_data.jobbans_loaded)
+		var/datum/entity/player_job_ban/job_ban = player_entity.job_bans[rank]
+		return job_ban ? job_ban.text : null
+	if(player)
+		if(!player.client || !player.client.player_data || !player.client.player_data.jobbans_loaded)
 			return "Not yet loaded"
 		if(guest_jobbans(rank))
-			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(M.key))
+			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(player.key))
 				return "Guest Job-ban"
-			if(CONFIG_GET(flag/usewhitelist) && !check_whitelist(M))
-				return "Whitelisted Job"
-		var/datum/entity/player_job_ban/PJB = M.client.player_data.job_bans[rank]
-		return PJB ? PJB.text : null
+		var/datum/entity/player_job_ban/job_ban = player.client.player_data.job_bans[rank]
+		return job_ban ? job_ban.text : null
 
 /proc/jobban_loadbanfile()
 	var/savefile/S=new("data/job_new.ban")
-	S["new_bans"] >> jobban_keylist
+	S["new_bans"] >> GLOB.jobban_keylist
 	log_admin("Loading jobban_rank")
-	S["runonce"] >> jobban_runonce
+	S["runonce"] >> GLOB.jobban_runonce
 
-	if (!length(jobban_keylist))
-		jobban_keylist=list()
+	if (!length(GLOB.jobban_keylist))
+		GLOB.jobban_keylist=list()
 		log_admin("jobban_keylist was empty")
 
 /proc/jobban_savebanfile()
 	var/savefile/S=new("data/job_new.ban")
-	S["new_bans"] << jobban_keylist
+	S["new_bans"] << GLOB.jobban_keylist
 
 /proc/jobban_unban(mob/M, rank)
 	jobban_remove("[M.ckey] - [ckey(rank)]")
@@ -70,7 +68,7 @@ var/jobban_keylist[0] //to store the keys & ranks
 /proc/jobban_remove(X)
 	var/regex/r1 = new("(.*) - (.*)")
 	if(r1.Find(X))
-		var/L[] = jobban_keylist[r1.group[2]]
+		var/L[] = GLOB.jobban_keylist[r1.group[2]]
 		L.Remove(r1.group[1])
 		return 1
 
@@ -89,7 +87,7 @@ var/jobban_keylist[0] //to store the keys & ranks
 	if(!M.ckey) //sanity
 		to_chat(usr, "This mob has no ckey")
 		return
-	if(!RoleAuthority)
+	if(!GLOB.RoleAuthority)
 		to_chat(usr, "The Role Authority is not set up!")
 		return
 
@@ -109,61 +107,67 @@ var/jobban_keylist[0] //to store the keys & ranks
 WARNING!*/
 //Regular jobs
 //Command (Blue)
-	jobs += generate_job_ban_list(M, P, ROLES_CIC, "CIC", "ddddff")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_CIC, "CIC", "ddddff")
 	jobs += "<br>"
 // SUPPORT
-	jobs += generate_job_ban_list(M, P, ROLES_AUXIL_SUPPORT, "Support", "ccccff")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_AUXIL_SUPPORT, "Support", "ccccff")
 	jobs += "<br>"
 // MPs
-	jobs += generate_job_ban_list(M, P, ROLES_POLICE, "Police", "ffdddd")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_POLICE, "Police", "ffdddd")
 	jobs += "<br>"
 //Engineering (Yellow)
-	jobs += generate_job_ban_list(M, P, ROLES_ENGINEERING, "Engineering", "fff5cc")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_ENGINEERING, "Engineering", "fff5cc")
 	jobs += "<br>"
 //Cargo (Yellow) //Copy paste, yada, yada. Hopefully Snail can rework this in the future.
-	jobs += generate_job_ban_list(M, P, ROLES_REQUISITION, "Requisition", "fff5cc")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_REQUISITION, "Requisition", "fff5cc")
 	jobs += "<br>"
 //Medical (White)
-	jobs += generate_job_ban_list(M, P, ROLES_MEDICAL, "Medical", "ffeef0")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MEDICAL, "Medical", "ffeef0")
 	jobs += "<br>"
 //Marines
-	jobs += generate_job_ban_list(M, P, ROLES_MARINES, "Marines", "ffeeee")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MARINES, "Marines", "ffeeee")
 	jobs += "<br>"
 // MISC
-	jobs += generate_job_ban_list(M, P, ROLES_MISC, "Misc", "aaee55")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_MISC, "Misc", "aaee55")
 	jobs += "<br>"
 // Xenos (Orange)
-	jobs += generate_job_ban_list(M, P, ROLES_XENO, "Xenos", "a268b1")
+	jobs += generate_job_ban_list(M, P, GLOB.ROLES_XENO, "Xenos", "a268b1")
 	jobs += "<br>"
 //Extra (Orange)
 	var/isbanned_dept = jobban_isbanned(M, "Syndicate", P)
 	jobs += "<table cellpadding='1' cellspacing='0' width='100%'>"
-	jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Syndicate;jobban4=\ref[M]'>Extras</a></th></tr><tr align='center'>"
+	jobs += "<tr bgcolor='ffeeaa'><th colspan='10'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Syndicate;jobban4=\ref[M]'>Extras</a></th></tr><tr align='center'>"
 
 	//ERT
 	if(jobban_isbanned(M, "Emergency Response Team", P) || isbanned_dept)
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'><font color=red>Emergency Response Team</font></a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'><font color=red>Emergency Response Team</font></a></td>"
 	else
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'>Emergency Response Team</a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Emergency Response Team;jobban4=\ref[M]'>Emergency Response Team</a></td>"
+
+	//Youngblood
+	if(jobban_isbanned(M, ERT_JOB_YOUNGBLOOD, P) || isbanned_dept)
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[ERT_JOB_YOUNGBLOOD];jobban4=\ref[M]'><font color=red>[ERT_JOB_YOUNGBLOOD]</font></a></td>"
+	else
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=[ERT_JOB_YOUNGBLOOD];jobban4=\ref[M]'>[ERT_JOB_YOUNGBLOOD]</a></td>"
 
 	//Survivor
 	if(jobban_isbanned(M, "Survivor", P) || isbanned_dept)
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'><font color=red>Survivor</font></a></td>"
 	else
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Survivor;jobban4=\ref[M]'>Survivor</a></td>"
 
 	if(jobban_isbanned(M, "Agent", P) || isbanned_dept)
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'><font color=red>Agent</font></a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'><font color=red>Agent</font></a></td>"
 	else
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'>Agent</a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Agent;jobban4=\ref[M]'>Agent</a></td>"
 
 	if(jobban_isbanned(M, "Urgent Adminhelp", P))
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Urgent Adminhelp;jobban4=\ref[M]'><font color=red>Urgent Adminhelp</font></a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Urgent Adminhelp;jobban4=\ref[M]'><font color=red>Urgent Adminhelp</font></a></td>"
 	else
-		jobs += "<td width='20%'><a href='?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Urgent Adminhelp;jobban4=\ref[M]'>Urgent Adminhelp</a></td>"
+		jobs += "<td width='20%'><a href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];jobban3=Urgent Adminhelp;jobban4=\ref[M]'>Urgent Adminhelp</a></td>"
 
 
 	body = "<body>[jobs]</body>"
 	dat = "<tt>[body]</tt>"
-	show_browser(usr, dat, "Job-Ban Panel: [M.name]", "jobban2", "size=800x490")
+	show_browser(usr, dat, "Job-Ban Panel: [M.name]", "jobban2", width = 800, height = 490)
 	return

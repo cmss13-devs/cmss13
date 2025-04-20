@@ -3,7 +3,6 @@ GLOBAL_LIST_EMPTY(sorted_areas)
 /// An association from typepath to area instance. Only includes areas with `unique` set.
 GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
 
-GLOBAL_DATUM(supply_elevator, /turf)
 GLOBAL_DATUM(vehicle_elevator, /turf)
 GLOBAL_LIST_EMPTY(spawns_by_job)
 GLOBAL_LIST_EMPTY(spawns_by_squad_and_job)
@@ -17,6 +16,8 @@ GLOBAL_LIST_EMPTY(mainship_yautja_teleports)
 GLOBAL_LIST_EMPTY(mainship_yautja_desc)
 GLOBAL_LIST_EMPTY(yautja_teleports)
 GLOBAL_LIST_EMPTY(yautja_teleport_descs)
+GLOBAL_LIST_EMPTY(yautja_young_teleports)
+GLOBAL_LIST_EMPTY(yautja_young_descs)
 
 GLOBAL_LIST_EMPTY(thunderdome_one)
 GLOBAL_LIST_EMPTY(thunderdome_two)
@@ -27,6 +28,7 @@ GLOBAL_LIST_EMPTY(latewhiskey)
 
 GLOBAL_LIST_EMPTY(latejoin)
 GLOBAL_LIST_EMPTY(latejoin_by_squad)
+GLOBAL_LIST_EMPTY(latejoin_by_job)
 
 GLOBAL_LIST_EMPTY(zombie_landmarks)
 
@@ -52,6 +54,7 @@ GLOBAL_LIST_EMPTY(teleporter_landmarks)
 
 GLOBAL_LIST_INIT(cardinals, list(NORTH, SOUTH, EAST, WEST))
 GLOBAL_LIST_EMPTY(nightmare_landmarks)
+GLOBAL_LIST_EMPTY(nightmare_landmark_tags_removed)
 
 GLOBAL_LIST_EMPTY(ship_areas)
 

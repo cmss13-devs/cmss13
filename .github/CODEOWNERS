@@ -24,9 +24,21 @@
 /tools/docker/ @Fira
 /Dockerfile @Fira
 
-# MorrowWolf
+# Forest2001
 
-/maps/map_files/LV522_Chances_Claim/LV522_Chances_Claim.dmm @morrowwolf
-/code/modules/gear_presets/survivors.dm @morrowwolf
+/code/game/machinery/ARES @realforest2001
+/tgui/packages/tgui/interfaces/AresAdmin.jsx @realforest2001
+/tgui/packages/tgui/interfaces/AresInterface.jsx @realforest2001
+/tgui/packages/tgui/interfaces/WorkingJoe.jsx @realforest2001
+
+# Nanu
+
+/maps @Nanu308
+
+# Zonespace
+
+/code/datums/tutorial/ @Zonespace27
+/code/modules/admin/verbs/SDQL2/ @Zonespace27
+/maps/tutorial/ @Zonespace27
 
 # MULTIPLE OWNERS

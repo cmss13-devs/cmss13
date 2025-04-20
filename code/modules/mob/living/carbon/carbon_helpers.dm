@@ -18,7 +18,7 @@
 		var/view_rating = view_change_sources[view_source]
 		if(highest_view < view_rating)
 			highest_view = view_rating
-	if(source && new_size != world_view_size)
+	if(source && new_size != GLOB.world_view_size)
 		LAZYSET(view_change_sources, source, new_size)
 	if(new_size < highest_view)
 		new_size = highest_view

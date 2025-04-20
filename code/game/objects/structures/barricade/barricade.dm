@@ -5,20 +5,28 @@
 	climbable = TRUE
 	anchored = TRUE
 	density = TRUE
-	throwpass = TRUE //You can throw objects over this, despite its density.
+	/// You can throw objects over this, despite its density.
+	throwpass = TRUE
 	layer = BELOW_OBJ_LAYER
 	flags_atom = ON_BORDER
-	var/stack_type //The type of stack the barricade dropped when disassembled if any.
-	var/stack_amount = 5 //The amount of stack dropped when disassembled at full health
-	var/destroyed_stack_amount //to specify a non-zero amount of stack to drop when destroyed
+	/// The type of stack the barricade dropped when disassembled if any.
+	var/stack_type
+	/// The amount of stack dropped when disassembled at full health
+	var/stack_amount = 5
+	/// to specify a non-zero amount of stack to drop when destroyed
+	var/destroyed_stack_amount
 	health = 100 //Pretty tough. Changes sprites at 300 and 150
-	var/maxhealth = 100 //Basic code functions
+	var/maxhealth = 100
 	/// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
 	var/starting_maxhealth = 100
-	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
-	var/force_level_absorption = 5 //How much force an item needs to even damage it at all.
+	/// Whether a crusher can ram through it.
+	var/crusher_resistant = TRUE
+	/// How much force an item needs to even damage it at all.
+	var/force_level_absorption = 5
 	var/barricade_hitsound
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
+	/// ! Icon file used for the wiring
+	var/wire_icon = 'icons/obj/structures/barricades.dmi'
 	var/can_change_dmg_state = TRUE
 	var/damage_state = BARRICADE_DMG_NONE
 	var/closed = FALSE
@@ -30,8 +38,12 @@
 	var/brute_multiplier = 1
 	var/burn_multiplier = 1
 	var/explosive_multiplier = 1
+	var/brute_projectile_multiplier = 1
+	var/burn_flame_multiplier = 1
 	var/repair_materials = list()
 	var/metallic = TRUE
+	/// Lower limit of damage beyond which the barricade cannot be fixed by welder. Compared to damage_state. If null it can be repaired at any damage_state.
+	var/welder_lower_damage_limit = null
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -42,12 +54,12 @@
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 
-/obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/PF)
+/obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (PF)
-		PF.flags_can_pass_all = NONE
-		PF.flags_can_pass_front = NONE
-		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
+	if (pass_flags)
+		pass_flags.flags_can_pass_all = NONE
+		pass_flags.flags_can_pass_front = NONE
+		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
 	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB
 
@@ -76,7 +88,7 @@
 		switch(dir)
 			if(SOUTH)
 				layer = ABOVE_MOB_LAYER
-			else if(NORTH)
+			if(NORTH)
 				layer = initial(layer) - 0.01
 			else
 				layer = initial(layer)
@@ -95,45 +107,45 @@
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+burn_upgrade_[damage_state]")
 			if(BARRICADE_UPGRADE_BRUTE)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+brute_upgrade_[damage_state]")
-			if(BARRICADE_UPGRADE_EXPLOSIVE)
+			if(BARRICADE_UPGRADE_ANTIFF)
 				overlays += image('icons/obj/structures/barricades.dmi', icon_state = "+explosive_upgrade_[damage_state]")
 
 	if(is_wired)
 		if(!closed)
-			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_wire")
+			overlays += image(wire_icon, icon_state = "[barricade_type]_wire")
 		else
-			overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_wire")
+			overlays += image(wire_icon, icon_state = "[barricade_type]_closed_wire")
 
 	..()
 
-/obj/structure/barricade/hitby(atom/movable/AM)
-	if(AM.throwing && is_wired)
-		if(iscarbon(AM))
-			var/mob/living/carbon/C = AM
-			if(C.mob_size <= MOB_SIZE_XENO)
-				C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
+/obj/structure/barricade/hitby(atom/movable/atom_movable)
+	if(atom_movable.throwing && is_wired)
+		if(iscarbon(atom_movable))
+			var/mob/living/carbon/living_carbon = atom_movable
+			if(living_carbon.mob_size <= MOB_SIZE_XENO)
+				living_carbon.visible_message(SPAN_DANGER("The barbed wire slices into [living_carbon]!"),
 				SPAN_DANGER("The barbed wire slices into you!"))
-				C.apply_damage(10)
-				C.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
-				playsound(C, "bonk", 75, FALSE)
+				living_carbon.apply_damage(10)
+				living_carbon.apply_effect(2, WEAKEN) //Leaping into barbed wire is VERY bad
+				playsound(living_carbon, "bonk", 75, FALSE)
 	..()
 
-/obj/structure/barricade/Collided(atom/movable/AM)
+/obj/structure/barricade/Collided(atom/movable/atom_movable)
 	..()
 
-	if(istype(AM, /mob/living/carbon/xenomorph/crusher))
-		var/mob/living/carbon/xenomorph/crusher/C = AM
+	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
+		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
 
-		if (!C.throwing)
+		if (!living_carbon.throwing)
 			return
 
 		if(crusher_resistant)
-			visible_message(SPAN_DANGER("[C] smashes into [src]!"))
+			visible_message(SPAN_DANGER("[living_carbon] smashes into [src]!"))
 			take_damage(150)
 			playsound(src, barricade_hitsound, 25, TRUE)
 
-		else if(!C.stat)
-			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
+		else if(!living_carbon.stat)
+			visible_message(SPAN_DANGER("[living_carbon] smashes through [src]!"))
 			deconstruct(FALSE)
 			playsound(src, barricade_hitsound, 25, TRUE)
 
@@ -163,8 +175,8 @@
 	if(closed)
 		return NO_BLOCKED_MOVEMENT
 
-	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
-	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
+	var/obj/structure/structure = locate(/obj/structure) in get_turf(mover)
+	if(structure && structure.climbable && !(structure.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others
 		return NO_BLOCKED_MOVEMENT
 
 	return ..()
@@ -174,39 +186,36 @@
 		return FALSE
 	return prob(max(30,(100.0*health)/maxhealth))
 
-/obj/structure/barricade/attack_robot(mob/user as mob)
-	return attack_hand(user)
-
 /obj/structure/barricade/attack_animal(mob/user as mob)
 	return attack_alien(user)
 
-/obj/structure/barricade/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/weapon/zombie_claws))
+/obj/structure/barricade/attackby(obj/item/item, mob/user)
+	if(istype(item, /obj/item/weapon/zombie_claws))
 		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
 		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
-		hit_barricade(W)
+		hit_barricade(item)
 		return
 
-	for(var/obj/effect/xenomorph/acid/A in src.loc)
-		if(A.acid_t == src)
+	for(var/obj/effect/xenomorph/acid/acid in src.loc)
+		if(acid.acid_t == src)
 			to_chat(user, "You can't get near that, it's melting!")
 			return
 
-	if(istype(W, /obj/item/stack/barbed_wire))
-		var/obj/item/stack/barbed_wire/B = W
+	if(istype(item, /obj/item/stack/barbed_wire))
+		var/obj/item/stack/barbed_wire/barbed_wire = item
 		if(can_wire)
-			user.visible_message(SPAN_NOTICE("[user] starts setting up [W.name] on [src]."),
-			SPAN_NOTICE("You start setting up [W.name] on [src]."))
+			user.visible_message(SPAN_NOTICE("[user] starts setting up [item.name] on [src]."),
+			SPAN_NOTICE("You start setting up [item.name] on [src]."))
 			if(do_after(user, 20, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) && can_wire)
 				// Make sure there's still enough wire in the stack
-				if(!B.use(1))
+				if(!barbed_wire.use(1))
 					return
 
 				playsound(src.loc, 'sound/effects/barbed_wire_movement.ogg', 25, 1)
-				user.visible_message(SPAN_NOTICE("[user] sets up [W.name] on [src]."),
-				SPAN_NOTICE("You set up [W.name] on [src]."))
+				user.visible_message(SPAN_NOTICE("[user] sets up [item.name] on [src]."),
+				SPAN_NOTICE("You set up [item.name] on [src]."))
 
 				maxhealth += 50
 				update_health(-50)
@@ -218,7 +227,7 @@
 				update_icon()
 		return
 
-	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
+	if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 		if(is_wired)
 			user.visible_message(SPAN_NOTICE("[user] begin removing the barbed wire on [src]."),
 			SPAN_NOTICE("You begin removing the barbed wire on [src]."))
@@ -240,27 +249,28 @@
 				new/obj/item/stack/barbed_wire( src.loc )
 		return
 
-	if(W.force > force_level_absorption)
-		..()
+	if(item.force > force_level_absorption)
+		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
-		hit_barricade(W)
+		hit_barricade(item)
 
-/obj/structure/barricade/bullet_act(obj/item/projectile/P)
-	bullet_ping(P)
+/obj/structure/barricade/bullet_act(obj/projectile/bullet)
+	bullet_ping(bullet)
 
-	if(P.ammo.damage_type == BURN)
-		P.damage = P.damage * burn_multiplier
+	if(bullet.ammo.damage_type == BURN)
+		bullet.damage = bullet.damage * burn_multiplier
 	else
-		P.damage = P.damage * brute_multiplier
+		bullet.damage = bullet.damage * brute_projectile_multiplier
+		playsound(src, barricade_hitsound, 35, 1)
 
-	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
-		take_damage(round(50 * burn_multiplier))
+	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
+		take_damage(floor(50 * burn_multiplier))
 
-	else if(P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
-		take_damage(P.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
+	else if(bullet.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+		take_damage(bullet.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	take_damage(P.damage)
+	take_damage(bullet.damage)
 
 	return TRUE
 
@@ -270,9 +280,9 @@
 			new /obj/item/stack/barbed_wire(loc)
 		if(stack_type)
 			var/stack_amt
-			stack_amt = round(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
+			stack_amt = floor(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 			if(upgraded)
-				stack_amt += round(2 * (health/starting_maxhealth))
+				stack_amt += floor(2 * (health/starting_maxhealth))
 			if(stack_amt)
 				new stack_type(loc, stack_amt)
 	else
@@ -282,11 +292,11 @@
 
 
 /obj/structure/barricade/ex_act(severity, direction, cause_data)
-	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
-		if(B.dir == reverse_direction(dir))
+	for(var/obj/structure/barricade/barricade in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
+		if(barricade.dir == reverse_direction(dir))
 			spawn(1)
-			if(B)
-				B.ex_act(severity, direction)
+			if(barricade)
+				barricade.ex_act(severity, direction)
 	if(health <= 0)
 		var/location = get_turf(src)
 		handle_debris(severity, direction)
@@ -295,7 +305,7 @@
 		deconstruct(FALSE)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else
-		update_health(round(severity * explosive_multiplier))
+		update_health(floor(severity * explosive_multiplier))
 
 /obj/structure/barricade/get_explosion_resistance(direction)
 	if(!density || direction == turn(dir, 90) || direction == turn(dir, -90))
@@ -321,15 +331,15 @@
 	new /datum/effects/acid(src, null, null)
 
 /obj/structure/barricade/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
-	take_damage(dam * burn_multiplier)
+	take_damage(dam * burn_flame_multiplier)
 
-/obj/structure/barricade/proc/hit_barricade(obj/item/I)
-	take_damage(I.force * 0.5 * brute_multiplier)
+/obj/structure/barricade/proc/hit_barricade(obj/item/item)
+	take_damage(item.force * item.demolition_mod * 0.5 * brute_multiplier)
 
 /obj/structure/barricade/proc/take_damage(damage)
-	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
-		if(B.dir == reverse_direction(dir))
-			B.update_health(damage)
+	for(var/obj/structure/barricade/barricade in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
+		if(barricade.dir == reverse_direction(dir))
+			barricade.update_health(damage)
 
 	update_health(damage)
 
@@ -338,7 +348,7 @@
 
 /obj/structure/barricade/update_health(damage, nomessage)
 	health -= damage
-	health = Clamp(health, 0, maxhealth)
+	health = clamp(health, 0, maxhealth)
 
 	if(!health)
 		if(!nomessage)
@@ -350,19 +360,22 @@
 	update_icon()
 
 /obj/structure/barricade/proc/update_damage_state()
-	var/health_percent = round(health/maxhealth * 100)
+	var/health_percent = floor(health/maxhealth * 100)
 	switch(health_percent)
-		if(0 to 25) damage_state = BARRICADE_DMG_HEAVY
-		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
-		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
-		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
+		if(0 to 25)
+			damage_state = BARRICADE_DMG_HEAVY
+		if(25 to 50)
+			damage_state = BARRICADE_DMG_MODERATE
+		if(50 to 75)
+			damage_state = BARRICADE_DMG_SLIGHT
+		if(75 to INFINITY)
+			damage_state = BARRICADE_DMG_NONE
 
-/obj/structure/barricade/proc/weld_cade(obj/item/tool/weldingtool/WT, mob/user)
-	if(!metallic)
-		user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+/obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user, repeat = TRUE, skip_check = FALSE)
+	if(!skip_check && !can_weld(welder, user))
 		return FALSE
 
-	if(!(WT.remove_fuel(2, user)))
+	if(!(welder.remove_fuel(2, user)))
 		return FALSE
 
 	user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
@@ -378,6 +391,16 @@
 	user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
 	update_health(-200)
 	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+
+	var/current_tool = user.get_active_hand()
+	if(current_tool != welder)
+		return TRUE // Swapped hands or tool
+	if(repeat && can_weld(welder, user, silent = TRUE))
+		// Assumption: The implementation of can_weld will return false if fully repaired
+		if(!try_weld_cade(welder, user, repeat = TRUE, skip_check = TRUE))
+			// If this returned false, then we were interrupted or ran out of fuel, so stop looping
+			return TRUE
+
 	return TRUE
 
 /obj/structure/barricade/verb/count_rotate()
@@ -407,32 +430,36 @@
 	update_icon()
 
 /obj/structure/barricade/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		rotate(user)
 		return TRUE
 
 	return ..()
 
-/obj/structure/barricade/proc/try_nailgun_usage(obj/item/W, mob/user)
-	if(length(repair_materials) == 0 || health >= maxhealth || !istype(W, /obj/item/weapon/gun/smg/nailgun))
+/obj/structure/barricade/proc/try_nailgun_usage(obj/item/item, mob/user)
+	if(length(repair_materials) == 0 || health >= maxhealth || !istype(item, /obj/item/weapon/gun/smg/nailgun))
 		return FALSE
 
-	var/obj/item/weapon/gun/smg/nailgun/NG = W
+	var/obj/item/weapon/gun/smg/nailgun/nailgun = item
 
-	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
+	if(!nailgun.in_chamber || !nailgun.current_mag || nailgun.current_mag.current_rounds < 3)
 		to_chat(user, SPAN_WARNING("You require at least 4 nails to complete this task!"))
 		return FALSE
 
 	// Check if either hand has a metal stack by checking the weapon offhand
 	// Presume the material is a sheet until proven otherwise.
 	var/obj/item/stack/sheet/material = null
-	if(user.l_hand == NG)
+	if(user.l_hand == nailgun)
 		material = user.r_hand
 	else
 		material = user.l_hand
 
 	if(!istype(material, /obj/item/stack/sheet/))
 		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
+	if(material.amount < nailgun.material_per_repair)
+		to_chat(user, SPAN_WARNING("You'll need more adequate repair material in your other hand to patch up [src]!"))
 		return FALSE
 
 	var/repair_value = 0
@@ -445,24 +472,50 @@
 		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
 		return FALSE
 
-	var/soundchannel = playsound(src, NG.repair_sound, 25, 1)
-	if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+	var/soundchannel = playsound(src, nailgun.repair_sound, 25, 1)
+	if(!do_after(user, nailgun.nailing_speed, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 		playsound(src, null, channel = soundchannel)
 		return FALSE
 
 	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
-		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
+		to_chat(user, SPAN_WARNING("You seem to have misplaced the repair material!"))
 		return FALSE
 
-	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
+	if(!nailgun.in_chamber || !nailgun.current_mag || nailgun.current_mag.current_rounds < 3)
 		to_chat(user, SPAN_WARNING("You require at least 4 nails to complete this task!"))
 		return FALSE
 
 	update_health(-repair_value*maxhealth)
 	to_chat(user, SPAN_WARNING("You nail [material] to [src], restoring some of its integrity!"))
 	update_damage_state()
-	material.use(1)
-	NG.current_mag.current_rounds -= 3
-	NG.in_chamber = null
-	NG.load_into_chamber()
+	material.use(nailgun.material_per_repair)
+	nailgun.current_mag.current_rounds -= 3
+	nailgun.in_chamber = null
+	nailgun.load_into_chamber()
+	return TRUE
+
+/obj/structure/barricade/proc/can_weld(obj/item/item, mob/user, silent)
+	if(user.action_busy)
+		return FALSE
+
+	if(!metallic)
+		if(!silent)
+			user.visible_message(SPAN_WARNING("You can't weld \the [src]!"))
+		return FALSE
+
+	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
+		if(!silent)
+			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
+		return FALSE
+
+	if(health == maxhealth)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
+		return FALSE
+
+	if(!(isnull(damage_state)) && !(isnull(welder_lower_damage_limit)) && damage_state >= welder_lower_damage_limit)
+		if(!silent)
+			to_chat(user, SPAN_WARNING("[src] has sustained too much structural damage to be repaired."))
+		return FALSE
+
 	return TRUE

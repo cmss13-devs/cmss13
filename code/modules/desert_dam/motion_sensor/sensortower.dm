@@ -16,8 +16,8 @@
 	unacidable = TRUE   //NOPE.jpg
 	needs_power = FALSE
 	idle_power_usage = 1000
+	is_on = FALSE  //Is this damn thing on or what?
 	var/buildstate = SENSORTOWER_BUILDSTATE_BLOWTORCH //What state of building it are we on, 0-3, 1 is "broken", the default
-	var/is_on = FALSE  //Is this damn thing on or what?
 	var/fail_rate = 15 //% chance of failure each fail_tick check
 	var/fail_check_ticks = 50 //Check for failure every this many ticks
 	//The sensor tower fails more often since it is experimental.
@@ -25,6 +25,10 @@
 
 	/// weakrefs of xenos temporarily added to the marine minimap
 	var/list/minimap_added = list()
+
+/obj/structure/machinery/sensortower/Initialize(mapload, ...)
+	. = ..()
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "sensor_tower")
 
 
 /obj/structure/machinery/sensortower/update_icon()
@@ -65,10 +69,10 @@
 /obj/structure/machinery/sensortower/proc/add_xenos_to_minimap()
 	for(var/mob/living/carbon/xenomorph/current_xeno as anything in GLOB.living_xeno_list)
 		if(WEAKREF(current_xeno) in minimap_added)
-			return
+			continue
 
 		SSminimaps.remove_marker(current_xeno)
-		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|MINIMAP_FLAG_XENO)
+		current_xeno.add_minimap_marker(MINIMAP_FLAG_USCM|get_minimap_flag_for_faction(current_xeno.hivenumber))
 		minimap_added += WEAKREF(current_xeno)
 
 /obj/structure/machinery/sensortower/proc/checkfailure()
@@ -93,15 +97,17 @@
 	return FALSE
 
 /obj/structure/machinery/sensortower/attack_hand(mob/user as mob)
-	if(!anchored) return FALSE //Shouldn't actually be possible
-	if(user.is_mob_incapacitated()) return FALSE
+	if(!anchored)
+		return FALSE //Shouldn't actually be possible
+	if(user.is_mob_incapacitated())
+		return FALSE
 	if(!ishuman(user))
 		to_chat(user, SPAN_DANGER("You have no idea how to use that.")) //No xenos or mankeys
 		return FALSE
 
 	add_fingerprint(user)
 
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You have no clue how this thing works..."))
 		return FALSE
 
@@ -135,7 +141,7 @@
 			to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 			return
 		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
 			var/obj/item/tool/weldingtool/WT = O
@@ -159,7 +165,7 @@
 
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		if(buildstate == SENSORTOWER_BUILDSTATE_WIRECUTTERS && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -176,7 +182,7 @@
 				return TRUE
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH && !is_on)
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
 				return FALSE
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -205,13 +211,13 @@
 	var/turf/cur_loc = M.loc
 
 	playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
-	M.visible_message(SPAN_DANGER("[M] starts wrenching apart \the [src]'s panels and reaching inside it!"), \
+	M.visible_message(SPAN_DANGER("[M] starts wrenching apart \the [src]'s panels and reaching inside it!"),
 	SPAN_DANGER("You start wrenching apart \the [src]'s panels and reaching inside it!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	xeno_attack_delay(M)
 	if(do_after(M, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(M.loc != cur_loc)
 			return XENO_NO_DELAY_ACTION //Make sure we're still there
-		if(M.lying)
+		if(M.is_mob_incapacitated())
 			return XENO_NO_DELAY_ACTION
 		if(buildstate == SENSORTOWER_BUILDSTATE_BLOWTORCH)
 			return XENO_NO_DELAY_ACTION
@@ -221,16 +227,32 @@
 			cur_tick = 0
 			stop_processing()
 		update_icon()
-		M.visible_message(SPAN_DANGER("[M] pulls apart \the [src]'s panels and breaks all its internal wiring and tubing!"), \
+		msg_admin_niche("[key_name(M)] has destroyed the sensor tower.")
+		M.visible_message(SPAN_DANGER("[M] pulls apart \the [src]'s panels and breaks all its internal wiring and tubing!"),
 		SPAN_DANGER("You pull apart \the [src]'s panels and break all its internal wiring and tubing!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 	else
-		M.visible_message(SPAN_DANGER("[M] stops destroying \the [src]'s internal machinery!"), \
+		M.visible_message(SPAN_DANGER("[M] stops destroying \the [src]'s internal machinery!"),
 		SPAN_DANGER("You stop destroying \the [src]'s internal machinery!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/machinery/sensortower/power_change()
-	..()
+/* Decreases the buildstate of the sensor tower and switches it off if affected by any explosion.
+Higher severity explosion will damage the sensor tower more
+*/
+/obj/structure/machinery/sensortower/ex_act(severity)
+	if(buildstate == SENSORTOWER_BUILDSTATE_WRENCH)
+		return
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			buildstate += 1
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			buildstate = clamp(buildstate + 2, SENSORTOWER_BUILDSTATE_WORKING, SENSORTOWER_BUILDSTATE_WRENCH)
+		if(EXPLOSION_THRESHOLD_HIGH to INFINITY)
+			buildstate = 3
+	if(is_on)
+		is_on = FALSE
+		cur_tick = 0
+		stop_processing()
 	update_icon()
 
 #undef SENSORTOWER_BUILDSTATE_WORKING

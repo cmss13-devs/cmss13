@@ -33,7 +33,7 @@
 // Return a type that can be initialized into the next weather event.
 // Feel free to override this
 /datum/weather_ss_map_holder/proc/get_new_event()
-	if (potential_weather_events && potential_weather_events.len != 0)
+	if (LAZYLEN(potential_weather_events) != 0)
 		return pick(potential_weather_events)
 	else
 		log_debug("Weather subsystem map holder [src] is improperly configured. Code: WSSMH03")
@@ -54,3 +54,6 @@
 		if(!affected_xeno.stat && affected_xeno.client)
 			playsound_client(affected_xeno.client, 'sound/voice/alien_distantroar_3.ogg', affected_xeno.loc, 25, FALSE)
 			affected_xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "Incoming [weather_name]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+	for(var/mob/living/carbon/human/affected_pred in GLOB.yautja_mob_list)
+		if(!affected_pred.stat && affected_pred.client && (affected_pred.z in ground_levels))
+			elder_overseer_message("Incoming [weather_name].")

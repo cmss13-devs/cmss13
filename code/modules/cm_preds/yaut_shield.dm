@@ -45,11 +45,31 @@
 		M.apply_effect(3, DAZE)
 		M.apply_effect(5, SLOW)
 
-/obj/item/weapon/shield/riot/yautja/attackby(obj/item/I, mob/user)
+/obj/item/weapon/shield/riot/yautja/attackby(obj/item/attacking_item, mob/user)
 	if(cooldown < world.time - 25)
-		if(istype(I, /obj/item/weapon) && (I.flags_item & ITEM_PREDATOR))
-			user.visible_message(SPAN_WARNING("[user] bashes \the [src] with \the [I]!"))
+		if(istype(attacking_item, /obj/item/weapon) && (attacking_item.flags_item & ITEM_PREDATOR))
+			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
 			cooldown = world.time
 	else
 		..()
+
+/obj/item/weapon/shield/riot/yautja/ancient
+	name = "ancient shield"
+	desc = "A large, ancient shield forged from an unknown golden alloy, gleaming with a luminous brilliance. Its worn surface and masterful craftsmanship hint at a forgotten purpose and a history lost to time."
+	icon = 'icons/obj/items/weapons/melee/shields.dmi'
+	icon_state = "ancient_shield"
+	base_icon_state = "ancient_shield"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/shields_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	item_state = "ancient_shield"
+
+/obj/item/weapon/shield/riot/yautja/ancient/alt
+	name = "ancient shield"
+	desc = "A large, ornately crafted shield forged from an unknown alloy. The colossal metal skull of a Xenomorph dominates the center, its jagged edges and hollow eyes giving it a fearsome presence. The masterful craftsmanship and weathered battle scars whisper of long-forgotten hunts and a legacy etched in blood."
+	icon_state = "ancient_shield_alt"
+	base_icon_state = "ancient_shield_alt"
+	item_state = "ancient_shield_alt"

@@ -8,7 +8,7 @@
 			owner.jump_to_area(choice)
 
 		if("jump_to_turf")
-			var/turf/choice = tgui_input_list(owner, "Pick a turf to jump to:", "Jump", turfs)
+			var/turf/choice = tgui_input_list(owner, "Pick a turf to jump to:", "Jump", GLOB.turfs)
 			if(QDELETED(choice))
 				return
 
@@ -83,10 +83,10 @@
 			for(var/mob/living/M in range(collect_range, owner.mob))
 				if(M.stat != DEAD)
 					targets.Add(M)
-			if(targets.len < 1)
+			if(length(targets) < 1)
 				to_chat(owner, SPAN_ALERT("No alive /living mobs found. Aborting."))
 				return
-			if(alert(owner, "[targets.len] mobs were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+			if(alert(owner, "[length(targets)] mobs were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
 				return
 			for(var/mob/M in targets)
 				if(!M)
@@ -94,7 +94,7 @@
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
 
-			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [length(targets)] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 		if("teleport_mobs_by_faction")
 			var/faction = tgui_input_list(owner, "Choose between humanoids and xenomorphs.", "Mobs Choice", list("Humanoids", "Xenomorphs"))
@@ -109,10 +109,10 @@
 					var/area/AR = get_area(H)
 					if(H.faction != faction || AR.statistic_exempt)
 						targets.Remove(H)
-				if(targets.len < 1)
+				if(length(targets) < 1)
 					to_chat(owner, SPAN_ALERT("No alive /human mobs of [faction] faction were found. Aborting."))
 					return
-				if(alert(owner, "[targets.len] humanoids of [faction] faction were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+				if(alert(owner, "[length(targets)] humanoids of [faction] faction were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
 					return
 
 				for(var/mob/M in targets)
@@ -121,7 +121,7 @@
 					M.on_mob_jump()
 					M.forceMove(get_turf(owner.mob))
 
-				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] human mobs of [faction] faction to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [length(targets)] human mobs of [faction] faction to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 			else if(faction == "Xenomorphs")
 				faction = null
@@ -141,10 +141,10 @@
 					var/area/AR = get_area(X)
 					if(X.stat == DEAD || AR.statistic_exempt)
 						targets.Remove(X)
-				if(targets.len < 1)
+				if(length(targets) < 1)
 					to_chat(owner, SPAN_ALERT("No alive xenomorphs of [faction] Hive were found. Aborting."))
 					return
-				if(alert(owner, "[targets.len] xenomorphs of [faction] Hive were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+				if(alert(owner, "[length(targets)] xenomorphs of [faction] Hive were marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
 					return
 
 				for(var/mob/M in targets)
@@ -153,25 +153,25 @@
 					M.on_mob_jump()
 					M.forceMove(get_turf(owner.mob))
 
-				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] xenomorph mobs of [faction] Hive to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+				message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [length(targets)] xenomorph mobs of [faction] Hive to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 			else
 				to_chat(owner, SPAN_ALERT("Mobs choice error. Aborting."))
 				return
 
 		if("teleport_corpses")
-			if(GLOB.dead_mob_list.len < 0)
+			if(length(GLOB.dead_mob_list) < 0)
 				to_chat(owner, SPAN_ALERT("No corpses found. Aborting."))
 				return
 
-			if(alert(owner, "[GLOB.dead_mob_list.len] corpses are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+			if(alert(owner, "[length(GLOB.dead_mob_list)] corpses are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
 				return
 			for(var/mob/M in GLOB.dead_mob_list)
 				if(!M)
 					continue
 				M.on_mob_jump()
 				M.forceMove(get_turf(owner.mob))
-			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [GLOB.dead_mob_list.len] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [length(GLOB.dead_mob_list)] corpses to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 		if("teleport_items_by_type")
 			var/item = input(owner,"What item?", "Item Fetcher","") as text|null
@@ -186,11 +186,11 @@
 				if(findtext("[path]", item))
 					matches += path
 
-			if(matches.len==0)
+			if(length(matches)==0)
 				return
 
 			var/chosen
-			if(matches.len==1)
+			if(length(matches)==1)
 				chosen = matches[1]
 			else
 				//If we have multiple options, let them select which one they meant
@@ -205,11 +205,11 @@
 				if(istype(M, chosen))
 					targets += M
 
-			if(targets.len < 1)
+			if(length(targets) < 1)
 				to_chat(owner, SPAN_ALERT("No items of type [chosen] were found. Aborting."))
 				return
 
-			if(alert(owner, "[targets.len] items are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
+			if(alert(owner, "[length(targets)] items are marked for teleportation. Pressing \"TELEPORT\" will teleport them to your location at the moment of pressing button.", "Confirmation", "Teleport", "Cancel") == "Cancel")
 				return
 
 			//Fetch the items
@@ -218,4 +218,4 @@
 					continue
 				M.forceMove(get_turf(owner.mob))
 
-			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] items of type [chosen] to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
+			message_admins(WRAP_STAFF_LOG(owner.mob, "mass-teleported [length(targets)] items of type [chosen] to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)

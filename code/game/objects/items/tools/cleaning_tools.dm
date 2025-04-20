@@ -2,6 +2,10 @@
 	desc = "The world of janitalia wouldn't be complete without a mop."
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "mop"
 	force = 3
 	attack_speed = 4
@@ -50,7 +54,8 @@
 
 
 /obj/item/tool/mop/afterattack(atom/A, mob/living/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay))
 		if(reagents.total_volume < 1)
 			to_chat(user, SPAN_NOTICE("Your mop is dry!"))
@@ -73,7 +78,7 @@
 /obj/effect/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/tool/mop) || istype(I, /obj/item/tool/soap))
 		return
-	..()
+	. = ..()
 
 
 
@@ -87,6 +92,10 @@
 	desc = "Caution! Wet Floor!"
 	icon_state = "caution"
 	icon = 'icons/obj/janitor.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	force = 1
 	throwforce = 3
 	throw_speed = SPEED_FAST
@@ -99,13 +108,17 @@
 	desc = "This cone is trying to warn you of something!"
 	icon_state = "cone"
 	icon = 'icons/obj/janitor.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/objects.dmi',
+	)
 	force = 1
 	throwforce = 3
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_SMALL
 	attack_verb = list("warned", "cautioned", "smashed")
-
+	flags_equip_slot = SLOT_HEAD
+	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 
 
 
@@ -114,7 +127,11 @@
 	name = "soap"
 	desc = "A cheap bar of soap. Doesn't smell."
 	gender = PLURAL
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/janitor.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
 	icon_state = "soap"
 	w_class = SIZE_TINY
 	throwforce = 0
@@ -127,7 +144,8 @@
 		C.slip("soap", 3, 2)
 
 /obj/item/tool/soap/afterattack(atom/target, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && (target in user.client.screen))
@@ -150,12 +168,14 @@
 		return
 	..()
 
-/obj/item/tool/soap/nanotrasen
+/obj/item/tool/soap/weyland_yutani
 	desc = "A Weyland-Yutani brand bar of soap. Smells of phoron."
 	icon_state = "soapnt"
+	item_state = "soapnt"
 
 /obj/item/tool/soap/deluxe
 	icon_state = "soapdeluxe"
+	item_state = "soapdeluxe"
 
 /obj/item/tool/soap/deluxe/Initialize()
 	. = ..()
@@ -164,3 +184,4 @@
 /obj/item/tool/soap/syndie
 	desc = "An untrustworthy bar of soap. Smells of fear."
 	icon_state = "soapsyndie"
+	item_state = "soapsyndie"

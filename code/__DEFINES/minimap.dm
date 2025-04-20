@@ -1,17 +1,30 @@
-
 #define MINIMAP_FLAG_XENO (1<<0)
 #define MINIMAP_FLAG_USCM (1<<1)
-#define MINIMAP_FLAG_PMC (1<<2)
+#define MINIMAP_FLAG_WY (1<<2)
 #define MINIMAP_FLAG_UPP (1<<3)
 #define MINIMAP_FLAG_CLF (1<<4)
-#define MINIMAP_FLAG_ALL (1<<5) - 1
+#define MINIMAP_FLAG_YAUTJA (1<<5)
+#define MINIMAP_FLAG_XENO_CORRUPTED (1<<6)
+#define MINIMAP_FLAG_XENO_ALPHA (1<<7)
+#define MINIMAP_FLAG_XENO_BRAVO (1<<8)
+#define MINIMAP_FLAG_XENO_CHARLIE (1<<9)
+#define MINIMAP_FLAG_XENO_DELTA (1<<10)
+#define MINIMAP_FLAG_XENO_FERAL (1<<11)
+#define MINIMAP_FLAG_XENO_TAMED (1<<12)
+#define MINIMAP_FLAG_XENO_MUTATED (1<<13)
+#define MINIMAP_FLAG_XENO_FORSAKEN (1<<14)
+#define MINIMAP_FLAG_XENO_RENEGADE (1<<15)
+#define MINIMAP_FLAG_ALL (1<<16) - 1
 
-///Converts the overworld x and y to minimap x and y values
+///The minimap zoom scale
 #define MINIMAP_SCALE 2
+///Converts the overworld x and y to minimap x and y values
 #define MINIMAP_PIXEL_FROM_WORLD(val) (val * MINIMAP_SCALE - 3)
 
-//actual size of a users screen in pixels
+///The actual size of a users screen in pixels
 #define SCREEN_PIXEL_SIZE 480
+///The actual size of the minimap in pixels
+#define MINIMAP_PIXEL_SIZE 512
 
 GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 
@@ -38,10 +51,14 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_AREA_COMMAND "#2d3fa2ee"
 #define MINIMAP_AREA_COMMAND_CAVE "#132242ee"
 #define MINIMAP_AREA_CAVES "#3f3c3cef"
+#define MINIMAP_AREA_CAVES_DEEP "#272525ef"
+#define MINIMAP_AREA_CAVES_STRUCTURE "#5b5757"
 #define MINIMAP_AREA_JUNGLE "#2b5b2bee"
 #define MINIMAP_AREA_COLONY "#6c6767d8"
 #define MINIMAP_AREA_LZ "#ebe5e5e3"
 #define MINIMAP_AREA_CONTESTED_ZONE "#0603c4ee"
+#define MINIMAP_AREA_GLASS "#80a0b0ee"
+#define MINIMAP_AREA_MINING "#4d3619e7"
 
 #define MINIMAP_SQUAD_UNKNOWN "#d8d8d8"
 #define MINIMAP_SQUAD_ALPHA "#ed1c24"
@@ -51,18 +68,7 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define MINIMAP_SQUAD_ECHO "#00b043"
 #define MINIMAP_SQUAD_FOXTROT "#fe7b2e"
 #define MINIMAP_SQUAD_SOF "#400000"
-
-#define MINIMAP_ICON_BACKGROUND_CIVILIAN "#7D4820"
-#define MINIMAP_ICON_BACKGROUND_CIC "#3f3f3f"
-#define MINIMAP_ICON_BACKGROUND_USCM "#888888"
-#define MINIMAP_ICON_BACKGROUND_XENO "#3a064d"
-
-#define MINIMAP_ICON_COLOR_COMMANDER "#c6fcfc"
-#define MINIMAP_ICON_COLOR_HEAD "#F0C542"
-#define MINIMAP_ICON_COLOR_BRONZE "#eb9545"
-
-#define MINIMAP_ICON_COLOR_DOCTOR "#b83737"
-
+#define MINIMAP_SQUAD_INTEL "#053818"
 
 //Prison
 #define MINIMAP_AREA_CELL_MAX "#570101ee"
@@ -75,8 +81,15 @@ GLOBAL_LIST_INIT(all_minimap_flags, bitfield2list(MINIMAP_FLAG_ALL))
 #define TACMAP_BASE_OCCLUDED "Occluded"
 #define TACMAP_BASE_OPEN "Open"
 
-#define TACMAP_DEFAULT "Default"
-#define TACMAP_XENO "Xeno"
-#define TACMAP_YAUTJA "Yautja"
-#define TACMAP_FACTION "Faction"
-
+// Hybrisa
+#define MINIMAP_AREA_COLONY_STREETS "#4e6d67ae"
+#define MINIMAP_AREA_COLONY_SPACE_PORT "#a54b01ee"
+#define MINIMAP_AREA_COLONY_HOSPITAL "#029982e7"
+#define MINIMAP_AREA_COLONY_ENGINEERING "#888404e7"
+#define MINIMAP_AREA_COLONY_MARSHALLS "#880404e7"
+#define MINIMAP_AREA_COLONY_RESANDCOM "#91bdcfe7"
+#define MINIMAP_AREA_HYBRISACAVES "#390192ee"
+#define MINIMAP_AREA_HYBRISARESEARCH "#856600ee"
+#define MINIMAP_AREA_DERELICT "#920190ee"
+#define MINIMAP_AREA_OOB "#3a3a3a"
+#define MINIMAP_AREA_COMMS "#00b3ffe7"

@@ -1,0 +1,516 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aA" = (
+/obj/structure/girder/displaced,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/construction/signal_tower)
+"cm" = (
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/construction/signal_tower)
+"cL" = (
+/obj/item/clothing/suit/storage/hazardvest/yellow,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction/signal_tower)
+"cW" = (
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"di" = (
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/construction/signal_tower)
+"dl" = (
+/obj/structure/girder/displaced,
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/construction/signal_tower)
+"gD" = (
+/obj/item/stack/rods,
+/obj/item/tool/warning_cone,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"ix" = (
+/obj/item/tool/warning_cone,
+/obj/item/paper/crumpled{
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/obj/item/paper/crumpled{
+	pixel_x = -4;
+	pixel_y = 14
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"lD" = (
+/obj/structure/machinery/door_display{
+	desc = "A work schedule monitor. It appears to be broken.";
+	name = "Schedule Monitor"
+	},
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/construction/signal_tower)
+"lZ" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"mv" = (
+/obj/structure/girder,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction/signal_tower)
+"nn" = (
+/obj/structure/machinery/constructable_frame,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"oB" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	layer = 2.8
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"oK" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"oU" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/message_server,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"pP" = (
+/obj/structure/largecrate/random{
+	pixel_y = 19;
+	layer = 3.02
+	},
+/obj/structure/largecrate/random{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"qp" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/construction/signal_tower)
+"qM" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/tool/warning_cone,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"rm" = (
+/obj/structure/surface/rack,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"ry" = (
+/obj/item/stack/rods,
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/construction/signal_tower)
+"rG" = (
+/obj/item/stack/rods,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"rP" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"sQ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/construction/signal_tower)
+"uS" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = 9;
+	pixel_y = 15;
+	layer = 3.04
+	},
+/obj/item/clipboard{
+	pixel_x = -6
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = 9
+	},
+/obj/item/paper_bin{
+	pixel_x = 9;
+	pixel_y = 3
+	},
+/obj/item/paper{
+	info = "It has been three weeks since I was relocated to the 'finished' comms office. Me and Paul have been trying to work with this infernal racket going on, but by all that's holy I can't think- let alone recalibrate the new computers. Speaking of, these new computers are all fine and dandy but the sensor uplink tower still hasn't been setup properly after the accident with the apprentice, you know, the one that piled up those debris filled trash bags by Paul's 'desk' and then left. Anyway, like you said the builders didn't lay down the protective matting for the new flooring so there's dirt everywhere. For your sake Jeff, I hope your holiday doesn't end too soon, you still don't even have a desk yet.";
+	pixel_x = -5;
+	icon_state = "paper_words";
+	name = "I should have gone on holiday"
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"wh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/construction/signal_tower)
+"wC" = (
+/obj/structure/surface/rack,
+/obj/item/notepad/blue,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"wO" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	layer = 3.0;
+	pixel_x = 8;
+	pixel_y = 18
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/prop/rock{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/obj/structure/prop/rock{
+	layer = 3.1;
+	pixel_y = 3
+	},
+/obj/structure/prop/rock{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/structure/flora/pottedplant/random/unanchored{
+	pixel_y = 16;
+	layer = 3.3
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"yQ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"zb" = (
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/construction/signal_tower)
+"zh" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Af" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/construction/signal_tower)
+"Ca" = (
+/obj/structure/window/framed/kutjevo,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.1
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Ci" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/construction/signal_tower)
+"DY" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/construction/signal_tower)
+"EK" = (
+/obj/structure/window/framed/kutjevo,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction/signal_tower)
+"GH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/crumpled{
+	pixel_x = -4;
+	pixel_y = 14
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"IR" = (
+/obj/item/paper/crumpled,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Jg" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/construction/signal_tower)
+"Jz" = (
+/obj/item/stack/sheet/metal,
+/obj/item/stack/rods,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/construction/signal_tower)
+"Ks" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"KC" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	pixel_y = 11
+	},
+/obj/item/paper/crumpled{
+	pixel_x = -12;
+	pixel_y = 14
+	},
+/obj/item/paper/crumpled{
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"KD" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/construction/signal_tower)
+"LG" = (
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/construction/signal_tower)
+"LO" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"LR" = (
+/obj/structure/prop/almayer/computers/sensor_computer2,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"MV" = (
+/obj/structure/largecrate/random{
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random{
+	pixel_y = 19;
+	layer = 3.02;
+	pixel_x = -3
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3.1
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Nr" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Or" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Pp" = (
+/obj/structure/prop/almayer/computers/sensor_computer1,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Re" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"Rj" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/tool/warning_cone,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/construction/signal_tower)
+"RK" = (
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/construction/signal_tower)
+"SZ" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/construction/signal_tower)
+"Ul" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/construction/signal_tower)
+"Um" = (
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/construction/signal_tower)
+"Vc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/construction/signal_tower)
+"Xi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge,
+/area/kutjevo/interior/construction/signal_tower)
+"Xq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/construction/signal_tower)
+"XS" = (
+/obj/structure/fence{
+	desc = "A large metal mesh strewn between two poles. A 'Keep Out! Under Construction' sign dangles from one of the fence posts."
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/interior/construction/signal_tower)
+"Yo" = (
+/obj/item/clothing/head/hardhat/orange,
+/turf/open/floor/kutjevo/tan/grey_edge/north,
+/area/kutjevo/interior/construction/signal_tower)
+"YG" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+"YO" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/kutjevo/tan/grey_edge/west,
+/area/kutjevo/interior/construction/signal_tower)
+"Zf" = (
+/obj/structure/window/framed/kutjevo,
+/obj/structure/barricade/handrail/kutjevo{
+	layer = 3
+	},
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/signal_tower)
+
+(1,1,1) = {"
+SZ
+RK
+RK
+RK
+qp
+Ul
+RK
+RK
+RK
+RK
+RK
+RK
+"}
+(2,1,1) = {"
+RK
+pP
+cW
+cW
+Ci
+zb
+Ca
+Pp
+oK
+nn
+oU
+RK
+"}
+(3,1,1) = {"
+KD
+Nr
+Ks
+cW
+di
+Xi
+Zf
+uS
+KC
+IR
+Or
+RK
+"}
+(4,1,1) = {"
+SZ
+MV
+Or
+rP
+Yo
+zb
+lD
+LR
+ix
+GH
+Re
+EK
+"}
+(5,1,1) = {"
+EK
+wC
+rG
+LO
+sQ
+cL
+cm
+Xq
+Xq
+cm
+cm
+YO
+"}
+(6,1,1) = {"
+EK
+rm
+lZ
+nn
+Or
+Af
+Um
+Jg
+Um
+Jz
+wh
+DY
+"}
+(7,1,1) = {"
+SZ
+yQ
+oB
+wO
+gD
+zh
+Rj
+dl
+YG
+Vc
+qM
+RK
+"}
+(8,1,1) = {"
+SZ
+mv
+RK
+RK
+aA
+RK
+LG
+LG
+mv
+ry
+XS
+mv
+"}

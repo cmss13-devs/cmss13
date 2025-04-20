@@ -23,11 +23,10 @@ GLOBAL_LIST_EMPTY_TYPED(disposal_retrieval_list, /obj/structure/disposaloutlet/r
 GLOBAL_LIST_EMPTY_TYPED(disposalpipe_up_list, /obj/structure/disposalpipe/up/almayer)
 GLOBAL_LIST_EMPTY_TYPED(disposalpipe_down_list, /obj/structure/disposalpipe/down/almayer)
 
-GLOBAL_LIST_EMPTY_TYPED(hijack_bustable_windows, /obj/structure/window)
-GLOBAL_LIST_EMPTY_TYPED(hijack_deletable_windows, /obj/structure/machinery/door/window/ultra)
-GLOBAL_LIST_EMPTY_TYPED(hijack_bustable_ladders, /obj/structure/ladder/fragile_almayer)
-
 GLOBAL_LIST_EMPTY_TYPED(all_multi_vehicles, /obj/vehicle/multitile)
 
 GLOBAL_LIST_EMPTY_TYPED(lifeboat_almayer_docks, /obj/docking_port/stationary/lifeboat_dock)
 GLOBAL_LIST_EMPTY_TYPED(lifeboat_doors, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor)
+
+GLOBAL_LIST_EMPTY_TYPED(teleporters, /datum/teleporter)
+GLOBAL_LIST_EMPTY(teleporters_by_id)

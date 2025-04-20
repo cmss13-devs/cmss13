@@ -9,7 +9,7 @@
 /obj/item/device/pipe_painter/New()
 	..()
 	modes = new()
-	for(var/C in pipe_colors)
+	for(var/C in GLOB.pipe_colors)
 		modes += "[C]"
 	mode = pick(modes)
 
@@ -26,7 +26,7 @@
 		to_chat(user, SPAN_DANGER("You must remove the plating first."))
 		return
 
-	P.change_color(pipe_colors[mode])
+	P.change_color(GLOB.pipe_colors[mode])
 
 /obj/item/device/pipe_painter/attack_self(mob/user)
 	..()

@@ -21,10 +21,7 @@
 	},
 /area/shuttle/lifeboat)
 "dt" = (
-/turf/open/shuttle/lifeboat{
-	dir = 1;
-	icon_state = "plating_striped"
-	},
+/turf/open/shuttle/lifeboat/plating_striped/north,
 /area/shuttle/lifeboat)
 "en" = (
 /turf/closed/shuttle/lifeboat{
@@ -107,14 +104,15 @@
 	},
 /area/shuttle/lifeboat)
 "nn" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "plate"
-	},
+/turf/open/shuttle/lifeboat/plate,
 /area/shuttle/lifeboat)
 "on" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "24,3"
 	},
+/area/shuttle/lifeboat)
+"pH" = (
+/turf/open/shuttle/lifeboat/plating_striped,
 /area/shuttle/lifeboat)
 "qA" = (
 /turf/closed/shuttle/lifeboat{
@@ -186,11 +184,18 @@
 	},
 /area/shuttle/lifeboat)
 "xG" = (
-/obj/docking_port/mobile/lifeboat/port,
+/obj/docking_port/mobile/crashable/lifeboat/port,
 /obj/structure/prop/invuln/dropship_parts/lifeboat{
 	icon_state = "0,0"
 	},
 /turf/template_noop,
+/area/shuttle/lifeboat)
+"xS" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat1-D4";
+	throw_dir = 2
+	},
+/turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "yf" = (
 /obj/structure/machinery/cm_vending/sorted/supplies/lifeboat{
@@ -239,9 +244,7 @@
 	id = "Boat1-D1";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "CI" = (
 /turf/template_noop,
@@ -254,6 +257,13 @@
 "DR" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 4
+	},
+/turf/open/shuttle/lifeboat,
+/area/shuttle/lifeboat)
+"EW" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat1-D3";
+	throw_dir = 2
 	},
 /turf/open/shuttle/lifeboat,
 /area/shuttle/lifeboat)
@@ -300,9 +310,7 @@
 /turf/closed/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "Jg" = (
-/turf/open/shuttle/escapepod{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/escapepod/floor1/east,
 /area/shuttle/lifeboat)
 "Jw" = (
 /turf/closed/shuttle/lifeboat{
@@ -325,14 +333,10 @@
 	id = "Boat1-D2";
 	throw_dir = 1
 	},
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "Nm" = (
-/turf/open/shuttle/lifeboat{
-	icon_state = "test_floor4"
-	},
+/turf/open/shuttle/lifeboat/test_floor4,
 /area/shuttle/lifeboat)
 "Ob" = (
 /turf/closed/shuttle/lifeboat{
@@ -534,8 +538,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+EW
 "}
 (10,1,1) = {"
 Nm
@@ -543,8 +547,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (11,1,1) = {"
 Nm
@@ -552,8 +556,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (12,1,1) = {"
 Rs
@@ -579,8 +583,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+xS
 "}
 (15,1,1) = {"
 Nm
@@ -588,8 +592,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (16,1,1) = {"
 Nm
@@ -597,8 +601,8 @@ dt
 Ro
 Jg
 Ro
-tm
-fr
+pH
+Ro
 "}
 (17,1,1) = {"
 Rs

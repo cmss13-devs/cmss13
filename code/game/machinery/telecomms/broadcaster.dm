@@ -9,7 +9,7 @@
 
 /obj/structure/machinery/telecomms/broadcaster
 	name = "Subspace Broadcaster"
-	icon = 'icons/obj/structures/props/stationobjs.dmi'
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	icon_state = "broadcaster"
 	desc = "A dish-shaped machine used to broadcast processed subspace signals."
 	density = TRUE
@@ -83,7 +83,7 @@
 						vmask, vmessage, obj/item/device/radio/radio,
 						message, name, job, realname, vname,
 						data, compression, list/level, freq, verbage = "says",
-						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET)
+						datum/language/speaking = null, volume = RADIO_VOLUME_QUIET, listening_device = NOT_LISTENING_BUG)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq
@@ -150,8 +150,6 @@
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
 	if(M)
-		if(isAI(M))
-			volume = RADIO_VOLUME_CRITICAL
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
@@ -175,13 +173,16 @@
 			volume = RADIO_VOLUME_CRITICAL
 
 	for (var/mob/R in receive)
+		var/is_ghost = istype(R, /mob/dead/observer)
 		/* --- Loop through the receivers and categorize them --- */
 		if (R.client && !(R.client.prefs.toggles_chat & CHAT_RADIO)) //Adminning with 80 people on can be fun when you're trying to talk and all you can hear is radios.
 			continue
 		if(istype(R, /mob/new_player)) // we don't want new players to hear messages. rare but generates runtimes.
 			continue
 		// Ghosts hearing all radio chat don't want to hear syndicate intercepts, they're duplicates
-		if(data == 3 && istype(R, /mob/dead/observer) && R.client && (R.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
+		if(data == 3 && is_ghost && R.client && (R.client.prefs.toggles_chat & CHAT_GHOSTRADIO))
+			continue
+		if(is_ghost && ((listening_device && !(R.client.prefs.toggles_chat & CHAT_LISTENINGBUG)) || listening_device == LISTENING_BUG_NEVER))
 			continue
 		// --- Check for compression ---
 		if(compression > 0)
@@ -189,7 +190,7 @@
 			continue
 
 		// --- Can understand the speech ---
-		if (!M || R.say_understands(M))
+		if (!M || R.say_understands(M, speaking))
 			// - Not human or wearing a voice mask -
 			if (!M || !ishuman(M) || vmask)
 				heard_masked += R

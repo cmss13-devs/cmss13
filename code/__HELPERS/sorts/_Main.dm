@@ -8,8 +8,8 @@
 	//When we get into galloping mode, we stay there until both runs win less often than MIN_GALLOP consecutive times.
 #define MIN_GALLOP 7
 
-	//This is a global instance to allow much of this code to be reused. The interfaces are kept separately
-var/datum/sortInstance/sortInstance = new()
+//This is a global instance to allow much of this code to be reused. The interfaces are kept separately
+GLOBAL_DATUM_INIT(sortInstance, /datum/sortInstance, new())
 /datum/sortInstance
 	//The array being sorted.
 	var/list/L
@@ -76,7 +76,7 @@ var/datum/sortInstance/sortInstance = new()
 		//Merge all remaining runs to complete sort
 	//ASSERT(start == end)
 	mergeForceCollapse();
-	//ASSERT(runBases.len == 1)
+	//ASSERT(length(runBases) == 1)
 
 		//reset minGallop, for successive calls
 	minGallop = MIN_GALLOP
@@ -113,7 +113,7 @@ var/datum/sortInstance/sortInstance = new()
 		//[lo, left) elements <= pivot < [right, start) elements
 		//in other words, find where the pivot element should go using bisection search
 		while(left < right)
-			var/mid = (left + right) >> 1 //round((left+right)/2)
+			var/mid = (left + right) >> 1 //floor((left+right)/2)
 			if(call(cmp)(fetchElement(L,mid), pivot) > 0)
 				right = mid
 			else
@@ -178,8 +178,8 @@ var/datum/sortInstance/sortInstance = new()
 //This method is called each time a new run is pushed onto the stack.
 //So the invariants are guaranteed to hold for i<stackSize upon entry to the method
 /datum/sortInstance/proc/mergeCollapse()
-	while(runBases.len >= 2)
-		var/n = runBases.len - 1
+	while(length(runBases) >= 2)
+		var/n = length(runBases) - 1
 		if(n > 1 && runLens[n-1] <= runLens[n] + runLens[n+1])
 			if(runLens[n-1] < runLens[n+1])
 				--n
@@ -193,8 +193,8 @@ var/datum/sortInstance/sortInstance = new()
 //Merges all runs on the stack until only one remains.
 //Called only once, to finalise the sort
 /datum/sortInstance/proc/mergeForceCollapse()
-	while(runBases.len >= 2)
-		var/n = runBases.len - 1
+	while(length(runBases) >= 2)
+		var/n = length(runBases) - 1
 		if(n > 1 && runLens[n-1] < runLens[n+1])
 			--n
 		mergeAt(n)
@@ -204,9 +204,9 @@ var/datum/sortInstance/sortInstance = new()
 	//Run i must be the penultimate or antepenultimate run on the stack
 	//In other words, i must be equal to stackSize-2 or stackSize-3
 /datum/sortInstance/proc/mergeAt(i)
-	//ASSERT(runBases.len >= 2)
+	//ASSERT(length(runBases) >= 2)
 	//ASSERT(i >= 1)
-	//ASSERT(i == runBases.len - 1 || i == runBases.len - 2)
+	//ASSERT(i == length(runBases) - 1 || i == length(runBases) - 2)
 
 	var/base1 = runBases[i]
 	var/base2 = runBases[i+1]
@@ -393,7 +393,7 @@ var/datum/sortInstance/sortInstance = new()
 			var/count1 = 0 //# of times in a row that first run won
 			var/count2 = 0 // " " " " " "  second run won
 
-			//do the straightfoward thin until one run starts winning consistently
+			//do the straightforward thin until one run starts winning consistently
 
 			do
 				//ASSERT(len1 > 1 && len2 > 0)
@@ -493,7 +493,7 @@ var/datum/sortInstance/sortInstance = new()
 			var/count1 = 0 //# of times in a row that first run won
 			var/count2 = 0 // " " " " " "  second run won
 
-			//do the straightfoward thing until one run starts winning consistently
+			//do the straightforward thing until one run starts winning consistently
 			do
 				//ASSERT(len1 > 0 && len2 > 1)
 				if(call(cmp)(fetchElement(L,cursor2), fetchElement(L,cursor1)) < 0)
@@ -596,8 +596,8 @@ var/datum/sortInstance/sortInstance = new()
 
 	while(remaining > 0)
 
-	while(runBases.len >= 2)
-		var/n = runBases.len - 1
+	while(length(runBases) >= 2)
+		var/n = length(runBases) - 1
 		if(n > 1 && runLens[n-1] <= runLens[n] + runLens[n+1])
 			if(runLens[n-1] < runLens[n+1])
 				--n
@@ -607,8 +607,8 @@ var/datum/sortInstance/sortInstance = new()
 		else
 			break //Invariant is established
 
-	while(runBases.len >= 2)
-		var/n = runBases.len - 1
+	while(length(runBases) >= 2)
+		var/n = length(runBases) - 1
 		if(n > 1 && runLens[n-1] < runLens[n+1])
 			--n
 		mergeAt2(n)

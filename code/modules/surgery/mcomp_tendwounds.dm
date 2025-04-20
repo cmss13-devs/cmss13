@@ -1,6 +1,6 @@
 /datum/surgery/mcomp_wounds
 	name = "Tend Wounds"
-	possible_locs = list("chest")
+	possible_locs = DEFENSE_ZONES_LIVING //all hud aiming locations are suitable for yautja to target.
 	invasiveness = list(SURGERY_DEPTH_SURFACE)
 	required_surgery_skill = SKILL_SURGERY_TRAINED
 	var/required_trait = TRAIT_YAUTJA_TECH// Only predators can do this
@@ -15,6 +15,14 @@
 	self_operable = TRUE
 
 /datum/surgery/mcomp_wounds/can_start(mob/living/carbon/human/user, mob/living/carbon/human/patient, obj/limb/limb, obj/item/tool)
+	var/list/surgery_limbs = DEFENSE_ZONES_LIVING //Creates a list of all targetable locations
+	surgery_limbs -= user.zone_selected //Removes the zone you are currently targeting
+
+	for(var/zone in surgery_limbs) //Loops through the limbs of the patient
+		if(istype(patient.active_surgeries[zone], /datum/surgery/mcomp_wounds)) //Checks if there is already a surgery of this type existing elsewhere.
+			to_chat(user, SPAN_WARNING("The [zone] is already being worked on and you have to finish that first!"))//gives a message to the person trying to perform the action
+			return FALSE
+
 	if(istype(user) && HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		if (patient.getBruteLoss() || patient.getFireLoss()) //Heals brute or burn
 			return TRUE
@@ -53,6 +61,8 @@
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(40,40)
+	target.Slow(300)
+	target.Superslow(150)
 
 	if(isspeciesyautja(target))
 		target.emote("click2")
@@ -107,6 +117,8 @@
 
 /datum/surgery_step/mtend_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(65,65)
+	target.Slow(300)
+	target.Superslow(150)
 
 	for(var/datum/internal_organ/organ in target.internal_organs) //Fixes all organs
 		organ.rejuvenate()
@@ -158,7 +170,9 @@
 			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(65,65) //makes sure that all damage is healed
+	target.heal_overall_damage(125,125) //makes sure that all damage is healed
+	target.SetSlow(0 SECONDS)
+	target.SetSuperslow(0 SECONDS)
 
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),

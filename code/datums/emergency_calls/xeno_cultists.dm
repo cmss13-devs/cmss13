@@ -25,7 +25,7 @@
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are the leader of this xeno cult! Bring glory to Queen Mother!"))
 		arm_equipment(H, /datum/equipment_preset/other/xeno_cultist/leader, TRUE, TRUE)
-	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && RoleAuthority.roles_whitelist[H.ckey] & WHITELIST_SYNTHETIC)
+	else if(synths < max_synths && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SYNTH) && H.client.check_whitelist_status(WHITELIST_SYNTHETIC))
 		synths++
 		to_chat(H, SPAN_ROLE_HEADER("You are the xeno cult's synthetic! Tend to the Hive and the captured hosts, make sure the Hive grows!"))
 		arm_equipment(H, /datum/equipment_preset/synth/survivor/cultist_synth, TRUE, TRUE)
@@ -34,4 +34,4 @@
 		arm_equipment(H, /datum/equipment_preset/other/xeno_cultist, TRUE, TRUE)
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

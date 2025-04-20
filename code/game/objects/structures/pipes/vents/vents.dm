@@ -12,13 +12,12 @@
 	var/uid
 
 	var/vent_icon = "vent"
+	var/datum/effect_system/smoke_spread/gas_holder
 
 /obj/structure/pipes/vents/Initialize()
 	. = ..()
 
 	initial_loc = get_area(loc)
-	if(initial_loc.master)
-		initial_loc = initial_loc.master
 	area_uid = initial_loc.uid
 	if(!id_tag)
 		assign_uid()
@@ -78,21 +77,22 @@
 			weldtime = 60
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.remove_fuel(1, user))
-			user.visible_message(SPAN_NOTICE("[user] starts welding \the [src] with \the [WT]."), \
+			user.visible_message(SPAN_NOTICE("[user] starts welding \the [src] with \the [WT]."),
 			SPAN_NOTICE("You start welding \the [src] with \the [WT]."))
 			playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 			if(do_after(user, weldtime * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(!src || !WT.isOn()) return 0
+				if(!src || !WT.isOn())
+					return 0
 				playsound(get_turf(src), 'sound/items/Welder2.ogg', 25, 1)
 				if(!welded)
-					user.visible_message(SPAN_NOTICE("[user] welds \the [src] shut."), \
+					user.visible_message(SPAN_NOTICE("[user] welds \the [src] shut."),
 					SPAN_NOTICE("You weld \the [src] shut."))
 					welded = 1
 					update_icon()
 					msg_admin_niche("[key_name(user)] welded a vent pump.")
 					return 1
 				else
-					user.visible_message(SPAN_NOTICE("[user] welds \the [src] open."), \
+					user.visible_message(SPAN_NOTICE("[user] welds \the [src] open."),
 					SPAN_NOTICE("You weld \the [src] open."))
 					welded = 0
 					msg_admin_niche("[key_name(user)] un-welded a vent pump.")
@@ -123,7 +123,63 @@
 		qdel(src)
 
 /obj/structure/pipes/vents/Destroy()
+	qdel(gas_holder)
 	if(initial_loc)
 		initial_loc.air_vent_info -= id_tag
 		initial_loc.air_vent_names -= id_tag
 	. = ..()
+
+/obj/structure/pipes/vents/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION(VV_HK_GAS, "Release Gas")
+
+/obj/structure/pipes/vents/vv_do_topic(list/href_list)
+	. = ..()
+	var/mob/user = usr
+	if(href_list[VV_HK_GAS] && check_rights(R_EVENT))
+		if(welded)
+			to_chat(usr, SPAN_WARNING("You cannot release gas from a welded vent."))
+			return FALSE
+		var/list/options = list(VENT_GAS_SMOKE, VENT_GAS_CN20, VENT_GAS_CN20_XENO)
+		var/gas_choice = tgui_input_list(user, "What gas do you wish to use?", "Gas Choice", options, 20 SECONDS)
+		if(!gas_choice)
+			return FALSE
+		var/radius_choice = tgui_input_number(user, "What radius do you wish to use?", "Gas Radius", 4, 10, 1, 20 SECONDS)
+		var/warn_choice = tgui_input_number(user, "How many seconds warning do you wish to give?", "Release Warning", 5, 30, 1, 20 SECONDS)
+		warn_choice = warn_choice SECONDS
+
+		var/confirm = alert(user, "Confirm gas setup. \n\nGas: '[gas_choice]'\nRadius: '[radius_choice]'\nWarn Time: '[warn_choice / 10] seconds' \n\n Is this correct?", "Confirmation", "Yes", "No")
+		if(confirm != "Yes")
+			return FALSE
+		log_admin("[key_name(user)] released gas (Gas: [gas_choice], Radius: [radius_choice], Delay: [warn_choice]) from [name] at X[x], Y[y], Z[z].")
+		create_gas(gas_choice, radius_choice, warn_choice)
+		return TRUE
+
+/obj/structure/pipes/vents/proc/create_gas(gas_type = VENT_GAS_SMOKE, radius = 4, warning_time = 5 SECONDS)
+	if(welded)
+		to_chat(usr, SPAN_WARNING("You cannot release gas from a welded vent."))
+		return FALSE
+	var/datum/effect_system/smoke_spread/spreader
+	switch(gas_type)
+		if(VENT_GAS_SMOKE)
+			spreader = new /datum/effect_system/smoke_spread/bad
+		if(VENT_GAS_CN20)
+			spreader = new /datum/effect_system/smoke_spread/cn20
+		if(VENT_GAS_CN20_XENO)
+			spreader = new /datum/effect_system/smoke_spread/cn20/xeno
+	if(!spreader)
+		return FALSE
+	gas_holder = spreader
+	spreader.attach(src)
+
+	new /obj/effect/warning/explosive/gas(loc, warning_time)
+	visible_message(SPAN_HIGHDANGER("[src] begins to hiss as gas builds up within it."), SPAN_HIGHDANGER("You hear a hissing."), radius)
+	addtimer(CALLBACK(src, PROC_REF(release_gas), radius), warning_time)
+
+/obj/structure/pipes/vents/proc/release_gas(radius = 4)
+	radius = clamp(radius, 1, 10)
+	if(!gas_holder || welded)
+		return FALSE
+	playsound(loc, 'sound/effects/smoke.ogg', 25, 1, 4)
+	gas_holder.set_up(radius, 0, get_turf(src), null, 10)
+	gas_holder.start()

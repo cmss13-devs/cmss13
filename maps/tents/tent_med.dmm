@@ -16,6 +16,7 @@
 /turf/template_noop,
 /area/template_noop)
 "p" = (
+/obj/structure/blocker/tent/full_tile,
 /turf/template_noop,
 /area/template_noop)
 "v" = (

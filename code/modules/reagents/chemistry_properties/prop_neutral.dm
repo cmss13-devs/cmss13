@@ -12,7 +12,7 @@
 	value = 1
 
 /datum/chem_property/neutral/cryometabolizing/pre_process(mob/living/M)
-	if(M.bodytemperature > 170)
+	if(M.bodytemperature > BODYTEMP_CRYO_LIQUID_THRESHOLD)
 		return list(REAGENT_CANCEL = TRUE)
 	return list(REAGENT_BOOST = POTENCY_MULTIPLIER_LOW * level)
 
@@ -25,11 +25,11 @@
 	value = 1
 
 /datum/chem_property/neutral/thanatometabolizing/pre_process(mob/living/M)
-	if(M.stat != DEAD && M.oxyloss < 50 && round(M.blood_volume) > BLOOD_VOLUME_OKAY)
+	if(M.stat != DEAD && M.oxyloss < 50 && floor(M.blood_volume) > BLOOD_VOLUME_OKAY)
 		return list(REAGENT_CANCEL = TRUE)
 	var/effectiveness = 1
 	if(M.stat != DEAD)
-		effectiveness = Clamp(max(M.oxyloss / 10, (BLOOD_VOLUME_NORMAL - M.blood_volume) / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1, 1)
+		effectiveness = clamp(max(M.oxyloss / 10, (BLOOD_VOLUME_NORMAL - M.blood_volume) / BLOOD_VOLUME_NORMAL) * 0.1 * level, 0.1, 1)
 	return list(REAGENT_FORCE = TRUE, REAGENT_EFFECT = effectiveness)
 
 /datum/chem_property/neutral/excreting
@@ -199,8 +199,8 @@
 	M.druggy = min(M.druggy + 0.5 * potency * delta_time, potency * 10)
 
 /datum/chem_property/neutral/hallucinogenic/process_overdose(mob/living/M, potency = 1, delta_time)
-	if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && M.canmove && !M.is_mob_restrained())
-		step(M, pick(cardinal))
+	if(isturf(M.loc) && !istype(M.loc, /turf/open/space) && (M.mobility_flags & MOBILITY_MOVE) && !M.is_mob_restrained())
+		step(M, pick(GLOB.cardinals))
 	M.hallucination += 10
 	M.make_jittery(5)
 
@@ -248,14 +248,14 @@
 	if(prob(5 * delta_time))
 		M.emote("gasp")
 		to_chat(M, SPAN_DANGER("<b>Your insides feel uncomfortably hot !</b>"))
-	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency,0)
+	M.bodytemperature = min(T120C, M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency)
 	if(potency >= CREATE_MAX_TIER_1)
 		M.make_dizzy(potency * POTENCY_MULTIPLIER_MEDIUM)
 		M.apply_effect(potency,AGONY,0)
 	M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/hyperthermic/process_overdose(mob/living/M, potency = 1)
-	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency,0)
+	M.bodytemperature = min(T120C, M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency)
 	M.apply_effect(POTENCY_MULTIPLIER_MEDIUM * potency,AGONY,0)
 
 /datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, potency = 1, delta_time)
@@ -268,14 +268,42 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 
-/datum/chem_property/neutral/hypothermic/process(mob/living/M, potency = 1, delta_time)
+/**
+ * For QuickClot removes CHEM_EFFECT_NO_BLEEDING. if above 0C, has no Cryox/Clonex in system. Exception check for cryometabolizing hypothermics
+ *
+ * Affected mob will be evaluated for QuickClot conditions, above 0c, has cryo/clonex no in system and remove the flag regardless of reagent cancel
+ * arguments:
+ * *effected_mob - the effected Mob
+ */
+/datum/chem_property/neutral/hypothermic/pre_process(mob/living/effected_mob)
+	var/mob/living/carbon/human/effected_human = effected_mob
+	//IF are above 0C or no cryo/clonex remove no bleed flag.
+	if (effected_mob.bodytemperature >= T0C || (effected_human.reagents.get_reagent_amount("cryoxadone") == 0 && effected_human.reagents.get_reagent_amount("clonexadone") == 0))
+		effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
+
+/datum/chem_property/neutral/hypothermic/process(mob/living/effected_mob, potency = 1, delta_time)
+	var/mob/living/carbon/human/effected_human = effected_mob
 	if(prob(5 * delta_time))
-		M.emote("shiver")
-	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency,0)
-	M.recalculate_move_delay = TRUE
+		effected_mob.emote("shiver")
+	//IF body temp below 0C AND Cryo or Clonex in system,apply CHEM_EFFECT_NO_BLEEDING
+	if (effected_mob.bodytemperature < T0C && (effected_human.reagents.get_reagent_amount("cryoxadone") || effected_human.reagents.get_reagent_amount("clonexadone")))
+		effected_human.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+	effected_mob.bodytemperature = max(0, effected_mob.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency)
+	effected_mob.recalculate_move_delay = TRUE
+
+/**
+ * For QuickClot removes CHEM_EFFECT_NO_BLEEDING. when drug fully metabolized
+ *
+ * Affected mob will have no bleed tag removed when drug metabolized
+ * arguments:
+ * *effected_mob - the effected Mob
+ */
+/datum/chem_property/neutral/hypothermic/on_delete(mob/living/effected_mob)
+	var/mob/living/carbon/human/effected_human = effected_mob
+	effected_human.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, potency = 1)
-	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency,0)
+	M.bodytemperature = max(0, M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency)
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, potency = 1, delta_time)
@@ -519,6 +547,39 @@
 /datum/chem_property/neutral/hyperthrottling/process_critical(mob/living/M, potency = 1, delta_time)
 	M.apply_effect(potency * delta_time, PARALYZE)
 
+/datum/chem_property/neutral/encephalophrasive
+	name = PROPERTY_ENCEPHALOPHRASIVE
+	code = "ESP"
+	description = "Drastically increases the amplitude of Gamma and Beta brain waves, allowing the host to broadcast their mind."
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_STIMULANT
+	value = 8
+
+/datum/chem_property/neutral/encephalophrasive/on_delete(mob/living/chem_host)
+	..()
+
+	chem_host.pain.recalculate_pain()
+	remove_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("The pain in your head subsides, and you are left feeling strangely alone."))
+
+/datum/chem_property/neutral/encephalophrasive/reaction_mob(mob/chem_host, method=INGEST, volume, potency)
+	if(method == TOUCH)
+		return
+	if(!ishuman_strict(chem_host))
+		return
+
+	give_action(chem_host, /datum/action/human_action/psychic_whisper)
+	to_chat(chem_host, SPAN_NOTICE("A terrible headache manifests, and suddenly it feels as though your mind is outside of your skull."))
+
+/datum/chem_property/neutral/encephalophrasive/process(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.pain.apply_pain(1 * potency)
+
+/datum/chem_property/neutral/encephalophrasive/process_overdose(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_damage(0.5 * potency * POTENCY_MULTIPLIER_VHIGH * delta_time, BRAIN)
+
+/datum/chem_property/neutral/encephalophrasive/process_critical(mob/living/chem_host, potency = 1, delta_time)
+	chem_host.apply_effect(20, PARALYZE)
+
 /datum/chem_property/neutral/viscous
 	name = PROPERTY_VISCOUS
 	code = "VIS"
@@ -546,11 +607,11 @@
 	value = 1
 
 /datum/chem_property/neutral/thermostabilizing/process(mob/living/M, potency = 1, delta_time)
-	if(M.bodytemperature > 310)
-		M.bodytemperature = max(310, M.bodytemperature - (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
+	if(M.bodytemperature > T37C)
+		M.bodytemperature = max(T37C, M.bodytemperature - (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
-	else if(M.bodytemperature < 311)
-		M.bodytemperature = min(310, M.bodytemperature + (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
+	else if(M.bodytemperature < T37C)
+		M.bodytemperature = min(T37C, M.bodytemperature + (20 * potency * delta_time * TEMPERATURE_DAMAGE_COEFFICIENT))
 		M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/thermostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
@@ -592,6 +653,7 @@
 	rarity = PROPERTY_RARE
 	starter = FALSE
 	value = 3
+	cost_penalty = FALSE
 	var/heal_amount = 0.75
 
 /datum/chem_property/neutral/transformative/process(mob/living/M, potency = 1, delta_time)

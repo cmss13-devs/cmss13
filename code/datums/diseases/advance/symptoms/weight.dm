@@ -3,7 +3,7 @@
 
 Weight Gain
 
-	Very Very Noticable.
+	Very Very Noticeable.
 	Decreases resistance.
 	Decreases stage speed.
 	Reduced transmittable.
@@ -43,7 +43,7 @@ Bonus
 
 Weight Loss
 
-	Very Very Noticable.
+	Very Very Noticeable.
 	Decreases resistance.
 	Decreases stage speed.
 	Reduced Transmittable.
@@ -84,7 +84,7 @@ Bonus
 
 Weight Even
 
-	Very Noticable.
+	Very Noticeable.
 	Decreases resistance.
 	Decreases stage speed.
 	Reduced transmittable.
@@ -107,7 +107,7 @@ Bonus
 	transmittable = -2
 	level = 4
 
-/datum/symptom/weight_loss/Activate(datum/disease/advance/A)
+/datum/symptom/weight_even/Activate(datum/disease/advance/A)
 	..()
 	if(prob(SYMPTOM_ACTIVATION_PROB))
 		var/mob/living/M = A.affected_mob

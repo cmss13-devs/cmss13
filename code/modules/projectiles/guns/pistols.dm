@@ -3,9 +3,15 @@
 
 /obj/item/weapon/gun/pistol
 	icon_state = "" //should return the honk-error sprite if there's no assigned icon.
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
 	reload_sound = 'sound/weapons/flipblade.ogg'
 	cocked_sound = 'sound/weapons/gun_pistol_cocked.ogg'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/pistols.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_righthand.dmi'
+	)
+	mouse_pointer = 'icons/effects/mouse_pointer/pistol_mouse.dmi'
 
 	matter = list("metal" = 2000)
 	flags_equip_slot = SLOT_WAIST
@@ -29,6 +35,11 @@
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
 	gun_category = GUN_CATEGORY_HANDGUN
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_LOW
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_FAIR
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/pistol/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -36,8 +47,10 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pistol/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
+	else
 		cock(user)
-
 
 /obj/item/weapon/gun/pistol/set_gun_config_values()
 	..()
@@ -49,7 +62,7 @@
 /obj/item/weapon/gun/pistol/m4a3
 	name = "\improper M4A3 service pistol"
 	desc = "An M4A3 Service Pistol, once the standard issue sidearm of the Colonial Marines but has recently been replaced with the 88 Mod 4 combat pistol. Fires 9mm pistol rounds."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a3"
 	item_state = "m4a3"
 	current_mag = /obj/item/ammo_magazine/pistol
@@ -72,7 +85,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -84,6 +97,8 @@
 /obj/item/weapon/gun/pistol/m4a3/training
 	current_mag = /obj/item/ammo_magazine/pistol/rubber
 
+/obj/item/weapon/gun/pistol/m4a3/tactical
+	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/reflex, /obj/item/attachable/lasersight)
 
 /obj/item/weapon/gun/pistol/m4a3/custom
 	name = "\improper M4A3 custom pistol"
@@ -93,7 +108,7 @@
 
 /obj/item/weapon/gun/pistol/m4a3/custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -109,7 +124,7 @@
 /obj/item/weapon/gun/pistol/m1911
 	name = "\improper M1911 service pistol"
 	desc = "A timeless classic since the first World War. Once standard issue for the USCM, now back order only. Chambered in .45 ACP. Unfortunately, due to the progression of IFF technology, M1911 .45 ACP is NOT compatible with the SU-6."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "m4a345"
 	item_state = "m4a3"
 
@@ -122,7 +137,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -140,7 +155,7 @@
 
 /obj/item/weapon/gun/pistol/m1911/socom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	set_fire_delay(FIRE_DELAY_TIER_9)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -157,7 +172,7 @@
 /obj/item/weapon/gun/pistol/b92fs
 	name = "\improper Beretta 92FS pistol"
 	desc = "A popular police firearm in the 20th century, often employed by hardboiled cops while confronting terrorists. A classic of its time, chambered in 9mm."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "b92fs"
 	item_state = "b92fs"
 	current_mag = /obj/item/ammo_magazine/pistol/b92fs
@@ -171,14 +186,14 @@
 		BFA.flags_attach_features &= ~ATTACH_REMOVABLE
 		BFA.Attach(src)
 		update_attachable(BFA.slot)
-		flags_gun_features |= GUN_BURST_ON
+		add_firemode(GUN_FIREMODE_BURSTFIRE)
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 17, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/b92fs/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -193,7 +208,7 @@
 /obj/item/weapon/gun/pistol/heavy
 	name = "vintage Desert Eagle"
 	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. This one is engraved, 'Peace through superior firepower.'"
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "deagle"
 	item_state = "deagle"
 	fire_sound = 'sound/weapons/gun_DE50.ogg'
@@ -218,9 +233,9 @@
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4
-	burst_amount = BURST_AMOUNT_TIER_2
-	burst_delay = FIRE_DELAY_TIER_7
+	set_fire_delay(FIRE_DELAY_TIER_5)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
+	set_burst_delay(FIRE_DELAY_TIER_8)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -229,20 +244,21 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/pistol/heavy/co
 	name = "polished vintage Desert Eagle"
 	desc = "The handcannon that needs no introduction, the .50-caliber Desert Eagle is expensive, unwieldy, and extremely heavy for a pistol. However, it makes up for it with its powerful shots capable of stopping a bear dead in its tracks. Iconic, glamorous, and above all, extremely deadly."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
-	base_gun_icon = "c_deagle"
 	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	black_market_value = 100
+	unacidable = TRUE
+	explo_proof = TRUE
 
 /obj/item/weapon/gun/pistol/heavy/co/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -252,72 +268,139 @@
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
+/obj/item/weapon/gun/pistol/heavy/co/unique_action(mob/user)
+	if(fire_into_air(user))
+		return ..()
+
 /obj/item/weapon/gun/pistol/heavy/co/gold
 	name = "golden vintage Desert Eagle"
 	desc = "A Desert Eagle anodized in gold and adorned with rosewood grips. The living definition of ostentatious, it's flashy, unwieldy, tremendously heavy, and kicks like a mule. But as a symbol of power, there's nothing like it."
 	icon_state = "g_deagle"
 	item_state = "g_deagle"
-	base_gun_icon = "g_deagle"
-//-------------------------------------------------------
-//MAUSER MERC PISTOL //Inspired by the Makarov, specifically the "PB" version, an integrally silenced Makarov.
-//Rebalanced: Now acts like an UPP M4A3.
 
-/obj/item/weapon/gun/pistol/c99
-	name = "\improper Korovin PK-9 pistol"
-	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. Commonly used by many groups, mostly those worried about cost."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
-	icon_state = "pk9"
-	item_state = "pk9"
+//-------------------------------------------------------
+//NP92 pistol
+//Its a makarov
+
+/obj/item/weapon/gun/pistol/np92
+	name = "\improper NP92 pistol"
+	desc = "The standard issue sidearm of the UPP. The NP92 is a small but powerful sidearm, well-liked by most it is issued to, although some prefer the weapon it was meant to replace, the Type 73. Takes 12 round magazines."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
+	icon_state = "np92"
+	item_state = "np92"
+	fire_sound = "88m4"
+	current_mag = /obj/item/ammo_magazine/pistol/np92
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+	)
+
+/obj/item/weapon/gun/pistol/np92/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+
+/obj/item/weapon/gun/pistol/np92/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_12)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
+
+/obj/item/weapon/gun/pistol/np92/suppressed
+	name = "\improper NPZ92 pistol"
+	desc = "The NPZ92 is a version of the NP92 that includes an integrated suppressor, issued sparingly to Kommando units."
+	icon_state = "npz92"
+	item_state = "npz92"
 	inherent_traits = list(TRAIT_GUN_SILENCED)
-	fire_sound = 'sound/weapons/gun_c99.ogg'
-	current_mag = /obj/item/ammo_magazine/pistol/c99
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
+	fire_sound = "gun_silenced"
+	current_mag = /obj/item/ammo_magazine/pistol/np92/suppressed
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+	)
+
+/obj/item/weapon/gun/pistol/np92/suppressed/tranq
+	current_mag = /obj/item/ammo_magazine/pistol/np92/tranq
+
+//-------------------------------------------------------
+//Type 73 pistol
+//Its a TT
+
+/obj/item/weapon/gun/pistol/t73
+	name = "\improper Type 73 pistol"
+	desc = "The Type 73 is the once-standard issue sidearm of the UPP. Replaced by the NP92 in UPP use, it remains popular with veteran UPP troops due to familiarity and extra power. Due to an extremely large amount being produced, they tend to end up in the hands of forces attempting to arm themselves on a budget. Users include the Union of Progressive Peoples, Colonial Liberation Front, and just about any mercenary or pirate group out there."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/pistols.dmi'
+	icon_state = "tt"
+	item_state = "tt"
+	fire_sound = 'sound/weapons/gun_tt.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/t73
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	attachable_allowed = list(
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/suppressor,
 	)
 
-/obj/item/weapon/gun/pistol/c99/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 21, "stock_y" = 18)
+/obj/item/weapon/gun/pistol/t73/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 13, "rail_y" = 22, "under_x" = 22, "under_y" = 15, "stock_x" = 21, "stock_y" = 18)
 
-/obj/item/weapon/gun/pistol/c99/set_gun_config_values()
+/obj/item/weapon/gun/pistol/t73/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
-
-/obj/item/weapon/gun/pistol/c99/upp
-	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design is strongly inspired by the classic ancient Makarov pistol. This version has been refitted for military usage by the UPP."
-	icon_state = "pk9u"
-	item_state = "pk9u"
-
-/obj/item/weapon/gun/pistol/c99/upp/tranq
-	desc = "The Korovin PK-9 is a cheap, robust and reliable sidearm, its design strongly inspired by the classic ancient Makarov pistol. This version contains a customized exterior, an integrated laser and reflex sight, and is noticeably easy to handle."
-	icon_state = "pk9r"
-	item_state = "pk9r"
-	current_mag = /obj/item/ammo_magazine/pistol/c99/tranq
-	aim_slowdown = 0
-	wield_delay = WIELD_DELAY_MIN
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 
 
-/obj/item/weapon/gun/pistol/c99/upp/tranq/handle_starting_attachment()
+/obj/item/weapon/gun/pistol/t73/leader
+	name = "\improper Type 74 pistol"
+	desc = "The Type 74 is the designation for a specially modified Type 73 with an integrated laser sight system, multiple lightning cuts to reduce weight in order to allow a higher pressure round to be used with the same recoil sping, and a more comfortable grip. Due to the adoption of the NP92, the Type 74 was produced in limited numbers, because of this it is typically only issued on request to high-ranking officers."
+	icon_state = "ttb"
+	item_state = "ttb"
+	current_mag = /obj/item/ammo_magazine/pistol/t73_impact
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/pistol/t73,
+		/obj/item/ammo_magazine/pistol/t73_impact,
+	)
+
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/heavy_barrel,
+	)
+
+/obj/item/weapon/gun/pistol/t73/leader/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/lasersight/LS = new(src)
-	LS.flags_attach_features &= ~ATTACH_REMOVABLE
-	LS.Attach(src)
-	update_attachable(LS.slot)
+	var/obj/item/attachable/lasersight/TT = new(src)
+	TT.flags_attach_features &= ~ATTACH_REMOVABLE
+	TT.hidden = TRUE
+	TT.Attach(src)
+	update_attachable(TT.slot)
 
-	var/obj/item/attachable/reflex/RX = new(src)
-	RX.flags_attach_features &= ~ATTACH_REMOVABLE
-	RX.Attach(src)
-	update_attachable(RX.slot)
+/obj/item/weapon/gun/pistol/t73/leader/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
+	scatter = SCATTER_AMOUNT_TIER_7
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 
 //-------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol
@@ -326,7 +409,7 @@
 /obj/item/weapon/gun/pistol/kt42
 	name = "\improper KT-42 automag"
 	desc = "The KT-42 Automag is an archaic but reliable design, going back many decades. There have been many versions and variations, but the 42 is by far the most common. You can't go wrong with this handcannon."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "kt42"
 	item_state = "kt42"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
@@ -337,7 +420,7 @@
 
 /obj/item/weapon/gun/pistol/kt42/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_1
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -351,7 +434,7 @@
 /obj/item/weapon/gun/pistol/holdout
 	name = "holdout pistol"
 	desc = "A tiny pistol meant for hiding in hard-to-reach areas. Best not ask where it came from."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "holdout"
 	item_state = "holdout"
 
@@ -373,7 +456,7 @@
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -392,7 +475,7 @@
 /obj/item/weapon/gun/pistol/clfpistol
 	name = "D18 Hummingbird Pistol"
 	desc = "The D18 Hummingbird Pistol was produced in the mid-2170s as a cheap and concealable firearm for CLF Sleeper Cell agents for assassinations and ambushes, and is able to be concealed in shoes and workboots."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "m43"
 	item_state = "m43"
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
@@ -410,7 +493,7 @@
 
 /obj/item/weapon/gun/pistol/clfpistol/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -418,6 +501,7 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_9
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE // small gun, huge blow
 
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower
@@ -427,7 +511,7 @@
 /obj/item/weapon/gun/pistol/highpower
 	name = "\improper MK-45 'High-Power' Automagnum"
 	desc = "Originally designed as a replacement for the USCM's M44 combat revolver, it was rejected at the last minute by a committee, citing its need to be cocked after every loaded magazine to be too cumbersone and antiquated. The design has recently been purchased by the Henjin-Garcia company, refitted for .45 ACP, and sold to the Colonial Marshals and other various unscrupulous armed groups."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
 	icon_state = "highpower"
 	item_state = "highpower"
 	fire_sound = 'sound/weapons/gun_kt42.ogg'
@@ -438,6 +522,16 @@
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp_replica,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/wy,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
@@ -462,8 +556,8 @@
 	if(!manually_slided)
 		click_empty()
 		to_chat(user, SPAN_DANGER("\The [src] makes a clicking noise! You need to manually rack the slide after loading in a new magazine!"))
-		return
-	..()
+		return NONE
+	return ..()
 
 /obj/item/weapon/gun/pistol/highpower/unique_action(mob/user)
 	if(!manually_slided)
@@ -476,7 +570,8 @@
 /obj/item/weapon/gun/pistol/highpower/cock_gun(mob/user, manual = FALSE)
 	if(manual)
 		..()
-	else return
+	else
+		return
 
 /obj/item/weapon/gun/pistol/highpower/reload(mob/user, obj/item/ammo_magazine/magazine)
 	//reset every time its reloaded
@@ -488,7 +583,7 @@
 
 /obj/item/weapon/gun/pistol/highpower/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	set_fire_delay(FIRE_DELAY_TIER_5)
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -521,9 +616,9 @@
 /obj/item/weapon/gun/pistol/mod88
 	name = "\improper 88 Mod 4 combat pistol"
 	desc = "Standard issue USCM firearm. Also found in the hands of Weyland-Yutani PMC teams. Fires 9mm armor shredding rounds and is capable of 3-round burst."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
-	icon_state = "88m4"
-	item_state = "88m4"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
+	icon_state = "_88m4" // to comply with css standards
+	item_state = "_88m4"
 	fire_sound = "88m4"
 	firesound_volume = 20
 	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
@@ -552,9 +647,9 @@
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
@@ -574,12 +669,51 @@
 	update_attachable(flashlight.slot)
 
 //-------------------------------------------------------
+// ES-4 - Basically a CL-exclusive reskin of the 88 mod 4 that only uses less-lethal ammo.
+
+/obj/item/weapon/gun/pistol/es4
+	name = "\improper ES-4 electrostatic pistol"
+	desc = "A Weyland Corp manufactured less-than-lethal pistol. Originally manufactured in the 2080s, the ES-4 electrostatic pistol fires electrically-charged bullets with high accuracy, though its cost and constant need for cleaning makes it a rare sight."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
+	icon_state = "es4"
+	item_state = "es4"
+	fire_sound = 'sound/weapons/gun_es4.ogg'
+	firesound_volume = 20
+	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
+	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/es4
+	force = 8
+	muzzle_flash = "muzzle_energy"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	attachable_allowed = list(
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/lasersight,
+	)
+
+/obj/item/weapon/gun/pistol/es4/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21, "rail_x" = 10, "rail_y" = 22, "under_x" = 25, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)
+
+
+/obj/item/weapon/gun/pistol/es4/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_11
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_7
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+	durability_loss = GUN_DURABILITY_LOSS_GUARANTEED // see gun description for lore accurate representation
+
+//-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.
 
 /obj/item/weapon/gun/pistol/vp78
 	name = "\improper VP78 pistol"
 	desc = "A massive, formidable semi-automatic handgun chambered in 9mm squash-head rounds. A common sight throughout both UA and 3WE space, often held by both Weyland-Yutani PMC units and corporate executives. This weapon is also undergoing limited field testing as part of the USCM's next generation pistol program. The slide is engraved with the Weyland-Yutani logo reminding you who's really in charge."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/pistols.dmi'
 	icon_state = "vp78"
 	item_state = "vp78"
 
@@ -609,14 +743,14 @@
 	update_attachable(VP.slot)
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 21,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 22,"rail_x" = 10, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 18, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -625,6 +759,9 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
+
+/obj/item/weapon/gun/pistol/vp78/whiteout
+	starting_attachment_types = list(/obj/item/attachable/heavy_barrel, /obj/item/attachable/reflex)
 
 
 //-------------------------------------------------------
@@ -646,9 +783,9 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/auto9/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_10
+	set_fire_delay(FIRE_DELAY_TIER_7)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_12)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -669,7 +806,10 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/event.dmi'
 	icon_state = "c70"
 	item_state = "c70"
-
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/misc_weapons_righthand.dmi',
+		)
 	current_mag = /obj/item/ammo_magazine/pistol/chimp
 	fire_sound = 'sound/weapons/gun_chimp70.ogg'
 	w_class = SIZE_MEDIUM
@@ -678,9 +818,9 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/chimp/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
-	burst_delay = FIRE_DELAY_TIER_9
-	burst_amount = BURST_AMOUNT_TIER_2
+	set_fire_delay(FIRE_DELAY_TIER_9)
+	set_burst_delay(FIRE_DELAY_TIER_11)
+	set_burst_amount(BURST_AMOUNT_TIER_2)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -695,7 +835,7 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/weapon/gun/pistol/smart
 	name = "\improper SU-6 Smartpistol"
 	desc = "The SU-6 Smartpistol is an IFF-based sidearm currently undergoing field testing in the Colonial Marines. Uses modified .45 ACP IFF bullets. Capable of firing in bursts."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	icon_state = "smartpistol"
 	item_state = "smartpistol"
 	force = 8
@@ -710,9 +850,9 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/smart/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-	burst_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_12)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_11)
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -733,13 +873,17 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 /obj/item/weapon/gun/pistol/skorpion
 	name = "\improper CZ-81 machine pistol"
 	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20-round magazine."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/upp.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/smgs.dmi'
 	icon_state = "skorpion"
 	item_state = "skorpion"
-
+	item_icons = list(
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smgs.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smgs_righthand.dmi'
+	)
 	fire_sound = 'sound/weapons/gun_skorpion.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/skorpion
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON|GUN_FULL_AUTO_ONLY
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	attachable_allowed = list(
 		/obj/item/attachable/reddot, //Rail
 		/obj/item/attachable/reflex,
@@ -750,45 +894,69 @@ It is a modified Beretta 93R, and can fire three-round burst or single fire. Whe
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight, //Underbarrel
 		/obj/item/attachable/burstfire_assembly,
-		)
+	)
+	start_semiauto = FALSE
+	start_automatic = TRUE
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
 
 /obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
 	..()
-	fa_delay = FIRE_DELAY_TIER_9
+	set_fire_delay(FIRE_DELAY_TIER_11)
 	fa_scatter_peak = 15 //shots
-	fa_max_scatter = SCATTER_AMOUNT_TIER_4
-
-	accuracy_mult = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-
-/obj/item/weapon/gun/pistol/skorpion/upp
-	desc = "A robust, 20th century firearm modernized for the 23rd century. Fires .32ACP caliber rounds from a 20-round magazine."
-	icon_state = "skorpion_u"
-	item_state = "skorpion_u"
-
-/obj/item/weapon/gun/pistol/skorpion/upp/medic
-	random_spawn_chance = 100
-	random_rail_chance = 70
-	random_spawn_rail = list(
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/flashlight,
-	)
-	random_muzzle_chance = 50
-	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
-	)
-	random_under_chance = 60
-	random_spawn_under = list(
-		/obj/item/attachable/lasersight,
-	)
-
-/obj/item/weapon/gun/pistol/skorpion/set_gun_config_values()
-	..()
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
+	accuracy_mult = BASE_ACCURACY_MULT
 	scatter = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
+
+//-------------------------------------------------------
+/*
+M10 Auto Pistol: A compact machine pistol that sacrifices accuracy for an impressive fire rate, shredding close-range targets with ease.
+With a 40-round magazine, it can keep up sustained fire in tense situations, though its high recoil and low stability make it tricky to control.
+Unlike other pistols, it can be equipped with limited mods (small muzzle, underbarrel laser, magazine, and optics) but has no burst-fire option.
+*/
+
+/obj/item/weapon/gun/pistol/m10
+	name = "\improper M10 auto pistol"
+	desc = "The Armat Battlefield Systems M10 Auto Pistol, a compact, rapid-firing sidearm designed for close-quarters defense. With a 40-round magazine, it emphasizes fire rate over precision, providing effective suppressive fire in short-range engagements."
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/classic/guns_obj.dmi'
+	icon_state = "m10"
+	item_state = "m10"
+	attachable_allowed = list(
+		/obj/item/attachable/reddot, //Rail
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/magnetic_harness,
+		/obj/item/attachable/suppressor, //Muzzle
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/lasersight, //Underbarrel
+	)
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
+	start_automatic = TRUE
+	map_specific_decoration = TRUE
+	fire_sound = 'sound/weapons/gun_m10_auto_pistol.ogg'
+	reload_sound = 'sound/weapons/handling/smg_reload.ogg'
+	unload_sound = 'sound/weapons/handling/smg_unload.ogg'
+
+	current_mag = /obj/item/ammo_magazine/pistol/m10
+
+/obj/item/weapon/gun/pistol/m10/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 26, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 20, "under_x" = 21, "under_y" = 16, "stock_x" = 18, "stock_y" = 14)
+
+/obj/item/weapon/gun/pistol/m10/set_gun_config_values()
+	..()
+	set_burst_amount(0)
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_3
+	set_fire_delay(FIRE_DELAY_TIER_12)
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT
+	scatter = SCATTER_AMOUNT_TIER_4
+	scatter_unwielded = SCATTER_AMOUNT_TIER_3
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_7
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_4

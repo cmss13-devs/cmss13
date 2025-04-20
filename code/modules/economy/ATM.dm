@@ -37,7 +37,7 @@ log transactions
 
 /obj/structure/machinery/atm/New()
 	..()
-	machine_id = "[station_name] RT #[num_financial_terminals++]"
+	machine_id = "[MAIN_SHIP_NAME] RT #[GLOB.num_financial_terminals++]"
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
@@ -63,7 +63,7 @@ log transactions
 			var/obj/item/spacecash/spacecash = I
 			//consume the money
 			if(spacecash.counterfeit)
-				authenticated_account.money += round(spacecash.worth * 0.25)
+				authenticated_account.money += floor(spacecash.worth * 0.25)
 				visible_message(SPAN_DANGER("[src] starts sparking and making error noises as you load [I] into it!"))
 				spark_system.start()
 			else
@@ -79,7 +79,7 @@ log transactions
 			T.purpose = "Credit deposit"
 			T.amount = I:worth
 			T.source_terminal = machine_id
-			T.date = current_date_string
+			T.date = GLOB.current_date_string
 			T.time = worldtime2text()
 			authenticated_account.transaction_log.Add(T)
 
@@ -87,7 +87,7 @@ log transactions
 			src.attack_hand(user)
 			qdel(I)
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/atm/proc/drop_money(turf)
 		playsound(turf, "sound/machines/ping.ogg", 15)
@@ -104,7 +104,7 @@ log transactions
 		dat += "For all your monetary needs!<br>"
 		dat += "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting Weyland-Yutani IT Support</i><br/>"
 
-		dat += "Card: <a href='?src=\ref[src];choice=insert_card'>[held_card ? held_card.name : "------"]</a><br><br>"
+		dat += "Card: <a href='byond://?src=\ref[src];choice=insert_card'>[held_card ? held_card.name : "------"]</a><br><br>"
 
 		if(ticks_left_locked_down > 0)
 			dat += SPAN_ALERT("Maximum number of pin attempts exceeded! Access to this ATM has been temporarily disabled.")
@@ -117,20 +117,20 @@ log transactions
 						dat += "Select a new security level for this account:<br><hr>"
 						var/text = "Zero - Either the account number or card is required to access this account. EFTPOS transactions will require a card and ask for a pin, but not verify the pin is correct."
 						if(authenticated_account.security_level != 0)
-							text = "<A href='?src=\ref[src];choice=change_security_level;new_security_level=0'>[text]</a>"
+							text = "<A href='byond://?src=\ref[src];choice=change_security_level;new_security_level=0'>[text]</a>"
 						dat += "[text]<hr>"
 						text = "One - An account number and pin must be manually entered to access this account and process transactions."
 						if(authenticated_account.security_level != 1)
-							text = "<A href='?src=\ref[src];choice=change_security_level;new_security_level=1'>[text]</a>"
+							text = "<A href='byond://?src=\ref[src];choice=change_security_level;new_security_level=1'>[text]</a>"
 						dat += "[text]<hr>"
 						text = "Two - In addition to account number and pin, a card is required to access this account and process transactions."
 						if(authenticated_account.security_level != 2)
-							text = "<A href='?src=\ref[src];choice=change_security_level;new_security_level=2'>[text]</a>"
+							text = "<A href='byond://?src=\ref[src];choice=change_security_level;new_security_level=2'>[text]</a>"
 						dat += "[text]<hr><br>"
-						dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a>"
+						dat += "<A href='byond://?src=\ref[src];choice=view_screen;view_screen=0'>Back</a>"
 					if(VIEW_TRANSACTION_LOGS)
 						dat += "<b>Transaction logs</b><br>"
-						dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a>"
+						dat += "<A href='byond://?src=\ref[src];choice=view_screen;view_screen=0'>Back</a>"
 						dat += "<table border=1 style='width:100%'>"
 						dat += "<tr>"
 						dat += "<td><b>Date</b></td>"
@@ -150,10 +150,10 @@ log transactions
 							dat += "<td>[T.source_terminal]</td>"
 							dat += "</tr>"
 						dat += "</table>"
-						dat += "<A href='?src=\ref[src];choice=print_transaction'>Print</a><br>"
+						dat += "<A href='byond://?src=\ref[src];choice=print_transaction'>Print</a><br>"
 					if(TRANSFER_FUNDS)
 						dat += "<b>Account balance:</b> $[authenticated_account.money]<br>"
-						dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=0'>Back</a><br><br>"
+						dat += "<A href='byond://?src=\ref[src];choice=view_screen;view_screen=0'>Back</a><br><br>"
 						dat += "<form name='transfer' action='?src=\ref[src]' method='get'>"
 						dat += "<input type='hidden' name='src' value='\ref[src]'>"
 						dat += "<input type='hidden' name='choice' value='transfer'>"
@@ -170,11 +170,11 @@ log transactions
 						dat += "<input type='radio' name='choice' value='withdrawal' checked> Cash  <input type='radio' name='choice' value='e_withdrawal'> Chargecard<br>"
 						dat += "<input type='text' name='funds_amount' value='' style='width:200px; background-color:white;'><input type='submit' class='button' value='Withdraw'>"
 						dat += "</form>"
-						dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=1'>Change account security level</a><br>"
-						dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=2'>Make transfer</a><br>"
-						dat += "<A href='?src=\ref[src];choice=view_screen;view_screen=3'>View transaction log</a><br>"
-						dat += "<A href='?src=\ref[src];choice=balance_statement'>Print balance statement</a><br>"
-						dat += "<A href='?src=\ref[src];choice=logout'>Logout</a><br>"
+						dat += "<A href='byond://?src=\ref[src];choice=view_screen;view_screen=1'>Change account security level</a><br>"
+						dat += "<A href='byond://?src=\ref[src];choice=view_screen;view_screen=2'>Make transfer</a><br>"
+						dat += "<A href='byond://?src=\ref[src];choice=view_screen;view_screen=3'>View transaction log</a><br>"
+						dat += "<A href='byond://?src=\ref[src];choice=balance_statement'>Print balance statement</a><br>"
+						dat += "<A href='byond://?src=\ref[src];choice=logout'>Logout</a><br>"
 		else
 			dat += "<form name='atm_auth' action='?src=\ref[src]' method='get'>"
 			dat += "<input type='hidden' name='src' value='\ref[src]'>"
@@ -184,7 +184,7 @@ log transactions
 			dat += "<input type='submit' class='button' value='Submit'><br>"
 			dat += "</form>"
 
-		show_browser(user, dat, "Weyland-Yutani Automatic Teller Machine", "atm", "size=550x650")
+		show_browser(user, dat, "Weyland-Yutani Automatic Teller Machine", "atm", width = 550, height = 650)
 	else
 		close_browser(user,"atm")
 
@@ -212,7 +212,7 @@ log transactions
 							T.target_name = "Account #[target_account_number]"
 							T.purpose = transfer_purpose
 							T.source_terminal = machine_id
-							T.date = current_date_string
+							T.date = GLOB.current_date_string
 							T.time = worldtime2text()
 							T.amount = "([transfer_amount])"
 							authenticated_account.transaction_log.Add(T)
@@ -254,7 +254,7 @@ log transactions
 									T.target_name = failed_account.owner_name
 									T.purpose = "Unauthorised login attempt"
 									T.source_terminal = machine_id
-									T.date = current_date_string
+									T.date = GLOB.current_date_string
 									T.time = worldtime2text()
 									failed_account.transaction_log.Add(T)
 							else
@@ -275,7 +275,7 @@ log transactions
 						T.target_name = authenticated_account.owner_name
 						T.purpose = "Remote terminal access"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 
@@ -284,7 +284,7 @@ log transactions
 					previous_account_number = tried_account_num
 			if("e_withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -307,7 +307,7 @@ log transactions
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 						withdrawal_timer = world.time + 20
@@ -316,7 +316,7 @@ log transactions
 						withdrawal_timer = world.time + 20
 			if("withdrawal")
 				if(withdrawal_timer > world.time)
-					alert("Please wait [round((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
+					alert("Please wait [floor((withdrawal_timer-world.time)/10)] seconds before attempting to make another withdrawal.")
 					return
 				var/amount = max(text2num(href_list["funds_amount"]),0)
 				amount = round(amount, 0.01)
@@ -338,7 +338,7 @@ log transactions
 						T.purpose = "Credit withdrawal"
 						T.amount = "([amount])"
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = worldtime2text()
 						authenticated_account.transaction_log.Add(T)
 						withdrawal_timer = world.time + 20
@@ -353,12 +353,12 @@ log transactions
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
 					R.info += "<i>Balance:</i> $[authenticated_account.money]<br>"
-					R.info += "<i>Date and time:</i> [worldtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [worldtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp
@@ -376,7 +376,7 @@ log transactions
 					R.info = "<b>Transaction logs</b><br>"
 					R.info += "<i>Account holder:</i> [authenticated_account.owner_name]<br>"
 					R.info += "<i>Account number:</i> [authenticated_account.account_number]<br>"
-					R.info += "<i>Date and time:</i> [worldtime2text()], [current_date_string]<br><br>"
+					R.info += "<i>Date and time:</i> [worldtime2text()], [GLOB.current_date_string]<br><br>"
 					R.info += "<i>Service terminal ID:</i> [machine_id]<br>"
 					R.info += "<table border=1 style='width:100%'>"
 					R.info += "<tr>"
@@ -400,7 +400,7 @@ log transactions
 
 					//stamp the paper
 					var/image/stampoverlay = image('icons/obj/items/paper.dmi')
-					stampoverlay.icon_state = "paper_stamp-cent"
+					stampoverlay.icon_state = "paper_stamp-weyyu"
 					if(!R.stamped)
 						R.stamped = new
 					R.stamped += /obj/item/tool/stamp
@@ -428,26 +428,28 @@ log transactions
 
 //stolen wholesale and then edited a bit from newscasters, which are awesome and by Agouri
 /obj/structure/machinery/atm/proc/scan_user(mob/living/carbon/human/human_user as mob)
+	if(authenticated_account)
+		return
+	var/obj/item/card/id/card = human_user.get_idcard()
+	if(!card)
+		return
+
+	authenticated_account = attempt_account_access(card.associated_account_number)
 	if(!authenticated_account)
-		if(human_user.wear_id)
-			var/obj/item/card/id/I
-			if(istype(human_user.wear_id, /obj/item/card/id))
-				I = human_user.wear_id
-			if(I)
-				authenticated_account = attempt_account_access(I.associated_account_number)
-				if(authenticated_account)
-					to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
+		return
 
-					//create a transaction log entry
-					var/datum/transaction/T = new()
-					T.target_name = authenticated_account.owner_name
-					T.purpose = "Remote terminal access"
-					T.source_terminal = machine_id
-					T.date = current_date_string
-					T.time = worldtime2text()
-					authenticated_account.transaction_log.Add(T)
+	to_chat(human_user, SPAN_NOTICE("[icon2html(src, human_user)] Access granted. Welcome user '[authenticated_account.owner_name].'"))
 
-					view_screen = NO_SCREEN
+	//create a transaction log entry
+	var/datum/transaction/log = new()
+	log.target_name = authenticated_account.owner_name
+	log.purpose = "Remote terminal access"
+	log.source_terminal = machine_id
+	log.date = GLOB.current_date_string
+	log.time = worldtime2text()
+	authenticated_account.transaction_log.Add(log)
+
+	view_screen = NO_SCREEN
 
 // put the currently held id on the ground or in the hand of the user
 /obj/structure/machinery/atm/proc/release_held_id(mob/living/carbon/human/human_user as mob)
@@ -465,7 +467,8 @@ log transactions
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.stat || usr.lying) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(ishuman(usr) && held_card)
 		to_chat(usr, "You remove \the [held_card] from \the [src].")

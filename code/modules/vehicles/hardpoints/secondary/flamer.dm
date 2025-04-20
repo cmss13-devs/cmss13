@@ -1,5 +1,5 @@
 /obj/item/hardpoint/secondary/small_flamer
-	name = "LZR-N Flamer Unit"
+	name = "\improper LZR-N Flamer Unit"
 	desc = "A secondary weapon for tanks that spews hot fire."
 
 	icon_state = "flamer"
@@ -8,11 +8,7 @@
 	activation_sounds = list('sound/weapons/vehicles/flamethrower.ogg')
 
 	health = 300
-	cooldown = 30
-	accuracy = 0.68
 	firing_arc = 120
-
-	origins = list(0, -2)
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/secondary_flamer
 	max_clips = 1
@@ -28,31 +24,34 @@
 		"8" = list(-3, 18)
 	)
 
-/obj/item/hardpoint/secondary/small_flamer/fire_projectile(mob/user, atom/A)
-	set waitfor = 0
+	scatter = 6
+	fire_delay = 3.0 SECONDS
 
-	var/turf/origin_turf = get_turf(src)
-	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
-	var/list/turf/turfs = getline2(origin_turf, A)
-	var/distance = 0
-	var/turf/prev_T
+/obj/item/hardpoint/secondary/small_flamer/try_fire(atom/target, mob/living/user, params)
+	if(get_turf(target) in owner.locs)
+		to_chat(user, SPAN_WARNING("The target is too close."))
+		return NONE
 
-	for(var/turf/T in turfs)
-		if(T == loc)
-			prev_T = T
+	return ..()
+
+/obj/item/hardpoint/secondary/small_flamer/handle_fire(atom/target, mob/living/user, params)
+	//step forward along path so flame starts outside hull
+	var/list/turfs = get_line(get_origin_turf(), get_turf(target))
+	var/turf/origin_turf
+	for(var/turf/turf as anything in turfs)
+		if(turf in owner.locs)
 			continue
-		if(!ammo.current_rounds) break
-		if(distance >= max_range) break
-		if(prev_T && LinkBlocked(prev_T, T))
-			break
-		ammo.current_rounds--
-		flame_turf(T, user)
-		distance++
-		prev_T = T
-		sleep(1)
+		origin_turf = turf
+		break
 
-/obj/item/hardpoint/secondary/small_flamer/proc/flame_turf(turf/T, mob/user)
-	if(!istype(T)) return
+	var/distance = get_dist(origin_turf, get_turf(target))
+	var/fire_amount = min(ammo.current_rounds, distance+1, max_range)
+	ammo.current_rounds -= fire_amount
 
-	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, create_cause_data(initial(name), user))
+	new /obj/flamer_fire(origin_turf, create_cause_data(initial(name), user), null, fire_amount, null, FLAMESHAPE_LINE, target)
+
+	play_firing_sounds()
+
+	COOLDOWN_START(src, fire_cooldown, fire_delay)
+
+	return AUTOFIRE_CONTINUE

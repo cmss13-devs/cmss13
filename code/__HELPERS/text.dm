@@ -30,6 +30,11 @@
 		text = replacetext(text, char, repl_chars[char])
 	return text
 
+///Helper for only alphanumeric characters plus common punctuation, spaces, underscore and hyphen _ -.
+/proc/replace_non_alphanumeric_plus(text)
+	var/regex/alphanumeric = regex(@{"[^a-z0-9 ,.?!\-_&]"}, "gi")
+	return alphanumeric.Replace(text, "")
+
 /proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
@@ -63,16 +68,23 @@
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(text, max_length=512)
-	if(length(text) > max_length) return //message too long
+	if(length(text) > max_length)
+		return //message too long
 	var/non_whitespace = 0
 	for(var/i=1, i<=length(text), i++)
 		switch(text2ascii(text,i))
-			if(62,60,92,47) return //rejects the text if it contains these bad characters: <, >, \ or /
-			if(127 to 255) return //rejects weird letters like �
-			if(0 to 31) return //more weird stuff
-			if(32) continue //whitespace
-			else non_whitespace = 1
-	if(non_whitespace) return text //only accepts the text if it has some non-spaces
+			if(62,60,92,47)
+				return //rejects the text if it contains these bad characters: <, >, \ or /
+			if(127 to 255)
+				return //rejects weird letters like �
+			if(0 to 31)
+				return //more weird stuff
+			if(32)
+				continue //whitespace
+			else
+				non_whitespace = 1
+	if(non_whitespace)
+		return text //only accepts the text if it has some non-spaces
 
 // Used to get a sanitized input.
 /proc/stripped_input(mob/user, message = "", title = "", default = "", max_length=MAX_MESSAGE_LEN)
@@ -164,6 +176,11 @@
 		t = "0[t]"
 	return t
 
+/proc/pad_trailing(text, padding, size)
+	while (length(text) < size)
+		text = "[text][padding]"
+	return text
+
 //Adds 'u' number of spaces ahead of the text 't'
 /proc/add_lspace(t, u)
 	while(length(t) < u)
@@ -189,6 +206,24 @@
 		if (text2ascii(text, i) > 32)
 			return copytext(text, 1, i + 1)
 
+	return ""
+
+//Returns a string with reserved characters and spaces after the first and last letters removed
+//Like trim(), but very slightly faster. worth it for niche usecases
+/proc/trim_reduced(text)
+	var/starting_coord = 1
+	var/text_len = length(text)
+	for (var/i in 1 to text_len)
+		if (text2ascii(text, i) > 32)
+			starting_coord = i
+			break
+
+	for (var/i = text_len, i >= starting_coord, i--)
+		if (text2ascii(text, i) > 32)
+			return copytext(text, starting_coord, i + 1)
+
+	if(starting_coord > 1)
+		return copytext(text, starting_coord)
 	return ""
 
 //Returns a string with reserved characters and spaces before the first word and after the last word removed.
@@ -307,7 +342,7 @@
 		message = "Invalid location"
 	else
 		if(include_jmp_link)
-			message = "<a HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[A.x];Y=[A.y];Z=[A.z]'>[get_area(A)]</a> ([A.x], [A.y], [A.z])"
+			message = "<a href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservecoodjump=1;X=[A.x];Y=[A.y];Z=[A.z]'>[get_area(A)]</a> ([A.x], [A.y], [A.z])"
 		else
 			message = "[get_area(A)] ([A.x], [A.y], [A.z])"
 	return message
@@ -336,8 +371,8 @@
 	// ---Begin URL caching.
 	var/list/urls = list()
 	var/i = 1
-	while (url_find_lazy.Find_char(message))
-		urls["\ref[urls]-[i]"] = url_find_lazy.match
+	while (GLOB.url_find_lazy.Find_char(message))
+		urls["\ref[urls]-[i]"] = GLOB.url_find_lazy.match
 		i++
 
 	for (var/ref in urls)
@@ -345,9 +380,9 @@
 	// ---End URL caching
 
 	var/regex/tag_markup
-	for (var/tag in (markup_tags - ignore_tags))
-		tag_markup = markup_regex[tag]
-		message = tag_markup.Replace_char(message, "$2[markup_tags[tag][1]]$3[markup_tags[tag][2]]$5")
+	for (var/tag in (GLOB.markup_tags - ignore_tags))
+		tag_markup = GLOB.markup_regex[tag]
+		message = tag_markup.Replace_char(message, "$2[GLOB.markup_tags[tag][1]]$3[GLOB.markup_tags[tag][2]]$5")
 
 	// ---Unload URL cache
 	for (var/ref in urls)
@@ -371,3 +406,7 @@
 		if(.)
 			return
 	return 0
+
+/// Check if the string `haystack` begins with the string `needle`.
+/proc/string_starts_with(haystack, needle)
+	return (copytext(haystack, 1, length(needle) + 1) == needle)

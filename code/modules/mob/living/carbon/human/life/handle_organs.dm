@@ -1,11 +1,11 @@
 // Takes care of organ & limb related updates, such as broken and missing limbs
-/mob/living/carbon/human/proc/handle_organs()
+/mob/living/carbon/human/proc/handle_organs(delta_time)
 
 	last_dam = getBruteLoss() + getFireLoss() + getToxLoss()
 
 	// Processing internal organs is pretty cheap, do that first.
 	for(var/datum/internal_organ/I as anything in internal_organs)
-		I.process()
+		I.process(delta_time)
 
 	for(var/obj/limb/E as anything in limbs_to_process)
 		if(!E)
@@ -16,7 +16,7 @@
 		else
 			E.process()
 
-			if(!lying && world.time - l_move_time < 15)
+			if(body_position == STANDING_UP && world.time - l_move_time < 15)
 			// Moving around with fractured ribs won't do you any good
 				if(E.is_broken() && E.internal_organs && prob(15))
 					var/datum/internal_organ/I = pick(E.internal_organs)
@@ -32,7 +32,7 @@
 					custom_pain("You feel broken bones cutting at you in your [E.display_name]!", 1)
 					pain.apply_pain(damage * 1.5)
 
-	if(!lying && !buckled && prob(2))
+	if(body_position == STANDING_UP && !buckled && prob(2))
 		var/left_leg_crippled = FALSE
 		var/right_leg_crippled = FALSE
 

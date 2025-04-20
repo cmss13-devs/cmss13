@@ -6,7 +6,6 @@
 	minbodytemp = 0
 	maxbodytemp = 500
 
-	var/obj/item/device/radio/borg/radio = null
 	var/mob/living/silicon/ai/connected_ai = null
 	var/obj/item/cell/cell = null
 	var/obj/structure/machinery/camera/camera = null
@@ -134,12 +133,12 @@
 					M.show_message(SPAN_DANGER("[user] gently taps [src] with \the [O]."), SHOW_MESSAGE_VISIBLE)
 
 /mob/living/simple_animal/spiderbot/proc/transfer_personality(obj/item/device/mmi/M as obj)
-
-		src.mind = M.brainmob.mind
-		src.mind.key = M.brainmob.key
-		src.ckey = M.brainmob.ckey
-		if(client) client.change_view(world_view_size)
-		src.name = "Spider-bot ([M.brainmob.name])"
+	src.mind = M.brainmob.mind
+	src.mind.key = M.brainmob.key
+	src.ckey = M.brainmob.ckey
+	if(client)
+		client.change_view(GLOB.world_view_size)
+	src.name = "Spider-bot ([M.brainmob.name])"
 
 /mob/living/simple_animal/spiderbot/proc/explode(cause = "exploding") //When emagged.
 	for(var/mob/M as anything in viewers(src, null))
@@ -163,7 +162,8 @@
 		var/turf/T = get_turf(loc)
 		if(T)
 			mmi.forceMove(T)
-		if(mind) mind.transfer_to(mmi.brainmob)
+		if(mind)
+			mind.transfer_to(mmi.brainmob)
 		mmi = null
 		src.name = "Spider-bot"
 		update_icon()
@@ -174,7 +174,6 @@
 
 /mob/living/simple_animal/spiderbot/New()
 
-	radio = new /obj/item/device/radio/borg(src)
 	camera = new /obj/structure/machinery/camera(src)
 	camera.c_tag = "Spiderbot-[real_name]"
 	camera.network = list("SS13")

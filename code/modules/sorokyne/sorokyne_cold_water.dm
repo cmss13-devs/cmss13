@@ -1,6 +1,5 @@
 #define COLD_WATER_DAMAGE 1.5
 #define COLD_WATER_TEMP_EFFECT 5
-#define MINIMUM_TEMP 170
 
 /obj/effect/blocker/sorokyne_cold_water
 	anchored = TRUE
@@ -48,22 +47,21 @@
 	var/dam_amount = COLD_WATER_DAMAGE
 	if(issynth(M) || isyautja(M))
 		dam_amount -= 0.5
-	if(M.lying)
-		M.apply_damage(5*dam_amount,BURN)
-	else
+	if(M.body_position == STANDING_UP)
 		M.apply_damage(dam_amount,BURN,"l_leg")
 		M.apply_damage(dam_amount,BURN,"l_foot")
 		M.apply_damage(dam_amount,BURN,"r_leg")
 		M.apply_damage(dam_amount,BURN,"r_foot")
+	else
+		M.apply_damage(5*dam_amount,BURN)
 
 	if (ishuman(M))
-		if (M.bodytemperature > MINIMUM_TEMP)
+		if (M.bodytemperature > BODYTEMP_CRYO_LIQUID_THRESHOLD)
 			M.bodytemperature -= COLD_WATER_TEMP_EFFECT
 		else
-			M.bodytemperature = MINIMUM_TEMP
+			M.bodytemperature = BODYTEMP_CRYO_LIQUID_THRESHOLD
 		if(!issynth(M))
 			to_chat(M, SPAN_DANGER("You feel your body start to shake as the water chills you to the bone..."))
 
 #undef COLD_WATER_DAMAGE
 #undef COLD_WATER_TEMP_EFFECT
-#undef MINIMUM_TEMP

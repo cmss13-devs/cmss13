@@ -4,6 +4,7 @@
 
 #define KEY_MODE_TEXT 0
 #define KEY_MODE_TYPE 1
+#define KEY_MODE_TEXT_UNALTERED 2
 
 /datum/config_entry
 	var/name //read-only, this is determined by the last portion of the derived entry type
@@ -79,7 +80,7 @@
 		return FALSE
 	var/temp = text2num(trim(str_val))
 	if(!isnull(temp))
-		config_entry_value = clamp(integer ? round(temp) : temp, min_val, max_val)
+		config_entry_value = clamp(integer ? floor(temp) : temp, min_val, max_val)
 		if(config_entry_value != temp && !(datum_flags & DF_VAR_EDITED))
 			log_config("Changing [name] from [temp] to [config_entry_value]!")
 		return TRUE
@@ -124,7 +125,7 @@
 		if(isnull(temp))
 			return FALSE
 		new_list += temp
-	if(!new_list.len)
+	if(!length(new_list))
 		return FALSE
 	config_entry_value = new_list
 	return TRUE
@@ -153,7 +154,9 @@
 	var/key_value = null
 
 	if(key_pos || value_mode == VALUE_MODE_FLAG)
-		key_name = lowertext(copytext(str_val, 1, key_pos))
+		key_name = copytext(str_val, 1, key_pos)
+		if(key_mode != KEY_MODE_TEXT_UNALTERED)
+			key_name = lowertext(key_name)
 		if(key_pos)
 			key_value = copytext(str_val, key_pos + length(str_val[key_pos]))
 		var/new_key
@@ -161,7 +164,7 @@
 		var/continue_check_value
 		var/continue_check_key
 		switch(key_mode)
-			if(KEY_MODE_TEXT)
+			if(KEY_MODE_TEXT, KEY_MODE_TEXT_UNALTERED)
 				new_key = key_name
 				continue_check_key = new_key
 			if(KEY_MODE_TYPE)

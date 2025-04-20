@@ -20,10 +20,11 @@
 	var/chat_cd = 0
 	/// Stamina damage per tick. Major balance number.
 	var/stam_dam = 7
+	/// Stimulant drain per tick.
+	var/stim_drain = 2
 
-/datum/effects/neurotoxin/New(atom/thing)
-	..(thing)
-	cause_data = create_cause_data("neurotoxic gas")
+/datum/effects/neurotoxin/New(atom/thing, mob/from = null)
+	..(thing, from, effect_name)
 
 /datum/effects/neurotoxin/validate_atom(atom/thing)
 	if(isxeno(thing) || isobj(thing))
@@ -36,11 +37,18 @@
 	var/mob/living/carbon/affected_mob = affected_atom
 	if(!.)
 		return FALSE
-	if(affected_mob.stat)
+	if(affected_mob.stat == DEAD)
 		return
+
+	if(issynth(affected_atom))
+		return
+
 // General effects
+	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_stamina_damage(stam_dam)
-	affected_mob.make_dizzy(12)
+	affected_mob.make_dizzy(8)
+	for(var/datum/reagent/generated/stim in affected_mob.reagents.reagent_list)
+		affected_mob.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 // Effect levels (shit that doesn't stack)
 	switch(duration)
@@ -65,7 +73,7 @@
 			stumble_prob = 25
 
 		if(25 to INFINITY) // 5+ ticks in smoke
-			msg = pick(SPAN_BOLDNOTICE("What am I doing?"),SPAN_DANGER("Your hearing fades away, you can't hear anything!"),SPAN_HIGHDANGER("A sharp pain eminates from your abdomin!"),SPAN_HIGHDANGER("EVERYTHING IS HURTING!! AGH!!!"),SPAN_HIGHDANGER("Your entire body is numb, you can't feel anything!"),SPAN_HIGHDANGER("You can't feel your limbs at all!"),SPAN_HIGHDANGER("Your mind goes blank, you can't think of anything!"))
+			msg = pick(SPAN_BOLDNOTICE("What am I doing?"),SPAN_DANGER("Your hearing fades away, you can't hear anything!"),SPAN_HIGHDANGER("A sharp pain eminates from your abdomen!"),SPAN_HIGHDANGER("EVERYTHING IS HURTING!! AGH!!!"),SPAN_HIGHDANGER("Your entire body is numb, you can't feel anything!"),SPAN_HIGHDANGER("You can't feel your limbs at all!"),SPAN_HIGHDANGER("Your mind goes blank, you can't think of anything!"))
 
 // Stacking effects below
 
@@ -83,12 +91,12 @@
 			addtimer(VARSET_CALLBACK(src,hallucinate,TRUE),rand(4 SECONDS,10 SECONDS))
 
 	if(duration > 19) // 4 ticks in smoke, neuro is affecting cereberal activity
-		affected_mob.eye_blind = max(affected_mob.eye_blind, round(strength/4))
+		affected_mob.eye_blind = max(affected_mob.eye_blind, floor(strength/4))
 
 	if(duration >= 27) // 5+ ticks in smoke, you are ODing now
 		affected_mob.apply_effect(1, DAZE) // Unable to talk and weldervision
 		affected_mob.apply_damage(2,TOX)
-		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, round(strength*1.5))) //Paralysis of hearing system, aka deafness
+		affected_mob.SetEarDeafness(max(affected_mob.ear_deaf, floor(strength*1.5))) //Paralysis of hearing system, aka deafness
 
 	if(duration >= 50) // 10+ ticks, apply some semi-perm damage and end their suffering if they are somehow still alive by now
 		affected_mob.apply_internal_damage(10,"liver")
@@ -123,13 +131,8 @@
 	return TRUE
 
 /datum/effects/neurotoxin/proc/process_hallucination(mob/living/carbon/human/victim)
-	/// area of the victim for areachecks
-	var/hallu_area = get_area(victim)
 	switch(rand(0, 100))
 		if(0 to 5)
-			if(hallu_area)
-				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'Schizo Lurker Pounce' hallucination (5% chance) at \the <b>[hallu_area]</b>" + " [OBSERVER_JMP(observer, victim)]"))
 			playsound_client(victim?.client,pick('sound/voice/alien_pounce.ogg','sound/voice/alien_pounce.ogg'))
 			victim.KnockDown(3)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"alien_claw_flesh"), 1 SECONDS)
@@ -140,18 +143,12 @@
 			victim.apply_effect(AGONY,10)
 			victim.emote("pain")
 		if(6 to 10)
-			if(hallu_area)
-				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'OB' hallucination (4% chance) at \the <b>[hallu_area]</b>" + " [OBSERVER_JMP(observer, victim)]"))
 			playsound_client(victim.client,'sound/effects/ob_alert.ogg')
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/weapons/gun_orbital_travel.ogg'), 2 SECONDS)
 		if(11 to 16)
 			playsound_client(victim.client,'sound/voice/alien_queen_screech.ogg')
 			victim.KnockDown(1)
 		if(17 to 24)
-			if(hallu_area)
-				for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
-					to_chat(observer, SPAN_DEADSAY("<b>[victim]</b> has experienced a rare neuro-induced 'Fake CAS firemission' hallucination (7% chance) at \the <b>[hallu_area]</b>" + " [OBSERVER_JMP(observer, victim)]"))
 			hallucination_fakecas_sequence(victim) //Not gonna spam a billion timers for this one so outsourcing to a proc with sleeps is a better async solution
 		if(25 to 42)
 			to_chat(victim,SPAN_HIGHDANGER("A SHELL IS ABOUT TO IMPACT [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"))
@@ -161,40 +158,40 @@
 			victim.hallucination = 3
 			victim.druggy = 3
 		if(70 to 100) // sound based hallucination
-			playsound_client(victim.client,pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"))
+			playsound_client(client = victim.client, soundin = pick('sound/voice/alien_distantroar_3.ogg','sound/voice/xenos_roaring.ogg','sound/voice/alien_queen_breath1.ogg', 'sound/voice/4_xeno_roars.ogg','sound/misc/notice2.ogg',"bone_break","gun_pulse","metalbang","pry","shatter"),vol = 65)
 
 
 
 /datum/effects/neurotoxin/proc/hallucination_fakecas_sequence(mob/living/carbon/human/victim)
 
-	playsound_client(victim.client,'sound/weapons/dropship_sonic_boom.ogg')
+	playsound_client(victim.client,'sound/weapons/dropship_sonic_boom.ogg', vol = 5)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), victim,"A DROPSHIP FIRES [pick(SPAN_UNDERLINE("TOWARDS THE [pick("WEST","EAST","SOUTH","NORTH")]"),SPAN_UNDERLINE("RIGHT ONTOP OF YOU!"))]!"), 3.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg'), 4 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg', null, 5), 4 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gau.ogg'), 5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg'), 5.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 5.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 5.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gau.ogg', null, 5), 5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg', null, 5), 5.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 5.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 5.5 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion"), 6.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 6.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion", null, 5), 6.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 6.5 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg'), 7.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 7.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg', null, 5), 7.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 7.5 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion"), 8.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 8.5 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 8.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion", null, 5), 8.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 8.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 8.5 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"bigboom"), 9 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 9 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"bigboom", null, 5), 9 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 9 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg'), 9.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/rocketpod_fire.ogg', null, 5), 9.5 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 10 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion"), 10 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 10.5 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 10 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion", null, 5), 10 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 10.5 SECONDS)
 
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion"), 11 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg'), 11 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,"explosion", null, 5), 11 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), victim.client,'sound/effects/gauimpact.ogg', null, 5), 11 SECONDS)
 	victim.emote("pain")

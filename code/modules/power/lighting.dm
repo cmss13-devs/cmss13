@@ -56,7 +56,7 @@
 			to_chat(usr, "You begin deconstructing [src].")
 			if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
-			user.visible_message("[user.name] deconstructs [src].", \
+			user.visible_message("[user.name] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			deconstruct()
@@ -76,7 +76,7 @@
 			if("bulb")
 				src.icon_state = "bulb-construct-stage1"
 		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
-		user.visible_message("[user.name] removes the wiring from [src].", \
+		user.visible_message("[user.name] removes the wiring from [src].",
 			"You remove the wiring from [src].", "You hear a noise.")
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		return
@@ -91,7 +91,7 @@
 				if("bulb")
 					src.icon_state = "bulb-construct-stage2"
 			src.stage = 2
-			user.visible_message("[user.name] adds wires to [src].", \
+			user.visible_message("[user.name] adds wires to [src].",
 				"You add wires to [src].")
 		return
 
@@ -103,7 +103,7 @@
 				if("bulb")
 					src.icon_state = "bulb-empty"
 			src.stage = 3
-			user.visible_message("[user.name] closes [src]'s casing.", \
+			user.visible_message("[user.name] closes [src]'s casing.",
 				"You close [src]'s casing.", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
@@ -118,7 +118,7 @@
 			src.transfer_fingerprints_to(newlight)
 			qdel(src)
 			return
-	..()
+	. = ..()
 
 /obj/structure/machinery/light_construct/small
 	name = "small light fixture frame"
@@ -143,9 +143,11 @@
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	light_system = STATIC_LIGHT
+	light_color = LIGHT_COLOR_TUNGSTEN
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness = 8 // luminosity when on, also used in power calculation
+	var/brightness = 6 // luminosity when on, also used in power calculation
 	var/status = LIGHT_OK // LIGHT_OK, _EMPTY, _BURNED or _BROKEN
 	var/flickering = 0
 	var/light_type = /obj/item/light_bulb/tube // the type of light item
@@ -170,6 +172,12 @@
 	icon_state = "btube1"
 	base_state = "btube"
 	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
+	light_color = LIGHT_COLOR_XENON
+
+/obj/structure/machinery/light/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
 
 // the smaller bulb light fixture
 
@@ -188,6 +196,7 @@
 	brightness = 4
 	desc = "A small lighting fixture that is fitted with a bright blue fluorescent light bulb. Looking at it for too long makes your eyes go watery."
 	light_type = /obj/item/light_bulb/bulb
+	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"
@@ -198,6 +207,7 @@
 	icon_state = "bptube1"
 	base_state = "bptube"
 	desc = "A lighting fixture that can be fitted with two bright fluorescent light tubes for that extra eye-watering goodness."
+	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/light/spot
 	name = "spotlight"
@@ -216,7 +226,37 @@
 	fitting = "large tube"
 	light_type = /obj/item/light_bulb/tube/large/
 	brightness = 12
+	light_color = LIGHT_COLOR_XENON
 
+// Dropship lights that use no power
+/obj/structure/machinery/light/dropship
+	use_power = USE_POWER_IDLE
+	active_power_usage = 0
+	brightness = 8
+
+/obj/structure/machinery/light/dropship/has_power()
+	return TRUE
+
+/obj/structure/machinery/light/dropship/set_pixel_location()
+	pixel_x = pixel_y = 0
+
+/obj/structure/machinery/light/dropship/green
+	icon_state = "gtube1"
+	base_state = "gtube"
+	desc = "A lighting fixture that is fitted with a bright green fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles."
+	light_color = LIGHT_COLOR_GREEN
+
+/obj/structure/machinery/light/dropship/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright red fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles."
+	light_color = LIGHT_COLOR_RED
+
+/obj/structure/machinery/light/dropship/blue
+	icon_state = "btube1"
+	base_state = "btube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles."
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/structure/machinery/light/built/Initialize()
 	. = ..()
@@ -251,17 +291,15 @@
 		if("tube")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 23
+					pixel_y = 19
 				if(EAST)
-					pixel_x = 10
+					pixel_x = 6
 				if(WEST)
-					pixel_x = -10
+					pixel_x = -4
 		if("bulb")
 			switch(dir)
 				if(NORTH)
-					pixel_y = 10
-				if(SOUTH)
-					pixel_y = -10
+					pixel_y = 19
 				if(EAST)
 					pixel_x = 10
 				if(WEST)
@@ -272,7 +310,6 @@
 	if(A)
 		on = 0
 // A.update_lights()
-	SetLuminosity(0)
 	. = ..()
 
 /obj/structure/machinery/light/proc/is_broken()
@@ -296,7 +333,6 @@
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/structure/machinery/light/proc/update(trigger = 1)
-	SSlighting.lights_current.Add(light)
 	update_icon()
 	if(on)
 		if(luminosity != brightness)
@@ -312,13 +348,13 @@
 					status = LIGHT_BURNED
 					icon_state = "[base_state]-burned"
 					on = 0
-					SetLuminosity(0)
+					set_light(0)
 			else
 				update_use_power(USE_POWER_ACTIVE)
-				SetLuminosity(brightness)
+				set_light(brightness)
 	else
 		update_use_power(USE_POWER_NONE)
-		SetLuminosity(0)
+		set_light(0)
 
 	if(on != on_gs)
 		on_gs = on
@@ -391,7 +427,7 @@
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
 
 
-		if(prob(1+W.force * 5))
+		if(prob(1+W.force * W.demolition_mod * 5))
 
 			to_chat(user, "You hit the light, and it smashes!")
 			for(var/mob/M as anything in viewers(src))
@@ -410,7 +446,7 @@
 	else if(status == LIGHT_EMPTY)
 		if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //If it's a screwdriver open it.
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user.visible_message("[user.name] opens [src]'s casing.", \
+			user.visible_message("[user.name] opens [src]'s casing.",
 				"You open [src]'s casing.", "You hear a noise.")
 			var/obj/structure/machinery/light_construct/newlight = null
 			switch(fitting)
@@ -441,16 +477,18 @@
 /obj/structure/machinery/light/proc/has_power()
 	var/area/A = src.loc.loc
 	if(!src.needs_power)
-		return A.master.lightswitch
-	return A.master.lightswitch && A.master.power_light
+		return A.lightswitch
+	return A.lightswitch && A.power_light
 
 /obj/structure/machinery/light/proc/flicker(amount = rand(10, 20))
-	if(flickering) return
+	if(flickering)
+		return
 	flickering = 1
 	spawn(0)
 		if(on && status == LIGHT_OK)
 			for(var/i = 0; i < amount; i++)
-				if(status != LIGHT_OK) break
+				if(status != LIGHT_OK)
+					break
 				on = !on
 				update(0)
 				sleep(rand(5, 15))
@@ -469,7 +507,8 @@
 	return
 
 /obj/structure/machinery/light/attack_animal(mob/living/M)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		to_chat(M, SPAN_WARNING("That object is useless to you."))
 		return
@@ -531,7 +570,7 @@
 
 	L.update()
 
-	if(user.put_in_active_hand(L)) //succesfully puts it in our active hand
+	if(user.put_in_active_hand(L)) //successfully puts it in our active hand
 		L.add_fingerprint(user)
 	else
 		L.forceMove(loc) //if not, put it on the ground
@@ -592,9 +631,8 @@
 /obj/structure/machinery/light/power_change()
 	spawn(10)
 		if(loc)
-			var/area/A = src.loc.loc
-			A = A.master
-			if(!src.needs_power)
+			var/area/A = get_area(src)
+			if(!needs_power || A.unlimited_power)
 				seton(A.lightswitch)
 				return
 			seton(A.lightswitch && A.power_light)
@@ -605,7 +643,7 @@
 	if(prob(max(0, exposed_temperature - 673)))   //0% at <400C, 100% at >500C
 		broken()
 
-/obj/structure/machinery/light/bullet_act(obj/item/projectile/P)
+/obj/structure/machinery/light/bullet_act(obj/projectile/P)
 	src.bullet_ping(P)
 	if(P.ammo.damage_type == BRUTE)
 		if(P.damage > 10)
@@ -639,6 +677,10 @@
 
 /obj/item/light_bulb
 	icon = 'icons/obj/items/lighting.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	force = 2
 	throwforce = 5
 	w_class = SIZE_SMALL
@@ -676,6 +718,10 @@
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	item_state = "contvapour"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/lighting_righthand.dmi',
+	)
 	matter = list("glass" = 100)
 	brightness = 5
 
@@ -726,7 +772,8 @@
 // now only shatter if the intent was harm
 
 /obj/item/light_bulb/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /obj/structure/machinery/light))
 		return
 	if(user.a_intent != INTENT_HARM)
@@ -736,7 +783,7 @@
 
 /obj/item/light_bulb/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message(SPAN_DANGER("[name] shatters."),SPAN_DANGER("You hear a small glass object shatter."))
+		visible_message(SPAN_DANGER("[src] shatters."), SPAN_DANGER("You hear a small glass object shatter."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
@@ -752,12 +799,14 @@
 	anchored = TRUE
 	density = FALSE
 	layer = BELOW_TABLE_LAYER
+	needs_power = FALSE
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20
 	power_channel = POWER_CHANNEL_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
 	unslashable = TRUE
 	unacidable = TRUE
+	light_color = LIGHT_COLOR_FLARE
 	var/obj/docking_port/stationary/marine_dropship/linked_port = null
 
 //Don't allow blowing those up, so Marine nades don't fuck them
@@ -776,7 +825,7 @@
 
 /obj/structure/machinery/landinglight/proc/turn_off()
 	icon_state = initial(icon_state)
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/structure/machinery/landinglight/ds1
 	id = "USS Almayer Dropship 1" // ID for landing zone
@@ -784,44 +833,74 @@
 /obj/structure/machinery/landinglight/ds2
 	id = "USS Almayer Dropship 2" // ID for landing zone
 
+/obj/structure/machinery/landinglight/upp_ds1
+	id = "SSV Rostock Dropship 1" // ID for landing zone
+
+/obj/structure/machinery/landinglight/upp_ds2
+	id = "SSV Rostock Dropship 2" // ID for landing zone
+
 /obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = initial(icon_state) + "0"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/delayone/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/delaytwo/turn_on()
 	icon_state = initial(icon_state) + "2"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delayone/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaytwo/turn_on()
 	icon_state = initial(icon_state) + "2"
-	SetLuminosity(2)
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
-	SetLuminosity(2)
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
 
 /obj/structure/machinery/landinglight/ds1/spoke
 	icon_state = "lz_spoke_light"
 
 /obj/structure/machinery/landinglight/ds1/spoke/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(3)
+	set_light(3)
 
 /obj/structure/machinery/landinglight/ds2/spoke
 	icon_state = "lz_spoke_light"
 
 /obj/structure/machinery/landinglight/ds2/spoke/turn_on()
 	icon_state = initial(icon_state) + "1"
-	SetLuminosity(3)
+	set_light(3)

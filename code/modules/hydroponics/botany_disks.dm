@@ -3,15 +3,14 @@
 	desc = "A small disk used for carrying data on plant genetics."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "botanydisk"
+	item_state = "botanydisk"
 	w_class = SIZE_TINY
+	ground_offset_x = 5
+	ground_offset_y = 5
 
 	var/list/genes = list()
 	var/genesource = "unknown"
 
-/obj/item/disk/botany/Initialize()
-	. = ..()
-	pixel_x = rand(-5,5)
-	pixel_y = rand(-5,5)
 
 /obj/item/disk/botany/attack_self(mob/user)
 	..()

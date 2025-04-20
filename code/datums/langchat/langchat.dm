@@ -10,10 +10,10 @@
 /mob/living/carbon/xenomorph/hivelord/langchat_height = 64
 /mob/living/carbon/xenomorph/defender/langchat_height = 48
 /mob/living/carbon/xenomorph/warrior/langchat_height = 48
+/mob/living/carbon/xenomorph/king/langchat_height = 64
 
 #define LANGCHAT_LONGEST_TEXT 64
 #define LANGCHAT_WIDTH 96
-#define LANGCHAT_X_OFFSET -32
 #define LANGCHAT_MAX_ALPHA 196
 
 //pop defines
@@ -48,6 +48,13 @@
 				M.client.images -= langchat_image
 	langchat_listeners = null
 
+/atom/proc/get_maxptext_x_offset(image/maptext_image)
+	return (world.icon_size / 2) - (maptext_image.maptext_width / 2)
+/atom/movable/get_maxptext_x_offset(image/maptext_image)
+	return (bound_width / 2) - (maptext_image.maptext_width / 2)
+/mob/get_maxptext_x_offset(image/maptext_image)
+	return (icon_size / 2) - (maptext_image.maptext_width / 2)
+
 ///Creates the image if one does not exist, resets settings that are modified by speech procs.
 /atom/proc/langchat_make_image(override_color = null)
 	if(!langchat_image)
@@ -57,8 +64,8 @@
 		langchat_image.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM
 		langchat_image.maptext_y = langchat_height
 		langchat_image.maptext_height = 64
-		langchat_image.maptext_x = LANGCHAT_X_OFFSET
 		langchat_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
+		langchat_image.maptext_x = get_maxptext_x_offset(langchat_image)
 
 	langchat_image.pixel_y = 0
 	langchat_image.alpha = 0
@@ -103,6 +110,7 @@
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH
+	langchat_image.maptext_x = get_maxptext_x_offset(langchat_image)
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)
@@ -149,6 +157,7 @@
 
 	langchat_image.maptext = text_to_display
 	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
+	langchat_image.maptext_x = get_maxptext_x_offset(langchat_image)
 
 	langchat_listeners = listeners
 	for(var/mob/M in langchat_listeners)

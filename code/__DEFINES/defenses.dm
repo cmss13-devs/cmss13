@@ -8,7 +8,7 @@
 // Defines for barricade upgrades
 #define BARRICADE_UPGRADE_BURN "Biohazard Upgrade (+Burn)"
 #define BARRICADE_UPGRADE_BRUTE "Reinforced Upgrade (+Brute)"
-#define BARRICADE_UPGRADE_EXPLOSIVE "Explosive Upgrade (+Explosive)"
+#define BARRICADE_UPGRADE_ANTIFF "Composite Upgrade (++Explosive, ++Projectile, ++Fire)"
 
 // Defines for defense stats
 #define DEFENSE_FUNCTIONAL 0
@@ -21,6 +21,12 @@
 #define DEFENSE_PLANTED_FLAG 3
 #define DEFENSE_BELL_TOWER 4
 #define DEFENSE_TESLA_COIL 5
+
+// Defines for /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone
+#define TURRET_BATTERY_STATE_OK 0
+#define TURRET_BATTERY_STATE_LOW 1
+#define TURRET_BATTERY_STATE_CRITICAL 2
+#define TURRET_BATTERY_STATE_DEAD 3
 
 // What range the generator has to be in or defenses has to be in.
 #define GEN_SEARCH_RANGE 5

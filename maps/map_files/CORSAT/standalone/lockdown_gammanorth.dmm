@@ -4,30 +4,22 @@
 /turf/open/floor/plating,
 /area/corsat/gamma/airlock/north)
 "b" = (
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+/turf/open/floor/corsat/plate,
 /area/corsat/gamma/airlock/north)
 "c" = (
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
+/turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/airlock/north)
 "d" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor/corsat{
-	icon_state = "retrosquares"
-	},
+/turf/open/floor/corsat/retrosquares,
 /area/corsat/gamma/airlock/north)
 "e" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/corsat{
-	icon_state = "plate"
-	},
+/turf/open/floor/corsat/plate,
 /area/corsat/gamma/airlock/north)
 "f" = (
 /obj/structure/window/framed/corsat/security,
@@ -44,24 +36,16 @@
 "h" = (
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/open{
 	id = "GammaNorthS";
-	name = "Gamma North Airlock";
-	unacidable = 0;
-	use_power = 1
+	name = "Gamma North Airlock"
 	},
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/gamma/airlock/north)
 "i" = (
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/gamma/airlock/north)
 "j" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/corsat{
-	icon_state = "marked"
-	},
+/turf/open/floor/corsat/marked,
 /area/corsat/gamma/airlock/north)
 "k" = (
 /obj/structure/sign/safety/airlock{

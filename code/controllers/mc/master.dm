@@ -194,7 +194,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be put offline."
 				BadBoy.flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, SPAN_BOLDANNOUNCE("[msg]"))
+			message_admins(SPAN_BOLDANNOUNCE("[msg]"))
 			log_world(msg)
 
 	if (istype(Master.subsystems))
@@ -232,7 +232,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	for (var/datum/controller/subsystem/subsystem as anything in subsystems)
 		var/subsystem_init_stage = subsystem.init_stage
-		if (!isnum(subsystem_init_stage) || subsystem_init_stage < 1 || subsystem_init_stage > INITSTAGE_MAX || round(subsystem_init_stage) != subsystem_init_stage)
+		if (!isnum(subsystem_init_stage) || subsystem_init_stage < 1 || subsystem_init_stage > INITSTAGE_MAX || floor(subsystem_init_stage) != subsystem_init_stage)
 			stack_trace("ERROR: MC: subsystem `[subsystem.type]` has invalid init_stage: `[subsystem_init_stage]`. Setting to `[INITSTAGE_MAX]`")
 			subsystem_init_stage = subsystem.init_stage = INITSTAGE_MAX
 		stage_sorted_subsystems[subsystem_init_stage] += subsystem
@@ -415,9 +415,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 		var/ss_runlevels = SS.runlevels
 		var/added_to_any = FALSE
-		for(var/I in 1 to GLOB.bitflags.len)
+		for(var/I in 1 to length(GLOB.bitflags))
 			if(ss_runlevels & GLOB.bitflags[I])
-				while(runlevel_sorted_subsystems.len < I)
+				while(length(runlevel_sorted_subsystems) < I)
 					runlevel_sorted_subsystems += list(list())
 				runlevel_sorted_subsystems[I] += SS
 				added_to_any = TRUE
@@ -668,7 +668,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			tick_precentage = max(tick_precentage*0.5, tick_precentage-queue_node.tick_overrun)
 
-			current_ticklimit = round(TICK_USAGE + tick_precentage)
+			current_ticklimit = floor(TICK_USAGE + tick_precentage)
 
 			ran = TRUE
 

@@ -7,6 +7,10 @@
 /obj/structure/tent_curtain,
 /turf/template_noop,
 /area/template_noop)
+"k" = (
+/obj/structure/blocker/tent/full_tile,
+/turf/template_noop,
+/area/template_noop)
 "n" = (
 /obj/structure/blocker/tent{
 	dir = 4
@@ -59,19 +63,19 @@
 /area/template_noop)
 
 (1,1,1) = {"
-O
+k
 J
 v
 a
 "}
 (2,1,1) = {"
-O
+k
 S
 O
 x
 "}
 (3,1,1) = {"
-O
+k
 n
 s
 G

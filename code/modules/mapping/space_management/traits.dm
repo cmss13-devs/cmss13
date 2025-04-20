@@ -3,15 +3,15 @@
 	if (!isnum(z) || z < 1)
 		return null
 	if (z_list)
-		if (z > z_list.len)
-			stack_trace("Unmanaged z-level [z]! maxz = [world.maxz], z_list.len = [z_list.len]")
+		if (z > length(z_list))
+			stack_trace("Unmanaged z-level [z]! maxz = [world.maxz], length(z_list) = [length(z_list)]")
 			return list()
 		var/datum/space_level/S = get_level(z)
 		return S.traits[trait]
 	else
 		var/list/default = DEFAULT_MAP_TRAITS
-		if (z > default.len)
-			stack_trace("Unmanaged z-level [z]! maxz = [world.maxz], default.len = [default.len]")
+		if (z > length(default))
+			stack_trace("Unmanaged z-level [z]! maxz = [world.maxz], length(default) = [length(default)]")
 			return list()
 		return default[z][DL_TRAITS][trait]
 
@@ -76,3 +76,28 @@
 /datum/controller/subsystem/mapping/proc/get_mainship_center()
 	var/mainship_z = levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)[1]
 	return locate(round(world.maxx * 0.5, 1), round(world.maxy * 0.5, 1), mainship_z)
+
+// Prefer not to use this one too often
+/datum/controller/subsystem/mapping/proc/get_ground_center()
+	var/ground_z = levels_by_trait(ZTRAIT_GROUND)[1]
+	return locate(round(world.maxx * 0.5, 1), round(world.maxy * 0.5, 1), ground_z)
+
+// Returns true if they are on the same map if the map is multiz
+/datum/controller/subsystem/mapping/proc/same_z_map(z1, z2)
+	if(z1 == z2)
+		return TRUE
+	
+	var/diff = z2 - z1
+	var/direction = diff > 0 ? ZTRAIT_UP : ZTRAIT_DOWN  
+
+	for(var/step in 1 to abs(diff))
+		if(!level_trait(z1, direction))
+			return FALSE
+
+		z1 += diff > 0 ? 1 : -1
+
+		if(z1 == z2)
+			return TRUE
+
+	return FALSE 
+		

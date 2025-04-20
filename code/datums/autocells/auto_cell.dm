@@ -37,7 +37,7 @@
 	in_turf = T
 	LAZYADD(in_turf.autocells, src)
 
-	cellauto_cells += src
+	GLOB.cellauto_cells += src
 
 	birth()
 
@@ -48,7 +48,7 @@
 		LAZYREMOVE(in_turf.autocells, src)
 		in_turf = null
 
-	cellauto_cells -= src
+	GLOB.cellauto_cells -= src
 
 	death()
 
@@ -88,7 +88,7 @@
 
 	// Get cardinal neighbors
 	if(neighbor_type & NEIGHBORS_CARDINAL)
-		for(var/dir in cardinal)
+		for(var/dir in GLOB.cardinals)
 			var/turf/T = get_step(in_turf, dir)
 			if(QDELETED(T))
 				continue
@@ -100,7 +100,7 @@
 
 	// Get ordinal/diagonal neighbors
 	if(neighbor_type & NEIGHBORS_ORDINAL)
-		for(var/dir in diagonals)
+		for(var/dir in GLOB.diagonals)
 			var/turf/T = get_step(in_turf, dir)
 			if(QDELETED(T))
 				continue

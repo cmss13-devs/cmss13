@@ -5,32 +5,81 @@
 	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
-	gear_preset = /datum/equipment_preset/uscm_ship/commander
-	entry_message_body = "<a href='"+URL_WIKI_CO_GUIDE+"'>You are the Commanding Officer of the USS Almayer as well as the operation.</a> Your goal is to lead the Marines on their mission as well as protect and command the ship and her crew. Your job involves heavy roleplay and requires you to behave like a high-ranking officer and to stay in character at all times. As the Commanding Officer your only superior is High Command itself. You must abide by the <a href='"+URL_WIKI_CO_RULES+"'>Commanding Officer Code of Conduct</a>. Failure to do so may result in punitive action against you. Godspeed."
+	gear_preset = /datum/equipment_preset/uscm_co
+
+
+/datum/job/command/commander/proc/check_career_path(client/player)
+	switch(player.prefs.co_career_path)
+		if("Infantry")
+			gear_preset_whitelist = list(
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/infantry,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/infantry/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/infantry/council/plus,
+			)
+		if("Intel")
+			gear_preset_whitelist = list(
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/intel,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/intel/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/intel/council/plus,
+			)
+		if("Medical")
+			gear_preset_whitelist = list(
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/medical,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/medical/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/medical/council/plus,
+			)
+		if("Aviation")
+			gear_preset_whitelist = list(
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/aviation,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/aviation/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/aviation/council/plus,
+			)
+		if("Tanker")
+			gear_preset_whitelist = list(
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/tanker,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/tanker/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/tanker/council/plus,
+			)
+		if("Engineering")
+			gear_preset_whitelist = list(
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/engineering,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/engineering/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/engineering/council/plus,
+			)
+		if("Logistics")
+			gear_preset_whitelist = list(
+			"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co/logistics,
+			"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/logistics/council,
+			"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/logistics/council/plus,
+			)
 
 /datum/job/command/commander/New()
 	. = ..()
 	gear_preset_whitelist = list(
-		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_ship/commander,
-		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_ship/commander/council,
-		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_ship/commander/council/plus
+		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_co,
+		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_co/council,
+		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_co/council/plus
 	)
 
-/datum/job/command/commander/get_whitelist_status(list/roles_whitelist, client/player)
+/datum/job/command/commander/generate_entry_message()
+	entry_message_body = "<a href='[generate_wiki_link()]'>You are the Commanding Officer of the [MAIN_SHIP_NAME] as well as the operation.</a> Your goal is to lead the Marines on their mission as well as protect and command the ship and her crew. Your job involves heavy roleplay and requires you to behave like a high-ranking officer and to stay in character at all times. As the Commanding Officer your only superior is High Command itself. You must abide by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_CO_RULES]'>Commanding Officer Code of Conduct</a>. Failure to do so may result in punitive action against you. Godspeed."
+	return ..()
+
+/datum/job/command/commander/get_whitelist_status(client/player)
 	. = ..()
 	if(!.)
 		return
-
-	if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER_LEADER)
+	check_career_path(player)
+	if(player.check_whitelist_status(WHITELIST_COMMANDER_LEADER|WHITELIST_COMMANDER_COLONEL))
 		return get_desired_status(player.prefs.commander_status, WHITELIST_LEADER)
-	else if(roles_whitelist[player.ckey] & (WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
+	if(player.check_whitelist_status(WHITELIST_COMMANDER_COUNCIL|WHITELIST_COMMANDER_COUNCIL_LEGACY))
 		return get_desired_status(player.prefs.commander_status, WHITELIST_COUNCIL)
-	else if(roles_whitelist[player.ckey] & WHITELIST_COMMANDER)
+	if(player.check_whitelist_status(WHITELIST_COMMANDER))
 		return get_desired_status(player.prefs.commander_status, WHITELIST_NORMAL)
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
-	addtimer(CALLBACK(src, PROC_REF(do_announce_entry_message), H), 1.5 SECONDS)
 	RegisterSignal(H, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(commander_switched_z_level))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
 	return ..()
 
 /datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)
@@ -42,22 +91,13 @@
 	SIGNAL_HANDLER
 	GLOB.marine_leaders -= JOB_CO
 
+
 /datum/job/command/commander/proc/commander_switched_z_level(mob/living/CO)
 	SIGNAL_HANDLER
 	if(is_ground_level(CO.z))
 		CO.langchat_styles = "langchat_bolded"
 	else
 		CO.langchat_styles = initial(CO.langchat_styles)
-
-/datum/job/command/commander/proc/do_announce_entry_message(mob/living/carbon/human/H)
-		all_hands_on_deck("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")
-	//for(var/i in GLOB.co_secure_boxes)
-		//var/obj/structure/closet/secure_closet/securecom/S = i
-		//var/loc_to_spawn = S.opened ? get_turf(S) : S
-		//var/obj/item/weapon/gun/rifle/m46c/I = new(loc_to_spawn)
-		//new /obj/item/clothing/suit/storage/marine/MP/CO(loc_to_spawn)
-		//new /obj/item/clothing/head/helmet/marine/CO(loc_to_spawn)
-		//I.name_after_co(H, I)
 
 /obj/effect/landmark/start/captain
 	name = JOB_CO

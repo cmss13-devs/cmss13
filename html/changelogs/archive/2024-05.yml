@@ -1,0 +1,355 @@
+2024-05-02:
+  Drathek:
+  - balance: Lurker invisibility recharge time is now 20s (up from 15s)
+  - balance: Lurker invisibility now ends when devouring but refunds 50% of time unused
+  - balance: Lurker invisibility bump now refunds 50% of time unused
+  - balance: Lurker invisibility can now be toggled refunding 90% of time unused (with
+      dbl click prevention)
+  - rscdel: Removed defender crest toggle balloon alerts
+  - bugfix: Lurker invisibility code is refactored to properly use cooldowns and now
+      doesn't incorrectly get interrupted by bump code
+  - rscadd: Lurker invisibility recharge time is now displayed in status tab
+  - maptweak: Added medlinks to WO
+  - maptweak: Added a medlink to each ground map
+  Git-Nivrak:
+  - rscadd: Survivors can now receive command announcements with IFF and a marine
+      headset.
+  Huffie56:
+  - maptweak: Officer cafeteria added back missing emergency shutters and move the
+      pipes from bellow the windows.
+  - maptweak: Starboard aft hull removed the two walls.
+  - maptweak: Upper engi area around lobby remove pipping going bellow window also
+      rework the area to better fit aestetic of almayer.
+  - maptweak: some apc are a bit moved around to avoid them having a small light on
+      them.
+  HumiliatedGoblin:
+  - qol: Now needs help intent to repair walls
+  - qol: Now needs disarm, grab and harm intent to deconstruct walls
+  cuberound:
+  - balance: FM sound is 4 seconds before CAS open fire from 5
+  - balance: FM direction warning is 1 seconds before CAS open fire from 1.5
+  ihatethisengine:
+  - rscadd: Corrupted Queen can set up personal alliances with humans
+  realforest2001:
+  - rscadd: Changed the AI Core Lockdown to the same system as Research Lockdown.
+  - rscadd: Added a subtype of desk bell for the AI Core reception desk that sends
+      an alert over APOLLO Link.
+  - imageadd: Added directional blast door sprites from Thwomper for blended black
+      shutters.
+  - code_imp: Renamed operator var in apollo console code to user.
+2024-05-03:
+  InsaneRed:
+  - spellcheck: New flavor text and better strain information
+  realforest2001:
+  - rscadd: Added the name of an announcement sender, if one exists, to ARES logs.
+2024-05-04:
+  AndroBetel:
+  - qol: Pointing at an item in your hands shows it off.
+  BasilHerb:
+  - rscadd: 'Type 80 bayonet to the mouths of the following mobs: CLF Soldier, CLF
+      Specialist, CLF Medic, CLF Engineer, CLF Leader.'
+  Drathek:
+  - bugfix: Fixed weeded corpses staying weeded if they were transported by shuttle
+  Git-Nivrak:
+  - bugfix: Synths no longer get affected by boiler's neurotoxin
+  coldironwarrior:
+  - rscadd: Added eyewear options, more glove options to the SEA vendor
+  - rscadd: SEAs now get full versions of the utility holster belt
+  - rscdel: Removed the CPR dummy from the SEA vendor
+  iloveloopers:
+  - qol: Bookcases can now be wrenched or slashed to be deconstructed
+  - balance: Kutjevo ledges now take only 0.2 seconds to climb instead of 1 whole
+      second
+  kivts:
+  - bugfix: Infinite metal oversight fix.
+  realforest2001:
+  - bugfix: Whitelist notes now work properly. Council can add notes to players regarding
+      whitelist issues.
+  - rscadd: Changing whitelist flags with the Whitelist Panel now automatically adds
+      a note with the reason.
+  - rscadd: Added skillsets specific to WY Goons.
+  - rscadd: Added a WY Goon Engineer preset.
+  vero5123:
+  - bugfix: Fixes microwave food duplication
+  - bugfix: Fixes scout being able to be decapitated with a helmet on while cloaked.
+  - bugfix: Fixes sentries firing at xenos while vent crawling.
+  - bugfix: fixes hugger not dying when squished by predator
+  - bugfix: Burrower can no longer tunnel across the map.
+2024-05-06:
+  Git-Nivrak:
+  - balance: Watcher is now immobilized when zoomed out and loses health off weeds
+      when not zoomed out
+  ihatethisengine:
+  - balance: SADAR backblast now knockdowns and is reduced by xeno explosion resistance
+  s5nt:
+  - rscadd: Added more materials to pred ship including more sandstone, wood, table
+      parts, etc for lodge construction, along with more pred specific food to the
+      pred kitchen.
+  - maptweak: Slightly expanded pred ship material storage area by moving bracer storage
+      over to the left side of the ship.
+2024-05-07:
+  Zonespace, d.1.n.a. (original sprites), esselnek (new sprites):
+  - rscadd: Added the M540-B Armored Recon Carrier as a t1 intel purchase.
+2024-05-10:
+  realforest2001:
+  - code_imp: Repaths handcuffs and legcuffs to have a shared parent.
+  - code_imp: Repaths xeno restraints to reduce confusion from the typepath.
+  - rscadd: Legcuffs work appropriately now, and can be found in small numbers within
+      security vendors.
+  - rscadd: Cable restraints can now be adjusted via right-click to fit on wrists
+      or ankles.
+  - rscadd: Prison shoe chains now require ankle restraints rather than handcuffs.
+  - rscadd: Prison shoes that have been chained now have an equp and unequip delay
+      to account for the chains, proportionate to the breakout time of the item used
+      in the chains.
+2024-05-11:
+  Tyranicranger4:
+  - qol: Emptied randomchem vials no longer show up on the data detector
+  - bugfix: Fixes empty vial storage boxes showing up on the data detector
+  cuberound:
+  - balance: projectiles can pass fences
+  ihatethisengine:
+  - rscadd: Added paradropping
+  - rscdel: Removed rappeling
+  - rscadd: Infection icon now has lower alpha if the human is dead
+  iloveloopers:
+  - rscadd: Adds in a new incinerator smoke tank that turns any reagent inside it
+      into chemsmoke when fired.
+2024-05-12:
+  Git-Nivrak:
+  - balance: Limbs will now only be delimb-able if they are fractured
+  XQ:
+  - qol: Updated the ARES reception bell's description to inform players it notifies
+      Working Joes when rung.
+  - qol: Increased the ARES reception bell's cooldown from 5 to 60 seconds.
+  ihatethisengine:
+  - balance: only disabled comms can be pyloned
+  realforest2001:
+  - rscadd: Handcuffs & Legcuffs now appear on examine.
+  - rscadd: Added a reason input field to handheld distress beacons.
+2024-05-13:
+  kirieee:
+  - imageadd: rolled sleeve sprites for all IO uniforms
+2024-05-14:
+  Huffie56:
+  - balance: added a crowbar to the cryo defense kit.
+  ihatethisengine:
+  - bugfix: fixed potential bugs with transparent infection icon
+  - bugfix: Fixes infinite lifeboat alarm after queen locking
+  iloveloopers:
+  - rscadd: Mortar shells will now cook off and explode when flamed
+  - qol: OT freezer will now play a bell sound when it's done making paraformaldehyde
+      in a container
+  neeshacark:
+  - rscadd: you can now remove shrapnel from your body with the M11 Throwing Knife
+      and screwdrivers
+2024-05-15:
+  Diegoflores31:
+  - balance: Removes Generic tail stab from Vampire lurker
+  - spellcheck: adjusted Vampire lurker description
+  Git-Nivrak:
+  - qol: Maintenance jack can now be quick drawn
+  - code_imp: Added a flag that allows items to be quick draw-able despite not being
+      weapons.
+  Zonespace27:
+  - admin: Added LISTSOURCE and SELECTPRINT options to SDQL queries.
+  - admin: Added SINGLECALL SQDL query.
+  - admin: SDQL tab now works.
+  - admin: Clients can now be selected with SDQL more easily.
+  ihatethisengine:
+  - balance: xenos holding on warding don't lose it while on weeds
+  realforest2001:
+  - balance: Added a 70% chance groundside reagent tanks start anchored, if they don't
+      already.
+  s5nt:
+  - rscadd: Adds the option for synths to buy different varieties of suit pants, suit
+      jackets, vests, and dress gloves from their snowflake vendor.
+2024-05-16:
+  Doubleumc:
+  - bugfix: humans can use vehicle gunner seats again
+  Drathek:
+  - balance: Increased the starting stock of most medical vendors but shifts some
+      reagent bottles from weymeds to weychems
+  - balance: Med linked medical vendors will now automatically restock items (requires
+      20 minutes from round start) and reagents (no time requirement) periodically
+      if operable
+  - balance: Groundside medical vendors will now have random stock and reagents missing
+      if its not WO
+  - balance: Partial medical item stacks can no longer be refilled at vendors (autoinjectors
+      and bottles can still be refilled pulling from internal reagent tanks)
+  - balance: Doubles the starting energy for chemical dispensers
+  - balance: Discounts all requisitions medical supplies
+  - ui: Added reagent amount display to vendors that have internal reagent tanks and
+      tweaked the icon positioning of items slightly
+  - ui: Tweaked table widths in vendors
+  - ui: Fixes USCM theme vendors not showing different backgrounds for odd rows
+  - qol: Restocking a medvendor manually can now be done with just a click rather
+      than only via mouse drop
+  - qol: Restocking a vendor can now be performed in bulk from a storage inventory
+      - click drag the inventory to the vendor and you will restock all the items
+      you can
+  - rscadd: Vendors can accept partial stacks when restocking - when an item has a
+      partial quantity for a stack it is denoted with an asterisk
+  - rscadd: Added two restock carts for bulk restocking medical vendors, one for items
+      and the other for reagents (purchasable from requisitions - disassemble with
+      a wrench - temporary sprites for now)
+  - bugfix: Fixed some currently unused squad prep vendors
+  - bugfix: Removing nano splints on a person no longer creates a 0 amount normal
+      splint
+  - spellcheck: Tweaked some restock messages and vendor descriptions
+  - rscadd: Nade boxes now have the same throw away logic when dropped to the ground
+      instead of in update_icon when empty.
+  - bugfix: Fixed MREs getting thrown away if you don't drop them to the ground.
+  - bugfix: Fixed MREs throwing runtimes if spawned on a person that doesn't have
+      space for the MRE.
+  - bugfix: Fixed issuing a null order via the issue order verb.
+  Steelpoint:
+  - balance: The VP78 pistol has received a rate of fire boost, and it will deal full
+      damage up to 3 tiles from the shooter's position before suffering damage falloff.
+  TheGamerdk:
+  - balance: Milkshakes no longer bring you to absolute zero, just 0 celsius
+2024-05-19:
+  Git-Nivrak:
+  - rscadd: Changed advanced medhud visor to be displayed on the same eye as normal
+      medhud visor
+  iloveloopers:
+  - spellcheck: Custom rocket description now looks nicer
+2024-05-20:
+  Doubleumc:
+  - qol: ghost "Scan Health" works at any range
+  - qol: squad/queen/leader trackers can find targets in interiors
+  Drathek, mullenpaul:
+  - ui: Finalizes the TGUI React port and brings us back into parity again with TG's
+      interface components
+  - ui: Strip panel is now larger with sprites at 64x64 instead of 48 because as an
+      Image component now they didn't alias the same.
+  - ui: VOX panel's second tab now doesn't overlap the other buttons
+  - ui: Wiring panel for some machines is now restored to use circular indicators
+      again
+  - ui: Smart fridge interface is more in line with sorted inventories as far as layout
+      & tooltips
+  - ui: Tacmap drawing interface is tweaked a little to deal with the changes to dropdowns
+      + clicking the tab is now disabled again until the tacmap is ready (It needs
+      minimap subsystem to fire to have icons when flattening the map to be up to
+      date)
+  - ui: Reworks RestrictedInput number handling
+  - ui: Adds the DMIcon, VirtualList (deferred lazy list), Dialogue, MenuBar, StyleableSection,
+      and Checkbox TGUI components (but nothing uses them yet)
+  - ui: 'Chat: Adds a clear chat button clearing the current tab, mute button to disable
+      unread notifications for a tab, and updates the word highlight regex for case
+      sensitivity'
+  - ui: Updates the ship manipulator window to allow replacing any Shuttle
+  - ui: Fixes the supply pod panel not displaying its byondui map correctly
+  - ui: Fixes the research terminal duplicating papers in display old mode.
+  - ui: Updates the tgui_input_list to for new features like hotkey selection, duplicate
+      key handling, etc
+  - bugfix: Fixes thinking runtimes when quickly switching between tgsay categories
+  - code_imp: Shuttle subsystem now is less aggressive with reservations (skipping
+      deletion if below a threshold, delaying reservation if above a threshold)
+  - bugfix: Fixes F5 key still refreshing a TGUI window even if default was set to
+      be prevented (e.g. Hotkey interface)
+  Git-Nivrak:
+  - qol: Changed the Queen's pointing color to purple
+  - balance: Latejoin marines to larva ratio changed to 1:4 for the first 15 minutes,
+      going back to 1:2.5 afterwards.
+  HeresKozmos:
+  - mapadd: Added three new tunnels to New Varadero.
+  - maptweak: Adjusts placement of some existing tunnels on New Varadero.
+  Nomoresolvalou:
+  - balance: unpowered doors are now opened instantly in maintenance jack crowbar
+      mode instead of in three seconds.
+  - balance: crowbar mode can now pry doors closed when unpowered.
+  - bugfix: fixed cats not specifically defined in code displaying wrong info when
+      held or stored in a container. This should also fix any other mob capable of
+      being picked up that is not defined in code as well.
+  doganesi:
+  - bugfix: Fixed some oversights with custom loadout provided weapon boxes
+  vero5123:
+  - qol: Toggleable ammo counter, can now cycle between displaying every fifth or
+      single bullet.
+  - bugfix: Light attachments will no longer automatically turn on when the weapon
+      is equipped from suit storage
+2024-05-23:
+  Drathek:
+  - ui: TGSay is now opened the same way it used to for more responsiveness
+2024-05-24:
+  Drathek:
+  - bugfix: Fixed some winset errors with some nanoui windows
+  - admin: Fixed the adjust_predator_round verb
+  TheGamerdk:
+  - rscadd: Adds a sensor tower to the far East of Shivas, between Med-Sec and the
+      Research labs
+2024-05-25:
+  Doubleumc:
+  - qol: vehicle weapon projectiles start from the weapon
+  Git-Nivrak:
+  - balance: AMR will now reset its focus after two fully charged aimed shots on the
+      same target.
+  JackieEstegado:
+  - qol: Requisition drop pads will now no longer launch open crates
+  Steelpoint:
+  - rscadd: The Compact Nailgun that the USCM Synthetic can vend now comes with a
+      unique nailgun holster, capable of holding the nailgun and two spare magazines.
+  Tyranicranger4:
+  - bugfix: Fixes improperly placed APCs on Shivas Snowball
+  realforest2001:
+  - bugfix: Fixed ARES remote interface UI crash relating to flight logs.
+  - rscadd: Added access check for use of escape pod consoles, and access requirement
+      on the CLs pod.
+2024-05-26:
+  realforest2001:
+  - imageadd: added sprites for floor-mounted sentry deployment systems.
+  - rscadd: Added mini-sentry deployment systems, and an AI Core subtype.
+2024-05-27:
+  neeshacark:
+  - rscadd: lifeboats now come stocked with uno cards, for all your fun-filled needs
+  vero5123:
+  - bugfix: Fixes non-synthetic mobs getting stuck in the gibber
+2024-05-29:
+  iloveloopers:
+  - balance: MST now conflicts with NST, you can only have one in your stim, not both
+  - balance: Boosting now only boosts other properties by 0.5 levels for each level
+  - balance: Regulating is now a common property and turns any overdose ammount into
+      sugar
+  - balance: Flowing no longer decreases intensity and duration, it is now possible
+      to make a blueflame equivalent fire chemical with clearance 5 and around 25
+      credits (30 if fire penetrating)
+  - balance: Bonemending is now only 2 levels less efficient when not using a splint
+      on the broken limb as opposed to 5 levels less efficient and can be made by
+      combining nutritious and hyper-densificating
+  - balance: Anti-xeno properties, fire properties and most healing properties no
+      longer have a cost penalty when above level 5 in create mode
+  - balance: All anti-xeno properties are now available roundstart at low levels from
+      basic chemicals
+  - balance: Fire penetrating is now a rare property and can be made by combining
+      oxygenating and viscous (both roundstart available)
+  - balance: Many other various changes to flamers, chemsmoke and anti-xeno properties
+  - balance: Resin fruits and Warden debuff rejuvenate now clear warcrime's effects
+      and give a short immunity
+  - code_imp: Refactored interference to be a component and added new traits for it
+  - balance: Daze no longer stops xenos from talking and is slightly less punishing
+      when applied to humans from the neurotoxic property
+  - code_imp: New snowflake daze component for neurotoxic property
+2024-05-30:
+  Drathek:
+  - admin: Logging for chem smoke is now niche logged and less spammy
+  mullenpaul:
+  - ui: orbit menu now splits marine squads
+  - ui: orbit menu now splits xeno hives
+  - ui: orbit menu sorts marines by job
+2024-05-31:
+  Kaga:
+  - balance: The Heavy Sniper's XM43E1 rounds are now actually heavy. Targets hit
+      will get screenshake, like slugs and impact rounds, scaling with damage dealt.
+  - balance: XM43E1 shots can now potentially interrupt targets if it deals enough
+      damage. The heavier the target, the more force is needed to interrupt them.
+      Big xenos require a full-damage shot with no piercing, while smaller targets
+      can also be knocked back with enough damage.
+  - balance: XM43E1 Aimed Shots can now potentially apply a slow to the main target
+      only, scaling with base damage and target size. If a slow is applied, vision
+      range is reduced for a moment as a warning.
+  - balance: XM43E1 and M42C ammo AP increased to 75 (from 50)
+  - balance: Removed the Defender exception from the AMR Aimed Shot calculations.
+  Tyranicranger4:
+  - bugfix: Fixed an exploit that allowed Burrowers to apply acid to objects while
+      underground

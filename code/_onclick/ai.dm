@@ -1,44 +1,4 @@
 /*
-	AI ClickOn()
-
-	Note currently ai is_mob_restrained() returns 0 in all cases,
-	therefore restrained code has been removed
-
-	The AI can double click to move the camera (this was already true but is cleaner),
-	or double click a mob to track them.
-
-	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
-*/
-
-/mob/click(atom/A, list/mods)
-	..()
-
-	if(!client || !client.remote_control)
-		return FALSE
-
-	if (mods["middle"])
-		A.AIMiddleClick(src)
-		return 1
-
-	if (mods["shift"])
-		A.AIShiftClick(src)
-		return 1
-
-	if (mods["alt"])
-		A.AIAltClick(src)
-		return 1
-
-	if (mods["ctrl"])
-		A.AICtrlClick(src)
-		return 1
-
-	if (world.time <= next_move)
-		return 1
-
-	A.attack_remote(src)
-	return 1
-
-/*
 	AI has no need for the UnarmedAttack() and RangedAttack() procs,
 	because the AI code is not generic; attack_remote() is used instead.
 	The below is only really for safety, or you can alter the way
@@ -47,16 +7,6 @@
 /mob/living/silicon/ai/UnarmedAttack(atom/A)
 	A.attack_remote(src)
 /mob/living/silicon/ai/RangedAttack(atom/A)
-	A.attack_remote(src)
-
-/mob/UnarmedAttack(atom/A)
-	if(!client || !client.remote_control)
-		return FALSE
-	A.attack_remote(src)
-
-/mob/RangedAttack(atom/A)
-	if(!client || !client.remote_control)
-		return FALSE
 	A.attack_remote(src)
 
 /atom/proc/attack_remote(mob/user as mob)

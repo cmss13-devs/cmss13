@@ -1753,6 +1753,14 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"afv" = (
+/obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2{
+	layer = 2;
+	explo_proof = 1;
+	pixel_y = -13
+	},
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/underground/sewer/north)
 "afw" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -3319,6 +3327,11 @@
 /obj/item/stack/rods,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northwest,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"ajp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_west)
 "ajq" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northeast,
@@ -18279,10 +18292,6 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
-"aSZ" = (
-/obj/effect/landmark/xeno_npc_spawn,
-/turf/open/asphalt,
-/area/tyrargo/outdoors/colony_streets/north)
 "aTa" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 1
@@ -25543,6 +25552,10 @@
 "bgE" = (
 /turf/open/floor/coagulation/icon0_0,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"bgF" = (
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_west)
 "bgG" = (
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/north)
@@ -55444,7 +55457,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open_space,
+/turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors/colony_streets/north)
 "cKB" = (
 /obj/item/ammo_magazine/rifle/m4ra/heap/empty{
@@ -64927,11 +64940,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north_west)
-"dnr" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
-/turf/open/asphalt/cement,
-/area/tyrargo/outdoors/colony_streets/north)
 "dns" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -71168,13 +71176,13 @@
 	can_block_movement = 0;
 	explo_proof = 1
 	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/turf/open/floor/almayer_hull,
 /area/tyrargo/underground/sewer/north)
 "dEp" = (
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/turf/open/floor/almayer_hull,
 /area/tyrargo/underground/sewer/north)
 "dEq" = (
 /obj/structure/stairs/multiz/up{
@@ -71188,7 +71196,7 @@
 	unacidable = 1;
 	explo_proof = 1
 	},
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/turf/open/floor/almayer_hull,
 /area/tyrargo/underground/sewer/north)
 "dEr" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2{
@@ -71196,7 +71204,7 @@
 	explo_proof = 1
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/underground/sewer/north)
 "dEs" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
@@ -71206,18 +71214,19 @@
 	name = "huge rock pileup";
 	pixel_x = 15;
 	layer = 2;
-	explo_proof = 1
+	explo_proof = 1;
+	density = 0
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/underground/sewer/north)
 "dEt" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark{
 	layer = 2;
-	explo_proof = 1
+	explo_proof = 1;
+	density = 0
 	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/underground/sewer/north)
 "dEu" = (
 /obj/structure/blocker/invisible_wall,
@@ -71568,7 +71577,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open_space,
+/turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors/colony_streets/north)
 "dFF" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east{
@@ -71577,7 +71586,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open_space,
+/turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors/colony_streets/north)
 "dFG" = (
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1,
@@ -113756,7 +113765,7 @@ bgC
 bgC
 bgC
 dEg
-dEg
+afv
 dEg
 dEg
 dAC
@@ -114302,7 +114311,7 @@ cqy
 cqy
 cqy
 dEu
-dEn
+dEg
 dEo
 dEl
 dEi
@@ -114666,7 +114675,7 @@ dEv
 dEy
 dEv
 dEn
-dEn
+dEg
 dEq
 dEe
 dEe
@@ -155992,7 +156001,7 @@ mra
 cfk
 cpz
 cpd
-cpd
+bgF
 cpd
 tTk
 dFn
@@ -156721,7 +156730,7 @@ tvN
 cpd
 dda
 cpd
-cpz
+ajp
 cpd
 dFn
 dFj
@@ -157257,12 +157266,12 @@ coc
 cpQ
 cpQ
 coc
-dnr
+cpQ
 ifF
 csP
 pGz
 gTM
-aSZ
+crk
 crx
 crk
 cqL

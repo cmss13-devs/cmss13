@@ -128,6 +128,10 @@
 /turf/open/floor/corsat/whitetan,
 /area/adminlevel/ert_station/weyland_station)
 "cU" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 27;
+	pixel_x = -8
+	},
 /turf/open/floor/corsat/blue/northwest,
 /area/adminlevel/ert_station/weyland_station)
 "cW" = (
@@ -428,7 +432,9 @@
 /area/adminlevel/ert_station/weyland_station)
 "gL" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy{
+	pixel_y = 12
+	},
 /turf/open/floor/corsat/whitetan,
 /area/adminlevel/ert_station/weyland_station)
 "gW" = (
@@ -1390,6 +1396,15 @@
 	dir = 8;
 	pixel_x = -10;
 	pixel_y = 1
+	},
+/obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/mre/pmc{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/item/ammo_box/magazine/misc/mre/pmc{
+	pixel_x = -1;
+	pixel_y = 11
 	},
 /turf/open/floor/corsat/brown/west,
 /area/adminlevel/ert_station/weyland_station)
@@ -2849,7 +2864,7 @@
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/ert_station/weyland_station)
 "SM" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy/free,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/weyland_station)
 "SY" = (
@@ -3196,6 +3211,10 @@
 /area/adminlevel/ert_station/weyland_station)
 "Yv" = (
 /obj/structure/surface/table/reinforced/black,
+/obj/item/storage/box/mre/wy{
+	pixel_x = 6;
+	pixel_y = 16
+	},
 /turf/open/floor/corsat/blue/west,
 /area/adminlevel/ert_station/weyland_station)
 "YB" = (

@@ -270,11 +270,11 @@
 	//Somehow we will deal no damage on this attack
 	if(!damage)
 		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"), \
+		X.visible_message(SPAN_DANGER("\The [X] swipes at \the [src] to no effect!"),
 		SPAN_DANGER("We swipe at \the [src] to no effect!"))
 		return XENO_ATTACK_ACTION
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"), \
+	X.visible_message(SPAN_DANGER("\The [X] slashes \the [src]!"),
 	SPAN_DANGER("We slash \the [src]!"))
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
@@ -367,7 +367,7 @@
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
 		return
 
 	var/seat = get_mob_seat(source)
@@ -389,7 +389,8 @@
 	hardpoint.start_fire(source, object, location, control, params)
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
-	if(!M || M.client == null) return
+	if(!M || M.client == null)
+		return
 
 	var/mob_x = M.x - src.x
 	var/mob_y = M.y - src.y

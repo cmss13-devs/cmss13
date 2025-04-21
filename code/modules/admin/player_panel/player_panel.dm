@@ -269,7 +269,7 @@
 	</body></html>
 	"}
 
-	show_browser(usr, dat, "User Panel", "players", "size=640x480")
+	show_browser(usr, dat, "User Panel", "players", width = 640, height = 480)
 
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()
@@ -283,7 +283,8 @@
 	var/list/mobs = sortmobs()
 
 	for(var/mob/M in mobs)
-		if(!M.ckey) continue
+		if(!M.ckey)
+			continue
 
 		dat += "<tr><td>[(M.client ? "[M.client]" : "No client")]</td>"
 		dat += "<td><a href='byond://?src=\ref[usr];priv_msg=[M.ckey]'>[M.name]</a></td>"
@@ -313,7 +314,7 @@
 
 	dat += "</table></body></html>"
 
-	show_browser(usr, dat, "Player Menu", "players", "size=640x480")
+	show_browser(usr, dat, "Player Menu", "players", width = 640, height = 480)
 
 
 /datum/admins/proc/check_antagonists()
@@ -366,7 +367,7 @@
 
 	dat += "</table>"
 
-	show_browser(usr, dat, "Antagonists", "antagonists", "size=600x500")
+	show_browser(usr, dat, "Antagonists", "antagonists", width = 600, height = 500)
 
 /datum/admins/proc/check_round_status()
 	if (SSticker.current_state >= GAME_STATE_PLAYING)
@@ -389,11 +390,12 @@
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=init_evac'>Initiate Evacuation</a><br>"
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=cancel_evac'>Cancel Evacuation</a><br>"
 			dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=toggle_evac'>Toggle Evacuation Permission (does not affect evac in progress)</a><br>"
-			if(check_rights(R_ADMIN, 0)) dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
+			if(check_rights(R_ADMIN, 0))
+				dat += "<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];evac_authority=force_evac'>Force Evacuation Now</a><br>"
 
 		dat += "<br><A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];delay_round_end=1'>[SSticker.delay_end ? "End Round Normally" : "Delay Round End"]</A><br>"
 		dat += "</body></html>"
-		show_browser(usr, dat, "Round Status", "roundstatus", "size=600x500")
+		show_browser(usr, dat, "Round Status", "roundstatus", width = 600, height = 500)
 	else
 		alert("The game hasn't started yet!")
 
@@ -487,7 +489,6 @@
 		.["client_age"] = targetClient.player_data.byond_account_age
 		.["first_join"] = targetClient.player_data.first_join_date
 		.["client_rank"] = targetClient.admin_holder ? targetClient.admin_holder.rank : "Player"
-		.["client_muted"] = targetClient.prefs.muted
 
 		.["client_name_banned_status"] = targetClient.human_name_ban
 

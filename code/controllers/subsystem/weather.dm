@@ -1,9 +1,9 @@
 GLOBAL_LIST_EMPTY(weather_notify_objects)
 
 SUBSYSTEM_DEF(weather)
-	name   = "Weather"
-	wait   = 5 SECONDS
-	priority   = SS_PRIORITY_LIGHTING
+	name = "Weather"
+	wait = 5 SECONDS
+	priority = SS_PRIORITY_LIGHTING
 
 	// Tracking vars for controller state
 	var/is_weather_event = FALSE // Is there a weather event going on right now?
@@ -34,6 +34,9 @@ SUBSYSTEM_DEF(weather)
 	/// List of master areas to use for applying effects
 	var/list/area/weather_areas = list()
 
+	/// List of all cleanables that are outside that will be cleaned up by active weather
+	var/list/obj/effect/decal/cleanable/cleanable_list = list()
+
 /datum/controller/subsystem/weather/Initialize(start_timeofday)
 	// Set up our map delegate datum for supported maps
 	// The ONLY place where things should depend on map_tag
@@ -42,6 +45,16 @@ SUBSYSTEM_DEF(weather)
 		var/weathertype = SSmapping.configs[GROUND_MAP].weather_holder
 		map_holder = new weathertype
 		setup_weather_areas()
+
+		var/correct_list = list()
+		for(var/obj/effect/decal/cleanable/cleanable as anything in cleanable_list)
+			if(!(cleanable.cleanable_turf.loc in weather_areas))
+				continue
+
+			correct_list += cleanable
+
+		cleanable_list = correct_list
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/weather/proc/setup_weather_areas()
@@ -58,10 +71,21 @@ SUBSYSTEM_DEF(weather)
 
 /datum/controller/subsystem/weather/proc/force_weather_holder(weather_holder)
 	if(weather_holder)
-		if(istext(weather_holder)) weather_holder = text2path(weather_holder)
+		if(istext(weather_holder))
+			weather_holder = text2path(weather_holder)
 		if(ispath(weather_holder))
 			map_holder = new weather_holder
 			setup_weather_areas()
+
+/// Checks that a cleanable should be cleaned up by weather. If so, it is added to the list to be cleaned
+/datum/controller/subsystem/weather/proc/add_cleanable(obj/effect/decal/cleanable/cleanable)
+	if(!SSmapping.configs[GROUND_MAP].weather_holder)
+		return
+
+	if(map_holder && !(get_area(cleanable) in weather_areas))
+		return
+
+	cleanable_list += cleanable
 
 /datum/controller/subsystem/weather/stat_entry(msg)
 	var/time_left = 0
@@ -89,6 +113,15 @@ SUBSYSTEM_DEF(weather)
 
 	// If there's a weather event, return
 	if (is_weather_event)
+		if(!weather_event_instance.cleaning || !SSobjectives.first_drop_complete)
+			return
+
+		for(var/obj/effect/decal/cleanable/cleanable as anything in cleanable_list)
+			if(!prob(5))
+				continue
+
+			cleanable.fade_and_disappear()
+
 		return
 
 	// Check if we have had enough time between events

@@ -1128,6 +1128,10 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/darkyellow2/northeast,
 /area/ice_colony/surface/engineering/generator)
+"aex" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/dark2,
+/area/ice_colony/underground/maintenance/central/construction)
 "aey" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/snow/layer1,
@@ -1147,6 +1151,10 @@
 	},
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/northeast)
+"aeC" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating/icefloor/warnplate/north,
+/area/ice_colony/exterior/surface/landing_pad)
 "aeD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1673,6 +1681,9 @@
 	},
 /turf/open/floor/darkyellow2/east,
 /area/ice_colony/surface/engineering/generator)
+"ags" = (
+/turf/open/floor/darkbrown2/west,
+/area/ice_colony/surface/hangar/hallway)
 "agt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1829,6 +1840,9 @@
 	},
 /turf/open/auto_turf/snow/layer1,
 /area/ice_colony/exterior/surface/valley/northwest)
+"agU" = (
+/turf/open/floor/darkbrown2/east,
+/area/ice_colony/surface/hangar/hallway)
 "agV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -2014,6 +2028,15 @@
 /obj/structure/barricade/metal,
 /turf/open/floor/plating/icefloor/warnplate/southwest,
 /area/ice_colony/surface/requesitions)
+"ahF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/dark2,
+/area/ice_colony/surface/hangar/hallway)
 "ahG" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/exterior/surface/valley/northwest)
@@ -2021,6 +2044,12 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/ice_colony/surface/hydroponics/north)
+"ahI" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/darkbrown2/east,
+/area/ice_colony/surface/hangar/hallway)
 "ahJ" = (
 /obj/item/lightstick/red/planted,
 /turf/open/auto_turf/snow/layer2,
@@ -2426,6 +2455,9 @@
 "aiX" = (
 /turf/open/ice,
 /area/ice_colony/exterior/surface/clearing/north)
+"aiY" = (
+/turf/open/floor/darkbrown2/northwest,
+/area/ice_colony/surface/hangar/hallway)
 "aiZ" = (
 /obj/structure/surface/rack,
 /obj/item/cell/high/empty,
@@ -6641,11 +6673,11 @@
 /area/ice_colony/surface/disposals)
 "axz" = (
 /obj/item/evidencebag,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/floor/plating/warnplate,
 /area/ice_colony/surface/disposals)
 "axA" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/popcorn,
 /turf/open/floor/plating/warnplate,
 /area/ice_colony/surface/disposals)
 "axB" = (
@@ -7733,7 +7765,7 @@
 /turf/open/floor/darkblue2/north,
 /area/ice_colony/surface/command/checkpoint)
 "aBF" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkblue2/northeast,
 /area/ice_colony/surface/command/checkpoint)
 "aBG" = (
@@ -9132,7 +9164,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/command/control)
 "aGu" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkblue2/southeast,
 /area/ice_colony/surface/command/control)
 "aGC" = (
@@ -9648,7 +9680,7 @@
 /turf/open/floor/darkgreencorners2/north,
 /area/ice_colony/surface/hydroponics/lobby)
 "aIx" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIy" = (
@@ -10143,7 +10175,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/surface/valley/southwest)
 "aKU" = (
-/obj/structure/machinery/vending/cigarette,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -10673,7 +10705,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aMX" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/checkpoint)
 "aMY" = (
@@ -10942,11 +10974,11 @@
 	name = "\improper Security Checkpoint"
 	},
 /turf/open/floor/darkbrown2/northwest,
-/area/ice_colony/surface/hangar/checkpoint)
+/area/ice_colony/surface/hangar/hallway)
 "aOi" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/darkbrown2/northeast,
-/area/ice_colony/surface/hangar/checkpoint)
+/area/ice_colony/surface/hangar/hallway)
 "aOj" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/hangar/beta)
@@ -11119,11 +11151,11 @@
 /turf/open/floor/dark2,
 /area/ice_colony/surface/hangar/beta)
 "aOQ" = (
-/obj/structure/machinery/power/apc/no_power/north,
 /obj/structure/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24
 	},
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/darkbrown2/northeast,
 /area/ice_colony/surface/hangar/alpha)
 "aOR" = (
@@ -11786,7 +11818,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
 "aRx" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /obj/structure/machinery/light,
 /turf/open/floor/wood,
 /area/ice_colony/surface/bar/bar)
@@ -16874,7 +16906,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/hallway/north_west)
 "boo" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/hallway/north_west)
 "bop" = (
@@ -18740,10 +18772,6 @@
 /area/ice_colony/underground/maintenance/central/construction)
 "bvw" = (
 /turf/open/floor/dark2,
-/area/ice_colony/underground/maintenance/central/construction)
-"bvx" = (
-/obj/item/frame/apc,
-/turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/central/construction)
 "bvy" = (
 /turf/open/floor/plating,
@@ -20798,7 +20826,7 @@
 /turf/open/floor/darkred2/north,
 /area/ice_colony/underground/security/hallway)
 "bDw" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkred2/northeast,
 /area/ice_colony/underground/security/hallway)
 "bDx" = (
@@ -22526,7 +22554,7 @@
 /turf/open/floor/darkblue2,
 /area/ice_colony/underground/command/checkpoint)
 "bKi" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkblue2/southeast,
 /area/ice_colony/underground/command/checkpoint)
 "bKj" = (
@@ -24326,7 +24354,7 @@
 /area/ice_colony/underground/crew/disposals)
 "bQV" = (
 /obj/item/evidencebag,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/disposals)
 "bQW" = (
@@ -25052,7 +25080,7 @@
 /turf/open/floor/darkgreen2/northwest,
 /area/ice_colony/underground/hallway/south_east)
 "bTn" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkgreen2/north,
 /area/ice_colony/underground/hallway/south_east)
 "bTo" = (
@@ -25430,7 +25458,7 @@
 /turf/open/floor/dark2,
 /area/ice_colony/underground/hallway/south_east)
 "bUP" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkgreen2/east,
 /area/ice_colony/underground/hallway/south_east)
 "bUQ" = (
@@ -26560,7 +26588,7 @@
 "gxg" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/darkbrown2/west,
-/area/ice_colony/surface/hangar/alpha)
+/area/ice_colony/surface/hangar/hallway)
 "gDb" = (
 /obj/structure/surface/table,
 /turf/open/floor/darkred2/north,
@@ -26791,7 +26819,7 @@
 /area/ice_colony/underground/maintenance/south)
 "mHc" = (
 /turf/open/floor/darkbrown2/northeast,
-/area/ice_colony/surface/hangar/beta)
+/area/ice_colony/surface/hangar/hallway)
 "mLJ" = (
 /obj/structure/shuttle/diagonal{
 	icon_state = "swall_f5"
@@ -26814,7 +26842,7 @@
 "oHs" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/hangar/alpha)
+/area/ice_colony/surface/hangar/hallway)
 "oHE" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/plating/icefloor,
@@ -26845,11 +26873,7 @@
 	pixel_x = -24
 	},
 /turf/open/floor/darkbrown2/southwest,
-/area/ice_colony/surface/hangar/alpha)
-"paK" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating/icefloor,
-/area/ice_colony/surface/hangar/beta)
+/area/ice_colony/surface/hangar/hallway)
 "pjQ" = (
 /obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -26963,7 +26987,7 @@
 	pixel_x = -24
 	},
 /turf/open/floor/darkbrown2/west,
-/area/ice_colony/surface/hangar/alpha)
+/area/ice_colony/surface/hangar/hallway)
 "sto" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
 	name = "LZ1: Hangar Landing Zone"
@@ -27001,7 +27025,7 @@
 	dir = 8
 	},
 /turf/open/floor/darkbrown2/west,
-/area/ice_colony/surface/hangar/alpha)
+/area/ice_colony/surface/hangar/hallway)
 "tue" = (
 /obj/structure/machinery/light,
 /turf/open/floor/darkblue2,
@@ -27063,7 +27087,7 @@
 /area/ice_colony/exterior/surface/cliff)
 "uPr" = (
 /turf/open/floor/darkbrown2/southeast,
-/area/ice_colony/surface/hangar/beta)
+/area/ice_colony/surface/hangar/hallway)
 "uUv" = (
 /obj/effect/alien/weeds/node,
 /obj/effect/landmark/xeno_hive_spawn,
@@ -49361,7 +49385,7 @@ bto
 btS
 brM
 bvw
-bvw
+aex
 bvy
 bvv
 bxv
@@ -49924,7 +49948,7 @@ bsC
 btq
 btU
 brM
-bvx
+bvy
 bvy
 bvw
 bwU
@@ -72685,20 +72709,20 @@ aMn
 aMV
 aNN
 oHs
-aOH
-aPD
-aQG
+aiY
+ags
+ahF
 tly
-aPD
-aPD
-aPD
-aPD
-aPD
+ags
+ags
+ags
+ags
+ags
 gxg
 rNB
-aPD
-aPD
-aPD
+ags
+ags
+ags
 oZq
 oHs
 aYC
@@ -73530,23 +73554,23 @@ aKj
 aMq
 aKj
 aNO
-paK
+oHs
 mHc
-aTb
-aTb
-aTb
-aTb
-aTb
-aTb
-aTb
-ecS
-mog
-aTb
-aTb
-aTb
-aTb
+agU
+agU
+agU
+agU
+agU
+agU
+agU
+ahI
+ahF
+agU
+agU
+agU
+agU
 uPr
-paK
+oHs
 aYC
 aYH
 aYC
@@ -74112,7 +74136,7 @@ aWL
 aXr
 aXT
 aOj
-aYB
+aeC
 aYC
 aYC
 aYC

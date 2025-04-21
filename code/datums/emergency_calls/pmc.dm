@@ -1,5 +1,5 @@
 
-//Weyland-Yutani commandos. Friendly to USCM, hostile to xenos.
+//Weyland-Yutani PMCs. Friendly to USCM, hostile to xenos.
 /datum/emergency_call/pmc
 	name = "Weyland-Yutani PMC (Squad)"
 	mob_max = 6
@@ -140,8 +140,11 @@
 	print_backstory(H)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+
 /obj/effect/landmark/ert_spawns/distress_pmc
 	name = "Distress_PMC"
+	icon_state = "spawn_distress_pmc"
 
 /obj/effect/landmark/ert_spawns/distress_pmc/item
 	name = "Distress_PMCitem"
+	icon_state = "distress_item"

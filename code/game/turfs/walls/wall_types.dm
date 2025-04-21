@@ -271,8 +271,64 @@
 	walltype = WALL_SULACO
 	turf_flags = TURF_HULL
 
+//UPP almayer retexture walls.
 
+/turf/closed/wall/upp_ship
+	damage = 0
+	damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
+	opacity = TRUE
+	density = TRUE
+	walltype = WALL_UPP_SHIP
+	icon = 'icons/turf/walls/upp_walls.dmi'
+	icon_state = "uppwall_interior"
 
+/turf/closed/wall/upp_ship/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "uppwall_reinforced"
+
+/turf/closed/wall/upp_ship/reinforced/outer
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	turf_flags = TURF_HULL
+	icon_state = "uppwall_hull"
+
+//UPP almayer retexture walls.
+
+/turf/closed/wall/almayer/upp
+	walltype = WALL_UPP_BASE
+	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
+	icon_state = "uppwall"
+
+/turf/closed/wall/almayer/upp/reinforced
+	name = "reinforced hull"
+	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
+
+/turf/closed/wall/almayer/upp/reinforced/outer
+	name = "ultra reinforced hull"
+	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
+	turf_flags = TURF_HULL
+	icon_state = "hull"
+
+/turf/closed/wall/strata_outpost
+	name = "bare outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
+	icon_state = "strata_bare_outpost_"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/strata_outpost/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "strata_ribbed_outpost_"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/strata_outpost/reinforced/hull
+	turf_flags = TURF_HULL
+	icon_state = "strata_hull"
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
 /turf/closed/wall/indestructible
 	name = "wall"
@@ -280,8 +336,6 @@
 	icon_state = "riveted"
 	opacity = TRUE
 	turf_flags = TURF_HULL
-
-
 
 /turf/closed/wall/indestructible/bulkhead
 	name = "bulkhead"
@@ -502,9 +556,11 @@
 	color = "#535963"
 	walltype = WALL_CAVE
 	turf_flags = TURF_HULL
+	baseturfs = /turf/open/gm/dirt
 
 /turf/closed/wall/rock/brown
 	color = "#826161"
+	baseturfs = /turf/open/gm/dirt
 
 /turf/closed/wall/rock/orange
 	color = "#994a16"
@@ -1021,7 +1077,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 	SPAN_XENONOTICE("You claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
@@ -1215,7 +1271,7 @@
 	..()
 	if(isxeno(AM))
 		return
-	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."), \
+	visible_message(SPAN_DANGER("\The [src] was hit by \the [AM]."),
 	SPAN_DANGER("You hit \the [src]."))
 	var/tforce = 0
 	if(ismob(AM))
@@ -1237,7 +1293,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
-	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
 	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (M.hivenumber == hivenumber)
@@ -1248,7 +1304,7 @@
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)
-	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
+	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"),
 	SPAN_DANGER("You tear \the [name]."))
 	playsound(src, "alien_resin_break", 25)
 	M.animation_attack_on(src)
@@ -1282,7 +1338,8 @@
 		var/turf/T
 		for(var/i in GLOB.cardinals)
 			T = get_step(src, i)
-			if(!istype(T)) continue
+			if(!istype(T))
+				continue
 			for(var/obj/structure/mineral_door/resin/R in T)
 				R.check_resin_support()
 

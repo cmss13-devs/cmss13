@@ -56,7 +56,7 @@
 			to_chat(usr, "You begin deconstructing [src].")
 			if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
-			user.visible_message("[user.name] deconstructs [src].", \
+			user.visible_message("[user.name] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			deconstruct()
@@ -76,7 +76,7 @@
 			if("bulb")
 				src.icon_state = "bulb-construct-stage1"
 		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
-		user.visible_message("[user.name] removes the wiring from [src].", \
+		user.visible_message("[user.name] removes the wiring from [src].",
 			"You remove the wiring from [src].", "You hear a noise.")
 		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		return
@@ -91,7 +91,7 @@
 				if("bulb")
 					src.icon_state = "bulb-construct-stage2"
 			src.stage = 2
-			user.visible_message("[user.name] adds wires to [src].", \
+			user.visible_message("[user.name] adds wires to [src].",
 				"You add wires to [src].")
 		return
 
@@ -103,7 +103,7 @@
 				if("bulb")
 					src.icon_state = "bulb-empty"
 			src.stage = 3
-			user.visible_message("[user.name] closes [src]'s casing.", \
+			user.visible_message("[user.name] closes [src]'s casing.",
 				"You close [src]'s casing.", "You hear a noise.")
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
@@ -173,6 +173,11 @@
 	base_state = "btube"
 	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
 	light_color = LIGHT_COLOR_XENON
+
+/obj/structure/machinery/light/red
+	icon_state = "rtube1"
+	base_state = "rtube"
+	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
 
 // the smaller bulb light fixture
 
@@ -441,7 +446,7 @@
 	else if(status == LIGHT_EMPTY)
 		if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //If it's a screwdriver open it.
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			user.visible_message("[user.name] opens [src]'s casing.", \
+			user.visible_message("[user.name] opens [src]'s casing.",
 				"You open [src]'s casing.", "You hear a noise.")
 			var/obj/structure/machinery/light_construct/newlight = null
 			switch(fitting)
@@ -476,12 +481,14 @@
 	return A.lightswitch && A.power_light
 
 /obj/structure/machinery/light/proc/flicker(amount = rand(10, 20))
-	if(flickering) return
+	if(flickering)
+		return
 	flickering = 1
 	spawn(0)
 		if(on && status == LIGHT_OK)
 			for(var/i = 0; i < amount; i++)
-				if(status != LIGHT_OK) break
+				if(status != LIGHT_OK)
+					break
 				on = !on
 				update(0)
 				sleep(rand(5, 15))
@@ -500,7 +507,8 @@
 	return
 
 /obj/structure/machinery/light/attack_animal(mob/living/M)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 	if(status == LIGHT_EMPTY||status == LIGHT_BROKEN)
 		to_chat(M, SPAN_WARNING("That object is useless to you."))
 		return
@@ -764,7 +772,8 @@
 // now only shatter if the intent was harm
 
 /obj/item/light_bulb/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target, /obj/structure/machinery/light))
 		return
 	if(user.a_intent != INTENT_HARM)
@@ -774,7 +783,7 @@
 
 /obj/item/light_bulb/proc/shatter()
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message(SPAN_DANGER("[name] shatters."),SPAN_DANGER("You hear a small glass object shatter."))
+		visible_message(SPAN_DANGER("[src] shatters."), SPAN_DANGER("You hear a small glass object shatter."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
@@ -790,6 +799,7 @@
 	anchored = TRUE
 	density = FALSE
 	layer = BELOW_TABLE_LAYER
+	needs_power = FALSE
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 20
@@ -823,6 +833,12 @@
 /obj/structure/machinery/landinglight/ds2
 	id = "USS Almayer Dropship 2" // ID for landing zone
 
+/obj/structure/machinery/landinglight/upp_ds1
+	id = "SSV Rostock Dropship 1" // ID for landing zone
+
+/obj/structure/machinery/landinglight/upp_ds2
+	id = "SSV Rostock Dropship 2" // ID for landing zone
+
 /obj/structure/machinery/landinglight/proc/turn_on()
 	icon_state = initial(icon_state) + "0"
 	set_light(2)
@@ -848,6 +864,30 @@
 	set_light(2)
 
 /obj/structure/machinery/landinglight/ds2/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds1/delaythree/turn_on()
+	icon_state = initial(icon_state) + "3"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delayone/turn_on()
+	icon_state = initial(icon_state) + "1"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaytwo/turn_on()
+	icon_state = initial(icon_state) + "2"
+	set_light(2)
+
+/obj/structure/machinery/landinglight/upp_ds2/delaythree/turn_on()
 	icon_state = initial(icon_state) + "3"
 	set_light(2)
 

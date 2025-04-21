@@ -231,10 +231,21 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
+"aS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north{
+	name = "Interview Room APC"
+	},
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
 "aT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
 	},
+/area/bigredv2/outside/office_complex)
+"aU" = (
+/obj/item/storage/belt/medical/lifesaver/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
@@ -449,22 +460,12 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
-"dm" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy1"
-	},
-/area/bigredv2/outside/se)
 "dn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/se)
-"do" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy3"
-	},
-/area/bigredv2/outside/se)
+/area/bigredv2/outside/office_complex)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
@@ -1104,6 +1105,7 @@
 /area/bigredv2/outside/office_complex)
 "LQ" = (
 /obj/structure/surface/rack,
+/obj/item/ammo_box/magazine/misc/mre/pmc,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Ml" = (
@@ -1149,7 +1151,7 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/clothing/under/marine/veteran/pmc,
-/obj/item/clothing/head/helmet/marine/veteran/pmc,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/black,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Oi" = (
@@ -1724,7 +1726,7 @@ zH
 ws
 hl
 cE
-dm
+dg
 Is
 "}
 (13,1,1) = {"
@@ -1778,7 +1780,7 @@ KK
 KK
 Wd
 cF
-do
+di
 ds
 "}
 (15,1,1) = {"
@@ -1796,7 +1798,7 @@ dE
 dE
 bc
 bc
-bc
+aU
 bc
 bc
 Gx
@@ -1832,7 +1834,7 @@ ue
 Fc
 UR
 cE
-dm
+dg
 Ct
 "}
 (17,1,1) = {"
@@ -1886,7 +1888,7 @@ Eo
 ql
 oc
 cF
-do
+di
 jl
 "}
 (19,1,1) = {"
@@ -1981,7 +1983,7 @@ WB
 ap
 UB
 ap
-Cy
+aS
 nn
 Oi
 WB

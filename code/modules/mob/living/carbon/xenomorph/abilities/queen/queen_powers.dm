@@ -72,14 +72,16 @@
 		if(user_xeno.hive.living_xeno_queen && user_xeno.hive.living_xeno_queen.observed_xeno == target_xeno)
 			user_xeno.hive.living_xeno_queen.overwatch(new_xeno)
 
-	return
+		if(new_xeno.ckey)
+			GLOB.deevolved_ckeys += new_xeno.ckey
 
 /datum/action/xeno_action/onclick/remove_eggsac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/queen/X = owner
 	if(!X.check_state())
 		return
 
-	if(X.action_busy) return
+	if(X.action_busy)
+		return
 	var/answer = alert(X, "Are you sure you want to remove your ovipositor? (5min cooldown to grow a new one)", , "Yes", "No")
 	if(answer != "Yes")
 		return
@@ -87,9 +89,10 @@
 		return
 	if(!X.ovipositor)
 		return
-	X.visible_message(SPAN_XENOWARNING("\The [X] starts detaching itself from its ovipositor!"), \
+	X.visible_message(SPAN_XENOWARNING("\The [X] starts detaching itself from its ovipositor!"),
 		SPAN_XENOWARNING("You start detaching yourself from your ovipositor."))
-	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10)) return
+	if(!do_after(X, 50, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 10))
+		return
 	if(!X.check_state())
 		return
 	if(!X.ovipositor)
@@ -138,60 +141,64 @@
 	if(!xeno.check_plasma(plasma_cost))
 		return
 
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."), \
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] starts to grow an ovipositor."),
 	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
 	if(!do_after(xeno, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && xeno.check_plasma(plasma_cost))
 		return
-	if(!xeno.check_state()) return
+	if(!xeno.check_state())
+		return
 	if(!locate(/obj/effect/alien/weeds) in current_turf)
 		return
 	xeno.use_plasma(plasma_cost)
-	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"), \
+	xeno.visible_message(SPAN_XENOWARNING("\The [xeno] has grown an ovipositor!"),
 	SPAN_XENOWARNING("You have grown an ovipositor!"))
 	xeno.mount_ovipositor()
 	return ..()
 
 /datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/queen/X = owner
-	if(!X.check_state())
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	if(!xeno.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
-	var/datum/hive_status/hive = X.hive
-	if(X.observed_xeno)
-		if(!length(hive.open_xeno_leader_positions) && X.observed_xeno.hive_pos == NORMAL_XENO)
-			to_chat(X, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
+	var/datum/hive_status/hive = xeno.hive
+	if(xeno.observed_xeno)
+		if(!length(hive.open_xeno_leader_positions) && xeno.observed_xeno.hive_pos == NORMAL_XENO)
+			to_chat(xeno, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
-		var/mob/living/carbon/xenomorph/T = X.observed_xeno
-		if(T == X)
-			to_chat(X, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
+		var/mob/living/carbon/xenomorph/targeted_xeno = xeno.observed_xeno
+		if(targeted_xeno == xeno)
+			to_chat(xeno, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
 			return
 		apply_cooldown()
-		if(T.hive_pos == NORMAL_XENO)
-			if(!hive.add_hive_leader(T))
-				to_chat(X, SPAN_XENOWARNING("Unable to add the leader."))
+		if(targeted_xeno.hive_pos == NORMAL_XENO)
+			if(!hive.add_hive_leader(targeted_xeno))
+				to_chat(xeno, SPAN_XENOWARNING("Unable to add the leader."))
 				return
-			to_chat(X, SPAN_XENONOTICE("You've selected [T] as a Hive Leader."))
-			to_chat(T, SPAN_XENOANNOUNCE("[X] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
+			if(targeted_xeno.stat == DEAD)
+				to_chat(xeno, SPAN_XENOWARNING("You cannot leader the dead."))
+				return
+			to_chat(xeno, SPAN_XENONOTICE("You've selected [targeted_xeno] as a Hive Leader."))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has selected you as a Hive Leader. The other Xenomorphs must listen to you. You will also act as a beacon for the Queen's pheromones."))
 		else
-			hive.remove_hive_leader(T)
-			to_chat(X, SPAN_XENONOTICE("You've demoted [T] from Hive Leader."))
-			to_chat(T, SPAN_XENOANNOUNCE("[X] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
+			hive.remove_hive_leader(targeted_xeno)
+			to_chat(xeno, SPAN_XENONOTICE("You've demoted [targeted_xeno] from Hive Leader."))
+			to_chat(targeted_xeno, SPAN_XENOANNOUNCE("[xeno] has demoted you from Hive Leader. Your leadership rights and abilities have waned."))
 	else
 		var/list/possible_xenos = list()
-		for(var/mob/living/carbon/xenomorph/T in hive.xeno_leader_list)
-			possible_xenos += T
+		for(var/mob/living/carbon/xenomorph/targeted_xeno in hive.xeno_leader_list)
+			possible_xenos += targeted_xeno
 
 		if(length(possible_xenos) > 1)
-			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
-			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
+			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
+			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != xeno.z || !xeno.check_state())
 				return
-			X.overwatch(selected_xeno)
+			xeno.overwatch(selected_xeno)
 		else if(length(possible_xenos))
-			X.overwatch(possible_xenos[1])
+			xeno.overwatch(possible_xenos[1])
 		else
-			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
+			to_chat(xeno, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
 	return ..()
 
 /datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)
@@ -207,7 +214,7 @@
 		to_chat(X, SPAN_WARNING("You must select a valid turf to heal around."))
 		return
 
-	if(X.loc.z != T.loc.z)
+	if(!SSmapping.same_z_map(X.loc.z, T.loc.z))
 		to_chat(X, SPAN_XENOWARNING("You are too far away to do this here."))
 		return
 
@@ -692,77 +699,78 @@
 	recently_built_turfs = null
 	return ..()
 
-/datum/action/xeno_action/activable/expand_weeds/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/queen/X = owner
-	if(!X.check_state())
+/datum/action/xeno_action/activable/expand_weeds/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+
+	if(!xeno.check_state())
 		return
 
 	if(!action_cooldown_check())
 		return
 
-	var/turf/T = get_turf(A)
+	var/turf/turf_to_get = get_turf(atom)
 
-	if(!T || T.is_weedable() < FULLY_WEEDABLE || T.density || (T.z != X.z))
-		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
+	if(!turf_to_get || turf_to_get.is_weedable() < FULLY_WEEDABLE || turf_to_get.density || (turf_to_get.z != xeno.z))
+		to_chat(xeno, SPAN_XENOWARNING("You can't do that here."))
 		return
 
-	var/area/AR = get_area(T)
-	if(isnull(AR) || !AR.is_resin_allowed)
-		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
-			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+	var/area/area_to_get = get_area(turf_to_get)
+	if(isnull(area_to_get) || !area_to_get.is_resin_allowed)
+		if(!area_to_get || area_to_get.flags_area & AREA_UNWEEDABLE)
+			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive."))
 			return
-		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return
 
-	var/obj/effect/alien/weeds/located_weeds = locate() in T
+	var/obj/effect/alien/weeds/located_weeds = locate() in turf_to_get
 	if(located_weeds)
 		if(istype(located_weeds, /obj/effect/alien/weeds/node))
+			to_chat(xeno, SPAN_XENOWARNING("There's already a node here."))
+			return
+		if(located_weeds.weed_strength > xeno.weed_level)
+			to_chat(xeno, SPAN_XENOWARNING("There's already stronger weeds here."))
+			return
+		if(!check_and_use_plasma_owner(node_plant_plasma_cost))
 			return
 
-		if(located_weeds.weed_strength > X.weed_level)
-			to_chat(X, SPAN_XENOWARNING("There's stronger weeds here already!"))
-			return
-
-		if (!check_and_use_plasma_owner(node_plant_plasma_cost))
-			return
-
-		to_chat(X, SPAN_XENONOTICE("You plant a node at [T]."))
-		new /obj/effect/alien/weeds/node(T, null, X)
-		playsound(T, "alien_resin_build", 35)
+		to_chat(xeno, SPAN_XENOWARNING("You plant a node at [turf_to_get]"))
+		new /obj/effect/alien/weeds/node(turf_to_get, null, owner)
+		playsound(turf_to_get, "alien_resin_build", 35)
 		apply_cooldown_override(node_plant_cooldown)
 		return
 
 	var/obj/effect/alien/weeds/node/node
 	for(var/direction in GLOB.cardinals)
-		var/turf/weed_turf = get_step(T, direction)
-		var/obj/effect/alien/weeds/W = locate() in weed_turf
-		if(W && W.hivenumber == X.hivenumber && W.parent && !W.hibernate && !LinkBlocked(W, weed_turf, T))
-			node = W.parent
+		var/turf/turf_to_weed = get_step(turf_to_get, direction)
+		var/obj/effect/alien/weeds/weeds_to_locate = locate() in turf_to_weed
+		if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turf_to_get))
+			node = weeds_to_locate.parent
 			break
 
 	if(!node)
-		to_chat(X, SPAN_XENOWARNING("You can only plant weeds near weeds with a connected node!"))
+		to_chat(xeno, SPAN_XENOWARNING("You can only plant weeds if there is a nearby node."))
+		return
+	if(turf_to_get in recently_built_turfs)
+		to_chat(xeno, SPAN_XENOWARNING("You've recently built here already."))
 		return
 
-	if(T in recently_built_turfs)
-		to_chat(X, SPAN_XENOWARNING("You've recently built here already!"))
+	if(!check_and_use_plasma_owner())
 		return
 
-	if (!check_and_use_plasma_owner())
-		return
+	new /obj/effect/alien/weeds(turf_to_get, node, FALSE, TRUE)
+	playsound(turf_to_get, "alien_resin_build", 35)
+	recently_built_turfs += turf_to_get
+	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), turf_to_get), turf_build_cooldown)
 
-	new /obj/effect/alien/weeds(T, node, FALSE)
-	playsound(T, "alien_resin_build", 35)
-
-	recently_built_turfs += T
-	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), T), turf_build_cooldown)
-
-	to_chat(X, SPAN_XENONOTICE("You plant weeds at [T]."))
+	to_chat(xeno, SPAN_XENOWARNING("You plant weeds at [turf_to_get]"))
 	apply_cooldown()
 	return ..()
 
+
+
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(turf/T)
 	recently_built_turfs -= T
+
 
 /mob/living/carbon/xenomorph/proc/xeno_tacmap()
 	set name = "View Xeno Tacmap"
@@ -838,11 +846,13 @@
 		return
 	var/list/target_list = list()
 	for(var/mob/living/carbon/possible_target in view(7, xeno_player))
-		if(possible_target == xeno_player || !possible_target.client) continue
+		if(possible_target == xeno_player || !possible_target.client)
+			continue
 		target_list += possible_target
 
 	var/mob/living/carbon/target_mob = tgui_input_list(usr, "Target", "Send a Psychic Whisper to whom?", target_list, theme="hive_status")
-	if(!target_mob) return
+	if(!target_mob)
+		return
 
 	if(!xeno_player.check_state(TRUE))
 		return

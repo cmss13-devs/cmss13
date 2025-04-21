@@ -104,7 +104,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aay" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaz" = (
@@ -594,6 +594,9 @@
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acm" = (
@@ -719,6 +722,14 @@
 /obj/structure/surface/table,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acN" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/space_port_lz2)
+"acO" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/w)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -757,6 +768,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"acW" = (
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/cargo)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/white,
@@ -769,6 +783,10 @@
 "acZ" = (
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
+"ada" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/bigredv2/outside/cargo)
 "adb" = (
 /obj/structure/surface/table,
 /obj/item/tool/hand_labeler,
@@ -824,6 +842,20 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
+"adn" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/whitebluefull/northeast,
+/area/bigredv2/outside/general_store)
+"ado" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/bigredv2/outside/lambda_cave_cas)
+"adp" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/lambda_cave_cas)
+"adq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/bigredv2/outside/lambda_cave_cas)
 "adr" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -860,6 +892,9 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"adx" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/lambda_cave_cas)
 "ady" = (
 /obj/structure/bed/chair,
 /turf/open/floor/darkish,
@@ -896,6 +931,13 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/marshal_office)
+"adF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/asphalt/cement_sunbleached,
+/area/bigredv2/outside/lambda_cave_cas)
 "adG" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
@@ -923,12 +965,19 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
+"adK" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/bigredv2/outside/lambda_cave_cas)
 "adL" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"adM" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/plating,
+/area/bigredv2/caves_lambda)
 "adN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/white,
@@ -962,9 +1011,31 @@
 /obj/item/clothing/suit/storage/CMB,
 /turf/open/floor/floor4,
 /area/bigredv2/outside/marshal_office)
+"adU" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw/ceiling)
+"adV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor,
+/area/bigredv2/outside/general_offices)
 "adW" = (
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"adX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E-corner"
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/bigredv2/caves_north)
+"adY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1087,6 +1158,12 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"aet" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1201,6 +1278,12 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
+"aeR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1253,6 +1336,12 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"afe" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1263,6 +1352,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"afh" = (
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/telecomm)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1406,7 +1501,8 @@
 /area/bigredv2/outside/telecomm)
 "afL" = (
 /obj/structure/showcase{
-	icon_state = "broadcaster_send"
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -4749,11 +4845,12 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "avj" = (
-/obj/structure/showcase{
-	icon_state = "broadcaster_send"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/showcase{
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -5025,7 +5122,7 @@
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "awE" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "awF" = (
@@ -5344,7 +5441,7 @@
 /area/bigredv2/outside/medical)
 "ayo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/hotdog,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ayp" = (
@@ -5669,7 +5766,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "azT" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -6661,7 +6758,7 @@
 /area/bigred/ground/garage_workshop)
 "aEZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
+/obj/item/trash/cheesie,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -8054,6 +8151,9 @@
 "aLJ" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "aLM" = (
@@ -8664,7 +8764,7 @@
 /area/bigredv2/caves/eta/research)
 "aOn" = (
 /turf/open/floor/asteroidwarning/east,
-/area/bigredv2/caves_lambda)
+/area/bigredv2/outside/lambda_cave_cas)
 "aOo" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -10419,7 +10519,7 @@
 /area/bigredv2/caves/lambda/virology)
 "aWb" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /obj/item/storage/box/donkpockets{
 	pixel_x = 6;
 	pixel_y = 8
@@ -11839,7 +11939,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcy" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "bcz" = (
@@ -12881,7 +12981,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhL" = (
-/obj/item/prop/helmetgarb/gunoil,
+/obj/item/stack/repairable/gunlube,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhT" = (
@@ -14118,7 +14218,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "boK" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
@@ -14606,7 +14706,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bru" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "brv" = (
@@ -16034,6 +16134,9 @@
 "bzG" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/darkblue2/north,
 /area/bigredv2/caves/eta/research)
 "bzH" = (
@@ -16215,7 +16318,7 @@
 /area/bigredv2/caves/eta/research)
 "bAu" = (
 /obj/structure/surface/table,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/research)
 "bAv" = (
@@ -16351,7 +16454,7 @@
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/caves/eta/research)
 "bAV" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/darkyellow2/southwest,
 /area/bigredv2/caves/eta/research)
 "bAW" = (
@@ -17370,9 +17473,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/s)
-"bGQ" = (
-/turf/open/asphalt/cement/cement4,
-/area/bigredv2/caves_lambda)
 "bGX" = (
 /obj/item/tool/weldingtool{
 	pixel_x = 9;
@@ -17770,7 +17870,7 @@
 	dir = 4
 	},
 /turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/e)
+/area/bigredv2/outside/lambda_cave_cas)
 "cfr" = (
 /obj/item/explosive/grenade/baton{
 	dir = 8
@@ -18923,7 +19023,7 @@
 /area/bigredv2/outside/general_offices)
 "dsU" = (
 /obj/item/trash/cheesie,
-/obj/item/trash/pistachios,
+/obj/item/trash/raisins,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
@@ -18970,7 +19070,7 @@
 /turf/open/floor/whitegreencorner,
 /area/bigredv2/outside/medical)
 "dvq" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -11;
 	pixel_y = -9
 	},
@@ -19227,8 +19327,9 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "dIb" = (
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "dIn" = (
 /obj/structure/sink{
 	dir = 4;
@@ -19249,9 +19350,7 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dIH" = (
@@ -20170,7 +20269,7 @@
 "eGf" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "eGq" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -20687,6 +20786,9 @@
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
 	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "fhI" = (
@@ -20743,9 +20845,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/dark,
 /area/bigredv2/outside/admin_building)
-"fjP" = (
-/turf/open/floor/delivery,
-/area/bigredv2/caves)
 "fkD" = (
 /obj/item/ammo_magazine/shotgun/slugs,
 /turf/closed/wall/solaris/rock,
@@ -20923,7 +21022,7 @@
 "fwV" = (
 /obj/structure/surface/table,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "fxa" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
@@ -22122,7 +22221,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "gJk" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -11;
 	pixel_y = -9
 	},
@@ -22640,7 +22739,7 @@
 	dir = 1
 	},
 /turf/open/mars_cave/mars_cave_17,
-/area/bigredv2/caves_research)
+/area/bigredv2/caves/mining)
 "hot" = (
 /obj/structure/platform_decoration/stone/kutjevo/north,
 /turf/open/mars/mars_dirt_12,
@@ -22959,7 +23058,7 @@
 "hGv" = (
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidwarning/north,
-/area/bigredv2/outside/n)
+/area/bigredv2/outside/medical)
 "hGy" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/mars,
@@ -23125,7 +23224,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/bigredv2/outside/c)
 "hSP" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/mars_cave/mars_dirt_6,
 /area/bigredv2/caves/mining)
 "hST" = (
@@ -23151,7 +23250,7 @@
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/northwest,
-/area/bigredv2/outside/space_port_lz2)
+/area/bigredv2/outside/w)
 "hUe" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/bigredv2/outside/se)
@@ -24108,10 +24207,6 @@
 "iXx" = (
 /turf/open/mars_cave,
 /area/bigredv2/outside/n)
-"iXD" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_offices)
 "iXN" = (
 /obj/item/ore{
 	pixel_x = -7;
@@ -24153,7 +24248,7 @@
 "iZA" = (
 /obj/structure/surface/rack,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "jay" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -24599,7 +24694,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "jDG" = (
-/obj/item/trash/uscm_mre,
+/obj/item/trash/wy_mre,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "jDT" = (
@@ -24767,7 +24862,7 @@
 	icon_state = "S"
 	},
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "jMn" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -25369,7 +25464,7 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/turf/open/floor/plating,
 /area/bigredv2/outside/telecomm/lz2_cave)
 "kkF" = (
 /obj/structure/machinery/camera/autoname,
@@ -25614,7 +25709,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/ne)
+/area/bigredv2/outside/general_offices)
 "kwQ" = (
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/se)
@@ -25748,10 +25843,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/eta)
-"kGr" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/general_store)
 "kGw" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor,
@@ -27045,7 +27136,7 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
-/area/bigredv2/outside/nw)
+/area/bigred/ground/garage_workshop)
 "mda" = (
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves_lambda)
@@ -27076,7 +27167,7 @@
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
-/area/bigredv2/outside/nw)
+/area/bigred/ground/garage_workshop)
 "mes" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -27376,9 +27467,6 @@
 /obj/structure/flora/grass/desert/lightgrass_2,
 /turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/nw)
-"muP" = (
-/turf/closed/wall/wood,
-/area/bigredv2/caves_research)
 "mvk" = (
 /obj/item/tool/shovel,
 /turf/open/mars,
@@ -27388,7 +27476,7 @@
 	dir = 4
 	},
 /turf/open/floor/asteroidwarning/northwest,
-/area/bigredv2/outside/e)
+/area/bigredv2/outside/lambda_cave_cas)
 "mwI" = (
 /obj/structure/surface/table,
 /obj/item/evidencebag{
@@ -27625,7 +27713,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement15,
-/area/bigredv2/caves_lambda)
+/area/bigredv2/outside/lambda_cave_cas)
 "mIc" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/podhatchfloor,
@@ -27736,6 +27824,9 @@
 "mOZ" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/queen_spawn,
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfmining"
+	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "mPm" = (
@@ -27823,11 +27914,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/lambda_cave_cas)
-"mRD" = (
-/obj/structure/surface/table,
-/obj/structure/machinery/computer/atmos_alert,
-/turf/open/floor,
-/area/bigredv2/caves)
 "mRP" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
@@ -27942,9 +28028,9 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "mXm" = (
-/obj/item/trash/uscm_mre{
-	pixel_x = 10;
-	pixel_y = -2
+/obj/item/trash/wy_mre{
+	pixel_y = 8;
+	pixel_x = 7
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -27955,7 +28041,7 @@
 "mYo" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
-/area/bigredv2/outside/space_port_lz2)
+/area/bigredv2/outside/w)
 "mYp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28623,7 +28709,8 @@
 /area/bigredv2/outside/nw)
 "nJu" = (
 /obj/structure/flora/grass/desert/lightgrass_7,
-/turf/open/mars,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
 /area/bigredv2/outside/eta)
 "nKL" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -29014,7 +29101,7 @@
 	pixel_y = 12
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
-/area/bigredv2/outside/space_port_lz2)
+/area/bigredv2/outside/w)
 "ohD" = (
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_east)
@@ -29846,7 +29933,7 @@
 	dir = 1
 	},
 /turf/open/mars_cave/mars_cave_2,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "oWe" = (
 /obj/structure/machinery/photocopier{
 	density = 0;
@@ -30074,7 +30161,7 @@
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/southeast,
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/lambda_cave_cas)
 "phi" = (
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/caves_research)
@@ -30189,10 +30276,6 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
-"poS" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/plating,
-/area/bigredv2/outside/cargo)
 "poV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -30684,7 +30767,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "pQE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -31446,7 +31529,7 @@
 	pixel_y = -2;
 	pixel_x = -8
 	},
-/obj/item/reagent_container/food/snacks/packaged_meal{
+/obj/item/mre_food_packet/entree/wy_colonist{
 	pixel_x = 8;
 	pixel_y = 9
 	},
@@ -32495,7 +32578,7 @@
 "rGz" = (
 /obj/structure/machinery/light/double,
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "rGD" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/red/north,
@@ -33324,7 +33407,7 @@
 "snZ" = (
 /obj/structure/flora/grass/desert/lightgrass_11,
 /turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
+/area/bigredv2/outside/w)
 "sog" = (
 /obj/item/explosive/grenade/slug/baton{
 	dir = 1;
@@ -33360,7 +33443,7 @@
 "spd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidwarning/east,
-/area/bigredv2/caves_east)
+/area/bigredv2/outside/lambda_cave_cas)
 "sqc" = (
 /obj/effect/decal/cleanable/blood{
 	base_icon = 'icons/obj/items/weapons/grenade.dmi';
@@ -33400,7 +33483,7 @@
 "ssE" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
-/area/bigredv2/caves)
+/area/bigredv2/outside/filtration_cave_cas)
 "ssI" = (
 /obj/structure/prop/dam/truck/damaged,
 /turf/open/mars_cave/mars_dirt_4,
@@ -33819,7 +33902,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/lambda_cave_cas)
 "sMP" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -3;
 	pixel_y = 11
 	},
@@ -34652,10 +34735,6 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/bigredv2/outside/space_port)
-"tEc" = (
-/obj/structure/machinery/light/small,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/caves_research)
 "tEA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -34846,7 +34925,7 @@
 	health = 25000;
 	pixel_y = 20
 	},
-/obj/structure/machinery/vending/cigarette/colony{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	layer = 3.1;
 	pixel_y = 9
 	},
@@ -34917,7 +34996,6 @@
 "tQo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -34964,18 +35042,14 @@
 /area/bigredv2/outside/c)
 "tRV" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
 "tSY" = (
@@ -35440,13 +35514,10 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "uut" = (
-/obj/item/storage/box/MRE{
-	pixel_x = -1;
-	pixel_y = -6
-	},
-/obj/item/storage/box/MRE{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/mre/wy,
+/obj/item/storage/box/mre/wy{
+	pixel_x = 7;
+	pixel_y = 8
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
@@ -35874,7 +35945,7 @@
 /area/bigredv2/caves/lambda/research)
 "uUY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/west,
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/filtration_plant)
 "uVd" = (
@@ -36023,7 +36094,7 @@
 	icon_state = "S"
 	},
 /turf/open/mars_cave/mars_cave_5,
-/area/bigredv2/caves_sw)
+/area/bigredv2/caves/mining)
 "vcy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot{
@@ -36493,7 +36564,7 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/n)
+/area/bigredv2/outside/medical)
 "vxI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -36896,7 +36967,7 @@
 	dir = 8
 	},
 /turf/open/floor/asteroidwarning/northeast,
-/area/bigredv2/caves_lambda)
+/area/bigredv2/outside/lambda_cave_cas)
 "vTh" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -37064,7 +37135,7 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement12,
-/area/bigredv2/caves_lambda)
+/area/bigredv2/outside/lambda_cave_cas)
 "wdn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/metal{
@@ -37283,10 +37354,6 @@
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
-"woe" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
 "wog" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_sw)
@@ -37541,7 +37608,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
 "wCs" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "wCU" = (
@@ -37951,7 +38018,7 @@
 "wZv" = (
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/c)
+/area/bigredv2/outside/cargo)
 "wZC" = (
 /turf/open/mars/mars_dirt_11,
 /area/bigredv2/outside/eta)
@@ -38176,7 +38243,7 @@
 /area/bigredv2/caves/mining)
 "xlD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios{
+/obj/item/trash/hotdog{
 	pixel_y = -21;
 	pixel_x = -6
 	},
@@ -38690,6 +38757,9 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "xLd" = (
@@ -38878,18 +38948,14 @@
 /area/bigredv2/caves/lambda/research)
 "xWr" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xWz" = (
@@ -38948,7 +39014,7 @@
 /area/bigredv2/caves/mining)
 "xYw" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/obj/item/trash/pistachios{
+/obj/item/trash/hotdog{
 	pixel_x = -3;
 	pixel_y = 11
 	},
@@ -38987,10 +39053,6 @@
 "yar" = (
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
-"yaM" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor,
-/area/bigredv2/outside/cargo)
 "ybk" = (
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves_research)
@@ -39916,7 +39978,7 @@ aao
 aao
 aao
 aao
-aao
+aeR
 aao
 aao
 aao
@@ -40975,7 +41037,7 @@ acA
 aas
 aas
 acQ
-ade
+afh
 ade
 ade
 aeb
@@ -46276,7 +46338,7 @@ bie
 bie
 bie
 bmM
-bie
+aet
 bie
 bie
 bie
@@ -46692,7 +46754,7 @@ aSB
 aSB
 rZn
 aSB
-tVp
+aSB
 mMf
 mMf
 tVp
@@ -46909,7 +46971,7 @@ aSB
 beP
 beP
 beP
-tVp
+aSB
 tVp
 tVp
 tVp
@@ -47522,7 +47584,7 @@ axZ
 avT
 azn
 avT
-avT
+adU
 anp
 siK
 siG
@@ -47560,7 +47622,7 @@ jzO
 jzO
 uyS
 vDS
-woe
+beP
 tVp
 tVp
 eRN
@@ -47777,7 +47839,7 @@ qMG
 vna
 jlJ
 rvU
-woe
+beP
 tVp
 wbD
 tVp
@@ -47994,7 +48056,7 @@ jzO
 vna
 jzO
 rvU
-woe
+beP
 tVp
 tVp
 tVp
@@ -48203,7 +48265,7 @@ aoH
 aXH
 aXH
 asK
-beQ
+acO
 aYF
 pGp
 mQY
@@ -48211,7 +48273,7 @@ jzO
 vna
 jzO
 rvU
-tVp
+aSB
 aao
 aao
 tVp
@@ -48428,7 +48490,7 @@ jzO
 jzO
 jzO
 rvU
-tVp
+aSB
 tVp
 aao
 aao
@@ -48862,7 +48924,7 @@ bjT
 jzO
 jzO
 woP
-tVp
+aSB
 buk
 tVp
 tVp
@@ -49079,7 +49141,7 @@ jzO
 jzO
 jzO
 sym
-tVp
+aSB
 tVp
 tVp
 tVp
@@ -49137,7 +49199,7 @@ lQN
 kgx
 kgx
 kgx
-feS
+buj
 uHQ
 uHQ
 uHQ
@@ -49518,7 +49580,7 @@ eWd
 eWd
 eWd
 asK
-eWd
+acN
 eWd
 crl
 kHK
@@ -51668,7 +51730,7 @@ aSI
 aOB
 aNo
 aNo
-aNm
+adn
 aoH
 hmJ
 aXH
@@ -52104,7 +52166,7 @@ aPv
 aNm
 aWB
 aoH
-aXH
+ada
 aXH
 mOc
 aZu
@@ -52537,7 +52599,7 @@ aNo
 aVe
 aVM
 aoH
-poS
+aXH
 aXH
 aXH
 asK
@@ -52556,7 +52618,7 @@ aZu
 aZu
 aZu
 asK
-yaM
+aZu
 aZu
 aZO
 biN
@@ -52754,7 +52816,7 @@ aNo
 aVf
 aOB
 aoH
-kGr
+aXH
 aXH
 aXH
 asK
@@ -53622,9 +53684,9 @@ aQS
 aQS
 aQS
 aoH
-aHF
-aHF
-aHF
+acW
+acW
+acW
 asK
 aZv
 aZR
@@ -53839,9 +53901,9 @@ apQ
 apQ
 apQ
 aoH
-aHF
-aHF
-aHF
+acW
+acW
+acW
 asK
 aZu
 aZu
@@ -54056,8 +54118,8 @@ aGV
 aVh
 aVP
 aoH
-aHF
-aHF
+acW
+acW
 wZv
 asK
 aZw
@@ -54273,9 +54335,9 @@ aSO
 aVi
 aVO
 aoH
-aHF
-aHF
-aHF
+acW
+acW
+acW
 asK
 aZx
 aZx
@@ -54490,9 +54552,9 @@ aoH
 aoH
 aoH
 aoH
-aHF
-aHF
-aHF
+acW
+acW
+acW
 asK
 atw
 atw
@@ -54795,14 +54857,14 @@ aao
 aao
 aao
 aao
-muP
+vHw
 hnh
-xkq
-nXC
-nny
-gpB
-tEc
-muP
+rsv
+sZh
+nSP
+szw
+fRW
+vHw
 aao
 aao
 aao
@@ -58291,7 +58353,7 @@ jrD
 jcR
 jrD
 jrD
-jrD
+adY
 jrD
 jrD
 jrD
@@ -65742,7 +65804,7 @@ atD
 sih
 sih
 ako
-atE
+adV
 awu
 apc
 ako
@@ -67472,7 +67534,7 @@ aou
 aph
 aou
 uzD
-iXD
+aou
 ako
 bqA
 atG
@@ -67519,7 +67581,7 @@ asv
 asv
 asv
 lhN
-cDG
+bda
 bdA
 kIX
 tUa
@@ -67736,7 +67798,7 @@ baj
 baP
 bbC
 eUX
-bda
+cDG
 bLG
 kIX
 jYP
@@ -68200,8 +68262,8 @@ hUe
 nBd
 lvy
 lvy
-lvy
-bes
+eWo
+mzV
 mzV
 pvp
 uvZ
@@ -68854,13 +68916,13 @@ fCb
 fCb
 aao
 pcF
-kBn
-kBn
-kBn
-kBn
-kBn
-kBn
-kBn
+vVZ
+vVZ
+vVZ
+vVZ
+vVZ
+vVZ
+vVZ
 aao
 aao
 kBn
@@ -69071,13 +69133,13 @@ fCb
 rjw
 fCb
 pcF
-kBn
+vVZ
 iZA
-dIb
+fCb
 pQv
 fwV
 fwV
-kBn
+vVZ
 aao
 aao
 aao
@@ -69288,13 +69350,13 @@ aao
 aao
 aao
 pcF
-fjP
-dIb
-dIb
-dIb
-dIb
+myY
+fCb
+fCb
+fCb
+fCb
 fwV
-kBn
+vVZ
 aao
 aao
 aao
@@ -69505,13 +69567,13 @@ fCb
 aao
 aao
 pcF
-kBn
-dIb
-dIb
-dIb
-dIb
-dIb
-kBn
+vVZ
+fCb
+fCb
+fCb
+fCb
+fCb
+vVZ
 aao
 aao
 fOx
@@ -69722,13 +69784,13 @@ vVZ
 vVZ
 vVZ
 pcF
-kBn
-dIb
-dIb
-dIb
-dIb
+vVZ
+fCb
+fCb
+fCb
+fCb
 iZA
-kBn
+vVZ
 aao
 fOx
 fOx
@@ -69939,13 +70001,13 @@ fCb
 fCb
 aao
 pcF
-kBn
+vVZ
 dIb
-dIb
-dIb
-dIb
-kBn
-kBn
+fCb
+fCb
+fCb
+vVZ
+vVZ
 kSL
 fOx
 fOx
@@ -70156,11 +70218,11 @@ fCb
 aao
 aao
 pcF
-kBn
+vVZ
 fwV
-dIb
-dIb
-dIb
+fCb
+fCb
+fCb
 ssE
 kSL
 fOx
@@ -70373,11 +70435,11 @@ aao
 aao
 aao
 pcF
-kBn
-mRD
-dIb
-dIb
-dIb
+vVZ
+fwV
+fCb
+fCb
+fCb
 ssE
 kSL
 fOx
@@ -70590,12 +70652,12 @@ aao
 aao
 aao
 pcF
-kBn
+vVZ
 fwV
-dIb
-dIb
-kBn
-kBn
+fCb
+fCb
+vVZ
+vVZ
 fOx
 fOx
 fOx
@@ -70807,11 +70869,11 @@ fCb
 fCb
 brE
 pcF
-kBn
-kBn
-kBn
-fjP
-kBn
+vVZ
+vVZ
+vVZ
+myY
+vVZ
 fOx
 fOx
 fOx
@@ -70921,8 +70983,8 @@ aao
 aao
 aao
 aao
-aao
-mEC
+gNH
+adX
 fGK
 fGK
 fGK
@@ -74234,7 +74296,7 @@ aQu
 dpU
 mNP
 mlt
-dmE
+ado
 mwq
 aTu
 aTu
@@ -74451,7 +74513,7 @@ aQu
 oCK
 poV
 fFs
-uxk
+adp
 dTB
 rbs
 rbs
@@ -74665,10 +74727,10 @@ aQu
 aQu
 aQu
 ceA
-oCK
-uDe
-haV
-yfY
+adK
+adF
+adx
+adq
 rbs
 oPM
 eKZ
@@ -76156,7 +76218,7 @@ arG
 ara
 atf
 amk
-aqc
+afe
 aqc
 ass
 aqc
@@ -76401,10 +76463,10 @@ aao
 aao
 aao
 aao
-bGQ
-eJu
-iyp
-oBy
+ruo
+rnv
+sML
+dWx
 rbs
 lAR
 oJv
@@ -79433,7 +79495,7 @@ aIN
 aJG
 anI
 aao
-gmN
+adM
 tQw
 xFZ
 tQw
@@ -79650,7 +79712,7 @@ aIO
 tkN
 anI
 aao
-aao
+gNH
 amG
 aao
 wQC

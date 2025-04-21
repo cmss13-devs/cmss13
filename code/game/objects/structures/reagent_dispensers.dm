@@ -32,7 +32,8 @@
 
 /obj/structure/reagent_dispensers/get_examine_text(mob/user)
 	. = ..()
-	if(get_dist(user, src) > 2 && user != loc) return
+	if(get_dist(user, src) > 2 && user != loc)
+		return
 	. += SPAN_NOTICE("It contains:")
 	if(reagents && length(reagents.reagent_list))
 		for(var/datum/reagent/R in reagents.reagent_list)
@@ -129,7 +130,7 @@
 	if(!reagents || reagents.locked)
 		return ..()
 
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		dispensing = !dispensing
 		if(dispensing)
 			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))
@@ -252,7 +253,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),\
+		user.visible_message(SPAN_NOTICE("[user] begins reinforcing the exterior of [src] with [M]."),
 		SPAN_NOTICE("You begin reinforcing [src] with [M]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || reinforced)
@@ -262,7 +263,7 @@
 			to_chat(user, SPAN_WARNING("You don't have enough of [M] to reinforce [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),\
+		user.visible_message(SPAN_NOTICE("[user] reinforces the exterior of [src] with [M]."),
 		SPAN_NOTICE("You reinforce [src] with [M]."))
 
 		reinforced = TRUE
@@ -270,13 +271,13 @@
 
 	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 
-		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),\
+		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),
 		SPAN_NOTICE("You begin to remove the shielding from [src]."))
 
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL) || !reinforced)
 			return
 
-		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),\
+		user.visible_message(SPAN_DANGER("[user] removes the shielding from [src]."),
 		SPAN_NOTICE("You remove the shielding from [src]."))
 		new /obj/item/stack/sheet/plasteel(loc, STACK_10)
 
@@ -287,7 +288,8 @@
 
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/Proj)
-	if(exploding) return 0
+	if(exploding)
+		return 0
 	if(ismob(Proj.firer))
 		source_mob = WEAKREF(Proj.firer)
 
@@ -301,7 +303,8 @@
 	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act(severity)
-	if(exploding) return
+	if(exploding)
+		return
 
 	if(severity >= EXPLOSION_THRESHOLD_HIGH)
 		exploding = TRUE
@@ -443,6 +446,18 @@
 	density = FALSE
 	amount_per_transfer_from_this = 45
 	chemical = "condensedcapsaicin"
+
+/obj/structure/reagent_dispensers/forensictank
+	name = "forensic spray refiller"
+	desc = "Refill forensic spray bottles."
+	icon = 'icons/obj/structures/wall_dispensers.dmi'
+	icon_state = "forensictank"
+	anchored = TRUE
+	drag_delay = 3
+	wrenchable =  FALSE
+	density = FALSE
+	amount_per_transfer_from_this = 45
+	chemical = "forensic_spray"
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "water cooler"

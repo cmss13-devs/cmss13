@@ -1,0 +1,4 @@
+author: "stalkerino"
+delete-after: True
+changes:
+  - bugfix: "type47 UPP rig fits on external webbing, mateba rig fits on marine armor"

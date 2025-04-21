@@ -141,21 +141,6 @@
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
 
-/obj/item/weapon/unathiknife
-	name = "duelling knife"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
-	icon = 'icons/obj/items/weapons/melee/knives.dmi'
-	icon_state = "unathiknife"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
-	)
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("ripped", "torn", "cut")
-	force = MELEE_FORCE_STRONG
-	throwforce = MELEE_FORCE_STRONG
-	edge = 1
-
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
 /obj/item/proc/dig_out_shrapnel_check(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	if(user.a_intent == INTENT_HELP && (target == user || skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))) //Squad medics and above, or yourself
@@ -183,7 +168,7 @@
 			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
-		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."), \
+		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."),
 			SPAN_NOTICE("You begin searching your body for shrapnel."))
 		address_mode = "out of your"
 		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))

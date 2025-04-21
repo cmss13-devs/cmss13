@@ -13,7 +13,7 @@
 	gender = NEUTER
 	toggleable = TRUE
 	vision_flags = SEE_MOBS
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	darkness_view = 12
 	invisa_view = 2
 	eye_protection = EYE_PROTECTION_NEGATIVE

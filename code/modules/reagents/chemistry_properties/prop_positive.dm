@@ -28,7 +28,6 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
-	cost_penalty = FALSE
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -48,7 +47,6 @@
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1
-	cost_penalty = FALSE
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -227,6 +225,7 @@
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/painkilling/on_delete(mob/living/M)
 	..()
@@ -244,13 +243,13 @@
 		return
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
 	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
-	M.hallucination = max(M.hallucination, effective_potency) //Hallucinations and tox damage
-	M.apply_damage(0.5 *  effective_potency * delta_time, TOX)
+	M.hallucination = max(M.hallucination, POTENCY_MULTIPLIER_MEDIUM * effective_potency) //Hallucinations and tox damage
+	M.apply_damage(effective_potency * delta_time, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, potency = 1)
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
-	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * effective_potency, "liver")
-	M.apply_damage(effective_potency, BRAIN)
+	M.apply_internal_damage(POTENCY_MULTIPLIER_VVHIGH * effective_potency, "liver")
+	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM * effective_potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -379,7 +378,7 @@
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
 	code = "BNM"
-	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
+	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-woven and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/positive/bonemending/process(mob/living/M, potency = 1, delta_time)
@@ -493,7 +492,7 @@
 		if(embryo && istype(embryo))
 			if(embryo.counter > 0)
 				embryo.counter = embryo.counter - (potency * delta_time)
-				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
@@ -501,7 +500,7 @@
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
 				else
-					embryo.counter = embryo.per_stage_hugged_time
+					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, potency = 1)
 	M.apply_damage(potency, TOX)
@@ -531,17 +530,18 @@
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"
-	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator. Can not be ingested."
+	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
 	value = 1
+	cost_penalty = FALSE
 
 /datum/chem_property/positive/electrogenetic/trigger(A)
 	if(isliving(A))
 		var/mob/living/M = A
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BRUTE)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, BURN)
-		M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * level, TOX)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BRUTE)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, BURN)
+		M.apply_damage(-POTENCY_MULTIPLIER_EXTREME * level, TOX)
 		M.updatehealth()
 
 /datum/chem_property/positive/defibrillating
@@ -580,6 +580,12 @@
 		return
 	var/mob/living/carbon/human/dead = M
 	var/revivable = dead.check_tod() && dead.is_revivable()
+	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
+		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
+		if(property)
+			property.trigger(M)
+			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
+			break
 	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
 		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
@@ -827,6 +833,7 @@
 	description = "Reacts with any amount of light. Can be useful to create light-sensitive objects. Not safe to administer."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	max_level = 1
 
 /datum/chem_property/positive/photosensetive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
@@ -838,6 +845,7 @@
 	description = "The chemical structure of the chemical forms itself in a lens. passing light wider, while also keeping focus. Not safe to administer"
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_TOXICANT
+	max_level = 1
 
 /datum/chem_property/positive/crystallization/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("You feel like many razor sharp blades cut through your insides!"))
@@ -921,7 +929,7 @@
 	if(!..())
 		return
 
-	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
+	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER_SMALL * potency)
 
 	if(M.losebreath >= 10)
 		M.losebreath = max(10, M.losebreath - 2.5 * potency * delta_time)

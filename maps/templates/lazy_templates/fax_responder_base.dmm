@@ -15,6 +15,31 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ab" = (
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"ad" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ae" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/red,
@@ -342,7 +367,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "cW" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/wy/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -562,6 +587,10 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails{
 	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 8
 	},
 /turf/open/floor/darkgreen2/northwest,
 /area/adminlevel/ert_station/fax_response_station)
@@ -801,7 +830,7 @@
 /turf/open/gm/grass/grassbeach/east,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "hJ" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_y = 0;
 	pixel_x = 4;
@@ -946,7 +975,7 @@
 /turf/open/floor/darkgreen2/north,
 /area/adminlevel/ert_station/fax_response_station)
 "jD" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/wy/free{
 	wrenchable = 0;
 	pixel_x = 13;
 	pixel_y = 16;
@@ -1059,7 +1088,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "kZ" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -1483,7 +1512,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/ert_station/fax_response_station)
 "pl" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -1802,9 +1831,7 @@
 	pixel_y = -4;
 	pixel_x = 17
 	},
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
@@ -1826,8 +1853,8 @@
 	pixel_y = -14;
 	layer = 2.99
 	},
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
 	},
 /turf/open/floor/corsat/white/northeast,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2301,6 +2328,9 @@
 	faction = "TWE";
 	name = "TWE monitoring computer";
 	dir = 8
+	},
+/obj/structure/sign/calendar/twe{
+	pixel_y = 29
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3014,7 +3044,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "ET" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -3029,7 +3059,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/fax_response_station)
 "Fc" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander/free{
 	wrenchable = 0;
 	pixel_x = -6;
 	wires = 12
@@ -3207,7 +3237,7 @@
 /turf/open/gm/grass/grass1,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "Hh" = (
-/obj/structure/machinery/vending/cigarette/free{
+/obj/structure/machinery/vending/cigarette/koorlander{
 	wrenchable = 0;
 	pixel_x = 4;
 	wires = 12
@@ -3568,6 +3598,9 @@
 "JY" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/emails,
+/obj/structure/sign/calendar/ua{
+	pixel_y = 26
+	},
 /turf/open/floor/shiva/blue/northeast,
 /area/adminlevel/ert_station/fax_response_station)
 "Kc" = (
@@ -4239,6 +4272,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "SS" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green,
 /turf/open/floor/corsat/white/east,
 /area/adminlevel/ert_station/fax_response_station)
 "ST" = (
@@ -4540,9 +4574,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Wt" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
-/mob/living/simple_animal/mouse/brown{
-	name = "rat"
-	},
+/mob/living/simple_animal/mouse/rat/brown,
 /obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/gm/river/no_overlay/sewage,
 /area/adminlevel/ert_station/fax_response_station)
@@ -5102,7 +5134,7 @@ pV
 pV
 gX
 ls
-IQ
+ad
 QY
 vL
 QY
@@ -5902,7 +5934,7 @@ pV
 pV
 gX
 ls
-Zd
+ae
 QY
 vL
 QY
@@ -7008,7 +7040,7 @@ wZ
 cX
 bX
 xK
-wZ
+ab
 TW
 aK
 Ir
@@ -7031,7 +7063,7 @@ Sy
 vE
 es
 Rp
-Ec
+ac
 Hh
 Rp
 gX

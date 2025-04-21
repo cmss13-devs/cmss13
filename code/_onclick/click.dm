@@ -30,9 +30,9 @@
 	if ((A.flags_atom & NOINTERACT))
 		if (istype(A, /atom/movable/screen/click_catcher))
 			var/list/mods = params2list(params)
-			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
+			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.eye), client)
 			if (TU)
-				params += ";click_catcher=1"
+				params += CLICK_CATCHER_ADD_PARAM
 				do_click(TU, location, params)
 		return
 
@@ -49,7 +49,7 @@
 		clicked_something[mod] = TRUE
 
 	// Don't allow any other clicks while dragging something
-	if (mods["drag"])
+	if(mods[DRAG])
 		return
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -82,8 +82,10 @@
 		return
 
 	face_atom(A)
-	if(mods["middle"])
+
+	if(mods[MIDDLE_CLICK] || mods[BUTTON4] || mods[BUTTON5])
 		return
+
 	// Special type of click.
 	if (is_mob_restrained())
 		RestrainedClickOn(A)
@@ -144,26 +146,29 @@
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
-/mob/proc/click_adjacent(atom/A, obj/item/W, mods)
-	if(W)
-		var/attackby_result = A.attackby(W, src, mods)
+/mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		if(!isstorage(targeted_atom) && !isclothing(targeted_atom) && !isweapon(targeted_atom) && !isgun(targeted_atom))
+			return
+	if(used_item)
+		var/attackby_result = targeted_atom.attackby(used_item, src, mods)
 		var/afterattack_result
-		if(!QDELETED(A) && !(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK))
+		if(!QDELETED(targeted_atom) && !(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK))
 			// in case the attackby slept
-			if(!W)
-				if(!isitem(A) && !issurface(A))
+			if(!used_item)
+				if(!isitem(targeted_atom) && !issurface(targeted_atom))
 					next_move += 4
-				UnarmedAttack(A, 1, mods)
+				UnarmedAttack(targeted_atom, 1, mods)
 				return
 
-			afterattack_result = W.afterattack(A, src, 1, mods)
+			afterattack_result = used_item.afterattack(targeted_atom, src, 1, mods)
 
-		if(W.attack_speed && !src.contains(A) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE))
-			next_move += W.attack_speed
+		if(used_item.attack_speed && !src.contains(targeted_atom) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (used_item.flags_item & ADJACENT_CLICK_DELAY))
+			next_move += used_item.attack_speed
 	else
-		if(!isitem(A) && !issurface(A))
+		if(!isitem(targeted_atom) && !issurface(targeted_atom))
 			next_move += 4
-		UnarmedAttack(A, 1, mods)
+		UnarmedAttack(targeted_atom, 1, mods)
 
 /mob/proc/check_click_intercept(params,A)
 	//Client level intercept
@@ -208,19 +213,19 @@
 	if(!client || !client.remote_control)
 		return FALSE
 
-	if(mods["middle"])
+	if(mods[MIDDLE_CLICK])
 		A.AIMiddleClick(src)
 		return TRUE
 
-	if(mods["shift"])
+	if(mods[SHIFT_CLICK])
 		A.AIShiftClick(src)
 		return TRUE
 
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		A.AIAltClick(src)
 		return TRUE
 
-	if(mods["ctrl"])
+	if(mods[CTRL_CLICK])
 		A.AICtrlClick(src)
 		return TRUE
 
@@ -231,12 +236,12 @@
 	return TRUE
 
 /atom/proc/clicked(mob/user, list/mods)
-	if (mods["shift"] && !mods["middle"])
+	if (mods[SHIFT_CLICK] && !mods[MIDDLE_CLICK])
 		if(can_examine(user))
 			examine(user)
 		return TRUE
 
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && length(T.contents))
 			user.set_listed_turf(T)
@@ -248,7 +253,7 @@
 	if (..())
 		return TRUE
 
-	if (mods["ctrl"])
+	if (mods[CTRL_CLICK])
 		if (Adjacent(user) && user.next_move < world.time)
 			user.start_pulling(src)
 		return TRUE
@@ -300,10 +305,12 @@
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(atom/A)
 
-	if( !A || !x || !y || !A.x || !A.y ) return
+	if( !A || !x || !y || !A.x || !A.y )
+		return
 	var/dx = A.x - x
 	var/dy = A.y - y
-	if(!dx && !dy) return
+	if(!dx && !dy)
+		return
 
 	var/direction
 	var/specific_direction

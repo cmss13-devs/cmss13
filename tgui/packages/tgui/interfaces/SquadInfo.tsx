@@ -1,10 +1,8 @@
 import { classes } from 'common/react';
-
-import { useBackend } from '../backend';
-import { Box, Button, Flex, Section, Stack, Table } from '../components';
-import { BoxProps } from '../components/Box';
-import { TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+import type { ComponentProps } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Flex, Section, Stack, Table } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 interface SquadLeadEntry {
   name: string;
@@ -107,7 +105,7 @@ const FireTeamLead = (props: {
   );
 };
 
-interface FireteamBoxProps extends BoxProps {
+interface FireteamBoxProps extends ComponentProps<typeof Box> {
   readonly name: string;
   readonly isEmpty: boolean;
 }
@@ -162,25 +160,25 @@ const FireTeam = (props: { readonly ft: string }) => {
             )}
             <Flex.Item>
               <Table className="FireteamMembersTable">
-                <TableRow>
-                  <TableCell className="RoleCell">Role</TableCell>
-                  <TableCell className="RankCell">Rank</TableCell>
-                  <TableCell className="MemberCell">Member</TableCell>
+                <Table.Row>
+                  <Table.Cell className="RoleCell">Role</Table.Cell>
+                  <Table.Cell className="RankCell">Rank</Table.Cell>
+                  <Table.Cell className="MemberCell">Member</Table.Cell>
                   {data.is_lead === 'sl' && (
-                    <TableCell className="ActionCell">
+                    <Table.Cell className="ActionCell">
                       {props.ft === 'Unassigned' ? 'Assign FT' : 'Actions'}
-                    </TableCell>
+                    </Table.Cell>
                   )}
-                </TableRow>
+                </Table.Row>
                 {members.sort(rankSort).map((x) => (
-                  <TableRow key={x.name}>
+                  <Table.Row key={x.name}>
                     <FireTeamMember
                       member={x}
                       key={x.name}
                       team={props.ft}
                       fireteam={fireteam}
                     />
-                  </TableRow>
+                  </Table.Row>
                 ))}
               </Table>
             </Flex.Item>
@@ -224,19 +222,19 @@ const FireTeamMember = (props: {
     });
   return (
     <>
-      <TableCell>
+      <Table.Cell>
         <span
           className={classes([
             'squadranks16x16',
             `squad-${data.squad}-hud-${props.member.rank}`,
           ])}
         />
-      </TableCell>
-      <TableCell>{props.member.paygrade}</TableCell>
-      <TableCell>{props.member.name}</TableCell>
+      </Table.Cell>
+      <Table.Cell>{props.member.paygrade}</Table.Cell>
+      <Table.Cell>{props.member.name}</Table.Cell>
 
       {data.is_lead === 'sl' && (
-        <TableCell>
+        <Table.Cell>
           <Stack fill justify="center">
             {props.team === 'Unassigned' && (
               <>
@@ -262,7 +260,7 @@ const FireTeamMember = (props: {
               </>
             )}
           </Stack>
-        </TableCell>
+        </Table.Cell>
       )}
     </>
   );
@@ -289,7 +287,7 @@ export const SquadInfo = () => {
   const fireteams = ['FT1', 'FT2', 'FT3', 'Unassigned'];
 
   return (
-    <Window theme="usmc" width={680} height={675}>
+    <Window theme="usmc" width={710} height={675}>
       <Window.Content className="SquadInfo">
         <Flex fill={1} justify="space-around" direction="column">
           <Flex.Item>
@@ -301,7 +299,7 @@ export const SquadInfo = () => {
           </Flex.Item>
           <Flex.Item>
             <Section title="Fireteams">
-              <Box className="ftlFlex">
+              <Box width="100%" className="ftlFlex" fillPositionedParent>
                 {fireteams.map((x) => (
                   <FireTeam ft={x} key={x} />
                 ))}

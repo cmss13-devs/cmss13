@@ -20,10 +20,10 @@
 	take_damage( rand(user.melee_damage_lower, user.melee_damage_upper) * brute_multiplier)
 	playsound(src, 'sound/effects/metalscrape.ogg', 20, 1)
 	if(health <= 0)
-		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"), \
+		user.visible_message(SPAN_DANGER("[user] slices [src] apart!"),
 		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
-		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"), \
+		user.visible_message(SPAN_DANGER("[user] [user.slashes_verb] [src]!"),
 		SPAN_DANGER("We [user.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_icon()
 	return XENO_ATTACK_ACTION
@@ -1338,7 +1338,7 @@
 	icon_state = "pictureframe"
 
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
-	name = "Weyland-Yutani 'Ape-Suit' showcase"
+	name = "Weyland-Yutani 'M5X Apesuit' showcase"
 	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."
 	icon_state = "dogcatchersuitempty1"
 
@@ -1896,39 +1896,45 @@
 	icon_state = "wallegg_on"
 
 // Fake Pipes
-/obj/structure/prop/hybrisa/misc/fake/pipes
+/obj/effect/hybrisa/misc/fake/pipes
 	name = "disposal pipe"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	layer = TURF_LAYER
+	icon_state = "pipe-s"
+	layer = WIRE_LAYER
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe1
+/obj/effect/hybrisa/misc/fake/pipes/pipe1
 	icon_state = "pipe-s"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe2
+/obj/effect/hybrisa/misc/fake/pipes/pipe2
 	icon_state = "pipe-c"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe3
+/obj/effect/hybrisa/misc/fake/pipes/pipe3
 	icon_state = "pipe-j1"
 
-// Fake Wire
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe4
+/obj/effect/hybrisa/misc/fake/pipes/pipe4
 	icon_state = "pipe-y"
 
-/obj/structure/prop/hybrisa/misc/fake/pipes/pipe5
+/obj/effect/hybrisa/misc/fake/pipes/pipe5
 	icon_state = "pipe-b"
 
-/obj/structure/prop/hybrisa/misc/fake/wire
+// Fake Wire
+
+/obj/effect/hybrisa/misc/fake/wire
 	name = "power cable"
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
-	layer = TURF_LAYER
+	icon_state = "intactred"
+	layer = UNDERFLOOR_OBJ_LAYER
 
-/obj/structure/prop/hybrisa/misc/fake/wire/red
+/obj/effect/hybrisa/misc/fake/ex_act()
+	qdel(src)
+
+/obj/effect/hybrisa/misc/fake/wire/red
 	icon_state = "intactred"
 
-/obj/structure/prop/hybrisa/misc/fake/wire/yellow
+/obj/effect/hybrisa/misc/fake/wire/yellow
 	icon_state = "intactyellow"
 
-/obj/structure/prop/hybrisa/misc/fake/wire/blue
+/obj/effect/hybrisa/misc/fake/wire/blue
 	icon_state = "intactblue"
 
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire
@@ -2396,6 +2402,27 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/structure/prop/hybrisa/misc/pole_stump
+	name = "colony streetlight stump"
+	icon = 'icons/obj/structures/props/streetlights.dmi'
+	icon_state = "street_stump"
+	plane = FLOOR_PLANE
+	explo_proof = TRUE
+	health = null
+
+/obj/structure/prop/hybrisa/misc/pole_stump/Crossed(atom/movable/crosser)
+	. = ..()
+	if(ishuman(crosser) && prob(10))
+		var/mob/living/carbon/human/crossing_human = crosser
+		crossing_human.visible_message(SPAN_DANGER("[crossing_human] trips on [src] and falls prone."))
+		playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+		crossing_human.KnockDown(0.5)
+
+/obj/structure/prop/hybrisa/misc/pole_stump/traffic
+	name = "colony streetlight stump"
+	icon = 'icons/obj/structures/props/streetlights.dmi'
+	icon_state = "trafficlight_stump"
+
 // Sofa Black
 
 /obj/structure/bed/sofa/hybrisa/sofa/black
@@ -2447,7 +2474,7 @@
 
 /obj/structure/prop/hybrisa/misc/phonebox
 	name = "wrecked phonebox"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, the glass is smashed, hiding inside would be pointless."
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_broken"
 	layer = ABOVE_MOB_LAYER
@@ -2458,7 +2485,7 @@
 
 /obj/structure/prop/hybrisa/misc/phonebox/bloody
 	name = "wrecked phonebox"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. It seems it's completely wrecked, covered in blood and the glass is smashed. Hiding inside would be pointless."
 	icon_state = "phonebox_bloody_off_broken"
 
 /obj/structure/prop/hybrisa/misc/phonebox/bullet_act(obj/projectile/P)

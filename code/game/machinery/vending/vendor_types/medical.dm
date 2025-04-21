@@ -155,11 +155,11 @@
 		if(user.action_busy)
 			return
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] starts to deconstruct [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] starts to deconstruct [src]."),
 		SPAN_NOTICE("You start deconstructing [src]."))
 		if(!do_after(user, 5 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 			return
-		user.visible_message(SPAN_NOTICE("[user] deconstructs [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] deconstructs [src]."),
 		SPAN_NOTICE("You deconstruct [src]."))
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 		new /obj/item/stack/sheet/metal(loc)
@@ -188,7 +188,7 @@
 	user.animation_attack_on(src)
 	health -= (rand(user.melee_damage_lower, user.melee_damage_upper))
 	playsound(src, attacked_sound, 25, 1)
-	user.visible_message(SPAN_DANGER("[user] slashes [src]!"), \
+	user.visible_message(SPAN_DANGER("[user] slashes [src]!"),
 	SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	healthcheck(user)
 	return XENO_ATTACK_ACTION
@@ -359,19 +359,19 @@
 		to_chat(user, SPAN_WARNING("[src] doesn't use [cart.supply_descriptor]!"))
 		return
 
-	user.visible_message(SPAN_NOTICE("[user] starts stocking [cart.supply_descriptor] supplies into [src]."), \
+	user.visible_message(SPAN_NOTICE("[user] starts stocking [cart.supply_descriptor] supplies into [src]."),
 	SPAN_NOTICE("You start stocking [cart.supply_descriptor] into [src]."))
 	being_restocked = TRUE
 
 	while(cart.supplies_remaining > 0)
 		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src))
 			being_restocked = FALSE
-			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with [cart.supply_descriptor]."), \
+			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with [cart.supply_descriptor]."),
 			SPAN_NOTICE("You stop stocking [src] with [cart.supply_descriptor]."))
 			return
 		if(QDELETED(cart) || get_dist(user, cart) > 1)
 			being_restocked = FALSE
-			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with [cart.supply_descriptor]."), \
+			user.visible_message(SPAN_NOTICE("[user] stopped stocking [src] with [cart.supply_descriptor]."),
 			SPAN_NOTICE("You stop stocking [src] with [cart.supply_descriptor]."))
 			return
 
@@ -386,7 +386,7 @@
 			cart.supplies_remaining--
 
 	being_restocked = FALSE
-	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with [cart.supply_descriptor]."), \
+	user.visible_message(SPAN_NOTICE("[user] finishes stocking [src] with [cart.supply_descriptor]."),
 	SPAN_NOTICE("You finish stocking [src] with [cart.supply_descriptor]."))
 
 /obj/structure/machinery/cm_vending/sorted/medical/attackby(obj/item/I, mob/user)
@@ -678,6 +678,13 @@
 	vendor_theme = VENDOR_THEME_CLF
 	allow_supply_link_restock = FALSE
 
+/obj/structure/machinery/cm_vending/sorted/medical/upp
+	name = "\improper Medical Equipment Vendor"
+	desc = "A vending machine dispensing various pieces of medical equipment."
+	req_one_access = list(ACCESS_UPP_GENERAL)
+	req_access = null
+	vendor_theme = VENDOR_THEME_UPP
+
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed
 	name = "\improper ColMarTech MarineMed"
 	desc = "Medical pharmaceutical dispenser with basic medical supplies for marines."
@@ -715,6 +722,13 @@
 	vendor_theme = VENDOR_THEME_CLF
 	allow_supply_link_restock = FALSE
 
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp
+	name = "\improper Basic Medical Supplies Vendor"
+	desc = "A vending machine dispensing basic medical supplies."
+	req_one_access = list(ACCESS_UPP_GENERAL)
+	req_access = null
+	vendor_theme = VENDOR_THEME_UPP
+
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
 	desc = "The MarineMed brand blood dispensary is the premier, top-of-the-line blood dispenser of 2105! Get yours today!" //Don't update this year, the joke is it's old.
@@ -747,6 +761,11 @@
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 	allow_supply_link_restock = FALSE
+
+/obj/structure/machinery/cm_vending/sorted/medical/blood/upp
+	req_one_access = list(ACCESS_UPP_GENERAL)
+	req_access = null
+	vendor_theme = VENDOR_THEME_UPP
 
 
 //------------WALL MED VENDORS------------

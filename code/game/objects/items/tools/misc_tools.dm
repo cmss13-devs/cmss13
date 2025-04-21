@@ -28,7 +28,8 @@
 	matter = list("metal" = 125)
 
 /obj/item/tool/hand_labeler/afterattack(atom/A, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(!mode) //if it's off, give up.
 		to_chat(user, SPAN_WARNING("\The [src] isn't on."))
@@ -72,7 +73,7 @@
 			to_chat(user, SPAN_WARNING("It already has the same label."))
 			return
 
-	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."), \
+	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."),
 	SPAN_NOTICE("You label [A] as \"[label]\"."))
 
 	log_admin("[user] has labeled [A.name] with label \"[label]\". (CKEY: ([user.ckey]))")
@@ -112,7 +113,7 @@
 /obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
 	var/datum/component/label/label = A.GetComponent(/datum/component/label)
 	if(label)
-		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."), \
+		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."),
 						SPAN_NOTICE("You remove the label from [A]."))
 		label.remove_label()
 		log_admin("[user] has removed label from [A.name]. (CKEY: ([user.ckey]))")
@@ -260,7 +261,7 @@
 			obj_target.renamedByPlayer = FALSE
 
 /obj/item/tool/pen/clicky
-	desc = "It's a WY brand extra clicky black ink pen."
+	desc = "It's a W-Y brand extra clicky black ink pen."
 	name = "WY pen"
 	clicky = TRUE
 
@@ -270,7 +271,7 @@
 	pen_color = "blue"
 
 /obj/item/tool/pen/blue/clicky
-	desc = "It's a WY brand extra clicky blue ink pen."
+	desc = "It's a W-Y brand extra clicky blue ink pen."
 	name = "WY blue pen"
 	clicky = TRUE
 
@@ -280,7 +281,7 @@
 	pen_color = "red"
 
 /obj/item/tool/pen/red/clicky
-	desc = "It's a WY brand extra clicky red ink pen."
+	desc = "It's a W-Y brand extra clicky red ink pen."
 	name = "WY red pen"
 	clicky = TRUE
 
@@ -289,7 +290,7 @@
 	pen_color = "green"
 
 /obj/item/tool/pen/green/clicky
-	desc = "It's a WY brand extra clicky green ink pen."
+	desc = "It's a W-Y brand extra clicky green ink pen."
 	name = "WY green pen"
 	clicky = TRUE
 
@@ -371,7 +372,8 @@
 		return
 	..()
 	if(reagents.total_volume)
-		if(M.reagents) reagents.trans_to(M, 50)
+		if(M.reagents)
+			reagents.trans_to(M, 50)
 	return
 
 /obj/item/tool/pen/paralysis
@@ -384,7 +386,8 @@
 	..()
 	if(M.can_inject(user, TRUE))
 		if(reagents.total_volume)
-			if(M.reagents) reagents.trans_to(M, 50)
+			if(M.reagents)
+				reagents.trans_to(M, 50)
 
 /obj/item/tool/pen/paralysis/Initialize()
 	. = ..()

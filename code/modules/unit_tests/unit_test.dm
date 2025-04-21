@@ -33,11 +33,13 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	/// The bottom left floor turf of the testing zone
 	var/turf/run_loc_floor_bottom_left
-
 	/// The top right floor turf of the testing zone
 	var/turf/run_loc_floor_top_right
+
 	///The priority of the test, the larger it is the later it fires
 	var/priority = TEST_DEFAULT
+	///When the test will run
+	var/stage = TEST_STAGE_GAME
 
 	//internal shit
 	var/focus = FALSE
@@ -218,33 +220,45 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 
 	qdel(test)
 
-/proc/RunUnitTests()
+/proc/RunUnitTests(stage)
 	CHECK_TICK
 
-	var/list/tests_to_run = subtypesof(/datum/unit_test)
+	var/list/tests_to_run = list()
 	var/list/focused_tests = list()
-	for (var/_test_to_run in tests_to_run)
-		var/datum/unit_test/test_to_run = _test_to_run
-		if (initial(test_to_run.focus))
+	var/any_focus = FALSE // Just used to detect a focus that might only apply to one stage
+	for(var/datum/unit_test/test_to_run as anything in subtypesof(/datum/unit_test))
+		if(initial(test_to_run.stage) != stage)
+			if(initial(test_to_run.focus))
+				any_focus = TRUE
+			continue
+		if(initial(test_to_run.focus))
 			focused_tests += test_to_run
-	if(length(focused_tests))
+			continue
+		tests_to_run += test_to_run
+	if(length(focused_tests) || any_focus)
 		tests_to_run = focused_tests
 
 	tests_to_run = sortTim(tests_to_run, GLOBAL_PROC_REF(cmp_unit_test_priority))
 
 	var/list/test_results = list()
 
+	var/file_name = "data/unit_tests.json"
+	if(stage == TEST_STAGE_GAME)
+		test_results = json_decode(file2text(file_name))
+	fdel(file_name)
+
 	for(var/unit_path in tests_to_run)
 		CHECK_TICK //We check tick first because the unit test we run last may be so expensive that checking tick will lock up this loop forever
 		RunUnitTest(unit_path, test_results)
 
-	var/file_name = "data/unit_tests.json"
-	fdel(file_name)
 	file(file_name) << json_encode(test_results)
 
-	SSticker.force_ending = TRUE
-	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
-	world.Reboot()
+	if(stage == TEST_STAGE_GAME)
+		SSticker.force_ending = TRUE
+		//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
+		world.Reboot()
+	else
+		SSticker.delay_start = FALSE
 
 /datum/map_template/unit_tests
 	name = "Unit Tests Zone"

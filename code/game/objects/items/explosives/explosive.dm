@@ -26,9 +26,14 @@
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
 	var/allow_star_shape = TRUE
+	/// Whether both explosions and shrapnels use directions
 	var/use_dir = FALSE
-	var/angle = 360
-	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
+	/// Spread angle for shrapnels
+	var/shrapnel_spread = 360
+	/// The angle that this explosive last hits the target at, applies to projectiles, this will override dir if set
+	var/hit_angle
+	/// Whether or not the casing can be toggled between different falloff_mode
+	var/has_blast_wave_dampener = FALSE;
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'
@@ -54,7 +59,7 @@
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!has_blast_wave_dampener)

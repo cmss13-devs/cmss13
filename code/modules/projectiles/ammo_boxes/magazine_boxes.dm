@@ -147,7 +147,7 @@
 	name = "magazine box (Ext M4RA x 12)"
 	overlay_ammo_type = "_ext"
 	num_of_magazines = 12
-	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/ext
+	magazine_type = /obj/item/ammo_magazine/rifle/m4ra/extended
 
 /obj/item/ammo_box/magazine/m4ra/ext/empty
 	empty = TRUE
@@ -625,20 +625,21 @@
 //-----------------------NSG 23 Rifle Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/nsg23
-	name = "magazine box (NSG 23 x 16)"
+	name = "magazine box (NSG 23 x 12)"
 	icon_state = "base_nsg23"
 	overlay_gun_type = "_nsg23"
-	overlay_content = "_reg"
+	overlay_ammo_type = "_l23_reg"
+	overlay_content = "_l23_reg"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23
-	num_of_magazines = 16
+	num_of_magazines = 12
 
 /obj/item/ammo_box/magazine/nsg23/empty
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/nsg23/ap
 	name = "magazine box (NSG 23 AP x 12)"
-	overlay_ammo_type = "_ap"
-	overlay_content = "_ap"
+	overlay_ammo_type = "_l23_ap"
+	overlay_content = "_l23_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/ap
 	num_of_magazines = 12
 
@@ -647,7 +648,7 @@
 
 /obj/item/ammo_box/magazine/nsg23/ex
 	name = "magazine box (NSG 23 Extended x 8)"
-	overlay_ammo_type = "_ext"
+	overlay_ammo_type = "_l23_ext"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/extended
 	num_of_magazines = 8
 
@@ -655,12 +656,63 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/nsg23/heap
-	name = "magazine box (NSG 23 HEAP x 16)"
-	overlay_ammo_type = "_heap"
-	overlay_content = "_heap"
+	name = "magazine box (NSG 23 HEAP x 12)"
+	overlay_ammo_type = "_l23_heap"
+	overlay_content = "_l23_heap"
 	magazine_type = /obj/item/ammo_magazine/rifle/nsg23/heap
 
 /obj/item/ammo_box/magazine/nsg23/heap/empty
+	empty = TRUE
+
+//-----------------------L23 Battle Rifle Mag Boxes--------------------------------\\
+
+/obj/item/ammo_box/magazine/l23
+	name = "magazine box (L23 x 12)"
+	icon_state = "base_l23"
+	overlay_gun_type = "_l23"
+	overlay_ammo_type = "_l23_reg"
+	overlay_content = "_l23_reg"
+	magazine_type = /obj/item/ammo_magazine/rifle/l23
+	num_of_magazines = 12
+
+/obj/item/ammo_box/magazine/l23/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l23/ap
+	name = "magazine box (AP L23 x 12)"
+	overlay_ammo_type = "_l23_ap"
+	overlay_content = "_l23_ap"
+	magazine_type = /obj/item/ammo_magazine/rifle/l23/ap
+	num_of_magazines = 12
+
+/obj/item/ammo_box/magazine/l23/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l23/ex
+	name = "magazine box (Extended L23 x 8)"
+	overlay_ammo_type = "_l23_ext"
+	magazine_type = /obj/item/ammo_magazine/rifle/l23/extended
+	num_of_magazines = 8
+
+/obj/item/ammo_box/magazine/l23/ex/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l23/heap
+	name = "magazine box (HEAP L23 x 12)"
+	overlay_ammo_type = "_l23_heap"
+	overlay_content = "_l23_heap"
+	magazine_type = /obj/item/ammo_magazine/rifle/l23/heap
+
+/obj/item/ammo_box/magazine/l23/heap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l23/incendiary
+	name = "magazine box (Incendiary L23 x 12)"
+	overlay_ammo_type = "_l23_incen"
+	overlay_content = "_l23_incen"
+	magazine_type = /obj/item/ammo_magazine/rifle/l23/incendiary
+
+/obj/item/ammo_box/magazine/l23/incendiary/empty
 	empty = TRUE
 
 //-----------------------Spearhead Autorevolver Speed Loaders Box-----------------------

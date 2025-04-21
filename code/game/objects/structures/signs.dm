@@ -31,7 +31,8 @@
 /obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob) //construction
 	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
-		if(direction == "Cancel") return
+		if(direction == "Cancel")
+			return
 		var/obj/structure/sign/S = new(user.loc)
 		switch(direction)
 			if("North")
@@ -42,7 +43,8 @@
 				S.pixel_y = -32
 			if("West")
 				S.pixel_x = -32
-			else return
+			else
+				return
 		S.name = name
 		S.desc = desc
 		S.icon_state = sign_state
@@ -699,6 +701,49 @@
 	icon = 'icons/obj/structures/props/furniture/clock.dmi'
 	icon_state = "cat_clock_motion"
 
+//===================//
+//      Calendar     //
+//=================//
+
+/obj/structure/sign/calendar
+	name = "wall calendar"
+	desc = "Classic office decoration and a place to stare at maniacally."
+	icon_state = "calendar_civ"
+	var/calendar_faction
+
 /obj/structure/sign/catclock/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("The [src] reads: [worldtime2text()]")
+
+/obj/structure/sign/calendar/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_INFO("The current date is: [time2text(world.realtime, "DDD, MMM DD")], [GLOB.game_year].")
+	if(length(GLOB.holidays))
+		. += SPAN_INFO("Events:")
+		for(var/holidayname in GLOB.holidays)
+			var/datum/holiday/holiday = GLOB.holidays[holidayname]
+			if(holiday.holiday_faction)
+				if(holiday.holiday_faction != calendar_faction)
+					continue
+			. += SPAN_INFO("[holiday.name]")
+			. += SPAN_BOLDNOTICE("[holiday.greet_text]")
+
+/obj/structure/sign/calendar/upp
+	icon_state = "calendar_upp"
+	desc = "Classic office decoration with a spot to stare at maniacally. Features a UPP logo, written in Russian."
+	calendar_faction = FACTION_UPP
+
+/obj/structure/sign/calendar/wy
+	icon_state = "calendar_wy"
+	desc = "Classic office decoration and a place to stare at maniacally, produced by Weyland-Yutani."
+	calendar_faction = FACTION_WY
+
+/obj/structure/sign/calendar/twe
+	icon_state = "calendar_twe"
+	desc = "Classic office decoration and a place to stare at maniacally, has a pattern resembling a Union Jack on it."
+	calendar_faction = FACTION_TWE
+
+/obj/structure/sign/calendar/ua
+	icon_state = "calendar_ua"
+	desc = "Classic office decoration and a place to stare at maniacally, has a vertically placed UA flag and some army symbolics."
+	calendar_faction = FACTION_MARINE

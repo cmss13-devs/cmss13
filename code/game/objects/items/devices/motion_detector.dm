@@ -113,7 +113,7 @@
 /obj/item/device/motiondetector/clicked(mob/user, list/mods)
 	if (isobserver(user) || isxeno(user)) return
 
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!long_range_locked)
@@ -170,8 +170,10 @@
 
 	if(!detector_mode)
 		long_range_cooldown--
-		if(long_range_cooldown) return
-		else long_range_cooldown = initial(long_range_cooldown)
+		if(long_range_cooldown)
+			return
+		else
+			long_range_cooldown = initial(long_range_cooldown)
 
 	scan()
 
@@ -222,8 +224,10 @@
 
 	for(var/A in ping_candidates)
 		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
-		if(M == loc) continue //device user isn't detected
-		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
+		if(M == loc)
+			continue //device user isn't detected
+		if(world.time > M.l_move_time + 20)
+			continue //hasn't moved recently
 		if(M.get_target_lock(iff_signal))
 			continue
 
@@ -265,16 +269,22 @@
 		var/view_x_offset = 0
 		var/view_y_offset = 0
 		if(c_view > 7)
-			if(user.client.pixel_x >= 0) view_x_offset = floor(user.client.pixel_x/32)
-			else view_x_offset = ceil(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0) view_y_offset = floor(user.client.pixel_y/32)
-			else view_y_offset = ceil(user.client.pixel_y/32)
+			if(user.client.pixel_x >= 0)
+				view_x_offset = floor(user.client.pixel_x/32)
+			else
+				view_x_offset = ceil(user.client.pixel_x/32)
+			if(user.client.pixel_y >= 0)
+				view_y_offset = floor(user.client.pixel_y/32)
+			else
+				view_y_offset = ceil(user.client.pixel_y/32)
 
 		var/diff_dir_x = 0
 		var/diff_dir_y = 0
-		if(target.x - user.x > c_view + view_x_offset) diff_dir_x = 4
+		if(target.x - user.x > c_view + view_x_offset)
+			diff_dir_x = 4
 		else if(target.x - user.x < -c_view + view_x_offset) diff_dir_x = 8
-		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
+		if(target.y - user.y > c_view + view_y_offset)
+			diff_dir_y = 1
 		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
 		if(diff_dir_x || diff_dir_y)
 			DB.icon_state = "[blip_icon]_blip_dir"

@@ -35,11 +35,62 @@
 	paint_type = "full_camo"
 	icon_state = "full_camo"
 
+/obj/item/facepaint/sniper/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			paint_type = "full_camo_jungle"
+			icon_state = "full_camo_jungle"
+		if("classic")
+			paint_type = "full_camo"
+			icon_state = "full_camo"
+		if("desert")
+			paint_type = "full_camo_desert"
+			icon_state = "full_camo_desert"
+		if("snow")
+			paint_type = "full_camo_snow"
+			icon_state = "full_camo_snow"
+		if("urban")
+			paint_type = "full_camo_urban"
+			icon_state = "full_camo_urban"
+
+/obj/item/facepaint/sniper/Initialize()
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/facepaint/sniper/snow
+	name = "fullbody paint snow"
+	paint_type = "full_camo_snow"
+	icon_state = "full_camo_snow"
+
+/obj/item/facepaint/sniper/desert
+	name = "fullbody paint desert"
+	paint_type = "full_camo_desert"
+	icon_state = "full_camo_desert"
+
+/obj/item/facepaint/sniper/jungle
+	name = "fullbody paint jungle"
+	paint_type = "full_camo_jungle"
+	icon_state = "full_camo_jungle"
+
+/obj/item/facepaint/sniper/urban
+	name = "fullbody paint urban"
+	paint_type = "full_camo_urban"
+	icon_state = "full_camo_urban"
+
 /obj/item/facepaint/skull
 	name = "skull paint"
 	desc = "Paint, for your face. Make your enemies need a change of underwear from the sheer terror a goddamn skull on your face will bring to them. WARNING: DOES NOT MIX WELL WITH BEARDS."
 	paint_type = "skull_camo"
 	icon_state = "skull_camo"
+
+/obj/item/facepaint/clown
+	name = "clown makeup paint"
+	desc = "Paint, for your face. Used for entertainers and alike, or maybe you just feel that way."
+	paint_type = "clown_camo"
+	icon_state = "clown_camo"
 
 /obj/item/facepaint/sunscreen_stick
 	name= "\improper USCM issue sunscreen"
@@ -84,7 +135,7 @@
 /obj/item/facepaint/proc/paint_face(mob/living/carbon/human/H, mob/user)
 	if(!H || !user)
 		return //In case they're passed as null.
-	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."), \
+	user.visible_message(SPAN_NOTICE("[user] carefully applies [src] on [H]'s face."),
 						SPAN_NOTICE("You apply [src]."))
 	H.lip_style = paint_type
 	H.update_body()

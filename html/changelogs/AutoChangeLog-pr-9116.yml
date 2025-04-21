@@ -1,0 +1,7 @@
+author: "Stakeyng"
+delete-after: True
+changes:
+  - rscadd: "DCCs now have the ability to vend MK30 tactical helmet."
+  - rscadd: "The MK30 tactical helmet now comes with a built-in advanced medical visor."
+  - spellcheck: "The M30 tactical helmet has been renamed to the MK30 tactical helmet."
+  - spellcheck: "The M30 tactical helmet's eyepiece filter is no longer clarified as being on the left."

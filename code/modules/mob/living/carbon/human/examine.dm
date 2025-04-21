@@ -160,6 +160,31 @@
 	if(wear_id)
 		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
 
+	//Inform user if their weapon's IFF will or won't hit src, code by The32bitguy from PVE
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_with_gun = user
+		if(istype(human_with_gun.r_hand, /obj/item/weapon/gun) || istype(human_with_gun.l_hand, /obj/item/weapon/gun))
+			var/obj/item/weapon/gun/gun_with_iff
+			var/found_iff = FALSE
+			if(istype(human_with_gun.get_active_hand(), /obj/item/weapon/gun))
+				gun_with_iff = human_with_gun.get_active_hand()
+			else
+				gun_with_iff = human_with_gun.get_inactive_hand()
+			for(var/obj/item/attachable/attachment in gun_with_iff.contents)
+				if(locate(/datum/element/bullet_trait_iff) in attachment.traits_to_give)
+					found_iff = TRUE
+					break
+			if(gun_with_iff.traits_to_give != null)
+				if(gun_with_iff.traits_to_give.Find("iff") || LAZYFIND(gun_with_iff.traits_to_give,/datum/element/bullet_trait_iff))
+					found_iff = TRUE
+			if(gun_with_iff.in_chamber != null && gun_with_iff.in_chamber.bullet_traits != null )
+				if(gun_with_iff.in_chamber.bullet_traits.Find("iff") || LAZYFIND(gun_with_iff.in_chamber.bullet_traits,/datum/element/bullet_trait_iff))
+					found_iff = TRUE
+			if(found_iff)
+				if(get_target_lock(human_with_gun.get_id_faction_group()) > 0)
+					msg += SPAN_HELPFUL("[capitalize(t_He)] is compatible with your weapon's IFF.\n")
+				else
+					msg += SPAN_DANGER("[capitalize(t_He)] is not compatible with your weapon's IFF. They will be shot by your weapon!\n")
 	//Restraints
 	if(handcuffed)
 		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")
@@ -169,12 +194,12 @@
 
 	//Admin-slept
 	if(sleeping > 8000000)
-		msg += SPAN_HIGHDANGER("<B>This player has been slept by staff.</B>\n")
+		msg += SPAN_HIGHDANGER(SPAN_BOLD("This player has been slept by staff.\n"))
 
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
-			msg += SPAN_WARNING("<B>[t_He] [t_is] convulsing violently!</B>\n")
+			msg += SPAN_WARNING(SPAN_BOLD("[t_He] [t_is] convulsing violently!\n"))
 		else if(jitteriness >= 200)
 			msg += SPAN_WARNING("[t_He] [t_is] extremely jittery.\n")
 		else if(jitteriness >= 100)
@@ -212,7 +237,7 @@
 		if(paralyzed > 1 && distance <= 3)
 			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
-			user.visible_message("<b>[user]</b> checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
+			user.visible_message("[SPAN_BOLD("[user]")] checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
 		spawn(15)
 			if(user && src && distance <= 1)
 				get_pulse(GETPULSE_HAND) // to update it
@@ -241,7 +266,7 @@
 		if(temp)
 			if(temp.status & LIMB_DESTROYED)
 				is_destroyed["[temp.display_name]"] = 1
-				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("<b>[t_He] is missing [t_his] [temp.display_name].</b>\n")
+				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("[t_He] is missing [t_his] [temp.display_name].\n"))
 				continue
 			if(temp.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 				if(!(temp.brute_dam + temp.burn_dam))
@@ -250,18 +275,20 @@
 						continue
 				else
 					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] [temp.status & LIMB_SYNTHSKIN ? "synthskin" : "robot"] [temp.display_name]. It has")
-				if(temp.brute_dam) switch(temp.brute_dam)
-					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some [temp.status & LIMB_SYNTHSKIN ? "surface damage" : "dents"]")
-					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" a lot of surface damage", " severe surface damage")) : SPAN_WARNING(pick(" a lot of dents"," severe denting"))
+				if(temp.brute_dam)
+					switch(temp.brute_dam)
+						if(0 to 20)
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some [temp.status & LIMB_SYNTHSKIN ? "surface damage" : "dents"]")
+						if(21 to INFINITY)
+							wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" a lot of surface damage", " severe surface damage")) : SPAN_WARNING(pick(" a lot of dents"," severe denting"))
 				if(temp.brute_dam && temp.burn_dam)
 					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" and")
-				if(temp.burn_dam) switch(temp.burn_dam)
-					if(0 to 20)
-						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some burns")
-					if(21 to INFINITY)
-						wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
+				if(temp.burn_dam)
+					switch(temp.burn_dam)
+						if(0 to 20)
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some burns")
+						if(21 to INFINITY)
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
 				if(wound_flavor_text["[temp.display_name]"])
 					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING("!\n")
 			else if(length(temp.wounds) > 0)
@@ -390,62 +417,62 @@
 		display_foot_right = 1
 
 	if (display_head)
-		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] <b>face</b>!\n")
+		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("face!")]\n")
 
 	if (display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>entire body</b>!\n")
+		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from all over [t_his] [SPAN_BOLD("entire body!")]\n")
 	else
 		if (display_chest && display_arm_left && display_arm_right && display_hand_left && display_hand_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>upper body</b>!\n")
+			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from every part of [t_his] [SPAN_BOLD("upper body!")]\n")
 		else
 			if (display_chest)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>shirt</b>!\n")
+				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("shirt!")]\n")
 			if (display_arm_left && display_arm_right && display_hand_left && display_hand_left)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>gloves</b> and <b>sleeves</b>!\n")
+				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("gloves")] and [SPAN_BOLD("sleeves!")]\n")
 			else
 				if (display_arm_left && display_arm_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>sleeves</b>!\n")
+					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("sleeves!")]\n")
 				else
 					if (display_arm_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left sleeve</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left sleeve!")]\n")
 					if (display_arm_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right sleeve</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right sleeve!")]\n")
 				if (display_hand_left && display_hand_right)
-					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>gloves</b>!\n")
+					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("gloves!")]\n")
 				else
 					if (display_hand_left)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>left glove</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("left glove!")]\n")
 					if (display_hand_right)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>right glove</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("right glove!")]\n")
 
 		if (display_groin && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from [t_his] <b>lower body!</b>\n")
+			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from every part of [t_his] [SPAN_BOLD("lower body!")]\n")
 		else
 			if (display_groin)
-				msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] <b>groin</b>!\n")
+				msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("groin!")]\n")
 			if (display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>pant legs</b> and <b>boots</b>!\n")
+				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs")] and [SPAN_BOLD("boots!")]\n")
 			else
 				if (display_leg_left && display_leg_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>pant legs</b>!\n")
+					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs!")]\n")
 				else
 					if (display_leg_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left pant leg</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left pant leg!")]\n")
 					if (display_leg_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right pant leg</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right pant leg!")]\n")
 				if (display_foot_left && display_foot_right)
-					msg += SPAN_WARNING("[t_He] has blood pooling around[t_his] <b>boots</b>!\n")
+					msg += SPAN_WARNING("[t_He] has blood pooling around[t_his] [SPAN_BOLD("boots!")]\n")
 				else
 					if (display_foot_left)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] <b>left boot</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("left boot!")]\n")
 					if (display_foot_right)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] <b>right boot</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("right boot!")]\n")
 
 	if(chestburst == 2)
-		msg += SPAN_WARNING("<b>[t_He] has a giant hole in [t_his] chest!</b>\n")
+		msg += SPAN_WARNING(SPAN_BOLD("[t_He] has a giant hole in [t_his] chest!\n"))
 
 	for(var/implant in get_visible_implants())
-		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
+		msg += SPAN_WARNING(SPAN_BOLD("[t_He] has \a [implant] sticking out of [t_his] flesh!\n"))
 
 	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
@@ -475,7 +502,8 @@
 				msg += "\n"
 	if(hasHUD(user,"medical"))
 		var/cardcolor = holo_card_color
-		if(!cardcolor) cardcolor = "none"
+		if(!cardcolor)
+			cardcolor = "none"
 		msg += "<span class = 'deptradio'>Triage holo card:</span> <a href='byond://?src=\ref[src];medholocard=1'>\[[cardcolor]\]</a> - "
 
 		// scan reports
@@ -521,7 +549,7 @@
 	if(isyautja(user))
 		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
-			. += SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>.")
+			. += SPAN_BLUE("Their bracers identifies them as [SPAN_BOLD("[real_name].")]")
 		. += SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey.")
 		if(src.hunter_data.hunted)
 			. += SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name].")

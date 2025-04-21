@@ -90,8 +90,8 @@
 	if(!(turf_flags & TURF_BROKEN))
 		playsound(src, "windowshatter", 25, 1)
 		xeno_attacker.animation_attack_on(src)
-		xeno_attacker.visible_message(SPAN_DANGER("\The [xeno_attacker] smashes \the [src]!"), \
-		SPAN_DANGER("You smash \the [src]!"), \
+		xeno_attacker.visible_message(SPAN_DANGER("\The [xeno_attacker] smashes \the [src]!"),
+		SPAN_DANGER("You smash \the [src]!"),
 		SPAN_DANGER("You hear broken glass!"), 5)
 		turf_flags |= TURF_BROKEN
 		update_icon()
@@ -100,6 +100,15 @@
 /turf/open/floor/light/red
 	icon_state = "light_on-r"
 	state = LIGHT_FLOOR_COLOR_RED
+
+/turf/open/floor/light/red/darker
+	icon_state = "light_on-r"
+	state = LIGHT_FLOOR_COLOR_RED
+	color = "#c27e7e"
+	light_on = TRUE
+	light_power = 1
+	light_range = 2
+	light_color = "#ff0000"
 
 /turf/open/floor/light/green
 	icon_state = "light_on-g"

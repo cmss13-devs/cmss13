@@ -74,7 +74,7 @@
 
 /obj/item/paper/update_icon()
 	switch(icon_state)
-		if("paper_talisman", "paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
+		if("paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
 			return
 
 	if(!info)
@@ -116,7 +116,7 @@
 	var/paper_info = info
 	if(scramble)
 		paper_info = stars_decode_html(info)
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, "size=650x700")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", name, name, width = 650, height = 700)
 	onclose(user, name)
 
 /obj/item/paper/verb/rename()
@@ -146,10 +146,14 @@
 		onclose(user, name)
 	return
 
-/obj/item/paper/attack(mob/living/carbon/M, mob/living/carbon/user)
+/obj/item/paper/attack(mob/living/carbon/human/M, mob/living/carbon/user)
+
 	if(user.zone_selected == "eyes")
-		user.visible_message(SPAN_NOTICE("You show the paper to [M]. "), \
-			SPAN_NOTICE(" [user] holds up a paper and shows it to [M]. "))
+		if(!ishumansynth_strict(M))
+			return
+
+		user.visible_message(SPAN_NOTICE("You show the paper to [M]."),
+		SPAN_NOTICE("[user] holds up a paper and shows it to [M]."))
 		examine(M)
 
 	else if(user.zone_selected == "mouth") // lipstick wiping
@@ -160,10 +164,10 @@
 				H.lip_style = null
 				H.update_body()
 			else
-				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
+				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."),
 									SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
 				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC)) //user needs to keep their active hand, H does not.
-					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
+					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."),
 										SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
@@ -346,12 +350,12 @@
 		if(istype(P, /obj/item/tool/lighter/zippo))
 			class = "<span class='rose'>"
 
-		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!", \
+		user.visible_message("[class][user] holds \the [P] up to \the [src], it looks like \he's trying to burn it!",
 		"[class]You hold \the [P] up to \the [src], burning it slowly.")
 
 		spawn(20)
 			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.heat_source)
-				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.", \
+				user.visible_message("[class][user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.",
 				"[class]You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.")
 
 				if(user.get_inactive_hand() == src)
@@ -441,7 +445,8 @@
 				to_chat(user, SPAN_NOTICE("Take off the carbon copy first."))
 				add_fingerprint(user)
 				return
-		if(loc != user) return
+		if(loc != user)
+			return
 		var/obj/item/paper_bundle/B = new(get_turf(user))
 		if (name != "paper")
 			B.name = name
@@ -572,7 +577,7 @@
 
 /obj/item/paper/prison_station/test_log
 	name = "paper- 'Test Log'"
-	info = "<p style=\"text-align: center;\"><sub>TEST LOG</sub></p><p>SPECIMEN: Bioweapon candidate Kappa. Individual 3</p><BR>\n<p>-</p><p>PROCEDURE: Observation</p><p>RESULTS: Specimen paces around cell. Appears agitated. Vocalisations.</p><p>-</p><p>PROCEDURE: Simian test subject</p><p>RESULTS: Devoured by specimen. No significant difference from last simian test.</p><p><em>Note: Time to amp it up</em></p><p>-</p><p>PROCEDURE: Human test subject (D-1). Instructed to \"pet it like a dog\"</p><p>RESULTS: Specimen and D-1 stare at each other for approximately two seconds. D-1 screams and begins pounding on observation window, begging to be released. Specimen pounces on D-1. Specimen kills D-1 with multiple slashes from its foreclaws.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Two human test subjects (D-2, D-3). Instructed to subdue specimen</p><p>RESULTS: D-2 and D-3 slowly approach specimen. D-3 punches specimen on forehead to no noticeable effect. Specimen pounces on D-3, then kills him with multiple slashes from its foreclaws. D-2 screams and begins pounding on observation window. Specimen pounces on D-2, then kills him with multiple slashes from its foreclaws.</p><p>Specimen begins slashing at observation access doors. Exhibiting an unexpected amount of strength, it is able to d~</p>"
+	info = "<p style=\"text-align: center;\"><sub>TEST LOG</sub></p><p>SPECIMEN: Bioweapon candidate Kappa. Individual 3</p><BR>\n<p>-</p><p>PROCEDURE: Observation</p><p>RESULTS: Specimen paces around cell. Appears agitated. Vocalisations.</p><p>-</p><p>PROCEDURE: Simian test subject</p><p>RESULTS: Nested by specimen. No significant difference from last simian test.</p><p><em>Note: Time to amp it up</em></p><p>-</p><p>PROCEDURE: Human test subject (D-1). Instructed to \"pet it like a dog\"</p><p>RESULTS: Specimen and D-1 stare at each other for approximately two seconds. D-1 screams and begins pounding on observation window, begging to be released. Specimen pounces on D-1. Specimen kills D-1 with multiple slashes from its foreclaws.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Two human test subjects (D-2, D-3). Instructed to subdue specimen</p><p>RESULTS: D-2 and D-3 slowly approach specimen. D-3 punches specimen on forehead to no noticeable effect. Specimen pounces on D-3, then kills him with multiple slashes from its foreclaws. D-2 screams and begins pounding on observation window. Specimen pounces on D-2, then kills him with multiple slashes from its foreclaws.</p><p>Specimen begins slashing at observation access doors. Exhibiting an unexpected amount of strength, it is able to d~</p>"
 
 /obj/item/paper/prison_station/interrogation_log
 	name = "paper- 'Test Log'"
@@ -651,6 +656,22 @@
 
 /obj/item/paper/bigred/upp
 	name = "UPP Orders"
+
+/obj/item/paper/bigred/clf
+	name = "Log Entry"
+	info = "The agitation went as planned and the miners went on strike. It turned violent but we held back the jackbooted scum well enough. The problem is we've stopped receiving outside communication from the rest of the colony, and people have been going missing. I'm ordering everyone to hunker down until we can figure out what's going on."
+
+/obj/item/paper/trijent/clf
+	name = "Log Entry"
+	info = "Our ship is lost. Our pods have crashed on a company-occupied planet. It appears the colony is overrun with hostile creatures, and many of the men are already dead. Our fight for freedom cannot end like this! We will live on, for the liberation!"
+
+/obj/item/paper/varadero/clf
+	name = "SOS!"
+	info = "Mayday! Mayday! To all nearby CLF frequencies, we are under attack! Unknown creatures have overrun New Varadero outpost and our shuttle is damaged beyond repair! We ne-"
+
+/obj/item/paper/soro/clf
+	name = "TOP SECRET: FOR CELL LEAD ONLY"
+	info = "Your request for extraction has been recieved. We have no assets in the region available. Await further instruction."
 
 /obj/item/paper/bigred/upp/Initialize(mapload, photo_list)
 	. = ..()
@@ -914,11 +935,12 @@
 
 /obj/item/paper/incident
 	name = "incident report"
+	icon_state = "paper_uscm_words"
 	var/datum/crime_incident/incident
 
 /obj/item/paper/incident/Initialize()
 	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]
+	var/template = {"\[center\]\[uscm\]\[/center\]
 		\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
 		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
 		\[barcode\]\[/center\]"}
@@ -933,10 +955,13 @@
 
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
+	icon_state = "paper_uscm_words"
 
+//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
 /obj/item/paper/fingerprint/Initialize(mapload, list/prints)
-	. = ..()
-	var/template = {"\[center\]\[logo\]\[/center\]"}
+	// To not block initialization construct object like below
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
 
 	var/i = 0
 	for(var/obj/effect/decal/prints/print_set in prints)
@@ -952,6 +977,57 @@
 		\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
+	update_icon()
+
+
+/obj/item/paper/personalrecord
+	name = "personal record"
+	icon_state = "paper_uscm_words"
+
+//Passing second parameter and using default constructor can cause blockade on paper initialization until resource is deleted
+/obj/item/paper/personalrecord/Initialize(mapload, datum/data/record/general_record, datum/data/record/security_record)
+	// To not block initialization construct object like below
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
+
+	template += {"\[center\]\[b\]Personal Record\[/b\]\[/center\]"}
+
+	if(general_record)
+		template += {"
+		Name: [general_record.fields["name"]]\[br\] `
+		ID: [general_record.fields["id"]]\[br\]
+		Sex: [general_record.fields["sex"]]\[br\]
+		Age: [general_record.fields["age"]]\[br\]
+		Rank: [general_record.fields["rank"]]\[br\]
+		Physical Status: [general_record.fields["p_stat"]]\[br\]
+		Mental Status: [general_record.fields["m_stat"]]\[br\]
+		Criminal Status: [general_record.fields["criminal"]]\[br\]
+		"}
+
+		if (security_record)
+			template += {"\[center\]\[b\]Security Data\[/b\]\[/center\]"}
+			template += {"Incidents: [security_record.fields["incident"]]\[br\]"}
+			template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
+
+			if(islist(security_record.fields["comments"]) || length(security_record.fields["comments"]) > 0)
+				for(var/com_i in security_record.fields["comments"])
+					var/comment = security_record.fields["comments"][com_i]
+					// What a wacky and jolly creation
+					// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+					var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
+					if (isnull(comment["deleted_by"]))
+						comment_markup += "[comment["entry"]]"
+					else
+						comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
+					template += {"[comment_markup]\[br\]\[br\]"}
+			else
+				template += {"\[b\]No comments\[/b\]\[br\]"}
+		else
+			template += {"\[b\]Security Record Lost!\[/b\]\[br\]"}
+
+	info = parsepencode(template, null, null, FALSE)
+	update_icon()
+
 #undef MAX_FIELDS
 
 /obj/item/paper/colonial_grunts

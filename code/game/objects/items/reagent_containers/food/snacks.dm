@@ -27,7 +27,8 @@
 /obj/item/reagent_container/food/snacks/proc/On_Consume(mob/M)
 	SEND_SIGNAL(src, COMSIG_SNACK_EATEN, M)
 	SEND_SIGNAL(M, COMSIG_MOB_EATEN_SNACK, src)
-	if(!usr) return
+	if(!usr)
+		return
 
 	if(!reagents.total_volume)
 		if(M == usr)
@@ -75,8 +76,8 @@
 		if(fullness > NUTRITION_HIGH && world.time < C.overeat_cooldown)
 			to_chat(user, SPAN_WARNING("[user == M ? "You" : "They"] don't feel like eating more right now."))
 			return FALSE
-		if(issynth(C))
-			fullness = 200 //Synths never get full
+		if(issynth(C) || isyautja(C))
+			fullness = 200 //Synths and yautja never get full
 
 		if(HAS_TRAIT(M, TRAIT_CANNOT_EAT)) //Do not feed the Working Joes
 			to_chat(user, SPAN_DANGER("[user == M ? "You are" : "[M] is"] unable to eat!"))
@@ -103,7 +104,8 @@
 					SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 					SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
+				return
 
 			var/rgt_list_text = get_reagent_list_text()
 
@@ -172,9 +174,9 @@
 			to_chat(user, SPAN_DANGER("You already have something on your [U]."))
 			return
 
-		user.visible_message( \
-			"[user] scoops up some [src] with \the [U]!", \
-			SPAN_NOTICE("You scoop up some [src] with \the [U]!") \
+		user.visible_message(
+			"[user] scoops up some [src] with \the [U]!",
+			SPAN_NOTICE("You scoop up some [src] with \the [U]!")
 		)
 
 		src.bitecount++
@@ -208,14 +210,14 @@
 		return 1
 	var/slices_lost = 0
 	if (!inaccurate)
-		user.visible_message( \
-			SPAN_NOTICE("[user] slices \the [src]!"), \
-			SPAN_NOTICE("You slice \the [src]!") \
+		user.visible_message(
+			SPAN_NOTICE("[user] slices \the [src]!"),
+			SPAN_NOTICE("You slice \the [src]!")
 		)
 	else
-		user.visible_message( \
-			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"), \
-			SPAN_NOTICE("You crudely slice \the [src] with your [W]!") \
+		user.visible_message(
+			SPAN_NOTICE("[user] crudely slices \the [src] with [W]!"),
+			SPAN_NOTICE("You crudely slice \the [src] with your [W]!")
 		)
 		slices_lost = rand(1,max(1,floor(slices_num/2)))
 	var/reagents_per_slice = reagents.total_volume/slices_num
@@ -1566,7 +1568,8 @@
 	reagents.add_reagent("meatprotein",10)
 
 /obj/item/reagent_container/food/snacks/monkeycube/afterattack(obj/O, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(O,/obj/structure/sink) && !package)
 		to_chat(user, "You place \the [name] under a stream of water...")
 		user.drop_held_item()
@@ -2611,7 +2614,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/bread
 	name = "Bread"
-	icon_state = "Some plain old Earthen bread."
+	desc = "Some plain old Earthen bread."
 	icon_state = "bread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/breadslice
@@ -2712,7 +2715,7 @@
 	name = "Cracker"
 	desc = "It's a salted cracker."
 	icon_state = "cracker"
-	icon = 'icons/obj/items/food/mre_food.dmi'
+	icon = 'icons/obj/items/food/mre_food/uscm.dmi'
 	filling_color = "#F5DEB8"
 
 /obj/item/reagent_container/food/snacks/cracker/Initialize()
@@ -3390,35 +3393,6 @@
 		icon_state = "open-hotdog"
 		item_state = "hotdog"
 
-/obj/item/reagent_container/food/snacks/upp
-	name = "\improper UPP ration"
-	desc = "A sealed, freeze-dried, compressed package containing a single item of food. Commonplace in the UPP military, especially those units stationed on far-flung colonies. This one is stamped for consumption by the UPP's 'Smoldering Sons' battalion and was packaged in 2179."
-	icon_state = "upp_ration"
-	icon = 'icons/obj/items/food/mre_food.dmi'
-	bitesize = 4
-
-/obj/item/reagent_container/food/snacks/upp/Initialize()
-	. = ..()
-	reagents.add_reagent("nutriment", 8)
-
-/obj/item/reagent_container/food/snacks/upp/attack_self(mob/user)
-	..()
-
-	if(package)
-		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, TRUE)
-		to_chat(user, SPAN_NOTICE("You tear off the ration seal and pull out the contents!"))
-		package = FALSE
-		var/variation = rand(1,2)
-		desc = "An extremely dried item of food, with little flavoring or coloration. Looks to be prepped for long term storage, but will expire without the packaging. Best to eat it now to avoid waste. At least things are equal."
-		switch(variation)
-			if(1)
-				name = "rationed fish"
-				icon_state = "upp_1"
-			if(2)
-				name = "rationed rice"
-				icon_state = "upp_2"
-
-
 /obj/item/reagent_container/food/snacks/eat_bar
 	name = "MEAT Bar"
 	desc = "It is a vacuum sealed tube of suspicious meat. Artificially packed full of nutrients you can't pronounce. The M is printed on the side, so it just reads EAT. Guess that's where the slogan comes from."
@@ -3476,7 +3450,8 @@
 		to_chat(user, SPAN_NOTICE("You pull open the package of [src]!"))
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)
 
-		new wrapper (user.loc)
+		if(wrapper)
+			new wrapper(user.loc)
 		icon_state = "[initial(icon_state)]-o"
 		item_state = "[initial(item_state)]-o"
 		package = 0
@@ -3544,55 +3519,28 @@
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("coco", 2)
 	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
-//MREs
 
-/obj/item/reagent_container/food/snacks/packaged_meal
-	name = "\improper MRE component"
-	desc = "A package from a Meal Ready-to-Eat, property of the US Colonial Marines. Contains a part of a meal, prepared for field consumption."
-	icon_state = "entree"
-	icon = 'icons/obj/items/food/mre_food.dmi'
-	package = 1
-	bitesize = 5
-	var/flavor = "boneless pork ribs"//default value
+/obj/item/reagent_container/food/snacks/wrapped/twe_bar
+	name = "ORP oat bisuit"
+	desc = "A bar of oat biscuit, has some bits of dried fruits in it. Goes well with a cup of tea."
+	icon = 'icons/obj/items/food/mre_food/twe.dmi'
+	icon_state = "cookie_bar"
+	wrapper = null
 
-/obj/item/reagent_container/food/snacks/packaged_meal/Initialize(mapload, newflavor)
+/obj/item/reagent_container/food/snacks/wrapped/twe_bar/Initialize()
 	. = ..()
-	determinetype(newflavor)
+	reagents.add_reagent("bread", 3)
+	reagents.add_reagent("fruit", 1)
+	reagents.add_reagent("sugar", 1)
 
-/obj/item/reagent_container/food/snacks/packaged_meal/attack_self(mob/user as mob)
-	if(package)
-		to_chat(user, SPAN_NOTICE("You pull open the package of the meal!"))
-		playsound(loc,"rip", 15, 1)
+/obj/item/reagent_container/food/snacks/wrapped/upp_biscuits
+	name = "IRP army biscuits"
+	desc = "Also known as army galets. An oven baked, crunchy and salty biscuits, can be combined with some spread or eaten on themselves."
+	icon = 'icons/obj/items/food/mre_food/upp.dmi'
+	icon_state = "Biscuits_package"
+	wrapper = null
 
-		name = "\improper" + flavor
-		desc = "The contents of a USCM Standard issue MRE. This one is [flavor]."
-		icon_state = flavor
-		package = 0
-		return
-	..()
-/obj/item/reagent_container/food/snacks/packaged_meal/proc/determinetype(newflavor)
-	name = "\improper MRE component ([newflavor])"
-	flavor = newflavor
-
-	switch(newflavor)
-		if("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
-			icon_state = "entree"
-			desc = "An MRE entree component. Contains the main course for nutrients. This one is [flavor]."
-			reagents.add_reagent("nutriment", 14)
-			reagents.add_reagent("sodiumchloride", 6)
-		if("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
-			icon_state = "side"
-			desc = "An MRE side component. Contains a side, to be eaten alongside the main. This one is [flavor]."
-			reagents.add_reagent("nutriment", 6)
-			reagents.add_reagent("sodiumchloride", 2)
-		if("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
-			icon_state = "snack"
-			desc = "An MRE snack component. Contains a light snack in case you weren't feeling terribly hungry. This one is [flavor]."
-			reagents.add_reagent("nutriment", 4)
-			reagents.add_reagent("sodiumchloride", 2)
-		if("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
-			icon_state = "dessert"
-			desc = "An MRE side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious). This one is [flavor]."
-			reagents.add_reagent("nutriment", 2)
-			reagents.add_reagent("sugar", 2)
-			reagents.add_reagent("coco", 1)
+/obj/item/reagent_container/food/snacks/wrapped/upp_biscuits/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 4)
+	reagents.add_reagent("sodiumchloride", 1)

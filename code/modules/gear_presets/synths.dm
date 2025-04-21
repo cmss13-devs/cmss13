@@ -115,7 +115,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/tan(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/a1/tan(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_L_STORE)
 
@@ -168,6 +168,9 @@
 
 /datum/equipment_preset/synth/survivor/wy
 	flags = EQUIPMENT_PRESET_STUB
+	faction = FACTION_WY
+	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	minimap_icon = "wy_syn"
 	minimap_background = "background_goon"
 
 /datum/equipment_preset/synth/survivor/wy/New()
@@ -508,7 +511,8 @@
 		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran,
 		WEAR_R_HAND = /obj/item/storage/pouch/flare/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/upp/knife,
-		WEAR_L_HAND = /obj/item/storage/large_holster/katana/full
+		WEAR_L_HAND = /obj/item/storage/large_holster/katana/full,
+		WEAR_ACCESSORY = /obj/item/clothing/accessory/patch/freelancer_patch
 	)
 
 /datum/equipment_preset/synth/survivor/surveyor_synth
@@ -619,6 +623,7 @@
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_background = "background_cmb"
+	minimap_icon = "cmb_syn"
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
@@ -640,7 +645,9 @@
 	survivor_variant = SECURITY_SURVIVOR
 
 /datum/equipment_preset/synth/survivor/wy/security_synth
-	name = "Survivor - Synthetic - Corporate Security Synth"
+	name = "Survivor - Synthetic - W-Y Security Guard Synthetic"
+	assignment = JOB_WY_SEC_SYNTH
+	rank = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
@@ -658,31 +665,6 @@
 		WEAR_R_STORE = /obj/item/storage/pouch/tools/full,
 		WEAR_FEET = /obj/item/clothing/shoes/marine/knife,
 		WEAR_L_HAND = /obj/item/weapon/classic_baton
-	)
-
-	survivor_variant = SECURITY_SURVIVOR
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/synth/survivor/wy/protection_synth
-	name = "Survivor - Synthetic - Corporate Protection Synth"
-	idtype = /obj/item/card/id/pmc
-	role_comm_title = "WY Syn"
-	minimap_icon = "pmc_syn"
-	minimap_background = "background_pmc"
-	equipment_to_spawn = list(
-		WEAR_HEAD = /obj/item/clothing/head/helmet/marine/veteran/pmc,
-		WEAR_L_EAR = /obj/item/device/radio/headset/distress/pmc/hvh,
-		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/sechud,
-		WEAR_BODY = /obj/item/clothing/under/marine/veteran/pmc,
-		WEAR_ACCESSORY = /obj/item/clothing/accessory/storage/droppouch,
-		WEAR_IN_ACCESSORY = /obj/item/explosive/grenade/flashbang,
-		WEAR_BACK = /obj/item/storage/backpack/lightpack/five_slot,
-		WEAR_IN_BACK = /obj/item/device/binoculars,
-		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/black,
-		WEAR_IN_JACKET = /obj/item/weapon/telebaton,
-		WEAR_HANDS = /obj/item/clothing/gloves/marine/veteran/pmc,
-		WEAR_FEET = /obj/item/clothing/shoes/veteran/pmc/knife,
-		WEAR_L_HAND = /obj/item/storage/large_holster/machete/full
 	)
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -768,7 +750,7 @@
 	minimap_icon = "joe"
 
 	skills = /datum/skills/working_joe
-	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_FRENCH, LANGUAGE_SPANISH, LANGUAGE_CHINESE)
 	/// Used to set species when loading race
 	var/joe_type = SYNTH_WORKING_JOE
 
@@ -963,7 +945,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/xenos(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/collectable/xenom(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/xenos(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(new_human), WEAR_L_EAR)
 

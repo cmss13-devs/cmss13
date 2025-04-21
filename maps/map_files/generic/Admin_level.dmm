@@ -18,6 +18,9 @@
 /obj/docking_port/stationary/vehicle_elevator/adminlevel,
 /turf/open/space/basic,
 /area/space)
+"af" = (
+/turf/closed/wall/almayer/upp/reinforced/outer,
+/area/centcom/control)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -26,6 +29,12 @@
 	},
 /turf/open/floor/tdome/northeast,
 /area/tdome)
+"ah" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/supply/dock/upp)
+"ai" = (
+/turf/open/floor/corsat/cargo,
+/area/supply/dock/upp)
 "aj" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/effect/spider/stickyweb,
@@ -63,7 +72,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "tdome_t2";
-	name = "\improper Team 2 Shutters"
+	name = "\improper Team 2 Shutters";
+	explo_proof = 1
 	},
 /turf/open/floor/tdome/test_floor4,
 /area/tdome)
@@ -1652,7 +1662,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "tdome_t1";
-	name = "\improper Team 1 Shutters"
+	name = "\improper Team 1 Shutters";
+	explo_proof = 1
 	},
 /turf/open/floor/tdome/test_floor4,
 /area/tdome)
@@ -1833,7 +1844,7 @@
 /turf/closed/wall,
 /area/adminlevel/ert_station)
 "VD" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/koorlander,
 /turf/open/floor/tdome/northeast,
 /area/tdome/tdomeobserve)
 "VI" = (
@@ -1901,7 +1912,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/ert_station/shuttle_dispatch)
 "WQ" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "Xi" = (
@@ -15171,6 +15182,7 @@ as
 as
 as
 as
+TT
 as
 as
 as
@@ -15180,8 +15192,7 @@ as
 as
 as
 as
-as
-as
+TT
 as
 as
 as
@@ -15323,17 +15334,17 @@ as
 as
 as
 as
+TT
 as
+af
+af
+af
+af
+af
+af
+af
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -15475,17 +15486,17 @@ as
 as
 as
 as
+TT
 as
+af
+ah
+ah
+ah
+ah
+ah
+af
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -15627,17 +15638,17 @@ as
 as
 as
 as
+TT
 as
+af
+ah
+ai
+ah
+ai
+ah
+af
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -15779,17 +15790,17 @@ as
 as
 as
 as
+TT
 as
+af
+ah
+ah
+ah
+ah
+ah
+af
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -15931,17 +15942,17 @@ as
 as
 as
 as
+TT
 as
+af
+ah
+ai
+ah
+ai
+ah
+af
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -16083,17 +16094,17 @@ as
 as
 as
 as
+TT
 as
+af
+ah
+ah
+ah
+ah
+ah
+af
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -16235,17 +16246,17 @@ as
 as
 as
 as
+TT
 as
+af
+af
+af
+af
+af
+af
+af
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
 as
 as
 as
@@ -16387,6 +16398,7 @@ as
 as
 as
 as
+TT
 as
 as
 as
@@ -16396,8 +16408,7 @@ as
 as
 as
 as
-as
-as
+TT
 as
 as
 as
@@ -16539,17 +16550,17 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
 as
 as
 as

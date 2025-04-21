@@ -61,6 +61,11 @@ their unique feature is that a direct hit will buff your damage and firerate
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
+	durability_loss = GUN_DURABILITY_LOSS_HIGH
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/lever_action/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19, "rail_x" = 11, "rail_y" = 21, "under_x" = 24, "under_y" = 16, "stock_x" = 15, "stock_y" = 11)
@@ -168,11 +173,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 			playsound(user, reload_sound, 25, TRUE)
 			new_handful.forceMove(get_turf(src))
 		else
-			if(user) to_chat(user, SPAN_WARNING("\The [src] is already empty."))
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [src] is already empty."))
 		return
 
 	unload_bullet(user)
-	if(!current_mag.current_rounds && !in_chamber) update_icon()
+	if(!current_mag.current_rounds && !in_chamber)
+		update_icon()
 
 /obj/item/weapon/gun/lever_action/proc/unload_bullet(mob/user)
 	if(isnull(current_mag) || !length(current_mag.chamber_contents))
@@ -182,7 +189,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(user)
 		user.put_in_hands(new_handful)
 		playsound(user, reload_sound, 25, TRUE)
-	else new_handful.forceMove(get_turf(src))
+	else
+		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
@@ -216,7 +224,10 @@ their unique feature is that a direct hit will buff your damage and firerate
 		return in_chamber
 
 /obj/item/weapon/gun/lever_action/unique_action(mob/user)
-	work_lever(user)
+	if(jammed)
+		jam_unique_action(user)
+	else
+		work_lever(user)
 
 /obj/item/weapon/gun/lever_action/ready_in_chamber()
 	return
@@ -299,6 +310,16 @@ their unique feature is that a direct hit will buff your damage and firerate
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet/upp, // Barrel
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/wy,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
@@ -383,6 +404,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_3
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+	initial_jam_chance = GUN_JAM_CHANCE_SEVERE // look, futuristic lever action rifle that uses a button to chamber a round? yeah its gonna jam more than your traditionals
+	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/lever_action/xm88/wield(mob/user)
 	. = ..()

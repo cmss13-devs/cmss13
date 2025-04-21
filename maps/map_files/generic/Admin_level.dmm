@@ -72,7 +72,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "tdome_t2";
-	name = "\improper Team 2 Shutters"
+	name = "\improper Team 2 Shutters";
+	explo_proof = 1
 	},
 /turf/open/floor/tdome/test_floor4,
 /area/tdome)
@@ -1661,7 +1662,8 @@
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 4;
 	id = "tdome_t1";
-	name = "\improper Team 1 Shutters"
+	name = "\improper Team 1 Shutters";
+	explo_proof = 1
 	},
 /turf/open/floor/tdome/test_floor4,
 /area/tdome)

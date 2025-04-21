@@ -188,3 +188,6 @@
 
 /// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
 #define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"
+
+/// From /modules/animations/animations_library.dm and /code/modules/mob/mob.dm
+#define COMSIG_MOB_ANIMATING "mob_animating"

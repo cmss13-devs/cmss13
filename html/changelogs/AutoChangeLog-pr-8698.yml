@@ -1,0 +1,10 @@
+author: "Blundir Drathek"
+delete-after: True
+changes:
+  - code_imp: "autowiki icons are now centered using a new center_icon proc and autowiki gun images are now always 64x32"
+  - bugfix: "fixed some guns having incorrect attachment offsets"
+  - bugfix: "fixed some guns being offset incorrectly in inventory/floor"
+  - bugfix: "fixed getflaticon sometimes returning icons with no height/width"
+  - refactor: "refactored majority of gun sprites (except pistols/revolvers) to utilize 64x32 file instead of 32x32"
+  - refactor: "got rid of all the cosmetical internal attachments that were a part of gun 32x32 dmi limitations"
+  - imageadd: "moved custom magazine on gun sprite to gun sprite files"

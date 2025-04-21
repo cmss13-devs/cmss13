@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Autowiki gun templates now lists unwielded stats as N/A for two handers"
+  - code_imp: "Autowiki xeno comparisons now round to the nearest hundredth"

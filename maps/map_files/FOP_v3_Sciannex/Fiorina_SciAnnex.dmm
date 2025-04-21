@@ -12607,6 +12607,9 @@
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
+/obj/structure/sign/calendar{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/security)
 "jIz" = (
@@ -29159,6 +29162,10 @@
 /area/fiorina/maintenance)
 "wxW" = (
 /obj/structure/prop/almayer/computers/mapping_computer,
+/obj/structure/sign/calendar{
+	pixel_y = 28;
+	pixel_x = -25
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "wxX" = (

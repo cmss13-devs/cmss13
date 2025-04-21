@@ -73,7 +73,7 @@
 			var/iterator = 1
 			for(var/header in gun_ammo_data["damage_armor_profile_headers"])
 				var/damage = gun_ammo_data["damage_armor_profile_marine"][iterator]
-				if(!damage)
+				if(isnull(damage))
 					break
 				armor_data["armor-[header]"] = damage
 				iterator++
@@ -144,6 +144,9 @@
 			for(var/attachment_typepath in attachments_by_slot[slot])
 				var/obj/item/attachable/generating_attachment = new attachment_typepath()
 
+				if(IS_AUTOWIKI_SKIP(generating_attachment))
+					continue
+
 				var/attachment_filename = SANITIZE_FILENAME(escape_value(format_text(generating_attachment.name)))
 
 				if(!fexists("data/autowiki_files/[attachment_filename].png"))
@@ -164,8 +167,14 @@
 
 		var/icon/generated_icon = getFlatIcon(generating_gun, no_anim = TRUE)
 		if(generated_icon)
-			upload_icon(generated_icon, filename)
+			upload_icon(generated_icon, filename, center_width=64, center_height=32)
 			gun_data["icon"] = filename
+
+		// If its a two hander, don't include unwielded data
+		if(gun_data["two_handed_only"])
+			gun_data["unwielded_recoil"] = "N/A"
+			gun_data["unwielded_scatter"] = "N/A"
+			gun_data["unwielded_accuracy"] = "N/A"
 
 		var/page_name = SANITIZE_FILENAME(replacetext(strip_improper(generating_gun.name), " ", "_"))
 		var/to_add = list(title = "Template:Autowiki/Content/Gun/[page_name]", text = include_template("Autowiki/Gun", gun_data))

@@ -27,10 +27,6 @@
 
 /datum/autowiki/xeno_stats/proc/template_from_xeno(mob/living/carbon/xenomorph/xeno, datum/xeno_strain/strain)
 	var/name = xeno.caste_type
-	if(!isnull(strain))
-		strain.apply_strain(xeno)
-		name = "[strain.name] [name]"
-
 	var/xeno_data = list(
 		"name" = name,
 		"health" = xeno.maxHealth,
@@ -46,6 +42,35 @@
 		"speed" = humanize_speed(xeno.speed),
 		"explosion_resistance" = xeno.caste.xeno_explosion_resistance,
 	)
+
+	if(!isnull(strain))
+		strain.apply_strain(xeno)
+		name = "[strain.name] [name]"
+		xeno_data["name"] = name
+		var/strain_data = list (
+			"name" = name,
+			"health" = xeno.maxHealth,
+			"armor" = xeno.armor_deflection,
+			"plasma" = xeno.plasma_max,
+			"plasma_regeneration" = xeno.plasma_gain,
+			"minimum_slash_damage" = xeno.melee_damage_lower,
+			"maximum_slash_damage" = xeno.melee_damage_upper,
+			"claw_strength" = xeno.claw_type,
+			"evasion" = xeno.evasion,
+			// Mob speed is relatively non-obvious, we we convert it into a very intuitive
+			// range for wiki-readability.
+			"speed" = humanize_speed(xeno.speed),
+			"explosion_resistance" = xeno.caste.xeno_explosion_resistance,
+		)
+
+		for(var/stat_comparison in xeno_data)
+			if(xeno_data[stat_comparison] != strain_data[stat_comparison])
+				var/difference = round(strain_data[stat_comparison] - xeno_data[stat_comparison], 0.01)
+				if(difference > 0)
+					difference = "<span style='color:green'>+[difference]</span>"
+				else
+					difference = "<span style='color:red'>[difference]</span>"
+				xeno_data[stat_comparison] = "[strain_data[stat_comparison]] ([difference])"
 
 	var/sanitized_name = url_encode(replacetext(name, " ", "_"))
 	return list(list(title = "Template:Autowiki/Content/XenoStats/[sanitized_name]", text = include_template("Autowiki/XenoStats", xeno_data)))

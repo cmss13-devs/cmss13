@@ -287,3 +287,137 @@
   - bugfix: Fixed roof_master_node error issue. (cuberound)
   biologed:
   - bugfix: fixed the functionality of changing character name via PP
+2025-04-17:
+  Blundir:
+  - bugfix: fixed m81 riot grenade launcher not having onmob icons
+  Drathek:
+  - balance: Lessers and Huggers now have a 5 minute respawn timer for non-lesser/hugger
+      deaths/ghosting
+  Mikrel0712:
+  - rscadd: Added a laser targetting mode to the M402 Mortar. You can now link a laser
+      designator to the mortar, and fire directly on laser targets as an alternative
+      to firing on coordinates.
+  Stakeyng:
+  - rscdel: Removed "MOVEMENT ORDER!", "HOLD ORDER!", "FOCUS ORDER!", "WE HOLD THIS
+      GROUND IN THE NAME OF GOD!", "PACK IT UP PEOPLE!", and "STRIFE!" as order phrases
+  - spellcheck: '"SHOOT EM'' DEAD!" is now "SHOOT ''EM DEAD!"'
+  - spellcheck: '"AIM FOR THE KILL!" is now "GO FOR THE KILL!"'
+  - spellcheck: Asterisks used to bold orders close before punctuation.
+  Steelpoint:
+  - rscadd: UPP squad ammo vendors, and cargo vendors, will now be able to vend repair
+      oil and repair kits.
+  - rscadd: UPP personal vendors for combat roles will now be able to dispense repair
+      oil.
+  cuberound:
+  - bugfix: prevents harmful spray during ceasefire
+  efzapa:
+  - maptweak: Hunting Ground Evac Shutters are now properly indestructable.
+2025-04-18:
+  BOBAMAx:
+  - bugfix: CO survs on NV will no longer be UASF COs in the CLF insert
+  Nihisohel:
+  - bugfix: Flamers can now discharge properly
+  - bugfix: Skill locked weapons now respect skill checks when attempting a discharge
+  - bugfix: Weapons on safety no longer discharge
+  efzapa:
+  - rscadd: Fax Responders now spawn with a pen in their ear slot.
+2025-04-19:
+  Drathek:
+  - code_imp: Cleaned up signal usage for wall leaning
+  Killfish:
+  - rscdel: Removed two entirely unused variables
+  - balance: Burrower now has a minimum travel time of 1 second, and unburrow stun
+      has been reduced from 2 to 1.5. No more stunlocking, and surprise solocapping
+      in FOB is now a bit harder.
+  - balance: Tremor has had its cooldown reduced from 45 seconds to 30 seconds.
+  Lagomorphica:
+  - bugfix: podlock doors on almayer and tdome no longer blow up from a stiff breeze
+  MistChristmas:
+  - ui: Adds scalability to the Supply Console so it can be resized and the elements
+      will resize with the window.
+  MistChristmas, Drathek:
+  - qol: 'Autowiki: Ignores most bayonets, and other misc. attachments. Compares difference
+      in base vs strain stats. Switches to using isnull so armour damage table populates
+      0s.'
+  Red-byte3D:
+  - code_imp: lunging is now behavior delegate var
+  - balance: You can no longer tackle while lunging
+  TrollerNoob:
+  - rscadd: A new shipment of Urban, Snow, Classic and Desert variants for the M70B1
+      light flak jacket and the M3-VL pattern flak vest have arrived. Pilots and DCC,
+      rejoice!
+  - rscadd: A new shipment of Urban and Snow variants for the tactical pilot officer
+      flightsuits have also arrived.
+  - rscadd: Classic and Desert variants of the M70 flak jacket have been found in
+      the Almayer's cargo hold, encased in cobwebs.
+  - rscadd: The fine military tailors stationed on Chinook 91 GSO station have finally
+      figured out how to weave buttons into the M70 flak jacket. They can now be unbuttoned
+      and have pockets.
+  - imageadd: Added all map variants for the M70B1 light flak jacket and the M3-VL
+      pattern flak vest.
+  - imageadd: Added Urban/Snow variants for the Tactical Pilot Officer Flightsuit.
+  - imageadd: Added item states for the M70B1 light flak jacket and Tactical Pilot
+      Officer Flightsuit.
+  - imageadd: Added Classic/Desert variants for the standard M70 flak jacket.
+  - imageadd: Added the ability to unbutton the standard M70 flak jacket.
+  - balance: M70 flak jacket now has two item storage slots like the M70B1 light flak
+      jacket, up from zero.
+  - refactor: Removed pilot_alt and pilot_flightsuit_alt icons from uniforms/suits_by_faction
+      and added them to their respective map variants in uniforms/suits_by_map.
+  - refactor: Removed VL_FLAK icons from suits_by_faction and added them to their
+      respective map variants in suits_by_map.
+  - refactor: Moved the M70 flak jacket from armor.dm to marine_coat.dm to standardize
+      its location with the M70B1 light flak jacket.
+  - refactor: Changed the M70 flak jacket's file pathing to jacket/marine/pilot/armor
+      to standardize it with M70B1 light flak jacket's jacket/marine/pilot pathing.
+2025-04-20:
+  DarkLordCabbage:
+  - balance: 'Underbarrel extinguishers can now be attached to the m39, M4RA, mou,
+      breaching shotty, and others.
+
+      qol:'
+  Detective-Google:
+  - bugfix: CO council can vend bomber jackets again
+  Lagomorphica:
+  - balance: Security on Hybrisia Prospera have had buget cuts and no longer have
+      large magazine pouches.
+  PhantornRU:
+  - bugfix: fix propelled chair when not wheeled chair
+2025-04-21:
+  Aurallianz:
+  - rscadd: Nurses can FM carry.
+  - rscadd: CMO requires Doctor and Research playtime.
+  Blundir:
+  - rscadd: added new pred invisibility sound pref
+  - rscadd: normal *laugh emote for preds will now play a random pred laugh sound
+      instead of doing nothing
+  - balance: pred invis sound radius is now 4 instead of 3
+  - ui: pred emote panel color tweaked from green to red
+  - soundadd: new pred laugh sound
+  - soundadd: new pred zoom/unzoom sounds
+  - soundadd: new pred crystal injection sound
+  - soundadd: new pred taunt sounds
+  - soundadd: new pred invisibility sound
+  - rscadd: added calendars and holidays lists related to them, added calendars on
+      all relevant maps
+  Blundir Drathek:
+  - code_imp: autowiki icons are now centered using a new center_icon proc and autowiki
+      gun images are now always 64x32
+  - bugfix: fixed some guns having incorrect attachment offsets
+  - bugfix: fixed some guns being offset incorrectly in inventory/floor
+  - bugfix: fixed getflaticon sometimes returning icons with no height/width
+  - refactor: refactored majority of gun sprites (except pistols/revolvers) to utilize
+      64x32 file instead of 32x32
+  - refactor: got rid of all the cosmetical internal attachments that were a part
+      of gun 32x32 dmi limitations
+  - imageadd: moved custom magazine on gun sprite to gun sprite files
+  Drathek:
+  - code_imp: Autowiki gun templates now lists unwielded stats as N/A for two handers
+  - code_imp: Autowiki xeno comparisons now round to the nearest hundredth
+  Willzadl:
+  - rscadd: pitchblende extended lore description
+  - spellcheck: fixed pitchblende typos
+  - refactor: pitchblende now has a description instead of being manually applied
+      in the .dmm
+  hry-gh:
+  - rscadd: weather now cleans up blood and other cleanables from the floor

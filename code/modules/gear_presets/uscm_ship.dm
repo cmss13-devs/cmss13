@@ -100,7 +100,7 @@
 	role_comm_title = "CS"
 	skills = /datum/skills/wy_goon
 
-	minimap_icon = "pmc_mp"
+	minimap_icon = "goon_guard"
 	minimap_background = "background_goon"
 
 /datum/equipment_preset/uscm_ship/corp_sec/New()

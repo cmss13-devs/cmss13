@@ -926,6 +926,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M12 pattern"
 	max_inserted_visors = 2
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"
@@ -937,6 +941,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
@@ -953,6 +961,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet. Comes with inbuilt ear blast protection."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH

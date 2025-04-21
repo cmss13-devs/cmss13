@@ -6719,7 +6719,8 @@
 	id = "RoomDivider";
 	pixel_y = -12;
 	pixel_x = 4;
-	name = "Room Divider"
+	name = "Room Divider";
+	req_one_access_txt = "200"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -8852,6 +8853,9 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 2
+	},
+/obj/structure/machinery/status_display{
+	pixel_y = 30
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -12742,6 +12746,9 @@
 	eftpos_name = "Weyland-Yutani EFTPOS scanner"
 	},
 /obj/item/device/portable_vendor/corporate,
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "aGt" = (

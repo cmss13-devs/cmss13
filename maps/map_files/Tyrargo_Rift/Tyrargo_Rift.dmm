@@ -694,6 +694,28 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/ramptop/north,
 /area/tyrargo/indoors/security/ground)
+"acu" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-10"
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4
+	},
+/obj/structure/lattice,
+/turf/open/floor/plating,
+/area/tyrargo/underground/engineering)
 "acv" = (
 /turf/closed/shuttle/dropship3/transparent{
 	icon_state = "34"
@@ -68871,7 +68893,7 @@
 /area/tyrargo/underground/apartment)
 "dya" = (
 /obj/structure/machinery/power/apc/no_power/north,
-/turf/open/shuttle/escapepod,
+/turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/apartment)
 "dyb" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
@@ -106106,7 +106128,7 @@ dDp
 dzR
 dzF
 dAR
-dAG
+acu
 dAh
 dzR
 dzR

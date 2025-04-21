@@ -332,11 +332,12 @@
 	wield_delay = WIELD_DELAY_HORRIBLE //Ends up being 1.6 seconds due to scope
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
-	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
+	pixel_x = -6
+	hud_offset = -6
 
 /obj/item/weapon/gun/rifle/sniper/M42A/verb/toggle_scope_zoom_level()
 	set name = "Toggle Scope Zoom Level"
@@ -366,8 +367,8 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_SNIPER)
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	accuracy_mult = BASE_ACCURACY_MULT * 3 //you HAVE to be able to hit
-	scatter = SCATTER_AMOUNT_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT * 3 + HIT_ACCURACY_MULT_TIER_3 //you HAVE to be able to hit
+	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 
@@ -391,16 +392,18 @@
 	zoomdevicename = "scope"
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/pmc_sniperbarrel)
 	sniper_beam_type = /obj/effect/ebeam/laser
 	sniper_beam_icon = "laser_beam"
 	sniper_lockon_icon = "sniper_lockon"
+	pixel_x = -4
+	hud_offset = -4
 
 /obj/item/weapon/gun/rifle/sniper/XM43E1/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/scope/variable_zoom/S = new(src)
 	S.icon_state = "pmcscope"
 	S.attach_icon = "pmcscope"
+	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
@@ -416,8 +419,8 @@
 	//Kaga: Fixed back to half the M42A's firerate (3 seconds), using a new define.
 	//This outright deals less DPS than the normal sniper rifle, 125 vs 140 per 3s.
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10 //Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
-	scatter = SCATTER_AMOUNT_TIER_10
+	accuracy_mult = BASE_ACCURACY_MULT + 2*(HIT_ACCURACY_MULT_TIER_10 + HIT_ACCURACY_MULT_TIER_2) - HIT_ACCURACY_MULT_TIER_1//Who coded this like this, and why? It just calculates out to 1+1=2. Leaving a note here to check back later.
+	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 
@@ -455,7 +458,6 @@
 	force = 17
 	zoomdevicename = "scope"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
-	starting_attachment_types = list(/obj/item/attachable/pmc_sniperbarrel)
 	sniper_beam_type = /obj/effect/ebeam/laser/intense
 	sniper_beam_icon = "laser_beam_intense"
 	sniper_lockon_icon = "sniper_lockon_intense"
@@ -481,8 +483,8 @@
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_6*5)
 	set_burst_amount(BURST_AMOUNT_TIER_1)
-	accuracy_mult = BASE_ACCURACY_MULT * 3 //Was previously BAM + HAMT10, similar to the XM42B, and coming out to 1.5? Changed to be consistent with M42A. -Kaga
-	scatter = SCATTER_AMOUNT_TIER_10 //Was previously 8, changed to be consistent with the XM42B.
+	accuracy_mult = BASE_ACCURACY_MULT * 3 + HIT_ACCURACY_MULT_TIER_3 //Was previously BAM + HAMT10, similar to the XM42B, and coming out to 1.5? Changed to be consistent with M42A. -Kaga
+	scatter = SCATTER_AMOUNT_NONE
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 
@@ -505,6 +507,9 @@
 	icon_state = "type88"
 	item_state = "type88"
 
+	pixel_x = -6
+	hud_offset = -6
+
 	fire_sound = 'sound/weapons/gun_mg.ogg'
 	current_mag = /obj/item/ammo_magazine/sniper/svd
 	attachable_allowed = list(
@@ -525,8 +530,6 @@
 		//Under,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/bipod,
-		//Integrated,
-		/obj/item/attachable/type88_barrel,
 	)
 	has_aimed_shot = FALSE
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
@@ -536,11 +539,6 @@
 
 /obj/item/weapon/gun/rifle/sniper/svd/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attachie = new /obj/item/attachable/type88_barrel(src)
-	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
-	attachie.Attach(src)
-	update_attachable(attachie.slot)
-
 	var/obj/item/attachable/scope/variable_zoom/integrated/type88sight = new(src)
 	type88sight.flags_attach_features &= ~ATTACH_REMOVABLE
 	type88sight.hidden = TRUE

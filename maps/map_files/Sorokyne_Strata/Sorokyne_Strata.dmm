@@ -19464,6 +19464,9 @@
 /area/strata/interior/administration)
 "beT" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/interior/administration)
 "beU" = (
@@ -24451,6 +24454,9 @@
 /obj/effect/spawner/random/toolbox,
 /obj/structure/closet/secure_closet/personal,
 /obj/item/storage/pill_bottle/kelotane,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
 /turf/open/floor/strata/floor2,
 /area/strata/interior/outpost/med)
 "bvd" = (
@@ -37972,6 +37978,9 @@
 	pixel_x = 2;
 	pixel_y = -1
 	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/purp1,
 /area/strata/interior/planet_core_research_station)
 "czT" = (
@@ -39689,6 +39698,9 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/communications,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north)
 "eNF" = (
@@ -42219,6 +42231,9 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/trash/kepler/flamehot,
 /obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata,
 /area/strata/interior/parts_storage)
 "ibP" = (
@@ -42495,6 +42510,9 @@
 "isj" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
@@ -46837,6 +46855,9 @@
 	color = "#98a3ab"
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
 /turf/open/floor/strata,
 /area/strata/interior/parts_storage)
 "oeK" = (
@@ -59111,7 +59132,7 @@ bvR
 cnv
 cru
 azx
-dCq
+abO
 ard
 arV
 dCq
@@ -73495,6 +73516,7 @@ blb
 iNi
 boV
 blb
+abq
 bxa
 byF
 bBX
@@ -77492,6 +77514,7 @@ atJ
 ddK
 bWM
 ijo
+abG
 bFS
 gAm
 gAm
@@ -78894,6 +78917,7 @@ ijo
 awf
 ceI
 ijo
+abx
 cdZ
 aCd
 aDf
@@ -83445,7 +83469,7 @@ cjn
 cjn
 bFx
 cjn
-chd
+abw
 jnt
 chd
 aFz

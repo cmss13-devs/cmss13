@@ -1,0 +1,6 @@
+author: "Willzadl"
+delete-after: True
+changes:
+  - rscadd: "pitchblende extended lore description"
+  - spellcheck: "fixed pitchblende typos"
+  - refactor: "pitchblende now has a description instead of being manually applied in the .dmm"

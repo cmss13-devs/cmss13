@@ -27,6 +27,7 @@
 	desc = "A 10mm assault extended rifle magazine."
 	icon_state = "m41a_extended"
 	max_rounds = 60
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 	bonus_overlay = "m41a_ex"
 
@@ -145,6 +146,7 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/m4ra
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	ammo_band_icon = "+m4ra_band"
 	ammo_band_icon_empty = "+m4ra_band_e"
 
@@ -408,6 +410,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "l42mk1"
 	bonus_overlay = "l42_mag_overlay"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/marksman_rifles.dmi'
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 25
 	gun_type = /obj/item/weapon/gun/rifle/l42a
@@ -483,6 +486,7 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/marksman_rifles.dmi'
 	icon_state = "abr40"
 	bonus_overlay = "abr40_mag_overlay"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/marksman_rifles.dmi'
 	max_rounds = 12
 	w_class = SIZE_SMALL
 	ammo_band_icon = "+abr40_band"
@@ -631,7 +635,6 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
 	icon_state = "l23"
 	item_state = "l23"
-	bonus_overlay = "l23_mag_overlay" //needs to be an overlay, as the mag has a hole that would be filled over by the ext overlay
 	default_ammo = /datum/ammo/bullet/rifle/l23
 	max_rounds = 30
 	gun_type = /obj/item/weapon/gun/rifle/l23

@@ -4,6 +4,13 @@
 /obj/item/trash/plate,
 /turf/open/floor/strata/green3/west,
 /area/adminlevel/ert_station/upp_station)
+"ab" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 28;
+	pixel_x = 9
+	},
+/turf/open/floor/strata/cyan1/east,
+/area/adminlevel/ert_station/upp_station)
 "ac" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -18,6 +25,17 @@
 	pixel_y = 13
 	},
 /turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/upp_station)
+"ad" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 28;
+	pixel_x = -6
+	},
+/turf/open/floor/strata/green1,
 /area/adminlevel/ert_station/upp_station)
 "ag" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -2452,6 +2470,10 @@
 /turf/open/floor/strata/green4/east,
 /area/adminlevel/ert_station/upp_station)
 "Wb" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 28;
+	pixel_x = 9
+	},
 /turf/open/floor/strata/blue4,
 /area/adminlevel/ert_station/upp_station)
 "We" = (
@@ -2790,7 +2812,7 @@ GI
 GI
 El
 El
-YW
+ad
 YW
 El
 El
@@ -3968,7 +3990,7 @@ Cp
 Cp
 Dv
 Dv
-oz
+ab
 oz
 Ul
 Dv

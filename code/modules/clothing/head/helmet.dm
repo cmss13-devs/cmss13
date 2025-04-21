@@ -994,8 +994,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	unacidable = TRUE
 
 /obj/item/clothing/head/helmet/marine/pilot
-	name = "\improper M30 tactical helmet"
-	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
+	name = "\improper MK30 tactical helmet"
+	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
 	icon_state = "helmetp"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
@@ -1003,11 +1003,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	specialty = "M30 tactical"
+	specialty = "MK30 tactical"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/pilottex
-	name = "\improper Tex's M30 tactical helmet"
-	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
+	name = "\improper Tex's MK30 tactical helmet"
+	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
 	icon_state = "helmetp_tex"
 	item_state = "helmetp_tex"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'

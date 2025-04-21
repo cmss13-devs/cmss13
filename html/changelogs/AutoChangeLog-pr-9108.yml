@@ -1,0 +1,4 @@
+author: "stalkerino"
+delete-after: True
+changes:
+  - bugfix: "allows crafting m4ra extended boxes with cardboard"

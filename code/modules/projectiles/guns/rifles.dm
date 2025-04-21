@@ -1790,6 +1790,9 @@
 	flags_equip_slot = SLOT_BACK
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/collapsible/ak4047)
 
+	pixel_x = -6
+	hud_offset = -6
+
 /obj/item/weapon/gun/rifle/ak4047/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 38, "muzzle_y" = 18,"rail_x" = 20, "rail_y" = 23, "under_x" = 24, "under_y" = 13, "stock_x" = 11, "stock_y" = 13, "special_x" = 33, "special_y" = 17)
 

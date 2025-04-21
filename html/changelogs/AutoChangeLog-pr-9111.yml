@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - rscadd: "Adds drop pouch to medbay equipment vendors."

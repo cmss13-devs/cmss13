@@ -7254,17 +7254,6 @@
 	pixel_y = -12
 	},
 /obj/item/prop{
-	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
-	icon_state = "M56D";
-	name = "M56D heavy machine gun nest";
-	pixel_y = 3;
-	anchored = 1;
-	layer = 3.8;
-	dir = 1;
-	pixel_x = 4
-	},
-/obj/item/prop{
 	desc = "Empty and useless now.";
 	icon = 'icons/obj/items/casings.dmi';
 	icon_state = "cartridge_10_1";
@@ -7272,6 +7261,16 @@
 	dir = 6;
 	pixel_x = 5;
 	pixel_y = -24
+	},
+/obj/item/prop{
+	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon_state = "M56D";
+	name = "M56D heavy machine gun nest";
+	pixel_x = 4;
+	pixel_y = 5;
+	dir = 1;
+	anchored = 1
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/indoors/engineering/upper/external)
@@ -18282,6 +18281,10 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
+"aSZ" = (
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/central)
 "aTa" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 1
@@ -45233,6 +45236,10 @@
 	name = "bunker superdense wall"
 	},
 /area/tyrargo/underground/bunker/north)
+"cbl" = (
+/obj/structure/prop/tyrargo/traffic_signal,
+/turf/open/hybrisa/street/cement2,
+/area/tyrargo/outdoors/colony_streets/south_east)
 "cbm" = (
 /turf/open/floor/corsat/red/southwest,
 /area/tyrargo/underground/bunker/north)
@@ -45342,6 +45349,14 @@
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
+"cbF" = (
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_5{
+	light_on = 0;
+	light_power = 0;
+	light_range = 0
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/west)
 "cbG" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/corsat,
@@ -47588,6 +47603,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"ciY" = (
+/obj/structure/platform/stone/hybrisa/rockdark/west{
+	layer = 1
+	},
+/obj/structure/prop/invuln/rope{
+	pixel_x = -7
+	},
+/turf/open_space,
+/area/tyrargo/outdoors/colony_streets/north)
 "ciZ" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/sidewalk,
@@ -50450,6 +50474,16 @@
 "cte" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/colony_exterior/north_west)
+"ctf" = (
+/obj/structure/platform/stone/hybrisa/rockdark/east{
+	layer = 1
+	},
+/obj/structure/prop/invuln/rope{
+	pixel_x = 8;
+	pixel_y = -16
+	},
+/turf/open_space,
+/area/tyrargo/outdoors/colony_streets/north)
 "ctg" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3";
@@ -67207,7 +67241,7 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/oob)
 "dtr" = (
-/obj/structure/mineral_door/wood/open,
+/obj/structure/mineral_door/wood,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/oob)
 "dts" = (
@@ -71166,6 +71200,9 @@
 	can_block_movement = 0;
 	explo_proof = 1
 	},
+/obj/structure/prop/invuln/rope{
+	pixel_x = -7
+	},
 /turf/open/floor/almayer_hull,
 /area/tyrargo/underground/sewer/north)
 "dEp" = (
@@ -71185,6 +71222,10 @@
 	density = 0;
 	unacidable = 1;
 	explo_proof = 1
+	},
+/obj/structure/prop/invuln/rope{
+	pixel_x = 8;
+	pixel_y = -16
 	},
 /turf/open/floor/almayer_hull,
 /area/tyrargo/underground/sewer/north)
@@ -132884,7 +132925,7 @@ byp
 byp
 byp
 bzZ
-bxz
+cbF
 bpl
 bxz
 bxr
@@ -143301,7 +143342,7 @@ bBg
 bBF
 bBg
 bBg
-bwt
+aSZ
 dil
 bIN
 dii
@@ -157801,7 +157842,7 @@ aAS
 cul
 cul
 dFE
-xJe
+ciY
 dFC
 cUc
 dFt
@@ -158165,7 +158206,7 @@ cuB
 aAN
 cnS
 dFF
-dFD
+ctf
 dFD
 dFy
 ndk
@@ -163496,7 +163537,7 @@ cib
 doJ
 doF
 dhd
-ciI
+cbl
 ciH
 ciI
 ciH

@@ -508,7 +508,7 @@
 /area/tyrargo/underground/sewer
 	name = "City Sewer"
 	icon_state = "security"
-	minimap_color = MINIMAP_AREA_COMMS
+	minimap_color = MINIMAP_AREA_COLONY_STREETS
 	unoviable_timer = FALSE
 
 /area/tyrargo/underground/sewer/south
@@ -524,18 +524,24 @@
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 	icon_state = "maint_engine"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
 /area/tyrargo/underground/apartment
 	name = "Standfeld Apartment Complex - Underground"
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "quart"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
 /area/tyrargo/underground/mall
 	name = "Tyrargo Wesfeld Mall - Underground"
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "HH_Mines"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
 // Saipan
 

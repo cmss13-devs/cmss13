@@ -911,7 +911,7 @@
 
 /obj/structure/prop/vehicles/tank/ifv
 	name = "M34 Marshal IFV"
-	desc = "Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, the US Army ended up adopting it due to needing a heavier, more durable Transport then the USCM's M570 series."
+	desc = "The M34 Marshal IFV: Developed by W-Y, the RAT (Rover Armed Transport) was originally designed for the 3WE Military as an armed version of their RT series of expeditionary vehicles, adopted by the US Army, It's heavier and and more durable then the M570 series the marines use, as the army don't have a need for APCs capable of being transported by dropship."
 	icon = 'icons/obj/vehicles/ifv_prop.dmi'
 	icon_state = "ifv_base"
 	density = FALSE

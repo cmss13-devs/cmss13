@@ -714,6 +714,7 @@
 	dir = 4
 	},
 /obj/structure/lattice,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/plating,
 /area/tyrargo/underground/engineering)
 "acv" = (
@@ -753,10 +754,6 @@
 /area/tyrargo/indoors/engineering/ground)
 "acA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/colony_floodlight_switch{
-	explo_proof = 1;
-	pixel_y = 32
-	},
 /turf/open_space,
 /area/tyrargo/indoors/engineering/ground)
 "acB" = (
@@ -3069,6 +3066,12 @@
 "aiy" = (
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"aiz" = (
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 1
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/tyrargo/underground/sewer/south)
 "aiA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -5304,9 +5307,10 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "aoF" = (
-/obj/structure/stairs/multiz/up{
+/obj/structure/stairs/multiz{
 	dir = 4
 	},
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/underground/sewer/north)
 "aoG" = (
@@ -7744,6 +7748,7 @@
 	pixel_x = -14;
 	layer = 2.98
 	},
+/obj/structure/prop/tyrargo/traffic_signal,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "atV" = (
@@ -7980,16 +7985,6 @@
 	pixel_x = 3;
 	pixel_y = 1;
 	layer = 3.0
-	},
-/obj/item/prop{
-	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
-	icon_state = "M56D";
-	name = "M56D heavy machine gun nest";
-	pixel_x = -3;
-	pixel_y = 17;
-	anchored = 1;
-	layer = 3.5
 	},
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -49488,6 +49483,10 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cpK" = (
+/obj/structure/machinery/colony_floodlight_switch{
+	explo_proof = 1;
+	pixel_y = 32
+	},
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/indoors/engineering/ground)
 "cpL" = (
@@ -55986,7 +55985,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/sewer/south)
 "cLU" = (
-/obj/structure/machinery/power/apc/power/east,
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/underground/sewer/south)
 "cLV" = (
@@ -56641,6 +56640,15 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/sewer_treatment/ground)
+"cNU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
 "cNV" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
@@ -56678,6 +56686,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green/northeast,
 /area/tyrargo/indoors/mall)
+"cOd" = (
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 1;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"cOe" = (
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	layer = 3;
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/tyrargo/underground/sewer/south)
 "cOf" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -56723,6 +56747,7 @@
 "cOn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/structure/machinery/light,
 /turf/open/floor/strata/red2,
 /area/tyrargo/indoors/mall)
 "cOo" = (
@@ -57357,6 +57382,9 @@
 	icon_state = "trash_8";
 	pixel_y = -12
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
 "cQp" = (
@@ -57549,6 +57577,10 @@
 /turf/closed/wall/r_wall/bunker,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "cQY" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = 17
+	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/tyrargo/indoors/mall)
 "cQZ" = (
@@ -57650,12 +57682,21 @@
 "cRt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 10
+	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "cRu" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/tyrargo/indoors/mall/upper)
+"cRv" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -6
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/tyrargo/underground/sewer/south)
 "cRw" = (
 /turf/open/floor/kutjevo/tan,
 /area/tyrargo/indoors/mall)
@@ -59194,6 +59235,27 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
+"cVY" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 5;
+	pixel_x = -1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"cVZ" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 4;
+	pixel_x = -10
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"cWa" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 13;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/darkyellowcorners2,
+/area/tyrargo/underground/sewer/south)
 "cWb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -59208,6 +59270,14 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/mall)
+"cWd" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = -32;
+	pixel_x = 4;
+	layer = 2.9
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/sewer/south)
 "cWe" = (
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_west)
@@ -60326,6 +60396,20 @@
 "cYV" = (
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
+"cYW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/sewer/south)
+"cYX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = -32;
+	pixel_x = 4;
+	layer = 2.9
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/sewer/south)
 "cYY" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
 	unacidable = 1;
@@ -60336,6 +60420,13 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
+"cYZ" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/prison/darkyellow2/southeast,
+/area/tyrargo/underground/sewer/south)
 "cZa" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -6;
@@ -60344,6 +60435,14 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"cZb" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 15
+	},
+/turf/open/floor/prison/darkyellow2/west,
+/area/tyrargo/underground/sewer/south)
 "cZc" = (
 /turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/sewer/south)
@@ -60518,6 +60617,7 @@
 /area/tyrargo/underground/sewer/south)
 "cZL" = (
 /obj/structure/machinery/light/small,
+/obj/structure/largecrate/random/case/small,
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/underground/sewer/south)
 "cZM" = (
@@ -60573,6 +60673,7 @@
 /area/tyrargo/underground/sewer/south)
 "cZU" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/floodlights,
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/underground/sewer/south)
 "cZV" = (
@@ -60609,6 +60710,7 @@
 	pixel_y = -16
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dab" = (
@@ -60628,6 +60730,7 @@
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dae" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/tyrargo/underground/sewer/south)
 "daf" = (
@@ -60692,6 +60795,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dao" = (
@@ -60724,6 +60828,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dat" = (
@@ -60733,6 +60838,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_15"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dau" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 15
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
@@ -60746,6 +60860,19 @@
 "dax" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowcorners2,
+/area/tyrargo/underground/sewer/south)
+"day" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/tyrargo/underground/sewer/south)
+"daz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "daA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -60801,6 +60928,10 @@
 	},
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/oob)
+"daH" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
 "daI" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_15";
@@ -60847,6 +60978,17 @@
 	icon_state = "trash_12";
 	pixel_y = 1
 	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"daN" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_y = -16
+	},
+/obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "daO" = (
@@ -60910,6 +61052,14 @@
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/oob)
+"daV" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/underground/sewer/south)
+"daW" = (
+/obj/structure/largecrate/supply/supplies/wy_emergency_food,
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/underground/sewer/south)
 "daX" = (
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/tyrargo/underground/sewer/south)
@@ -61201,6 +61351,14 @@
 	},
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
+"dca" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/prison/darkyellow2/east,
+/area/tyrargo/underground/sewer/south)
 "dcb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/map_item,
@@ -61222,10 +61380,18 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
+"dcg" = (
+/obj/structure/largecrate,
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/underground/sewer/south)
 "dch" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
+"dci" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/underground/sewer/south)
 "dcj" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
 	unacidable = 1;
@@ -61249,6 +61415,10 @@
 "dcl" = (
 /turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
+"dcm" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison/darkyellow2/east,
+/area/tyrargo/underground/sewer/south)
 "dcn" = (
 /obj/effect/landmark/map_item,
 /turf/open/auto_turf/strata_grass,
@@ -61274,6 +61444,14 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
+"dcr" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
 "dcs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
@@ -61306,6 +61484,10 @@
 	},
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
+"dcw" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/underground/sewer/south)
 "dcx" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -61795,6 +61977,10 @@
 "ddI" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/tyrargo/underground/sewer/south)
+"ddJ" = (
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/underground/sewer/south)
 "ddK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/bedroll{
@@ -61865,8 +62051,18 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
+"ddU" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
 "ddV" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = 4
+	},
 /turf/open/floor/prison/yellowcorner,
 /area/tyrargo/underground/sewer/north)
 "ddW" = (
@@ -61876,7 +62072,28 @@
 "ddX" = (
 /turf/open/floor/prison/yellow,
 /area/tyrargo/underground/sewer/north)
+"ddY" = (
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"ddZ" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_y = -16
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
 "dea" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = -14
+	},
 /turf/open/floor/prison/yellowcorner/north,
 /area/tyrargo/underground/sewer/north)
 "deb" = (
@@ -63953,6 +64170,168 @@
 "djA" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/tyrargo/landing_zone_2)
+"djB" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djC" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djD" = (
+/obj/structure/largecrate,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djF" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_y = 21
+	},
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djG" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/cell_stripe/north,
+/area/tyrargo/underground/sewer/south)
+"djH" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djI" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_y = 21
+	},
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djJ" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djK" = (
+/obj/structure/largecrate/guns/merc,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"djL" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"djM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/generator,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"djO" = (
+/obj/structure/largecrate/empty/case,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djP" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djQ" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djR" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"djS" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/largecrate/empty/case,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"djT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/tyrargo/underground/sewer/south)
+"djU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/sewer/south)
+"djV" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/sewer/south)
+"djW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/sewer/south)
+"djX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_x = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"djY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"djZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -26
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/south)
+"dka" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/south)
+"dkb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
 "dkc" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -24;
@@ -64254,6 +64633,11 @@
 /area/tyrargo/outdoors/outskirts_road/east)
 "dkN" = (
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/random_amount,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1;
+	layer = 3;
+	pixel_y = 20
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/ground)
 "dkO" = (
@@ -65212,6 +65596,13 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north_west)
+"dnr" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
 "dns" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -66935,6 +67326,10 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"drF" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
 "drG" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
@@ -66959,6 +67354,14 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"drK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
 "drL" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
@@ -67217,6 +67620,10 @@
 	},
 /turf/open/floor/prison/green/west,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"dsE" = (
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
 "dsF" = (
 /obj/structure/platform/metal/hybrisa/metalplatform2/west,
 /obj/structure/platform/metal/hybrisa/metalplatform2,
@@ -67687,6 +68094,11 @@
 /area/tyrargo/underground/apartment)
 "dtT" = (
 /obj/structure/prop/hybrisa/misc/trash/blue,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 5;
+	pixel_x = -12
+	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/underground/apartment)
 "dtU" = (
@@ -67717,6 +68129,7 @@
 /obj/structure/bed/chair/comfy/hybrisa/red{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/underground/mall)
 "dtY" = (
@@ -67876,6 +68289,7 @@
 /area/tyrargo/underground/mall)
 "duB" = (
 /obj/structure/safe,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "duC" = (
@@ -67909,6 +68323,7 @@
 /obj/item/ammo_magazine/smg/mp5{
 	pixel_x = 5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/tyrargo/underground/apartment)
 "duG" = (
@@ -67981,6 +68396,11 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "duR" = (
@@ -68005,6 +68425,9 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/tyrargo/underground/apartment)
 "duV" = (
@@ -68012,6 +68435,7 @@
 	icon_state = "1-5";
 	level = 2
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/tyrargo/underground/apartment)
 "duW" = (
@@ -68077,6 +68501,9 @@
 	pixel_x = 5;
 	pixel_y = -16
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/underground/apartment)
 "duZ" = (
@@ -68102,6 +68529,7 @@
 	pixel_y = -20;
 	layer = 3.1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/underground/apartment)
 "dva" = (
@@ -68161,6 +68589,7 @@
 /obj/structure/prop/hybrisa/misc/detonator{
 	pixel_y = -5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/tyrargo/underground/apartment)
 "dvj" = (
@@ -68283,6 +68712,7 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dvz" = (
@@ -68335,6 +68765,7 @@
 /area/tyrargo/underground/mall)
 "dvG" = (
 /obj/structure/bed/chair,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dvH" = (
@@ -68469,6 +68900,7 @@
 /obj/structure/largecrate/random/mini{
 	pixel_x = 3
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dvX" = (
@@ -68476,6 +68908,7 @@
 	pixel_y = 3;
 	pixel_x = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dvY" = (
@@ -68538,7 +68971,8 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/underground/mall)
 "dwf" = (
-/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dwg" = (
@@ -68661,6 +69095,7 @@
 /area/tyrargo/underground/apartment)
 "dwy" = (
 /obj/structure/bed/chair/wood/normal,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dwz" = (
@@ -68743,6 +69178,7 @@
 /area/tyrargo/underground/apartment)
 "dwJ" = (
 /obj/structure/bed/chair/office/dark,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/apartment)
 "dwK" = (
@@ -68769,6 +69205,7 @@
 /area/tyrargo/underground/apartment)
 "dwO" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/tyrargo/underground/apartment)
 "dwP" = (
@@ -68957,12 +69394,6 @@
 /obj/structure/tunnel/maint_tunnel/hybrisa,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/apartment)
-"dxr" = (
-/obj/structure/sign/safety/restrictedarea{
-	pixel_x = -17
-	},
-/turf/open/floor/hybrisa/tile/tilebeigecheckered,
-/area/tyrargo/underground/apartment)
 "dxs" = (
 /obj/structure/machinery/door/airlock/almayer/generic/rusted{
 	dir = 2
@@ -69049,6 +69480,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/tyrargo/underground/apartment)
 "dxE" = (
@@ -69101,6 +69533,7 @@
 	dir = 1;
 	pixel_y = -9
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/underground/mall)
 "dxM" = (
@@ -69112,6 +69545,7 @@
 	pixel_x = -28
 	},
 /obj/structure/tunnel/maint_tunnel,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/underground/mall)
 "dxO" = (
@@ -69174,7 +69608,7 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/apartment)
 "dya" = (
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/apartment)
 "dyb" = (
@@ -69198,11 +69632,19 @@
 /area/tyrargo/underground/apartment)
 "dye" = (
 /obj/structure/closet/toolcloset,
+/obj/item/stack/cable_coil/random,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/apartment)
 "dyf" = (
 /obj/structure/sign/safety/high_voltage{
 	pixel_x = -18
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	pixel_x = 4;
+	pixel_y = -3
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
@@ -69434,10 +69876,12 @@
 	dir = 1;
 	pixel_y = -10
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/underground/apartment)
 "dyR" = (
 /obj/structure/surface/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/underground/apartment)
 "dyS" = (
@@ -69458,6 +69902,7 @@
 /area/tyrargo/underground/apartment)
 "dyW" = (
 /obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink/west,
 /area/tyrargo/underground/apartment)
 "dyX" = (
@@ -69471,6 +69916,7 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/underground/apartment)
 "dyZ" = (
+/obj/structure/machinery/light/small,
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink/east,
 /area/tyrargo/underground/apartment)
 "dza" = (
@@ -69515,6 +69961,8 @@
 /obj/structure/surface/rack{
 	color = "#8B7B5B"
 	},
+/obj/item/storage/pouch/electronics,
+/obj/item/storage/pouch/shotgun/large,
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/tyrargo/underground/mall)
 "dzf" = (
@@ -69567,9 +70015,13 @@
 /area/tyrargo/underground/apartment)
 "dzr" = (
 /obj/structure/prop/hybrisa/misc/fire/firebarrel,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dzs" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink,
 /area/tyrargo/underground/apartment)
 "dzt" = (
@@ -69577,6 +70029,7 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink/northeast,
 /area/tyrargo/underground/apartment)
 "dzu" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/carpet/rug_colorable/pink/north,
 /area/tyrargo/underground/apartment)
 "dzv" = (
@@ -69591,6 +70044,7 @@
 /area/tyrargo/underground/apartment)
 "dzx" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname,
+/obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/underground/apartment)
 "dzy" = (
@@ -69806,6 +70260,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/underground/apartment)
 "dAa" = (
@@ -69829,6 +70284,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dAe" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/green1,
 /area/tyrargo/underground/mall)
 "dAf" = (
@@ -69943,6 +70399,14 @@
 /area/tyrargo/underground/apartment)
 "dAp" = (
 /obj/structure/prop/tyrargo/large_tents/small,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
+	},
+/obj/structure/bed/bedroll{
+	dir = 1;
+	layer = 6;
+	pixel_x = 13
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dAq" = (
@@ -69996,6 +70460,21 @@
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/underground/mall)
+"dAy" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
 "dAz" = (
 /obj/structure/janitorialcart,
 /turf/open/floor/prison/floor_plate,
@@ -70168,6 +70647,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dAW" = (
@@ -70243,6 +70723,7 @@
 	pixel_y = -1;
 	color = "#b54b3d"
 	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/hybrisa/carpet/carpetred,
 /area/tyrargo/underground/apartment)
 "dBh" = (
@@ -70394,6 +70875,7 @@
 	pixel_x = 7;
 	pixel_y = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dBB" = (
@@ -70453,6 +70935,11 @@
 /obj/structure/prop/hybrisa/misc/machinery/screens/entertainment{
 	pixel_x = -32
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 3
+	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/tyrargo/underground/mall)
 "dBI" = (
@@ -70483,6 +70970,11 @@
 	layer = 3.1;
 	pixel_y = 38
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dBN" = (
@@ -70496,49 +70988,50 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dBP" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
-	},
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_x = 10;
 	pixel_y = -6;
 	layer = 2.8
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/obj/structure/prop/tyrargo/boards{
+	pixel_y = -20;
+	dir = 4
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dBQ" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
-	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1;
 	pixel_x = 5;
 	pixel_y = -3
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dBR" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
-	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1;
 	pixel_x = -2;
 	pixel_y = -5
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
@@ -70550,12 +71043,16 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "dBT" = (
-/obj/structure/barricade/sandbags/wired{
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 4;
+	pixel_y = -4;
+	layer = 2.8
+	},
+/obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
 	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 4;
-	pixel_y = 4
+	pixel_y = 4;
+	layer = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
@@ -70664,6 +71161,7 @@
 	pixel_x = -2;
 	pixel_y = 19
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
 "dCg" = (
@@ -70861,7 +71359,7 @@
 	pixel_x = 3
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dCI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -70875,6 +71373,9 @@
 	},
 /obj/item/stool,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/syringe{
+	icon_state = "broken"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dCK" = (
@@ -70884,6 +71385,13 @@
 "dCL" = (
 /obj/item/stool,
 /obj/item/reagent_container/food/drinks/bottle/rum,
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti1{
+	pixel_y = -58
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dCM" = (
@@ -70891,6 +71399,15 @@
 	dir = 1;
 	layer = 6;
 	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 5
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
@@ -70901,7 +71418,11 @@
 	pixel_y = 12
 	},
 /obj/item/prop/alien/hugger,
-/turf/open/floor/prison/floor_plate,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dCO" = (
 /obj/structure/bed/bedroll{
@@ -70918,7 +71439,12 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
-/turf/open/floor/prison/floor_plate,
+/obj/item/prop/colony/usedbandage{
+	dir = 10;
+	pixel_y = -6;
+	pixel_x = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dCP" = (
 /obj/structure/tunnel/maint_tunnel/hybrisa,
@@ -70928,7 +71454,7 @@
 /obj/effect/decal/cleanable/blood{
 	icon_state = "csplatter1"
 	},
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dCR" = (
 /obj/effect/decal/hybrisa/trash{
@@ -70939,8 +71465,8 @@
 /area/tyrargo/underground/apartment)
 "dCS" = (
 /obj/structure/machinery/door/airlock/maintenance/colony,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/mall)
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
 "dCT" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
@@ -70979,10 +71505,18 @@
 	icon_state = "trash_4";
 	layer = 3.2
 	},
-/turf/open/floor/prison/floor_plate,
+/obj/item/trash/cigbutt{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/platingdmg3,
 /area/tyrargo/underground/apartment)
 "dDa" = (
 /obj/structure/surface/table/woodentable/poor,
+/obj/item/pizzabox/pizza_galaxy,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDb" = (
@@ -70995,6 +71529,7 @@
 	dir = 8;
 	pixel_x = 7
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDd" = (
@@ -71040,6 +71575,7 @@
 	},
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDl" = (
@@ -71055,6 +71591,10 @@
 	icon_state = "couch_hori1_black";
 	pixel_y = 12
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDo" = (
@@ -71062,6 +71602,11 @@
 	icon_state = "couch_hori3_black";
 	pixel_y = 12
 	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDp" = (
@@ -71128,6 +71673,7 @@
 	pixel_y = 15
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti5,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDw" = (
@@ -71165,6 +71711,8 @@
 	layer = 5;
 	pixel_y = 19
 	},
+/obj/effect/decal/cleanable/generic,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti3,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDA" = (
@@ -71178,22 +71726,31 @@
 	pixel_x = 3;
 	pixel_y = 20
 	},
+/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 4;
+	pixel_x = 7
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDB" = (
-/obj/item/reagent_container/syringe/drugs{
-	pixel_y = 8
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dDC" = (
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/underground/sewer/north)
 "dDD" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greencorner/west,
 /area/tyrargo/underground/sewer/north)
 "dDE" = (
+/obj/effect/decal/cleanable/flour,
 /turf/open/floor/prison/greencorner,
 /area/tyrargo/underground/sewer/north)
 "dDF" = (
@@ -71269,6 +71826,10 @@
 "dDQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/item/tool/warning_cone{
+	pixel_y = 10;
+	pixel_x = -8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dDR" = (
@@ -71571,6 +72132,14 @@
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_east)
+"dEE" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 24;
+	pixel_x = 4
+	},
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/south)
 "dEF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_2,
@@ -71806,14 +72375,19 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "dFv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open_space,
+/obj/structure/prop/hybrisa/boulders/large_boulderdark{
+	density = 0;
+	unacidable = 1;
+	can_block_movement = 0;
+	pixel_y = -15;
+	pixel_x = 2;
+	explo_proof = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/indoors/bar/ground)
 "dFw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/turf/open/floor/almayer_hull,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/indoors/bar/ground)
 "dFx" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark,
@@ -71891,9 +72465,283 @@
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1,
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north)
+"dFH" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dFI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
 "dFJ" = (
 /turf/open/floor/strata/blue3,
 /area/tyrargo/underground/sewer/south)
+"dFK" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dFL" = (
+/obj/effect/decal/remains/robot,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dFM" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -9
+	},
+/obj/structure/mirror{
+	pixel_y = -31
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dFN" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dFO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
+"dFP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
+"dFQ" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/south)
+"dFR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dFS" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dFT" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dFU" = (
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil2";
+	color = "#550d0d"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dFV" = (
+/obj/item/tool/weldingtool,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dFW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dFX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dFY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti1,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dFZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dGa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 2;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dGb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dGc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dGd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dGe" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/tyrargo/underground/mall)
+"dGf" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
+"dGg" = (
+/obj/structure/closet/firecloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dGh" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dGi" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dGj" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dGk" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_x = 16;
+	pixel_y = -7
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dGl" = (
+/obj/structure/largecrate/empty/secure{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti4{
+	layer = 2.9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dGm" = (
+/obj/structure/largecrate/empty/secure{
+	pixel_y = 4;
+	layer = 4;
+	pixel_x = 2
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dGn" = (
+/obj/structure/sign/safety/maint{
+	pixel_y = -3;
+	pixel_x = -20
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dGo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dGp" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = -19;
+	pixel_y = 29
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/tyrargo/underground/mall)
+"dGq" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/tyrargo/underground/mall)
+"dGr" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 26
+	},
+/turf/open/floor/prison/green/east,
+/area/tyrargo/underground/sewer/south)
+"dGs" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
 "dGu" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -71905,10 +72753,476 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/almayer/black2/west,
 /area/tyrargo/indoors/bunker/central)
+"dGv" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGx" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGy" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/prison/darkbrown2/west,
+/area/tyrargo/underground/sewer/south)
+"dGz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/south)
+"dGA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"dGB" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
 "dGC" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/strata/multi_tiles/west,
 /area/tyrargo/indoors/admin/ground)
+"dGD" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGF" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"dGI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/east,
+/area/tyrargo/underground/sewer/south)
+"dGJ" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dGK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/carpetbeigedeco,
+/area/tyrargo/underground/apartment)
+"dGL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/carpet/carpetbeigedeco,
+/area/tyrargo/underground/apartment)
+"dGM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/white{
+	icon_state = "5-9";
+	level = 2
+	},
+/obj/structure/mirror{
+	pixel_y = -31
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dGN" = (
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/item/tool/soap/deluxe,
+/obj/structure/curtain/open/shower,
+/obj/item/explosive/plastic/hybrisa/mining{
+	name = "large mining charge";
+	icon_state = "custom_plastic_explosive_locked";
+	pixel_x = 15;
+	pixel_y = -4;
+	desc = "Used to put holes in specific areas without too much extra hole. Why it's planted in a bathroom? Who knows."
+	},
+/obj/structure/cable/white{
+	icon_state = "2-8";
+	level = 2;
+	pixel_y = 14;
+	pixel_x = -1
+	},
+/obj/structure/cable/white{
+	icon_state = "1-5";
+	level = 2;
+	pixel_y = -20;
+	layer = 3.1
+	},
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/tyrargo/underground/apartment)
+"dGO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/tyrargo/underground/mall)
+"dGP" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"dGQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dGR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = -8;
+	pixel_y = -9
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGS" = (
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_2,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 26
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/tyrargo/underground/sewer/south)
+"dGU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = -15;
+	pixel_y = 15
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dGV" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGW" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/item/prop{
+	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon_state = "M56D";
+	name = "M56D heavy machine gun nest";
+	pixel_y = 15;
+	anchored = 1
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGY" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	pixel_x = 1
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_x = -1;
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dGZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_x = -1;
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHa" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	pixel_x = 1
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHb" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
+"dHc" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
+"dHd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dHe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHh" = (
+/obj/structure/sign/poster/corporate,
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/underground/apartment)
+"dHi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/green,
+/obj/item/storage/box/m94/signal,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHk" = (
+/obj/structure/machinery/light/small,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/carpet/carpetbeigedeco,
+/area/tyrargo/underground/apartment)
+"dHl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dHm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dHn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/obj/structure/prop/tyrargo/illuminator{
+	icon_state = "floodlight-on";
+	light_on = 1;
+	light_range = 6;
+	light_power = 2
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	layer = 3.2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"dHq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"dHr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHs" = (
+/obj/item/stool{
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/underground/mall)
+"dHt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/underground/apartment)
+"dHu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/underground/apartment)
 "dHv" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
@@ -71923,13 +73237,519 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
+"dHw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHx" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dHy" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/mirror{
+	pixel_y = -31
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dHz" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHD" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/underground/apartment)
+"dHE" = (
+/obj/structure/sign/safety/bathwomens{
+	pixel_x = 32;
+	pixel_y = 27
+	},
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
 "dHF" = (
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
+"dHG" = (
+/obj/structure/sign/safety/bathmens{
+	pixel_y = 27;
+	pixel_x = 32
+	},
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
+"dHH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/underground/apartment)
 "dHI" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/tyrargo/indoors/apartment/south_upper)
+"dHJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	layer = 4.12;
+	pixel_y = 17;
+	pixel_x = 10
+	},
+/obj/structure/sign/poster/hero/voteno{
+	pixel_y = 36
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/underground/apartment)
+"dHL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dHM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/green/east,
+/area/tyrargo/underground/sewer/south)
+"dHN" = (
+/obj/item/fuel_cell/used{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/turf/open/shuttle/escapepod/floor1/west,
+/area/tyrargo/underground/apartment)
+"dHO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dHQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/underground/apartment)
+"dHR" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/underground/apartment)
+"dHS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/bathwomens{
+	pixel_x = 32;
+	pixel_y = 27
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/underground/mall)
+"dHT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dHU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dHV" = (
+/obj/structure/prop/hybrisa/misc/trash/green,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dHW" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dHX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_y = 4;
+	pixel_x = 19
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dHY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"dHZ" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red,
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"dIa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -6;
+	pixel_y = 9;
+	layer = 3.1
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIc" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/wood/darkerwood,
+/area/tyrargo/underground/apartment)
+"dId" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dIe" = (
+/obj/structure/prop/hybrisa/misc/urinal{
+	pixel_x = -28
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dIf" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dIg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/south)
+"dIh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIk" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIm" = (
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_5{
+	light_on = 0;
+	light_power = 0;
+	light_range = 0
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIn" = (
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti6{
+	pixel_x = 21
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIo" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/mall)
+"dIp" = (
+/obj/effect/decal/cleanable/flour,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dIq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -26
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/north)
+"dIr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/crowbar/red{
+	pixel_y = 6
+	},
+/obj/item/stack/rods{
+	pixel_y = -2
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/vehicles/tank/truck/base/broken{
+	pixel_x = -29;
+	pixel_y = -32;
+	dir = 1;
+	layer = 6
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dIv" = (
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/obj/item/storage/pouch/magazine/large,
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/tyrargo/underground/mall)
+"dIw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dIx" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/tyrargo/underground/mall)
+"dIy" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/tyrargo/underground/mall)
+"dIz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/north)
+"dIA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dIB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegreen,
+/area/tyrargo/underground/apartment)
+"dIC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilegreen,
+/area/tyrargo/underground/apartment)
+"dID" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15"
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/greywood,
+/area/tyrargo/underground/apartment)
+"dIH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/rug_colorable/pink,
+/area/tyrargo/underground/apartment)
+"dII" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dIJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/tyrargo/underground/mall)
+"dIK" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dIL" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#8B7B5B"
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 7;
+	pixel_y = -2
+	},
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/tyrargo/underground/mall)
+"dIM" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 26
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/tyrargo/underground/sewer/north)
+"dIN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/north)
+"dIO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -19
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dIP" = (
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/obj/item/clothing/accessory/poncho/green{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/poncho/green{
+	pixel_x = -3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/tyrargo/underground/mall)
 "dIQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -71938,12 +73758,452 @@
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
+"dIR" = (
+/obj/structure/surface/rack{
+	color = "#8B7B5B"
+	},
+/obj/item/storage/pouch/first_responder,
+/turf/open/floor/hybrisa/carpet/carpetgreendeco,
+/area/tyrargo/underground/mall)
+"dIS" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
+/area/tyrargo/underground/mall)
+"dIT" = (
+/obj/effect/decal/remains/robot,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dIU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dIV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 1;
+	pixel_x = 10
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dIW" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dIX" = (
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dIY" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian/burst,
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 4;
+	pixel_y = -12;
+	layer = 5
+	},
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dIZ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office/burst,
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dJa" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = -25;
+	pixel_x = 6
+	},
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dJb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/io{
+	pixel_y = 15;
+	pixel_x = -29
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJc" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJd" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJe" = (
+/obj/structure/prop/tyrargo/military_alert_sign{
+	pixel_y = 30;
+	layer = 6.1
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = -8;
+	pixel_y = -9
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/wood/greywood,
+/area/tyrargo/underground/apartment)
+"dJh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/mirror{
+	pixel_y = -31
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dJi" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dJj" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 3
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dJk" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dJl" = (
+/obj/effect/decal/remains/robot,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dJm" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = -8
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/mall)
+"dJn" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 4;
+	pixel_y = -12;
+	layer = 5
+	},
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dJo" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dJp" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dJq" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dJr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/north)
+"dJs" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_16";
+	pixel_y = 15
+	},
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/north)
+"dJt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
 "dJv" = (
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull,
 /area/tyrargo/underground/bunker/north)
+"dJw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = -14
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJx" = (
+/obj/structure/sign/poster/wylogo{
+	pixel_x = 28
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJy" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/wood/greywood,
+/area/tyrargo/underground/apartment)
+"dJz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 32
+	},
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dJA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dJB" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/machinery/atm{
+	icon = 'icons/obj/structures/props/atm.dmi';
+	pixel_x = 9;
+	pixel_y = 11
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/underground/mall)
+"dJC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/strata/green1,
+/area/tyrargo/underground/mall)
+"dJD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dJE" = (
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 5
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/mall)
+"dJF" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 4;
+	pixel_y = -12;
+	layer = 5
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/mall)
+"dJG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/sanitation/burst,
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dJH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/east,
+/area/tyrargo/underground/sewer/north)
+"dJI" = (
+/obj/structure/sign/poster/music{
+	pixel_x = -31
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/storage/bible{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJK" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dJM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 12;
+	pixel_y = 20;
+	layer = 2.9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dJN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper/burst,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dJO" = (
+/obj/item/prop/folded_anti_tank_sadar{
+	pixel_y = -6;
+	pixel_x = 4
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dJP" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 4;
+	pixel_y = -12;
+	layer = 5
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/mall)
+"dJQ" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 6;
+	pixel_x = 5
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/mall)
+"dJR" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/pizza_galaxy/burst,
+/turf/open/floor/plating/kutjevo,
+/area/tyrargo/underground/mall)
+"dJS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filtration/collector_pipes{
+	icon_state = "upper_2";
+	layer = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dJT" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	layer = 4.12;
+	pixel_y = 2;
+	pixel_x = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dJU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dJV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dJW" = (
+/obj/structure/prop/hybrisa/misc/blood/blood2{
+	layer = 3.5;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dJX" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dJY" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 4;
+	pixel_y = -12;
+	layer = 5
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	icon_state = "intact";
+	color = "#a6aeab";
+	pixel_x = 4;
+	pixel_y = 10;
+	layer = 5
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dJZ" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dKa" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 12;
+	pixel_y = 20;
+	layer = 2.9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/mall)
+"dKb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
 "dKc" = (
 /obj/structure/stairs{
 	dir = 1
@@ -71951,14 +74211,390 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/apartment/south_ground)
+"dKd" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKe" = (
+/obj/structure/sign/poster/pinup,
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/underground/apartment)
+"dKf" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKg" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKh" = (
+/obj/item/trash/chunk,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKi" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/underground/apartment)
+"dKj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/underground/apartment)
+"dKk" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/underground/apartment)
+"dKl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dKm" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dKn" = (
+/obj/structure/machinery/door/airlock/maintenance/colony{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/north)
+"dKp" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_y = -3;
+	layer = 2.8;
+	pixel_x = -3
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKq" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	dir = 1;
+	pixel_x = -18;
+	pixel_y = -6
+	},
+/obj/structure/prop/tyrargo/boards/boards_2{
+	pixel_y = -4
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKr" = (
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 1;
+	pixel_y = -1;
+	pixel_x = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/robot,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKt" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKu" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_y = 12
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 26
+	},
+/turf/open/floor/prison/green/east,
+/area/tyrargo/underground/sewer/north)
+"dKw" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKx" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKy" = (
+/obj/item/reagent_container/syringe{
+	icon_state = "broken"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKz" = (
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_3,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/underground/apartment)
+"dKB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/mirror{
+	pixel_y = -31
+	},
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/tyrargo/underground/apartment)
+"dKC" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dKD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/xeno_npc_spawn,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKG" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKH" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKJ" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
 "dKK" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/oob)
+"dKL" = (
+/obj/structure/sign/poster/pinup{
+	pixel_x = 4;
+	pixel_y = 35
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKM" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/wood/redwood,
+/area/tyrargo/underground/apartment)
+"dKN" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dKO" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 12;
+	pixel_x = -12
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dKP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dKQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilered,
+/area/tyrargo/underground/mall)
+"dKR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/green4/east,
+/area/tyrargo/underground/mall)
+"dKS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/green4/west,
+/area/tyrargo/underground/mall)
+"dKT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 10
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dKU" = (
+/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 5
+	},
+/turf/open/floor/strata/green4/east,
+/area/tyrargo/underground/mall)
+"dKV" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/green/east,
+/area/tyrargo/underground/sewer/north)
+"dKW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 14
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
+"dKX" = (
+/obj/structure/prop/tyrargo/military_alert_sign/alt{
+	pixel_y = 31;
+	layer = 6.1
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	layer = 8;
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
 "dKY" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"dKZ" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 40
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 13;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLa" = (
+/obj/structure/machinery/vending/cola{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLb" = (
+/obj/structure/machinery/vending/snack{
+	density = 0;
+	pixel_y = 16
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLc" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/strata/green4/north,
+/area/tyrargo/underground/mall)
+"dLd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLe" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/strata/green4,
+/area/tyrargo/underground/mall)
+"dLf" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/darkbrown2/west,
+/area/tyrargo/underground/sewer/north)
+"dLg" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dLh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dLi" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeigecheckered,
+/area/tyrargo/underground/apartment)
 "dLj" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/warning_stripes{
@@ -71969,6 +74605,32 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2/north,
 /area/tyrargo/indoors/bunker/central_south)
+"dLk" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/tyrargo/underground/apartment)
+"dLl" = (
+/turf/open/floor/platingdmg1,
+/area/tyrargo/underground/apartment)
+"dLm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/platingdmg3,
+/area/tyrargo/underground/apartment)
+"dLn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
 "dLo" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -71981,16 +74643,1033 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/indoors/security/ground)
+"dLp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dLq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/fire/firebarrel{
+	pixel_y = 3;
+	pixel_x = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLs" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/blue{
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLt" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLw" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dLx" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dLy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dLB" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -6;
+	pixel_y = 5;
+	layer = 3.1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/c_tube{
+	pixel_x = -18
+	},
+/obj/effect/decal/remains/robot,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
 "dLE" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	pixel_y = 7
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
+"dLF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/tyrargo/underground/apartment)
+"dLG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dLH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 5;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = -11
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLJ" = (
+/turf/open/floor/plating/platingdmg1,
+/area/tyrargo/underground/apartment)
+"dLK" = (
+/turf/open/floor/plating/platingdmg3/west,
+/area/tyrargo/underground/apartment)
+"dLL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/alien/hugger,
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dLM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dLN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/syringe{
+	icon_state = "broken"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLP" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/strata/green4/west,
+/area/tyrargo/underground/mall)
+"dLR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dLS" = (
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/strata/green4/west,
+/area/tyrargo/underground/mall)
+"dLT" = (
+/obj/structure/filtration/collector_pipes{
+	icon_state = "lower_2";
+	layer = 2
+	},
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/north)
+"dLU" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_x = 16;
+	pixel_y = -7
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/platingdmg3,
+/area/tyrargo/underground/apartment)
+"dLW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 6;
+	pixel_x = -30
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dLZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit{
+	icon_state = "vomit_4";
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_y = 28;
+	layer = 3
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg2/west,
+/area/tyrargo/underground/apartment)
+"dMd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg1,
+/area/tyrargo/underground/apartment)
+"dMe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/shotgun/pump,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dMf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMg" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/underground/mall)
+"dMh" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/underground/mall)
+"dMi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/strata/green4,
+/area/tyrargo/underground/mall)
+"dMk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/strata/green4/north,
+/area/tyrargo/underground/mall)
+"dMl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dMn" = (
+/obj/structure/sign/safety/maint{
+	pixel_x = 36
+	},
+/turf/open/floor/prison/green/east,
+/area/tyrargo/underground/sewer/north)
+"dMo" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMp" = (
+/obj/item/trash/chunk{
+	pixel_y = 7;
+	pixel_x = 5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/white{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	layer = 3;
+	pixel_x = 3;
+	pixel_y = 20
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	layer = 3;
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dMs" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 14
+	},
+/turf/open/floor/platingdmg1,
+/area/tyrargo/underground/apartment)
+"dMt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/platingdmg3,
+/area/tyrargo/underground/apartment)
+"dMu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/pimp{
+	pixel_y = 34;
+	pixel_x = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dMx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti7{
+	pixel_x = 19;
+	pixel_y = -3
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -6;
+	pixel_y = 18;
+	layer = 3.1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dMy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/syringe/drugs{
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dMz" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti1{
+	pixel_x = 4
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 2;
+	pixel_y = 20
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/bedroll{
+	dir = 1;
+	layer = 6;
+	pixel_y = 11
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_y = 14
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg2/west,
+/area/tyrargo/underground/apartment)
+"dMD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti2{
+	pixel_x = -10
+	},
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dME" = (
+/obj/effect/decal/hybrisa/trash{
+	dir = 4;
+	icon_state = "trash_11"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dMF" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 3;
+	pixel_y = 15;
+	layer = 2.9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMG" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/tyrargo/underground/apartment)
+"dMH" = (
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_x = 11
+	},
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 34
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMI" = (
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti6{
+	pixel_x = 21
+	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	layer = 3.1;
+	pixel_y = 7
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/bottle/tequila{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/ad{
+	layer = 4;
+	pixel_x = 31;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"dML" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 3;
+	pixel_y = 20;
+	layer = 2.9
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMM" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = -8
+	},
+/obj/structure/sign/poster/corporate{
+	layer = 2.9;
+	pixel_y = 32
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMN" = (
+/obj/structure/sign/poster/blacklight{
+	pixel_x = 32
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMO" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/green/west,
+/area/tyrargo/underground/sewer/north)
+"dMP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/sovietsoda{
+	icon_state = "sovietsoda-broken";
+	stat = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/apartment)
+"dMQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	layer = 3;
+	pixel_x = 3;
+	pixel_y = 20
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating/platingdmg1,
+/area/tyrargo/underground/apartment)
+"dMT" = (
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = 2;
+	pixel_y = 20
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -6;
+	pixel_y = 5;
+	layer = 3.1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMU" = (
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti4{
+	layer = 2.9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/decal/remains/robot,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"dMV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating/platingdmg3/west,
+/area/tyrargo/underground/apartment)
+"dMW" = (
+/obj/structure/flora/pottedplant{
+	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
+	icon_state = "pottedplant_21";
+	layer = 3.1;
+	name = "synthethic potted plant";
+	pixel_y = 16;
+	pixel_x = -7
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/coffee{
+	density = 0;
+	pixel_y = 18
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMY" = (
+/obj/structure/flora/pottedplant{
+	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
+	icon_state = "pottedplant_21";
+	layer = 3.1;
+	name = "synthethic potted plant";
+	pixel_y = 16;
+	pixel_x = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"dMZ" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dNa" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/sign/safety/maint{
+	pixel_y = -24;
+	pixel_x = 14
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dNb" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -12
+	},
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/underground/sewer/north)
+"dNc" = (
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = -14
+	},
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/underground/sewer/north)
+"dNd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 17
+	},
+/turf/open/floor/prison/darkredcorners2/west,
+/area/tyrargo/underground/sewer/north)
+"dNe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/underground/sewer/north)
+"dNf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/underground/sewer/north)
+"dNg" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/underground/sewer/north)
+"dNh" = (
+/obj/structure/sign/safety/maint{
+	pixel_y = -24
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/underground/sewer/north)
+"dNi" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/darkred2,
+/area/tyrargo/underground/sewer/north)
+"dNj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/yellow,
+/area/tyrargo/underground/sewer/north)
+"dNk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -18;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dNm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNn" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit{
+	icon_state = "vomit_4";
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dNq" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
 "dNr" = (
 /obj/structure/shuttle/part/dropship3/right_outer_wing_connector,
 /turf/open/floor/plating,
 /area/tyrargo/indoors/museum_storage/upper)
+"dNs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNt" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_13";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNv" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_11"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNx" = (
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	layer = 3;
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNy" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 22;
+	pixel_x = 12
+	},
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/north)
+"dNz" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_11"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 12
+	},
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/north)
+"dNA" = (
+/obj/effect/decal/hybrisa/trash{
+	dir = 1;
+	icon_state = "trash_11"
+	},
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/north)
+"dNB" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone{
+	pixel_y = 18;
+	pixel_x = -25
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dND" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = 4;
+	pixel_x = -14
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	dir = 4;
+	icon_state = "trash_11"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNF" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 17
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dNI" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_15";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNK" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -18;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/north)
+"dNL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
 "dNM" = (
 /obj/structure/prop/vehicles/tank/miltruck/wheeled/destroyed,
 /obj/effect/decal/cleanable/blood,
@@ -71999,6 +75678,235 @@
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/apartment/north_ground)
+"dNN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -18;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 1
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/wood/orange{
+	dir = 4;
+	pixel_y = -2;
+	pixel_x = -8
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_13";
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNU" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNV" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	pixel_x = 11;
+	pixel_y = -13
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_12";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/tyrargo/underground/sewer/north)
+"dNY" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 20
+	},
+/turf/open/floor/prison/darkredcorners2/east,
+/area/tyrargo/underground/sewer/north)
+"dNZ" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/yellow/north,
+/area/tyrargo/underground/sewer/north)
+"dOa" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dOb" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/cobweb2,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dOc" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/platingdmg1,
+/area/tyrargo/underground/sewer/north)
+"dOd" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/north)
+"dOe" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = 17
+	},
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"dOf" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/green3/east,
+/area/tyrargo/indoors/mall)
+"dOg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/green3/west,
+/area/tyrargo/indoors/mall)
+"dOh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"dOi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"dOj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"dOk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"dOl" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"dOm" = (
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/marked,
+/area/tyrargo/indoors/mall)
+"dOn" = (
+/obj/structure/window_frame/strata,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/bar/ground)
+"dOo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/tyrargo/indoors/bar/ground)
+"dOp" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dOq" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	dir = 1;
+	layer = 3;
+	pixel_y = 20
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
+"dOr" = (
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.9;
+	pixel_y = 21
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
 "dPk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -73615,7 +77523,7 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "gZu" = (
 /obj/structure/prop/vehicles/aircraft/aircraft/usaf{
-	layer = 2.9
+	layer = 6
 	},
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/hybrisa/street/asphalt,
@@ -77044,9 +80952,6 @@
 	color = "#EBD9B7"
 	},
 /obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/item/prop/folded_anti_tank_sadar{
-	pixel_y = 6
-	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "odK" = (
@@ -78624,6 +82529,10 @@
 /area/tyrargo/indoors/comms/ground)
 "qYN" = (
 /obj/structure/machinery/iv_drip,
+/obj/structure/bed/hybrisa/hospital/hospitaldivider{
+	layer = 3.8;
+	pixel_y = 24
+	},
 /turf/open/floor/plating,
 /area/tyrargo/indoors/apartment/north_ground)
 "rbr" = (
@@ -79026,6 +82935,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "rKc" = (
@@ -79922,6 +83833,7 @@
 /turf/open/floor/corsat,
 /area/tyrargo/indoors/engineering/ground)
 "tqO" = (
+/obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/underground/sewer/south)
 "tro" = (
@@ -107310,10 +111222,10 @@ bsw
 bsw
 dAC
 oyg
-dDZ
-dAl
+dNL
+dCv
 bgQ
-dAl
+dNk
 dDJ
 mAQ
 dvf
@@ -107492,11 +111404,11 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNN
 dAl
 bgQ
-dAl
-dDJ
+dCv
+dch
 dvf
 dvf
 dDg
@@ -107674,11 +111586,11 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNO
 dBz
 dzX
-dBz
-dDJ
+dDd
+dch
 dvf
 dDq
 dzi
@@ -107856,11 +111768,11 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
 dBz
-dDJ
+dch
 dvf
 dDs
 dzi
@@ -108038,11 +111950,11 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
 dBz
-dDJ
+dch
 dvf
 dDt
 dzi
@@ -108220,10 +112132,10 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNL
 dAl
 bgQ
-dAl
+dCv
 dDJ
 bgC
 dvf
@@ -108401,11 +112313,11 @@ bsw
 bsw
 bsw
 dAC
-oyg
-dDZ
-dAl
+dOa
+dNL
+dNB
 bgQ
-dAl
+dCv
 dDJ
 dDC
 dDu
@@ -108584,10 +112496,10 @@ dAC
 bsw
 dAC
 oyg
-dDZ
+dNL
 dAl
 bgQ
-dAl
+dCv
 dDJ
 dDC
 dAK
@@ -108766,11 +112678,11 @@ dAC
 pQM
 dAC
 dAC
-dDZ
+dNL
 dAl
 bgQ
-dAl
-dDJ
+dCv
+dch
 dvf
 dvf
 dDj
@@ -108948,10 +112860,10 @@ bgG
 bgG
 dAC
 dAC
-dDZ
+dNP
 dBz
 dzX
-dBz
+cNB
 dDJ
 dvf
 dCX
@@ -109130,11 +113042,11 @@ unk
 bgG
 bgG
 bgG
-dDZ
-dBz
+dNQ
+dNC
 dzX
-dBz
-dDJ
+dNl
+dNb
 dvf
 dCX
 dAU
@@ -109312,11 +113224,11 @@ unk
 unk
 bgG
 bgG
-dDZ
-dAl
+dNR
+dND
 dzX
-dAl
-dDJ
+dNm
+dNc
 dvf
 dvf
 dCX
@@ -109498,13 +113410,13 @@ dDZ
 dAl
 bgQ
 dAl
-dDK
-dBz
+dNd
+dMZ
 dvf
 dvf
 dvf
 dvf
-dAP
+dLg
 dAP
 dvf
 dvf
@@ -109676,51 +113588,51 @@ unk
 dEg
 dEe
 bgG
-dDZ
+dNS
 dAl
 bgQ
 dBz
-dAl
+dCv
 dDD
+dMO
+dIN
+dIq
+dIz
+dIz
+dIz
 dyI
 dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
-dyI
+dKo
+dIz
+dIz
+dIz
+dJr
+dIz
+dIN
+dIz
+dIq
+dIg
+dka
+dka
+dka
+mdH
+mdH
+mdH
+dFQ
 mdH
 mdH
 mdH
 mdH
+dGz
+dka
+dka
+mdH
+dFQ
 mdH
 mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
-mdH
+dka
+dka
+djZ
 txM
 ahW
 ahW
@@ -109858,53 +113770,53 @@ unk
 dAC
 dEe
 bgG
-dDZ
+dNL
 dBz
 bgQ
 bgQ
 dBz
-dAl
-dAl
+dCv
+dCv
 dBz
 dBz
-dAl
-dAl
-dAl
+dLw
+dCv
+dCv
 dAl
 dBz
-dBz
-dBz
-dAl
-dAl
-dAl
+dDd
+dDd
+dJS
+dCv
+dCv
 dzW
 dyJ
 dyJ
 dyJ
-lCQ
-lCQ
-lCQ
-lCQ
-cMO
-cMO
-cMO
-lCQ
-lCQ
-lCQ
+dGQ
+dHY
+dGQ
 lCQ
 cMO
 cMO
+dHp
+dHl
+lCQ
+dGU
+dGQ
+dGA
+dGA
 cMO
+cZo
+cZo
+cZo
+cZo
+cZo
 dqM
 dqM
-dqM
-dqM
-dqM
-dqM
-dqM
-dqM
-ciR
-cZw
+cZo
+cZs
+djT
 ahW
 bFL
 bFL
@@ -110040,7 +113952,7 @@ unk
 dAC
 dEe
 dAC
-dDZ
+dNL
 dBz
 bgQ
 bgQ
@@ -110058,8 +113970,8 @@ bgQ
 bgQ
 dzX
 dzX
+dJs
 dzX
-dzX
 bgQ
 bgQ
 bgQ
@@ -110080,13 +113992,13 @@ cZg
 dqS
 dqS
 dqS
-dqS
+dEE
 cZg
 cZg
 cZg
 dqM
-dqM
-cLY
+cZo
+cZi
 ahW
 bFL
 bFL
@@ -110222,7 +114134,7 @@ dAC
 dAC
 dAC
 dAC
-dDZ
+dNL
 dBz
 bgQ
 bgQ
@@ -110231,43 +114143,43 @@ dAl
 dAl
 dBz
 dBz
-dAl
-dAl
-dAl
-dAl
+dCv
+dCv
+dCv
+dCv
 dBz
 dBz
 dBz
-dAl
-dAl
+dDN
+dCv
 dAl
 dzY
 dyK
+dIA
 dyK
-dyK
-rJT
-rJT
-rJT
-rJT
+dHm
+dHm
+dHL
+dHm
 mQO
 mQO
-mQO
+dHq
+dHm
+dHd
 rJT
 rJT
-rJT
-rJT
-mQO
+dGH
 mQO
 mQO
 dqM
 dqM
-dqM
-dqM
-dqM
-dqM
+cZo
+djY
+cZo
+drK
 cZg
 cZg
-dqM
+cZo
 cLY
 dsz
 bFL
@@ -110404,24 +114316,24 @@ dAC
 bsw
 bsw
 dAC
-dDZ
-dAl
+dNT
+dNE
 bgQ
 dBz
 dAl
 dDE
 dyL
+dMn
 dyL
 dyL
 dyL
-dyL
-dyL
-dyL
-dyL
-dyL
-dyL
-dyL
-dyL
+dKV
+dJH
+dKv
+dJH
+dJH
+dJH
+dJH
 dyL
 dyL
 dyL
@@ -110429,7 +114341,7 @@ dyL
 dyL
 wlk
 wlk
-wlk
+dHM
 wlk
 wlk
 wlk
@@ -110437,19 +114349,19 @@ dwt
 wlk
 wlk
 wlk
+dGI
+dGI
 wlk
-wlk
-wlk
-wlk
+dGr
 wlk
 wlk
 wlk
 wlk
 vEi
-dqM
-dqM
+cZo
+cZo
 cZg
-dqM
+cZf
 cLY
 ahW
 bFL
@@ -110586,10 +114498,10 @@ dAC
 bsw
 bsw
 dAC
-dDZ
+dNU
 dAl
 bgQ
-dAl
+dCv
 dDL
 dBz
 dtA
@@ -110610,7 +114522,7 @@ dtA
 dtQ
 dtA
 dtA
-rEA
+dHZ
 rEA
 dtA
 dwI
@@ -110627,9 +114539,9 @@ dtA
 rEA
 rEA
 dtA
-ciR
+dsE
 hjg
-dqM
+dkb
 cZg
 dqM
 cLY
@@ -110768,11 +114680,11 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dAl
 bgQ
 dAl
-dDJ
+dch
 dtA
 dtA
 dDk
@@ -110783,20 +114695,20 @@ dtA
 dtA
 dCc
 dBM
-dun
+dGt
 dtA
 dtA
 dtA
 dtA
 dzM
-dyO
+dIB
 dyM
 dtA
 dtA
 dtA
 dtA
 dwX
-dwI
+dHt
 dwu
 dtA
 dtA
@@ -110811,7 +114723,7 @@ dtA
 dtA
 dtA
 cLP
-dqM
+cZo
 dqS
 dqM
 cLY
@@ -110950,16 +114862,16 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dAl
+dNL
+dNF
 dzX
 dAl
-dDJ
+dch
 dtA
 dDv
-dtD
-dtD
-dtD
+dMo
+dCI
+dLx
 dCH
 dtA
 dCn
@@ -110970,30 +114882,30 @@ dAV
 dtA
 dAm
 dzZ
-dyO
-dyO
+dIB
+dIB
 dyO
 dtA
 dxY
 dxy
 dxm
-dwI
-dwI
+dHt
+dHu
 dwu
 dtA
 dvy
-dun
-dun
-dun
-dun
+dGt
+dGs
+dGs
+dGs
 dun
 dtA
-dtD
-dtD
-dtD
+dGg
+dFR
+dFH
 dtA
-cLP
-dqM
+cZA
+cZW
 dqS
 dqM
 cLY
@@ -111132,53 +115044,53 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dAl
 dzX
-dAl
-dDJ
+dNn
+dch
 dtA
 dDw
-dtD
-dtD
-dtD
-dCI
+dMp
+dLU
+dFR
+dLh
 dtA
 dCn
 dCe
 dBN
-dun
+dGs
 dun
 dAL
 dyO
-dyO
-dyO
-dyO
+dIB
+dIB
+dIB
 dyP
 dtA
 dxZ
-dxy
+dHN
 dxn
-dwI
-dwI
+dHt
+dHt
 dwu
 dtA
 dun
 dun
 duQ
 dun
-dun
+dGs
 dun
 dtA
-dtD
-dtD
-dtD
+dGh
+dFS
+dFI
 dtB
 cLP
-dqM
+cZo
 cZg
 dqM
-cLY
+cZi
 ahW
 ahW
 ahW
@@ -111314,35 +115226,35 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNL
 dAl
 bgQ
-dAl
-dDJ
+dNo
+dch
 dtA
 dtA
-dCI
+dMq
 dCY
-dCI
+dLy
 dCJ
 dtA
 dCn
 dun
 dBN
-dun
+dGs
 dAW
 dtA
 dAn
 dyO
-dyO
+dIB
 dyO
 dyQ
 dtA
 dya
 dxz
 dxo
-dwI
-dwI
+dHt
+dHt
 dwv
 dtA
 dun
@@ -111352,15 +115264,15 @@ duC
 dun
 dun
 dtA
-dtD
-dtD
-dtD
+dGi
+dFT
+dFK
 dtA
-cLP
-ciR
+cZA
+cZs
 cZg
 ciR
-cLY
+cZi
 ahW
 dsL
 dsT
@@ -111496,16 +115408,16 @@ bsw
 bsw
 dAC
 oyg
-dDZ
+dNL
 dAl
 bgQ
-dAl
+dDN
 dDJ
-mAQ
+dNa
 dtA
-dCI
-dtD
-dtD
+dMr
+dLA
+dLz
 dCK
 dtA
 dCn
@@ -111523,26 +115435,26 @@ dtA
 dyb
 dxA
 dxp
-dwI
+dHt
 dwJ
 dww
 dtA
 dun
+dGV
 duD
 duD
-duD
-dun
-dun
+dGB
+dGs
 dtA
-dtD
-dtD
-dtD
+dGj
+dDm
+dFL
 dtA
-cLP
+cZA
 ciR
 cZg
-ciR
-cLY
+djX
+cYX
 ahW
 dsM
 dsU
@@ -111677,23 +115589,23 @@ bsw
 bsw
 bsw
 dAC
-oyg
-dDZ
-dAl
+dOb
+dNL
+dCv
 bgQ
-dAl
-dDJ
+dCv
+dch
 mAQ
 dDx
-dtD
-dtD
-dtD
+dMs
+dLV
+dLA
 dCL
 dtA
 dCn
 dCf
 dBN
-dun
+dGs
 dAX
 dtA
 dAo
@@ -111703,28 +115615,28 @@ dyO
 dyS
 dtA
 dyc
-dwI
-dwI
-dwI
-dwI
+dHt
+dHt
+dHt
+dHt
 dwu
 dtA
 dun
+dGs
+dGs
+dGs
 dun
-dun
-dun
-dun
-dun
+dGt
 dtA
-dtD
-dtD
+dGk
+dFU
 dtA
 dtA
 cLP
 dqM
 cZg
-dqM
-cLY
+cZo
+cZi
 ahW
 ahW
 dsV
@@ -111863,50 +115775,50 @@ dAC
 dDZ
 dAl
 bgQ
-dAl
-dDJ
+dCv
+dch
 dtA
 dtA
-dCI
+dMt
 dCZ
-dtD
+dLz
 dCM
 dtA
 dAX
+dGt
 dun
-dun
-dun
+dGs
 dAY
 dtA
 dAb
 dAb
 dyO
-dyO
+dIC
 dyT
 dtA
 dyd
-dwI
-dwI
+dHu
+dHH
 dwI
 dwK
 dwu
 dtA
 dun
+dGW
+dGs
 dun
-dun
-dun
-dun
-dun
+dGs
+dGs
 dtA
-dtD
-dtD
+dGl
+dDm
 dtA
 fIx
-cLP
-dqM
+cZA
+cZW
 dqS
 dqM
-cLY
+cZi
 dis
 ahW
 dsW
@@ -112046,16 +115958,16 @@ dDZ
 dBz
 dzX
 dBz
-dDJ
+dch
 dtA
 dDy
-dCI
-dtD
+dLA
+dLz
 dtD
 dCN
 dtA
 dCo
-dCh
+dKw
 dun
 dAZ
 dAZ
@@ -112063,7 +115975,7 @@ dtA
 dAc
 dAc
 dzN
-dyO
+dIB
 dyT
 dtA
 dye
@@ -112075,20 +115987,20 @@ dwx
 dtA
 dun
 dun
-dun
+dGs
 dum
 bgR
 duo
 dtA
-dtD
-dtD
+dGm
+dDm
 dtA
 fIx
-cLP
+cZA
 dqM
 dqS
 dqM
-cLY
+cZi
 dis
 ahW
 dsX
@@ -112224,22 +116136,22 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
 dBz
-dDJ
+dch
 dtA
 dDz
-dtD
-dtD
+dMu
+dLW
 dCQ
 dCO
 dtA
 dtA
 dtA
 dBO
-dtA
+dGJ
 dtA
 dtA
 dtA
@@ -112250,26 +116162,26 @@ dtA
 dtA
 dtA
 dxB
+dGJ
 dtA
 dtA
 dtA
 dtA
 dtA
-dtA
-dtA
+dGJ
 duS
+dGJ
 dtA
 dtA
 dtA
+dFR
+dFV
 dtA
-dtD
-dtD
 dtA
-dtA
-cLP
+cZA
 dqM
 cZg
-dqM
+cZo
 cLY
 ahW
 ahW
@@ -112406,52 +116318,52 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
+dDd
+dNy
 dBz
-dzX
-dBz
-dDJ
+dch
 dtA
 dDA
-dtD
+dMv
 dCI
 dCR
 dtA
 dCy
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dKH
+dGs
+dGs
+dKb
+dHn
+dJI
+dGs
+dJb
+dIO
+dGs
+dGs
+dIh
 dyf
+dGs
 dun
-dxr
-dun
-dun
-dun
+dHz
 dun
 dun
 dun
-dun
-dun
-dun
+dHe
+dGs
+dGs
+dGs
+dGD
 dtA
 dtA
 dtA
 dtQ
 dtA
 dtA
-cLP
+cZA
 ciR
 cZg
-ciR
+cZs
 cLY
 dsz
 bFL
@@ -112589,10 +116501,10 @@ bsw
 dAC
 dAC
 dDZ
-dAl
+dCv
 bgQ
 dAl
-dDJ
+dch
 dtA
 dtA
 dDl
@@ -112600,8 +116512,8 @@ dtA
 dtA
 dtA
 dun
-dun
-dun
+dGs
+dKx
 dBP
 dBB
 dun
@@ -112609,31 +116521,31 @@ dun
 dAp
 dun
 dun
+dID
+dHw
+dGs
+dIa
+dHO
+dGt
+dHA
+dGs
+dGs
+dHn
+dGs
+dGX
 dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dGs
+dGE
+dGv
 dtA
 dtA
-dtR
+dFW
 dtA
 dtA
-cLP
-ciR
+cZA
+dnr
 cZg
-ciR
+cZs
 cLY
 ahW
 bFL
@@ -112771,45 +116683,45 @@ bsw
 dAC
 oyg
 dDZ
-dAl
+dCv
 bgQ
-dAl
-dDJ
+dCv
+dch
 mAQ
 dtA
-dDm
+dMw
 dub
 jpq
-dun
-dun
-dun
-dun
+dGs
+dKW
+dGs
+dKy
 dBQ
-dun
+dKd
 dun
 dun
 dAq
+dJc
+dGs
+dGs
+dIr
+dIi
 dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dHP
+dGs
+dGs
+dGs
+dHr
 dvW
+dHf
+dGY
 dun
 dun
-dun
-dun
-dun
-dun
+dGF
+dGs
 hoh
 dub
-dtR
+dFX
 dtA
 dtA
 cLP
@@ -112953,13 +116865,13 @@ bsw
 dAC
 oyg
 dDZ
-dAl
+dDN
 bgQ
 dAl
 dDJ
 mAQ
 dtA
-dDm
+dMx
 dub
 jpq
 dun
@@ -112968,37 +116880,37 @@ dun
 dun
 dBR
 dun
-dun
+dJT
 dAM
 dun
+dJd
+dGs
+dIE
+dIs
+dIj
+dIb
 dun
 dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dGs
+dGs
 dwy
 dvX
+dHg
+dGs
+dGR
 dun
 dun
-dun
-dun
-dun
-dun
+dGt
 hoh
 dub
-dtR
+dDm
 dtA
 fIx
 cLP
-dqM
+cZo
 dqS
-dqM
-cLY
+daB
+djU
 dth
 bFL
 bFL
@@ -113134,53 +117046,53 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNL
 dAl
 bgQ
 dAl
 dDJ
 dtA
 dtA
-dDm
+dLh
 dub
 jpq
 dun
 dun
 dun
+dKz
+dtA
+dKe
+dtA
+dtA
+dtA
+dJe
+dHn
+dtA
+dtA
+dtA
+dtA
+dtA
+dHJ
+dHB
+dtA
+dtA
+dtA
+dHh
+dtA
+dGS
 dun
-dtA
-dtA
-dtA
-dtA
-dtA
 dun
-dun
-dtA
-dtA
-dtA
-dtA
-dtA
-dun
-dun
-dtA
-dtA
-dtA
-dtA
-dtA
-dun
-dun
-dun
-dun
+dGs
 hoh
 dub
-dtR
+dFY
 dtA
 fIx
 cLP
-dqM
+cZo
 dqS
-dqM
-cLY
+cZo
+cZi
 dth
 dtb
 bFL
@@ -113316,53 +117228,53 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dBz
-dzX
+dNT
+dDd
+dNz
 dBz
 dDJ
 dtA
-dDm
-dDm
+dMP
+dMy
 dub
 jpq
 dun
-dun
-dun
-dun
+dGt
+dGs
+dGs
 dBT
-dun
-dun
-dun
-dun
-dun
-dun
+dKf
+dGs
+dJJ
+dJt
+dGs
+dHn
 dzr
 dun
-dun
+dIk
 dun
 dxC
+dGs
+dGs
+dGs
+dGs
+dHo
+dHi
+dGZ
+dGs
+dGs
 dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dGs
 hoh
 dub
-dtR
+dFZ
 dtA
 dtA
-cLP
-dqM
+cZA
+cZo
 dqS
 dqM
-cLY
+cZk
 ahW
 ahW
 bFL
@@ -113498,9 +117410,9 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dBz
-dzX
+dNV
+dDd
+dNA
 dBz
 dDM
 dtA
@@ -113508,40 +117420,40 @@ dDB
 dDm
 dub
 jpq
+dLi
+dGs
+dKI
+dHC
+dKp
+dKg
+dHC
+dHn
+dJu
+dHn
+dun
+dIF
+dIt
+dIl
 dun
 dun
 dun
-dun
-dBT
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dHC
+dGs
+dGt
+dHn
+dHj
+dHa
+dGs
+dGs
+dGG
+dGw
 hoh
 dub
-dtR
+dDm
 dtA
 dqY
-cLP
-dqM
+cZA
+cZo
 dqS
 cZo
 daA
@@ -113681,45 +117593,45 @@ bsw
 bsw
 dAC
 dDZ
-dBz
+dJq
 dzX
 dBz
-dDJ
+dNe
 dtA
 dtA
 dDl
 dtA
 dtA
 dtA
+dKX
+dKJ
+dGs
+dKq
+dKh
+dGt
+dun
+dJw
+dJf
 dun
 dun
-dun
-dBT
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dGs
+dIm
 dun
 dun
 dun
 dun
+dHw
+dGs
+dGs
 dun
 dun
-dun
-dun
-dun
+dGt
+dGs
+dGs
+dGx
 dtA
 dtA
-dtR
+dGa
 dtA
 dqY
 daP
@@ -113739,15 +117651,15 @@ ciR
 cZg
 cZg
 cZg
-ciR
+daH
 cZF
 cZx
 cYS
 cMB
+cZb
 cYS
-cYS
-cYS
-cYS
+cRv
+aiz
 cYS
 cYS
 cYS
@@ -113865,15 +117777,27 @@ dAC
 dEa
 dAl
 bgQ
-dAl
-dDJ
+dCv
+dNf
 dtA
 dtA
-dtD
-dtD
-dtD
+dMz
+dLX
+dLB
 dtA
 dtA
+dKL
+dGs
+dKr
+dGs
+dGs
+dJK
+dJx
+dCh
+dGs
+dun
+dun
+dIn
 dun
 dun
 dun
@@ -113881,19 +117805,7 @@ dun
 dun
 dun
 dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
-dun
+dCh
 dun
 dun
 dun
@@ -113905,7 +117817,7 @@ dtQ
 dtA
 dqY
 cZA
-ciR
+cZs
 cZg
 cZg
 ciR
@@ -113928,8 +117840,8 @@ ciR
 ciR
 ciR
 cZf
-dqM
-cZo
+cVY
+cNU
 cZo
 cMD
 cZs
@@ -114047,14 +117959,14 @@ dEd
 dEb
 dAl
 bgQ
-dBz
-dDJ
+dDd
+dch
 mAQ
 dtA
-dtD
-dtD
-dtD
-dtD
+dMA
+dLY
+dLC
+dLk
 dtA
 dtA
 dtA
@@ -114082,12 +117994,12 @@ dtA
 dtA
 dtA
 dtA
-dtS
-dtS
+dGn
+dGb
 dtA
 fIx
 cZA
-ciR
+cZs
 cZg
 cZg
 cZg
@@ -114225,23 +118137,23 @@ dEn
 dEk
 dEf
 dEh
-dEc
-dBz
+dOc
+cNB
 dDV
 bgQ
-dBz
+dNp
 dDJ
 mAQ
 dtA
 dDn
 dDa
-dtD
-dtD
+dLD
+dLl
 dtA
 dCp
-dBC
+dKj
 dBU
-dBC
+dKi
 dBb
 dtA
 dAr
@@ -114253,23 +118165,23 @@ dtA
 dyg
 dwN
 dwP
-dwP
+dHD
 dwM
 dtA
 dvY
 dvz
-duG
+dGK
 duU
 duE
 dtA
 dup
 dui
 dtS
-dtS
+dGb
 dtA
 fIx
 cZA
-ciR
+cZs
 cZg
 cZg
 ciR
@@ -114282,7 +118194,7 @@ dqM
 dqM
 ciR
 ciR
-dqM
+dcr
 dqM
 dqM
 ciR
@@ -114292,8 +118204,8 @@ cZg
 cZg
 cZg
 ciR
-dqM
-dqM
+cVZ
+cOd
 dqM
 ciR
 ddT
@@ -114411,18 +118323,18 @@ dBz
 dDV
 bgQ
 bgQ
-dBz
+dDd
 dDJ
 dtA
 dtA
 dDo
 dDb
-dtD
-dtD
+dLF
+dLm
 dtA
 dCq
-dBC
-dBC
+dKA
+dKj
 dBD
 dBc
 dtA
@@ -114434,24 +118346,24 @@ dyV
 dtA
 dyh
 dxD
-dwP
+dHK
 dwP
 dwN
 dtA
 dvZ
-duG
-duG
-duG
+dGL
+dGK
+dGK
 duF
 dtA
 dtA
 dtA
-dtS
-dtS
+dGb
+dGc
 dtA
 cZe
 cZA
-dqM
+cZo
 cZg
 dqM
 daC
@@ -114465,8 +118377,8 @@ dqM
 cZc
 cYV
 cYV
-cYV
-cYV
+dcm
+dca
 cYV
 cZG
 ciR
@@ -114474,8 +118386,8 @@ ciR
 cZg
 ciR
 dqM
-cZc
-cYV
+cWa
+cOe
 cYV
 cZq
 cZq
@@ -114593,47 +118505,47 @@ dzX
 bgQ
 bgQ
 bgQ
-dBz
-dDJ
+dDd
+dch
 dtA
-dtD
-dtD
+dMQ
+dCI
 dDc
-dtD
-dtD
+dLG
+dLn
 dtA
 dCr
 dBC
-dBC
+dKj
 dBC
 dBd
 dtA
 dAt
-dzw
-dzw
+dJg
+dIG
 dzu
 dyW
 dtA
 dyi
-dwP
-dwP
+dHQ
+dHK
 dwP
 dwO
 dtA
 dwa
-duG
-duG
-duG
-duG
+dGK
+dGK
+dGK
+dGK
 dtA
 dup
 dui
-dtS
-dtS
+dGb
+dGb
 dtE
 dqY
 cZA
-dqM
+cZo
 dqS
 dqM
 daw
@@ -114776,29 +118688,29 @@ dBz
 bgQ
 bgQ
 dBz
-dDJ
+dNg
 dDF
-dtD
-dtD
-dtD
-dtD
-dtD
+dMR
+dMB
+dLO
+dFW
+dLp
 dtA
+dKM
 dBC
-dBC
-dBC
-dBC
+dKj
+dKj
 dBe
 dtA
+dJy
 dzw
-dzw
-dzw
+dIG
 dzw
 dyX
 dtA
+dIc
 dwP
-dwP
-dwP
+dHK
 dwP
 dwP
 dtA
@@ -114806,19 +118718,19 @@ dwb
 duG
 dvi
 duV
-duG
+dGL
 dtA
 dtA
 dtA
+dGb
 dtS
-dtS
-dtE
+dFM
 dqY
 cLP
 dqM
 dqS
 dqM
-cLY
+djV
 dqY
 dqY
 dqY
@@ -114829,8 +118741,8 @@ vJq
 dqY
 dqY
 dqY
-tqO
-tqO
+dcg
+dcg
 dqY
 dqY
 cLP
@@ -114957,14 +118869,14 @@ dEe
 dBz
 dDV
 bgQ
-dBz
-dDJ
+dJq
+dNh
 dtA
-dtD
-dtD
-dtD
-dtD
-dtD
+dMS
+dMC
+dLZ
+dCI
+dLq
 dtA
 dtA
 dwZ
@@ -114992,9 +118904,9 @@ dtA
 dtA
 dup
 dui
-dtS
-dtS
-dtE
+dGb
+dGd
+dFN
 dqY
 cZA
 cZo
@@ -115003,7 +118915,7 @@ dqM
 cZl
 dqY
 dqY
-ciR
+djK
 dqY
 dqY
 lsF
@@ -115013,7 +118925,7 @@ dqY
 rPT
 ahS
 ahS
-rKg
+daN
 dqY
 cZz
 cZo
@@ -115137,44 +119049,44 @@ dAC
 dAC
 dEf
 dEc
-dAl
+bgG
 bgQ
-dAl
+dNq
 dDJ
 dtA
 dtA
-dtD
-dtD
-dtD
-dtD
+dMD
+dMa
+dLH
+dLr
 dtA
 dAu
-dtS
+dGb
 dtA
-dBC
+dKk
 dBf
 dtA
 dAu
 dtS
 dtA
-dzw
+dIG
 dyY
 dtA
 dyj
-dwP
+dHK
 dtA
 dtS
-duH
+dHx
 dtA
 dwc
-duG
+dGK
 dtA
 duX
 duH
 dtA
 dtA
 dtA
-dtS
+dGb
 dtS
 dqY
 dqY
@@ -115184,10 +119096,10 @@ dqS
 dqM
 cZi
 dqY
-cLS
-ciR
+djR
+djL
 dqY
-dqM
+djD
 cZo
 dqM
 cZZ
@@ -115201,7 +119113,7 @@ cLP
 cZr
 dqS
 cZo
-cLY
+cWd
 dqY
 bsw
 bsw
@@ -115319,44 +119231,44 @@ bsw
 dAC
 dAC
 dEa
-dAl
+dDN
 bgQ
 dAl
 dDJ
 mAQ
 dtA
-dtD
-dtD
-dtD
-dtD
+dME
+dCI
+dCI
+dLs
 dtA
 dAv
-dtS
+dKB
 dtA
 dBF
 dBg
 dtA
 dAv
-dtS
+dJh
 dtA
-dzs
+dIH
 dyZ
 dtA
 dwP
-dwP
+dHR
 dtA
-dtS
-dtS
+dAv
+dHy
 dtA
-duG
-duG
+dGK
+dHk
 dtA
 duY
-dtS
+dGM
 dtA
 duq
-dtS
-dtS
+dGb
+dGo
 dtS
 dqY
 fIx
@@ -115364,15 +119276,15 @@ daQ
 cZo
 dqS
 dqM
-cZi
+cYX
 dqY
 das
-cZo
+djM
 dqY
 cZo
 daj
 dag
-cZo
+cZW
 dqY
 cLQ
 cZR
@@ -115500,16 +119412,16 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dAl
+dNL
+dCv
 dzX
 dAl
 dDJ
 mAQ
 dtA
-dtD
-dtD
-dtD
+dMF
+dMb
+dLI
 dCP
 dtA
 dAw
@@ -115534,10 +119446,10 @@ dwd
 duG
 dtA
 duZ
-duI
+dGN
 dtA
 dur
-dtS
+dGb
 dtS
 dtT
 dqY
@@ -115682,15 +119594,15 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dAl
+dNT
+dNG
 dzX
 dAl
 dDJ
-dtC
-dtC
-dtC
-dtC
+dtA
+dtA
+dtA
+dtA
 dCS
 dtC
 dtC
@@ -115864,21 +119776,21 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dBz
+dNL
+dNH
 dzX
 dBz
 dDJ
-dtC
-dzP
-dzP
-dzP
-dzP
+dtA
+dMT
+dLA
+dMc
+dLJ
 dtC
 dCz
-dBp
-dBp
-dBp
+dKN
+dJV
+dJV
 dBH
 dBi
 dtC
@@ -115890,10 +119802,10 @@ dzc
 dtC
 dyl
 dxH
-duL
+duN
 dtC
 duL
-dwz
+dHs
 dtC
 duk
 dtG
@@ -115902,7 +119814,7 @@ dtL
 duk
 dtG
 duj
-dtL
+dGp
 dtU
 dtF
 dtC
@@ -115915,7 +119827,7 @@ dqY
 cZP
 cZo
 dqY
-cZo
+djE
 cZP
 cLS
 jOW
@@ -116046,44 +119958,44 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dBz
+dNL
+dDd
 dzX
 dBz
-dDJ
-dtC
-dzP
-dzP
-dzP
-dzP
+dch
+dtA
+dMU
+dMG
+dMd
+dLK
 dtC
 dCA
-dBp
-dBp
+dKO
+dKC
 dBV
-dBp
+dJV
 dBj
 dtC
 dAx
-dzd
-dzd
-dzd
-dzd
+dJi
+dII
+dII
+dIu
 dtC
 dyl
 duL
-duL
+duN
 dxb
 duL
-duL
+duN
 dtC
 dtL
 dtL
 dtL
 dtL
 dtL
-dtL
-dtL
+dGe
+dGe
 dtL
 dtV
 dtG
@@ -116108,10 +120020,10 @@ vJq
 dqY
 dqY
 cZA
-cZo
+dau
 dqS
 dqM
-cZi
+cYW
 dqY
 dqY
 bsw
@@ -116228,36 +120140,36 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
-dBz
-dDJ
-dtC
-dzP
-dzP
-dzP
-dzP
+dDd
+dch
+dtA
+dLq
+dtD
+dLA
+dLL
 dtC
 dCB
-dBp
+dJV
 dBp
 dBV
-dBp
+dJV
 dBl
 dtC
-dzd
-dzd
-dze
+dJz
+dIK
+dIP
 dzf
 dze
 dtC
 dym
 dwz
-duL
+duN
 dtC
 duL
-duL
+duN
 dtC
 duJ
 duJ
@@ -116265,8 +120177,8 @@ duJ
 duJ
 duv
 dtL
-dtL
-dtL
+dGq
+dGe
 dtW
 dtH
 dtC
@@ -116410,33 +120322,33 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNW
 dAl
 bgQ
-dAl
+dNs
 dDJ
-dtC
-dtC
-dzP
-dzP
-dzP
+dtA
+dtA
+dMH
+dDm
+dLM
 dtC
 dCC
-dBp
-dBp
+dJV
+dJV
 dBW
-dBp
+dKl
 dBm
 dtC
+dJA
 dzd
-dzd
-dze
-dzf
-dze
+dIR
+dIJ
+dIv
 dtC
 dyo
 dxI
-duL
+duN
 dtC
 dwz
 duL
@@ -116447,9 +120359,9 @@ duN
 duK
 duw
 dtL
-dtL
-dtL
-dtL
+dGe
+dGe
+dGe
 dtC
 dtC
 cLP
@@ -116464,9 +120376,9 @@ mxJ
 piV
 cZP
 cLS
-dqM
+ddU
 dqY
-tqO
+dcw
 dqM
 dqM
 tqO
@@ -116596,32 +120508,32 @@ dDZ
 dAl
 bgQ
 dAl
-dDJ
+dNi
 mAQ
-dtC
-dzP
-dzP
-dzP
+dtA
+dMI
+dMe
+dtR
 dtC
 dCA
-dBp
-dBp
+dKP
+dJV
 dBW
-dBp
+dJV
 dBn
 dtC
+dJB
 dzd
 dzd
-dzd
-dzd
-dzd
+dIK
+dIw
 dtC
 dyp
 dwz
-duL
+duN
 dtC
-duL
-duL
+duN
+duN
 dwe
 duL
 duL
@@ -116629,9 +120541,9 @@ dva
 duL
 duw
 dtL
-dtL
-dtL
-dtL
+dGe
+dGe
+dGe
 dtC
 fIx
 cZA
@@ -116651,7 +120563,7 @@ dqY
 cZU
 cZs
 cZs
-tqO
+daV
 dqY
 cZB
 dqM
@@ -116777,33 +120689,33 @@ oyg
 dDZ
 dAl
 bgQ
-dAl
-dDJ
+dNt
+dch
 mAQ
-dtC
-dzP
-dzP
-dzP
+dtA
+dMJ
+dMf
+dDm
 dtC
 dCD
-dBp
-dBp
+dJV
+dJV
 dBW
-dBp
+dJV
 dBo
 dtC
 dAx
-dzd
-dzd
+dJj
+dII
 dzA
-dzf
+dIx
 dtC
 dyq
 dxJ
 duL
 dtC
-dwz
-duL
+dHs
+duN
 dtC
 duL
 duL
@@ -116822,13 +120734,13 @@ cZg
 ciR
 cLY
 dqY
-cLS
-cZs
+djS
+djN
 dqY
 dqM
 cZP
 cLS
-dqM
+ddY
 dqY
 cZo
 cZK
@@ -116960,32 +120872,32 @@ dDZ
 dAl
 bgQ
 dAl
-dDJ
-dtC
-dtC
-dzP
-dzP
-dzP
+dch
+dtA
+dtA
+dLF
+dCI
+dLN
 dtC
 dCE
-dBp
-dBp
+dKQ
+dJV
 dBY
-dBp
-dBp
+dKm
+dJU
 dtC
 dAx
-dzd
-dzd
-dzA
+dII
+dII
+dIL
 dzg
 dtC
 dyr
-duL
+duN
 duL
 dtC
-duL
-duL
+duN
+duN
 dwe
 duN
 duL
@@ -117007,10 +120919,10 @@ dqY
 dqY
 cZe
 dqY
-rPT
+djF
 dak
 oAn
-rKg
+ddZ
 dqY
 cZo
 cZs
@@ -117142,29 +121054,29 @@ dDZ
 dBz
 dzX
 dBz
-dDJ
-dBI
-dzP
-dzP
-dzP
-dzP
+dch
+dDx
+dMc
+dMd
+dLA
+dLO
 dtC
 dBp
-dBp
+dKC
 dBp
 dBW
 dBp
-dBp
+dJV
 dtC
 dAx
 dzd
 dzd
 dzB
-dzf
+dIy
 dtC
 dys
-duL
-duL
+dHS
+duN
 dtC
 duL
 duL
@@ -117177,7 +121089,7 @@ duw
 dtL
 duk
 dtG
-dtL
+dGe
 dtI
 dtC
 cLP
@@ -117320,19 +121232,19 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dBz
+dNL
+dDd
 dzX
 dBz
-dDJ
+dNh
+dtA
+dMV
+dMK
+dCI
+dLP
 dtC
-dzP
-dzP
-dzP
-dzP
 dtC
-dtC
-dtC
+dIS
 dCi
 dtC
 dtC
@@ -117340,7 +121252,7 @@ dtC
 dtC
 dtC
 dAd
-dtC
+dIS
 dtC
 dtC
 dtC
@@ -117359,7 +121271,7 @@ dux
 dtL
 duk
 dtG
-dtL
+dGe
 dtJ
 dtC
 cLP
@@ -117379,7 +121291,7 @@ dqM
 piV
 cZs
 cZs
-tqO
+daW
 dqY
 cLP
 cZo
@@ -117502,27 +121414,27 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
-dBz
-dDJ
+dDd
+dch
 dtC
 dtC
 duP
 duP
 duP
 dtC
-dzP
+dKZ
 dCs
-dzP
-dzP
+dIU
+dJD
 dzP
 dBq
 dzP
-dzP
-dzP
-dzP
+dIU
+dJk
+dIT
 dtC
 dzh
 dyA
@@ -117541,7 +121453,7 @@ dtL
 dtL
 duk
 dtG
-dtL
+dGe
 dtK
 dtC
 cLP
@@ -117553,12 +121465,12 @@ dqY
 cZo
 jOW
 dqM
-piV
+djG
 cLS
 cLS
 cZo
 dqY
-tqO
+ddJ
 dqM
 dqM
 cZL
@@ -117684,32 +121596,32 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNL
 dAl
 bgQ
-dAl
+dCv
 dDJ
 dtC
 dtC
 dCT
+dMg
 dCT
-dCT
 dtC
-dzP
+dLa
 dAe
 dAe
-dzP
+dIU
 dAe
 dAe
-dzP
+dJL
+dJC
 dAe
-dAe
-dzP
-dtC
+dIU
 dtC
 dtC
-dxK
-dxK
+dtC
+dHT
+dHT
 dtC
 dxd
 dtN
@@ -117717,13 +121629,13 @@ dtN
 dtC
 dtL
 dtL
-dtL
-dtL
-dtL
+dGe
+dGe
+dGe
 dtL
 duk
 dud
-dtL
+dGe
 dtL
 dtC
 daR
@@ -117733,16 +121645,16 @@ dqM
 cLY
 dqY
 cZP
-dqM
+djO
 dqY
 dqM
 cLS
 cLS
-cZo
+cZW
 dqY
 dqY
 cLU
-tqO
+dci
 dqY
 dqY
 cLP
@@ -117865,57 +121777,57 @@ bsw
 bsw
 bsw
 dAC
-oyg
-dDZ
-dAl
+dOd
+dNL
+dDN
 bgQ
-dAl
+dCv
 dDJ
 mAQ
 dtC
 dCU
-dCU
+dMh
 dCU
 dtC
-dzP
+dLb
 dAe
+dKD
+dKs
 dzP
-dzP
-dzP
-dzP
-dzP
-dzP
-dzP
-dzP
+dIU
+dJM
+dJD
+dIU
+dIV
 dtC
 dzh
 dyA
-dxK
+dHU
 dxL
 dtC
 dxd
 dtN
-dtN
+dFO
 dtC
 dvD
 dtG
-dtL
-dtL
+dGe
+dGe
 dtC
 dtC
 dtC
 dtC
 dtZ
 dtC
-fIx
+dAy
 cZA
-dqM
+drF
 dqS
 dqM
 cZi
 dqY
 cZP
-dqM
+djO
 dqY
 rPT
 oAn
@@ -118047,42 +121959,42 @@ bsw
 bsw
 bsw
 dAC
-oyg
-dDZ
+dOd
+dNX
 dAl
 bgQ
-dAl
+dNu
 dDJ
 mAQ
 dtC
+dML
+dMi
 dzP
-dzP
-dzP
-dzP
-dzP
-dzP
-dzP
+dLt
+dIU
+dJD
+dKE
 dzP
 dtC
 dtC
 dtC
 dtC
+dJl
 dtC
 dtC
 dtC
 dtC
-dtC
-dxK
+dHT
 dxL
 dtC
 dxd
-dtN
-dtN
+dFO
+dFO
 dtC
 dvE
 dtG
-dtL
-dtL
+dGe
+dGe
 dtC
 dus
 dtN
@@ -118097,12 +122009,12 @@ ciR
 cZk
 dqY
 cZP
-dqM
+djP
 dqY
 dqM
 cLS
 cZP
-dqM
+djB
 dqY
 dqY
 cLR
@@ -118230,41 +122142,41 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNL
 dAl
 bgQ
-dAl
-dDJ
+dNv
+dNi
 dtC
 dtC
-dzP
+dMM
+dMj
+dKR
+dLt
 dCF
-dCt
+dKR
 dzP
-dCF
-dCt
-dzP
-dzP
+dKt
 dtC
-dzP
-dzP
-dzP
-dzP
-dzP
+dJW
+dJN
+dIW
+dIW
+dIW
 dtC
 dzh
 dyA
-dxK
+dHT
 dxL
 dtC
 dtC
-dtN
-dtN
+dFO
+dFO
 dtC
 dvF
 dtG
-dtL
-dtL
+dGq
+dGe
 duy
 dtN
 dtN
@@ -118279,7 +122191,7 @@ ciR
 cZi
 dqY
 cZP
-dqM
+djQ
 dqY
 dqM
 cLS
@@ -118412,41 +122324,41 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNT
 dBz
 dzX
 dBz
 dDJ
 dtC
-dzP
-dzP
-dCG
-dCu
-dzP
-dCG
-dCu
-dzP
-dzP
+dMW
+dJD
+dMk
+dLQ
+dLu
+dLc
+dKS
+dKF
+dIU
 dtC
-dzP
-dzP
-dzP
-dzP
-dzP
+dJX
+dJO
+dJE
+dJm
+dIX
 dtC
 dtC
 dtC
-dxK
-dxK
+dHT
+dHT
 dtC
 dtN
-dtN
-dtN
+dFO
+dGf
 dtC
-dtL
-dtL
-dtL
-dtL
+dGe
+dGe
+dGO
+dGO
 dtL
 dtN
 dtN
@@ -118461,12 +122373,12 @@ ciR
 cZi
 dqY
 cZP
-dqM
+cZo
 dqY
-dqM
+cZo
 cLS
 cZP
-dqM
+cZo
 dqY
 cLR
 cLR
@@ -118477,7 +122389,7 @@ cZA
 cZs
 cZg
 ciR
-cZi
+cYX
 dqY
 bsw
 bsw
@@ -118594,36 +122506,36 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
 dBz
 dDJ
 dtC
+dMX
+dIU
+dMl
+dLR
+dLv
+dLd
+dKT
 dzP
-dzP
-dzP
-dzP
-dzP
-dzP
-dzP
-dzP
-dzP
+dIU
 dtC
-dzP
-dzP
-dzP
-dzP
-dzP
+dJY
+dJP
+dJF
+dJn
+dIY
 dtC
 dzh
 dyA
-dxK
-dxK
+dHT
+dHT
 dxs
-dtN
-dtN
-dtN
+dHE
+dFO
+dFO
 dtC
 dtC
 dtC
@@ -118633,8 +122545,8 @@ dtC
 dtN
 dtN
 dtN
-dtN
-dtN
+dGf
+dFO
 dtC
 cLP
 dqM
@@ -118643,12 +122555,12 @@ dqM
 cZi
 cZe
 cZP
-dqM
+cZo
 dqY
 dan
 cLS
 cLS
-dqM
+cZo
 dqY
 cLR
 cLR
@@ -118776,61 +122688,61 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
 dBz
 dDJ
 dtC
-dzP
-dzP
+dMY
+dIU
 dCF
 dCt
-dzP
-dCF
-dCt
-dzP
-dzP
+dLt
+dLe
+dKU
+dKG
+dKu
+dKn
+dJZ
+dJQ
+dIX
+dJo
+dIZ
 dtC
-dzP
-dzP
-dzP
-dzP
-dzP
 dtC
 dtC
-dtC
-dxK
-dxK
+dId
+dHU
 dtC
 dtN
-dtN
-dtN
+dFO
+dFO
 dwf
-dtN
+dFO
 dvk
 dtN
 duP
 duz
 dut
 dtN
-dtN
-dtN
-dtN
+dFO
+dFO
+dFP
 dtC
 cLP
 dqM
 dqS
 cZo
-cZi
+cYX
 cZe
 cZP
-dqM
+cZo
 dqY
-dqM
+cZo
 cLS
 dah
-dqM
+cZo
 dqY
 cLR
 cLR
@@ -118962,33 +122874,33 @@ dDZ
 dAl
 dzX
 dAl
-dDJ
+dch
 dtC
 dtC
-dzP
+dMN
+dCG
+dLS
+dLt
 dCG
 dCu
 dzP
-dCG
-dCu
-dzP
-dzP
+dJk
 dtC
-dzP
-dzP
-dzP
-dzP
-dzP
+dKa
+dJR
+dJG
+dJp
+dJa
 dtC
 dzh
 dyA
-dxK
-dxM
+dHT
+dHV
 dtC
 dvk
 dtN
-dtN
-dtN
+dFO
+dFO
 dvG
 dvl
 dve
@@ -118996,8 +122908,8 @@ duP
 duz
 dut
 dtN
-dtN
-dtN
+dFO
+dFO
 dtC
 dtC
 cLP
@@ -119007,12 +122919,12 @@ cZo
 cLY
 dqY
 cZP
-dqM
+cZo
 dqY
-dqM
+djH
 cLS
 cZP
-dqM
+cZo
 dqY
 cLR
 cLR
@@ -119141,18 +123053,18 @@ bsw
 dAC
 oyg
 dDZ
-dAl
+dCv
 dzX
-dAl
+dCv
 dDJ
 mAQ
 dtC
 dtC
+dBI
 dtC
 dtC
 dtC
-dtC
-dtC
+dBI
 dtC
 dtC
 dtC
@@ -119170,26 +123082,26 @@ dtC
 dvl
 dve
 dtN
-dtN
+dFO
 dvG
-dvl
+dHb
 dve
 duP
 duz
 dut
 dtN
-dtN
-dtN
+dFO
+dFO
 dtC
 fIx
 cLP
 daM
 dqS
-cZo
+djY
 cLY
 dqY
 cZP
-dqM
+cZo
 dqY
 dqM
 cLS
@@ -119321,12 +123233,12 @@ bsw
 bsw
 bsw
 dAC
-oyg
-dDZ
-dAl
+dOb
+dNL
+dNI
 dzX
-dAl
-dDJ
+dNw
+dch
 mAQ
 dtC
 dzP
@@ -119346,7 +123258,7 @@ dtC
 dzh
 dyA
 dyt
-dyt
+dIe
 dxN
 dtC
 dvl
@@ -119354,14 +123266,14 @@ dve
 dtN
 dtN
 dvG
-dvl
+dHb
 dve
 duP
 duz
 dut
 dtN
-dtN
-dtN
+dFO
+dFO
 dtC
 fIx
 cLP
@@ -119504,11 +123416,11 @@ bsw
 bsw
 dAC
 dAC
-dDZ
+dNL
 dAl
 dzX
 dAl
-dDJ
+dch
 dtC
 dtC
 dzP
@@ -119527,23 +123439,23 @@ dzP
 dtC
 dtC
 dtC
-dxK
-dxK
+dIo
+dHT
 dxK
 dtC
 dvm
 dtN
 dtN
 dtN
-dtN
-dvm
+dFO
+dHc
 dtN
 duP
 duz
 dut
 dtN
-dtN
-dtN
+dFO
+dFO
 dtC
 dtC
 daP
@@ -119558,7 +123470,7 @@ dqM
 piV
 cLS
 cLS
-dqM
+cZf
 dqY
 cLR
 cLR
@@ -119686,11 +123598,11 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dBz
+dNL
+dDd
 dzX
 dBz
-dDJ
+dch
 dtC
 dzP
 dzP
@@ -119710,23 +123622,23 @@ dtC
 dzh
 dyA
 dxK
-dxK
+dHT
 dxK
 dxs
+dHG
 dtN
 dtN
-dtN
-dtN
-dtN
-dtN
+dFO
+dGf
+dFO
 dtN
 dtC
 dtC
 dtN
 dtN
-dtN
-dtN
-dtN
+dFO
+dFO
+dFO
 dtC
 cZA
 cZs
@@ -119737,7 +123649,7 @@ dqY
 dqM
 dqM
 dqY
-dqM
+djC
 cLS
 cZP
 dab
@@ -119868,11 +123780,11 @@ bsw
 bsw
 bsw
 dAC
-dDZ
-dBz
+dNL
+cNB
 dzX
 dBz
-dDJ
+dch
 dtC
 dzP
 dzP
@@ -119892,8 +123804,8 @@ dtC
 dtC
 dtC
 dxK
-dxK
-dxK
+dHT
+dHW
 dtC
 dtN
 dtN
@@ -119904,10 +123816,10 @@ dtN
 dtN
 dtN
 duA
-dtN
-dtN
-dtN
-dtN
+dFO
+dGf
+dFO
+dFO
 dtN
 dtC
 cZA
@@ -119919,7 +123831,7 @@ dqY
 cLS
 ciR
 dqY
-rPT
+djI
 vxc
 dai
 rKg
@@ -119929,7 +123841,7 @@ cLR
 cLR
 cLR
 dqY
-cZA
+day
 dqM
 dqS
 dqM
@@ -120050,7 +123962,7 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dBz
 dzX
 dBz
@@ -120074,8 +123986,8 @@ dtC
 dzh
 dyA
 dyu
-dyu
-dxK
+dIf
+dHX
 dtC
 dtN
 dtN
@@ -120101,10 +124013,10 @@ dqY
 dqY
 dqY
 dqY
-dqM
+djJ
 dal
 dqM
-dqM
+djC
 dqY
 dqY
 cLR
@@ -120232,7 +124144,7 @@ bsw
 bsw
 bsw
 dAC
-dDZ
+dNL
 dAl
 dzX
 dAl
@@ -120414,7 +124326,7 @@ bsw
 bsw
 bsw
 dAC
-dEb
+dNY
 dcq
 dzX
 dAl
@@ -120474,7 +124386,7 @@ cZs
 cZs
 cZI
 cZM
-cZI
+daz
 cZD
 cZo
 dqS
@@ -120596,7 +124508,7 @@ bsw
 bsw
 bsw
 dAC
-dBz
+dDd
 dBz
 bgQ
 dBz
@@ -120607,7 +124519,7 @@ dAO
 dbZ
 dAO
 dAO
-dAO
+dLf
 dAO
 dCj
 dAA
@@ -120632,7 +124544,7 @@ kbV
 dbm
 dbm
 dbj
-kbV
+dGy
 kbV
 kbV
 kbV
@@ -120801,7 +124713,7 @@ dBz
 dBz
 dAl
 dAl
-dAl
+dIp
 dqM
 ciR
 dbz
@@ -120843,7 +124755,7 @@ ciR
 cZg
 cZg
 dqM
-cZi
+cYX
 dqY
 bsw
 bsw
@@ -120960,7 +124872,7 @@ bsw
 bsw
 bsw
 dAC
-dAl
+dCv
 dBz
 bgQ
 bgQ
@@ -120969,7 +124881,7 @@ dzX
 dzX
 bgQ
 bgQ
-dzX
+dLT
 dzX
 dzX
 dzX
@@ -121142,7 +125054,7 @@ bsw
 bsw
 bsw
 dAC
-dAl
+dCv
 dBz
 bgQ
 bgQ
@@ -121150,18 +125062,18 @@ dBz
 dAl
 dCv
 dBz
-dDd
+dMm
 dCv
 dAl
-dAl
+dCv
 dAl
 dBz
 dbM
 dAl
+dCv
+dCv
 dAl
-dAl
-dAl
-dBz
+dJq
 dDd
 dAl
 dAl
@@ -121207,7 +125119,7 @@ dqM
 dqM
 dqM
 cZp
-cZd
+cYZ
 dqY
 bsw
 bsw
@@ -121325,7 +125237,7 @@ bsw
 bsw
 dAC
 dBz
-dBz
+dDd
 bgQ
 dBz
 dCv
@@ -121335,17 +125247,17 @@ dAB
 dAB
 dCV
 dbV
+dCV
+dCV
+dCV
+dCV
+dCV
+dCV
+dCV
+dCV
 dAB
 dAB
-dAB
-dAB
-dAB
-dAB
-dAB
-dAB
-dAB
-dAB
-dAB
+dIM
 dAB
 dAB
 twj
@@ -121357,7 +125269,7 @@ twj
 twj
 twj
 twj
-dbb
+dGT
 dbb
 dbb
 dbb
@@ -121507,9 +125419,9 @@ bsw
 bsw
 dAC
 dea
-dAl
+dNJ
 dzX
-dAl
+dNx
 ddV
 dBz
 dAC
@@ -121540,7 +125452,7 @@ dcN
 dqY
 dqY
 dqY
-cLQ
+dGP
 cLQ
 dqY
 dqY
@@ -121688,11 +125600,11 @@ bsw
 bsw
 bsw
 dAC
-deb
-dAl
+dNZ
+dNK
 dzX
 dDQ
-ddW
+dNj
 dAC
 dAC
 dAC
@@ -121734,7 +125646,7 @@ daT
 cZo
 dqS
 cZo
-cZi
+djW
 dqY
 dqY
 dqY
@@ -152990,8 +156902,8 @@ ctM
 ddj
 ctx
 dFz
-dFv
-csM
+dOo
+dOn
 cpb
 bpZ
 dCg
@@ -159752,7 +163664,7 @@ ceQ
 cOX
 cON
 ceF
-ceF
+dOe
 cOv
 cOv
 cOk
@@ -160460,9 +164372,9 @@ cqq
 ayR
 cqq
 cqR
-cev
-ceQ
-ceQ
+dOm
+dOk
+dOk
 cRt
 cfc
 ceF
@@ -160643,9 +164555,9 @@ crz
 cqq
 cqS
 aOT
-ceS
+dOl
 ceX
-cQT
+dOi
 ceX
 cRc
 ceS
@@ -160826,8 +164738,8 @@ cqq
 cqS
 alY
 alY
-ceS
-ceQ
+dOl
+dOj
 ceX
 ceS
 ceX
@@ -160843,8 +164755,8 @@ alY
 alY
 ciC
 ceX
-ceX
-ceX
+dOf
+dOf
 cOF
 ceS
 cOq
@@ -160990,7 +164902,7 @@ cwc
 aBV
 csR
 aBI
-ctC
+dOp
 dde
 alZ
 cto
@@ -161571,8 +165483,8 @@ cPo
 alY
 ceS
 ceX
-ceX
-ceX
+dOg
+dOg
 ceX
 ceS
 ceR
@@ -162300,7 +166212,7 @@ ckm
 ceS
 ceX
 ceX
-ceQ
+dOh
 dhW
 cOB
 els
@@ -163166,7 +167078,7 @@ cxE
 cvT
 csR
 aNe
-ctC
+dOr
 cwP
 cwG
 qcc
@@ -164448,7 +168360,7 @@ csR
 cvS
 csR
 csR
-ctC
+dOq
 ddw
 aBc
 csR

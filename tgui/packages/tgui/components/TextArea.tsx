@@ -63,13 +63,7 @@ export const TextArea = forwardRef(
       value,
       ...boxProps
     } = props;
-    const {
-      className,
-      fluid,
-      nowrap,
-      noResize,
-      ...rest
-    } = boxProps;
+    const { className, fluid, nowrap, noResize, ...rest } = boxProps;
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [scrolledAmount, setScrolledAmount] = useState(0);
@@ -191,7 +185,9 @@ export const TextArea = forwardRef(
           ])}
           maxLength={maxLength}
           onBlur={(event) => onChange?.(event, event.target.value)}
-          onChange={(event) => onInput?.(event, event.target.value.replace(/"/g, ''))}
+          onChange={(event) =>
+            onInput?.(event, event.target.value.replace(/"/g, ''))
+          }
           onKeyDown={handleKeyDown}
           onScroll={() => {
             if (displayedValue && textareaRef.current) {

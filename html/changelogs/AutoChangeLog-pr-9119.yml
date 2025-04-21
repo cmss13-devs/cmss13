@@ -1,0 +1,5 @@
+author: "TrollerNoob"
+delete-after: True
+changes:
+  - rscadd: "Added all of the Miscellaneous items in the Squad Marine Surplus vendor to the REQ Surplus vendor. Now you can add in fashion to your REQ order!"
+  - qol: "POs and DCCs can now choose 1 holster belt and 1 storage belt in their vendors, instead of only being able to choose 1 of either."

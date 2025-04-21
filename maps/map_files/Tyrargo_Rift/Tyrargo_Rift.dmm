@@ -66660,11 +66660,6 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/tyrargo/deep,
 /area/tyrargo/indoors/sewer_treatment/lower)
-"drK" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer,
-/turf/open/gm/river/desert/tyrargo/deep,
-/area/tyrargo/indoors/sewer_treatment/lower)
 "drL" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
@@ -69071,7 +69066,6 @@
 /area/tyrargo/underground/engineering)
 "dyD" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/clothing/gloves/marine/veteran/insulated{
 	pixel_y = 4
 	},
@@ -69698,15 +69692,6 @@
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/tyrargo/underground/apartment)
 "dAx" = (
-/obj/structure/surface/table{
-	color = "#8B7B5B"
-	},
-/turf/open/floor/interior/wood,
-/area/tyrargo/underground/mall)
-"dAy" = (
-/obj/structure/surface/table{
-	color = "#8B7B5B"
-	},
 /obj/structure/surface/table{
 	color = "#8B7B5B"
 	},
@@ -71261,10 +71246,6 @@
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_east)
-"dEE" = (
-/turf/closed/wall/strata_outpost,
-/turf/open/floor/plating,
-/area/tyrargo/indoors/mall)
 "dEF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_2,
@@ -110372,7 +110353,7 @@ anA
 hNj
 drS
 aTb
-drF
+drE
 drA
 drx
 bgK
@@ -111828,7 +111809,7 @@ dsb
 hNj
 drY
 ceN
-drK
+drJ
 dpw
 drv
 drr
@@ -115784,7 +115765,7 @@ dBV
 dBp
 dBj
 dtC
-dAy
+dAx
 dzd
 dzd
 dzd
@@ -159306,7 +159287,7 @@ dER
 bem
 bem
 cMw
-dEE
+alY
 dpC
 dhE
 dhy
@@ -159488,7 +159469,7 @@ dES
 bem
 bem
 dEG
-dEE
+alY
 cki
 cij
 cjS
@@ -159852,7 +159833,7 @@ dEI
 bem
 bem
 bem
-dEE
+alY
 axu
 dhF
 dhz
@@ -160034,7 +160015,7 @@ dEI
 dEI
 dEI
 bem
-dEE
+alY
 cit
 dhG
 dhz
@@ -160398,7 +160379,7 @@ bep
 bep
 bep
 cMA
-dEE
+alY
 axv
 cil
 cib
@@ -160580,7 +160561,7 @@ dET
 cMK
 bep
 cMK
-dEE
+alY
 aoz
 dhH
 dhB

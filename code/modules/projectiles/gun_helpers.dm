@@ -356,16 +356,19 @@ DEFINES in setup.dm, referenced here.
 			if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
 				to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
 				return
-			else
-				if(user.skills)
-					tac_reload_time = 2 //until this can loop, better for it to be in 2 ticks
-				if(current_mag && current_mag.current_rounds < current_mag.max_rounds)
-					to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional tactical reload.")) // the "you get on one knee and start" makes more sense if looping is added
-					if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && bullet.loc == old_ammo_loc && current_mag.current_rounds < current_mag.max_rounds)
-						if(shotload) // to do: make this loop until capacity is full or out of ammo
-							shotload.reload(user, bullet)
-						else if(revload) // to do: ditto
-							revload.reload(user, bullet)
+			if(user.skills)
+				tac_reload_time = 2 //until this can loop, better for it to be in 2 ticks
+			if(current_mag && current_mag.current_rounds < current_mag.max_rounds)
+				to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional tactical reload.")) // the "you get on one knee and start" makes more sense if looping is added
+				if(do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && bullet.loc == old_ammo_loc && current_mag.current_rounds < current_mag.max_rounds)
+					if(!do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) || bullet.loc != old_ammo_loc || current_mag.current_rounds >= current_mag.max_rounds)
+						return
+					if(shotload) // to do: make this loop until capacity is full or out of ammo
+						shotload.reload(user, bullet)
+						return
+					else if(revload) // to do: ditto
+						revload.reload(user, bullet)
+						return
 		// actual tactical reloads
 		else if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
 			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
@@ -378,6 +381,8 @@ DEFINES in setup.dm, referenced here.
 			if(user.skills)
 				tac_reload_time = max(15 - 5*user.skills.get_skill_level(SKILL_FIREARMS), 5)
 			if(do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) && magazine.loc == old_mag_loc && !current_mag)
+				if(!do_after(user,tac_reload_time, (INTERRUPT_ALL & (~INTERRUPT_MOVED)) , BUSY_ICON_FRIENDLY) || magazine.loc != old_mag_loc || current_mag)
+					return
 				if(isstorage(magazine.loc))
 					var/obj/item/storage/master_storage = magazine.loc
 					master_storage.remove_from_storage(magazine)

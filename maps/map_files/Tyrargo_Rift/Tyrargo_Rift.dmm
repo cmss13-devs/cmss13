@@ -66631,11 +66631,6 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/gm/river/desert/deep/no_slowdown,
 /area/tyrargo/indoors/sewer_treatment/lower)
-"drF" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer,
-/turf/open/gm/river/desert/deep/no_slowdown,
-/area/tyrargo/indoors/sewer_treatment/lower)
 "drG" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
@@ -108897,7 +108892,7 @@ bFL
 aTb
 aTb
 aTb
-drF
+drE
 dpw
 drv
 bgJ

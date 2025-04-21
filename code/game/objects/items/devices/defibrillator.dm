@@ -204,7 +204,6 @@
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return
 
-
 	if(!check_revive(target, user))
 		return FALSE
 

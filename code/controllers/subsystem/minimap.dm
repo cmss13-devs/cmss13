@@ -647,7 +647,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!map)
 		return FALSE
 
-	if(!isobserver(owner) && owner.is_mob_incapacitated())
+	if(!minimap_displayed && !isobserver(owner) && owner.is_mob_incapacitated())
 		return FALSE
 
 	return toggle_minimap()
@@ -818,7 +818,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(!istype(xeno))
 		return
 
-	if(!xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen)
+	if(!minimap_displayed && !xeno?.hive?.living_xeno_queen?.ovipositor && xeno != xeno?.hive?.living_xeno_queen)
 		to_chat(xeno, SPAN_WARNING("You cannot access that right now, The Queen has shed her ovipositor."))
 		return
 

@@ -4219,7 +4219,7 @@
 /area/almayer/medical/containment)
 "ajA" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_10"
+	icon_state = "pottedplant_18"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -4914,7 +4914,7 @@
 "alw" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2;
-	name = "\improper Liasion's Bathroom"
+	name = "\improper Bathroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
@@ -6714,6 +6714,12 @@
 /obj/structure/machinery/door_control/cl/quarter/windows{
 	pixel_y = -12;
 	pixel_x = -4
+	},
+/obj/structure/machinery/door_control{
+	id = "RoomDivider";
+	pixel_y = -12;
+	pixel_x = 4;
+	name = "Room Divider"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -17831,7 +17837,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/desk_bell/corp_liaison{
 	pixel_x = 12;
-	pixel_y = 9
+	pixel_y = 9;
+	anchored = 1
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)

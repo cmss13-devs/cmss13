@@ -409,6 +409,11 @@
 	icon_state = "afric_zimmerman"
 	density = FALSE
 
+/obj/structure/prop/invuln/static_corpse/afric_zimmer/trooper
+	name = "Unknown Trooper"
+	desc = "What remains of a unknown trooper. May they rest in peace."
+	icon_state = "army_guy"
+
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder
 	density = FALSE
 	name = "non-functional hatch"

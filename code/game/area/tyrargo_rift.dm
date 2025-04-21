@@ -335,7 +335,7 @@
 	ceiling = CEILING_NONE
 	requires_power = FALSE
 
-// Gararge
+// Mall
 
 /area/tyrargo/indoors/mall
 	name = "Tyrargo Wesfeld Mall - Ground"
@@ -509,6 +509,33 @@
 	name = "City Sewer"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_COMMS
+	unoviable_timer = FALSE
+
+/area/tyrargo/underground/sewer/south
+	name = "City Sewers - South"
+
+/area/tyrargo/underground/sewer/north
+	name = "City Sewers - North"
+
+// Underground Other
+
+/area/tyrargo/underground/engineering
+	name = "Sector F: Power Plant - Underground"
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
+	icon_state = "maint_engine"
+	unoviable_timer = FALSE
+
+/area/tyrargo/underground/apartment
+	name = "Standfeld Apartment Complex - Underground"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	icon_state = "quart"
+	unoviable_timer = FALSE
+
+/area/tyrargo/underground/mall
+	name = "Tyrargo Wesfeld Mall - Underground"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	icon_state = "HH_Mines"
+	unoviable_timer = FALSE
 
 // Saipan
 

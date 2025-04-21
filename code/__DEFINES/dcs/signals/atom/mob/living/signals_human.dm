@@ -89,3 +89,6 @@
 
 /// from /modules/animations/animations_library.dm
 #define COMSIG_HUMAN_ANIMATING "human_animating"
+
+/// from /proc/transfer_marine_to_squad
+#define COMSIG_HUMAN_SQUAD_CHANGED "human_squad_change"

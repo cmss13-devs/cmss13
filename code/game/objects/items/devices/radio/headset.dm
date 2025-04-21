@@ -262,6 +262,7 @@
 		RegisterSignal(user, COMSIG_MOB_LOGGED_IN, PROC_REF(add_hud_tracker))
 		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(update_minimap_icon))
 		RegisterSignal(user, COMSIG_HUMAN_SET_UNDEFIBBABLE, PROC_REF(update_minimap_icon))
+		RegisterSignal(user, COMSIG_HUMAN_SQUAD_CHANGED, PROC_REF(update_minimap_icon))
 		if(headset_hud_on)
 			var/datum/mob_hud/H = GLOB.huds[hud_type]
 			H.add_hud_to(user, src)
@@ -284,7 +285,8 @@
 		COMSIG_MOB_LOGGED_IN,
 		COMSIG_MOB_DEATH,
 		COMSIG_HUMAN_SET_UNDEFIBBABLE,
-		COMSIG_MOB_STAT_SET_ALIVE
+		COMSIG_MOB_STAT_SET_ALIVE,
+		COMSIG_HUMAN_SQUAD_CHANGED
 	))
 	if(istype(user) && user.has_item_in_ears(src)) //dropped() is called before the inventory reference is update.
 		var/datum/mob_hud/H = GLOB.huds[hud_type]
@@ -372,7 +374,7 @@
 
 	var/obj/item/card/id/ID = wearer.get_idcard()
 	var/icon_to_use
-	if(ID.minimap_icon_override)
+	if(ID?.minimap_icon_override)
 		icon_to_use = ID.minimap_icon_override
 	else
 		icon_to_use = wearer.assigned_equipment_preset.minimap_icon ? wearer.assigned_equipment_preset.minimap_icon : "unknown"

@@ -1,7 +1,6 @@
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -10,8 +9,8 @@ import {
   Section,
   Stack,
   Tabs,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type Emote = {
   id: string;

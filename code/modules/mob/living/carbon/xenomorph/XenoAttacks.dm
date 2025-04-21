@@ -80,7 +80,8 @@
 
 		if(INTENT_HARM)
 			var/datum/unarmed_attack/attack = M.species.unarmed
-			if(!attack.is_usable(M)) attack = M.species.secondary_unarmed
+			if(!attack.is_usable(M))
+				attack = M.species.secondary_unarmed
 			if(!attack.is_usable(M))
 				return 0
 
@@ -128,7 +129,7 @@
 				return XENO_NONCOMBAT_ACTION
 			else if(flags_emote & EMOTING_TAIL_SWIPE)
 				xeno.attempt_tailswipe(src)
-				return
+				return XENO_NONCOMBAT_ACTION
 			else if(xeno.zone_selected == "head")
 				xeno.attempt_headbutt(src)
 				return XENO_NONCOMBAT_ACTION

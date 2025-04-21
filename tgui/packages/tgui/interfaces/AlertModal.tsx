@@ -1,11 +1,10 @@
-/* eslint-disable func-style */
 import { KEY } from 'common/keys';
-import { BooleanLike } from 'common/react';
-import { KeyboardEvent, useState } from 'react';
+import type { BooleanLike } from 'common/react';
+import { type KeyboardEvent, useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Autofocus, Box, Button, Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
-import { useBackend } from '../backend';
-import { Autofocus, Box, Button, Section, Stack } from '../components';
-import { Window } from '../layouts';
 import { Loader } from './common/Loader';
 
 type Data = {
@@ -44,7 +43,7 @@ export function AlertModal(props) {
   const windowHeight =
     120 +
     (isVerbose ? largeSpacing * buttons.length : 0) +
-    (message.length > 30 ? Math.ceil(message.length / 4) : 0) +
+    (message.length > 30 ? Math.ceil(message.length / 3.3) : 0) +
     (message.length && large_buttons ? 5 : 0);
 
   const windowWidth = 345 + (buttons.length > 2 ? 55 : 0);

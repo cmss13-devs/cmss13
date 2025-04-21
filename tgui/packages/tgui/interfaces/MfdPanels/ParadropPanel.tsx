@@ -1,9 +1,10 @@
-import { useBackend } from '../../backend';
-import { Box, Stack } from '../../components';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { useBackend } from 'tgui/backend';
+import { Box, Stack } from 'tgui/components';
+
+import type { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { EquipmentContext, ParadropSpec } from './types';
+import type { EquipmentContext, ParadropSpec } from './types';
 
 const ParadropPanel = (props: DropshipEquipment) => {
   const paradropData = props.data as ParadropSpec;

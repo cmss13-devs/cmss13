@@ -1,7 +1,0 @@
-author: "Vandu Jr, Triio"
-delete-after: True
-changes:
-  - rscadd: "added two new branded Cigarette Vendors, Koorlander and Weyland Yutani"
-  - rscadd: "added a new cigarette brand to the game, Balaji Imperials from the first movie. Located in the WY vendor"
-  - imageadd: "added a new WY and Koorlander vendor, as well as sprites for the new Balaji Imperial cigarettes"
-  - maptweak: "replaced all generic cigarette vendors with either a WY or Koorlander one, areas for people without accounts get free variants of the branded ones (like ERT stations and fax responders)."

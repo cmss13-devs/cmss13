@@ -1,8 +1,0 @@
-author: "Joe Lampost"
-delete-after: True
-changes:
-  - balance: "Upp hunting ground ert memebers now have medical equipment"
-  - code_imp: "Lays the foundation for more faction warcrys"
-  - code_imp: "The hunting ground erts now inform preds if nothing spawns and or how many humans or xenos spawned in the ert"
-  - bugfix: "The hunting grounds no longer gets effected by weather"
-  - bugfix: "Pred bursts sound"

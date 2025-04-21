@@ -395,6 +395,9 @@
 	pixel_y = 8;
 	pixel_x = 6
 	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
+	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "bn" = (
@@ -2875,11 +2878,14 @@
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/adminlevel/chinook/medical)
 "lm" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
+	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/offices)
 "ln" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -3194,6 +3200,9 @@
 /obj/item/paper/crumpled{
 	pixel_x = -6;
 	pixel_y = 2
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
@@ -5230,6 +5239,9 @@
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = -3;
 	pixel_y = 6
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -9746,7 +9758,6 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "OT" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 4
 	},

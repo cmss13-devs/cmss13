@@ -137,6 +137,7 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
+	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 
 	return ..()
 
@@ -492,6 +493,8 @@
 /datum/game_mode/colonialmarines/ds_first_drop(obj/docking_port/mobile/marine_dropship)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(show_blurb_uscm)), DROPSHIP_DROP_MSG_DELAY)
 	addtimer(CALLBACK(src, PROC_REF(warn_resin_clear), marine_dropship), DROPSHIP_DROP_FIRE_DELAY)
+	DB_ENTITY(/datum/entity/survivor_survival) // Record surv survival right now
+	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES) // And 7 minutes after drop. By then, marines will have found them, most likely
 
 	add_current_round_status_to_end_results("First Drop")
 	clear_lz_hazards()
@@ -502,7 +505,8 @@
 /datum/game_mode/colonialmarines/check_win()
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
-
+	if(ROUND_TIME < 10 MINUTES)
+		return
 	var/living_player_list[] = count_humans_and_xenos(get_affected_zlevels())
 	var/num_humans = living_player_list[1]
 	var/num_xenos = living_player_list[2]
@@ -572,7 +576,8 @@
 //Checks if the round is over//
 ///////////////////////////////
 /datum/game_mode/colonialmarines/check_finished()
-	if(round_finished) return 1
+	if(round_finished)
+		return 1
 
 //////////////////////////////////////////////////////////////////////
 //Announces the end of the game with all relevant information stated//
@@ -597,26 +602,29 @@
 				GLOB.round_statistics.current_map.total_marine_majors++
 		if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
+			end_icon = "xeno_minor"
 			if(living_player_list[1] && !living_player_list[2]) // If Xeno Minor but Xenos are dead and Humans are alive, see which faction is the last standing
 				var/headcount = count_per_faction()
 				var/living = headcount["total_headcount"]
 				if ((headcount["WY_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_wy.ogg')
+					end_icon = "wy_major"
 					log_game("3rd party victory: Weyland-Yutani")
 					message_admins("3rd party victory: Weyland-Yutani")
 				else if ((headcount["UPP_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_upp.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Union of Progressive Peoples")
 					message_admins("3rd party victory: Union of Progressive Peoples")
 				else if ((headcount["CLF_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/lastmanstanding_clf.ogg')
+					end_icon = "upp_major"
 					log_game("3rd party victory: Colonial Liberation Front")
 					message_admins("3rd party victory: Colonial Liberation Front")
 				else if ((headcount["marine_headcount"] / living) > MAJORITY)
 					musical_track = pick('sound/theme/neutral_melancholy2.ogg') //This is the theme song for Colonial Marines the game, fitting
 			else
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
-			end_icon = "xeno_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 		if(MODE_INFESTATION_M_MINOR)
@@ -629,9 +637,12 @@
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_draws++
-	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
-	S.status = SOUND_STREAM
-	sound_to(world, S)
+		else
+			end_icon = "draw"
+			musical_track = 'sound/theme/neutral_hopeful2.ogg'
+	var/sound/theme = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
+	theme.status = SOUND_STREAM
+	sound_to(world, theme)
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.game_mode = name
 		GLOB.round_statistics.round_length = world.time
@@ -652,6 +663,8 @@
 
 	add_current_round_status_to_end_results("Round End")
 	handle_round_results_statistics_output()
+
+	GLOB.round_statistics?.save()
 
 	return 1
 

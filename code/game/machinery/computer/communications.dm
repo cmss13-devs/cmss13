@@ -62,14 +62,16 @@
 		updateDialog()
 
 /obj/structure/machinery/computer/communications/Topic(href, href_list)
-	if(..()) return FALSE
+	if(..())
+		return FALSE
 
 	usr.set_interaction(src)
 	switch(href_list["operation"])
 		if("mapview")
 			tacmap.tgui_interact(usr)
 
-		if("main") state = STATE_DEFAULT
+		if("main")
+			state = STATE_DEFAULT
 
 		if("login")
 			if(isRemoteControlling(usr))
@@ -77,13 +79,15 @@
 			var/mob/living/carbon/human/C = usr
 			var/obj/item/card/id/I = C.get_active_hand()
 			if(istype(I))
-				if(check_access(I)) authenticated = 1
+				if(check_access(I))
+					authenticated = 1
 				if(ACCESS_MARINE_SENIOR in I.access)
 					authenticated = 2
 			else
 				I = C.get_idcard()
 				if(I)
-					if(check_access(I)) authenticated = 1
+					if(check_access(I))
+						authenticated = 1
 					if(ACCESS_MARINE_SENIOR in I.access)
 						authenticated = 2
 		if("logout")
@@ -95,8 +99,10 @@
 			if(istype(I))
 				if((ACCESS_MARINE_SENIOR in I.access) || (ACCESS_MARINE_COMMAND in I.access)) //Let heads change the alert level.
 					switch(tmp_alertlevel)
-						if(-INFINITY to SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
-						if(SEC_LEVEL_BLUE to INFINITY) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
+						if(-INFINITY to SEC_LEVEL_GREEN)
+							tmp_alertlevel = SEC_LEVEL_GREEN //Cannot go below green.
+						if(SEC_LEVEL_BLUE to INFINITY)
+							tmp_alertlevel = SEC_LEVEL_BLUE //Cannot go above blue.
 
 					var/old_level = GLOB.security_level
 					set_security_level(tmp_alertlevel)
@@ -266,8 +272,10 @@
 		if("viewmessage")
 			state = STATE_VIEWMESSAGE
 			if (!currmsg)
-				if(href_list["message-num"]) currmsg = text2num(href_list["message-num"])
-				else state = STATE_MESSAGELIST
+				if(href_list["message-num"])
+					currmsg = text2num(href_list["message-num"])
+				else
+					state = STATE_MESSAGELIST
 
 		if("delmessage")
 			state = (currmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST
@@ -279,10 +287,12 @@
 					var/text  = messagetext[currmsg]
 					messagetitle.Remove(title)
 					messagetext.Remove(text)
-					if(currmsg == aicurrmsg) aicurrmsg = 0
+					if(currmsg == aicurrmsg)
+						aicurrmsg = 0
 					currmsg = 0
 				state = STATE_MESSAGELIST
-			else state = STATE_VIEWMESSAGE
+			else
+				state = STATE_VIEWMESSAGE
 
 
 		if("status")
@@ -302,7 +312,8 @@
 					to_chat(usr, SPAN_WARNING("Arrays recycling.  Please stand by."))
 					return FALSE
 				var/input = stripped_input(usr, "Please choose a message to transmit to USCM.  Please be aware that this process is very expensive, and abuse will lead to termination.  Transmission does not guarantee a response. There is a small delay before you may send another message. Be clear and concise.", "To abort, send an empty message.", "")
-				if(!input || !(usr in dview(1, src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL) return FALSE
+				if(!input || !(usr in dview(1, src)) || authenticated != 2 || world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
+					return FALSE
 
 				high_command_announce(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
@@ -311,7 +322,8 @@
 
 		if("securitylevel")
 			tmp_alertlevel = text2num( href_list["newalertlevel"] )
-			if(!tmp_alertlevel) tmp_alertlevel = 0
+			if(!tmp_alertlevel)
+				tmp_alertlevel = 0
 			state = STATE_CONFIRM_LEVEL
 
 		if("changeseclevel")
@@ -329,7 +341,8 @@
 					SSticker.mode.select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz2))
 
 
-		else return FALSE
+		else
+			return FALSE
 
 	updateUsrDialog()
 
@@ -337,7 +350,8 @@
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/communications/attack_hand(mob/user as mob)
-	if(..()) return FALSE
+	if(..())
+		return FALSE
 
 	//Should be refactored later, if there's another ship that can appear during a mode with a comm console.
 	if(!istype(loc.loc, /area/almayer/command/cic)) //Has to be in the CIC. Can also be a generic CIC area to communicate, if wanted.
@@ -488,7 +502,7 @@
 				return FALSE
 
 	dat += "<BR>[(state != STATE_DEFAULT) ? "<A href='byond://?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A href='byond://?src=\ref[user];mach_close=communications'>Close</A>"
-	show_browser(user, dat, "Communications Console", "communications", "size=400x500")
+	show_browser(user, dat, "Communications Console", "communications", width = 400, height = 500)
 	onclose(user, "communications")
 #undef STATE_DEFAULT
 #undef STATE_MESSAGELIST

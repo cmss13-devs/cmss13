@@ -86,6 +86,10 @@
 		list("Large Magazine Pouch", floor(scale * 1), /obj/item/storage/pouch/magazine/large, VENDOR_ITEM_REGULAR),
 		list("Large Shotgun Shell Pouch", floor(scale * 1), /obj/item/storage/pouch/shotgun/large, VENDOR_ITEM_REGULAR),
 
+		list("REPAIR TOOLS", -1, null, null),
+		list("Multi-Purpose Combat Lubricant", floor(scale * 20), /obj/item/stack/repairable/gunlube, VENDOR_ITEM_REGULAR),
+		list("Firearms Repair Kit", floor(scale * 10), /obj/item/stack/repairable/gunkit, VENDOR_ITEM_REGULAR),
+
 		list("MISCELLANEOUS", -1, null, null),
 		list("Combat Flashlight", floor(scale * 8), /obj/item/device/flashlight/combat, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool", floor(scale * 4), /obj/item/tool/shovel/etool/folded, VENDOR_ITEM_REGULAR),
@@ -138,9 +142,9 @@
 		list("REGULAR AMMUNITION", -1, null, null),
 		list("Type 71 Magazine (5.45x39mm)", floor(scale * 100), /obj/item/ammo_magazine/rifle/type71, VENDOR_ITEM_REGULAR),
 		list("Type 64 Helical Magazine (7.62x19mm)", floor(scale * 100), /obj/item/ammo_magazine/smg/bizon, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Buckshot Shells (8g)", floor(scale * 300), /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Slug Shells (8g)", floor(scale * 300), /obj/item/ammo_magazine/handful/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
-		list("Handful of Heavy Flechette Shells (8g)", floor(scale * 300), /obj/item/ammo_magazine/handful/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Buckshot Shells (8g)", floor(scale * 56), /obj/item/ammo_magazine/shotgun/heavy/buckshot, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Slugs (8g)", floor(scale * 56), /obj/item/ammo_magazine/shotgun/heavy/slug, VENDOR_ITEM_REGULAR),
+		list("Box of Heavy Flechette Shells (8g)", floor(scale * 56), /obj/item/ammo_magazine/shotgun/heavy/flechette, VENDOR_ITEM_REGULAR),
 		list("Type 73 Magazine (7.62x25mm Tokarev)", floor(scale * 40), /obj/item/ammo_magazine/pistol/t73, VENDOR_ITEM_REGULAR),
 		list("ZHNK-72 Speed Loader (7.62x38mmR)", floor(scale * 40), /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
 		list("NP92 Magazine (9x18mm Makarov)", floor(scale * 40), /obj/item/ammo_magazine/pistol/np92, VENDOR_ITEM_REGULAR),
@@ -183,7 +187,7 @@
 		list("Suppressor", 6.5, /obj/item/attachable/suppressor, VENDOR_ITEM_REGULAR),
 
 		list("RAIL", -1, null, null),
-		list("B8 Smart-Scope", 3.5, /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
+		list("B8 Smart-Scope", 3.5, /obj/item/attachable/alt_iff_scope, VENDOR_ITEM_REGULAR),
 		list("Magnetic Harness", 8.5, /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
 		list("Rail Flashlight", 10.5, /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", 4.5, /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),

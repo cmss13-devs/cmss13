@@ -42,3 +42,7 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
+
+/obj/item/hardpoint/primary/dualcannon/pmc
+	icon_state = "dual_cannon_wy"
+	disp_icon_state = "dual_cannon_wy"

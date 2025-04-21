@@ -1,10 +1,9 @@
 import { classes } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import { Tabs } from '../components';
-import { Table, TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Tabs } from 'tgui/components';
+import { Table, TableCell, TableRow } from 'tgui/components/Table';
+import { Window } from 'tgui/layouts';
 
 interface PlaytimeRecord {
   job: string;

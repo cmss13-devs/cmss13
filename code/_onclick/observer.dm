@@ -3,7 +3,8 @@
 	set name = "Toggle Inquisitiveness"
 	set desc = "Sets whether your ghost examines everything on click by default"
 	set category = "Ghost.Settings"
-	if(!client) return
+	if(!client)
+		return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
 		to_chat(src, SPAN_NOTICE(" You will now examine everything you click on."))
@@ -14,11 +15,11 @@
 	if(..())
 		return TRUE
 
-	if (mods["shift"] && mods["middle"])
+	if (mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
 		point_to(target)
 		return TRUE
 
-	if(mods["ctrl"])
+	if(mods[CTRL_CLICK])
 		if(target == src)
 			if(!can_reenter_corpse || !mind || !mind.current)
 				return
@@ -91,7 +92,7 @@
 	next_move = world.time + 8
 	// You are responsible for checking config.ghost_interaction when you override this function
 	// Not all of them require checking, see below
-	if(!mods["shift"])
+	if(!mods[SHIFT_CLICK])
 		target.attack_ghost(src)
 	return FALSE
 

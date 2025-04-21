@@ -367,7 +367,7 @@
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK]) //don't step on examine, point, etc
+	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
 		return
 
 	var/seat = get_mob_seat(source)
@@ -389,7 +389,8 @@
 	hardpoint.start_fire(source, object, location, control, params)
 
 /obj/vehicle/multitile/proc/handle_player_entrance(mob/M)
-	if(!M || M.client == null) return
+	if(!M || M.client == null)
+		return
 
 	var/mob_x = M.x - src.x
 	var/mob_y = M.y - src.y

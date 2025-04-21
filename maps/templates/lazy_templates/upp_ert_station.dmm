@@ -1,4 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/trash/plate,
+/turf/open/floor/strata/green3/west,
+/area/adminlevel/ert_station/upp_station)
+"ab" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 28;
+	pixel_x = 9
+	},
+/turf/open/floor/strata/cyan1/east,
+/area/adminlevel/ert_station/upp_station)
 "ac" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -13,6 +25,17 @@
 	pixel_y = 13
 	},
 /turf/open/floor/strata/multi_tiles/west,
+/area/adminlevel/ert_station/upp_station)
+"ad" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 28;
+	pixel_x = -6
+	},
+/turf/open/floor/strata/green1,
 /area/adminlevel/ert_station/upp_station)
 "ag" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -211,17 +234,9 @@
 /area/adminlevel/ert_station/upp_station)
 "dh" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/upp{
-	pixel_y = 1;
-	pixel_x = -3
-	},
-/obj/item/reagent_container/food/snacks/upp{
-	pixel_y = 10;
-	pixel_x = 2
-	},
-/obj/item/reagent_container/food/snacks/upp{
-	pixel_y = 4;
-	pixel_x = 3
+/obj/item/storage/box/mre/upp{
+	pixel_y = 12;
+	pixel_x = 4
 	},
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_y = 9;
@@ -267,8 +282,12 @@
 	pixel_y = 9
 	},
 /obj/item/toy/deck{
-	pixel_x = -6;
+	pixel_x = -3;
 	pixel_y = 5
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -18;
+	pixel_y = 10
 	},
 /turf/open/floor/strata/green4/north,
 /area/adminlevel/ert_station/upp_station)
@@ -1158,7 +1177,9 @@
 "vH" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/storage/box/mre/upp{
+	pixel_y = 14
+	},
 /turf/open/floor/strata/green3/east,
 /area/adminlevel/ert_station/upp_station)
 "vK" = (
@@ -1853,6 +1874,7 @@
 /area/adminlevel/ert_station/upp_station)
 "KX" = (
 /obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/can_opener,
 /turf/open/floor/strata/floor3/east,
 /area/adminlevel/ert_station/upp_station)
 "KZ" = (
@@ -1954,8 +1976,9 @@
 /area/adminlevel/ert_station/upp_station)
 "ME" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/reagent_container/food/snacks/upp,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/storage/box/mre/upp{
+	pixel_y = 7
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/adminlevel/ert_station/upp_station)
 "MG" = (
@@ -2106,7 +2129,9 @@
 /area/adminlevel/ert_station/upp_station)
 "Rd" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/storage/box/donkpockets{
+	pixel_y = 4
+	},
 /turf/open/floor/strata/red3/north,
 /area/adminlevel/ert_station/upp_station)
 "Rf" = (
@@ -2566,6 +2591,10 @@
 /turf/open/floor/strata/green4/east,
 /area/adminlevel/ert_station/upp_station)
 "Wb" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 28;
+	pixel_x = 9
+	},
 /turf/open/floor/strata/blue4,
 /area/adminlevel/ert_station/upp_station)
 "We" = (
@@ -2716,7 +2745,10 @@
 "ZR" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/trash/plate,
-/obj/item/reagent_container/food/snacks/upp,
+/obj/item/reagent_container/food/drinks/cans/food/upp/rice{
+	pixel_y = 12;
+	pixel_x = 12
+	},
 /turf/open/floor/strata/green3/west,
 /area/adminlevel/ert_station/upp_station)
 "ZS" = (
@@ -2903,7 +2935,7 @@ GI
 GI
 El
 El
-YW
+ad
 YW
 El
 El
@@ -3888,7 +3920,7 @@ EA
 eo
 am
 zY
-ZR
+aa
 ZR
 aP
 tv
@@ -4081,7 +4113,7 @@ Cp
 Cp
 Dv
 Dv
-oz
+ab
 oz
 Ul
 Dv

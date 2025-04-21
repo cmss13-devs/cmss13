@@ -126,7 +126,8 @@
 			dat += "<br>Identification String: <a href='byond://?src=\ref[src];input=id'>NULL</a>"
 		dat += "<br>Network: <a href='byond://?src=\ref[src];input=network'>[network]</a>"
 		dat += "<br>Prefabrication: [length(autolinkers) ? "TRUE" : "FALSE"]"
-		if(hide) dat += "<br>Shadow Link: ACTIVE</a>"
+		if(hide)
+			dat += "<br>Shadow Link: ACTIVE</a>"
 
 		//Show additional options for certain GLOB.machines.
 		dat += Options_Menu()
@@ -159,7 +160,7 @@
 
 	dat += "</font>"
 	temp = ""
-	show_browser(user, dat, "[src] Access", "tcommachine", "size=520x500;can_resize=0")
+	show_browser(user, dat, "[src] Access", "tcommachine", "can_resize=0", width = 520, height = 500)
 	onclose(user, "tcommachine")
 
 

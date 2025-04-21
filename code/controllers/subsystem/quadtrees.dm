@@ -32,7 +32,8 @@ SUBSYSTEM_DEF(quadtree)
 	while(length(player_feed))
 		var/client/C = player_feed[length(player_feed)]
 		player_feed.len--
-		if(!C) continue
+		if(!C)
+			continue
 		var/turf/T = get_turf(C.mob)
 		if(!T?.z || length(new_quadtrees) < T.z)
 			continue

@@ -1,9 +1,9 @@
-import { KEY } from 'common/keys';
-import { KeyboardEvent, useState } from 'react';
+import { isEscape, KEY } from 'common/keys';
+import { type KeyboardEvent, useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Box, Section, Stack, TextArea } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
-import { useBackend } from '../backend';
-import { Box, Section, Stack, TextArea } from '../components';
-import { Window } from '../layouts';
 import { InputButtons } from './common/InputButtons';
 import { Loader } from './common/Loader';
 
@@ -67,7 +67,7 @@ export const TextInputModal = (props) => {
           ) {
             act('submit', { entry: input });
           }
-          if (event.key === KEY.Escape) {
+          if (isEscape(event.key)) {
             act('cancel');
           }
         }}

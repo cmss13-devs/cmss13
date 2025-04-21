@@ -350,13 +350,13 @@ DEFINES in setup.dm, referenced here.
 		var/obj/item/weapon/gun/shotgun/shotload = src
 		var/obj/item/weapon/gun/revolver/revload = src
 		if(flags_gun_features & GUN_INTERNAL_MAG)
-			if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
-				to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
-				return
 			if(magazine.caliber != caliber)
 				to_chat(user, SPAN_WARNING("This doesn't match the [src]'s caliber!"))
 				return
-			if(magazine.caliber == caliber)
+			if(current_mag && current_mag.current_rounds >= current_mag.max_rounds)
+				to_chat(user, SPAN_WARNING("[src] is already at its maximum capacity!"))
+				return
+			else
 				if(user.skills)
 					tac_reload_time = 2 //until this can loop, better for it to be in 2 ticks
 				if(current_mag && current_mag.current_rounds < current_mag.max_rounds)

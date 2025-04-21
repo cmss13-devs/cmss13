@@ -312,3 +312,74 @@
   - bugfix: prevents harmful spray during ceasefire
   efzapa:
   - maptweak: Hunting Ground Evac Shutters are now properly indestructable.
+2025-04-18:
+  BOBAMAx:
+  - bugfix: CO survs on NV will no longer be UASF COs in the CLF insert
+  Nihisohel:
+  - bugfix: Flamers can now discharge properly
+  - bugfix: Skill locked weapons now respect skill checks when attempting a discharge
+  - bugfix: Weapons on safety no longer discharge
+  efzapa:
+  - rscadd: Fax Responders now spawn with a pen in their ear slot.
+2025-04-19:
+  Drathek:
+  - code_imp: Cleaned up signal usage for wall leaning
+  Killfish:
+  - rscdel: Removed two entirely unused variables
+  - balance: Burrower now has a minimum travel time of 1 second, and unburrow stun
+      has been reduced from 2 to 1.5. No more stunlocking, and surprise solocapping
+      in FOB is now a bit harder.
+  - balance: Tremor has had its cooldown reduced from 45 seconds to 30 seconds.
+  Lagomorphica:
+  - bugfix: podlock doors on almayer and tdome no longer blow up from a stiff breeze
+  MistChristmas:
+  - ui: Adds scalability to the Supply Console so it can be resized and the elements
+      will resize with the window.
+  MistChristmas, Drathek:
+  - qol: 'Autowiki: Ignores most bayonets, and other misc. attachments. Compares difference
+      in base vs strain stats. Switches to using isnull so armour damage table populates
+      0s.'
+  Red-byte3D:
+  - code_imp: lunging is now behavior delegate var
+  - balance: You can no longer tackle while lunging
+  TrollerNoob:
+  - rscadd: A new shipment of Urban, Snow, Classic and Desert variants for the M70B1
+      light flak jacket and the M3-VL pattern flak vest have arrived. Pilots and DCC,
+      rejoice!
+  - rscadd: A new shipment of Urban and Snow variants for the tactical pilot officer
+      flightsuits have also arrived.
+  - rscadd: Classic and Desert variants of the M70 flak jacket have been found in
+      the Almayer's cargo hold, encased in cobwebs.
+  - rscadd: The fine military tailors stationed on Chinook 91 GSO station have finally
+      figured out how to weave buttons into the M70 flak jacket. They can now be unbuttoned
+      and have pockets.
+  - imageadd: Added all map variants for the M70B1 light flak jacket and the M3-VL
+      pattern flak vest.
+  - imageadd: Added Urban/Snow variants for the Tactical Pilot Officer Flightsuit.
+  - imageadd: Added item states for the M70B1 light flak jacket and Tactical Pilot
+      Officer Flightsuit.
+  - imageadd: Added Classic/Desert variants for the standard M70 flak jacket.
+  - imageadd: Added the ability to unbutton the standard M70 flak jacket.
+  - balance: M70 flak jacket now has two item storage slots like the M70B1 light flak
+      jacket, up from zero.
+  - refactor: Removed pilot_alt and pilot_flightsuit_alt icons from uniforms/suits_by_faction
+      and added them to their respective map variants in uniforms/suits_by_map.
+  - refactor: Removed VL_FLAK icons from suits_by_faction and added them to their
+      respective map variants in suits_by_map.
+  - refactor: Moved the M70 flak jacket from armor.dm to marine_coat.dm to standardize
+      its location with the M70B1 light flak jacket.
+  - refactor: Changed the M70 flak jacket's file pathing to jacket/marine/pilot/armor
+      to standardize it with M70B1 light flak jacket's jacket/marine/pilot pathing.
+2025-04-20:
+  DarkLordCabbage:
+  - balance: 'Underbarrel extinguishers can now be attached to the m39, M4RA, mou,
+      breaching shotty, and others.
+
+      qol:'
+  Detective-Google:
+  - bugfix: CO council can vend bomber jackets again
+  Lagomorphica:
+  - balance: Security on Hybrisia Prospera have had buget cuts and no longer have
+      large magazine pouches.
+  PhantornRU:
+  - bugfix: fix propelled chair when not wheeled chair

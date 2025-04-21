@@ -1,0 +1,5 @@
+author: "Aurallianz"
+delete-after: True
+changes:
+  - rscadd: "Nurses can FM carry."
+  - rscadd: "CMO requires Doctor and Research playtime."

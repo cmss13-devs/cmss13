@@ -69,6 +69,7 @@
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/flashlight/grip,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/stock/smg,
 		/obj/item/attachable/stock/smg/collapsible,
 		/obj/item/attachable/compensator,
@@ -244,6 +245,7 @@
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade/m203,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
@@ -307,6 +309,7 @@
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade/m203,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/stock/smg/collapsible/mp5a5,
 		)
 
@@ -379,6 +382,7 @@
 		/obj/item/attachable/gyro,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/burstfire_assembly,
+		/obj/item/attachable/attached_gun/extinguisher,
 		)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
@@ -411,10 +415,12 @@
 	icon_state = "ppsh17b"
 	item_state = "ppsh17b"
 
+	pixel_x = -3
+	hud_offset = -3
+
 	fire_sound = 'sound/weapons/smg_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/ppsh
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
-	starting_attachment_types = list(/obj/item/attachable/stock/ppsh)
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 18, "stock_y" = 15)

@@ -393,6 +393,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m10"
 	bonus_overlay = "m10_overlay"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/pistol/m10
 

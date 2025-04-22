@@ -2200,6 +2200,9 @@
 	pixel_x = 25;
 	pixel_y = -5
 	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
 "akj" = (
@@ -21086,6 +21089,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/crowbar,
 /obj/item/reagent_container/spray/cleaner,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/whiteyellow/northwest,
 /area/lv624/lazarus/corporate_dome)
 "xyH" = (

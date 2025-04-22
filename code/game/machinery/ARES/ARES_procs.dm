@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 
 	faction_group = new_iff
 	ares_apollo_talk("Security IFF systems updated to [selection]")
-	for(var/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/sentry in core_sentries)
+	for(var/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/sentry as anything in core_sentries)
 		sentry.sync_iff()
 
 /* BELOW ARE IN AdminAres.dm

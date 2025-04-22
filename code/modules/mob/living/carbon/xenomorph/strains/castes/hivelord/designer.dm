@@ -39,7 +39,7 @@
 	hivelord.speed_modifier += XENO_SPEED_TIER_3 // Lost 30% plasma in sac, you lost some weight
 	hivelord.plasmapool_modifier = 0.7 // -30% plasma pool
 	hivelord.tacklestrength_min = 5
-	hivelord.tacklestrength_max = 6 // increase by +1
+	hivelord.tacklestrength_max = 6
 	hivelord.recalculate_everything()
 
 	// Also change the primacy value for our abilities (because we want the same place but have another primacy ability)
@@ -381,7 +381,7 @@
 /obj/structure/mineral_door/resin/brittle
 	name = "flaky resin door"
 	desc = "Weird resin door that solidified too quickly, creating layers of brittle resin."
-	icon_state = "brittle_resin"
+	icon_state = "brittle resin"
 	mineralType = "brittle resin"
 	hardness = 1.4
 	var/obj/effect/alien/weeds/bound_weed

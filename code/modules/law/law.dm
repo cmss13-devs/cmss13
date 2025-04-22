@@ -9,8 +9,9 @@
 	var/desc = "Pay the court a fine or serve your sentence." // This is used for the description of the crime.
 	var/explanation //This is used by the mp to describe what the person did for the charge.
 	var/brig_time = 0 //The amount of time the sentence brings
-	var/severity = NO_FLAGS//Bitflags are used here to indicate the severity of the crime.
-	var/special_punishment = "" //This is for special punishments
+
+	var/special_punishment = "" //This is for special punishments.
+	var/conditions = "" //This is for detailing conditions of application.
 
 //These are bitflags to indicate the type of crime it is.
 #define OPTIONAL_CRIME (1<<0)

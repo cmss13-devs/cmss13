@@ -529,7 +529,7 @@ export const SecurityRecords = () => {
               className="SecurityRecords_BoxStyle"
               style={{ paddingLeft: '2px' }}
             >
-              <Button onClick={() => openCommentModal}>Add Comment</Button>
+              <Button onClick={openCommentModal}>Add Comment</Button>
             </Box>
           </>
         )}

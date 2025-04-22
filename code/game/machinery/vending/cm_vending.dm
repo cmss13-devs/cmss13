@@ -324,6 +324,17 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
+	// repair item handling
+	else if(istype(item_to_stock, /obj/item/stack/repairable/gunkit))
+		var/obj/item/stack/repairable/stack = item_to_stock
+		if(stack.amount != 5)
+			to_chat(user, SPAN_WARNING("\The [stack] isn't full. You need to fill it before you can restock it."))
+			return
+	else if(istype(item_to_stock, /obj/item/stack/repairable/gunlube))
+		var/obj/item/stack/repairable/stack = item_to_stock
+		if(stack.amount != 10)
+			to_chat(user, SPAN_WARNING("The [stack] isn't full. You need to fill it before you can restock it."))
+			return
 	return TRUE //Item IS good to restock!
 
 //------------MAINTENANCE PROCS---------------
@@ -1295,6 +1306,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		if(islist(item_ref)) // multi-vending
 			var/list/ref_list = item_ref
 			item_ref = ref_list[1]
+		var/icon/image_icon = icon(initial(item_ref.icon), initial(item_ref.icon_state))
+		var/image_size = "[image_icon.Width()]x[image_icon.Height()]"
 
 		var/is_category = item_ref == null
 
@@ -1307,7 +1320,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			"prod_color" = priority,
 			"prod_desc" = initial(item_ref.desc),
 			"prod_cost" = p_cost,
-			"image" = imgid
+			"image" = imgid,
+			"image_size" = image_size,
 		)
 
 		if (is_category == 1)

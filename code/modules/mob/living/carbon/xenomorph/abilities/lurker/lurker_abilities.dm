@@ -14,8 +14,6 @@
 	move_during_pounce = FALSE
 	throw_speed = SPEED_FAST // increased to VERYFAST by cloak pouncing
 
-	/// how long the speedbuff from invisiblity lasts after a pounce
-	var/pounce_speed_buff = 4 SECONDS
 
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"
@@ -28,8 +26,12 @@
 	var/duration = 30 SECONDS // 30 seconds base
 	var/invis_timer_id = TIMER_ID_NULL
 	var/alpha_amount = 25
+	/// The alpha at which the cloak is forced to end
+	var/decloak_amount = 100
+	var/cloak_damage = 0
 	var/speed_buff = 0.20
-
+	/// how long the speedbuff from invisiblity lasts after pounce/cloak being damaged
+	var/lingering_speed_buff = 4 SECONDS
 // tightly coupled 'buff next slash' action
 /datum/action/xeno_action/onclick/lurker_assassinate
 	name = "Crippling Strike"

@@ -473,13 +473,6 @@
 		if(ismob(result))
 			target = result
 
-	if(ismob(target))
-		autoshot_image.loc = target
-		autoshot_image.pixel_x = -target.pixel_x // -16 is counted by -(-16)
-		autoshot_image.pixel_y = -target.pixel_y
-	else
-		reset_autoshot_image()
-
 	if(!requires_battery)
 		return ..()
 
@@ -589,29 +582,34 @@
 	var/mob/living/unconscious_target = null
 	var/mob/living/conscious_target = null
 
-	for(var/mob/living/M in viewers(range, target_turf) & oviewers(9, user))
-		if((M.stat & DEAD))
+	for(var/mob/living/targetted_mob in viewers(range, target_turf) & oviewers(9, user))
+		if((targetted_mob.stat == DEAD))
 			continue // No dead or non living.
 
-		if(iff_enabled && M.get_target_lock(user.faction_group))
+		if(iff_enabled && targetted_mob.get_target_lock(user.faction_group))
 			continue
 
-		if(M.stat == DEAD)
-			continue
+		var/dist = get_dist_sqrd(user, targetted_mob)
 
-		var/dist = get_dist_sqrd(user, M)
-
-		if(M.stat == UNCONSCIOUS && dist_unconscious > dist)
+		if(targetted_mob.stat == UNCONSCIOUS && dist_unconscious > dist)
 			dist_unconscious = dist
-			unconscious_target = M
+			unconscious_target = targetted_mob
 		else if(dist_conscious > dist)
 			dist_conscious = dist
-			conscious_target = M
+			conscious_target = targetted_mob
 
 	if(conscious_target)
+		autoshot_image.loc = conscious_target
+		autoshot_image.pixel_x = -conscious_target.pixel_x // -16 is counted by -(-16)
+		autoshot_image.pixel_y = -conscious_target.pixel_y
 		. = conscious_target
-	else
+	else if(unconscious_target)
+		autoshot_image.loc = unconscious_target
+		autoshot_image.pixel_x = -unconscious_target.pixel_x // -16 is counted by -(-16)
+		autoshot_image.pixel_y = -unconscious_target.pixel_y
 		. = unconscious_target
+	else
+		reset_autoshot_image()
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s motion detector.")

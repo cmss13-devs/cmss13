@@ -543,6 +543,14 @@
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
+/area/tyrargo/underground/museum_carpark
+	name = "Museum - Underground Parking"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
+	icon_state = "auxstorage	"
+	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+
 // Saipan
 
 /area/tyrargo/indoors/saipan

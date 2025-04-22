@@ -4949,7 +4949,6 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/item/clothing/glasses/thermal/syndi/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
@@ -11678,9 +11677,6 @@
 "rRC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi/kutjevo{
-	pixel_y = -2
-	},
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/colony_south/power2)
 "rSg" = (
@@ -15646,6 +15642,10 @@
 "ybd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine,
+/obj/structure/sign/calendar{
+	pixel_y = 29;
+	pixel_x = 9
+	},
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "ybh" = (

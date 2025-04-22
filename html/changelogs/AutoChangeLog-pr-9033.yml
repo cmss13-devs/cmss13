@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "DMI merge hook will now try to retain positioning of sprites when handling some conflicts"

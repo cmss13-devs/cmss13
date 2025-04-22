@@ -101,17 +101,13 @@ Contains most of the procs that are called when a mob is attacked by something
 
 		if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
 			var/obj/item/weapon/shield/solid_shield = possible_shield
-			var/shield_blocked_l = FALSE
-			if(solid_shield.shield_readied && prob(solid_shield.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				solid_shield.lower_shield(src)
-				shield_blocked_l = TRUE
-			else if(prob(solid_shield.passive_block))
-				shield_blocked_l = TRUE
 
-			if(shield_blocked_l)
+			if(prob(solid_shield.shield_chance))
 				new block_effect(owner_turf)
-				playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
+				playsound(src, solid_shield.shield_sound, 70, vary = TRUE)
 				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [solid_shield.name]!</B>"), null, null, 5)
+				if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+					solid_shield.lower_shield(src)
 				return TRUE
 
 		if(possible_shield.shield_type && possible_shield.shield_chance)
@@ -131,29 +127,18 @@ Contains most of the procs that are called when a mob is attacked by something
 
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
-		var/obj/item/weapon/I = l_hand
-		if(!istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
-			new block_effect(owner_turf)
-			playsound(src, 'sound/items/parry.ogg', 70, vary = TRUE)
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
-			return TRUE
-
 	if(r_hand && istype(r_hand, /obj/item/weapon))
 		var/obj/item/weapon/possible_shield = r_hand
 
 		if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
 			var/obj/item/weapon/shield/solid_shield = possible_shield
-			var/shield_blocked_r = FALSE
-			if(solid_shield.shield_readied && prob(solid_shield.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				shield_blocked_r = TRUE
-				solid_shield.lower_shield(src)
-			else if(prob(solid_shield.passive_block))
-				shield_blocked_r = TRUE
 
-			if(shield_blocked_r)
+			if(prob(solid_shield.shield_chance))
 				new block_effect(owner_turf)
 				playsound(src, solid_shield.shield_sound, 70, vary = TRUE)
 				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [solid_shield.name]!</B>"), null, null, 5)
+				if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+					solid_shield.lower_shield(src)
 				return TRUE
 
 		if(possible_shield.shield_type && possible_shield.shield_chance)

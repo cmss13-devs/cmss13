@@ -1,7 +1,7 @@
 /obj/item/weapon/shield
 	name = "shield"
 	var/base_icon_state = "shield"
-	var/passive_block = 15 // Percentage chance used in prob() to block incoming attack
+	var/passive_block = 15
 	var/readied_block = 30
 	var/readied_slowdown = SLOWDOWN_ARMOR_VERY_LIGHT // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
 	var/shield_readied = FALSE
@@ -18,6 +18,7 @@
 	H.shield_slowdown = max(readied_slowdown, H.shield_slowdown)
 	if(H.shield_slowdown != current_shield_slowdown)
 		H.recalculate_move_delay = TRUE
+	shield_chance = readied_block
 
 /obj/item/weapon/shield/proc/lower_shield(mob/user as mob)
 	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src]."))
@@ -37,6 +38,7 @@
 	H.shield_slowdown = set_shield_slowdown
 	if(H.shield_slowdown != current_shield_slowdown)
 		H.recalculate_move_delay = TRUE
+	shield_chance = passive_block
 
 /obj/item/weapon/shield/proc/toggle_shield(mob/user as mob)
 	if(shield_readied)

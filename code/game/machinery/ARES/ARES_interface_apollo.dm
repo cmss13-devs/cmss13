@@ -383,6 +383,18 @@
 			aicore_lockdown(user)
 			return TRUE
 
+		if("update_sentries")
+			var/new_iff = params["chosen_iff"]
+			if(!new_iff)
+				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
+				return FALSE
+			if(new_iff == link.faction_label)
+				return FALSE
+			link.change_iff(new_iff)
+			message_admins("ARES: [key_name(user)] updated ARES Sentry IFF to [new_iff].")
+			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
+			return TRUE
+
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)
 

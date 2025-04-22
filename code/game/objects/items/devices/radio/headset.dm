@@ -1279,6 +1279,8 @@
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE)
 	volume = RADIO_VOLUME_CRITICAL
+	has_hud = TRUE
+	hud_type = MOB_HUD_SECURITY_ADVANCED
 
 /obj/item/device/radio/headset/almayer/provost
 	name = "USCM Provost headset"
@@ -1286,7 +1288,7 @@
 	icon_state = "pvst_headset"
 	frequency = PVST_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/provost)
-	additional_hud_types = list(MOB_HUD_FACTION_CMB)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_CRITICAL
 	has_hud = TRUE
 	hud_type = MOB_HUD_SECURITY_ADVANCED

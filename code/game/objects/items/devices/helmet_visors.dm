@@ -377,9 +377,9 @@
 			action.remove_from(user)
 
 /obj/item/device/helmet_visor/leader/upp
-	minimap_type =  /datum/action/minimap/upp
+	minimap_type = /datum/action/minimap/upp
 	desc = "An insertable visor HUD loaded with tacmap data into a standard UPP helmet."
 
 /obj/item/device/helmet_visor/leader/pmc
-	minimap_type =  /datum/action/minimap/pmc
+	minimap_type = /datum/action/minimap/pmc
 	desc = "An insertable visor HUD loaded with tacmap data into a standard PMC helmet."

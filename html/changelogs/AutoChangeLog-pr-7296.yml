@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added factional remote camera consoles."
+  - bugfix: "Fixes fax responder access to Brig cameras."

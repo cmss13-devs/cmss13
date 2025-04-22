@@ -106,21 +106,21 @@
 			if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
 				entrance_used = entrance
 				break
+		if(entrance_used) //if we are at a door, throw it in, else do nothing.
+			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
+			SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
+			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				return
+			if(mob_x != user.x - x || mob_y != user.y - y)
+				return
 
-		user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
-		SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
-		if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			return
-		if(mob_x != user.x - x || mob_y != user.y - y)
-			return
+			user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
+			SPAN_WARNING("You throw [nade] through the door of the [src]."))
 
-		user.visible_message(SPAN_WARNING("[user] throws [nade] through the door of the [src]!"),
-		SPAN_WARNING("You throw [nade] through the door of the [src]."))
-
-		user.drop_held_item()
-		interior.enter(nade, entrance_used)
-		if(!nade.active)
-			nade.activate(user)
+			user.drop_held_item()
+			interior.enter(nade, entrance_used)
+			if(!nade.active)
+				nade.activate(user)
 		return
 
 	if(istype(O, /obj/item/device/motiondetector))

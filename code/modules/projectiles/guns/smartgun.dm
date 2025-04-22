@@ -271,6 +271,7 @@
 	. = ..()
 	name = "Toggle Aim Assist"
 	action_icon_state = "autofire"
+	listen_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_AIM_ASSIST
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

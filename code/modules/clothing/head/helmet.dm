@@ -356,6 +356,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/riot_shield = NO_GARB_OVERRIDE,
 	/obj/item/attachable/flashlight = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/chaplain_patch = NO_GARB_OVERRIDE,
+	/obj/item/stack/repairable/gunlube = NO_GARB_OVERRIDE,
 
 	// MEDICAL
 	/obj/item/stack/medical/bruise_pack = NO_GARB_OVERRIDE,
@@ -926,6 +927,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M12 pattern"
 	max_inserted_visors = 2
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 
 /obj/item/clothing/head/helmet/marine/rto/intel
 	name = "\improper XM12 pattern intelligence helmet"
@@ -937,6 +942,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "The B18 Helmet that goes along with the B18 Defensive Armor. It's heavy, reinforced, and protects more of the face."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
@@ -953,6 +962,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	desc = "Pairs with the M3-G4 heavy grenadier plating. A distant cousin of the experimental B18 defensive helmet. Comes with inbuilt ear blast protection."
 	icon_state = "grenadier_helmet"
 	item_state = "grenadier_helmet"
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bomb = CLOTHING_ARMOR_ULTRAHIGH
@@ -994,8 +1007,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	unacidable = TRUE
 
 /obj/item/clothing/head/helmet/marine/pilot
-	name = "\improper M30 tactical helmet"
-	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
+	name = "\improper MK30 tactical helmet"
+	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety."
 	icon_state = "helmetp"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
@@ -1003,11 +1016,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
-	specialty = "M30 tactical"
+	specialty = "MK30 tactical"
+	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/pilottex
-	name = "\improper Tex's M30 tactical helmet"
-	desc = "The M30 tactical helmet has a left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
+	name = "\improper Tex's MK30 tactical helmet"
+	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
 	icon_state = "helmetp_tex"
 	item_state = "helmetp_tex"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'

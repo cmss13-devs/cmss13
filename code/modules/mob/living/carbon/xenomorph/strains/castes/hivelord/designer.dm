@@ -1,6 +1,6 @@
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
-	description = "You relinquish your ability to build resin secretions and sacrifice a portion of your plasma pool, alongside a slight reduction in health. In return, you gain significantly stronger pheromones, enhanced long-range vision, and the ability to place up to 12 Design Nodes that enhance the efficiency of other builders. Additionally, you can remotely reinforce resin structures, control doors from a distance, and unleash a powerful Greater Resin Surge, transforming Design Nodes into temporary reflective walls to fortify your hive."
+	description = "By embracing this strain you relinquish your ability to directly build resin secretions, you sacrifice a portion of your plasma pool and reduce your health slightly. in exchange your pheromones become significantly stronger, and ability to see at longer range. You gain the ability to place up to 36 design nodes, including new speed, cost and construct nodes. The speed node increases building speed by 50%, while the cost node reduces construction costs by 50%. Your construct nodes allow anyone to donate plasma to create resin walls or doors based on the selected mark, if you donate plasma to construct you will always create brittle variant of structures, with the added ability to change mark nodes to show walls or doors. Additionally, you can remotely thicken resin structures, control doors, and even remove nodes from a distance. Your construction node skills extend to semi-weedable surfaces, where you can create brittle resin walls and doors. Unleashing your Greater Resin Surge transforms all design nodes into weaker reflective walls, offering temporary protection for your hive. Combat-wise, your tackle is slightly enhanced with longer knockdown duration, making you a more formidable force."
 	flavor_description = "You are hive's designer, while you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
 	icon_state_prefix = "Designer"
 
@@ -18,7 +18,6 @@
 		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 4
 		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 5
 		/datum/action/xeno_action/active_toggle/toggle_speed,
-		/datum/action/xeno_action/activable/transfer_plasma/hivelord,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
@@ -26,6 +25,7 @@
 	hivelord.available_design = list(
 		/obj/effect/alien/resin/design/speed_node,
 		/obj/effect/alien/resin/design/cost_node,
+		/obj/effect/alien/resin/design/construct_node,
 		/obj/effect/alien/resin/design/upgrade,
 		/obj/effect/alien/resin/design/remove,
 		/obj/effect/alien/resin/design/remote
@@ -38,6 +38,7 @@
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
 	hivelord.speed_modifier += XENO_SPEED_TIER_3 // Lost 30% plasma in sac, you lost some weight
 	hivelord.plasmapool_modifier = 0.7 // -30% plasma pool
+	hivelord.tacklestrength_min = 5
 	hivelord.tacklestrength_max = 6 // increase by +1
 	hivelord.recalculate_everything()
 
@@ -60,6 +61,15 @@
 
 /obj/effect/resin_construct/cost_node
 	icon_state = "costnode"
+
+/obj/effect/resin_construct/construct_node
+	icon_state = "constructnode"
+
+/obj/effect/resin_construct/construct_doorslow
+	icon_state = "DoorConstrucSlow"
+
+/obj/effect/resin_construct/construct_wallslow
+	icon_state = "WeakConstructSlow"
 
 /obj/effect/resin_construct/thickfast
 	icon_state = "ThickConstructFast"
@@ -157,7 +167,7 @@
 
 	if(!QDELETED(bound_xeno))
 		bound_xeno.current_design.Remove(src)
-	unregister_weed_expiration_signal()
+	unregister_weed_expiration_signal_design()
 	bound_xeno = null
 	bound_weed = null
 	choosenMark = null
@@ -173,11 +183,11 @@
 	SIGNAL_HANDLER
 	qdel(src)
 
-/obj/effect/alien/resin/design/proc/unregister_weed_expiration_signal()
+/obj/effect/alien/resin/design/proc/unregister_weed_expiration_signal_design()
 	if(bound_weed)
 		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 
-/obj/effect/alien/resin/design/proc/register_weed_expiration_signal(obj/effect/alien/weeds/new_weed)
+/obj/effect/alien/resin/design/proc/register_weed_expiration_signal_design(obj/effect/alien/weeds/new_weed)
 	RegisterSignal(new_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	bound_weed = new_weed
 
@@ -189,9 +199,9 @@
 	return
 
 /obj/effect/alien/resin/design/speed_node
-	name = "Design Optimized Node (70)"
+	name = "Design Optimized Node (50)"
 	icon_state = "static_speednode"
-	plasma_cost = 70
+	plasma_cost = 50
 
 /obj/effect/alien/resin/design/speed_node/get_examine_text(mob/user)
 	. = ..()
@@ -201,9 +211,9 @@
 		. += "You sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
 
 /obj/effect/alien/resin/design/cost_node
-	name = "Design Flexible Node (75)"
+	name = "Design Flexible Node (60)"
 	icon_state = "static_costnode"
-	plasma_cost = 75
+	plasma_cost = 60
 
 /obj/effect/alien/resin/design/cost_node/get_examine_text(mob/user)
 	. = ..()
@@ -212,12 +222,198 @@
 	if(isxeno(user) || isobserver(user))
 		. += "You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
 
+/obj/effect/alien/resin/design/construct_node
+	name = "Design Construct Node (70)"
+	icon_state = "static_constructnode"
+	plasma_cost = 70
+	var/obj/effect/resin_construct/build_overlay
+
+/obj/effect/alien/resin/design/construct_node/attack_hand(mob/user)
+	if(!isxeno(user))
+		to_chat(user, SPAN_WARNING("You don't understand how to interact with this strange node."))
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(xeno.plasma_stored < plasma_cost)
+		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[plasma_cost]"))
+		return
+
+	if(xeno.hivenumber != src.hivenumber)
+		to_chat(xeno, SPAN_WARNING("This construct node does not belong to your hive."))
+		return
+
+	if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		return
+
+	xeno.plasma_stored -= plasma_cost
+	to_chat(xeno, SPAN_NOTICE("You channel [plasma_cost] plasma into the node."))
+
+	var/turf/T = get_turf(src)
+	if(!istype(T))
+		to_chat(xeno, SPAN_WARNING("This is not a valid location."))
+		return
+
+	var/design_mark = src.mark_meaning
+
+	if(!design_mark)
+		to_chat(xeno, SPAN_WARNING("This node has no valid design selected."))
+		return
+
+	var/obj/effect/resin_construct/overlay
+
+	if(istype(design_mark, /datum/design_mark/resin_wall))
+		overlay = new /obj/effect/resin_construct/construct_wallslow(T)
+	else if(istype(design_mark, /datum/design_mark/resin_door))
+		overlay = new /obj/effect/resin_construct/construct_doorslow(T)
+
+	build_overlay = overlay  // Save the overlay so we can delete it if needed
+
+	addtimer(CALLBACK(src, PROC_REF(complete_construction), T, design_mark, xeno), 4 SECONDS)
+
+/obj/effect/alien/resin/design/construct_node/proc/complete_construction(turf/T, design_mark, mob/living/carbon/xenomorph/xeno)
+	if(QDELETED(src) || QDELETED(T))
+		return
+
+	if(build_overlay)
+		qdel(build_overlay)
+		build_overlay = null
+
+	var/is_brittle = (T.is_weedable() == SEMI_WEEDABLE)
+
+	if(istype(xeno.strain, /datum/xeno_strain/designer))
+		is_brittle = TRUE
+
+	if(istype(design_mark, /datum/design_mark/resin_wall))
+		if(!istype(T, /turf/closed/wall))
+			var/turf/placed
+			if(is_brittle)
+				placed = T.PlaceOnTop(/turf/closed/wall/resin/brittle)
+			else
+				placed = T.PlaceOnTop(/turf/closed/wall/resin)
+
+			var/turf/closed/wall/resin/R = get_turf(T)
+			if(istype(R))
+				R.hivenumber = src.hivenumber
+				set_hive_data(R, R.hivenumber)
+			to_chat(xeno, SPAN_NOTICE("A wall has been created."))
+			playsound(placed, "alien_resin_build", 25)
+			qdel(src)
+		else
+			to_chat(xeno, SPAN_WARNING("A wall already exists here."))
+
+	else if(istype(design_mark, /datum/design_mark/resin_door))
+		if(!istype(T, /obj/structure/mineral_door))
+			var/obj/new_structure
+			if(is_brittle)
+				new_structure = new /obj/structure/mineral_door/resin/brittle(T)
+			else
+				new_structure = new /obj/structure/mineral_door/resin(T)
+
+			var/obj/structure/mineral_door/resin/R = locate(/obj/structure/mineral_door/resin) in get_turf(T)
+			if(istype(R))
+				R.hivenumber = src.hivenumber
+				set_hive_data(R, R.hivenumber)
+			to_chat(xeno, SPAN_NOTICE("A door has been created."))
+			playsound(new_structure, "alien_resin_build", 25)
+			qdel(src)
+		else
+			to_chat(xeno, SPAN_WARNING("A door already exists here."))
+
+	qdel(src)
+
+/obj/effect/alien/resin/design/construct_node/Destroy()
+	if(build_overlay && !QDELETED(build_overlay))
+		qdel(build_overlay)
+	if(bound_weed)
+		unregister_weed_expiration_signal_design()
+	return ..()
+
+/obj/effect/alien/resin/design/construct_node/attackby(obj/item/W, mob/user)
+	if(isxeno(user) && user.a_intent != INTENT_HARM)
+		return attack_hand(user) // Allow peaceful interaction
+	to_chat(user, SPAN_WARNING("You can't damage the construct node like that."))
+	return
+
+/obj/effect/alien/resin/design/construct_node/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.a_intent != INTENT_HARM)
+		return attack_hand(M) // Delegate to attack_hand for non-harm intents
+	else
+		// Use normal damaging behavior if intent is harm
+		return ..()
+
+/obj/effect/alien/resin/design/construct_node/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this node looks like big blub composed of smaller purple glowing cups, pumping some strange liquid trough weeds."
+	if(isxeno(user) || isobserver(user))
+		. += "You sense that contribuitong [SPAN_NOTICE("[plasma_cost]")] plasma to this node will create [SPAN_NOTICE("[mark_meaning]")] secretion."
+
+/turf/closed/wall/resin/brittle
+	name = "flaky resin wall"
+	desc = "Weird resin wall that solidified too quickly, creating layers of brittle resin."
+	icon_state = "brittleresin"
+	walltype = WALL_BRITTLE_RESIN
+	var/obj/effect/alien/weeds/bound_weed
+
+/turf/closed/wall/resin/brittle/Initialize()
+	. = ..()
+	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
+	if(bound_weed)
+		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+
+/turf/closed/wall/resin/brittle/Destroy()
+	if(bound_weed)
+		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
+		bound_weed = null
+	return ..()
+
+/turf/closed/wall/resin/brittle/proc/on_weed_expire()
+	playsound(src, "alien_resin_break", 25)
+	ScrapeAway()
+
+/turf/closed/wall/resin/brittle/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this flaky wall looks like it's rooted to resin below to hold itself together."
+	if(isxeno(user) || isobserver(user))
+		. += "You sense that this resin wall will collapse if the weeds it is rooted to disappear."
+
+/obj/structure/mineral_door/resin/brittle
+	name = "flaky resin door"
+	desc = "Weird resin door that solidified too quickly, creating layers of brittle resin."
+	icon_state = "brittle_resin"
+	mineralType = "brittle resin"
+	hardness = 1.4
+	var/obj/effect/alien/weeds/bound_weed
+
+/obj/structure/mineral_door/resin/brittle/Initialize()
+	. = ..()
+	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
+	if(bound_weed)
+		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+
+/obj/structure/mineral_door/resin/brittle/Destroy()
+	if(bound_weed)
+		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
+		bound_weed = null
+	return ..()
+
+/obj/structure/mineral_door/resin/brittle/proc/on_weed_expire()
+	playsound(src, "alien_resin_break", 25)
+	Dismantle()
+
+/obj/structure/mineral_door/resin/brittle/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this flaky door looks like it's rooted to resin below to hold itself together."
+		. += "You sense that resin door will collapse, if the weeds it is rooted to disappear."
+
 /obj/effect/alien/resin/design/upgrade
-	name = "Thicken Resin (75)"
+	name = "Thicken Resin (60)"
 	desc = "Channel our plasma and nutrients to thicken structures."
 	icon = 'icons/mob/hud/actions_xeno.dmi'
 	icon_state = "upgrade_resin"
-	plasma_cost = 75
+	plasma_cost = 60
 
 /obj/effect/alien/resin/design/remove
 	name = "Remove Design Node (25)"
@@ -258,7 +454,7 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!xeno.check_state(TRUE))
+	if(!xeno.check_state())
 		return
 
 	if(!check_and_use_plasma_owner())
@@ -353,7 +549,7 @@
 	if(!action_cooldown_check())
 		return
 
-	if(!xeno.check_state(TRUE))
+	if(!xeno.check_state())
 		return
 
 	if(mods["click_catcher"])
@@ -533,6 +729,28 @@
 			return
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_design.Add(design)
+
+	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/construct_node))
+		if(!is_turf_clean(target_turf))
+			to_chat(src, SPAN_WARNING("There's something built here already."))
+			return
+		var/obj/cost_warn = new /obj/effect/resin_construct/construct_node(target_turf, src, xeno)
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
+			qdel(cost_warn)
+			return
+		qdel(cost_warn)
+		if(!is_turf_clean(target_turf))
+			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
+			return
+		if(!check_and_use_plasma_owner(plasma_cost))
+			return
+		xeno.visible_message(SPAN_XENONOTICE("The [xeno] channel nutrients and shape it into a node!"))
+		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno)
+		if(!design)
+			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
+			return
+		playsound(xeno.loc, "alien_resin_build", 25)
+		xeno.current_design.Add(design)
 	apply_cooldown()
 	return ..()
 
@@ -587,7 +805,7 @@
 	if (!istype(xeno))
 		return
 
-	if(!xeno.check_state(1))
+	if(!xeno.check_state(TRUE))
 		return
 
 	var/datum/action/xeno_action/activable/place_design/cAction = get_action(xeno, /datum/action/xeno_action/activable/place_design)

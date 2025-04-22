@@ -250,7 +250,7 @@
 			old_design = locate() in T
 
 			if(old_design)
-				old_design.unregister_weed_expiration_signal()
+				old_design.unregister_weed_expiration_signal_design()
 
 			qdel(W)
 
@@ -272,7 +272,7 @@
 			old_fruit.register_weed_expiration_signal(new_weed)
 
 		if(old_design)
-			old_design.register_weed_expiration_signal(new_weed)
+			old_design.register_weed_expiration_signal_design(new_weed)
 
 	on_weed_expand(src, weeds)
 	if(parent)

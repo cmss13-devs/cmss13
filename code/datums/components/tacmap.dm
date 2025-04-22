@@ -70,11 +70,15 @@
 
 /datum/component/tacmap/proc/on_unset_interaction(mob/user)
 	interactees -= user
-	user?.client?.screen -= map
-	user?.client?.screen -= scroll_toggle
-	user?.client?.screen -= drawing_actions
-	user?.client?.screen -= close_button
-	user?.client?.mouse_pointer_icon = null
+
+	if(!user.client)
+		return
+
+	user.client.remove_from_screen(map)
+	user.client.remove_from_screen(scroll_toggle)
+	user.client.remove_from_screen(drawing_actions)
+	user.client.remove_from_screen(close_button)
+	user.client.mouse_pointer_icon = null
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
 	if(!map)
@@ -88,10 +92,10 @@
 		drawing_actions = actions
 
 
-	user.client.screen += drawing_actions
-	user.client.screen += close_button
-	user.client.screen += scroll_toggle
-	user.client.screen += map
+	user.client.add_to_screen(drawing_actions)
+	user.client.add_to_screen(close_button)
+	user.client.add_to_screen(scroll_toggle)
+	user.client.add_to_screen(map)
 	interactees += user
 
 
@@ -116,7 +120,11 @@
 
 /datum/component/tacmap/ui_close(mob/user)
 	. = ..()
-	user?.client?.screen -= map_holder.map
+
+	if(!user.client)
+		return
+
+	user.client.remove_from_screen(map_holder.map)
 
 GLOBAL_LIST_INIT(tacmap_holders, list())
 

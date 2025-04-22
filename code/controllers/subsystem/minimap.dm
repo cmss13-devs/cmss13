@@ -666,19 +666,19 @@ SUBSYSTEM_DEF(minimaps)
 		if(locate(/atom/movable/screen/minimap) in owner.client.screen) //This seems like the most effective way to do this without some wacky code
 			to_chat(owner, SPAN_WARNING("You already have a minimap open!"))
 			return FALSE
-		owner.client.screen += map
-		owner.client.screen += locator
+		owner.client.add_to_screen(map)
+		owner.client.add_to_screen(locator)
 		if(scroll_toggle)
-			owner.client.screen += scroll_toggle
+			owner.client.add_to_screen(scroll_toggle)
 		locator.link_locator(map, owner)
 		locator.update(tracking, null, null)
 		locator.RegisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 		locator.RegisterSignal(tracking, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/atom/movable/screen/minimap_locator, update))
 	else
-		owner.client.screen -= map
-		owner.client.screen -= locator
+		owner.client.remove_from_screen(map)
+		owner.client.remove_from_screen(locator)
 		if(scroll_toggle)
-			owner.client.screen -= scroll_toggle
+			owner.client.remove_from_screen(scroll_toggle)
 		map.stop_polling -= owner
 		locator.UnregisterSignal(SSdcs, COMSIG_GLOB_MINIMAP_SHIFTED)
 		locator.UnregisterSignal(tracking, COMSIG_MOVABLE_MOVED)

@@ -25,7 +25,7 @@
 	var/show_command_squad = FALSE
 
 	var/list/concurrent_users = list()
-	
+
 	var/minimap_flag = MINIMAP_FLAG_USCM
 
 /obj/structure/machinery/computer/groundside_operations/Initialize()
@@ -34,7 +34,7 @@
 	else if(SSticker.current_state < GAME_STATE_PLAYING)
 		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_PRESETUP, PROC_REF(disable_pmc))
 
-	AddComponent(/datum/component/tacmap, has_drawing_tools=TRUE, minimap_flag=minimap_flag, has_update=TRUE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = TRUE, minimap_flag = minimap_flag, has_update = TRUE)
 	return ..()
 
 /obj/structure/machinery/computer/groundside_operations/Destroy()

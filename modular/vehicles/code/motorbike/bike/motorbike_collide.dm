@@ -120,10 +120,12 @@
 	// Обработка для разных типов мобов
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
+		var/try_broke_bones = TRUE
 		if(isyautja(C))
 			mod *= 0.5
+			try_broke_bones = FALSE
 		if(mod)
-			apply_collision_effects(C, mod, TRUE)
+			apply_collision_effects(C, mod, try_broke_bones)
 		if(isxeno(M))
 			attack_alien(M)
 	else if(isliving(M))

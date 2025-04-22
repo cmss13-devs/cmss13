@@ -144,13 +144,8 @@
 /obj/vehicle/multitile/tank/relaymove(mob/user, direction)
 	if(user == seats[VEHICLE_DRIVER])
 		// Check if treads are installed
-		var/has_treads = FALSE
-		for(var/obj/item/hardpoint/locomotion/treads/treads in hardpoints)
-			if(istype(treads, /obj/item/hardpoint/locomotion/treads))
-				has_treads = TRUE
-				break
-		if(!has_treads)
-			return FALSE // Block movement if no treads installed
+		if(!(locate(/obj/item/hardpoint/locomotion/treads) in hardpoints))
+			return FALSE
 
 		return ..()
 

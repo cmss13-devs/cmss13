@@ -421,3 +421,26 @@
       in the .dmm
   hry-gh:
   - rscadd: weather now cleans up blood and other cleanables from the floor
+2025-04-22:
+  DarkLordCabbage:
+  - rscadd: Adds drop pouch to medbay equipment vendors.
+  Stakeyng:
+  - rscadd: DCCs now have the ability to vend MK30 tactical helmet.
+  - rscadd: The MK30 tactical helmet now comes with a built-in advanced medical visor.
+  - spellcheck: The M30 tactical helmet has been renamed to the MK30 tactical helmet.
+  - spellcheck: The M30 tactical helmet's eyepiece filter is no longer clarified as
+      being on the left.
+  TrollerNoob:
+  - rscadd: Added all of the Miscellaneous items in the Squad Marine Surplus vendor
+      to the REQ Surplus vendor. Now you can add in fashion to your REQ order!
+  - qol: POs and DCCs can now choose 1 holster belt and 1 storage belt in their vendors,
+      instead of only being able to choose 1 of either.
+  stalkerino:
+  - balance: removed 40 round incendiary mags from CO
+  - bugfix: type47 UPP rig fits on external webbing, mateba rig fits on marine armor
+  - bugfix: allows crafting m4ra extended boxes with cardboard
+  - rscadd: added m4ra extended magazine box for req to buy
+  - rscadd: adds black insul gloves to CT, FTL, SL and IO, gave it a new icon when
+      its on the floor too
+  - bugfix: fixed black gloves not being black
+  - bugfix: fixes inhand sprites for m12 helmets, and grenadier helmet

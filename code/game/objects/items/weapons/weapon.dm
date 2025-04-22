@@ -5,6 +5,7 @@
 	flags_atom = FPRINT|QUICK_DRAWABLE
 	var/shield_chance = 0
 	var/shield_type = SHIELD_NONE
+	var/shield_sound = 'sound/items/block_shield.ogg'
 
 /obj/item/weapon/get_examine_text(mob/user)
 	. = ..()

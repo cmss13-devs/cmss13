@@ -61,11 +61,6 @@
 	var/base_sword_icon = "sword"
 	var/sword_color
 
-/obj/item/weapon/energy/sword/IsShield()
-	if(active)
-		return 1
-	return 0
-
 /obj/item/weapon/energy/sword/New()
 	if(!sword_color)
 		sword_color = pick("red","blue","green","purple")

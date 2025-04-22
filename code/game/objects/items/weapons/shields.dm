@@ -5,6 +5,7 @@
 	var/readied_block = 30
 	var/readied_slowdown = SLOWDOWN_ARMOR_VERY_LIGHT // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
 	var/shield_readied = FALSE
+	var/blocks_on_back = FALSE
 
 // Toggling procs
 /obj/item/weapon/shield/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
@@ -78,8 +79,8 @@
 	)
 
 	attack_verb = list("shoved", "bashed")
-	var/cooldown = 0 //shield bash cooldown. based on world.time
-	var/blocks_on_back = TRUE
+	blocks_on_back = TRUE
+	var/bash_cooldown = 0 //shield bash cooldown. based on world.time
 
 	shield_type = SHIELD_DIRECTIONAL
 	shield_chance = 40
@@ -89,11 +90,11 @@
 	toggle_shield(user)
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
-	if(cooldown < world.time - 25)
+	if(bash_cooldown < world.time - 25)
 		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/telebaton) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/classic_baton) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
-			cooldown = world.time
+			bash_cooldown = world.time
 	else
 		..()
 

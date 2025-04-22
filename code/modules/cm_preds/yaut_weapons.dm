@@ -128,6 +128,7 @@
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_4
 	speed_bonus_amount = 0 SECONDS
+	shield_sound = 'sound/items/parry.ogg'
 
 /obj/item/weapon/bracer_attachment/scimitar
 	name = "wrist scimitar"
@@ -139,6 +140,7 @@
 	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 	force = MELEE_FORCE_TIER_5
 	speed_bonus_amount = -0.4 SECONDS
+	shield_sound = 'sound/items/parry.ogg'
 
 /obj/item/weapon/bracer_attachment/scimitar/alt
 	name = "wrist scimitar"
@@ -149,6 +151,7 @@
 	attack_speed = 1 SECONDS
 	force = MELEE_FORCE_TIER_5
 	speed_bonus_amount =  -0.4 SECONDS
+	shield_sound = 'sound/items/parry.ogg'
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -162,6 +165,7 @@
 	)
 	flags_item = ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	var/human_adapted = FALSE
+	shield_sound = 'sound/items/parry.ogg'
 
 /obj/item/weapon/yautja/chain
 	name = "chainwhip"
@@ -289,6 +293,11 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
+	shield_type = SHIELD_DIRECTIONAL
+	shield_chance = 30
+	///The stored chance for when unfolded.
+	var/active_shield_chance = 30
+
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2
 	var/force_storage = MELEE_FORCE_TIER_1
@@ -385,9 +394,6 @@
 		user.visible_message(SPAN_WARNING("<b>[user] yanks [src]'s chain back, letting [src] fall at [user.p_their()]!</b>"), SPAN_WARNING("<b>You yank [src]'s chain back, letting it drop at your feet!</b>"))
 		cleanup_chain()
 
-/obj/item/weapon/yautja/chained/combistick/IsShield()
-	return on
-
 /obj/item/weapon/yautja/chained/combistick/verb/fold_combistick()
 	set category = "Weapons"
 	set name = "Collapse Combi-stick"
@@ -449,6 +455,7 @@
 			overlays.Cut()
 			add_blood(blood_color)
 		on = TRUE
+		shield_chance = active_shield_chance
 		update_icon()
 	else
 		unwield(user)
@@ -463,6 +470,7 @@
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
 		on = FALSE
+		shield_chance = 2
 		update_icon()
 
 	if(istype(user,/mob/living/carbon/human))

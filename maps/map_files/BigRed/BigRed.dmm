@@ -1395,6 +1395,17 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
+"afo" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
+"afp" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/space_port)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -46459,7 +46470,7 @@ aaT
 aap
 aav
 aaG
-aaT
+afp
 aap
 aav
 aaG
@@ -46973,7 +46984,7 @@ beP
 beP
 aSB
 tVp
-tVp
+afo
 tVp
 tVp
 bgX

@@ -740,6 +740,16 @@
 	},
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
+"acT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_2)
+"acU" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_1)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -52515,7 +52525,7 @@ wuK
 xfW
 wuK
 xcY
-sAT
+acU
 sAT
 pnj
 uiM
@@ -77468,7 +77478,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78073,7 +78083,7 @@ gRp
 iGr
 iGr
 uIn
-uIn
+acT
 rqn
 qvA
 lhE

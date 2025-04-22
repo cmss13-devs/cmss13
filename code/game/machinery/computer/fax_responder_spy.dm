@@ -13,7 +13,7 @@
 	/// Computer and Spycam can only be used if this variable is cleared
 	var/locked = FALSE
 
-/obj/structure/machinery/computer/spy_camera/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
+/obj/structure/machinery/computer/spy_camera/attackby(obj/item, mob/user)  //Can't break or disassemble.
 	return
 
 /obj/structure/machinery/computer/spy_camera/bullet_act(obj/projectile/Proj) //Can't shoot it

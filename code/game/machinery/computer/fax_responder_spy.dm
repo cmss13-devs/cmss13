@@ -16,7 +16,7 @@
 /obj/structure/machinery/computer/spy_camera/attackby(obj/I as obj, mob/user as mob)  //Can't break or disassemble.
 	return
 
-/obj/structure/machinery/computer/spy_camera/bullet_act(obj/projectile/Proj) //Can't shoot it
+/obj/structure/machinery/computer/spy_camera/bullet_act(obj/projectile/proj) //Can't shoot it
 	return FALSE
 
 /obj/structure/machinery/computer/spy_camera/proc/set_operator(mob/living/carbon/human/new_operator)

@@ -234,7 +234,7 @@
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/device/binoculars/range(src)
-	new /obj/item/device/binoculars/range(src)
+	new /obj/item/device/binoculars/range/designator(src)
 
 
 //-----------------SPEC KIT BOX------------------

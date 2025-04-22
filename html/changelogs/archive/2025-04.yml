@@ -370,3 +370,77 @@
       its location with the M70B1 light flak jacket.
   - refactor: Changed the M70 flak jacket's file pathing to jacket/marine/pilot/armor
       to standardize it with M70B1 light flak jacket's jacket/marine/pilot pathing.
+2025-04-20:
+  DarkLordCabbage:
+  - balance: 'Underbarrel extinguishers can now be attached to the m39, M4RA, mou,
+      breaching shotty, and others.
+
+      qol:'
+  Detective-Google:
+  - bugfix: CO council can vend bomber jackets again
+  Lagomorphica:
+  - balance: Security on Hybrisia Prospera have had buget cuts and no longer have
+      large magazine pouches.
+  PhantornRU:
+  - bugfix: fix propelled chair when not wheeled chair
+2025-04-21:
+  Aurallianz:
+  - rscadd: Nurses can FM carry.
+  - rscadd: CMO requires Doctor and Research playtime.
+  Blundir:
+  - rscadd: added new pred invisibility sound pref
+  - rscadd: normal *laugh emote for preds will now play a random pred laugh sound
+      instead of doing nothing
+  - balance: pred invis sound radius is now 4 instead of 3
+  - ui: pred emote panel color tweaked from green to red
+  - soundadd: new pred laugh sound
+  - soundadd: new pred zoom/unzoom sounds
+  - soundadd: new pred crystal injection sound
+  - soundadd: new pred taunt sounds
+  - soundadd: new pred invisibility sound
+  - rscadd: added calendars and holidays lists related to them, added calendars on
+      all relevant maps
+  Blundir Drathek:
+  - code_imp: autowiki icons are now centered using a new center_icon proc and autowiki
+      gun images are now always 64x32
+  - bugfix: fixed some guns having incorrect attachment offsets
+  - bugfix: fixed some guns being offset incorrectly in inventory/floor
+  - bugfix: fixed getflaticon sometimes returning icons with no height/width
+  - refactor: refactored majority of gun sprites (except pistols/revolvers) to utilize
+      64x32 file instead of 32x32
+  - refactor: got rid of all the cosmetical internal attachments that were a part
+      of gun 32x32 dmi limitations
+  - imageadd: moved custom magazine on gun sprite to gun sprite files
+  Drathek:
+  - code_imp: Autowiki gun templates now lists unwielded stats as N/A for two handers
+  - code_imp: Autowiki xeno comparisons now round to the nearest hundredth
+  Willzadl:
+  - rscadd: pitchblende extended lore description
+  - spellcheck: fixed pitchblende typos
+  - refactor: pitchblende now has a description instead of being manually applied
+      in the .dmm
+  hry-gh:
+  - rscadd: weather now cleans up blood and other cleanables from the floor
+2025-04-22:
+  DarkLordCabbage:
+  - rscadd: Adds drop pouch to medbay equipment vendors.
+  Stakeyng:
+  - rscadd: DCCs now have the ability to vend MK30 tactical helmet.
+  - rscadd: The MK30 tactical helmet now comes with a built-in advanced medical visor.
+  - spellcheck: The M30 tactical helmet has been renamed to the MK30 tactical helmet.
+  - spellcheck: The M30 tactical helmet's eyepiece filter is no longer clarified as
+      being on the left.
+  TrollerNoob:
+  - rscadd: Added all of the Miscellaneous items in the Squad Marine Surplus vendor
+      to the REQ Surplus vendor. Now you can add in fashion to your REQ order!
+  - qol: POs and DCCs can now choose 1 holster belt and 1 storage belt in their vendors,
+      instead of only being able to choose 1 of either.
+  stalkerino:
+  - balance: removed 40 round incendiary mags from CO
+  - bugfix: type47 UPP rig fits on external webbing, mateba rig fits on marine armor
+  - bugfix: allows crafting m4ra extended boxes with cardboard
+  - rscadd: added m4ra extended magazine box for req to buy
+  - rscadd: adds black insul gloves to CT, FTL, SL and IO, gave it a new icon when
+      its on the floor too
+  - bugfix: fixed black gloves not being black
+  - bugfix: fixes inhand sprites for m12 helmets, and grenadier helmet

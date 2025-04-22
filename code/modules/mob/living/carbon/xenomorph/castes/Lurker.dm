@@ -204,8 +204,9 @@
 
 	if(xeno.stealth)
 		animate(xeno, alpha = (cloak_damage + alpha_amount), time = 0.1 SECONDS, easing = QUAD_EASING)
-		if(damage_data["damage"] > 0) // prevents healing from causing you to lose alpha
+		if(damage_data && damage_data["damage"] > 0) // can't heal cloak
 			cloak_damage += (damage_data["damage"] / 2.5)
+
 		if(cloak_damage >= decloak_amount)
 			disrupt_cloak()
 
@@ -216,12 +217,12 @@
 	invisibility_off(0.5, FALSE, FALSE)
 	to_chat(xeno, SPAN_XENOHIGHDANGER("Our invisibility was disrupted!"))
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/action/xeno_action/onclick/lurker_invisibility, remove_speed), xeno), lingering_speed_buff)
-
-
-/datum/action/xeno_action/onclick/lurker_invisibility/proc/stop_accumulating(owner)
-	var/mob/living/carbon/xenomorph/xeno = owner
-
 	UnregisterSignal(xeno, COMSIG_XENO_TAKE_DAMAGE)
+
+
+/datum/action/xeno_action/onclick/lurker_invisibility/proc/stop_accumulating()
+	UnregisterSignal(owner, COMSIG_XENO_TAKE_DAMAGE)
+
 	cloak_damage = 0
 
 
@@ -255,7 +256,7 @@
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(lurker_invis && xeno.stealth)
 		lurker_invis.cloak_damage += 50 // If the lurker is cloaked when pouncing, increase their alpha
-		lurker_invis.damage_accumulate(xeno, null, null)
+		lurker_invis.damage_accumulate(xeno)
 		if(lurker_invis.cloak_damage >= lurker_invis.decloak_amount)
 			lurker_invis.disrupt_cloak(xeno)
 

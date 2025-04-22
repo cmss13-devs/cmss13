@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - ui: "Adds scalability to the Supply Console so it can be resized and the elements will resize with the window."

@@ -38053,13 +38053,10 @@
 	pixel_x = -6;
 	pixel_y = 8
 	},
-/obj/item/clothing/glasses/thermal/syndi/soro{
-	pixel_x = 2;
-	pixel_y = -1
-	},
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
+/obj/item/storage/belt/gun/flaregun/full,
 /turf/open/floor/strata/purp1,
 /area/strata/interior/planet_core_research_station)
 "czT" = (
@@ -49372,9 +49369,9 @@
 /turf/open/asphalt/cement,
 /area/strata/exterior/south_outpost)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi/soro,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/surface/table/almayer,
+/obj/item/storage/belt/gun/flaregun/full,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/checkpoints/north)
 "rkI" = (

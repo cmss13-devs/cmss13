@@ -134,7 +134,7 @@
 			return
 
 	var/area/area = get_area(user)
-	if(!area.allow_construction)
+	if(!area.allow_construction || !area.allow_barricade_construction)
 		to_chat(usr, SPAN_WARNING("[singular_name] must be constructed on a proper surface!"))
 		return
 

@@ -236,11 +236,11 @@
 						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
 				var/area/area = get_area(src)
-				if(!area.allow_construction)
+				if(!area.allow_construction || !area.allow_barricade_construction)
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
 				var/turf/open/turf = loc
-				if(!(istype(turf) && turf.allow_construction))
+				if(!(istype(turf) && turf.allow_construction || !area.allow_barricade_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)

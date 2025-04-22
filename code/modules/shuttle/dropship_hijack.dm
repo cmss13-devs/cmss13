@@ -173,7 +173,7 @@
 
 /datum/dropship_hijack/almayer/proc/disable_cadebuilding_hijack()
 	for(var/area/almayer/locations)
-		locations.allow_construction = FALSE
+		locations.allow_barricade_construction = FALSE
 
 /datum/dropship_hijack/almayer/proc/get_crashsite_turf(ship_section)
 	var/list/turfs = list()

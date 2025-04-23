@@ -352,3 +352,7 @@
 /// Called when the job owner enters deep cryogenic storage
 /datum/job/proc/on_cryo(mob/living/carbon/human/cryoing)
 	return
+
+/// Returns the active player on this job, specifically for singleton jobs
+/datum/job/proc/get_active_player_on_job()
+	return

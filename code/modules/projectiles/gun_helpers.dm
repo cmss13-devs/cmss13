@@ -362,10 +362,10 @@ DEFINES in setup.dm, referenced here.
 				to_chat(user, SPAN_NOTICE("You get on one knee and start an unconventional tactical reload.")) // the "you get on one knee and start" makes more sense if looping is added
 				if(!do_after(user,tac_reload_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) || bullet.loc != old_ammo_loc || current_mag.current_rounds >= current_mag.max_rounds)
 					return
-				if(shotload) // to do: make this loop until capacity is full or out of ammo
+				if(shotload)
 					shotload.reload(user, bullet)
 					return
-				else if(revload) // to do: ditto
+				else if(revload)
 					revload.reload(user, bullet)
 					return
 		// actual tactical reloads

@@ -444,3 +444,35 @@
       its on the floor too
   - bugfix: fixed black gloves not being black
   - bugfix: fixes inhand sprites for m12 helmets, and grenadier helmet
+2025-04-23:
+  Aurallianz:
+  - rscadd: After a two-minute post-cryo-wakeup period, ARES will provide an announcement
+      stating the commander.
+  - rscadd: ARES will modify your ID and give you senior command access if you don't
+      have it.
+  - maptweak: Added a command headset to the Command tablet locker.
+  - bugfix: Fixed CE's incorrect wakeup message
+  Blundir:
+  - bugfix: fixed gun oil not rendering on helmet
+  - imageadd: gun repair kit resprite
+  Lagomorphica:
+  - balance: Removes thermals as a possible selection from random goggle spawners
+      such as on Fiorina and from pre-selected map spawns on Sorokyne Strata and Kutjevo.
+  MistChristmas:
+  - bugfix: Roller beds deploy where clicked.
+  - bugfix: Fixes a Runtime when detaching/replacing attachments when there is no
+      round in the chamber.
+  Nihisohel:
+  - bugfix: Flamers can pass properly again.
+  Sleepynecrons:
+  - rscadd: adds the missing scythe sprite whilst its equipped on the back
+  biologed:
+  - bugfix: Ability to resize the TGUI TextArea in the modal box medal recommendation
+      and failure to send this due to the " char
+  realforest2001:
+  - rscadd: Added factional remote camera consoles.
+  - bugfix: Fixes fax responder access to Brig cameras.
+  - rscadd: Added the ability for staff to change IFF settings on the AI Core turrets
+      via remote interface.
+  rodcowartt:
+  - bugfix: Tanks will no longer attempt to move without treads installed.

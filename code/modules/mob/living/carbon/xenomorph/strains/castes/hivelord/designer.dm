@@ -255,12 +255,8 @@
 
 	building = TRUE // lock it here
 
-	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
-		building = FALSE
-		return
-
 	xeno.plasma_stored -= plasma_cost
-	to_chat(xeno, SPAN_NOTICE("You channel [plasma_cost] plasma into the node."))
+	to_chat(xeno, SPAN_NOTICE("You activate node, it forcefully consume our [plasma_cost] plasma."))
 
 	var/turf/T = get_turf(src)
 	if(!istype(T))
@@ -290,7 +286,6 @@
 	building = FALSE
 
 	var/is_brittle = (T.is_weedable() == SEMI_WEEDABLE)
-
 	if(istype(xeno.strain, /datum/xeno_strain/designer))
 		is_brittle = TRUE
 
@@ -308,7 +303,6 @@
 				set_hive_data(R, R.hivenumber)
 			to_chat(xeno, SPAN_NOTICE("A wall has been created."))
 			playsound(placed, "alien_resin_build", 25)
-			qdel(src)
 		else
 			to_chat(xeno, SPAN_WARNING("A wall already exists here."))
 
@@ -326,7 +320,6 @@
 				set_hive_data(R, R.hivenumber)
 			to_chat(xeno, SPAN_NOTICE("A door has been created."))
 			playsound(new_structure, "alien_resin_build", 25)
-			qdel(src)
 		else
 			to_chat(xeno, SPAN_WARNING("A door already exists here."))
 
@@ -747,11 +740,11 @@
 			return
 		if(!xeno.check_alien_construction(target_turf, check_doors = FALSE))
 			return FALSE
-		var/obj/cost_warn = new /obj/effect/resin_construct/construct_node(target_turf, src, xeno)
+		var/obj/const_warn = new /obj/effect/resin_construct/construct_node(target_turf, src, xeno)
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
-			qdel(cost_warn)
+			qdel(const_warn)
 			return
-		qdel(cost_warn)
+		qdel(const_warn)
 		if(!is_turf_clean(target_turf))
 			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
 			return

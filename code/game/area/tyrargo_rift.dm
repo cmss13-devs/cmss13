@@ -509,7 +509,6 @@
 	name = "City Sewer"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_COLONY_STREETS
-	unoviable_timer = FALSE
 
 /area/tyrargo/underground/sewer/south
 	name = "City Sewers - South"
@@ -523,7 +522,6 @@
 	name = "Sector F: Power Plant - Underground"
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 	icon_state = "maint_engine"
-	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
@@ -531,7 +529,6 @@
 	name = "Standfeld Apartment Complex - Underground"
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "quart"
-	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
@@ -539,7 +536,6 @@
 	name = "Tyrargo Wesfeld Mall - Underground"
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "HH_Mines"
-	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
@@ -547,7 +543,6 @@
 	name = "Museum - Underground Parking"
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "auxstorage"
-	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 

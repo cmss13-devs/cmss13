@@ -67684,10 +67684,7 @@
 "dsm" = (
 /obj/structure/platform/metal/almayer/west,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
-/area/tyrargo/indoors/sewer_treatment/lower)
-"dsn" = (
-/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
-/area/tyrargo/indoors/sewer_treatment/lower)
+/area/tyrargo/underground/sewer/south)
 "dso" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
@@ -74465,12 +74462,11 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/mall)
 "dJO" = (
-/obj/item/prop/folded_anti_tank_sadar{
-	pixel_y = -6;
-	pixel_x = 4
-	},
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
+	},
+/obj/item/weapon/gun/rifle/m41a/army{
+	current_mag = /obj/item/ammo_magazine/rifle
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/mall)
@@ -78546,14 +78542,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/indoors/sewer_treatment/lower)
-"dUu" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_9";
-	pixel_y = 24;
-	pixel_x = 4
-	},
-/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -119851,9 +119839,9 @@ dsA
 ahW
 dad
 cKl
-dsn
-dsn
-dsn
+dqS
+dqS
+dqS
 cKl
 ceL
 ahW
@@ -120033,9 +120021,9 @@ dsB
 ahW
 dad
 cKl
-dsn
-dUu
-dsn
+dqS
+dEE
+dqS
 cKl
 ceL
 ahW
@@ -120215,9 +120203,9 @@ ahW
 ahW
 dad
 cKl
-dsn
-dsn
-dsn
+dqS
+dqS
+dqS
 cKl
 ceL
 ahW

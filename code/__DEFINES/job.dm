@@ -154,6 +154,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 	. = ..(L);\
 }
 
+/// Role lists for Marine roles
+#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+
 //-------------WO roles---------------
 
 #define JOB_WO_CO "Ground Commander"

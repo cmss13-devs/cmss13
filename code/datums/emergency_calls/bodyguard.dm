@@ -2,6 +2,11 @@
 	name = "Weyland-Yutani Bodyguard (Executive Bodyguard Detail)"
 	mob_max = 1
 	mob_min = 1
+	var/equipment_preset = /datum/equipment_preset/wy/security
+	var/equipment_preset_leader = /datum/equipment_preset/wy/security
+	var/spawn_header = "You are a Weyland-Yutani Security Guard!"
+	var/spawn_header_leader = "You are a Weyland-Yutani Security Guard!"
+
 
 /datum/emergency_call/wy_bodyguard/New()
 	..()
@@ -17,8 +22,14 @@
 	var/mob/living/carbon/human/mob = new(spawn_loc)
 	M.transfer_to(mob, TRUE)
 
-	to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Security Guard!"))
-	arm_equipment(mob, /datum/equipment_preset/wy/security, TRUE, TRUE)
+	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = mob
+		to_chat(mob, SPAN_ROLE_HEADER(spawn_header_leader))
+		arm_equipment(mob, equipment_preset_leader, TRUE, TRUE)
+	else
+		to_chat(mob, SPAN_ROLE_HEADER(spawn_header))
+		arm_equipment(mob, equipment_preset, TRUE, TRUE)
+
 	print_backstory(mob)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
@@ -31,47 +42,17 @@
 	to_chat(M, SPAN_BOLD("You were sent to act as the Executives bodyguard on the [MAIN_SHIP_NAME], you have gotten permission from corporate to enter the area."))
 	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
 
-/datum/emergency_call/wy_bodyguard/goon/create_member(datum/mind/M, turf/override_spawn_loc)
-	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+/datum/emergency_call/wy_bodyguard/goon
+	equipment_preset = /datum/equipment_preset/goon/standard/bodyguard
+	equipment_preset_leader = /datum/equipment_preset/goon/lead/bodyguard
+	spawn_header = "You are a Weyland-Yutani Corporate Security Officer!"
+	spawn_header_leader = "You are a Weyland-Yutani Corporate Security Lead!"
 
-	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
-
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	M.transfer_to(mob, TRUE)
-
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
-		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Lead!"))
-		arm_equipment(mob, /datum/equipment_preset/goon/lead/bodyguard, TRUE, TRUE)
-	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Corporate Security Officer!"))
-		arm_equipment(mob, /datum/equipment_preset/goon/standard/bodyguard, TRUE, TRUE)
-
-	print_backstory(mob)
-
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
-
-/datum/emergency_call/wy_bodyguard/pmc/create_member(datum/mind/M, turf/override_spawn_loc)
-	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
-
-	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
-
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	M.transfer_to(mob, TRUE)
-
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
-		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Leader!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_leader, TRUE, TRUE)
-	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Operator!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_standard, TRUE, TRUE)
-
-	print_backstory(mob)
-
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+/datum/emergency_call/wy_bodyguard/pmc
+	equipment_preset = /datum/equipment_preset/pmc/pmc_standard
+	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_leader
+	spawn_header = "You are a Weyland-Yutani PMC Operator!"
+	spawn_header_leader = "You are a Weyland-Yutani PMC Leader!"
 
 /datum/emergency_call/wy_bodyguard/pmc/print_backstory(mob/living/carbon/human/M)
 	if(ishuman_strict(M))
@@ -80,47 +61,17 @@
 		to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
 		to_chat(M, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
 
-/datum/emergency_call/wy_bodyguard/pmc/sec/create_member(datum/mind/M, turf/override_spawn_loc)
-	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+/datum/emergency_call/wy_bodyguard/pmc/sec/
+	equipment_preset = /datum/equipment_preset/pmc/pmc_detainer
+	equipment_preset_leader = /datum/equipment_preset/pmc/pmc_lead_investigator
+	spawn_header = "You are a Weyland-Yutani PMC Detainer!"
+	spawn_header_leader = "You are a Weyland-Yutani PMC Lead Investigator!"
 
-	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
-
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	M.transfer_to(mob, TRUE)
-
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
-		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Lead Investigator!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
-	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
-
-	print_backstory(mob)
-
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
-
-/datum/emergency_call/wy_bodyguard/commando/create_member(datum/mind/M, turf/override_spawn_loc)
-	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
-
-	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
-
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	M.transfer_to(mob, TRUE)
-
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
-		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Leader!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/commando/leader, TRUE, TRUE)
-	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/commando/standard, TRUE, TRUE)
-
-	print_backstory(mob)
-
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+/datum/emergency_call/wy_bodyguard/commando
+	equipment_preset = /datum/equipment_preset/pmc/commando/standard
+	equipment_preset_leader = /datum/equipment_preset/pmc/commando/leader
+	spawn_header = "You are a Weyland-Yutani Commando!"
+	spawn_header_leader = "You are a Weyland-Yutani Commando Leader!"
 
 /datum/emergency_call/wy_bodyguard/commando/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
@@ -134,26 +85,11 @@
 	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
 	to_chat(M, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
 
-/datum/emergency_call/wy_bodyguard/android/create_member(datum/mind/M, turf/override_spawn_loc)
-	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
-
-	if(!istype(spawn_loc))
-		return //Didn't find a useable spawn point.
-
-	var/mob/living/carbon/human/mob = new(spawn_loc)
-	M.transfer_to(mob, TRUE)
-
-	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
-		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Combat Android Leading Unit!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader, TRUE, TRUE)
-	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Combat Android!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/w_y_whiteout/low_threat, TRUE, TRUE)
-
-	print_backstory(mob)
-
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+/datum/emergency_call/wy_bodyguard/android
+	equipment_preset = /datum/equipment_preset/pmc/w_y_whiteout/low_threat
+	equipment_preset = /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader
+	spawn_header = "You are a Weyland-Yutani Combat Android!"
+	spawn_header_leader = "You are a Weyland-Yutani Combat Android Leading Unit!"
 
 /datum/emergency_call/wy_bodyguard/android/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, SPAN_BOLD("You were brought online in a Weyland-Yutani secret combat synthetic production facility."))

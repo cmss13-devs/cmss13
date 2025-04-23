@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_OBSERVER = new /datum/mob_hud/faction/observer(),
 	MOB_HUD_FACTION_UPP = new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
+	MOB_HUD_FACTION_HC = new /datum/mob_hud/faction/hyperdyne(),
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
@@ -25,7 +26,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
-	MOB_HUD_FACTION_HC = new /datum/mob_hud/faction/hyperdyne(),
+	MOB_HUD_SPYCAMS = new /datum/mob_hud/spy_cams(),
 	))
 
 /datum/mob_hud
@@ -209,6 +210,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/faction/wy
 	faction_to_check = FACTION_WY
 
+/datum/mob_hud/faction/hyperdyne
+	faction_to_check = FACTION_HYPERDYNE
+
 /datum/mob_hud/faction/twe
 	faction_to_check = FACTION_TWE
 
@@ -233,8 +237,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/faction/observer
 	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN, HOLOCARD_HUD)
 
-/datum/mob_hud/faction/hyperdyne
-	faction_to_check = FACTION_HYPERDYNE
+/datum/mob_hud/spy_cams
+	hud_icons = list(SPYCAM_HUD)
 
 ///////// MOB PROCS //////////////////////////////:
 

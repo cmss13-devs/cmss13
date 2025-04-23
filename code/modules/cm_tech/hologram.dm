@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/datum/action/leave_hologram/leave_button
 	///If can be detected on motion detectors.
 	var/motion_sensed = FALSE
+	///If this hologram can hear speech.
+	var/hears_speech = FALSE
 
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram

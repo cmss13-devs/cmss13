@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - admin: "added a new button to reset the tdome"

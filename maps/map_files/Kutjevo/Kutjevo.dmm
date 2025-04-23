@@ -172,6 +172,14 @@
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
+"aaR" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"aaS" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_pad)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -20185,7 +20193,7 @@ ppX
 ppX
 hzN
 wXf
-jGF
+aaS
 dmy
 dmy
 dmy
@@ -20433,7 +20441,7 @@ wGH
 wGH
 prJ
 wGH
-wGH
+aaR
 wGH
 prJ
 wGH

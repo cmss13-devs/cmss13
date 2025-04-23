@@ -26,6 +26,9 @@ export const InputButtons = (props: InputButtonsProps) => {
       if (submit_disabled) {
         return;
       }
+      if (typeof input === 'string') {
+        input.replace(/"/g, '');
+      }
       act('submit', { entry: input });
     };
   }

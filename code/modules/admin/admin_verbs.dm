@@ -111,6 +111,7 @@ GLOBAL_LIST_INIT(admin_verbs_sounds, list(
 
 GLOBAL_LIST_INIT(admin_verbs_minor_event, list(
 	/client/proc/cmd_admin_change_custom_event,
+	/client/proc/clean_thunderdome,
 	/datum/admins/proc/admin_force_distress,
 	/datum/admins/proc/admin_force_ERT_shuttle,
 	/client/proc/enable_event_mob_verbs,

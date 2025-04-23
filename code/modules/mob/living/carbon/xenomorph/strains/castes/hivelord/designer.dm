@@ -226,11 +226,16 @@
 	name = "Design Construct Node (70)"
 	icon_state = "static_constructnode"
 	plasma_cost = 70
+	var/building = FALSE
 	var/obj/effect/resin_construct/build_overlay
 
 /obj/effect/alien/resin/design/construct_node/attack_hand(mob/user)
 	if(!isxeno(user))
 		to_chat(user, SPAN_WARNING("You don't understand how to interact with this strange node."))
+		return
+
+	if(building) // already being used
+		to_chat(user, SPAN_WARNING("This node is already being infused with plasma."))
 		return
 
 	var/mob/living/carbon/xenomorph/xeno = user
@@ -242,7 +247,16 @@
 		to_chat(xeno, SPAN_WARNING("This construct node does not belong to your hive."))
 		return
 
-	if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+	var/design_mark = src.mark_meaning
+
+	if(!design_mark)
+		to_chat(xeno, SPAN_WARNING("This node has no valid design selected."))
+		return
+
+	building = TRUE // lock it here
+
+	if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
+		building = FALSE
 		return
 
 	xeno.plasma_stored -= plasma_cost
@@ -251,12 +265,7 @@
 	var/turf/T = get_turf(src)
 	if(!istype(T))
 		to_chat(xeno, SPAN_WARNING("This is not a valid location."))
-		return
-
-	var/design_mark = src.mark_meaning
-
-	if(!design_mark)
-		to_chat(xeno, SPAN_WARNING("This node has no valid design selected."))
+		building = FALSE
 		return
 
 	var/obj/effect/resin_construct/overlay
@@ -266,7 +275,7 @@
 	else if(istype(design_mark, /datum/design_mark/resin_door))
 		overlay = new /obj/effect/resin_construct/construct_doorslow(T)
 
-	build_overlay = overlay  // Save the overlay so we can delete it if needed
+	build_overlay = overlay
 
 	addtimer(CALLBACK(src, PROC_REF(complete_construction), T, design_mark, xeno), 4 SECONDS)
 
@@ -274,9 +283,11 @@
 	if(QDELETED(src) || QDELETED(T))
 		return
 
-	if(build_overlay)
+	if(build_overlay && !QDELETED(build_overlay))
 		qdel(build_overlay)
 		build_overlay = null
+
+	building = FALSE
 
 	var/is_brittle = (T.is_weedable() == SEMI_WEEDABLE)
 
@@ -734,6 +745,8 @@
 		if(!is_turf_clean(target_turf))
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 			return
+		if(!xeno.check_alien_construction(target_turf, check_doors = FALSE))
+			return FALSE
 		var/obj/cost_warn = new /obj/effect/resin_construct/construct_node(target_turf, src, xeno)
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
 			qdel(cost_warn)

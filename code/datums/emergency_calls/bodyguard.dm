@@ -7,7 +7,6 @@
 	var/spawn_header = "You are a Weyland-Yutani Security Guard!"
 	var/spawn_header_leader = "You are a Weyland-Yutani Security Guard!"
 
-
 /datum/emergency_call/wy_bodyguard/New()
 	..()
 	dispatch_message = "[MAIN_SHIP_NAME], this is a Weyland-Yutani Corporate Security Protection Detail shuttle inbound to the Liaison's Beacon."

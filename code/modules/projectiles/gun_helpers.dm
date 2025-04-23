@@ -369,7 +369,7 @@ DEFINES in setup.dm, referenced here.
 					revload.reload(user, bullet)
 					return
 		// actual tactical reloads
-		else if(istype(src, magazine.gun_type) || (magazine.type in src.accepted_ammo))
+		else if(istype(src, magazine.gun_type) || (magazine.type in accepted_ammo))
 			if(istype(bullet, /obj/item/ammo_magazine/handful) && in_chamber)
 				to_chat(user, SPAN_WARNING("You can't tactically reload with [bullet] without clearing the [src]'s chamber!"))
 				return

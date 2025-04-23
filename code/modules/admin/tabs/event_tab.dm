@@ -1071,6 +1071,39 @@
 	SSticker.set_clients_taskbar_icon(taskbar_icon)
 	message_admins("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")
 
+#define THUNDERDOME_TEMPLATE_FILE "thunderdome.dmm"
+
+/client/proc/clean_thunderdome()
+	set name = "Clean Thunderdome"
+	set category = "Admin.Events"
+
+	if(!check_rights(R_EVENT))
+		return
+
+	var/delete_mobs = tgui_alert(usr, "WARNING: Deleting large amounts of mobs causes lag. Clear all mobs?", "Thunderdome Reset", list("Yes", "No", "Cancel"))
+	if(!delete_mobs || delete_mobs == "Cancel")
+		return
+
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] reset the thunderdome to default with delete_mobs marked as [delete_mobs]."))
+
+	var/area/thunderdome = GLOB.areas_by_type[/area/tdome]
+	var/list/tdome_areas = list(GLOB.areas_by_type[/area/tdome], GLOB.areas_by_type[/area/tdome/tdome1], GLOB.areas_by_type[/area/tdome/tdome2])
+
+	for(var/area/current_area as anything in tdome_areas)
+		if(delete_mobs == "Yes")
+			for(var/mob/living/mob in current_area)
+				qdel(mob) //Clear mobs
+				stoplag()
+		for(var/obj/obj in current_area)
+			qdel(obj) //Clear objects
+
+	var/datum/map_template/thunderdome_template = SSmapping.map_templates[THUNDERDOME_TEMPLATE_FILE]
+	thunderdome_template.should_place_on_top = FALSE
+	var/turf/thunderdome_corner = locate(thunderdome.x - 11, thunderdome.y - 2, 1) // have to do a little bit of coord manipulation to get it in the right spot
+	thunderdome_template.load(thunderdome_corner)
+
+#undef THUNDERDOME_TEMPLATE_FILE
+
 /client/proc/change_weather()
 	set name = "Change Weather"
 	set category = "Admin.Events"

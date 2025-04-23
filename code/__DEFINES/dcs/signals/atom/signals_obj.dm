@@ -61,7 +61,6 @@
 
 #define COMSIG_STRUCTURE_CRATE_SQUAD_LAUNCHED "structure_crate_squad_launched"
 
-/// from /obj/structure/machinery/proc/power_change(area/master_area = null)
-#define COMSIG_AREA_POWER_ON "area_power_on"
-
-#define COMSIG_AREA_POWER_OFF "area_power_off"
+// from /obj/item/device/binoculars/range/designator/acquire_target()
+#define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
+#define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"

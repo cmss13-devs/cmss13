@@ -2068,6 +2068,7 @@
 	item_state = "upp_belt"
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/UPP.dmi'
 	item_icons = list(
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'

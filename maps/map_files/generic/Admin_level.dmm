@@ -28,7 +28,7 @@
 	name = "\improper Observer Shutters"
 	},
 /turf/open/floor/tdome/northeast,
-/area/tdome)
+/area/tdome/tdomeobserve)
 "ah" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/supply/dock/upp)
@@ -3923,7 +3923,7 @@ aa
 aa
 aC
 aa
-ab
+OT
 ab
 ad
 ad
@@ -4075,7 +4075,7 @@ aa
 aa
 aC
 aa
-ab
+OT
 ad
 ad
 ad
@@ -4227,7 +4227,7 @@ aa
 aa
 aC
 aa
-ab
+OT
 ad
 ad
 ad
@@ -4379,7 +4379,7 @@ aC
 aC
 aC
 aa
-ab
+OT
 ad
 ad
 ad
@@ -4531,7 +4531,7 @@ aa
 aa
 aa
 aa
-ab
+OT
 ad
 ad
 ad
@@ -4683,7 +4683,7 @@ OT
 OT
 OT
 OT
-ab
+OT
 ad
 ad
 ad
@@ -5595,7 +5595,7 @@ OT
 OT
 OT
 OT
-ab
+OT
 ad
 ad
 ad
@@ -5747,7 +5747,7 @@ aa
 aa
 aa
 aa
-ab
+OT
 ad
 ad
 ad
@@ -5899,7 +5899,7 @@ aa
 aa
 aa
 aa
-ab
+OT
 ad
 ad
 ad
@@ -6051,7 +6051,7 @@ aC
 aC
 aC
 aa
-ab
+OT
 ad
 ad
 ad
@@ -6203,7 +6203,7 @@ aa
 aa
 aC
 aa
-ab
+OT
 ad
 ad
 ad
@@ -6355,7 +6355,7 @@ aa
 aa
 aC
 aa
-ab
+OT
 ab
 ad
 ad

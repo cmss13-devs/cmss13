@@ -1,0 +1,4 @@
+author: "larentoun"
+delete-after: True
+changes:
+  - bugfix: "Resting doesn't reset Tackle Counter anymore. No more Rest Tech."

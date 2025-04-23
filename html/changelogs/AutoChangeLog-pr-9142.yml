@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "The taskbar flash preference when unnested now works while in the mob and ghosted"
+  - spellcheck: "The message while nested preventing becoming a hugger/lesser now mentions specifically if you are nested rather than two different 5 minute timers"

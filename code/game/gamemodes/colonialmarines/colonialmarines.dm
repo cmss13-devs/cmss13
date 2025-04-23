@@ -137,6 +137,7 @@
 	addtimer(CALLBACK(src, PROC_REF(ares_online)), 5 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(map_announcement)), 20 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(start_lz_hazards)), DISTRESS_LZ_HAZARD_START)
+	addtimer(CALLBACK(src, PROC_REF(ares_command_check)), 2 MINUTES)
 	addtimer(CALLBACK(SSentity_manager, TYPE_PROC_REF(/datum/controller/subsystem/entity_manager, select), /datum/entity/survivor_survival), 7 MINUTES)
 
 	return ..()
@@ -357,6 +358,63 @@
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+
+/datum/game_mode/proc/ares_command_check()
+	var/role_in_charge
+	var/mob/living/carbon/human/person_in_charge
+
+	var/list/role_needs_id = list(JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+	var/list/role_needs_comms = list(JOB_CHIEF_POLICE, JOB_CMO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
+	var/announce_addendum
+
+	var/datum/squad/intel_squad = GLOB.RoleAuthority.squads_by_type[/datum/squad/marine/intel]
+	var/list/intel_officers = intel_squad.marines_list
+
+	//Basically this follows the list of command staff in order of CoC,
+	//then if the role lacks senior command access it gives the person that access
+
+	if(GLOB.marine_leaders[JOB_CO] || GLOB.marine_leaders[JOB_XO])
+		return
+	//If we have a CO or XO, we're good no need to announce anything.
+
+	for(var/job_by_chain in CHAIN_OF_COMMAND_ROLES)
+		role_in_charge = job_by_chain
+
+		if(job_by_chain == JOB_SO && GLOB.marine_leaders[JOB_SO])
+			person_in_charge = pick(GLOB.marine_leaders[JOB_SO])
+			break
+		if(job_by_chain == JOB_INTEL && !!length(intel_officers))
+			person_in_charge = pick(intel_officers)
+			break
+		//If the job is a list we have to stop here
+		if(person_in_charge)
+			continue
+
+		var/datum/job/job_datum = GLOB.RoleAuthority.roles_for_mode[job_by_chain]
+		person_in_charge = job_datum.get_active_player_on_job()
+		if(!isnull(person_in_charge))
+			break
+
+	if(isnull(person_in_charge))
+		return
+
+	if(LAZYFIND(role_needs_comms, role_in_charge))
+		//If the role needs comms we let them know about the headset.
+		announce_addendum += "\nA Command headset is availible in the CIC Command Tablet cabinet."
+
+	if(LAZYFIND(role_needs_id, role_in_charge))
+		//If the role needs senior command access, we need to add it to the ID card.
+		var/obj/item/card/id/card = person_in_charge.get_idcard()
+		if(card)
+			var/list/access = card.access
+			access.Add(ACCESS_MARINE_SENIOR)
+			announce_addendum += "\nSenior Command access added to ID."
+
+	//does an announcement to the crew about the commander & alerts admins to that change for logs.
+	shipwide_ai_announcement("Due to the absence of command staff, commander authority now falls to [role_in_charge] [person_in_charge], who will assume command until further notice. Please direct all inquiries and follow instructions accordingly. [announce_addendum]", MAIN_AI_SYSTEM, 'sound/misc/interference.ogg')
+	message_admins("[key_name(person_in_charge, 1)] [ADMIN_JMP_USER(person_in_charge)] has been designated the operation commander.")
+	return
+
 
 /datum/game_mode/colonialmarines/proc/ares_conclude()
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")

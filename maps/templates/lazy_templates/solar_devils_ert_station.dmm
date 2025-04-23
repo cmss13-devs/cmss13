@@ -2136,7 +2136,8 @@
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/adminlevel/ert_station/soalar_devils_station)
 "hc" = (
-/obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/five,
+/obj/structure/surface/table/reinforced/tacmap/segment/six,
+/obj/structure/surface/table/reinforced/tacmap/segment/five,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "hi" = (
@@ -2163,7 +2164,8 @@
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
 "hm" = (
-/obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/four,
+/obj/structure/surface/table/reinforced/tacmap/segment/five,
+/obj/structure/surface/table/reinforced/tacmap/segment/four,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "hn" = (
@@ -8247,7 +8249,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/three,
+/obj/structure/surface/table/reinforced/tacmap/segment/three,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "AO" = (
@@ -10172,7 +10174,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
 "GS" = (
-/obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/six,
+/obj/structure/surface/table/reinforced/tacmap/segment/six,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "GT" = (
@@ -12375,7 +12377,9 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/two,
+/obj/structure/surface/table/reinforced/tacmap/segment/three,
+/obj/structure/surface/table/reinforced/tacmap/segment/three,
+/obj/structure/surface/table/reinforced/tacmap/segment/two,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "NN" = (
@@ -14267,7 +14271,8 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/structure/machinery/prop/almayer/CICmap/table/horizontal/segment/one,
+/obj/structure/surface/table/reinforced/tacmap/segment/two,
+/obj/structure/surface/table/reinforced/tacmap/segment/one,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Td" = (

@@ -1,4 +1,0 @@
-author: "biologed"
-delete-after: True
-changes:
-  - bugfix: "Ability to resize the TGUI TextArea in the modal box medal recommendation and failure to send this due to the \" char"

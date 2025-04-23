@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Fixes a Runtime when detaching/replacing attachments when there is no round in the chamber."

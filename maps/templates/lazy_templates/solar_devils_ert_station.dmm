@@ -2136,7 +2136,6 @@
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/adminlevel/ert_station/soalar_devils_station)
 "hc" = (
-/obj/structure/surface/table/reinforced/tacmap/segment/six,
 /obj/structure/surface/table/reinforced/tacmap/segment/five,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -2164,7 +2163,6 @@
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
 "hm" = (
-/obj/structure/surface/table/reinforced/tacmap/segment/five,
 /obj/structure/surface/table/reinforced/tacmap/segment/four,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -12377,8 +12375,6 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/structure/surface/table/reinforced/tacmap/segment/three,
-/obj/structure/surface/table/reinforced/tacmap/segment/three,
 /obj/structure/surface/table/reinforced/tacmap/segment/two,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -14271,7 +14267,6 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/structure/surface/table/reinforced/tacmap/segment/two,
 /obj/structure/surface/table/reinforced/tacmap/segment/one,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)

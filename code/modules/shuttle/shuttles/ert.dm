@@ -197,8 +197,8 @@
 
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response
-	width  = 9
-	height = 16
+	width  = 7
+	height = 13
 	var/is_external = FALSE
 	var/lockdown_on_land = FALSE
 
@@ -357,7 +357,6 @@
 	id = ADMIN_LANDING_PAD_6
 	roundstart_template = /datum/map_template/shuttle/response_ert
 
-
 /datum/map_template/shuttle/response_ert
 	name = "Response Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT1
@@ -373,7 +372,6 @@
 /datum/map_template/shuttle/twe_ert
 	name = "TWE Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
-
 
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"

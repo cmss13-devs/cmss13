@@ -130,9 +130,6 @@
 	minimap_type = MINIMAP_FLAG_WY
 	faction = FACTION_PMC
 
-
-
-
 //Nonpower using props
 
 /obj/structure/prop/almayer

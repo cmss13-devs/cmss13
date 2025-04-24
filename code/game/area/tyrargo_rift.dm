@@ -417,6 +417,13 @@
 	ceiling = CEILING_NONE
 	requires_power = FALSE
 
+// fob generator area
+
+/area/tyrargo/indoors/power_substation_outskirt
+	name = "Power Substation: West Outskirts"
+	icon_state = "maint_engine"
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
+
 // Western Outdoor Areas
 
 /area/tyrargo/outdoors/outskirts

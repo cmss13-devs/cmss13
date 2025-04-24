@@ -147,7 +147,7 @@
 	if(hive)
 		hive.designer_marks += src
 		if(mark_meaning)
-			choosenMark = image(icon, src.loc, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
+			choosenMark = image(icon, src, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
 			choosenMark.plane = ABOVE_HUD_PLANE
 
 			for(xeno in hive.totalXenos)

@@ -9452,7 +9452,7 @@
 "ayS" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/flooredgesmooth/south,
+/turf/open/floor/almayer/edge/smooth/south,
 /area/almayer/command/cichallway)
 "ayT" = (
 /obj/structure/machinery/light,
@@ -9730,7 +9730,7 @@
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/command/cichallway)
 "azM" = (
-/turf/open/floor/almayer/flooredgesmooth/south,
+/turf/open/floor/almayer/edge/smooth/south,
 /area/almayer/command/cic)
 "azN" = (
 /obj/structure/platform/metal/almayer/north,
@@ -9848,7 +9848,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer/flooredgesmooth/east,
+/turf/open/floor/almayer/edge/smooth/east,
 /area/almayer/command/cichallway)
 "aAc" = (
 /obj/structure/bed/chair/office/dark{
@@ -11623,7 +11623,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aEz" = (
-/turf/open/floor/almayer/flooredgesmooth/north,
+/turf/open/floor/almayer/edge/smooth/north,
 /area/almayer/command/cic)
 "aEA" = (
 /obj/structure/machinery/light,
@@ -11753,7 +11753,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer/flooredgesmooth/south,
+/turf/open/floor/almayer/edge/smooth/south,
 /area/almayer/command/cichallway)
 "aEW" = (
 /turf/closed/wall/almayer,
@@ -11899,7 +11899,7 @@
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/command/cichallway)
 "aFk" = (
-/turf/open/floor/almayer/flooredgesmooth/north,
+/turf/open/floor/almayer/edge/smooth/north,
 /area/almayer/command/cichallway)
 "aFl" = (
 /turf/open/floor/almayer/test_floor4,
@@ -12193,7 +12193,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/almayer/flooredgesmooth/east,
+/turf/open/floor/almayer/edge/smooth/east,
 /area/almayer/hallways/upper/starboard)
 "aGi" = (
 /obj/structure/bed/chair/comfy,
@@ -12934,7 +12934,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "aKa" = (
-/turf/open/floor/almayer/flooredgesmooth/south,
+/turf/open/floor/almayer/edge/smooth/south,
 /area/almayer/command/cichallway)
 "aKg" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
@@ -14213,7 +14213,7 @@
 "aTl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/flooredgesmooth/north,
+/turf/open/floor/almayer/edge/smooth/north,
 /area/almayer/command/cichallway)
 "aTm" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -28024,7 +28024,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/turf/open/floor/almayer/flooredgesmooth/east,
+/turf/open/floor/almayer/edge/smooth/east,
 /area/almayer/hallways/upper/port)
 "ePX" = (
 /obj/structure/platform/metal/almayer/north,
@@ -72956,7 +72956,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/flooredgesmooth/east,
+/turf/open/floor/almayer/edge/smooth/east,
 /area/almayer/hallways/upper/starboard)
 "xMR" = (
 /obj/structure/disposalpipe/segment{

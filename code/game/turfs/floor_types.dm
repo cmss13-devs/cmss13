@@ -1801,6 +1801,9 @@
 /turf/open/floor/almayer/edge/smooth/north
 	dir = NORTH
 
+/turf/open/floor/almayer/edge/smooth/south
+	dir = SOUTH
+
 /turf/open/floor/almayer/edge/smooth/east
 	dir = EAST
 

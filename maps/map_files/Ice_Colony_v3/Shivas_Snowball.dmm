@@ -2863,11 +2863,11 @@
 /area/shiva/interior/valley_huts/disposals)
 "atF" = (
 /obj/item/evidencebag,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atG" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/popcorn,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atH" = (
@@ -11784,9 +11784,12 @@
 "iWS" = (
 /obj/structure/prop/invuln/dense{
 	desc = "Gonzo is trying to drill his way to freedom. He made this himself.";
-	icon = 'icons/obj/structures/props/mining.dmi';
-	icon_state = "gigadrill";
-	name = "Gigadrill"
+	icon = 'icons/obj/structures/props/gigadrill.dmi';
+	icon_state = "drillcat";
+	name = "Gigadrill";
+	dir = 4;
+	pixel_x = 20;
+	pixel_y = 5
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)

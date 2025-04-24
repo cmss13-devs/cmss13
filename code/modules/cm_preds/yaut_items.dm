@@ -330,6 +330,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	ignore_z = TRUE
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
+	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR)
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -341,8 +342,8 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
-/obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
-	name = "\improper Elder Communicator"
+/obj/item/device/radio/headset/yautja/overseer //for council
+	name = "\improper Overseer Communicator"
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
 
 /obj/item/device/encryptionkey/yautja
@@ -874,7 +875,6 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	return ..()
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/attack_self(mob/living/carbon/human/user)
-	..()
 	if(!active)
 		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 			to_chat(user, SPAN_WARNING("What's this thing?"))
@@ -885,6 +885,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
 			C.toggle_throw_mode(THROW_MODE_NORMAL)
+	..()
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
 	if(active)

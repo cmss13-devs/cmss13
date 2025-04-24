@@ -1,5 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed gun oil not rendering on helmet"
-  - imageadd: "gun repair kit resprite"

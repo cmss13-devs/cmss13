@@ -639,13 +639,9 @@
 /obj/structure/surface/table/reinforced/tacmap
 	name = "map table"
 	desc = "A large flat map table used for planning operations. It's large enough it can even be used as a proper table."
-	icon = 'icons/obj/structures/props/almayer/almayer_props96.dmi'
-	icon_state = "maptable"
-	bound_width = 64
-	bound_height = 96
-	light_pixel_x = 32
-	light_pixel_y = 16
-	health = 250 // These are special, don't want them breaking easily
+	icon_state = "h_maptable1"
+	light_range = 1
+	health = 1000 // These are special, don't want them breaking easily
 	var/datum/tacmap/map
 	///flags that we want to be shown when you interact with this table
 	var/minimap_type = MINIMAP_FLAG_USCM
@@ -680,37 +676,41 @@
 /obj/structure/surface/table/reinforced/tacmap/update_adjacent()
 	return
 
-/obj/structure/surface/table/reinforced/tacmap/horizontal
-	icon_state = "h_maptable"
-	bound_width = 96
-	bound_height = 64
-	light_pixel_x = 32
-	light_pixel_y = 16
-/obj/structure/surface/table/reinforced/tacmap/segment
-	icon = 'icons/obj/structures/tables.dmi'
-	icon_state = "h_maptable1"
-	bound_width = 32
-	bound_height = 32
-	light_pixel_x = 0
-	light_pixel_y = 0
-
-/obj/structure/surface/table/reinforced/tacmap/segment/one
+/obj/structure/surface/table/reinforced/tacmap/one
 	icon_state = "h_maptable1"
 
-/obj/structure/surface/table/reinforced/tacmap/segment/two
+/obj/structure/surface/table/reinforced/tacmap/two
 	icon_state = "h_maptable2"
 
-/obj/structure/surface/table/reinforced/tacmap/segment/three
+/obj/structure/surface/table/reinforced/tacmap/three
 	icon_state = "h_maptable3"
 
-/obj/structure/surface/table/reinforced/tacmap/segment/four
+/obj/structure/surface/table/reinforced/tacmap/four
 	icon_state = "h_maptable4"
 
-/obj/structure/surface/table/reinforced/tacmap/segment/five
+/obj/structure/surface/table/reinforced/tacmap/five
 	icon_state = "h_maptable5"
 
-/obj/structure/surface/table/reinforced/tacmap/segment/six
+/obj/structure/surface/table/reinforced/tacmap/six
 	icon_state = "h_maptable6"
+
+/obj/structure/surface/table/reinforced/tacmap/vertical/one
+	icon_state = "v_maptable1"
+
+/obj/structure/surface/table/reinforced/tacmap/vertical/two
+	icon_state = "v_maptable2"
+
+/obj/structure/surface/table/reinforced/tacmap/vertical/three
+	icon_state = "v_maptable3"
+
+/obj/structure/surface/table/reinforced/tacmap/vertical/four
+	icon_state = "v_maptable4"
+
+/obj/structure/surface/table/reinforced/tacmap/vertical/five
+	icon_state = "v_maptable5"
+
+/obj/structure/surface/table/reinforced/tacmap/vertical/six
+	icon_state = "v_maptable6"
 
 /*
  * Racks

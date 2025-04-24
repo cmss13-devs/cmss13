@@ -328,8 +328,10 @@
 	clone.mouse_opacity = clone.proj_mouse_opacity
 
 	if(clone.proj_base_layer)
-		for(var/overlay in clone.overlays) // overlays cannot be reliably interacted with to apply layers
-			clone.overlays -= overlay
+		for(var/overlay in clone.overlays) // image cannot be reliably interacted with to apply layers
+			if(istype(overlay, /image))
+				clone.overlays.Cut(overlay, overlay)
+
 		clone.layer = clone.proj_base_layer+(layer/10)
 	////////////////////
 
@@ -385,4 +387,4 @@
 	set_light_color(color)
 
 /atom/movable/proc/onZImpact(turf/impact_turf, height)
-	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)		
+	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)

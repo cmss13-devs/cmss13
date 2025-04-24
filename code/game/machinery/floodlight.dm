@@ -90,17 +90,16 @@
 	light_power = 0.7
 
 /obj/structure/machinery/floodlight/landing/dropship_airlock
-	light_power = 1
+	light_power = 2
 	on_light_range = 10
-	var/linked_inner_dropship_airlock_id = "generic"
+	light_system = MOVABLE_LIGHT
+	light_color =  LIGHT_COLOR_BLUE
+	light_mask_type = /atom/movable/lighting_mask/rotating_toggleable
 	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner = null
-	var/toggled
+	var/linked_inner_dropship_airlock_id = "generic"
 
 /obj/structure/machinery/floodlight/landing/dropship_airlock/Initialize(mapload, ...)
 	. = ..()
-	QDEL_NULL(static_light)
-	light_system = MOVABLE_LIGHT
-	set_light(10, 2, LIGHT_COLOR_BLUE, /atom/movable/lighting_mask/rotating_toggleable)
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/structure/machinery/floodlight/landing/dropship_airlock/LateInitialize()

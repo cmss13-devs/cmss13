@@ -15,7 +15,7 @@ Docking Port Definitions
 	var/dropship_airlock_id = "generic" // id that links it to outer, and objs.
 
 	// variables changed during the process of using the airlock, changed once its related proc is complete.
-	var/disable_manual_input = FALSE // mostly for hijack
+	var/allow_processing_to_end = TRUE // mostly for hijack, needs var/processing to be TRUE to do anything, virtually disables player manual input when FALSE.
 	var/processing = FALSE // TRUE whilst the user interface procs and timer-induced procs are running
 	var/playing_airlock_alarm = FALSE
 	var/open_inner_airlock = FALSE
@@ -58,7 +58,7 @@ Docking Port Definitions
 	name = "Hangar Airlock Outer"
 	id = GENERIC_A_O
 	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner
-	var/dropship_airlock_id = "generic"
+	var/dropship_airlock_id = "generic"  // id that links it to inner
 
 /obj/docking_port/stationary/marine_dropship/airlock/outer/almayer_one
 	name = "Almayer Hangar Airlock 1 Outer"
@@ -287,7 +287,7 @@ Timer Delayed/Looping Procs
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/delayed_height_decrease()
 	if(COOLDOWN_FINISHED(src, dropship_airlock_cooldown))
 		docked_mobile.initiate_docking(linked_outer)
-		for(var/obj/effect/hangar_airlock/height_mask/qdeling_height_mask as anything in dropship_height_masks)
+		for(var/obj/effect/hangar_airlock/height_mask/dropship/qdeling_height_mask as anything in dropship_height_masks)
 			dropship_height_masks -= qdeling_height_mask
 			qdel(qdeling_height_mask)
 		end_of_interaction()
@@ -317,11 +317,13 @@ New Backend Procs
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/get_inner_airlock_turfs()
 	inner_airlock_turfs = list()
+
 	for(var/turf/turf as anything in block(DROPSHIP_AIRLOCK_BOUNDS))
-		if(!istype(turf, /turf/open/floor/hangar_airlock/inner) && !istype(turf, /turf/open/shuttle) && !istype(turf, /turf/closed/shuttle))
-			continue
-		new /obj/effect/hangar_airlock/height_mask(turf)
-		inner_airlock_turfs += turf
+		if(istype(turf, /turf/open/floor/hangar_airlock/inner) || istype(turf, /turf/open/shuttle) || istype(turf, /turf/closed/shuttle))
+			if(locate(/obj/effect/hangar_airlock/height_mask/static_alpha) in turf.contents)
+				continue
+			new /obj/effect/hangar_airlock/height_mask/static_alpha(turf)
+			inner_airlock_turfs += turf
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/omnibus_airlock_transition(airlock_type, open, airlock_turfs, obj/effect/hangar_airlock/airlock, end_decisecond)
 	var/transition = open ? "open" : "close"
@@ -341,7 +343,7 @@ New Backend Procs
 	if(automatic_process_stage_change)
 		addtimer(CALLBACK(src, PROC_REF(automatic_process)), DROPSHIP_AIRLOCK_AUTOMATIC_DELAY)
 		return
-	if(!disable_manual_input)
+	if(allow_processing_to_end)
 		processing = FALSE
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/test_conditions(test_alarm = null, test_inner = null, test_height = null, test_outer = null, test_clamps = null)
@@ -357,7 +359,7 @@ New Backend Procs
 		return FALSE
 	return TRUE
 
-/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/automatic_process(command = FALSE)
+/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/automatic_process(command = FALSE) // exclusively for autopilot (for a generally callable proc see force_process)
 	if(automatic_process_stage_change && command)
 		return list("successful" = FALSE, "to_chat" = "A second command has been sent before the first one was resolved.")
 	switch(command)
@@ -405,17 +407,77 @@ New Backend Procs
 			return
 	automatic_process_stage += automatic_process_stage_change
 
+/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/force_process(command = FALSE) //a more generally-callable proc than autopilot, not alarmed, returns time till completion
+	for(var/qdel_timer in active_timers)
+		qdel(qdel_timer)
+
+	var/number_to_call = 1
+	switch(command)
+		if(DROPSHIP_AIRLOCK_GO_UP)
+			if(!lowered_dropship)
+				return 0
+			if(open_outer_airlock)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_outer_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			if(!playing_airlock_alarm)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_airlock_alarm), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			if(!open_inner_airlock)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_inner_airlock), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			if(lowered_dropship)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_dropship_height), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			if(open_inner_airlock)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_inner_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			if(playing_airlock_alarm)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_airlock_alarm), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+
+		if(DROPSHIP_AIRLOCK_GO_DOWN)
+			if(lowered_dropship)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_inner_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			else
+				if(open_outer_airlock)
+					addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_outer_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+					number_to_call += 1
+				if(!playing_airlock_alarm)
+					addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_airlock_alarm), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+					number_to_call += 1
+				if(!open_inner_airlock)
+					addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_inner_airlock), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+					number_to_call += 1
+				if(lowered_dropship)
+					addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_dropship_height), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+					number_to_call += 1
+				if(open_inner_airlock)
+					addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_inner_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+					number_to_call += 1
+			if(playing_airlock_alarm)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_airlock_alarm), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			if(!open_outer_airlock)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_outer_airlock), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				number_to_call += 1
+			if(!disengaged_clamps)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_clamps), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+
+	return number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD
+
 /obj/docking_port/stationary/marine_dropship/airlock/outer/proc/handle_obscuring_shuttle_turfs()
-	for(var/turf/open/shuttle/shuttle_turf in block(DROPSHIP_AIRLOCK_BOUNDS))
-		if(shuttle_turf.clone)
-			shuttle_turf.clone.layer = 1.93
-			shuttle_turf.clone.color = "#000000"
+	for(var/turf/open/open_turf in block(DROPSHIP_AIRLOCK_BOUNDS))
+		if(istype(open_turf, /turf/open/floor/hangar_airlock/outer))
+			continue
+		if(open_turf.clone)
+			open_turf.clone.layer = 1.93
+			open_turf.clone.color = "#000000"
 
 /obj/docking_port/stationary/marine_dropship/airlock/outer/proc/get_outer_airlock_turfs()
 	linked_inner.outer_airlock_turfs = list()
 	var/list/offset_to_inner_coordinates = list("x" = (linked_inner.x - src.x), "y" = (linked_inner.y - src.y), "z" = (linked_inner.z - src.z))
 	for(var/turf/turf as anything in block(DROPSHIP_AIRLOCK_BOUNDS))
-		if(!istype(turf, /turf/open/floor/hangar_airlock/outer) && !istype(turf, /turf/open/shuttle) && !istype(turf, /turf/closed/shuttle))
+		if(!istype(turf, /turf/open/floor/hangar_airlock/outer) && !istype(turf.loc, /area/shuttle))
 			continue
 		linked_inner.outer_airlock_turfs += turf
 		if(locate(/obj/effect/projector/airlock) in turf.contents)
@@ -546,9 +608,13 @@ Airlock Appearance Effects
 	plane = -7
 
 /obj/effect/hangar_airlock/height_mask/dropship
+	name = "transitionary alpha height mask"
 	layer = 5.01
 	alpha = 0
 	plane = -6
+
+/obj/effect/hangar_airlock/height_mask/static_alpha
+	name = "static alpha height mask" // a specific type to distinctify it from transitionary masks (in the code and generally)
 
 /*#############################################################################
 Airlock Turfs Definitions
@@ -600,12 +666,12 @@ Airlock Turf Interactability Procs
 			if(istype(A, /atom/movable/clone))
 				var/atom/movable/clone/C = A
 				// why not just use .loc? well, because of /atom/movable/clone facsimile 'turfs', it is potentially the case that we'd locate an area (from the mstr turf of the facsimile) when we just want the exact turf.
-				if(istype(get_turf(AM), /turf/open/floor/hangar_airlock))
+				if(istype(get_turf(C.mstr), /turf/open/floor/hangar_airlock))
 					AM.forceMove(locate(C.mstr.x, C.mstr.y, C.mstr.z))
 					break
 
 				var/obj/structure/shuttle/part/dropship_part_to_locate
-				dropship_part_to_locate = locate(/obj/structure/shuttle/part) in orange(8)
+				dropship_part_to_locate = locate(/obj/structure/shuttle/part) in range(4, C.mstr)
 				if(dropship_part_to_locate) // presumably, shuttle parts are on the outside skin of a dropship.
 					AM.forceMove(dropship_part_to_locate.loc)
 					AM.visible_message(SPAN_WARNING("[AM] slides off the roof of the dropship!"), SPAN_WARNING("You slide off the roof of the dropship!"))
@@ -615,12 +681,22 @@ Airlock Turf Interactability Procs
 				qdel(AM)
 				break
 
-		if(!isliving(AM))
-			return
-		var/mob/living/fallen_living = AM
-		shake_camera(fallen_living, 20, 1)
-		fallen_living.apply_effect(3, WEAKEN)
-		fallen_living.apply_damage(75, BRUTE, pick("r_leg", "l_leg", "r_arm", "l_arm", "chest", "head"))
+		INVOKE_ASYNC(src, PROC_REF(depths_damage), AM)
+
+/turf/open/floor/hangar_airlock/inner/proc/depths_damage(atom/movable/AM)
+	if(!isliving(AM))
+		return
+	var/mob/living/fallen_living = AM
+	shake_camera(fallen_living, 20, 1)
+	fallen_living.apply_effect(3, WEAKEN)
+	var/targeted_limb = pick(EXTREMITY_LIMBS)
+	fallen_living.apply_damage(100, BRUTE, targeted_limb)
+	if(istype(fallen_living, /mob/living/carbon/human))
+		var/mob/living/carbon/human/fallen_human = fallen_living
+		var/obj/limb/fracturing_limb = fallen_human.get_limb(targeted_limb)
+		fracturing_limb.fracture(100)
+	else
+		fallen_living.apply_damage(50, BRUTE, targeted_limb)
 
 /turf/open/floor/hangar_airlock/outer/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/hangar_airlock))

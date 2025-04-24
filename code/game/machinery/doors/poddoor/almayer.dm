@@ -76,8 +76,15 @@
 /obj/structure/machinery/door/poddoor/almayer/airlock
 	density = TRUE
 	opacity = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 	var/linked_inner_dropship_airlock_id = "generic"
 	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner = null
+
+/obj/structure/machinery/door/poddoor/almayer/airlock/attack_alien(mob/living/carbon/xenomorph/X)
+	if((stat & NOPOWER) && density && !operating) // A slight modification of parent proc, why? Unacidable is a terrible over-reaching variable that I have to enable but create a few exceptions to.
+		INVOKE_ASYNC(src, PROC_REF(pry_open), X)
+		return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/door/poddoor/almayer/airlock/Initialize()
 	. = ..()

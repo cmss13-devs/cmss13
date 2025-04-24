@@ -172,12 +172,12 @@
 	if(mode == SHUTTLE_CRASHED)
 		return
 
-	var/obj/docking_port/stationary/marine_dropship/dropzone = destination
-	if(mode == SHUTTLE_PREARRIVAL && !dropzone.landing_lights_on)
-		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
+	if(mode == SHUTTLE_PREARRIVAL && istype(destination, /obj/docking_port/stationary/marine_dropship))
+		var/obj/docking_port/stationary/marine_dropship/dropzone = destination
+		if(!dropzone.landing_lights_on)
 			dropzone.turn_on_landing_lights()
-		playsound(dropzone.return_center_turf(), landing_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_SFX)
-		playsound(return_center_turf(), landing_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_SFX)
+			playsound(dropzone.return_center_turf(), landing_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_SFX)
+			playsound(return_center_turf(), landing_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_SFX)
 
 	automated_check()
 
@@ -275,15 +275,14 @@
 	for(var/mob/living/affected_mob as anything in affected_list["mobs"])
 		to_chat(affected_mob, SPAN_DANGER("The dropship jolts violently as it enters freefall!"))
 		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD / 3, 1)
-		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD, 1)
 		if(!affected_mob.buckled)
 			affected_mob.KnockDown(DROPSHIP_TURBULENCE_FREEFALL_PERIOD * 0.1)
 			affected_mob.throw_random_direction(2, spin = TRUE)
-			affected_mob.apply_armoured_damage(80, ARMOR_MELEE, BRUTE, rand_zone())
+			affected_mob.apply_armoured_damage(40, ARMOR_MELEE, BRUTE, rand_zone())
 			affected_mob.visible_message(SPAN_DANGER("[affected_mob] loses their grip on the floor, flying violenty upwards!"), SPAN_DANGER("You lose your grip on the floor, flying violenty upwards!"))
-			if(prob(DROPSHIP_TURBULENCE_BONEBREAK_PROBABILITY * 2) && istype(affected_mob, /mob/living/carbon/human))
+			if(prob(DROPSHIP_TURBULENCE_BONEBREAK_PROBABILITY * 2) && istype(affected_mob, /mob/living/carbon/human) && affected_mob.body_position == STANDING_UP)
 				var/mob/living/carbon/human/affected_human = affected_mob
-				var/obj/limb/fracturing_limb = affected_human.get_limb(pick(ALL_LIMBS))
+				var/obj/limb/fracturing_limb = affected_human.get_limb(pick(EXTREMITY_LIMBS))
 				fracturing_limb.fracture(100)
 
 	turbulence_item_handle(affected_list["items"])

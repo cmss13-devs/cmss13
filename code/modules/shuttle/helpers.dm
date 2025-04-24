@@ -155,6 +155,8 @@
 			continue
 		if(istype(blocking_obj, /obj/effect/alien/weeds))
 			continue // No need to push
+		if(blocking_obj.anchored)
+			continue
 
 		// Skip anything that'd just get crushed instead
 		if(istype(door, /obj/structure/machinery/door/airlock))

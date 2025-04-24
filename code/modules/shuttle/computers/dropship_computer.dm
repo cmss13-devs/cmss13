@@ -245,7 +245,6 @@
 		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 		if(shuttle.mode == SHUTTLE_IDLE && !is_ground_level(shuttle.z))
 			if(istype(shuttle.get_docked(), /obj/docking_port/stationary/marine_dropship/airlock))
-				var/number_to_call = 0
 				var/dock = shuttle.get_docked()
 				var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_airlock
 				if(istype(dock, /obj/docking_port/stationary/marine_dropship/airlock/inner))
@@ -253,30 +252,15 @@
 				else if(istype(dock, /obj/docking_port/stationary/marine_dropship/airlock/outer))
 					var/obj/docking_port/stationary/marine_dropship/airlock/outer/outer_airlock = dock
 					inner_airlock = outer_airlock.linked_inner
+				if(!inner_airlock.allow_processing_to_end)
+					to_chat(xeno, "The shuttle is already exiting the airlocks. Have patience.")
 				inner_airlock.processing = TRUE
-				inner_airlock.disable_manual_input = TRUE
-
-				if(inner_airlock.open_outer_airlock)
-					addtimer(CALLBACK(inner_airlock, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_outer_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
-					number_to_call += 1
-				if(inner_airlock.lowered_dropship)
-					addtimer(CALLBACK(inner_airlock, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_inner_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
-					number_to_call += 1
-				else
-					inner_airlock.update_inner_airlock(TRUE, TRUE)
-					number_to_call += 1
-					addtimer(CALLBACK(inner_airlock, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_dropship_height), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
-					number_to_call += 1
-					addtimer(CALLBACK(inner_airlock, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_inner_airlock), FALSE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
-					number_to_call += 1
-				addtimer(CALLBACK(inner_airlock, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_outer_airlock), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
-				number_to_call += 1
-				addtimer(CALLBACK(inner_airlock, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, update_clamps), TRUE, TRUE), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
-				number_to_call += 1
+				inner_airlock.allow_processing_to_end = FALSE
+				var/time_to_airlock_process = inner_airlock.force_process(DROPSHIP_AIRLOCK_GO_DOWN)
 				log_ares_flight("Unknown", "Safety override exit signal for [inner_airlock.name] received. Authentication garbled.")
 				log_ares_security("Security Alert", "Safety override exit signal for [inner_airlock.name] received. Authentication garbled.")
-				to_chat(xeno, "You command-override the airlock to begin exiting the shuttle with all speed. The screen reads T-[number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD * 0.1]...")
-				addtimer(CALLBACK(src, PROC_REF(alien_call_dropship), xeno, shuttle, inner_airlock), number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				to_chat(xeno, "You command-override the airlock to begin exiting the shuttle with all speed. The screen reads T-[time_to_airlock_process * 0.1]...")
+				addtimer(CALLBACK(src, PROC_REF(alien_call_dropship), xeno, shuttle, inner_airlock), time_to_airlock_process + DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
 			else
 				alien_call_dropship(xeno, shuttle)
 		if(shuttle.destination && shuttle.destination.id != linked_lz)
@@ -301,7 +285,7 @@
 		to_chat(xeno, SPAN_WARNING("The dropship can not land here. It might be currently occupied!"))
 		return
 	if(inner_airlock)
-		inner_airlock.disable_manual_input = FALSE
+		inner_airlock.allow_processing_to_end = TRUE
 	to_chat(xeno, SPAN_NOTICE("You command the dropship to come down. Clever girl."))
 	xeno_announcement(SPAN_XENOANNOUNCE("Our Queen has commanded the dropship to the hive at [linked_lz]."), xeno.hivenumber, XENO_GENERAL_ANNOUNCE)
 	log_ares_flight("Unknown", "Remote launch signal for [shuttle.name] received. Authentication garbled.")
@@ -339,11 +323,11 @@
 			if(istype(docked_port, /obj/docking_port/stationary/marine_dropship/airlock/outer))
 				var/obj/docking_port/stationary/marine_dropship/airlock/outer/outer_dock = docked_port
 				outer_dock.linked_inner.update_outer_airlock(FALSE, TRUE)
-				outer_dock.linked_inner.disable_manual_input = TRUE
+				outer_dock.linked_inner.allow_processing_to_end = FALSE
 			if(istype(docked_port, /obj/docking_port/stationary/marine_dropship/airlock/inner))
 				var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_dock = docked_port
 				inner_dock.update_inner_airlock(FALSE, TRUE)
-				inner_dock.disable_manual_input = TRUE
+				inner_dock.allow_processing_to_end = FALSE
 			return XENO_NONCOMBAT_ACTION
 
 		if(docked_port == dropship?.assigned_transit && dropship?.mode == SHUTTLE_IDLE)

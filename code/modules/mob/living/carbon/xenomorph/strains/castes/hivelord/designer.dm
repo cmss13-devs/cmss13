@@ -256,7 +256,7 @@
 	building = TRUE // lock it here
 
 	xeno.plasma_stored -= plasma_cost
-	to_chat(xeno, SPAN_NOTICE("You activate node, it forcefully consume our [plasma_cost] plasma."))
+	to_chat(xeno, SPAN_NOTICE("You activate node, it latch onto us and forcefully consume our [plasma_cost] plasma."))
 
 	var/turf/T = get_turf(src)
 	if(!istype(T))

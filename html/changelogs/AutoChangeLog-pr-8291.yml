@@ -1,7 +1,0 @@
-author: "Syndro101"
-delete-after: True
-changes:
-  - rscadd: "Added replacement rooms for XO, ASO, Synth, Flight Crew, Officer's Mess, Intel Office, Intel Quarters, Reporter Office, new areas for the CIC conference room and lower cryocells above medbay"
-  - rscdel: "Removed old rooms for XO, ASO, Synth, Flight Crew, Officer's Mess"
-  - code_imp: "changed ASO and Flight Crew bunks areas, Fake_Zlevels swapped."
-  - maptweak: "added new sections, removed old sections"

@@ -421,3 +421,76 @@
       in the .dmm
   hry-gh:
   - rscadd: weather now cleans up blood and other cleanables from the floor
+2025-04-22:
+  DarkLordCabbage:
+  - rscadd: Adds drop pouch to medbay equipment vendors.
+  Stakeyng:
+  - rscadd: DCCs now have the ability to vend MK30 tactical helmet.
+  - rscadd: The MK30 tactical helmet now comes with a built-in advanced medical visor.
+  - spellcheck: The M30 tactical helmet has been renamed to the MK30 tactical helmet.
+  - spellcheck: The M30 tactical helmet's eyepiece filter is no longer clarified as
+      being on the left.
+  TrollerNoob:
+  - rscadd: Added all of the Miscellaneous items in the Squad Marine Surplus vendor
+      to the REQ Surplus vendor. Now you can add in fashion to your REQ order!
+  - qol: POs and DCCs can now choose 1 holster belt and 1 storage belt in their vendors,
+      instead of only being able to choose 1 of either.
+  stalkerino:
+  - balance: removed 40 round incendiary mags from CO
+  - bugfix: type47 UPP rig fits on external webbing, mateba rig fits on marine armor
+  - bugfix: allows crafting m4ra extended boxes with cardboard
+  - rscadd: added m4ra extended magazine box for req to buy
+  - rscadd: adds black insul gloves to CT, FTL, SL and IO, gave it a new icon when
+      its on the floor too
+  - bugfix: fixed black gloves not being black
+  - bugfix: fixes inhand sprites for m12 helmets, and grenadier helmet
+2025-04-23:
+  Aurallianz:
+  - rscadd: After a two-minute post-cryo-wakeup period, ARES will provide an announcement
+      stating the commander.
+  - rscadd: ARES will modify your ID and give you senior command access if you don't
+      have it.
+  - maptweak: Added a command headset to the Command tablet locker.
+  - bugfix: Fixed CE's incorrect wakeup message
+  Blundir:
+  - bugfix: fixed gun oil not rendering on helmet
+  - imageadd: gun repair kit resprite
+  Lagomorphica:
+  - balance: Removes thermals as a possible selection from random goggle spawners
+      such as on Fiorina and from pre-selected map spawns on Sorokyne Strata and Kutjevo.
+  MistChristmas:
+  - bugfix: Roller beds deploy where clicked.
+  - bugfix: Fixes a Runtime when detaching/replacing attachments when there is no
+      round in the chamber.
+  Nihisohel:
+  - bugfix: Flamers can pass properly again.
+  Sleepynecrons:
+  - rscadd: adds the missing scythe sprite whilst its equipped on the back
+  biologed:
+  - bugfix: Ability to resize the TGUI TextArea in the modal box medal recommendation
+      and failure to send this due to the " char
+  realforest2001:
+  - rscadd: Added factional remote camera consoles.
+  - bugfix: Fixes fax responder access to Brig cameras.
+  - rscadd: Added the ability for staff to change IFF settings on the AI Core turrets
+      via remote interface.
+  rodcowartt:
+  - bugfix: Tanks will no longer attempt to move without treads installed.
+2025-04-24:
+  Aurallianz:
+  - bugfix: being able to defib without proper medical skills.
+  Detective-Google:
+  - admin: added a new button to reset the tdome
+  Drathek:
+  - bugfix: The taskbar flash preference when unnested now works while in the mob
+      and ghosted
+  - spellcheck: The message while nested preventing becoming a hugger/lesser now mentions
+      specifically if you are nested rather than two different 5 minute timers
+  jupyterkat:
+  - bugfix: setting aSL on specs now changes their hud icon again
+  - bugfix: fixed mortar hud icon not showing up on squad manager and orbit panel
+  - imageadd: added sniper hud icon for pmc spec
+  larentoun:
+  - bugfix: Resting doesn't reset Tackle Counter anymore. No more Rest Tech.
+  realforest2001:
+  - rscdel: Deletes a bugged human equipment preset.

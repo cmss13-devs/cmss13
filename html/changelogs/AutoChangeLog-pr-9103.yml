@@ -1,5 +1,0 @@
-author: "stalkerino"
-delete-after: True
-changes:
-  - rscadd: "adds black insul gloves to CT, FTL, SL and IO, gave it a new icon when its on the floor too"
-  - bugfix: "fixed black gloves not being black"

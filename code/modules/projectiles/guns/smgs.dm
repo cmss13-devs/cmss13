@@ -126,6 +126,9 @@
 /obj/item/weapon/gun/smg/m39/army
 	starting_attachment_types = list(/obj/item/attachable/stock/smg, /obj/item/attachable/reflex, /obj/item/attachable/extended_barrel, /obj/item/attachable/lasersight)
 
+/obj/item/weapon/gun/smg/m39/army/heap
+	current_mag = /obj/item/ammo_magazine/smg/m39/heap
+
 //-------------------------------------------------------
 
 /obj/item/weapon/gun/smg/m39/elite

@@ -343,6 +343,27 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
+	var/mode = 1
+	var/base_icon
+
+/obj/item/storage/backpack/satchel/post_skin_selection()
+	base_icon = item_state
+
+/obj/item/storage/backpack/satchel/verb/toggle_mode()
+	set category = "Object"
+	set name = "Change Side of Strap"
+	set desc = "Changes which arm the strap of the satchel will be on."
+	set src in usr
+	if(!ishuman(usr))
+		return
+	if(!mode)
+		// Strap in the same arm
+		item_state = "[base_icon]_b"
+		update_icon()
+	else
+		// Strap in the opposite arm
+		item_state = "[base_icon]"
+		update_icon()
 
 /obj/item/storage/backpack/satchel/withwallet
 

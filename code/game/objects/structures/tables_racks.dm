@@ -642,6 +642,8 @@
 	icon_state = "h_maptable1"
 	light_range = 1
 	health = 1000 // These are special, don't want them breaking easily
+	parts = null
+	debris = null
 	var/datum/tacmap/map
 	///flags that we want to be shown when you interact with this table
 	var/minimap_type = MINIMAP_FLAG_USCM

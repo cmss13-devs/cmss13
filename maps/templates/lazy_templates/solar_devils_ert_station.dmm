@@ -183,6 +183,10 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station/soalar_devils_station)
+"ar" = (
+/obj/docking_port/stationary/emergency_response/idle_port6,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/soalar_devils_station)
 "as" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -22562,7 +22566,7 @@ WN
 WN
 WN
 WN
-WN
+ar
 WN
 WN
 WN

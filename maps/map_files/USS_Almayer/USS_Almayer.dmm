@@ -31105,7 +31105,9 @@
 	pixel_x = 5;
 	pixel_y = 29
 	},
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_master{
+	vial_maker = 1
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "glG" = (

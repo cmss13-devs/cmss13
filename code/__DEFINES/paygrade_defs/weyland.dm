@@ -96,3 +96,26 @@
 
 /// WY-DOG, Weyland-Yutani Dog Catcher
 #define PAY_SHORT_WY_DOG "WY-DOG"
+
+// Weyland Yutani Corporate Security
+
+/// WY-SEC Weyland-Yutani Security Officer
+#define PAY_SHORT_WY_SEC "WY-SEC"
+
+/// WY-SEC-MED Weyland-Yutani Security Medic
+#define PAY_SHORT_WY_SEC_MED "WY-SEC-MED"
+
+/// WY-SEC-TECH Weyland-Yutani Security Technician
+#define PAY_SHORT_WY_SEC_TECH "WY-SEC-TECH"
+
+/// WY-SEC-LEAD Weyland-Yutani Security Team Leader
+#define PAY_SHORT_WY_SEC_LEAD "WY-SEC-LEAD"
+
+/// WY-SEC-PSO Personal Protection Officer
+#define PAY_SHORT_WY_SEC_PSO "WY-SEC-PSO"
+
+/// WY-SEC-PSS Personal Protection Specialist
+#define PAY_SHORT_WY_SEC_PSS "WY-SEC-PSS"
+
+/// WY-SEC-PSSGT Personal Protection Sergeant
+#define PAY_SHORT_WY_SEC_PSSGT "WY-SEC-PSSGT"

@@ -96,7 +96,7 @@
 	)
 	assignment = JOB_CORPORATE_SECURITY
 	rank = JOB_CORPORATE_SECURITY
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC_PSO = JOB_PLAYTIME_TIER_0, PAY_SHORT_WY_SEC_PSS = JOB_PLAYTIME_TIER_2, PAY_SHORT_WY_SEC_PSSGT = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "CS"
 	skills = /datum/skills/wy_goon
 

@@ -4,9 +4,17 @@
 GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 
 /datum/personal_thunderdome
+
+	/// Which type of thunderdome has been selected by the user
 	var/datum/lazy_template/dome_type
+
+	/// The currently spawned in thunderdome
 	var/datum/turf_reservation/active
+
+	/// The ckey of the user that created this thunderdome
 	var/ckey
+
+	/// The reference to the client that spawned in this thunderdome
 	var/client/parent
 
 /datum/personal_thunderdome/New(datum/lazy_template/dome_type, datum/turf_reservation/active, client/parent)
@@ -36,7 +44,6 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 
 /datum/admins/proc/clear_thunderdome()
 	QDEL_NULL(personal_thunderdome)
-	GLOB.personal_thunderdomes -= ckey
 
 	to_chat(owner, SPAN_NOTICE("Personal thunderdome destroyed."))
 
@@ -129,35 +136,35 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		to_chat(src, SPAN_WARNING("No thunderdomes are currently summoned."))
 		return
 
-	var/datum/admins/affected_admin
+	var/datum/personal_thunderdome/affected_thunderdome
 
 	if(admin_holder.personal_thunderdome && length(GLOB.personal_thunderdomes) == 1)
-		affected_admin = admin_holder
+		affected_thunderdome = admin_holder.personal_thunderdome
 
-	if(!affected_admin)
+	if(!affected_thunderdome)
 		var/admin_to_use = tgui_input_list(src, "Which admin's thunderdome should be cleaned?", "Thunderdome Reset", GLOB.personal_thunderdomes)
 		if(!admin_to_use)
 			return
 
-		affected_admin = GLOB.admin_datums[admin_to_use]
+		affected_thunderdome = GLOB.admin_datums[admin_to_use].personal_thunderdome
 
-	if(!affected_admin)
+	if(!affected_thunderdome)
 		return
 
-	var/list/turf/turfs_to_clear = affected_admin.personal_thunderdome.get_all_turfs()
+	var/list/turf/turfs_to_clear = affected_thunderdome.get_all_turfs()
 
 	var/delete_mobs = tgui_alert(usr, "WARNING: Deleting large amounts of mobs causes lag. Clear all mobs?", "Thunderdome Reset", list("Yes", "No", "Cancel"))
 	if(!delete_mobs || delete_mobs == "Cancel")
 		return
 
-	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] reset [affected_admin.ckey]'s thunderdome to default with delete_mobs marked as [delete_mobs]."))
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] reset [affected_thunderdome.ckey]'s thunderdome to default with delete_mobs marked as [delete_mobs]."))
 
 	var/static/list/mob_typecache = typecacheof(/mob)
 	for(var/turf/turf as anything in turfs_to_clear)
 		turf.empty(turf_type = null, ignore_typecache = delete_mobs == "Yes" ? null : mob_typecache)
 
-	var/datum/map_template/thunderdome_template = SSmapping.map_templates[affected_admin.personal_thunderdome.get_map_name()]
-	thunderdome_template.load(affected_admin.personal_thunderdome.get_spawn_turf())
+	var/datum/map_template/thunderdome_template = SSmapping.map_templates[affected_thunderdome.get_map_name()]
+	thunderdome_template.load(affected_thunderdome.get_spawn_turf())
 
 /datum/lazy_template/thunderdome
 	map_dir = parent_type::map_dir + "/thunderdome"

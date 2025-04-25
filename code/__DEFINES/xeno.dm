@@ -8,8 +8,10 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
-/// The duration it takes a player controlled facehugger to leap or hug adjacently
-#define FACEHUGGER_WINDUP_DURATION 1 SECONDS
+/// The duration it takes a player controlled facehugger to leap
+#define FACEHUGGER_LEAP_DURATION 2 SECONDS
+/// The duration it takes a player controlled facehugger to hug a target lying down by clicking on it
+#define FACEHUGGER_CLIMB_DURATION 1 SECONDS
 
 // Defines for action types and click delays used by xenomorph/unarmedattack() and attack_alien().
 
@@ -195,8 +197,6 @@
 #define XENO_LEAVE_TIMER_LARVA 80 //80 seconds
 /// The time against away_timer when an AFK xeno (not larva) can be replaced
 #define XENO_LEAVE_TIMER 300 //300 seconds
-/// The time against away_timer when an AFK facehugger converts to a npc
-#define XENO_FACEHUGGER_LEAVE_TIMER 420 //420 seconds
 /// The time against away_timer when an AFK xeno gets listed in the available list so ghosts can get ready
 #define XENO_AVAILABLE_TIMER 60 //60 seconds
 

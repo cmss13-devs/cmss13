@@ -1,18 +1,18 @@
 import { randomInteger } from 'common/random';
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { storage } from 'common/storage';
 import {
+  type ComponentProps,
   createContext,
-  PropsWithChildren,
-  ReactNode,
+  type PropsWithChildren,
+  type ReactNode,
   useContext,
   useEffect,
   useRef,
   useState,
 } from 'react';
-
-import { resolveAsset } from '../assets';
-import { useBackend } from '../backend';
+import { resolveAsset } from 'tgui/assets';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button as NativeButton,
@@ -20,9 +20,9 @@ import {
   Modal,
   Section,
   Stack,
-} from '../components';
-import { BoxProps } from '../components/Box';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { LoadingScreen } from './common/LoadingToolbox';
 
 type LobbyData = {
@@ -614,7 +614,7 @@ const TimedDivider = () => {
   );
 };
 
-type LobbyButtonProps = BoxProps & {
+type LobbyButtonProps = ComponentProps<typeof Box> & {
   readonly index: number;
   readonly selected?: boolean;
   readonly disabled?: boolean;

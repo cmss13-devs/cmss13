@@ -55,6 +55,15 @@ ON_CONFIG_LOAD(/datum/autoreply/admin/xeno)
 ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
 	message = "Staff are unable to handle most whitelist rulebreaks in-game, please make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
 
+/datum/autoreply/admin/clear_cache
+	title = "Clear Cache"
+	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
+	closer = FALSE
+
+/datum/autoreply/admin/lobby
+	title = "Cryo and Ghost to Lobby"
+	message = "Staff have approved your request to be returned to the lobby. In order to do so, you must enter a cryogenics bay and ghost. You will be then manually returned to the lobby by staff."
+	closer = FALSE
 ////////////////////////////
 /////   MENTOR HELPS   /////
 ////////////////////////////
@@ -144,9 +153,9 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 Rangefinders allow you to get tile coordinates (longitude and latitude) by lasing it while zoomed in (produces a GREEN laser). Ctrl + Click on any open tile to start lasing. Ctrl + Click on your rangefinders to stop lasing without zooming out. Coordinates can be used by Staff Officers to send supply drops or to perform Orbital Bombardment. You also can use them to call mortar fire if there are engineers with a mortar. \
 Laser Designators have a second mode (produces a RED laser) that allows highlighting targets for Close Air Support performed by dropship pilots. They also have a fixed ID number that is shown on the pilot's weaponry console. Examine the laser designator to check its ID. Red laser must be maintained as long as needed in order for the dropship pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and click \"Toggle Mode\"."
 
-/datum/autoreply/mentor/devour
-	title = "X: Devour as Xeno"
-	message = "Devouring is useful to quickly transport incapacitated hosts from one place to another. In order to devour a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin devouring. The host can break out of your stomach, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically regurgitated. To release your target voluntary, click 'Regurgitate' on the HUD to throw them back up."
+/datum/autoreply/mentor/haul
+	title = "X: Haul as Xeno"
+	message = "Hauling is useful to quickly transport incapacitated hosts from one place to another. In order to haul a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin hauling. The host can break out of your grip, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically released. To release your target voluntary, click 'Release' on the HUD to throw them back up."
 
 /datum/autoreply/mentor/plasma
 	title = "X: No plasma regen"

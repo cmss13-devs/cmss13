@@ -109,7 +109,8 @@
 
 	if(universal_understand)
 		return TRUE
-	if(other?.universal_speak)
+
+	if(istype(other) && other?.universal_speak)
 		return TRUE
 	//Language check.
 	for(var/datum/language/L in languages)

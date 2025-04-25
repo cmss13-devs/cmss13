@@ -110,10 +110,10 @@
 #define PAY_SHORT_WY_SEC_LEAD "WY-SEC-LEAD"
 
 /// WY-SEC-PSO Personal Protection Officer
-#define PAY_SHORT_WY_SEC_PPO "WY-SEC-PSO"
+#define PAY_SHORT_WY_SEC_PPO "WY-SEC-PPO"
 
 /// WY-SEC-PSS Personal Protection Specialist
-#define PAY_SHORT_WY_SEC_PPS "WY-SEC-PSS"
+#define PAY_SHORT_WY_SEC_PPS "WY-SEC-PPS"
 
-/// WY-SEC-PSSGT Personal Protection Sergeant
-#define PAY_SHORT_WY_SEC_PPSGT "WY-SEC-PSSGT"
+/// WY-SEC-PSSGT Personal Protection Coordinator
+#define PAY_SHORT_WY_SEC_PPC "WY-SEC-PPC"

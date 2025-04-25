@@ -633,6 +633,11 @@
 	if(M.status_flags & XENO_HOST)
 		return
 
+	// If they were not forcibly floored, don't reset
+	// Resting should not reset the counter
+	if(!HAS_TRAIT(M, TRAIT_FLOORED))
+		return
+
 	reset_tackle(M)
 
 /mob/living/carbon/xenomorph/proc/reset_tackle(mob/M)

@@ -494,3 +494,14 @@
   - bugfix: Resting doesn't reset Tackle Counter anymore. No more Rest Tech.
   realforest2001:
   - rscdel: Deletes a bugged human equipment preset.
+2025-04-25:
+  MistChristmas:
+  - ui: 'Security Records: adds a scrollbar to Individual records. Centers Title and
+      New Record button. Slightly moves the Photo window. Moves the record delete
+      button to the right hand-side. OW Console: Slightly aligns the search bar and
+      Squad Panel in the Squad Monitor.'
+  - ui: Centers and resizes door controls/dropship selection buttons. Does the same
+      for launch control buttons but also moves them into the element and out the
+      title (Does similar for ERT Shuttles). Centers the whole UI. Adjusts the spacings
+      between elements smaller than before. Makes the default UI slightly taller to
+      accommodate the bigger buttons.

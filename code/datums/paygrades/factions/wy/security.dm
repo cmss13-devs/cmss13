@@ -21,19 +21,19 @@
 	pay_multiplier = 3
 
 /datum/paygrade/wy_sec/bodyguard
-	paygrade = PAY_SHORT_WY_SEC_PSO
-	name = "Personal Security Officer"
-	prefix = "PSO."
+	paygrade = PAY_SHORT_WY_SEC_PPO
+	name = "Personal Protection Officer"
+	prefix = "PPO."
 	pay_multiplier = 3
 
 /datum/paygrade/wy_sec/bodyguard/grade_2
-	paygrade = PAY_SHORT_WY_SEC_PSS
-	name = "Personal Security Specialist"
-	prefix = "PSS."
+	paygrade = PAY_SHORT_WY_SEC_PPS
+	name = "Personal Protection Specialist"
+	prefix = "PPS."
 	pay_multiplier = 3.3
 
 /datum/paygrade/wy_sec/bodyguard/grade_3
-	paygrade = PAY_SHORT_WY_SEC_PSSGT
-	name = "Personal Security Sergeant"
-	prefix = "PSSgt."
+	paygrade = PAY_SHORT_WY_SEC_PPC
+	name = "Personal Protection Coordinator"
+	prefix = "PPC."
 	pay_multiplier = 4

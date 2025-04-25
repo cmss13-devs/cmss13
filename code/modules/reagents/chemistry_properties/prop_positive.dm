@@ -884,13 +884,13 @@
 	processing_tray.nutrilevel += -0.6*(10-(potency*2))*volume
 	processing_tray.repeat_harvest_counter += 5*(potency*2)*volume
 	if (processing_tray.repeat_harvest_counter >= 100)
-		if (rand(0,2) < 2)
+		if (prob(50))
 			processing_tray.repeat_harvest_counter += -1*rand(20,50)
 			return
 		var/turf/c_turf = get_turf(processing_tray)
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.harvest_repeat = 1
-		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space"))
+		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] begins to shimmer with a color out of space!"))
 		processing_tray.potency_counter = 0
 
 /datum/chem_property/positive/crystallization
@@ -916,7 +916,7 @@
 	processing_tray.nutrilevel += -0.8*(10-(potency*2))*volume
 	processing_tray.repeat_harvest_counter += 5*(potency*2)*volume
 	if (processing_tray.repeat_harvest_counter >= 100)
-		if (rand(0,2) < 2)
+		if (prob(50))
 			processing_tray.repeat_harvest_counter += -1*rand(20,50)
 			return
 		var/turf/c_turf = get_turf(processing_tray)

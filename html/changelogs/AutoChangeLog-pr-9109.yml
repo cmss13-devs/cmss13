@@ -1,0 +1,16 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "adds unique pouch to PMC/Goon survivors"
+  - rscadd: "added binoculars to W-Y commando leader"
+  - rscadd: "admins now have a selection of possible bodyguards that they can automatically send to CL via bodyguard beacon response"
+  - balance: "buffed W-Y commando cqc and fireman carry skills"
+  - balance: "Replaces all instances of goons using 7 slot and 5 slot combat packs, with 5 slot W-Y combat satchels"
+  - bugfix: "fixed shivas W-Y commando having incorrect minimap/orbit icon"
+  - bugfix: "PMC survivors not using pmc weapons spawners, using generic ones instead"
+  - bugfix: "PMC survivors potentially having too much metal"
+  - bugfix: "Goon armor having red light"
+  - bugfix: "Goons not having ammo in their pouch"
+  - bugfix: "PMC riot squad having smartgunner in their team"
+  - bugfix: "some WY security guards not having WY patch"
+  - bugfix: "fixed USCM having WY gun belts in some cases"

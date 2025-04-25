@@ -1,4 +1,0 @@
-author: "Aurallianz"
-delete-after: True
-changes:
-  - bugfix: "being able to defib without proper medical skills."

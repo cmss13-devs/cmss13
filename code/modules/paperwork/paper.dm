@@ -882,7 +882,6 @@
 	GLOB.chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
-	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
 	. = ..()
 
 /obj/item/paper/research_notes/ciph_hint

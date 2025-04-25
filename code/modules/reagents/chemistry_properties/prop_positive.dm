@@ -199,7 +199,7 @@
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
-	value = 3
+	value = 4
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, potency = 1)
 	M.adjust_effect(potency*-0.75, PARALYZE)

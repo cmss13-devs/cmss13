@@ -64,6 +64,8 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
 #define JOB_DOCTOR_ROLES /datum/timelock/doctor
 #define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON)
+#define JOB_RESEARCH_ROLES /datum/timelock/research
+#define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
 
@@ -118,6 +120,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_MARINE_RAIDER_CMD "Marine Raider Platoon Lead"
 #define JOB_MARINE_RAIDER_ROLES_LIST list(JOB_MARINE_RAIDER, JOB_MARINE_RAIDER_SL, JOB_MARINE_RAIDER_CMD)
 
+#define MUTINY_LOYALIST_ROLES list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE, JOB_CO, JOB_SEA)
+
 #define JOB_HUMAN_ROLES  /datum/timelock/human
 
 #define JOB_XENO_ROLES   /datum/timelock/xeno
@@ -149,6 +153,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 	L = timelockList;\
 	. = ..(L);\
 }
+
+/// Role lists for Marine roles
+#define CHAIN_OF_COMMAND_ROLES list(JOB_CO, JOB_XO, JOB_AUXILIARY_OFFICER, JOB_CHIEF_POLICE, JOB_CMO, JOB_SO, JOB_CHIEF_ENGINEER, JOB_DROPSHIP_PILOT, JOB_CAS_PILOT, JOB_INTEL)
 
 //-------------WO roles---------------
 

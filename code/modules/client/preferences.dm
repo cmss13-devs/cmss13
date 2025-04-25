@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = BE_KING // Special role selection
-	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS // flags in #define/mode.dm
 	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
 	var/auto_fit_viewport = FALSE
 	var/adaptive_zoom = 0
@@ -108,7 +108,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
 	var/predator_use_legacy = "None"
-	var/predator_translator_type = "Modern"
+	var/predator_translator_type = PRED_TECH_MODERN
+	var/predator_invisibility_sound = PRED_TECH_MODERN
 	var/predator_mask_type = 1
 	var/predator_accessory_type = 0
 	var/predator_armor_type = 1
@@ -627,6 +628,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_EJECT_MAGAZINE_TO_HAND]'><b>[toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Automatic Punctuation: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTOMATIC_PUNCTUATION]'><b>[toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Leadership Spoken Orders: \
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_LEADERSHIP_SPOKEN_ORDERS]'><b>[toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Combat Click-Drag Override: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
@@ -1308,6 +1311,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!new_translator_type)
 						return
 					predator_translator_type = new_translator_type
+				if("pred_invis_sound")
+					var/new_invis_sound = tgui_input_list(user, "Choose your invisibility sound.", "Invisibility Sound", PRED_INVIS_SOUNDS)
+					if(!new_invis_sound)
+						return
+					predator_translator_type = new_invis_sound
 				if("pred_mask_type")
 					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, PRED_MASK_TYPE_MAX, 1)
 					if(new_predator_mask_type)

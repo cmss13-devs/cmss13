@@ -205,6 +205,10 @@
 		/atom/movable/screen/escape_menu,
 		/atom/movable/screen/buildmode,
 		/obj/effect/detector_blip,
+		/atom/movable/screen/minimap_tool/draw_tool,
+		/atom/movable/screen/stop_scroll,
+		/atom/movable/screen/minimap,
+		/atom/movable/screen/exit_map,
 	))
 
 	if(!client)

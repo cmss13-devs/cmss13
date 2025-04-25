@@ -20,7 +20,7 @@
 
 	if(!is_type_in_typecache(user.species, species_type_allowed_typecache))
 		. = FALSE
-	if(is_type_in_typecache(user.species, species_type_blacklist_typecache))
+	if(is_type_in_typecache(user.species, species_type_blacklist_typecache) && !is_type_in_typecache(user.species, species_type_allowed_typecache))
 		. = FALSE
 
 /datum/emote/living/carbon/human/blink
@@ -141,6 +141,10 @@
 	message = "laughs!"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
+/datum/emote/living/carbon/human/laugh/get_sound(mob/living/user)
+	if(isyautja(user))
+		return pick('sound/voice/pred_laugh1.ogg', 'sound/voice/pred_laugh2.ogg', 'sound/voice/pred_laugh3.ogg', 'sound/voice/pred_laugh4.ogg', 'sound/voice/pred_laugh5.ogg', 'sound/voice/pred_laugh6.ogg')
+
 /datum/emote/living/carbon/human/look
 	key = "look"
 	key_third_person = "looks"
@@ -193,6 +197,7 @@
 	key = "pain"
 	message = "cries out in pain!"
 	alt_message = "cries out"
+	species_type_allowed_typecache = list(/datum/species/human, /datum/species/synthetic, /datum/species/yautja, /datum/species/synthetic/colonial/wy_droid)
 	species_type_blacklist_typecache = list(/datum/species/synthetic)
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
@@ -205,6 +210,9 @@
 
 	if(isyautja(user))
 		return get_sfx("pred_pain")
+
+	if(iswydroid(user))
+		return get_sfx("wy_droid_pain")
 
 /datum/emote/living/carbon/human/pain/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()

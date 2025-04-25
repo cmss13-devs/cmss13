@@ -126,6 +126,11 @@
 				attacking_xeno.behavior_delegate.melee_attack_additional_effects_target(src)
 				attacking_xeno.behavior_delegate.melee_attack_additional_effects_self()
 
+			//xenos damaging gun durability
+			var/obj/item/weapon/gun/gun_inhand = get_active_hand()
+			if(istype(gun_inhand))
+				gun_inhand.xeno_attack_durability(attacking_xeno, src) //damages durability of gun on the active hand regardless of which hand is targetted by the xeno
+
 			var/slash_noise = attacking_xeno.slash_sound
 			var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)
 			SEND_SIGNAL(src, COMSIG_HUMAN_XENO_ATTACK, slashdata, attacking_xeno)
@@ -297,7 +302,7 @@
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD || chestburst)
+	if(stat != DEAD)
 		return TRUE
 
 	if(status_flags & XENO_HOST)
@@ -306,8 +311,8 @@
 				return FALSE
 		if(world.time > timeofdeath + revive_grace_period)
 			return FALSE // they ain't gonna burst now
-	else
-		return FALSE // leave the dead alone
+		return TRUE
+	return FALSE // leave the dead alone
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overridden by every proc concerning a child of obj unless inherited
@@ -965,6 +970,7 @@
 			M.visible_message(SPAN_DANGER("[M] smashes [src] beyond recognition!"),
 			SPAN_DANGER("We enter a frenzy and smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			malfunction()
+			tip_over()
 		else
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)

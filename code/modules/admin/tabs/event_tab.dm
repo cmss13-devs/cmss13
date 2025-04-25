@@ -501,10 +501,10 @@
 /client/proc/give_nuke()
 	if(!check_rights(R_ADMIN))
 		return
-	var/nukename = "Decrypted Operational Nuke"
+	var/nukename = "Decrypted Operational Blockbuster"
 	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
-		nukename = "Encrypted Operational Nuke"
+		nukename = "Encrypted Operational Blockbuster"
 	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
 	if(prompt != "Yes")
 		return
@@ -719,18 +719,16 @@
 	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
-	set name = "Report: Yautja AI"
+	set name = "Report: Yautja Overseer"
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
+	var/input = tgui_input_text(usr, "This is a message from the Yautja Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
 	if(!input)
 		return FALSE
-	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
-	message_admins("[key_name_admin(src)] has created a predator ship AI report")
-	log_admin("[key_name_admin(src)] predator ship AI report: [input]")
+	elder_overseer_message(input, elder_user = "[key_name(src)]")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "Narrate to Everyone"
@@ -820,6 +818,7 @@
 		<A href='byond://?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=xenocards'>Give or take card playing abilities from xenos</A><BR>
 		<BR>
 		"}
 
@@ -919,12 +918,15 @@
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H.mob_flags & MUTINEER)
-			H.mob_flags &= ~MUTINEER
-			H.hud_set_squad()
+		if(H.mob_flags & MUTINY_MUTINEER)
+			H.mob_flags &= ~MUTINY_MUTINEER
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
 				A.remove_from(H)
+
+		H.mob_flags &= ~MUTINY_LOYALIST
+		H.mob_flags &= ~MUTINY_NONCOMBAT
+		H.hud_set_squad()
 
 /client/proc/cmd_fun_fire_ob()
 	set category = "Admin.Fun"
@@ -1068,6 +1070,39 @@
 	SSticker.mode.taskbar_icon = taskbar_icon
 	SSticker.set_clients_taskbar_icon(taskbar_icon)
 	message_admins("[key_name_admin(usr)] has changed the taskbar icon to [taskbar_icon].")
+
+#define THUNDERDOME_TEMPLATE_FILE "thunderdome.dmm"
+
+/client/proc/clean_thunderdome()
+	set name = "Clean Thunderdome"
+	set category = "Admin.Events"
+
+	if(!check_rights(R_EVENT))
+		return
+
+	var/delete_mobs = tgui_alert(usr, "WARNING: Deleting large amounts of mobs causes lag. Clear all mobs?", "Thunderdome Reset", list("Yes", "No", "Cancel"))
+	if(!delete_mobs || delete_mobs == "Cancel")
+		return
+
+	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] reset the thunderdome to default with delete_mobs marked as [delete_mobs]."))
+
+	var/area/thunderdome = GLOB.areas_by_type[/area/tdome]
+	var/list/tdome_areas = list(GLOB.areas_by_type[/area/tdome], GLOB.areas_by_type[/area/tdome/tdome1], GLOB.areas_by_type[/area/tdome/tdome2])
+
+	for(var/area/current_area as anything in tdome_areas)
+		if(delete_mobs == "Yes")
+			for(var/mob/living/mob in current_area)
+				qdel(mob) //Clear mobs
+				stoplag()
+		for(var/obj/obj in current_area)
+			qdel(obj) //Clear objects
+
+	var/datum/map_template/thunderdome_template = SSmapping.map_templates[THUNDERDOME_TEMPLATE_FILE]
+	thunderdome_template.should_place_on_top = FALSE
+	var/turf/thunderdome_corner = locate(thunderdome.x - 11, thunderdome.y - 2, 1) // have to do a little bit of coord manipulation to get it in the right spot
+	thunderdome_template.load(thunderdome_corner)
+
+#undef THUNDERDOME_TEMPLATE_FILE
 
 /client/proc/change_weather()
 	set name = "Change Weather"

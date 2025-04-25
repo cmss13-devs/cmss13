@@ -20,7 +20,7 @@ import {
   P_DATA_ICON_ADD,
   P_DATA_ICON_REMOVE,
   P_DATA_ICON_WEIGHT,
-  ParticleUIData,
+  type ParticleUIData,
   SpaceToNum,
   SpaceTypes,
 } from './data';

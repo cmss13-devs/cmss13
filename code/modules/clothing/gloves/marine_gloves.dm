@@ -45,8 +45,10 @@
 /obj/item/clothing/gloves/marine/insulated/black
 	name = "marine insulated black gloves"
 	desc = "These marine gloves will protect the wearer from electric shocks and shrapnal. Standard issue for properly-equipped Marines."
-	icon_state = "black"
+	icon_state = "yellow"
 	item_state = "black"
+	item_state_slots = list(WEAR_HANDS = "black")
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"
@@ -155,15 +157,43 @@
 
 /obj/item/clothing/gloves/marine/veteran/pmc
 	name = "\improper WY PMC gloves"
+	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 	icon_state = "pmc"
 	item_state = "pmc"
-	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 
 /obj/item/clothing/gloves/marine/veteran/pmc/commando
+	name = "\improper W-Y Commando gloves"
+	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani Commandos. They are insulated against electrical shock."
+	icon_state = "pmc_elite"
+	item_state = "pmc_elite"
+	armor_bio = CLOTHING_ARMOR_HIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_VERYHIGH
+	armor_rad = CLOTHING_ARMOR_HIGH
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/gloves/marine/veteran/pmc/commando/leader
+	icon_state = "pmc_elite_leader"
+	item_state = "pmc_elite_leader"
+
+/obj/item/clothing/gloves/marine/veteran/pmc/apesuit
 	name = "\improper M5X gauntlets"
-	desc = "A pair of heavily armored gloves made to complete the M5X exoskeleton armor"
+	desc = "A pair of heavily armored gloves made to pair up the M5X Apesuit system."
 	icon_state = "gauntlets"
 	item_state = "bgloves"
+	siemens_coefficient = 0
+	armor_melee = CLOTHING_ARMOR_VERYHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_VERYHIGH
+	unacidable = TRUE
+
+/obj/item/clothing/gloves/marine/veteran/pmc/combat_droid
+	name = "\improper M7X gauntlets"
+	desc = "A pair of heavily armored gloves made to pair up the M7X Apesuit system."
+	icon_state = "combat_android_gloves"
+	item_state = "bgloves"
+	item_state_slots = list(WEAR_HANDS = "marine_grey")
 	siemens_coefficient = 0
 	armor_melee = CLOTHING_ARMOR_VERYHIGH
 	armor_bullet = CLOTHING_ARMOR_ULTRAHIGH

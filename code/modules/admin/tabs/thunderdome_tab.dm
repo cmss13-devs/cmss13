@@ -146,7 +146,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		if(!admin_to_use)
 			return
 
-		affected_thunderdome = GLOB.admin_datums[admin_to_use].personal_thunderdome
+		affected_thunderdome = GLOB.personal_thunderdomes[admin_to_use]
 
 	if(!affected_thunderdome)
 		return

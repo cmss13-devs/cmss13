@@ -118,6 +118,45 @@
 		gloves.attachment_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
 
+/obj/item/weapon/bracer_attachment/chain_gauntlets
+	name = "chain blades"
+	plural_name = "wrist blades"
+	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
+	icon_state = "wrist"
+	hitsound = null
+	item_state = "wristblade"
+	attack_speed = 1 SECONDS
+	attack_verb = list("flayed", "punched", "suckerpunched")
+	force = MELEE_FORCE_TIER_6
+	speed_bonus_amount = 0
+	var/gauntlet_deployed = FALSE
+	var/combo_counter = 0
+
+/obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/target, mob/living/user)
+	. = ..()
+	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	switch(user.a_intent)
+		if(INTENT_HELP)
+			playsound(target, sound_to_play, 50, 1)
+			combo_counter++
+		if((INTENT_DISARM))
+			if(combo_counter == 5)
+				target.apply_effect(3, WEAKEN)
+				combo_counter = 0
+			user.flick_attack_overlay(target, "slam")
+			playsound(target, sound_to_play, 50, 1)
+			combo_counter++
+		if((INTENT_HARM))
+			if(combo_counter >= 3)
+				var/facing = get_dir(user, target)
+				user.throw_carbon(target, facing, 7, SPEED_VERY_FAST,)
+				target.apply_effect(3, WEAKEN)
+				combo_counter = 0
+			combo_counter++
+
+
+
+
 /obj/item/weapon/bracer_attachment/wristblades
 	name = "wrist blade"
 	plural_name = "wrist blades"

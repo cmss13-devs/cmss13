@@ -435,6 +435,12 @@
 	QDEL_NULL(attached_weapon)
 	. = ..()
 
+/obj/item/bracer_attachments/chain_gauntlets
+	name = "chain blades"
+	icon_state = "scim"
+	item_state = "scim"
+	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets
+	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"
 	desc = "A pair of huge, serrated blades"

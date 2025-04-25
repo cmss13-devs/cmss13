@@ -1,5 +1,0 @@
-author: "Drulikar"
-delete-after: True
-changes:
-  - balance: "AMR now resets aimed shot count every 3rd shot (rather than 4th)"
-  - balance: "AMR no longer applies daze/slow/superslow/knockdown on first aimed shot"

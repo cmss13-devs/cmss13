@@ -290,6 +290,12 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/strata/ag/exterior/landing_zones/lz2)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -362,6 +368,19 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abm" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
+"abn" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -370,6 +389,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+"abq" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -394,6 +419,19 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abw" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/outpost/canteen)
+"abx" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -439,6 +477,15 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
+"abG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "abH" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/explosive_mines,
@@ -486,6 +533,12 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abO" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "abP" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -498,6 +551,15 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abR" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement/cement4,
+/area/strata/ag/exterior/landing_zones/lz2)
+"abS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "abT" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pill_bottle/bicaridine,
@@ -10550,6 +10612,9 @@
 /area/strata/ag/interior/outside/administration)
 "beT" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outside/administration)
 "beU" = (
@@ -17851,7 +17916,9 @@
 "czw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
-/obj/item/clothing/glasses/thermal/syndi,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/purp1,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "czT" = (
@@ -19482,6 +19549,9 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/communications,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNF" = (
@@ -28661,7 +28731,6 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/checkpoints/north)
@@ -34271,7 +34340,7 @@ alz
 alz
 alz
 aac
-aac
+abm
 aac
 aac
 aac
@@ -37229,7 +37298,7 @@ aol
 aol
 aol
 aol
-aol
+abS
 aol
 cso
 aol
@@ -38084,7 +38153,7 @@ aoj
 cnv
 cru
 azx
-dCq
+abO
 ard
 arV
 dCq
@@ -42035,7 +42104,7 @@ jWs
 jWs
 jWs
 jWs
-jWs
+aaY
 jWs
 jWs
 jWs
@@ -43247,7 +43316,7 @@ pAZ
 bvE
 bvE
 xTU
-eFa
+abR
 bJI
 vsp
 hue
@@ -52468,7 +52537,7 @@ blb
 iNi
 boV
 blb
-bTF
+abq
 byF
 bBX
 ryK
@@ -56465,7 +56534,7 @@ atJ
 ddK
 bWM
 ijo
-ceI
+abG
 gAm
 gAm
 gAm
@@ -57867,7 +57936,7 @@ ijo
 awf
 ceI
 ijo
-aAD
+abx
 aCd
 aDf
 cea
@@ -62418,7 +62487,7 @@ cjn
 cjn
 bFx
 cjn
-chd
+abw
 jnt
 chd
 aFz
@@ -70654,7 +70723,7 @@ jUA
 jUA
 jUA
 cei
-chj
+abn
 cei
 jUA
 jUA

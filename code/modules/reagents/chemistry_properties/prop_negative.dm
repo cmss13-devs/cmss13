@@ -544,7 +544,7 @@
 		C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_HIGH * potency, 0)
 		holder.volume++
 	else
-		C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_MEDIUMLOW * potency, 0)
+		C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_LOW * potency, 0)
 
 
 /datum/chem_property/negative/hemositic/process_overdose(mob/living/M, potency = 1, delta_time)

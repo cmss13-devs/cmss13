@@ -390,11 +390,9 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "abq" = (
-/obj/structure/sign/calendar/upp{
-	pixel_y = 29
-	},
-/turf/open/floor/strata/floor2,
-/area/strata/ag/interior/outpost/med)
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement/cement4,
+/area/strata/ag/exterior/landing_zones/lz2)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -423,15 +421,13 @@
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
-/turf/open/floor/strata/white_cyan1/east,
-/area/strata/ag/interior/outpost/canteen)
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
 "abx" = (
-/obj/structure/machinery/space_heater,
-/obj/structure/sign/calendar/upp{
-	pixel_y = 29
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outpost/security)
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -478,14 +474,11 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
 "abG" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
-/turf/open/floor/strata/red1,
-/area/strata/ag/interior/outpost/security)
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/outpost/canteen)
 "abH" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/explosive_mines,
@@ -534,11 +527,12 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
 "abO" = (
+/obj/structure/machinery/space_heater,
 /obj/structure/sign/calendar/upp{
 	pixel_y = 29
 	},
-/turf/open/floor/strata/fake_wood,
-/area/strata/ag/interior/landing_zones/near_lz1)
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "abP" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -552,13 +546,19 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "abR" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/asphalt/cement/cement4,
-/area/strata/ag/exterior/landing_zones/lz2)
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "abS" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/strata/floor3,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "abT" = (
 /obj/structure/surface/rack,
@@ -37298,7 +37298,7 @@ aol
 aol
 aol
 aol
-abS
+abx
 aol
 cso
 aol
@@ -38153,7 +38153,7 @@ aoj
 cnv
 cru
 azx
-abO
+abS
 ard
 arV
 dCq
@@ -43316,7 +43316,7 @@ pAZ
 bvE
 bvE
 xTU
-abR
+abq
 bJI
 vsp
 hue
@@ -52537,7 +52537,7 @@ blb
 iNi
 boV
 blb
-abq
+abw
 byF
 bBX
 ryK
@@ -56534,7 +56534,7 @@ atJ
 ddK
 bWM
 ijo
-abG
+abR
 gAm
 gAm
 gAm
@@ -57936,7 +57936,7 @@ ijo
 awf
 ceI
 ijo
-abx
+abO
 aCd
 aDf
 cea
@@ -62487,7 +62487,7 @@ cjn
 cjn
 bFx
 cjn
-abw
+abG
 jnt
 chd
 aFz

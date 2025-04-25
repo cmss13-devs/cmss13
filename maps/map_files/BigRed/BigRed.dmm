@@ -1337,11 +1337,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "afe" = (
-/obj/structure/sign/calendar/wy{
-	pixel_y = 30
-	},
-/turf/open/floor/wood,
-/area/bigredv2/caves/lambda/breakroom)
+/obj/effect/landmark/spycam_start,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1353,11 +1351,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "afh" = (
-/obj/structure/sign/calendar{
+/obj/structure/sign/calendar/wy{
 	pixel_y = 30
 	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/telecomm)
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1396,9 +1394,11 @@
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afo" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/mars_cave/mars_dirt_4,
-/area/bigredv2/outside/space_port_lz2)
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/telecomm)
 "afp" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8
@@ -41048,7 +41048,7 @@ acA
 aas
 aas
 acQ
-afh
+afo
 ade
 ade
 aeb
@@ -46984,7 +46984,7 @@ beP
 beP
 aSB
 tVp
-afo
+afe
 tVp
 tVp
 bgX
@@ -76229,7 +76229,7 @@ arG
 ara
 atf
 amk
-afe
+afh
 aqc
 ass
 aqc

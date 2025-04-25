@@ -50,17 +50,17 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 	if(!check_rights(R_EVENT))
 		return
 
-	var/should_announce = tgui_alert(usr, "Do you wish to announce the new thunderdome to dead chat?", "Announce Thunderdome", list("Yes", "No"))
-	if(isnull(should_announce))
-		return
-
-	should_announce = should_announce == "Yes"
-
 	var/static/list/thunderdomes = subtypesof(/datum/lazy_template/thunderdome)
 	var/to_use = tgui_input_list(usr, "Which thunderdome to use?", "Thunderdome Selection", thunderdomes)
 
 	if(!to_use)
 		return
+
+	var/should_announce = tgui_alert(usr, "Do you wish to announce the new thunderdome to dead chat?", "Announce Thunderdome", list("Yes", "No"))
+
+	if(isnull(should_announce))
+		return
+	should_announce = should_announce == "Yes"
 
 	var/datum/turf_reservation/dome = SSmapping.lazy_load_template(to_use, force = TRUE)
 	if(!dome)

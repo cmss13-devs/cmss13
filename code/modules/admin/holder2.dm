@@ -9,6 +9,7 @@ GLOBAL_PROTECT(href_token)
 	var/client/owner = null
 	var/rights = 0
 	var/fakekey = null
+	var/ckey
 
 	var/href_token
 
@@ -26,6 +27,7 @@ GLOBAL_PROTECT(href_token)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
 		qdel(src)
 		return
+	src.ckey = ckey
 	rank = initial_rank
 	rights = initial_rights
 	href_token = GenerateToken()

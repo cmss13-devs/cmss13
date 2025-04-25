@@ -9,7 +9,7 @@
 	prefix = "Off."
 
 /datum/paygrade/wy_sec/specialist
-	paygrade = PAY_SHORT_WY_SEC_MED
+	paygrade = PAY_SHORT_WY_SEC_SPEC
 	name = "Senior Corporate Security Officer"
 	prefix = "Sr. Off."
 	pay_multiplier = 2

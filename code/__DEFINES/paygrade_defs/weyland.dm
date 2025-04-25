@@ -102,11 +102,9 @@
 /// WY-SEC Weyland-Yutani Security Officer
 #define PAY_SHORT_WY_SEC "WY-SEC"
 
-/// WY-SEC-MED Weyland-Yutani Security Medic
-#define PAY_SHORT_WY_SEC_MED "WY-SEC-MED"
+/// WY-SEC-SPEC Weyland-Yutani Security Medic
+#define PAY_SHORT_WY_SEC_SPEC "WY-SEC-SPEC"
 
-/// WY-SEC-TECH Weyland-Yutani Security Technician
-#define PAY_SHORT_WY_SEC_TECH "WY-SEC-TECH"
 
 /// WY-SEC-LEAD Weyland-Yutani Security Team Leader
 #define PAY_SHORT_WY_SEC_LEAD "WY-SEC-LEAD"

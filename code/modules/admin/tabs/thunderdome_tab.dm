@@ -151,8 +151,6 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 	if(!affected_thunderdome)
 		return
 
-	var/list/turf/turfs_to_clear = affected_thunderdome.get_all_turfs()
-
 	var/delete_mobs = tgui_alert(usr, "WARNING: Deleting large amounts of mobs causes lag. Clear all mobs?", "Thunderdome Reset", list("Yes", "No", "Cancel"))
 	if(!delete_mobs || delete_mobs == "Cancel")
 		return
@@ -160,7 +158,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] reset [affected_thunderdome.ckey]'s thunderdome to default with delete_mobs marked as [delete_mobs]."))
 
 	var/static/list/mob_typecache = typecacheof(/mob)
-	for(var/turf/turf as anything in turfs_to_clear)
+	for(var/turf/turf as anything in affected_thunderdome.get_all_turfs())
 		turf.empty(turf_type = null, ignore_typecache = delete_mobs == "Yes" ? null : mob_typecache)
 
 	var/datum/map_template/thunderdome_template = SSmapping.map_templates[affected_thunderdome.get_map_name()]

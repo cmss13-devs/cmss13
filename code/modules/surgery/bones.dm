@@ -49,7 +49,15 @@
 		if(!gel.use_gel(gel.fracture_fix_cost))
 			to_chat(user, SPAN_BOLDWARNING("[gel] is empty!"))
 			return FALSE
-
+	if(istype(tool, /obj/item/reagent_container/glass/beaker))
+		var/obj/item/reagent_container/glass/beaker/beaker_with_gel = tool
+		var/enough_bonemend = FALSE
+		for(var/datum/reagent/reagent_in_beaker in beaker_with_gel.reagents.reagent_list)
+			if(reagent_in_beaker.get_property(PROPERTY_BONEMENDING) && reagent_in_beaker.volume < 5)
+				enough_bonemend = TRUE
+		if(!enough_bonemend)
+			to_chat(user, SPAN_BOLDWARNING("[beaker_with_gel] doesnt have enough bonemending reagents, you need 5!"))
+			return FALSE
 	else //Otherwise, use metal rods
 		var/obj/item/stack/rods/rods = user.get_inactive_hand()
 		if(!istype(rods))
@@ -68,11 +76,18 @@
 				SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s broken [surgery.affected_bone]."))
 
 			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
+		else if(tool_type == /obj/item/reagent_container/glass/beaker)
+			user.affected_message(target,
+				SPAN_NOTICE("You start applying \the [tool] to [target]'s broken [surgery.affected_bone]."),
+				SPAN_NOTICE("[user] starts to apply \the [tool] to your broken [surgery.affected_bone]."),
+				SPAN_NOTICE("[user] starts to apply \the [tool] to [target]'s broken [surgery.affected_bone]."))
+
+			target.custom_pain("Something stings inside your [surgery.affected_limb.display_name]!", 1)
 		else
 			user.affected_message(target,
-				SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into your [surgery.affected_bone] with \the [tool]."),
-				SPAN_NOTICE("[user] begins to drive reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."))
+			SPAN_NOTICE("You begin driving reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."),
+			SPAN_NOTICE("[user] begins to drive reinforcing pins into your [surgery.affected_bone] with \the [tool]."),
+			SPAN_NOTICE("[user] begins to drive reinforcing pins into [target]'s [surgery.affected_bone] with \the [tool]."))
 
 			target.custom_pain("You can feel something grinding in your [surgery.affected_bone]!", 1)
 			playsound(target.loc, 'sound/items/Screwdriver.ogg', 25, TRUE)

@@ -250,8 +250,9 @@
 						continue
 					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
 						//Merge into the original
+						var/volume_factor = clamp((max(current.overdose - reagent.overdose, 5) / 5)-1, 1, 3)
 						reagent_list -= reagent
-						current.volume += reagent.volume
+						current.volume += floor(reagent.volume / volume_factor)
 						qdel(reagent)
 						break
 			for(var/datum/chemical_reaction/reaction in GLOB.chemical_reactions_filtered_list[reagent.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id

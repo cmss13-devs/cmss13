@@ -763,11 +763,12 @@
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
+			icon_state = "paper_wy_partial_report"
 			if(!contract)
 				name = "Synthesis of [chemical_to_generate.name]"
 			else
 				name = "Contract for [chemical_to_generate.name]"
-			icon_state = "paper_wy_partial_report"
+				icon_state = "paper_wy_contract"
 			txt += "[name] </H2></center>"
 			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
 			for(var/I in reaction_generated.required_reagents)

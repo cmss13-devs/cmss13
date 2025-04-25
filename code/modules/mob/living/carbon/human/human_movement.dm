@@ -50,11 +50,11 @@
 
 	//Equipment slowdowns
 	if(w_uniform)
-		reducible_tally += max(0, w_uniform.slowdown + reagent_move_delay_modifier) // MST stim
+		reducible_tally += w_uniform.slowdown
 		wear_slowdown_reduction += w_uniform.movement_compensation
 
 	if(wear_suit)
-		reducible_tally += max(0, wear_suit.slowdown + reagent_move_delay_modifier) //MST stim
+		reducible_tally += wear_suit.slowdown
 		wear_slowdown_reduction += wear_suit.movement_compensation
 
 
@@ -67,6 +67,8 @@
 
 	if(shield_slowdown)
 		reducible_tally += shield_slowdown
+
+	reducible_tally = max(-0.1, reducible_tally + reagent_move_delay_modifier) //MST stim speeds up from slowdowns
 
 	//Compile reducible tally and send it to total tally. Cannot go more than 1 units faster from the reducible tally!
 	. += max(-0.7, reducible_tally)

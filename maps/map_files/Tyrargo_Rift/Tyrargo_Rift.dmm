@@ -5886,6 +5886,11 @@
 	layer = 2.7;
 	pixel_x = 11
 	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -2;
+	dir = 1;
+	pixel_y = 12
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
 "apN" = (
@@ -5896,8 +5901,8 @@
 	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 8;
-	pixel_x = 4;
-	pixel_y = 5
+	pixel_x = 8;
+	pixel_y = 1
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
@@ -21053,12 +21058,20 @@
 	icon_state = "trash_15";
 	pixel_y = 12
 	},
+/obj/structure/prop/tyrargo/boards{
+	dir = 8;
+	pixel_x = 20;
+	pixel_y = -1
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
 "aXM" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14";
 	pixel_y = 6
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	pixel_x = -20
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
@@ -22163,6 +22176,12 @@
 	pixel_x = 3;
 	layer = 2.1
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZM" = (
@@ -22172,6 +22191,12 @@
 	pixel_x = 2
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "aZN" = (
@@ -23959,14 +23984,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/oob)
-"bdh" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -6
-	},
-/obj/effect/decal/grass_overlay/grass1/dark,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/tyrargo/landing_zone_1/no_mans_land)
 "bdi" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -29340,6 +29357,16 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bof" = (
+/obj/item/ammo_magazine/pistol/vp78/heap{
+	current_rounds = 0;
+	pixel_x = -1;
+	pixel_y = 14
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/west)
 "bog" = (
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/cleanable/dirt,
@@ -29361,6 +29388,10 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/power_substation_outskirt)
+"boj" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/west)
 "bok" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -29372,6 +29403,19 @@
 	},
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/outdoors/colony_streets/east)
+"bol" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/item/weapon/gun/pistol/vp78/army{
+	current_mag = null;
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/west)
 "bom" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
@@ -29393,6 +29437,40 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bop" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 4;
+	pixel_y = 17;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_1)
+"boq" = (
+/obj/structure/prop/hybrisa/misc/fire/firebarrel{
+	pixel_y = 7;
+	pixel_x = 6
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/landing_zone_1)
+"bor" = (
+/obj/item/weapon/gun/rifle/m41a{
+	current_mag = null
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/west_trench)
 "bos" = (
 /obj/structure/flora/tree/tyrargo_small/tree_stump{
 	pixel_x = -23;
@@ -31170,10 +31248,10 @@
 "brS" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
-	pixel_x = -1;
+	pixel_x = 5;
 	pixel_y = 14;
 	dir = 1;
 	anchored = 1
@@ -31213,10 +31291,10 @@
 "brV" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
-	pixel_x = -1;
+	pixel_x = 5;
 	pixel_y = 14;
 	dir = 1;
 	anchored = 1
@@ -31259,10 +31337,10 @@
 "brZ" = (
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
-	pixel_x = -1;
+	pixel_x = 5;
 	pixel_y = 14;
 	dir = 1;
 	anchored = 1
@@ -31339,10 +31417,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
-	pixel_x = -1;
+	pixel_x = 5;
 	pixel_y = 14;
 	dir = 1;
 	anchored = 1
@@ -35410,6 +35488,12 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
+"bCd" = (
+/obj/item/weapon/gun/rifle/m4ra{
+	current_mag = null
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/north_trench)
 "bCe" = (
 /obj/structure/flora/tree/tyrargo_small/tree_stump{
 	pixel_x = -23;
@@ -35418,6 +35502,19 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bCf" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/west_trench)
 "bCg" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -35784,6 +35881,16 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
+"bCQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/north_trench)
 "bCR" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -35902,6 +36009,15 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bDg" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/west_trench)
 "bDh" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 4
@@ -35988,6 +36104,16 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
+"bDu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/west_trench)
 "bDv" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -36026,6 +36152,19 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bDA" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/floor/interior/wood,
+/area/tyrargo/landing_zone_1/north_trench)
 "bDB" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 1
@@ -41853,11 +41992,23 @@
 /obj/item/trash/cigbutt{
 	pixel_y = 8
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "bSh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
 "bSi" = (
@@ -52810,10 +52961,10 @@
 	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
 	icon_state = "M56D";
 	name = "M56D heavy machine gun nest";
-	pixel_x = -1;
+	pixel_x = 5;
 	pixel_y = 14;
 	dir = 1;
 	anchored = 1
@@ -86190,17 +86341,6 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors/colony_exterior/west)
-"nwl" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = -6
-	},
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 8;
-	icon_state = "sandbag_0"
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/tyrargo/landing_zone_1/no_mans_land)
 "nwm" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/toilet{
@@ -91207,18 +91347,16 @@
 /turf/open/floor/strata/purp3/north,
 /area/tyrargo/underground/museum_carpark)
 "wcw" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	pixel_y = -16
-	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1
 	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "wcz" = (
@@ -137600,8 +137738,8 @@ bPI
 bLZ
 bOp
 bMJ
-wcz
-bQf
+qNt
+bCf
 bQf
 bMx
 bQf
@@ -137781,8 +137919,8 @@ bLZ
 bLZ
 adU
 bOp
-htK
-bQg
+bMJ
+bDg
 bQP
 aZv
 aZr
@@ -137792,7 +137930,7 @@ aZm
 aVP
 tkG
 bQg
-bQg
+bor
 aYu
 bra
 mdu
@@ -137963,8 +138101,8 @@ bLZ
 bLZ
 bLZ
 bSw
-htK
-bLJ
+bMJ
+bDu
 aZB
 bRs
 aZs
@@ -138145,7 +138283,7 @@ bMu
 bLZ
 bLZ
 bLZ
-bdh
+bTe
 aZL
 brt
 bRt
@@ -138327,7 +138465,7 @@ bLZ
 adU
 xNb
 bLI
-htK
+bMJ
 bSg
 bRt
 rwL
@@ -138874,7 +139012,7 @@ bLZ
 bMw
 bOp
 htK
-bRy
+bDA
 bRB
 bRt
 bPs
@@ -139056,7 +139194,7 @@ adU
 bLZ
 bOp
 bMJ
-nwl
+bSl
 aZC
 bRu
 bKe
@@ -139238,8 +139376,8 @@ bMu
 bLZ
 bSw
 bLx
-htK
-bRe
+bMJ
+bCQ
 bRt
 bKe
 bPe
@@ -141832,9 +141970,9 @@ bzZ
 bxz
 aZn
 dFp
+bof
 byp
-byp
-byp
+bGs
 byp
 byp
 byp
@@ -142013,8 +142151,8 @@ bJS
 bEt
 baS
 bdL
-bHZ
-byp
+bol
+boj
 byp
 bmi
 aTY
@@ -142197,7 +142335,7 @@ bxz
 bxz
 bxz
 bHZ
-byp
+bGs
 byp
 byp
 bEP
@@ -142529,7 +142667,7 @@ bPe
 aYq
 aYg
 aXV
-bPe
+bNL
 aXC
 bIs
 bIs
@@ -142880,7 +143018,7 @@ bLx
 bMJ
 adM
 bRU
-bRd
+bCd
 gzA
 bJN
 bPe
@@ -142892,9 +143030,9 @@ dnF
 dnF
 bOw
 bbI
-bPs
-bLl
-bPf
+bKe
+boq
+bop
 bJc
 bIs
 bOE

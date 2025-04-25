@@ -362,12 +362,12 @@
 		for(var/i = 0 to 5) //5 attempts at modifying the recipe before elevating recipe length
 			if(LAZYLEN(R.required_reagents) > 2)
 				LAZYREMOVE(R.required_reagents, pick(R.required_reagents))
-			var/new_component_id = R.add_component(tier = max(min(target.data.chemclass, CHEM_CLASS_COMMON), target.data.gen_tier, 1))
+			var/new_component_id = R.add_component(tier = max(min(target.data.chemclass, CHEM_CLASS_BASIC), target.data.gen_tier, 1))
 			var/datum/reagent/new_component = GLOB.chemical_reagents_list[new_component_id]
 			//Make sure we don't have an identical reaction and that the component is identified
 			if(R.check_duplicate() || R.check_reaction_uses_all_default_medical() || new_component.chemclass >= CHEM_CLASS_SPECIAL)
 				R.required_reagents = old_reaction.Copy()
-				if(i >= 5)
+				if(i >= 8) //doesnt really fix the issue but we went from 5 to 8 attempts to roll.
 					//Elevate the reaction to a higher order
 					target_elevated["[new_component.id]"] = TRUE
 					break

@@ -701,7 +701,7 @@
 	chemfiresupp = TRUE
 	durationmod = 0.5
 	burncolor = "#ff9900"
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"

@@ -592,6 +592,19 @@
 	pixel_y = 30;
 	pixel_x = 8
 	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/emails{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 8
+	},
 /turf/open/floor/darkgreen2/northwest,
 /area/adminlevel/ert_station/fax_response_station)
 "fF" = (
@@ -3594,6 +3607,16 @@
 "JY" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/spy_camera/cmb,
+/obj/structure/sign/calendar/ua{
+	pixel_y = 26
+	},
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/emails,
 /obj/structure/sign/calendar/ua{
 	pixel_y = 26
 	},

@@ -115,10 +115,10 @@
 	. = ..()
 	if(istype(sprayed_object, /obj/structure/barricade))
 		var/obj/structure/barricade/healing_cade = sprayed_object
-		healing_cade.update_health(-potency*POTENCY_MULTIPLIER_VHIGH, TRUE)
+		healing_cade.update_health(-potency*POTENCY_MULTIPLIER_VVHIGH, TRUE)
 	if(istype(sprayed_object, /obj/structure/machinery/defenses))
 		var/obj/structure/machinery/defenses/healing_defenses = sprayed_object
-		healing_defenses.update_health(-potency*POTENCY_MULTIPLIER_VHIGH)
+		healing_defenses.update_health(-potency*POTENCY_MULTIPLIER_VVHIGH)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC

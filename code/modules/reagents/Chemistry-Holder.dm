@@ -257,6 +257,13 @@
 							volume_factor = 1
 						reagent_list -= reagent
 						current.volume += floor(reagent.volume / volume_factor)
+						var/list/seen = viewers(4, get_turf(my_atom))
+						for(var/mob/seen_mob in seen)
+							if(volume_factor == 1)
+								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
+							else
+								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] The solution decreases in volume."))
+						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 20, 1)
 						qdel(reagent)
 						break
 			for(var/datum/chemical_reaction/reaction in GLOB.chemical_reactions_filtered_list[reagent.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id

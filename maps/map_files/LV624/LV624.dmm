@@ -1343,6 +1343,16 @@
 /obj/structure/cargo_container/wy/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"afi" = (
+/obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv624/lazarus/landing_zones/lz1)
+"afj" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/lv624/lazarus/landing_zones/lz2)
 "afk" = (
 /obj/item/ammo_casing,
 /turf/open/gm/dirt,
@@ -2189,6 +2199,9 @@
 	name = "Secure Outer Doors";
 	pixel_x = 25;
 	pixel_y = -5
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 29
 	},
 /turf/open/floor/wood,
 /area/lv624/lazarus/hop)
@@ -21076,6 +21089,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/crowbar,
 /obj/item/reagent_container/spray/cleaner,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/whiteyellow/northwest,
 /area/lv624/lazarus/corporate_dome)
 "xyH" = (
@@ -31195,7 +31211,7 @@ niV
 niV
 hdA
 niV
-niV
+afj
 niV
 niV
 niV
@@ -54684,7 +54700,7 @@ aHu
 aGz
 aGz
 aGz
-uVx
+afi
 aGz
 aGz
 aGz

@@ -60,66 +60,6 @@
 		/obj/item/storage/belt/gun/m44,
 	)
 
-/obj/item/clothing/suit/armor/vest/pilot
-	name = "\improper M70 flak jacket"
-	desc = "A flak jacket used by dropship pilots to protect themselves while flying in the cockpit. Excels in protecting the wearer against high-velocity solid projectiles."
-	icon_state = "pilot"
-	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
-	blood_overlay_type = "armor"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_LOW
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	allowed = list(
-		/obj/item/weapon/gun/,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/device/flashlight,
-		/obj/item/ammo_magazine/,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/tool/lighter,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
-		/obj/item/explosive/grenade,
-		/obj/item/device/binoculars,
-		/obj/item/attachable/bayonet,
-		/obj/item/storage/backpack/general_belt,
-		/obj/item/storage/large_holster/machete,
-		/obj/item/storage/belt/gun/m4a3,
-		/obj/item/storage/belt/gun/m44,
-	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
-	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
-
-/obj/item/clothing/suit/armor/vest/pilot/Initialize()
-	. = ..()
-	select_gamemode_skin(/obj/item/clothing/suit/armor/vest/pilot)
-
-/obj/item/clothing/suit/armor/vest/pilot/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("jungle")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
-		if("classic")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
-		if("desert")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
-		if("snow")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
-		if("urban")
-			icon = 'icons/obj/items/clothing/suits/suits_by_map/urban.dmi'
-			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi'
-
 /obj/item/clothing/suit/armor/vest/dutch
 	name = "armored jacket"
 	desc = "It's hot in the jungle. Sometimes it's hot and heavy, and sometimes it's hell on earth."

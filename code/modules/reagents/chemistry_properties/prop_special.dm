@@ -2,7 +2,7 @@
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 6
-
+//IF YOU ADD A NEW LEGENADRY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
@@ -12,6 +12,19 @@
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
 	return list(REAGENT_BOOST = level)
+
+/datum/chem_property/special/optimized
+	name = PROPERTY_OPTIMIZED
+	code = "OPM"
+	description = "Chemical molecule is structured diffrently, resulting in more efficient and easy synthesis process."
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_METABOLITE
+
+/datum/chem_property/special/optimized/update_reagent()
+	var/datum/chemical_reaction/reaction_chem = GLOB.chemical_reactions_list[holder.id]
+	if(reaction_chem)
+		reaction_chem.result_amount = 2
+	. = ..()
 
 /datum/chem_property/special/hypergenetic
 	name = PROPERTY_HYPERGENETIC
@@ -102,6 +115,7 @@
 /datum/chem_property/special/regulating/update_reagent()
 	holder.flags |= REAGENT_CANNOT_OVERDOSE
 	..()
+
 /datum/chem_property/special/ciphering
 	name = PROPERTY_CIPHERING
 	code = "CIP"

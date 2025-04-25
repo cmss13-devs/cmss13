@@ -55,24 +55,29 @@
 /datum/chem_property/proc/process_dead(mob/living/M, potency = 1, delta_time)
 	return FALSE // By default, chemicals don't process in dead personnel.
 
-/datum/chem_property/proc/trigger(A) //used for properties that needs something to trigger outside of where process is usually called
+//used for properties that needs something to trigger outside of where process is usually called
+/datum/chem_property/proc/trigger(A)
 	return
 
 /datum/chem_property/proc/reset_reagent()
 	return
 
-/datum/chem_property/proc/update_reagent() //used for changing other variables in the reagent, set update to FALSE to remove the update
+///used for changing other variables in the reagent, set update to FALSE to remove the update
+/datum/chem_property/proc/update_reagent()
 	return
 
+///What will this property do to mob when its sprayed/smoked/etc on
 /datum/chem_property/proc/reaction_mob(mob/M, method=TOUCH, volume, potency)
 	return
 
+///What will this property do to object when its sprayed/smoked/etc on
 /datum/chem_property/proc/reaction_obj(obj/O, volume, potency)
 	return
-
+///What will this property do to turf when its sprayed/smoked/etc on
 /datum/chem_property/proc/reaction_turf(turf/T, volume, potency)
 	return
 
+///Late update the reagent the property is in. "late" means the reagent is already ready.
 /datum/chem_property/proc/post_update_reagent()
 	return
 

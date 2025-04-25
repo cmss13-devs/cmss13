@@ -6,6 +6,7 @@
 	var/trigger_volatiles = FALSE
 	var/allow_star_shape = TRUE
 	var/exploded = FALSE
+	var/endothermic_reaction_occuring = FALSE
 	var/datum/weakref/source_mob
 
 	var/locked = FALSE
@@ -21,6 +22,7 @@
 	var/min_fire_dur = 3
 
 	var/fire_penetrating = FALSE
+
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
@@ -251,6 +253,8 @@
 					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
 						//Merge into the original
 						var/volume_factor = clamp((max(current.overdose - reagent.overdose, 5) / 5)-1, 1, 3)
+						if(max(current.overdose, 5)/5 < 3)
+							volume_factor = 1
 						reagent_list -= reagent
 						current.volume += floor(reagent.volume / volume_factor)
 						qdel(reagent)
@@ -300,6 +304,8 @@
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
 						set_data(reaction.result, preserved_data)
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
+						if(endothermic_reaction_occuring)
+							continue
 						for(var/required_reagent in reaction.required_reagents)
 							remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
 						add_reagent(reaction.result, reaction.result_amount*multiplier)
@@ -309,8 +315,7 @@
 						for(var/mob/seen_mob in seen)
 							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
 						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 20, 1)
-
-
+						reaction_occurred = TRUE
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_BUBBLING))
 						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
 							return
@@ -409,6 +414,8 @@
 		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id])
 			required_catalysts_present++
 	if(!(length(reaction.required_reagents) == required_reagents_present && length(reaction.required_catalysts) == required_catalysts_present))
+		endothermic_reaction_occuring = FALSE //forgive me
+		handle_reactions()
 		return
 	var/list/seen = viewers(2, get_turf(my_atom))
 	if(prob(10))
@@ -424,6 +431,7 @@
 	for(var/mob/seen_mob in this_turf)
 		if(prob(15))
 			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
+	endothermic_reaction_occuring = TRUE
 	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 
 /datum/reagents/proc/isolate_reagent(reagent)

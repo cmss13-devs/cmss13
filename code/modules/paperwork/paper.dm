@@ -792,7 +792,7 @@
 				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
 					txt += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
 				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
-					txt += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
+					txt += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
 				else
 					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
@@ -943,7 +943,7 @@
 			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
 				info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
 			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
-				info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
+				info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
 			else
 				info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
@@ -970,7 +970,7 @@
 		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
 			info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
 		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
-			info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly.<BR>"
+			info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
 		else
 			info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 		info += "<font size = \"2.5\">[S.description]\n"

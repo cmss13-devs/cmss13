@@ -210,11 +210,12 @@
 #define PROPERTY_ANTIADDICTIVE "anti-addictive"
 #define PROPERTY_ADDICTIVE "addictive"
 #define PROPERTY_ENCEPHALOPHRASIVE "encephalophrasive"
-//Legendary, only in gen_tier 3+
+//Legendary, only in research hints. add this property to legendary list define if you're planning for it to be in normal research loop.
 #define PROPERTY_HYPERGENETIC "hypergenetic"
 #define PROPERTY_BOOSTING "boosting"
 #define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
 #define PROPERTY_REGULATING "regulating"
+#define PROPERTY_OPTIMIZED "optimizing"
 #define PROPERTY_CIPHERING "ciphering"
 #define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
@@ -247,7 +248,7 @@
 #define PROPERTY_HEMOSITIC "hemositic"
 
 ///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
-#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING)
+#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED)
 
 
 //Property rarity

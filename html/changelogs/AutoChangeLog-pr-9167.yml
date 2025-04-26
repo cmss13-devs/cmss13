@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - code_imp: "throw_carbon is now a all living proc instead of just being a xenomorph variant"

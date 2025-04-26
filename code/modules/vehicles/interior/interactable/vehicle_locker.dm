@@ -316,6 +316,7 @@
 	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "cabinet"
 	layer = ABOVE_MOB_LAYER
+	has_role_restriction = FALSE
 
 /obj/structure/vehicle_locker/cabinet/Initialize()
 	. = ..()
@@ -332,7 +333,6 @@
 
 /obj/structure/vehicle_locker/cabinet/cups
 	name = "cups cabinet"
-	has_role_restriction = FALSE
 
 /obj/structure/vehicle_locker/cabinet/cups/Initialize()
 	. = ..()
@@ -344,7 +344,6 @@
 
 /obj/structure/vehicle_locker/cabinet/utensils
 	name = "utensils cabinet"
-	has_role_restriction = FALSE
 
 /obj/structure/vehicle_locker/cabinet/utensils/Initialize()
 	. = ..()

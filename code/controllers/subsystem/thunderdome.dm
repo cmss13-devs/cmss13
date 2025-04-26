@@ -32,6 +32,14 @@ SUBSYSTEM_DEF(thunderdome)
 			if(MC_TICK_CHECK)
 				return
 
+/// Schedule a thunderdome for cleaning. Will replace the original thunderdome map after cleaning it.
+/datum/controller/subsystem/thunderdome/proc/schedule_cleaning(datum/personal_thunderdome/thunderdome, no_mobs)
+	to_clean += new /datum/thunderdome_clean(
+		thunderdome.get_all_turfs(),
+		thunderdome,
+		no_mobs
+	)
+
 /datum/thunderdome_clean
 	/// The list of turfs that we're cleaning up. Removed over time.
 	var/list/turf/turfs_to_clean

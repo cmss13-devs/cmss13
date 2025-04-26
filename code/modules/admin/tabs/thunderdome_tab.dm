@@ -157,8 +157,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] reset [affected_thunderdome.ckey]'s thunderdome to default with delete_mobs marked as [delete_mobs]."))
 
-	SSthunderdome.to_clean += new /datum/thunderdome_clean(
-		affected_thunderdome.get_all_turfs(),
+	SSthunderdome.schedule_cleaning(
 		affected_thunderdome,
 		delete_mobs == "Yes",
 	)

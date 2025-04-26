@@ -2915,7 +2915,7 @@
 	icon_state = "lattice3"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "ahT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -3086,6 +3086,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "aiA" = (
@@ -7636,6 +7637,7 @@
 	pixel_x = -28;
 	light_range = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "atK" = (
@@ -11604,6 +11606,7 @@
 	light_power = 2;
 	pixel_y = 29
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/oob)
 "aDP" = (
@@ -25670,6 +25673,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "bgG" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/north)
 "bgH" = (
@@ -25716,6 +25720,7 @@
 /turf/open/floor/corsat/marked,
 /area/tyrargo/underground/bunker/north)
 "bgQ" = (
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/underground/sewer/north)
 "bgR" = (
@@ -28981,6 +28986,10 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bnl" = (
+/obj/effect/blocker/water,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/oob)
 "bnm" = (
 /obj/structure/cargo_container/hybrisa/containersextended/blueleft{
 	layer = 3
@@ -43399,6 +43408,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "bVS" = (
@@ -43538,6 +43548,7 @@
 	light_range = 1;
 	light_power = 2
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "bWo" = (
@@ -46469,6 +46480,7 @@
 /turf/closed/wall/strata_outpost,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "ceK" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "ceL" = (
@@ -47573,6 +47585,7 @@
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/security/ground)
 "ciR" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ciS" = (
@@ -50630,6 +50643,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ctA" = (
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/oob)
 "ctB" = (
@@ -56022,6 +56036,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cLP" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "cLQ" = (
@@ -56029,10 +56044,10 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cLR" = (
 /turf/closed/wall/rock,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cLS" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -56045,8 +56060,9 @@
 "cLU" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cLV" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/south)
 "cLW" = (
@@ -56064,9 +56080,11 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cLY" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cLZ" = (
@@ -56264,6 +56282,7 @@
 	icon_state = "trash_15";
 	pixel_x = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "cMz" = (
@@ -56279,6 +56298,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "cMC" = (
@@ -56287,6 +56307,7 @@
 	icon_state = "trash_4";
 	pixel_y = 14
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "cMD" = (
@@ -56299,6 +56320,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "cME" = (
@@ -56308,6 +56330,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/south)
 "cMG" = (
@@ -56337,6 +56360,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "cMM" = (
@@ -56376,6 +56400,7 @@
 /area/tyrargo/outdoors/outskirts_road/central)
 "cMP" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/oob)
 "cMQ" = (
@@ -56387,6 +56412,7 @@
 /area/tyrargo/indoors/mall)
 "cMR" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/oob)
 "cMS" = (
@@ -56403,6 +56429,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "cMU" = (
@@ -56423,15 +56450,18 @@
 /area/tyrargo/outdoors/colony_streets/east)
 "cMX" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "cMY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cMZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cNa" = (
@@ -56444,6 +56474,7 @@
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
 "cNc" = (
@@ -56460,6 +56491,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9"
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
 "cNf" = (
@@ -56470,6 +56502,7 @@
 	name = "huge rock pileup";
 	explo_proof = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cNg" = (
@@ -56477,14 +56510,17 @@
 	icon_state = "trash_16";
 	pixel_y = 35
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cNh" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/oob)
 "cNi" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/oob)
 "cNj" = (
@@ -56499,14 +56535,17 @@
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "cNk" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/oob)
 "cNl" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "cNm" = (
@@ -56521,6 +56560,7 @@
 "cNn" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cNo" = (
@@ -56565,6 +56605,7 @@
 	pixel_y = -13
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "cNs" = (
@@ -56580,6 +56621,7 @@
 	explo_proof = 1
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cNu" = (
@@ -56608,6 +56650,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cNy" = (
@@ -56618,6 +56661,7 @@
 	icon_state = "trash_15";
 	pixel_y = 14
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
 "cNA" = (
@@ -56628,10 +56672,12 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "cNB" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "cNC" = (
@@ -56640,6 +56686,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "cND" = (
@@ -56650,6 +56697,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cNE" = (
@@ -56664,14 +56712,17 @@
 /turf/open/floor/prison/green,
 /area/tyrargo/indoors/mall)
 "cNH" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/oob)
 "cNI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/oob)
 "cNJ" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "cNK" = (
@@ -56747,6 +56798,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cNV" = (
@@ -56795,6 +56847,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cOe" = (
@@ -56803,6 +56856,7 @@
 	pixel_x = -4;
 	pixel_y = -3
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "cOf" = (
@@ -57259,7 +57313,7 @@
 /area/tyrargo/indoors/mall/upper)
 "cPs" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/indoors/mall)
 "cPt" = (
 /obj/structure/surface/table/almayer,
@@ -57804,6 +57858,7 @@
 /obj/item/tool/warning_cone{
 	pixel_x = -6
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "cRw" = (
@@ -59371,6 +59426,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cVZ" = (
@@ -59381,6 +59437,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cWa" = (
@@ -59388,6 +59445,7 @@
 	pixel_y = 13;
 	pixel_x = -5
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/sewer/south)
 "cWb" = (
@@ -59410,6 +59468,7 @@
 	pixel_x = 4;
 	layer = 2.9
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cWe" = (
@@ -60508,6 +60567,7 @@
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
 "cYS" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "cYT" = (
@@ -60520,6 +60580,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cYU" = (
@@ -60530,14 +60591,17 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
 "cYV" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "cYW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cYX" = (
@@ -60547,6 +60611,7 @@
 	pixel_x = 4;
 	layer = 2.9
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cYY" = (
@@ -60557,6 +60622,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "cYZ" = (
@@ -60564,6 +60630,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/tyrargo/underground/sewer/south)
 "cZa" = (
@@ -60580,12 +60647,15 @@
 	name = "dirt";
 	pixel_x = 15
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "cZc" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/sewer/south)
 "cZd" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/tyrargo/underground/sewer/south)
 "cZe" = (
@@ -60595,8 +60665,9 @@
 "cZf" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZg" = (
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/underground/sewer/south)
 "cZh" = (
@@ -60605,25 +60676,30 @@
 	icon_state = "trash_8";
 	pixel_y = -20
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/sewer/south)
 "cZi" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cZj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cZk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cZl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cZm" = (
@@ -60633,6 +60709,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cZn" = (
@@ -60641,18 +60718,22 @@
 	icon_state = "trash_15";
 	pixel_x = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "cZo" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cZp" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/sewer/south)
 "cZq" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "cZr" = (
@@ -60665,18 +60746,20 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cZs" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "cZu" = (
@@ -60687,6 +60770,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cZv" = (
@@ -60695,23 +60779,28 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "cZw" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/tyrargo/underground/sewer/south)
 "cZx" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/tyrargo/underground/sewer/south)
 "cZy" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/tyrargo/underground/sewer/south)
 "cZz" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "cZA" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "cZB" = (
@@ -60720,21 +60809,24 @@
 	icon_state = "trash_5";
 	layer = 3.1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "cZC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "cZD" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/tyrargo/underground/sewer/south)
 "cZE" = (
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "cZF" = (
 /obj/effect/decal/hybrisa/trash{
@@ -60742,44 +60834,50 @@
 	pixel_y = 3;
 	pixel_x = -5
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cZG" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/tyrargo/underground/sewer/south)
 "cZH" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/tyrargo/underground/sewer/south)
 "cZI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "cZJ" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZK" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZL" = (
 /obj/structure/machinery/light/small,
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "cZN" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "cZO" = (
@@ -60793,13 +60891,14 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_15";
 	pixel_x = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cZR" = (
@@ -60808,7 +60907,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -60817,16 +60916,16 @@
 	pixel_x = 4
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe/north,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/floodlights,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "cZV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -60836,11 +60935,13 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cZW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "cZX" = (
@@ -60849,12 +60950,14 @@
 /area/tyrargo/indoors/sewer_treatment/lower)
 "cZY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/tyrargo/underground/sewer/south)
 "cZZ" = (
 /obj/structure/machinery/light,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "daa" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3"
@@ -60866,16 +60969,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dab" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14";
 	pixel_y = 27
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dac" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/south)
 "dad" = (
@@ -60885,17 +60989,19 @@
 "dae" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/tyrargo/underground/sewer/south)
 "daf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/tyrargo/underground/sewer/south)
 "dag" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe/east,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dah" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -60905,14 +61011,15 @@
 	icon_state = "trash_2"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dai" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/cell_stripe/west,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "daj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -60920,7 +61027,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison/cell_stripe/east,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dak" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -60930,19 +61037,21 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dal" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dam" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/tyrargo/underground/sewer/south)
 "dan" = (
@@ -60951,12 +61060,13 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dao" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14";
 	pixel_y = 13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dap" = (
@@ -60968,26 +61078,27 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "daq" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dar" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7";
 	pixel_y = 12
 	},
 /turf/open/floor/prison/cell_stripe,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "das" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dat" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -60997,7 +61108,7 @@
 	icon_state = "trash_15"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dau" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -61008,18 +61119,18 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dav" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/west,
-/area/tyrargo/underground/sewer/south)
-"daw" = (
-/turf/open/floor/prison/darkyellowcorners2/southwest,
 /area/tyrargo/underground/sewer/south)
 "dax" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/sewer/south)
 "day" = (
@@ -61028,16 +61139,19 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "daz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "daA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/west,
 /area/tyrargo/underground/sewer/south)
 "daB" = (
@@ -61047,6 +61161,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "daC" = (
@@ -61054,10 +61169,12 @@
 	icon_state = "trash_15";
 	pixel_x = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "daD" = (
 /obj/structure/machinery/light/small,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "daE" = (
@@ -61067,6 +61184,7 @@
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "daF" = (
@@ -61077,6 +61195,7 @@
 	name = "huge rock pileup";
 	explo_proof = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/oob)
 "daG" = (
@@ -61087,6 +61206,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/oob)
 "daH" = (
@@ -61094,6 +61214,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "daI" = (
@@ -61102,6 +61223,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "daJ" = (
@@ -61109,6 +61231,7 @@
 	icon_state = "trash_13";
 	pixel_y = 7
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "daK" = (
@@ -61127,6 +61250,7 @@
 	pixel_y = -13;
 	explo_proof = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
 "daL" = (
@@ -61139,6 +61263,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "daM" = (
@@ -61149,6 +61274,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "daN" = (
@@ -61161,7 +61287,7 @@
 	},
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "daO" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder2{
 	unacidable = 1;
@@ -61170,6 +61296,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/oob)
 "daP" = (
@@ -61177,6 +61304,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "daQ" = (
@@ -61186,11 +61314,13 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "daR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "daS" = (
@@ -61211,6 +61341,7 @@
 	pixel_y = 1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "daU" = (
@@ -61222,21 +61353,24 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/oob)
 "daV" = (
 /obj/structure/largecrate/supply/supplies/water,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "daW" = (
 /obj/structure/largecrate/supply/supplies/wy_emergency_food,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "daX" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrowncorners2/east,
 /area/tyrargo/underground/sewer/south)
 "daY" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/tyrargo/underground/sewer/south)
 "daZ" = (
@@ -61245,6 +61379,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/south)
 "dba" = (
@@ -61254,6 +61389,7 @@
 "dbb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/south)
 "dbc" = (
@@ -61294,6 +61430,7 @@
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	pixel_x = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dbj" = (
@@ -61302,6 +61439,7 @@
 	pixel_x = 12
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "dbk" = (
@@ -61314,6 +61452,7 @@
 /area/tyrargo/underground/museum_carpark)
 "dbm" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "dbn" = (
@@ -61330,6 +61469,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dbq" = (
@@ -61364,6 +61504,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dbv" = (
@@ -61386,6 +61527,7 @@
 /area/tyrargo/underground/museum_carpark)
 "dby" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "dbz" = (
@@ -61397,6 +61539,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dbA" = (
@@ -61405,6 +61548,7 @@
 	pixel_y = 22;
 	pixel_x = 2
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/south)
 "dbB" = (
@@ -61436,6 +61580,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "dbH" = (
@@ -61475,6 +61620,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dbN" = (
@@ -61513,6 +61659,7 @@
 "dbV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "dbW" = (
@@ -61532,6 +61679,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dbZ" = (
@@ -61539,6 +61687,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "dca" = (
@@ -61547,6 +61696,7 @@
 	name = "dirt";
 	alpha = 100
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "dcb" = (
@@ -61557,11 +61707,13 @@
 "dcc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrowncorners2/west,
 /area/tyrargo/underground/sewer/north)
 "dcd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrowncorners2,
 /area/tyrargo/underground/sewer/north)
 "dce" = (
@@ -61575,15 +61727,16 @@
 "dcg" = (
 /obj/structure/largecrate,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dch" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dci" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dcj" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
 	unacidable = 1;
@@ -61592,6 +61745,7 @@
 	name = "huge rock pileup";
 	explo_proof = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "dck" = (
@@ -61602,15 +61756,18 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "dcl" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/oob)
 "dcm" = (
 /obj/structure/machinery/power/apc/power/east{
 	start_charge = 30
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "dcn" = (
@@ -61624,6 +61781,7 @@
 	pixel_y = 14
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dcp" = (
@@ -61640,6 +61798,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dcr" = (
@@ -61651,6 +61810,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dcs" = (
@@ -61663,6 +61823,7 @@
 	pixel_y = -13;
 	explo_proof = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dct" = (
@@ -61673,9 +61834,11 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dcu" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dcv" = (
@@ -61690,12 +61853,13 @@
 	light_power = 2;
 	pixel_y = 29
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/oob)
 "dcw" = (
 /obj/structure/largecrate/supply/supplies/tables_racks,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dcx" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -61861,6 +62025,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/south)
 "dcO" = (
@@ -62200,7 +62365,7 @@
 "ddJ" = (
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "ddK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/bedroll{
@@ -62216,10 +62381,12 @@
 /area/tyrargo/indoors/mall)
 "ddM" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/oob)
 "ddN" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/oob)
 "ddO" = (
@@ -62272,6 +62439,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ddU" = (
@@ -62279,26 +62447,29 @@
 	icon_state = "trash_9"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "ddV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellowcorner,
 /area/tyrargo/underground/sewer/north)
 "ddW" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/underground/sewer/north)
 "ddX" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/underground/sewer/north)
 "ddY" = (
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "ddZ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3"
@@ -62309,7 +62480,7 @@
 	},
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "dea" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
@@ -62317,9 +62488,11 @@
 	pixel_y = 4;
 	pixel_x = -14
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellowcorner/north,
 /area/tyrargo/underground/sewer/north)
 "deb" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/underground/sewer/north)
 "dec" = (
@@ -64404,22 +64577,24 @@
 "djB" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djC" = (
 /obj/structure/largecrate/random/case/double,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djD" = (
 /obj/structure/largecrate,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djF" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3"
@@ -64430,17 +64605,17 @@
 	},
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djG" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/cell_stripe/north,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djH" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5"
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djI" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3"
@@ -64451,62 +64626,65 @@
 	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djJ" = (
 /obj/structure/largecrate/random/secure,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djK" = (
 /obj/structure/largecrate/guns/merc,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djL" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply/generator,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djO" = (
 /obj/structure/largecrate/empty/case,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djP" = (
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djQ" = (
 /obj/structure/largecrate/supply/supplies/flares,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djR" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
 /obj/structure/largecrate/random/barrel/black,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djS" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
 /obj/structure/largecrate/empty/case,
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "djT" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/tyrargo/underground/sewer/south)
 "djU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ash,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "djV" = (
@@ -64515,6 +64693,7 @@
 	name = "dirt";
 	alpha = 100
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "djW" = (
@@ -64523,6 +64702,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "djX" = (
@@ -64532,6 +64712,7 @@
 	pixel_x = 12
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "djY" = (
@@ -64543,6 +64724,7 @@
 	pixel_y = -13
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "djZ" = (
@@ -64551,10 +64733,12 @@
 	pixel_y = 28;
 	pixel_x = -26
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/south)
 "dka" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/south)
 "dkb" = (
@@ -64566,6 +64750,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dkc" = (
@@ -65867,6 +66052,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dns" = (
@@ -67328,6 +67514,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dqJ" = (
@@ -67338,6 +67525,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/underground/sewer/south)
 "dqK" = (
@@ -67362,9 +67550,11 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "dqM" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dqN" = (
@@ -67375,6 +67565,7 @@
 	name = "huge rock pileup";
 	explo_proof = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/underground/sewer/south)
 "dqO" = (
@@ -67402,9 +67593,11 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dqS" = (
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/south)
 "dqT" = (
@@ -67619,6 +67812,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "drG" = (
@@ -67654,6 +67848,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding10"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "drL" = (
@@ -67824,9 +68019,11 @@
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsm" = (
 /obj/structure/platform/metal/almayer/west,
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/south)
 "dsn" = (
+/obj/effect/blocker/water,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/tyrargo/oob)
 "dso" = (
@@ -67869,6 +68066,7 @@
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsw" = (
@@ -67924,6 +68122,7 @@
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsE" = (
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dsF" = (
@@ -68079,6 +68278,7 @@
 	pixel_x = -40
 	},
 /obj/item/device/reagent_scanner,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsZ" = (
@@ -68091,6 +68291,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dta" = (
@@ -68317,6 +68518,7 @@
 /obj/structure/machinery/door/airlock/maintenance/colony{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dtC" = (
@@ -68429,6 +68631,7 @@
 	unacidable = 1;
 	dir = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/oob)
 "dtQ" = (
@@ -69311,6 +69514,7 @@
 	icon_state = "W"
 	},
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/underground/engineering)
 "dvW" = (
@@ -69396,6 +69600,7 @@
 /area/tyrargo/underground/mall)
 "dwg" = (
 /obj/structure/prop/hybrisa/misc/trash/green,
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dwh" = (
@@ -69478,6 +69683,7 @@
 	pixel_y = -1;
 	pixel_x = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/underground/engineering)
 "dwt" = (
@@ -69486,6 +69692,7 @@
 	name = "power substation semiotic";
 	pixel_x = 34
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/south)
 "dwu" = (
@@ -69595,6 +69802,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/apartment)
 "dwI" = (
@@ -69641,6 +69849,7 @@
 /area/tyrargo/underground/mall)
 "dwR" = (
 /obj/structure/machinery/door/airlock/maintenance/colony,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dwS" = (
@@ -69687,6 +69896,7 @@
 /obj/structure/prop/hybrisa/signs/high_voltage{
 	pixel_y = 32
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/apartment)
 "dwY" = (
@@ -69826,6 +70036,7 @@
 /area/tyrargo/underground/apartment)
 "dxr" = (
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti1,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "dxs" = (
@@ -70307,21 +70518,25 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/tyrargo/underground/engineering)
 "dyI" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/north)
 "dyJ" = (
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dyK" = (
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dyL" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/north)
 "dyM" = (
@@ -70764,6 +70979,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/central)
 "dzX" = (
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dzY" = (
@@ -70885,12 +71101,15 @@
 	autoname = 1;
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/underground/engineering)
 "dAk" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/cell_stripe/west,
 /area/tyrargo/underground/sewer/north)
 "dAl" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dAm" = (
@@ -70996,18 +71215,22 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dAz" = (
 /obj/structure/janitorialcart,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/mall)
 "dAA" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "dAB" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "dAC" = (
@@ -71105,6 +71328,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/engineering)
 "dAK" = (
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/underground/engineering)
 "dAL" = (
@@ -71121,16 +71345,24 @@
 /turf/open/floor/hybrisa/tile/tilered,
 /area/tyrargo/underground/apartment)
 "dAN" = (
-/obj/structure/machinery/door/airlock/maintenance/colony,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/remains/robot,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dAO" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "dAP" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dAQ" = (
@@ -71401,7 +71633,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/underground/engineering)
 "dBx" = (
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/engineering)
 "dBy" = (
 /obj/structure/surface/rack,
@@ -71411,6 +71643,7 @@
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/tyrargo/underground/engineering)
 "dBz" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dBA" = (
@@ -71727,12 +71960,14 @@
 /area/tyrargo/underground/mall)
 "dCj" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "dCk" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/north)
 "dCl" = (
@@ -71821,6 +72056,7 @@
 /area/tyrargo/underground/mall)
 "dCv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dCw" = (
@@ -71923,6 +72159,7 @@
 	pixel_x = 3
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dCI" = (
@@ -72045,6 +72282,7 @@
 /area/tyrargo/underground/mall)
 "dCV" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "dCW" = (
@@ -72063,6 +72301,7 @@
 /obj/effect/decal/hybrisa/trash{
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dCZ" = (
@@ -72077,6 +72316,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/platingdmg3,
 /area/tyrargo/underground/apartment)
 "dDa" = (
@@ -72099,6 +72339,7 @@
 /area/tyrargo/underground/apartment)
 "dDd" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dDe" = (
@@ -72128,15 +72369,18 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/engineering)
 "dDi" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/cell_stripe/north,
 /area/tyrargo/underground/engineering)
 "dDj" = (
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/engineering)
 "dDk" = (
@@ -72147,6 +72391,7 @@
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDl" = (
@@ -72178,6 +72423,7 @@
 	pixel_y = 14
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDp" = (
@@ -72227,6 +72473,7 @@
 /area/tyrargo/underground/engineering)
 "dDu" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony,
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/underground/engineering)
 "dDv" = (
@@ -72246,6 +72493,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti5,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDw" = (
@@ -72263,6 +72511,7 @@
 /obj/structure/machinery/door/airlock/maintenance/colony{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDy" = (
@@ -72271,6 +72520,7 @@
 	pixel_y = 7
 	},
 /obj/effect/spawner/random/pills/highchance,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDz" = (
@@ -72315,20 +72565,24 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dDC" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/underground/sewer/north)
 "dDD" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/greencorner/west,
 /area/tyrargo/underground/sewer/north)
 "dDE" = (
 /obj/effect/decal/cleanable/flour,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/greencorner,
 /area/tyrargo/underground/sewer/north)
 "dDF" = (
 /obj/structure/machinery/door/airlock/maintenance/colony{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dDG" = (
@@ -72337,6 +72591,7 @@
 	icon_state = "trash_13";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/oob)
 "dDH" = (
@@ -72347,6 +72602,7 @@
 	name = "huge rock pileup";
 	explo_proof = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dDI" = (
@@ -72357,25 +72613,31 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dDJ" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dDK" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkredcorners2/west,
 /area/tyrargo/underground/sewer/north)
 "dDL" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkredcorners2,
 /area/tyrargo/underground/sewer/north)
 "dDM" = (
 /obj/structure/machinery/power/apc/power/south{
 	start_charge = 30
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dDN" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dDO" = (
@@ -72386,6 +72648,7 @@
 	pixel_x = -5
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dDP" = (
@@ -72397,6 +72660,7 @@
 	pixel_y = -13
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dDQ" = (
@@ -72407,6 +72671,7 @@
 	pixel_x = -8
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dDR" = (
@@ -72415,6 +72680,7 @@
 	pixel_y = 28;
 	layer = 3
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
 "dDS" = (
@@ -72432,6 +72698,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dDT" = (
@@ -72442,6 +72709,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dDU" = (
@@ -72455,15 +72723,18 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dDV" = (
 /obj/effect/decal/hybrisa/lattice/full,
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dDW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/oob)
 "dDX" = (
@@ -72475,6 +72746,7 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dDY" = (
@@ -72485,33 +72757,41 @@
 	name = "huge rock pileup";
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dDZ" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dEa" = (
+/obj/effect/blocker/water,
 /turf/open/floor/platingdmg3,
 /area/tyrargo/underground/sewer/north)
 "dEb" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkredcorners2/east,
 /area/tyrargo/underground/sewer/north)
 "dEc" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg1,
 /area/tyrargo/underground/sewer/north)
 "dEd" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/northwest,
 /area/tyrargo/underground/sewer/north)
 "dEe" = (
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/sewer/north)
 "dEf" = (
+/obj/effect/blocker/water,
 /turf/open/auto_turf/hybrisa_auto_turf/layer3,
 /area/tyrargo/underground/sewer/north)
 "dEg" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/underground/sewer/north)
 "dEh" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/underground/sewer/north)
 "dEi" = (
@@ -72735,6 +73015,7 @@
 	pixel_y = 24;
 	pixel_x = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/south)
 "dEF" = (
@@ -73071,11 +73352,13 @@
 "dFH" = (
 /obj/structure/largecrate/random/barrel/red,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dFI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dFJ" = (
@@ -73085,6 +73368,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dFL" = (
@@ -73124,6 +73408,7 @@
 /area/tyrargo/underground/mall)
 "dFQ" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/south)
 "dFR" = (
@@ -73143,6 +73428,7 @@
 	pixel_x = 11;
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dFT" = (
@@ -73344,6 +73630,7 @@
 	pixel_y = 28;
 	pixel_x = 26
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/south)
 "dGs" = (
@@ -73395,6 +73682,7 @@
 	pixel_y = -13
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "dGz" = (
@@ -73403,6 +73691,7 @@
 	icon_state = "trash_5";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/south)
 "dGA" = (
@@ -73484,6 +73773,7 @@
 /area/tyrargo/outdoors/outskirts_road/central)
 "dGI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/south)
 "dGJ" = (
@@ -73551,6 +73841,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dGQ" = (
@@ -73590,6 +73881,7 @@
 	pixel_y = 28;
 	pixel_x = 26
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/south)
 "dGU" = (
@@ -73603,6 +73895,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dGV" = (
@@ -73724,6 +74017,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dHe" = (
@@ -73790,6 +74084,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dHm" = (
@@ -73838,6 +74133,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dHq" = (
@@ -73958,6 +74254,7 @@
 	pixel_y = 27;
 	pixel_x = 32
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dHH" = (
@@ -73991,6 +74288,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dHM" = (
@@ -73999,6 +74297,7 @@
 	icon_state = "trash_2";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/south)
 "dHN" = (
@@ -74079,6 +74378,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dHZ" = (
@@ -74090,6 +74390,7 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dIa" = (
@@ -74147,6 +74448,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/south)
 "dIh" = (
@@ -74211,6 +74513,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dIq" = (
@@ -74219,6 +74522,7 @@
 	pixel_y = 28;
 	pixel_x = -26
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/north)
 "dIr" = (
@@ -74292,6 +74596,7 @@
 /area/tyrargo/underground/mall)
 "dIz" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/north)
 "dIA" = (
@@ -74303,6 +74608,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dIB" = (
@@ -74382,11 +74688,13 @@
 	pixel_y = 28;
 	pixel_x = 26
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "dIN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/north)
 "dIO" = (
@@ -74589,11 +74897,13 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dJr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ash,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/north)
 "dJs" = (
@@ -74601,6 +74911,7 @@
 	icon_state = "trash_16";
 	pixel_y = 15
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dJt" = (
@@ -74707,6 +75018,7 @@
 /area/tyrargo/underground/mall)
 "dJH" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/north)
 "dJI" = (
@@ -74796,6 +75108,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dJT" = (
@@ -74948,6 +75261,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/north)
 "dKp" = (
@@ -75015,6 +75329,7 @@
 	pixel_y = 28;
 	pixel_x = 26
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/north)
 "dKw" = (
@@ -75179,6 +75494,7 @@
 /area/tyrargo/underground/mall)
 "dKV" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/north)
 "dKW" = (
@@ -75247,6 +75563,7 @@
 /area/tyrargo/underground/mall)
 "dLf" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "dLg" = (
@@ -75254,6 +75571,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dLh" = (
@@ -75380,12 +75698,14 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dLx" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dLy" = (
@@ -75533,6 +75853,7 @@
 	icon_state = "lower_2";
 	layer = 2
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dLU" = (
@@ -75545,11 +75866,13 @@
 	pixel_x = 16;
 	pixel_y = -7
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dLV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/platingdmg3,
 /area/tyrargo/underground/apartment)
 "dLW" = (
@@ -75706,16 +76029,19 @@
 	icon_state = "siding8"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dMn" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 36
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/north)
 "dMo" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dMp" = (
@@ -75723,6 +76049,7 @@
 	pixel_y = 7;
 	pixel_x = 5
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dMq" = (
@@ -75731,6 +76058,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dMr" = (
@@ -75745,6 +76073,7 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/apartment)
 "dMs" = (
@@ -75752,6 +76081,7 @@
 	icon_state = "trash_15";
 	pixel_y = 14
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/platingdmg1,
 /area/tyrargo/underground/apartment)
 "dMt" = (
@@ -75759,6 +76089,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/platingdmg3,
 /area/tyrargo/underground/apartment)
 "dMu" = (
@@ -75847,11 +76178,13 @@
 	icon_state = "trash_15";
 	pixel_y = 14
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dMC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg2/west,
 /area/tyrargo/underground/apartment)
 "dMD" = (
@@ -75863,6 +76196,7 @@
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti2{
 	pixel_x = -10
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/apartment)
 "dME" = (
@@ -75930,6 +76264,7 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dMK" = (
@@ -75939,6 +76274,7 @@
 	pixel_x = 31;
 	pixel_y = 5
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/apartment)
 "dML" = (
@@ -75971,6 +76307,7 @@
 /area/tyrargo/underground/mall)
 "dMO" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/north)
 "dMP" = (
@@ -75989,6 +76326,7 @@
 	pixel_y = 20
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dMR" = (
@@ -75998,11 +76336,13 @@
 	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dMS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg1,
 /area/tyrargo/underground/apartment)
 "dMT" = (
@@ -76035,6 +76375,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg3/west,
 /area/tyrargo/underground/apartment)
 "dMW" = (
@@ -76077,6 +76418,7 @@
 	name = "dirt";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dNa" = (
@@ -76087,12 +76429,14 @@
 	pixel_y = -24;
 	pixel_x = 14
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dNb" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dNc" = (
@@ -76101,6 +76445,7 @@
 	pixel_y = 4;
 	pixel_x = -14
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dNd" = (
@@ -76109,16 +76454,19 @@
 	icon_state = "trash_14";
 	pixel_y = 17
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkredcorners2/west,
 /area/tyrargo/underground/sewer/north)
 "dNe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dNf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dNg" = (
@@ -76126,6 +76474,7 @@
 	icon_state = "trash_7"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dNh" = (
@@ -76133,10 +76482,12 @@
 	pixel_y = -24
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dNi" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2,
 /area/tyrargo/underground/sewer/north)
 "dNj" = (
@@ -76145,6 +76496,7 @@
 	pixel_x = -13;
 	pixel_y = 11
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow,
 /area/tyrargo/underground/sewer/north)
 "dNk" = (
@@ -76154,6 +76506,7 @@
 	pixel_y = 1
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNl" = (
@@ -76163,6 +76516,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dNm" = (
@@ -76172,6 +76526,7 @@
 	pixel_y = -3
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNn" = (
@@ -76181,6 +76536,7 @@
 	alpha = 100
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNo" = (
@@ -76191,6 +76547,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNp" = (
@@ -76201,6 +76558,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dNq" = (
@@ -76209,6 +76567,7 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNr" = (
@@ -76219,6 +76578,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNt" = (
@@ -76228,12 +76588,14 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNv" = (
@@ -76244,6 +76606,7 @@
 	pixel_y = -13
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNw" = (
@@ -76252,6 +76615,7 @@
 	icon_state = "trash_11"
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNx" = (
@@ -76261,6 +76625,7 @@
 	pixel_y = -3
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNy" = (
@@ -76268,6 +76633,7 @@
 	pixel_y = 22;
 	pixel_x = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dNz" = (
@@ -76278,6 +76644,7 @@
 	icon_state = "trash_12";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dNA" = (
@@ -76285,6 +76652,7 @@
 	dir = 1;
 	icon_state = "trash_11"
 	},
+/obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/north)
 "dNB" = (
@@ -76296,6 +76664,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNC" = (
@@ -76310,6 +76679,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dND" = (
@@ -76322,6 +76692,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNE" = (
@@ -76333,6 +76704,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNF" = (
@@ -76343,6 +76715,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNG" = (
@@ -76355,6 +76728,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNH" = (
@@ -76367,6 +76741,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dNI" = (
@@ -76378,6 +76753,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNJ" = (
@@ -76389,6 +76765,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNK" = (
@@ -76399,10 +76776,12 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dNL" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNM" = (
@@ -76419,6 +76798,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNO" = (
@@ -76428,6 +76808,7 @@
 	pixel_y = 28;
 	pixel_x = 20
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNP" = (
@@ -76436,6 +76817,7 @@
 	pixel_x = -18;
 	pixel_y = 6
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNQ" = (
@@ -76443,6 +76825,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNR" = (
@@ -76452,6 +76835,7 @@
 	pixel_y = -2;
 	pixel_x = -8
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNS" = (
@@ -76460,6 +76844,7 @@
 	icon_state = "trash_13";
 	pixel_y = 7
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNT" = (
@@ -76468,10 +76853,12 @@
 	pixel_y = 28;
 	pixel_x = 20
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNU" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNV" = (
@@ -76481,11 +76868,13 @@
 	pixel_x = 11;
 	pixel_y = -13
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNX" = (
@@ -76494,6 +76883,7 @@
 	icon_state = "trash_12";
 	pixel_y = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dNY" = (
@@ -76501,6 +76891,7 @@
 	pixel_y = 28;
 	pixel_x = 20
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkredcorners2/east,
 /area/tyrargo/underground/sewer/north)
 "dNZ" = (
@@ -76508,6 +76899,7 @@
 	pixel_y = 5;
 	pixel_x = -5
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/underground/sewer/north)
 "dOa" = (
@@ -76523,6 +76915,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/cobweb,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dOb" = (
@@ -76538,10 +76931,12 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/cobweb2,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dOc" = (
 /obj/effect/decal/cleanable/blood/oil,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg1,
 /area/tyrargo/underground/sewer/north)
 "dOd" = (
@@ -76557,6 +76952,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dOe" = (
@@ -76645,16 +77041,19 @@
 "dOs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti7,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "dOt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti3,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "dOu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti4,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "dOv" = (
@@ -76864,6 +77263,7 @@
 /obj/structure/prop/hybrisa/signs/high_voltage/small{
 	pixel_x = -29
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/south)
 "dPb" = (
@@ -77313,6 +77713,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti6,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dQn" = (
@@ -77339,7 +77740,7 @@
 /area/tyrargo/underground/engineering)
 "dQr" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/underground/engineering)
 "dQs" = (
 /obj/structure/prop/hybrisa/signs/high_voltage{
@@ -77593,24 +77994,30 @@
 	light_power = 2;
 	pixel_y = 29
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg3/west,
 /area/tyrargo/underground/apartment)
 "dRa" = (
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti3,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dRb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti1,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dRc" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg2/west,
 /area/tyrargo/underground/sewer/north)
 "dRd" = (
+/obj/effect/blocker/water,
 /turf/open/floor/platingdmg1,
 /area/tyrargo/underground/sewer/north)
 "dRe" = (
+/obj/effect/blocker/water,
 /turf/open/floor/plating/platingdmg3/west,
 /area/tyrargo/underground/sewer/north)
 "dRf" = (
@@ -77637,10 +78044,12 @@
 /turf/open/floor/plating/platingdmg2/west,
 /area/tyrargo/oob)
 "dRh" = (
+/obj/effect/blocker/water,
 /turf/open/floor/platingdmg1,
 /area/tyrargo/oob)
 "dRi" = (
 /obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
+/obj/effect/blocker/water,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/sewer/north)
 "dRj" = (
@@ -77767,6 +78176,7 @@
 	light_range = 1
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "dRx" = (
@@ -77963,6 +78373,7 @@
 	pixel_x = -4;
 	pixel_y = 11
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/mall)
 "dRU" = (
@@ -77981,11 +78392,13 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/mall)
 "dRV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/mall)
 "dRW" = (
@@ -78016,6 +78429,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/mall)
 "dRZ" = (
@@ -78060,6 +78474,7 @@
 	light_range = 1;
 	light_power = 2
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "dSg" = (
@@ -78313,6 +78728,7 @@
 	light_color = "#96DED1";
 	light_range = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/oob)
 "dSS" = (
@@ -78323,6 +78739,7 @@
 	light_color = "#96DED1";
 	light_range = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkred2/north,
 /area/tyrargo/underground/sewer/north)
 "dST" = (
@@ -78344,6 +78761,7 @@
 	light_range = 1;
 	light_power = 2
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dSU" = (
@@ -78894,6 +79312,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUu" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/oob)
 "dUv" = (
@@ -79071,6 +79490,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUT" = (
@@ -79100,12 +79520,14 @@
 /obj/structure/sign/safety/maint{
 	pixel_y = 32
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUY" = (
 /obj/structure/sign/safety/maint{
 	pixel_y = 32
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUZ" = (
@@ -79116,6 +79538,7 @@
 	light_power = 2;
 	pixel_y = -31
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "dVa" = (
@@ -79182,6 +79605,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dVk" = (
@@ -79245,6 +79669,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water/toxic/Group_1,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dVr" = (
@@ -79280,33 +79705,39 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob)
 "dVw" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/oob)
 "dVx" = (
+/obj/effect/blocker/water,
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/oob)
 "dVy" = (
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dVz" = (
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dVA" = (
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dVB" = (
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dVC" = (
@@ -79314,6 +79745,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dVD" = (
@@ -79321,6 +79753,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dVE" = (
@@ -79333,18 +79766,21 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dVF" = (
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dVG" = (
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dVH" = (
@@ -79352,6 +79788,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dVI" = (
@@ -79359,6 +79796,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dVJ" = (
@@ -79384,12 +79822,14 @@
 	pixel_y = -3;
 	pixel_x = -20
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/underground/sewer/south)
 "dVN" = (
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dVO" = (
@@ -79397,6 +79837,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dVP" = (
@@ -79404,6 +79845,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dVQ" = (
@@ -79421,6 +79863,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_x = 36
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dVS" = (
@@ -79437,6 +79880,7 @@
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dVV" = (
@@ -79444,43 +79888,51 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dVW" = (
 /obj/effect/decal/siding{
 	icon_state = "siding9"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dVX" = (
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dVY" = (
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dVZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWa" = (
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWc" = (
 /obj/effect/decal/siding{
 	icon_state = "siding10"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWd" = (
@@ -79488,6 +79940,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWe" = (
@@ -79495,28 +79948,33 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWf" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWg" = (
 /obj/effect/decal/siding{
 	icon_state = "siding6"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWh" = (
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWi" = (
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dWj" = (
@@ -79524,18 +79982,21 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWk" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dWl" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWm" = (
@@ -79543,16 +80004,19 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWn" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWp" = (
@@ -79563,18 +80027,21 @@
 	pixel_y = 12
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWq" = (
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWr" = (
 /obj/effect/decal/siding{
 	icon_state = "siding9"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWs" = (
@@ -79582,6 +80049,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWt" = (
@@ -79593,6 +80061,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding10"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "dWv" = (
@@ -79601,6 +80070,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWw" = (
@@ -79614,6 +80084,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "dWx" = (
@@ -79946,6 +80417,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXn" = (
@@ -79962,6 +80434,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXp" = (
@@ -79976,6 +80449,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXr" = (
@@ -79991,6 +80465,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXt" = (
@@ -80028,6 +80503,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXx" = (
@@ -80035,6 +80511,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXy" = (
@@ -80060,6 +80537,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXA" = (
@@ -80077,58 +80555,70 @@
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXC" = (
 /obj/effect/decal/siding{
 	icon_state = "siding9"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXD" = (
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dXE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dXF" = (
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dXG" = (
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXH" = (
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXK" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXL" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXM" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXN" = (
@@ -80140,18 +80630,21 @@
 	pixel_y = -13
 	},
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dXO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/siding,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dXP" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dXQ" = (
@@ -80159,6 +80652,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dXR" = (
@@ -80166,18 +80660,21 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
 "dXS" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXT" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXU" = (
@@ -80185,6 +80682,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXV" = (
@@ -80192,6 +80690,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXW" = (
@@ -80199,6 +80698,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "dXX" = (
@@ -80206,12 +80706,14 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dXY" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/north)
 "dXZ" = (
@@ -80219,12 +80721,14 @@
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "dYa" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
 "dYb" = (
@@ -81739,7 +82243,7 @@
 /obj/effect/spawner/random/toolbox{
 	layer = 4
 	},
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/indoors/power_substation_outskirt)
 "ebn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -82100,14 +82604,17 @@
 	icon_state = "siding8"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ebS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/underground/sewer/south)
 "ebT" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/sewer/south)
 "ebU" = (
@@ -82120,11 +82627,13 @@
 /area/tyrargo/underground/sewer/south)
 "ebW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/south)
 "ebX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/sewer/south)
 "ebY" = (
@@ -82132,46 +82641,56 @@
 	icon_state = "siding9"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ebZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "eca" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "ecb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "ecc" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecd" = (
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ece" = (
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecg" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ech" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/underground/sewer/south)
 "eci" = (
@@ -82189,6 +82708,7 @@
 	icon_state = "siding8"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ecl" = (
@@ -82196,6 +82716,7 @@
 	icon_state = "siding4"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ecm" = (
@@ -82203,6 +82724,7 @@
 	icon_state = "siding8"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecn" = (
@@ -82214,6 +82736,7 @@
 	pixel_x = 4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "eco" = (
@@ -82221,6 +82744,7 @@
 	icon_state = "siding4"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecp" = (
@@ -82228,6 +82752,7 @@
 	icon_state = "siding8"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecq" = (
@@ -82235,29 +82760,35 @@
 	icon_state = "siding4"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/south)
 "ecs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "ect" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "ecu" = (
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "ecv" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/south)
 "ecw" = (
@@ -82265,24 +82796,29 @@
 	icon_state = "siding8"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "ecy" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "ecz" = (
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "ecA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "ecB" = (
@@ -82290,10 +82826,12 @@
 	icon_state = "siding4"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "ecC" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "ecD" = (
@@ -82306,19 +82844,23 @@
 	icon_state = "siding4"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "ecF" = (
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "ecG" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "ecH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
 "ecI" = (
@@ -82326,16 +82868,19 @@
 	icon_state = "siding4"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "ecJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "ecK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "ecL" = (
@@ -82343,6 +82888,7 @@
 	icon_state = "siding4"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "ecM" = (
@@ -82350,10 +82896,12 @@
 	icon_state = "siding8"
 	},
 /obj/effect/alien/resin/sticky,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "ecN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "ecO" = (
@@ -82361,11 +82909,13 @@
 	icon_state = "siding5"
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "ecP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "ecQ" = (
@@ -82669,6 +83219,349 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
+"edz" = (
+/obj/effect/blocker/water,
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/oob)
+"edA" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/effect/blocker/water,
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/oob)
+"edB" = (
+/obj/structure/largecrate/supply/supplies/water,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"edC" = (
+/obj/effect/blocker/water,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"edD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"edE" = (
+/obj/effect/blocker/water,
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"edF" = (
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/underground/power_substation)
+"edG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"edH" = (
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"edI" = (
+/obj/structure/machinery/filtration_button/floodgate{
+	layer = 4;
+	pixel_x = 6;
+	pixel_y = -7;
+	light_on = 1;
+	light_range = 2;
+	desc = "Activates the filtration mechanism. This switch is powered via the underground power-subnet APC, located to the east of this area."
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
+	light_on = 1;
+	light_range = 1;
+	light_color = "#017549";
+	pixel_x = 2;
+	explo_proof = 1;
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/coagulation/icon0_5,
+/area/tyrargo/underground/power_substation)
+"edJ" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/blocker/water,
+/obj/structure/machinery/dispersal_initiator/floodgate,
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/south)
+"edK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"edL" = (
+/obj/effect/blocker/water,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/tyrargo/underground/sewer/south)
+"edM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/darkyellow2/north,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"edN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"edO" = (
+/obj/effect/blocker/water,
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/underground/sewer/south)
+"edP" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid{
+	dir = 2
+	},
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"edQ" = (
+/obj/effect/blocker/water,
+/turf/open/floor/prison/cell_stripe/west,
+/area/tyrargo/underground/power_substation)
+"edR" = (
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"edS" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/power_substation)
+"edT" = (
+/obj/effect/blocker/water,
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/underground/power_substation)
+"edU" = (
+/obj/effect/blocker/water,
+/turf/open/floor/prison/cell_stripe/west,
+/area/tyrargo/underground/sewer/south)
+"edV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"edW" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/blocker/water,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/power_substation)
+"edX" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"edY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"edZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"eea" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/underground/power_substation)
+"eeb" = (
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 0
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"eec" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/power_substation)
+"eed" = (
+/obj/effect/blocker/water,
+/turf/open/auto_turf/hybrisa_auto_turf/layer3,
+/area/tyrargo/underground/sewer/south)
+"eee" = (
+/obj/effect/blocker/water,
+/obj/effect/blocker/water,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/tyrargo/underground/sewer/south)
+"eef" = (
+/obj/structure/machinery/door/airlock/maintenance/colony{
+	dir = 1
+	},
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"eeg" = (
+/obj/effect/blocker/water,
+/obj/effect/blocker/water,
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
+/area/tyrargo/underground/sewer/south)
+"eeh" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/blocker/water,
+/turf/open/floor/plating,
+/area/tyrargo/underground/sewer/south)
+"eei" = (
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eej" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/tyrargo/underground/museum_carpark)
+"eek" = (
+/obj/effect/blocker/water,
+/turf/open/floor/plating,
+/area/tyrargo/underground/museum_carpark)
+"eel" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/tyrargo/oob)
+"eem" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/effect/blocker/water,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"een" = (
+/obj/effect/blocker/water,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/tyrargo/underground/museum_carpark)
+"eeo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/engineering)
+"eep" = (
+/obj/effect/blocker/water,
+/turf/open/floor/hybrisa/tile/blacktileshiny,
+/area/tyrargo/underground/mall)
+"eeq" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/blocker/water,
+/turf/open/floor/plating,
+/area/tyrargo/underground/museum_carpark)
+"eer" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/blocker/water,
+/turf/open/shuttle/escapepod/floor1/east,
+/area/tyrargo/underground/engineering)
+"ees" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/underground/apartment)
+"eet" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/underground/apartment)
+"eeu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/blocker/water,
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/engineering)
+"eev" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/glass/colony,
+/obj/effect/blocker/water,
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/engineering)
+"eew" = (
+/obj/effect/blocker/water,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/underground/apartment)
+"eex" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/darkyellow2/east,
+/area/tyrargo/underground/engineering)
+"eey" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/darkyellow2/west,
+/area/tyrargo/underground/engineering)
+"eez" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/underground/engineering)
+"eeA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/plating,
+/area/tyrargo/underground/mall)
+"eeB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/plating,
+/area/tyrargo/underground/museum_carpark)
+"eeC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/museum_carpark)
+"eeD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/plating,
+/area/tyrargo/underground/apartment)
+"eeE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/engineering)
+"eeF" = (
+/obj/structure/machinery/door/airlock/maintenance/colony,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"eeG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"eeH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/syringe{
+	icon_state = "broken"
+	},
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"eeI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/plating/platingdmg1,
+/area/tyrargo/underground/apartment)
+"eeJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/plating/platingdmg2/west,
+/area/tyrargo/underground/apartment)
+"eeK" = (
+/obj/effect/blocker/water,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/tyrargo/underground/sewer/north)
 "egq" = (
 /obj/structure/toilet{
 	dir = 4
@@ -83359,6 +84252,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "fIR" = (
@@ -84151,6 +85045,7 @@
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
 "hjg" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/tyrargo/underground/sewer/south)
 "hjr" = (
@@ -84629,6 +85524,7 @@
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/indoors/engineering/ground)
 "iez" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/oob)
 "ifn" = (
@@ -84788,6 +85684,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "iGz" = (
+/obj/effect/blocker/water,
 /turf/open/floor/strata/green3/west,
 /area/tyrargo/underground/museum_carpark)
 "iGC" = (
@@ -85295,7 +86192,7 @@
 /area/tyrargo/indoors/apartment/north_ground)
 "jOW" = (
 /turf/open/floor/prison/cell_stripe,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "jOY" = (
 /turf/open/floor/strata/red4/west,
 /area/tyrargo/underground/museum_carpark)
@@ -85383,6 +86280,7 @@
 	},
 /area/tyrargo/indoors/saipan)
 "kbV" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "kcv" = (
@@ -85524,7 +86422,7 @@
 	icon_state = "1-2-4-8"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "krq" = (
 /obj/structure/prop/tyrargo/boards/boards_2{
 	layer = 2.1
@@ -86043,7 +86941,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "lsF" = (
 /turf/open/floor/prison/cell_stripe/west,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "lvo" = (
 /obj/effect/decal/siding{
 	icon_state = "siding4"
@@ -86396,6 +87294,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/indoors/security/ground)
 "mdH" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/west,
 /area/tyrargo/underground/sewer/south)
 "meo" = (
@@ -86566,7 +87465,7 @@
 "mxJ" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "mxN" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -86583,6 +87482,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "mBF" = (
@@ -87530,7 +88430,7 @@
 /area/tyrargo/indoors/apartment/south_upper)
 "oee" = (
 /turf/open/floor/prison/cell_stripe/east,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "oek" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -87732,6 +88632,7 @@
 	dir = 4;
 	pixel_y = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
 "ozG" = (
@@ -87754,7 +88655,7 @@
 	icon_state = "lattice3"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "oAw" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/prop/tyrargo/military_evac_sign{
@@ -88155,7 +89056,7 @@
 /area/tyrargo/indoors/apartment/north_ground)
 "piV" = (
 /turf/open/floor/prison/cell_stripe/north,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "plc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_magazine/rifle/heap{
@@ -89054,6 +89955,7 @@
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/tyrargo/indoors/apartment/north_ground)
 "qVt" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/oob)
 "qWy" = (
@@ -89458,6 +90360,7 @@
 /obj/effect/hybrisa/misc/fake/wire/yellow{
 	pixel_x = 4
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "rFd" = (
@@ -89505,11 +90408,12 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "rKc" = (
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor/prison/darkyellowcorners2/southwest,
+/turf/open/floor/prison/darkyellowcorners2,
 /area/tyrargo/indoors/engineering/ground)
 "rKe" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
@@ -89528,7 +90432,7 @@
 	pixel_y = -16
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "rKn" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_16";
@@ -89599,7 +90503,7 @@
 	pixel_y = 21
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "rRS" = (
 /obj/structure/prop/vehicles/tank/longstreet/concussive/destroyed{
 	pixel_x = 17
@@ -90405,7 +91309,7 @@
 "tqO" = (
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison/floor_marked,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "tro" = (
 /turf/open/floor/corsat/green,
 /area/tyrargo/underground/bunker/south)
@@ -90466,6 +91370,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "twj" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/south)
 "twy" = (
@@ -90492,6 +91397,7 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "txM" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/southwest,
 /area/tyrargo/underground/sewer/south)
 "txO" = (
@@ -91656,8 +92562,9 @@
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice3"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/cell_stripe/west,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "vxH" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/asphalt,
@@ -91810,6 +92717,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "vEi" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/greencorner/north,
 /area/tyrargo/underground/sewer/south)
 "vGK" = (
@@ -91896,7 +92804,7 @@
 	dir = 2
 	},
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/sewer/south)
+/area/tyrargo/underground/power_substation)
 "vKf" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 4
@@ -92225,6 +93133,7 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "wlk" = (
+/obj/effect/blocker/water,
 /turf/open/floor/prison/green/east,
 /area/tyrargo/underground/sewer/south)
 "wlF" = (
@@ -115788,7 +116697,7 @@ bsw
 bta
 dDW
 dXP
-cqy
+edz
 dXD
 dDG
 bta
@@ -115970,7 +116879,7 @@ bsw
 bta
 cNH
 dXQ
-cqy
+edz
 dXE
 cNk
 bta
@@ -116152,7 +117061,7 @@ bsw
 bta
 cNI
 dXQ
-cqy
+edz
 dXE
 cNk
 bta
@@ -116516,7 +117425,7 @@ bsw
 bta
 cNH
 dXR
-cqy
+edz
 dDO
 cNk
 bta
@@ -116698,7 +117607,7 @@ bsw
 bta
 cNH
 dXR
-cqy
+edz
 cNn
 cNk
 bta
@@ -116880,7 +117789,7 @@ bsw
 bta
 dSR
 cNA
-cqy
+edz
 dXF
 cNk
 bta
@@ -118888,7 +119797,7 @@ dDJ
 dDC
 dDu
 dDi
-dPz
+eeE
 dPU
 dPP
 dCx
@@ -119444,7 +120353,7 @@ dQy
 dQq
 dPR
 dPR
-dPR
+eey
 dPR
 dzK
 dPz
@@ -119465,7 +120374,7 @@ dWt
 dWt
 bgC
 dWt
-dWt
+eel
 bgC
 dtm
 dtm
@@ -119625,9 +120534,9 @@ dzL
 dzH
 dQr
 dzV
-dPL
-dPL
-dzV
+eez
+eez
+eex
 dPK
 dPA
 dyH
@@ -119646,8 +120555,8 @@ dtm
 dWt
 dWt
 bgC
-dWt
-dWt
+eel
+eel
 bgC
 dtm
 dtx
@@ -119817,9 +120726,9 @@ dvf
 dvf
 dvf
 dvf
-dvp
-dwC
-dOW
+eeu
+eer
+eeo
 dvf
 dvf
 dvf
@@ -119996,22 +120905,22 @@ dvf
 dvf
 dvf
 dvf
-cLQ
-cLQ
+eem
+eem
+dvf
+eev
 dvf
 dwm
 dvf
-dwm
-dvf
-cLQ
-cLQ
+eem
+eem
 bta
 bta
 bta
 bta
 bta
-cLQ
-cLQ
+eem
+eem
 bta
 bta
 bta
@@ -120334,7 +121243,7 @@ pQM
 dRr
 dRl
 bta
-dEe
+eeK
 bgG
 dNL
 dXS
@@ -120381,10 +121290,10 @@ dVP
 dVF
 dVF
 cZo
-cZs
+edK
 djT
 ahW
-cKl
+edC
 dUr
 dUr
 dsH
@@ -120747,10 +121656,10 @@ cZg
 cZg
 dVZ
 cLY
-dsz
-cKl
-dUr
-dUr
+eef
+edC
+edY
+edY
 dUD
 anA
 dsx
@@ -120930,8 +121839,8 @@ cZg
 dWn
 cLY
 ahW
-cKl
-cKl
+edC
+edC
 dUr
 dUE
 anA
@@ -121072,7 +121981,7 @@ dDL
 dBz
 dtA
 dtA
-dtQ
+eeF
 dtA
 dbi
 dbi
@@ -121091,7 +122000,7 @@ dtA
 dHZ
 rEA
 dtA
-dwI
+eew
 dwH
 dtA
 dtA
@@ -121254,7 +122163,7 @@ dch
 dtA
 dtA
 dDk
-dCI
+eeG
 dtA
 dtA
 dtA
@@ -121274,7 +122183,7 @@ dtA
 dtA
 dtA
 dwX
-dHt
+ees
 dwu
 dtA
 dtA
@@ -121436,7 +122345,7 @@ dch
 dtA
 dDv
 dMo
-dCI
+eeG
 dLx
 dCH
 dtA
@@ -121455,8 +122364,8 @@ dtA
 dxY
 dxy
 dxm
-dHt
-dHu
+ees
+eet
 dwu
 dtA
 dvy
@@ -121638,7 +122547,7 @@ dxZ
 dHN
 dxn
 dHt
-dHt
+ees
 dwu
 dtA
 dOC
@@ -121849,7 +122758,7 @@ ufc
 bgJ
 dqu
 cMI
-dqu
+edI
 dqu
 dqu
 crd
@@ -121982,7 +122891,7 @@ dDJ
 dNa
 dtA
 dMr
-dLA
+eeD
 dLz
 dCK
 dtA
@@ -122165,7 +123074,7 @@ mAQ
 dDx
 dMs
 dLV
-dLA
+eeD
 dCL
 dtA
 dCn
@@ -122527,7 +123436,7 @@ dXG
 dch
 dtA
 dDy
-dLA
+eeD
 dLz
 dtD
 dCN
@@ -122931,9 +123840,9 @@ dWl
 cZg
 dWo
 cLY
-dsz
-dUH
-dUH
+eef
+edZ
+edZ
 dUH
 cKl
 ahW
@@ -123305,7 +124214,7 @@ ahW
 dsv
 dWk
 dsm
-dsm
+edJ
 dsm
 dWi
 ceK
@@ -123484,13 +124393,13 @@ dUr
 dsI
 dsA
 ahW
-dad
+edM
 dWk
 dqS
 dqS
 dqS
 dWi
-ceL
+edE
 ahW
 bsw
 bsw
@@ -123666,20 +124575,20 @@ dUB
 dsI
 dsB
 ahW
-dad
+edM
 dWk
 dqS
 dEE
 dqS
 dWi
-ceL
+edE
 ahW
 bsw
 bsw
 bsw
 ahW
 dVT
-cKl
+edC
 dVO
 cKl
 dVK
@@ -123848,13 +124757,13 @@ bFL
 dUJ
 ahW
 ahW
-dad
+edM
 dWk
 dqS
 dqS
 dqS
 dWi
-ceL
+edE
 ahW
 ahW
 bsw
@@ -123862,9 +124771,9 @@ bsw
 ahW
 dVU
 dVR
-dUB
-cKl
-dUE
+edD
+edC
+edB
 ahW
 bsw
 bsw
@@ -124421,7 +125330,7 @@ dVC
 dVA
 dVA
 dVy
-eMV
+bnl
 bta
 bsw
 bsw
@@ -124569,7 +125478,7 @@ dWe
 cZg
 cZg
 cZg
-dqS
+eeg
 dqS
 cZg
 cZg
@@ -124599,11 +125508,11 @@ cZg
 dqN
 dqJ
 ctA
-cYR
-cqy
-cqy
+edA
+edz
+edz
 ctA
-eMV
+bnl
 bta
 bsw
 bsw
@@ -124785,7 +125694,7 @@ dVD
 dVB
 dVB
 dVz
-eMV
+bnl
 bta
 bsw
 bsw
@@ -124884,7 +125793,7 @@ dEs
 dEn
 dVr
 dEe
-dEe
+eeK
 dBz
 dDV
 bgQ
@@ -124933,7 +125842,7 @@ dWd
 cZg
 dWr
 daC
-daw
+cZc
 cYV
 cYV
 cYV
@@ -125075,7 +125984,7 @@ dXJ
 dch
 dtA
 dMQ
-dCI
+eeG
 dDc
 dLG
 dLn
@@ -125114,20 +126023,20 @@ cZA
 dWd
 dqS
 dVY
-daw
+cZc
 cZd
-dqY
-dqY
-dqY
+edF
+edF
+edF
 ciR
-oee
-oee
+edO
+edO
 ciR
-dqY
-dqY
-dqY
-dqY
-dqY
+edF
+edF
+edF
+edF
+edF
 cZH
 cZy
 dWd
@@ -125248,8 +126157,8 @@ dEt
 dEp
 dEm
 dEj
-dEe
-dEe
+eeK
+eeK
 dBz
 bgQ
 bgQ
@@ -125258,7 +126167,7 @@ dNg
 dDF
 dMR
 dMB
-dLO
+eeH
 dFW
 dLp
 dtA
@@ -125297,20 +126206,20 @@ dWf
 dqS
 dVY
 djV
-dqY
-dqY
-dqY
-dqY
-dqY
-dqM
-vJq
-dqY
-dqY
-dqY
+edF
+edF
+edF
+edF
+edF
+edR
+edP
+edF
+edF
+edF
 dcg
 dcg
-dqY
-dqY
+edF
+edF
 cLP
 dWd
 dqS
@@ -125431,7 +126340,7 @@ dEq
 dEe
 dEe
 dEf
-dEe
+eeK
 dBz
 dDV
 bgQ
@@ -125479,20 +126388,20 @@ dWd
 dqS
 dVY
 cZl
-dqY
-dqY
+edF
+edF
 djK
-dqY
-dqY
-lsF
-lsF
-dqY
-dqY
+edF
+edF
+edQ
+edQ
+edF
+edF
 rPT
 ahS
 ahS
 daN
-dqY
+edF
 cZz
 dWd
 dqS
@@ -125661,20 +126570,20 @@ dWf
 dqS
 dVY
 cZi
-dqY
+edF
 djR
 djL
-dqY
+edF
 djD
-cZo
-dqM
+edV
+edR
 cZZ
-dqY
-dqM
+edF
+edH
 cZP
 cZP
 cZJ
-dqY
+edF
 dxr
 cZr
 dqS
@@ -125843,20 +126752,20 @@ dWd
 dqS
 dVY
 cYX
-dqY
+edF
 das
 djM
-dqY
-cZo
+edF
+edV
 daj
 dag
-cZW
-dqY
+edN
+edF
 cLQ
 cZR
 kqH
 cZK
-dqY
+edF
 cLP
 dWe
 cZg
@@ -126025,20 +126934,20 @@ cZt
 cZg
 dWo
 cZi
-dqY
-cLS
-cZo
-dqY
-cZo
+edF
+edS
+edG
+edF
+edG
 cZP
 cZP
-cZo
-dqY
-dqM
+edG
+edF
+edH
 cZP
 cZP
-cZo
-dqY
+edG
+edF
 cLP
 dWe
 cZg
@@ -126207,20 +127116,20 @@ dWe
 cZg
 dWo
 cLY
-dqY
+edF
 cZP
-dqM
-dqY
-cZo
+edH
+edF
+edG
 cZP
 cZP
 jOW
 mxJ
 piV
 cZS
-cZo
-cZo
-dqY
+edG
+edG
+edF
 cZA
 dWe
 cZg
@@ -126389,20 +127298,20 @@ dWe
 cZg
 dWo
 cLY
-dqY
+edF
 cZP
-cZo
-dqY
+edG
+edF
 djE
 cZP
-cLS
+edS
 jOW
-dqM
+edH
 cZT
 dag
 oee
-dqM
-dqY
+edH
+edF
 cZA
 dWf
 dqS
@@ -126571,20 +127480,20 @@ dWf
 dqS
 daI
 dUZ
-dqY
-dqM
-cZo
-dqY
-cZo
+edF
+edH
+edG
+edF
+edG
 cZP
-cLS
-dqM
-dqY
-dqY
-dqM
+edS
+edH
+edF
+edF
+edH
 vJq
-dqY
-dqY
+edF
+edF
 cZA
 dau
 dqS
@@ -126753,20 +127662,20 @@ dWf
 dqS
 dVY
 cLY
-dqY
-cLS
-cZo
-dqY
-cZo
+edF
+edS
+edG
+edF
+edG
 cZP
-cLS
-dqM
-dqY
-dqY
+edS
+edH
+edF
+edF
 lsF
 lsF
-dqY
-dqY
+edF
+edF
 cLP
 dWd
 dqS
@@ -126935,20 +127844,20 @@ dWf
 dqS
 dVY
 cLY
-dqY
-cLS
+edF
+edS
 daq
 mxJ
 piV
 cZP
-cLS
+edS
 ddU
-dqY
+edF
 dcw
-dqM
-dqM
+edH
+edH
 tqO
-dqY
+edF
 cZA
 dWf
 dqS
@@ -127117,20 +128026,20 @@ dWf
 dqS
 dVY
 cLY
-dqY
-cLS
+edF
+edS
 daq
-dqM
+edH
 piV
 cZP
-cLS
-dqM
-dqY
+edS
+edH
+edF
 cZU
 cZs
 cZs
 daV
-dqY
+edF
 cZB
 dWf
 dqS
@@ -127299,20 +128208,20 @@ dWe
 cZg
 dWa
 cLY
-dqY
+edF
 djS
 djN
-dqY
-dqM
+edF
+edH
 cZP
-cLS
+edS
 ddY
-dqY
-cZo
+edF
+edG
 cZK
 cZK
 cZK
-dqY
+edF
 cZA
 dWe
 cZg
@@ -127481,20 +128390,20 @@ daL
 cZg
 dWa
 cLY
-dqY
-dqY
-cZe
-dqY
+edF
+edF
+eea
+edF
 djF
 dak
 oAn
 ddZ
-dqY
-cZo
+edF
+edG
 cZs
 cZs
-cZo
-dqY
+edG
+edF
 cZA
 cZt
 cZg
@@ -127622,9 +128531,9 @@ dzX
 dXG
 dch
 dDx
-dMc
-dMd
-dLA
+eeJ
+eeI
+eeD
 dLO
 dtC
 dBp
@@ -127663,20 +128572,20 @@ dWe
 cZg
 dWa
 cLY
-dqY
+edF
 cZP
 cZs
-dqY
-dqM
-cLS
-cLS
+edF
+edH
+edS
+edS
 jOW
 mxJ
 piV
 cZK
 cZK
 cZK
-dqY
+edF
 cLP
 dWe
 cZg
@@ -127845,20 +128754,20 @@ dWd
 dqS
 dVY
 cLY
-dqY
-cZo
+edF
+edG
 dar
 mxJ
 piV
-cLS
-cLS
+edS
+edS
 jOW
-dqM
+edH
 piV
 cZs
 cZs
 daW
-dqY
+edF
 cLP
 dWd
 dqS
@@ -128027,20 +128936,20 @@ dWd
 dqS
 dVY
 daD
-dqY
-cZo
+edF
+edG
 jOW
-dqM
+edH
 djG
-cLS
-cLS
-cZo
-dqY
+edS
+edS
+edG
+edF
 ddJ
-dqM
-dqM
+edH
+edH
 cZL
-dqY
+edF
 cLP
 dWd
 dqS
@@ -128209,20 +129118,20 @@ dWf
 dqS
 dVY
 cLY
-dqY
+edF
 cZP
 djO
-dqY
-dqM
-cLS
-cLS
-cZW
-dqY
-dqY
+edF
+edH
+edS
+edS
+edN
+edF
+edF
 cLU
 dci
-dqY
-dqY
+edF
+edF
 cLP
 dWd
 dqS
@@ -128391,20 +129300,20 @@ drF
 dqS
 dVY
 cZi
-dqY
+edF
 cZP
 djO
-dqY
+edF
 rPT
 oAn
 oAn
 daa
-dqY
-dqY
-dqY
-dqY
-dqY
-dqY
+edF
+edF
+edF
+edF
+edF
+edF
 cLP
 dWf
 dqS
@@ -128573,20 +129482,20 @@ dWl
 cZg
 dWa
 cZk
-dqY
+edF
 cZP
 djP
-dqY
-dqM
-cLS
+edF
+edH
+edS
 cZP
 djB
-dqY
-dqY
+edF
+edF
 cLR
 cLR
-dqY
-dqY
+edF
+edF
 cLP
 dWe
 cZg
@@ -128755,20 +129664,20 @@ dWl
 cZg
 dWa
 cZi
-dqY
+edF
 cZP
 djQ
-dqY
-dqM
-cLS
+edF
+edH
+edS
 cZP
-dqM
-dqY
+edH
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cLP
 dWe
 cZg
@@ -128937,20 +129846,20 @@ dWl
 cZg
 dWa
 cZi
-dqY
+edF
 cZP
-cZo
-dqY
-cZo
-cLS
+edG
+edF
+edG
+edS
 cZP
-cZo
-dqY
+edG
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cZA
 dWe
 cZg
@@ -129119,20 +130028,20 @@ dWf
 dqS
 dVY
 cZi
-cZe
+eea
 cZP
-cZo
-dqY
+edG
+edF
 dan
-cLS
-cLS
-cZo
-dqY
+edS
+edS
+edG
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cZA
 dWf
 dqS
@@ -129301,20 +130210,20 @@ dWf
 dqS
 dVZ
 cYX
-cZe
+eea
 cZP
-cZo
-dqY
-cZo
-cLS
+edG
+edF
+edG
+edS
 dah
-cZo
-dqY
+edG
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cZA
 dWf
 dqS
@@ -129483,20 +130392,20 @@ dWf
 dqS
 dVZ
 cLY
-dqY
+edF
 cZP
-cZo
-dqY
+edG
+edF
 djH
-cLS
+edS
 cZP
-cZo
-dqY
+edG
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cZC
 cZu
 dqS
@@ -129665,20 +130574,20 @@ daM
 dqS
 djY
 cLY
-dqY
+edF
 cZP
-cZo
-dqY
-dqM
-cLS
+edG
+edF
+edH
+edS
 cZP
-dqM
-dqY
+edH
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cLP
 dWd
 dqS
@@ -129847,20 +130756,20 @@ dWf
 dqS
 dVZ
 dUZ
-dqY
-cZo
+edF
+edG
 jOW
 mxJ
 piV
-cLS
+edS
 cZP
-dqM
-dqY
+edH
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cLP
 dWe
 cZg
@@ -130010,7 +130919,7 @@ dHT
 dVp
 dtC
 dvm
-dtN
+eep
 dtN
 dWM
 dWL
@@ -130029,20 +130938,20 @@ dWl
 cZg
 dWo
 cLY
-dqY
+edF
 dat
 daq
-dqM
+edH
 piV
-cLS
-cLS
+edS
+edS
 cZf
-dqY
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 cZA
 dWe
 cZg
@@ -130192,8 +131101,8 @@ dHT
 dxK
 dxs
 dHG
-dtN
-dtN
+eep
+eep
 dWL
 dXd
 dWL
@@ -130211,20 +131120,20 @@ dWe
 cZg
 dWo
 cLY
-dqY
-dqM
-dqM
-dqY
-djC
-cLS
+edF
+edH
+eeb
+edF
+edX
+edW
 cZP
 dab
-dqY
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 dOs
 dWe
 cZg
@@ -130373,9 +131282,9 @@ dxK
 dHT
 dHW
 dtC
-dtN
-dtN
-dtN
+eep
+eep
+eep
 dtN
 dXe
 dtN
@@ -130393,20 +131302,20 @@ dWe
 cZg
 dWa
 cZi
-dqY
-cLS
-ciR
-dqY
+edF
+edS
+eec
+edF
 djI
 vxc
 dai
 rKg
-dqY
+edF
 cLR
 cLR
 cLR
 cLR
-dqY
+edF
 day
 dWf
 dqS
@@ -130544,7 +131453,7 @@ dSq
 dSk
 dSd
 dtC
-dRZ
+eeA
 dRV
 dAz
 dAf
@@ -130555,8 +131464,8 @@ dyu
 dIf
 dHX
 dtC
-dtN
-dtN
+eep
+eep
 dVj
 dwg
 dtN
@@ -130575,20 +131484,20 @@ dWd
 dqS
 dVY
 cZi
-dqY
-dqY
-dqY
-dqY
+edF
+edF
+edF
+edF
 djJ
 dal
-dqM
+edR
 djC
-dqY
-dqY
+edF
+edF
 cLR
 cLR
-dqY
-dqY
+edF
+edF
 cZA
 dWf
 dqS
@@ -130757,20 +131666,20 @@ dWf
 dqS
 dVY
 cZi
-dqY
-dqY
-dqY
-dqY
-dqY
-oee
-oee
-dqY
-dqY
-dqY
-dqY
-dqY
-dqY
-dqY
+edF
+edF
+edF
+edF
+edF
+edT
+edT
+edF
+edF
+edF
+edF
+edF
+edF
+edF
 cLP
 dWf
 dqS
@@ -130941,14 +131850,14 @@ dVY
 cZx
 cYS
 ciR
-cZs
-dqY
-dqY
-dqM
-vJq
-dqY
-dqY
-cZs
+edK
+edF
+edF
+edR
+edP
+edF
+edF
+edK
 atJ
 cZI
 cZM
@@ -131126,8 +132035,8 @@ cZo
 cZo
 dao
 dqM
-lsF
-lsF
+edU
+edU
 cZo
 cZW
 cZo
@@ -132012,20 +132921,20 @@ dOv
 dOv
 dOv
 dcN
-cLQ
-cLQ
+eem
+eem
 dcN
 dOv
 dOv
 dOv
 dGP
-cLQ
+eem
 dOv
 dOv
 dOv
 dOv
 dOv
-cZs
+edK
 cZy
 ece
 dqS
@@ -132175,12 +133084,12 @@ dAC
 dOv
 dOv
 dOv
-dOx
-dOy
-dOy
-dOx
-dOw
-dOw
+eek
+eeB
+eeB
+eek
+een
+een
 dOv
 dOv
 dOv
@@ -132192,12 +133101,12 @@ dOv
 dOv
 dOv
 dOw
-dOw
-dOx
-dOx
-dOx
-dOx
-dOw
+een
+eek
+eek
+eek
+eek
+een
 bsw
 dOv
 dOv
@@ -132206,7 +133115,7 @@ dOv
 bsw
 bsw
 dOw
-dOw
+eej
 ebV
 daT
 ecf
@@ -132219,10 +133128,10 @@ dqY
 dqY
 dqY
 dqY
-cLT
+edL
 ddI
-cLT
-cLT
+edL
+edL
 cLT
 ddI
 bsw
@@ -132359,9 +133268,9 @@ dOv
 iGz
 iGz
 iWt
-dba
+eeC
 dOx
-dOx
+eek
 dOv
 dOv
 dOv
@@ -132375,10 +133284,10 @@ dOv
 dOv
 dOv
 dOx
-dOx
-dOx
-ecj
-dOx
+eek
+eek
+eeq
+eek
 dOx
 dOv
 dOv
@@ -132577,7 +133486,7 @@ ciR
 dqS
 daJ
 eca
-ebV
+eeh
 ebT
 cLT
 cLT
@@ -132752,7 +133661,7 @@ dOz
 dba
 dba
 dOx
-dOx
+eek
 cLV
 cZA
 ecg
@@ -132760,8 +133669,8 @@ dqS
 ciR
 daE
 ebW
-cLT
-cLT
+edL
+edL
 iPc
 bgN
 bgL
@@ -132942,7 +133851,7 @@ dqS
 ecd
 ecb
 ebX
-cLT
+eee
 cLT
 fun
 bgO
@@ -133116,7 +134025,7 @@ dbe
 dba
 dOz
 dOx
-dOx
+eek
 cLV
 cZA
 cZo
@@ -133124,8 +134033,8 @@ dqS
 cZo
 cZi
 dqY
-cLT
-ddI
+edL
+eed
 cLT
 cLT
 cLT
@@ -133260,7 +134169,7 @@ bta
 cNj
 dcu
 dXP
-cqy
+edz
 dXN
 dcl
 cML
@@ -133301,7 +134210,7 @@ dOx
 dOw
 cLV
 daU
-bgD
+eei
 daK
 cYY
 daF
@@ -133442,7 +134351,7 @@ bta
 bta
 dcv
 dXP
-cqy
+edz
 dXD
 dcl
 bta
@@ -133485,7 +134394,7 @@ bta
 daO
 cNf
 cYU
-bgD
+eei
 daG
 bta
 bsw
@@ -133624,7 +134533,7 @@ bsw
 bta
 dcu
 cNC
-cqy
+edz
 dXF
 dcl
 bta
@@ -133665,8 +134574,8 @@ dOv
 dOw
 bta
 qVt
-eMV
-cqy
+bnl
+edz
 cMT
 iez
 bta
@@ -133847,9 +134756,9 @@ dOv
 bsw
 bta
 aDO
-eMV
-cqy
-eMV
+bnl
+edz
+bnl
 iez
 bta
 bsw
@@ -133988,7 +134897,7 @@ bsw
 bta
 cNJ
 dYa
-cqy
+edz
 dXE
 cNl
 bta
@@ -134029,8 +134938,8 @@ dOv
 bsw
 bta
 cNh
-eMV
-cqy
+bnl
+edz
 cMX
 cMP
 bta
@@ -134170,7 +135079,7 @@ bta
 bta
 cNJ
 dXP
-cqy
+edz
 cNx
 cNl
 bta
@@ -134352,7 +135261,7 @@ bta
 cNj
 cNJ
 dXP
-cqy
+edz
 dXD
 cNl
 cML
@@ -134394,7 +135303,7 @@ bta
 cNj
 qVt
 cMY
-cqy
+edz
 cMZ
 cMP
 cML
@@ -134534,7 +135443,7 @@ bta
 cNj
 cNJ
 cND
-cqy
+edz
 dXD
 cNl
 cML
@@ -134575,8 +135484,8 @@ dOv
 bta
 cNj
 cNi
-bgD
-cqy
+eei
+edz
 cMY
 cMP
 cML
@@ -134716,7 +135625,7 @@ bta
 bta
 cNJ
 dXP
-cqy
+edz
 dXO
 cNl
 bta
@@ -134758,8 +135667,8 @@ bta
 bta
 cNi
 cNg
-cqy
-bgD
+edz
+eei
 cMP
 bta
 bta
@@ -134898,7 +135807,7 @@ bsw
 bta
 cNJ
 dXQ
-cqy
+edz
 dXF
 dcl
 bta
@@ -134939,9 +135848,9 @@ bsw
 bsw
 bta
 qVt
-eMV
+bnl
 cNe
-eMV
+bnl
 iez
 bta
 bsw
@@ -135080,7 +135989,7 @@ bsw
 bta
 cNJ
 dXQ
-cqy
+edz
 dXF
 dcl
 bta
@@ -135121,9 +136030,9 @@ bsw
 bsw
 bta
 qVt
-eMV
-cqy
-eMV
+bnl
+edz
+bnl
 cMR
 bta
 bsw

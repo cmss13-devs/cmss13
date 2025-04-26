@@ -555,6 +555,13 @@
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
+/area/tyrargo/underground/power_substation
+	name = "Sewer - Power-Routing Substation"
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
+	icon_state = "maint_engine"
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+
 // Saipan
 
 /area/tyrargo/indoors/saipan

@@ -57,8 +57,8 @@ Each var depends on others
 	opacity = FALSE
 	unacidable = TRUE
 
-	icon = 'icons/turf/ground_map.dmi'
-	icon_state = "seashallow"
+	icon = 'icons/turf/floors/desert_water.dmi'
+	icon_state = "seadeep"
 
 
 	alpha = 0
@@ -296,7 +296,7 @@ Each var depends on others
 /obj/structure/machinery/filtration_button
 	name = "\improper Filtration Activation"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
-	icon_state = "launcherbtt"
+	icon_state = "big_red_button_wallv"
 	desc = "Activates the filtration mechanism."
 	var/id = null
 	var/active = 0
@@ -320,7 +320,7 @@ Each var depends on others
 	use_power(5)
 
 	active = 1
-	icon_state = "launcheract"
+	icon_state = "big_red_button_wallv1"
 
 	// Ported over ambience->ambience_exterior, was broken. Enable if you actually want it
 	//var/area/A = get_area(src)
@@ -330,9 +330,12 @@ Each var depends on others
 		if (M.id == src.id)
 			M.initiate()
 
+	marine_announcement("Alert: Tyrargo sewer release valve triggered: Imminent flooding of sewer lines.")
+	xeno_announcement("The hosts have triggered the release of a flood of water in to the sewers underneath this battleground. Be wary of the loss our ability to weed the sewer tunnels.")
+
 	sleep(50)
 
-	icon_state = "launcherbtt"
+	icon_state = "big_red_button_wallv-p"
 	active = 0
 
 	return

@@ -61,7 +61,7 @@ Each var depends on others
 	icon_state = "seashallow"
 
 
-	alpha = 150
+	alpha = 0
 
 	var/dispersing = FALSE
 	var/toxic = FALSE

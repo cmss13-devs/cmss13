@@ -51,51 +51,65 @@ Each var depends on others
 	if(east_filtration)
 
 */
-
-/obj/effect/blocker/toxic_water
+/obj/effect/blocker/water
 	anchored = TRUE
 	density = FALSE
 	opacity = FALSE
 	unacidable = TRUE
-	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	icon = 'icons/old_stuff/mark.dmi'
 
-	var/dispersing = 0
-	var/toxic = 1
-	var/disperse_group
+	icon = 'icons/turf/ground_map.dmi'
+	icon_state = "seashallow"
+
+
+	alpha = 150
+
+	var/dispersing = FALSE
+	var/toxic = FALSE
+	var/disperse_group = 1
 	var/spread_delay = 5
+	layer = TURF_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+
+
+/obj/effect/blocker/water/toxic
+	icon = 'icons/old_stuff/mark.dmi'
+	toxic = TRUE
+	disperse_group
+	spread_delay = 5
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
 
 	icon_state = "spawn_shuttle"
 
-/obj/effect/blocker/toxic_water/Group_1
+/obj/effect/blocker/water/toxic/Group_1
 	disperse_group = 1
 	icon_state = "spawn_event"
 
-/obj/effect/blocker/toxic_water/Group_1/delay
+/obj/effect/blocker/water/toxic/Group_1/delay
 	spread_delay = 100
 	icon_state = "spawn_shuttle_dock"
 
-/obj/effect/blocker/toxic_water/Group_2
+/obj/effect/blocker/water/toxic/Group_2
 	disperse_group = 2
 	icon_state = "spawn_goal"
 
-/obj/effect/blocker/toxic_water/Group_2/delay
+/obj/effect/blocker/water/toxic/Group_2/delay
 	spread_delay = 100
 	icon_state = "spawn_shuttle_dock"
 
 
-/obj/effect/blocker/toxic_water/Initialize(mapload, ...)
+/obj/effect/blocker/water/Initialize(mapload, ...)
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
-/obj/effect/blocker/toxic_water/LateInitialize()
+/obj/effect/blocker/water/toxic/LateInitialize()
 	. = ..()
 	update_turf()
 	icon_state = null
 
 
-/obj/effect/blocker/toxic_water/proc/update_turf()
+/obj/effect/blocker/water/proc/update_turf()
 	if(istype(src.loc, /turf/open/gm/river/desert))
 		var/turf/open/gm/river/desert/R = src.loc
 		R.toxic = src.toxic
@@ -113,7 +127,7 @@ Each var depends on others
 
 
 
-/obj/effect/blocker/toxic_water/Crossed(atom/A)
+/obj/effect/blocker/water/Crossed(atom/A)
 	if(toxic == 0)
 		return
 
@@ -151,7 +165,7 @@ Each var depends on others
 		return
 
 
-/obj/effect/blocker/toxic_water/process()
+/obj/effect/blocker/water/process()
 
 	if(!toxic)
 		STOP_PROCESSING(SSobj, src)
@@ -176,7 +190,7 @@ Each var depends on others
 	if(targets_present < 1)
 		STOP_PROCESSING(SSobj, src)
 
-/obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)
+/obj/effect/blocker/water/proc/cause_damage(mob/living/M)
 	if(M.stat == DEAD)
 		return
 	M.last_damage_data = create_cause_data("toxic water")
@@ -206,8 +220,8 @@ Each var depends on others
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
-/obj/effect/blocker/toxic_water/proc/disperse_spread(from_dir = 0)
-	if(dispersing || !toxic)
+/obj/effect/blocker/water/proc/disperse_spread(from_dir = 0)
+	if(dispersing)
 		return
 
 	for(var/direction in GLOB.alldirs)
@@ -221,22 +235,33 @@ Each var depends on others
 			else
 				effective_spread_delay = spread_delay * 1.414 //diagonal spreading takes longer
 
-		for(var/obj/effect/blocker/toxic_water/W in get_step(src,direction) )
+		for(var/obj/effect/blocker/water/W in get_step(src,direction) )
 			if(W.disperse_group == src.disperse_group)
 				spawn(effective_spread_delay)
 					W.disperse_spread(turn(direction,180))
 
 	disperse()
 
-/obj/effect/blocker/toxic_water/proc/disperse()
+/obj/effect/blocker/water/proc/disperse()
 	dispersing = 1
+	for(var/obj/effect/alien/weeds/weeds_to_clean in loc)
+		qdel(weeds_to_clean)
+
+	animate(src, alpha=200, time=40)
+	update_icon()
+	var/turf/location = loc
+	location.weedable = NOT_WEEDABLE
+
+
+/obj/effect/blocker/water/toxic/disperse()
+	.=..()
 	toxic = -1
 
 	update_turf()
 
 	addtimer(CALLBACK(src, PROC_REF(do_disperse)), 1 SECONDS)
 
-/obj/effect/blocker/toxic_water/proc/do_disperse()
+/obj/effect/blocker/water/toxic/proc/do_disperse()
 	toxic = 0
 	update_turf()
 	dispersing = 0
@@ -249,6 +274,9 @@ Each var depends on others
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/id = null
 
+/obj/structure/machinery/dispersal_initiator/floodgate
+	id = "floodgate"
+
 /obj/structure/machinery/dispersal_initiator/New()
 	..()
 	icon_state = null
@@ -258,7 +286,7 @@ Each var depends on others
 	//var/area/A = get_area(src)
 	//A.ambience_exterior = 'sound/ambience/ambiatm1.ogg'
 	sleep(30)
-	for(var/obj/effect/blocker/toxic_water/W in get_turf(src))
+	for(var/obj/effect/blocker/water/W in get_turf(src))
 		W.disperse_spread()
 
 /obj/structure/machinery/dispersal_initiator/ex_act()
@@ -278,6 +306,9 @@ Each var depends on others
 	active_power_usage = 4
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/machinery/filtration_button/floodgate
+	id = "floodgate"
 
 /obj/structure/machinery/filtration_button/attack_hand(mob/user as mob)
 
@@ -310,11 +341,11 @@ Each var depends on others
 	return
 
 /*
-/obj/effect/blocker/toxic_water/connector
+/obj/effect/blocker/water/toxic/connector
 	icon_state = null
 
 //something to stop this stuff from killing people
 
-/obj/effect/blocker/toxic_water/connector/disperse()
+/obj/effect/blocker/water/toxic/connector/disperse()
 	return
 */

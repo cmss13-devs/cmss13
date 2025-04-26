@@ -20,11 +20,6 @@
 /turf/open/gm/dirtgrassborder/weedable/grass1
 	icon_state = "grass1"
 
-/turf/closed/gm/dense/weedable
-
-/turf/closed/gm/dense/weedable/is_weedable() //Weed-able jungle walls. Notably crushers can slam through this, so that might cause overlay issues. 3 months later, yeah it causes overlay issues, so return FALSE!
-	return NOT_WEEDABLE
-
 /turf/open/floor/strata //Instance me!
 	icon = 'icons/turf/floors/strata_floor.dmi'
 	icon_state = "floor"

@@ -67,6 +67,9 @@
 	/// Is fishing allowed on this turf
 	var/fishing_allowed = FALSE
 
+	/// How much can weeds spread on the turf
+	var/weedable = FULLY_WEEDABLE
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)
@@ -679,37 +682,12 @@
 //Check if you can plant weeds on that turf.
 //Does NOT return a message, just a 0 or 1.
 /turf/proc/is_weedable()
-	return density ? NOT_WEEDABLE : FULLY_WEEDABLE
-
-/turf/open/space/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/gm/grass/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/gm/dirtgrassborder/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/gm/river/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/gm/coast/is_weedable()
-	return NOT_WEEDABLE
+	if(density)
+		return NOT_WEEDABLE
+	return weedable
 
 /turf/open/snow/is_weedable()
 	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
-/turf/open/mars/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/jungle/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/auto_turf/shale/layer1/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/auto_turf/shale/layer2/is_weedable()
-	return SEMI_WEEDABLE
 
 /turf/closed/wall/is_weedable()
 	return FULLY_WEEDABLE //so we can spawn weeds on the walls

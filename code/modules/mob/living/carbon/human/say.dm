@@ -99,6 +99,11 @@
 		speaking = get_default_language()
 
 	var/ending = copytext(message, length(message))
+	if(ending=="!")
+		verb = pick("exclaims","shouts","yells")
+	else if(ending=="?")
+		verb = "asks"
+
 	if (speaking)
 		// This is broadcast to all mobs with the language,
 		// irrespective of distance or anything else.
@@ -109,12 +114,6 @@
 			speaking.broadcast(src, trim(message))
 			return
 		//If we've gotten this far, keep going!
-		verb = speaking.get_spoken_verb(ending)
-	else
-		if(ending=="!")
-			verb=pick("exclaims","shouts","yells")
-		if(ending=="?")
-			verb="asks"
 
 	if (istype(wear_mask, /obj/item/clothing/mask/muzzle))
 		return
@@ -125,7 +124,7 @@
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	var/list/handle_r = handle_speech_problems(message)
+	var/list/handle_r = handle_speech_problems(message, verb)
 	message = handle_r[1]
 	verb = handle_r[2]
 	if(!message)
@@ -257,19 +256,15 @@ for it but just ignore it.
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 
-	if(speaking)
-		verb = speaking.get_spoken_verb(ending)
-	else
-		if(ending == "!")
-			verb=pick("exclaims","shouts","yells")
-		else if(ending == "?")
-			verb="asks"
+	if(ending == "!")
+		verb = pick("exclaims","shouts","yells")
+	if(ending == "?")
+		verb = "asks"
 
 	return verb
 
-/mob/living/carbon/human/proc/handle_speech_problems(message)
+/mob/living/carbon/human/proc/handle_speech_problems(message, verb)
 	var/list/returns[2]
-	var/verb = "says"
 	if(silent)
 		message = ""
 	if(sdisabilities & DISABILITY_MUTE)

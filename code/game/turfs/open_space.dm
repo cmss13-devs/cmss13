@@ -53,11 +53,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		else
 			climb_down_time = 1.5 SECONDS
 
-/turf/open_space/attack_hand(mob/user)
 	if(user.action_busy)
 		return
-	var/turf/current_turf = get_turf(src)
-  user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
+	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
 	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))

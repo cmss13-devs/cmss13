@@ -58,12 +58,12 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 		return
 
 	var/static/list/thunderdomes = subtypesof(/datum/lazy_template/thunderdome)
-	var/to_use = tgui_input_list(usr, "Which thunderdome to use?", "Thunderdome Selection", thunderdomes)
+	var/to_use = tgui_input_list(src, "Which thunderdome to use?", "Thunderdome Selection", thunderdomes)
 
 	if(!to_use)
 		return
 
-	var/should_announce = tgui_alert(usr, "Do you wish to announce the new thunderdome to dead chat?", "Announce Thunderdome", list("Yes", "No"))
+	var/should_announce = tgui_alert(src, "Do you wish to announce the new thunderdome to dead chat?", "Announce Thunderdome", list("Yes", "No"))
 
 	if(isnull(should_announce))
 		return
@@ -157,12 +157,11 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 
 	message_admins(SPAN_ADMINNOTICE("[key_name_admin(usr)] reset [affected_thunderdome.ckey]'s thunderdome to default with delete_mobs marked as [delete_mobs]."))
 
-	var/static/list/mob_typecache = typecacheof(/mob)
-	for(var/turf/turf as anything in affected_thunderdome.get_all_turfs())
-		turf.empty(turf_type = null, ignore_typecache = delete_mobs == "Yes" ? null : mob_typecache)
-
-	var/datum/map_template/thunderdome_template = SSmapping.map_templates[affected_thunderdome.get_map_name()]
-	thunderdome_template.load(affected_thunderdome.get_spawn_turf())
+	SSthunderdome.to_clean += new /datum/thunderdome_clean(
+		affected_thunderdome.get_all_turfs(),
+		affected_thunderdome,
+		delete_mobs == "Yes",
+	)
 
 /datum/lazy_template/thunderdome
 	map_dir = parent_type::map_dir + "/thunderdome"

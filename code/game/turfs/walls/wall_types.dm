@@ -480,7 +480,6 @@
 	icon_state = "bone_resin"
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
-	is_weedable = NOT_WEEDABLE
 
 //Misc walls
 

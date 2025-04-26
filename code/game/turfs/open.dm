@@ -904,7 +904,6 @@
 	icon = 'icons/turf/ice.dmi'
 	icon_state = "ice_floor"
 	baseturfs = /turf/open/ice
-	is_weedable = NOT_WEEDABLE
 
 
 //Randomize ice floor sprite

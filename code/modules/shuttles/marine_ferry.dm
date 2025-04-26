@@ -87,7 +87,7 @@
 			automated_launch_timer = TIMER_ID_NULL
 
 /datum/shuttle/ferry/marine/proc/prepare_automated_launch()
-	ai_silent_announcement("The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
+	ai_silent_announcement("Автоматическое отправление дропшипа '[name]' осуществлится через [automated_launch_delay * 0.1] секунд.")
 	automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /datum/shuttle/ferry/marine/proc/automated_launch()
@@ -96,7 +96,7 @@
 	else
 		automated_launch = FALSE
 	automated_launch_timer = TIMER_ID_NULL
-	ai_silent_announcement("Dropship '[name]' departing.")
+	ai_silent_announcement("Осуществляется вылет дропшипа '[name]', будьте осторожны.")
 	log_ares_flight("Automated", "Dropship [name] launched on an automatic flight.")
 
 
@@ -112,7 +112,7 @@
 			if(!preflight_checks())
 				announce_preflight_failure()
 				if(automated_launch)
-					ai_silent_announcement("Automated launch of [name] failed. New launch in [DROPSHIP_AUTO_RETRY_COOLDOWN] SECONDS.")
+					ai_silent_announcement("Автоматический запуск '[name]' не осуществлён. Повторный запуск через [DROPSHIP_AUTO_RETRY_COOLDOWN] секунд.")
 					automated_launch_timer = addtimer(CALLBACK(src, PROC_REF(automated_launch)), automated_launch_delay)
 
 				process_state = IDLE_STATE
@@ -225,8 +225,8 @@
 		for(var/turf/T in turfs_src)
 			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
 			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
-				var/name = "Unidentified Lifesigns"
-				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
+				var/name = "Неизвестные формы жизни"
+				var/input = "На борту корабля были обнаружены неизвестные формы жизни. Рекомендация: заблокировать внешние шлюзы, включая воздуховоды и вентиляцию."
 				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
 				set_security_level(SEC_LEVEL_RED)
 				break
@@ -411,7 +411,7 @@
 		// At halftime, we announce whether or not the AA forced the dropship to divert
 		// The rounding is because transit time is decreased by 10 each loop. Travel time, however, might not be a multiple of 10
 		if(in_transit_time_left == round(travel_time / 2, 10) && true_crash_target_section != crash_target_section)
-			marine_announcement("A hostile aircraft on course for the [true_crash_target_section] has been successfully deterred.", "IX-50 MGAD System", logging = ARES_LOG_SECURITY)
+			marine_announcement("Вражеская авиация, направляющаяся к [true_crash_target_section] была успешна сбита.", "Система IX-50 MGAD", logging = ARES_LOG_SECURITY)
 
 			var/area/shuttle_area
 			for(var/turf/T in turfs_int)
@@ -432,7 +432,7 @@
 
 	//This is where things change and shit gets real
 
-	marine_announcement("DROPSHIP ON COLLISION COURSE. CRASH IMMINENT." , "EMERGENCY", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
+	marine_announcement("ДРОПШИП НА КУРСЕ СТОЛКНОВЕНИЯ. СТОЛКНОВЕНИЕ НЕИЗБЕЖНО." , "ЧРЕЗВЫЧАЙНАЯ СИТУАЦИЯ", 'sound/AI/dropship_emergency.ogg', logging = ARES_LOG_SECURITY)
 
 	for(var/mob/dead/observer/observer as anything in GLOB.observer_list)
 		to_chat(observer, SPAN_DEADSAY(FONT_SIZE_LARGE("The dropship is about to impact [get_area_name(T_trg)]" + " [OBSERVER_JMP(observer, T_trg)]")))

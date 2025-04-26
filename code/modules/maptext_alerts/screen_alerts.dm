@@ -61,7 +61,7 @@
 
 	letters_per_update = 2
 	fade_out_delay = 4.5 SECONDS
-	style_open = "<span class='langchat' style=font-size:16pt;text-align:center valign='top'>"
+	style_open = "<span class='langchat_notification' style=text-align:center valign='top'>" // SS220 EDIT: font
 	style_close = "</span>"
 
 /atom/movable/screen/text/screen_text/command_order/tutorial

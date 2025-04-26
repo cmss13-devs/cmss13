@@ -913,7 +913,7 @@
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 
 /turf/open/ice/noweed //used for new prison ice block xenos
-	weedable = NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 // Colony tiles
 /turf/open/asphalt

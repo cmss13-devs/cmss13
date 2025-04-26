@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - bugfix: "fixes the orbit menu totally breaking when someone is not wearing an id"

@@ -1041,6 +1041,14 @@
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_WY
 
+/obj/item/device/radio/headset/distress/WY/guard
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CL
+	inbuilt_tracking_options = list(
+		"Corporate Liaison" = TRACKER_CL
+	)
+	additional_hud_types = list(MOB_HUD_FACTION_WY)
+
 /obj/item/device/radio/headset/distress/hyperdyne
 	name = "HC corporate headset"
 	desc = "A headset commonly worn by Hyperdyne corporate personnel."

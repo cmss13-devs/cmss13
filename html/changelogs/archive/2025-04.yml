@@ -476,3 +476,32 @@
       via remote interface.
   rodcowartt:
   - bugfix: Tanks will no longer attempt to move without treads installed.
+2025-04-24:
+  Aurallianz:
+  - bugfix: being able to defib without proper medical skills.
+  Detective-Google:
+  - admin: added a new button to reset the tdome
+  Drathek:
+  - bugfix: The taskbar flash preference when unnested now works while in the mob
+      and ghosted
+  - spellcheck: The message while nested preventing becoming a hugger/lesser now mentions
+      specifically if you are nested rather than two different 5 minute timers
+  jupyterkat:
+  - bugfix: setting aSL on specs now changes their hud icon again
+  - bugfix: fixed mortar hud icon not showing up on squad manager and orbit panel
+  - imageadd: added sniper hud icon for pmc spec
+  larentoun:
+  - bugfix: Resting doesn't reset Tackle Counter anymore. No more Rest Tech.
+  realforest2001:
+  - rscdel: Deletes a bugged human equipment preset.
+2025-04-25:
+  MistChristmas:
+  - ui: 'Security Records: adds a scrollbar to Individual records. Centers Title and
+      New Record button. Slightly moves the Photo window. Moves the record delete
+      button to the right hand-side. OW Console: Slightly aligns the search bar and
+      Squad Panel in the Squad Monitor.'
+  - ui: Centers and resizes door controls/dropship selection buttons. Does the same
+      for launch control buttons but also moves them into the element and out the
+      title (Does similar for ERT Shuttles). Centers the whole UI. Adjusts the spacings
+      between elements smaller than before. Makes the default UI slightly taller to
+      accommodate the bigger buttons.

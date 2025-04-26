@@ -11,9 +11,6 @@
 /turf/open/auto_turf/insert_self_into_baseturfs()
 	baseturfs += type
 
-/turf/open/auto_turf/is_weedable()//for da xenos
-	return FULLY_WEEDABLE
-
 /turf/open/auto_turf/get_dirt_type()
 	return DIRT_TYPE_GROUND //automatically diggable I guess
 
@@ -51,6 +48,8 @@
 /turf/open/auto_turf/proc/changing_layer(new_layer)
 	if(isnull(new_layer) || new_layer == bleed_layer)
 		return
+
+	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 	bleed_layer = max(0, new_layer)
 	for(var/direction in GLOB.alldirs)
@@ -166,6 +165,10 @@
 	icon_prefix = "snow"
 	layer_name = list("icy dirt", "shallow snow", "deep snow", "very deep snow", "rock filled snow")
 
+/turf/open/auto_turf/snow/Initialize(mapload, ...)
+	. = ..()
+	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
+
 /turf/open/auto_turf/snow/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/snow/layer0
 
@@ -174,9 +177,6 @@
 		return DIRT_TYPE_SNOW
 	else
 		return DIRT_TYPE_GROUND
-
-/turf/open/auto_turf/snow/is_weedable()
-	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/auto_turf/snow/attackby(obj/item/I, mob/user)
 	//Light Stick
@@ -351,7 +351,9 @@
 /turf/open/auto_turf/shale/layer1
 	icon_state = "shale_1"
 	bleed_layer = 1
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/auto_turf/shale/layer2
 	icon_state = "shale_2"
 	bleed_layer = 2
+	is_weedable = NOT_WEEDABLE

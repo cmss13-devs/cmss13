@@ -223,7 +223,7 @@
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T))
 			continue
-		var/is_weedable = T.is_weedable()
+		var/is_weedable = T.is_weedable
 		if(!is_weedable)
 			continue
 		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)

@@ -5,6 +5,7 @@
 	icon_state = "0"
 	opacity = TRUE
 	layer = WALL_LAYER
+	is_weedable = FULLY_WEEDABLE
 	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
 	var/walltype = WALL_METAL
 	/// when walls smooth with one another, the type of junction each wall is.
@@ -57,6 +58,8 @@
 	update_connections(TRUE)
 	if(. != INITIALIZE_HINT_LATELOAD)
 		update_icon()
+
+	is_weedable = initial(is_weedable) //so we can spawn weeds on the wall
 
 /turf/closed/wall/LateInitialize()
 	. = ..()

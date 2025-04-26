@@ -49,8 +49,6 @@
 	if(isnull(new_layer) || new_layer == bleed_layer)
 		return
 
-	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
 	bleed_layer = max(0, new_layer)
 	for(var/direction in GLOB.alldirs)
 		var/turf/open/T = get_step(src, direction)
@@ -168,6 +166,11 @@
 /turf/open/auto_turf/snow/Initialize(mapload, ...)
 	. = ..()
 	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
+
+/turf/open/auto_turf/snow/changing_layer(new_layer)
+	. = ..()
+	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
+
 
 /turf/open/auto_turf/snow/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/snow/layer0

@@ -351,9 +351,9 @@
 /turf/open/auto_turf/shale/layer1
 	icon_state = "shale_1"
 	bleed_layer = 1
-	is_weedable = NOT_WEEDABLE
+	is_weedable = SEMI_WEEDABLE
 
 /turf/open/auto_turf/shale/layer2
 	icon_state = "shale_2"
 	bleed_layer = 2
-	is_weedable = NOT_WEEDABLE
+	is_weedable = SEMI_WEEDABLE

@@ -223,25 +223,31 @@
 		. += "You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
 
 /obj/effect/alien/resin/design/construct_node
-	name = "Design Construct Node (70)"
+	name = "Design Construct Node (90)"
 	icon_state = "static_constructnode"
-	plasma_cost = 70
+	plasma_cost = 90
+	var/plasma_donation = 70
 	var/building = FALSE
 	var/obj/effect/resin_construct/build_overlay
+
+/obj/effect/alien/resin/design/construct_node/Initialize(mapload)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area)
+		if(area.linked_lz)
+			AddComponent(/datum/component/resin_cleanup)
+		area.current_resin_count++
 
 /obj/effect/alien/resin/design/construct_node/attack_hand(mob/user)
 	if(!isxeno(user))
 		to_chat(user, SPAN_WARNING("You don't understand how to interact with this strange node."))
 		return
 
-	if(building) // already being used
+	if(building)
 		to_chat(user, SPAN_WARNING("This node is already being infused with plasma."))
 		return
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	if(xeno.plasma_stored < plasma_cost)
-		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[plasma_cost]"))
-		return
 
 	if(xeno.hivenumber != src.hivenumber)
 		to_chat(xeno, SPAN_WARNING("This construct node does not belong to your hive."))
@@ -253,10 +259,15 @@
 		to_chat(xeno, SPAN_WARNING("This node has no valid design selected."))
 		return
 
-	building = TRUE // lock it here
+	var/total_plasma_cost = get_total_plasma_cost(xeno)
+	if(xeno.plasma_stored < total_plasma_cost)
+		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]"))
+		return
 
-	xeno.plasma_stored -= plasma_cost
-	to_chat(xeno, SPAN_NOTICE("You activate node, it latch onto us and forcefully consume our [plasma_cost] plasma."))
+	building = TRUE
+
+	xeno.plasma_stored -= total_plasma_cost
+	to_chat(xeno, SPAN_NOTICE("You activate the node, it latches onto us and it forcefully consumes [total_plasma_cost] of our plasma."))
 
 	var/turf/T = get_turf(src)
 	if(!istype(T))
@@ -274,6 +285,19 @@
 	build_overlay = overlay
 
 	addtimer(CALLBACK(src, PROC_REF(complete_construction), T, design_mark, xeno), 4 SECONDS)
+
+/obj/effect/alien/resin/design/construct_node/proc/get_total_plasma_cost(mob/living/carbon/xenomorph/xeno)
+	var/area/target_area = get_area(get_turf(src))
+	var/total_plasma_cost = plasma_donation
+
+	if(target_area && target_area.openable_turf_count)
+		var/density_ratio = target_area.current_resin_count / target_area.openable_turf_count
+		if(density_ratio > 0.4)
+			total_plasma_cost = ceil(total_plasma_cost * (density_ratio + 0.35) * 2)
+			if(total_plasma_cost > xeno.plasma_max && (XENO_RESIN_BASE_COST + plasma_donation) < xeno.plasma_max)
+				total_plasma_cost = xeno.plasma_max
+
+	return total_plasma_cost
 
 /obj/effect/alien/resin/design/construct_node/proc/complete_construction(turf/T, design_mark, mob/living/carbon/xenomorph/xeno)
 	if(QDELETED(src) || QDELETED(T))
@@ -330,6 +354,8 @@
 		qdel(build_overlay)
 	if(bound_weed)
 		unregister_weed_expiration_signal_design()
+	var/area/area = get_area(src)
+	area?.current_resin_count--
 	return ..()
 
 /obj/effect/alien/resin/design/construct_node/attackby(obj/item/W, mob/user)
@@ -350,7 +376,9 @@
 	if(ishuman(user) || isyautja(user))
 		. += "On closer examination, this node looks like big blub composed of smaller purple glowing cups, pumping some strange liquid trough weeds."
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that contribuitong [SPAN_NOTICE("[plasma_cost]")] plasma to this node will create [SPAN_NOTICE("[mark_meaning]")] secretion."
+		var/mob/living/carbon/xenomorph/xeno = user
+		var/total_plasma_cost = get_total_plasma_cost(xeno)
+		. += "You sense that feeding [SPAN_NOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_NOTICE("[mark_meaning]")]."
 
 /turf/closed/wall/resin/brittle
 	name = "flaky resin wall"

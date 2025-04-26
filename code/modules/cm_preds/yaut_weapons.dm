@@ -134,25 +134,38 @@
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/target, mob/living/user)
 	. = ..()
-	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg','sound/weapons/chain_whip.ogg')
 	switch(user.a_intent)
 		if(INTENT_HELP)
-			playsound(target, sound_to_play, 50, 1)
-			combo_counter++
-		if((INTENT_DISARM))
-			if(combo_counter == 5)
+			if(combo_counter >= 5)
 				target.apply_effect(3, WEAKEN)
 				combo_counter = 0
 			user.flick_attack_overlay(target, "slam")
 			playsound(target, sound_to_play, 50, 1)
 			combo_counter++
-		if((INTENT_HARM))
+		if((INTENT_DISARM))
 			if(combo_counter >= 3)
 				var/facing = get_dir(user, target)
+				var/reverse_facing = get_dir(target, user)
+				var/obj/effect/beam/tail_beam = user.beam(target, "chain", 'icons/effects/beam.dmi', 2 SECONDS)
+				var/image/tail_image = image('icons/effects/status_effects.dmi', "chain")
+				addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 7, SPEED_VERY_FAST), 1 SECONDS)
+				target.overlays += tail_image
 				user.throw_carbon(target, facing, 7, SPEED_VERY_FAST,)
-				target.apply_effect(3, WEAKEN)
 				combo_counter = 0
+			user.flick_attack_overlay(target, "slam")
 			combo_counter++
+			playsound(target, sound_to_play, 50, 1)
+		if(INTENT_GRAB)
+		if((INTENT_HARM))
+			playsound(target, sound_to_play, 50, 1)
+			user.flick_attack_overlay(target, "slam")
+			combo_counter++
+
+/obj/item/weapon/bracer_attachment/chain_gauntlets/proc/get_over_here(mob/target, mob/living/user)
+	var/datum/beam/chain_whip
+	chain_whip = target.beam(target, "chain", 'icons/effects/beam.dmi', 1 SECONDS, beam_type = /obj/effect/ebeam/laser/weak)
+	chain_whip.visuals.alpha = 0
 
 
 

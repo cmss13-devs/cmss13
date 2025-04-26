@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY_TYPED(personal_thunderdomes, /datum/personal_thunderdome)
 
 	SSthunderdome.schedule_cleaning(
 		affected_thunderdome,
-		delete_mobs == "Yes",
+		delete_mobs == "No",
 	)
 
 /datum/lazy_template/thunderdome

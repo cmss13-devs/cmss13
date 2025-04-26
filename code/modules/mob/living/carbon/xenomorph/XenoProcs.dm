@@ -791,7 +791,7 @@
  * * shake_camera - whether to shake the thrown mob camera on throw
  * * immobilize - if TRUE the mob will be immobilized during the throw, ensuring it doesn't move and break it
  */
-/mob/living/carbon/xenomorph/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+/mob/living/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 	if(!direction)
 		direction = get_dir(src, target)
 	var/turf/target_destination = get_ranged_target_turf(target, direction, distance)
@@ -806,7 +806,7 @@
 		shake_camera(target, 10, 1)
 
 /// Handler callback to reset immobilization status after a successful [/mob/living/carbon/xenomorph/proc/throw_carbon]
-/mob/living/carbon/xenomorph/proc/throw_carbon_end(mob/living/carbon/target)
+/mob/living/proc/throw_carbon_end(mob/living/carbon/target)
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
 /// snowflake proc to clear effects from research warcrimes

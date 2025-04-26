@@ -152,7 +152,7 @@
 					for(var/key in icon)
 						icon = key
 						break
-				if(id_card.minimap_icon_override)
+				if(id_card?.minimap_icon_override)
 					icon = id_card.minimap_icon_override
 				if(human.rank_override)
 					icon = human.rank_override

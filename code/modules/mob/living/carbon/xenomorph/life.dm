@@ -9,7 +9,7 @@
 		return
 
 	if(banished)
-		apply_armoured_damage(ceil(health / XENO_BANISHMENT_DMG_DIVISOR))
+		apply_armoured_damage(max(ceil(health / XENO_BANISHMENT_DMG_DIVISOR), 1))
 
 	..()
 

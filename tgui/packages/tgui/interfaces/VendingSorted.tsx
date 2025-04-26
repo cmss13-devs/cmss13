@@ -1,7 +1,7 @@
 import { KEY_ESCAPE } from 'common/keycodes';
 import { toFixed } from 'common/math';
 import { classes } from 'common/react';
-import { ComponentProps, useState } from 'react';
+import { type ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -34,6 +34,7 @@ interface VendingRecord {
   prod_desc?: string;
   prod_cost: number;
   image: string;
+  image_size: string;
 }
 
 interface VendingCategory {
@@ -113,7 +114,7 @@ const VendButton = (props: VendButtonProps, _) => {
       icon={props.available ? 'circle-down' : 'xmark'}
       onMouseDown={(e) => {
         e.preventDefault();
-        if (props.available) {
+        if (props.available && e.button === 0) {
           props.onClick();
         }
       }}
@@ -141,7 +142,11 @@ const VendableItemRow = (props: VenableItem) => {
     <>
       <TableCell className="IconCell" verticalAlign="top">
         <span
-          className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
+          className={classes([
+            `Icon`,
+            `vending${props.record.image_size ? props.record.image_size : `32x32`}`,
+            `${props.record.image}`,
+          ])}
         />
       </TableCell>
 
@@ -192,7 +197,11 @@ const VendableClothingItemRow = (props: {
     <>
       <TableCell className="IconCell" verticalAlign="top">
         <span
-          className={classes([`Icon`, `vending32x32`, `${props.record.image}`])}
+          className={classes([
+            `Icon`,
+            `vending${props.record.image_size ? props.record.image_size : `32x32`}`,
+            `${props.record.image}`,
+          ])}
         />
       </TableCell>
 

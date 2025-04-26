@@ -113,11 +113,15 @@
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
 
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
 /datum/equipment_preset/uscm_co/infantry/council/plus
 	name = "Shipside - CO - Infantry - SENATOR"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/intel
 
@@ -139,11 +143,15 @@
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
 
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
 /datum/equipment_preset/uscm_co/intel/council/plus
 	name = "Shipside - CO - Intel - SENATOR"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/medical
 
@@ -164,11 +172,15 @@
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
 
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
 /datum/equipment_preset/uscm_co/medical/council/plus
 	name = "Shipside - CO - Medical - SENATOR"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/aviation
 
@@ -192,12 +204,15 @@
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
 
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/aviation/council/plus
 	name = "Shipside - CO - Aviation - SENATOR"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/tanker
 
@@ -220,12 +235,17 @@
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
 
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
 
 /datum/equipment_preset/uscm_co/tanker/council/plus
 	name = "Shipside - CO - Tanker - SENATOR"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
+
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/engineering
 
@@ -248,11 +268,15 @@
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
 
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
 /datum/equipment_preset/uscm_co/engineering/council/plus
 	name = "Shipside - CO - Engineering - SENATOR"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/logistics
 	name = "Shipside - CO - Logistics"
@@ -274,11 +298,15 @@
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_COUNCIL
 
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
 /datum/equipment_preset/uscm_co/logistics/council/plus
 	name = "Shipside - CO - Logistics - SENATOR"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	whitelist_level = WHITELIST_LEADER
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
 
 /datum/equipment_preset/uscm_co/visitor
 	name = "USCM Observer (Major) (VO)"
@@ -305,8 +333,13 @@
 		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
 		/obj/item/clothing/suit/storage/jacket/marine/dress,
 	)
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+
 /datum/equipment_preset/uscm_co/council/plus
 	name = "USCM Commanding Officer (CO++)"
 	idtype = /obj/item/card/id/general
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior, /obj/item/clothing/under/marine/dress/blues/general)
+
+	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)

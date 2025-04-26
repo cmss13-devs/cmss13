@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/plating,
+/area/desert_dam/building/security/lobby)
 "bp" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/window/reinforced{
@@ -519,11 +523,11 @@ Yn
 dO
 XS
 XS
-RD
-RD
-RD
-RD
 XS
+XS
+XS
+XS
+aa
 BV
 "}
 (2,1,1) = {"

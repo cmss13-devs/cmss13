@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/plating,
+/area/desert_dam/building/security/lobby)
 "ac" = (
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -416,11 +420,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/security/lobby)
-"HD" = (
-/obj/structure/window_frame/prison/reinforced,
-/obj/item/shard,
-/turf/open/floor/plating,
-/area/desert_dam/building/security/lobby)
 "JW" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 1;
@@ -707,11 +706,11 @@ RS
 lT
 WJ
 WJ
-NW
-NW
-HD
-NW
 WJ
+WJ
+WJ
+WJ
+aa
 lJ
 "}
 (2,1,1) = {"

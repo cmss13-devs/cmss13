@@ -656,7 +656,7 @@
 	icon_state = "sec_hos"
 
 /area/desert_dam/building/security/armory
-	name = "Security Armory"
+	name = "Security Armoury"
 	icon_state = "armory"
 
 /area/desert_dam/building/security/warden
@@ -714,6 +714,59 @@
 /area/desert_dam/building/security/staffroom
 	name = "Security Staffroom"
 	icon_state = "security"
+
+/area/desert_dam/building/security/maint
+	name = "Security Maintenance"
+	icon_state = "yellow"
+
+/area/desert_dam/building/security/maint/north
+	name = "Security Northern Maintenance"
+
+/area/desert_dam/building/security/maint/South
+	name = "Security Southern Maintenance"
+
+/area/desert_dam/building/security/maint/north
+	name = "Security Northern Maintenance"
+
+/area/desert_dam/building/security/maint/west
+	name = "Security Western Maintenance"
+
+/area/desert_dam/building/security/maint/east
+	name = "Security Eastern Maintenance"
+
+/area/desert_dam/building/security/maint/central
+	name = "Security Central Maintenance"
+
+/area/desert_dam/building/security/stairwell
+	name = "Security Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/building/security/stairwell/upper
+	name = "Security Upper Stairwell"
+
+/area/desert_dam/building/security/workshop
+	name = "Security Workshop"
+	icon_state = "yellow"
+
+/area/desert_dam/building/security/riot_armory
+	name = "Security Riot Armoury"
+	icon_state = "armory"
+
+/area/desert_dam/building/security/waiting
+	name = "Security Visitation Waiting"
+	icon_state = "green"
+
+/area/desert_dam/building/security/yard
+	name = "Security Recreation Yard"
+	icon_state = "red"
+
+/area/desert_dam/building/security/upper_hallway
+	name = "Security Upper Hallway"
+	icon_state = "purple"
+
+/area/desert_dam/building/security/break_room
+	name = "Security Breakroom"
+	icon_state = "red"
 
 //Church
 /area/desert_dam/building/church

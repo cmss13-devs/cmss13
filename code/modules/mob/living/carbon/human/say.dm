@@ -98,13 +98,14 @@
 	if(!speaking)
 		speaking = get_default_language()
 
-	var/ending = copytext(message, length(message))
-	if(ending=="!")
-		verb = pick("exclaims","shouts","yells")
-	else if(ending=="?")
-		verb = "asks"
-
 	if (speaking)
+		var/ending = copytext(message, length(message))
+		if(ending=="!")
+			verb = pick(speaking.exclaim_verb)
+		else if(ending=="?")
+			verb = pick(speaking.ask_verb)
+		else
+			verb = pick(speaking.speech_verb)
 		// This is broadcast to all mobs with the language,
 		// irrespective of distance or anything else.
 		if(speaking.flags & HIVEMIND)
@@ -114,6 +115,8 @@
 			speaking.broadcast(src, trim(message))
 			return
 		//If we've gotten this far, keep going!
+	else
+		verb = "says"
 
 	if (istype(wear_mask, /obj/item/clothing/mask/muzzle))
 		return

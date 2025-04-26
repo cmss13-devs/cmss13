@@ -22640,6 +22640,15 @@ nominative = "ПОДСУМКИ"
 ["USCM technician backpack"]
 nominative = "рюкзак техника ККМП"
 
+["PREPARED MEALS"] # Unique Vendor Name
+nominative = "ГОТОВЫЕ БЛЮДА"
+
+["USCM Protein Bar"] # Unique Vendor Name
+nominative = "Протеиновый батончик ККМП"
+
+["FLASKS"] # Unique Vendor Name
+nominative = "ФЛЯГИ"
+
 # MARK: CM xeno
 
 # ВНИМАНИЕ!!! Если вы собираетесь меня перевод для чужих снизу, синхронизируйте перевод с:

@@ -35,6 +35,7 @@ interface VendingRecord {
   prod_cost: number;
   image: string;
   image_size: string;
+  prod_name_en: string; // BANDAMARINES ADDITION
 }
 
 interface VendingCategory {
@@ -272,7 +273,8 @@ export const ViewVendingCategory = (props: VendingCategoryProps) => {
   const { vendor_type } = data;
   const { category, searchTerm } = props;
   const searchFilter = (x: VendingRecord) =>
-    x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+    x.prod_name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
+    x.prod_name_en.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()); // BANDAMARINES ADDITION
 
   const filteredCategories = category.items.filter(searchFilter);
   if (filteredCategories.length === 0) {

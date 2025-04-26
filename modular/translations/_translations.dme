@@ -7,11 +7,12 @@
 #include "code/ru_ammunition_desc.dm"
 #include "code/ru_weapon_desc.dm"
 #include "code/ru_names/ru_name_base.dm"
+#include "code/ru_names/ru_vendors.dm"
 #include "code/translate_dirs.dm"
 #include "code/translate_emotes.dm"
 #include "code/translate_verbs.dm"
 
-// faction_rank translate
+// MARK: faction_rank translate
 #include "code/faction_rank/other/civilian.dm"
 #include "code/faction_rank/other/cmb.dm"
 #include "code/faction_rank/other/contractors.dm"
@@ -28,7 +29,7 @@
 #include "code/faction_rank/wy/pmc.dm"
 #include "code/faction_rank/wy/wy.dm"
 
-// jobs
+// MARK: Jobs
 #include "code/job/job.dm"
 #include "code/job/antag/other/pred.dm"
 #include "code/job/antag/xeno/queen.dm"
@@ -82,7 +83,7 @@
 #include "code/job/special/uscm.dm"
 #include "code/job/special/weyland_yutani.dm"
 
-// Gear Presets
+// MARK: Gear Presets
 #include "code/gear_presets/agents.dm"
 #include "code/gear_presets/cbrn.dm"
 #include "code/gear_presets/cia.dm"
@@ -113,7 +114,7 @@
 #include "code/gear_presets/wy.dm"
 #include "code/gear_presets/yautja.dm"
 
-// Xeno Abilities
+// MARK: Xeno Abilities
 #include "code/xeno/castes_age.dm"
 #include "code/xeno/hive_status.dm"
 #include "code/xeno/xeno_abilities/general_abilities.dm"
@@ -137,7 +138,7 @@
 #include "code/xeno/xeno_abilities/castes/spitter.dm"
 #include "code/xeno/xeno_abilities/castes/warrior.dm"
 
-// Research
+// MARK: Research
 #include "code/research/code/prop_negative.dm"
 #include "code/research/code/prop_neutral.dm"
 #include "code/research/code/prop_positive.dm"

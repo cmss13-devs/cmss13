@@ -1322,6 +1322,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			"prod_cost" = p_cost,
 			"image" = imgid,
 			"image_size" = image_size,
+			"prod_name_en" = myprod["english_name"] || p_name, // BANDAMARINES EDIT ADD - Vendor Translate
 		)
 
 		if (is_category == 1)

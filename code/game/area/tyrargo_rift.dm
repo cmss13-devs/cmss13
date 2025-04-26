@@ -24,10 +24,12 @@
 /area/tyrargo/underground
 	name = "Tyrargo - Underground"
 	icon_state = "unknown"
-	ceiling = CEILING_MAX
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 	ambience_exterior = AMBIENCE_TYRARGO_SEWER_CITY
-	soundscape_playlist = SCAPE_PL_TYRARGO_SEWER
-	soundscape_interval = 13
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ceiling_muffle = FALSE
+//	soundscape_playlist = SCAPE_PL_TYRARGO_SEWER
+//	soundscape_interval = 13
 
 /area/tyrargo/oob
 	name = "Out Of Bounds"

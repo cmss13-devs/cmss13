@@ -105,6 +105,7 @@
 #include "code\__DEFINES\stats.dm"
 #include "code\__DEFINES\status_effects.dm"
 #include "code\__DEFINES\strippable.dm"
+#include "code\__DEFINES\structure.dm"
 #include "code\__DEFINES\STUI.dm"
 #include "code\__DEFINES\subsystems.dm"
 #include "code\__DEFINES\supply.dm"

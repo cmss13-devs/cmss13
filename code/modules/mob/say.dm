@@ -114,7 +114,7 @@
 		return TRUE
 	//Language check.
 	if(speaking)
-		for(var/datum/language/known_languages in languages)
+		for(var/datum/language/known_languages as anything in languages)
 			if(speaking.name == known_languages.name)
 				return TRUE
 

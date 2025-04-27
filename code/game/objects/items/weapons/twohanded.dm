@@ -334,7 +334,7 @@
 
 	sleep(3)
 
-	if(gib_user == TRUE)
+	if(gib_user)
 		user.gib()
 
 	var/turf/epicenter = get_turf(target)

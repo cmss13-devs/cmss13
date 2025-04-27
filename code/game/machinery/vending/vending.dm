@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		else
 			product_records += product
 
-		product.product_name = initial(temp_path.name)
+		product.product_name = capitalize(declent_ru_initial(temp_path::name, NOMINATIVE, temp_path::name)) // BANDAMARINES EDIT - Translation
 
 /obj/structure/machinery/vending/get_repair_move_text(include_name = TRUE)
 	if(!stat)
@@ -445,7 +445,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 /obj/structure/machinery/vending/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Vending", name)
+		ui = new(user, src, "Vending", capitalize(declent_ru())) // BANDAMARINES EDIT - Translation
 		ui.open()
 
 /obj/structure/machinery/vending/ui_act(action, params)

@@ -265,6 +265,9 @@ Each var depends on others
 	for(var/obj/effect/alien/resin/resin in loc)
 		qdel(resin)
 
+	for(var/obj/flamer_fire/fire in loc)
+		qdel(fire)
+
 	for(var/obj/item/item in loc)
 		if(item.anchored)
 			continue

@@ -265,6 +265,7 @@
 		list("Mar", null),
 		list("ass", "hudsquad_ass"),
 		list("load", "hudsquad_load"),
+		list("mortar", "hudsquad_mortar"),
 		list("Eng", "hudsquad_engi"),
 		list("Med", "hudsquad_med"),
 		list("medk9", "hudsquad_medk9"),

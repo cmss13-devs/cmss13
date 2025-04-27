@@ -2,6 +2,19 @@
 /mob/proc/hear_apollo()
 	return FALSE
 
+/mob/hologram/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
+	if(!hears_speech || !linked_mob)
+		return
+	if(speaker == linked_mob)
+		return
+	linked_mob.hear_say(message, verb, language, alt_name, italics, speaker, speech_sound, sound_vol)
+	/// I had to bastardise this because it was duplicating messages for some reason.
+	if(speaker && linked_mob.client && !linked_mob.ear_deaf)
+		if(!linked_mob.client?.prefs.lang_chat_disabled && linked_mob.say_understands(speaker, language))
+			speaker.langchat_display_image(linked_mob)
+	return
+
+
 /mob/proc/hear_say(message, verb = "says", datum/language/language = null, alt_name = "", italics = 0, mob/speaker = null, sound/speech_sound, sound_vol)
 
 	if(!client && !(mind && mind.current != src))

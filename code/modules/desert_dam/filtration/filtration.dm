@@ -268,7 +268,7 @@ Each var depends on others
 	for(var/obj/item/item in loc)
 		if(item.anchored)
 			continue
-		if(prop(70))
+		if(prob(70))
 			item.throw_atom((get_step(loc,turn(from_dir,180))),1)
 
 	animate(src, alpha= flooded_alpha, easing = BACK_EASING | EASE_OUT , time= 40)

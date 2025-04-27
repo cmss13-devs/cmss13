@@ -25,7 +25,7 @@
 	name = "weed-spray"
 	desc = "It's a toxic mixture, in spray form, to kill small weeds."
 	icon_state = "weedspray"
-	weed_kill_str = 3
+	weed_kill_str = 6
 
 /obj/item/tool/plantspray/pests
 	name = "pest-spray"
@@ -62,17 +62,17 @@
 /obj/item/tool/weedkiller/triclopyr
 	name = "bottle of glyphosate"
 	toxicity = 4
-	weed_kill_str = 1
+	weed_kill_str = 2
 
 /obj/item/tool/weedkiller/lindane
 	name = "bottle of triclopyr"
 	toxicity = 6
-	weed_kill_str = 2
+	weed_kill_str = 4
 
 /obj/item/tool/weedkiller/D24
 	name = "bottle of 2,4-D"
 	toxicity = 6
-	weed_kill_str = 4
+	weed_kill_str = 8
 
 
 

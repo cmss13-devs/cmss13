@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - qol: "Banished xenos in a tunnel can now exit using alt+click (they could have used the exit-tunnel verb however)"

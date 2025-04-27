@@ -332,14 +332,13 @@
 	detonating = TRUE
 	playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
 
-	sleep(3)
+	addtimer(CALLBACK(src, PROC_REF(lungemine_detonate), target, user), 0.3 SECONDS)
 
+/obj/item/weapon/twohanded/lungemine/proc/lungemine_detonate(atom/target, mob/user)
+	var/turf/epicenter = get_turf(target)
+	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
 	if(gib_user)
 		user.gib()
-
-	var/turf/epicenter = get_turf(target)
-	target.ex_act(400, null, src, user, 100)
-	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
 	qdel(src)
 
 /obj/item/weapon/twohanded/lungemine/damaged

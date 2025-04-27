@@ -245,7 +245,7 @@ Each var depends on others
 	if(drain)
 		drain()
 	else
-		disperse()
+		disperse(from_dir)
 
 /obj/effect/blocker/water/proc/drain()
 	dispersing = 0
@@ -254,7 +254,7 @@ Each var depends on others
 	location.weedable = initial(location.weedable)
 
 
-/obj/effect/blocker/water/proc/disperse()
+/obj/effect/blocker/water/proc/disperse(from_dir)
 	dispersing = 1
 	if(prob(5))
 		var/sound = pick(water_sounds)
@@ -264,6 +264,12 @@ Each var depends on others
 
 	for(var/obj/effect/alien/resin/resin in loc)
 		qdel(resin)
+
+	for(var/obj/item/item in loc)
+		if(item.anchored)
+			continue
+		if(prop(70))
+			item.throw_atom((get_step(loc,turn(from_dir,180))),1)
 
 	animate(src, alpha= flooded_alpha, easing = BACK_EASING | EASE_OUT , time= 40)
 	update_icon()

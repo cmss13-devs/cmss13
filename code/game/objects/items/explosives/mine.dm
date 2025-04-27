@@ -27,6 +27,7 @@
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
+	var/sensor_for_small = TRUE
 	var/hit_count = 0
 
 	var/map_deployed = FALSE
@@ -112,9 +113,18 @@
 	update_icon()
 
 
-//Disarming
-/obj/item/explosive/mine/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+/obj/item/explosive/mine/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_WIRECUTTERS))
+		if(customizable)
+			if(sensor_for_small == FALSE)
+				sensor_for_small = TRUE
+				to_chat(usr,SPAN_NOTICE("You start modifyied [src] to be more sensitive."))
+				return TRUE
+			if(sensor_for_small == TRUE)
+				sensor_for_small = FALSE
+				to_chat(usr,SPAN_NOTICE("You start modifyied [src] to be less sensitive."))
+				return TRUE
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return
@@ -187,36 +197,39 @@
 
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
-/obj/item/explosive/mine/Crossed(atom/A)
+/obj/item/explosive/mine/Crossed(atom/target)
 	..()
-	if(isliving(A))
-		var/mob/living/L = A
-		if(!L.stat == DEAD)//so dragged corpses don't trigger mines.
+	if(isliving(target))
+		var/mob/living/enemy = target
+		if(!enemy.stat == DEAD)//so dragged corpses don't trigger mines.
 			return
 		else
-			try_to_prime(A)
+			try_to_prime(target)
 
 /obj/item/explosive/mine/Collided(atom/movable/AM)
 	try_to_prime(AM)
 
 
-/obj/item/explosive/mine/proc/try_to_prime(mob/living/L)
+/obj/item/explosive/mine/proc/try_to_prime(mob/living/enemy)
 	if(!active || triggered || (customizable && !detonator))
 		return
-	if(isxeno(L))
-		var/mob/living/carbon/xenomorph/xeno = L
-		if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
-			return
-	if(!istype(L))
+
+	if(sensor_for_small == FALSE)
+		if(isxeno(enemy))
+			var/mob/living/carbon/xenomorph/xeno = enemy
+			if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
+				return
 		return
-	if(L.stat == DEAD)
+	if(!istype(enemy))
 		return
-	if(L.get_target_lock(iff_signal))
+	if(enemy.stat == DEAD)
 		return
-	if(HAS_TRAIT(L, TRAIT_ABILITY_BURROWED))
+	if(enemy.get_target_lock(iff_signal))
 		return
-	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."),
-	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."),
+	if(HAS_TRAIT(enemy, TRAIT_ABILITY_BURROWED))
+		return
+	enemy.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [enemy] moves in front of it."),
+	SPAN_DANGER("[icon2html(src, enemy)] The [name] clicks as you move in front of it."),
 	SPAN_DANGER("You hear a click."))
 
 	triggered = TRUE
@@ -238,21 +251,21 @@
 		if(!QDELETED(src))
 			disarm()
 
-/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/M)
+/obj/item/explosive/mine/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(triggered) //Mine is already set to go off
 		return XENO_NO_DELAY_ACTION
 
-	if(M.a_intent == INTENT_HELP)
-		to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+	if(xeno.a_intent == INTENT_HELP)
+		to_chat(xeno, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
 		return XENO_NO_DELAY_ACTION
 
 	if(tripwire)
-		if(M.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
-			to_chat(M, SPAN_XENONOTICE("You are too weak to slash this claymore."))
+		if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
+			to_chat(xeno, SPAN_XENONOTICE("Slashing that would be suicide!"))
 			return XENO_NO_DELAY_ACTION
 
-	M.animation_attack_on(src)
-	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
+	xeno.animation_attack_on(src)
+	xeno.visible_message(SPAN_DANGER("[xeno] has slashed [src]!"),
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
 
@@ -277,7 +290,7 @@
 	if(!triggered && istype(xeno_projectile.ammo, /datum/ammo/xeno)) //xeno projectile
 		hit_count++
 		if(hit_count >= 2) // Check if hit two times
-			visible_message(SPAN_DANGER("\The [src] is hit by [xeno_projectile] and violently detonates!")) // Acid is hot for claymore
+			visible_message(SPAN_DANGER("[src] is hit by [xeno_projectile] and violently detonates!")) // Acid is hot for claymore
 			triggered = TRUE
 			prime()
 			if(!QDELETED(src))

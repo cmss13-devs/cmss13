@@ -483,11 +483,6 @@
 	icon_state = "webley_black"
 	item_state = "m44r"
 
-/obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley/set_gun_config_values()
-	..()
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 

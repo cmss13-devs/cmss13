@@ -20781,6 +20781,7 @@
 /area/varadero/interior/maintenance/research)
 "qDs" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/shiva/red/southeast,
 /area/varadero/interior/security)
 "qDt" = (

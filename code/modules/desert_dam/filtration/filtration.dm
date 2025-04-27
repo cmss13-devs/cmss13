@@ -70,6 +70,7 @@ Each var depends on others
 	var/toxic = FALSE
 	var/disperse_group = 1
 	var/spread_delay = 5
+	var/list/water_sounds = list('sound/effects/slosh.ogg')
 
 
 
@@ -219,7 +220,7 @@ Each var depends on others
 		M.apply_effect(20,IRRADIATE,0)
 		if( !issynth(M) )
 			to_chat(M, SPAN_DANGER("The water burns!"))
-	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
+	playsound(M, 'sound/bullets/acid_impact1.ogg', 13, 1)
 
 
 /obj/effect/blocker/water/proc/disperse_spread(from_dir = 0, drain = FALSE)
@@ -255,8 +256,14 @@ Each var depends on others
 
 /obj/effect/blocker/water/proc/disperse()
 	dispersing = 1
+	if(prob(5))
+		var/sound = pick(water_sounds)
+		playsound(loc, sound, 10, 1)
 	for(var/obj/effect/alien/weeds/weeds_to_clean in loc)
 		qdel(weeds_to_clean)
+
+	for(var/obj/effect/alien/resin/resin in loc)
+		qdel(resin)
 
 	animate(src, alpha= flooded_alpha, easing = BACK_EASING | EASE_OUT , time= 40)
 	update_icon()

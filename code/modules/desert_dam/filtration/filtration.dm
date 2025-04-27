@@ -256,7 +256,7 @@ Each var depends on others
 
 /obj/effect/blocker/water/proc/disperse()
 	dispersing = 1
-	if(prob(5))
+	if(prob(30))
 		var/sound = pick(water_sounds)
 		playsound(loc, sound, 10, 1)
 	for(var/obj/effect/alien/weeds/weeds_to_clean in loc)

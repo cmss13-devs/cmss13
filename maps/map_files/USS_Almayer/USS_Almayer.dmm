@@ -29680,13 +29680,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "fBO" = (
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
 /obj/item/clothing/glasses/science{
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/structure/machinery/chem_master/vial,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "fCg" = (
@@ -31105,9 +31103,7 @@
 	pixel_x = 5;
 	pixel_y = 29
 	},
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
+/obj/structure/machinery/chem_master/vial,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "glG" = (
@@ -42693,9 +42689,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/stern)
 "lid" = (
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
+/obj/structure/machinery/chem_master/vial,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "liJ" = (

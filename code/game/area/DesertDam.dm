@@ -156,6 +156,18 @@
 	icon_state = "hangar"
 	linked_lz = DROPSHIP_LZ1
 
+/area/desert_dam/interior/dam_interior/hanger/roof
+	name = "Engineering Hangar Roof"
+	icon_state = "hangar"
+
+/area/desert_dam/interior/dam_interior/hanger/waiting
+	name = "Engineering Hangar Gate"
+	icon_state = "purple"
+
+/area/desert_dam/interior/dam_interior/hanger/control
+	name = "Engineering Hangar Air Traffic Control"
+	icon_state = "blue"
+
 /area/desert_dam/interior/dam_interior/hangar_storage
 	name = "Engineering Hangar Storage"
 	icon_state = "storage"
@@ -167,6 +179,18 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage
 	name = "Engineering Primary Tool Storage"
 	icon_state = "blue"
+
+/area/desert_dam/interior/dam_interior/primary_tool_storage/upper
+	name = "Engineering Upper Primary Tool Storage"
+
+/area/desert_dam/interior/dam_interior/primary_tool_storage/solar
+	name = "Engineering Solar Power Monitering"
+	icon_state = "yellow"
+
+/area/desert_dam/interior/dam_interior/primary_tool_storage/server
+	name = "Engineering Server Room"
+	icon_state = "green"
+
 
 /area/desert_dam/interior/dam_interior/tech_storage
 	name = "Engineering Secure Tech Storage"
@@ -266,7 +290,7 @@
 	icon_state = "southwestern_ss"
 
 /area/desert_dam/building/substation/southwest/solar
-	name = "Solar Power Monitering"
+	name = "Southwest Substation Solar Power Monitering"
 
 /area/desert_dam/building/substation/west
 	name = "Command Substation"

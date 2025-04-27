@@ -56052,6 +56052,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "cLT" = (
@@ -61126,6 +61127,15 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellowcorners2/west,
+/area/tyrargo/underground/sewer/south)
+"daw" = (
+/obj/effect/blocker/water,
+/obj/structure/filtration/collector_pipes{
+	layer = 5;
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/underground/sewer/south)
 "dax" = (
 /obj/effect/decal/cleanable/dirt,
@@ -68294,12 +68304,6 @@
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
-"dta" = (
-/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble6{
-	pixel_x = 2
-	},
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/sewer_treatment/lower)
 "dtb" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
 	light_on = 1;
@@ -79528,6 +79532,9 @@
 	pixel_y = 32
 	},
 /obj/effect/blocker/water,
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble6{
+	pixel_x = 2
+	},
 /turf/open/floor/prison/green/west,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUZ" = (
@@ -83257,26 +83264,6 @@
 "edH" = (
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
-"edI" = (
-/obj/structure/machinery/filtration_button/floodgate{
-	layer = 4;
-	pixel_x = 6;
-	pixel_y = -7;
-	light_on = 1;
-	light_range = 2;
-	desc = "Activates the filtration mechanism. This switch is powered via the underground power-subnet APC, located to the east of this area."
-	},
-/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
-	light_on = 1;
-	light_range = 1;
-	light_color = "#017549";
-	pixel_x = 2;
-	explo_proof = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/turf/open/floor/coagulation/icon0_5,
-/area/tyrargo/underground/power_substation)
 "edJ" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/blocker/water,
@@ -83561,6 +83548,40 @@
 "eeK" = (
 /obj/effect/blocker/water,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/tyrargo/underground/sewer/north)
+"eeL" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"eeM" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/filtration_button/floodgate{
+	layer = 4;
+	pixel_y = 25;
+	light_on = 1;
+	light_range = 2;
+	desc = "Activates the filtration mechanism. This switch is powered via the underground power-subnet APC, located to the east of this area."
+	},
+/obj/structure/prop/server_equipment/laptop/on,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"eeN" = (
+/obj/effect/blocker/water,
+/obj/structure/filtration/collector_pipes{
+	layer = 5;
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/turf/open/gm/river/desert/tyrargo/deep/covered,
+/area/tyrargo/underground/sewer/south)
+"eeO" = (
+/obj/effect/blocker/water,
+/obj/structure/filtration/collector_pipes{
+	layer = 5;
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/underground/sewer/north)
 "egq" = (
 /obj/structure/toilet{
@@ -121462,7 +121483,7 @@ dqS
 dqS
 dqS
 cZg
-cZg
+eeN
 cZg
 dqS
 dqS
@@ -122758,7 +122779,7 @@ ufc
 bgJ
 dqu
 cMI
-edI
+dqu
 dqu
 dqu
 crd
@@ -124205,7 +124226,7 @@ cZg
 dVY
 cLY
 ahW
-dta
+bFL
 dUL
 dUO
 dUI
@@ -124387,12 +124408,12 @@ dqS
 dWp
 djU
 dth
-bFL
+eeM
 dUL
 dUr
 dsI
 dsA
-ahW
+eeL
 edM
 dWk
 dqS
@@ -124574,7 +124595,7 @@ dUL
 dUB
 dsI
 dsB
-ahW
+eeL
 edM
 dWk
 dqS
@@ -125501,7 +125522,7 @@ dqS
 cMF
 dqS
 dqS
-dqS
+daw
 cZg
 cZg
 cZg
@@ -132366,7 +132387,7 @@ dzX
 dzX
 dzX
 dzX
-bgQ
+eeO
 bgQ
 dzX
 dzX

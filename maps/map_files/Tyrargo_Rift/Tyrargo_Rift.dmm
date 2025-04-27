@@ -68304,6 +68304,12 @@
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
+"dta" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 0
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
 "dtb" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
 	light_on = 1;
@@ -83351,12 +83357,6 @@
 "eea" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/strata_outpost,
-/area/tyrargo/underground/power_substation)
-"eeb" = (
-/obj/structure/machinery/power/apc/power/south{
-	start_charge = 0
-	},
-/turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
 "eec" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -131142,8 +131142,8 @@ cZg
 dWo
 cLY
 edF
+dta
 edH
-eeb
 edF
 edX
 edW

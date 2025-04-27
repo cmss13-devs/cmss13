@@ -50,9 +50,74 @@
 /obj/structure/machinery/computer/med_data/attack_remote(user as mob)
 	return src.attack_hand(user)
 
-/obj/structure/machinery/computer/med_data/attack_hand(mob/user as mob)
-	if(..())
+/obj/structure/machinery/computer/med_data/attack_hand(mob/user)
+	if(..() || inoperable())
+		to_chat(user, SPAN_INFO("It does not appear to be working."))
 		return
+
+	if(!allowed(usr))
+		to_chat(user, SPAN_WARNING("Access denied."))
+		return
+
+	if(!is_mainship_level(z))
+		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
+		return
+
+	tgui_interact(user)
+
+	return
+
+/obj/structure/machinery/computer/med_data/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "MedicalRecords", "Medical Records")
+		ui.open()
+
+/obj/structure/machinery/computer/med_data/ui_data(mob/user)
+	. = ..()
+
+	// Map medical records via id
+	var/list/records = list()
+	var/list/medical_record = list()
+	for (var/datum/data/record/medical in GLOB.data_core.medical)
+		medical_record[medical.fields["id"]] = medical
+
+	for (var/datum/data/record/general in GLOB.data_core.general)
+		var/id = general.fields["id"]
+		var/datum/data/record/medical = medical_record[id]
+
+		var/list/record = list(
+			"id" = id,
+			"general_name" = general.fields["name"],
+			"general_rank" = general.fields["rank"],
+			"general_age" = general.fields["age"],
+			"general_sex" = general.fields["sex"],
+			"general_m_stat" = general.fields["m_stat"],
+			"general_p_stat" = general.fields["p_stat"],
+			"medical_blood_type" = medical.fields["b_type"],
+			"medical_major_disabilities" = medical.fields["ma_dis"],
+			"medical_major_disabilities_details" = medical.fields["ma_dis_d"],
+			"medical_minor_disabilities" = medical.fields["mi_dis"],
+			"medical_minor_disabilities_details" = medical.fields["mi_dis_d"],
+			"medical_allergies" = medical.fields["alg"],
+			"medical_allergies_details" = medical.fields["alg_d"],
+			"medical_diseases" = medical.fields["cdi"],
+			"medical_diseases_details" = medical.fields["cdi_d"],
+			"medical_notes" = medical.fields["notes"]
+		)
+		records += list(record)
+
+	.["records"] = records
+
+	var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
+	var/photo_data = icon2html(photo_icon, user.client, sourceonly=TRUE)
+
+	// Attach to the UI data
+	.["fallback_image"] = photo_data
+
+
+/obj/structure/machinery/computer/med_data/proc/replace_old_data(mob/user as mob)
+
 	var/dat
 	if (src.temp)
 		dat = text("<TT>[src.temp]</TT><BR><BR><A href='byond://?src=\ref[src];temp=1'>Clear Screen</A>")

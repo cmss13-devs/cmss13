@@ -1,0 +1,32 @@
+@use '../base.scss';
+
+.MedicalRecords_CellStyle {
+  padding-top: 4px;
+  padding-bottom: 3px;
+  text-align: center;
+}
+
+.MedicalRecords_BoxStyle {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.MedicalRecords_SectionHeaderStyle {
+  font-weight: 900;
+  font-size: '10px';
+  text-align: left;
+}
+
+.MedicalRecords_GrayItalicStyle {
+  font-size: 0.9rem;
+  color: gray;
+  font-style: italic;
+}
+
+.MedicalRecords_CursorPointer {
+  cursor: pointer;
+}
+
+.MedicalRecords_Disabilities {
+  border-right: 2px solid rgb(0, 204, 0);
+}

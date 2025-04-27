@@ -124,7 +124,7 @@
 		dat += "<A href='byond://?src=\ref[src];start_UV=1'>Start Disinfection cycle</A><BR>"
 		dat += "<BR><BR><A href='byond://?src=\ref[user];mach_close=suit_storage_unit'>Close control panel</A>"
 
-	show_browser(user, dat, "Suit Storage Unit", "suit_storage_unit", "size=400x500")
+	show_browser(user, dat, "Suit Storage Unit", "suit_storage_unit", width = 400, height = 500)
 	return
 
 

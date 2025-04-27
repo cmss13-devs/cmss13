@@ -1,13 +1,14 @@
-import { useBackend } from '../backend';
-import { Box, Divider, Flex, Stack } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Box, Divider, Flex, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { CasSim } from './CasSim';
 import { Dpad } from './common/Dpad';
 import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
 import { MapMfdPanel } from './MfdPanels/MapPanel';
-import { MfdPanel, MfdProps } from './MfdPanels/MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { mfdState } from './MfdPanels/stateManagers';
 import { otherMfdState } from './MfdPanels/stateManagers';
 import { SupportMfdPanel } from './MfdPanels/SupportPanel';

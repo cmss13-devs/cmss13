@@ -387,7 +387,7 @@
 
 	if(!turned_on)
 		if(!can_be_near_defense)
-			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
+			for(var/obj/structure/machinery/defenses/def in long_range(defense_check_range, loc))
 				if(def != src && def.turned_on && !def.can_be_near_defense)
 					to_chat(user, SPAN_WARNING("This is too close to \a [def]!"))
 					return

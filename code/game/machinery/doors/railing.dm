@@ -104,3 +104,6 @@
 
 /obj/structure/machinery/door/poddoor/railing/no_blend/dropship_airlock/almayer_two
 	linked_inner_dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO
+
+/obj/structure/machinery/door/poddoor/railing/upp
+	id = "supply_elevator_railing_upp"

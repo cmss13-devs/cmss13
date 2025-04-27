@@ -1,16 +1,16 @@
 import { range } from 'common/collections';
 import { useState } from 'react';
+import { useBackend, useSharedState } from 'tgui/backend';
+import { Box, Icon, Stack } from 'tgui/components';
 
-import { useBackend, useSharedState } from '../../backend';
-import { Box, Icon, Stack } from '../../components';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import {
   mfdState,
   useFiremissionXOffsetValue,
   useFiremissionYOffsetValue,
   useLazeTarget,
 } from './stateManagers';
-import {
+import type {
   CasFiremission,
   EquipmentContext,
   FiremissionContext,

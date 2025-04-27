@@ -109,6 +109,7 @@
 
 #define MOBILE_SHUTTLE_LIFEBOAT_PORT "lifeboat-port"
 #define MOBILE_SHUTTLE_LIFEBOAT_STARBOARD "lifeboat-starboard"
+#define MOBILE_SHUTTLE_LIFEBOAT_ROSTOCK "lifeboat-rostock"
 #define MOBILE_SHUTTLE_VEHICLE_ELEVATOR "vehicle_elevator"
 
 #define DROPSHIP_ALAMO "dropship_alamo"
@@ -128,7 +129,8 @@
 #define ALMAYER_A1_INNER "almayer-hangar-airlock-1-inner"
 #define ALMAYER_A2_INNER "almayer-hangar-airlock-2-inner"
 
-#define UPP_DROPSHIP_LZ2 "upp-hangar-lz1"
+#define UPP_DROPSHIP_LZ1 "upp-hangar-lz1"
+#define UPP_DROPSHIP_LZ2 "upp-hangar-lz2"
 
 #define DROPSHIP_FLYBY_ID "special_flight"
 #define DROPSHIP_LZ1 "dropship-lz1"

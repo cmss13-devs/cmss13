@@ -70,8 +70,8 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/send_for_flyby()
 	in_flyby = TRUE
-	var/obj/docking_port/stationary/dockedAt = get_docked()
-	SSshuttle.moveShuttle(src.id, dockedAt.id, TRUE)
+	var/obj/docking_port/stationary/docked_at = get_docked()
+	SSshuttle.moveShuttle(src.id, docked_at.id, TRUE)
 
 /obj/docking_port/mobile/marine_dropship/proc/add_equipment(obj/docking_port/mobile/marine_dropship/dropship, obj/structure/dropship_equipment/equipment)
 	SIGNAL_HANDLER
@@ -95,7 +95,7 @@
 
 /obj/docking_port/mobile/marine_dropship/enterTransit()
 	. = ..()
-	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop(src)
 	if(turbulence)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/mobile/marine_dropship, turbulence)), DROPSHIP_TURBULENCE_START_PERIOD)
@@ -219,8 +219,9 @@
 			return
 
 	if(mode == SHUTTLE_IDLE && !automated_timer)
+		var/obj/docking_port/stationary/marine_dropship/docked_at = get_docked()
 		if(faction == FACTION_MARINE)
-			ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+			ai_silent_announcement("The [name] will automatically depart from [docked_at.name] in [automated_delay * 0.1] seconds.")
 
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
 
@@ -372,6 +373,8 @@
 	if(landing_lights)
 		landing_lights.Cut()
 	landing_lights = null // We didn't make them, so lets leave them
+	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/flight_console in GLOB.machines)
+		flight_console.compatible_landing_zones -= src
 
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()
@@ -456,11 +459,18 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
-/obj/docking_port/stationary/marine_dropship/upp_hangar_1
-	name = "UPP Hangar bay 1"
-	id = UPP_DROPSHIP_LZ2
+/obj/docking_port/stationary/marine_dropship/upp/hangar_1
+	name = "Rostock Hangar bay 1"
+	id = UPP_DROPSHIP_LZ1
+	faction = "UPP"
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/morana
+
+/obj/docking_port/stationary/marine_dropship/upp/hangar_2
+	name = "Rostock Hangar bay 2"
+	id = UPP_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/devana
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

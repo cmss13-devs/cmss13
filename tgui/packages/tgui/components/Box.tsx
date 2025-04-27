@@ -4,13 +4,13 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import {
   createElement,
-  KeyboardEventHandler,
-  MouseEventHandler,
-  ReactNode,
-  UIEventHandler,
+  type KeyboardEventHandler,
+  type MouseEventHandler,
+  type ReactNode,
+  type UIEventHandler,
 } from 'react';
 
 import { CSS_COLORS } from '../constants';
@@ -38,6 +38,7 @@ export type BoxProps = Partial<{
   as: string;
   children: ReactNode;
   className: string | BooleanLike;
+  id: string;
   style: Partial<CSSStyleDeclaration>;
 }> &
   BooleanProps &

@@ -892,7 +892,7 @@
 			to_chat(usr, "This player's faction must equal '[FACTION_MARINE]' to make them a mutineer.")
 			return
 
-		var/datum/equipment_preset/other/mutineer/leader/leader_preset = new()
+		var/datum/equipment_preset/other/mutiny/mutineer/leader/leader_preset = new()
 		leader_preset.load_status(H)
 
 		message_admins("[key_name_admin(usr)] has made [key_name_admin(H)] into a mutineer leader.")
@@ -1369,7 +1369,7 @@
 					return
 
 				fax_message = new(generate_templated_fax(0, organization_type, subject, addressed_to, message_body, sent_by, "Editor in Chief", organization_type))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "pressfaxpreview", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1421,7 +1421,7 @@
 					sent_title = "USCM High Command"
 
 				fax_message = new(generate_templated_fax(0, "USCM CENTRAL COMMAND", subject,addressed_to, message_body,sent_by, sent_title, "United States Colonial Marine Corps"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "uscmfaxpreview", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1469,7 +1469,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - [MAIN_SHIP_NAME]", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "clfaxpreview", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1517,7 +1517,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "THREE WORLD EMPIRE - ROYAL MILITARY COMMAND", subject, addressed_to, message_body, sent_by, "Office of Military Communications", "Three World Empire"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF TWE FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1565,7 +1565,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "UNION OF PROGRESSIVE PEOPLES - MILITARY HIGH KOMMAND", subject, addressed_to, message_body, sent_by, "Military High Kommand", "Union of Progressive Peoples"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF UPP FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1613,7 +1613,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL LIBERATION FRONT - COLONIAL COUNCIL OF LIBERATION", subject, addressed_to, message_body, sent_by, "Guerilla Forces Command", "Colonial Liberation Front"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CLF FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -1661,7 +1661,7 @@
 				if(!sent_by)
 					return
 				fax_message = new(generate_templated_fax(0, "COLONIAL MARSHAL BUREAU INCIDENT COMMAND CENTER - ANCHORPOINT STATION", subject, addressed_to, message_body, sent_by, "Supervisory Deputy Marshal", "Colonial Marshal Bureau"))
-		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", "size=500x400")
+		show_browser(user, "<body class='paper'>[fax_message.data]</body>", "PREVIEW OF CMB FAX", width = 500, height = 400)
 		var/send_choice = tgui_input_list(user, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice != "Send")
 			return
@@ -2005,10 +2005,10 @@
 		var/mob/ref_person = locate(href_list["nukeapprove"])
 		if(!istype(ref_person))
 			return FALSE
-		var/nukename = "Encrypted Operational Nuke"
+		var/nukename = "Encrypted Operational Blockbuster"
 		var/prompt = tgui_alert(usr, "Do you want the nuke to be Encrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 		if(prompt == "Decrypted")
-			nukename = "Decrypted Operational Nuke"
+			nukename = "Decrypted Operational Blockbuster"
 		prompt = tgui_alert(usr, "Are you sure you want to authorize '[nukename]' to the marines? This will greatly affect the round!", "DEFCON 1", list("No", "Yes"))
 		if(prompt != "Yes")
 			return

@@ -43,7 +43,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/slam,
 		/datum/action/xeno_action/onclick/toggle_crest,
@@ -59,6 +59,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Defender_1","Defender_2","Defender_3")
 	weed_food_states_flipped = list("Defender_1","Defender_2","Defender_3")
+
+	skull = /obj/item/skull/defender
+	pelt = /obj/item/pelt/defender
 
 /mob/living/carbon/xenomorph/defender/handle_special_state()
 	if(fortify)
@@ -168,7 +171,7 @@
 
 	if(!fendy.crest_defense)
 		apply_cooldown()
-		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy)
+		fendy.throw_atom(get_step_towards(carbone, fendy), 3, SPEED_SLOW, fendy, tracking=TRUE)
 	if(!fendy.Adjacent(carbone))
 		on_cooldown_end()
 		return

@@ -18,6 +18,9 @@
 	data["nuketimelock"] = NUCLEAR_TIME_LOCK
 	data["nuke_available"] = nuke_available
 
+	data["sentry_setting"] = link.faction_label
+	data["faction_options"] = list("USCM Only", "Wey-Yu Only", "USCM & Wey-Yu", "ARES Only")
+
 
 	var/list/logged_announcements = list()
 	for(var/datum/ares_record/announcement/broadcast as anything in records_announcement)
@@ -126,6 +129,8 @@
 
 		var/list/current_convo = list()
 		current_convo["user"] = log.user
+		current_convo["time"] = log.time
+		current_convo["title"] = log.title
 		current_convo["ref"] = "\ref[log]"
 		current_convo["conversation"] = log.conversation
 		logged_convos += list(current_convo)

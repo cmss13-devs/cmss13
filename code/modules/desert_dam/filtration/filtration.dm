@@ -62,13 +62,15 @@ Each var depends on others
 
 
 	alpha = 0
+	layer = TURF_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+	var/flooded_alpha = 180
 	var/dispersing = FALSE
 	var/toxic = FALSE
 	var/disperse_group = 1
 	var/spread_delay = 5
-	layer = TURF_LAYER
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 
 
 
@@ -220,8 +222,8 @@ Each var depends on others
 	playsound(M, 'sound/bullets/acid_impact1.ogg', 10, 1)
 
 
-/obj/effect/blocker/water/proc/disperse_spread(from_dir = 0)
-	if(dispersing)
+/obj/effect/blocker/water/proc/disperse_spread(from_dir = 0, drain = FALSE)
+	if((dispersing && !drain) || (!dispersing && drain))
 		return
 
 	for(var/direction in GLOB.alldirs)
@@ -238,16 +240,25 @@ Each var depends on others
 		for(var/obj/effect/blocker/water/W in get_step(src,direction) )
 			if(W.disperse_group == src.disperse_group)
 				spawn(effective_spread_delay)
-					W.disperse_spread(turn(direction,180))
+					W.disperse_spread(turn(direction,180), drain)
+	if(drain)
+		drain()
+	else
+		disperse()
 
-	disperse()
+/obj/effect/blocker/water/proc/drain()
+	dispersing = 0
+	animate(src, alpha = initial(alpha), time = 60)
+	var/turf/location = loc
+	location.weedable = initial(location.weedable)
+
 
 /obj/effect/blocker/water/proc/disperse()
 	dispersing = 1
 	for(var/obj/effect/alien/weeds/weeds_to_clean in loc)
 		qdel(weeds_to_clean)
 
-	animate(src, alpha=200, time=40)
+	animate(src, alpha= flooded_alpha, easing = BACK_EASING | EASE_OUT , time= 40)
 	update_icon()
 	var/turf/location = loc
 	location.weedable = NOT_WEEDABLE
@@ -281,13 +292,13 @@ Each var depends on others
 	..()
 	icon_state = null
 
-/obj/structure/machinery/dispersal_initiator/proc/initiate()
+/obj/structure/machinery/dispersal_initiator/proc/initiate(drain = FALSE)
 	// Ported over ambience->ambience_exterior, was broken. Enable if you actually want it
 	//var/area/A = get_area(src)
 	//A.ambience_exterior = 'sound/ambience/ambiatm1.ogg'
 	sleep(30)
 	for(var/obj/effect/blocker/water/W in get_turf(src))
-		W.disperse_spread()
+		W.disperse_spread(drain = drain)
 
 /obj/structure/machinery/dispersal_initiator/ex_act()
 	return
@@ -309,6 +320,18 @@ Each var depends on others
 
 /obj/structure/machinery/filtration_button/floodgate
 	id = "floodgate"
+
+/obj/structure/machinery/filtration_button/floodgate/power_change(area/master_area)
+	. = ..()
+	if(!inoperable())
+		return
+
+	drain()
+
+/obj/structure/machinery/filtration_button/floodgate/proc/drain()
+	for(var/obj/structure/machinery/dispersal_initiator/M in GLOB.machines)
+		if (M.id == src.id)
+			M.initiate(drain = TRUE)
 
 /obj/structure/machinery/filtration_button/attack_hand(mob/user as mob)
 

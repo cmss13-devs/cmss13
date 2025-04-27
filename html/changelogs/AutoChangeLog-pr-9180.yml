@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - bugfix: "spawns ammo instead of extra pistols in the VP78 belt"

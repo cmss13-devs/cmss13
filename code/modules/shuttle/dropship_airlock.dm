@@ -35,6 +35,7 @@ Docking Port Definitions
 	var/list/floodlights = null
 	var/list/door_controls = null
 	var/list/poddoors = null
+	var/list/railings = null
 
 	var/obj/docking_port/mobile/marine_dropship/docked_mobile = null // not a regularly updated variable
 	var/automatic_process_stage_change = 0
@@ -263,9 +264,16 @@ Timer Delayed/Looping Procs
 	docked_mobile = get_docked()
 	if(docked_mobile)
 		docked_mobile.door_control.control_doors(playing_airlock_alarm ? "lock" : "unlock", "all")
+	var/obj/structure/machinery/door/poddoor/railing/airlock_railing
+	if(playing_airlock_alarm)
+		for(airlock_railing as anything in railings)
+			airlock_railing.close(TRUE)
+	else
+		for(airlock_railing as anything in railings)
+			airlock_railing.open(TRUE)
 	end_of_interaction()
 
-/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/delayed_airlock_transition(airlock_type, open, airlock_turfs, obj/effect/hangar_airlock/airlock, end_decisecond, transition)
+/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/delayed_airlock_transition(airlock_type, open, airlock_transition_turfs, obj/effect/hangar_airlock/airlock, end_decisecond, transition)
 	if(COOLDOWN_FINISHED(src, dropship_airlock_cooldown))
 		airlock.icon_state = "[transition]"
 		end_of_interaction()
@@ -274,7 +282,7 @@ Timer Delayed/Looping Procs
 	if(!(decisecond % 10))
 		if(decisecond != end_decisecond)
 			airlock.icon_state = "[transition]_[decisecond * 0.1]s"
-	for(var/turf/open/floor/hangar_airlock/T in airlock_turfs)
+	for(var/turf/open/floor/hangar_airlock/T as anything in airlock_transition_turfs)
 		if(decisecond == T.frame_threshold)
 			T.open = open
 			for(var/atom/movable/AM in T.contents)
@@ -282,7 +290,7 @@ Timer Delayed/Looping Procs
 					T.Entered(AM)
 			T.clean_cleanables()
 			T.can_bloody = !open
-	INVOKE_NEXT_TICK(src, PROC_REF(delayed_airlock_transition), airlock_type, open, airlock_turfs, airlock, end_decisecond, transition)
+	INVOKE_NEXT_TICK(src, PROC_REF(delayed_airlock_transition), airlock_type, open, airlock_transition_turfs, airlock, end_decisecond, transition)
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/delayed_height_decrease()
 	if(COOLDOWN_FINISHED(src, dropship_airlock_cooldown))
@@ -329,10 +337,14 @@ New Backend Procs
 	var/transition = open ? "open" : "close"
 	airlock.icon_state = "[transition]_0s"
 
+	var/list/airlock_transition_turfs = list()
+	for(var/turf/open/floor/hangar_airlock/airlock_turf in airlock_turfs)
+		airlock_transition_turfs += airlock_turf
+
 	omnibus_sound_play('sound/machines/centrifuge.ogg')
 
 	COOLDOWN_START(src, dropship_airlock_cooldown, end_decisecond)
-	INVOKE_NEXT_TICK(src, PROC_REF(delayed_airlock_transition), airlock_type, open, airlock_turfs, airlock, end_decisecond, transition)
+	INVOKE_NEXT_TICK(src, PROC_REF(delayed_airlock_transition), airlock_type, open, airlock_transition_turfs, airlock, end_decisecond, transition)
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/omnibus_sound_play(sound_effect)
 	playsound(src, sound_effect, 100, vol_cat = VOLUME_AMB)
@@ -498,6 +510,7 @@ New Backend Procs
 	floodlights = list()
 	door_controls = list()
 	poddoors = list()
+	railings = list()
 	inner_airlock_effect = new /obj/effect/hangar_airlock/inner(locate(DROPSHIP_AIRLOCK_FROM_DOCKPORT_TO_EFFECT))
 	new /obj/effect/hangar_airlock/outline(locate(DROPSHIP_AIRLOCK_FROM_DOCKPORT_TO_EFFECT))
 	if(!roundstart_template)
@@ -687,16 +700,12 @@ Airlock Turf Interactability Procs
 	if(!isliving(AM))
 		return
 	var/mob/living/fallen_living = AM
-	shake_camera(fallen_living, 20, 1)
-	fallen_living.apply_effect(3, WEAKEN)
-	var/targeted_limb = pick(EXTREMITY_LIMBS)
-	fallen_living.apply_damage(100, BRUTE, targeted_limb)
-	if(istype(fallen_living, /mob/living/carbon/human))
-		var/mob/living/carbon/human/fallen_human = fallen_living
-		var/obj/limb/fracturing_limb = fallen_human.get_limb(targeted_limb)
-		fracturing_limb.fracture(100)
-	else
-		fallen_living.apply_damage(50, BRUTE, targeted_limb)
+	fallen_living.visible_message(SPAN_WARNING("[fallen_living] splatters onto the ground with a thud!"), SPAN_BOLDWARNING("You splatter onto the ground with a thud!"))
+	if(iscarbon(fallen_living))
+		var/mob/living/carbon/fallen_carbon = fallen_living
+		fallen_carbon.gib(create_cause_data("falling into an open dropship airlock", fallen_carbon))
+		return
+	qdel(AM)
 
 /turf/open/floor/hangar_airlock/outer/enter_depths(atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/hangar_airlock))

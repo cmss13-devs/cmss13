@@ -131,6 +131,7 @@
 #include "code\__DEFINES\bandamarines\ru_jobs.dm"
 #include "code\__DEFINES\bandamarines\rust_g.dm"
 #include "code\__DEFINES\bandamarines\tts.dm"
+#include "code\__DEFINES\bandamarines\xenos.dm"
 #include "code\__DEFINES\dcs\flags.dm"
 #include "code\__DEFINES\dcs\helpers.dm"
 #include "code\__DEFINES\dcs\signals\signals_admin.dm"

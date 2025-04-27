@@ -613,6 +613,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
 			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
 			// BANDAMARINES EDIT START
+			dat += "<b>Xeno Customization Visibility:</b> <a href='byond://?_src_=prefs;preference=xeno_customization_visibility;task=input'><b>[xeno_customization_visibility]</b></a><br>"
 			dat += "<b>Instant Ability Cast:</b> <a href='byond://?_src_=prefs;preference=quick_cast'><b>[(quick_cast) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Show Screentips:</b> <a href='byond://?_src_=prefs;preference=screentips'><b>[(screentips) ? "Yes" : "No"]</b></a><br>"
 			// BANDAMARINES EDIT END

@@ -512,6 +512,8 @@
 		1, 0.5, 0.5)) // Local, Radio,  Announces - SS220 TTS EDIT from "modular/text_to_speech/code/sound.dm"
 
 	// BANDAMARINES EDIT START
+	S["xeno_customization_visibility"] >> xeno_customization_visibility
+	xeno_customization_visibility = sanitize_inlist(xeno_customization_visibility, GLOB.xeno_customization_visibility_options, XENO_CUSTOMIZATION_SHOW_LORE_FRIENDLY)
 	S["shout_orders"] >> shout_orders
 	shout_orders = sanitize_integer(shout_orders, FALSE, TRUE, TRUE)
 	S["quick_cast"] >> quick_cast
@@ -647,6 +649,7 @@
 	S["show_cooldown_messages"] << show_cooldown_messages
 
 	// BANDAMARINES EDIT START
+	S["xeno_customization_visibility"] << xeno_customization_visibility
 	S["quick_cast"] << quick_cast
 	S["shout_orders"] << shout_orders
 	S["screentips"] << screentips

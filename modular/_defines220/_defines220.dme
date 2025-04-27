@@ -7,6 +7,7 @@
 #include "code/defines/misc.dm"
 #include "code/defines/spans.dm"
 #include "code/defines/subsystems.dm"
+#include "code/defines/xenos.dm"
 #include "code/signals_mob/signals_mob_ai.dm"
 #include "code/signals_mob/signals_mob_carbon.dm"
 #include "code/signals_mob/signals_mob_living.dm"

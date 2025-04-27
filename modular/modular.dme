@@ -15,6 +15,7 @@
 #include "respawn/_respawn.dme"
 #include "shout_orders/_shout_orders.dme"
 #include "screentips/_screentips.dme"
+#include "xeno_customization/_xeno_customization.dme"
 #include "sounds/_sounds.dme"
 #include "translations/_translations.dme"
 #include "stats_viewer/_stats_viewer.dme"

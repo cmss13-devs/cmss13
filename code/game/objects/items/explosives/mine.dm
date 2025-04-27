@@ -118,11 +118,11 @@
 		if(customizable)
 			if(sensor_for_small == FALSE)
 				sensor_for_small = TRUE
-				to_chat(usr,SPAN_NOTICE("You start modifyied [src] to be more sensitive."))
+				to_chat(usr,SPAN_NOTICE("You have reverted [src] to its original sensitivity."))
 				return TRUE
 			if(sensor_for_small == TRUE)
 				sensor_for_small = FALSE
-				to_chat(usr,SPAN_NOTICE("You start modifyied [src] to be less sensitive."))
+				to_chat(usr,SPAN_NOTICE("You have adjusted [src] to be less sensitive."))
 				return TRUE
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
 		if(active)

@@ -1472,6 +1472,11 @@
 	for(var/i = 1 to 3)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
 
+/obj/item/storage/belt/gun/m4a3/vp78/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/weapon/gun/pistol/vp78(src)
+
 /obj/item/storage/belt/gun/m4a3/wy
 	name = "\improper WY-TM892 pattern general pistol holster rig"
 	desc = "The WY-TM892 is the standard load-bearing equipment of the W-Y security forces. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol magazines."

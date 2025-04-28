@@ -13,22 +13,21 @@
 	)
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/place_design, //macro 2, macro 1 is for weeds
-		/datum/action/xeno_action/onclick/change_design,
-		/datum/action/xeno_action/activable/greater_resin_surge, //macro 3
-		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 4
-		/datum/action/xeno_action/onclick/toggle_long_range/designer, //macro 5
+		/datum/action/xeno_action/onclick/change_design, //macro 3
+		/datum/action/xeno_action/activable/greater_resin_surge, //macro 4
+		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 5
+		/datum/action/xeno_action/onclick/toggle_long_range/designer,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
-/datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+/datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord) //show_radial_menu
 	hivelord.available_design = list(
 		/obj/effect/alien/resin/design/speed_node,
 		/obj/effect/alien/resin/design/cost_node,
 		/obj/effect/alien/resin/design/construct_node,
 		/obj/effect/alien/resin/design/upgrade,
 		/obj/effect/alien/resin/design/remove,
-		/obj/effect/alien/resin/design/remote
 	)
 	hivelord.selected_design = /obj/effect/alien/resin/design/speed_node
 	hivelord.selected_design_mark = /datum/design_mark/resin_wall
@@ -102,7 +101,7 @@
 /datum/action/xeno_action/onclick/toggle_long_range/designer
 	handles_movement = FALSE
 	should_delay = FALSE
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 	delay = 0
 
 //////////////////////////
@@ -147,8 +146,15 @@
 	if(hive)
 		hive.designer_marks += src
 		if(mark_meaning)
-			choosenMark = image(icon, src, mark_meaning.icon_state, ABOVE_HUD_LAYER, "pixel_y" = 5)
+			var/icon_state_to_use = mark_meaning.icon_state
+			if(istype(src, /obj/effect/alien/resin/design/speed_node))
+				icon_state_to_use += "_speed"
+			else if(istype(src, /obj/effect/alien/resin/design/cost_node))
+				icon_state_to_use += "_cost"
+
+			choosenMark = image(icon, src, icon_state_to_use, ABOVE_HUD_LAYER, "pixel_y" = 5)
 			choosenMark.plane = ABOVE_HUD_PLANE
+			choosenMark.appearance_flags = RESET_COLOR
 
 			for(xeno in hive.totalXenos)
 				if(xeno.client)
@@ -177,7 +183,13 @@
 	if(!choosenMark || !mark_meaning)
 		return
 
-	choosenMark.icon_state = mark_meaning.icon_state
+	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
+		if(istype(src, /obj/effect/alien/resin/design/speed_node))
+			choosenMark.icon_state = mark_meaning.icon_state + "_speed"
+		else if(istype(src, /obj/effect/alien/resin/design/cost_node))
+			choosenMark.icon_state = mark_meaning.icon_state + "_cost"
+		else
+			choosenMark.icon_state = mark_meaning.icon_state
 
 /obj/effect/alien/resin/design/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -223,9 +235,9 @@
 		. += "You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
 
 /obj/effect/alien/resin/design/construct_node
-	name = "Design Construct Node (90)"
+	name = "Design Construct Node (70)"
 	icon_state = "static_constructnode"
-	plasma_cost = 90
+	plasma_cost = 70
 	var/plasma_donation = 70
 	var/building = FALSE
 	var/obj/effect/resin_construct/build_overlay
@@ -309,23 +321,16 @@
 
 	building = FALSE
 
-	var/is_brittle = (T.is_weedable() == SEMI_WEEDABLE)
-	if(istype(xeno.strain, /datum/xeno_strain/designer))
-		is_brittle = TRUE
-
 	if(istype(design_mark, /datum/design_mark/resin_wall))
 		if(!istype(T, /turf/closed/wall))
 			var/turf/placed
-			if(is_brittle)
-				placed = T.PlaceOnTop(/turf/closed/wall/resin/brittle)
-			else
-				placed = T.PlaceOnTop(/turf/closed/wall/resin)
+			placed = T.PlaceOnTop(/turf/closed/wall/resin/brittle)
 
 			var/turf/closed/wall/resin/R = get_turf(T)
 			if(istype(R))
 				R.hivenumber = src.hivenumber
 				set_hive_data(R, R.hivenumber)
-			to_chat(xeno, SPAN_NOTICE("A wall has been created."))
+			to_chat(xeno, SPAN_NOTICE("A brittle wall has been created."))
 			playsound(placed, "alien_resin_build", 25)
 		else
 			to_chat(xeno, SPAN_WARNING("A wall already exists here."))
@@ -333,16 +338,13 @@
 	else if(istype(design_mark, /datum/design_mark/resin_door))
 		if(!istype(T, /obj/structure/mineral_door))
 			var/obj/new_structure
-			if(is_brittle)
-				new_structure = new /obj/structure/mineral_door/resin/brittle(T)
-			else
-				new_structure = new /obj/structure/mineral_door/resin(T)
+			new_structure = new /obj/structure/mineral_door/resin/brittle(T)
 
 			var/obj/structure/mineral_door/resin/R = locate(/obj/structure/mineral_door/resin) in get_turf(T)
 			if(istype(R))
 				R.hivenumber = src.hivenumber
 				set_hive_data(R, R.hivenumber)
-			to_chat(xeno, SPAN_NOTICE("A door has been created."))
+			to_chat(xeno, SPAN_NOTICE("A brittle door has been created."))
 			playsound(new_structure, "alien_resin_build", 25)
 		else
 			to_chat(xeno, SPAN_WARNING("A door already exists here."))
@@ -454,13 +456,6 @@
 	icon_state = "remove_node"
 	plasma_cost = 25
 
-/obj/effect/alien/resin/design/remote
-	name = "Remote Door Control (25)"
-	desc = "Open and Closes Doors"
-	icon = 'icons/mob/hud/actions_xeno.dmi'
-	icon_state = "door_control"
-	plasma_cost = 25
-
 //////////////////////////
 // Greater Resin Surge. //
 //////////////////////////
@@ -479,7 +474,7 @@
 	xeno_cooldown = 30 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/greater_resin_surge/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -614,20 +609,6 @@
 	if(xeno.selected_design && xeno.selected_design.plasma_cost)
 		plasma_cost = xeno.selected_design.plasma_cost
 
-	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/remote))
-		if(!istype(target_atom, /obj/structure/mineral_door/resin))
-			to_chat(xeno, SPAN_XENOWARNING("We can only do this on resin doors!"))
-			return
-		if(!check_and_use_plasma_owner(plasma_cost))
-			return
-		var/obj/structure/mineral_door/resin/resin_door = target_atom
-		if(resin_door.TryToSwitchState(owner))
-			if(resin_door.open)
-				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
-			else
-				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
-		return
-
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/upgrade))
 		if(!(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane) || istype(target_atom, /obj/structure/mineral_door/resin)))
 			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membrane and doors!"))
@@ -716,10 +697,24 @@
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list.
 		qdel(old_design) //Delete node.
 
+	if(istype(target_atom, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/resin_door = target_atom
+		if(resin_door.hivenumber != xeno.hivenumber)
+			to_chat(xeno, SPAN_XENOWARNING("This door does not belong to our hive!"))
+			return
+		if(!check_and_use_plasma_owner(0)) // No plasma cost for remote opening
+			return
+		if(resin_door.TryToSwitchState(owner))
+			if(resin_door.open)
+				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+			else
+				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+		return
+
 	var/selected_design = xeno.selected_design
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node)) //Check path you selected from list.
-		if(!is_turf_clean(target_turf)) // Check if the turf is clean before continuing
+		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 			return
 		var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay.
@@ -741,7 +736,7 @@
 		xeno.current_design.Add(design) //Add Node to list.
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/cost_node))
-		if(!is_turf_clean(target_turf))
+		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 			return
 		var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf, src, xeno)
@@ -763,7 +758,7 @@
 		xeno.current_design.Add(design)
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/construct_node))
-		if(!is_turf_clean(target_turf))
+		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 			return
 		if(!xeno.check_alien_construction(target_turf, check_doors = FALSE))
@@ -793,7 +788,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/xeno_action/activable/place_design/proc/is_turf_clean(turf/current_turf, check_resin_additions = FALSE, check_doors = FALSE)
+/datum/action/xeno_action/activable/place_design/proc/is_turf_clean(turf/current_turf, check_resin_additions = FALSE, check_doors = FALSE, check_resin_doors = FALSE)
 	var/has_obstacle = FALSE
 	for(var/obj/target in current_turf)
 		if(check_doors)
@@ -804,6 +799,10 @@
 			if(istype(target, /obj/effect/alien/resin/sticky) || istype(target, /obj/effect/alien/resin/spike) || istype(target, /obj/effect/alien/resin/sticky/fast))
 				has_obstacle = TRUE
 				to_chat(src, SPAN_WARNING("[target] is blocking the resin!"))
+				return FALSE
+		if(check_resin_doors)
+			if(istype(target, /obj/structure/mineral_door/resin))
+				to_chat(src, SPAN_WARNING("[target] is blocking the resin node! There's not enough space to build that here."))
 				return FALSE
 	if(current_turf.density || has_obstacle || locate(/obj/effect/alien/resin/design) in current_turf)
 		return FALSE
@@ -826,7 +825,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_design_icons
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/onclick/toggle_design_icons/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -874,7 +873,7 @@
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/onclick/change_design/give_to(mob/living/carbon/xenomorph/xeno)
 	. = ..()

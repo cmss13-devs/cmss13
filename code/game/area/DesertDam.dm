@@ -42,6 +42,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence
 	name = "East Lab Maintenence"
 	icon_state = "maintcentral"
+	unoviable_timer = TRUE
 
 /area/desert_dam/interior/lab_northeast/east_lab_containment
 	name = "East Lab Containment"
@@ -245,7 +246,10 @@
 /area/desert_dam/interior/caves/east_caves
 	name = "Eastern Caves"
 	icon_state = "red"
-	unoviable_timer = FALSE
+
+/area/desert_dam/interior/caves/west_caves
+	name = "Western Caves"
+	icon_state = "red"
 
 /area/desert_dam/interior/caves/central_caves
 	name = "Central Caves"
@@ -255,7 +259,6 @@
 /area/desert_dam/interior/caves/temple
 	name = "Sand Temple"
 	icon_state = "green"
-	unoviable_timer = FALSE
 
 //BUILDING
 //areas not under rock
@@ -335,6 +338,50 @@
 	name = "Administration Archives"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/gate
+	name = "Administration Departures Gate"
+	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/breakroom
+	name = "Administration Breakroom"
+	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/stairwell
+	name = "Administration Stairwell"
+	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/stairwell/upper
+	name = "Administration Upper Stairwell"
+
+/area/desert_dam/building/administration/upper_hallway
+	name = "Administration Upper Hallway"
+	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/panic_room
+	name = "Administration Panic Room"
+	icon_state = "blue"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/janitor
+	name = "Administration Janitor Closet"
+	icon_state = "blue"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/maint
+	name = "Administration Maintenance"
+	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/balcony
+	name = "Administration Balcony"
+	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
+	ceiling = CEILING_NONE
 
 
 //Bar

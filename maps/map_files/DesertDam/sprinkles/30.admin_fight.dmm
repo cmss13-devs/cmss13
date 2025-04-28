@@ -72,7 +72,7 @@
 /turf/open/floor/prison/bluecorner/north,
 /area/desert_dam/building/administration/hallway)
 "iz" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/almayer,
 /obj/item/folder/white,
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/hallway)
@@ -155,7 +155,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "oO" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/hallway)
 "rg" = (
@@ -267,7 +267,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/administration/hallway)
 "xW" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/almayer,
 /obj/item/tool/stamp{
 	pixel_x = 8
 	},
@@ -344,7 +344,7 @@
 /area/desert_dam/building/administration/lobby)
 "Ka" = (
 /obj/structure/machinery/light,
-/obj/structure/surface/table,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/donut_box{
 	pixel_y = 5
 	},
@@ -378,7 +378,7 @@
 	name = "Security Cameras - Operations";
 	network = list("chigusa_1")
 	},
-/obj/structure/surface/table,
+/obj/structure/surface/table/almayer,
 /turf/open/floor/darkred2/northwest,
 /area/desert_dam/building/administration/lobby)
 "OJ" = (
@@ -417,7 +417,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "UI" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/almayer,
 /obj/item/storage/briefcase,
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/hallway)
@@ -442,7 +442,6 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/hallway)
 "Xz" = (
-/obj/item/trash/pistachios,
 /turf/open/floor/plating,
 /area/desert_dam/building/administration/hallway)
 "XE" = (

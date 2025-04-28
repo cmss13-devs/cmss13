@@ -21,7 +21,7 @@
 		var/new_name = declent_ru_initial(product_entry[1])
 		// We have override name for this, such as "Flare Pouch (Full)"
 		if(!isnull(new_name))
-			product_entry[1] = new_name
+			product_entry[1] = capitalize(new_name)
 			continue
 		// Try to get translated item name
 		if(product_entry[3] && ispath(product_entry[3], /atom))

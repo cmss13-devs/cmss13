@@ -136,7 +136,7 @@
 	icon = 'icons/obj/items/lighting.dmi'
 	var/base_state = "tube" // base description and icon_state
 	icon_state = "tube1"
-	desc = "A lighting fixture that is fitted with a bright fluorescent light tube. Looking at it for too long makes your eyes go watery."
+	desc = "A lighting fixture. Great for illuminating dark areas."
 	anchored = TRUE
 	layer = FLY_LAYER
 	use_power = USE_POWER_IDLE
@@ -171,13 +171,13 @@
 /obj/structure/machinery/light/blue
 	icon_state = "btube1"
 	base_state = "btube"
-	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
+	desc = "A lighting fixture. Its glass covering is a bright, fluorescent blue."
 	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/light/red
 	icon_state = "rtube1"
 	base_state = "rtube"
-	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery."
+	desc = "A lighting fixture. Its glass covering is a bright, fluorescent red."
 
 // the smaller bulb light fixture
 
@@ -186,7 +186,7 @@
 	base_state = "bulb"
 	fitting = "bulb"
 	brightness = 4
-	desc = "A small lighting fixture that is fitted with a bright fluorescent light bulb. Looking at it for too long makes your eyes go watery."
+	desc = "A small lighting fixture. Good for illuminating dark areas."
 	light_type = /obj/item/light_bulb/bulb
 
 /obj/structure/machinery/light/small/blue
@@ -194,26 +194,26 @@
 	base_state = "bbulb"
 	fitting = "bulb"
 	brightness = 4
-	desc = "A small lighting fixture that is fitted with a bright blue fluorescent light bulb. Looking at it for too long makes your eyes go watery."
+	desc = "A small lighting fixture. Its glass covering is a bright, fluorescent blue."
 	light_type = /obj/item/light_bulb/bulb
 	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/light/double
 	icon_state = "ptube1"
 	base_state = "ptube"
-	desc = "A lighting fixture that can be fitted with two bright blue fluorescent light tubes for that extra eye-watering goodness."
+	desc = "A lighting fixture that can be fitted with two bright fluorescent light tubes for that extra eye-watering goodness."
 
 /obj/structure/machinery/light/double/blue
 	icon_state = "bptube1"
 	base_state = "bptube"
-	desc = "A lighting fixture that can be fitted with two bright fluorescent light tubes for that extra eye-watering goodness."
+	desc = "A lighting fixture that can be fitted with two bright blue fluorescent light tubes for that extra eye-watering goodness."
 	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/light/spot
 	name = "spotlight"
 	icon_state = "slight1"
 	base_state = "slight"
-	desc = "A wide light fixture fitted with a large, very bright fluorescent light tube. You want to sneeze just looking at it."
+	desc = "A wide light fixture. Fantastic at illuminating dark areas."
 	fitting = "large tube"
 	light_type = /obj/item/light_bulb/tube/large
 	brightness = 12
@@ -222,7 +222,7 @@
 	name = "spotlight"
 	icon_state = "bslight1"
 	base_state = "bslight"
-	desc = "A wide light fixture fitted with a large, blue, very bright fluorescent light tube. You want to sneeze just looking at it."
+	desc = "A wide light fixture. Fantastic at illuminating dark areas."
 	fitting = "large tube"
 	light_type = /obj/item/light_bulb/tube/large/
 	brightness = 12
@@ -243,19 +243,19 @@
 /obj/structure/machinery/light/dropship/green
 	icon_state = "gtube1"
 	base_state = "gtube"
-	desc = "A lighting fixture that is fitted with a bright green fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles."
+	desc = "A lighting fixture used by aircraft vehicles. Its glass covering is a bright, fluorescent green."
 	light_color = LIGHT_COLOR_GREEN
 
 /obj/structure/machinery/light/dropship/red
 	icon_state = "rtube1"
 	base_state = "rtube"
-	desc = "A lighting fixture that is fitted with a bright red fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles."
+	desc = "A lighting fixture used by aircraft vehicles. Its glass covering is a bright, fluorescent red."
 	light_color = LIGHT_COLOR_RED
 
 /obj/structure/machinery/light/dropship/blue
 	icon_state = "btube1"
 	base_state = "btube"
-	desc = "A lighting fixture that is fitted with a bright blue fluorescent light tube. Looking at it for too long makes your eyes go watery. Used by aircraft vehicles."
+	desc = "A lighting fixture used by aircraft vehicles. Its glass covering is a bright, fluorescent blue."
 	light_color = LIGHT_COLOR_BLUE
 
 /obj/structure/machinery/light/built/Initialize()
@@ -370,13 +370,15 @@
 	. = ..()
 	switch(status)
 		if(LIGHT_OK)
-			to_chat(user, "It is turned [on? "on" : "off"].")
+			. += "It is turned [on? "on" : "off"]. You could probably remove the [fitting] with a screwdriver."
+			if(on)
+				. += "Wow, that's bright. Looking at it for too long makes your eyes water."
 		if(LIGHT_EMPTY)
-			to_chat(user, "The [fitting] has been removed.")
+			. += "The [fitting] has been removed."
 		if(LIGHT_BURNED)
-			to_chat(user, "The [fitting] is burnt out.")
+			. += "The [fitting] is burnt out. You could probably remove the [fitting] with a screwdriver."
 		if(LIGHT_BROKEN)
-			to_chat(user, "The [fitting] has been smashed.")
+			. += "The [fitting] has been smashed. You could probably remove the [fitting] with a screwdriver."
 
 
 
@@ -398,6 +400,7 @@
 			to_chat(user, "There is a [fitting] already inserted.")
 			return
 		else
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			src.add_fingerprint(user)
 			var/obj/item/light_bulb/L = W
 			if(istype(L, light_type))
@@ -419,28 +422,55 @@
 						explode()
 			else
 				to_chat(user, "This type of light requires a [fitting].")
-				return
+		return
 
+	// attempt to remove light via screwdriver
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
+		if(status == LIGHT_EMPTY)
+			to_chat(user, "There is no [fitting] in this light.")
+			return
+
+		else
+			to_chat(user, "You remove the light [fitting].")
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			// create a light tube/bulb item and put it in the user's hand
+			var/obj/item/light_bulb/L = new light_type()
+			L.status = status
+			L.rigged = rigged
+			L.brightness = src.brightness
+
+			// light item inherits the switchcount, then zero it
+			L.switchcount = switchcount
+			switchcount = 0
+
+			L.update()
+
+			if(user.put_in_inactive_hand(L)) //successfully puts it in our active hand
+				L.add_fingerprint(user)
+			else
+				L.forceMove(loc) //if not, put it on the ground
+			status = LIGHT_EMPTY
+			update()
+			return
 		// attempt to break the light
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
-
+		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
 		if(prob(1+W.force * W.demolition_mod * 5))
-
-			to_chat(user, "You hit the light, and it smashes!")
+			to_chat(user, SPAN_WARNING("You hit the light, and it smashes!"))
 			for(var/mob/M as anything in viewers(src))
 				if(M == user)
 					continue
-				M.show_message("[user.name] smashed the light!", SHOW_MESSAGE_VISIBLE, "You hear a tinkle of breaking glass", SHOW_MESSAGE_AUDIBLE)
+				M.show_message(SPAN_WARNING("[user.name] smashed the light!"), SHOW_MESSAGE_VISIBLE, "You hear a tinkle of breaking glass", SHOW_MESSAGE_AUDIBLE)
 			if(on && (W.flags_atom & CONDUCT))
 				if (prob(12))
 					electrocute_mob(user, get_area(src), src, 0.3)
 			broken()
 
 		else
-			to_chat(user, "You hit the light!")
+			to_chat(user, SPAN_WARNING("You hit the light!"))
 
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
@@ -470,7 +500,6 @@
 			s.start()
 			if (prob(75))
 				electrocute_mob(user, get_area(src), src, rand(0.7,1.0))
-
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
@@ -524,10 +553,6 @@
 
 	add_fingerprint(user)
 
-	if(status == LIGHT_EMPTY)
-		to_chat(user, "There is no [fitting] in this light.")
-		return
-
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
 		if(H.species.can_shred(H))
@@ -536,49 +561,6 @@
 			broken()
 			return
 
-	// make it burn hands if not wearing fire-insulated gloves
-	if(on)
-		var/prot = 0
-		var/mob/living/carbon/human/H = user
-
-		if(istype(H))
-
-			if(H.gloves)
-				var/obj/item/clothing/gloves/G = H.gloves
-				if(G.max_heat_protection_temperature)
-					prot = (G.max_heat_protection_temperature > 360)
-		else
-			prot = 1
-
-		if(prot > 0)
-			to_chat(user, "You remove the light [fitting]")
-		else
-			to_chat(user, "You try to remove the light [fitting], but it's too hot and you don't want to burn your hand.")
-			return // if burned, don't remove the light
-	else
-		to_chat(user, "You remove the light [fitting].")
-
-	// create a light tube/bulb item and put it in the user's hand
-	var/obj/item/light_bulb/L = new light_type()
-	L.status = status
-	L.rigged = rigged
-	L.brightness = src.brightness
-
-	// light item inherits the switchcount, then zero it
-	L.switchcount = switchcount
-	switchcount = 0
-
-	L.update()
-
-	if(user.put_in_active_hand(L)) //successfully puts it in our active hand
-		L.add_fingerprint(user)
-	else
-		L.forceMove(loc) //if not, put it on the ground
-	status = LIGHT_EMPTY
-	update()
-
-// break the light and make sparks if was on
-
 /obj/structure/machinery/light/proc/broken(skip_sound_and_sparks = 0)
 	if(status == LIGHT_EMPTY)
 		return
@@ -586,10 +568,7 @@
 	if(!skip_sound_and_sparks)
 		if(status == LIGHT_OK || status == LIGHT_BURNED)
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-// if(on)
-// var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-// s.set_up(3, 1, src)
-// s.start()
+
 	status = LIGHT_BROKEN
 	update()
 

@@ -612,7 +612,6 @@
 	maptext_x = 4
 	maptext_y = 2
 
-
 	var/base_icon = "pill_canister"
 	var/static/list/possible_colors = list(
 		"Orange" = "",

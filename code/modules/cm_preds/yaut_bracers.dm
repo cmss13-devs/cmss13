@@ -440,7 +440,7 @@
 	icon_state = "metal_gauntlet"
 	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets
-	desc = "gauntlets made out of alien alloy, you could probably wrap some chains around this after its been put into your bracer, allowing you to do some wacky stuff."
+	desc = "Gauntlets made out of alien alloy, you could probably wrap some chains around this after its been put into your bracer."
 
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"

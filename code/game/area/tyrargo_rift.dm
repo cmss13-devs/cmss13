@@ -580,4 +580,6 @@
 	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	minimap_color = MINIMAP_AREA_SEC_CAVE
+	ceiling = CEILING_MAX
+	ceiling_muffle = FALSE
 	requires_power = FALSE

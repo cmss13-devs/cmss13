@@ -1277,7 +1277,7 @@
 	icon_state = "mhc_headset"
 	frequency = HC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
-	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_CRITICAL
 	has_hud = TRUE
 	hud_type = MOB_HUD_SECURITY_ADVANCED

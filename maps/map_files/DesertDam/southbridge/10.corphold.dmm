@@ -299,9 +299,6 @@
 "mB" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/blocker/toxic_water/Group_2,
-/obj/effect/landmark/nightmare{
-	insert_tag = "green-east-bridge"
-	},
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/river/riverside_east)
 "mC" = (

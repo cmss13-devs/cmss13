@@ -94,25 +94,45 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "aq" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/weapon/unathiknife,
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
+"ar" = (
+/obj/structure/prop/brazier/torch,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/weapon/yautja/duelknife,
+/turf/closed/wall/mineral/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"as" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"ar" = (
+"at" = (
 /obj/item/device/flashlight/lantern,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"as" = (
+"au" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/temple)
-"at" = (
-/obj/effect/decal/remains/human,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
+/area/desert_dam/interior/caves/temple)
+"aw" = (
+/obj/effect/decal/remains/human,
+/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "aZ" = (
 /obj/structure/prop/brazier,
@@ -622,11 +642,16 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "PP" = (
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/unathiknife,
-/turf/open/floor/corsat/squareswood/north,
+/obj/item/weapon/yautja/duelknife,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "RB" = (
 /obj/structure/machinery/door/window{
@@ -887,7 +912,7 @@ an
 td
 td
 td
-aq
+as
 oH
 MH
 mn
@@ -937,7 +962,7 @@ an
 "}
 (11,1,1) = {"
 td
-as
+au
 td
 td
 td
@@ -989,9 +1014,9 @@ ao
 "}
 (13,1,1) = {"
 td
-at
+aw
 td
-ar
+at
 td
 MH
 MH
@@ -1092,7 +1117,7 @@ an
 an
 "}
 (17,1,1) = {"
-as
+au
 td
 an
 an
@@ -1207,10 +1232,10 @@ MH
 an
 an
 MH
+aq
+ar
+aq
 PP
-WV
-PP
-MH
 TO
 AU
 AU

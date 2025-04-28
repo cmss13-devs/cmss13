@@ -185,7 +185,7 @@ CIVILIAN
 /datum/skills/civilian/survivor/pmc/commando
 	name = "Survivor W-Y Commando"
 	additional_skills = list(
-		SKILL_CQC = SKILL_CQC_TRAINED,
+		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,

@@ -10290,11 +10290,6 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/breakroom)
-"aGM" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/desert_dam/building/administration/breakroom)
 "aGN" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lady_finger{
@@ -144659,7 +144654,7 @@ aGV
 aHB
 aHl
 aGW
-aGM
+aGW
 aGB
 aGv
 hXJ

@@ -1422,12 +1422,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/substation/southwest/solar)
-"aeq" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "helipad"
-	},
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock/level3)
 "aer" = (
 /turf/open_space,
 /area/desert_dam/exterior/rock/level3)
@@ -2597,6 +2591,26 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"aid" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
+"aie" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
+"aif" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
 "aik" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -6594,9 +6608,6 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/office)
-"avs" = (
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/roof)
 "avt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -15838,12 +15849,6 @@
 "cjE" = (
 /turf/open/floor/whitebluecorner/north,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
-"cjG" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open_space,
-/area/sky)
 "cjI" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 8
@@ -20662,10 +20667,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
-"eaY" = (
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/darkyellowcorners2/north,
-/area/desert_dam/building/security/prison)
 "ebd" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	name = "\improper Visitation"
@@ -51384,14 +51385,6 @@
 /obj/structure/barricade/handrail,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/building/water_treatment_one/purification)
-"pTj" = (
-/obj/structure/platform/metal/almayer/east,
-/obj/effect/blocker/toxic_water/Group_2,
-/obj/effect/landmark/nightmare{
-	insert_tag = "green-east-bridge"
-	},
-/turf/open/desert/desert_shore/desert_shore1,
-/area/desert_dam/exterior/river/riverside_east)
 "pTz" = (
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/prison)
@@ -59079,15 +59072,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_medical)
-"sNF" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water/Group_1,
-/obj/effect/landmark/nightmare{
-	insert_tag = "purple-center-bridge"
-	},
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_south)
 "sNJ" = (
 /obj/structure/machinery/big_computers/messaging_server/white{
 	name = "Robotics R&D Server";
@@ -69121,15 +69105,6 @@
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/valley_telecoms)
-"wLt" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
-/obj/effect/blocker/toxic_water/Group_1,
-/obj/effect/landmark/nightmare{
-	insert_tag = "purple-south-bridge"
-	},
-/turf/open/gm/river/desert/shallow,
-/area/desert_dam/exterior/river/riverside_south)
 "wLv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -134645,7 +134620,7 @@ qcR
 qcR
 qcR
 qcR
-qcR
+aif
 qcR
 qcR
 qcR
@@ -135252,7 +135227,7 @@ dyZ
 dyZ
 dyZ
 dyZ
-dyZ
+aie
 dyZ
 dyZ
 dyZ
@@ -155533,7 +155508,7 @@ vSo
 quQ
 oXd
 icd
-sNF
+iaL
 vrC
 vrC
 xCt
@@ -165658,7 +165633,7 @@ uBP
 quQ
 oXd
 icd
-wLt
+iaL
 kVM
 pgV
 pgV
@@ -167443,7 +167418,7 @@ eOZ
 eOZ
 eOZ
 wsO
-pTj
+gly
 uAw
 wFu
 szM
@@ -174102,7 +174077,7 @@ rYG
 rYG
 rYG
 rYG
-rYG
+aid
 pFD
 qvq
 qIz
@@ -200011,7 +199986,7 @@ imR
 vVA
 bdf
 pTz
-eaY
+wZL
 qkk
 pEN
 wqy
@@ -206855,7 +206830,7 @@ dsS
 dsS
 dsS
 dsS
-avs
+wnN
 wnN
 wnN
 wnN
@@ -207325,9 +207300,9 @@ dsS
 dsS
 dsS
 dWI
-avs
-avs
-avs
+wnN
+wnN
+wnN
 wnN
 wnN
 wnN
@@ -207561,7 +207536,7 @@ dsS
 dsS
 dsS
 dsS
-avs
+wnN
 wnN
 wnN
 wnN
@@ -207795,7 +207770,7 @@ dsS
 dsS
 dsS
 dsS
-avs
+wnN
 wnN
 wnN
 wnN
@@ -208498,7 +208473,7 @@ dsS
 dsS
 wrN
 dsS
-avs
+wnN
 wnN
 wnN
 wnN
@@ -208731,8 +208706,8 @@ dsS
 dsS
 dsS
 dsS
-avs
-avs
+wnN
+wnN
 wnN
 wnN
 wnN
@@ -212241,7 +212216,7 @@ dsS
 dsS
 dsS
 dsS
-avs
+wnN
 wnN
 wnN
 wnN
@@ -212475,7 +212450,7 @@ dsS
 dsS
 dsS
 dsS
-avs
+wnN
 wnN
 wnN
 wnN
@@ -231336,7 +231311,7 @@ ipW
 ipW
 ipW
 ipW
-cjG
+ipW
 ipW
 ipW
 ipW
@@ -241208,7 +241183,7 @@ wnN
 wnN
 wnN
 wnN
-aeq
+wnN
 wnN
 wnN
 wnN

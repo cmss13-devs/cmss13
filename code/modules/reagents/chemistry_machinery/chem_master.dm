@@ -217,6 +217,9 @@
 				if(length(label) < 3)
 					bottle.maptext_label = label
 					bottle.update_icon()
+				else
+					bottle.maptext_label = ""
+					bottle.update_icon()
 
 			return TRUE
 

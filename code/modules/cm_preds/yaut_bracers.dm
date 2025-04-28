@@ -436,7 +436,7 @@
 	. = ..()
 
 /obj/item/bracer_attachments/chain_gauntlets
-	name = "chain blades"
+	name = "chain gauntlets"
 	icon_state = "metal_gauntlet"
 	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets

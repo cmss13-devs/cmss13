@@ -118,7 +118,7 @@
 		gloves.attachment_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets
-	name = "chain blades"
+	name = "chain gauntlets"
 	plural_name = "wrist blades"
 	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
 	icon_state = "metal_gauntlet"
@@ -148,11 +148,14 @@
 		if((INTENT_DISARM))
 			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
+				var/reverse_facing = get_dir(target, user)
 				if(has_chain)
 					var/obj/effect/beam/tail_beam = user.beam(target, "chain", 'icons/effects/beam.dmi', 2 SECONDS)
 					animate(tail_beam, 1 SECONDS)
 					var/image/tail_image = image('icons/effects/status_effects.dmi', "chain")
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, 7, SPEED_VERY_FAST), 1 SECONDS)
+					if(prob(1))
+
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 7, SPEED_VERY_FAST), 1 SECONDS)
 					target.overlays += tail_image
 					user.spin_circle()
 				user.throw_carbon(target, facing, punch_knockback, SPEED_VERY_FAST,)

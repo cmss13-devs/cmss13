@@ -248,6 +248,12 @@
 /obj/structure/barricade/handrail/sandstone/b
 	icon_state = "hr_sandstone_b"
 
+/obj/structure/barricade/handrail/sandstone/dark
+	color = "#2E1E21"
+
+/obj/structure/barricade/handrail/sandstone/b/dark
+	color = "#2E1E21"
+
 /obj/structure/barricade/handrail/pizza
 	name = "\improper diner half-wall"
 	icon_state = "hr_sandstone" //temp, getting sprites soontm

@@ -6,26 +6,27 @@
 
 import { Input, LabeledList, Section } from 'tgui/components';
 
+import { useLocalState } from '../backend';
+
 export const meta = {
   title: 'Themes',
-  render: (theme, setTheme) => <Story theme={theme} setTheme={setTheme} />,
+  render: () => <Story />,
 };
 
-const Story = (props: {
-  readonly theme: string;
-  readonly setTheme: (value: React.SetStateAction<string>) => void;
-}) => {
+function Story() {
+  const [theme, setTheme] = useLocalState('kitchenSinkTheme', '');
+
   return (
     <Section>
       <LabeledList>
         <LabeledList.Item label="Use theme">
           <Input
             placeholder="theme_name"
-            value={props.theme}
-            onInput={(e, value) => props.setTheme(value)}
+            value={theme}
+            onInput={(e, value) => setTheme(value)}
           />
         </LabeledList.Item>
       </LabeledList>
     </Section>
   );
-};
+}

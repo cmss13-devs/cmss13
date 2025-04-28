@@ -494,3 +494,35 @@
   - bugfix: Resting doesn't reset Tackle Counter anymore. No more Rest Tech.
   realforest2001:
   - rscdel: Deletes a bugged human equipment preset.
+2025-04-25:
+  MistChristmas:
+  - ui: 'Security Records: adds a scrollbar to Individual records. Centers Title and
+      New Record button. Slightly moves the Photo window. Moves the record delete
+      button to the right hand-side. OW Console: Slightly aligns the search bar and
+      Squad Panel in the Squad Monitor.'
+  - ui: Centers and resizes door controls/dropship selection buttons. Does the same
+      for launch control buttons but also moves them into the element and out the
+      title (Does similar for ERT Shuttles). Centers the whole UI. Adjusts the spacings
+      between elements smaller than before. Makes the default UI slightly taller to
+      accommodate the bigger buttons.
+2025-04-26:
+  Blundir:
+  - rscadd: adds unique pouch to PMC/Goon survivors
+  - rscadd: added binoculars to W-Y commando leader
+  - rscadd: admins now have a selection of possible bodyguards that they can automatically
+      send to CL via bodyguard beacon response
+  - balance: buffed W-Y commando cqc and fireman carry skills
+  - balance: Replaces all instances of goons using 7 slot and 5 slot combat packs,
+      with 5 slot W-Y combat satchels
+  - bugfix: fixed shivas W-Y commando having incorrect minimap/orbit icon
+  - bugfix: PMC survivors not using pmc weapons spawners, using generic ones instead
+  - bugfix: PMC survivors potentially having too much metal
+  - bugfix: Goon armor having red light
+  - bugfix: Goons not having ammo in their pouch
+  - bugfix: PMC riot squad having smartgunner in their team
+  - bugfix: some WY security guards not having WY patch
+  - bugfix: fixed USCM having WY gun belts in some cases
+  DarkLordCabbage:
+  - balance: portable composite barricades are now meltable
+  hry-gh:
+  - bugfix: fixes the orbit menu totally breaking when someone is not wearing an id

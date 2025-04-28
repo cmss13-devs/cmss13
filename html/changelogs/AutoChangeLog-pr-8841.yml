@@ -1,0 +1,8 @@
+author: "JackieEstegado"
+delete-after: True
+changes:
+  - bugfix: "Defibrillation chems now always notify the player that they are being revived"
+  - bugfix: "Defibrillation property no longer keeps healing the patient once its above -100 health"
+  - bugfix: "Fixed a case where defibrillation property would prematurely revive a patient despite them being below -100 health"
+  - bugfix: "Paining chem property now causes pain"
+  - bugfix: "Photosensitive chem property is no longer harmless"

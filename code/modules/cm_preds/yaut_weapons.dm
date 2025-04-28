@@ -133,8 +133,10 @@
 	var/has_chain = FALSE
 	var/punch_knockback = 4
 	var/executing = FALSE
+	var/chain_message = "GET OVER HERE!"
+	var/message_color = "#d12d2d"
 
-/obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/target, mob/living/user)
+/obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
 	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg','sound/weapons/chain_whip.ogg')
 	switch(user.a_intent)
@@ -154,7 +156,11 @@
 					animate(tail_beam, 1 SECONDS)
 					var/image/tail_image = image('icons/effects/status_effects.dmi', "chain")
 					if(prob(1))
-
+						var/list/heard = get_mobs_in_view(7, user)
+						for(var/mob/mob_in_range in heard)
+							if(mob_in_range.ear_deaf)
+								heard -= mob_in_range
+						user.langchat_speech(chain_message, heard, GLOB.all_languages, message_color, TRUE)
 					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 7, SPEED_VERY_FAST), 1 SECONDS)
 					target.overlays += tail_image
 					user.spin_circle()

@@ -222,7 +222,7 @@
 	name = "spotlight"
 	icon_state = "bslight1"
 	base_state = "bslight"
-	desc = "A wide light fixture. Fantastic at illuminating dark areas."
+	desc = "A wide light fixture. Its glass covering is a bright, fluorescent blue. Fantastic at illuminating dark areas."
 	fitting = "large tube"
 	light_type = /obj/item/light_bulb/tube/large/
 	brightness = 12
@@ -445,7 +445,7 @@
 
 			L.update()
 
-			if(user.put_in_inactive_hand(L)) //successfully puts it in our active hand
+			if(user.put_in_inactive_hand(L)) //assumes the screwdriver is in the active hand and attempts to put it in the inactive hand
 				L.add_fingerprint(user)
 			else
 				L.forceMove(loc) //if not, put it on the ground

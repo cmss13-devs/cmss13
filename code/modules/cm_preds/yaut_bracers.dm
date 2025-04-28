@@ -446,7 +446,7 @@
 	name = "wristblade bracer attachment"
 	desc = "A pair of huge, serrated blades"
 	icon_state = "wrist"
-	item_state = "metal_gauntlet"
+	item_state = "wristblade"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
 	deployment_sound = 'sound/weapons/wristblades_on.ogg'
 	retract_sound = 'sound/weapons/wristblades_off.ogg'

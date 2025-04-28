@@ -692,16 +692,16 @@
 
 /obj/effect/landmark/ammo_spawn/m41a_ammo_med/Initialize(mapload, ...)
 	. = ..()
-	if(prob(40))
+	if(prob(30))
 		new /obj/item/ammo_magazine/rifle(loc)
 
 /obj/effect/landmark/ammo_spawn/m41a_ammo_high
-	name = "m41a ammo spawn (80)"
+	name = "m41a ammo spawn (60)"
 	icon_state = "item_good"
 
 /obj/effect/landmark/ammo_spawn/m41a_ammo_high/Initialize(mapload, ...)
 	. = ..()
-	if(prob(80))
+	if(prob(60))
 		new /obj/item/ammo_magazine/rifle(loc)
 
 // m41a ext ammo
@@ -715,12 +715,12 @@
 		new /obj/item/ammo_magazine/rifle/extended(loc)
 
 /obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med
-	name = "m41a ext ammo spawn (40)"
+	name = "m41a ext ammo spawn (30)"
 	icon_state = "ipool"
 
 /obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med/Initialize(mapload, ...)
 	. = ..()
-	if(prob(40))
+	if(prob(30))
 		new /obj/item/ammo_magazine/rifle/extended(loc)
 
 /obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high
@@ -734,30 +734,30 @@
 
 // m4ra ammo
 /obj/effect/landmark/ammo_spawn/m4ra_ammo_low
-	name = "m4ra low ammo spawn (30)"
+	name = "m4ra low ammo spawn (20)"
 	icon_state = "item_crap"
 
 /obj/effect/landmark/ammo_spawn/m4ra_ammo_low/Initialize(mapload, ...)
 	. = ..()
-	if(prob(30))
+	if(prob(20))
 		new /obj/item/ammo_magazine/rifle/m4ra(loc)
 
 /obj/effect/landmark/ammo_spawn/m4ra_ammo_med
-	name = "m4ra med ammo spawn (50)"
+	name = "m4ra med ammo spawn (40)"
 	icon_state = "ipool"
 
 /obj/effect/landmark/ammo_spawn/m4ra_ammo_med/Initialize(mapload, ...)
 	. = ..()
-	if(prob(50))
+	if(prob(40))
 		new /obj/item/ammo_magazine/rifle/m4ra(loc)
 
 /obj/effect/landmark/ammo_spawn/m4ra_ammo_high
-	name = "m4ra high ammo spawn (80)"
+	name = "m4ra high ammo spawn (60)"
 	icon_state = "item_good"
 
 /obj/effect/landmark/ammo_spawn/m4ra_ammo_high/Initialize(mapload, ...)
 	. = ..()
-	if(prob(80))
+	if(prob(60))
 		new /obj/item/ammo_magazine/rifle/m4ra(loc)
 
 // m4ra ext ammo
@@ -771,31 +771,31 @@
 		new /obj/item/ammo_magazine/rifle/m4ra/extended(loc)
 
 /obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med
-	name = "m4ra ext med ammo spawn (40)"
+	name = "m4ra ext med ammo spawn (30)"
 	icon_state = "ipool"
 
 /obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med/Initialize(mapload, ...)
 	. = ..()
-	if(prob(40))
+	if(prob(30))
 		new /obj/item/ammo_magazine/rifle/m4ra/extended(loc)
 
 /obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high
-	name = "m4ra ext high ammo spawn (70)"
+	name = "m4ra ext high ammo spawn (60)"
 	icon_state = "item_good"
 
 /obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high/Initialize(mapload, ...)
 	. = ..()
-	if(prob(70))
+	if(prob(60))
 		new /obj/item/ammo_magazine/rifle/m4ra/extended(loc)
 
 // vp78 ammo
 /obj/effect/landmark/ammo_spawn/vp78_ammo
-	name = "vp78 ammo (60)"
+	name = "vp78 ammo (70)"
 	icon_state = "ipool"
 
 /obj/effect/landmark/ammo_spawn/vp78_ammo/Initialize(mapload, ...)
 	. = ..()
-	if(prob(60))
+	if(prob(70))
 		new /obj/item/ammo_magazine/pistol/vp78(loc)
 
 // smg ammo

@@ -7629,6 +7629,11 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
+"atJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/underground/power_substation)
 "atK" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -57454,7 +57459,7 @@
 /area/tyrargo/indoors/mall)
 "cPX" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/backpack/marine/satchel/rto,
+/obj/item/maintenance_jack,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/tyrargo/indoors/mall)
 "cPY" = (
@@ -57650,6 +57655,7 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "cQI" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/indoors/mall)
 "cQJ" = (
@@ -57683,9 +57689,11 @@
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "cQP" = (
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/prison/whitegreen/northwest,
 /area/tyrargo/indoors/mall)
 "cQQ" = (
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/tyrargo/indoors/mall)
 "cQR" = (
@@ -57758,11 +57766,6 @@
 	dir = 4
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
-/area/tyrargo/indoors/mall)
-"cRc" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
 "cRd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -59416,6 +59419,7 @@
 /area/tyrargo/indoors/mall)
 "cVX" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "cVY" = (
@@ -61029,6 +61033,7 @@
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/underground/power_substation)
 "dak" = (
@@ -64637,6 +64642,7 @@
 	pixel_y = 21
 	},
 /obj/structure/largecrate/random/secure,
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
 "djJ" = (
@@ -68146,6 +68152,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"dsI" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/power_substation)
 "dsJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/dropper{
@@ -68295,6 +68309,13 @@
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
+"dta" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/effect/blocker/water,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/sewer_treatment/lower)
 "dtb" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
 	light_on = 1;
@@ -69795,6 +69816,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/effect/blocker/water,
 /turf/open/shuttle/escapepod/floor1/east,
 /area/tyrargo/underground/engineering)
 "dwH" = (
@@ -69889,6 +69911,7 @@
 	pixel_y = 3
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/underground/engineering)
 "dwX" = (
@@ -70540,6 +70563,7 @@
 /area/tyrargo/underground/sewer/north)
 "dyM" = (
 /obj/structure/machinery/vending/snack,
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/underground/apartment)
 "dyN" = (
@@ -70873,6 +70897,7 @@
 	layer = 3;
 	pixel_y = 32
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/underground/apartment)
 "dzN" = (
@@ -70994,6 +71019,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/underground/apartment)
 "dAa" = (
@@ -71027,6 +71053,7 @@
 /area/tyrargo/underground/mall)
 "dAf" = (
 /obj/structure/reagent_dispensers/watertank,
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/mall)
 "dAg" = (
@@ -72504,6 +72531,7 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/apartment)
 "dDx" = (
@@ -74992,10 +75020,8 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dJE" = (
-/obj/item/device/flashlight/flare/on{
-	fuel_rate = 5
-	},
 /obj/effect/decal/cleanable/blood/drip,
+/obj/item/storage/backpack/marine/satchel/rto,
 /turf/open/floor/corsat,
 /area/tyrargo/underground/mall)
 "dJF" = (
@@ -75083,6 +75109,9 @@
 	},
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
+	},
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 5
 	},
 /turf/open/floor/corsat,
 /area/tyrargo/underground/mall)
@@ -76283,6 +76312,7 @@
 	pixel_y = 20;
 	layer = 2.9
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dMM" = (
@@ -76981,6 +77011,7 @@
 	dir = 4;
 	pixel_y = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/strata/green1,
 /area/tyrargo/indoors/mall)
 "dOj" = (
@@ -76989,6 +77020,7 @@
 	dir = 4;
 	pixel_y = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/green3/west,
 /area/tyrargo/indoors/mall)
 "dOk" = (
@@ -77037,6 +77069,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
+"dOs" = (
+/obj/effect/blocker/water,
+/turf/open/shuttle/escapepod/west,
+/area/tyrargo/underground/apartment)
 "dOt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti3,
@@ -77300,6 +77336,7 @@
 	icon_state = "W"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/underground/engineering)
 "dPf" = (
@@ -78319,6 +78356,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/mall)
 "dRQ" = (
@@ -78780,6 +78818,7 @@
 	pixel_y = 4;
 	pixel_x = -35
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
 "dSY" = (
@@ -78787,6 +78826,7 @@
 /obj/structure/sign/poster/hero/voteno{
 	pixel_y = 36
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "dSZ" = (
@@ -78809,6 +78849,7 @@
 /obj/structure/sign/poster/propaganda{
 	pixel_y = 32
 	},
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "dTc" = (
@@ -78857,10 +78898,12 @@
 /turf/open/floor/hybrisa/tile/supermartfloor2,
 /area/tyrargo/indoors/mall)
 "dTi" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/strata/green1,
 /area/tyrargo/indoors/mall)
 "dTj" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
 /turf/open/floor/strata/green1,
 /area/tyrargo/indoors/mall)
 "dTk" = (
@@ -78878,17 +78921,10 @@
 	},
 /turf/open/floor/hybrisa/tile/supermartfloor2,
 /area/tyrargo/indoors/mall)
-"dTm" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_17";
-	pixel_y = 28;
-	layer = 3
-	},
-/turf/open/floor/prison,
-/area/tyrargo/indoors/mall)
 "dTn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/strata/green3,
 /area/tyrargo/indoors/mall)
 "dTo" = (
@@ -78896,6 +78932,7 @@
 /obj/structure/sign/poster/blacklight{
 	pixel_x = 32
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
 "dTp" = (
@@ -79481,6 +79518,7 @@
 	icon_state = "trash_6";
 	pixel_y = 12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUS" = (
@@ -80428,6 +80466,7 @@
 /obj/item/tool/warning_cone{
 	pixel_x = -12
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/underground/apartment)
 "dXo" = (
@@ -83813,6 +83852,7 @@
 	name = "\improper East traffic signal";
 	desc = "A traffic signal denoting the nearby presence of something to the East."
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
 "efu" = (
@@ -83881,6 +83921,115 @@
 	},
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
+"efC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/turf/open/floor/hybrisa/tile/tilegreen,
+/area/tyrargo/underground/apartment)
+"efD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/effect/blocker/water,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/apartment)
+"efE" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/mall)
+"efF" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"efG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"efH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"efI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/medical_doctor_corpse/burst,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"efJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"efK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian_office/burst,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"efL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/landmark/corpsespawner/hybrisa/weymart/burst,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"efM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"efN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/resin/sticky,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"efO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/whitegreen/north,
+/area/tyrargo/indoors/mall)
+"efP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"efQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"efR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/mall)
+"efS" = (
+/obj/structure/bed/chair/bolted{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_17";
+	pixel_y = 28;
+	layer = 3
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/tyrargo/indoors/mall)
+"efT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/mall)
+"efU" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
+"efV" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/corsat/marked,
+/area/tyrargo/indoors/mall)
 "egq" = (
 /obj/structure/toilet{
 	dir = 4
@@ -90750,6 +90899,7 @@
 	icon_state = "lattice3";
 	pixel_y = -16
 	},
+/obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
 "rKn" = (
@@ -90991,21 +91141,21 @@
 "sfx" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/item/prop{
-	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
-	icon_state = "M56D";
-	name = "M56D heavy machine gun nest";
-	pixel_x = 4;
-	pixel_y = 7;
-	dir = 8;
-	anchored = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
+	},
+/obj/item/prop{
+	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon_state = "M56D";
+	name = "M56D heavy machine gun nest";
+	pixel_x = 4;
+	pixel_y = 5;
+	dir = 8;
+	anchored = 1
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/north)
@@ -122313,7 +122463,7 @@ rEA
 rEA
 dtA
 dtA
-dtQ
+eeF
 dtA
 dtA
 dHZ
@@ -122495,7 +122645,7 @@ dtA
 dtA
 dtA
 dzM
-dIB
+efC
 dyM
 dtA
 dtA
@@ -122503,7 +122653,7 @@ dtA
 dtA
 dwX
 ees
-dwu
+dOs
 dtA
 dtA
 dtA
@@ -122676,8 +122826,8 @@ dAV
 dtA
 dAm
 dzZ
-dIB
-dIB
+efC
+efC
 dXn
 dtA
 dxY
@@ -122685,7 +122835,7 @@ dxy
 dxm
 ees
 eet
-dwu
+dOs
 dtA
 dvy
 dOM
@@ -122847,7 +122997,7 @@ dtA
 dDw
 dMp
 dLU
-dFR
+efD
 dLh
 dtA
 dCn
@@ -122858,8 +123008,8 @@ dun
 dAL
 dyO
 dIB
-dIB
-dIB
+efC
+efC
 dyP
 dtA
 dxZ
@@ -123613,7 +123763,7 @@ dWv
 dqS
 dVY
 cZi
-dis
+dta
 ahW
 dsW
 dUN
@@ -123795,7 +123945,7 @@ dWf
 dqS
 dVY
 cZi
-dis
+dta
 ahW
 dsX
 ddE
@@ -127077,7 +127227,7 @@ djM
 edF
 edV
 daj
-dag
+atJ
 eft
 edF
 cLQ
@@ -127258,8 +127408,8 @@ edS
 edG
 edF
 edG
-cZP
-cZP
+dsI
+dsI
 edG
 edF
 edH
@@ -129763,7 +129913,7 @@ mAQ
 dtC
 dML
 dMi
-dSh
+efE
 dLt
 dIU
 dJD
@@ -131445,7 +131595,7 @@ edH
 edF
 edX
 edW
-cZP
+dsI
 dab
 edF
 efp
@@ -171081,8 +171231,8 @@ dTk
 dlP
 cQZ
 alY
-ceQ
-ceX
+efG
+efM
 alY
 dqj
 cQi
@@ -171802,14 +171952,14 @@ hFN
 cro
 cro
 cqQ
-cev
-ceF
-dTm
-cRb
+efV
+efU
+efF
+efS
 cRb
 cRb
 cQY
-ceQ
+efN
 cPE
 aOT
 ceS
@@ -171985,8 +172135,8 @@ crz
 cqC
 aPs
 cev
-ceQ
-ceQ
+efG
+efN
 cWb
 ceQ
 ceF
@@ -172350,14 +172500,14 @@ cqq
 cqS
 aOT
 dTo
-cfc
+efT
 dOi
-cfc
-cRc
+efR
+efH
 ceS
 dSZ
-ceQ
-ceX
+efN
+efI
 alY
 cQn
 cQa
@@ -172535,8 +172685,8 @@ alY
 dOl
 dOj
 ceX
-ceS
-ceX
+efJ
+efH
 cQM
 ceI
 ceX
@@ -172718,7 +172868,7 @@ dFm
 cWc
 dFm
 alY
-ceX
+efH
 cQM
 cQM
 cQQ
@@ -172904,10 +173054,10 @@ dTd
 cQV
 cQN
 cQE
-ceQ
+efG
 cQp
 ceQ
-ceF
+efF
 ceF
 ceF
 cPh
@@ -173085,8 +173235,8 @@ alY
 dTe
 cOG
 cOG
-ceX
-ceX
+efH
+efH
 cQq
 cQb
 cPK
@@ -173267,7 +173417,7 @@ alY
 dTf
 cQM
 cfc
-ceS
+efJ
 alY
 aOT
 cev
@@ -173629,9 +173779,9 @@ cRm
 cRm
 cRd
 cfc
-cQp
+efP
 cQO
-ceX
+efK
 alY
 cQq
 cQd
@@ -173813,7 +173963,7 @@ cev
 ceI
 ceQ
 ceX
-ceS
+efL
 alY
 cQs
 cPR
@@ -174358,7 +174508,7 @@ cRo
 cRf
 alY
 ceQ
-cQy
+efO
 aOT
 cQx
 cPP
@@ -174722,7 +174872,7 @@ cRo
 cRf
 alY
 cVX
-ceX
+efM
 cPo
 dlk
 cQv
@@ -175085,7 +175235,7 @@ cRA
 cRr
 cRf
 alY
-ceQ
+efQ
 ceX
 alY
 cQA

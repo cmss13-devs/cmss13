@@ -7629,17 +7629,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
-"atJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/misc/metergreen{
-	light_on = 1;
-	light_color = "#96DED1";
-	pixel_x = -28;
-	light_range = 1
-	},
-/obj/effect/blocker/water,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/underground/sewer/south)
 "atK" = (
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
@@ -56046,7 +56035,17 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/power_substation)
 "cLR" = (
-/turf/closed/wall/rock,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/lattice,
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/northwest,
+/turf/open/floor/plating,
 /area/tyrargo/underground/power_substation)
 "cLS" = (
 /obj/structure/cable/heavyduty{
@@ -60975,6 +60974,9 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14";
 	pixel_y = 27
+	},
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_y = -28
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
@@ -68106,16 +68108,10 @@
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsA" = (
 /obj/structure/machinery/portable_atmospherics/powered/pump,
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsB" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary,
-/obj/structure/machinery/power/terminal{
-	dir = 1
-	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsC" = (
@@ -68149,11 +68145,6 @@
 /obj/structure/tunnel/maint_tunnel/hybrisa,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/sewer_treatment/lower)
-"dsI" = (
-/obj/structure/machinery/power/terminal,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/prison/blue/north,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dsJ" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -68304,18 +68295,16 @@
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
-"dta" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 0
-	},
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/power_substation)
 "dtb" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
 	light_on = 1;
 	light_range = 1;
 	light_color = "#017549";
 	pixel_x = -3
+	},
+/obj/structure/sign/safety/water{
+	pixel_y = 31;
+	desc = "Semiotic Standard denoting the presence of a release valve for the sewer water. The power to control this switch is found east of this room."
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/sewer_treatment/lower)
@@ -77048,12 +77037,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
-"dOs" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/misc/graffiti/graffiti7,
-/obj/effect/blocker/water,
-/turf/open/floor/prison/darkyellow2/north,
-/area/tyrargo/underground/sewer/south)
 "dOt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/graffiti/graffiti3,
@@ -79362,7 +79345,11 @@
 	},
 /obj/structure/sign/safety/hvac{
 	pixel_y = 34;
-	pixel_x = 4
+	pixel_x = 14
+	},
+/obj/structure/sign/safety/water{
+	pixel_y = 34;
+	desc = "Semiotic Standard denoting the presence of a release valve for the sewer water. The power to control this switch is found east of this room."
 	},
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/indoors/sewer_treatment/lower)
@@ -79463,7 +79450,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "dUP" = (
 /obj/effect/decal/hybrisa/trash,
@@ -83270,6 +83257,12 @@
 "edH" = (
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
+"edI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti7,
+/turf/open/floor/prison/darkyellow2/north,
+/area/tyrargo/underground/sewer/south)
 "edJ" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/blocker/water,
@@ -83357,6 +83350,10 @@
 "eea" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/strata_outpost,
+/area/tyrargo/underground/power_substation)
+"eeb" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
 /area/tyrargo/underground/power_substation)
 "eec" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -83583,6 +83580,307 @@
 	},
 /turf/open/gm/river/desert/tyrargo/deep/covered,
 /area/tyrargo/underground/sewer/north)
+"eeP" = (
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/power_substation)
+"eeQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/tyrargo/underground/power_substation)
+"eeR" = (
+/turf/open/shuttle/escapepod/floor3/north,
+/area/tyrargo/underground/power_substation)
+"eeS" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
+	light_on = 1;
+	light_range = 1;
+	light_color = "#017549"
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/power_substation)
+"eeT" = (
+/obj/structure/machinery/power/apc/power/south{
+	start_charge = 0
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/effect/spawner/random/powercell{
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/effect/spawner/random/tool{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/corsat,
+/area/tyrargo/underground/power_substation)
+"eeU" = (
+/turf/open/shuttle/escapepod/floor1,
+/area/tyrargo/underground/power_substation)
+"eeV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/east,
+/area/tyrargo/underground/power_substation)
+"eeW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/power_substation)
+"eeX" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/lattice,
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/northeast,
+/turf/open/floor/plating,
+/area/tyrargo/underground/power_substation)
+"eeY" = (
+/obj/structure/prop/power_transformer{
+	density = 1
+	},
+/obj/structure/prop/hybrisa/signs/high_voltage{
+	pixel_y = 17;
+	pixel_x = -33
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/underground/power_substation)
+"eeZ" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/underground/power_substation)
+"efa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/power_substation)
+"efb" = (
+/turf/open/shuttle/escapepod/floor2,
+/area/tyrargo/underground/power_substation)
+"efc" = (
+/turf/open/shuttle/escapepod/east,
+/area/tyrargo/underground/power_substation)
+"efd" = (
+/turf/open/shuttle/escapepod/floor0,
+/area/tyrargo/underground/power_substation)
+"efe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating_striped/east,
+/area/tyrargo/underground/power_substation)
+"eff" = (
+/obj/structure/prop/power_transformer{
+	density = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/underground/power_substation)
+"efg" = (
+/obj/structure/prop/hybrisa/signs/high_voltage{
+	pixel_y = 17;
+	pixel_x = 32
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/tyrargo/underground/power_substation)
+"efh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/plating_stripedcorner/north,
+/area/tyrargo/underground/power_substation)
+"efi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/spawner/random/toolbox{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/tyrargo/underground/power_substation)
+"efj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/tyrargo/underground/power_substation)
+"efk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 14
+	},
+/obj/effect/spawner/random/technology_scanner{
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/plating_stripedcorner,
+/area/tyrargo/underground/power_substation)
+"efl" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/lattice,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform_decoration/metal/almayer/southeast,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_x = -30;
+	light_color = "#850000";
+	light_on = 1;
+	light_range = 1;
+	light_power = 2
+	},
+/turf/open/floor/plating,
+/area/tyrargo/underground/power_substation)
+"efm" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -20
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/tyrargo/underground/power_substation)
+"efn" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/underground/power_substation)
+"efo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/tyrargo/underground/power_substation)
+"efp" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/strata/multi_tiles,
+/area/tyrargo/underground/power_substation)
+"efq" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/lattice,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer,
+/obj/structure/platform_decoration/metal/almayer/southwest,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	light_on = 1;
+	light_color = "#96DED1";
+	pixel_x = 32;
+	light_range = 1;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/tyrargo/underground/power_substation)
+"efr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/blocker/water,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	light_on = 1;
+	light_color = "#96DED1";
+	pixel_x = -28;
+	light_range = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"efs" = (
+/turf/open/floor/corsat/marked,
+/area/tyrargo/underground/power_substation)
+"eft" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_y = -28;
+	pixel_x = -7
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 14;
+	pixel_y = -30;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"efu" = (
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_y = -28;
+	pixel_x = -7
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 14;
+	pixel_y = -30;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"efv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_y = -28
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/power_substation)
+"efw" = (
+/obj/effect/blocker/water,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_x = 28
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/underground/sewer/south)
+"efx" = (
+/obj/effect/blocker/water,
+/obj/structure/prop/hybrisa/signs/high_voltage/small{
+	pixel_x = -29
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/underground/sewer/south)
+"efy" = (
+/obj/structure/sign/safety/water{
+	pixel_y = -6;
+	desc = "Semiotic Standard denoting the presence of a release valve for the sewer water. The power to control this switch is found east of this room.";
+	pixel_x = 34
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"efz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"efA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/sewer_treatment/lower)
+"efB" = (
+/obj/effect/blocker/water,
+/obj/structure/sign/safety/water{
+	pixel_y = -31;
+	desc = "Semiotic Standard denoting the presence of a release valve for the sewer water. The power to control this switch is found east of this room.";
+	pixel_x = 14
+	},
+/turf/open/floor/prison/darkyellow2,
+/area/tyrargo/underground/sewer/south)
 "egq" = (
 /obj/structure/toilet{
 	dir = 4
@@ -87485,7 +87783,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "mxJ" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid,
-/turf/open/floor/prison/floor_plate,
+/turf/open/floor/corsat/marked,
 /area/tyrargo/underground/power_substation)
 "mxN" = (
 /obj/item/ammo_casing/bullet,
@@ -122408,7 +122706,7 @@ cLY
 dis
 ahW
 cKl
-cKl
+efy
 cKl
 anA
 dsy
@@ -123678,7 +123976,7 @@ cZA
 dWf
 cZg
 dVZ
-cLY
+efB
 ahW
 ahW
 dsY
@@ -124410,8 +124708,8 @@ djU
 dth
 eeM
 dUL
-dUr
-dsI
+efz
+dUJ
 dsA
 eeL
 edM
@@ -124592,8 +124890,8 @@ cZi
 dth
 dtb
 dUL
-dUB
-dsI
+efA
+dUJ
 dsB
 eeL
 edM
@@ -124774,7 +125072,7 @@ cZk
 ahW
 ahW
 dUU
-bFL
+dis
 dUJ
 ahW
 ahW
@@ -126049,7 +126347,7 @@ cZd
 edF
 edF
 edF
-ciR
+efw
 edO
 edO
 ciR
@@ -126780,7 +127078,7 @@ edF
 edV
 daj
 dag
-edN
+eft
 edF
 cLQ
 cZR
@@ -127327,7 +127625,7 @@ djE
 cZP
 edS
 jOW
-edH
+efs
 cZT
 dag
 oee
@@ -128050,11 +128348,11 @@ cLY
 edF
 edS
 daq
-edH
+efs
 piV
 cZP
 edS
-edH
+efu
 edF
 cZU
 cZs
@@ -128783,7 +129081,7 @@ piV
 edS
 edS
 jOW
-edH
+efs
 piV
 cZs
 cZs
@@ -128960,7 +129258,7 @@ daD
 edF
 edG
 jOW
-edH
+efs
 djG
 edS
 edS
@@ -129513,8 +129811,8 @@ cZP
 djB
 edF
 edF
-cLR
-cLR
+eeZ
+eeY
 edF
 edF
 cLP
@@ -129694,9 +129992,9 @@ edS
 cZP
 edH
 edF
-cLR
-cLR
-cLR
+efl
+eeZ
+eeZ
 cLR
 edF
 cLP
@@ -129874,13 +130172,13 @@ edF
 edG
 edS
 cZP
-edG
+efv
 edF
-cLR
-cLR
-cLR
-cLR
-edF
+efm
+eeW
+efa
+eeP
+eeb
 cZA
 dWe
 cZg
@@ -130057,12 +130355,12 @@ dan
 edS
 edS
 edG
-edF
-cLR
-cLR
-cLR
-cLR
-edF
+eeb
+efn
+efh
+eeQ
+eeQ
+eeb
 cZA
 dWf
 dqS
@@ -130238,12 +130536,12 @@ edF
 edG
 edS
 dah
-edG
-edF
-cLR
-cLR
-cLR
-cLR
+daq
+efs
+efo
+efi
+efb
+eeR
 edF
 cZA
 dWf
@@ -130420,12 +130718,12 @@ edF
 djH
 edS
 cZP
-edG
-edF
-cLR
-cLR
-cLR
-cLR
+daq
+efs
+efo
+efj
+efc
+eeS
 edF
 cZC
 cZu
@@ -130602,12 +130900,12 @@ edF
 edH
 edS
 cZP
-edH
-edF
-cLR
-cLR
-cLR
-cLR
+jOW
+efs
+efo
+efj
+efc
+eeT
 edF
 cLP
 dWd
@@ -130784,12 +131082,12 @@ mxJ
 piV
 edS
 cZP
-edH
-edF
-cLR
-cLR
-cLR
-cLR
+jOW
+efs
+efn
+efj
+efd
+eeU
 edF
 cLP
 dWe
@@ -130962,17 +131260,17 @@ cLY
 edF
 dat
 daq
-edH
+efs
 piV
 edS
 edS
 cZf
-edF
-cLR
-cLR
-cLR
-cLR
-edF
+eeb
+efo
+efk
+efe
+eeV
+eeb
 cZA
 dWe
 cZg
@@ -131142,7 +131440,7 @@ cZg
 dWo
 cLY
 edF
-dta
+edH
 edH
 edF
 edX
@@ -131150,12 +131448,12 @@ edW
 cZP
 dab
 edF
-cLR
-cLR
-cLR
-cLR
-edF
-dOs
+efp
+eeW
+eeW
+eeW
+eeb
+cZA
 dWe
 cZg
 dWa
@@ -131332,10 +131630,10 @@ vxc
 dai
 rKg
 edF
-cLR
-cLR
-cLR
-cLR
+efq
+eeZ
+eff
+eeX
 edF
 day
 dWf
@@ -131515,11 +131813,11 @@ edR
 djC
 edF
 edF
-cLR
-cLR
+eeZ
+efg
 edF
 edF
-cZA
+edI
 dWf
 dqS
 dVY
@@ -131878,8 +132176,8 @@ edR
 edP
 edF
 edF
+efr
 edK
-atJ
 cZI
 cZM
 daz
@@ -132055,7 +132353,7 @@ cZo
 cZo
 cZo
 dao
-dqM
+efx
 edU
 edU
 cZo

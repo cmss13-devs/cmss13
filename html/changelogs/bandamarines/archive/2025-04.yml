@@ -38,3 +38,6 @@
   larentoun:
   - rscadd: Добавлена поддержка для переводов вендоров
   - rscadd: Добавлена кастомизация для ксеносов
+2025-04-28:
+  biologed:
+  - rscadd: support for SS13 vendor translation

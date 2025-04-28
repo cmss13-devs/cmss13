@@ -267,11 +267,12 @@ SUBSYSTEM_DEF(mapping)
 		next_map_configs[SHIP_MAP] = VM
 		return TRUE
 
-/datum/controller/subsystem/mapping/proc/preloadTemplates(path = "maps/templates/") //see master controller setup
-	var/list/filelist = flist(path)
-	for(var/map in filelist)
-		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
-		map_templates[T.name] = T
+/datum/controller/subsystem/mapping/proc/preloadTemplates(paths = list("maps/templates/", "maps/templates/lazy_templates/thunderdome/")) //see master controller setup
+	for(var/path in paths)
+		var/list/filelist = flist(path)
+		for(var/map in filelist)
+			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
+			map_templates[T.name] = T
 
 	preloadShuttleTemplates()
 	preload_tent_templates()

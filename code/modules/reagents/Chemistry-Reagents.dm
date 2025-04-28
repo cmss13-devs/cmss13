@@ -297,6 +297,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 				GLOB.chemical_data.add_chemical_objective(src)
 			if(CHEM_CLASS_HYDRO)
 				GLOB.chemical_gen_classes_list["H1"] += id
+				GLOB.chemical_data.add_chemical_objective(src)
 		GLOB.chemical_gen_classes_list["C"] += id
 	if(gen_tier)
 		switch(gen_tier)

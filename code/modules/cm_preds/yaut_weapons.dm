@@ -1379,7 +1379,7 @@
 					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/single_lethal]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_lethal]
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
 	switch(mode)
@@ -1391,7 +1391,7 @@
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/single_lethal]
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_lethal]
 
 		if("lethal")
 			mode = "stun"

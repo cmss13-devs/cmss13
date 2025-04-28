@@ -168,14 +168,14 @@
 
 // --- LETHAL AMMO --- \\
 
-/datum/ammo/energy/yautja/caster/single_lethal
+/datum/ammo/energy/yautja/caster/bolt/single_lethal
 	name = "plasma bolt"
 	icon_state = "pulse1"
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 	shell_speed = AMMO_SPEED_TIER_6
 	damage = 75 // This will really only be used to kill people, so it should be decent at doing so.
 
-/datum/ammo/energy/yautja/caster/single_lethal/on_hit_mob(mob/all_targets, obj/projectile/lethal_projectile)
+/datum/ammo/energy/yautja/caster/bolt/single_lethal/on_hit_mob(mob/all_targets, obj/projectile/lethal_projectile)
 	cell_explosion(lethal_projectile, 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, lethal_projectile.weapon_cause_data)
 
 /datum/ammo/energy/yautja/caster/aoe_lethal

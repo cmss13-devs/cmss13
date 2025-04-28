@@ -437,15 +437,16 @@
 
 /obj/item/bracer_attachments/chain_gauntlets
 	name = "chain blades"
-	icon_state = "scim"
-	item_state = "scim"
+	icon_state = "metal_gauntlet"
+	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/chain_gauntlets
-	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
+	desc = "gauntlets made out of alien alloy, you could probably wrap some chains around this after its been put into your bracer, allowing you to do some wacky stuff."
+
 /obj/item/bracer_attachments/wristblades
 	name = "wristblade bracer attachment"
 	desc = "A pair of huge, serrated blades"
 	icon_state = "wrist"
-	item_state = "wristblade"
+	item_state = "metal_gauntlet"
 	attached_weapon_type = /obj/item/weapon/bracer_attachment/wristblades
 	deployment_sound = 'sound/weapons/wristblades_on.ogg'
 	retract_sound = 'sound/weapons/wristblades_off.ogg'

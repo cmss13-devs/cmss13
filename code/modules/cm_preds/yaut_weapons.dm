@@ -117,58 +117,131 @@
 		var/obj/item/clothing/gloves/yautja/hunter/gloves = user.gloves
 		gloves.attachment_internal(user, TRUE) // unlikely that the yaut would have gloves without blades, so if they do, runtime logs here would be handy
 
-
 /obj/item/weapon/bracer_attachment/chain_gauntlets
 	name = "chain blades"
 	plural_name = "wrist blades"
 	desc = "gauntlets made out of alien alloy, chains wrapped around it imply this was made for hand to hand combat, with some range."
-	icon_state = "wrist"
+	icon_state = "metal_gauntlet"
 	hitsound = null
-	item_state = "wristblade"
+	item_state = "gauntlet"
 	attack_speed = 1 SECONDS
 	attack_verb = list("flayed", "punched", "suckerpunched")
-	force = MELEE_FORCE_TIER_6
+	force = MELEE_FORCE_TIER_4
 	speed_bonus_amount = 0
 	var/gauntlet_deployed = FALSE
 	var/combo_counter = 0
+	var/has_chain = FALSE
+	var/punch_knockback = 4
+	var/executing = FALSE
 
-/obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/target, mob/living/user)
+/obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/target, mob/living/user)
 	. = ..()
 	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg','sound/weapons/chain_whip.ogg')
 	switch(user.a_intent)
 		if(INTENT_HELP)
-			if(combo_counter >= 5)
-				target.apply_effect(3, WEAKEN)
+			if(combo_counter >= 5 && target != user)
+				target.apply_effect(1, WEAKEN)
 				combo_counter = 0
-			user.flick_attack_overlay(target, "slam")
-			playsound(target, sound_to_play, 50, 1)
-			combo_counter++
+				user.flick_attack_overlay(target, "slam")
+				playsound(target, sound_to_play, 50, 1)
+				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
 		if((INTENT_DISARM))
-			if(combo_counter >= 3)
+			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
-				var/reverse_facing = get_dir(target, user)
-				var/obj/effect/beam/tail_beam = user.beam(target, "chain", 'icons/effects/beam.dmi', 2 SECONDS)
-				var/image/tail_image = image('icons/effects/status_effects.dmi', "chain")
-				addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 7, SPEED_VERY_FAST), 1 SECONDS)
-				target.overlays += tail_image
-				user.throw_carbon(target, facing, 7, SPEED_VERY_FAST,)
+				if(has_chain)
+					var/obj/effect/beam/tail_beam = user.beam(target, "chain", 'icons/effects/beam.dmi', 2 SECONDS)
+					animate(tail_beam, 1 SECONDS)
+					var/image/tail_image = image('icons/effects/status_effects.dmi', "chain")
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, 7, SPEED_VERY_FAST), 1 SECONDS)
+					target.overlays += tail_image
+					user.spin_circle()
+				user.throw_carbon(target, facing, punch_knockback, SPEED_VERY_FAST,)
+				target.visible_message(SPAN_XENOHIGHDANGER("[user] hits [target] with an extremely strong punch, sending them flying!"))
 				combo_counter = 0
 			user.flick_attack_overlay(target, "slam")
-			combo_counter++
 			playsound(target, sound_to_play, 50, 1)
 		if(INTENT_GRAB)
-		if((INTENT_HARM))
+			if(!(HAS_TRAIT(target, TRAIT_KNOCKEDOUT) || target.stat == UNCONSCIOUS))
+				return
+
+			if(!do_after(user, 0.8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
+				return
+
+			if(executing)
+				return
+
+			if(!executing)
+				executing = TRUE
+				user.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] and slowly lifts them above their head before smashing them down!"))
+				playsound(target, 'sound/effects/bone_break1.ogg', 50, 1)
+				playsound(user, 'sound/voice/pred_roar5.ogg', 50, 1)
+				target.apply_damage(60, ARMOR_MELEE, BRUTE, "chest", 5)
+				target.death(create_cause_data("back broken", user), FALSE)
+				animate(target, pixel_y = target.pixel_y + 64, time = 4, easing = SINE_EASING)
+				sleep(4)
+				playsound(target, 'sound/effects/bang.ogg', 25, 0)
+				playsound(target,"slam", 50, 1)
+				animate(target, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
+				sleep(4)
+				executing = FALSE
+
+		if((INTENT_HARM)) // This is how you farm combo counters, so there's no special interaction.
 			playsound(target, sound_to_play, 50, 1)
 			user.flick_attack_overlay(target, "slam")
-			combo_counter++
+	if(target != user)
+		combo_counter++
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/proc/get_over_here(mob/target, mob/living/user)
 	var/datum/beam/chain_whip
 	chain_whip = target.beam(target, "chain", 'icons/effects/beam.dmi', 1 SECONDS, beam_type = /obj/effect/ebeam/laser/weak)
 	chain_whip.visuals.alpha = 0
 
+/obj/item/weapon/bracer_attachment/chain_gauntlets/attackby(obj/item/chain_wrapper, mob/user)
+	. = ..()
+	if(istype(chain_wrapper, /obj/item/yautja/chain))
+		if(!has_chain)
+			var/obj/item/yautja/chain/chain_to_wrap = chain_wrapper
+			src.has_chain = TRUE
+			to_chat(user, SPAN_NOTICE("You wrap the [chain_to_wrap] around [src]"))
+			playsound(user, 'sound/weapons/chain_whip.ogg', 50, 1)
+			qdel(chain_to_wrap)
+		else
+			to_chat(user, SPAN_NOTICE("This one already has chains on it!"))
+			return
+
+/obj/item/weapon/bracer_attachment/chain_gauntlets/unique_action(mob/user)
+	. = ..()
+	var/mob/living/carbon/human/yautja_user = user
+	if(!gauntlet_deployed)
+		gauntlet_deployed = TRUE
+		punch_knockback = 7
+		yautja_user.start_stomping()
+		addtimer(CALLBACK(src, PROC_REF(undepoy_gauntlets)), 10 SECONDS)
+		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
+	else
+		gauntlet_deployed = FALSE
+		punch_knockback = 5
+
+/obj/item/weapon/bracer_attachment/chain_gauntlets/proc/undepoy_gauntlets()
+	src.gauntlet_deployed = FALSE
+	punch_knockback = 5
 
 
+/mob/living/carbon/human/proc/start_stomping(mob/user)
+	src.AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
+	addtimer(CALLBACK(src, PROC_REF(stop_stomping)), 10 SECONDS)
+
+/mob/living/carbon/human/proc/stop_stomping(mob/user, obj/item/weapon/bracer_attachment/chain_gauntlets/yautja_glove)
+	src.GetExactComponent(/datum/component/footstep).RemoveComponent()
+
+/obj/item/weapon/bracer_attachment/chain_gauntlets/verb/gauntlet_guard()
+	set category = "Weapons"
+	set name = "Guard Yourself"
+	set desc = "Get into a protective stance with your gloves."
+	set src = usr.contents
+
+	unique_action(usr)
 
 /obj/item/weapon/bracer_attachment/wristblades
 	name = "wrist blade"

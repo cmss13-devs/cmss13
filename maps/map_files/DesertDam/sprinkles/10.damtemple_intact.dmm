@@ -94,32 +94,25 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "aq" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/weapon/yautja/duelknife,
-/turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"as" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/head/hardhat,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"at" = (
+"ar" = (
 /obj/item/device/flashlight/lantern,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
-"au" = (
+"as" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"at" = (
+/obj/effect/decal/remains/human,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
-/area/desert_dam/interior/caves/temple)
-"aw" = (
-/obj/effect/decal/remains/human,
-/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "aZ" = (
 /obj/structure/prop/brazier,
@@ -628,6 +621,13 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"PP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/weapon/yautja/duelknife,
+/turf/open/floor/corsat/squareswood/north,
+/area/desert_dam/interior/caves/temple)
 "RB" = (
 /obj/structure/machinery/door/window{
 	dir = 8
@@ -887,7 +887,7 @@ an
 td
 td
 td
-as
+aq
 oH
 MH
 mn
@@ -937,7 +937,7 @@ an
 "}
 (11,1,1) = {"
 td
-au
+as
 td
 td
 td
@@ -989,9 +989,9 @@ ao
 "}
 (13,1,1) = {"
 td
-aw
-td
 at
+td
+ar
 td
 MH
 MH
@@ -1092,7 +1092,7 @@ an
 an
 "}
 (17,1,1) = {"
-au
+as
 td
 an
 an
@@ -1207,9 +1207,9 @@ MH
 an
 an
 MH
-aq
+PP
 WV
-aq
+PP
 MH
 TO
 AU

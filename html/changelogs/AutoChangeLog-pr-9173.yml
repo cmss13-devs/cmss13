@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Xenos can now bleed out when inside atoms (e.g. pipes)"
-  - bugfix: "Xenos now always take atleast 1 dmg from queen banishment (rather than healing when in crit)"

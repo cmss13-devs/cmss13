@@ -20885,10 +20885,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/central_caves)
-"efF" = (
-/obj/structure/surface/rack,
-/turf/open_space,
-/area/sky)
 "efJ" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
@@ -217834,7 +217830,7 @@ ipW
 ipW
 ipW
 ipW
-efF
+ipW
 ipW
 ipW
 ipW

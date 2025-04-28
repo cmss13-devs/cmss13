@@ -161,7 +161,7 @@
 							if(mob_in_range.ear_deaf)
 								heard -= mob_in_range
 						user.langchat_speech(chain_message, heard, GLOB.all_languages, message_color, TRUE)
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 7, SPEED_VERY_FAST), 1 SECONDS)
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 5, SPEED_VERY_FAST), 1 SECONDS)
 					target.overlays += tail_image
 					user.spin_circle()
 				user.throw_carbon(target, facing, punch_knockback, SPEED_VERY_FAST,)
@@ -173,7 +173,7 @@
 			if(!(HAS_TRAIT(target, TRAIT_KNOCKEDOUT) || target.stat == UNCONSCIOUS))
 				return
 
-			if(!do_after(user, 0.8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = 2)) // would be 0.75 but that doesn't really work with numticks
+			if(!do_after(user, 0.8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, numticks = 2))
 				return
 
 			if(executing)

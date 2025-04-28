@@ -287,3 +287,278 @@
   - bugfix: Fixed roof_master_node error issue. (cuberound)
   biologed:
   - bugfix: fixed the functionality of changing character name via PP
+2025-04-17:
+  Blundir:
+  - bugfix: fixed m81 riot grenade launcher not having onmob icons
+  Drathek:
+  - balance: Lessers and Huggers now have a 5 minute respawn timer for non-lesser/hugger
+      deaths/ghosting
+  Mikrel0712:
+  - rscadd: Added a laser targetting mode to the M402 Mortar. You can now link a laser
+      designator to the mortar, and fire directly on laser targets as an alternative
+      to firing on coordinates.
+  Stakeyng:
+  - rscdel: Removed "MOVEMENT ORDER!", "HOLD ORDER!", "FOCUS ORDER!", "WE HOLD THIS
+      GROUND IN THE NAME OF GOD!", "PACK IT UP PEOPLE!", and "STRIFE!" as order phrases
+  - spellcheck: '"SHOOT EM'' DEAD!" is now "SHOOT ''EM DEAD!"'
+  - spellcheck: '"AIM FOR THE KILL!" is now "GO FOR THE KILL!"'
+  - spellcheck: Asterisks used to bold orders close before punctuation.
+  Steelpoint:
+  - rscadd: UPP squad ammo vendors, and cargo vendors, will now be able to vend repair
+      oil and repair kits.
+  - rscadd: UPP personal vendors for combat roles will now be able to dispense repair
+      oil.
+  cuberound:
+  - bugfix: prevents harmful spray during ceasefire
+  efzapa:
+  - maptweak: Hunting Ground Evac Shutters are now properly indestructable.
+2025-04-18:
+  BOBAMAx:
+  - bugfix: CO survs on NV will no longer be UASF COs in the CLF insert
+  Nihisohel:
+  - bugfix: Flamers can now discharge properly
+  - bugfix: Skill locked weapons now respect skill checks when attempting a discharge
+  - bugfix: Weapons on safety no longer discharge
+  efzapa:
+  - rscadd: Fax Responders now spawn with a pen in their ear slot.
+2025-04-19:
+  Drathek:
+  - code_imp: Cleaned up signal usage for wall leaning
+  Killfish:
+  - rscdel: Removed two entirely unused variables
+  - balance: Burrower now has a minimum travel time of 1 second, and unburrow stun
+      has been reduced from 2 to 1.5. No more stunlocking, and surprise solocapping
+      in FOB is now a bit harder.
+  - balance: Tremor has had its cooldown reduced from 45 seconds to 30 seconds.
+  Lagomorphica:
+  - bugfix: podlock doors on almayer and tdome no longer blow up from a stiff breeze
+  MistChristmas:
+  - ui: Adds scalability to the Supply Console so it can be resized and the elements
+      will resize with the window.
+  MistChristmas, Drathek:
+  - qol: 'Autowiki: Ignores most bayonets, and other misc. attachments. Compares difference
+      in base vs strain stats. Switches to using isnull so armour damage table populates
+      0s.'
+  Red-byte3D:
+  - code_imp: lunging is now behavior delegate var
+  - balance: You can no longer tackle while lunging
+  TrollerNoob:
+  - rscadd: A new shipment of Urban, Snow, Classic and Desert variants for the M70B1
+      light flak jacket and the M3-VL pattern flak vest have arrived. Pilots and DCC,
+      rejoice!
+  - rscadd: A new shipment of Urban and Snow variants for the tactical pilot officer
+      flightsuits have also arrived.
+  - rscadd: Classic and Desert variants of the M70 flak jacket have been found in
+      the Almayer's cargo hold, encased in cobwebs.
+  - rscadd: The fine military tailors stationed on Chinook 91 GSO station have finally
+      figured out how to weave buttons into the M70 flak jacket. They can now be unbuttoned
+      and have pockets.
+  - imageadd: Added all map variants for the M70B1 light flak jacket and the M3-VL
+      pattern flak vest.
+  - imageadd: Added Urban/Snow variants for the Tactical Pilot Officer Flightsuit.
+  - imageadd: Added item states for the M70B1 light flak jacket and Tactical Pilot
+      Officer Flightsuit.
+  - imageadd: Added Classic/Desert variants for the standard M70 flak jacket.
+  - imageadd: Added the ability to unbutton the standard M70 flak jacket.
+  - balance: M70 flak jacket now has two item storage slots like the M70B1 light flak
+      jacket, up from zero.
+  - refactor: Removed pilot_alt and pilot_flightsuit_alt icons from uniforms/suits_by_faction
+      and added them to their respective map variants in uniforms/suits_by_map.
+  - refactor: Removed VL_FLAK icons from suits_by_faction and added them to their
+      respective map variants in suits_by_map.
+  - refactor: Moved the M70 flak jacket from armor.dm to marine_coat.dm to standardize
+      its location with the M70B1 light flak jacket.
+  - refactor: Changed the M70 flak jacket's file pathing to jacket/marine/pilot/armor
+      to standardize it with M70B1 light flak jacket's jacket/marine/pilot pathing.
+2025-04-20:
+  DarkLordCabbage:
+  - balance: 'Underbarrel extinguishers can now be attached to the m39, M4RA, mou,
+      breaching shotty, and others.
+
+      qol:'
+  Detective-Google:
+  - bugfix: CO council can vend bomber jackets again
+  Lagomorphica:
+  - balance: Security on Hybrisia Prospera have had buget cuts and no longer have
+      large magazine pouches.
+  PhantornRU:
+  - bugfix: fix propelled chair when not wheeled chair
+2025-04-21:
+  Aurallianz:
+  - rscadd: Nurses can FM carry.
+  - rscadd: CMO requires Doctor and Research playtime.
+  Blundir:
+  - rscadd: added new pred invisibility sound pref
+  - rscadd: normal *laugh emote for preds will now play a random pred laugh sound
+      instead of doing nothing
+  - balance: pred invis sound radius is now 4 instead of 3
+  - ui: pred emote panel color tweaked from green to red
+  - soundadd: new pred laugh sound
+  - soundadd: new pred zoom/unzoom sounds
+  - soundadd: new pred crystal injection sound
+  - soundadd: new pred taunt sounds
+  - soundadd: new pred invisibility sound
+  - rscadd: added calendars and holidays lists related to them, added calendars on
+      all relevant maps
+  Blundir Drathek:
+  - code_imp: autowiki icons are now centered using a new center_icon proc and autowiki
+      gun images are now always 64x32
+  - bugfix: fixed some guns having incorrect attachment offsets
+  - bugfix: fixed some guns being offset incorrectly in inventory/floor
+  - bugfix: fixed getflaticon sometimes returning icons with no height/width
+  - refactor: refactored majority of gun sprites (except pistols/revolvers) to utilize
+      64x32 file instead of 32x32
+  - refactor: got rid of all the cosmetical internal attachments that were a part
+      of gun 32x32 dmi limitations
+  - imageadd: moved custom magazine on gun sprite to gun sprite files
+  Drathek:
+  - code_imp: Autowiki gun templates now lists unwielded stats as N/A for two handers
+  - code_imp: Autowiki xeno comparisons now round to the nearest hundredth
+  Willzadl:
+  - rscadd: pitchblende extended lore description
+  - spellcheck: fixed pitchblende typos
+  - refactor: pitchblende now has a description instead of being manually applied
+      in the .dmm
+  hry-gh:
+  - rscadd: weather now cleans up blood and other cleanables from the floor
+2025-04-22:
+  DarkLordCabbage:
+  - rscadd: Adds drop pouch to medbay equipment vendors.
+  Stakeyng:
+  - rscadd: DCCs now have the ability to vend MK30 tactical helmet.
+  - rscadd: The MK30 tactical helmet now comes with a built-in advanced medical visor.
+  - spellcheck: The M30 tactical helmet has been renamed to the MK30 tactical helmet.
+  - spellcheck: The M30 tactical helmet's eyepiece filter is no longer clarified as
+      being on the left.
+  TrollerNoob:
+  - rscadd: Added all of the Miscellaneous items in the Squad Marine Surplus vendor
+      to the REQ Surplus vendor. Now you can add in fashion to your REQ order!
+  - qol: POs and DCCs can now choose 1 holster belt and 1 storage belt in their vendors,
+      instead of only being able to choose 1 of either.
+  stalkerino:
+  - balance: removed 40 round incendiary mags from CO
+  - bugfix: type47 UPP rig fits on external webbing, mateba rig fits on marine armor
+  - bugfix: allows crafting m4ra extended boxes with cardboard
+  - rscadd: added m4ra extended magazine box for req to buy
+  - rscadd: adds black insul gloves to CT, FTL, SL and IO, gave it a new icon when
+      its on the floor too
+  - bugfix: fixed black gloves not being black
+  - bugfix: fixes inhand sprites for m12 helmets, and grenadier helmet
+2025-04-23:
+  Aurallianz:
+  - rscadd: After a two-minute post-cryo-wakeup period, ARES will provide an announcement
+      stating the commander.
+  - rscadd: ARES will modify your ID and give you senior command access if you don't
+      have it.
+  - maptweak: Added a command headset to the Command tablet locker.
+  - bugfix: Fixed CE's incorrect wakeup message
+  Blundir:
+  - bugfix: fixed gun oil not rendering on helmet
+  - imageadd: gun repair kit resprite
+  Lagomorphica:
+  - balance: Removes thermals as a possible selection from random goggle spawners
+      such as on Fiorina and from pre-selected map spawns on Sorokyne Strata and Kutjevo.
+  MistChristmas:
+  - bugfix: Roller beds deploy where clicked.
+  - bugfix: Fixes a Runtime when detaching/replacing attachments when there is no
+      round in the chamber.
+  Nihisohel:
+  - bugfix: Flamers can pass properly again.
+  Sleepynecrons:
+  - rscadd: adds the missing scythe sprite whilst its equipped on the back
+  biologed:
+  - bugfix: Ability to resize the TGUI TextArea in the modal box medal recommendation
+      and failure to send this due to the " char
+  realforest2001:
+  - rscadd: Added factional remote camera consoles.
+  - bugfix: Fixes fax responder access to Brig cameras.
+  - rscadd: Added the ability for staff to change IFF settings on the AI Core turrets
+      via remote interface.
+  rodcowartt:
+  - bugfix: Tanks will no longer attempt to move without treads installed.
+2025-04-24:
+  Aurallianz:
+  - bugfix: being able to defib without proper medical skills.
+  Detective-Google:
+  - admin: added a new button to reset the tdome
+  Drathek:
+  - bugfix: The taskbar flash preference when unnested now works while in the mob
+      and ghosted
+  - spellcheck: The message while nested preventing becoming a hugger/lesser now mentions
+      specifically if you are nested rather than two different 5 minute timers
+  jupyterkat:
+  - bugfix: setting aSL on specs now changes their hud icon again
+  - bugfix: fixed mortar hud icon not showing up on squad manager and orbit panel
+  - imageadd: added sniper hud icon for pmc spec
+  larentoun:
+  - bugfix: Resting doesn't reset Tackle Counter anymore. No more Rest Tech.
+  realforest2001:
+  - rscdel: Deletes a bugged human equipment preset.
+2025-04-25:
+  MistChristmas:
+  - ui: 'Security Records: adds a scrollbar to Individual records. Centers Title and
+      New Record button. Slightly moves the Photo window. Moves the record delete
+      button to the right hand-side. OW Console: Slightly aligns the search bar and
+      Squad Panel in the Squad Monitor.'
+  - ui: Centers and resizes door controls/dropship selection buttons. Does the same
+      for launch control buttons but also moves them into the element and out the
+      title (Does similar for ERT Shuttles). Centers the whole UI. Adjusts the spacings
+      between elements smaller than before. Makes the default UI slightly taller to
+      accommodate the bigger buttons.
+2025-04-26:
+  Blundir:
+  - rscadd: adds unique pouch to PMC/Goon survivors
+  - rscadd: added binoculars to W-Y commando leader
+  - rscadd: admins now have a selection of possible bodyguards that they can automatically
+      send to CL via bodyguard beacon response
+  - balance: buffed W-Y commando cqc and fireman carry skills
+  - balance: Replaces all instances of goons using 7 slot and 5 slot combat packs,
+      with 5 slot W-Y combat satchels
+  - bugfix: fixed shivas W-Y commando having incorrect minimap/orbit icon
+  - bugfix: PMC survivors not using pmc weapons spawners, using generic ones instead
+  - bugfix: PMC survivors potentially having too much metal
+  - bugfix: Goon armor having red light
+  - bugfix: Goons not having ammo in their pouch
+  - bugfix: PMC riot squad having smartgunner in their team
+  - bugfix: some WY security guards not having WY patch
+  - bugfix: fixed USCM having WY gun belts in some cases
+  DarkLordCabbage:
+  - balance: portable composite barricades are now meltable
+  hry-gh:
+  - bugfix: fixes the orbit menu totally breaking when someone is not wearing an id
+2025-04-27:
+  BlitzArde:
+  - rscadd: Preds can craft more things.
+  JackieEstegado:
+  - bugfix: Defibrillation chems now always notify the player that they are being
+      revived
+  - bugfix: Defibrillation property no longer keeps healing the patient once its above
+      -100 health
+  - bugfix: Fixed a case where defibrillation property would prematurely revive a
+      patient despite them being below -100 health
+  - bugfix: Paining chem property now causes pain
+  - bugfix: Photosensitive chem property is no longer harmless
+  Red-byte3D:
+  - code_imp: throw_carbon is now a all living proc instead of just being a xenomorph
+      variant
+  - bugfix: Sandbags will now properly show damage on examine
+  - bugfix: Airlocks no longer get deleted when theres no chosen type
+  genericusername21:
+  - rscdel: removed ME2 rank pins off the recruiter's service jacket
+  hry-gh:
+  - admin: the thunderdome is no longer on the admin z level - you summon it under
+      the Admin tab. there's also a new tdome option you can summon
+  seanlol092:
+  - qol: Announce where the dropship is from before and during departing (in auto)
+2025-04-28:
+  Aurallianz:
+  - bugfix: Trijent security survivor has WY accesses.
+  Drathek:
+  - bugfix: Fixed a runtime for stat panel examine whenever ghosting/logging out
+  - bugfix: Xenos can now bleed out when inside atoms (e.g. pipes)
+  - bugfix: Xenos now always take atleast 1 dmg from queen banishment (rather than
+      healing when in crit)
+  - qol: Banished xenos in a tunnel can now exit using alt+click (they could have
+      used the exit-tunnel verb however)
+  MistChristmas:
+  - bugfix: spawns ammo instead of extra pistols in the VP78 belt

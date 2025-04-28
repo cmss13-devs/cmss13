@@ -79,11 +79,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
-"E" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_labs)
 "I" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
@@ -132,7 +127,7 @@
 "V" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/barcardine,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "X" = (
@@ -197,7 +192,7 @@ w
 "}
 (6,1,1) = {"
 I
-E
+u
 a
 u
 q

@@ -2574,6 +2574,12 @@
 /obj/item/prop/colony/game,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"ahZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/barcardine,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_labs)
 "aia" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -153768,7 +153774,7 @@ hpF
 mnz
 dVo
 rxr
-lsD
+ahZ
 lsD
 kuG
 fai

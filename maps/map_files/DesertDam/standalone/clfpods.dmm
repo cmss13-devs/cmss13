@@ -1,9 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired,
-/turf/open/floor/white,
-/area/desert_dam/building/medical/garage)
 "ab" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/sandbags/wired{
@@ -142,6 +137,7 @@
 /area/desert_dam/building/medical/garage)
 "ax" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired,
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "ay" = (
@@ -151,11 +147,10 @@
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "az" = (
-/obj/effect/decal/medical_decals{
-	icon_state = "docstriping"
-	},
 /obj/structure/bed/roller,
-/obj/item/trash/used_stasis_bag,
+/obj/structure/machinery/iv_drip{
+	pixel_y = 19
+	},
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "aA" = (
@@ -1049,10 +1044,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "qM" = (
-/obj/structure/bed/roller,
-/obj/structure/machinery/iv_drip{
-	pixel_y = 19
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "qO" = (
@@ -1194,6 +1186,15 @@
 "vp" = (
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_medical)
+"vv" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstriping"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/white,
+/area/desert_dam/building/medical/garage)
 "vD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2049,9 +2050,8 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "docstriping"
 	},
-/obj/structure/barricade/sandbags/wired{
-	dir = 4
-	},
+/obj/structure/bed/roller,
+/obj/item/trash/used_stasis_bag,
 /turf/open/floor/white,
 /area/desert_dam/building/medical/garage)
 "Wg" = (
@@ -2882,7 +2882,7 @@ aE
 fN
 aD
 aB
-ax
+qM
 aw
 Kc
 "}
@@ -2919,7 +2919,7 @@ UZ
 UZ
 aE
 aB
-ax
+qM
 PI
 ID
 "}
@@ -2956,8 +2956,8 @@ aF
 aF
 aF
 aC
-qM
-aa
+az
+ax
 wm
 "}
 (22,1,1) = {"
@@ -2991,7 +2991,7 @@ ID
 ZR
 aJ
 PI
-ax
+qM
 PI
 PI
 ay
@@ -3025,7 +3025,7 @@ bk
 bh
 rg
 UG
-ax
+qM
 PI
 Zf
 ve
@@ -3065,9 +3065,9 @@ ID
 BZ
 Ad
 Sv
+vv
+vv
 Vy
-Vy
-az
 jp
 ID
 "}

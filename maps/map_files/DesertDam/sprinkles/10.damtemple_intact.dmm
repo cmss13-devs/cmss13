@@ -79,6 +79,37 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
+"an" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock/level1)
+"ao" = (
+/obj/effect/decal/sand_overlay/sand1,
+/obj/item/weapon/ice_axe/red{
+	pixel_y = 3
+	},
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"ap" = (
+/obj/item/lightstick/red/variant/planted,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
+"aq" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"ar" = (
+/obj/item/device/flashlight/lantern,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"as" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
+"at" = (
+/obj/effect/decal/remains/human,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
 "av" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
 /turf/open/shuttle/red,
@@ -198,10 +229,6 @@
 	},
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
-"jl" = (
-/obj/effect/decal/remains/human,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/temple)
 "jO" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -229,10 +256,6 @@
 /obj/structure/closet/crate/critter,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"mA" = (
-/obj/item/device/flashlight/lantern,
-/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "mB" = (
 /turf/open/floor/sandstone/runed,
@@ -277,11 +300,6 @@
 "oR" = (
 /turf/open/floor/strata/grey_multi_tiles,
 /area/desert_dam/interior/caves/temple)
-"qd" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/item/lightstick/red/variant/planted,
-/turf/open/desert/rock,
-/area/desert_dam/interior/caves/temple)
 "qv" = (
 /obj/effect/decal/remains/xeno{
 	pixel_x = 31
@@ -290,9 +308,6 @@
 	dir = 8
 	},
 /turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"qE" = (
-/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "rh" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -332,8 +347,6 @@
 /turf/open/gm/river/desert/deep,
 /area/desert_dam/interior/caves/temple)
 "td" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/head/hardhat,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "tq" = (
@@ -347,7 +360,7 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"uO" = (
+"vb" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
@@ -370,10 +383,6 @@
 "wl" = (
 /obj/structure/platform_decoration/stone/runed_sandstone,
 /turf/open/gm/river/desert/deep,
-/area/desert_dam/interior/caves/temple)
-"xG" = (
-/obj/item/lightstick/red/variant/planted,
-/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "yT" = (
 /obj/structure/stairs/perspective{
@@ -466,20 +475,15 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "EB" = (
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock/level1)
+/obj/effect/decal/sand_overlay/sand1,
+/obj/item/lightstick/red/variant/planted,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
 "Gz" = (
 /obj/structure/bed/chair/comfy/yautja{
 	dir = 4
 	},
 /turf/open/floor/sandstone/runed,
-/area/desert_dam/interior/caves/temple)
-"GF" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/item/weapon/ice_axe/red{
-	pixel_y = 3
-	},
-/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "Hj" = (
 /obj/structure/surface/rack{
@@ -549,10 +553,6 @@
 	pixel_x = -7
 	},
 /turf/open/floor/corsat/squareswood/north,
-/area/desert_dam/interior/caves/temple)
-"JC" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "JP" = (
 /obj/structure/xenoautopsy/tank/hugger/yautja,
@@ -676,21 +676,21 @@
 /area/desert_dam/interior/caves/temple)
 
 (1,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
 MH
 MH
 MH
@@ -699,24 +699,24 @@ MH
 MH
 MH
 MH
-EB
+an
 "}
 (2,1,1) = {"
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
 Co
-uO
-uO
-uO
-uO
-uO
-uO
-uO
-uO
-uO
+vb
+vb
+vb
+vb
+vb
+vb
+vb
+vb
+vb
 MH
 MH
 Li
@@ -725,15 +725,15 @@ Li
 Li
 MH
 MH
-EB
+an
 "}
 (3,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
+an
 mB
 mB
 mB
@@ -751,15 +751,15 @@ Li
 Li
 MH
 MH
-EB
+an
 "}
 (4,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
+an
 mB
 mB
 mB
@@ -777,15 +777,15 @@ Li
 Li
 Li
 MH
-EB
+an
 "}
 (5,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
+an
 MH
 MH
 MH
@@ -803,15 +803,15 @@ sZ
 sZ
 iC
 MH
-EB
+an
 "}
 (6,1,1) = {"
 Dc
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
 MH
 ak
 ak
@@ -829,15 +829,15 @@ mB
 mB
 MH
 MH
-EB
+an
 "}
 (7,1,1) = {"
-qE
-EB
-EB
-EB
-EB
-EB
+td
+an
+an
+an
+an
+an
 zg
 mB
 mB
@@ -854,15 +854,15 @@ yT
 yT
 yT
 MH
-EB
-EB
+an
+an
 "}
 (8,1,1) = {"
-qE
-qE
-EB
-EB
-EB
+td
+td
+an
+an
+an
 MH
 MH
 mB
@@ -880,14 +880,14 @@ mB
 mB
 mB
 MH
-EB
-EB
+an
+an
 "}
 (9,1,1) = {"
-qE
-qE
-qE
 td
+td
+td
+aq
 oH
 MH
 mn
@@ -906,15 +906,15 @@ mB
 mB
 vY
 MH
-EB
-EB
+an
+an
 "}
 (10,1,1) = {"
-qE
-qE
-qE
-qE
-qE
+td
+td
+td
+td
+td
 WV
 ak
 mB
@@ -932,15 +932,15 @@ mB
 mB
 Ax
 kI
-EB
-EB
+an
+an
 "}
 (11,1,1) = {"
-qE
-JC
-qE
-qE
-qE
+td
+as
+td
+td
+td
 MH
 ak
 mB
@@ -958,15 +958,15 @@ mB
 mB
 by
 MH
+an
 EB
-qd
 "}
 (12,1,1) = {"
-qE
-qE
-qE
-qE
-qE
+td
+td
+td
+td
+td
 MH
 XQ
 IV
@@ -985,14 +985,14 @@ mB
 mB
 uK
 mB
-GF
+ao
 "}
 (13,1,1) = {"
-qE
-jl
-qE
-mA
-qE
+td
+at
+td
+ar
+td
 MH
 MH
 MH
@@ -1011,13 +1011,13 @@ Gz
 mB
 uK
 mB
-xG
+ap
 "}
 (14,1,1) = {"
-EB
-qE
-qE
-EB
+an
+td
+td
+an
 MH
 WV
 am
@@ -1036,14 +1036,14 @@ AU
 aZ
 IW
 MH
-EB
-EB
+an
+an
 "}
 (15,1,1) = {"
-qE
-qE
-qE
-EB
+td
+td
+td
+an
 MH
 cg
 mB
@@ -1062,14 +1062,14 @@ MH
 MH
 MH
 MH
-EB
-EB
+an
+an
 "}
 (16,1,1) = {"
-qE
-qE
-qE
-EB
+td
+td
+td
+an
 MH
 NB
 Ps
@@ -1084,18 +1084,18 @@ mB
 AU
 WV
 MH
-EB
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
+an
 "}
 (17,1,1) = {"
-JC
-qE
-EB
-EB
+as
+td
+an
+an
 MH
 iM
 Ps
@@ -1110,18 +1110,18 @@ mB
 AU
 Jd
 MH
-EB
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
+an
 "}
 (18,1,1) = {"
-qE
-EB
-EB
-EB
+td
+an
+an
+an
 MH
 DL
 mB
@@ -1139,15 +1139,15 @@ MH
 MH
 MH
 MH
-EB
-EB
-EB
+an
+an
+an
 "}
 (19,1,1) = {"
-qE
-qE
-EB
-EB
+td
+td
+an
+an
 MH
 WV
 mB
@@ -1165,14 +1165,14 @@ AU
 AU
 fl
 MH
-EB
-EB
-EB
+an
+an
+an
 "}
 (20,1,1) = {"
-qE
-qE
-EB
+td
+td
+an
 MH
 MH
 MH
@@ -1191,21 +1191,21 @@ AU
 AU
 oM
 MH
-EB
-EB
-EB
+an
+an
+an
 "}
 (21,1,1) = {"
-EB
-qE
-qE
+an
+td
+td
 MH
 Jd
 AU
 AU
 MH
-EB
-EB
+an
+an
 MH
 PP
 WV
@@ -1217,14 +1217,14 @@ AU
 jO
 Ml
 WV
-EB
-EB
-EB
+an
+an
+an
 "}
 (22,1,1) = {"
-EB
-EB
-qE
+an
+an
+td
 zg
 KA
 AU
@@ -1243,14 +1243,14 @@ AU
 oq
 bE
 MH
-EB
-EB
-EB
+an
+an
+an
 "}
 (23,1,1) = {"
-EB
-EB
-EB
+an
+an
+an
 kI
 KA
 AU
@@ -1261,7 +1261,7 @@ Ix
 oR
 UB
 MH
-EB
+an
 MH
 TO
 AU
@@ -1269,14 +1269,14 @@ AU
 rI
 MH
 MH
-EB
-EB
-EB
+an
+an
+an
 "}
 (24,1,1) = {"
-EB
-EB
-EB
+an
+an
+an
 zg
 tq
 AU
@@ -1287,22 +1287,22 @@ oR
 oq
 mQ
 kI
-EB
+an
 MH
 ke
 RB
 ke
 MH
 MH
-EB
-EB
-EB
-EB
+an
+an
+an
+an
 "}
 (25,1,1) = {"
-EB
-EB
-EB
+an
+an
+an
 MH
 AU
 AU
@@ -1313,22 +1313,22 @@ Bm
 aj
 JZ
 MH
-EB
+an
 MH
 av
 Hj
 av
 MH
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
 "}
 (26,1,1) = {"
-EB
-EB
-EB
+an
+an
+an
 MH
 CH
 MH
@@ -1339,41 +1339,41 @@ MH
 MH
 MH
 MH
-EB
+an
 MH
 zg
 WV
 zg
 MH
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
 "}
 (27,1,1) = {"
-EB
-EB
-EB
+an
+an
+an
 Vz
 hh
 Vz
 Vz
 hh
 Vz
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
+an
 "}

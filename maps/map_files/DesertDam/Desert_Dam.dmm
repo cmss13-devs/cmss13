@@ -2591,6 +2591,12 @@
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
+"aic" = (
+/obj/structure/stairs/multiz/up{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "aik" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -2803,7 +2809,7 @@
 	name = "\improper Marshals Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/closed/wall/r_wall/prison,
+/turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)
 "aiQ" = (
 /obj/structure/machinery/light{
@@ -11030,7 +11036,6 @@
 	pixel_x = 5;
 	pixel_y = 13
 	},
-/obj/structure/surface/table/almayer,
 /obj/item/tool/pen/clicky{
 	pixel_x = -2;
 	pixel_y = -4
@@ -23780,7 +23785,6 @@
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "fml" = (
 /obj/structure/surface/table,
-/obj/structure/surface/table,
 /obj/item/storage/donut_box{
 	pixel_x = -7;
 	pixel_y = 6
@@ -29474,7 +29478,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "huG" = (
-/obj/structure/stairs/multiz/down{
+/obj/structure/stairs/multiz/up{
 	dir = 4
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -48149,7 +48153,6 @@
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "oHy" = (
-/obj/structure/surface/table/reinforced,
 /obj/structure/surface/table/reinforced,
 /obj/item/trash/tray{
 	pixel_x = 3;
@@ -72564,11 +72567,6 @@
 	},
 /turf/open/asphalt/cement/cement14,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"ydW" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/r_wall,
-/area/desert_dam/building/medical/break_room)
 "yem" = (
 /obj/structure/desertdam/decals/road_edge,
 /turf/open/asphalt,
@@ -115464,8 +115462,8 @@ rfS
 dHb
 lXZ
 dHb
-njl
-njl
+aic
+aic
 dHb
 dHb
 dHb
@@ -226926,7 +226924,7 @@ ahT
 rPX
 udY
 ahT
-ydW
+fDo
 wnN
 wnN
 wnN

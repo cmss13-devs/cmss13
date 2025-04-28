@@ -147,28 +147,31 @@
 				user.flick_attack_overlay(target, "slam")
 				playsound(target, sound_to_play, 50, 1)
 				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
+
 		if((INTENT_DISARM))
 			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
 				var/reverse_facing = get_dir(target, user)
 				if(has_chain)
-					var/obj/effect/beam/tail_beam = user.beam(target, "chain", 'icons/effects/beam.dmi', 2 SECONDS)
-					animate(tail_beam, 1 SECONDS)
-					var/image/tail_image = image('icons/effects/status_effects.dmi', "chain")
+					var/obj/projectile/hook_projectile = new /obj/projectile(user.loc, create_cause_data("hook"), user)
+					var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/yautja/gauntlet_hook]
+					hook_projectile.generate_bullet(ammoDatum, bullet_generator = user)
+					hook_projectile.bound_beam = hook_projectile.beam(user, "chain", 'icons/effects/beam.dmi', 3 SECONDS)
+					hook_projectile.fire_at(target, user, user, ammoDatum.max_range, ammoDatum.shell_speed)
 					if(prob(1))
 						var/list/heard = get_mobs_in_view(7, user)
 						for(var/mob/mob_in_range in heard)
 							if(mob_in_range.ear_deaf)
 								heard -= mob_in_range
 						user.langchat_speech(chain_message, heard, GLOB.all_languages, message_color, TRUE)
-					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 5, SPEED_VERY_FAST), 1 SECONDS)
-					target.overlays += tail_image
+					addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, throw_carbon), target, reverse_facing, 5, SPEED_VERY_FAST), 0.5 SECONDS)
 					user.spin_circle()
 				user.throw_carbon(target, facing, punch_knockback, SPEED_VERY_FAST,)
 				target.visible_message(SPAN_XENOHIGHDANGER("[user] hits [target] with an extremely strong punch, sending them flying!"))
 				combo_counter = 0
 			user.flick_attack_overlay(target, "slam")
 			playsound(target, sound_to_play, 50, 1)
+
 		if(INTENT_GRAB)
 			if(!(HAS_TRAIT(target, TRAIT_KNOCKEDOUT) || target.stat == UNCONSCIOUS))
 				return

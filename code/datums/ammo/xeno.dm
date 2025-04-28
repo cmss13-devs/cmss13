@@ -432,7 +432,10 @@
 	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
 
 	target.apply_effect(0.5, ROOT)
+
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+
+	qdel(chain_beam)
 
 /datum/ammo/yautja/gauntlet_hook/proc/remove_tail_overlay(mob/overlayed_mob, image/chain_image)
 	overlayed_mob.overlays -= chain_image

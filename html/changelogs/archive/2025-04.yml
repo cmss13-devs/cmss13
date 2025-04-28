@@ -550,3 +550,15 @@
       the Admin tab. there's also a new tdome option you can summon
   seanlol092:
   - qol: Announce where the dropship is from before and during departing (in auto)
+2025-04-28:
+  Aurallianz:
+  - bugfix: Trijent security survivor has WY accesses.
+  Drathek:
+  - bugfix: Fixed a runtime for stat panel examine whenever ghosting/logging out
+  - bugfix: Xenos can now bleed out when inside atoms (e.g. pipes)
+  - bugfix: Xenos now always take atleast 1 dmg from queen banishment (rather than
+      healing when in crit)
+  - qol: Banished xenos in a tunnel can now exit using alt+click (they could have
+      used the exit-tunnel verb however)
+  MistChristmas:
+  - bugfix: spawns ammo instead of extra pistols in the VP78 belt

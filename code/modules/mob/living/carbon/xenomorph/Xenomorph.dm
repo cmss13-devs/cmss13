@@ -309,7 +309,6 @@
 
 	// Designer stuff
 	var/obj/effect/alien/resin/design/selected_design = null
-	var/list/available_design = list()
 	var/list/current_design = list()
 	var/max_design_nodes = 0
 	var/selected_design_mark

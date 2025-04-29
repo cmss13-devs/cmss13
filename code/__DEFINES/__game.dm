@@ -367,7 +367,7 @@
 #define WALL_REINFORCED_BUNKER "bunker"
 #define WALL_RESIN "resin"
 #define WALL_THICKRESIN "thickresin"
-#define WALL_BRITTLE_RESIN "brittleresin"
+#define WALL_WEEDBOUND_RESIN "weedboundresin"
 #define WALL_MEMBRANE "membrane"
 #define WALL_THICKMEMBRANE "thickmembrane"
 #define WALL_BONE_RESIN "bone_resin"

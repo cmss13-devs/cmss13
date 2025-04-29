@@ -1,0 +1,870 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/tdome/northeast,
+/area/tdome)
+"b" = (
+/turf/open/floor/tdome/w_y0/north,
+/area/tdome)
+"d" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"e" = (
+/obj/effect/landmark/thunderdome/one,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome1)
+"g" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "tdome_t2";
+	name = "\improper Team 2 Shutters";
+	explo_proof = 1
+	},
+/turf/open/floor/tdome/test_floor4,
+/area/tdome/tdome1)
+"h" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "tdome_observer";
+	name = "\improper Observer Shutters"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"l" = (
+/turf/open/floor/tdome/w_y1/north,
+/area/tdome)
+"o" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "tdome_t1";
+	name = "\improper Team 1 Shutters";
+	explo_proof = 1
+	},
+/turf/open/floor/tdome/test_floor4,
+/area/tdome/tdome2)
+"p" = (
+/obj/effect/landmark/thunderdome/one,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome1)
+"s" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "tdome_observer";
+	name = "\improper Observer Shutters";
+	dir = 4
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"t" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/tdome/tcomms,
+/area/tdome/tdomeobserve)
+"v" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"y" = (
+/obj/effect/landmark/thunderdome/two,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome2)
+"z" = (
+/turf/open/floor/tdome/bluefull,
+/area/tdome/tdome1)
+"A" = (
+/turf/open/floor/tdome/w_y2/north,
+/area/tdome)
+"B" = (
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"F" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"H" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdomeobserve)
+"J" = (
+/obj/effect/landmark/thunderdome/two,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome2)
+"N" = (
+/turf/open/floor/tdome/tcomms,
+/area/tdome)
+"P" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"Q" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome)
+"R" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdome1)
+"S" = (
+/turf/open/floor/tdome/redfull,
+/area/tdome/tdome2)
+"T" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdome2)
+"U" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/binoculars{
+	pixel_x = -4
+	},
+/obj/item/device/binoculars{
+	pixel_x = 3
+	},
+/obj/item/device/binoculars{
+	pixel_y = 4
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"V" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "tdome_t1";
+	name = "Team 1 Shutters (Left)";
+	pixel_y = -3
+	},
+/obj/structure/machinery/door_control{
+	id = "tdome_t2";
+	name = "Team 2 Shutters (Right)";
+	pixel_y = 3
+	},
+/obj/structure/machinery/door_control{
+	id = "tdome_observer";
+	name = "Observer Shutters";
+	pixel_y = 9
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"W" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_20"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"Y" = (
+/turf/template_noop,
+/area/space)
+
+(1,1,1) = {"
+Y
+T
+T
+T
+T
+T
+T
+T
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+"}
+(2,1,1) = {"
+T
+T
+S
+S
+S
+S
+S
+T
+T
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+"}
+(3,1,1) = {"
+T
+S
+y
+y
+y
+y
+y
+S
+T
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(4,1,1) = {"
+T
+S
+y
+y
+y
+y
+y
+S
+T
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(5,1,1) = {"
+T
+S
+y
+y
+y
+y
+y
+S
+T
+a
+a
+a
+a
+a
+a
+a
+N
+a
+a
+a
+Q
+"}
+(6,1,1) = {"
+T
+S
+y
+y
+y
+y
+y
+S
+T
+a
+a
+a
+a
+a
+a
+N
+b
+N
+a
+a
+Q
+"}
+(7,1,1) = {"
+T
+S
+J
+J
+J
+J
+J
+S
+T
+a
+a
+a
+a
+a
+a
+N
+l
+N
+a
+a
+Q
+"}
+(8,1,1) = {"
+T
+T
+o
+o
+o
+o
+o
+T
+T
+a
+a
+a
+a
+a
+a
+N
+A
+N
+a
+a
+Q
+"}
+(9,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+N
+a
+a
+a
+Q
+"}
+(10,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(11,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(12,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(13,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+H
+s
+s
+s
+s
+s
+H
+a
+a
+a
+a
+a
+a
+Q
+"}
+(14,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+h
+W
+B
+B
+U
+V
+h
+a
+a
+a
+a
+a
+a
+Q
+"}
+(15,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+h
+P
+B
+B
+B
+t
+h
+a
+a
+a
+a
+a
+a
+Q
+"}
+(16,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+h
+d
+B
+B
+B
+t
+h
+a
+a
+a
+a
+a
+a
+Q
+"}
+(17,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+h
+v
+B
+B
+B
+t
+h
+a
+a
+a
+a
+a
+a
+Q
+"}
+(18,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+h
+B
+B
+B
+F
+V
+h
+a
+a
+a
+a
+a
+a
+Q
+"}
+(19,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+H
+s
+s
+s
+s
+s
+H
+a
+a
+a
+a
+a
+a
+Q
+"}
+(20,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(21,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(22,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(23,1,1) = {"
+Q
+a
+a
+a
+N
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+Q
+"}
+(24,1,1) = {"
+Q
+a
+a
+N
+b
+N
+a
+a
+a
+a
+a
+a
+R
+R
+g
+g
+g
+g
+g
+R
+R
+"}
+(25,1,1) = {"
+Q
+a
+a
+N
+l
+N
+a
+a
+a
+a
+a
+a
+R
+z
+e
+e
+e
+e
+e
+z
+R
+"}
+(26,1,1) = {"
+Q
+a
+a
+N
+A
+N
+a
+a
+a
+a
+a
+a
+R
+z
+p
+p
+p
+p
+p
+z
+R
+"}
+(27,1,1) = {"
+Q
+a
+a
+a
+N
+a
+a
+a
+a
+a
+a
+a
+R
+z
+p
+p
+p
+p
+p
+z
+R
+"}
+(28,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+R
+z
+p
+p
+p
+p
+p
+z
+R
+"}
+(29,1,1) = {"
+Q
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+R
+z
+p
+p
+p
+p
+p
+z
+R
+"}
+(30,1,1) = {"
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+Q
+R
+R
+z
+z
+z
+z
+z
+R
+R
+"}
+(31,1,1) = {"
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+Y
+R
+R
+R
+R
+R
+R
+R
+Y
+"}

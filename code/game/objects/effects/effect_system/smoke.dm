@@ -729,7 +729,7 @@
 
 /obj/effect/particle_effect/smoke/xeno_slow_gas
 	time_to_live = 12
-	color = "#43D382" // Algea color, for distinction
+	color = "#C2EDD6" // Lime color, for distinction. Baja blast 'em!
 	anchored = TRUE
 	spread_speed = 6
 	smokeranking = SMOKE_RANK_HIGH

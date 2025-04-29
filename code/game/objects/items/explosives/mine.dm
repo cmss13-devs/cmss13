@@ -214,8 +214,8 @@
 	if(!active || triggered || (customizable && !detonator))
 		return
 
-	if(sensor_for_small == FALSE)
-		if(isxeno(enemy))
+	if(isxeno(enemy))
+		if(sensor_for_small == FALSE)
 			var/mob/living/carbon/xenomorph/xeno = enemy
 			if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
 				return

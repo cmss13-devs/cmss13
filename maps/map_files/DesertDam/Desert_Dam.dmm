@@ -2618,6 +2618,21 @@
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/hanger)
+"aig" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/blue/west,
+/area/desert_dam/building/administration/panic_room)
+"aih" = (
+/obj/structure/machinery/door_control{
+	id = "panicroom";
+	name = "Panic Room";
+	pixel_x = 22;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/upper_hallway)
 "aik" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -11033,8 +11048,11 @@
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/upper_hallway)
 "aIU" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/door_control{
+	id = "panicroom";
+	name = "Panic Room";
+	pixel_x = -21;
+	pixel_y = 1
 	},
 /turf/open/floor/prison/bluecorner/west,
 /area/desert_dam/building/administration/panic_room)
@@ -11148,7 +11166,6 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	id = "panicroom";
 	needs_power = 0;
-	unacidable = 1;
 	dir = 4;
 	name = "Panic Room"
 	},
@@ -11234,24 +11251,6 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/upper_hallway)
-"aJx" = (
-/obj/structure/machinery/door_control{
-	id = "panicroom";
-	name = "Panic Room";
-	pixel_x = 22;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/bluecorner/north,
-/area/desert_dam/building/administration/upper_hallway)
-"aJy" = (
-/obj/structure/machinery/door_control{
-	id = "panicroom";
-	name = "Panic Room";
-	pixel_x = -21;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/bluecorner/east,
-/area/desert_dam/building/administration/panic_room)
 "aJz" = (
 /turf/open/floor/prison/bluecorner,
 /area/desert_dam/building/administration/panic_room)
@@ -205931,10 +205930,10 @@ aJk
 aJi
 aJY
 aJH
-aJH
-aJx
+aKn
 aJk
-aIT
+aJk
+aih
 aIA
 ipW
 ipW
@@ -206166,7 +206165,7 @@ aJi
 aIT
 aDi
 aDi
-aDi
+aJl
 aJl
 aDi
 aDi
@@ -206400,10 +206399,10 @@ aJk
 aKa
 aDi
 aJI
-aJy
+aIr
 aJm
 aIU
-aIn
+aig
 aIn
 aIe
 aDi

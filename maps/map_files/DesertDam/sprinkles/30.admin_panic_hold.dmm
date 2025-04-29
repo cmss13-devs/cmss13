@@ -6,6 +6,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/stairwell/upper)
+"ab" = (
+/obj/structure/machinery/door_control{
+	id = "panicroom";
+	name = "Panic Room";
+	pixel_x = 22;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/blue,
+/area/desert_dam/building/administration/upper_hallway)
 "aO" = (
 /obj/item/shard,
 /turf/open/floor/prison/bright_clean2,
@@ -169,6 +178,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
+/obj/item/device/flashlight/on,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/upper_hallway)
 "sZ" = (
@@ -302,7 +312,6 @@
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
 	id = "panicroom";
 	needs_power = 0;
-	unacidable = 1;
 	dir = 4;
 	name = "Panic Room"
 	},
@@ -530,7 +539,7 @@
 	pixel_x = 22;
 	pixel_y = 1
 	},
-/turf/open/floor/prison/bluecorner/north,
+/turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/upper_hallway)
 
 (1,1,1) = {"
@@ -692,10 +701,10 @@ VR
 Hy
 ow
 fD
-TD
+kl
 YJ
 Jy
-Uc
+ab
 nU
 "}
 (12,1,1) = {"
@@ -708,7 +717,7 @@ Hy
 Uc
 Gy
 Gy
-Gy
+Gb
 Gb
 Gy
 Gy

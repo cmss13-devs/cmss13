@@ -562,16 +562,16 @@
 	icon_state = "yellow"
 
 /area/desert_dam/building/medical/maint/north
-	name = "Medical Northern Maintenance."
+	name = "Medical Northern Maintenance"
 
 /area/desert_dam/building/medical/maint/south
-	name = "Medical Southern Maintenance."
+	name = "Medical Southern Maintenance"
 
 /area/desert_dam/building/medical/maint/east
-	name = "Medical Eastern Maintenance."
+	name = "Medical Eastern Maintenance"
 
 /area/desert_dam/building/medical/maint/cent
-	name = "Medical Central Maintenance."
+	name = "Medical Central Maintenance"
 
 //Warehouse
 /area/desert_dam/building/warehouse/warehouse

@@ -37,11 +37,9 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "fx" = (
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 2;
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_checkpoint_northwest";
-	name = "\improper Checkpoint Lock";
-	unacidable = 0
+	name = "\improper Checkpoint Lock"
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
@@ -351,11 +349,9 @@
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "GK" = (
 /obj/structure/desertdam/decals/road_edge,
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 2;
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_checkpoint_northwest";
-	name = "\improper Checkpoint Lock";
-	unacidable = 0
+	name = "\improper Checkpoint Lock"
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
@@ -421,11 +417,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/structure/machinery/door/poddoor/almayer/locked{
-	dir = 2;
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
 	id = "dam_checkpoint_northwest";
-	name = "\improper Checkpoint Lock";
-	unacidable = 0
+	name = "\improper Checkpoint Lock"
 	},
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)

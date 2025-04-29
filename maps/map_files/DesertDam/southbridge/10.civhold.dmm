@@ -72,7 +72,9 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "ds" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -272,7 +274,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/valley_medical)
 "nQ" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/south_valley_dam)

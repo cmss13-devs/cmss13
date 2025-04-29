@@ -142,11 +142,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
-"kV" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/interior/dam_interior/lower_stairwell)
 "mc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/southwest,
@@ -158,11 +153,6 @@
 /obj/item/ammo_casing,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_backup)
-"ni" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/stairs,
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/interior/dam_interior/lower_stairwell)
 "ns" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset{
@@ -499,11 +489,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/smes_main)
-"VT" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/interior/dam_interior/lower_stairwell)
 "VU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper SMES"
@@ -532,11 +517,6 @@
 	},
 /turf/open/floor/plating/warnplate,
 /area/desert_dam/interior/dam_interior/smes_backup)
-"XW" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/stairs,
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/interior/dam_interior/lower_stairwell)
 "YL" = (
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
@@ -710,9 +690,9 @@ BW
 (8,1,1) = {"
 jz
 YL
-XW
-XW
-kV
+eH
+eH
+eH
 Zm
 ns
 Rx
@@ -727,9 +707,9 @@ BW
 (9,1,1) = {"
 dQ
 qR
-ni
-ni
-VT
+eH
+eH
+eH
 Zm
 Cm
 nN

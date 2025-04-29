@@ -217,19 +217,10 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
-"aK" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/stairs,
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/building/water_treatment_one/hallway)
 "aL" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
-"aN" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/hallway)
 "aO" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt,
@@ -248,11 +239,6 @@
 	dir = 4
 	},
 /turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/hallway)
-"aT" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/stairs,
-/turf/open/floor/plating/almayer/no_build,
 /area/desert_dam/building/water_treatment_one/hallway)
 "aX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -405,11 +391,6 @@
 /obj/structure/window/framed/hangar/reinforced,
 /turf/open/floor/plating,
 /area/desert_dam/building/water_treatment_one/equipment)
-"gD" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/building/water_treatment_one/hallway)
 "gK" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal6"
@@ -982,10 +963,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
 /area/desert_dam/exterior/valley/valley_hydro)
 "ya" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/building/water_treatment_one/hallway)
+/turf/template_noop,
+/area/template_noop)
 "yr" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -1511,10 +1490,6 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
-"RJ" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
-/turf/open/floor/prison/bright_clean/southwest,
-/area/desert_dam/building/water_treatment_one/hallway)
 "RK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2529,9 +2504,9 @@ Ec
 (31,1,1) = {"
 FB
 GK
-RJ
-aK
-aK
+ya
+ya
+ya
 ya
 XX
 Gt
@@ -2553,10 +2528,10 @@ Ec
 (32,1,1) = {"
 FB
 GK
-aN
-aT
-aT
-gD
+ya
+ya
+ya
+ya
 XX
 Gt
 LA

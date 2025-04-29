@@ -55,9 +55,7 @@
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "q" = (
-/obj/structure/stairs{
-	dir = 1
-	},
+/obj/structure/stairs,
 /obj/structure/platform/metal/almayer/east,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached,
@@ -82,9 +80,7 @@
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "u" = (
-/obj/structure/stairs{
-	dir = 1
-	},
+/obj/structure/stairs,
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -108,7 +104,9 @@
 /turf/open/floor/asteroidplating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "z" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_crashsite)
@@ -176,7 +174,9 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "S" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,

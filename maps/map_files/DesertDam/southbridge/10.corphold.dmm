@@ -563,7 +563,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "wx" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/west,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/south_valley_dam)
@@ -859,7 +861,9 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Ku" = (
-/obj/structure/stairs,
+/obj/structure/stairs{
+	dir = 1
+	},
 /obj/structure/platform/metal/almayer/east,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/desert_dam/exterior/valley/south_valley_dam)

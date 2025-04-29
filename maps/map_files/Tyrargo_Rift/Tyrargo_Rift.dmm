@@ -206,7 +206,7 @@
 	pixel_y = 6;
 	buckling_y = 6
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/indoors/museum_storage/ground)
 "aaS" = (
 /turf/open/floor/hybrisa/wood/redwood,
@@ -991,6 +991,19 @@
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
+"adf" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/underground/museum_carpark)
+"adg" = (
+/turf/open/floor/strata/floor3,
+/area/tyrargo/underground/museum_carpark)
+"adh" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/indoors/museum_storage/ground)
+"adi" = (
+/obj/structure/machinery/door/airlock/hybrisa/medical,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/indoors/museum_storage/ground)
 "adj" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -1008,6 +1021,9 @@
 	},
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/south_upper)
+"adm" = (
+/turf/open/floor/strata/floor3,
+/area/tyrargo/indoors/museum_storage/ground)
 "adn" = (
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
@@ -1119,6 +1135,9 @@
 /obj/structure/platform/stone/kutjevo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
+"adE" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/tyrargo/indoors/museum_storage/upper)
 "adF" = (
 /obj/structure/platform_decoration/stone/kutjevo/east,
 /turf/open/auto_turf/sand_white/layer0,
@@ -9123,7 +9142,7 @@
 /area/tyrargo/outdoors/colony_streets/east)
 "axJ" = (
 /obj/structure/machinery/vending/coffee,
-/turf/open/hybrisa/street/cement1,
+/turf/open/shuttle/escapepod/floor4,
 /area/tyrargo/indoors/museum_storage/ground)
 "axK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14153,7 +14172,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/museum_storage/upper)
 "aLc" = (
 /turf/closed/wall/r_wall/bunker/floodgate{
@@ -47721,7 +47740,7 @@
 	name = "Carpark Entrance Barrier";
 	explo_proof = 1
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/shuttle/escapepod/floor4,
 /area/tyrargo/indoors/museum_storage/ground)
 "clg" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
@@ -47753,7 +47772,7 @@
 "cli" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras,
-/turf/open/hybrisa/street/cement1,
+/turf/open/shuttle/escapepod/floor4,
 /area/tyrargo/indoors/museum_storage/ground)
 "clj" = (
 /obj/structure/flora/tree/dead/tree_5{
@@ -52365,7 +52384,7 @@
 /obj/structure/machinery/power/apc/power/south{
 	start_charge = 30
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/museum_storage/upper)
 "cCD" = (
 /turf/open/floor/prison/yellow/northwest,
@@ -83332,13 +83351,13 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 30
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/underground/museum_carpark)
 "egN" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/underground/museum_carpark)
 "egO" = (
 /obj/structure/cable/heavyduty{
@@ -83684,7 +83703,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/shuttle/escapepod/floor4,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehs" = (
 /turf/open/hybrisa/street/cement1,
@@ -83697,7 +83716,7 @@
 /obj/structure/machinery/power/apc/power/south{
 	start_charge = 30
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehv" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -83707,7 +83726,7 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehx" = (
 /obj/structure/surface/table/reinforced,
@@ -83715,11 +83734,11 @@
 	pixel_y = 6;
 	pixel_x = -2
 	},
-/turf/open/hybrisa/street/cement1,
+/turf/open/shuttle/escapepod/floor4,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehy" = (
 /obj/structure/closet/secure_closet/security,
-/turf/open/hybrisa/street/cement1,
+/turf/open/shuttle/escapepod/floor4,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehz" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical{
@@ -84092,13 +84111,13 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/museum_storage/ground)
 "eiu" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/museum_storage/ground)
 "eiv" = (
 /obj/structure/stairs{
@@ -84108,7 +84127,7 @@
 /area/tyrargo/indoors/museum_storage/ground)
 "eiw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/indoors/museum_storage/ground)
 "eix" = (
 /obj/effect/decal/cleanable/dirt,
@@ -84502,7 +84521,7 @@
 /turf/open/shuttle/dropship/light_grey_left_to_right,
 /area/tyrargo/indoors/saipan)
 "ejw" = (
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/museum_storage/upper)
 "ejx" = (
 /obj/structure/barricade/handrail/wire{
@@ -84516,7 +84535,7 @@
 	dir = 1;
 	pixel_y = 13
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/indoors/museum_storage/upper)
 "ejz" = (
 /obj/structure/stairs/multiz/down{
@@ -87709,7 +87728,7 @@
 /area/tyrargo/indoors/engineering/ground)
 "ljT" = (
 /obj/structure/machinery/vending/cigarette,
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/strata/floor3,
 /area/tyrargo/underground/museum_carpark)
 "lkt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -88163,7 +88182,7 @@
 /obj/structure/barricade/handrail/wire{
 	layer = 3
 	},
-/turf/open/hybrisa/street/cement3,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/indoors/museum_storage/ground)
 "mhb" = (
 /obj/structure/largecrate/random/case/double,
@@ -135909,7 +135928,7 @@ egO
 bta
 bsw
 dOv
-dTm
+adg
 dbR
 dbR
 egH
@@ -136274,8 +136293,8 @@ bta
 dOv
 dOv
 egN
-dTm
-dTm
+adf
+adf
 egH
 efX
 efX
@@ -136455,9 +136474,9 @@ bta
 bsw
 dOv
 ljT
-dTm
-dTm
-dTm
+adg
+adf
+adf
 egI
 efX
 egl
@@ -178528,7 +178547,7 @@ axQ
 axQ
 ehz
 ehw
-ehs
+adh
 cma
 chG
 chx
@@ -178710,7 +178729,7 @@ ehB
 ehA
 ckE
 ckE
-eht
+adi
 ckE
 ckE
 chx
@@ -178892,7 +178911,7 @@ cpl
 cpl
 ckE
 ehx
-ehs
+adh
 ckE
 chG
 chx
@@ -179043,10 +179062,10 @@ dqm
 dql
 cma
 eiw
-cpm
-cpm
-cpm
-cpm
+adh
+adh
+adh
+adh
 cma
 aIq
 aIq
@@ -179074,7 +179093,7 @@ cpl
 cpl
 ckE
 ehr
-ehs
+adh
 ckE
 chG
 chz
@@ -179256,7 +179275,7 @@ cpl
 cpl
 ckE
 ehy
-ehs
+adh
 ckE
 chH
 ehl
@@ -179770,8 +179789,8 @@ eiI
 acS
 djn
 eiA
-cpm
-cpm
+adm
+adm
 eiu
 cpl
 cpl
@@ -179802,7 +179821,7 @@ cpl
 cpl
 ckE
 cli
-ehs
+adh
 ckE
 chH
 chx
@@ -179953,7 +179972,7 @@ auy
 eiD
 ckE
 ckE
-cpm
+adm
 eiu
 cpl
 cpl
@@ -179984,7 +180003,7 @@ cpl
 cpl
 ckE
 axJ
-ehs
+adh
 ckF
 fTs
 aIe
@@ -223269,9 +223288,9 @@ cWw
 cWw
 cWw
 cAZ
-ejw
-ejw
-ejw
+adE
+adE
+adE
 ejw
 cAZ
 eji

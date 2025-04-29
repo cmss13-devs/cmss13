@@ -323,16 +323,15 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 	var/list/allowed_mutations[]
 
 	//Generates list of what mutation outcomes are allowed after considering mutation cancel and mutation enable effects
-	for(var/c=1; c<length(mutation_controller); c++)
-		var/mut_name = mutation_controller[c]
+	for(var/i in 1 to length(mutation_controller)-1)
+		var/mut_name = mutation_controller[i]
 		if(mutation_controller[mut_name] > 0)
-			super_allowed_mutations += list(c)
+			super_allowed_mutations += list(i)
 			mutation_enable_check = TRUE
 		if((mutation_controller[mut_name] == 0 || mutation_controller[mut_name] == -1) && mutation_enable_check == FALSE)
+			allowed_mutations += list(i)
 			if(mutation_controller[mut_name] == -1)
-				allowed_mutations += list(-c)
-				return
-			allowed_mutations += list(c)
+				allowed_mutations[i] = -i
 	if(mutation_enable_check == TRUE)
 		allowed_mutations = super_allowed_mutations
 
@@ -408,8 +407,8 @@ GLOBAL_LIST_EMPTY(gene_tag_masks)   // Gene obfuscation for delicious trial and 
 				chems += chem_to_add
 
 	//reset mutation_controller for next cycle
-	for(var/j = 1; j<=length(mutation_controller); j++)
-		var/mut_name = mutation_controller[j]
+	for(var/i in 1 to length(mutation_controller))
+		var/mut_name = mutation_controller[i]
 		if(mutation_controller[mut_name] > -3)
 			processing_tray.mutation_controller[mut_name] = 0
 	return

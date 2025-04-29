@@ -271,8 +271,8 @@
 		production_time_counter = 0
 		chem_add_counter = 0
 		metabolism_adjust = 0
-		for(var/j = 1; j<=length(mutation_controller); j++)
-			var/mut_name = mutation_controller[j]
+		for(var/i in 1 to length(mutation_controller))
+			var/mut_name = mutation_controller[i]
 			if(mutation_controller[mut_name] > -3)
 				mutation_controller[mut_name] = 0
 
@@ -297,8 +297,8 @@
 	production_time_counter = 0
 	chem_add_counter = 0
 	metabolism_adjust = 0
-	for(var/j = 1; j<=length(mutation_controller); j++)
-		var/mut_name = mutation_controller[j]
+	for(var/i in 1 to length(mutation_controller))
+		var/mut_name = mutation_controller[i]
 		if(mutation_controller[mut_name] > -3)
 			mutation_controller[mut_name] = 0
 
@@ -407,8 +407,6 @@
 	pestlevel =   max(0,min(pestlevel,10))
 	weedlevel =   max(0,min(weedlevel,10))
 	toxins =  max(0,min(toxins,10))
-	//Adjust the time between plant cycles Min -140
-	metabolism_adjust = 0
 
 	//Ensures increased nutrient and water consumption as yield_mod increases
 	if(yield_mod>20)

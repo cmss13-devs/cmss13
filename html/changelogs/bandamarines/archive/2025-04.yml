@@ -41,3 +41,6 @@
 2025-04-28:
   biologed:
   - rscadd: support for SS13 vendor translation
+2025-04-29:
+  PhantornRU:
+  - bugfix: Фикс строительства касты Hivelord Whisperer

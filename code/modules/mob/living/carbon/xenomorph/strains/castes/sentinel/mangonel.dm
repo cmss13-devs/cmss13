@@ -1,8 +1,8 @@
 /datum/xeno_strain/mangonel
 	name = SENTINEL_MANGONEL
 	description = "Exchange your base abilities, some speed and some slash damage for increased explosive armor and abilities oriented around besieging locations, and where the strengths of your abilities alter based on what type of weeds you are standing on. Entrench roots you in place, draining your plasma to increase your armor based on the type of weeds you're standing on. Adaptive Spit switches between a low damaging scattershot to a single higher damage shot depending on Entrenchment, which also influences single shot damage. Gas Shroud creates a small, vision-blocking cloud of gas which slows those who walk through it, serving as an escape and obfuscation tool."
-	flavor_description = "Lay siege upon their walls, and watch their defences fall before us."
-//	icon_state_prefix = "Mangonel"
+	flavor_description = "Lay siege upon their walls, and wither their defences away."
+	icon_state_prefix = "Mangonel"
 
 	actions_to_remove = list(
 		/datum/action/xeno_action/activable/slowing_spit,

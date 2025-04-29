@@ -124,7 +124,7 @@
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"
-	attack_speed = 0.8 SECONDS
+	attack_speed = 1 SECONDS
 	attack_verb = list("flayed", "punched", "suckerpunched")
 	force = MELEE_FORCE_TIER_6
 	speed_bonus_amount = 0
@@ -201,6 +201,8 @@
 			playsound(target, sound_to_play, 50, 1)
 			user.flick_attack_overlay(target, "slam")
 	if(target != user)
+		if(target.stat == DEAD)
+			return
 		combo_counter++
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/proc/get_over_here(mob/target, mob/living/user)

@@ -182,7 +182,6 @@
 #define PROPERTY_HEMOGENIC "hemogenic"
 #define PROPERTY_YAUTJA_HEMOGENIC "yautja-hemogenic"
 #define PROPERTY_HEMOSTATIC "hemostatic"
-#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_MUSCLESTIMULATING "muscle-stimulating"
 #define PROPERTY_PAINKILLING "painkilling"
 #define PROPERTY_HEPATOPEUTIC "hepatopeutic"
@@ -216,6 +215,7 @@
 #define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
 #define PROPERTY_REGULATING "regulating"
 #define PROPERTY_OPTIMIZED "optimizing"
+#define PROPERTY_NERVESTIMULATING "nerve-stimulating"
 #define PROPERTY_CIPHERING "ciphering"
 #define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
@@ -248,7 +248,7 @@
 #define PROPERTY_HEMOSITIC "hemositic"
 
 ///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
-#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED)
+#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED, PROPERTY_NERVESTIMULATING)
 
 
 //Property rarity

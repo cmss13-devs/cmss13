@@ -58,6 +58,39 @@
 		var/mob/living/carbon/xenomorph/X = M
 		X.gain_health(potency * volume)
 
+/datum/chem_property/special/nervestimulating
+	name = PROPERTY_NERVESTIMULATING
+	code = "NST"
+	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_STIMULANT
+	value = 4
+
+/datum/chem_property/special/nervestimulating/process(mob/living/M, potency = 1)
+	M.adjust_effect(potency*-0.75, PARALYZE)
+	M.adjust_effect(potency*-1, STUN)
+	M.adjust_effect(potency*-0.75, WEAKEN)
+	M.adjust_effect(-0.25*potency, STUN)
+	if(potency > CREATE_MAX_TIER_1)
+		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.ReduceEyeBlur(POTENCY_MULTIPLIER_MEDIUM * potency)
+		M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+		M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+
+/datum/chem_property/special/nervestimulating/process_overdose(mob/living/M, potency = 1)
+	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM*potency, TOX)
+
+/datum/chem_property/special/nervestimulating/process_critical(mob/living/M, potency = 1)
+	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH*potency)
+
+/datum/chem_property/special/nervestimulating/reaction_mob(mob/M, method=TOUCH, volume, potency)
+	if(isxeno_human(M) && potency > POTENCY_MAX_TIER_1) //can stim on touch at level 7+
+		M.set_effect(0, WEAKEN)
+		M.set_effect(0, STUN)
+		M.set_effect(0, DAZE)
+
 /datum/chem_property/special/organhealing
 	name = PROPERTY_ORGAN_HEALING
 	code = "OHG"

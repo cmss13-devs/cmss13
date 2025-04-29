@@ -22,12 +22,15 @@
 	var/close_button
 	///Map holder
 	var/datum/tacmap_holder/map_holder
+	///Is drawing enabled
+	var/drawing
 
 
-/datum/component/tacmap/Initialize(has_drawing_tools, minimap_flag, has_update)
+/datum/component/tacmap/Initialize(has_drawing_tools, minimap_flag, has_update, drawing)
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 	src.minimap_flag = minimap_flag
+	src.drawing = drawing
 
 	if(has_drawing_tools)
 		drawing_tools += list(
@@ -82,8 +85,8 @@
 
 /datum/component/tacmap/proc/show_tacmap(mob/user)
 	if(!map)
-		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE)
-		map_holder = new(null, targetted_zlevel, minimap_flag)
+		map = SSminimaps.fetch_minimap_object(targetted_zlevel, minimap_flag, TRUE, drawing=drawing)
+		map_holder = new(null, targetted_zlevel, minimap_flag, drawing=drawing)
 		scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
 		close_button = new /atom/movable/screen/exit_map(null, src)
 		var/list/atom/movable/screen/actions = list()
@@ -132,9 +135,9 @@ GLOBAL_LIST_INIT(tacmap_holders, list())
 	var/map_ref
 	var/atom/movable/screen/minimap/map
 
-/datum/tacmap_holder/New(loc, zlevel, flags)
+/datum/tacmap_holder/New(loc, zlevel, flags, drawing)
 	map_ref = "tacmap_[REF(src)]_map"
-	map = SSminimaps.fetch_minimap_object(zlevel, flags, TRUE, TRUE, TRUE)
+	map = SSminimaps.fetch_minimap_object(zlevel, flags, TRUE, TRUE, TRUE, drawing=drawing)
 	map.screen_loc = "[map_ref]:1,1"
 	var/matrix/transform = matrix()
 	transform.Translate(-32, 64)

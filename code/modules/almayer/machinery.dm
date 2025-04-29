@@ -77,10 +77,11 @@
 	density = TRUE
 	idle_power_usage = 2
 	var/minimap_flag = MINIMAP_FLAG_USCM
+	var/drawing = TRUE
 
 /obj/structure/machinery/prop/almayer/CICmap/Initialize(mapload, ...)
 	. = ..()
-	AddComponent(/datum/component/tacmap, has_drawing_tools=FALSE, minimap_flag=minimap_flag, has_update=FALSE)
+	AddComponent(/datum/component/tacmap, has_drawing_tools=FALSE, minimap_flag=minimap_flag, has_update=FALSE, drawing=drawing)
 
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	return ..()

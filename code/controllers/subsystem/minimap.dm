@@ -167,11 +167,13 @@ SUBSYSTEM_DEF(minimaps)
  * * flags: flags for the types of blips we want to be updated
  * * ztarget: zlevel we want to be updated with
  */
-/datum/controller/subsystem/minimaps/proc/add_to_updaters(atom/target, flags, ztarget)
-	var/datum/minimap_updator/holder = new(target, ztarget)
+/datum/controller/subsystem/minimaps/proc/add_to_updaters(atom/target, flags, ztarget, drawing)
+	var/datum/minimap_updator/holder = new(target, ztarget, drawing)
 	for(var/flag in bitfield2list(flags))
 		LAZYADD(update_targets["[flag]"], holder)
 		holder.raw_blips += minimaps_by_z["[ztarget]"].images_raw["[flag]"]
+		if(holder.drawing)
+			holder.raw_blips += minimaps_by_z["[ztarget]"].drawing_image
 	updators_by_datum[target] = holder
 	update_targets_unsorted += holder
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(remove_updator))
@@ -201,6 +203,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/images_assoc = list()
 	///Raw list containing updating images by flag; list("[flag]" = list(blip))
 	var/list/images_raw = list()
+	///drawing image of the map
+	var/image/drawing_image
 	///x offset of the actual icon to center it to screens
 	var/x_offset = 0
 	///y offset of the actual icons to keep it to screens
@@ -226,11 +230,14 @@ SUBSYSTEM_DEF(minimaps)
 	var/ztarget = 0
 	/// list of overlays we update
 	var/raw_blips
+	/// does this updator showing map drawing
+	var/drawing
 
-/datum/minimap_updator/New(minimap, ztarget)
+/datum/minimap_updator/New(minimap, ztarget, drawing)
 	..()
 	src.minimap = minimap
 	src.ztarget = ztarget
+	src.drawing = drawing
 	raw_blips = list()
 
 /**
@@ -398,27 +405,27 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE, live=TRUE, popup=FALSE)
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE, live=TRUE, popup=FALSE, drawing = TRUE)
 	var/hash = "[zlevel]-[flags]-[shifting]-[live]-[popup]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
-	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting, live, popup)
+	var/atom/movable/screen/minimap/map = new(null, null, zlevel, flags, shifting, live, popup, drawing)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
 		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]-[live]-[popup]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
 
 ///fetches the drawing icon for a minimap flag and returns it, creating it if needed. assumes minimap_flag is ONE flag
-/datum/controller/subsystem/minimaps/proc/get_drawing_image(zlevel, minimap_flag)
+/datum/controller/subsystem/minimaps/proc/get_drawing_image(zlevel, minimap_flag, drawing)
 	var/hash = "[zlevel]-[minimap_flag]"
 	if(drawn_images[hash])
 		return drawn_images[hash]
 	var/image/blip = new // could use MA but yolo
 	blip.icon = icon('icons/ui_icons/minimap.dmi')
 	if(minimaps_by_z["[zlevel]"])
-		minimaps_by_z["[zlevel]"].images_raw["[minimap_flag]"] += blip
+		minimaps_by_z["[zlevel]"].drawing_image = blip
 	for(var/datum/minimap_updator/updator as anything in update_targets["[minimap_flag]"])
-		if(zlevel == updator.ztarget)
+		if(zlevel == updator.ztarget && updator.drawing)
 			updator.raw_blips += blip
 	drawn_images[hash] = blip
 	return blip
@@ -458,8 +465,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/flags
 	/// Minimap target
 	var/target
+	/// Is drawing enbabled
+	var/drawing
 
-/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE, live = TRUE, popup = FALSE)
+/atom/movable/screen/minimap/Initialize(mapload, datum/hud/hud_owner, target, flags, shifting = FALSE, live = TRUE, popup = FALSE, drawing = TRUE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
@@ -467,7 +476,8 @@ SUBSYSTEM_DEF(minimaps)
 	choices_by_mob = list()
 	stop_polling = list()
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
-	SSminimaps.add_to_updaters(src, flags, target)
+	SSminimaps.add_to_updaters(src, flags, target, drawing)
+	src.drawing = drawing
 	src.flags = flags
 	src.target = target
 	src.live = live
@@ -487,7 +497,7 @@ SUBSYSTEM_DEF(minimaps)
 	if(live)
 		return
 
-	SSminimaps.add_to_updaters(src, flags, target)
+	SSminimaps.add_to_updaters(src, flags, target, drawing)
 
 /atom/movable/screen/minimap/process()
 	if(stop_shifting)
@@ -1299,6 +1309,10 @@ SUBSYSTEM_DEF(minimaps)
 	owner.popout()
 
 	return TRUE
+
+/atom/movable/screen/minimap_tool/popout/set_zlevel(zlevel, minimap_flag)
+	x_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].x_offset : 0
+	y_offset = SSminimaps.minimaps_by_z["[zlevel]"] ? SSminimaps.minimaps_by_z["[zlevel]"].y_offset : 0
 
 /// Gets the MINIMAP_FLAG for the provided faction or hivenumber if one exists
 /proc/get_minimap_flag_for_faction(faction)

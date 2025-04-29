@@ -124,9 +124,9 @@
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"
-	attack_speed = 1 SECONDS
+	attack_speed = 0.8 SECONDS
 	attack_verb = list("flayed", "punched", "suckerpunched")
-	force = MELEE_FORCE_TIER_4
+	force = MELEE_FORCE_TIER_6
 	speed_bonus_amount = 0
 	var/gauntlet_deployed = FALSE
 	var/combo_counter = 0

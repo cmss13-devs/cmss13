@@ -649,10 +649,6 @@
 	var/minimap_type = MINIMAP_FLAG_USCM
 	///The faction that is intended to use this structure (determines type of tacmap used)
 	var/faction = FACTION_MARINE
-	RegisterSignal(src, list(
-		COMSIG_AREA_POWERED
-		COMSIG_AREA_UNPOWERED
-	), PROC_REF(toggle_powered))
 
 
 /obj/structure/surface/table/reinforced/tacmap/Initialize()

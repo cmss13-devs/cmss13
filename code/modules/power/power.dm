@@ -75,11 +75,8 @@
 	var/has_power
 	if (master_area)
 		has_power = master_area.powered(power_channel)
-		SEND_SIGNAL(src, COMSIG_AREA_POWERED, master_area)
 	else
 		has_power = powered(power_channel)
-		if(has_power < 0)
-			SEND_SIGNAL(src, COMSIG_AREA_UNPOWERED, master_area)
 
 	if(has_power || !src.needs_power)
 		if(machine_processing)

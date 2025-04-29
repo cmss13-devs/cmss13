@@ -409,13 +409,13 @@
 	unoviable_timer = FALSE
 
 /area/tyrargo/indoors/museum_storage/ground
-	name = "West: Museum Storage - Ground"
+	name = "Museum Carpark - Ground"
 
 /area/tyrargo/indoors/museum_storage/upper
-	name = "West: Museum Storage - Upper"
+	name = "Museum Carpark - Upper"
 
 /area/tyrargo/indoors/museum_storage/upper/external
-	name = "West: Museum Storage - Upper/External"
+	name = "Museum Carpark - Upper/External"
 	ceiling = CEILING_NONE
 	requires_power = FALSE
 
@@ -549,7 +549,7 @@
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
 /area/tyrargo/underground/museum_carpark
-	name = "Museum - Underground Parking"
+	name = "Museum Carpark - Underground"
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "auxstorage"
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS

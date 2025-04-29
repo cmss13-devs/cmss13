@@ -401,9 +401,9 @@
 /turf/closed/wall/resin/weedbound/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this flaky wall looks like it's rooted to resin below to hold itself together."
+		. += "On closer examination, this flaky wall appears to have merged with the resin below to hold itself together."
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that this resin wall will collapse if the weeds it is rooted to disappear."
+		. += "You sense that this resin wall will collapse if the weeds it is merged with disappear."
 
 /obj/structure/mineral_door/resin/weedbound
 	name = "flaky resin door"
@@ -432,8 +432,9 @@
 /obj/structure/mineral_door/resin/weedbound/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this flaky door looks like it's rooted to resin below to hold itself together."
-		. += "You sense that resin door will collapse, if the weeds it is rooted to disappear."
+		. += "On closer examination, this flaky door appears to have merged with the resin below to hold itself together."
+	if(isxeno(user) || isobserver(user))
+		. += "You sense that this resin door will collapse if the weeds it is merged with disappear."
 
 /obj/effect/alien/resin/design/upgrade
 	name = "Thicken Resin (60)"

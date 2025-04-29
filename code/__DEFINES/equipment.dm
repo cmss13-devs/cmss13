@@ -600,5 +600,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define SHIELD_NONE 0
 /// Blocks attacks with directional scaling.
 #define SHIELD_DIRECTIONAL 1
+#define SHIELD_DIRECTIONAL_TWOHANDS 2
 // Blocks attacks from all directions equally.
-#define SHIELD_ABSOLUTE 2
+#define SHIELD_ABSOLUTE 3
+#define SHIELD_ABSOLUTE_TWOHANDS 4

@@ -111,15 +111,21 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 
 		if(possible_shield.shield_type && possible_shield.shield_chance)
+			var/block_chance = possible_shield.shield_chance
+
+			///If the shield needs two hands, but it's only held in one, then it's not very effective.
+			if(!(possible_shield.flags_item & WIELDED) && ((possible_shield.shield_type == SHIELD_ABSOLUTE_TWOHANDS) || (possible_shield.shield_type == SHIELD_DIRECTIONAL_TWOHANDS)))
+				block_chance = block_chance / 3
+
 			switch(possible_shield.shield_type)
-				if(SHIELD_ABSOLUTE)
-					if(prob(possible_shield.shield_chance))
+				if(SHIELD_ABSOLUTE, SHIELD_ABSOLUTE_TWOHANDS)
+					if(prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
 						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
 						return TRUE
-				if(SHIELD_DIRECTIONAL)
-					if(prob(possible_shield.shield_chance))
+				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
+					if(prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
 						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
@@ -142,15 +148,21 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 
 		if(possible_shield.shield_type && possible_shield.shield_chance)
+			var/block_chance = possible_shield.shield_chance
+
+			///If the shield needs two hands, but it's only held in one, then it's not very effective.
+			if(!(possible_shield.flags_item & WIELDED) && ((possible_shield.shield_type == SHIELD_ABSOLUTE_TWOHANDS) || (possible_shield.shield_type == SHIELD_DIRECTIONAL_TWOHANDS)))
+				block_chance = block_chance / 3
+
 			switch(possible_shield.shield_type)
-				if(SHIELD_ABSOLUTE)
-					if(prob(possible_shield.shield_chance))
+				if(SHIELD_ABSOLUTE, SHIELD_ABSOLUTE_TWOHANDS)
+					if(prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
 						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
 						return TRUE
-				if(SHIELD_DIRECTIONAL)
-					if(prob(possible_shield.shield_chance))
+				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
+					if(prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
 						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)

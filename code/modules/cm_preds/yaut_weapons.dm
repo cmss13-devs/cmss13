@@ -293,7 +293,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 
-	shield_type = SHIELD_DIRECTIONAL
+	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
 	shield_chance = 30
 	///The stored chance for when unfolded.
 	var/active_shield_chance = 30

@@ -444,3 +444,121 @@
       its on the floor too
   - bugfix: fixed black gloves not being black
   - bugfix: fixes inhand sprites for m12 helmets, and grenadier helmet
+2025-04-23:
+  Aurallianz:
+  - rscadd: After a two-minute post-cryo-wakeup period, ARES will provide an announcement
+      stating the commander.
+  - rscadd: ARES will modify your ID and give you senior command access if you don't
+      have it.
+  - maptweak: Added a command headset to the Command tablet locker.
+  - bugfix: Fixed CE's incorrect wakeup message
+  Blundir:
+  - bugfix: fixed gun oil not rendering on helmet
+  - imageadd: gun repair kit resprite
+  Lagomorphica:
+  - balance: Removes thermals as a possible selection from random goggle spawners
+      such as on Fiorina and from pre-selected map spawns on Sorokyne Strata and Kutjevo.
+  MistChristmas:
+  - bugfix: Roller beds deploy where clicked.
+  - bugfix: Fixes a Runtime when detaching/replacing attachments when there is no
+      round in the chamber.
+  Nihisohel:
+  - bugfix: Flamers can pass properly again.
+  Sleepynecrons:
+  - rscadd: adds the missing scythe sprite whilst its equipped on the back
+  biologed:
+  - bugfix: Ability to resize the TGUI TextArea in the modal box medal recommendation
+      and failure to send this due to the " char
+  realforest2001:
+  - rscadd: Added factional remote camera consoles.
+  - bugfix: Fixes fax responder access to Brig cameras.
+  - rscadd: Added the ability for staff to change IFF settings on the AI Core turrets
+      via remote interface.
+  rodcowartt:
+  - bugfix: Tanks will no longer attempt to move without treads installed.
+2025-04-24:
+  Aurallianz:
+  - bugfix: being able to defib without proper medical skills.
+  Detective-Google:
+  - admin: added a new button to reset the tdome
+  Drathek:
+  - bugfix: The taskbar flash preference when unnested now works while in the mob
+      and ghosted
+  - spellcheck: The message while nested preventing becoming a hugger/lesser now mentions
+      specifically if you are nested rather than two different 5 minute timers
+  jupyterkat:
+  - bugfix: setting aSL on specs now changes their hud icon again
+  - bugfix: fixed mortar hud icon not showing up on squad manager and orbit panel
+  - imageadd: added sniper hud icon for pmc spec
+  larentoun:
+  - bugfix: Resting doesn't reset Tackle Counter anymore. No more Rest Tech.
+  realforest2001:
+  - rscdel: Deletes a bugged human equipment preset.
+2025-04-25:
+  MistChristmas:
+  - ui: 'Security Records: adds a scrollbar to Individual records. Centers Title and
+      New Record button. Slightly moves the Photo window. Moves the record delete
+      button to the right hand-side. OW Console: Slightly aligns the search bar and
+      Squad Panel in the Squad Monitor.'
+  - ui: Centers and resizes door controls/dropship selection buttons. Does the same
+      for launch control buttons but also moves them into the element and out the
+      title (Does similar for ERT Shuttles). Centers the whole UI. Adjusts the spacings
+      between elements smaller than before. Makes the default UI slightly taller to
+      accommodate the bigger buttons.
+2025-04-26:
+  Blundir:
+  - rscadd: adds unique pouch to PMC/Goon survivors
+  - rscadd: added binoculars to W-Y commando leader
+  - rscadd: admins now have a selection of possible bodyguards that they can automatically
+      send to CL via bodyguard beacon response
+  - balance: buffed W-Y commando cqc and fireman carry skills
+  - balance: Replaces all instances of goons using 7 slot and 5 slot combat packs,
+      with 5 slot W-Y combat satchels
+  - bugfix: fixed shivas W-Y commando having incorrect minimap/orbit icon
+  - bugfix: PMC survivors not using pmc weapons spawners, using generic ones instead
+  - bugfix: PMC survivors potentially having too much metal
+  - bugfix: Goon armor having red light
+  - bugfix: Goons not having ammo in their pouch
+  - bugfix: PMC riot squad having smartgunner in their team
+  - bugfix: some WY security guards not having WY patch
+  - bugfix: fixed USCM having WY gun belts in some cases
+  DarkLordCabbage:
+  - balance: portable composite barricades are now meltable
+  hry-gh:
+  - bugfix: fixes the orbit menu totally breaking when someone is not wearing an id
+2025-04-27:
+  BlitzArde:
+  - rscadd: Preds can craft more things.
+  JackieEstegado:
+  - bugfix: Defibrillation chems now always notify the player that they are being
+      revived
+  - bugfix: Defibrillation property no longer keeps healing the patient once its above
+      -100 health
+  - bugfix: Fixed a case where defibrillation property would prematurely revive a
+      patient despite them being below -100 health
+  - bugfix: Paining chem property now causes pain
+  - bugfix: Photosensitive chem property is no longer harmless
+  Red-byte3D:
+  - code_imp: throw_carbon is now a all living proc instead of just being a xenomorph
+      variant
+  - bugfix: Sandbags will now properly show damage on examine
+  - bugfix: Airlocks no longer get deleted when theres no chosen type
+  genericusername21:
+  - rscdel: removed ME2 rank pins off the recruiter's service jacket
+  hry-gh:
+  - admin: the thunderdome is no longer on the admin z level - you summon it under
+      the Admin tab. there's also a new tdome option you can summon
+  seanlol092:
+  - qol: Announce where the dropship is from before and during departing (in auto)
+2025-04-28:
+  Aurallianz:
+  - bugfix: Trijent security survivor has WY accesses.
+  Drathek:
+  - bugfix: Fixed a runtime for stat panel examine whenever ghosting/logging out
+  - bugfix: Xenos can now bleed out when inside atoms (e.g. pipes)
+  - bugfix: Xenos now always take atleast 1 dmg from queen banishment (rather than
+      healing when in crit)
+  - qol: Banished xenos in a tunnel can now exit using alt+click (they could have
+      used the exit-tunnel verb however)
+  MistChristmas:
+  - bugfix: spawns ammo instead of extra pistols in the VP78 belt

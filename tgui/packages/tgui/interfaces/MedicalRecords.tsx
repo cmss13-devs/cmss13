@@ -18,6 +18,7 @@ type RecordEntry = {
   id: string;
   general_name: string;
   general_rank: string;
+  general_job: string;
   general_age: number;
   general_sex: string;
   general_m_stat: string;
@@ -178,10 +179,9 @@ export const MedicalRecords = () => {
     { label: 'ID:', contentKey: 'id', isEditable: false },
     {
       label: 'RANK:',
-      contentKey: 'general_sex',
-      isEditable: true,
-      type: 'select',
-      options: ['Male', 'Female'],
+      contentKey: 'general_rank',
+      isEditable: false,
+      type: 'string',
     },
     {
       label: 'SEX:',
@@ -405,7 +405,7 @@ export const MedicalRecords = () => {
                 POSITION:
               </Flex.Item>
               <Flex.Item fontWeight="700" fontSize="10px" ml="5px">
-                {record.general_rank.toUpperCase()}
+                {record.general_job.toUpperCase()}
               </Flex.Item>
             </Flex>
             <Box width="95%">
@@ -481,7 +481,7 @@ export const MedicalRecords = () => {
         </Flex>
 
         <Flex ml="10px" direction="column">
-          <Flex.Item mb="10px">
+          <Flex.Item mb="15px">
             <Box fontWeight="700" fontSize="11px">
               DISEASES:
             </Box>
@@ -489,7 +489,7 @@ export const MedicalRecords = () => {
               {record.medical_diseases}
             </Box>
           </Flex.Item>
-          <Flex.Item>
+          <Flex.Item mb="5px">
             <Flex direction="row" justify="center">
               <Flex.Item className="MedicalRecords_Disabilities" width="52%">
                 <Flex.Item mb="5px">
@@ -632,7 +632,7 @@ export const MedicalRecords = () => {
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
             onClick={() => handleSort('general_rank')}
           >
-            Position {getSortIndicator('general_rank')}
+            Position {getSortIndicator('general_job')}
           </Table.Cell>
           <Table.Cell
             bold

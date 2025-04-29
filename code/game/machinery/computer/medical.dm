@@ -1,5 +1,12 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
+/// view-only medical record access, for unclassified files. lowest access level.
+#define MEDICAL_RECORD_ACCESS_LEVEL_0 0	// assigned to HMs and Nurses.
+/// edit access for all unclassified files. view-only for classified files.
+#define MEDICAL_RECORD_ACCESS_LEVEL_1 1	// access level given to Doctors, and any Officers at or above 1stLT.
+/// full record database edit and viewing access.
+#define MEDICAL_RECORD_ACCESS_LEVEL_2 2	// given to the CMO, Synths, and the CO/XO.
+
 /obj/structure/machinery/computer/med_data//TODO:SANITY
 	name = "Medical Records"
 	desc = "This can be used to check medical records."
@@ -18,6 +25,7 @@
 	var/a_id = null
 	var/temp = null
 	var/printing = null
+	var/access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
 
 /obj/structure/machinery/computer/med_data/verb/eject_id()
 	set category = "Object"
@@ -37,6 +45,9 @@
 		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
+//obj/structure/machinery/computer/med_data/get_database_access_level(obj/item/id)
+
+
 /obj/structure/machinery/computer/med_data/attackby(obj/item/O as obj, user as mob)
 	if(istype(O, /obj/item/card/id) && !scan)
 		if(usr.drop_held_item())
@@ -46,6 +57,8 @@
 			last_user_rank = scan.rank
 			to_chat(user, "You insert [O].")
 	. = ..()
+
+/obj/structure/machinery/computer/med_data
 
 /obj/structure/machinery/computer/med_data/attack_remote(user as mob)
 	return src.attack_hand(user)
@@ -83,13 +96,25 @@
 		medical_record[medical.fields["id"]] = medical
 
 	for (var/datum/data/record/general in GLOB.data_core.general)
-		var/id = general.fields["id"]
-		var/datum/data/record/medical = medical_record[id]
+		var/id_number = general.fields["id"]
+		var/datum/data/record/medical = medical_record[id_number]
+
+		var/datum/weakref/target_ref = general.fields["ref"]
+		var/mob/living/carbon/human/target = target_ref.resolve()
+
+		var/obj/item/card/id/id = target.wear_id
+		var/paygrade = id ? id.paygrade : "None"
+
+		var/record_classified = FALSE
+		// checks if record target is in the chain of command, and needs their record protected
+		//if(target.job.title in CHAIN_OF_COMMAND_ROLES)
+		//	record_classified = TRUE
 
 		var/list/record = list(
-			"id" = id,
+			"id" = id_number,
 			"general_name" = general.fields["name"],
-			"general_rank" = general.fields["rank"],
+			"general_job" = general.fields["rank"],
+			"general_rank" = paygrade,
 			"general_age" = general.fields["age"],
 			"general_sex" = general.fields["sex"],
 			"general_m_stat" = general.fields["m_stat"],
@@ -103,7 +128,8 @@
 			"medical_allergies_details" = medical.fields["alg_d"],
 			"medical_diseases" = medical.fields["cdi"],
 			"medical_diseases_details" = medical.fields["cdi_d"],
-			"medical_notes" = medical.fields["notes"]
+			"medical_notes" = medical.fields["notes"],
+			"record_classified" = record_classified
 		)
 		records += list(record)
 

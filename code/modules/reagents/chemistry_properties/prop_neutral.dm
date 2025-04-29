@@ -35,7 +35,7 @@
 /datum/chem_property/neutral/excreting
 	name = PROPERTY_EXCRETING
 	code = "EXT"
-	description = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine."
+	description = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine. Upregulates chemical production in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 
@@ -46,15 +46,15 @@
 	. = ..()
 	if(!processing_tray.seed)
 		return
-	processing_tray.toxins += (potency*2)*volume
+	processing_tray.toxins += 1.5*(potency*2)*volume
 	processing_tray.weedlevel += 1*(potency*2)*volume
-	processing_tray.nutrilevel += -0.25*(potency*2)*volume
 	processing_tray.potency_counter += 5*(potency*2)*volume
 	if (processing_tray.potency_counter >= 100 && rand(0,potency*2) > 0)
 		var/turf/c_turf = get_turf(processing_tray)
 		processing_tray.seed = processing_tray.seed.diverge()
 		processing_tray.seed.potency += rand(1,potency*2)
-		c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] rustles as its branches bow"))
+		processing_tray.seed.nutrient_consumption += 0.3*(potency*2)
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
 		processing_tray.potency_counter = 0
 
 /datum/chem_property/neutral/nutritious
@@ -362,7 +362,7 @@
 /datum/chem_property/neutral/fluffing
 	name = PROPERTY_FLUFFING
 	code = "FLF"
-	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth."
+	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth. Found to increase yeilds in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
@@ -522,7 +522,7 @@
 /datum/chem_property/neutral/hypometabolic
 	name = PROPERTY_HYPOMETABOLIC
 	code = "OMB"
-	description = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit."
+	description = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit. Slows down metabolism of plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 	value = 2

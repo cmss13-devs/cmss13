@@ -55,7 +55,25 @@
 	var/metabolism_adjust = 0
 	///if the plant is going to harvest itself once its ready
 	var/autoharvest = FALSE
-
+	///Initialize() 13 potential slots to block corresponding to seed/proc/mutate and hydroponics/proc/mutate
+	var/list/mutation_controller = list(
+		"Plant Cancer" = 0,
+		"Gluttony" = 0,
+		"Endurance" = 0,
+		"Light Tolerance" = 0,
+		"Toxin Tolerance" = 0,
+		"Weed Tolerance" = 0,
+		"Production" = 0,
+		"Lifespan" = 0,
+		"Potency" = 0,
+		"Maturity" = 0,
+		"Bioluminecence" = 0,
+		"Flowers" = 0,
+		"New Chems" = 0,
+		"New Chems2" = 0,
+		"New Chems3" = 0,
+		"Mutate Species" = 0,
+		)
 
 
 	// Reagent information for process(), consider moving this to a controller along
@@ -247,14 +265,16 @@
 		age = 0
 		sampled = 0
 		mutation_mod = 0
-		///resets these counters when the plant is harvested and removed from tray
+		//resets these counters when the plant is harvested and removed from tray
 		potency_counter = 0
 		repeat_harvest_counter = 0
 		production_time_counter = 0
 		chem_add_counter = 0
-
-
-
+		metabolism_adjust = 0
+		for(var/j = 1; j<=length(mutation_controller); j++)
+			var/mut_name = mutation_controller[j]
+			if(mutation_controller[mut_name] > -3)
+				mutation_controller[mut_name] = 0
 
 	check_level_sanity()
 	update_icon()
@@ -271,13 +291,16 @@
 	age = 0
 	yield_mod = 0
 	mutation_mod = 0
-	///resets these counters when the plant is harvested and removed from tray
+	//resets these counters when the plant is harvested and removed from tray
 	potency_counter = 0
 	repeat_harvest_counter = 0
 	production_time_counter = 0
 	chem_add_counter = 0
-
-
+	metabolism_adjust = 0
+	for(var/j = 1; j<=length(mutation_controller); j++)
+		var/mut_name = mutation_controller[j]
+		if(mutation_controller[mut_name] > -3)
+			mutation_controller[mut_name] = 0
 
 
 	to_chat(user, SPAN_NOTICE("You remove the dead plant from [src]."))
@@ -357,8 +380,8 @@
 	if(!seed)
 		return
 
-	// Check if we should even bother working on the current seed datum.
-	if(LAZYLEN(seed.mutants) && severity > 1)
+	// Check if we should even bother working on the current seed datum. mutation_controller
+	if((LAZYLEN(seed.mutants) && severity > 1 && mutation_controller["Mutate Species"] == 0) || mutation_controller["Mutate Species"] > 0)
 		mutate_species()
 		return
 
@@ -367,7 +390,7 @@
 	// harvested yet and it's safe to assume it's restricted to this tray.
 	if(!isnull(GLOB.seed_types[seed.name]))
 		seed = seed.diverge()
-	seed.mutate(severity ,get_turf(src), mutation_level)
+	seed.mutate(severity ,get_turf(src), src)
 	return
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/check_level_sanity()
@@ -384,21 +407,24 @@
 	pestlevel =   max(0,min(pestlevel,10))
 	weedlevel =   max(0,min(weedlevel,10))
 	toxins =  max(0,min(toxins,10))
+	//Adjust the time between plant cycles Min -140
+	metabolism_adjust = 0
 
+	//Ensures increased nutrient and water consumption as yield_mod increases
 	if(yield_mod>20)
 		seed = seed.diverge()
 		if(yield_mod>70)
-			seed.nutrient_consumption = max(7,seed.nutrient_consumption)
-			seed.water_consumption = max(25,seed.water_consumption)
+			seed.nutrient_consumption = max(3,seed.nutrient_consumption)
+			seed.water_consumption = max(10,seed.water_consumption)
 		else if(yield_mod>50)
-			seed.nutrient_consumption = max(5,seed.nutrient_consumption)
-			seed.water_consumption = max(20,seed.water_consumption)
+			seed.nutrient_consumption = max(2.5,seed.nutrient_consumption)
+			seed.water_consumption = max(8,seed.water_consumption)
 		else if(yield_mod>30)
 			seed.nutrient_consumption = max(2,seed.nutrient_consumption)
-			seed.water_consumption = max(14,seed.water_consumption)
+			seed.water_consumption = max(6,seed.water_consumption)
 		else if(yield_mod>20)
 			seed.nutrient_consumption = max(1,seed.nutrient_consumption)
-			seed.water_consumption = max(6,seed.water_consumption)
+			seed.water_consumption = max(3,seed.water_consumption)
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/proc/mutate_species()
 

@@ -57,7 +57,8 @@
 	skills = /datum/skills/civilian/survivor/pmc/commando
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_TSL)
 	minimap_icon = "private"
-	minimap_background = "background_pmc"
+	minimap_background = "background_wy_com"
+	minimap_icon = "pmc_gun"
 
 	access = list(
 		ACCESS_WY_GENERAL,
@@ -111,5 +112,5 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle, WEAR_IN_BELT)
 
 	//storage items
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/black(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)

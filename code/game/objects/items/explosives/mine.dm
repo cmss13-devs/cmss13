@@ -213,13 +213,11 @@
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/enemy)
 	if(!active || triggered || (customizable && !detonator))
 		return
-
-	if(isxeno(enemy))
-		if(sensor_for_small == FALSE)
+	if(sensor_for_small == FALSE)
+		if(isxeno(enemy))
 			var/mob/living/carbon/xenomorph/xeno = enemy
 			if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
 				return
-		return
 	if(!istype(enemy))
 		return
 	if(enemy.stat == DEAD)

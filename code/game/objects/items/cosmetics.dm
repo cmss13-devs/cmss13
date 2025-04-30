@@ -9,6 +9,8 @@
 	var/uses = 10
 	/// for lipstick
 	var/open = TRUE
+	/// Last world.time someone attempted to apply the makeup, for anti-spam.
+	var/last_apply_time
 
 //FACEPAINT
 /obj/item/facepaint/green
@@ -98,35 +100,40 @@
 	paint_type = "sunscreen_stick"
 	icon_state = "sunscreen_stick"
 
-/obj/item/facepaint/attack(mob/M, mob/user)
+/obj/item/facepaint/attack(mob/target, mob/user)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 
-	if(!ismob(M))
+	if(!ismob(target))
 		return FALSE
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/mob/living/carbon/human/Huser = user
-		Huser.animation_attack_on(H)
+	if(world.time < (last_apply_time + 5 SECONDS))
+		to_chat(user, SPAN_WARNING("You just attempted to apply makeup, slow down!"))
+		return FALSE
+	last_apply_time = world.time
+
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		var/mob/living/carbon/human/human_user = user
+		human_user.animation_attack_on(human_target)
 		if(!open)
 			to_chat(user, SPAN_WARNING("The lid is on!"))
 			return FALSE
 
-		if(H.lip_style) //if they already have lipstick on
+		if(human_target.lip_style) //if they already have lipstick on
 			to_chat(user, SPAN_WARNING("You need to wipe the old makeup off with paper first!"))
 			return
 
-		if(H == user)
-			paint_face(H, user)
+		if(human_target == user)
+			paint_face(human_target, user)
 			return TRUE
 
 		else
-			to_chat(user, SPAN_NOTICE("You attempt to apply [src] on [H]..."))
-			to_chat(H, SPAN_NOTICE("[user] is trying to apply [src] on your face..."))
-			if(alert(H,"Will you allow [user] to apply makeup to your face?",,"Sure","No") == "Sure")
-				if( user && loc == user && (user in range(1,H)) ) //Have to be close and hold the thing.
-					paint_face(H, user)
+			to_chat(user, SPAN_NOTICE("You attempt to apply [src] on [human_target]..."))
+			to_chat(human_target, SPAN_NOTICE("[user] is trying to apply [src] on your face..."))
+			if(alert(human_target,"Will you allow [user] to apply makeup to your face?",,"Sure","No") == "Sure")
+				if( user && loc == user && (user in range(1,human_target)) ) //Have to be close and hold the thing.
+					paint_face(human_target, user)
 					return TRUE
 
 	to_chat(user, SPAN_WARNING("Foiled!"))

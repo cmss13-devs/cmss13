@@ -43446,7 +43446,7 @@
 	pixel_x = -4
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/hybrisa/street/asphalt,
+/turf/open/floor/plating,
 /area/tyrargo/indoors/museum_storage/upper)
 "bVs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -48086,6 +48086,14 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_east)
+"cjL" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/underground/museum_carpark)
 "cjM" = (
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -48329,6 +48337,16 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_east)
+"ckp" = (
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
+	id = null;
+	explo_proof = 1;
+	needs_power = 0;
+	unacidable = 1;
+	dir = 4
+	},
+/turf/closed/wall/strata_outpost,
+/area/tyrargo/underground/museum_carpark)
 "ckq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/tunnel/maint_tunnel/hybrisa/grate,
@@ -48395,6 +48413,14 @@
 /obj/item/trash/uscm_mre,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/outdoors/colony_streets/east)
+"ckD" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal3";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/underground/museum_carpark)
 "ckE" = (
 /turf/closed/wall/strata_outpost,
 /area/tyrargo/indoors/museum_storage/ground)
@@ -48518,6 +48544,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/east)
+"clc" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/underground/museum_carpark)
 "cld" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -48621,6 +48659,21 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/indoors/museum_storage/ground)
+"clr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/underground/museum_carpark)
+"cls" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
 "clt" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -24;
@@ -48640,6 +48693,17 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/oob)
+"clu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/museum_storage/upper)
+"clv" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/museum_storage/upper)
 "clw" = (
 /obj/structure/flora/tree/dead/tree_4{
 	pixel_x = -15;
@@ -61441,6 +61505,11 @@
 "dbw" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 2
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/underground/museum_carpark)
@@ -85213,7 +85282,7 @@
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "ejg" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
-/area/tyrargo/indoors/museum_storage/upper)
+/area/tyrargo/outdoors/colony_streets/east)
 "ejh" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/asphalt/cement,
@@ -121033,7 +121102,7 @@ dXT
 bgQ
 dXI
 dDJ
-bgC
+dvf
 dvf
 dDh
 dPz
@@ -123411,8 +123480,8 @@ dtA
 dtA
 dtA
 dtA
-rEA
-rEA
+dbi
+dbi
 dtA
 dtA
 eeF
@@ -135420,7 +135489,7 @@ efZ
 efZ
 efZ
 efX
-efZ
+clr
 dOv
 egj
 egz
@@ -135434,7 +135503,7 @@ egj
 egd
 egr
 egp
-efZ
+dbo
 efZ
 efZ
 efX
@@ -135602,7 +135671,7 @@ mcx
 efZ
 efZ
 efZ
-efZ
+clr
 egn
 dbc
 ege
@@ -135616,7 +135685,7 @@ dbc
 ege
 xsr
 egn
-efX
+cjL
 efZ
 efZ
 dbc
@@ -136330,7 +136399,7 @@ dbW
 efX
 efX
 efZ
-efX
+loy
 uBF
 dbc
 urT
@@ -136512,7 +136581,7 @@ dbk
 dbU
 egb
 efZ
-efZ
+clr
 egb
 ega
 efW
@@ -136526,7 +136595,7 @@ ega
 efW
 egs
 dOv
-efX
+cjL
 efZ
 efZ
 efZ
@@ -136536,7 +136605,7 @@ dFJ
 egh
 dbh
 aid
-efX
+dTm
 dOv
 bta
 bta
@@ -136718,7 +136787,7 @@ dFJ
 egh
 egh
 efZ
-efX
+dTm
 dOv
 bta
 cRc
@@ -136900,7 +136969,7 @@ efX
 efX
 efX
 efX
-efX
+dTm
 dOv
 bta
 cRc
@@ -137058,7 +137127,7 @@ adf
 adf
 egH
 efX
-efX
+loy
 dbc
 urT
 egA
@@ -137072,17 +137141,17 @@ dbc
 urT
 efX
 dbc
+cjL
+efX
+efX
+cjL
 efX
 efX
 efX
 efX
 efX
 efX
-efX
-efX
-efX
-efX
-efX
+dTm
 dOv
 bta
 bta
@@ -137240,7 +137309,7 @@ adf
 adf
 egI
 efX
-efX
+loy
 ega
 efW
 dbf
@@ -137254,10 +137323,10 @@ ega
 efW
 dbf
 dbc
-efX
-efX
-efX
-efX
+clc
+ckD
+dbf
+cjL
 efX
 efX
 efX
@@ -137436,9 +137505,9 @@ dOv
 dOv
 dOv
 dOv
-dOv
-dOv
-dOv
+ckp
+ckp
+ckp
 dOv
 dOv
 dOv
@@ -178392,10 +178461,10 @@ nZr
 aCW
 aIq
 nZr
-aIq
-aaX
-aaX
-aaX
+coH
+cls
+cls
+cls
 ayl
 ayi
 axZ
@@ -221509,12 +221578,12 @@ gkC
 aeO
 aeJ
 hzQ
-cAZ
-cAZ
-cAZ
-cAZ
-cAZ
-cAZ
+dbH
+cCS
+cET
+cCm
+cCn
+cCm
 cDV
 cDK
 tgN
@@ -221699,7 +221768,7 @@ aeo
 pKS
 dbH
 cCS
-eji
+cCm
 aKi
 cCc
 cCc
@@ -221882,7 +221951,7 @@ aem
 cCn
 dbH
 cCn
-eji
+cCm
 eji
 ejm
 pMc
@@ -221894,9 +221963,9 @@ eji
 cBR
 eji
 ejj
-eji
 ejj
-eji
+ejj
+ejj
 eji
 ejh
 cjc
@@ -222261,7 +222330,7 @@ eji
 eji
 ejk
 ejj
-eji
+ejj
 cAZ
 cjc
 cjc
@@ -222430,7 +222499,7 @@ cTB
 kfw
 cCn
 cDf
-cCc
+clu
 cCc
 eji
 eji
@@ -222438,7 +222507,7 @@ ejm
 ejn
 xRO
 eji
-eji
+ejj
 ejj
 ejj
 eji
@@ -222612,8 +222681,8 @@ dNr
 cCn
 cVr
 cVr
-cCc
-cCc
+clu
+clu
 lJn
 dSx
 its
@@ -222794,7 +222863,7 @@ ide
 cVr
 vHk
 wuK
-its
+clv
 lJn
 ejk
 eji
@@ -222805,9 +222874,9 @@ cBR
 eji
 eji
 eji
-eji
 ejj
-eji
+ejj
+ejj
 cAZ
 cjc
 cjc
@@ -223351,9 +223420,9 @@ cBR
 eji
 eji
 eji
-eji
 ejj
-eji
+ejj
+ejj
 cAZ
 cjc
 cjc
@@ -223530,7 +223599,7 @@ eji
 cCo
 eji
 eji
-eji
+ejj
 ejj
 ejj
 eji
@@ -223717,7 +223786,7 @@ eji
 eji
 ejk
 ejj
-eji
+ejj
 cAZ
 cjc
 cjc
@@ -224077,10 +224146,10 @@ cCr
 ejm
 eji
 eji
-eji
 ejj
-eji
-eji
+ejj
+ejj
+ejj
 eji
 ejh
 cjc

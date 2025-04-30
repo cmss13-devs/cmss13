@@ -11,6 +11,10 @@
 	var/open = TRUE
 	/// Last world.time someone attempted to apply the makeup, for anti-spam.
 	var/last_apply_time
+	/// How long the anti-spam cooldown on applying the makeup is.
+	var/apply_delay_length = 5 SECONDS
+	/// the cooldown for applying makeup.
+	COOLDOWN_DECLARE(apply_delay)
 
 //FACEPAINT
 /obj/item/facepaint/green
@@ -107,10 +111,11 @@
 	if(!ismob(target))
 		return FALSE
 
-	if(world.time < (last_apply_time + 5 SECONDS))
-		to_chat(user, SPAN_WARNING("You just attempted to apply makeup, slow down!"))
+	if(!COOLDOWN_FINISHED(src, apply_delay)) // Stops players from spamming each other with popups.
+		to_chat(user, SPAN_WARNING("You just attempted to apply some makeup, slow down!"))
 		return FALSE
-	last_apply_time = world.time
+
+	COOLDOWN_START(src, apply_delay, apply_delay_length)
 
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target

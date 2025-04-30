@@ -127,7 +127,7 @@
 	flags_item = ADJACENT_CLICK_DELAY
 	attack_speed = 1 SECONDS
 	attack_verb = list("flayed", "punched", "suckerpunched")
-	force = MELEE_FORCE_TIER_6
+	force = MELEE_FORCE_TIER_4
 	speed_bonus_amount = 0
 	var/gauntlet_deployed = FALSE
 	var/combo_counter = 0

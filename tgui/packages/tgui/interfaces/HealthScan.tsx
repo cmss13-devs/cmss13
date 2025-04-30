@@ -78,6 +78,7 @@ type Data = {
   blood_amount: number;
   holocard: string | null;
   hugged: string | null;
+  brainslug: string | null;
   ui_mode: number;
   detail_level: number;
   has_unknown_chemicals: BooleanLike;

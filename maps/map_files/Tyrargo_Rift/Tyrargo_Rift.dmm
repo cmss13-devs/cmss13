@@ -1005,7 +1005,7 @@
 	name = "\improper Up semiotic";
 	desc = "Semiotic Standard denoting the nearby presence of something going upwards."
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/museum_carpark)
 "adh" = (
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -1032,7 +1032,7 @@
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/apartment/south_upper)
 "adm" = (
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "adn" = (
 /turf/open/floor/wood,
@@ -4471,7 +4471,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/upper)
 "amL" = (
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/museum_carpark)
 "amM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9329,7 +9329,7 @@
 "axJ" = (
 /obj/structure/machinery/vending/coffee,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "axK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13933,7 +13933,7 @@
 /area/tyrargo/indoors/museum_storage/ground)
 "aJn" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "aJo" = (
 /obj/effect/decal/hybrisa/road/lines4,
@@ -13965,7 +13965,7 @@
 "aJr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "aJs" = (
 /turf/open/floor/almayer/plating_striped/south,
@@ -14876,7 +14876,7 @@
 /turf/open_space,
 /area/tyrargo/indoors/museum_storage/upper)
 "aKY" = (
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/upper)
 "aKZ" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -14903,7 +14903,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/upper)
 "aLc" = (
 /turf/closed/wall/r_wall/bunker/floodgate{
@@ -30135,7 +30135,7 @@
 	light_range = 1;
 	pixel_y = 4
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "bpn" = (
 /obj/item/stack/sandbags/small_stack,
@@ -48538,7 +48538,7 @@
 	name = "Carpark Entrance Barrier";
 	explo_proof = 1
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "clg" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
@@ -48570,7 +48570,7 @@
 "cli" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/cameras,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "clj" = (
 /obj/structure/flora/tree/dead/tree_5{
@@ -53193,7 +53193,7 @@
 	start_charge = 30
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/upper)
 "cCD" = (
 /turf/open/floor/prison/yellow/northwest,
@@ -69656,7 +69656,7 @@
 	capacity = 1e+006;
 	dir = 1
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/apartment)
 "dwM" = (
 /obj/structure/surface/table,
@@ -69738,7 +69738,7 @@
 	pixel_y = -5
 	},
 /obj/structure/machinery/power/breakerbox,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/apartment)
 "dwZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname{
@@ -70104,7 +70104,7 @@
 /area/tyrargo/underground/engineering)
 "dxY" = (
 /obj/structure/machinery/power/reactor/colony,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/apartment)
 "dxZ" = (
 /obj/structure/machinery/power/reactor/colony,
@@ -70139,12 +70139,12 @@
 	light_color = "#96DED1";
 	light_range = 1
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/apartment)
 "dye" = (
 /obj/structure/closet/toolcloset,
 /obj/item/stack/cable_coil/random,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/apartment)
 "dyf" = (
 /obj/structure/sign/safety/high_voltage{
@@ -84124,14 +84124,14 @@
 	start_charge = 30
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/museum_carpark)
 "egN" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/museum_carpark)
 "egO" = (
 /obj/structure/cable/heavyduty{
@@ -84470,7 +84470,7 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehu" = (
 /obj/structure/machinery/power/apc/power/south{
@@ -84496,18 +84496,18 @@
 	pixel_y = 6;
 	pixel_x = -2
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehy" = (
 /obj/structure/closet/secure_closet/security,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehz" = (
 /obj/structure/machinery/door/airlock/hybrisa/medical{
 	dir = 1
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "ehA" = (
 /obj/effect/decal/hybrisa/road/road_stop{
@@ -84813,7 +84813,7 @@
 /area/tyrargo/indoors/museum_storage/ground)
 "eim" = (
 /obj/structure/machinery/light/small,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "ein" = (
 /obj/structure/surface/table/reinforced{
@@ -84824,7 +84824,7 @@
 	name = "Carpark Entrance Barrier";
 	explo_proof = 1
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "eio" = (
 /obj/structure/stairs/multiz/down{
@@ -84842,7 +84842,7 @@
 	closed_layer = 2.9;
 	layer = 2.9
 	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "eiq" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
@@ -84870,14 +84870,14 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "eiu" = (
 /obj/structure/barricade/handrail/wire{
 	layer = 3
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
 "eiv" = (
 /obj/structure/stairs{
@@ -85283,7 +85283,7 @@
 /area/tyrargo/indoors/saipan)
 "ejw" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/upper)
 "ejx" = (
 /obj/structure/barricade/handrail/wire{
@@ -88496,7 +88496,7 @@
 "ljT" = (
 /obj/structure/machinery/vending/cigarette,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/floor/almayer/plating,
 /area/tyrargo/underground/museum_carpark)
 "lkt" = (
 /obj/effect/decal/cleanable/dirt,

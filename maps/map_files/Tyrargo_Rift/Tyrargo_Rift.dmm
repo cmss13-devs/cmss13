@@ -569,6 +569,15 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/underground/bunker/north)
+"abU" = (
+/obj/structure/prop/hybrisa/misc/metergreen{
+	light_on = 1;
+	light_color = "#96DED1";
+	pixel_x = -28;
+	light_range = 1
+	},
+/turf/open/hybrisa/street/cement3,
+/area/tyrargo/underground/museum_carpark)
 "abV" = (
 /obj/effect/decal/grass_overlay/grass1,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -19778,6 +19787,23 @@
 /obj/effect/sentry_landmark/lz_1/top_left,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
+"aVj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/road/lines2{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/road/lines4{
+	pixel_x = -14
+	},
+/obj/structure/prop/hybrisa/misc/redmeter{
+	light_color = "#850000";
+	light_on = 1;
+	light_range = 1;
+	light_power = 2;
+	pixel_y = 29
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/underground/museum_carpark)
 "aVk" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 4;
@@ -30100,6 +30126,17 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/west)
+"bpm" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/emails{
+	pixel_x = 3;
+	light_color = "#96DED1";
+	light_on = 1;
+	light_range = 1;
+	pixel_y = 4
+	},
+/turf/open/shuttle/escapepod/floor4,
+/area/tyrargo/indoors/museum_storage/ground)
 "bpn" = (
 /obj/item/stack/sandbags/small_stack,
 /turf/open/auto_turf/strata_grass,
@@ -32915,6 +32952,16 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
+"bvq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/metergreen{
+	light_on = 1;
+	light_color = "#96DED1";
+	pixel_x = -28;
+	light_range = 1
+	},
+/turf/open/hybrisa/street/cement3,
+/area/tyrargo/indoors/museum_storage/ground)
 "bvr" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -43478,6 +43525,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/red/northwest,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
+"bVJ" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	light_color = "#850000";
+	light_on = 1;
+	light_range = 1;
+	light_power = 2;
+	pixel_y = 29
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
 "bVK" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/redcorner/north,
@@ -47912,6 +47971,26 @@
 /obj/structure/barricade/deployable,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"cjv" = (
+/obj/structure/prop/hybrisa/misc/metergreen{
+	light_on = 1;
+	light_color = "#96DED1";
+	pixel_x = -28;
+	light_range = 1;
+	pixel_y = 5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/upper)
+"cjw" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_x = 32;
+	light_color = "#850000";
+	light_on = 1;
+	light_range = 1;
+	light_power = 2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/upper)
 "cjx" = (
 /obj/structure/flora/tree/dead/tree_1{
 	pixel_y = -2;
@@ -134455,7 +134534,7 @@ dOv
 dOv
 dOv
 dTm
-dTm
+abU
 een
 een
 ebV
@@ -135518,7 +135597,7 @@ egO
 bta
 bsw
 dOv
-egK
+aVj
 mcx
 efZ
 efZ
@@ -178132,7 +178211,7 @@ ehL
 ehJ
 nZr
 ayn
-ayn
+bvq
 cpm
 ayn
 clq
@@ -178294,7 +178373,7 @@ eip
 adh
 adh
 ckE
-aHP
+bVJ
 aCW
 aIq
 aHP
@@ -180320,7 +180399,7 @@ cpl
 cpl
 cpl
 ckE
-cli
+bpm
 aaR
 ckE
 chH
@@ -221631,7 +221710,7 @@ eji
 ejm
 eji
 eji
-eji
+cjv
 eji
 eji
 eji
@@ -224179,7 +224258,7 @@ eji
 eji
 ejm
 eji
-eji
+cjw
 eji
 eji
 eji

@@ -94,28 +94,46 @@
 	. = ..()
 	relativewall_neighbours()
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/yautja
-	name = "Armory Shutter"
-	id = "Yautja Armory"
-	needs_power = FALSE
-	unacidable = TRUE
-	explo_proof = TRUE
+/obj/structure/machinery/door/poddoor/yautja
+	name = "Yautja Shutter"
+	desc = "A heavily reinforced metal-alloy door, designed to be virtually indestructible—nothing can penetrate its defenses."
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
+	icon_state = "udoor1"
+	base_icon_state = "udoor"
+	unslashable = TRUE
+	emp_proof = TRUE
+	openspeed = 6
+	color = "#f0ebd3"
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/Initialize()
-	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
+/obj/structure/machinery/door/poddoor/yautja/open
+	density = FALSE
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds
+/obj/structure/machinery/door/poddoor/yautja/emp_act(power, severity)
+	if(emp_proof)
+		return FALSE
+	..()
+	return TRUE
+
+/obj/structure/machinery/door/poddoor/yautja/hunting_grounds
 	name = "Preserve Shutter"
 	id = "Yautja Preserve"
 	needs_power = FALSE
 	unacidable = TRUE
+	unslashable = TRUE
+	breakable = FALSE
 	explo_proof = TRUE
 
-/obj/structure/machinery/door/poddoor/shutters/almayer/yautja/hunting_grounds/Initialize()
+/obj/structure/machinery/door/poddoor/yautja/hunting_grounds/Initialize()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_PRESERVE_OPENED, PROC_REF(open))
 	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_PRESERVE_CLOSED, PROC_REF(close))
+
+/obj/structure/machinery/door/poddoor/yautja/armory
+	name = "Armory Shutter"
+
+/obj/structure/machinery/door/poddoor/yautja/armory/Initialize()
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_YAUTJA_ARMORY_OPENED, PROC_REF(open))
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment
 	unacidable = TRUE

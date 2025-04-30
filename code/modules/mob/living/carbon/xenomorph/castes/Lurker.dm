@@ -64,6 +64,9 @@
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
+	skull = /obj/item/skull/lurker
+	pelt = /obj/item/pelt/lurker
+
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
 
@@ -99,7 +102,7 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(next_slash_buffed)
+	if(next_slash_buffed && target_carbon)
 		return INTENT_HARM
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)

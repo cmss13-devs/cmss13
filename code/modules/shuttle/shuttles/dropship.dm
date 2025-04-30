@@ -62,8 +62,8 @@
 
 /obj/docking_port/mobile/marine_dropship/proc/send_for_flyby()
 	in_flyby = TRUE
-	var/obj/docking_port/stationary/dockedAt = get_docked()
-	SSshuttle.moveShuttle(src.id, dockedAt.id, TRUE)
+	var/obj/docking_port/stationary/docked_at = get_docked()
+	SSshuttle.moveShuttle(src.id, docked_at.id, TRUE)
 
 /obj/docking_port/mobile/marine_dropship/proc/add_equipment(obj/docking_port/mobile/marine_dropship/dropship, obj/structure/dropship_equipment/equipment)
 	SIGNAL_HANDLER
@@ -87,7 +87,7 @@
 
 /obj/docking_port/mobile/marine_dropship/enterTransit()
 	. = ..()
-	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && !in_flyby && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop(src)
 
 /obj/docking_port/mobile/marine_dropship/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
@@ -163,7 +163,7 @@
 		return
 
 	var/obj/docking_port/stationary/marine_dropship/dropzone = destination
-	if(mode == SHUTTLE_PREARRIVAL && !dropzone.landing_lights_on)
+	if(mode == SHUTTLE_PREARRIVAL && dropzone && !dropzone.landing_lights_on)
 		if(istype(destination, /obj/docking_port/stationary/marine_dropship))
 			dropzone.turn_on_landing_lights()
 		playsound(dropzone.return_center_turf(), landing_sound, 60, 0)
@@ -182,8 +182,9 @@
 		return
 
 	if(automated_hangar_id && automated_lz_id && automated_delay && !automated_timer && mode == SHUTTLE_IDLE)
+		var/obj/docking_port/stationary/marine_dropship/docked_at = get_docked()
 		if(faction == FACTION_MARINE)
-			ai_silent_announcement("The [name] will automatically depart in [automated_delay * 0.1] seconds")
+			ai_silent_announcement("The [name] will automatically depart from [docked_at.name] in [automated_delay * 0.1] seconds.")
 
 		automated_timer = addtimer(CALLBACK(src, PROC_REF(automated_fly)), automated_delay, TIMER_STOPPABLE)
 
@@ -196,13 +197,11 @@
 		return
 	if(mode != SHUTTLE_IDLE)
 		return
-	var/obj/docking_port/stationary/dockedAt = get_docked()
-	if(dockedAt.id == automated_hangar_id)
-		SSshuttle.moveShuttle(id, automated_lz_id, TRUE)
-	else
-		SSshuttle.moveShuttle(id, automated_hangar_id, TRUE)
+	var/obj/docking_port/stationary/marine_dropship/docked_at = get_docked()
+	var/target_id = (docked_at?.id == automated_hangar_id) ? automated_lz_id : automated_hangar_id
+	SSshuttle.moveShuttle(id, target_id, TRUE)
 	if(faction == FACTION_MARINE)
-		ai_silent_announcement("Dropship '[name]' departing.")
+		ai_silent_announcement("Dropship '[name]' departing from [docked_at.name].")
 
 /obj/docking_port/stationary/marine_dropship
 	dir = NORTH
@@ -228,6 +227,8 @@
 	if(landing_lights)
 		landing_lights.Cut()
 	landing_lights = null // We didn't make them, so lets leave them
+	for(var/obj/structure/machinery/computer/shuttle/dropship/flight/flight_console in GLOB.machines)
+		flight_console.compatible_landing_zones -= src
 
 /obj/docking_port/stationary/marine_dropship/proc/link_landing_lights()
 	var/list/coords = return_coords()
@@ -312,11 +313,18 @@
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/normandy
 
-/obj/docking_port/stationary/marine_dropship/upp_hangar_1
-	name = "UPP Hangar bay 1"
-	id = UPP_DROPSHIP_LZ2
+/obj/docking_port/stationary/marine_dropship/upp/hangar_1
+	name = "Rostock Hangar bay 1"
+	id = UPP_DROPSHIP_LZ1
+	faction = "UPP"
 	auto_open = TRUE
 	roundstart_template = /datum/map_template/shuttle/morana
+
+/obj/docking_port/stationary/marine_dropship/upp/hangar_2
+	name = "Rostock Hangar bay 2"
+	id = UPP_DROPSHIP_LZ2
+	auto_open = TRUE
+	roundstart_template = /datum/map_template/shuttle/devana
 
 /obj/docking_port/stationary/marine_dropship/crash_site
 	auto_open = TRUE

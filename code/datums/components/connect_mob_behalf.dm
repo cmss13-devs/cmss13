@@ -41,9 +41,9 @@
 	if(QDELETED(tracked?.mob))
 		return
 	tracked_mob = tracked.mob
-	RegisterSignal(tracked_mob, COMSIG_MOB_LOGOUT, PROC_REF(on_logout))
 	for (var/signal in connections)
 		parent.RegisterSignal(tracked_mob, signal, connections[signal])
+	RegisterSignal(tracked_mob, COMSIG_MOB_LOGOUT, PROC_REF(on_logout))
 
 /datum/component/connect_mob_behalf/proc/unregister_signals()
 	if(isnull(tracked_mob))

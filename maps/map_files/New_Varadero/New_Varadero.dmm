@@ -214,6 +214,41 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/swcaves)
+"aaP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"aaQ" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"aaR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
+"aaS" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aaT" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"aaU" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1090,6 +1125,9 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "aHu" = (
@@ -4052,7 +4090,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "dbV" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/eat,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
 "dcC" = (
@@ -6483,9 +6521,9 @@
 	pixel_x = 7;
 	pixel_y = 13
 	},
-/obj/item/implantcase/explosive{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/item/implantcase/death_alarm{
+	pixel_y = -3;
+	pixel_x = 3
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
@@ -9887,12 +9925,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "hRs" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "hRv" = (
@@ -10880,6 +10913,9 @@
 /area/varadero/exterior/pool)
 "iIt" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "iIC" = (
@@ -13895,7 +13931,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/m240,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/electrical)
 "leP" = (
@@ -24084,6 +24120,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "tfc" = (
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
 "tfj" = (
@@ -35490,7 +35527,7 @@ qul
 qul
 qul
 qHc
-mJe
+aaQ
 xCn
 xCn
 oPQ
@@ -43111,7 +43148,7 @@ bZU
 bZU
 xsH
 mrC
-wMw
+aaU
 wMw
 wMw
 wMw
@@ -47312,7 +47349,7 @@ hsl
 giN
 hyr
 sXb
-tzw
+aaT
 aJP
 svH
 kBo
@@ -50072,7 +50109,7 @@ fEZ
 htt
 wVf
 wVf
-idw
+aaS
 jQB
 psb
 idw
@@ -54341,7 +54378,7 @@ mCF
 mCF
 pGs
 pGs
-pGs
+aaP
 wUU
 "}
 (132,1,1) = {"
@@ -56561,7 +56598,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+aaR
 wlB
 wlB
 wlB

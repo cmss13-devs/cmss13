@@ -124,7 +124,6 @@
 	icon_state = "metal_gauntlet"
 	hitsound = null
 	item_state = "gauntlet"
-	flags_item = ADJACENT_CLICK_DELAY
 	attack_speed = 1 SECONDS
 	attack_verb = list("flayed", "punched", "suckerpunched")
 	force = MELEE_FORCE_TIER_4

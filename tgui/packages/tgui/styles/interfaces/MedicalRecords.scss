@@ -1,5 +1,8 @@
 @use '../base.scss';
 
+$light: hsl(140, 100%, 46%);
+$dark: hsl(120, 100%, 3%);
+
 .MedicalRecords_CellStyle {
   padding-top: 4px;
   padding-bottom: 3px;
@@ -28,5 +31,6 @@
 }
 
 .MedicalRecords_Disabilities {
-  border-right: 2px solid rgb(0, 204, 0);
+  background-color: hsla(140, 100%, 46%, 0.884);
+  color: $dark;
 }

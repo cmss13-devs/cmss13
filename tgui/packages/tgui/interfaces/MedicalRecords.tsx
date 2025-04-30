@@ -1,4 +1,3 @@
-import type { BooleanLike } from 'common/react';
 import { useCallback, useEffect, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
@@ -26,21 +25,26 @@ type RecordEntry = {
   medical_blood_type: string;
   medical_diseases: string;
   medical_diseases_details: string;
+  medical_allergies: string;
+  medical_allergies_details: string;
   medical_major_disabilities: string;
   medical_major_disabilities_details: string;
   medical_minor_disabilities: string;
   medical_minor_disabilities_details: string;
-};
-
-type Scanner = {
-  connected: BooleanLike;
-  count: number;
-  data: { name: string; squad: string; rank: string; description: string }[];
+  medical_comments: {
+    entry: string;
+    created_by: { name: string; rank: string };
+    created_at: String;
+    deleted_by: null | string;
+    deleted_at: null | string;
+  }[];
+  record_classified: Boolean;
 };
 
 type Data = {
-  scanner: Scanner;
   records: RecordEntry[];
+  operator: string;
+  database_access_level: number;
   fallback_image: string;
   photo_front?: string;
   photo_side?: string;
@@ -48,7 +52,7 @@ type Data = {
 
 export const MedicalRecords = () => {
   const { data, act } = useBackend<Data>();
-  const { records = [], scanner = {} as Scanner, fallback_image } = data;
+  const { records = [], fallback_image } = data;
   const [recordsArray, setRecordsArray] = useState(
     Array.isArray(records) ? records : [],
   );
@@ -59,7 +63,6 @@ export const MedicalRecords = () => {
   const [editValue, setEditValue] = useState(''); // Value for input
   const [commentModalOpen, setCommentModalOpen] = useState(false);
   const [newComment, setNewComment] = useState('');
-  const [viewFingerprintScanner, setViewFingerprintScanner] = useState(false); // Track fingerprint scanner view
   const [sortConfig, setSortConfig] = useState({
     key: 'general_name',
     direction: 'asc',
@@ -175,6 +178,21 @@ export const MedicalRecords = () => {
     setNewComment('');
   };
 
+  let view_record = false;
+  let edit_record = false;
+
+  if (
+    data.database_access_level >= (selectedRecord?.record_classified ? 1 : 0)
+  ) {
+    view_record = true;
+  }
+
+  if (
+    data.database_access_level > (selectedRecord?.record_classified ? 1 : 0)
+  ) {
+    edit_record = true;
+  }
+
   const personalDataFields = [
     { label: 'ID:', contentKey: 'id', isEditable: false },
     {
@@ -186,14 +204,14 @@ export const MedicalRecords = () => {
     {
       label: 'SEX:',
       contentKey: 'general_sex',
-      isEditable: true,
+      isEditable: edit_record,
       type: 'select',
       options: ['Male', 'Female'],
     },
     {
       label: 'AGE:',
       contentKey: 'general_age',
-      isEditable: true,
+      isEditable: edit_record,
       type: 'number',
     },
   ];
@@ -202,42 +220,25 @@ export const MedicalRecords = () => {
     {
       label: 'Physical Status:',
       contentKey: 'general_p_stat',
-      isEditable: false,
+      isEditable: edit_record,
+      type: 'select',
+      options: ['Active', 'Physically Unfit', 'Disabled', 'SSD', 'Deceased'],
     },
     {
       label: 'Mental Status:',
       contentKey: 'general_m_stat',
-      isEditable: false,
+      isEditable: edit_record,
+      type: 'select',
+      options: ['Stable', 'Watch', 'Unstable', 'Insane'],
     },
     {
       label: 'Blood Type:',
       contentKey: 'medical_blood_type',
-      isEditable: false,
-    },
-  ];
-
-  const criminalStatuses = {
-    '*Arrest*': { background: '#990c28', font: '#ffffff' },
-    Incarcerated: { background: '#faa20a', font: '#ffffff' },
-    Released: { background: '#2981b3', font: '#ffffff' },
-    Suspect: { background: '#686A6C', font: '#ffffff' },
-    NJP: { background: '#b60afa', font: '#ffffff' },
-    None: { background: 'inherit', font: 'inherit' },
-  };
-
-  const securityDataFields = [
-    {
-      label: 'Criminal Status:',
-      contentKey: 'security_criminal',
-      isEditable: true,
+      isEditable: edit_record,
       type: 'select',
-      options: Object.keys(criminalStatuses),
+      options: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
     },
   ];
-
-  // Function to get styles based on status
-  const getStyle = (status) =>
-    criminalStatuses[status] || { background: 'inherit', font: 'inherit' };
 
   const getSortIndicator = (key) => {
     if (sortConfig.key === key) {
@@ -279,309 +280,368 @@ export const MedicalRecords = () => {
     );
   };
 
-  const renderFingerprintScannerSection = () =>
-    scanner.connected ? (
-      <Section title="Fingerprint Scanner">
-        <Flex direction="row" gap={2}>
-          <Button onClick={() => setViewFingerprintScanner(true)} color="blue">
-            Open Fingerprint Scanner
-          </Button>
-          <Box
-            className="SecurityRecords_GrayItalicStyle"
-            style={{
-              paddingTop: '4px',
-              paddingLeft: '5px',
-            }}
-          >
-            Found {scanner.count} fingerprint{scanner.count > 1 ? 's' : ''}
-          </Box>
-        </Flex>
-      </Section>
-    ) : null;
-
-  const renderFingerprintScannerView = () => (
-    <Section title="Fingerprint Scanner">
-      {scanner.count > 0 ? (
-        <>
-          <Box style={{ marginBottom: '10px' }}>
-            <strong>Fingerprints:</strong> {scanner.count}
-          </Box>
-          <Table>
-            <Table.Row header>
-              <Table.Cell bold className="SecurityRecords_CellStyle">
-                Name
-              </Table.Cell>
-              <Table.Cell bold className="SecurityRecords_CellStyle">
-                Position
-              </Table.Cell>
-              <Table.Cell bold className="SecurityRecords_CellStyle">
-                Squad
-              </Table.Cell>
-              <Table.Cell bold className="SecurityRecords_CellStyle">
-                Description
-              </Table.Cell>
-            </Table.Row>
-            {scanner.data.map((fingerprint, index) => (
-              <Table.Row key={index}>
-                <Table.Cell className="SecurityRecords_CellStyle">
-                  {fingerprint.name || 'Unknown'}
-                </Table.Cell>
-                <Table.Cell className="SecurityRecords_CellStyle">
-                  {fingerprint.rank || 'Unknown'}
-                </Table.Cell>
-                <Table.Cell className="SecurityRecords_CellStyle">
-                  {fingerprint.squad || 'Unknown'}
-                </Table.Cell>
-                <Table.Cell className="SecurityRecords_CellStyle">
-                  {fingerprint.description || 'No Description'}
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table>
-        </>
-      ) : (
-        <Box>No fingerprints available.</Box>
-      )}
-      <Flex direction="row" gap={2} style={{ marginTop: '10px' }}>
-        <Button
-          onClick={() => {
-            act('print_fingerprint_report');
-          }}
-          color="green"
-        >
-          Print Fingerprint Report
-        </Button>
-        <Button
-          onClick={() => {
-            act('clear_fingerprints');
-          }}
-          color="red"
-        >
-          Clear Fingerprints
-        </Button>
-        <Button
-          onClick={() => {
-            act('eject_fingerprint_scanner');
-            setViewFingerprintScanner(false);
-          }}
-          color="blue"
-        >
-          Eject Scanner
-        </Button>
+  const renderSecondaryField = (label, field, record_data, record) => {
+    return (
+      <Flex direction="column">
+        <Flex.Item fontWeight="700" fontSize="11px">
+          {label.toUpperCase()}:
+        </Flex.Item>
+        <Flex.Item fontWeight="600" fontSize="10px">
+          {record_data}
+        </Flex.Item>
+        {edit_record && (
+          <Flex.Item>
+            <Button
+              compact
+              className="MedicalRecords_Button"
+              fontWeight="700"
+              fontSize="11px"
+              mt="3px"
+              onClick={() => openEditModal(field, record[field])}
+            >
+              Add Entry
+            </Button>
+          </Flex.Item>
+        )}
       </Flex>
-      <Divider />
-      <Button onClick={() => setViewFingerprintScanner(false)}>Back</Button>
-    </Section>
-  );
+    );
+  };
 
   const renderRecordDetails = (record: RecordEntry) => (
     <Section
       m="0"
       pl="10px"
       pr="10px"
-      fill
       title={`MEDICAL RECORD - ${record.general_name.toUpperCase()}`}
       buttons={
-        <Button compact fluid width="85px" mr="10px" textAlign="center">
-          Log Out
-        </Button>
+        <Flex>
+          <Box fontFamily="monospace" bold mt="2px" mr="7px">
+            | DATABASE ACCESS LEVEL {data.database_access_level} |
+          </Box>
+
+          <Button
+            compact
+            fluid
+            width="85px"
+            mr="10px"
+            textAlign="center"
+            onClick={() => act('log_out')}
+          >
+            Log Out
+          </Button>
+        </Flex>
       }
+      minHeight="100%"
     >
-      <Flex direction="column">
-        <Flex direction="row" gap={2} p="10px">
-          <Flex.Item width="65%">
-            <Flex direction="column">
-              <Flex.Item>
-                <Box className="MedicalRecords_SectionHeaderStyle">
-                  FULL NAME:
-                </Box>
-                <Box fontWeight="900" fontSize="25px">
-                  {record.general_name.toUpperCase()}
-                </Box>
-              </Flex.Item>
-            </Flex>
-            <Flex direction="row">
-              <Flex.Item fontWeight="500" fontSize="10px">
-                POSITION:
-              </Flex.Item>
-              <Flex.Item fontWeight="700" fontSize="10px" ml="5px">
-                {record.general_job.toUpperCase()}
-              </Flex.Item>
-            </Flex>
-            <Box width="95%">
-              <Divider />
-            </Box>
-            <Flex
-              direction="row"
-              width="95%"
-              justify="space-between"
-              mt="10px"
-              mb="10px"
-            >
-              {personalDataFields.map((field) => renderField(field, record))}
-            </Flex>
-            <Box width="95%">
-              <Divider />
-            </Box>
+      <Flex direction="column" p="10px">
+        <Flex.Item>
+          <Flex direction="row" gap={2}>
+            <Flex.Item width="65%">
+              <Flex direction="column">
+                <Flex.Item>
+                  <Box className="MedicalRecords_SectionHeaderStyle">
+                    FULL NAME:
+                  </Box>
+                  <Box fontWeight="900" fontSize="25px">
+                    {record.general_name.toUpperCase()}
+                  </Box>
+                </Flex.Item>
+              </Flex>
+              <Flex direction="row">
+                <Flex.Item fontWeight="500" fontSize="10px">
+                  POSITION:
+                </Flex.Item>
+                <Flex.Item fontWeight="700" fontSize="10px" ml="5px">
+                  {record.general_job.toUpperCase()}
+                </Flex.Item>
+              </Flex>
+              <Box width="95%">
+                <Divider />
+              </Box>
+              <Flex
+                direction="row"
+                width="95%"
+                justify="space-between"
+                mt="10px"
+                mb="10px"
+              >
+                {personalDataFields.map((field) => renderField(field, record))}
+              </Flex>
+              <Box width="95%">
+                <Divider />
+              </Box>
 
-            <Flex
-              direction="row"
-              width="95%"
-              justify="space-between"
-              mt="15px"
-              mb="15px"
-            >
-              {medicalDataFields.map((field) => renderField(field, record))}
-              <Flex.Item />
-            </Flex>
-            <Box width="95%">
-              <Divider />
-            </Box>
-            <Box
-              className="MedicalRecords_SectionHeaderStyle"
-              mb="5px"
-              mt="10px"
-            >
-              MEDICAL DATA
-            </Box>
-          </Flex.Item>
+              <Flex
+                direction="row"
+                width="95%"
+                justify="space-between"
+                mt="15px"
+                mb="15px"
+              >
+                {medicalDataFields.map((field) => renderField(field, record))}
+                <Flex.Item />
+              </Flex>
+              <Box width="95%">
+                <Divider />
+              </Box>
+              <Box
+                className="MedicalRecords_SectionHeaderStyle"
+                mb="5px"
+                mt="10px"
+                fontSize="14px"
+              >
+                MEDICAL DATA
+              </Box>
+            </Flex.Item>
 
-          <Flex.Item grow>
-            <Section m="0" style={{ aspectRatio: `1` }}>
-              <Box style={{ textAlign: 'center', padding: '10px' }}>
-                <img
-                  src={
-                    currentPhoto === 'front'
-                      ? recordPhotos.front
-                      : recordPhotos.side
-                  }
-                  alt="Perp photo"
-                  style={{
-                    borderRadius: '4px',
-                    border: '1px solid var(--border-color)',
-                    width: '100px',
-                    height: '100px',
-                  }}
-                />
-                <Flex direction="row" gap={2}>
-                  <Button onClick={handleUpdatePhoto} color="blue">
-                    Update
-                  </Button>
-                  <Button
-                    onClick={changePhoto}
-                    color="green"
-                    style={{ minWidth: '60px' }}
-                  >
+            <Flex.Item grow>
+              <Section m="0" style={{ aspectRatio: `1` }}>
+                <Box style={{ textAlign: 'center', padding: '10px' }}>
+                  <img
+                    src={
+                      currentPhoto === 'front'
+                        ? recordPhotos.front
+                        : recordPhotos.side
+                    }
+                    alt="INFORMATION LOST"
+                    style={{
+                      borderRadius: '4px',
+                      border: '1px solid var(--border-color)',
+                      width: '100px',
+                      height: '100px',
+                    }}
+                  />
+                </Box>
+                <Flex
+                  direction="row"
+                  gap={2}
+                  justify="center"
+                  textAlign="center"
+                >
+                  <Button onClick={handleUpdatePhoto}>Update</Button>
+                  <Button onClick={changePhoto} style={{ minWidth: '60px' }}>
                     {currentPhoto === 'front' ? 'Side' : 'Front'}
                   </Button>
                 </Flex>
+              </Section>
+            </Flex.Item>
+          </Flex>
+        </Flex.Item>
+        {view_record ? (
+          <>
+            <Flex.Item pt="5px" ml="-5px" mb="12px">
+              <Flex direction="row">
+                <Flex.Item>
+                  <Divider vertical />
+                </Flex.Item>
+                <Flex.Item width="46%">
+                  {renderSecondaryField(
+                    'diseases',
+                    'medical_diseases',
+                    record.medical_diseases,
+                    record,
+                  )}
+                </Flex.Item>
+                <Flex.Item>
+                  <Divider vertical />
+                </Flex.Item>
+                <Flex.Item width="46%">
+                  {renderSecondaryField(
+                    'allergies',
+                    'medical_allergies',
+                    record.medical_allergies,
+                    record,
+                  )}
+                </Flex.Item>
+              </Flex>
+            </Flex.Item>
+            <Flex.Item mb="5px" ml="-5px">
+              <Flex direction="row">
+                <Flex.Item>
+                  <Divider vertical />
+                </Flex.Item>
+                <Flex.Item width="46%">
+                  {renderSecondaryField(
+                    'major disabilities',
+                    'medical_major_disabilities',
+                    record.medical_major_disabilities_details,
+                    record,
+                  )}
+                </Flex.Item>
+                <Flex.Item>
+                  <Divider vertical />
+                </Flex.Item>
+                <Flex.Item>
+                  {renderSecondaryField(
+                    'minor disabilities',
+                    'medical_minor_disabilities',
+                    record.medical_minor_disabilities_details,
+                    record,
+                  )}
+                </Flex.Item>
+              </Flex>
+            </Flex.Item>
+          </>
+        ) : (
+          <Flex.Item height="120px">
+            <>
+              <Box
+                fontWeight={900}
+                mt="45px"
+                textAlign="center"
+                fontSize="15px"
+              >
+                - MEDICAL DATA UNAVAILABLE -
               </Box>
-            </Section>
+              <Box
+                fontWeight={700}
+                mt="3px"
+                mb="45px"
+                textAlign="center"
+                fontSize="11px"
+              >
+                INSUFFICIENT ACCESS CREDENTIALS
+              </Box>
+            </>
           </Flex.Item>
-        </Flex>
-
-        <Flex ml="10px" direction="column">
-          <Flex.Item mb="15px">
-            <Box fontWeight="700" fontSize="11px">
-              DISEASES:
-            </Box>
-            <Box fontWeight="700" fontSize="11px">
-              {record.medical_diseases}
-            </Box>
-          </Flex.Item>
-          <Flex.Item mb="5px">
-            <Flex direction="row" justify="center">
-              <Flex.Item className="MedicalRecords_Disabilities" width="52%">
-                <Flex.Item mb="5px">
-                  <Box fontWeight="700" fontSize="11px">
-                    MAJOR DISABILITIES:
-                  </Box>
-                  <Box fontWeight="700" fontSize="11px">
-                    {record.medical_major_disabilities}
-                  </Box>
-                </Flex.Item>
-                <Flex.Item mb="10px">
-                  <Box fontWeight="550" fontSize="10px">
-                    DETAILS:
-                  </Box>
-                  <Box fontWeight="700" fontSize="11px">
-                    {record.medical_major_disabilities_details}
-                  </Box>
-                </Flex.Item>
+        )}
+        <Flex.Item>
+          <Divider />
+        </Flex.Item>
+        <Flex.Item ml="-5px" mt="5px" grow>
+          {view_record ? (
+            <Flex>
+              <Flex.Item>
+                <Divider vertical />
               </Flex.Item>
-              <Flex.Item pl="10px">
-                <Flex.Item mb="5px">
-                  <Box fontWeight="700" fontSize="11px">
-                    MINOR DISABILITIES:
+              <Flex.Item>
+                <Box fontWeight="700" fontSize="11px" mb="5px" mt="5px">
+                  COMMENTS / LOG
+                </Box>
+                <Box
+                  className="SecurityRecords_BoxStyle"
+                  style={{ paddingLeft: '2px' }}
+                  minHeight="105px"
+                >
+                  <Box className="SecurityRecords_BoxStyle">
+                    {record.medical_comments &&
+                    Object.keys(record.medical_comments).length > 0
+                      ? Object.entries(record.medical_comments).map(
+                          ([key, comment]) => (
+                            <Box
+                              key={key}
+                              style={{ marginBottom: '5px', padding: '2px' }}
+                            >
+                              {comment.deleted_by ? (
+                                <Box className="SecurityRecords_GrayItalicStyle">
+                                  Comment deleted by {comment.deleted_by} at{' '}
+                                  {comment.deleted_at || 'unknown time'}.
+                                </Box>
+                              ) : (
+                                <>
+                                  <Box fontSize="12px">{comment.entry}</Box>
+                                  <Box
+                                    style={{
+                                      fontSize: '0.9rem',
+                                      color: 'gray',
+                                    }}
+                                  >
+                                    Created at: {comment.created_at} /{' '}
+                                    {comment?.created_by?.name} (
+                                    {comment?.created_by?.rank}){' '}
+                                  </Box>
+                                  {edit_record && (
+                                    <Button
+                                      compact
+                                      fontWeight="700"
+                                      fontSize="11px"
+                                      onClick={() => {
+                                        act('delete_comment', {
+                                          id: selectedRecord?.id,
+                                          key,
+                                        });
+                                      }}
+                                      mt={1}
+                                    >
+                                      Delete
+                                    </Button>
+                                  )}
+                                </>
+                              )}
+                            </Box>
+                          ),
+                        )
+                      : 'No comments available.'}
                   </Box>
-                  <Box fontWeight="700" fontSize="11px">
-                    {record.medical_minor_disabilities}
-                  </Box>
-                </Flex.Item>
-                <Flex.Item mb="10px">
-                  <Box fontWeight="550" fontSize="10px">
-                    DETAILS:
-                  </Box>
-                  <Box fontWeight="700" fontSize="11px">
-                    {record.medical_minor_disabilities_details}
-                  </Box>
-                </Flex.Item>
+                  {edit_record && (
+                    <Button
+                      compact
+                      className="MedicalRecords_Button"
+                      fontWeight="700"
+                      fontSize="11px"
+                      onClick={openCommentModal}
+                    >
+                      Add Comment
+                    </Button>
+                  )}
+                </Box>
               </Flex.Item>
             </Flex>
-          </Flex.Item>
-        </Flex>
-
-        <Divider />
-
-        <Box p="10px" pt="0px">
-          <Box className="MedicalRecords_SectionHeaderStyle" mb="5px" mt="10px">
-            COMMENTS / LOG
-          </Box>
-          <Box
-            className="SecurityRecords_BoxStyle"
-            style={{ paddingLeft: '2px' }}
-            minHeight="105px"
-          >
-            <Button onClick={openCommentModal}>Add Comment</Button>
-          </Box>
-        </Box>
-
-        <Divider />
-        <Flex
-          justify="space-between"
-          direction="row"
-          gap={2}
-          pl="10px"
-          pr="10px"
-        >
-          <Button
-            onClick={() => act('print_personal_record', { id: record.id })}
-            color="blue"
-          >
-            Print record
-          </Button>
-          <Button
-            onClick={() => act('print_personal_record', { id: record.id })}
-            color="blue"
-          >
-            Print latest bodyscan
-          </Button>
-          <Button.Confirm
-            fluid
-            color="red"
-            confirmColor="bad"
-            confirmContent="Confirm?"
-            onClick={() => act('delete_general_record', { id: record.id })}
-          >
-            Delete general record
-          </Button.Confirm>
-        </Flex>
-
-        <Divider />
-        <Button ml="8px" mr="8px" onClick={goBack} mt="10px" mb="10px">
-          Back
-        </Button>
+          ) : (
+            <>
+              <Box
+                fontWeight={900}
+                mt="45px"
+                textAlign="center"
+                fontSize="15px"
+              >
+                - COMMENT DATA UNAVAILABLE -
+              </Box>
+              <Box
+                fontWeight={700}
+                mt="3px"
+                mb="45px"
+                textAlign="center"
+                fontSize="11px"
+              >
+                INSUFFICIENT ACCESS CREDENTIALS
+              </Box>
+            </>
+          )}
+        </Flex.Item>
       </Flex>
+
+      <Divider />
+      <Flex justify="space-between" direction="row" gap={2} pl="10px" pr="10px">
+        <Button
+          width="30%"
+          textAlign="center"
+          onClick={() => act('print_personal_record', { id: record.id })}
+        >
+          Print record
+        </Button>
+        <Button
+          width="30%"
+          textAlign="center"
+          onClick={() => act('print_personal_record', { id: record.id })}
+        >
+          Print latest bodyscan
+        </Button>
+        <Button.Confirm
+          width="30%"
+          textAlign="center"
+          confirmColor="bad"
+          confirmContent="Confirm?"
+          onClick={() => act('delete_general_record', { id: record.id })}
+        >
+          Delete general record
+        </Button.Confirm>
+      </Flex>
+
+      <Divider />
+      <Button ml="8px" mr="8px" onClick={goBack} mt="10px" mb="10px" fluid>
+        Back
+      </Button>
     </Section>
   );
 
@@ -630,7 +690,7 @@ export const MedicalRecords = () => {
           <Table.Cell
             bold
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
-            onClick={() => handleSort('general_rank')}
+            onClick={() => handleSort('general_job')}
           >
             Position {getSortIndicator('general_job')}
           </Table.Cell>
@@ -657,7 +717,7 @@ export const MedicalRecords = () => {
               {record.id}
             </Table.Cell>
             <Table.Cell className="SecurityRecords_CellStyle">
-              {record.general_rank}
+              {record.general_job}
             </Table.Cell>
           </Table.Row>
         ))}
@@ -665,8 +725,48 @@ export const MedicalRecords = () => {
     </Section>
   );
 
+  const LoginPanel = (props) => {
+    return (
+      <Flex
+        direction="column"
+        textAlign="center"
+        justify="center"
+        align="center"
+        height="100%"
+        fontSize="2rem"
+        mt="-3rem"
+        bold
+      >
+        <Box fontSize={1.8}>MEDICAL RECORDS DATABASE</Box>
+        <Box mb={9} fontSize={1}>
+          [ Version 1.2.8 | Copyright © 2182, Weyland Yutani Corp. ]
+        </Box>
+        <Box fontSize={1.5}>INTERFACE ACCESS RESTRICTED</Box>
+        <Box fontFamily="monospace" fontSize={1.3}>
+          [ IDENTITY VERIFICATION REQUIRED ]
+        </Box>
+
+        <Button
+          icon="id-card"
+          width="60vw"
+          textAlign="center"
+          fontSize={1.3}
+          p={0.7}
+          m="1rem"
+          onClick={() => act('log_in')}
+        >
+          Login
+        </Button>
+
+        <Box fontFamily="monospace" fontSize={1.2}>
+          - UNAUTHORIZED USE STRICTLY PROHIBITED -
+        </Box>
+      </Flex>
+    );
+  };
+
   const renderEditModal = () => {
-    const currentField = [...personalDataFields, ...securityDataFields].find(
+    const currentField = [...personalDataFields, ...medicalDataFields].find(
       (field) => field.contentKey === editField,
     );
 
@@ -744,21 +844,20 @@ export const MedicalRecords = () => {
   return (
     <Window theme="crtgreen" width={630} height={700}>
       <Window.Content>
-        <Section fill scrollable fitted>
-          {viewFingerprintScanner ? (
-            renderFingerprintScannerView()
-          ) : selectedRecord ? (
-            renderRecordDetails(selectedRecord)
-          ) : (
-            <Flex>
-              <Flex.Item width="100%">
-                {renderFingerprintScannerSection()}
-                {renderRecordsTable()}
-              </Flex.Item>
-            </Flex>
-          )}
-          {editField && renderEditModal()}
-        </Section>
+        {data.operator ? (
+          <Section fill scrollable fitted>
+            {selectedRecord ? (
+              renderRecordDetails(selectedRecord)
+            ) : (
+              <Flex>
+                <Flex.Item width="100%">{renderRecordsTable()}</Flex.Item>
+              </Flex>
+            )}
+            {editField && renderEditModal()}
+          </Section>
+        ) : (
+          <LoginPanel />
+        )}
         {commentModalOpen && renderCommentModal()}
       </Window.Content>
     </Window>

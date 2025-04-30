@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	desc = "A wardrobe containing all the clothes an executive would ever need."
 	vendor_theme = VENDOR_THEME_COMPANY
 	req_access = list(ACCESS_WY_GENERAL)
-	vendor_role = list(JOB_CORPORATE_SECURITY)
+	vendor_role = list(JOB_CORPORATE_BODYGUARD)
 	desc = "An automated rack hooked up to a colossal storage of Corporate Security standard-issue equipment."
 
 /obj/structure/machinery/cm_vending/clothing/corporate_security/get_listed_products(mob/user)

@@ -73,7 +73,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/corp_sec
-	name = "USCM Corporate Security (CS)"
+	name = "USCM CL Bodyguard (CB)"
 	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -94,10 +94,10 @@
 		ACCESS_WY_FLIGHT,
 		ACCESS_CIVILIAN_COMMAND,
 	)
-	assignment = JOB_CORPORATE_SECURITY
-	rank = JOB_CORPORATE_SECURITY
+	assignment = JOB_CORPORATE_BODYGUARD
+	rank = JOB_CORPORATE_BODYGUARD
 	paygrades = list(PAY_SHORT_WY_SEC_PPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_WY_SEC_PPS = JOB_PLAYTIME_TIER_2, PAY_SHORT_WY_SEC_PPC = JOB_PLAYTIME_TIER_3)
-	role_comm_title = "CS"
+	role_comm_title = "CB"
 	skills = /datum/skills/wy_goon
 
 	minimap_icon = "goon_guard"

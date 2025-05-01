@@ -74,7 +74,7 @@ export function Dropdown(props: Props) {
     className,
     clipSelectedText = true,
     color = 'default',
-    dropdownTextColor = 'black',
+    dropdownTextColor = 'white',
     disabled,
     displayText,
     icon,

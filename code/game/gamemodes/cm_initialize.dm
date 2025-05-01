@@ -183,6 +183,7 @@ Additional game mode variables.
 	if(!new_predator)
 		return
 
+	INVOKE_ASYNC(new_predator, TYPE_PROC_REF(/mob/living/carbon, change_tts_seed_ask)) // BANDAMARINES ADD
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
 	if(pred_candidate)

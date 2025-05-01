@@ -122,9 +122,9 @@
 	if(assoc_hive.get_structure_count(XENO_STRUCTURE_PYLON) < 1)
 		pylon_status = ""
 	else if(assoc_hive.buff_points >= assoc_hive.max_buff_points)
-		pylon_status = "Royal resin has reached its maximum capacity of [assoc_hive.max_buff_points], spend it!"
+		pylon_status = "Мы достигли лимита королевской смолы в [assoc_hive.max_buff_points] ед., используйте их!"
 	else
-		pylon_status = "Pylons are providing us with royal resin! Current royal resin: [assoc_hive.buff_points]."
+		pylon_status = "Пилоны предоставляют нам королевскую смолу! Сейчас имеется: [assoc_hive.buff_points]."
 	if(send_update)
 		SStgui.update_uis(src)
 

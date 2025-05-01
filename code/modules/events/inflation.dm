@@ -34,7 +34,7 @@
 	Colony vendors aren't updated because the colony's network has collapsed. */
 	if(GLOB.security_level >= SEC_LEVEL_RED)
 		return
-	shipwide_ai_announcement("An encrypted broadband signal from Weyland-Yutani has been received notifying the sector of sudden changes in the UA's economy during cryosleep, due to [get_random_story()], and have requested UA vessels to increase the prices of [product_type] products by [get_percentage()]%. This change will come into effect in [time_to_update] minutes.", quiet = TRUE)
+	shipwide_ai_announcement("Получен зашифрованный широкополосный сигнал от Вейланд-Ютани, уведомляющий сектор о внезапных изменениях в экономике UA во время криосна, вызванных [get_random_story()], и запрашивающий корабли UA о повышении цен на [product_type] на [get_percentage()]%. Это изменение вступит в силу через [time_to_update] минут.", quiet = TRUE)
 
 /datum/round_event/economy_inflation/start()
 	for(var/obj/structure/machinery/vending/vending_machine as anything in GLOB.total_vending_machines)

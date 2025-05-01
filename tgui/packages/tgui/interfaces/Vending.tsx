@@ -1,5 +1,4 @@
 import { classes } from 'common/react';
-import { capitalizeAll } from 'common/string';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
@@ -136,7 +135,9 @@ export const UserDetails = (props) => {
 
   if (!user) {
     return (
-      <NoticeBox>No ID detected! Contact your nearest supervisor.</NoticeBox>
+      <NoticeBox>
+        ID-карта не обнаружена! Обратитесь к главе персонала.
+      </NoticeBox>
     );
   }
   return (
@@ -147,11 +148,11 @@ export const UserDetails = (props) => {
         </Stack.Item>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="User">
-              {checking_id ? user.name : 'UNKNOWN'}
+            <LabeledList.Item label="Сотрудник">
+              {checking_id ? user.name : 'НЕИЗВЕСТНО'}
             </LabeledList.Item>
-            <LabeledList.Item label="Occupation">
-              {checking_id ? user.job || 'Unemployed' : 'UNKNOWN'}
+            <LabeledList.Item label="Должность">
+              {checking_id ? user.job || 'Unemployed' : 'НЕИЗВЕСТНО'}
             </LabeledList.Item>
           </LabeledList>
         </Stack.Item>
@@ -176,7 +177,7 @@ const ProductDisplay = (props: {
     <Section
       fill
       scrollable
-      title="Products"
+      title="Товары"
       buttons={
         !!display_value && (
           <Box fontSize="16px" color="green">
@@ -224,7 +225,7 @@ const VendingRow = (props) => {
       <Table.Cell collapsing>
         <ProductImage product={product} />
       </Table.Cell>
-      <Table.Cell bold>{capitalizeAll(product.name)}</Table.Cell>
+      <Table.Cell bold>{product.name}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
         <ProductStock product={product} remaining={remaining} />
       </Table.Cell>
@@ -258,7 +259,7 @@ const ProductStock = (props) => {
         'good'
       }
     >
-      {remaining} left
+      {remaining} (ост.)
     </Box>
   );
 };
@@ -269,7 +270,7 @@ const ProductButton = (props) => {
   const { denied, disabled, product } = props;
   const { checking_id } = data;
 
-  const price = product.price && checking_id ? '$' + product.price : 'FREE';
+  const price = product.price && checking_id ? '$' + product.price : 'БЕСП.';
   return (
     <Button
       fluid

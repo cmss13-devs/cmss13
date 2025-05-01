@@ -1,0 +1,3 @@
+#include "_shout_orders.dm"
+
+#include "code/shout_orders.dm"

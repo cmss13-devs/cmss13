@@ -69,15 +69,18 @@
 		var/datum/data/record/medical = medical_record[id_number]
 
 		var/datum/weakref/target_ref = general.fields["ref"]
-		var/mob/living/carbon/human/target = target_ref.resolve()
-
-		var/obj/item/card/id/id = target.wear_id
-		var/paygrade = id ? id.paygrade : "None"
-
+		var/mob/living/carbon/human/target
+		var/obj/item/card/id/id
 		var/record_classified = FALSE
-		// checks if record target is in the chain of command, and needs their record protected
-		if(target.job in CHAIN_OF_COMMAND_ROLES)
-			record_classified = TRUE
+
+		if(target_ref)
+			target = target_ref.resolve()
+			id = target.wear_id
+			// checks if record target is in the chain of command, and needs their record protected
+			if(target.job in CHAIN_OF_COMMAND_ROLES)
+				record_classified = TRUE
+
+		var/paygrade = id ? id.paygrade : "None"
 
 		var/list/record = list(
 			"id" = id_number,
@@ -86,17 +89,17 @@
 			"general_rank" = paygrade,
 			"general_age" = general.fields["age"],
 			"general_sex" = general.fields["sex"],
-			"general_m_stat" = general.fields["m_stat"],
-			"general_p_stat" = general.fields["p_stat"],
-			"medical_blood_type" = medical.fields["blood_type"],
-			"medical_major_disabilities" = medical.fields["major_disability"],
-			"medical_major_disabilities_details" = medical.fields["major_disability_details"],
-			"medical_minor_disabilities" = medical.fields["minor_disability"],
-			"medical_minor_disabilities_details" = medical.fields["minor_disability_details"],
-			"medical_allergies" = medical.fields["allergies"],
-			"medical_allergies_details" = medical.fields["allergies_details"],
-			"medical_diseases" = medical.fields["diseases"],
-			"medical_diseases_details" = medical.fields["diseases_details"],
+			"general_m_stat" = medical ? general.fields["m_stat"] : null,
+			"general_p_stat" = medical ? general.fields["p_stat"] : null,
+			"medical_blood_type" = medical ? medical.fields["blood_type"] : null,
+			"medical_major_disability" = medical ? medical.fields["major_disability"] : null,
+			"medical_major_disability_details" = medical ? medical.fields["major_disability_details"] : null,
+			"medical_minor_disability" = medical ? medical.fields["minor_disability"] : null,
+			"medical_minor_disability_details" = medical ? medical.fields["minor_disability_details"] : null,
+			"medical_allergies" = medical ? medical.fields["allergies"] : null,
+			"medical_allergies_details" = medical ? medical.fields["allergies_details"] : null,
+			"medical_diseases" = medical ? medical.fields["diseases"] : null,
+			"medical_diseases_details" = medical ? medical.fields["diseases_details"] : null,
 			"medical_comments" = medical ? medical.fields["comments"] : null,
 			"record_classified" = record_classified
 		)
@@ -280,6 +283,10 @@
 
 		//* Records maintenance actions
 		if ("new_medical_record")
+			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
+				to_chat(user, SPAN_WARNING("Insufficient access credentials!"))
+				return
+
 			var/id = params["id"]
 			var/name = params["name"]
 
@@ -288,25 +295,36 @@
 			return
 
 		if ("new_general_record")
+
+			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
+				to_chat(user, SPAN_WARNING("Insufficient access credentials!"))
+				return
+
 			CreateGeneralRecord()
 			to_chat(user, SPAN_NOTICE("You successfully created new general record"))
 			msg_admin_niche("[key_name_admin(user)] created new general record.")
-
-		if ("delete_general_record")
 			return
 
-			var/id = params["id"]
-			var/datum/data/record/general_record = find_record("general", id)
+		if ("delete_medical_record")
+			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
+				to_chat(user, SPAN_WARNING("Insufficient access credentials!"))
+				return
 
-			if (!general_record)
+			var/id = params["id"]
+			var/datum/data/record/medical_record = find_record("medical", id)
+			var/datum/data/record/general_record = find_record("medical", id)
+
+			if (!medical_record || !general_record)
 				to_chat(user, SPAN_WARNING("Record not found."))
 				return
 
 			var/record_name = general_record.fields["name"]
-			if ((istype(general_record, /datum/data/record) && GLOB.data_core.general.Find(general_record)))
-				GLOB.data_core.general -= general_record
-				msg_admin_niche("[key_name_admin(user)] deleted record of [record_name].")
-				qdel(general_record)
+			if ((istype(medical_record, /datum/data/record) && GLOB.data_core.medical.Find(medical_record)))
+				GLOB.data_core.medical -= medical_record
+				msg_admin_niche("[key_name_admin(user)] deleted the medical record of [record_name].")
+				qdel(medical_record)
+
+			return
 
 		//* Actions for ingame objects interactions
 		if ("print_personal_record")

@@ -1,3 +1,4 @@
+import { capitalize } from 'common/string';
 import { useCallback, useEffect, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
@@ -27,10 +28,10 @@ type RecordEntry = {
   medical_diseases_details: string;
   medical_allergies: string;
   medical_allergies_details: string;
-  medical_major_disabilities: string;
-  medical_major_disabilities_details: string;
-  medical_minor_disabilities: string;
-  medical_minor_disabilities_details: string;
+  medical_major_disability: string;
+  medical_major_disability_details: string;
+  medical_minor_disability: string;
+  medical_minor_disability_details: string;
   medical_comments: {
     entry: string;
     created_by: { name: string; rank: string };
@@ -191,6 +192,12 @@ export const MedicalRecords = () => {
     data.database_access_level > (selectedRecord?.record_classified ? 1 : 0)
   ) {
     edit_record = true;
+  }
+
+  let medical_record_action = 'new';
+
+  if (selectedRecord?.general_p_stat) {
+    medical_record_action = 'delete';
   }
 
   const personalDataFields = [
@@ -463,8 +470,8 @@ export const MedicalRecords = () => {
                 <Flex.Item width="46%">
                   {renderSecondaryField(
                     'major disabilities',
-                    'medical_major_disabilities',
-                    record.medical_major_disabilities_details,
+                    'medical_major_disability',
+                    record.medical_major_disability,
                     record,
                   )}
                 </Flex.Item>
@@ -474,8 +481,8 @@ export const MedicalRecords = () => {
                 <Flex.Item>
                   {renderSecondaryField(
                     'minor disabilities',
-                    'medical_minor_disabilities',
-                    record.medical_minor_disabilities_details,
+                    'medical_minor_disability',
+                    record.medical_minor_disability,
                     record,
                   )}
                 </Flex.Item>
@@ -627,15 +634,32 @@ export const MedicalRecords = () => {
         >
           Print latest bodyscan
         </Button>
-        <Button.Confirm
-          width="30%"
-          textAlign="center"
-          confirmColor="bad"
-          confirmContent="Confirm?"
-          onClick={() => act('delete_general_record', { id: record.id })}
-        >
-          Delete general record
-        </Button.Confirm>
+        {data.database_access_level >= 2 ? (
+          <Button.Confirm
+            width="30%"
+            textAlign="center"
+            confirmColor="bad"
+            confirmContent="Confirm?"
+            onClick={() =>
+              act(medical_record_action + '_medical_record', {
+                id: record.id,
+                name: record.general_name,
+              })
+            }
+          >
+            {capitalize(medical_record_action)} medical record
+          </Button.Confirm>
+        ) : (
+          <Button
+            width="30%"
+            textAlign="center"
+            backgroundColor="transparent"
+            color="#00eb4e"
+            tooltip="Insufficient access credentials!"
+          >
+            {capitalize(medical_record_action)} medical record
+          </Button>
+        )}
       </Flex>
 
       <Divider />
@@ -653,14 +677,40 @@ export const MedicalRecords = () => {
         </Box>
       </Flex>
       <Divider />
-      <Flex justify="space-evenly" direction="row" gap={2} mb={2}>
+      <Flex justify="space-evenly" direction="row" gap={2} mb={1}>
+        {data.database_access_level >= 2 ? (
+          <Button
+            width="140px"
+            textAlign="center"
+            onClick={() => {
+              act('new_general_record');
+            }}
+          >
+            New general record
+          </Button>
+        ) : (
+          <Button
+            width="140px"
+            bold
+            textAlign="center"
+            backgroundColor="transparent"
+            color="#00eb4e"
+            tooltip="Insufficient access credentials!"
+          >
+            New general record
+          </Button>
+        )}
         <Button
-          onClick={() => {
-            act('new_general_record');
-          }}
-          color="green"
+          width="200px"
+          bold
+          textAlign="center"
+          backgroundColor="transparent"
+          color="#00eb4e"
         >
-          New general record
+          | DATABASE ACCESS LEVEL {data.database_access_level} |
+        </Button>
+        <Button width="140px" textAlign="center" onClick={() => act('log_out')}>
+          Log Out
         </Button>
       </Flex>
       <Flex direction="row" gap={2} mb={2}>
@@ -697,9 +747,9 @@ export const MedicalRecords = () => {
           <Table.Cell
             bold
             className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
-            onClick={() => handleSort('security_criminal')}
+            onClick={() => handleSort('general_m_stat')}
           >
-            Status {getSortIndicator('security_criminal')}
+            Status {getSortIndicator('general_m_stat')}
           </Table.Cell>
         </Table.Row>
         {filteredRecords.map((record) => (
@@ -718,6 +768,9 @@ export const MedicalRecords = () => {
             </Table.Cell>
             <Table.Cell className="SecurityRecords_CellStyle">
               {record.general_job}
+            </Table.Cell>
+            <Table.Cell className="SecurityRecords_CellStyle">
+              {record.general_m_stat}
             </Table.Cell>
           </Table.Row>
         ))}

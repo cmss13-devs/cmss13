@@ -37,6 +37,7 @@
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_DATABASE,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -383,6 +384,7 @@
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
+	access |= ACCESS_MARINE_DATABASE_ADMIN
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -455,6 +457,7 @@
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
+	access |= ACCESS_MARINE_DATABASE_ADMIN
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel

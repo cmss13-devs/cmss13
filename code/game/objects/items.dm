@@ -67,6 +67,8 @@
 	var/flags_item = NO_FLAGS
 	/// This is used to determine on which slots an item can fit.
 	var/flags_equip_slot = NO_FLAGS
+	///Last slot that item was equipped to (aka sticky slot)
+	var/last_equipped_slot
 
 	//Since any item can now be a piece of clothing, this has to be put here so all items share it.
 	/// This flag is used for various clothing/equipment item stuff
@@ -418,6 +420,18 @@
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
 
+///Helper function for updating last_equipped_slot when item is drawn from storage
+/obj/item/proc/set_last_equipped_slot_of_storage(obj/item/storage/storage_item)
+	if(!isitem(storage_item))
+		return
+
+	var/obj/item/storage_item_storage = storage_item
+	while(isitem(storage_item_storage.loc)) // for stuff like pouches
+		storage_item_storage = storage_item_storage.loc
+
+	if(storage_item)
+		last_equipped_slot = slot_to_in_storage_slot(storage_item_storage.last_equipped_slot)
+
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
 	SHOULD_CALL_PARENT(TRUE)
@@ -428,6 +442,7 @@
 			S.flags_atom &= ~USES_HEARING
 	var/atom/location = S.get_loc_turf()
 	do_drop_animation(location)
+	set_last_equipped_slot_of_storage(S)
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
@@ -462,6 +477,9 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
+
+	if (slot != WEAR_R_HAND && slot != WEAR_L_HAND)
+		last_equipped_slot = slot
 
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)

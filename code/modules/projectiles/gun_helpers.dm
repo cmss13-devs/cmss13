@@ -586,9 +586,13 @@ DEFINES in setup.dm, referenced here.
 
 	var/obj/item/active_hand = get_active_hand()
 	if(active_hand)
-
+		//drop retrievals goes first
 		if(SEND_SIGNAL(active_hand, COMSIG_ITEM_HOLSTER, usr) & COMPONENT_ITEM_HOLSTER_CANCELLED)
 			return TRUE
+
+		if(active_hand.last_equipped_slot)
+			if(equip_to_slot_if_possible(active_hand, active_hand.last_equipped_slot, FALSE, FALSE, FALSE))
+				return TRUE
 
 		if(active_hand.preferred_storage)
 			for(var/storage in active_hand.preferred_storage)

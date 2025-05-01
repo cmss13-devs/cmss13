@@ -14,8 +14,8 @@
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/place_design, //macro 2, macro 1 is for weeds
 		/datum/action/xeno_action/onclick/change_design, //macro 3
-		/datum/action/xeno_action/activable/greater_resin_surge, //macro 5
 		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 4
+		/datum/action/xeno_action/activable/greater_resin_surge, //macro 5
 		/datum/action/xeno_action/onclick/toggle_long_range/designer,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,

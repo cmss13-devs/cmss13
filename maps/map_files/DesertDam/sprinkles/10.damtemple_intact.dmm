@@ -361,11 +361,8 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "vb" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/turf/open/floor/plating/almayer/no_build,
-/area/desert_dam/interior/caves/temple)
+/turf/template_noop,
+/area/template_noop)
 "vY" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"

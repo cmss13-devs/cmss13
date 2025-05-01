@@ -3416,7 +3416,6 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/South)
 "akE" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/stairs/multiz/up{
 	dir = 8
@@ -3424,10 +3423,6 @@
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/security/stairwell)
 "akF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/stairs{
-	dir = 4
-	},
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/stairs{
 	dir = 8

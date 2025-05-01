@@ -151,7 +151,7 @@
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
-	if(istype(target, /obj/effect/alien/resin/design/speed_node) || istype(target, /obj/effect/alien/resin/design/cost_node))
+	if(istype(target, /obj/effect/alien/resin/design/speed_node) || istype(target, /obj/effect/alien/resin/design/cost_node) || istype(target, /obj/effect/alien/resin/design/construct_node))
 		qdel(target)
 	if(resin_construct.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[resin_construct.build_path], new_resin)

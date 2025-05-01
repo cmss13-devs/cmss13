@@ -14,8 +14,8 @@
 	actions_to_add = list(
 		/datum/action/xeno_action/activable/place_design, //macro 2, macro 1 is for weeds
 		/datum/action/xeno_action/onclick/change_design, //macro 3
-		/datum/action/xeno_action/activable/greater_resin_surge, //macro 4
-		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 5
+		/datum/action/xeno_action/activable/greater_resin_surge, //macro 5
+		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 4
 		/datum/action/xeno_action/onclick/toggle_long_range/designer,
 		/datum/action/xeno_action/active_toggle/toggle_speed,
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
@@ -468,7 +468,7 @@
 	xeno_cooldown = 30 SECONDS
 	macro_path = /datum/action/xeno_action/verb/verb_greater_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_5
 
 /datum/action/xeno_action/activable/greater_resin_surge/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -819,7 +819,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_design_icons
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/toggle_design_icons/can_use_action()
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -889,14 +889,19 @@
 	switch(choice)
 		if("Optimized Node (50)")
 			xeno.selected_design = /obj/effect/alien/resin/design/speed_node
+			to_chat(xeno, SPAN_NOTICE("We will now build <b>Optimized Design Nodes</b>."))
 		if("Flexible Node (60)")
 			xeno.selected_design = /obj/effect/alien/resin/design/cost_node
+			to_chat(xeno, SPAN_NOTICE("We will now build <b>Flexible Design Nodes</b>."))
 		if("Construct Node (70)")
 			xeno.selected_design = /obj/effect/alien/resin/design/construct_node
+			to_chat(xeno, SPAN_NOTICE("We will now build <b>Construct Design Nodes</b>."))
 		if("Thicken Resin (60)")
 			xeno.selected_design = /obj/effect/alien/resin/design/upgrade
+			to_chat(xeno, SPAN_NOTICE("We will now remotely <b>Thicken Resin</b>."))
 		if("Remove Node (25)")
 			xeno.selected_design = /obj/effect/alien/resin/design/remove
+			to_chat(xeno, SPAN_NOTICE("We will now remotely <b>Remove Nodes</b>."))
 
 	xeno.update_icons()
 	button.overlays.Cut()

@@ -10,7 +10,6 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/assault_rifles_righthand.dmi'
 	)
 
-	storage_slot_priorities = PRIMARY_WEAPON_SLOT_PRIORITY
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
 	force = 5

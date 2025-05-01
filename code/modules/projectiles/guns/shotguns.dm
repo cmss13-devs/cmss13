@@ -23,7 +23,6 @@ can cause issues with ammo types getting mixed up during the burst.
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	fire_delay_group = list(FIRE_DELAY_GROUP_SHOTGUN)
-	storage_slot_priorities = PRIMARY_WEAPON_SLOT_PRIORITY
 	can_jam = TRUE
 	initial_jam_chance = GUN_JAM_CHANCE_LOW
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT

@@ -8,7 +8,7 @@
 #define MEDICAL_RECORD_ACCESS_LEVEL_2 2	// given to the CMO, Synths, and the CO/XO.
 
 /obj/structure/machinery/computer/med_data//TODO:SANITY
-	name = "Medical Records"
+	name = "Medical Records Console"
 	desc = "This can be used to check medical records."
 	icon_state = "medcomp"
 	density = TRUE
@@ -17,15 +17,24 @@
 	var/obj/item/card/id/scan = null
 	var/last_user_name = ""
 	var/last_user_rank = ""
+	var/accepting_biometric_scans
 	var/printing = null
 	var/access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
 
-/obj/structure/machinery/computer/med_data/attack_remote(user as mob)
+/obj/structure/machinery/computer/med_data/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
 
 /obj/structure/machinery/computer/med_data/attack_hand(mob/user)
 	if(..() || inoperable())
 		to_chat(user, SPAN_INFO("It does not appear to be working."))
+		return
+
+	if(accepting_biometric_scans && ishumansynth_strict(user))
+		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s hand is scanned to \the [name]."))
+		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: ["Scanned, please stay close until operation's end."]\"")
+		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
+		link_medical_data(user, accepting_biometric_scans)
+		accepting_biometric_scans = FALSE
 		return
 
 	if(!allowed(usr))
@@ -40,12 +49,6 @@
 
 	return
 
-/obj/structure/machinery/computer/med_data/tgui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if (!ui)
-		ui = new(user, src, "MedicalRecords", "Medical Records")
-		ui.open()
-
 /obj/structure/machinery/computer/med_data/proc/get_database_access_level(obj/item/card/id/id)
 	if(!id)
 		return MEDICAL_RECORD_ACCESS_LEVEL_0
@@ -54,6 +57,51 @@
 	if(ACCESS_MARINE_DATABASE in id.access)
 		return MEDICAL_RECORD_ACCESS_LEVEL_1
 	return MEDICAL_RECORD_ACCESS_LEVEL_0
+
+/obj/structure/machinery/computer/med_data/proc/link_medical_data(mob/living/carbon/human/target, general_record_id)
+
+	var/datum/data/record/medical_record = new /datum/data/record()
+	medical_record.fields["id"] = general_record_id
+	medical_record.fields["name"] = target.real_name
+	medical_record.name = target.real_name
+	medical_record.fields["blood_type"] = target.blood_type
+	medical_record.fields["minor_disability"] = "None"
+	medical_record.fields["minor_disability_details"] = "No minor disabilities have been declared."
+	medical_record.fields["major_disability"] = "None"
+	medical_record.fields["major_disability_details"] = "No major disabilities have been diagnosed."
+	medical_record.fields["allergies"] = "None"
+	medical_record.fields["allergies_details"] = "No allergies have been detected in this patient."
+	medical_record.fields["diseases"] = "None"
+	medical_record.fields["diseases_details"] = "No diseases have been diagnosed at the moment."
+	medical_record.fields["last_scan_time"] = null
+	medical_record.fields["last_scan_result"] = "No scan data on record"
+	medical_record.fields["autodoc_data"] = list()
+	medical_record.fields["ref"] = WEAKREF(target)
+	GLOB.data_core.medical += medical_record
+
+	var/assignment
+	if(target.job)
+		assignment = target.job
+	else
+		assignment = "Unassigned"
+
+	for (var/datum/data/record/general_record in GLOB.data_core.general)
+		if(general_record.fields["id"] == general_record_id)
+			general_record.fields["name"] = target.real_name
+			general_record.name = target.real_name
+			general_record.fields["real_rank"] = target.job
+			general_record.fields["rank"] = assignment
+			general_record.fields["age"] = target.age
+			general_record.fields["p_stat"] = "Active"
+			general_record.fields["m_stat"] = "Stable"
+			general_record.fields["sex"] = capitalize(target.gender)
+			general_record.fields["ref"] = WEAKREF(target)
+
+/obj/structure/machinery/computer/med_data/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "MedicalRecords", "Medical Records")
+		ui.open()
 
 /obj/structure/machinery/computer/med_data/ui_data(mob/user)
 	. = ..()
@@ -291,7 +339,9 @@
 			var/name = params["name"]
 
 			if (name && id)
-				create_medical_record(name, id)
+				balloon_alert_to_viewers("Place a hand on the biometric reader to create a new medical record.")
+				playsound(src, 'sound/machines/ping.ogg', 15, FALSE)
+				accepting_biometric_scans = id
 			return
 
 		if ("new_general_record")

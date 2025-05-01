@@ -434,7 +434,7 @@ export const MedicalRecords = () => {
             </Flex.Item>
           </Flex>
         </Flex.Item>
-        {view_record ? (
+        {view_record && record.general_p_stat ? (
           <>
             <Flex.Item pt="5px" ml="-5px" mb="12px">
               <Flex direction="row">
@@ -507,7 +507,9 @@ export const MedicalRecords = () => {
                 textAlign="center"
                 fontSize="11px"
               >
-                INSUFFICIENT ACCESS CREDENTIALS
+                {record.general_m_stat
+                  ? 'INSUFFICIENT ACCESS CREDENTIALS'
+                  : 'MEDICAL DATA NOT FOUND'}
               </Box>
             </>
           </Flex.Item>
@@ -516,7 +518,7 @@ export const MedicalRecords = () => {
           <Divider />
         </Flex.Item>
         <Flex.Item ml="-5px" mt="5px" grow>
-          {view_record ? (
+          {view_record && record.general_p_stat ? (
             <Flex>
               <Flex.Item>
                 <Divider vertical />
@@ -611,7 +613,9 @@ export const MedicalRecords = () => {
                 textAlign="center"
                 fontSize="11px"
               >
-                INSUFFICIENT ACCESS CREDENTIALS
+                {record.general_p_stat
+                  ? 'INSUFFICIENT ACCESS CREDENTIALS'
+                  : 'MEDICAL DATA NOT FOUND'}
               </Box>
             </>
           )}

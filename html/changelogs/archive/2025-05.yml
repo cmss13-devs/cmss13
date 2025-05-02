@@ -1,0 +1,7 @@
+2025-05-02:
+  Blundir:
+  - bugfix: fixed suit storage gun icons being missing in some cases
+  Joe Lampost:
+  - bugfix: Fixes multiple elder overseer messages being sent for a weather event.
+  Kashargul:
+  - bugfix: a potential lockup with tgui

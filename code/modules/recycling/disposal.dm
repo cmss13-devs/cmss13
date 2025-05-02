@@ -65,7 +65,7 @@
 	start_processing()
 
 /obj/structure/machinery/disposal/Destroy()
-	if(contents.len)
+	if(length(contents))
 		eject()
 	trunk = null
 	return ..()
@@ -86,7 +86,7 @@
 	add_fingerprint(user)
 	if(mode <= 0) //It's off
 		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
-			if(contents.len > 0)
+			if(length(contents) > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
 			if(mode == DISPOSALS_OFF) //It's off but still not unscrewed
@@ -103,7 +103,7 @@
 			if(!HAS_TRAIT(I, TRAIT_TOOL_BLOWTORCH))
 				to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
 				return
-			if(contents.len > 0)
+			if(length(contents) > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
 			var/obj/item/tool/weldingtool/W = I
@@ -111,7 +111,8 @@
 				playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal unit."))
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !W.isOn()) return
+					if(!src || !W.isOn())
+						return
 					to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal unit."))
 					var/obj/structure/disposalconstruct/C = new(loc)
 					transfer_fingerprints_to(C)
@@ -127,10 +128,12 @@
 
 	if(isstorage(I))
 		var/obj/item/storage/S = I
+		if(!S.can_storage_interact(user))
+			return
 		if(length(S.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You empty [S] into [src]."))
 			for(var/obj/item/O in S.contents)
-				S.remove_from_storage(O, src)
+				S.remove_from_storage(O, src, user)
 			S.update_icon()
 			update()
 			return
@@ -139,7 +142,7 @@
 	if(istype(grab_effect)) //Handle grabbed mob
 		if(ismob(grab_effect.grabbed_thing))
 			var/mob/grabbed_mob = grab_effect.grabbed_thing
-			if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(grabbed_mob, TRAIT_CRAWLER)) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
+			if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disposable_mobs) && !HAS_TRAIT(grabbed_mob, TRAIT_CRAWLER)) || narrow_tube || grabbed_mob.mob_size >= MOB_SIZE_BIG)
 				to_chat(user, SPAN_WARNING("You can't fit that in there!"))
 				return FALSE
 			var/max_grab_size = user.mob_size
@@ -184,7 +187,7 @@
 
 ///Mouse drop another mob or self
 /obj/structure/machinery/disposal/MouseDrop_T(mob/target, mob/user)
-	if((!MODE_HAS_TOGGLEABLE_FLAG(MODE_DISPOSABLE_MOBS) && !HAS_TRAIT(user, TRAIT_CRAWLER)) || narrow_tube)
+	if((!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disposable_mobs) && !HAS_TRAIT(user, TRAIT_CRAWLER)) || narrow_tube)
 		to_chat(user, SPAN_WARNING("Looks a little bit too tight in there!"))
 		return FALSE
 
@@ -339,7 +342,7 @@
 		return
 
 	//Check for items in disposal - occupied light
-	if(contents.len > 0)
+	if(length(contents) > 0)
 		overlays += image('icons/obj/pipes/disposal.dmi', "dispover-full")
 
 	//Charging and ready light
@@ -356,7 +359,7 @@
 
 	flush_count++
 	if(flush_count >= flush_after_ticks)
-		if(contents.len)
+		if(length(contents))
 			if(mode == DISPOSALS_CHARGED)
 				spawn(0)
 					flush()
@@ -372,7 +375,7 @@
 	else if(disposal_pressure >= SEND_PRESSURE)
 		mode = DISPOSALS_CHARGED //If full enough, switch to ready mode
 		update()
-		if(!contents.len)
+		if(!length(contents))
 			//Full and nothing to flush - stop processing!
 			stop_processing()
 	else
@@ -699,7 +702,7 @@
 	if(istype(T, /turf/open/floor)) //intact floor, pop the tile
 		var/turf/open/floor/F = T
 		if(!F.intact_tile)
-			if(!F.broken && !F.burnt)
+			if(!(F.turf_flags & TURF_BROKEN) && !(F.turf_flags & TURF_BURNT))
 				new F.tile_type(H, 1, F.type)
 			F.make_plating()
 
@@ -810,7 +813,8 @@
 			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
 			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
-			if(!W.isOn()) return
+			if(!W.isOn())
+				return
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
@@ -1106,7 +1110,8 @@
 		name = initial(name)
 
 /obj/structure/disposalpipe/tagger/attackby(obj/item/I, mob/user)
-	if(..())
+	. = ..()
+	if(.)
 		return
 
 	if(istype(I, /obj/item/device/destTagger))
@@ -1301,7 +1306,8 @@
 			user.visible_message(SPAN_NOTICE("[user] starts slicing [src]."),
 			SPAN_NOTICE("You start slicing [src]."))
 			sleep(30)
-			if(!W.isOn()) return
+			if(!W.isOn())
+				return
 			if(user.loc == uloc && wloc == W.loc)
 				welded()
 			else
@@ -1407,7 +1413,8 @@
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE("You start slicing the floorweld off the disposal outlet."))
 			if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(!src || !W.isOn()) return
+				if(!src || !W.isOn())
+					return
 				to_chat(user, SPAN_NOTICE("You sliced the floorweld off the disposal outlet."))
 				var/obj/structure/disposalconstruct/C = new(loc)
 				transfer_fingerprints_to(C)

@@ -1,7 +1,7 @@
 /datum/job
 	//The name of the job
-	var/title = ""  //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
-	var/disp_title  //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
+	var/title = null //The internal title for the job, used for the job ban system and so forth. Don't change these, change the disp_title instead.
+	var/disp_title //Determined on new(). Usually the same as the title, but doesn't have to be. Set this to override what the player sees in the game as their title.
 	var/role_ban_alternative // If the roleban title needs to be an extra check, like Xenomorphs = Alien.
 
 	var/total_positions = 0 //How many players can be this job
@@ -23,7 +23,7 @@
 
 	var/minimum_playtime_as_job = 3 HOURS
 
-	var/gear_preset //Gear preset name used for this job
+	var/datum/equipment_preset/gear_preset //Gear preset name used for this job
 	var/list/gear_preset_whitelist = list()//Gear preset name used for council snowflakes ;)
 
 	//For generating entry messages
@@ -39,6 +39,11 @@
 	var/job_options
 	/// If TRUE, this job will spawn w/ a cryo emergency kit during evac/red alert
 	var/gets_emergency_kit = TRUE
+	/// Under what faction menu the job gets displayed in lobby
+	var/faction_menu = FACTION_NEUTRAL //neutral to cover uscm jobs for now as loads of them are under civil and stuff mainly ment for other faction
+
+	/// How many points people with this role selected get to pick from
+	var/loadout_points = 0
 
 /datum/job/New()
 	. = ..()
@@ -76,9 +81,12 @@
 
 /datum/timelock/New(name, time_required, list/roles)
 	. = ..()
-	if(name) src.name = name
-	if(time_required) src.time_required = time_required
-	if(roles) src.roles = roles
+	if(name)
+		src.name = name
+	if(time_required)
+		src.time_required = time_required
+	if(roles)
+		src.roles = roles
 
 /datum/job/proc/setup_requirements(list/L)
 	var/list/to_return = list()
@@ -127,6 +135,10 @@
 
 	return TRUE
 
+/// Whether the client passes requirements for the scenario
+/datum/job/proc/can_play_role_in_scenario(client/client)
+	return TRUE
+
 /datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
@@ -155,7 +167,7 @@
 	if(!gear_preset)
 		return ""
 	if(GLOB.gear_path_presets_list[gear_preset])
-		return GLOB.gear_path_presets_list[gear_preset].paygrade
+		return GLOB.gear_path_presets_list[gear_preset].paygrades[1]
 	return ""
 
 /datum/job/proc/get_comm_title()
@@ -176,7 +188,7 @@
 	var/datum/money_account/generated_account
 	//Give them an account in the database.
 	if(!(flags_startup_parameters & ROLE_NO_ACCOUNT))
-		var/obj/item/card/id/card = account_user.wear_id
+		var/obj/item/card/id/card = account_user.get_idcard()
 		var/user_has_preexisting_account = account_user.mind?.initial_account
 		if(card && !user_has_preexisting_account)
 			var/datum/paygrade/account_paygrade = GLOB.paygrades[card.paygrade]
@@ -188,7 +200,7 @@
 				remembered_info += "<b>Your account pin is:</b> [generated_account.remote_access_pin]<br>"
 				remembered_info += "<b>Your account funds are:</b> $[generated_account.money]<br>"
 
-				if(generated_account.transaction_log.len)
+				if(length(generated_account.transaction_log))
 					var/datum/transaction/T = generated_account.transaction_log[1]
 					remembered_info += "<b>Your account was created:</b> [T.time], [T.date] at [T.source_terminal]<br>"
 				account_user.mind.store_memory(remembered_info)
@@ -210,13 +222,13 @@
 		title_given = lowertext(disp_title)
 
 		//Document syntax cannot have tabs for proper formatting.
-		var/entrydisplay = " \
+		var/entrydisplay = boxed_message("\
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
 			[flags_startup_parameters & ROLE_ADMIN_NOTIFY ? SPAN_ROLE_HEADER("You are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp.") : ""] \n\
 			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : "You do not have a bank account."]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
-		"
+		")
 		to_chat_spaced(H, html = entrydisplay)
 
 /datum/job/proc/generate_entry_conditions(mob/living/M, whitelist_status)
@@ -255,6 +267,8 @@
 			job_whitelist = "[title][whitelist_status]"
 
 		human.job = title //TODO Why is this a mob variable at all?
+
+		load_loadout(M)
 
 		if(gear_preset_whitelist[job_whitelist])
 			arm_equipment(human, gear_preset_whitelist[job_whitelist], FALSE, TRUE)
@@ -304,6 +318,22 @@
 
 	return TRUE
 
+/// If we have one, equip our mob with their job gear
+/datum/job/proc/load_loadout(mob/living/carbon/human/new_human)
+	if(!new_human.client || !new_human.client.prefs)
+		return
+
+	var/equipment_slot = new_human.client.prefs.get_active_loadout(title)
+	if(!length(equipment_slot))
+		return
+
+	for(var/gear_type in equipment_slot)
+		var/datum/gear/current_gear = GLOB.gear_datums_by_type[gear_type]
+		if(!current_gear)
+			continue
+
+		current_gear.equip_to_user(new_human)
+
 /// Intended to be overwritten to handle when a job has variants that can be selected.
 /datum/job/proc/handle_job_options(option)
 	return
@@ -318,3 +348,11 @@
 
 	if(user.client.check_whitelist_status(flags_whitelist))
 		return TRUE
+
+/// Called when the job owner enters deep cryogenic storage
+/datum/job/proc/on_cryo(mob/living/carbon/human/cryoing)
+	return
+
+/// Returns the active player on this job, specifically for singleton jobs
+/datum/job/proc/get_active_player_on_job()
+	return

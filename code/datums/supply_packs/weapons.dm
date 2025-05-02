@@ -1,11 +1,18 @@
-/datum/supply_packs/m56b_smartgun
-	name = "M56B Smartgun System Package (x1)"
+/datum/supply_packs/repairkits
+	name = "Firearms Maintenance and Restoration crate (x3 Firearms Kits, x5 Lubricants)"
 	contains = list(
-		/obj/item/storage/box/m56_system,
+		/obj/item/stack/repairable/gunkit,
+		/obj/item/stack/repairable/gunkit,
+		/obj/item/stack/repairable/gunkit,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
+		/obj/item/stack/repairable/gunlube,
 	)
-	cost = 100
-	containertype = /obj/structure/closet/crate/weapon
-	containername = "M56B Smartgun System Package"
+	cost = 20
+	containertype = /obj/structure/closet/crate/supply
+	containername = "firearms maintenance crate"
 	group = "Weapons"
 
 /datum/supply_packs/m56_hmg
@@ -140,12 +147,3 @@
 	containername = "M707 crate"
 	group = "Weapons"
 */
-
-/datum/supply_packs/gun/merc
-	contains = list()
-	name = "black market firearms (x1)"
-	cost = 40
-	contraband = 1
-	containertype = /obj/structure/largecrate/guns/merc
-	containername = "\improper black market firearms crate"
-	group = "Weapons"

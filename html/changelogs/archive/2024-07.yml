@@ -1,0 +1,304 @@
+2024-07-03:
+  Blundir:
+  - soundadd: larva talking sounds
+  - imageadd: larva moving sprites, tweak of standing ones
+2024-07-04:
+  Doubleumc:
+  - qol: ghost health scan & follow right-click actions work at any range
+  - admin: '"InView" procs use your current view range (e.g. ghost zoom)'
+  Nomoresolvalou:
+  - balance: The headset in the synthetic equipment vendor has been replaced with
+      a synthetic headset as opposed to a senior command headset
+  zzzmike:
+  - spellcheck: more clarity for facehugger/lesser drone text
+2024-07-05:
+  AndroBetel:
+  - rscadd: Adds "Iron teeth" trait.
+  GrrrKitten:
+  - qol: Makes screenshake look less low FPS/jumpy
+  Venuska1117:
+  - bugfix: Make non-toxic water stop glowing.
+  coldironwarrior:
+  - spellcheck: fixed the medical rig belt's description
+2024-07-06:
+  Drathek:
+  - spellcheck: Fix grammar and plurality for vehicles and their hardpoints
+2024-07-07:
+  Blundir:
+  - rscadd: white corpsman helmet
+  Contrabang:
+  - rscadd: Re-added a fax machine to the WY ERT station
+  Doubleumc:
+  - code_imp: environmental reverb applies more reliably and only to positional sounds
+  - imageadd: adds CMP tracker sprites
+  - rscadd: adds a SEA headset, can track CO, XO, CMP
+  - rscadd: adds handheld crew monitor in SEATech vendor
+  - bugfix: right-click Examine no longer appears for interface buttons
+  GrrrKitten:
+  - ui: Swaps TM and MOTD order so that people actually see the MOTD
+  - admin: Removes the message for when no event info is input
+  realforest2001:
+  - code_imp: Changes OOC color settings for donators/non mentor/staff.
+  - admin: Mentors no longer receive debug logs as a result of being in GLOB.admins
+2024-07-08:
+  ThePiachu:
+  - qol: Shotgun ammo boxes now behave like other ammo boxes in the Requisitions'
+      vendors.
+  - code_imp: Ammo box maping code now handles pre-populated boxes in vendors, letting
+      devs order them more neatly than before.
+  Zonespace27:
+  - bugfix: Fixed a rare case of people on shuttles being inexplicably deleted.
+  blackdragonTOW:
+  - code_imp: log the map name at round start
+  coldironwarrior:
+  - rscadd: adds olive green and grey scrubs
+  - spellcheck: cleaned up scrub descriptions
+  wshuwshuwshi:
+  - rscadd: Adds the Encephalophrasive property for chemicals
+  - rscdel: Removed bit of description that falsely said that higher potency affected
+      clarity of messages
+  - bugfix: Removes focusing from the combination to prevent conflict between focusing
+      and nerve-stimulating, thus preventing encephalophrasive from forming
+  - bugfix: Revises the second overdose to be for critical overdoses, as it was intended
+      to be
+  - code_imp: Swaps 'M' variables for 'chem_host'
+  - code_imp: rehauled how ability 'giving' is handled, and is now only processed
+      upon initial ingestion of the chemical instead of every tick
+  - rscadd: Adds a brief piece of flavor text upon initial ingestion.
+  zzzmike:
+  - bugfix: converts flash, flashbang to TG effect system, fixing issue(s)
+2024-07-09:
+  AndroBetel:
+  - qol: Made splint breaking message bigger
+  Steelpoint:
+  - mapadd: The USS Kurtz has been added as a USCM affiliated ERT station. The design
+      off the USS Kurtz is based off of the USS Sulaco, from older versions of CM-SS13.
+      The USS Kurtz features the entire lower-deck and a snapshot of the upper deck.
+  - mapadd: The USCM CBRN ERT will use the USS Kurtz as their homebase.
+  kirieee:
+  - rscadd: Covert contractors added to the ERT pool
+2024-07-10:
+  Steelpoint:
+  - rscadd: Marine force reconnaissance gear presets have been added for admin use.
+  - rscadd: ERT force reconnaissance have functional squad settings, including a squad
+      colour (green) and a radio channel. These settings do not apply for survivor
+      force reconnaissance marines.
+  - rscadd: A marine force reconnaissance distress signal has been added. Spawning
+      either a 6-man squad, or a 30-man platoon. These are currently for admin use
+      only.
+  - rscadd: A set of customized M3-R armour has been added for force reconnaissance
+      marines. It has comparable defensive values to M3 armour but has the speed slowdown
+      of M3-L armour. Only ERT force reconnaissance marines will spawn with this.
+  hislittlecuzingames:
+  - rscadd: Multiple tools, and welding visor to SO Locker
+  - qol: Adds free bayonet to Staff Officer Locker
+2024-07-11:
+  Blundir:
+  - rscadd: jtac and Intel kits to ASRS store
+  - rscadd: Intel kit to IO points vendor
+  - balance: intel kit now has large doc pouch instead of small
+  - balance: jtac kit now has radiopack
+  Diegoflores31:
+  - imageadd: changes xeno intent icon for a cooler one.
+  Doubleumc:
+  - imageadd: adds CMP tracker sprites for all HUD options
+  Drathek:
+  - maptweak: Removed var edits from open turfs to fix ScrapeAway resetting the turf
+      (e.g. xenos building resin walls) on basically all maps
+  - maptweak: Fixed bad dir var edits on various map
+  - maptweak: Fixed stacked structures on various maps
+  Git-Nivrak:
+  - balance: Hivelords now have meson vision
+  - rscadd: Added a toggle for meson vision for hivelord and burrower
+  Steelpoint:
+  - rscadd: VAISO Covert Operatives will now spawn with a Night Vision Optic in their
+      helmet.
+  Unknownity:
+  - bugfix: Burrowers now see themselves as partly transparent when burrowed.
+  blackdragonTOW:
+  - soundadd: Power Loader sounds have been normalized to -6db
+  iloveloopers:
+  - bugfix: Demolitions scanner now properly works for incinerator tanks.
+  - spellcheck: Fixed some capitalization with custom incinerator tanks.
+2024-07-12:
+  Kivts:
+  - ui: The Company spent some money to upgrade the chemical simulator to work on
+      the TGUI, Including a few prepaid features.
+2024-07-14:
+  kiVts:
+  - bugfix: Denied request on req is working again
+2024-07-15:
+  cuberound:
+  - rscadd: roof structures added, can be also used for lattices and billboards, go
+      transparent when you are near them
+2024-07-16:
+  Git-Nivrak:
+  - rscdel: Mortar shells no longer blow up their payload, instead they will create
+      a small fixed explosion.
+  Nomoresolvalou:
+  - rscadd: Added neckties and stethoscope to the synthetic snowflake vendor
+  Steelpoint:
+  - balance: The XM88 now deals higher damage per-bullet at the cost of a slightly
+      lower rate of fire and accuracy. This is identical to as if it had a barrel
+      charger attached to it.
+  - balance: Per the above, the barrel charger is no longer compatible with the XM88.
+2024-07-17:
+  AndroBetel:
+  - rscadd: MP5 has 10% chance to spawn with M203 attached.
+  VileBeggar:
+  - rscadd: The CIC armoury now contains a plantable flag of the United Americas.
+  Zonespace27:
+  - rscadd: Added a tutorial for xenomorph Abominations. You must complete the tutorial
+      before being able to roll for Abomination.
+  harryob:
+  - bugfix: queens can remote build again
+  ihatethisengine:
+  - balance: being mid-paradrop won't trigger traps, fire and stray bullets before
+      you land.
+  realforest2001:
+  - bugfix: Fixes riflemen spec_kits not being usable by riflemen.
+2024-07-18:
+  cuberound:
+  - rscdel: Removed Rapid-Service-Fabricator, rapid construction device and  Rapid-Seed-Producer
+      (old ss13 junk)
+2024-07-19:
+  Drathek:
+  - bugfix: Fixed light blue scrubs having no cost in snowflake vendor.
+  SpypigDev:
+  - bugfix: SO Armory vendors no longer infinitely supply knives
+  TotalEpicness5, Triiodine, monkeyfist, Blundir:
+  - rscadd: Adds the G2 electroshock grenade. This grenade does not stun nor deal
+      serious damage to xenos, but it stuns via electric shock. It can create EMP-like
+      effects when faced with electronic devices like sentries, synths, Area Power
+      Controllers, etc. It's damage is reduced by energy armor.
+  - bugfix: take_overall_armoured_damage now can actually deal burn damage
+  - balance: Marine armor has a small bit of energy armor added back. Heavy armor
+      has slightly more protection than medium/light.
+  - bugfix: Mines now check for explosive antigrief checks
+  VileBeggar:
+  - balance: The DRG-N Offensive Flamer Unit now fires a 3-tile wide glob of high-combustion
+      napalm.
+  Zonespace, Vile Beggar:
+  - rscadd: Handheld planted flags are now indestructible and do a small amount of
+      damage on hit.
+  - bugfix: Plantable flags can no longer be duplicated.
+  - rscdel: Planting a UA flag no longer forces anyone but the planter to warcry.
+  cuberound:
+  - bugfix: having left hand broken and not splinted has the same effect on wheelchair
+      movement speed as right hand
+  - bugfix: corrects holoround highligh alpha value
+  - rscdel: Removed malfanction closet
+  kiVts:
+  - bugfix: Surgery sound and alike is fixed
+  realforest2001:
+  - rscadd: The Combat Correspondant's civilian equipment is now in it's own category
+      to make it easier to tell why you can't click it as the military version.
+2024-07-20:
+  Doubleumc:
+  - rscdel: Removed facial disfigurement
+  - code_imp: Fixed and refactored probability weighting for pick_weight
+  - bugfix: no longer stab with utensil when trying to feed while target full
+  Drathek:
+  - admin: Added causes for explosion starts to attack logs
+  Steelpoint:
+  - rscadd: The Heavy Pulse Rifle (M41AE2) will now start with a pre-attached bipod.
+      To better inform players of its unique auto-fire function.
+  Zonespace27:
+  - bugfix: Fixed a large amount of objects activating erroneous functionality (like
+      an armor light) when using action buttons tied to that object.
+  - bugfix: Fixed a potential softlock in the abomination tutorial.
+  cuberound:
+  - rscdel: removes trade destinations (they were never used)
+  - balance: m56 cupola uses m56d ammo rather then standard sg ammo
+2024-07-22:
+  BlackCrystalic:
+  - bugfix: Queen maturity timer
+  Blackcrystalic:
+  - qol: port who/staffwho to TGUI
+  ThePiachu:
+  - refactor: Made XM88 box code more uniform with other handful boxes.
+  zzzmike:
+  - bugfix: lifeboat launch console is no longer slashable / acidable
+2024-07-23:
+  cuberound:
+  - code_imp: cleans up water particle code
+2024-07-24:
+  Doubleumc:
+  - bugfix: sounds & motion detectors should be more reliable
+2024-07-25:
+  cuberound:
+  - rscdel: removes /obj/item/device/suit_cooling_unit and get_pressure_weakness()
+2024-07-26:
+  BlackCrystalic:
+  - qol: if server take too long to pre init all before lobby art, players will see
+      lobbyart "loading"
+  Blundir:
+  - bugfix: fixed runner having no gib animation
+  - bugfix: fixed gib remains being invisible
+  - imageadd: boiler gib animation
+  - imageadd: larva gib remains
+  - imageadd: shoes icons resprite
+  Steelpoint:
+  - imageadd: The Sniper and Anti-Material Rifle Specialists will now use an urban
+      camouflage sprite for their ghillie suit instead of a green camouflage.
+  realforest2001:
+  - rscadd: Synthetics and Yautja now spawn with the Iron Teeth trait, not dropping
+      items held in their mouth.
+  rythenx:
+  - rscadd: more options for hats to ASO vendor to bring it in line with what SO has
+      available
+2024-07-29:
+  TheManWithNoHands:
+  - code_imp: adds flags to cone, allowing it to be worn on head
+  - imageadd: added on mob sprites for cone
+2024-07-30:
+  Blundir:
+  - balance: revolver belt and sg holster belt can fit any revolver
+  - balance: increased mateba belt storage size from 6 to 7
+  - rscadd: grabbing something has a small mob animation now, grabbing items have
+      visual effect, animation and sound
+  - rscadd: throwing has small animation and sound
+  Cuberound, Venuska1117:
+  - qol: You can build Special Structures nearby nested people.
+  Steelpoint:
+  - rscadd: Marine Special Forces, Forecon, Echo Squad and CBRN will now appear in
+      their own sub-menu for observers.
+  - ui: Foxtrot's colour in the observe menu now reflects the squads true colour scheme.
+  TheManWithNoHands:
+  - balance: increases XO police skill by 1
+  Venuska1117:
+  - balance: Enabled clusters to spread on semi-weedable surfaces.
+  cuberound:
+  - rscdel: removes air senzors
+  - rscdel: Removes autogibber and related objects
+  - rscdel: removes UNUSED hydro lights that were replaced by colony lights long ago
+  - rscdel: Removes mass driver
+  - rscdel: holopad removal
+  efzapa:
+  - rscadd: All Brig Detainment Cameras are now linked to a new Brig Camera Console
+      Computer, available in the Brig Lobby, Warden's Office, CIC, and CMP Office.
+  - maptweak: Removed one of the Security Records Consoles in the Brig Lobby in place
+      for a Brig Camera Console.
+  - mapadd: Both Brig Perma Cells now have brig cameras in them.
+  ihatethisengine2:
+  - balance: Smartgunners can wear folding barricades on their backs.
+  zzzmike:
+  - bugfix: stops attempted stripping when stunned etc.
+  - rscadd: pilots can unhack lifeboats, similar to dropship unhacking
+2024-07-31:
+  coldironwarrior:
+  - spellcheck: Fixed spelling of auxiliary in the circuit board vendor
+  - spellcheck: Fixed capitalization of ordnance workshop area
+  realforest2001:
+  - code_imp: Changed back-end for working out equipment preset paygrades so as to
+      remove the manual overrides on several roles based on playtime perks.
+  - rscadd: Added lower ranks for all enlisted and some officer roles subject to having
+      played for less than ten hours. This rank cannot be used after playing more
+      than ten hours, and ignores preferences for playtime perks.
+  - rscadd: Added a higher rank achievable to most enlisted and some officers, requiring
+      175+ hours.
+  - rscadd: Changed base rank for SL, SG, Spec and FTL by one grade up.
+  - rscadd: Changed low playtime rank for MP and Nurse from Lance Corporal to Corporal.
+  zzzmike:
+  - rscdel: Disablers can't execute people anymore
+  - bugfix: stops people from buckling others when they are knocked out etc.

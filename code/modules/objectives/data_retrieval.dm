@@ -156,7 +156,7 @@
 	var/label = ""
 	desc = "A boring looking computer disk. The name label is just a gibberish collection of letters and numbers."
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	is_objective = TRUE
 	var/datum/cm_objective/retrieve_data/disk/objective
 	var/datum/cm_objective/retrieve_item/document/retrieve_objective
@@ -217,7 +217,7 @@
 	icon_state = "medlaptop"
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	var/datum/cm_objective/retrieve_data/terminal/objective
 
 /obj/structure/machinery/computer/objective/Initialize()

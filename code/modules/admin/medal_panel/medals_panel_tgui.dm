@@ -25,14 +25,14 @@ GLOBAL_DATUM_INIT(medals_panel, /datum/medals_panel_tgui, new)
 		var/datum/recipient_awards/recipient_award = GLOB.medal_awards[recipient_name]
 		uscm_awards[recipient_name] = list()
 		uscm_award_ckeys[recipient_name] = recipient_award.recipient_ckey ? " ([recipient_award.recipient_ckey])" : ""
-		for(var/i in 1 to recipient_award.medal_names.len) // We're assuming everything is same length
+		for(var/i in 1 to length(recipient_award.medal_names)) // We're assuming everything is same length
 			uscm_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i] ? "[recipient_award.giver_rank[i]] " : ""][recipient_award.giver_name[i] ? "[recipient_award.giver_name[i]] " : ""]([recipient_award.giver_ckey[i]])."
 
 	for(var/recipient_name as anything in GLOB.jelly_awards)
 		var/datum/recipient_awards/recipient_award = GLOB.jelly_awards[recipient_name]
 		xeno_awards[recipient_name] = list()
 		xeno_award_ckeys[recipient_name] = recipient_award.recipient_ckey ? " ([recipient_award.recipient_ckey])" : ""
-		for(var/i in 1 to recipient_award.medal_names.len) // We're assuming everything is same length
+		for(var/i in 1 to length(recipient_award.medal_names)) // We're assuming everything is same length
 			xeno_awards[recipient_name] += "[recipient_award.medal_names[i]]: \'[recipient_award.medal_citations[i]]\' by [recipient_award.giver_rank[i] ? "[recipient_award.giver_rank[i]] " : ""][recipient_award.giver_name[i] ? "[recipient_award.giver_name[i]] " : ""]([recipient_award.giver_ckey[i]])."
 
 	data["uscm_awards"] = uscm_awards

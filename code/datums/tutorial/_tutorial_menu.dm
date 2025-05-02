@@ -7,18 +7,18 @@
 	if(!length(categories))
 		var/list/categories_2 = list()
 		for(var/datum/tutorial/tutorial as anything in subtypesof(/datum/tutorial))
-			if(initial(tutorial.parent_path) == tutorial)
+			if(tutorial::parent_path == tutorial)
 				continue
 
-			if(!(initial(tutorial.category) in categories_2))
-				categories_2[initial(tutorial.category)] = list()
+			if(!(tutorial::category in categories_2))
+				categories_2[tutorial::category] = list()
 
-			categories_2[initial(tutorial.category)] += list(list(
-				"name" = initial(tutorial.name),
+			categories_2[tutorial::category] += list(list(
+				"name" = tutorial::name,
 				"path" = "[tutorial]",
-				"id" = initial(tutorial.tutorial_id),
-				"description" = initial(tutorial.desc),
-				"image" = initial(tutorial.icon_state),
+				"id" = tutorial::tutorial_id,
+				"description" = tutorial::desc,
+				"image" = tutorial::icon_state,
 			))
 
 		for(var/category in categories_2)
@@ -26,7 +26,6 @@
 				"name" = category,
 				"tutorials" = categories_2[category],
 			))
-
 
 /datum/tutorial_menu/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -50,10 +49,18 @@
 	var/list/data = list()
 
 	data["tutorial_categories"] = categories
+	data["completed_tutorials"] = list()
+	data["locked_tutorials"] = list()
+
 	if(user.client?.prefs)
 		data["completed_tutorials"] = user.client.prefs.completed_tutorials
-	else
-		data["completed_tutorials"] = list()
+
+		for(var/datum/tutorial/tutorial as anything in subtypesof(/datum/tutorial))
+			if(tutorial::parent_path == tutorial)
+				continue
+			if(tutorial::required_tutorial)
+				if(!IS_TUTORIAL_COMPLETED(user, tutorial::required_tutorial))
+					data["locked_tutorials"] += tutorial::tutorial_id
 
 	return data
 

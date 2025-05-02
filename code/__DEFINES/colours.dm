@@ -112,20 +112,26 @@
 #define LIGHT_COLOR_HOLY_MAGIC "#FFF743"
 /// deep crimson
 #define LIGHT_COLOR_BLOOD_MAGIC "#D00000"
+/// Warm red color rgb(250, 66, 66)
+#define LIGHT_COLOR_RED "#ff3b3b"
 
 /* These ones aren't a direct color like the ones above, because nothing would fit */
 /// Warm orange color, leaning strongly towards yellow. rgb(250, 160, 25)
 #define LIGHT_COLOR_FIRE    "#FAA019"
 /// Very warm yellow, leaning slightly towards orange. rgb(196, 138, 24)
 #define LIGHT_COLOR_LAVA    "#C48A18"
+/// Very warm yellowish-white color for candlelight. rgb(255, 187, 110)
+#define LIGHT_COLOR_CANDLE "#FFBB6E"
 /// Bright, non-saturated red. Leaning slightly towards pink for visibility. rgb(250, 100, 75)
 #define LIGHT_COLOR_FLARE   "#FA644B"
 /// Weird color, between yellow and green, very slimy. rgb(175, 200, 75)
 #define LIGHT_COLOR_SLIME_LAMP "#AFC84B"
-/// Extremely diluted yellow, close to skin color (for some reason). rgb(250, 225, 175)
-#define LIGHT_COLOR_TUNGSTEN   "#FAE1AF"
+/// Incandascent warm white, for usage in lights. rgb(255, 239, 210)
+#define LIGHT_COLOR_TUNGSTEN "#FFEFD2"
 /// Barely visible cyan-ish hue, as the doctor prescribed. rgb(240, 250, 250)
 #define LIGHT_COLOR_HALOGEN "#F0FAFA"
+/// Bluish cyan color for blue lights. rgb(210, 227, 236)
+#define LIGHT_COLOR_XENON "#D2E3EC"
 
 /// The default color for admin say, used as a fallback when the preference is not enabled
 
@@ -150,3 +156,8 @@
 #define COLOR_G_ICE "#C7EDDE" //faded cyan
 #define COLOR_G_DES "#FF7C1C" //bright orange
 #define COLOR_G_JUNG "#64AA6E" //faded green
+
+/// Gun muzzle colors
+#define COLOR_LASER_RED "#FF8D8D"
+#define COLOR_MUZZLE_BLUE "#2CB2E8"
+

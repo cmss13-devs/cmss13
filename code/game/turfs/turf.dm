@@ -26,8 +26,10 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
-	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
-	var/can_bloody = TRUE //Can blood spawn on this turf?
+	///Used by floors to indicate the floor is a tile (otherwise its plating)
+	var/intact_tile = TRUE
+	///Can blood spawn on this turf?
+	var/can_bloody = TRUE
 	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
@@ -48,12 +50,6 @@
 
 	var/turf_flags = NO_FLAGS
 
-	/// Whether we've broken through the ceiling yet
-	var/ceiling_debrised = FALSE
-
-	// Fishing
-	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
-
 	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
 	var/dynamic_lumcount = 0
 
@@ -62,6 +58,14 @@
 	var/directional_opacity = NONE
 	///Lazylist of movable atoms providing opacity sources.
 	var/list/atom/movable/opacity_sources
+
+	///hybrid lights affecting this turf
+	var/tmp/list/atom/movable/lighting_mask/hybrid_lights_affecting
+
+	vis_flags = VIS_INHERIT_PLANE
+
+	/// Is fishing allowed on this turf
+	var/fishing_allowed = FALSE
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -78,6 +82,15 @@
 	assemble_baseturfs()
 
 	levelupdate()
+
+	var/turf/above = SSmapping.get_turf_above(src)
+	var/turf/below = SSmapping.get_turf_below(src)
+
+	if(above)
+		above.multiz_new(dir=DOWN)
+
+	if(below)
+		below.multiz_new(dir=UP)
 
 	pass_flags = GLOB.pass_flags_cache[type]
 	if (isnull(pass_flags))
@@ -101,9 +114,57 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
-	return INITIALIZE_HINT_NORMAL
+	if(istransparentturf(src))
+		return INITIALIZE_HINT_LATELOAD
+	else
+		return INITIALIZE_HINT_NORMAL
+
+/turf/LateInitialize(mapload)
+	update_vis_contents()
+
+/obj/vis_contents_holder
+	plane = OPEN_SPACE_PLANE_START
+	vis_flags = VIS_HIDE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/vis_contents_holder/Initialize(mapload, vis, offset)
+	. = ..()
+	plane -= offset
+	vis_contents += GLOB.openspace_backdrop_one_for_all
+	vis_contents += vis
+	name = null // Makes it invisible on right click
+
+/turf/proc/update_vis_contents()
+	if(!istransparentturf(src))
+		return
+
+	vis_contents.Cut()
+	for(var/obj/vis_contents_holder/holder in src)
+		qdel(holder)
+
+	var/turf/below = SSmapping.get_turf_below(src)
+	var/depth = 0
+	while(below)
+		new /obj/vis_contents_holder(src, below, depth)
+		if(!istransparentturf(below))
+			break
+		below = SSmapping.get_turf_below(below)
+		depth++
+
+/turf/proc/multiz_new(dir)
+	if(dir == DOWN)
+		update_vis_contents()
+
+/turf/proc/multiz_del(dir)
+	if(dir == DOWN)
+		update_vis_contents()
 
 /turf/Destroy(force)
+	if(hybrid_lights_affecting)
+		for(var/atom/movable/lighting_mask/mask as anything in hybrid_lights_affecting)
+			LAZYREMOVE(mask.affecting_turfs, src)
+		hybrid_lights_affecting.Cut()
+
 	. = QDEL_HINT_IWILLGC
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
@@ -111,6 +172,15 @@
 	for(var/cleanable_type in cleanables)
 		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
 		C.cleanup_cleanable()
+
+	var/turf/above = SSmapping.get_turf_above(src)
+	var/turf/below = SSmapping.get_turf_below(src)
+	if(above)
+		above.multiz_del(dir=DOWN)
+
+	if(below)
+		below.multiz_del(dir=UP)
+
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -304,7 +374,8 @@
 /turf/proc/inertial_drift(atom/movable/A as mob|obj)
 	if(A.anchored)
 		return
-	if(!(A.last_move_dir)) return
+	if(!(A.last_move_dir))
+		return
 	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
 		var/mob/M = A
 		if(M.Process_Spacemove(1))
@@ -370,7 +441,7 @@
 		next_target = initial(current_target.baseturfs)
 
 	baseturfs = new_baseturfs
-	created_baseturf_lists[new_baseturfs[new_baseturfs.len]] = new_baseturfs.Copy()
+	created_baseturf_lists[new_baseturfs[length(new_baseturfs)]] = new_baseturfs.Copy()
 	return new_baseturfs
 
 // Creates a new turf
@@ -456,14 +527,14 @@
 		return
 	if(length(baseturfs))
 		var/list/new_baseturfs = baseturfs.Copy()
-		var/turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
+		var/turf_type = new_baseturfs[max(1, length(new_baseturfs) - amount + 1)]
 		while(ispath(turf_type, /turf/baseturf_skipover))
 			amount++
-			if(amount > new_baseturfs.len)
+			if(amount > length(new_baseturfs))
 				CRASH("The bottomost baseturf of a turf is a skipover [src]([type])")
-			turf_type = new_baseturfs[max(1, new_baseturfs.len - amount + 1)]
-		new_baseturfs.len -= min(amount, new_baseturfs.len - 1) // No removing the very bottom
-		if(new_baseturfs.len == 1)
+			turf_type = new_baseturfs[max(1, length(new_baseturfs) - amount + 1)]
+		new_baseturfs.len -= min(amount, length(new_baseturfs) - 1) // No removing the very bottom
+		if(length(new_baseturfs) == 1)
 			new_baseturfs = new_baseturfs[1]
 		return ChangeTurf(turf_type, new_baseturfs, flags)
 
@@ -478,18 +549,20 @@
 
 /turf/proc/AdjacentTurfs()
 	var/L[] = new()
-	for(var/turf/t in oview(src,1))
+	FOR_DOVIEW(var/turf/t, 1, src, HIDE_INVISIBLE_OBSERVER)
 		if(!t.density)
 			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
 				L.Add(t)
+	FOR_DOVIEW_END
 	return L
 
 /turf/proc/AdjacentTurfsSpace()
 	var/L[] = new()
-	for(var/turf/t in oview(src,1))
+	FOR_DOVIEW(var/turf/t, 1, src, HIDE_INVISIBLE_OBSERVER)
 		if(!t.density)
 			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
 				L.Add(t)
+	FOR_DOVIEW_END
 	return L
 
 /turf/proc/Distance(turf/t)
@@ -508,7 +581,7 @@
 	return
 
 /turf/proc/ceiling_debris(size = 1) //debris falling in response to airstrikes, etc
-	if(ceiling_debrised)
+	if(turf_flags & TURF_DEBRISED)
 		return
 
 	var/area/A = get_area(src)
@@ -516,10 +589,10 @@
 		return
 
 	var/amount = size
-	var/spread = round(sqrt(size)*1.5)
+	var/spread = floor(sqrt(size)*1.5)
 
 	var/list/turfs = list()
-	for(var/turf/open/floor/F in range(src,spread))
+	for(var/turf/open/floor/F in range(spread, src))
 		turfs += F
 
 	switch(A.ceiling)
@@ -552,7 +625,7 @@
 				for(var/i=1, i<=amount, i++)
 					new /obj/item/stack/sheet/metal(pick(turfs))
 					new /obj/item/ore(pick(turfs))
-	ceiling_debrised = TRUE
+	turf_flags |= TURF_DEBRISED
 
 /turf/proc/ceiling_desc(mob/user)
 
@@ -570,13 +643,13 @@
 		if(CEILING_GLASS)
 			return "The ceiling above is glass. That's not going to stop anything."
 		if(CEILING_METAL)
-			return "The ceiling above is metal. You can't see through it with a camera from above, but that's not going to stop anything."
+			return "The ceiling above is metal. You can't see through it with a camera from above. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_ALLOW_CAS)
-			return "It is underground. A thin cavern roof lies above. Doesn't look like it's going to stop much."
+			return "It is underground. A thin cavern roof lies above. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_BLOCK_CAS)
 			return "It is underground. The cavern roof lies above. Can probably stop most ordnance."
 		if(CEILING_UNDERGROUND_METAL_ALLOW_CAS)
-			return "It is underground. The ceiling above is made of thin metal. Doesn't look like it's going to stop much."
+			return "It is underground. The ceiling above is made of thin metal. It will likely stop medevac pickups but not CAS."
 		if(CEILING_UNDERGROUND_METAL_BLOCK_CAS)
 			return "It is underground. The ceiling above is made of metal.  Can probably stop most ordnance."
 		if(CEILING_DEEP_UNDERGROUND)
@@ -585,6 +658,10 @@
 			return "It is deep underground. The ceiling above is made of thick metal. Nothing is getting through that."
 		if(CEILING_REINFORCED_METAL)
 			return "The ceiling above is heavy reinforced metal. Nothing is getting through that."
+		if(CEILING_SANDSTONE_ALLOW_CAS)
+			return "The ceiling above is sandstone. That's not going to stop anything."
+		if(CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS)
+			return "It is underground. The ceiling above is made of sandstone. Can probably stop most ordnance."
 		else
 			return "It is in the open."
 
@@ -774,9 +851,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	insert_self_into_baseturfs()
 	var/turf/change_type
 	if(length(new_baseturfs))
-		change_type = new_baseturfs[new_baseturfs.len]
+		change_type = new_baseturfs[length(new_baseturfs)]
 		new_baseturfs.len--
-		if(new_baseturfs.len)
+		if(length(new_baseturfs))
 			baseturfs += new_baseturfs
 	else
 		change_type = new_baseturfs
@@ -817,7 +894,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
 	var/list/removable_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
 	removable_contents -= src
-	for(var/i in 1 to removable_contents.len)
+	for(var/i in 1 to length(removable_contents))
 		var/thing = removable_contents[i]
 		qdel(thing, force=TRUE)
 
@@ -834,9 +911,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(depth)
 		var/list/target_baseturfs
 		if(length(copytarget.baseturfs))
-			// with default inputs this would be Copy(clamp(2, -INFINITY, baseturfs.len))
+			// with default inputs this would be Copy(clamp(2, -INFINITY, length(baseturfs)))
 			// Don't forget a lower index is lower in the baseturfs stack, the bottom is baseturfs[1]
-			target_baseturfs = copytarget.baseturfs.Copy(clamp(1 + ignore_bottom, 1 + copytarget.baseturfs.len - depth, copytarget.baseturfs.len))
+			target_baseturfs = copytarget.baseturfs.Copy(clamp(1 + ignore_bottom, 1 + length(copytarget.baseturfs) - depth, length(copytarget.baseturfs)))
 		else if(!ignore_bottom)
 			target_baseturfs = list(copytarget.baseturfs)
 		if(target_baseturfs)
@@ -860,3 +937,41 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(T.dir != dir)
 		T.setDir(dir)
 	return T
+
+/turf/proc/remove_flag(flag)
+	turf_flags &= ~flag
+
+/turf/proc/on_throw_end(atom/movable/thrown_atom)
+	return TRUE
+
+/turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
+	if(ishuman_strict(victim))
+		var/mob/living/carbon/human/human_victim = victim
+		if (stun_modifier > 0)
+			human_victim.KnockDown(5 * height * stun_modifier)
+			human_victim.Stun(5 * height * stun_modifier)
+
+		if (damage_modifier > 0)
+			var/total_damage = ((20 * height) ** 1.3) * damage_modifier
+			human_victim.apply_damage(total_damage / 2, BRUTE, "r_leg")
+			human_victim.apply_damage(total_damage / 2, BRUTE, "l_leg")
+
+		if (fracture_modifier > 0)
+			var/obj/limb/leg/found_rleg = locate(/obj/limb/leg/l_leg) in human_victim.limbs
+			var/obj/limb/leg/found_lleg = locate(/obj/limb/leg/r_leg) in human_victim.limbs
+
+			found_rleg?.fracture(100 * fracture_modifier)
+			found_lleg?.fracture(100 * fracture_modifier)
+
+	if(isxeno(victim) && victim.mob_size >= MOB_SIZE_BIG)
+		var/mob/living/carbon/xenomorph/xeno_victim = victim
+		if(stun_modifier > 0)
+			xeno_victim.KnockDown(5 * height * stun_modifier)
+			xeno_victim.Stun(5 * height * stun_modifier)
+
+		if (damage_modifier > 0)
+			var/total_damage = ((60 * height) ** 1.3) * damage_modifier
+			xeno_victim.apply_damage(total_damage / 2, BRUTE)
+
+	if(damage_modifier > 0.5)
+		playsound(loc, "slam", 50, 1)

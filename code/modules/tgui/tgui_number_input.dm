@@ -13,8 +13,10 @@
  * * max_value - Specifies a maximum value. If none is set, any number can be entered. Pressing "max" defaults to 1000.
  * * min_value - Specifies a minimum value. Often 0.
  * * timeout - The timeout of the number input, after which the modal will close and qdel itself. Set to zero for no timeout.
+ * * integer_only - whether the inputted number is rounded down into an integer.
+ * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_input_number(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, timeout = 0, integer_only = TRUE)
+/proc/tgui_input_number(mob/user, message, title = "Number Input", default = 0, max_value = 10000, min_value = 0, timeout = 0, integer_only = TRUE, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -22,8 +24,12 @@
 			var/client/client = user
 			user = client.mob
 		else
-			return
-	var/datum/tgui_input_number/number_input = new(user, message, title, default, max_value, min_value, timeout, integer_only)
+			return null
+
+	if (isnull(user.client))
+		return null
+
+	var/datum/tgui_input_number/number_input = new(user, message, title, default, max_value, min_value, timeout, integer_only, ui_state)
 	number_input.tgui_interact(user)
 	number_input.wait()
 	if (number_input)
@@ -31,8 +37,9 @@
 		qdel(number_input)
 
 ///A clone of tgui_input_number that defaults to accepting negative inputs too.
-/proc/tgui_input_real_number(mob/user, message, title = "Number Input", default = 0, max_value = SHORT_REAL_LIMIT, min_value = -SHORT_REAL_LIMIT, timeout = 0, integer_only = FALSE)
-	return tgui_input_number(user, message, title, default, max_value, min_value, timeout, integer_only)
+/proc/tgui_input_real_number(mob/user, message, title = "Number Input", default = 0, max_value = SHORT_REAL_LIMIT, min_value = -SHORT_REAL_LIMIT, timeout = 0, integer_only = FALSE, ui_state = GLOB.always_state)
+	return tgui_input_number(user, message, title, default, max_value, min_value, timeout, integer_only, ui_state)
+
 /**
  * Creates an asynchronous TGUI number input window with an associated callback.
  *
@@ -47,8 +54,10 @@
  * * min_value - Specifies a minimum value. Often 0.
  * * callback - The callback to be invoked when a choice is made.
  * * timeout - The timeout of the number input, after which the modal will close and qdel itself. Set to zero for no timeout.
+ * * integer_only - whether the inputted number is rounded down into an integer.
+ * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
  */
-/proc/tgui_input_number_async(mob/user, message, title = "Number Input", default  = 0, max_value = 10000, min_value  = 0, datum/callback/callback, timeout = 60 SECONDS)
+/proc/tgui_input_number_async(mob/user, message, title = "Number Input", default  = 0, max_value = 10000, min_value  = 0, datum/callback/callback, timeout = 60 SECONDS, integer_only = TRUE, ui_state = GLOB.always_state)
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -57,7 +66,7 @@
 			user = client.mob
 		else
 			return
-	var/datum/tgui_input_number/async/number_input = new(user, message, title, default, max_value, min_value, callback, timeout)
+	var/datum/tgui_input_number/async/number_input = new(user, message, title, default, max_value, min_value, callback, timeout, integer_only, ui_state)
 	number_input.tgui_interact(user)
 
 /**
@@ -79,23 +88,25 @@
 	var/message
 	/// The minimum value that can be entered.
 	var/min_value
+	/// If the final value will be rounded
+	var/integer_only
 	/// The time at which the number input was created, for displaying timeout progress.
 	var/start_time
 	/// The lifespan of the number input, after which the window will close and delete itself.
 	var/timeout
 	/// The title of the TGUI window
 	var/title
-	/// If the final value will be rounded
-	var/integer_only
+	/// The TGUI UI state that will be returned in ui_state(). Default: always_state
+	var/datum/ui_state/state
 
-
-/datum/tgui_input_number/New(mob/user, message, title, default, max_value, min_value, timeout, integer_only)
+/datum/tgui_input_number/New(mob/user, message, title, default, max_value, min_value, timeout, integer_only, ui_state)
 	src.default = default
 	src.max_value = max_value
 	src.message = message
 	src.min_value = min_value
 	src.title = title
 	src.integer_only = integer_only
+	src.state = ui_state
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
@@ -113,7 +124,8 @@
 
 /datum/tgui_input_number/Destroy(force, ...)
 	SStgui.close_uis(src)
-	. = ..()
+	state = null
+	return ..()
 
 /**
  * Waits for a user's response to the tgui_input_number's prompt before returning. Returns early if
@@ -135,25 +147,27 @@
 	closed = TRUE
 
 /datum/tgui_input_number/ui_state(mob/user)
-	return GLOB.always_state
+	return state
 
 /datum/tgui_input_number/ui_static_data(mob/user)
-	. = list(
-		"init_value" = default, // Default is a reserved keyword
-		"max_value" = max_value,
-		"message" = message,
-		"min_value" = min_value,
-		"preferences" = list(),
-		"title" = title,
-		"integer_only" = integer_only
-	)
+	var/list/data = list()
+	data["init_value"] = default // Default is a reserved keyword
+	data["large_buttons"] = FALSE // Pref?
+	data["max_value"] = max_value
+	data["message"] = message
+	data["min_value"] = min_value
+	data["swapped_buttons"] = FALSE // Pref?
+	data["title"] = title
+	data["round_value"] = integer_only
+	return data
 
 /datum/tgui_input_number/ui_data(mob/user)
-	. = list()
+	var/list/data = list()
 	if(timeout)
-		.["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
+		data["timeout"] = CLAMP01((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS))
+	return data
 
-/datum/tgui_input_number/ui_act(action, list/params)
+/datum/tgui_input_number/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if (.)
 		return
@@ -161,15 +175,15 @@
 		if("submit")
 			var/choice = params["entry"]
 			if(!isnum(choice))
-				CRASH("A non number was input into tgui input number by [usr]")
+				CRASH("A non number was input into tgui input number by [ui.user]")
 			if(choice != choice) //isnan
-				CRASH("A NaN was input into tgui input number by [usr]")
+				CRASH("A NaN was input into tgui input number by [ui.user]")
 			if(integer_only)
-				choice = round(choice)
+				choice = floor(choice)
 			if(choice > max_value)
-				CRASH("A number greater than the max value was input into tgui input number by [usr]")
+				CRASH("A number greater than the max value was input into tgui input number by [ui.user]")
 			if(choice < min_value)
-				CRASH("A number less than the min value was input into tgui input number by [usr]")
+				CRASH("A number less than the min value was input into tgui input number by [ui.user]")
 			set_entry(choice)
 			closed = TRUE
 			SStgui.close_uis(src)
@@ -180,7 +194,7 @@
 			return TRUE
 
 /datum/tgui_input_number/proc/set_entry(entry)
-		src.entry = entry
+	src.entry = entry
 
 /**
  * # async tgui_input_number
@@ -191,8 +205,8 @@
 	/// The callback to be invoked by the tgui_input_number upon having a choice made.
 	var/datum/callback/callback
 
-/datum/tgui_input_number/async/New(mob/user, message, title, default, max_value, min_value, callback, timeout)
-	..(user, message, title, default, max_value, min_value, timeout)
+/datum/tgui_input_number/async/New(mob/user, message, title, default, max_value, min_value, callback, timeout, integer_only, ui_state)
+	..(user, message, title, default, max_value, min_value, timeout, integer_only, ui_state)
 	src.callback = callback
 
 /datum/tgui_input_number/async/Destroy(force, ...)

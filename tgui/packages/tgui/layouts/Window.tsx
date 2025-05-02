@@ -6,16 +6,27 @@
 
 import { classes } from 'common/react';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
-import { backendSuspendStart, useBackend } from '../backend';
-import { Icon } from '../components';
-import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from '../constants';
-import { toggleKitchenSink } from '../debug/actions';
-import { dragStartHandler, recallWindowGeometry, resizeStartHandler, setWindowKey } from '../drag';
-import { createLogger } from '../logging';
+import {
+  type ComponentProps,
+  type PropsWithChildren,
+  type ReactNode,
+  useEffect,
+} from 'react';
+import { backendSuspendStart, useBackend } from 'tgui/backend';
+import { globalStore } from 'tgui/backend';
+import { type Box, Icon } from 'tgui/components';
+import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from 'tgui/constants';
+import { useDebug } from 'tgui/debug';
+import { toggleKitchenSink } from 'tgui/debug/actions';
+import {
+  dragStartHandler,
+  recallWindowGeometry,
+  resizeStartHandler,
+  setWindowKey,
+} from 'tgui/drag';
+import { createLogger } from 'tgui/logging';
+
 import { Layout } from './Layout';
-import { globalStore } from '../backend';
-import { PropsWithChildren, ReactNode, useEffect } from 'react';
-import { BoxProps } from '../components/Box';
 
 const logger = createLogger('Window');
 
@@ -28,6 +39,8 @@ type Props = Partial<{
   theme: string;
   title: string;
   width: number;
+  fitted: boolean;
+  scrollbars: boolean;
 }> &
   PropsWithChildren;
 
@@ -40,14 +53,16 @@ export const Window = (props: Props) => {
     buttons,
     width,
     height,
+    fitted,
+    scrollbars = true,
   } = props;
 
-  const { config, suspended, debug } = useBackend();
-  if (suspended) {
-    return null;
-  }
+  const { config, suspended } = useBackend();
+  const { debugLayout = false } = useDebug();
 
   useEffect(() => {
+    if (suspended) return;
+
     const updateGeometry = () => {
       const options = {
         ...config.window,
@@ -67,17 +82,15 @@ export const Window = (props: Props) => {
       'can-close': Boolean(canClose),
     });
     logger.log('mounting');
-    updateGeometry();
+
+    if (!fitted) {
+      updateGeometry();
+    }
 
     return () => {
       logger.log('unmounting');
     };
   }, [width, height]);
-
-  let debugLayout = false;
-  if (debug) {
-    debugLayout = debug.debugLayout;
-  }
 
   const dispatch = globalStore.dispatch;
   const fancy = config.window?.fancy;
@@ -89,26 +102,35 @@ export const Window = (props: Props) => {
       ? config.status < UI_DISABLED
       : config.status < UI_INTERACTIVE);
 
-  return (
+  return suspended ? null : (
     <Layout className="Window" theme={theme}>
-      <TitleBar
-        className="Window__titleBar"
-        title={!suspended && (title || decodeHtmlEntities(config.title))}
-        status={config.status}
-        fancy={fancy}
-        onDragStart={dragStartHandler}
-        onClose={() => {
-          logger.log('pressed close');
-          dispatch(backendSuspendStart());
-        }}
-        canClose={canClose}>
-        {buttons}
-      </TitleBar>
-      <div className={classes(['Window__rest', debugLayout && 'debug-layout'])}>
+      {!fitted && (
+        <TitleBar
+          className="Window__titleBar"
+          title={title || decodeHtmlEntities(config.title)}
+          status={config.status}
+          fancy={fancy}
+          onDragStart={dragStartHandler}
+          onClose={() => {
+            logger.log('pressed close');
+            dispatch(backendSuspendStart());
+          }}
+          canClose={canClose}
+        >
+          {buttons}
+        </TitleBar>
+      )}
+      <div
+        className={classes([
+          'Window__rest',
+          !fitted && 'Window__restwithTitlebar',
+          debugLayout && 'debug-layout',
+        ])}
+      >
         {!suspended && children}
         {showDimmer && <div className="Window__dimmer" />}
       </div>
-      {fancy && (
+      {fancy && scrollbars && (
         <>
           <div
             className="Window__resizeHandle__e"
@@ -134,7 +156,7 @@ type ContentProps = Partial<{
   scrollable: boolean;
   vertical: boolean;
 }> &
-  BoxProps &
+  ComponentProps<typeof Box> &
   PropsWithChildren;
 
 const WindowContent = (props: ContentProps) => {
@@ -143,7 +165,8 @@ const WindowContent = (props: ContentProps) => {
   return (
     <Layout.Content
       className={classes(['Window__content', className])}
-      {...rest}>
+      {...rest}
+    >
       {(fitted && children) || (
         <div className="Window__contentPadding">{children}</div>
       )}
@@ -217,7 +240,8 @@ const TitleBar = (props: TitleBarProps) => {
       {process.env.NODE_ENV !== 'production' && (
         <div
           className="TitleBar__devBuildIndicator"
-          onClick={() => dispatch(toggleKitchenSink())}>
+          onClick={() => dispatch(toggleKitchenSink())}
+        >
           <Icon name="bug" />
         </div>
       )}

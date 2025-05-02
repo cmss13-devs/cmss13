@@ -7,7 +7,7 @@
 	set name = "Matrix Editor"
 	set category = "Debug"
 
-	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG|R_ADMIN))
+	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))
 		to_chat(usr, SPAN_DANGER("develop man only >:("))
 		return
 
@@ -23,7 +23,7 @@
 				data += "\[[M.b] [M.e] 0\]<br>"
 				data += "\[[M.c] [M.f] 1\]"
 			else
-				data += "<a href='?_src_=matrices;select_matrix=[name]'>[name]</a>"
+				data += "<a href='byond://?_src_=matrices;select_matrix=[name]'>[name]</a>"
 			data += "<br>"
 	else
 		data += "<p>No matrices have been made!</p>"
@@ -31,25 +31,25 @@
 
 	data += {"
 		<h2>Matrix operations</h2>
-		<a href='?_src_=matrices;operation=add'>Add</a>
-		<a href='?_src_=matrices;operation=subtract'>Subtract</a>
-		<a href='?_src_=matrices;operation=multiply'>Multiply</a>
-		<a href='?_src_=matrices;operation=inverse'>Invert</a>
+		<a href='byond://?_src_=matrices;operation=add'>Add</a>
+		<a href='byond://?_src_=matrices;operation=subtract'>Subtract</a>
+		<a href='byond://?_src_=matrices;operation=multiply'>Multiply</a>
+		<a href='byond://?_src_=matrices;operation=inverse'>Invert</a>
 		<br><hr>
-		<a href='?_src_=matrices;operation=translate'>Translate</a>
-		<a href='?_src_=matrices;operation=scale'>Scale</a>
-		<a href='?_src_=matrices;operation=rotate'>Rotate</a>
+		<a href='byond://?_src_=matrices;operation=translate'>Translate</a>
+		<a href='byond://?_src_=matrices;operation=scale'>Scale</a>
+		<a href='byond://?_src_=matrices;operation=rotate'>Rotate</a>
 		<br><hr>
-		<a href='?_src_=matrices;operation=new'>New matrix</a>
-		<a href='?_src_=matrices;operation=copy'>Copy selected matrix</a>
-		<a href='?_src_=matrices;operation=chname'>Change matrix name</a>
-		<a href='?_src_=matrices;operation=delete'>Delete selected matrix</a>
+		<a href='byond://?_src_=matrices;operation=new'>New matrix</a>
+		<a href='byond://?_src_=matrices;operation=copy'>Copy selected matrix</a>
+		<a href='byond://?_src_=matrices;operation=chname'>Change matrix name</a>
+		<a href='byond://?_src_=matrices;operation=delete'>Delete selected matrix</a>
 	"}
 
-	show_browser(usr, data, "Matrix Editor", "matrixeditor\ref[src]", "size=600x450")
+	show_browser(usr, data, "Matrix Editor", "matrixeditor\ref[src]", width = 600, height = 450)
 
 /client/proc/matrix_editor_Topic(href, href_list)
-	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_DEBUG|R_ADMIN))
+	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & (R_DEBUG|R_ADMIN)))
 		to_chat(usr, SPAN_DANGER("develop man only >:("))
 		return
 
@@ -72,11 +72,11 @@
 				if(!elements_str)
 					return
 				var/list/elements = splittext(elements_str, ",")
-				if(elements.len != 6)
-					to_chat(usr, "When creating a custom matrix, explicitly provide all 6 elements! Only [elements.len] were provided.")
+				if(length(elements) != 6)
+					to_chat(usr, "When creating a custom matrix, explicitly provide all 6 elements! Only [length(elements)] were provided.")
 					return
 
-				for(var/i = 1 to elements.len)
+				for(var/i = 1 to length(elements))
 					var/num_ver = text2num(elements[i])
 					if(isnull(num_ver))
 						to_chat(usr, "Failed to convert element #[i] ([elements[i]]) to a number.")

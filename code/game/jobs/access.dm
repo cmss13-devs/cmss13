@@ -59,17 +59,20 @@
 /obj/proc/check_access(obj/item/I)
 	//These generations have been moved out of /obj/New() because they were slowing down the creation of objects that never even used the access system.
 	gen_access()
-	if(!islist(req_access)) return 1//something's very wrong
+	if(!islist(req_access))
+		return 1//something's very wrong
 	var/L[] = req_access
-	if(!L.len && (!req_one_access || !req_one_access.len)) return 1//no requirements
-	if(!I) return
+	if(!length(L) && !LAZYLEN(req_one_access))
+		return 1//no requirements
+	if(!I)
+		return
 
 	var/list/A = I.GetAccess()
 	for(var/i in req_access)
 		if(!(i in A))
 			return FALSE//doesn't have this access
 
-	if(req_one_access && req_one_access.len)
+	if(LAZYLEN(req_one_access))
 		for(var/i in req_one_access)
 			if(i in A)
 				return TRUE//has an access from the single access list
@@ -78,18 +81,24 @@
 
 /obj/proc/check_access_list(L[])
 	gen_access()
-	if(!req_access  && !req_one_access) return 1
-	if(!islist(req_access)) return 1
-	if(!req_access.len && !islist(req_one_access))
+	if(!req_access  && !req_one_access)
+		return 1
+	if(!islist(req_access))
+		return 1
+	if(!length(req_access) && !islist(req_one_access))
 		return TRUE
-	if(!req_access.len && (!req_one_access || !req_one_access.len)) return 1
-	if(!islist(L)) return
+	if(!length(req_access) && !LAZYLEN(req_one_access))
+		return 1
+	if(!islist(L))
+		return
 	var/i
 	for(i in req_access)
-		if(!(i in L)) return //doesn't have this access
-	if(req_one_access && req_one_access.len)
+		if(!(i in L))
+			return //doesn't have this access
+	if(LAZYLEN(req_one_access))
 		for(i in req_one_access)
-			if(i in L) return 1//has an access from the single access list
+			if(i in L)
+				return 1//has an access from the single access list
 		return
 	return 1
 
@@ -135,6 +144,7 @@
 				ACCESS_MARINE_SYNTH,
 				ACCESS_MARINE_ASO,
 				ACCESS_MARINE_CHAPLAIN,
+				ACCESS_MARINE_FIELD_DOC,
 				ACCESS_PRESS,
 			)
 
@@ -212,6 +222,7 @@
 				ACCESS_WY_PMC_TL,
 				ACCESS_WY_ARMORY,
 				ACCESS_WY_SECRETS,
+				ACCESS_WY_DATABASE,
 				ACCESS_WY_LEADERSHIP,
 				ACCESS_WY_SENIOR_LEAD,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL)
@@ -236,6 +247,7 @@
 				ACCESS_WY_PMC,
 				ACCESS_WY_PMC_TL,
 				ACCESS_WY_ARMORY,
+				ACCESS_WY_DATABASE,
 				ACCESS_WY_LEADERSHIP,
 				ACCESS_WY_SENIOR_LEAD,
 			) + get_access(ACCESS_LIST_COLONIAL_ALL)
@@ -293,7 +305,7 @@
 		if(1)//Security
 			return list(ACCESS_MARINE_CMP, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY)
 		if(2)//Medbay
-			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)
+			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_FIELD_DOC, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)
 		if(3)//Research
 			return list(ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 		if(4)//Engineering
@@ -363,6 +375,8 @@
 			return "Armory"
 		if(ACCESS_MARINE_CMO)
 			return "CMO's Office"
+		if(ACCESS_MARINE_FIELD_DOC)
+			return "Field Doctor Supplies"
 		if(ACCESS_MARINE_MEDBAY)
 			return "[MAIN_SHIP_NAME] Medbay"
 		if(ACCESS_MARINE_RESEARCH)
@@ -446,6 +460,40 @@
 		if(ACCESS_ARES_DEBUG)
 			return "AI Debug"
 
+/proc/get_region_accesses_wy(code)
+	switch(code)
+		if(0)//Everything
+			return get_access(ACCESS_LIST_WY_ALL)
+		if(1)//Corporate General
+			return list(ACCESS_WY_GENERAL, ACCESS_WY_COLONIAL, ACCESS_WY_EXEC)
+		if(2)//Corporate Security
+			return list(ACCESS_WY_SECURITY, ACCESS_WY_ARMORY)
+		if(3)//Corporate Departments
+			return list(ACCESS_WY_MEDICAL, ACCESS_WY_ENGINEERING, ACCESS_WY_FLIGHT, ACCESS_WY_RESEARCH)
+		if(4)//Corporate Leadership
+			return list(ACCESS_WY_LEADERSHIP, ACCESS_WY_SENIOR_LEAD, ACCESS_WY_SECRETS, ACCESS_WY_DATABASE)
+		if(5)//PMCs
+			return list(ACCESS_WY_PMC, ACCESS_WY_PMC_TL, ACCESS_WY_ARMORY)
+		if(6)//Civilian
+			return get_access(ACCESS_LIST_COLONIAL_ALL)
+
+/proc/get_region_accesses_name_wy(code)
+	switch(code)
+		if(0)
+			return "All"
+		if(1)
+			return "Corporate" // Security
+		if(2)
+			return "Corporate Security" // Medbay
+		if(3)
+			return "Corporate Departments" // Research
+		if(4)
+			return "Corporate Leadership" // Engineering
+		if(5)
+			return "Corporate PMCs" // Command
+		if(6)
+			return "Civilian" // Civilian
+
 /proc/get_weyland_access_desc(A)
 	switch(A)
 		if(ACCESS_WY_GENERAL)
@@ -463,7 +511,7 @@
 		if(ACCESS_WY_RESEARCH)
 			return "Wey-Yu Research"
 		if(ACCESS_WY_EXEC)
-			return "Wey-Yu Corporate"
+			return "Wey-Yu Executive"
 		if(ACCESS_WY_PMC)
 			return "Wey-Yu PMC"
 		if(ACCESS_WY_PMC_TL)
@@ -472,7 +520,23 @@
 			return "Wey-Yu Armory"
 		if(ACCESS_WY_SECRETS)
 			return "Wey-Yu HighSec"
+		if(ACCESS_WY_DATABASE)
+			return "Wey-Yu Database"
 		if(ACCESS_WY_LEADERSHIP)
 			return "Wey-Yu Leadership"
 		if(ACCESS_WY_SENIOR_LEAD)
 			return "Wey-Yu Senior Leadership"
+		if(ACCESS_CIVILIAN_RESEARCH)
+			return "Civilian Research"
+		if(ACCESS_CIVILIAN_COMMAND)
+			return "Civilian Command"
+		if(ACCESS_CIVILIAN_MEDBAY)
+			return "Civilian Medbay"
+		if(ACCESS_CIVILIAN_LOGISTICS)
+			return "Civilian Logistics"
+		if(ACCESS_CIVILIAN_ENGINEERING)
+			return "Civilian Engineering"
+		if(ACCESS_CIVILIAN_BRIG)
+			return "Civilian Brig"
+		if(ACCESS_CIVILIAN_PUBLIC)
+			return "Civilian"

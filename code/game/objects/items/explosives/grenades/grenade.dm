@@ -5,6 +5,10 @@
 	icon = 'icons/obj/items/weapons/grenade.dmi'
 	icon_state = "grenade"
 	item_state = "grenade"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi',
+	)
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	flags_atom = FPRINT|CONDUCT
@@ -38,6 +42,12 @@
 
 	if(harmful && ishuman(user) && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+		return FALSE
+	if(harmful && ishuman(user) && MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+		to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+		return FALSE
+
+	if(HAS_TRAIT(user, TRAIT_HAULED)) // If somehow they have a grenade in hand while hauled, we don't want them to prime it
 		return FALSE
 
 	return TRUE
@@ -75,7 +85,7 @@
 
 	cause_data = create_cause_data(initial(name), user)
 
-	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
+	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"),
 	SPAN_WARNING("You prime \a [name]!"))
 	msg_admin_attack("[key_name(user)] primed \a grenade ([name]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'> [key_name(user)] primed \a grenade ([name]) at ([src.loc.x],[src.loc.y],[src.loc.z])</font>")

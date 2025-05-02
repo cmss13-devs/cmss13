@@ -36,6 +36,9 @@
 		to_chat(user, SPAN_NOTICE("You have no idea what this does, and you figure it is not time to find out."))
 		return
 
+	if(user.action_busy)
+		return
+
 	if(!istype(potential_limb, /obj/item/limb))
 		to_chat(user, SPAN_NOTICE("You cannot put this in [src]."))
 		return

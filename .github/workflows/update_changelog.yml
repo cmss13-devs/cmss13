@@ -9,6 +9,14 @@ jobs:
     concurrency: changelog
     runs-on: ubuntu-latest
     steps:
+
+    - name: Generate App Token
+      id: app-token-generation
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ secrets.APP_ID }}
+        private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
     - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
       id: value_holder
       env:
@@ -31,6 +39,8 @@ jobs:
     - name: Checkout
       if: steps.value_holder.outputs.ACTIONS_ENABLED
       uses: actions/checkout@v3
+      with:
+        token: ${{ steps.app-token-generation.outputs.token }}
     - name: Fetch Changelog
       if: steps.value_holder.outputs.ACTIONS_ENABLED
       run: |
@@ -45,12 +55,12 @@ jobs:
       if: steps.value_holder.outputs.ACTIONS_ENABLED
       run: |
         git pull origin master
-        git config --local user.email "action@github.com"
-        git config --local user.name "Changelogs"
+        git config --local user.email "${{ secrets.APP_PUBLIC_ID }}+${{ secrets.APP_PUBLIC_NAME }}[bot]@users.noreply.github.com"
+        git config --local user.name "${{ secrets.APP_PUBLIC_NAME }}[bot]"
         git add html/changelogs/archive
         git commit -m "Automatic changelog compile [ci skip]" -a || true
     - name: "Push"
       if: steps.value_holder.outputs.ACTIONS_ENABLED
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ steps.app-token-generation.outputs.token }}

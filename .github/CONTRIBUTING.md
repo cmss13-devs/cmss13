@@ -159,6 +159,10 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers should convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
+* We ask that you refrain from pinging staff about getting your pull request reviewed until after it is automatically marked stale pending review. If it ends up stale exempt, give it a week, but usually this situation will be explained such as when a relevant maintainer is currently unavailable.
+
+* Whenever sprites are added, please include screenshots or video(s) of them in game in the pull request description.
+
 ### A note on balance impacting PRs
 
 Certain PRs, such as those which directly change number values (i.e. health, recoil, damage) or add large pieces of content to the game (i.e. a new gun, a new dropship weapon, or a new xeno structure) can have the potential to highly impact game balance or gameflow.
@@ -174,7 +178,7 @@ If you are porting features/tools from other codebases, you must give them credi
 Regarding sprites & sounds, you must credit the artist and possibly the codebase.
 
 ## Things you can work on
-The following list is non-exhaustive, but should give you a good idea of what the dev team would like to see in Pull Requests.
+The following list is non-exhaustive, but should give you a good idea of what we would like to see in Pull Requests.
 
 ### Spriting
 
@@ -199,7 +203,7 @@ The following list is non-exhaustive, but should give you a good idea of what th
 - Bug fixes and inconsistency fixes
 
 **A note on new maps.**
-Entirely new maps are generally considered to be stepping stones into the Development team’s mapping dept. proper. However, making a new map is a months long process that requires dedication and constant communication and oversight from mappers on the Maintainer team. Mapping, like spriting and coding is an acquired skill, and it is highly likely your first map is going to suck. Maps are fluid entities that are never absolutely complete, don’t wed yourself to your initial layout, always be prepared to remap half the project when going in.
+Entirely new maps are generally considered to be stepping stones into the maintainers’ mapping dept. proper. However, making a new map is a months long process that requires dedication and constant communication and oversight from mappers on the Maintainer team. Mapping, like spriting and coding is an acquired skill, and it is highly likely your first map is going to suck. Maps are fluid entities that are never absolutely complete, don’t wed yourself to your initial layout, always be prepared to remap half the project when going in.
 
 
 ### Coding
@@ -216,7 +220,7 @@ Entirely new maps are generally considered to be stepping stones into the Develo
 - New TGUI
 
 ## What we don't want
-The following list is non-exhaustive, but should give you a good idea of what the dev team don't want to see in Pull Requests.
+The following list is non-exhaustive, but should give you a good idea of what we don't want to see in Pull Requests.
 
 ### Spriting
 - Resprites of recently updated content, such as uniforms, guns, marine armor
@@ -236,7 +240,10 @@ The following list is non-exhaustive, but should give you a good idea of what th
 - Player-facing HTML UIs
 - Prior denied content/PRs (without approval)
 
-Remember that the following lists are not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
+### Frozen
+- See pinned [issues](https://github.com/cmss13-devs/cmss13/issues) for anything that requires explicit permission.
+
+Remember that the list is not exhaustive. And you can freely contribute an PR with content that can be shuffled into the “What we don’t want” category, and still get it merged. It is just unlikely without prior talk/approval from a maintainer.
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:

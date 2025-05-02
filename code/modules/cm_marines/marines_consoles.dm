@@ -8,6 +8,15 @@
 #define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
 #define CARDCON_DEPARTMENT_COMMAND "Command"
 
+// Weyland Yutani Categories
+#define CARDCON_DEPARTMENT_CORP_LEAD "Corporate Leadership"
+#define CARDCON_DEPARTMENT_COMMANDOS "Corporate Commandos"
+#define CARDCON_DEPARTMENT_CORP_SECURITY "Corporate Security"
+#define CARDCON_DEPARTMENT_CORPORATE "Corporate Employees"
+#define CARDCON_DEPARTMENT_PMC "PMC Combat Ops"
+#define CARDCON_DEPARTMENT_INSPECTION "PMC Investigations"
+#define CARDCON_DEPARTMENT_SPECIALTY "PMC Specialists"
+
 /obj/structure/machinery/computer/card
 	name = "Identification Computer"
 	desc = "Terminal for programming USCM employee ID card access."
@@ -20,8 +29,13 @@
 	var/list/factions = list(FACTION_MARINE)
 	var/printing
 
-	var/is_centcom = FALSE
+	var/is_weyland = FALSE
 	var/authenticated = FALSE
+
+/obj/structure/machinery/computer/card/wey_yu
+	is_weyland = TRUE
+	req_access = list(ACCESS_WY_DATABASE)
+	factions = list(FACTION_WY, FACTION_PMC)
 
 /obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
 	if(!id_card)
@@ -113,16 +127,7 @@
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
 					P.info += contents
-				else
-					printing = TRUE
-					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
-					sleep(40)
-					var/obj/item/paper/P = new /obj/item/paper(src.loc)
-					P.name = text("Crew Manifest ([])", worldtime2text())
-					P.info = {"<center><h4>Crew Manifest</h4></center>
-						<br>
-						[GLOB.data_core.get_manifest(TRUE)]
-					"}
+
 				visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
 				printing = FALSE
 				return TRUE
@@ -133,7 +138,7 @@
 			if(target_id_card)
 				if(target_id_card.registered_name != origin_name || target_id_card.assignment != origin_assignment)
 					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
-					target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+					target_id_card.name = text("[target_id_card.registered_name]'s [target_id_card.id_type] ([target_id_card.assignment])")
 					if(target_id_card.registered_name != origin_name)
 						log_idmod(target_id_card, "<font color='orange'> [user.real_name] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>", key_name_admin(user))
 					if(target_id_card.assignment != origin_assignment)
@@ -192,7 +197,7 @@
 					target_id_card.assignment = custom_name
 			else
 				var/list/new_access = list()
-				if(is_centcom)
+				if(is_weyland)
 					new_access = get_access(ACCESS_LIST_WY_ALL)
 				else
 					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[target]
@@ -223,7 +228,7 @@
 					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted [access_type] IFF. </font>", key_name_admin(user))
 				return TRUE
 			access_type = text2num(params["access_target"])
-			if(access_type in (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
+			if(access_type in (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN)))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
 					log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
@@ -235,7 +240,7 @@
 			if(!authenticated || !target_id_card)
 				return
 
-			target_id_card.access |= (is_centcom ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
+			target_id_card.access |= (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
 			target_id_card.faction_group |= factions
 			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted the ID all access and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
@@ -290,12 +295,19 @@
 /obj/structure/machinery/computer/card/ui_static_data(mob/user)
 	var/list/data = list()
 	data["station_name"] = MAIN_SHIP_NAME
-	data["centcom_access"] = is_centcom
-	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
+	data["weyland_access"] = is_weyland
 
 	var/list/departments
-	if(is_centcom)
-		departments = list("CentCom" = get_all_centcom_jobs())
+	if(is_weyland)
+		departments = list(
+			CARDCON_DEPARTMENT_CORP_LEAD = ROLES_WY_LEADERSHIP,
+			CARDCON_DEPARTMENT_COMMANDOS = ROLES_WY_COMMANDOS,
+			CARDCON_DEPARTMENT_CORP_SECURITY = ROLES_WY_GOONS,
+			CARDCON_DEPARTMENT_CORPORATE = ROLES_WY_CORPORATE,
+			CARDCON_DEPARTMENT_PMC = ROLES_WY_PMC,
+			CARDCON_DEPARTMENT_SPECIALTY = ROLES_WY_PMC_AUX,
+			CARDCON_DEPARTMENT_INSPECTION = ROLES_WY_PMC_INSPEC,
+		)
 	else if(Check_WO())
 		// I am not sure about WOs departments so it may need adjustment
 		departments = list(
@@ -332,18 +344,26 @@
 			data["jobs"][department] = department_jobs
 
 	var/list/regions = list()
-	for(var/i in 1 to 7)
+	for(var/i in 1 to is_weyland ? 6 : 7)
 
 		var/list/accesses = list()
-		for(var/access in get_region_accesses(i))
-			if (get_access_desc(access))
-				accesses += list(list(
-					"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
-					"ref" = access,
-				))
+		if(!is_weyland)
+			for(var/access in get_region_accesses(i))
+				if(get_access_desc(access))
+					accesses += list(list(
+						"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
+						"ref" = access,
+					))
+		else
+			for(var/access in get_region_accesses_wy(i))
+				if(get_weyland_access_desc(access))
+					accesses += list(list(
+						"desc" = replacetext(get_weyland_access_desc(access), "&nbsp", " "),
+						"ref" = access,
+					))
 
 		regions += list(list(
-			"name" = get_region_accesses_name(i),
+			"name" = is_weyland ? get_region_accesses_name_wy(i) : get_region_accesses_name(i),
 			"regid" = i,
 			"accesses" = accesses
 		))
@@ -415,7 +435,7 @@
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
-		..()
+		. = ..()
 
 /obj/structure/machinery/computer/card/attack_remote(mob/user as mob)
 	return attack_hand(user)
@@ -428,7 +448,8 @@
 	set name = "Eject ID Card"
 	set src in oview(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(user_id_card)
 		user_id_card.loc = get_turf(src)
@@ -447,7 +468,7 @@
 			usr.put_in_hands(target_id_card)
 		if(operable()) // Powered. Make comp proceed ejection
 			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
-			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+			target_id_card.name = text("[target_id_card.registered_name]'s [target_id_card.id_type] ([target_id_card.assignment])")
 			visible_message("[SPAN_BOLD("[src]")] states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
 			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
@@ -475,6 +496,13 @@
 #undef CARDCON_DEPARTMENT_ENGINEERING
 #undef CARDCON_DEPARTMENT_COMMAND
 
+#undef CARDCON_DEPARTMENT_CORP_LEAD
+#undef CARDCON_DEPARTMENT_CORP_SECURITY
+#undef CARDCON_DEPARTMENT_CORPORATE
+#undef CARDCON_DEPARTMENT_PMC
+#undef CARDCON_DEPARTMENT_INSPECTION
+#undef CARDCON_DEPARTMENT_SPECIALTY
+
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
 //Which means you could get sillyiness like "Alpha Sulaco Chief Medical Officer" or "Delta Logistics Officer".
@@ -494,7 +522,8 @@
 	set name = "Eject ID Card"
 	set src in view(1)
 
-	if(!usr || usr.is_mob_incapacitated()) return
+	if(!usr || usr.is_mob_incapacitated())
+		return
 
 	if(ishuman(usr) && ID_to_modify)
 		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
@@ -631,7 +660,7 @@
 				if(!isxenos)
 					person_to_modify = G.grabbed_thing
 	else
-		..()
+		. = ..()
 
 
 /obj/structure/machinery/computer/squad_changer/attack_remote(mob/user as mob)
@@ -675,13 +704,19 @@
 	idle_power_usage = 250
 	active_power_usage = 500
 	var/faction = FACTION_MARINE
+	/// Any extra factions this console should be tracking to.
+	var/list/extra_factions = list()
 	/// What type of /datum/crewmonitor this will create
-	var/crewmonitor_type = /datum/crewmonitor
+	var/crew_monitor_type = /datum/crewmonitor
+
+	/// The identifier for the crew monitor that we use
+	VAR_PRIVATE/lookup_string
 
 /obj/structure/machinery/computer/crew/Initialize()
 	. = ..()
-	if(!GLOB.crewmonitor[faction])
-		GLOB.crewmonitor[faction] = new crewmonitor_type(faction)
+	lookup_string = "[faction]-[json_encode(sort_list(extra_factions))]"
+	if(!GLOB.crew_monitor[lookup_string])
+		GLOB.crew_monitor[lookup_string] = new crew_monitor_type(faction, extra_factions)
 
 /obj/structure/machinery/computer/crew/attack_remote(mob/living/user)
 	attack_hand(user)
@@ -692,7 +727,7 @@
 	if(inoperable())
 		return
 	user.set_interaction(src)
-	GLOB.crewmonitor[faction].show(user, src)
+	GLOB.crew_monitor[lookup_string].show(user, src)
 
 /obj/structure/machinery/computer/crew/update_icon()
 	if(stat & BROKEN)
@@ -706,7 +741,7 @@
 			stat &= ~NOPOWER
 
 /obj/structure/machinery/computer/crew/interact(mob/living/user)
-	GLOB.crewmonitor[faction].show(user, src)
+	GLOB.crew_monitor[lookup_string].show(user, src)
 
 /obj/structure/machinery/computer/crew/alt
 	icon_state = "cmonitor"
@@ -715,8 +750,10 @@
 /obj/structure/machinery/computer/crew/alt/yautja
 	name = "\improper Yautja health monitor"
 	desc = "Used to monitor active health sensors of all Yautja in the system. You can see that the console highlights the human's ship areas with BLUE and the hunting locations with RED."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "crew"
 	faction = FACTION_YAUTJA
-	crewmonitor_type = /datum/crewmonitor/yautja
+	crew_monitor_type = /datum/crewmonitor/yautja
 
 /obj/structure/machinery/computer/crew/upp
 	faction = FACTION_UPP
@@ -724,8 +761,12 @@
 /obj/structure/machinery/computer/crew/clf
 	faction = FACTION_CLF
 
-/obj/structure/machinery/computer/crew/pmc
+/obj/structure/machinery/computer/crew/wey_yu
+	faction = FACTION_WY
+
+/obj/structure/machinery/computer/crew/wey_yu/pmc
 	faction = FACTION_PMC
+	extra_factions = list(FACTION_WY)
 
 /obj/structure/machinery/computer/crew/colony
 	faction = FACTION_COLONIST
@@ -733,7 +774,7 @@
 /obj/structure/machinery/computer/crew/yautja
 	faction = FACTION_YAUTJA
 
-GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
+GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 
 #define SENSOR_LIVING 1
 #define SENSOR_VITALS 2
@@ -753,10 +794,12 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 	/// Map of job to ID for sorting purposes
 	var/list/jobs
 	var/faction = FACTION_MARINE
+	var/list/extra_factions = list()
 
-/datum/crewmonitor/New(set_faction = FACTION_MARINE)
+/datum/crewmonitor/New(set_faction = FACTION_MARINE, extras = list())
 	..()
 	faction = set_faction
+	extra_factions = extras
 	setup_for_faction(faction)
 
 /datum/crewmonitor/tgui_interact(mob/user, datum/tgui/ui)
@@ -767,7 +810,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 		ui.open()
 
 /datum/crewmonitor/proc/show(mob/M, source)
-	if(!ui_sources.len)
+	if(!length(ui_sources))
 		START_PROCESSING(SSprocessing, src)
 	ui_sources[M] = source
 	tgui_interact(M)
@@ -785,7 +828,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 /datum/crewmonitor/ui_close(mob/M)
 	. = ..()
 	ui_sources -= M
-	if(!ui_sources.len)
+	if(!length(ui_sources))
 		STOP_PROCESSING(SSprocessing, src)
 
 /datum/crewmonitor/ui_host(mob/user)
@@ -799,34 +842,36 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 /datum/crewmonitor/proc/update_data()
 	var/list/results = list()
-	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+	for(var/mob/living/carbon/human/tracked_mob in GLOB.human_mob_list)
 		// Predators
-		if(isyautja(H))
+		if(isyautja(tracked_mob))
 			continue
 		// Check for a uniform
-		var/obj/item/clothing/under/C = H.w_uniform
+		var/obj/item/clothing/under/C = tracked_mob.w_uniform
 		if(!C || !istype(C))
 			continue
 		// Check that sensors are present and active
-		if(!C.has_sensor || !C.sensor_mode || faction != H.faction)
+		if(!C.has_sensor || !C.sensor_mode || !check_faction(tracked_mob))
+			continue
+		if(tracked_mob.job in FAX_RESPONDER_JOB_LIST)
 			continue
 
 		// Check if z-level is correct
-		var/turf/pos = get_turf(H)
+		var/turf/pos = get_turf(tracked_mob)
 		if(!pos)
 			continue
-		if(should_block_game_interaction(H))
+		if(should_block_game_interaction(tracked_mob, TRUE))
 			continue
 
 		// The entry for this human
 		var/list/entry = list(
-			"ref" = REF(H),
+			"ref" = REF(tracked_mob),
 			"name" = "Unknown",
 			"ijob" = UNKNOWN_JOB_ID
 		)
 
 		// ID and id-related data
-		var/obj/item/card/id/id_card = H.get_idcard()
+		var/obj/item/card/id/id_card = tracked_mob.get_idcard()
 		if (id_card)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
@@ -835,26 +880,26 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 		// Binary living/dead status
 		if (C.sensor_mode >= SENSOR_LIVING)
-			entry["life_status"] = !H.stat
+			entry["life_status"] = !tracked_mob.stat
 
 		// Damage
 		if (C.sensor_mode >= SENSOR_VITALS)
 			entry += list(
-				"oxydam" = round(H.getOxyLoss(), 1),
-				"toxdam" = round(H.getToxLoss(), 1),
-				"burndam" = round(H.getFireLoss(), 1),
-				"brutedam" = round(H.getBruteLoss(), 1)
+				"oxydam" = round(tracked_mob.getOxyLoss(), 1),
+				"toxdam" = round(tracked_mob.getToxLoss(), 1),
+				"burndam" = round(tracked_mob.getFireLoss(), 1),
+				"brutedam" = round(tracked_mob.getBruteLoss(), 1)
 			)
 
 		// Location
 		if (C.sensor_mode >= SENSOR_COORDS)
 			if(is_mainship_level(pos.z))
 				entry["side"] = "Almayer"
-			var/area/A = get_area(H)
+			var/area/A = get_area(tracked_mob)
 			entry["area"] = sanitize_area(A.name)
 
 		// Trackability
-		entry["can_track"] = H.detectable_by_ai()
+		entry["can_track"] = tracked_mob.detectable_by_ai()
 
 		results[++results.len] = entry
 
@@ -876,6 +921,25 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 
 */
 
+/datum/crewmonitor/proc/check_faction(mob/living/carbon/human/target)
+	if((target.faction == faction) || (target.faction in extra_factions))
+		return TRUE
+	for(var/pos_faction in target.faction_group)
+		if((pos_faction == faction) || (pos_faction in extra_factions))
+			return TRUE
+
+	var/obj/item/card/id/id_card = target.wear_id
+	if(!id_card)
+		return FALSE
+
+	if((id_card.faction == faction) || (id_card.faction in extra_factions))
+		return TRUE
+	for(var/pos_faction in id_card.faction_group)
+		if((pos_faction == faction) || (pos_faction in extra_factions))
+			return TRUE
+
+	return FALSE
+
 /datum/crewmonitor/proc/setup_for_faction(set_faction = FACTION_MARINE)
 	switch(set_faction)
 		if(FACTION_MARINE)
@@ -887,9 +951,11 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PROVOST_CMARSHAL = 00,
 				JOB_GENERAL = 00,
 				JOB_PROVOST_SMARSHAL = 01,//Grade O9
-				JOB_PROVOST_MARSHAL = 02,//Grade O8
+				JOB_PROVOST_MARSHAL = 02,//Grade O7
+				JOB_PROVOST_DMARSHAL = 03,//Grade O6
 				JOB_COLONEL = 04,//Grade O6
-				JOB_PROVOST_INSPECTOR = 04,
+				JOB_PROVOST_CINSPECTOR = 05,
+				JOB_PROVOST_INSPECTOR = 06,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -904,6 +970,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
+				JOB_TANK_CREW = 26,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,
@@ -918,7 +985,8 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_RESEARCHER = 41,
 				JOB_DOCTOR = 42,
 				JOB_SURGEON = 42,
-				JOB_NURSE = 43,
+				JOB_FIELD_DOCTOR = 43,
+				JOB_NURSE = 44,
 				// 50-59: Engineering
 				JOB_CHIEF_ENGINEER = 50,
 				JOB_ORDNANCE_TECH = 51,
@@ -928,6 +996,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_CARGO_TECH = 61,
 				JOB_MESS_SERGEANT = 62,
 				// 70-139: SQUADS (look below)
+				JOB_SYNTH_K9 = 71,
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
 				JOB_PASSENGER = 141,
@@ -966,7 +1035,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
 
-				// 200-229: Visitors
+				// 200-231: Visitors
 				JOB_UPP_REPRESENTATIVE = 201,
 				JOB_TWE_REPRESENTATIVE = 201,
 				JOB_TIS_SA = 210,
@@ -975,16 +1044,17 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PMC_LEADER = 220,
 				JOB_PMC_LEAD_INVEST = 220,
 				JOB_PMC_SYNTH = 221,
-				JOB_PMC_XENO_HANDLER = 221,
 				JOB_PMC_SNIPER = 222,
 				JOB_PMC_GUNNER = 223,
 				JOB_PMC_MEDIC = 224,
 				JOB_PMC_INVESTIGATOR = 224,
 				JOB_PMC_ENGINEER = 225,
 				JOB_PMC_STANDARD = 226,
-				JOB_PMC_DOCTOR = 227,
-				JOB_WY_GOON_LEAD = 228,
-				JOB_WY_GOON = 229,
+				JOB_PMC_DETAINER = 227,
+				JOB_PMC_CROWD_CONTROL = 228,
+				JOB_PMC_DOCTOR = 229,
+				JOB_WY_GOON_LEAD = 230,
+				JOB_WY_GOON = 231,
 
 				// Appear at bottom of squad list
 				JOB_MARINE_RAIDER_SL = 130,
@@ -994,8 +1064,10 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			)
 			var/squad_number = 70
 			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")
-				if(!squad_name) squad_number = 120
-				else squad_name += " "
+				if(!squad_name)
+					squad_number = 120
+				else
+					squad_name += " "
 				jobs += list(
 					"[squad_name][JOB_SQUAD_LEADER]" = (squad_number),
 					"[squad_name][JOB_SQUAD_TEAM_LEADER]" = (squad_number + 1),
@@ -1016,25 +1088,30 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
 				// 00-09: High Command
 				JOB_DIRECTOR = 00,
-				JOB_CHIEF_EXECUTIVE = 01,
+				JOB_DEPUTY_DIRECTOR = 01,
+				JOB_CHIEF_EXECUTIVE = 02,
 				// 10-19: Command Level Staff
 				JOB_PMC_DIRECTOR = 10,
 				JOB_DIVISION_MANAGER = 10,
 				JOB_ASSISTANT_MANAGER = 11,
 				// 20-29: Corporate Staff
 				JOB_EXECUTIVE_SUPERVISOR = 20,
-				JOB_SENIOR_EXECUTIVE = 21,
-				JOB_EXECUTIVE_SPECIALIST = 22,
+				JOB_LEGAL_SUPERVISOR = 20,
+				JOB_EXECUTIVE_SPECIALIST = 21,
+				JOB_LEGAL_SPECIALIST = 21,
+				JOB_SENIOR_EXECUTIVE = 22,
 				JOB_EXECUTIVE = 23,
 				JOB_JUNIOR_EXECUTIVE = 24,
-				// 30-39: Security
+				// 30-38: Security
 				JOB_WY_GOON_LEAD = 30,
-				JOB_WY_GOON = 31,
-				// 40-49: MedSci
-				JOB_PMC_SYNTH = 40,
-				JOB_PMC_XENO_HANDLER = 41,
-				JOB_PMC_DOCTOR = 42,
-				JOB_WY_GOON_RESEARCHER = 43,
+				JOB_WY_GOON_MEDIC = 31,
+				JOB_WY_GOON_TECH = 32,
+				JOB_WY_GOON = 33,
+				// 39-49: MedSci
+				JOB_PMC_SYNTH = 39,
+				JOB_WY_RESEARCH_LEAD = 40,
+				JOB_PMC_DOCTOR = 41,
+				JOB_WY_RESEARCHER = 42,
 				// 50-59: Engineering & Vehicle Crew
 				JOB_PMC_CREWMAN = 51,
 				JOB_PMC_ENGINEER = 52,
@@ -1042,6 +1119,7 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PMC_LEAD_INVEST = 60,
 				JOB_PMC_INVESTIGATOR = 61,
 				JOB_PMC_DETAINER = 62,
+				JOB_PMC_CROWD_CONTROL = 63,
 
 				// 70-79 PMCs Combat Team
 				JOB_PMC_LEADER = 70,
@@ -1049,6 +1127,12 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 				JOB_PMC_GUNNER = 72,
 				JOB_PMC_MEDIC = 73,
 				JOB_PMC_STANDARD = 75,
+
+				// 70-79 W-Y Commando Combat Team
+				JOB_WY_COMMANDO_STANDARD = 70,
+				JOB_WY_COMMANDO_LEADER= 71,
+				JOB_WY_COMMANDO_GUNNER = 72,
+				JOB_WY_COMMANDO_DOGCATHER = 73,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
@@ -1063,24 +1147,34 @@ GLOBAL_LIST_EMPTY_TYPED(crewmonitor, /datum/crewmonitor)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
 				// 00-09: High Command
+				JOB_UPP_GENERAL = 00,
+				JOB_UPP_LT_GENERAL = 00,
+				JOB_UPP_MAY_GENERAL = 00,
+				JOB_UPP_BRIG_GENERAL = 00,
 				JOB_UPP_KOL_OFFICER = 00,
 				// 10-19: Command Team
+				JOB_UPP_KOL_OFFICER = 10,
+				JOB_UPP_LTKOL_OFFICER = 10,
+				JOB_UPP_CO_OFFICER = 10, //The actual CO role.
 				JOB_UPP_MAY_OFFICER = 10,
 				JOB_UPP_KPT_OFFICER = 11,
 				JOB_UPP_SRLT_OFFICER = 13,
 				JOB_UPP_LT_OFFICER = 14,
+				JOB_UPP_PILOT = 15,
 				// 20-29: Commandos
 				JOB_UPP_COMMANDO_LEADER = 20,
 				JOB_UPP_COMMANDO_MEDIC = 21,
 				JOB_UPP_COMMANDO = 22,
 				// 30-39: Security
 				JOB_UPP_POLICE = 31,
+				JOB_UPP_COMMISSAR = 41,
 				// 40-49: MedSci
 				JOB_UPP_LT_DOKTOR = 41,
 				// 50-59: Engineering
 				JOB_UPP_COMBAT_SYNTH = 50,
 				JOB_UPP_CREWMAN = 51,
 				JOB_UPP_SUPPORT_SYNTH = 52,
+				JOB_UPP_SUPPLY = 53,
 				// 60-69: Soldiers
 				JOB_UPP_LEADER = 60,
 				JOB_UPP_SPECIALIST = 61,

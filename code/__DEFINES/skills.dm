@@ -70,10 +70,11 @@
 
 // engineer skill
 #define SKILL_ENGINEER_DEFAULT 0
-#define SKILL_ENGINEER_TRAINED 1   //barricade repair && c4 use (mini-engis, specs)
-#define SKILL_ENGINEER_ENGI 2   //plasteel barricade deconstruction, hacking&&planet engine fixing&&apc building, Telecomms fixing (Combat Engi, OT, etc.)
-#define SKILL_ENGINEER_MASTER 3   //Synths
-#define SKILL_ENGINEER_MAX 3
+#define SKILL_ENGINEER_NOVICE 1   //barricade repair && c4 use (mini-engis, specs)
+#define SKILL_ENGINEER_TRAINED 2   //plasteel barricade deconstruction, hacking&&planet engine fixing&&apc building, Telecomms fixing  (OT, etc.)
+#define SKILL_ENGINEER_ENGI 3      // Slightly faster at everything (Combat Technicians)
+#define SKILL_ENGINEER_MASTER 4   //Synths
+#define SKILL_ENGINEER_MAX 4
 
 //medical skill
 #define SKILL_MEDICAL_DEFAULT 0

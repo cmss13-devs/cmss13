@@ -83,7 +83,7 @@ Verbs related to getting fucking jacked, bro
 		if(!get_limb(zone))
 			extremities.Remove(zone)
 
-	if(extremities.len < 8)
+	if(length(extremities) < 8)
 		to_chat(src, SPAN_WARNING("How do you think you'll be able to do a pushup without two hands and feet to stand on? See a doctor!"))
 		return FALSE
 

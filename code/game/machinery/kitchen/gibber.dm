@@ -20,56 +20,26 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
-//auto-gibs anything that bumps into it
-/obj/structure/machinery/gibber/autogibber
-	var/turf/input_plate
-
-/obj/structure/machinery/gibber/autogibber/New()
-	..()
-	spawn(5)
-		for(var/i in GLOB.cardinals)
-			var/obj/structure/machinery/mineral/input/input_obj = locate( /obj/structure/machinery/mineral/input, get_step(loc, i) )
-			if(input_obj)
-				if(isturf(input_obj.loc))
-					input_plate = input_obj.loc
-					qdel(input_obj)
-					break
-
-		if(!input_plate)
-			log_misc("a [src] didn't find an input plate.")
-			return
-
-/obj/structure/machinery/gibber/autogibber/Collided(atom/A)
-	if(!input_plate) return
-
-	if(ismob(A))
-		var/mob/M = A
-
-		if(M.loc == input_plate
-		)
-			M.forceMove(src)
-			M.gib()
-
-
 /obj/structure/machinery/gibber/New()
 	..()
-	overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
+	overlays += image(icon, "grjam")
 
 /obj/structure/machinery/gibber/update_icon()
 	overlays.Cut()
 	if (dirty)
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
+		overlays += image(icon, "grbloody")
 	if(inoperable())
 		return
 	if (!occupant)
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
+		overlays += image(icon, "grjam")
 	else if (operating)
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gruse")
+		overlays += image(icon, "gruse")
 	else
-		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
+		overlays += image(icon, "gridle")
 
 /obj/structure/machinery/gibber/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	go_out()
 
 
@@ -95,7 +65,7 @@
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
-	if( !iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal) )
+	if((!iscarbon(grabbed.grabbed_thing) && !istype(grabbed.grabbed_thing, /mob/living/simple_animal)) || isqueen(grabbed.grabbed_thing))
 		to_chat(user, SPAN_WARNING("This item is not suitable for the gibber!"))
 		return
 
@@ -262,13 +232,12 @@
 		occupant.death(create_cause_data("gibber", user), TRUE)
 		occupant.ghostize()
 
+	addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 	if(synthetic)
 		to_chat(occupant, SPAN_HIGHDANGER("You can detect your limbs being ripped off your body, but it begins to malfunction as it reaches your torso!"))
-		addtimer(CALLBACK(src, PROC_REF(create_gibs), totalslabs, allmeat), gibtime)
 		addtimer(CALLBACK(src, PROC_REF(go_out), TRUE), gibtime)
-		return
-
-	QDEL_NULL(occupant)
+	else
+		QDEL_NULL(occupant)
 
 /obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/allmeat)
 	playsound(loc, 'sound/effects/splat.ogg', 25, 1)
@@ -286,4 +255,5 @@
 	operating = FALSE
 	update_icon()
 
-
+/obj/structure/machinery/gibber/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

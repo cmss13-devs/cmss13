@@ -1,7 +1,12 @@
 /obj/item/stack/medical
 	name = "medical pack"
 	singular_name = "medical pack"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/medical_stacks.dmi'
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	amount = 10
 	max_amount = 10
 	w_class = SIZE_SMALL
@@ -56,7 +61,7 @@
 	singular_name = "medical gauze"
 	desc = "Some sterile gauze to wrap around bloody stumps and lacerations."
 	icon_state = "brutepack"
-
+	item_state_slots = list(WEAR_AS_GARB = "brutepack (bandages)")
 	stack_id = "bruise pack"
 
 /obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -104,8 +109,8 @@
 	gender = PLURAL
 	singular_name = "ointment"
 	icon_state = "ointment"
+	item_state_slots = list(WEAR_AS_GARB = "ointment")
 	heal_burn = 5
-
 	stack_id = "ointment"
 
 /obj/item/stack/medical/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -149,6 +154,7 @@
 	singular_name = "trauma kit"
 	desc = "A trauma kit for severe injuries."
 	icon_state = "traumakit"
+	item_state = "brutekit"
 	heal_brute = 12
 
 	stack_id = "advanced bruise pack"
@@ -193,29 +199,43 @@
 				to_chat(user, SPAN_WARNING("There are no wounds on [possessive] [affecting.display_name]."))
 				return TRUE
 
+/obj/item/stack/medical/advanced/bruise_pack/upgraded
+	name = "upgraded trauma kit"
+	singular_name = "upgraded trauma kit"
+	stack_id = "upgraded trauma kit"
+
+	icon_state = "traumakit_upgraded"
+	desc = "An upgraded trauma treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical wounds."
+
+	max_amount = 10
+	amount = 10
+
+/obj/item/stack/medical/advanced/bruise_pack/upgraded/Initialize(mapload, ...)
+	. = ..()
+	heal_brute = initial(heal_brute) * 3 // 3x stronger
+
+/obj/item/stack/medical/advanced/bruise_pack/upgraded/low_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(1,4)
+	update_icon()
+
 /obj/item/stack/medical/advanced/bruise_pack/predator
 	name = "mending herbs"
 	singular_name = "mending herb"
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "brute_herbs"
+	item_state = "brute_herbs"
 	heal_brute = 15
 	stack_id = "mending herbs"
 	alien = TRUE
-/obj/item/stack/medical/advanced/ointment/predator
-	name = "soothing herbs"
-	singular_name = "soothing herb"
-	desc = "A poultice made of cold, blue petals that is rubbed on burns."
-	icon = 'icons/obj/items/hunter/pred_gear.dmi'
-	icon_state = "burn_herbs"
-	heal_burn = 15
-	stack_id = "soothing herbs"
-	alien = TRUE
+
 /obj/item/stack/medical/advanced/ointment
 	name = "burn kit"
 	singular_name = "burn kit"
 	desc = "A treatment kit for severe burns."
 	icon_state = "burnkit"
+	item_state = "burnkit"
 	heal_burn = 12
 
 	stack_id = "burn kit"
@@ -260,19 +280,59 @@
 				to_chat(user, SPAN_WARNING("There are no burns on [possessive] [affecting.display_name]."))
 				return TRUE
 
+/obj/item/stack/medical/advanced/ointment/upgraded
+	name = "upgraded burn kit"
+	singular_name = "upgraded burn kit"
+	stack_id = "upgraded burn kit"
+
+	icon_state = "burnkit_upgraded"
+	desc = "An upgraded burn treatment kit. Three times as effective as standard-issue, and non-replenishable. Use sparingly on only the most critical burns."
+
+	max_amount = 10
+	amount = 10
+
+/obj/item/stack/medical/advanced/ointment/upgraded/Initialize(mapload, ...)
+	. = ..()
+	heal_burn = initial(heal_burn) * 3 // 3x stronger
+
+/obj/item/stack/medical/advanced/ointment/upgraded/low_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(1,4)
+	update_icon()
+
+/obj/item/stack/medical/advanced/ointment/predator
+	name = "soothing herbs"
+	singular_name = "soothing herb"
+	desc = "A poultice made of cold, blue petals that is rubbed on burns."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "burn_herbs"
+	item_state = "burn_herbs"
+	heal_burn = 15
+	stack_id = "soothing herbs"
+	alien = TRUE
+
 /obj/item/stack/medical/splint
 	name = "medical splints"
 	singular_name = "medical splint"
 	desc = "A collection of different splints and securing gauze. What, did you think we only broke legs out here?"
 	icon_state = "splint"
+	item_state = "splint"
 	amount = 5
 	max_amount = 5
 	stack_id = "splint"
 
 	var/indestructible_splints = FALSE
 
+/obj/item/stack/medical/splint/Initialize(mapload, amount)
+	. = ..()
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/indestructible_splints))
+		icon_state = "nanosplint"
+		indestructible_splints = TRUE
+		update_icon()
+
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M, mob/user)
-	if(..()) return 1
+	if(..())
+		return 1
 
 	if(user.action_busy)
 		return
@@ -317,3 +377,24 @@
 		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)
 			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)
+
+/obj/item/stack/medical/splint/nano
+	name = "nano splints"
+	singular_name = "nano splint"
+
+	icon_state = "nanosplint"
+	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. These aren't plentiful, so use them sparingly on critical areas."
+
+	indestructible_splints = TRUE
+	amount = 5
+	max_amount = 5
+
+	stack_id = "nano splint"
+
+/obj/item/stack/medical/splint/nano/low_amount/Initialize(mapload, ...)
+	. = ..()
+	amount = rand(1,2)
+	update_icon()
+
+/obj/item/stack/medical/splint/nano/research
+	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. Those are made from durable carbon fiber and dont look cheap, better use them sparingly."

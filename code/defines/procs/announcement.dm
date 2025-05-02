@@ -5,7 +5,6 @@
 #define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
 #define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
-#define YAUTJA_ANNOUNCE "You receive a message from your ship AI..." //preds announcement
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
 
 //xenomorph hive announcement
@@ -30,7 +29,7 @@
 
 
 //general marine announcement
-/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = TRUE, signature, logging = ARES_LOG_MAIN)
+/proc/marine_announcement(message, title = COMMAND_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_MARINE, add_PMCs = FALSE, signature, logging = ARES_LOG_MAIN)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_MARINE)
 		for(var/mob/M in targets)
@@ -40,11 +39,12 @@
 			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H)) //base human checks
 				targets.Remove(H)
 				continue
-			if(is_mainship_level(H.z)) // People on ship see everything
+			if(is_mainship_level(H.z) && istype(GLOB.master_mode, /datum/game_mode/extended/faction_clash )) // People on ship see everything, unless it is faction clash
 				continue
 
 			// If they have iff AND a marine headset they will recieve announcements
-			if ((FACTION_MARINE in H.wear_id?.faction_group) && (istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer)))
+			var/obj/item/card/id/card = H.get_idcard()
+			if ((FACTION_MARINE in card?.faction_group) && (istype(H.wear_l_ear, /obj/item/device/radio/headset/almayer) || istype(H.wear_r_ear, /obj/item/device/radio/headset/almayer)))
 				continue
 
 			if((H.faction != faction_to_display && !add_PMCs) || (H.faction != faction_to_display && add_PMCs && !(H.faction in FACTION_LIST_WY)) && !(faction_to_display in H.faction_group)) //faction checks
@@ -77,18 +77,6 @@
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
-
-	announcement_helper(message, title, targets, sound_to_play)
-
-//yautja ship AI announcement
-/proc/yautja_announcement(message, title = YAUTJA_ANNOUNCE, sound_to_play = sound('sound/misc/notice1.ogg'))
-	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/M in targets)
-		if(isobserver(M)) //observers see everything
-			continue
-		var/mob/living/carbon/human/H = M
-		if(!isyautja(H) || H.stat != CONSCIOUS)
-			targets.Remove(H)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -126,13 +114,14 @@
 
 //AI shipside announcement, that uses announcement mechanic instead of talking into comms
 //to ensure that all humans on ship hear it regardless of comms and power
-/proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature, ares_logging = ARES_LOG_MAIN)
+/proc/shipwide_ai_announcement(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/interference.ogg'), signature, ares_logging = ARES_LOG_MAIN, quiet = FALSE)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/T in targets)
-		if(isobserver(T))
+	for(var/mob/target as anything in targets)
+		if(isobserver(target))
 			continue
-		if(!ishuman(T) || isyautja(T) || !is_mainship_level(T.z))
-			targets.Remove(T)
+		var/turf/target_turf = get_turf(target)
+		if(!ishuman(target) || isyautja(target) || !is_mainship_level(target_turf?.z))
+			targets.Remove(target)
 
 	if(!isnull(signature))
 		message += "<br><br><i> Signed by, <br> [signature]</i>"
@@ -142,30 +131,20 @@
 		if(ARES_LOG_SECURITY)
 			log_ares_security(title, message, signature)
 
-	announcement_helper(message, title, targets, sound_to_play)
+	announcement_helper(message, title, targets, sound_to_play, quiet)
 
-//Subtype of AI shipside announcement for "All Hands On Deck" alerts (COs and SEAs joining the game)
 /proc/all_hands_on_deck(message, title = MAIN_AI_SYSTEM, sound_to_play = sound('sound/misc/sound_misc_boatswain.ogg'))
-	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
-	for(var/mob/T in targets)
-		if(isobserver(T))
-			continue
-		if(!ishuman(T) || isyautja(T) || !is_mainship_level((get_turf(T))?.z))
-			targets.Remove(T)
+	shipwide_ai_announcement(message, title, sound_to_play, null, ARES_LOG_MAIN, FALSE)
 
-	log_ares_announcement("Shipwide Update", message, title)
-
-	announcement_helper(message, title, targets, sound_to_play)
-
-//the announcement proc that handles announcing for each mob in targets list
-/proc/announcement_helper(message, title, list/targets, sound_to_play)
-	if(!message || !title || !sound_to_play || !targets) //Shouldn't happen
+/proc/announcement_helper(message, title, list/targets, sound_to_play, quiet)
+	if(!message || !title || !targets) //Shouldn't happen
 		return
-	for(var/mob/T in targets)
-		if(istype(T, /mob/new_player))
+	for(var/mob/target in targets)
+		if(istype(target, /mob/new_player))
 			continue
 
-		to_chat_spaced(T, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
-		if(isobserver(T) && !(T.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
-			continue
-		playsound_client(T.client, sound_to_play, T, vol = 45)
+		to_chat_spaced(target, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]", type = MESSAGE_TYPE_RADIO)
+		if(!quiet && sound_to_play)
+			if(isobserver(target) && !(target.client?.prefs?.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS))
+				continue
+			playsound_client(target.client, sound_to_play, target, vol = 45)

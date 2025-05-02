@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 //Repair a certain amount of brute or burn damage to the suit.
 /obj/item/clothing/suit/space/proc/repair_breaches(damtype, amount, mob/user)
 
-	if(!can_breach || !breaches || !breaches.len || !damage)
+	if(!can_breach || !LAZYLEN(breaches) || !damage)
 		to_chat(user, "There are no breaches to repair on \the [src].")
 		return
 
@@ -64,13 +64,14 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 		if(B.damtype == damtype)
 			valid_breaches += B
 
-	if(!valid_breaches.len)
+	if(!length(valid_breaches))
 		to_chat(user, "There are no breaches to repair on \the [src].")
 		return
 
 	var/amount_left = amount
 	for(var/datum/breach/B in valid_breaches)
-		if(!amount_left) break
+		if(!amount_left)
+			break
 
 		if(B.class <= amount_left)
 			amount_left -= B.class
@@ -92,11 +93,14 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 	if(!breaches)
 		breaches = list()
 
-	if(damage > 25) return //We don't need to keep tracking it when it's at 250% pressure loss, really.
+	if(damage > 25)
+		return //We don't need to keep tracking it when it's at 250% pressure loss, really.
 
-	if(!loc) return
+	if(!loc)
+		return
 	var/turf/T = get_turf(src)
-	if(!T) return
+	if(!T)
+		return
 
 	amount = amount * src.resilience
 
@@ -145,7 +149,7 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 	brute_damage = 0
 	burn_damage = 0
 
-	if(!can_breach || !breaches || !breaches.len)
+	if(!can_breach || !LAZYLEN(breaches))
 		name = base_name
 		return 0
 
@@ -220,6 +224,6 @@ GLOBAL_LIST_INIT(breach_burn_descriptors, list(
 
 /obj/item/clothing/suit/space/get_examine_text(mob/user)
 	. = ..()
-	if(can_breach && breaches && breaches.len)
+	if(can_breach && LAZYLEN(breaches))
 		for(var/datum/breach/B in breaches)
 			. += SPAN_DANGER("It has \a [B.descriptor].")

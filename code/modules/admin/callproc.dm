@@ -140,7 +140,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	if (!length(proclist))
 		return
 
-	var/procname = proclist[proclist.len]
+	var/procname = proclist[length(proclist)]
 	var/proctype = ("verb" in proclist) ? "verb" :"proc"
 
 	if(targetselected)
@@ -161,15 +161,15 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 		if(!target)
 			to_chat(usr, "<font color='red'>Error: callproc(): owner of proc no longer exists.</font>", confidential = TRUE)
 			return
-		var/msg = "[key_name(src)] called [target]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."
+		var/msg = "[key_name(src)] called [target]'s [procname]() with [length(lst) ? "the arguments [list2params(lst)]":"no arguments"]."
 		log_admin(msg)
 		message_admins(msg) //Proccall announce removed.
 		admin_ticket_log(target, msg)
 		returnval = WrapAdminProcCall(target, procname, lst) // Pass the lst as an argument list to the proc
 	else
 		//this currently has no hascall protection. wasn't able to get it working.
-		log_admin("[key_name(src)] called [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
-		message_admins("[key_name(src)] called [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].") //Proccall announce removed.
+		log_admin("[key_name(src)] called [procname]() with [length(lst) ? "the arguments [list2params(lst)]":"no arguments"].")
+		message_admins("[key_name(src)] called [procname]() with [length(lst) ? "the arguments [list2params(lst)]":"no arguments"].") //Proccall announce removed.
 		returnval = WrapAdminProcCall(GLOBAL_PROC, procname, lst) // Pass the lst as an argument list to the proc
 	if(get_retval)
 		get_retval += returnval
@@ -230,7 +230,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	to_chat(usr, SPAN_BOLDWARNING("Warning: Force attempt has been logged."))
 	message_admins("[key_name(usr)] has attempted to execute a restricted proc. ([procname])")
 
-/client/proc/callproc_datum(datum/called_datum as null|area|mob|obj|turf)
+/client/proc/callproc_datum(datum/called_datum as null|area|mob|obj|turf in view(src))
 	set category = "Debug"
 	set name = "Datum ProcCall"
 	set waitfor = FALSE
@@ -251,8 +251,8 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	if(!called_datum || !is_valid_src(called_datum))
 		to_chat(usr, SPAN_WARNING("Error: callproc_datum(): owner of proc no longer exists."), confidential = TRUE)
 		return
-	log_admin("[key_name(src)] called [called_datum]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
-	var/msg = "[key_name(src)] called [called_datum]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"]."
+	log_admin("[key_name(src)] called [called_datum]'s [procname]() with [length(lst) ? "the arguments [list2params(lst)]":"no arguments"].")
+	var/msg = "[key_name(src)] called [called_datum]'s [procname]() with [length(lst) ? "the arguments [list2params(lst)]":"no arguments"]."
 	message_admins(msg)
 	admin_ticket_log(called_datum, msg)
 
@@ -285,7 +285,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	if(islist(returnval))
 		var/list/returnedlist = returnval
 		. = "<font color='blue'>"
-		if(returnedlist.len)
+		if(length(returnedlist))
 			var/assoc_check = returnedlist[1]
 			if(istext(assoc_check) && (returnedlist[assoc_check] != null))
 				. += "[procname] returned an associative list:"

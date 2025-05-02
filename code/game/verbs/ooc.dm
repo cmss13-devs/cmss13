@@ -2,13 +2,18 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC.OOC"
 
-	if(!mob) return
+	if(!mob)
+		return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
-	if(!msg) return
+	if(!msg)
+		return
 
 	if(!(prefs.toggles_chat & CHAT_OOC))
 		to_chat(src, SPAN_DANGER("You have OOC muted."))
@@ -42,7 +47,8 @@
 	if(!display_colour)
 		display_colour = CONFIG_GET(string/ooc_color_normal)
 	if(admin_holder && !admin_holder.fakekey)
-		display_colour = CONFIG_GET(string/ooc_color_other)
+		if(admin_holder.rights & R_MENTOR)
+			display_colour = CONFIG_GET(string/ooc_color_other)
 		if(admin_holder.rights & R_DEBUG)
 			display_colour = CONFIG_GET(string/ooc_color_debug)
 		if(admin_holder.rights & R_MOD)
@@ -76,16 +82,25 @@
 		var/byond = icon('icons/effects/effects.dmi', "byondlogo")
 		prefix += "[icon2html(byond, GLOB.clients)]"
 	if(CONFIG_GET(flag/ooc_country_flags) && (prefs.toggle_prefs & TOGGLE_OOC_FLAG))
-		prefix += "[country2chaticon(src.country, GLOB.clients)]"
+		prefix += "[country2chaticon(country, GLOB.clients)]"
 	if(donator)
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "Donator")]"
+		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "Donator")]"
 	if(isCouncil(src))
-		prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, "WhitelistCouncil")]"
+		prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, "WhitelistCouncil")]"
+	var/comm_award = find_community_award_icons()
+	if(comm_award)
+		prefix += comm_award
 	if(admin_holder)
-		var/list/rank_icons = icon_states('icons/ooc.dmi')
-		var/rankname = admin_holder.rank
-		if(rankname in rank_icons)
-			prefix += "[icon2html('icons/ooc.dmi', GLOB.clients, admin_holder.rank)]"
+		if(length(admin_holder.extra_titles))
+			var/extra_title_state
+			for(var/extra_title in admin_holder.extra_titles)
+				extra_title_state = ckeyEx(extra_title)
+				if(extra_title_state in GLOB.ooc_rank_iconstates)
+					prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, extra_title_state)]"
+
+		if(admin_holder.rank in GLOB.ooc_rank_iconstates)
+			prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, admin_holder.rank)]"
+
 	if(prefix)
 		prefix = "[prefix] "
 	return prefix
@@ -95,13 +110,18 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC.OOC"
 
-	if(!mob) return
+	if(!mob)
+		return
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use LOOC.")
 		return
 
+	if(!filter_message(src, msg))
+		return
+
 	msg = trim(strip_html(msg))
-	if(!msg) return
+	if(!msg)
+		return
 
 	if(!(prefs.toggles_chat & CHAT_LOOC))
 		to_chat(src, SPAN_DANGER("You have LOOC muted."))
@@ -135,7 +155,7 @@
 
 	var/display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = S.name
+		display_name = S.real_name
 
 	msg = process_chat_markup(msg, list("*"))
 
@@ -157,7 +177,7 @@
 	// Now handle admins
 	display_name = S.key
 	if(S.stat != DEAD && !isobserver(S))
-		display_name = "[S.name]/([S.key])"
+		display_name = "[S.real_name]/([S.key])"
 
 	for(var/client/C in GLOB.admins)
 		if(!C.admin_holder || !(C.admin_holder.rights & R_MOD))
@@ -184,6 +204,10 @@
 
 	if(!mob)
 		return
+
+	if(istype(mob, /mob/new_player))
+		var/mob/new_player/new_player = mob
+		new_player.initialize_lobby_screen()
 
 	for(var/I in mob.open_uis)
 		var/datum/nanoui/ui = I
@@ -217,7 +241,7 @@
 	if(!desired_width)
 		// Calculate desired pixel width using window size and aspect ratio
 		var/height = text2num(map_size[2])
-		desired_width = round(height * aspect_ratio)
+		desired_width = floor(height * aspect_ratio)
 
 	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
 	var/split_width = text2num(split_size[1])
@@ -225,7 +249,8 @@
 	if(split_width - desired_width < 240)
 		desired_width = split_width - 240
 
-	if (text2num(map_size[1]) == desired_width)
+	if (text2num(map_size[1]) == desired_width || split_width == 0)
+		// If split_width is 0, it likely means they are minimized and we don't know what the window size would be
 		// Nothing to do
 		return
 

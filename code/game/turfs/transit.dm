@@ -15,7 +15,7 @@
 		return
 
 	if(!istype(old_loc, /turf/open/space))
-		var/turf/projected = get_ranged_target_turf(crosser.loc, dir, 10)
+		var/turf/projected = get_ranged_target_turf(crosser, dir, 10)
 
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 
@@ -106,7 +106,7 @@
 	//we didn't find a turf to drop them... This shouldn't happen usually
 	if(crosser.can_paradrop()) //don't delete them if they were supposed to paradrop
 		to_chat(crosser, SPAN_BOLDWARNING("Your harness got stuck and you got thrown back in the dropship."))
-		var/turf/projected = get_ranged_target_turf(crosser.loc, turn(dir, 180), 15)
+		var/turf/projected = get_ranged_target_turf(crosser, turn(dir, 180), 15)
 		INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), projected, 50, SPEED_FAST, null, TRUE)
 		return
 	return ..() // they couldn't be dropped, just delete them
@@ -138,6 +138,12 @@
 	clear_active_explosives()
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	ADD_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	ADD_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	RegisterSignal(src, COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED, PROC_REF(cancel_cross))
+	RegisterSignal(src, list(
+		COMSIG_LIVING_FLAMER_FLAMED,
+		COMSIG_LIVING_PREIGNITION
+	), PROC_REF(cancel_fire))
 	var/image/cables = image('icons/obj/structures/droppod_32x64.dmi', src, "chute_cables_static")
 	overlays += cables
 	var/image/chute = image('icons/obj/structures/droppod_64x64.dmi', src, "chute_static")
@@ -163,8 +169,18 @@
 		return
 	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_DROPSHIP_INTERACTION)
 	REMOVE_TRAIT(src, TRAIT_UNDENSE, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	REMOVE_TRAIT(src, TRAIT_NO_STRAY, TRAIT_SOURCE_DROPSHIP_INTERACTION)
+	UnregisterSignal(src, list(
+		COMSIG_MOVABLE_FORCEMOVE_PRE_CROSSED,
+		COMSIG_LIVING_FLAMER_FLAMED,
+		COMSIG_LIVING_PREIGNITION
+	))
 	overlays -= cables
 	overlays -= chute
+	for(var/atom/movable/atom in loc)
+		if(atom == src)
+			continue
+		atom.Cross(src)
 
 /atom/movable/proc/clear_active_explosives()
 	for(var/obj/item/explosive/explosive in contents)
@@ -183,7 +199,7 @@
 
 /obj/handle_airdrop(turf/target, dropship_name)
 	..()
-	if(!indestructible && prob(30)) // throwing objects from the air is not always a good idea
+	if(!explo_proof && prob(30)) // throwing objects from the air is not always a good idea
 		deconstruct(FALSE)
 
 /obj/structure/closet/handle_airdrop(turf/target, dropship_name) // good idea but no
@@ -197,7 +213,7 @@
 	..()
 	if(QDELETED(src))
 		return
-	if(!indestructible && w_class < SIZE_MEDIUM) //tiny and small items will be lost, good riddance
+	if(!explo_proof && w_class < SIZE_MEDIUM) //tiny and small items will be lost, good riddance
 		deconstruct(FALSE)
 		return
 	explosion_throw(200) // give it a bit of a kick
@@ -232,6 +248,13 @@
 		death(last_damage_data)
 	status_flags |= PERMANENTLY_DEAD
 
+/atom/movable/proc/cancel_cross()
+	SIGNAL_HANDLER
+	return COMPONENT_IGNORE_CROSS
+
+/atom/movable/proc/cancel_fire()
+	SIGNAL_HANDLER
+	return COMPONENT_NO_BURN
 
 /turf/open/space/transit/dropship/alamo
 	shuttle_tag = DROPSHIP_ALAMO
@@ -239,6 +262,18 @@
 
 /turf/open/space/transit/dropship/normandy
 	shuttle_tag = DROPSHIP_NORMANDY
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/saipan
+	shuttle_tag = DROPSHIP_SAIPAN
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/morana
+	shuttle_tag = DROPSHIP_MORANA
+	dir = SOUTH
+
+/turf/open/space/transit/dropship/devana
+	shuttle_tag = DROPSHIP_DEVANA
 	dir = SOUTH
 
 /turf/open/space/transit/south

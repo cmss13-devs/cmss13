@@ -45,7 +45,7 @@
 	see_in_dark = 12
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_LIVING
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD, NEW_PLAYER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -60,6 +60,9 @@
 	var/obj/item/clothing/head/head = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
+	// Mob we are hauling
+	var/datum/weakref/hauled_mob
+	var/haul_timer
 
 	var/obj/item/iff_tag/iff_tag = null
 
@@ -89,8 +92,6 @@
 	melee_damage_upper = 10
 	var/melee_vehicle_damage = 10
 	var/claw_type = CLAW_TYPE_NORMAL
-	var/burn_damage_lower = 0
-	var/burn_damage_upper = 0
 	var/plasma_stored = 10
 	var/plasma_max = 10
 	var/plasma_gain = 5
@@ -208,6 +209,7 @@
 	var/armor_integrity_modifier = 0
 
 	var/list/modifier_sources
+	COOLDOWN_DECLARE(next_strain_reset)
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -218,11 +220,11 @@
 	//////////////////////////////////////////////////////////////////
 	var/xeno_mobhud = FALSE //whether the xeno mobhud is activated or not.
 	var/xeno_hostile_hud = FALSE // 'Hostile' HUD - the verb Xenos use to see tags, etc on humans
+	var/execute_hud = FALSE // Crit HUD, only visible to vampire lurkers
 	var/list/plasma_types = list() //The types of plasma the caste contains
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
 	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
-	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
 	var/mob/living/carbon/xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision
 	var/need_weeds = TRUE // Do we need weeds to regen HP?
 	var/datum/behavior_delegate/behavior_delegate = null // Holds behavior delegate. Governs all 'unique' hooked behavior of the Xeno. Set by caste datums and strains.
@@ -249,6 +251,14 @@
 
 	// Life reduction variables.
 	var/life_slow_reduction = -1.5
+	//Research organ harvesting.
+	var/organ_removed = FALSE
+	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	var/organ_value = 0
+
+	var/obj/item/skull/skull = /obj/item/skull
+	var/obj/item/pelt/pelt = /obj/item/pelt
+
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -263,6 +273,7 @@
 	// an easily modularizable way. So, here you go.
 	//
 	//////////////////////////////////////////////////////////////////
+
 	var/tunnel = FALSE
 	/// for check on lurker invisibility
 	var/stealth = FALSE
@@ -271,8 +282,6 @@
 	/// 0/FALSE - upright, 1/TRUE - all fours
 	var/agility = FALSE
 	var/ripping_limb = FALSE
-	/// The world.time at which we will regurgitate our currently-vored victim
-	var/devour_timer = 0
 	/// For drones/hivelords. Extends the maximum build range they have
 	var/extra_build_dist = 0
 	/// tiles from self you can plant eggs.
@@ -337,25 +346,36 @@
 
 	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
+	/// If TRUE, the xeno cannot slash anything
+	var/cannot_slash = FALSE
+	/// The world.time when the xeno was created. Carries over between strains and evolving
+	var/creation_time = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
 
-	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
+	//putting the organ in for research
+	if(organ_value != 0)
+		var/obj/item/organ/xeno/organ = new() //give
+		organ.forceMove(src)
+		organ.research_value = organ_value
+		organ.caste_origin = caste_type
+		organ.icon_state = get_organ_icon()
 
+	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND)) // The hive may alter this list
+
+	var/datum/hive_status/hive = GLOB.hive_datum[src.hivenumber]
 	if(hive)
 		hive.add_xeno(src)
 
 	wound_icon_holder = new(null, src)
 	vis_contents += wound_icon_holder
 
-	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
-
 	///Handle transferring things from the old Xeno if we have one in the case of evolve, devolve etc.
+	AddComponent(/datum/component/deevolve_cooldown, old_xeno)
 	if(old_xeno)
 		src.nicknumber = old_xeno.nicknumber
 		src.life_kills_total = old_xeno.life_kills_total
@@ -378,7 +398,8 @@
 		//If we're holding things drop them
 		for(var/obj/item/item in old_xeno.contents) //Drop stuff
 			old_xeno.drop_inv_item_on_ground(item)
-		old_xeno.empty_gut()
+		if(old_xeno.hauled_mob?.resolve())
+			old_xeno.release_haul(old_xeno.hauled_mob.resolve())
 
 		if(old_xeno.iff_tag)
 			iff_tag = old_xeno.iff_tag
@@ -488,6 +509,8 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
+	creation_time = world.time
+
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
@@ -592,7 +615,7 @@
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		if(XENO_VISION_LEVEL_MID_NVG)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 	update_sight()
@@ -605,6 +628,8 @@
 		if(XENO_VISION_LEVEL_NO_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		if(XENO_VISION_LEVEL_MID_NVG)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+		if(XENO_VISION_LEVEL_HIGH_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		if(XENO_VISION_LEVEL_FULL_NVG)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
@@ -616,7 +641,7 @@
 	switch(lighting_alpha)
 		if(LIGHTING_PLANE_ALPHA_INVISIBLE)
 			return XENO_VISION_LEVEL_FULL_NVG
-		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+		if(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 			return XENO_VISION_LEVEL_MID_NVG
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			return XENO_VISION_LEVEL_NO_NVG
@@ -664,10 +689,16 @@
 
 	if(iff_tag)
 		. += SPAN_NOTICE("It has an IFF tag sticking out of its carapace.")
+	if(organ_removed)
+		. += "It seems to have its carapace cut open."
 
 /mob/living/carbon/xenomorph/Destroy()
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user)
+		user.handle_unhaul()
+		hauled_mob = null
 
 	if(tracked_marker)
 		tracked_marker.xenos_tracking -= src
@@ -733,13 +764,27 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
-	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
+	if(stat == DEAD)
+		return TRUE
+	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
 			return TRUE
 		puller.apply_effect(rand(caste.tacklestrength_min,caste.tacklestrength_max), WEAKEN)
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
+		return FALSE
+	if(issynth(puller) && (mob_size >= 4 || istype(src, /mob/living/carbon/xenomorph/warrior)))
+		var/mob/living/carbon/human/synthetic/puller_synth = puller
+		if(puller_synth.ally_of_hivenumber(hivenumber))
+			return TRUE
+		puller.apply_effect(1, DAZE)
+		shake_camera(puller, 2, 1)
+		playsound(puller.loc, 'sound/weapons/alien_claw_block.ogg', 25, 1)
+		var/facing = get_dir(src, puller)
+		throw_carbon(puller, facing, 1, SPEED_SLOW, shake_camera = FALSE, immobilize = FALSE)
+		puller.apply_effect(get_xeno_stun_duration(puller, 1), WEAKEN)
+		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets whacked in the chest!"))
 		return FALSE
 	return TRUE
 
@@ -857,7 +902,7 @@
 	if(health < maxHealth)
 		currentHealthRatio = health / maxHealth
 	maxHealth = new_max_health
-	health = round(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	health = floor(maxHealth * currentHealthRatio + 0.5)//Restore our health ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(health > maxHealth)
 		health = maxHealth
 
@@ -871,7 +916,7 @@
 		return
 	var/plasma_ratio = plasma_stored / plasma_max
 	plasma_max = new_plasma_max
-	plasma_stored = round(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
+	plasma_stored = floor(plasma_max * plasma_ratio + 0.5) //Restore our plasma ratio, so if we're full, we continue to be full, etc. Rounding up (hence the +0.5)
 	if(plasma_stored > plasma_max)
 		plasma_stored = plasma_max
 
@@ -884,7 +929,7 @@
 
 /mob/living/carbon/xenomorph/proc/recalculate_armor()
 	//We are calculating it in a roundabout way not to give anyone 100% armor deflection, so we're dividing the differences
-	armor_deflection = armor_modifier + round(100 - (100 - caste.armor_deflection))
+	armor_deflection = armor_modifier + floor(100 - (100 - caste.armor_deflection))
 	armor_explosive_buff = explosivearmor_modifier
 
 /mob/living/carbon/xenomorph/proc/recalculate_damage()
@@ -971,7 +1016,7 @@
 /mob/living/carbon/xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)
 	apply_effect(4, WEAKEN)
-	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
+	visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 		SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -980,8 +1025,11 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
+
+/mob/living/carbon/xenomorph/proc/get_organ_icon()
+	return "heart_t[tier]"
 
 /mob/living/carbon/xenomorph/resist_restraints()
 	if(!legcuffed)
@@ -991,7 +1039,7 @@
 	next_move = world.time + 10 SECONDS
 	last_special = world.time + 1 SECONDS
 
-	var/displaytime = max(1, round(breakouttime / 600)) //Minutes
+	var/displaytime = max(1, floor(breakouttime / 600)) //Minutes
 	visible_message(SPAN_DANGER("<b>[src] attempts to remove [legcuffed]!</b>"),
 		SPAN_WARNING("We attempt to remove [legcuffed]. (This will take around [displaytime] minute\s and we must stand still)"))
 	if(!do_after(src, breakouttime, INTERRUPT_NO_NEEDHAND ^ INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
@@ -1042,7 +1090,7 @@
 		var/datum/reagent/D = GLOB.chemical_reagents_list[special_blood]
 		if(D)
 			color_override = D.color
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
+	new /obj/effect/bloodsplatter/xenosplatter(loc, splatter_dir, duration, color_override)
 
 /mob/living/carbon/xenomorph/Collide(atom/movable/movable_atom)
 	. = ..()
@@ -1064,7 +1112,7 @@
 		if(current_airlock.locked || current_airlock.welded) //Can't pass through airlocks that have been bolted down or welded
 			to_chat(src, SPAN_WARNING("[current_airlock] is locked down tight. We can't squeeze underneath!"))
 			return FALSE
-	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"), \
+	visible_message(SPAN_WARNING("[src] scuttles underneath [current_structure]!"),
 	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE

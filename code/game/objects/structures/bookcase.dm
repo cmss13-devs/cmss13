@@ -1,7 +1,7 @@
 
 /obj/structure/bookcase
 	name = "bookcase"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/bookshelf.dmi'
 	icon_state = "book-0"
 	anchored = TRUE
 	density = TRUE
@@ -47,14 +47,14 @@
 	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 1 SECONDS, INTERRUPT_MOVED, BUSY_ICON_FRIENDLY, src))
-			user.visible_message("[user] deconstructs [src].", \
+			user.visible_message("[user] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
 			deconstruct(FALSE)
 	else
-		..()
+		. = ..()
 
 /obj/structure/bookcase/attack_hand(mob/user as mob)
-	if(contents.len)
+	if(length(contents))
 		var/obj/item/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
 			if(user.is_mob_incapacitated() || !in_range(loc, user))
@@ -84,8 +84,8 @@
 			return
 
 /obj/structure/bookcase/update_icon()
-	if(contents.len < 5)
-		icon_state = "book-[contents.len]"
+	if(length(contents) < 5)
+		icon_state = "book-[length(contents)]"
 	else
 		icon_state = "book-5"
 

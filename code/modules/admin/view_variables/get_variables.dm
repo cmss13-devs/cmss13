@@ -390,7 +390,7 @@
 	var/list/matches = new
 	var/end_len = -1
 	var/list/endcheck = splittext(filter, "!")
-	if(endcheck.len > 1)
+	if(length(endcheck) > 1)
 		filter = endcheck[1]
 		end_len = length_char(filter)
 

@@ -36,20 +36,21 @@
 
 //--------------ESSENTIALS------------------------
 
-/obj/effect/essentials_set/medic/upp
-	spawned_gear_list = list(
-		/obj/item/bodybag/cryobag,
-		/obj/item/device/defibrillator,
-		/obj/item/storage/firstaid/adv,
-		/obj/item/device/healthanalyzer,
-		/obj/item/roller,
-	)
 
 /obj/effect/essentials_set/upp_heavy
 	spawned_gear_list = list(
 		/obj/item/weapon/gun/minigun/upp,
 		/obj/item/ammo_magazine/minigun,
 		/obj/item/ammo_magazine/minigun,
+	)
+
+/obj/effect/essentials_set/upp_heavy_pkp
+	spawned_gear_list = list(
+		/obj/item/weapon/gun/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
+		/obj/item/ammo_magazine/pkp,
 	)
 
 /obj/effect/essentials_set/leader/upp

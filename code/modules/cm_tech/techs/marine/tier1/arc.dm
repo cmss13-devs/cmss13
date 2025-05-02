@@ -12,10 +12,23 @@
 
 	flags = TREE_FLAG_MARINE
 
+
+/datum/tech/arc/can_unlock(mob/unlocking_mob)
+	. = ..()
+
+	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole
+
+	if(gearcomp.selected_vehicle == "TANK")
+		to_chat(unlocking_mob, SPAN_WARNING ("A vehicle has already been selected for this operation."))
+		return FALSE
+
+	return TRUE
+
+
 /datum/tech/arc/on_unlock()
 	. = ..()
 
-	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = GLOB.VehicleElevatorConsole
+	var/obj/structure/machinery/computer/supply/asrs/vehicle/comp = GLOB.VehicleElevatorConsole
 	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = GLOB.VehicleGearConsole
 
 	if(!comp || !gearcomp)

@@ -1,6 +1,6 @@
 /obj/item/device/clue_scanner
 	name = "forensic scanner"
-	desc = "A modern handheld scanner to gather fingerprints. Guaranteed increase of effectivity and almost perfect accuracy of results. DISCLAIMER: Incorrect results are not covered by insurance."
+	desc = "A modern handheld scanner to gather fingerprints. Must be analyzed at a security records terminal after prints are gathered."
 	icon_state = "forensic1"
 	w_class = SIZE_MEDIUM
 	item_state = "electronic"
@@ -52,4 +52,4 @@
 	if(!newlyfound)
 		to_chat(user, SPAN_INFO("No new print sets found!"))
 	else
-		to_chat(user, SPAN_INFO("New print sets found: [newlyfound], total stored amount: [print_list.len]"))
+		to_chat(user, SPAN_INFO("New print sets found: [newlyfound], total stored amount: [length(print_list)]"))

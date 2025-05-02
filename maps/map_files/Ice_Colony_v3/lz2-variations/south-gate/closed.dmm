@@ -16,23 +16,17 @@
 	pixel_x = 12;
 	pixel_y = 25
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "e" = (
 /obj/structure/machinery/door_control{
 	id = "sslz_shutters";
 	pixel_x = -22
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "f" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "g" = (
 /turf/open/auto_turf/snow/layer2,
@@ -45,9 +39,7 @@
 	id = "sslz_shutters";
 	pixel_x = -22
 	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "r" = (
 /turf/open/auto_turf/snow/layer4,
@@ -74,30 +66,21 @@
 	id = "slz_shutters";
 	pixel_x = -22
 	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "y" = (
 /obj/effect/landmark/objective_landmark/science,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "B" = (
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/shiva/multi_tiles/north,
 /area/shiva/exterior/lz2_fortress)
 "F" = (
 /obj/structure/machinery/door_control{
 	id = "sslz_shutters";
 	pixel_x = 25
 	},
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "L" = (
 /obj/structure/machinery/door_control{
@@ -116,23 +99,17 @@
 	id = "slz_shutters";
 	pixel_x = -22
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "U" = (
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
 "W" = (
 /obj/structure/machinery/door_control{
 	id = "sslz_shutters";
 	pixel_x = 25
 	},
-/turf/open/floor/shiva{
-	icon_state = "radiator_tile"
-	},
+/turf/open/floor/shiva/radiator_tile,
 /area/shiva/exterior/lz2_fortress)
 "X" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -143,9 +120,7 @@
 /area/shiva/exterior/cp_lz2)
 "Y" = (
 /obj/structure/foamed_metal,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 
 (1,1,1) = {"

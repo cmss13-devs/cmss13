@@ -1,0 +1,9 @@
+@font-face {
+  font-family: sevastopol;
+  src:
+    url('./sevastopol_interface.woff2') format('woff2'),
+    url('./sevastopol_interface.ttf') format('truetype');
+}
+
+_ {
+}

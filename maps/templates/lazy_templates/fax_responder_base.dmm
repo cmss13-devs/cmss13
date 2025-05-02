@@ -1,0 +1,7327 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_TWE_Road";
+	name = "\improper Road Blockade";
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/item/spacecash/c10{
+	pixel_x = -5;
+	pixel_y = -3;
+	name = "1000 yen note";
+	desc = "A single TWE Government minted ten-pound note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ab" = (
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"ad" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ae" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"af" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"ag" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ai" = (
+/obj/item/device/flashlight/lamp/tripod/grey{
+	anchored = 1;
+	pixel_y = 19
+	},
+/turf/open/asphalt/cement,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"am" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"an" = (
+/turf/open/auto_turf/snow/layer1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"az" = (
+/obj/structure/machinery/cryopod/no_store{
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"aF" = (
+/obj/structure/machinery/vending/walkman{
+	pixel_x = -4;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"aJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 10
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"aK" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = 6;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = 6;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"aM" = (
+/obj/structure/bed/chair/office/dark,
+/obj/structure/coatrack{
+	pixel_y = 16;
+	pixel_x = -10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"aT" = (
+/obj/structure/sign/prop2{
+	pixel_x = 31
+	},
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"ba" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"bc" = (
+/obj/structure/bed/chair/office/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"be" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/uscm/directional/west,
+/area/adminlevel/ert_station/fax_response_station)
+"bf" = (
+/obj/structure/mirror{
+	pixel_y = 32;
+	pixel_x = -1
+	},
+/obj/structure/sink{
+	pixel_y = 21
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 13;
+	pixel_x = 13
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"bo" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"bp" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 0;
+	prices = list();
+	density = 0;
+	wrenchable = 0;
+	pixel_x = -6;
+	wires = 12
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"bw" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/machinery/door/window/tinted{
+	dir = 2
+	},
+/obj/item/tool/soap/deluxe{
+	pixel_y = 7;
+	pixel_x = 3
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"bx" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = 4;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"bH" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"bI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 18
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"bJ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"bT" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_TWE";
+	name = "\improper Sewer Access";
+	emp_proof = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"bU" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"bX" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_y = 13
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"cc" = (
+/turf/open/floor/shiva/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"ch" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/platform_decoration/stone/strata{
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ci" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/chem_dispenser/soda{
+	wrenchable = 0;
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/white/east,
+/area/adminlevel/ert_station/fax_response_station)
+"ck" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals.";
+	pixel_x = 9
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"cn" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 9;
+	pixel_x = -14;
+	faction = "CLF";
+	name = "CLF monitoring computer";
+	layer = 3.01
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 9;
+	pixel_x = 3;
+	name = "USCM monitoring computer";
+	layer = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"cp" = (
+/obj/structure/pipes/vents/pump/no_boom,
+/obj/effect/decal/siding,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"cr" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
+	},
+/turf/open/floor/almayer/red/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"cz" = (
+/obj/effect/landmark/late_join/responder/uscm,
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"cA" = (
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"cE" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/clf/highcom{
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"cI" = (
+/turf/open/floor/corsat/white,
+/area/adminlevel/ert_station/fax_response_station)
+"cJ" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"cT" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 20;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/documentation/highcom/upp{
+	pixel_y = 20;
+	pixel_x = 8;
+	density = 0
+	},
+/turf/open/floor/darkgreen2/north,
+/area/adminlevel/ert_station/fax_response_station)
+"cV" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_CMB_Road";
+	name = "\improper Road Blockade";
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"cW" = (
+/obj/structure/machinery/vending/cigarette/wy/free{
+	wrenchable = 0;
+	pixel_x = 4;
+	wires = 12
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 18;
+	pixel_x = 7
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"cX" = (
+/obj/structure/bed/chair/office/dark,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"db" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_CMB";
+	name = "\improper Basement Access";
+	emp_proof = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"dk" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"do" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/on,
+/obj/item/paper_bin/uscm{
+	pixel_x = -12;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = -14
+	},
+/turf/open/floor/almayer/uscm/directional/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"dC" = (
+/obj/effect/overlay/palmtree_l,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"dE" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"dL" = (
+/obj/structure/window/reinforced/toughened,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"dM" = (
+/obj/structure/ladder{
+	id = "Faxes_CLF_Ladder";
+	height = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt2,
+/area/adminlevel/ert_station/fax_response_station)
+"dS" = (
+/obj/structure/bed/chair/comfy/alpha{
+	name = "comfy chair";
+	desc = "A chair with leather padding and adjustable headrest. You could probably sit in one of these for ages."
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"dW" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"ed" = (
+/obj/structure/machinery/cryopod/no_store{
+	pixel_y = 13;
+	dir = 1
+	},
+/turf/open/floor/almayer/blue/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"ef" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 1;
+	pixel_y = -1;
+	layer = 5;
+	pixel_x = -16
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = -24;
+	pixel_x = 5
+	},
+/turf/open/floor/darkgreen2,
+/area/adminlevel/ert_station/fax_response_station)
+"ej" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Fax Responders");
+	phone_id = "Provost Communications Officer";
+	phone_color = "red";
+	pixel_x = 9
+	},
+/obj/item/paper_bin/uscm{
+	pixel_x = -5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = 6
+	},
+/obj/item/tool/pen/multicolor/provost{
+	pixel_x = -4
+	},
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"eo" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -5;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"es" = (
+/obj/structure/machinery/vending/walkman{
+	pixel_x = 5;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ex" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin/uscm{
+	pixel_x = 15;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = 13
+	},
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"eQ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = -7
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/corsat/white/east,
+/area/adminlevel/ert_station/fax_response_station)
+"eS" = (
+/obj/structure/machinery/computer/arcade{
+	pixel_y = 17;
+	density = 0
+	},
+/turf/open/floor/darkgreen2/north,
+/area/adminlevel/ert_station/fax_response_station)
+"eV" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"fj" = (
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"fk" = (
+/obj/structure/machinery/vending/snack{
+	pixel_x = -16;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals.";
+	pixel_x = 10
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/fax_response_station)
+"fo" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"fs" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/turf/open/floor/almayer/w_y2,
+/area/adminlevel/ert_station/fax_response_station)
+"fv" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/upp{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 8
+	},
+/turf/open/floor/darkgreen2/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"fF" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/documentation/highcom/press{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"fJ" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin/uscm{
+	pixel_x = -12;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_x = -13
+	},
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"fO" = (
+/turf/open/auto_turf/snow/layer4,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"fQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"fW" = (
+/turf/closed/wall/strata_ice,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"gk" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	name = "\improper Office Entrance";
+	req_access = null;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"gm" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 20;
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/wy{
+	pixel_x = 8;
+	pixel_y = 20;
+	density = 0
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"go" = (
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"gv" = (
+/obj/structure/window/framed/almayer/hull,
+/turf/open/floor/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"gw" = (
+/obj/structure/coatrack{
+	pixel_y = 19;
+	pixel_x = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"gx" = (
+/obj/structure/bed/chair/comfy/beige{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"gz" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"gC" = (
+/obj/structure/coatrack,
+/turf/open/floor/shiva/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"gD" = (
+/obj/structure/ladder{
+	id = "Faxes_PRESS_Ladder";
+	height = 1
+	},
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/ert_station/fax_response_station)
+"gG" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"gS" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 20;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/filingcabinet/documentation/highcom/twe{
+	pixel_y = 20;
+	pixel_x = 8;
+	density = 0
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"gX" = (
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall";
+	unacidable = 1
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"hd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	dir = 1;
+	pixel_x = 1
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_CLF_Ladder";
+	pixel_y = 21;
+	name = "CLF Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"hh" = (
+/turf/open/floor/whitered/north,
+/area/adminlevel/ert_station/fax_response_station)
+"hk" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack{
+	pixel_y = 12;
+	layer = 3.51;
+	density = 0
+	},
+/obj/item/storage/box/cups{
+	pixel_y = 12;
+	layer = 3.52
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"hn" = (
+/obj/structure/machinery/space_heater{
+	pixel_x = -1;
+	pixel_y = 13;
+	layer = 2.99;
+	anchored = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/radio/intercom/fax/uscm_hc{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"hs" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/shiva/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"hy" = (
+/turf/open/floor/almayer/uscm/directional/north,
+/area/adminlevel/ert_station/fax_response_station)
+"hC" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = 6;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = 6;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/turf/open/floor/corsat/white/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"hH" = (
+/obj/structure/prop/fishing/pole_interactive{
+	pixel_x = 3
+	},
+/turf/open/gm/grass/grassbeach/east,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"hJ" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free{
+	wrenchable = 0;
+	pixel_y = 0;
+	pixel_x = 4;
+	wires = 12
+	},
+/turf/open/floor/shiva/blue/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"hK" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/uscm/directional/east,
+/area/adminlevel/ert_station/fax_response_station)
+"hO" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full"
+	},
+/turf/open/gm/dirtgrassborder2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"hU" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 2;
+	pixel_y = 20
+	},
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkgreen2/north,
+/area/adminlevel/ert_station/fax_response_station)
+"hW" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	name = "\improper Office Entrance";
+	req_access = null;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/fax_response_station)
+"ip" = (
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"iq" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river/no_overlay,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"iC" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"iL" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/light,
+/turf/open/floor/darkgreen2,
+/area/adminlevel/ert_station/fax_response_station)
+"iN" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 18;
+	pixel_x = 9
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"jf" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals.";
+	pixel_x = 10
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ji" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_PRO";
+	name = "\improper Hangar Access";
+	dir = 4;
+	emp_proof = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"jj" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 18
+	},
+/obj/structure/prop/vehicles{
+	dir = 1;
+	pixel_y = -23;
+	density = 1;
+	desc = "An old van."
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"jm" = (
+/obj/structure/window/reinforced/toughened{
+	layer = 2.99
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_x = -14;
+	pixel_y = 5;
+	layer = 2.98
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"jr" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Wey-Yu","PMC","Fax Responders");
+	phone_id = "WY Communications Executive";
+	pixel_y = 9
+	},
+/obj/structure/sign/poster/art{
+	pixel_y = -10;
+	pixel_x = 24
+	},
+/obj/item/paper_bin/wy{
+	pixel_y = 3;
+	pixel_x = 5
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/white/east,
+/area/adminlevel/ert_station/fax_response_station)
+"jB" = (
+/obj/structure/coatrack{
+	pixel_y = 22;
+	pixel_x = -10;
+	layer = 5
+	},
+/turf/open/floor/darkgreen2/north,
+/area/adminlevel/ert_station/fax_response_station)
+"jD" = (
+/obj/structure/machinery/vending/cigarette/wy/free{
+	wrenchable = 0;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"jI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"jJ" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	pixel_y = 13;
+	pixel_x = 9
+	},
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"jM" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/darkgreen2/east,
+/area/adminlevel/ert_station/fax_response_station)
+"jT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/upp/highcom{
+	pixel_y = 0
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/darkgreen2,
+/area/adminlevel/ert_station/fax_response_station)
+"jX" = (
+/obj/structure/platform/stone/strata{
+	dir = 4;
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"kf" = (
+/obj/structure/ladder{
+	id = "Faxes_PRO_Ladder";
+	height = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"kg" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/fax_response_station)
+"kh" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"kv" = (
+/obj/structure/machinery/door_control/brbutton/alt{
+	pixel_x = -22;
+	id = "Faxes_CLF";
+	name = "Door Controls"
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/gm/dirt2,
+/area/adminlevel/ert_station/fax_response_station)
+"kw" = (
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ky" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = -13;
+	pixel_y = 2
+	},
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = -12
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"kC" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"kV" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/corsat/white,
+/area/adminlevel/ert_station/fax_response_station)
+"kY" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_1";
+	pixel_x = -6
+	},
+/obj/structure/platform/stone/strata{
+	dir = 4;
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"kZ" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free{
+	wrenchable = 0;
+	pixel_x = 4;
+	wires = 12
+	},
+/turf/open/floor/darkgreen2/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"ls" = (
+/turf/closed/wall/almayer/outer,
+/area/adminlevel/ert_station/fax_response_station)
+"lx" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass/grass1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"lC" = (
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"lK" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"lL" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/white,
+/area/adminlevel/ert_station/fax_response_station)
+"lU" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/enchiladas{
+	pixel_y = 13;
+	pixel_x = -2
+	},
+/obj/item/reagent_container/food/snacks/taco{
+	pixel_y = -2;
+	pixel_x = -7
+	},
+/obj/item/reagent_container/food/snacks/cheesyfries{
+	pixel_x = 6
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"lZ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
+	},
+/turf/open/floor/almayer/blue/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"me" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 0;
+	faction = "UPP";
+	name = "UPP monitoring computer";
+	dir = 8;
+	pixel_x = 3
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = -14;
+	name = "USCM monitoring computer";
+	dir = 8;
+	layer = 2.99;
+	pixel_x = 3
+	},
+/turf/open/floor/darkgreen2/east,
+/area/adminlevel/ert_station/fax_response_station)
+"mi" = (
+/turf/closed/wall/prison{
+	turf_flags = 16;
+	unacidable = 1;
+	name = "colony wall"
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"mq" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_y = 4;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0;
+	layer = 3;
+	pixel_x = 3
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
+	layer = 3.01;
+	name = "USS Almayer Cameras";
+	pixel_y = -10;
+	colony_camera_mapload = 0;
+	pixel_x = 3
+	},
+/turf/open/floor/corsat/white/east,
+/area/adminlevel/ert_station/fax_response_station)
+"mw" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass{
+	pixel_y = 4
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"mx" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/white/west,
+/area/adminlevel/ert_station/fax_response_station)
+"mB" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"mC" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"mD" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin/uscm{
+	pixel_x = 15;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_x = 13
+	},
+/turf/open/floor/almayer/uscm/directional/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"mE" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_1"
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"mF" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/item/paper_bin{
+	pixel_y = -20;
+	pixel_x = 6;
+	anchored = 1
+	},
+/obj/item/tool/candle{
+	pixel_x = -12;
+	pixel_y = 6
+	},
+/obj/item/storage/fancy/cigar/matchbook/brown{
+	pixel_x = -7;
+	pixel_y = 2;
+	layer = 2.9
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"mL" = (
+/obj/structure/mirror{
+	pixel_y = 32;
+	pixel_x = -1
+	},
+/obj/structure/sink{
+	pixel_y = 21
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = -10
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"mQ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -14
+	},
+/turf/open/asphalt,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"mV" = (
+/obj/structure/flora/pottedplant/random{
+	pixel_x = 9
+	},
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"mX" = (
+/obj/structure/flora/jungle/thickbush,
+/turf/open/gm/grass/grass1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"nd" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	name = "\improper CLF Communications Office";
+	locked = 1;
+	unacidable = 1;
+	unslashable = 1;
+	damage_cap = 999999;
+	health = 999999;
+	explo_proof = 1;
+	emp_proof = 2;
+	no_panel = 1;
+	masterkey_resist = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/shiva/multi_tiles/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ni" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/obj/structure/surface/rack{
+	pixel_y = 12;
+	layer = 3.51;
+	density = 0
+	},
+/obj/item/storage/box/cups{
+	pixel_y = 12;
+	layer = 3.52
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"nl" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = -7;
+	pixel_x = -3;
+	faction = "Colonial Marshal";
+	name = "CMB monitoring computer";
+	dir = 4;
+	layer = 2.99
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 7;
+	pixel_x = -3;
+	name = "USCM monitoring computer";
+	dir = 4
+	},
+/turf/open/floor/shiva/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"nn" = (
+/obj/structure/closet/secure_closet/personal/cabinet{
+	pixel_x = 1;
+	pixel_y = 17;
+	req_access = null
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"np" = (
+/turf/open/floor/whitered/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"nr" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"nI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -14
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"nL" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/uscm{
+	pixel_y = 24;
+	pixel_x = 8;
+	density = 0
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"nP" = (
+/turf/open/asphalt/cement,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"oc" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_CLF";
+	name = "\improper Tunnel Access";
+	dir = 1;
+	emp_proof = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/shiva/multi_tiles/north,
+/area/adminlevel/ert_station/fax_response_station)
+"of" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 16;
+	pixel_x = 3;
+	prices = list();
+	density = 0;
+	wrenchable = 0;
+	wires = 12
+	},
+/turf/open/floor/shiva/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ok" = (
+/obj/structure/sign/prop3{
+	pixel_x = -28
+	},
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"oo" = (
+/obj/item/device/flashlight/lamp/tripod/grey{
+	anchored = 1;
+	pixel_y = 19
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ou" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/sliceable/lemoncake{
+	layer = 3
+	},
+/obj/item/reagent_container/food/snacks/sliceable/cheesecake{
+	pixel_y = 6;
+	layer = 3.01
+	},
+/obj/item/reagent_container/food/snacks/sliceable/chocolatecake{
+	pixel_y = 12
+	},
+/obj/item/tool/kitchen/utensil/pknife{
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"ow" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"oO" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"oP" = (
+/turf/closed/wall/prison{
+	turf_flags = 16;
+	unacidable = 1;
+	name = "colony wall"
+	},
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"oT" = (
+/turf/closed/void,
+/area/adminlevel/ert_station/fax_response_station)
+"oU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"oY" = (
+/turf/open/floor/almayer/uscm/directional/west,
+/area/adminlevel/ert_station/fax_response_station)
+"pb" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"pc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/whitered/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"pf" = (
+/obj/structure/window/reinforced/tinted/frosted,
+/obj/structure/machinery/shower{
+	dir = 4;
+	pixel_y = 3
+	},
+/obj/item/tool/soap{
+	pixel_y = 6
+	},
+/obj/structure/machinery/door/window/tinted,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"pj" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/machinery/door/window/tinted{
+	dir = 1
+	},
+/obj/item/tool/soap/deluxe{
+	pixel_y = -8;
+	pixel_x = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"pk" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/press/highcom{
+	pixel_y = 6
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -5;
+	pixel_x = 7
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"pl" = (
+/obj/structure/machinery/vending/cigarette/koorlander{
+	wrenchable = 0;
+	pixel_x = 4;
+	wires = 12
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"pn" = (
+/turf/open/floor/shiva/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"px" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 6
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"pA" = (
+/obj/structure/prop/invuln/lattice_prop,
+/turf/open/space/basic,
+/area/space)
+"pC" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
+	},
+/turf/open/floor/corsat/white,
+/area/adminlevel/ert_station/fax_response_station)
+"pG" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -10;
+	pixel_y = 21
+	},
+/obj/structure/machinery/space_heater{
+	pixel_x = 5;
+	pixel_y = 15;
+	layer = 2.99;
+	anchored = 1
+	},
+/turf/open/floor/darkgreen2/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"pO" = (
+/turf/open/floor/almayer/w_y1,
+/area/adminlevel/ert_station/fax_response_station)
+"pU" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"pV" = (
+/turf/open/space/basic,
+/area/space)
+"pZ" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"qo" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"qu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"qv" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = -7;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = -7;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = -7;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = -7;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = 6
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = 6
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/shiva/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"qx" = (
+/turf/open/gm/grass/grass1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"qD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_WY_Ladder";
+	pixel_y = -1;
+	name = "WY Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"qJ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"qS" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"qX" = (
+/turf/open/floor/almayer/uscm/directional/east,
+/area/adminlevel/ert_station/fax_response_station)
+"qY" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/shiva/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"rc" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 16;
+	pixel_x = 5;
+	prices = list();
+	density = 0;
+	wrenchable = 0;
+	wires = 12
+	},
+/turf/open/floor/almayer/red/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"rm" = (
+/obj/structure/bed/chair/office/dark,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"rs" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -14
+	},
+/obj/item/tool/warning_cone,
+/turf/open/asphalt,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"rx" = (
+/obj/effect/landmark/late_join/responder/clf,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"rF" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkgreen2/east,
+/area/adminlevel/ert_station/fax_response_station)
+"rJ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"rM" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/milosoup{
+	pixel_y = 3;
+	pixel_x = 7
+	},
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
+	pixel_y = 19;
+	pixel_x = -9
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"rX" = (
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"rZ" = (
+/obj/effect/landmark/late_join/responder/upp,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"sa" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_PRESS";
+	name = "\improper Fire Escape Access";
+	dir = 1;
+	explo_proof = 1;
+	emp_proof = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"sf" = (
+/turf/open/gm/river/no_overlay,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"sg" = (
+/obj/structure/pipes/vents/pump/no_boom,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"sh" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/corporate/highcom{
+	pixel_y = 0
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/white,
+/area/adminlevel/ert_station/fax_response_station)
+"sj" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"sm" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"so" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 4;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
+	pixel_x = -3;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 4;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = -3;
+	pixel_y = 8;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/turf/open/floor/shiva/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"sv" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/siding,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"sA" = (
+/obj/structure/closet/secure_closet/personal/cabinet{
+	pixel_x = 1;
+	pixel_y = 17;
+	req_access = null
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"sC" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"sI" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/structure/machinery/door/window/tinted{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"sK" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"sP" = (
+/turf/open/floor/corsat/white/west,
+/area/adminlevel/ert_station/fax_response_station)
+"sR" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east{
+	dir = 8
+	},
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature{
+	pixel_y = -4;
+	pixel_x = 17
+	},
+/mob/living/simple_animal/mouse/rat/brown,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
+"sV" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 0;
+	name = "USCM monitoring computer";
+	dir = 8;
+	pixel_x = 3
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("WY","Containment Hidden","Colony");
+	pixel_x = 3;
+	name = "WY Cameras";
+	colony_camera_mapload = 0;
+	pixel_y = -14;
+	layer = 2.99
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
+/turf/open/floor/corsat/white/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"tb" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/cups,
+/turf/open/floor/corsat/white/east,
+/area/adminlevel/ert_station/fax_response_station)
+"te" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 9
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"tk" = (
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 17;
+	pixel_x = -9;
+	faction = "Wey-Yu";
+	name = "WY monitoring computer"
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 17;
+	faction = "PMC";
+	name = "PMC monitoring computer";
+	pixel_x = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"tu" = (
+/obj/item/trash/crushed_cup,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ty" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -7
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/obj/structure/filingcabinet/documentation/highcom/clf{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"tJ" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin{
+	pixel_x = -14;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/green/clicky{
+	pixel_x = -15
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"tN" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"tO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/bluecorners/east,
+/area/adminlevel/ert_station/fax_response_station)
+"tR" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_UPP";
+	name = "\improper Maintenance Access";
+	emp_proof = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/adminlevel/ert_station/fax_response_station)
+"tV" = (
+/obj/structure/machinery/vending/walkman{
+	pixel_x = 10;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"tY" = (
+/turf/open/floor/shiva/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ua" = (
+/obj/structure/ladder{
+	id = "Faxes_WY_Ladder";
+	height = 1
+	},
+/turf/open/floor/corsat/cargo,
+/area/adminlevel/ert_station/fax_response_station)
+"uc" = (
+/obj/structure/pipes/vents/scrubber/no_boom{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"ue" = (
+/obj/structure/mirror{
+	pixel_y = 32;
+	pixel_x = -1
+	},
+/obj/structure/sink{
+	pixel_y = 21
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"uu" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	dir = 1;
+	name = "\improper Sector Relay Power Storage";
+	locked = 1;
+	damage_cap = 999999;
+	health = 999999;
+	no_panel = 1;
+	explo_proof = 1;
+	emp_proof = 1;
+	masterkey_resist = 1;
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"uI" = (
+/obj/structure/window/framed/strata/hull,
+/obj/structure/curtain/red,
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"uK" = (
+/obj/structure/bed/chair/comfy/ares{
+	dir = 4;
+	name = "comfy chair";
+	desc = "A chair with leather padding and adjustable headrest. You could probably sit in one of these for ages."
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"uL" = (
+/obj/structure/machinery/computer/arcade,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 20;
+	pixel_x = -3
+	},
+/turf/open/floor/corsat/white/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"uP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_UPP_Ladder";
+	pixel_y = -1;
+	name = "UPP Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"uV" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"va" = (
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"ve" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"vm" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -9;
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"vy" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/machinery/vending/snack{
+	pixel_x = -6;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"vA" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/item/paper_bin{
+	pixel_y = 29;
+	pixel_x = -6
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"vD" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"vE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"vL" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"vM" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/space)
+"vS" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 17;
+	pixel_x = 3;
+	prices = list();
+	density = 0;
+	wrenchable = 0;
+	wires = 12
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"vZ" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 10
+	},
+/obj/structure/mirror{
+	pixel_y = -1;
+	pixel_x = 25
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"wg" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"wi" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -11;
+	pixel_y = 14
+	},
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"wl" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/adminlevel/ert_station/fax_response_station)
+"wp" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"wu" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"wv" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = 10;
+	pixel_y = 0
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"wx" = (
+/obj/structure/bedsheetbin{
+	pixel_y = 15;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"wy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"wD" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"wE" = (
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/white/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"wG" = (
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"wJ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
+	dir = 1;
+	name = "\improper High Command Office";
+	req_access = null
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"wQ" = (
+/obj/structure/machinery/door/airlock/almayer/generic/glass{
+	dir = 1;
+	name = "\improper Tea Shop"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"wX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/coatrack,
+/turf/open/floor/almayer/red/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"wZ" = (
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"xc" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/gm/grass/grass1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"xf" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/shiva/radiator_tile2,
+/area/adminlevel/ert_station/fax_response_station)
+"xj" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"xm" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/highcom,
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"xn" = (
+/obj/structure/machinery/computer/arcade{
+	pixel_y = 17;
+	density = 0
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"xu" = (
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/obj/structure/flora/bush/ausbushes/reedbush{
+	pixel_x = 15;
+	pixel_y = 3
+	},
+/turf/open/gm/river/no_overlay,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"xK" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/adminlevel/ert_station/fax_response_station)
+"xL" = (
+/turf/open/floor/whitered/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"xP" = (
+/obj/structure/platform_decoration/stone/strata,
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"xQ" = (
+/obj/item/toy/inflatable_duck,
+/turf/open/gm/river/no_overlay,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"yf" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"yh" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/shiva/multi_tiles/north,
+/area/adminlevel/ert_station/fax_response_station)
+"yp" = (
+/turf/open/floor/almayer/red/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"yt" = (
+/obj/structure/bedsheetbin{
+	pixel_y = 15;
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"yu" = (
+/obj/structure/closet/secure_closet/brig{
+	pixel_y = 14;
+	density = 0;
+	req_one_access = null;
+	req_access = list(104)
+	},
+/turf/open/floor/shiva/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"yz" = (
+/obj/structure/mirror{
+	pixel_y = 32;
+	pixel_x = -1
+	},
+/obj/structure/sink{
+	pixel_y = 21
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"yB" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = 11;
+	pixel_y = 18
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"yI" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = -14;
+	name = "USCM monitoring computer";
+	dir = 8;
+	layer = 2.99;
+	pixel_x = 3
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = 0;
+	pixel_x = 3;
+	faction = "TWE";
+	name = "TWE monitoring computer";
+	dir = 8
+	},
+/obj/structure/sign/calendar/twe{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"yK" = (
+/obj/structure/flora/tree/pine{
+	pixel_x = -7
+	},
+/obj/structure/platform/metal/strata{
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"yM" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_y = 4;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0;
+	layer = 3;
+	pixel_x = 3
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	layer = 3.01;
+	name = "USS Almayer Cameras";
+	pixel_y = -10;
+	colony_camera_mapload = 0;
+	pixel_x = 3
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"yR" = (
+/obj/structure/machinery/vending/snack{
+	pixel_x = -7;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 0;
+	wires = 12
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"yW" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/east,
+/area/adminlevel/ert_station/fax_response_station)
+"zg" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"zh" = (
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"zj" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/white,
+/area/adminlevel/ert_station/fax_response_station)
+"zs" = (
+/obj/structure/platform/metal/strata{
+	climbable = 0;
+	dir = 8
+	},
+/obj/structure/platform/metal/strata{
+	climbable = 0
+	},
+/obj/structure/platform/metal/strata/north{
+	climbable = 0;
+	layer = 2.97
+	},
+/obj/structure/barricade/handrail/strata{
+	autoclimb = 0;
+	climbable = 0;
+	layer = 3;
+	pixel_y = 11;
+	dir = 1
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"zt" = (
+/obj/structure/machinery/cryopod/no_store{
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"zw" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin{
+	pixel_x = -14;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/red/clicky{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"zy" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"zF" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","UPP","Fax Responders");
+	phone_id = "UPP Communications Officer";
+	phone_color = "green";
+	pixel_x = -8
+	},
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -9
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4
+	},
+/turf/open/floor/darkgreen2,
+/area/adminlevel/ert_station/fax_response_station)
+"zJ" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -5;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/turf/open/floor/shiva/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"zS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/spot{
+	dir = 1
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"zT" = (
+/obj/structure/coatrack{
+	pixel_x = -6
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/corsat/white/west,
+/area/adminlevel/ert_station/fax_response_station)
+"zV" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Ai" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = 6;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = 6;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Aq" = (
+/obj/structure/platform/metal/strata{
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"At" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 1
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/adminlevel/ert_station/fax_response_station)
+"Aw" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Ax" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	name = "\improper UPP Communications Office";
+	locked = 1;
+	unacidable = 1;
+	unslashable = 1;
+	damage_cap = 999999;
+	health = 999999;
+	explo_proof = 1;
+	emp_proof = 2;
+	no_panel = 1;
+	masterkey_resist = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/shiva/radiator_tile2,
+/area/adminlevel/ert_station/fax_response_station)
+"Ay" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals."
+	},
+/turf/open/floor/darkgreen2/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"AC" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 2;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_x = 12;
+	pixel_y = 3;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 2;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = 3;
+	colony_camera_mapload = 0;
+	pixel_x = -5
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"AF" = (
+/obj/structure/bed/chair/comfy/lime,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"AK" = (
+/obj/structure/pipes/vents/pump/no_boom,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"AQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"AT" = (
+/obj/structure/flora/pottedplant/random{
+	pixel_y = 14
+	},
+/obj/item/device/radio/intercom/fax/wy{
+	pixel_y = 24;
+	layer = 2.99
+	},
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"AV" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"Ba" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/obj/structure/surface/rack{
+	layer = 3
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Bb" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 1;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0;
+	pixel_x = -9
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 1;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_y = -6;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0;
+	pixel_x = 8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = -6;
+	name = "USCM monitoring computer";
+	dir = 1;
+	pixel_x = 25
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"Bi" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/sign/poster/io{
+	pixel_y = 29
+	},
+/obj/item/ashtray/plastic,
+/turf/open/floor/corsat/white/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Bk" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass{
+	pixel_y = -10
+	},
+/obj/structure/platform_decoration/stone/strata{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Bt" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"BF" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/device/flashlight/lamp/on{
+	anchored = 1;
+	light_power = 3;
+	alpha = 0;
+	pixel_y = 10;
+	name = "eerie glow";
+	desc = null
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"BP" = (
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/almayer/blue/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"BW" = (
+/obj/effect/landmark/late_join/responder/uscm/provost,
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"Cc" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/adminlevel/ert_station/fax_response_station)
+"Cf" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 8;
+	pixel_x = -22;
+	anchored = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"Cq" = (
+/obj/structure/platform/metal/strata{
+	climbable = 0;
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Cr" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 16;
+	pixel_x = -7;
+	prices = list();
+	density = 0;
+	wrenchable = 0;
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Cv" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Cx" = (
+/obj/structure/machinery/light,
+/turf/open/floor/whitered,
+/area/adminlevel/ert_station/fax_response_station)
+"CN" = (
+/obj/structure/machinery/vending/snack{
+	pixel_x = -6;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"CO" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 19;
+	name = "Door Controls";
+	id = "Faxes_HC"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"CP" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 18
+	},
+/obj/item/tool/warning_cone,
+/turf/open/asphalt,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"CS" = (
+/obj/structure/machinery/shower{
+	dir = 8;
+	pixel_y = -6;
+	layer = 3.2
+	},
+/obj/item/tool/soap/deluxe{
+	layer = 3.2
+	},
+/obj/structure/machinery/door/window/tinted{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 1;
+	layer = 3.1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"CW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_PRO_Ladder";
+	pixel_y = 21;
+	name = "Provost Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"CZ" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached6,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Dg" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Fax Responders");
+	phone_id = "USCM-HC Communications Officer";
+	phone_color = "blue";
+	pixel_x = -8
+	},
+/obj/item/paper_bin/uscm{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -9
+	},
+/obj/item/tool/pen/multicolor/provost{
+	pixel_x = 4
+	},
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"Di" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Dn" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 0
+	},
+/obj/structure/prop/holidays/string_lights{
+	desc = "A set of last years christmas lights, a coworker refused to take them down and as punishement they got strung up outside, how merry.";
+	name = "festive bulb strings";
+	pixel_y = -16
+	},
+/turf/open/space/basic,
+/area/space)
+"Do" = (
+/obj/structure/bed/alien,
+/obj/item/bedsheet/brown,
+/turf/open/floor/whitered/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Dq" = (
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Dw" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"DA" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 1;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0;
+	pixel_x = 9
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 1;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_y = -6;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0;
+	pixel_x = -8
+	},
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = -6;
+	name = "USCM monitoring computer";
+	dir = 1;
+	pixel_x = -25
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"DL" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = 4;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"DP" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"DQ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = 6;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = 6;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/turf/open/floor/darkgreen2/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"DZ" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/obj/structure/mirror{
+	pixel_y = -1;
+	pixel_x = -26
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"Ec" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Ef" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin/uscm{
+	pixel_x = -12;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = -13
+	},
+/turf/open/floor/almayer/uscm/directional/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Eg" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -11;
+	pixel_y = 0
+	},
+/turf/open/floor/corsat/white/west,
+/area/adminlevel/ert_station/fax_response_station)
+"Er" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
+	},
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"Es" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	name = "\improper CMB Office"
+	},
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"EH" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/uscm/directional/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"ER" = (
+/obj/effect/landmark/late_join/responder/twe,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"ET" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free{
+	wrenchable = 0;
+	pixel_x = 4;
+	wires = 12
+	},
+/turf/open/floor/almayer/blue/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"EV" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp{
+	pixel_x = -3
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Fc" = (
+/obj/structure/machinery/vending/cigarette/koorlander/free{
+	wrenchable = 0;
+	pixel_x = -6;
+	wires = 12
+	},
+/turf/open/floor/almayer/red/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Fn" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = 6;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = 6;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Fr" = (
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"FB" = (
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"FD" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -5;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"FF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cryopod/no_store,
+/turf/open/floor/shiva/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"FQ" = (
+/obj/structure/bed/chair/comfy/delta{
+	desc = "A chair with leather padding and adjustable headrest. You could probably sit in one of these for ages.";
+	name = "comfy chair"
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Gi" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_18";
+	pixel_y = 0;
+	pixel_x = -8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkgreen2/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Gw" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+	name = "\improper WY Communications Office";
+	locked = 1;
+	unacidable = 1;
+	unslashable = 1;
+	damage_cap = 999999;
+	health = 999999;
+	explo_proof = 1;
+	emp_proof = 2;
+	no_panel = 1;
+	masterkey_resist = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/fax_response_station)
+"Gx" = (
+/turf/open/floor/darkgreen2/north,
+/area/adminlevel/ert_station/fax_response_station)
+"GC" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "w_aidoor1";
+	id = "Faxes_WY";
+	name = "\improper Hangar Access";
+	dir = 4;
+	explo_proof = 1;
+	emp_proof = 1;
+	base_icon_state = "w_aidoor"
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/fax_response_station)
+"GD" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 19;
+	name = "Door Controls";
+	id = "Faxes_TWE"
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
+"GF" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	name = "\improper Base Entrance";
+	req_access = null
+	},
+/turf/open/floor/shiva/multi_tiles/east,
+/area/adminlevel/ert_station/fax_response_station)
+"GL" = (
+/obj/structure/bedsheetbin{
+	pixel_y = -1;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"GP" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/sign/poster/clf{
+	pixel_y = 10;
+	pixel_x = -24
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"GQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/coatrack,
+/turf/open/floor/almayer/blue/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"GX" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 4;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	pixel_x = -4;
+	layer = 2.99;
+	name = "USS Almayer Cameras";
+	pixel_y = -6;
+	colony_camera_mapload = 0
+	},
+/obj/structure/machinery/computer/spy_camera/clf{
+	dir = 4;
+	pixel_y = 8;
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"GY" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/grass/grass1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Hh" = (
+/obj/structure/machinery/vending/cigarette/koorlander{
+	wrenchable = 0;
+	pixel_x = 4;
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Hk" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Hq" = (
+/obj/structure/prop/vehicles{
+	dir = 1;
+	pixel_y = -5;
+	density = 1;
+	desc = "An old van."
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Hr" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/on,
+/obj/item/paper_bin/uscm{
+	pixel_x = 15;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = 13
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"Hu" = (
+/obj/structure/machinery/power/apc/almayer/hardened/north{
+	needs_power = 0
+	},
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/fax_response_station)
+"HA" = (
+/obj/structure/machinery/vending/coffee{
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/turf/open/floor/corsat/cargo,
+/area/adminlevel/ert_station/fax_response_station)
+"HC" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("Overwatch");
+	pixel_y = 4;
+	name = "Overwatch Cameras";
+	colony_camera_mapload = 0;
+	layer = 3;
+	pixel_x = 3
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	dir = 8;
+	admin_console = 1;
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	layer = 3.01;
+	name = "USS Almayer Cameras";
+	pixel_y = -10;
+	colony_camera_mapload = 0;
+	pixel_x = 3
+	},
+/turf/open/floor/darkgreen2/east,
+/area/adminlevel/ert_station/fax_response_station)
+"HD" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 2;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","CLF","Fax Responders");
+	phone_id = "CLF Information Correspondant";
+	phone_color = "orange";
+	pixel_x = -11
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -11
+	},
+/obj/item/tool/pen/multicolor/fountain,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"HE" = (
+/turf/open/floor/corsat/white/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"HN" = (
+/obj/structure/flora/tree/pine,
+/obj/structure/platform/metal/strata{
+	climbable = 0;
+	dir = 8
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"HQ" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/reinforced{
+	health = 999999;
+	emp_proof = 1;
+	explo_proof = 1;
+	locked = 1;
+	damage_cap = 999999;
+	unacidable = 1;
+	unslashable = 1;
+	no_panel = 1;
+	name = "\improper Provost Communications Office"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"HU" = (
+/obj/structure/prop/brazier/campfire,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Ib" = (
+/turf/open/floor/shiva/blue/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"If" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/secdoor/glass{
+	dir = 1;
+	req_access = null;
+	name = "\improper Provost Office"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"Il" = (
+/obj/structure/machinery/light/small,
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 19;
+	name = "Door Controls";
+	id = "Faxes_WY"
+	},
+/turf/open/floor/corsat/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"Iq" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Ir" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/crew/alt{
+	pixel_y = -1;
+	name = "USCM monitoring computer";
+	dir = 8;
+	pixel_x = 3
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","Press","Fax Responders");
+	phone_id = "Free Press Relay";
+	pixel_y = 15;
+	pixel_x = -5
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Iu" = (
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/fax_response_station)
+"Iv" = (
+/obj/structure/pipes/vents/scrubber/no_boom{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"Ix" = (
+/obj/structure/prop/vehicles{
+	pixel_y = 7;
+	dir = 2;
+	desc = "An old van."
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Iy" = (
+/turf/open/auto_turf/snow/layer0,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ID" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"IG" = (
+/turf/closed/wall/r_wall/biodome/biodome_unmeltable,
+/area/adminlevel/ert_station/fax_response_station)
+"IK" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+	dir = 1;
+	req_access = list(104)
+	},
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"IM" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"IQ" = (
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"IY" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 4
+	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin/uscm{
+	pixel_x = -12;
+	pixel_y = 5
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"Jg" = (
+/obj/structure/machinery/power/apc/almayer/hardened/south{
+	needs_power = 0
+	},
+/turf/open/floor/almayer/orangefull,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Jm" = (
+/turf/open/floor/darkgreen2/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Jr" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Ju" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	name = "\improper Outpost Entrance";
+	req_access = null
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/adminlevel/ert_station/fax_response_station)
+"JB" = (
+/turf/open/floor/almayer/redcorner/west,
+/area/adminlevel/ert_station/fax_response_station)
+"JF" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = 6;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = 6;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = 6;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = 6;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = -5
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = -5
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"JO" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Bathroom";
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/adminlevel/ert_station/fax_response_station)
+"JT" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid/reinforced{
+	name = "\improper HC Communications Office";
+	req_access = null;
+	locked = 1;
+	health = 999999;
+	explo_proof = 1;
+	emp_proof = 1;
+	unacidable = 1;
+	unslashable = 1;
+	damage_cap = 999999;
+	no_panel = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"JV" = (
+/turf/open/floor/corsat/white/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"JW" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp{
+	pixel_x = 2
+	},
+/obj/item/paper_bin{
+	pixel_x = -13;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = -14
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"JX" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/faxmachine/uscm/provost,
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"JY" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/cmb,
+/obj/structure/sign/calendar/ua{
+	pixel_y = 26
+	},
+/turf/open/floor/shiva/blue/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Kc" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp,
+/obj/item/paper_bin/uscm{
+	pixel_x = 15;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/uscm/directional/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Kd" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_y = 0;
+	pixel_x = 1
+	},
+/turf/open/floor/darkgreen2/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Kn" = (
+/obj/structure/machinery/vending/walkman{
+	pixel_x = 5;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 20;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Kr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_CMB_Ladder";
+	pixel_y = 21;
+	name = "CMB Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"Kx" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"KD" = (
+/turf/open/gm/grass/grassbeach/east,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"KI" = (
+/turf/open/floor/darkgreen2,
+/area/adminlevel/ert_station/fax_response_station)
+"KM" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/uscm/directional/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"KQ" = (
+/obj/structure/machinery/door_control/brbutton/alt{
+	pixel_x = -22;
+	id = "Faxes_PRESS";
+	name = "Door Controls"
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/cargo_arrow,
+/area/adminlevel/ert_station/fax_response_station)
+"KR" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/wy,
+/turf/open/floor/corsat/white/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"KT" = (
+/obj/structure/machinery/door_control/brbutton/alt{
+	pixel_x = -22;
+	id = "Faxes_UPP";
+	name = "Door Controls"
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"KZ" = (
+/turf/open/floor/almayer/uscm/directional/logo_c/west,
+/area/adminlevel/ert_station/fax_response_station)
+"Ld" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 18
+	},
+/turf/open/asphalt,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Lj" = (
+/obj/structure/machinery/cryopod/no_store,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Lq" = (
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/machinery/door/window/tinted{
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"LA" = (
+/obj/structure/flora/tree/dead/tree_6,
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"LO" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/twe/highcom{
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"LX" = (
+/obj/structure/flora/pottedplant/random{
+	pixel_y = 6;
+	pixel_x = -5;
+	layer = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Mx" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/uscm,
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"MA" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -5;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"MM" = (
+/obj/structure/machinery/vending/walkman{
+	pixel_x = -4;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 20;
+	pixel_x = -9
+	},
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"MU" = (
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"MX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant/random{
+	pixel_x = -12
+	},
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"MZ" = (
+/obj/structure/flora/pottedplant/random,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/blue/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Nd" = (
+/obj/structure/machinery/vending/walkman{
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/turf/open/floor/corsat/cargo,
+/area/adminlevel/ert_station/fax_response_station)
+"Ne" = (
+/obj/structure/ladder{
+	id = "Faxes_HC_Ladder";
+	height = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"Ng" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/uscm/directional/northwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Ni" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/prop/cash_register{
+	pixel_y = 5;
+	pixel_x = 5
+	},
+/obj/item/spacecash/c10{
+	pixel_x = -5;
+	pixel_y = -3;
+	name = "1000 yen note";
+	desc = "A single TWE Government minted ten-pound note. Could probably pay for a meal at a cheap restaurant, before tax and tip."
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/fax_response_station)
+"No" = (
+/obj/structure/ladder{
+	id = "Faxes_CMB_Ladder";
+	height = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"Np" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -5;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/fax_response_station)
+"Nt" = (
+/obj/structure/machinery/computer/arcade{
+	pixel_y = 17;
+	density = 0
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Nx" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	name = "\improper Editor's Office";
+	req_access = null;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"NA" = (
+/turf/open/floor/almayer/uscm/directional,
+/area/adminlevel/ert_station/fax_response_station)
+"NK" = (
+/obj/structure/ladder{
+	id = "Faxes_TWE_Ladder";
+	height = 1
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
+"NT" = (
+/obj/structure/machinery/light,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/twe{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"NU" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"NV" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/item/paper_bin{
+	pixel_y = 29;
+	pixel_x = 10
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"NX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_TWE_Ladder";
+	pixel_y = -1;
+	name = "TWE Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"Oa" = (
+/turf/open/floor/shiva/radiator_tile2,
+/area/adminlevel/ert_station/fax_response_station)
+"Oc" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_1";
+	pixel_y = 4
+	},
+/obj/structure/platform/metal/strata{
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Of" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+	dir = 1;
+	name = "\improper Office Entrance"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/adminlevel/ert_station/fax_response_station)
+"Oj" = (
+/turf/open/floor/almayer/blue/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Os" = (
+/turf/open/floor/darkgreen2/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"OA" = (
+/turf/closed/wall/kutjevo{
+	name = "cement wall";
+	desc = "A huge chunk of reinforced cement used to separate rooms.";
+	turf_flags = 16;
+	unacidable = 1
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"OX" = (
+/obj/item/device/flashlight/lamp/tripod/grey{
+	anchored = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Pf" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Ph" = (
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"Pi" = (
+/obj/effect/landmark/late_join/responder/wey_yu,
+/turf/open/floor/corsat/white/west,
+/area/adminlevel/ert_station/fax_response_station)
+"Pp" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Pr" = (
+/obj/structure/bed,
+/obj/item/bedsheet/green,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Pv" = (
+/obj/structure/platform/stone/strata{
+	dir = 1;
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Pw" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine/cmb{
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/shiva/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"PM" = (
+/turf/open/gm/grass/grassbeach/south,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Qf" = (
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Qg" = (
+/obj/structure/surface/table/reinforced/almayer_B{
+	climbable = 0;
+	health = 999999;
+	explo_proof = 1;
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"Qi" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Qt" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Qw" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 8;
+	pixel_x = 22;
+	anchored = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"Qz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"QB" = (
+/turf/closed/wall/strata_ice/jungle{
+	unacidable = 1
+	},
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"QD" = (
+/obj/structure/window/framed/corsat/indestructible/research,
+/turf/open/floor/corsat,
+/area/adminlevel/ert_station/fax_response_station)
+"QN" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"QS" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 1;
+	layer = 2.9
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"QU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/red,
+/area/adminlevel/ert_station/fax_response_station)
+"QV" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 11;
+	pixel_x = 21;
+	anchored = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"QY" = (
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"Ra" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/item/device/flashlight/lamp/on{
+	anchored = 1;
+	light_power = 3;
+	light_range = 7;
+	alpha = 0;
+	pixel_y = -8;
+	name = "eerie glow";
+	desc = null
+	},
+/turf/open/gm/river/no_overlay,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Rb" = (
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/obj/structure/machinery/door/window/tinted{
+	dir = 1
+	},
+/obj/item/tool/soap/deluxe{
+	pixel_y = -8;
+	pixel_x = -10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"Rf" = (
+/turf/closed/wall/shiva/ice,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Rk" = (
+/turf/open/floor/almayer/w_y0,
+/area/adminlevel/ert_station/fax_response_station)
+"Rl" = (
+/obj/structure/ladder{
+	id = "Faxes_UPP_Ladder";
+	height = 1
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Rp" = (
+/turf/closed/wall/wood{
+	turf_flags = 16;
+	unacidable = 1
+	},
+/area/adminlevel/ert_station/fax_response_station)
+"Rq" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkgreen2/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Rv" = (
+/obj/structure/platform/metal/strata{
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Ry" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"RA" = (
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"RD" = (
+/turf/open/floor/almayer/bluecorner,
+/area/adminlevel/ert_station/fax_response_station)
+"RE" = (
+/obj/structure/machinery/cryopod/no_store,
+/turf/open/floor/corsat/white/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"RJ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/spy_camera/uscm,
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"RK" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"RQ" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = 19;
+	name = "Door Controls";
+	id = "Faxes_PRO"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"RR" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/corsat/white,
+/area/adminlevel/ert_station/fax_response_station)
+"RT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	dir = 1;
+	pixel_x = 1
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_PRESS_Ladder";
+	pixel_y = -1;
+	name = "Press Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"Sc" = (
+/obj/structure/pipes/vents/pump/no_boom,
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"Si" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/light/spot,
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"Sj" = (
+/obj/structure/window/framed/kutjevo/reinforced{
+	not_damageable = 1;
+	not_deconstructable = 1;
+	health = 999999;
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"Sy" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 1;
+	pixel_y = 10
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Sz" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
+	},
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/fax_response_station)
+"SC" = (
+/obj/structure/machinery/cryopod/no_store,
+/turf/open/floor/darkgreen2/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"SG" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/corsat/white/north,
+/area/adminlevel/ert_station/fax_response_station)
+"SO" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/machinery/vending/snack{
+	pixel_x = 5;
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/fax_response_station)
+"SS" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/corsat/white/east,
+/area/adminlevel/ert_station/fax_response_station)
+"ST" = (
+/turf/open/floor/darkgreencorners2/east,
+/area/adminlevel/ert_station/fax_response_station)
+"SZ" = (
+/obj/structure/flora/grass/tallgrass/ice/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Tb" = (
+/obj/structure/flora/tree/pine,
+/obj/structure/platform/metal/strata{
+	climbable = 0
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Tc" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_y = 11;
+	pixel_x = 21;
+	anchored = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/adminlevel/ert_station/fax_response_station)
+"Tg" = (
+/obj/structure/window/reinforced/toughened{
+	dir = 8
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/spy_camera/uscm{
+	dir = 4
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Tk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/clf{
+	pixel_y = -23
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Tp" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/almayer/red/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Tq" = (
+/obj/structure/pipes/vents/scrubber/no_boom{
+	dir = 8
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Tr" = (
+/obj/structure/machinery/vending/cola{
+	pixel_y = 16;
+	pixel_x = 3;
+	prices = list();
+	density = 0;
+	wrenchable = 0;
+	wires = 12
+	},
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/fax_response_station)
+"TB" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"TC" = (
+/obj/structure/machinery/door/airlock/almayer/secure{
+	name = "\improper Apartment";
+	req_access = null;
+	dir = 1;
+	locked = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station)
+"TI" = (
+/mob/living/simple_animal/hostile/carp{
+	destroy_surroundings = 0;
+	faction = "Fax Responder";
+	name = "Gary"
+	},
+/turf/open/space/basic,
+/area/space)
+"TJ" = (
+/obj/item/device/flashlight/lamp/tripod/grey{
+	anchored = 1
+	},
+/turf/open/asphalt/cement,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"TM" = (
+/obj/structure/pipes/vents/pump/no_boom,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"TT" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
+	phone_id = "TWE Communications Officer";
+	phone_color = "yellow";
+	pixel_x = -8
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -9
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_x = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"TW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"TY" = (
+/obj/item/lightstick/red/planted{
+	pixel_y = 9;
+	pixel_x = 7
+	},
+/obj/structure/platform/metal/strata{
+	climbable = 0;
+	dir = 8
+	},
+/obj/structure/platform/metal/strata{
+	climbable = 0;
+	layer = 2.97
+	},
+/obj/structure/barricade/handrail/strata{
+	autoclimb = 0;
+	climbable = 0;
+	layer = 3;
+	pixel_y = -1
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"TZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/structure/ladder{
+	height = 2;
+	id = "Faxes_HC_Ladder";
+	pixel_y = 21;
+	name = "HC Responder Outpost"
+	},
+/turf/open/floor/almayer/plating,
+/area/adminlevel/ert_station/fax_response_station)
+"Ud" = (
+/obj/structure/machinery/vending/snack{
+	wrenchable = 0;
+	prices = list();
+	wires = 12
+	},
+/turf/open/floor/corsat/cargo,
+/area/adminlevel/ert_station/fax_response_station)
+"Ul" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/folder/white{
+	pixel_x = -7;
+	pixel_y = -6;
+	layer = 3
+	},
+/obj/item/folder/red{
+	pixel_x = -7;
+	pixel_y = -1;
+	layer = 2.99
+	},
+/obj/item/folder/blue{
+	pixel_x = -7;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/item/folder/black{
+	pixel_x = -7;
+	pixel_y = 9;
+	layer = 2.97
+	},
+/obj/item/tool/stamp/hos{
+	name = "red stamp";
+	pixel_y = 8;
+	pixel_x = 6
+	},
+/obj/item/tool/stamp/hop{
+	name = "blue stamp";
+	pixel_x = 6
+	},
+/obj/item/tool/stamp/ce{
+	name = "yellow stamp";
+	pixel_y = -8;
+	pixel_x = 6
+	},
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"Ut" = (
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals."
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"UD" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"UL" = (
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"UR" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/uscm/directional/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Vh" = (
+/obj/structure/bed/chair/office/dark,
+/turf/open/floor/almayer/red/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Vn" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/blue/east,
+/area/adminlevel/ert_station/fax_response_station)
+"Vq" = (
+/obj/structure/machinery/vending/snack{
+	pixel_x = -16;
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 16;
+	density = 0;
+	wires = 12
+	},
+/obj/structure/machinery/cm_vending/sorted/marine_food{
+	pixel_y = 16;
+	wrenchable = 0;
+	density = 0;
+	name = "\improper Food Vendor";
+	desc = "Contains replica military prepared meals.";
+	pixel_x = 10
+	},
+/turf/open/floor/shiva/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"VE" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"VK" = (
+/obj/structure/machinery/space_heater{
+	pixel_x = -1;
+	pixel_y = 15;
+	layer = 2.99;
+	anchored = 1
+	},
+/obj/item/device/radio/intercom/fax/uscm_pvst{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"VU" = (
+/obj/effect/landmark/late_join/responder/press,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"VZ" = (
+/obj/structure/bed/chair/comfy/beige,
+/turf/open/floor/prison/kitchen,
+/area/adminlevel/ert_station/fax_response_station)
+"Wm" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_HC";
+	name = "\improper Hangar Access";
+	dir = 4;
+	emp_proof = 1;
+	explo_proof = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/ert_station/fax_response_station)
+"Wt" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/mob/living/simple_animal/mouse/rat/brown,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/gm/river/no_overlay/sewage,
+/area/adminlevel/ert_station/fax_response_station)
+"WF" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 1;
+	pixel_y = 10
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"WG" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"WO" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/provost{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"WP" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_y = 24;
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet/documentation/highcom/cmb{
+	pixel_x = 8;
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/shiva/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"WT" = (
+/turf/open/floor/almayer/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"WY" = (
+/obj/structure/surface/table/woodentable/fancy,
+/turf/open/floor/almayer/blue/southeast,
+/area/adminlevel/ert_station/fax_response_station)
+"Xb" = (
+/obj/structure/window/framed/wood/reinforced{
+	unacidable = 1;
+	unslashable = 1;
+	health = 999999;
+	not_damageable = 1;
+	not_deconstructable = 1
+	},
+/obj/structure/tent_curtain{
+	name = "curtain";
+	desc = "A gray curtain often mounted on windows for a little more privacy.";
+	layer = 3
+	},
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"Xi" = (
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/ert_station/fax_response_station)
+"Xo" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/vending/walkman{
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 0;
+	pixel_x = 15;
+	wires = 12
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_x = -2;
+	pixel_y = 0
+	},
+/turf/open/floor/shiva/blue,
+/area/adminlevel/ert_station/fax_response_station)
+"Xz" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 10
+	},
+/obj/structure/mirror{
+	pixel_y = -1;
+	pixel_x = 25
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/dark_sterile,
+/area/adminlevel/ert_station/fax_response_station)
+"XB" = (
+/obj/structure/machinery/vending/sovietsoda{
+	pixel_x = -5;
+	wrenchable = 0;
+	wires = 12
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 20;
+	pixel_x = -9
+	},
+/turf/open/floor/darkgreen2/west,
+/area/adminlevel/ert_station/fax_response_station)
+"XF" = (
+/obj/structure/window/reinforced/toughened,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1;
+	pixel_y = 2;
+	pixel_x = 3;
+	layer = 2.97
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/blue/west,
+/area/adminlevel/ert_station/fax_response_station)
+"XN" = (
+/obj/item/tool/warning_cone,
+/turf/open/asphalt/cement,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"XO" = (
+/obj/structure/machinery/door_control/brbutton/alt{
+	pixel_x = -22;
+	id = "Faxes_CMB";
+	name = "Door Controls"
+	},
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 12
+	},
+/turf/open/floor/shiva/floor3,
+/area/adminlevel/ert_station/fax_response_station)
+"XR" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/grass/grass1,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"XS" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/candle{
+	pixel_x = -11;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 10;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/food/drinks/tea{
+	pixel_y = -4;
+	pixel_x = -5
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/siding,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"XU" = (
+/obj/structure/machinery/computer/arcade{
+	pixel_y = 17;
+	density = 0
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"XY" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/ert_station/fax_response_station)
+"Yb" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_x = -2;
+	pixel_y = 19
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"Yl" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3;
+	anchored = 1
+	},
+/obj/structure/transmitter/rotary/fax_responder{
+	networks_transmit = list("USCM","Colonist","TWE","Fax Responders");
+	phone_id = "CMB Communications Officer";
+	phone_color = "orange";
+	pixel_x = -8
+	},
+/obj/item/ashtray/plastic{
+	pixel_y = -6;
+	pixel_x = -8
+	},
+/obj/item/tool/pen/multicolor/provost{
+	pixel_x = 4
+	},
+/turf/open/floor/shiva/blue/southwest,
+/area/adminlevel/ert_station/fax_response_station)
+"Yn" = (
+/turf/open/gm/grass/gbcorner/south_east,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Yx" = (
+/obj/effect/landmark/late_join/responder/cmb,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"YC" = (
+/obj/structure/sign/prop1{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"YH" = (
+/obj/structure/flora/pottedplant/random,
+/turf/open/floor/almayer/red/northeast,
+/area/adminlevel/ert_station/fax_response_station)
+"YI" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/river/no_overlay,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"YL" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/corsat/whitecorner/west,
+/area/adminlevel/ert_station/fax_response_station)
+"YX" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass/grass2,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"Zd" = (
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
+"Zg" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/red/west,
+/area/adminlevel/ert_station/fax_response_station)
+"Zm" = (
+/obj/structure/machinery/vending/walkman{
+	wrenchable = 0;
+	prices = list();
+	pixel_y = 15;
+	density = 0;
+	wires = 12;
+	pixel_x = 5
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"Zu" = (
+/obj/structure/machinery/cryopod/no_store{
+	pixel_y = 13
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ZD" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "Faxes_TWE_Road";
+	name = "\improper Road Blockade";
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/fax_response_station/exterior)
+"ZL" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ZP" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"ZR" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/emails{
+	dir = 1
+	},
+/obj/item/paper_bin{
+	pixel_x = -20;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = -21
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+
+(1,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+"}
+(2,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+"}
+(3,1,1) = {"
+pV
+pV
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+pV
+pV
+"}
+(4,1,1) = {"
+pV
+pV
+gX
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+gX
+wl
+wl
+wl
+wl
+gX
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+gX
+pV
+pV
+"}
+(5,1,1) = {"
+pV
+pV
+gX
+ls
+MA
+MM
+vy
+Bt
+Er
+Bt
+Er
+rm
+XF
+Bt
+lZ
+ls
+gX
+wl
+Hu
+Jg
+wl
+gX
+Cc
+pf
+mF
+Cc
+pG
+oU
+FD
+XB
+CN
+aF
+VE
+Gi
+Cc
+gX
+pV
+pV
+"}
+(6,1,1) = {"
+pV
+pV
+gX
+ls
+YC
+QY
+dL
+QY
+Ef
+oY
+do
+QY
+IY
+QY
+fJ
+ls
+gX
+wl
+zh
+uu
+wl
+gX
+Cc
+mL
+Ph
+At
+Gx
+lC
+lC
+sg
+wD
+wD
+QN
+ef
+Cc
+gX
+pV
+pV
+"}
+(7,1,1) = {"
+pV
+pV
+gX
+ls
+ad
+QY
+vL
+QY
+hy
+KZ
+NA
+QY
+Iv
+QY
+Qz
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+Cc
+Cc
+Cc
+Cc
+eS
+lC
+Aw
+lC
+lC
+lC
+Pf
+KI
+Ax
+gX
+pV
+pV
+"}
+(8,1,1) = {"
+pV
+pV
+gX
+JT
+IQ
+QY
+dk
+dW
+EH
+hK
+KM
+dW
+Xi
+QY
+mV
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+Cc
+Rl
+KT
+tR
+Os
+Jm
+Kd
+rF
+ST
+lC
+Pf
+KI
+xf
+gX
+pV
+pV
+"}
+(9,1,1) = {"
+pV
+pV
+gX
+mB
+IQ
+QY
+dE
+QY
+RD
+ou
+aT
+jI
+zV
+fj
+ET
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+Cc
+Cc
+Cc
+Cc
+Cc
+Ju
+Cc
+Cc
+Ay
+Jm
+jM
+kZ
+Cc
+gX
+pV
+pV
+"}
+(10,1,1) = {"
+pV
+pV
+gX
+ls
+pb
+QY
+qo
+QY
+WT
+ls
+ls
+ls
+gz
+wJ
+ls
+ls
+gX
+wl
+zS
+Si
+wl
+gX
+fW
+Cq
+HN
+Cq
+TY
+Hk
+zs
+Cc
+Cc
+Oa
+Of
+Cc
+Cc
+gX
+pV
+pV
+"}
+(11,1,1) = {"
+pV
+pV
+gX
+ls
+hk
+QY
+dE
+QY
+WT
+ls
+BP
+cA
+sm
+cA
+GQ
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+Rf
+kw
+an
+mE
+an
+Iy
+yK
+Cc
+fv
+wG
+rZ
+SC
+Cc
+gX
+pV
+pV
+"}
+(12,1,1) = {"
+pV
+pV
+gX
+ls
+Cr
+jI
+Vn
+jJ
+Oj
+ls
+RJ
+Qt
+fo
+wZ
+xm
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+fW
+SZ
+uV
+an
+Iy
+Iy
+Aq
+Cc
+hU
+Fr
+ba
+jT
+Cc
+gX
+pV
+pV
+"}
+(13,1,1) = {"
+pV
+pV
+gX
+ls
+ls
+kC
+ls
+ls
+Wm
+ls
+nL
+wZ
+AK
+wZ
+Dg
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+fW
+ch
+sK
+fO
+Iy
+Iy
+Oc
+uI
+jB
+Fr
+ve
+zF
+Cc
+gX
+pV
+pV
+"}
+(14,1,1) = {"
+pV
+pV
+gX
+ls
+ue
+Ph
+Cf
+ls
+CO
+ls
+hn
+wZ
+wZ
+FQ
+ow
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+Rf
+Pv
+kw
+LA
+fO
+mw
+Rv
+Cc
+cT
+Fr
+AF
+iL
+Cc
+gX
+pV
+pV
+"}
+(15,1,1) = {"
+pV
+pV
+gX
+ls
+yt
+qJ
+pj
+ls
+Ne
+ls
+bU
+wZ
+wZ
+wZ
+Bb
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+fW
+Bk
+xP
+jX
+kY
+kw
+Tb
+Cc
+Rq
+me
+HC
+DQ
+Cc
+gX
+pV
+pV
+"}
+(16,1,1) = {"
+pV
+pV
+gX
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ed
+cz
+fj
+Ai
+WY
+ls
+gX
+wl
+TZ
+uP
+wl
+gX
+fW
+fW
+Rf
+fW
+fW
+fW
+Rf
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+gX
+pV
+pV
+"}
+(17,1,1) = {"
+pV
+pV
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+ls
+gv
+gv
+Qg
+gv
+gv
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+pV
+pV
+"}
+(18,1,1) = {"
+pV
+pV
+gX
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+zt
+BW
+MU
+Ul
+Tp
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+OA
+OA
+OA
+OA
+OA
+ZD
+ZD
+ZD
+OA
+OA
+OA
+OA
+gX
+pV
+pV
+"}
+(19,1,1) = {"
+pV
+pV
+gX
+ls
+wx
+wp
+Rb
+ls
+kf
+ls
+IM
+wZ
+wZ
+wZ
+DA
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+Np
+VZ
+XS
+gx
+qS
+ag
+Iq
+WG
+OA
+GD
+NK
+OA
+gX
+pV
+pV
+"}
+(20,1,1) = {"
+pV
+pV
+gX
+ls
+yz
+Ph
+Qw
+ls
+RQ
+ls
+VK
+wZ
+wZ
+dS
+af
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+fk
+Iu
+cp
+Pp
+wQ
+Qi
+CZ
+tu
+OA
+BF
+sR
+OA
+gX
+pV
+pV
+"}
+(21,1,1) = {"
+pV
+pV
+gX
+ls
+ls
+kC
+ls
+ls
+ji
+ls
+WO
+wZ
+Di
+wZ
+ej
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+Tr
+Ni
+sv
+cW
+qS
+fQ
+CZ
+am
+bT
+Kx
+Wt
+OA
+gX
+pV
+pV
+"}
+(22,1,1) = {"
+pV
+pV
+gX
+ls
+rc
+MU
+Zg
+wi
+yp
+ls
+Mx
+Qt
+fo
+wZ
+JX
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+OA
+OA
+OA
+OA
+OA
+Ix
+CZ
+OX
+OA
+OA
+OA
+OA
+gX
+pV
+pV
+"}
+(23,1,1) = {"
+pV
+pV
+gX
+ls
+ni
+QY
+dE
+QY
+QU
+ls
+YH
+Dq
+Cv
+Dq
+wX
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+bw
+AV
+DZ
+QV
+OA
+fQ
+CZ
+am
+OA
+sA
+QY
+OA
+gX
+pV
+pV
+"}
+(24,1,1) = {"
+pV
+pV
+gX
+ls
+sj
+QY
+dE
+QY
+QU
+ls
+ls
+ls
+gz
+If
+ls
+ls
+gX
+wl
+zS
+Si
+wl
+gX
+OA
+OA
+gG
+OA
+OA
+OA
+fQ
+CZ
+am
+TC
+Fr
+ZP
+OA
+gX
+pV
+pV
+"}
+(25,1,1) = {"
+pV
+pV
+gX
+HQ
+Zd
+QY
+dE
+QY
+JB
+lU
+ok
+MU
+sC
+MU
+Fc
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+az
+ER
+aM
+NT
+OA
+fQ
+CZ
+tV
+OA
+yB
+yf
+OA
+gX
+pV
+pV
+"}
+(26,1,1) = {"
+pV
+pV
+gX
+mB
+Zd
+QY
+pU
+dW
+Ng
+be
+UR
+dW
+Xi
+QY
+MX
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+xn
+va
+px
+Pp
+gk
+te
+CZ
+Hq
+OA
+OA
+OA
+OA
+gX
+pV
+pV
+"}
+(27,1,1) = {"
+pV
+pV
+gX
+ls
+ae
+QY
+vL
+QY
+hy
+KZ
+NA
+bo
+uc
+QY
+QU
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+gS
+va
+pZ
+LO
+OA
+oo
+CZ
+zg
+OA
+nn
+QY
+OA
+gX
+pV
+pV
+"}
+(28,1,1) = {"
+pV
+pV
+gX
+ls
+IM
+QY
+dL
+QY
+mD
+qX
+Kc
+QY
+Hr
+QY
+ex
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+Yb
+va
+uK
+TT
+qS
+eV
+CZ
+am
+TC
+Ec
+UL
+OA
+gX
+pV
+pV
+"}
+(29,1,1) = {"
+pV
+pV
+gX
+ls
+bx
+Kn
+SO
+Vh
+Sz
+Vh
+Sz
+Vh
+Jr
+Vh
+cr
+ls
+gX
+wl
+qu
+Ry
+wl
+gX
+OA
+yI
+yM
+kh
+Fn
+OA
+lK
+mC
+vD
+OA
+iN
+Pr
+OA
+gX
+pV
+pV
+"}
+(30,1,1) = {"
+pV
+pV
+gX
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+gX
+wl
+CW
+NX
+wl
+gX
+OA
+OA
+OA
+OA
+OA
+OA
+aa
+ZD
+ZD
+OA
+OA
+OA
+OA
+gX
+pV
+pV
+"}
+(31,1,1) = {"
+pV
+pV
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+wl
+qu
+Ry
+wl
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+pV
+pV
+"}
+(32,1,1) = {"
+pV
+pV
+gX
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+cV
+cV
+cV
+cV
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+gX
+pV
+pV
+"}
+(33,1,1) = {"
+pV
+pV
+gX
+mi
+MZ
+Pw
+nl
+qY
+so
+Yl
+mi
+XN
+CP
+rs
+XN
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+IG
+KR
+mx
+zT
+Pi
+RE
+QD
+HE
+uL
+IG
+ue
+GL
+IG
+gX
+pV
+pV
+"}
+(34,1,1) = {"
+pV
+pV
+gX
+mi
+zJ
+Fr
+Fr
+tN
+Fr
+qv
+mi
+nP
+Ld
+mQ
+nP
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+IG
+gm
+wZ
+Rk
+wZ
+lL
+IG
+FB
+cI
+JO
+Ph
+oO
+IG
+gX
+pV
+pV
+"}
+(35,1,1) = {"
+pV
+pV
+gX
+mi
+Vq
+Fr
+TM
+Pp
+Yx
+FF
+mi
+ai
+Ld
+mQ
+TJ
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+IG
+AT
+wZ
+pO
+AK
+zj
+hW
+SG
+pC
+IG
+vA
+CS
+IG
+gX
+pV
+pV
+"}
+(36,1,1) = {"
+pV
+pV
+gX
+mi
+of
+Fr
+Fr
+Fr
+ba
+gC
+mi
+nP
+Ld
+mQ
+nP
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+IG
+tk
+wZ
+fs
+wZ
+sh
+IG
+FB
+RR
+IG
+IG
+IG
+IG
+gX
+pV
+pV
+"}
+(37,1,1) = {"
+pV
+pV
+gX
+mi
+JY
+hs
+wy
+tO
+ba
+cc
+Es
+nP
+Ld
+mQ
+nP
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+IG
+sV
+mq
+SS
+jr
+hC
+QD
+FB
+kV
+Nd
+IG
+ua
+IG
+gX
+pV
+pV
+"}
+(38,1,1) = {"
+pV
+pV
+gX
+mi
+mi
+mi
+mi
+WP
+ba
+cc
+go
+nP
+Ld
+mQ
+nP
+oP
+gX
+wl
+zS
+Si
+wl
+gX
+IG
+IG
+QD
+QD
+IG
+IG
+IG
+jD
+kV
+Ud
+IG
+Il
+IG
+gX
+pV
+pV
+"}
+(39,1,1) = {"
+pV
+pV
+gX
+mi
+No
+XO
+db
+tY
+ba
+cc
+mi
+nP
+jj
+nI
+nP
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+oT
+pA
+pV
+pV
+pV
+IG
+IG
+ck
+kV
+HA
+IG
+GC
+IG
+gX
+pV
+pV
+"}
+(40,1,1) = {"
+pV
+pV
+gX
+mi
+mi
+mi
+mi
+yu
+ve
+Xo
+mi
+nP
+bI
+nI
+nP
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+oT
+Dn
+pV
+pV
+pV
+pV
+IG
+vS
+YL
+sP
+Eg
+wE
+IG
+gX
+pV
+pV
+"}
+(41,1,1) = {"
+pV
+pV
+gX
+mi
+xL
+np
+IK
+Ib
+pn
+hJ
+mi
+ai
+Ld
+mQ
+TJ
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+oT
+pV
+pV
+TI
+pV
+pV
+QD
+FB
+aJ
+UD
+wZ
+cI
+Gw
+gX
+pV
+pV
+"}
+(42,1,1) = {"
+pV
+pV
+gX
+mi
+hh
+Cx
+mi
+mi
+cJ
+mi
+mi
+nP
+Ld
+mQ
+nP
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+oT
+pV
+pV
+pV
+pV
+pV
+QD
+rM
+Qt
+wZ
+wZ
+cI
+kg
+gX
+pV
+pV
+"}
+(43,1,1) = {"
+pV
+pV
+gX
+mi
+Do
+pc
+mi
+Lq
+vZ
+Tc
+mi
+XN
+CP
+rs
+XN
+oP
+gX
+wl
+qu
+Ry
+wl
+gX
+oT
+pV
+pV
+pV
+vM
+pA
+IG
+Bi
+eQ
+tb
+ci
+JV
+IG
+gX
+pV
+pV
+"}
+(44,1,1) = {"
+pV
+pV
+gX
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+mi
+cV
+cV
+cV
+cV
+oP
+gX
+wl
+Kr
+qD
+wl
+gX
+oT
+oT
+oT
+oT
+oT
+oT
+IG
+IG
+IG
+IG
+IG
+IG
+IG
+gX
+pV
+pV
+"}
+(45,1,1) = {"
+pV
+pV
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+wl
+qu
+Ry
+wl
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+pV
+pV
+"}
+(46,1,1) = {"
+pV
+pV
+gX
+QB
+QB
+QB
+QB
+QB
+QB
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+gX
+pV
+pV
+"}
+(47,1,1) = {"
+pV
+pV
+gX
+QB
+iq
+sf
+sf
+sf
+PM
+Rp
+JF
+GP
+GX
+cE
+Lj
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+bH
+NU
+LX
+TW
+nr
+wZ
+bp
+QS
+nr
+bc
+rJ
+xK
+gX
+pV
+pV
+"}
+(48,1,1) = {"
+pV
+pV
+gX
+QB
+sf
+xQ
+sf
+xu
+Yn
+Xb
+HD
+iC
+va
+va
+rx
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+TW
+zw
+wZ
+wZ
+Di
+wZ
+wZ
+wZ
+wZ
+wZ
+JW
+xK
+gX
+pV
+pV
+"}
+(49,1,1) = {"
+pV
+pV
+gX
+QB
+sf
+Ra
+sf
+PM
+DP
+Rp
+cn
+va
+Sc
+XY
+ZP
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+ZL
+wZ
+wZ
+wZ
+Ba
+Tg
+xK
+Sj
+Sj
+Sj
+xK
+xK
+gX
+pV
+pV
+"}
+(50,1,1) = {"
+pV
+pV
+gX
+QB
+sf
+sf
+sf
+PM
+dC
+Rp
+XU
+Fr
+Fr
+ba
+Tk
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+wZ
+xj
+wZ
+wZ
+wg
+ID
+xK
+Zu
+VU
+TW
+vm
+xK
+gX
+pV
+pV
+"}
+(51,1,1) = {"
+pV
+pV
+gX
+QB
+YI
+xu
+hH
+Yn
+wu
+Rp
+Xb
+GF
+Rp
+ty
+Fr
+nd
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+bH
+jm
+wZ
+wZ
+fo
+yR
+xK
+gw
+va
+pk
+wZ
+xK
+gX
+pV
+pV
+"}
+(52,1,1) = {"
+pV
+pV
+gX
+QB
+KD
+Yn
+xc
+DP
+ip
+WF
+vE
+Qf
+Rp
+Ut
+Fr
+yh
+gX
+wl
+zS
+Si
+wl
+gX
+xK
+xK
+xK
+jf
+TW
+rX
+AQ
+Nx
+AQ
+RK
+ky
+zy
+xK
+gX
+pV
+pV
+"}
+(53,1,1) = {"
+pV
+pV
+gX
+QB
+ip
+TB
+ip
+qx
+YX
+hO
+Qf
+RA
+Rp
+eo
+Fr
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+NV
+xK
+DL
+TW
+fo
+pl
+xK
+fF
+va
+AC
+wZ
+xK
+gX
+pV
+pV
+"}
+(54,1,1) = {"
+pV
+pV
+gX
+QB
+wu
+mX
+wu
+qx
+ip
+hO
+Qf
+vE
+Xb
+ve
+UL
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+bf
+Dw
+wZ
+wZ
+cX
+bX
+xK
+ab
+TW
+aK
+Ir
+xK
+gX
+pV
+pV
+"}
+(55,1,1) = {"
+pV
+pV
+gX
+QB
+ip
+qx
+HU
+DP
+qx
+Sy
+vE
+es
+Rp
+ac
+Hh
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+sI
+xK
+Nt
+wZ
+fo
+tJ
+xK
+Sj
+Sj
+Sj
+xK
+xK
+gX
+pV
+pV
+"}
+(56,1,1) = {"
+pV
+pV
+gX
+QB
+lx
+qx
+ip
+XR
+Rp
+Rp
+Rp
+Rp
+Rp
+yW
+Rp
+Rp
+gX
+wl
+qu
+Ry
+wl
+gX
+xK
+xK
+xK
+xK
+Zm
+Tq
+wZ
+wZ
+TW
+TW
+wZ
+EV
+xK
+gX
+pV
+pV
+"}
+(57,1,1) = {"
+pV
+pV
+gX
+QB
+ip
+ip
+GY
+wu
+oc
+kv
+dM
+Rp
+Lq
+Xz
+QV
+Rp
+gX
+wl
+hd
+RT
+wl
+gX
+xK
+gD
+KQ
+sa
+wZ
+bJ
+wZ
+wv
+QS
+bJ
+bH
+ZR
+xK
+gX
+pV
+pV
+"}
+(58,1,1) = {"
+pV
+pV
+gX
+QB
+QB
+QB
+QB
+QB
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
+Rp
+gX
+wl
+wl
+wl
+wl
+gX
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+gX
+pV
+pV
+"}
+(59,1,1) = {"
+pV
+pV
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+gX
+pV
+pV
+"}
+(60,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+"}
+(61,1,1) = {"
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+pV
+"}

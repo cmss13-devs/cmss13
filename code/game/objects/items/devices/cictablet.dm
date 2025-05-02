@@ -6,7 +6,7 @@
 	icon_state = "Cotablet"
 	item_state = "Cotablet"
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 	req_access = list(ACCESS_MARINE_SENIOR)
 	var/on = TRUE // 0 for off
 	var/cooldown_between_messages = COOLDOWN_COMM_MESSAGE
@@ -15,7 +15,7 @@
 
 	var/announcement_title = COMMAND_ANNOUNCE
 	var/announcement_faction = FACTION_MARINE
-	var/add_pmcs = TRUE
+	var/add_pmcs = FALSE
 
 	var/datum/tacmap/tacmap
 	var/minimap_type = MINIMAP_FLAG_USCM
@@ -46,7 +46,8 @@
 /obj/item/device/cotablet/attack_self(mob/living/carbon/human/user as mob)
 	..()
 
-	if(src.allowed(user) && user.wear_id?.check_biometrics(user))
+	var/obj/item/card/id/card = user.get_idcard()
+	if(allowed(user) && card?.check_biometrics(user))
 		tgui_interact(user)
 	else
 		to_chat(user, SPAN_DANGER("Access denied."))
@@ -103,14 +104,14 @@
 				return FALSE
 
 			var/input = stripped_multiline_input(user, "Please write a message to announce to the [MAIN_SHIP_NAME]'s crew and all groundside personnel.", "Priority Announcement", "")
-			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in view(1, src)))
+			if(!input || !COOLDOWN_FINISHED(src, announcement_cooldown) || !(user in dview(1, src)))
 				return FALSE
 
 			var/signed = null
 			if(ishuman(user))
 				var/mob/living/carbon/human/human_user = user
-				var/obj/item/card/id/id = human_user.wear_id
-				if(istype(id))
+				var/obj/item/card/id/id = human_user.get_idcard()
+				if(id)
 					var/paygrade = get_paygrades(id.paygrade, FALSE, human_user.gender)
 					signed = "[paygrade] [id.registered_name]"
 
@@ -174,5 +175,17 @@
 
 	announcement_title = PMC_COMMAND_ANNOUNCE
 	announcement_faction = FACTION_PMC
+	add_pmcs = TRUE
+	minimap_type = MINIMAP_FLAG_WY
 
-	minimap_type = MINIMAP_FLAG_PMC
+/obj/item/device/cotablet/upp
+
+	desc = "A special device used by field UPP commanders."
+
+	tablet_name = "UPP Field Commander's Tablet"
+
+	announcement_title = UPP_COMMAND_ANNOUNCE
+	announcement_faction = FACTION_UPP
+	req_access = list(ACCESS_UPP_LEADERSHIP)
+
+	minimap_type = MINIMAP_FLAG_UPP

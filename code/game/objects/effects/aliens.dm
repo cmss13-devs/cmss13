@@ -86,7 +86,8 @@
 						if(FF.firelevel > 3*fire_level_to_extinguish)
 							FF.firelevel -= 3*fire_level_to_extinguish
 							FF.update_flame()
-						else qdel(atm)
+						else
+							qdel(atm)
 					else
 						qdel(atm)
 			continue
@@ -106,14 +107,16 @@
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
 			var/mob/living/M = atm
-			M.ExtinguishMob()
+
+			if(M != cause_data?.resolve_mob())
+				M.ExtinguishMob()
+
 			if(M.stat == DEAD) // NO. DAMAGING. DEAD. MOBS.
 				continue
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
 				if (C.ally_of_hivenumber(hivenumber))
 					continue
-
 				apply_spray(M)
 				M.apply_armoured_damage(get_xeno_damage_acid(M, damage_amount), ARMOR_BIO, BURN) // Deal extra damage when first placing ourselves down.
 
@@ -123,6 +126,10 @@
 			var/obj/vehicle/multitile/V = atm
 			V.handle_acidic_environment(src)
 			continue
+		if (istype(loc, /turf/open))
+			var/turf/open/scorch_turf_target = loc
+			if(scorch_turf_target.scorchable)
+				scorch_turf_target.scorch(damage_amount)
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, PROC_REF(die)), time_to_live)
@@ -144,6 +151,9 @@
 
 /obj/effect/xenomorph/spray/Crossed(AM as mob|obj)
 	..()
+	if(AM == cause_data?.resolve_mob())
+		return
+
 	if(isliving(AM))
 		var/mob/living/living_mob = AM
 		if(living_mob.ally_of_hivenumber(hivenumber))
@@ -293,7 +303,7 @@
 	/// Factor of duration between acid progression
 	var/acid_delay = 1
 	/// How much fuel the acid drains from the flare every acid tick
-	var/flare_damage = 500
+	var/flare_damage = 600
 	var/barricade_damage = 40
 	var/in_weather = FALSE
 
@@ -302,7 +312,7 @@
 	name = "weak acid"
 	acid_delay = 2.5 //250% delay (40% speed)
 	barricade_damage = 20
-	flare_damage = 150
+	flare_damage = 180
 	icon_state = "acid_weak"
 
 //Superacid
@@ -310,7 +320,7 @@
 	name = "strong acid"
 	acid_delay = 0.4 //40% delay (250% speed)
 	barricade_damage = 100
-	flare_damage = 1875
+	flare_damage = 2250
 	icon_state = "acid_strong"
 
 /obj/effect/xenomorph/acid/Initialize(mapload, atom/target)
@@ -388,37 +398,49 @@
 	remaining = return_delay
 
 	switch(ticks_left)
-		if(6) visible_message(SPAN_XENOWARNING("\The [acid_t] is barely holding up against the acid!"))
-		if(4) visible_message(SPAN_XENOWARNING("\The [acid_t]\s structure is being melted by the acid!"))
-		if(2) visible_message(SPAN_XENOWARNING("\The [acid_t] is struggling to withstand the acid!"))
-		if(0 to 1) visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
+		if(6)
+			visible_message(SPAN_XENOWARNING("\The [acid_t] is barely holding up against the acid!"))
+		if(4)
+			visible_message(SPAN_XENOWARNING("\The [acid_t]\s structure is being melted by the acid!"))
+		if(2)
+			visible_message(SPAN_XENOWARNING("\The [acid_t] is struggling to withstand the acid!"))
+		if(0 to 1)
+			visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
 
 /obj/effect/xenomorph/acid/proc/finish_melting()
-	visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 	playsound(src, "acid_hit", 25, TRUE)
 
 	if(istype(acid_t, /turf))
 		if(istype(acid_t, /turf/closed/wall))
 			var/turf/closed/wall/wall = acid_t
 			new /obj/effect/acid_hole(wall)
+			visible_message(SPAN_XENODANGER("[acid_t] audibly cracks under the bubbling acid and begins to fragment!"))
 		else
 			var/turf/turf = acid_t
 			turf.ScrapeAway()
+			visible_message(SPAN_XENODANGER("[acid_t] audibly cracks under the bubbling acid and begins to fragment!"))
 
 	else if (istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
 		girder.dismantle()
+		visible_message(SPAN_XENODANGER("[acid_t] audibly cracks under the bubbling acid and begins to fragment!"))
 
 	else if(istype(acid_t, /obj/structure/window/framed))
 		var/obj/structure/window/framed/window = acid_t
 		window.deconstruct(disassembled = FALSE)
+		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 
 	else if(istype(acid_t, /obj/structure/barricade))
 		pass() // Don't delete it, just damaj
 
+	else if(istype(acid_t, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/acid_gun = acid_t
+		acid_gun.acid_gun_durability()
+
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)
+		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		qdel(acid_t)
 	qdel(src)
 
@@ -592,7 +614,7 @@
 
 		total_hits++
 
-	var/datum/action/xeno_action/activable/boiler_trap/trap = get_xeno_action_by_type(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
+	var/datum/action/xeno_action/activable/boiler_trap/trap = get_action(linked_xeno, /datum/action/xeno_action/activable/boiler_trap)
 
 	trap.reduce_cooldown(total_hits*4 SECONDS)
 

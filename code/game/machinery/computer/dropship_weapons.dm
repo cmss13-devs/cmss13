@@ -8,7 +8,7 @@
 	circuit = null
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = TRUE
+	explo_proof = TRUE
 	var/shuttle_tag  // Used to know which shuttle we're linked to.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
 	var/cavebreaker = FALSE //ignore caves and other restrictions?
@@ -18,7 +18,7 @@
 	var/firemission_signal //id of the signal
 	var/in_firemission_mode = FALSE
 	var/upgraded = MATRIX_DEFAULT // we transport upgrade var from matrixdm
-	var/matrixcol //color of matrix, only used when we upgrade to nv
+	var/matrix_color = NV_COLOR_GREEN //color of matrix, only used when we upgrade to nv
 	var/power //level of the property
 	var/datum/cas_signal/selected_cas_signal
 	var/datum/simulator/simulation
@@ -38,6 +38,11 @@
 
 	var/registered = FALSE
 
+/obj/structure/machinery/computer/dropship_weapons/New()
+	..()
+	if(firemission_envelope)
+		firemission_envelope.linked_console = src
+
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
@@ -49,17 +54,14 @@
 	AddComponent(/datum/component/camera_manager)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
-/obj/structure/machinery/computer/dropship_weapons/New()
-	..()
-	if(firemission_envelope)
-		firemission_envelope.linked_console = src
+/obj/structure/machinery/computer/dropship_weapons/Destroy()
+	. = ..()
+	QDEL_NULL(firemission_envelope)
+	QDEL_NULL(tacmap)
+	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
-
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -90,7 +92,6 @@
 			W.forceMove(src)
 			to_chat(user, SPAN_NOTICE("You swap the matrix in the dropship guidance camera system, destroying the older part in the process"))
 			upgraded = matrix.upgrade
-			matrixcol = matrix.matrixcol
 			power = matrix.power
 
 		else
@@ -313,9 +314,25 @@
 					var/obj/structure/machinery/defenses/sentry/defense = sentry.deployed_turret
 					if(defense.has_camera)
 						defense.set_range()
-						var/datum/shape/rectangle/current_bb = defense.range_bounds
 						camera_area_equipment = sentry
-						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, current_bb.center_x, current_bb.center_y, defense.loc.z, current_bb.width, current_bb.height)
+						SEND_SIGNAL(src, COMSIG_CAMERA_SET_AREA, defense.range_bounds, defense.loc.z)
+				return TRUE
+
+		if("auto-deploy")
+			var/equipment_tag = params["equipment_id"]
+			for(var/obj/structure/dropship_equipment/equipment as anything in shuttle.equipments)
+				var/mount_point = equipment.ship_base.attach_id
+				if(mount_point != equipment_tag)
+					continue
+
+				if(istype(equipment, /obj/structure/dropship_equipment/sentry_holder))
+					var/obj/structure/dropship_equipment/sentry_holder/sentry = equipment
+					sentry.auto_deploy = !sentry.auto_deploy
+					return TRUE
+
+				if(istype(equipment, /obj/structure/dropship_equipment/mg_holder))
+					var/obj/structure/dropship_equipment/mg_holder/mg = equipment
+					mg.auto_deploy = !mg.auto_deploy
 				return TRUE
 
 		if("clear-camera")
@@ -420,7 +437,12 @@
 			return TRUE
 
 		if("nvg-enable")
-			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, "#7aff7a")
+			if(upgraded != MATRIX_NVG)
+				to_chat(user, SPAN_WARNING("The matrix is not upgraded with night vision."))
+				return FALSE
+			if(user.client?.prefs?.night_vision_preference)
+				matrix_color = user.client.prefs.nv_color_list[user.client.prefs.night_vision_preference]
+			SEND_SIGNAL(src, COMSIG_CAMERA_SET_NVG, 5, matrix_color)
 			return TRUE
 
 		if("nvg-disable")
@@ -581,8 +603,8 @@
 	for(var/datum/cas_fire_mission_record/firerec as anything in editing_firemission.records)
 		var/gimbal = firerec.get_offsets()
 		var/ammo = firerec.get_ammo()
-		var/offsets = new /list(firerec.offsets.len)
-		for(var/idx = 1; idx < firerec.offsets.len; idx++)
+		var/offsets = new /list(length(firerec.offsets))
+		for(var/idx = 1; idx < length(firerec.offsets); idx++)
 			offsets[idx] = firerec.offsets[idx] == null ? "-" : firerec.offsets[idx]
 			. += list(
 				"name" = sanitize(copytext(firerec.weapon.name, 1, 50)),
@@ -621,7 +643,8 @@
 	. = list()
 	var/datum/cas_iff_group/cas_group = GLOB.cas_groups[faction]
 	for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
-		if(!istype(LT) || !LT.valid_signal())
+		var/obj/object = LT.signal_loc
+		if(!istype(LT) || !LT.valid_signal() || !is_ground_level(object.z))
 			continue
 		var/area/laser_area = get_area(LT.signal_loc)
 		. += list(
@@ -642,6 +665,9 @@
 		var/mob/living/carbon/human/human_operator = weapon_operator
 		if(!human_operator.allow_gun_usage)
 			to_chat(human_operator, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
+			return FALSE
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(human_operator, SPAN_WARNING("You will not break the ceasefire by doing that!"))
 			return FALSE
 	var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
 	if(!selected_equipment || !selected_equipment.is_weapon)
@@ -737,7 +763,7 @@
 	if(!skillcheck(weapon_operator, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 		to_chat(weapon_operator, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 		return FALSE
-	if(firemission_tag > firemission_envelope.missions.len)
+	if(firemission_tag > length(firemission_envelope.missions))
 		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or already deleted."))
 		return FALSE
 	if(selected_firemission == firemission_envelope.missions[firemission_tag])
@@ -756,7 +782,7 @@
 	if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
 		to_chat(weapon_operator, SPAN_WARNING("Fire Mission already underway."))
 		return FALSE
-	if(firemission_tag > firemission_envelope.missions.len)
+	if(firemission_tag > length(firemission_envelope.missions))
 		to_chat(weapon_operator, SPAN_WARNING("Fire Mission ID corrupted or deleted."))
 		return FALSE
 	if(selected_firemission == firemission_envelope.missions[firemission_tag])
@@ -890,13 +916,13 @@
 	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
 	shuttle_tag = DROPSHIP_NORMANDY
 
-/obj/structure/machinery/computer/dropship_weapons/Destroy()
-	. = ..()
-	QDEL_NULL(firemission_envelope)
-	QDEL_NULL(tacmap)
+/obj/structure/machinery/computer/dropship_weapons/dropship3
+	name = "\improper 'Saipan' weapons controls"
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_FLIGHT)
+	firemission_envelope = new /datum/cas_fire_envelope/uscm_dropship()
+	shuttle_tag = DROPSHIP_SAIPAN
 
 /obj/structure/machinery/computer/dropship_weapons/proc/simulate_firemission(mob/living/user)
-
 	if(!configuration)
 		to_chat(user, SPAN_WARNING("Configure a firemission before attempting to run the simulation"))
 		return

@@ -65,12 +65,15 @@
 
 	for(var/mob/M in orange(detector_range, loc))
 		var/detected
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(M == loc) continue //device user isn't detected
+		if(loc == null || M == null)
+			continue
+		if(loc.z != M.z)
+			continue
+		if(M == loc)
+			continue //device user isn't detected
 		if((isxeno(M) || isyautja(M)) && M.stat == DEAD )
 			detected = TRUE
-		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
+		else if(ishuman(M) && M.stat == DEAD && length(M.contents))
 			for(var/obj/I in M.contents_twice())
 				for(var/DT in objects_to_detect)
 					if(istype(I, DT))

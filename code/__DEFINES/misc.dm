@@ -25,6 +25,7 @@
 #define SMOKE_RANK_MED 3
 #define SMOKE_RANK_HIGH 4
 #define SMOKE_RANK_BOILER 5
+#define SMOKE_RANK_MAX 6
 
 // What kind of function to use for Explosions falling off.
 
@@ -46,6 +47,11 @@
 #define AREA_CONTAINMENT (1<<3)
 /// Flags the area as permanently unweedable. Still requires is_resin_allowed = FALSE
 #define AREA_UNWEEDABLE (1<<4)
+/// Flags the area as having purpose by the Yautja, and exempt from gear tracking.
+#define AREA_YAUTJA_GROUNDS (1<<5)
+/// Flags the area as a hunting grounds for the Yautja, sometimes blocking game interaction.
+#define AREA_YAUTJA_HUNTING_GROUNDS (1<<6)
+
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 
@@ -104,6 +110,7 @@
 #define INTERRUPT_ALL_OUT_OF_RANGE  (INTERRUPT_ALL & (~INTERRUPT_DIFF_TURF)|INTERRUPT_OUT_OF_RANGE)
 #define INTERRUPT_MOVED  (INTERRUPT_DIFF_LOC|INTERRUPT_DIFF_TURF|INTERRUPT_RESIST)
 #define INTERRUPT_NO_NEEDHAND    (INTERRUPT_ALL & (~INTERRUPT_NEEDHAND))
+#define INTERRUPT_NO_FLOORED    (INTERRUPT_ALL & (~INTERRUPT_KNOCKED_DOWN))
 #define INTERRUPT_INCAPACITATED  (INTERRUPT_UNCONSCIOUS|INTERRUPT_KNOCKED_DOWN|INTERRUPT_STUNNED|INTERRUPT_RESIST)
 #define INTERRUPT_CLICK  (INTERRUPT_LCLICK|INTERRUPT_RCLICK|INTERRUPT_SHIFTCLICK|INTERRUPT_ALTCLICK|INTERRUPT_CTRLCLICK|INTERRUPT_MIDDLECLICK|INTERRUPT_RESIST)
 
@@ -155,10 +162,37 @@
 #define ASSEMBLY_UNLOCKED 1
 #define ASSEMBLY_LOCKED 2
 
+// RESEARCH UPGRADES DEFINES //
+
 // Matrix CAS Upgrades
 #define MATRIX_DEFAULT 0
 #define MATRIX_NVG 1
 #define MATRIX_WIDE 2
+
+#define RESEARCH_UPGRADE_NOTHING_TO_PASS null
+#define RESEARCH_UPGRADE_EXCLUDE_BUY -2
+#define RESEARCH_UPGRADE_CATEGORY -1 //lord forgive me
+#define RESEARCH_UPGRADE_ITEM 1
+#define RESEARCH_UPGRADE_TIER_1 1
+#define RESEARCH_UPGRADE_TIER_2 2
+#define RESEARCH_UPGRADE_TIER_3 3
+#define RESEARCH_UPGRADE_TIER_4 4
+#define RESEARCH_UPGRADE_TIER_5 5
+//Value define
+
+#define ITEM_MACHINERY_UPGRADE "Machinery" //*must* be same as category name.
+#define ITEM_ACCESSORY_UPGRADE "Items"
+#define ITEM_ARMOR_UPGRADE "Armor"
+
+//injector plate stuff
+#define EMERGENCY_PLATE_OD_PROTECTION_OFF 0
+#define EMERGENCY_PLATE_OD_PROTECTION_STRICT 1
+#define EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC 2
+#define EMERGENCY_PLATE_OD_WARNING 1
+#define EMERGENCY_PLATE_ADJUSTED_WARNING 2
+
+
+// RESEARCH UPGRADES DEFINES END
 
 // Statistics defines
 #define STATISTIC_XENO "xeno"
@@ -266,6 +300,7 @@
 //ghost vision mode pref settings
 #define GHOST_VISION_LEVEL_NO_NVG "No Night Vision"
 #define GHOST_VISION_LEVEL_MID_NVG "Half Night Vision"
+#define GHOST_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define GHOST_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
 //Ghost orbit types:

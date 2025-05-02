@@ -36,6 +36,8 @@ SUBSYSTEM_DEF(profiler)
 	if(CONFIG_GET(flag/auto_profile))
 		DumpFile(allow_yield = FALSE)
 		world.Profile(PROFILE_CLEAR, type = "sendmaps")
+	if(CONFIG_GET(string/profiler_webhook_url))
+		SendInfoToDiscord()
 	return ..()
 
 /datum/controller/subsystem/profiler/proc/StartProfiling()
@@ -69,6 +71,23 @@ SUBSYSTEM_DEF(profiler)
 	WRITE_FILE(prof_file, current_profile_data)
 	WRITE_FILE(sendmaps_file, current_sendmaps_data)
 	write_cost = MC_AVERAGE(write_cost, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
+
+/proc/sort_overtime_data(list/A, list/B)
+	return B["over"] - A["over"]
+
+/datum/controller/subsystem/profiler/proc/SendInfoToDiscord()
+	var/current_profile_data = world.Profile(PROFILE_REFRESH, format = "json")
+	var/list/data = json_decode(current_profile_data)
+
+	sortTim(data, GLOBAL_PROC_REF(sort_overtime_data))
+
+	var/datum/discord_embed/embed = new()
+	embed.title = "Profile of Round #[GLOB.round_id] - Highest Overtiming Procs"
+	embed.fields = list()
+	for(var/i in 1 to 10)
+		var/list/entry = data[i]
+		embed.fields[entry["name"]] = "**Overtime:** [entry["over"]], **Self Cost:** [entry["self"]], **Total Cost:** [entry["total"]], **Calls:** [entry["calls"]]"
+	send2webhook(embed, CONFIG_GET(string/profiler_webhook_url))
 
 #undef PROFILER_FILENAME
 #undef SENDMAPS_FILENAME

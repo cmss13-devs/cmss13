@@ -22,11 +22,11 @@
 
 	viewload = 0.8*viewload + 0.2*load
 
-	viewload = round(viewload)
+	viewload = floor(viewload)
 
 	var/numapc = 0
 
-	if(nodes && nodes.len) // Added to fix a bad list bug -- TLE
+	if(LAZYLEN(nodes)) // Added to fix a bad list bug -- TLE
 		for(var/obj/structure/machinery/power/terminal/term in nodes)
 			if( istype( term.master, /obj/structure/machinery/power/apc ) )
 				numapc++
@@ -45,7 +45,7 @@
 		perapc = avail/numapc + perapc_excess
 
 	if( netexcess > 100) // if there was excess power last cycle
-		if(nodes && nodes.len)
+		if(LAZYLEN(nodes))
 			for(var/obj/structure/machinery/power/smes/S in nodes) // find the SMESes in the network
 				if(S.powernet == src)
 					S.restore() // and restore some of the power that was used

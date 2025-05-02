@@ -109,6 +109,8 @@
 	if(I == wear_suit)
 		if(s_store && !(s_store.flags_equip_slot & SLOT_SUIT_STORE))
 			drop_inv_item_on_ground(s_store)
+		if(back && (back.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE)) // Technically some items don't need to be unequipped though
+			drop_inv_item_on_ground(back)
 		wear_suit = null
 		if(I.flags_inv_hide & HIDESHOES)
 			update_inv_shoes()
@@ -213,32 +215,45 @@
 	if(!has_limb_for_slot(slot))
 		return
 
-	if(equipping_item == l_hand)
-		if(equipping_item.flags_item & NODROP)
-			return
-		l_hand = null
-		update_inv_l_hand()
-		//removes item's actions, may be readded once re-equipped to the new slot
-		for(var/item_actions in equipping_item.actions)
-			var/datum/action/action = item_actions
-			action.remove_from(src)
+	// Already handled within the proc, usually storages that force move the item themselves
+	var/static/list/no_update = list(
+		WEAR_IN_BACK,
+		WEAR_IN_SCABBARD,
+		WEAR_IN_JACKET,
+		WEAR_IN_HELMET,
+		WEAR_IN_BELT,
+		WEAR_IN_J_STORE,
+		WEAR_IN_L_STORE,
+		WEAR_IN_R_STORE
+	)
 
-	else if(equipping_item == r_hand)
-		if(equipping_item.flags_item & NODROP)
-			return
-		r_hand = null
-		update_inv_r_hand()
-		//removes item's actions, may be readded once re-equipped to the new slot
-		for(var/item_actions in equipping_item.actions)
-			var/datum/action/action = item_actions
-			action.remove_from(src)
+	if(!(slot in no_update))
+		if(equipping_item == l_hand)
+			if(equipping_item.flags_item & NODROP)
+				return
+			l_hand = null
+			update_inv_l_hand()
+			//removes item's actions, may be readded once re-equipped to the new slot
+			for(var/item_actions in equipping_item.actions)
+				var/datum/action/action = item_actions
+				action.remove_from(src)
 
-	equipping_item.screen_loc = null
-	if(equipping_item.loc != src)
-		equipping_item.pickup(src, disable_warning)
-	equipping_item.forceMove(src)
-	equipping_item.layer = ABOVE_HUD_LAYER
-	equipping_item.plane = ABOVE_HUD_PLANE
+		else if(equipping_item == r_hand)
+			if(equipping_item.flags_item & NODROP)
+				return
+			r_hand = null
+			update_inv_r_hand()
+			//removes item's actions, may be readded once re-equipped to the new slot
+			for(var/item_actions in equipping_item.actions)
+				var/datum/action/action = item_actions
+				action.remove_from(src)
+
+		equipping_item.screen_loc = null
+		if(equipping_item.loc != src)
+			equipping_item.pickup(src, disable_warning)
+		equipping_item.forceMove(src)
+		equipping_item.layer = ABOVE_HUD_LAYER
+		equipping_item.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
 		if(WEAR_BACK)
@@ -412,6 +427,8 @@
 
 /mob/living/carbon/human/get_item_by_slot(slot_id)
 	switch(slot_id)
+		if(WEAR_ACCESSORY)
+			return w_uniform.accessories
 		if(WEAR_BACK)
 			return back
 		if(WEAR_FACE)

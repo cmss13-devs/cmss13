@@ -18,6 +18,14 @@ jobs:
           unset SECRET_EXISTS
           if [ -n "$ENABLER_SECRET" ]; then SECRET_EXISTS=true ; fi
           echo "ACTIONS_ENABLED=$SECRET_EXISTS" >> $GITHUB_OUTPUT
+
+      - name: Generate App Token
+        id: app-token-generation
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - name: "Setup python"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         uses: actions/setup-python@v3
@@ -35,6 +43,7 @@ jobs:
         with:
           fetch-depth: 25
           persist-credentials: false
+          token: ${{ steps.app-token-generation.outputs.token }}
       - name: "Compile"
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
@@ -42,8 +51,8 @@ jobs:
       - name: Commit
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "Changelogs"
+          git config --local user.email "${{ secrets.APP_PUBLIC_ID }}+${{ secrets.APP_PUBLIC_NAME }}[bot]@users.noreply.github.com"
+          git config --local user.name "${{ secrets.APP_PUBLIC_NAME }}[bot]"
           git pull origin master
           git add html/changelogs/archive
           git commit -m "Automatic changelog compile [ci skip]" -a || true
@@ -51,4 +60,4 @@ jobs:
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.BOT_TOKEN_CM || secrets.GITHUB_TOKEN }}
+          github_token: ${{ steps.app-token-generation.outputs.token }}

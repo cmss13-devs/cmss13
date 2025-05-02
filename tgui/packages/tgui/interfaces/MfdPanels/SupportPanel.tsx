@@ -1,14 +1,15 @@
-import { useBackend } from '../../backend';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
-import { MedevacMfdPanel } from './MedevacPanel';
+import { useBackend } from 'tgui/backend';
+import { Box, Stack } from 'tgui/components';
+
 import { FultonMfdPanel } from './FultonPanel';
-import { Box, Stack } from '../../components';
-import { SentryMfdPanel } from './SentryPanel';
-import { ParadropMfdPanel } from './ParadropPanel';
+import { MedevacMfdPanel } from './MedevacPanel';
 import { MgMfdPanel } from './MGPanel';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
+import { ParadropMfdPanel } from './ParadropPanel';
+import { SentryMfdPanel } from './SentryPanel';
 import { SpotlightMfdPanel } from './SpotlightPanel';
-import { EquipmentContext } from './types';
 import { mfdState, useEquipmentState } from './stateManagers';
+import type { EquipmentContext } from './types';
 
 export const SupportMfdPanel = (props: MfdProps) => {
   const { equipmentState } = useEquipmentState(props.panelStateId);
@@ -17,7 +18,7 @@ export const SupportMfdPanel = (props: MfdProps) => {
 
   const { data } = useBackend<EquipmentContext>();
   const result = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState
+    (x) => x.mount_point === equipmentState,
   );
   if (result?.shorthand === 'Medevac') {
     return <MedevacMfdPanel panelStateId={props.panelStateId} />;
@@ -48,7 +49,8 @@ export const SupportMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         <Stack align="center" vertical>
           <Stack.Item>

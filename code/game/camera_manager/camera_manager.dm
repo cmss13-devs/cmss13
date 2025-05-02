@@ -6,7 +6,7 @@
 /datum/component/camera_manager
 	var/map_name
 	var/obj/structure/machinery/camera/current
-	var/datum/shape/rectangle/current_area
+	var/datum/shape/current_area
 	var/atom/movable/screen/map_view/cam_screen
 	var/atom/movable/screen/background/cam_background
 	var/list/range_turfs = list()
@@ -86,7 +86,7 @@
 	RegisterSignal(parent, COMSIG_CAMERA_UNREGISTER_UI, PROC_REF(unregister))
 	RegisterSignal(parent, COMSIG_CAMERA_SET_NVG, PROC_REF(enable_nvg))
 	RegisterSignal(parent, COMSIG_CAMERA_CLEAR_NVG, PROC_REF(disable_nvg))
-	RegisterSignal(parent, COMSIG_CAMERA_SET_AREA, PROC_REF(set_camera_rect))
+	RegisterSignal(parent, COMSIG_CAMERA_SET_AREA, PROC_REF(set_camera_area))
 	RegisterSignal(parent, COMSIG_CAMERA_SET_TARGET, PROC_REF(set_camera))
 	RegisterSignal(parent, COMSIG_CAMERA_CLEAR, PROC_REF(clear_camera))
 	RegisterSignal(parent, COMSIG_CAMERA_REFRESH, PROC_REF(refresh_camera))
@@ -133,18 +133,18 @@
 	RegisterSignal(current, COMSIG_PARENT_QDELETING, PROC_REF(show_camera_static))
 	update_target_camera()
 
-/datum/component/camera_manager/proc/set_camera_rect(source, x, y, z, w, h)
+/datum/component/camera_manager/proc/set_camera_area(source, datum/shape/new_area, z)
 	SIGNAL_HANDLER
 	render_mode = RENDER_MODE_AREA
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
 	current = null
-	current_area = RECT(x, y, w, h)
-	target_x = x
-	target_y = y
+	current_area = new_area
+	target_x = current_area.center_x
+	target_y = current_area.center_y
 	target_z = z
-	target_width = w
-	target_height = h
+	target_width = current_area.bounds_x
+	target_height = current_area.bounds_y
 	update_area_camera()
 
 /datum/component/camera_manager/proc/enable_nvg(source, power, matrixcol)
@@ -152,7 +152,7 @@
 	for(var/plane_id in cam_plane_masters)
 		var/atom/movable/screen/plane_master/plane = cam_plane_masters["[plane_id]"]
 		plane.add_filter("nvg", 1, color_matrix_filter(color_matrix_from_string(matrixcol)))
-	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+	sync_lighting_plane_alpha(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 
 /datum/component/camera_manager/proc/disable_nvg()
 	SIGNAL_HANDLER
@@ -188,10 +188,13 @@
 	var/cam_location = current
 	if(isliving(current.loc) || isVehicle(current.loc))
 		cam_location = current.loc
-	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
-		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
-		cam_location = helmet.loc
+	else if(istype(current.loc, /obj/item/clothing))
+		var/obj/item/clothing/clothing = current.loc
+		cam_location = clothing.loc
 
+	else if(istype(current.loc, /obj/item/device/overwatch_camera))
+		var/obj/item/device/overwatch_camera/cam_gear = current.loc
+		cam_location = cam_gear.loc
 	// If we're not forcing an update for some reason and the cameras are in the same location,
 	// we don't need to update anything.
 	// Most security cameras will end here as they're not moving.
@@ -221,8 +224,8 @@
 	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
 	last_camera_turf = new_location
 
-	var/x_size = current_area.width
-	var/y_size = current_area.height
+	var/x_size = current_area.bounds_x
+	var/y_size = current_area.bounds_y
 	var/turf/target = locate(current_area.center_x, current_area.center_y, target_z)
 
 	var/list/visible_things = isXRay ? range("[x_size]x[y_size]", target) : view("[x_size]x[y_size]", target)

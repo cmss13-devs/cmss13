@@ -23,7 +23,7 @@
 			doors += list(air)
 			external_doors += list(air)
 			air.breakable = FALSE
-			air.indestructible = TRUE
+			air.explo_proof = TRUE
 			air.unacidable = TRUE
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
 
@@ -148,13 +148,13 @@
 				starboard_door = air
 				external_doors += list(air)
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 			else if(air.id == "port_door")
 				port_door = air
 				external_doors += list(air)
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 	if(!port_door)
 		WARNING("No port door found for [src]")
@@ -169,6 +169,7 @@
 	port_direction = NORTH
 	width = 17
 	height = 29
+	dwidth = 8
 	var/port_door
 	var/starboard_door
 
@@ -179,13 +180,13 @@
 		for(var/obj/structure/machinery/door/air in place)
 			if(air.id == "starboard_door")
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 				external_doors += list(air)
 				starboard_door = air
 			else if(air.id == "port_door")
 				air.breakable = FALSE
-				air.indestructible = TRUE
+				air.explo_proof = TRUE
 				air.unacidable = TRUE
 				external_doors += list(air)
 				port_door = air
@@ -228,6 +229,16 @@
 	name = "Almayer stern landing pad"
 	dir = NORTH
 	id = "almayer-ert3"
+
+/obj/docking_port/stationary/emergency_response/port1_upp
+	name = "Rostock starboard landing pad"
+	dir = NORTH
+	id = "rostock-ert1"
+
+/obj/docking_port/stationary/emergency_response/port2_upp
+	name = "Rostock port landing pad"
+	dir = NORTH
+	id = "rostock-ert2"
 
 /obj/docking_port/stationary/emergency_response/external
 	is_external = TRUE
@@ -289,6 +300,15 @@
 	airlock_id = "n_umbilical"
 	airlock_area = /area/almayer/hallways/lower/starboard_umbilical
 
+/obj/docking_port/stationary/emergency_response/external/hangar_port_upp
+	name = "Rostock hanger port external airlock"
+	dir = EAST
+	id = "rostock-ert-hangar-port"
+	width  = 17
+	height = 29
+	airlock_id = "rostock_umbilical"
+	airlock_area = /area/rostock/lower_deck/starboard_umbilical
+
 // These are docking ports not on the almayer
 /obj/docking_port/stationary/emergency_response/idle_port1
 	name = "Response Station Landing Pad 1"
@@ -331,6 +351,12 @@
 	width  = 17
 	height = 29
 	roundstart_template = /datum/map_template/shuttle/twe_ert
+
+/obj/docking_port/stationary/emergency_response/chinook_port
+	name = "Chinook Station Landing Pad 1"
+	dir = NORTH
+	id = ADMIN_LANDING_PAD_6
+	roundstart_template = /datum/map_template/shuttle/response_ert
 
 /datum/map_template/shuttle/response_ert
 	name = "Response Shuttle"

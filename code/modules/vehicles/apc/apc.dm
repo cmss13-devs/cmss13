@@ -87,7 +87,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 /obj/vehicle/multitile/apc/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new
 	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_CREWMAN, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
+	RRS.roles = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 	RRS.total = 2
 	role_reserved_slots += RRS
 
@@ -114,7 +114,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		add_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 			/obj/vehicle/multitile/proc/name_vehicle
 		))
 
@@ -141,7 +140,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		remove_verb(M.client, list(
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 			/obj/vehicle/multitile/proc/cycle_hardpoint,
-			/obj/vehicle/multitile/proc/toggle_shift_click,
 			/obj/vehicle/multitile/proc/name_vehicle,
 		))
 	else if(seat == VEHICLE_SUPPORT_GUNNER_ONE || seat == VEHICLE_SUPPORT_GUNNER_TWO)
@@ -178,7 +176,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, 90)
 	FPW.name = "Left "+ initial(FPW.name)
-	FPW.origins = list(2, 0)
+	FPW.origins = list(1, 0)
 	FPW.muzzle_flash_pos = list(
 		"1" = list(-18, 14),
 		"2" = list(18, -42),
@@ -191,7 +189,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 	V.add_hardpoint(FPW)
 	FPW.dir = turn(V.dir, -90)
 	FPW.name = "Right "+ initial(FPW.name)
-	FPW.origins = list(-2, 0)
+	FPW.origins = list(-1, 0)
 	FPW.muzzle_flash_pos = list(
 		"1" = list(16, 14),
 		"2" = list(-18, -42),

@@ -18,7 +18,8 @@
 	else ..()
 
 /obj/vehicle/souto/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated()) return
+	if(user.is_mob_incapacitated())
+		return
 	if(world.time > l_move_time + move_delay)
 		. = step(src, direction)
 
@@ -27,7 +28,7 @@
 	health = 1000
 	locked = FALSE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 /obj/vehicle/souto/super/explode()
 	for(var/mob/M as anything in viewers(7, src))

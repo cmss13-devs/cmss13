@@ -72,7 +72,8 @@
 	botcard = new(src)
 	if(GLOB.RoleAuthority)
 		var/datum/job/ctequiv = GLOB.RoleAuthority.roles_by_name[JOB_CARGO_TECH]
-		if(ctequiv) botcard.access = ctequiv.get_access()
+		if(ctequiv)
+			botcard.access = ctequiv.get_access()
 
 	cell = new(src)
 	cell.charge = 2000
@@ -105,12 +106,12 @@
 	var/list/orders = list("0","1","2","3","4","5","6","7","8","9")
 	wire_text = list()
 	wire_order = list()
-	while(colours.len > 0)
-		var/color = colours[ rand(1,colours.len) ]
+	while(length(colours) > 0)
+		var/color = colours[ rand(1,length(colours)) ]
 		wire_text += color
 		colours -= color
 
-		var/order = orders[ rand(1,orders.len) ]
+		var/order = orders[ rand(1,length(orders)) ]
 		wire_order += text2num(order)
 		orders -= order
 
@@ -157,7 +158,7 @@
 		else
 			to_chat(user, "You hit [src] with \the [I] but to no effect.")
 	else
-		..()
+		. = ..()
 	return
 
 
@@ -530,7 +531,8 @@
 	// with items dropping as mobs are loaded
 
 	for(var/atom/movable/AM in src)
-		if(AM == cell || AM == botcard) continue
+		if(AM == cell || AM == botcard)
+			continue
 
 		AM.forceMove(loc)
 		AM.layer = initial(AM.layer)
@@ -569,7 +571,8 @@
 			if(3)
 				process_bot()
 
-	if(refresh) updateDialog()
+	if(refresh)
+		updateDialog()
 
 /obj/structure/machinery/bot/mulebot/proc/process_bot()
 	switch(mode)
@@ -584,7 +587,7 @@
 				at_target()
 				return
 
-			else if(path.len > 0 && target) // valid path
+			else if(length(path) > 0 && target) // valid path
 
 				var/turf/next = path[1]
 				reached_target = 0
@@ -613,7 +616,8 @@
 
 
 					var/moved = step_towards(src, next) // attempt to move
-					if(cell) cell.use(1)
+					if(cell)
+						cell.use(1)
 					if(moved) // successful move
 						blockcount = 0
 						path -= loc
@@ -645,7 +649,7 @@
 
 							spawn(2)
 								calc_path(next)
-								if(path.len > 0)
+								if(length(path) > 0)
 									src.visible_message("[src] makes a delighted ping!", "You hear a ping.")
 									playsound(src.loc, 'sound/machines/ping.ogg', 25, 0)
 								mode = 4
@@ -667,7 +671,7 @@
 
 				calc_path()
 
-				if(path.len > 0)
+				if(length(path) > 0)
 					blockcount = 0
 					mode = 4
 					src.visible_message("[src] makes a delighted ping!", "You hear a ping.")
@@ -785,7 +789,8 @@
 
 // player on mulebot attempted to move
 /obj/structure/machinery/bot/mulebot/relaymove(mob/user)
-	if(user.is_mob_incapacitated(TRUE)) return
+	if(user.is_mob_incapacitated(TRUE))
+		return
 	if(load == user)
 		unload(0)
 
@@ -878,7 +883,8 @@
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(freq)
 
-	if(!frequency) return
+	if(!frequency)
+		return
 
 
 

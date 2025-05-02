@@ -17,9 +17,13 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 /obj/item/ammo_magazine/shotgun
 	name = "box of shotgun slugs"
 	desc = "A box filled with heavy shotgun shells. A timeless classic. 12 Gauge."
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/shotguns.dmi'
 	icon_state = "slugs"
 	item_state = "slugs"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
 	gun_type = /obj/item/weapon/gun/shotgun
@@ -87,6 +91,23 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	handful_state = "beanbag_slug"
 	caliber = "20g"
 
+/obj/item/ammo_magazine/shotgun/beanbag/es7
+	name = "box of X21 shock slugs"
+	desc = "A box filled with X21 shells used for non-lethal crowd control. Riot Control use only."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/shotguns.dmi'
+	icon_state = "electric"
+	item_state = "incendiary"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
+	handful_state = "elec_slug"
+	caliber = "20g"
+
+/obj/item/ammo_magazine/shotgun/beanbag/es7/slug
+	name = "box of X21 lethal slugs"
+	desc = "A box filled with X21 combat electrostatic lethal shotgun shells designed for ES-7 Supernova."
+	icon_state = "slug"
+	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
+	handful_state = "es7_slug"
+
 /obj/item/ammo_magazine/shotgun/light/breaching
 	name = "box of breaching shells"
 	desc = "A box filled with breaching shotgun shells. 16 Gauge."
@@ -97,6 +118,63 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/light/breaching
 	handful_state = "breaching_shell"
 	caliber = "16g"
+
+// --- UPP Shotgun Box --- //
+
+GLOBAL_LIST_INIT(shotgun_boxes_8g, list(
+	/obj/item/ammo_magazine/shotgun/heavy/buckshot,
+	/obj/item/ammo_magazine/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/shotgun/heavy/slug
+	))
+
+/obj/item/ammo_magazine/shotgun/heavy
+	name = "box of shotgun heavy slugs"
+	desc = "A box filled with heavy shotgun shells. A timeless classic. 8 Gauge."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/shotguns.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/slug
+	caliber = "8g"
+	gun_type = /obj/item/weapon/gun/shotgun
+	max_rounds = 20
+	handful_state = "slug_shell"
+	transfer_handful_amount = 4
+
+/obj/item/ammo_magazine/shotgun/heavy/slug
+
+/obj/item/ammo_magazine/shotgun/heavy/buckshot
+	name = "box of heavy buckshot shells"
+	desc = "A box filled with buckshot spread shotgun shells. 8 Gauge."
+	icon_state = "buckshot"
+	item_state = "buckshot"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot
+	handful_state = "buckshot_shell"
+
+/obj/item/ammo_magazine/shotgun/heavy/flechette
+	name = "box of heavy flechette shells"
+	desc = "A box filled with flechette shotgun shells. 8 Gauge."
+	icon_state = "flechette"
+	item_state = "flechette"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/flechette
+	handful_state = "flechette_shell"
+
+/obj/item/ammo_magazine/shotgun/heavy/incendiary
+	name = "box of heavy incendiary slugs"
+	desc = "A box filled with self-detonating incendiary shotgun rounds. 8 Gauge."
+	icon_state = "incendiary"
+	item_state = "incendiary"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
+	handful_state = "incendiary_slug"
+
+/obj/item/ammo_magazine/shotgun/heavy/beanbag
+	name = "box of heavy beanbag slugs"
+	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. 8 Gauge."
+	icon_state = "beanbag"
+	item_state = "beanbag"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/beanbag
+	handful_state = "beanbag_slug"
 
 //-------------------------------------------------------
 
@@ -134,6 +212,11 @@ also doesn't really matter. You can only reload them with handfuls.
 /obj/item/ammo_magazine/internal/shotgun/combat/riot
 	caliber = "20g"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+
+/obj/item/ammo_magazine/internal/shotgun/combat/es7
+	caliber = "20g"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
+	max_rounds = 7
 
 /obj/item/ammo_magazine/internal/shotgun/merc
 	max_rounds = 5
@@ -175,6 +258,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_8g, list(
 	/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/flechette,
+	/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag,
 	/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
 	))
 
@@ -205,6 +289,13 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	icon_state = "incendiary_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
 	handful_state = "incendiary_slug"
+
+/obj/item/ammo_magazine/handful/shotgun/slug/es7
+	name = "handful of X21 solid slugs (20g)"
+	icon_state = "es7_slug_5"
+	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
+	handful_state = "es7_slug"
+	caliber = "20g"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
 	name = "handful of shotgun buckshot shells (12g)"
@@ -248,6 +339,13 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 
 /obj/item/ammo_magazine/handful/shotgun/beanbag/riot
 	name = "handful of beanbag slugs (20g)"
+	caliber = "20g"
+
+/obj/item/ammo_magazine/handful/shotgun/beanbag/es7
+	name = "handful of X21 electrostatic slugs (20g)"
+	icon_state = "shock_slug_5"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
+	handful_state = "shock_slug"
 	caliber = "20g"
 
 /obj/item/ammo_magazine/handful/shotgun/heavy
@@ -298,6 +396,12 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	default_ammo = /datum/ammo/bullet/shotgun/light/breaching
 	caliber = "16g"
 	gun_type = /obj/item/weapon/gun/rifle/xm51
+
+/obj/item/ammo_magazine/handful/shotgun/light/breaching/rubber
+	name = "handful of rubber buckshot shells (16g)"
+	icon_state = "rubbershot_shell_6"
+	handful_state = "rubbershot_shell"
+	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
 
 /obj/item/ammo_magazine/handful/shotgun/twobore
 	name = "handful of shotgun slugs (2 bore)"

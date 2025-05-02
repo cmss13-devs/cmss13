@@ -49,7 +49,7 @@
 
 /datum/autolathe/recipe/weldertool
 	name = "blowtorch"
-	path = /obj/item/tool/weldingtool
+	path = /obj/item/tool/weldingtool/empty
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/screwdriver
@@ -65,6 +65,11 @@
 /datum/autolathe/recipe/wrench
 	name = "wrench"
 	path = /obj/item/tool/wrench
+	category = AUTOLATHE_CATEGORY_TOOLS
+
+/datum/autolathe/recipe/lightreplacer
+	name = "light replacer"
+	path = /obj/item/device/lightreplacer/empty
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/mop
@@ -134,11 +139,6 @@
 /datum/autolathe/recipe/powermodule
 	name = "power control module"
 	path = /obj/item/circuitboard/apc
-	category = AUTOLATHE_CATEGORY_ENGINEERING
-
-/datum/autolathe/recipe/rcd_ammo
-	name = "matter cartridge"
-	path = /obj/item/ammo_rcd
 	category = AUTOLATHE_CATEGORY_ENGINEERING
 
 /datum/autolathe/recipe/table_parts

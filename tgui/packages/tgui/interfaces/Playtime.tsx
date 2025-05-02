@@ -1,8 +1,9 @@
 import { classes } from 'common/react';
-import { useBackend, useLocalState } from '../backend';
-import { Tabs } from '../components';
-import { Table, TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Tabs } from 'tgui/components';
+import { Table, TableCell, TableRow } from 'tgui/components/Table';
+import { Window } from 'tgui/layouts';
 
 interface PlaytimeRecord {
   job: string;
@@ -59,7 +60,7 @@ const PlaytimeTable = (props: { readonly data: PlaytimeRecord[] }) => {
 
 export const Playtime = (props) => {
   const { data } = useBackend<PlaytimeData>();
-  const [selected, setSelected] = useLocalState('selected', 'human');
+  const [selected, setSelected] = useState('human');
   const humanTime =
     data.stored_human_playtime.length > 0
       ? data.stored_human_playtime[0].playtime
@@ -75,20 +76,23 @@ export const Playtime = (props) => {
   return (
     <Window theme={selected !== 'xeno' ? 'usmc' : 'hive_status'}>
       <Window.Content className="PlaytimeInterface" scrollable>
-        <Tabs fluid={1}>
+        <Tabs fluid>
           <Tabs.Tab
             selected={selected === 'human'}
-            onClick={() => setSelected('human')}>
+            onClick={() => setSelected('human')}
+          >
             Human ({humanTime} hr)
           </Tabs.Tab>
           <Tabs.Tab
             selected={selected === 'xeno'}
-            onClick={() => setSelected('xeno')}>
+            onClick={() => setSelected('xeno')}
+          >
             Xeno ({xenoTime} hr)
           </Tabs.Tab>
           <Tabs.Tab
             selected={selected === 'other'}
-            onClick={() => setSelected('other')}>
+            onClick={() => setSelected('other')}
+          >
             Other ({otherTime} hr)
           </Tabs.Tab>
         </Tabs>

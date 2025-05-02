@@ -5,9 +5,7 @@
 
 	icon_state = "black"
 	item_state = "bgloves"
-
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
 	flags_cold_protection = BODY_FLAG_HANDS
 	min_cold_protection_temperature = GLOVES_MIN_COLD_PROT
 	flags_heat_protection = BODY_FLAG_HANDS

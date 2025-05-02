@@ -6,12 +6,12 @@
 	z_list = list()
 	var/list/default_map_traits = DEFAULT_MAP_TRAITS
 
-	if (default_map_traits.len != world.maxz)
-		WARNING("More or less map attributes pre-defined ([default_map_traits.len]) than existent z-levels ([world.maxz]). Ignoring the larger.")
-		if (default_map_traits.len > world.maxz)
+	if (length(default_map_traits) != world.maxz)
+		WARNING("More or less map attributes pre-defined ([length(default_map_traits)]) than existent z-levels ([world.maxz]). Ignoring the larger.")
+		if (length(default_map_traits) > world.maxz)
 			default_map_traits.Cut(world.maxz + 1)
 
-	for (var/I in 1 to default_map_traits.len)
+	for (var/I in 1 to length(default_map_traits))
 		var/list/features = default_map_traits[I]
 		var/datum/space_level/S = new(I, features[DL_NAME], features[DL_TRAITS])
 		manage_z_level(S, filled_with_space = FALSE)
@@ -20,7 +20,7 @@
 /datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level, contain_turfs = TRUE)
 	UNTIL(!adding_new_zlevel)
 	adding_new_zlevel = TRUE
-	var/new_z = z_list.len + 1
+	var/new_z = length(z_list) + 1
 	if (world.maxz < new_z)
 		world.incrementMaxZ()
 		CHECK_TICK
@@ -34,6 +34,6 @@
 	return S
 
 /datum/controller/subsystem/mapping/proc/get_level(z)
-	if (z_list && z >= 1 && z <= z_list.len)
+	if (z_list && z >= 1 && z <= length(z_list))
 		return z_list[z]
-	CRASH("Unmanaged z-level [z]! maxz = [world.maxz], z_list.len = [z_list ? z_list.len : "null"]")
+	CRASH("Unmanaged z-level [z]! maxz = [world.maxz], length(z_list) = [z_list ? length(z_list) : "null"]")

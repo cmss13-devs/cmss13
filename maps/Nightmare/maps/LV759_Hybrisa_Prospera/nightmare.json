@@ -1,0 +1,41 @@
+[
+	{
+		"type": "map_insert",
+		"landmark": "hvhupplz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_hybrisa_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_hybrisa_uscm_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz2",
+		"chance": 1.0,
+		"path": "standalone/landingzone_hybrisa_uscm_lz2.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+    },
+    {
+        "type": "map_sprinkle",
+        "path": "sprinkles/"
+    },
+    {
+		"type": "map_insert",
+		"landmark": "clfadmin",
+		"chance": 1.0,
+		"path": "standalone/clfadmin.dmm",
+		"when": { "lvevent": "clfraid" }
+    },
+    {
+		"type": "map_insert",
+		"landmark": "iasf_souter_airbase",
+		"chance": 0.28,
+		"path": "standalone/twe_airbase.dmm",
+        "when": { "lvevent": "none" }
+	}
+]

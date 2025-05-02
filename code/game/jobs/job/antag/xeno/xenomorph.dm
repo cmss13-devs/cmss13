@@ -13,10 +13,10 @@
 	total_positions = -1
 
 /datum/job/antag/xenos/proc/calculate_extra_spawn_positions(count)
-	return max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)
+	return max((floor(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)
 
 /datum/job/antag/xenos/set_spawn_positions(count)
-	spawn_positions = max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 1)
+	spawn_positions = max((floor(count * XENO_TO_TOTAL_SPAWN_RATIO)), 1)
 	total_positions = spawn_positions
 
 /datum/job/antag/xenos/spawn_in_player(mob/new_player/NP)
@@ -34,12 +34,7 @@
 	human_to_transform.set_stat(UNCONSCIOUS)
 	human_to_transform.forceMove(get_turf(pick(GLOB.xeno_spawns)))
 
-	var/list/survivor_types = list(
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/security,
-		/datum/equipment_preset/survivor/engineer
-	)
+	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 	arm_equipment(human_to_transform, pick(survivor_types), FALSE, FALSE)
 
 	for(var/obj/item/device/radio/radio in human_to_transform.contents_recursive())

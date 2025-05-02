@@ -15,9 +15,7 @@
 /area/shiva/interior/caves/left_spiders)
 "bP" = (
 /obj/structure/prop/static_tank/fuel,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "cf" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -30,12 +28,8 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "dS" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 8
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/west,
 /turf/open/gm/river,
 /area/shiva/interior/caves/left_spiders)
 "fd" = (
@@ -90,10 +84,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "kW" = (
-/obj/structure/platform/strata{
-	dir = 8
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/west,
+/obj/structure/platform/stone/strata,
 /turf/open/gm/river,
 /area/shiva/interior/caves/left_spiders)
 "lz" = (
@@ -181,24 +173,18 @@
 /obj/item/weapon/ice_axe/red{
 	pixel_y = -4
 	},
-/turf/open/floor/shiva{
-	icon_state = "floor3"
-	},
+/turf/open/floor/shiva/floor3,
 /area/shiva/interior/caves/left_spiders)
 "xG" = (
 /obj/structure/largecrate/random/case/double,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "yu" = (
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/caves/left_spiders)
 "yS" = (
 /obj/structure/largecrate/random/barrel/blue,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "Am" = (
 /obj/effect/spider/cocoon,
@@ -211,9 +197,7 @@
 /area/shiva/interior/caves/left_spiders)
 "Ar" = (
 /obj/structure/prop/static_tank,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/interior/caves/left_spiders)
 "AW" = (
 /obj/structure/barricade/handrail/wire{
@@ -278,12 +262,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/left_spiders)
 "Kx" = (
-/obj/structure/platform/strata{
-	dir = 1
-	},
-/obj/structure/platform/strata{
-	dir = 4
-	},
+/obj/structure/platform/stone/strata/north,
+/obj/structure/platform/stone/strata/east,
 /turf/open/gm/river,
 /area/shiva/interior/caves/left_spiders)
 "MY" = (
@@ -351,10 +331,8 @@
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
 "VT" = (
-/obj/structure/platform/strata{
-	dir = 4
-	},
-/obj/structure/platform/strata,
+/obj/structure/platform/stone/strata/east,
+/obj/structure/platform/stone/strata,
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0;
 	pixel_x = -16;

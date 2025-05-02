@@ -59,6 +59,7 @@
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "vehicle_camera"
 	network = list(CAMERA_NET_VEHICLE)
+	owner_factions = FACTION_LIST_HUMANOID
 
 /obj/structure/machinery/camera/vehicle/toggle_cam_status(on = FALSE)
 	if(on)
@@ -66,6 +67,13 @@
 	else
 		status = FALSE
 	kick_viewers()
+
+/obj/structure/machinery/camera/vehicle/update_icon()
+	. = ..()
+	if(stat & EMPED)
+		icon_state = "vehicle_cameraemp"
+	else
+		icon_state = "vehicle_camera"
 
 // AUTONAME
 
@@ -79,9 +87,13 @@
 /obj/structure/machinery/camera/autoname/almayer/dropship_two
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_NORMANDY)
 
+/obj/structure/machinery/camera/autoname/almayer/dropship_three
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_RESEARCH)
+
 /obj/structure/machinery/camera/autoname/almayer
 	name = "military-grade camera"
 	network = list(CAMERA_NET_ALMAYER)
+	owner_factions = FACTION_LIST_MARINE_WY
 
 /obj/structure/machinery/camera/autoname/almayer/containment
 	name = "containment camera"
@@ -94,10 +106,15 @@
 
 /obj/structure/machinery/camera/autoname/almayer/containment/hidden
 	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)
+	owner_factions = FACTION_LIST_WY
 
 /obj/structure/machinery/camera/autoname/almayer/containment/ares
 	name = "ares core camera"
 	network = list(CAMERA_NET_ARES)
+
+/obj/structure/machinery/camera/autoname/almayer/brig
+	name = "brig camera"
+	network = list(CAMERA_NET_BRIG)
 
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.
@@ -111,6 +128,7 @@
 
 	colony_camera_mapload = FALSE
 	emp_proof = TRUE
+	owner_factions = FACTION_LIST_HUMANOID
 
 /obj/structure/machinery/camera/autoname/lz_camera/ex_act()
 	return
@@ -160,5 +178,5 @@
 	network = list(CAMERA_NET_SIMULATION)
 	invuln = TRUE
 	view_range = 14
-	use_power = FALSE
+	use_power = USE_POWER_NONE
 	invisibility = INVISIBILITY_MAXIMUM

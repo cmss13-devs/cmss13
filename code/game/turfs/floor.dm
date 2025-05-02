@@ -4,12 +4,8 @@
 	name = "floor"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "floor"
-	var/broken = FALSE
-	var/burnt = FALSE
+	turf_flags = TURF_BURNABLE|TURF_BREAKABLE
 	var/mineral = "metal"
-	var/breakable_tile = TRUE
-	var/burnable_tile = TRUE
-	var/hull_floor = FALSE //invincible floor, can't interact with it
 	var/image/wet_overlay
 
 	var/tile_type = /obj/item/stack/tile/plasteel
@@ -18,7 +14,7 @@
 
 /turf/open/floor/get_examine_text(mob/user)
 	. = ..()
-	if(!hull_floor)
+	if(!(turf_flags & TURF_HULL))
 		var/tool_output = list()
 		if(tool_flags & REMOVE_CROWBAR)
 			tool_output += SPAN_GREEN("crowbar")
@@ -30,14 +26,14 @@
 			. += SPAN_NOTICE("\The [src] can be removed with \a [english_list(tool_output)].")
 
 
-/turf/open/floor/plating/is_plasteel_floor()
+/turf/open/floor/is_plasteel_floor()
 	return TRUE
 
 ////////////////////////////////////////////
 
 
 /turf/open/floor/ex_act(severity, explosion_direction)
-	if(hull_floor)
+	if(turf_flags & TURF_HULL)
 		return 0
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -53,9 +49,9 @@
 	return 0
 
 /turf/open/floor/fire_act(exposed_temperature, exposed_volume)
-	if(hull_floor)
+	if(turf_flags & TURF_HULL)
 		return
-	if(!burnt && prob(5))
+	if(!(turf_flags & TURF_BURNT) && prob(5))
 		burn_tile()
 	else if(prob(1))
 		make_plating()
@@ -87,69 +83,63 @@
 	break_tile()
 
 /turf/open/floor/proc/break_tile()
-	if(!breakable_tile || hull_floor) return
-	if(broken) return
-	broken = TRUE
+	if(!(turf_flags & TURF_BREAKABLE)  || turf_flags & TURF_HULL)
+		return
+	if(turf_flags & TURF_BROKEN)
+		return
+
+	turf_flags |= TURF_BROKEN
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
-		broken = 1
 	else if(is_light_floor())
 		icon_state = "light_broken"
-		broken = 1
 		set_light(0)
 	else if(is_plating())
 		icon_state = "platingdmg[pick(1, 2, 3)]"
-		broken = 1
 	else if(is_wood_floor())
 		icon_state = "wood-broken"
-		broken = 1
 	else if(is_carpet_floor())
 		icon_state = "carpet-broken"
-		broken = 1
 	else if(is_grass_floor())
 		icon_state = "grass[pick("1", "2", "3")]"
-		broken = 1
 
 /turf/open/floor/proc/burn_tile()
-	if(!burnable_tile|| hull_floor) return
-	if(broken || burnt) return
-	burnt = TRUE
+	if(!(turf_flags & TURF_BURNABLE) || turf_flags & TURF_HULL)
+		return
+	if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
+		return
+
+	turf_flags |= TURF_BURNT
 	if(is_plasteel_floor())
 		icon_state = "damaged[pick(1, 2, 3, 4, 5)]"
-		burnt = 1
 	else if(is_plasteel_floor())
 		icon_state = "floorscorched[pick(1, 2)]"
-		burnt = 1
 	else if(is_plating())
 		icon_state = "panelscorched"
-		burnt = 1
 	else if(is_wood_floor())
 		icon_state = "wood-broken"
-		burnt = 1
 	else if(is_carpet_floor())
 		icon_state = "carpet-broken"
-		burnt = 1
 	else if(is_grass_floor())
 		icon_state = "grass[pick("1", "2", "3")]"
-		burnt = 1
 
 //This proc auto corrects the grass tiles' siding.
 /turf/open/floor/proc/make_plating()
 	set_light(0)
 	intact_tile = FALSE
-	broken = FALSE
-	burnt = FALSE
+	turf_flags &= ~TURF_BURNT
+	turf_flags &= ~TURF_BROKEN
 	ChangeTurf(plating_type)
 
 /turf/open/floor/attackby(obj/item/hitting_item, mob/user)
-	if(hull_floor) //no interaction for hulls
+	if(turf_flags & TURF_HULL) //no interaction for hulls
 		return
 
 	if(src.weeds)
 		return weeds.attackby(hitting_item,user)
 
 	if(HAS_TRAIT(hitting_item, TRAIT_TOOL_CROWBAR) && (tool_flags & (REMOVE_CROWBAR|BREAK_CROWBAR)))
-		if(broken || burnt)
+		if(turf_flags & TURF_BROKEN || turf_flags & TURF_BURNT)
 			to_chat(user, SPAN_WARNING("You remove the broken tiles."))
 		else
 			if(tool_flags & BREAK_CROWBAR)
@@ -172,7 +162,8 @@
 	return ..()
 
 /turf/open/floor/wet_floor(wet_level = FLOOR_WET_WATER)
-	if(wet >= wet_level) return
+	if(wet >= wet_level)
+		return
 	wet = wet_level
 	if(wet_overlay)
 		overlays -= wet_overlay
@@ -198,3 +189,22 @@
 /turf/open/floor/sandstone/runed
 	name = "sandstone temple floor"
 	icon_state = "runedsandstone"
+
+/turf/open/floor/sandstone/cult
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "cult"
+
+/turf/open/floor/sandstone/red
+	name = "carved red temple floor"
+	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon_state = "hunter_red"
+
+/turf/open/floor/sandstone/red2
+	name = "carved red temple floor"
+	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon_state = "hunter_red_2"
+
+/turf/open/floor/sandstone/red3
+	name = "carved red temple floor"
+	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon_state = "hunter_red_3"

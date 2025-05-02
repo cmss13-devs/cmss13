@@ -1,6 +1,7 @@
 /mob/living/carbon/human
 	light_system = MOVABLE_LIGHT
 	rotate_on_lying = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	//Hair color and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -25,8 +26,10 @@
 	var/g_eyes = 0
 	var/b_eyes = 0
 
-	var/ethnicity = "Western" // Ethnicity
-	var/body_type = "Mesomorphic (Average)" // Body Type
+	var/skin_color = "Pale 2" // Skin color
+	var/body_size = "Average" // Body Size
+	var/body_type = "Lean" // Body Buffness
+	var/body_presentation
 
 	//Skin color
 	var/r_skin = 0
@@ -59,7 +62,7 @@
 	var/obj/item/head = null
 	var/obj/item/wear_l_ear = null
 	var/obj/item/wear_r_ear = null
-	var/obj/item/card/id/wear_id = null
+	var/obj/item/wear_id = null
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
@@ -112,6 +115,7 @@
 	var/shield_slowdown = 0 // Slowdown from readying shields
 
 	var/datum/equipment_preset/assigned_equipment_preset
+	var/rank_override
 	var/rank_fallback
 
 	var/datum/squad/assigned_squad //the squad this human is assigned to
@@ -136,7 +140,7 @@
 	var/last_chew = 0
 
 	//taken from human.dm
-	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD)
+	hud_possible = list(HEALTH_HUD, STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, XENO_EXECUTE, HUNTER_CLAN, HUNTER_HUD, FACTION_HUD, HOLOCARD_HUD, NEW_PLAYER_HUD)
 	var/embedded_flag //To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/allow_gun_usage = TRUE
 	var/melee_allowed = TRUE
@@ -146,7 +150,7 @@
 	/// A list of all the shrapnel currently embedded in the human
 	var/list/atom/movable/embedded_items = list()
 
-	var/list/synthetic_HUD_toggled = list(FALSE,FALSE)
+	var/list/inherent_huds_toggled = list(INHERENT_HUD_MEDICAL = FALSE, INHERENT_HUD_SECURITY = FALSE, INHERENT_HUD_NEW_PLAYER = FALSE)
 
 	var/default_lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
@@ -169,6 +173,15 @@
 
 	/// Stored image references associated with focus-fire.
 	var/image/focused_fire_marker
+
+	// Are we currently using inherent zoom vision?
+	var/is_zoomed = FALSE
+
+	// Xenomorph that is hauling us if we are hauled
+	var/mob/living/carbon/xenomorph/hauling_xeno
+
+	// Haul resist cooldown
+	var/next_haul_resist
 
 /client/var/cached_human_playtime
 

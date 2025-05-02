@@ -16,9 +16,7 @@
 	},
 /area/shuttle/ert)
 "d" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin6"
-	},
+/turf/open/shuttle/dropship/light_grey_top_left,
 /area/shuttle/ert)
 "e" = (
 /turf/closed/shuttle/ert{
@@ -31,9 +29,7 @@
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
 /obj/item/device/healthanalyzer,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "g" = (
 /obj/structure/surface/rack,
@@ -42,14 +38,10 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "h" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin8"
-	},
+/turf/open/shuttle/dropship/light_grey_bottom_right,
 /area/shuttle/ert)
 "i" = (
 /turf/template_noop,
@@ -60,9 +52,7 @@
 	},
 /area/shuttle/ert)
 "k" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "l" = (
 /turf/closed/shuttle/ert{
@@ -70,9 +60,7 @@
 	},
 /area/shuttle/ert)
 "m" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin7"
-	},
+/turf/open/shuttle/dropship/light_grey_top_right,
 /area/shuttle/ert)
 "n" = (
 /turf/closed/shuttle/ert{
@@ -95,9 +83,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "r" = (
 /turf/closed/shuttle/ert{
@@ -105,24 +91,18 @@
 	},
 /area/shuttle/ert)
 "s" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "t" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "u" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 4
 	},
 /obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "v" = (
 /turf/closed/shuttle/ert{
@@ -171,29 +151,21 @@
 	},
 /area/shuttle/ert)
 "G" = (
-/turf/open/shuttle/dropship{
-	icon_state = "floor8"
-	},
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/shuttle/ert)
 "H" = (
 /obj/structure/bed/chair/dropship/passenger,
 /obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "I" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/computer/shuttle/ert,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "J" = (
 /obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3"
-	},
+/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "K" = (
 /turf/closed/shuttle/ert{
@@ -205,9 +177,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/ert_spawns/distress_pmc,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "M" = (
 /turf/closed/shuttle/ert{
@@ -230,9 +200,7 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_pmc/item,
 /obj/item/storage/toolbox/syndicate,
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin15"
-	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/ert)
 "R" = (
 /turf/closed/shuttle/ert{
@@ -261,9 +229,7 @@
 	},
 /area/shuttle/ert)
 "Y" = (
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin4"
-	},
+/turf/open/shuttle/dropship/light_grey_bottom_left,
 /area/shuttle/ert)
 "Z" = (
 /turf/closed/shuttle/ert{

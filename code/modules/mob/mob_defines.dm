@@ -3,6 +3,7 @@
 	layer = MOB_LAYER
 	animate_movement = 2
 	rebounds = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	var/mob_flags = NO_FLAGS
 	var/datum/mind/mind
 
@@ -113,6 +114,7 @@
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
 	var/life_revives_total = 0
+	var/life_ib_total = 0
 	var/festivizer_hits_total = 0
 
 	var/life_value = 1 // when killed, the killee gets this much added to its life_kills_total
@@ -193,6 +195,8 @@
 
 	var/recently_pointed_to = 0 //used as cooldown for the pointing verb.
 
+	var/recently_grabbed = 0 //used as a cooldown for item grabs
+
 	///Color matrices to be applied to the client window. Assoc. list.
 	var/list/client_color_matrices
 
@@ -224,7 +228,6 @@
 	can_block_movement = TRUE
 
 	appearance_flags = TILE_BOUND
-	var/mouse_icon = null
 
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
@@ -283,7 +286,7 @@
 /mob/vv_get_header()
 	. = ..()
 	var/refid = REF(src)
-	. += "<font size='1'><br><a href='?_src_=vars;[HrefToken()];view_combat_logs=[refid]'>View Combat Logs</a><br></font>"
+	. += "<font size='1'><br><a href='byond://?_src_=vars;[HrefToken()];view_combat_logs=[refid]'>View Combat Logs</a><br></font>"
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()
@@ -397,7 +400,7 @@
 		if(!check_rights(R_SPAWN))
 			return
 
-		if(!languages.len)
+		if(!length(languages))
 			to_chat(usr, "This mob knows no languages.")
 			return
 

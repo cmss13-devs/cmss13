@@ -1,9 +1,9 @@
 #define HUNTER_BEST_ITEM  pick(\
-								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer), \
+								75; list(/obj/item/clothing/glasses/night, /obj/item/storage/backpack/holding, /obj/item/storage/belt/grenade/full, /obj/item/weapon/gun/flamer/m240), \
 								100; list(/obj/item/weapon/twohanded/yautja/glaive, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter,/obj/item/clothing/shoes/yautja/hunter), \
-								50; list(/obj/item/weapon/yautja/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
+								50; list(/obj/item/weapon/yautja/chained/combistick, /obj/item/clothing/mask/gas/yautja/hunter, /obj/item/clothing/suit/armor/yautja/hunter/full,/obj/item/clothing/shoes/yautja/hunter), \
 								150; list(/obj/item/stack/medical/advanced/ointment, /obj/item/stack/medical/advanced/bruise_pack, /obj/item/storage/belt/medical/lifesaver/full), \
-								50; list(/obj/item/clothing/under/marine/veteran/pmc/commando, /obj/item/clothing/suit/storage/marine/veteran/pmc/commando, /obj/item/clothing/gloves/marine/veteran/pmc/commando, /obj/item/clothing/shoes/veteran/pmc/commando, /obj/item/clothing/head/helmet/marine/veteran/pmc/commando), \
+								50; list(/obj/item/clothing/under/marine/veteran/pmc/apesuit, /obj/item/clothing/suit/storage/marine/veteran/pmc/apesuit, /obj/item/clothing/gloves/marine/veteran/pmc/apesuit, /obj/item/clothing/shoes/veteran/pmc/commando, /obj/item/clothing/head/helmet/marine/veteran/pmc/apesuit), \
 								125; list(/obj/item/weapon/yautja/chain, /obj/item/weapon/yautja/knife, /obj/item/weapon/yautja/scythe, /obj/item/hunting_trap, /obj/item/hunting_trap), \
 								75; list(/obj/item/weapon/gun/revolver/mateba/general, /obj/item/ammo_magazine/revolver/mateba, /obj/item/ammo_magazine/revolver/mateba, /obj/item/clothing/mask/balaclava/tactical), \
 								50; list(/obj/item/weapon/shield/energy, /obj/item/weapon/energy/axe, /obj/item/clothing/under/chainshirt/hunter, /obj/item/clothing/head/helmet/gladiator, /obj/item/clothing/suit/armor/gladiator) \
@@ -34,9 +34,9 @@
 \
 								50; /obj/item/storage/firstaid/regular, \
 								50; /obj/item/storage/firstaid/fire, \
-								75; /obj/item/storage/box/wy_mre, \
+								75; /obj/item/storage/box/mre/wy, \
 \
-								100; /obj/item/storage/backpack/commando, \
+								100; /obj/item/storage/backpack/pmc/backpack/commando/apesuit, \
 								100; /obj/item/storage/backpack/yautja, \
 								100; /obj/item/storage/belt/knifepouch, \
 								100; /obj/item/storage/belt/utility/full, \
@@ -109,13 +109,15 @@
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
 /obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/xenomorph/hellhound/H)
-	if(istype(H)) H.gib() //No mercy.
+	if(istype(H))
+		H.gib() //No mercy.
 
 /datum/game_mode/huntergames/announce()
 	return TRUE
 
 /obj/effect/landmark/hunter_primary
 	name = "hunter_primary"
+	icon_state = "hunter_primary"
 
 /obj/effect/landmark/hunter_primary/Initialize(mapload, ...)
 	. = ..()
@@ -127,6 +129,7 @@
 
 /obj/effect/landmark/hunter_secondary
 	name = "hunter_secondary"
+	icon_state = "hunter_secondary"
 
 /obj/effect/landmark/hunter_secondary/Initialize(mapload, ...)
 	. = ..()
@@ -138,6 +141,7 @@
 
 /obj/effect/landmark/crap_item
 	name = "crap_item"
+	icon_state = "item_crap"
 
 /obj/effect/landmark/crap_item/Initialize(mapload, ...)
 	. = ..()
@@ -149,6 +153,7 @@
 
 /obj/effect/landmark/good_item
 	name = "good_item"
+	icon_state = "item_good"
 
 /obj/effect/landmark/good_item/Initialize(mapload, ...)
 	. = ..()
@@ -212,10 +217,10 @@
 	var/mob/living/carbon/human/H
 	var/turf/picked
 
-	if(GLOB.hunter_primaries.len)
+	if(length(GLOB.hunter_primaries))
 		picked = get_turf(pick_n_take(GLOB.hunter_primaries))
 	else
-		if(GLOB.hunter_secondaries.len)
+		if(length(GLOB.hunter_secondaries))
 			picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
 		else
 			message_admins("There were no spawn points available for a contestant.")
@@ -226,7 +231,7 @@
 
 	if(istype(M,/mob/living/carbon/human)) //somehow?
 		H = M
-		if(H.contents.len)
+		if(length(H.contents))
 			for(var/obj/item/I in H.contents)
 				qdel(I)
 		H.forceMove(picked)
@@ -234,7 +239,8 @@
 		H = new(picked)
 
 	H.key = M.key
-	if(H.client) H.client.change_view(GLOB.world_view_size)
+	if(H.client)
+		H.client.change_view(GLOB.world_view_size)
 
 	if(!H.mind)
 		H.mind = new(H.key)
@@ -281,17 +287,14 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 			H.remove_language(LANGUAGE_ENGLISH)
 			H.add_language(LANGUAGE_RUSSIAN)
-		if(7) //Highlander!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), WEAR_FEET)
-		if(8) //Assassin!
+		if(7) //Assassin!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(9) //Corporate guy
+		if(8) //Corporate guy
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(10) //Colonial Marshal
+		if(9) //Colonial Marshal
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
@@ -315,7 +318,7 @@
 			last_drop = world.time
 			waiting_for_drop_votes = 1
 			sleep(600)
-			if(!supply_votes.len)
+			if(!length(supply_votes))
 				to_world(SPAN_ROUNDBODY("Nobody got anything! .. weird."))
 				waiting_for_drop_votes = 0
 				supply_votes = list()
@@ -340,7 +343,8 @@
 	. = ..()
 	checkwin_counter++
 	ticks_passed++
-	if(prob(2)) dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
+	if(prob(2))
+		dropoff_timer += ticks_passed //Increase the timer the longer the round goes on.
 
 	if(round_started > 0) //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 		round_started--
@@ -422,7 +426,7 @@
 		GLOB.round_statistics.end_round_player_population = count_humans()
 
 		GLOB.round_statistics.log_round_statistics()
-
+		GLOB.round_statistics.save()
 
 	return 1
 
@@ -433,7 +437,8 @@
 	if(!istype(T))
 		return FALSE
 
-	if(OT == "good" && !in_crate && prob(15)) in_crate = 1 //Place some good drops in crates.
+	if(OT == "good" && !in_crate && prob(15))
+		in_crate = 1 //Place some good drops in crates.
 
 	var/obj_type //Object path.
 	var/atom/location = in_crate ? new /obj/structure/closet/crate(T) : T //Where it's going to be placed.

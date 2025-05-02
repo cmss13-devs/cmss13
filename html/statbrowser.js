@@ -14,20 +14,54 @@ if (!String.prototype.trim) {
 	};
 }
 
+// Storage.js stuff ------------------------------------------------
+function testHubStorage() {
+	try {
+		return Boolean(window.hubStorage && window.hubStorage.getItem);
+	} catch (error) {
+		return false;
+	}
+}
+
+function loadFontSize() {
+	current_fontsize = parseInt(window.hubStorage.getItem("fontsize"));
+	if (isNaN(current_fontsize) || current_fontsize <= 0) {
+		current_fontsize = 14;
+	}
+	statcontentdiv.style.fontSize = current_fontsize + "px";
+	tab_change(current_tab, true); // Redraw the current tab
+}
+
+function onByondStorageLoad(event) {
+	document.removeEventListener('byondstorageupdated', onByondStorageLoad);
+	setTimeout(loadFontSize, 0); // Unfortunately its STILL not ready yet
+}
+
 // Status panel implementation ------------------------------------------------
 var status_tab_parts = ["Loading..."];
 var current_tab = null;
-var local_fontsize;
+var current_fontsize = 14; // in px, also determines line height and category header sizes for the verb menus
 // Per `storage.js` for tgui:
 // Localstorage can sometimes throw an error, even if DOM storage is not
 // disabled in IE11 settings.
 // See: https://superuser.com/questions/1080011
 try {
-	local_fontsize = localStorage.getItem("fontsize");
+	if (!Byond.TRIDENT) {
+		// Unfortunately byond storage isn't available immediately
+		if (!testHubStorage()) {
+			document.addEventListener('byondstorageupdated', onByondStorageLoad);
+		} else {
+			current_fontsize = parseInt(window.hubStorage.getItem("fontsize"));
+		}
+	} else { // TODO: Remove with 516
+		current_fontsize = parseInt(window.localStorage.getItem("fontsize"));
+	}
 } catch (error) {
-	local_fontsize = 12;
+	current_fontsize = 14;
 }
-var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 12; // in px, also determines line height and category header sizes for the verb menus
+if (isNaN(current_fontsize) || current_fontsize <= 0) {
+	current_fontsize = 14;
+}
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var spells = [];
@@ -42,11 +76,143 @@ var turfcontents = [];
 var turfname = "";
 var imageRetryDelay = 500;
 var imageRetryLimit = 50;
+var topButtons = document.getElementById("top-buttons");
 var menu = document.getElementById("menu");
+var endMenu = document.getElementById("end-menu")
 var under_menu = document.getElementById("under_menu");
 var statcontentdiv = document.getElementById("statcontent");
 var storedimages = [];
 var split_admin_tabs = false;
+
+let toLookUp = [
+	"icon-size",
+	"text-mode",
+	"zoom-mode"
+]
+var lookedUpProperties = {}
+
+let bigButtons = [
+	{
+		name: "Changelog",
+		command: "Changelog",
+		class: "changelog",
+		icon: "list-ul"
+	},
+	{
+		name: "Rules",
+		command: "rules",
+		icon: "scale-balanced"
+	},
+	{
+		name: "Wiki",
+		command: "wiki",
+		icon: "book"
+	},
+	{
+		name: "Forum",
+		command: "forum",
+		icon: "envelope"
+	},
+	{
+		name: "Submit Bug",
+		command: "submit-bug",
+		class: "bug-button",
+		icon: "bug"
+	},
+	{
+		name: "Discord",
+		command: "discord",
+		class: "discord-button",
+		icon: "comments"
+	}
+]
+
+let clientButtons = {
+	"File": [
+		{name: "Take Screenshot	(F2)", command: ".screenshot auto"},
+		{name: "Save Screenshot As (Shift+F2)", command: ".screenshot"},
+		{divider: true},
+		{name: "Reconnect", command: ".reconnect"},
+		{name: "Options & Messages", command: ".options"},
+		{name: "Quit", command: ".quit"},
+	],
+	"Icons": [
+		{
+			name: "Stretch to fit",
+			command: ".winset \"mapwindow.map.icon-size=0\"",
+			active: "icon-size",
+			value: "0"
+		},
+		{
+			name: "256x256 (4x)",
+			command: ".winset \"mapwindow.map.icon-size=256\"",
+			active: "icon-size",
+			value: "256"
+		},
+		{
+			name: "128x128 (3x)",
+			command: ".winset \"mapwindow.map.icon-size=128\"",
+			active: "icon-size",
+			value: "128"
+		},
+		{
+			name: "96x96 (2.5x)",
+			command: ".winset \"mapwindow.map.icon-size=96\"",
+			active: "icon-size",
+			value: "96"
+		},
+		{
+			name: "64x64 (2x)",
+			command: ".winset \"mapwindow.map.icon-size=64\"",
+			active: "icon-size",
+			value: "64"
+		},
+		{
+			name: "32x32",
+			command: ".winset \"mapwindow.map.icon-size=32\"",
+			active: "icon-size",
+			value: "32"
+		},
+		{ divider: true },
+		{
+			name: "Text Mode",
+			command: ".winset \"mapwindow.map.text-mode=false?mapwindow.map.text-mode=true:mapwindow.map.text-mode=false\"",
+			active: "text-mode",
+			toggle: true
+		}
+	],
+	"Rendering": [
+		{
+			name: "Nearest Neighbour",
+			command: ".winset \"mapwindow.map.zoom-mode=distort\"",
+			active: "zoom-mode",
+			value: "distort"
+		},
+		{
+			name: "Point Sampling",
+			command: ".winset \"mapwindow.map.zoom-mode=normal\"",
+			active: "zoom-mode",
+			value: "normal"
+		},
+		{
+			name: "Bilinear",
+			command: ".winset \"mapwindow.map.zoom-mode=blur\"",
+			active: "zoom-mode",
+			value: "blur"
+		},
+	],
+	"Help": [
+		{name: "Admin Help", command: "adminhelp"},
+	],
+	"Volume": [
+		{name: "Effects", command: "Adjust-Volume-SFX"},
+		{name: "Ambience", command: "Adjust-Volume-Ambience"},
+		{name: "Admin Music", command: "Adjust-Volume-Admin-Music"}
+	],
+	"Statbrowser": [
+		{name: "Change Fontsize", function: openOptionsMenu}
+	]
+}
 
 // Any BYOND commands that could result in the client's focus changing go through this
 // to ensure that when we relinquish our focus, we don't do it after the result of
@@ -55,7 +221,7 @@ function run_after_focus(callback) {
 	setTimeout(callback, 0);
 }
 
-function createStatusTab(name) {
+function createStatusTab(name, end) {
 	if (name.indexOf(".") != -1) {
 		var splitName = name.split(".");
 		if (split_admin_tabs && splitName[0] === "Admin") name = splitName[1];
@@ -73,7 +239,13 @@ function createStatusTab(name) {
 		this.blur();
 	};
 	B.id = name;
-	B.textContent = name;
+
+	var textNode = document.createElement("span");
+	textNode.textContent = name;
+	textNode.className = "small-button-text";
+
+	B.appendChild(textNode);
+
 	B.className = "button";
 	//ORDERING ALPHABETICALLY
 
@@ -84,15 +256,17 @@ function createStatusTab(name) {
 		case "MC":
 			B.style.order = 2;
 			break;
-		case "Panel Options":
-			B.style.order = 999;
-			break;
 		default:
 			B.style.order = name.charCodeAt(0);
 	}
 
+	if (end) {
+		endMenu.appendChild(B)
+	} else {
+		menu.appendChild(B);
+	}
+
 	//END ORDERING
-	menu.appendChild(B);
 	SendTabToByond(name);
 	under_menu.style.height = menu.clientHeight + "px";
 }
@@ -123,15 +297,15 @@ function sortVerbs() {
 	});
 }
 
-window.onresize = function () {
+window.onload = window.onresize = function () {
 	under_menu.style.height = menu.clientHeight + "px";
 };
 
-function addPermanentTab(name) {
+function addPermanentTab(name, end) {
 	if (!permanent_tabs.includes(name)) {
 		permanent_tabs.push(name);
 	}
-	createStatusTab(name);
+	createStatusTab(name, end);
 }
 
 function removePermanentTab(name) {
@@ -282,9 +456,8 @@ function tab_change(tab, force) {
 		draw_sdql2();
 	} else if (tab == turfname) {
 		draw_listedturf();
-	} else if (tab == "Panel Options") {
-		openOptionsMenu();
-		tab_change(oldTab);
+	} else if (tab == "Options") {
+		drawClientOptions();
 	} else {
 		statcontentdiv.textContext = "Loading...";
 	}
@@ -375,7 +548,7 @@ function draw_debug() {
 }
 function draw_status() {
 	var status_tab_map_href_exception =
-		"<a href='?MapView=1'>View Tactical Map</a>";
+		"<a href='byond://?MapView=1'>View Tactical Map</a>";
 	if (!document.getElementById("Status")) {
 		createStatusTab("Status");
 		current_tab = "Status";
@@ -396,6 +569,7 @@ function draw_status() {
 		} else {
 			var div = document.createElement("div");
 			div.textContent = status_tab_parts[i];
+			div.className = "status-info";
 			document.getElementById("statcontent").appendChild(div);
 		}
 	}
@@ -416,7 +590,7 @@ function draw_mc() {
 		if (part[2]) {
 			var a = document.createElement("a");
 			a.href =
-				"?_src_=vars;admin_token=" + href_token + ";Vars=" + part[2];
+				"byond://?_src_=vars;admin_token=" + href_token + ";Vars=" + part[2];
 			a.textContent = part[1];
 			td2.appendChild(a);
 		} else {
@@ -499,7 +673,7 @@ function draw_listedturf() {
 			// rather than every onmousedown getting the "part" of the last entry.
 			return function (e) {
 				e.preventDefault();
-				clickcatcher = "?src=" + part[1];
+				clickcatcher = "byond://?src=" + part[1];
 				switch (e.button) {
 					case 1:
 						clickcatcher += ";statpanel_item_click=middle";
@@ -544,6 +718,65 @@ function remove_mc() {
 	}
 }
 
+function drawClientOptions() {
+	statcontentdiv.textContent = "";
+
+	let stat = document.getElementById("statcontent");
+
+	for(let key in clientButtons) {
+		let title = document.createElement("h3");
+		title.textContent = key
+
+		stat.appendChild(title)
+
+		for(let index in clientButtons[key]) {
+			let button = clientButtons[key][index];
+
+			if (button.divider) {
+				let breakElement = document.createElement("br");
+				stat.appendChild(breakElement);
+				stat.appendChild(breakElement);
+
+				continue
+			}
+
+			if (!button.name) continue;
+
+			let buttonElement = document.createElement("div");
+			buttonElement.className = "button";
+			buttonElement.textContent = button.name;
+
+			if (button.active && (button.value || button.toggle)) {
+				if(button.toggle) {
+					lookedUpProperties[button.active] == true
+						? buttonElement.textContent = "✔️ " + button.name
+						: null;
+				} else {
+					lookedUpProperties[button.active] == button.value
+					? buttonElement.textContent = "✔️ " + button.name
+					: null;
+				}
+			}
+
+			buttonElement.onclick = function () {
+				button.function
+					? button.function()
+					: Byond.command(button.command);
+
+				if(button.toggle) {
+					lookedUpProperties[button.active] = !lookedUpProperties[button.active]
+				} else if (button.value) {
+					lookedUpProperties[button.active] =  button.value;
+				}
+				drawClientOptions();
+			};
+
+			stat.appendChild(buttonElement)
+		}
+
+	}
+}
+
 function draw_sdql2() {
 	statcontentdiv.textContent = "";
 	var table = document.createElement("table");
@@ -555,7 +788,7 @@ function draw_sdql2() {
 		var td2 = document.createElement("td");
 		if (part[2]) {
 			var a = document.createElement("a");
-			a.href = "?src=" + part[2] + ";statpanel_item_click=left";
+			a.href = "byond://?src=" + part[2] + ";statpanel_item_click=left";
 			a.textContent = part[1];
 			td2.appendChild(a);
 		} else {
@@ -583,7 +816,7 @@ function draw_tickets() {
 		if (part[2]) {
 			var a = document.createElement("a");
 			a.href =
-				"?_src_=admin_holder;admin_token=" +
+				"byond://?_src_=admin_holder;admin_token=" +
 				href_token +
 				";ahelp=" +
 				part[2] +
@@ -592,7 +825,7 @@ function draw_tickets() {
 			td2.appendChild(a);
 		} else if (part[3]) {
 			var a = document.createElement("a");
-			a.href = "?src=" + part[3] + ";statpanel_item_click=left";
+			a.href = "byond://?src=" + part[3] + ";statpanel_item_click=left";
 			a.textContent = part[1];
 			td2.appendChild(a);
 		} else {
@@ -615,7 +848,7 @@ function draw_interviews() {
 	var manLink = document.createElement("a");
 	manLink.textContent = "Open Interview Manager Panel";
 	manLink.href =
-		"?_src_=admin_holder;admin_token=" +
+		"byond://?_src_=admin_holder;admin_token=" +
 		href_token +
 		";interview_man=1;statpanel_item_click=left";
 	manDiv.appendChild(manLink);
@@ -651,7 +884,7 @@ function draw_interviews() {
 		var a = document.createElement("a");
 		a.textContent = part["status"];
 		a.href =
-			"?_src_=admin_holder;admin_token=" +
+			"byond://?_src_=admin_holder;admin_token=" +
 			href_token +
 			";interview=" +
 			part["ref"] +
@@ -675,7 +908,7 @@ function draw_spells(cat) {
 		var td2 = document.createElement("td");
 		if (part[3]) {
 			var a = document.createElement("a");
-			a.href = "?src=" + part[3] + ";statpanel_item_click=left";
+			a.href = "byond://?src=" + part[3] + ";statpanel_item_click=left";
 			a.textContent = part[2];
 			td2.appendChild(a);
 		} else {
@@ -707,6 +940,7 @@ function draw_verbs(cat) {
 		if (splitName[0] === "Admin") cat = splitName[1];
 	}
 	verbs.reverse(); // sort verbs backwards before we draw
+
 	for (var i = 0; i < verbs.length; ++i) {
 		var part = verbs[i];
 		var name = part[0];
@@ -754,9 +988,31 @@ function draw_verbs(cat) {
 			header.textContent = cat;
 			header.style.fontSize = current_fontsize + 4 + "px";
 			content.appendChild(header);
-			content.appendChild(additions[cat]);
+			let table = content.appendChild(additions[cat]);
+
+			table.style.width = table.offsetWidth + "px";
+			table.style.height = table.offsetHeight + "px";
+
+			window.addEventListener("resize", function() {
+				table.style.width = null
+				table.style.height = null
+
+				table.style.width = table.offsetWidth + "px";
+				table.style.height = table.offsetHeight + "px";
+			})
 		}
 	}
+
+	table.style.width = table.offsetWidth + "px";
+	table.style.height = table.offsetHeight + "px";
+
+	window.addEventListener("resize", function() {
+		table.style.width = null
+		table.style.height = null
+
+		table.style.width = table.offsetWidth + "px";
+		table.style.height = table.offsetHeight + "px";
+	})
 }
 
 function set_theme(which) {
@@ -849,6 +1105,53 @@ document.addEventListener("keyup", restoreFocus);
 if (!current_tab) {
 	addPermanentTab("Status");
 	tab_change("Status");
+}
+
+for(var key in bigButtons) {
+	let button = bigButtons[key];
+
+	if(!button.name) continue;
+
+	let buttonElement = document.createElement("div");
+	buttonElement.className = "button top-button";
+	if(button.class) {
+		buttonElement.className = buttonElement.className + " " + button.class;
+	}
+	buttonElement.onclick = function() {
+		Byond.command(button.command)
+	};
+
+	let innerTextDiv = document.createElement("span");
+
+	if(button.icon) {
+		let icon = document.createElement("i");
+		icon.className = "fa-solid fa-" + button.icon
+
+		innerTextDiv.appendChild(icon)
+	}
+
+	innerTextDiv.className = "top-button-text";
+
+	let text = document.createTextNode(button.name);
+	innerTextDiv.appendChild(text);
+
+	buttonElement.appendChild(innerTextDiv);
+
+	topButtons.appendChild(buttonElement);
+}
+
+for(let lookup in toLookUp) {
+	location.href = "byond://winget?callback=handleWinget&id=mapwindow.map&property=" + toLookUp[lookup];
+}
+
+function handleWinget(properties) {
+	for(let property in properties) {
+		lookedUpProperties[property] = properties[property];
+	}
+}
+
+statcontentdiv.onmouseenter = function () {
+	statcontentdiv.focus();
 }
 
 window.onload = function () {
@@ -1059,8 +1362,16 @@ Byond.subscribeTo("remove_mc", remove_mc);
 
 Byond.subscribeTo("add_verb_list", add_verb_list);
 
+Byond.subscribeTo("changelog_read", function(read) {
+	let changelogButton = document.getElementsByClassName("changelog")[0];
+	if(read)
+		changelogButton.classList.remove("unread")
+	else
+		changelogButton.classList.add("unread")
+})
+
 function createOptionsButton() {
-	addPermanentTab("Panel Options");
+	addPermanentTab("Options", true);
 }
 
 function openOptionsMenu() {
@@ -1069,7 +1380,11 @@ function openOptionsMenu() {
 
 Byond.subscribeTo("change_fontsize", function (new_fontsize) {
 	current_fontsize = parseInt(new_fontsize);
-	localStorage.setItem("fontsize", current_fontsize.toString());
+	if (!Byond.TRIDENT) {
+		window.hubStorage.setItem("fontsize", current_fontsize.toString());
+	} else { // TODO: Remove with 516
+		window.localStorage.setItem("fontsize", current_fontsize.toString());
+	}
 	statcontentdiv.style.fontSize = current_fontsize + "px";
 	tab_change(current_tab, true); // Redraw the current tab
 });

@@ -40,6 +40,12 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/waiting_ids = list()
 	var/list/active_ids = list()
 
+	///Sentry faction stuff
+	var/faction_label = "USCM Only"
+	var/list/faction_group = FACTION_LIST_ARES_MARINE
+	var/list/faction_options = list("USCM Only" = FACTION_LIST_ARES_MARINE, "Wey-Yu Only" = FACTION_WY, "USCM & Wey-Yu" = FACTION_LIST_ARES_ALL, "ARES Only" = FACTION_LIST_ARES_ALONE)
+	var/list/core_sentries = list()
+
 /datum/ares_link/New()
 	admin_interface = new
 	datacore = GLOB.ares_datacore
@@ -54,22 +60,14 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 		alert.delink()
 	..()
 
-/datum/ares_link/proc/get_ares_vents()
-	var/list/security_vents = list()
-	var/datum/ares_link/link = GLOB.ares_link
-	for(var/obj/structure/pipes/vents/pump/no_boom/gas/vent in link.linked_vents)
-		if(!vent.vent_tag)
-			vent.vent_tag = "Security Vent #[link.tag_num]"
-			link.tag_num++
+/datum/ares_link/proc/change_iff(selection)
+	faction_label = selection
+	var/list/new_iff = faction_options[selection]
 
-		var/list/current_vent = list()
-		var/is_available = COOLDOWN_FINISHED(vent, vent_trigger_cooldown)
-		current_vent["vent_tag"] = vent.vent_tag
-		current_vent["ref"] = "\ref[vent]"
-		current_vent["available"] = is_available
-		security_vents += list(current_vent)
-	return security_vents
-
+	faction_group = new_iff
+	ares_apollo_talk("Security IFF systems updated to [selection]")
+	for(var/obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares/sentry as anything in core_sentries)
+		sentry.sync_iff()
 
 /* BELOW ARE IN AdminAres.dm
 /datum/ares_link/tgui_interact(mob/user, datum/tgui/ui)

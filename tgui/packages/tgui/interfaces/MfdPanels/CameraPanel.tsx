@@ -1,9 +1,10 @@
-import { MfdProps, MfdPanel } from './MultifunctionDisplay';
-import { ByondUi } from '../../components';
-import { useBackend } from '../../backend';
-import { Box } from '../../components';
+import { useBackend } from 'tgui/backend';
+import { ByondUi } from 'tgui/components';
+import { Box } from 'tgui/components';
+
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState } from './stateManagers';
-import { CameraProps } from './types';
+import type { CameraProps } from './types';
 
 export const CameraMfdPanel = (props: MfdProps) => {
   const { act } = useBackend();
@@ -15,7 +16,8 @@ export const CameraMfdPanel = (props: MfdProps) => {
         { children: 'NV-ON', onClick: () => act('nvg-enable') },
         { children: 'NV-OFF', onClick: () => act('nvg-disable') },
       ]}
-      bottomButtons={[{ children: 'EXIT', onClick: () => setPanelState('') }]}>
+      bottomButtons={[{ children: 'EXIT', onClick: () => setPanelState('') }]}
+    >
       <CameraPanel />
     </MfdPanel>
   );

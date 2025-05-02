@@ -1,7 +1,7 @@
 
 /// Process asset cache client topic calls for "asset_cache_confirm_arrival=[INT]"
 /client/proc/asset_cache_confirm_arrival(job_id)
-	var/asset_cache_job = round(text2num(job_id))
+	var/asset_cache_job = floor(text2num(job_id))
 		//because we skip the limiter, we have to make sure this is a valid arrival and not somebody tricking us into letting them append to a list without limit.
 	if (asset_cache_job > 0 && asset_cache_job <= last_asset_job && !(completed_asset_jobs["[asset_cache_job]"]))
 		completed_asset_jobs["[asset_cache_job]"] = TRUE
@@ -36,7 +36,7 @@
 	var/job = ++last_asset_job
 	var/t = 0
 	var/timeout_time = timeout
-	src << browse({"<script>window.location.href="?asset_cache_confirm_arrival=[job]"</script>"}, "window=asset_cache_browser&file=asset_cache_send_verify.htm")
+	src << browse({"<script>window.location.href="byond://?asset_cache_confirm_arrival=[job]"</script>"}, "window=asset_cache_browser&file=asset_cache_send_verify.htm")
 
 	while(!completed_asset_jobs["[job]"] && t < timeout_time) // Reception is handled in Topic()
 		stoplag(1) // Lock up the caller until this is received.

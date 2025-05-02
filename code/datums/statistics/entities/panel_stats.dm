@@ -463,7 +463,7 @@
 		total_deaths_list += list(list("name" = S.name, "value" = S.value))
 
 	for(var/datum/entity/statistic/death/S in death_stats_list)
-		if(new_death_stats_list.len >= STATISTICS_DEATH_LIST_LEN)
+		if(length(new_death_stats_list) >= STATISTICS_DEATH_LIST_LEN)
 			break
 		var/list/damage_list = list()
 		if(S.total_brute)
@@ -496,7 +496,7 @@
 			"y" = S.y,
 			"z" = S.z
 		))
-		if(new_death_stats_list.len < STATISTICS_DEATH_LIST_LEN)
+		if(length(new_death_stats_list) < STATISTICS_DEATH_LIST_LEN)
 			new_death_stats_list += death
 
 	for(var/iteration in weapon_stats_list)

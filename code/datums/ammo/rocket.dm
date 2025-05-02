@@ -32,7 +32,7 @@
 	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(mob))
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
-		mob.ex_act(350, projectile.dir, projectile.weapon_cause_data, 100)
+		mob.ex_act(350, null, projectile.weapon_cause_data, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/object, obj/projectile/projectile)
@@ -69,7 +69,7 @@
 	mob.apply_effect(3, WEAKEN)
 	mob.apply_effect(3, PARALYZE)
 	if(ishuman_strict(mob)) // No yautya or synths. Makes humans gib on direct hit.
-		mob.ex_act(300, projectile.dir, projectile.weapon_cause_data, 100)
+		mob.ex_act(300, null, projectile.weapon_cause_data, 100)
 	cell_explosion(turf, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
@@ -144,6 +144,8 @@
 		return
 	return ..()
 
+/datum/ammo/rocket/ap/tank_towlauncher
+	max_range = 8
 
 /datum/ammo/rocket/ltb
 	name = "cannon round"
@@ -190,7 +192,8 @@
 
 /datum/ammo/rocket/wp/drop_flame(turf/turf, datum/cause_data/cause_data)
 	playsound(turf, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
-	if(!istype(turf)) return
+	if(!istype(turf))
+		return
 	smoke.set_up(1, turf)
 	smoke.start()
 	var/datum/reagent/napalm/blue/reagent = new()
@@ -231,7 +234,8 @@
 
 /datum/ammo/rocket/wp/upp/drop_flame(turf/turf, datum/cause_data/cause_data)
 	playsound(turf, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
-	if(!istype(turf)) return
+	if(!istype(turf))
+		return
 	smoke.set_up(1, turf)
 	smoke.start()
 	var/datum/reagent/napalm/upp/reagent = new()
@@ -275,8 +279,9 @@
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"
-	accurate_range = 8
-	max_range = 8
+	accuracy = HIT_ACCURACY_TIER_5
+	accurate_range = 7
+	max_range = 7
 
 /datum/ammo/rocket/custom/proc/prime(atom/atom, obj/projectile/projectile)
 	var/obj/item/weapon/gun/launcher/rocket/launcher = projectile.shot_from
@@ -285,6 +290,7 @@
 		if(rocket.fuel && rocket.fuel.reagents.get_reagent_amount(rocket.fuel_type) >= rocket.fuel_requirement)
 			rocket.forceMove(projectile.loc)
 		rocket.warhead.cause_data = projectile.weapon_cause_data
+		rocket.warhead.hit_angle = Get_Angle(launcher, atom)
 		rocket.warhead.prime()
 		qdel(rocket)
 	smoke.set_up(1, get_turf(atom))

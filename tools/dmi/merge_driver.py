@@ -39,6 +39,25 @@ def key_of(state):
     return (state.name, state.movement)
 
 
+def index_of(state, list):
+    index = 0
+    for item in list:
+        if item.name == state.name:
+            return index
+        index += 1
+    return -1
+
+
+def determine_insert_index(state, old_sheet, new_sheet):
+    old_index = old_sheet.states.index(state)
+    for i in range(old_index - 1, -1, -1):
+        # figure out the new index it ought to be by trying to find a common earlier state in the new list
+        new_index = index_of(old_sheet.states[i], new_sheet)
+        if new_index > -1:
+            return new_index + 1
+    return 0
+
+
 def dictify(sheet):
     result = {}
     for state in sheet.states:
@@ -133,18 +152,21 @@ def three_way_merge(base, left, right):
 
     # add states which both left and right added the same
     for key, state in new_both.items():
+        insert_index = determine_insert_index(state, left, final_states)
+        final_states.insert(insert_index, state)
         print(f"    {state.name!r}: added same in both")
-        final_states.append(state)
 
     # add states that are brand-new in the left
     for key, state in new_left.items():
+        insert_index = determine_insert_index(state, left, final_states)
+        final_states.insert(insert_index, state)
         print(f"    {state.name!r}: added in left")
-        final_states.append(state)
 
     # add states that are brand-new in the right
     for key, state in new_right.items():
+        insert_index = determine_insert_index(state, right, final_states)
+        final_states.insert(insert_index, state)
         print(f"    {state.name!r}: added in right")
-        final_states.append(state)
 
     final_states.extend(conflicts)
     merged = dmi.Dmi(base.width, base.height)

@@ -20,7 +20,7 @@
 	desc = "A monitor depicting the ship's current status. It flickers every so often."
 	anchored = TRUE
 	density = FALSE
-	use_power = FALSE
+	use_power = USE_POWER_NONE
 	idle_power_usage = 10
 	var/mode = 0 // 0 = Blank
 					// 1 = Shuttle timer
@@ -80,9 +80,11 @@
 			message1 = "EVAC"
 			message2 = SShijack.get_evac_eta()
 			if(message2)
-				if(length(message2) > CHARS_PER_LINE) message2 = "Error"
+				if(length(message2) > CHARS_PER_LINE)
+					message2 = "Error"
 				update_display(message1, message2)
-			else remove_display()
+			else
+				remove_display()
 			return 1
 		if(STATUS_DISPLAY_MESSAGE) //custom messages
 			var/line1
@@ -158,8 +160,7 @@
 	return ""
 
 /obj/structure/machinery/status_display/proc/remove_display()
-	if(overlays.len)
-		overlays.Cut()
+	LAZYCLEARLIST(overlays)
 	if(maptext)
 		maptext = ""
 
@@ -241,8 +242,7 @@
 
 /obj/structure/machinery/ai_status_display/proc/set_picture(state)
 	picture_state = state
-	if(overlays.len)
-		overlays.Cut()
+	LAZYCLEARLIST(overlays)
 	overlays += image('icons/obj/structures/machinery/status_display.dmi', icon_state=picture_state)
 
 #undef DEFAULT_FONT_COLOR

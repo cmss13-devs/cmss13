@@ -2,7 +2,7 @@
 	name = "Generic CBRN" //Parent type for easier gear
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
-	paygrade = PAY_SHORT_ME3
+	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CBRN"
 	flags = EQUIPMENT_PRESET_EXTRA
 	auto_squad_name = SQUAD_CBRN
@@ -22,7 +22,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/cbrn(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/cbrn(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
 
 /datum/equipment_preset/uscm/cbrn/standard
 	name = "CBRN Rifleman"
@@ -42,7 +42,7 @@
 
 	switch(pick("flamethrower", "mk2"))
 		if("flamethrower")
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/underextinguisher(new_human), WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/m240/underextinguisher(new_human), WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_BACK)
@@ -67,7 +67,7 @@
 
 /datum/equipment_preset/uscm/cbrn/engineer
 	name = "CBRN Combat Technician"
-	paygrade = PAY_SHORT_ME4
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	role_comm_title = "ComTech"
@@ -85,11 +85,11 @@
 	if(new_human.disabilities & NEARSIGHTED)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior/prescription(new_human), WEAR_EYES)
 	else
-		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior/alt(new_human), WEAR_EYES)
+		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior(new_human), WEAR_EYES)
 
 	switch(pick("flamethrower", "mk2"))
 		if("flamethrower")
-			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/underextinguisher(new_human), WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/m240/underextinguisher(new_human), WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank(new_human), WEAR_IN_BACK)
@@ -111,7 +111,7 @@
 
 /datum/equipment_preset/uscm/cbrn/medic
 	name = "CBRN Hospital Corpsman"
-	paygrade = PAY_SHORT_ME4
+	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	role_comm_title = "HM"
@@ -144,8 +144,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/russianRed(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/russianRed(new_human), WEAR_IN_BELT)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(new_human), WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary(new_human), WEAR_IN_ACCESSORY)
@@ -154,7 +154,7 @@
 
 /datum/equipment_preset/uscm/cbrn/leader
 	name = "CBRN Fireteam Leader"
-	paygrade = PAY_SHORT_ME5
+	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_TEAM_LEADER
 	rank = JOB_SQUAD_TEAM_LEADER
 	role_comm_title = "TL"
@@ -164,7 +164,7 @@
 /datum/equipment_preset/uscm/cbrn/leader/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
 
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/underextinguisher(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/m240/underextinguisher(new_human), WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/m41amk1(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flamertank(new_human), WEAR_L_STORE)
@@ -189,7 +189,7 @@
 
 /datum/equipment_preset/uscm/cbrn/specialist
 	name = "CBRN Specialist"
-	paygrade = PAY_SHORT_OPR
+	paygrades = list(PAY_SHORT_OPR = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
 	role_comm_title = "Spc"
@@ -217,7 +217,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health(new_human), WEAR_EYES)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/fuelpack(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/M240T(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/flamer/m240/spec(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/large/X(new_human), WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/large/X(new_human), WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/large/B(new_human), WEAR_IN_R_STORE)
@@ -232,7 +232,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus(new_human), WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE(new_human), WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre(new_human), WEAR_IN_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure(new_human), WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/glass/bottle/labeled_black_goo_cure(new_human), WEAR_IN_BELT)

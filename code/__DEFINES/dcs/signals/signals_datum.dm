@@ -34,6 +34,8 @@
 #define COMSIG_ACTION_HIDDEN "action_hidden"
 /// From base of /datum/action/proc/unhide_from(): (mob/owner)
 #define COMSIG_ACTION_UNHIDDEN "action_unhidden"
+/// From base of /datum/action/proc/action_activate() : ()
+#define COMSIG_ACTION_ACTIVATED "action_activated"
 
 ///from /datum/component/bonus_damage_stack
 #define COMSIG_BONUS_DAMAGE "bonus_damage"

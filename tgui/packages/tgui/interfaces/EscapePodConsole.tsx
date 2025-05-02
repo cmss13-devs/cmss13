@@ -1,6 +1,6 @@
-import { useBackend } from '../backend';
-import { Section, Flex, NoticeBox, Button, Box } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Flex, NoticeBox, Section } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 interface EscapePodProps {
   docking_status: number;
@@ -87,35 +87,38 @@ export const EscapePodConsole = () => {
           <Flex direction="column">
             <Flex.Item>
               <Button
-                content={data.door_state ? 'Unlock door' : 'Lock door'}
                 color="red"
                 fluid
                 icon={data.door_state ? 'lock-open' : 'lock'}
                 disabled={!operable}
                 onClick={() => act('lock_door')}
-              />
+              >
+                {data.door_state ? 'Unlock door' : 'Lock door'}
+              </Button>
               <Box width="2px" />
             </Flex.Item>
             <Flex.Item>
               <Button
-                content="Manual eject"
                 icon="plane-departure"
                 color="red"
                 fluid
                 disabled={!operable || delayed}
                 onClick={() => act('force_launch')}
-              />
+              >
+                Manual eject
+              </Button>
               <Box width="2px" />
             </Flex.Item>
             <Flex.Item>
               <Button
-                content={delayed ? 'Undelay Launch' : 'Delay launch'}
                 icon="clock"
                 color="yellow"
                 fluid
                 disabled={!data.can_delay}
                 onClick={() => act('delay_launch')}
-              />
+              >
+                {delayed ? 'Undelay Launch' : 'Delay launch'}
+              </Button>
             </Flex.Item>
           </Flex>
         </Section>

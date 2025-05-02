@@ -1,9 +1,10 @@
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
-import { Box, Stack } from '../../components';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { useBackend } from '../../backend';
+import { useBackend } from 'tgui/backend';
+import { Box, Stack } from 'tgui/components';
+
+import type { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { EquipmentContext, ParadropSpec } from './types';
+import type { EquipmentContext, ParadropSpec } from './types';
 
 const ParadropPanel = (props: DropshipEquipment) => {
   const paradropData = props.data as ParadropSpec;
@@ -45,7 +46,7 @@ export const ParadropMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);
   const { equipmentState } = useEquipmentState(props.panelStateId);
   const paradrop = data.equipment_data.find(
-    (x) => x.mount_point === equipmentState
+    (x) => x.mount_point === equipmentState,
   );
   const deployLabel = paradrop?.data?.locked ? 'CLEAR' : 'LOCK';
 
@@ -67,7 +68,8 @@ export const ParadropMfdPanel = (props: MfdProps) => {
           children: 'EXIT',
           onClick: () => setPanelState(''),
         },
-      ]}>
+      ]}
+    >
       <Box className="NavigationMenu">
         {paradrop && <ParadropPanel {...paradrop} />}
       </Box>

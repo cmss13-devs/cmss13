@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	var/mob/living/carbon/human/sourcehuman = source
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcehuman.stat == DEAD || sourcehuman.health < HEALTH_THRESHOLD_CRIT) && !sourcehuman.get_target_lock(user.faction_group))
 		to_chat(user, SPAN_WARNING("You can't toggle internals of a crit or dead member of another faction!"))
 		return
 
@@ -122,20 +122,19 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	var/mob/living/carbon/human/sourcemob = source
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
 		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 		return
 	if(!sourcemob.w_uniform || !istype(sourcemob.w_uniform, /obj/item/clothing))
 		return
 
 	var/obj/item/clothing/under/uniform = sourcemob.w_uniform
-	if(!LAZYLEN(uniform.accessories))
-		return FALSE
-	var/obj/item/clothing/accessory/accessory = LAZYACCESS(uniform.accessories, 1)
-	if(LAZYLEN(uniform.accessories) > 1)
-		accessory = tgui_input_list(user, "Select an accessory to remove from [uniform]", "Remove accessory", uniform.accessories)
-	if(!istype(accessory))
+
+	var/obj/item/clothing/accessory/accessory = uniform.pick_accessory_to_remove(user, sourcemob)
+
+	if(!accessory)
 		return
+
 	sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their accessory ([accessory]) removed by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Attempted to remove [key_name(sourcemob)]'s' accessory ([accessory])</font>")
 	if(istype(accessory, /obj/item/clothing/accessory/holobadge) || istype(accessory, /obj/item/clothing/accessory/medal))
@@ -180,7 +179,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	var/mob/living/carbon/human/sourcemob = source
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
 		to_chat(user, SPAN_WARNING("You can't remove splints of a crit or dead member of another faction!"))
 		return
 	sourcemob.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their splints removed by [key_name(user)]</font>")
@@ -220,7 +219,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	var/mob/living/carbon/human/sourcemob = source
 	if(user.action_busy || user.is_mob_incapacitated() || !source.Adjacent(user))
 		return
-	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_STRIPDRAG_ENEMY) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcemob.stat == DEAD || sourcemob.health < HEALTH_THRESHOLD_CRIT) && !sourcemob.get_target_lock(user.faction_group))
 		to_chat(user, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 		return
 	if(!istype(sourcemob.wear_id, /obj/item/card/id/dogtag))
@@ -231,20 +230,21 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(tag.dogtag_taken)
 		to_chat(user, SPAN_WARNING("Someone's already taken [sourcemob]'s information tag."))
 		return
-	
+
 	if(sourcemob.stat != DEAD)
 		to_chat(user, SPAN_WARNING("You can't take a dogtag's information tag while its owner is alive."))
 		return
-		
+
 	to_chat(user, SPAN_NOTICE("You take [sourcemob]'s information tag, leaving the ID tag"))
 	tag.dogtag_taken = TRUE
-	tag.icon_state = "dogtag_taken"
+	tag.icon_state = tag.tags_taken_icon
 	var/obj/item/dogtag/newtag = new(sourcemob.loc)
+	newtag.fallen_references = list(tag.registered_ref)
 	newtag.fallen_names = list(tag.registered_name)
 	newtag.fallen_assgns = list(tag.assignment)
 	newtag.fallen_blood_types = list(tag.blood_type)
 	user.put_in_hands(newtag)
-		
+
 
 
 /datum/strippable_item/mob_item_slot/belt

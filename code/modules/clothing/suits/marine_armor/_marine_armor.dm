@@ -113,6 +113,18 @@
 
 	var/atom/movable/marine_light/light_holder
 
+/obj/item/clothing/suit/storage/marine/unisc
+	name = "\improper M3 pattern marine armor"
+	desc = "A standard Colonial Marines M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	icon_state = "medium_armor"
+	item_state = "medium_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
+
 /obj/item/clothing/suit/storage/marine/Initialize(mapload)
 	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))

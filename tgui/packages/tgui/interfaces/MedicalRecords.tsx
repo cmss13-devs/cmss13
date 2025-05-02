@@ -624,13 +624,25 @@ export const MedicalRecords = () => {
 
       <Divider />
       <Flex justify="space-between" direction="row" gap={2} pl="10px" pr="10px">
-        <Button
-          width="48%"
-          textAlign="center"
-          onClick={() => act('print_medical_record', { id: record.id })}
-        >
-          Print record
-        </Button>
+        {data.database_access_level >= 1 ? (
+          <Button
+            width="48%"
+            textAlign="center"
+            onClick={() => act('print_medical_record', { id: record.id })}
+          >
+            Print record
+          </Button>
+        ) : (
+          <Button
+            width="48%"
+            textAlign="center"
+            backgroundColor="transparent"
+            color="#00eb4e"
+            tooltip="Insufficient access credentials!"
+          >
+            Print record
+          </Button>
+        )}
         {data.database_access_level >= 2 ? (
           <Button.Confirm
             width="48%"

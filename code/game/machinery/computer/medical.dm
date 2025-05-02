@@ -15,8 +15,6 @@
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_MEDICAL)
 	circuit = /obj/item/circuitboard/computer/med_data
 	var/obj/item/card/id/scan = null
-	var/last_user_name = ""
-	var/last_user_rank = ""
 	var/accepting_biometric_scans
 	var/printing = null
 	var/access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
@@ -210,8 +208,8 @@
 			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
 			var/photo_data = icon2html(photo_icon, user.client, sourceonly=TRUE)
 
-			var/photo_front = general_record.fields["photo_front"] ? icon2html(general_record.fields["photo_front"], user.client, sourceonly=TRUE) : photo_data
-			var/photo_side = general_record.fields["photo_side"] ? icon2html(general_record.fields["photo_side"], user.client, sourceonly=TRUE) : photo_data
+			var/photo_front = general_record.fields["photo_front"] ? icon2html(general_record.fields["photo_front"], user.client, sourceonly = TRUE) : photo_data
+			var/photo_side = general_record.fields["photo_side"] ? icon2html(general_record.fields["photo_side"], user.client, sourceonly = TRUE) : photo_data
 
 			ui.send_update(list(
 				"photo_front" = photo_front,
@@ -327,8 +325,8 @@
 				to_chat(user, SPAN_WARNING("This comment is already deleted."))
 				return
 
-			var/mob/living/carbon/human/U = user
-			comment["deleted_by"] = "[U.get_authentification_name()] ([U.get_assignment()])"
+			var/mob/living/carbon/human/human = user
+			comment["deleted_by"] = "[human.get_authentification_name()] ([human.get_assignment()])"
 			comment["deleted_at"] = text("[]  []  []", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 
 			medical_record.fields["comments"][comment_key] = comment
@@ -405,28 +403,7 @@
 				var/obj/item/paper/medical_record/report = new /obj/item/paper/medical_record(loc, general_record, medical_record)
 				report.name = text("Medical Record ([])", general_record.fields["name"])
 				printing = FALSE
-				//* Actions for ingame objects interactions
-		if ("print_latest_bodyscan")
-			var/id = params["id"]
-			if (!printing)
-				printing = TRUE
-
-				// Locate the general record
-				var/datum/data/record/general_record = find_record("general", id)
-
-				// Locate the medical record (if applicable)
-				var/datum/data/record/medical_record = find_record("medical", id)
-
-				if (!general_record)
-					to_chat(user, SPAN_WARNING("Record not found."))
-					return
-				to_chat(user, SPAN_NOTICE("Printing record."))
-				sleep(15)
-				playsound(loc, 'sound/machines/fax.ogg', 15, 1)
-
-				var/obj/item/paper/medical_record/report = new /obj/item/paper/medical_record(loc, general_record, medical_record)
-				report.name = text("Medical Record ([])", general_record.fields["name"])
-				printing = FALSE
+			return
 		if ("update_photo")
 			var/id = params["id"]
 			var/photo_profile = params["photo_profile"]
@@ -444,10 +421,11 @@
 
 			general_record.fields["photo_[photo_profile]"] = img
 			ui.send_update(list(
-				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly=TRUE),
+				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly = TRUE),
 			))
 			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo"))
 			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
+			return
 
 /obj/structure/machinery/computer/med_data/proc/validate_field(field, value, mob/user = usr, strict_mode = FALSE)
 	var/list/validators = list(
@@ -498,7 +476,7 @@
 
 	// If not in strict mode and the field is undefined, allow it through without checks
 	if (!rules)
-		return null
+		return
 
 	// Check required
 	if (rules["required"] && isnull(value))
@@ -535,7 +513,7 @@
 	if (rules["allowed_values"] && !(value in rules["allowed_values"]))
 		return "[value] is not a valid value for [field]."
 
-	return null
+	return
 
 /obj/structure/machinery/computer/med_data/proc/find_record(record_type, id)
 	// Determine the list to search based on record_type
@@ -545,7 +523,7 @@
 	else if (record_type == "medical")
 		records = GLOB.data_core.medical
 	else
-		return null // Unsupported record type
+		return // Unsupported record type
 		// There are actually other types of records as well, but I want to make it foolproof
 
 	// Iterate over the records to find the one matching the ID
@@ -553,7 +531,7 @@
 		if (record.fields["id"] == id)
 			return record
 
-	return null
+	return
 
 /obj/structure/machinery/computer/med_data/proc/get_photo(mob/user)
 	if(istype(user.get_active_hand(), /obj/item/photo))

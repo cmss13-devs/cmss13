@@ -2206,6 +2206,8 @@
 #include "code\modules\mob\living\carbon\xenomorph\castes\Spitter.dm"
 #include "code\modules\mob\living\carbon\xenomorph\castes\Warrior.dm"
 #include "code\modules\mob\living\carbon\xenomorph\items\iff_tag.dm"
+#include "code\modules\mob\living\carbon\xenomorph\neomorph\bloodburster.dm"
+#include "code\modules\mob\living\carbon\xenomorph\neomorph\neomorph.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\behavior_delegate.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\xeno_strain.dm"
 #include "code\modules\mob\living\carbon\xenomorph\strains\castes\boiler\trapper.dm"

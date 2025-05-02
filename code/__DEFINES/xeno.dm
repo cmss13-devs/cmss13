@@ -103,6 +103,7 @@
 #define EGG_MAX_GROWTH_TIME 150
 
 #define FLAG_EMBRYO_PREDATOR 1 // Useful for passing down flags from an egg to the very moment an embryo is in someone
+#define FLAG_EMBRYO_NEOMORPH 2
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
@@ -699,6 +700,10 @@
 //Tier 4
 #define XENO_CASTE_KING "King"
 #define XENO_CASTE_QUEEN  "Queen"
+
+//Neo
+#define NEOMORPH_BURSTER "Bloodburster"
+#define NEOMORPH_GROWN "Neomorph"
 
 //special
 #define XENO_CASTE_PREDALIEN  "Predalien"

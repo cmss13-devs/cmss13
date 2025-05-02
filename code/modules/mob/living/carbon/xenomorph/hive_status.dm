@@ -1588,3 +1588,16 @@
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
 
+/datum/hive_status/neomorph
+	name = "Neomorph Hive"
+	reporting_id = "neomorph"
+	hivenumber = XENO_HIVE_NEOMORPH
+	prefix = ""
+	color = "#bdc9c4"
+	ui_color = "#bdc9c4"
+
+	hive_inherant_traits = list(TRAIT_NO_COLOR)
+	latejoin_burrowed = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	allow_no_queen_evo = TRUE

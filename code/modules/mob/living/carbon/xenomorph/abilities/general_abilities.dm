@@ -210,7 +210,7 @@
 	/// Any bonus damage to apply on the tackle slash, if applicable
 	var/slash_bonus_damage = 0
 
-	/// Should we freeze ourselves after the lunge?
+	/// Should we freeze ourselves after the pounce?
 	var/freeze_self = TRUE
 	/// 5 for runners, 15 for lurkers
 	var/freeze_time = 5
@@ -269,7 +269,7 @@
 	return
 
 /**
- * Effects to apply *inmediately* before pouncing.
+ * Effects to apply *immediately* before pouncing.
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
 	var/mob/living/carbon/xenomorph/xeno = owner

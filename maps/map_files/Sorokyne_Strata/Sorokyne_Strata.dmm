@@ -11741,9 +11741,6 @@
 "aHW" = (
 /turf/open/asphalt/cement/cement1/north,
 /area/strata/exterior/outpost_platform)
-"aHX" = (
-/turf/closed/wall/strata_ice/rock,
-/area/strata/exterior/parts_storage_cave)
 "aHY" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "pointybush_1"
@@ -13353,9 +13350,6 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/mining_outpost)
-"aMG" = (
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/interior/out_of_bounds)
 "aMH" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -17605,9 +17599,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
-"aYP" = (
-/turf/closed/wall/strata_ice/rock,
-/area/strata/exterior/outpost_decks)
 "aYQ" = (
 /obj/item/stack/sheet/wood,
 /turf/open/floor/strata,
@@ -44578,11 +44569,6 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/south_outpost)
-"led" = (
-/obj/effect/blocker/sorokyne_hot_water,
-/obj/structure/platform/metal/strata/north,
-/turf/open/gm/river/soro,
-/area/strata/interior/outpost/med)
 "lfj" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -53436,7 +53422,7 @@
 	dir = 9
 	},
 /turf/open/gm/dirt/brown,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/south_outpost)
 "wnZ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/security/colony{
@@ -73574,11 +73560,11 @@ uRy
 xKs
 bdX
 hmf
-led
+bcc
 xzq
 xnZ
 oxE
-aYP
+acc
 wnC
 bmJ
 bnC
@@ -73594,11 +73580,11 @@ acc
 acc
 acc
 aac
-aMG
+vxc
 aKC
 cvn
 aIc
-aHX
+acc
 aac
 aac
 aac

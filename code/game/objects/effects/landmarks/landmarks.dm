@@ -177,10 +177,10 @@
 	name = "xeno npc spawn"
 	icon_state = "xeno_spawn"
 
-/obj/effect/landmark/xeno_npc_spawn/Initialize(mapload, ...)
-	. = ..()
-	if(prob(80))
-		new /mob/living/simple_animal/hostile/alien(loc)
+//obj/effect/landmark/xeno_npc_spawn/Initialize(mapload, ...) (removing code for testing reasons)
+//	. = ..()
+//	if(prob(80))
+//		new /mob/living/simple_animal/hostile/alien(loc)
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"

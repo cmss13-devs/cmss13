@@ -143,7 +143,7 @@
 	color = "red"
 
 /obj/item/map/tyrargo_rift
-	name = "\improper New Varadero map"
+	name = "\improper Tyrargo Rift map"
 	desc = "A labeled blueprint of the UA city Tyrargo Rift"
 	html_link = "images/7/79/Tyrargo_Rift.png"
 

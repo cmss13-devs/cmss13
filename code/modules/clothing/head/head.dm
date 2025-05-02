@@ -912,11 +912,15 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
 	)
 
-/obj/item/clothing/head/beret/SOF_beret/reservist
+/obj/item/clothing/head/beret/army_beret
 	name = "\improper UPP reservist beret"
 	desc = "A well-made beret worn by reservists of the UPP armed forces. It signifies their continued commitment to the cause, even while not on active duty, and serves as a symbol of unity and service."
-	icon_state = "SOF_blue_beret"
-	item_state = "SOF_blue_beret"
+	icon_state = "army_beret"
+	item_state = "army_beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
+	)
 
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"

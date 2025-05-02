@@ -528,11 +528,11 @@ export const MedicalRecords = () => {
                   COMMENTS / LOG
                 </Box>
                 <Box
-                  className="SecurityRecords_BoxStyle"
+                  className="MedicalRecords_BoxStyle"
                   style={{ paddingLeft: '2px' }}
                   minHeight="105px"
                 >
-                  <Box className="SecurityRecords_BoxStyle">
+                  <Box className="MedicalRecords_BoxStyle">
                     {record.medical_comments &&
                     Object.keys(record.medical_comments).length > 0
                       ? Object.entries(record.medical_comments).map(
@@ -542,7 +542,7 @@ export const MedicalRecords = () => {
                               style={{ marginBottom: '5px', padding: '2px' }}
                             >
                               {comment.deleted_by ? (
-                                <Box className="SecurityRecords_GrayItalicStyle">
+                                <Box className="MedicalRecords_GrayItalicStyle">
                                   Comment deleted by {comment.deleted_by} at{' '}
                                   {comment.deleted_at || 'unknown time'}.
                                 </Box>
@@ -625,22 +625,15 @@ export const MedicalRecords = () => {
       <Divider />
       <Flex justify="space-between" direction="row" gap={2} pl="10px" pr="10px">
         <Button
-          width="30%"
+          width="48%"
           textAlign="center"
-          onClick={() => act('print_personal_record', { id: record.id })}
+          onClick={() => act('print_medical_record', { id: record.id })}
         >
           Print record
         </Button>
-        <Button
-          width="30%"
-          textAlign="center"
-          onClick={() => act('print_personal_record', { id: record.id })}
-        >
-          Print latest bodyscan
-        </Button>
         {data.database_access_level >= 2 ? (
           <Button.Confirm
-            width="30%"
+            width="48%"
             textAlign="center"
             confirmColor="bad"
             confirmContent="Confirm?"
@@ -655,7 +648,7 @@ export const MedicalRecords = () => {
           </Button.Confirm>
         ) : (
           <Button
-            width="30%"
+            width="48%"
             textAlign="center"
             backgroundColor="transparent"
             color="#00eb4e"
@@ -729,28 +722,28 @@ export const MedicalRecords = () => {
         <Table.Row header>
           <Table.Cell
             bold
-            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
+            className="MedicalRecords_CellStyle MedicalRecords_CursorPointer"
             onClick={() => handleSort('general_name')}
           >
             Name {getSortIndicator('general_name')}
           </Table.Cell>
           <Table.Cell
             bold
-            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
+            className="MedicalRecords_CellStyle MedicalRecords_CursorPointer"
             onClick={() => handleSort('id')}
           >
             ID {getSortIndicator('id')}
           </Table.Cell>
           <Table.Cell
             bold
-            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
+            className="MedicalRecords_CellStyle MedicalRecords_CursorPointer"
             onClick={() => handleSort('general_job')}
           >
             Position {getSortIndicator('general_job')}
           </Table.Cell>
           <Table.Cell
             bold
-            className="SecurityRecords_CellStyle SecurityRecords_CursorPointer"
+            className="MedicalRecords_CellStyle MedicalRecords_CursorPointer"
             onClick={() => handleSort('general_m_stat')}
           >
             Status {getSortIndicator('general_m_stat')}
@@ -758,7 +751,7 @@ export const MedicalRecords = () => {
         </Table.Row>
         {filteredRecords.map((record) => (
           <Table.Row key={record.id}>
-            <Table.Cell className="SecurityRecords_CellStyle">
+            <Table.Cell className="MedicalRecords_CellStyle">
               <Button
                 onClick={() => {
                   selectRecord(record);
@@ -767,13 +760,13 @@ export const MedicalRecords = () => {
                 {record.general_name}
               </Button>
             </Table.Cell>
-            <Table.Cell className="SecurityRecords_CellStyle">
+            <Table.Cell className="MedicalRecords_CellStyle">
               {record.id}
             </Table.Cell>
-            <Table.Cell className="SecurityRecords_CellStyle">
+            <Table.Cell className="MedicalRecords_CellStyle">
               {record.general_job}
             </Table.Cell>
-            <Table.Cell className="SecurityRecords_CellStyle">
+            <Table.Cell className="MedicalRecords_CellStyle">
               {record.general_m_stat}
             </Table.Cell>
           </Table.Row>
@@ -784,21 +777,26 @@ export const MedicalRecords = () => {
 
   const LoginPanel = (props) => {
     return (
-      <Flex
-        direction="column"
+      <Section
+        fill
         textAlign="center"
-        justify="center"
         align="center"
         height="100%"
         fontSize="2rem"
-        mt="-3rem"
         bold
+        pt="0%"
       >
         <Box fontSize={1.8}>MEDICAL RECORDS DATABASE</Box>
-        <Box mb={9} fontSize={1}>
+        <Box fontSize={1}>
           [ Version 1.2.8 | Copyright © 2182, Weyland Yutani Corp. ]
         </Box>
-        <Box fontSize={1.5}>INTERFACE ACCESS RESTRICTED</Box>
+        <Divider />
+        <Box mt="25%">
+          <Divider />
+        </Box>
+        <Box fontSize={1.5} mt="5%">
+          INTERFACE ACCESS RESTRICTED
+        </Box>
         <Box fontFamily="monospace" fontSize={1.3}>
           [ IDENTITY VERIFICATION REQUIRED ]
         </Box>
@@ -815,10 +813,11 @@ export const MedicalRecords = () => {
           Login
         </Button>
 
-        <Box fontFamily="monospace" fontSize={1.2}>
+        <Box fontFamily="monospace" fontSize={1.2} mb="5%">
           - UNAUTHORIZED USE STRICTLY PROHIBITED -
         </Box>
-      </Flex>
+        <Divider />
+      </Section>
     );
   };
 

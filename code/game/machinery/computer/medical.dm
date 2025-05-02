@@ -60,25 +60,6 @@
 
 /obj/structure/machinery/computer/med_data/proc/link_medical_data(mob/living/carbon/human/target, general_record_id)
 
-	var/datum/data/record/medical_record = new /datum/data/record()
-	medical_record.fields["id"] = general_record_id
-	medical_record.fields["name"] = target.real_name
-	medical_record.name = target.real_name
-	medical_record.fields["blood_type"] = target.blood_type
-	medical_record.fields["minor_disability"] = "None"
-	medical_record.fields["minor_disability_details"] = "No minor disabilities have been declared."
-	medical_record.fields["major_disability"] = "None"
-	medical_record.fields["major_disability_details"] = "No major disabilities have been diagnosed."
-	medical_record.fields["allergies"] = "None"
-	medical_record.fields["allergies_details"] = "No allergies have been detected in this patient."
-	medical_record.fields["diseases"] = "None"
-	medical_record.fields["diseases_details"] = "No diseases have been diagnosed at the moment."
-	medical_record.fields["last_scan_time"] = null
-	medical_record.fields["last_scan_result"] = "No scan data on record"
-	medical_record.fields["autodoc_data"] = list()
-	medical_record.fields["ref"] = WEAKREF(target)
-	GLOB.data_core.medical += medical_record
-
 	var/assignment
 	if(target.job)
 		assignment = target.job
@@ -86,16 +67,40 @@
 		assignment = "Unassigned"
 
 	for (var/datum/data/record/general_record in GLOB.data_core.general)
-		if(general_record.fields["id"] == general_record_id)
-			general_record.fields["name"] = target.real_name
-			general_record.name = target.real_name
-			general_record.fields["real_rank"] = target.job
-			general_record.fields["rank"] = assignment
-			general_record.fields["age"] = target.age
-			general_record.fields["p_stat"] = "Active"
-			general_record.fields["m_stat"] = "Stable"
-			general_record.fields["sex"] = capitalize(target.gender)
-			general_record.fields["ref"] = WEAKREF(target)
+		if(general_record.fields["id"] != general_record_id)
+			continue
+		if((general_record.fields["name"] != target.real_name) && (general_record.fields["name"] != "New Record"))
+			balloon_alert_to_viewers("ERROR! Medical record bioscan does not match general record ID.")
+			playsound(src, 'sound/machines/terminal_error.ogg', 15, FALSE)
+			return
+		general_record.fields["name"] = target.real_name
+		general_record.name = target.real_name
+		general_record.fields["real_rank"] = target.job
+		general_record.fields["rank"] = assignment
+		general_record.fields["age"] = target.age
+		general_record.fields["p_stat"] = "Active"
+		general_record.fields["m_stat"] = "Stable"
+		general_record.fields["sex"] = capitalize(target.gender)
+		general_record.fields["ref"] = WEAKREF(target)
+
+		var/datum/data/record/medical_record = new /datum/data/record()
+		medical_record.fields["id"] = general_record_id
+		medical_record.fields["name"] = target.real_name
+		medical_record.name = target.real_name
+		medical_record.fields["blood_type"] = target.blood_type
+		medical_record.fields["minor_disability"] = "None"
+		medical_record.fields["minor_disability_details"] = "No minor disabilities have been declared."
+		medical_record.fields["major_disability"] = "None"
+		medical_record.fields["major_disability_details"] = "No major disabilities have been diagnosed."
+		medical_record.fields["allergies"] = "None"
+		medical_record.fields["allergies_details"] = "No allergies have been detected in this patient."
+		medical_record.fields["diseases"] = "None"
+		medical_record.fields["diseases_details"] = "No diseases have been diagnosed at the moment."
+		medical_record.fields["last_scan_time"] = null
+		medical_record.fields["last_scan_result"] = "No scan data on record"
+		medical_record.fields["autodoc_data"] = list()
+		medical_record.fields["ref"] = WEAKREF(target)
+		GLOB.data_core.medical += medical_record
 
 /obj/structure/machinery/computer/med_data/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -123,6 +128,8 @@
 
 		if(target_ref)
 			target = target_ref.resolve()
+			if(!target)	// if the target has been gibbed, or no longer physically exists
+				return
 			id = target.wear_id
 			// checks if record target is in the chain of command, and needs their record protected
 			if(target.job in CHAIN_OF_COMMAND_ROLES)
@@ -377,7 +384,7 @@
 			return
 
 		//* Actions for ingame objects interactions
-		if ("print_personal_record")
+		if ("print_medical_record")
 			var/id = params["id"]
 			if (!printing)
 				printing = TRUE
@@ -393,10 +400,32 @@
 					return
 				to_chat(user, SPAN_NOTICE("Printing record."))
 				sleep(15)
-				playsound(loc, 'sound/machines/print.ogg', 15, 1)
+				playsound(loc, 'sound/machines/fax.ogg', 15, 1)
 
-				var/obj/item/paper/personalrecord/P = new /obj/item/paper/personalrecord(loc, general_record, medical_record)
-				P.name = text("medical Record ([])", general_record.fields["name"])
+				var/obj/item/paper/medical_record/report = new /obj/item/paper/medical_record(loc, general_record, medical_record)
+				report.name = text("Medical Record ([])", general_record.fields["name"])
+				printing = FALSE
+				//* Actions for ingame objects interactions
+		if ("print_latest_bodyscan")
+			var/id = params["id"]
+			if (!printing)
+				printing = TRUE
+
+				// Locate the general record
+				var/datum/data/record/general_record = find_record("general", id)
+
+				// Locate the medical record (if applicable)
+				var/datum/data/record/medical_record = find_record("medical", id)
+
+				if (!general_record)
+					to_chat(user, SPAN_WARNING("Record not found."))
+					return
+				to_chat(user, SPAN_NOTICE("Printing record."))
+				sleep(15)
+				playsound(loc, 'sound/machines/fax.ogg', 15, 1)
+
+				var/obj/item/paper/medical_record/report = new /obj/item/paper/medical_record(loc, general_record, medical_record)
+				report.name = text("Medical Record ([])", general_record.fields["name"])
 				printing = FALSE
 		if ("update_photo")
 			var/id = params["id"]
@@ -428,12 +457,6 @@
 			"required" = TRUE,
 			"regex" = regex(@"^[a-zA-Z' ]+$"), // Allow letters, spaces, and single quotes
 		),
-		"general_rank" = list(
-			"type" = "string",
-			"required" = TRUE,
-			"allowed_values" = GLOB.joblist,
-			"permitted_paygrades" = list(GLOB.uscm_highcom_paygrades)
-		),
 		"general_age" = list(
 			"type" = "number",
 			"required" = TRUE,
@@ -445,10 +468,21 @@
 			"required" = TRUE,
 			"allowed_values" = list("Male", "Female"),
 		),
-		"medical_criminal" = list(
+		"medical_major_disability" = list(
 			"type" = "string",
-			"required" = TRUE,
-			"allowed_values" = list("*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "None"),
+			"max_length" = 50,
+		),
+		"medical_minor_disability" = list(
+			"type" = "string",
+			"max_length" = 50,
+		),
+		"medical_diseases" = list(
+			"type" = "string",
+			"max_length" = 50,
+		),
+		"medical_allergies" = list(
+			"type" = "string",
+			"max_length" = 50,
 		),
 		"medical_comments" = list(
 			"type" = "string",

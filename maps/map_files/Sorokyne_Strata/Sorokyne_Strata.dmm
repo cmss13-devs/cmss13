@@ -1197,6 +1197,10 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
+"ady" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/outpost/admin)
 "adz" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata/multi_tiles/southeast,
@@ -1233,6 +1237,10 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/bball)
+"adE" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/strata,
+/area/strata/interior/outpost/canteen/bar)
 "adF" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 16
@@ -1254,6 +1262,10 @@
 /obj/structure/closet/basketball,
 /turf/open/floor/strata/blue1,
 /area/strata/interior/bball)
+"adH" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/blue3/east,
+/area/strata/interior/outpost/admin)
 "adI" = (
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/landing_zones/near_lz2)
@@ -1275,6 +1287,13 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/wooden_ruins)
+"adN" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 9
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/outpost/admin)
 "adO" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -12775,19 +12794,14 @@
 	},
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
-"aKQ" = (
-/obj/structure/machinery/chem_dispenser/soda/beer,
-/obj/structure/surface/table/reinforced/prison{
-	color = "#98a3ab"
-	},
-/turf/open/floor/strata/white_cyan1/east,
-/area/strata/interior/outpost/canteen/bar)
 "aKR" = (
+/obj/structure/machinery/chem_dispenser/soda/beer{
+	pixel_y = 30
+	},
 /obj/item/stack/sandbags,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen/bar)
 "aKS" = (
-/obj/item/stack/sandbags,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen/bar)
@@ -36848,6 +36862,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/item/stack/sandbags,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen/bar)
 "cjj" = (
@@ -42393,15 +42408,6 @@
 "icN" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/outpost/security)
-"icZ" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
-	},
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/strata/blue1,
-/area/strata/interior/outpost/admin)
 "idq" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -79305,7 +79311,7 @@ ugT
 blN
 otZ
 nzU
-nzU
+adH
 nzU
 nzU
 nzU
@@ -79476,17 +79482,17 @@ bFD
 igf
 cfx
 cdZ
-cik
-cik
-cik
+bAW
+bAW
+bAW
+adN
 blN
+aTU
 blN
-icZ
 vfg
 pMO
-blN
-blN
-blN
+bsv
+ady
 aTU
 biH
 dcv
@@ -79652,12 +79658,12 @@ gya
 oZy
 wqy
 bAW
-aKQ
 aMi
+bAW
 cjZ
 cjZ
 bAW
-bAW
+adE
 bAW
 bAW
 cjZ

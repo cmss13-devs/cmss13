@@ -384,6 +384,7 @@
 
 //Making a new object because we might want to edit armor values and such.
 //Or give it its own sprite. It's more for the future.
+
 /obj/item/clothing/suit/storage/marine/MP/CO
 	name = "\improper M3 pattern commanding officer armor"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge."

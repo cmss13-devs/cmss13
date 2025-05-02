@@ -1,0 +1,4 @@
+author: "BertStein"
+delete-after: True
+changes:
+  - qol: "Pill bottles and autoinjectors now support 3-character sprite labels."

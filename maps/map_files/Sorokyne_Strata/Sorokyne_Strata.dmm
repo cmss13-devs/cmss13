@@ -551,6 +551,15 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abR" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement/cement4,
+/area/strata/ag/exterior/landing_zones/lz2)
+"abS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "abT" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pill_bottle/bicaridine,
@@ -37289,7 +37298,7 @@ aol
 aol
 aol
 aol
-aol
+abS
 aol
 cso
 aol
@@ -43307,7 +43316,7 @@ pAZ
 bvE
 bvE
 xTU
-eFa
+abR
 bJI
 vsp
 hue

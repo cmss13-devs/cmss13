@@ -1,4 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - bugfix: "Flamers can pass properly again."

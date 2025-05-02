@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added the ability for staff to change IFF settings on the AI Core turrets via remote interface."

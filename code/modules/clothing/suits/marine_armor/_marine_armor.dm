@@ -398,7 +398,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
 	black_market_value = 35
 
-/obj/item/clothing/suit/storage/marine/MP/CO/unisc
+/obj/item/clothing/suit/storage/marine/MP/unisc
 	name = "\improper M3 pattern commanding officer armor"
 	desc = "PLACEHOLDER I LOVE BEES."
 	icon_state = "medium_armor_co"
@@ -407,6 +407,7 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
 	)
+	item_state_slots = list(WEAR_JACKET = "medium_armor_co")
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket

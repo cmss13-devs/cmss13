@@ -430,28 +430,27 @@
 			to_chat(user, "There is no [fitting] in this light.")
 			return
 
+		to_chat(user, "You remove the light [fitting].")
+		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		// create a light tube/bulb item and put it in the user's hand
+		var/obj/item/light_bulb/light_tube = new light_type()
+		light_tube.status = status
+		light_tube.rigged = rigged
+		light_tube.brightness = src.brightness
+
+		// light item inherits the switchcount, then zero it
+		light_tube.switchcount = switchcount
+		switchcount = 0
+
+		light_tube.update()
+
+		if(user.put_in_inactive_hand(light_tube)) //assumes the screwdriver is in the active hand and attempts to put it in the inactive hand
+			light_tube.add_fingerprint(user)
 		else
-			to_chat(user, "You remove the light [fitting].")
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-			// create a light tube/bulb item and put it in the user's hand
-			var/obj/item/light_bulb/L = new light_type()
-			L.status = status
-			L.rigged = rigged
-			L.brightness = src.brightness
-
-			// light item inherits the switchcount, then zero it
-			L.switchcount = switchcount
-			switchcount = 0
-
-			L.update()
-
-			if(user.put_in_inactive_hand(L)) //assumes the screwdriver is in the active hand and attempts to put it in the inactive hand
-				L.add_fingerprint(user)
-			else
-				L.forceMove(loc) //if not, put it on the ground
-			status = LIGHT_EMPTY
-			update()
-			return
+			light_tube.forceMove(loc) //if not, put it on the ground
+		status = LIGHT_EMPTY
+		update()
+		return
 		// attempt to break the light
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
@@ -568,6 +567,11 @@
 	if(!skip_sound_and_sparks)
 		if(status == LIGHT_OK || status == LIGHT_BURNED)
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+
+	if(on)
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
 
 	status = LIGHT_BROKEN
 	update()

@@ -1,0 +1,7 @@
+author: "Perohai"
+delete-after: True
+changes:
+  - rscadd: "Добавил M707 кит в вендор карго"
+  - rscadd: "IFF режим M707"
+  - rscadd: "Возможность покупать патроны в карго"
+  - bugfix: "Модель дальномера на треноге обновляется"

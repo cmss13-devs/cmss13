@@ -345,12 +345,18 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 /obj/item/device/radio/headset/yautja/overseer //for council
 	name = "\improper Overseer Communicator"
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
+	initial_keys = list(/obj/item/device/encryptionkey/yautja/overseer)
 
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
 	icon_state = "cypherkey"
-	channels = list(RADIO_CHANNEL_YAUTJA = 1)
+	channels = list(RADIO_CHANNEL_YAUTJA = TRUE)
+
+/obj/item/device/encryptionkey/yautja/overseer
+	name = "\improper Yautja Overseer encryption key"
+	channels = list(RADIO_CHANNEL_YAUTJA = TRUE, RADIO_CHANNEL_YAUTJA_OVERSEER = TRUE)
+	abstract = TRUE
 
 //Yes, it's a backpack that goes on the belt. I want the backpack noises. Deal with it (tm)
 /obj/item/storage/backpack/yautja

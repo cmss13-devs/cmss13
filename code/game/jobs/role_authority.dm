@@ -625,6 +625,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/king
 		if(XENO_CASTE_PALATINE)
 			M = /mob/living/carbon/xenomorph/palatine
+		if(NEOMORPH_BURSTER)
+			M = /mob/living/carbon/xenomorph/bloodburster
+		if(NEOMORPH_GROWN)
+			M = /mob/living/carbon/xenomorph/neomorph
 	return M
 
 

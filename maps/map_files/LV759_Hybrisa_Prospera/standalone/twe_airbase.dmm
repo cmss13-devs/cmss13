@@ -758,7 +758,8 @@
 	id = "souter_west";
 	name = "\improper Emergency Exit";
 	vehicle_resistant = 1;
-	dir = 4
+	dir = 4;
+	needs_power = 0
 	},
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
@@ -1161,10 +1162,6 @@
 	buckle_offset_x = -7;
 	buckle_offset_y = 16
 	},
-/obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot/alt{
-	pixel_x = -7;
-	pixel_y = 10
-	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "iw" = (
@@ -1349,14 +1346,14 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "kY" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	id = "souter_south";
 	name = "\improper Emergency Exit";
-	vehicle_resistant = 1
-	},
-/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
-	dir = 1;
-	welded = 1
+	vehicle_resistant = 1;
+	needs_power = 0
 	},
 /turf/open/floor/hybrisa/metal/yellow_warning_floor,
 /area/lv759/indoors/twe_souter_outpost/hallway)
@@ -2716,6 +2713,11 @@
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot/alt{
+	pixel_x = -9;
+	pixel_y = 28;
+	layer = 3.4
+	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "Ak" = (
@@ -3911,7 +3913,8 @@
 "Pm" = (
 /obj/structure/machinery/vending/coffee{
 	pixel_x = -3;
-	pixel_y = 20
+	pixel_y = 20;
+	density = 0
 	},
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/prison/darkred2,

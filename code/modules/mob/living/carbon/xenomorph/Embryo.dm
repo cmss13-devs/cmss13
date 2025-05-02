@@ -249,7 +249,7 @@
 	if(flags_embryo & FLAG_EMBRYO_NEOMORPH)
 		new_xeno = new /mob/living/carbon/xenomorph/bloodburster(affected_mob)
 	else
-		new_xeno = new(affected_mob)
+		new_xeno = new /mob/living/carbon/xenomorph/larva(affected_mob)
 
 	if(hive)
 		hive.add_xeno(new_xeno)

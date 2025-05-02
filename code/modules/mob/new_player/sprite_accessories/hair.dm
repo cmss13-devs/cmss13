@@ -820,3 +820,8 @@
 	name = "Emo Fringe"
 	icon_state = "hair_emo_fringe"
 	gender = FEMALE
+
+/datum/sprite_accessory/hair/widowspeak
+	name = "Dead Head"
+	icon_state = "hair_deadhead"
+	gender = MALE

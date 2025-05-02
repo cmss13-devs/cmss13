@@ -1,0 +1,4 @@
+author: "Lagomorphica"
+delete-after: True
+changes:
+  - bugfix: "oppressor praetorian can no longer click on marine muzzle flashes to grab you from off-screen"

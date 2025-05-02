@@ -283,7 +283,7 @@
 	attachable_overlays = list("muzzle" = null, "rail" = null, "under" = null, "stock" = null, "mag" = null, "special" = null)
 
 	LAZYSET(item_state_slots, WEAR_BACK, item_state)
-	LAZYSET(item_state_slots, WEAR_JACKET, item_state)
+	LAZYSET(item_state_slots, WEAR_J_STORE, item_state)
 
 	if(current_mag)
 		if(spawn_empty && !(flags_gun_features & GUN_INTERNAL_MAG)) //Internal mags will still spawn, but they won't be filled.

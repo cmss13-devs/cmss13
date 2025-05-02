@@ -398,7 +398,7 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
 	black_market_value = 35
 
-/obj/item/clothing/suit/storage/marine/MP/unisc
+/obj/item/clothing/suit/storage/marine/MP/CO/unisc
 	name = "\improper M3 pattern commanding officer armor"
 	desc = "PLACEHOLDER I LOVE BEES."
 	icon_state = "medium_armor_co"

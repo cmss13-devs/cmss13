@@ -22,7 +22,8 @@
 	caste_desc = "A fast, powerful combatant."
 	evolves_to = list()
 
-	heal_resting = 1.5
+	heal_resting = 1
+	minimum_evolve_time = 0
 
 	minimap_icon = "neomorph"
 

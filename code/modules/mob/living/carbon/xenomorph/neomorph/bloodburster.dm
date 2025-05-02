@@ -11,7 +11,7 @@
 	armor_deflection = XENO_NO_ARMOR
 	max_health = XENO_HEALTH_TIER_1
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_RUNNER
+	speed = XENO_SPEED_TIER_10
 	attack_delay = -4
 
 	available_strains = list()
@@ -25,7 +25,8 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 4
 
-	heal_resting = 1.75
+	heal_resting = 0.75
+	minimum_evolve_time = 0
 
 	minimap_icon = "bloodburster"
 

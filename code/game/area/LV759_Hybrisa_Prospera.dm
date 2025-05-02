@@ -219,7 +219,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = TRUE
 	always_unpowered = TRUE
 
 /area/lv759/indoors/caves/electric_fence1
@@ -323,7 +323,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_DEEPCAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = TRUE
 
 /area/lv759/outdoors/caves/north_west_caves_outdoors
 	name = "Caverns - Northwest"
@@ -333,7 +333,7 @@
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
-	unoviable_timer = FALSE
+	unoviable_timer = TRUE
 
 /area/lv759/indoors/caves/north_east_caves
 	name = "Caverns - Northeast"

@@ -617,3 +617,10 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 			return WEAR_IN_HELMET
 		else
 			return 0
+
+/proc/is_valid_sticky_slot(slot)
+	switch(slot)
+		if(WEAR_HANDCUFFS, WEAR_LEGCUFFS, WEAR_L_HAND, WEAR_R_HAND)
+			return FALSE
+		else
+			return TRUE

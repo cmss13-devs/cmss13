@@ -429,7 +429,7 @@
 	while(isitem(storage_item_storage.loc)) // for stuff like pouches
 		storage_item_storage = storage_item_storage.loc
 
-	if(storage_item)
+	if(storage_item_storage)
 		last_equipped_slot = slot_to_in_storage_slot(storage_item_storage.last_equipped_slot)
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
@@ -478,7 +478,7 @@
 
 	SEND_SIGNAL(src, COMSIG_ITEM_EQUIPPED, user, slot)
 
-	if (slot != WEAR_R_HAND && slot != WEAR_L_HAND)
+	if(is_valid_sticky_slot(slot))
 		last_equipped_slot = slot
 
 	if(item_action_slot_check(user, slot))

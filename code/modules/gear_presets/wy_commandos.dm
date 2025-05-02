@@ -44,7 +44,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/commando, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/commando/deathsquad, WEAR_J_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/wy, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/heap, WEAR_IN_BELT)

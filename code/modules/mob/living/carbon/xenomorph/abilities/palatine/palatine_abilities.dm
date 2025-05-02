@@ -70,7 +70,6 @@ GLOBAL_LIST_INIT(resin_build_order_palatine, list(
 	name = "Roar"
 	icon_file = 'icons/mob/hud/actions_palatine.dmi'
 	action_icon_state = "screech_empower"
-	ability_name = "roar"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 60 SECONDS
@@ -85,7 +84,6 @@ GLOBAL_LIST_INIT(resin_build_order_palatine, list(
 	name = "Change Roar"
 	icon_file = 'icons/mob/hud/actions_palatine.dmi'
 	action_icon_state = "screech_shift"
-	ability_name = "change roar"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 	plasma_cost = 0
@@ -97,7 +95,7 @@ GLOBAL_LIST_INIT(resin_build_order_palatine, list(
 	if(!X.check_state(1))
 		return
 
-	var/datum/action/xeno_action/onclick/palatine_roar/PR = get_xeno_action_by_type(X, /datum/action/xeno_action/onclick/palatine_roar)
+	var/datum/action/xeno_action/onclick/palatine_roar/PR = get_action(X, /datum/action/xeno_action/onclick/palatine_roar)
 	if (!istype(PR))
 		return
 
@@ -115,3 +113,4 @@ GLOBAL_LIST_INIT(resin_build_order_palatine, list(
 
 	PR.button.overlays.Cut()
 	PR.button.overlays += image('icons/mob/hud/actions_palatine.dmi', button, action_icon_result)
+	return ..()

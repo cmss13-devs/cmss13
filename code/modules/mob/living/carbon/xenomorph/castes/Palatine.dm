@@ -48,7 +48,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
@@ -59,8 +59,7 @@
 		/datum/action/xeno_action/onclick/palatine_change_roar,
 		/datum/action/xeno_action/activable/prae_abduct/palatine_macro,//Mac2
 		/datum/action/xeno_action/activable/prae_retrieve,//Mac3
-		/datum/action/xeno_action/activable/warden_heal,//Mac4
-		/datum/action/xeno_action/onclick/prae_switch_heal_type,//Mac5
+		/datum/action/xeno_action/activable/valkyrie_rage,//Mac4
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/plant_weeds/palatine,
 		/datum/action/xeno_action/onclick/choose_resin/palatine,

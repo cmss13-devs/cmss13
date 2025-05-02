@@ -295,7 +295,7 @@
 	var/armor_buffs_speed_target = FALSE
 	var/rage_cost = 75
 
-/datum/action/xeno_action/activable/warden_heal/palatine_macro
+/datum/action/xeno_action/activable/valkyrie_rage/palatine_macro
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/high_gallop

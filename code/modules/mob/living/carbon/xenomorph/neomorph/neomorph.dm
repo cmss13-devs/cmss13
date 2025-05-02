@@ -85,7 +85,7 @@
 /datum/action/xeno_action/activable/pounce/runner/neomorph
 	xeno_cooldown = 5 SECONDS
 	knockdown = TRUE // Should we knock down the target?
-	knockdown_duration = 2
+	knockdown_duration = 1
 	slash = TRUE // Do we slash upon reception?
 	freeze_self = TRUE // Should we freeze ourselves after the lunge?
 	freeze_time = 5

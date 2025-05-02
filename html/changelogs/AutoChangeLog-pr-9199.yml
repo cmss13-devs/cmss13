@@ -1,4 +1,0 @@
-author: "Joe Lampost"
-delete-after: True
-changes:
-  - bugfix: "Fixes multiple elder overseer messages being sent for a weather event."

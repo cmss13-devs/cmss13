@@ -15,9 +15,13 @@
 	req_one_access = list(ACCESS_MARINE_MEDBAY, ACCESS_WY_MEDICAL)
 	circuit = /obj/item/circuitboard/computer/med_data
 	var/obj/item/card/id/scan = null
-	var/accepting_biometric_scans
-	var/printing = null
+	/// the target id of a record intended to link with a biometric scan
+	var/bio_link_target_record_id
+	/// time left for someone to authenticate a biometric scan, before it aborts
+	var/biometric_scan_timer
 	var/access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
+
+	COOLDOWN_DECLARE(record_printing_cooldown)
 
 /obj/structure/machinery/computer/med_data/attack_remote(mob/user as mob)
 	return src.attack_hand(user)
@@ -27,12 +31,12 @@
 		to_chat(user, SPAN_INFO("It does not appear to be working."))
 		return
 
-	if(accepting_biometric_scans && ishumansynth_strict(user))
+	if(bio_link_target_record_id && ishumansynth_strict(user))
 		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s hand is scanned to \the [name]."))
 		visible_message("[SPAN_BOLD("[src]")] states, \"SCAN ENTRY: ["Scanned, please stay close until operation's end."]\"")
-		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
-		link_medical_data(user, accepting_biometric_scans)
-		accepting_biometric_scans = FALSE
+		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, TRUE)
+		link_medical_data(user, bio_link_target_record_id)
+		bio_link_target_record_id = FALSE
 		return
 
 	if(!allowed(usr))
@@ -57,6 +61,10 @@
 	return MEDICAL_RECORD_ACCESS_LEVEL_0
 
 /obj/structure/machinery/computer/med_data/proc/link_medical_data(mob/living/carbon/human/target, general_record_id)
+
+	if(biometric_scan_timer)
+		deltimer(biometric_scan_timer)
+		biometric_scan_timer = null
 
 	var/assignment
 	if(target.job)
@@ -99,6 +107,41 @@
 		medical_record.fields["autodoc_data"] = list()
 		medical_record.fields["ref"] = WEAKREF(target)
 		GLOB.data_core.medical += medical_record
+
+/obj/structure/machinery/computer/med_data/proc/print_medical_record(record_id, mob/living/carbon/human/user)
+
+	if(!record_id)
+		// for whatever reason, the computer is asking for a record with a null ID
+		balloon_alert_to_viewers("Critical systems fault! Unable to process request.")
+		to_chat(user, SPAN_NOTICE("Critical systems fault! Unable to process request."))
+		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
+		return
+
+	// Locate the general record
+	var/datum/data/record/general_record = find_record("general", record_id)
+
+	// Locate the medical record
+	var/datum/data/record/medical_record = find_record("medical", record_id)
+
+	if (!general_record)
+		balloon_alert_to_viewers("Unable to process request. Record not found!")
+		to_chat(user, SPAN_NOTICE("Unable to process request. Record not found!"))
+		playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
+		return
+
+	var/obj/item/paper/medical_record/report = new /obj/item/paper/medical_record(loc, general_record, medical_record)
+	report.name = text("Medical Record ([])", general_record.fields["name"])
+
+/obj/structure/machinery/computer/med_data/proc/handle_biometric_scan_timeout(mob/living/carbon/human/user)
+
+	if(biometric_scan_timer)
+		deltimer(biometric_scan_timer)
+		biometric_scan_timer = null
+
+	bio_link_target_record_id = null
+	balloon_alert_to_viewers("Aborting biometric scan! No user detected in time.")
+	to_chat(user, SPAN_NOTICE("Aborting biometric scan! No user detected in time."))
+	playsound(loc, 'sound/machines/terminal_shutdown.ogg', 15, FALSE)
 
 /obj/structure/machinery/computer/med_data/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -226,7 +269,7 @@
 			var/validation_error = validate_field(field, value, user, FALSE)
 			if (validation_error)
 				to_chat(user, SPAN_WARNING("Console returns error with buzzing sound: [validation_error]"))
-				playsound(loc, 'sound/machines/buzz-two.ogg', 15, 1)
+				playsound(loc, 'sound/machines/buzz-two.ogg', 15, TRUE)
 				return
 
 			if(!id || !field)
@@ -345,8 +388,10 @@
 
 			if (name && id)
 				balloon_alert_to_viewers("Place a hand on the biometric reader to create a new medical record.")
+				to_chat(user, SPAN_WARNING("Place a hand on the biometric reader to create a new medical record."))
 				playsound(src, 'sound/machines/ping.ogg', 15, FALSE)
-				accepting_biometric_scans = id
+				bio_link_target_record_id = id
+				biometric_scan_timer = addtimer(CALLBACK(src, PROC_REF(handle_biometric_scan_timeout), user), 10 SECONDS, TIMER_STOPPABLE)
 			return
 
 		if ("new_general_record")
@@ -383,27 +428,20 @@
 
 		//* Actions for ingame objects interactions
 		if ("print_medical_record")
-			var/id = params["id"]
-			if (!printing)
-				printing = TRUE
+			var/target_record_id = params["id"]
+			if (!COOLDOWN_FINISHED(src, record_printing_cooldown))
+				to_chat(user, SPAN_WARNING("Woah there buddy! Let the printer catch its breath before ordering the next document."))
+				return
 
-				// Locate the general record
-				var/datum/data/record/general_record = find_record("general", id)
+			COOLDOWN_START(src, record_printing_cooldown, 7 SECONDS)
 
-				// Locate the medical record (if applicable)
-				var/datum/data/record/medical_record = find_record("medical", id)
+			balloon_alert_to_viewers("Printing record!")
+			to_chat(user, SPAN_NOTICE("Printing record!"))
+			playsound(loc, 'sound/machines/fax.ogg', 15, TRUE)
 
-				if (!general_record)
-					to_chat(user, SPAN_WARNING("Record not found."))
-					return
-				to_chat(user, SPAN_NOTICE("Printing record."))
-				sleep(15)
-				playsound(loc, 'sound/machines/fax.ogg', 15, 1)
-
-				var/obj/item/paper/medical_record/report = new /obj/item/paper/medical_record(loc, general_record, medical_record)
-				report.name = text("Medical Record ([])", general_record.fields["name"])
-				printing = FALSE
+			addtimer(CALLBACK(src, PROC_REF(print_medical_record), target_record_id, user), 3 SECONDS)
 			return
+
 		if ("update_photo")
 			var/id = params["id"]
 			var/photo_profile = params["photo_profile"]

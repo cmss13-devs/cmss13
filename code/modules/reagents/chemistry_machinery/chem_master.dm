@@ -488,3 +488,6 @@
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0
+
+/obj/structure/machinery/chem_master/vial
+	vial_maker = TRUE

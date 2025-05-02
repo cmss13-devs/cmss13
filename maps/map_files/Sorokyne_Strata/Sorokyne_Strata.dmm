@@ -12180,6 +12180,9 @@
 /area/strata/exterior/parts_storage_cave)
 "aJq" = (
 /obj/item/stack/sheet/wood,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/parts_storage_cave)
 "aJr" = (

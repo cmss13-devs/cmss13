@@ -19,6 +19,7 @@
 #include "sounds/_sounds.dme"
 #include "translations/_translations.dme"
 #include "stats_viewer/_stats_viewer.dme"
+#include "vulture_rework/_vulture_rework.dme"
 #include "speech_filter/_speech_filter.dme"
 #include "text_to_speech/_tts.dme"
 #include "wy_special/_wy_special.dme"

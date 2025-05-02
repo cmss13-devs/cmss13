@@ -22,6 +22,17 @@
 		/obj/item/device/walkman,
 	)
 
+/obj/item/clothing/suit/storage/marine/smartgunner/unisc
+	name = "\improper M56 combat harness"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon_state = "light_armor_smartgunner"
+	item_state = "light_armor_smartgunner"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 combat harness")

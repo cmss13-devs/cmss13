@@ -95,6 +95,17 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
 	)
 
+/obj/item/clothing/head/beret/cm/unisc
+	name = "\improper UNISC beret"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
+	icon_state = "beret_unisc"
+	item_state = "beret_unisc"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/head/beret/cm/Initialize(mapload, ...)
 	. = ..()
 	if(!(flags_atom & NO_GAMEMODE_SKIN))

@@ -393,7 +393,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/flags_marine_helmet = HELMET_SQUAD_OVERLAY|HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
 	var/helmet_bash_cooldown = 0
 
-	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 	var/specialty = "M10 pattern marine" //Give them a specialty var so that they show up correctly in vendors. speciality does NOTHING if you have NO_NAME_OVERRIDE.
 	valid_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_HELM_C)
@@ -422,6 +421,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	///Faction owners of the inbuilt camera
 	var/list/camera_factions = FACTION_LIST_MARINE_WY
 
+/obj/item/clothing/head/helmet/marine/unisc
+	name = "\improper M10 pattern marine helmet"
+	desc = "A standard M10 Pattern Helmet. The inside label, along with washing information, reads, 'The difference between an open-casket and closed-casket funeral. Wear on head for best results.'. There is a built-in camera on the right side."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
+	icon_state = "helmet"
+	item_state = "helmet"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
@@ -806,6 +815,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
+/obj/item/clothing/head/helmet/marine/tech
+	name = "\improper M10 pattern technician helmet"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
+	icon_state = "tech_helmet"
+	item_state = "tech_helmet"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/head/helmet/marine/welding
 	name = "\improper M10 welding helmet"
 	desc = "A modified M10 marine helmet, Features a toggleable welding screen for eye protection. Completely invisible while toggled off as opposed to the technician helmet."
@@ -874,6 +894,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
+/obj/item/clothing/head/helmet/marine/medic
+	name = "\improper M10 pattern corpsman helmet"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
+	icon_state = "med_helmet"
+	item_state = "med_helmet"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/head/helmet/marine/medic/white
 	name = "\improper M10 white corpsman helmet"
 	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Painted in medical white and has white cross in a red square painted on its front."
@@ -921,6 +952,17 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "sl_helmet"
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	specialty = "M11 pattern marine"
+
+/obj/item/clothing/head/helmet/marine/leader/unisc
+	name = "\improper M11 pattern helmet"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
+	icon_state = "sl_helmet"
+	item_state = "sl_helmet"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/head/helmet/marine/rto
 	name = "\improper M12 pattern dust helmet"

@@ -293,6 +293,17 @@
 	light_range = 5 //slightly higher
 	specialty = "M4 pattern marine"
 
+/obj/item/clothing/suit/storage/marine/medium/rto/unisc
+	name = "\improper M4 pattern marine armor"
+	desc = "PLACEHOLDER I LOVE BEES"
+	icon_state = "medium_armor_m4"
+	item_state = "medium_armor_m4"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
@@ -387,6 +398,17 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
 	black_market_value = 35
 
+/obj/item/clothing/suit/storage/marine/MP/CO/unisc
+	name = "\improper M3 pattern commanding officer armor"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon_state = "medium_armor_co"
+	item_state = "medium_armor_co"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket
 	name = "\improper M3 pattern commanding officer armored coat"
 	desc = "A robust, well-polished suit of armor for the Commanding Officer. Custom-made to fit its owner with special straps to operate a smartgun. Show those Marines who's really in charge. This one has a coat over it for added warmth."
@@ -412,6 +434,18 @@
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	specialty = "B12 pattern marine"
 	light_range = 5
+
+/obj/item/clothing/suit/storage/marine/medium/leader/unisc
+	name = "\improper B12 pattern marine armor"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon_state = "medium_armor_b12"
+	item_state = "medium_armor_b12"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"
@@ -481,6 +515,17 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 2
 
+/obj/item/clothing/suit/storage/marine/light/unisc
+	name = "\improper M3-L pattern marine armor"
+	desc = "A standard Colonial Marines M3-L Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	icon_state = "light_armor"
+	item_state = "light_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/suit/storage/marine/light/padded
 	icon_state = "L1"
 	armor_variation = 0
@@ -528,6 +573,17 @@
 	siemens_coefficient = 0.7
 	uniform_restricted = null
 
+/obj/item/clothing/suit/storage/marine/light/vest/unisc
+	name = "\improper M3-VL marine armor"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon_state = "very_light_armor"
+	item_state = "very_light_armor"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/suit/storage/marine/light/vest/dcc
 	name = "\improper M3-VL pattern flak vest"
 	desc = "A combination of the standard non-combat M3-VL ballistics vest and M70 flak jacket, this piece of armor has been distributed to dropship crew to keep them safe from threats external and internal..."
@@ -559,6 +615,17 @@
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/marine/light/synvest/unisc
+	name = "\improper M3A1 Synthetic Utility Vest"
+	desc = "PLACEHOLDER I LOVE BEES."
+	icon_state = "very_light_armor_synth"
+	item_state = "very_light_armor_synth"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UNISC.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/marine/light/synvest/grey
 	icon_state = "VL_syn"

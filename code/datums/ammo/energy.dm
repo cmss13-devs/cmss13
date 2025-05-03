@@ -119,9 +119,9 @@
 
 /datum/ammo/energy/yautja/caster/bolt/single_stun/on_hit_mob(mob/all_targets, obj/projectile/P)
 	var/mob/living/carbon/any_target = all_targets
+	if(isyautja(any_target) || ispredalien(any_target))
+		return
 	if(istype(any_target))
-		if(isyautja(any_target) || ispredalien(any_target))
-			return
 		to_chat(any_target, SPAN_DANGER("An electric shock ripples through your body, freezing you in place!"))
 		log_attack("[key_name(any_target)] was stunned by a high power stun bolt from [key_name(P.firer)] at [get_area(P)]")
 

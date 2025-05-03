@@ -1,5 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - qol: "The third chemmaster in research can now make vials"
-  - balance: "Research's machinery has extra health, and should be able to withstand a few explosive incidents."

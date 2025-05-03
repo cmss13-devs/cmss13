@@ -429,7 +429,7 @@
 	//A proc for calling end of round ERTs.
 	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_TYRARGO_RIFT)
-			SSticker.mode.get_specific_call(/datum/emergency_call/us_army, TRUE, FALSE)
+			SSticker.mode.get_specific_call(/datum/emergency_call/us_army, TRUE, TRUE)
 
 /datum/game_mode/colonialmarines/proc/lore_announcement()
 	//A proc that will queue up announcements for the lore of the map.

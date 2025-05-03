@@ -597,6 +597,7 @@
 /obj/structure/machinery/cell_charger,
 /obj/effect/spawner/random/powercell,
 /obj/effect/spawner/random/powercell,
+/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
 "abZ" = (
@@ -33373,9 +33374,10 @@
 	layer = 2;
 	pixel_y = 3
 	},
-/turf/closed/wall/r_wall/bunker{
-	layer = 3;
-	name = "Tank Trap"
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "Tank Trap";
+	layer = 3
 	},
 /area/tyrargo/landing_zone_2/east_trench)
 "bwr" = (
@@ -33665,9 +33667,10 @@
 	layer = 2;
 	pixel_y = 3
 	},
-/turf/closed/wall/r_wall/bunker{
-	layer = 3;
-	name = "Tank Trap"
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "Tank Trap";
+	layer = 3
 	},
 /area/tyrargo/outdoors/outskirts/east)
 "bwW" = (
@@ -38701,6 +38704,11 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
+"bIS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
 "bIT" = (
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
@@ -39068,6 +39076,12 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/east)
+"bJF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/largecrate/random,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
 "bJG" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -40081,6 +40095,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
+"bMy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/corsat,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
 "bMz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/auto_turf/strata_grass,
@@ -40353,6 +40373,16 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/east)
+"bNp" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	light_on = 1;
+	light_range = 1;
+	light_system = 1;
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/bunker/ammo_dump_connection)
 "bNq" = (
 /obj/structure/platform/stone/kutjevo,
 /obj/structure/platform/stone/kutjevo/west,
@@ -42063,6 +42093,46 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
+"bRF" = (
+/obj/structure/closet/crate/construction,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bRG" = (
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 4;
+	explosive_multiplier = 0.1;
+	pixel_x = 5
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	explosive_multiplier = 0.1;
+	pixel_y = -6
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.5;
+	burn_multiplier = 0.1;
+	dir = 1;
+	explosive_multiplier = 0.1;
+	layer = 2;
+	pixel_y = 3
+	},
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "Tank Trap";
+	layer = 3
+	},
+/area/tyrargo/outdoors/outskirts/central)
 "bRH" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/east_trench)
@@ -48423,8 +48493,8 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "ckt" = (
 /obj/effect/decal/cleanable/generic,
-/turf/closed/wall/strata_outpost,
-/area/tyrargo/outdoors/colony_streets/south_east)
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/indoors/mall)
 "cku" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/prison/floor_plate,
@@ -60182,7 +60252,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
 "cXp" = (
-/turf/closed/wall/r_wall/bunker,
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "Tank Trap";
+	layer = 3
+	},
 /area/tyrargo/outdoors/outskirts/east)
 "cXq" = (
 /obj/item/ammo_casing/bullet,
@@ -108705,7 +108779,7 @@ bWE
 bVX
 bWE
 bWM
-bXb
+bJF
 bVX
 bWE
 bWM
@@ -108887,8 +108961,8 @@ bVX
 bVX
 bXo
 bWM
-bXb
-bWM
+bMy
+bIS
 bWM
 bWE
 bWN
@@ -109250,7 +109324,7 @@ bXz
 bWE
 bXr
 bVX
-bVX
+bNp
 bXd
 bWM
 bWE
@@ -152343,7 +152417,7 @@ boe
 bxr
 ebg
 bnL
-bDe
+bRF
 eaC
 eal
 bDe
@@ -154100,7 +154174,7 @@ bBg
 bBg
 bBg
 bBg
-adT
+bRG
 bBi
 bBg
 bEL
@@ -154821,7 +154895,7 @@ bQV
 bBw
 bBg
 bBg
-adT
+bRG
 bBg
 bBg
 bBg
@@ -156311,7 +156385,7 @@ bBg
 bBg
 bBg
 bBg
-adT
+bRG
 bBg
 bBg
 bJh
@@ -165961,7 +166035,7 @@ ayO
 rnG
 vAg
 waA
-clK
+cnq
 clK
 clK
 clK
@@ -172548,7 +172622,7 @@ dEQ
 bem
 cMH
 alY
-alY
+cns
 cgc
 aSE
 biB
@@ -172730,7 +172804,7 @@ dER
 bem
 bem
 cMw
-alY
+cns
 dpC
 dhE
 dhy
@@ -172912,7 +172986,7 @@ dES
 bem
 dYb
 dEG
-alY
+cns
 cki
 cij
 cjS
@@ -173094,7 +173168,7 @@ bgV
 bem
 bem
 bem
-alY
+cns
 cit
 aHX
 cjS
@@ -173276,7 +173350,7 @@ dEI
 bem
 bem
 bem
-alY
+cns
 axu
 dhF
 dhz
@@ -176006,7 +176080,7 @@ dEV
 alY
 dEJ
 bep
-alY
+cns
 ckl
 dhQ
 edu
@@ -176188,7 +176262,7 @@ dEV
 alY
 bep
 bep
-alY
+cns
 dhV
 dhR
 aRT
@@ -176370,7 +176444,7 @@ dEV
 alY
 bep
 bep
-alY
+cns
 dpD
 dpx
 cib
@@ -176552,7 +176626,7 @@ alY
 alY
 bem
 bem
-alY
+cns
 ckn
 cim
 cib
@@ -220233,7 +220307,7 @@ cMv
 cMv
 cMv
 cMv
-cjc
+cWU
 cjc
 cjc
 cjc

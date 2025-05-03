@@ -1,0 +1,5 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - qol: "Light tubes can't be removed by hand anymore, use a screwdriver instead"
+  - bugfix: "Fixed some lighting fixture descriptions not showing up correctly, as well as other misc items."

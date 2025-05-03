@@ -45,20 +45,20 @@
 
 /obj/structure/machinery/light_construct/deconstruct(disassembled = TRUE)
 	if(disassembled)
-		new /obj/item/stack/sheet/metal(get_turf(src.loc), sheets_refunded)
+		new /obj/item/stack/sheet/metal(get_turf(loc), sheets_refunded)
 	return ..()
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (src.stage == 1)
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
+			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(usr, "You begin deconstructing [src].")
 			if (!do_after(usr, 30, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 			user.visible_message("[user.name] deconstructs [src].",
 				"You deconstruct [src].", "You hear a noise.")
-			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
+			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			deconstruct()
 		if (src.stage == 2)
 			to_chat(usr, "You have to remove the wires first.")
@@ -75,10 +75,10 @@
 				src.icon_state = "tube-construct-stage1"
 			if("bulb")
 				src.icon_state = "bulb-construct-stage1"
-		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, "red")
+		new /obj/item/stack/cable_coil(get_turf(loc), 1, "red")
 		user.visible_message("[user.name] removes the wiring from [src].",
 			"You remove the wiring from [src].", "You hear a noise.")
-		playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
+		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		return
 
 	if(istype(W, /obj/item/stack/cable_coil))
@@ -105,14 +105,14 @@
 			src.stage = 3
 			user.visible_message("[user.name] closes [src]'s casing.",
 				"You close [src]'s casing.", "You hear a noise.")
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
 			switch(fixture_type)
 
 				if("tube")
-					newlight = new /obj/structure/machinery/light/built(src.loc)
+					newlight = new /obj/structure/machinery/light/built(loc)
 				if ("bulb")
-					newlight = new /obj/structure/machinery/light/small/built(src.loc)
+					newlight = new /obj/structure/machinery/light/small/built(loc)
 
 			newlight.setDir(dir)
 			src.transfer_fingerprints_to(newlight)
@@ -400,7 +400,7 @@
 			to_chat(user, "There is a [fitting] already inserted.")
 			return
 		else
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			src.add_fingerprint(user)
 			var/obj/item/light_bulb/L = W
 			if(istype(L, light_type))
@@ -431,7 +431,7 @@
 			return
 
 		to_chat(user, "You remove the light [fitting].")
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		// create a light tube/bulb item and put it in the user's hand
 		var/obj/item/light_bulb/light_tube = new light_type()
 		light_tube.status = status
@@ -455,7 +455,7 @@
 		//If xenos decide they want to smash a light bulb with a toolbox, who am I to stop them? /N
 
 	else if(status != LIGHT_BROKEN && status != LIGHT_EMPTY)
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
 		if(prob(1+W.force * W.demolition_mod * 5))
 			to_chat(user, SPAN_WARNING("You hit the light, and it smashes!"))
@@ -474,17 +474,17 @@
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
 		if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //If it's a screwdriver open it.
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			user.visible_message("[user.name] opens [src]'s casing.",
 				"You open [src]'s casing.", "You hear a noise.")
 			var/obj/structure/machinery/light_construct/newlight = null
 			switch(fitting)
 				if("tube")
-					newlight = new /obj/structure/machinery/light_construct(src.loc)
+					newlight = new /obj/structure/machinery/light_construct(loc)
 					newlight.icon_state = "tube-construct-stage2"
 
 				if("bulb")
-					newlight = new /obj/structure/machinery/light_construct/small(src.loc)
+					newlight = new /obj/structure/machinery/light_construct/small(loc)
 					newlight.icon_state = "bulb-construct-stage2"
 			newlight.setDir(dir)
 			newlight.stage = 2
@@ -503,7 +503,7 @@
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/structure/machinery/light/proc/has_power()
-	var/area/A = src.loc.loc
+	var/area/A = loc.loc
 	if(!src.needs_power)
 		return A.lightswitch
 	return A.lightswitch && A.power_light
@@ -566,7 +566,7 @@
 
 	if(!skip_sound_and_sparks)
 		if(status == LIGHT_OK || status == LIGHT_BURNED)
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 
 	if(on)
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
@@ -632,13 +632,13 @@
 		if(P.damage > 10)
 			broken()
 		else
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+			playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return 1
 
 // explode the light
 
 /obj/structure/machinery/light/proc/explode()
-	var/turf/T = get_turf(src.loc)
+	var/turf/T = get_turf(loc)
 	spawn(0)
 		broken() // break it first to give a warning
 		sleep(2)
@@ -770,7 +770,7 @@
 		status = LIGHT_BROKEN
 		force = 5
 		sharp = IS_SHARP_ITEM_SIMPLE
-		playsound(src.loc, "glassbreak", 25, 1)
+		playsound(loc, "glassbreak", 25, 1)
 		update()
 
 /obj/structure/machinery/landinglight

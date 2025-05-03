@@ -56,7 +56,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 			icon_display = "tier3_big"
 		if(JOB_PLAYTIME_TIER_4 to JOB_PLAYTIME_TIER_5)
 			icon_display = "tier4_big"
-		if(JOB_PLAYTIME_TIER_5 to INFINITY)
+		if(JOB_PLAYTIME_TIER_6 to INFINITY)
 			icon_display = "tier5_big"
 
 	var/playtime_percentage = min((total_minutes MINUTES_TO_DECISECOND) / JOB_PLAYTIME_TIER_4, 1)

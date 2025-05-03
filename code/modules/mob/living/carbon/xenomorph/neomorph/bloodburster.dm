@@ -46,7 +46,7 @@
 	viewsize = 9
 	organ_value = 5000
 
-	mob_size = MOB_SIZE_SMALL
+	mob_size = MOB_SIZE_XENO_VERY_SMALL
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

@@ -1,5 +1,3 @@
-
-
 /*
 Like with cm_initialize.dm, these procs exist to quickly populate classic CM game modes.
 Specifically for processing, announcing completion, and so on. Simply plug in these procs

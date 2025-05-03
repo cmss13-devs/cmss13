@@ -283,12 +283,11 @@
 	attachable_overlays = list("muzzle" = null, "rail" = null, "under" = null, "stock" = null, "mag" = null, "special" = null)
 
 	LAZYSET(item_state_slots, WEAR_BACK, item_state)
-	LAZYSET(item_state_slots, WEAR_JACKET, item_state)
+	LAZYSET(item_state_slots, WEAR_J_STORE, item_state)
 
 	if(current_mag)
 		if(spawn_empty && !(flags_gun_features & GUN_INTERNAL_MAG)) //Internal mags will still spawn, but they won't be filled.
 			current_mag = null
-			update_icon()
 		else
 			current_mag = new current_mag(src, spawn_empty? 1:0)
 			replace_ammo(null, current_mag)
@@ -1904,6 +1903,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 				else
 					to_chat(user, SPAN_WARNING("You are unable to use firearms."))
 				return
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+				to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+				return FALSE
 
 		if(flags_gun_features & GUN_TRIGGER_SAFETY)
 			to_chat(user, SPAN_WARNING("The safety is on!"))
@@ -2412,3 +2414,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	FOR_DVIEW_END
 
 	update_icon()
+
+/obj/item/weapon/gun/animation_spin(speed, loop_amount, clockwise, sections, angular_offset, pixel_fuzz)
+	var/icon/spin_32 = icon(icon, icon_state)
+	var/icon/current_icon = icon(icon, icon_state)
+	spin_32.Crop(1,1,44,32)
+	spin_32.Scale(38, 32)
+	icon = spin_32
+	. = ..()
+	addtimer(VARSET_CALLBACK(src, icon, current_icon), (speed*loop_amount)-0.8)

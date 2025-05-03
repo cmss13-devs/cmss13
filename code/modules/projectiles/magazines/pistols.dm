@@ -121,7 +121,7 @@
 
 /obj/item/ammo_magazine/pistol/es4
 	name = "\improper ES-4 stun magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/rubber/stun
+	default_ammo = /datum/ammo/bullet/pistol/rubber/es4
 	caliber = "9mm"
 	desc = "Holds 19 rounds of specialized Conductive 9mm. Electrostatic propulsion in the ES-4 functions by propelling an cV9mm round, at a proportionally slower velocity to maintain a higher kinetic energy transfer rate. All this turns a penetrative round into a less-than-lethal round."
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/pistols.dmi'
@@ -160,6 +160,11 @@
 	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 	mag_jam_modifier = MAG_JAM_MOD_PISTOL_LOW
+
+/obj/item/ammo_magazine/pistol/vp78/rubber
+	name = "\improper VP78 rubber magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
 
 //-------------------------------------------------------
 //Beretta 92FS, the gun McClane carries around in Die Hard. Very similar to the service pistol, all around.
@@ -388,6 +393,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m10"
 	bonus_overlay = "m10_overlay"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	max_rounds = 40
 	gun_type = /obj/item/weapon/gun/pistol/m10
 

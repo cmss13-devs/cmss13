@@ -127,12 +127,12 @@
 //Cosmetically opens/closes the locker when its storage window is accessed or closed. Only makes sound when not already open/closed.
 /obj/structure/vehicle_locker/on_pocket_open(first_open)
 	if(first_open)
-		icon_state = "locker_open"
+		icon_state = icon_state += "_open"
 		playsound(src.loc, 'sound/handling/hinge_squeak1.ogg', 25, TRUE, 3)
 
 /obj/structure/vehicle_locker/on_pocket_close(watchers)
 	if(!watchers)
-		icon_state = "locker"
+		icon_state = initial(icon_state)
 		playsound(src.loc, "toolbox", 25, TRUE, 3)
 
 /obj/structure/vehicle_locker/tank
@@ -304,3 +304,6 @@
 	update_icon()
 	H.visible_message(SPAN_NOTICE("[H] installs \the [tray] into \the [src]."), SPAN_NOTICE("You install \the [tray] into \the [src]."))
 
+/obj/structure/vehicle_locker/pmc
+	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
+	role_restriction = list(JOB_PMC_LEAD_INVEST, JOB_PMC_LEADER, JOB_PMC_SYNTH, JOB_WY_COMMANDO_LEADER, JOB_PMC_CREWMAN)

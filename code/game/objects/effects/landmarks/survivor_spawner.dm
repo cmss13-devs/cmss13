@@ -42,6 +42,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf //to prevent NV CO from spawning as a CO
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -57,6 +58,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/leader
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -72,6 +74,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/engineer
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -87,6 +90,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/medic
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -376,7 +380,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	icon_state = "surv_wy"
-	equipment = /datum/equipment_preset/survivor/pmc
+	equipment = /datum/equipment_preset/survivor/pmc/standard
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
@@ -446,13 +450,13 @@
 
 //Shivas Panic Room Survivors//
 
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_pmc
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_commando
 	icon_state = "surv_wy"
-	equipment = /datum/equipment_preset/survivor/pmc/shivas
+	equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
 	intro_text = list("<h2>You are the last living security element on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
-	story_text = "You are a mercenary stationed on 'Ifrit' by Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. While you were assigned to protecting the people taking shelter in the Panic Room, the rest of your team was spread out throughout the colony. You have not seen any of them since. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
+	story_text = "You are a commando stationed on 'Ifrit' by Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. While you were assigned to protecting the people taking shelter in the Panic Room, the rest of your team was spread out throughout the colony. You have not seen any of them since. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 

@@ -1,7 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - imageadd: "resprites EAT bar"
-  - imageadd: "resprited many legacy icons"
-  - bugfix: "gibber stages of operation are now displayed correctly"
-  - bugfix: "synth charge station having meter incorrectly displayed, resprited it"

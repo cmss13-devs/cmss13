@@ -18,6 +18,7 @@
 	caliber = "10x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/smgs.dmi'
 	icon_state = "m39_HV"
+	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/smgs.dmi'
 	max_rounds = 48
 	w_class = SIZE_MEDIUM
 	gun_type = /obj/item/weapon/gun/smg/m39

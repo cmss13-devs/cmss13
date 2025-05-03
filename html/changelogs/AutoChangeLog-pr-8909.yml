@@ -1,6 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - ui: "Replace Autodoc interface with a TGUI one."
-  - code_imp: "Moved manual surgery storage from medical record to autodoc."
-  - code_imp: "Renamed one-letter variables in Autodoc code."

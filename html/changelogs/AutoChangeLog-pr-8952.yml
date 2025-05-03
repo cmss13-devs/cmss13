@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Hellhound callers can only be called by people with TRAIT_YAUTJA_TECH"

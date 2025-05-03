@@ -189,6 +189,8 @@
 #define TRAIT_HIVEMIND_INTERFERENCE "t_interference"
 /// If the hive or xeno can use objects.
 #define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
+/// If the hive or xeno can use playing cards.
+#define TRAIT_CARDPLAYING_THUMBS "t_card_thumbs"
 /// If the Hive delays round end (this is overridden for some hives). Does not occur naturally. Must be applied in events.
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
@@ -378,6 +380,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
 		"TRAIT_OPPOSABLE_THUMBS" = TRAIT_OPPOSABLE_THUMBS,
+		"TRAIT_CARDPLAYING_THUMBS" = TRAIT_CARDPLAYING_THUMBS,
 		"TRAIT_INTERFERENCE" = TRAIT_HIVEMIND_INTERFERENCE,
 		"TRAIT_VALKYRIE_ARMOR" = TRAIT_VALKYRIE_ARMORED,
 	),

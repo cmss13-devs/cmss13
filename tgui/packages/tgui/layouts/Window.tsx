@@ -6,10 +6,15 @@
 
 import { classes } from 'common/react';
 import { decodeHtmlEntities, toTitleCase } from 'common/string';
-import { ComponentProps, PropsWithChildren, ReactNode, useEffect } from 'react';
+import {
+  type ComponentProps,
+  type PropsWithChildren,
+  type ReactNode,
+  useEffect,
+} from 'react';
 import { backendSuspendStart, useBackend } from 'tgui/backend';
 import { globalStore } from 'tgui/backend';
-import { Box, Icon } from 'tgui/components';
+import { type Box, Icon } from 'tgui/components';
 import { UI_DISABLED, UI_INTERACTIVE, UI_UPDATE } from 'tgui/constants';
 import { useDebug } from 'tgui/debug';
 import { toggleKitchenSink } from 'tgui/debug/actions';

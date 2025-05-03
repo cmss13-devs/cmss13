@@ -190,7 +190,7 @@
 			continue
 
 		// --- Can understand the speech ---
-		if (!M || R.say_understands(M))
+		if (!M || R.say_understands(M, speaking))
 			// - Not human or wearing a voice mask -
 			if (!M || !ishuman(M) || vmask)
 				heard_masked += R

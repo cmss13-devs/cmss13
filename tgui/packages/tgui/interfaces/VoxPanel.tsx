@@ -1,5 +1,5 @@
 import { KEY_CTRL, KEY_SHIFT } from 'common/keycodes';
-import { ComponentProps, useState } from 'react';
+import { type ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,

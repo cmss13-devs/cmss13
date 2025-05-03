@@ -1,7 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added Civil Insubordination to JAS."
-  - rscadd: "Split Resisting Arrest and Resisting Search laws in JAS."
-  - rscadd: "Added Terrorism and Terror Association laws to JAS."
-  - rscadd: "Added Black Marketeering and Arms Dealing laws to JAS."

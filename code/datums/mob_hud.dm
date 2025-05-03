@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
+	MOB_HUD_SPYCAMS = new /datum/mob_hud/spy_cams(),
 	))
 
 /datum/mob_hud
@@ -230,6 +231,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /datum/mob_hud/faction/observer
 	hud_icons = list(FACTION_HUD, ORDER_HUD, HUNTER_CLAN, HOLOCARD_HUD)
+
+/datum/mob_hud/spy_cams
+	hud_icons = list(SPYCAM_HUD)
 
 ///////// MOB PROCS //////////////////////////////:
 
@@ -461,7 +465,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 		if(stat == DEAD || status_flags & FAKEDEATH)
 			if(revive_enabled)
-				if(!client)
+				if(!client && !(status_flags & FAKESOUL))
 					var/mob/dead/observer/G = get_ghost(FALSE, TRUE)
 					if(!G)
 						holder.icon_state = "huddeaddnr"
@@ -682,9 +686,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder.icon_state = "hudblank"
 	holder.overlays.Cut()
 
-	if(mob_flags & MUTINEER)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer")
-		return
+	if(mob_flags & MUTINY_MUTINEER)
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudmutineer", pixel_y = 12)
+	else if(mob_flags & MUTINY_LOYALIST)
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudloyalist", pixel_y = 12)
+	else if(mob_flags & MUTINY_NONCOMBAT)
+		holder.overlays += image('icons/mob/hud/marine_hud.dmi', src, "hudnoncombat", pixel_y = 9)
 
 	hud_set_new_player()
 	F.modify_hud_holder(holder, src)

@@ -330,6 +330,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	ignore_z = TRUE
 	black_market_value = 100
 	flags_item = ITEM_PREDATOR
+	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR)
 
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, verb = "commands", datum/language/speaking)
 	if(!isyautja(M)) //Nope.
@@ -341,8 +342,8 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 			to_chat(hellhound, "\[Radio\]: [M.real_name] [verb], '<B>[message]</b>'.")
 	..()
 
-/obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
-	name = "\improper Elder Communicator"
+/obj/item/device/radio/headset/yautja/overseer //for council
+	name = "\improper Overseer Communicator"
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
 
 /obj/item/device/encryptionkey/yautja
@@ -1611,13 +1612,3 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	new /obj/item/tool/wirecutters/yautja(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool/yautja(src)
-
-/obj/item/tool/hatchet/yautja
-	name = "duelling hatchet"
-	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
-	icon = 'icons/obj/items/weapons/melee/axes.dmi'
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/axes_righthand.dmi'
-	)
-	icon_state = "yautja"

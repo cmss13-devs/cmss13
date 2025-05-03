@@ -1,11 +1,11 @@
-import { Placement } from '@popperjs/core';
+import type { Placement } from '@popperjs/core';
 import { Component, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Dropdown, Flex, Input, Section } from 'tgui/components';
 import { globalEvents } from 'tgui/events';
 import { Window } from 'tgui/layouts';
 
-import { ButtonProps } from './MfdPanels/types';
+import type { ButtonProps } from './MfdPanels/types';
 
 const KEY_MODS = {
   SHIFT: true,

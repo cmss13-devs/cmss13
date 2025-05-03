@@ -1,7 +1,0 @@
-author: "Aurallianz"
-delete-after: True
-changes:
-  - rscadd: "Gave CE dropship access"
-  - rscadd: "Sling strap for CE's apollo maintenance  handheld"
-  - qol: "Gave CE Squad trackers & LZ tracker"
-  - bugfix: "CE now has nailgun ammo"

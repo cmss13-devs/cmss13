@@ -758,9 +758,9 @@ SUBSYSTEM_DEF(minimaps)
 		locator.update(owner)
 	locator_override = null
 
-/datum/action/minimap/give_to(mob/M)
+/datum/action/minimap/give_to(mob/mob)
 	. = ..()
-	var/atom/movable/tracking = locator_override ? locator_override : M
+	var/atom/movable/tracking = locator_override ? locator_override : mob
 	RegisterSignal(tracking, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 	if(default_overwatch_level)
 		if(!SSminimaps.minimaps_by_z["[default_overwatch_level]"] || !SSminimaps.minimaps_by_z["[default_overwatch_level]"].hud_image)
@@ -773,9 +773,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(has_scroll || scroll_toggle)
 		scroll_toggle = new /atom/movable/screen/stop_scroll(null, map)
 
-/datum/action/minimap/remove_from(mob/M)
+/datum/action/minimap/remove_from(mob/mob)
 	toggle_minimap(FALSE)
-	UnregisterSignal(locator_override || M, COMSIG_MOVABLE_Z_CHANGED)
+	UnregisterSignal(locator_override || mob, COMSIG_MOVABLE_Z_CHANGED)
 	return ..()
 
 /**

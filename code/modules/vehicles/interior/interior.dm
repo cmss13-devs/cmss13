@@ -300,10 +300,10 @@
 				to_chat(A, SPAN_WARNING("Something is blocking the exit!"))
 			return FALSE
 
-	var/mob/living/M
+	var/mob/living/mob
 	if(ismob(A))
-		M = A
-		for(var/datum/action/minimap/user_map in M.actions)
+		mob = A
+		for(var/datum/action/minimap/user_map in mob.actions)
 			user_map.clear_locator_override()
 	A.forceMove(get_turf(exit_turf))
 	update_passenger_count()

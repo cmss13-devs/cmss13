@@ -815,7 +815,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
 
-/obj/item/clothing/head/helmet/marine/tech
+/obj/item/clothing/head/helmet/marine/tech/unisc
 	name = "\improper M10 pattern technician helmet"
 	desc = "PLACEHOLDER I LOVE BEES."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
@@ -894,7 +894,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical/advanced
 
-/obj/item/clothing/head/helmet/marine/medic
+/obj/item/clothing/head/helmet/marine/medic/unisc
 	name = "\improper M10 pattern corpsman helmet"
 	desc = "PLACEHOLDER I LOVE BEES."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'

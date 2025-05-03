@@ -1,0 +1,176 @@
+/obj/effect/neomorph
+	icon = 'icons/mob/neo/egg_sacs.dmi'
+	density = FALSE
+	anchored = TRUE
+
+/obj/effect/neomorph/spore_sac
+	name = "spore sacs"
+	desc = "They look like clusters of mushroom spores."
+	icon_state = "egg_sacs"
+	layer = LYING_BETWEEN_MOB_LAYER
+	health = 80
+	plane = GAME_PLANE
+	var/list/spore_triggers = list()
+	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
+	var/on_fire = FALSE
+
+/obj/effect/neomorph/spore_sac/Initialize(mapload, hive)
+	. = ..()
+	create_spore_triggers()
+
+/obj/effect/neomorph/spore_sac/proc/Grow()
+	if(status == EGG_GROWING)
+		icon_state = "Egg"
+		status = EGG_GROWN
+		update_icon()
+		deploy_spore_triggers()
+
+/obj/effect/neomorph/spore_sac/proc/create_spore_triggers()
+	for(var/i in 1 to 8)
+		spore_triggers += new /obj/effect/spore_trigger(src, src)
+
+/obj/effect/neomorph/spore_sac/proc/deploy_spore_triggers()
+	var/i = 1
+	var/x_coords = list(-1,-1,-1,0,0,1,1,1)
+	var/y_coords = list(1,0,-1,1,-1,1,0,-1)
+	var/turf/target_turf
+	for(var/trigger in spore_triggers)
+		var/obj/effect/spore_trigger/ET = trigger
+		target_turf = locate(x+x_coords[i],y+y_coords[i], z)
+		if(target_turf)
+			ET.forceMove(target_turf)
+			i++
+
+/obj/effect/neomorph/spore_sac/proc/hide_spore_triggers()
+	for(var/trigger in spore_triggers)
+		var/obj/effect/spore_trigger/ET = trigger
+		ET.moveToNullspace()
+
+/obj/effect/neomorph/spore_sac/proc/Burst(kill = TRUE)
+	if(kill && status != EGG_DESTROYED)
+		hide_spore_triggers()
+		status = EGG_DESTROYED
+		icon_state = "Egg Exploded"
+		flick("Egg Exploding", src)
+		playsound(loc, "sound/effects/alien_egg_burst.ogg", 25)
+	else if(status == EGG_GROWN || status == EGG_GROWING)
+		status = EGG_BURSTING
+		hide_spore_triggers()
+		icon_state = "Egg Opened"
+		flick("Egg Opening", src)
+		playsound(loc, "sound/effects/alien_egg_move.ogg", 25)
+		addtimer(CALLBACK(src, PROC_REF(release_cloud)), 1 SECONDS)
+
+/obj/effect/neomorph/spore_sac/proc/release_cloud()
+	if(!loc || status == EGG_DESTROYED)
+		return
+
+	status = EGG_BURST
+	new /obj/effect/neomorph/spore_cloud(loc)
+
+/obj/effect/neomorph/spore_sac/bullet_act(obj/projectile/P)
+	..()
+	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+	if(ammo_flags & (AMMO_XENO))
+		return
+	health -= P.damage
+	healthcheck()
+	P.ammo.on_hit_obj(src,P)
+	return TRUE
+
+/obj/effect/neomorph/spore_sac/update_icon()
+	overlays.Cut()
+
+	if(on_fire)
+		overlays += "alienegg_fire"
+
+/obj/effect/neomorph/spore_sac/fire_act()
+	on_fire = TRUE
+	if(on_fire)
+		update_icon()
+		QDEL_IN(src, rand(125, 200))
+
+/obj/effect/neomorph/spore_sac/proc/healthcheck()
+	if(health <= 0)
+		Burst(TRUE)
+
+/obj/effect/neomorph/spore_sac/Crossed(atom/movable/crosser)
+	HasProximity(crosser)
+
+/obj/effect/neomorph/spore_sac/HasProximity(atom/movable/crosser)
+	if(status == EGG_GROWN)
+		if(!can_hug(crosser, XENO_HIVE_NEOMORPH) || isyautja(crosser) || issynth(crosser)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
+			return
+		Burst(FALSE, TRUE, null)
+
+//The invisible traps around the egg to tell it there's a mob right next to it.
+/obj/effect/spore_trigger
+	name = "spore trigger"
+	icon = 'icons/effects/effects.dmi'
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_MAXIMUM
+	var/obj/effect/neomorph/spore_sac/linked_sac
+
+/obj/effect/spore_trigger/New(loc, obj/effect/neomorph/spore_sac/source_sac)
+	..()
+	linked_sac = source_sac
+
+/obj/effect/spore_trigger/Crossed(atom/movable/crosser)
+	if(!linked_sac) //something went very wrong.
+		qdel(src)
+	else if(linked_sac && (get_dist(src, linked_sac) != 1 || !isturf(linked_sac.loc))) //something went wrong
+		forceMove(linked_sac)
+	else if(iscarbon(crosser))
+		var/mob/living/carbon/C = crosser
+		if(linked_sac)
+			linked_sac.HasProximity(C)
+
+
+/obj/effect/neomorph/spore_cloud
+	name = "spore cloud"
+	icon_state = "motes_air"
+	var/inhaling = FALSE
+
+/obj/effect/neomorph/spore_cloud/Initialize(mapload, ...)
+	. = ..()
+	var/airborne_duration = rand(30 SECONDS, 60 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), airborne_duration)//Spores only exist for a minute maximum
+
+/obj/effect/neomorph/spore_cloud/Crossed(atom/movable/crosser)
+	if(!ishuman_strict(crosser))
+		return
+	var/mob/living/carbon/human/human_passer = crosser
+	if(!can_hug(human_passer, XENO_HIVE_NEOMORPH))
+		return
+	if(!attempt_inhale(human_passer))
+		inhaling = FALSE
+	else
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), 1 SECONDS)
+
+/obj/effect/neomorph/spore_cloud/proc/attempt_inhale(mob/living/carbon/human/human_passer)
+	if(inhaling) // Can't be inhaled by more than one person.
+		return FALSE
+	inhaling = TRUE
+	if(prob(80) && (human_passer.wear_mask && (human_passer.wear_mask.flags_inventory & BLOCKGASEFFECT)))
+		return FALSE
+	if(prob(80) && (human_passer.head && (human_passer.head.flags_inventory & BLOCKGASEFFECT)))
+		return FALSE
+
+	var/embryos = 0
+	for(var/obj/item/alien_embryo/embryo in human_passer) // already got one, stops doubling up
+		if(embryo.hivenumber == XENO_HIVE_NEOMORPH)
+			embryos++
+		else
+			qdel(embryo)
+	if(!embryos)
+		icon_state = "motes_inject"
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo/bloodburster(human_passer)
+		GLOB.player_embryo_list += embryo
+
+		if(human_passer.species)
+			human_passer.species.larva_impregnated(embryo)
+
+		human_passer.visible_message(SPAN_DANGER("[human_passer] inhales the [src] as they walk through it!"))
+		return TRUE
+	return FALSE

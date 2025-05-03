@@ -237,3 +237,8 @@
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
+
+/obj/item/alien_embryo/bloodburster
+	icon = 'icons/mob/neo/bloodburster.dmi'
+	flags_embryo = FLAG_EMBRYO_NEOMORPH
+	hivenumber = XENO_HIVE_NEOMORPH

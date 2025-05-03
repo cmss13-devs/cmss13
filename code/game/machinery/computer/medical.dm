@@ -23,8 +23,8 @@
 
 	COOLDOWN_DECLARE(record_printing_cooldown)
 
-/obj/structure/machinery/computer/med_data/attack_remote(mob/user as mob)
-	return src.attack_hand(user)
+/obj/structure/machinery/computer/med_data/attack_remote(mob/user)
+	return attack_hand(user)
 
 /obj/structure/machinery/computer/med_data/attack_hand(mob/user)
 	if(..() || inoperable())
@@ -39,7 +39,7 @@
 		bio_link_target_record_id = FALSE
 		return
 
-	if(!allowed(usr))
+	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
@@ -171,7 +171,7 @@
 			target = target_ref.resolve()
 			if(!target)	// if the target has been gibbed, or no longer physically exists
 				return
-			id = target.wear_id
+			id = target.get_idcard()
 			// checks if record target is in the chain of command, and needs their record protected
 			if(target.job in CHAIN_OF_COMMAND_ROLES)
 				record_classified = TRUE
@@ -206,7 +206,7 @@
 	.["database_access_level"] = access_level
 
 	var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
-	var/photo_data = icon2html(photo_icon, user.client, sourceonly=TRUE)
+	var/photo_data = icon2html(photo_icon, user.client, sourceonly = TRUE)
 
 	// Attach to the UI data
 	.["fallback_image"] = photo_data
@@ -226,7 +226,7 @@
 	switch(action)
 		if("log_in")
 			operator = user
-			var/obj/item/card/id/id = user.wear_id
+			var/obj/item/card/id/id = user.get_idcard()
 			access_level = get_database_access_level(id)
 			return
 		if("log_out")
@@ -326,10 +326,9 @@
 			var/comment_id = length(medical_record.fields["comments"] || list()) + 1
 			var/created_at = text("[]  []  []", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 
-			var/mob/living/carbon/human/U = usr
 			var/new_comment = list(
 				"entry" = strip_html(trim(comment)),
-				"created_by" = list("name" = U.get_authentification_name(), "rank" = U.get_assignment()),
+				"created_by" = list("name" = user.get_authentification_name(), "rank" = user.get_assignment()),
 				"created_at" = created_at,
 				"deleted_by" = null,
 				"deleted_at" = null
@@ -368,8 +367,7 @@
 				to_chat(user, SPAN_WARNING("This comment is already deleted."))
 				return
 
-			var/mob/living/carbon/human/human = user
-			comment["deleted_by"] = "[human.get_authentification_name()] ([human.get_assignment()])"
+			comment["deleted_by"] = "[user.get_authentification_name()] ([user.get_assignment()])"
 			comment["deleted_at"] = text("[]  []  []", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), GLOB.game_year)
 
 			medical_record.fields["comments"][comment_key] = comment
@@ -568,8 +566,6 @@
 	for (var/datum/data/record/record in records)
 		if (record.fields["id"] == id)
 			return record
-
-	return
 
 /obj/structure/machinery/computer/med_data/proc/get_photo(mob/user)
 	if(istype(user.get_active_hand(), /obj/item/photo))

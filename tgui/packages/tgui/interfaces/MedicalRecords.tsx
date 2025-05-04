@@ -756,9 +756,9 @@ export const MedicalRecords = () => {
           <Table.Cell
             bold
             className="MedicalRecords_CellStyle MedicalRecords_CursorPointer"
-            onClick={() => handleSort('general_m_stat')}
+            onClick={() => handleSort('general_p_stat')}
           >
-            Status {getSortIndicator('general_m_stat')}
+            Status {getSortIndicator('general_p_stat')}
           </Table.Cell>
         </Table.Row>
         {filteredRecords.map((record) => (
@@ -779,7 +779,7 @@ export const MedicalRecords = () => {
               {record.general_job}
             </Table.Cell>
             <Table.Cell className="MedicalRecords_CellStyle">
-              {record.general_m_stat}
+              {record.general_p_stat}
             </Table.Cell>
           </Table.Row>
         ))}

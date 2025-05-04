@@ -20,6 +20,8 @@
 	/// time left for someone to authenticate a biometric scan, before it aborts
 	var/biometric_scan_timer
 	var/access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
+	/// the id number of the lastest viewed record. used to manage ui data
+	var/currently_selected_record_id
 
 	COOLDOWN_DECLARE(record_printing_cooldown)
 
@@ -108,6 +110,10 @@
 		medical_record.fields["ref"] = WEAKREF(target)
 		GLOB.data_core.medical += medical_record
 
+		currently_selected_record_id = general_record_id
+		update_static_data_for_all_viewers()
+
+
 /obj/structure/machinery/computer/med_data/proc/print_medical_record(record_id, mob/living/carbon/human/user)
 
 	if(!record_id)
@@ -147,7 +153,56 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "MedicalRecords", "Medical Records")
+		ui.autoupdate = FALSE
 		ui.open()
+
+/obj/structure/machinery/computer/med_data/proc/gather_record_data(mob/user, datum/data/record/general)
+
+	if(!general)
+		return
+
+	var/id_number = general.fields["id"]
+	var/datum/data/record/medical = find_record("medical", id_number)
+
+	var/datum/weakref/target_ref = general.fields["ref"]
+	var/mob/living/carbon/human/target
+	var/obj/item/card/id/id
+	var/record_classified = FALSE
+
+	if(target_ref)
+		target = target_ref.resolve()
+		if(!target)	// if the target has been gibbed, or no longer physically exists
+			return
+		id = target.get_idcard()
+		// checks if record target is in the chain of command, and needs their record protected
+		if(target.job in CHAIN_OF_COMMAND_ROLES)
+			record_classified = TRUE
+
+	var/paygrade = id ? id.paygrade : "None"
+
+	var/list/record = list(
+		"id" = id_number,
+		"general_name" = general.fields["name"],
+		"general_job" = general.fields["rank"],
+		"general_rank" = paygrade,
+		"general_age" = general.fields["age"],
+		"general_sex" = general.fields["sex"],
+		"general_m_stat" = medical ? general.fields["m_stat"] : null,
+		"general_p_stat" = medical ? general.fields["p_stat"] : null,
+		"medical_blood_type" = medical ? medical.fields["blood_type"] : null,
+		"medical_major_disability" = medical ? medical.fields["major_disability"] : null,
+		"medical_major_disability_details" = medical ? medical.fields["major_disability_details"] : null,
+		"medical_minor_disability" = medical ? medical.fields["minor_disability"] : null,
+		"medical_minor_disability_details" = medical ? medical.fields["minor_disability_details"] : null,
+		"medical_allergies" = medical ? medical.fields["allergies"] : null,
+		"medical_allergies_details" = medical ? medical.fields["allergies_details"] : null,
+		"medical_diseases" = medical ? medical.fields["diseases"] : null,
+		"medical_diseases_details" = medical ? medical.fields["diseases_details"] : null,
+		"medical_comments" = medical ? medical.fields["comments"] : null,
+		"record_classified" = record_classified
+	)
+
+	return record
 
 /obj/structure/machinery/computer/med_data/ui_data(mob/user)
 	. = ..()
@@ -162,46 +217,23 @@
 		var/id_number = general.fields["id"]
 		var/datum/data/record/medical = medical_record[id_number]
 
-		var/datum/weakref/target_ref = general.fields["ref"]
-		var/mob/living/carbon/human/target
-		var/obj/item/card/id/id
-		var/record_classified = FALSE
-
-		if(target_ref)
-			target = target_ref.resolve()
-			if(!target)	// if the target has been gibbed, or no longer physically exists
-				return
-			id = target.get_idcard()
-			// checks if record target is in the chain of command, and needs their record protected
-			if(target.job in CHAIN_OF_COMMAND_ROLES)
-				record_classified = TRUE
-
-		var/paygrade = id ? id.paygrade : "None"
-
-		var/list/record = list(
-			"id" = id_number,
-			"general_name" = general.fields["name"],
-			"general_job" = general.fields["rank"],
-			"general_rank" = paygrade,
-			"general_age" = general.fields["age"],
-			"general_sex" = general.fields["sex"],
-			"general_m_stat" = medical ? general.fields["m_stat"] : null,
-			"general_p_stat" = medical ? general.fields["p_stat"] : null,
-			"medical_blood_type" = medical ? medical.fields["blood_type"] : null,
-			"medical_major_disability" = medical ? medical.fields["major_disability"] : null,
-			"medical_major_disability_details" = medical ? medical.fields["major_disability_details"] : null,
-			"medical_minor_disability" = medical ? medical.fields["minor_disability"] : null,
-			"medical_minor_disability_details" = medical ? medical.fields["minor_disability_details"] : null,
-			"medical_allergies" = medical ? medical.fields["allergies"] : null,
-			"medical_allergies_details" = medical ? medical.fields["allergies_details"] : null,
-			"medical_diseases" = medical ? medical.fields["diseases"] : null,
-			"medical_diseases_details" = medical ? medical.fields["diseases_details"] : null,
-			"medical_comments" = medical ? medical.fields["comments"] : null,
-			"record_classified" = record_classified
-		)
-		records += list(record)
+		// checks if the record is being viewed, and requires more data
+		if((id_number == currently_selected_record_id) && currently_selected_record_id)
+			records |= list(gather_record_data(user, general))
+		else
+			var/list/record = list(
+				"id" = id_number,
+				"general_name" = general.fields["name"],
+				"general_job" = general.fields["rank"],
+				"general_p_stat" = medical ? general.fields["p_stat"] : null
+			)
+			records |= list(record)
 
 	.["records"] = records
+
+/obj/structure/machinery/computer/med_data/ui_static_data(mob/user)
+	. = ..()
+
 	.["operator"] = operator
 	.["database_access_level"] = access_level
 
@@ -228,17 +260,19 @@
 			operator = user
 			var/obj/item/card/id/id = user.get_idcard()
 			access_level = get_database_access_level(id)
+			update_static_data(user, ui)
 			return
 		if("log_out")
 			operator = null
 			access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
+			update_static_data(user, ui)
 			return
 		//* Actions for managing records
 		if("select_record")
 			var/id = params["id"]
 
 			if(!id)
-				tgui_alert(user,"Invalid record ID.")
+				tgui_alert(user, "Invalid record ID.")
 				return
 
 			// Find the corresponding general record
@@ -248,8 +282,11 @@
 				tgui_alert(user,"Record not found.")
 				return
 
+			currently_selected_record_id = id
+			tgui_interact(user, ui)
+
 			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
-			var/photo_data = icon2html(photo_icon, user.client, sourceonly=TRUE)
+			var/photo_data = icon2html(photo_icon, user.client, sourceonly = TRUE)
 
 			var/photo_front = general_record.fields["photo_front"] ? icon2html(general_record.fields["photo_front"], user.client, sourceonly = TRUE) : photo_data
 			var/photo_side = general_record.fields["photo_side"] ? icon2html(general_record.fields["photo_side"], user.client, sourceonly = TRUE) : photo_data
@@ -258,8 +295,6 @@
 				"photo_front" = photo_front,
 				"photo_side" = photo_side
 			))
-
-			. = TRUE
 
 		if("update_field")
 			var/id = params["id"]
@@ -307,6 +342,8 @@
 			var/name = general_record.fields["name"]
 			message_admins("[key_name(user)] changed the record of [name]. Field [original_field] value changed to [value]")
 
+			tgui_interact(user, ui)
+
 			. = TRUE
 		if ("add_comment")
 			var/id = params["id"]
@@ -342,6 +379,8 @@
 			to_chat(user, SPAN_NOTICE("Comment added successfully."))
 			msg_admin_niche("[key_name_admin(user)] added medical comment.")
 
+			tgui_interact(user, ui)
+
 			return
 		if ("delete_comment")
 			var/id = params["id"]
@@ -375,6 +414,8 @@
 			to_chat(user, SPAN_NOTICE("Comment deleted successfully."))
 			msg_admin_niche("[key_name_admin(user)] deleted medical comment.")
 
+			tgui_interact(user, ui)
+
 		//* Records maintenance actions
 		if ("new_medical_record")
 			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
@@ -401,6 +442,9 @@
 			CreateGeneralRecord()
 			to_chat(user, SPAN_NOTICE("You successfully created new general record"))
 			msg_admin_niche("[key_name_admin(user)] created new general record.")
+
+			tgui_interact(user, ui)
+
 			return
 
 		if ("delete_medical_record")
@@ -421,6 +465,8 @@
 				GLOB.data_core.medical -= medical_record
 				msg_admin_niche("[key_name_admin(user)] deleted the medical record of [record_name].")
 				qdel(medical_record)
+
+				tgui_interact(user, ui)
 
 			return
 
@@ -459,6 +505,7 @@
 			ui.send_update(list(
 				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly = TRUE),
 			))
+			tgui_interact(user, ui)
 			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo"))
 			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
 			return

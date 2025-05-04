@@ -191,7 +191,7 @@
 		/obj/item/stack/sheet/metal,
 		/obj/item/device/radio,
 		/obj/item/attachable/bayonet,
-		/obj/item/device/defibrillator/synthetic
+		/obj/item/device/defibrillator/synthetic,
 	)
 
 /obj/item/storage/pouch/survival/synth/full/fill_preset_inventory()

@@ -60,6 +60,11 @@
 	new /obj/effect/neomorph/spore_cloud(loc)
 	spore_status = SPORES_DEPLOYED
 
+/obj/effect/neomorph/spore_sac/get_examine_text(mob/user)
+	. = ..()
+	if(spore_status == SPORES_DEPLOYED)
+		. += "It has released it's spores!"
+
 /obj/effect/neomorph/spore_sac/bullet_act(obj/projectile/P)
 	..()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags

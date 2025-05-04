@@ -785,3 +785,8 @@
 #define LARVA_STATE_BLOODY 0
 #define LARVA_STATE_NORMAL 1
 #define LARVA_STATE_MATURE 2
+
+// Neomorph spore states
+#define SPORES_WAITING 0
+#define SPORES_DEPLOYING 1
+#define SPORES_DEPLOYED 2

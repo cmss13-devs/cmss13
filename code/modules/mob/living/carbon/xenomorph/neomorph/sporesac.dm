@@ -11,19 +11,13 @@
 	health = 80
 	plane = GAME_PLANE
 	var/list/spore_triggers = list()
-	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
+	var/spore_status = SPORES_WAITING
 	var/on_fire = FALSE
 
 /obj/effect/neomorph/spore_sac/Initialize(mapload, hive)
 	. = ..()
 	create_spore_triggers()
-
-/obj/effect/neomorph/spore_sac/proc/Grow()
-	if(status == EGG_GROWING)
-		icon_state = "Egg"
-		status = EGG_GROWN
-		update_icon()
-		deploy_spore_triggers()
+	addtimer(CALLBACK(src, PROC_REF(deploy_spore_triggers)), 10 SECONDS)
 
 /obj/effect/neomorph/spore_sac/proc/create_spore_triggers()
 	for(var/i in 1 to 8)
@@ -47,26 +41,24 @@
 		ET.moveToNullspace()
 
 /obj/effect/neomorph/spore_sac/proc/Burst(kill = TRUE)
-	if(kill && status != EGG_DESTROYED)
-		hide_spore_triggers()
-		status = EGG_DESTROYED
-		icon_state = "Egg Exploded"
-		flick("Egg Exploding", src)
-		playsound(loc, "sound/effects/alien_egg_burst.ogg", 25)
-	else if(status == EGG_GROWN || status == EGG_GROWING)
-		status = EGG_BURSTING
-		hide_spore_triggers()
-		icon_state = "Egg Opened"
-		flick("Egg Opening", src)
-		playsound(loc, "sound/effects/alien_egg_move.ogg", 25)
-		addtimer(CALLBACK(src, PROC_REF(release_cloud)), 1 SECONDS)
-
-/obj/effect/neomorph/spore_sac/proc/release_cloud()
-	if(!loc || status == EGG_DESTROYED)
+	hide_spore_triggers()
+	if(kill)
+		qdel(src)
+		return
+	if(spore_status)
 		return
 
-	status = EGG_BURST
+	spore_status = SPORES_DEPLOYING
+	addtimer(CALLBACK(src, PROC_REF(release_cloud)), 1 SECONDS)
+
+/obj/effect/neomorph/spore_sac/proc/release_cloud()
+	if(!loc || spore_status == SPORES_DEPLOYED)
+		return
+
+	icon_state = "egg_sacs_open"
+	src.visible_message(SPAN_WARNING("[src] releases a cloud of spores into the air!"))
 	new /obj/effect/neomorph/spore_cloud(loc)
+	spore_status = SPORES_DEPLOYED
 
 /obj/effect/neomorph/spore_sac/bullet_act(obj/projectile/P)
 	..()
@@ -98,10 +90,10 @@
 	HasProximity(crosser)
 
 /obj/effect/neomorph/spore_sac/HasProximity(atom/movable/crosser)
-	if(status == EGG_GROWN)
+	if(spore_status == SPORES_WAITING)
 		if(!can_hug(crosser, XENO_HIVE_NEOMORPH) || isyautja(crosser) || issynth(crosser)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
-		Burst(FALSE, TRUE, null)
+		Burst(FALSE)
 
 //The invisible traps around the egg to tell it there's a mob right next to it.
 /obj/effect/spore_trigger
@@ -171,6 +163,6 @@
 		if(human_passer.species)
 			human_passer.species.larva_impregnated(embryo)
 
-		human_passer.visible_message(SPAN_DANGER("[human_passer] inhales the [src] as they walk through it!"))
+		human_passer.visible_message(SPAN_DANGER("[human_passer] inhales [src] as they walk through it!"))
 		return TRUE
 	return FALSE

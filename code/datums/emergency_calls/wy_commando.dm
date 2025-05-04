@@ -3,7 +3,7 @@
 /datum/emergency_call/wy_commando
 	name = "Weyland-Yutani Commando (Squad)"
 	mob_max = 6
-	probability = 5
+	probability = 0
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc

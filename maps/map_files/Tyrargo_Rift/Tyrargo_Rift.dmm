@@ -42136,6 +42136,9 @@
 "bRH" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/east_trench)
+"bRI" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/outdoors/colony_exterior/west)
 "bRJ" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1
@@ -89650,7 +89653,7 @@
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/bar/ground)
 "mKL" = (
 /obj/item/ammo_casing/bullet,
@@ -162013,15 +162016,15 @@ apW
 cvX
 apU
 apP
+cVE
+cVE
+cVE
 csX
 csX
 csX
-csX
-csX
-csX
-csX
-csX
-csX
+cVE
+cVE
+cVE
 csW
 bKT
 apm
@@ -162033,21 +162036,21 @@ aoO
 aoG
 aox
 cHL
+bRI
+bRI
+bRI
 cHL
 cHL
 cHL
+bRI
+bRI
+bRI
 cHL
 cHL
 cHL
-cHL
-cHL
-cHL
-cHL
-cHL
-cHL
-cHL
-cHL
-cHL
+bRI
+bRI
+bRI
 cHL
 bOM
 bPx
@@ -164016,7 +164019,7 @@ cta
 cta
 cvf
 cvg
-csK
+crH
 csK
 csM
 csM
@@ -164197,8 +164200,8 @@ cwl
 ctb
 cvF
 cvg
-csK
-csK
+crH
+crH
 fDK
 bqI
 bqA
@@ -164378,8 +164381,8 @@ aqp
 aqf
 cta
 cvG
-csK
-csK
+crH
+crH
 qsu
 bqM
 ddp
@@ -168200,8 +168203,8 @@ cta
 cta
 cta
 cvH
-csK
-csK
+crH
+crH
 qsu
 bqw
 ddu
@@ -168384,7 +168387,7 @@ cvJ
 cvI
 cvx
 mKx
-csK
+crH
 bqD
 bqD
 doe
@@ -168566,7 +168569,7 @@ cvJ
 cvJ
 cqH
 cvl
-csK
+crH
 csK
 csM
 csM

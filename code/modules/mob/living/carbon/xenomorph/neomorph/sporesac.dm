@@ -164,5 +164,12 @@
 			human_passer.species.larva_impregnated(embryo)
 
 		human_passer.visible_message(SPAN_DANGER("[human_passer] inhales [src] as they walk through it!"))
+		var/area/breath_area = get_area(src)
+		if(breath_area)
+			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with neomorph spores at [breath_area]!", source = human_passer, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been infected with neomorph spores at \the <b>[breath_area]</b>"))
+		else
+			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with neomorph spores!", source = human_passer, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human]</b> has been infected with neomorph spores"))
 		return TRUE
 	return FALSE

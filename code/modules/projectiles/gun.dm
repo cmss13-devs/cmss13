@@ -288,7 +288,6 @@
 	if(current_mag)
 		if(spawn_empty && !(flags_gun_features & GUN_INTERNAL_MAG)) //Internal mags will still spawn, but they won't be filled.
 			current_mag = null
-			update_icon()
 		else
 			current_mag = new current_mag(src, spawn_empty? 1:0)
 			replace_ammo(null, current_mag)
@@ -2415,3 +2414,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	FOR_DVIEW_END
 
 	update_icon()
+
+/obj/item/weapon/gun/animation_spin(speed, loop_amount, clockwise, sections, angular_offset, pixel_fuzz)
+	var/icon/spin_32 = icon(icon, icon_state)
+	var/icon/current_icon = icon(icon, icon_state)
+	spin_32.Crop(1,1,44,32)
+	spin_32.Scale(38, 32)
+	icon = spin_32
+	. = ..()
+	addtimer(VARSET_CALLBACK(src, icon, current_icon), (speed*loop_amount)-0.8)

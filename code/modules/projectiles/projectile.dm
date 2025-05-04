@@ -1271,7 +1271,8 @@
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
-				msg_admin_ff(ff_msg, ff_living)
+				if(!(((mob_flags & MUTINY_MUTINEER) && (firingMob.mob_flags & MUTINY_LOYALIST)) || ((mob_flags & MUTINY_LOYALIST) && (firingMob.mob_flags & MUTINY_MUTINEER))))
+					msg_admin_ff(ff_msg, ff_living)
 				if(ishuman(firingMob) && P.weapon_cause_data)
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(P.weapon_cause_data.cause_name)

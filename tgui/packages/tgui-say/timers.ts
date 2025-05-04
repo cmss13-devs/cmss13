@@ -1,6 +1,6 @@
 import { debounce, throttle } from 'common/timer';
 
-import { Channel } from './ChannelIterator';
+import type { Channel } from './ChannelIterator';
 
 const SECONDS = 1000;
 

@@ -151,6 +151,10 @@
 	penetration = ARMOR_PENETRATION_TIER_4
 	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
+/datum/ammo/bullet/revolver/mateba/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
@@ -165,10 +169,6 @@
 	damage = 45
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
 	bullet_duramage = BULLET_DURABILITY_DAMAGE_FAIR
-
-/datum/ammo/bullet/revolver/mateba/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)

@@ -172,7 +172,7 @@
 	if(direction == NORTH)
 		hiding_human.add_filter("cutout", 1, alpha_mask_filter(icon = icon('icons/effects/effects.dmi', "cutout")))
 	ADD_TRAIT(hiding_human, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
-	RegisterSignal(hiding_human, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_HUMAN_ANIMATING), PROC_REF(unhide_human), hiding_human)
+	RegisterSignal(hiding_human, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_MOB_ANIMATING), PROC_REF(unhide_human), hiding_human)
 	..()
 
 /turf/closed/wall/proc/unhide_human(mob/living/carbon/human/to_unhide)
@@ -187,8 +187,7 @@
 	to_unhide.apply_effect(1, SUPERSLOW)
 	to_unhide.apply_effect(2, SLOW)
 	hiding_humans -= to_unhide
-	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED))
-	UnregisterSignal(to_unhide, list(COMSIG_HUMAN_ANIMATING))
+	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_MOB_ANIMATING))
 	to_chat(to_unhide, SPAN_WARNING("You couldn't sit still so you stop leaning on the wall!"))
 	to_unhide.remove_filter("cutout")
 

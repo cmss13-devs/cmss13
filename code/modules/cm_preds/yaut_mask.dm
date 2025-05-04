@@ -121,7 +121,10 @@
 	update_zoom_action(src, usr)
 	if(zoom)
 		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(update_zoom_action))
+		playsound(src, 'sound/effects/pred_zoom_on.ogg', 50, FALSE, 2)
 		return
+	else
+		playsound(src, 'sound/effects/pred_zoom_off.ogg', 50, FALSE, 2)
 
 /obj/item/clothing/mask/gas/yautja/proc/update_zoom_action(source, mob/living/user)
 	UnregisterSignal(src, COMSIG_ITEM_UNZOOM)

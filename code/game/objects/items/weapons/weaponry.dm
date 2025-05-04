@@ -92,12 +92,6 @@
 	force = MELEE_FORCE_STRONG
 	w_class = SIZE_MEDIUM
 
-/obj/item/weapon/baseballbat/metal/yautja
-	name = "duelling club"
-	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
-	icon_state = "hunter_club"
-	item_state = "hunter_club"
-
 /obj/item/weapon/butterfly
 	name = "butterfly knife"
 	desc = "A basic metal blade concealed in a lightweight plasteel grip. Small enough when folded to fit in a pocket."

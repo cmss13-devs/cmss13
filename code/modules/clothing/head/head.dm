@@ -97,7 +97,7 @@
 
 /obj/item/clothing/head/beret/cm/unisc
 	name = "\improper UNISC beret"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "A white hat typically worn by the UNISC and its serving members - be it the UPP, the UA or the 3WE. Let's hope nobody uses the UNISC insignia as a crosshair and blows your head off."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
 	icon_state = "beret_unisc"
 	item_state = "beret_unisc"

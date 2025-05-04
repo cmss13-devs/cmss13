@@ -24,7 +24,7 @@
 
 /obj/item/clothing/suit/storage/marine/smartgunner/unisc
 	name = "\improper M56 combat harness"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "A protective vest designed to be worn with the M56 Smartgun System. This variant is painted in UNISC colors."
 	icon_state = "light_armor_smartgunner"
 	item_state = "light_armor_smartgunner"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'

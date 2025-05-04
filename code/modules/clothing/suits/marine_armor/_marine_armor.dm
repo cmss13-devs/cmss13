@@ -295,7 +295,7 @@
 
 /obj/item/clothing/suit/storage/marine/medium/rto/unisc
 	name = "\improper M4 pattern marine armor"
-	desc = "PLACEHOLDER I LOVE BEES"
+	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches. This variant is painted in UNISC colors."
 	icon_state = "medium_armor_m4"
 	item_state = "medium_armor_m4"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
@@ -401,7 +401,7 @@
 
 /obj/item/clothing/suit/storage/marine/MP/CO/unisc
 	name = "\improper M3 pattern commanding officer armor"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "A specialized and expensive variant of M3 medium armor. It has special straps to support the usage of the smartgun system. This one is painted in UNISC colors."
 	icon_state = "medium_armor_co"
 	item_state = "medium_armor_co"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
@@ -439,7 +439,7 @@
 
 /obj/item/clothing/suit/storage/marine/medium/leader/unisc
 	name = "\improper B12 pattern marine armor"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "An upgraded variant of the M3 pattern armor, weighs the same as the medium variant. It offers improved protection and a robust suitlight. This variant is painted in UNISC colors."
 	icon_state = "medium_armor_b12"
 	item_state = "medium_armor_b12"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
@@ -577,7 +577,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/vest/unisc
 	name = "\improper M3-VL marine armor"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "A ballistic vest that was upgraded to fit the USCM standard. A robust vest that comes with a suitlight. This variant is painted in UNISC colors."
 	icon_state = "very_light_armor"
 	item_state = "very_light_armor"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'
@@ -620,7 +620,7 @@
 
 /obj/item/clothing/suit/storage/marine/light/synvest/unisc
 	name = "\improper M3A1 Synthetic Utility Vest"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "A vest designed for use by the Synthetics in service, it's missing any form of proetction but offers a long range suit lamp and storage. This variant is painted in UNISC colors."
 	icon_state = "very_light_armor_synth"
 	item_state = "very_light_armor_synth"
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UNISC.dmi'

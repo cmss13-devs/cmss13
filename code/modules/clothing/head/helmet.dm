@@ -818,7 +818,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/tech/unisc
 	name = "\improper M10 pattern technician helmet"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "A modified M10 marine helmet from ComTechs. Features a toggleable welding screen for eye protection. This variant is painted in the colors of the UNISC."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
 	icon_state = "tech_helmet"
 	item_state = "tech_helmet"
@@ -897,7 +897,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/medic/unisc
 	name = "\improper M10 pattern corpsman helmet"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "An M10 marine helmet version worn by UNISC field medics. It's painted in UNISC colors and dons a bright red cross."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
 	icon_state = "med_helmet"
 	item_state = "med_helmet"
@@ -956,7 +956,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/leader/unisc
 	name = "\improper M11 pattern helmet"
-	desc = "PLACEHOLDER I LOVE BEES."
+	desc = "A reinforced variant of the M10 pattern helmet. It's painted in UNISC colors."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UNISC.dmi'
 	icon_state = "sl_helmet"
 	item_state = "sl_helmet"

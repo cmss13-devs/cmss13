@@ -591,7 +591,7 @@ DEFINES in setup.dm, referenced here.
 			return TRUE
 
 		if(active_hand.last_equipped_slot)
-			if(equip_to_slot_if_possible(active_hand, active_hand.last_equipped_slot, FALSE, FALSE, FALSE))
+			if(equip_to_slot_if_possible(active_hand, active_hand.last_equipped_slot, FALSE, FALSE, TRUE))
 				return TRUE
 
 		if(active_hand.preferred_storage)

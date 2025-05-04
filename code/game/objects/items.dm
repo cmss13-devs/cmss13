@@ -429,8 +429,13 @@
 	while(isitem(storage_item_storage.loc)) // for stuff like pouches
 		storage_item_storage = storage_item_storage.loc
 
-	if(storage_item_storage)
+	if(!storage_item_storage)
+		return
+	//don't put the fucking clothes back into the backpack we just pulled it out from
+	if(!isclothing(src))
 		last_equipped_slot = slot_to_in_storage_slot(storage_item_storage.last_equipped_slot)
+	else
+		last_equipped_slot = storage_item_storage.last_equipped_slot
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)

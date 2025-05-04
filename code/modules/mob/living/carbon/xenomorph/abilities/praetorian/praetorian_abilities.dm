@@ -124,7 +124,7 @@
 	plasma_cost = 180
 
 	// Config
-	var/max_distance = 7
+	var/max_distance = 6
 	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch

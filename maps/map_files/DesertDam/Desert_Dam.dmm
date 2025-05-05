@@ -919,12 +919,21 @@
 	},
 /turf/open/desert/rock/deep/transition/west,
 /area/desert_dam/interior/dam_interior/hanger)
+"adN" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_two)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
+"adP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -57455,7 +57464,7 @@ cDX
 cDX
 cDX
 cDX
-cDX
+adN
 cDX
 cDX
 cDX
@@ -60560,7 +60569,7 @@ iKp
 iKp
 iKp
 iKp
-iKp
+adP
 iKp
 iKp
 iKp

@@ -1263,8 +1263,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 //----------WY----------
 
 /obj/item/storage/backpack/pmc
-	name = "\improper PMC combat pack"
-	desc = "A small, lightweight pack for expeditions and short-range operations, designed for Weyland-Yutani PMCs."
+	name = "\improper W-Y combat pack"
+	desc = "A small, lightweight pack for expeditions and short-range operations, designed for Weyland-Yutani security and private military personnel."
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	icon_state = "pmc_satchel"
 	item_icons = list(
@@ -1274,7 +1274,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_storage_space = 15
 
 /obj/item/storage/backpack/pmc/medic
-	name = "\improper PMC medic combat pack"
+	name = "\improper W-Y medic combat pack"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	icon_state = "pmc_medic_satchel"
 

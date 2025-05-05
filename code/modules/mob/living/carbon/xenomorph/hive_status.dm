@@ -911,6 +911,11 @@
 		return FALSE
 
 	if(!user.bypass_time_of_death_checks_hugger)
+		var/mob/living/carbon/human/original_human = user.mind?.original
+		if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
+			to_chat(user, SPAN_WARNING("You cannot become a facehugger until you are no longer alive in a nest."))
+			return FALSE
+
 		if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
 			var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
 			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
@@ -985,6 +990,11 @@
 		if(banished_ckeys[mob_name] == user.ckey)
 			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
 			return FALSE
+
+	var/mob/living/carbon/human/original_human = user.mind?.original
+	if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
+		to_chat(user, SPAN_WARNING("You cannot become a lesser drone until you are no longer alive in a nest."))
+		return FALSE
 
 	if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
 		var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)

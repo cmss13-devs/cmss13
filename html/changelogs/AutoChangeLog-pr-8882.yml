@@ -1,7 +1,0 @@
-author: "Aurallianz"
-delete-after: True
-changes:
-  - rscadd: "After a two-minute post-cryo-wakeup period, ARES will provide an announcement stating the commander."
-  - rscadd: "ARES will modify your ID and give you senior command access if you don't have it."
-  - maptweak: "Added a command headset to the Command tablet locker."
-  - bugfix: "Fixed CE's incorrect wakeup message"

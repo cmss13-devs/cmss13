@@ -22,6 +22,8 @@
 	flags_inv_hide = NO_FLAGS
 	flags_marine_helmet = NO_FLAGS
 
+	camera_factions = FACTION_LIST_WY
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc/black
 	name = "\improper PMC black tactical cap"
 	icon_state = "pmc_hat_dark"

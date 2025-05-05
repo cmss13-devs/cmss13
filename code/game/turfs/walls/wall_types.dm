@@ -481,8 +481,9 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/mineral/bone/is_weedable()
-	return NOT_WEEDABLE
+
+/turf/closed/wall/mineral/bone
+	is_weedable = NOT_WEEDABLE
 
 //Misc walls
 

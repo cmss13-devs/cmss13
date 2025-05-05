@@ -1,6 +1,6 @@
 /obj/structure/machinery/recharge_station
 	name = "synthetic maintenance station"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/machinery/synth_charger.dmi'
 	icon_state = "borgcharger0"
 	desc = "A Synthetic Maintenance Station designed to recharge, repair and maintain various sizes of artificial people. Simply place the synthetic or android in need of repair in here and they will be fixed up in no time!"
 	density = TRUE
@@ -141,17 +141,17 @@
 	overlays.Cut()
 	switch(floor(chargepercentage()))
 		if(1 to 20)
-			overlays += image('icons/obj/objects.dmi', "statn_c0")
+			overlays += image(icon, "statn_c0")
 		if(21 to 40)
-			overlays += image('icons/obj/objects.dmi', "statn_c20")
+			overlays += image(icon, "statn_c20")
 		if(41 to 60)
-			overlays += image('icons/obj/objects.dmi', "statn_c40")
+			overlays += image(icon, "statn_c40")
 		if(61 to 80)
-			overlays += image('icons/obj/objects.dmi', "statn_c60")
+			overlays += image(icon, "statn_c60")
 		if(81 to 98)
-			overlays += image('icons/obj/objects.dmi', "statn_c80")
+			overlays += image(icon, "statn_c80")
 		if(99 to 110)
-			overlays += image('icons/obj/objects.dmi', "statn_c100")
+			overlays += image(icon, "statn_c100")
 
 /obj/structure/machinery/recharge_station/proc/process_occupant()
 	if(src.occupant)
@@ -267,7 +267,8 @@
 
 /obj/structure/machinery/recharge_station/attackby(obj/item/W, mob/living/user)
 	if(istype(W, /obj/item/grab))
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
 			return
@@ -284,7 +285,8 @@
 			if(occupant)
 				to_chat(user, SPAN_NOTICE("The sleeper is already occupied!"))
 				return
-			if(!G || !G.grabbed_thing) return
+			if(!G || !G.grabbed_thing)
+				return
 			var/mob/M = G.grabbed_thing
 			user.stop_pulling()
 			move_mob_inside(M)

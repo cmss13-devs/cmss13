@@ -85,7 +85,7 @@
 	// List all possible preys
 	// We only target living humans and xenos
 	var/list/target_list = list()
-	for(var/mob/living/prey in view(7, usr.client))
+	for(var/mob/living/prey in range(7, usr.client))
 		if((ishuman_strict(prey) || isxeno(prey)) && prey.stat != DEAD)
 			target_list += prey
 
@@ -149,7 +149,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if(ishuman_strict(target) && (target.stat != DEAD))
 			target_list += target
 
@@ -186,7 +186,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if(ishuman_strict(target))
 			if(target.hunter_data.honored)
 				target_list += target
@@ -223,7 +223,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if((ishuman_strict(target) || isxeno(target)) && target.stat != DEAD)
 			target_list += target
 
@@ -263,7 +263,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if(ishuman_strict(target) || isxeno(target))
 			if(target.job != "Predalien" && target.job != "Predalien Larva")
 				if(target.hunter_data.dishonored)
@@ -304,7 +304,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if(ishuman(target))
 			target_list += target
 
@@ -335,7 +335,7 @@
 		return
 
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if(ishuman(target))
 			if(target.hunter_data.gear)
 				target_list += target
@@ -373,7 +373,7 @@
 	// List all possible targets
 	// We only target living humans
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if(ishuman_strict(target) && target.stat != DEAD)
 			target_list += target
 
@@ -412,7 +412,7 @@
 	// List all possible targets
 	// We only target living humans
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in view(7, usr.client))
+	for(var/mob/living/carbon/target in range(7, usr.client))
 		if(ishuman_strict(target))
 			if(target.hunter_data.thralled)
 				target_list += target
@@ -420,23 +420,26 @@
 	if(isyautja(src) && src.hunter_data.thrall)
 		target_list += src.hunter_data.thrall
 
-	var/mob/living/carbon/T = tgui_input_list(usr, "Target", "Choose a target.", target_list)
-	if(!T)
+	var/mob/living/carbon/human/thrall  = tgui_input_list(usr, "Target", "Choose a target.", target_list)
+
+	if(!thrall)
 		return
-	if(!T.hunter_data.thralled)
-		to_chat(src, SPAN_YAUTJABOLD("[T] is not marked as thralled!"))
+	if(!thrall.hunter_data.thralled)
+		to_chat(src, SPAN_YAUTJABOLD("[thrall] is not marked as thralled!"))
 		return
 
-	if(!T.hunter_data.thralled_set || src == T.hunter_data.thralled_set)
+	if(!thrall.hunter_data.thralled_set || src == thrall.hunter_data.thralled_set)
 
-		log_interact(src, T, "[key_name(src)] has released [key_name(T)] from thralldom!")
-		message_all_yautja("[real_name] has released [T] from thralldom!'.")
+		log_interact(src, thrall, "[key_name(src)] has released [key_name(thrall)] from thralldom!")
+		message_all_yautja("[real_name] has released [thrall] from thralldom!'.")
 
-		T.hunter_data.thralled_set = null
-		T.hunter_data.thralled = FALSE
-		T.hunter_data.thralled_reason = null
+		thrall.set_species("Human")
+		thrall.allow_gun_usage = TRUE
+		thrall.hunter_data.thralled_set = null
+		thrall.hunter_data.thralled = FALSE
+		thrall.hunter_data.thralled_reason = null
 		hunter_data.thrall = null
-		T.hud_set_hunter()
+		thrall.hud_set_hunter()
 	else
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
 

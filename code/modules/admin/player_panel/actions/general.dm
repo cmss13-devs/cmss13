@@ -77,7 +77,8 @@
 	permissions_required = R_ADMIN
 
 /datum/player_action/force_say/act(client/user, mob/target, list/params)
-	if(!params["to_say"]) return
+	if(!params["to_say"])
+		return
 
 	target.say(params["to_say"])
 
@@ -92,7 +93,8 @@
 	permissions_required = R_ADMIN
 
 /datum/player_action/force_emote/act(client/user, mob/target, list/params)
-	if(!params["to_emote"]) return
+	if(!params["to_emote"])
+		return
 
 	target.manual_emote(params["to_emote"])
 
@@ -152,8 +154,27 @@
 	name = "Set Name"
 
 /datum/player_action/set_name/act(client/user, mob/target, list/params)
-	target.name = params["name"]
+	if(!params["name"])
+		to_chat(user, "The Name field cannot be empty")
+
+		return FALSE
+
+	var/mob/living/living_target = target
+
+	if(istype(living_target, /mob/living/carbon))
+		living_target.real_name = params["name"]
+
+	living_target.name = params["name"]
+
+	if(ishuman(living_target))
+		var/mob/living/carbon/human/human_target = living_target
+		var/obj/item/card/id/card = human_target.get_idcard()
+		if(card)
+			card.registered_name = human_target.name
+			card.name = "[human_target.name]'s [card.id_type][card.assignment ? " ([card.assignment])" : ""]"
+
 	message_admins("[key_name_admin(user)] set [key_name_admin(target)]'s name to [params["name"]]")
+
 	return TRUE
 
 /datum/player_action/set_ckey

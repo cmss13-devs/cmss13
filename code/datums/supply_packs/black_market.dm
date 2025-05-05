@@ -16,8 +16,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 */
 
-/datum/supply_packs/contraband //base
-	name = "contraband crate"
+/datum/supply_packs/contraband // Abstract type (null name)
 	contains = null
 	containertype = null
 	containername = "large crate"
@@ -84,10 +83,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/pmc(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/pmc(src)
-			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
+			new /obj/item/clothing/suit/storage/marine/veteran/pmc/light(src)
+			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/clothing/mask/gas/pmc(src)
-			new /obj/item/storage/backpack/lightpack/five_slot(src)
+			new /obj/item/storage/backpack/pmc(src)
 		if(2) //pizza
 			new /obj/item/clothing/under/pizza(src)
 			new /obj/item/clothing/head/soft/red(src)
@@ -546,7 +545,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/egg/random,
 		/obj/item/reagent_container/food/snacks/egg/random, //not a dupe
 		/obj/item/reagent_container/food/snacks/xemeatpie,
-		/obj/item/reagent_container/food/snacks/upp,
+		/obj/item/storage/box/mre/upp,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas1,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas2,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas3,
@@ -1252,7 +1251,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
-		if(21 to 29)
+		if(21 to 25)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
 			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
@@ -1260,6 +1259,14 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/weapon/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
+		if(26 to 29)
+			// stevemre1989's secret stash
+			new /obj/item/storage/box/mre/fsr(loc)
+			new /obj/item/storage/box/mre/twe(loc)
+			new /obj/item/storage/box/mre/wy(loc)
+			new /obj/item/storage/box/mre/pmc(loc)
+			new /obj/item/storage/box/mre/upp(loc)
+			loot_message = SPAN_NOTICE("It's some rations...?")
 		if(30 to 35)
 		// CLF nades!
 			loot_message = SPAN_NOTICE("It's a package of assorted CLF grenades!")

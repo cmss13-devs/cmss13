@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_upp_commanding_officer, list(
 GLOBAL_LIST_INIT(cm_vending_clothing_upp_commanding_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/command, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
-		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
+		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("COMMANDING OFFICER ESSENTIALS KIT (TAKE ALL)", 0, null, null, null),
 		list("Commanding Officer Essentials Kit", 0, /obj/effect/essentials_set/upp_commanding_officer, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),

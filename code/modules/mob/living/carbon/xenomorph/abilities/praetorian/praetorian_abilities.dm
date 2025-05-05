@@ -9,7 +9,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 30
+	xeno_cooldown = 3 SECONDS
 	plasma_cost = 50
 
 	// Config
@@ -124,7 +124,7 @@
 	plasma_cost = 180
 
 	// Config
-	var/max_distance = 7
+	var/max_distance = 6
 	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
@@ -148,7 +148,7 @@
 	action_text = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 80*/
 
 // Tail lash
@@ -240,6 +240,41 @@
 	var/activation_delay = 1 SECONDS
 	var/prime_delay = 1 SECONDS
 
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
+	if (!target)
+		return
+
+	var/mob/living/carbon/xenomorph/acidball_user = owner
+	if (!acidball_user.check_state() || acidball_user.action_busy)
+		return
+
+	if (!action_cooldown_check())
+		return
+	var/turf/current_turf = get_turf(acidball_user)
+
+	if (!current_turf)
+		return
+
+	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	apply_cooldown()
+
+	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+
+	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
+	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
+	grenade.forceMove(get_turf(acidball_user))
+	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
+
+	return ..()
+
+
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
@@ -257,97 +292,79 @@
 	activation_delay = TRUE
 	activation_delay_length = 5
 
+///////////////////////// VALKYRIE PRAE
 
-///////////////////////// WARDEN PRAE
-
-/datum/action/xeno_action/activable/spray_acid/prae_warden
-	ability_primacy = XENO_PRIMARY_ACTION_2
-	plasma_cost = 130
-	xeno_cooldown = 13 SECONDS
-
-
-	// Configurable options
-
-	spray_type = ACID_SPRAY_LINE // Enum for the shape of spray to do
-	spray_distance = 7 // Distance to spray
-
-	activation_delay = TRUE
-	activation_delay_length = 5
-
-/datum/action/xeno_action/activable/warden_heal
-	name = "Aid Xenomorph"
-	action_icon_state = "prae_aid"
-	// todo: macro
+/datum/action/xeno_action/activable/tail_stab/tail_fountain //no verbmacrohotkey, its just tail stab.
+	name = "Tail Fountain"
+	action_icon_state = "tail_seize"
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	charge_time = 0.5 SECONDS
 	xeno_cooldown = 10 SECONDS
+	ability_primacy = XENO_TAIL_STAB
+
+/datum/action/xeno_action/activable/valkyrie_rage
+	name = "Tantrum"
+	action_icon_state = "warden_heal"
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	macro_path = /datum/action/xeno_action/verb/verb_prae_rage
 	plasma_cost = 100
+	xeno_cooldown = 7 SECONDS
+	var/datum/weakref/focus_rage = null
 
-	// Config
+	//rage configs
+	var/armor_buff = 10 // the idea behind this is you can buff somebody to go in, or get them out which is why the armor is so high while the duration is so low, will need tweaks according to how well it does
+	var/armor_buffs_duration = 5 SECONDS // your buff lasts longer because its less and ideally you should be in there slashing people already
+	var/armor_buffs_active = FALSE
+	var/max_range = 8
 
-	// These values are used to determine the
-	// "HP costs" and effects of the three different, toggle-able, heal types.
-	var/heal_cost = 100
-	var/heal_amount = 150
+	var/target_armor_buff = 15
+	var/armor_buffs_targer_dur = 3 SECONDS
+	var/armor_buffs_active_target = FALSE
 
-	var/shield_cost = 100
-	var/shield_amount = 125
-	var/shield_duration = 1 MINUTES
-	var/shield_decay = 25
-
-	var/debuff_cost = 100
-
-	var/curr_effect_type = WARDEN_HEAL_HP
+	var/speed_buff_dur = 2 SECONDS // tier 3's get speed boost instead of armor because they become a little broken.
+	var/speed_buff_amount = 0.7
+	var/armor_buffs_speed_target = FALSE
+	var/rage_cost = 75
 
 
-/datum/action/xeno_action/onclick/prae_switch_heal_type
-	name = "Toggle Aid Type"
-	action_icon_state = "warden_heal" // default = heal
-	macro_path = /datum/action/xeno_action/verb/verb_prae_switch_heal_types
+/datum/action/xeno_action/activable/high_gallop
+	name = "High Gallop"
+	action_icon_state = "prae_tail_trip"
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
+	macro_path = /datum/action/xeno_action/verb/verb_prae_high_gallop
+	xeno_cooldown = 12 SECONDS
+
+	//knockdown range
+	var/gallop_range = 3
+
+
+/datum/action/xeno_action/onclick/fight_or_flight
+	name = "Fight or Flight"
+	action_icon_state = "screech"
 	action_type = XENO_ACTION_ACTIVATE
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	macro_path = /datum/action/xeno_action/verb/verb_prae_fight_or_flight
+	xeno_cooldown = 45 SECONDS
+	plasma_cost = 300
 
-/datum/action/xeno_action/onclick/prae_switch_heal_type/can_use_action()
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.buckled && !X.is_mob_incapacitated())
-		return TRUE
-
-/datum/action/xeno_action/onclick/prae_switch_heal_type/use_ability(atom/A)
-
-	var/mob/living/carbon/xenomorph/X = owner
-	var/action_icon_result
-
-	if(!X.check_state(1))
-		return
-
-	var/datum/action/xeno_action/activable/warden_heal/WH = get_action(X, /datum/action/xeno_action/activable/warden_heal)
-	if (!istype(WH))
-		return
-
-	if (WH.curr_effect_type == WARDEN_HEAL_HP)
-		action_icon_result = "warden_rejuvenate"
-		WH.curr_effect_type = WARDEN_HEAL_DEBUFFS
-		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by curing their ailments!"))
-
-	else
-		action_icon_result = "warden_heal"
-		WH.curr_effect_type = WARDEN_HEAL_HP
-		to_chat(X, SPAN_XENOWARNING("We will now aid our sisters by healing them!"))
-
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, action_icon_result)
-	return ..()
+	// ranges and windup duration, this part of the ability is heavily experimental and will be touched after if it makes to testing
+	var/low_rage_range = 4
+	var/high_rage_range = 6
+	var/rejuvenate_cost = 75
 
 /datum/action/xeno_action/activable/prae_retrieve
+
 	name = "Retrieve"
 	action_icon_state = "retrieve"
 	macro_path = /datum/action/xeno_action/verb/verb_prae_retrieve
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 180
 
-	// Config
+	confing
 	var/max_distance = 7
 	var/windup = 6
 	var/retrieve_cost = 100

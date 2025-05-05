@@ -131,7 +131,8 @@
 		if(buckled_mob && seed && (buckled_mob.stat != DEAD)) //Don't bother with a dead mob.
 
 			var/mob/living/M = buckled_mob
-			if(!istype(M)) return
+			if(!istype(M))
+				return
 			var/mob/living/carbon/human/H = buckled_mob
 
 			// Drink some blood/cause some brute.
@@ -163,7 +164,8 @@
 					H.reagents.add_reagent(rid,injecting)
 
 /obj/effect/plantsegment/proc/update()
-	if(!seed) return
+	if(!seed)
+		return
 
 	// Update bioluminescence.
 	if(seed.biolum)
@@ -347,7 +349,8 @@
 		growth_queue -= SV
 
 		SV.life()
-		if(!SV) continue
+		if(!SV)
+			continue
 
 		if(SV.energy < 2) //If tile isn't fully grown
 			var/chance

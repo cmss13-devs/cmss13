@@ -68,7 +68,8 @@ GLOBAL_LIST_INIT(diseases, typesof(/datum/disease) - /datum/disease)
 	return
 
 /datum/disease/proc/has_cure()//check if affected_mob has required reagents.
-	if(!cure_id) return 0
+	if(!cure_id)
+		return 0
 	var/result = 1
 	if(cure_list == list(cure_id))
 		if(istype(cure_id, /list))

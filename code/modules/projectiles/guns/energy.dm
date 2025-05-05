@@ -99,7 +99,8 @@
 
 /obj/item/weapon/gun/energy/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) cell.charge += charge_cost
+	if(refund)
+		cell.charge += charge_cost
 	return TRUE
 
 /obj/item/weapon/gun/energy/get_examine_text(mob/user)
@@ -110,6 +111,10 @@
 		. += SPAN_NOTICE("It has [cell.percent()]% charge left.")
 	else
 		. += SPAN_NOTICE("It has no power cell inside.")
+
+/obj/item/weapon/gun/energy/unique_action(mob/user)
+	if(jammed)
+		jam_unique_action(user)
 
 /obj/item/weapon/gun/energy/rxfm5_eva
 	name = "RXF-M5 EVA pistol"
@@ -145,6 +150,10 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
+	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE //equivalent to restarting your phone
+	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL //energy weapons are more durable obviously
 
 // Funny procs to force the item_states to look right.
 
@@ -209,6 +218,10 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	fa_scatter_peak = SCATTER_AMOUNT_TIER_8
+	can_jam = TRUE
+	initial_jam_chance = GUN_JAM_CHANCE_MEDIUM
+	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE //equivalent to restarting your phone
+	durability_loss = GUN_DURABILITY_LOSS_LOW //energy weapons are more durable obviously, but maybe not with a laser uzi
 
 //############################ Taser ##################
 // Lots of bits for it so splitting off an area
@@ -241,6 +254,7 @@
 	movement_onehanded_acc_penalty_mult = 0
 	scatter = 0
 	scatter_unwielded = 0
+	can_jam = FALSE //as much as id like to add jamming to tasers, id get shit on for it
 
 /obj/item/weapon/gun/energy/taser/able_to_fire(mob/living/user)
 	. = ..()

@@ -10,6 +10,9 @@
 ///if(modifiers[BUTTON] == LEFT_CLICK)
 #define BUTTON "button"
 
+#define BUTTON4 "xbutton1"
+#define BUTTON5 "xbutton2"
+
 //Keys held down during the mouse action
 #define CTRL_CLICK "ctrl"
 #define ALT_CLICK "alt"
@@ -36,7 +39,11 @@
 //Pixel coordinates in screen_loc format ("[tile_x]:[pixel_x],[tile_y]:[pixel_y]")
 #define SCREEN_LOC "screen-loc"
 
+//Click catcher e.g. /atom/moveable/screen/click_catcher
+#define CLICK_CATCHER "click_catcher"
+#define CLICK_CATCHER_ADD_PARAM ";click_catcher=1"
+
 /// From /mob/proc/click_adjacent() : (atom/A, obj/item/W, mods) makes it so the affterattack proc isn't called
-#define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0) 
+#define ATTACKBY_HINT_NO_AFTERATTACK (1 << 0)
 /// From /mob/proc/click_adjacent() : (atom/A, obj/item/W, mods) applies the click delay to next_move
 #define ATTACKBY_HINT_UPDATE_NEXT_MOVE (1 << 1)

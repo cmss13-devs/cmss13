@@ -16,6 +16,8 @@ GLOBAL_LIST_EMPTY(mainship_yautja_teleports)
 GLOBAL_LIST_EMPTY(mainship_yautja_desc)
 GLOBAL_LIST_EMPTY(yautja_teleports)
 GLOBAL_LIST_EMPTY(yautja_teleport_descs)
+GLOBAL_LIST_EMPTY(yautja_young_teleports)
+GLOBAL_LIST_EMPTY(yautja_young_descs)
 
 GLOBAL_LIST_EMPTY(thunderdome_one)
 GLOBAL_LIST_EMPTY(thunderdome_two)
@@ -32,6 +34,7 @@ GLOBAL_LIST_EMPTY(zombie_landmarks)
 
 GLOBAL_LIST_EMPTY(newplayer_start)
 GLOBAL_LIST_EMPTY_TYPED(observer_starts, /obj/effect/landmark/observer_start)
+GLOBAL_LIST_EMPTY_TYPED(spycam_starts, /obj/effect/landmark/spycam_start)
 
 GLOBAL_LIST_EMPTY(map_items)
 GLOBAL_LIST_EMPTY(xeno_tunnels)

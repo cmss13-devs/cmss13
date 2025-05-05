@@ -72,7 +72,8 @@
 
 /obj/item/organ/proc/die()
 	name = "dead [initial(name)]"
-	if(dead_icon) icon_state = dead_icon
+	if(dead_icon)
+		icon_state = dead_icon
 	health = 0
 	STOP_PROCESSING(SSobj, src)
 	//TODO: Grey out the icon state.
@@ -241,8 +242,10 @@
 	// Pass over the blood.
 	reagents.trans_to(O, reagents.total_volume)
 
-	if(fingerprintshidden) O.fingerprintshidden = fingerprintshidden.Copy()
-	if(fingerprintslast) O.fingerprintslast = fingerprintslast
+	if(fingerprintshidden)
+		O.fingerprintshidden = fingerprintshidden.Copy()
+	if(fingerprintslast)
+		O.fingerprintslast = fingerprintslast
 
 	user.put_in_active_hand(O)
 	qdel(src)

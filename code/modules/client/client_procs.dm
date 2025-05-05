@@ -56,6 +56,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/set_eye_blur_type,
 	/client/proc/set_flash_type,
 	/client/proc/set_crit_type,
+	/client/proc/set_flashing_lights_pref,
+	/client/proc/toggle_leadership_spoken_orders,
 ))
 
 /client/proc/reduce_minute_count()
@@ -417,8 +419,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI.show_player_event_info(src)
 
 	connection_time = world.time
+
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
 	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
+
+	acquire_dpi()
 
 	send_assets()
 
@@ -512,7 +517,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if( (M.lastKnownIP == address) )
 					matches += "IP ([address])"
 				if( (connection != "web") && (M.computer_id == computer_id) )
-					if(matches) matches += " and "
+					if(matches)
+						matches += " and "
 					matches += "ID ([computer_id])"
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
@@ -527,7 +533,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration) return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
@@ -538,6 +545,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
+
+/client/proc/acquire_dpi()
+	set waitfor = FALSE
+
+	// Remove with 516
+	if(byond_version < 516)
+		return
+
+	window_scaling = text2num(winget(src, null, "dpi"))
 
 /proc/setup_player_entity(ckey)
 	if(!ckey)
@@ -697,30 +713,35 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(COMMS_CHANNEL)
 					if(prefs.tgui_say)
 						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(ME_CHANNEL)
 					if(prefs.tgui_say)
 						var/me = tgui_say_create_open_command(ME_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(OOC_CHANNEL)
 					if(prefs.tgui_say)
 						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(LOOC_CHANNEL)
 					if(prefs.tgui_say)
 						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(ADMIN_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
@@ -730,6 +751,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(MENTOR_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MENTOR))
 						if(prefs.tgui_say)
@@ -739,8 +761,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
+					winset(src, "tgui_say.browser", "focus=true")
 
 /client/proc/update_fullscreen()
 	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
@@ -938,3 +962,51 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		winset(src, "mapwindow.map", "right-click=false")
 		winset(src, "default.Shift", "is-disabled=true")
 		winset(src, "default.ShiftUp", "is-disabled=true")
+
+GLOBAL_VAR(ooc_rank_dmi)
+GLOBAL_LIST_INIT(ooc_rank_iconstates, setup_ooc_rank_icons())
+GLOBAL_LIST_INIT(community_awards, get_community_awards())
+
+/proc/setup_ooc_rank_icons()
+	var/ooc_dmi_path = "config/ooc.dmi"
+	if(!fexists(ooc_dmi_path))
+		return list()
+	GLOB.ooc_rank_dmi = icon(file(ooc_dmi_path))
+	return icon_states(GLOB.ooc_rank_dmi)
+
+/proc/get_community_awards()
+	var/list/awards_file = file2list("config/community_awards.txt")
+	var/list/processed_awards = list()
+	for(var/awardee in awards_file)
+		if(!length(awardee))
+			return FALSE
+		if(copytext(awardee,1,2) == "#")
+			continue
+
+		//Split the line at every "-"
+		var/list/split_awardee = splittext(awardee, "-")
+		if(!length(split_awardee))
+			return FALSE
+
+		//ckey is before the first "-"
+		var/ckey = ckey(split_awardee[1])
+		if(!ckey)
+			continue
+		processed_awards[ckey] = list()
+
+		//given_awards follows the first "-"
+		var/list/given_awards = list()
+		if(!(length(split_awardee) >= 2))
+			continue
+		given_awards = split_awardee.Copy(2)
+		for(var/the_award in given_awards)
+			processed_awards[ckey] += ckeyEx(the_award)
+
+	return processed_awards
+
+/client/proc/find_community_award_icons()
+	if(GLOB.community_awards[ckey])
+		var/full_prefix = ""
+		for(var/award in GLOB.community_awards[ckey])
+			full_prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, award)]"
+		return full_prefix

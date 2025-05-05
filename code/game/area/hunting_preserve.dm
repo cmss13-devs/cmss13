@@ -59,20 +59,35 @@
 	name = "\improper Yautja Hunting Grounds Caves"
 	icon_state = "cave"
 	ambience_exterior = AMBIENCE_CAVE
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
+	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 
 /area/yautja_grounds/temple
 	name = "\improper Yautja Hunting Grounds Temple"
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_CAVE
+	ceiling = CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS
 
 /area/yautja_grounds/temple/entrance
 	name = "\improper Yautja Hunting Grounds Temple"
 	icon_state = "bluenew"
 	ambience_exterior = AMBIENCE_JUNGLE
+	ceiling = CEILING_SANDSTONE_ALLOW_CAS
 
-///TP Areas
+///TP Areas/Young blood prep areas
 
 /area/yautja_grounds/prep_room
 	name = "\improper Jungle Moon Campsite"
 	icon_state = "red"
 	ambience_exterior = AMBIENCE_JUNGLE
+
+/area/yautja_grounds/young_blood_prep
+	name = "\improper Jungle Moon Young Blood Prep Area"
+	icon_state = "red"
+	ambience_exterior = AMBIENCE_JUNGLE
+	ceiling = CEILING_SANDSTONE_ALLOW_CAS
+
+/area/yautja_grounds/prep_room/inside
+	name = "\improper Jungle Moon Campsite Room"
+	icon_state = "yellow"
+	ceiling = CEILING_SANDSTONE_ALLOW_CAS

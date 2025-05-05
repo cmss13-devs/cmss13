@@ -8,6 +8,17 @@
 	. = ..()
 	src.roles = JOB_MEDIC_ROLES_LIST
 
+/datum/timelock/doctor
+	name = "Doctor Roles"
+
+/datum/timelock/doctor/New(name, time_required, list/roles)
+	. = ..()
+	src.roles = JOB_DOCTOR_ROLES_LIST
+
+/datum/timelock/research/New(name, time_required, list/roles)
+	. = ..()
+	src.roles = JOB_RESEARCH_ROLES_LIST
+
 /datum/timelock/corporate
 	name = "Corporate Roles"
 

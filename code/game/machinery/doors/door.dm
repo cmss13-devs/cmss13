@@ -95,7 +95,8 @@
 		return
 	if(ismob(AM))
 		var/mob/M = AM
-		if(world.time - M.last_bumped <= openspeed) return //Can bump-open one airlock per second. This is to prevent shock spam.
+		if(world.time - M.last_bumped <= openspeed)
+			return //Can bump-open one airlock per second. This is to prevent shock spam.
 		M.last_bumped = world.time
 		if(!M.is_mob_restrained() && M.mob_size > MOB_SIZE_SMALL)
 			bumpopen(M)

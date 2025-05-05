@@ -16,8 +16,10 @@
 	volume = 50
 
 /obj/item/reagent_container/food/drinks/on_reagent_change()
-	if (gulp_size < 5) gulp_size = 5
-	else gulp_size = max(floor(reagents.total_volume / 5), 5)
+	if(gulp_size < 5)
+		gulp_size = 5
+	else
+		gulp_size = max(floor(reagents.total_volume / 5), 5)
 
 /obj/item/reagent_container/food/drinks/attack(mob/M, mob/user)
 	var/datum/reagents/R = src.reagents
@@ -69,7 +71,8 @@
 
 
 /obj/item/reagent_container/food/drinks/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 

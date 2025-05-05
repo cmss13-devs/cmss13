@@ -79,8 +79,16 @@
 
 /datum/paygrade/wy_ranks/wyc10
 	paygrade = PAY_SHORT_WYC10
-	name = "Director"
-	prefix = "Director"
+	name = "Deputy Director"
+	prefix = "Dep. Director"
 	ranking = 9
 	pay_multiplier = 10
+	officer_grade = GRADE_FLAG
+
+/datum/paygrade/wy_ranks/wyc11
+	paygrade = PAY_SHORT_WYC11
+	name = "Director"
+	prefix = "Director"
+	ranking = 10
+	pay_multiplier = 11
 	officer_grade = GRADE_FLAG

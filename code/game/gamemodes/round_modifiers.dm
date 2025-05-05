@@ -132,10 +132,20 @@
 	modifier_name = "Yautja Shipside Large SD"
 	modifier_desc = "Allows Yautja to large self destruct on the mainship z-level."
 
+
+/datum/gamemode_modifier/heavy_specialists
+	modifier_name = "Heavy uscm specialists"
+	modifier_desc = "Replaces all specialist kits with b18 armor kit."
+
 /datum/gamemode_modifier/weaker_explosions_fire
 	modifier_name = "Weaker explosions"
 	modifier_desc = "Reduces damage from flames and explosion and stun from explosions to humans."
 
+
 /datum/gamemode_modifier/no_body_c4
 	modifier_name = "No body c4"
 	modifier_desc = "Prevents c4 explosives from being planted on dead body."
+
+/datum/gamemode_modifier/ceasefire
+	modifier_name = "Ceasefire"
+	modifier_desc = "Prevents firing guns and throwing granades."

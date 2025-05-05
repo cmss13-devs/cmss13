@@ -1,9 +1,8 @@
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
-import { Button, Section, Stack } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from 'tgui/backend';
+import { Button, Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type TraitsPickerData = {
   trait_points: number;

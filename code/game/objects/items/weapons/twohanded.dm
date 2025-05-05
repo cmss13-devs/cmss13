@@ -24,7 +24,8 @@
 	unwield(user)
 
 /obj/item/proc/wield(mob/user)
-	if( !(flags_item & TWOHANDED) || flags_item & WIELDED ) return
+	if( !(flags_item & TWOHANDED) || flags_item & WIELDED )
+		return
 
 	var/obj/item/I = user.get_inactive_hand()
 	if(I)
@@ -39,9 +40,9 @@
 			return
 
 	flags_item    ^= WIELDED
+	place_offhand(user, name)
 	name    += " (Wielded)"
 	item_state += "_w"
-	place_offhand(user,initial(name))
 	return 1
 
 /obj/item/proc/unwield(mob/user)
@@ -69,22 +70,27 @@
 	to_chat(user, SPAN_NOTICE("You are now carrying [name] with one hand."))
 	user.recalculate_move_delay = TRUE
 	var/obj/item/weapon/twohanded/offhand/offhand = user.get_inactive_hand()
-	if(istype(offhand)) offhand.unwield(user)
+	if(istype(offhand))
+		offhand.unwield(user)
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand()
 
 /obj/item/weapon/twohanded/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	user.recalculate_move_delay = TRUE
-	if(wieldsound) playsound(user, wieldsound, 15, 1)
+	if(wieldsound)
+		playsound(user, wieldsound, 15, 1)
 	force = force_wielded
 
 /obj/item/weapon/twohanded/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	user.recalculate_move_delay = TRUE
-	if(unwieldsound) playsound(user, unwieldsound, 15, 1)
+	if(unwieldsound)
+		playsound(user, unwieldsound, 15, 1)
 	force = initial(force)
 
 /obj/item/weapon/twohanded/attack_self(mob/user)
@@ -93,7 +99,8 @@
 		to_chat(user, SPAN_WARNING("It's too heavy for you to wield fully!"))
 		return
 
-	if(flags_item & WIELDED) unwield(user)
+	if(flags_item & WIELDED)
+		unwield(user)
 	else wield(user)
 
 ///////////OFFHAND///////////////
@@ -119,7 +126,8 @@
 	//If it is, looks like we got our hand torn off or something.
 	if(!QDESTROYING(src))
 		var/obj/item/main_hand = user.get_active_hand()
-		if(main_hand) main_hand.unwield(user)
+		if(main_hand)
+			main_hand.unwield(user)
 
 /*
  * Fireaxe
@@ -145,16 +153,19 @@
 
 /obj/item/weapon/twohanded/fireaxe/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	pry_capable = IS_PRY_CAPABLE_SIMPLE
 
 /obj/item/weapon/twohanded/fireaxe/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	pry_capable = 0
 
 /obj/item/weapon/twohanded/fireaxe/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
 		qdel(A)
@@ -175,7 +186,8 @@
 
 //The following is copypasta and not the sledge being a child of the fireaxe due to the fire axe being able to crowbar airlocks
 /obj/item/weapon/twohanded/sledgehammer/afterattack(atom/A as mob|obj|turf|area, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	..()
 	if(A && (flags_item & WIELDED) && istype(A,/obj/structure/grille)) //destroys grilles in one hit
 		qdel(A)
@@ -217,16 +229,19 @@
 				sleep(1)
 
 /obj/item/weapon/twohanded/dualsaber/IsShield()
-	if(flags_item & WIELDED) return 1
+	if(flags_item & WIELDED)
+		return 1
 
 /obj/item/weapon/twohanded/dualsaber/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	icon_state += "_w"
 
 /obj/item/weapon/twohanded/dualsaber/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	icon_state = copytext(icon_state,1,-2)
 
 /obj/item/weapon/twohanded/spear
@@ -238,7 +253,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
@@ -276,13 +291,15 @@
 
 /obj/item/weapon/twohanded/lungemine/wield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	attack_verb = wielded_attack_verb
 	hitsound = wielded_hitsound
 
 /obj/item/weapon/twohanded/lungemine/unwield(mob/user)
 	. = ..()
-	if(!.) return
+	if(!.)
+		return
 	attack_verb = unwielded_attack_verb
 	hitsound = unwielded_hitsound
 
@@ -333,7 +350,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"

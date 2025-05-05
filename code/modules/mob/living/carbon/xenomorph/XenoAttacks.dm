@@ -80,7 +80,8 @@
 
 		if(INTENT_HARM)
 			var/datum/unarmed_attack/attack = M.species.unarmed
-			if(!attack.is_usable(M)) attack = M.species.secondary_unarmed
+			if(!attack.is_usable(M))
+				attack = M.species.secondary_unarmed
 			if(!attack.is_usable(M))
 				return 0
 

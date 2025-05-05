@@ -52,7 +52,8 @@
 
 /obj/structure/morgue/proc/toggle_morgue(mob/user)
 	add_fingerprint(user)
-	if(!connected) return
+	if(!connected)
+		return
 	if(morgue_open)
 		for(var/atom/movable/A in connected.loc)
 			if(!A.anchored)
@@ -201,7 +202,8 @@
 
 
 /obj/structure/morgue/crematorium/relaymove(mob/user)
-	if(cremating) return
+	if(cremating)
+		return
 	..()
 
 
@@ -242,7 +244,8 @@
 			qdel(M)
 
 		for(var/obj/O in contents)
-			if(istype(O, /obj/structure/morgue_tray)) continue
+			if(istype(O, /obj/structure/morgue_tray))
+				continue
 			qdel(O)
 
 		new /obj/effect/decal/cleanable/ash(src)

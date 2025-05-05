@@ -33,6 +33,7 @@
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_CHEMISTRY,
 		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_FIELD_DOC,
 	)
 	assignment = JOB_CMO
 	rank = JOB_CMO
@@ -92,6 +93,31 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/surgeon/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client?.prefs && new_human.client.prefs.backbag == 1)
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
+	name = "USCM Field Doctor"
+
+	assignment = JOB_FIELD_DOCTOR
+	rank = JOB_FIELD_DOCTOR
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "Fld Doc"
+	skills = /datum/skills/doctor
+
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC)
+
+	minimap_icon = "field_doctor"
+	minimap_background = "background_medical"
+
+/datum/equipment_preset/uscm_ship/uscm_medical/field_doctor/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)

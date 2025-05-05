@@ -31,7 +31,7 @@
 	. = ..()
 	if(.)
 		return
-	winset(user, null, "command=.screenshot [!user.keys_held["shift"] ? "auto" : ""]")
+	winset(user, null, "command=.screenshot [!user.keys_held[SHIFT_CLICK] ? "auto" : ""]")
 	return TRUE
 
 /datum/keybinding/client/toggle_fullscreen

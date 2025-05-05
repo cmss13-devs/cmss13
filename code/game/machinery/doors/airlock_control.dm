@@ -30,9 +30,11 @@
 
 	if (!can_radio()) return //no radio
 
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
-	if(id_tag != signal.data["tag"] || !signal.data["command"]) return
+	if(id_tag != signal.data["tag"] || !signal.data["command"])
+		return
 
 	cur_command = signal.data["command"]
 	start_processing()

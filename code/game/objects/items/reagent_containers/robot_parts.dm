@@ -24,17 +24,17 @@
 	icon_state = "r_arm"
 	part = list("r_arm","r_hand")
 
-/obj/item/robot_parts/leg/l_leg
-	name = "robot left leg"
-	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	icon_state = "l_leg"
-	part = list("l_leg","l_foot")
-
 /obj/item/robot_parts/leg/r_leg
 	name = "robot right leg"
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
-	icon_state = "r_leg"
+	icon_state = "l_leg" // put yourself in the eyes of the character, its your left leg.
 	part = list("r_leg","r_foot")
+
+/obj/item/robot_parts/leg/l_leg
+	name = "robot left leg"
+	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case."
+	icon_state = "r_leg"
+	part = list("l_leg","l_foot")
 
 /obj/item/robot_parts/hand/l_hand
 	name = "robot left hand"
@@ -125,31 +125,36 @@
 /obj/item/robot_parts/robot_suit/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/robot_parts/leg/l_leg))
-		if(l_leg) return
+		if(l_leg)
+			return
 		if(user.drop_inv_item_to_loc(W, src))
 			l_leg = W
 			updateicon()
 
 	if(istype(W, /obj/item/robot_parts/leg/r_leg))
-		if(r_leg) return
+		if(r_leg)
+			return
 		if(user.drop_inv_item_to_loc(W, src))
 			r_leg = W
 			updateicon()
 
 	if(istype(W, /obj/item/robot_parts/arm/l_arm))
-		if(l_arm) return
+		if(l_arm)
+			return
 		if(user.drop_inv_item_to_loc(W, src))
 			l_arm = W
 			updateicon()
 
 	if(istype(W, /obj/item/robot_parts/arm/r_arm))
-		if(r_arm) return
+		if(r_arm)
+			return
 		if(user.drop_inv_item_to_loc(W, src))
 			r_arm = W
 			updateicon()
 
 	if(istype(W, /obj/item/robot_parts/chest))
-		if(chest) return
+		if(chest)
+			return
 		if(W:wires && W:cell)
 			if(user.drop_inv_item_to_loc(W, src))
 				chest = W
@@ -160,7 +165,8 @@
 			to_chat(user, SPAN_NOTICE(" You need to attach a cell to it first!"))
 
 	if(istype(W, /obj/item/robot_parts/head))
-		if(head) return
+		if(head)
+			return
 		if(W:flash2 && W:flash1)
 			if(user.drop_inv_item_to_loc(W, src))
 				head = W

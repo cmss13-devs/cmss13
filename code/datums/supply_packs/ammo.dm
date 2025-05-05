@@ -134,6 +134,16 @@
 	containername = "\improper M4RA AP magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_m4ra_mag_box_ext
+	name = "Magazine box (M4RA, 12x extended mags)"
+	contains = list(
+		/obj/item/ammo_box/magazine/m4ra/ext,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper M4RA extended magazines crate"
+	group = "Ammo"
+
 //------------------------For  M44----------------
 
 /datum/supply_packs/ammo_m44_mag_box
@@ -526,6 +536,7 @@
 		/obj/item/ammo_magazine/shotgun/buckshot,
 		/obj/item/ammo_magazine/shotgun/incendiary,
 		/obj/item/ammo_magazine/rifle/m4ra/ap,
+		/obj/item/ammo_magazine/rifle/m4ra/extended,
 		/obj/item/ammo_magazine/rifle/m4ra,
 	)
 	cost = 60

@@ -120,7 +120,7 @@
 			if("cornoil")
 				name = "Corn Oil"
 				desc = "A delicious oil used in cooking. Made from corn."
-				icon_state = "oliveoil"
+				icon_state = "cornoil"
 				center_of_mass = "x=16;y=6"
 			if("sugar")
 				name = "Sugar"

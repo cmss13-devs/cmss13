@@ -471,13 +471,13 @@
 	return null
 
 /obj/item/clothing/clicked(mob/user, list/mods)
-	if(mods["alt"] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+	if(mods[ALT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		for(var/V in verbs)
 			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
 				return
 
 	var/obj/item/storage/internal/pockets = get_pockets()
-	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+	if(pockets && !mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		pockets.open(user)
 		return TRUE
 

@@ -57,3 +57,4 @@ Some smaller Xenomorphs such as Runners can hide behind barricades by resting ag
 Defenders with a lowered crest can open existing holes in walls.
 As a Defender, you can deal an additional stage of damage to an APC by lowering your crest and then attacking it.
 Any Xenomorph with acid can melt any kind of window frame; you may use this to create additional paths.
+As a Xenomorph, you can target any hand of a Marine to damage their weapons durability, so long as it is their currently active weapon.

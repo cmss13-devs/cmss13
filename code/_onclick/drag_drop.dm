@@ -6,9 +6,11 @@
 	almost anything into a trash can.
 */
 /atom/MouseDrop(atom/over)
-	if(!usr || !over) return
+	if(!usr || !over)
+		return
 
-	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
+	if(!Adjacent(usr) || !over.Adjacent(usr))
+		return // should stop you from dragging through windows
 
 	spawn(0)
 		if(over)

@@ -1,5 +1,6 @@
-import { useBackend } from '../../backend';
-import { Box, Button, Stack } from '../../components';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Stack } from 'tgui/components';
+
 import {
   useFiremissionXOffsetValue,
   useFiremissionYOffsetValue,

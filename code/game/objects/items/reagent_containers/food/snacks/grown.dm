@@ -573,15 +573,20 @@
 		qdel(src)
 		return
 	for(var/turf/T as anything in (RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M)))
-		if(istype(T,/turf/open/space)) continue
-		if(T.density) continue
-		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius) continue
-		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius) continue
+		if(istype(T,/turf/open/space))
+			continue
+		if(T.density)
+			continue
+		if(T.x>world.maxx-outer_teleport_radius || T.x<outer_teleport_radius)
+			continue
+		if(T.y>world.maxy-outer_teleport_radius || T.y<outer_teleport_radius)
+			continue
 		turfs += T
 	if(!length(turfs))
 		turfs += pick(RANGE_TURFS(outer_teleport_radius, M) - RANGE_TURFS(inner_teleport_radius, M))
 	var/turf/picked = pick(turfs)
-	if(!isturf(picked)) return
+	if(!isturf(picked))
+		return
 	switch(rand(1,2))//Decides randomly to teleport the thrower or the throwee.
 		if(1) // Teleports the person who threw the tomato.
 			s.set_up(3, 1, M)

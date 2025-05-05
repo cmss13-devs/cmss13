@@ -246,38 +246,49 @@
 	accumulated_alcohol++
 	switch(accumulated_alcohol)
 		if(1 to 25)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.make_dizzy(1)
 			M.hallucination = max(M.hallucination, 3)
-			if(prob(1)) M.emote(pick("twitch","giggle"))
+			if(prob(1))
+				M.emote(pick("twitch","giggle"))
 		if(25 to 75)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.hallucination = max(M.hallucination, 10)
 			M.make_jittery(2)
 			M.make_dizzy(2)
 			M.druggy = max(M.druggy, 45)
-			if(prob(5)) M.emote(pick("twitch","giggle"))
+			if(prob(5))
+				M.emote(pick("twitch","giggle"))
 		if(75 to 150)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.hallucination = max(M.hallucination, 60)
 			M.make_jittery(4)
 			M.make_dizzy(4)
 			M.druggy = max(M.druggy, 60)
-			if(prob(10)) M.emote(pick("twitch","giggle"))
-			if(prob(30)) M.apply_damage(2, TOX)
+			if(prob(10))
+				M.emote(pick("twitch","giggle"))
+			if(prob(30))
+				M.apply_damage(2, TOX)
 		if(150 to 300)
-			if(!M.stuttering) M.stuttering = 1
+			if(!M.stuttering)
+				M.stuttering = 1
 			M.hallucination = max(M.hallucination, 60)
 			M.make_jittery(4)
 			M.make_dizzy(4)
 			M.druggy = max(M.druggy, 60)
-			if(prob(10)) M.emote(pick("twitch","giggle"))
-			if(prob(30)) M.apply_damage(2, TOX)
-			if(prob(5)) if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
-				if(L && istype(L))
-					L.take_damage(5, 0)
+			if(prob(10))
+				M.emote(pick("twitch","giggle"))
+			if(prob(30))
+				M.apply_damage(2, TOX)
+			if(prob(5))
+				if(ishuman(M))
+					var/mob/living/carbon/human/H = M
+					var/datum/internal_organ/heart/L = H.internal_organs_by_name["heart"]
+					if(L && istype(L))
+						L.take_damage(5, 0)
 		if(300 to INFINITY)
 			if(ishuman(M))
 				var/mob/living/carbon/human/H = M
@@ -791,7 +802,8 @@
 	accumulated_alcohol++
 	M.dizziness +=10
 	if(accumulated_alcohol >= 55 && accumulated_alcohol <115)
-		if(!M.stuttering) M.stuttering = 1
+		if(!M.stuttering)
+			M.stuttering = 1
 		M.stuttering += 10
 	else if(accumulated_alcohol >= 115 && prob(33))
 		M.confused = max(M.confused+15,15)

@@ -68,6 +68,11 @@
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/command/cicconference
+	name = "\improper CIC Conference Room"
+	icon_state = "cic"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/command/airoom
 	name = "\improper AI Core"
 	icon_state = "airoom"
@@ -80,7 +85,7 @@
 	resin_construction_allowed = FALSE
 
 /area/almayer/command/securestorage
-	name = "\improper Upper Deck Secure Storage"
+	name = "\improper Computer Lab Secure Storage"
 	icon_state = "corporatespace"
 	fake_zlevel = 1 // upperdeck
 
@@ -158,6 +163,7 @@
 
 /area/almayer/engineering/upper_engineering/notunnel
 	flags_area = AREA_NOTUNNEL
+	requires_power = FALSE
 
 /area/almayer/engineering/ce_room
 	name = "\improper Upper Deck Chief Engineer Office"
@@ -169,9 +175,9 @@
 	icon_state = "starboardatmos"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/engineering/port_atmos
-	name = "\improper Upper Deck Port Atmospherics"
-	icon_state = "portatmos"
+/area/almayer/command/intel_bunks
+	name = "\improper Upper Deck Intel Officer's Bunks"
+	icon_state = "blue"
 	fake_zlevel = 1 // upperdeck
 
 /area/almayer/engineering/laundry
@@ -212,6 +218,7 @@
 
 /area/almayer/shipboard/weapon_room/notunnel
 	flags_area = AREA_NOTUNNEL
+	requires_power = FALSE
 
 /area/almayer/shipboard/starboard_point_defense
 	name = "\improper Lower Deck Starboard Point Defense"
@@ -384,15 +391,43 @@
 
 //area that are used for transition between decks.
 /area/almayer/stair_clone
-	name = "\improper Lower Deck Stairs"
+	name = "\improper Stairs"
 	icon_state = "stairs_lowerdeck"
-	fake_zlevel = 2 // lowerdeck
 	resin_construction_allowed = FALSE
+
+/area/almayer/stair_clone/lower
+	name = "\improper Lower Deck Stairs"
+	icon_state = "stairs_upperdeck"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/stair_clone/lower/starboard_aft
+	name = "\improper Lower Deck Starboard Aft Stairs"
+
+/area/almayer/stair_clone/lower/port_aft
+	name = "\improper Lower Deck Port Aft Stairs"
+
+/area/almayer/stair_clone/lower/starboard_fore
+	name = "\improper Lower Deck Starboard Fore Stairs"
+
+/area/almayer/stair_clone/lower/port_fore
+	name = "\improper Lower Deck Port Fore Stairs"
 
 /area/almayer/stair_clone/upper
 	name = "\improper Upper Deck Stairs"
 	icon_state = "stairs_upperdeck"
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/stair_clone/upper/starboard_aft
+	name = "\improper Upper Deck Starboard Aft Stairs"
+
+/area/almayer/stair_clone/upper/port_aft
+	name = "\improper Upper Deck Port Aft Stairs"
+
+/area/almayer/stair_clone/upper/starboard_fore
+	name = "\improper Upper Deck Starboard Fore Stairs"
+
+/area/almayer/stair_clone/upper/port_fore
+	name = "\improper Upper Deck Port Fore Stairs"
 
 // maintenance areas
 
@@ -530,11 +565,6 @@
 	icon_state = "livingspace"
 	fake_zlevel = 2
 
-/area/almayer/living/auxiliary_officer_office
-	name = "\improper Lower Deck Auxiliary Support Officer office"
-	icon_state = "livingspace"
-	fake_zlevel = 2
-
 /area/almayer/living/cryo_cells
 	name = "\improper Lower Deck Cryo Cells"
 	icon_state = "cryo"
@@ -585,6 +615,16 @@
 	icon_state = "officerstudy"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/living/auxiliary_officer_office
+	name = "\improper Upper Deck Auxiliary Support Officer office"
+	icon_state = "livingspace"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/living/intel
+	name = "\improper Intelligence Officer's Bunks"
+	icon_state = "livingspace"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/living/cafeteria_port
 	name = "\improper Cafeteria Port"
 	icon_state = "food"
@@ -608,6 +648,11 @@
 /area/almayer/living/offices
 	name = "\improper Lower Deck Conference Office"
 	icon_state = "briefing"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/living/offices/cryo
+	name = "\improper Support Crew Cryogenics Bay"
+	icon_state = "cryo"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/living/offices/flight

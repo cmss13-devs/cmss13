@@ -359,7 +359,7 @@
 	message_admins("[key_name_admin(usr)] admin-started self-destruct system.")
 
 /client/proc/view_faxes()
-	set name = "View Faxes"
+	set name = "Reply to Faxes"
 	set desc = "View faxes from this round"
 	set category = "Admin.Events"
 
@@ -381,7 +381,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", width = 300, height = 600)
 
 		if("High Command")
 			var/body = "<body>"
@@ -391,7 +391,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", width = 300, height = 600)
 
 		if("Provost")
 			var/body = "<body>"
@@ -401,7 +401,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", width = 300, height = 600)
 
 		if("Press")
 			var/body = "<body>"
@@ -411,7 +411,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to Press organizations", "pressfaxviewer", width = 300, height = 600)
 
 		if("Colonial Marshal Bureau")
 			var/body = "<body>"
@@ -421,7 +421,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Colonial Marshal Bureau", "cmbfaxviewer", width = 300, height = 600)
 
 		if("Union of Progressive Peoples")
 			var/body = "<body>"
@@ -431,7 +431,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Union of Progressive Peoples", "uppfaxviewer", width = 300, height = 600)
 
 		if("Three World Empire")
 			var/body = "<body>"
@@ -441,7 +441,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Three World Empire", "twefaxviewer", width = 300, height = 600)
 
 		if("Colonial Liberation Front")
 			var/body = "<body>"
@@ -451,7 +451,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to the Colonial Liberation Front", "clffaxviewer", width = 300, height = 600)
 
 		if("Other")
 			var/body = "<body>"
@@ -461,7 +461,7 @@
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", "size=300x600")
+			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", width = 300, height = 600)
 		if("Cancel")
 			return
 
@@ -501,10 +501,10 @@
 /client/proc/give_nuke()
 	if(!check_rights(R_ADMIN))
 		return
-	var/nukename = "Decrypted Operational Nuke"
+	var/nukename = "Decrypted Operational Blockbuster"
 	var/encrypt = tgui_alert(src, "Do you want the nuke to be already decrypted?", "Nuke Type", list("Encrypted", "Decrypted"), 20 SECONDS)
 	if(encrypt == "Encrypted")
-		nukename = "Encrypted Operational Nuke"
+		nukename = "Encrypted Operational Blockbuster"
 	var/prompt = tgui_alert(src, "THIS CAN BE USED TO END THE ROUND. Are you sure you want to spawn a nuke? The nuke will be put onto the ASRS Lift.", "DEFCON 1", list("No", "Yes"), 30 SECONDS)
 	if(prompt != "Yes")
 		return
@@ -550,7 +550,8 @@
 
 	var/list/shuttles = list(DROPSHIP_ALAMO, DROPSHIP_NORMANDY)
 	var/tag = tgui_input_list(usr, "Which dropship should be force hijacked?", "Select a dropship:", shuttles)
-	if(!tag) return
+	if(!tag)
+		return
 
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(tag)
 
@@ -718,18 +719,16 @@
 	log_admin("[key_name_admin(src)] AI shipwide report: [input]")
 
 /client/proc/cmd_admin_create_predator_report()
-	set name = "Report: Yautja AI"
+	set name = "Report: Yautja Overseer"
 	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "This is a message from the predator ship's AI. Check with online staff before you send this.", "What?", "") as message|null
+	var/input = tgui_input_text(usr, "This is a message from the Yautja Elder Overseer. They are not an AI, but they have witnessed everything that has happened this round through the eyes of all predators, both alive and dead. This message will appear on the screens of all living predator mobs. Check with online staff before sending.", "What Will The Elder Say?")
 	if(!input)
 		return FALSE
-	yautja_announcement(SPAN_YAUTJABOLDBIG(input))
-	message_admins("[key_name_admin(src)] has created a predator ship AI report")
-	log_admin("[key_name_admin(src)] predator ship AI report: [input]")
+	elder_overseer_message(input, elder_user = "[key_name(src)]")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
 	set name = "Narrate to Everyone"
@@ -819,6 +818,7 @@
 		<A href='byond://?src=\ref[src];[HrefToken()];events=pmcguns'>Toggle PMC gun restrictions</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=monkify'>Turn everyone into monkies</A><BR>
 		<A href='byond://?src=\ref[src];[HrefToken()];events=xenothumbs'>Give or take opposable thumbs and gun permits from xenos</A><BR>
+		<A href='byond://?src=\ref[src];[HrefToken()];events=xenocards'>Give or take card playing abilities from xenos</A><BR>
 		<BR>
 		"}
 
@@ -834,7 +834,8 @@
 
 
 /datum/admins/proc/chempanel()
-	if(!check_rights(R_MOD)) return
+	if(!check_rights(R_MOD))
+		return
 
 	var/dat
 	if(check_rights(R_MOD,0))
@@ -855,7 +856,7 @@
 				<A href='byond://?src=\ref[src];[HrefToken()];chem_panel=create_custom_reaction'>Create Custom Reaction</A><br>
 				"}
 
-	show_browser(usr, dat, "Chem Panel", "chempanel", "size=210x300")
+	show_browser(usr, dat, "Chem Panel", "chempanel", width = 210, height = 300)
 	return
 
 /client/proc/chem_panel()
@@ -876,7 +877,7 @@
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 		create_humans_html = replacetext(create_humans_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x720")
+	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", width = 450, height = 720)
 
 /client/proc/create_humans()
 	set name = "Create Humans"
@@ -894,7 +895,7 @@
 		create_xenos_html = replacetext(create_xenos_html, "null /* xeno paths */", "\"[xeno_types]\"")
 		create_xenos_html = replacetext(create_xenos_html, "/* href token */", RawHrefToken(forceGlobal = TRUE))
 
-	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", "size=450x630")
+	show_browser(user, replacetext(create_xenos_html, "/* ref src */", "\ref[src]"), "Create Xenos", "create_xenos", width = 450, height = 630)
 
 /client/proc/create_xenos()
 	set name = "Create Xenos"
@@ -917,12 +918,15 @@
 		return
 
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H.mob_flags & MUTINEER)
-			H.mob_flags &= ~MUTINEER
-			H.hud_set_squad()
+		if(H.mob_flags & MUTINY_MUTINEER)
+			H.mob_flags &= ~MUTINY_MUTINEER
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
 				A.remove_from(H)
+
+		H.mob_flags &= ~MUTINY_LOYALIST
+		H.mob_flags &= ~MUTINY_NONCOMBAT
+		H.hud_set_squad()
 
 /client/proc/cmd_fun_fire_ob()
 	set category = "Admin.Fun"
@@ -943,71 +947,96 @@
 			custom = FALSE
 			var/list/warheads = subtypesof(/obj/structure/ob_ammo/warhead/)
 			var/choice = tgui_input_list(usr, "Select the warhead:", "Warhead to use", warheads)
+			if(!choice)
+				return
 			warhead = new choice
 		if("Custom HE")
 			var/obj/structure/ob_ammo/warhead/explosive/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "HE orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
-			if(isnull(OBShell.clear_power)) return
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
+			if(isnull(OBShell.clear_falloff))
+				return
 			OBShell.standard_power = tgui_input_number(src, "How much explosive power should the main blasts have?", "Set blast power", 600, 3000)
-			if(isnull(OBShell.standard_power)) return
+			if(isnull(OBShell.standard_power))
+				return
 			OBShell.standard_falloff = tgui_input_number(src, "How much falloff should the main blasts have?", "Set blast falloff", 30)
-			if(isnull(OBShell.standard_falloff)) return
+			if(isnull(OBShell.standard_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
+			if(isnull(OBShell.clear_delay))
+				return
 			OBShell.double_explosion_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 6)
-			if(isnull(OBShell.double_explosion_delay)) return
+			if(isnull(OBShell.double_explosion_delay))
+				return
 			statsmessage = "Custom HE OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Blast Power: [OBShell.standard_power], Blast Falloff: [OBShell.standard_falloff], Blast Delay: [OBShell.double_explosion_delay]."
 			warhead = OBShell
 		if("Custom Cluster")
 			var/obj/structure/ob_ammo/warhead/cluster/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Cluster orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.total_amount = tgui_input_number(src, "How many salvos should be fired?", "Set cluster number", 60)
-			if(isnull(OBShell.total_amount)) return
+			if(isnull(OBShell.total_amount))
+				return
 			OBShell.instant_amount = tgui_input_number(src, "How many shots per salvo? (Max 10)", "Set shot count", 3)
-			if(isnull(OBShell.instant_amount)) return
+			if(isnull(OBShell.instant_amount))
+				return
 			if(OBShell.instant_amount > 10)
 				OBShell.instant_amount = 10
 			OBShell.explosion_power = tgui_input_number(src, "How much explosive power should the blasts have?", "Set blast power", 300, 1500)
-			if(isnull(OBShell.explosion_power)) return
+			if(isnull(OBShell.explosion_power))
+				return
 			OBShell.explosion_falloff = tgui_input_number(src, "How much falloff should the blasts have?", "Set blast falloff", 150)
-			if(isnull(OBShell.explosion_falloff)) return
+			if(isnull(OBShell.explosion_falloff))
+				return
 			statsmessage = "Custom Cluster OB ([OBShell.name]) Stats from [key_name(usr)]: Salvos: [OBShell.total_amount], Shot per Salvo: [OBShell.instant_amount], Explosion Power: [OBShell.explosion_power], Explosion Falloff: [OBShell.explosion_falloff]."
 			warhead = OBShell
 		if("Custom Incendiary")
 			var/obj/structure/ob_ammo/warhead/incendiary/OBShell = new
 			OBShell.name = input("What name should the warhead have?", "Set name", "Incendiary orbital warhead")
-			if(!OBShell.name) return//null check to cancel
+			if(!OBShell.name)
+				return//null check to cancel
 			OBShell.clear_power = tgui_input_number(src, "How much explosive power should the wall clear blast have?", "Set clear power", 1200, 3000)
-			if(isnull(OBShell.clear_power)) return
+			if(isnull(OBShell.clear_power))
+				return
 			OBShell.clear_falloff = tgui_input_number(src, "How much falloff should the wall clear blast have?", "Set clear falloff", 400)
-			if(isnull(OBShell.clear_falloff)) return
+			if(isnull(OBShell.clear_falloff))
+				return
 			OBShell.clear_delay = tgui_input_number(src, "How much delay should the clear blast have?", "Set clear delay", 3)
-			if(isnull(OBShell.clear_delay)) return
+			if(isnull(OBShell.clear_delay))
+				return
 			OBShell.distance = tgui_input_number(src, "How many tiles radius should the fire be? (Max 30)", "Set fire radius", 18, 30)
-			if(isnull(OBShell.distance)) return
+			if(isnull(OBShell.distance))
+				return
 			if(OBShell.distance > 30)
 				OBShell.distance = 30
 			OBShell.fire_level = tgui_input_number(src, "How long should the fire last?", "Set fire duration", 70)
-			if(isnull(OBShell.fire_level)) return
+			if(isnull(OBShell.fire_level))
+				return
 			OBShell.burn_level = tgui_input_number(src, "How damaging should the fire be?", "Set fire strength", 80)
-			if(isnull(OBShell.burn_level)) return
+			if(isnull(OBShell.burn_level))
+				return
 			var/list/firetypes = list("white","blue","red","green","custom")
 			OBShell.fire_type = tgui_input_list(usr, "Select the fire color:", "Fire color", firetypes)
-			if(isnull(OBShell.fire_type)) return
+			if(isnull(OBShell.fire_type))
+				return
 			OBShell.fire_color = null
 			if(OBShell.fire_type == "custom")
 				OBShell.fire_type = "dynamic"
 				OBShell.fire_color = input(src, "Please select Fire color.", "Fire color") as color|null
-				if(isnull(OBShell.fire_color)) return
+				if(isnull(OBShell.fire_color))
+					return
 			statsmessage = "Custom Incendiary OB ([OBShell.name]) Stats from [key_name(usr)]: Clear Power: [OBShell.clear_power], Clear Falloff: [OBShell.clear_falloff], Clear Delay: [OBShell.clear_delay], Fire Distance: [OBShell.distance], Fire Duration: [OBShell.fire_level], Fire Strength: [OBShell.burn_level]."
 			warhead = OBShell
 
 	if(custom)
+		if(!warhead)
+			return
 		if(alert(usr, statsmessage, "Confirm Stats", "Yes", "No") != "Yes")
 			qdel(warhead)
 			return
@@ -1116,6 +1145,8 @@
 	var/duration = 5 SECONDS
 	var/message = "ADMIN TEST"
 	var/text_input = tgui_input_text(usr, "Announcement message", "Message Contents", message, timeout = 5 MINUTES)
+	if(!text_input)
+		return // Early return here so people dont have to go through the whole process just to cancel it.
 	message = text_input
 	duration = tgui_input_number(usr, "Set the duration of the alert in deci-seconds.", "Duration", 5 SECONDS, 5 MINUTES, 5 SECONDS, 20 SECONDS)
 	var/confirm = tgui_alert(usr, "Are you sure you wish to send '[message]' to all players for [(duration / 10)] seconds?", "Confirm", list("Yes", "No"), 20 SECONDS)

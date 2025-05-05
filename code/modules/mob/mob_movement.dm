@@ -80,7 +80,8 @@
 	if(mob && mob.control_object)
 		if(mob.control_object.density)
 			step(mob.control_object,direct)
-			if(!mob.control_object) return
+			if(!mob.control_object)
+				return
 			mob.control_object.setDir(direct)
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
@@ -94,6 +95,12 @@
 	var/mob/living/living_mob
 	if(isliving(mob))
 		living_mob = mob
+
+	if(ishuman(living_mob)) // Might as well just do it here than set movement delay to 0
+		var/mob/living/carbon/human/human = living_mob
+		if(HAS_TRAIT(human, TRAIT_HAULED))
+			human.handle_haul_resist()
+			return
 
 	if(world.time < next_movement)
 		return

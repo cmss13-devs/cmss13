@@ -93,10 +93,14 @@
 
 /proc/num2dir(direction)
 	switch(direction)
-		if(1.0) return NORTH
-		if(2.0) return SOUTH
-		if(4.0) return EAST
-		if(8.0) return WEST
+		if(1.0)
+			return NORTH
+		if(2.0)
+			return SOUTH
+		if(4.0)
+			return EAST
+		if(8.0)
+			return WEST
 		else
 			world.log << "UNKNOWN DIRECTION: [direction]"
 
@@ -168,68 +172,112 @@
 //Converts an angle (degrees) into an ss13 direction
 /proc/angle2dir(degree)
 	degree = ((degree+22.5)%365)
-	if(degree < 45) return NORTH
-	if(degree < 90) return NORTHEAST
-	if(degree < 135) return EAST
-	if(degree < 180) return SOUTHEAST
-	if(degree < 225) return SOUTH
-	if(degree < 270) return SOUTHWEST
-	if(degree < 315) return WEST
+	if(degree < 45)
+		return NORTH
+	if(degree < 90)
+		return NORTHEAST
+	if(degree < 135)
+		return EAST
+	if(degree < 180)
+		return SOUTHEAST
+	if(degree < 225)
+		return SOUTH
+	if(degree < 270)
+		return SOUTHWEST
+	if(degree < 315)
+		return WEST
 	return NORTHWEST
 
 //returns the north-zero clockwise angle in degrees, given a direction
 
 /proc/dir2angle(D)
 	switch(D)
-		if(NORTH) return 0
-		if(SOUTH) return 180
-		if(EAST) return 90
-		if(WEST) return 270
-		if(NORTHEAST) return 45
-		if(SOUTHEAST) return 135
-		if(NORTHWEST) return 315
-		if(SOUTHWEST) return 225
-		else return null
+		if(NORTH)
+			return 0
+		if(SOUTH)
+			return 180
+		if(EAST)
+			return 90
+		if(WEST)
+			return 270
+		if(NORTHEAST)
+			return 45
+		if(SOUTHEAST)
+			return 135
+		if(NORTHWEST)
+			return 315
+		if(SOUTHWEST)
+			return 225
+		else
+			return null
 
 //returns a number to be used to index lists; based off dmi direction ordering: 1:SOUTH(2) 2:NORTH(1) 3:EAST(4) 4:WEST(8) etc...
 
 /proc/dir2indexnum(D)
 	switch(D)
-		if(NORTH) return 2
-		if(SOUTH) return 1
-		if(EAST) return 3
-		if(WEST) return 4
-		if(NORTHEAST) return 7
-		if(SOUTHEAST) return 5
-		if(NORTHWEST) return 8
-		if(SOUTHWEST) return 6
-		else return null
+		if(NORTH)
+			return 2
+		if(SOUTH)
+			return 1
+		if(EAST)
+			return 3
+		if(WEST)
+			return 4
+		if(NORTHEAST)
+			return 7
+		if(SOUTHEAST)
+			return 5
+		if(NORTHWEST)
+			return 8
+		if(SOUTHWEST)
+			return 6
+		else
+			return null
 
 //Converts a blend_mode constant to one acceptable to icon.Blend()
 /proc/blendMode2iconMode(blend_mode)
 	switch(blend_mode)
-		if(BLEND_MULTIPLY) return ICON_MULTIPLY
-		if(BLEND_ADD)   return ICON_ADD
-		if(BLEND_SUBTRACT) return ICON_SUBTRACT
-		else    return ICON_OVERLAY
+		if(BLEND_MULTIPLY)
+			return ICON_MULTIPLY
+		if(BLEND_ADD)
+			return ICON_ADD
+		if(BLEND_SUBTRACT)
+			return ICON_SUBTRACT
+		else
+			return ICON_OVERLAY
 
 //Converts a rights bitfield into a string
 /proc/rights2text(rights,seperator="")
-	if(rights & R_BUILDMODE) . += "[seperator]+BUILDMODE"
-	if(rights & R_ADMIN) . += "[seperator]+ADMIN"
-	if(rights & R_BAN) . += "[seperator]+BAN"
-	if(rights & R_SERVER) . += "[seperator]+SERVER"
-	if(rights & R_DEBUG) . += "[seperator]+DEBUG"
-	if(rights & R_POSSESS) . += "[seperator]+POSSESS"
-	if(rights & R_PERMISSIONS) . += "[seperator]+PERMISSIONS"
-	if(rights & R_STEALTH) . += "[seperator]+STEALTH"
-	if(rights & R_COLOR) . += "[seperator]+COLOR"
-	if(rights & R_VAREDIT) . += "[seperator]+VAREDIT"
-	if(rights & R_SOUNDS) . += "[seperator]+SOUND"
-	if(rights & R_SPAWN) . += "[seperator]+SPAWN"
-	if(rights & R_MOD) . += "[seperator]+MODERATOR"
-	if(rights & R_MENTOR) . += "[seperator]+MENTOR"
-	if(rights & R_NOLOCK) . += "[seperator]+NOLOCK"
+	if(rights & R_BUILDMODE)
+		. += "[seperator]+BUILDMODE"
+	if(rights & R_ADMIN)
+		. += "[seperator]+ADMIN"
+	if(rights & R_BAN)
+		. += "[seperator]+BAN"
+	if(rights & R_SERVER)
+		. += "[seperator]+SERVER"
+	if(rights & R_DEBUG)
+		. += "[seperator]+DEBUG"
+	if(rights & R_POSSESS)
+		. += "[seperator]+POSSESS"
+	if(rights & R_PERMISSIONS)
+		. += "[seperator]+PERMISSIONS"
+	if(rights & R_STEALTH)
+		. += "[seperator]+STEALTH"
+	if(rights & R_COLOR)
+		. += "[seperator]+COLOR"
+	if(rights & R_VAREDIT)
+		. += "[seperator]+VAREDIT"
+	if(rights & R_SOUNDS)
+		. += "[seperator]+SOUND"
+	if(rights & R_SPAWN)
+		. += "[seperator]+SPAWN"
+	if(rights & R_MOD)
+		. += "[seperator]+MODERATOR"
+	if(rights & R_MENTOR)
+		. += "[seperator]+MENTOR"
+	if(rights & R_NOLOCK)
+		. += "[seperator]+NOLOCK"
 	return .
 
 /// Return html to load a url.

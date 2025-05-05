@@ -259,14 +259,16 @@
 		step(I, get_dir(I, src))
 
 /obj/structure/surface/table/attackby(obj/item/W, mob/user, click_data)
-	if(!W) return
+	if(!W)
+		return
 
 	if (W.has_special_table_placement)
 		W.set_to_table(src)
 		return
 
 	if(istype(W, /obj/item/grab) && get_dist(src, user) <= 1)
-		if(isxeno(user)) return
+		if(isxeno(user))
+			return
 		var/obj/item/grab/G = W
 		if(istype(G.grabbed_thing, /mob/living))
 			var/mob/living/M = G.grabbed_thing
@@ -561,7 +563,8 @@
 				SPAN_NOTICE("You start weakening [src]"))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if (do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn()) return
+					if(!src || !WT.isOn())
+						return
 					user.visible_message(SPAN_NOTICE("[user] weakens [src]."),
 					SPAN_NOTICE("You weaken [src]"))
 					src.status = RTABLE_WEAKENED
@@ -570,7 +573,8 @@
 				SPAN_NOTICE("You start welding [src] back together."))
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn()) return
+					if(!src || !WT.isOn())
+						return
 					user.visible_message(SPAN_NOTICE("[user] welds [src] back together."),
 					SPAN_NOTICE("You weld [src] back together."))
 					status = RTABLE_NORMAL
@@ -638,7 +642,7 @@
 /obj/structure/surface/rack
 	name = "rack"
 	desc = "A bunch of metal shelves stacked on top of eachother. Excellent for storage purposes, less so as cover."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/tables.dmi'
 	icon_state = "rack"
 	density = TRUE
 	layer = TABLE_LAYER

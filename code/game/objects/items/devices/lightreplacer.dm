@@ -41,7 +41,7 @@
 /obj/item/device/lightreplacer
 
 	name = "light replacer"
-	desc = "A device to automatically replace lights. Refill with working lightbulbs."
+	desc = "A device to automatically replace lights. Can be refill with working lightbulbs and sheets of glass, and can recycle broken lightbulbs."
 
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "lightreplacer0"
@@ -54,51 +54,59 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
+	matter = list("metal" = 20,"glass" = 50)
 
 	var/max_uses = 50
-	var/uses = 0
+	var/uses = 50
 	var/failmsg = ""
 	var/charge = 1
+	var/recycle = 0
+	var/max_recycle = 3
+
+/obj/item/device/lightreplacer/empty
+	uses = 0
 
 /obj/item/device/lightreplacer/Initialize()
 	. = ..()
-	uses = max_uses
 	failmsg = "The [name]'s refill light blinks red."
 
 /obj/item/device/lightreplacer/get_examine_text(mob/user)
 	. = ..()
-	. += "It has [uses] lights remaining."
+	. += "It has [uses] lights remaining, and [recycle] broken lights stored."
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/sheet/glass))
-		var/obj/item/stack/sheet/glass/G = W
+		var/obj/item/stack/sheet/glass/glass = W
 		if(uses >= max_uses)
-			to_chat(user, SPAN_WARNING("[src.name] is full."))
+			to_chat(user, SPAN_WARNING("[src] is full."))
 			return
-		else if(G.use(1))
+		else if(glass.use(1))
 			AddUses(5)
-			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src.name]. You have [uses] lights remaining."))
+			to_chat(user, SPAN_NOTICE("You insert a piece of glass into the [src]. You have [uses] lights remaining."))
 			return
 		else
 			to_chat(user, SPAN_WARNING("You need one sheet of glass to replace lights."))
 
 	if(istype(W, /obj/item/light_bulb))
-		var/obj/item/light_bulb/L = W
-		if(L.status == 0) // LIGHT OKAY
+		var/obj/item/light_bulb/bulb = W
+		if(bulb.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
 				AddUses(1)
-				to_chat(user, "You insert the [L.name] into the [src.name]. You have [uses] lights remaining.")
+				to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src]. You have [uses] lights remaining."))
 				user.drop_held_item()
-				qdel(L)
+				qdel(bulb)
 				return
 		else
-			to_chat(user, "You need a working light.")
+			Recycle()
+			to_chat(user, SPAN_NOTICE("You insert the [bulb] into [src] for recycling."))
+			user.drop_held_item()
+			qdel(bulb)
 			return
 
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
 	..()
-	to_chat(usr, "It has [uses] lights remaining.")
+	to_chat(usr, "It has [uses] lights remaining, and has [recycle] broken lights stored.")
 
 /obj/item/device/lightreplacer/update_icon()
 	icon_state = "lightreplacer0"
@@ -106,12 +114,12 @@
 
 /obj/item/device/lightreplacer/proc/Use(mob/user)
 
-	playsound(src.loc, 'sound/machines/click.ogg', 25, 1)
 	AddUses(-1)
 	return 1
 
 // Negative numbers will subtract
 /obj/item/device/lightreplacer/proc/AddUses(amount = 1)
+	playsound(src, 'sound/machines/click.ogg', 25, 1)
 	uses = min(max(uses + amount, 0), max_uses)
 
 /obj/item/device/lightreplacer/proc/Charge(mob/user)
@@ -120,42 +128,48 @@
 		AddUses(1)
 		charge = 1
 
+/obj/item/device/lightreplacer/proc/Recycle(mob/living/U)
+	if(recycle == max_recycle)
+		recycle = 0
+		AddUses(1)
+		playsound(src, 'sound/machines/ding.ogg', 5, 1)
+		return
+	else
+		playsound(src, 'sound/machines/click.ogg', 25, 1)
+		recycle += 1
+
 /obj/item/device/lightreplacer/proc/ReplaceLight(obj/structure/machinery/light/target, mob/living/U)
 
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
-			if(!Use(U)) return
+			if(!Use(U))
+				return
 			to_chat(U, SPAN_NOTICE("You replace the [target.fitting] with [src]."))
 
 			if(target.status != LIGHT_EMPTY)
 
-				var/obj/item/light_bulb/L1 = new target.light_type(target.loc)
-				L1.status = target.status
-				L1.rigged = target.rigged
-				L1.brightness = target.brightness
-				L1.switchcount = target.switchcount
 				target.switchcount = 0
-				L1.update()
-
 				target.status = LIGHT_EMPTY
 				target.update()
 
-			var/obj/item/light_bulb/L2 = new target.light_type()
+				Recycle()
 
-			target.status = L2.status
-			target.switchcount = L2.switchcount
+			var/obj/item/light_bulb/bulb = new target.light_type()
+
+			target.status = bulb.status
+			target.switchcount = bulb.switchcount
 			target.rigged = FALSE
-			target.brightness = L2.brightness
+			target.brightness = bulb.brightness
 			target.on = target.has_power()
 			target.update()
-			qdel(L2)
+			qdel(bulb)
 
 			if(target.on && target.rigged)
 				target.explode()
 			return
 
 		else
-			to_chat(U, failmsg)
+			to_chat(U, SPAN_DANGER(failmsg))
 			return
 	else
 		to_chat(U, "There is a working [target.fitting] already inserted.")

@@ -75,7 +75,7 @@
 
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
-	name = "general's mateba customization kit case"
+	name = "luxurious mateba customization kit case"
 	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for general-grade golden Matebas and comes with golden barrel attachments."
 
 /obj/item/storage/mateba_case/general/fill_preset_inventory()

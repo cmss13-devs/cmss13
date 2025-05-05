@@ -30,7 +30,8 @@
 	. = ..()
 
 /obj/item/device/assembly/signaller/activate()
-	if(cooldown > 0) return 0
+	if(cooldown > 0)
+		return 0
 	cooldown = 2
 	addtimer(CALLBACK(src, PROC_REF(process_cooldown)), 1 SECONDS)
 
@@ -101,7 +102,8 @@
 	.["min_signal"] = SIGNALLER_CODE_MIN
 
 /obj/item/device/assembly/signaller/proc/signal()
-	if(!radio_connection) return
+	if(!radio_connection)
+		return
 
 	var/datum/signal/signal = new
 	signal.source = src

@@ -25,8 +25,7 @@
         "/datum/equipment_preset/survivor/hybrisa/heavy_vehicle_operator",
         "/datum/equipment_preset/survivor/corporate/hybrisa",
         "/datum/equipment_preset/survivor/hybrisa/wey_po",
-        "/datum/equipment_preset/survivor/hybrisa/corporate_goon",
-        "/datum/equipment_preset/survivor/clf"
+        "/datum/equipment_preset/survivor/hybrisa/corporate_goon"
     ],
 	"synth_survivor_types": [
         "/datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor",
@@ -51,6 +50,7 @@
     ],
     "environment_traits": { "Fog": true },
     "traits": [{ "Ground": true }],
+    "nightmare_path": "maps/Nightmare/maps/LV759_Hybrisa_Prospera/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,
         "xeno_hive_bravo": 0,

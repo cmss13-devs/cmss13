@@ -198,14 +198,22 @@
 
 //Used for controling tunnel exiting and returning
 /obj/structure/tunnel/clicked(mob/user, list/mods)
-	if(!isxeno(user) || !isfriendly(user))
+	if(!isxeno(user))
 		return ..()
-	var/mob/living/carbon/xenomorph/X = user
-	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
+
+	var/mob/living/carbon/xenomorph/xeno_user = user
+
+	if(!isfriendly(user))
+		if(mods[ALT_CLICK] && exit_tunnel(xeno_user))
+			return TRUE
+		return ..()
+
+	if(mods[CTRL_CLICK] && pick_tunnel(xeno_user))//Returning to original tunnel
 		return TRUE
-	else if(mods["alt"] && exit_tunnel(X))//Exiting the tunnel
+	else if(mods[ALT_CLICK] && exit_tunnel(xeno_user))//Exiting the tunnel
 		return TRUE
-	. = ..()
+
+	return ..()
 
 /obj/structure/tunnel/attack_larva(mob/living/carbon/xenomorph/M)
 	. = attack_alien(M)
@@ -214,7 +222,7 @@
 	if(!istype(M) || M.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 
-	if(!isfriendly(M))
+	if(M.hivenumber != hivenumber)
 		if(M.mob_size < MOB_SIZE_BIG)
 			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
@@ -245,6 +253,9 @@
 		return XENO_NO_DELAY_ACTION
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
+
+	if(M.banished)
+		return
 
 	if(M.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY

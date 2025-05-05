@@ -35,8 +35,10 @@
 		else
 			src.name = "Glass Case"
 	else if(istype(I, /obj/item/reagent_container/syringe))
-		if(!src.imp) return
-		if(!src.imp.allow_reagents) return
+		if(!src.imp)
+			return
+		if(!src.imp.allow_reagents)
+			return
 		if(src.imp.reagents.total_volume >= src.imp.reagents.maximum_volume)
 			to_chat(user, SPAN_DANGER("[src] is full."))
 		else

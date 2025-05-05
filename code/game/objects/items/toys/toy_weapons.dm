@@ -109,8 +109,10 @@
 
 
 /obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-	if(!isturf(target.loc) || target == user) return
-	if(flag) return
+	if(!isturf(target.loc) || target == user)
+		return
+	if(flag)
+		return
 
 	if (locate (/obj/structure/surface/table, src.loc))
 		return
@@ -124,12 +126,15 @@
 
 		for(var/i=0, i<6, i++)
 			if (D)
-				if(D.loc == trg) break
+				if(D.loc == trg)
+					break
 				step_towards(D,trg)
 
 				for(var/mob/living/M in D.loc)
-					if(!istype(M,/mob/living)) continue
-					if(M == user) continue
+					if(!istype(M,/mob/living))
+						continue
+					if(M == user)
+						continue
 					for(var/mob/O in viewers(GLOB.world_view_size, D))
 						O.show_message(SPAN_DANGER("[M] was hit by the foam dart!"), SHOW_MESSAGE_VISIBLE)
 					new /obj/item/toy/crossbow_ammo(M.loc)
@@ -137,7 +142,8 @@
 					return
 
 				for(var/atom/A in D.loc)
-					if(A == user) continue
+					if(A == user)
+						continue
 					if(A.density)
 						new /obj/item/toy/crossbow_ammo(A.loc)
 						qdel(D)

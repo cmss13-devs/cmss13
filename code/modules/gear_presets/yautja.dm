@@ -31,22 +31,33 @@
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/new_human)
 	return //No vanity items for Yautja!
 
+/datum/equipment_preset/yautja/load_status(mob/living/carbon/human/new_human)
+	new_human.nutrition = NUTRITION_VERYLOW //Eat before you hunt.
+
 /datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	var/caster_material = "ebony"
-	var/translator_type = "Modern"
+	var/translator_type = PRED_TECH_MODERN
+	var/invisibility_sound = PRED_TECH_MODERN
 
 	if(!mob_client)
 		mob_client = new_human.client
 	if(mob_client?.prefs)
 		caster_material = mob_client.prefs.predator_caster_material
 		translator_type = mob_client.prefs.predator_translator_type
+		invisibility_sound = mob_client.prefs.predator_invisibility_sound
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, caster_material, clan_rank), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(new_human, translator_type, invisibility_sound, caster_material, clan_rank), WEAR_HANDS)
+
+	if(new_human.client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/overseer(new_human), WEAR_L_EAR)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
+
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/new_human, randomise)
 	var/final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
-	new_human.gender = MALE
-	new_human.age = 100
+	new_human.gender = pick(80;MALE,20;FEMALE) // Female Hunters are rare
+	new_human.age = rand(100,150)
 	new_human.flavor_text = ""
 	new_human.flavor_texts["general"] = new_human.flavor_text
 
@@ -60,8 +71,7 @@
 			final_name = capitalize(pick(GLOB.pred_names)) + " " + capitalize(pick(GLOB.pred_last_names))
 	new_human.change_real_name(new_human, final_name)
 
-// YOUNG BLOOD
-/datum/equipment_preset/yautja/youngblood
+/datum/equipment_preset/yautja/youngblood //normal WL youngblood rank
 	name = "Yautja Young"
 	minimap_icon = "predator_young"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -79,11 +89,6 @@
 	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 	clan_rank = CLAN_RANK_BLOODED_INT
 
-/datum/equipment_preset/yautja/blooded/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
-
-
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
@@ -91,10 +96,6 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 	clan_rank = CLAN_RANK_ELITE_INT
-
-/datum/equipment_preset/yautja/elite/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(new_human), WEAR_L_EAR)
-	return ..()
 
 /datum/equipment_preset/yautja/elite/load_name(mob/living/carbon/human/new_human, randomise)
 	. = ..()
@@ -114,10 +115,6 @@
 	var/new_name = "Elder [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
 
-/datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(new_human), WEAR_L_EAR)
-	return ..()
-
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
 	name = "Yautja Leader"
@@ -130,10 +127,6 @@
 	. = ..()
 	var/new_name = "Clan Leader [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
-
-/datum/equipment_preset/yautja/leader/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(new_human), WEAR_L_EAR)
-	return ..()
 
 // ANCIENT
 /datum/equipment_preset/yautja/ancient
@@ -148,6 +141,26 @@
 	var/new_name = "Ancient [new_human.real_name]"
 	new_human.change_real_name(new_human, new_name)
 
-/datum/equipment_preset/yautja/ancient/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(new_human), WEAR_L_EAR)
-	return ..()
+/datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
+	name = "Yautja Young (non-WL)"
+	minimap_icon = "predator_young"
+	rank = "Young Blood"
+	faction = FACTION_YAUTJA_YOUNG
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/yautja/non_wl/load_name(mob/living/carbon/human/new_human, randomise)
+	. = ..()
+	var/new_name = "Young [new_human.real_name]"
+	new_human.change_real_name(new_human, new_name)
+
+/datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
+	name = "Yautja Youngblood pack leader (non-WL)"
+	minimap_icon = "predator_young"
+	rank = "Young Blood"
+	faction = FACTION_YAUTJA_YOUNG
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
+/datum/equipment_preset/yautja/non_wl_leader/load_name(mob/living/carbon/human/new_human, randomise)
+	. = ..()
+	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
+	new_human.change_real_name(new_human, new_name)

@@ -73,7 +73,7 @@
 			t += "<HR>Total demand: [total_demand] W</FONT>"
 		t += "</PRE></TT>"
 
-	show_browser(user, t, "Power Monitoring", "powcomp", "size=420x900")
+	show_browser(user, t, "Power Monitoring", "powcomp", width = 420, height = 900)
 
 
 /obj/structure/machinery/power/monitor/Topic(href, href_list)

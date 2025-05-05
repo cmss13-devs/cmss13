@@ -183,7 +183,8 @@
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
 	set name = "Generate Powernets"
-	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes") return
+	if(alert("Are you sure you want to do this?",, "Yes", "No") != "Yes")
+		return
 	makepowernets()
 	message_admins("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
 
@@ -357,7 +358,7 @@
 		return
 
 	to_chat(src, SPAN_INFO("You can now right click to use inspect on browsers."))
-	winset(src, "", "browser-options=byondstorage,find,devtools")
+	winset(src, "", "browser-options=byondstorage,find,devtools,refresh")
 
 #ifdef TESTING
 GLOBAL_LIST_EMPTY(dirty_vars)

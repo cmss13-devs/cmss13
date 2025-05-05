@@ -115,7 +115,7 @@
 	trait = /datum/character_trait/skills/cosmartgun
 
 /obj/item/pamphlet/skill/cosmartgun/can_use(mob/living/carbon/human/user)
-	if(user.job != JOB_CO)
+	if(user.job != JOB_CO && user.job != JOB_WO_CO)
 		to_chat(user, SPAN_WARNING("Only the Commanding Officer can use this."))
 		return
 	return ..()
@@ -160,6 +160,39 @@
 	ID.minimap_icon_override = "loader"
 	user.update_minimap_icon()
 	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Loader")
+
+/obj/item/pamphlet/skill/mortar_operator
+	name = "Mortar Operator instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a mortar on it."
+	icon_state = "pamphlet_mortar"
+	trait = /datum/character_trait/skills/mortar
+	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/skill/mortar_operator/can_use(mob/living/carbon/human/user)
+	if(user.job != JOB_SQUAD_MARINE)
+		to_chat(user, SPAN_WARNING("Only squad riflemen can use this."))
+		return
+
+	var/obj/item/card/id/ID = user.get_idcard()
+	if(!ID) //not wearing an ID
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+	if(!ID.check_biometrics(user))
+		to_chat(user, SPAN_WARNING("You should wear your ID before doing this."))
+		return FALSE
+
+	return ..()
+
+/obj/item/pamphlet/skill/mortar_operator/on_use(mob/living/carbon/human/user)
+	. = ..()
+	user.rank_fallback = "mortar"
+	user.hud_set_squad()
+
+	var/obj/item/card/id/ID = user.get_idcard()
+	ID.set_assignment((user.assigned_squad ? (user.assigned_squad.name + " ") : "") + "Mortar Operator")
+	ID.minimap_icon_override = "mortar"
+	user.update_minimap_icon()
+	GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), "Mortar Operator")
 
 /obj/item/pamphlet/skill/k9_handler
 	name = "K9 handler instructional pamphlet"

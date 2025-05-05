@@ -491,7 +491,8 @@ This function completely restores a damaged organ to perfect condition.
 			//we need to make sure that the wound we are going to worsen is compatible with the type of damage...
 			var/compatible_wounds[] = new
 			for(W in wounds)
-				if(W.can_worsen(type, damage)) compatible_wounds += W
+				if(W.can_worsen(type, damage))
+					compatible_wounds += W
 
 			if(length(compatible_wounds))
 				W = pick(compatible_wounds)
@@ -868,8 +869,10 @@ This function completely restores a damaged organ to perfect condition.
 		wounds.Cut()
 		if(parent && !amputation)
 			var/datum/wound/W
-			if(max_damage < 50) W = new/datum/wound/lost_limb/small(max_damage)
-			else W = new/datum/wound/lost_limb(max_damage)
+			if(max_damage < 50)
+				W = new/datum/wound/lost_limb/small(max_damage)
+			else
+				W = new/datum/wound/lost_limb(max_damage)
 
 			parent.wounds += W
 			parent.update_damages()
@@ -894,8 +897,10 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_l_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
+				owner.lip_style = null
 				owner.update_hair()
-				if(owner.species) owner.species.handle_head_loss(owner)
+				if(owner.species)
+					owner.species.handle_head_loss(owner)
 			if(BODY_FLAG_ARM_RIGHT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					organ = new /obj/item/robot_parts/arm/r_arm(owner.loc)
@@ -972,8 +977,8 @@ This function completely restores a damaged organ to perfect condition.
 
 			if(organ)
 				//Throw organs around
-				var/lol = pick(GLOB.cardinals)
-				step(organ,lol)
+				var/dir_to_throw = pick(GLOB.cardinals)
+				step(organ,dir_to_throw)
 
 		owner.update_body() //Among other things, this calls update_icon() and updates our visuals.
 		owner.update_med_icon()
@@ -1250,21 +1255,22 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(W)
 		W.forceMove(owner)
 
-/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, indestructible_splints = FALSE)
+/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/splint, mob/living/user, mob/living/carbon/human/target, indestructible_splints = FALSE)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
 		if (target == user)
-			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
+			user.visible_message(SPAN_WARNING("[user] fumbles with [splint]"), SPAN_WARNING("You fumble with [splint]..."))
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
 			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
-				SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
-				SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
-				SPAN_NOTICE("[user] finishes applying [S] to [possessive_their] [display_name]."))
+				SPAN_HELPFUL("You finish applying <b>[splint]</b> to [possessive] [display_name]."),
+				SPAN_HELPFUL("[user] finishes applying <b>[splint]</b> to your [display_name]."),
+				SPAN_NOTICE("[user] finishes applying [splint] to [possessive_their] [display_name]."))
 			status |= LIMB_SPLINTED
+			SEND_SIGNAL(src, COMSIG_LIVING_LIMB_SPLINTED, user)
 			if(indestructible_splints)
 				status |= LIMB_SPLINTED_INDESTRUCTIBLE
 

@@ -363,6 +363,7 @@
 
 		/obj/item/storage/box/matches = 5,
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 10,
+		/obj/item/storage/fancy/cigar/matchbook/balaji_imperial = 10,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 10,
 		/obj/item/tool/lighter/random = 20,
 		/obj/item/tool/lighter/zippo/black = 5,
@@ -379,6 +380,7 @@
 
 		/obj/item/storage/box/matches = 2,
 		/obj/item/storage/fancy/cigar/matchbook/exec_select = 7,
+		/obj/item/storage/fancy/cigar/matchbook/balaji_imperial = 6,
 		/obj/item/storage/fancy/cigar/matchbook/wy_gold = 5,
 		/obj/item/tool/lighter/random = 3,
 		/obj/item/tool/lighter/zippo/black = 15,
@@ -411,6 +413,7 @@
 	name = "\improper SecTech"
 	desc = "A security equipment vendor."
 	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	product_slogans = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(ACCESS_MARINE_BRIG)
@@ -424,7 +427,6 @@
 		/obj/item/reagent_container/spray/investigation = 4,
 		/obj/item/weapon/baton = 4,
 		/obj/item/device/flashlight = 4,
-		/obj/item/storage/belt/security/MP = 4,
 		/obj/item/device/flash = 5,
 		/obj/item/reagent_container/food/snacks/donut/normal = 12,
 		/obj/item/storage/box/evidence = 6,
@@ -437,6 +439,10 @@
 		/obj/item/clothing/glasses/sunglasses/sechud = 3,
 		/obj/item/device/radio/headset = 6,
 		/obj/item/tape/regulation = 5,
+		/obj/item/device/taperecorder = 3,
+		/obj/item/device/clue_scanner = 3,
+		/obj/item/device/camera = 8,
+		/obj/item/device/camera_film = 8,
 	)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
 
@@ -494,6 +500,13 @@
 	premium = list(/obj/item/reagent_container/glass/bottle/ammonia = 10,/obj/item/reagent_container/glass/bottle/diethylamine = 5)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
+/obj/structure/machinery/vending/hydronutrients/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	hacking_safety = TRUE
+
+/obj/structure/machinery/vending/hydronutrients/yautja/checking_id()
+	return FALSE
+
 /obj/structure/machinery/vending/hydroseeds
 	name = "\improper MegaSeed Servitor"
 	desc = "When you need seeds fast!"
@@ -516,6 +529,13 @@
 		/obj/item/seeds/reishimycelium = 1,
 	)
 	premium = list(/obj/item/toy/waterflower = 1)
+
+/obj/structure/machinery/vending/hydroseeds/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	hacking_safety = TRUE
+
+/obj/structure/machinery/vending/hydroseeds/yautja/checking_id()
+	return FALSE
 
 /obj/structure/machinery/vending/dinnerware
 	name = "\improper Dinnerware"
@@ -564,7 +584,8 @@
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
 		var/price = prices[typepath]
-		if(isnull(amount)) amount = 1
+		if(isnull(amount))
+			amount = 1
 
 		var/obj/item/temp_path = typepath
 		var/datum/data/vending_product/R = shared_products[i]

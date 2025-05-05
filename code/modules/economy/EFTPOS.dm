@@ -185,7 +185,8 @@
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Account not found.")]")
 			if("trans_purpose")
 				var/choice = input("Enter reason for EFTPOS transaction", "Transaction purpose")
-				if(choice) transaction_purpose = choice
+				if(choice)
+					transaction_purpose = choice
 			if("trans_value")
 				var/try_num = tgui_input_number(usr, "Enter amount for EFTPOS transaction", "Transaction amount")
 				if(try_num < 0)

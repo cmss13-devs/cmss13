@@ -10,6 +10,7 @@
 #define iszombie(A) (ishuman(A) && istype(A?:species, /datum/species/zombie))
 #define ismonkey(A) (ishuman(A) && istype(A?:species, /datum/species/monkey))
 #define isyautja(A) (ishuman(A) && istype(A?:species, /datum/species/yautja))
+#define isthrall(A) (ishuman(A) && istype(A?:species, /datum/species/human/hero/thrall))
 #define isresearcher(A) (ishuman(A) && A.job == "Researcher")
 #define isSEA(A) (ishuman(A) && A.job == "Senior Enlisted Advisor")
 #define issynth(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic))
@@ -17,6 +18,7 @@
 #define isworkingjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial/working_joe))
 #define ishazardjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial/working_joe/hazard))
 #define isuppjoe(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial/working_joe/upp))
+#define iswydroid(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial/wy_droid))
 #define isinfiltratorsynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/infiltrator))
 #define isk9synth(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/synth_k9))
 
@@ -33,4 +35,4 @@
 
 //job/role helpers
 #define ismarinejob(J) (istype(J, /datum/job/marine))
-#define issurvivorjob(J) (J == JOB_SURVIVOR)
+#define issurvivorjob(J) ((J == JOB_SURVIVOR) || (J == JOB_SYNTH_SURVIVOR))

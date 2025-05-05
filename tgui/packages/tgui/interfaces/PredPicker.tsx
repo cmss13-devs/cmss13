@@ -1,9 +1,8 @@
-import { hexToHsva, HsvaColor, hsvaToHex } from 'common/color';
-import { BooleanLike } from 'common/react';
+import { hexToHsva, type HsvaColor, hsvaToHex } from 'common/color';
+import type { BooleanLike } from 'common/react';
 import { capitalizeFirst } from 'common/string';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -16,8 +15,9 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { ColorSelector } from './ColorPickerModal';
 import { HairPickerElement } from './HairPicker';
 
@@ -34,6 +34,7 @@ type PredData = {
   can_use_legacy: BooleanLike;
   use_legacy: string;
   translator_type: string;
+  invisibility_sound: string;
 
   cape_color: string;
 
@@ -67,6 +68,7 @@ type PredData = {
 
   materials: string[];
   translators: string[];
+  invisibility_sounds: string[];
   legacies: string[];
 };
 
@@ -124,6 +126,7 @@ export const PredPicker = () => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Age">
                   <NumberInput
+                    step={1}
                     value={age}
                     minValue={175}
                     maxValue={3000}
@@ -212,6 +215,8 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
 
     translators,
     translator_type,
+    invisibility_sounds,
+    invisibility_sound,
 
     legacies,
     use_legacy,
@@ -323,6 +328,15 @@ const PredEquipment = (props: { readonly pick: (_: ModalOptions) => void }) => {
                 options={translators}
                 selected={translator_type}
                 onSelected={(val) => act('translator_type', { selected: val })}
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="Invisibility Sound">
+              <Dropdown
+                options={invisibility_sounds}
+                selected={invisibility_sound}
+                onSelected={(val) =>
+                  act('invisibility_sound', { selected: val })
+                }
               />
             </LabeledList.Item>
             {!!can_use_legacy && (

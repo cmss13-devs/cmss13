@@ -23,12 +23,15 @@
 	)
 	shrapnel_spread = 60
 	use_dir = TRUE
+
 	var/iff_signal = FACTION_MARINE
 	var/triggered = FALSE
 	var/hard_iff_lock = FALSE
 	var/obj/effect/mine_tripwire/tripwire
-	var/sensor_for_small = TRUE
-	var/hit_count = 0
+	/// Whether this mine will ignore MOB_SIZE_XENO_VERY_SMALL or smaller xenos - only configureable if customizeable
+	var/ignore_small_xeno = FALSE
+	/// How many times a xeno projectile has hit this mine
+	var/spit_hit_count = 0
 
 	var/map_deployed = FALSE
 
@@ -63,6 +66,10 @@
 		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return TRUE
 
+/obj/item/explosive/mine/get_examine_text(mob/user)
+	. = ..()
+	if(customizable && !isxeno(user))
+		. += " The sensitivity dial is turned [ignore_small_xeno ? "down" : "up"]"
 
 
 //Arming
@@ -114,16 +121,6 @@
 
 
 /obj/item/explosive/mine/attackby(obj/item/tool, mob/user)
-	if(HAS_TRAIT(tool, TRAIT_TOOL_WIRECUTTERS))
-		if(customizable)
-			if(sensor_for_small == FALSE)
-				sensor_for_small = TRUE
-				to_chat(usr,SPAN_NOTICE("You have reverted [src] to its original sensitivity."))
-				return TRUE
-			if(sensor_for_small == TRUE)
-				sensor_for_small = FALSE
-				to_chat(usr,SPAN_NOTICE("You have adjusted [src] to be less sensitive."))
-				return TRUE
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
@@ -132,7 +129,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts disarming [src]."),
 				SPAN_NOTICE("You start disarming [src]."))
 			else
-				user.visible_message(SPAN_NOTICE("[user] starts fiddling with \the [src], trying to disarm it."),
+				user.visible_message(SPAN_NOTICE("[user] starts fiddling with [src], trying to disarm it."),
 				SPAN_NOTICE("You start disarming [src], but you don't know its IFF data. This might end badly..."))
 			if(!do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 				user.visible_message(SPAN_WARNING("[user] stops disarming [src]."),
@@ -142,7 +139,7 @@
 				if(prob(75))
 					triggered = TRUE
 					if(tripwire)
-						var/direction = GLOB.reverse_dir[src.dir]
+						var/direction = GLOB.reverse_dir[dir]
 						var/step_direction = get_step(src, direction)
 						tripwire.forceMove(step_direction)
 					prime()
@@ -151,6 +148,16 @@
 			user.visible_message(SPAN_NOTICE("[user] finishes disarming [src]."),
 			SPAN_NOTICE("You finish disarming [src]."))
 			disarm()
+	else if(HAS_TRAIT(tool, TRAIT_TOOL_WIRECUTTERS))
+		if(customizable)
+			if(ignore_small_xeno)
+				to_chat(user, SPAN_NOTICE("You have reverted [src] to its original sensitivity."))
+			else
+				to_chat(user, SPAN_NOTICE("You have adjusted [src] to be less sensitive."))
+			ignore_small_xeno = !ignore_small_xeno
+			return
+		to_chat(user, SPAN_NOTICE("[src] has no sensitivity dial to adjust."))
+		return
 
 	else
 		return ..()
@@ -197,35 +204,30 @@
 
 
 //Mine can also be triggered if you "cross right in front of it" (same tile)
-/obj/item/explosive/mine/Crossed(atom/target)
+/obj/item/explosive/mine/Crossed(atom/movable/target)
 	..()
-	if(isliving(target))
-		var/mob/living/enemy = target
-		if(!enemy.stat == DEAD)//so dragged corpses don't trigger mines.
-			return
-		else
-			try_to_prime(target)
+	try_to_prime(target)
 
-/obj/item/explosive/mine/Collided(atom/movable/AM)
-	try_to_prime(AM)
+/obj/item/explosive/mine/Collided(atom/movable/target)
+	try_to_prime(target)
 
 
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/enemy)
 	if(!active || triggered || (customizable && !detonator))
 		return
-	if(sensor_for_small == FALSE)
-		if(isxeno(enemy))
-			var/mob/living/carbon/xenomorph/xeno = enemy
-			if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
-				return
 	if(!istype(enemy))
 		return
 	if(enemy.stat == DEAD)
 		return
+	if(ignore_small_xeno && isxeno(enemy))
+		var/mob/living/carbon/xenomorph/xeno = enemy
+		if(xeno.mob_size <= MOB_SIZE_XENO_VERY_SMALL)
+			return
 	if(enemy.get_target_lock(iff_signal))
 		return
 	if(HAS_TRAIT(enemy, TRAIT_ABILITY_BURROWED))
 		return
+
 	enemy.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [enemy] moves in front of it."),
 	SPAN_DANGER("[icon2html(src, enemy)] The [name] clicks as you move in front of it."),
 	SPAN_DANGER("You hear a click."))
@@ -286,8 +288,8 @@
 
 /obj/item/explosive/mine/bullet_act(obj/projectile/xeno_projectile)
 	if(!triggered && istype(xeno_projectile.ammo, /datum/ammo/xeno)) //xeno projectile
-		hit_count++
-		if(hit_count >= 2) // Check if hit two times
+		spit_hit_count++
+		if(spit_hit_count >= 2) // Check if hit two times
 			visible_message(SPAN_DANGER("[src] is hit by [xeno_projectile] and violently detonates!")) // Acid is hot for claymore
 			triggered = TRUE
 			prime()

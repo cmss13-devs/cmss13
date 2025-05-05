@@ -324,7 +324,7 @@
 	icon_overlay = "_shallow"
 	var/toxic = 0
 	default_name = "water"
-	weedable = NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/gm/river/desert/update_icon()
 	..()

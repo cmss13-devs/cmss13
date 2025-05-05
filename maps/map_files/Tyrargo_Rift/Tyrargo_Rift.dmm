@@ -6071,6 +6071,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/asphalt,
 /area/tyrargo/indoors/gararge/ground)
 "aqc" = (
@@ -6078,6 +6079,7 @@
 	icon_state = "siding2"
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/asphalt,
 /area/tyrargo/indoors/gararge/ground)
 "aqd" = (
@@ -6085,6 +6087,7 @@
 	icon_state = "siding6"
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/asphalt,
 /area/tyrargo/indoors/gararge/ground)
 "aqe" = (
@@ -53536,6 +53539,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/yellow/north,
 /area/tyrargo/indoors/engineering/upper)
+"cCi" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open_space,
+/area/tyrargo/outdoors/colony_streets/south_east)
 "cCj" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -83307,34 +83314,41 @@
 /area/tyrargo/indoors/security/ground)
 "ecX" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "ecY" = (
 /obj/structure/platform/stone/hybrisa/rockdark/east{
 	layer = 1
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "ecZ" = (
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "eda" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edb" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edc" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edd" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "ede" = (
@@ -83342,6 +83356,7 @@
 /obj/structure/platform/stone/hybrisa/rockdark/east{
 	layer = 1
 	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edf" = (
@@ -83390,15 +83405,18 @@
 /obj/structure/platform/stone/hybrisa/rockdark/north,
 /obj/structure/platform/stone/hybrisa/rockdark/west,
 /obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edj" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
 /obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edl" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edm" = (
@@ -83406,6 +83424,7 @@
 	layer = 1
 	},
 /obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edo" = (
@@ -83432,6 +83451,7 @@
 /area/tyrargo/outdoors/colony_streets/south_east)
 "eds" = (
 /obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edt" = (
@@ -178843,9 +178863,9 @@ chx
 edb
 ecX
 edc
-cjc
-cjc
-cjc
+cCi
+cCi
+cCi
 eda
 ecX
 edc
@@ -179023,16 +179043,16 @@ chS
 chH
 chx
 eds
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
 ecU
 aaK
 dLo
@@ -179205,16 +179225,16 @@ bfi
 chG
 chx
 eds
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
-cjc
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
+cCi
 ecV
 vtG
 aaK
@@ -179389,14 +179409,14 @@ chx
 ede
 ecY
 edd
-cjc
+cCi
 edl
 ecY
 ecY
 ecY
 edd
-cjc
-cjc
+cCi
+cCi
 ecW
 chV
 chV

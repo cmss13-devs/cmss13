@@ -21,7 +21,14 @@
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
-/datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord) //show_radial_menu
+/datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
+	hivelord.available_design = list(
+		/obj/effect/alien/resin/design/speed_node,
+		/obj/effect/alien/resin/design/cost_node,
+		/obj/effect/alien/resin/design/construct_node,
+		/obj/effect/alien/resin/design/upgrade,
+		/obj/effect/alien/resin/design/remove,
+	)
 	hivelord.selected_design = /obj/effect/alien/resin/design/speed_node
 	hivelord.selected_design_mark = /datum/design_mark/resin_wall
 	hivelord.max_design_nodes = 36
@@ -377,7 +384,7 @@
 
 /turf/closed/wall/resin/weedbound
 	name = "weedbound resin wall"
-	desc = "Weird resin wall that solidified too quickly, creating layers of unstable resin."
+	desc = "Weird resin wall that solidified too quickly, creating a strange layered pattern."
 	icon_state = "weedboundresin"
 	walltype = WALL_WEEDBOUND_RESIN
 	var/obj/effect/alien/weeds/bound_weed
@@ -401,13 +408,13 @@
 /turf/closed/wall/resin/weedbound/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this flaky wall appears to have merged with the resin below to hold itself together."
+		. += "On closer examination, this strange wall appears to have merged with the resin below to hold itself together."
 	if(isxeno(user) || isobserver(user))
 		. += "You sense that this resin wall will collapse if the weeds it is merged with disappear."
 
 /obj/structure/mineral_door/resin/weedbound
 	name = "flaky resin door"
-	desc = "Weird resin door that solidified too quickly, creating layers of unstable resin."
+	desc = "Weird resin door that solidified too quickly, creating a strange layered pattern."
 	icon_state = "weedbound resin"
 	mineralType = "weedbound resin"
 	hardness = 1.4
@@ -432,7 +439,7 @@
 /obj/structure/mineral_door/resin/weedbound/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this flaky door appears to have merged with the resin below to hold itself together."
+		. += "On closer examination, this strange door appears to have merged with the resin below to hold itself together."
 	if(isxeno(user) || isobserver(user))
 		. += "You sense that this resin door will collapse if the weeds it is merged with disappear."
 
@@ -608,32 +615,41 @@
 			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin walls, membrane and doors!"))
 			return
 
-		if(!check_and_use_plasma_owner(plasma_cost))
-			return
-
 		if(istype(target_atom, /turf/closed/wall/resin) || istype(target_atom, /turf/closed/wall/resin/membrane))
 			var/turf/closed/wall/resin/wall = target_atom
+
 			if(wall.hivenumber != xeno.hivenumber)
 				to_chat(xeno, SPAN_XENOWARNING("[wall] does not belong to our hive!"))
 				return
+
+			if(wall.upgrading_now) // <--- Prevent spam
+				to_chat(xeno, SPAN_WARNING("This wall is already being reinforced!"))
+				return
+
+			wall.upgrading_now = TRUE
 
 			if(wall.type == /turf/closed/wall/resin)
 				var/obj/thick_wall = new /obj/effect/resin_construct/thickfast(target_turf, src, xeno)
 				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 					qdel(thick_wall)
+					wall.upgrading_now = FALSE
 					return
 				qdel(thick_wall)
 				wall.ChangeTurf(/turf/closed/wall/resin/thick)
+
 			else if(wall.type == /turf/closed/wall/resin/membrane)
 				var/obj/thick_membrane = new /obj/effect/resin_construct/transparent/thickfast(target_turf, src, xeno)
 				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 					qdel(thick_membrane)
+					wall.upgrading_now = FALSE
 					return
 				qdel(thick_membrane)
 				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 			else
 				to_chat(xeno, SPAN_XENOWARNING("[wall] can't be made thicker."))
 				return
+
+			wall.upgrading_now = FALSE
 
 		else if(istype(target_atom, /obj/structure/mineral_door/resin))
 			var/obj/structure/mineral_door/resin/door = target_atom
@@ -642,21 +658,33 @@
 				to_chat(xeno, SPAN_XENOWARNING("[door] does not belong to your hive!"))
 				return
 
-			if(door.hardness == 1.5) // Normal resin door
+			if(door.upgrading_now)
+				to_chat(xeno, SPAN_WARNING("This door is already being reinforced!"))
+				return
+
+			if(door.hardness == 1.5)
+				door.upgrading_now = TRUE
 				var/obj/thick_door = new /obj/effect/resin_construct/thickdoorfast(target_turf, src, xeno)
 				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 					qdel(thick_door)
+					door.upgrading_now = FALSE
 					return
 				qdel(thick_door)
 				var/oldloc = door.loc
 				qdel(door)
 				new /obj/structure/mineral_door/resin/thick(oldloc, door.hivenumber)
 			else
-				to_chat(xeno, SPAN_XENOWARNING("[door] can't be made thicker."))
+				if(xeno.try_toggle_resin_door(door))
+					if(!check_and_use_plasma_owner(0)) // No plasma cost for remote opening
+						return TRUE
+					return
 				return
 
 		else
 			to_chat(xeno, SPAN_XENOWARNING("We can only upgrade resin structures!"))
+			return
+
+		if(!check_and_use_plasma_owner(plasma_cost))
 			return
 
 		xeno.visible_message(SPAN_XENONOTICE("Weeds around [target_atom] start to twitch and pump substance towards it, thickening it in process!"),
@@ -665,6 +693,11 @@
 
 		target_atom.add_hiddenprint(xeno) // Tracks who reinforced it for admins
 		return TRUE
+
+	if(xeno.try_toggle_resin_door(target_atom))
+		if(!check_and_use_plasma_owner(0)) // No plasma cost for remote opening
+			return TRUE
+		return
 
 	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/remove))
 		var/obj/effect/alien/resin/design/target_node = locate(/obj/effect/alien/resin/design) in target_turf
@@ -685,25 +718,11 @@
 		playsound(xeno.loc, "alien_resin_move2", 25)
 		return
 
-	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined. (12)
+	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined.
 		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
 		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list.
 		xeno.current_design.Remove(old_design) //Removes first node stored inside list.
 		qdel(old_design) //Delete node.
-
-	if(istype(target_atom, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/resin_door = target_atom
-		if(resin_door.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_XENOWARNING("This door does not belong to our hive!"))
-			return
-		if(!check_and_use_plasma_owner(0)) // No plasma cost for remote opening
-			return
-		if(resin_door.TryToSwitchState(owner))
-			if(resin_door.open)
-				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
-			else
-				to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
-		return
 
 	var/selected_design = xeno.selected_design
 
@@ -780,6 +799,24 @@
 /datum/action/xeno_action/activable/place_design/proc/can_remote_build()
 	if(!locate(/obj/effect/alien/weeds) in get_turf(owner))
 		return FALSE
+	return TRUE
+
+/mob/living/carbon/xenomorph/proc/try_toggle_resin_door(atom/target_atom)
+	if(!istype(target_atom, /obj/structure/mineral_door/resin))
+		return FALSE
+
+	var/obj/structure/mineral_door/resin/resin_door = target_atom
+
+	if(resin_door.hivenumber != src.hivenumber)
+		to_chat(src, SPAN_XENOWARNING("This door does not belong to our hive!"))
+		return TRUE
+
+	if(resin_door.TryToSwitchState(src))
+		if(resin_door.open)
+			to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+		else
+			to_chat(src, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+
 	return TRUE
 
 /datum/action/xeno_action/activable/place_design/proc/is_turf_clean(turf/current_turf, check_resin_additions = FALSE, check_doors = FALSE, check_resin_doors = FALSE)
@@ -871,12 +908,16 @@
 
 /datum/action/xeno_action/onclick/change_design/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!xeno.check_state())
+		return
+
 	var/static/list/options = list(
 		"Optimized Node (50)" = icon(/datum/action/xeno_action::icon_file, "static_speednode"),
-		"Flexible Node (60)" = icon(/datum/action/xeno_action::icon_file, "static_costnode"),
 		"Construct Node (70)" = icon(/datum/action/xeno_action::icon_file, "static_constructnode"),
 		"Thicken Resin (60)" = icon(/datum/action/xeno_action::icon_file, "upgrade_resin"),
-		"Remove Node (25)" = icon(/datum/action/xeno_action::icon_file, "remove_node")
+		"Open Old UI" = icon(/datum/action/xeno_action::icon_file, "open_ui"),
+		"Remove Node (25)" = icon(/datum/action/xeno_action::icon_file, "remove_node"),
+		"Flexible Node (60)" = icon(/datum/action/xeno_action::icon_file, "static_costnode")
 	)
 
 	var/choice
@@ -885,23 +926,32 @@
 	else
 		choice = show_radial_menu(owner, owner?.client.eye, options, radius = 50)
 
+	var/des = FALSE
+	var/rem = FALSE
 	plasma_cost = 0
 	switch(choice)
 		if("Optimized Node (50)")
 			xeno.selected_design = /obj/effect/alien/resin/design/speed_node
-			to_chat(xeno, SPAN_NOTICE("We will now build <b>Optimized Design Nodes</b>."))
+			des = TRUE
 		if("Flexible Node (60)")
 			xeno.selected_design = /obj/effect/alien/resin/design/cost_node
-			to_chat(xeno, SPAN_NOTICE("We will now build <b>Flexible Design Nodes</b>."))
+			des = TRUE
 		if("Construct Node (70)")
 			xeno.selected_design = /obj/effect/alien/resin/design/construct_node
-			to_chat(xeno, SPAN_NOTICE("We will now build <b>Construct Design Nodes</b>."))
+			des = TRUE
 		if("Thicken Resin (60)")
 			xeno.selected_design = /obj/effect/alien/resin/design/upgrade
-			to_chat(xeno, SPAN_NOTICE("We will now remotely <b>Thicken Resin</b>."))
+			rem = TRUE
 		if("Remove Node (25)")
 			xeno.selected_design = /obj/effect/alien/resin/design/remove
-			to_chat(xeno, SPAN_NOTICE("We will now remotely <b>Remove Nodes</b>."))
+			rem = TRUE
+		if("Open Old UI")
+			tgui_interact(xeno)
+
+	if(des)
+		to_chat(xeno, SPAN_NOTICE("We will now build <b>[xeno.selected_design.name]</b>."))
+	if(rem)
+		to_chat(xeno, SPAN_NOTICE("We will now remotely <b>[xeno.selected_design.name]</b>."))
 
 	xeno.update_icons()
 	button.overlays.Cut()
@@ -909,3 +959,83 @@
 
 	return ..()
 
+// Below is UI for old players.
+
+/datum/action/xeno_action/onclick/change_design/give_to(mob/living/carbon/xenomorph/xeno)
+	. = ..()
+
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, initial(xeno.selected_design.icon_state))
+	button.overlays += image(icon_file, button, action_icon_state)
+
+/datum/action/xeno_action/onclick/change_design/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/choose_design))
+
+/datum/action/xeno_action/onclick/change_design/ui_static_data(mob/user)
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!istype(xeno))
+		return
+
+	. = list()
+
+	var/list/design_list = list()
+	for(var/obj/effect/alien/resin/design/design as anything in xeno.available_design)
+		var/list/entry = list()
+
+		entry["name"] = initial(design.name)
+		entry["desc"] = initial(design.desc)
+		entry["image"] = replacetext(initial(design.icon_state), " ", "-")
+		entry["id"] = "[design]"
+		design_list += list(entry)
+
+	.["design"] = design_list
+
+/datum/action/xeno_action/onclick/change_design/ui_data(mob/user)
+	var/mob/living/carbon/xenomorph/xeno = user
+	if(!istype(xeno))
+		return
+
+	. = list()
+	.["selected_design"] = xeno.selected_design
+
+/datum/action/xeno_action/onclick/change_design/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChooseDesign", "Choose Design")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/action/xeno_action/onclick/change_design/Destroy()
+	SStgui.close_uis(src)
+	return ..()
+
+/datum/action/xeno_action/onclick/change_design/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/action/xeno_action/onclick/change_design/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/xenomorph/xeno = ui.user
+	if(!istype(xeno))
+		return
+
+	switch(action)
+		if("choose_design")
+			var/selected_type = text2path(params["type"])
+			if(!(selected_type in xeno.available_design))
+				return
+
+			var/obj/effect/alien/resin/design/design = selected_type
+			to_chat(xeno, SPAN_NOTICE("We will now build <b>[initial(design.name)]</b> when designing."))
+			//update the button's overlay with new choice
+			xeno.update_icons()
+			button.overlays.Cut()
+			button.overlays += image(icon_file, button, action_icon_state)
+			button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, initial(design.icon_state))
+			xeno.selected_design = selected_type
+			. = TRUE
+
+		if("refresh_ui")
+			. = TRUE

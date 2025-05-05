@@ -25,9 +25,9 @@
 	var/maptext_label
 	var/custom_chem_icon
 	maptext_height = 16
-	maptext_width = 16
-	maptext_x = 18
-	maptext_y = 3
+	maptext_width = 24
+	maptext_x = 4
+	maptext_y = 2
 
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	. = ..()

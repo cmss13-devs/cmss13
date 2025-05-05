@@ -87,7 +87,7 @@
 	qdel(src)
 
 /obj/effect/neomorph/spore_sac/proc/healthcheck()
-	if(health <= 0)//Bullets won't stop a cloud of spores.
+	if(health <= 0) //If it's not fire, it's still releasing the cloud.
 		Burst(TRUE)
 
 /obj/effect/neomorph/spore_sac/Crossed(atom/movable/crosser)
@@ -98,6 +98,33 @@
 		if(!can_hug(crosser, XENO_HIVE_NEOMORPH) || isyautja(crosser) || issynth(crosser)) //Predators are too stealthy to trigger the clouds.
 			return
 		Burst(FALSE)
+
+
+/obj/effect/neomorph/spore_sac/attackby(obj/item/W, mob/living/user)
+	if(health <= 0)
+		healthcheck()
+		return
+
+	if(W.flags_item & NOBLUDGEON)
+		return
+
+	user.animation_attack_on(src)
+	if(length(W.attack_verb))
+		visible_message(SPAN_DANGER("\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]"))
+	else
+		visible_message(SPAN_DANGER("\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]"))
+	var/damage = W.force
+
+	playsound(src.loc, "alien_resin_break", 25)
+
+	health -= damage
+	healthcheck()
+
+	return ATTACKBY_HINT_UPDATE_NEXT_MOVE
+
+
+
+
 
 //The invisible traps around the egg to tell it there's a mob right next to it.
 /obj/effect/spore_trigger

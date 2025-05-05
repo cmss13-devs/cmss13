@@ -12,19 +12,20 @@ export const meta = {
   render: () => <Story />,
 };
 
-type TabProps = {
-  vertical: boolean;
+const TAB_RANGE = ['Tab #1', 'Tab #2', 'Tab #3', 'Tab #4'] as const;
+
+type TabProps = Partial<{
+  centered: boolean;
+  fluid: boolean;
+  icon: boolean;
   leftSlot: boolean;
   rightSlot: boolean;
-  icon: boolean;
-  fluid: boolean;
-  centered: boolean;
-};
+  vertical: boolean;
+}>;
 
-const TAB_RANGE = ['Tab #1', 'Tab #2', 'Tab #3', 'Tab #4'];
+function Story() {
+  const [tabProps, setTabProps] = useState<TabProps>({});
 
-const Story = (props) => {
-  const [tabProps, setTabProps] = useState({} as TabProps);
   return (
     <>
       <Section>
@@ -38,7 +39,7 @@ const Story = (props) => {
             })
           }
         >
-          vertical
+          Vertical
         </Button.Checkbox>
         <Button.Checkbox
           inline
@@ -102,23 +103,24 @@ const Story = (props) => {
         </Button.Checkbox>
       </Section>
       <Section fitted>
-        <TabsPrefab tabProps={tabProps} />
+        <TabsPrefab />
       </Section>
       <Section title="Normal section">
-        <TabsPrefab tabProps={tabProps} />
+        <TabsPrefab />
         Some text
       </Section>
       <Section>
         Section-less tabs appear the same as tabs in a fitted section:
       </Section>
-      <TabsPrefab tabProps={tabProps} />
+      <TabsPrefab />
     </>
   );
-};
+}
 
-const TabsPrefab = (props: { readonly tabProps: TabProps }) => {
+function TabsPrefab() {
   const [tabIndex, setTabIndex] = useState(0);
-  const { tabProps } = props;
+  const [tabProps] = useState<TabProps>({});
+
   return (
     <Tabs
       vertical={tabProps.vertical}
@@ -147,4 +149,4 @@ const TabsPrefab = (props: { readonly tabProps: TabProps }) => {
       ))}
     </Tabs>
   );
-};
+}

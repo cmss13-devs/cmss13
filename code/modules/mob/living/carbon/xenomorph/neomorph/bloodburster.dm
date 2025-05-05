@@ -102,7 +102,6 @@
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
-	var/number_decorator = ""
 	if(client)
 		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
 		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""

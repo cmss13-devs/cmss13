@@ -24,10 +24,6 @@
 	var/datum/simulator/simulation
 	var/datum/cas_fire_mission/configuration
 
-	// groundside maps
-	var/datum/tacmap/tacmap
-	var/minimap_type = MINIMAP_FLAG_USCM
-
 	// Cameras
 	var/camera_target_id
 	var/camera_width = 11
@@ -38,6 +34,8 @@
 
 	var/registered = FALSE
 
+	var/minimap_flag = MINIMAP_FLAG_USCM
+
 /obj/structure/machinery/computer/dropship_weapons/New()
 	..()
 	if(firemission_envelope)
@@ -46,22 +44,27 @@
 /obj/structure/machinery/computer/dropship_weapons/Initialize()
 	. = ..()
 	simulation = new()
-	tacmap = new(src, minimap_type)
 
 	RegisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED, PROC_REF(camera_mapname_update))
 
 	// camera setup
 	AddComponent(/datum/component/camera_manager)
+	AddComponent(/datum/component/tacmap, has_drawing_tools = FALSE, minimap_flag = minimap_flag, has_update = FALSE)
 	SEND_SIGNAL(src, COMSIG_CAMERA_CLEAR)
 
 /obj/structure/machinery/computer/dropship_weapons/Destroy()
 	. = ..()
 	QDEL_NULL(firemission_envelope)
-	QDEL_NULL(tacmap)
 	UnregisterSignal(src, COMSIG_CAMERA_MAPNAME_ASSIGNED)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/camera_mapname_update(source, value)
 	camera_map_name = value
+
+/obj/structure/machinery/computer/dropship_weapons/on_unset_interaction(mob/user)
+	. = ..()
+	
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 
 /obj/structure/machinery/computer/dropship_weapons/attack_hand(mob/user)
 	if(..())
@@ -144,19 +147,17 @@
 		RegisterSignal(dropship, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, PROC_REF(equipment_update))
 		registered = TRUE
 
-	if(!tacmap.map_holder)
-		var/level = SSmapping.levels_by_trait(tacmap.targeted_ztrait)
-		tacmap.map_holder = SSminimaps.fetch_tacmap_datum(level[1], tacmap.allowed_flags)
-
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		user.client.register_map_obj(tacmap.map_holder.map)
 		SEND_SIGNAL(src, COMSIG_CAMERA_REGISTER_UI, user)
 		ui = new(user, src, "DropshipWeaponsConsole", "Weapons Console")
 		ui.open()
 
 /obj/structure/machinery/computer/dropship_weapons/ui_close(mob/user)
 	. = ..()
+
+	var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+	tacmap_component.on_unset_interaction(user)
 	SEND_SIGNAL(src, COMSIG_CAMERA_UNREGISTER_UI, user)
 	simulation.stop_watching(user)
 
@@ -176,7 +177,6 @@
 
 /obj/structure/machinery/computer/dropship_weapons/ui_static_data(mob/user)
 	. = list()
-	.["tactical_map_ref"] = tacmap.map_holder.map_ref
 	.["camera_map_ref"] = camera_map_name
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)
@@ -511,6 +511,12 @@
 			RegisterSignal(linked_shuttle.paradrop_signal, COMSIG_PARENT_QDELETING, PROC_REF(clear_locked_turf_and_lock_aft))
 			RegisterSignal(linked_shuttle, COMSIG_SHUTTLE_SETMODE, PROC_REF(clear_locked_turf_and_lock_aft))
 			return TRUE
+		if("mapview")
+			var/datum/component/tacmap/tacmap_component = GetComponent(/datum/component/tacmap)
+			if(user in tacmap_component.interactees)
+				tacmap_component.on_unset_interaction(user)
+			else
+				tacmap_component.show_tacmap(user)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/open_aft_for_paradrop()
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttle_tag)

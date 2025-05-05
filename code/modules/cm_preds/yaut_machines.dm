@@ -4,9 +4,8 @@
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 	icon_state = "globe"
 	breakable = FALSE
-
-	minimap_type = MINIMAP_FLAG_ALL
-	faction = FACTION_YAUTJA
+	minimap_flag = MINIMAP_FLAG_ALL
+	drawing = FALSE
 
 /obj/structure/machinery/autolathe/yautja
 	name = "yautja autolathe"

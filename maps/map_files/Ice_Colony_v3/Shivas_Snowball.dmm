@@ -18063,6 +18063,11 @@
 "qrY" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/exterior/junkyard)
+"qsf" = (
+/obj/structure/surface/table,
+/obj/item/device/defibrillator/synthetic,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
 "qsN" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -46428,7 +46433,7 @@ qep
 arX
 ktd
 azg
-kjt
+qsf
 kjt
 ver
 ver

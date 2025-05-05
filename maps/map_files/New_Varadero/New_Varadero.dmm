@@ -10926,6 +10926,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/electrical)
 "iIL" = (

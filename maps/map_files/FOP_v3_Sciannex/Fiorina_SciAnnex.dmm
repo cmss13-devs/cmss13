@@ -1224,6 +1224,10 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
+"aRh" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/medbay)
 "aRk" = (
 /obj/structure/cargo_container/grant/left,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -1243,6 +1247,12 @@
 	},
 /turf/open/floor/wood,
 /area/fiorina/station/park)
+"aSi" = (
+/obj/effect/spawner/gibspawner/robot,
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/medbay)
 "aSm" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -10729,6 +10739,10 @@
 "ijC" = (
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/lz/near_lzI)
+"ijM" = (
+/obj/effect/spawner/gibspawner/robot,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "ika" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -10831,6 +10845,10 @@
 "ioc" = (
 /turf/open/floor/prison/yellowfull,
 /area/fiorina/station/lowsec)
+"iok" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "ioE" = (
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison/floor_plate,
@@ -11557,6 +11575,10 @@
 	},
 /turf/open/floor/prison/darkbrown2/west,
 /area/fiorina/tumor/aux_engi)
+"iRp" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/prison,
+/area/fiorina/station/medbay)
 "iRA" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -12079,6 +12101,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/fiorina/lz/near_lzII)
+"jnk" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/medbay)
 "jnm" = (
 /obj/structure/machinery/vending/sovietsoda,
 /turf/open/floor/prison/floor_plate,
@@ -14970,6 +14996,10 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
+"lyC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "lyJ" = (
 /obj/item/tool/crowbar,
 /turf/open/floor/plating/prison,
@@ -16615,6 +16645,10 @@
 "mKx" = (
 /turf/open/floor/prison/blue_plate,
 /area/fiorina/station/botany)
+"mKV" = (
+/obj/item/robot_parts/arm/l_arm,
+/turf/open/floor/prison,
+/area/fiorina/station/medbay)
 "mLL" = (
 /obj/item/tool/mop,
 /turf/open/floor/prison/floor_plate,
@@ -17370,6 +17404,11 @@
 	},
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/civres_blue)
+"npT" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/prison/cell_stripe/west,
+/area/fiorina/station/medbay)
 "nqL" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/spray/cleaner,
@@ -17583,6 +17622,10 @@
 "nxC" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/power_ring/reactor)
+"nxU" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/turf/open/floor/prison,
+/area/fiorina/station/medbay)
 "nxW" = (
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
@@ -17903,6 +17946,10 @@
 /obj/item/stack/rods,
 /turf/open/floor/prison,
 /area/fiorina/station/transit_hub)
+"nJO" = (
+/obj/item/clothing/under/marine/ua_riot,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "nJT" = (
 /obj/structure/inflatable/popped/door,
 /turf/open/floor/prison/whitegreen/west,
@@ -18257,6 +18304,10 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
+"nWU" = (
+/obj/item/weapon/baton,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/medbay)
 "nXj" = (
 /obj/structure/curtain/black,
 /turf/open/floor/plating/prison,
@@ -20042,6 +20093,10 @@
 	},
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
+"ppv" = (
+/obj/item/clothing/suit/storage/marine/light/synvest/grey,
+/turf/open/floor/prison/cell_stripe/west,
+/area/fiorina/station/medbay)
 "ppG" = (
 /obj/item/stack/rods/plasteel,
 /turf/open/floor/plating/prison,
@@ -20262,6 +20317,10 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/prison/whitepurple/southeast,
 /area/fiorina/station/research_cells/west)
+"pyx" = (
+/obj/item/weapon/twohanded/spear,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "pyK" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/freight,
 /turf/open/floor/corsat/plate,
@@ -21831,6 +21890,11 @@
 /obj/item/clothing/head/helmet/marine/veteran/ua_riot,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
+"qIj" = (
+/obj/effect/landmark/corpsespawner/prisoner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/fiorina/station/medbay)
 "qIq" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/plating/prison,
@@ -22251,6 +22315,10 @@
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
+"qXQ" = (
+/obj/item/device/defibrillator/synthetic,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "qYZ" = (
 /obj/structure/bed/chair,
 /turf/open/floor/prison/darkpurplefull2,
@@ -23549,7 +23617,13 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
 "sdr" = (
-/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/item/limb/head/synth{
+	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality.";
+	name = "shattered synthetic head";
+	pixel_y = 3;
+	icon_state = "scandinavian_head_m"
+	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/fiorina/station/medbay)
 "sdE" = (
@@ -23879,7 +23953,9 @@
 /area/fiorina/lz/near_lzI)
 "soN" = (
 /obj/structure/closet/cabinet,
-/obj/effect/spawner/random/gun/special/lowchance,
+/obj/effect/spawner/random/gun/special/lowchance{
+	guns = list(/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg, /obj/item/weapon/gun/shotgun/merc = null, /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar, /obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle, /obj/item/weapon/gun/shotgun/combat = null, /obj/istem/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78, /obj/item/weapon/gun/launcher/grenade/m81/m79 = null)
+	},
 /obj/item/clothing/suit/armor/det_suit,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
@@ -28725,6 +28801,14 @@
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
+"wdA" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	pixel_y = 21
+	},
+/obj/item/weapon/twohanded/spear,
+/turf/open/floor/prison,
+/area/fiorina/station/medbay)
 "wdL" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -30147,6 +30231,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/civres_blue)
+"xli" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/fiorina/station/medbay)
 "xlk" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "cryomid"
@@ -60929,8 +61017,8 @@ mEO
 hVI
 hVI
 gYM
-tja
-tja
+aRh
+xli
 tja
 tja
 tja
@@ -61357,7 +61445,7 @@ kXm
 ipM
 tja
 bLM
-esw
+npT
 aFZ
 hVI
 hVI
@@ -61565,9 +61653,9 @@ tQB
 kZu
 mAK
 hVI
-wfu
-bLM
-tja
+wdA
+nJO
+aSi
 bLM
 byY
 tEH
@@ -61777,9 +61865,9 @@ aFZ
 hUL
 tja
 hVI
-esw
-bLM
-tja
+ppv
+sdr
+nWU
 rnM
 esw
 tEH
@@ -61989,10 +62077,10 @@ aFZ
 wDK
 tja
 aif
-byY
-bLM
-tja
-bLM
+mKV
+ijM
+aRh
+lyC
 byY
 tEH
 njm
@@ -62202,8 +62290,8 @@ hVI
 hVI
 hVI
 qSy
-bLM
-tja
+qXQ
+xli
 bLM
 byY
 aFZ
@@ -62413,10 +62501,10 @@ aFZ
 chZ
 tja
 aif
-byY
-bLM
+qIj
+iok
 tja
-bLM
+pyx
 qtP
 aFZ
 fIT
@@ -62625,11 +62713,11 @@ aFZ
 bRo
 tja
 hVI
-byY
+iRp
 bLM
 tja
 bLM
-byY
+nxU
 sJu
 mEO
 sJu
@@ -62838,8 +62926,8 @@ kSd
 tja
 hVI
 ncj
-sdr
-tja
+bLM
+jnk
 bLM
 egT
 aFZ

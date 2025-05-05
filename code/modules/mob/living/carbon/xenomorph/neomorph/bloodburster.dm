@@ -222,7 +222,7 @@
 
 		if(!victim.first_xeno)
 			if(hive.hive_orders)
-				to_chat(burster_embryo, SPAN_XENOHIGHDANGER("The Hive's will overwhelms our instincts..."))
+				to_chat(burster_embryo, SPAN_XENOHIGHDANGER("The Spore's will overwhelms our instincts..."))
 				to_chat(burster_embryo, SPAN_XENOHIGHDANGER("\"[hive.hive_orders]\""))
 			log_attack("[key_name(victim)] bloodburst in [get_area_name(burster_embryo)] at X[victim.x], Y[victim.y], Z[victim.z]. The bloodburster was [key_name(burster_embryo)].") //this is so that admins are not spammed with los logs
 

@@ -1602,6 +1602,8 @@
 	allow_queen_evolve = FALSE
 	allow_no_queen_evo = TRUE
 
+	hive_orders = "Kill everyone and everything."
+
 	free_slots = list(
 		/datum/caste_datum/neomorph = 6,
 	)

@@ -14,6 +14,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	icon_state = "transparent"
 	baseturfs = /turf/open_space
 	plane = OPEN_SPACE_PLANE_START
+	is_weedable = NOT_WEEDABLE
 
 /turf/open_space/Initialize()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
@@ -65,4 +66,3 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 		user.forceMove(below)
 		return
-

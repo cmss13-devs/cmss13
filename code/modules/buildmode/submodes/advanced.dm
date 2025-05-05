@@ -61,7 +61,7 @@
 			var/obj/A = new objholder (get_turf(object))
 			A.setDir(BM.build_dir)
 			if(shift_click)
-				addtimer(CALLBACK(src, PROC_REF(apply_copied_vars_shallow), A), 1)
+				addtimer(CALLBACK(src, PROC_REF(apply_copied_vars_shallow), A, object), 1)
 			log_admin("Build Mode: [key_name(c)] modified [A]'s [COORD(A)] dir to [BM.build_dir]")
 		else
 			to_chat(c, SPAN_WARNING("Select object type first."))
@@ -70,7 +70,7 @@
 			log_admin("Build Mode: [key_name(c)] deleted [object] at [AREACOORD(object)]")
 			qdel(object)
 
-/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(atom/A)
+/datum/buildmode_mode/advanced/proc/apply_copied_vars_shallow(atom/A, atom/new_location)
 	if(ismob(A))
 		return
 
@@ -84,6 +84,9 @@
 			temp_value = copyListList(temp_value)
 
 		A.vars[variable] = temp_value
+		if(istype(A, /atom/movable))
+			var/atom/movable/A_movable = A
+			A_movable.loc = get_turf(new_location)
 
 /datum/buildmode_mode/advanced/proc/filter_vars(atom/A)
 	var/list/filtered_vars = list()

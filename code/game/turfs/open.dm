@@ -161,7 +161,6 @@
 /turf/open/void/vehicle
 	density = TRUE
 	opacity = TRUE
-	weedable = NOT_WEEDABLE
 
 /turf/open/river
 	can_bloody = FALSE
@@ -185,7 +184,7 @@
 	icon_state = "mars_sand_1"
 	is_groundmap_turf = TRUE
 	minimap_color = MINIMAP_MARS_DIRT
-	weedable = SEMI_WEEDABLE
+	is_weedable = SEMI_WEEDABLE
 
 
 /turf/open/mars_cave
@@ -485,7 +484,7 @@
 	icon_state = "grass1"
 	baseturfs = /turf/open/gm/grass
 	scorchable = "grass1"
-	weedable = SEMI_WEEDABLE
+	is_weedable = SEMI_WEEDABLE
 
 /turf/open/gm/grass/grass1
 	icon_state = "grass1"
@@ -546,7 +545,7 @@
 	icon_state = "grassdirt_edge"
 	baseturfs = /turf/open/gm/dirtgrassborder
 	scorchable = "grass1"
-	weedable = SEMI_WEEDABLE
+	is_weedable = SEMI_WEEDABLE
 
 /turf/open/gm/dirtgrassborder/north
 	dir = NORTH
@@ -654,7 +653,7 @@
 	baseturfs = /turf/open/gm/river
 	supports_surgery = FALSE
 	minimap_color = MINIMAP_WATER
-	weedable = NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/gm/river/Initialize(mapload, ...)
 	. = ..()
@@ -807,7 +806,7 @@
 	icon_state = "beach"
 	baseturfs = /turf/open/gm/coast
 	supports_surgery = FALSE
-	weedable = NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/gm/coast/north
 
@@ -884,7 +883,7 @@
 	icon_state = "black"
 	density = TRUE
 	supports_surgery = FALSE
-	weedable = NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 //Nostromo turfs
 
@@ -912,7 +911,7 @@
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 
 /turf/open/ice/noweed //used for new prison ice block xenos
-	weedable = NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 // Colony tiles
 /turf/open/asphalt
@@ -1025,7 +1024,7 @@
 	icon_state = "grass1"
 	var/icon_spawn_state = "grass1"
 	baseturfs = /turf/open/jungle
-	weedable = NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/jungle/Initialize(mapload, ...)
 	. = ..()

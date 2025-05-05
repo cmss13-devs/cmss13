@@ -20,6 +20,9 @@
 /turf/open/gm/dirtgrassborder/weedable/grass1
 	icon_state = "grass1"
 
+/turf/closed/gm/dense/weedable
+	is_weedable = NOT_WEEDABLE
+
 /turf/open/floor/strata //Instance me!
 	icon = 'icons/turf/floors/strata_floor.dmi'
 	icon_state = "floor"

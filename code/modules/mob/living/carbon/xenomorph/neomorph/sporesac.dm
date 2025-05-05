@@ -41,6 +41,15 @@
 		var/obj/effect/spore_trigger/ET = trigger
 		ET.moveToNullspace()
 
+/obj/effect/neomorph/spore_sac/Destroy()
+	. = ..()
+	for(var/obj/effect/spore_trigger/trigger as anything in spore_triggers)
+		trigger.linked_sac = null
+		qdel(trigger)
+	if(spore_triggers)
+		spore_triggers.Cut()
+	spore_triggers = null
+
 /obj/effect/neomorph/spore_sac/proc/Burst(kill = TRUE)
 	hide_spore_triggers()
 	if(kill)

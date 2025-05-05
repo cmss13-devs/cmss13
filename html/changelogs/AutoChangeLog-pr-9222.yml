@@ -1,5 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Allowed Yautja Ancient's to decide per spawn if they want to broadcast to other Yautja that they're awake."
-  - rscadd: "Added Yautja Overseer radio channel."

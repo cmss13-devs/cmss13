@@ -29,3 +29,11 @@
   - qol: Light tubes can't be removed by hand anymore, use a screwdriver instead
   - bugfix: Fixed some lighting fixture descriptions not showing up correctly, as
       well as other misc items.
+2025-05-05:
+  DarkLordCabbage:
+  - code_imp: Moves the acid ball ability from the dancer strain to its actual home
+      in base praetorian abilities.
+  realforest2001:
+  - rscadd: Allowed Yautja Ancient's to decide per spawn if they want to broadcast
+      to other Yautja that they're awake.
+  - rscadd: Added Yautja Overseer radio channel.

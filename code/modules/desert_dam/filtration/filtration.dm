@@ -251,7 +251,7 @@ Each var depends on others
 	dispersing = 0
 	animate(src, alpha = initial(alpha), time = 60)
 	var/turf/location = loc
-	location.weedable = initial(location.weedable)
+	location.is_weedable = initial(location.is_weedable)
 
 
 /obj/effect/blocker/water/proc/disperse(from_dir)
@@ -277,7 +277,7 @@ Each var depends on others
 	animate(src, alpha= flooded_alpha, easing = BACK_EASING | EASE_OUT , time= 40)
 	update_icon()
 	var/turf/location = loc
-	location.weedable = NOT_WEEDABLE
+	location.is_weedable = NOT_WEEDABLE
 
 
 /obj/effect/blocker/water/toxic/disperse()

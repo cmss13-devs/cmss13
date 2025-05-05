@@ -53571,9 +53571,6 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_1/north_trench)
-"cCl" = (
-/turf/open/space/basic,
-/area/tyrargo/underground/mall)
 "cCm" = (
 /turf/open/floor/plating,
 /area/tyrargo/indoors/museum_storage/upper)
@@ -58064,7 +58061,7 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "cQI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/darkyellow2/east,
 /area/tyrargo/indoors/mall)
 "cQJ" = (
@@ -58098,11 +58095,11 @@
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "cQP" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/whitegreen/northwest,
 /area/tyrargo/indoors/mall)
 "cQQ" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/tyrargo/indoors/mall)
 "cQR" = (
@@ -75125,7 +75122,7 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/underground/mall)
 "dJk" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dJl" = (
@@ -75260,7 +75257,7 @@
 /area/tyrargo/underground/mall)
 "dJD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dJE" = (
@@ -75434,7 +75431,7 @@
 "dJZ" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/mall)
 "dKa" = (
@@ -75663,7 +75660,7 @@
 "dKF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dKG" = (
@@ -75820,12 +75817,12 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dLc" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/strata/green4/north,
 /area/tyrargo/underground/mall)
 "dLd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
@@ -76258,7 +76255,7 @@
 /area/tyrargo/underground/mall)
 "dMi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4;
 	pixel_y = 8
@@ -76300,7 +76297,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/north)
@@ -76556,7 +76553,7 @@
 	pixel_y = 20;
 	layer = 2.9
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dMM" = (
@@ -78532,7 +78529,7 @@
 /turf/open/floor/strata/green1,
 /area/tyrargo/underground/mall)
 "dRG" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/mall)
 "dRH" = (
@@ -79133,7 +79130,7 @@
 /area/tyrargo/indoors/mall)
 "dTj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/strata/green1,
 /area/tyrargo/indoors/mall)
 "dTk" = (
@@ -82850,7 +82847,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
@@ -82893,13 +82890,13 @@
 /area/tyrargo/underground/sewer/south)
 "ebZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "eca" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
@@ -82915,12 +82912,12 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
 "ecd" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
 "ece" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
@@ -82958,7 +82955,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/sewer/south)
@@ -82986,7 +82983,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
@@ -82994,7 +82991,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/south)
@@ -83020,12 +83017,12 @@
 /area/tyrargo/underground/sewer/south)
 "ect" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
 "ecu" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/south)
@@ -83054,7 +83051,7 @@
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
 "ecz" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/underground/sewer/north)
@@ -83086,12 +83083,12 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
 "ecF" = (
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/underground/sewer/north)
@@ -83130,7 +83127,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
@@ -83138,7 +83135,7 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/sewer/north)
@@ -84128,7 +84125,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "efF" = (
@@ -84173,7 +84170,7 @@
 /area/tyrargo/indoors/mall)
 "efN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/alien/resin/sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "efO" = (
@@ -132230,7 +132227,7 @@ dut
 dWM
 dFO
 dFO
-cCl
+dtC
 dtC
 cLP
 dWf

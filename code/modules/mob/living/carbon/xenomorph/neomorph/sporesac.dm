@@ -170,10 +170,10 @@
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), src), airborne_duration)//Spores only exist for a minute maximum
 
 /obj/effect/neomorph/spore_cloud/Crossed(atom/movable/crosser)
-	if(!ishuman_strict(crosser))
+	if(!ishuman(crosser))
 		return
 	var/mob/living/carbon/human/human_passer = crosser
-	if(!can_hug(human_passer, XENO_HIVE_NEOMORPH))
+	if(!can_hug(human_passer, XENO_HIVE_NEOMORPH) || isyautja(human_passer) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
 		return
 	if(!attempt_inhale(human_passer))
 		inhaling = FALSE

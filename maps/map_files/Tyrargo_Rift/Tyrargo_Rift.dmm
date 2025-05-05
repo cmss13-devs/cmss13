@@ -53481,11 +53481,19 @@
 "cBU" = (
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
+"cBV" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/colony_exterior/south_east)
 "cBW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
+"cBX" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cBY" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -53508,10 +53516,22 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
+"cCd" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/east)
 "cCe" = (
 /obj/structure/girder,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
+"cCf" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/tyrargo/outdoors/outskirts/central)
+"cCg" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/tyrargo/outdoors/colony_exterior/north_east)
 "cCh" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/yellow/north,
@@ -149514,7 +149534,7 @@ eaa
 bnK
 bnD
 dZe
-bxY
+cBX
 bxr
 bxr
 bxr
@@ -153279,7 +153299,7 @@ bOk
 bsw
 bGS
 bGI
-bEL
+cCf
 bEL
 bBg
 bBh
@@ -160252,7 +160272,7 @@ bsw
 bAi
 bzP
 bBo
-bzx
+cCd
 bBo
 bBo
 bCq
@@ -178020,7 +178040,7 @@ cuJ
 cuI
 cxO
 awq
-cxO
+cCg
 cvd
 cvd
 cvd
@@ -180840,7 +180860,7 @@ bsw
 bsw
 bsw
 chl
-che
+cBV
 cgZ
 cfr
 cfr

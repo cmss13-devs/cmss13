@@ -1,21 +1,15 @@
 //Special Strata (Carp Lake) Weedable Jungle/Grass turfs.//
 
-/turf/open/gm/grass/weedable/ //inherit from general turfs
-
-/turf/open/gm/grass/weedable/is_weedable()
-	return FULLY_WEEDABLE
+/turf/open/gm/grass/weedable //inherit from general turfs
+	is_weedable = FULLY_WEEDABLE
 
 //just in case
 
 /turf/open/gm/grass/grass1/weedable //inherit from general turfs
-
-/turf/open/gm/grass/grass1/weedable/is_weedable()
-	return FULLY_WEEDABLE
+	is_weedable = FULLY_WEEDABLE
 
 /turf/open/gm/dirtgrassborder/weedable
-
-/turf/open/gm/dirtgrassborder/weedable/is_weedable() //Gotta have our sexy grass borders be weedable.
-	return FULLY_WEEDABLE
+	is_weedable = FULLY_WEEDABLE
 
 /turf/open/gm/dirtgrassborder/weedable/grass1
 	icon_state = "grass1"

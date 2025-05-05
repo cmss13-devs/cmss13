@@ -157,6 +157,7 @@
 	mouse_opacity = FALSE
 	can_bloody = FALSE
 	supports_surgery = FALSE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/void/vehicle
 	density = TRUE

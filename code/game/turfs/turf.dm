@@ -117,6 +117,10 @@
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
 
+	//dense turfs stop weeds
+	if(density)
+		is_weedable = NOT_WEEDABLE
+
 	if(istransparentturf(src))
 		return INITIALIZE_HINT_LATELOAD
 	else

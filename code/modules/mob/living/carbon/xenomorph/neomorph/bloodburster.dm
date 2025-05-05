@@ -100,7 +100,16 @@
 	if(bloody_state == LARVA_STATE_MATURE)
 		progress = "Mature "
 
-	name = "[name_prefix][progress]Bloodburster ([nicknumber])"
+	var/name_client_prefix = ""
+	var/name_client_postfix = ""
+	var/number_decorator = ""
+	if(client)
+		name_client_prefix = "[(client.xeno_prefix||client.xeno_postfix) ? client.xeno_prefix : "XX"]-"
+		name_client_postfix = client.xeno_postfix ? ("-"+client.xeno_postfix) : ""
+		age_xeno()
+	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
+
+	name = "[name_prefix][progress]Bloodburster ([full_designation])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

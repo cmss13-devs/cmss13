@@ -54,7 +54,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player_time)
 			icon_display = "tier2_big"
 		if(JOB_PLAYTIME_TIER_3 to JOB_PLAYTIME_TIER_4)
 			icon_display = "tier3_big"
-		if(JOB_PLAYTIME_TIER_4 to JOB_PLAYTIME_TIER_5)
+		if(JOB_PLAYTIME_TIER_4 to JOB_PLAYTIME_TIER_6)
 			icon_display = "tier4_big"
 		if(JOB_PLAYTIME_TIER_6 to INFINITY)
 			icon_display = "tier5_big"

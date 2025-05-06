@@ -1,0 +1,14 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "rearranged equipment preset of joe, so less manual actions are required now"
+  - rscdel: "5% chance for a joe to have hair"
+  - rscdel: "joe can now only speak english, spanish and japanese"
+  - bugfix: "joe not having intent eyes and glow working after spawn"
+  - bugfix: "joe being possible to spawn as female"
+  - bugfix: "joe being possible to have flavor text"
+  - bugfix: "dzho not getting hyperdyne key in backpack"
+  - bugfix: "custom skill presets for synthetics not working"
+  - bugfix: "some joe voice lines not working"
+  - bugfix: "custom synthetic skillsets not working because skillsets were getting overriden"
+  - mapadd: "added a lot of equipment to empty storage room in ares area, for joes to use"

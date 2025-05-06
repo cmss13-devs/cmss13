@@ -265,7 +265,6 @@
 		return
 
 	if(current_turf.density)
-		addtimer(CALLBACK(src, PROC_REF(process_flame_tiles), turfs, target, user, chem, max_range, flameshape, fire_type, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
 		stop_at_turf = TRUE
 	else if(prev_turf)
 		var/atom/movable/temp = new /obj/flamer_fire()

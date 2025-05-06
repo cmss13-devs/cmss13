@@ -235,7 +235,7 @@
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_equip_slot = SLOT_WAIST
+	flags_equip_slot = SLOT_BACK|SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
 	throwforce = MELEE_FORCE_TIER_5
 	sharp = IS_SHARP_ITEM_SIMPLE

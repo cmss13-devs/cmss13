@@ -65,6 +65,14 @@
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/fiorina/tumor/servers)
+"aam" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/fiorina/lz/near_lzII)
+"aan" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/darkyellow2/north,
+/area/fiorina/lz/near_lzI)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/prison,
@@ -12605,6 +12613,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/cameras{
 	dir = 4
+	},
+/obj/structure/sign/calendar{
+	pixel_y = 28
 	},
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/security)
@@ -29158,6 +29169,10 @@
 /area/fiorina/maintenance)
 "wxW" = (
 /obj/structure/prop/almayer/computers/mapping_computer,
+/obj/structure/sign/calendar{
+	pixel_y = 28;
+	pixel_x = -25
+	},
 /turf/open/floor/prison/darkredfull2,
 /area/fiorina/station/research_cells/west)
 "wxX" = (
@@ -63785,7 +63800,7 @@ fAf
 nZB
 kEx
 fAf
-nZB
+aam
 nZB
 fAf
 nZB
@@ -79821,7 +79836,7 @@ nGZ
 mSP
 nGZ
 nGZ
-qaL
+aan
 uYi
 nGZ
 nGZ

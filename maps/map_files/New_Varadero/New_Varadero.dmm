@@ -233,6 +233,22 @@
 	},
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
+"aaS" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aaT" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"aaU" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1109,6 +1125,9 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "aHu" = (
@@ -10894,6 +10913,9 @@
 /area/varadero/exterior/pool)
 "iIt" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "iIC" = (
@@ -24098,6 +24120,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "tfc" = (
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
 "tfj" = (
@@ -43125,7 +43148,7 @@ bZU
 bZU
 xsH
 mrC
-wMw
+aaU
 wMw
 wMw
 wMw
@@ -47326,7 +47349,7 @@ hsl
 giN
 hyr
 sXb
-tzw
+aaT
 aJP
 svH
 kBo
@@ -50086,7 +50109,7 @@ fEZ
 htt
 wVf
 wVf
-idw
+aaS
 jQB
 psb
 idw

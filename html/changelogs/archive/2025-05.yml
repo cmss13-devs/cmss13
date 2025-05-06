@@ -1,0 +1,49 @@
+2025-05-02:
+  Blundir:
+  - bugfix: fixed suit storage gun icons being missing in some cases
+  Joe Lampost:
+  - bugfix: Fixes multiple elder overseer messages being sent for a weather event.
+  Kashargul:
+  - bugfix: a potential lockup with tgui
+2025-05-03:
+  BertStein:
+  - qol: Pill bottles and autoinjectors now support 3-character sprite labels.
+  Lagomorphica:
+  - bugfix: oppressor praetorian can no longer click on marine muzzle flashes to grab
+      you from off-screen
+  - balance: weyland-yutani commandos can no longer come as a random ert due to budget
+      cuts aboard the USCSS Nisshoku
+  LiquidPotroh:
+  - bugfix: vanguard explosive armor goes to minus infinity
+  private-tristan:
+  - qol: The third chemmaster in research can now make vials
+  - balance: Research's machinery has extra health, and should be able to withstand
+      a few explosive incidents.
+  rodcowartt:
+  - qol: Replaced second rangefinder in the mortar kit with a laser designator for
+      improved usability.
+  zzzmike:
+  - qol: DP+DCC have medbay access
+2025-05-04:
+  DarkLordCabbage:
+  - qol: Light tubes can't be removed by hand anymore, use a screwdriver instead
+  - bugfix: Fixed some lighting fixture descriptions not showing up correctly, as
+      well as other misc items.
+2025-05-05:
+  DarkLordCabbage:
+  - code_imp: Moves the acid ball ability from the dancer strain to its actual home
+      in base praetorian abilities.
+  realforest2001:
+  - rscadd: Allowed Yautja Ancient's to decide per spawn if they want to broadcast
+      to other Yautja that they're awake.
+  - rscadd: Added Yautja Overseer radio channel.
+2025-05-06:
+  seanlol092:
+  - qol: Custom mines tell you what sensitivity it is when examined
+  - balance: Claymores can now switch to low sensitive mode / high sensitive mode
+      using a wirecutter
+  - balance: 'When on less sensitive mode: Claymores cant be trigger by huggers and
+      Lesser drones'
+  - balance: Claymores can be triggered by two xeno spits, but cannot be slashed by
+      Lesser drones
+  - balance: Claymores now layer above lying mobs

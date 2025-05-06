@@ -97,18 +97,17 @@
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 
 	current_mag = /obj/item/ammo_magazine/m60
+	pixel_x = -10
+	hud_offset = -10
 	w_class = SIZE_LARGE
 	force = 25
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(
-		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
 	)
 	starting_attachment_types = list(
-		/obj/item/attachable/m60barrel,
 		/obj/item/attachable/bipod/m60,
-		/obj/item/attachable/stock/m60,
 	)
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -121,7 +120,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/m60/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 0, "rail_y" = 0, "under_x" = 27, "under_y" = 12, "stock_x" = 10, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 0, "rail_y" = 0, "under_x" = 38, "under_y" = 12, "stock_x" = 10, "stock_y" = 14)
 
 /obj/item/weapon/gun/m60/unique_action(mob/user)
 	if(jammed)
@@ -132,9 +131,9 @@
 	set_fire_delay(FIRE_DELAY_TIER_12)
 	set_burst_amount(BURST_AMOUNT_TIER_5)
 	set_burst_delay(FIRE_DELAY_TIER_12)
-	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_10
+	scatter = SCATTER_AMOUNT_NONE - SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	scatter_unwielded = SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -181,9 +180,9 @@
 /obj/item/weapon/gun/m60/update_icon()
 	. = ..()
 	if(cover_open)
-		overlays += image("+[base_gun_icon]_cover_open", pixel_x = -2, pixel_y = 8)
+		overlays += image(icon, src, "+[base_gun_icon]_cover_open", pixel_x = -2, pixel_y = 8)
 	else
-		overlays += image("+[base_gun_icon]_cover_closed", pixel_x = -10, pixel_y = 0)
+		overlays += image(icon, src, "+[base_gun_icon]_cover_closed", pixel_x = -10, pixel_y = 0)
 
 /obj/item/weapon/gun/m60/able_to_fire(mob/living/user)
 	. = ..()
@@ -208,15 +207,17 @@
 	fire_sound = 'sound/weapons/gun_mg.ogg'
 	cocked_sound = 'sound/weapons/gun_m60_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/pkp
+
+	pixel_x = -10
+	hud_offset = -10
+
 	w_class = SIZE_LARGE
-	force = 30 //the image of a upp machinegunner beating someone to death with a gpmg makes me laugh
+	force = 40 //the image of a upp machinegunner beating someone to death with a gpmg makes me laugh
 	start_semiauto = FALSE
 	start_automatic = TRUE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_AMMO_COUNTER
 	gun_category = GUN_CATEGORY_HEAVY
 	attachable_allowed = list(
-		/obj/item/attachable/pkpbarrel,
-		/obj/item/attachable/stock/pkpstock,
 		/obj/item/attachable/bipod/pkp,
 	)
 	var/cover_open = FALSE //if the gun's feed-cover is open or not.
@@ -225,15 +226,6 @@
 
 /obj/item/weapon/gun/pkp/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/attachie = new /obj/item/attachable/pkpbarrel(src)
-	attachie.flags_attach_features &= ~ATTACH_REMOVABLE
-	attachie.Attach(src)
-	update_attachable(attachie.slot)
-
-	var/obj/item/attachable/pkpstock = new /obj/item/attachable/stock/pkpstock(src)
-	pkpstock.flags_attach_features &= ~ATTACH_REMOVABLE
-	pkpstock.Attach(src)
-	update_attachable(pkpstock.slot)
 
 	//invisible mag harness
 	var/obj/item/attachable/magnetic_harness/harness = new(src)
@@ -254,7 +246,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/pkp/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 18,"rail_x" = 5, "rail_y" = 5, "under_x" = 26, "under_y" = 15, "stock_x" = 10, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 45, "muzzle_y" = 18, "rail_x" = 16, "rail_y" = 5, "under_x" = 37, "under_y" = 15, "stock_x" = 10, "stock_y" = 13)
 
 
 /obj/item/weapon/gun/pkp/set_gun_config_values()

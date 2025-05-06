@@ -40,7 +40,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Night Vision Optic", 25, /obj/item/device/helmet_visor/night_vision, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
-		list("Insulated Gloves", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
+		list("Insulated Gloves (Yellow/Tan)", 3, /obj/item/clothing/gloves/yellow, null, VENDOR_ITEM_REGULAR),
+		list("Insulated Gloves (Black)", 3, /obj/item/clothing/gloves/marine/insulated/black, null, VENDOR_ITEM_REGULAR),
 		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plastic explosive", 5, /obj/item/explosive/plastic, null, VENDOR_ITEM_RECOMMENDED),

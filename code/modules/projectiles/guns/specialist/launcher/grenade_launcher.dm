@@ -370,6 +370,9 @@
 	is_lobbing = TRUE
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
 
+	pixel_x = -4
+	hud_offset = -4
+
 	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
 	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
 	reload_sound = 'sound/weapons/handling/m79_reload.ogg'
@@ -380,19 +383,10 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/stock/m79,
 	)
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m79/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-
 /obj/item/weapon/gun/launcher/grenade/m81/m79/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 11, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 18, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
 
 /obj/item/weapon/gun/launcher/grenade/m81/m79/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

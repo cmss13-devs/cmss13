@@ -160,6 +160,68 @@
 		else
 			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief has an unknown value... you should probably fix that."))
 
+/client/proc/set_dropship_airlock()
+	set name = "Set Dropship Airlock"
+	set category = "Admin.Game"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		return
+
+	var/list/inner_ports = list()
+	for(var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_port in GLOB.dropship_airlock_docking_ports)
+		inner_ports += inner_port
+
+	var/obj/docking_port/stationary/marine_dropship/airlock/inner/selected_inner = tgui_input_list(usr, "Select a dropship airlock to set", "Select", inner_ports)
+	var/choice = tgui_input_list(usr, "What do you want to do to the dropship airlock? (Player control is currently [selected_inner.allow_processing_to_end ? "enabled" : "disabled"])", "Set", list("Enable Player Control", "Disable Player Control", "Return Dropship", "Exit Dropship", "Specific Control"))
+	switch(choice)
+		if("Enable Player Control")
+			if(selected_inner.allow_processing_to_end)
+				return
+			selected_inner.allow_processing_to_end = TRUE
+			selected_inner.processing = FALSE
+		if("Disable Player Control")
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+		if("Return Dropship")
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+			var/time_to_process = selected_inner.force_process(DROPSHIP_AIRLOCK_GO_UP)
+			spawn(time_to_process)
+				selected_inner.allow_processing_to_end = TRUE
+				selected_inner.processing = FALSE
+		if("Exit Dropship")
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+			var/time_to_process = selected_inner.force_process(DROPSHIP_AIRLOCK_GO_DOWN)
+			spawn(time_to_process)
+				selected_inner.allow_processing_to_end = TRUE
+				selected_inner.processing = FALSE
+		if("Specific Control")
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+			var/specific_choice = tgui_input_list(usr, "Which specific control do you want to effectuate? (MAY BREAK IMMERSION, ESPECIALLY DROPSHIP RAISE/LOWER)", "Set", list("[selected_inner.playing_airlock_alarm ? "Disable Airlock Alarm" : "Enable Airlock Alarm"]", "[selected_inner.open_inner_airlock ? "Close Inner Airlock" : "Open Inner Airlock"]", "[selected_inner.lowered_dropship ? "Raise Dropship" : "Lower Dropship"]", "[selected_inner.open_outer_airlock ? "Close Outer Airlock" : "Open Outer Airlock"]", "Declamp Dropship"))
+			switch(specific_choice)
+				if("Disable Airlock Alarm")
+					selected_inner.update_airlock_alarm(FALSE, TRUE)
+				if("Enable Airlock Alarm")
+					selected_inner.update_airlock_alarm(TRUE, TRUE)
+				if("Close Inner Airlock")
+					selected_inner.update_inner_airlock(FALSE, TRUE)
+				if("Open Inner Airlock")
+					selected_inner.update_inner_airlock(TRUE, TRUE)
+				if("Lower Dropship")
+					selected_inner.update_dropship_height(FALSE, TRUE)
+				if("Raise Dropship")
+					selected_inner.update_dropship_height(TRUE, TRUE)
+				if("Close Outer Airlock")
+					selected_inner.update_outer_airlock(FALSE, TRUE)
+				if("Open Outer Airlock")
+					selected_inner.update_outer_airlock(TRUE, TRUE)
+				if("Declamp Dropship")
+					selected_inner.update_clamps(TRUE, TRUE)
+			spawn(DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+				selected_inner.allow_processing_to_end = TRUE
+				selected_inner.processing = FALSE
 #undef ANTIGRIEF_OPTION_ENABLED
 #undef ANTIGRIEF_OPTION_NEW_PLAYERS
 #undef ANTIGRIEF_OPTION_DISABLED

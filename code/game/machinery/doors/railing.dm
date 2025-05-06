@@ -78,5 +78,32 @@
 /obj/structure/machinery/door/poddoor/railing/open
 	density = FALSE
 
+/obj/structure/machinery/door/poddoor/railing/no_blend/dropship_airlock
+	density = FALSE
+	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner = null
+	var/linked_inner_dropship_airlock_id = "generic"
+
+/obj/structure/machinery/door/poddoor/railing/no_blend/dropship_airlock/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/door/poddoor/railing/no_blend/dropship_airlock/LateInitialize()
+	. = ..()
+	for(var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_airlock in GLOB.dropship_airlock_docking_ports)
+		if(linked_inner_dropship_airlock_id == inner_airlock.dropship_airlock_id)
+			linked_inner = inner_airlock
+			linked_inner.railings += src
+
+/obj/structure/machinery/door/poddoor/railing/no_blend/dropship_airlock/Destroy()
+	if(linked_inner)
+		linked_inner.railings -= src
+	. = ..()
+
+/obj/structure/machinery/door/poddoor/railing/no_blend/dropship_airlock/almayer_one
+	linked_inner_dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_ONE
+
+/obj/structure/machinery/door/poddoor/railing/no_blend/dropship_airlock/almayer_two
+	linked_inner_dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO
+
 /obj/structure/machinery/door/poddoor/railing/upp
 	id = "supply_elevator_railing_upp"

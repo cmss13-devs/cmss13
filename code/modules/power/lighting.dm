@@ -165,6 +165,10 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/machinery/light/almayer
+	name = "almayer light fixture"
+	light_power = 0.7
+
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/xenomorph/M)
 	return
 
@@ -188,6 +192,10 @@
 	brightness = 4
 	desc = "A small lighting fixture. Good for illuminating dark areas."
 	light_type = /obj/item/light_bulb/bulb
+
+/obj/structure/machinery/light/small/almayer
+	name = "almayer light fixture"
+	light_power = 0.7
 
 /obj/structure/machinery/light/small/blue
 	icon_state = "bbulb1"

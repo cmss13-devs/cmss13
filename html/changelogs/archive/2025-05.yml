@@ -29,3 +29,21 @@
   - qol: Light tubes can't be removed by hand anymore, use a screwdriver instead
   - bugfix: Fixed some lighting fixture descriptions not showing up correctly, as
       well as other misc items.
+2025-05-05:
+  DarkLordCabbage:
+  - code_imp: Moves the acid ball ability from the dancer strain to its actual home
+      in base praetorian abilities.
+  realforest2001:
+  - rscadd: Allowed Yautja Ancient's to decide per spawn if they want to broadcast
+      to other Yautja that they're awake.
+  - rscadd: Added Yautja Overseer radio channel.
+2025-05-06:
+  seanlol092:
+  - qol: Custom mines tell you what sensitivity it is when examined
+  - balance: Claymores can now switch to low sensitive mode / high sensitive mode
+      using a wirecutter
+  - balance: 'When on less sensitive mode: Claymores cant be trigger by huggers and
+      Lesser drones'
+  - balance: Claymores can be triggered by two xeno spits, but cannot be slashed by
+      Lesser drones
+  - balance: Claymores now layer above lying mobs

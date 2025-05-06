@@ -51,11 +51,11 @@
 	if(istype(I, /obj/item/clothing/accessory))
 
 		if(!LAZYLEN(valid_accessory_slots))
-			to_chat(usr, SPAN_WARNING("You cannot attach accessories of any kind to \the [src]."))
+			to_chat(user, SPAN_WARNING("You cannot attach accessories of any kind to [src]."))
 			return
 
-		if(isstorage(src.loc))
-			to_chat(usr, SPAN_WARNING("You cannot attach accessories to [src] while it is in a storage item."))
+		if(isstorage(loc))
+			to_chat(user, SPAN_WARNING("You cannot attach accessories to [src] while it is in a storage item."))
 			return
 
 		var/obj/item/clothing/accessory/A = I

@@ -54,6 +54,10 @@
 			to_chat(usr, SPAN_WARNING("You cannot attach accessories of any kind to \the [src]."))
 			return
 
+		if(isstorage(src.loc))
+			to_chat(usr, SPAN_WARNING("You cannot attach accessories to [src] while it is in a storage item."))
+			return
+
 		var/obj/item/clothing/accessory/A = I
 		if(can_attach_accessory(A))
 			if(!user.drop_held_item())

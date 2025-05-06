@@ -1254,7 +1254,7 @@
 	set src in usr
 	. = translate_internal(usr, FALSE)
 
-/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/caller, forced = FALSE)
+/obj/item/clothing/gloves/yautja/hunter/proc/translate_internal(mob/living/carbon/human/caller, forced = FALSE)
 	if(!caller || caller.stat)
 		return
 
@@ -1266,21 +1266,24 @@
 		to_chat(caller, SPAN_DANGER("You cannot translate (muted)."))
 		return
 
-	caller.create_typing_indicator()
-	var/msg = sanitize(input(caller, "Your bracer beeps and waits patiently for you to input your message.", "Translator", "") as text)
-	caller.remove_typing_indicator()
-	if(!msg || !caller.client)
+	var/list/heard = get_mobs_in_view(7, caller)
+	for(var/mob/M in heard)
+		if(M.ear_deaf)
+			heard -= M
+
+	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
+	caller.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
+	var/message = tgui_input_text(caller, "The bracer beeps and is awaiting to translate", "Translator", multiline = TRUE)
+	caller.remove_speech_bubble(translator_bubble)
+	if(!message || !caller.client)
 		return
 
 	if(!drain_power(caller, 50))
 		return
 
-	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [msg] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
+	caller.show_speech_bubble(heard, "pred_translator1")
 
-	var/list/heard = get_mobs_in_view(7, caller)
-	for(var/mob/M in heard)
-		if(M.ear_deaf)
-			heard -= M
+	log_say("[caller.name != "Unknown" ? caller.name : "([caller.real_name])"] \[Yautja Translator\]: [message] (CKEY: [caller.key]) (JOB: [caller.job]) (AREA: [get_area_name(caller)])")
 
 	var/overhead_color = "#ff0505"
 	var/span_class = "yautja_translator"
@@ -1288,14 +1291,14 @@
 		if(translator_type == PRED_TECH_RETRO)
 			overhead_color = "#FFFFFF"
 			span_class = "retro_translator"
-		msg = replacetext(msg, "a", "@")
-		msg = replacetext(msg, "e", "3")
-		msg = replacetext(msg, "i", "1")
-		msg = replacetext(msg, "o", "0")
-		msg = replacetext(msg, "s", "5")
-		msg = replacetext(msg, "l", "1")
+		message = replacetext(message, "a", "@")
+		message = replacetext(message, "e", "3")
+		message = replacetext(message, "i", "1")
+		message = replacetext(message, "o", "0")
+		message = replacetext(message, "s", "5")
+		message = replacetext(message, "l", "1")
 
-	caller.langchat_speech(msg, heard, GLOB.all_languages, overhead_color, TRUE)
+	caller.langchat_speech(message, heard, GLOB.all_languages, overhead_color, TRUE)
 
 	var/voice_name = "A strange voice"
 	if(caller.name == caller.real_name && caller.alpha == initial(caller.alpha))
@@ -1303,7 +1306,7 @@
 	for(var/mob/Q as anything in heard)
 		if(Q.stat && !isobserver(Q))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[msg]'</span>")
+		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[message]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

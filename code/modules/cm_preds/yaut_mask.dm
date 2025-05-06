@@ -316,4 +316,4 @@
 	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
 	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
 	icon_state = null
-	slot = ACCESSORY_SLOT_YAUTJA_MASK
+	worn_accessory_slot = ACCESSORY_SLOT_YAUTJA_MASK

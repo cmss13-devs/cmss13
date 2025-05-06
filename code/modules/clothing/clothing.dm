@@ -24,7 +24,7 @@
 	/// Whether this item can be converted into an accessory when used
 	var/can_become_accessory = FALSE
 	/// default slot for accessories, pathed here for use for non-accessories
-	var/slot = ACCESSORY_SLOT_DEFAULT
+	var/worn_accessory_slot = ACCESSORY_SLOT_DEFAULT
 	/// for pathing to different accessory subtypes with unique mechanics
 	var/accessory_path = /obj/item/clothing/accessory
 
@@ -46,7 +46,7 @@
 	new_accessory.accessory_icons = accessory_icons
 	new_accessory.high_visibility = TRUE
 	new_accessory.removable = TRUE
-	new_accessory.slot = slot
+	new_accessory.worn_accessory_slot = worn_accessory_slot
 	new_accessory.can_become_accessory = can_become_accessory
 
 	new_accessory.inv_overlay = image("icon" = accessory_icons[WEAR_FACE], "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]") // will need a dynamic implementation in the future, or path directly to accessory\inventory_overlays to its own dmi file  - nihi

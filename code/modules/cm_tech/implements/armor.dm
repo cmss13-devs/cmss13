@@ -6,7 +6,7 @@
 	icon_state = "regular2_100"
 	var/base_icon_state = "regular2"
 
-	slot = ACCESSORY_SLOT_ARMOR_C
+	worn_accessory_slot = ACCESSORY_SLOT_ARMOR_C
 	w_class = SIZE_MEDIUM
 	/// is it *armor* or something different & irrelevant and always passes damage & doesnt take damage to itself?
 	var/is_armor = TRUE
@@ -79,10 +79,10 @@
 			COMSIG_ITEM_DROPPED
 		))
 
-/obj/item/clothing/accessory/health/proc/check_to_signal(obj/item/clothing/S, mob/living/user, slot)
+/obj/item/clothing/accessory/health/proc/check_to_signal(obj/item/clothing/S, mob/living/user, worn_accessory_slot)
 	SIGNAL_HANDLER
 
-	if(slot == WEAR_BODY)
+	if(worn_accessory_slot == WEAR_BODY)
 		if(take_slash_damage)
 			RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(take_slash_damage))
 		RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, PROC_REF(take_bullet_damage))
@@ -228,9 +228,9 @@
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 
-/obj/item/clothing/accessory/health/research_plate/proc/on_removed_sig(mob/living/user, slot)
+/obj/item/clothing/accessory/health/research_plate/proc/on_removed_sig(mob/living/user, worn_accessory_slot)
 	SIGNAL_HANDLER
-	if(slot != attached_uni)
+	if(worn_accessory_slot != attached_uni)
 		return FALSE
 	UnregisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED)
 	return TRUE
@@ -253,7 +253,7 @@
 			return
 		user.universal_understand = FALSE
 
-/obj/item/clothing/accessory/health/research_plate/translator/on_removed_sig(mob/living/carbon/human/user, slot)
+/obj/item/clothing/accessory/health/research_plate/translator/on_removed_sig(mob/living/carbon/human/user, worn_accessory_slot)
 	. = ..()
 	if(. == FALSE)
 		return
@@ -283,7 +283,7 @@
 	UnregisterSignal(user, COMSIG_BLEEDING_PROCESS)
 	attached_uni = null
 
-/obj/item/clothing/accessory/health/research_plate/coagulator/on_removed_sig(mob/living/carbon/human/user, slot)
+/obj/item/clothing/accessory/health/research_plate/coagulator/on_removed_sig(mob/living/carbon/human/user, worn_accessory_slot)
 	. = ..()
 	if(. == FALSE)
 		return
@@ -356,7 +356,7 @@
 	QDEL_NULL(activation)
 	attached_uni = null
 
-/obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed_sig(mob/living/carbon/human/user, slot)
+/obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed_sig(mob/living/carbon/human/user, worn_accessory_slot)
 	. = ..()
 	if(. == FALSE)
 		return
@@ -424,7 +424,7 @@
 	wearer = null
 	attached_uni = null
 
-/obj/item/clothing/accessory/health/research_plate/anti_decay/on_removed_sig(mob/living/user, slot)
+/obj/item/clothing/accessory/health/research_plate/anti_decay/on_removed_sig(mob/living/user, worn_accessory_slot)
 	. = ..()
 	if(. == FALSE)
 		return

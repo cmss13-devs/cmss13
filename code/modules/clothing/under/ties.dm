@@ -193,7 +193,7 @@
 	var/recipient_name //name of the person this is awarded to.
 	var/recipient_rank
 	var/medal_citation
-	slot = ACCESSORY_SLOT_MEDAL
+	worn_accessory_slot = ACCESSORY_SLOT_MEDAL
 	high_visibility = TRUE
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
@@ -202,9 +202,9 @@
 	if(.)
 		RegisterSignal(S, COMSIG_ITEM_EQUIPPED, PROC_REF(remove_medal))
 
-/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user, slot)
+/obj/item/clothing/accessory/medal/proc/remove_medal(obj/item/clothing/C, mob/user, worn_accessory_slot)
 	SIGNAL_HANDLER
-	if(user.real_name != recipient_name && (slot == WEAR_BODY || slot == WEAR_JACKET))
+	if(user.real_name != recipient_name && (worn_accessory_slot == WEAR_BODY || worn_accessory_slot == WEAR_JACKET))
 		C.remove_accessory(user, src)
 		user.drop_held_item(src)
 
@@ -377,7 +377,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi'
 	)
-	slot = ACCESSORY_SLOT_ARMBAND
+	worn_accessory_slot = ACCESSORY_SLOT_ARMBAND
 
 /obj/item/clothing/accessory/armband/cargo
 	name = "cargo armband"
@@ -444,7 +444,7 @@
 	. = ..()
 	adapt_to_squad()
 
-/obj/item/clothing/accessory/armband/squad/equipped(mob/user, slot, silent)
+/obj/item/clothing/accessory/armband/squad/equipped(mob/user, worn_accessory_slot, silent)
 	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
 	adapt_to_squad()
 	return ..()
@@ -605,7 +605,7 @@
 	. = ..()
 	adapt_to_squad()
 
-/obj/item/clothing/accessory/patch/falcon/squad_main/equipped(mob/user, slot, silent)
+/obj/item/clothing/accessory/patch/falcon/squad_main/equipped(mob/user, worn_accessory_slot, silent)
 	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_wrapper), TRUE)
 	adapt_to_squad()
 	return ..()
@@ -659,7 +659,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
 	)
-	slot = ACCESSORY_SLOT_MEDAL
+	worn_accessory_slot = ACCESSORY_SLOT_MEDAL
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -673,7 +673,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
 	)
-	slot = ACCESSORY_SLOT_PONCHO
+	worn_accessory_slot = ACCESSORY_SLOT_PONCHO
 	flags_atom = MAP_COLOR_INDEX
 
 /obj/item/clothing/accessory/poncho/Initialize()
@@ -716,7 +716,7 @@
 	)
 	w_class = SIZE_LARGE //too big to store in other pouches
 	var/obj/item/storage/internal/hold = /obj/item/storage/internal/accessory
-	slot = ACCESSORY_SLOT_UTILITY
+	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/storage/Initialize()
@@ -1086,7 +1086,7 @@
 	name = "shoulder holster"
 	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
 	icon_state = "holster"
-	slot = ACCESSORY_SLOT_UTILITY
+	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE
 	hold = /obj/item/storage/internal/accessory/holster
 
@@ -1135,7 +1135,7 @@
 					to_chat(usr, SPAN_WARNING("[src] already holds \a [W]."))
 				return
 		else //Must be ammo.
-			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
+			var/ammo_slots = storage_slots - 1 //We have a worn_accessory_slot reserved for the gun
 			var/ammo_stored = length(contents)
 			if(current_gun)
 				ammo_stored--
@@ -1259,13 +1259,13 @@ Wrist Accessories
 	icon = 'icons/obj/items/clothing/accessory/wrist_accessories.dmi'
 	icon_state = "bracelet"
 	inv_overlay_icon = null
-	slot = ACCESSORY_SLOT_WRIST_L
+	worn_accessory_slot = ACCESSORY_SLOT_WRIST_L
 	var/which_wrist = "left wrist"
 
 /obj/item/clothing/accessory/wrist/get_examine_text(mob/user)
 	. = ..()
 
-	switch(slot)
+	switch(worn_accessory_slot)
 		if(ACCESSORY_SLOT_WRIST_L)
 			which_wrist = "left wrist"
 		if(ACCESSORY_SLOT_WRIST_R)
@@ -1278,12 +1278,12 @@ Wrist Accessories
 /obj/item/clothing/accessory/wrist/attack_self(mob/user)
 	..()
 
-	switch(slot)
+	switch(worn_accessory_slot)
 		if(ACCESSORY_SLOT_WRIST_L)
-			slot = ACCESSORY_SLOT_WRIST_R
+			worn_accessory_slot = ACCESSORY_SLOT_WRIST_R
 			to_chat(user, SPAN_NOTICE("[src] will be worn on the right wrist."))
 		if(ACCESSORY_SLOT_WRIST_R)
-			slot = ACCESSORY_SLOT_WRIST_L
+			worn_accessory_slot = ACCESSORY_SLOT_WRIST_L
 			to_chat(user, SPAN_NOTICE("[src] will be worn on the left wrist."))
 
 /obj/item/clothing/accessory/wrist/watch

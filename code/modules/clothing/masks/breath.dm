@@ -153,7 +153,7 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	can_become_accessory = TRUE
-	slot = ACCESSORY_SLOT_MASK
+	worn_accessory_slot = ACCESSORY_SLOT_MASK
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	icon_state = "scarf_red"
@@ -197,7 +197,7 @@
 	. = ..()
 	adapt_to_squad()
 
-/obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad/equipped(mob/user, slot, silent)
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask/squad/equipped(mob/user, worn_accessory_slot, silent)
 	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_icon), TRUE)
 	adapt_to_squad()
 	return ..()
@@ -231,7 +231,7 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	can_become_accessory = TRUE
-	slot = ACCESSORY_SLOT_MASK
+	worn_accessory_slot = ACCESSORY_SLOT_MASK
 
 /obj/item/clothing/mask/tornscarf/green
 	icon_state = "torn_scarf_green"
@@ -364,7 +364,7 @@
 	var/original_state = "neckerchief"
 	actions_types = list(/datum/action/item_action/toggle)
 	can_become_accessory = TRUE
-	slot = ACCESSORY_SLOT_MASK
+	worn_accessory_slot = ACCESSORY_SLOT_MASK
 
 /obj/item/clothing/mask/neckerchief/ui_action_click()
 	adjust()
@@ -409,7 +409,7 @@
 	. = ..()
 	adapt_to_squad()
 
-/obj/item/clothing/mask/neckerchief/squad/equipped(mob/user, slot, silent)
+/obj/item/clothing/mask/neckerchief/squad/equipped(mob/user, worn_accessory_slot, silent)
 	RegisterSignal(user, COMSIG_SET_SQUAD, PROC_REF(update_clothing_icon), TRUE)
 	adapt_to_squad()
 	return ..()

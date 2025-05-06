@@ -635,7 +635,8 @@ DEFINES in setup.dm, referenced here.
 						storage.handle_item_insertion(active_hand, user = src)
 						return
 
-		quick_equip()
+		if(!equip_to_appropriate_slot(active_hand, 0))
+			to_chat(src, SPAN_DANGER("You are unable to equip that."))
 	else //empty hand, start checking slots and holsters
 
 		//default order: suit, belt, back, pockets, uniform, shoes

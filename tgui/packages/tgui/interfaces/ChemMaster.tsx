@@ -65,11 +65,30 @@ export const ChemMaster = () => {
 
   const [pillPicker, setPillPicker] = useState(false);
 
+  const [showPresets, setShowPresets] = useState(false);
+  const [creatingPreset, setCreatingPreset] = useState(false);
+  const [editingPreset, setEditingPreset] = useState<string | null>(null);
+
   return (
     <Window width={550} height={600}>
       <Window.Content className="ChemMaster">
         <Section fill scrollable>
-          <Section title="Status">
+          <Section
+            title={
+              <Stack fill align="center">
+                <Stack.Item>Status</Stack.Item>
+                <Stack.Item ml="auto">
+                  <Button
+                    icon="save"
+                    tooltip="Manage and apply presets"
+                    onClick={() => setShowPresets(true)}
+                  >
+                    Presets
+                  </Button>
+                </Stack.Item>
+              </Stack>
+            }
+          >
             <Stack vertical>
               <Stack.Item>
                 <Stack>
@@ -143,6 +162,67 @@ export const ChemMaster = () => {
           )}
           {pillPicker && <PillPicker setPicker={setPillPicker} />}
         </Section>
+        {showPresets && (
+          <Modal>
+            <Stack vertical>
+              {/* Header */}
+              <Stack.Item>
+                <Stack align="center">
+                  <Stack.Item grow>
+                    <Box bold>Preset Management</Box>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button
+                      icon="times"
+                      onClick={() => setShowPresets(false)}
+                    />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+
+              {/* Preset List */}
+              <Stack.Item>
+                <Box bold>Saved Presets:</Box>
+                <Stack align="center">
+                  <Stack.Item grow>
+                    <Button
+                      fluid
+                      onClick={() => act('apply_preset', { name: 'ImiAlky' })}
+                    >
+                      ImiAlky
+                    </Button>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button
+                      icon="edit"
+                      tooltip="Edit Preset"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditingPreset('ImiAlky');
+                      }}
+                    />
+                    <Button
+                      icon="trash"
+                      color="bad"
+                      tooltip="Delete Preset"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        act('delete_preset', { name: 'ImiAlky' });
+                      }}
+                    />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+
+              {/* Create Button */}
+              <Stack.Item>
+                <Button icon="plus" onClick={() => setCreatingPreset(true)}>
+                  Create Preset
+                </Button>
+              </Stack.Item>
+            </Stack>
+          </Modal>
+        )}
       </Window.Content>
     </Window>
   );

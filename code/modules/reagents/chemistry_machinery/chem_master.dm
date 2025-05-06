@@ -15,6 +15,7 @@
 	var/obj/item/reagent_container/beaker = null
 	var/list/loaded_pill_bottles = list()
 	var/list/loaded_pill_bottles_to_fill = list()
+	var/list/presets = list() // name -> list(settings)
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
@@ -180,6 +181,24 @@
 		return
 
 	switch(action)
+		if("open_presets")
+			// Do nothing yet
+			return TRUE
+
+		if("apply_preset")
+			var/preset_name = params["name"]
+			// TODO: Apply preset logic
+			return TRUE
+
+		if("save_preset")
+			// Do nothing yet
+			return TRUE
+
+		if("delete_preset")
+			var/preset_name = params["name"]
+			// TODO: Delete preset logic
+			return TRUE
+
 		if("eject_pill")
 			var/bottle_index = params["bottleIndex"] + 1;
 			if(length(loaded_pill_bottles) == 0 || bottle_index > length(loaded_pill_bottles))

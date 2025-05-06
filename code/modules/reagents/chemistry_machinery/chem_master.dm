@@ -109,6 +109,12 @@
 
 /obj/structure/machinery/chem_master/ui_data(mob/user)
 	. = ..()
+	// Ensure presets are included
+	if(user.client?.prefs)
+		var/list/presets = user.client.prefs.get_all_chem_presets()
+		.["presets"] = presets
+		// Debug output
+		to_chat(user, "DEBUG: Found [length(presets)] presets: [json_encode(presets)]")
 
 	.["is_connected"] = !!connected
 	.["mode"] = mode
@@ -186,17 +192,64 @@
 			return TRUE
 
 		if("apply_preset")
+			if(!usr.client?.prefs)
+				return TRUE
+
 			var/preset_name = params["name"]
-			// TODO: Apply preset logic
+			if(!preset_name)
+				return TRUE
+
+			var/list/preset_data = usr.client.prefs.get_chem_preset(preset_name)
+			if(!preset_data)
+				return TRUE
+
+			// Apply preset to selected bottles
+			if(preset_data["bottle_color"] && length(loaded_pill_bottles_to_fill) > 0)
+				var/picked_color = preset_data["bottle_color"]
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					if(picked_color && (picked_color in bottle.possible_colors))
+						bottle.icon_state = bottle.base_icon + bottle.possible_colors[picked_color]
+
+			if(preset_data["bottle_label"] && length(loaded_pill_bottles_to_fill) > 0)
+				var/label = preset_data["bottle_label"]
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					bottle.AddComponent(/datum/component/label, label)
+					if(length(label) < 4)
+						bottle.maptext_label = label
+						bottle.update_icon()
+
+			if(preset_data["pill_color"])
+				pillsprite = preset_data["pill_color"]
+
 			return TRUE
 
 		if("save_preset")
-			// Do nothing yet
+			if(!usr.client?.prefs)
+				return TRUE
+			var/preset_name = trim(params["name"])
+			if(!preset_name || !length(preset_name))
+				return TRUE
+			preset_name = copytext(reject_bad_text(preset_name), 1, MAX_PRESET_NAME_LEN)
+			var/original_name = params["original_name"] // Original name for editing
+			var/list/preset_data = list(
+				"bottle_color" = params["bottle_color"],
+				"bottle_label" = params["bottle_label"],
+				"pill_color" = params["pill_color"]
+			)
+			// If editing an existing preset with a name change
+			if(original_name && original_name != preset_name)
+				usr.client.prefs.delete_chem_preset(original_name)
+			usr.client.prefs.save_chem_preset(preset_name, preset_data)
+			// Force UI refresh
+			SStgui.update_uis(src)
 			return TRUE
 
 		if("delete_preset")
+			if(!usr.client?.prefs)
+				return TRUE
+
 			var/preset_name = params["name"]
-			// TODO: Delete preset logic
+			usr.client.prefs.delete_chem_preset(preset_name)
 			return TRUE
 
 		if("eject_pill")

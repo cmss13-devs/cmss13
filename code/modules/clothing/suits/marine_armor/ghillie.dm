@@ -9,7 +9,7 @@
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 pattern ghillie"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	unacidable = TRUE
 

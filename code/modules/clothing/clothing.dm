@@ -24,7 +24,7 @@
 	/// Whether this item can be converted into an accessory when used
 	var/can_become_accessory = FALSE
 	/// default slot for accessories, pathed here for use for non-accessories
-	var/worn_accessory_slot = ACCESSORY_SLOT_DEFAULT
+	var/slot = ACCESSORY_SLOT_DEFAULT
 	/// for pathing to different accessory subtypes with unique mechanics
 	var/accessory_path = /obj/item/clothing/accessory
 
@@ -46,7 +46,7 @@
 	new_accessory.accessory_icons = accessory_icons
 	new_accessory.high_visibility = TRUE
 	new_accessory.removable = TRUE
-	new_accessory.worn_accessory_slot = worn_accessory_slot
+	new_accessory.slot = slot
 	new_accessory.can_become_accessory = can_become_accessory
 
 	new_accessory.inv_overlay = image("icon" = accessory_icons[WEAR_FACE], "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]") // will need a dynamic implementation in the future, or path directly to accessory\inventory_overlays to its own dmi file  - nihi
@@ -166,7 +166,7 @@
 /obj/item/clothing/get_mob_overlay(mob/user_mob, slot, default_bodytype = "Default")
 	var/image/ret = ..()
 
-	if(worn_accessory_slot == WEAR_L_HAND || worn_accessory_slot == WEAR_R_HAND)
+	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
 		return ret
 
 	if(blood_color && blood_overlay_type)
@@ -260,7 +260,7 @@
 		M.update_inv_wear_suit()
 
 
-/obj/item/clothing/suit/mob_can_equip(mob/M, worn_accessory_slot, disable_warning = 0)
+/obj/item/clothing/suit/mob_can_equip(mob/M, slot, disable_warning = 0)
 	//if we can't equip the item anyway, don't bother with other checks.
 	if (!..())
 		return 0
@@ -511,19 +511,19 @@
 	. = ..()
 	attempt_insert_item(user, attacking_item)
 
-/obj/item/clothing/equipped(mob/user, worn_accessory_slot, silent)
-	if(is_valid_slot(worn_accessory_slot, TRUE)) //is it going to a matching clothing slot?
+/obj/item/clothing/equipped(mob/user, slot, silent)
+	if(is_valid_slot(slot, TRUE)) //is it going to a matching clothing slot?
 		if(!silent && LAZYLEN(equip_sounds))
 			playsound_client(user.client, pick(equip_sounds), null, ITEM_EQUIP_VOLUME)
 		if(clothing_traits_active)
 			for(var/trait in clothing_traits)
-				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(worn_accessory_slot))
+				ADD_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	..()
 
-/obj/item/clothing/unequipped(mob/user, worn_accessory_slot)
-	if(is_valid_slot(worn_accessory_slot, TRUE))
+/obj/item/clothing/unequipped(mob/user, slot)
+	if(is_valid_slot(slot, TRUE))
 		for(var/trait in clothing_traits)
-			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(worn_accessory_slot))
+			REMOVE_TRAIT(user, trait, TRAIT_SOURCE_EQUIPMENT(slot))
 	. = ..()
 
 /obj/item/clothing/proc/get_pockets()

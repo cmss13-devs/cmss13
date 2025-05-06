@@ -207,8 +207,8 @@
 				user.update_sight()
 	..()
 
-/obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, worn_accessory_slot)
-	if(worn_accessory_slot == WEAR_FACE)
+/obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
+	if(slot == WEAR_FACE)
 		for(var/datum/action/action as anything in mask_actions)
 			give_action(user, action)
 
@@ -316,4 +316,4 @@
 	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
 	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
 	icon_state = null
-	worn_accessory_slot = ACCESSORY_SLOT_YAUTJA_MASK
+	slot = ACCESSORY_SLOT_YAUTJA_MASK

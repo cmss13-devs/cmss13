@@ -934,11 +934,6 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
-"adQ" = (
-/obj/structure/surface/rack,
-/obj/item/device/defibrillator/synthetic,
-/turf/open/floor/prison/green,
-/area/desert_dam/interior/dam_interior/atmos_storage)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -83791,7 +83786,7 @@ bDA
 bFa
 bFa
 bFa
-adQ
+bIy
 bDx
 cNW
 gQE

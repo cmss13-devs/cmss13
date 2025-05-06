@@ -73,15 +73,6 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/lz/near_lzI)
-"aao" = (
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/spawner/gibspawner/human,
-/turf/open/floor/prison/cell_stripe/west,
-/area/fiorina/station/medbay)
-"aap" = (
-/obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/prison,
-/area/fiorina/station/medbay)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/prison,
@@ -98,87 +89,6 @@
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
-"aat" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
-"aau" = (
-/obj/item/weapon/twohanded/spear,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
-"aav" = (
-/obj/effect/spawner/gibspawner/robot,
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/spawner/gibspawner/human,
-/turf/open/floor/prison/sterile_white/southwest,
-/area/fiorina/station/medbay)
-"aaw" = (
-/obj/item/weapon/baton,
-/turf/open/floor/prison/sterile_white/southwest,
-/area/fiorina/station/medbay)
-"aax" = (
-/obj/effect/landmark/corpsespawner/prisoner,
-/turf/open/floor/prison/sterile_white/southwest,
-/area/fiorina/station/medbay)
-"aay" = (
-/obj/effect/spawner/gibspawner/human,
-/turf/open/floor/prison/sterile_white/southwest,
-/area/fiorina/station/medbay)
-"aaz" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/sterile_white/southwest,
-/area/fiorina/station/medbay)
-"aaA" = (
-/obj/item/clothing/under/marine/ua_riot,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
-"aaB" = (
-/obj/effect/decal/cleanable/blood/gibs/robot,
-/obj/item/limb/head/synth{
-	desc = "This appears to be the head of a synthetic, though it it is so destroyed there is no way in hell anyone is going to bring it back to even basic functionality.";
-	name = "shattered synthetic head";
-	pixel_y = 3;
-	icon_state = "scandinavian_head_m"
-	},
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
-"aaC" = (
-/obj/effect/spawner/gibspawner/robot,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
-"aaD" = (
-/obj/item/device/defibrillator/synthetic,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
-"aaE" = (
-/obj/effect/spawner/gibspawner/human,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
-"aaF" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/obj/item/weapon/twohanded/spear,
-/turf/open/floor/prison,
-/area/fiorina/station/medbay)
-"aaG" = (
-/obj/item/clothing/suit/storage/marine/light/synvest/grey,
-/turf/open/floor/prison/cell_stripe/west,
-/area/fiorina/station/medbay)
-"aaH" = (
-/obj/item/robot_parts/arm/l_arm,
-/turf/open/floor/prison,
-/area/fiorina/station/medbay)
-"aaI" = (
-/obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison,
-/area/fiorina/station/medbay)
-"aaJ" = (
-/obj/effect/spawner/gibspawner/human,
-/turf/open/floor/prison,
-/area/fiorina/station/medbay)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -23638,6 +23548,10 @@
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
+"sdr" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "sdE" = (
 /obj/item/storage/wallet/random,
 /turf/open/floor/prison/kitchen/southwest,
@@ -23965,9 +23879,7 @@
 /area/fiorina/lz/near_lzI)
 "soN" = (
 /obj/structure/closet/cabinet,
-/obj/effect/spawner/random/gun/special/lowchance{
-	guns = list(/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg, /obj/item/weapon/gun/shotgun/merc = null, /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar, /obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle, /obj/item/weapon/gun/shotgun/combat = null, /obj/istem/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78, /obj/item/weapon/gun/launcher/grenade/m81/m79 = null)
-	},
+/obj/effect/spawner/random/gun/special/lowchance,
 /obj/item/clothing/suit/armor/det_suit,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
@@ -61017,8 +60929,8 @@ mEO
 hVI
 hVI
 gYM
-aax
-aay
+tja
+tja
 tja
 tja
 tja
@@ -61445,7 +61357,7 @@ kXm
 ipM
 tja
 bLM
-aao
+esw
 aFZ
 hVI
 hVI
@@ -61653,9 +61565,9 @@ tQB
 kZu
 mAK
 hVI
-aaF
-aaA
-aav
+wfu
+bLM
+tja
 bLM
 byY
 tEH
@@ -61865,9 +61777,9 @@ aFZ
 hUL
 tja
 hVI
-aaG
-aaB
-aaw
+esw
+bLM
+tja
 rnM
 esw
 tEH
@@ -62077,10 +61989,10 @@ aFZ
 wDK
 tja
 aif
-aaH
-aaC
-aax
-aat
+byY
+bLM
+tja
+bLM
 byY
 tEH
 njm
@@ -62290,8 +62202,8 @@ hVI
 hVI
 hVI
 qSy
-aaD
-aay
+bLM
+tja
 bLM
 byY
 aFZ
@@ -62501,10 +62413,10 @@ aFZ
 chZ
 tja
 aif
-aaI
-aaE
+byY
+bLM
 tja
-aau
+bLM
 qtP
 aFZ
 fIT
@@ -62713,11 +62625,11 @@ aFZ
 bRo
 tja
 hVI
-aaJ
+byY
 bLM
 tja
 bLM
-aap
+byY
 sJu
 mEO
 sJu
@@ -62926,8 +62838,8 @@ kSd
 tja
 hVI
 ncj
-bLM
-aaz
+sdr
+tja
 bLM
 egT
 aFZ

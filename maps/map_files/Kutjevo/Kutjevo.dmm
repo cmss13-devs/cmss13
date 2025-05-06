@@ -5597,7 +5597,6 @@
 /area/kutjevo/interior/construction/north)
 "isV" = (
 /obj/structure/surface/rack,
-/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/signal_tower)
 "itr" = (

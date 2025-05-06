@@ -22,11 +22,34 @@ GLOBAL_LIST_EMPTY(ru_names)
 /proc/ru_names_toml(name, prefix, suffix, override_base)
 	. = list()
 	var/formatted_name = format_text(name)
+	// The world didn't initialize properly yet
+	if(isnull(GLOB.ru_names))
+		return .
+	// Fill ru_names
 	if(!length(GLOB.ru_names))
-		var/toml_path = "[PATH_TO_TRANSLATE_DATA]/ru_names.toml"
-		if(!fexists(file(toml_path)))
+		var/root = "[PATH_TO_TRANSLATE_DATA]/ru_names/"
+		var/list/tomls_path = flist(root)
+		if(!length(tomls_path))
 			return .
-		GLOB.ru_names = rustg_read_toml_file("[PATH_TO_TRANSLATE_DATA]/ru_names.toml")
+#ifdef UNIT_TESTS
+		var/list/duplicate_list = list()
+#endif
+		for(var/toml_file in tomls_path)
+			var/full_path = root + toml_file
+			if(!fexists(full_path))
+				continue
+			var/list/file_data = rustg_read_toml_file(full_path)
+			for(var/key in file_data)
+				if(GLOB.ru_names[key])
+#ifdef UNIT_TESTS
+					duplicate_list += key
+#endif
+					continue
+				GLOB.ru_names[key] = file_data[key]
+#ifdef UNIT_TESTS
+		if(length(duplicate_list))
+			CRASH("Multiple ru_names entries detected. Keys are: [english_list(duplicate_list)]")
+#endif
 	if(GLOB.ru_names[formatted_name])
 		var/base = override_base || "[prefix][name][suffix]"
 		var/nominative_form = GLOB.ru_names[formatted_name]["nominative"] || name

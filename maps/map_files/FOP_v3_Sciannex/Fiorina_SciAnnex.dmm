@@ -73,6 +73,10 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/lz/near_lzI)
+"aao" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/fiorina/station/medbay)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/prison,
@@ -23548,10 +23552,6 @@
 /obj/structure/largecrate/supply/supplies/mre,
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzI)
-"sdr" = (
-/obj/effect/landmark/corpsespawner/ua_riot,
-/turf/open/floor/prison/whitegreenfull/southwest,
-/area/fiorina/station/medbay)
 "sdE" = (
 /obj/item/storage/wallet/random,
 /turf/open/floor/prison/kitchen/southwest,
@@ -62838,7 +62838,7 @@ kSd
 tja
 hVI
 ncj
-sdr
+aao
 tja
 bLM
 egT

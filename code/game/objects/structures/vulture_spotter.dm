@@ -167,7 +167,7 @@
 		skillless = TRUE
 
 	user.visible_message(SPAN_NOTICE("[user] attaches [scope] to [src]."), SPAN_NOTICE("You attach [scope] to [src]."))
-	icon_state = "vulture_tripod_deployed"
+	icon_state = "vulture_scope_deployed" //BANDAMARINES EDIT
 	setDir(user.dir)
 	bound_rifle = scope.bound_rifle
 	scope_attached = TRUE

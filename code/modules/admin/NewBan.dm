@@ -397,6 +397,12 @@ GLOBAL_DATUM(Banlist, /savefile)
 	if(!length(impacted_ips))
 		impacted_ips = splittext(tgui_input_text(src, "Which IPs should be impacted by this ban? Separate with semicolons.", "BuildABan", "1.1.1.1;8.8.8.8"), ";")
 
+	// BANDAMARINES ADD - START
+	if(HAS_CIRILLIC(reason) || HAS_CIRILLIC(message) || HAS_CIRILLIC(identifier))
+		tgui_alert(usr, "Причина, сообщение и идентификатор стикибана не должны содержать кириллицу!")
+		return
+	// BANDAMARINES ADD - END
+
 	var/datum/entity/stickyban/new_sticky = SSstickyban.add_stickyban(identifier, reason, message, player_data)
 
 	if(!new_sticky)

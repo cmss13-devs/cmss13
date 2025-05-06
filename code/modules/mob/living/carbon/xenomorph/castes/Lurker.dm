@@ -119,7 +119,7 @@
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if (lurker_invis_action)
-		lurker_invis_action.invisibility_off(0, TRUE, FALSE) // Full cooldown
+		lurker_invis_action.invisibility_off(0, TRUE, TRUE) // Full cooldown, no lingering speed
 
 /datum/behavior_delegate/lurker_base/proc/decloak_handler(mob/source)
 	SIGNAL_HANDLER
@@ -263,7 +263,6 @@
 	to_chat(xeno, SPAN_XENODANGER("Our invisibility's speed boost ends!"))
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	xeno.speed_modifier += lurker_invis.speed_buff
-	xeno.pull_speed -= 0.1
 	xeno.recalculate_speed()
 
 /datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/xenomorph/xeno)
@@ -302,7 +301,6 @@
 	animate(xeno, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
 
 	xeno.speed_modifier -= speed_buff
-	xeno.pull_speed += 0.1
 	xeno.recalculate_speed()
 
 	var/datum/behavior_delegate/lurker_base/behavior = xeno.behavior_delegate
@@ -339,7 +337,6 @@
 
 	if(instantly_decrease_speed)
 		xeno.speed_modifier += speed_buff
-		xeno.pull_speed -= 0.1
 		xeno.recalculate_speed()
 	else
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/action/xeno_action/onclick/lurker_invisibility, remove_speed), xeno), lingering_speed_buff)

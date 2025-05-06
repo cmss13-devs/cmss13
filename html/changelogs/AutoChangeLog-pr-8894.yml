@@ -1,0 +1,6 @@
+author: "Nihisohel"
+delete-after: True
+changes:
+  - rscadd: "Scarves and some masks can be used as accessory items! Use them inhand to change them back and to an accessory."
+  - bugfix: "Armbands no longer hide when sleeves are cut or jacket is removed"
+  - bugfix: "Accessories may no longer be attached while it is in a storage item."

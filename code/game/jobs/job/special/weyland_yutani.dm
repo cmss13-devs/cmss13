@@ -94,8 +94,8 @@
 	gear_preset = /datum/equipment_preset/pmc/pmc_riot_control
 
 /datum/job/special/wey_yu/pmc/detainer
-	title = JOB_PMC_DETAINER
-	gear_preset = /datum/equipment_preset/pmc/pmc_detainer
+	title = JOB_PMC_SECURITY
+	gear_preset = /datum/equipment_preset/pmc/pmc_security
 
 /datum/job/special/wey_yu/pmc/crewman
 	title = JOB_PMC_CREWMAN

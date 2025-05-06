@@ -223,17 +223,29 @@
 		name = "\improper Corporate Liaison Privacy Shutters"
 //adding a subtype for CL office to use to secure access to cl office.
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/door
-	id = "cl_office_door"
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/window
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_door
+	id = "cl_lobby_door"
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/office_door
+	id = "cl_office_door_s"
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/lobby_window
+	id = "cl_lobby_windows"
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/office_window
 	id = "cl_office_windows"
+
 //adding a subtype for CL quarter to use to secure access to cl quarter.(including seperation with the office)
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/backdoor
 	id = "cl_quarter_maintenance"
 	dir = 4
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/door
 	id = "cl_quarter_door"
 	dir = 4
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/window
 	id = "cl_quarter_windows"

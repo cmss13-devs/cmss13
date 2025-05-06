@@ -29,7 +29,7 @@
 			hud_icon_state = "syn"
 		if(JOB_PMC_GUNNER)
 			hud_icon_state = "sg"
-		if(JOB_PMC_DETAINER)
+		if(JOB_PMC_SECURITY)
 			hud_icon_state = "mp"
 		if(JOB_PMC_CROWD_CONTROL)
 			hud_icon_state = "riot"

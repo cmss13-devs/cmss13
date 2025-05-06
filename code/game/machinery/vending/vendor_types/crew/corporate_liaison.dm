@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	name = "\improper Corporate Liaison's Personal Wardrobe"
 	desc = "A wardrobe containing all the clothes an executive would ever need."
 	icon_state = "wardrobe_vendor"
-	vendor_theme = VENDOR_THEME_USCM
+	vendor_theme = VENDOR_THEME_COMPANY
 	show_points = FALSE
 	req_access = list()
 	vendor_role = JOB_CORPORATE_ROLES_LIST

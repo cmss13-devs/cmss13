@@ -408,8 +408,18 @@
 			visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
 
 /obj/effect/xenomorph/acid/proc/finish_melting()
-	visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 	playsound(src, "acid_hit", 25, TRUE)
+
+	if(istype(acid_t, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/acid_gun = acid_t
+		if(acid_gun.has_second_wind)
+			visible_message(SPAN_XENODANGER("[acid_t] loses it's shine as the acid bubbles against it."))
+			acid_gun.has_second_wind = FALSE
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
+			qdel(src)
+			return
+
+	visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 
 	if(istype(acid_t, /turf))
 		if(istype(acid_t, /turf/closed/wall))

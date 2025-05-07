@@ -245,6 +245,9 @@
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
 
+	/// Whether the weapon has expended it's "second wind" and lost its acid protection.
+	var/has_second_wind = TRUE
+
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -593,6 +596,9 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				dat += "It's loaded[in_chamber?" and has a round chambered":""].<br>"
 		else
 			dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
+
+	dat += "It looks like it [has_second_wind ? SPAN_GREEN("can") : SPAN_RED("can no longer")] survive a significant attack.<br>"
+
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
 		dat += "<a href='byond://?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
 

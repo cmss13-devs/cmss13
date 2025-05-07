@@ -8349,6 +8349,7 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/complex/med/locks)
 "mHJ" = (

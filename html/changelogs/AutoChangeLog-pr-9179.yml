@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Messages ending in '!' and '?' change the verb from 'says' to 'shouts/yells/excalims' or 'asks' again or their language equivalent."

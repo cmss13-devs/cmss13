@@ -95,22 +95,22 @@
 	recoil = RECOIL_OFF
 	recoil_unwielded = RECOIL_AMOUNT_TIER_0
 
-/obj/item/weapon/gun/boltaction/unique_action(mob/M)
+/obj/item/weapon/gun/boltaction/unique_action(mob/user)
 	if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
-		to_chat(M, SPAN_DANGER("You can't cycle the bolt again right now."))
+		to_chat(user, SPAN_DANGER("You can't cycle the bolt again right now."))
 		return
 
 	bolted = !bolted
 
 	if(bolted)
-		to_chat(M, SPAN_DANGER("You close the bolt of [src]!"))
+		to_chat(user, SPAN_DANGER("You close the bolt of [src]!"))
 		playsound(get_turf(src), open_bolt_sound, 15, TRUE, 1)
 		ready_in_chamber()
 		recent_cycle = world.time
 	else
-		to_chat(M, SPAN_DANGER("You open the bolt of [src]!"))
+		to_chat(user, SPAN_DANGER("You open the bolt of [src]!"))
 		playsound(get_turf(src), close_bolt_sound, 65, TRUE, 1)
-		unload_chamber(M)
+		unload_chamber(user)
 
 	update_icon()
 

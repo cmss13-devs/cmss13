@@ -11,8 +11,7 @@
 	pickupvol = 7
 	dropvol = 15
 	matter = null
-						//Guns generally have their own unique levels.
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_MEDIUM //Guns generally have their own unique levels.
 	throwforce = 5
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
@@ -496,8 +495,6 @@
 			var/obj/item/attachable/A = new path(src)
 			A.Attach(src)
 			update_attachable(A.slot)
-
-
 
 /obj/item/weapon/gun/emp_act(severity)
 	. = ..()

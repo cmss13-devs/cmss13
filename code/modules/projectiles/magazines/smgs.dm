@@ -219,7 +219,7 @@
 
 /obj/item/ammo_magazine/smg/uzi
 	name = "\improper UZI magazine (9x21mm)"
-	desc = "A magazine for the UZI. Seems pretty small, huh? Anything larger caused feeding errors."
+	desc = "A magazine for the UZI. Seems pretty small, huh? Anything larger could cause feeding errors."
 	caliber = "9x12mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'
 	icon_state = "uzi"

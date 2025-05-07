@@ -259,6 +259,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/pouch/cassette = NO_GARB_OVERRIDE,
 
 	// PREFERENCES GEAR
+	/obj/item/prop/helmetgarb/gunoil = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting/desert = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting/jungle = NO_GARB_OVERRIDE,

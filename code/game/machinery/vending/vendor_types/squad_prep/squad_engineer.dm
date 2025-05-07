@@ -119,8 +119,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		list("Insulated Gloves (Black)", 0, /obj/item/clothing/gloves/marine/insulated/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Insulated Gloves (Yellow/Tan)", 0, /obj/item/clothing/gloves/marine/insulated, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Firearms Repair Kit", 0, /obj/item/stack/repairable/gunkit, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
-		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
+		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("M10 technician helmet", 0, /obj/item/clothing/head/helmet/marine/tech, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -225,5 +224,4 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		/obj/item/tool/shovel/etool/folded,
 		/obj/item/device/lightreplacer,
 		/obj/item/weapon/gun/smg/nailgun/compact/tactical,
-		/obj/item/stack/repairable/gunkit = 10,
 	)

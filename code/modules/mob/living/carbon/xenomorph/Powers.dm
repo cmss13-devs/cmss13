@@ -103,10 +103,10 @@
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
-	for(var/obj/effect/alien/resin/design/speed_node in current_turf.contents)
+	for(var/obj/effect/alien/resin/design/speed_node/sn in current_turf.contents)
 		wait_time -= ((resin_construct.build_time * caste.build_time_mult) / 2)
 
-	for(var/obj/effect/alien/resin/design/cost_node in current_turf.contents)
+	for(var/obj/effect/alien/resin/design/cost_node/cn in current_turf.contents)
 		total_resin_cost -= (total_resin_cost / 2)
 
 	var/obj/warning
@@ -152,8 +152,8 @@
 
 	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
 	if(succeeded)
-		if(istype(target, /obj/effect/alien/resin/design/speed_node) || istype(target, /obj/effect/alien/resin/design/cost_node) || istype(target, /obj/effect/alien/resin/design/construct_node))
-			qdel(target)
+		for(var/obj/effect/alien/resin/design/node in current_turf)
+			qdel(node)
 	if(resin_construct.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[resin_construct.build_path], new_resin)
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, PROC_REF(remove_built_structure))
@@ -235,8 +235,3 @@
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I dont know why
 	return TRUE
-	return SECRETE_RESIN_FAIL
-
-	var/datum/resin_construction/resin_construct = GLOB.resin_constructions_list[selected_resin]
-
-	var/total_resin_cost = XENO_RESIN_BASE_COST + resin_construct.cost // Live, diet, shit code, repeat

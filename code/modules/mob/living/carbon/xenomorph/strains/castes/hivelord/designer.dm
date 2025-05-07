@@ -21,6 +21,8 @@
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 
+	behavior_delegate_type = /datum/behavior_delegate/hivelord_designer
+
 /datum/xeno_strain/designer/apply_strain(mob/living/carbon/xenomorph/hivelord/hivelord)
 	hivelord.available_design = list(
 		/obj/effect/alien/resin/design/speed_node,
@@ -50,6 +52,13 @@
 		if(istype(action, /datum/action/xeno_action/active_toggle/toggle_speed))
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 			break // Stop looking for other ones
+
+/datum/behavior_delegate/hivelord_designer
+	name = "Hivelord Designer Behavior Delegate"
+
+/datum/behavior_delegate/hivelord_designer/append_to_stat()
+	. = list()
+	. += "Nodes sustained: [length(bound_xeno.current_design)] / [bound_xeno.max_design_nodes]"
 
 // ""animations"" (effects)
 /obj/effect/resin_construct/fastweak

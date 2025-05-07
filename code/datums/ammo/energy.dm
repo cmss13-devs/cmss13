@@ -117,13 +117,13 @@
 	damage = 0
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
 
-/datum/ammo/energy/yautja/caster/bolt/single_stun/on_hit_mob(mob/all_targets, obj/projectile/P)
+/datum/ammo/energy/yautja/caster/bolt/single_stun/on_hit_mob(mob/all_targets, obj/projectile/stun_bolt)
 	var/mob/living/carbon/any_target = all_targets
 	if(isyautja(any_target) || ispredalien(any_target))
 		return
 	if(istype(any_target))
 		to_chat(any_target, SPAN_DANGER("An electric shock ripples through your body, freezing you in place!"))
-		log_attack("[key_name(any_target)] was stunned by a high power stun bolt from [key_name(P.firer)] at [get_area(P)]")
+		log_attack("[key_name(any_target)] was stunned by a high power stun bolt from [key_name(stun_bolt.firer)] at [get_area(stun_bolt)]")
 
 		if(ishuman(any_target))
 			stun_time++

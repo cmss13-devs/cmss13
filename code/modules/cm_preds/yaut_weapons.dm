@@ -1366,27 +1366,28 @@
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_stun]
 		if("lethal")
 			switch(strength)
-				if("plasma bolts")
+				if("plasma bolt")
 					strength = "plasma eradicator"
 					charge_cost = 1000
 					set_fire_delay(FIRE_DELAY_TIER_2 * 12)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/aoe_lethal]
-				if("plasma spheres")
-					strength = "plasma bolts"
-					charge_cost = 100
+				if("plasma eradicator")
+					strength = "plasma bolt"
+					charge_cost = 500
 					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
 					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_lethal]
+
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
 	switch(mode)
 		if("stun")
 			mode = "lethal"
 			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
-			strength = "plasma bolts"
+			strength = "plasma bolt"
 			charge_cost = 100
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;ammo - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/ammo.html#var">Var Details</a> - <a href="datum/ammo.html#proc">Proc Details</a></header>
+<main>
+<h1>generic bullet <aside>/<a href="datum.html">datum</a>/<a href="datum/ammo.html">ammo</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/ammo.html#var/accuracy">accuracy</a></th><td>This is added to the bullet's base accuracy.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/accuracy_var_high">accuracy_var_high</a></th><td>This INCREASES the upper bound of accuracy variance by 2%, to 107%.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/accuracy_var_low">accuracy_var_low</a></th><td>How much the accuracy varies when fired. // This REDUCES the lower bound of accuracy variance by 2%, to 96%.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/accurate_range">accurate_range</a></th><td>For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/accurate_range_min">accurate_range_min</a></th><td>Snipers use this to simulate poor accuracy at close ranges</td></tr>
+            <tr><th><a href="datum/ammo.html#var/apply_delegate">apply_delegate</a></th><td>Does this apply xenomorph behaviour delegate?</td></tr>
+            <tr><th><a href="datum/ammo.html#var/bonus_projectiles_amount">bonus_projectiles_amount</a></th><td>How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together</td></tr>
+            <tr><th><a href="datum/ammo.html#var/bonus_projectiles_type">bonus_projectiles_type</a></th><td>Type path of the extra projectiles</td></tr>
+            <tr><th><a href="datum/ammo.html#var/bullet_duraloss">bullet_duraloss</a></th><td>chance modifer to lose durability with standard durability_loss when this bullet is chambered and fired</td></tr>
+            <tr><th><a href="datum/ammo.html#var/bullet_duramage">bullet_duramage</a></th><td>actual damage done to gun durability when this bullet is fired when durability loss chance passes, 1 by default</td></tr>
+            <tr><th><a href="datum/ammo.html#var/damage">damage</a></th><td>This is the base damage of the bullet as it is fired</td></tr>
+            <tr><th><a href="datum/ammo.html#var/damage_armor_punch">damage_armor_punch</a></th><td>how much armor breaking is done by sheer weapon force. This is for big blunt weapons</td></tr>
+            <tr><th><a href="datum/ammo.html#var/damage_buildup">damage_buildup</a></th><td>How much damage the bullet loses per turf away before the effective range</td></tr>
+            <tr><th><a href="datum/ammo.html#var/damage_falloff">damage_falloff</a></th><td>How much damage the bullet loses per turf traveled after the effective range</td></tr>
+            <tr><th><a href="datum/ammo.html#var/damage_type">damage_type</a></th><td>BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here</td></tr>
+            <tr><th><a href="datum/ammo.html#var/damage_var_high">damage_var_high</a></th><td>This INCREASES the upper bound of damage variance by 2%, to 107%.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/damage_var_low">damage_var_low</a></th><td>Same as with accuracy variance.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/debilitate">debilitate</a></th><td>Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony</td></tr>
+            <tr><th><a href="datum/ammo.html#var/effective_range_max">effective_range_max</a></th><td>What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/effective_range_min">effective_range_min</a></th><td>What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/handful_state">handful_state</a></th><td>custom handful sprite, for shotgun shells or etc.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/hit_effect_color">hit_effect_color</a></th><td>The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/hits_lying_mobs">hits_lying_mobs</a></th><td>Whether or not this ammo ignores mobs that are lying down</td></tr>
+            <tr><th><a href="datum/ammo.html#var/max_range">max_range</a></th><td>This will de-increment a counter on the bullet.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/multiple_handful_name">multiple_handful_name</a></th><td>so handfuls say 'buckshot shells' not 'shell'</td></tr>
+            <tr><th><a href="datum/ammo.html#var/pen_armor_punch">pen_armor_punch</a></th><td>how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)</td></tr>
+            <tr><th><a href="datum/ammo.html#var/penetration">penetration</a></th><td>How much armor it ignores before calculations take place</td></tr>
+            <tr><th><a href="datum/ammo.html#var/ping">ping</a></th><td>The icon that is displayed when the bullet bounces off something.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/scatter">scatter</a></th><td>How much the ammo scatters when burst fired, added to gun scatter, along with other mods</td></tr>
+            <tr><th><a href="datum/ammo.html#var/shell_speed">shell_speed</a></th><td>How fast the projectile moves.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/shrapnel_chance">shrapnel_chance</a></th><td>The % chance it will imbed in a human</td></tr>
+            <tr><th><a href="datum/ammo.html#var/shrapnel_type">shrapnel_type</a></th><td>The shrapnel type the ammo will embed, if the chance rolls</td></tr>
+            <tr><th><a href="datum/ammo.html#var/sound_armor">sound_armor</a></th><td>When it's blocked by human armor.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/sound_bounce">sound_bounce</a></th><td>When it bounces off something.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/sound_hit">sound_hit</a></th><td>When it deals damage.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/sound_miss">sound_miss</a></th><td>When it misses someone.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/sound_override">sound_override</a></th><td>if we should play a special sound when firing.</td></tr>
+            <tr><th><a href="datum/ammo.html#var/sound_shield_hit">sound_shield_hit</a></th><td>When the bullet is absorbed by a xeno_shield</td></tr>
+            <tr><th><a href="datum/ammo.html#var/traits_to_give">traits_to_give</a></th><td>An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+that will be given to a projectile with the current ammo datum</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/ammo.html#proc/knockback_effects">knockback_effects</a></th><td>Either knockback or slam them into an obstacle.
+The applied effects for knockback(), overwrite to change slow/stun amounts for different ammo datums</td></tr>
+            <tr><th><a href="datum/ammo.html#proc/on_pointblank">on_pointblank</a></th><td>Special effects when pointblanking mobs. Ultimately called from /living/attackby(). Return TRUE to end the PB attempt.</td></tr>
+            <tr><th><a href="datum/ammo.html#proc/set_bullet_traits">set_bullet_traits</a></th><td>Populate traits_to_give in this proc</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/accuracy"><aside class="declaration">var </aside>accuracy
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 49"/></a></h3>
+        <p>This is added to the bullet's base accuracy.</p><h3 id="var/accuracy_var_high"><aside class="declaration">var </aside>accuracy_var_high
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 53"/></a></h3>
+        <p>This INCREASES the upper bound of accuracy variance by 2%, to 107%.</p><h3 id="var/accuracy_var_low"><aside class="declaration">var </aside>accuracy_var_low
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 51"/></a></h3>
+        <p>How much the accuracy varies when fired. // This REDUCES the lower bound of accuracy variance by 2%, to 96%.</p><h3 id="var/accurate_range"><aside class="declaration">var </aside>accurate_range
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 55"/></a></h3>
+        <p>For most guns, this is where the bullet dramatically looses accuracy. Not for snipers though.</p><h3 id="var/accurate_range_min"><aside class="declaration">var </aside>accurate_range_min
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 20"/></a></h3>
+        <p>Snipers use this to simulate poor accuracy at close ranges</p><h3 id="var/apply_delegate"><aside class="declaration">var </aside>apply_delegate
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 86"/></a></h3>
+        <p>Does this apply xenomorph behaviour delegate?</p><h3 id="var/bonus_projectiles_amount"><aside class="declaration">var </aside>bonus_projectiles_amount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 37"/></a></h3>
+        <p>How many extra projectiles it shoots out. Works kind of like firing on burst, but all of the projectiles travel together</p><h3 id="var/bonus_projectiles_type"><aside class="declaration">var </aside>bonus_projectiles_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 35"/></a></h3>
+        <p>Type path of the extra projectiles</p><h3 id="var/bullet_duraloss"><aside class="declaration">var </aside>bullet_duraloss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 73"/></a></h3>
+        <p>chance modifer to lose durability with standard durability_loss when this bullet is chambered and fired</p><h3 id="var/bullet_duramage"><aside class="declaration">var </aside>bullet_duramage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L75">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 75"/></a></h3>
+        <p>actual damage done to gun durability when this bullet is fired when durability loss chance passes, 1 by default</p><h3 id="var/damage"><aside class="declaration">var </aside>damage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 25"/></a></h3>
+        <p>This is the base damage of the bullet as it is fired</p><h3 id="var/damage_armor_punch"><aside class="declaration">var </aside>damage_armor_punch
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 43"/></a></h3>
+        <p>how much armor breaking is done by sheer weapon force. This is for big blunt weapons</p><h3 id="var/damage_buildup"><aside class="declaration">var </aside>damage_buildup
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L65">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 65"/></a></h3>
+        <p>How much damage the bullet loses per turf away before the effective range</p><h3 id="var/damage_falloff"><aside class="declaration">var </aside>damage_falloff
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 63"/></a></h3>
+        <p>How much damage the bullet loses per turf traveled after the effective range</p><h3 id="var/damage_type"><aside class="declaration">var </aside>damage_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 27"/></a></h3>
+        <p>BRUTE, BURN, TOX, OXY, CLONE are the only things that should be in here</p><h3 id="var/damage_var_high"><aside class="declaration">var </aside>damage_var_high
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 61"/></a></h3>
+        <p>This INCREASES the upper bound of damage variance by 2%, to 107%.</p><h3 id="var/damage_var_low"><aside class="declaration">var </aside>damage_var_low
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 59"/></a></h3>
+        <p>Same as with accuracy variance.</p><h3 id="var/debilitate"><aside class="declaration">var </aside>debilitate
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 39"/></a></h3>
+        <p>Stun,knockdown,knockout,irradiate,stutter,eyeblur,drowsy,agony</p><h3 id="var/effective_range_max"><aside class="declaration">var </aside>effective_range_max
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 69"/></a></h3>
+        <p>What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.</p><h3 id="var/effective_range_min"><aside class="declaration">var </aside>effective_range_min
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 67"/></a></h3>
+        <p>What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.</p><h3 id="var/handful_state"><aside class="declaration">var </aside>handful_state
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 81"/></a></h3>
+        <p>custom handful sprite, for shotgun shells or etc.</p><h3 id="var/hit_effect_color"><aside class="declaration">var </aside>hit_effect_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L95">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 95"/></a></h3>
+        <p>The flicker that plays when a bullet hits a target. Usually red. Can be nulled so it doesn't show up at all.</p><h3 id="var/hits_lying_mobs"><aside class="declaration">var </aside>hits_lying_mobs
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L98">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 98"/></a></h3>
+        <p>Whether or not this ammo ignores mobs that are lying down</p><h3 id="var/max_range"><aside class="declaration">var </aside>max_range
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L57">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 57"/></a></h3>
+        <p>This will de-increment a counter on the bullet.</p><h3 id="var/multiple_handful_name"><aside class="declaration">var </aside>multiple_handful_name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L83">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 83"/></a></h3>
+        <p>so handfuls say 'buckshot shells' not 'shell'</p><h3 id="var/pen_armor_punch"><aside class="declaration">var </aside>pen_armor_punch
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 41"/></a></h3>
+        <p>how much armor breaking will be done per point of penetration. This is for weapons that penetrate with their shape (like needle bullets)</p><h3 id="var/penetration"><aside class="declaration">var </aside>penetration
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 29"/></a></h3>
+        <p>How much armor it ignores before calculations take place</p><h3 id="var/ping"><aside class="declaration">var </aside>ping
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 8"/></a></h3>
+        <p>The icon that is displayed when the bullet bounces off something.</p><h3 id="var/scatter"><aside class="declaration">var </aside>scatter
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 22"/></a></h3>
+        <p>How much the ammo scatters when burst fired, added to gun scatter, along with other mods</p><h3 id="var/shell_speed"><aside class="declaration">var </aside>shell_speed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 71"/></a></h3>
+        <p>How fast the projectile moves.</p><h3 id="var/shrapnel_chance"><aside class="declaration">var </aside>shrapnel_chance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 31"/></a></h3>
+        <p>The % chance it will imbed in a human</p><h3 id="var/shrapnel_type"><aside class="declaration">var </aside>shrapnel_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 33"/></a></h3>
+        <p>The shrapnel type the ammo will embed, if the chance rolls</p><h3 id="var/sound_armor"><aside class="declaration">var </aside>sound_armor
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 12"/></a></h3>
+        <p>When it's blocked by human armor.</p><h3 id="var/sound_bounce"><aside class="declaration">var </aside>sound_bounce
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 16"/></a></h3>
+        <p>When it bounces off something.</p><h3 id="var/sound_hit"><aside class="declaration">var </aside>sound_hit
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 10"/></a></h3>
+        <p>When it deals damage.</p><h3 id="var/sound_miss"><aside class="declaration">var </aside>sound_miss
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 14"/></a></h3>
+        <p>When it misses someone.</p><h3 id="var/sound_override"><aside class="declaration">var </aside>sound_override
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 45"/></a></h3>
+        <p>if we should play a special sound when firing.</p><h3 id="var/sound_shield_hit"><aside class="declaration">var </aside>sound_shield_hit
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 18"/></a></h3>
+        <p>When the bullet is absorbed by a xeno_shield</p><h3 id="var/traits_to_give"><aside class="declaration">var </aside>traits_to_give
+            <aside>&ndash; /list/list</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L90">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 90"/></a></h3>
+        <p>An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+that will be given to a projectile with the current ammo datum</p><h2 id="proc">Proc Details</h2><h3 id="proc/knockback_effects"><aside class="declaration">proc </aside>knockback_effects<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/living_mob, /<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/fired_projectile) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L183">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 183"/></a></aside>
+        </h3>
+        <p>Either knockback or slam them into an obstacle.
+The applied effects for knockback(), overwrite to change slow/stun amounts for different ammo datums</p><h3 id="proc/on_pointblank"><aside class="declaration">proc </aside>on_pointblank<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/L, /<a href="obj.html">obj</a>/<a href="obj/projectile.html">projectile</a>/P, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/weapon/gun.html">weapon/gun</a>/fired_from) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L141">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 141"/></a></aside>
+        </h3>
+        <p>Special effects when pointblanking mobs. Ultimately called from /living/attackby(). Return TRUE to end the PB attempt.</p><h3 id="proc/set_bullet_traits"><aside class="declaration">proc </aside>set_bullet_traits<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/ammo/ammo.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ammo&#x2F;ammo.dm 112"/></a></aside>
+        </h3>
+        <p>Populate traits_to_give in this proc</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/69d2932f9094a2185d6db5c55ee4ca4121576a80">69d2932</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

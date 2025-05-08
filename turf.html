@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;turf - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="turf.html#var">Var Details</a> - <a href="turf.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="turf.html">turf</a><aside> inherits /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 27"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="turf.html#var/can_bloody">can_bloody</a></th><td>Can blood spawn on this turf?</td></tr>
+            <tr><th><a href="turf.html#var/cleanables">cleanables</a></th><td>Associative list of cleanable types (strings) mapped to
+cleanable objects</td></tr>
+            <tr><th><a href="turf.html#var/directional_opacity">directional_opacity</a></th><td>List of light sources affecting this turf.
+Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.</td></tr>
+            <tr><th><a href="turf.html#var/dynamic_lumcount">dynamic_lumcount</a></th><td>Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.</td></tr>
+            <tr><th><a href="turf.html#var/fishing_allowed">fishing_allowed</a></th><td>Is fishing allowed on this turf</td></tr>
+            <tr><th><a href="turf.html#var/hybrid_lights_affecting">hybrid_lights_affecting</a></th><td>hybrid lights affecting this turf</td></tr>
+            <tr><th><a href="turf.html#var/intact_tile">intact_tile</a></th><td>Used by floors to indicate the floor is a tile (otherwise its plating)</td></tr>
+            <tr><th><a href="turf.html#var/is_weedable">is_weedable</a></th><td>Can xenomorph weeds grow on the tile</td></tr>
+            <tr><th><a href="turf.html#var/lighting_corner_NE">lighting_corner_NE</a></th><td>Lighting Corner datums.</td></tr>
+            <tr><th><a href="turf.html#var/opacity_sources">opacity_sources</a></th><td>Lazylist of movable atoms providing opacity sources.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="turf.html#proc/GetAllTurfStrictContents">GetAllTurfStrictContents</a></th><td>Returns list of contents of a turf recursively, much like GetAllContents
+We only get containing atoms in the turf, excluding multitiles bordering on it</td></tr>
+            <tr><th><a href="turf.html#proc/add_opacity_source">add_opacity_source</a></th><td>Proc to add movable sources of opacity on the turf and let it handle lighting code.</td></tr>
+            <tr><th><a href="turf.html#proc/change_area">change_area</a></th><td>Call to move a turf from its current area to a new one</td></tr>
+            <tr><th><a href="turf.html#proc/empty">empty</a></th><td>Remove all atoms except observers, landmarks, docking ports - clearing up the turf contents</td></tr>
+            <tr><th><a href="turf.html#proc/load_on_top">load_on_top</a></th><td>Places a turf on top - for map loading</td></tr>
+            <tr><th><a href="turf.html#proc/on_change_area">on_change_area</a></th><td>Allows for reactions to an area change without inherently requiring change_area() be called (I hate maploading)</td></tr>
+            <tr><th><a href="turf.html#proc/recalculate_directional_opacity">recalculate_directional_opacity</a></th><td>Calculate on which directions this turfs block view.</td></tr>
+            <tr><th><a href="turf.html#proc/reconsider_lights">reconsider_lights</a></th><td>Causes any affecting light sources to be queued for a visibility update, for example a door got opened.</td></tr>
+            <tr><th><a href="turf.html#proc/remove_opacity_source">remove_opacity_source</a></th><td>Proc to remove movable sources of opacity on the turf and let it handle lighting code.</td></tr>
+            <tr><th><a href="turf.html#proc/static_lighting_build_overlay">static_lighting_build_overlay</a></th><td>Builds a lighting object for us, but only if our area is dynamic.</td></tr>
+            <tr><th><a href="turf.html#proc/transfer_area_lighting">transfer_area_lighting</a></th><td>Transfer the lighting of one area to another</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/can_bloody"><aside class="declaration">var </aside>can_bloody
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 32"/></a></h3>
+        <p>Can blood spawn on this turf?</p><h3 id="var/cleanables"><aside class="declaration">var </aside>cleanables
+            <aside>&ndash; /list/obj/effect/decal/cleanable</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 45"/></a></h3>
+        <p>Associative list of cleanable types (strings) mapped to
+cleanable objects</p>
+<p>The cleanable object does not necessarily need to be
+on the turf, it can simply be for handling how the
+overlays or placing new cleanables of the same type work</p><h3 id="var/directional_opacity"><aside class="declaration">var </aside>directional_opacity
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 58"/></a></h3>
+        <p>List of light sources affecting this turf.
+Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.</p><h3 id="var/dynamic_lumcount"><aside class="declaration">var </aside>dynamic_lumcount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 54"/></a></h3>
+        <p>Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.</p><h3 id="var/fishing_allowed"><aside class="declaration">var </aside>fishing_allowed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 68"/></a></h3>
+        <p>Is fishing allowed on this turf</p><h3 id="var/hybrid_lights_affecting"><aside class="declaration">var </aside>hybrid_lights_affecting
+            <aside>&ndash; /tmp/list/atom/movable/lighting_mask</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L63">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 63"/></a></h3>
+        <p>hybrid lights affecting this turf</p><h3 id="var/intact_tile"><aside class="declaration">var </aside>intact_tile
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 30"/></a></h3>
+        <p>Used by floors to indicate the floor is a tile (otherwise its plating)</p><h3 id="var/is_weedable"><aside class="declaration">var </aside>is_weedable
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 71"/></a></h3>
+        <p>Can xenomorph weeds grow on the tile</p><h3 id="var/lighting_corner_NE"><aside class="declaration">var </aside>lighting_corner_NE
+            <aside>&ndash; /tmp/<a href="datum.html">datum</a>/<a href="datum/static_lighting_corner.html">static_lighting_corner</a></aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/modules/lighting/lighting_static/static_lighting_turf.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_static&#x2F;static_lighting_turf.dm 6"/></a></h3>
+        <p>Lighting Corner datums.</p><h3 id="var/opacity_sources"><aside class="declaration">var </aside>opacity_sources
+            <aside>&ndash; /list/atom/movable</aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 60"/></a></h3>
+        <p>Lazylist of movable atoms providing opacity sources.</p><h2 id="proc">Proc Details</h2><h3 id="proc/GetAllTurfStrictContents"><aside class="declaration">proc </aside>GetAllTurfStrictContents<aside>(searchDepth, /list/toReturn) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/__HELPERS/unsorted.dm#L577">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;unsorted.dm 577"/></a></aside>
+        </h3>
+        <p>Returns list of contents of a turf recursively, much like GetAllContents
+We only get containing atoms in the turf, excluding multitiles bordering on it</p><h3 id="proc/add_opacity_source"><aside class="declaration">proc </aside>add_opacity_source<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/new_source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/modules/lighting/lighting_turf.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_turf.dm 52"/></a></aside>
+        </h3>
+        <p>Proc to add movable sources of opacity on the turf and let it handle lighting code.</p><h3 id="proc/change_area"><aside class="declaration">proc </aside>change_area<aside>(/<a href="area.html">area</a>/old_area, /<a href="area.html">area</a>/new_area) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L222">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 222"/></a></aside>
+        </h3>
+        <p>Call to move a turf from its current area to a new one</p><h3 id="proc/empty"><aside class="declaration">proc </aside>empty<aside>(turf_type, baseturf_type, /list/ignore_typecache, flags) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L863">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 863"/></a></aside>
+        </h3>
+        <p>Remove all atoms except observers, landmarks, docking ports - clearing up the turf contents</p><h3 id="proc/load_on_top"><aside class="declaration">proc </aside>load_on_top<aside>(/<a href="turf.html">turf</a>/added_layer, flags) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L833">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 833"/></a></aside>
+        </h3>
+        <p>Places a turf on top - for map loading</p><h3 id="proc/on_change_area"><aside class="declaration">proc </aside>on_change_area<aside>(/<a href="area.html">area</a>/old_area, /<a href="area.html">area</a>/new_area) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/game/turfs/turf.dm#L234">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;turfs&#x2F;turf.dm 234"/></a></aside>
+        </h3>
+        <p>Allows for reactions to an area change without inherently requiring change_area() be called (I hate maploading)</p><h3 id="proc/recalculate_directional_opacity"><aside class="declaration">proc </aside>recalculate_directional_opacity<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/modules/lighting/lighting_turf.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_turf.dm 68"/></a></aside>
+        </h3>
+        <p>Calculate on which directions this turfs block view.</p><h3 id="proc/reconsider_lights"><aside class="declaration">proc </aside>reconsider_lights<aside>() 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/modules/lighting/lighting_turf.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_turf.dm 7"/></a></aside>
+        </h3>
+        <p>Causes any affecting light sources to be queued for a visibility update, for example a door got opened.</p><h3 id="proc/remove_opacity_source"><aside class="declaration">proc </aside>remove_opacity_source<aside>(/<a href="atom.html">atom</a>/<a href="atom/movable.html">movable</a>/old_source) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/modules/lighting/lighting_turf.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_turf.dm 60"/></a></aside>
+        </h3>
+        <p>Proc to remove movable sources of opacity on the turf and let it handle lighting code.</p><h3 id="proc/static_lighting_build_overlay"><aside class="declaration">proc </aside>static_lighting_build_overlay<aside>(/<a href="area.html">area</a>/our_area) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/modules/lighting/lighting_static/static_lighting_turf.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_static&#x2F;static_lighting_turf.dm 16"/></a></aside>
+        </h3>
+        <p>Builds a lighting object for us, but only if our area is dynamic.</p><h3 id="proc/transfer_area_lighting"><aside class="declaration">proc </aside>transfer_area_lighting<aside>(/<a href="area.html">area</a>/old_area, /<a href="area.html">area</a>/new_area) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/modules/lighting/lighting_static/static_lighting_turf.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;lighting&#x2F;lighting_static&#x2F;static_lighting_turf.dm 35"/></a></aside>
+        </h3>
+        <p>Transfer the lighting of one area to another</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/69d2932f9094a2185d6db5c55ee4ca4121576a80">69d2932</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

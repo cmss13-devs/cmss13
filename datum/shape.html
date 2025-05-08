@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;shape - byond</title>
+</head>
+<body>
+<header>
+    <a href="index.html">byond</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/shape.html#var">Var Details</a> - <a href="datum/shape.html#proc">Proc Details</a></header>
+<main>
+<h1>/<a href="datum.html">datum</a>/<a href="datum/shape.html">shape</a>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 53"/></a></h1>
+
+<p>A simple geometric shape for testing collisions and intersections. This one is a single point.</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/shape.html#var/bounds_x">bounds_x</a></th><td>Distance from the shape's leftmost to rightmost extent.</td></tr>
+            <tr><th><a href="datum/shape.html#var/bounds_y">bounds_y</a></th><td>Distance from the shape's topmost to bottommost extent.</td></tr>
+            <tr><th><a href="datum/shape.html#var/center_x">center_x</a></th><td>Horizontal position of the shape's center point.</td></tr>
+            <tr><th><a href="datum/shape.html#var/center_y">center_y</a></th><td>Vertical position of the shape's center point.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/shape.html#proc/contains_atom">contains_atom</a></th><td>Returns TRUE if the atom is in or on the shape, otherwise FALSE.</td></tr>
+            <tr><th><a href="datum/shape.html#proc/contains_coords">contains_coords</a></th><td>Returns TRUE if the coord datum is in or on the shape, otherwise FALSE.</td></tr>
+            <tr><th><a href="datum/shape.html#proc/contains_xy">contains_xy</a></th><td>Returns TRUE if the coordinates x, y are in or on the shape, otherwise FALSE.</td></tr>
+            <tr><th><a href="datum/shape.html#proc/intersects_aabb">intersects_aabb</a></th><td>Returns TRUE if this shape's bounding box intersects the provided shape's bounding box, otherwise FALSE. Generally faster than a full intersection test.</td></tr>
+            <tr><th><a href="datum/shape.html#proc/intersects_rect">intersects_rect</a></th><td>Returns TRUE if this shape intersects the provided rectangle shape, otherwise FALSE.</td></tr>
+            <tr><th><a href="datum/shape.html#proc/set_shape">set_shape</a></th><td>Assign shape variables.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/bounds_x"><aside class="declaration">var </aside>bounds_x
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L59">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 59"/></a></h3>
+        <p>Distance from the shape's leftmost to rightmost extent.</p><h3 id="var/bounds_y"><aside class="declaration">var </aside>bounds_y
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L61">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 61"/></a></h3>
+        <p>Distance from the shape's topmost to bottommost extent.</p><h3 id="var/center_x"><aside class="declaration">var </aside>center_x
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 55"/></a></h3>
+        <p>Horizontal position of the shape's center point.</p><h3 id="var/center_y"><aside class="declaration">var </aside>center_y
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L57">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 57"/></a></h3>
+        <p>Vertical position of the shape's center point.</p><h2 id="proc">Proc Details</h2><h3 id="proc/contains_atom"><aside class="declaration">proc </aside>contains_atom<aside>(/<a href="atom.html">atom</a>/atom) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 80"/></a></aside>
+        </h3>
+        <p>Returns TRUE if the atom is in or on the shape, otherwise FALSE.</p><h3 id="proc/contains_coords"><aside class="declaration">proc </aside>contains_coords<aside>(/<a href="datum.html">datum</a>/coords/coords) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 76"/></a></aside>
+        </h3>
+        <p>Returns TRUE if the coord datum is in or on the shape, otherwise FALSE.</p><h3 id="proc/contains_xy"><aside class="declaration">proc </aside>contains_xy<aside>(x, y) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 72"/></a></aside>
+        </h3>
+        <p>Returns TRUE if the coordinates x, y are in or on the shape, otherwise FALSE.</p><h3 id="proc/intersects_aabb"><aside class="declaration">proc </aside>intersects_aabb<aside>(/<a href="datum.html">datum</a>/<a href="datum/shape.html">shape</a>/aabb) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 84"/></a></aside>
+        </h3>
+        <p>Returns TRUE if this shape's bounding box intersects the provided shape's bounding box, otherwise FALSE. Generally faster than a full intersection test.</p><h3 id="proc/intersects_rect"><aside class="declaration">proc </aside>intersects_rect<aside>(/<a href="datum.html">datum</a>/<a href="datum/shape.html">shape</a>/<a href="datum/shape/rectangle.html">rectangle</a>/rect) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L88">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 88"/></a></aside>
+        </h3>
+        <p>Returns TRUE if this shape intersects the provided rectangle shape, otherwise FALSE.</p><h3 id="proc/set_shape"><aside class="declaration">proc </aside>set_shape<aside>(center_x, center_y) 
+        
+    
+            <a href="https://github.com/cmss13-devs/cmss13/blob/69d2932f9094a2185d6db5c55ee4ca4121576a80/code/datums/quadtree.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;quadtree.dm 67"/></a></aside>
+        </h3>
+        <p>Assign shape variables.</p></main>
+<footer>
+    colonialmarines.dme
+    <a href="https://github.com/cmss13-devs/cmss13/tree/69d2932f9094a2185d6db5c55ee4ca4121576a80">69d2932</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.8.0</a></footer>
+</body>
+</html>

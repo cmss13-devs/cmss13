@@ -409,16 +409,6 @@
 
 /obj/effect/xenomorph/acid/proc/finish_melting()
 	playsound(src, "acid_hit", 25, TRUE)
-
-	if(istype(acid_t, /obj/item/weapon/gun))
-		var/obj/item/weapon/gun/acid_gun = acid_t
-		if(acid_gun.has_second_wind)
-			visible_message(SPAN_XENODANGER("[acid_t] loses it's shine as the acid bubbles against it."))
-			acid_gun.has_second_wind = FALSE
-			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
-			qdel(src)
-			return
-
 	visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 
 	if(istype(acid_t, /turf))
@@ -445,6 +435,19 @@
 			mob.forceMove(loc)
 		qdel(acid_t)
 	qdel(src)
+
+/obj/effect/xenomorph/acid/extinguish_acid()
+	if(istype(acid_t, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/acid_gun = acid_t
+		if(acid_gun.has_second_wind)
+			acid_gun.has_second_wind = FALSE
+			visible_message(SPAN_XENODANGER("[acid_t] loses its shine as the acid is sprayed off of it!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
+			qdel(src)
+			return TRUE
+		else
+			visible_message(SPAN_XENODANGER("[acid_t] seems unaffected and continues to deform."))
+	return FALSE
 
 /obj/effect/xenomorph/boiler_bombard
 	name = "???"

@@ -10,7 +10,6 @@
 	flags_item = MOB_LOCK_ON_EQUIP
 	specialty = "M45 pattern ghillie"
 	unacidable = TRUE
-
 	var/camo_active = FALSE
 	var/hide_in_progress = FALSE
 	var/full_camo_alpha = FULL_CAMOUFLAGE_ALPHA

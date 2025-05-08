@@ -153,7 +153,7 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 
 /datum/autoreply/mentor/greenos
 	title = "H: Greeno"
-	message = "There are different variations of xenomorph that research can produce, green xenomorphs or "greenos" have the capacity for diplomacy and can ally themselves with the USCM! Be careful of announcements about them, as shooting a friendly xenomorph is a foolproof way to make it unfriendly."
+	message = "There are different variations of xenomorph that research can produce, green xenomorphs or greenos have the capacity for diplomacy and can ally themselves with the USCM! Be careful of announcements about them, as shooting a friendly xenomorph is a foolproof way to make it unfriendly."
 
 /datum/autoreply/mentor/synthkey
 	title = "H: Synthetic Reset Key"

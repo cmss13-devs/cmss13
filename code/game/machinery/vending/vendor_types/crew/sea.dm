@@ -28,8 +28,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_sea, list(
 
 GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Binoculars", 0, /obj/item/device/binoculars/range, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
-		list("Whistle", 0, /obj/item/device/whistle, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
+		list("Essential Senior Enlisted Advisor's Set", 0, /obj/effect/essentials_set/sea, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 		list("Drill Hat", 0, /obj/item/clothing/head/drillhat, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_RECOMMENDED),
 		list("Officer Uniform", 0, /obj/item/clothing/under/marine/dress, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("USCM Service Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/service, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
@@ -88,3 +87,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 
 /obj/structure/machinery/cm_vending/clothing/sea/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_sea
+
+/obj/effect/essentials_set/sea
+	spawned_gear_list = list(
+		/obj/item/device/whistle,
+		/obj/item/device/binoculars,
+		/obj/item/megaphone,
+	)
+

@@ -41,8 +41,8 @@
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_PATCH)
+
 
 	//Buttons
 	var/has_buttons = FALSE
@@ -248,8 +248,6 @@
 	desc = "Dress Jacket worn by Commanding Officers of the USCM."
 	icon_state = "co_jacket"
 	has_buttons = FALSE
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
 	name = "commanding officer bomber jacket"
@@ -317,7 +315,6 @@
 	has_buttons = FALSE
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey
 	name = "bridge coat"
@@ -325,7 +322,6 @@
 	has_buttons = FALSE
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/jacket/marine/service/aso
 	name = "auxiliary support officer jacket"
@@ -348,7 +344,6 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
 /obj/item/clothing/suit/storage/jacket/marine/provost/chief
 	name = "\improper Provost Command Jacket"

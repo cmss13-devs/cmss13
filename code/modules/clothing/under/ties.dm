@@ -1,8 +1,7 @@
 /obj/item/clothing/accessory
-	name = "tie"
-	desc = "A neosilk clip-on tie."
+	name = "accessory"
+	desc = "Ahelp if you see this."
 	icon = 'icons/obj/items/clothing/accessory/ties.dmi'
-	icon_state = "bluetie"
 	w_class = SIZE_SMALL
 	var/image/inv_overlay = null //overlay used when attached to clothing.
 	var/obj/item/clothing/has_suit = null //the suit the tie may be attached to
@@ -20,6 +19,7 @@
 	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
 	var/original_item_path = /obj/item/clothing/accessory
+	worn_accessory_slot = 1
 
 /obj/item/clothing/accessory/attack_self(mob/user)
 	if(can_become_accessory)
@@ -79,31 +79,33 @@
 /obj/item/clothing/accessory/proc/additional_examine_text()
 	return "attached to it."
 
-/obj/item/clothing/accessory/blue
+/obj/item/clothing/accessory/tie
 	name = "blue tie"
+	desc = "A neosilk clip-on tie."
 	icon_state = "bluetie"
+	worn_accessory_slot = ACCESSORY_SLOT_TIE
 
-/obj/item/clothing/accessory/red
+/obj/item/clothing/accessory/tie/red
 	name = "red tie"
 	icon_state = "redtie"
 
-/obj/item/clothing/accessory/green
+/obj/item/clothing/accessory/tie/green
 	name = "green tie"
 	icon_state = "greentie"
 
-/obj/item/clothing/accessory/black
+/obj/item/clothing/accessory/tie/black
 	name = "black tie"
 	icon_state = "blacktie"
 
-/obj/item/clothing/accessory/gold
+/obj/item/clothing/accessory/tie/gold
 	name = "gold tie"
 	icon_state = "goldtie"
 
-/obj/item/clothing/accessory/purple
+/obj/item/clothing/accessory/tie/purple
 	name = "purple tie"
 	icon_state = "purpletie"
 
-/obj/item/clothing/accessory/horrible
+/obj/item/clothing/accessory/tie/horrible
 	name = "horrible tie"
 	desc = "A neosilk clip-on tie. This one is disgusting."
 	icon_state = "horribletie"
@@ -122,6 +124,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
 	)
+	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
 
 /obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/being, mob/living/user)
 	if(!ishuman(being) || !isliving(user))
@@ -378,6 +381,7 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/armbands.dmi'
 	)
 	worn_accessory_slot = ACCESSORY_SLOT_ARMBAND
+	worn_accessory_limit = 2
 
 /obj/item/clothing/accessory/armband/cargo
 	name = "cargo armband"
@@ -478,6 +482,8 @@
 	)
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 	flags_obj = OBJ_IS_HELMET_GARB
+	worn_accessory_slot = ACCESSORY_SLOT_PATCH
+	worn_accessory_limit = 2
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
@@ -716,7 +722,7 @@
 	)
 	w_class = SIZE_LARGE //too big to store in other pouches
 	var/obj/item/storage/internal/hold = /obj/item/storage/internal/accessory
-	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
+	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
 	high_visibility = TRUE
 
 /obj/item/clothing/accessory/storage/Initialize()
@@ -1086,7 +1092,7 @@
 	name = "shoulder holster"
 	desc = "A handgun holster with an attached pouch, allowing two magazines or speedloaders to be stored along with it."
 	icon_state = "holster"
-	worn_accessory_slot = ACCESSORY_SLOT_UTILITY
+	worn_accessory_slot = ACCESSORY_SLOT_STORAGE
 	high_visibility = TRUE
 	hold = /obj/item/storage/internal/accessory/holster
 

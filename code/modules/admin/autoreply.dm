@@ -80,7 +80,7 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 
 /datum/autoreply/mentor/sea_response
 	title = "H: SEA help"
-	message = "Thanks for the information! A senior enlisted officer is on their way to help out."
+	message = "Thanks for the information! A Senior Enlisted Officer is on their way to help out."
 
 /datum/autoreply/mentor/event
 	title = "A: Event in Progress"
@@ -89,6 +89,10 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 /datum/autoreply/mentor/changelog
 	title = "C: Changelog"
 	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+
+/datum/autoreply/mentor/timelocks
+	title = "C: Timelocks"
+	message = "Some roles on this server require playtime of some prerequisite roles before they unlock. Each time lock displays what role it needs to be unlocked, either "medical" or "command", and can be unlocked by playing a lower level position in the same department."
 
 /datum/autoreply/mentor/join_server
 	title = "C: Joining the Server"

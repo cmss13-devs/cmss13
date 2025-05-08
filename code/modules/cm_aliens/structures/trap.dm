@@ -349,7 +349,6 @@
 		if(target.buckled_mob)
 			var/mob/living/user = target.buckled_mob
 			target.unbuckle()
-			user.forceMove(get_turf(target))
 			HasProximity(user)
 			to_chat(user, SPAN_XENOHIGHDANGER("You've fallen into a pit full of resin!"))
 	if(trap_type == RESIN_TRAP_EMPTY)

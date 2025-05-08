@@ -78,6 +78,10 @@ ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
 ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp. Staff are unable to handle most whitelist rulebreaks in-game and you are likely to be told to make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
 
+/datum/autoreply/mentor/sea_response
+	title = "H: SEA help"
+	message = "Thanks for the information! A senior enlisted officer is on their way to help out."
+
 /datum/autoreply/mentor/event
 	title = "A: Event in Progress"
 	message = "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
@@ -138,6 +142,14 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/xeno)
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 	message = "This <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
+
+/datum/autoreply/mentor/chemicals
+	title = "H: Basic MedChemicals"
+	message = "Basic medical chemicals can be made with the Weymed Plus vendor along with the chemical dispenser found in medbay. Insert a beaker into the chemical dispenser and follow the recipes outlined on the wiki, adding medicine from the Weymed as necessary. Medicine can be applied via injection, or pill form, most recipes on the wiki are designed for pills. Insert a pill bottle from a box of pill bottles into the chem master 3000, along with the beaker of your completed medicine to make them into pills."
+
+/datum/autoreply/mentor/greenos
+	title = "H: Greeno"
+	message = "There are different variations of xenomorph that research can produce, green xenomorphs or "greenos" have the capacity for diplomacy and can ally themselves with the USCM! Be careful of announcements about them, as shooting a friendly xenomorph is a foolproof way to make it unfriendly."
 
 /datum/autoreply/mentor/synthkey
 	title = "H: Synthetic Reset Key"

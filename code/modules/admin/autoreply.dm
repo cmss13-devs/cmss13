@@ -184,4 +184,3 @@ Laser Designators have a second mode (produces a RED laser) that allows highligh
 /datum/autoreply/mentor/tunnel
 	title = "X: Tunnel"
 	message = "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."
-

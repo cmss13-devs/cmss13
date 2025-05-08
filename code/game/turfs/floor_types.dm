@@ -366,9 +366,6 @@
 	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
 	icon_state = "solidgrate1"
 
-//turf/open/floor/plating/catwalk/grate/is_weedable()
-//	return NOT_WEEDABLE
-
 /turf/open/floor/plating/catwalk/grate/alt
 	icon_state = "solidgrate5"
 
@@ -378,10 +375,8 @@
 	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
 	icon_state = "soil_grid"
 	allow_construction = FALSE
+	is_weedable = NOT_WEEDABLE
 	var/slow_amt = 4
-
-/turf/open/floor/plating/catwalk/grate/net/is_weedable()
-	return NOT_WEEDABLE
 
 /turf/open/floor/plating/catwalk/grate/net/Entered(atom/movable/AM)
 	if(iscarbon(AM))
@@ -403,9 +398,7 @@
 /turf/open/floor/plating/catwalk/grate/lattice
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "latticefull"
-
-/turf/open/floor/plating/catwalk/grate/lattice/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/almayer
 	icon = 'icons/turf/almayer.dmi'

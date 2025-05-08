@@ -594,7 +594,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		else
 			dat += "It's unloaded[in_chamber?" but has a round chambered":""].<br>"
 
-	dat += "It looks like it [has_second_wind ? SPAN_GREEN("can") : SPAN_RED("can no longer")] survive a significant attack.<br>"
+	if(!unacidable && !explo_proof)
+		dat += "It looks like it [has_second_wind ? SPAN_GREEN("can") : SPAN_RED("can no longer")] survive a significant attack.<br>"
 
 	if(!(flags_gun_features & GUN_UNUSUAL_DESIGN))
 		dat += "<a href='byond://?src=\ref[src];list_stats=1'>\[See combat statistics]</a>"
@@ -1934,7 +1935,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(slashed_light)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		xeno.animation_attack_on(src)
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] slashes the lights on \the [src]!"), SPAN_XENONOTICE("You slash the lights on \the [src]!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] slashes the lights on \the [src]!"), SPAN_XENONOTICE("You slash the lights on \the [src]!"))
 	return XENO_ATTACK_ACTION
 
 /// Setter proc to toggle burst firing
@@ -2155,20 +2156,20 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				if(!explo_proof && !has_second_wind)
-					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] [msg]")))
 					deconstruct(FALSE)
 				else
 					has_second_wind = FALSE
-					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] barely survives the blast!")))
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] barely survives the blast!")))
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				if(!explo_proof && !has_second_wind)
 					deconstruct(FALSE)
-					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] [msg]")))
 				else
 					has_second_wind = FALSE
-					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] barely survives the blast!")))
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] barely survives the blast!")))
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			if(!explo_proof) // heavy explosions don't care if the weapon has it's protection left; else you'd get weird situations where OBs/yautja SD/etc leave damaged but working guns everywhere.
-				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("[src] [msg]")))
 				deconstruct(FALSE)

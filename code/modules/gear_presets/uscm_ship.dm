@@ -468,8 +468,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/drillhat(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flash(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/device/whistle(new_human), WEAR_R_HAND)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/whistle(new_human), WEAR_L_STORE)
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/rankee, client/mob_client)
 	mob_client?.toggle_newplayer_ic_hud(TRUE)

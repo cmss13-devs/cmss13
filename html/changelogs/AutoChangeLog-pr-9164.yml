@@ -1,9 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - balance: "Lethal \"bolt\" for hpc now does \"75 damage\", and a small explosive at the tile it effects, its deadlier."
-  - balance: "Large stun sphere now stuns people from 7 tiles away from the target it lands on instead of everything in view"
-  - refactor: "Rewrote some hpc code"
-  - balance: "Lowered power requirement for single target lethal bolts"
-  - code_imp: "Plasma caster now only has 2 modes for stuns, one that stuns whatever it hits, and one that stuns anything  7 tiles from it"
-  - balance: "Stun bolt timer is now 3 instead of 2"

@@ -597,6 +597,7 @@
 
 		var/datum/flaying_datum/flay_datum = new(victim)
 		flay_datum.create_leftovers(victim, TRUE, 0)
+		SEND_SIGNAL(victim, COMSIG_HUMAN_FLAY_ATTEMPT, user, src, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You were interrupted before you could finish your work!"))
 	return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)

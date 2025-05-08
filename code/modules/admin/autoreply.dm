@@ -153,10 +153,6 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 Rangefinders allow you to get tile coordinates (longitude and latitude) by lasing it while zoomed in (produces a GREEN laser). Ctrl + Click on any open tile to start lasing. Ctrl + Click on your rangefinders to stop lasing without zooming out. Coordinates can be used by Staff Officers to send supply drops or to perform Orbital Bombardment. You also can use them to call mortar fire if there are engineers with a mortar. \
 Laser Designators have a second mode (produces a RED laser) that allows highlighting targets for Close Air Support performed by dropship pilots. They also have a fixed ID number that is shown on the pilot's weaponry console. Examine the laser designator to check its ID. Red laser must be maintained as long as needed in order for the dropship pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and click \"Toggle Mode\"."
 
-/datum/autoreply/mentor/firearmrepair
-	title = "H: Firearm Durability"
-	message = "Firearms can be damaged by routine use, acid, explosions, or hits to the hand. The damage progresses through stages, with higher chances to jam with each stage. You can use combat lube to increase the durability of a still functional weapon, or a Firearms Repair Kit to restore a completely broken gun."
-
 /datum/autoreply/mentor/dogtags
 	title = "H: Dogtags"
 	message = "To remove someone's dogtags, click drag their sprite onto yours to open their inventory, find their dogtags, and click the small icon in the bottom to remove the dogtags, while leaving their ID tags. If the button doesnt exist, that means the dogtags have already been removed. Removed dogtags can be stacked together and placed onto the memorial slab on the Almayer."

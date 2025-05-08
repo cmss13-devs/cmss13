@@ -2147,3 +2147,28 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	icon = spin_32
 	. = ..()
 	addtimer(VARSET_CALLBACK(src, icon, current_icon), (speed*loop_amount)-0.8)
+
+/obj/item/weapon/gun/ex_act(severity, explosion_direction)
+	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")
+	explosion_throw(severity, explosion_direction)
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			if(prob(5))
+				if(!explo_proof && !has_second_wind)
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+					deconstruct(FALSE)
+				else
+					has_second_wind = FALSE
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] barely survives the blast!")))
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				if(!explo_proof && !has_second_wind)
+					deconstruct(FALSE)
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+				else
+					has_second_wind = FALSE
+					visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] barely survives the blast!")))
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			if(!explo_proof) // heavy explosions don't care if the weapon has it's protection left; else you'd get weird situations where OBs/yautja SD/etc leave damaged but working guns everywhere.
+				visible_message(SPAN_DANGER(SPAN_UNDERLINE("\The [src] [msg]")))
+				deconstruct(FALSE)

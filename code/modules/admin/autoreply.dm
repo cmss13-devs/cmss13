@@ -92,7 +92,7 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 
 /datum/autoreply/mentor/timelocks
 	title = "C: Timelocks"
-	message = "Some roles on this server require playtime of some prerequisite roles before they unlock. Each time lock displays what role it needs to be unlocked, either "medical" or "command", and can be unlocked by playing a lower level position in the same department."
+	message = "Some roles on this server require playtime of some prerequisite roles before they unlock. Each time lock displays what role it needs to be unlocked, either medical or command, and can be unlocked by playing a lower level position in the same department."
 
 /datum/autoreply/mentor/join_server
 	title = "C: Joining the Server"

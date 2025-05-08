@@ -92,6 +92,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_sea, list(
 	spawned_gear_list = list(
 		/obj/item/device/whistle,
 		/obj/item/device/binoculars,
-		/obj/item/megaphone,
+		/obj/item/device/megaphone,
 	)
 

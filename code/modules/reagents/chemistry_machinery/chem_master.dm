@@ -640,6 +640,7 @@
 		if("connect")
 			connect_smartfridge()
 			return TRUE
+
 		if("check_pill_bottle")
 			if(params["bottleIndex"] + 1 > length(loaded_pill_bottles))
 				return FALSE

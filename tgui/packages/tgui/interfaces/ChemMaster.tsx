@@ -1,5 +1,5 @@
 import type { BooleanLike } from 'common/react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
@@ -60,55 +60,58 @@ export const ChemMaster = () => {
 
   const { is_connected, beaker, buffer, mode } = data;
 
+  // Glassware and pill state
   const [glasswarePicker, setGlasswarePicker] = useState<
     'pill' | 'bottle' | false
   >(false);
-
   const [pillPicker, setPillPicker] = useState(false);
-
   const [selectedPillBottleColor, setSelectedPillBottleColor] = useState<
     string | null
   >(null);
-
   const [pillBottleLabel, setPillBottleLabel] = useState('');
-
   const [selectedPillColor, setSelectedPillColor] = useState<number | null>(
     null,
   );
-
-  const [showPresets, setShowPresets] = useState(false);
-
-  const [creatingPreset, setCreatingPreset] = useState(false);
-
-  const [editingPreset, setEditingPreset] = useState<string | null>(null);
-
-  const [deletingPreset, setDeletingPreset] = useState<string | null>(null);
-
   const [pillBottleColorPicker, setPillBottleColorPicker] = useState(false);
-
   const [pillColorPicker, setPillColorPicker] = useState(false);
 
+  // Preset management state
+  const [showPresets, setShowPresets] = useState(false);
+  const [creatingPreset, setCreatingPreset] = useState(false);
+  const [editingPreset, setEditingPreset] = useState<string | null>(null);
+  const [deletingPreset, setDeletingPreset] = useState<string | null>(null);
+  const [showReorderButtons, setShowReorderButtons] = useState(false);
   const [presetName, setPresetName] = useState('');
-
   const [showOverwriteWarning, setShowOverwriteWarning] = useState(false);
 
-  const formPopulated = useRef(false);
+  // Preset management handlers
+  const handlePresetReorder =
+    (presetName: string, direction: 'up' | 'down') => (e: React.MouseEvent) => {
+      e.stopPropagation();
+      act('reorder_preset', { name: presetName, direction });
+    };
 
-  useEffect(() => {
-    if (editingPreset && data.presets && data.presets[editingPreset]) {
-      const preset = data.presets[editingPreset];
+  const handlePresetEdit = (presetName: string) => (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditingPreset(presetName);
+    setCreatingPreset(true);
+    setShowPresets(false);
+  };
 
-      if (!formPopulated.current) {
-        setPresetName(editingPreset);
-        setSelectedPillBottleColor(preset.bottle_color || null);
-        setPillBottleLabel(preset.bottle_label || '');
-        setSelectedPillColor(preset.pill_color || null);
-        formPopulated.current = true;
-      }
+  const handlePresetDelete = (presetName: string) => (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (deletingPreset === presetName) {
+      act('delete_preset', { name: presetName });
+      setDeletingPreset(null);
     } else {
-      formPopulated.current = false;
+      setDeletingPreset(presetName);
     }
-  }, [editingPreset]);
+  };
+
+  const handlePresetApply = (presetName: string) => () => {
+    act('apply_preset', { name: presetName });
+    setShowPresets(false);
+  };
 
   const savePreset = () => {
     if (editingPreset !== presetName && data.presets[presetName]) {
@@ -136,6 +139,22 @@ export const ChemMaster = () => {
     setShowPresets(true);
   };
 
+  // Reset form when not editing or creating
+  useEffect(() => {
+    if (editingPreset && data.presets && data.presets[editingPreset]) {
+      const preset = data.presets[editingPreset];
+      setPresetName(editingPreset);
+      setSelectedPillBottleColor(preset.bottle_color || null);
+      setPillBottleLabel(preset.bottle_label || '');
+      setSelectedPillColor(preset.pill_color || null);
+    } else if (!editingPreset && !creatingPreset) {
+      setPresetName('');
+      setSelectedPillBottleColor(null);
+      setPillBottleLabel('');
+      setSelectedPillColor(null);
+    }
+  }, [editingPreset, creatingPreset, data.presets]);
+
   // Reset overwrite warning when preset name changes
   useEffect(() => {
     setShowOverwriteWarning(false);
@@ -153,13 +172,48 @@ export const ChemMaster = () => {
               <Stack fill align="center">
                 <Stack.Item>Status</Stack.Item>
                 <Stack.Item ml="auto">
-                  <Button
-                    icon="save"
-                    tooltip="Manage and apply presets"
-                    onClick={() => setShowPresets(true)}
-                  >
-                    Presets
-                  </Button>
+                  <Stack>
+                    {data.pill_bottles.length > 1 && (
+                      <Stack.Item>
+                        <Button
+                          icon="check-double"
+                          tooltip={
+                            data.pill_bottles.length ===
+                            data.pill_bottles.filter(
+                              (bottle) => bottle.isNeedsToBeFilled,
+                            ).length
+                              ? 'Deselect all pill bottles'
+                              : 'Select all pill bottles'
+                          }
+                          onClick={() => {
+                            act('select_all_bottles', {
+                              value:
+                                data.pill_bottles.length !==
+                                data.pill_bottles.filter(
+                                  (bottle) => bottle.isNeedsToBeFilled,
+                                ).length,
+                            });
+                          }}
+                        >
+                          {data.pill_bottles.length ===
+                          data.pill_bottles.filter(
+                            (bottle) => bottle.isNeedsToBeFilled,
+                          ).length
+                            ? 'Deselect All'
+                            : 'Select All'}
+                        </Button>
+                      </Stack.Item>
+                    )}
+                    <Stack.Item ml={data.pill_bottles.length > 1 ? 1 : 0}>
+                      <Button
+                        icon="save"
+                        tooltip="Manage and apply presets"
+                        onClick={() => setShowPresets(true)}
+                      >
+                        Presets
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
                 </Stack.Item>
               </Stack>
             }
@@ -260,127 +314,187 @@ export const ChemMaster = () => {
 
                 {/* Preset List */}
                 <Stack.Item grow>
-                  <Box fontWeight="bold" mb="0.5rem">
-                    Saved Presets:
-                  </Box>
-                  <Box style={{ height: '300px', overflowY: 'auto' }}>
+                  <Stack align="center" mb="0.5rem">
+                    <Stack.Item>
+                      <Box fontWeight="bold">Saved Presets:</Box>
+                    </Stack.Item>
+                    <Stack.Item ml="auto">
+                      <Button
+                        icon={showReorderButtons ? 'times' : 'arrows-alt-v'}
+                        onClick={() =>
+                          setShowReorderButtons(!showReorderButtons)
+                        }
+                        color={showReorderButtons ? 'good' : undefined}
+                        style={{
+                          backgroundColor: showReorderButtons
+                            ? 'rgba(0, 255, 0, 0.1)'
+                            : undefined,
+                          transition: 'all 0.2s ease',
+                        }}
+                      >
+                        {showReorderButtons ? 'Hide' : 'Reorder'}
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
+                  <Box
+                    style={{
+                      height: '300px',
+                      overflowY: 'auto',
+                      border: showReorderButtons
+                        ? '1px solid rgba(0, 255, 0, 0.3)'
+                        : undefined,
+                      borderRadius: '4px',
+                      padding: showReorderButtons ? '4px' : undefined,
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
                     {data.presets && Object.keys(data.presets).length ? (
-                      Object.keys(data.presets).map((presetName) => (
-                        <Stack key={presetName} align="center" mb="0.5rem">
-                          {/* Preview Icons */}
-                          <Stack.Item>
-                            <Stack align="center">
-                              {data.presets[presetName].bottle_color && (
-                                <Stack.Item mr={1}>
-                                  <Box width="32px" height="32px">
-                                    <DmIcon
-                                      icon={data.color_pill.icon}
-                                      icon_state={`${data.color_pill.base}${data.color_pill.colors[data.presets[presetName].bottle_color]}`}
-                                      height="32px"
-                                      width="32px"
-                                    />
-                                  </Box>
-                                </Stack.Item>
-                              )}
-                              {data.presets[presetName].pill_color && (
-                                <Stack.Item
-                                  style={{
-                                    marginLeft: data.presets[presetName]
-                                      .bottle_color
-                                      ? '-16px'
-                                      : '0',
-                                  }}
-                                >
-                                  <Box width="32px" height="32px">
-                                    <DmIcon
-                                      icon={data.pill_or_bottle_icon}
-                                      icon_state={`pill${data.presets[presetName].pill_color}`}
-                                      height="32px"
-                                      width="32px"
-                                    />
-                                  </Box>
-                                </Stack.Item>
-                              )}
-                            </Stack>
-                          </Stack.Item>
-                          <Stack.Item grow>
-                            <Button
-                              fluid
-                              tooltip="Click to apply preset"
-                              onClick={() => {
-                                act('apply_preset', { name: presetName });
-                                setShowPresets(false);
-                              }}
-                              style={{
-                                maxWidth: '100%',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                              }}
-                            >
-                              <Box
+                      Object.keys(data.presets)
+                        .sort((a, b) => {
+                          const orderA = data.presets[a].order || 0;
+                          const orderB = data.presets[b].order || 0;
+                          return orderA - orderB;
+                        })
+                        .map((presetName, index) => (
+                          <Stack key={presetName} align="center" mb="0.5rem">
+                            {/* Preview Icons */}
+                            <Stack.Item>
+                              <Stack align="center">
+                                {data.presets[presetName].bottle_color && (
+                                  <Stack.Item mr={1}>
+                                    <Box width="32px" height="32px">
+                                      <DmIcon
+                                        icon={data.color_pill.icon}
+                                        icon_state={`${data.color_pill.base}${data.color_pill.colors[data.presets[presetName].bottle_color]}`}
+                                        height="32px"
+                                        width="32px"
+                                      />
+                                    </Box>
+                                  </Stack.Item>
+                                )}
+                                {data.presets[presetName].pill_color && (
+                                  <Stack.Item
+                                    style={{
+                                      marginLeft: data.presets[presetName]
+                                        .bottle_color
+                                        ? '-16px'
+                                        : '0',
+                                    }}
+                                  >
+                                    <Box width="32px" height="32px">
+                                      <DmIcon
+                                        icon={data.pill_or_bottle_icon}
+                                        icon_state={`pill${data.presets[presetName].pill_color}`}
+                                        height="32px"
+                                        width="32px"
+                                      />
+                                    </Box>
+                                  </Stack.Item>
+                                )}
+                              </Stack>
+                            </Stack.Item>
+                            <Stack.Item grow>
+                              <Button
+                                fluid
+                                onClick={handlePresetApply(presetName)}
                                 style={{
+                                  maxWidth: '100%',
                                   overflow: 'hidden',
                                   textOverflow: 'ellipsis',
                                   whiteSpace: 'nowrap',
                                 }}
                               >
-                                {presetName}
-                                {data.presets[presetName].bottle_label && (
-                                  <Box
-                                    as="span"
-                                    ml={1}
-                                    opacity={0.7}
-                                    fontSize="90%"
-                                  >
-                                    &quot;
-                                    {data.presets[presetName].bottle_label}
-                                    &quot;
-                                  </Box>
-                                )}
-                              </Box>
-                            </Button>
-                          </Stack.Item>
-                          <Stack.Item style={{ flexShrink: '0' }}>
-                            <Stack>
-                              <Stack.Item>
-                                <Button
-                                  icon="edit"
-                                  tooltip="Edit Preset"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setEditingPreset(presetName);
-                                    setCreatingPreset(true);
-                                    setShowPresets(false);
-                                  }}
-                                />
-                              </Stack.Item>
-                              <Stack.Item>
-                                <Button
-                                  icon="trash"
-                                  color="bad"
-                                  tooltip="Delete Preset"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    if (deletingPreset === presetName) {
-                                      act('delete_preset', {
-                                        name: presetName,
-                                      });
-                                      setDeletingPreset(null);
-                                    } else {
-                                      setDeletingPreset(presetName);
-                                    }
+                                <Box
+                                  style={{
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    whiteSpace: 'nowrap',
                                   }}
                                 >
-                                  {deletingPreset === presetName
-                                    ? 'Confirm?'
-                                    : ''}
-                                </Button>
-                              </Stack.Item>
-                            </Stack>
-                          </Stack.Item>
-                        </Stack>
-                      ))
+                                  {presetName}
+                                  {data.presets[presetName].bottle_label && (
+                                    <Box
+                                      as="span"
+                                      ml={1}
+                                      opacity={0.7}
+                                      fontSize="90%"
+                                    >
+                                      &quot;
+                                      {data.presets[presetName].bottle_label}
+                                      &quot;
+                                    </Box>
+                                  )}
+                                </Box>
+                              </Button>
+                            </Stack.Item>
+                            <Stack.Item style={{ flexShrink: '0' }}>
+                              <Stack>
+                                {showReorderButtons && (
+                                  <>
+                                    <Stack.Item>
+                                      <Button
+                                        icon="arrow-up"
+                                        disabled={index === 0}
+                                        onClick={handlePresetReorder(
+                                          presetName,
+                                          'up',
+                                        )}
+                                        style={{
+                                          transform: showReorderButtons
+                                            ? 'scale(1.1)'
+                                            : undefined,
+                                          transition: 'all 0.2s ease',
+                                          backgroundColor: showReorderButtons
+                                            ? 'rgba(0, 255, 0, 0.1)'
+                                            : undefined,
+                                        }}
+                                      />
+                                    </Stack.Item>
+                                    <Stack.Item>
+                                      <Button
+                                        icon="arrow-down"
+                                        disabled={
+                                          index ===
+                                          Object.keys(data.presets).length - 1
+                                        }
+                                        onClick={handlePresetReorder(
+                                          presetName,
+                                          'down',
+                                        )}
+                                        style={{
+                                          transform: showReorderButtons
+                                            ? 'scale(1.1)'
+                                            : undefined,
+                                          transition: 'all 0.2s ease',
+                                          backgroundColor: showReorderButtons
+                                            ? 'rgba(0, 255, 0, 0.1)'
+                                            : undefined,
+                                        }}
+                                      />
+                                    </Stack.Item>
+                                  </>
+                                )}
+                                <Stack.Item>
+                                  <Button
+                                    icon="edit"
+                                    onClick={handlePresetEdit(presetName)}
+                                  />
+                                </Stack.Item>
+                                <Stack.Item>
+                                  <Button
+                                    icon="trash"
+                                    color="bad"
+                                    onClick={handlePresetDelete(presetName)}
+                                  >
+                                    {deletingPreset === presetName
+                                      ? 'Confirm?'
+                                      : ''}
+                                  </Button>
+                                </Stack.Item>
+                              </Stack>
+                            </Stack.Item>
+                          </Stack>
+                        ))
                     ) : (
                       <Box color="gray">No saved presets.</Box>
                     )}

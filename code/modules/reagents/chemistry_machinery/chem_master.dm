@@ -229,9 +229,27 @@
 				"bottle_label" = params["bottle_label"],
 				"pill_color" = params["pill_color"]
 			)
-			// If editing an existing preset with a name change
-			if(original_name && original_name != preset_name)
-				user.client.prefs.delete_chem_preset(original_name)
+
+			// Get current presets to determine order
+			var/list/current_presets = user.client.prefs.get_all_chem_presets()
+			var/max_order = 0
+
+			// Find the highest order number
+			for(var/name in current_presets)
+				var/list/preset = current_presets[name]
+				if(preset["order"] > max_order)
+					max_order = preset["order"]
+
+			// If editing, keep the original order
+			if(original_name && current_presets[original_name])
+				preset_data["order"] = current_presets[original_name]["order"]
+				// Only delete if name changed
+				if(original_name != preset_name)
+					user.client.prefs.delete_chem_preset(original_name)
+			else
+				// New preset gets the next order number
+				preset_data["order"] = max_order + 1
+
 			user.client.prefs.save_chem_preset(preset_name, preset_data)
 			// Force UI refresh
 			SStgui.update_uis(src)
@@ -243,6 +261,40 @@
 
 			var/preset_name = params["name"]
 			user.client.prefs.delete_chem_preset(preset_name)
+			return TRUE
+
+		if("reorder_preset")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			var/direction = params["direction"] // "up" or "down"
+			var/list/current_presets = user.client.prefs.get_all_chem_presets()
+
+			if(!current_presets[preset_name])
+				return TRUE
+
+			// Get current position
+			var/current_pos = current_presets[preset_name]["order"]
+			var/target_pos = direction == "up" ? current_pos - 1 : current_pos + 1
+
+			// Find preset at target position
+			var/target_name = null
+			for(var/name in current_presets)
+				if(current_presets[name]["order"] == target_pos)
+					target_name = name
+					break
+
+			if(!target_name)
+				return TRUE
+
+			// Swap positions
+			current_presets[preset_name]["order"] = target_pos
+			current_presets[target_name]["order"] = current_pos
+
+			// Save changes
+			user.client.prefs.save_chem_preset(preset_name, current_presets[preset_name])
+			user.client.prefs.save_chem_preset(target_name, current_presets[target_name])
 			return TRUE
 
 		if("eject_pill")
@@ -516,7 +568,14 @@
 				loaded_pill_bottles_to_fill += loaded_pill_bottles[params["bottleIndex"] + 1]
 			else if (LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[params["bottleIndex"] + 1]) != 0)
 				loaded_pill_bottles_to_fill -= loaded_pill_bottles[params["bottleIndex"] + 1]
+			return TRUE
 
+		if("select_all_bottles")
+			if(params["value"])
+				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
+			else
+				loaded_pill_bottles_to_fill = list()
+			return TRUE
 
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)
 	if(stat & BROKEN)
@@ -556,3 +615,7 @@
 
 /obj/structure/machinery/chem_master/vial
 	vial_maker = TRUE
+
+/proc/cmp_preset_order(a, b)
+	var/list/presets = usr.client.prefs.get_all_chem_presets()
+	return presets[a]["order"] - presets[b]["order"]

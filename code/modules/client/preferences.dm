@@ -2497,8 +2497,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	return chem_presets[preset_name]
 
 /datum/preferences/proc/save_chem_preset(preset_name, list/preset_data)
-    chem_presets[preset_name] = preset_data
-    save_preferences()
+	chem_presets[preset_name] = preset_data
+	save_preferences()
 
 /datum/preferences/proc/delete_chem_preset(preset_name)
 	chem_presets -= preset_name

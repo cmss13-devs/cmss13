@@ -145,7 +145,7 @@
 #define WEED_RANGE_CORE   7
 
 /// Multiplicative. The amount of damage xenos do to weeds.
-#define WEED_XENO_DAMAGEMULT 0.25
+#define WEED_XENO_DAMAGEMULT 0.5
 
 #define WEED_HEALTH_STANDARD 5
 #define WEED_HEALTH_HARDY 10

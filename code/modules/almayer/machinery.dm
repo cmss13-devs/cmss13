@@ -7,10 +7,6 @@
 
 /obj/structure/machinery/prop/almayer/hangar/dropship_part_fabricator
 
-/obj/structure/machinery/prop/almayer/computer/PC
-	name = "personal desktop"
-	desc = "A small computer hooked up into the ship's computer network."
-	icon_state = "terminal1"
 
 /obj/structure/machinery/prop/almayer/computer
 	name = "systems computer"
@@ -53,6 +49,22 @@
 	if(stat & NOPOWER)
 		icon_state = initial(icon_state)
 		icon_state += "0"
+
+/obj/structure/machinery/prop/almayer/computer/PC
+	name = "personal desktop"
+	desc = "A small computer hooked up into the ship's computer network."
+	icon_state = "terminal1"
+
+/obj/structure/machinery/prop/almayer/computer/PC/large
+	icon_state = "largecomp"
+
+/obj/structure/machinery/prop/almayer/computer/PC/large/dark
+	icon_state = "largecomp_dark"
+
+/obj/structure/machinery/prop/almayer/computer/midway_weapon_console
+	name = "\improper 'Midway' weapons controls"
+	desc = "A computer to manage equipment, weapons and simulations installed on the dropship. This one is inactive, however."
+	icon_state = "cameras_old"
 
 /obj/structure/machinery/prop/almayer/computer/NavCon
 	name = "NavCon"
@@ -183,6 +195,18 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
+/obj/structure/prop/almayer/whiteboard
+	name = "\improper whiteboard"
+	desc = "A blank white surface where thoughts turn to plans. It's blank, all of the markers having dried out from the constant inappropriate drawings."
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
+	icon_state = "whiteboard"
+	bound_width = 64
+
+/obj/structure/prop/almayer/whiteboard/clear
+	name = "\improper glass whiteboard"
+	desc = "Despite what the name implies, this whiteboard is not actually white and instead is a clear pane of glass. Why anyone would want you to see through a whiteboard remains one of the top mysteries as of 2182."
+	icon_state = "whiteboard_clear"
+
 /obj/structure/prop/almayer/particle_cannon
 	name = "\improper 75cm/140 Mark 74 General Atomics railgun"
 	desc = "The Mark 74 Railgun is top of the line for space-based weaponry. Capable of firing a round with a diameter of 3/4ths of a meter at 24 kilometers per second. It also is capable of using a variety of round types which can be interchanged at any time with its newly designed feed system."
@@ -246,8 +270,26 @@
 /obj/structure/prop/almayer/cannon_cable_connector/bullet_act()
 	return
 
+/obj/structure/prop/almayer/ai_wallmonitor
+	name = "AI interface wall monitor"
+	desc = "A monitor embedded into the wall, providing detailed readouts of various different systems."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "ai_wallmonitor"
+	density = FALSE
+	pixel_y = 32
+	layer = ABOVE_OBJ_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/structure/prop/almayer/ai_wallmonitor/east
+	icon_state = "ai_wallmonitor_e"
+	pixel_x = 32
+	pixel_y = 0
 
 
+/obj/structure/prop/almayer/ai_wallmonitor/west
+	icon_state = "ai_wallmonitor_w"
+	pixel_x = -32
+	pixel_y = 0
 
 
 

@@ -155,6 +155,28 @@
 /obj/docking_port/mobile/marine_dropship/devana/get_transit_path_type()
 	return /turf/open/space/transit/dropship/devana
 
+/obj/docking_port/mobile/marine_dropship/midway
+	name = "Midway"
+	id = DROPSHIP_MIDWAY
+	width = 9
+	height = 18
+	dwidth = 4
+	dheight = 8
+
+/obj/docking_port/mobile/marine_dropship/midway/get_transit_path_type()
+	return /turf/open/space/transit/dropship/midway
+
+/obj/docking_port/mobile/marine_dropship/tripoli
+	name = "Tripoli"
+	id = DROPSHIP_TRIPOLI
+	width = 9
+	height = 18
+
+	dwidth = 4
+	dheight = 8
+
+/obj/docking_port/mobile/marine_dropship/tripoli/get_transit_path_type()
+	return /turf/open/space/transit/dropship/tripoli
 
 /obj/docking_port/mobile/marine_dropship/check()
 	. = ..()
@@ -375,4 +397,10 @@
 	name = "Devana"
 	shuttle_id = DROPSHIP_DEVANA
 
+/datum/map_template/shuttle/midway
+	name = "Midway"
+	shuttle_id = DROPSHIP_MIDWAY
 
+/datum/map_template/shuttle/tripoli
+	name = "Tripoli"
+	shuttle_id = DROPSHIP_TRIPOLI

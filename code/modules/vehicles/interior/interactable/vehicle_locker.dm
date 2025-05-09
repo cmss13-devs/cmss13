@@ -15,12 +15,14 @@
 	unslashable = TRUE
 	explo_proof = TRUE
 
+	var/has_role_restriction = TRUE
 	var/list/role_restriction = list(JOB_TANK_CREW, JOB_WO_CREWMAN, JOB_UPP_CREWMAN, JOB_PMC_CREWMAN)
 
 	var/obj/item/storage/internal/container
-
+	var/base_icon
 /obj/structure/vehicle_locker/Initialize()
 	. = ..()
+	base_icon = icon_state
 	container = new(src)
 	container.storage_slots = null
 	container.max_w_class = SIZE_MEDIUM
@@ -47,7 +49,7 @@
 	if (!ishuman(H) || H.is_mob_restrained())
 		return
 
-	if(!role_restriction.Find(H.job))
+	if(has_role_restriction && !role_restriction.Find(H.job))
 		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 
@@ -80,7 +82,7 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return TRUE
 
@@ -98,7 +100,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if (container.handle_mousedrop(user, over_object))
@@ -111,7 +113,7 @@
 		return
 	if(!istype(user))
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	return container.attackby(W, user)
@@ -197,7 +199,7 @@
 		return
 	if(!istype(user))
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if(istype(W, /obj/item/storage/surgical_tray))
@@ -215,7 +217,7 @@
 	if(user.get_active_hand())
 		return ..()
 
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return TRUE
 
@@ -233,7 +235,7 @@
 		return
 	if(user.is_mob_incapacitated())
 		return
-	if(!role_restriction.Find(user.job))
+	if(has_role_restriction && !role_restriction.Find(user.job))
 		to_chat(user, SPAN_WARNING("You cannot access \the [name]."))
 		return
 	if(!has_tray)
@@ -256,7 +258,7 @@
 	if(H.is_mob_incapacitated())
 		return
 
-	if(!role_restriction.Find(H.job))
+	if(has_role_restriction && !role_restriction.Find(H.job))
 		to_chat(H, SPAN_WARNING("You cannot access \the [name]."))
 		return
 
@@ -307,3 +309,46 @@
 /obj/structure/vehicle_locker/pmc
 	icon = 'icons/obj/vehicles/interiors/general_wy.dmi'
 	role_restriction = list(JOB_PMC_LEAD_INVEST, JOB_PMC_LEADER, JOB_PMC_SYNTH, JOB_WY_COMMANDO_LEADER, JOB_PMC_CREWMAN)
+
+/obj/structure/vehicle_locker/cabinet
+	name = "cabinet"
+	desc = "A cabinet securely fastened to the wall, capable of storing a variety of smaller items."
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
+	icon_state = "cabinet"
+	layer = ABOVE_MOB_LAYER
+	has_role_restriction = FALSE
+
+/obj/structure/vehicle_locker/cabinet/Initialize()
+	. = ..()
+	container = new(src)
+	container.storage_slots = 12
+	container.max_w_class = SIZE_TINY
+	container.w_class = SIZE_MASSIVE
+	container.use_sound = null
+	container.bypass_w_limit = list(
+		/obj/item/reagent_container/glass,
+		/obj/item/reagent_container/food,
+		/obj/item/tool/kitchen,
+	)
+
+/obj/structure/vehicle_locker/cabinet/cups
+	name = "cups cabinet"
+
+/obj/structure/vehicle_locker/cabinet/cups/Initialize()
+	. = ..()
+	for(var/i in 1 to 12)
+		new /obj/item/reagent_container/food/drinks/coffee/marine(container)
+
+/obj/structure/vehicle_locker/cabinet/cups/flip
+	icon_state = "cabinet2"
+
+/obj/structure/vehicle_locker/cabinet/utensils
+	name = "utensils cabinet"
+
+/obj/structure/vehicle_locker/cabinet/utensils/Initialize()
+	. = ..()
+	for(var/i in 1 to 12)
+		new /obj/item/tool/kitchen/utensil/fork(container)
+
+/obj/structure/vehicle_locker/cabinet/utensils/flip
+	icon_state = "cabinet2"

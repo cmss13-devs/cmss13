@@ -344,6 +344,16 @@
 	..()
 
 /obj/effect/alien/resin/trap/Crossed(atom/A)
+	if((isStructure(A) && istype(A, /obj/structure/bed)) || (isVehicle(A) && !isVehicleMultitile(A)))
+		var/obj/target = A
+		if(target.buckled_mob)
+			var/mob/living/user = target.buckled_mob
+			target.unbuckle()
+			HasProximity(user)
+			to_chat(user, SPAN_XENOHIGHDANGER("You've fallen into a pit full of resin!"))
+	if(trap_type == RESIN_TRAP_EMPTY)
+		return
+
 	if(ismob(A) || isVehicleMultitile(A))
 		HasProximity(A)
 

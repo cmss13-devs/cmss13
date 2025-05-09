@@ -1895,7 +1895,7 @@
 "ahv" = (
 /obj/structure/surface/table/holotable/wood,
 /obj/item/paper_bin,
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/weyyu,
 /turf/open/floor/carpet,
 /area/bigredv2/caves/lambda/breakroom)
 "ahw" = (

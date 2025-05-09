@@ -676,7 +676,7 @@
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
-		WEAR_R_EAR = /obj/item/tool/pen/clicky,
+		WEAR_R_EAR = /obj/item/tool/pen/weyyu,
 		WEAR_BODY = /obj/item/clothing/under/suit_jacket/trainee,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
 		WEAR_IN_BACK = /obj/item/notepad,
@@ -700,7 +700,7 @@
 	minimap_background = "background_cmb"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
-		WEAR_R_EAR = /obj/item/tool/pen/clicky,
+		WEAR_R_EAR = /obj/item/tool/pen/weyyu,
 		WEAR_HEAD = /obj/item/clothing/head/hardhat/white,
 		WEAR_BODY = /obj/item/clothing/under/liaison_suit/black,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
@@ -723,7 +723,7 @@
 	role_comm_title = "Pilot Syn"
 	equipment_to_spawn = list(
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
-		WEAR_R_EAR = /obj/item/tool/pen/clicky,
+		WEAR_R_EAR = /obj/item/tool/pen/weyyu,
 		WEAR_EYES = /obj/item/clothing/glasses/sunglasses/aviator/silver,
 		WEAR_HEAD = /obj/item/clothing/head/hybrisa/wy_po_cap,
 		WEAR_BODY = /obj/item/clothing/under/hybrisa/wy_pilot,

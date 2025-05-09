@@ -245,7 +245,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/weyyu(new_human), WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/notepad(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_L_HAND)

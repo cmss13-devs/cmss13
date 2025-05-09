@@ -727,7 +727,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_R_STORE)
 	//backpack and stuff in it
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/weyyu, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/carbon, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/carbon, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
@@ -785,7 +785,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera_film, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/weyyu, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/carbon, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/folder, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)

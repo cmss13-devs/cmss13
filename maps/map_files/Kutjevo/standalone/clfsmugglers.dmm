@@ -742,7 +742,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = 4;
 	pixel_y = 3
 	},
@@ -881,7 +881,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = 4;
 	pixel_y = 3
 	},

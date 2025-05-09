@@ -4,7 +4,7 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 8
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_y = 3
 	},
 /turf/open/floor/wood,

@@ -26053,7 +26053,7 @@
 /area/fiorina/station/research_cells/west)
 "tWz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/power_ring/reactor)
 "tXt" = (

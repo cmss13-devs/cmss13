@@ -109,12 +109,14 @@
 
 	if(universal_understand)
 		return TRUE
-	if(other?.universal_speak)
+
+	if(istype(other) && other.universal_speak)
 		return TRUE
 	//Language check.
-	for(var/datum/language/L in languages)
-		if(speaking?.name == L.name)
-			return TRUE
+	if(speaking)
+		for(var/datum/language/known_languages as anything in languages)
+			if(speaking.name == known_languages.name)
+				return TRUE
 
 	return FALSE
 

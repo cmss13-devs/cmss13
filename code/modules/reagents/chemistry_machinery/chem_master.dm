@@ -15,7 +15,7 @@
 	var/obj/item/reagent_container/beaker = null
 	var/list/loaded_pill_bottles = list()
 	var/list/loaded_pill_bottles_to_fill = list()
-	var/list/presets = list() // name -> list(settings)
+	var/list/presets = list()
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
@@ -109,12 +109,9 @@
 
 /obj/structure/machinery/chem_master/ui_data(mob/user)
 	. = ..()
-	// Ensure presets are included
-	if(user.client?.prefs)
+	if(user?.client?.prefs)
 		var/list/presets = user.client.prefs.get_all_chem_presets()
 		.["presets"] = presets
-		// Debug output
-		to_chat(user, "DEBUG: Found [length(presets)] presets: [json_encode(presets)]")
 
 	.["is_connected"] = !!connected
 	.["mode"] = mode
@@ -187,19 +184,15 @@
 		return
 
 	switch(action)
-		if("open_presets")
-			// Do nothing yet
-			return TRUE
-
 		if("apply_preset")
-			if(!usr.client?.prefs)
+			if(!user.client?.prefs)
 				return TRUE
 
 			var/preset_name = params["name"]
 			if(!preset_name)
 				return TRUE
 
-			var/list/preset_data = usr.client.prefs.get_chem_preset(preset_name)
+			var/list/preset_data = user.client.prefs.get_chem_preset(preset_name)
 			if(!preset_data)
 				return TRUE
 
@@ -224,7 +217,7 @@
 			return TRUE
 
 		if("save_preset")
-			if(!usr.client?.prefs)
+			if(!user.client?.prefs)
 				return TRUE
 			var/preset_name = trim(params["name"])
 			if(!preset_name || !length(preset_name))
@@ -238,18 +231,18 @@
 			)
 			// If editing an existing preset with a name change
 			if(original_name && original_name != preset_name)
-				usr.client.prefs.delete_chem_preset(original_name)
-			usr.client.prefs.save_chem_preset(preset_name, preset_data)
+				user.client.prefs.delete_chem_preset(original_name)
+			user.client.prefs.save_chem_preset(preset_name, preset_data)
 			// Force UI refresh
 			SStgui.update_uis(src)
 			return TRUE
 
 		if("delete_preset")
-			if(!usr.client?.prefs)
+			if(!user.client?.prefs)
 				return TRUE
 
 			var/preset_name = params["name"]
-			usr.client.prefs.delete_chem_preset(preset_name)
+			user.client.prefs.delete_chem_preset(preset_name)
 			return TRUE
 
 		if("eject_pill")

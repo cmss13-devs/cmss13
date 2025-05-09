@@ -1,5 +1,5 @@
 import type { BooleanLike } from 'common/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
@@ -90,24 +90,33 @@ export const ChemMaster = () => {
 
   const [presetName, setPresetName] = useState('');
 
+  const [showOverwriteWarning, setShowOverwriteWarning] = useState(false);
+
+  const formPopulated = useRef(false);
+
   useEffect(() => {
     if (editingPreset && data.presets && data.presets[editingPreset]) {
       const preset = data.presets[editingPreset];
-      setPresetName(editingPreset);
-      setSelectedPillBottleColor(preset.bottle_color || null);
-      setPillBottleLabel(preset.bottle_label || '');
-      setSelectedPillColor(preset.pill_color || null);
+
+      if (!formPopulated.current) {
+        setPresetName(editingPreset);
+        setSelectedPillBottleColor(preset.bottle_color || null);
+        setPillBottleLabel(preset.bottle_label || '');
+        setSelectedPillColor(preset.pill_color || null);
+        formPopulated.current = true;
+      }
+    } else {
+      formPopulated.current = false;
     }
-  }, [editingPreset, data.presets]);
+  }, [editingPreset]);
 
   const savePreset = () => {
     if (editingPreset !== presetName && data.presets[presetName]) {
-      if (
-        window.confirm(
-          `A preset named "${presetName}" already exists. Overwrite it?`,
-        )
-      ) {
+      if (showOverwriteWarning) {
         submitSave();
+        setShowOverwriteWarning(false);
+      } else {
+        setShowOverwriteWarning(true);
       }
     } else {
       submitSave();
@@ -124,11 +133,20 @@ export const ChemMaster = () => {
     });
     setCreatingPreset(false);
     setEditingPreset(null);
+    setShowPresets(true);
   };
+
+  // Reset overwrite warning when preset name changes
+  useEffect(() => {
+    setShowOverwriteWarning(false);
+  }, [presetName]);
 
   return (
     <Window width={550} height={600}>
-      <Window.Content className="ChemMaster">
+      <Window.Content
+        className="ChemMaster"
+        onClick={() => setDeletingPreset(null)}
+      >
         <Section fill scrollable>
           <Section
             title={
@@ -241,59 +259,132 @@ export const ChemMaster = () => {
                 </Stack.Item>
 
                 {/* Preset List */}
-                <Stack.Item>
+                <Stack.Item grow>
                   <Box fontWeight="bold" mb="0.5rem">
                     Saved Presets:
                   </Box>
-                  {data.presets && Object.keys(data.presets).length ? (
-                    Object.keys(data.presets).map((presetName) => (
-                      <Stack key={presetName} align="center" mb="0.5rem">
-                        <Stack.Item grow>
-                          <Button
-                            fluid
-                            tooltip="Click to apply preset"
-                            onClick={() => {
-                              act('apply_preset', { name: presetName });
-                              setShowPresets(false);
-                            }}
-                          >
-                            {presetName}
-                          </Button>
-                        </Stack.Item>
-                        <Stack.Item>
-                          <Button
-                            icon="edit"
-                            tooltip="Edit Preset"
-                            ml="0.5rem"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setEditingPreset(presetName);
-                              setCreatingPreset(true);
-                            }}
-                          />
-                          <Button
-                            icon="trash"
-                            color="bad"
-                            tooltip="Delete Preset"
-                            ml="0.5rem"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              if (deletingPreset === presetName) {
-                                act('delete_preset', { name: presetName });
-                                setDeletingPreset(null);
-                              } else {
-                                setDeletingPreset(presetName);
-                              }
-                            }}
-                          >
-                            {deletingPreset === presetName ? 'Confirm?' : ''}
-                          </Button>
-                        </Stack.Item>
-                      </Stack>
-                    ))
-                  ) : (
-                    <Box color="gray">No saved presets.</Box>
-                  )}
+                  <Box style={{ height: '300px', overflowY: 'auto' }}>
+                    {data.presets && Object.keys(data.presets).length ? (
+                      Object.keys(data.presets).map((presetName) => (
+                        <Stack key={presetName} align="center" mb="0.5rem">
+                          {/* Preview Icons */}
+                          <Stack.Item>
+                            <Stack align="center">
+                              {data.presets[presetName].bottle_color && (
+                                <Stack.Item mr={1}>
+                                  <Box width="32px" height="32px">
+                                    <DmIcon
+                                      icon={data.color_pill.icon}
+                                      icon_state={`${data.color_pill.base}${data.color_pill.colors[data.presets[presetName].bottle_color]}`}
+                                      height="32px"
+                                      width="32px"
+                                    />
+                                  </Box>
+                                </Stack.Item>
+                              )}
+                              {data.presets[presetName].pill_color && (
+                                <Stack.Item
+                                  style={{
+                                    marginLeft: data.presets[presetName]
+                                      .bottle_color
+                                      ? '-16px'
+                                      : '0',
+                                  }}
+                                >
+                                  <Box width="32px" height="32px">
+                                    <DmIcon
+                                      icon={data.pill_or_bottle_icon}
+                                      icon_state={`pill${data.presets[presetName].pill_color}`}
+                                      height="32px"
+                                      width="32px"
+                                    />
+                                  </Box>
+                                </Stack.Item>
+                              )}
+                            </Stack>
+                          </Stack.Item>
+                          <Stack.Item grow>
+                            <Button
+                              fluid
+                              tooltip="Click to apply preset"
+                              onClick={() => {
+                                act('apply_preset', { name: presetName });
+                                setShowPresets(false);
+                              }}
+                              style={{
+                                maxWidth: '100%',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              <Box
+                                style={{
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis',
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {presetName}
+                                {data.presets[presetName].bottle_label && (
+                                  <Box
+                                    as="span"
+                                    ml={1}
+                                    opacity={0.7}
+                                    fontSize="90%"
+                                  >
+                                    &quot;
+                                    {data.presets[presetName].bottle_label}
+                                    &quot;
+                                  </Box>
+                                )}
+                              </Box>
+                            </Button>
+                          </Stack.Item>
+                          <Stack.Item style={{ flexShrink: '0' }}>
+                            <Stack>
+                              <Stack.Item>
+                                <Button
+                                  icon="edit"
+                                  tooltip="Edit Preset"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setEditingPreset(presetName);
+                                    setCreatingPreset(true);
+                                    setShowPresets(false);
+                                  }}
+                                />
+                              </Stack.Item>
+                              <Stack.Item>
+                                <Button
+                                  icon="trash"
+                                  color="bad"
+                                  tooltip="Delete Preset"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (deletingPreset === presetName) {
+                                      act('delete_preset', {
+                                        name: presetName,
+                                      });
+                                      setDeletingPreset(null);
+                                    } else {
+                                      setDeletingPreset(presetName);
+                                    }
+                                  }}
+                                >
+                                  {deletingPreset === presetName
+                                    ? 'Confirm?'
+                                    : ''}
+                                </Button>
+                              </Stack.Item>
+                            </Stack>
+                          </Stack.Item>
+                        </Stack>
+                      ))
+                    ) : (
+                      <Box color="gray">No saved presets.</Box>
+                    )}
+                  </Box>
                 </Stack.Item>
 
                 {/* Create Button */}
@@ -302,22 +393,17 @@ export const ChemMaster = () => {
                     icon="plus"
                     fluid
                     onClick={() => {
+                      // Clear all fields before opening new preset form
                       setEditingPreset(null);
+                      setPresetName('');
+                      setSelectedPillBottleColor(null);
+                      setPillBottleLabel('');
+                      setSelectedPillColor(null);
                       setCreatingPreset(true);
+                      setShowPresets(false);
                     }}
                   >
                     Create New Preset
-                  </Button>
-                </Stack.Item>
-
-                {/* Close Button */}
-                <Stack.Item mt="1rem">
-                  <Button
-                    icon="arrow-left"
-                    fluid
-                    onClick={() => setShowPresets(false)}
-                  >
-                    Back
                   </Button>
                 </Stack.Item>
               </Stack>
@@ -349,6 +435,7 @@ export const ChemMaster = () => {
                           setSelectedPillBottleColor(null);
                           setPillBottleLabel('');
                           setSelectedPillColor(null);
+                          setShowPresets(true);
                         }}
                       />
                     </Stack.Item>
@@ -373,18 +460,73 @@ export const ChemMaster = () => {
                 </Stack.Item>
 
                 <Stack.Item>
-                  <Box mb="0.5rem">Pill Bottle Color: (optional)</Box>
-                  <Button
-                    fluid
-                    mb="1rem"
-                    onClick={() => setPillBottleColorPicker(true)}
-                  >
-                    {selectedPillBottleColor || 'No change'}
-                  </Button>
+                  <Box mb="0.5rem">
+                    Pill Bottle Color:{' '}
+                    <Box as="span" style={{ fontStyle: 'italic' }}>
+                      (optional)
+                    </Box>
+                  </Box>
+                  <Stack align="center">
+                    <Stack.Item grow basis={0}>
+                      <Box
+                        className="icon"
+                        width="40px"
+                        height="40px"
+                        style={{
+                          cursor: 'pointer',
+                          border: '1px solid #666',
+                          borderRadius: '4px',
+                          padding: '4px',
+                        }}
+                        onClick={() => setPillBottleColorPicker(true)}
+                      >
+                        {selectedPillBottleColor ? (
+                          <DmIcon
+                            icon={data.color_pill.icon}
+                            icon_state={`${data.color_pill.base}${data.color_pill.colors[selectedPillBottleColor]}`}
+                            height="40px"
+                            width="40px"
+                          />
+                        ) : (
+                          <Box
+                            textAlign="center"
+                            lineHeight="32px"
+                            fontSize="11px"
+                            style={{
+                              width: '32px',
+                              height: '32px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              overflow: 'hidden',
+                              padding: '0 3px',
+                            }}
+                          >
+                            Select
+                          </Box>
+                        )}
+                      </Box>
+                    </Stack.Item>
+                    <Stack.Item basis={0} grow ml={1}>
+                      <Button
+                        fluid
+                        icon="times"
+                        disabled={!selectedPillBottleColor}
+                        onClick={() => setSelectedPillBottleColor(null)}
+                      >
+                        Clear
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
                 </Stack.Item>
 
                 <Stack.Item>
-                  <Box mb="0.5rem">Pill Bottle Label: (optional)</Box>
+                  <Box mb="0.5rem">
+                    Pill Bottle Label:{' '}
+                    <Box as="span" style={{ fontStyle: 'italic' }}>
+                      (optional)
+                    </Box>
+                  </Box>
                   <Input
                     fluid
                     mb="1rem"
@@ -395,14 +537,64 @@ export const ChemMaster = () => {
                 </Stack.Item>
 
                 <Stack.Item>
-                  <Box mb="0.5rem">Pill Color: (optional)</Box>
-                  <Button
-                    fluid
-                    mb="1rem"
-                    onClick={() => setPillColorPicker(true)}
-                  >
-                    {selectedPillColor || 'No change'}
-                  </Button>
+                  <Box mb="0.5rem">
+                    Pill Color:{' '}
+                    <Box as="span" style={{ fontStyle: 'italic' }}>
+                      (optional)
+                    </Box>
+                  </Box>
+                  <Stack align="center">
+                    <Stack.Item grow basis={0}>
+                      <Box
+                        className="icon"
+                        width="40px"
+                        height="40px"
+                        style={{
+                          cursor: 'pointer',
+                          border: '1px solid #666',
+                          borderRadius: '4px',
+                          padding: '4px',
+                        }}
+                        onClick={() => setPillColorPicker(true)}
+                      >
+                        {selectedPillColor ? (
+                          <DmIcon
+                            icon={data.pill_or_bottle_icon}
+                            icon_state={`pill${selectedPillColor}`}
+                            height="40px"
+                            width="40px"
+                          />
+                        ) : (
+                          <Box
+                            textAlign="center"
+                            lineHeight="32px"
+                            fontSize="11px"
+                            style={{
+                              width: '32px',
+                              height: '32px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              overflow: 'hidden',
+                              padding: '0 3px',
+                            }}
+                          >
+                            Select
+                          </Box>
+                        )}
+                      </Box>
+                    </Stack.Item>
+                    <Stack.Item basis={0} grow ml={1}>
+                      <Button
+                        fluid
+                        icon="times"
+                        disabled={!selectedPillColor}
+                        onClick={() => setSelectedPillColor(null)}
+                      >
+                        Clear
+                      </Button>
+                    </Stack.Item>
+                  </Stack>
                 </Stack.Item>
 
                 {/* Action Buttons */}
@@ -411,24 +603,18 @@ export const ChemMaster = () => {
                     <Stack.Item grow basis={0}>
                       <Button
                         fluid
-                        icon="arrow-left"
-                        onClick={() => {
-                          setCreatingPreset(false);
-                          setEditingPreset(null);
-                        }}
-                      >
-                        Cancel
-                      </Button>
-                    </Stack.Item>
-                    <Stack.Item grow basis={0}>
-                      <Button
-                        fluid
                         icon="save"
-                        color="good"
+                        color={
+                          showOverwriteWarning
+                            ? 'bad'
+                            : presetName
+                              ? 'good'
+                              : 'default'
+                        }
                         disabled={!presetName && !editingPreset}
                         onClick={savePreset}
                       >
-                        Save
+                        {showOverwriteWarning ? 'Overwrite?' : 'Save'}
                       </Button>
                     </Stack.Item>
                   </Stack>
@@ -456,7 +642,6 @@ export const ChemMaster = () => {
                 </Stack.Item>
 
                 <Stack.Item>
-                  {/* Use similar layout as your existing pill picker */}
                   <Stack width="17rem" wrap>
                     {Object.keys(data.color_pill.colors).map((color) => (
                       <Stack.Item key={color} mr={1} mb={1} className="picker">
@@ -514,7 +699,6 @@ export const ChemMaster = () => {
                 </Stack.Item>
 
                 <Stack.Item>
-                  {/* Use similar layout as your existing pill picker */}
                   <Stack width="17rem" wrap>
                     {Array.from(
                       {

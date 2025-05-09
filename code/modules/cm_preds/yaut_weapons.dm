@@ -1058,7 +1058,6 @@
 		spikes++
 	return TRUE
 
-
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = null

@@ -145,6 +145,14 @@
 								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
 								if(!dist)
 									dist = 1
+								var/mob/living/carbon/human/human_in_smoke = A
+								if(istype(human_in_smoke))
+									if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+										continue
+									if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+										continue
 								R.reaction_mob(A, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
 							else if(istype(A, /obj))
 								R.reaction_obj(A, R.volume)
@@ -271,6 +279,14 @@
 	if(!length(reagents?.reagent_list))
 		return FALSE
 
+	var/mob/living/carbon/human/human_in_smoke = affected_mob
+	if(istype(human_in_smoke))
+		if(human_in_smoke?.wear_mask?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.glasses?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
+		if(human_in_smoke?.head?.flags_inventory & BLOCKGASEFFECT)
+			return FALSE
 	for(var/datum/reagent/reagent in reagents.reagent_list)
 		reagent.reaction_mob(affected_mob, volume = reagent.volume * POTENCY_MULTIPLIER_LOW, permeable = FALSE)
 	return TRUE

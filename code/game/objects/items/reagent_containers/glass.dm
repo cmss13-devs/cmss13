@@ -4,7 +4,6 @@
 
 /obj/item/reagent_container/glass
 	name = " "
-	var/base_name = " "
 	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
@@ -16,10 +15,12 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
+	var/splashable = TRUE
 	var/has_lid = TRUE
+	var/base_name = " "
+
 
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
@@ -52,6 +53,7 @@
 /obj/item/reagent_container/glass/Initialize()
 	. = ..()
 	base_name = name
+	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/glass/get_examine_text(mob/user)
 	. = ..()
@@ -386,6 +388,23 @@
 	ground_offset_x = 9
 	ground_offset_y = 8
 
+
+/obj/item/reagent_container/glass/beaker/vial/random
+	var/tier
+
+/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
+	. = ..()
+	var/random_chem
+	if(tier)
+		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
+	else
+		random_chem = pick(GLOB.chemical_gen_classes_list["C5"])
+	if(prob(4))
+		random_chem = "xenogenic"
+	if(random_chem)
+		reagents.add_reagent(random_chem, 30)
+		update_icon()
+
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
 
@@ -409,34 +428,6 @@
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 30)
 	update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random
-	var/tier
-
-/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
-	. = ..()
-	var/random_chem
-	if(tier)
-		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
-	else
-		random_chem = pick( prob(3);pick(GLOB.chemical_gen_classes_list["C1"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["C2"]),\
-							prob(7);pick(GLOB.chemical_gen_classes_list["C3"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["C4"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["C5"]),\
-							prob(25);pick(GLOB.chemical_gen_classes_list["T1"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["T2"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["T3"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["T4"]),\
-							prob(15);"")
-	if(random_chem)
-		reagents.add_reagent(random_chem, 30)
-		update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random/good/Initialize()
-	tier = pick("C5","T4")
-	. = ..()
-
 /obj/item/reagent_container/glass/beaker/cryoxadone
 	name = "cryoxadone beaker"
 

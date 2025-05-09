@@ -20,7 +20,7 @@
 //***************************************Recipe Generator**********************************************/
 //*****************************************************************************************************/
 
-/datum/chemical_reaction/proc/generate_recipe(list/complexity)
+/datum/chemical_reaction/proc/generate_recipe(list/complexity, list/required_reagents_to_add)
 	//Determine modifier for uneven recipe balance
 	var/modifier = rand(0,100)
 	if(modifier<=60)
@@ -43,6 +43,14 @@
 			modifier = 1
 		if(complexity)
 			add_component(my_modifier = modifier, class = complexity[i])
+		else if (required_reagents_to_add)
+			for(var/chemical_iteration in required_reagents_to_add)
+				if(i == 1)
+					add_component(chemical_iteration, modifier)
+				else
+					add_component(chemical_iteration, 1)
+				LAZYREMOVE(required_reagents_to_add, chemical_iteration)
+				continue
 		else
 			add_component(null, modifier)
 		//make sure the final recipe is not already being used. If it is, start over.
@@ -56,7 +64,15 @@
 	//pick catalyst
 	if(prob(40) || gen_tier >= 4)//chance of requiring a catalyst
 		add_component(null,5,TRUE)
-
+	var/list/indicator_list= list(
+	"CHEM_REACTION_CALM" = CHEM_REACTION_CALM,
+	"CHEM_REACTION_BUBBLING" = CHEM_REACTION_BUBBLING,
+	"CHEM_REACTION_GLOWING" = CHEM_REACTION_GLOWING,
+	"CHEM_REACTION_FIRE" = CHEM_REACTION_FIRE,
+	"CHEM_REACTION_SMOKING" = CHEM_REACTION_SMOKING,
+	"CHEM_REACTION_ENDOTHERMIC" = CHEM_REACTION_ENDOTHERMIC,)
+	var/picked_flag = indicator_list[pick_weight(list("CHEM_REACTION_BUBBLING" = 1,"CHEM_REACTION_FIRE" = 2, "CHEM_REACTION_ENDOTHERMIC" = 1, "CHEM_REACTION_GLOWING" = 1, "CHEM_REACTION_SMOKING" = 2, "CHEM_REACTION_CALM" = 1))]
+	ENABLE_BITFIELD(reaction_type, picked_flag)//chance to enable a random reaction indicator
 	return TRUE
 
 /datum/chemical_reaction/proc/add_component(my_chemid, my_modifier, is_catalyst, tier, class)
@@ -82,50 +98,38 @@
 				if(0)
 					chem_id = pick(GLOB.chemical_gen_classes_list["C"])//If tier is 0, we can add any classed chemical
 				if(1)
-					if(roll<=35)
+					if(roll<=60)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
-					else if(roll<=65)
+					else if (roll<=80)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=85)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else
-						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 				if(2)
-					if(roll<=30)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
-					else if(roll<=55)
+					if(roll<=50)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=70)
+					else if(roll<=75)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else
 						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
 				if(3)
-					if(roll<=10)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C1"])
-					else if(roll<=30)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=50)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
-					else if(roll<=70)
-						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
+					if(roll<=70)
+						chem_id = pick(GLOB.chemical_gen_classes_list[pick("C1", "C2")])
 					else
-						chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
+						chem_id = pick(GLOB.chemical_gen_classes_list["H1"])
 				else
 					if(!required_reagents || is_catalyst)//first component is more likely to be special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
 						if (prob(50))
 							chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
 						else
 							chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
-					else if(roll<=15)
+					else if(roll<=25)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C2"])
-					else if(roll<=40)
+					else if(roll<=45)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C3"])
 					else if(roll<=65)
 						chem_id = pick(GLOB.chemical_gen_classes_list["C4"])
-
 					else
 						chem_id = pick(GLOB.chemical_gen_classes_list["C5"])
-
 		//if we are already using this reagent, try again
 		if(required_reagents && required_reagents.Find(chem_id))
 			if(my_chemid) //If this was a manually set chemid, return FALSE so we don't cause an infinite loop
@@ -184,26 +188,31 @@
 	//Properties
 	if(!no_properties)
 		var/gen_value
-		for(var/i=0;i<gen_tier+1;i++)
-			if(i == 0) //The first property is random to offset the value balance
+		var/properties_buff = rand(3, 4)
+		///do we have a rare property in a low quality paper. In which case every other property will be negative.
+		var/specific_property = "none"
+		for(var/i in 1 to gen_tier+properties_buff)
+			if(i == 1) //The first property is random to offset the value balance
 				if(gen_tier > 2)
-					gen_value = add_property(null,null,0,TRUE) //Give rare property
+					gen_value = add_property(null,null,0,"rare") //Give rare property
+				else if (gen_tier > 1 && prob(40))
+					gen_value = add_property(null,null,0,"rare",TRUE)
+					specific_property = "negative"
 				else
-					gen_value = add_property(null,null,0,FALSE,TRUE)
-			else if(gen_value == gen_tier * 2 - 1) //If we are balanced, don't add any more
+					gen_value = add_property(null,null,0,"none",TRUE)
+			else if(gen_value == gen_tier * 2 + 2) //If we are balanced, don't add any more
 				break
 			else if(gen_tier < 3)
-				gen_value += add_property(0,0, gen_tier - gen_value - 1,FALSE,TRUE) //add property based on our offset from the prefered balance
+				gen_value += add_property(0,0, gen_tier - gen_value - 1,specific_property,TRUE) //add property based on our offset from the prefered balance
 			else
-				gen_value += add_property(0,0, gen_tier - gen_value - 1)
+				gen_value += add_property(0,0, gen_tier - gen_value - 1,specific_property)
 		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
 			add_property()
 
 	//OD ratios
 	overdose = 5
-	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
-		if(prob(50 + 5*gen_tier))//Deviating from 5 gets exponentially more rare, deviation scales with chem level
-			overdose += 5
+	for(var/i=1;i<=rand(max(gen_tier*2, 4),9);i++) //We add 5 units to the overdose per cycle, min 30u, max 60u
+		overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
 		if(prob(20 + 2*gen_tier))
@@ -217,7 +226,7 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, make_rare = FALSE, track_added_properties = FALSE)
+/datum/reagent/proc/add_property(my_property, my_level, value_offset = 0, type_to_add = "none", track_added_properties = FALSE)
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -249,8 +258,8 @@
 
 	var/property
 	var/roll = rand(1,100)
-	if(make_rare)
-		property = pick(GLOB.chemical_properties_list["rare"])
+	if(type_to_add != "none")
+		property = pick(GLOB.chemical_properties_list[type_to_add])
 	//Pick the property by value and roll
 	else if(value_offset > 0) //Balance the value of our chemical
 		property = pick(GLOB.chemical_properties_list["positive"])
@@ -262,14 +271,14 @@
 	else
 		switch(gen_tier)
 			if(1)
-				if(roll<=20)
+				if(roll<=40)
 					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=50)
 					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
 					property = pick(GLOB.chemical_properties_list["positive"])
 			if(2)
-				if(roll<=25)
+				if(roll<=35)
 					property = pick(GLOB.chemical_properties_list["negative"])
 				else if (roll<=45)
 					property = pick(GLOB.chemical_properties_list["neutral"])
@@ -278,14 +287,14 @@
 			if(3)
 				if(roll<=15)
 					property = pick(GLOB.chemical_properties_list["negative"])
-				else if (roll<=40)
+				else if (roll<=25)
 					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
 					property = pick(GLOB.chemical_properties_list["positive"])
 			else
-				if(roll<=15)
+				if(roll<=10)
 					property = pick(GLOB.chemical_properties_list["negative"])
-				else if (roll<=40)
+				else if (roll<=15)
 					property = pick(GLOB.chemical_properties_list["neutral"])
 				else
 					property = pick(GLOB.chemical_properties_list["positive"])
@@ -398,15 +407,16 @@
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
 
-/datum/reagent/proc/generate_assoc_recipe(list/complexity)
+/datum/reagent/proc/generate_assoc_recipe(list/complexity, list/required_reagents_to_add)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated
 	C.id = id
 	C.result = id
 	C.name = name
 	C.gen_tier = gen_tier
-	if(!C.generate_recipe(complexity))
+	if(!C.generate_recipe(complexity, required_reagents_to_add))
 		return //Generating a recipe failed, so return null
 	GLOB.chemical_reactions_list[C.id] = C
+
 	C.add_to_filtered_list()
 	return C
 

@@ -53,7 +53,6 @@
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
-	var/area/area = get_area(src)
 
 /obj/structure/barricade/metal/Initialize(mapload, mob/user)
 	. = ..()

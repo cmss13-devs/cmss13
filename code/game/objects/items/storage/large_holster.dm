@@ -169,7 +169,7 @@
 
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
-	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
+	desc = "A large, old-styled scabbard used to carry a ceremonial sword."
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',

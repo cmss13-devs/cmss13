@@ -3519,6 +3519,7 @@
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("coco", 2)
 	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
+	reagents.add_reagent("bicaridine", 2) //The namesake of the bar.
 
 /obj/item/reagent_container/food/snacks/wrapped/twe_bar
 	name = "ORP oat bisuit"

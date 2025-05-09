@@ -265,11 +265,11 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/twe/royal_marine/medic
-	name = "TWE Royal Marine Commando (Corpsman)"
+	name = "TWE Royal Marine Commando (Medical Technician)"
 	paygrades = list(PAY_SHORT_RMC3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMC MED"
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "Royal Marines Corpsman"
+	assignment = "Royal Marines Medical Technician"
 	rank = JOB_TWE_RMC_MEDIC
 
 	minimap_icon = "rmc_medic"

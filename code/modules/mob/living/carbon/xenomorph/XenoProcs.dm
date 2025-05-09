@@ -463,6 +463,8 @@
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
+		if(istype(O, /obj/effect/alien/resin/design/speed_node) || istype(O, /obj/effect/alien/resin/design/cost_node) || istype(O, /obj/effect/alien/resin/design/construct_node))
+			continue
 		if(check_blockers && istype(O, /obj/effect/build_blocker))
 			var/obj/effect/build_blocker/bb = O
 			if(!silent)

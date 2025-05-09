@@ -103,6 +103,12 @@
 	if(!alien_weeds || alien_weeds.secreting)
 		return SECRETE_RESIN_FAIL
 
+	for(var/obj/effect/alien/resin/design/speed_node/sn in current_turf.contents)
+		wait_time -= ((resin_construct.build_time * caste.build_time_mult) / 2)
+
+	for(var/obj/effect/alien/resin/design/cost_node/cn in current_turf.contents)
+		total_resin_cost -= (total_resin_cost / 2)
+
 	var/obj/warning
 	var/succeeded = TRUE
 	if(resin_construct.build_overlay_icon)
@@ -145,6 +151,9 @@
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
+	if(succeeded)
+		for(var/obj/effect/alien/resin/design/node in current_turf)
+			qdel(node)
 	if(resin_construct.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[resin_construct.build_path], new_resin)
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, PROC_REF(remove_built_structure))

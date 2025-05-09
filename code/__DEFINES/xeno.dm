@@ -377,6 +377,7 @@
 
 // Hivelord strain flags
 #define HIVELORD_RESIN_WHISPERER "Resin Whisperer"
+#define HIVELORD_DESIGNER "Designer"
 
 // Carrier strain flags
 #define CARRIER_EGGSAC "Eggsac"

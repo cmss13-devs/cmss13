@@ -363,6 +363,7 @@
 	health = HEALTH_DOOR_XENO
 	var/close_delay = 100
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 
 	flags_obj = OBJ_ORGANIC
 	layer = DOOR_CLOSED_LAYER

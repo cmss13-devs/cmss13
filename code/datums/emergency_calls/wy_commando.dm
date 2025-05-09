@@ -3,7 +3,7 @@
 /datum/emergency_call/wy_commando
 	name = "Weyland-Yutani Commando (Squad)"
 	mob_max = 6
-	probability = 0
+	probability = 5
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
 	home_base = /datum/lazy_template/ert/weyland_station
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
@@ -30,14 +30,14 @@
 	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Squad Leader!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/commando/leader, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/commando/leader/low_threat, TRUE, TRUE)
 	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
 		smartgunners++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Heavy Gunner!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/commando/gunner, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/commando/gunner/low_threat, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando!"))
-		arm_equipment(mob, /datum/equipment_preset/pmc/commando/standard, TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/commando/standard/low_threat, TRUE, TRUE)
 
 	print_backstory(mob)
 
@@ -62,3 +62,42 @@
 	probability = 0
 	max_smartgunners = 4
 
+/datum/emergency_call/wy_commando/deathsquad
+	name = "Weyland-Yutani Commando (Squad) (!DEATHSQUAD!)"
+	mob_max = 8
+	probability = 0
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
+	home_base = /datum/lazy_template/ert/weyland_station
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
+	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
+
+	max_smartgunners = 2
+
+/datum/emergency_call/wy_commando/deathsquad/New()
+	..()
+	objectives = "Eliminate everyone, then detonate the ship. Damage to Wey-Yu property is tolerable."
+
+/datum/emergency_call/wy_commando/deathsquad/create_member(datum/mind/M, turf/override_spawn_loc)
+	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/mob = new(spawn_loc)
+	M.transfer_to(mob, TRUE)
+
+	if(!leader && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(mob.client, JOB_SQUAD_LEADER, time_required_for_job))
+		leader = mob
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Squad Leader!"))
+		arm_equipment(mob, /datum/equipment_preset/pmc/commando/leader, TRUE, TRUE)
+	else if(smartgunners < max_smartgunners && HAS_FLAG(mob.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(mob.client, JOB_SQUAD_SMARTGUN))
+		smartgunners++
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando Heavy Gunner!"))
+		arm_equipment(mob, /datum/equipment_preset/pmc/commando/gunner, TRUE, TRUE)
+	else
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani Commando!"))
+		arm_equipment(mob, /datum/equipment_preset/pmc/commando/standard, TRUE, TRUE)
+
+	print_backstory(mob)
+
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)

@@ -52,7 +52,7 @@
 /datum/chem_property/negative/toxic/reaction_obj(obj/O, volume, potency = 1)
 	if(istype(O,/obj/effect/alien/weeds/))
 		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.take_damage(25 * potency) // Kills alien weeds on touch
+		alien_weeds.take_damage(15 * potency) // Kills alien weeds on touch
 		return
 	if(istype(O,/obj/effect/glowshroom))
 		qdel(O)

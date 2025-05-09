@@ -918,7 +918,7 @@
 			return
 
 		if(isyautja(human))
-			if(human.check_shields(0, "the pounce", 1))
+			if(human.check_shields(0, "the pounce"))//FOREST THIS NEEDS UPDATING
 				visible_message(SPAN_DANGER("[human] blocks the pounce of [src] with the combistick!"))
 				apply_effect(3, WEAKEN)
 				throwing = FALSE

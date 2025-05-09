@@ -195,6 +195,12 @@
 		return FALSE
 	return ..()
 
+/mob/living/carbon/xenomorph/runner/get_examine_text(mob/user)
+	. = ..()
+	var/datum/behavior_delegate/runner_acider/behavior = behavior_delegate
+	if(istype(behavior) && isxeno(user))
+		. += "it has [SPAN_GREEN(behavior.acid_amount)] acid!"
+
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off
 

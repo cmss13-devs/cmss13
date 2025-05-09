@@ -53,6 +53,11 @@
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
+	var/area/area = get_area(src)
+	if(area.flags_area & AREA_NOSECURECADES)
+		to_chat(src, SPAN_WARNING("[src] does not properly secure on this surface!"))
+		anchored = FALSE
+		return
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()

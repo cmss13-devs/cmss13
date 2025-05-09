@@ -32,7 +32,6 @@
 #define EXPLOSION_FALLOFF_SHAPE_LINEAR   0
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL  1
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF 2
-
 #define EXPLOSION_MAX_POWER 5000
 
 //area flags
@@ -51,6 +50,8 @@
 #define AREA_YAUTJA_GROUNDS (1<<5)
 /// Flags the area as a hunting grounds for the Yautja, sometimes blocking game interaction.
 #define AREA_YAUTJA_HUNTING_GROUNDS (1<<6)
+/// Makes it so barricades can't be anchored and starts unsecured
+#define AREA_NOSECURECADES (1<<1)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

@@ -78,6 +78,7 @@ type Data = {
   blood_amount: number;
   holocard: string | null;
   hugged: string | null;
+  brainslug: string | null;
   ui_mode: number;
   detail_level: number;
   has_unknown_chemicals: BooleanLike;
@@ -141,6 +142,7 @@ const Patient = (props) => {
     clone,
     ui_mode,
     ssd,
+    brainslug,
     hugged,
     detail_level,
     permadead,
@@ -380,6 +382,7 @@ const Misc = (props) => {
     body_temperature,
     pulse,
     implants = 0,
+    brainslug,
     core_fracture,
     lung_ruptured,
     hugged,
@@ -408,7 +411,11 @@ const Misc = (props) => {
         </LabeledList.Item>
         <LabeledList.Item label={'Pulse'}>{pulse}</LabeledList.Item>
       </LabeledList>
-      {implants || hugged || core_fracture || (lung_ruptured && bodyscanner) ? (
+      {implants ||
+      hugged ||
+      core_fracture ||
+      brainslug ||
+      (lung_ruptured && bodyscanner) ? (
         <Divider />
       ) : null}
       {implants && detail_level !== 1 ? (

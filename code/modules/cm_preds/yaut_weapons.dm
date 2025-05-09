@@ -656,6 +656,11 @@
 					user.put_in_inactive_hand(cut_scalp) //Put it in the user's offhand if possible.
 					victim.h_style = "Bald"
 					victim.update_hair() //tear the hair off with the scalp
+					if(user.hunter_data.prey == target)
+						to_chat(src, SPAN_YAUTJABOLD("You have claimed the scalp of [target] as your trophy."))
+						user.emote("roar2")
+						message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.")
+						user.hunter_data.prey = null
 
 		if(FLAY_STAGE_STRIP)
 			user.visible_message(SPAN_DANGER("<B>[user] jabs \his [tool.name] into [victim]'s cuts, prying, cutting, then tearing off large areas of skin. The remainder hangs loosely.</B>"),

@@ -42,7 +42,13 @@
 	. = ..()
 	if (.)
 		return
+	RegisterSignal(target, COMSIG_ITEM_HOLSTER, PROC_REF(holster))
 	retrieval_slot = slot
+
+/datum/element/drop_retrieval/gun/proc/holster(obj/item/weapon/gun/holstered_gun, mob/user)
+	SIGNAL_HANDLER
+	if(holstered_gun.retrieve_to_slot(user, retrieval_slot, FALSE, TRUE))
+		return COMPONENT_ITEM_HOLSTER_CANCELLED
 
 /datum/element/drop_retrieval/gun/dropped(obj/item/weapon/gun/G, mob/user)
 	G.handle_retrieval(user, retrieval_slot)

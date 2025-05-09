@@ -26,7 +26,9 @@
 	idtype = /obj/item/card/id/silver
 	access = list(
 		ACCESS_MARINE_CMO,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_DATABASE_ADMIN,
 		ACCESS_MARINE_MEDBAY,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_SENIOR,
@@ -70,6 +72,7 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = list("doctor")
 	minimap_background = "background_medical"

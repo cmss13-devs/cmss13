@@ -418,3 +418,14 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	max_rounds = 92
 	gun_type = /obj/item/weapon/gun/pistol/m10
 	mag_jam_modifier = MAG_JAM_MOD_PISTOL_CRITICAL //cant handle this shit brap brap brap
+
+//--------------------------------------------------------
+//VP76 magazine
+
+/obj/item/ammo_magazine/pistol/vp76
+	name = "\improper VP76 Magazine"
+	default_ammo = /datum/ammo/bullet/pistol/powerful
+	caliber = "10mm"
+	icon_state = "vp76"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
+	max_rounds = 20

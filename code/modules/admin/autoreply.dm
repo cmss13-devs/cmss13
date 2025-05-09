@@ -78,6 +78,10 @@ ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
 ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp. Staff are unable to handle most whitelist rulebreaks in-game and you are likely to be told to make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
 
+/datum/autoreply/mentor/sea_response
+	title = "H: SEA help"
+	message = "Thanks for the information! A Senior Enlisted Officer is on their way to help out."
+
 /datum/autoreply/mentor/event
 	title = "A: Event in Progress"
 	message = "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
@@ -85,6 +89,10 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
 /datum/autoreply/mentor/changelog
 	title = "C: Changelog"
 	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+
+/datum/autoreply/mentor/timelocks
+	title = "C: Timelocks"
+	message = "Some roles on this server require playtime of some prerequisite roles before they unlock. Each time lock displays what role it needs to be unlocked, either medical or command, and can be unlocked by playing a lower level position in the same department."
 
 /datum/autoreply/mentor/join_server
 	title = "C: Joining the Server"
@@ -139,6 +147,14 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/xeno)
 ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 	message = "This <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
 
+/datum/autoreply/mentor/chemicals
+	title = "H: Basic MedChemicals"
+	message = "Basic medical chemicals can be made with the Weymed Plus vendor along with the chemical dispenser found in medbay. Insert a beaker into the chemical dispenser and follow the recipes outlined on the wiki, adding medicine from the Weymed as necessary. Medicine can be applied via injection, or pill form, most recipes on the wiki are designed for pills. Insert a pill bottle from a box of pill bottles into the chem master 3000, along with the beaker of your completed medicine to make them into pills."
+
+/datum/autoreply/mentor/greenos
+	title = "H: Greeno"
+	message = "There are different variations of xenomorph that research can produce, green xenomorphs or greenos have the capacity for diplomacy and can ally themselves with the USCM! Be careful of announcements about them, as shooting a friendly xenomorph is a foolproof way to make it unfriendly."
+
 /datum/autoreply/mentor/synthkey
 	title = "H: Synthetic Reset Key"
 	message = "Synthetics cannot be restarted with a normal defibrilator and instead require a unique item called the Synthetic Reset Key. This functions the same as a defibrilator but only for synthetics. It can be used by anyone with engineering training and acquired from various squad role vendors. Most synthetics will carry one at all times."
@@ -152,6 +168,10 @@ ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
 	message = "Binoculars allow you to increase distance of your view in direction you are looking. To zoom in, take them into your hand and activate them by pressing \"Page Down\" or \"Z\" (in Hotkey Mode) or clicking them while they are in your hand.\
 Rangefinders allow you to get tile coordinates (longitude and latitude) by lasing it while zoomed in (produces a GREEN laser). Ctrl + Click on any open tile to start lasing. Ctrl + Click on your rangefinders to stop lasing without zooming out. Coordinates can be used by Staff Officers to send supply drops or to perform Orbital Bombardment. You also can use them to call mortar fire if there are engineers with a mortar. \
 Laser Designators have a second mode (produces a RED laser) that allows highlighting targets for Close Air Support performed by dropship pilots. They also have a fixed ID number that is shown on the pilot's weaponry console. Examine the laser designator to check its ID. Red laser must be maintained as long as needed in order for the dropship pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and click \"Toggle Mode\"."
+
+/datum/autoreply/mentor/dogtags
+	title = "H: Dogtags"
+	message = "To remove someone's dogtags, click drag their sprite onto yours to open their inventory, find their dogtags, and click the small icon in the bottom to remove the dogtags, while leaving their ID tags. If the button doesnt exist, that means the dogtags have already been removed. Removed dogtags can be stacked together and placed onto the memorial slab on the Almayer."
 
 /datum/autoreply/mentor/haul
 	title = "X: Haul as Xeno"

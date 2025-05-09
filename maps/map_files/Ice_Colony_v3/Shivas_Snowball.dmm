@@ -207,11 +207,6 @@
 /obj/item/explosive/plastic,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
-"aaQ" = (
-/obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/sof,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/right_spiders)
 "aaR" = (
 /obj/effect/spider/stickyweb,
 /obj/item/clothing/under/marine/veteran/marsoc,
@@ -54348,7 +54343,7 @@ ecj
 aaz
 gkv
 ecj
-aaQ
+imk
 aaR
 ecj
 ecj

@@ -54,20 +54,26 @@
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 	var/area/area = get_area(src)
-	if(area.flags_area & AREA_NOSECURECADES)
-		for(var/obj/structure/barricade/metal/M)
-			anchored = FALSE
-			M.build_state = BARRICADE_BSTATE_MOVABLE
-			to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
-		for(var/obj/structure/barricade/plasteel/P)
-			anchored = FALSE
-			P.build_state = BARRICADE_BSTATE_MOVABLE
-			to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
-		for(var/obj/structure/barricade/deployable/D)
-			anchored = FALSE
-			to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
-		for(var/obj/structure/barricade/sandbags/S)
-			to_chat(user, SPAN_WARNING("[src] properly secures itself on this surface."))
+
+/obj/structure/barricade/metal/Initialize(mapload, mob/user)
+    . = ..()
+    if(area.flags_area & AREA_NOSECURECADES && !mapload)
+        anchored = FALSE
+        build_state = BARRICADE_BSTATE_MOVABLE
+        to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
+/obj/structure/barricade/plasteel/Initialize(mapload, mob/user)
+    . = ..()
+    if(area.flags_area & AREA_NOSECURECADES && !mapload)
+        anchored = FALSE
+        build_state = BARRICADE_BSTATE_MOVABLE
+        to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
+/obj/structure/barricade/deployable/Initialize(mapload, mob/user)
+    . = ..()
+    if(area.flags_area & AREA_NOSECURECADES && !mapload)
+        anchored = FALSE
+        to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()

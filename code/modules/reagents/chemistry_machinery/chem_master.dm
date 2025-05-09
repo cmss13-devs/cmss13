@@ -184,6 +184,60 @@
 		return
 
 	switch(action)
+		if("set_quick_access")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			if(!preset_name)
+				return TRUE
+
+			var/list/preset_data = user.client.prefs.get_chem_preset(preset_name)
+			if(!preset_data)
+				return TRUE
+
+			var/slot = params["slot"]
+			if(slot == null)
+				// Store label before removing from quick access
+				var/stored_label = preset_data["quick_access_label"]
+
+				preset_data -= "quick_access_slot"
+				preset_data -= "quick_access_label"
+
+				// Store the label in a separate key so it persists
+				if(stored_label)
+					preset_data["stored_quick_access_label"] = stored_label
+			else
+				preset_data["quick_access_slot"] = slot
+
+				// Restore previous label if it exists
+				if(!preset_data["quick_access_label"])
+					if(preset_data["stored_quick_access_label"])
+						preset_data["quick_access_label"] = preset_data["stored_quick_access_label"]
+						preset_data -= "stored_quick_access_label"
+					else if(preset_data["bottle_label"]) // Use bottle label if no stored label
+						preset_data["quick_access_label"] = preset_data["bottle_label"]
+
+			user.client.prefs.save_chem_preset(preset_name, preset_data)
+			return TRUE
+
+		if("set_quick_access_label")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			if(!preset_name)
+				return TRUE
+
+			var/list/preset_data = user.client.prefs.get_chem_preset(preset_name)
+			if(!preset_data || preset_data["quick_access_slot"] == null)
+				return TRUE
+
+			var/label = copytext(reject_bad_text(params["label"] || ""), 1, 4)
+			preset_data["quick_access_label"] = label
+			user.client.prefs.save_chem_preset(preset_name, preset_data)
+			return TRUE
+
 		if("apply_preset")
 			if(!user.client?.prefs)
 				return TRUE
@@ -204,12 +258,24 @@
 						bottle.icon_state = bottle.base_icon + bottle.possible_colors[picked_color]
 
 			if(preset_data["bottle_label"] && length(loaded_pill_bottles_to_fill) > 0)
-				var/label = preset_data["bottle_label"]
+				var/label = copytext(preset_data["bottle_label"], 1, 4)
+				var/use_full_name = preset_data["use_preset_name_as_label"] ? TRUE : FALSE
+
 				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
-					bottle.AddComponent(/datum/component/label, label)
-					if(length(label) < 4)
+					// If we're using the preset name as a full label, we handle it differently
+					if(use_full_name)
+						// First set the short maptext label for the icon display
 						bottle.maptext_label = label
 						bottle.update_icon()
+
+						// Then use the full preset name with the label component
+						bottle.AddComponent(/datum/component/label, preset_name)
+					else
+						// Standard label behavior
+						bottle.AddComponent(/datum/component/label, label)
+						if(length(label) < 4)
+							bottle.maptext_label = label
+							bottle.update_icon()
 
 			if(preset_data["pill_color"])
 				pillsprite = preset_data["pill_color"]
@@ -226,9 +292,17 @@
 			var/original_name = params["original_name"] // Original name for editing
 			var/list/preset_data = list(
 				"bottle_color" = params["bottle_color"],
-				"bottle_label" = params["bottle_label"],
-				"pill_color" = params["pill_color"]
+				"bottle_label" = copytext(reject_bad_text(params["bottle_label"] || ""), 1, 4),
+				"pill_color" = params["pill_color"],
+				"use_preset_name_as_label" = params["use_preset_name_as_label"]
 			)
+
+			// Add quick access data if provided
+			if(params["quick_access_slot"] != null)
+				preset_data["quick_access_slot"] = params["quick_access_slot"]
+
+				if(params["quick_access_label"])
+					preset_data["quick_access_label"] = copytext(reject_bad_text(params["quick_access_label"]), 1, 4)
 
 			// Get current presets to determine order
 			var/list/current_presets = user.client.prefs.get_all_chem_presets()
@@ -240,14 +314,19 @@
 				if(preset["order"] > max_order)
 					max_order = preset["order"]
 
-			// If editing, keep the original order
+			// If editing, keep the original order and quick access data
 			if(original_name && current_presets[original_name])
 				preset_data["order"] = current_presets[original_name]["order"]
-				// Only delete if name changed
+
+				// Preserve quick access data when renaming
+				if(current_presets[original_name]["quick_access_slot"] != null && params["quick_access_slot"] == null)
+					preset_data["quick_access_slot"] = current_presets[original_name]["quick_access_slot"]
+					if(current_presets[original_name]["quick_access_label"])
+						preset_data["quick_access_label"] = current_presets[original_name]["quick_access_label"]
+
 				if(original_name != preset_name)
 					user.client.prefs.delete_chem_preset(original_name)
 			else
-				// New preset gets the next order number
 				preset_data["order"] = max_order + 1
 
 			user.client.prefs.save_chem_preset(preset_name, preset_data)
@@ -325,7 +404,7 @@
 			if(length(loaded_pill_bottles) == 0)
 				return
 
-			var/label = copytext(reject_bad_text(params["text"]), 1, MAX_NAME_LEN)
+			var/label = copytext(reject_bad_text(params["text"]), 1, 4)
 			if(!label)
 				return
 

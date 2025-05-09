@@ -140,7 +140,7 @@
 /obj/item/clipboard{
 	pixel_x = -6
 	},
-/obj/item/tool/pen/blue/clicky{
+/obj/item/tool/pen/blue/weyyu{
 	pixel_x = 9
 	},
 /obj/item/paper_bin{

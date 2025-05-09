@@ -877,7 +877,7 @@
 /obj/item/paper_bin{
 	pixel_y = 5
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/corpsespawner/colonist/burst,
@@ -1674,7 +1674,7 @@
 /turf/open/floor/prison/blue/west,
 /area/lv522/indoors/a_block/hallway)
 "aJr" = (
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/weyyu,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor)
 "aJS" = (
@@ -3184,7 +3184,7 @@
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/obj/item/tool/pen/red/clicky,
+/obj/item/tool/pen/red/weyyu,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/c_block/mining)
 "bIr" = (
@@ -3679,7 +3679,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/garage)
 "bVF" = (
-/obj/item/tool/pen/red/clicky,
+/obj/item/tool/pen/red/weyyu,
 /turf/open/floor/corsat,
 /area/lv522/atmos/east_reactor)
 "bVG" = (
@@ -3731,7 +3731,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/item/storage/fancy/cigar/matchbook/exec_select{
 	pixel_x = -9;
 	pixel_y = 9
@@ -6122,7 +6122,7 @@
 	pixel_x = 6;
 	pixel_y = 8
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/prison/blue,
 /area/lv522/indoors/a_block/admin)
 "djM" = (
@@ -6714,7 +6714,7 @@
 "dzs" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper,
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
 "dzv" = (
@@ -6849,7 +6849,7 @@
 	pixel_x = -4;
 	pixel_y = 7
 	},
-/obj/item/tool/pen/red/clicky,
+/obj/item/tool/pen/red/weyyu,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/c_block/mining)
 "dDq" = (
@@ -10409,7 +10409,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/greenfull/east,
@@ -10709,7 +10709,7 @@
 	pixel_x = 6;
 	pixel_y = 7
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/item/device/flashlight/lamp{
 	pixel_x = -9;
 	pixel_y = 10
@@ -11431,7 +11431,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/hallway)
 "ggS" = (
@@ -13374,7 +13374,7 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/item/tool/pen/red/clicky{
+/obj/item/tool/pen/red/weyyu{
 	pixel_x = -6
 	},
 /turf/open/floor/prison/blue_plate/north,
@@ -14695,7 +14695,7 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/reactor_garage)
 "hYn" = (
-/obj/item/tool/pen/blue/clicky{
+/obj/item/tool/pen/blue/weyyu{
 	pixel_x = 6
 	},
 /obj/effect/landmark/objective_landmark/medium,
@@ -15185,7 +15185,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
@@ -15733,7 +15733,7 @@
 /area/lv522/indoors/a_block/kitchen/glass)
 "iCS" = (
 /obj/item/stack/sheet/metal,
-/obj/item/tool/pen/blue/clicky{
+/obj/item/tool/pen/blue/weyyu{
 	pixel_x = 6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -18022,7 +18022,7 @@
 /area/lv522/landing_zone_2)
 "jMZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/pen/blue/clicky{
+/obj/item/tool/pen/blue/weyyu{
 	pixel_x = -8
 	},
 /obj/item/paper_bin{
@@ -19708,7 +19708,7 @@
 /area/lv522/outdoors/nw_rockies)
 "kBU" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/effect/landmark/objective_landmark/close,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrownfull2,
@@ -20048,7 +20048,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -21902,7 +21902,7 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
@@ -21950,7 +21950,7 @@
 /obj/item/paper_bin{
 	pixel_y = 5
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
 "lLL" = (
@@ -22889,7 +22889,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
 "mmj" = (
@@ -28826,7 +28826,7 @@
 "pqB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/newspaper,
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/casino)
 "pqI" = (
@@ -31959,7 +31959,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/item/device/flashlight/lamp{
 	pixel_x = -9;
 	pixel_y = 10
@@ -36605,7 +36605,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "tew" = (
@@ -37027,8 +37027,8 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 8
 	},
-/obj/item/tool/pen/clicky,
-/obj/item/tool/pen/red/clicky{
+/obj/item/tool/pen/weyyu,
+/obj/item/tool/pen/red/weyyu{
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -43570,7 +43570,7 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 8
 	},
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/weyyu,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo)
 "wvd" = (
@@ -46237,7 +46237,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/effect/landmark/objective_landmark/science,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
@@ -46369,7 +46369,7 @@
 	pixel_y = 7
 	},
 /obj/item/trash/wy_chips_pepper,
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
 "xSQ" = (
@@ -46633,7 +46633,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/hallway)
@@ -47156,7 +47156,7 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/item/device/flashlight/lamp{
 	pixel_x = -8;
 	pixel_y = 12

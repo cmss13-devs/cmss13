@@ -396,7 +396,7 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 8
 	},
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/weyyu,
 /obj/item/device/flashlight/lamp{
 	pixel_x = -7;
 	pixel_y = 15
@@ -527,7 +527,7 @@
 /area/lv624/lazarus/corporate_dome)
 "zz" = (
 /obj/structure/window_frame/colony/reinforced,
-/obj/item/tool/pen/red/clicky,
+/obj/item/tool/pen/red/weyyu,
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "Aj" = (

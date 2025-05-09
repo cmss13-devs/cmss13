@@ -49,7 +49,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper_bin/wy,
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/weyyu,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
 "aj" = (
@@ -1333,15 +1333,15 @@
 /area/adminlevel/ert_station/uscm_station)
 "pi" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/pen/blue/clicky{
+/obj/item/tool/pen/blue/weyyu{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/tool/pen/red/clicky{
+/obj/item/tool/pen/red/weyyu{
 	pixel_x = -1;
 	pixel_y = 1
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = 1;
 	pixel_y = -1
 	},
@@ -2951,8 +2951,8 @@
 "HK" = (
 /obj/item/paper_bin/wy,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/tool/pen/clicky,
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/weyyu,
+/obj/item/tool/pen/weyyu,
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},

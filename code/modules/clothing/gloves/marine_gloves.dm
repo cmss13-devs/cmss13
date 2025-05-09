@@ -54,6 +54,11 @@
 	name = "marine black combat gloves"
 	adopts_squad_color = FALSE
 
+/obj/item/clothing/gloves/marine/army
+	name = "army combat gloves"
+	desc = "Standard issue army tactical gloves. It reads: 'knit by Army Widows Association'."
+	adopts_squad_color = FALSE
+
 /obj/item/clothing/gloves/marine/brown
 	name = "marine brown combat gloves"
 	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These are brown instead of the classic black."

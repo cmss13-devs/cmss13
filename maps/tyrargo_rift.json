@@ -1,0 +1,55 @@
+{
+    "map_name": "Tyrargo Rift",
+    "map_path": "map_files/Tyrargo_Rift",
+    "map_file": "Tyrargo_Rift.dmm",
+    "webmap_url": "LV624",
+
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/army/standard"
+    ],
+	"synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/army"
+    ],
+	"CO_survivor_types": [
+        "/datum/equipment_preset/survivor/army/co"
+    ],
+    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "announce_text": "###SHIPNAME### this is Brigadier General Hathaway onboard the USS Victory. Time is limited and we’re in the thick of it, so here is the situation.\n\nThis planet is under siege by the xenomorphs, there are hot spots everywhere and we can’t help everyone. 1st Battalion of the US Army 1st Air Cavalry are pinned down in the city of Tyrargo Rift, they are held up in the city Museum at a civilian evacuation site, thousands of lives are at stake.\n\nYour orders are to take orbit around the city and land your forces to the west. You’ll approach the city and secure the area to facilitate the arrival of the 32nd armour division who will break the siege.\n\nIn 24 hours those thousands of people will become thousands of bugs. Marines lead the way, get it done Falling Falcons. Good luck, and good hunting.",
+    "survivor_message": "You are a US Army trooper, 1st Battalion of the 1st Air Cavalry. What began as a training exercise on this planet turned into a nightmare, the unexpected arrival of a massive xenomorph hive has turned this world into a warzone. You and your battalion have been tasked to defend the city of Tyrargo Rift to give time for the tens of thousands of civilians to be evacuated to a safe zone. It's been two weeks since the siege of the city began. The last few thousand cvilians are held up at the museum evacuation site. You and your squad have been holding this trench line by yourselves for the last week, but your ammo is almost gone and the bugs are making the largest push soon. It's time to prepare for the final fight.",
+    "monkey_types": [
+        "farwa",
+        "neaera",
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+
+    ],
+    "nightmare_path": "maps/Nightmare/maps/tyrargo_rift/",
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 70
+    },
+    "camouflage": "jungle",
+    "gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

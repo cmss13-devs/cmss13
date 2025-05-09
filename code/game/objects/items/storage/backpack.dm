@@ -537,12 +537,16 @@
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
-	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."
+	desc = "A heavy-duty satchel carried by some USCM marines and support personnel."
 	icon_state = "marinesatch"
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
 	xeno_types = null
+
+/obj/item/storage/backpack/marine/satchel/army
+	name = "\improper US Army satchel"
+	desc = "A heavy-duty satchel carried by some US Army soldiers and support personnel."
 
 /obj/item/storage/backpack/marine/satchel/big //wacky squad marine loadout item, its the IO backpack.
 	name = "\improper USCM logistics IMP backpack"
@@ -551,6 +555,9 @@
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 21 //backpack size
+
+/obj/item/storage/backpack/marine/satchel/big/army
+	name = "\improper US Army logistics IMP backpack"
 
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM corpsman satchel"

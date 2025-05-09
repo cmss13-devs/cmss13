@@ -237,10 +237,20 @@
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
+"aN" = (
+/obj/item/stack/sheet/wood,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aO" = (
 /obj/item/prop/alien/hugger,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aP" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_hydro)
 "aQ" = (
 /obj/structure/machinery/light{
@@ -1113,6 +1123,9 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/purification)
 "zd" = (
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -1
+	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_hydro)
 "zj" = (
@@ -1281,6 +1294,14 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "DA" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_x = 5;
+	pixel_y = -6
+	},
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_hydro)
 "DF" = (
@@ -1725,6 +1746,9 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "Sv" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/valley_hydro)
 "Sz" = (
@@ -2755,8 +2779,8 @@ BR
 Hu
 HJ
 Sv
-IZ
-IZ
+aP
+aN
 IZ
 Zo
 "}

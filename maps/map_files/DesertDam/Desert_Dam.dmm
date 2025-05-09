@@ -252,8 +252,9 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 2.8
 	},
-/obj/structure/platform/metal/hybrisa/metalplatform1,
 /obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence)
 "aaE" = (
@@ -2633,6 +2634,16 @@
 	},
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/administration/upper_hallway)
+"aii" = (
+/obj/item/stack/sheet/wood,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aij" = (
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -1
+	},
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aik" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 6
@@ -6624,6 +6635,12 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/office)
+"avs" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_hydro)
 "avt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9800,6 +9817,17 @@
 	},
 /turf/open/floor/coagulation/icon0_5,
 /area/desert_dam/exterior/valley/valley_hydro)
+"aES" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aET" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -9864,6 +9892,7 @@
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "aFb" = (
 /obj/structure/stairs/multiz/down,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/rock)
 "aFc" = (
@@ -9875,6 +9904,7 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "aFe" = (
@@ -10328,6 +10358,12 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/breakroom)
+"aGM" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/desert/dirt/desert_transition_edge1/northeast,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aGN" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/lady_finger{
@@ -11246,6 +11282,27 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/building/administration/upper_hallway)
+"aJx" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aJy" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -2;
+	pixel_y = 15
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aJz" = (
 /turf/open/floor/prison/bluecorner,
 /area/desert_dam/building/administration/panic_room)
@@ -12252,9 +12309,36 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
+"aME" = (
+/obj/structure/largecrate/random/case/small{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/item/tool/warning_cone,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aMF" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "aMG" = (
 /turf/closed/wall,
 /area/desert_dam/building/substation/northwest)
+"aMH" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 4
+	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"aMI" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open_space,
+/area/desert_dam/building/medical/stairwell/upper)
+"aMJ" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/closed/wall/r_wall,
+/area/desert_dam/building/medical/stairwell/upper_north)
 "aMO" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/shore_edge1/east,
@@ -15168,6 +15252,7 @@
 	pixel_x = -9;
 	pixel_y = 17
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/northwest,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "bTN" = (
@@ -16402,6 +16487,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "cvn" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/northeast,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "cvs" = (
@@ -18250,6 +18336,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/interior/caves/temple)
 "dgi" = (
@@ -26451,6 +26538,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "gna" = (
@@ -35821,6 +35909,7 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/east,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "jQJ" = (
@@ -43870,6 +43959,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/interior/caves/temple)
 "ncQ" = (
@@ -45464,6 +45554,7 @@
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
 "nIU" = (
 /obj/structure/largecrate/random/barrel/black,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/northeast,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "nIW" = (
@@ -54503,6 +54594,7 @@
 /area/desert_dam/building/medical/upper_hallway)
 "raB" = (
 /obj/structure/closet/crate/miningcar,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "raG" = (
@@ -55984,6 +56076,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/water_treatment_one/purification)
 "rEL" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "rES" = (
@@ -58965,6 +59058,7 @@
 	pixel_y = 17;
 	pixel_x = -10
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "sLz" = (
@@ -61027,6 +61121,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "tDK" = (
@@ -68646,6 +68741,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/dirt/dirt2,
 /area/desert_dam/interior/caves/temple)
 "wzy" = (
@@ -71172,6 +71268,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "xCl" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "xCn" = (
@@ -142345,7 +142442,7 @@ jIw
 ueK
 epu
 sLn
-wFe
+aMH
 uqE
 uqE
 uqE
@@ -142578,7 +142675,7 @@ vpU
 xnJ
 pks
 nFP
-fSc
+aMF
 aET
 hor
 hor
@@ -147726,9 +147823,9 @@ bQG
 bQG
 bQG
 fSc
-fSc
-fSc
-fSc
+aMF
+aMF
+aMF
 cvn
 gFy
 aDl
@@ -153191,7 +153288,7 @@ uve
 vWq
 rBH
 gib
-iIp
+aJx
 iIp
 tTb
 xqD
@@ -153425,7 +153522,7 @@ xnU
 vWq
 rBH
 gib
-iIp
+aJy
 iIp
 tTb
 xqD
@@ -153659,7 +153756,7 @@ uve
 vWq
 rBH
 gib
-iIp
+aME
 iIp
 tTb
 xqD
@@ -156258,8 +156355,8 @@ fiC
 sLb
 bZs
 uXF
-hqS
-lhK
+aES
+aij
 qaR
 qaR
 qaR
@@ -156492,9 +156589,9 @@ iKY
 gOW
 qBu
 hyB
-pdo
-qme
-qme
+aGM
+avs
+aii
 qme
 qaR
 qaR
@@ -228943,9 +229040,9 @@ ipW
 afg
 rdS
 xOY
-nrV
-nrV
-nrV
+aMJ
+aMJ
+aMJ
 nrV
 oga
 oga
@@ -231313,7 +231410,7 @@ kJR
 pkj
 rAc
 qMT
-qMT
+aMI
 rAc
 vpq
 awO
@@ -231547,7 +231644,7 @@ kJR
 qsU
 rAc
 qMT
-qMT
+aMI
 rAc
 vpq
 awO

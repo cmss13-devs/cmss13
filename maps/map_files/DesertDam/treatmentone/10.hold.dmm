@@ -217,10 +217,20 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
+"aK" = (
+/obj/item/stack/sheet/wood,
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aL" = (
 /obj/structure/flora/pottedplant,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/lobby)
+"aM" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/desert/dirt/desert_transition_edge1/east,
+/area/desert_dam/exterior/valley/valley_hydro)
 "aO" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/dirt,
@@ -554,6 +564,14 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/garage)
 "mm" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_x = 5;
+	pixel_y = -6
+	},
 /turf/open/desert/dirt/desert_transition_corner1,
 /area/desert_dam/exterior/valley/valley_hydro)
 "mo" = (
@@ -1055,6 +1073,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_hydro)
 "CF" = (
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -1
+	},
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_hydro)
 "CI" = (
@@ -1640,6 +1661,9 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/lobby)
 "VY" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/valley_hydro)
 "Wk" = (
@@ -2544,8 +2568,8 @@ it
 IB
 Nz
 VY
-av
-av
+aM
+aK
 av
 Ec
 "}

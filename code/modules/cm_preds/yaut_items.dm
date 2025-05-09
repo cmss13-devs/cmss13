@@ -1260,7 +1260,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/yautja.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = null
-	slot = ACCESSORY_SLOT_TROPHY
+	worn_accessory_slot = ACCESSORY_SLOT_TROPHY
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 	var/loosejaw = FALSE

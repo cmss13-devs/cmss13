@@ -55,9 +55,12 @@
 	starting_maxhealth = maxhealth
 	var/area/area = get_area(src)
 	if(area.flags_area & AREA_NOSECURECADES)
-		to_chat(src, SPAN_WARNING("[src] does not properly secure on this surface!"))
 		anchored = FALSE
-		return
+		to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+		for(var/obj/structure/barricade/metal/M)
+			M.build_state = BARRICADE_BSTATE_MOVABLE
+		for(var/obj/structure/barricade/plasteel/P)
+			P.build_state = BARRICADE_BSTATE_MOVABLE
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()

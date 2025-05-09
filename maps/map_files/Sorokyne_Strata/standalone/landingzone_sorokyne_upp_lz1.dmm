@@ -1,37 +1,566 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -15;
+	pixel_y = -3;
+	layer = 4.11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ab" = (
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/deep_jungle/north)
+"ac" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -22;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ad" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/strata/exterior/deep_jungle/north)
+"ae" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_y = -10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"af" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -12;
+	pixel_y = -5
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ag" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -1;
+	pixel_y = -3;
+	dir = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ah" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ai" = (
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/exterior/deep_jungle/north)
+"aj" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -17;
+	pixel_y = -14
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ak" = (
+/turf/open/gm/dirt/brown/variant_5,
+/area/strata/exterior/deep_jungle/north)
+"al" = (
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/strata/exterior/deep_jungle/north)
+"am" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -14;
+	pixel_y = -14
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"an" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -22;
+	pixel_y = -9
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ao" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -13;
+	pixel_y = 7;
+	layer = 4.11
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ap" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"aq" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -25;
+	pixel_y = 23
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ar" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -17;
+	pixel_y = -2;
+	layer = 4.11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"as" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -15;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"at" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -11;
+	pixel_y = -8;
+	layer = 4.11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"au" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "pointybush_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"av" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/deep_jungle/north)
+"aw" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
 "ax" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
-"aX" = (
-/obj/structure/barricade/handrail/strata{
+/area/strata/exterior/deep_jungle/north)
+"ay" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"az" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aA" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"aB" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
+"aC" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/research)
+"aD" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = 5
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aE" = (
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/trash/upp_mre,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aF" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aG" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aH" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"aI" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 16
+	},
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aJ" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"aK" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aL" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aM" = (
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/interior/research)
+"aN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"aO" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -17;
+	pixel_y = -6
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"aP" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aQ" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aR" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"aS" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"aT" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"aU" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/interior/research)
+"aV" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -17;
+	pixel_y = -4;
+	layer = 4.11
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"aW" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680";
+	icon_state = "pipe-c";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
 "aY" = (
 /obj/docking_port/stationary/marine_dropship/upp{
 	name = "Research Base Landing Zone"
 	},
 /turf/open/floor/plating,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
+"aZ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"ba" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"bb" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"bc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"bd" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"be" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow_red";
+	dir = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bi" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"bj" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bk" = (
+/obj/structure/largecrate/random/barrel/brown,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bm" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"bn" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bp" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bq" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"br" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bs" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
 "bt" = (
 /obj/structure/barricade/plasteel/wired,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
+"bu" = (
+/obj/structure/largecrate/random/barrel/brown,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow_red"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bw" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"bx" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"by" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"bz" = (
+/obj/item/storage/box/mre/upp{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"bA" = (
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
 "bB" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
+"bC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bE" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bF" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
 "bG" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/tool/stamp,
 /obj/item/paper_bin,
 /obj/item/device/megaphone,
@@ -39,18 +568,164 @@
 	dir = 4
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
+"bH" = (
+/obj/item/storage/box/mre/upp{
+	pixel_x = 3;
+	pixel_y = -8
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"bI" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bJ" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bK" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bL" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"bM" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -2;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bO" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -17;
+	pixel_y = -4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bP" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bQ" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bR" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bS" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
 "bT" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "bU" = (
 /turf/open/asphalt/cement/cement14,
-/area/strata/ug/interior/jungle/structures/research)
-"cf" = (
-/obj/structure/surface/table/reinforced/prison,
+/area/strata/interior/research)
+"bV" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680";
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"bW" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bX" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bY" = (
+/obj/structure/sign/banners/upp_flag{
+	pixel_y = 31
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_magazine/rifle/type71{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bZ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/stack/repairable/gunlube{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"ca" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
+"cb" = (
+/obj/structure/prop/hybrisa/misc/urinal/dark,
+/turf/closed/wall/strata_outpost,
+/area/strata/interior/research)
+"cc" = (
+/obj/structure/machinery/vending/coffee,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"cf" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
 "ch" = (
 /obj/structure/machinery/telecomms/relay/preset/tower/all{
 	pixel_x = 11;
@@ -58,25 +733,35 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/tcomms,
-/area/event/underground/dynamic/lit)
+/area/strata/interior/research)
 "cU" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "cY" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/storage/box/masks,
 /obj/item/storage/box/masks,
+/obj/structure/sign/banners/upp_flag{
+	pixel_y = 31
+	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "dg" = (
-/obj/structure/reagent_dispensers/watertank,
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "dw" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -93,19 +778,20 @@
 	dir = 4
 	},
 /turf/open/floor/strata/red2,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "dC" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/structure/disposalpipe/segment{
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
 "dF" = (
 /turf/closed/wall/strata_ice/jungle,
-/area/strata/ug/interior)
+/area/strata/interior/out_of_bounds)
 "dT" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "eg" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -114,48 +800,43 @@
 	dir = 4
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
-"ej" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ex" = (
-/obj/structure/largecrate/random/barrel/green,
+/obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "eD" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -11
-	},
 /obj/structure/mirror{
-	pixel_x = -29
+	pixel_y = 34;
+	pixel_x = -1
 	},
-/turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/structure/sink{
+	pixel_y = 23
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
 "eH" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "eS" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "fe" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "fk" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/weapon/gun/pistol/t73,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "fv" = (
 /obj/structure/toilet{
 	dir = 8
@@ -163,35 +844,40 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
 "fD" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
 	},
 /turf/closed/wall/strata_ice/jungle,
-/area/strata/ug/interior)
+/area/strata/interior/out_of_bounds)
 "fF" = (
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "fG" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "fZ" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirt,
-/area/strata/ug/interior/jungle/structures/research/south)
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
 "ga" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "gc" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/phone{
 	pixel_x = 8;
 	pixel_y = 6
@@ -199,56 +885,60 @@
 /obj/item/tool/kitchen/utensil/pfork,
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "gd" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "ge" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
+	color = "#858680";
+	icon_state = "pipe-c";
+	dir = 8
 	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
-"gj" = (
-/turf/open/auto_turf/snow/brown_base/layer2,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
 "gr" = (
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
 "gQ" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
 /turf/open/floor/strata/fake_wood,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "hx" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
 	},
 /turf/open/asphalt/cement/cement9,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "hC" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "hS" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "hT" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -257,117 +947,136 @@
 	dir = 8
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ig" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/computer/communications,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
 "iq" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/machinery/vending/snack{
+	pixel_x = 2
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 33;
+	pixel_x = -6
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 37;
+	pixel_x = 5
+	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "it" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "sunnybush_1"
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "iE" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "iK" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "iM" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "iN" = (
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "jn" = (
 /obj/effect/spawner/random/tool,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ju" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	req_one_access = null
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "jI" = (
 /turf/open/floor/plating,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "jR" = (
 /obj/structure/largecrate/random,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ka" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = -1;
+	pixel_y = 5
+	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "kc" = (
 /obj/item/storage/firstaid/adv,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "kd" = (
 /obj/structure/machinery/floodlight/landing/floor,
 /turf/open/floor/plating,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ky" = (
 /obj/structure/mirror,
 /turf/closed/wall/strata_outpost,
-/area/strata/ug/interior/jungle/structures/research)
-"kB" = (
-/obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "kI" = (
 /obj/structure/machinery/light,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "li" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "lm" = (
 /turf/closed/wall/strata_outpost,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ly" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "lF" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "lS" = (
 /obj/structure/bookcase,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "lY" = (
 /obj/structure/machinery/power/monitor{
 	name = "Main Power Grid Monitoring"
 	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "me" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -384,12 +1093,14 @@
 	dir = 4
 	},
 /turf/open/floor/strata/red2,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "mf" = (
-/obj/structure/surface/rack,
-/obj/item/storage/box/handcuffs,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "mi" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
@@ -398,169 +1109,146 @@
 	dir = 1
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "mx" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/storage/box/ids,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
 "mF" = (
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "mV" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
-"nb" = (
-/turf/open/auto_turf/snow/brown_base/layer1,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/item/stack/repairable/gunkit{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
 "nl" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
-	dir = 8;
-	req_one_access = null
+	dir = 8
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "nt" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "oj" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "om" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "oz" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "oJ" = (
 /obj/structure/platform/metal/strata/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "oL" = (
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "oS" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "oV" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "pf" = (
 /obj/structure/largecrate/random/case/double,
-/obj/structure/sign/flag/upp{
-	pixel_y = 28;
-	layer = 2.7
-	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "pl" = (
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "pA" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
 	},
 /turf/open/asphalt/cement/cement2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "pN" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "pointybush_1"
-	},
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
 	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
 "qm" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "qx" = (
 /turf/open/asphalt/cement/cement12,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "qN" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
-"rf" = (
-/obj/structure/window/reinforced/tinted,
-/obj/item/stool,
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
-"ro" = (
-/obj/structure/surface/rack,
-/obj/item/storage/box/attachments,
-/obj/item/storage/box/attachments,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
-"rq" = (
-/obj/structure/filingcabinet,
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/exterior/deep_jungle/north)
 "rs" = (
 /obj/structure/barricade/metal/wired,
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "rS" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/strata/multi_tiles/west,
-/area/strata/ug/interior/jungle/structures/research)
-"rW" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "sf" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/computer/cameras,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
 "sk" = (
-/obj/structure/surface/rack,
-/obj/item/storage/box/explosive_mines,
-/obj/item/storage/box/explosive_mines,
+/obj/structure/reagent_dispensers/fueltank/spacecraft,
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "sy" = (
 /obj/structure/closet/fireaxecabinet,
 /turf/closed/wall/strata_outpost,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "sG" = (
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 11
 	},
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "tc" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
@@ -569,21 +1257,28 @@
 	dir = 1
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "tq" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/ug/interior)
+/area/strata/exterior/deep_jungle/north)
 "tB" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "tD" = (
 /obj/structure/machinery/light/small,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "tK" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/paper_bin{
 	pixel_y = 7;
 	pixel_x = -7
@@ -593,41 +1288,40 @@
 	pixel_y = -2
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ud" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "uq" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "pointybush_1"
+	icon_state = "pointybush_1";
+	pixel_x = -4;
+	pixel_y = -5
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "vn" = (
 /obj/structure/bedsheetbin,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "vz" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
-"vT" = (
-/obj/structure/surface/rack,
-/obj/item/storage/box/explosive_mines,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "wi" = (
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ww" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "wB" = (
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "wL" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -636,48 +1330,53 @@
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "wM" = (
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "wP" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	icon_state = "p_stair_sn_full_cap"
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "wY" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "xo" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "xL" = (
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "xO" = (
 /turf/closed/wall/wood,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/interior/wooden_ruins)
 "xU" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "xY" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/faxmachine{
 	target_department = "UPP High Command";
 	name = "UPP Fax Machine";
@@ -685,107 +1384,152 @@
 	network = "UPP Encrypted Network"
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "yp" = (
 /turf/open/asphalt/cement/cement15,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ys" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "yu" = (
 /obj/structure/bed/chair/office/light,
 /turf/open/floor/strata/fake_wood,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "yF" = (
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "yP" = (
 /turf/open/floor/strata/fake_wood,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zc" = (
-/obj/structure/reagent_dispensers,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zl" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zm" = (
-/obj/structure/sign/flag/upp{
-	dir = 1;
-	pixel_y = 26;
-	pixel_x = -1
+/obj/structure/sign/banners/upp_flag{
+	pixel_y = 31;
+	pixel_x = -16
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/type71/carbine{
+	pixel_y = 7
 	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zt" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/strata/multi_tiles/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zu" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
-"zw" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zB" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/spacecash/c500,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
+	pixel_x = -8;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/rice{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/rice{
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/vegetables{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/vegetables{
+	pixel_x = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zU" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/cheesecakeslice,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/buckwheat{
+	pixel_x = 1;
+	pixel_y = -15
+	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "zV" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Ab" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
 	dir = 2;
 	req_access = null
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Af" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
 	icon_state = "p_stair_full"
 	},
 /turf/open/floor/strata/grey_multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Ai" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "At" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Aw" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -794,25 +1538,33 @@
 	dir = 8
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "AJ" = (
-/obj/structure/surface/rack,
-/obj/item/clothing/suit/storage/snow_suit,
-/obj/item/clothing/suit/storage/snow_suit,
-/obj/item/tank/emergency_oxygen/engi,
-/obj/item/tank/emergency_oxygen/engi,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/multi_tiles/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "AO" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
 "AU" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Bs" = (
 /obj/structure/sign/flag/upp{
 	dir = 1;
@@ -820,41 +1572,25 @@
 	pixel_x = -1
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
-"Bz" = (
-/obj/structure/sign/flag/upp{
-	pixel_y = 28;
-	layer = 2.7
-	},
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "BW" = (
-/obj/structure/surface/rack,
-/obj/item/spacecash/c500,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/attachments,
+/obj/item/storage/box/attachments,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Cm" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
-"CF" = (
-/obj/structure/barricade/handrail/strata,
-/turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ug/interior/jungle/structures/research)
-"CK" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/turf/open/floor/strata/fake_wood,
-/area/strata/ug/interior/jungle/structures/research)
-"CT" = (
-/obj/structure/machinery/photocopier,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Dc" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/computer/cameras{
 	dir = 4
 	},
@@ -862,100 +1598,87 @@
 	dir = 8
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
-"De" = (
-/obj/structure/barricade/handrail/strata,
-/turf/open/auto_turf/snow/brown_base/layer2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Dw" = (
-/obj/structure/flora/bush/ausbushes/grassybush{
-	icon_state = "brflowers_1"
-	},
+/obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "Dz" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer/tcomms,
-/area/event/underground/dynamic/lit)
+/area/strata/interior/research)
 "DS" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
 /turf/open/floor/strata/fake_wood,
-/area/strata/ug/interior/jungle/structures/research)
-"EA" = (
-/obj/structure/sign/flag/upp{
-	dir = 1;
-	pixel_y = 26;
-	pixel_x = -1
-	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "EF" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/device/flashlight/lamp,
 /obj/item/phone{
 	pixel_x = 8;
 	pixel_y = 6
 	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ET" = (
 /obj/structure/toilet{
 	dir = 4
 	},
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Fa" = (
 /turf/open/asphalt/cement/cement4,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Fi" = (
 /turf/open/floor/strata/multi_tiles/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Fl" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/toy/deck,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Fr" = (
 /obj/item/stack/rods,
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
-"Ft" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 8
-	},
-/turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
-"FI" = (
-/obj/item/stool,
-/turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "FR" = (
 /turf/template_noop,
 /area/template_noop)
 "Ge" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "GE" = (
-/obj/structure/machinery/vending/security,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine{
+	pixel_y = 7
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
 "GJ" = (
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
-"Hd" = (
-/turf/open/auto_turf/snow/brown_base/layer0,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/exterior/deep_jungle/north)
 "Hm" = (
 /obj/structure/barricade/metal/wired,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/strata/exterior/deep_jungle/north)
 "HV" = (
 /obj/structure/barricade/plasteel/wired,
-/turf/open/gm/dirt,
-/area/strata/ug/interior/jungle/structures/research/south)
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/strata/exterior/deep_jungle/north)
 "Ix" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -963,414 +1686,451 @@
 	icon_state = "p_stair_sn_full_cap"
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "IA" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ID" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/storage/pill_bottle/bicaridine,
 /obj/item/tool/crowbar,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "IK" = (
-/obj/structure/surface/rack,
-/obj/item/storage/box/cdeathalarm_kit,
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Jj" = (
-/obj/structure/window/reinforced/tinted,
-/obj/structure/largecrate/random/barrel/yellow,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/structure/fence/dark,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
 "Jm" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Jy" = (
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Kr" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Ky" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/bed/chair{
 	dir = 8
 	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "KA" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "KG" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/storage/box/holobadge,
 /obj/item/storage/box/holobadge,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "KH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1
 	},
 /turf/open/floor/strata/multi_tiles/west,
-/area/strata/ug/interior/jungle/structures/research)
-"KJ" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "KL" = (
-/obj/structure/largecrate/random/barrel/white,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/tool{
+	pixel_x = 1;
+	pixel_y = 9
+	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Ln" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Lt" = (
 /obj/structure/closet/secure_closet/security/soro,
-/obj/item/reagent_container/food/snacks/carpmeat,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Lw" = (
-/obj/item/clipboard,
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "LL" = (
-/obj/item/clipboard,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/mre/upp{
+	pixel_x = -4;
+	pixel_y = 9
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "LQ" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/toy/deck,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "LZ" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/bed/chair{
-	dir = 4
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
 	},
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
 	},
+/obj/item/storage/box/mre/upp,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Mc" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Remote dropship navigation computer";
 	req_one_access = null;
 	faction = "UPP"
 	},
 /turf/open/floor/strata/blue1,
-/area/event/underground/dynamic/lit)
+/area/strata/interior/research)
 "MI" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/machinery/vending/sovietsoda{
+	pixel_x = -8
+	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "MY" = (
 /obj/structure/largecrate/random/barrel/blue,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "No" = (
-/obj/structure/window/reinforced/tinted,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/toolbox{
+	pixel_x = -4;
+	pixel_y = 6
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Od" = (
 /obj/structure/machinery/space_heater,
 /obj/structure/machinery/light,
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Ol" = (
 /obj/structure/machinery/shower{
 	dir = 8
 	},
 /obj/structure/window/reinforced/tinted{
+	color = "#969696";
 	dir = 1
 	},
-/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	color = "#969696"
+	},
 /obj/structure/machinery/door/window/eastright{
 	dir = 8
 	},
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Ps" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/structure/barricade/handrail/strata{
+	dir = 8
 	},
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
 "Pw" = (
-/obj/structure/machinery/vending/coffee,
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -4
+	},
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Qd" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Qy" = (
-/obj/structure/bed/chair{
-	dir = 8
-	},
+/obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Rp" = (
-/obj/structure/barricade/plasteel/wired{
+/obj/structure/barricade/metal/wired{
 	dir = 8
 	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "RG" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "RO" = (
 /obj/structure/machinery/computer/cameras,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Sc" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 8;
 	req_one_access = null
 	},
 /turf/open/floor/strata/multi_tiles/west,
-/area/strata/ug/interior/jungle/structures/research)
-"Sp" = (
-/obj/item/stack/snow,
-/turf/open/auto_turf/snow/brown_base/layer1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Sr" = (
 /obj/item/storage/firstaid/adv,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Sy" = (
 /obj/item/device/flashlight/lamp,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "SF" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
 	req_one_access = null
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "SV" = (
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/auto_turf/snow/brown_base/layer1,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/strata/interior/research)
 "Tw" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/item/paper_bin,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Tz" = (
 /obj/structure/window/framed/strata,
 /turf/open/floor/strata/multi_tiles/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "TB" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/exterior/deep_jungle/north)
 "TK" = (
-/obj/structure/curtain/medical,
+/obj/structure/machinery/door/airlock/almayer/generic/rusted_white{
+	dir = 1
+	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
-"TX" = (
-/obj/structure/barricade/plasteel/wired,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/south)
+/area/strata/interior/research)
 "TY" = (
 /obj/effect/spawner/random/tool,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research)
-"TZ" = (
-/obj/structure/barricade/handrail/strata{
-	dir = 4
-	},
-/turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Ue" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 15
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Um" = (
 /obj/structure/machinery/space_heater,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
-"UE" = (
-/obj/structure/machinery/computer/crew,
-/turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "UI" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
 	},
 /obj/structure/machinery/light,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "UJ" = (
 /obj/structure/machinery/computer/cameras{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /turf/open/floor/strata/red1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "UQ" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "UX" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
-"Vh" = (
-/obj/structure/barricade/handrail/strata,
-/turf/open/auto_turf/snow/brown_base/layer1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Vi" = (
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Vx" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "VF" = (
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research)
-"VG" = (
-/obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "VN" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "VQ" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	color = "#858680"
+	},
 /obj/item/stack/rods,
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
 "VU" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/ug/interior/jungle/structures/research/old_tunnels)
-"Wx" = (
-/obj/structure/filingcabinet,
-/obj/structure/window/reinforced/tinted,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/exterior/deep_jungle/old_tunnels)
 "WM" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirt,
-/area/strata/ug/interior/jungle/structures/research/south)
-"WX" = (
-/turf/open/floor/strata/floor3,
-/area/strata/ug/interior/jungle/structures/research)
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
 "Xk" = (
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "XT" = (
-/turf/open/gm/dirt,
-/area/strata/ug/interior/jungle/structures/research/south)
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
 "Yo" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
 	dir = 2;
 	req_one_access = null
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "YE" = (
 /obj/structure/machinery/light,
 /turf/open/floor/strata/white_cyan2/west,
-/area/strata/ug/interior/jungle/structures/research)
-"YJ" = (
-/obj/structure/window/reinforced/tinted,
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "YK" = (
-/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/strata_decals/catwalk/prison,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "YP" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/storage/pill_bottle/bicaridine,
 /obj/item/tool/crowbar,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/floor/strata/multi_tiles/southwest,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "YY" = (
-/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Zg" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Zj" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
 /obj/item/storage/box/pizza,
 /turf/open/floor/strata/floor2,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "Zy" = (
 /obj/item/stool,
 /turf/open/floor/strata/blue1,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 "ZS" = (
-/obj/structure/barricade/plasteel/wired{
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/obj/structure/sign/flag/upp{
-	dir = 1;
-	pixel_y = 26;
-	pixel_x = -1
-	},
 /turf/open/floor/strata/floor3/east,
-/area/strata/ug/interior/jungle/structures/research)
+/area/strata/interior/research)
 
 (1,1,1) = {"
 FR
@@ -1384,8 +2144,8 @@ dF
 dF
 dF
 pl
-pl
-iN
+bN
+bE
 oz
 iN
 iN
@@ -1435,10 +2195,10 @@ dF
 dF
 dF
 dF
-pl
-pl
-iN
-iN
+bN
+bN
+bE
+bE
 iN
 iN
 pl
@@ -1489,15 +2249,15 @@ dF
 xO
 pl
 pl
-pl
+bN
 iN
 iN
 iN
-iN
+bC
 fe
 tc
 xL
-iE
+oL
 oL
 tD
 lm
@@ -1541,11 +2301,11 @@ dF
 dF
 dF
 it
-pl
+bN
 iN
 iN
 iN
-iN
+bD
 fe
 fF
 yP
@@ -1558,11 +2318,11 @@ Vi
 mF
 FR
 FR
-mF
-mF
-mF
-mF
-mF
+lm
+lm
+lm
+lm
+lm
 FR
 FR
 FR
@@ -1592,29 +2352,29 @@ dF
 dF
 dF
 dF
+bO
 pl
-pl
 iN
 iN
 iN
-iN
+bE
 fe
 fF
 zu
 Lw
-CK
-tD
+yP
+bi
 lm
 sG
 vz
 mF
 FR
 FR
-mF
+lm
 Ue
 zB
 Kr
-mF
+lm
 FR
 FR
 FR
@@ -1648,25 +2408,25 @@ dF
 pl
 iN
 iN
-iN
+bE
 UI
 mF
 Tz
 mF
-ly
+bq
 yP
-CT
+Xk
 mF
 ky
 lm
 mF
 mF
 mF
-mF
+lm
 Jm
-Jy
-Kr
-mF
+aE
+aD
+lm
 FR
 FR
 FR
@@ -1699,8 +2459,8 @@ dF
 dF
 pl
 iN
-iN
-iN
+bE
+bE
 VU
 VN
 VN
@@ -1713,12 +2473,12 @@ Jy
 om
 Jy
 om
-Jy
+aP
 iM
 Jy
-Jy
+aF
 KA
-mF
+lm
 FR
 FR
 FR
@@ -1751,15 +2511,15 @@ mF
 mF
 mF
 ZS
-Rp
-Rp
+bJ
+bJ
 Rp
 mF
 Tz
 mF
-ly
+br
 yP
-kB
+Xk
 mF
 lm
 lm
@@ -1768,9 +2528,9 @@ lm
 lm
 lm
 lm
-EA
+Jy
 MY
-mF
+lm
 FR
 FR
 FR
@@ -1802,19 +2562,19 @@ gc
 Dc
 fk
 AU
-gr
-Ps
-Ps
-gr
+by
+bc
+bc
+by
 AU
 kc
 LL
-oL
+bs
 yP
-tD
+bi
 lm
 jR
-Xk
+bd
 lm
 YY
 Fl
@@ -1822,7 +2582,7 @@ YY
 lm
 zt
 lm
-mF
+lm
 dF
 dF
 FR
@@ -1855,8 +2615,8 @@ yu
 cf
 AU
 oL
-Ps
-Ps
+bc
+bc
 oL
 AU
 RO
@@ -1870,7 +2630,7 @@ Xk
 lm
 cY
 wi
-Xk
+aJ
 Yo
 wi
 wi
@@ -1883,7 +2643,7 @@ GJ
 GJ
 GJ
 XT
-GJ
+XT
 dF
 dF
 dF
@@ -1906,22 +2666,22 @@ Lt
 oL
 iE
 AU
-gr
-Ps
-Ps
-gr
+bL
+bc
+bc
+by
 AU
 Sy
 UJ
 iE
 oL
-tD
+bi
 mF
 BW
 ww
 lm
 KG
-wi
+aQ
 Xk
 lm
 Cm
@@ -1934,8 +2694,8 @@ dF
 uq
 GJ
 GJ
-XT
-GJ
+ad
+ab
 dF
 dF
 dF
@@ -1958,7 +2718,7 @@ mF
 Sc
 mF
 mF
-Xk
+bM
 Xk
 Xk
 Xk
@@ -1976,13 +2736,13 @@ dg
 wi
 wi
 lm
-wi
+aG
 wi
 Yo
 Xk
 Zg
 fe
-GJ
+at
 GJ
 GJ
 GJ
@@ -2003,28 +2763,28 @@ YP
 ID
 YP
 mF
-rq
 wi
-VG
-Wx
+wi
+wi
+wi
+bj
+zl
+wi
+bF
+bj
+bj
+bF
+wi
 wi
 zl
 wi
-gr
-Xk
-Xk
-gr
-wi
-wi
-zl
-wi
-wi
-wi
+bj
+bj
 zl
 xU
-CT
-UE
-Xk
+wi
+wi
+wi
 wi
 wi
 lm
@@ -2034,11 +2794,11 @@ lm
 Xk
 Zg
 fe
-qN
 GJ
-GJ
+as
+aq
 dT
-XT
+ad
 XT
 GJ
 GJ
@@ -2055,28 +2815,28 @@ Xk
 Xk
 Xk
 Yo
-wi
-wi
-wi
-Xk
-Xk
 Xk
 dC
-gr
-Xk
-Xk
-gr
 dC
 dC
 dC
 dC
 dC
 dC
+ge
 Xk
 Xk
 Xk
-wi
-wi
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+aW
+Xk
 wi
 wi
 lm
@@ -2090,7 +2850,7 @@ GJ
 GJ
 GJ
 GJ
-XT
+ad
 XT
 GJ
 GJ
@@ -2107,30 +2867,30 @@ hS
 cU
 Vx
 mF
-wi
-wi
 Xk
-oL
-zw
-zw
-TZ
-aX
-TZ
+aR
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aR
+by
+by
+by
+aR
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aR
 Xk
-gr
-Xk
-Xk
-TZ
-TZ
-TZ
-TZ
-zw
-zw
-oL
-Xk
-wi
-wi
-wi
+aK
 Yo
 oL
 yP
@@ -2138,11 +2898,11 @@ yP
 DS
 eS
 fe
-uq
+au
 GJ
 GJ
 GJ
-XT
+ad
 XT
 GJ
 dF
@@ -2159,30 +2919,30 @@ mF
 mF
 mF
 mF
-wi
-wi
-Xk
+bW
+bS
 YK
-Sp
-Hd
+YK
+ba
+ba
 SV
-gj
-CF
-gr
-gr
+ba
+aS
+by
+by
 li
 SV
-Hd
-Hd
-Hd
-nb
-Sp
-De
-oL
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aS
 Xk
 wi
-wi
-WX
 lm
 At
 eg
@@ -2190,7 +2950,7 @@ EF
 At
 rs
 fe
-Dw
+GJ
 GJ
 GJ
 GJ
@@ -2211,7 +2971,7 @@ sk
 No
 KL
 Jj
-wi
+bX
 kd
 jI
 jI
@@ -2233,8 +2993,8 @@ jI
 jI
 jI
 kd
+Xk
 wi
-WX
 lm
 Tz
 Tz
@@ -2243,9 +3003,9 @@ rS
 rS
 mF
 wM
-GJ
-GJ
 XT
+GJ
+ad
 GJ
 GJ
 dF
@@ -2259,45 +3019,45 @@ FR
 (18,1,1) = {"
 dF
 mF
-vT
-oL
+sk
+ca
+by
+by
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
 Xk
 wi
-wi
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-wi
-WX
 mF
 pA
 bU
 mF
-Dw
-qN
+XT
+al
 Hm
-GJ
+XT
 GJ
 XT
-XT
+ad
 GJ
 me
 dF
@@ -2313,43 +3073,43 @@ dF
 mF
 IK
 oL
+by
+by
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
 Xk
-wi
-wi
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-jI
-wi
 wi
 oV
 Fa
 qx
 wP
-GJ
-GJ
-Hm
-GJ
-GJ
+ad
+al
+av
 XT
-XT
+GJ
+ab
+ad
 GJ
 GJ
 tq
@@ -2363,11 +3123,11 @@ dF
 (20,1,1) = {"
 dF
 mF
-ro
-No
+sk
+oL
 zc
-YJ
-wi
+Jj
+bX
 jI
 jI
 jI
@@ -2389,17 +3149,17 @@ jI
 jI
 jI
 jI
-wi
+Xk
 wi
 bt
 dC
 dC
-wP
-XT
+aA
+al
 XT
 HV
 XT
-XT
+al
 XT
 XT
 GJ
@@ -2419,7 +3179,7 @@ mF
 Tz
 Tz
 mF
-wi
+bX
 jI
 jI
 jI
@@ -2441,20 +3201,20 @@ jI
 jI
 jI
 jI
-wi
+Xk
 wi
 bt
 dC
 dC
 eH
-XT
-XT
-HV
+al
+al
+aw
+al
 GJ
-GJ
+al
 XT
-XT
-XT
+ah
 GJ
 GJ
 GJ
@@ -2471,7 +3231,7 @@ tK
 Mc
 Ln
 AU
-wi
+bX
 jI
 jI
 jI
@@ -2493,23 +3253,23 @@ jI
 jI
 jI
 jI
-wi
+Xk
 wi
 bt
 dC
 dC
 Ix
+ad
+XT
+aw
+al
+XT
+al
+al
+ai
 XT
 XT
-TX
-dT
 GJ
-GJ
-GJ
-XT
-XT
-XT
-XT
 GJ
 nt
 bT
@@ -2523,7 +3283,7 @@ wi
 zV
 hC
 AU
-wi
+bX
 jI
 jI
 jI
@@ -2545,22 +3305,22 @@ jI
 jI
 jI
 jI
-wi
+Xk
 wi
 oV
 Fa
 qx
-wP
+aB
+al
+ab
+ay
 XT
-XT
-Hm
 GJ
 GJ
-GJ
-GJ
+am
 GJ
 XT
-XT
+ad
 XT
 GJ
 xo
@@ -2575,7 +3335,7 @@ wi
 mF
 Tz
 mF
-wi
+bX
 jI
 jI
 jI
@@ -2597,23 +3357,23 @@ jI
 jI
 jI
 jI
-wi
+Xk
 wi
 mF
 hx
 yp
 mF
-XT
+ai
 XT
 Hm
+ad
+ai
+dT
 GJ
-GJ
-GJ
-GJ
-GJ
+aj
 GJ
 XT
-XT
+ab
 GJ
 GJ
 dF
@@ -2626,8 +3386,8 @@ mi
 wi
 mF
 pf
-ej
-wi
+by
+bX
 jI
 jI
 jI
@@ -2649,7 +3409,7 @@ jI
 jI
 jI
 jI
-wi
+Xk
 wi
 mF
 Tz
@@ -2660,10 +3420,10 @@ rS
 mF
 pN
 GJ
+ar
+an
 GJ
-dT
-GJ
-GJ
+ae
 XT
 GJ
 GJ
@@ -2674,12 +3434,13 @@ dF
 "}
 (26,1,1) = {"
 mF
-Pw
+cc
 wB
 Ab
 wi
-ej
-wi
+by
+bX
+bb
 jI
 jI
 jI
@@ -2700,8 +3461,7 @@ jI
 jI
 jI
 jI
-jI
-wi
+Xk
 wi
 mF
 Aw
@@ -2712,11 +3472,11 @@ iK
 fe
 qN
 GJ
+dT
+ao
+dT
 GJ
-GJ
-GJ
-GJ
-XT
+ad
 GJ
 GJ
 dF
@@ -2729,9 +3489,9 @@ mF
 mF
 mF
 mF
-Bz
-ej
 wi
+by
+bX
 kd
 jI
 jI
@@ -2751,10 +3511,10 @@ jI
 jI
 jI
 jI
-jI
+bb
 kd
-wi
-wi
+Xk
+aK
 Yo
 oL
 yP
@@ -2763,7 +3523,7 @@ yP
 eS
 fe
 GJ
-GJ
+dT
 GJ
 GJ
 GJ
@@ -2782,33 +3542,33 @@ FR
 FR
 mF
 GE
-rf
-wi
-wi
-ej
-YK
-nb
-nb
-nb
-nb
-gj
-qm
+by
+bX
+bS
 gr
+YK
+ba
+ba
+ba
+ba
+ba
+qm
+by
 li
-Hd
-Hd
-Hd
-nb
-nb
-Hd
-Vh
-oL
-Ps
-wi
-wi
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aS
+Xk
 wi
 lm
-oL
+aH
 oL
 oL
 oL
@@ -2833,32 +3593,32 @@ FR
 FR
 FR
 mF
-GE
-FI
-wi
-wi
-ej
-oL
-rW
-rW
-Ft
-Ft
-Ft
+bY
+by
 Xk
-gr
-gr
-gr
-Ft
-Ft
-Ft
-Ft
-rW
-rW
-oL
+aT
 Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+aT
+by
+by
+by
+aT
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+aT
+Xk
 wi
-Jy
-Fi
 sy
 lm
 lm
@@ -2870,7 +3630,7 @@ Dw
 GJ
 GJ
 XT
-XT
+ad
 XT
 me
 dF
@@ -2885,32 +3645,32 @@ FR
 FR
 FR
 mF
-GE
-FI
+bZ
+by
+wi
+bc
+Xk
+Xk
+Xk
+Xk
+Xk
+Xk
+gr
+bc
+gr
+bc
+gr
+bx
+Xk
+Xk
+Xk
+Xk
+Xk
+Xk
+bc
 wi
 wi
-ej
-Xk
-Xk
-Xk
-Xk
-Xk
-Xk
-Xk
-gr
-gr
-gr
-Xk
-Xk
-Xk
-Xk
-Xk
-Xk
-Xk
-Ps
 wi
-gr
-Fi
 Af
 ga
 ga
@@ -2938,31 +3698,31 @@ FR
 FR
 mF
 GE
-rf
+bL
 wi
-wi
-ej
-Xk
-Xk
-wi
-wi
-wi
-Xk
-Xk
+bc
+be
+bg
+bh
+bg
+be
+by
+oL
+bc
 gr
-gr
-gr
+bc
+oL
+by
+bu
+bn
+bh
+bg
+be
 Xk
-Xk
+bc
 wi
 wi
-wi
-Xk
-Xk
-Ps
-wi
-gr
-wi
+aL
 oJ
 Dz
 ch
@@ -2992,29 +3752,29 @@ mF
 mF
 mF
 mV
-wi
-Xk
-Xk
-Xk
-wi
-wi
-wi
-Xk
-Xk
+bc
+bv
+bR
+bn
+bP
+bf
+by
 gr
+bc
 gr
+bc
 gr
+by
+bv
+bh
+bk
+bh
+bf
 Xk
-Xk
+bc
 wi
 wi
-wi
-Xk
-Xk
-Ps
-wi
-gr
-wi
+aL
 oJ
 Dz
 Dz
@@ -3026,7 +3786,7 @@ dF
 dF
 GJ
 GJ
-XT
+ad
 GJ
 GJ
 dF
@@ -3040,30 +3800,30 @@ dF
 FR
 FR
 lm
-lm
-Vi
+cb
+wi
 lm
 sf
 AO
-Xk
-Xk
-Xk
-wi
-wi
-wi
-Xk
-Xk
+be
+bg
+bR
+bg
+be
+by
+oL
+bc
 gr
-gr
-gr
+bc
+oL
+by
+be
+bo
+bl
+bg
+be
 Xk
-Xk
-wi
-wi
-wi
-Xk
-Xk
-Ps
+bc
 wi
 lm
 lm
@@ -3078,8 +3838,8 @@ dF
 dF
 dF
 GJ
-XT
-GJ
+ad
+af
 GJ
 GJ
 dF
@@ -3093,12 +3853,10 @@ FR
 FR
 lm
 eD
-Vi
+Jy
 TK
-wi
-wi
-Xk
-Xk
+by
+bc
 Xk
 Xk
 Xk
@@ -3106,7 +3864,9 @@ Xk
 Xk
 Xk
 gr
+bc
 gr
+bc
 gr
 Xk
 Xk
@@ -3115,21 +3875,21 @@ Xk
 Xk
 Xk
 Xk
-Ps
+bc
 wi
 Zj
 lm
-dF
-dF
-dF
-dF
+aC
+aC
+aC
+aC
 lm
-Jy
+az
 mF
 mF
 mF
 mF
-XT
+ap
 XT
 XT
 GJ
@@ -3148,18 +3908,18 @@ fv
 Ol
 lm
 mx
-wi
-wi
-Xk
-Xk
-Xk
+bV
+dC
+dC
+dC
+dC
 VQ
 dC
 dC
+wi
+wi
+wi
 dC
-gr
-gr
-gr
 dC
 dC
 dC
@@ -3182,11 +3942,11 @@ Jy
 Jy
 SF
 GJ
-XT
-XT
+ak
+ab
 GJ
 GJ
-GJ
+aa
 dF
 dF
 dF
@@ -3205,9 +3965,9 @@ wi
 wL
 wi
 wi
+aQ
 wi
-wi
-wi
+bK
 wi
 wi
 wi
@@ -3221,7 +3981,7 @@ wi
 wi
 wi
 UX
-wi
+aK
 SF
 jn
 Jy
@@ -3234,8 +3994,8 @@ Jy
 Jy
 SF
 GJ
-XT
-XT
+ai
+ag
 GJ
 GJ
 dF
@@ -3276,7 +4036,7 @@ lm
 lm
 lm
 lm
-Jy
+aI
 Ge
 Jy
 LQ
@@ -3288,8 +4048,8 @@ mF
 wY
 GJ
 WM
-XT
-dF
+GJ
+ac
 dF
 dF
 dF
@@ -3412,25 +4172,25 @@ FR
 lm
 iq
 Vi
-Vi
+bw
 Vi
 bG
 ka
 Ai
+bH
 Vi
-Vi
-Vi
+bw
 Vi
 Vi
 wB
-SF
+bm
 Ge
+aM
 VF
-VF
-KJ
-VF
-VF
-VF
+aN
+aM
+aN
+aM
 VF
 Ge
 FR
@@ -3463,26 +4223,26 @@ FR
 FR
 lm
 Pw
-wB
-wB
+bQ
+bQ
 oj
 lm
 lm
 lm
+bI
 yF
-yF
-wB
-Vi
-Vi
-wB
+bA
+bz
+bw
+bp
 lm
 FR
-VF
-VF
-VF
-VF
-VF
-VF
+aN
+aM
+aM
+aM
+aM
+aN
 FR
 FR
 FR
@@ -3531,10 +4291,10 @@ lm
 FR
 FR
 Sr
-VF
-VF
-KJ
-VF
+aN
+aU
+aN
+aO
 FR
 FR
 FR
@@ -3584,8 +4344,8 @@ FR
 FR
 FR
 TY
-VF
-VF
+aV
+aN
 FR
 FR
 FR

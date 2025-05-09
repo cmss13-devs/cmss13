@@ -119,8 +119,10 @@
 
 /datum/ammo/energy/yautja/caster/bolt/single_stun/on_hit_mob(mob/all_targets, obj/projectile/stun_bolt)
 	var/mob/living/carbon/any_target = all_targets
+
 	if(isyautja(any_target) || ispredalien(any_target))
 		return
+
 	if(istype(any_target))
 		to_chat(any_target, SPAN_DANGER("An electric shock ripples through your body, freezing you in place!"))
 		log_attack("[key_name(any_target)] was stunned by a high power stun bolt from [key_name(stun_bolt.firer)] at [get_area(stun_bolt)]")
@@ -155,10 +157,14 @@
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/proc/do_area_stun(obj/projectile/stun_projectile)
 	playsound(stun_projectile, 'sound/weapons/wave.ogg', 75, 1, 25)
+
 	for(var/mob/living/carbon/any_target in orange(stun_range, stun_projectile))
 		log_attack("[key_name(any_target)] was stunned by a plasma immobilizer from [key_name(stun_projectile.firer)] at [get_area(stun_projectile)]")
-		if (isyautja(any_target))
+		var/stun_time = src.stun_time
+
+		if(isyautja(any_target))
 			stun_time -= 2
+
 		if(ispredalien(any_target))
 			continue
 		to_chat(any_target, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))

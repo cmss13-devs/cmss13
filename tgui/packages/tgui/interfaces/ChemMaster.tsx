@@ -645,7 +645,12 @@ export const ChemMaster = () => {
                     fluid
                     mb="1rem"
                     placeholder="Enter pill bottle label"
-                    value={pillBottleLabel}
+                    value={
+                      editingPreset && data.presets[editingPreset]
+                        ? data.presets[editingPreset].bottle_label ||
+                          pillBottleLabel
+                        : pillBottleLabel
+                    }
                     onChange={(_, value) => setPillBottleLabel(value)}
                   />
                 </Stack.Item>

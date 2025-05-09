@@ -1,0 +1,4 @@
+author: "Lagomorphica"
+delete-after: True
+changes:
+  - balance: "undamaged lungemines now gib the user on hit, ex_act was removed due to being bugged (caused runtimes, did not do anything to xenomorphs due to checking the user for the explosive pen so ultimately won't change anything about it)"

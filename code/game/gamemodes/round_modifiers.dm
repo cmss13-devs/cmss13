@@ -149,3 +149,8 @@
 /datum/gamemode_modifier/ceasefire
 	modifier_name = "Ceasefire"
 	modifier_desc = "Prevents firing guns and throwing granades."
+
+
+/datum/gamemode_modifier/only_balanced_attachments
+	modifier_name = "Only balanced attachments"
+	modifier_desc = "In squad and cargi vendors only attachmants with real drawbacks are available, still can be obtained using reqestions."

@@ -347,7 +347,8 @@
 		H.h_style = "Bald"
 		H.f_style = "Shaved"
 		H.h_style = pick(GLOB.hair_styles_list)
-		H.f_style = pick(GLOB.facial_hair_styles_list)
+		if(H.gender == MALE)
+			H.f_style = pick(GLOB.facial_hair_styles_list)
 		H.update_hair()
 		to_chat(M, SPAN_NOTICE("Your head feels different..."))
 

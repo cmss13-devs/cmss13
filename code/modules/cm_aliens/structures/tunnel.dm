@@ -198,14 +198,22 @@
 
 //Used for controling tunnel exiting and returning
 /obj/structure/tunnel/clicked(mob/user, list/mods)
-	if(!isxeno(user) || !isfriendly(user))
+	if(!isxeno(user))
 		return ..()
-	var/mob/living/carbon/xenomorph/X = user
-	if(mods[CTRL_CLICK] && pick_tunnel(X))//Returning to original tunnel
+
+	var/mob/living/carbon/xenomorph/xeno_user = user
+
+	if(!isfriendly(user))
+		if(mods[ALT_CLICK] && exit_tunnel(xeno_user))
+			return TRUE
+		return ..()
+
+	if(mods[CTRL_CLICK] && pick_tunnel(xeno_user))//Returning to original tunnel
 		return TRUE
-	else if(mods[ALT_CLICK] && exit_tunnel(X))//Exiting the tunnel
+	else if(mods[ALT_CLICK] && exit_tunnel(xeno_user))//Exiting the tunnel
 		return TRUE
-	. = ..()
+
+	return ..()
 
 /obj/structure/tunnel/attack_larva(mob/living/carbon/xenomorph/M)
 	. = attack_alien(M)

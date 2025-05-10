@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/event/deep_underground/dynamic)
 "ab" = (
 /obj/structure/barricade/handrail/kutjevo{
@@ -237,7 +237,7 @@
 /turf/open/floor/kutjevo/colors/red,
 /area/event/deep_underground/dynamic)
 "fR" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/kutjevo/interior/colony_south)
 "gq" = (
 /obj/structure/platform/metal/strata/east,
@@ -253,7 +253,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/event/deep_underground/dynamic)
 "gY" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/event/deep_underground/dynamic)
 "hh" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -346,7 +346,7 @@
 /turf/open/floor/kutjevo/tan/grey_inner_edge,
 /area/event/deep_underground/dynamic)
 "je" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/interior/colony_northeast)
 "jm" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
@@ -645,7 +645,7 @@
 /turf/open/floor/plating,
 /area/event/deep_underground/dynamic)
 "uC" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/interior/colony_south)
 "uP" = (
 /turf/template_noop,
@@ -1005,7 +1005,7 @@
 	unacidable = 1
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/kutjevo/interior/oob)
 "KT" = (
 /obj/structure/surface/table/almayer,
@@ -1062,7 +1062,7 @@
 /turf/open/floor/kutjevo/colors/red,
 /area/event/deep_underground/dynamic)
 "NP" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/interior/colony_central)
 "NQ" = (
 /obj/item/stack/sheet/wood,
@@ -1439,7 +1439,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/event/deep_underground/dynamic)
 "XT" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/kutjevo/interior/oob)
 "Ym" = (
 /obj/item/bodybag/tarp/reactive,

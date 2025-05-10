@@ -237,7 +237,7 @@
 /turf/open/floor/prison/blue/west,
 /area/event/metal/dynamic/lit)
 "hp" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/event/metal/dynamic/lit)
 "hI" = (
 /obj/item/prop/colony/used_flare,
@@ -321,7 +321,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "kx" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/event/metal/dynamic/lit)
 "kz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -581,7 +581,7 @@
 /turf/open/floor/prison/blue_plate,
 /area/event/dynamic/lit)
 "td" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/event/dynamic/lit)
 "tn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -605,10 +605,10 @@
 /turf/open/asphalt/cement/cement9,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "tt" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/event/dynamic/lit)
 "tE" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/event/dynamic/lit)
 "tN" = (
 /turf/template_noop,
@@ -955,7 +955,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "Em" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "Ep" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
@@ -990,7 +990,7 @@
 /turf/open/asphalt/cement/cement1,
 /area/event/dynamic/lit)
 "Fa" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "Fe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -1051,7 +1051,7 @@
 /area/event/metal/dynamic/lit)
 "HM" = (
 /obj/effect/alien/resin/sticky,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/event/dynamic/lit)
 "HW" = (
 /turf/open/floor/shiva/radiator_tile2,
@@ -1234,7 +1234,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/hallway)
 "PK" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/filt)
 "PM" = (
 /obj/structure/cargo_container/wy/right,
@@ -1398,7 +1398,7 @@
 /area/event/metal/dynamic/lit)
 "Ut" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "Uu" = (
 /turf/open/auto_turf/shale/layer1,
@@ -1474,7 +1474,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "WW" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/lv522/oob)
 "WY" = (
 /obj/structure/pipes/standard/simple/hidden/green{

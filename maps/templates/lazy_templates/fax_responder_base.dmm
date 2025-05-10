@@ -2251,7 +2251,7 @@
 /turf/open/gm/river/no_overlay,
 /area/adminlevel/ert_station/fax_response_station/exterior)
 "xK" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/adminlevel/ert_station/fax_response_station)
 "xL" = (
 /turf/open/floor/whitered/northwest,
@@ -2733,7 +2733,7 @@
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/ert_station/fax_response_station)
 "Cc" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/adminlevel/ert_station/fax_response_station)
 "Cf" = (
 /obj/structure/window/reinforced/tinted/frosted{

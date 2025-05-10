@@ -4075,7 +4075,7 @@
 /turf/closed/wall/hybrisa/colony,
 /area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
 "UU" = (
-/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/turf/closed/wall/kutjevo/colony/hull,
 /area/lv759/oob)
 "Vm" = (
 /obj/effect/decal/hybrisa/road/lines3,

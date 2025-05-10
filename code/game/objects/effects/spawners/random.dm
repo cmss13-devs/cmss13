@@ -581,7 +581,6 @@
 		/obj/item/weapon/gun/smg/m39/corporate/no_lock = /obj/item/ammo_magazine/smg/m39,
 		/obj/item/weapon/gun/smg/m39/corporate/no_lock = /obj/item/ammo_magazine/smg/m39,
 		/obj/item/weapon/gun/smg/p90 = /obj/item/ammo_magazine/smg/p90,
-		/obj/item/weapon/gun/smg/fp9000/pmc = /obj/item/ammo_magazine/smg/fp9000,
 		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78

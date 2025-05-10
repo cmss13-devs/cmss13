@@ -478,7 +478,6 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define XENO_ELDER 3
 #define XENO_ANCIENT 4
 #define XENO_PRIME 5
-#define XENO_IMPERATOR 6
 
 /// For monthly time tracking
 #define JOB_OBSERVER "Observer"

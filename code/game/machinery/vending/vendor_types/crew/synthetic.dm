@@ -225,11 +225,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/engineer_officer
 	path = /obj/item/clothing/under/marine/officer/engi
 
+/datum/gear/synthetic/uscm/corpsman
+	path = /obj/item/clothing/under/marine/medic
+
 /datum/gear/synthetic/uscm/mp
 	path = /obj/item/clothing/under/marine/mp/standard
 
 /datum/gear/synthetic/uscm/mp_dark
 	path = /obj/item/clothing/under/marine/mp/darker
+
+/datum/gear/synthetic/uscm/operations_uniform
+	path = /obj/item/clothing/under/marine/officer/boiler
 
 /datum/gear/synthetic/civilian
 	category = "Civilian Uniforms"
@@ -278,6 +284,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/civilian/white_suit_pants
 	path = /obj/item/clothing/under/liaison_suit/corporate_formal
+
+/datum/gear/synthetic/civilian/grey_suit_pants
+	path = /obj/item/clothing/under/detective/grey
+
+/datum/gear/synthetic/civilian/alt_brown_suit_pants
+	path = /obj/item/clothing/under/detective/neutral
 
 /datum/gear/synthetic/glasses
 	category = "Glasses"
@@ -426,8 +438,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/suit/bomber
 	path = /obj/item/clothing/suit/storage/bomber
 
+/datum/gear/synthetic/suit/grey_bomber
+	path = /obj/item/clothing/suit/storage/jacket/marine/bomber/grey
+
+/datum/gear/synthetic/suit/red_bomber
+	path = /obj/item/clothing/suit/storage/jacket/marine/bomber/red
+
 /datum/gear/synthetic/suit/bomber_alt
 	path = /obj/item/clothing/suit/storage/bomber/alt
+
+/datum/gear/synthetic/suit/khaki_bomber
+	path = /obj/item/clothing/suit/storage/jacket/marine/bomber
 
 /datum/gear/synthetic/suit/webbing
 	path = /obj/item/clothing/suit/storage/webbing
@@ -471,6 +492,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/suit/labcoat
 	path = /obj/item/clothing/suit/storage/labcoat
 
+/datum/gear/synthetic/suit/labcoat_wy
+	path = /obj/item/clothing/suit/storage/labcoat/wy
+
 /datum/gear/synthetic/suit/labcoat_researcher
 	path = /obj/item/clothing/suit/storage/labcoat/researcher
 
@@ -494,6 +518,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/suit/vest_gray
 	path = /obj/item/clothing/suit/storage/jacket/marine/vest/grey
+
+/datum/gear/synthetic/suit/tan_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat
+
+/datum/gear/synthetic/brown_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat/brown
+
+/datum/gear/synthetic/suit/grey_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat/grey
 
 /datum/gear/synthetic/backpack
 	category = "Backpack"

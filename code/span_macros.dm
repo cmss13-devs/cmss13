@@ -10,6 +10,7 @@
 // Xeno related
 #define SPAN_XENO(X) "<span class='xeno'>[X]</span>"
 #define SPAN_XENOLEADER(X) "<span class='xenoleader'>[X]</span>"
+#define SPAN_XENOPALATINE(X) "<span class='xenopalatine'>[X]</span>"
 #define SPAN_XENOQUEEN(X) "<span class='xenoqueen'>[X]</span>"
 #define SPAN_XENOANNOUNCE(X) "<span class='xenoannounce'>[X]</span>"
 #define SPAN_XENONOTICE(X) "<span class='xenonotice'>[X]</span>"

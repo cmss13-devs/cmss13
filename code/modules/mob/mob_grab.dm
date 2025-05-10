@@ -117,6 +117,8 @@
 		var/mob/living/carbon/pulled = xeno.pulling
 		if(!istype(pulled))
 			return
+		if(xeno.caste_type == NEOMORPH_BURSTER)
+			return FALSE
 		if(isxeno(pulled) || issynth(pulled))
 			to_chat(xeno, SPAN_WARNING("That wouldn't serve a purpose."))
 			return 0

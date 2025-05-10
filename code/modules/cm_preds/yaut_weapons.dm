@@ -137,6 +137,14 @@
 	var/message_color = "#d12d2d"
 	COOLDOWN_DECLARE(combo_timeout)
 
+/obj/item/weapon/bracer_attachment/chain_gauntlets/get_examine_text(mob/user)
+	. = ..()
+	if(isyautja(user))
+		. += "Stack up your combo meter by using [SPAN_RED("HARM")] intent, you can then use these combo stacks on different intents to do different finishers."
+		. += "Finish your combo on [SPAN_GREEN("HELP")] intent to slam the target to the ground, incapacitating them for a few seconds, if the target is a xenomorph you do extra damage as well."
+		. += "Finish your combo on [SPAN_BLUE("SHOVE")] intent to throw the target away from you, if you have some chains wrapped around the gauntlet, you'll pull them back towards you. If you are using the special ability, the throw range will be further."
+		. += "Finish your combo on [SPAN_ORANGE("GRAB")] intent to do an execution that instantly kills your target, they must already be unconcious or in critical state."
+
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
 	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg','sound/weapons/chain_whip.ogg')
@@ -205,7 +213,7 @@
 		if(target.stat == DEAD)
 			return
 		combo_counter++
-		COOLDOWN_START(src, combo_timeout, 10 SECONDS)
+		COOLDOWN_START(src, combo_timeout, 15 SECONDS)
 		START_PROCESSING(SSobj, src)
 
 

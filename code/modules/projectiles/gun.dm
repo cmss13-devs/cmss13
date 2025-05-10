@@ -619,14 +619,14 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		if(prob(30))
 			to_chat(user, SPAN_WARNING("Your [src] is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
-			cock_cooldown += 5 SECONDS
+			cock_cooldown = 5 SECONDS
 		return NONE
 	else if(prob(scaled_jam_chance + mag_jam_modifier))
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
 		balloon_alert(user, "*jammed*")
-		cock_cooldown += 5 SECONDS
+		cock_cooldown = 5 SECONDS
 		return NONE
 	else
 		return
@@ -648,7 +648,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
 			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, FALSE)
 			jammed = FALSE
-			cock_cooldown += 5 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown = 5 SECONDS //so they dont accidentally cock a bullet away
 			balloon_alert(user, "*unjammed!*")
 		else
 			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
@@ -670,27 +670,33 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 		if(gun_durability <= GUN_DURABILITY_BROKEN)
 			playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 20, FALSE)
-			cock_cooldown += 5 SECONDS //so they dont accidentally cock a bullet away
+			cock_cooldown = 5 SECONDS //so they dont accidentally cock a bullet away
 			if(prob(50))
 				to_chat(user, SPAN_WARNING("The [name] is too worn out to fire, get it repaired!"))
 				balloon_alert(user, "*worn-out*")
 
 /obj/item/weapon/gun/proc/handle_jam_fire(mob/living/user)
+	if(!can_jam)
+		return
+
 	var/bullet_duraloss = 0.05 // if there isnt a traditional projectile, then we need to return something for the calculation, otherwise itll runtime
 	var/bullet_duramage = BULLET_DURABILITY_DAMAGE_DEFAULT // for guns that dont fire bullets traditionally e.g. flamer, lets make sure they actually lose durability by default
 	if(in_chamber && in_chamber.ammo)
 		bullet_duraloss = in_chamber.ammo.bullet_duraloss
 		bullet_duramage = in_chamber.ammo.bullet_duramage
-
-	if(!can_jam)
-		return
+	else if(ammo) // apparently certain guns like the mou dont have a chamber but uses its ammo directly from the magazine so this is required
+		bullet_duraloss = ammo.bullet_duraloss
+		bullet_duramage = ammo.bullet_duramage
 
 	if(prob(durability_loss + bullet_duraloss)) // probability durability loss dependent on weapon value, rngesus woe
 		set_gun_durability(gun_durability - bullet_duramage) // decrement durability based on bullet durability damage each time the gun is fired
 		update_gun_durability()
 		check_worn_out(user)
 
-	scaled_jam_chance = initial_jam_chance * (jam_threshold - gun_durability) // scale jam chance based on durability after passing weapons jam threshold
+	if(gun_durability < jam_threshold)
+		scaled_jam_chance = initial_jam_chance * ((jam_threshold - gun_durability) ** 0.75) // exponentially scale jam chance by 3/4ths based on durability after passing weapons jam threshold
+	else
+		scaled_jam_chance = 0
 
 	if(check_jam(user) == NONE)
 		return NONE
@@ -782,19 +788,19 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/get_examine_text(mob/user)
 	. = ..()
-	var/durability_text = "broken condition..."
+	var/durability_text = SPAN_RED("broken condition...")
 	if(gun_durability >= GUN_DURABILITY_BROKEN)
 		switch(gun_durability)
 			if((GUN_DURABILITY_BROKEN + 1) to GUN_DURABILITY_LOW)
-				durability_text = "poor condition."
+				durability_text = SPAN_RED("bad condition.")
 			if((GUN_DURABILITY_LOW + 1) to GUN_DURABILITY_MEDIUM)
-				durability_text = "an okay-ish condition."
+				durability_text = SPAN_ORANGE("poor condition.")
 			if((GUN_DURABILITY_MEDIUM + 1) to GUN_DURABILITY_HIGH)
-				durability_text = "good condition."
+				durability_text = SPAN_ORANGE("normal condition.")
 			if((GUN_DURABILITY_HIGH + 1) to 99)
-				durability_text = "fine condition."
+				durability_text = SPAN_GREEN("fine condition.")
 			if(GUN_DURABILITY_MAX)
-				durability_text = "perfect condition!"
+				durability_text = SPAN_GREEN("perfect condition!")
 		. += SPAN_INFO("[src] is in [durability_text]")
 
 	if(flags_gun_features & GUN_NO_DESCRIPTION)
@@ -2198,6 +2204,14 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(lightrange <= 0)
 		set_light_on(FALSE)
 
+/obj/item/weapon/gun/flamer_fire_act(dam = BURN_LEVEL_TIER_1)
+	if(gun_durability > GUN_DURABILITY_BROKEN)
+		damage_gun_durability(dam)
+		if(prob(10)) // as to not spam your chat of flames every goddamn second
+			visible_message(SPAN_WARNING("\The [src] burns within the flames!"))
+	if(gun_durability == GUN_DURABILITY_BROKEN)
+		if(prob(15))
+			visible_message(SPAN_WARNING("Majority of \the [src]'s working parts have burned off!"))
 
 /obj/item/weapon/gun/attack_alien(mob/living/carbon/xenomorph/xeno)
 	..()
@@ -2210,7 +2224,17 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(slashed_light)
 		playsound(loc, "alien_claw_metal", 25, 1)
 		xeno.animation_attack_on(src)
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] slashes the lights on \the [src]!"), SPAN_XENONOTICE("You slash the lights on \the [src]!"))
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] slashes the lights on \the [src]!"), SPAN_XENONOTICE("We slash the lights on \the [src]!"))
+
+	var/xeno_damage = xeno.melee_damage_lower + xeno.melee_damage_upper * 3.5
+	if(gun_durability > GUN_DURABILITY_BROKEN)
+		playsound(loc, "alien_claw_metal", 25, 1)
+		xeno.animation_attack_on(src)
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] slashes the parts of \the [src]!"), SPAN_XENONOTICE("We damage the parts of \the [src]!"))
+		damage_gun_durability(xeno_damage)
+	if(gun_durability == GUN_DURABILITY_BROKEN)
+		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] stares at \the [src] cluelessly."), SPAN_WARNING("We have damaged the parts of \the [src] enough."))
+
 	return XENO_ATTACK_ACTION
 
 /// Setter proc to toggle burst firing

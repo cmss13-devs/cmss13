@@ -209,7 +209,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/dropped(mob/user)
@@ -632,7 +632,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/dropped(mob/user)

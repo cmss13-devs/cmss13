@@ -1,0 +1,460 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"b" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"c" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"d" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"e" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"f" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"g" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"h" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"i" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"j" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 19
+	},
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"k" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"l" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/prop/alien/hugger,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"m" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"n" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"o" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/radio,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"p" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"q" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"r" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"s" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"t" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 10;
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"u" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"v" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"w" = (
+/obj/item/clothing/head/cmcap/wy_cap,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"x" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"y" = (
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"z" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"A" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 3;
+	pixel_y = 17
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"B" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"C" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"E" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"F" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"G" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"H" = (
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"I" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/pistol/mod88{
+	current_mag = null
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"J" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 21
+	},
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"K" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"L" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4"
+	},
+/turf/open/floor/floor4,
+/area/desert_dam/exterior/roof)
+"M" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"N" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"O" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"P" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"Q" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"R" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"S" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/perspective{
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"T" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"U" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"V" = (
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"W" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer_hull,
+/area/desert_dam/exterior/roof)
+"X" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"Y" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+"Z" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/floor/dark,
+/area/desert_dam/exterior/roof)
+
+(1,1,1) = {"
+V
+V
+u
+P
+P
+P
+P
+P
+P
+z
+V
+V
+"}
+(2,1,1) = {"
+V
+u
+O
+g
+I
+c
+c
+H
+K
+M
+z
+V
+"}
+(3,1,1) = {"
+u
+O
+c
+o
+b
+w
+H
+H
+c
+c
+M
+z
+"}
+(4,1,1) = {"
+v
+g
+c
+a
+y
+L
+y
+p
+y
+c
+Z
+Q
+"}
+(5,1,1) = {"
+v
+c
+c
+f
+H
+a
+E
+H
+A
+H
+c
+Q
+"}
+(6,1,1) = {"
+v
+H
+C
+H
+Y
+a
+J
+H
+x
+c
+c
+Q
+"}
+(7,1,1) = {"
+v
+t
+c
+y
+y
+j
+s
+y
+y
+e
+F
+Q
+"}
+(8,1,1) = {"
+m
+h
+c
+c
+H
+d
+c
+k
+c
+c
+U
+R
+"}
+(9,1,1) = {"
+V
+m
+h
+t
+B
+X
+H
+n
+F
+U
+R
+V
+"}
+(10,1,1) = {"
+V
+V
+m
+N
+S
+q
+q
+T
+N
+R
+V
+V
+"}
+(11,1,1) = {"
+V
+V
+V
+V
+V
+V
+l
+V
+V
+V
+V
+V
+"}
+(12,1,1) = {"
+V
+V
+V
+r
+V
+V
+G
+V
+i
+V
+V
+V
+"}
+(13,1,1) = {"
+V
+V
+V
+W
+V
+i
+V
+V
+W
+V
+V
+V
+"}

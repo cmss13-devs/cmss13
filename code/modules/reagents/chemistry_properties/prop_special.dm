@@ -1,7 +1,7 @@
 /datum/chem_property/special
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_ANOMALOUS
-	value = 6
+	value = 8
 //IF YOU ADD A NEW LEGENADRY INTENDED FOR RESEARCH NORMAL LOOP, MAKE SURE TO ADD TO LEGENDARY PROPERTY LIST DEFINE
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING

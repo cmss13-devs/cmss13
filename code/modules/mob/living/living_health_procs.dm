@@ -111,7 +111,7 @@
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	for(var/datum/reagent/nst_stim as anything in reagents.reagent_list) //reduce amount of NST stim in blood for every stun
 		if(nst_stim.get_property(PROPERTY_NERVESTIMULATING))
-			nst_stim.volume += max(min((-1*amount)/10, 0), -8)
+			nst_stim.volume += max(min((-1*amount)/10, 0), -10)
 	if(S)
 		S.update_duration(amount, increment = TRUE)
 	else if(amount > 0)
@@ -138,7 +138,7 @@
 	var/datum/status_effect/incapacitating/stun/S = IsStun()
 	for(var/datum/reagent/nst_stim as anything in reagents.reagent_list) //reduce amount of NST stim in blood for every stun
 		if(nst_stim.get_property(PROPERTY_NERVESTIMULATING))
-			nst_stim.volume += max(min((-1*amount)/10, 0), -8)
+			nst_stim.volume += max(min((-1*amount)/10, 0), -10)
 	if(S)
 		S.adjust_duration(amount)
 	else if(amount > 0)

@@ -525,7 +525,7 @@
 	description = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
-	value = 2
+	value = 3
 
 /datum/chem_property/neutral/hypometabolic/reset_reagent()
 	holder.custom_metabolism = initial(holder.custom_metabolism)

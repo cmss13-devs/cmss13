@@ -34,7 +34,7 @@
 	description = "Accelerates cell division around corroded areas in order to replace the lost tissue. Excessive use can trigger apoptosis."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
-	value = 1
+	value = 2
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(0, potency)
@@ -60,7 +60,7 @@
 	description = "Regenerates ruptured membranes resulting in the repair of damaged organic tissue. High concentrations can corrode the cell membranes."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
-	value = 1
+	value = 2
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, potency = 1)
 	M.heal_limb_damage(potency, 0)
@@ -175,7 +175,7 @@
 	description = "Vastly improves the blood's natural ability to coagulate and stop bleeding by heightening platelet production and effectiveness. Overdosing will cause extreme blood clotting, resulting in severe tissue damage."
 	rarity = PROPERTY_UNCOMMON
 	max_level = 1
-	value = 2
+	value = 3
 
 /datum/chem_property/positive/hemostatic/process(mob/living/affected_mob, potency = 1, delta_time)
 	var/mob/living/carbon/human/effected_human = affected_mob
@@ -205,7 +205,6 @@
 	M.adjust_effect(potency*-0.75, PARALYZE)
 	M.adjust_effect(potency*-1, STUN)
 	M.adjust_effect(potency*-0.75, WEAKEN)
-	M.adjust_effect(-0.25*potency, STUN)
 	if(potency > CREATE_MAX_TIER_1)
 		M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
 		M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
@@ -568,7 +567,7 @@
 	description = "Stimulates cardiac muscles when exposed to electric shock and provides general healing. Useful in restarting the heart in combination with a defibrillator."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_REACTANT
-	value = 1
+	value = 2
 	cost_penalty = FALSE
 
 /datum/chem_property/positive/electrogenetic/trigger(A)
@@ -1104,7 +1103,7 @@
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_REACTANT
-	value = 5
+	value = 3
 	max_level = 1
 
 /datum/chem_property/positive/firepenetrating/reset_reagent()

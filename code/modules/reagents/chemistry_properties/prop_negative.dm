@@ -257,7 +257,7 @@
 	code = "HMR"
 	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system."
 	rarity = PROPERTY_UNCOMMON
-	value = 2
+	value = 1
 	cost_penalty = FALSE
 
 /datum/chem_property/negative/hemorrhaging/process(mob/living/M, potency = 1, delta_time)
@@ -527,7 +527,7 @@
 	description = "The chemical shows parasitic behavior towards live erythrocytes (red blood cells) in order to produce more of itself."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
-	value = 1
+	value = 2
 
 /datum/chem_property/negative/hemositic/pre_process(mob/living/M)
 	if(ishuman(M))

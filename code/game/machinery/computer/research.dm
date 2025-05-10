@@ -118,7 +118,7 @@
 	var/list/data = list(
 		"rsc_credits" = GLOB.chemical_data.rsc_credits,
 		"clearance_level" = GLOB.chemical_data.clearance_level,
-		"broker_cost" = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(GLOB.chemical_data.clearance_level), 1),
+		"broker_cost" = max((RESEARCH_LEVEL_INCREASE_MULTIPLIER*(GLOB.chemical_data.clearance_level)) + 1, 1),
 		"research_documents" = GLOB.chemical_data.research_documents,
 		"published_documents" = GLOB.chemical_data.research_publications,
 		"clearance_x_access" = GLOB.chemical_data.clearance_x_access,
@@ -172,7 +172,7 @@
 			if(!photocopier)
 				return
 			if(GLOB.chemical_data.clearance_level < 5)
-				var/cost = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(GLOB.chemical_data.clearance_level), 1)
+				var/cost = max((RESEARCH_LEVEL_INCREASE_MULTIPLIER*(GLOB.chemical_data.clearance_level)) + 1, 1)
 				if(cost <= GLOB.chemical_data.rsc_credits)
 					GLOB.chemical_data.update_credits(cost * -1)
 					GLOB.chemical_data.clearance_level++

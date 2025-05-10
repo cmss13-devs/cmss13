@@ -304,13 +304,13 @@
 			var/total_target_value
 			for(var/datum/chem_property/reference_property in reference.data.properties)
 				property_costs[reference_property.name] = clamp(reference_property.value + reference_property.level - 1, 1, PROPERTY_COST_MAX)
-				if(length(target.data.properties) > 5)
+				if(length(target.data.properties) > 4)
 					property_costs[reference_property.name] += PROPERTY_MULTIPLIER_ADD_BULK
 			for(var/datum/chem_property/target_property in target.data.properties)
 				total_target_value += target_property.value
 				if(!isPositiveProperty(target_property))
 					only_positive = FALSE
-			if(total_target_value > 10)
+			if(total_target_value > 7)
 				for(var/property_penalty in property_costs)
 					property_costs[property_penalty] += PROPERTY_MULTIPLIER_ADD_VALUE
 		if(!length(property_costs))
@@ -322,7 +322,7 @@
 					continue
 				switch(mode)
 					if(MODE_AMPLIFY)
-						property_costs[P.name] = max(min(P.level - 2, PROPERTY_COST_MAX), 1)
+						property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
 					if(MODE_SUPPRESS)
 						property_costs[P.name] = 2
 					if(MODE_RELATE)

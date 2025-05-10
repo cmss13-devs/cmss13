@@ -32483,6 +32483,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "dax" = (
@@ -48796,6 +48797,10 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_central_north)
+"upv" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "upP" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/asphalt,
@@ -61971,7 +61976,7 @@ aVG
 wpr
 qlr
 mZb
-mZb
+upv
 mZb
 aPB
 aSx

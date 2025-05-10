@@ -76,9 +76,6 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
-/datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
-	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
-
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
@@ -104,9 +101,6 @@
 	else
 		return FALSE
 
-/datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
-	ability_primacy = XENO_PRIMARY_ACTION_5
-
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
@@ -127,9 +121,6 @@
 		return
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', "mark_[x.icon_state]")
-
-/datum/action/xeno_action/activable/info_marker/queen
-	max_markers = 5
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
@@ -450,9 +441,6 @@
 	var/spitting = FALSE
 	var/sound_to_play = "acid_spit"
 	var/aim_turf = FALSE
-
-/datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
-	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

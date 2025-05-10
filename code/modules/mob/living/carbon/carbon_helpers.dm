@@ -34,11 +34,18 @@
 		apply_effect(4, WEAKEN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(5) //Deafens them temporarily
-	else if(dist >= 5 && dist < 7)
-		adjust_effect(3, STUN)
+	else if(dist >= 5 && dist <= 7)
+		adjust_effect(2, STUN)
 		if(!ear_deaf || !HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
 			AdjustEarDeafness(2)
 		to_chat(src, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+	else if(dist >= 8 && dist <= 11)
+		to_chat(src, SPAN_DANGER("The distant roar triggers a primal fear within you, causing you to hesitate!"))
+	if(dist <= 11)
+		adjust_effect(6, SUPERSLOW)
+		if(ishuman(src))
+			var/mob/living/carbon/human/human_target = src
+			human_target.activate_degraded_accuracy(queen.screech_accdeg_str, queen.screech_accdeg_dur)
 
 ///Checks if something prevents sharp objects from interacting with the mob (such as armor blocking surgical tools / surgery)
 /mob/living/carbon/proc/get_sharp_obj_blocker(obj/limb/limb)

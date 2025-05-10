@@ -26,6 +26,16 @@
 
 	var/charges = NO_ACTION_CHARGES
 
+	// Restrictions
+	/// If the ability shouldn't be usable while immature
+	var/maturity_restricted = FALSE
+	/// If ability shouldn't be usable while owner is in a special state but it shouldn't be shuffled around
+	var/block_on_special_state = FALSE
+	/// If ability shouldn't be visible while owner is in a special state
+	var/hide_on_special_state = FALSE
+	/// If ability shouldn't be visible while owner is not in a special state
+	var/hide_off_special_state = FALSE
+
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
@@ -76,9 +86,25 @@
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
 		return FALSE
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !HAS_TRAIT(X, TRAIT_DAZED) && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
-		return TRUE
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.needs_maturity && maturity_restricted && !xeno.is_mature)
+		return FALSE
+	if(xeno.utilizes_special_states)
+		if(hide_on_special_state)
+			if(!xeno.special_state)
+				unhide_from(xeno)
+			if(xeno.special_state)
+				hide_from(xeno)
+				return FALSE
+		if(hide_off_special_state)
+			if(!xeno.special_state)
+				hide_from(xeno)
+				return FALSE
+			if(xeno.special_state)
+				unhide_from(xeno)
+		if(xeno.special_state && block_on_special_state)
+			return FALSE
+	if(xeno && !xeno.is_mob_incapacitated() && !HAS_TRAIT(xeno, TRAIT_DAZED) && xeno.body_position == STANDING_UP && !xeno.buckled && xeno.plasma_stored >= plasma_cost)
 
 /datum/action/xeno_action/give_to(mob/living/L)
 	..()
@@ -155,9 +181,6 @@
 // Activable actions - most abilities in the game. Require Shift/Middle click to do their 'main' effects.
 // The action_activate code of these actions does NOT call use_ability.
 /datum/action/xeno_action/activable
-
-/datum/action/xeno_action/activable/can_use_action()
-	return TRUE
 
 // Called when the action is clicked on.
 // For non-activable Xeno actions, this is used to

@@ -307,6 +307,22 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
+	// Queen maturity vars made universal for ease of reuse
+	/// Does the xeno use maturity?
+	var/needs_maturity = FALSE
+	/// Does the xeno start mature?
+	var/starts_mature = FALSE
+	/// Is the xeno mature?
+	var/is_mature = FALSE
+	/// How long does the xeno need to live to be mature?
+	var/maturity_time_needed = 0 MINUTES
+	var/maturity_timer_id = TIMER_ID_NULL
+	// Special state for mechanics that switch abilities on the fly (i.e: Queen going on/off ovi)
+	/// Does the xeno have a special state ?
+	var/utilizes_special_states = FALSE
+	/// Is the xeno in a special state?
+	var/special_state = FALSE
+
 	var/icon_xeno
 	var/icon_xenonid
 
@@ -450,6 +466,9 @@
 	if(mob_size < MOB_SIZE_BIG)
 		mob_flags |= SQUEEZE_UNDER_VEHICLES
 
+	if(needs_maturity && !is_mature)
+		maturity_timer_id = addtimer(CALLBACK(src, PROC_REF(reach_maturity)), maturity_time_needed, TIMER_UNIQUE|TIMER_STOPPABLE)
+
 	GLOB.living_xeno_list += src
 	GLOB.xeno_mob_list += src
 	xeno_inhand_item_offset = (icon_size - 32) * 0.5
@@ -515,6 +534,12 @@
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
+
+/mob/living/carbon/xenomorph/proc/reach_maturity()
+	is_mature = TRUE
+	if(maturity_timer_id != TIMER_ID_NULL)
+		deltimer(maturity_timer_id)
+		maturity_timer_id = TIMER_ID_NULL
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER

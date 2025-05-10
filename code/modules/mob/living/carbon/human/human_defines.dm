@@ -114,6 +114,9 @@
 	var/temporary_slowdown = 0 //Stacking slowdown caused from effects, currently used by neurotoxin gas
 	var/shield_slowdown = 0 // Slowdown from readying shields
 
+	var/accuracy_degredation_active = FALSE // Only one degredation at a time, thanks!
+	var/accuracy_degredation = 0 // How degraded is the accuracy of fired projectiles
+
 	var/datum/equipment_preset/assigned_equipment_preset
 	var/rank_override
 	var/rank_fallback

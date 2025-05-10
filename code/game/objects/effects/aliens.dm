@@ -338,7 +338,6 @@
 	START_PROCESSING(SSoldeffects, src)
 
 /obj/effect/xenomorph/acid/Destroy()
-	UnregisterSignal(acid_t, COMSIG_MOVABLE_MOVED)
 	acid_t = null
 	STOP_PROCESSING(SSoldeffects, src)
 	. = ..()

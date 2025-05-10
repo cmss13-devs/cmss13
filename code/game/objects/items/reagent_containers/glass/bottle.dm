@@ -17,7 +17,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/bottle/dropped(mob/user)

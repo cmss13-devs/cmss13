@@ -28,6 +28,7 @@
 #define COMSIG_SNACK_EATEN "snack_eaten"
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+	#define COMSIG_ITEM_PICKUP_CANCELLED (1<<0)
 
 ///from /obj/item/device/broadcasting
 #define COMSIG_BROADCAST_GO_LIVE "broadcast_live"

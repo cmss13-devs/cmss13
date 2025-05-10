@@ -110,8 +110,6 @@
 				user.UpdateDamageIcon()
 		else
 			user.take_limb_damage(0,force)
-		return 1
-	return 0
 
 /obj/item/grown/nettle/proc/lose_leaves(mob/user)
 	if(force > 0)
@@ -135,8 +133,8 @@
 	potency_divisior = 2.5
 
 /obj/item/grown/nettle/death/pickup(mob/living/carbon/human/user as mob)
-
-	if(..() && prob(50))
+	. = ..()
+	if(istype(user) && !user.gloves && prob(50))
 		user.apply_effect(5, PARALYZE)
 		to_chat(user, SPAN_DANGER("You are stunned by the deathnettle when you try picking it up!"))
 

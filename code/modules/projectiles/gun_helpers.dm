@@ -149,7 +149,7 @@ DEFINES in setup.dm, referenced here.
 	return FALSE
 
 /obj/item/weapon/gun/pickup(mob/user)
-	..()
+	. = ..()
 
 	unwield(user)
 

@@ -191,6 +191,27 @@
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 
+/datum/ammo/xeno/acid/mangonel_shotgun
+	damage = 10
+	bonus_projectiles_type = /datum/ammo/xeno/acid/mangonel_shotgun/extra
+	accurate_range = 5
+	max_range = 5
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_4
+
+/datum/ammo/xeno/acid/mangonel_shotgun/extra
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0
+
+/datum/ammo/xeno/acid/mangonel_siege
+	name = "acid bolt"
+	icon_state = "xeno_acid_strong"
+	damage = 30
+
+/datum/ammo/xeno/acid/mangonel_siege/on_hit_obj(obj/target, obj/projectile/proj)
+	var/obj/structure/barricade/cade = target
+	if(istype(target, /obj/structure/barricade))
+		cade.take_acid_damage(damage)
+
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"
 	icon_state = "xeno_acid_normal"

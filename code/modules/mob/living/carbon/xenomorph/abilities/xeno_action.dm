@@ -105,6 +105,7 @@
 		if(xeno.special_state && block_on_special_state)
 			return FALSE
 	if(xeno && !xeno.is_mob_incapacitated() && !HAS_TRAIT(xeno, TRAIT_DAZED) && xeno.body_position == STANDING_UP && !xeno.buckled && xeno.plasma_stored >= plasma_cost)
+		return TRUE
 
 /datum/action/xeno_action/give_to(mob/living/L)
 	..()

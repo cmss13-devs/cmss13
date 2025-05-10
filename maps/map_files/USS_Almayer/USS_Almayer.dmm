@@ -1954,6 +1954,10 @@
 	},
 /turf/open/floor/almayer/blue/east,
 /area/almayer/living/basketball)
+"aeJ" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aeK" = (
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/starboard_missiles)
@@ -2292,6 +2296,19 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
+"afy" = (
+/obj/structure/surface/rack,
+/obj/item/tool/weldingtool/simple{
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/obj/item/tool/weldingtool/simple{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/item/tool/weldpack/minitank,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "afz" = (
 /obj/effect/landmark/start/doctor,
 /obj/effect/landmark/late_join/doctor,
@@ -2487,10 +2504,29 @@
 /obj/structure/machinery/vending/dinnerware,
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/cafeteria_officer)
+"afM" = (
+/obj/structure/surface/rack,
+/obj/item/tool/mop,
+/obj/item/tool/mop{
+	pixel_x = 6
+	},
+/obj/item/tool/mop{
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"afN" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "afO" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
+"afP" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "afQ" = (
 /obj/structure/largecrate/random/mini{
 	pixel_y = 5;
@@ -2909,6 +2945,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
+"agI" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/cell_charger{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "agJ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/disposalpipe/junction{
@@ -3116,6 +3159,10 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/lower_medical_medbay)
+"ahc" = (
+/obj/structure/closet/secure_closet/engineering_welding,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
+/area/almayer/command/airoom)
 "ahd" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -3166,6 +3213,12 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
+"ahh" = (
+/obj/structure/safe{
+	name = "stored weapons safe"
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "ahi" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	name = "\improper Evacuation Airlock SU-2";
@@ -3311,6 +3364,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/operating_room_one)
+"ahy" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/obj/structure/machinery/camera/autoname/almayer/containment/ares{
+	autoname = 0;
+	c_tag = "AI - SecVault";
+	dir = 8
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3_4range,
+/area/almayer/command/airoom)
 "ahz" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3401,6 +3463,22 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/chemistry)
+"ahJ" = (
+/obj/structure/surface/rack,
+/obj/item/device/defibrillator/synthetic/seegson,
+/obj/item/device/defibrillator/synthetic/seegson{
+	pixel_y = -7
+	},
+/obj/item/cell/high{
+	pixel_y = 16;
+	pixel_x = 5
+	},
+/obj/item/cell/high{
+	pixel_y = 16;
+	pixel_x = -7
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "ahK" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1;
@@ -3462,6 +3540,24 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/living/chapel)
+"ahS" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = 7
+	},
+/obj/item/reagent_container/spray/cleaner{
+	pixel_x = -5
+	},
+/obj/item/tool/soap{
+	pixel_y = 13;
+	pixel_x = -6
+	},
+/obj/item/reagent_container/glass/rag{
+	pixel_y = 13;
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "ahT" = (
 /obj/structure/machinery/optable,
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -3538,6 +3634,11 @@
 "aic" = (
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cichallway)
+"aid" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/glass/watertank/atmos,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aie" = (
 /obj/effect/landmark/railgun_computer,
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -3562,6 +3663,27 @@
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/starboard_missiles)
+"aih" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/structure/machinery/disposal/delivery{
+	density = 0;
+	desc = "A pneumatic delivery unit.";
+	icon_state = "delivery_engi";
+	name = "Returns";
+	pixel_x = 25;
+	pixel_y = 28
+	},
+/obj/structure/surface/rack,
+/obj/item/device/t_scanner{
+	pixel_x = -5
+	},
+/obj/item/device/t_scanner{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aii" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/transmitter/rotary{
@@ -3579,6 +3701,19 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/almayer/medical/operating_room_two)
+"aij" = (
+/obj/structure/surface/rack,
+/obj/item/maintenance_jack{
+	pixel_y = 6
+	},
+/obj/item/maintenance_jack{
+	pixel_y = 13
+	},
+/obj/item/maintenance_jack{
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aik" = (
 /obj/structure/machinery/iv_drip,
 /obj/structure/machinery/door_control{
@@ -23087,21 +23222,6 @@
 	},
 /turf/open/floor/carpet,
 /area/almayer/shipboard/sea_office)
-"cJI" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/obj/structure/machinery/disposal/delivery{
-	density = 0;
-	desc = "A pneumatic delivery unit.";
-	icon_state = "delivery_engi";
-	name = "Returns";
-	pixel_x = 25;
-	pixel_y = 28
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "cJK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -29680,13 +29800,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "fBO" = (
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
 /obj/item/clothing/glasses/science{
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/structure/machinery/chem_master/vial,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "fCg" = (
@@ -31105,7 +31223,7 @@
 	pixel_x = 5;
 	pixel_y = 29
 	},
-/obj/structure/machinery/chem_master,
+/obj/structure/machinery/chem_master/vial,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "glG" = (
@@ -35076,6 +35194,17 @@
 /area/almayer/shipboard/weapon_room)
 "hWM" = (
 /obj/structure/surface/rack,
+/obj/item/reagent_container/glass/bucket/janibucket{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = 8;
+	pixel_x = 7
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = -4;
+	pixel_x = 7
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "hWO" = (
@@ -42691,9 +42820,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/stern)
 "lid" = (
-/obj/structure/machinery/chem_master{
-	vial_maker = 1
-	},
+/obj/structure/machinery/chem_master/vial,
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "liJ" = (
@@ -61752,14 +61879,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/stern)
-"tmV" = (
-/obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	autoname = 0;
-	c_tag = "AI - SecVault";
-	dir = 8
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
 "tmX" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices/cryo)
@@ -132590,7 +132709,7 @@ lmz
 lmz
 lmz
 lmz
-lmz
+daz
 daz
 daz
 daz
@@ -132792,7 +132911,7 @@ bdH
 bdH
 lmz
 lmz
-lmz
+daz
 daz
 daz
 daz
@@ -132995,10 +133114,10 @@ bdH
 bdH
 lmz
 lmz
-lmz
 daz
-hWM
-hWM
+ahJ
+ahh
+agI
 hWM
 ebN
 daz
@@ -133198,11 +133317,11 @@ aaa
 bdH
 lmz
 lmz
-lmz
 daz
-hWM
+ahS
 fVx
-hWM
+fVx
+afy
 ebN
 tId
 ltc
@@ -133401,11 +133520,11 @@ aaa
 bdH
 bdH
 bdH
-bdH
 izf
-hWM
+aid
 qQS
-hWM
+qQS
+afM
 ebN
 tId
 fVx
@@ -133413,7 +133532,7 @@ qQS
 ebN
 naj
 itg
-qQS
+aeJ
 daz
 daz
 daz
@@ -133604,11 +133723,11 @@ aaa
 aaa
 bdH
 bdH
-bdH
 vVk
-cJI
+aih
 fVx
-hWM
+fVx
+afN
 ebN
 tId
 qQS
@@ -133807,10 +133926,10 @@ aaa
 aaa
 bdH
 bdH
-bdH
 fhR
 nKO
-tmV
+qQS
+qQS
 qQS
 gDh
 qQS
@@ -134010,11 +134129,11 @@ aab
 bdH
 bdH
 bdH
-bdH
-npq
 daz
-daz
-daz
+aij
+ahy
+ahc
+afP
 daz
 daz
 daz
@@ -134213,12 +134332,12 @@ aab
 aaa
 bdH
 bdH
-bdH
-bdH
-bdH
-bdH
-bdH
-bdH
+npq
+daz
+daz
+daz
+daz
+daz
 bdH
 bdH
 bdH

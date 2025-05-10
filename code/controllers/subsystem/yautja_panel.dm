@@ -87,6 +87,8 @@ SUBSYSTEM_DEF(yautja_panel)
 	var/datum/entity/clan_player/target_yautja
 	var/datum/entity/player/target_player
 	var/datum/entity/clan/target_clan
+	var/forbid_yautja_save = FALSE
+	var/forbid_clan_save = FALSE
 	var/target_ckey
 	if(params["target_player"])
 		target_yautja = GET_CLAN_PLAYER(params["target_player"])
@@ -337,7 +339,26 @@ SUBSYSTEM_DEF(yautja_panel)
 			if(!verify_superadmin(user))
 				to_chat(user, SPAN_WARNING("You are not authorized to do this."))
 				return FALSE
-			to_chat(user, SPAN_WARNING("This command ([action]) is not yet functional."))
+
+			var/player_name = target_yautja.player_id
+			var/typeout = player_name
+			if(!typeout)
+				typeout = "null"
+
+			var/input = tgui_input_text(src, "Are you sure you want to purge this person? Type '[typeout]' to purge", "Confirm Purge") as text|null
+
+
+			if(!input || input != typeout)
+				return FALSE
+
+			message_admins("[key_name_admin(src)] has purged [player_name]'s clan profile.")
+			to_chat(src, SPAN_NOTICE("You have purged [player_name]'s clan profile."))
+
+			target_yautja.delete()
+
+			if(target_player.owning_client)
+				target_player.owning_client.clan_info = null
+			forbid_yautja_save = TRUE
 
 		if("delete_clan")
 			if(!verify_superadmin(user))
@@ -358,10 +379,10 @@ SUBSYSTEM_DEF(yautja_panel)
 	else
 		to_chat(user, SPAN_WARNING("The UI data will not be reloaded for this change, updates happen automatically every 30 minutes."))
 
-	if(target_clan)
+	if(target_clan && !forbid_clan_save)
 		target_clan.save()
 		target_clan.sync()
-	if(target_yautja)
+	if(target_yautja && !forbid_yautja_save)
 		target_yautja.save()
 		target_yautja.sync()
 

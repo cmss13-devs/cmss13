@@ -156,12 +156,14 @@
 				user.flick_attack_overlay(target, "slam")
 				playsound(target, sound_to_play, 50, 1)
 				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
+				if(isxeno(target))
+					target.apply_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
 
 		if((INTENT_DISARM))
 			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
 				var/reverse_facing = get_dir(target, user)
-				if(has_chain)
+				if(has_chain) // Generating the chain for the effect, its a bulelt so it looks like youre "throwing it / it looks like its travelling"
 					var/obj/projectile/hook_projectile = new /obj/projectile(user.loc, create_cause_data("hook"), user)
 					var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/yautja/gauntlet_hook]
 					hook_projectile.generate_bullet(ammoDatum, bullet_generator = user)
@@ -209,11 +211,12 @@
 		if((INTENT_HARM)) // This is how you farm combo counters, so there's no special interaction.
 			playsound(target, sound_to_play, 50, 1)
 			user.flick_attack_overlay(target, "slam")
+
 	if(target != user)
 		if(target.stat == DEAD)
 			return
 		combo_counter++
-		COOLDOWN_START(src, combo_timeout, 15 SECONDS)
+		COOLDOWN_START(src, combo_timeout, 15 SECONDS) // This just sets combo to 0 so people dont "pre-stack combos"
 		START_PROCESSING(SSobj, src)
 
 

@@ -12,7 +12,7 @@
 	)
 	var/rank = "Private"
 	var/rank_short = PAY_SHORT_ME1
-	slot = ACCESSORY_SLOT_RANK
+	worn_accessory_slot = ACCESSORY_SLOT_RANK
 	high_visibility = TRUE
 	gender = PLURAL
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED

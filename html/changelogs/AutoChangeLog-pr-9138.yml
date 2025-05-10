@@ -1,6 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - bugfix: "setting aSL on specs now changes their hud icon again"
-  - bugfix: "fixed mortar hud icon not showing up on squad manager and orbit panel"
-  - imageadd: "added sniper hud icon for pmc spec"

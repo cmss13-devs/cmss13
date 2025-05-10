@@ -705,7 +705,7 @@
 	scatter = SCATTER_AMOUNT_TIER_7
 	scatter_unwielded = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
-	durability_loss = GUN_DURABILITY_LOSS_GUARANTEED // see gun description for lore accurate representation
+	durability_loss = GUN_DURABILITY_LOSS_COINFLIP // see gun description for lore accurate representation
 
 //-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.

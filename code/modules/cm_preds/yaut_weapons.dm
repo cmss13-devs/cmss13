@@ -135,6 +135,7 @@
 	var/executing = FALSE
 	var/chain_message = "GET OVER HERE!"
 	var/message_color = "#d12d2d"
+	COOLDOWN_DECLARE(combo_timeout)
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
@@ -204,6 +205,14 @@
 		if(target.stat == DEAD)
 			return
 		combo_counter++
+		COOLDOWN_START(src, combo_timeout, 10 SECONDS)
+		START_PROCESSING(SSobj, src)
+
+
+/obj/item/weapon/bracer_attachment/chain_gauntlets/process()
+	if(COOLDOWN_FINISHED(src, combo_timeout))
+		combo_counter = 0
+		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/proc/get_over_here(mob/target, mob/living/user)
 	var/datum/beam/chain_whip
@@ -223,6 +232,7 @@
 			to_chat(user, SPAN_NOTICE("This one already has chains on it!"))
 			return
 
+
 /obj/item/weapon/bracer_attachment/chain_gauntlets/unique_action(mob/user)
 	. = ..()
 	var/mob/living/carbon/human/yautja_user = user
@@ -240,7 +250,6 @@
 /obj/item/weapon/bracer_attachment/chain_gauntlets/proc/undepoy_gauntlets()
 	src.gauntlet_deployed = FALSE
 	punch_knockback = 5
-
 
 /mob/living/carbon/human/proc/start_stomping(mob/user)
 	src.AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")

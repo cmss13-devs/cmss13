@@ -450,9 +450,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear/trucker_red
 	path = /obj/item/clothing/head/soft/trucker/red
 
-/datum/gear/synthetic/headwear/turban
-	path = /obj/item/clothing/head/beanie/royal_marine/turban/neutral
-
 /datum/gear/synthetic/helmet
 	category = "Helmet"
 
@@ -572,9 +569,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/suit/labcoat
 	path = /obj/item/clothing/suit/storage/labcoat
-
-/datum/gear/synthetic/suit/labcoat_wy
-	path = /obj/item/clothing/suit/storage/labcoat/wy
 
 /datum/gear/synthetic/suit/labcoat_researcher
 	path = /obj/item/clothing/suit/storage/labcoat/researcher

@@ -934,14 +934,14 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
+"adQ" = (
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_east)
-"adS" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/plating,
-/area/desert_dam/exterior/landing_pad_one)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/southeast,
@@ -61526,7 +61526,7 @@ aQW
 aQW
 aQW
 bgN
-adS
+adQ
 bhu
 bhN
 bin

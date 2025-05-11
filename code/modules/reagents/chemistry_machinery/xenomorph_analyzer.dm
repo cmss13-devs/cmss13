@@ -5,6 +5,7 @@
 	anchored = TRUE
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "xeno_analyzer" //for the time while no sprites
+	health = STRUCTURE_HEALTH_REINFORCED
 	use_power = USE_POWER_NONE
 	wrenchable = FALSE
 	idle_power_usage = 40

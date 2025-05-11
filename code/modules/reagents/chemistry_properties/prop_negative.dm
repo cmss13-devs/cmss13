@@ -6,6 +6,8 @@
 /datum/chem_property/negative/process(mob/living/M, potency = 1, delta_time)
 	M.last_damage_data = create_cause_data("Harmful substance", holder.last_source_mob?.resolve())
 
+	return ..()
+
 /datum/chem_property/negative/can_cause_harm()
 	return TRUE
 

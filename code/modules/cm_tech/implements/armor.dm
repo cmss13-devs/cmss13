@@ -6,7 +6,7 @@
 	icon_state = "regular2_100"
 	var/base_icon_state = "regular2"
 
-	slot = ACCESSORY_SLOT_ARMOR_C
+	worn_accessory_slot = ACCESSORY_SLOT_ARMOR_C
 	w_class = SIZE_MEDIUM
 	/// is it *armor* or something different & irrelevant and always passes damage & doesnt take damage to itself?
 	var/is_armor = TRUE

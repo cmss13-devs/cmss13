@@ -934,6 +934,10 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
+"adQ" = (
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -48797,10 +48801,6 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/desert_shore1/west,
 /area/desert_dam/exterior/river/riverside_central_north)
-"upv" = (
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/plating,
-/area/desert_dam/exterior/landing_pad_one)
 "upP" = (
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/asphalt,
@@ -61976,7 +61976,7 @@ aVG
 wpr
 qlr
 mZb
-upv
+adQ
 mZb
 aPB
 aSx

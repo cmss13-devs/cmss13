@@ -372,9 +372,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/shoes/yellow
 	path = /obj/item/clothing/shoes/yellow
 
-/datum/gear/synthetic/shoes/reebok
-	path = /obj/item/clothing/shoes/stompers
-
 /datum/gear/synthetic/headwear
 	category = "Headwear"
 

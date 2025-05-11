@@ -108,11 +108,15 @@
 	playsound(user, unload_sound, 30, 1)
 
 
-/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
-		attach_to_gun(user,I)
+/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/gun_helper, mob/user)
+	if(istype(gun_helper, /obj/item/stack/repairable))
+		attempt_repair(user, gun_helper)
 		return
-	return cylinder.attackby(I, user)
+
+	if(istype(gun_helper,/obj/item/attachable) && check_inactive_hand(user))
+		attach_to_gun(user,gun_helper)
+		return
+	return cylinder.attackby(gun_helper, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))

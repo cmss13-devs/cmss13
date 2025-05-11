@@ -76,8 +76,6 @@
 			break
 
 	if (found_shield)
-		qdel(found_shield)
-
 		praetorian.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
 
 	else

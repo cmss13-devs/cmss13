@@ -60,6 +60,19 @@
 /datum/element/drop_retrieval/pouch_sling/dropped(obj/item/I, mob/user)
 	container.handle_retrieval(user)
 
+/datum/element/drop_retrieval/powerloader
+	compatible_types = list(/obj/item/weapon/gun)
+	var/linked_loader
+
+/datum/element/drop_retrieval/powerloader/Attach(datum/target, loader)
+	. = ..()
+	if (.)
+		return
+	linked_loader = loader
+
+/datum/element/drop_retrieval/powerloader/dropped(obj/item/weapon/gun/G, mob/user)
+	G.forceMove(linked_loader)
+
 /datum/element/drop_retrieval/mister
 	compatible_types = list(/obj/item/reagent_container/spray/mister)
 

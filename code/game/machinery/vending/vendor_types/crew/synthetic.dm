@@ -326,6 +326,24 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/glasses/bimex_new_black
 	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/black
 
+/datum/gear/synthetic/glasses/bimex_new_bronze
+	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
+
+/datum/gear/synthetic/glasses/fake_bimex_red
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/red
+
+/datum/gear/synthetic/glasses/fake_bimex_orange
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/orange
+
+/datum/gear/synthetic/glasses/fake_bimex_yellow
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/yellow
+
+/datum/gear/synthetic/glasses/fake_bimex_green
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/green
+
+/datum/gear/synthetic/glasses/fake_bimex_blue
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/blue
+
 
 /datum/gear/synthetic/shoes
 	category = "Shoes"
@@ -353,6 +371,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/shoes/yellow
 	path = /obj/item/clothing/shoes/yellow
+
+/datum/gear/synthetic/shoes/reebok
+	path = /obj/item/clothing/shoes/stompers
 
 /datum/gear/synthetic/headwear
 	category = "Headwear"
@@ -659,6 +680,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/dress_gloves
 	path = /obj/item/clothing/gloves/marine/dress
+
+/datum/gear/synthetic/wypatchblack
+	path = /obj/item/clothing/accessory/patch/wy
+
+/datum/gear/synthetic/wypatchsquare
+	path = /obj/item/clothing/accessory/patch/wysquare
+
+/datum/gear/synthetic/wypatchwhite
+	path = /obj/item/clothing/accessory/patch/wy_white
+
+/datum/gear/synthetic/twepatch
+	path = /obj/item/clothing/accessory/patch/twe
 
 
 //------------EXPERIMENTAL TOOLS---------------

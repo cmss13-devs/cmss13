@@ -678,19 +678,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/dress_gloves
 	path = /obj/item/clothing/gloves/marine/dress
 
-/datum/gear/synthetic/wypatchblack
-	path = /obj/item/clothing/accessory/patch/wy
-
-/datum/gear/synthetic/wypatchsquare
-	path = /obj/item/clothing/accessory/patch/wysquare
-
-/datum/gear/synthetic/wypatchwhite
-	path = /obj/item/clothing/accessory/patch/wy_white
-
-/datum/gear/synthetic/twepatch
-	path = /obj/item/clothing/accessory/patch/twe
-
-
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
 	name = "\improper W-Y Experimental Tools Vendor"

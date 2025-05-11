@@ -1107,6 +1107,13 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "rmc_turban"
 	item_state = "rmc_turban"
 
+/obj/item/clothing/head/beanie/royal_marine/turban/neutral
+	name = "turban"
+	desc = "A standard military turban. Considered a rare item, these kind of turbans are prized by collectors in the UA."
+	icon_state = "rmc_turban"
+	item_state = "rmc_turban"
+
+
 /obj/item/clothing/head/beret/royal_marine
 	name = "royal marine beret"
 	desc = "A green beret belonging to the royal marines commando. This beret symbolizes a royal marines ability to fight in any environment, desert, sea, artic or space a royal marine will always be ready."

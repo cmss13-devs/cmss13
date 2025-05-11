@@ -934,17 +934,17 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
-"adR" = (
-/obj/effect/blocker/toxic_water/Group_2,
-/turf/open/desert/desert_shore/shore_edge1,
-/area/desert_dam/exterior/river/riverside_east)
-"adS" = (
+"adQ" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_one)
+"adR" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/desert/desert_shore/shore_edge1,
+/area/desert_dam/exterior/river/riverside_east)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/southeast,
@@ -61729,7 +61729,7 @@ aPF
 aSC
 aau
 aOc
-adS
+adQ
 aVk
 aVk
 aVk

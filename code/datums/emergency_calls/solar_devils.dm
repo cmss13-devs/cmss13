@@ -89,4 +89,3 @@
 
 	to_chat(mob, SPAN_ROLE_BODY("You are a member of the 3rd Battalion 'Solar Devils', part of the USCM's 2nd Division, 1st Regiment. Unlike most of the USS Almayer's troops, you are well-trained and properly-equipped career marines. Semper Fidelis."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), mob, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
-

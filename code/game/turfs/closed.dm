@@ -45,7 +45,7 @@
 			if(length(wall.hiding_humans))
 				var/human
 				for(var/mob/living/boosting_human in wall.hiding_humans)
-					if(boosting_human.loc == loc)
+					if(boosting_human.loc == user.loc)
 						human = boosting_human
 						break
 				if(human)

@@ -180,6 +180,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - name: Restore BYOND cache
+        uses: actions/cache@v3
+        with:
+          path: C:\\byond
+          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
       - name: Compile
         run: pwsh tools/ci/build.ps1
         env:

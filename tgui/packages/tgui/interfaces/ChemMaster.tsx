@@ -15,7 +15,6 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-// Helper function to sanitize text input similar to reject_bad_text in DM
 const sanitizeText = (text: string) => {
   if (!text) return '';
   // Remove control characters, emojis, and other problematic characters

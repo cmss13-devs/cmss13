@@ -27,6 +27,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	initial_jam_chance = GUN_JAM_CHANCE_LOW
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
 	durability_loss = GUN_DURABILITY_LOSS_MEDIUM
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = "shell_load"

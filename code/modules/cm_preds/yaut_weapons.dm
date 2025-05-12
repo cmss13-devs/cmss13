@@ -254,9 +254,10 @@
 		addtimer(CALLBACK(src, PROC_REF(undepoy_gauntlets)), 10 SECONDS)
 		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
-	else
-		gauntlet_deployed = FALSE
-		punch_knockback = 5
+
+	if(gauntlet_deployed)
+		to_chat(user, SPAN_WARNING("You're already charging."))
+		return
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/proc/undepoy_gauntlets()
 	src.gauntlet_deployed = FALSE
@@ -265,9 +266,11 @@
 /mob/living/carbon/human/proc/start_stomping(mob/user)
 	src.AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
 	addtimer(CALLBACK(src, PROC_REF(stop_stomping)), 10 SECONDS)
+	src.species.slowdown += -0.5
 
 /mob/living/carbon/human/proc/stop_stomping(mob/user, obj/item/weapon/bracer_attachment/chain_gauntlets/yautja_glove)
 	src.GetExactComponent(/datum/component/footstep).RemoveComponent()
+	src.species.slowdown -= -0.5
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/verb/gauntlet_guard()
 	set category = "Weapons"

@@ -117,28 +117,35 @@
 		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
-		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
-			. += "Slashing: PERMITTED"
-		else
+		if(hive.hive_flags & XENO_SLASH_FORBIDDEN)
 			. += "Slashing: FORBIDDEN"
-
-		if(hive.construction_allowed == XENO_LEADER)
-			. += "Construction Placement: LEADERS"
-		else if(hive.construction_allowed == NORMAL_XENO)
-			. += "Construction Placement: ANYONE"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
+		else if(hive.hive_flags & XENO_SLASH_RESTRICTED)
+			. += "Slashing: RESTRICTED AGAINST INFECTED"
 		else
-			. += "Construction Placement: QUEEN"
+			. += "Slashing: PERMITTED"
 
-		if(hive.destruction_allowed == XENO_LEADER)
+		if(hive.hive_flags & XENO_CONSTRUCTION_LEADERS_ONLY)
+			. += "Special Structure Placement: LEADERS"
+		else if(hive.hive_flags & XENO_CONSTRUCTION_QUEEN_ONLY)
+			. += "Special Structure Placement: QUEEN"
+		else if(hive.hive_flags & XENO_CONSTRUCTION_NOBODY)
+			. += "Special Structure Placement: NOBODY"
+		else
+			. += "Special Structure Placement: ANYONE"
+		
+		if(hive.hive_flags & XENO_DECONSTRUCTION_LEADERS_ONLY)
 			. += "Special Structure Destruction: LEADERS"
-		else if(hive.destruction_allowed == NORMAL_XENO)
-			. += "Special Structure Destruction: BUILDERS and LEADERS"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Construction Placement: NOBODY"
-		else
+		else if(hive.hive_flags & XENO_DECONSTRUCTION_QUEEN_ONLY)
 			. += "Special Structure Destruction: QUEEN"
+		else if(hive.hive_flags & XENO_DECONSTRUCTION_NOBODY)
+			. += "Special Structure Destruction: NOBODY"
+		else
+			. += "Special Structure Destruction: BUILDERS and LEADERS"
+
+		if(hive.hive_flags & XENO_UNNESTING_RESTRICTED)
+			. += "Unnesting: BUILDERS"
+		else
+			. += "Unnesting: ANYONE"
 
 		if(hive.hive_orders)
 			. += "Hive Orders: [hive.hive_orders]"

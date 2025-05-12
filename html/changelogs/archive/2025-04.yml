@@ -526,3 +526,39 @@
   - balance: portable composite barricades are now meltable
   hry-gh:
   - bugfix: fixes the orbit menu totally breaking when someone is not wearing an id
+2025-04-27:
+  BlitzArde:
+  - rscadd: Preds can craft more things.
+  JackieEstegado:
+  - bugfix: Defibrillation chems now always notify the player that they are being
+      revived
+  - bugfix: Defibrillation property no longer keeps healing the patient once its above
+      -100 health
+  - bugfix: Fixed a case where defibrillation property would prematurely revive a
+      patient despite them being below -100 health
+  - bugfix: Paining chem property now causes pain
+  - bugfix: Photosensitive chem property is no longer harmless
+  Red-byte3D:
+  - code_imp: throw_carbon is now a all living proc instead of just being a xenomorph
+      variant
+  - bugfix: Sandbags will now properly show damage on examine
+  - bugfix: Airlocks no longer get deleted when theres no chosen type
+  genericusername21:
+  - rscdel: removed ME2 rank pins off the recruiter's service jacket
+  hry-gh:
+  - admin: the thunderdome is no longer on the admin z level - you summon it under
+      the Admin tab. there's also a new tdome option you can summon
+  seanlol092:
+  - qol: Announce where the dropship is from before and during departing (in auto)
+2025-04-28:
+  Aurallianz:
+  - bugfix: Trijent security survivor has WY accesses.
+  Drathek:
+  - bugfix: Fixed a runtime for stat panel examine whenever ghosting/logging out
+  - bugfix: Xenos can now bleed out when inside atoms (e.g. pipes)
+  - bugfix: Xenos now always take atleast 1 dmg from queen banishment (rather than
+      healing when in crit)
+  - qol: Banished xenos in a tunnel can now exit using alt+click (they could have
+      used the exit-tunnel verb however)
+  MistChristmas:
+  - bugfix: spawns ammo instead of extra pistols in the VP78 belt

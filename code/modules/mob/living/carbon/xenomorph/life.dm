@@ -9,7 +9,7 @@
 		return
 
 	if(banished)
-		apply_armoured_damage(ceil(health / XENO_BANISHMENT_DMG_DIVISOR))
+		apply_armoured_damage(max(ceil(health / XENO_BANISHMENT_DMG_DIVISOR), 1))
 
 	..()
 
@@ -174,12 +174,10 @@
 
 /mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
-		var/turf/T = loc
-		if(istype(T))
-			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
-				apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
-			else
-				apply_damage(-warding_aura, BRUTE)
+		if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
+			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
+		else
+			apply_damage(-warding_aura, BRUTE)
 
 	updatehealth()
 

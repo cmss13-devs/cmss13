@@ -1,0 +1,5 @@
+author: "Poslushneek"
+delete-after: True
+changes:
+  - rscadd: "Добавлена кнопка View Open Tickets"
+  - rscadd: "Добавлена кнопка Open Mentor Chat"

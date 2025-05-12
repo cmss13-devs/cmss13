@@ -670,7 +670,7 @@
 	if(!choice)
 		return
 
-	ptoggle_slash_delay = TRUE
+	toggle_slash_delay = TRUE
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph, do_claw_toggle_cooldown)), 30 SECONDS)
 
 	if(choice == "Allowed")

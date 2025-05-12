@@ -349,7 +349,7 @@
 		return FALSE //How did this even happen?
 	if(!length(open_xeno_leader_positions))
 		return FALSE //Too many leaders already (no available xeno leader positions)
-	if(xeno.hive_pos != NORMAL_XENO)
+	if(IS_XENO_LEADER(xeno))
 		return FALSE //Already on the list
 	var/leader_num = open_xeno_leader_positions[1]
 	xeno_leader_list[leader_num] = xeno
@@ -398,7 +398,7 @@
 	return TRUE
 
 /datum/hive_status/proc/replace_hive_leader(mob/living/carbon/xenomorph/original, mob/living/carbon/xenomorph/replacement)
-	if(!replacement || replacement.hive_pos != NORMAL_XENO)
+	if(!replacement || IS_XENO_LEADER(replacement))
 		return remove_hive_leader(original)
 
 	var/leader_num = GET_XENO_LEADER_NUM(original)

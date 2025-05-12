@@ -622,13 +622,13 @@
 		return FALSE
 
 	//Make sure construction is unrestricted
-	if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_LEADERS_ONLY) && X.hive_pos == NORMAL_XENO)
+	if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_LEADERS_ONLY) && IS_NORMAL_XENO(X))
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
 		return FALSE
-	else if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_QUEEN_ONLY) && !istype(X.caste, /datum/caste_datum/queen))
+	if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_QUEEN_ONLY) && !istype(X.caste, /datum/caste_datum/queen))
 		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
 		return FALSE
-	else if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_NOBODY))
+	if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_NOBODY))
 		to_chat(X, SPAN_WARNING("The hive is too weak and fragile to have the strength to design constructions."))
 		return FALSE
 

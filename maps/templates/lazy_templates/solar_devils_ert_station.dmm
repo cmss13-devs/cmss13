@@ -2139,10 +2139,6 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/adminlevel/ert_station/soalar_devils_station)
-"hc" = (
-/obj/structure/surface/table/reinforced/tacmap/five,
-/turf/open/floor/almayer/mono,
-/area/adminlevel/ert_station/soalar_devils_station)
 "hi" = (
 /obj/structure/bed/chair/vehicle/dropship_cockpit/pilot{
 	dir = 1;
@@ -2165,10 +2161,6 @@
 	pixel_y = 14
 	},
 /turf/open/floor/almayer/edge/smooth/east,
-/area/adminlevel/ert_station/soalar_devils_station)
-"hm" = (
-/obj/structure/surface/table/reinforced/tacmap/four,
-/turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "hn" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -8247,13 +8239,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/southeast,
 /area/adminlevel/ert_station/soalar_devils_station)
-"AN" = (
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
-/obj/structure/surface/table/reinforced/tacmap/three,
-/turf/open/floor/almayer/mono,
-/area/adminlevel/ert_station/soalar_devils_station)
 "AO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -10174,10 +10159,6 @@
 	pixel_y = 9
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"GS" = (
-/obj/structure/surface/table/reinforced/tacmap/six,
-/turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "GT" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -12375,13 +12356,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"NM" = (
-/obj/effect/decal/cleanable/dirt{
-	layer = 2.52
-	},
-/obj/structure/surface/table/reinforced/tacmap/two,
-/turf/open/floor/almayer/mono,
-/area/adminlevel/ert_station/soalar_devils_station)
 "NN" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -14271,7 +14245,7 @@
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
-/obj/structure/surface/table/reinforced/tacmap/one,
+/obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Td" = (
@@ -19514,7 +19488,7 @@ lM
 pV
 vC
 di
-hm
+VF
 Tb
 OG
 ZR
@@ -19616,8 +19590,8 @@ zr
 ur
 vZ
 LP
-hc
-NM
+VF
+Tb
 OG
 Rr
 ZR
@@ -19718,8 +19692,8 @@ Vv
 AQ
 WB
 di
-GS
-AN
+VF
+Tb
 OG
 XJ
 ZR

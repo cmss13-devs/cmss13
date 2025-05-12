@@ -280,6 +280,48 @@
 
 	unique_action(usr)
 
+/obj/item/weapon/bracer_attachment/chain_gauntlets/afterattack(atom/attacked_target, mob/user, proximity)
+	if(!proximity || !user || user.action_busy)
+		return FALSE
+
+	if(istype(attacked_target, /obj/structure/machinery/door/airlock))
+		var/obj/structure/machinery/door/airlock/door = attacked_target
+		if(door.operating || !door.density || door.locked)
+			return FALSE
+		if(door.heavy)
+			to_chat(usr, SPAN_DANGER("[door] is too heavy to be forced open."))
+			return FALSE
+		user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
+			user.visible_message(SPAN_DANGER("[user] forces [door] open with the [name]!"), SPAN_DANGER("You force [door] open with the [name]."))
+			door.open(TRUE)
+			door.ex_act(100)
+			playsound(user, 'sound/effects/metal_crash.ogg', 75)
+
+	else if(istype(attacked_target, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/door = attacked_target
+		if(door.isSwitchingStates || user.a_intent == INTENT_HARM)
+			return
+		if(door.density)
+			user.visible_message(SPAN_DANGER("[user] grips [door] with their [name] and strains to smash it open..."), SPAN_DANGER("You grip the [door] by the gap and strain to force it open..."))
+			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && door.density)
+				user.visible_message(SPAN_DANGER("[user] forces [door] open using the [name]!"), SPAN_DANGER("You force [door] open with your [name]."))
+				door.open()
+				door.ex_act()
+		else
+			user.visible_message(SPAN_DANGER("[user] pushes [door] with their [name] to force it closed..."), SPAN_DANGER("You push [door] with your [name] to force it closed..."))
+			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !door.density)
+				user.visible_message(SPAN_DANGER("[user] forces [door] closed using the [name]!"), SPAN_DANGER("You force [door] closed with your [name]."))
+				door.close()
+				door.ex_act()
+
+
+
+
+
+
 /obj/item/weapon/bracer_attachment/wristblades
 	name = "wrist blade"
 	plural_name = "wrist blades"

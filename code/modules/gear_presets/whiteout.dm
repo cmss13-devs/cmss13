@@ -26,6 +26,8 @@
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
 
+	new_human.remove_tts_component() // BANDAMARINES ADD
+
 /datum/equipment_preset/pmc/w_y_whiteout/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE)
 	var/random_name

@@ -27,18 +27,18 @@
 //Removes a few problematic characters
 /proc/sanitize_simple(text, list/repl_chars = list("\n"=" ","\t"=" ","�"=" "))
 	for(var/char in repl_chars)
-		text = replacetext(text, char, repl_chars[char])
+		text = replacetext_char(text, char, repl_chars[char]) // SS220 EDIT - RU fix
 	return text
 
 ///Helper for only alphanumeric characters plus common punctuation, spaces, underscore and hyphen _ -.
 /proc/replace_non_alphanumeric_plus(text)
-	var/regex/alphanumeric = regex(@{"[^a-z0-9 ,.?!\-_&]"}, "gi")
+	var/regex/alphanumeric = regex(@{"[^a-z0-9а-яА-ЯёЁ ,.?!\-_&]"}, "gi")
 	return alphanumeric.Replace(text, "")
 
 /proc/readd_quotes(text)
 	var/list/repl_chars = list("&#34;" = "\"", "&#39;" = "'")
 	for(var/char in repl_chars)
-		text = replacetext(text, char, repl_chars[char])
+		text = replacetext_char(text, char, repl_chars[char]) // SS220 EDIT - RU fix
 	return text
 
 //Runs byond's sanitization proc along-side sanitize_simple
@@ -59,12 +59,12 @@
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
 /proc/strip_html(text, limit=MAX_MESSAGE_LEN)
-	return copytext((sanitize(strip_html_simple(text))), 1, limit)
+	return copytext_char((sanitize(strip_html_simple(text))), 1, limit) // SS220 EDIT - RU fix
 
 //Runs byond's sanitization proc along-side strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that html_encode() would cause
 /proc/adminscrub(text, limit=MAX_MESSAGE_LEN)
-	return copytext((html_encode(strip_html_simple(text))), 1, limit)
+	return copytext_char((html_encode(strip_html_simple(text))), 1, limit) // SS220 EDIT - RU fix
 
 //Returns null if there is any bad text in the string
 /proc/reject_bad_text(text, max_length=512)
@@ -98,24 +98,24 @@
 
 //Filters out undesirable characters from names
 /proc/reject_bad_name(t_in, allow_numbers = 0, max_length = MAX_NAME_LEN, allow_signs = TRUE)
-	if(!t_in || length(t_in) > max_length)
+	if(!t_in || length_char(t_in) > max_length)  //SS220 EDIT CHANGE - Cyrillic Fixes
 		return //Rejects the input if it is null or if it is longer then the max length allowed
 
 	var/number_of_alphanumeric = 0
 	var/last_char_group = 0
 	var/t_out = ""
 
-	for(var/i=1, i<=length(t_in), i++)
-		var/ascii_char = text2ascii(t_in,i)
+	for(var/i=1, i<=length_char(t_in), i++) //SS220 EDIT CHANGE - Cyrillic Fixes
+		var/ascii_char = text2ascii_char(t_in,i) //SS220 EDIT CHANGE - Cyrillic Fixes
 		switch(ascii_char)
 			// A  .. Z
-			if(65 to 90) //Uppercase Letters
+			if(65 to 90, 1040 to 1071, 1025) //Uppercase Letters //SS220 EDIT CHANGE - Cyrillic Fixes
 				t_out += ascii2text(ascii_char)
 				number_of_alphanumeric++
 				last_char_group = 4
 
 			// a  .. z
-			if(97 to 122) //Lowercase Letters
+			if(97 to 122, 1072 to 1103, 1105) //Lowercase Letters //SS220 EDIT CHANGE - Cyrillic Fixes
 				if(last_char_group<2)
 					t_out += ascii2text(ascii_char-32) //Force uppercase first character
 				else
@@ -158,7 +158,7 @@
 		return //protects against tiny names like "A" and also names like "' ' ' ' ' ' ' '"
 
 	if(last_char_group == 1)
-		t_out = copytext(t_out,1,length(t_out)) //removes the last character (in this case a space)
+		t_out = copytext(t_out,1,length_char(t_out)) //removes the last character (in this case a space)  //SS220 EDIT CHANGE - Cyrillic Fixes
 
 	for(var/bad_name in list("space","floor","wall","r-wall","monkey","unknown","inactive ai")) //prevents these common metagamey names
 		if(cmptext(t_out,bad_name))
@@ -232,7 +232,7 @@
 
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(t as text)
-	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+	return uppertext(copytext_char(t, 1, 2)) + copytext_char(t, 2) // SS220 EDIT - RU fix
 
 /proc/stringpercent(text,character = "*")
 //This proc returns the number of chars of the string that is the character
@@ -264,7 +264,7 @@
 		return "[copytext(string, 1, len - 3)]..."
 
 /proc/strip_improper(input_text)
-	return replacetext(replacetext(input_text, "\proper", ""), "\improper", "")
+	return replacetext_char(replacetext_char(input_text, "\proper", ""), "\improper", "") // SS220 EDIT - RU fix
 
 // Used to remove the string shortcuts for a clean transfer
 /proc/sanitize_filename(t)
@@ -393,6 +393,11 @@
 #define SMALL_FONTS(FONTSIZE, MSG) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span>"
 #define SMALL_FONTS_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
 #define SMALL_FONTS_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Small Fonts'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"
+
+// SS220 ADDITION
+#define GRAND_9K(FONTSIZE, MSG) "<span style=\"font-family: 'Grand9K Pixel'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span>"
+#define GRAND_9K_CENTRED(FONTSIZE, MSG) "<center><span style=\"font-family: 'Grand9K Pixel'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px;\">[MSG]</span></center>"
+#define GRAND_9K_COLOR(FONTSIZE, MSG, COLOR) "<span style=\"font-family: 'Grand9K Pixel'; -dm-text-outline: 1 black; font-size: [FONTSIZE]px; color: [COLOR];\">[MSG]</span>"
 
 //finds the first occurrence of one of the characters from needles argument inside haystack
 //it may appear this can be optimised, but it really can't. findtext() is so much faster than anything you can do in byondcode.

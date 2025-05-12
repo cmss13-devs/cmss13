@@ -1,0 +1,515 @@
+# Uncategorized projectiles
+# Stuff that shoots from other stuff (9mm, fireball)
+
+["kiss"]
+nominative = "поцелуй"
+genitive = "поцелуя"
+dative = "поцелую"
+accusative = "поцелуй"
+instrumental = "поцелуем"
+prepositional = "поцелуе"
+gender = "male"
+
+["kiss of death"]
+nominative = "поцелуй смерти"
+genitive = "поцелуя смерти"
+dative = "поцелую смерти"
+accusative = "поцелуй смерти"
+instrumental = "поцелуем смерти"
+prepositional = "поцелуе смерти"
+gender = "male"
+
+["syndie kiss"]
+nominative = "поцелуй синди"
+genitive = "поцелуя синди"
+dative = "поцелую синди"
+accusative = "поцелуй синди"
+instrumental = "поцелуем синди"
+prepositional = "поцелуе синди"
+gender = "male"
+
+["french kiss (is that a hint of garlic?)"]
+nominative = "французский поцелуй (с привкусом чеснока?)"
+genitive = "французского поцелуя (с привкусом чеснока?)"
+dative = "французскому поцелую (с привкусом чеснока?)"
+accusative = "французский поцелуй (с привкусом чеснока?)"
+instrumental = "французским поцелуем (с привкусом чеснока?)"
+prepositional = "французском поцелуе (с привкусом чеснока?)"
+gender = "male"
+
+["chef's kiss"]
+nominative = "поцелуй повара"
+genitive = "поцелуя повара"
+dative = "поцелую повара"
+accusative = "поцелуй повара"
+instrumental = "поцелуем повара"
+prepositional = "поцелуе повара"
+gender = "male"
+
+["Ammo Box (10mm) (Lethal)"] # Unique Design Name
+nominative = "коробка патронов (10мм) (Летальное)"
+
+["ammo box (10mm)"]
+nominative = "коробка патронов (10мм)"
+genitive = "коробки патронов (10мм)"
+dative = "коробке патронов (10мм)"
+accusative = "коробку патронов (10мм)"
+instrumental = "коробкой патронов (10мм)"
+prepositional = "коробке патронов (10мм)"
+gender = "female"
+
+["Ammo Box (.45) (Lethal)"] # Unique Design Name
+nominative = "коробка патронов (.45) (Летальное)"
+
+["ammo box (.45)"]
+nominative = "коробка патронов (.45)"
+genitive = "коробки патронов (.45)"
+dative = "коробке патронов (.45)"
+accusative = "коробку патронов (.45)"
+instrumental = "коробкой патронов (.45)"
+prepositional = "коробке патронов (.45)"
+gender = "female"
+
+["Ammo Box (9mm) (Lethal)"] # Unique Design Name
+nominative = "коробка патронов (9мм) (Летальное)"
+
+["ammo box (9mm)"]
+nominative = "коробка патронов (9мм)"
+genitive = "коробки патронов (9мм)"
+dative = "коробке патронов (9мм)"
+accusative = "коробку патронов (9мм)"
+instrumental = "коробкой патронов (9мм)"
+prepositional = "коробке патронов (9мм)"
+gender = "female"
+
+["Speed Loader (.38) (Lethal)"] # Unique Design Name
+nominative = "сменный барабан (.38) (летальное)"
+
+["speed loader (.38)"]
+nominative = "сменный барабан (.38)"
+genitive = "сменного барабана (.38)"
+dative = "сменному барабану (.38)"
+accusative = "сменный барабан (.38)"
+instrumental = "сменным барабаном (.38)"
+prepositional = "сменном барабане (.38)"
+gender = "male"
+
+["Speed Loader (.38 TRAC) (Less Lethal)"] # Unique Design Name
+nominative = "сменный барабан (.38 ТРЭК) (менее летально)"
+
+["speed loader (.38 TRAC)"]
+nominative = "сменный барабан (.38 ТРЭК)"
+genitive = "сменного барабана (.38 ТРЭК)"
+dative = "сменному барабану (.38 ТРЭК)"
+accusative = "сменный барабан (.38 ТРЭК)"
+instrumental = "сменным барабаном (.38 ТРЭК)"
+prepositional = "сменном барабане (.38 ТРЭК)"
+gender = "male"
+
+["Speed Loader (.38 Hot Shot) (Very Lethal)"] # Unique Design Name
+nominative = "сменный барабан (.38 зажигательный) (очень летальное)"
+
+["speed loader (.38 Hot Shot)"]
+nominative = "сменный барабан (.38 зажигательный)"
+genitive = "сменного барабана (.38 зажигательный)"
+dative = "сменному барабану (.38 зажигательный)"
+accusative = "сменный барабан (.38 зажигательный)"
+instrumental = "сменным барабаном (.38 зажигательный)"
+prepositional = "сменном барабане (.38 зажигательный)"
+gender = "male"
+
+["Speed Loader (.38 Iceblox) (Lethal/Very Lethal (Lizardpeople))"] # Unique Design Name
+nominative = "сменный барабан (.38 замораживающий) (летальное/очень летальное для ящеров)"
+
+["speed loader (.38 Iceblox)"]
+nominative = "сменный барабан (.38 замораживающий)"
+genitive = "сменного барабана (.38 замораживающий)"
+dative = "сменному барабану (.38 замораживающий)"
+accusative = "сменный барабан (.38 замораживающий)"
+instrumental = "сменным барабаном (.38 замораживающий)"
+prepositional = "сменном барабане (.38 замораживающий)"
+gender = "male"
+
+["Speed Loader (.38 Rubber) (Less Lethal)"] # Unique Design Name
+nominative = "сменный барабан (.38 резина) (менее летально)"
+
+["speed loader (.38 Rubber)"]
+nominative = "сменный барабан (.38 резина)"
+genitive = "сменного барабана (.38 резина)"
+dative = "сменному барабану (.38 резина)"
+accusative = "сменный барабан (.38 резина)"
+instrumental = "сменным барабаном (.38 резина)"
+prepositional = "сменном барабане (.38 резина)"
+gender = "male"
+
+["Rubber Shot (Less Lethal)"] # Unique Design Name
+nominative = "резиновый патрон (менее летально)"
+
+["rubber shot"]
+nominative = "резиновый патрон"
+genitive = "резинового патрона"
+dative = "резиновому патрону"
+accusative = "резиновый патрон"
+instrumental = "резиновым патроном"
+prepositional = "резиновом патроне"
+gender = "male"
+
+["Beanbag Slug (Less Lethal)"] # Unique Design Name
+nominative = "патрон \"Погремушка\" (менее летально)"
+
+["beanbag slug"]
+nominative = "патрон \"Погремушка\""
+genitive = "патрона \"Погремушка\""
+dative = "патрону \"Погремушка\""
+accusative = "патрон \"Погремушка\""
+instrumental = "патроном \"Погремушка\""
+prepositional = "патроне \"Погремушка\""
+gender = "male"
+
+["Shotgun Dart (Lethal)"] # Unique Design Name
+nominative = "патрон-дротик (летальное)"
+
+["shotgun dart"]
+nominative = "патрон-дротик"
+genitive = "патрона-дротика"
+dative = "патрону-дротику"
+accusative = "патрон-дротик"
+instrumental = "патроном-дротиком"
+prepositional = "патроне-дротике"
+gender = "male"
+
+["Incendiary Slug (Lethal)"] # Unique Design Name
+nominative = "зажигательный патрон (летальное)"
+
+["incendiary slug"]
+nominative = "зажигательный патрон"
+genitive = "зажигательного патрона"
+dative = "зажигательному патрону"
+accusative = "зажигательный патрон"
+instrumental = "зажигательным патроном"
+prepositional = "зажигательном патроне"
+gender = "male"
+
+["WT-550 Autorifle Magazine (4.6x30mm) (Lethal)"] # Unique Design Name
+nominative = "магазин ВТ-550 (4.6x30мм) (летальное)"
+
+["wt550 magazine (4.6x30mm)"]
+nominative = "магазин ВТ-550 (4.6x30мм)"
+genitive = "магазина ВТ-550 (4.6x30мм)"
+dative = "магазину ВТ-550 (4.6x30мм)"
+accusative = "магазин ВТ-550 (4.6x30мм)"
+instrumental = "магазином ВТ-550 (4.6x30мм)"
+prepositional = "магазине ВТ-550 (4.6x30мм)"
+gender = "male"
+
+["WT-550 Autorifle Armour Piercing Magazine (4.6x30mm AP) (Lethal)"] # Unique Design Name
+nominative = "магазин ВТ-550 (бронебойные 4.6x30мм) (летальное)"
+
+["wt550 magazine (Armour Piercing 4.6x30mm)"]
+nominative = "магазин ВТ-550 (бронебойные 4.6x30мм)"
+genitive = "магазина ВТ-550 (бронебойных 4.6x30мм)"
+dative = "магазину ВТ-550 (бронебойным 4.6x30мм)"
+accusative = "магазин ВТ-550 (бронебойные 4.6x30мм)"
+instrumental = "магазином ВТ-550 (бронебойными 4.6x30мм)"
+prepositional = "магазине ВТ-550 (бронебойных 4.6x30мм)"
+gender = "male"
+
+["WT-550 Autorifle Incendiary Magazine (4.6x30mm IC) (Lethal/Highly Destructive)"] # Unique Design Name
+nominative = "магазин ВТ-550 (зажигательные 4.6x30мм) (летальное/очень разрушительное)"
+
+["wt550 magazine (Incendiary 4.6x30mm)"]
+nominative = "магазин ВТ-550 (зажигательные 4.6x30мм)"
+genitive = "магазина ВТ-550 (зажигательных 4.6x30мм)"
+dative = "магазину ВТ-550 (зажигательным 4.6x30мм)"
+accusative = "магазин ВТ-550 (зажигательные 4.6x30мм)"
+instrumental = "магазином ВТ-550 (зажигательными 4.6x30мм)"
+prepositional = "магазине ВТ-550 (зажигательных 4.6x30мм)"
+gender = "male"
+
+["taser slug"]
+nominative = "патрон-электрод"
+genitive = "патрона-электрода"
+dative = "патрону-электроду"
+accusative = "патрон-электрод"
+instrumental = "патроном-электродом"
+prepositional = "патроне-электроде"
+gender = "male"
+
+["Scatter Laser Shotgun Shell (Lethal)"] # Unique Design Name
+nominative = "рассеивающий лазерный патрон (летальное)"
+
+["scatter laser shell"]
+nominative = "рассеивающий лазерный патрон"
+genitive = "рассеивающего лазерного патрона"
+dative = "рассеивающему лазерному патрону"
+accusative = "рассеивающий лазерный патрон"
+instrumental = "рассеивающим лазерным патроном"
+prepositional = "рассеивающем лазерном патроне"
+gender = "male"
+
+["unloaded technological shell"]
+nominative = "незаряженный технологический патрон"
+genitive = "незаряженного технологического патрона"
+dative = "незаряженному технологическому патрону"
+accusative = "незаряженный технологический патрон"
+instrumental = "незаряженным технологическим патроном"
+prepositional = "незаряженном технологическом патроне"
+gender = "male"
+
+["Foam Riot Dart (Nonlethal)"] # Unique Design Name
+nominative = "усиленный пенный дротик (нелетальное)"
+
+["riot foam dart"]
+nominative = "усиленный пенный дротик"
+genitive = "усиленного пенного дротика"
+dative = "усиленному пенному дротику"
+accusative = "усиленный пенный дротик"
+instrumental = "усиленным пенным дротиком"
+prepositional = "усиленном пенном дротике"
+gender = "male"
+
+["Foam Riot Dart Box (Nonlethal)"] # Unique Design Name
+nominative = "коробка с усиленными пенными дротиками (нелетальное)"
+
+[".357 Casing (VERY Lethal)"] # Unique Design Name
+nominative = "патрон .357 (ОЧЕНЬ летальное)"
+
+[".357 bullet casing"]
+nominative = "патрон .357"
+genitive = "патрона .357"
+dative = "патрону .357"
+accusative = "патрон .357"
+instrumental = "патроном .357"
+prepositional = "патроне .357"
+gender = "male"
+
+[".310 Surplus Bullet Casing (VERY Lethal)"] # Unique Design Name
+nominative = "избыточный патрон .310 Стрилка (ОЧЕНЬ летальное)"
+
+[".310 Strilka surplus bullet casing"]
+nominative = "избыточный патрон .310 Стрилка"
+genitive = "избыточного патрона .310 Стрилка"
+dative = "избыточному патрону .310 Стрилка"
+accusative = "избыточный патрон .310 Стрилка"
+instrumental = "избыточным патроном .310 Стрилка"
+prepositional = "избыточном патроне .310 Стрилка"
+gender = "male"
+
+["Box of Foam Darts (Harmless)"] # Unique Design Name
+nominative = "коробка с пенными дротиками (безвредное)"
+
+["ammo box (Foam Darts)"]
+nominative = "коробка с пенными дротиками"
+genitive = "коробки с пенными дротиками"
+dative = "коробке с пенными дротиками"
+accusative = "коробку с пенными дротиками"
+instrumental = "коробкой с пенными дротиками"
+prepositional = "коробке с пенными дротиками"
+gender = "female"
+
+["SMG magazine (9mm AP)"]
+nominative = "магазин для ПП (бронебойные 9мм)"
+genitive = "магазина для ПП (бронебойные 9мм)"
+dative = "магазину для ПП (бронебойные 9мм)"
+accusative = "магазин для ПП (бронебойные 9мм)"
+instrumental = "магазином для ПП (бронебойные 9мм)"
+prepositional = "магазине для ПП (бронебойные 9мм)"
+gender = "male"
+
+["WT-550 magazine (4.6x30mm)"]
+nominative = "магазин WT-550 (4.6x30мм)"
+genitive = "магазина WT-550 (4.6x30мм)"
+dative = "магазину WT-550 (4.6x30мм)"
+accusative = "магазин WT-550 (4.6x30мм)"
+instrumental = "магазином WT-550 (4.6x30мм)"
+prepositional = "магазине WT-550 (4.6x30мм)"
+gender = "male"
+
+["WT-550 magazine (4.6x30mm AP)"]
+nominative = "магазин WT-550 (бронебойные 4.6x30мм)"
+genitive = "магазина WT-550 (бронебойные 4.6x30мм)"
+dative = "магазину WT-550 (бронебойные 4.6x30мм)"
+accusative = "магазин WT-550 (бронебойные 4.6x30мм)"
+instrumental = "магазином WT-550 (бронебойные 4.6x30мм)"
+prepositional = "магазине WT-550 (бронебойные 4.6x30мм)"
+gender = "male"
+
+["box of shotgun shells (Lethal)"]
+nominative = "коробка с патронами для дробовика (летальное)"
+genitive = "коробки с патронами для дробовика (летальное)"
+dative = "коробке с патронами для дробовика (летальное)"
+accusative = "коробку с патронами для дробовика (летальное)"
+instrumental = "коробкой с патронами для дробовика (летальное)"
+prepositional = "коробке с патронами для дробовика (летальное)"
+gender = "female"
+
+["power pack"]
+nominative = "блок питания"
+genitive = "блока питания"
+dative = "блоку питания"
+accusative = "блок питания"
+instrumental = "блоком питания"
+prepositional = "блоке питания"
+gender = "male"
+
+["box of shotgun shells (Less Lethal - Rubber Shot)"]
+nominative = "коробка с патронами для дробовика (менее летально - резина)"
+genitive = "коробки с патронами для дробовика (менее летально - резина)"
+dative = "коробке с патронами для дробовика (менее летально - резина)"
+accusative = "коробку с патронами для дробовика (менее летально - резина)"
+instrumental = "коробкой с патронами для дробовика (менее летально - резина)"
+prepositional = "коробке с патронами для дробовика (менее летально - резина)"
+gender = "female"
+
+["box of breaching shotgun shells"]
+nominative = "коробка с патронами для дробовика (для создания брешей)"
+genitive = "коробки с патронами для дробовика (для создания брешей)"
+dative = "коробке с патронами для дробовика (для создания брешей)"
+accusative = "коробку с патронами для дробовика (для создания брешей)"
+instrumental = "коробкой с патронами для дробовика (для создания брешей)"
+prepositional = "коробке с патронами для дробовика (для создания брешей)"
+gender = "female"
+
+["SMG magazine (9mm)"]
+nominative = "магазин для ПП (9 мм)"
+genitive = "магазина для ПП (9мм)"
+dative = "магазину для ПП (9мм)"
+accusative = "магазин для ПП (9мм)"
+instrumental = "магазином для ПП (9мм)"
+prepositional = "магазине для ПП (9мм)"
+gender = "male"
+
+["handgun magazine (.50 AE)"]
+nominative = "магазин для пистолета (.50 AE)"
+genitive = "магазина для пистолета (.50 AE)"
+dative = "магазину для пистолета (.50 AE)"
+accusative = "магазин для пистолета (.50 AE)"
+instrumental = "магазином для пистолета (.50 AE)"
+prepositional = "магазине для пистолета (.50 AE)"
+gender = "male"
+
+["handgun magazine (.45)"]
+nominative = "магазин для пистолета (.45)"
+genitive = "магазина для пистолета (.45)"
+dative = "магазину для пистолета (.45)"
+accusative = "магазин для пистолета (.45)"
+instrumental = "магазином для пистолета (.45)"
+prepositional = "магазине для пистолета (.45)"
+gender = "male"
+
+["specialized magazine (.75)"]
+nominative = "специализированный магазин (.75)"
+genitive = "специализированного магазина (.75)"
+dative = "специализированному магазину (.75)"
+accusative = "специализированный магазин (.75)"
+instrumental = "специализированным магазином (.75)"
+prepositional = "специализированном магазине (.75)"
+gender = "male"
+
+["Sol pistol magazine"]
+nominative = "стандартный магазин (.35 Sol Short)"
+genitive = "стандартного магазина (.35 Sol Short)"
+dative = "стандартному магазину (.35 Sol Short)"
+accusative = "стандартный магазин (.35 Sol Short)"
+instrumental = "стандартным магазином (.35 Sol Short)"
+prepositional = "стандартном магазине (.35 Sol Short)"
+gender = "male"
+
+["Sol extended pistol magazine"]
+nominative = "увеличенный магазин (.35 Sol Short)"
+genitive = "увеличенного магазина (.35 Sol Short)"
+dative = "увеличенному магазину (.35 Sol Short)"
+accusative = "увеличенный магазин (.35 Sol Short)"
+instrumental = "увеличенным магазином (.35 Sol Short)"
+prepositional = "увеличенном магазине (.35 Sol Short)"
+gender = "male"
+
+["Sol rubber pistol magazine"]
+nominative = "стандартный магазин (.35 Sol Short резина)"
+genitive = "стандартного магазина (.35 Sol Short резина)"
+dative = "стандартному магазину (.35 Sol Short резина)"
+accusative = "стандартный магазин (.35 Sol Short резина)"
+instrumental = "стандартным магазином (.35 Sol Short резина)"
+prepositional = "стандартном магазине (.35 Sol Short резина)"
+gender = "male"
+
+["Sol rubber extended pistol magazine"]
+nominative = "увеличенный магазин (.35 Sol Short резина)"
+genitive = "увеличенного магазина (.35 Sol Short резина)"
+dative = "увеличенному магазину (.35 Sol Short резина)"
+accusative = "увеличенный магазин (.35 Sol Short резина)"
+instrumental = "увеличенным магазином (.35 Sol Short резина)"
+prepositional = "увеличенном магазине (.35 Sol Short резина)"
+gender = "male"
+
+["Sol AP pistol magazine"]
+nominative = "стандартный магазин (.35 Sol Short бронебойные)"
+genitive = "стандартного магазина (.35 Sol Short бронебойные)"
+dative = "стандартному магазину (.35 Sol Short бронебойные)"
+accusative = "стандартный магазин (.35 Sol Short бронебойные)"
+instrumental = "стандартным магазином (.35 Sol Short бронебойные)"
+prepositional = "стандартном магазине (.35 Sol Short бронебойные)"
+gender = "male"
+
+["Sol AP extended pistol magazine"]
+nominative = "увеличенный магазин (.35 Sol Short бронебойные)"
+genitive = "увеличенного магазина (.35 Sol Short бронебойные)"
+dative = "увеличенному магазину (.35 Sol Short бронебойные)"
+accusative = "увеличенный магазин (.35 Sol Short бронебойные)"
+instrumental = "увеличенным магазином (.35 Sol Short бронебойные)"
+prepositional = "увеличенном магазине (.35 Sol Short бронебойные)"
+gender = "male"
+
+["Sol HP pistol magazine"]
+nominative = "стандартный магазин (.35 Sol Short экспансивные)"
+genitive = "стандартного магазина (.35 Sol Short экспансивные)"
+dative = "стандартному магазину (.35 Sol Short экспансивные)"
+accusative = "стандартный магазин (.35 Sol Short экспансивные)"
+instrumental = "стандартным магазином (.35 Sol Short экспансивные)"
+prepositional = "стандартном магазине (.35 Sol Short экспансивные)"
+gender = "male"
+
+["Sol HP extended pistol magazine"]
+nominative = "увеличенный магазин (.35 Sol Short экспансивные)"
+genitive = "увеличенного магазина (.35 Sol Short экспансивные)"
+dative = "увеличенному магазину (.35 Sol Short экспансивные)"
+accusative = "увеличенный магазин (.35 Sol Short экспансивные)"
+instrumental = "увеличенным магазином (.35 Sol Short экспансивные)"
+prepositional = "увеличенном магазине (.35 Sol Short экспансивные)"
+gender = "male"
+
+["ammo box (.35 Sol Short lethal)"]
+nominative = "коробка патронов (.35 Sol Short)"
+genitive = "коробки патронов (.35 Sol Short)"
+dative = "коробке патронов (.35 Sol Short)"
+accusative = "коробку патронов (.35 Sol Short)"
+instrumental = "коробкой патронов (.35 Sol Short)"
+prepositional = "коробке патронов (.35 Sol Short)"
+gender = "female"
+
+["ammo box (.35 Sol Short rubber)"]
+nominative = "коробка патронов (.35 Sol Short резина)"
+genitive = "коробки патронов (.35 Sol Short резина)"
+dative = "коробке патронов (.35 Sol Short резина)"
+accusative = "коробку патронов (.35 Sol Short резина)"
+instrumental = "коробкой патронов (.35 Sol Short резина)"
+prepositional = "коробке патронов (.35 Sol Short резина)"
+gender = "female"
+
+["ammo box (.35 Sol Short ripper)"]
+nominative = "коробка патронов (.35 Sol Short экспансивные)"
+genitive = "коробки патронов (.35 Sol Short экспансивные)"
+dative = "коробке патронов (.35 Sol Short экспансивные)"
+accusative = "коробку патронов (.35 Sol Short экспансивные)"
+instrumental = "коробкой патронов (.35 Sol Short экспансивные)"
+prepositional = "коробке патронов (.35 Sol Short экспансивные)"
+gender = "female"
+
+["ammo box (.35 Sol Short armor piercing)"]
+nominative = "коробка патронов (.35 Sol Short бронебойные)"
+genitive = "коробки патронов (.35 Sol Short бронебойные)"
+dative = "коробке патронов (.35 Sol Short бронебойные)"
+accusative = "коробку патронов (.35 Sol Short бронебойные)"
+instrumental = "коробкой патронов (.35 Sol Short бронебойные)"
+prepositional = "коробке патронов (.35 Sol Short бронебойные)"
+gender = "female"

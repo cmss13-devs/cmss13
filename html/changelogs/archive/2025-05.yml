@@ -1,0 +1,103 @@
+2025-05-02:
+  Blundir:
+  - bugfix: fixed suit storage gun icons being missing in some cases
+  Joe Lampost:
+  - bugfix: Fixes multiple elder overseer messages being sent for a weather event.
+  Kashargul:
+  - bugfix: a potential lockup with tgui
+2025-05-03:
+  BertStein:
+  - qol: Pill bottles and autoinjectors now support 3-character sprite labels.
+  Lagomorphica:
+  - bugfix: oppressor praetorian can no longer click on marine muzzle flashes to grab
+      you from off-screen
+  - balance: weyland-yutani commandos can no longer come as a random ert due to budget
+      cuts aboard the USCSS Nisshoku
+  LiquidPotroh:
+  - bugfix: vanguard explosive armor goes to minus infinity
+  private-tristan:
+  - qol: The third chemmaster in research can now make vials
+  - balance: Research's machinery has extra health, and should be able to withstand
+      a few explosive incidents.
+  rodcowartt:
+  - qol: Replaced second rangefinder in the mortar kit with a laser designator for
+      improved usability.
+  zzzmike:
+  - qol: DP+DCC have medbay access
+2025-05-04:
+  DarkLordCabbage:
+  - qol: Light tubes can't be removed by hand anymore, use a screwdriver instead
+  - bugfix: Fixed some lighting fixture descriptions not showing up correctly, as
+      well as other misc items.
+2025-05-05:
+  DarkLordCabbage:
+  - code_imp: Moves the acid ball ability from the dancer strain to its actual home
+      in base praetorian abilities.
+  realforest2001:
+  - rscadd: Allowed Yautja Ancient's to decide per spawn if they want to broadcast
+      to other Yautja that they're awake.
+  - rscadd: Added Yautja Overseer radio channel.
+2025-05-06:
+  seanlol092:
+  - qol: Custom mines tell you what sensitivity it is when examined
+  - balance: Claymores can now switch to low sensitive mode / high sensitive mode
+      using a wirecutter
+  - balance: 'When on less sensitive mode: Claymores cant be trigger by huggers and
+      Lesser drones'
+  - balance: Claymores can be triggered by two xeno spits, but cannot be slashed by
+      Lesser drones
+  - balance: Claymores now layer above lying mobs
+2025-05-07:
+  Blundir:
+  - rscadd: rearranged equipment preset of joe, so less manual actions are required
+      now
+  - rscdel: 5% chance for a joe to have hair
+  - rscdel: joe can now only speak english, spanish and japanese
+  - bugfix: joe not having intent eyes and glow working after spawn
+  - bugfix: joe being possible to spawn as female
+  - bugfix: joe being possible to have flavor text
+  - bugfix: dzho not getting hyperdyne key in backpack
+  - bugfix: custom skill presets for synthetics not working
+  - bugfix: some joe voice lines not working
+  - bugfix: custom synthetic skillsets not working because skillsets were getting
+      overriden
+  - mapadd: added a lot of equipment to empty storage room in ares area, for joes
+      to use
+  MistChristmas:
+  - bugfix: Messages ending in '!' and '?' change the verb from 'says' to 'shouts/yells/excalims'
+      or 'asks' again or their language equivalent.
+  Nihisohel:
+  - rscadd: Scarves and some masks can be used as accessory items! Use them inhand
+      to change them back and to an accessory.
+  - bugfix: Armbands no longer hide when sleeves are cut or jacket is removed
+  - bugfix: Accessories may no longer be attached while it is in a storage item.
+2025-05-08:
+  Nihisohel:
+  - balance: Xenos can now damage guns on the ground
+  - balance: Jamming is now calculated exponentially rather than linearly
+  - qol: Clarifies durability examine wording, gives it some color too
+  - bugfix: Fixes infinite gun cocking delay via unjamming
+  - bugfix: Fixes grenade launchers and flare guns from being unable to be repaired
+  - bugfix: Fixes bullets loaded in guns without a traditional chamber defaulting
+      its values rather than incorporating it
+  - balance: ES4 pistol no longer guarantees durability loss per fire, instead coinflips
+      the chances
+  Red-byte3D:
+  - balance: Lethal "bolt" for hpc now does "75 damage", and a small explosive at
+      the tile it effects, its deadlier.
+  - balance: Large stun sphere now stuns people from 7 tiles away from the target
+      it lands on instead of everything in view
+  - refactor: Rewrote some hpc code
+  - balance: Lowered power requirement for single target lethal bolts
+  - code_imp: Plasma caster now only has 2 modes for stuns, one that stuns whatever
+      it hits, and one that stuns anything  7 tiles from it
+  - balance: Stun bolt timer is now 3 instead of 2
+2025-05-09:
+  Lagomorphica:
+  - balance: undamaged lungemines now gib the user on hit, ex_act was removed due
+      to being bugged (caused runtimes, did not do anything to xenomorphs due to checking
+      the user for the explosive pen so ultimately won't change anything about it)
+2025-05-12:
+  Detective-Google:
+  - rscadd: WY beacon guards now return to the WY ert station rather than the default
+      one.

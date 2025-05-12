@@ -361,6 +361,7 @@ Fire Variant = Markers for special fire types that behave outside of chemfire co
 #define GUN_DURABILITY_LOSS_SCOUT 10
 #define GUN_DURABILITY_LOSS_SNIPER 25
 #define GUN_DURABILITY_LOSS_SMARTGUN 1
+#define GUN_DURABILITY_LOSS_COINFLIP 50
 #define GUN_DURABILITY_LOSS_GUARANTEED 100
 
 //gun innate unjam chance

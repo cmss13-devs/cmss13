@@ -361,9 +361,11 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/load_fax_base()
+	loaded_fax_base = "loading"
 	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
-	if(!loaded_fax_base)
+	if(!loaded_fax_base || (loaded_fax_base == "loading"))
 		log_debug("Error loading fax response base!")
+		loaded_fax_base = null
 		return FALSE
 	return TRUE
 

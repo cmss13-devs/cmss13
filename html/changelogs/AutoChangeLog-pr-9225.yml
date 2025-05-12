@@ -1,0 +1,4 @@
+author: "Lagomorphica"
+delete-after: True
+changes:
+  - bugfix: "fluffing no longer gives you an unremovable beard as a female character"

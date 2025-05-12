@@ -365,9 +365,6 @@
 
 	bubble_icon = "alienroyal"
 
-/mob/living/carbon/xenomorph/queen/can_destroy_special()
-	return TRUE
-
 /mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
 	if(ovipositor)
 		return

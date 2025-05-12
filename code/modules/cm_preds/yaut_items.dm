@@ -1619,6 +1619,13 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool/yautja(src)
 
+/obj/item/yautja/chain
+	name = "metal chains"
+	desc = "the weld pattern tells you that these chains were made with heavy weights in mind, the sharp edge implies this was also made to pierce."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "metal_chain"
+	item_state = "metal_chain"
+
 /obj/item/device/houndcam
 	name = "Hellhound Observation Pad"
 	desc = "A portable camera console device, used for remotely overwatching Hellhounds."

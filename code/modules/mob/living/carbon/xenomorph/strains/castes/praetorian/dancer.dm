@@ -23,6 +23,8 @@
 /datum/xeno_strain/dancer/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	prae.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
+	prae.evasion_modifier = XENO_EVASION_MOD_DANCER
+	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
 	prae.plasma_types = list(PLASMA_CATECHOLAMINE)
 	prae.claw_type = CLAW_TYPE_SHARP
 
@@ -35,14 +37,14 @@
 	var/dodge_activated = FALSE
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
-	if (!isxeno_human(target_carbon))
+	if(!isxeno_human(target_carbon))
 		return
 
-	if (target_carbon.stat)
+	if(target_carbon.stat)
 		return
 
 	// Clean up all tags to 'refresh' our TTL
-	for (var/datum/effects/dancer_tag/target_tag in target_carbon.effects_list)
+	for(var/datum/effects/dancer_tag/target_tag in target_carbon.effects_list)
 		qdel(target_tag)
 
 	new /datum/effects/dancer_tag(target_carbon, bound_xeno, , , 35)
@@ -54,37 +56,50 @@
 /datum/action/xeno_action/activable/prae_impale/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!dancer_user.check_state())
+	if(!dancer_user.check_state())
 		return
 
-	if (!ismob(target_atom))
+	if(!ismob(target_atom))
 		apply_cooldown_override(impale_click_miss_cooldown)
 		update_button_icon()
 		return
 
-	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
+	if(!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
-		return
-
-	if (!dancer_user.Adjacent(target_atom))
-		to_chat(dancer_user, SPAN_XENODANGER("We must be adjacent to [target_atom]!"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
-	if (target_carbon.stat == DEAD)
+	if(target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	var/dist = get_dist(dancer_user, target_carbon)
+
+	if(dist > range)
+		to_chat(dancer_user, SPAN_WARNING("[target_carbon] is too far away!"))
+		return
+
+	if(dist > 1)
+		var/turf/targetTurf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
+		if(targetTurf.density)
+			to_chat(dancer_user, SPAN_WARNING("We can't attack through [targetTurf]!"))
+			return
+		else
+			for(var/atom/atom_in_turf in targetTurf)
+				if(atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
+					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
+					return
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	apply_cooldown()
 	var/buffed = FALSE
-	for (var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
+	for(var/datum/effects/dancer_tag/dancer_tag_effect in target_carbon.effects_list)
 		buffed = TRUE
 		qdel(dancer_tag_effect)
 		break
@@ -125,25 +140,27 @@
 /datum/action/xeno_action/onclick/prae_dodge/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/dodge_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!istype(dodge_user) || !dodge_user.check_state())
+	if(!istype(dodge_user) || !dodge_user.check_state())
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_user.behavior_delegate
-	if (!istype(behavior))
+	if(!istype(behavior))
 		return
 
 	behavior.dodge_activated = TRUE
 	button.icon_state = "template_active"
 	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
 	dodge_user.speed_modifier -= speed_buff_amount
+	dodge_user.evasion_modifier += XENO_EVASION_MOD_DANCER
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
+	dodge_user.recalculate_evasion()
 
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
@@ -153,46 +170,48 @@
 /datum/action/xeno_action/onclick/prae_dodge/proc/remove_effects()
 	var/mob/living/carbon/xenomorph/dodge_remove = owner
 
-	if (!istype(dodge_remove))
+	if(!istype(dodge_remove))
 		return
 
 	var/datum/behavior_delegate/praetorian_dancer/behavior = dodge_remove.behavior_delegate
-	if (!istype(behavior))
+	if(!istype(behavior))
 		return
 
-	if (behavior.dodge_activated)
+	if(behavior.dodge_activated)
 		behavior.dodge_activated = FALSE
 		button.icon_state = "template"
 		dodge_remove.speed_modifier += speed_buff_amount
+		dodge_remove.evasion_modifier -= XENO_EVASION_MOD_DANCER
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
+		dodge_remove.recalculate_evasion()
 		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("We can no longer dodge through mobs!"))
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!istype(dancer_user) || !dancer_user.check_state())
+	if(!istype(dancer_user) || !dancer_user.check_state())
 		return
 
-	if (!ismob(target_atom))
+	if(!ismob(target_atom))
 		apply_cooldown_override(tail_click_miss_cooldown)
 		update_button_icon()
 		return
 
-	if (!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
+	if(!isxeno_human(target_atom) || dancer_user.can_not_harm(target_atom))
 		to_chat(dancer_user, SPAN_XENODANGER("We must target a hostile!"))
 		return
 
 	var/mob/living/carbon/target_carbon = target_atom
 
-	if (target_carbon.stat == DEAD)
+	if(target_carbon.stat == DEAD)
 		to_chat(dancer_user, SPAN_XENOWARNING("[target_atom] is dead, why would we want to attack it?"))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if(!check_and_use_plasma_owner())
 		return
 
 
@@ -202,22 +221,20 @@
 
 	var/dist = get_dist(dancer_user, target_carbon)
 
-	if (dist > range)
+	if(dist > range)
 		to_chat(dancer_user, SPAN_WARNING("[target_carbon] is too far away!"))
 		return
 
-	if (dist > 1)
+	if(dist > 1)
 		var/turf/targetTurf = get_step(dancer_user, get_dir(dancer_user, target_carbon))
-		if (targetTurf.density)
+		if(targetTurf.density)
 			to_chat(dancer_user, SPAN_WARNING("We can't attack through [targetTurf]!"))
 			return
 		else
-			for (var/atom/atom_in_turf in targetTurf)
-				if (atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
+			for(var/atom/atom_in_turf in targetTurf)
+				if(atom_in_turf.density && !atom_in_turf.throwpass && !istype(atom_in_turf, /obj/structure/barricade) && !istype(atom_in_turf, /mob/living))
 					to_chat(dancer_user, SPAN_WARNING("We can't attack through [atom_in_turf]!"))
 					return
-
-
 
 	// Hmm today I will kill a marine while looking away from them
 	dancer_user.face_atom(target_carbon)
@@ -227,17 +244,17 @@
 
 	var/datum/effects/dancer_tag/dancer_tag_effect = locate() in target_carbon.effects_list
 
-	if (dancer_tag_effect)
+	if(dancer_tag_effect)
 		buffed = TRUE
 		qdel(dancer_tag_effect)
 
-	if (!buffed)
+	if(!buffed)
 		new /datum/effects/xeno_slow(target_carbon, dancer_user, null, null, get_xeno_stun_duration(target_carbon, slow_duration))
 
 	var/stun_duration = stun_duration_default
 	var/daze_duration = 0
 
-	if (buffed)
+	if(buffed)
 		stun_duration = stun_duration_buffed
 		daze_duration = daze_duration_buffed
 
@@ -259,7 +276,7 @@
 		dancer_user.spin_circle()
 		dancer_user.emote("tail")
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
-	if (daze_duration > 0)
+	if(daze_duration > 0)
 		target_carbon.apply_effect(daze_duration, DAZE)
 
 	apply_cooldown()

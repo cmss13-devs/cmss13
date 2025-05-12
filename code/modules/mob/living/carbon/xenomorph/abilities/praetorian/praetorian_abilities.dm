@@ -175,6 +175,7 @@
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 13 SECONDS
 	plasma_cost = 80
+	var/range = 2
 
 	var/impale_click_miss_cooldown = 1.5 SECONDS
 

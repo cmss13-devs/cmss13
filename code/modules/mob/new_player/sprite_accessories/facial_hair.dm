@@ -1,6 +1,6 @@
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/humans/human_facial.dmi'
-	gender = MALE
+	gender = NEUTER
 
 /datum/sprite_accessory/facial_hair/shaved
 	name = "Shaved"

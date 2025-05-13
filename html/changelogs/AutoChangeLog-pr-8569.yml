@@ -1,0 +1,7 @@
+author: "Blundir, Nomoresolvalou, TheManWithNoHands, Triiodine, Shad0vvs"
+delete-after: True
+changes:
+  - rscadd: "Added SHARP Operator spec, P9 SHARP rifle, and SHARP ammo belt"
+  - balance: "Added SHARP Operator spec to the squad spec vendor"
+  - soundadd: "Added SHARP gun sounds"
+  - imageadd: "Added SHARP rifle and ammo sprites (by Triiodine and TheManWithNoHands)"

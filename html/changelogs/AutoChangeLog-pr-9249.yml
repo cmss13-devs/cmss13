@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - bugfix: "combat android bodyguard beacon now spawns the leader android properly"

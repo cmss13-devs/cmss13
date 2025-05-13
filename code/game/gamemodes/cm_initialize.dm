@@ -265,7 +265,7 @@ Additional game mode variables.
 
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
-	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
 		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
 
 	return new_predator
@@ -360,9 +360,11 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/load_fax_base()
+	loaded_fax_base = "loading"
 	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
-	if(!loaded_fax_base)
+	if(!loaded_fax_base || (loaded_fax_base == "loading"))
 		log_debug("Error loading fax response base!")
+		loaded_fax_base = null
 		return FALSE
 	return TRUE
 

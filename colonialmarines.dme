@@ -2541,6 +2541,7 @@
 #include "code\modules\tgui_panel\tgui_panel.dm"
 #include "code\modules\tooltip\tooltip.dm"
 #include "code\modules\vehicles\cargo_train.dm"
+#include "code\modules\vehicles\combat_mech.dm"
 #include "code\modules\vehicles\powerloader.dm"
 #include "code\modules\vehicles\souto_mobile.dm"
 #include "code\modules\vehicles\train.dm"

@@ -189,8 +189,9 @@
 	xeno_cooldown = 19 SECONDS
 
 	// Config
-	var/duration = 70
+	var/duration = 7 SECONDS
 	var/speed_buff_amount = 0.5
+	var/afterimage_interval = 2 DECISECONDS
 
 /datum/action/xeno_action/activable/prae_tail_trip
 	name = "Tail Trip"

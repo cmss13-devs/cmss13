@@ -1066,6 +1066,15 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
 	)
 
+/obj/item/clothing/head/cavalry
+	name = "\improper US cavalry hat"
+	desc = "Also known as Cavalry Stetson, this hat is a symbol of tradition and remembrence of heroism that is ongoing from as far as 19th century. Even though cavalry divison had cashed in its horses for choppers, choppers for dropships, and gone tear-assing around space, looking for the shit."
+	icon_state = "cavalry"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi'
+	)
+
 //==========================//DRESS BLUES\\===============================\\
 //=======================================================================\\
 

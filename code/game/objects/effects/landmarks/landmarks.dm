@@ -179,8 +179,16 @@
 
 //obj/effect/landmark/xeno_npc_spawn/Initialize(mapload, ...) (removing code for testing reasons)
 //	. = ..()
-//	if(prob(80))
+//	if(prob(40))
 //		new /mob/living/simple_animal/hostile/alien(loc)
+
+/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn
+
+/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn/Initialize(mapload, ...)
+	. = ..()
+	if(prob(80))
+		new /mob/living/simple_animal/hostile/alien(loc)
+
 
 /obj/effect/landmark/latewhiskey
 	name = "Whiskey Outpost Late join"

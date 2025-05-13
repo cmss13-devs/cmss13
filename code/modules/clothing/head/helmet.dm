@@ -939,6 +939,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/rto/army
 	name = "\improper Personal body armor system helmet"
 	desc = "The personal body armor system helmet is the standard issue combat helmet for the US Army. Selected over the M12 pattern helmet during combat trials, it offers allegedly superior protection compared to the M12 series, at over four times the cost. Though its far more uncomfortable to wear."
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
+	)
 	icon_state = "army_helmet"
 	item_state = "army_helmet"
 	specialty = "Personal body armor system"

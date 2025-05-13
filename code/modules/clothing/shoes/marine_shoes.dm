@@ -43,6 +43,7 @@
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time."
 
 /obj/item/clothing/shoes/marine/army/knife
+	icon_state = "marine_jungle"
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/jungle

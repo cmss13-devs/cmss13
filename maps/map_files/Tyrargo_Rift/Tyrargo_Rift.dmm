@@ -1251,6 +1251,10 @@
 "adS" = (
 /turf/open/floor/corsat/green/southeast,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
+"adT" = (
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/corsat/blue/west,
+/area/tyrargo/underground/bunker/north)
 "adU" = (
 /obj/item/explosive/mine/active/no_iff,
 /turf/open/auto_turf/strata_grass,
@@ -14590,6 +14594,7 @@
 	dir = 4
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/item/storage/backpack/molle/army,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aKs" = (
@@ -15620,6 +15625,7 @@
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
 	},
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aNd" = (
@@ -50863,6 +50869,7 @@
 /obj/item/tool/warning_cone{
 	pixel_x = -12
 	},
+/obj/item/storage/firstaid/regular,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "csv" = (
@@ -56198,6 +56205,10 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/indoors/bunker/central)
+"cKG" = (
+/obj/item/storage/firstaid/regular,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/east)
 "cKH" = (
 /obj/item/weapon/gun/rifle/m4ra{
 	current_mag = null
@@ -56733,6 +56744,12 @@
 	},
 /turf/open/floor/plating,
 /area/tyrargo/indoors/apartment/north_ground)
+"cMe" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/firstaid/regular,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cMg" = (
 /obj/structure/flora/tree/tyrargo{
 	layer = 5.97
@@ -90628,6 +90645,7 @@
 	color = "#EBD9B7"
 	},
 /obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/item/storage/backpack/molle/backpack/army,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "odK" = (
@@ -92682,7 +92700,7 @@
 	pixel_y = 19;
 	pixel_x = -9
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/apartment/north_ground)
 "rVH" = (
 /turf/open/floor/prison/blue/northeast,
@@ -109407,7 +109425,7 @@ cdI
 cbm
 cdz
 cdw
-ccQ
+adT
 ccQ
 ccQ
 cda
@@ -152237,7 +152255,7 @@ boe
 bxr
 boo
 eaU
-bob
+cMe
 eaB
 eaj
 bDl
@@ -158798,7 +158816,7 @@ bBm
 bBm
 bBm
 bCB
-bBn
+cKG
 bBn
 bBn
 bBn
@@ -164945,7 +164963,7 @@ auA
 rnG
 tho
 eHi
-clK
+cnq
 acP
 acN
 acL
@@ -165127,7 +165145,7 @@ ayL
 qDj
 kiU
 cpb
-clK
+cnq
 obB
 acO
 acI
@@ -165655,7 +165673,7 @@ cta
 cta
 auX
 cvw
-csK
+crH
 csK
 cuK
 bqJ
@@ -165664,7 +165682,7 @@ ctZ
 ctZ
 pfT
 csK
-csK
+crH
 cqf
 cpb
 crW
@@ -165837,7 +165855,7 @@ cvY
 cta
 cvG
 cvw
-csK
+crH
 csK
 ctM
 bqw
@@ -165846,7 +165864,7 @@ ado
 ddh
 uVg
 csK
-csK
+crH
 cqf
 cpb
 wyj
@@ -166037,7 +166055,7 @@ cru
 qDj
 cqI
 cpI
-clK
+cnq
 ail
 acJ
 dFl
@@ -166058,7 +166076,7 @@ clK
 ade
 cjt
 cjs
-clK
+cnq
 abm
 abm
 cmB
@@ -166220,7 +166238,7 @@ rnG
 vAg
 waA
 cnq
-clK
+cnq
 clK
 clK
 clK
@@ -166240,8 +166258,8 @@ clK
 abD
 abA
 xNG
-clK
-clK
+cnq
+cnq
 clK
 clK
 clK
@@ -167111,7 +167129,7 @@ cwa
 cta
 cvG
 cvw
-csK
+crH
 csK
 ado
 ctL
@@ -167120,7 +167138,7 @@ ctM
 cYm
 jyC
 csK
-csK
+crH
 cqf
 apr
 crY
@@ -167293,7 +167311,7 @@ cta
 cuq
 cvH
 cvw
-csK
+crH
 csK
 cuL
 bqL
@@ -167302,7 +167320,7 @@ bqC
 bqC
 cJa
 csK
-csK
+crH
 cqf
 cpI
 cpx
@@ -168049,18 +168067,18 @@ coA
 con
 con
 con
-con
-con
+coA
+coA
 coy
 rTO
-con
+coA
 swU
 xAr
 ckG
 ckG
 hBr
-ckW
-ckW
+ckX
+ckX
 clD
 ckW
 ckW
@@ -168235,13 +168253,13 @@ gwX
 coC
 ruj
 gJt
-con
+coA
 mgE
 lVn
 lVn
 lVn
 wsg
-ckW
+ckX
 oUZ
 mDC
 dTB
@@ -168587,7 +168605,7 @@ kgb
 cpi
 cqi
 iqV
-con
+coA
 qzC
 cpq
 pEp
@@ -168769,7 +168787,7 @@ cqG
 cpj
 vgu
 mHt
-con
+coA
 con
 lCS
 con

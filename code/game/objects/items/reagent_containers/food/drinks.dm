@@ -336,6 +336,8 @@
 
 /obj/item/reagent_container/food/drinks/flask/marine/army
 	name = "\improper US Army flask"
+	icon_state = "flask_army"
+	item_state = "flask_army"
 	desc = "A metal flask embossed with the US Army logo and probably filled with a slurry of water, motor oil, and medicinal alcohol. Albiet, higher quality motor oil compared to Marine rations."
 
 /obj/item/reagent_container/food/drinks/flask/weylandyutani

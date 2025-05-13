@@ -285,9 +285,9 @@
 	name = "\improper Personal Body Armor System"
 	desc = "The Personnel Body Armor System is the standard issue armor of the US Army, adopted over the M4 series pattern armor during field trials. Surprisingly uncomfortable, but offering far superior protection to the M3 or M4 series armor. At four times the price."
 	icon_state = "army_armor"
-	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
 	specialty = "Personal Body Armor System"
 	storage_slots = 3
@@ -612,9 +612,9 @@
 	name = "\improper Synthetic Body Armor System"
 	desc = "This is a variant of the Personnel Body Armor System, it has been modified extensively to be used by US Army Synthetics. It offers light protection, maximum mobility and more internal storage than its USCM counterpart. The cost of this item could outfit an entire squad of USCM Marines, but you are worth this cost."
 	icon_state = "VL_syn_army"
-	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	armor_melee = CLOTHING_ARMOR_VERYLOW

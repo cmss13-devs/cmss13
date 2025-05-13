@@ -176,6 +176,65 @@
 	containername = "M4RA Scout Impact Magazine Crate"
 	group = "Weapons Specialist Ammo"
 
+//SHARP
+
+/datum/supply_packs/ammo_grenadier_sharp_mix
+	name = "SHARP Operator Mixed Magazine Crate (explosive x2, flechette x2, incendiary x2)"
+	contains = list(
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+	)
+	cost = 40
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "SHARP Operator Mixed Magazine Crate"
+	group = "Weapons Specialist Ammo"
+
+/datum/supply_packs/ammo_grenadier_sharp_explosive
+	name = "SHARP Operator Explosive Magazine Crate (x5)"
+	contains = list(
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "SHARP Operator Explosive Magazine Crate"
+	group = "Weapons Specialist Ammo"
+
+/datum/supply_packs/ammo_grenadier_sharp_flechette
+	name = "SHARP Operator Flechette Magazine Crate (x5)"
+	contains = list(
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "SHARP Operator Flechette Magazine Crate"
+	group = "Weapons Specialist Ammo"
+
+/datum/supply_packs/ammo_grenadier_sharp_incendiary
+	name = "SHARP Operator incendiary Magazine Crate (x5)"
+	contains = list(
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+	)
+	cost = 30
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "SHARP Operator incendiary Magazine Crate"
+	group = "Weapons Specialist Ammo"
+
 //M240-T
 
 /datum/supply_packs/ammo_pyro_mix

@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - soundadd: "Added a bunch of new sounds, ported from TG"

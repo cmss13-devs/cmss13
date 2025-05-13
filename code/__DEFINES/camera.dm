@@ -9,6 +9,8 @@
 #define CAMERA_NET_SAIPAN "Saipan"
 #define CAMERA_NET_MORANA "Morana"
 #define CAMERA_NET_DEVANA "Devana"
+#define CAMERA_NET_MIDWAY "Midway"
+#define CAMERA_NET_TRIPOLI "Tripoli"
 #define CAMERA_NET_COLONY "Colony"
 #define CAMERA_NET_ARES "ARES"
 

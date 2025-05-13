@@ -304,6 +304,10 @@
 		deployed_turret.linked_cam.network = list(CAMERA_NET_MORANA)
 	else if (linked_shuttle.id == DROPSHIP_DEVANA)
 		deployed_turret.linked_cam.network = list(CAMERA_NET_DEVANA)
+	else if (linked_shuttle.id == DROPSHIP_MIDWAY)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_MIDWAY)
+	else if (linked_shuttle.id == DROPSHIP_TRIPOLI)
+		deployed_turret.linked_cam.network = list(CAMERA_NET_TRIPOLI)
 
 
 

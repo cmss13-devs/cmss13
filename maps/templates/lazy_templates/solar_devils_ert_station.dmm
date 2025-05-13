@@ -2148,8 +2148,8 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/small{
 	pixel_y = 16;
 	pixel_x = 6;
-	disabled = 1;
-	desc = "A flight computer that can be used for autopilot or long-range flights. This one is deactivated."
+	desc = "A flight computer that can be used for autopilot or long-range flights. This one is deactivated.";
+	name = "\improper 'Tripoli' piloting controls"
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -2932,13 +2932,6 @@
 /area/adminlevel/ert_station/soalar_devils_station)
 "km" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/prop/almayer/CICmap{
-	density = 0;
-	icon_state = "map";
-	layer = 2.97;
-	name = "Tactical Map Display";
-	pixel_y = 10
-	},
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
 	},
@@ -2954,6 +2947,7 @@
 	pixel_x = 4;
 	on = 0
 	},
+/obj/structure/machinery/prop/almayer/CICmap,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ko" = (
@@ -3006,7 +3000,8 @@
 	pixel_y = 2
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1{
-	name = "\improper Tripoli cargo door"
+	name = "\improper Tripoli cargo door";
+	locked = 1
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -3233,7 +3228,7 @@
 /obj/structure/shuttle/part/tripoli{
 	icon_state = "21"
 	},
-/turf/template_noop,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "li" = (
 /obj/effect/decal/cleanable/dirt{
@@ -3642,10 +3637,6 @@
 	pixel_y = 2;
 	pixel_x = -2;
 	layer = 3.2
-	},
-/obj/item/stack/repairable/gunlube{
-	pixel_x = 7;
-	pixel_y = 2
 	},
 /turf/open/floor/almayer/edge/smooth/west,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -5383,10 +5374,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "rL" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
-	req_one_access_txt = "8;12;39;40";
-	req_one_access = list()
-	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "rM" = (
@@ -6802,14 +6790,17 @@
 	icon_state = "p_stair_full";
 	pixel_y = 22
 	},
-/obj/structure/machinery/computer/dropship_weapons/tripoli/small{
-	pixel_y = 8;
-	pixel_x = 8
-	},
 /obj/structure/bed/chair/vehicle/dropship_cockpit/copilot{
 	dir = 1;
 	pixel_x = 8;
 	layer = 5
+	},
+/obj/structure/machinery/prop/almayer/computer/midway_weapon_console{
+	icon_state = "cameras";
+	pixel_x = 8;
+	pixel_y = 8;
+	desc = "A computer to manage equipment, weapons and simulations installed on the dropship.";
+	name = "\improper 'Tripoli' weapons controls"
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -10886,7 +10877,7 @@
 /obj/structure/shuttle/part/dropship2/transparent/engine_left_cap{
 	name = "\improper Tripoli"
 	},
-/turf/template_noop,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "IW" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -11395,10 +11386,6 @@
 /obj/structure/cable{
 	icon_state = "0-8";
 	layer = 2.36
-	},
-/obj/item/stack/repairable/gunlube{
-	pixel_x = 7;
-	pixel_y = 2
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -13313,7 +13300,7 @@
 /obj/structure/shuttle/part/tripoli{
 	icon_state = "17"
 	},
-/turf/template_noop,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Qy" = (
 /obj/effect/decal/warning_stripes{
@@ -15264,7 +15251,6 @@
 /area/adminlevel/ert_station/soalar_devils_station)
 "Wq" = (
 /obj/effect/attach_point/crew_weapon/tripoli,
-/obj/docking_port/mobile/marine_dropship/tripoli,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Wu" = (
@@ -15671,7 +15657,7 @@
 /obj/structure/shuttle/part/tripoli{
 	icon_state = "20"
 	},
-/turf/template_noop,
+/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Yg" = (
 /obj/structure/cable/heavyduty{

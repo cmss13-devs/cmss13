@@ -51,7 +51,7 @@
 		)
 	)
 
-	if(twofactor_view.approved)
+	if(twofactor_view?.approved)
 		return TRUE
 	else if(twofactor_view)
 		return FALSE

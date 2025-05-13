@@ -2265,11 +2265,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agz" = (
 /obj/effect/decal/cleanable/generic,
-/obj/item/reagent_container/food/drinks/flask/marine{
-	layer = 3.1;
-	pixel_x = -2;
-	pixel_y = 7
-	},
+/obj/item/reagent_container/food/drinks/flask/marine/army,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "agA" = (
@@ -5038,11 +5034,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "aoe" = (
-/obj/item/reagent_container/food/drinks/flask/marine{
-	layer = 3.1;
-	pixel_x = -2;
-	pixel_y = 7
-	},
+/obj/item/reagent_container/food/drinks/flask/marine/army,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "aof" = (
@@ -14195,11 +14187,6 @@
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/tyrargo/indoors/apartment/south_upper)
 "aJO" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -14886,11 +14873,6 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "aKU" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -16443,6 +16425,11 @@
 /obj/item/trash/cigbutt{
 	pixel_x = 7
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 4;
+	icon_state = "sandbag_0";
+	pixel_x = 4
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOG" = (
@@ -16494,11 +16481,6 @@
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aOL" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_14";
 	pixel_y = 13
@@ -56992,6 +56974,9 @@
 /obj/structure/barricade/hesco,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
+"cMN" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/tyrargo/indoors/engineering/ground)
 "cMO" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
@@ -57018,6 +57003,12 @@
 /obj/effect/blocker/water,
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/oob)
+"cMQ" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/outdoors/outskirts/east)
 "cMR" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/blocker/water,
@@ -57969,6 +57960,15 @@
 /obj/structure/bed/roller,
 /turf/open/floor/prison/whitegreen/southeast,
 /area/tyrargo/indoors/mall)
+"cPC" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/barricade/hesco{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/east)
 "cPD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars/range/designator,
@@ -57981,6 +57981,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/tyrargo/indoors/mall)
+"cPG" = (
+/obj/structure/barricade/hesco{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/east)
 "cPH" = (
 /turf/open/floor/prison/darkyellow2/north,
 /area/tyrargo/indoors/mall)
@@ -60615,11 +60621,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
 "cXE" = (
-/obj/item/reagent_container/food/drinks/flask/marine{
-	layer = 3.1;
-	pixel_x = -2;
-	pixel_y = 7
-	},
+/obj/item/reagent_container/food/drinks/flask/marine/army,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
@@ -68187,11 +68189,7 @@
 	pixel_x = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_container/food/drinks/flask/marine{
-	layer = 3.1;
-	pixel_x = -2;
-	pixel_y = 7
-	},
+/obj/item/reagent_container/food/drinks/flask/marine/army,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "drt" = (
@@ -78631,7 +78629,7 @@
 	icon_state = "trash_4";
 	pixel_y = 12
 	},
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/tyrargo/indoors/engineering/ground)
 "dRw" = (
 /obj/structure/prop/hybrisa/misc/metergreen{
@@ -89419,9 +89417,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/west)
-"lVt" = (
-/turf/closed/wall/prison,
-/area/tyrargo/oob)
 "lXq" = (
 /obj/structure/largecrate/empty/case/double{
 	pixel_x = -1;
@@ -92629,11 +92624,7 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "rNA" = (
-/obj/item/reagent_container/food/drinks/flask/marine{
-	layer = 3.1;
-	pixel_x = -2;
-	pixel_y = 7
-	},
+/obj/item/reagent_container/food/drinks/flask/marine/army,
 /obj/structure/barricade/hesco{
 	dir = 4
 	},
@@ -159854,9 +159845,9 @@ aJQ
 bLt
 bLS
 bzi
-bzi
-bzi
-bzi
+cMQ
+cMQ
+cMQ
 dlt
 dls
 dlr
@@ -160036,9 +160027,9 @@ bMj
 aPp
 aJE
 bzi
-byQ
-byQ
-bFF
+cPG
+cPG
+cPC
 bqG
 bFF
 bLW
@@ -164065,17 +164056,17 @@ dLE
 ckP
 coV
 cnb
-clK
+cMN
 cmK
-clK
+cMN
 cmK
-clK
+cMN
 cmJ
 cmJ
-clK
-clK
-clK
-clK
+cMN
+cMN
+cMN
+cMN
 cnq
 cnq
 cnb
@@ -164246,15 +164237,15 @@ aof
 cph
 cph
 cnb
-clK
-clK
+cMN
+cMN
 oMv
 clK
 acf
-clK
-clK
-clK
-clK
+cMN
+cMN
+cMN
+cMN
 abI
 abB
 idN
@@ -164424,11 +164415,11 @@ aoM
 cqf
 cnq
 cnq
-clK
-clK
-clK
-clK
-clK
+cMN
+cMN
+cMN
+cMN
+cMN
 url
 uwi
 cmK
@@ -165149,7 +165140,7 @@ ayL
 qDj
 kiU
 cpb
-cnq
+cMN
 obB
 acO
 acI
@@ -165331,7 +165322,7 @@ ayL
 wYA
 jAG
 dne
-clK
+cMN
 acQ
 xxk
 uGc
@@ -165360,7 +165351,7 @@ cmj
 cmj
 lNE
 aaU
-clK
+cMN
 lRD
 ckG
 nYO
@@ -165513,7 +165504,7 @@ ayM
 wmT
 aGu
 cMM
-clK
+cMN
 dnU
 tqh
 uGc
@@ -165542,7 +165533,7 @@ cmd
 cmj
 cmd
 aaV
-clK
+cMN
 qVn
 ckx
 qWy
@@ -165695,7 +165686,7 @@ hkc
 qDj
 cqH
 dnd
-clK
+cMN
 cpL
 tqh
 uGc
@@ -165724,7 +165715,7 @@ cms
 cmk
 aaZ
 aaW
-clK
+cMN
 tds
 ckG
 jkE
@@ -165877,7 +165868,7 @@ cru
 qDj
 cqG
 tqe
-clK
+cMN
 cpK
 tqh
 uGc
@@ -165898,7 +165889,7 @@ clK
 cnt
 abz
 cmK
-clK
+cMN
 clK
 abl
 cmA
@@ -165906,7 +165897,7 @@ gaY
 cml
 gaY
 clT
-clK
+cMN
 uEq
 ckG
 izN
@@ -166066,9 +166057,9 @@ dFl
 acJ
 wzA
 clK
-clK
-clK
-clK
+cMN
+cMN
+cMN
 clK
 bta
 bta
@@ -166088,7 +166079,7 @@ nKS
 oPc
 iHj
 clU
-clK
+cMN
 clz
 axP
 cjz
@@ -166243,16 +166234,16 @@ vAg
 waA
 cnq
 cnq
-clK
-clK
-clK
-clK
-clK
-clK
+cMN
+cMN
+cMN
+cMN
+cMN
+cMN
 coS
 dRv
-clK
-clK
+cMN
+cMN
 lXq
 iUX
 jUm
@@ -166264,13 +166255,13 @@ abA
 xNG
 cnq
 cnq
-clK
-clK
-clK
+cMN
+cMN
+cMN
 rDu
 owc
 oYV
-clK
+cMN
 ckf
 nFb
 cjz
@@ -172611,7 +172602,7 @@ apc
 crm
 oWV
 vGV
-alY
+cns
 alY
 alY
 alY
@@ -172792,8 +172783,8 @@ crk
 cKf
 twT
 cqM
-alY
-alY
+cns
+cns
 cRB
 dTk
 dlP
@@ -196063,7 +196054,7 @@ bTB
 bTB
 bTB
 bTD
-lVt
+cVN
 cSk
 cSk
 aaj
@@ -199522,8 +199513,8 @@ cSk
 cSk
 cSk
 cSk
-bxl
-bxl
+cSk
+cSk
 cSk
 cVD
 cVD
@@ -199702,7 +199693,7 @@ cSk
 cSk
 cSk
 cSk
-bxl
+cSk
 cVD
 cVD
 cVD
@@ -200444,10 +200435,10 @@ cVD
 cVD
 cVD
 cVD
-bxl
 cVD
 cVD
-cSk
+cVD
+cVD
 cSk
 cSk
 cSk
@@ -200626,10 +200617,10 @@ cVD
 cVD
 cVD
 cVD
-bxl
 cVD
 cVD
-bxl
+cVD
+cVD
 cSk
 cSk
 cSk
@@ -200808,10 +200799,10 @@ cVD
 cVD
 cVD
 cVD
-bxl
 cVD
 cVD
-bxl
+cVD
+cVD
 cSk
 cSk
 cSk
@@ -200993,7 +200984,7 @@ cVD
 cVD
 cVD
 cVD
-bxl
+cVD
 cSk
 cSk
 cSk
@@ -201175,7 +201166,7 @@ cVD
 cVD
 cVD
 cVD
-bxl
+cVD
 cSk
 cSk
 cSk
@@ -201357,11 +201348,11 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -201539,10 +201530,10 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -201721,10 +201712,10 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -201903,10 +201894,10 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -202082,13 +202073,13 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -202264,13 +202255,13 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -202446,13 +202437,13 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -202627,14 +202618,14 @@ cVD
 cVD
 cVD
 cVD
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
+cSk
 cSl
 cSl
 cSl
@@ -202792,27 +202783,27 @@ cSg
 cSg
 cSg
 cSg
-bxl
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
-cVD
 aaj
-aaj
-aaj
-aaj
-aaj
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cVD
+cSk
+cSk
+cSk
+cSk
+cSk
 cVD
 cVD
 cVD
@@ -202974,7 +202965,7 @@ cSg
 cSg
 cSg
 cSg
-bxl
+aaj
 cVD
 cVD
 cVD
@@ -203156,7 +203147,7 @@ cSg
 cSg
 cSg
 cSg
-bxl
+aaj
 cVD
 cVD
 cVD
@@ -203339,7 +203330,7 @@ cSg
 cSg
 cSg
 cSg
-bxl
+aaj
 cVD
 cVD
 cVD

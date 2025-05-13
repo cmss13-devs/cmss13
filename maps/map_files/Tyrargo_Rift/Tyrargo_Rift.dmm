@@ -56750,6 +56750,10 @@
 /obj/item/storage/firstaid/regular,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"cMf" = (
+/obj/structure/flora/tree/dead/tree_5,
+/turf/closed/wall/rock,
+/area/tyrargo/oob)
 "cMg" = (
 /obj/structure/flora/tree/tyrargo{
 	layer = 5.97
@@ -161658,7 +161662,7 @@ bOD
 bOu
 bzT
 bzF
-bOV
+bzh
 bPb
 bOK
 bOK
@@ -161840,7 +161844,7 @@ bOD
 bOu
 bzT
 bOD
-bzF
+bzh
 bOL
 bOD
 bOu
@@ -162021,8 +162025,8 @@ bsw
 bsw
 bsw
 bOD
-bsw
-bOM
+cMf
+bsY
 bsw
 bOV
 bOL
@@ -162250,7 +162254,7 @@ cHL
 bRI
 bRI
 bRI
-cHL
+bRI
 bOM
 bPx
 anm
@@ -162564,8 +162568,8 @@ ans
 ani
 anh
 anC
-any
-anx
+btW
+btW
 bPw
 cwj
 cvt
@@ -162746,8 +162750,8 @@ any
 anx
 ans
 ani
-anh
-anC
+btW
+btW
 bPx
 cwH
 cwx

@@ -73,6 +73,7 @@
 	var/windup_duration = 3 SECONDS
 	var/list/ram_callbacks = null
 	var/impassable_collide = FALSE
+	var/mob/living/carbon/hit_mob = null
 
 /datum/action/xeno_action/activable/ram/New()
 	. = ..()

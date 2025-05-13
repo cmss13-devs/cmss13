@@ -305,6 +305,8 @@
 	// Screech Accuracy Degredation
 	var/screech_accdeg_str = 95
 	var/screech_accdeg_dur = 10 SECONDS
+	// Brutality vars
+	var/smashing = FALSE /// Same as Predalien to prevent grab shenanigans
 
 	tileoffset = 0
 	viewsize = 12
@@ -327,7 +329,7 @@
 		/datum/action/xeno_action/activable/frontal_assault, // Second macro
 		/datum/action/xeno_action/onclick/disarming_sweep, // Third macro
 		/datum/action/xeno_action/activable/ram, // Fourth macro, needs to be mature to use
-		// Rework Ability 4 Brutality // Needs to be mature to use
+		/datum/action/xeno_action/activable/brutality, // Needs to be mature to use
 		// Rework Ability 5 Resin Spit // Fifth macro
 		/datum/action/xeno_action/activable/gut,
 		// Immobile Abilities
@@ -447,6 +449,8 @@
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
+		if(xeno == queen)
+			continue
 		if(xeno.stat == DEAD)
 			continue
 		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) || xeno.flags_pass_temp & PASS_MOB_THRU)
@@ -624,7 +628,7 @@
 	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
 	. += "Royal Resin: [hive?.buff_points]"
 	if(queen_stamina != 0)
-		. += "Impatience: [queen_stamina], Tier [stamina_tier]"
+		. += "Impatience: [round((queen_stamina / stamina_cap) * 100, 0.01)]%, Tier [stamina_tier]"
 	if(!is_mature && maturity_timer_id != TIMER_ID_NULL)
 		. += "Maturity: [time2text(timeleft(maturity_timer_id), "mm:ss")] remaining"
 
@@ -969,18 +973,11 @@
 
 	if(stamina_tier != 0)
 		switch(stamina_tier)
-			if(1)
-				to_chat(src, SPAN_XENONOTICE("We feel mildy irritated!"))
-			if(2)
-				to_chat(src, SPAN_XENONOTICE("We feel decently irritated!"))
-			if(3)
-				to_chat(src, SPAN_XENONOTICE("We feel fairly annoyed!"))
 			if(4)
-				to_chat(src, SPAN_XENOBOLDNOTICE("We feel very annoyed!"))
+				src.emote("tail")
 			if(5)
-				to_chat(src, SPAN_XENOBOLDNOTICE("We feel quite angry!"))
+				src.emote("tail")
 			if(6)
-				to_chat(src, SPAN_XENOHIGHDANGER("We feel incredibly angry!"))
 				src.emote("roar")
 
 	if(!instant_dismount)

@@ -137,7 +137,8 @@ As such, don't expect any values assigned to common firearms to even consider ho
 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 */
 
-/// Sniper/DMR Delays
+/// Sniper/DMR/SHARP Delays
+#define FIRE_DELAY_TIER_SHARP 40
 #define FIRE_DELAY_TIER_AMR 30
 #define FIRE_DELAY_TIER_VULTURE 20
 #define FIRE_DELAY_TIER_SNIPER 15

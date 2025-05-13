@@ -15,7 +15,7 @@
 
 /datum/emergency_call/us_army/New()
 	..()
-	arrival_message = "This is USS Victory, well done Almayer. The 32nd Armour is en-route, the forward elements should be entering your AO shortly to assist in mop-up. You may have just saved a lot of lives today Falling Falcons."
+	arrival_message = "Break, break. This is USS Victory, local Army elements confirm your sector is free of hostile tangos. Be advised, the 32nd Armour is en-route, forward elements should be entering your AO shortly to assist in mop-up. You may have just saved a lot of lives today Falling Falcons. Over and out."
 	objectives = "Assist the Marines in securing the area of operations."
 
 /datum/emergency_call/us_army/create_member(datum/mind/new_mind, turf/override_spawn_loc)

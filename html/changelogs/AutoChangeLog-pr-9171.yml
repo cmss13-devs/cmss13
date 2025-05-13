@@ -1,4 +1,0 @@
-author: "kiVts"
-delete-after: True
-changes:
-  - bugfix: "Fix spammed runtimes related to tvs relaying messages"

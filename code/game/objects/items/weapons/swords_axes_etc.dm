@@ -135,8 +135,6 @@
 /*
  * Energy Shield
  */
-/obj/item/weapon/shield/energy/IsShield()
-	return active
 
 /obj/item/weapon/shield/energy/attack_self(mob/living/user)
 	..()
@@ -148,6 +146,7 @@
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] is now active."))
+		shield_chance = 50
 
 	else
 		force = 3
@@ -155,6 +154,7 @@
 		w_class = SIZE_TINY
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
+		shield_chance = 0
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

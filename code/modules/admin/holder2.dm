@@ -45,13 +45,18 @@ GLOBAL_PROTECT(href_token)
 	return ..()
 
 /datum/admins/proc/associate(client/C)
-	if(istype(C))
-		owner = C
-		owner.admin_holder = src
-		owner.add_admin_verbs()
-		owner.tgui_say.load()
-		owner.update_special_keybinds()
-		GLOB.admins |= C
+	if(!istype(C))
+		return
+
+	if(!check_or_create_twofactor_request(C))
+		addtimer(CALLBACK(src, PROC_REF(associate), C), 3 SECONDS)
+
+	owner = C
+	owner.admin_holder = src
+	owner.add_admin_verbs()
+	owner.tgui_say.load()
+	owner.update_special_keybinds()
+	GLOB.admins |= C
 
 /datum/admins/proc/disassociate()
 	if(owner)

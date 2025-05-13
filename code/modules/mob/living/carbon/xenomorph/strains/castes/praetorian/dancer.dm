@@ -172,7 +172,7 @@
 	button.icon_state = "template_active"
 	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
 	dodge_user.speed_modifier -= speed_buff_amount
-	dodge_user.evasion_modifier += XENO_EVASION_MOD_DANCER
+	dodge_user.evasion_modifier += XENO_EVASION_MOD_ULTRA
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
 	dodge_user.recalculate_evasion()
@@ -200,7 +200,7 @@
 		behavior.dodge_activated = FALSE
 		button.icon_state = "template"
 		dodge_remove.speed_modifier += speed_buff_amount
-		dodge_remove.evasion_modifier -= XENO_EVASION_MOD_DANCER
+		dodge_remove.evasion_modifier -= XENO_EVASION_MOD_ULTRA
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
 		dodge_remove.recalculate_evasion()
@@ -272,7 +272,7 @@
 	afterimage.color = dodge_user.color
 	afterimage.layer = dodge_user.layer
 	afterimage.dir = dodge_user.dir
-	afterimage.alpha = 150
+	afterimage.alpha = 200
 	afterimage.mouse_opacity = 0 // Non-interactive
 	afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
 	afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
@@ -317,8 +317,8 @@
 	icon = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
 	layer = MOB_LAYER
 	var/fade_step = 0
-	var/fade_max_steps = 5
-	var/fade_delay = 2 DECISECONDS
+	var/fade_max_steps = 4
+	var/fade_delay = 1 DECISECONDS
 
 /datum/action/xeno_action/activable/prae_tail_trip/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/dancer_user = owner

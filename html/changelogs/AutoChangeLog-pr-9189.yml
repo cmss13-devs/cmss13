@@ -1,4 +1,0 @@
-author: "LiquidPotroh"
-delete-after: True
-changes:
-  - bugfix: "vanguard explosive armor goes to minus infinity"

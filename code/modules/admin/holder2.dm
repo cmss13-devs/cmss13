@@ -44,12 +44,13 @@ GLOBAL_PROTECT(href_token)
 		return FALSE
 	return ..()
 
-/datum/admins/proc/associate(client/C)
+/datum/admins/proc/associate(client/C, force = FALSE, silent = FALSE)
 	if(!istype(C))
 		return
 
-	if(!check_or_create_twofactor_request(C))
-		addtimer(CALLBACK(src, PROC_REF(associate), C), 3 SECONDS)
+	if(!force && C && !check_or_create_twofactor_request(C, silent))
+		addtimer(CALLBACK(src, PROC_REF(associate), C, FALSE, TRUE), 3 SECONDS)
+		return
 
 	owner = C
 	owner.admin_holder = src

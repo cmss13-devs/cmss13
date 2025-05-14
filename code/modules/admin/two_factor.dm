@@ -5,11 +5,6 @@
 
 	var/approved
 
-/datum/entity/twofactor_request/New(ip, cid, ckey)
-	src.ip = ip
-	src.cid = cid
-	src.ckey = ckey
-
 /datum/entity_meta/twofactor_request
 	entity_type = /datum/entity/twofactor_request
 	table_name = "twofactor"
@@ -37,10 +32,12 @@
 		"approved"
 	)
 
-/proc/check_or_create_twofactor_request(client/user)
+/proc/check_or_create_twofactor_request(client/user, silent)
 	var/url = CONFIG_GET(string/twofactor_admins_url)
 	if(!url)
 		return TRUE
+
+	WAIT_DB_READY
 
 	var/datum/view_record/twofactor_request/twofactor_view = locate() in DB_VIEW(
 		/datum/view_record/twofactor_request,
@@ -52,15 +49,22 @@
 	)
 
 	if(twofactor_view?.approved)
+		to_chat(user, SPAN_BIGNOTICE("Your two factor authentication has been approved for your current IP and CID."))
 		return TRUE
 	else if(twofactor_view)
+		if(!silent)
+			to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url][user.computer_id]'>Log in here</a>."))
 		return FALSE
 
-	var/datum/entity/twofactor_request/twofactor_request = new(user.address, user.computer_id, user.ckey)
+	var/datum/entity/twofactor_request/twofactor_request = DB_ENTITY(/datum/entity/twofactor_request)
+	twofactor_request.ip = user.address
+	twofactor_request.cid = user.computer_id
+	twofactor_request.ckey = user.ckey
+
 	twofactor_request.save()
 	twofactor_request.detach()
 
-	to_chat(user, SPAN_BIGNOTICE("You will not be able to connect until you perform two factor authentication. <a href='[url][user.computer_id]'>Log in here</a>."))
+	to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url][user.computer_id]'>Log in here</a>."))
 
 	return FALSE
 

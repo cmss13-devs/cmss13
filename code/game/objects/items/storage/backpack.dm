@@ -537,7 +537,7 @@
 
 /obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel
 	name = "\improper USCM lightweight expedition satchel"
-	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	desc = "A heavy-duty IMP based satchel, reinforced with kevlar so it doesn't rip. Can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "intel_satchel"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_state_slots = list(

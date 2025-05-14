@@ -535,6 +535,12 @@
 	icon_state = "intel_chestrig"
 	max_storage_space = 20
 
+/obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel
+	name = "\improper USCM expedition satchel"
+	desc = "A heavy-duty IMP based satchel, can quickly be accessed with only one hand. Reinforced with kevlar so it doesn't rip.Usually issued to USCM intelligence officers."
+	icon_state = "intel_satchel"
+	max_storage_space = 20
+
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
 	desc = "A heavy-duty satchel carried by some USCM soldiers and support personnel."

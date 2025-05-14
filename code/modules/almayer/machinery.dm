@@ -63,7 +63,7 @@
 
 /obj/structure/machinery/prop/almayer/computer/midway_remote_control
 	name = "Midway Remote Control Console"
-	desc = "A  flight computer that can be used for to control the Midway remotely, sadly, the Midway is in storage."
+	desc = "A  flight computer that can be used to control the Midway remotely, sadly, the Midway is in storage."
 	icon_state = "cameras_old"
 
 /obj/structure/machinery/prop/almayer/computer/midway_weapon_console

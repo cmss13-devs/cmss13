@@ -206,17 +206,6 @@
 	},
 /turf/open/floor/almayer/cargo/southwest,
 /area/adminlevel/ert_station/soalar_devils_station)
-"av" = (
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	name = "Midway Remote Control Console";
-	shuttleId = "dropship_midway";
-	icon_state = "cameras_old";
-	dir = 8;
-	pixel_x = 17;
-	pixel_y = -14
-	},
-/turf/closed/wall/almayer/outer,
-/area/adminlevel/ert_station/soalar_devils_station)
 "ax" = (
 /obj/item/storage/toolbox/mechanical{
 	pixel_y = -6;
@@ -20388,7 +20377,7 @@ AQ
 gT
 VG
 ro
-av
+ZR
 WN
 ZR
 ZR

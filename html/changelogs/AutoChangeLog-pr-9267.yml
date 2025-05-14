@@ -1,0 +1,5 @@
+author: "DangerRevolution"
+delete-after: True
+changes:
+  - rscadd: "Increased the number of M5 Camera Gears from 3 to 15 in the Requsition Vendor."
+  - bugfix: "M5 Camera Gear now properly spawns in the Squad Vendors."

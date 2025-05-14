@@ -29,7 +29,7 @@
 		"ip",
 		"cid",
 		"ckey",
-		"approved"
+		"approved",
 	)
 
 /proc/check_or_create_twofactor_request(client/user)

@@ -16,8 +16,8 @@
 	pixel_x = -17
 	pixel_y = -2
 	var/wreckage = /obj/structure/combat_mech_wreckage
-	var/obj/item/weapon/gun/gun_left
-	var/obj/item/weapon/gun/gun_right
+	var/obj/item/weapon/gun/mech/rx47_chaingun/gun_left
+	var/obj/item/weapon/gun/mech/rx47_support/gun_right
 
 	var/helmet_closed = FALSE
 
@@ -25,6 +25,11 @@
 
 /obj/vehicle/combat_mech/Initialize()
 	cell = new /obj/item/cell/apc
+
+	gun_left = new(src)
+	gun_left.linked_mech = src
+	gun_right = new(src)
+	gun_right.linked_mech = src
 
 	rebuild_icon()
 	. = ..()
@@ -104,15 +109,6 @@
 			manual_unbuckle(user)
 			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
 
-/obj/vehicle/combat_mech/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/PC = W
-		if(PC.linked_powerloader == src)
-			unbuckle() //clicking the powerloader with its own clamp unbuckles the pilot.
-			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
-			return 1
-	. = ..()
-
 /obj/vehicle/combat_mech/buckle_mob(mob/M, mob/user)
 	if(M != user)
 		return
@@ -168,6 +164,137 @@
 	set src in oview(1)
 
 	buckle_mob(M, usr)
+
+//Guns
+/obj/item/weapon/gun/mech
+	var/obj/vehicle/combat_mech/linked_mech
+	unacidable = TRUE
+	explo_proof = TRUE
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
+	flags_item = 0
+	start_semiauto = FALSE
+	start_automatic = TRUE
+	akimbo_forbidden = TRUE
+
+/obj/item/weapon/gun/mech/dropped(mob/user)
+	if(!linked_mech)
+		qdel(src)
+	..()
+	forceMove(linked_mech)
+	if(linked_mech.buckled_mob && linked_mech.buckled_mob == user)
+		linked_mech.unbuckle()
+
+//Chaingun
+/obj/item/ammo_magazine/rx47_chaingun
+	name = "rotating ammo drum (20x102mm)"
+	desc = "A huge ammo drum for a huge gun."
+	caliber = "20x102mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
+	icon_state = "painless" //PLACEHOLDER
+
+	matter = list("metal" = 10000)
+	default_ammo = /datum/ammo/bullet/rx47_chaingun
+	max_rounds = 5000
+	reload_delay = 24 //Hard to reload.
+	gun_type = /obj/item/weapon/gun/mech/rx47_chaingun
+	w_class = SIZE_MEDIUM
+
+/datum/ammo/bullet/rx47_chaingun
+	name = "chaingun bullet"
+	headshot_state = HEADSHOT_OVERLAY_MEDIUM
+
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	accurate_range = 12
+	damage = 20
+	penetration = ARMOR_PENETRATION_TIER_6
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_FAIR
+
+/obj/item/weapon/gun/mech/rx47_chaingun
+	name = "\improper RX47 Chaingun"
+	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
+	icon = 'icons/obj/vehicles/wymech_guns.dmi'
+	icon_state = "chaingun"
+	mouse_pointer = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
+
+	fire_sound = 'sound/weapons/gun_minigun.ogg'
+	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
+	current_mag = /obj/item/ammo_magazine/rx47_chaingun
+	w_class = SIZE_HUGE
+	force = 20
+	gun_category = GUN_CATEGORY_HEAVY
+
+/obj/item/weapon/gun/mech/rx47_chaingun/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+/obj/item/weapon/gun/mech/rx47_chaingun/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_12)
+
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+
+	scatter = SCATTER_AMOUNT_TIER_9 // Most of the scatter should come from the recoil
+	scatter_unwielded = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = 1
+
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_OFF
+	recoil_buildup_limit = RECOIL_OFF
+	can_jam = FALSE
+	durability_loss = GUN_DURABILITY_LOSS_NONE
+
+
+// Support Gun
+/obj/item/ammo_magazine/rx47_cupola
+	name = "rotating ammo drum (15x102mm)"
+	desc = "A huge ammo drum for a huge gun."
+	caliber = "15x102mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/event.dmi'
+	icon_state = "painless" //PLACEHOLDER
+
+	matter = list("metal" = 10000)
+	default_ammo = /datum/ammo/bullet/rx47_cupola
+	max_rounds = 3000
+	reload_delay = 24 //Hard to reload.
+	gun_type = /obj/item/weapon/gun/mech/rx47_support
+	w_class = SIZE_MEDIUM
+
+/datum/ammo/bullet/rx47_cupola
+	name = "cupola bullet"
+	icon_state = "bullet_iff"
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+	damage_falloff = DAMAGE_FALLOFF_TIER_9
+	max_range = 12
+	accuracy = HIT_ACCURACY_TIER_4
+	damage = 10
+	penetration = 0
+	effective_range_max = 5
+
+/datum/ammo/bullet/rx47_cupola/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
+/obj/item/weapon/gun/mech/rx47_support
+	name = "\improper RX47 Auxilliary Cupola"
+	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
+	icon = 'icons/obj/vehicles/wymech_guns.dmi'
+	icon_state = "aux_cupola"
+	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
+
+	fire_sound = "gun_smartgun"
+	fire_rattle = "gun_smartgun_rattle"
+	current_mag = /obj/item/ammo_magazine/rx47_cupola
+	w_class = SIZE_HUGE
+	force = 20
+	gun_category = GUN_CATEGORY_SMG
+	muzzle_flash = "muzzle_flash_blue"
+	muzzle_flash_color = COLOR_MUZZLE_BLUE
 
 
 // Wreckage

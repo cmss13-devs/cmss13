@@ -1,0 +1,10 @@
+2025-05-03:
+  Perohai:
+  - rscadd: Добавил M707 кит в вендор карго
+  - rscadd: IFF режим M707
+  - rscadd: Возможность покупать патроны в карго
+  - bugfix: Модель дальномера на треноге обновляется
+2025-05-13:
+  Poslushneek:
+  - rscadd: Добавлена кнопка View Open Tickets
+  - rscadd: Добавлена кнопка Open Mentor Chat

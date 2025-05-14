@@ -1,4 +1,4 @@
-#define NUKE_UNLOCK_TIME (115 MINUTES)
+#define NUKE_UNLOCK_TIME (100 MINUTES) // SS220 EDIT 115->100
 
 /datum/tech/nuke
 	name = "Nuclear Device"
@@ -9,8 +9,8 @@
 
 	tier = /datum/tier/four
 
-	announce_name = "NUCLEAR ARSENAL ACQUIRED"
-	announce_message = "The deployment of a Large Atomic Fission Demolition Device have been authorized and will be delivered to the Requisitions Department, via ASRS."
+	announce_name = "ПОЛУЧЕНИЕ ЯДЕРНОГО АРСЕНАЛА"
+	announce_message = "Ядерное устройство было авторизовано и будет доставлено в Requisitions Department через систему ASRS."
 
 	flags = TREE_FLAG_MARINE
 

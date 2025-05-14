@@ -1,0 +1,71 @@
+["red wizard hat"]
+nominative = "красная шляпа волшебника"
+genitive = "красной шляпы волшебника"
+dative = "красной шляпе волшебника"
+accusative = "красную шляпу волшебника"
+instrumental = "красной шляпой волшебника"
+prepositional = "красной шляпе волшебника"
+gender = "female"
+
+["red wizard robe"]
+nominative = "красная мантия волшебника"
+genitive = "красной мантии волшебника"
+dative = "красной мантии волшебника"
+accusative = "красную мантию волшебника"
+instrumental = "красной мантией волшебника"
+prepositional = "красной мантии волшебника"
+gender = "female"
+
+["yellow wizard hat"]
+nominative = "жёлтая шляпа волшебника"
+genitive = "жёлтой шляпы волшебника"
+dative = "жёлтой шляпе волшебника"
+accusative = "жёлтую шляпу волшебника"
+instrumental = "жёлтой шляпой волшебника"
+prepositional = "жёлтой шляпе волшебника"
+gender = "female"
+
+["yellow wizard robe"]
+nominative = "жёлтая мантия волшебника"
+genitive = "жёлтой мантии волшебника"
+dative = "жёлтой мантии волшебника"
+accusative = "жёлтую мантию волшебника"
+instrumental = "жёлтой мантией волшебника"
+prepositional = "жёлтой мантии волшебника"
+gender = "female"
+
+["black wizard hat"]
+nominative = "чёрная шляпа волшебника"
+genitive = "чёрной шляпы волшебника"
+dative = "чёрной шляпе волшебника"
+accusative = "чёрную шляпу волшебника"
+instrumental = "чёрной шляпой волшебника"
+prepositional = "чёрной шляпе волшебника"
+gender = "female"
+
+["black wizard robe"]
+nominative = "чёрная мантия волшебника"
+genitive = "чёрной мантии волшебника"
+dative = "чёрной мантии волшебника"
+accusative = "чёрную мантию волшебника"
+instrumental = "чёрной мантией волшебника"
+prepositional = "чёрной мантии волшебника"
+gender = "female"
+
+["magical sandals"]
+nominative = "волшебные сандалии"
+genitive = "волшебных сандалий"
+dative = "волшебным сандалиям"
+accusative = "волшебные сандалии"
+instrumental = "волшебными сандалиями"
+prepositional = "волшебных сандалиях"
+gender = "female"
+
+["Wizarditis culture bottle"]
+nominative = "бутылка культуры Волшебнитис"
+genitive = "бутылки культуры Волшебнитис"
+dative = "бутылке культуры Волшебнитис"
+accusative = "бутылку культуры Волшебнитис"
+instrumental = "бутылкой культуры Волшебнитис"
+prepositional = "бутылке культуры Волшебнитис"
+gender = "female"

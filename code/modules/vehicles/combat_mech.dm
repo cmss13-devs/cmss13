@@ -1,4 +1,5 @@
-#define MECH_LAYER MOB_LAYER + 0.11
+#define MECH_LAYER MOB_LAYER + 0.12
+#define MECH_CORE_LAYER MOB_LAYER + 0.11
 /obj/vehicle/combat_mech
 	name = "\improper RX47 Combat Mechsuit"
 	icon = 'icons/obj/vehicles/wymech.dmi'
@@ -10,12 +11,11 @@
 	light_range = 5
 	move_delay = 7
 	buckling_y = 17
-	health = 200
-	maxhealth = 200
+	health = 2000
+	maxhealth = 2000
 	pixel_x = -17
 	pixel_y = -2
-	var/overlay_state = "wymech_body_overlay_open"
-	var/wreckage = /obj/structure/powerloader_wreckage
+	var/wreckage = /obj/structure/combat_mech_wreckage
 	var/obj/item/weapon/gun/gun_left
 	var/obj/item/weapon/gun/gun_right
 
@@ -31,6 +31,9 @@
 
 /obj/vehicle/combat_mech/proc/rebuild_icon()
 	overlays.Cut()
+	if(buckled_mob)
+		overlays += image(icon_state = "wymech_body_overlay", layer = MECH_CORE_LAYER)
+		overlays += image(icon_state = "wymech_legs", layer = MECH_CORE_LAYER)
 	if(helmet_closed)
 		overlays += image(icon_state = "wymech_helmet_closed", layer = MECH_LAYER)
 	else
@@ -124,13 +127,19 @@
 		return
 	. = ..()
 
+/obj/vehicle/combat_mech/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+	SIGNAL_HANDLER
+
+	return COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
+
 /obj/vehicle/combat_mech/afterbuckle(mob/buckled_mob)
 	. = ..()
 	buckled_mob.layer = MOB_LAYER + 0.1
+	ADD_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
+	RegisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
 	rebuild_icon()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
-		overlays += image(icon_state = overlay_state, layer = MECH_LAYER)
 		if(buckled_mob.mind && buckled_mob.skills)
 			move_delay = max(3, move_delay - 2 * buckled_mob.skills.get_skill_level(SKILL_POWERLOADER))
 		if(gun_left && !buckled_mob.put_in_l_hand(gun_left))
@@ -148,14 +157,56 @@
 
 /obj/vehicle/combat_mech/unbuckle()
 	buckled_mob.layer = MOB_LAYER
+	REMOVE_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
+	UnregisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED)
 	..()
 
 //verb
 /obj/vehicle/combat_mech/verb/enter_mech(mob/M)
 	set category = "Object"
-	set name = "Enter Combat Mech"
+	set name = "Enter Combat Mechsuit"
 	set src in oview(1)
 
 	buckle_mob(M, usr)
+
+
+// Wreckage
+
+/obj/structure/combat_mech_wreckage
+	name = "\improper RX47 Combat Mechsuit wreckage"
+	desc = "Remains of some unfortunate Combat Mechsuit. Completely unrepairable."
+	icon = 'icons/obj/vehicles/wymech.dmi'
+	icon_state = "wymech_wreck"
+	density = TRUE
+	anchored = FALSE
+	opacity = FALSE
+	pixel_x = -18
+	pixel_y = -5
+	health = 100
+
+/obj/structure/combat_mech_wreckage/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(attacking_xeno.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	var/damage = (attacking_xeno.melee_vehicle_damage + rand(-5,5))
+
+	health -= damage
+
+	if(health <= 0)
+		deconstruct(FALSE)
+
+	return XENO_NONCOMBAT_ACTION
+
+
+
 
 #undef MECH_LAYER

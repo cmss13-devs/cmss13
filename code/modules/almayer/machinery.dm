@@ -61,10 +61,20 @@
 /obj/structure/machinery/prop/almayer/computer/PC/large/dark
 	icon_state = "largecomp_dark"
 
+/obj/structure/machinery/prop/almayer/computer/midway_remote_control
+	name = "Midway Remote Control Console"
+	desc = "A  flight computer that can be used for to control the Midway remotely, sadly, the Midway is in storage."
+	icon_state = "cameras_old"
+
 /obj/structure/machinery/prop/almayer/computer/midway_weapon_console
 	name = "\improper 'Midway' weapons controls"
 	desc = "A computer to manage equipment, weapons and simulations installed on the dropship. This one is inactive, however."
 	icon_state = "cameras_old"
+
+/obj/structure/machinery/prop/almayer/computer/overwatch
+	name = "Overwatch Console"
+	desc = "State of the art machinery for giving orders to a squad. This one seems to have trouble linking up."
+	icon_state = "overwatch"
 
 /obj/structure/machinery/prop/almayer/computer/NavCon
 	name = "NavCon"

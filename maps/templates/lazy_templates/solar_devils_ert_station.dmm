@@ -83,17 +83,6 @@
 	},
 /turf/open/space/basic,
 /area/adminlevel/ert_station/soalar_devils_station)
-"aj" = (
-/obj/structure/extinguisher_cabinet/lifeboat,
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 26;
-	pixel_x = -10
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "ak" = (
 /obj/structure/machinery/door_control{
 	id = "hangarlockdownsouth";
@@ -216,6 +205,17 @@
 	layer = 3.1
 	},
 /turf/open/floor/almayer/cargo/southwest,
+/area/adminlevel/ert_station/soalar_devils_station)
+"av" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Midway Remote Control Console";
+	shuttleId = "dropship_midway";
+	icon_state = "cameras_old";
+	dir = 8;
+	pixel_x = 17;
+	pixel_y = -14
+	},
+/turf/closed/wall/almayer/outer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ax" = (
 /obj/item/storage/toolbox/mechanical{
@@ -449,10 +449,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"bl" = (
-/obj/structure/shuttle/part/tripoli,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "bm" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -483,12 +479,6 @@
 	layer = 2.36
 	},
 /turf/open/floor/almayer/edge/southwest,
-/area/adminlevel/ert_station/soalar_devils_station)
-"bp" = (
-/obj/structure/shuttle/part/tripoli/transparent/nosecone{
-	icon_state = "100"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "br" = (
 /obj/effect/decal/warning_stripes{
@@ -711,11 +701,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/northeast,
 /area/adminlevel/ert_station/soalar_devils_station)
-"cg" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "38"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "ci" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -744,17 +729,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"cn" = (
-/obj/structure/stairs/perspective,
-/obj/structure/platform{
-	dir = 4;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "co" = (
 /obj/effect/decal/warning_stripes{
@@ -888,11 +862,6 @@
 	pixel_x = 16
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"cJ" = (
-/turf/closed/shuttle/tripoli/transparent{
-	icon_state = "86a"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "cL" = (
 /obj/structure/machinery/door/poddoor/railing{
@@ -1067,15 +1036,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
-"df" = (
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
-"dh" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "2"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "di" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 8
@@ -1166,11 +1126,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"dJ" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "39"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "dL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -1257,11 +1212,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/soalar_devils_station)
-"dY" = (
-/turf/closed/shuttle/tripoli/transparent{
-	icon_state = "89a"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "dZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -1329,12 +1279,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/edge/smooth,
 /area/adminlevel/ert_station/soalar_devils_station)
-"ei" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "ej" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -1399,11 +1343,6 @@
 	pixel_x = 34
 	},
 /turf/open/floor/almayer/edge/smooth/east,
-/area/adminlevel/ert_station/soalar_devils_station)
-"ew" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "35"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "ex" = (
 /obj/effect/decal/warning_stripes{
@@ -1635,19 +1574,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"fq" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "fr" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 8
@@ -1804,11 +1730,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/corner/west,
 /area/adminlevel/ert_station/soalar_devils_station)
-"fV" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "23"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "fW" = (
 /obj/structure/largecrate/random/case/double{
 	pixel_y = 5;
@@ -1858,12 +1779,6 @@
 	layer = 2.52
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"ge" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "16"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "gf" = (
 /obj/structure/machinery/sleep_console{
@@ -2033,11 +1948,6 @@
 	},
 /turf/open/floor/almayer/blackcorner/east,
 /area/adminlevel/ert_station/soalar_devils_station)
-"gL" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "48"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "gM" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -2139,20 +2049,6 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/adminlevel/ert_station/soalar_devils_station)
-"hi" = (
-/obj/structure/bed/chair/vehicle/dropship_cockpit/pilot{
-	dir = 1;
-	pixel_x = 6;
-	pixel_y = 8
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/small{
-	pixel_y = 16;
-	pixel_x = 6;
-	desc = "A flight computer that can be used for autopilot or long-range flights. This one is deactivated.";
-	name = "\improper 'Tripoli' piloting controls"
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "hj" = (
 /obj/structure/largecrate/random/case/double{
 	pixel_y = -3
@@ -2219,11 +2115,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
-"hA" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "22"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "hF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -2246,11 +2137,6 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"hI" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "29"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "hK" = (
 /turf/open/floor/almayer/cargo_arrow/north,
@@ -2528,7 +2414,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	pixel_y = 28;
 	id = "platco-privacy";
-	name = "hangar blast door control";
+	name = "Privacy Shutter Control";
 	req_one_access_txt = "19;12"
 	},
 /turf/open/floor/almayer/edge/smooth/northwest,
@@ -2716,11 +2602,6 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
-/area/adminlevel/ert_station/soalar_devils_station)
-"jv" = (
-/turf/closed/shuttle/tripoli/transparent{
-	icon_state = "86b"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "jw" = (
 /obj/structure/surface/table/almayer,
@@ -2990,21 +2871,6 @@
 /obj/structure/machinery/landinglight/ds1/delayone,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"kw" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = -1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 2
-	},
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds1{
-	name = "\improper Tripoli cargo door";
-	locked = 1
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
-/area/adminlevel/ert_station/soalar_devils_station)
 "kx" = (
 /obj/structure/machinery/shower{
 	dir = 4
@@ -3221,21 +3087,9 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"lf" = (
-/turf/open/shuttle/dropship/light_grey_bottom_left,
-/area/adminlevel/ert_station/soalar_devils_station)
-"lg" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "21"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "li" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
-	},
-/obj/structure/machinery/computer/overwatch/almayer{
-	pixel_y = 24
 	},
 /obj/structure/bed/chair/office/dark{
 	dir = 8
@@ -3245,6 +3099,9 @@
 	name = "General Listening Channel";
 	pixel_x = 25;
 	pixel_y = 28
+	},
+/obj/structure/machinery/prop/almayer/computer/overwatch{
+	pixel_y = 24
 	},
 /turf/open/floor/almayer/edge/smooth/north,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -3332,18 +3189,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"lA" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "90"
-	},
-/obj/effect/attach_point/weapon/tripoli/right_fore,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
-"lC" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "27"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "lG" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -3423,11 +3268,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"lW" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "26"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "lX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 8
@@ -3456,11 +3296,6 @@
 	pixel_y = 10
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"mb" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "33"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "md" = (
 /obj/effect/decal/cleanable/dirt{
@@ -3621,9 +3456,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"mD" = (
-/turf/open/shuttle/dropship/light_grey_bottom_right,
-/area/adminlevel/ert_station/soalar_devils_station)
 "mF" = (
 /obj/structure/sink{
 	dir = 4;
@@ -3691,23 +3523,12 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/adminlevel/ert_station/soalar_devils_station)
-"mO" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "47"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "mP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"mT" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "7"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "mW" = (
 /obj/effect/decal/cleanable/dirt{
@@ -4217,11 +4038,6 @@
 /obj/item/tool/warning_cone,
 /turf/open/floor/almayer/edge/smooth/north,
 /area/adminlevel/ert_station/soalar_devils_station)
-"oy" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "42"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "oA" = (
 /obj/structure/barricade/metal{
 	dir = 8
@@ -4363,11 +4179,6 @@
 	pixel_x = 2
 	},
 /turf/open/floor/almayer/dark_sterile,
-/area/adminlevel/ert_station/soalar_devils_station)
-"oP" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "24"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "oT" = (
 /obj/effect/decal/cleanable/dirt{
@@ -5758,12 +5569,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"sS" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "71"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "sU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -5913,12 +5718,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth,
 /area/adminlevel/ert_station/soalar_devils_station)
-"tj" = (
-/obj/structure/shuttle/part/tripoli/transparent{
-	icon_state = "99a"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "tk" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/cable/heavyduty{
@@ -6032,11 +5831,6 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/almayer/plating_striped/north,
-/area/adminlevel/ert_station/soalar_devils_station)
-"tE" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "83"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "tF" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -6319,11 +6113,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"uu" = (
-/turf/closed/shuttle/tripoli/transparent{
-	icon_state = "78"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "uv" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	dir = 2;
@@ -6403,11 +6192,6 @@
 	pixel_y = 14
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"uI" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "72"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "uK" = (
 /obj/structure/machinery/door_control{
@@ -6681,12 +6465,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
-"vP" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "vQ" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt{
@@ -6784,26 +6562,6 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/adminlevel/ert_station/soalar_devils_station)
-"we" = (
-/obj/structure/stairs/perspective{
-	dir = 1;
-	icon_state = "p_stair_full";
-	pixel_y = 22
-	},
-/obj/structure/bed/chair/vehicle/dropship_cockpit/copilot{
-	dir = 1;
-	pixel_x = 8;
-	layer = 5
-	},
-/obj/structure/machinery/prop/almayer/computer/midway_weapon_console{
-	icon_state = "cameras";
-	pixel_x = 8;
-	pixel_y = 8;
-	desc = "A computer to manage equipment, weapons and simulations installed on the dropship.";
-	name = "\improper 'Tripoli' weapons controls"
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "wf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -6892,11 +6650,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/edge/smooth/north,
-/area/adminlevel/ert_station/soalar_devils_station)
-"wz" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "103"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "wA" = (
 /obj/structure/janitorialcart{
@@ -7122,11 +6875,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/endcap_right/west,
 /area/adminlevel/ert_station/soalar_devils_station)
-"xo" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "104"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "xq" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/vehicle_locker/cabinet/utensils{
@@ -7167,15 +6915,6 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"xz" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "74"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
-"xB" = (
-/turf/open/shuttle/dropship/light_grey_top_left,
 /area/adminlevel/ert_station/soalar_devils_station)
 "xC" = (
 /obj/effect/decal/warning_stripes{
@@ -7297,11 +7036,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/edge/smooth/north,
 /area/adminlevel/ert_station/soalar_devils_station)
-"xR" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "64"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "xS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -7338,11 +7072,6 @@
 	icon_state = "siding8"
 	},
 /turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
-"xX" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "25"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "xY" = (
 /obj/effect/decal/cleanable/dirt{
@@ -7630,12 +7359,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"yQ" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "66"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "yR" = (
 /obj/structure/closet/secure_closet,
 /obj/item/smartgun_battery,
@@ -7770,11 +7493,6 @@
 	},
 /turf/open/floor/almayer/edge/east,
 /area/adminlevel/ert_station/soalar_devils_station)
-"zn" = (
-/turf/closed/shuttle/tripoli/transparent{
-	icon_state = "97a"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "zp" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -7791,11 +7509,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"zt" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "77"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "zx" = (
 /obj/structure/ladder{
@@ -8104,10 +7817,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/east,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Ao" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Ap" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -8126,9 +7835,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/edge/smooth/east,
-/area/adminlevel/ert_station/soalar_devils_station)
-"At" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Au" = (
 /obj/structure/sign/safety/bulkhead_door{
@@ -8157,12 +7863,6 @@
 	pixel_y = 26
 	},
 /turf/open/floor/almayer/mono,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Ax" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "70"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Ay" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -8216,11 +7916,6 @@
 	light_power = 0.7
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"AH" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "31"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "AJ" = (
 /obj/structure/sign/safety/terminal{
@@ -8333,12 +8028,6 @@
 	pixel_x = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Bc" = (
-/obj/structure/machinery/light/double{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Bd" = (
 /obj/effect/decal/cleanable/dirt{
@@ -8750,11 +8439,6 @@
 "Cn" = (
 /turf/open/floor/almayer/edge/northwest,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Cs" = (
-/turf/closed/shuttle/tripoli/transparent{
-	icon_state = "80"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "Cv" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -9005,19 +8689,6 @@
 	icon_state = "S"
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Dc" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "De" = (
 /obj/structure/disposalpipe/segment{
@@ -9566,9 +9237,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"EX" = (
-/turf/open/shuttle/dropship/light_grey_top_right,
-/area/adminlevel/ert_station/soalar_devils_station)
 "EY" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer,
@@ -9955,12 +9623,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Gn" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "4"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Go" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -10086,11 +9748,6 @@
 	},
 /turf/open/floor/almayer/edge/north,
 /area/adminlevel/ert_station/soalar_devils_station)
-"GK" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "34"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "GL" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 8
@@ -10118,20 +9775,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/edge/smooth/north,
-/area/adminlevel/ert_station/soalar_devils_station)
-"GP" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 26;
-	pixel_x = 10
-	},
-/obj/structure/extinguisher_cabinet/lifeboat{
-	pixel_y = 27;
-	pixel_x = -2
-	},
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "GQ" = (
 /obj/effect/decal/cleanable/dirt{
@@ -10230,12 +9873,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Hc" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "3"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Hd" = (
 /obj/effect/decal/warning_stripes{
@@ -10673,17 +10310,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/corner/north,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Ir" = (
-/obj/structure/stairs/perspective,
-/obj/structure/platform{
-	dir = 8;
-	layer = 2.7
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Is" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 2.52
@@ -10830,12 +10456,6 @@
 	},
 /turf/open/floor/almayer/edge/southeast,
 /area/adminlevel/ert_station/soalar_devils_station)
-"IQ" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "6"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "IR" = (
 /obj/structure/largecrate/supply/floodlights{
 	pixel_y = -9
@@ -10870,15 +10490,6 @@
 	},
 /turf/open/floor/almayer/edge/north,
 /area/adminlevel/ert_station/soalar_devils_station)
-"IV" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "49"
-	},
-/obj/structure/shuttle/part/dropship2/transparent/engine_left_cap{
-	name = "\improper Tripoli"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "IW" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/decal/cleanable/dirt{
@@ -10886,17 +10497,6 @@
 	},
 /obj/item/device/defibrillator/upgraded,
 /turf/open/floor/almayer/dark_sterile,
-/area/adminlevel/ert_station/soalar_devils_station)
-"IY" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Ja" = (
 /obj/effect/decal/warning_stripes{
@@ -10969,11 +10569,6 @@
 	icon_state = "node"
 	},
 /turf/open/floor/almayer/edge/north,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Jl" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "73"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "Jn" = (
 /obj/structure/machinery/light/double/blue{
@@ -11078,21 +10673,6 @@
 /area/adminlevel/ert_station/soalar_devils_station)
 "JE" = (
 /turf/open/floor/almayer/edge/smooth/east,
-/area/adminlevel/ert_station/soalar_devils_station)
-"JF" = (
-/obj/effect/attach_point/fuel/tripoli{
-	dir = 1
-	},
-/turf/closed/shuttle/tripoli{
-	icon_state = "28"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
-"JG" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "85"
-	},
-/obj/effect/attach_point/weapon/tripoli/left_fore,
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "JJ" = (
 /obj/structure/roof/cargocrane_tracks/vertical{
@@ -11254,13 +10834,6 @@
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Ki" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "65"
-	},
-/obj/effect/attach_point/weapon/tripoli/right_wing,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Kj" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 2
@@ -11312,15 +10885,6 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Kt" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "46"
-	},
-/obj/structure/shuttle/part/dropship2/transparent/engine_right_cap{
-	name = "\improper Tripoli"
-	},
-/turf/template_noop,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Kv" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -11596,11 +11160,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Lk" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "75"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "Lm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -11618,11 +11177,6 @@
 /area/adminlevel/ert_station/soalar_devils_station)
 "Lq" = (
 /turf/open/floor/almayer/edge/north,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Lr" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "43"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "Lu" = (
 /obj/effect/decal/cleanable/dirt{
@@ -11644,11 +11198,6 @@
 	id = "hangarlockdownsouth"
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Ly" = (
-/turf/closed/shuttle/tripoli/transparent{
-	icon_state = "89b"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "LA" = (
 /obj/structure/machinery/landinglight/ds1,
@@ -11819,12 +11368,6 @@
 	pixel_y = -25
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Md" = (
-/obj/structure/shuttle/part/tripoli/transparent{
-	icon_state = "95a"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Mf" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -12267,13 +11810,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/edge/smooth,
 /area/adminlevel/ert_station/soalar_devils_station)
-"NF" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "61"
-	},
-/obj/effect/attach_point/weapon/tripoli/left_wing,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "NG" = (
 /obj/structure/cargo_container/uscm/right{
 	color = "#898988";
@@ -12535,9 +12071,6 @@
 	},
 /turf/open/floor/almayer/edge/smooth/northwest,
 /area/adminlevel/ert_station/soalar_devils_station)
-"On" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Oo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -12633,15 +12166,6 @@
 	icon_state = "SW-out"
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"OF" = (
-/obj/structure/machinery/light/double{
-	dir = 4
-	},
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "OG" = (
 /obj/effect/decal/cleanable/dirt{
@@ -12806,17 +12330,6 @@
 /obj/item/storage/box/pdt_kit/advanced,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Pd" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = -1
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Pe" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -12830,14 +12343,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Pj" = (
-/obj/effect/attach_point/fuel/tripoli{
-	dir = 1
-	},
-/turf/closed/shuttle/tripoli{
-	icon_state = "32"
-	},
-/area/adminlevel/ert_station/soalar_devils_station)
 "Pk" = (
 /obj/structure/cargo_container/uscm/chinook/left{
 	color = "#898988";
@@ -12846,12 +12351,6 @@
 	opacity = 0
 	},
 /turf/open/floor/almayer/edge/smooth/east,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Pm" = (
-/obj/structure/shuttle/part/dropship2/transparent/engine_right_cap{
-	name = "\improper Tripoli"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Pn" = (
 /obj/structure/bed/chair{
@@ -13160,15 +12659,10 @@
 /obj/structure/machinery/door_control/brbutton{
 	pixel_y = 28;
 	id = "platco-privacy";
-	name = "hangar blast door control";
+	name = "Gear Locker Door Control";
 	req_one_access_txt = "19;12"
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Qe" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "69"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "Qg" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -13184,11 +12678,6 @@
 	pixel_y = -2
 	},
 /turf/open/floor/almayer,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Qk" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "67"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "Qo" = (
 /obj/structure/bed{
@@ -13296,12 +12785,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Qx" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "17"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Qy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning"
@@ -13317,15 +12800,6 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
-/area/adminlevel/ert_station/soalar_devils_station)
-"QA" = (
-/obj/structure/machinery/light/double{
-	dir = 8
-	},
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "QD" = (
 /obj/effect/decal/cleanable/dirt{
@@ -13553,11 +13027,6 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/almayer/edge/smooth/north,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Rj" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "62"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "Rm" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -13869,7 +13338,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	pixel_y = 28;
 	id = "platco-privacy";
-	name = "hangar blast door control";
+	name = "Gear Locker Door Control";
 	req_one_access_txt = "19;12"
 	},
 /turf/open/floor/almayer,
@@ -14033,12 +13502,6 @@
 	},
 /turf/open/floor/almayer/edge/north,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Sw" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "5"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Sy" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -14049,12 +13512,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/cargo_arrow,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Sz" = (
-/obj/structure/shuttle/part/dropship2/transparent/engine_left_cap{
-	name = "\improper Tripoli"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "SB" = (
 /obj/structure/sign/safety/hazard{
@@ -14331,7 +13788,7 @@
 	layer = 2.52
 	},
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
-	network = list("Golden Arrow","Vehicle","Midway");
+	network = list("Golden Arrow","Vehicle","Midway", "Tripoli");
 	pixel_x = 17;
 	dir = 8
 	},
@@ -14343,14 +13800,6 @@
 	name = "Tactical Map Display";
 	pixel_x = 17;
 	pixel_y = 14
-	},
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	name = "Midway Remote Control Console";
-	shuttleId = "dropship_midway";
-	icon_state = "cameras_old";
-	dir = 8;
-	pixel_x = 17;
-	pixel_y = -14
 	},
 /obj/structure/surface/table/reinforced/almayer_B{
 	pixel_x = 14;
@@ -14364,6 +13813,11 @@
 /obj/item/clothing/glasses/hud/health{
 	pixel_y = 5;
 	pixel_x = 7
+	},
+/obj/structure/machinery/prop/almayer/computer/midway_remote_control{
+	dir = 8;
+	pixel_x = 17;
+	pixel_y = -14
 	},
 /turf/open/floor/almayer/edge/smooth/northeast,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -14461,13 +13915,6 @@
 	pixel_x = 1
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"TI" = (
-/obj/structure/blocker/forcefield/multitile_vehicles,
-/obj/structure/machinery/door/airlock/hatch/cockpit{
-	dir = 1
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "TJ" = (
 /obj/structure/pipes/vents/scrubber{
@@ -14746,10 +14193,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/soalar_devils_station)
-"UD" = (
-/obj/structure/shuttle/part/tripoli/gunpod_prop,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "UE" = (
 /turf/open/floor/almayer/cargo_arrow,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -14778,11 +14221,9 @@
 /area/adminlevel/ert_station/soalar_devils_station)
 "UL" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
-	name = "Midway Remote Control Console";
-	shuttleId = "dropship_midway";
-	pixel_y = 6;
-	layer = 3.1
+/obj/structure/machinery/prop/almayer/computer/midway_remote_control{
+	icon_state = "shuttle";
+	pixel_y = 6
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
@@ -14989,13 +14430,6 @@
 	},
 /turf/open/floor/almayer/edge/west,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Vu" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "84"
-	},
-/obj/effect/attach_point/electronics/tripoli,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Vv" = (
 /obj/structure/platform{
 	dir = 4;
@@ -15190,11 +14624,11 @@
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Wg" = (
-/obj/structure/blocker/invisible_wall/directional{
-	layer = 2
-	},
-/obj/structure/machinery/computer/ares_console,
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/working_joe{
+	desc = "A console built to interface with ARES, allowing for 1:1 communication.";
+	name = "ARES Interface"
+	},
 /turf/open/floor/almayer/aicore,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Wj" = (
@@ -15248,10 +14682,6 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Wq" = (
-/obj/effect/attach_point/crew_weapon/tripoli,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Wu" = (
 /obj/structure/machinery/door/poddoor/almayer{
@@ -15397,14 +14827,14 @@
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "WZ" = (
-/obj/item/weapon/gun/flamer{
-	pixel_y = -8
-	},
-/obj/item/weapon/gun/flamer{
-	pixel_y = 8
-	},
 /obj/item/ammo_box/magazine/flamer,
 /obj/structure/surface/rack,
+/obj/item/weapon/gun/flamer/m240{
+	pixel_y = -8
+	},
+/obj/item/weapon/gun/flamer/m240{
+	pixel_y = 8
+	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Xd" = (
@@ -15441,12 +14871,6 @@
 	pixel_x = 1
 	},
 /turf/open/floor/almayer/blackcorner,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Xi" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Xn" = (
 /obj/effect/decal/warning_stripes{
@@ -15653,12 +15077,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Yf" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "20"
-	},
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Yg" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -15789,11 +15207,6 @@
 	light_power = 0.25
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/adminlevel/ert_station/soalar_devils_station)
-"YE" = (
-/turf/closed/shuttle/tripoli{
-	icon_state = "30"
-	},
 /area/adminlevel/ert_station/soalar_devils_station)
 "YF" = (
 /obj/effect/decal/strata_decals/grime/grime1{
@@ -16002,24 +15415,11 @@
 /obj/effect/decal/strata_decals/grime/grime2,
 /turf/open/floor/almayer/edge/smooth,
 /area/adminlevel/ert_station/soalar_devils_station)
-"Zt" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "91"
-	},
-/obj/effect/attach_point/electronics/tripoli,
-/turf/open/floor/plating,
-/area/adminlevel/ert_station/soalar_devils_station)
 "Zu" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
-/area/adminlevel/ert_station/soalar_devils_station)
-"Zx" = (
-/obj/structure/shuttle/part/tripoli{
-	icon_state = "8"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "Zy" = (
 /obj/effect/decal/warning_stripes{
@@ -16036,12 +15436,6 @@
 	name = "\improper Supply Launch Bay"
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/adminlevel/ert_station/soalar_devils_station)
-"ZD" = (
-/obj/structure/shuttle/part/tripoli/transparent/nosecone{
-	icon_state = "102"
-	},
-/turf/open/floor/plating,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ZG" = (
 /obj/effect/decal/cleanable/dirt{
@@ -20994,7 +20388,7 @@ AQ
 gT
 VG
 ro
-ZR
+av
 WN
 ZR
 ZR
@@ -22445,17 +21839,17 @@ WN
 WN
 WN
 WN
-sS
-yQ
-NF
 WN
-Sz
-GK
-JF
-hA
-ge
 WN
-bl
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 iM
@@ -22545,19 +21939,19 @@ WN
 WN
 WN
 WN
-Vu
-Lk
-uI
-Qk
-Rj
-oy
-Kt
-ew
-hI
-fV
-Qx
 WN
-dh
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 sB
@@ -22647,19 +22041,19 @@ WN
 WN
 WN
 WN
-JG
-zt
-GP
-QA
-Xi
-Xi
-mO
-oy
-YE
-oP
-wz
-mT
-Hc
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 sC
@@ -22746,20 +22140,20 @@ gX
 Zr
 WN
 WN
-bp
-Md
-jv
-cJ
-uu
-xB
-On
-lf
-cn
-fq
-Bc
-On
-On
-kw
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 WN
@@ -22848,20 +22242,20 @@ gX
 dD
 WN
 WN
-UD
-zn
-hi
-we
-TI
-At
-Ao
-At
-Wq
-IY
-df
-df
-df
-Pd
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 WN
@@ -22950,20 +22344,20 @@ CJ
 Zr
 WN
 WN
-ZD
-tj
-Ly
-dY
-Cs
-EX
-On
-mD
-Ir
-Dc
-ei
-On
-On
-Pd
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 WN
@@ -23055,19 +22449,19 @@ WN
 WN
 WN
 WN
-lA
-zt
-aj
-OF
-vP
-vP
-gL
-Lr
-AH
-xX
-xo
-Zx
-Gn
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 sC
@@ -23157,19 +22551,19 @@ WN
 WN
 WN
 WN
-Zt
-tE
-Jl
-Qe
-xR
-Lr
-IV
-cg
-Pj
-lW
-Yf
 WN
-Sw
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 sC
@@ -23261,17 +22655,17 @@ WN
 WN
 WN
 WN
-xz
-Ax
-Ki
 WN
-Pm
-dJ
-mb
-lC
-lg
 WN
-IQ
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
+WN
 WN
 WN
 iM

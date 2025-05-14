@@ -29,20 +29,24 @@
 		"ip",
 		"cid",
 		"ckey",
-		"approved"
+		"approved",
 	)
 
-/proc/check_or_create_twofactor_request(client/user, silent)
+/proc/check_or_create_twofactor_request(client/user)
 	var/url = CONFIG_GET(string/twofactor_admins_url)
 	if(!url)
 		return TRUE
 
 	WAIT_DB_READY
 
+	var/address = user.address
+	if(!address)
+		address = "127.0.0.1"
+
 	var/datum/view_record/twofactor_request/twofactor_view = locate() in DB_VIEW(
 		/datum/view_record/twofactor_request,
 		DB_AND(
-			DB_COMP("ip", DB_EQUALS, user.address),
+			DB_COMP("ip", DB_EQUALS, address),
 			DB_COMP("cid", DB_EQUALS, user.computer_id),
 			DB_COMP("ckey", DB_EQUALS, user.ckey),
 		)
@@ -52,12 +56,11 @@
 		to_chat(user, SPAN_BIGNOTICE("Your two factor authentication has been approved for your current IP and CID."))
 		return TRUE
 	else if(twofactor_view)
-		if(!silent)
-			to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url][user.computer_id]'>Log in here</a>."))
+		to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url][user.computer_id]'>Log in here</a>."))
 		return FALSE
 
 	var/datum/entity/twofactor_request/twofactor_request = DB_ENTITY(/datum/entity/twofactor_request)
-	twofactor_request.ip = user.address
+	twofactor_request.ip = address
 	twofactor_request.cid = user.computer_id
 	twofactor_request.ckey = user.ckey
 

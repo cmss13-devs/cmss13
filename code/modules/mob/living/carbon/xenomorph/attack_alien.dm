@@ -842,6 +842,7 @@
 		if(shuttle_tag == DROPSHIP_TRIPOLI)
 			ship_id = "sh_dropship7"
 
+
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/D in GLOB.machines)
 			if(D.id == ship_id)
 				D.unlock()

@@ -48,7 +48,7 @@ GLOBAL_PROTECT(href_token)
 	if(!istype(C))
 		return
 
-	if(!force && !check_or_create_twofactor_request(C))
+	if(rights & ~(RL_HARMLESS) && !force && !check_or_create_twofactor_request(C))
 		addtimer(CALLBACK(src, PROC_REF(associate), C, FALSE), 3 SECONDS)
 		return
 

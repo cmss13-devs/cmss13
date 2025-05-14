@@ -56,7 +56,7 @@
 		to_chat(user, SPAN_BIGNOTICE("Your two factor authentication has been approved for your current IP and CID."))
 		return TRUE
 	else if(twofactor_view)
-		to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url][user.computer_id]'>Log in here</a>."))
+		to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url]?cid=[user.computer_id]&ip=[address]'>Log in here</a>."))
 		return FALSE
 
 	var/datum/entity/twofactor_request/twofactor_request = DB_ENTITY(/datum/entity/twofactor_request)
@@ -67,7 +67,7 @@
 	twofactor_request.save()
 	twofactor_request.detach()
 
-	to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url][user.computer_id]'>Log in here</a>."))
+	to_chat(user, SPAN_BIGNOTICE("You will not be able to perform admin actions until you perform two factor authentication. <a href='[url]?cid=[user.computer_id]&ip=[address]'>Log in here</a>."))
 
 	return FALSE
 

@@ -2,24 +2,22 @@
 /obj/vehicle/combat_mech
 	name = "\improper RX47 Combat Mechsuit"
 	icon = 'icons/obj/vehicles/wymech.dmi'
-	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
+	desc = "Yeehaw!"
 	icon_state = "wymech"
 	layer = MOB_LAYER
 	anchored = TRUE
 	density = TRUE
 	light_range = 5
-	move_delay = 8
+	move_delay = 7
 	buckling_y = 17
 	health = 200
 	maxhealth = 200
 	pixel_x = -17
 	pixel_y = -2
-	var/base_state = "wymech"
-	var/open_state = "wymech"
 	var/overlay_state = "wymech_body_overlay_open"
 	var/wreckage = /obj/structure/powerloader_wreckage
-	var/obj/item/powerloader_clamp/PC_left
-	var/obj/item/powerloader_clamp/PC_right
+	var/obj/item/weapon/gun/gun_left
+	var/obj/item/weapon/gun/gun_right
 
 	var/helmet_closed = FALSE
 
@@ -27,15 +25,6 @@
 
 /obj/vehicle/combat_mech/Initialize()
 	cell = new /obj/item/cell/apc
-	PC_left = new(src)
-	PC_left.name = "\improper Power Loader Left Hydraulic Claw"
-	PC_left.linked_powerloader = src
-	PC_right = new(src)
-	PC_right.name = "\improper Power Loader Right Hydraulic Claw"
-	PC_right.linked_powerloader = src
-	PC_right.is_right = TRUE
-	PC_right.icon_state = "loader_clamp_right"
-
 
 	rebuild_icon()
 	. = ..()
@@ -47,16 +36,18 @@
 	else
 		overlays += image(icon_state = "wymech_helmet_open", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)
-	if(PC_left)
+	if(gun_left)
 		overlays += image(icon_state = "wymech_weapon_left", layer = MECH_LAYER)
-	if(PC_right)
+	if(gun_right)
 		overlays += image(icon_state = "wymech_weapon_right", layer = MECH_LAYER)
 
 /obj/vehicle/combat_mech/Destroy()
-	qdel(PC_left)
-	PC_left = null
-	qdel(PC_right)
-	PC_right = null
+	if(gun_left)
+		qdel(gun_left)
+		gun_left = null
+	if(gun_right)
+		qdel(gun_right)
+		gun_right = null
 	return ..()
 
 /obj/vehicle/combat_mech/relaymove(mob/user, direction)
@@ -94,10 +85,10 @@
 
 /obj/vehicle/combat_mech/get_examine_text(mob/user)
 	. = ..()
-	if(PC_left)
-		. += PC_left.get_examine_text(user, TRUE)
-	if(PC_right)
-		. += PC_right.get_examine_text(user, TRUE)
+	if(gun_left)
+		. += gun_left.get_examine_text(user, TRUE)
+	if(gun_right)
+		. += gun_right.get_examine_text(user, TRUE)
 
 /obj/vehicle/combat_mech/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
@@ -125,7 +116,7 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
-	if(!skillcheck(user, SKILL_POWERLOADER, SKILL_POWERLOADER_TRAINED))
+	if(!skillcheck(user, SKILL_POWERLOADER, SKILL_POWERLOADER_COMBAT))
 		to_chat(H, SPAN_WARNING("You don't seem to know how to operate \the [src]."))
 		return
 	if(H.r_hand || H.l_hand)
@@ -139,23 +130,21 @@
 	rebuild_icon()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
-		icon_state = base_state
 		overlays += image(icon_state = overlay_state, layer = MECH_LAYER)
 		if(buckled_mob.mind && buckled_mob.skills)
-			move_delay = max(4, move_delay - 2 * buckled_mob.skills.get_skill_level(SKILL_POWERLOADER))
-		if(!buckled_mob.put_in_l_hand(PC_left))
-			PC_left.forceMove(src)
+			move_delay = max(3, move_delay - 2 * buckled_mob.skills.get_skill_level(SKILL_POWERLOADER))
+		if(gun_left && !buckled_mob.put_in_l_hand(gun_left))
+			gun_left.forceMove(src)
 			unbuckle()
 			return
-		else if(!buckled_mob.put_in_r_hand(PC_right))
-			PC_right.forceMove(src)
+		else if(gun_right && !buckled_mob.put_in_r_hand(gun_right))
+			gun_right.forceMove(src)
 			unbuckle()
 			return
-			//can't use the powerloader without both clamps equipped
+			//can't use the mech without both weapons equipped
 	else
 		move_delay = initial(move_delay)
-		icon_state = open_state
-		buckled_mob.drop_held_items() //drop the clamp when unbuckling
+		buckled_mob.drop_held_items() //drop the weapons when unbuckling
 
 /obj/vehicle/combat_mech/unbuckle()
 	buckled_mob.layer = MOB_LAYER

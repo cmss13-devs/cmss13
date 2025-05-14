@@ -539,6 +539,12 @@
 	name = "\improper USCM expedition satchel"
 	desc = "A heavy-duty IMP based satchel, can quickly be accessed with only one hand. Reinforced with kevlar so it doesn't rip. Usually issued to USCM intelligence officers."
 	icon_state = "intel_satchel"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
 	max_storage_space = 20
 
 /obj/item/storage/backpack/marine/satchel

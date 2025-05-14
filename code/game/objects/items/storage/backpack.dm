@@ -536,16 +536,22 @@
 	max_storage_space = 20
 
 /obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel
-	name = "\improper USCM expedition satchel"
-	desc = "A heavy-duty IMP based satchel, can quickly be accessed with only one hand. Reinforced with kevlar so it doesn't rip. Usually issued to USCM intelligence officers."
+	name = "\improper USCM lightweight expedition satchel"
+	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "intel_satchel"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_state_slots = list(
+		WEAR_BACK = "marinesatch",
+		WEAR_R_HAND = "marinesatch",
+		WEAR_L_HAND = "marinesatch",
+	)
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/classic.dmi'
 	)
 	max_storage_space = 20
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"

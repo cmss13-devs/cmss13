@@ -2812,11 +2812,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/machinery/light_switch{
-	pixel_y = 28;
-	pixel_x = 4;
-	on = 0
-	},
 /obj/structure/machinery/prop/almayer/CICmap,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)

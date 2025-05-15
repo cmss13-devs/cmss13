@@ -70,10 +70,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ah" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep{
-	req_one_access_txt = "8;12;39;40";
-	req_access = list()
-	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/soalar_devils_station)
 "ai" = (
@@ -7584,9 +7581,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/bed/chair/comfy/ares{
-	dir = 1
-	},
+/obj/structure/bed/chair/comfy/ai_interface,
 /turf/open/floor/plating/plating_catwalk/aicore,
 /area/adminlevel/ert_station/soalar_devils_station)
 "zJ" = (

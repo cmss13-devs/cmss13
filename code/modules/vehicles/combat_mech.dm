@@ -142,6 +142,12 @@
 
 	return COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
 
+/obj/vehicle/combat_mech/attackby(obj/item/W, mob/user)
+	. = ..()
+	var/obj/item/weapon/gun/mech/mech_gun = W
+	if((mech_gun == gun_right) || mech_gun == gun_left)
+		user.drop_held_item(mech_gun, TRUE)
+
 /obj/vehicle/combat_mech/afterbuckle(mob/new_buckled_mob)
 	. = ..()
 	new_buckled_mob.layer = MOB_LAYER + 0.1
@@ -165,7 +171,7 @@
 			//can't use the mech without both weapons equipped
 	else
 		move_delay = initial(move_delay)
-		new_buckled_mob.drop_held_items() //drop the weapons when unbuckling
+		new_buckled_mob.drop_held_items(TRUE) //drop the weapons when unbuckling
 
 /obj/vehicle/combat_mech/unbuckle()
 	buckled_mob.layer = MOB_LAYER
@@ -208,7 +214,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_TRIGGER_SAFETY
-	flags_item = 0
+	flags_item = NODROP
 	start_semiauto = FALSE
 	start_automatic = TRUE
 	akimbo_forbidden = TRUE
@@ -328,11 +334,25 @@
 		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
 
+/obj/item/weapon/gun/mech/rx47_support/attack_self(mob/user)
+	activate_attachment_verb()
+	if(!active_attachable)
+		base_gun_icon = "aux_cupola"
+		icon_state = "aux_cupola"
+	else
+		base_gun_icon = "aux_fire"
+		icon_state = "aux_fire"
+	return
+
 /obj/item/weapon/gun/mech/cock()
 	return
 
 /obj/item/weapon/gun/mech/unload()
 	return
+
+/obj/item/weapon/gun/mech/unique_action(mob/user)
+	. = ..()
+	toggle_gun_safety()
 
 /obj/item/weapon/gun/mech/rx47_support
 	name = "\improper RX47 Auxilliary Cupola"
@@ -378,16 +398,6 @@
 		unleash_flame(target, user)
 		if(attached_gun.last_fired < world.time)
 			attached_gun.last_fired = world.time
-
-/obj/item/weapon/gun/mech/rx47_support/attack_self(mob/user)
-	activate_attachment_verb()
-	if(active_attachable)
-		base_gun_icon = "aux_cupola"
-		icon_state = "aux_cupola"
-	else
-		base_gun_icon = "aux_fire"
-		icon_state = "aux_fire"
-	return
 
 // Wreckage
 

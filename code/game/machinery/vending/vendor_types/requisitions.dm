@@ -404,7 +404,7 @@
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/populate_product_list(scale)
-	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/only_balanced_attachments))
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/remove_stat_attachments))
 		listed_products = list(
 			list("BARREL", -1, null, null),
 			list("M5 Bayonet", 10.5, /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),

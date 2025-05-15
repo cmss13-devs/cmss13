@@ -94,7 +94,7 @@
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/cm_vending/sorted/attachments/upp_squad/populate_product_list(scale)
-	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/only_balanced_attachments))
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/remove_stat_attachments))
 		listed_products = list(
 			list("BARREL", -1, null, null),
 			list("Recoil Compensator", 2.5, /obj/item/attachable/compensator, VENDOR_ITEM_REGULAR),

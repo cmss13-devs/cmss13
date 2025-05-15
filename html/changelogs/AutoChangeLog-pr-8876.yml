@@ -1,5 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - qol: "quick equip will try to put an item to the slot it was drawn from."
-  - qol: "mag harnessed weapons always prefers the slots it usually snaps to on quick-equip"

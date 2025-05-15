@@ -550,7 +550,6 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/classic.dmi'
 	)
-	max_storage_space = 20
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/storage/backpack/marine/satchel

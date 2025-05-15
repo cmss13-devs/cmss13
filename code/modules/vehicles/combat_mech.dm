@@ -93,6 +93,19 @@
 
 /obj/vehicle/combat_mech/get_examine_text(mob/user)
 	. = ..()
+	if(get_dist(user, src) > 2 && user != loc)
+		return
+	if(!ishuman(user))
+		return
+	var/one_percent = maxhealth / 100
+	var/percentage = health / one_percent
+	var/message = SPAN_GREEN("It has [percentage]% health.")
+	if(percentage <= 25)
+		message = SPAN_RED("It has [percentage]% health.")
+	else if(percentage <= 75)
+		message = SPAN_ORANGE("It has [percentage]% health.")
+
+	. += message
 	if(gun_left)
 		. += gun_left.get_examine_text(user, TRUE)
 	if(gun_right)
@@ -170,11 +183,13 @@
 	var/obj/vehicle/combat_mech/linked_mech
 	unacidable = TRUE
 	explo_proof = TRUE
-	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_TRIGGER_SAFETY
 	flags_item = 0
 	start_semiauto = FALSE
 	start_automatic = TRUE
 	akimbo_forbidden = TRUE
+	can_jam = FALSE
+	has_empty_icon = FALSE
 
 /obj/item/weapon/gun/mech/dropped(mob/user)
 	if(!linked_mech)
@@ -209,7 +224,6 @@
 	accurate_range = 12
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_6
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_FAIR
 
 /obj/item/weapon/gun/mech/rx47_chaingun
 	name = "\improper RX47 Chaingun"
@@ -243,7 +257,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_OFF
 	recoil_buildup_limit = RECOIL_OFF
-	can_jam = FALSE
 	durability_loss = GUN_DURABILITY_LOSS_NONE
 
 
@@ -270,20 +283,36 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_4
-	damage = 10
+	damage = 15
 	penetration = 0
 	effective_range_max = 5
+	penetration = ARMOR_PENETRATION_TIER_2
 
-/datum/ammo/bullet/rx47_cupola/set_bullet_traits()
-	. = ..()
+/obj/item/weapon/gun/mech/rx47_support/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_SG)
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_8
+	fa_max_scatter = SCATTER_AMOUNT_TIER_9
+	accuracy_mult += HIT_ACCURACY_MULT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_10
+	recoil = RECOIL_OFF
+
+/obj/item/weapon/gun/mech/rx47_support/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
 	))
+
+/obj/item/weapon/gun/mech/cock()
+	return
+
+/obj/item/weapon/gun/mech/unload()
+	return
 
 /obj/item/weapon/gun/mech/rx47_support
 	name = "\improper RX47 Auxilliary Cupola"
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
 	icon = 'icons/obj/vehicles/wymech_guns.dmi'
+	base_gun_icon = "aux_cupola"
 	icon_state = "aux_cupola"
 	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
 
@@ -295,7 +324,45 @@
 	gun_category = GUN_CATEGORY_SMG
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MUZZLE_BLUE
+	attachable_allowed = list(
+		/obj/item/attachable/attached_gun/flamer/advanced/rx47,
+	)
 
+/obj/item/weapon/gun/mech/rx47_support/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/attached_gun/flamer/advanced/rx47/flamer = new(src)
+	flamer.Attach(src)
+
+/obj/item/attachable/attached_gun/flamer/advanced/rx47
+	name = "RX47 Auxilliary Flamer"
+	max_rounds = 750
+	current_rounds = 750
+	max_range = 5
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
+	hidden = TRUE
+
+/obj/item/attachable/attached_gun/flamer/advanced/rx47/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
+	if(!istype(loc, /obj/item/weapon/gun))
+		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
+		return
+
+	var/obj/item/weapon/gun/attached_gun = loc
+
+	if(current_rounds > round_usage_per_tile && ..())
+		unleash_flame(target, user)
+		if(attached_gun.last_fired < world.time)
+			attached_gun.last_fired = world.time
+
+
+/obj/item/weapon/gun/mech/rx47_support/cock()
+	activate_attachment_verb()
+	if(active_attachable)
+		base_gun_icon = "aux_cupola"
+		icon_state = "aux_cupola"
+	else
+		base_gun_icon = "aux_fire"
+		icon_state = "aux_fire"
+	return
 
 // Wreckage
 

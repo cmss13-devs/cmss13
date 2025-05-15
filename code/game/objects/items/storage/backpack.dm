@@ -533,7 +533,6 @@
 	name = "\improper USCM expedition chestrig"
 	desc = "A heavy-duty IMP based chestrig, can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "intel_chestrig"
-	max_storage_space = 20
 
 /obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel
 	name = "\improper USCM lightweight expedition satchel"

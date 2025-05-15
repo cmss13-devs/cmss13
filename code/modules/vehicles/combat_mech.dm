@@ -102,10 +102,12 @@
 		A.Collided(src)
 		return
 
-/obj/vehicle/combat_mech/Collided(mob/living/carbon/xenomorph/xeno)
-	health -= (xeno.melee_vehicle_damage * 2)
-	healthcheck()
-	return
+/obj/vehicle/combat_mech/Collided(atom/A)
+	if(isxeno(A))
+		var/mob/living/carbon/xenomorph/xeno = A
+		health -= (xeno.melee_vehicle_damage * 5)
+		healthcheck()
+		return
 
 /obj/vehicle/combat_mech/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if(attacking_xeno.a_intent == INTENT_HELP)

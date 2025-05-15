@@ -27,7 +27,7 @@ jobs:
           path: tgui/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ secrets.CACHE_PURGE_KEY }}-${{ hashFiles('tgui/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-build-
+            ${{ runner.os }}-yarn-
             ${{ runner.os }}-
       - name: Restore Rust cache
         uses: actions/cache@v4
@@ -35,7 +35,7 @@ jobs:
           path: ~/.cargo
           key: ${{ runner.os }}-rust
           restore-keys: |
-            ${{ runner.os }}-build-
+            ${{ runner.os }}-rust-
             ${{ runner.os }}-
       - name: Install Tools
         run: |
@@ -85,15 +85,50 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set BYOND version
+        run: |
+          source ./dependencies.sh
+          echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
+          echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
       - name: Restore BYOND cache
         uses: actions/cache@v3
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+          key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
+      - name: Download and unzip BYOND
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          max_attempts=3
+          attempt=1
+          minor=$BYOND_MINOR
+          while (( attempt <= max_attempts )); do
+            echo "Download and unzip BYOND $BYOND_MAJOR.$minor"
+            mkdir -p "$HOME/BYOND-${BYOND_MAJOR}.${minor}"
+            cd $HOME/BYOND-${BYOND_MAJOR}.${minor}
+            curl -L "https://web.archive.org/web/20250322230727/https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${minor}_byond_linux.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
+            if [[ $? -ne 0 || ! -s byond.zip ]]; then
+              echo "Download error"
+            elif unzip -o byond.zip; then
+              break
+            else
+              ((attempt++))
+              ((minor++))
+              echo "BYOND_MINOR=$minor" >> $GITHUB_ENV
+              if (( attempt > max_attempts )); then
+                exit 1
+              fi
+            fi
+          done
+          rm byond.zip
+          echo "Success unzip"
+      - name: Install BYOND
+        run: |
+          echo "Install BYOND"
+          cd "$HOME/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}/byond"
+          make here
       - name: Compile All Maps
         run: |
-          bash tools/ci/install_byond.sh
-          source $HOME/BYOND/byond/bin/byondsetup
+          source /home/runner/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
   find_all_maps:
@@ -152,8 +187,6 @@ jobs:
     uses: ./.github/workflows/run_unit_tests.yml
     with:
       map: ${{ matrix.setup.map }}
-      major: ${{ matrix.setup.major }}
-      minor: ${{ matrix.setup.minor }}
 
   check_alternate_tests:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
@@ -172,20 +205,57 @@ jobs:
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
-      - name: Restore Yarn cache
-        uses: actions/cache@v3
-        with:
-          path: tgui/.yarn/cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+      - name: Set BYOND version
+        run: |
+          source ./dependencies.sh
+          echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
+          echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
+        shell: bash
       - name: Restore BYOND cache
         uses: actions/cache@v3
         with:
-          path: C:\\byond
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+          path: ~/BYOND
+          key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
+      - name: Download and unzip BYOND
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          max_attempts=3
+          attempt=1
+          minor=$BYOND_MINOR
+          while (( attempt <= max_attempts )); do
+            echo "Download and unzip BYOND $BYOND_MAJOR.$minor"
+            mkdir -p "$HOME/BYOND-${BYOND_MAJOR}.${minor}"
+            cd $HOME/BYOND-${BYOND_MAJOR}.${minor}
+            curl -L "https://web.archive.org/web/20250322230727/https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${minor}_byond.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
+            if [[ $? -ne 0 || ! -s byond.zip ]]; then
+              echo "Download error"
+            elif unzip -o byond.zip; then
+              break
+            else
+              ((attempt++))
+              ((minor++))
+              echo "BYOND_MINOR=$minor" >> $GITHUB_ENV
+              if (( attempt > max_attempts )); then
+                exit 1
+              fi
+            fi
+          done
+          rm byond.zip
+          echo "Success unzip"
+        shell: bash
+      - name: Restore Yarn cache
+        uses: actions/cache@v4
+        with:
+          path: tgui/.yarn/cache
+          key: ${{ runner.os }}-yarn-${{ secrets.CACHE_PURGE_KEY }}-${{ hashFiles('tgui/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-
+      - name: Set DM_EXE path
+        run: |
+          echo "DM_EXE=$HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/dm.exe" >> $GITHUB_ENV
+        shell: bash
       - name: Compile
         run: pwsh tools/ci/build.ps1
         env:
-          DM_EXE: "C:\\byond\\bin\\dm.exe"
+          DM_EXE: ${{ env.DM_EXE }}

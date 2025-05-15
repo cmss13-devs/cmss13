@@ -7,39 +7,46 @@ on:
       map:
         required: true
         type: string
-      major:
-        required: false
-        type: string
-      minor:
-        required: false
-        type: string
 jobs:
   run_unit_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set BYOND version
+        run: |
+          source ./dependencies.sh
+          echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
+          echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
       - name: Restore BYOND cache
         uses: actions/cache@v3
         with:
           path: ~/BYOND
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+          key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
+      - name: Download and unzip BYOND
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          echo "Download and unzip BYOND $BYOND_MAJOR.$BYOND_MINOR"
+          mkdir -p "$HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}"
+          cd $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}
+          curl -L "https://web.archive.org/web/20250322230727/https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
+          unzip -o byond.zip
+          rm byond.zip
+      - name: Install BYOND
+        run: |
+          echo "Install BYOND"
+          cd "$HOME/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}/byond"
+          make here
       - name: Install rust-g
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update || true
           sudo apt install -o APT::Immediate-Configure=false zlib1g-dev:i386 libssl-dev:i386
           bash tools/ci/install_rust_g.sh
-      - name: Configure version
-        run: |
-          echo "BYOND_MAJOR=${{ inputs.major }}" >> $GITHUB_ENV
-          echo "BYOND_MINOR=${{ inputs.minor }}" >> $GITHUB_ENV
-        if: ${{ inputs.major }}
       - name: Compile Tests
         run: |
-          bash tools/ci/install_byond.sh
-          source $HOME/BYOND/byond/bin/byondsetup
+          source $HOME/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DANSICOLORS -Werror
       - name: Run Tests
         run: |
-          source $HOME/BYOND/byond/bin/byondsetup
+          source $HOME/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}/byond/bin/byondsetup
           bash tools/ci/run_server.sh ${{ inputs.map }}

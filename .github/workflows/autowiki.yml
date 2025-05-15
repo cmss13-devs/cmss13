@@ -21,12 +21,47 @@ jobs:
     - name: Checkout
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       uses: actions/checkout@v3
+    - name: Set BYOND version
+      run: |
+        source ./dependencies.sh
+        echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
+        echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
     - name: Restore BYOND cache
-      if: steps.secrets_set.outputs.SECRETS_ENABLED
       uses: actions/cache@v3
       with:
         path: ~/BYOND
-        key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+        key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}
+    - name: Download and unzip BYOND
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        max_attempts=3
+        attempt=1
+        minor=$BYOND_MINOR
+        while (( attempt <= max_attempts )); do
+          echo "Download and unzip BYOND $BYOND_MAJOR.$minor"
+          mkdir -p "$HOME/BYOND-${BYOND_MAJOR}.${minor}"
+          cd $HOME/BYOND-${BYOND_MAJOR}.${minor}
+          curl -L "https://web.archive.org/web/20250322230727/https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${minor}_byond.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
+          if [[ $? -ne 0 || ! -s byond.zip ]]; then
+            echo "Download error"
+          elif unzip -o byond.zip; then
+            break
+          else
+            ((attempt++))
+            ((minor++))
+            echo "BYOND_MINOR=$minor" >> $GITHUB_ENV
+            if (( attempt > max_attempts )); then
+              exit 1
+            fi
+          fi
+        done
+        rm byond.zip
+        echo "Success unzip"
+    - name: Install BYOND
+      run: |
+        echo "Install BYOND"
+        cd "$HOME/BYOND-${{ env.BYOND_MAJOR }}.${{ env.BYOND_MINOR }}/byond"
+        make here
     - name: Install rust-g
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
@@ -37,7 +72,6 @@ jobs:
     - name: Compile and generate Autowiki files
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
-        bash tools/ci/install_byond.sh
         source $HOME/BYOND/byond/bin/byondsetup
         tools/build/build --ci autowiki
     - name: Run Autowiki

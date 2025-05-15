@@ -11,8 +11,8 @@
 	light_range = 5
 	move_delay = 7
 	buckling_y = 17
-	health = 2000
-	maxhealth = 2000
+	health = 3000
+	maxhealth = 3000
 	pixel_x = -17
 	pixel_y = -2
 	var/mouse_pointer = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
@@ -91,10 +91,42 @@
 	..()
 
 
+/obj/vehicle/combat_mech/Collide(atom/A)
+	if(ishumansynth_strict(A))
+		var/mob/living/carbon/human/human_hit = A
+		human_hit.KnockDown(3)
+		return
+
+	if(A && !QDELETED(A))
+		A.last_bumped = world.time
+		A.Collided(src)
+		return
+
 /obj/vehicle/combat_mech/Collided(mob/living/carbon/xenomorph/xeno)
 	health -= (xeno.melee_vehicle_damage * 2)
 	healthcheck()
 	return
+
+/obj/vehicle/combat_mech/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+	if(attacking_xeno.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+
+	if(attacking_xeno.mob_size < MOB_SIZE_XENO)
+		to_chat(attacking_xeno, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+		return XENO_NO_DELAY_ACTION
+
+	attacking_xeno.animation_attack_on(src)
+
+	attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno] slashes [src]!"), SPAN_DANGER("You slash [src]!"))
+	playsound(attacking_xeno, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+
+	var/damage = (attacking_xeno.melee_vehicle_damage + rand(-5,5)) * brute_dam_coeff
+
+	health -= damage
+
+	healthcheck()
+
+	return XENO_ATTACK_ACTION
 //--------------------INTERACTION PROCS-----------------
 
 /obj/vehicle/combat_mech/get_examine_text(mob/user)

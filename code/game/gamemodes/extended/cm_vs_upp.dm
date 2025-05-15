@@ -19,7 +19,7 @@
 		/datum/gamemode_modifier/no_body_c4,
 		/datum/gamemode_modifier/heavy_specialists,
 		/datum/gamemode_modifier/weaker_explosions_fire,
-		/datum/gamemode_modifier/only_balanced_attachments,
+		/datum/gamemode_modifier/remove_stat_attachments,
 	)
 
 	taskbar_icon = 'icons/taskbar/gml_hvh.png'

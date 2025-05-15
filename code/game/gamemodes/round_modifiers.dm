@@ -152,5 +152,5 @@
 
 
 /datum/gamemode_modifier/only_balanced_attachments
-	modifier_name = "Only balanced attachments"
-	modifier_desc = "In squad and cargi vendors only attachmants with real drawbacks are available, still can be obtained using reqestions."
+	modifier_name = "Remove stat-only attachments"
+	modifier_desc = "In squad and requisitions vendors only attachments that provide utility outside of raw stat changes are available, supply packs are unaffected."

@@ -482,7 +482,7 @@
 	else if(isliving(target))
 		var/mob/living/mob_target = target
 
-		if((mob_target.stat != DEAD && !(iff_enabled && mob_target.get_target_lock(user.faction_group))))
+		if((mob_target.stat != DEAD && !(iff_enabled && mob_target.get_target_lock(user.faction_group))) && auto_aim)
 			set_autoshot_image(mob_target)
 
 	if(!requires_battery)

@@ -1,8 +1,0 @@
-author: "seanlol092"
-delete-after: True
-changes:
-  - qol: "Custom mines tell you what sensitivity it is when examined"
-  - balance: "Claymores can now switch to low sensitive mode / high sensitive mode using a wirecutter"
-  - balance: "When on less sensitive mode: Claymores cant be trigger by huggers and Lesser drones"
-  - balance: "Claymores can be triggered by two xeno spits, but cannot be slashed by Lesser drones"
-  - balance: "Claymores now layer above lying mobs"

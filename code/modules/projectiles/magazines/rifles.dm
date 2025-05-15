@@ -672,3 +672,35 @@
 	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
 	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
+
+//-------------------------------------------------------
+//P9 SHARP Rifle
+
+/obj/item/ammo_magazine/rifle/sharp
+	name = "sharp rifle magazine"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/grenade_launchers.dmi'
+	icon_state = "sharp_explosive_mag"
+	item_state = "sharprifle"
+	caliber = "Dart"
+	w_class = SIZE_MEDIUM
+	max_rounds = 10
+	default_ammo = /datum/ammo/rifle/sharp/explosive
+	gun_type = /obj/item/weapon/gun/rifle/sharp
+	transfer_handful_amount = 5
+	description_ammo = "darts"
+
+/obj/item/ammo_magazine/rifle/sharp/explosive
+	name = "\improper 9X-E sticky explosive dart magazine"
+	desc = "A specialized sticky explosive dart magazine for the SHARP rifle."
+
+/obj/item/ammo_magazine/rifle/sharp/incendiary
+	name = "\improper 9X-T sticky incendiary dart magazine"
+	desc = "A specialized incendiary dart magazine for the SHARP rifle."
+	icon_state = "sharp_incendiary_mag"
+	default_ammo = /datum/ammo/rifle/sharp/incendiary
+
+/obj/item/ammo_magazine/rifle/sharp/flechette
+	name = "\improper 9X-F flechette dart magazine"
+	desc = "A specialized flechette dart magazine for the SHARP rifle."
+	icon_state = "sharp_flechette_mag"
+	default_ammo = /datum/ammo/rifle/sharp/flechette

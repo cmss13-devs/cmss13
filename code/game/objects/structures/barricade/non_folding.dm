@@ -243,7 +243,6 @@
 				if(!(istype(turf) && turf.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
-				var/area/area = get_area(area)
 				if(area.flags_area & AREA_NOSECURECADES)
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return

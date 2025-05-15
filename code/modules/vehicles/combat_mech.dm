@@ -15,6 +15,7 @@
 	maxhealth = 2000
 	pixel_x = -17
 	pixel_y = -2
+	var/mouse_pointer = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 	var/wreckage = /obj/structure/combat_mech_wreckage
 	var/obj/item/weapon/gun/mech/rx47_chaingun/gun_left
 	var/obj/item/weapon/gun/mech/rx47_support/gun_right
@@ -141,11 +142,12 @@
 
 	return COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
 
-/obj/vehicle/combat_mech/afterbuckle(mob/buckled_mob)
+/obj/vehicle/combat_mech/afterbuckle(mob/new_buckled_mob)
 	. = ..()
 	buckled_mob.layer = MOB_LAYER + 0.1
 	ADD_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
 	RegisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
+	update_mouse_pointer(buckled_mob, TRUE)
 	rebuild_icon()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
@@ -153,10 +155,12 @@
 			move_delay = max(3, move_delay - 2 * buckled_mob.skills.get_skill_level(SKILL_POWERLOADER))
 		if(gun_left && !buckled_mob.put_in_l_hand(gun_left))
 			gun_left.forceMove(src)
+			gun_left.flags_gun_features |= GUN_TRIGGER_SAFETY
 			unbuckle()
 			return
 		else if(gun_right && !buckled_mob.put_in_r_hand(gun_right))
 			gun_right.forceMove(src)
+			gun_left.flags_gun_features |= GUN_TRIGGER_SAFETY
 			unbuckle()
 			return
 			//can't use the mech without both weapons equipped
@@ -168,15 +172,37 @@
 	buckled_mob.layer = MOB_LAYER
 	REMOVE_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
 	UnregisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED)
+	update_mouse_pointer(buckled_mob, FALSE)
 	..()
+
+/obj/vehicle/combat_mech/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+	user.client.mouse_pointer_icon = new_cursor ? mouse_pointer : initial(user.client.mouse_pointer_icon)
 
 //verb
 /obj/vehicle/combat_mech/verb/enter_mech(mob/M)
-	set category = "Object"
+	set category = "Object.Mechsuit"
 	set name = "Enter Combat Mechsuit"
 	set src in oview(1)
 
 	buckle_mob(M, usr)
+
+/obj/vehicle/combat_mech/verb/toggle_helmet(mob/M)
+	set category = "Object.Mechsuit"
+	set name = "Toggle Faceplate"
+	set src in oview(1)
+	var/mob/user = usr
+
+	if(user != buckled_mob)
+		return
+
+	helmet_closed = !helmet_closed
+	if(helmet_closed)
+		to_chat(user, SPAN_NOTICE("You close the mechsuit faceplate."))
+	else
+		to_chat(user, SPAN_NOTICE("You open the mechsuit faceplate."))
+	update_icon()
 
 //Guns
 /obj/item/weapon/gun/mech
@@ -230,7 +256,7 @@
 	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
 	icon = 'icons/obj/vehicles/wymech_guns.dmi'
 	icon_state = "chaingun"
-	mouse_pointer = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
+	mouse_pointer = 'icons/effects/mouse_pointer/lmg_mouse.dmi'
 
 	fire_sound = 'sound/weapons/gun_minigun.ogg'
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
@@ -252,6 +278,8 @@
 
 	scatter = SCATTER_AMOUNT_TIER_9 // Most of the scatter should come from the recoil
 	scatter_unwielded = SCATTER_AMOUNT_TIER_9
+	fa_max_scatter = SCATTER_AMOUNT_TIER_8
+	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_3
 	burst_scatter_mult = 1
 
 	damage_mult = BASE_BULLET_DAMAGE_MULT
@@ -338,7 +366,7 @@
 	max_rounds = 750
 	current_rounds = 750
 	max_range = 5
-	flags_attach_features = ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE
 	hidden = TRUE
 
 /obj/item/attachable/attached_gun/flamer/advanced/rx47/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
@@ -353,8 +381,7 @@
 		if(attached_gun.last_fired < world.time)
 			attached_gun.last_fired = world.time
 
-
-/obj/item/weapon/gun/mech/rx47_support/cock()
+/obj/item/weapon/gun/mech/rx47_support/attack_self(mob/user)
 	activate_attachment_verb()
 	if(active_attachable)
 		base_gun_icon = "aux_cupola"

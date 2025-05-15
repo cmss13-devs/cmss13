@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - rscadd: "WY beacon guards now return to the WY ert station rather than the default one."

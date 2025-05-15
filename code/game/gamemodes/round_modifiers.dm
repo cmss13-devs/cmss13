@@ -151,6 +151,6 @@
 	modifier_desc = "Prevents firing guns and throwing granades."
 
 
-/datum/gamemode_modifier/only_balanced_attachments
+/datum/gamemode_modifier/remove_stat_attachments
 	modifier_name = "Remove stat-only attachments"
 	modifier_desc = "In squad and requisitions vendors only attachments that provide utility outside of raw stat changes are available, supply packs are unaffected."

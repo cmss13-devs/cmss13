@@ -96,7 +96,7 @@
 	. = ..()
 	if(get_dist(user, src) > 2 && user != loc)
 		return
-	if(!ishuman(user))
+	if(!ishuman(user) && !isobserver(user))
 		return
 	var/one_percent = maxhealth / 100
 	var/percentage = health / one_percent
@@ -144,20 +144,20 @@
 
 /obj/vehicle/combat_mech/afterbuckle(mob/new_buckled_mob)
 	. = ..()
-	buckled_mob.layer = MOB_LAYER + 0.1
-	ADD_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
-	RegisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
+	new_buckled_mob.layer = MOB_LAYER + 0.1
+	ADD_TRAIT(new_buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
+	RegisterSignal(new_buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
 	rebuild_icon()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
-		if(buckled_mob.mind && buckled_mob.skills)
-			move_delay = max(3, move_delay - 2 * buckled_mob.skills.get_skill_level(SKILL_POWERLOADER))
-		if(gun_left && !buckled_mob.put_in_l_hand(gun_left))
+		if(new_buckled_mob.mind && new_buckled_mob.skills)
+			move_delay = max(3, move_delay - 2 * new_buckled_mob.skills.get_skill_level(SKILL_POWERLOADER))
+		if(gun_left && !new_buckled_mob.put_in_l_hand(gun_left))
 			gun_left.forceMove(src)
 			gun_left.flags_gun_features |= GUN_TRIGGER_SAFETY
 			unbuckle()
 			return
-		else if(gun_right && !buckled_mob.put_in_r_hand(gun_right))
+		else if(gun_right && !new_buckled_mob.put_in_r_hand(gun_right))
 			gun_right.forceMove(src)
 			gun_left.flags_gun_features |= GUN_TRIGGER_SAFETY
 			unbuckle()
@@ -165,7 +165,7 @@
 			//can't use the mech without both weapons equipped
 	else
 		move_delay = initial(move_delay)
-		buckled_mob.drop_held_items() //drop the weapons when unbuckling
+		new_buckled_mob.drop_held_items() //drop the weapons when unbuckling
 
 /obj/vehicle/combat_mech/unbuckle()
 	buckled_mob.layer = MOB_LAYER

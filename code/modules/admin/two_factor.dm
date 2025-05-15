@@ -32,7 +32,8 @@
 		"approved",
 	)
 
-/proc/check_or_create_twofactor_request(client/user)
+/// Checks if the admin has been authenticated externally, if required by the server
+/datum/admins/proc/check_or_create_twofactor_request(client/user)
 	var/url = CONFIG_GET(string/twofactor_admins_url)
 	if(!url)
 		return TRUE

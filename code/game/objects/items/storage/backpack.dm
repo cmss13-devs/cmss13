@@ -540,14 +540,14 @@
 	icon_state = "intel_satchel"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	item_state_slots = list(
-		WEAR_BACK = "marinesatch",
+		WEAR_BACK = "intel_satchel",
 		WEAR_R_HAND = "marinesatch",
 		WEAR_L_HAND = "marinesatch",
 	)
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_map/classic.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
 	)
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 

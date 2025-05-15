@@ -211,7 +211,7 @@
 		to_chat(user, SPAN_NOTICE("You close the mechsuit faceplate."))
 	else
 		to_chat(user, SPAN_NOTICE("You open the mechsuit faceplate."))
-	update_icon()
+	rebuild_icon()
 
 //Guns
 /obj/item/weapon/gun/mech

@@ -288,7 +288,7 @@
 	scatter = SCATTER_AMOUNT_TIER_9 // Most of the scatter should come from the recoil
 	scatter_unwielded = SCATTER_AMOUNT_TIER_9
 	fa_max_scatter = SCATTER_AMOUNT_TIER_8
-	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_3
+	fa_scatter_peak = 6
 	burst_scatter_mult = 1
 
 	damage_mult = BASE_BULLET_DAMAGE_MULT

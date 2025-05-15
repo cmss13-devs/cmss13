@@ -467,6 +467,7 @@
 	if(!user.drop_inv_item_to_loc(item_to_insert, src))
 		return FALSE
 	_insert_item(item_to_insert)
+	item_to_insert.last_equipped_slot = WEAR_IN_SHOES
 	to_chat(user, SPAN_NOTICE("You slide [item_to_insert] into [src]."))
 	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	return TRUE

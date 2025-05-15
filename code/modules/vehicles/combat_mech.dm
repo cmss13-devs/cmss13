@@ -90,6 +90,11 @@
 	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 	..()
 
+
+/obj/vehicle/combat_mech/Collided(mob/living/carbon/xenomorph/xeno)
+	health -= (xeno.melee_vehicle_damage * 2)
+	healthcheck()
+	return
 //--------------------INTERACTION PROCS-----------------
 
 /obj/vehicle/combat_mech/get_examine_text(mob/user)
@@ -249,10 +254,10 @@
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_9
 	accurate_range = 12
-	damage = 20
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_6
 
 /obj/item/weapon/gun/mech/rx47_chaingun
@@ -386,18 +391,6 @@
 	max_range = 5
 	flags_attach_features = ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON|ATTACH_WIELD_OVERRIDE
 	hidden = TRUE
-
-/obj/item/attachable/attached_gun/flamer/advanced/rx47/fire_attachment(atom/target, obj/item/weapon/gun/gun, mob/living/user)
-	if(!istype(loc, /obj/item/weapon/gun))
-		to_chat(user, SPAN_WARNING("\The [src] must be attached to a gun!"))
-		return
-
-	var/obj/item/weapon/gun/attached_gun = loc
-
-	if(current_rounds > round_usage_per_tile && ..())
-		unleash_flame(target, user)
-		if(attached_gun.last_fired < world.time)
-			attached_gun.last_fired = world.time
 
 // Wreckage
 

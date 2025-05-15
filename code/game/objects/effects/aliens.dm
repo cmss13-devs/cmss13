@@ -170,6 +170,9 @@
 
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
+	if(HAS_TRAIT(H, TRAIT_INSIDE_VEHICLE))
+		H.buckled?.visible_message(SPAN_WARNING("[H.buckled] withstands the acid spray!"))
+		return
 
 	if(H.body_position == STANDING_UP)
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))

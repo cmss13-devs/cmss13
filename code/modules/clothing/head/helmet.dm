@@ -356,6 +356,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/riot_shield = NO_GARB_OVERRIDE,
 	/obj/item/attachable/flashlight = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/chaplain_patch = NO_GARB_OVERRIDE,
+	/obj/item/stack/repairable/gunlube = NO_GARB_OVERRIDE,
 
 	// MEDICAL
 	/obj/item/stack/medical/bruise_pack = NO_GARB_OVERRIDE,
@@ -418,6 +419,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/obj/item/device/helmet_visor/active_visor = null
 	///Designates a visor type that should start down when initialized
 	var/start_down_visor_type
+	///Faction owners of the inbuilt camera
+	var/list/camera_factions = FACTION_LIST_MARINE_WY
+
 
 /obj/item/clothing/head/helmet/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
 	. = ..()
@@ -442,6 +446,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	pockets.max_storage_space = storage_max_storage_space
 
 	camera = new /obj/structure/machinery/camera/overwatch(src)
+	camera.owner_factions = camera_factions
 
 	for(var/obj/visor as anything in built_in_visors)
 		visor.forceMove(src)
@@ -1178,6 +1183,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi',
 	)
+	camera_factions = FACTION_LIST_COLONY
 
 //=============================//CMB\\==================================\\
 //=======================================================================\\
@@ -1230,6 +1236,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY
+	camera_factions = list(FACTION_DUTCH)
 
 /obj/item/clothing/head/helmet/marine/veteran/dutch/cap
 	name = "\improper Dutch's Dozen cap"
@@ -1270,6 +1277,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	clothing_traits = list(TRAIT_EAR_PROTECTION) //the sprites clearly fully cover the ears and most of the head
+	camera_factions = FACTION_LIST_UPP
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/engi
 	name = "\improper UM4-V helmet"
@@ -1315,7 +1323,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS
 
 /obj/item/clothing/head/uppcap/civi
-	name = "\improper UL2 UPP cap"
+	name = "\improper UL2C UPP cap"
 	desc = "UPP civilian headgear. It's of poor quality, and isn't expected to last all that long, however for as long as it's whole, it appears quite stylish."
 	icon_state = "upp_cap_civi"
 
@@ -1357,7 +1365,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 
 /obj/item/clothing/head/uppcap/ushanka/civi
-	name = "\improper UL8c UPP ushanka"
+	name = "\improper UL8C UPP ushanka"
 	icon_state = "upp_ushanka_civi"
 	item_state = "upp_ushanka_civi"
 	original_state = "upp_ushanka_civi"
@@ -1372,6 +1380,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/misc_ert_colony.dmi',
 	)
 	flags_marine_helmet = NO_FLAGS
+	camera_factions = FACTION_LIST_COLONY
 
 
 //head rag
@@ -1500,8 +1509,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
+	camera_factions = FACTION_LIST_MERCENARY
 
-/obj/item/clothing/head/helmet/marine/veteran/mercenary
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/heavy
 	name = "\improper Modified K12 ceramic helmet"
 	desc = "A sturdy helmet worn by an unknown mercenary group. Reinforced with extra plating."
 	armor_melee = CLOTHING_ARMOR_ULTRAHIGH
@@ -1522,6 +1532,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 
+/obj/item/clothing/head/helmet/marine/veteran/mercenary/miner/clf
+	camera_factions = FACTION_LIST_CLF
 
 /obj/item/clothing/head/helmet/marine/veteran/mercenary/support
 	name = "\improper Z7 helmet"
@@ -1563,6 +1575,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/mob/activator = null
 	var/active = FALSE
 	var/det_time = 40
+	camera_factions = list(FACTION_HEFA)
 
 /obj/item/clothing/head/helmet/marine/specialist/hefa/Initialize(mapload, list/new_protection)
 	. = ..()
@@ -1681,6 +1694,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	built_in_visors = list(new /obj/item/device/helmet_visor/medical)
 	start_down_visor_type = /obj/item/device/helmet_visor/medical
+	camera_factions = FACTION_LIST_TWE
 
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher

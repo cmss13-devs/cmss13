@@ -597,3 +597,34 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define PHONE_DND_ON 1
 #define PHONE_DND_OFF 0
 #define PHONE_DND_FORBIDDEN -1
+
+///Get appropriate SLOT_IN_X for given slot
+/proc/slot_to_in_storage_slot(slot)
+	switch(slot)
+		if(WEAR_FEET)
+			return WEAR_IN_SHOES
+		if(WEAR_BACK)
+			return WEAR_IN_BACK
+		if(WEAR_J_STORE)
+			return WEAR_IN_J_STORE
+		if(WEAR_BODY)
+			return WEAR_IN_ACCESSORY
+		if(WEAR_WAIST)
+			return WEAR_IN_BELT
+		if(WEAR_JACKET)
+			return WEAR_IN_JACKET
+		if(WEAR_L_STORE)
+			return WEAR_IN_L_STORE
+		if(WEAR_R_STORE)
+			return WEAR_IN_R_STORE
+		if(WEAR_HEAD)
+			return WEAR_IN_HELMET
+		else
+			return 0
+
+/proc/is_valid_sticky_slot(slot)
+	switch(slot)
+		if(WEAR_HANDCUFFS, WEAR_LEGCUFFS, WEAR_L_HAND, WEAR_R_HAND)
+			return FALSE
+		else
+			return TRUE

@@ -152,6 +152,10 @@
 		scatter = SCATTER_AMOUNT_TIER_6
 		recoil = RECOIL_AMOUNT_TIER_3
 		damage_mult = BASE_BULLET_DAMAGE_MULT
+	if(auto_aim)
+		aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON * 2
+	else
+		aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	if(!iff_enabled || frontline_enabled)
 		ammo_primary = ammo_primary_alt
 		ammo_secondary = ammo_secondary_alt
@@ -475,15 +479,7 @@
 	set_gun_config_values()
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield)
-	if(!ismob(target))
-		var/mob/result = get_target(user, target)
-		if(ismob(result))
-			target = result
-	else if(isliving(target))
-		var/mob/living/mob_target = target
-
-		if((mob_target.stat != DEAD && !(iff_enabled && mob_target.get_target_lock(user.faction_group))) && auto_aim)
-			set_autoshot_image(mob_target)
+	target = get_target(user, target)
 
 	if(!requires_battery)
 		return ..()
@@ -542,11 +538,6 @@
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_aim(mob/user)
-	if(!auto_aim)
-		to_chat(user, SPAN_NOTICE("You start adjusting your stance to allow [src] to guide your aim."))
-		if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_DIFF_LOC))
-			return
-
 	to_chat(user, "[icon2html(src, usr)] You [auto_aim ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
 	balloon_alert(user, "aim assist [auto_aim ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
@@ -558,60 +549,28 @@
 		disable_auto_aim(user)
 
 /obj/item/weapon/gun/smartgun/proc/enable_auto_aim(mob/user)
-	drain[DRAIN_AUTO_AIM] = 50
+	drain[DRAIN_AUTO_AIM] = 200
 	START_PROCESSING(SSobj, src)
-	RegisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK, PROC_REF(handle_mob_move))
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(handle_drop))
-	RegisterSignal(src, COMSIG_ITEM_EQUIPPED, PROC_REF(handle_equipped))
 	var/datum/action/item_action/smartgun/toggle_auto_aim/auto_aim_action = locate(/datum/action/item_action/smartgun/toggle_auto_aim) in actions
 	auto_aim_action.update_icon()
-	playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+	unwield(user)
+	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/disable_auto_aim(mob/user)
 	drain.Remove(DRAIN_AUTO_AIM)
 	auto_aim = FALSE
-	UnregisterSignal(user, COMSIG_MOB_MOVE_OR_LOOK)
-	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
-	UnregisterSignal(src, COMSIG_ITEM_EQUIPPED)
 	var/datum/action/item_action/smartgun/toggle_auto_aim/auto_aim_action = locate(/datum/action/item_action/smartgun/toggle_auto_aim) in actions
 	auto_aim_action.update_icon()
-	playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
-
-/obj/item/weapon/gun/smartgun/proc/handle_equipped(obj/item/equipped, mob/living/carbon/human/user, slot)
-	SIGNAL_HANDLER
-
-	if(!auto_aim)
-		return
-	to_chat(user, SPAN_WARNING("[icon2html(src, user)] Error: Unexpected movement detected, aim assist is now disabled."))
-	balloon_alert(user, "aim assist disabled")
-	disable_auto_aim(user)
-	user.Superslow(1)
-	user.Slow(2)
-
-
-/obj/item/weapon/gun/smartgun/proc/handle_drop(obj/item/dropped_item, mob/living/carbon/human/user)
-	SIGNAL_HANDLER
-
-	if(!auto_aim)
-		return
-	to_chat(user, SPAN_WARNING("[icon2html(src, user)] Error: Unexpected movement detected, aim assist is now disabled."))
-	balloon_alert(user, "aim assist disabled")
-	disable_auto_aim(user)
-	user.Superslow(1)
-	user.Slow(2)
-
-/obj/item/weapon/gun/smartgun/proc/handle_mob_move(mob/living/mover, actually_moving, direction, specific_direction)
-	SIGNAL_HANDLER
-
-	if(!actually_moving)
-		return
-	to_chat(mover, SPAN_WARNING("[icon2html(src, mover)] Error: Unexpected movement detected, aim assist is now disabled."))
-	balloon_alert(mover, "aim assist disabled")
-	disable_auto_aim(mover)
-	mover.Superslow(1)
-	mover.Slow(2)
+	unwield(user)
+	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/wield(mob/living/user)
+	if(auto_aim)
+		to_chat(user, SPAN_NOTICE("You start adjusting your stance to allow [src] to guide your aim."))
+		if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_DIFF_LOC))
+			return
+		playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
+
 	. = ..()
 	user.client.images |= autoshot_image
 
@@ -650,10 +609,9 @@
 		long_range_cooldown = initial(long_range_cooldown)
 		MD.scan()
 
-/obj/item/weapon/gun/smartgun/proc/get_target(mob/living/user, target_turf)
+/obj/item/weapon/gun/smartgun/proc/get_target(mob/living/user, target)
 	if(!auto_aim)
-		return target_turf
-
+		return target
 
 	var/dist_unconscious = 9999
 	var/dist_conscious = 9999
@@ -661,7 +619,7 @@
 	var/mob/living/unconscious_target = null
 	var/mob/living/conscious_target = null
 
-	for(var/mob/living/targetted_mob in viewers(range, target_turf) & oviewers(9, user))
+	for(var/mob/living/targetted_mob in viewers(range, target) & oviewers(user.get_maximum_view_range(), user))
 		if((targetted_mob.stat == DEAD))
 			continue // No dead or non living.
 
@@ -681,9 +639,10 @@
 		set_autoshot_image(conscious_target)
 		. = conscious_target
 	else if(unconscious_target)
-		set_autoshot_image(conscious_target)
+		set_autoshot_image(unconscious_target)
 		. = unconscious_target
 	else
+		. = target
 		reset_autoshot_image()
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)

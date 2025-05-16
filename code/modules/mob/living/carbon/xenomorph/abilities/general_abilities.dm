@@ -218,9 +218,6 @@
 	var/freeze_timer_id = TIMER_ID_NULL
 	var/freeze_play_sound = TRUE
 
-	/// Can you move while pouncing to cancel it?
-	var/move_during_pounce = TRUE
-
 	/// Is there a do_after before we pounce?
 	var/windup = FALSE
 	/// How long to wind up, if applicable
@@ -264,8 +261,6 @@
 /// Additional effects to apply even if we don't hit anything
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!move_during_pounce)
-		REMOVE_TRAIT(xeno, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 	return
 
 /**
@@ -273,8 +268,6 @@
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!move_during_pounce)
-		ADD_TRAIT(xeno, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 	return
 
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()

@@ -132,3 +132,8 @@
   jupyterkat:
   - qol: quick equip will try to put an item to the slot it was drawn from.
   - qol: mag harnessed weapons always prefers the slots it usually snaps to on quick-equip
+2025-05-16:
+  MistChristmas:
+  - bugfix: Edit Hotkey's search bar is case-insensitive.
+  Red-byte3D:
+  - qol: Xenos can now examine an acid runner to see how much acid they have.

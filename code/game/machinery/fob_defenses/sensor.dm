@@ -27,7 +27,7 @@
 
 	AddComponent(/datum/component/fob_defense, CALLBACK(src, PROC_REF(turn_on)), CALLBACK(src, PROC_REF(turn_off)))
 
-	if(GLOB.transformer.is_active())
+	if(GLOB.transformer?.is_active())
 		turn_on()
 
 	. = ..()

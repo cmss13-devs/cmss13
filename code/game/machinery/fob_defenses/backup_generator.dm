@@ -79,7 +79,7 @@
 			icon_state = "backup_generator_depleted"
 
 /obj/structure/machinery/backup_generator/Destroy()
-	if(GLOB.transformer.backup == src)
+	if(GLOB.transformer && GLOB.transformer?.backup == src)
 		GLOB.transformer.backup = null
 
 	. = ..()

@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 	name = "electrified grille"
 	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
 	icon = 'icons/obj/structures/machinery/fob_machinery/electric_fence.dmi'
-	icon_state = "highvoltagegrille_off"
+	icon_state = "fence0"
 	basestate = "fence"
 	throwpass = TRUE
 	unacidable = TRUE
@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 
 /obj/structure/fence/fob/Initialize(mapload, ...)
 	. = ..()
-	if(GLOB.transformer.is_active())
+	if(GLOB.transformer?.is_active())
 		turn_on()
 
 	AddComponent(/datum/component/fob_defense, CALLBACK(src, PROC_REF(turn_on)), CALLBACK(src, PROC_REF(turn_off)))

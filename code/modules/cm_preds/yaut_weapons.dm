@@ -147,7 +147,7 @@
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
-	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg','sound/weapons/chain_whip.ogg')
+	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg','sound/weapons/chain_whip.ogg', 'sound/effects/hit_punch.ogg', 'sound/effects/hit_kick.ogg')
 	switch(user.a_intent)
 		if(INTENT_HELP)
 			if(combo_counter >= 5 && target != user)
@@ -158,6 +158,7 @@
 				target.visible_message(SPAN_XENOHIGHDANGER("[user] grabs [target] by the back of the head and slams them on the ground!"))
 				if(isxeno(target))
 					target.apply_damage(50, ARMOR_MELEE, BRUTE, "chest", 5)
+				playsound(target, 'sound/effects/hit_punch.ogg', 50)
 
 		if((INTENT_DISARM))
 			if(combo_counter >= 4 && target != user)
@@ -211,6 +212,7 @@
 		if((INTENT_HARM)) // This is how you farm combo counters, so there's no special interaction.
 			playsound(target, sound_to_play, 50, 1)
 			user.flick_attack_overlay(target, "slam")
+
 
 	if(target != user)
 		if(target.stat == DEAD)

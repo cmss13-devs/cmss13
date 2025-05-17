@@ -13,7 +13,6 @@
 #include "cyrillic_fixes/_cyrillic_fixes.dme"
 #include "quick_cast/_quick_cast.dme"
 #include "respawn/_respawn.dme"
-#include "shout_orders/_shout_orders.dme"
 #include "screentips/_screentips.dme"
 #include "xeno_customization/_xeno_customization.dme"
 #include "sounds/_sounds.dme"

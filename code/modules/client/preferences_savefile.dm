@@ -514,8 +514,6 @@
 	// BANDAMARINES EDIT START
 	S["xeno_customization_visibility"] >> xeno_customization_visibility
 	xeno_customization_visibility = sanitize_inlist(xeno_customization_visibility, GLOB.xeno_customization_visibility_options, XENO_CUSTOMIZATION_SHOW_LORE_FRIENDLY)
-	S["shout_orders"] >> shout_orders
-	shout_orders = sanitize_integer(shout_orders, FALSE, TRUE, TRUE)
 	S["quick_cast"] >> quick_cast
 	quick_cast = sanitize_integer(quick_cast, FALSE, TRUE, FALSE)
 	S["screentips"] >> screentips
@@ -651,7 +649,6 @@
 	// BANDAMARINES EDIT START
 	S["xeno_customization_visibility"] << xeno_customization_visibility
 	S["quick_cast"] << quick_cast
-	S["shout_orders"] << shout_orders
 	S["screentips"] << screentips
 	// BANDAMARINES EDIT END
 

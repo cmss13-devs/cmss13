@@ -46,12 +46,10 @@
 	else
 		overlays += image(icon_state = "wymech_helmet_open", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)
+	overlays += image(icon_state = "wymech_weapon_left", layer = MECH_LAYER)
+	overlays += image(icon_state = "wymech_weapon_right", layer = MECH_LAYER)
 	if(squad_color)
-		overlays += image(icon_state = "wymech_markings_[squad_color]", layer = MECH_CORE_LAYER)
-	if(gun_left)
-		overlays += image(icon_state = "wymech_weapon_left", layer = MECH_LAYER)
-	if(gun_right)
-		overlays += image(icon_state = "wymech_weapon_right", layer = MECH_LAYER)
+		overlays += image(icon_state = "wymech_markings_[squad_color]", layer = MECH_LAYER)
 
 
 /obj/vehicle/combat_mech/Destroy()
@@ -228,14 +226,14 @@
 	user.client.mouse_pointer_icon = new_cursor ? mouse_pointer : initial(user.client.mouse_pointer_icon)
 
 //verb
-/obj/vehicle/combat_mech/verb/enter_mech(mob/M)
+/obj/vehicle/combat_mech/verb/enter_mech()
 	set category = "Object.Mechsuit"
 	set name = "Enter Combat Mechsuit"
 	set src in oview(1)
 
-	buckle_mob(M, usr)
+	buckle_mob(usr, usr)
 
-/obj/vehicle/combat_mech/verb/toggle_helmet(mob/M)
+/obj/vehicle/combat_mech/verb/toggle_helmet()
 	set category = "Object.Mechsuit"
 	set name = "Toggle Faceplate"
 	set src in oview(1)

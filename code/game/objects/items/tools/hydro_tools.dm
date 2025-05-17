@@ -71,8 +71,8 @@
 
 /obj/item/tool/weedkiller/D24
 	name = "bottle of 2,4-D"
-	toxicity = 8
-	weed_kill_str = 7
+	toxicity = 6
+	weed_kill_str = 8
 
 
 

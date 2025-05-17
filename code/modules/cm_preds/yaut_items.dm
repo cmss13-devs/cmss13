@@ -167,9 +167,9 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	..()
 
 /obj/item/clothing/yautja_cape/pickup(mob/living/user)
+	. = ..()
 	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/clothing/yautja_cape/Destroy()
 	. = ..()

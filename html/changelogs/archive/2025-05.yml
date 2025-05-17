@@ -137,3 +137,6 @@
   - bugfix: Edit Hotkey's search bar is case-insensitive.
   Red-byte3D:
   - qol: Xenos can now examine an acid runner to see how much acid they have.
+2025-05-17:
+  Uristthedorf:
+  - rscadd: Barcidine now has bicaridine.

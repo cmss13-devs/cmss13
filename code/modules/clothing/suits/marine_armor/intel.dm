@@ -86,7 +86,7 @@
 	if(!..())
 		return FALSE
 
-	// Only equip if uniform doesn't already have a utility accessory slot equipped
+	// Only equip if uniform doesn't already have a storage accessory slot equipped
 	var/obj/item/clothing/under/uniform = user.w_uniform
 	var/accessory = locate(/obj/item/clothing/accessory/storage) in uniform.accessories
 	if(accessory)
@@ -98,26 +98,26 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/suit/storage/marine/medium/rto/intel/equipped(mob/user, slot, silent) //When XM4 is equipped this removes ACCESSORY_SLOT_UTILITY as a valid accessory for the uniform
+/obj/item/clothing/suit/storage/marine/medium/rto/intel/equipped(mob/user, slot, silent) //When XM4 is equipped this removes ACCESSORY_SLOT_STORAGE as a valid accessory for the uniform
 	. = ..()
 	if(slot == WEAR_JACKET)
 		var/mob/living/carbon/human/human = user
 		var/obj/item/clothing/under/uniform = human.w_uniform
 		if(uniform?.valid_accessory_slots)
-			uniform?.valid_accessory_slots -= ACCESSORY_SLOT_UTILITY
+			uniform?.valid_accessory_slots -= ACCESSORY_SLOT_STORAGE
 
-/obj/item/clothing/suit/storage/marine/medium/rto/intel/unequipped(mob/user, slot) //When unequipped this adds the ACCESSORY_SLOT_UTILITY back as a valid accessory
+/obj/item/clothing/suit/storage/marine/medium/rto/intel/unequipped(mob/user, slot) //When unequipped this adds the ACCESSORY_SLOT_STORAGE back as a valid accessory
 	. = ..()
 	if(slot == WEAR_JACKET)
 		var/mob/living/carbon/human/human = user
 		var/obj/item/clothing/under/uniform = human.w_uniform
 		if(uniform)
-			// Figure out if the uniform originally allowed ACCESSORY_SLOT_UTILITY
+			// Figure out if the uniform originally allowed ACCESSORY_SLOT_STORAGE
 			var/obj/item/clothing/under/temp_uniform = new uniform.type
 			if(temp_uniform.valid_accessory_slots)
 				for(var/allowed in temp_uniform.valid_accessory_slots)
-					if(allowed == ACCESSORY_SLOT_UTILITY)
+					if(allowed == ACCESSORY_SLOT_STORAGE)
 						// It was allowed previously, now add it back
-						uniform.valid_accessory_slots += ACCESSORY_SLOT_UTILITY
+						uniform.valid_accessory_slots += ACCESSORY_SLOT_STORAGE
 						break
 			qdel(temp_uniform)

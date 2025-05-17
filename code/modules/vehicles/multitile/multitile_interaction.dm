@@ -197,6 +197,7 @@
 
 		health = min(health + max_hp/100 * (5 / amount_fixed_adjustment), max_hp)
 		if(!lighting_holder.light)
+			update_minimap_icon()
 			lighting_holder.set_light_on(TRUE)
 
 		if(WT)

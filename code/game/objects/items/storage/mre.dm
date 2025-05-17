@@ -336,3 +336,7 @@
 		/obj/item/reagent_container/food/drinks/cans/food/upp/rice,
 	)
 	return ..()
+
+/obj/item/storage/box/mre/us_army
+	name = "\improper US Army MRE"
+	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least is a few years ahead of your expected service time."

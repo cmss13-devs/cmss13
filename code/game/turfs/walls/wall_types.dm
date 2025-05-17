@@ -481,7 +481,6 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
-
 /turf/closed/wall/mineral/bone
 	is_weedable = NOT_WEEDABLE
 

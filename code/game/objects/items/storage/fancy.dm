@@ -496,7 +496,7 @@
 	if(is_random)
 		var/spawns = rand(1,4)
 		for(var/i=1; i <= storage_slots; i++)
-			if(i<=spawns)
+			if(i<=spawns && prob(40))
 				new /obj/item/reagent_container/glass/beaker/vial/random(src)
 			else
 				new /obj/item/reagent_container/glass/beaker/vial(src)
@@ -506,7 +506,8 @@
 
 /obj/item/storage/fancy/vials/random
 	unacidable = TRUE
-	is_random = 1
+	is_random = TRUE
+
 
 /obj/item/storage/fancy/vials/empty
 	start_vials = 0

@@ -337,12 +337,11 @@
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/update_icon()
 	. = ..()
-	if(icon_state == "console")
+	if(icon_state == "console") // someday, replace this with a better check
 		if(dropship_control_lost)
 			icon_state = "[initial(icon_state)]-locked"
 		else
 			icon_state = initial(icon_state)
-
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
 	// select crash location

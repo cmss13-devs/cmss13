@@ -83,7 +83,7 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
 	skills = /datum/skills/SO
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY)
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)

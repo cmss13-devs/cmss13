@@ -1,0 +1,572 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bx" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"bB" = (
+/obj/structure/machinery/atm{
+	name = "Weyland-Yutani Automatic Teller Machine";
+	pixel_y = 30
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"cD" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"dr" = (
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"eY" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 9
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"fu" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"fL" = (
+/obj/item/stack/sheet/cardboard,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"gi" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"gL" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"im" = (
+/obj/structure/bed/sofa{
+	icon_state = "couch_hori1"
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"iv" = (
+/turf/closed/wall,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"jI" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"jO" = (
+/obj/structure/machinery/computer/arcade,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"kW" = (
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"ll" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"lr" = (
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"lw" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"lF" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"mn" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 30
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"my" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"mY" = (
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"np" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"nR" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/effect/spawner/random/gun/civ/highchance,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"oz" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"qE" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"qH" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = -4
+	},
+/obj/item/trash/uscm_mre{
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"rg" = (
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/structure/bed/chair{
+	buckling_y = 5;
+	dir = 1
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"rh" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"rz" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Restroom";
+	welded = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"sa" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"sj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"sU" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"ti" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"ts" = (
+/obj/effect/spawner/random/gun/pistol/highchance,
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"ty" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"vK" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"vS" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"we" = (
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"wY" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"xW" = (
+/obj/structure/bed/sofa{
+	icon_state = "couch_hori3"
+	},
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Cm" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 6
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Fz" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating/platingdmg2,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Ib" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"KV" = (
+/obj/item/tool/wet_sign{
+	pixel_y = 26;
+	pixel_x = 3
+	},
+/obj/item/tool/mop{
+	layer = 4;
+	pixel_y = 24;
+	pixel_x = -5
+	},
+/obj/item/reagent_container/glass/bucket/mopbucket{
+	pixel_x = -10
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Lw" = (
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 3
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Mv" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"NB" = (
+/obj/structure/prop/hybrisa/furniture/tables/tablepool,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Of" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/largecrate/supply,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Ov" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"OL" = (
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Pg" = (
+/obj/item/stool{
+	pixel_x = 1;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Qp" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"QH" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"QL" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Uv" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"VT" = (
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 8
+	},
+/obj/item/trash/eat{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"WJ" = (
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/case,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Xd" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Toilet Unit"
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Xf" = (
+/obj/item/device/radio{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Xk" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/bedroll,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"Yc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+"ZP" = (
+/obj/item/frame/table,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/hydroponics/hydroponics_breakroom)
+
+(1,1,1) = {"
+Ov
+Ov
+iv
+iv
+iv
+iv
+iv
+iv
+iv
+iv
+sU
+"}
+(2,1,1) = {"
+iv
+iv
+iv
+KV
+QL
+iv
+ty
+fu
+my
+iv
+iv
+"}
+(3,1,1) = {"
+iv
+qH
+eY
+ts
+sj
+iv
+Of
+dr
+dr
+lF
+ti
+"}
+(4,1,1) = {"
+iv
+Xk
+VT
+lr
+Yc
+rz
+rh
+rh
+rh
+ll
+cD
+"}
+(5,1,1) = {"
+iv
+Xd
+iv
+Xd
+iv
+iv
+bB
+dr
+mY
+Fz
+vS
+"}
+(6,1,1) = {"
+iv
+wY
+iv
+wY
+iv
+iv
+jI
+dr
+ZP
+Mv
+oz
+"}
+(7,1,1) = {"
+iv
+iv
+iv
+iv
+iv
+jO
+Pg
+nR
+vK
+rg
+iv
+"}
+(8,1,1) = {"
+Ov
+Ov
+Ov
+Ov
+iv
+im
+Xf
+OL
+mn
+we
+ti
+"}
+(9,1,1) = {"
+Ov
+Ov
+Ov
+Ov
+iv
+xW
+np
+ZP
+dr
+WJ
+ti
+"}
+(10,1,1) = {"
+Ov
+Ov
+Ov
+Ov
+iv
+Lw
+dr
+lw
+qE
+lF
+ti
+"}
+(11,1,1) = {"
+Ov
+Ov
+Ov
+Ov
+iv
+kW
+NB
+gL
+fL
+QH
+iv
+"}
+(12,1,1) = {"
+Ov
+Ov
+Ov
+Ov
+iv
+Cm
+Uv
+sa
+gi
+lF
+ti
+"}
+(13,1,1) = {"
+Ov
+Ov
+Ov
+Ov
+iv
+bx
+Ib
+Qp
+Qp
+Qp
+iv
+"}
+(14,1,1) = {"
+Ov
+Ov
+Ov
+Ov
+iv
+iv
+iv
+ti
+ti
+ti
+iv
+"}

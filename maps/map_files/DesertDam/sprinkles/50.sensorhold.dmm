@@ -1,0 +1,249 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"b" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"c" = (
+/obj/effect/spawner/random/sentry/highchance,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"f" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"g" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"h" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"j" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"k" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"n" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/gun/rifle/highchance,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"o" = (
+/obj/structure/machinery/sensortower,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"q" = (
+/obj/structure/stairs,
+/obj/structure/platform/metal/almayer/east,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"r" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	dir = 1;
+	health = 45;
+	icon_state = "folding_3"
+	},
+/obj/structure/machinery/m56d_hmg{
+	dir = 1
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"s" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"u" = (
+/obj/structure/stairs,
+/obj/structure/platform/metal/almayer/west,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"v" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"w" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"z" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/structure/platform/metal/almayer/east,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"E" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"F" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"G" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"J" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/spawner/random/gun/rifle/highchance,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"L" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/asteroidplating,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"O" = (
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"P" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 50;
+	icon_state = "folding_3"
+	},
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"S" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"U" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"V" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_crashsite)
+
+(1,1,1) = {"
+a
+O
+O
+a
+a
+"}
+(2,1,1) = {"
+a
+G
+n
+v
+a
+"}
+(3,1,1) = {"
+a
+E
+o
+k
+a
+"}
+(4,1,1) = {"
+a
+h
+j
+F
+P
+"}
+(5,1,1) = {"
+r
+L
+w
+c
+a
+"}
+(6,1,1) = {"
+u
+s
+f
+S
+U
+"}
+(7,1,1) = {"
+q
+J
+g
+z
+b
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+V
+"}

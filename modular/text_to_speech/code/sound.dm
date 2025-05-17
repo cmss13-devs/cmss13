@@ -6,7 +6,7 @@
 /client/verb/adjust_volume_tts_local()
 	set name = "Громкость TTS (Говор)"
 	set category = "Preferences.Sound"
-	adjust_volume_prefs(VOLUME_TTS_LOCAL, "Громкость TTS в радиусе слышимости", CHANNEL_TTS_LOCAL)
+	adjust_volume_prefs(VOLUME_TTS_LOCAL, "Громкость TTS в радиусе слышимости")
 
 /client/verb/adjust_volume_tts_radio()
 	set name = "Громкость TTS (Радио)"
@@ -16,7 +16,7 @@
 /client/verb/adjust_volume_tts_announce()
 	set name = "Громкость TTS (Анонсы)"
 	set category = "Preferences.Sound"
-	adjust_volume_prefs(VOLUME_TTS_ANNOUNCE, "Громкость TTS в анонсах", CHANNEL_TTS_RADIO)
+	adjust_volume_prefs(VOLUME_TTS_ANNOUNCE, "Громкость TTS в анонсах", CHANNEL_TTS_ANNOUNCEMENT)
 
 /proc/get_rand_frequency()
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.

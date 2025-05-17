@@ -489,7 +489,7 @@ SUBSYSTEM_DEF(tts220)
 			channel = CHANNEL_TTS_RADIO
 		if(TTS_LOCALYZE_ANNOUNCE)
 			volume *= listener?.client.prefs.volume_preferences[VOLUME_TTS_ANNOUNCE]
-			channel = CHANNEL_TTS_RADIO
+			channel = CHANNEL_TTS_ANNOUNCEMENT
 
 	var/sound/output = sound(voice)
 	output.status = SOUND_STREAM

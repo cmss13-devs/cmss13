@@ -21,6 +21,7 @@
 	var/obj/item/weapon/gun/mech/rx47_support/gun_right
 
 	var/helmet_closed = FALSE
+	var/squad_color
 
 //--------------------GENERAL PROCS-----------------
 
@@ -45,10 +46,13 @@
 	else
 		overlays += image(icon_state = "wymech_helmet_open", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)
+	if(squad_color)
+		overlays += image(icon_state = "wymech_markings_[squad_color]", layer = MECH_CORE_LAYER)
 	if(gun_left)
 		overlays += image(icon_state = "wymech_weapon_left", layer = MECH_LAYER)
 	if(gun_right)
 		overlays += image(icon_state = "wymech_weapon_right", layer = MECH_LAYER)
+
 
 /obj/vehicle/combat_mech/Destroy()
 	if(gun_left)
@@ -395,7 +399,7 @@
 
 /obj/item/weapon/gun/mech/rx47_support
 	name = "\improper RX47 Auxilliary Cupola"
-	desc = "An enormous multi-barreled rotating gatling gun. This thing will no doubt pack a punch."
+	desc = "A large Cupola smartgun with undermounted flamethrower."
 	icon = 'icons/obj/vehicles/wymech_guns.dmi'
 	base_gun_icon = "aux_cupola"
 	icon_state = "aux_cupola"

@@ -75,6 +75,8 @@
 /// Downgraded from Priority
 #define TICKET_NON_PRIORITY "non-priority"
 
+GLOBAL_LIST_EMPTY_TYPED(gas_vents, /obj/structure/pipes/vents/pump/no_boom/gas)
+
 /// Cooldowns
 #define COOLDOWN_ARES_SENSOR 60 SECONDS
 #define COOLDOWN_ARES_ACCESS_CONTROL 20 SECONDS

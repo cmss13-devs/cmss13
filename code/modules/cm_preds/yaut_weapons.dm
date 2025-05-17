@@ -268,7 +268,6 @@
 	desc = "A wicked and battered staff wrapped in worn crimson rags. A crescent shaped blade adorns the top, while the bottom is rounded and blunt."
 	icon_state = "staff"
 	item_state = "staff"
-	hitsound = 'sound/effects/woodstave.ogg'
 
 //Combistick
 /obj/item/weapon/yautja/chained/combistick

@@ -8665,7 +8665,7 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
-/obj/item/tool/pen/red/clicky,
+/obj/item/tool/pen/red/weyyu,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior_protected/caves/makeshift_tent)
 "gNb" = (
@@ -24838,7 +24838,7 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 4
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = 7;
 	pixel_y = 3
 	},
@@ -27273,7 +27273,7 @@
 /area/varadero/interior/maintenance/north)
 "vKD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/blue/weyyu,
 /obj/item/tool/pen/sleepypen{
 	pixel_x = -4;
 	pixel_y = 4

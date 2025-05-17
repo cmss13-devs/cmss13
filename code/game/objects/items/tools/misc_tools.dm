@@ -174,14 +174,12 @@
 	/// what color the ink is!
 	var/pen_color = "black"
 	var/on = TRUE
-	var/clicky = FALSE
 
 /obj/item/tool/pen/attack_self(mob/living/carbon/human/user)
 	..()
 	on = !on
 	to_chat(user, SPAN_WARNING("You click the pen [on? "on": "off"]."))
-	if(clicky)
-		playsound(user.loc, "sound/items/pen_click_[on? "on": "off"].ogg", 100, 1, 5)
+	playsound(user.loc, "sound/items/pen_click_[on? "on": "off"].ogg", 100, 1, 5)
 	update_pen_state()
 
 /obj/item/tool/pen/Initialize(mapload, ...)
@@ -260,48 +258,43 @@
 			to_chat(user, SPAN_NOTICE("You have successfully reset [target]'s name and description."))
 			obj_target.renamedByPlayer = FALSE
 
-/obj/item/tool/pen/clicky
-	desc = "It's a W-Y brand extra clicky black ink pen."
+/obj/item/tool/pen/weyyu
+	desc = "It's a W-Y brand black ink pen. The ink comes out smoothly without blots or smudges."
 	name = "WY pen"
-	clicky = TRUE
 
 /obj/item/tool/pen/blue
 	desc = "It's a normal blue ink pen."
 	item_state_slots = list(WEAR_AS_GARB = "pen_blue")
 	pen_color = "blue"
 
-/obj/item/tool/pen/blue/clicky
-	desc = "It's a W-Y brand extra clicky blue ink pen."
+/obj/item/tool/pen/blue/weyyu
+	desc = "It's a W-Y brand blue ink pen. The ink comes out smoothly without blots or smudges."
 	name = "WY blue pen"
-	clicky = TRUE
 
 /obj/item/tool/pen/red
 	desc = "It's a normal red ink pen."
 	item_state_slots = list(WEAR_AS_GARB = "pen_red")
 	pen_color = "red"
 
-/obj/item/tool/pen/red/clicky
-	desc = "It's a W-Y brand extra clicky red ink pen."
+/obj/item/tool/pen/red/weyyu
+	desc = "It's a W-Y brand red ink pen. The ink comes out smoothly without blots or smudges."
 	name = "WY red pen"
-	clicky = TRUE
 
 /obj/item/tool/pen/green
 	desc = "It's a normal green ink pen."
 	pen_color = "green"
 
-/obj/item/tool/pen/green/clicky
-	desc = "It's a W-Y brand extra clicky green ink pen."
+/obj/item/tool/pen/green/weyyu
+	desc = "It's a W-Y brand green ink pen. The ink comes out smoothly without blots or smudges."
 	name = "WY green pen"
-	clicky = TRUE
 
 /obj/item/tool/pen/white
 	desc = "It's a rare white ink pen."
 	pen_color = "white"
 
-/obj/item/tool/pen/white/clicky
-	desc = "It's a WY brand extra clicky white ink pen."
+/obj/item/tool/pen/white/weyyu
+	desc = "It's a WY brand white ink pen. The ink comes out smoothly without blots or smudges."
 	name = "WY white pen"
-	clicky = TRUE
 
 /obj/item/tool/pen/multicolor
 	name = "multicolor pen"
@@ -316,8 +309,7 @@
 	current_colour_index = (current_colour_index % length(colour_list)) + 1
 	pen_color = colour_list[current_colour_index]
 	balloon_alert(user,"you twist the pen and change the ink color to [pen_color].")
-	if(clicky)
-		playsound(user.loc, 'sound/items/pen_click_on.ogg', 100, 1, 5)
+	playsound(user.loc, 'sound/items/pen_click_on.ogg', 100, 1, 5)
 	update_pen_state()
 
 /obj/item/tool/pen/multicolor/fountain

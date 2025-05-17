@@ -14170,7 +14170,7 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 8
 	},
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/weyyu,
 /turf/open/floor/whitebluecorner,
 /area/lv624/lazarus/corporate_dome)
 "jpX" = (
@@ -14516,8 +14516,8 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 8
 	},
-/obj/item/tool/pen/clicky,
-/obj/item/tool/pen/red/clicky{
+/obj/item/tool/pen/weyyu,
+/obj/item/tool/pen/red/weyyu{
 	pixel_y = 6
 	},
 /turf/open/floor/whiteyellow/northeast,

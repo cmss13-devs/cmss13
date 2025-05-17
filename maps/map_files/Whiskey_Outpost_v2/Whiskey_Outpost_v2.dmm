@@ -4490,9 +4490,9 @@
 /area/whiskey_outpost/outside/north/northeast)
 "tp" = (
 /obj/structure/surface/table/almayer,
-/obj/item/tool/pen/blue/clicky,
-/obj/item/tool/pen/red/clicky,
-/obj/item/tool/pen/clicky,
+/obj/item/tool/pen/blue/weyyu,
+/obj/item/tool/pen/red/weyyu,
+/obj/item/tool/pen/weyyu,
 /obj/item/paper_bin/wy,
 /obj/item/folder/black_random{
 	pixel_x = 3;

@@ -412,7 +412,7 @@
 	pixel_x = -12;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/blue/clicky{
+/obj/item/tool/pen/blue/weyyu{
 	pixel_x = -14
 	},
 /turf/open/floor/almayer/uscm/directional/southwest,
@@ -524,7 +524,7 @@
 	pixel_x = 15;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = 13
 	},
 /turf/open/floor/almayer/red,
@@ -617,7 +617,7 @@
 	pixel_x = -12;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/green/clicky{
+/obj/item/tool/pen/green/weyyu{
 	pixel_x = -13
 	},
 /turf/open/floor/almayer/blue,
@@ -1222,7 +1222,7 @@
 	pixel_x = 15;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/green/clicky{
+/obj/item/tool/pen/green/weyyu{
 	pixel_x = 13
 	},
 /turf/open/floor/almayer/uscm/directional/northeast,
@@ -1915,7 +1915,7 @@
 	pixel_x = -14;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/green/clicky{
+/obj/item/tool/pen/green/weyyu{
 	pixel_x = -15
 	},
 /turf/open/floor/wood/ship,
@@ -2435,7 +2435,7 @@
 	pixel_x = -14;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/red/clicky{
+/obj/item/tool/pen/red/weyyu{
 	pixel_x = -15;
 	pixel_y = 2
 	},
@@ -3005,7 +3005,7 @@
 	pixel_x = -12;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = -13
 	},
 /turf/open/floor/almayer/uscm/directional/northwest,
@@ -3268,7 +3268,7 @@
 	pixel_x = 15;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/blue/clicky{
+/obj/item/tool/pen/blue/weyyu{
 	pixel_x = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -3579,7 +3579,7 @@
 	pixel_x = -13;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = -14
 	},
 /turf/open/floor/wood/ship,
@@ -4879,7 +4879,7 @@
 	pixel_x = -20;
 	pixel_y = 5
 	},
-/obj/item/tool/pen/clicky{
+/obj/item/tool/pen/weyyu{
 	pixel_x = -21
 	},
 /turf/open/floor/wood/ship,

@@ -95,7 +95,7 @@
 	if(istype(user.loc, /turf/open))
 		var/turf/open/OT = user.loc
 		var/area/area = get_area(user)
-		if(!OT.allow_construction || !area.allow_construction)
+		if(!OT.allow_construction || !area.allow_construction || !area.allow_barricade_construction)
 			to_chat(user, SPAN_WARNING("The sandbag barricade must be constructed on a proper surface!"))
 			return
 

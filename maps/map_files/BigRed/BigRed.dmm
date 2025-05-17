@@ -1406,6 +1406,9 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
+"afq" = (
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west,
+/area/bigredv2/outside/nw)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1510,6 +1513,10 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"afK" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1520,6 +1527,9 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
+"afN" = (
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1539,6 +1549,9 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
+"afR" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/nw)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -48903,10 +48916,10 @@ ahR
 aeI
 aeI
 aeI
-fWH
-aeI
-aeI
-aeI
+aoO
+afq
+afq
+ahQ
 aeI
 aeI
 ajz
@@ -49120,10 +49133,10 @@ ahR
 aeI
 aeI
 mZh
-aeI
-aeI
-aeI
-aeI
+ajy
+afN
+afK
+ahR
 aeI
 fWH
 aLZ
@@ -49337,10 +49350,10 @@ ahR
 nzX
 aeI
 aeI
-aeI
-aeI
-aeI
-aeI
+ajy
+afN
+afN
+ahR
 aeI
 aeI
 ajy
@@ -49554,10 +49567,10 @@ ahR
 aeI
 aeI
 aeI
-aeI
-aeI
-aeI
-aeI
+auF
+afR
+afR
+ahT
 aeI
 aeI
 ajy

@@ -11,6 +11,8 @@
 	bound_width = 64
 	bound_height = 64
 	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 
 	var/state = STATE_UNDEPLOYED
 	var/obj/structure/machinery/linked_weapon

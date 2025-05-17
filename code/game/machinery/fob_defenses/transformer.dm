@@ -13,9 +13,10 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	needs_power = FALSE
 	bound_height = 64
 	bound_width = 64
-	unslashable = TRUE
 	density = TRUE
 	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 
 	var/state = STATE_BROKEN
 	var/shutdown_timer

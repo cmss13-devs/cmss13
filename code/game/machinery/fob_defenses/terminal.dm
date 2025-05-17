@@ -11,6 +11,8 @@
 	bound_width = 32
 	bound_height = 64
 	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 
 	var/state = STATE_UNDEPLOYED
 

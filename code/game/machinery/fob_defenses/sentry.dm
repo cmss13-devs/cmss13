@@ -6,6 +6,9 @@
 	anchored = TRUE
 	bound_width = 64
 	bound_height = 32
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 
 	var/datum/shape/rectangle/square/range_bounds
 

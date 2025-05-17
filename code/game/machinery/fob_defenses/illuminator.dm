@@ -9,6 +9,9 @@
 	density = TRUE
 	anchored = TRUE
 	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	layer = ABOVE_MOB_LAYER
 
 	var/state = STATE_UNDEPLOYED
 	var/on_light_range = 18

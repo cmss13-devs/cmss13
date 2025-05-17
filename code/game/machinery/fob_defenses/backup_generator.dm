@@ -8,6 +8,9 @@
 	icon_state = "backup_generator"
 	icon = 'icons/obj/structures/machinery/fob_machinery/backup_generator.dmi'
 	density = TRUE
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 	var/has_power_remaining = TRUE
 	var/power_duration = 5 MINUTES
 	var/state = STATE_OFF

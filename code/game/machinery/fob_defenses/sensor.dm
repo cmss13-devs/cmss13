@@ -5,6 +5,9 @@
 	name = "sensor"
 	icon = 'icons/obj/structures/machinery/fob_machinery/sensor.dmi'
 	icon_state = "sensor"
+	explo_proof = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
 
 	var/datum/shape/rectangle/square/range_bounds
 	var/state = STATE_OFF

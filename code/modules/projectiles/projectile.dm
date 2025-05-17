@@ -829,6 +829,9 @@
 /obj/effect/alien/egg/get_projectile_hit_boolean(obj/projectile/P)
 	return src == P.original
 
+/obj/effect/neomorph/spore_sac/get_projectile_hit_boolean(obj/projectile/P)
+	return src == P.original
+
 /obj/effect/alien/resin/trap/get_projectile_hit_boolean(obj/projectile/P)
 	return src == P.original
 

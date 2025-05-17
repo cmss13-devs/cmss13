@@ -605,6 +605,8 @@
 		return FALSE
 	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST || HAS_TRAIT(moob, TRAIT_HAULED))
 		return FALSE
+	if(HAS_TRAIT(moob, TRAIT_INSIDE_VEHICLE))
+		return FALSE
 
 	var/mob/living/carbon/human/human_moob
 	if(ishuman(moob))
@@ -662,6 +664,8 @@
 	if(isyautja(moob) && prob(75))
 		return FALSE
 	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST || HAS_TRAIT(moob, TRAIT_HAULED))
+		return FALSE
+	if(HAS_TRAIT(moob, TRAIT_INSIDE_VEHICLE))
 		return FALSE
 
 	var/mob/living/carbon/human/human_moob

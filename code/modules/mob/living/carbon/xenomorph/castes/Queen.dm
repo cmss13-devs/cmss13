@@ -468,13 +468,13 @@
 			if(XENO_NORMAL)
 				name = "[name_prefix]Queen"  //Regular
 			if(XENO_MATURE)
-				name = "[name_prefix]Elder Queen"  //Mature
+				name = "[name_prefix]Empress"  //Mature
 			if(XENO_ELDER)
 				name = "[name_prefix]Elder Empress"  //Elite
 			if(XENO_ANCIENT)
-				name = "[name_prefix]Ancient Empress" //Ancient
+				name = "[name_prefix]Ancient Empress"  //Ancient
 			if(XENO_PRIME)
-				name = "[name_prefix]Prime Empress" //Primordial
+				name = "[name_prefix]Prime Empress" //Prime
 	else
 		age = XENO_NORMAL
 		if(client)

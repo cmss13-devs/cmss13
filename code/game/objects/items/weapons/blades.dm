@@ -346,7 +346,7 @@
 
 	var/new_beard_style
 	var/new_hair_style
-	if(human_user.gender == MALE)
+	if(human_user.species)
 		new_beard_style = tgui_input_list(human_user, "Select a facial hair style", "Grooming", species_facial_hair)
 	new_hair_style = tgui_input_list(human_user, "Select a hair style", "Grooming", species_hair)
 

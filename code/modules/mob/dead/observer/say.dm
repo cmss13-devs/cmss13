@@ -57,11 +57,12 @@
 			track += "(<a href='byond://?src=\ref[src];track=\ref[queen_eye]'>E</a>) "
 	if(client && client.prefs && client.prefs.toggles_chat & CHAT_GHOSTEARS && speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size)
 		message = "<b>[message]</b>"
-		speaker.cast_tts(src, message) // SS220 ADDITION
 
 	// BANDAMARINES EDIT START
 	if(speaker_name == speaker.name)
 		speaker_name = speaker.declent_ru(NOMINATIVE)
+	if(speaker.z == z && get_dist(speaker, src) <= GLOB.world_view_size)
+		speaker.cast_tts(src, message)
 	// BANDAMARINES EDIT END
 
 	to_chat(src, "<span class='game say'><span class='name'>[comm_paygrade][speaker_name]</span>[alt_name] [track][ru_say_verb(verb)], <span class='message'><span class='[style]'>\"[message]\"</span></span></span>")

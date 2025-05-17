@@ -150,6 +150,7 @@
 #define SS_INIT_PLAYTIME   -29
 #define SS_INIT_STICKY -30
 #define SS_INIT_OBJECTIVES -32
+#define SS_INIT_SENSORS -33
 #define SS_INIT_MINIMAP    -34
 #define SS_INIT_STATPANELS -98
 #define SS_INIT_CHAT    -100 //Should be last to ensure chat remains smooth during init.

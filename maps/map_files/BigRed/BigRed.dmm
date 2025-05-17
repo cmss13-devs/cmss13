@@ -1337,11 +1337,8 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "afe" = (
-/obj/structure/sign/calendar/wy{
-	pixel_y = 30
-	},
-/turf/open/floor/wood,
-/area/bigredv2/caves/lambda/breakroom)
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west,
+/area/bigredv2/outside/nw)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1353,11 +1350,9 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "afh" = (
-/obj/structure/sign/calendar{
-	pixel_y = 30
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/telecomm)
+/obj/structure/machinery/transformer,
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1396,16 +1391,15 @@
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afo" = (
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
+"afp" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/nw)
+"afq" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/space_port_lz2)
-"afp" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidwarning/west,
-/area/bigredv2/outside/space_port)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1510,6 +1504,12 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"afK" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1520,6 +1520,12 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
+"afN" = (
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/telecomm)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1539,6 +1545,13 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
+"afR" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/space_port)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -41048,7 +41061,7 @@ acA
 aas
 aas
 acQ
-afh
+afN
 ade
 ade
 aeb
@@ -46470,7 +46483,7 @@ aaT
 aap
 aav
 aaG
-afp
+afR
 aap
 aav
 aaG
@@ -46984,7 +46997,7 @@ beP
 beP
 aSB
 tVp
-afo
+afq
 tVp
 tVp
 bgX
@@ -48903,10 +48916,10 @@ ahR
 aeI
 aeI
 aeI
-fWH
-aeI
-aeI
-aeI
+aoO
+afe
+afe
+ahQ
 aeI
 aeI
 ajz
@@ -49120,10 +49133,10 @@ ahR
 aeI
 aeI
 mZh
-aeI
-aeI
-aeI
-aeI
+ajy
+afo
+afh
+ahR
 aeI
 fWH
 aLZ
@@ -49337,10 +49350,10 @@ ahR
 nzX
 aeI
 aeI
-aeI
-aeI
-aeI
-aeI
+ajy
+afo
+afo
+ahR
 aeI
 aeI
 ajy
@@ -49554,10 +49567,10 @@ ahR
 aeI
 aeI
 aeI
-aeI
-aeI
-aeI
-aeI
+auF
+afp
+afp
+ahT
 aeI
 aeI
 ajy
@@ -76229,7 +76242,7 @@ arG
 ara
 atf
 amk
-afe
+afK
 aqc
 ass
 aqc

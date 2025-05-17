@@ -1,0 +1,233 @@
+#define STATE_UNDEPLOYED "undeployed"
+#define STATE_ON "on"
+#define STATE_OFF "off"
+
+/obj/structure/machinery/weapons_platform
+	name = "weapons platform"
+	icon = 'icons/obj/structures/machinery/fob_machinery/weapons_platform.dmi'
+	icon_state = "platform_undeployed"
+	density = TRUE
+	anchored = TRUE
+	bound_width = 64
+	bound_height = 64
+	explo_proof = TRUE
+
+	var/state = STATE_UNDEPLOYED
+	var/obj/structure/machinery/linked_weapon
+
+/obj/structure/machinery/weapons_platform/Initialize(mapload, ...)
+	. = ..()
+
+	AddComponent(/datum/component/fob_defense, CALLBACK(src, PROC_REF(turn_on)), CALLBACK(src, PROC_REF(turn_off)))
+
+/obj/structure/machinery/weapons_platform/proc/turn_off()
+	if(state == STATE_ON)
+		state = STATE_OFF
+		update_icon()
+		if(istype(linked_weapon, /obj/structure/machinery/rocket_launcher))
+			linked_weapon?.icon_state = "rocket_launcher_off"
+
+/obj/structure/machinery/weapons_platform/proc/turn_on()
+	if(state == STATE_OFF)
+		state = STATE_ON
+		update_icon()
+		if(istype(linked_weapon, /obj/structure/machinery/rocket_launcher))
+			linked_weapon?.icon_state = "rocket_launcher"
+		START_PROCESSING(SSobj, src)
+
+/obj/rocket_animation_holder
+	name = "rocket"
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
+	icon_state = "missile"
+	layer = ABOVE_MOB_LAYER
+
+/obj/rocket_animation_holder/Initialize(mapload, index)
+	var/barrel = index % 4
+
+	switch (barrel)
+		if(0)
+			pixel_x = 32
+			pixel_y = 55
+		if(1)
+			pixel_x = 38
+			pixel_y = 55
+		if(2)
+			pixel_x = 32
+			pixel_y = 51
+		if(3)
+			pixel_x = 38
+			pixel_y = 51
+
+/obj/structure/machinery/weapons_platform/process(delta_time)
+	if(state != STATE_ON)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(istype(linked_weapon, /obj/structure/machinery/rocket_launcher))
+		if(!SSsensors.targets)
+			return
+
+		var/index = 0
+		for(var/mob/living/carbon/xenomorph/target in SSsensors.targets)
+			index++
+			if(target.get_target_lock(FACTION_LIST_MARINE))
+				continue
+
+			if(target.stat == DEAD)
+				continue
+
+			var/obj/rocket_animation_holder/holder = new(loc, index)
+			animate(holder, pixel_y = 256, easing = CUBIC_EASING|EASE_IN, time = 3 SECONDS)
+			QDEL_IN(holder, 3 SECONDS)
+			playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 40, TRUE, 10)
+			addtimer(CALLBACK(src, PROC_REF(fire_at), target), 3 SECONDS)
+	else if (istype(linked_weapon, /obj/structure/machinery/sentry))
+		var/obj/structure/machinery/sentry/weapon = linked_weapon
+		var/list/mob/targets = SSquadtree.players_in_range(weapon.range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+
+		for(var/mob/target in targets)
+			if(ishuman(target))
+				targets.Remove(target)
+				continue
+
+			if(isliving(target))
+				var/mob/living/living_mob = target
+				if(living_mob.stat & DEAD)
+					targets.Remove(living_mob)
+					continue
+
+				if(living_mob.get_target_lock(FACTION_LIST_MARINE) || living_mob.invisibility || HAS_TRAIT(living_mob, TRAIT_ABILITY_BURROWED) || living_mob.is_ventcrawling)
+					targets.Remove(living_mob)
+					continue
+
+			var/list/turf/path = get_line(src, target, include_start_atom = FALSE)
+			if(!length(path))
+				targets.Remove(target)
+				continue
+
+			var/blocked = FALSE
+			for(var/turf/cur_turf in path)
+				if(cur_turf.density || cur_turf.opacity)
+					blocked = TRUE
+					break
+
+				for(var/obj/structure/cur_structure in cur_turf)
+					if(cur_structure.opacity)
+						blocked = TRUE
+						break
+
+				for(var/obj/vehicle/multitile/cur_vehicle in cur_turf)
+					blocked = TRUE
+					break
+
+				for(var/obj/effect/particle_effect/smoke/smoke in cur_turf)
+					blocked = TRUE
+					break
+
+			if(blocked)
+				targets.Remove(target)
+				continue
+
+		var/mob/target = pick(targets)
+
+		if(!target)
+			return
+
+		fire_at(target)
+
+/obj/structure/machinery/weapons_platform/proc/fire_at(mob/living/carbon/xenomorph/target)
+	if(istype(linked_weapon, /obj/structure/machinery/rocket_launcher))
+		new /obj/effect/warning/explosive(get_turf(target), 0.2 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), get_turf(target), 199, 150), 0.2 SECONDS)
+	else
+		linked_weapon.dir = get_dir(src, target)
+		update_icon()
+		var/obj/projectile/proj = new
+		proj.generate_bullet(/datum/ammo/bullet/turret/fob, 0, 0, src)
+		proj.fire_at(target, src, src, proj.ammo.max_range, proj.ammo.shell_speed)
+
+/obj/structure/machinery/weapons_platform/attackby(obj/item/attack_item, mob/user)
+	if(istype(attack_item, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/clamp = attack_item
+		if(!clamp.loaded && state == STATE_UNDEPLOYED)
+			clamp.grab_object(user, src, "ds_gear", 'sound/machines/hydraulics_1.ogg')
+			return
+
+	switch (state)
+		if(STATE_UNDEPLOYED)
+			if(!HAS_TRAIT(attack_item, TRAIT_TOOL_WRENCH))
+				return
+
+			var/area/current_area = get_area(src)
+			if(!current_area.is_landing_zone)
+				to_chat(user, SPAN_WARNING("[src] can only be deployed at the landing zone."))
+				return
+
+			to_chat(user, SPAN_INFO("You start deploying [src]."))
+			if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+				to_chat(user, SPAN_WARNING("You were interrupted."))
+				return
+
+			to_chat(user, SPAN_INFO("You deploy [src]."))
+
+			if(GLOB.transformer.is_active())
+				state = STATE_ON
+			else
+				state = STATE_OFF
+			update_icon()
+		if(STATE_ON, STATE_OFF)
+			if(HAS_TRAIT(attack_item, TRAIT_TOOL_WRENCH))
+				to_chat(user, SPAN_INFO("You start folding [src]."))
+				if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+					to_chat(user, SPAN_WARNING("You were interrupted."))
+					return
+
+				to_chat(user, SPAN_INFO("You folding [src]."))
+
+				state = STATE_UNDEPLOYED
+				update_icon()
+
+			if(linked_weapon)
+				return
+
+			if(!istype(attack_item, /obj/item/powerloader_clamp))
+				return
+
+			var/obj/item/powerloader_clamp/clamp = attack_item
+
+			if(!istype(clamp.loaded, /obj/structure/machinery/rocket_launcher) && !istype(clamp.loaded, /obj/structure/machinery/sentry))
+				return
+
+			var/obj/structure/machinery/weapon = clamp.loaded
+			clamp.loaded = null
+			clamp.update_icon()
+			weapon.forceMove(src)
+			linked_weapon = weapon
+			if(istype(weapon, /obj/structure/machinery/sentry))
+				weapon.icon_state = "sentry"
+			else
+				weapon.icon_state = "rocket_launcher"
+			START_PROCESSING(SSobj, src)
+			update_icon()
+
+/obj/structure/machinery/weapons_platform/update_icon()
+	overlays.Cut()
+
+	switch (state)
+		if(STATE_UNDEPLOYED)
+			icon_state = "platform_undeployed"
+		if(STATE_ON)
+			icon_state = "platform"
+		if(STATE_OFF)
+			icon_state = "platform_off"
+
+	switch (state)
+		if(STATE_ON, STATE_OFF)
+			if(!linked_weapon)
+				return
+
+			overlays += image(linked_weapon.icon, linked_weapon.icon_state, dir = linked_weapon.dir)
+
+#undef STATE_UNDEPLOYED
+#undef STATE_ON
+#undef STATE_OFF

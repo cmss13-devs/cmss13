@@ -14,6 +14,7 @@
 //Jungle
 /area/lv624/ground/jungle
 	minimap_color = MINIMAP_AREA_JUNGLE
+	hangable = TRUE
 
 /area/lv624/ground/jungle/south_east_jungle
 	name ="\improper Southeast Jungle"

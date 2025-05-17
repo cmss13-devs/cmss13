@@ -80,3 +80,7 @@
 		GLOB.transformer.backup = null
 
 	. = ..()
+
+#undef STATE_ON
+#undef STATE_OFF
+#undef STATE_DEPLETED

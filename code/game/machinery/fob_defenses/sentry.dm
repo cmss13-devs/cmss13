@@ -12,6 +12,8 @@
 /obj/structure/machinery/sentry/Initialize(mapload, ...)
 	range_bounds = SQUARE(x, y, 15)
 
+	. = ..()
+
 /obj/structure/machinery/sentry/attackby(obj/item/attack_item, mob/user)
 	if(istype(attack_item, /obj/item/powerloader_clamp))
 		var/obj/item/powerloader_clamp/clamp = attack_item

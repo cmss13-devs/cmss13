@@ -58,6 +58,8 @@
 			pixel_x = 38
 			pixel_y = 51
 
+	. = ..()
+
 /obj/structure/machinery/weapons_platform/process(delta_time)
 	if(state != STATE_ON)
 		STOP_PROCESSING(SSobj, src)

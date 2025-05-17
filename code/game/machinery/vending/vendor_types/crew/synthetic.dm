@@ -92,10 +92,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/synth, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
-		list("Uniform, Outdated Synth", 0, /obj/item/clothing/under/rank/synthetic/old, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("Uniform, Standard Synth", 0, /obj/item/clothing/under/rank/synthetic, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("USCM Standard Uniform", 0, /obj/item/clothing/under/marine, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-		list("USCM Medical Uniform", 0, /obj/item/clothing/under/marine/medic, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 
 		list("WEBBING (CHOOSE 1)", 0, null, null, null),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
@@ -107,11 +104,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("SHOES (CHOOSE 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 		list("Shoes, White", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
-
-		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Expedition Cap", 0, /obj/item/clothing/head/cmcap/flap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("Hard Hat, Orange", 0, /obj/item/clothing/head/hardhat/orange, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-		list("Welding Helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("SUIT (CHOOSE 1)", 0, null, null, null),
 		list("M3A1 Pattern Synthetic Utility Vest (Mission-Specific Camo)", 0, /obj/item/clothing/suit/storage/marine/light/synvest, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_RECOMMENDED),
@@ -210,6 +202,15 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/medical_grey
 	path = /obj/item/clothing/under/rank/medical/grey
 
+/datum/gear/synthetic/uscm/standard_synth
+	path = /obj/item/clothing/under/rank/synthetic
+
+/datum/gear/synthetic/uscm/standard_synth_old
+	path = /obj/item/clothing/under/rank/synthetic/old
+
+/datum/gear/synthetic/uscm/generic_synth
+	path = /obj/item/clothing/under/marine
+
 /datum/gear/synthetic/uscm/service_tan
 	path = /obj/item/clothing/under/marine/officer/bridge
 
@@ -225,11 +226,20 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/engineer_officer
 	path = /obj/item/clothing/under/marine/officer/engi
 
+/datum/gear/synthetic/uscm/engineer_OT
+	path = /obj/item/clothing/under/marine/officer/engi/OT
+
+/datum/gear/synthetic/uscm/corpsman
+	path = /obj/item/clothing/under/marine/medic
+
 /datum/gear/synthetic/uscm/mp
 	path = /obj/item/clothing/under/marine/mp/standard
 
 /datum/gear/synthetic/uscm/mp_dark
 	path = /obj/item/clothing/under/marine/mp/darker
+
+/datum/gear/synthetic/uscm/operations_uniform
+	path = /obj/item/clothing/under/marine/officer/boiler
 
 /datum/gear/synthetic/civilian
 	category = "Civilian Uniforms"
@@ -279,17 +289,61 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/civilian/white_suit_pants
 	path = /obj/item/clothing/under/liaison_suit/corporate_formal
 
+/datum/gear/synthetic/civilian/grey_suit_pants
+	path = /obj/item/clothing/under/detective/grey
+
+/datum/gear/synthetic/civilian/alt_brown_suit_pants
+	path = /obj/item/clothing/under/detective/neutral
+
 /datum/gear/synthetic/glasses
 	category = "Glasses"
 
 /datum/gear/synthetic/glasses/marine_rpg
 	path = /obj/item/clothing/glasses/regular
 
+/datum/gear/synthetic/glasses/reagent_scanner
+	path = /obj/item/clothing/glasses/science
+
+
 /datum/gear/synthetic/glasses/security_hud
 	path = /obj/item/clothing/glasses/sunglasses/sechud
 
 /datum/gear/synthetic/glasses/sunglasses
 	path = /obj/item/clothing/glasses/sunglasses
+
+/datum/gear/synthetic/glasses/sunglasses_aviator_tan
+	path = /obj/item/clothing/glasses/sunglasses/aviator
+
+/datum/gear/synthetic/glasses/sunglasses_aviator_silver
+	path = /obj/item/clothing/glasses/sunglasses/aviator/silver
+
+/datum/gear/synthetic/glasses/bimex
+	path = /obj/item/clothing/glasses/sunglasses/big
+
+/datum/gear/synthetic/glasses/bimex_new
+	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex
+
+/datum/gear/synthetic/glasses/bimex_new_black
+	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/black
+
+/datum/gear/synthetic/glasses/bimex_new_bronze
+	path = /obj/item/clothing/glasses/sunglasses/big/new_bimex/bronze
+
+/datum/gear/synthetic/glasses/fake_bimex_red
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/red
+
+/datum/gear/synthetic/glasses/fake_bimex_orange
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/orange
+
+/datum/gear/synthetic/glasses/fake_bimex_yellow
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/yellow
+
+/datum/gear/synthetic/glasses/fake_bimex_green
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/green
+
+/datum/gear/synthetic/glasses/fake_bimex_blue
+	path = /obj/item/clothing/glasses/sunglasses/big/fake/blue
+
 
 /datum/gear/synthetic/shoes
 	category = "Shoes"
@@ -324,6 +378,24 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear/beanie
 	path = /obj/item/clothing/head/beanie
 
+/datum/gear/synthetic/headwear/hardhat_yellow
+	path = /obj/item/clothing/head/hardhat
+
+/datum/gear/synthetic/headwear/hardhat_yellow
+	path = /obj/item/clothing/head/hardhat
+
+/datum/gear/synthetic/headwear/hardhat_orange
+	path = /obj/item/clothing/head/hardhat/orange
+
+/datum/gear/synthetic/headwear/hardhat_white
+	path = /obj/item/clothing/head/hardhat/white
+
+/datum/gear/synthetic/headwear/hardhat_blue
+	path = /obj/item/clothing/head/hardhat/dblue
+
+/datum/gear/synthetic/headwear/welding_helmet
+	path = /obj/item/clothing/head/welding
+
 /datum/gear/synthetic/headwear/beret_engineering
 	path = /obj/item/clothing/head/beret/eng
 
@@ -348,6 +420,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear/cap
 	path = /obj/item/clothing/head/cmcap
 
+/datum/gear/synthetic/headwear/cap
+	path = /obj/item/clothing/head/cmcap/flap
+
 /datum/gear/synthetic/headwear/mp_cap
 	path = /obj/item/clothing/head/beret/marine/mp/mpcap
 
@@ -360,8 +435,20 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear/officer_cap
 	path = /obj/item/clothing/head/cmcap/bridge
 
-/datum/gear/synthetic/headwear/fedora
+/datum/gear/synthetic/headwear/fedora_tan
+	path = /obj/item/clothing/head/fedora
+
+/datum/gear/synthetic/headwear/fedora_grey
 	path = /obj/item/clothing/head/fedora/grey
+
+/datum/gear/synthetic/headwear/fedora_brown
+	path = /obj/item/clothing/head/fedora/brown
+
+/datum/gear/synthetic/headwear/trucker_blue
+	path = /obj/item/clothing/head/soft/trucker
+
+/datum/gear/synthetic/headwear/trucker_red
+	path = /obj/item/clothing/head/soft/trucker/red
 
 /datum/gear/synthetic/helmet
 	category = "Helmet"
@@ -426,8 +513,17 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/suit/bomber
 	path = /obj/item/clothing/suit/storage/bomber
 
+/datum/gear/synthetic/suit/grey_bomber
+	path = /obj/item/clothing/suit/storage/jacket/marine/bomber/grey
+
+/datum/gear/synthetic/suit/red_bomber
+	path = /obj/item/clothing/suit/storage/jacket/marine/bomber/red
+
 /datum/gear/synthetic/suit/bomber_alt
 	path = /obj/item/clothing/suit/storage/bomber/alt
+
+/datum/gear/synthetic/suit/khaki_bomber
+	path = /obj/item/clothing/suit/storage/jacket/marine/bomber
 
 /datum/gear/synthetic/suit/webbing
 	path = /obj/item/clothing/suit/storage/webbing
@@ -437,6 +533,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/suit/hazardvest
 	path = /obj/item/clothing/suit/storage/hazardvest
+
+/datum/gear/synthetic/suit/hazardvest_hivis
+	path = /obj/item/clothing/suit/storage/hazardvest/sanitation
 
 /datum/gear/synthetic/suit/hazardvest_blue
 	path = /obj/item/clothing/suit/storage/hazardvest/blue
@@ -494,6 +593,24 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/suit/vest_gray
 	path = /obj/item/clothing/suit/storage/jacket/marine/vest/grey
+
+/datum/gear/synthetic/suit/tan_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat
+
+/datum/gear/synthetic/suit/brown_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat/brown
+
+/datum/gear/synthetic/suit/grey_trenchcoat
+	path = /obj/item/clothing/suit/storage/CMB/trenchcoat/grey
+
+/datum/gear/synthetic/suit/blue_overalls
+	path = /obj/item/clothing/suit/storage/apron/overalls
+
+/datum/gear/synthetic/suit/tan_overalls
+	path = /obj/item/clothing/suit/storage/apron/overalls/tan
+
+/datum/gear/synthetic/suit/red_overalls
+	path = /obj/item/clothing/suit/storage/apron/overalls/red
 
 /datum/gear/synthetic/backpack
 	category = "Backpack"
@@ -554,7 +671,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/dress_gloves
 	path = /obj/item/clothing/gloves/marine/dress
-
 
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools

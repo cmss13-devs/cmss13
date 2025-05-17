@@ -260,14 +260,12 @@
 
 /// Additional effects to apply even if we don't hit anything
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
-	var/mob/living/carbon/xenomorph/xeno = owner
 	return
 
 /**
  * Effects to apply *immediately* before pouncing.
  */
 /datum/action/xeno_action/activable/pounce/proc/pre_pounce_effects()
-	var/mob/living/carbon/xenomorph/xeno = owner
 	return
 
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()

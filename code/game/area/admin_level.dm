@@ -142,6 +142,10 @@
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	icon_state = "yellow"
 
+/area/adminlevel/ert_station/soalar_devils_station
+	name = "USS Golden Arrow"
+	icon_state = "yellow"
+
 //Fax Responder areas
 /area/adminlevel/ert_station/fax_response_station
 	name = "Sector Comms Relay"

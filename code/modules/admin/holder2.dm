@@ -44,14 +44,20 @@ GLOBAL_PROTECT(href_token)
 		return FALSE
 	return ..()
 
-/datum/admins/proc/associate(client/C)
-	if(istype(C))
-		owner = C
-		owner.admin_holder = src
-		owner.add_admin_verbs()
-		owner.tgui_say.load()
-		owner.update_special_keybinds()
-		GLOB.admins |= C
+/datum/admins/proc/associate(client/C, force = FALSE)
+	if(!istype(C))
+		return
+
+	if((rights & ~(RL_HARMLESS)) && !force && !check_or_create_twofactor_request(C))
+		addtimer(CALLBACK(src, PROC_REF(associate), C, FALSE), 3 SECONDS)
+		return
+
+	owner = C
+	owner.admin_holder = src
+	owner.add_admin_verbs()
+	owner.tgui_say.load()
+	owner.update_special_keybinds()
+	GLOB.admins |= C
 
 /datum/admins/proc/disassociate()
 	if(owner)

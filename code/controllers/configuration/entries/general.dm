@@ -680,3 +680,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/repo_name
 
 /datum/config_entry/string/org
+
+/datum/config_entry/string/twofactor_admins_url
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN

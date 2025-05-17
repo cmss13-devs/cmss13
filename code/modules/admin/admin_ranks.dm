@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	var/datum/admins/D = new /datum/admins(rank, rights, ckey, extra_titles)
 
 	//find the client for a ckey if they are connected and associate them with the new admin datum
-	D.associate(GLOB.directory[ckey])
+	INVOKE_ASYNC(D, TYPE_PROC_REF(/datum/admins, associate), GLOB.directory[ckey])
 
 /*
 #ifdef TESTING

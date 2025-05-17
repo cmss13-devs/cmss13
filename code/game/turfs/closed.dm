@@ -31,8 +31,27 @@
 		return
 
 	user.visible_message(SPAN_WARNING("[user] starts climbing up [src]."), SPAN_WARNING("You start climbing up [src]."))
+	var/climb_up_time = 1 SECONDS
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		climb_up_time = 1.5 SECONDS
+		if(xeno.mob_size >= MOB_SIZE_BIG)
+			climb_up_time = 5 SECONDS
 
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(ishuman(user))
+		climb_up_time = 7 SECONDS
+		if(istype(src,/turf/closed/wall))
+			var/turf/closed/wall/wall = src
+			if(length(wall.hiding_humans))
+				var/human
+				for(var/mob/living/boosting_human in wall.hiding_humans)
+					if(boosting_human.loc == user.loc)
+						human = boosting_human
+						break
+				if(human)
+					climb_up_time = 3 SECONDS
+					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
+	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 

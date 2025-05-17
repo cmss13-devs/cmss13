@@ -12992,7 +12992,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhL" = (
-/obj/item/stack/repairable/gunlube,
+/obj/item/prop/helmetgarb/gunoil,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhT" = (

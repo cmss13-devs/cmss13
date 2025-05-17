@@ -2,14 +2,17 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pounce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 6 SECONDS
+	xeno_cooldown = 7 SECONDS
 	plasma_cost = 20
 
 	// Config options
-	knockdown = FALSE
-	knockdown_duration = 2.5
-	freeze_time = 15
+	knockdown = TRUE
+	freeze_self = TRUE
+	knockdown_duration = 1 // increased to 2.5 by cloak pouncing
+	freeze_time = 5 // increased to 15 by cloak pouncing
 	can_be_shield_blocked = TRUE
+	throw_speed = SPEED_FAST // increased to VERYFAST by cloak pouncing
+
 
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"
@@ -22,8 +25,12 @@
 	var/duration = 30 SECONDS // 30 seconds base
 	var/invis_timer_id = TIMER_ID_NULL
 	var/alpha_amount = 25
+	/// The alpha at which the cloak is forced to end
+	var/decloak_amount = 100
+	var/cloak_damage = 0
 	var/speed_buff = 0.20
-
+	/// how long the speedbuff from invisiblity lasts after pounce/cloak being damaged
+	var/lingering_speed_buff = 4 SECONDS
 // tightly coupled 'buff next slash' action
 /datum/action/xeno_action/onclick/lurker_assassinate
 	name = "Crippling Strike"

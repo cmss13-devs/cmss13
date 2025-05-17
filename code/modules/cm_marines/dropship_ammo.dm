@@ -214,7 +214,7 @@
 	point_cost = 325
 	fire_mission_delay = 2
 	shrapnel_type = /datum/ammo/bullet/shrapnel/gau/at
-	directhit_damage = 55 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
+	directhit_damage = 50 //how much damage is to be inflicted to a mob, this is here so that we can hit resting mobs.
 	penetration = 40 //AP value pretty much
 
 //laser battery

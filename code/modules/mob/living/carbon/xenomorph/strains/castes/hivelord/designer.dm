@@ -542,9 +542,8 @@
 	if(T)
 		visible_message(SPAN_ALERT("The weedbound wall collapses into a puddle of sticky slime."))
 		var/type_path = /obj/effect/alien/resin/sticky/weak_nutriplasm
-		if(istype(src, /turf/closed/wall/resin/weedbound/thick))
+		if(istype(src, /turf/closed/wall/resin/weedbound/thick) || istype(src, /obj/structure/mineral_door/resin/weedbound/thick))
 			type_path = /obj/effect/alien/resin/sticky/strong_nutriplasm
-
 		new type_path(T)
 
 	return ..()

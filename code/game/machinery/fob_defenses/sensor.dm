@@ -22,7 +22,7 @@
 		state = STATE_ON
 		SSsensors.sensors |= src
 
-/obj/structure/machinery/sensor/proc/attackby(obj/item/attack_item, mob/user)
+/obj/structure/machinery/sensor/attackby(obj/item/attack_item, mob/user)
 	if(!HAS_TRAIT(attack_item, TRAIT_TOOL_WRENCH))
 		return
 

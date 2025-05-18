@@ -22,6 +22,13 @@
 		state = STATE_ON
 		SSsensors.sensors |= src
 
+/obj/structure/machinery/sensor/proc/attackby(obj/item/attack_item, mob/user)
+	if(!HAS_TRAIT(attack_item, TRAIT_TOOL_WRENCH))
+		return
+
+	new /obj/item/sensor(get_turf(src))
+	qdel(src)
+
 /obj/structure/machinery/sensor/Initialize(mapload, ...)
 	range_bounds = SQUARE(x, y, 15)
 

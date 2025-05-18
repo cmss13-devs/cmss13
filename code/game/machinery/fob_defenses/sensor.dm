@@ -8,7 +8,7 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-
+	needs_power = FALSE
 	var/datum/shape/rectangle/square/range_bounds
 	var/state = STATE_OFF
 

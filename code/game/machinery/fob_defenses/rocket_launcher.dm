@@ -7,6 +7,7 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+	needs_power = FALSE
 	bound_width = 64
 	bound_height = 32
 	pixel_y = -16

@@ -13,7 +13,7 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-
+	needs_power = FALSE
 	var/state = STATE_UNDEPLOYED
 	var/obj/structure/machinery/linked_weapon
 
@@ -77,7 +77,7 @@
 			if(target.get_target_lock(FACTION_LIST_MARINE))
 				continue
 
-			if(target.stat == DEAD)
+			if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_ABILITY_BURROWED) || target.is_ventcrawling)
 				continue
 
 			var/obj/rocket_animation_holder/holder = new(loc, index)
@@ -180,39 +180,51 @@
 				state = STATE_OFF
 			update_icon()
 		if(STATE_ON, STATE_OFF)
-			if(HAS_TRAIT(attack_item, TRAIT_TOOL_WRENCH))
-				to_chat(user, SPAN_INFO("You start folding [src]."))
-				if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
-					to_chat(user, SPAN_WARNING("You were interrupted."))
+			if(linked_weapon)
+				if(!istype(attack_item, /obj/item/powerloader_clamp))
 					return
 
-				to_chat(user, SPAN_INFO("You folding [src]."))
+				var/obj/item/powerloader_clamp/clamp = attack_item
 
-				state = STATE_UNDEPLOYED
+				if(clamp.loaded)
+					return
+
+				clamp.grab_object(user, linked_weapon, "ds_gear", 'sound/machines/hydraulics_1.ogg')
+				linked_weapon = null
+				STOP_PROCESSING(SSobj, src)
 				update_icon()
-
-			if(linked_weapon)
-				return
-
-			if(!istype(attack_item, /obj/item/powerloader_clamp))
-				return
-
-			var/obj/item/powerloader_clamp/clamp = attack_item
-
-			if(!istype(clamp.loaded, /obj/structure/machinery/rocket_launcher) && !istype(clamp.loaded, /obj/structure/machinery/sentry))
-				return
-
-			var/obj/structure/machinery/weapon = clamp.loaded
-			clamp.loaded = null
-			clamp.update_icon()
-			weapon.forceMove(src)
-			linked_weapon = weapon
-			if(istype(weapon, /obj/structure/machinery/sentry))
-				weapon.icon_state = "sentry"
 			else
-				weapon.icon_state = "rocket_launcher"
-			START_PROCESSING(SSobj, src)
-			update_icon()
+				if(HAS_TRAIT(attack_item, TRAIT_TOOL_WRENCH))
+					to_chat(user, SPAN_INFO("You start folding [src]."))
+					if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
+						to_chat(user, SPAN_WARNING("You were interrupted."))
+						return
+
+					to_chat(user, SPAN_INFO("You folding [src]."))
+
+					state = STATE_UNDEPLOYED
+					update_icon()
+					return
+
+				if(!istype(attack_item, /obj/item/powerloader_clamp))
+					return
+
+				var/obj/item/powerloader_clamp/clamp = attack_item
+
+				if(!istype(clamp.loaded, /obj/structure/machinery/rocket_launcher) && !istype(clamp.loaded, /obj/structure/machinery/sentry))
+					return
+
+				var/obj/structure/machinery/weapon = clamp.loaded
+				clamp.loaded = null
+				clamp.update_icon()
+				weapon.forceMove(src)
+				linked_weapon = weapon
+				if(istype(weapon, /obj/structure/machinery/sentry))
+					weapon.icon_state = "sentry"
+				else
+					weapon.icon_state = "rocket_launcher"
+				START_PROCESSING(SSobj, src)
+				update_icon()
 
 /obj/structure/machinery/weapons_platform/update_icon()
 	overlays.Cut()

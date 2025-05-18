@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 	basestate = "fence"
 	throwpass = TRUE
 	unacidable = TRUE
-
+	explo_proof = TRUE
 	var/state = STATE_OFF
 
 /obj/structure/fence/fob/Initialize(mapload, ...)

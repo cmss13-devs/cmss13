@@ -13,7 +13,7 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-
+	needs_power = FALSE
 	var/state = STATE_UNDEPLOYED
 
 /obj/structure/machinery/terminal/Initialize(mapload, ...)

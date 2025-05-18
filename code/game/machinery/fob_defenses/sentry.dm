@@ -9,7 +9,7 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
-
+	needs_power = FALSE
 	var/datum/shape/rectangle/square/range_bounds
 
 /obj/structure/machinery/sentry/Initialize(mapload, ...)

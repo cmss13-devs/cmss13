@@ -118,6 +118,9 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 
+	if(state != STATE_BROKEN)
+		return
+
 	if(!welder.remove_fuel(1, user))
 		return
 

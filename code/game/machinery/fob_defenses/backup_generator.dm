@@ -11,6 +11,7 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+	needs_power = FALSE
 	var/has_power_remaining = TRUE
 	var/power_duration = 5 MINUTES
 	var/state = STATE_OFF
@@ -68,6 +69,14 @@
 	GLOB.transformer.backup = null
 	if(!GLOB.transformer.is_active())
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_OFF)
+
+	marine_announcement("Power Alert: \nBackup generator offline.", "ARES Power Grid Monitor")
+	var/datum/hive_status/hive
+	for(var/cur_hive_num in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_hive_num]
+		if(!length(hive.totalXenos))
+			continue
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have ran out of backup power!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /obj/structure/machinery/backup_generator/update_icon()
 	switch(state)

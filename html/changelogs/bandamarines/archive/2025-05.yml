@@ -8,3 +8,10 @@
   Poslushneek:
   - rscadd: Добавлена кнопка View Open Tickets
   - rscadd: Добавлена кнопка Open Mentor Chat
+2025-05-18:
+  Water Potassiumovich:
+  - config: Повышены шансы на появление выживших CLF
+  larentoun:
+  - rscadd: Теперь оповещения должны озвучиваться пареллельно с радиосообщениями,
+      а не занимать полностью её канал.
+  - rscadd: Теперь не нужны GhostEars для ТТС с гостоты

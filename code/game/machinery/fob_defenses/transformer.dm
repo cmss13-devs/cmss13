@@ -24,11 +24,13 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 
 /obj/structure/machinery/transformer/Initialize(mapload, ...)
 	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
+	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "hvt")
 	GLOB.transformer = src
 	. = ..()
 
 /obj/structure/machinery/transformer/Destroy()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_OFF)
+	SSminimaps.remove_marker(src)
 	backup = null
 	GLOB.transformer = null
 	. = ..()

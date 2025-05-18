@@ -527,7 +527,6 @@
 			continue
 
 		if(isxeno(current_mob))
-			set_hive_data(current_mob, XENO_HIVE_FORSAKEN)
 			groundside_xenos++
 			continue
 

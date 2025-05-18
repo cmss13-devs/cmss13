@@ -73,6 +73,9 @@
 
 		var/index = 0
 		for(var/mob/living/carbon/xenomorph/target in SSsensors.targets)
+			if(index >= 4)
+				break
+
 			index++
 			if(target.get_target_lock(FACTION_LIST_MARINE))
 				continue
@@ -82,6 +85,8 @@
 
 			var/obj/rocket_animation_holder/holder = new(loc, index)
 			animate(holder, pixel_y = 256, easing = CUBIC_EASING|EASE_IN, time = 3 SECONDS)
+			target.add_filter("target_lock", 1, list("type" = "outline", "color" = "#FFFF00", "size" = 1))
+			to_chat(target, SPAN_XENOHIGHDANGER("Something is wrong... You should turn back."))
 			QDEL_IN(holder, 3 SECONDS)
 			playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 40, TRUE, 10)
 			addtimer(CALLBACK(src, PROC_REF(fire_at), target), 3 SECONDS)
@@ -141,8 +146,16 @@
 
 /obj/structure/machinery/weapons_platform/proc/fire_at(mob/living/carbon/xenomorph/target)
 	if(istype(linked_weapon, /obj/structure/machinery/rocket_launcher))
-		new /obj/effect/warning/explosive(get_turf(target), 0.2 SECONDS)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), get_turf(target), 199, 150), 0.2 SECONDS)
+		target.remove_filter("target_lock")
+		if(!(target in SSsensors.targets))
+			return
+
+		if(islesserdrone(target) || isfacehugger(target))
+			playsound(get_turf(target), 'sound/effects/explosionfar.ogg', 25, 1, 7)
+			target.gib()
+		else
+			new /obj/effect/warning/explosive(get_turf(target), 0.1 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), get_turf(target), 199, 150), 0.1 SECONDS)
 	else
 		linked_weapon.dir = get_dir(src, target)
 		update_icon()

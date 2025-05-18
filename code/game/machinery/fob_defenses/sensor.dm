@@ -26,7 +26,7 @@
 	if(!HAS_TRAIT(attack_item, TRAIT_TOOL_WRENCH))
 		return
 
-	new /obj/item/sensor(get_turf(src))
+	new /obj/item/sensor(loc)
 	qdel(src)
 
 /obj/structure/machinery/sensor/Initialize(mapload, ...)

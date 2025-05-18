@@ -583,7 +583,7 @@
 /obj/structure/mineral_door/resin/weedbound/thick
 	name = "thick weedbound resin door"
 	desc = "A weird thick resin door that solidified strangely, forming a petal-like pattern."
-	icon_state = "thickweedbound resin"
+	icon_state = "thick weedbound resin"
 	mineralType = "thick weedbound resin"
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 1.9

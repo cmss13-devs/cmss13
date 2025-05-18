@@ -329,8 +329,8 @@
 	var/angle = projectile.angle
 	var/right_angle = (angle + 90 ) % 360
 	var/left_angle = (angle -90) % 360
-	var/diagonal_left = (angle - 45) % 360
-	var/doagpmal_right = (angle + 45) % 360
+	var/diagonal_left = (angle - 135) % 360
+	var/doagpmal_right = (angle + 135) % 360
 	var/turf/initial_location = projectile.loc
 	var/list/cleared_locations = list(initial_location)
 	var/edge = FALSE
@@ -353,7 +353,7 @@
 			cleared_locations |= left_turf
 
 
-			if(i < max_distance - 1)
+			if(i > 2)
 				right_turf = get_angle_target_turf(new_turf, doagpmal_right , ii)
 				detonate(right_turf, cleared_locations, edge)
 				left_turf = get_angle_target_turf(new_turf, diagonal_left , ii)

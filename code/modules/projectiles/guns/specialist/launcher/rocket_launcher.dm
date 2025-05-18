@@ -394,3 +394,4 @@
 
 /obj/item/weapon/gun/launcher/rocket/brute
 	desc = " Breaching Rocket Unit for Tachical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Time to unleash some BRUTE force at your enemy"
+	current_mag = /obj/item/ammo_magazine/rocket/brute

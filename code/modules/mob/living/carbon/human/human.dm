@@ -135,6 +135,10 @@
 			. += "Self Destruct Status: [SShijack.get_sd_eta()]"
 
 /mob/living/carbon/human/ex_act(severity, direction, datum/cause_data/cause_data)
+	if(HAS_TRAIT(src, TRAIT_INSIDE_VEHICLE) && isVehicle(buckled))
+		buckled.ex_act(severity, direction, cause_data)
+		return
+
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 

@@ -135,7 +135,7 @@ Each var depends on others
 				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
 				M.stop_pulling()
 
-		if(HAS_TRAIT(M, TRAIT_HAULED))
+		if(HAS_TRAIT(M, TRAIT_HAULED) || HAS_TRAIT(M, TRAIT_INSIDE_VEHICLE))
 			return
 
 		cause_damage(M)

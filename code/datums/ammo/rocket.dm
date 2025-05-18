@@ -330,13 +330,13 @@
 	var/right_angle = (angle + 90 ) % 360
 	var/left_angle = (angle -90) % 360
 	var/diagonal_left = (angle - 135) % 360
-	var/doagpmal_right = (angle + 135) % 360
+	var/diagpmal_right = (angle + 135) % 360
 	var/turf/initial_location = projectile.loc
 	var/list/cleared_locations = list(initial_location)
 	var/edge = FALSE
 	for(var/i = 0 to max_distance)
 		var/turf/new_turf = get_angle_target_turf(initial_location, angle , i)
-		detonate(new_turf, cleared_locations)
+		INVOKE_ASYNC(src, PROC_REF(detonate),new_turf, initial_location, cleared_locations)
 		cleared_locations |= new_turf
 		var/max_width = 2
 		if(i == 1 || i == max_distance)
@@ -346,24 +346,22 @@
 			if(ii == max_width)
 				edge = TRUE
 			var/turf/right_turf = get_angle_target_turf(new_turf, right_angle , ii)
-			detonate(right_turf, cleared_locations, edge)
+			INVOKE_ASYNC(src, PROC_REF(detonate),right_turf, initial_location, cleared_locations)
 			cleared_locations |= right_turf
 			var/turf/left_turf = get_angle_target_turf(new_turf, left_angle , ii)
-			detonate(left_turf, cleared_locations, edge)
+			INVOKE_ASYNC(src, PROC_REF(detonate),left_turf, initial_location, cleared_locations)
 			cleared_locations |= left_turf
-
-
 			if(i > 2)
-				right_turf = get_angle_target_turf(new_turf, doagpmal_right , ii)
-				detonate(right_turf, cleared_locations, edge)
+				right_turf = get_angle_target_turf(new_turf, diagpmal_right , ii)
+				INVOKE_ASYNC(src, PROC_REF(detonate),right_turf, initial_location, cleared_locations,edge)
 				left_turf = get_angle_target_turf(new_turf, diagonal_left , ii)
-				detonate(left_turf, cleared_locations, edge)
+				INVOKE_ASYNC(src, PROC_REF(detonate),left_turf, initial_location, cleared_locations,edge)
 				cleared_locations |= right_turf
 				cleared_locations |= left_turf
 		sleep(1)
 
 
-/datum/ammo/rocket/brute/proc/detonate(turf/location, list/detonated_locations, edge = FALSE)
+/datum/ammo/rocket/brute/proc/detonate(turf/location, turf/initial_location, list/detonated_locations, edge = FALSE)
 	if(location in detonated_locations)
 		return
 	var/damage = 1200
@@ -373,6 +371,18 @@
 		location.ex_act(damage)
 	for(var/obj/structure/structure in location.contents)
 		structure.ex_act(damage)
+	if(location != initial_location)
+		var/throw_direction = Get_Angle(initial_location, location)
+		for(var/obj/atom in location.contents)
+			if(atom.anchored)
+				continue
+			if(prob(30))
+				continue
+			atom.throw_atom(get_angle_target_turf(location,throw_direction,1),range = 1,speed = SPEED_INSTANT, spin = FALSE)
+		for(var/mob/living in location.contents)
+			if(prob(30 + living.mob_size * 5 ))
+				continue
+			living.throw_atom(get_angle_target_turf(location,throw_direction,1),range = 1,speed = SPEED_INSTANT, spin = FALSE)
 
 
 

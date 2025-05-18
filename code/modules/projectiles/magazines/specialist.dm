@@ -252,6 +252,7 @@
 /obj/item/ammo_magazine/rocket/brute
 	name = "\improper BRUTE rocket"
 	default_ammo = /datum/ammo/rocket/brute
+	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
 	desc = "BRUTE anti structural warhead. This is going to be BRUTEal"
 
 /obj/item/ammo_magazine/rocket/custom

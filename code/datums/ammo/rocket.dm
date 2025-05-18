@@ -312,16 +312,16 @@
 	name = "BRUTE rocket"
 
 /datum/ammo/rocket/brute/on_hit_mob(mob/mob, obj/projectile/projectile)
-	prime(mob, projectile)
+	INVOKE_ASYNC(src,PROC_REF(prime), mob, projectile)
 
 /datum/ammo/rocket/brute/on_hit_obj(obj/object, obj/projectile/projectile)
-	prime(object, projectile)
+	INVOKE_ASYNC(src,PROC_REF(prime), object, projectile)
 
 /datum/ammo/rocket/brute/on_hit_turf(turf/turf, obj/projectile/projectile)
-	prime(turf, projectile)
+	INVOKE_ASYNC(src,PROC_REF(prime), turf, projectile)
 
 /datum/ammo/rocket/brute/do_at_max_range(obj/projectile/projectile)
-	prime(null, projectile)
+	INVOKE_ASYNC(src,PROC_REF(prime), null, projectile)
 
 /datum/ammo/rocket/brute/proc/prime(atom/atom, obj/projectile/projectile)
 	var/max_distance = 7

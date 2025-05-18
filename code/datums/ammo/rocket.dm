@@ -307,3 +307,74 @@
 
 /datum/ammo/rocket/custom/do_at_max_range(obj/projectile/projectile)
 	prime(null, projectile)
+
+/datum/ammo/rocket/brute
+	name = "BRUTE rocket"
+
+/datum/ammo/rocket/brute/on_hit_mob(mob/mob, obj/projectile/projectile)
+	prime(mob, projectile)
+
+/datum/ammo/rocket/brute/on_hit_obj(obj/object, obj/projectile/projectile)
+	prime(object, projectile)
+
+/datum/ammo/rocket/brute/on_hit_turf(turf/turf, obj/projectile/projectile)
+	prime(turf, projectile)
+
+/datum/ammo/rocket/brute/do_at_max_range(obj/projectile/projectile)
+	prime(null, projectile)
+
+/datum/ammo/rocket/brute/proc/prime(atom/atom, obj/projectile/projectile)
+	var/max_distance = 7
+
+	var/angle = projectile.angle
+	var/right_angle = (angle + 90 ) % 360
+	var/left_angle = (angle -90) % 360
+	var/diagonal_left = (angle - 45) % 360
+	var/doagpmal_right = (angle + 45) % 360
+	var/turf/initial_location = projectile.loc
+	var/list/cleared_locations = list(initial_location)
+	var/edge = FALSE
+	for(var/i = 0 to max_distance)
+		var/turf/new_turf = get_angle_target_turf(initial_location, angle , i)
+		detonate(new_turf, cleared_locations)
+		cleared_locations |= new_turf
+		var/max_width = 2
+		if(i == 1 || i == max_distance)
+			max_width = 1
+		for(var/ii = 1 to max_width)
+			edge = FALSE
+			if(ii == max_width)
+				edge = TRUE
+			var/turf/right_turf = get_angle_target_turf(new_turf, right_angle , ii)
+			detonate(right_turf, cleared_locations, edge)
+			cleared_locations |= right_turf
+			var/turf/left_turf = get_angle_target_turf(new_turf, left_angle , ii)
+			detonate(left_turf, cleared_locations, edge)
+			cleared_locations |= left_turf
+
+
+			if(i < max_distance - 1)
+				right_turf = get_angle_target_turf(new_turf, doagpmal_right , ii)
+				detonate(right_turf, cleared_locations, edge)
+				left_turf = get_angle_target_turf(new_turf, diagonal_left , ii)
+				detonate(left_turf, cleared_locations, edge)
+				cleared_locations |= right_turf
+				cleared_locations |= left_turf
+		sleep(1)
+
+
+/datum/ammo/rocket/brute/proc/detonate(turf/location, list/detonated_locations, edge = FALSE)
+	if(location in detonated_locations)
+		return
+	var/damage = 1200
+	if(edge)
+		damage = rand(400, 700)
+	if(istype(location,/turf/closed/wall))
+		location.ex_act(damage)
+	for(var/obj/structure/structure in location.contents)
+		structure.ex_act(damage)
+
+
+
+
+

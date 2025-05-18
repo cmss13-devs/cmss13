@@ -249,6 +249,11 @@
 	default_ammo = /datum/ammo/rocket/wp
 	desc = "Rocket tube loaded with WP warhead. Has two damaging factors. On hit disperses X-Variant Napthal (blue flames) in a 4-meter radius circle, ignoring cover, while simultaneously bursting into highly heated shrapnel that ignites targets within slightly bigger area."
 
+/obj/item/ammo_magazine/rocket/brute
+	name = "\improper BRUTE rocket"
+	default_ammo = /datum/ammo/rocket/brute
+	desc = "BRUTE anti structural warhead. This is going to be BRUTEal"
+
 /obj/item/ammo_magazine/rocket/custom
 	name = "\improper 84mm custom rocket"
 	desc = "An 84mm custom rocket."

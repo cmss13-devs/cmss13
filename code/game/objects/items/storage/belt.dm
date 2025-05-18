@@ -761,6 +761,29 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 
+/obj/item/storage/belt/marine/sharp
+	name = "\improper M103 pattern SHARP magazine belt"
+	desc = "A specially modified M103 pattern rig designed to hold P9 SHARP rifle magazines, instead of tank shells."
+	icon_state = "tankbelt"
+	item_state = "tankbelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "utility",
+		WEAR_R_HAND = "utility")
+	storage_slots = 8
+	max_storage_space = 8
+	can_hold = list(
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"
 	desc = "The Type 41 load rig is the standard-issue load-bearing equipment of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."

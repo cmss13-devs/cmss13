@@ -33,6 +33,7 @@
 	)
 	hivelord.selected_design = /obj/effect/alien/resin/design/speed_node
 	hivelord.selected_design_mark = /datum/design_mark/resin_wall
+	hivelord.plasma_types = list(PLASMA_NUTRIENT, PLASMA_PHEROMONE)
 	hivelord.max_design_nodes = 36
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
@@ -143,10 +144,17 @@
 	bound_xeno = xeno
 	bound_weed = weeds
 	hivenumber = xeno.hivenumber
-	RegisterSignal(weeds, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
-	RegisterSignal(xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
+
+	// Register deletion signals for both
+	RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	RegisterSignal(bound_xeno, COMSIG_PARENT_QDELETING, PROC_REF(on_xeno_expire))
+
 	set_hive_data(src, hivenumber)
 	. = ..()
+
+	// Initial check if hivenumbers don't match, delete immediately
+	if(bound_weed.hivenumber != bound_xeno.hivenumber)
+		qdel(src)
 
 	if(xeno.selected_design_mark)
 		mark_meaning = new xeno.selected_design_mark
@@ -171,6 +179,18 @@
 					xeno.hud_set_design_marks()
 					refresh_marker()
 
+/obj/effect/alien/resin/design/proc/refresh_marker()
+	if(!choosenMark || !mark_meaning)
+		return
+
+	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
+		if(istype(src, /obj/effect/alien/resin/design/speed_node))
+			choosenMark.icon_state = mark_meaning.icon_state + "_speed"
+		else if(istype(src, /obj/effect/alien/resin/design/cost_node))
+			choosenMark.icon_state = mark_meaning.icon_state + "_cost"
+		else
+			choosenMark.icon_state = mark_meaning.icon_state
+
 /obj/effect/alien/resin/design/Destroy()
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive)
@@ -188,21 +208,21 @@
 	choosenMark = null
 	return ..()
 
-/obj/effect/alien/resin/design/proc/refresh_marker()
-	if(!choosenMark || !mark_meaning)
-		return
-
-	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
-		if(istype(src, /obj/effect/alien/resin/design/speed_node))
-			choosenMark.icon_state = mark_meaning.icon_state + "_speed"
-		else if(istype(src, /obj/effect/alien/resin/design/cost_node))
-			choosenMark.icon_state = mark_meaning.icon_state + "_cost"
-		else
-			choosenMark.icon_state = mark_meaning.icon_state
-
 /obj/effect/alien/resin/design/proc/on_weed_expire()
 	SIGNAL_HANDLER
 	qdel(src)
+
+/obj/effect/alien/resin/design/proc/on_xeno_expire()
+	SIGNAL_HANDLER
+	qdel(src)
+
+/obj/effect/alien/resin/design/proc/check_hivenumber_match()
+	if(!bound_weed || !bound_xeno)
+		visible_message(SPAN_XENOWARNING("The node shudders and decays back into the weeds."))
+		qdel(src)
+	else if(bound_weed.hivenumber != bound_xeno.hivenumber)
+		visible_message(SPAN_XENOWARNING("The node withers away."))
+		qdel(src)
 
 /obj/effect/alien/resin/design/proc/unregister_weed_expiration_signal_design()
 	if(bound_weed)
@@ -211,10 +231,7 @@
 /obj/effect/alien/resin/design/proc/register_weed_expiration_signal_design(obj/effect/alien/weeds/new_weed)
 	RegisterSignal(new_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	bound_weed = new_weed
-
-/obj/effect/alien/resin/design/proc/handle_xeno_qdel()
-	SIGNAL_HANDLER
-	bound_xeno = null
+	check_hivenumber_match()
 
 /obj/effect/alien/resin/design/proc/hud_set_queen_overwatch()
 	return
@@ -249,6 +266,7 @@
 	plasma_cost = 70
 	var/plasma_donation = 70
 	var/building = FALSE
+	var/thick_build = FALSE
 	var/obj/effect/resin_construct/build_overlay
 
 /obj/effect/alien/resin/design/construct_node/Initialize(mapload)
@@ -259,69 +277,8 @@
 			AddComponent(/datum/component/resin_cleanup)
 		area.current_resin_count++
 
-/obj/effect/alien/resin/design/construct_node/attack_hand(mob/user)
-	if(!isxeno(user))
-		to_chat(user, SPAN_WARNING("You don't understand how to interact with this strange node."))
-		return
-
-	if(building)
-		to_chat(user, SPAN_WARNING("This node is already being infused with plasma."))
-		return
-
-	var/mob/living/carbon/xenomorph/xeno = user
-
-	if(xeno.hivenumber != src.hivenumber)
-		to_chat(xeno, SPAN_WARNING("This construct node does not belong to your hive."))
-		return
-
-	var/design_mark = src.mark_meaning
-
-	if(!design_mark)
-		to_chat(xeno, SPAN_WARNING("This node has no valid design selected."))
-		return
-
-	var/total_plasma_cost = get_total_plasma_cost(xeno)
-	if(xeno.plasma_stored < total_plasma_cost)
-		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]"))
-		return
-
-	building = TRUE
-
-	xeno.plasma_stored -= total_plasma_cost
-	to_chat(xeno, SPAN_NOTICE("You activate the node, it latches onto us and it forcefully consumes [total_plasma_cost] of our plasma."))
-
-	var/turf/T = get_turf(src)
-	if(!istype(T))
-		to_chat(xeno, SPAN_WARNING("This is not a valid location."))
-		building = FALSE
-		return
-
-	var/obj/effect/resin_construct/overlay
-
-	if(istype(design_mark, /datum/design_mark/resin_wall))
-		overlay = new /obj/effect/resin_construct/construct_wallslow(T)
-	else if(istype(design_mark, /datum/design_mark/resin_door))
-		overlay = new /obj/effect/resin_construct/construct_doorslow(T)
-
-	build_overlay = overlay
-
-	addtimer(CALLBACK(src, PROC_REF(complete_construction), T, design_mark, xeno), 4 SECONDS)
-
-/obj/effect/alien/resin/design/construct_node/proc/get_total_plasma_cost(mob/living/carbon/xenomorph/xeno)
-	var/area/target_area = get_area(get_turf(src))
-	var/total_plasma_cost = plasma_donation
-
-	if(target_area && target_area.openable_turf_count)
-		var/density_ratio = target_area.current_resin_count / target_area.openable_turf_count
-		if(density_ratio > 0.4)
-			total_plasma_cost = ceil(total_plasma_cost * (density_ratio + 0.35) * 2)
-			if(total_plasma_cost > xeno.plasma_max && (XENO_RESIN_BASE_COST + plasma_donation) < xeno.plasma_max)
-				total_plasma_cost = xeno.plasma_max
-
-	return total_plasma_cost
-
-/obj/effect/alien/resin/design/construct_node/proc/complete_construction(turf/T, design_mark, mob/living/carbon/xenomorph/xeno)
-	if(QDELETED(src) || QDELETED(T))
+/obj/effect/alien/resin/design/construct_node/proc/complete_construction(turf/Turf, design_mark, mob/living/carbon/xenomorph/xeno)
+	if(QDELETED(src) || QDELETED(Turf))
 		return
 
 	if(build_overlay && !QDELETED(build_overlay))
@@ -331,28 +288,36 @@
 	building = FALSE
 
 	if(istype(design_mark, /datum/design_mark/resin_wall))
-		if(!istype(T, /turf/closed/wall))
+		if(!istype(Turf, /turf/closed/wall))
 			var/turf/placed
-			placed = T.PlaceOnTop(/turf/closed/wall/resin/weedbound)
+			if(thick_build)
+				placed = Turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
+			else
+				placed = Turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
 
-			var/turf/closed/wall/resin/R = get_turf(T)
-			if(istype(R))
-				R.hivenumber = src.hivenumber
-				set_hive_data(R, R.hivenumber)
+			var/turf/closed/wall/resin/Res = get_turf(Turf)
+			if(istype(Res))
+				Res.hivenumber = src.hivenumber
+				set_hive_data(Res, Res.hivenumber)
+
 			to_chat(xeno, SPAN_NOTICE("A weedbound wall has been created."))
 			playsound(placed, "alien_resin_build", 25)
 		else
 			to_chat(xeno, SPAN_WARNING("A wall already exists here."))
 
 	else if(istype(design_mark, /datum/design_mark/resin_door))
-		if(!istype(T, /obj/structure/mineral_door))
+		if(!istype(Turf, /obj/structure/mineral_door))
 			var/obj/new_structure
-			new_structure = new /obj/structure/mineral_door/resin/weedbound(T)
+			if(thick_build)
+				new_structure = new /obj/structure/mineral_door/resin/weedbound/thick(Turf)
+			else
+				new_structure = new /obj/structure/mineral_door/resin/weedbound/normal(Turf)
 
-			var/obj/structure/mineral_door/resin/R = locate(/obj/structure/mineral_door/resin) in get_turf(T)
-			if(istype(R))
-				R.hivenumber = src.hivenumber
-				set_hive_data(R, R.hivenumber)
+			var/obj/structure/mineral_door/resin/Res = locate(/obj/structure/mineral_door/resin) in get_turf(Turf)
+			if(istype(Res))
+				Res.hivenumber = src.hivenumber
+				set_hive_data(Res, Res.hivenumber)
+
 			to_chat(xeno, SPAN_NOTICE("A weedbound door has been created."))
 			playsound(new_structure, "alien_resin_build", 25)
 		else
@@ -369,18 +334,100 @@
 	area?.current_resin_count--
 	return ..()
 
-/obj/effect/alien/resin/design/construct_node/attackby(obj/item/W, mob/user)
-	if(isxeno(user) && user.a_intent != INTENT_HARM)
-		return attack_hand(user) // Allow peaceful interaction
-	to_chat(user, SPAN_WARNING("You can't damage the construct node like that."))
-	return
+/obj/effect/alien/resin/design/construct_node/attack_hand(mob/user)
+	if(!isxeno(user))
+		to_chat(user, SPAN_WARNING("You don't understand how to interact with this strange node."))
+		return
 
-/obj/effect/alien/resin/design/construct_node/attack_alien(mob/living/carbon/xenomorph/M)
-	if(M.a_intent != INTENT_HARM)
-		return attack_hand(M) // Delegate to attack_hand for non-harm intents
+	var/mob/living/carbon/xenomorph/xeno = user
+
+	if(!can_begin_construction(xeno))
+		return
+
+	var/total_plasma_cost = get_total_plasma_cost(xeno)
+	if(xeno.plasma_stored < total_plasma_cost)
+		to_chat(xeno, SPAN_WARNING("You lack the plasma to feed this node. [xeno.plasma_stored]/[total_plasma_cost]"))
+		return
+
+	xeno.plasma_stored -= total_plasma_cost
+	to_chat(xeno, SPAN_NOTICE("You activate the node, it latches onto us and it forcefully consumes [total_plasma_cost] of our plasma."))
+
+	begin_construction(xeno)
+
+/obj/effect/alien/resin/design/construct_node/attackby(obj/item/item, mob/user)
+	if(isxeno(user) && user.a_intent != INTENT_HARM)
+		if(istype(item, /obj/item/reagent_container/food/snacks/resin_fruit/plasma))
+			to_chat(user, SPAN_NOTICE("We squeeze plasma fruit juices on node, activating its growth."))
+			qdel(item)
+			thick_build = TRUE
+
+			var/mob/living/carbon/xenomorph/xeno = user
+			begin_construction(xeno)
+			return
+
+		// Do NOT call attack_hand here — that bypasses destruction.
+		to_chat(user, SPAN_NOTICE("You examine the node curiously, but nothing happens."))
+		return
+
+	. = ..()
+
+/obj/effect/alien/resin/design/construct_node/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(xeno.a_intent != INTENT_HARM)
+		return attack_hand(xeno) // Delegate to attack_hand for non-harm intents
 	else
 		// Use normal damaging behavior if intent is harm
 		return ..()
+
+/obj/effect/alien/resin/design/construct_node/proc/get_total_plasma_cost(mob/living/carbon/xenomorph/xeno)
+	var/area/target_area = get_area(get_turf(src))
+	var/total_plasma_cost = plasma_donation
+
+	if(target_area && target_area.openable_turf_count)
+		var/density_ratio = target_area.current_resin_count / target_area.openable_turf_count
+		if(density_ratio > 0.4)
+			total_plasma_cost = ceil(total_plasma_cost * (density_ratio + 0.35) * 2)
+			if(total_plasma_cost > xeno.plasma_max && (XENO_RESIN_BASE_COST + plasma_donation) < xeno.plasma_max)
+				total_plasma_cost = xeno.plasma_max
+
+	return total_plasma_cost
+
+/obj/effect/alien/resin/design/construct_node/proc/can_begin_construction(mob/living/carbon/xenomorph/xeno)
+	if(building)
+		to_chat(xeno, SPAN_WARNING("This node is already being infused with plasma."))
+		return FALSE
+
+	if(xeno.hivenumber != src.hivenumber)
+		to_chat(xeno, SPAN_WARNING("This construct node does not belong to your hive."))
+		return FALSE
+
+	if(!mark_meaning)
+		to_chat(xeno, SPAN_WARNING("This node has no valid design selected."))
+		return FALSE
+
+	var/turf/Turf = get_turf(src)
+	if(!istype(Turf))
+		to_chat(xeno, SPAN_WARNING("This is not a valid location."))
+		return FALSE
+
+	return TRUE
+
+/obj/effect/alien/resin/design/construct_node/proc/begin_construction(mob/living/carbon/xenomorph/xeno)
+	if(!can_begin_construction(xeno))
+		return
+
+	var/turf/Turf = get_turf(src)
+	building = TRUE
+
+	var/obj/effect/resin_construct/overlay
+
+	if(istype(mark_meaning, /datum/design_mark/resin_wall))
+		overlay = new /obj/effect/resin_construct/construct_wallslow(Turf)
+	else if(istype(mark_meaning, /datum/design_mark/resin_door))
+		overlay = new /obj/effect/resin_construct/construct_doorslow(Turf)
+
+	build_overlay = overlay
+
+	addtimer(CALLBACK(src, PROC_REF(complete_construction), Turf, mark_meaning, xeno), 4 SECONDS)
 
 /obj/effect/alien/resin/design/construct_node/get_examine_text(mob/user)
 	. = ..()
@@ -389,68 +436,176 @@
 	if(isxeno(user) || isobserver(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/total_plasma_cost = get_total_plasma_cost(xeno)
-		. += "You sense that feeding [SPAN_NOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_NOTICE("[mark_meaning]")]."
+		. += "You sense that feeding [SPAN_NOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_NOTICE("[mark_meaning]")], you also heard that using plasma fruit works too."
 
-/turf/closed/wall/resin/weedbound
+//Should not be upgradable because its not "stable" but special actions should create thick variant.
+/turf/closed/wall/resin/weedbound // don't use this variant, use subtypes.
 	name = "weedbound resin wall"
-	desc = "Weird resin wall that solidified too quickly, creating a strange layered pattern."
+	desc = "An oddly solidified resin wall with a layered pattern that reminds you of flower buds."
 	icon_state = "weedboundresin"
 	walltype = WALL_WEEDBOUND_RESIN
+
 	var/obj/effect/alien/weeds/bound_weed
+	var/old_hivenumber
 
 /turf/closed/wall/resin/weedbound/Initialize()
 	. = ..()
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
 	if(bound_weed)
+		old_hivenumber = bound_weed.hivenumber
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 
 /turf/closed/wall/resin/weedbound/Destroy()
 	if(bound_weed)
 		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 		bound_weed = null
+
+	var/turf/T = get_turf(src)
+	if(T)
+		visible_message(SPAN_ALERT("The weedbound wall collapses into a puddle of sticky slime."))
+		var/type_path = /obj/effect/alien/resin/sticky/weak_nutriplasm
+		if(istype(src, /turf/closed/wall/resin/weedbound/thick))
+			type_path = /obj/effect/alien/resin/sticky/strong_nutriplasm
+
+		new type_path(T)
+
 	return ..()
 
 /turf/closed/wall/resin/weedbound/proc/on_weed_expire()
-	playsound(src, "alien_resin_break", 25)
-	ScrapeAway()
+	SIGNAL_HANDLER
 
-/turf/closed/wall/resin/weedbound/get_examine_text(mob/user)
+	if(!old_hivenumber)
+		ScrapeAway()
+		return
+
+	addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 1 DECISECONDS)
+
+/turf/closed/wall/resin/weedbound/proc/check_weed_replacement()
+	var/turf/T = get_turf(src)
+	if(!T)
+		ScrapeAway()
+		return
+
+	var/obj/effect/alien/weeds/new_weed = locate(/obj/effect/alien/weeds) in T
+
+	if(new_weed && new_weed.hivenumber == old_hivenumber)
+		bound_weed = new_weed
+		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	else
+		playsound(src, "alien_resin_break", 25)
+		ScrapeAway()
+
+/turf/closed/wall/resin/weedbound/normal/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
 		. += "On closer examination, this strange wall appears to have merged with the resin below to hold itself together."
 	if(isxeno(user) || isobserver(user))
 		. += "You sense that this resin wall will collapse if the weeds it is merged with disappear."
 
-/obj/structure/mineral_door/resin/weedbound
-	name = "flaky resin door"
-	desc = "Weird resin door that solidified too quickly, creating a strange layered pattern."
+/turf/closed/wall/resin/weedbound/thick
+	name = "thick weedbound resin wall"
+	desc = "An oddly solidified thick resin wall with a layered pattern that reminds you of flower buds."
+	icon_state = "thickweedboundresin"
+	damage_cap = HEALTH_WALL_XENO_THICK
+	walltype = WALL_THICK_WEEDBOUND_RESIN
+
+/turf/closed/wall/resin/weedbound/thick/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this strange darker wall appears to have merged with the resin below to hold itself together."
+	if(isxeno(user) || isobserver(user))
+		. += "You sense that this thick resin wall will collapse if the weeds it is merged with disappear."
+
+/obj/structure/mineral_door/resin/weedbound //don't use this variant, use subtypes.
+	name = "weedbound resin door"
+	desc = "A weird resin door that solidified strangely, forming a petal-like pattern."
 	icon_state = "weedbound resin"
 	mineralType = "weedbound resin"
 	hardness = 1.4
+
 	var/obj/effect/alien/weeds/bound_weed
+	var/old_hivenumber
 
 /obj/structure/mineral_door/resin/weedbound/Initialize()
 	. = ..()
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
 	if(bound_weed)
+		old_hivenumber = bound_weed.hivenumber
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 
 /obj/structure/mineral_door/resin/weedbound/Destroy()
 	if(bound_weed)
 		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 		bound_weed = null
+
+	var/turf/T = get_turf(src)
+	if(T)
+		visible_message(SPAN_ALERT("The weedbound wall collapses into a puddle of sticky slime."))
+		var/type_path = /obj/effect/alien/resin/sticky/weak_nutriplasm
+		if(istype(src, /turf/closed/wall/resin/weedbound/thick))
+			type_path = /obj/effect/alien/resin/sticky/strong_nutriplasm
+
+		new type_path(T)
+
 	return ..()
 
 /obj/structure/mineral_door/resin/weedbound/proc/on_weed_expire()
-	playsound(src, "alien_resin_break", 25)
-	Dismantle()
+	SIGNAL_HANDLER
 
-/obj/structure/mineral_door/resin/weedbound/get_examine_text(mob/user)
+	if(!old_hivenumber)
+		Dismantle()
+		return
+
+	addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 1 DECISECONDS)
+
+/obj/structure/mineral_door/resin/weedbound/proc/check_weed_replacement()
+	var/turf/T = get_turf(src)
+	if(!T)
+		Dismantle()
+		return
+
+	var/obj/effect/alien/weeds/new_weed = locate(/obj/effect/alien/weeds) in T
+
+	if(new_weed && new_weed.hivenumber == old_hivenumber)
+		bound_weed = new_weed
+		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	else
+		playsound(src, "alien_resin_break", 25)
+		Dismantle()
+
+/obj/structure/mineral_door/resin/weedbound/normal/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
 		. += "On closer examination, this strange door appears to have merged with the resin below to hold itself together."
 	if(isxeno(user) || isobserver(user))
 		. += "You sense that this resin door will collapse if the weeds it is merged with disappear."
+
+/obj/structure/mineral_door/resin/weedbound/thick
+	name = "thick weedbound resin door"
+	desc = "A weird thick resin door that solidified strangely, forming a petal-like pattern."
+	icon_state = "thickweedbound resin"
+	mineralType = "thick weedbound resin"
+	health = HEALTH_DOOR_XENO_THICK
+	hardness = 1.9
+
+/obj/structure/mineral_door/resin/weedbound/thick/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this strange darker door appears to have merged with the resin below to hold itself together."
+	if(isxeno(user) || isobserver(user))
+		. += "You sense that this thick resin door will collapse if the weeds it is merged with disappear."
+
+/obj/effect/alien/resin/sticky/weak_nutriplasm
+	name = "thin sticky nutriplasm"
+	desc = "A thin layer of disgusting sticky slime."
+	icon_state = "weak_nutriplasm"
+	slow_amt = 5
+
+/obj/effect/alien/resin/sticky/strong_nutriplasm
+	name = "sticky nutriplasm"
+	desc = "A thick layer of disgusting sticky slime."
+	icon_state = "strong_nutriplasm"
+	slow_amt = 10
 
 /obj/effect/alien/resin/design/upgrade
 	name = "Thicken Resin (60)"
@@ -639,7 +794,7 @@
 
 			if(wall.type == /turf/closed/wall/resin)
 				var/obj/thick_wall = new /obj/effect/resin_construct/thickfast(target_turf, src, xeno)
-				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 					qdel(thick_wall)
 					wall.upgrading_now = FALSE
 					return
@@ -648,7 +803,7 @@
 
 			else if(wall.type == /turf/closed/wall/resin/membrane)
 				var/obj/thick_membrane = new /obj/effect/resin_construct/transparent/thickfast(target_turf, src, xeno)
-				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 					qdel(thick_membrane)
 					wall.upgrading_now = FALSE
 					return
@@ -674,7 +829,7 @@
 			if(door.hardness == 1.5)
 				door.upgrading_now = TRUE
 				var/obj/thick_door = new /obj/effect/resin_construct/thickdoorfast(target_turf, src, xeno)
-				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+				if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 					qdel(thick_door)
 					door.upgrading_now = FALSE
 					return
@@ -740,7 +895,7 @@
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 			return
 		var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay.
-		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
 			qdel(speed_warn) //Delete "Animation" overlay after defined time.
 			return
 		qdel(speed_warn) //Delete again just in case overlay don't get deleted.
@@ -762,7 +917,7 @@
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 			return
 		var/obj/cost_warn = new /obj/effect/resin_construct/cost_node(target_turf, src, xeno)
-		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
 			qdel(cost_warn)
 			return
 		qdel(cost_warn)
@@ -786,7 +941,7 @@
 		if(!xeno.check_alien_construction(target_turf, check_doors = FALSE))
 			return FALSE
 		var/obj/const_warn = new /obj/effect/resin_construct/construct_node(target_turf, src, xeno)
-		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || selected_design != xeno.selected_design)
+		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
 			qdel(const_warn)
 			return
 		qdel(const_warn)

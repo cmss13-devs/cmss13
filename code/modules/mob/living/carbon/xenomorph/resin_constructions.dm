@@ -26,9 +26,22 @@
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
 
-	if(!istype(T) || T.is_weedable < FULLY_WEEDABLE)
-		to_chat(X, SPAN_WARNING("You can't do that here."))
+	if(!istype(T))
 		return FALSE
+
+	if(T.is_weedable < FULLY_WEEDABLE)
+		var/has_node = FALSE
+		for(var/obj/effect/alien/resin/design/node in T)
+			has_node = TRUE
+			break
+
+		if(!has_node)
+			to_chat(X, SPAN_WARNING("You can't do that here without design nodes."))
+			return FALSE
+
+		if(!(istype(src, /datum/resin_construction/resin_turf/wall)) && !(istype(src, /datum/resin_construction/resin_obj/door)))
+			to_chat(X, SPAN_WARNING("This terrain is unsuitable for other resin secretions, only walls and doors can be build on this node."))
+			return FALSE
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))

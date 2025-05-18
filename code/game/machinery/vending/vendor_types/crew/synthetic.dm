@@ -208,8 +208,20 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/standard_synth_old
 	path = /obj/item/clothing/under/rank/synthetic/old
 
-/datum/gear/synthetic/uscm/generic_synth
-	path = /obj/item/clothing/under/marine
+/datum/gear/synthetic/uscm/marine_jungle
+	path = /obj/item/clothing/under/marine/jungle
+
+/datum/gear/synthetic/uscm/marine_desert
+	path = /obj/item/clothing/under/marine/desert
+
+/datum/gear/synthetic/uscm/marine_classic
+	path = /obj/item/clothing/under/marine/classic
+
+/datum/gear/synthetic/uscm/marine_snow
+	path = /obj/item/clothing/under/marine/snow
+
+/datum/gear/synthetic/uscm/marine_urban
+	path = /obj/item/clothing/under/marine/urban
 
 /datum/gear/synthetic/uscm/service_tan
 	path = /obj/item/clothing/under/marine/officer/bridge
@@ -217,11 +229,20 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/service_white
 	path = /obj/item/clothing/under/marine/dress
 
-/datum/gear/synthetic/uscm/engineer
-	path = /obj/item/clothing/under/marine/engineer/standard
+/datum/gear/synthetic/uscm/engineer_jungle
+	path = /obj/item/clothing/under/marine/engineer/jungle
 
-/datum/gear/synthetic/uscm/engineer_dark
-	path = /obj/item/clothing/under/marine/engineer/darker
+/datum/gear/synthetic/uscm/engineer_desert
+	path = /obj/item/clothing/under/marine/engineer/desert
+
+/datum/gear/synthetic/uscm/engineer_classic
+	path = /obj/item/clothing/under/marine/engineer/classic
+
+/datum/gear/synthetic/uscm/engineer_snow
+	path = /obj/item/clothing/under/marine/engineer/snow
+
+/datum/gear/synthetic/uscm/engineer_urban
+	path = /obj/item/clothing/under/marine/engineer/urban
 
 /datum/gear/synthetic/uscm/engineer_officer
 	path = /obj/item/clothing/under/marine/officer/engi
@@ -229,17 +250,50 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/engineer_OT
 	path = /obj/item/clothing/under/marine/officer/engi/OT
 
-/datum/gear/synthetic/uscm/corpsman
-	path = /obj/item/clothing/under/marine/medic
+/datum/gear/synthetic/uscm/corpsman_jungle
+	path = /obj/item/clothing/under/marine/medic/jungle
 
-/datum/gear/synthetic/uscm/mp
-	path = /obj/item/clothing/under/marine/mp/standard
+/datum/gear/synthetic/uscm/corpsman_desert
+	path = /obj/item/clothing/under/marine/medic/desert
 
-/datum/gear/synthetic/uscm/mp_dark
-	path = /obj/item/clothing/under/marine/mp/darker
+/datum/gear/synthetic/uscm/corpsman_classic
+	path = /obj/item/clothing/under/marine/medic/classic
 
-/datum/gear/synthetic/uscm/operations_uniform
-	path = /obj/item/clothing/under/marine/officer/boiler
+/datum/gear/synthetic/uscm/corpsman_snow
+	path = /obj/item/clothing/under/marine/medic/snow
+
+/datum/gear/synthetic/uscm/corpsman_urban
+	path = /obj/item/clothing/under/marine/medic/urban
+
+/datum/gear/synthetic/uscm/mp_jungle
+	path = /obj/item/clothing/under/marine/mp/jungle
+
+/datum/gear/synthetic/uscm/mp_desert
+	path = /obj/item/clothing/under/marine/mp/desert
+
+/datum/gear/synthetic/uscm/mp_classic
+	path = /obj/item/clothing/under/marine/mp/classic
+
+/datum/gear/synthetic/uscm/mp_snow
+	path = /obj/item/clothing/under/marine/mp/snow
+
+/datum/gear/synthetic/uscm/mp_urban
+	path = /obj/item/clothing/under/marine/mp/urban
+
+/datum/gear/synthetic/uscm/operations_uniform_jungle
+	path = /obj/item/clothing/under/marine/officer/boiler/jungle
+
+/datum/gear/synthetic/uscm/operations_uniform_desert
+	path = /obj/item/clothing/under/marine/officer/boiler/desert
+
+/datum/gear/synthetic/uscm/operations_uniform_classic
+	path = /obj/item/clothing/under/marine/officer/boiler/classic
+
+/datum/gear/synthetic/uscm/operations_uniform_snow
+	path = /obj/item/clothing/under/marine/officer/boiler/snow
+
+/datum/gear/synthetic/uscm/operations_uniform_urban
+	path = /obj/item/clothing/under/marine/officer/boiler/urban
 
 /datum/gear/synthetic/civilian
 	category = "Civilian Uniforms"
@@ -545,6 +599,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /datum/gear/synthetic/suit/hazardvest_black
 	path = /obj/item/clothing/suit/storage/hazardvest/black
+
+/datum/gear/synthetic/suit/medicalvest_green
+	path = /obj/item/clothing/suit/storage/hazardvest/medical_green
+
+/datum/gear/synthetic/suit/medicalvest_green
+	path = /obj/item/clothing/suit/storage/hazardvest/medical_red
 
 /datum/gear/synthetic/suit/snowsuit
 	path = /obj/item/clothing/suit/storage/snow_suit/synth

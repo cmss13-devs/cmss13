@@ -367,6 +367,8 @@
 	if(location in detonated_locations)
 		return
 	var/damage = 1200
+	if(prob(30))
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), null, 0, location, BURN_TIME_INSTANT, BURN_LEVEL_TIER_1, FLAMESHAPE_LINE, null, FIRE_VARIANT_DEFAULT)
 	if(edge)
 		damage = rand(400, 700)
 	if(istype(location,/turf/closed/wall))

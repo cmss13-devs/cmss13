@@ -11,6 +11,7 @@
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+	anchored = FALSE
 	needs_power = FALSE
 	var/has_power_remaining = TRUE
 	var/power_duration = 5 MINUTES

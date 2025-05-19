@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures/machinery/fob_machinery/weapons_platform.dmi'
 	icon_state = "platform_undeployed"
 	density = TRUE
-	anchored = TRUE
+	anchored = FALSE
 	pixel_x = -16
 	pixel_y = -16
 	explo_proof = TRUE
@@ -191,6 +191,7 @@
 				state = STATE_ON
 			else
 				state = STATE_OFF
+			anchored = TRUE
 			bound_width = 64
 			bound_height = 64
 			pixel_x = 0
@@ -225,6 +226,7 @@
 					bound_height = 32
 					pixel_x = -16
 					pixel_y = -16
+					anchored = FALSE
 					return
 
 				if(!istype(attack_item, /obj/item/powerloader_clamp))

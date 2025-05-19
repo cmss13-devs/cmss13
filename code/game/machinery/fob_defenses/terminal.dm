@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	icon_state = "terminal_undeployed"
 	density = TRUE
-	anchored = TRUE
+	anchored = FALSE
 	bound_width = 32
 	bound_height = 64
 	explo_proof = TRUE
@@ -67,7 +67,9 @@
 			state = STATE_ON
 		else
 			state = STATE_OFF
+		anchored = TRUE
 	else
+		anchored = FALSE
 		state = STATE_UNDEPLOYED
 
 	update_icon()

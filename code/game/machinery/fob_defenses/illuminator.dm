@@ -7,7 +7,7 @@
 	icon = 'icons/obj/structures/machinery/fob_machinery/illuminator.dmi'
 	icon_state = "floodlight_undeployed"
 	density = TRUE
-	anchored = TRUE
+	anchored = FALSE
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -70,7 +70,9 @@
 			set_light(18)
 		else
 			state = STATE_OFF
+		anchored = TRUE
 	else
+		anchored = FALSE
 		state = STATE_UNDEPLOYED
 
 	update_icon()

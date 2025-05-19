@@ -317,8 +317,6 @@
 		. += desc
 	if(desc_lore)
 		. += SPAN_NOTICE("This has an <a href='byond://?src=\ref[src];desc_lore=1'>extended lore description</a>.")
-	if(HAS_TRAIT(src, TRAIT_ITEM_DISSOLVING))
-		. += SPAN_WARNING("It is currently dissolving into bits!")
 
 /obj/item/attack_hand(mob/user)
 	if (!user)

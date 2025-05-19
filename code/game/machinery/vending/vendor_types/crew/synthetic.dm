@@ -606,7 +606,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/suit/medicalvest_green
 	path = /obj/item/clothing/suit/storage/hazardvest/medical_green
 
-/datum/gear/synthetic/suit/medicalvest_green
+/datum/gear/synthetic/suit/medicalvest_red
 	path = /obj/item/clothing/suit/storage/hazardvest/medical_red
 
 /datum/gear/synthetic/suit/snowsuit

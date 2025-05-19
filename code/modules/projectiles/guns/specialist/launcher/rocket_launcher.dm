@@ -70,7 +70,7 @@
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(skill_locked && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
+		if(skill_locked && skill_check(user))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
@@ -79,6 +79,9 @@
 			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)
+
+/obj/item/weapon/gun/launcher/rocket/proc/skill_check(mob/living/user)
+	return !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
 // if(active_attachable) active_attachable = null
@@ -395,3 +398,7 @@
 /obj/item/weapon/gun/launcher/rocket/brute
 	desc = " Breaching Rocket Unit for Tachical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Time to unleash some BRUTE force at your enemy"
 	current_mag = /obj/item/ammo_magazine/rocket/brute
+	skill_locked = TRUE
+
+/obj/item/weapon/gun/launcher/rocket/brute/skill_check(mob/living/user)
+	return skill_check(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)

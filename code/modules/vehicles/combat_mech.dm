@@ -1,6 +1,6 @@
 #define MECH_LAYER MOB_LAYER + 0.12
 #define MECH_CORE_LAYER MOB_LAYER + 0.11
-/obj/vehicle/combat_mech
+/obj/vehicle/rx47_mech
 	name = "\improper RX47 Combat Mechsuit"
 	icon = 'icons/obj/vehicles/wymech.dmi'
 	desc = "Yeehaw!"
@@ -25,7 +25,7 @@
 
 //--------------------GENERAL PROCS-----------------
 
-/obj/vehicle/combat_mech/Initialize()
+/obj/vehicle/rx47_mech/Initialize()
 	cell = new /obj/item/cell/apc
 
 	gun_left = new(src)
@@ -36,7 +36,7 @@
 	rebuild_icon()
 	. = ..()
 
-/obj/vehicle/combat_mech/proc/rebuild_icon()
+/obj/vehicle/rx47_mech/proc/rebuild_icon()
 	overlays.Cut()
 	if(buckled_mob)
 		overlays += image(icon_state = "wymech_body_overlay", layer = MECH_CORE_LAYER)
@@ -52,7 +52,9 @@
 		overlays += image(icon_state = "wymech_markings_[squad_color]", layer = MECH_LAYER)
 
 
-/obj/vehicle/combat_mech/Destroy()
+/obj/vehicle/rx47_mech/Destroy()
+	if(buckled_mob)
+		unbuckle()
 	if(gun_left)
 		qdel(gun_left)
 		gun_left = null
@@ -61,7 +63,7 @@
 		gun_right = null
 	return ..()
 
-/obj/vehicle/combat_mech/relaymove(mob/user, direction)
+/obj/vehicle/rx47_mech/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated())
 		return
 	if(world.time > l_move_time + move_delay)
@@ -76,7 +78,7 @@
 			if(.)
 				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
 
-/obj/vehicle/combat_mech/handle_rotation()
+/obj/vehicle/rx47_mech/handle_rotation()
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
 		switch(dir)
@@ -87,16 +89,21 @@
 			else
 				buckled_mob.pixel_x = 0
 
-/obj/vehicle/combat_mech/explode()
+/obj/vehicle/rx47_mech/explode()
 	new wreckage(loc)
 	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 	..()
 
 
-/obj/vehicle/combat_mech/Collide(atom/A)
+/obj/vehicle/rx47_mech/Collide(atom/A)
 	if(ishumansynth_strict(A))
 		var/mob/living/carbon/human/human_hit = A
 		human_hit.KnockDown(3)
+		return
+
+	if(istype(A, /obj/structure/barricade/plasteel))
+		var/obj/structure/barricade/plasteel/cade = A
+		cade.attack_hand(buckled_mob)
 		return
 
 	if(A && !QDELETED(A))
@@ -104,14 +111,14 @@
 		A.Collided(src)
 		return
 
-/obj/vehicle/combat_mech/Collided(atom/A)
+/obj/vehicle/rx47_mech/Collided(atom/A)
 	if(isxeno(A))
 		var/mob/living/carbon/xenomorph/xeno = A
 		health -= (xeno.melee_vehicle_damage * 5)
 		healthcheck()
 		return
 
-/obj/vehicle/combat_mech/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
+/obj/vehicle/rx47_mech/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if(attacking_xeno.a_intent == INTENT_HELP)
 		return XENO_NO_DELAY_ACTION
 
@@ -133,7 +140,7 @@
 	return XENO_ATTACK_ACTION
 //--------------------INTERACTION PROCS-----------------
 
-/obj/vehicle/combat_mech/get_examine_text(mob/user)
+/obj/vehicle/rx47_mech/get_examine_text(mob/user)
 	. = ..()
 	if(get_dist(user, src) > 2 && user != loc)
 		return
@@ -153,7 +160,7 @@
 	if(gun_right)
 		. += gun_right.get_examine_text(user, TRUE)
 
-/obj/vehicle/combat_mech/attack_hand(mob/user)
+/obj/vehicle/rx47_mech/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
 		buckled_mob.visible_message(SPAN_WARNING("[user] tries to move [buckled_mob] out of [src]."),
 		SPAN_DANGER("[user] tries to move you out of [src]!"))
@@ -164,7 +171,7 @@
 			manual_unbuckle(user)
 			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
 
-/obj/vehicle/combat_mech/buckle_mob(mob/M, mob/user)
+/obj/vehicle/rx47_mech/buckle_mob(mob/M, mob/user)
 	if(M != user)
 		return
 	if(!ishuman(M))
@@ -178,21 +185,22 @@
 		return
 	. = ..()
 
-/obj/vehicle/combat_mech/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
+/obj/vehicle/rx47_mech/proc/flamer_fire_crossed_callback(mob/living/L, datum/reagent/R)
 	SIGNAL_HANDLER
 
 	return COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
 
-/obj/vehicle/combat_mech/attackby(obj/item/W, mob/user)
+/obj/vehicle/rx47_mech/attackby(obj/item/W, mob/user)
 	. = ..()
 	var/obj/item/weapon/gun/mech/mech_gun = W
 	if((mech_gun == gun_right) || mech_gun == gun_left)
 		user.drop_held_item(mech_gun, TRUE)
 
-/obj/vehicle/combat_mech/afterbuckle(mob/new_buckled_mob)
+/obj/vehicle/rx47_mech/afterbuckle(mob/new_buckled_mob)
 	. = ..()
 	new_buckled_mob.layer = MOB_LAYER + 0.1
 	ADD_TRAIT(new_buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
+	ADD_TRAIT(new_buckled_mob, TRAIT_FORCED_STANDING, TRAIT_SOURCE_BUCKLE)
 	RegisterSignal(new_buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
 	rebuild_icon()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
@@ -214,26 +222,27 @@
 		move_delay = initial(move_delay)
 		new_buckled_mob.drop_held_items(TRUE) //drop the weapons when unbuckling
 
-/obj/vehicle/combat_mech/unbuckle()
+/obj/vehicle/rx47_mech/unbuckle()
 	buckled_mob.layer = MOB_LAYER
 	REMOVE_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
+	REMOVE_TRAIT(buckled_mob, TRAIT_FORCED_STANDING, TRAIT_SOURCE_BUCKLE)
 	UnregisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED)
 	..()
 
-/obj/vehicle/combat_mech/proc/update_mouse_pointer(mob/user, new_cursor)
+/obj/vehicle/rx47_mech/proc/update_mouse_pointer(mob/user, new_cursor)
 	if(!user.client?.prefs.custom_cursors)
 		return
 	user.client.mouse_pointer_icon = new_cursor ? mouse_pointer : initial(user.client.mouse_pointer_icon)
 
 //verb
-/obj/vehicle/combat_mech/verb/enter_mech()
+/obj/vehicle/rx47_mech/verb/enter_mech()
 	set category = "Object.Mechsuit"
 	set name = "Enter Combat Mechsuit"
 	set src in oview(1)
 
 	buckle_mob(usr, usr)
 
-/obj/vehicle/combat_mech/verb/toggle_helmet()
+/obj/vehicle/rx47_mech/verb/toggle_helmet()
 	set category = "Object.Mechsuit"
 	set name = "Toggle Faceplate"
 	set src in oview(1)
@@ -251,7 +260,7 @@
 
 //Guns
 /obj/item/weapon/gun/mech
-	var/obj/vehicle/combat_mech/linked_mech
+	var/obj/vehicle/rx47_mech/linked_mech
 	unacidable = TRUE
 	explo_proof = TRUE
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_TRIGGER_SAFETY

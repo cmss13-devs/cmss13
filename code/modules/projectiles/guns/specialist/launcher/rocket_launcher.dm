@@ -400,5 +400,10 @@
 	current_mag = /obj/item/ammo_magazine/rocket/brute
 	skill_locked = TRUE
 
+/obj/item/weapon/gun/launcher/rocket/brute/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
 /obj/item/weapon/gun/launcher/rocket/brute/skill_fail(mob/living/user)
 	return !skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)

@@ -309,7 +309,9 @@
 	prime(null, projectile)
 
 /datum/ammo/rocket/brute
+	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_HITS_TARGET_TURF|AMMO_SNIPER //sniper as we want good acc
 	name = "BRUTE rocket"
+
 
 /datum/ammo/rocket/brute/on_hit_mob(mob/mob, obj/projectile/projectile)
 	INVOKE_ASYNC(src,PROC_REF(prime), mob, projectile)

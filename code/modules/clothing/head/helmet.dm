@@ -858,8 +858,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon = 'icons/obj/items/clothing/hats/hats_by_map/urban.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_map/urban.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 	)
 
 /obj/item/clothing/head/helmet/marine/tech/tanker

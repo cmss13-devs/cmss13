@@ -378,11 +378,11 @@
 		for(var/obj/atom in location.contents)
 			if(atom.anchored)
 				continue
-			if(prob(30))
+			if(prob(20))
 				continue
 			atom.throw_atom(get_angle_target_turf(location,throw_direction,1),range = 1,speed = SPEED_INSTANT, spin = FALSE)
 		for(var/mob/living in location.contents)
-			if(prob(30 + living.mob_size * 5 ))
+			if(prob(20 + living.mob_size * 5 ))
 				continue
 			living.throw_atom(get_angle_target_turf(location,throw_direction,1),range = 1,speed = SPEED_INSTANT, spin = FALSE)
 

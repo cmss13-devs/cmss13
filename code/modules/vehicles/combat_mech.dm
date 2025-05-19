@@ -202,6 +202,7 @@
 	ADD_TRAIT(new_buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
 	ADD_TRAIT(new_buckled_mob, TRAIT_FORCED_STANDING, TRAIT_SOURCE_BUCKLE)
 	RegisterSignal(new_buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
+	update_mouse_pointer(buckled_mob, TRUE)
 	rebuild_icon()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
@@ -227,6 +228,7 @@
 	REMOVE_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
 	REMOVE_TRAIT(buckled_mob, TRAIT_FORCED_STANDING, TRAIT_SOURCE_BUCKLE)
 	UnregisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED)
+	update_mouse_pointer(buckled_mob, FALSE)
 	..()
 
 /obj/vehicle/rx47_mech/proc/update_mouse_pointer(mob/user, new_cursor)

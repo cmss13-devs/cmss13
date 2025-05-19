@@ -8,8 +8,8 @@
 	icon_state = "platform_undeployed"
 	density = TRUE
 	anchored = TRUE
-	bound_width = 64
-	bound_height = 64
+	pixel_x = -16
+	pixel_y = -16
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
@@ -191,6 +191,10 @@
 				state = STATE_ON
 			else
 				state = STATE_OFF
+			bound_width = 64
+			bound_height = 64
+			pixel_x = 0
+			pixel_y = 0
 			update_icon()
 		if(STATE_ON, STATE_OFF)
 			if(linked_weapon)
@@ -217,6 +221,10 @@
 
 					state = STATE_UNDEPLOYED
 					update_icon()
+					bound_width = 32
+					bound_height = 32
+					pixel_x = -16
+					pixel_y = -16
 					return
 
 				if(!istype(attack_item, /obj/item/powerloader_clamp))

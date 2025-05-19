@@ -39,12 +39,16 @@
 		to_chat(user, SPAN_WARNING("Turning on [src] right now would be a waste, attempt to secure the transformer first."))
 		return
 
+	var/verify = tgui_input_list(user, "Are you SURE you want to turn on the backup generator? (One-time use)", "Confirm", list("Yes", "No"))
+	if(verify != "Yes")
+		return
+
 	if(GLOB.transformer.is_active())
 		to_chat(user, SPAN_WARNING("The main transformer is already active, activating [src] now would be a waste."))
 		return
 
 	to_chat(user, SPAN_WARNING("You begin activating [src]."))
-	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		to_chat(user, SPAN_WARNING("You were interrupted."))
 		return
 

@@ -4,12 +4,11 @@
 	icon_state = "sentry_undeployed"
 	density = TRUE
 	anchored = TRUE
-	bound_width = 64
-	bound_height = 32
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	needs_power = FALSE
+	pixel_x = -17
 	var/datum/shape/rectangle/square/range_bounds
 
 /obj/structure/machinery/sentry/Initialize(mapload, ...)

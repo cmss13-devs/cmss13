@@ -4388,14 +4388,6 @@
 /obj/structure/machinery/weapons_platform,
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
-"ajM" = (
-/obj/structure/sign/safety/bulkhead_door{
-	pixel_x = 8;
-	pixel_y = -32
-	},
-/obj/structure/machinery/weapons_platform,
-/turf/open/floor/plating,
-/area/almayer/maint/lower/constr)
 "ajN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/east,
@@ -4935,10 +4927,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop/hangar)
-"alw" = (
-/obj/structure/machinery/rocket_launcher,
-/turf/open/floor/plating,
-/area/almayer/maint/lower/constr)
 "alx" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -6143,6 +6131,12 @@
 "aoO" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/stern_point_defense)
+"aoP" = (
+/obj/structure/machinery/rocket_launcher{
+	pixel_x = -16
+	},
+/turf/open/floor/plating,
+/area/almayer/maint/lower/constr)
 "aoQ" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/stern_point_defense)
@@ -91750,8 +91744,8 @@ bcm
 kQr
 tTC
 tTC
-alw
 tTC
+aoP
 ajL
 hOV
 uKH
@@ -91954,8 +91948,8 @@ qhG
 krJ
 tTC
 tTC
-tTC
-tTC
+amM
+ajL
 hOV
 uKH
 kyP
@@ -92156,8 +92150,8 @@ bcm
 gOk
 tTC
 tTC
-amM
 tTC
+amM
 bjg
 hOV
 siT
@@ -92562,9 +92556,9 @@ rrh
 xKG
 gyH
 tTC
-amM
 tTC
-ajM
+tTC
+lDA
 hOV
 siT
 kyP

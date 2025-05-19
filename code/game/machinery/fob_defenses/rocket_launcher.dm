@@ -8,9 +8,8 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	needs_power = FALSE
-	bound_width = 64
-	bound_height = 32
 	pixel_y = -16
+	pixel_x = -16
 
 /obj/structure/machinery/rocket_launcher/attackby(obj/item/attack_item, mob/user)
 	if(istype(attack_item, /obj/item/powerloader_clamp))

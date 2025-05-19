@@ -20,6 +20,8 @@
 /obj/structure/machinery/sensor/proc/turn_on()
 	if(state == STATE_OFF)
 		state = STATE_ON
+		if(!SSsensors.sensors)
+			return
 		SSsensors.sensors |= src
 
 /obj/structure/machinery/sensor/attackby(obj/item/attack_item, mob/user)

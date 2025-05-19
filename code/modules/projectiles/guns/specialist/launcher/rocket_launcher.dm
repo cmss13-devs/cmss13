@@ -410,9 +410,16 @@
 	return !skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)
 
 /obj/item/weapon/gun/launcher/rocket/brute/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
-	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall) ))
+	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
 		user.visible_message(SPAN_WARNING("Invalid target!"))
 		return
+
+	var/list/turf/path = get_line(user, target, include_start_atom = FALSE)
+	for(var/turf/T in path)
+		if(T.opacity && T != target)
+			user.visible_message(SPAN_WARNING("Target obscured!"))
+			return
+
 	var/beam = "laser_beam_intense"
 	var/lockon = "sniper_lockon_intense"
 	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = lockon)

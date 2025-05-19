@@ -378,7 +378,7 @@
 
 	if(prob(30))
 		var/datum/effect_system/smoke_spread/smoke = new()
-		smoke.set_up(radius = 0, loca = location, smoke_time = 1 SECONDS)
+		smoke.set_up(radius = 0, loca = location, smoke_time = 3 DECISECONDS)
 		smoke.start()
 
 	if(edge)

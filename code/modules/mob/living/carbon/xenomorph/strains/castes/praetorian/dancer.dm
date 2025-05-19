@@ -23,7 +23,7 @@
 /datum/xeno_strain/dancer/apply_strain(mob/living/carbon/xenomorph/praetorian/prae)
 	prae.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
 	prae.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
-	prae.evasion_modifier = XENO_EVASION_MOD_DANCER
+	prae.dodge_chance = 20
 	prae.regeneration_multiplier = XENO_REGEN_MULTIPLIER_TIER_7
 	prae.plasma_types = list(PLASMA_CATECHOLAMINE)
 	prae.claw_type = CLAW_TYPE_SHARP
@@ -172,7 +172,7 @@
 	button.icon_state = "template_active"
 	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
 	dodge_user.speed_modifier -= speed_buff_amount
-	dodge_user.evasion_modifier += XENO_EVASION_MOD_ULTRA
+	dodge_user.dodge_chance += 25
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
 	dodge_user.recalculate_evasion()
@@ -200,7 +200,7 @@
 		behavior.dodge_activated = FALSE
 		button.icon_state = "template"
 		dodge_remove.speed_modifier += speed_buff_amount
-		dodge_remove.evasion_modifier -= XENO_EVASION_MOD_ULTRA
+		dodge_remove.dodge_chance -= 25
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
 		dodge_remove.recalculate_evasion()

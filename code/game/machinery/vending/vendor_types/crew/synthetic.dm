@@ -522,6 +522,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/helmet/marine_desert
 	path = /obj/item/clothing/head/helmet/marine/desert
 
+/datum/gear/synthetic/helmet/marine_urban
+	path = /obj/item/clothing/head/helmet/marine/urban
+
 /datum/gear/synthetic/mask
 	category = "Mask"
 

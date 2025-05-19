@@ -35,6 +35,10 @@
 		to_chat(user, SPAN_WARNING("[src] is depleted, use a different generator or activate the main transformer."))
 		return
 
+	if(ROUND_TIME < 35 MINUTES)
+		to_chat(user, SPAN_WARNING("Turning on [src] right now would be a waste, attempt to secure the transformer first."))
+		return
+
 	if(GLOB.transformer.is_active())
 		to_chat(user, SPAN_WARNING("The main transformer is already active, activating [src] now would be a waste."))
 		return

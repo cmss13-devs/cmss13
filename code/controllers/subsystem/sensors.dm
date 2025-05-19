@@ -16,5 +16,7 @@ SUBSYSTEM_DEF(sensors)
 	targets.Cut()
 
 	for(var/obj/structure/machinery/sensor/sensor in sensors)
-		targets |= SSquadtree.players_in_range(sensor.range_bounds, sensor.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)
+		for(var/mob/potential_target in SSquadtree.players_in_range(sensor.range_bounds, sensor.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER))
+			if(isInSight(sensor, potential_target))
+				targets |= potential_target
 

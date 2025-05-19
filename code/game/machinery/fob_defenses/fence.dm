@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 			return
 
 		if(state == STATE_ON)
-			user.balloon_alert(user, "you cannot dissassemble the [src.name] while it is active.")
+			user.balloon_alert(user, "you cannot disassemble the [src.name] while it is active.")
 
 		if(!do_after(usr, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 			return

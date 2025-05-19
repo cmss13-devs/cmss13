@@ -60,25 +60,8 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		return
 
 	var/obj/effect/alien/weeds/node/pylon/cluster/parent_node = weeded_turf.weeds.parent
-	var/obj/effect/alien/resin/special/cluster/cluster_parent = parent_node.resin_parent
 
-	var/list/held_children_weeds = parent_node.children
-	var/cluster_loc = cluster_parent.loc
-	var/linked_hive = cluster_parent.linked_hive
-
-	parent_node.children = list()
-
-	qdel(cluster_parent)
-
-	var/obj/effect/alien/resin/special/pylon/endgame/new_pylon = new(cluster_loc, linked_hive)
-	new_pylon.node.children = held_children_weeds
-
-	for(var/obj/effect/alien/weeds/weed in new_pylon.node.children)
-		weed.parent = new_pylon.node
-		weed.spread_on_semiweedable = TRUE
-		weed.weed_expand()
-
-	RegisterSignal(new_pylon, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
+	RegisterSignal(parent_node, COMSIG_PARENT_QDELETING, PROC_REF(uncorrupt))
 
 	state = STATE_XENO_CAPTURED
 	update_icon()

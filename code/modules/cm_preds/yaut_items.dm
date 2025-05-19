@@ -1168,6 +1168,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
 	access = new_access
 
+///Able to dissolve anything not anchored to the ground or being held, while uncloaked.
 /obj/item/tool/yautja_cleaner
 	name = "cleanser gel vial"
 	desc = "A small vial containing a liquid capable of dissolving the gear of the fallen whilst in the field."
@@ -1190,6 +1191,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 		return
 	handle_dissolve(target, user)
 
+///Checks for permission and items dissallowed to be dissolved.
 /obj/item/tool/yautja_cleaner/proc/can_dissolve(obj/item/target, mob/user)
 	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea what this even does."))
@@ -1197,35 +1199,36 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	if(HAS_TRAIT(target, TRAIT_ITEM_DISSOLVING))
 		to_chat(user, SPAN_WARNING("\The [target] is already covered in dissolving gel."))
 		return FALSE
-	if(user.alpha < 255)
+	if(HAS_TRAIT(user,TRAIT_CLOAKED))
 		to_chat(user, SPAN_WARNING("It would not be safe to attempt this while cloaked!"))
 		return FALSE
 	if(target.anchored)
 		to_chat(user, SPAN_WARNING("\The [target] cannot be moved by any means, why dissolve it?"))
 		return FALSE
-	if(istype(target.loc, /mob/living))
-		to_chat(user, SPAN_WARNING("You cannot dissolve \the [target] while it is being held."))
+	if(isliving(target.loc))
+		to_chat(user, SPAN_WARNING("You cannot dissolve the [target] while it is being held."))
 		return
 	if(istype(target, /obj/item/tool/yautja_cleaner))
 		to_chat(user, SPAN_WARNING("You cannot dissolve more dissolving fluid."))
 		return FALSE
 	return TRUE
 
+///Actual action of using the vial on an item.
 /obj/item/tool/yautja_cleaner/proc/handle_dissolve(obj/item/target, mob/user)
-	user.visible_message(SPAN_DANGER("[user] uncaps a vial and begins to pour out a vibrant blue liquid over \the [target]!"),
-					SPAN_NOTICE("You begin to spread dissolving gel onto \the [target]!"))
+	user.visible_message(SPAN_DANGER("[user] uncaps a vial and begins to pour out a vibrant blue liquid over [target]!"),
+					SPAN_NOTICE("You begin to spread dissolving gel onto [target]!"))
 	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to \the [target]!"),
-					SPAN_WARNING("You decide not to cover \the [target] with dissolving gel."))
+		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to [target]!"),
+					SPAN_NOTICE("You decide not to cover [target] with dissolving gel."))
 		return
-	if(!locate(target) in oview(1, user)) //Late check to ensure the item hasn't moved out of range.
+	if(get_dist(target, user) > 1) //Late check to ensure the item hasn't moved out of range.
 		return
-	user.visible_message(SPAN_DANGER("[user] pours blue liquid all over \the [target]!"),
-				SPAN_NOTICE("You cover \the [target] with dissolving gel!"))
+	user.visible_message(SPAN_DANGER("[user] pours blue liquid all over [target]!"),
+				SPAN_NOTICE("You cover [target] with dissolving gel!"))
 	dissolving_image = image(icon, icon_state = "dissolving_gel")
 	target.overlays += dissolving_image
 	playsound(target.loc, 'sound/effects/acid_sizzle4.ogg', 25)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), target), 15 SECONDS)
+	QDEL_IN(target, 15 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[target] crumbles into pieces!")), 15 SECONDS)
 	ADD_TRAIT(target, TRAIT_ITEM_DISSOLVING, TRAIT_SOURCE_ITEM)
 	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner.")

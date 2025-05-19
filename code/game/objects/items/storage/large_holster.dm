@@ -481,6 +481,6 @@
 
 /obj/item/storage/belt/gun/brutepack/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/launcher/rocket/brute())
-	new /datum/ammo/rocket/brute
-	new /datum/ammo/rocket/brute
-	new /datum/ammo/rocket/brute
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)

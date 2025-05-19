@@ -401,4 +401,4 @@
 	skill_locked = TRUE
 
 /obj/item/weapon/gun/launcher/rocket/brute/skill_check(mob/living/user)
-	return skill_check(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)
+	return skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)

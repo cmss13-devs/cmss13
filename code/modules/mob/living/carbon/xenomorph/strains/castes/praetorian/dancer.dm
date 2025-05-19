@@ -175,7 +175,6 @@
 	dodge_user.dodge_chance += 25
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
-	dodge_user.recalculate_evasion()
 
 	//Start afterimage sequence
 	INVOKE_ASYNC(src, PROC_REF(create_afterimage_sequence), dodge_user, duration)
@@ -203,7 +202,6 @@
 		dodge_remove.dodge_chance -= 25
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()
-		dodge_remove.recalculate_evasion()
 		to_chat(dodge_remove, SPAN_XENOHIGHDANGER("We can no longer dodge through mobs!"))
 
 /datum/action/xeno_action/onclick/prae_dodge/proc/create_afterimage_sequence(mob/living/carbon/xenomorph/dodge_user, duration)

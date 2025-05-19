@@ -467,3 +467,20 @@
 	if (!istype(FP))
 		return
 	FP.toggle_fuel()
+
+/obj/item/storage/belt/gun/brutepack
+	flags_equip_slot = SLOT_BACK //yes we are belt subtype that is worn on back
+	storage_slots = 7
+	max_w_class = 10
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
+	icon_state = "flamethrower_broiler"
+	can_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/weapon/gun/launcher/rocket/brute
+	)
+
+/obj/item/storage/belt/gun/brutepack/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/launcher/rocket/brute())
+	new /datum/ammo/rocket/brute
+	new /datum/ammo/rocket/brute
+	new /datum/ammo/rocket/brute

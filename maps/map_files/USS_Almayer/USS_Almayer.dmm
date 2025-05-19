@@ -4388,6 +4388,10 @@
 /obj/structure/machinery/weapons_platform,
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
+"ajM" = (
+/obj/structure/machinery/backup_generator,
+/turf/open/floor/plating,
+/area/almayer/maint/lower/constr)
 "ajN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/east,
@@ -4603,7 +4607,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
 "akv" = (
-/obj/structure/machinery/backup_generator,
+/obj/structure/machinery/rocket_launcher{
+	pixel_x = -16
+	},
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "akw" = (
@@ -4927,6 +4933,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop/hangar)
+"alw" = (
+/obj/structure/machinery/sentry,
+/turf/open/floor/plating,
+/area/almayer/maint/lower/constr)
 "alx" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -5387,9 +5397,12 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
 "amM" = (
-/obj/structure/machinery/sentry,
-/turf/open/floor/plating,
-/area/almayer/maint/lower/constr)
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/obj/structure/dropship_equipment/medevac_system,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "amN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -5452,11 +5465,8 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/navigation)
 "amY" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8
-	},
-/obj/structure/dropship_equipment/medevac_system,
-/turf/open/floor/almayer/plate,
+/obj/structure/dropship_equipment/paradrop_system,
+/turf/open/floor/almayer/cargo,
 /area/almayer/hallways/hangar)
 "amZ" = (
 /turf/open/floor/almayer/plating_striped/west,
@@ -5483,8 +5493,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "and" = (
-/obj/structure/dropship_equipment/paradrop_system,
-/turf/open/floor/almayer/cargo,
+/obj/structure/dropship_equipment/fulton_system,
+/turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "ane" = (
 /turf/open/floor/almayer/plating_striped/east,
@@ -6115,10 +6125,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
-"aoL" = (
-/obj/structure/dropship_equipment/fulton_system,
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "aoM" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/medical_science)
@@ -6131,12 +6137,6 @@
 "aoO" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/stern_point_defense)
-"aoP" = (
-/obj/structure/machinery/rocket_launcher{
-	pixel_x = -16
-	},
-/turf/open/floor/plating,
-/area/almayer/maint/lower/constr)
 "aoQ" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/stern_point_defense)
@@ -91339,7 +91339,7 @@ uPQ
 tTC
 tTC
 ffq
-akv
+ajM
 air
 hOV
 uXm
@@ -91745,7 +91745,7 @@ kQr
 tTC
 tTC
 tTC
-aoP
+akv
 ajL
 hOV
 uKH
@@ -91948,7 +91948,7 @@ qhG
 krJ
 tTC
 tTC
-amM
+alw
 ajL
 hOV
 uKH
@@ -92151,7 +92151,7 @@ gOk
 tTC
 tTC
 tTC
-amM
+alw
 bjg
 hOV
 siT
@@ -93753,7 +93753,7 @@ bfV
 baM
 bkd
 bdU
-amY
+amM
 baM
 bkd
 bdU
@@ -93954,7 +93954,7 @@ aYt
 aYt
 aYt
 puI
-aoL
+and
 pcl
 gHZ
 pcl
@@ -95579,7 +95579,7 @@ aYt
 aYt
 anW
 aYt
-and
+amY
 gHZ
 pcl
 gHZ

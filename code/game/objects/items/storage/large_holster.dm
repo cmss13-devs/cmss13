@@ -476,7 +476,7 @@
 	icon_state = "flamethrower_broiler"
 	can_hold = list(
 		/obj/item/ammo_magazine,
-		/obj/item/weapon/gun/launcher/rocket/brute
+		/obj/item/weapon/gun/launcher/rocket/brute,
 	)
 
 /obj/item/storage/belt/gun/brutepack/full/fill_preset_inventory()

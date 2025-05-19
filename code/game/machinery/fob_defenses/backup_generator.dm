@@ -57,6 +57,17 @@
 		return
 
 	to_chat(user, SPAN_WARNING("You activate [src]."))
+	marine_announcement("Power Alert: \nBackup generator powering up, estimated time until online - 30 seconds.", "ARES Power Grid Monitor")
+	var/datum/hive_status/hive
+	for(var/cur_hive_num in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_hive_num]
+		if(!length(hive.totalXenos))
+			continue
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have activated a backup power source, it will turn on in 30 seconds!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+	timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), 5 MINUTES, TIMER_STOPPABLE)
+	addtimer(CALLBACK(src, PROC_REF(turn_on)), 30 SECONDS)
+
+/obj/structure/machinery/backup_generator/proc/turn_on()
 	if(!GLOB.transformer.is_active())
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_ON)
 	GLOB.transformer.backup = src

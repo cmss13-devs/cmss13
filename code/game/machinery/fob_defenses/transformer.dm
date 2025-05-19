@@ -20,6 +20,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 
 	var/state = STATE_BROKEN
 	var/shutdown_timer
+	var/turn_on_timer
 	var/obj/structure/machinery/backup_generator/backup
 
 /obj/structure/machinery/transformer/Initialize(mapload, ...)
@@ -116,7 +117,18 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	update_icon()
 	if(shutdown_timer)
 		deltimer(shutdown_timer)
-	marine_announcement("Power Alert: \nColony transformer online. Power grid operational.", "ARES Power Grid Monitor")
+		shutdown_timer = null
+	turn_on_timer = addtimer(CALLBACK(src, PROC_REF(turn_on)), 30 SECONDS, TIMER_STOPPABLE)
+	marine_announcement("Power Alert: \nColony transformer turning on. Power grid will be operational in approximately 30 seconds.", "ARES Power Grid Monitor")
+	var/datum/hive_status/hive
+	for(var/cur_hive_num in GLOB.hive_datum)
+		hive = GLOB.hive_datum[cur_hive_num]
+		if(!length(hive.totalXenos))
+			continue
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source is powering up, It will be restored in approximately 30 seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+
+/obj/structure/machinery/transformer/proc/turn_on()
+	marine_announcement("Power Alert: \nColony transformer active. Power grid operational.", "ARES Power Grid Monitor")
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
@@ -153,6 +165,9 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source was destroyed, It will shutdown in 5 minutes!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 	shutdown_timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), 5 MINUTES, TIMER_STOPPABLE)
+	if(turn_on_timer)
+		deltimer(turn_on_timer)
+		turn_on_timer = null
 
 /obj/structure/machinery/transformer/proc/turn_off()
 	shutdown_timer = null

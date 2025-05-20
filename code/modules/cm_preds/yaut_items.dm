@@ -1227,20 +1227,10 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 				SPAN_NOTICE("You cover [target] with dissolving gel!"))
 	dissolving_image = image(icon, icon_state = "dissolving_gel")
 	target.overlays += dissolving_image
-	target.AddElement(/datum/element/item_dissolving)
-	SEND_SIGNAL(src, COMSIG_ITEM_DISSOLVING)
 	playsound(target.loc, 'sound/effects/acid_sizzle4.ogg', 25)
 	QDEL_IN(target, 15 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[target] crumbles into pieces!")), 15 SECONDS)
 	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner.")
-
-/datum/element/item_dissolving
-	RegisterSignal(target, COMSIG_ITEM_DISSOLVING, PROC_REF(on_examine))
-
-/datum/element/item_dissolving/proc/on_examine(datum/source, mob/examiner, list/examine_text)
-    SIGNAL_HANDLER
-
-    examine_text += "It is currently dissolving into bits!"
 
 /obj/item/storage/medicomp
 	name = "medicomp"

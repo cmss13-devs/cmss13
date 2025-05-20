@@ -1,4 +1,11 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/floor/almayer,
@@ -48,13 +55,6 @@
 /obj/structure/closet/crate/green,
 /turf/open/floor/plating/warnplate/east,
 /area/kutjevo/interior/colony/clf_shuttle)
-"bI" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
-	dir = 1
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/clf_lz)
 "bP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/station_alert{
@@ -1484,7 +1484,7 @@ Kn
 qx
 lX
 Ix
-bI
+aa
 cf
 cf
 zp

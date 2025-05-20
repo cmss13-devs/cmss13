@@ -142,7 +142,7 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed/engineer
 	name = "\improper PMC engineer helmet"
-	desc = "An advanced technician helmet with a black finish, including advanced welding protection and resistence to the potential industrial hazards, but has less kevlar against potential firefights."
+	desc = "An advanced technician helmet with a black finish, including advanced welding protection and resistance to industrial hazards, though it offers less kevlar against potential firefights."
 	icon_state = "pmc_engineer_helmet"
 	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW

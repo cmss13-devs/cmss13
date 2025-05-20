@@ -21,6 +21,8 @@
 
 #define BAYONET_DRAW_DELAY (1 SECONDS)
 
+#define GUN_TRANSFER_DELAY (0.7 SECONDS)
+
 //Predator decloak multpliers based on the standard.
 #define DECLOAK_STANDARD (10 SECONDS)
 /// Forced for any unspecified reason.

@@ -292,7 +292,7 @@
 
 	if(isgun(W) && slot == WEAR_J_STORE)
 		to_chat(src, "You start storing the [W].")
-		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, 0.7 SECONDS, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
+		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, GUN_TRANSFER_DELAY, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
 	equip_to_slot(W, slot, disable_warning) //This proc should not ever fail.

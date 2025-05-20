@@ -243,8 +243,9 @@
 				weapon.forceMove(src)
 				linked_weapon = weapon
 				if(istype(weapon, /obj/structure/machinery/sentry))
-					weapon.icon_state = "sentry"
-					weapon.range_bounds = SQUARE(x, y, 15)
+					var/obj/structure/machinery/sentry/linked_sentry = weapon
+					linked_sentry.icon_state = "sentry"
+					linked_sentry.range_bounds = SQUARE(x, y, 15)
 				else
 					weapon.icon_state = "rocket_launcher"
 				START_PROCESSING(SSobj, src)

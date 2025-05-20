@@ -399,6 +399,8 @@ Contains most of the procs that are called when a mob is attacked by something
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
 
+// Accuracy and Scatter debuff procs
+// Strength is to be treated as a %, and duration is to be specified in seconds
 /mob/living/carbon/human/proc/activate_degraded_accuracy(strength, duration)
 	if(!strength || accuracy_degredation_active)
 		return

@@ -48,6 +48,13 @@
 /obj/structure/closet/crate/green,
 /turf/open/floor/plating/warnplate/east,
 /area/kutjevo/interior/colony/clf_shuttle)
+"bI" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
 "bP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/station_alert{
@@ -203,9 +210,9 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/stonyfields)
 "iN" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/interior/colony/landing_zone_checkpoint)
@@ -508,9 +515,9 @@
 	},
 /area/kutjevo/interior/colony/clf_shuttle)
 "AT" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
@@ -753,7 +760,7 @@
 /turf/open/floor/almayer/blue/northwest,
 /area/kutjevo/interior/colony/clf_shuttle)
 "Nw" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 1;
 	faction_group = list("CLF")
 	},
@@ -1477,7 +1484,7 @@ Kn
 qx
 lX
 Ix
-Nw
+bI
 cf
 cf
 zp

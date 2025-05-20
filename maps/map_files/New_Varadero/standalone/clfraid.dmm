@@ -1137,9 +1137,9 @@
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/maintenance/research)
 "At" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 4
 	},
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/research)
@@ -1148,9 +1148,9 @@
 	pixel_x = 8;
 	pixel_y = 6
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/maintenance/research)
@@ -1209,9 +1209,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/research)
@@ -1541,9 +1541,9 @@
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 4
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)

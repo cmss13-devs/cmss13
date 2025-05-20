@@ -127,6 +127,18 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32
+	},
+/turf/open/floor/strata/floor3,
+/area/strata/interior/outpost/engi/drome)
+"aav" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/interior/outpost/canteen)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -244,6 +256,13 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
+"aaM" = (
+/obj/structure/sign/nosmoking_1{
+	pixel_x = -4;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/outpost/security)
 "aaN" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -385,6 +404,12 @@
 	},
 /turf/closed/wall/wood,
 /area/strata/interior/wooden_hospital)
+"abj" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/landing_zones/near_lz1)
 "abk" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -4717,9 +4742,8 @@
 /obj/structure/machinery/door/airlock/strata/autoname{
 	dir = 1
 	},
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "anF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/snacks/meat,
@@ -9350,6 +9374,11 @@
 /obj/item/device/flashlight/lamp,
 /obj/structure/machinery/light/small{
 	dir = 1
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	name = "Emergency NanoMed";
+	pixel_x = 1;
+	pixel_y = 29
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
@@ -23998,8 +24027,12 @@
 	dir = 1
 	},
 /obj/structure/sign/banners/upp_flag{
-	pixel_x = 16;
+	pixel_x = 14;
 	pixel_y = 31
+	},
+/obj/structure/sign/calendar{
+	pixel_x = -13;
+	pixel_y = 29
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/outpost/engi/drome)
@@ -31403,9 +31436,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e"
 	},
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "bPS" = (
 /obj/structure/prop/hybrisa/signs/high_voltage/small,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -32062,18 +32094,15 @@
 /area/strata/interior/mining_outpost/maintenance)
 "bRy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/floor2,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "bRz" = (
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/carpet,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "bRA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/carpet,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "bRB" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -32564,9 +32593,8 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/carpet,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "bSL" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /obj/effect/decal/hybrisa/dirt,
@@ -32779,14 +32807,12 @@
 /area/strata/interior/wooden_ruins)
 "bTo" = (
 /obj/structure/prop/almayer/computers/sensor_computer2,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "bTp" = (
 /obj/structure/sign/nosmoking_1,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "bTq" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/strata/yellow3/west,
@@ -37105,9 +37131,8 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18"
 	},
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/floor2,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "cmq" = (
 /turf/open/floor/greengrid,
 /area/strata/interior/checkpoints/north)
@@ -43415,9 +43440,8 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/floor2,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "jvl" = (
 /obj/structure/sign/safety/synth_storage,
 /turf/closed/wall/strata_outpost/reinforced,
@@ -44188,9 +44212,8 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "kGp" = (
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "kHg" = (
 /obj/structure/machinery/camera/autoname,
 /obj/item/storage/briefcase,
@@ -48507,9 +48530,8 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi/drome)
 "qin" = (
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/floor2,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "qjD" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/asphalt/cement/cement12,
@@ -48863,9 +48885,8 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/floor2,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "qFZ" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
 /obj/effect/decal/cleanable/blood,
@@ -49212,9 +49233,8 @@
 /area/strata/interior/outpost/med)
 "qWC" = (
 /obj/structure/filingcabinet,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/floor2,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "qWQ" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -51896,9 +51916,8 @@
 /area/strata/interior/parts_storage)
 "utX" = (
 /obj/structure/prop/almayer/computers/sensor_computer1,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "uul" = (
 /obj/structure/largecrate/guns/russian{
 	pixel_x = -2
@@ -52057,9 +52076,8 @@
 /area/strata/interior/parts_storage)
 "uDa" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "uDl" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -52123,9 +52141,8 @@
 "uGH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/greengrid,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "uHa" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -52204,9 +52221,8 @@
 	name = "slab of triumph";
 	pixel_y = 2
 	},
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/strata/floor2,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "uNI" = (
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
@@ -53942,9 +53958,8 @@
 /area/strata/exterior/marsh/water_marshes)
 "wYx" = (
 /obj/effect/decal/cleanable/cobweb2,
-/obj/effect/blocker/sorokyne_hot_water,
 /turf/open/floor/carpet,
-/area/strata/interior/out_of_bounds)
+/area/strata/exterior/restricted)
 "wYL" = (
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
@@ -59156,7 +59171,7 @@ bwl
 cnv
 cru
 azx
-aci
+abj
 ard
 arV
 dCq
@@ -78939,7 +78954,7 @@ ijo
 awf
 ceI
 ijo
-cdZ
+aaM
 aCd
 aDf
 cea
@@ -80710,7 +80725,7 @@ cpe
 aZq
 bbz
 bAm
-eeS
+aau
 bCK
 bmo
 agE
@@ -83490,7 +83505,7 @@ cjn
 cjn
 bFx
 cjn
-acf
+aav
 jnt
 chd
 aFz

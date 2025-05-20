@@ -1236,6 +1236,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	playsound(target.loc, 'sound/effects/acid_sizzle4.ogg', 25)
 	QDEL_IN(target, 15 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[target] crumbles into pieces!")), 15 SECONDS)
+	ADD_TRAIT(target, TRAIT_ITEM_DISSOLVING, TRAIT_SOURCE_ITEM)
 	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner.")
 
 /obj/item/storage/medicomp

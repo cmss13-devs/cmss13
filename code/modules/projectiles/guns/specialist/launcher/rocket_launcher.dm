@@ -404,6 +404,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
 	)
 	icon_state = "m6h"
+	item_state = "m6h"
 
 	current_mag = /obj/item/ammo_magazine/rocket/brute
 	skill_locked = TRUE

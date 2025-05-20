@@ -476,6 +476,9 @@
 	desc = "A special-issue harness designed to allow the user to freely and securely holster a M6H-BRUTE launcher system on their back without impeding movement, while also having several other integrated storage packs for additional ammo and equipment."
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "bruterig"
+	item_icons = list(
+	WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
 	can_hold = list(
 		/obj/item/ammo_magazine,
 		/obj/item/weapon/gun/launcher/rocket/brute,
@@ -486,3 +489,4 @@
 	new /obj/item/ammo_magazine/rocket/brute(src)
 	new /obj/item/ammo_magazine/rocket/brute(src)
 	new /obj/item/ammo_magazine/rocket/brute(src)
+	item_state = "bruterig"

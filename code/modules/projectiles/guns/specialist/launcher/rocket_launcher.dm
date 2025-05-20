@@ -396,7 +396,15 @@
 			C.emote("pain")
 
 /obj/item/weapon/gun/launcher/rocket/brute
-	desc = " Breaching Rocket Unit for Tachical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Time to unleash some BRUTE force at your enemy"
+	name = "\improper M6H-BRUTE launcher system"
+	desc = " Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
+	)
+	icon_state = "m6h"
+
 	current_mag = /obj/item/ammo_magazine/rocket/brute
 	skill_locked = TRUE
 	var/f_aiming_time = 4 SECONDS

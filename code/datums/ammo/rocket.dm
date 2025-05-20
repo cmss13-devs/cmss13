@@ -312,7 +312,14 @@
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_HITS_TARGET_TURF|AMMO_SNIPER //sniper as we want good acc
 	name = "M5510 Laser-Guided Rocket"
 	icon_state = "brute"
-
+	var/smoke_chance = 30
+	var/spark_chance = 30
+	var/fire_chance = 30
+	var/throw_chance = 20
+	var/structure_damage = 1200
+	var/edge_lower_dmg = 400
+	var/edge_upper_dmg = 700
+	var/max_distance = 7
 
 /datum/ammo/rocket/brute/on_hit_mob(mob/mob, obj/projectile/projectile)
 	INVOKE_ASYNC(src,PROC_REF(prime), mob, projectile)
@@ -327,8 +334,6 @@
 	INVOKE_ASYNC(src,PROC_REF(prime), null, projectile)
 
 /datum/ammo/rocket/brute/proc/prime(atom/atom, obj/projectile/projectile)
-	var/max_distance = 7
-
 	var/angle = projectile.angle
 	var/right_angle = (angle + 90 ) % 360
 	var/left_angle = (angle -90) % 360
@@ -367,37 +372,37 @@
 /datum/ammo/rocket/brute/proc/detonate(turf/location, turf/initial_location, list/detonated_locations, edge = FALSE)
 	if(location in detonated_locations)
 		return
-	var/damage = 1200
 
-	if(prob(30))
+
+	if(prob(fire_chance))
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), null, 0, location, BURN_TIME_INSTANT, BURN_LEVEL_TIER_1, FLAMESHAPE_LINE, null, FIRE_VARIANT_DEFAULT)
 
-	if(prob(30))
+	if(prob(spark_chance))
 		var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
 		spark.set_up(5, 1, location)
 		spark.start()
 
-	if(prob(30))
+	if(prob(smoke_chance))
 		var/datum/effect_system/smoke_spread/smoke = new()
 		smoke.set_up(radius = 0, loca = location, smoke_time = 3 DECISECONDS)
 		smoke.start()
 
 	if(edge)
-		damage = rand(400, 700)
+		structure_damage = rand(edge_lower_dmg, edge_upper_dmg)
 	if(istype(location,/turf/closed/wall))
-		location.ex_act(damage)
+		location.ex_act(structure_damage)
 	for(var/obj/structure/structure in location.contents)
-		structure.ex_act(damage)
+		structure.ex_act(structure_damage)
 	if(location != initial_location)
 		var/throw_direction = Get_Angle(initial_location, location)
 		for(var/obj/atom in location.contents)
 			if(atom.anchored)
 				continue
-			if(prob(20))
+			if(prob(throw_chance))
 				continue
 			atom.throw_atom(get_angle_target_turf(location,throw_direction,1),range = 1,speed = SPEED_INSTANT, spin = FALSE)
 		for(var/mob/living in location.contents)
-			if(prob(20 + living.mob_size * 5 ))
+			if(prob(throw_chance + living.mob_size * 5 ))
 				continue
 			living.throw_atom(get_angle_target_turf(location,throw_direction,1),range = 1,speed = SPEED_INSTANT, spin = FALSE)
 

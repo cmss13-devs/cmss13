@@ -268,6 +268,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/belt/gun/type47,
 		/obj/item/weapon/gun,
 
 		/obj/item/device/flashlight,

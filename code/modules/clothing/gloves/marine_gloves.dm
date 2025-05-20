@@ -45,8 +45,10 @@
 /obj/item/clothing/gloves/marine/insulated/black
 	name = "marine insulated black gloves"
 	desc = "These marine gloves will protect the wearer from electric shocks and shrapnal. Standard issue for properly-equipped Marines."
-	icon_state = "black"
+	icon_state = "yellow"
 	item_state = "black"
+	item_state_slots = list(WEAR_HANDS = "black")
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/black
 	name = "marine black combat gloves"

@@ -172,6 +172,14 @@
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
+"aaR" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"aaS" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_pad)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -4949,7 +4957,6 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
-/obj/item/clothing/glasses/thermal/syndi/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
@@ -11678,9 +11685,6 @@
 "rRC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
-/obj/item/clothing/glasses/thermal/syndi/kutjevo{
-	pixel_y = -2
-	},
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/colony_south/power2)
 "rSg" = (
@@ -15646,6 +15650,10 @@
 "ybd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine,
+/obj/structure/sign/calendar{
+	pixel_y = 29;
+	pixel_x = 9
+	},
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "ybh" = (
@@ -20185,7 +20193,7 @@ ppX
 ppX
 hzN
 wXf
-jGF
+aaS
 dmy
 dmy
 dmy
@@ -20433,7 +20441,7 @@ wGH
 wGH
 prJ
 wGH
-wGH
+aaR
 wGH
 prJ
 wGH

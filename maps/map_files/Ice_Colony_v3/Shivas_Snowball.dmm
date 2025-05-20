@@ -197,6 +197,13 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
+"aaM" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/interior/caves/cp_camp)
 "aaN" = (
 /obj/item/weapon/gun/flamer/survivor,
 /obj/structure/surface/rack,
@@ -207,6 +214,9 @@
 /obj/item/explosive/plastic,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaP" = (
+/turf/open/shuttle/elevator/grating,
+/area/shiva/interior/caves/cp_camp)
 "aaR" = (
 /obj/effect/spider/stickyweb,
 /obj/item/clothing/under/marine/veteran/marsoc,
@@ -217,6 +227,15 @@
 /obj/effect/spider/cocoon,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
+"aaT" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating,
+/area/shiva/interior/caves/cp_camp)
+"aaU" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/shuttle/elevator/grating,
+/area/shiva/interior/caves/cp_camp)
 "aaV" = (
 /obj/effect/spider/stickyweb,
 /obj/effect/spider/cocoon{
@@ -10566,9 +10585,6 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
-"hCa" = (
-/turf/open/shuttle/elevator/grating,
-/area/shiva/interior/caves/cp_camp)
 "hCt" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
@@ -13591,13 +13607,6 @@
 /obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
-"kYQ" = (
-/obj/item/shard{
-	icon_state = "medium";
-	name = "ice shard"
-	},
-/turf/open/auto_turf/snow/layer3,
-/area/shiva/interior/caves/cp_camp)
 "kZj" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 1
@@ -20309,11 +20318,6 @@
 "tnh" = (
 /turf/open/floor/shiva/snow_mat/north,
 /area/shiva/interior/colony/n_admin)
-"tni" = (
-/obj/structure/prop/ice_colony/ground_wire,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating,
-/area/shiva/interior/caves/cp_camp)
 "tnu" = (
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/bar)
@@ -24145,10 +24149,6 @@
 /obj/structure/machinery/landinglight/ds2/delaythree,
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
-"ylU" = (
-/obj/effect/landmark/monkey_spawn,
-/turf/open/shuttle/elevator/grating,
-/area/shiva/interior/caves/cp_camp)
 "ylZ" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva/red,
@@ -29746,8 +29746,8 @@ cQY
 xhU
 wMh
 wMh
-hCa
-hCa
+aaP
+aaP
 wMh
 sDd
 tlB
@@ -29907,10 +29907,10 @@ oRH
 cQY
 oRH
 sIP
-hCa
+aaP
 bni
-tni
-hCa
+aaT
+aaP
 tlB
 tlB
 wMh
@@ -30069,10 +30069,10 @@ aFO
 wfP
 xAS
 tlB
-hCa
+aaP
 bni
 bni
-hCa
+aaP
 sDd
 tlB
 tlB
@@ -30232,10 +30232,10 @@ cQY
 pZB
 wMh
 wMh
-ylU
-hCa
+aaU
+aaP
 wMh
-kYQ
+aaM
 xAS
 xAS
 tlB

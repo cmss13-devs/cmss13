@@ -73,6 +73,13 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/lz/near_lzI)
+"aao" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/delivery,
+/area/fiorina/station/power_ring/reactor)
+"aap" = (
+/turf/open/floor/delivery,
+/area/fiorina/station/power_ring/reactor)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/prison,
@@ -89,6 +96,10 @@
 /obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
+"aat" = (
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluecorner/east,
+/area/fiorina/station/power_ring/reactor)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -7303,10 +7314,6 @@
 /obj/structure/machinery/computer/station_alert,
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
-"fEY" = (
-/obj/structure/machinery/power/apc/power/north,
-/turf/open/floor/prison/bluecorner/east,
-/area/fiorina/station/power_ring/reactor)
 "fFv" = (
 /obj/structure/barricade/sandbags{
 	icon_state = "sandbag_0";
@@ -17576,9 +17583,6 @@
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
-"nxC" = (
-/turf/open/floor/delivery,
-/area/fiorina/station/power_ring/reactor)
 "nxW" = (
 /obj/structure/machinery/light/double/blue{
 	pixel_y = -1
@@ -26032,10 +26036,6 @@
 /obj/item/toy/deck,
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
-"tWz" = (
-/obj/structure/machinery/transformer,
-/turf/open/floor/delivery,
-/area/fiorina/station/power_ring/reactor)
 "tXt" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -74132,7 +74132,7 @@ tOM
 nYQ
 fbn
 fbn
-fEY
+aat
 sgI
 sgI
 rTY
@@ -74985,8 +74985,8 @@ tEU
 qCx
 tEU
 tEU
-nxC
-tWz
+aap
+aao
 tEU
 tEU
 tEU
@@ -75197,8 +75197,8 @@ tEU
 tEU
 tEU
 tEU
-nxC
-nxC
+aap
+aap
 tEU
 tEU
 tEU

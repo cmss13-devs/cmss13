@@ -249,6 +249,24 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"aaV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/warnplate/southwest,
+/area/varadero/interior/comms3)
+"aaW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/southeast,
+/area/varadero/interior/comms3)
+"aaX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northwest,
+/area/varadero/interior/comms3)
+"aaY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northeast,
+/area/varadero/interior/comms3)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1928,10 +1946,6 @@
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/caves/central)
-"bmi" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/southeast,
-/area/varadero/interior/comms3)
 "bmt" = (
 /obj/structure/surface/rack,
 /obj/structure/window/reinforced{
@@ -12009,10 +12023,6 @@
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance)
-"jxT" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northeast,
-/area/varadero/interior/comms3)
 "jyq" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8
@@ -14364,11 +14374,6 @@
 /obj/effect/overlay/palmtree_r,
 /turf/open/gm/coast/beachcorner/south_east,
 /area/varadero/exterior/pontoon_beach)
-"lzG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating/warnplate/southwest,
-/area/varadero/interior/comms3)
 "lzP" = (
 /obj/structure/machinery/autolathe,
 /turf/open/floor/shiva/yellowfull/west,
@@ -20330,11 +20335,6 @@
 /obj/item/trash/plate,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/mess)
-"qmb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northwest,
-/area/varadero/interior/comms3)
 "qmh" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/gm/dirt,
@@ -50649,8 +50649,8 @@ inN
 tmm
 qdk
 eFJ
-qmb
-lzG
+aaX
+aaV
 szp
 xzr
 eFJ
@@ -50831,8 +50831,8 @@ rkH
 szp
 ekg
 eFJ
-jxT
-bmi
+aaY
+aaW
 szp
 xzr
 eFJ

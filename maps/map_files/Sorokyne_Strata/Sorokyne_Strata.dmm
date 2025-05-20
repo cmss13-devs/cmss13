@@ -614,6 +614,11 @@
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/structures/research)
+"acc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/warnplate/southwest,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "acd" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -625,6 +630,15 @@
 	},
 /turf/open/asphalt/cement,
 /area/strata/ug/interior/outpost/platform)
+"acf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northwest,
+/area/strata/ag/exterior/marsh/spring_marshes)
+"acg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northeast,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "acj" = (
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/strata/fake_wood,
@@ -23907,10 +23921,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
-"kRx" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northeast,
-/area/strata/ag/exterior/marsh/spring_marshes)
 "kRH" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -25075,11 +25085,6 @@
 	},
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
-"msc" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating/warnplate/southwest,
-/area/strata/ag/exterior/marsh/spring_marshes)
 "mso" = (
 /obj/structure/machinery/weather_siren,
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -31750,11 +31755,6 @@
 	icon_state = "upp9"
 	},
 /area/strata/ag/exterior/marsh/crash)
-"vks" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northwest,
-/area/strata/ag/exterior/marsh/spring_marshes)
 "vkG" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/canteen)
@@ -41723,8 +41723,8 @@ wSb
 wSb
 tFA
 beQ
-vks
-msc
+acf
+acc
 gfZ
 aac
 aac
@@ -41898,7 +41898,7 @@ wSb
 wSb
 mne
 tFA
-kRx
+acg
 kHi
 gfZ
 aac

@@ -186,9 +186,40 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
+"aaU" = (
+/turf/open/floor/plating/warnplate/southwest,
+/area/kutjevo/exterior/scrubland/south)
+"aaV" = (
+/turf/open/floor/plating/warnplate,
+/area/kutjevo/exterior/scrubland/south)
+"aaW" = (
+/turf/open/floor/plating/warnplate/southeast,
+/area/kutjevo/exterior/scrubland/south)
+"aaX" = (
+/turf/open/floor/plating/warnplate/west,
+/area/kutjevo/exterior/scrubland/south)
 "aaY" = (
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_south)
+"aaZ" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating,
+/area/kutjevo/exterior/scrubland/south)
+"aba" = (
+/turf/open/floor/plating,
+/area/kutjevo/exterior/scrubland/south)
+"abb" = (
+/turf/open/floor/plating/warnplate/east,
+/area/kutjevo/exterior/scrubland/south)
+"abc" = (
+/turf/open/floor/plating/warnplate/northwest,
+/area/kutjevo/exterior/scrubland/south)
+"abd" = (
+/turf/open/floor/plating/warnplate/north,
+/area/kutjevo/exterior/scrubland/south)
+"abe" = (
+/turf/open/floor/plating/warnplate/northeast,
+/area/kutjevo/exterior/scrubland/south)
 "abz" = (
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_full"
@@ -2960,9 +2991,6 @@
 "eem" = (
 /turf/open/desert/desert_shore/shore_edge1/north,
 /area/kutjevo/exterior/runoff_bridge)
-"eew" = (
-/turf/open/floor/plating,
-/area/kutjevo/exterior/scrubland/south)
 "efr" = (
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/kutjevo/tan/multi_tiles/southeast,
@@ -5241,9 +5269,6 @@
 "hET" = (
 /turf/open/gm/river/desert/shallow_edge/southwest,
 /area/kutjevo/exterior/spring)
-"hFg" = (
-/turf/open/floor/plating/warnplate/west,
-/area/kutjevo/exterior/scrubland/south)
 "hFi" = (
 /obj/structure/barricade/wooden{
 	dir = 1;
@@ -5605,9 +5630,6 @@
 /obj/structure/surface/rack,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/construction/signal_tower)
-"itl" = (
-/turf/open/floor/plating/warnplate/northeast,
-/area/kutjevo/exterior/scrubland/south)
 "itr" = (
 /obj/structure/platform/metal/kutjevo/north,
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
@@ -6676,9 +6698,6 @@
 "kjk" = (
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/colony_central)
-"kkh" = (
-/turf/open/floor/plating/warnplate/north,
-/area/kutjevo/exterior/scrubland/south)
 "kkB" = (
 /obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/kutjevo/colors/cyan,
@@ -7540,9 +7559,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/operating)
-"lux" = (
-/turf/open/floor/plating/warnplate/southeast,
-/area/kutjevo/exterior/scrubland/south)
 "luO" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -9003,10 +9019,6 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
-"nHW" = (
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating,
-/area/kutjevo/exterior/scrubland/south)
 "nIn" = (
 /obj/item/stack/sandbags_empty,
 /turf/open/floor/kutjevo/colors,
@@ -10091,9 +10103,6 @@
 "pio" = (
 /turf/open/floor/kutjevo/tan/alt_inner_edge/west,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
-"pix" = (
-/turf/open/floor/plating/warnplate/northwest,
-/area/kutjevo/exterior/scrubland/south)
 "piA" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/auto_turf/sand/layer0,
@@ -10514,9 +10523,6 @@
 /obj/item/clothing/suit/armor/vest/security,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/complex/med)
-"pLi" = (
-/turf/open/floor/plating/warnplate/southwest,
-/area/kutjevo/exterior/scrubland/south)
 "pLI" = (
 /obj/structure/platform_decoration/stone/kutjevo,
 /turf/open/auto_turf/sand/layer0,
@@ -11698,9 +11704,6 @@
 /obj/structure/medical_supply_link/green,
 /turf/open/floor/kutjevo/colors/cyan/inner_corner/north,
 /area/kutjevo/interior/complex/med/operating)
-"rQF" = (
-/turf/open/floor/plating/warnplate,
-/area/kutjevo/exterior/scrubland/south)
 "rQY" = (
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
@@ -14046,9 +14049,6 @@
 /obj/structure/flora/grass/tallgrass/desert,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/scrubland)
-"vpz" = (
-/turf/open/floor/plating/warnplate/east,
-/area/kutjevo/exterior/scrubland/south)
 "vqQ" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/kutjevo/multi_tiles,
@@ -24940,10 +24940,10 @@ bXl
 fgI
 fgI
 fgI
-pix
-hFg
-hFg
-pLi
+abc
+aaX
+aaX
+aaU
 tKH
 wVK
 wWa
@@ -25107,10 +25107,10 @@ bEp
 bEp
 tKH
 wVK
-kkh
-eew
-nHW
-rQF
+abd
+aba
+aaZ
+aaV
 tKH
 wVK
 wVK
@@ -25274,10 +25274,10 @@ bEp
 bEp
 tKH
 fgI
-kkh
-eew
-eew
-rQF
+abd
+aba
+aba
+aaV
 fgI
 wVK
 wVK
@@ -25441,10 +25441,10 @@ bEp
 bEp
 bEp
 wVK
-itl
-vpz
-vpz
-lux
+abe
+abb
+abb
+aaW
 fgI
 wVK
 tKH

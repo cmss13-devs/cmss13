@@ -750,6 +750,24 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
+"acV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/warnplate/southwest,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
+"acW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/southeast,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
+"acX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northwest,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
+"acY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northeast,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -4745,11 +4763,6 @@
 	},
 /turf/open/floor/corsat/brown/northwest,
 /area/lv522/atmos/west_reactor)
-"cDk" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northwest,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "cDo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -7772,10 +7785,6 @@
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
-"eaG" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/southeast,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "ebe" = (
 /obj/item/storage/pouch/autoinjector/full,
 /turf/open/auto_turf/shale/layer2,
@@ -25549,10 +25558,6 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/south_east_street)
-"nCM" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northeast,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "nCZ" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
@@ -42238,9 +42243,8 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/way_in_command_centre)
 "vMX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating/warnplate/southwest,
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "vNi" = (
 /obj/item/prop/alien/hugger,
@@ -44039,10 +44043,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
-"wHj" = (
-/obj/structure/machinery/light,
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "wHo" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/hardhat/white{
@@ -64889,9 +64889,9 @@ bwF
 aPe
 nnG
 yfu
-cDk
+acX
+acV
 vMX
-wHj
 ylo
 hdG
 jAd
@@ -65095,9 +65095,9 @@ qbG
 aPe
 nnG
 yfu
-nCM
-eaG
-wHj
+acY
+acW
+vMX
 ylo
 hdG
 mPr

@@ -934,10 +934,23 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
+"adQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/warnplate/southwest,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
 /area/desert_dam/exterior/river/riverside_east)
+"adS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/southeast,
+/area/desert_dam/interior/dam_interior/central_tunnel)
+"adT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northeast,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "adU" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/gm/river/desert/shallow_edge/southeast,
@@ -41787,11 +41800,6 @@
 "fNw" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"fOe" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating/warnplate/southwest,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "fOl" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/blocker/toxic_water/Group_1,
@@ -42078,10 +42086,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_dirt_5,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
-"gpb" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/southeast,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "gpi" = (
 /obj/structure/prop/dam/large_boulder/boulder1,
 /turf/open/desert/dirt,
@@ -45417,10 +45421,6 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_central_north)
-"nIc" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northeast,
-/area/desert_dam/interior/dam_interior/central_tunnel)
 "nIz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/green/north,
@@ -62995,7 +62995,7 @@ bVp
 cuo
 bXW
 afO
-fOe
+adQ
 bVl
 bOY
 bOY
@@ -63228,8 +63228,8 @@ bVk
 bVY
 cuq
 dhT
-nIc
-gpb
+adT
+adS
 bVl
 bOY
 bOY

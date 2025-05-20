@@ -21,6 +21,7 @@
 
 #define BAYONET_DRAW_DELAY (1 SECONDS)
 
+#define GUN_SLOW_SWAP_SLOTS list(WEAR_J_STORE, WEAR_WAIST, WEAR_BACK)
 #define GUN_TRANSFER_DELAY (0.7 SECONDS)
 
 //Predator decloak multpliers based on the standard.

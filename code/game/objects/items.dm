@@ -340,7 +340,8 @@
 	throwing = 0
 
 	if(loc == user)
-		if(isgun(src) && user.get_slot_by_item(src) == WEAR_J_STORE)
+		var/slot = user.get_slot_by_item(src)
+		if(isgun(src) && (slot in GUN_SLOW_SWAP_SLOTS))
 			to_chat(user, "You start grabbing the [src].")
 			if (!do_after(user, GUN_TRANSFER_DELAY, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return

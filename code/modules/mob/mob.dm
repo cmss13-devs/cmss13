@@ -286,12 +286,14 @@
 
 	var/start_loc = W.loc
 
+	// Uniform storage delay.
 	if(W.time_to_equip && !ignore_delay)
 		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, W.time_to_equip, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
-	if(isgun(W) && slot == WEAR_J_STORE)
-		to_chat(src, "You start storing the [W].")
+	// Direct-slot weapon storage delay.
+	if(!ignore_delay && isgun(W) && (slot in GUN_SLOW_SWAP_SLOTS))
+		to_chat(src, "You start storing the [W]].")
 		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, GUN_TRANSFER_DELAY, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 

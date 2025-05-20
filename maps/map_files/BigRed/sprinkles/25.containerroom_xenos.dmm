@@ -4,7 +4,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "b" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/nw)
 "c" = (
 /turf/open/floor/plating/warnplate/north,
@@ -33,7 +33,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/nw)
 "i" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/telecomm/warehouse)
 "j" = (
 /turf/open/floor/plating,

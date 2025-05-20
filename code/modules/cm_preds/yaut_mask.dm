@@ -13,7 +13,7 @@
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
 	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
-	valid_accessory_slots = list(ACCESSORY_SLOT_MASK)
+	valid_accessory_slots = list(ACCESSORY_SLOT_YAUTJA_MASK)
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -319,4 +319,4 @@
 	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
 	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
 	icon_state = null
-	slot = ACCESSORY_SLOT_MASK
+	worn_accessory_slot = ACCESSORY_SLOT_YAUTJA_MASK

@@ -408,6 +408,7 @@
 	current_mag = /obj/item/ammo_magazine/rocket/brute
 	skill_locked = TRUE
 	var/f_aiming_time = 4 SECONDS
+	var/aiming = FALSE
 
 /obj/item/weapon/gun/launcher/rocket/brute/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -418,6 +419,9 @@
 	return !skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)
 
 /obj/item/weapon/gun/launcher/rocket/brute/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	if(aiming)
+		return
+
 	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
 		user.visible_message(SPAN_WARNING("Invalid target!"))
 		return
@@ -427,7 +431,7 @@
 		if(T.opacity && T != target)
 			user.visible_message(SPAN_WARNING("Target obscured!"))
 			return
-
+	aiming = TRUE
 	var/beam = "laser_beam_intense"
 	var/lockon = "sniper_lockon_intense"
 	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = lockon)
@@ -448,6 +452,7 @@
 	target.overlays -= lockon_icon
 	target.overlays -= lockon_direction_icon
 	qdel(laser_beam)
+	aiming = FALSE
 
 /obj/item/weapon/gun/launcher/rocket/brute/make_rocket(mob/user, drop_override = 0, empty = 1)
 	if(empty)

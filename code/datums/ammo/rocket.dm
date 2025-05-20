@@ -368,6 +368,20 @@
 	if(location in detonated_locations)
 		return
 	var/damage = 1200
+
+	if(prob(30))
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), null, 0, location, BURN_TIME_INSTANT, BURN_LEVEL_TIER_1, FLAMESHAPE_LINE, null, FIRE_VARIANT_DEFAULT)
+
+	if(prob(30))
+		var/datum/effect_system/spark_spread/spark = new /datum/effect_system/spark_spread
+		spark.set_up(5, 1, location)
+		spark.start()
+
+	if(prob(30))
+		var/datum/effect_system/smoke_spread/smoke = new()
+		smoke.set_up(radius = 0, loca = location, smoke_time = 3 DECISECONDS)
+		smoke.start()
+
 	if(edge)
 		damage = rand(400, 700)
 	if(istype(location,/turf/closed/wall))

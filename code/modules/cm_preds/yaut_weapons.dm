@@ -147,11 +147,14 @@
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/attack(mob/living/carbon/target, mob/living/carbon/human/user)
 	. = ..()
+	if(COOLDOWN_FINISHED(src, combo_timeout)) // If it's been > 15 seconds since the last hit, start a new combo.
+		combo_counter = 0
+	COOLDOWN_START(src, combo_timeout, 15 SECONDS) // Reset the combo timer on each hit.
 	var/sound_to_play = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg','sound/weapons/chain_whip.ogg', 'sound/effects/hit_punch.ogg', 'sound/effects/hit_kick.ogg')
 	switch(user.a_intent)
 		if(INTENT_HELP)
 			if(combo_counter >= 5 && target != user)
-				target.apply_effect(1, WEAKEN)
+				target.KnockDown(1, WEAKEN)
 				combo_counter = 0
 				user.flick_attack_overlay(target, "slam")
 				playsound(target, sound_to_play, 50, 1)
@@ -164,7 +167,7 @@
 			if(combo_counter >= 4 && target != user)
 				var/facing = get_dir(user, target)
 				var/reverse_facing = get_dir(target, user)
-				if(has_chain) // Generating the chain for the effect, its a bulelt so it looks like youre "throwing it / it looks like its travelling"
+				if(has_chain) // Generating the chain for the effect, its a bullet so it looks like youre "throwing it / it looks like its travelling"
 					var/obj/projectile/hook_projectile = new /obj/projectile(user.loc, create_cause_data("hook"), user)
 					var/datum/ammo/ammoDatum = GLOB.ammo_list[/datum/ammo/yautja/gauntlet_hook]
 					hook_projectile.generate_bullet(ammoDatum, bullet_generator = user)
@@ -218,14 +221,6 @@
 		if(target.stat == DEAD)
 			return
 		combo_counter++
-		COOLDOWN_START(src, combo_timeout, 15 SECONDS) // This just sets combo to 0 so people dont "pre-stack combos"
-		START_PROCESSING(SSobj, src)
-
-
-/obj/item/weapon/bracer_attachment/chain_gauntlets/process()
-	if(COOLDOWN_FINISHED(src, combo_timeout))
-		combo_counter = 0
-		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/proc/get_over_here(mob/target, mob/living/user)
 	var/datum/beam/chain_whip
@@ -237,7 +232,7 @@
 	if(istype(chain_wrapper, /obj/item/yautja/chain))
 		if(!has_chain)
 			var/obj/item/yautja/chain/chain_to_wrap = chain_wrapper
-			src.has_chain = TRUE
+			has_chain = TRUE
 			to_chat(user, SPAN_NOTICE("You wrap the [chain_to_wrap] around [src]"))
 			playsound(user, 'sound/weapons/chain_whip.ogg', 50, 1)
 			qdel(chain_to_wrap)
@@ -253,7 +248,7 @@
 		gauntlet_deployed = TRUE
 		punch_knockback = 7
 		yautja_user.start_stomping()
-		addtimer(CALLBACK(src, PROC_REF(undepoy_gauntlets)), 10 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(undeploy_gauntlets)), 10 SECONDS)
 		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
 
@@ -261,7 +256,7 @@
 		to_chat(user, SPAN_WARNING("You're already charging."))
 		return
 
-/obj/item/weapon/bracer_attachment/chain_gauntlets/proc/undepoy_gauntlets()
+/obj/item/weapon/bracer_attachment/chain_gauntlets/proc/undeploy_gauntlets()
 	src.gauntlet_deployed = FALSE
 	punch_knockback = 5
 
@@ -271,8 +266,8 @@
 	src.species.slowdown += -0.5
 
 /mob/living/carbon/human/proc/stop_stomping(mob/user, obj/item/weapon/bracer_attachment/chain_gauntlets/yautja_glove)
-	src.GetExactComponent(/datum/component/footstep).RemoveComponent()
-	src.species.slowdown -= -0.5
+	GetExactComponent(/datum/component/footstep).RemoveComponent()
+	species.slowdown -= -0.5
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/verb/gauntlet_guard()
 	set category = "Weapons"

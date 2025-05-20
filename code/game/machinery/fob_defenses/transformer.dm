@@ -154,6 +154,9 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		to_chat(alien, SPAN_WARNING("You were interrupted!"))
 		return
 
+	if(state != STATE_MARINE_CAPTURED)
+		return
+
 	playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 	state = STATE_BROKEN
 	update_icon()

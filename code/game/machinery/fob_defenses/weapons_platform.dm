@@ -85,10 +85,16 @@
 
 			var/obj/rocket_animation_holder/holder = new(loc, index)
 			animate(holder, pixel_y = 256, easing = CUBIC_EASING|EASE_IN, time = 3 SECONDS)
-			target.add_filter("target_lock", 1, list("type" = "outline", "color" = "#FFFF00", "size" = 1))
+			var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "lockon_sensor")
+			var/x_offset =  -target.pixel_x + target.base_pixel_x
+			var/y_offset = (target.icon_size - world.icon_size) * 0.5 - target.pixel_y + target.base_pixel_y
+			lockon_icon.pixel_x = x_offset
+			lockon_icon.pixel_y = y_offset
+			target.overlays += lockon_icon
 			to_chat(target, SPAN_XENOHIGHDANGER("Something is wrong... You should turn back."))
 			QDEL_IN(holder, 3 SECONDS)
 			playsound(src, 'sound/weapons/gun_rocketlauncher.ogg', 40, TRUE, 10)
+			addtimer(VARSET_LIST_REMOVE_CALLBACK(target.overlays, lockon_icon), 3 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(fire_at), target), 3 SECONDS)
 	else if (istype(linked_weapon, /obj/structure/machinery/sentry))
 		var/obj/structure/machinery/sentry/weapon = linked_weapon

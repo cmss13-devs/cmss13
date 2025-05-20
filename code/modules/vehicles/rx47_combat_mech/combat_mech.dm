@@ -3,7 +3,7 @@
 /obj/vehicle/rx47_mech
 	name = "\improper RX47-CC Combat Mechsuit"
 	icon = 'icons/obj/vehicles/wymech.dmi'
-	desc = "Yeehaw!"
+	desc = "A RX47 Combat Mechsuit, equipped with a 20mm Chaingun and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
 	icon_state = "wymech"
 	layer = MOB_LAYER
 	anchored = TRUE
@@ -27,7 +27,13 @@
 
 /obj/vehicle/rx47_mech/siegebreaker
 	name = "\improper RX47-SB Combat Mechsuit"
+	desc = "A RX47 'Siegebreaker' Combat Mechsuit, equipped with a 50mm IFF-locked explosive cannon and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
 	gun_primary_path = /obj/item/weapon/gun/mech/cannon
+
+/obj/vehicle/rx47_mech/exterminator
+	name = "\improper RX47-EX Combat Mechsuit"
+	desc = "A RX47 'Exterminator' Combat Mechsuit, equipped with a 20mm Chaingun and 50mm IFF-locked explosive cannon"
+	gun_secondary_path = /obj/item/weapon/gun/mech/cannon
 
 //--------------------GENERAL PROCS-----------------
 

@@ -132,7 +132,7 @@
 
 /obj/item/weapon/gun/mech/cannon
 	name = "\improper RX47 Siegebreaker"
-	desc = "An enormous 50mm cannon. This thing will no doubt pack a punch."
+	desc = "An enormous 50mm cannon. It has IFF targetting systems that prevent launching at friendly targets."
 	icon = 'icons/obj/vehicles/wymech_guns.dmi'
 	icon_state = "chaingun"
 	color = "#990000"

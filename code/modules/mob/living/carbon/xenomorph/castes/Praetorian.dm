@@ -14,7 +14,7 @@
 	speed = XENO_SPEED_TIER_6
 
 	evolution_allowed = FALSE
-	deevolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER)
+	deevolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER, XENO_CASTE_LURKER)
 	caste_desc = "The warleader of the hive."
 	spit_types = list(/datum/ammo/xeno/acid/praetorian)
 	acid_level = 2

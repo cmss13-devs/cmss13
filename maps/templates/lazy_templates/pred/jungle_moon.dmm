@@ -1,4 +1,15 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/yautja_grounds/jungle/south)
+"ab" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/dark,
+/turf/open/shuttle/dropship/predship/tile/red3,
+/area/yautja_grounds/prep_room)
 "ao" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/flora/jungle/vines{
@@ -250,9 +261,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/yautja_grounds/jungle/south_west)
-"bt" = (
-/turf/closed/wall/huntership,
-/area/yautja_grounds/jungle/south)
 "bu" = (
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/huntership,
@@ -8528,8 +8536,8 @@ bf
 bf
 az
 be
-bU
-bU
+Ln
+Ln
 be
 aB
 aA
@@ -8626,10 +8634,10 @@ QD
 JK
 be
 da
-bt
-bX
-bX
-bt
+ff
+aa
+aa
+ff
 be
 JK
 JK
@@ -8725,9 +8733,9 @@ Ld
 Ld
 Ld
 Ld
-bu
-aF
-aF
+Ld
+bX
+ab
 Ld
 Ld
 Ld
@@ -8824,8 +8832,8 @@ ee
 db
 dy
 db
-Ld
-cl
+bu
+bW
 aF
 Ld
 bh
@@ -9617,8 +9625,8 @@ Ld
 Ld
 Ld
 bu
-bW
-aF
+ab
+bX
 Ld
 Ld
 Ld
@@ -9715,10 +9723,10 @@ be
 JK
 JK
 JK
-bt
-bX
-bX
-bt
+JK
+cT
+cT
+JK
 av
 av
 av
@@ -9815,8 +9823,8 @@ az
 az
 JK
 JK
-bU
-bU
+az
+az
 JK
 JK
 JK

@@ -2069,7 +2069,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(ishuman(user))
 		var/mob/living/carbon/human/humuser = user
 		if((humuser.scatter_degredation) && humuser.scatter_degredation_active)
-			gun_scatter += (gun_scatter / 100) * humuser.scatter_degredation
+			gun_scatter += (humuser.scatter_degredation / 32) + (gun_scatter / 100) * humuser.scatter_degredation // Higher degredation means significantly worsened scatter
 
 	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter

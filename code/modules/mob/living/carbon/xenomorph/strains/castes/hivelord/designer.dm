@@ -600,11 +600,25 @@
 	icon_state = "weak_nutriplasm"
 	slow_amt = 5
 
+/obj/effect/alien/resin/sticky/weak_nutriplasm/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this thin sticky substance remainds you of sticky resin."
+	if(isxeno(user) || isobserver(user))
+		. += "We stare at thin nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin."
+
 /obj/effect/alien/resin/sticky/strong_nutriplasm
 	name = "sticky nutriplasm"
 	desc = "A thick layer of disgusting sticky slime."
 	icon_state = "strong_nutriplasm"
 	slow_amt = 10
+
+/obj/effect/alien/resin/sticky/strong_nutriplasm/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user) || isyautja(user))
+		. += "On closer examination, this thick sticky substance remainds you of sticky resin."
+	if(isxeno(user) || isobserver(user))
+		. += "We stare at thick nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin."
 
 /obj/effect/alien/resin/design/upgrade
 	name = "Thicken Resin (60)"

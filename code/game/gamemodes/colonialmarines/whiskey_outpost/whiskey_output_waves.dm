@@ -119,7 +119,7 @@
 
 /datum/whiskey_outpost_wave/wave1
 	wave_number = 1
-	wave_castes = list(XENO_CASTE_RUNNER)
+	wave_castes = list(XENO_CASTE_RUNNER, XENO_CASTE_DRONE)
 	sound_effect = list('sound/effects/siren.ogg')
 	command_announcement = list("We're tracking the creatures that wiped out our patrols. They're heading towards your outpost, multiple small life-signs detected. We're attempting to establish a signal with the USS Alistoun, stand by.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	scaling_factor = 0.3
@@ -132,7 +132,8 @@
 		XENO_CASTE_RUNNER,
 		XENO_CASTE_RUNNER,
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
+		XENO_CASTE_DRONE,
 	)
 	scaling_factor = 0.4
 	wave_delay = 1 MINUTES //Early, quick waves
@@ -141,10 +142,11 @@
 	wave_number = 3
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_DEFENDER,
+		XENO_CASTE_DRONE,
 	)
 	scaling_factor = 0.6
 	wave_delay = 1 MINUTES //Early, quick waves
@@ -153,7 +155,7 @@
 	wave_number = 4
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_SPITTER,
@@ -167,7 +169,7 @@
 	wave_number = 5
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_SPITTER,
@@ -181,7 +183,7 @@
 	wave_number = 6
 	wave_castes = list(
 		XENO_CASTE_RUNNER,
-		XENO_CASTE_RUNNER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
@@ -228,7 +230,7 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
@@ -252,7 +254,7 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
@@ -273,7 +275,7 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
@@ -295,7 +297,7 @@
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
 		XENO_CASTE_LURKER,
-		XENO_CASTE_SPITTER,
+		XENO_CASTE_SENTINEL,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,
 		XENO_CASTE_SPITTER,

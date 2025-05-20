@@ -334,10 +334,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/yautja_grounds/jungle/south)
-"bV" = (
-/obj/structure/machinery/door/airlock/sandstone/runed/dark,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/yautja_grounds/prep_room)
 "bW" = (
 /turf/open/shuttle/dropship/predship/tile/red3,
 /area/yautja_grounds/prep_room)
@@ -8631,8 +8627,8 @@ JK
 be
 da
 bt
-bV
-bV
+bX
+bX
 bt
 be
 JK

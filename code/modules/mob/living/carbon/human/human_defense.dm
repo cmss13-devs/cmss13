@@ -398,3 +398,35 @@ Contains most of the procs that are called when a mob is attacked by something
 				resist_modifier = 0.25
 			next_move_slowdown = next_move_slowdown + (SLOWDOWN_AMT_GREENFIRE * resist_modifier)
 			to_chat(src, SPAN_DANGER("The viscous napalm clings to your limbs as you struggle to move through the flames!"))
+
+/mob/living/carbon/human/proc/activate_degraded_accuracy(strength, duration)
+	if(!strength || accuracy_degredation_active)
+		return
+
+	accuracy_degredation_active = TRUE
+	accuracy_degredation = strength
+
+	if(duration)
+		addtimer(CALLBACK(src, PROC_REF(deactivate_degraded_accuracy)), duration)
+
+/mob/living/carbon/human/proc/deactivate_degraded_accuracy()
+	if(accuracy_degredation_active)
+		accuracy_degredation_active = FALSE
+
+	accuracy_degredation = 0
+
+/mob/living/carbon/human/proc/activate_degraded_scatter(strength, duration)
+	if(!strength || scatter_degredation_active)
+		return
+
+	scatter_degredation_active = TRUE
+	scatter_degredation = strength
+
+	if(duration)
+		addtimer(CALLBACK(src, PROC_REF(deactivate_degraded_scatter)), duration)
+
+/mob/living/carbon/human/proc/deactivate_degraded_scatter()
+	if(scatter_degredation_active)
+		scatter_degredation_active = FALSE
+
+	scatter_degredation = 0

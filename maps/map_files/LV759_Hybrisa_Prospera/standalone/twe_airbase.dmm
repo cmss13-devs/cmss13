@@ -106,7 +106,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "bc" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "be" = (
 /obj/structure/reagent_dispensers/water_cooler{
@@ -1518,7 +1518,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "pn" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/maint)
 "pH" = (
 /obj/structure/bed/chair/comfy/black{
@@ -1712,7 +1712,7 @@
 /turf/open/hybrisa/street/sidewalk/south,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "uz" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "uD" = (
 /obj/structure/largecrate/random/barrel/brown{
@@ -1853,7 +1853,7 @@
 /turf/open/floor/almayer/blackfull/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "xl" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "xp" = (
 /turf/closed/shuttle/twe_dropship/transparent{
@@ -2123,7 +2123,7 @@
 	pixel_x = 16;
 	pixel_y = -15
 	},
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "Dm" = (
 /turf/open/floor/hybrisa/metal/red_warning_floor,
@@ -2432,7 +2432,7 @@
 	icon_state = "lattice12";
 	pixel_y = 16
 	},
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Ii" = (
 /obj/effect/decal/medical_decals{

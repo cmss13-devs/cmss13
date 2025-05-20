@@ -25,3 +25,33 @@
 
 /turf/closed/wall/shiva/prefabricated/reinforced : /turf/closed/wall/r_wall/shiva/prefabricated{@OLD}
 /turf/closed/wall/shiva/prefabricated/reinforced/hull : /turf/closed/wall/shiva/prefabricated/hull{@OLD}
+
+/turf/closed/wall/engineership/destructible : /turf/closed/wall/r_wall/engineership{@OLD}
+
+/turf/closed/wall/hybrisa/marhsalls/reinforced : /turf/closed/wall/r_wall/hybrisa/marhsalls{@OLD}
+
+/turf/closed/wall/hybrisa/research/ribbed : /turf/closed/wall/r_wall/hybrisa/research/ribbed{@OLD}
+/turf/closed/wall/hybrisa/research/reinforced : /turf/closed/wall/r_wall/hybrisa/research{@OLD}
+/turf/closed/wall/hybrisa/research/reinforced/hull : /turf/closed/wall/hybrisa/research/hull{@OLD}
+
+/turf/closed/wall/hybrisa/colony/ribbed : /turf/closed/wall/r_wall/hybrisa/colony/ribbed{@OLD}
+/turf/closed/wall/hybrisa/colony/reinforced : /turf/closed/wall/r_wall/hybrisa/colony{@OLD}
+/turf/closed/wall/hybrisa/colony/reinforced/hull : /turf/closed/wall/hybrisa/colony/hull{@OLD}
+
+/turf/closed/wall/hybrisa/colony/hospital/ribbed : /turf/closed/wall/r_wall/hybrisa/colony/hospital/ribbed{@OLD}
+/turf/closed/wall/hybrisa/colony/hospital/reinforced : /turf/closed/wall/r_wall/hybrisa/colony/hospital{@OLD}
+/turf/closed/wall/hybrisa/colony/hospital/reinforced/hull : /turf/closed/wall/hybrisa/colony/hospital/hull{@OLD}
+
+/turf/closed/wall/hybrisa/colony/office/ribbed : /turf/closed/wall/r_wall/hybrisa/colony/office/ribbed{@OLD}
+/turf/closed/wall/hybrisa/colony/office/reinforced : /turf/closed/wall/r_wall/hybrisa/colony/office{@OLD}
+/turf/closed/wall/hybrisa/colony/office/reinforced/hull : /turf/closed/wall/hybrisa/colony/office/hull{@OLD}
+
+/turf/closed/wall/hybrisa/colony/engineering/ribbed : /turf/closed/wall/r_wall/hybrisa/colony/engineering/ribbed{@OLD}
+/turf/closed/wall/hybrisa/colony/engineering/reinforced : /turf/closed/wall/r_wall/hybrisa/colony/engineering{@OLD}
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull : /turf/closed/wall/hybrisa/colony/engineering/hull{@OLD}
+
+/turf/closed/wall/hybrisa/spaceport/reinforced : /turf/closed/wall/r_wall/hybrisa/spaceport{@OLD}
+
+
+
+

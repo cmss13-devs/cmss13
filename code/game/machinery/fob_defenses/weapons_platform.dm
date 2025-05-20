@@ -161,6 +161,7 @@
 		update_icon()
 		var/obj/projectile/proj = new
 		proj.generate_bullet(/datum/ammo/bullet/turret/fob, 0, 0, src)
+		GIVE_BULLET_TRAIT(proj, /datum/element/bullet_trait_iff, FACTION_MARINE)
 		proj.fire_at(target, src, src, proj.ammo.max_range, proj.ammo.shell_speed)
 
 /obj/structure/machinery/weapons_platform/attackby(obj/item/attack_item, mob/user)

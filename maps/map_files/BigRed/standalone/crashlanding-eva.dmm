@@ -168,7 +168,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "aI" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/general_offices)
 "aJ" = (
 /obj/item/ammo_box/rounds/heap/empty,

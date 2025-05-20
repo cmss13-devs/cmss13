@@ -1035,7 +1035,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/event/dynamic/lit)
 "rc" = (
-/turf/closed/wall/r_wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/event/metal/dynamic/lit)
 "rd" = (
 /obj/structure/barricade/handrail/wire{

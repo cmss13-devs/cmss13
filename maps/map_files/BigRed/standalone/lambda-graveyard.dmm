@@ -71,7 +71,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/se)
 "D" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 
 (1,1,1) = {"

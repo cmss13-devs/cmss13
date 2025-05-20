@@ -16,7 +16,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_north)
 "aae" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "aaf" = (
 /turf/open/floor/asteroidfloor/north,
@@ -65,7 +65,7 @@
 /area/bigredv2/outside/space_port)
 "aaq" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "aar" = (
 /obj/effect/landmark/hunter_primary,
@@ -612,7 +612,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "acp" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)
 "acq" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -665,7 +665,7 @@
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/marshal_office)
 "acA" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "acB" = (
 /turf/open/floor/asteroidwarning/east,
@@ -1037,7 +1037,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_research)
 "adZ" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
 "aea" = (
 /obj/structure/machinery/computer/telecomms/monitor{
@@ -1985,7 +1985,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "ahN" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "ahO" = (
 /turf/open/mars/mars_dirt_8,
@@ -2120,7 +2120,7 @@
 "aiv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "aiw" = (
 /turf/open/floor/asteroidwarning/west,
@@ -2450,7 +2450,7 @@
 /area/bigredv2/outside/marshal_office)
 "akl" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "akm" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2575,7 +2575,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/nw)
 "akL" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/general_offices)
 "akM" = (
 /obj/structure/machinery/light,
@@ -2811,7 +2811,7 @@
 /turf/open/floor/whitegreenfull,
 /area/bigredv2/caves/lambda/xenobiology)
 "alX" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/medical)
 "alY" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -2863,7 +2863,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "amk" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/breakroom)
 "aml" = (
 /obj/structure/window/framed/solaris,
@@ -3144,7 +3144,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/xenobiology)
 "anp" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/nw/ceiling)
 "anq" = (
 /obj/structure/machinery/light{
@@ -3179,7 +3179,7 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "anw" = (
 /obj/structure/sign/safety/bulkhead_door,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/breakroom)
 "anx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass/colony{
@@ -3222,7 +3222,7 @@
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
 "anI" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/research)
 "anJ" = (
 /turf/closed/wall/solaris,
@@ -3311,7 +3311,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "aob" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/virology)
 "aoc" = (
 /obj/structure/window/framed/solaris,
@@ -3432,7 +3432,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "aoD" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/virology)
 "aoE" = (
 /obj/item/stool,
@@ -3630,7 +3630,7 @@
 /turf/open/floor/whitegreen/southeast,
 /area/bigredv2/caves/lambda/xenobiology)
 "apC" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
 "apD" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -4050,7 +4050,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/breakroom)
 "arK" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves_lambda)
 "arL" = (
 /obj/effect/glowshroom,
@@ -4780,7 +4780,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/general_offices)
 "auW" = (
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/c)
 "auY" = (
 /turf/open/floor/carpet,
@@ -5044,7 +5044,7 @@
 /turf/open/floor/whitegreen/north,
 /area/bigredv2/outside/medical)
 "awd" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/se)
 "awe" = (
 /obj/structure/surface/table,
@@ -5170,7 +5170,7 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "awM" = (
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/filtration_plant)
 "awN" = (
 /turf/open/floor/whitegreencorner,
@@ -5369,7 +5369,7 @@
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/c)
 "axX" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering)
 "axY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5416,7 +5416,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "ayf" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port_lz2)
 "ayh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
@@ -5750,7 +5750,7 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "azO" = (
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/eta)
 "azP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5861,7 +5861,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves/lambda/research)
 "aAp" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/storage)
 "aAq" = (
 /obj/structure/cargo_container/horizontal/blue/middle,
@@ -6105,7 +6105,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/ne)
 "aBv" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/research)
 "aBw" = (
 /obj/structure/window/framed/solaris/reinforced,
@@ -6235,7 +6235,7 @@
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/ne)
 "aCe" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/xenobiology)
 "aCf" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -6590,7 +6590,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/caves/eta/living)
 "aDY" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/living)
 "aDZ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -13197,7 +13197,7 @@
 /turf/open/mars/mars_dirt_8,
 /area/bigredv2/outside/s)
 "bjC" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/s)
 "bjH" = (
 /turf/open/mars/mars_dirt_10,
@@ -17451,7 +17451,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bFw" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm/warehouse)
 "bFx" = (
 /obj/item/trash/crushed_cup{
@@ -18560,7 +18560,7 @@
 /area/bigredv2/caves_research)
 "cOt" = (
 /obj/structure/sign/poster/clf,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "cOu" = (
 /obj/structure/machinery/vending/coffee,
@@ -18781,7 +18781,7 @@
 /turf/open/mars,
 /area/bigredv2/outside/c)
 "dbi" = (
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/telecomm/lz2_cave)
 "dbO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -19089,7 +19089,7 @@
 /area/bigredv2/outside/virology)
 "dvz" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/lambda_cave_cas)
 "dvB" = (
 /obj/item/ore/coal{
@@ -19543,7 +19543,7 @@
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_north)
 "dTB" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/lambda_cave_cas)
 "dTF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -21566,7 +21566,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "fYH" = (
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves/mining)
 "fYJ" = (
 /obj/structure/closet/boxinggloves,
@@ -21792,7 +21792,7 @@
 /area/bigredv2/outside/filtration_cave_cas)
 "glB" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/lz2_south_cas)
 "glH" = (
 /obj/structure/surface/table,
@@ -21901,7 +21901,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "containerroom_xenos"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/nw/ceiling)
 "grM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -22329,7 +22329,7 @@
 /turf/open/mars_cave/mars_cave_10,
 /area/bigredv2/caves_se)
 "gNH" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 "gOd" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -22402,7 +22402,7 @@
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "gSL" = (
 /obj/effect/decal/cleanable/blood,
@@ -22468,7 +22468,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "eta_carp"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/xenobiology)
 "gWD" = (
 /turf/closed/wall/solaris,
@@ -22691,7 +22691,7 @@
 /obj/structure/sign/safety/one{
 	pixel_x = 16
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "hiY" = (
 /turf/open/mars_cave/mars_cave_15,
@@ -23101,7 +23101,7 @@
 /area/bigredv2/outside/n)
 "hHb" = (
 /obj/structure/sign/safety/ladder,
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/oob)
 "hHl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -25298,7 +25298,7 @@
 /turf/open/floor/whitegreen,
 /area/bigredv2/outside/medical)
 "keg" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/lz2_south_cas)
 "kek" = (
 /obj/effect/decal/warning_stripes{
@@ -26596,7 +26596,7 @@
 /area/bigredv2/outside/medical)
 "lzI" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
 "lAC" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -26641,11 +26641,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshal_office)
 "lBc" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/c)
 "lBe" = (
 /obj/structure/sign/poster/safety,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "lBx" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -27073,7 +27073,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "viro-rock_open"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/virology)
 "maD" = (
 /turf/open/floor/almayer/test_floor4,
@@ -27251,7 +27251,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_x = 11
 	},
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves/mining)
 "mhV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28578,7 +28578,7 @@
 /area/bigredv2/outside/space_port)
 "nCT" = (
 /obj/structure/sign/poster/ad,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "nCX" = (
 /obj/structure/closet/crate/miningcar/yellow{
@@ -28997,7 +28997,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lz1cave_flank"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "nZB" = (
 /obj/effect/decal/cleanable/dirt,
@@ -29016,7 +29016,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lambda-graveyard"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/se)
 "obB" = (
 /obj/structure/prop/invuln/minecart_tracks{
@@ -30077,7 +30077,7 @@
 	name = "Access console";
 	pixel_y = -2
 	},
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves/mining)
 "pcA" = (
 /obj/structure/barricade/wooden{
@@ -30804,7 +30804,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "pRP" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm/n_cave)
 "pSa" = (
 /turf/open/floor/plating/platingdmg3/west,
@@ -31329,7 +31329,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/medical)
 "qsE" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/garage_workshop)
 "qsT" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
@@ -31818,7 +31818,7 @@
 /turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "qPT" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/eta)
 "qQl" = (
 /obj/effect/landmark/static_comms/net_one,
@@ -32226,7 +32226,7 @@
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 19
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "rkh" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -32515,7 +32515,7 @@
 /area/bigredv2/outside/ne)
 "rzT" = (
 /obj/structure/sign/nosmoking_1,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "rAs" = (
 /turf/open/mars_cave/mars_cave_6,
@@ -32618,7 +32618,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "rIl" = (
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/oob)
 "rIu" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -33097,7 +33097,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "rZn" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/w)
 "rZQ" = (
 /obj/structure/surface/table,
@@ -34047,7 +34047,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "prison_breakout"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/marshal_office)
 "sXf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -34152,7 +34152,7 @@
 /area/bigredv2/outside/general_offices)
 "tcP" = (
 /obj/effect/decal/cleanable/dirt/greenglow,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering/reactor)
 "tcV" = (
 /obj/effect/decal/cleanable/generic,
@@ -34456,7 +34456,7 @@
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/caves/mining)
 "tqS" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves_north)
 "trk" = (
 /turf/open/mars_cave/mars_cave_13,
@@ -35580,7 +35580,7 @@
 /area/bigredv2/outside/e)
 "uwV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/general_offices)
 "uxa" = (
 /obj/item/stack/sheet/metal{
@@ -35784,7 +35784,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/filtration_plant)
 "uHQ" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "uHT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35904,7 +35904,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "medbay-passage"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
 "uSf" = (
 /turf/open/shuttle/escapepod/floor1,
@@ -36037,7 +36037,7 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "uZy" = (
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering/reactor)
 "uZG" = (
 /obj/effect/decal/cleanable/dirt,
@@ -36961,7 +36961,7 @@
 /area/bigredv2/outside/n)
 "vRs" = (
 /obj/structure/sign/safety/high_voltage,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "vRK" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
@@ -37177,11 +37177,11 @@
 /obj/structure/closet/secure_closet/medical_wall{
 	pixel_y = -5
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "wfd" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "wfk" = (
 /obj/structure/filingcabinet/medical{
@@ -37553,7 +37553,7 @@
 /area/bigredv2/caves/mining)
 "wwT" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/engineering/reactor)
 "wxo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -37705,7 +37705,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "lz1north_mining"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "wHx" = (
 /obj/effect/decal/warning_stripes{
@@ -37905,7 +37905,7 @@
 /obj/effect/landmark/nightmare{
 	insert_tag = "admin_pmc"
 	},
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
 "wRo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -37933,7 +37933,7 @@
 /obj/structure/sign/safety/maint{
 	pixel_x = 13
 	},
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/oob)
 "wUc" = (
 /obj/structure/flora/bush/desert{
@@ -38811,7 +38811,7 @@
 /area/bigredv2/caves/mining)
 "xMr" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/hull,
+/turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves/mining)
 "xMx" = (
 /obj/structure/surface/table,
@@ -38915,7 +38915,7 @@
 /area/bigredv2/outside/lambda_cave_cas)
 "xTM" = (
 /obj/structure/closet/medical_wall,
-/turf/closed/wall/r_wall/solaris,
+/turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/mining)
 "xUc" = (
 /turf/closed/wall/solaris{

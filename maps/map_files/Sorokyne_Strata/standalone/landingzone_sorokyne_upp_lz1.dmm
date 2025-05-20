@@ -405,7 +405,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ug/interior/jungle/structures/research)
 "mF" = (
-/turf/closed/wall/r_wall/strata_outpost,
+/turf/closed/wall/strata_outpost/reinforced,
 /area/strata/ug/interior/jungle/structures/research)
 "mV" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -571,7 +571,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ug/interior/jungle/structures/research)
 "tq" = (
-/turf/closed/wall/strata_outpost/hull,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ug/interior)
 "tB" = (
 /obj/structure/surface/rack,
@@ -1144,7 +1144,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/research)
 "RG" = (
-/turf/closed/wall/strata_outpost/hull,
+/turf/closed/wall/strata_outpost/reinforced/hull,
 /area/strata/ug/interior/jungle/structures/research)
 "RO" = (
 /obj/structure/machinery/computer/cameras,

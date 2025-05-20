@@ -433,8 +433,8 @@
 			user.visible_message(SPAN_WARNING("Target obscured!"))
 			return
 	aiming = TRUE
-	var/beam = "laser_beam_intense"
-	var/lockon = "sniper_lockon_intense"
+	var/beam = "laser_beam_guided"
+	var/lockon = "sniper_lockon_guided"
 	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = lockon)
 	target.overlays += lockon_icon
 

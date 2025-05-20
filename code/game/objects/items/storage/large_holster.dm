@@ -477,7 +477,7 @@
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "bruterig"
 	item_icons = list(
-	WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
 	)
 	can_hold = list(
 		/obj/item/ammo_magazine,
@@ -490,3 +490,4 @@
 	new /obj/item/ammo_magazine/rocket/brute(src)
 	new /obj/item/ammo_magazine/rocket/brute(src)
 	item_state = "bruterig"
+

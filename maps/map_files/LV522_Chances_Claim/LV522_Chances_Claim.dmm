@@ -4745,6 +4745,11 @@
 	},
 /turf/open/floor/corsat/brown/northwest,
 /area/lv522/atmos/west_reactor)
+"cDk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northwest,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "cDo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -7768,8 +7773,8 @@
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
 "eaG" = (
-/obj/structure/ore_box,
-/turf/open/floor/prison/darkbrownfull2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/southeast,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "ebe" = (
 /obj/item/storage/pouch/autoinjector/full,
@@ -25003,12 +25008,6 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "nnG" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "mining_secure_blast_1";
-	layer = 3.3;
-	name = "\improper Secure Blast Door";
-	unacidable = 1
-	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "nnW" = (
@@ -25550,6 +25549,10 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/south_east_street)
+"nCM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northeast,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "nCZ" = (
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
@@ -42235,14 +42238,9 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/way_in_command_centre)
 "vMX" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/light,
-/obj/item/ammo_box/magazine/misc/flares{
-	pixel_x = -3;
-	pixel_y = 11
-	},
-/obj/item/ammo_box/magazine/misc/flares,
-/turf/open/floor/prison/darkbrownfull2,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/warnplate/southwest,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "vNi" = (
 /obj/item/prop/alien/hugger,
@@ -44042,9 +44040,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
 "wHj" = (
-/obj/structure/surface/rack,
 /obj/structure/machinery/light,
-/obj/item/clothing/mask/gas,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "wHo" = (
@@ -64689,7 +64685,7 @@ ylo
 fCW
 yfu
 nXO
-hJQ
+acr
 ylo
 hdG
 mPr
@@ -64893,9 +64889,9 @@ bwF
 aPe
 nnG
 yfu
-yfu
-yfu
+cDk
 vMX
+wHj
 ylo
 hdG
 jAd
@@ -65099,8 +65095,8 @@ qbG
 aPe
 nnG
 yfu
-yfu
-yfu
+nCM
+eaG
 wHj
 ylo
 hdG
@@ -65307,7 +65303,7 @@ vOb
 acr
 yfu
 yfu
-eaG
+acr
 ylo
 nJr
 mPr

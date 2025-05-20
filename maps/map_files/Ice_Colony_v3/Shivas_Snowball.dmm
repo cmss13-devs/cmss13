@@ -10567,16 +10567,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/botany)
 "hCa" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
-	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
-	},
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 8
-	},
-/turf/open/auto_turf/snow/layer3,
+/turf/open/shuttle/elevator/grating,
 /area/shiva/interior/caves/cp_camp)
 "hCt" = (
 /obj/structure/machinery/firealarm{
@@ -13600,6 +13591,13 @@
 /obj/structure/platform/metal/shiva/east,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
+"kYQ" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/auto_turf/snow/layer3,
+/area/shiva/interior/caves/cp_camp)
 "kZj" = (
 /obj/structure/prop/ice_colony/dense/planter_box{
 	dir = 1
@@ -20311,6 +20309,11 @@
 "tnh" = (
 /turf/open/floor/shiva/snow_mat/north,
 /area/shiva/interior/colony/n_admin)
+"tni" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating,
+/area/shiva/interior/caves/cp_camp)
 "tnu" = (
 /turf/closed/wall/shiva/prefabricated,
 /area/shiva/interior/bar)
@@ -24143,10 +24146,8 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "ylU" = (
-/obj/structure/prop/ice_colony/ground_wire{
-	dir = 4
-	},
-/turf/open/auto_turf/snow/layer1,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/shuttle/elevator/grating,
 /area/shiva/interior/caves/cp_camp)
 "ylZ" = (
 /obj/structure/machinery/light/double,
@@ -29744,10 +29745,10 @@ wMh
 cQY
 xhU
 wMh
-tlB
-tlB
-sDd
-vym
+wMh
+hCa
+hCa
+wMh
 sDd
 tlB
 tlB
@@ -29906,11 +29907,11 @@ oRH
 cQY
 oRH
 sIP
+hCa
+bni
+tni
+hCa
 tlB
-tlB
-pGi
-jmW
-ohd
 tlB
 wMh
 wMh
@@ -30068,9 +30069,9 @@ aFO
 wfP
 xAS
 tlB
-oRH
-tlB
-sDd
+hCa
+bni
+bni
 hCa
 sDd
 tlB
@@ -30231,10 +30232,10 @@ cQY
 pZB
 wMh
 wMh
-aaA
-pGi
-jmW
-swV
+ylU
+hCa
+wMh
+kYQ
 xAS
 xAS
 tlB
@@ -30395,7 +30396,7 @@ gXW
 gXW
 kQW
 ilW
-ylU
+xAS
 ilW
 tlB
 wMh

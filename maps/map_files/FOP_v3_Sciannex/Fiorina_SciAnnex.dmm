@@ -7304,8 +7304,8 @@
 /turf/open/floor/prison/bluefull,
 /area/fiorina/station/power_ring)
 "fEY" = (
-/obj/structure/machinery/power/apc/power/south,
-/turf/open/floor/delivery,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/bluecorner/east,
 /area/fiorina/station/power_ring/reactor)
 "fFv" = (
 /obj/structure/barricade/sandbags{
@@ -10076,10 +10076,6 @@
 /obj/item/reagent_container/food/drinks/flask/barflask,
 /turf/open/floor/prison/whitepurple/southwest,
 /area/fiorina/station/research_cells/west)
-"hJu" = (
-/obj/structure/bed/chair,
-/turf/open/floor/prison/bluefull,
-/area/fiorina/station/power_ring/reactor)
 "hJV" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/item/device/flashlight/lamp/tripod,
@@ -17581,7 +17577,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/chapel)
 "nxC" = (
-/turf/closed/wall/r_wall/prison_unmeltable,
+/turf/open/floor/delivery,
 /area/fiorina/station/power_ring/reactor)
 "nxW" = (
 /obj/structure/machinery/light/double/blue{
@@ -23475,21 +23471,6 @@
 "rZP" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/aux_engi)
-"saL" = (
-/obj/structure/reagent_dispensers/water_cooler{
-	pixel_x = -9;
-	pixel_y = 8
-	},
-/obj/structure/reagent_dispensers/water_cooler{
-	pixel_x = 11;
-	pixel_y = 8
-	},
-/obj/structure/reagent_dispensers/water_cooler{
-	pixel_x = 1;
-	pixel_y = 8
-	},
-/turf/open/floor/prison/floor_plate,
-/area/fiorina/station/power_ring/reactor)
 "sbf" = (
 /obj/effect/landmark/corpsespawner/prisoner,
 /turf/open/gm/river/darkred_pool,
@@ -26052,9 +26033,8 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/fiorina/station/research_cells/west)
 "tWz" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/pen/blue/clicky,
-/turf/open/floor/prison/floor_plate,
+/obj/structure/machinery/transformer,
+/turf/open/floor/delivery,
 /area/fiorina/station/power_ring/reactor)
 "tXt" = (
 /obj/structure/machinery/light/double/blue{
@@ -74152,7 +74132,7 @@ tOM
 nYQ
 fbn
 fbn
-gWA
+fEY
 sgI
 sgI
 rTY
@@ -74792,10 +74772,10 @@ sgI
 sgI
 eEC
 pMr
-saL
+sgI
 qCx
-fEY
-nxC
+tEU
+sgI
 sgI
 drk
 sgI
@@ -75005,8 +74985,8 @@ tEU
 qCx
 tEU
 tEU
-tEU
-tEU
+nxC
+tWz
 tEU
 tEU
 tEU
@@ -75217,8 +75197,8 @@ tEU
 tEU
 tEU
 tEU
-tEU
-tEU
+nxC
+nxC
 tEU
 tEU
 tEU
@@ -75428,10 +75408,10 @@ sgI
 sgI
 ubo
 ubo
-fbn
-hJu
+sgI
 tEU
-tWz
+tEU
+sgI
 duV
 lAM
 sgI

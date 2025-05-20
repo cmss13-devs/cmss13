@@ -23778,8 +23778,8 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "kHi" = (
-/obj/structure/prop/dam/drill,
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/southeast,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "kHG" = (
 /obj/structure/flora/grass/tallgrass/ice,
@@ -23907,6 +23907,10 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
+"kRx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northeast,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "kRH" = (
 /obj/effect/particle_effect/steam,
 /obj/effect/blocker/sorokyne_cold_water,
@@ -25071,6 +25075,11 @@
 	},
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outpost/med)
+"msc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/warnplate/southwest,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "mso" = (
 /obj/structure/machinery/weather_siren,
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -31741,6 +31750,11 @@
 	icon_state = "upp9"
 	},
 /area/strata/ag/exterior/marsh/crash)
+"vks" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northwest,
+/area/strata/ag/exterior/marsh/spring_marshes)
 "vkG" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/canteen)
@@ -41536,8 +41550,8 @@ wSb
 wSb
 tUh
 tFA
-tFA
-wSb
+gfZ
+gfZ
 ble
 ble
 ble
@@ -41709,8 +41723,8 @@ wSb
 wSb
 tFA
 beQ
-lPj
-lPj
+vks
+msc
 gfZ
 aac
 aac
@@ -41884,7 +41898,7 @@ wSb
 wSb
 mne
 tFA
-lPj
+kRx
 kHi
 gfZ
 aac

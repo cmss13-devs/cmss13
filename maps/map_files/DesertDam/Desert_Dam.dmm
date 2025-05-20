@@ -1339,7 +1339,9 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
 "afO" = (
-/turf/open/desert/rock/deep/transition/southeast,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northwest,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "afP" = (
 /turf/closed/wall/r_wall/chigusa,
@@ -41785,6 +41787,11 @@
 "fNw" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"fOe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/warnplate/southwest,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "fOl" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/effect/blocker/toxic_water/Group_1,
@@ -42071,6 +42078,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave/mars_dirt_5,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
+"gpb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/southeast,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "gpi" = (
 /obj/structure/prop/dam/large_boulder/boulder1,
 /turf/open/desert/dirt,
@@ -45406,6 +45417,10 @@
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge/east,
 /area/desert_dam/exterior/river/riverside_central_north)
+"nIc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/warnplate/northeast,
+/area/desert_dam/interior/dam_interior/central_tunnel)
 "nIz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/prison/green/north,
@@ -62748,10 +62763,10 @@ bXV
 bYD
 bYD
 bVk
+bOY
 bOX
-bOX
-bOX
-bOX
+bOY
+bOY
 bOX
 lMC
 cuo
@@ -62980,12 +62995,12 @@ bVp
 cuo
 bXW
 afO
-age
-dTs
-dTs
-dTs
-dTs
-dTs
+fOe
+bVl
+bOY
+bOY
+bOY
+bOY
 bOX
 fWo
 cuo
@@ -63213,13 +63228,13 @@ bVk
 bVY
 cuq
 dhT
-afR
-agO
-dTs
-dTs
-dTs
-dTs
-dTs
+nIc
+gpb
+bVl
+bOY
+bOY
+bOY
+bOY
 bOX
 lMC
 cuo
@@ -63449,11 +63464,11 @@ cuo
 dhT
 afR
 agO
-dTs
-dTs
-dTs
-dTs
-dTs
+bVl
+bOY
+bOY
+bOY
+bOY
 bOX
 lMC
 cuo

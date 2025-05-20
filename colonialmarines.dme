@@ -1203,6 +1203,7 @@
 #include "code\game\objects\items\devices\data_detector.dm"
 #include "code\game\objects\items\devices\defibrillator.dm"
 #include "code\game\objects\items\devices\device.dm"
+#include "code\game\objects\items\devices\dogtag_detector.dm"
 #include "code\game\objects\items\devices\dummy_tablet.dm"
 #include "code\game\objects\items\devices\flash.dm"
 #include "code\game\objects\items\devices\flashlight.dm"

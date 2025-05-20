@@ -62,11 +62,6 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 	healthcheck()
 
 /obj/structure/fence/fob/attackby(obj/item/item, mob/user)
-	if(state == STATE_ON)
-		electrocute_mob(user, get_area(src), src, 0.7, needs_power = FALSE)
-		to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
-		return
-
 	if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -80,6 +75,11 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 			return
 
 		qdel(src)
+		return
+
+	if(state == STATE_ON)
+		electrocute_mob(user, get_area(src), src, 0.7, needs_power = FALSE)
+		to_chat(user, SPAN_DANGER("<B>You feel a powerful shock course through your body!</B>"))
 		return
 	. = ..()
 

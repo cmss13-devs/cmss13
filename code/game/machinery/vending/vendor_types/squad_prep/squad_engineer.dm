@@ -216,7 +216,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,
 		/obj/item/stack/sandbags_empty = 50,
-		/obj/item/stack/sheet/metal/large_stack,
+		/obj/item/stack/sandbags_empty = 25,
+		/obj/item/stack/sheet/metal/med_small_stack,
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,

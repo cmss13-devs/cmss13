@@ -111,7 +111,7 @@
 /obj/vehicle/rx47_mech/Collide(atom/A)
 	if(ishumansynth_strict(A))
 		var/mob/living/carbon/human/human_hit = A
-		human_hit.KnockDown(3)
+		human_hit.KnockDown(1)
 		return
 
 	if(istype(A, /obj/structure/barricade/plasteel))

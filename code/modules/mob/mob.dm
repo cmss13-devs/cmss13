@@ -287,7 +287,12 @@
 	var/start_loc = W.loc
 
 	if(W.time_to_equip && !ignore_delay)
-		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
+		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, W.time_to_equip, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
+		return TRUE
+
+	if(isgun(W) && slot == WEAR_J_STORE)
+		to_chat(src, "You start storing the [W].")
+		INVOKE_ASYNC(src, PROC_REF(equip_to_slot_timed), W, slot, 0.7 SECONDS, redraw_mob, permanent, start_loc, del_on_fail, disable_warning)
 		return TRUE
 
 	equip_to_slot(W, slot, disable_warning) //This proc should not ever fail.
@@ -303,8 +308,8 @@
 	return TRUE
 
 //This is an UNSAFE proc. It handles situations of timed equips.
-/mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc, del_on_fail = 0, disable_warning = 0)
-	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+/mob/proc/equip_to_slot_timed(obj/item/W, slot, time_to_equip, redraw_mob = 1, permanent = 0, start_loc, del_on_fail = 0, disable_warning = 0)
+	if(!do_after(src, time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(src, SPAN_WARNING("You stop putting on \the [W]!"))
 		return
 	if(!W.mob_can_equip(src, slot, disable_warning)) // we have to do these checks again as circumstances may have changed during the do_after

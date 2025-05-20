@@ -340,6 +340,11 @@
 	throwing = 0
 
 	if(loc == user)
+		if(isgun(src) && user.get_slot_by_item(src) == WEAR_J_STORE)
+			to_chat(user, "You start grabbing the [src].")
+			if (!do_after(user, 0.7 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+
 		if(!user.drop_inv_item_on_ground(src))
 			return
 	else

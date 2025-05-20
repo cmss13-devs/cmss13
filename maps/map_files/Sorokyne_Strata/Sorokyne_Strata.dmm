@@ -35948,9 +35948,6 @@
 	},
 /turf/open/floor/strata,
 /area/strata/exterior/deep_jungle/old_tunnels)
-"cbF" = (
-/turf/closed/wall/strata_outpost,
-/area/strata/exterior/deep_jungle/old_tunnels)
 "cbG" = (
 /obj/effect/decal/remains/xeno,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -87351,7 +87348,7 @@ arM
 vVK
 aoT
 vVK
-cbF
+bCi
 axT
 azs
 aBa
@@ -87526,7 +87523,7 @@ bon
 vVK
 vVK
 bGl
-cbF
+bCi
 axU
 azt
 cbE

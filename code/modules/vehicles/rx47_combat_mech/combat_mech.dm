@@ -66,6 +66,7 @@
 
 /obj/vehicle/rx47_mech/Destroy()
 	if(buckled_mob)
+		clean_driver(buckled_mob)
 		unbuckle()
 	if(gun_primary)
 		qdel(gun_primary)
@@ -214,7 +215,7 @@
 	ADD_TRAIT(new_buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
 	ADD_TRAIT(new_buckled_mob, TRAIT_FORCED_STANDING, TRAIT_SOURCE_BUCKLE)
 	RegisterSignal(new_buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
-	update_mouse_pointer(buckled_mob, TRUE)
+	update_mouse_pointer(new_buckled_mob, TRUE)
 	rebuild_icon()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
@@ -223,11 +224,13 @@
 		if(gun_primary && !new_buckled_mob.put_in_l_hand(gun_primary))
 			gun_primary.forceMove(src)
 			gun_primary.flags_gun_features |= GUN_TRIGGER_SAFETY
+			clean_driver(new_buckled_mob)
 			unbuckle()
 			return
 		else if(gun_secondary && !new_buckled_mob.put_in_r_hand(gun_secondary))
 			gun_secondary.forceMove(src)
 			gun_primary.flags_gun_features |= GUN_TRIGGER_SAFETY
+			clean_driver(new_buckled_mob)
 			unbuckle()
 			return
 			//can't use the mech without both weapons equipped
@@ -235,13 +238,15 @@
 		move_delay = initial(move_delay)
 		new_buckled_mob.drop_held_items(TRUE) //drop the weapons when unbuckling
 
-/obj/vehicle/rx47_mech/unbuckle()
-	buckled_mob.layer = MOB_LAYER
-	REMOVE_TRAIT(buckled_mob, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
-	REMOVE_TRAIT(buckled_mob, TRAIT_FORCED_STANDING, TRAIT_SOURCE_BUCKLE)
-	UnregisterSignal(buckled_mob, COMSIG_LIVING_FLAMER_CROSSED)
-	update_mouse_pointer(buckled_mob, FALSE)
-	..()
+/obj/vehicle/rx47_mech/proc/clean_driver(mob/driver)
+	if(!istype(driver))
+		return FALSE
+	driver.layer = MOB_LAYER
+	REMOVE_TRAIT(driver, TRAIT_INSIDE_VEHICLE, TRAIT_SOURCE_BUCKLE)
+	REMOVE_TRAIT(driver, TRAIT_FORCED_STANDING, TRAIT_SOURCE_BUCKLE)
+	UnregisterSignal(driver, COMSIG_LIVING_FLAMER_CROSSED)
+	update_mouse_pointer(driver, FALSE)
+	return TRUE
 
 /obj/vehicle/rx47_mech/proc/update_mouse_pointer(mob/user, new_cursor)
 	if(!user.client?.prefs.custom_cursors)

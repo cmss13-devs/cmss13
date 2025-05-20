@@ -17,6 +17,7 @@
 	..()
 	forceMove(linked_mech)
 	if(linked_mech.buckled_mob && linked_mech.buckled_mob == user)
+		linked_mech.clean_driver(linked_mech.buckled_mob)
 		linked_mech.unbuckle()
 
 /obj/item/weapon/gun/mech/cock()

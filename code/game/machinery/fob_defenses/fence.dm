@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 #define STATE_OFF "off"
 
 /obj/structure/fence/fob
-	name = "electrified grille"
+	name = "\improper UE-02 Deployable Fence"
 	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
 	icon = 'icons/obj/structures/machinery/fob_machinery/electric_fence.dmi'
 	icon_state = "fence0"
@@ -84,7 +84,7 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 	. = ..()
 
 /obj/structure/fence/fob/Collided(atom/movable/AM)
-	if(!ismob(AM))
+	if(!ismob(AM) || ishuman(AM))
 		return
 	var/mob/mob = AM
 	if(state == STATE_ON)

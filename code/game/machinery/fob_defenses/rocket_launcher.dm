@@ -1,5 +1,6 @@
 /obj/structure/machinery/rocket_launcher
-	name = "rocket launcher"
+	name = "\improper UH-99 Smart Rocket Launcher"
+	desc = "Short range surface-to-surface rocket launcher system firing 60mm AMLE guided smart rockets. This system can be fired from behind cover, but it requires UE-04 Grid Sensors in order to paint targets."
 	icon = 'icons/obj/structures/machinery/fob_machinery/rocket_launcher.dmi'
 	icon_state = "rocket_launcher_undeployed"
 	density = TRUE

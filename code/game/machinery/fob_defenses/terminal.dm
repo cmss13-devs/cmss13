@@ -3,13 +3,12 @@
 #define STATE_OFF "off"
 
 /obj/structure/machinery/terminal
-	name = "service terminal"
+	name = "\improper UE-09 Service Terminal"
+	desc = "Terminal used to monitor the power levels of marine defenses."
 	icon = 'icons/obj/structures/machinery/fob_machinery/service_terminal.dmi'
 	icon_state = "terminal_undeployed"
 	density = TRUE
 	anchored = FALSE
-	bound_width = 32
-	bound_height = 64
 	explo_proof = TRUE
 	unslashable = TRUE
 	unacidable = TRUE

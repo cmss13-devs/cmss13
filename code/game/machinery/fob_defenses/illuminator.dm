@@ -4,6 +4,7 @@
 
 /obj/structure/machinery/illuminator
 	name = "\improper UE-92 Area Illuminator"
+	desc = "Large deployable floodlight designed to illuminate large areas."
 	icon = 'icons/obj/structures/machinery/fob_machinery/illuminator.dmi'
 	icon_state = "floodlight_undeployed"
 	density = TRUE

@@ -2,7 +2,8 @@
 #define STATE_OFF "off"
 
 /obj/structure/machinery/sensor
-	name = "sensor"
+	name = "\improper UE-04 Grid Sensor"
+	desc = "Field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
 	icon = 'icons/obj/structures/machinery/fob_machinery/sensor.dmi'
 	icon_state = "sensor"
 	explo_proof = TRUE
@@ -50,7 +51,8 @@
 #undef STATE_OFF
 
 /obj/item/sensor
-	name = "folded sensor"
+	name = "folded UE-04 Grid Sensor"
+	desc = "Field deployed sensor unit with the purpose of lasing targets for UH-99 Smart Rocket Launcher system in a wide range."
 	icon = 'icons/obj/structures/machinery/fob_machinery/sensor.dmi'
 	icon_state = "sensor_undeployed"
 

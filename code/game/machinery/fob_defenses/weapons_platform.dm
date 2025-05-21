@@ -3,7 +3,8 @@
 #define STATE_OFF "off"
 
 /obj/structure/machinery/weapons_platform
-	name = "weapons platform"
+	name = "\improper UH-02 Systems Platform"
+	desc = "Large weapons system platform designed to deploy multiple types of automated defense systems, such as the UH-46 Heavy Sentry Gun and the UH-99 Smart Rocket Launcher."
 	icon = 'icons/obj/structures/machinery/fob_machinery/weapons_platform.dmi'
 	icon_state = "platform_undeployed"
 	density = TRUE

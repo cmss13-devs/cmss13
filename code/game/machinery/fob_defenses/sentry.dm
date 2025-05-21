@@ -1,5 +1,6 @@
 /obj/structure/machinery/sentry
-	name = "sentry"
+	name = "\improper UH-46 Heavy Sentry Gun"
+	desc = "Massive omni directional dual barrelled 30mm automated heavy sentry gun."
 	icon = 'icons/obj/structures/machinery/fob_machinery/sentry.dmi'
 	icon_state = "sentry_undeployed"
 	density = TRUE

@@ -1111,6 +1111,24 @@
 /obj/structure/prop/vehicles/tank/longstreet/module/artillerymod/destroyed
 	icon_state = "artillerymod_destroyed"
 
+// USCM Static Defense Prop
+
+/obj/structure/prop/turret
+	name = "\improper UH-46 Heavy Sentry Gun"
+	desc = "Large weapons system platform designed to deploy multiple types of automated defense systems. This one has been rendered permanently non-functional."
+	icon = 'icons/obj/structures/props/static_defence_prop.dmi'
+	icon_state = "gun_platform"
+	layer = XENO_HIDING_LAYER
+	bound_height = 32
+	bound_width = 64
+	density = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+/obj/structure/prop/turret/missile
+	icon_state = "missile_platform"
+
 //overhead prop sets
 
 /obj/structure/prop/invuln/overhead

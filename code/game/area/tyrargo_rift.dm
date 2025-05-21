@@ -128,6 +128,7 @@
 
 /area/tyrargo/outdoors/outskirts_road/west
 	name = "Outskirts Road - West"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/tyrargo/outdoors/outskirts_road/central
 	name = "Outskirts Road - Central"
@@ -436,12 +437,16 @@
 
 /area/tyrargo/outdoors/outskirts/north_west_usasf
 	name = "Outskirts  - Worth-West Anderson Airbase"
+	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
 
 /area/tyrargo/outdoors/outskirts/north_east_usasf
 	name = "Outskirts  - North-East Anderson Airbase"
 
 /area/tyrargo/outdoors/outskirts/central
 	name = "Outskirts  - Central"
+
+/area/tyrargo/outdoors/outskirts/central/landing_zone
+	linked_lz = DROPSHIP_LZ1
 
 /area/tyrargo/outdoors/outskirts/east
 	name = "Outskirts  - East"

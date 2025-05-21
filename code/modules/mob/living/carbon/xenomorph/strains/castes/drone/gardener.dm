@@ -110,10 +110,6 @@
 		xeno.updatehealth()
 		playsound(xeno.loc, "alien_resin_build", 25)
 		xeno.current_fruits.Add(fruit)
-
-		var/number_of_fruit = length(xeno.current_fruits)
-		button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
-		update_button_icon()
 		xeno.update_icons()
 
 	apply_cooldown()
@@ -381,6 +377,11 @@
 
 	fruit_sac_overlay_icon.color = fruit_sac_color
 	bound_xeno.overlays += fruit_sac_overlay_icon
+
+/datum/behavior_delegate/drone_gardener/append_to_stat()
+	. = list()
+	. += "Fruits sustained: [length(bound_xeno.current_fruits)] / [bound_xeno.max_placeable]"
+
 /*
 Swapping to greater fruit changes the color to #17991B
 Swapping to spore fruit changes the color to #994617

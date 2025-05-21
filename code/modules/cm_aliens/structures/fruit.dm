@@ -94,7 +94,7 @@
 	. = ..()
 
 /obj/effect/alien/resin/fruit/proc/reduce_timer(maturity_increase)
-	if (mature || timer_id == TIMER_ID_NULL)
+	if(mature || timer_id == TIMER_ID_NULL)
 		return
 
 	// Unconditionally delete the first timer
@@ -103,7 +103,7 @@
 	timer_id = TIMER_ID_NULL
 
 	// Are we done, or do we need to add a new timer
-	if ((timeleft - maturity_increase) < 0)
+	if((timeleft - maturity_increase) < 0)
 		mature()
 	else
 		// Restart the timer.
@@ -183,21 +183,26 @@
 		if(!picked)
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We sense one of our fruit has been destroyed."))
 		bound_xeno.current_fruits.Remove(src)
-
-		var/number_of_fruit = length(bound_xeno.current_fruits)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/plant_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
-		plant_action.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
-		plant_action.update_button_icon()
-
 	bound_xeno = null
 
 	return ..()
+
+/obj/effect/alien/resin/fruit/lesser
+	desc = "A strange green-ish fruit-looking thing."
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/lesser
+
+/obj/effect/alien/resin/fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
+	. = ..()
+	if(ishuman(user))
+		. += "A volleyball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health. It provides no regeneration over time."
 
 //Greater
 
 /obj/effect/alien/resin/fruit/greater
 	name = XENO_FRUIT_GREATER
-	desc = "A fruit that can be eaten to immediately recover health, and give a strong regeneration effect for a few seconds."
+	desc = "A strange green-ish fruit-looking thing."
 	time_to_mature = 30 SECONDS
 	heal_amount = 75
 	regeneration_amount_total = 100
@@ -213,15 +218,22 @@
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
 		to_chat(recipient, SPAN_XENONOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
-		// Every second, heal him for 15.
+		// Every second, heal him for 20.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
 	if(do_consume)
 		finish_consume(recipient)
 
+/obj/effect/alien/resin/fruit/greater/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "A basketball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health, then regenerate [SPAN_NOTICE("20")] health per second, totaling to [SPAN_NOTICE("100")] health over [SPAN_NOTICE("5")] seconds."
+
 //Unstable
 /obj/effect/alien/resin/fruit/unstable
 	name = XENO_FRUIT_UNSTABLE
-	desc = "A fruit that can be eaten to gain a strong overshield effect, and give a small regeneration for several seconds."
+	desc = "A strange turquoise fruit-looking thing."
 	time_to_mature = 45 SECONDS
 	heal_amount = 0
 	regeneration_amount_total = 75
@@ -246,9 +258,16 @@
 	if(do_consume)
 		finish_consume(recipient)
 
+/obj/effect/alien/resin/fruit/unstable/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "A basketball sized resin growth. Its translucent insides radiate faint turquoise light. It appears to be loosely attached to the weeds below."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will grant an [SPAN_NOTICE("overshield")] equal to [SPAN_NOTICE("30%")] of our max health, capped at [SPAN_NOTICE("200")]. The shield decays by [SPAN_NOTICE("10")] per second over [SPAN_NOTICE("60")] seconds. We also regenerate [SPAN_NOTICE("75")] health across [SPAN_NOTICE("15")] seconds, healing [SPAN_NOTICE("5")] per second."
+
 //Spore
 /obj/effect/alien/resin/fruit/spore
-	desc = "A fruit that can be eaten to reenergize cooldowns. It also passively emits weak recovery pheromones."
+	desc = "A strange orange fruit-looking thing."
 	name = XENO_FRUIT_SPORE
 	time_to_mature = 15 SECONDS
 	icon_state = "fruit_spore_immature"
@@ -266,7 +285,7 @@
 /obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		mature = FALSE
-		for (var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
+		for(var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
 			if(E.effect_source == "spore")
 				qdel(E)
 		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 60 SECONDS, "spore")
@@ -290,9 +309,16 @@
 			if(aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
 				Z.recovery_new = aura_strength
 
+/obj/effect/alien/resin/fruit/spore/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "A basketball sized resin growth. Its translucent insides radiate faint orange light. It appears to be loosely attached to the weeds below."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The effect of fruit persist for [SPAN_NOTICE("60")] seconds. While not unrooted, it passively emits weak recovery pheromones around itself."
+
 /obj/effect/alien/resin/fruit/speed
 	name = XENO_FRUIT_SPEED
-	desc = "A fruit that can be eaten to move faster for a short amount of time."
+	desc = "A strange purple-ish fruit-looking thing."
 	time_to_mature = 35 SECONDS
 	icon_state = "fruit_speed_immature"
 	mature_icon_state = "fruit_speed"
@@ -317,9 +343,16 @@
 	if(do_consume)
 		finish_consume(recipient)
 
+/obj/effect/alien/resin/fruit/speed/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "A basketball sized resin growth. Its translucent insides radiate faint purple light. It appears to be loosely attached to the weeds below."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will increase our movement speed by [SPAN_NOTICE("40%")]. The effect lasts for [SPAN_NOTICE("15")] seconds."
+
 /obj/effect/alien/resin/fruit/plasma
 	name = XENO_FRUIT_PLASMA
-	desc = "A fruit that can be eaten to boost plasma generation."
+	desc = "A strange blue-ish fruit-looking thing."
 	time_to_mature = 25 SECONDS
 	icon_state = "fruit_plasma_immature"
 	mature_icon_state = "fruit_plasma"
@@ -340,6 +373,13 @@
 		finish_consume(recipient)
 
 #undef CAN_CONSUME_AT_FULL_HEALTH
+
+/obj/effect/alien/resin/fruit/plasma/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "A basketball sized resin growth. Its translucent insides radiate faint blue light. It appears to be loosely attached to the weeds below."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense that eating this fruit will regenerate [SPAN_NOTICE("48")] plasma every [SPAN_NOTICE("3")] seconds, up to a total of [SPAN_NOTICE("240")] plasma."
 
 /obj/item/reagent_container/food/snacks/resin_fruit
 	name = XENO_FRUIT_LESSER
@@ -377,10 +417,6 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/delete_fruit()
 	if(bound_xeno)
 		bound_xeno.current_fruits.Remove(src)
-		var/datum/action/xeno_action/onclick/plant_resin_fruit/prf = get_action(bound_xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
-		var/number_of_fruit = length(bound_xeno.current_fruits)
-		prf.button.set_maptext(SMALL_FONTS_COLOR(7, number_of_fruit, "#e69d00"), 19, 2)
-		prf.update_button_icon()
 		bound_xeno = null
 
 // Xenos eating fruit
@@ -411,7 +447,12 @@
 		SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[current_fruit]</b>."),
 		SPAN_NOTICE("[user] starts [user == affected_xeno ? "eating" : "feeding [affected_xeno]"] <b>[current_fruit]</b>."))
 
-	if(!do_after(user, consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, affected_xeno, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+	var/pick_delay = consume_delay
+	var/mob/living/carbon/xenomorph/x_user = user
+	if(istype(x_user.strain, /datum/xeno_strain/gardener))
+		pick_delay /= 2
+
+	if(!do_after(user, pick_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, affected_xeno, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		return FALSE
 
 	cant_consume = current_fruit.prevent_consume(affected_xeno)
@@ -463,7 +504,11 @@
 		return
 	// Indicates the fruit is being picked, so other xenos can't eat it at the same time
 	F.picked = TRUE
-	if(!do_after(src, F.consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	var/pick_delay = F.consume_delay
+	if(istype(src.strain, /datum/xeno_strain/gardener))
+		pick_delay /= 2
+	// Decrease time by half, if strain is gardener
+	if(!do_after(src, pick_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		F.picked = FALSE
 		return
 	if(!F.mature)
@@ -486,6 +531,16 @@
 	to_chat(src, SPAN_XENODANGER("We are too small to pick up \the [F]!"))
 	return
 
+/obj/item/reagent_container/food/snacks/resin_fruit/lesser
+	fruit_type = /obj/effect/alien/resin/fruit/lesser
+
+/obj/item/reagent_container/food/snacks/resin_fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
+	. = ..()
+	if(ishuman(user))
+		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health. It provides no regeneration over time."
+
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER
 	desc = "A strange large fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
@@ -495,6 +550,13 @@
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater/add_juice()
 	reagents.add_reagent("fruit_resin", 60)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/greater/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health, then regenerate [SPAN_NOTICE("20")] health per second, totaling to [SPAN_NOTICE("100")] health over [SPAN_NOTICE("5")] seconds."
 
 /obj/item/reagent_container/food/snacks/resin_fruit/unstable
 	name = XENO_FRUIT_UNSTABLE
@@ -507,6 +569,13 @@
 	reagents.add_reagent("fruit_resin", 30)
 	reagents.add_reagent(PLASMA_CHITIN, 30)
 
+/obj/item/reagent_container/food/snacks/resin_fruit/unstable/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will grant an [SPAN_NOTICE("overshield")] equal to [SPAN_NOTICE("30%")] of our max health, capped at [SPAN_NOTICE("200")]. The shield decays by [SPAN_NOTICE("10")] per second over [SPAN_NOTICE("60")] seconds. We also regenerate [SPAN_NOTICE("75")] health across [SPAN_NOTICE("15")] seconds, healing [SPAN_NOTICE("5")] per second."
+
 /obj/item/reagent_container/food/snacks/resin_fruit/spore
 	name = XENO_FRUIT_SPORE
 	desc = "A strange spore-filled fruit that you could eat... if you REALLY wanted to. Its roots seem to twitch every so often."
@@ -516,6 +585,13 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/spore/add_juice()
 	reagents.add_reagent("fruit_resin", 30)
 	reagents.add_reagent(PLASMA_PHEROMONE, 30)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/spore/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The effect of fruit persist for [SPAN_NOTICE("60")] seconds. While not unrooted, it passively emits weak recovery pheromones around itself."
 
 /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	name = XENO_FRUIT_SPEED
@@ -527,6 +603,13 @@
 	reagents.add_reagent("fruit_resin", 30)
 	reagents.add_reagent(PLASMA_CATECHOLAMINE, 30)
 
+/obj/item/reagent_container/food/snacks/resin_fruit/speed/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense eating this fruit will increase our movement speed by [SPAN_NOTICE("40%")]. The effect lasts for [SPAN_NOTICE("15")] seconds."
+
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma
 	name = XENO_FRUIT_PLASMA
 	icon_state = "fruit_plasma_item"
@@ -535,3 +618,10 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma/add_juice()
 	reagents.add_reagent("fruit_resin", 30)
 	reagents.add_reagent(PLASMA_PURPLE, 30)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/plasma/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+	if(isxeno(user) || isobserver(user))
+		. += "We sense that eating this fruit will regenerate [SPAN_NOTICE("48")] plasma every [SPAN_NOTICE("3")] seconds, up to a total of [SPAN_NOTICE("240")] plasma."

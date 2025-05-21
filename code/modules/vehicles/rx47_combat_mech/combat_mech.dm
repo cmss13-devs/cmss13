@@ -15,6 +15,9 @@
 	maxhealth = 3000
 	pixel_x = -17
 	pixel_y = -2
+
+	heal_increment = 100
+
 	var/mouse_pointer = 'icons/effects/mouse_pointer/mecha_mouse.dmi'
 	var/wreckage = /obj/structure/combat_mech_wreckage
 	var/obj/item/weapon/gun/mech/gun_primary
@@ -54,8 +57,10 @@
 	if(buckled_mob)
 		overlays += image(icon_state = "wymech_body_overlay", layer = MECH_CORE_LAYER)
 		overlays += image(icon_state = "wymech_legs", layer = MECH_CORE_LAYER)
-	if(helmet_closed)
-		overlays += image(icon_state = "wymech_helmet_closed", layer = MECH_LAYER)
+		if(helmet_closed)
+			overlays += image(icon_state = "wymech_helmet_closed", layer = MECH_LAYER)
+		else
+			overlays += image(icon_state = "wymech_helmet_open", layer = MECH_LAYER)
 	else
 		overlays += image(icon_state = "wymech_helmet_open", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)

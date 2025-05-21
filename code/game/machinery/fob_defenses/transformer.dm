@@ -78,6 +78,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	switch(state)
 		if(STATE_MARINE_CAPTURED)
 			overlays += image(icon, "marine-captured")
+			overlays += image(icon, "on-overlay")
 		if(STATE_XENO_CAPTURED)
 			overlays += image(icon, "xeno-captured")
 

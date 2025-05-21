@@ -115,7 +115,7 @@ type XenoKey = {
 
 type TierSlot = { open_slots: string; guaranteed_slots: string };
 type XenoInfo = { name: string; straing: string; ref: string };
-type XenoVitals = { health: number; area: string; is_ssd: BooleanLike };
+type XenoVitals = { health: number; plasma: number; area: string; is_ssd: BooleanLike };
 
 type Data = {
   total_xenos: number;

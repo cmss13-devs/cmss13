@@ -608,6 +608,7 @@
 
 		xenos["[xeno.nicknumber]"] = list(
 			"health" = round((xeno.health / xeno.maxHealth) * 100, 1),
+			"plasma" = round((xeno.plasma_stored / xeno.plasma_max) * 100, 1),
 			"area" = area_name,
 			"is_ssd" = (!xeno.client)
 		)

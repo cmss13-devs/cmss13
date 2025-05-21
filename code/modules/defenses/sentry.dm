@@ -570,6 +570,8 @@
 	var/battery_state = TURRET_BATTERY_STATE_OK
 	// A grace period set on init in case not all marines drop immediately on first drop
 	var/grace_period = null
+	// Lazy way to prevent battery_state procs on callbacks from turning sentries back on if groundside was evacced early
+	var/forfeit_shutoff = FALSE
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/Initialize()
 	. = ..()
@@ -604,12 +606,16 @@
 		// Number of humans needed is same value used in the _check_danger() proc in hivebuff.dm and king_cocoon/process()
 		if(groundside_humans < 12)
 			set_battery_state(TURRET_BATTERY_STATE_DEAD)
+			forfeit_shutoff = TRUE
 			sleep(45)
 			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 15, 1)
 			deployment_system.visible_message(SPAN_WARNING("[name] beeps steadily as it automatically depowers itself."))
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
 	. = ..()
+	if(forfeit_shutoff)
+		return
+
 	switch(battery_state)
 		if(TURRET_BATTERY_STATE_OK)
 			. += SPAN_INFO("Its battery indicator is green, fully charged.")

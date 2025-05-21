@@ -610,6 +610,7 @@
 			sleep(45)
 			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 15, 1)
 			deployment_system.visible_message(SPAN_WARNING("[name] beeps steadily as it automatically depowers itself."))
+			addtimer(CALLBACK(deployment_system, TYPE_PROC_REF(/obj/structure/machinery/sentry_holder, undeploy_sentry)), 1 MINUTES)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
 	. = ..()
@@ -640,7 +641,6 @@
 			turned_on = FALSE
 			power_off_action()
 			update_icon()
-			addtimer(CALLBACK(deployment_system, TYPE_PROC_REF(/obj/structure/machinery/sentry_holder, undeploy_sentry)), 1 MINUTES)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/set_range()
 	var/range = sentry_range - 1

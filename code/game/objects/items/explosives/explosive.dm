@@ -299,6 +299,10 @@
 
 /obj/item/satchel_charge_detonator/attack_self(mob/user, parameters) // when attackl_self, detonate charges
 	. = ..()
+	if(!skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI))
+		to_chat(user, SPAN_WARNING("The ID lock prevents you from using this."))
+		return
+
 	to_chat(user, SPAN_BOLDWARNING("You hold down the detonator button."))
 	if(pressed)
 		return

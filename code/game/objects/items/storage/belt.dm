@@ -1172,12 +1172,12 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
-/obj/item/storage/belt/setchelcharge
+/obj/item/storage/belt/satchelcharge
 	storage_slots = 26
 	can_hold = list(/obj/item/explosive/satchel_charge, /obj/item/satchel_charge_detonator)
 	var/starting_charges = 20
 
-/obj/item/storage/belt/setchelcharge/fill_preset_inventory()
+/obj/item/storage/belt/satchelcharge/fill_preset_inventory()
 	new /obj/item/satchel_charge_detonator(src)
 	for(var/i = 1 to starting_charges )
 		new /obj/item/explosive/satchel_charge(src)

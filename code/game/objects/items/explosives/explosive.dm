@@ -290,6 +290,12 @@
 	/// list of linked explosives to handle
 	var/list/linked_charges = list()
 	var/pressed = FALSE
+	var/maximal_connected_charges = 5
+
+/obj/item/satchel_charge_detonator/proc/can_connect()
+	if(length(linked_charges)>= maximal_connected_charges)
+		return FALSE
+	return TRUE
 
 /obj/item/satchel_charge_detonator/attack_self(mob/user, parameters) // when attackl_self, detonate charges
 	. = ..()
@@ -379,6 +385,11 @@
 		linked_detonator = null
 		to_chat(user, SPAN_NOTICE("You unlink the charge from [detonator]."))
 		icon_state = "satchel"
+		return
+
+	if(!detonator.can_connect())
+		to_chat(user, SPAN_NOTICE("[detonator] already has too many linked charges."))
+		return
 	else
 		linked_detonator?.linked_charges -= src
 		detonator.linked_charges |= src

@@ -1172,6 +1172,16 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
+/obj/item/storage/belt/setchelcharge
+	storage_slots = 26
+	can_hold = list(/obj/item/explosive/grenade)
+	var/starting_charges = 20
+
+/obj/item/storage/belt/setchelcharge/fill_preset_inventory()
+	new /obj/item/satchel_charge_detonator(src)
+	for(var/i = 1 to starting_charges )
+		new /obj/item/explosive/satchel_charge(src)
+
 /obj/item/storage/belt/grenade/large/dutch
 	name = "\improper Dutch's Grenadier Rigging"
 	desc = "A high capacity rig filled to the brim with all the explosives you could ask for, what else is there to want?"

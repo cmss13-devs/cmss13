@@ -427,9 +427,8 @@
 			visible_message(SPAN_XENODANGER("We hear something resembling a scream from [src] as it's destroyed!"))
 			xeno_message(SPAN_XENOANNOUNCE("Psychic pain storms throughout the hive as [src] is destroyed! We will no longer gain burrowed larva over time."), 3, linked_hive.hivenumber)
 			linked_hive.hijack_burrowed_surge = FALSE
-
-		if(warn)
-			xeno_message(SPAN_XENOANNOUNCE("The weeds shudder and psychic pain ripples throughout the hive; [src] has been destroyed!"))
+		else if(warn)
+			xeno_message(SPAN_XENOANNOUNCE("Psychic pain ripples throughout the hive as [src] is destroyed!"))
 
 	SSminimaps.remove_marker(src)
 	. = ..()

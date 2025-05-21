@@ -1,4 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	faction_group = list("CLF")
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
 "ai" = (
 /turf/closed/shuttle/dropship5/CLF/Fire{
 	icon_state = "36_alt"
@@ -272,12 +278,10 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "dA" = (
 /obj/structure/closet/crate/ammo,
-/obj/item/ammo_magazine/shotgun/incendiary{
-	pixel_x = 3;
-	pixel_y = 6
-	},
-/obj/item/ammo_magazine/shotgun/incendiary,
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/clothing/suit/storage/militia/vest,
+/obj/item/clothing/suit/storage/militia,
+/obj/item/clothing/suit/storage/militia/partial,
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/clf_dropship)
 "dE" = (
@@ -878,14 +882,8 @@
 /turf/open/floor/corsat/spiralplate,
 /area/lv759/indoors/spaceport/clf_dropship)
 "lx" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF");
-	density = 0
-	},
-/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "4";
-	density = 0
+	icon_state = "4"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "lA" = (
@@ -1970,14 +1968,8 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/cargo)
 "AW" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF");
-	density = 0
-	},
-/obj/structure/blocker/invisible_wall,
 /turf/closed/shuttle/dropship5/CLF/Fire/transparent{
-	icon_state = "3";
-	density = 0
+	icon_state = "3"
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "AX" = (
@@ -2023,12 +2015,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/communications_office)
-"BR" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF")
-	},
-/turf/open/floor/almayer,
-/area/lv759/indoors/spaceport/cargo)
 "BS" = (
 /obj/structure/shuttle/part/dropship_clf/transparent{
 	icon_state = "44"
@@ -2151,14 +2137,11 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Er" = (
-/obj/structure/shuttle/part/dropship_clf/transparent{
-	density = 0
-	},
+/obj/structure/shuttle/part/dropship_clf/transparent,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt{
 	layer = 4
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Ev" = (
@@ -2691,11 +2674,9 @@
 /area/lv759/indoors/spaceport/cargo)
 "Mi" = (
 /obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "6";
-	density = 0
+	icon_state = "6"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Mj" = (
@@ -2920,11 +2901,9 @@
 /area/lv759/indoors/spaceport/communications_office)
 "Qf" = (
 /obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "2";
-	density = 0
+	icon_state = "2"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Qg" = (
@@ -3379,11 +3358,9 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "XC" = (
 /obj/structure/shuttle/part/dropship_clf/transparent{
-	icon_state = "5";
-	density = 0
+	icon_state = "5"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv759/indoors/spaceport/clf_dropship)
 "XQ" = (
@@ -3649,7 +3626,7 @@ DN
 hP
 BZ
 BZ
-pN
+hP
 hP
 hP
 hP
@@ -4123,7 +4100,7 @@ IJ
 AP
 Gn
 Dc
-BR
+bL
 mi
 Ma
 rC
@@ -4198,7 +4175,7 @@ iX
 MB
 SN
 Na
-HB
+aa
 UX
 Ma
 rC
@@ -4273,7 +4250,7 @@ DB
 HB
 bL
 Dc
-BR
+Gn
 pH
 uT
 dr

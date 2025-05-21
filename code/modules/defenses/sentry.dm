@@ -568,15 +568,45 @@
 	var/battery_duration = 20 MINUTES
 	/// The current battery state
 	var/battery_state = TURRET_BATTERY_STATE_OK
+	// A grace period set on init in case not all marines drop immediately on first drop
+	var/grace_period = null
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/Initialize()
 	. = ..()
 
+	grace_period = world.time + ceil(battery_duration * 0.35)
 	var/low_battery_time = ceil(battery_duration * 0.7)
 	var/critical_battery_time = ceil(battery_duration * 0.9)
 	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_LOW), low_battery_time)
 	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_CRITICAL), critical_battery_time)
 	addtimer(CALLBACK(src, PROC_REF(set_battery_state), TURRET_BATTERY_STATE_DEAD), battery_duration)
+
+/obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/process()
+	. = ..()
+	// Check gamemode to see if it's Distress and the first drop has been done, in off-chance sentries arrive before marines
+	if(istype(SSticker.mode, /datum/game_mode/colonialmarines) && !SSobjectives.first_drop_complete)
+		return
+
+	// Check if the grace period is over and if the turrets battery isn't already dead
+	if((grace_period < world.time) && battery_state != TURRET_BATTERY_STATE_DEAD)
+		var/groundside_humans = 0
+		for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+			if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+				continue
+
+			var/turf/turf = get_turf(current_human)
+			if(is_ground_level(turf?.z))
+				groundside_humans += 1
+
+				if(groundside_humans > 12)
+					break
+
+		// Number of humans needed is same value used in the _check_danger() proc in hivebuff.dm and king_cocoon/process()
+		if(groundside_humans < 12)
+			set_battery_state(TURRET_BATTERY_STATE_DEAD)
+			sleep(45)
+			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 15, 1)
+			deployment_system.visible_message(SPAN_WARNING("[name] beeps steadily as it registers insufficient USCM presence in the Area of Operations."))
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
 	. = ..()
@@ -604,6 +634,7 @@
 			turned_on = FALSE
 			power_off_action()
 			update_icon()
+			addtimer(CALLBACK(deployment_system, TYPE_PROC_REF(/obj/structure/machinery/sentry_holder, undeploy_sentry)), 1 MINUTES)
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/set_range()
 	var/range = sentry_range - 1

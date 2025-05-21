@@ -279,9 +279,10 @@
 "dA" = (
 /obj/structure/closet/crate/ammo,
 /obj/effect/decal/hybrisa/dirt,
-/obj/item/clothing/suit/storage/militia/vest,
-/obj/item/clothing/suit/storage/militia,
-/obj/item/clothing/suit/storage/militia/partial,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
 /turf/open/floor/almayer/test_floor5,
 /area/lv759/indoors/spaceport/clf_dropship)
 "dE" = (
@@ -1564,9 +1565,14 @@
 	pixel_y = 20
 	},
 /obj/structure/surface/rack,
-/obj/item/clothing/accessory/storage/webbing/black,
-/obj/item/clothing/accessory/storage/webbing/black,
-/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/head/militia/bucket{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/tool/weldpack{
+	pixel_x = 2;
+	pixel_y = -1
+	},
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "vY" = (
@@ -2528,7 +2534,8 @@
 /area/lv759/indoors/spaceport/cargo)
 "Kh" = (
 /obj/structure/shuttle/part/dropship_clf{
-	icon_state = "rightengine_1"
+	icon_state = "rightengine_1";
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)
@@ -2852,7 +2859,8 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Pg" = (
 /obj/structure/shuttle/part/dropship_clf{
-	icon_state = "leftengine_1"
+	icon_state = "leftengine_1";
+	opacity = 0
 	},
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/clf_dropship)

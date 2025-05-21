@@ -1174,7 +1174,7 @@
 
 /obj/item/storage/belt/setchelcharge
 	storage_slots = 26
-	can_hold = list(/obj/item/explosive/grenade)
+	can_hold = list(/obj/item/explosive/satchel_charge, /obj/item/satchel_charge_detonator)
 	var/starting_charges = 20
 
 /obj/item/storage/belt/setchelcharge/fill_preset_inventory()

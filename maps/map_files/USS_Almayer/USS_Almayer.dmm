@@ -6125,6 +6125,12 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
+"aoL" = (
+/obj/vehicle/powerloader/jd{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/almayer/maint/lower/constr)
 "aoM" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/medical_science)
@@ -90931,7 +90937,7 @@ btO
 bcm
 sCW
 nvX
-tTC
+aoL
 jdu
 tWd
 aPe

@@ -9,6 +9,7 @@ import {
   Flex,
   Icon,
   Input,
+  Image,
   NumberInput,
   Table,
 } from 'tgui/components';
@@ -48,6 +49,7 @@ const filterXenos = (data: {
       strain: xeno_info[nicknumber].strain,
       location: xeno_vitals[nicknumber].area,
       health: xeno_vitals[nicknumber].health,
+      plasma: xeno_vitals[nicknumber].plasma,
       ref: xeno_info[nicknumber].ref,
       is_ssd: xeno_vitals[nicknumber].is_ssd,
       is_leader: key.is_leader,
@@ -99,6 +101,7 @@ type XenoEntry = {
   strain: string;
   location: string | null;
   health: number;
+  plasma: number;
   ref: string;
   is_ssd: BooleanLike;
   is_leader: BooleanLike;
@@ -119,6 +122,7 @@ type XenoVitals = { health: number; plasma: number; area: string; is_ssd: Boolea
 
 type Data = {
   total_xenos: number;
+  xeno_icons: Record<string, string>[];
   xeno_counts: Record<string, number>[];
   tier_slots: { 3: TierSlot; 2: TierSlot };
   xeno_keys: XenoKey[];
@@ -212,7 +216,7 @@ const GeneralInformation = (props) => {
 
 const XenoCounts = (props) => {
   const { data } = useBackend<Data>();
-  const { xeno_counts, tier_slots, hive_color } = data;
+  const { xeno_icons, xeno_counts, tier_slots, hive_color } = data;
 
   return (
     <Flex direction="column-reverse">
@@ -277,7 +281,13 @@ const XenoCounts = (props) => {
                   <Table className="xenoCountTable" collapsing>
                     <Table.Row header>
                       {Object.keys(counts).map((caste, i) => (
-                        <Table.Cell key={i} className="underlineCell" width={7}>
+                        <Table.Cell key={i} className="underlineCell" width={7} nowrap={true}>
+                          <Image
+                            src={`data:image/jpeg;base64,${xeno_icons[tier][caste]}`}
+                            style={{
+                              transform: 'scale(3) translateX(-3px)',
+                            }}
+                          />
                           {caste === 'Bloody Larva' ? 'Larva' : caste}
                         </Table.Cell>
                       ))}
@@ -405,7 +415,8 @@ const XenoList = (props) => {
           <Table.Cell>Name</Table.Cell>
           <Table.Cell width="15%">Strain</Table.Cell>
           <Table.Cell>Location</Table.Cell>
-          <Table.Cell width="75px">Health</Table.Cell>
+          <Table.Cell width="60px">Health</Table.Cell>
+          <Table.Cell width="60px">Plasma</Table.Cell>
           <Table.Cell width="100px" />
         </Table.Row>
 
@@ -431,6 +442,13 @@ const XenoList = (props) => {
                 <b style={redFont}>{entry.health}%</b>
               ) : (
                 <>{entry.health}%</>
+              )}
+            </Table.Cell>
+            <Table.Cell>
+              {entry.plasma < 30 ? (
+                <b style={redFont}>{entry.plasma}%</b>
+              ) : (
+                <>{entry.plasma}%</>
               )}
             </Table.Cell>
             <Table.Cell className="noPadCell" textAlign="center">

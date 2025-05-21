@@ -3,6 +3,7 @@
 
 	// Data to pass when rendering the UI (not static)
 	var/total_xenos
+	var/list/xeno_icons
 	var/list/xeno_counts
 	var/list/tier_slots
 	var/list/xeno_vitals
@@ -99,6 +100,12 @@
 	if(send_update)
 		SStgui.update_uis(src)
 
+/datum/hive_status_ui/proc/update_xeno_icons(send_update = TRUE)
+	xeno_icons = assoc_hive.get_xeno_icons()
+
+	if(send_update)
+		SStgui.update_uis(src)
+
 // Updates all data except burrowed larva
 /datum/hive_status_ui/proc/update_all_xeno_data(send_update = TRUE)
 	update_xeno_counts(FALSE)
@@ -116,6 +123,7 @@
 	update_all_xeno_data(FALSE)
 	update_burrowed_larva(FALSE)
 	update_pylon_status(FALSE)
+	update_xeno_icons(FALSE)
 	SStgui.update_uis(src)
 
 /datum/hive_status_ui/proc/update_pylon_status(send_update = TRUE)
@@ -143,6 +151,7 @@
 /datum/hive_status_ui/ui_data(mob/user)
 	. = list()
 	.["total_xenos"] = total_xenos
+	.["xeno_icons"] = xeno_icons
 	.["xeno_counts"] = xeno_counts
 	.["tier_slots"] = tier_slots
 	.["xeno_keys"] = xeno_keys

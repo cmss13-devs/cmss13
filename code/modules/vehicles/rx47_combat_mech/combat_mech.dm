@@ -1,7 +1,7 @@
 #define MECH_LAYER MOB_LAYER + 0.12
 #define MECH_CORE_LAYER MOB_LAYER + 0.11
 /obj/vehicle/rx47_mech
-	name = "\improper RX47-CC Combat Mechsuit"
+	name = "\improper RX47 Combat Mechsuit"
 	icon = 'icons/obj/vehicles/wymech.dmi'
 	desc = "A RX47 Combat Mechsuit, equipped with a 20mm Chaingun and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
 	icon_state = "wymech"
@@ -23,7 +23,8 @@
 	var/gun_secondary_path = /obj/item/weapon/gun/mech/cupola
 
 	var/helmet_closed = FALSE
-	var/squad_color
+	var/markings_color
+	var/markings_specialty
 
 /obj/vehicle/rx47_mech/siegebreaker
 	name = "\improper RX47-SB Combat Mechsuit"
@@ -60,8 +61,10 @@
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_weapon_left", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_weapon_right", layer = MECH_LAYER)
-	if(squad_color)
-		overlays += image(icon_state = "wymech_markings_[squad_color]", layer = MECH_LAYER)
+	if(markings_color)
+		overlays += image(icon_state = "markings_c_[markings_color]", layer = MECH_LAYER)
+	if(markings_specialty)
+		overlays += image(icon_state = "markings_s_[markings_specialty]", layer = MECH_LAYER)
 
 
 /obj/vehicle/rx47_mech/Destroy()
@@ -75,6 +78,12 @@
 		qdel(gun_secondary)
 		gun_secondary = null
 	return ..()
+
+/obj/vehicle/rx47_mech/unbuckle()
+	gun_primary.flags_gun_features |= GUN_TRIGGER_SAFETY
+	gun_secondary.flags_gun_features |= GUN_TRIGGER_SAFETY
+	clean_driver(buckled_mob)
+	. = ..()
 
 /obj/vehicle/rx47_mech/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated())
@@ -229,13 +238,14 @@
 			return
 		else if(gun_secondary && !new_buckled_mob.put_in_r_hand(gun_secondary))
 			gun_secondary.forceMove(src)
-			gun_primary.flags_gun_features |= GUN_TRIGGER_SAFETY
+			gun_secondary.flags_gun_features |= GUN_TRIGGER_SAFETY
 			clean_driver(new_buckled_mob)
 			unbuckle()
 			return
 			//can't use the mech without both weapons equipped
 	else
 		move_delay = initial(move_delay)
+		clean_driver(new_buckled_mob)
 		new_buckled_mob.drop_held_items(TRUE) //drop the weapons when unbuckling
 
 /obj/vehicle/rx47_mech/proc/clean_driver(mob/driver)

@@ -4,6 +4,7 @@
 	icon_state = "dogtagdetector"
 	item_state = "dogtag_detector"
 	blip_type = "dogtag"
+	w_class = SIZE_SMALL
 
 /obj/item/device/motiondetector/dogtag/get_help_text()
 	. = "Red indicators on your HUD will show the location of dogtags detected by the scanner. Has two modes: slow long-range [SPAN_HELPFUL("(14 tiles)")] and fast short-range [SPAN_HELPFUL("(7 tiles)")]."

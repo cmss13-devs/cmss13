@@ -627,9 +627,13 @@
 		if(cur_area)
 			area_name = cur_area.name
 
+		var/plasma_percent = -1
+		if(xeno.plasma_max != 0)
+			plasma_percent = round((xeno.plasma_stored / xeno.plasma_max) * 100, 1)
+
 		xenos["[xeno.nicknumber]"] = list(
 			"health" = round((xeno.health / xeno.maxHealth) * 100, 1),
-			"plasma" = round((xeno.plasma_stored / xeno.plasma_max) * 100, 1),
+			"plasma" = plasma_percent,
 			"area" = area_name,
 			"is_ssd" = (!xeno.client)
 		)

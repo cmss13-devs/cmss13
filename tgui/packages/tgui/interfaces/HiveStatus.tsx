@@ -19,6 +19,10 @@ const redFont = {
   color: 'red',
 };
 
+const grayFont = {
+  color: 'gray',
+};
+
 /**
  * Filters the list of xenos and returns a set of rows that will be used in the
  * xeno list table
@@ -445,7 +449,9 @@ const XenoList = (props) => {
               )}
             </Table.Cell>
             <Table.Cell>
-              {entry.plasma < 30 ? (
+              {entry.plasma < 0 ? (
+                <div style={grayFont}>------</div>
+              ) : entry.plasma < 30 ? (
                 <b style={redFont}>{entry.plasma}%</b>
               ) : (
                 <>{entry.plasma}%</>

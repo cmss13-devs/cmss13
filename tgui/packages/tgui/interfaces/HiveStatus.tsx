@@ -285,7 +285,7 @@ const XenoCounts = (props) => {
                   <Table className="xenoCountTable" collapsing>
                     <Table.Row header>
                       {Object.keys(counts).map((caste, i) => (
-                        <Table.Cell key={i} className="underlineCell" width={7} nowrap={true}>
+                        <Table.Cell key={i} className="underlineCell" width={7} nowrap>
                           <Image
                             src={`data:image/jpeg;base64,${xeno_icons[tier][caste]}`}
                             style={{

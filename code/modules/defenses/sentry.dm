@@ -606,7 +606,7 @@
 			set_battery_state(TURRET_BATTERY_STATE_DEAD)
 			sleep(45)
 			playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 15, 1)
-			deployment_system.visible_message(SPAN_WARNING("[name] beeps steadily as it registers insufficient USCM presence in the Area of Operations."))
+			deployment_system.visible_message(SPAN_WARNING("[name] beeps steadily as it automatically depowers itself due to insufficient human presence in the Area of Operations."))
 
 /obj/structure/machinery/defenses/sentry/premade/deployable/colony/landing_zone/get_examine_text(mob/user)
 	. = ..()

@@ -21,6 +21,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	var/state = STATE_BROKEN
 	var/shutdown_timer
 	var/turn_on_timer
+	var/active_since = 0
 	var/obj/structure/machinery/backup_generator/backup
 
 /obj/structure/machinery/transformer/Initialize(mapload, ...)
@@ -136,6 +137,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source has been restored!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_ON)
+	active_since = world.time
 
 /obj/structure/machinery/transformer/attack_alien(mob/living/carbon/xenomorph/alien)
 	if(state != STATE_MARINE_CAPTURED)
@@ -160,14 +162,15 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 	state = STATE_BROKEN
 	update_icon()
-	marine_announcement("Power Alert: \nColony transformer unresponsive. Power Grid shutdown estimated in 5 minutes.", "ARES Power Grid Monitor")
+	var/time_to_shutdown = min(world.time - active_since, 5 MINUTES) / 600
+	marine_announcement("Power Alert: \nColony transformer unresponsive. Power Grid shutdown estimated in [round(time_to_shutdown)] minutes.", "ARES Power Grid Monitor")
 	var/datum/hive_status/hive
 	for(var/cur_hive_num in GLOB.hive_datum)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
-		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source was destroyed, It will shutdown in 5 minutes!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
-	shutdown_timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), 5 MINUTES, TIMER_STOPPABLE)
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source was destroyed, It will shutdown in [round(time_to_shutdown)] minutes!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+	shutdown_timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), time_to_shutdown MINUTES, TIMER_STOPPABLE)
 	if(turn_on_timer)
 		deltimer(turn_on_timer)
 		turn_on_timer = null

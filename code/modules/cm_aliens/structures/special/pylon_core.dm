@@ -403,6 +403,7 @@
 		if(hardcore && last_attacked_message < world.time && current_health > health)
 			xeno_message(SPAN_XENOANNOUNCE("The hive core is under attack!"), 2, linked_hive.hivenumber)
 			last_attacked_message = world.time + next_attacked_message
+
 	else
 		. = ..()
 
@@ -426,6 +427,9 @@
 			visible_message(SPAN_XENODANGER("We hear something resembling a scream from [src] as it's destroyed!"))
 			xeno_message(SPAN_XENOANNOUNCE("Psychic pain storms throughout the hive as [src] is destroyed! We will no longer gain burrowed larva over time."), 3, linked_hive.hivenumber)
 			linked_hive.hijack_burrowed_surge = FALSE
+
+		if(warn)
+			xeno_message(SPAN_XENOANNOUNCE("The weeds shudder and psychic pain ripples throughout the hive; [src] has been destroyed!"))
 
 	SSminimaps.remove_marker(src)
 	. = ..()

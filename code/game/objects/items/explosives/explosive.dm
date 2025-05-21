@@ -19,16 +19,25 @@
 	var/max_container_volume = 120
 	var/current_container_volume = 0
 	var/assembly_stage = ASSEMBLY_EMPTY //The assembly_stage of the assembly
-	var/list/reaction_limits = list("max_ex_power" = 175, "base_ex_falloff" = 75, "max_ex_shards" = 32,
-									"max_fire_rad" = 5, "max_fire_int" = 20, "max_fire_dur" = 24,
+	var/list/reaction_limits = list("max_ex_power" = 180, "base_ex_falloff" = 80, "max_ex_shards" = 40,
+									"max_fire_rad" = 5, "max_fire_int" = 25, "max_fire_dur" = 24,
 									"min_fire_rad" = 1, "min_fire_int" = 3, "min_fire_dur" = 3
 	)
 	var/falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	/// Whether a star shape is possible when the intensity meets CHEM_FIRE_STAR_THRESHOLD
 	var/allow_star_shape = TRUE
+	/// Whether both explosions and shrapnels use directions
 	var/use_dir = FALSE
-	var/angle = 360
-	var/has_blast_wave_dampener = FALSE; //Whether or not the casing can be toggle between different falloff_mode
+	/// Spread angle for shrapnels
+	var/shrapnel_spread = 360
+	/// The angle that this explosive last hits the target at, applies to projectiles, this will override dir if set
+	var/hit_angle
+	/// Whether or not the casing can be toggled between different falloff_mode
+	var/has_blast_wave_dampener = FALSE;
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/grenades_righthand.dmi'
+	)
 
 /obj/item/explosive/Initialize()
 	. = ..()
@@ -50,7 +59,7 @@
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!has_blast_wave_dampener)

@@ -6,21 +6,23 @@ on:
   merge_group:
 jobs:
   run_linters:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Run Linters
     runs-on: ubuntu-latest
     concurrency:
       group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Restore SpacemanDMM cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm-${{ secrets.CACHE_PURGE_KEY }}
       - name: Restore Yarn cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: tgui/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ secrets.CACHE_PURGE_KEY }}-${{ hashFiles('tgui/yarn.lock') }}
@@ -28,7 +30,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - name: Restore Rust cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cargo
           key: ${{ runner.os }}-rust
@@ -65,6 +67,9 @@ jobs:
     name: Lint with OpenDream
     runs-on: ubuntu-22.04
     steps:
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9
       - uses: actions/checkout@v4
       - uses: robinraju/release-downloader@v1.9
         with:
@@ -75,7 +80,7 @@ jobs:
       - run: ./DMCompiler_linux-x64/DMCompiler --suppress-unimplemented colonialmarines.dme
 
   compile_all_maps:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile Maps
     runs-on: ubuntu-latest
     steps:
@@ -92,7 +97,7 @@ jobs:
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
   find_all_maps:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Find Maps to Test
     runs-on: ubuntu-latest
     outputs:
@@ -109,6 +114,8 @@ jobs:
           shopt -s extglob
           echo "$(ls -mw0 maps/!(*override*).json)" > maps_output.txt
           sed -i -e s+maps/+\"+g -e s+.json+\"+g maps_output.txt
+          echo "Ignored Maps: $(cat .github/maps_to_ignore.txt)"
+          cat .github/maps_to_ignore.txt | sed -r 's/\s*//g' | xargs -i sed -ri 's/(, "{}")|("{}", )//g' maps_output.txt
           echo "Maps: $(cat maps_output.txt)"
           echo "maps={\"paths\":[$(cat maps_output.txt)]}" >> $GITHUB_OUTPUT
       - name: Find Alternate Tests
@@ -117,7 +124,7 @@ jobs:
           ALTERNATE_TESTS_JSON=$(jq -nRc '[inputs | capture("^(?<major>[0-9]+)\\.(?<minor>[0-9]+): (?<map>.+)$")]' .github/alternate_byond_versions.txt)
           echo "alternate_tests=$ALTERNATE_TESTS_JSON" >> $GITHUB_OUTPUT
   run_all_tests:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Unit Tests
     needs: [find_all_maps]
     strategy:
@@ -132,7 +139,7 @@ jobs:
       map: ${{ matrix.map }}
 
   run_alternate_tests:
-    if: "!contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]'"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
     name: Alternate Tests
     needs: [find_all_maps]
     strategy:
@@ -149,7 +156,7 @@ jobs:
       minor: ${{ matrix.setup.minor }}
 
   check_alternate_tests:
-    if: "!contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]'"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
     name: Check Alternate Tests
     needs: [run_alternate_tests]
     runs-on: ubuntu-latest
@@ -157,7 +164,7 @@ jobs:
       - run: echo Alternate tests passed.
 
   test_windows:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Windows Build
     runs-on: windows-latest
     concurrency:
@@ -173,6 +180,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - name: Restore BYOND cache
+        uses: actions/cache@v3
+        with:
+          path: C:\\byond
+          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
       - name: Compile
         run: pwsh tools/ci/build.ps1
         env:

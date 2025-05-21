@@ -7,7 +7,11 @@ LINEN BINS
 /obj/item/bedsheet
 	name = "bedsheet"
 	desc = "A surprisingly soft linen bedsheet."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/bedsheets.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bedsheets_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bedsheets_righthand.dmi',
+	)
 	icon_state = "sheet"
 	item_state = "bedsheet"
 	layer = MOB_LAYER
@@ -75,13 +79,14 @@ LINEN BINS
 /obj/item/bedsheet/brown
 	icon_state = "sheetbrown"
 
-
+/obj/item/bedsheet/colorable
+	icon_state = "sheetce"
 
 
 /obj/structure/bedsheetbin
 	name = "linen bin"
 	desc = "A linen bin. It looks rather cosy."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "linenbin-full"
 	anchored = TRUE
 	var/amount = 20

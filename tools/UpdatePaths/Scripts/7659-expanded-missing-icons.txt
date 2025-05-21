@@ -1,0 +1,10 @@
+/obj/structure/flora/bush/ausbushes/ppflowers : /obj/structure/flora/bush/ausbushes/var3/ppflowers{@OLD}
+/obj/structure/flora/bush/ausbushes/var3/ywflowers : /obj/structure/flora/bush/ausbushes/ywflowers{@OLD}
+/turf/open/shuttle/escapepod/floor5 : /turf/open/shuttle/escapepod/floor1/north
+/turf/open/shuttle/escapepod/floor9 : /turf/open/shuttle/escapepod/floor2/west
+/turf/open/shuttle/escapepod/floor7 : /turf/open/shuttle/escapepod/floor0/east
+/turf/open/shuttle/escapepod/floor12 : /turf/open/shuttle/escapepod/floor2/east
+/turf/open/shuttle/escapepod/floor6 : /turf/open/shuttle/escapepod/floor0/north
+/turf/open/shuttle/escapepod/floor11 : /turf/open/shuttle/escapepod/floor1/west
+/turf/open/shuttle/escapepod/floor8 : /turf/open/shuttle/escapepod/floor1/east
+/turf/open/shuttle/escapepod/floor10 : /turf/open/shuttle/escapepod/floor0/west

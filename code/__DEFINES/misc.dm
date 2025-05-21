@@ -49,6 +49,9 @@
 #define AREA_UNWEEDABLE (1<<4)
 /// Flags the area as having purpose by the Yautja, and exempt from gear tracking.
 #define AREA_YAUTJA_GROUNDS (1<<5)
+/// Flags the area as a hunting grounds for the Yautja, sometimes blocking game interaction.
+#define AREA_YAUTJA_HUNTING_GROUNDS (1<<6)
+
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 
@@ -297,6 +300,7 @@
 //ghost vision mode pref settings
 #define GHOST_VISION_LEVEL_NO_NVG "No Night Vision"
 #define GHOST_VISION_LEVEL_MID_NVG "Half Night Vision"
+#define GHOST_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define GHOST_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
 //Ghost orbit types:

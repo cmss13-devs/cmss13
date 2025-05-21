@@ -20,6 +20,7 @@
 	var/network = "Ground"
 	var/amount = 30
 	var/accept_beaker_only = TRUE
+	var/pressurized_only = FALSE
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
 	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
@@ -89,6 +90,14 @@
 		if(!inoperable())
 			overlays += "+onlight"
 
+/obj/structure/machinery/chem_dispenser/corpsman/update_icon()
+	if(stat & BROKEN)
+		icon_state = (beaker ? "mixer1_b" : "mixer0_b")
+	else if(stat & NOPOWER)
+		icon_state = (beaker ? "[base_state]1_nopower" : "[base_state]0_nopower")
+	else
+		icon_state = (beaker ? "[base_state]1" : "[base_state]0")
+
 /obj/structure/machinery/chem_dispenser/on_stored_atom_del(atom/movable/AM)
 	if(AM == beaker)
 		beaker = null
@@ -107,7 +116,7 @@
 	return TRUE
 
 /obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		replace_beaker(user)
@@ -204,6 +213,10 @@
 	if(istype(attacking_object, /obj/item/reagent_container/glass) || istype(attacking_object, /obj/item/reagent_container/food))
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
+			return
+		if(pressurized_only && !istype(attacking_object, /obj/item/reagent_container/glass/pressurized_canister))
+			to_chat(user, SPAN_NOTICE("This machine only accepts pressurized canisters"))
+			return
 		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker
 			beaker = attacking_object
@@ -259,6 +272,33 @@
 		return
 	tgui_interact(user)
 
+/obj/structure/machinery/chem_dispenser/corpsman
+	name = "pressurized chemical dispenser"
+	desc = "A more basic chemical dispenser, designed for use with pressurized reagent canisters. A Wey-Yu product."
+	icon_state = "mixer0"
+	ui_title = "Chem Dispenser 4000"
+	req_skill_level = SKILL_MEDICAL_MEDIC
+	accept_beaker_only = FALSE
+	pressurized_only = TRUE
+	dispensable_reagents = list(
+		"bicaridine",
+		"kelotane",
+		"anti_toxin",
+		"dexalin",
+		"inaprovaline",
+		"adrenaline",
+		"peridaxon",
+		"tramadol",
+		"tricordrazine",
+	)
+
+	var/base_state = "mixer"
+
+/obj/structure/machinery/chem_dispenser/yauja
+
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
+
 /obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"
 	name = "soda fountain"
@@ -299,6 +339,10 @@
 		"soymilk",
 	)
 
+/obj/structure/machinery/chem_dispenser/soda/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
+
 /obj/structure/machinery/chem_dispenser/soda/beer
 	icon_state = "booze_dispenser"
 	name = "booze dispenser"
@@ -330,6 +374,10 @@
 		"patron",
 		"absinthe",
 	)
+
+/obj/structure/machinery/chem_dispenser/soda/beer/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
 
 #undef DISPENSER_UNHACKABLE
 #undef DISPENSER_NOT_HACKED

@@ -52,12 +52,30 @@
 
 
 /datum/job/antag/predator/announce_entry_message(mob/new_predator, account, whitelist_status)
-	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
-	to_chat(new_predator, SPAN_NOTICE("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))
+	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble hunter!"))
+	to_chat(new_predator, SPAN_NOTICE("Follow the guidance of your elders and experienced hunters."))
 	to_chat(new_predator, SPAN_NOTICE("Hunt at your discretion, yet be observant rather than violent."))
+	to_chat(new_predator, SPAN_NOTICE("Most importantly, remember that dying in battle is the highest honour a Yautja could ask for."))
 
 /datum/job/antag/predator/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()
 
 	if(SSticker.mode)
-		SSticker.mode.initialize_predator(M, whitelist_status == CLAN_RANK_ADMIN)
+		var/ignore_slot_count = whitelist_status == CLAN_RANK_ADMIN || whitelist_status == CLAN_RANK_LEADER || M?.client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER|WHITELIST_YAUTJA_COUNCIL)
+		SSticker.mode.initialize_predator(M, ignore_slot_count)
+
+/datum/job/antag/young_blood
+	title = ERT_JOB_YOUNGBLOOD
+	selection_class = "ert_job_youngblood"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
+	supervisors = "Ancients"
+	flags_whitelist = NO_FLAGS
+	gear_preset = /datum/equipment_preset/yautja/non_wl
+
+	handle_spawn_and_equip = TRUE
+
+/datum/job/antag/young_blood/generate_entry_conditions(mob/living/hunter)
+	. = ..()
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)

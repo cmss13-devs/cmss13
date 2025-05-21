@@ -250,7 +250,7 @@
 		return
 
 	if(item.force > force_level_absorption)
-		..()
+		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)
@@ -262,6 +262,7 @@
 		bullet.damage = bullet.damage * burn_multiplier
 	else
 		bullet.damage = bullet.damage * brute_projectile_multiplier
+		playsound(src, barricade_hitsound, 35, 1)
 
 	if(istype(bullet.ammo, /datum/ammo/xeno/boiler_gas))
 		take_damage(floor(50 * burn_multiplier))
@@ -361,10 +362,14 @@
 /obj/structure/barricade/proc/update_damage_state()
 	var/health_percent = floor(health/maxhealth * 100)
 	switch(health_percent)
-		if(0 to 25) damage_state = BARRICADE_DMG_HEAVY
-		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
-		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
-		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
+		if(0 to 25)
+			damage_state = BARRICADE_DMG_HEAVY
+		if(25 to 50)
+			damage_state = BARRICADE_DMG_MODERATE
+		if(50 to 75)
+			damage_state = BARRICADE_DMG_SLIGHT
+		if(75 to INFINITY)
+			damage_state = BARRICADE_DMG_NONE
 
 /obj/structure/barricade/proc/try_weld_cade(obj/item/tool/weldingtool/welder, mob/user, repeat = TRUE, skip_check = FALSE)
 	if(!skip_check && !can_weld(welder, user))
@@ -425,7 +430,7 @@
 	update_icon()
 
 /obj/structure/barricade/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		rotate(user)
 		return TRUE
 

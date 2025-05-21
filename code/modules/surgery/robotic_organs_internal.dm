@@ -35,7 +35,7 @@ and organ transplant code which may come in handy in future but haven't been edi
 	time = 3 SECONDS
 	repeat_step = TRUE
 
-/datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/repair_robotic_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
 		if(IO.damage > 0 && IO.robotic == ORGAN_ROBOT)
 			return TRUE

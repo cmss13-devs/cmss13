@@ -8,7 +8,6 @@
 	icon_state = "buckshot"
 	accurate_range_min = 5
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_STOPPED_BY_COVER
-
 	accuracy = HIT_ACCURACY_TIER_3
 	accurate_range = 32
 	max_range = 8
@@ -25,6 +24,15 @@
 		B.health -= rand(2, 5)
 		B.update_health(1)
 
+
+/datum/ammo/bullet/shrapnel/breaching/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("turfs", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_turfs),
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons)
+	))
+
 /datum/ammo/bullet/shrapnel/rubber
 	name = "rubber pellets"
 	icon_state = "rubber_pellets"
@@ -39,12 +47,12 @@
 	name = ".22 hornet round"
 	icon_state = "hornet_round"
 	flags_ammo_behavior = AMMO_BALLISTIC
-	damage = 20
+	damage = 8
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
 	/// inflicts this many holo stacks per bullet hit
-	var/holo_stacks = 10
+	var/holo_stacks = 20
 	/// modifies the default cap limit of 100 by this amount
 	var/bonus_damage_cap_increase = 0
 	/// multiplies the default drain of 5 holo stacks per second by this amount
@@ -59,7 +67,6 @@
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
-
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4
@@ -69,6 +76,19 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
+
+/datum/ammo/bullet/shrapnel/neuro
+	name = "neurotoxin coated shrapnel"
+	icon_state = "neurotoxin"
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+
+	shell_speed = AMMO_SPEED_TIER_1
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/shrapnel/neuro/on_hit_mob(mob/living/mob, obj/projectile/projectile)
+	if(mob.slowed < 6)
+		mob.adjust_effect(0.8, SLOW)
 
 /datum/ammo/bullet/shrapnel/metal
 	name = "metal shrapnel"

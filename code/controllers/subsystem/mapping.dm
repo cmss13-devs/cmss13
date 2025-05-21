@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(mapping)
 			unused_turfs["[T.z]"] |= T
 			//var/area/old_area = T.loc
 			//old_area.turfs_to_uncontain += T
-			T.turf_flags = UNUSED_RESERVATION_TURF
+			T.turf_flags |= UNUSED_RESERVATION_TURF
 			//world_contents += T
 			//world_turf_contents += T
 			packet.len--
@@ -234,6 +234,10 @@ SUBSYSTEM_DEF(mapping)
 		INIT_ANNOUNCE("Loading [ship_map.map_name]...")
 		Loadship(FailedZs, ship_map.map_name, ship_map.map_path, ship_map.map_file, ship_map.traits, ZTRAITS_MAIN_SHIP, override_map_path = ship_base_path)
 
+	// loads the UPP ship if the game mode is faction clash (Generally run by the Prepare event under prep event verb)
+	if(trim(file2text("data/mode.txt")) == GAMEMODE_FACTION_CLASH_UPP_CM)
+		Loadship(FailedZs, "ssv_rostock", "templates/", list("ssv_rostock.dmm") , list(),ZTRAITS_MAIN_SHIP , override_map_path = "maps/")
+
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
 		if(length(FailedZs) > 1)
@@ -263,11 +267,12 @@ SUBSYSTEM_DEF(mapping)
 		next_map_configs[SHIP_MAP] = VM
 		return TRUE
 
-/datum/controller/subsystem/mapping/proc/preloadTemplates(path = "maps/templates/") //see master controller setup
-	var/list/filelist = flist(path)
-	for(var/map in filelist)
-		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
-		map_templates[T.name] = T
+/datum/controller/subsystem/mapping/proc/preloadTemplates(paths = list("maps/templates/", "maps/templates/lazy_templates/thunderdome/")) //see master controller setup
+	for(var/path in paths)
+		var/list/filelist = flist(path)
+		for(var/map in filelist)
+			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
+			map_templates[T.name] = T
 
 	preloadShuttleTemplates()
 	preload_tent_templates()
@@ -366,7 +371,7 @@ SUBSYSTEM_DEF(mapping)
 	var/block = block(SHUTTLE_TRANSIT_BORDER, SHUTTLE_TRANSIT_BORDER, z, world.maxx - SHUTTLE_TRANSIT_BORDER, world.maxy - SHUTTLE_TRANSIT_BORDER, z)
 	for(var/turf/T as anything in block)
 		// No need to empty() these, because they just got created and are already /turf/open/space/basic.
-		T.turf_flags = UNUSED_RESERVATION_TURF
+		T.turf_flags |= UNUSED_RESERVATION_TURF
 		CHECK_TICK
 
 	// Gotta create these suckers if we've not done so already

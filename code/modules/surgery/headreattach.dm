@@ -56,13 +56,13 @@
 
 /datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	//No need for to-patient messages on this one, they're ghosted or in the head.
-	user.visible_message(SPAN_NOTICE("[user] begins to peel [target]'s neck stump open with \the [tool].") , \
+	user.visible_message(SPAN_NOTICE("[user] begins to peel [target]'s neck stump open with \the [tool].") ,
 	SPAN_NOTICE("You begin to peel [target]'s neck stump open with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] began to peel back tattered skin around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/peel_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."), \
+	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."),
 	SPAN_NOTICE("You draw back the ragged flesh of [target]'s neck stump."))
 
 	surgery.affected_limb.setAmputatedTree()
@@ -71,7 +71,7 @@
 	log_interact(user, target, "[key_name(user)] peeled back flesh where [key_name(target)]'s head used to be with \the [tool], beginning [surgery]")
 
 /datum/surgery_step/peel_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the flesh of [target]'s stump even worse!"), \
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the flesh of [target]'s stump even worse!"),
 	SPAN_WARNING("Your hand slips, somehow damaging the flesh of [target]'s stump even worse!"))
 
 	log_interact(user, target, "[key_name(user)] failed to finish peeling back flesh where [key_name(target)]'s head used to be with \the [tool], aborting [surgery].")
@@ -86,12 +86,12 @@
 	time = 10 SECONDS
 
 /datum/surgery_step/reattach_head/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to reattach [tool] to [target]'s neck."), \
+	user.visible_message(SPAN_NOTICE("[user] begins to reattach [tool] to [target]'s neck."),
 	SPAN_NOTICE("You begin reattaching [tool] to [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
 /datum/surgery_step/reattach_head/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."), \
+	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."),
 	SPAN_NOTICE("You reattach [target]'s head to the bones and musculature of \his body."))
 	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s neck.")
 
@@ -108,7 +108,7 @@
 	target.status_flags |= PERMANENTLY_DEAD
 
 /datum/surgery_step/reattach_head/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the connectors on [target]'s neck!"), \
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the connectors on [target]'s neck!"),
 	SPAN_WARNING("Your hand slips, damaging the connectors on [target]'s neck!"))
 	log_interact(user, target, "[key_name(user)] failed to attach [tool] to [key_name(target)]'s reshaped neck.")
 
@@ -124,19 +124,19 @@
 	time = 4 SECONDS
 
 /datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."), \
+	user.visible_message(SPAN_NOTICE("[user] begins to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."),
 	SPAN_NOTICE("You begin to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."))
 
 	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."), \
+	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."),
 	SPAN_NOTICE("You finish reconstructing [target]'s throat."))
 
 	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
 
 /datum/surgery_step/mend_connections/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, rending the flesh of [target]'s neck and throat even more!"), \
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, rending the flesh of [target]'s neck and throat even more!"),
 	SPAN_WARNING("Your hand slips, rending the flesh of [target]'s neck and throat even more!"))
 
 	log_interact(user, target, "[key_name(user)] failed to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
@@ -150,12 +150,12 @@
 	time = 6 SECONDS
 
 /datum/surgery_step/cauterize/reposition_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_NOTICE("[user] begins making final adjustments to the area around [target]'s neck with \the [tool]."), \
+	user.visible_message(SPAN_NOTICE("[user] begins making final adjustments to the area around [target]'s neck with \the [tool]."),
 	SPAN_NOTICE("You begin making final adjustments to the area around [target]'s neck with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")
 
 /datum/surgery_step/cauterize/reposition_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."), \
+	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."),
 	SPAN_NOTICE("You finish adjusting [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
 
@@ -175,7 +175,7 @@
 	qdel(surgery.patient_head) //Destroy head item.
 
 /datum/surgery_step/cauterize/reposition_flesh/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s neck!"), \
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s neck!"),
 	SPAN_WARNING("Your hand slips, searing [target]'s [surgery.affected_limb.name]!"))
 	log_interact(user, target, "[key_name(user)] failed to adjust the area around [key_name(target)]'s neck with \the [tool].")
 

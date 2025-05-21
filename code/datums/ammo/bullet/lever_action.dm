@@ -12,6 +12,7 @@
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
+	effective_range_max = 7
 	handful_state = "lever_action_bullet"
 
 //unused and not working. need to refactor MD code. Unobtainable.
@@ -34,6 +35,7 @@
 	damage = 70  //blanks CAN hurt you if shot very close
 	penetration = 0
 	accuracy = HIT_ACCURACY_TIER_1
+	effective_range_max = 0
 	damage_falloff = DAMAGE_FALLOFF_BLANK //not much, though (comparatively)
 	shell_speed = AMMO_SPEED_TIER_5
 	handful_state = "training_lever_action_bullet"
@@ -52,21 +54,30 @@
 /datum/ammo/bullet/lever_action/xm88
 	name = ".458 SOCOM round"
 
-	damage = 104
+	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_2
 	accuracy = HIT_ACCURACY_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
 	accurate_range = 14
 	handful_state = "boomslang_bullet"
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/lever_action/xm88/pen20
 	penetration = ARMOR_PENETRATION_TIER_4
+	bullet_duraloss = BULLET_DURABILITY_LOSS_INSUBSTANTIAL
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_FAIR
 
 /datum/ammo/bullet/lever_action/xm88/pen30
 	penetration = ARMOR_PENETRATION_TIER_6
+	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_HIGH
 
 /datum/ammo/bullet/lever_action/xm88/pen40
 	penetration = ARMOR_PENETRATION_TIER_8
+	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_CRITICAL
 
 /datum/ammo/bullet/lever_action/xm88/pen50
 	penetration = ARMOR_PENETRATION_TIER_10
+	bullet_duraloss = BULLET_DURABILITY_LOSS_SPECIAL // incrementing durability loss should be a good stopgap against this already powerful rifle
+	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL

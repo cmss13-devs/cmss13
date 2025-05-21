@@ -3,6 +3,7 @@
 	desc = "It has space for firearm(s). Sometimes magazines or other munitions as well."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "guncase"
+	item_state = "guncase"
 	w_class = SIZE_HUGE
 	max_w_class = SIZE_HUGE //shouldn't be a problem since we can only store the guns and ammo.
 	storage_slots = 1
@@ -143,10 +144,10 @@
 	name = "\improper M240 incinerator case"
 	desc = "A gun case containing the M240A1 incinerator unit. It does come loaded, but you'll still have to find extra tanks as you go."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/flamer, /obj/item/ammo_magazine/flamer_tank, /obj/item/attachable/attached_gun/extinguisher)
+	can_hold = list(/obj/item/weapon/gun/flamer/m240, /obj/item/ammo_magazine/flamer_tank, /obj/item/attachable/attached_gun/extinguisher)
 
 /obj/item/storage/box/guncase/flamer/fill_preset_inventory()
-	new /obj/item/weapon/gun/flamer(src)
+	new /obj/item/weapon/gun/flamer/m240(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/attachable/attached_gun/extinguisher(src)
@@ -313,6 +314,7 @@
 	name = "\improper M707 anti-materiel rifle case"
 	desc = "A gun case containing the M707 \"Vulture\" anti-materiel rifle and its requisite spotting tools."
 	icon_state = "guncase_blue"
+	item_state = "guncase_blue"
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/boltaction/vulture,
@@ -439,3 +441,33 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
+
+// -------- UPP Gun Kits --------
+
+/obj/item/storage/box/guncase/type19
+	name = "\improper Type-19 submachinegun case"
+	desc = "A gun case containing the Type-19 submachine gun, an outdated firearm of the UPP, but still found in limited service with more outlying union forces."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/smg/pps43, /obj/item/ammo_magazine/smg/pps43, /obj/item/ammo_magazine/smg/pps43/extended)
+
+/obj/item/storage/box/guncase/type19/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+	new /obj/item/ammo_magazine/smg/pps43(src)
+
+/obj/item/storage/box/guncase/ppsh
+	name = "\improper PPSh-17b submachinegun case"
+	desc = "A gun case containing the PPSh-17b submachine gun, copy of an ancient firearm, woefully inadequate for modern warfare, but highly sought after by collectors."
+	storage_slots = 6
+	can_hold = list(/obj/item/weapon/gun/smg/ppsh, /obj/item/ammo_magazine/smg/ppsh, /obj/item/ammo_magazine/smg/ppsh/extended)
+
+/obj/item/storage/box/guncase/ppsh/fill_preset_inventory()
+	new /obj/item/weapon/gun/smg/ppsh(src)
+	new /obj/item/ammo_magazine/smg/ppsh/extended(src)
+	new /obj/item/ammo_magazine/smg/ppsh/extended(src)
+	new /obj/item/ammo_magazine/smg/ppsh(src)
+	new /obj/item/ammo_magazine/smg/ppsh(src)
+	new /obj/item/ammo_magazine/smg/ppsh(src)

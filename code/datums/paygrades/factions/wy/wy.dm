@@ -16,6 +16,13 @@
 	ranking = 1
 	pay_multiplier = 2
 
+/datum/paygrade/wy_ranks/wycPO
+	paygrade = PAY_SHORT_WYPO2
+	name = "Captain"
+	prefix = "Capt"
+	ranking = 1
+	pay_multiplier = 2
+
 /datum/paygrade/wy_ranks/wyc3
 	paygrade = PAY_SHORT_WYC3
 	name = "Executive"
@@ -41,7 +48,7 @@
 /datum/paygrade/wy_ranks/wyc6
 	paygrade = PAY_SHORT_WYC6
 	name = "Executive Supervisor"
-	prefix = "Exec. Suvp."
+	prefix = "Exec. Spvsr."
 	ranking = 5
 	pay_multiplier = 6
 	officer_grade = GRADE_OFFICER
@@ -72,8 +79,16 @@
 
 /datum/paygrade/wy_ranks/wyc10
 	paygrade = PAY_SHORT_WYC10
-	name = "Director"
-	prefix = "Director"
+	name = "Deputy Director"
+	prefix = "Dep. Director"
 	ranking = 9
 	pay_multiplier = 10
+	officer_grade = GRADE_FLAG
+
+/datum/paygrade/wy_ranks/wyc11
+	paygrade = PAY_SHORT_WYC11
+	name = "Director"
+	prefix = "Director"
+	ranking = 10
+	pay_multiplier = 11
 	officer_grade = GRADE_FLAG

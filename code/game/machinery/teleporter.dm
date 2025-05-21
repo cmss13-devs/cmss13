@@ -11,13 +11,11 @@
 
 /obj/structure/machinery/computer/teleporter/Initialize()
 	. = ..()
+
 	src.id = "[rand(1000, 9999)]"
 	underlays.Cut()
 	underlays += image('icons/obj/structures/props/stationobjs.dmi', icon_state = "telecomp-wires")
-	return
 
-/obj/structure/machinery/computer/teleporter/Initialize()
-	. = ..()
 	var/obj/structure/machinery/teleport/station/station = locate(/obj/structure/machinery/teleport/station, get_step(src, dir))
 	var/obj/structure/machinery/teleport/hub/hub
 	if(station)
@@ -35,7 +33,6 @@
 	QDEL_NULL(locked)
 	. = ..()
 
-
 /obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
 		var/obj/item/card/data/C = I
@@ -46,8 +43,10 @@
 
 		for(var/i in GLOB.teleporter_landmarks)
 			var/obj/effect/landmark/sloc = i
-			if(sloc.name != C.data) continue
-			if(locate(/mob/living) in sloc.loc) continue
+			if(sloc.name != C.data)
+				continue
+			if(locate(/mob/living) in sloc.loc)
+				continue
 			L = sloc
 			break
 
@@ -79,12 +78,12 @@
 
 			src.add_fingerprint(usr)
 	else
-		..()
+		. = ..()
 
 	return
 
-/obj/structure/machinery/teleport/station/attack_remote()
-	src.attack_hand()
+/obj/structure/machinery/computer/teleport/station/attack_remote()
+	attack_hand()
 
 /obj/structure/machinery/computer/teleporter/attack_hand()
 	if(inoperable())
@@ -117,8 +116,10 @@
 				if (M.timeofdeath + 6000 < world.time)
 					continue
 			var/turf/T = get_turf(M)
-			if(T) continue
-			if(should_block_game_interaction(T)) continue
+			if(T)
+				continue
+			if(should_block_game_interaction(T))
+				continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
@@ -155,7 +156,8 @@
 	var/turf/T = R.loc
 	while(!istype(T, /turf))
 		T = T.loc
-		if(!T || istype(T, /area)) return null
+		if(!T || istype(T, /area))
+			return null
 	return T
 
 /obj/structure/machinery/teleport

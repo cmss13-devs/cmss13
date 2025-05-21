@@ -114,12 +114,8 @@
 	},
 /area/template_noop)
 "T" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 8
-	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 4
-	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/almayer_hull,
 /area/template_noop)

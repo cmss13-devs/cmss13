@@ -138,10 +138,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
-"aD" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
-/turf/open/floor,
-/area/bigredv2/outside/dorms)
 "aE" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -297,7 +293,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "bg" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -383,7 +379,6 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "iE" = (
-/obj/effect/landmark/corpsespawner/colonist/random,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor,
@@ -446,7 +441,7 @@ ad
 ad
 ad
 ad
-aD
+ad
 ad
 bf
 "}
@@ -544,7 +539,7 @@ aq
 ad
 an
 az
-aD
+ad
 aT
 aK
 bn

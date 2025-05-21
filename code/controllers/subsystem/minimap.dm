@@ -46,53 +46,72 @@ SUBSYSTEM_DEF(minimaps)
 		minimaps_by_z["[level]"] = new /datum/hud_displays
 		if(!is_ground_level(level) && !is_mainship_level(level))
 			continue
-		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //480x480 blank icon template for drawing on the map
+
+		var/icon/icon_gen = new('icons/ui_icons/minimap.dmi') //600x600 blank icon template for drawing on the map
+		var/xmin = world.maxx
+		var/ymin = world.maxy
+		var/xmax = 1
+		var/ymax = 1
+
 		for(var/xval in 1 to world.maxx)
 			for(var/yval in 1 to world.maxy) //Scan all the turfs and draw as needed
-				var/turf/location = locate(xval,yval,level)
-				if(istype(location, /turf/open/space))
-					continue
+				var/turf/location = locate(xval, yval, level)
 				if(location.z != level)
 					continue
+
 				if(location.density)
+					if(!istype(location, /turf/closed/wall/almayer/outer)) // Ignore almayer border
+						xmin = min(xmin, xval)
+						ymin = min(ymin, yval)
+						xmax = max(xmax, xval)
+						ymax = max(ymax, yval)
 					icon_gen.DrawBox(location.minimap_color, xval, yval)
 					continue
+
+				if(istype(location, /turf/open/space))
+					continue
+
 				var/atom/movable/alttarget = (locate(/obj/structure/machinery/door) in location) || (locate(/obj/structure/fence) in location)
 				if(alttarget)
+					xmin = min(xmin, xval)
+					ymin = min(ymin, yval)
+					xmax = max(xmax, xval)
+					ymax = max(ymax, yval)
 					icon_gen.DrawBox(alttarget.minimap_color, xval, yval)
 					continue
+
 				var/area/turfloc = location.loc
 				if(turfloc.minimap_color)
+					xmin = min(xmin, xval)
+					ymin = min(ymin, yval)
+					xmax = max(xmax, xval)
+					ymax = max(ymax, yval)
 					icon_gen.DrawBox(BlendRGB(location.minimap_color, turfloc.minimap_color, 0.5), xval, yval)
 					continue
+
+				xmin = min(xmin, xval)
+				ymin = min(ymin, yval)
+				xmax = max(xmax, xval)
+				ymax = max(ymax, yval)
 				icon_gen.DrawBox(location.minimap_color, xval, yval)
-		icon_gen.Scale(480 * MINIMAP_SCALE ,480 * MINIMAP_SCALE) //scale it up x2 to make it easer to see
-		icon_gen.Crop(1, 1, min(icon_gen.Width(), 480), min(icon_gen.Height(), 480)) //then cut all the empty pixels
 
-		//generation is done, now we need to center the icon to someones view, this can be left out if you like it ugly and will halve SSinit time
-		//calculate the offset of the icon
-		var/largest_x = 0
-		var/smallest_x = SCREEN_PIXEL_SIZE
-		var/largest_y = 0
-		var/smallest_y = SCREEN_PIXEL_SIZE
-		for(var/xval=1 to SCREEN_PIXEL_SIZE step 2)
-			for(var/yval=1 to SCREEN_PIXEL_SIZE step 2)
-				if(!icon_gen.GetPixel(xval, yval))
-					continue
-				if(xval > largest_x)
-					largest_x = xval
-				else if(xval < smallest_x)
-					smallest_x = xval
-				if(yval > largest_y)
-					largest_y = yval
-				else if(yval < smallest_y)
-					smallest_y = yval
+		xmin = xmin * MINIMAP_SCALE - 1
+		ymin = ymin * MINIMAP_SCALE - 1
+		xmax = min(xmax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
+		ymax = min(ymax * MINIMAP_SCALE, MINIMAP_PIXEL_SIZE)
 
-		minimaps_by_z["[level]"].x_offset = floor((SCREEN_PIXEL_SIZE-largest_x-smallest_x) / MINIMAP_SCALE)
-		minimaps_by_z["[level]"].y_offset = floor((SCREEN_PIXEL_SIZE-largest_y-smallest_y) / MINIMAP_SCALE)
+		icon_gen.Scale(icon_gen.Width() * MINIMAP_SCALE, icon_gen.Height() * MINIMAP_SCALE) //scale it up x2 to make it easer to see
+		icon_gen.Crop(xmin, ymin, MINIMAP_PIXEL_SIZE + xmin - 1, MINIMAP_PIXEL_SIZE + ymin - 1) //then trim it down also cutting anything unused on the bottom left
 
-		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset)
-		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset)
+		// Determine and assign the offsets
+		minimaps_by_z["[level]"].x_offset = floor((MINIMAP_PIXEL_SIZE - xmax - 1) / MINIMAP_SCALE) - xmin
+		minimaps_by_z["[level]"].y_offset = floor((MINIMAP_PIXEL_SIZE - ymax - 1) / MINIMAP_SCALE) - ymin
+		minimaps_by_z["[level]"].x_max = xmax
+		minimaps_by_z["[level]"].y_max = ymax
+
+		// Center the map icon
+		icon_gen.Shift(EAST, minimaps_by_z["[level]"].x_offset + xmin)
+		icon_gen.Shift(NORTH, minimaps_by_z["[level]"].y_offset + ymin)
 
 		minimaps_by_z["[level]"].hud_image = icon_gen //done making the image!
 
@@ -196,6 +215,10 @@ SUBSYSTEM_DEF(minimaps)
 	var/x_offset = 0
 	///y offset of the actual icons to keep it to screens
 	var/y_offset = 0
+	///max x for this zlevel
+	var/x_max = 1
+	///max y for this zlevel
+	var/y_max = 1
 
 /datum/hud_displays/New()
 	..()
@@ -329,13 +352,13 @@ SUBSYSTEM_DEF(minimaps)
  * * zlevel: zlevel to fetch map for
  * * flags: map flags to fetch from
  */
-/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags)
-	var/hash = "[zlevel]-[flags]"
+/datum/controller/subsystem/minimaps/proc/fetch_minimap_object(zlevel, flags, shifting = FALSE)
+	var/hash = "[zlevel]-[flags]-[shifting]"
 	if(hashed_minimaps[hash])
 		return hashed_minimaps[hash]
-	var/atom/movable/screen/minimap/map = new(null, zlevel, flags)
+	var/atom/movable/screen/minimap/map = new(null, zlevel, flags, shifting)
 	if (!map.icon) //Don't wanna save an unusable minimap for a z-level.
-		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
+		CRASH("Empty and unusable minimap generated for '[zlevel]-[flags]-[shifting]'") //Can be caused by atoms calling this proc before minimap subsystem initializing.
 	hashed_minimaps[hash] = map
 	return map
 
@@ -503,7 +526,7 @@ SUBSYSTEM_DEF(minimaps)
 		qdel(svg_store_overlay)
 		debug_log("SVG coordinates for [faction] are not implemented!")
 
-#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
+#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -522,14 +545,57 @@ SUBSYSTEM_DEF(minimaps)
 	layer = ABOVE_HUD_LAYER
 	screen_loc = "1,1"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	appearance_flags = TILE_BOUND
+	/// How many pixels to shift each update
+	var/shift_size = 8
+	/// The horizontal max for this map (set at Initialize)
+	var/x_max = 1
+	/// The vertical max for this map (set at Initialize)
+	var/y_max = 1
+	/// The current x pixel shift
+	var/cur_x_shift = 0
+	/// The current y pixel shift
+	var/cur_y_shift = 0
+	/// Whether the horizontal shift is currently pushing the map westward
+	var/west_x_shift = TRUE
+	/// Whether the vertical shift is currently pushing the map southward
+	var/south_y_shift = TRUE
 
-/atom/movable/screen/minimap/Initialize(mapload, target, flags)
+/atom/movable/screen/minimap/Initialize(mapload, target, flags, shifting = FALSE)
 	. = ..()
 	if(!SSminimaps.minimaps_by_z["[target]"])
 		return
 	icon = SSminimaps.minimaps_by_z["[target]"].hud_image
 	SSminimaps.add_to_updaters(src, flags, target)
 
+	x_max = SSminimaps.minimaps_by_z["[target]"].x_max
+	y_max = SSminimaps.minimaps_by_z["[target]"].y_max
+
+	if(shifting && (x_max > SCREEN_PIXEL_SIZE || y_max > SCREEN_PIXEL_SIZE))
+		START_PROCESSING(SSobj, src)
+		if(findtext(screen_loc, "1") != 1) // We're detecting the first position matching, not the 1 there
+			CRASH("Shifting a minimap screen_loc of '[screen_loc]' is not currently implemented!") // Just need to do string manip in process to support it
+
+/atom/movable/screen/minimap/process()
+	if(x_max > SCREEN_PIXEL_SIZE)
+		if(west_x_shift)
+			cur_x_shift = min(cur_x_shift + shift_size, x_max - SCREEN_PIXEL_SIZE)
+			if(cur_x_shift == x_max - SCREEN_PIXEL_SIZE)
+				west_x_shift = !west_x_shift
+		else
+			cur_x_shift = max(cur_x_shift - shift_size, 0)
+			if(cur_x_shift == 0)
+				west_x_shift = !west_x_shift
+	if(y_max > SCREEN_PIXEL_SIZE)
+		if(south_y_shift)
+			cur_y_shift = min(cur_y_shift + shift_size, y_max - SCREEN_PIXEL_SIZE)
+			if(cur_y_shift == y_max - SCREEN_PIXEL_SIZE)
+				south_y_shift = !south_y_shift
+		else
+			cur_y_shift = max(cur_y_shift - shift_size, 0)
+			if(cur_y_shift == 0)
+				south_y_shift = !south_y_shift
+	screen_loc = "1:-[cur_x_shift],1:-[cur_y_shift]" // Pixel shift the map
 
 /**
  * Action that gives the owner access to the minimap pool
@@ -547,6 +613,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/atom/movable/screen/minimap/map
 	///This is mostly for the AI & other things which do not move groundside.
 	var/default_overwatch_level = 0
+	///Whether this minimap should shift or not
+	var/shifting = FALSE
 
 /datum/action/minimap/Destroy()
 	map = null
@@ -566,7 +634,7 @@ SUBSYSTEM_DEF(minimaps)
 	. = ..()
 
 	if(default_overwatch_level)
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
 	else
 		RegisterSignal(target, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(on_owner_z_change))
 
@@ -577,7 +645,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	if(!SSminimaps.minimaps_by_z["[z_level]"] || !SSminimaps.minimaps_by_z["[z_level]"].hud_image)
 		return
-	map = SSminimaps.fetch_minimap_object(z_level, minimap_flags)
+	map = SSminimaps.fetch_minimap_object(z_level, minimap_flags, shifting)
 
 /datum/action/minimap/remove_from(mob/target)
 	. = ..()
@@ -599,9 +667,9 @@ SUBSYSTEM_DEF(minimaps)
 	if(!SSminimaps.minimaps_by_z["[newz]"] || !SSminimaps.minimaps_by_z["[newz]"].hud_image)
 		return
 	if(default_overwatch_level)
-		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags)
+		map = SSminimaps.fetch_minimap_object(default_overwatch_level, minimap_flags, shifting)
 		return
-	map = SSminimaps.fetch_minimap_object(newz, minimap_flags)
+	map = SSminimaps.fetch_minimap_object(newz, minimap_flags, shifting)
 
 /datum/action/minimap/xeno
 	minimap_flags = MINIMAP_FLAG_XENO
@@ -610,15 +678,22 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
 
+/datum/action/minimap/upp
+	minimap_flags =  MINIMAP_FLAG_UPP
+	marker_flags = MINIMAP_FLAG_UPP
+
 /datum/action/minimap/observer
 	minimap_flags = MINIMAP_FLAG_ALL
 	marker_flags = NONE
 	hidden = TRUE
+	shifting = TRUE
 
 /datum/tacmap
 	var/allowed_flags = MINIMAP_FLAG_USCM
 	/// by default the ground map - this picks the first level matching the trait. if it exists
 	var/targeted_ztrait = ZTRAIT_GROUND
+	/// the current z level within the z stack
+	var/target_z = 1
 	var/atom/owner
 
 	/// tacmap holder for holding the minimap
@@ -676,9 +751,9 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	if(!map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
+		if(!level[target_z])
 			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -695,7 +770,7 @@ SUBSYSTEM_DEF(minimaps)
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 
 	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
-		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_PMC|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
+		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
 		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
 		map_holder = null
 
@@ -703,13 +778,13 @@ SUBSYSTEM_DEF(minimaps)
 	old_map = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
 
-	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
+	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno
 
 	if(use_live_map && !map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
+		if(!level[target_z])
 			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -734,6 +809,11 @@ SUBSYSTEM_DEF(minimaps)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
 
+/datum/tacmap/ui_data(mob/user)
+	. = ..()
+
+	.["mapRef"] = map_holder?.map_ref
+
 /datum/tacmap/drawing/ui_data(mob/user)
 	var/list/data = list()
 
@@ -755,15 +835,16 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["lastUpdateTime"] = last_update_time
 	data["tacmapReady"] = world.time > tacmap_ready_time
+	data["mapRef"] = map_holder?.map_ref
 
 	return data
 
 /datum/tacmap/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
+	data["canChangeZ"] = FALSE
 	data["canViewCanvas"] = FALSE
 	data["isxeno"] = FALSE
 
@@ -773,9 +854,9 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/data = list()
 
 	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
-	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
+	data["canChangeZ"] = TRUE
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
@@ -881,6 +962,32 @@ SUBSYSTEM_DEF(minimaps)
 		if("onDraw")
 			updated_canvas = FALSE
 
+		if("changeZ")
+			var/amount = params["amount"]
+			var/level = SSmapping.levels_by_trait(targeted_ztrait)
+			if(target_z+amount < 1 || target_z+amount > length(level) || !SSmapping.same_z_map(level[target_z], level[target_z+amount]))
+				return
+
+			target_z += amount
+
+			if(!level[target_z])
+				return
+
+			if(user.client)
+				user.client.clear_map(map_holder.map.name)
+			map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
+			resend_current_map_png(user)
+			if(user.client)
+				user.client.register_map_obj(map_holder.map)
+
+			distribute_current_map_png(faction)
+			last_update_time = world.time
+
+			new_current_map = get_unannounced_tacmap_data_png(faction)
+			old_map = get_tacmap_data_png(faction)
+			current_svg = get_tacmap_data_svg(faction)
+
+
 		if("selectAnnouncement")
 			if(!drawing_allowed)
 				msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'selectAnnouncement' the [faction] tacmap!")
@@ -919,7 +1026,7 @@ SUBSYSTEM_DEF(minimaps)
 			old_map = get_tacmap_data_png(faction)
 
 			toolbar_updated_selection = toolbar_color_selection
-			message_admins("[key_name(user)] has updated the <a href='?tacmaps_panel=1'>tactical map</a> for [faction].")
+			message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a> for [faction].")
 			updated_canvas = FALSE
 
 	return TRUE
@@ -960,6 +1067,7 @@ SUBSYSTEM_DEF(minimaps)
 	map = SSminimaps.fetch_minimap_object(zlevel, flags)
 	map.screen_loc = "[map_ref]:1,1"
 	map.assigned_map = map_ref
+	map.appearance_flags = NONE // If you really want TILE_BOUND for the tacmaps, you need to CENTER it but it won't be scaled right
 
 /datum/tacmap_holder/Destroy()
 	map = null
@@ -1006,7 +1114,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(FACTION_CLF)
 			return MINIMAP_FLAG_CLF
 		if(FACTION_PMC)
-			return MINIMAP_FLAG_PMC
+			return MINIMAP_FLAG_WY
 		if(FACTION_YAUTJA)
 			return MINIMAP_FLAG_YAUTJA
 		if(XENO_HIVE_CORRUPTED)

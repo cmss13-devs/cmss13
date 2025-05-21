@@ -1,11 +1,18 @@
 /obj/item/storage/bible
-	name = "bible"
-	desc = "Apply to head repeatedly."
+	name = "Holy Bible"
+	desc = "A book containing the sacred texts of that one popular guy you heard a lot about."
 	icon = 'icons/obj/items/books.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/books_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/books_righthand.dmi',
+	)
 	icon_state ="bible"
 	throw_speed = SPEED_FAST
 	throw_range = 5
 	w_class = SIZE_MEDIUM
+	attack_verb = list("blessed", "whacked", "purified")
+	pickup_sound = "sound/handling/book_pickup.ogg"
+	drop_sound = "sound/handling/book_pickup.ogg"
 	cant_hold = list(
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/crowbar,
@@ -26,20 +33,19 @@
 	var/deity_name = "Christ"
 
 /obj/item/storage/bible/booze
-	name = "bible"
-	desc = "To be applied to the head repeatedly."
-	icon_state ="bible"
+	name = "Mister Booze's Holy Bible"
+	desc = "You will wind up wearing tattered shoes if you mess with Mister Booze, so if you've been so stiff you thought you died, you'll feel better once you have testified! All spirits contained within this bible are for medicinal purposes only."
 
 /obj/item/storage/bible/booze/fill_preset_inventory()
+	new /obj/item/reagent_container/food/drinks/bottle/whiskey(src)
+	new /obj/item/reagent_container/food/drinks/bottle/whiskey(src)
 	new /obj/item/reagent_container/food/drinks/cans/beer(src)
 	new /obj/item/reagent_container/food/drinks/cans/beer(src)
-	new /obj/item/spacecash(src)
-	new /obj/item/spacecash(src)
-	new /obj/item/spacecash(src)
+	new /obj/item/reagent_container/food/drinks/cans/beer(src)
 
 /obj/item/storage/bible/hefa
 	name = "Holy texts of the High Explosive Fragmenting Anti-personnel hand grenade."
-	desc = "Praise be he, reverend Clearsmire who has brought us into the light of the shrapnel! Sworn to the holy service of the HEFA lord are we, and while few, we are the voices of the silent many! Printed in the RESS."
+	desc = "Praised be thee, reverend Clearsmire who has brought us into the light of the shrapnel! Sworn to the holy service of the HEFA lord are we, and while few, we are the voices of the silent many! Printed in the RESS."
 	icon_state ="tome_hefa"
 
 /obj/item/storage/bible/hefa/Initialize()

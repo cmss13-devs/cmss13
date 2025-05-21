@@ -262,6 +262,9 @@
 		return FALSE
 	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
 		return FALSE
+	if(intentional)
+		if(emote_type & EMOTE_FORCED_AUDIO)
+			return FALSE
 	if(status_check && !is_type_in_typecache(user, mob_type_ignore_stat_typecache))
 		if(user.stat > stat_allowed)
 			if(!intentional)
@@ -292,6 +295,9 @@
 /datum/emote/proc/should_play_sound(mob/user, intentional = FALSE)
 	if(emote_type & EMOTE_AUDIBLE && !muzzle_ignore)
 		if(istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
+			return FALSE
+
+		if(istype(user.wear_mask, /obj/item/clothing/mask/facehugger))
 			return FALSE
 
 	if(only_forced_audio && intentional)

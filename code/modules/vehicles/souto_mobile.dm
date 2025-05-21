@@ -18,7 +18,8 @@
 	else ..()
 
 /obj/vehicle/souto/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated()) return
+	if(user.is_mob_incapacitated())
+		return
 	if(world.time > l_move_time + move_delay)
 		. = step(src, direction)
 

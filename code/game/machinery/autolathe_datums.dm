@@ -49,7 +49,7 @@
 
 /datum/autolathe/recipe/weldertool
 	name = "blowtorch"
-	path = /obj/item/tool/weldingtool
+	path = /obj/item/tool/weldingtool/empty
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/screwdriver
@@ -65,6 +65,11 @@
 /datum/autolathe/recipe/wrench
 	name = "wrench"
 	path = /obj/item/tool/wrench
+	category = AUTOLATHE_CATEGORY_TOOLS
+
+/datum/autolathe/recipe/lightreplacer
+	name = "light replacer"
+	path = /obj/item/device/lightreplacer/empty
 	category = AUTOLATHE_CATEGORY_TOOLS
 
 /datum/autolathe/recipe/mop

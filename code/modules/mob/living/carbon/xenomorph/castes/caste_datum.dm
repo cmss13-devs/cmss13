@@ -27,6 +27,8 @@
 	var/list/evolves_to = list()
 	/// what caste or castes to de-evolve to.
 	var/list/deevolves_to = list()
+	///This is where you add castes drones can evolve to before first drop.
+	var/list/early_evolves_to
 	///If they can use consoles, etc. Set on Queen
 	var/is_intelligent = 0
 	var/caste_desc = null
@@ -105,10 +107,7 @@
 	var/fire_vulnerability_mult = 0
 
 	var/burrow_cooldown = 5 SECONDS
-	var/tunnel_cooldown = 100
-	var/widen_cooldown = 10 SECONDS
-	///Big strong ability, big cooldown.
-	var/tremor_cooldown = 30 SECONDS
+	var/tunnel_cooldown = 10 SECONDS
 	///whether the xeno heals even outside weeds.
 	var/innate_healing = FALSE
 
@@ -132,6 +131,7 @@
 	var/minimum_evolve_time = 1 MINUTES
 	/// Iconstate for the xeno on the minimap
 	var/minimap_icon = "xeno"
+	var/minimap_background = "background_xeno"
 	///The iconstate for leadered xenos on the minimap, added as overlay
 	var/minimap_leadered_overlay = "xenoleader"
 
@@ -175,8 +175,7 @@
 	return minimum_xeno_playtime - client.get_total_xeno_playtime()
 
 /datum/caste_datum/proc/get_minimap_icon()
-	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', "background")
-	background.color = MINIMAP_ICON_BACKGROUND_XENO
+	var/image/background = mutable_appearance('icons/ui_icons/map_blips.dmi', minimap_background)
 
 	var/iconstate = minimap_icon ? minimap_icon : "unknown"
 	var/mutable_appearance/icon = image('icons/ui_icons/map_blips.dmi', icon_state = iconstate)

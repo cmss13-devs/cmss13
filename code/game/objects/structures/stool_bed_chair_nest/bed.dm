@@ -11,7 +11,7 @@
 	name = "bed"
 	desc = "A mattress seated on a rectangular metallic frame. This is used to support a lying person in a comfortable manner, notably for regular sleep. Ancient technology, but still useful."
 	icon_state = "bed"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/structures/props/furniture/chairs.dmi'
 	can_buckle = TRUE
 	buckle_lying = 90
 	throwpass = TRUE
@@ -21,6 +21,8 @@
 	var/foldabletype //To fold into an item (e.g. roller bed item)
 	var/buckling_y = 0 //pixel y shift to give to the buckled mob.
 	var/buckling_x = 0 //pixel x shift to give to the buckled mob.
+	///if the bed can carry big mobs (tier 3s)
+	var/can_carry_big = FALSE
 	var/obj/structure/closet/bodybag/buckled_bodybag
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
@@ -30,8 +32,7 @@
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/bed/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
+	if(PF)
 		PF.flags_can_pass_all = PASS_OVER|PASS_AROUND|PASS_UNDER
 
 /obj/structure/bed/update_icon()
@@ -87,6 +88,9 @@
 	if(buckling_y)
 		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
 	add_fingerprint(user)
+	var/mob/living/carbon/human/contained_mob = locate() in B.contents
+	if(contained_mob)
+		SEND_SIGNAL(src, COMSIG_LIVING_BED_BUCKLED, contained_mob)
 
 /obj/structure/bed/unbuckle()
 	if(buckled_bodybag)
@@ -107,12 +111,17 @@
 		. = ..()
 
 //Trying to buckle a mob
-/obj/structure/bed/buckle_mob(mob/M, mob/user)
+/obj/structure/bed/buckle_mob(mob/living/carbon/human/mob, mob/user)
 	if(buckled_bodybag)
 		return
+	if(ishuman(mob))
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (mob.stat == DEAD || mob.health < HEALTH_THRESHOLD_CRIT) && !mob.get_target_lock(user.faction_group) && !(mob.status_flags & PERMANENTLY_DEAD))
+			to_chat(user, SPAN_WARNING("You can't buckle a crit or dead member of another faction! ."))
+			return FALSE
 	..()
-	if(M.loc == src.loc && buckling_sound && M.buckled)
+	if(mob.loc == src.loc && buckling_sound && mob.buckled)
 		playsound(src, buckling_sound, 20)
+		SEND_SIGNAL(src, COMSIG_LIVING_BED_BUCKLED, mob)
 
 /obj/structure/bed/Move(NewLoc, direct)
 	. = ..()
@@ -134,6 +143,8 @@
 
 /obj/structure/bed/MouseDrop_T(atom/dropping, mob/user)
 	if(accepts_bodybag && !buckled_bodybag && !buckled_mob && istype(dropping,/obj/structure/closet/bodybag) && ishuman(user))
+		if(!isturf(user.loc)) // so they do not buckle themselves
+			return
 		var/obj/structure/closet/bodybag/B = dropping
 		if(!B.roller_buckled)
 			do_buckle_bodybag(B, user)
@@ -182,6 +193,13 @@
 /obj/structure/bed/alien
 	icon_state = "abed"
 
+/obj/structure/bed/alien/yautja
+	icon_state = "abed"
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/bed/alien/yautja/leader
+	icon_state = "bed"
+
 /*
  * Roller beds
  */
@@ -197,21 +215,24 @@
 	accepts_bodybag = TRUE
 	base_bed_icon = "roller"
 
-/obj/structure/bed/roller/attackby(obj/item/W, mob/user)
-	if(istype(W,/obj/item/roller_holder) && !buckled_bodybag)
-		if(buckled_mob || buckled_bodybag)
-			manual_unbuckle()
-		else
-			visible_message(SPAN_NOTICE("[user] collapses [name]."))
-			new/obj/item/roller(get_turf(src))
-			qdel(src)
-		return
-	. = ..()
+/obj/structure/bed/roller/MouseDrop(atom/over_object)
+	if(foldabletype && !buckled_mob && !buckled_bodybag)
+		var/mob/living/carbon/human/user = over_object
+		if(!length(contents))
+			new foldabletype(src)
+		var/obj/item/roller/rollerholder = locate(foldabletype) in contents
+		if (!istype(over_object, /mob/living/carbon/human))
+			return
+		if (user == usr && !user.is_mob_incapacitated() && Adjacent(user) && in_range(src, over_object))
+			user.put_in_hands(rollerholder)
+			user.visible_message(SPAN_INFO("[user] grabs [src] from the floor!"),
+			SPAN_INFO("You grab [src] from the floor!"))
+			forceMove(rollerholder)
 
-/obj/structure/bed/roller/buckle_mob(mob/M, mob/user)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.handcuffed)
+/obj/structure/bed/roller/buckle_mob(mob/mob, mob/user)
+	if(iscarbon(mob))
+		var/mob/living/carbon/target_mob = mob
+		if(target_mob.handcuffed)
 			to_chat(user, SPAN_DANGER("You cannot buckle someone who is handcuffed onto this bed."))
 			return
 	..()
@@ -230,11 +251,31 @@
 
 	return
 
+/obj/structure/bed/roller/heavy
+	name = "heavy-duty roller bed"
+	desc = "A reinforced plasteel board resting on a small but sturdy frame. Not very comfortable at all, but allows heavy cargo to rest lying down while moved to another location rapidly. Cannot be collapsed."
+	icon = 'icons/obj/structures/rollerbed.dmi'
+	icon_state = "heavy_roller_up"
+	anchored = FALSE
+	drag_delay = 0 //Pulling something on wheels is easy
+	buckling_y = 3
+	foldabletype = null
+	accepts_bodybag = TRUE
+	base_bed_icon = null
+	density = TRUE
+	buildstacktype = /obj/item/stack/sheet/plasteel
+	can_carry_big = TRUE
+
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
 	icon = 'icons/obj/structures/rollerbed.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	icon_state = "folded"
+	item_state = "rbed"
 	w_class = SIZE_SMALL //Fits in a backpack
 	drag_delay = 1 //Pulling something on wheels is easy
 	matter = list("plastic" = 5000)
@@ -244,6 +285,18 @@
 	..()
 	deploy_roller(user, user.loc)
 
+/// Handles the switch between a item/roller to a structure/bed/roller, and storing one within the other when not in use
+/obj/item/roller/proc/deploy_roller(mob/user, atom/location)
+	if(!length(contents))
+		new rollertype(src)
+	var/obj/structure/bed/roller/roller = locate(rollertype) in contents
+	roller.forceMove(location)
+	to_chat(user, SPAN_NOTICE("You deploy [roller]."))
+	roller.add_fingerprint(user)
+	user.temp_drop_inv_item(src)
+	forceMove(roller)
+	SEND_SIGNAL(user, COMSIG_MOB_ITEM_ROLLER_DEPLOYED, roller)
+
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
 	if(!proximity)
 		return
@@ -251,45 +304,6 @@
 		var/turf/T = target
 		if(!T.density)
 			deploy_roller(user, target)
-
-/obj/item/roller/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/roller_holder) && rollertype == /obj/structure/bed/roller)
-		var/obj/item/roller_holder/RH = W
-		if(!RH.held)
-			to_chat(user, SPAN_NOTICE("You pick up [src]."))
-			forceMove(RH)
-			RH.held = src
-			return
-	. = ..()
-
-/obj/item/roller/proc/deploy_roller(mob/user, atom/location)
-	var/obj/structure/bed/roller/R = new rollertype(location)
-	R.add_fingerprint(user)
-	user.temp_drop_inv_item(src)
-	qdel(src)
-
-/obj/item/roller_holder
-	name = "roller bed rack"
-	desc = "A rack for carrying a collapsed roller bed."
-	icon = 'icons/obj/structures/rollerbed.dmi'
-	icon_state = "folded"
-	var/obj/item/roller/held
-
-/obj/item/roller_holder/Initialize()
-	. = ..()
-	held = new /obj/item/roller(src)
-
-/obj/item/roller_holder/attack_self(mob/user)
-	..()
-
-	if(!held)
-		to_chat(user, SPAN_WARNING("The rack is empty."))
-		return
-
-	var/obj/structure/bed/roller/R = new(user.loc)
-	to_chat(user, SPAN_NOTICE("You deploy [R]."))
-	R.add_fingerprint(user)
-	QDEL_NULL(held)
 
 //////////////////////////////////////////////
 // PORTABLE SURGICAL BED //
@@ -310,6 +324,7 @@
 	name = "portable surgical bed"
 	desc = "A collapsed surgical bed that can be carried around."
 	icon_state = "surgical_folded"
+	item_state = "sbed"
 	rollertype = /obj/structure/bed/portable_surgery
 	matter = list("plastic" = 6000)
 
@@ -331,8 +346,20 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	accepts_bodybag = TRUE
 	var/stretcher_activated
 	var/view_range = 5
+	/// Allows Medevac beds to act like they're working, but not interact with the Medevac system itself. Set prop variable to TRUE when you'd like to bypass regular functions on a Medevac bed
+	var/prop
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
 	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
+	var/faction = FACTION_MARINE
+
+/obj/structure/bed/medevac_stretcher/upp
+	name = "UPP medevac stretcher"
+	faction = FACTION_UPP
+
+/obj/structure/bed/medevac_stretcher/prop
+	prop = TRUE
+	foldabletype = null
+	stretcher_activated = TRUE
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)
@@ -381,6 +408,10 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 		to_chat(user, SPAN_WARNING("You can't reach the beacon activation button while buckled to [src]."))
 		return
 
+	if(prop)
+		to_chat(user, SPAN_NOTICE("[src]'s beacon is locked in the [stretcher_activated ? "on" : "off"] position."))
+		return
+
 	if(stretcher_activated)
 		stretcher_activated = FALSE
 		GLOB.activated_medevac_stretchers -= src
@@ -409,6 +440,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	name = "medevac stretcher"
 	desc = "A collapsed medevac stretcher that can be carried around."
 	icon_state = "stretcher_folded"
+	item_state = "mvbed"
 	rollertype = /obj/structure/bed/medevac_stretcher
 	matter = list("plastic" = 5000, "metal" = 5000)
 
@@ -423,7 +455,7 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/structure/bed/bedroll
 	name = "unfolded bedroll"
 	desc = "Perfect for those long missions, when there's nowhere else to sleep, you remembered to bring at least one thing of comfort."
-	icon = 'icons/monkey_icos.dmi'
+	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "bedroll_o"
 	buckling_y = 0
 	foldabletype = /obj/item/roller/bedroll
@@ -434,6 +466,119 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 /obj/item/roller/bedroll
 	name = "folded bedroll"
 	desc = "A standard issue USCMC bedroll, They've been in service for as long as you can remember. The tag on it states to unfold it before rest, but who needs rules anyway, right?"
-	icon = 'icons/monkey_icos.dmi'
 	icon_state = "bedroll"
 	rollertype = /obj/structure/bed/bedroll
+
+//Hospital Rollers (non foldable)
+
+/obj/structure/bed/roller/hospital
+	name = "hospital bed"
+	icon = 'icons/obj/structures/rollerbed.dmi'
+	icon_state = "bigrollerempty_up"
+	foldabletype = null
+	base_bed_icon = "bigrollerempty"
+
+	var/body_icon_state = "bigroller"
+	var/raised_with_body = TRUE
+	var/mob/living/carbon/human/body
+	var/datum/equipment_preset/body_preset = /datum/equipment_preset/corpse/hybrisa/civilian
+
+/obj/structure/bed/roller/hospital/Initialize(mapload, ...)
+	. = ..()
+	if(SSticker.current_state >= GAME_STATE_PLAYING)
+		create_body()
+	else
+		RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(create_body))
+
+/obj/structure/bed/roller/hospital/Destroy()
+	if(body)
+		QDEL_NULL(body)
+	return ..()
+
+/obj/structure/bed/roller/hospital/attackby()
+	if(body)
+		return
+	..()
+
+/obj/structure/bed/roller/hospital/attack_hand()
+	if(body)
+		if(raised_with_body)
+			raised_with_body = FALSE
+			update_icon()
+			return
+		else
+			dump_body()
+			update_icon()
+			return
+	..()
+
+/obj/structure/bed/roller/hospital/update_icon()
+	overlays.Cut()
+	if(body)
+		icon_state = body_icon_state + "body"
+		if(raised_with_body)
+			icon_state = icon_state + "_up"
+		else
+			icon_state = icon_state + "_down"
+	else
+		..()
+
+/obj/structure/bed/roller/hospital/MouseDrop_T(atom/dropping, mob/user)
+	if(body)
+		return
+	..()
+
+/obj/structure/bed/roller/hospital/proc/create_body()
+	SIGNAL_HANDLER
+	body = new(loc)
+	body.create_hud()
+	contents += body
+	arm_equipment(body, body_preset, TRUE, FALSE)
+	body.death(create_cause_data("exposure"))
+	update_icon()
+
+/obj/structure/bed/roller/hospital/proc/dump_body()
+	var/turf/dump_turf = get_turf(src)
+	body.forceMove(dump_turf)
+	contents -= body
+	body = null
+
+/obj/structure/bed/roller/hospital/attack_alien(mob/living/carbon/xenomorph/M)
+	if(M.a_intent == INTENT_HARM && body)
+		dump_body()
+	return ..()
+/obj/structure/bed/roller/hospital/bloody
+	base_bed_icon = "bigrollerbloodempty"
+	body_icon_state = "bigrollerblood"
+	body_preset = /datum/equipment_preset/corpse/hybrisa/civilian/burst
+
+/obj/structure/bed/roller/hospital_empty
+	icon_state = "bigrollerempty2_down"
+	foldabletype = null
+/obj/structure/bed/roller/hospital_empty/bigrollerempty
+	icon_state = "bigrollerempty_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerempty"
+/obj/structure/bed/roller/hospital_empty/bigrollerempty2
+	icon_state = "bigrollerempty2_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerempty2"
+/obj/structure/bed/roller/hospital_empty/bigrollerempty3
+	icon_state = "bigrollerempty3_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerempty3"
+/obj/structure/bed/roller/hospital_empty/bigrollerbloodempty
+	icon_state = "bigrollerbloodempty_down"
+	buckling_y = 2
+	base_bed_icon = "bigrollerbloodempty"
+
+// Hospital divider (not a bed)
+/obj/structure/bed/hybrisa/hospital/hospitaldivider
+	name = "hospital divider"
+	desc = "A hospital divider for privacy."
+	icon = 'icons/obj/structures/props/curtain.dmi'
+	icon_state = "hospitalcurtain"
+	layer = ABOVE_MOB_LAYER
+	anchored = TRUE
+	can_buckle = FALSE
+	hit_bed_sound = 'sound/effects/thud.ogg'

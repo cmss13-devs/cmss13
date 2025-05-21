@@ -3,8 +3,9 @@
 	name = "\improper Professor DUMMY tablet"
 	desc = "A Professor DUMMY Control Tablet."
 	suffix = "\[3\]"
-	icon_state = "Cotablet"
-	item_state = "Cotablet"
+	icon_state = "dummytablet"
+	item_state = "dummytablet"
+	item_icons = list(WEAR_R_HAND = null, WEAR_L_HAND = null) // No mob state currently
 
 	var/mob/living/carbon/human/linked_dummy
 	///Should the dummy be destroyed on hijack?
@@ -75,19 +76,19 @@
 	user.set_interaction(src)
 	var/dat = "<head><title>Professor DUMMY Control Tablet</title></head><body>"
 
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=brute_damage_limb'>Brute Damage (Limb)</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=brute_damage_organ'>Brute Damage (Organ)</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=burn_damage'>Burn Damage</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toxin'>Inject Toxins</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=bones'>Break Bones</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=blood_loss'>Blood Loss</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=bleeding'>Internal Bleeding</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=shrapnel'>Shrapnel</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=delimb'>Delimb</A> \]"
-	dat += "<BR>\[ <A HREF='?src=\ref[src];operation=reset'>Reset</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=brute_damage_limb'>Brute Damage (Limb)</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=brute_damage_organ'>Brute Damage (Organ)</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=burn_damage'>Burn Damage</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=toxin'>Inject Toxins</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=bones'>Break Bones</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=blood_loss'>Blood Loss</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=bleeding'>Internal Bleeding</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=shrapnel'>Shrapnel</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=delimb'>Delimb</A> \]"
+	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=reset'>Reset</A> \]"
 	dat += "<BR><hr>"
 
-	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", window_options="size=400x500")
+	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", width = 400, height = 500)
 	onclose(user, "dummytablet")
 	updateDialog()
 	return
@@ -141,7 +142,8 @@
 
 
 /obj/item/device/professor_dummy_tablet/Topic(href, href_list)
-	if(..()) return FALSE
+	if(..())
+		return FALSE
 
 	if (!is_adjacent_to_dummy(usr))
 		return FALSE

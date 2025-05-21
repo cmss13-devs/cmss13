@@ -24,6 +24,7 @@
 	security_record.fields["id"] = id
 	security_record.name = text("Security Record #[id]")
 	security_record.fields["incidents"] = "None"
+	security_record.fields["criminal"] = "None"
 	GLOB.data_core.security += security_record
 	return security_record
 
@@ -44,7 +45,6 @@
 	medical_record.fields["last_scan_time"] = null
 	medical_record.fields["last_scan_result"] = "No scan data on record"
 	medical_record.fields["autodoc_data"] = list()
-	medical_record.fields["autodoc_manual"] = list()
 	medical_record.fields["ref"] = WEAKREF(person)
 	GLOB.data_core.medical += medical_record
 	return medical_record

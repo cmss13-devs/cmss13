@@ -2,7 +2,14 @@
 /obj/item/holder
 	name = "holder"
 	desc = "You shouldn't ever see this."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/mob/animal.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/critters.dmi',
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/critters_shoulder.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/critters_shoulder.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/critters_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/critters_righthand.dmi'
+	)
 	flags_equip_slot = SLOT_HEAD
 
 /obj/item/holder/Initialize()
@@ -70,19 +77,17 @@
 
 //Mob specific holders.
 
-/obj/item/holder/drone
-	name = "maintenance drone"
-	desc = "It's a small maintenance robot."
-	icon_state = "drone"
-
 /obj/item/holder/cat
 	name = "cat"
 	desc = "A domesticated, feline pet. Has a tendency to adopt crewmembers."
-	icon_state = "cat2"
+	icon_state = "cat2_rest"
+	item_state = "cat2"
+	item_state_slots = list(WEAR_HEAD = "cat2")
 
 /obj/item/holder/cat/kitten
 	name = "kitten"
 	desc = "D'aaawwww"
+	icon_state = "kitten_rest"
 
 /obj/item/holder/cat/Jones
 	name = "\improper Jones"
@@ -91,24 +96,21 @@
 /obj/item/holder/cat/blackcat
 	name = "black cat"
 	desc = "It's a cat, now in black!"
-	icon_state = "cat"
+	icon_state = "cat_rest"
+	item_state = "cat"
+	item_state_slots = list(WEAR_HEAD = "cat")
 
 /obj/item/holder/cat/blackcat/Runtime
 	name = "\improper Runtime"
 	desc = "Her fur has the look and feel of velvet, and her tail quivers occasionally."
-
-/obj/item/holder/kitten
-	name = "kitten"
-	desc = "D'aaawwww"
-	icon_state = "cat2"
 
 /obj/item/holder/mouse
 	name = "mouse"
 	desc = "It's a small mouse."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_white"
-	w_class = SIZE_TINY;
-	flags_equip_slot = null
+	w_class = SIZE_TINY
+	flags_equip_slot = SLOT_HEAD|SLOT_EAR
 
 /obj/item/holder/mouse/white
 	icon_state = "mouse_white"
@@ -126,3 +128,65 @@
 /obj/item/holder/mouse/brown/Tom
 	name = "Tom"
 	desc = "Jerry the cat is not amused."
+
+/obj/item/holder/corgi
+	name = "corgi"
+	desc = "It's a corgi."
+	icon_state = "corgi"
+
+/obj/item/holder/corgi/Ian
+	name = "Ian"
+
+/obj/item/holder/corgi/Lisa
+	name = "Ian"
+	icon_state = "lisa"
+
+/obj/item/holder/corgi/puppy
+	name = "puppy"
+	icon_state = "puppy"
+	item_state_slots = list(WEAR_HEAD = "puppy")
+
+// Rat
+
+/obj/item/holder/rat
+	name = "rat"
+	desc = "It's a big rat."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "rat_gray"
+	w_class = SIZE_TINY
+	flags_equip_slot = SLOT_EAR
+
+/obj/item/holder/rat/white
+	icon_state = "rat_white"
+
+/obj/item/holder/rat/gray
+	icon_state = "rat_gray"
+
+/obj/item/holder/rat/brown
+	icon_state = "rat_brown"
+
+/obj/item/holder/rat/black
+	icon_state = "rat_black"
+
+
+/obj/item/holder/rat/white/Milky
+	name = "Milky"
+	desc = "An escaped test rat from the Weyland-Yutani Research Facility. Hope it doesn't have some sort of genetically engineered disease or something..."
+
+/obj/item/holder/rat/brown/Old_Timmy
+	name = "Old Timmy"
+	desc = "An ancient looking rat from the old days of the colony."
+
+/obj/item/holder/rat/pet
+	name = "Pet Rat"
+	desc = "This is someone's pet rat. I wonder what it's doing here."
+
+/obj/item/holder/rat/pet/marvin
+	name = "Marvin"
+	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	icon_state = "rat_black"
+
+/obj/item/holder/rat/pet/ikit
+	name = "Ikit"
+	desc = "An albino rat with a tiny collar around it's neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
+	icon_state = "rat_white"

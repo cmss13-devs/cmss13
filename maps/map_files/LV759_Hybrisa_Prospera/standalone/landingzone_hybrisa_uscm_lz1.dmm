@@ -1,0 +1,6285 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"ab" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"ac" = (
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ad" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ae" = (
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"af" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 8
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -4
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"ag" = (
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ah" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"ai" = (
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"aj" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ak" = (
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"al" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/electical_systems/substation2)
+"am" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"an" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ao" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ap" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aq" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ar" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"as" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"at" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/oil/streak{
+	pixel_x = 6;
+	pixel_y = -8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"au" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"av" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aw" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ax" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ay" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"az" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aA" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aB" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aC" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aD" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
+	pixel_y = -5;
+	layer = 3.2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aE" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 1;
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aG" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aH" = (
+/obj/item/stack/sheet/wood{
+	layer = 2
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
+	pixel_y = -5
+	},
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal3"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aK" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aL" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal2"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aM" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_x = 11;
+	pixel_y = 8;
+	density = 0
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_y = 13
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	layer = 2.9;
+	pixel_y = 32;
+	alpha = 220
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"aN" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aO" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aP" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aQ" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aR" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14
+	},
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"aS" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aT" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aU" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aV" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aW" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aX" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"aY" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/outdoors/landing_zone_2)
+"aZ" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ba" = (
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"bb" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal4"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bc" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bd" = (
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"be" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bf" = (
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/doubleroad/lines4{
+	pixel_x = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bg" = (
+/obj/item/trash/eat{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"bh" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/doubleroad/lines1{
+	pixel_x = -4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bi" = (
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bj" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv759/outdoors/landing_zone_2)
+"bk" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bl" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/outdoors/landing_zone_2)
+"bm" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"bn" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Mining{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bo" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bp" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bq" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal4"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"br" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"bs" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bt" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bu" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bv" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bw" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bx" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal5"
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"by" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal6"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bz" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bA" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal3"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"bB" = (
+/obj/effect/decal/hybrisa/road/road_stop,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bC" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bD" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bE" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal3"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bF" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bG" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bH" = (
+/obj/structure/sign/safety/restrictedarea,
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"bI" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"bJ" = (
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/landing_zone_2)
+"bK" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	layer = 3
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 8;
+	layer = 2.9;
+	pixel_x = -9
+	},
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bL" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"bM" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bN" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bO" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/landing_zone_2)
+"bP" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bQ" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bR" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5";
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bS" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/hybrisa/street/sidewalkcenter/south,
+/area/lv759/outdoors/landing_zone_2)
+"bT" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/sidewalkcenter/south,
+/area/lv759/outdoors/landing_zone_2)
+"bU" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bV" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bW" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bX" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/road/lines4,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bY" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"bZ" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ca" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
+	pixel_y = -5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"cb" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
+	pixel_y = -5;
+	layer = 3.2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"cc" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"cd" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"ce" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 31;
+	pixel_x = 8
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"cf" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"cg" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ch" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/tiretrack{
+	dir = 6;
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ci" = (
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/landing_zone_2)
+"cj" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal2"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ck" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"cl" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"cm" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"cn" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ct" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/landing_zone_2)
+"cw" = (
+/obj/item/trash/barcardine,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"cF" = (
+/obj/structure/cargo_container/wy/right,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"cL" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"cS" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -13;
+	layer = 5
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"db" = (
+/obj/docking_port/stationary/marine_dropship/lz2,
+/turf/open/floor/plating,
+/area/lv759/outdoors/landing_zone_2)
+"de" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/electical_systems/substation2)
+"df" = (
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
+/area/lv759/outdoors/landing_zone_2)
+"dp" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"dv" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters,
+/turf/open/floor/plating,
+/area/lv759/indoors/mining_outpost/processing)
+"dw" = (
+/obj/item/tool/wrench{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/structure/cable{
+	icon_state = "1-4";
+	color = "#550d0d"
+	},
+/obj/structure/cable{
+	icon_state = "1-2";
+	level = 2;
+	color = "#550d0d"
+	},
+/obj/structure/cable{
+	icon_state = "4-8";
+	color = "#550d0d"
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"dz" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid,
+/obj/item/tool/extinguisher,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"dC" = (
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"dK" = (
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"dL" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp{
+	layer = 3.5;
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/item/paper_bin{
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = -8
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 9
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"dO" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/machinery/fuelcell_recycler,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"dQ" = (
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/landing_zone_2)
+"dY" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"ec" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"ef" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/landing_zone_2)
+"ei" = (
+/obj/structure/largecrate/random/barrel{
+	desc = "A red storage barrel.";
+	icon_state = "barrel_red";
+	name = "red barrel";
+	pixel_x = 9;
+	pixel_y = 16
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/largecrate/random/mini{
+	pixel_y = 9;
+	layer = 2.9;
+	pixel_x = -8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"ek" = (
+/obj/structure/largecrate/random/barrel{
+	layer = 2.9;
+	pixel_x = 6;
+	pixel_y = -16
+	},
+/obj/structure/ore_box{
+	layer = 2
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"er" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"eF" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"fa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_y = 19
+	},
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"fj" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"fs" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"fG" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/outdoors/landing_zone_2)
+"fW" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"gn" = (
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/maint{
+	pixel_x = -17
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"gz" = (
+/obj/structure/cargo_container/wy/left,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"gH" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"gK" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"gY" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"gZ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"hg" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"hj" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"hn" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/prison,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"hq" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -20
+	},
+/turf/open/floor/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"hr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"hv" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"hB" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"hE" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_y = 16
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"hG" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/obj/structure/largecrate/supply{
+	pixel_y = 15
+	},
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	layer = 3
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"hH" = (
+/obj/structure/machinery/power/terminal{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/machinery/fuelcell_recycler,
+/turf/open/floor/plating/platingdmg2,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"hL" = (
+/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/sandbags/large_stack,
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"hO" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"hZ" = (
+/obj/structure/closet/crate/trashcart{
+	opened = 1
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/item/trash/buritto,
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"ib" = (
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/landing_zone_2)
+"iy" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"iC" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"iD" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"iI" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"ji" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "hybrisaLZ2_1";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	vehicle_resistant = 1
+	},
+/turf/open/floor/corsat,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"jv" = (
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"jE" = (
+/obj/item/fuel_cell,
+/turf/open/floor/prison,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"jI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_x = 5;
+	pixel_y = 20
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"jQ" = (
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"kc" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"kd" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = 12
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"ki" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"kt" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"ku" = (
+/obj/structure/ore_box{
+	layer = 4
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"kx" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/largecrate/random/barrel{
+	layer = 1;
+	pixel_x = 1;
+	pixel_y = 4
+	},
+/obj/structure/largecrate/random/barrel{
+	layer = 2.9;
+	pixel_x = -15;
+	pixel_y = -9
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/obj/effect/decal/hybrisa/road/lines1,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"kB" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"kD" = (
+/obj/structure/largecrate/random/barrel/red{
+	pixel_x = -4
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"kF" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	dir = 4;
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/obj/structure/machinery/big_computers/computerbrown/computer4,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"kH" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_y = 16
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"kJ" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/landing_zone_2)
+"kW" = (
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/landing_zone_2)
+"kX" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"ld" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"lh" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"lj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/landing_zone_2)
+"ll" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "hybrisaLZ2_2";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	vehicle_resistant = 1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"lo" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/landing_zone_2)
+"lt" = (
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/landing_zone_2)
+"lx" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/Blue{
+	dir = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"lC" = (
+/obj/structure/stairs/perspective{
+	dir = 5;
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/landing_zone_2)
+"lI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/red{
+	layer = 6;
+	pixel_x = 3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/landing_zone_2)
+"lO" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"lS" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/turf/open/floor/prison/ramptop,
+/area/lv759/outdoors/landing_zone_2)
+"lT" = (
+/obj/structure/machinery/computer/guestpass,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"lV" = (
+/obj/structure/prop/hybrisa/vehicles/Box_Vans/Maintenance_Blue{
+	dir = 1;
+	layer = 4.13
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"lY" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"lZ" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer2{
+	pixel_y = 14;
+	pixel_x = -4;
+	color = "#6d2a2a";
+	name = "colony net emergency line";
+	density = 0
+	},
+/obj/structure/transmitter/colony_net{
+	pixel_x = -4;
+	pixel_y = 15;
+	phone_category = "Colony-Net Emergency Line";
+	phone_id = "KMCC Interstellar Freight Hub - Landing Zone Two";
+	phone_color = "red"
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 11;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"mf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/closet/secure_closet/security,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/hybrisa,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
+/obj/structure/window/reinforced,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison/red/east,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"mm" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"mo" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"mr" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"mM" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"mN" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"mQ" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_x = 11;
+	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"mU" = (
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/landing_zone_2)
+"mV" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 8;
+	pixel_y = -3;
+	layer = 2.9
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"nq" = (
+/obj/item/stack/sheet/wood/medium_stack,
+/obj/item/stack/sheet/wood/medium_stack,
+/obj/item/stack/sheet/cardboard/small_stack,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"nA" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/powercell{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"nB" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/airtraffictower{
+	pixel_y = 32;
+	pixel_x = 1
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_y = 32;
+	pixel_x = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"nH" = (
+/obj/item/trash/cigbutt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"nK" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"nS" = (
+/obj/structure/largecrate/supply{
+	pixel_x = -17;
+	pixel_y = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"nU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/item/paper{
+	layer = 2
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"oi" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/prop/almayer/comp_open,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"or" = (
+/obj/item/device/binoculars{
+	pixel_y = 12;
+	pixel_x = 3
+	},
+/obj/structure/machinery/big_computers/messaging_server/brown{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"ou" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"oA" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"oE" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"oF" = (
+/turf/open/floor/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"oM" = (
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_left{
+	layer = 4
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"oO" = (
+/obj/structure/cable{
+	icon_state = "2-4";
+	level = 2;
+	color = "#550d0d"
+	},
+/obj/structure/curtain/colorable_transparent{
+	color = "#434343";
+	name = "plastic flaps"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"oZ" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"po" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"pq" = (
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"pr" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"pv" = (
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_right{
+	layer = 4
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"py" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_y = 19
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"pR" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -19;
+	pixel_y = 32
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/landing_zone_2)
+"pU" = (
+/obj/structure/cargo_container/kelland/left,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"qb" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"qn" = (
+/obj/item/stack/sheet/metal/large_stack,
+/obj/item/stack/rods{
+	pixel_y = -2
+	},
+/obj/item/stack/sheet/metal/large_stack,
+/obj/structure/closet/crate/construction,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"qt" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"qI" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"qJ" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"qK" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"qM" = (
+/obj/item/tool/wet_sign{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"qP" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -11;
+	pixel_y = 6
+	},
+/obj/structure/machinery/light/blue,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"qY" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"re" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -6
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"rp" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -10;
+	pixel_y = 11
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/landing_zone_2)
+"rS" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/lz2{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub/lz2_console)
+"sm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/prison/red/southeast,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"sp" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"sq" = (
+/obj/structure/largecrate/random/barrel{
+	desc = "A red storage barrel.";
+	icon_state = "barrel_red";
+	name = "red barrel";
+	pixel_x = 10;
+	pixel_y = 16
+	},
+/obj/structure/largecrate/random/barrel{
+	desc = "A yellow storage barrel.";
+	icon_state = "barrel_yellow";
+	name = "yellow barrel";
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/landing_zone_2)
+"ss" = (
+/obj/structure/largecrate/random/barrel{
+	desc = "A yellow storage barrel.";
+	icon_state = "barrel_yellow";
+	name = "yellow barrel";
+	pixel_x = 6;
+	pixel_y = -16
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"sw" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "hybrisaLZ2_1";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	vehicle_resistant = 1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"sI" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"sP" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 5;
+	layer = 5.12
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"sQ" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14;
+	layer = 5
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"sR" = (
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"sT" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"sW" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"tb" = (
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"tf" = (
+/obj/structure/machinery/big_computers/computerbrown/computer5,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 4;
+	dir = 4;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"tm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"tq" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"tz" = (
+/obj/item/tool/wet_sign{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"tB" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/ore_box{
+	layer = 2
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = -4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"tI" = (
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"tJ" = (
+/obj/structure/largecrate/random/barrel/brown,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"tS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"tT" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"tU" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"tX" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/card/id{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/reagent_container/food/snacks/spacetwinkie{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"tY" = (
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"ue" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"ug" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"ui" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"uk" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"un" = (
+/obj/structure/sign/safety/airtraffictower,
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"uw" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/greenleft,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"uK" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/obj/item/stack/rods,
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"uL" = (
+/turf/closed/wall/hybrisa/colony/reinforced/hull,
+/area/lv759/oob)
+"uM" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"uR" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/computer/card{
+	dir = 4
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4;
+	pixel_y = -16
+	},
+/turf/open/floor/prison/red/west,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"uT" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"va" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/carpetbeige,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"vj" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"vk" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"vn" = (
+/obj/structure/largecrate/random/barrel/purewhite{
+	layer = 2.8;
+	pixel_y = 5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"vp" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal2"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"vx" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	layer = 2;
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"vA" = (
+/obj/structure/bed/stool,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/item/card/id/visa,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"vF" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"vI" = (
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_right{
+	layer = 4.13
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"vK" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"vL" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	layer = 6;
+	pixel_x = -5;
+	pixel_y = -12
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"wb" = (
+/turf/open/floor/plating,
+/area/lv759/outdoors/landing_zone_2)
+"wi" = (
+/turf/open/floor/hybrisa/metal/stripe_red,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"wj" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "hybrisaLZ2_2";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	vehicle_resistant = 1
+	},
+/turf/open/floor/corsat,
+/area/lv759/outdoors/landing_zone_2)
+"wu" = (
+/obj/structure/largecrate/empty/case{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"wx" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"wF" = (
+/obj/structure/cargo_container/kelland/left{
+	layer = 4
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"wO" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"wR" = (
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"wS" = (
+/obj/structure/machinery/big_computers/computerbrown/computer3,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	dir = 4;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"wU" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/structure/dropship_equipment/fuel/fuel_enhancer{
+	explo_proof = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/shuttle/escapepod/floor1,
+/area/lv759/oob)
+"wV" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	layer = 2
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"xh" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/item/device/radio/headset,
+/turf/open/floor/hybrisa/carpet/carpetbeige,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"xk" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/landing_zone_2)
+"xn" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/prop/magazine/boots/n055{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/storage/box/ids{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/card/id/visa{
+	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"xr" = (
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/outdoors/landing_zone_2)
+"xs" = (
+/turf/closed/wall/hybrisa/rock,
+/area/lv759/oob)
+"xy" = (
+/obj/item/clipboard{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/structure/machinery/big_computers/messaging_server/brown{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"xA" = (
+/obj/structure/cargo_container/kelland/left,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"xI" = (
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/lv759/outdoors/landing_zone_2)
+"yd" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"yj" = (
+/obj/structure/largecrate/random/mini/small_case,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"yp" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"yy" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/faxmachine{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/red/northwest,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"yD" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox{
+	layer = 4
+	},
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"yG" = (
+/obj/structure/fence/dark,
+/turf/open/floor/prison,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"yJ" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"yK" = (
+/obj/structure/largecrate/empty{
+	layer = 2.9;
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"yP" = (
+/obj/structure/cargo_container/hybrisa/containersextended/redwywingsright,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"yQ" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv759/outdoors/landing_zone_2)
+"yS" = (
+/obj/structure/machinery/vending/cigarette{
+	density = 0;
+	pixel_x = -2;
+	pixel_y = 16
+	},
+/obj/item/tool/mop{
+	pixel_y = 8;
+	pixel_x = -12
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"yW" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal4"
+	},
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Kelland_Mining{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"zb" = (
+/obj/structure/largecrate/empty{
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/cement1,
+/area/lv759/outdoors/landing_zone_2)
+"ze" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"zg" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"zn" = (
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"zo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/landing_zone_2)
+"zp" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"zu" = (
+/obj/structure/prop/hybrisa/vehicles/Box_Vans/Kelland_Mining{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/landing_zone_2)
+"zy" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	layer = 2.9;
+	pixel_y = 32;
+	alpha = 220
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = -8;
+	pixel_y = 18;
+	density = 0
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"zD" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 4;
+	icon_state = "stop_decal5"
+	},
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/White_Cargo{
+	dir = 1;
+	pixel_x = -3;
+	layer = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"zF" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"zG" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/machinery/light/blue,
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"zI" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenleft{
+	layer = 4.2
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"zM" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"zO" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -9;
+	pixel_y = 11
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/carpetbeige,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"zU" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/landing_zone_2)
+"zX" = (
+/obj/structure/cargo_container/hd/mid/alt{
+	layer = 5
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"zY" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#434343";
+	name = "plastic flaps"
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"Af" = (
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"Ak" = (
+/obj/item/paper/crumpled,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"Al" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Am" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer0,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Av" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/obj/structure/bed/stool,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"Az" = (
+/obj/structure/surface/rack,
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"AH" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/item/card/id/visa,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"AN" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/WY_Blue{
+	pixel_y = 6
+	},
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
+	pixel_y = -5;
+	layer = 3.2
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"AU" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft{
+	layer = 2.9
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/obj/structure/sign/safety/opens_up{
+	pixel_x = 3;
+	pixel_y = 32
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Bf" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname{
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "hybrisaLZ2_2";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	vehicle_resistant = 1
+	},
+/obj/effect/landmark/lv624/fog_blocker/short,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"Bg" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 26;
+	pixel_x = -25
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"Bl" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Bn" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Mining,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"By" = (
+/obj/item/stool,
+/obj/structure/cable{
+	icon_state = "1-2";
+	level = 2;
+	color = "#550d0d"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"BF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 1;
+	pixel_y = 14
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"BJ" = (
+/obj/structure/largecrate/random/mini/small_case,
+/obj/item/trash/cigbutt{
+	pixel_x = -1;
+	pixel_y = 17
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"BN" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"BW" = (
+/obj/effect/landmark/railgun_camera_pos,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"Cg" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"Cn" = (
+/obj/item/prop/colony/canister{
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Cr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "hybrisaLZ2_2";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	vehicle_resistant = 1
+	},
+/turf/open/floor/corsat,
+/area/lv759/outdoors/landing_zone_2)
+"Ct" = (
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsright,
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Cz" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"CK" = (
+/obj/structure/cable{
+	icon_state = "1-2";
+	color = "#550d0d"
+	},
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil2";
+	color = "#550d0d"
+	},
+/obj/item/tool/screwdriver,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"CV" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/ammo_magazine/pistol/vp78,
+/obj/item/weapon/gun/pistol/vp78,
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 30
+	},
+/turf/open/floor/prison/red/northeast,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"CY" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"Da" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"Dd" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"Dg" = (
+/obj/structure/cargo_container/watatsumi/left{
+	layer = 2.9
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Dh" = (
+/obj/structure/sign/poster/corporate{
+	layer = 2.9;
+	pixel_y = 32
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"Dl" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"Do" = (
+/obj/structure/cargo_container/hd/left/alt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Ds" = (
+/obj/item/paper/crumpled/bloody{
+	pixel_x = -9;
+	pixel_y = 12
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/carpet/carpetbeige,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Dw" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"DM" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"DS" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"DY" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/landing_zone_2)
+"Ed" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Eh" = (
+/obj/structure/largecrate/random/barrel{
+	layer = 5.1;
+	pixel_x = 13;
+	pixel_y = 16
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
+	pixel_y = -5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Eo" = (
+/obj/structure/cargo_container/hd/right/alt{
+	layer = 4.12
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Ep" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"Eq" = (
+/obj/structure/prop/turbine{
+	explo_proof = 0
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"Ez" = (
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/landing_zone_2)
+"EH" = (
+/obj/structure/ore_box{
+	layer = 2
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"EL" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_y = 19
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_y = -13;
+	layer = 4.1
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"EN" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"ES" = (
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"Fk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/landing_zone_2)
+"Fm" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "hybrisaLZ2_2";
+	name = "north - door-control";
+	explo_proof = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	layer = 4;
+	pixel_x = 16;
+	pixel_y = 8
+	},
+/obj/item/card/id/guest{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"FF" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"FQ" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Ga" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/lv759/outdoors/landing_zone_2)
+"Gb" = (
+/obj/structure/closet/emcloset,
+/obj/item/storage/pouch/sling,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 10
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4;
+	pixel_x = -14
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"Gc" = (
+/obj/structure/largecrate/random/barrel{
+	layer = 4.12;
+	pixel_x = -6;
+	pixel_y = -18
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_right,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Gj" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/sidewalkcenter/south,
+/area/lv759/outdoors/landing_zone_2)
+"Go" = (
+/obj/structure/cargo_container/watatsumi/mid{
+	layer = 2.9
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Gv" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -20
+	},
+/obj/item/stack/sheet/wood/small_stack{
+	layer = 1
+	},
+/obj/structure/largecrate/random/barrel/yellow{
+	layer = 2
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Gz" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"GE" = (
+/obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"GJ" = (
+/obj/structure/machinery/atm{
+	icon = 'icons/obj/structures/props/atm.dmi';
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"GR" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/cargo_container/watatsumi/right{
+	layer = 2.9
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"GX" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 19
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 14
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"Hc" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice8";
+	pixel_y = 16
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice4";
+	pixel_y = 16
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/outdoors/landing_zone_2)
+"Ho" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"Ht" = (
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_left,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Hx" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = 6
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"Hz" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/outdoors/landing_zone_2)
+"HC" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_y = 12;
+	pixel_x = 6
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"HG" = (
+/obj/structure/prop/hybrisa/misc/cabinet{
+	dir = 8;
+	pixel_x = 5;
+	pixel_y = 18;
+	layer = 3.1
+	},
+/turf/open/floor/hybrisa/carpet/carpetbeige,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"HN" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/computer/card{
+	dir = 4;
+	layer = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/prison/red/west,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"HY" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/landing_zone_2)
+"If" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18
+	},
+/obj/item/stack/sheet/wood,
+/obj/item/stack/sheet/wood{
+	pixel_y = -8
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Ih" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/mining_outpost/processing)
+"Ik" = (
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"Is" = (
+/obj/item/device/analyzer,
+/obj/structure/cable{
+	icon_state = "1-4";
+	color = "#550d0d"
+	},
+/obj/structure/cable{
+	icon_state = "4-8";
+	color = "#550d0d"
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"IC" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/sidewalkcenter/south,
+/area/lv759/outdoors/landing_zone_2)
+"IG" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"IH" = (
+/obj/item/fuel_cell,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"IQ" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/obj/structure/sign/safety/storage{
+	pixel_x = 2;
+	pixel_y = 32
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"IS" = (
+/obj/structure/bed/stool,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"IU" = (
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2{
+	dir = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/shuttle/escapepod/floor1,
+/area/lv759/oob)
+"IX" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"IY" = (
+/obj/structure/prop/hybrisa/misc/firehydrant{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"Ja" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"Jm" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Ju" = (
+/obj/structure/ore_box{
+	layer = 2
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Jv" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"JG" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/outdoors/landing_zone_2)
+"JN" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/auto_turf/hybrisa_auto_turf/layer3,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Ki" = (
+/turf/open/floor/hybrisa/carpet/carpetbeige,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Kl" = (
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 32
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"Kq" = (
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Kv" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Kz" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"KC" = (
+/obj/structure/largecrate/random/barrel/brown,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"KE" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	icon_state = "grime4"
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_x = -10
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"KI" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"KN" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Lg" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"Lj" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"Lp" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"Lq" = (
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Lr" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/landing_zone_2)
+"LB" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"LJ" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"LN" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"LQ" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/turf/open/floor/almayer_hull,
+/area/lv759/outdoors/landing_zone_2)
+"Mb" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Mf" = (
+/obj/item/stack/sheet/metal/large_stack{
+	pixel_y = 6
+	},
+/obj/structure/closet/crate/supply{
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/landing_zone_2)
+"Mj" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Mk" = (
+/obj/structure/cargo_container/wy/mid,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Mr" = (
+/obj/structure/machinery/colony_floodlight/street{
+	pixel_y = 12
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"Mt" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Mv" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"MA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/power/apc/no_power/south,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"MD" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"MI" = (
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"MX" = (
+/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Ns" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Nu" = (
+/obj/item/fuel_cell,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/landing_zone_2)
+"Ny" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/east,
+/obj/structure/barricade/metal/wired,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"NC" = (
+/obj/item/storage/briefcase{
+	pixel_y = -2
+	},
+/obj/item/storage/briefcase{
+	pixel_y = -2
+	},
+/obj/item/storage/briefcase{
+	pixel_y = -2
+	},
+/obj/item/storage/briefcase{
+	pixel_y = -2
+	},
+/obj/item/card/id/visa,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"NG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"NH" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
+/area/lv759/outdoors/landing_zone_2)
+"NM" = (
+/obj/structure/cargo_container/kelland/right{
+	layer = 4
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"NO" = (
+/obj/structure/cargo_container/hybrisa/containersextended/bluewywingsleft,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"NR" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark{
+	pixel_y = -5
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Ob" = (
+/obj/effect/spawner/random/powercell,
+/obj/structure/cable{
+	icon_state = "1-2";
+	level = 2;
+	color = "#550d0d"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"Oc" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"Of" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"OH" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"OI" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"OV" = (
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"OX" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
+	light_color = "#00ff9f";
+	light_on = 1;
+	light_power = 2;
+	light_range = 3;
+	pixel_y = 6
+	},
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "1-2";
+	layer = 5
+	},
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"Pm" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/west,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Pr" = (
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"Ps" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	layer = 3.20;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	layer = 3.20;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/prison/red/northeast,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"Pv" = (
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"Px" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"Py" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = -4
+	},
+/turf/open/hybrisa/street/sidewalkcenter/south,
+/area/lv759/outdoors/landing_zone_2)
+"PF" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/airlock/hybrisa/personal_solid/autoname{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"PU" = (
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Kelland_Mining{
+	pixel_y = -8;
+	layer = 4.1
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Qw" = (
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"QD" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 8;
+	pixel_x = 16
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"QI" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"QN" = (
+/obj/structure/stairs/perspective{
+	dir = 1;
+	icon_state = "p_stair_full";
+	color = "#b8b8b0"
+	},
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"QR" = (
+/obj/item/trash/hotdog,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/cardboard{
+	layer = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"QS" = (
+/obj/structure/machinery/light,
+/obj/structure/machinery/big_computers/messaging_server/brown{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Rf" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"Rj" = (
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"Rq" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"Rx" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/obj/structure/sign/safety/opens_up{
+	pixel_y = 32;
+	pixel_x = 12
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/greenright,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Rz" = (
+/obj/structure/sign/safety/fire_haz{
+	pixel_x = 4
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = 16
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 6;
+	layer = 5.12
+	},
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"RR" = (
+/obj/structure/window/framed/hybrisa/colony/reinforced,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "hybrisaLZ2_2";
+	name = "Emergency Lockdown";
+	needs_power = 0;
+	vehicle_resistant = 1;
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"Sd" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal3"
+	},
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/item/tool/wirecutters,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Sk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/sentry_landmark/lz_2/top_left,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Sm" = (
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/south_east_street)
+"Sw" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"SB" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 11;
+	pixel_x = 3
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"SF" = (
+/obj/structure/sign/safety/security{
+	pixel_x = -18;
+	pixel_y = -4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/landing_zone_2)
+"SL" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"SN" = (
+/obj/structure/prop/hybrisa/misc/buildinggreeblies/greeble7,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"ST" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/computer/emails{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"Tf" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"Tt" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_y = 4
+	},
+/obj/structure/sign/nosmoking_1{
+	pixel_y = 32;
+	layer = 2.8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_south)
+"Tv" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"TA" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/landing_zone_2)
+"TE" = (
+/obj/structure/lz_sign/hybrisa_sign/mining,
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -20
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/landing_zone_2)
+"TG" = (
+/obj/effect/spawner/random/tool,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"TR" = (
+/obj/structure/largecrate/random/barrel{
+	layer = 2
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"TS" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/tile/cementflat,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"TU" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"TW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"Uc" = (
+/obj/item/trash/cigbutt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Ue" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"Ug" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Uj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Uy" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"UD" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"UF" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"UL" = (
+/turf/open/auto_turf/hybrisa_auto_turf/layer3,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"UQ" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -10;
+	pixel_y = 11
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/landing_zone_2/kmcc_hub_cargo_entrance_south)
+"UT" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"UU" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/lv759/oob)
+"Vm" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Vu" = (
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "2-6";
+	layer = 5
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_maintenance)
+"Vx" = (
+/obj/structure/cargo_container/hybrisa/containersextended/redwywingsleft,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"VB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/machinery/light/blue,
+/turf/open/auto_turf/hybrisa_auto_turf/layer3,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"VF" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_hallway)
+"VP" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"VX" = (
+/obj/item/attachable/bayonet,
+/turf/open/floor/hybrisa/carpet/carpetbeige,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Wd" = (
+/obj/structure/largecrate/empty,
+/obj/item/device/radio{
+	pixel_x = -3;
+	pixel_y = 14
+	},
+/obj/item/device/megaphone{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Wt" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/sentry_landmark/lz_2/top_right,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"WL" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"WS" = (
+/obj/structure/monorail,
+/obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy4{
+	dir = 8
+	},
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/shuttle/escapepod/floor1,
+/area/lv759/oob)
+"WZ" = (
+/obj/structure/largecrate/random/mini{
+	pixel_x = 11;
+	pixel_y = 16;
+	layer = 3.1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Xa" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/drinks/h_chocolate{
+	pixel_x = -11;
+	pixel_y = 9
+	},
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Xm" = (
+/obj/structure/machinery/light/blue,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Xn" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 16;
+	pixel_x = 11
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Xr" = (
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Xw" = (
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	layer = 2.9;
+	pixel_y = 32;
+	alpha = 220
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"Xy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/photocopier/wyphotocopier{
+	pixel_y = 7
+	},
+/turf/open/floor/prison/red/southwest,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"XD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 24;
+	pixel_y = 11;
+	layer = 2.9
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall{
+	pixel_x = -5;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/landing_zone_2)
+"XI" = (
+/obj/structure/cargo_container/kelland/right,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"XJ" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_y = 12;
+	pixel_x = -6
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"XN" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
+	dir = 8;
+	layer = 3.2;
+	name = "Television set";
+	network = list("military");
+	pixel_x = 5
+	},
+/obj/item/device/radio/off{
+	pixel_x = -13;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"XO" = (
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/prop/static_tank/fuel,
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"XR" = (
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 8;
+	pixel_y = -3;
+	layer = 2.9
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_lounge_north)
+"XT" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenright{
+	layer = 4.11
+	},
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"Ye" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/hybrisa/road/lines2,
+/obj/effect/decal/hybrisa/doubleroad/lines3{
+	pixel_y = -4
+	},
+/obj/structure/prop/hybrisa/vehicles/Box_Vans/Kelland_Mining,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/landing_zone_2)
+"Yz" = (
+/obj/item/card/id/visa{
+	desc = "A United Americas entry visa. A rare commodity out here on the rim.";
+	pixel_x = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "hybrisaLZ2_4";
+	name = "southwest - door-control";
+	pixel_x = -5;
+	explo_proof = 1;
+	pixel_y = 6
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_south_office)
+"YE" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/ashtray/plastic{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "hybrisaLZ2_1";
+	pixel_x = -7;
+	pixel_y = -1;
+	explo_proof = 1;
+	name = "west - door-control"
+	},
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = -2;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_flight_control_room)
+"YI" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"YL" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/structure/machinery/landinglight/ds2/spoke{
+	pixel_x = -12
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"YN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/light,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_security)
+"YY" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/obj/item/stack/rods{
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/landing_zone_2)
+"Zb" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 8;
+	layer = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/landing_zone_2)
+"Zc" = (
+/obj/structure/barricade/handrail/hybrisa/handrail{
+	dir = 1
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/landing_zone_2)
+"Zq" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/hybrisa/metal/grated/north,
+/area/lv759/outdoors/mining_outpost/south_entrance)
+"ZT" = (
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/prop/static_tank/fuel,
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+"ZW" = (
+/obj/effect/sentry_landmark/lz_2/bottom_right,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/landing_zone_2)
+"ZX" = (
+/obj/structure/cable{
+	icon_state = "4-8";
+	color = "#550d0d"
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/landing_zone_2/kmcc_hub_fuel)
+
+(1,1,1) = {"
+sW
+sW
+RR
+RR
+sW
+sW
+Ep
+dY
+Jv
+Sm
+Sm
+CY
+Ep
+kt
+Oc
+Oc
+sw
+sw
+Oc
+Oc
+ue
+GJ
+oE
+tY
+bg
+XR
+Ik
+tX
+Lp
+lZ
+Pv
+OV
+OV
+BJ
+Av
+mr
+mr
+Tt
+Af
+kB
+zM
+zM
+zM
+vk
+Lg
+UT
+Yz
+gn
+ba
+UT
+UT
+sP
+"}
+(2,1,1) = {"
+sW
+yy
+uR
+HN
+Xy
+ll
+qK
+iC
+bI
+bA
+bA
+bm
+qb
+Of
+Oc
+oi
+ST
+YE
+xy
+Rq
+Lp
+ab
+oE
+gH
+ab
+ab
+ab
+Lp
+Lp
+yS
+Pv
+qM
+vK
+Pv
+vA
+mr
+mr
+bL
+LN
+oZ
+bL
+bL
+bL
+ec
+UT
+UT
+lT
+xh
+Ki
+dz
+UT
+aR
+"}
+(3,1,1) = {"
+ll
+Fm
+UD
+hj
+nU
+sW
+sW
+py
+fa
+fa
+fa
+fa
+EL
+Oc
+Oc
+tf
+TS
+zn
+or
+Rq
+nB
+Pv
+Pr
+OV
+Pv
+Pv
+Pv
+IG
+hg
+hZ
+Pv
+KE
+tz
+Pv
+cw
+Cg
+IG
+Pv
+mm
+OV
+Pv
+Pv
+ui
+IG
+Gz
+Xw
+Ki
+Ki
+Ki
+QS
+UT
+Gb
+"}
+(4,1,1) = {"
+ll
+xn
+Ak
+vj
+YN
+sW
+sW
+sW
+ji
+ji
+ji
+ji
+Oc
+Oc
+Oc
+kF
+wO
+BW
+iD
+PF
+cm
+cd
+yJ
+cd
+cd
+DS
+cd
+cd
+kX
+cd
+cd
+cd
+cd
+cd
+cd
+OI
+cd
+cd
+yJ
+dp
+cd
+cd
+cd
+cd
+FF
+qJ
+zO
+va
+Ds
+qJ
+vk
+Vu
+"}
+(5,1,1) = {"
+ll
+Ps
+tS
+dK
+MA
+sW
+sW
+sW
+Fk
+Fk
+Fk
+Fk
+Oc
+Oc
+Oc
+wS
+Kz
+zn
+mQ
+Rq
+Mv
+cL
+cL
+hv
+cL
+cL
+NC
+tT
+QN
+mV
+wu
+OV
+OV
+Pv
+Pv
+Cg
+tT
+yj
+cL
+cL
+cL
+VF
+AH
+tT
+Gz
+aM
+HG
+VX
+Ki
+nA
+UT
+OX
+"}
+(6,1,1) = {"
+sW
+sW
+CV
+mf
+sm
+KI
+vF
+lh
+Xr
+bB
+bB
+Vm
+LQ
+iI
+Oc
+Oc
+Kl
+rS
+Oc
+Oc
+DM
+fW
+fW
+fW
+fW
+fW
+fW
+ki
+ki
+ki
+SB
+OV
+OV
+Sw
+ki
+ki
+ki
+fW
+fW
+fW
+fW
+fW
+fW
+ki
+UT
+UT
+uT
+Ns
+Xa
+dL
+UT
+SN
+"}
+(7,1,1) = {"
+TU
+sW
+hE
+sW
+EN
+sW
+hO
+Da
+bM
+aC
+aC
+bo
+hO
+oA
+Zc
+Oc
+GE
+lO
+un
+fj
+lh
+lh
+lh
+lh
+lh
+lh
+lh
+lh
+HY
+ki
+fW
+Pv
+Tf
+fW
+ki
+lh
+lh
+lh
+lh
+lh
+lh
+lh
+lh
+ad
+ad
+Gz
+zy
+Ug
+XN
+UT
+UT
+vL
+"}
+(8,1,1) = {"
+yd
+TU
+TW
+wj
+lj
+SF
+ou
+Zb
+Ho
+Ho
+Ho
+Ho
+DY
+Ja
+Px
+QI
+nK
+dC
+VP
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+lo
+lC
+xk
+xk
+Ez
+lo
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+ae
+ae
+UT
+uM
+UT
+UT
+UT
+UT
+Ih
+"}
+(9,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+ci
+mU
+bO
+ES
+ES
+ES
+ES
+mU
+jQ
+ze
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+ze
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+ze
+jQ
+jQ
+jQ
+jQ
+jQ
+tb
+jQ
+jQ
+zF
+ac
+ac
+ac
+qt
+xs
+xs
+xs
+Ih
+"}
+(10,1,1) = {"
+TU
+hq
+TW
+wj
+zo
+kx
+Gv
+bY
+bN
+bB
+bB
+bp
+xr
+xr
+bi
+bd
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bd
+aZ
+xr
+aY
+aK
+aA
+aA
+ap
+ss
+ku
+an
+an
+yG
+wx
+xs
+xs
+Ih
+"}
+(11,1,1) = {"
+TU
+Dl
+Hc
+Hz
+Hz
+AU
+hG
+QR
+bP
+Sk
+Kq
+bb
+aY
+xr
+aL
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+bb
+aY
+xr
+aL
+Kq
+Kq
+aq
+wF
+Vx
+KN
+an
+yG
+mo
+xs
+xs
+Ih
+"}
+(12,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+Kv
+bK
+bZ
+bQ
+Kq
+Kq
+bq
+xr
+aY
+aL
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+aB
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+bb
+aY
+xr
+aL
+Kq
+aB
+aq
+NM
+yP
+Uc
+an
+yG
+mo
+Am
+xs
+Ih
+"}
+(13,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+If
+tJ
+IX
+bR
+bF
+aG
+bs
+xr
+xr
+bk
+be
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+be
+bc
+aY
+xr
+aN
+aG
+aC
+ar
+ek
+KC
+nq
+an
+yG
+wx
+UL
+sI
+dv
+"}
+(14,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+bV
+cf
+NR
+bS
+Kq
+Kq
+aw
+TE
+YY
+wR
+wR
+tI
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+sT
+wR
+wR
+wR
+wR
+wR
+wR
+xI
+Cz
+Kq
+Uy
+as
+ag
+gz
+Ju
+an
+yG
+wx
+LJ
+iy
+dv
+"}
+(15,1,1) = {"
+UQ
+aa
+Hc
+Hz
+Hz
+tU
+Kq
+ca
+bS
+Kq
+aE
+as
+sp
+sq
+ib
+bj
+YL
+Ue
+Ue
+Ue
+Ue
+Ue
+Ue
+Ue
+Ue
+YL
+NH
+Ue
+Ue
+Ue
+Ue
+YL
+Ue
+Ue
+Ue
+Ue
+YL
+bj
+Qw
+Ye
+Kq
+BF
+au
+ag
+Mk
+pU
+an
+yG
+wx
+Am
+VB
+Ih
+"}
+(16,1,1) = {"
+jv
+jv
+br
+Cr
+UF
+cj
+cg
+NR
+bT
+Kq
+aE
+au
+zU
+YI
+ib
+XJ
+wb
+df
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+df
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+df
+wb
+re
+wV
+aO
+Kq
+aE
+au
+ag
+cF
+XI
+aj
+qt
+mo
+LJ
+FQ
+lY
+"}
+(17,1,1) = {"
+jv
+jv
+br
+Cr
+UF
+ck
+ch
+ca
+bT
+aB
+aE
+bt
+Kq
+Kq
+sp
+fs
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+qI
+mN
+tB
+Kq
+BF
+au
+ak
+ac
+ac
+Xm
+qt
+Jm
+gZ
+zp
+Mb
+"}
+(18,1,1) = {"
+jv
+jv
+br
+Cr
+UF
+vp
+TR
+Eh
+bT
+Kq
+aE
+bu
+bC
+Kq
+mU
+TA
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+ef
+bJ
+aP
+aB
+Kq
+as
+Tv
+pr
+pq
+vx
+wi
+ld
+ld
+ld
+po
+"}
+(19,1,1) = {"
+GX
+aa
+Hc
+Hz
+Hz
+tU
+bn
+aH
+bS
+Kq
+aE
+bv
+lx
+Kq
+kc
+lS
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+fG
+er
+aQ
+aI
+aA
+av
+tq
+pr
+pq
+vx
+wi
+tm
+tm
+hr
+Uj
+"}
+(20,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+cl
+Kq
+hL
+bP
+Kq
+Kq
+bv
+Kq
+Mj
+JG
+lS
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+fG
+ES
+aL
+Kq
+Kq
+as
+tq
+pr
+pq
+vx
+wi
+Al
+Al
+Al
+NG
+"}
+(21,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+bV
+Uy
+Bl
+bP
+Wt
+yp
+bv
+yp
+WZ
+ES
+lS
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+db
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+fG
+zg
+aS
+aB
+Kq
+aw
+MD
+pr
+pq
+vx
+wi
+uk
+uk
+uk
+po
+"}
+(22,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+uw
+yK
+ei
+bQ
+aB
+Kq
+bv
+nS
+qn
+ES
+lS
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+fG
+ES
+aL
+Kq
+aF
+as
+EH
+eF
+ao
+qP
+qt
+Mt
+Pm
+Pm
+Mb
+"}
+(23,1,1) = {"
+yd
+Dl
+Hc
+Hz
+Hz
+Rx
+vn
+AN
+Gj
+Kq
+aE
+bv
+at
+uK
+ES
+lS
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+fG
+Dd
+aT
+aC
+aC
+ax
+Zq
+ag
+Do
+an
+qt
+wx
+UL
+JN
+Ny
+"}
+(24,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+bV
+Dg
+aD
+IC
+Kq
+aE
+bw
+MX
+IH
+ct
+Ga
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+kJ
+xI
+aU
+Kq
+Kq
+as
+PU
+zI
+zX
+an
+yG
+wx
+LJ
+zG
+de
+"}
+(25,1,1) = {"
+yd
+oF
+TW
+wj
+zo
+bV
+Go
+aD
+Py
+Kq
+aE
+bx
+Kq
+OH
+sp
+Lj
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+qI
+ug
+aO
+Kq
+aE
+ay
+ag
+XT
+Eo
+an
+yG
+mo
+UL
+iy
+al
+"}
+(26,1,1) = {"
+yd
+am
+TW
+wj
+zo
+cn
+GR
+cb
+bT
+Kq
+aE
+au
+rp
+wR
+ib
+HC
+wb
+df
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+df
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+wb
+df
+wb
+Hx
+Qw
+aO
+Kq
+aE
+au
+ag
+kD
+Ht
+an
+yG
+mo
+LJ
+sI
+al
+"}
+(27,1,1) = {"
+TU
+Rf
+kH
+Rf
+Rf
+zb
+Mf
+xI
+bS
+Kq
+aE
+as
+IY
+Nu
+ib
+bj
+kd
+gK
+gK
+gK
+gK
+gK
+gK
+gK
+gK
+kd
+yQ
+gK
+gK
+gK
+gK
+kd
+gK
+gK
+gK
+gK
+kd
+bj
+Qw
+aO
+Kq
+aE
+au
+ag
+xA
+vI
+an
+yG
+mo
+LJ
+xs
+de
+"}
+(28,1,1) = {"
+bH
+Rf
+XO
+ZT
+Rf
+Rf
+Dh
+Bg
+bS
+Kq
+Kq
+as
+lt
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+ZW
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+zu
+aV
+Ed
+Kq
+as
+hB
+Gc
+Lq
+an
+yG
+mo
+xs
+xs
+de
+"}
+(29,1,1) = {"
+Rf
+qY
+hH
+dO
+Az
+Rf
+IQ
+Qw
+bU
+bG
+bD
+by
+xr
+xr
+bi
+bd
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bf
+bd
+aZ
+xr
+xr
+aK
+aA
+aA
+Dw
+oM
+Bn
+Xn
+an
+yG
+wx
+xs
+xs
+de
+"}
+(30,1,1) = {"
+zY
+hn
+TG
+hn
+Rj
+Bf
+pR
+cc
+bV
+Kq
+Kq
+bb
+xr
+xr
+aL
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+QD
+bb
+xr
+xr
+aL
+aB
+Kq
+az
+pv
+ag
+MI
+an
+qt
+xs
+xs
+xs
+de
+"}
+(31,1,1) = {"
+zY
+CK
+Is
+ah
+SL
+Rf
+jI
+cc
+bV
+Kq
+Kq
+bb
+xr
+xr
+aL
+Uy
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+Kq
+yW
+xr
+xr
+aL
+Kq
+Uy
+aq
+IS
+Wd
+Cn
+ao
+qt
+uL
+uL
+uL
+uL
+"}
+(32,1,1) = {"
+oO
+By
+dw
+jE
+Ob
+Rf
+af
+Qw
+bW
+aC
+aC
+bs
+xr
+xr
+bk
+be
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+bh
+be
+bc
+xr
+xr
+aW
+aC
+aC
+ar
+nH
+WL
+uL
+uL
+uL
+uL
+UU
+uL
+wU
+"}
+(33,1,1) = {"
+Rz
+BN
+ZX
+Eq
+yD
+Rf
+XD
+ce
+bX
+bE
+bE
+bz
+kW
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+Mr
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+wR
+Mr
+wR
+wR
+LB
+xI
+aX
+aJ
+Sd
+zD
+NO
+lV
+uL
+uL
+uL
+UU
+UU
+uL
+WS
+"}
+(34,1,1) = {"
+cS
+Rf
+Rf
+sQ
+Rf
+Rf
+lI
+Lr
+ES
+ES
+ES
+ES
+mU
+jQ
+bl
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+jQ
+gY
+bJ
+mM
+mM
+sR
+mM
+Ct
+ai
+uL
+uL
+UU
+UU
+UU
+uL
+IU
+"}

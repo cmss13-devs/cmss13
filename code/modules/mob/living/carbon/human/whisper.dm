@@ -58,6 +58,9 @@
 	if (istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
 		return
 
+	if (istype(src.wear_mask, /obj/item/clothing/mask/facehugger))
+		return
+
 	//TODO: handle_speech_problems
 	if (src.stuttering)
 		message = stutter(message, stuttering)
@@ -113,13 +116,16 @@
 			M.hear_say(new_message, verb, speaking, alt_name, italics, src)
 
 	spawn(30)
-		if(client) client.images -= speech_bubble
+		if(client)
+			client.images -= speech_bubble
 		if(not_dead_speaker)
 			log_say("[name != "Unknown" ? name : "([real_name])"] \[Whisper\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
 			for(var/mob/M in listening)
-				if(M.client) M.client.images -= speech_bubble
+				if(M.client)
+					M.client.images -= speech_bubble
 			for(var/mob/M in eavesdropping)
-				if(M.client) M.client.images -= speech_bubble
+				if(M.client)
+					M.client.images -= speech_bubble
 
 	if (length(watching))
 		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"

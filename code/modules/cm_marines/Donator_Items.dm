@@ -11,17 +11,24 @@
 	icon_state = null
 	item_state = null
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/hats.dmi'
-	icon_override = 'icons/mob/humans/onmob/head_0.dmi'
+	icon = 'icons/obj/items/clothing/hats/donator.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_marine_helmet = NO_FLAGS
 
+/obj/item/clothing/head/helmet/marine/fluff/Initialize(mapload)
+	. = ..()
+	item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/donator.dmi'
+
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
@@ -33,7 +40,8 @@
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_garb_overlay()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
@@ -52,6 +60,10 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
 	item_state = null
+	icon = 'icons/obj/items/clothing/masks/donator.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/donator.dmi'
+	)
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE
@@ -67,12 +79,15 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
 	item_state = null
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	icon = 'icons/obj/items/clothing/suits/donator.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
+
+/obj/item/clothing/suit/storage/marine/fluff/Initialize(mapload)
+	. = ..()
+	item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/donator.dmi'
 
 //LIGHT SUIT TEMPLATE (for armor/exosuit)  ONLY TAKE NAME, DESC, ICON_STATE, AND ITEM_STATE.  Make a copy of those, and put the ckey of the person at the end after fluff
 /obj/item/clothing/suit/storage/marine/light/fluff
@@ -80,16 +95,20 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = null
 	item_state = null
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	//DON'T GRAB STUFF BETWEEN THIS LINE
-	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
+	icon = 'icons/obj/items/clothing/suits/donator.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_marine_armor = NO_FLAGS
 
+/obj/item/clothing/suit/storage/marine/light/fluff/Initialize(mapload)
+	. = ..()
+	item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/donator.dmi'
+
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
@@ -101,7 +120,8 @@
 
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_shoulder_lamp()
 	set src in usr
-	if(!ishuman(usr)) return
+	if(!ishuman(usr))
+		return
 
 	if(usr.is_mob_incapacitated() || !isturf(usr.loc))
 		to_chat(usr, SPAN_WARNING("Not right now!"))
@@ -123,11 +143,38 @@
 	item_state = null
 //END FEET TEMPLATE
 
+//UNIFORM TEMPLATE (for uniforms/jumpsuits)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
+/obj/item/clothing/under/marine/fluff
+	name = "ITEM NAME"
+	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	icon_state = null
+	item_state = null
+	worn_state = null
+	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
+	)
+
+//END UNIFORM TEMPLATE
+
 /obj/item/storage/backpack/marine/fluff
+	icon_state = null
 	xeno_types = null
+	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+	)
 
 /obj/item/storage/backpack/marine/satchel/fluff
+	icon_state = null
 	xeno_types = null
+	icon = 'icons/obj/items/clothing/backpack/donator.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/donator.dmi'
+	)
 
 /obj/item/clothing/gloves/marine/fluff   //MARINE GLOVES TEMPLATE
 	name = "ITEM NAME"
@@ -178,12 +225,20 @@
 	desc = "A black Balaclava used for hiding your face.  DISCLAIMER: May not actually hide your face... DONOR ITEM"
 	item_state = "balaclava"
 	icon_state = "balaclava"
+	icon = 'icons/obj/items/clothing/masks/balaclava.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/balaclava.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 
 /obj/item/clothing/glasses/fluff/eyepatch //GENERIC DONOR
 	name = "An Eyepatch"
 	desc = "Badass +10.  Donor Item"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 
@@ -194,6 +249,12 @@
 	desc = "Festive!  DONOR ITEM"
 	icon_state = "santa"
 	item_state = "santa"
+	icon = 'icons/obj/items/clothing/suits/misc_ert.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/commandercookies //CKEY=commandercookies
 	name = "marine armor w/ ammo"
@@ -212,18 +273,28 @@
 	desc = "Some fancy looking armor.  DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi'
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "juggernaut armor"
-	desc = "Some fancy looking armor. DONOR ITEM"
-	icon_state = "skinnerarmor"
-	item_state = "skinnerarmor"
+	name = "Ranger Jacket"
+	desc = "An old Kevlar Jacket. DONOR ITEM"
+	icon_state = "hunkjacket"
+	item_state = "hunkjacket"
 
 /obj/item/clothing/suit/storage/marine/fluff/penguin //CKEY=tophatpenguin
 	name = "Trenchcoat"
 	desc = "An 18th-century trenchcoat. Someone who wears this means serious business.  DONOR ITEM"
 	icon_state = "detective"
 	item_state = "det_suit"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/marine/fluff/wright //CKEY=wrightthewrong
@@ -247,9 +318,32 @@
 /obj/item/clothing/suit/storage/marine/light/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Armor"
 	desc = "A set of M3 Pattern Ranger Armor, There probably are not many of these laying around.  DONOR ITEM."
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "rangerarmor"
 	item_state = "rangerarmor"
+	item_state_slots = list(
+		WEAR_L_HAND = "marine_armor",
+		WEAR_R_HAND = "marine_armor"
+	)
+
+/obj/item/clothing/suit/storage/marine/light/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/suit/storage/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
 	name = "Doom Armor"
@@ -274,12 +368,20 @@
 	desc = "A vintage DONOR ITEM"
 	icon_state = "bulletproof"
 	item_state = "bulletproof"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/john56 //CKEY=johnkilla56
 	name = "A red trenchcoat"
 	desc = "A special trenchcoat made famous for instilling fear into greytide everywhere. DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/marine/light/fluff/biolock //CKEY=biolock
@@ -289,16 +391,20 @@
 	icon_state = "bio_armor"
 
 /obj/item/clothing/suit/storage/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Elite Combat Armor"
-	desc = "A combat armor with blood stains on it from previous battles.  UNIQUE DONOR ITEM"
-	icon_state = "hecuarmor_u"
-	item_state = "hecuarmor_u"
+	name = "M3 Blackout armor"
+	desc = "An all black armor that has been customized for night operations.  UNIQUE DONOR ITEM"
+	icon_state = "hunkarmor"
+	item_state = "hunkarmor"
 
 /obj/item/clothing/suit/storage/marine/fluff/limo //CKEY=limodish (UNIQUE)
 	name = "Blood-Red Hardsuit"
 	desc = "Looks like a hardsuit.  Unique DONOR ITEM"
 	icon_state = "syndicate"
 	item_state = "syndicate"
+	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/Zynax //CKEY=zynax
 	name = "Gorka Vest"
@@ -329,12 +435,20 @@
 	desc = "A fairly advanced set of armor.  DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/mitii
 	name = "Mya's Trenchcoat"
 	desc = "A trenchcoat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/gromi
 	name = "Hawkeye's Jacket"
@@ -347,6 +461,10 @@
 	desc = "A trenchcoat of authority.  DONOR ITEM"
 	icon_state = "hos"
 	item_state = "hos"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/devilzhand
 	name = "Tank's Trenchcoat"
@@ -354,12 +472,15 @@
 	icon_state = "jensencoat"
 	item_state = "jensencoat"
 
-
 /obj/item/clothing/suit/storage/marine/fluff/feweh //CKEY=feweh
 	name = "Pink's Ablative Armor Vest"
 	desc = "The fanciest bullet proof vest you've ever seen.  DONOR ITEM"
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
+	icon = 'icons/obj/items/clothing/suits/armor.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/armor.dmi',
+	)
 
 /obj/item/clothing/suit/storage/marine/fluff/crazyh206
 	name = "Templar Armor"
@@ -424,9 +545,32 @@
 /obj/item/clothing/suit/storage/marine/fluff/steelpoint //CKEY=steelpoint (UNIQUE)
 	name = "M4-X Armor"
 	desc = "A next generation body armor system intended for Marines fighting against xenomorphs, the system is coated in a unique acid resistant polymer coating, as well as enhanced ballistics protection. This prototype version lacks those two features. DONOR ITEM"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "steelpoint_armor"
 	item_state = "steelpoint_armor"
+	item_state_slots = list(
+		WEAR_L_HAND = "marine_armor",
+		WEAR_R_HAND = "marine_armor"
+	)
+
+/obj/item/clothing/suit/storage/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/suit/storage/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Armor"
@@ -577,18 +721,30 @@
 	name = "Santa's hat"
 	desc = "Ho ho ho. Merrry X-mas!"
 	icon_state = "santa_hat_red"
+	item_state = "santa_hat_red"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEALLHAIR
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "juggernaut helmet"
-	icon_state = "skinnerhelmet"
-	desc = "A red helmet, for pairing with JuggerNaut Armor. DONOR ITEM"
+	name = "Ranger Beret"
+	icon_state = "hunkberet"
+	item_state = "hunkberet"
+	desc = "An old dusty beret lined with Kevlar. DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/tristan //CKEY=tristan63
 	name = "Fancy Helmet"
 	desc = "That's not red paint. That's real blood. DONOR ITEM"
 	icon_state = "syndicate"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR
 
@@ -596,6 +752,10 @@
 	name = "Top Penguin Hat"
 	icon_state = "petehat"
 	desc = "A hat for a penguin, maybe even the TOP Penguin... DONOR ITEM"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/feodrich //CKEY=feodrich (UNIQUE)
@@ -609,24 +769,40 @@
 	name = "Tanya's Beret"
 	desc = "A bright red beret, owned by Tanya Edenia."
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/robin //CKEY=robin63
 	name = "Robin Low's Beret"
 	desc = "A bright red beret, owned by Robin Low."
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/vintage //CKEY=vintagepalmer
 	name = "Vintage Pimp Hat"
-	icon_state = "petehat"
 	desc = "A pimp hat, for the classic pimp. DONOR ITEM"
+	icon_state = "petehat"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/john56 //CKEY=johnkilla56
 	name = "Priest hood"
-	icon_state = "chaplain_hood"
 	desc = "Thought I walk through the valley in the shadow of death... Donor Item"
+	icon_state = "chaplain_hood"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+	)
 
 /obj/item/clothing/head/helmet/marine/fluff/biolock //CKEY=biolock
 	name = "M10-Custom"
@@ -638,24 +814,55 @@
 	name = "Pararescue Beret"
 	desc = "A Pararescue Beret, issued only to the very best.  DONOR ITEM"
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Elite Combat Helmet"
-	icon_state = "hecuhelm_u"
-	desc = "A combat helmet, bearing the scars of many battles. UNIQUE DONOR ITEM"
+	name = "M3 Blackout helmet"
+	icon_state = "hunkhelmet"
+	desc = "An all black custom M3 helmet designed for night operations. UNIQUE DONOR ITEM"
 
 /obj/item/clothing/head/helmet/marine/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Ranger Helmet"
 	desc = "A M3 Ranger helmet, probably not many of these laying around. DONOR ITEM"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	icon_state = "rangerhelmet"
 	item_state = "rangerhelmet"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
+
+/obj/item/clothing/head/helmet/marine/fluff/sas_legion/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/head/helmet/marine/fluff/officialjake
 	name = "Timothy's Beret"
 	desc = "A fancy red beret owned by Timothy Seidner.  DONOR ITEM"
 	icon_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/ningajai
@@ -688,6 +895,10 @@
 	desc = "A hat, very closely affiliated with accusations of people being bad at security...  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "detective"
 	item_state = "detective"
+	icon = 'icons/obj/items/clothing/hats/formal_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/formal_hats.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/limo //CKEY=limodish (UNIQUE)
@@ -695,6 +906,10 @@
 	desc = "It looks like a costume hardsuit helmet.  DONOR ITEM"
 	icon_state = "syndicate"
 	item_state = "syndicate"
+	icon = 'icons/obj/items/clothing/hats/hazard.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hazard.dmi',
+	)
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEALLHAIR
 
@@ -725,6 +940,10 @@
 	desc = "A red beret with a shiny Security badge.  DONOR ITEM"
 	icon_state = "beret_badge"
 	item_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/fickmacher //CKEY=fickmacher (UNIQUE)
@@ -732,6 +951,10 @@
 	desc = "A fancy beret.  DONOR ITEM"
 	icon_state = "hosberet"
 	item_state = "hosberet"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/eastgerman
@@ -739,6 +962,10 @@
 	desc = "A fancy beret.  DONOR ITEM"
 	icon_state = "hosberet"
 	item_state = "hosberet"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/chimera //CKEY=theultimatechimera
@@ -746,6 +973,10 @@
 	desc = "A fancy beret.  DONOR ITEM"
 	icon_state = "hosberet"
 	item_state = "hosberet"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/lostmixup
@@ -789,6 +1020,10 @@
 	desc = "A fancy red beret owned by Juan 'Rook' Garcia.  DONOR ITEM"
 	icon_state = "beret_badge"
 	item_state = "beret_badge"
+	icon = 'icons/obj/items/clothing/hats/berets.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/berets.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/chris1464 //CKEY=chris1464
@@ -796,6 +1031,10 @@
 	desc = "Beret from a Mercenary Company.  DONOR ITEM"
 	icon_state = "cargosoft"
 	item_state = "cargosoft"
+	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/radical
@@ -842,9 +1081,32 @@
 	desc = "A next generation combat helmet intended to be paired with the M4-X armor. The full faced helmet provides complete light ballistic-resistant protection alongside enchanced acid resistance. This prototype version lacks those features. DONOR ITEM"
 	icon_state = "steelpoint_helmet"
 	item_state = "steelpoint_helmet"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS|HIDEMASK|HIDEEYES|HIDEALLHAIR
+	item_state_slots = list(
+		WEAR_L_HAND = "helmet",
+		WEAR_R_HAND = "helmet"
+	)
+
+/obj/item/clothing/head/helmet/marine/fluff/steelpoint/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/head/helmet/marine/fluff/valentine //CKEY=markvalentine
 	name = "Shocky's Helmet"
@@ -913,6 +1175,10 @@
 	desc = "A little old and shabby. The color has slightly faded over time.  DONOR ITEM"
 	icon_state = "bluesoft"
 	item_state = "bluesoft"
+	icon = 'icons/obj/items/clothing/hats/soft_caps.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/soft_caps.dmi'
+	)
 	flags_inventory = BLOCKSHARPOBJ
 
 /obj/item/clothing/head/helmet/marine/fluff/titus
@@ -949,35 +1215,7 @@
 	icon_state = "killaninja12_u"
 	item_state = "killaninja12_u"
 
-
 // UNIFORM/JUMPSUIT COSMETICS  ////////////////////////////////////////////////
-
-//UNIFORM TEMPLATE (for uniforms/jumpsuits)  ONLY TAKE NAME, DESC, ICON_STATE, ITEM_STATE,  AND ITEM_COLOR.  Make a copy of those, and put the ckey of the person at the end after fluff
-/obj/item/clothing/under/marine/fluff
-	name = "ITEM NAME"
-	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
-	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_SNOW_TYPE
-	icon_state = null
-	item_state = null
-	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_1.dmi',
-	)
-
-//END UNIFORM TEMPLATE
-
-/obj/item/clothing/under/marine/fluff/marinemedic //UNUSED
-	name = "Marine Medic jumpsuit"
-	desc = "A standard quilted Colonial Marine jumpsuit. Weaved with armored plates to protect against low-caliber rounds and light impacts. Has medical markings. "
-	icon_state = "marine_medic"
-	worn_state = "marine_medic"
-
-/obj/item/clothing/under/marine/fluff/marineengineer //UNUSED
-	name = "Marine Technician jumpsuit"
-	desc = "A standard quilted Colonial Marine jumpsuit. Weaved with armored plates to protect against low-caliber rounds and light impacts. Has engineer markings. "
-	icon_state = "marine_engineer"
-	worn_state = "marine_engineer"
 
 /obj/item/clothing/under/marine/fluff/tristan //CKEY=tristan63
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
@@ -1004,15 +1242,47 @@
 	name = "Pink Pride Jumpsuit"
 	desc = "A jumpsuit for showing your pride in pink... Donor Item"
 	icon_state = "pink"
+	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi',
+	)
 	worn_state = "pink"
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
-	name = "Black Fatigues"
-	desc = "Black camo Fatigues usually used on Night Operations.  UNIQUE DONOR ITEM."
-	icon_state = "hecu_u"
-	worn_state = "hecu_u"
-	flags_jumpsuit = FALSE
+	name = "Ranger Fatigues"
+	desc = "Black camo Fatigues usually used on night operations.  UNIQUE DONOR ITEM."
+	icon_state = "hunkuni"
+	worn_state = "hunkuni"
+	icon = 'icons/obj/items/clothing/uniforms/donator.dmi'
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/donator.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "marine_jumpsuit",
+		WEAR_R_HAND = "marine_jumpsuit"
+	)
+
+/obj/item/clothing/under/marine/fluff/sas_elite/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/clothing/under/marine/fluff/leeeverett //CKEY=theflagbearer (UNIQUE)
 	name = "Rugged Outfit"
@@ -1026,6 +1296,10 @@
 	desc = "A jumpsuit that was either once red, or once white and washed with a load of colors... Donor Item"
 	icon_state = "pink"
 	worn_state = "pink"
+	icon = 'icons/obj/items/clothing/uniforms/jumpsuits.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/jumpsuits.dmi',
+	)
 	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/wooki //CKEY=tophatpenguin (UNIQUE)
@@ -1053,6 +1327,10 @@
 	name = "Corporate Security Uniform"
 	desc = "A security jumpsuit, worthy of a Corporate Head of Security.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "hos_corporate"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
 	worn_state = "hos_corporate"
 	flags_jumpsuit = FALSE
 
@@ -1060,6 +1338,10 @@
 	name = "Selena's Tactical Suit"
 	desc = "A strange looking black jumpsuit.  DONOR ITEM"
 	icon_state = "robotics"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/research.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/research.dmi',
+	)
 	worn_state = "robotics"
 
 /obj/item/clothing/under/marine/fluff/gromi
@@ -1115,6 +1397,10 @@
 	name = "Dress Uniform"
 	desc = "A Dress uniform, worn by standard marines. DONOR ITEM"
 	icon_state = "BO_jumpsuit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/UA.dmi',
+	)
 	worn_state = "BO_jumpsuit"
 	flags_jumpsuit = FALSE
 
@@ -1221,23 +1507,30 @@
 /obj/item/clothing/mask/fluff/totalanarchy //CKEY=totalanarchy
 	name = "PMC Mask"
 	desc = "A white colored PMC Mask.  DONOR ITEM."
-	icon_override = 'icons/mob/humans/onmob/mask.dmi'
 	item_state = "pmc_mask"
 	icon_state = "pmc_mask"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
+	)
 	flags_inventory = COVERMOUTH|ALLOWREBREATH
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 
 /obj/item/clothing/mask/fluff/sas_elite //CKEY=sasoperative (UNIQUE)
 	name = "Compact Gas Mask"
 	desc = "A compact Gas Mask with a pure red tint to it.  UNIQUE  DONOR ITEM."
-	item_state = "hecumask_u"
-	icon_state = "hecumask_u"
+	item_state = "hunkmask"
+	icon_state = "hunkmask"
 
 /obj/item/clothing/mask/fluff/limo //CKEY=limodish
 	name = "Swat Mask"
 	desc = "Swat Gas Mask.  DONOR ITEM"
 	icon_state = "swat"
 	item_state = "swat"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEYES|HIDEFACE
 
@@ -1246,6 +1539,10 @@
 	desc = "A standard issue gas mask.  DONOR ITEM"
 	icon_state = "swat"
 	item_state = "swat"
+	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi'
+	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEEYES|HIDEFACE
 
@@ -1270,6 +1567,10 @@
 	desc = "It's a g-g-g-g-g-ghost cigar.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "cigar_on"
 	item_state = "cigar_on"
+	icon = 'icons/obj/items/smoking/cigars.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/smoking.dmi'
+	)
 	flags_inventory = ALLOWREBREATH
 	flags_inv_hide = HIDEFACE
 
@@ -1297,18 +1598,30 @@
 /obj/item/clothing/glasses/fluff/wright //CKEY=wrightthewrong
 	name = "eyepatch"
 	desc = "Yarr, this be a Donor Item, YARR!"
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 
 /obj/item/clothing/glasses/fluff/sadokist //CKEY=sadokist
 	name = "Tanya's Optics"
 	desc = "Custom Optics, owned by Tanya Edenia"
+	icon = 'icons/obj/items/clothing/glasses/goggles.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
+	)
 	icon_state = "thermal"
 	item_state = "glasses"
 
 /obj/item/clothing/glasses/fluff/haveatya //CKEY=haveatya
 	name = "Special Nightvision Goggles"
 	desc = "Disclaimer:  May not provide Night Vision.  DONOR ITEM"
+	icon = 'icons/obj/items/clothing/glasses/night_vision.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/night_vision.dmi',
+	)
 	icon_state = "night"
 	item_state = "glasses"
 
@@ -1323,24 +1636,57 @@
 	desc = "A large backpack, used by Tanya Edenia. DONOR ITEM"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+	)
 
 /obj/item/storage/backpack/marine/fluff/mitii
 	name = "Mya's Backpack"
 	desc = "A large security backpack, with a radio booster.  Donor Item"
 	icon_state = "securitypack"
 	item_state = "securitypack"
+	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	icon = 'icons/obj/items/clothing/backpack/backpacks.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi'
+	)
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut //CKEY=sasoperative (UNIQUE)
-	name = "tactical radiopack"
-	desc = "A Radio backpack for use with the Juggernaut armor. DONOR ITEM"
-	icon_state = "skinnerpack"
-	item_state = "securitypack"
-	has_gamemode_skin = FALSE //same sprite for all gamemodes.
+	name = "Ranger Pack"
+	desc = "An old camelpack with pouches for extra space. DONOR ITEM"
+	icon_state = "hunkpack"
+	item_state = "hunkpack"
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
+	item_state_slots = list(
+		WEAR_L_HAND = "marinepack",
+		WEAR_R_HAND = "marinepack"
+	)
+
+/obj/item/storage/backpack/marine/satchel/fluff/sas_juggernaut/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+		if("snow")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+		if("desert")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+		if("classic")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+		if("urban")
+			item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi'
+			item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 
 /obj/item/storage/backpack/marine/satchel/fluff/sas_legion //CKEY=sasoperative (UNIQUE)
 	name = "M3 Armored Pack"
 	desc = "Plenty of pouches and pockets. DONOR ITEM"
-	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = FPRINT|CONDUCT|NO_NAME_OVERRIDE|MAP_COLOR_INDEX
 	icon_state = "skinnerrangerpack"
 	item_state = "skinnerrangerpack"
 
@@ -1361,17 +1707,24 @@
 	desc = "Belt worn by the dreaded Commissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "swordbelt_u"
 	item_state = "swordbelt_u"
+	icon = 'icons/obj/items/clothing/belts/donator.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/donator.dmi',
+	)
+	flags_atom = parent_type::flags_atom | NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	skip_fullness_overlays = TRUE
 
 //CUSTOM ITEMS - NO TEMPLATES - ALL UNIQUE ////////////////////////
 /obj/item/tool/lighter/zippo/fluff/ghostdex //CKEY=ghostdex
 	name = "purple zippo lighter"
 	desc = "A Purple Zippo lighter, engraved with the name John Donable... UNIQUE DONOR ITEM."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/smoking/lighters.dmi'
 	icon_state = "bluezippo"
 
 /obj/item/clothing/mask/cigarette/fluff/ghostdex //CKEY=ghostdex
 	name = "XXX's custom Cigar"
 	desc = "A custom rolled giant, made specifically for John Donable in the best, hottest, and most abusive of Cuban sweat shops.  UNIQUE DONOR ITEM."
+	icon = 'icons/obj/items/smoking/cigars.dmi'
 	icon_state = "cigar2_off"
 	icon_on = "cigar2_on"
 	icon_off = "cigar_2off"

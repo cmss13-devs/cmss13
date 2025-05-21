@@ -1,4 +1,4 @@
-#define CORPSES_TO_SPAWN 25
+#define CORPSES_TO_SPAWN 100
 
 SUBSYSTEM_DEF(objectives)
 	name = "Objectives"
@@ -314,7 +314,7 @@ SUBSYSTEM_DEF(objectives)
 	for(var/datum/cm_objective/objective in medium_value)
 		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(low_value))
 			var/datum/cm_objective/req = pick(low_value)
-			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+			if((req in objective.required_objectives) || (req.objective_flags & OBJECTIVE_DEAD_END))
 				continue //don't want to pick the same thing twice OR use a dead-end objective.
 			link_objectives(req, objective)
 
@@ -327,7 +327,7 @@ SUBSYSTEM_DEF(objectives)
 	for(var/datum/cm_objective/objective in high_value)
 		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(medium_value))
 			var/datum/cm_objective/req = pick(medium_value)
-			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+			if((req in objective.required_objectives) || (req.objective_flags & OBJECTIVE_DEAD_END))
 				continue //don't want to pick the same thing twice OR use a dead-end objective.
 			link_objectives(req, objective)
 
@@ -340,7 +340,7 @@ SUBSYSTEM_DEF(objectives)
 	for(var/datum/cm_objective/objective in extreme_value)
 		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(high_value))
 			var/datum/cm_objective/req = pick(high_value)
-			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+			if((req in objective.required_objectives) || (req.objective_flags & OBJECTIVE_DEAD_END))
 				continue //don't want to pick the same thing twice OR use a dead-end objective.
 			link_objectives(req, objective)
 
@@ -353,7 +353,7 @@ SUBSYSTEM_DEF(objectives)
 	for(var/datum/cm_objective/objective in absolute_value)
 		while(LAZYLEN(objective.required_objectives) < objective.number_of_clues_to_generate && LAZYLEN(extreme_value))
 			var/datum/cm_objective/req = pick(extreme_value)
-			if(req in objective.required_objectives || (req.objective_flags & OBJECTIVE_DEAD_END))
+			if((req in objective.required_objectives) || (req.objective_flags & OBJECTIVE_DEAD_END))
 				continue //don't want to pick the same thing twice OR use a dead-end objective.
 			link_objectives(req, objective)
 

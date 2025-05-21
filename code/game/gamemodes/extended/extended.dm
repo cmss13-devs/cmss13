@@ -8,7 +8,7 @@
 	var/next_research_allocation = 0
 	taskbar_icon = 'icons/taskbar/gml_colonyrp.png'
 
-/datum/game_mode/announce()
+/datum/game_mode/extended/announce()
 	to_world("<B>The current game mode is - Extended!</B>")
 
 /datum/game_mode/extended/get_roles_list()
@@ -16,8 +16,6 @@
 
 /datum/game_mode/extended/post_setup()
 	initialize_post_marine_gear_list()
-	for(var/mob/new_player/np in GLOB.new_player_list)
-		np.new_player_panel_proc()
 	round_time_lobby = world.time
 	return ..()
 
@@ -49,5 +47,6 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 
+	GLOB.round_statistics?.save()
 
 	return TRUE

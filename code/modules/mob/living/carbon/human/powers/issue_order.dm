@@ -37,6 +37,8 @@
 	for(var/mob/living/carbon/human/H in range(COMMAND_ORDER_RANGE, T))
 		if(H.stat == DEAD)
 			continue
+		if(!ishumansynth_strict(H))
+			continue
 		H.activate_order_buff(order, command_aura_strength, command_aura_duration)
 
 	if(loc != T) //if we were inside something, the range() missed us.
@@ -48,7 +50,18 @@
 	// 1min cooldown on orders
 	addtimer(CALLBACK(src, PROC_REF(make_aura_available)), COMMAND_ORDER_COOLDOWN)
 
-	visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
+	if(src.client?.prefs?.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
+		var/spoken_order = ""
+		switch(order)
+			if(COMMAND_ORDER_MOVE)
+				spoken_order = pick("*GET MOVING*!", "*GO, GO, GO*!", "*WE ARE ON THE MOVE*!", "*MOVE IT*!", "*DOUBLE TIME*!", "*KEEP UP LADIES*!", "*MOVE, MOVE, MOVE*!", "*ADVANCE*!", "*KICK YOUR FEET, TWINKLETOES*!", "*ON YOUR FEET SOLDIER, WE ARE LEAVING*!", "*WE ARE OSCAR MIKE*!", "*FORWARD*!", "*GET UP THERE*!", "*GET ON ME*!", "*CHARGE, FORWARD*!", "*ON ME MEN, LET'S MOVE*!", "*STEPPING OFF*!", "*STEP IT UP, LET'S ROLL*!", "*LET'S ROLL*!", "*STACK UP ON ME*!", "*FALL IN*!")
+			if(COMMAND_ORDER_HOLD)
+				spoken_order = pick("*DUCK AND COVER*!", "*HOLD THE LINE*!", "*HOLD POSITION*!", "*STAND YOUR GROUND*!", "*STAND AND FIGHT*!", "*HOLD YOUR GROUND*!", "*HUNKER*!", "*HUNKER DOWN*!", "*HOLD HERE*!", "*HOLD WITH ME*!", "*TO ME, HOLD*!", "*DEFENSIVE POSITIONS*!", "*TAKE COVER AND FIRE*!", "*STAND FAST*!", "*NOT ONE STEP BACK*!", "*HOLD FAST*!", "*DIG IN AND HOLD*!", "*BRACE*!", "*TO THE LAST MAN*!", "*KEEP YOUR NERVE, HOLD STRONG*!", "*NO RETREAT, STAND FIRM*!")
+			if(COMMAND_ORDER_FOCUS)
+				spoken_order = pick("*FOCUS FIRE*!", "*PICK YOUR TARGETS*!", "*CENTER MASS*!", "*SHORT-CONTROLLED BURSTS*!", "*AIM YOUR SHOTS*!", "*ON MY MARK*!", "*AIMED SHOTS*!", "*GO FOR THE KILL*!", "*SHOOT 'EM DEAD*!", "*KILL THEM ALL*!", "*SUPPRESSIVE FIRE*!", "*TIGHTEN YOUR SHOTS*!", "*LOCK AND LOAD*!", "*TARGET THEIR WEAK SPOTS*!", "*ZERO IN ON THE ENEMY*!", "*EYES ON THE PRIZE*!", "*LET'S ROCK*!", "*HIT 'EM WHERE IT HURTS*!", "*SLAUGHTER 'EM*!", "*BRING THE PAIN*!", "*STEADY YOUR AIM*!", "*EYES UP AND FIRE*!", "*FIRING LANES*!", "*CROSSHAIRS, PEOPLE*!", "*STRIKE*!")
+		say(spoken_order) // if someone thinks about adding new lines, it'll be better to split the current ones we have into two different lists per order for readability, and have a coin flip pick between spoken_orders 1 or 2
+	else
+		visible_message(SPAN_BOLDNOTICE("[src] gives an order to [order]!"), SPAN_BOLDNOTICE("You give an order to [order]!"))
 
 /mob/living/carbon/human/proc/make_aura_available()
 	to_chat(src, SPAN_NOTICE("You can issue an order again."))

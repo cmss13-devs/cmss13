@@ -18,6 +18,7 @@
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
+	var/refund_type = /obj/item/stack/sheet/metal
 
 	welder_lower_damage_limit = BARRICADE_DMG_HEAVY
 
@@ -188,7 +189,7 @@
 				brute_projectile_multiplier = initial(brute_projectile_multiplier)
 				burn_multiplier = initial(burn_multiplier)
 				burn_flame_multiplier = initial(burn_flame_multiplier)
-				new stack_type (loc, 1)
+				new refund_type (loc, 1)
 				update_icon()
 				return
 
@@ -234,6 +235,10 @@
 					if(B != src && B.dir == dir)
 						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
+				var/area/area = get_area(src)
+				if(!area.allow_construction)
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				var/turf/open/turf = loc
 				if(!(istype(turf) && turf.allow_construction))
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))

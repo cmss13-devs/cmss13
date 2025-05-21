@@ -18,6 +18,10 @@
 	name = "motion detector"
 	desc = "A device that detects movement, but ignores marines. Can also be used to scan a vehicle interior from outside, but accuracy of such scanning is low and there is no way to differentiate friends from foes."
 	icon = 'icons/obj/items/marine-items.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "detector"
 	item_state = "motion_detector"
 	flags_atom = FPRINT| CONDUCT
@@ -52,8 +56,13 @@
 	update_icon()
 
 /obj/item/device/motiondetector/Destroy()
-	. = ..()
+	STOP_PROCESSING(SSobj, src)
+	for(var/to_delete in blip_pool)
+		qdel(blip_pool[to_delete])
+		blip_pool.Remove(to_delete)
+	blip_pool = null
 	range_bounds = null
+	return ..()
 
 /obj/item/device/motiondetector/update_icon()
 	//clear overlays
@@ -104,7 +113,7 @@
 /obj/item/device/motiondetector/clicked(mob/user, list/mods)
 	if (isobserver(user) || isxeno(user)) return
 
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!long_range_locked)
@@ -148,14 +157,6 @@
 	playsound(loc, 'sound/items/detector_turn_off.ogg', 30, FALSE, 5, 2)
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/device/motiondetector/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	for(var/to_delete in blip_pool)
-		qdel(blip_pool[to_delete])
-		blip_pool.Remove(to_delete)
-	blip_pool = null
-	return ..()
-
 /obj/item/device/motiondetector/process()
 	if(isturf(loc))
 		toggle_active(null, TRUE)
@@ -169,8 +170,10 @@
 
 	if(!detector_mode)
 		long_range_cooldown--
-		if(long_range_cooldown) return
-		else long_range_cooldown = initial(long_range_cooldown)
+		if(long_range_cooldown)
+			return
+		else
+			long_range_cooldown = initial(long_range_cooldown)
 
 	scan()
 
@@ -221,8 +224,10 @@
 
 	for(var/A in ping_candidates)
 		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
-		if(M == loc) continue //device user isn't detected
-		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
+		if(M == loc)
+			continue //device user isn't detected
+		if(world.time > M.l_move_time + 20)
+			continue //hasn't moved recently
 		if(M.get_target_lock(iff_signal))
 			continue
 
@@ -264,16 +269,22 @@
 		var/view_x_offset = 0
 		var/view_y_offset = 0
 		if(c_view > 7)
-			if(user.client.pixel_x >= 0) view_x_offset = floor(user.client.pixel_x/32)
-			else view_x_offset = ceil(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0) view_y_offset = floor(user.client.pixel_y/32)
-			else view_y_offset = ceil(user.client.pixel_y/32)
+			if(user.client.pixel_x >= 0)
+				view_x_offset = floor(user.client.pixel_x/32)
+			else
+				view_x_offset = ceil(user.client.pixel_x/32)
+			if(user.client.pixel_y >= 0)
+				view_y_offset = floor(user.client.pixel_y/32)
+			else
+				view_y_offset = ceil(user.client.pixel_y/32)
 
 		var/diff_dir_x = 0
 		var/diff_dir_y = 0
-		if(target.x - user.x > c_view + view_x_offset) diff_dir_x = 4
+		if(target.x - user.x > c_view + view_x_offset)
+			diff_dir_x = 4
 		else if(target.x - user.x < -c_view + view_x_offset) diff_dir_x = 8
-		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
+		if(target.y - user.y > c_view + view_y_offset)
+			diff_dir_y = 1
 		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
 		if(diff_dir_x || diff_dir_y)
 			DB.icon_state = "[blip_icon]_blip_dir"

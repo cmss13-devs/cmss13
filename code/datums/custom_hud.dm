@@ -162,19 +162,3 @@
 	var/ui_alienplasmadisplay = "EAST-1:28,6:13"
 	var/ui_alienarmordisplay = "EAST-1:28,5:13"
 	var/ui_mark_locator = "EAST-1:28,10:13"
-
-/datum/custom_hud/robot
-	ui_style_icon = 'icons/mob/hud/screen1_robot.dmi'
-
-	var/ui_inv1 = "WEST+5:16,1:5"
-	var/ui_inv2 = "WEST+6:16,1:5"
-	var/ui_inv3 = "WEST+7:16,1:5"
-	var/ui_borg_store = "WEST+8:16,1:5"
-
-	var/ui_borg_pull = "EAST-3:24,2:7"
-	var/ui_borg_module = "EAST-2:26,2:7"
-	var/ui_borg_panel = "EAST-1:28,2:7"
-
-	var/ui_toxin = "EAST-1:28,13:27"
-	var/ui_borg_health = "EAST-1:28,6:13"
-	var/ui_borg_temp = "EAST-1:28,10:21"

@@ -194,7 +194,8 @@
 				break
 			else if(gen_tier < 3)
 				gen_value += add_property(0,0, gen_tier - gen_value - 1,FALSE,TRUE) //add property based on our offset from the prefered balance
-			else gen_value += add_property(0,0, gen_tier - gen_value - 1)
+			else
+				gen_value += add_property(0,0, gen_tier - gen_value - 1)
 		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
 			add_property()
 
@@ -301,6 +302,8 @@
 				property = pick(GLOB.chemical_properties_list["positive"])
 
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
+	if (level > P.max_level)
+		level = min(P.max_level, level)
 
 	//Calculate what our chemical value is with our level
 	var/new_value
@@ -366,6 +369,8 @@
 			break
 	//Insert the property
 	var/datum/chem_property/P = GLOB.chemical_properties_list[property]
+	if (level > P.max_level)
+		level = min(P.max_level, level) // double checking, in case some combo property has a max level and we want that respected
 	P = new P.type()
 	P.level = level
 	P.holder = src

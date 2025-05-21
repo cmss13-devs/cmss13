@@ -40,8 +40,8 @@
 	user.set_interaction(src)
 	var/t = "<TT>"
 
-	t += "<BR><HR><A href='?src=\ref[src];update=1'>Refresh</A>"
-	t += "<BR><HR><A href='?src=\ref[src];close=1'>Close</A>"
+	t += "<BR><HR><A href='byond://?src=\ref[src];update=1'>Refresh</A>"
+	t += "<BR><HR><A href='byond://?src=\ref[src];close=1'>Close</A>"
 
 	if(!powernet)
 		t += SPAN_DANGER("No connection")
@@ -73,7 +73,7 @@
 			t += "<HR>Total demand: [total_demand] W</FONT>"
 		t += "</PRE></TT>"
 
-	show_browser(user, t, "Power Monitoring", "powcomp", "size=420x900")
+	show_browser(user, t, "Power Monitoring", "powcomp", width = 420, height = 900)
 
 
 /obj/structure/machinery/power/monitor/Topic(href, href_list)

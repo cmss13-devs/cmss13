@@ -1,7 +1,8 @@
 /obj/item/ammo_magazine/hardpoint/primary_flamer
 	name = "DRG-N Offensive Flamer Unit Fuel Tank"
-	desc = "A primary armament flamethrower magazine."
+	desc = "Fuel tanks for the DRG-N Offensive Flamer. It contains a high-combustion napalm, capabale of burning through nearly anything."
 	caliber = "High-Combustion Napalm" //correlates to flamer mags
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	icon_state = "drgn_flametank"
 	w_class = SIZE_LARGE
 	max_rounds = 60

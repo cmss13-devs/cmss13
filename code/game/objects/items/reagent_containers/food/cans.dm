@@ -1,8 +1,77 @@
 /obj/item/reagent_container/food/drinks/cans
-	var/canopened = FALSE
+	var/open = FALSE
+	//If it needs can opener to be opened
+	var/needs_can_opener = FALSE
 	var/crushed = FALSE
+	//Can be crushed
+	var/crushable = TRUE
+	//Can open sound
+	var/open_sound = 'sound/effects/canopen.ogg'
+	//Can open message
+	var/open_message = "You open the drink with an audible pop!"
+	//Eating sound
+	var/consume_sound = 'sound/items/drink.ogg'
+	//What this object is, used during interactions
+	var/object_fluff = "drink"
+	//If can transfer reagents to food
+	var/food_interactable = FALSE
+	//If can has a dedicated crushed icon
+	var/crushed_icon = null
+	//If can has a dedicated open icon
+	var/has_open_icon = FALSE
+	//Should item be deleted on being empty
+	var/delete_on_empty = FALSE
 	gulp_size = 10
-	icon = 'icons/obj/items/drinkcans.dmi'
+	icon = 'icons/obj/items/food/drinkcans.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/food_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/food_righthand.dmi'
+	)
+
+/obj/item/reagent_container/food/drinks/cans/attackby(obj/item/opening_tool as obj, mob/user as mob)
+	var/opening_time
+	var/opening_sound
+	var/hiss = pick("Nice hiss!", "No hiss.", "A small hiss.") //i couldn't not include stevemre reference
+	if(user.action_busy || open || !needs_can_opener || !(opening_tool.type in CAN_OPENER_EFFECTIVE) && !(opening_tool.type in CAN_OPENER_CRUDE))
+		return
+
+	if(opening_tool.type in CAN_OPENER_EFFECTIVE)
+		if(istype(opening_tool, /obj/item/tool/kitchen/can_opener/compact))
+			var/obj/item/tool/kitchen/can_opener/compact/tool = opening_tool
+			if(!tool.active)
+				to_chat(user, SPAN_WARNING("You need to unfold it before trying to use it."))
+				return
+		opening_time = 4 SECONDS
+		opening_sound = 'sound/items/can_open2.ogg'
+		to_chat(user, SPAN_NOTICE("You begin to open the can with a can opener. [hiss]"))
+	if(opening_tool.type in CAN_OPENER_CRUDE)
+		opening_time = 12 SECONDS
+		opening_sound = 'sound/items/can_open1.ogg'
+		to_chat(user, SPAN_NOTICE("You begin to crudely jam the can with a blade. [hiss]"))
+
+	playsound(src.loc, opening_sound, 15, FALSE, 5)
+
+	if(!do_after(user, opening_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+	if(prob(25) && (opening_tool.type in CAN_OPENER_CRUDE))
+		to_chat(user, SPAN_WARNING("You fail to open the [object_fluff] with [opening_tool]! Try again!"))
+		playsound(src, "sound/items/can_crush.ogg", 20, FALSE, 5)
+		return
+	playsound(src.loc, open_sound, 15, 1, 5)
+	to_chat(user, SPAN_NOTICE(open_message))
+	open = TRUE
+	if(has_open_icon)
+		icon_state += "_open"
+	update_icon()
+	user.update_inv_l_hand()
+	user.update_inv_r_hand()
+
+/obj/item/reagent_container/food/drinks/cans/get_examine_text(mob/user)
+	. = ..()
+	if(needs_can_opener)
+		. += SPAN_NOTICE("The can is completely sealed, you need some sort of a can opener to open it.")
+	if(food_interactable)
+		. += SPAN_NOTICE("You can transfer the contents of this [object_fluff] to other foods.")
 
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
 	..()
@@ -10,16 +79,25 @@
 	if(crushed)
 		return
 
-	if (!canopened)
-		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
-		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
-		canopened = TRUE
+	if(open)
+		return
+
+	if(needs_can_opener)
+		to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] using some sort of a can opener!"))
+		return
+
+	playsound(src.loc, open_sound, 15, 1)
+	to_chat(user, SPAN_NOTICE(open_message))
+	open = TRUE
+	if(has_open_icon)
+		icon_state += "_open"
+	update_icon()
 
 /obj/item/reagent_container/food/drinks/cans/attack_hand(mob/user)
 	if(crushed)
 		return ..()
 
-	if (canopened && !reagents.total_volume)
+	if(open && !reagents.total_volume && crushable)
 		if(user.a_intent == INTENT_HARM)
 			if(isturf(loc))
 				if(user.zone_selected == "r_foot" || user.zone_selected == "l_foot" )
@@ -34,13 +112,13 @@
 	if(crushed)
 		return
 
-	if(!canopened)
-		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+	if(!open)
+		to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 		return
 	var/datum/reagents/R = src.reagents
 
 	if(!R.total_volume || !R)
-		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head")
+		if(M == user && M.a_intent == INTENT_HARM && M.zone_selected == "head" && crushable)
 			crush_can(M)
 			return
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
@@ -52,18 +130,19 @@
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
 
-		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+		playsound(M.loc, consume_sound, 15, 1)
 		return 1
 	else if( istype(M, /mob/living/carbon/human) )
-		if (!canopened)
-			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		if (!open)
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
-		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
+			return
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
@@ -86,29 +165,48 @@
 
 
 /obj/item/reagent_container/food/drinks/cans/afterattack(obj/target, mob/user, proximity)
-	if(crushed || !proximity) return
+	if(crushed || !proximity)
+		return
 
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-		if (!canopened)
-			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		if (!open)
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
-		if (!canopened)
-			to_chat(user, SPAN_NOTICE("You need to open the drink!"))
+		if (!open)
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return
 
-		if (istype(target, /obj/item/reagent_container/food/drinks/cans))
+		if(istype(target, /obj/item/reagent_container/food/drinks/cans))
 			var/obj/item/reagent_container/food/drinks/cans/cantarget = target
-			if(!cantarget.canopened)
-				to_chat(user, SPAN_NOTICE("You need to open the drink you want to pour into!"))
+			if(!cantarget.open)
+				to_chat(user, SPAN_NOTICE("You need to open the [object_fluff] you want to pour into!"))
 				return
+
+	else if(istype(target, /obj/item/reagent_container/food/snacks) && food_interactable)
+		if (!open)
+			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
+			return
+
+		if(!reagents.total_volume)
+			to_chat(user, SPAN_DANGER("[src] is empty."))
+			return
+
+		if(target.reagents.total_volume >= target.reagents.maximum_volume)
+			to_chat(user, SPAN_DANGER("You can't add any more to [target]."))
+			return
+		var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the contents to [target]."))
 
 	return ..()
 
 /obj/item/reagent_container/food/drinks/cans/proc/crush_can(mob/user)
 	if(!ishuman(user))
+		return
+
+	if(user.action_busy)
 		return
 
 	var/mob/living/carbon/human/H = user
@@ -139,9 +237,17 @@
 	crushed = TRUE
 	flags_atom &= ~OPENCONTAINER
 	desc += "\nIts been crushed! A badass must have been through here..."
-	icon_state = "[icon_state]_crushed"
+	if(!crushed_icon)
+		icon_state = "[icon_state]_crushed"
+	else
+		icon_state = crushed_icon
 	user.visible_message(SPAN_BOLDNOTICE("[user] crushed the [name] [message]"), null, null, CHAT_TYPE_FLUFF_ACTION)
 	playsound(src,"sound/items/can_crush.ogg", 20, FALSE, 15)
+
+/obj/item/reagent_container/food/drinks/cans/on_reagent_change()
+	. = ..()
+	if(delete_on_empty && !reagents.total_volume)
+		qdel(src)
 
 //SODA
 
@@ -296,11 +402,78 @@
 	name = "\improper Weyland-Yutani Bottled Spring Water"
 	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
+	crushed_icon = "wy_water_crushed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	has_open_icon = TRUE
 	center_of_mass = "x=15;y=8"
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle/Initialize()
 	. = ..()
 	reagents.add_reagent("water", 30)
+
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp
+	name = "\improper Gerolsteiner Bottled Sparkling Water"
+	desc = "German bottled, sparkling water popular among germanic population of UPP."
+	desc_lore = "After Gerolsteiner company becoming an intergrated state enterprise, their products became a common thing in military rations and in other places."
+	icon_state = "upp_water"
+	crushed_icon = "upp_water_crushed"
+
+/obj/item/reagent_container/food/drinks/cans/coconutmilk
+	name = "\improper Weyland-Yutani Bottled Coconut Milk"
+	desc = "Rich in vitamins and (artificial) flavor, quenches thirst in a few sips. Bottled by the Weyland-Yutani Corporation."
+	icon_state = "pmc_cocomilk"
+	crushed_icon = "pmc_cocomilk_crushed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	has_open_icon = TRUE
+	center_of_mass = "x=15;y=8"
+
+/obj/item/reagent_container/food/drinks/cans/coconutmilk/Initialize()
+	. = ..()
+	reagents.add_reagent("coconutmilk", 30)
+
+/obj/item/reagent_container/food/drinks/cans/soylent
+	name = "\improper Weyland-Yutani Premium Choco Soylent"
+	desc = "Plastic bottle full of gooey goodness, choco flavor. One bottle has enough calories for a lunch - don't drink it all in one sitting, better not risk getting diarrhea."
+	desc_lore = "Initially designed in 2173 as meal replacement for high-intensity workers, MRD was recalled from the market multiple times due to reports of gastrointestinal illness, including nausea, vomiting, and diarrhea. Improved formula was created, but the brand name was already stained (quite literally), so now the drink remains as emergency food supply for internal Company use."
+	icon_state = "wy_soylent"
+	crushed_icon = "wy_soylent_crushed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	has_open_icon = TRUE
+	center_of_mass = "x=15;y=8"
+	volume = 30
+
+/obj/item/reagent_container/food/drinks/cans/soylent/Initialize()
+	. = ..()
+	reagents.add_reagent("nutriment", 10)
+	reagents.add_reagent("soymilk", 10)
+	reagents.add_reagent("coco_drink", 10)
+
+/obj/item/reagent_container/food/drinks/cans/bugjuice
+	name = "\improper Weyland-Yutani Bug Juice Protein Drink"
+	desc = "W-Y brand plastic bottle full of toxic looking green goo, tastes like kiwi, but you are more than sure that there is none of it here."
+	desc_lore = "'Bug Juice' Protein Drink, more commonly labeled Bug Juice, is an inexpensive and calorific beverage made with farmed and processed insects such as cockroaches, mealworms, and beetles. Offered by a variety of manufacturers, Bug Juice is packaged in cartons and bottles, and is widely consumed on the Frontier. It is classified as both a drink and a foodstuff, and is a source of protein and water."
+	icon_state = "wy_bug_juice"
+	crushed_icon = "wy_bug_juice_crushed"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/bottles_righthand.dmi',
+	)
+	has_open_icon = TRUE
+	center_of_mass = "x=15;y=8"
+	volume = 30
+
+/obj/item/reagent_container/food/drinks/cans/bugjuice/Initialize()
+	. = ..()
+	reagents.add_reagent("bugjuice", 30)
 
 /obj/item/reagent_container/food/drinks/cans/beer
 	name = "\improper Weyland-Yutani Lite"
@@ -489,7 +662,7 @@
 	name = "\improper Vanilla Souto"
 	desc = "When most soft drinks say 'vanilla,' they really mean their classic flavor with a bit of vanilla added. NOT THE SOUTO CORPORATION, BABY! This bad boy is filled to the brim with 100% pure carbonated vanilla extract! It tastes terrible. Canned in Havana."
 	icon_state = "souto_vanilla"
-	item_state = "souto_canilla"
+	item_state = "souto_vanilla"
 
 /obj/item/reagent_container/food/drinks/cans/souto/vanilla/Initialize()
 	. = ..()
@@ -533,6 +706,7 @@
 	name = "\improper Weyland-Yutani Aspen Beer"
 	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	icon_state = "6_pack_1"
+	item_state = "6_pack_1"
 	center_of_mass = "x=16;y=10"
 
 /obj/item/reagent_container/food/drinks/cans/aspen/Initialize()

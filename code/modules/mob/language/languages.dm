@@ -2,19 +2,12 @@
 	name = LANGUAGE_ENGLISH
 	desc = "Common Earth English. The standard language of the United Americas."
 	speech_verb = "says"
+	ask_verb = "asks"
+	exclaim_verb = list("exclaims","shouts","yells")
 	key = "1"
 	flags = RESTRICTED
 
 	syllables = list("al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it", "le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to", "ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin", "his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi", "tio", "uld", "ver", "was", "wit", "you")
-
-/datum/language/common/get_spoken_verb(msg_end)
-	switch(msg_end)
-		if("!")
-			return pick("exclaims","shouts","yells") //TODO: make the basic proc handle lists of verbs.
-		if("?")
-			return ask_verb
-	return speech_verb
-
 
 /datum/language/generated //parent type for languages with custom sound generation methods like chinese and japanese
 	space_chance = 100 //uses a unique system
@@ -31,9 +24,9 @@
 /datum/language/generated/chinese
 	name = LANGUAGE_CHINESE
 	desc = "The secondary language of the UPP, widespread around Asia and with a notable immigrant population in other parts of the world. The most spoken language in charted space."
-	speech_verb = "shuo"
-	ask_verb = "wen"
-	exclaim_verb = "han"
+	speech_verb = "voices"
+	ask_verb = "questions"
+	exclaim_verb = "shouts"
 	color = "chinese"
 	key = "8"
 
@@ -60,7 +53,7 @@
 /datum/language/scandinavian
 	name = LANGUAGE_SCANDINAVIAN
 	desc = "While not technically one language, Scandinavian languages have grown similar and are nearly indistinguishable from one another unless you actually know the languages."
-	speech_verb = "blubbers"
+	speech_verb = "utters"
 	ask_verb = "queries"
 	exclaim_verb = "yelps"
 	color = "scandinavian"
@@ -68,12 +61,23 @@
 
 	syllables = list("de", "vin", "meg", "og", "vi", "en", "nei", "ing", "gen", "et", "pur", "ke", "er", "nei", "hjort", "tysk", "de", "kjae", "en", "stein", "ja", "ull", "sil", "pa", "hun", "kjo", "erg", "ba", "re", "ol", "kyll", "menn", "esk", "gul", "gronn", "natt", "makt", "to", "fi", "re", "dag", "god", "jul", "ild", "fem", "jeg", "deg", "bjor", "en", "russ", "land", "sve", "rig", "nor", "ge", "dan", "is")
 
+/datum/language/french
+	name = LANGUAGE_FRENCH
+	desc = "Standard French, spoken by the French Republic, one of the few independent countries left on Earth."
+	speech_verb = "declares"
+	ask_verb = "inquires"
+	exclaim_verb = "exclaims"
+	color = "french"
+	key = "9"
+
+	syllables = list("le", "en", "es", "de", "re", "ai", "an", "ar", "au", "ou", "nt", "on", "er", "ur", "an", "it", "te", "me", "la", "is", "ou", "nt", "on", "er", "ur", "an", "it", "te", "et", "me", "is", "qu", "se", "il", "ent", "que", "ait", "les", "lle", "our", "men", "ais", "est", "tre", "mai", "ous", "par", "ant", "ion", "eme", "tai", "ans", "pas", "ell", "vou", "tou", "pou", "eur", "ont", "res", "dan", "une", "ien", "sur", "son", "mme", "tio", "des")
+
 /datum/language/spanish
 	name = LANGUAGE_SPANISH
 	desc = "The second most common language spoken in the UA, brought from marines from the Latin American territories and in the former southern USA."
-	speech_verb = "dice"
-	ask_verb = "cuestiona"
-	exclaim_verb = "grita"
+	speech_verb = "states"
+	ask_verb = "quizes"
+	exclaim_verb = "yells"
 	color = "spanish"
 	key = "5"
 
@@ -124,7 +128,7 @@
 	ask_verb = "chimpers"
 	exclaim_verb = "screeches"
 	color = "monkey"
-	key = "9"
+	key = "_"
 
 /datum/language/xenomorph
 	name = LANGUAGE_XENOMORPH
@@ -134,6 +138,7 @@
 	ask_verb = "hisses"
 	exclaim_verb = "hisses"
 	key = "x"
+	syllables = list("sss", "sSs", "SSS")
 	flags = RESTRICTED
 
 /datum/language/xenos

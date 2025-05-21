@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 /datum/health_scan
 	var/mob/living/target_mob
 	var/detail_level = DETAIL_LEVEL_FULL
+	var/ui_mode = UI_MODE_CLASSIC
 
 /datum/health_scan/New(mob/target)
 	. = ..()
@@ -105,6 +106,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		"blood_amount" = target_mob.blood_volume,
 		"holocard" = get_holo_card_color(target_mob),
 		"hugged" = (locate(/obj/item/alien_embryo) in target_mob),
+		"ui_mode" = ui_mode
 	)
 
 	var/internal_bleeding = FALSE //do they have internal bleeding anywhere
@@ -320,11 +322,18 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 					))
 			if(human_target_mob.stat == DEAD)
 				if((human_target_mob.health + 20) > HEALTH_THRESHOLD_DEAD)
-					advice += list(list(
-						"advice" = "Apply shock via defibrillator!",
-						"icon" = "bolt",
-						"color" = "yellow"
-						))
+					if(issynth(human_target_mob))
+						advice += list(list(
+							"advice" = "Reboot the synthetic with a reset key!",
+							"icon" = "robot",
+							"color" = "green"
+							))
+					else
+						advice += list(list(
+							"advice" = "Apply shock via defibrillator!",
+							"icon" = "bolt",
+							"color" = "yellow"
+							))
 				else
 					if(human_target_mob.getBruteLoss(organic_only = TRUE) > 30)
 						advice += list(list(
@@ -466,7 +475,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 	data["ssd"] = null //clear the data in case we have an old input from a previous scan
 	if(target_mob.getBrainLoss() >= 100 || !target_mob.has_brain())
 		data["ssd"] = "Subject has taken extreme amounts of brain damage."
-	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob))
+	else if(target_mob.has_brain() && target_mob.stat != DEAD && ishuman(target_mob) && !(target_mob.status_flags & FAKESOUL))
 		if(!target_mob.key)
 			data["ssd"] = "No soul detected." // they ghosted
 		else if(!target_mob.client)
@@ -484,6 +493,13 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				var/mob/living/carbon/human/target_human = target_mob
 				target_human.change_holo_card(ui.user)
 				return TRUE
+		if("change_ui_mode")
+			switch(ui_mode)
+				if(UI_MODE_CLASSIC)
+					ui_mode = UI_MODE_MINIMAL
+				if(UI_MODE_MINIMAL)
+					ui_mode = UI_MODE_CLASSIC
+			return TRUE
 
 /// legacy proc for to_chat messages on health analysers
 /mob/living/proc/health_scan(mob/living/carbon/human/user, ignore_delay = FALSE, show_limb_damage = TRUE, show_browser = TRUE, alien = FALSE, do_checks = TRUE) // ahem. FUCK WHOEVER CODED THIS SHIT AS NUMBERS AND NOT DEFINES.
@@ -693,7 +709,8 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			else
 				dat += "\tBlood Level normal: [blood_percent]% [blood_volume]cl. Type: [blood_type]\n"
 		// Show pulse
-		dat += "\tPulse: <span class='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? INTERFACE_RED : ""]'>[H.get_pulse(GETPULSE_TOOL)] bpm.</span>\n"
+		var/target_pulse = H.get_pulse(GETPULSE_TOOL)
+		dat += "\tPulse: <span class='[H.pulse == PULSE_THREADY || H.pulse == PULSE_NONE ? INTERFACE_RED : ""]'>[target_pulse] bpm.</span>\n"
 		if((H.stat == DEAD && !H.client))
 			unrevivable = 1
 		if(!unrevivable)
@@ -738,7 +755,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 		dat = replacetext(dat, "class='scannerb'", "style='font-weight: bold;' class='[INTERFACE_RED]'")
 		dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
 		dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
-		show_browser(user, dat, name, "handscanner", "size=500x400")
+		show_browser(user, dat, name, "handscanner", width = 500, height = 400)
 	else
 		user.show_message(dat, 1)
 

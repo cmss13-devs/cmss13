@@ -47,7 +47,7 @@
 	name = XENO_CASTE_CARRIER
 	desc = "A strange-looking alien creature. It carries a number of scuttling jointed crablike creatures."
 	icon_size = 64
-	icon_xeno = 'icons/mob/xenos/carrier.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_2/carrier.dmi'
 	icon_state = "Carrier Walking"
 	plasma_types = list(PLASMA_PURPLE)
 
@@ -62,7 +62,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction,
@@ -80,11 +80,14 @@
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
 
-	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/carrier.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Carrier_1","Carrier_2","Carrier_3")
 	weed_food_states_flipped = list("Carrier_1","Carrier_2","Carrier_3")
+
+	skull = /obj/item/skull/carrier
+	pelt = /obj/item/pelt/carrier
 
 	var/list/hugger_image_index = list()
 	var/mutable_appearance/hugger_overlays_icon
@@ -215,7 +218,7 @@
 	if(huggers_max > 0 && huggers_cur < huggers_max)
 		if(F.stat != DEAD && !F.sterile)
 			huggers_cur++
-			to_chat(src, SPAN_NOTICE("We store the facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+			to_chat(src, SPAN_NOTICE("We take a facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 			update_icons()
 			qdel(F)
 		else
@@ -237,9 +240,9 @@
 		huggers_cur += huggers_to_transfer
 		morpher.stored_huggers -= huggers_to_transfer
 		if(huggers_to_transfer == 1)
-			to_chat(src, SPAN_NOTICE("We store one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+			to_chat(src, SPAN_NOTICE("We take one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		else
-			to_chat(src, SPAN_NOTICE("We store [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+			to_chat(src, SPAN_NOTICE("We take [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
 		update_icons()
 	else
 		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
@@ -308,7 +311,7 @@
 			A.update_button_icon()
 		drop_inv_item_on_ground(F)
 		F.throw_atom(T, 4, caste.throwspeed)
-		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"), \
+		visible_message(SPAN_XENOWARNING("\The [src] throws something towards \the [T]!"),
 			SPAN_XENOWARNING("We throw a facehugger towards \the [T]!"))
 		spawn(caste.hugger_delay)
 			threw_a_hugger = 0
@@ -332,7 +335,8 @@
 		to_chat(src, SPAN_WARNING("We can't carry more eggs on ourselves."))
 
 /mob/living/carbon/xenomorph/carrier/proc/retrieve_egg(atom/T)
-	if(!T) return
+	if(!T)
+		return
 
 	if(!check_state())
 		return
@@ -350,11 +354,15 @@
 						store_egg(E)
 			return
 
+	if(istype(T, /obj/effect/alien/resin/special/eggmorph))
+		store_eggs_into_egg_morpher(T)
+		return
+
 	var/obj/item/xeno_egg/E = get_active_hand()
 	if(!E) //empty active hand
 		//if no hugger in active hand, we take one from our storage
 		if(eggs_cur <= 0)
-			to_chat(src, SPAN_WARNING("We don't have any egg to use!"))
+			to_chat(src, SPAN_WARNING("We don't have any eggs to use!"))
 			return
 		E = new(src, hivenumber)
 		eggs_cur--
@@ -366,6 +374,49 @@
 	if(!istype(E)) //something else in our hand
 		to_chat(src, SPAN_WARNING("We need an empty hand to grab one of our stored eggs!"))
 		return
+
+/mob/living/carbon/xenomorph/carrier/proc/store_eggs_into_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+
+	var/dist = get_dist(src, morpher)
+
+	if(dist > 1)
+		to_chat(src, SPAN_XENOWARNING("We need to be closer to do that."))
+		return
+
+	if(action_busy)
+		return FALSE
+
+	if(!morpher_safety_checks(morpher))
+		return
+
+	visible_message(SPAN_XENOWARNING("[src] starts placing facehuggers into [morpher] from their eggs..."), SPAN_XENONOTICE("We start placing children into [morpher] from our eggs..."))
+	while(eggs_cur > 0)
+		if(!morpher_safety_checks(morpher))
+			return
+
+		if(!do_after(src, 0.75 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(src, SPAN_WARNING("We stop filling [morpher] with our children."))
+			return
+
+		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 20, TRUE)
+		morpher.stored_huggers = min(morpher.huggers_max_amount, morpher.stored_huggers + 1)
+		eggs_cur--
+		to_chat(src, SPAN_XENONOTICE("We slide one of the children out of an egg and place them into [morpher]. Now sheltering: [eggs_cur] / [eggs_max]."))
+
+/mob/living/carbon/xenomorph/carrier/proc/morpher_safety_checks(obj/effect/alien/resin/special/eggmorph/morpher)
+	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+		return FALSE
+
+	if(morpher.stored_huggers == morpher.huggers_max_amount)
+		to_chat(src, SPAN_WARNING("[morpher] is full of children!"))
+		return FALSE
+
+	if(eggs_cur < 1)
+		to_chat(src, SPAN_WARNING("We don't have any eggs left!"))
+		return FALSE
+
+	return TRUE
 
 /mob/living/carbon/xenomorph/carrier/attack_ghost(mob/dead/observer/user)
 	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
@@ -398,3 +449,23 @@
 /datum/behavior_delegate/carrier_base/on_update_icons()
 	var/mob/living/carbon/xenomorph/carrier/bound_carrier = bound_xeno
 	bound_carrier.update_hugger_overlays()
+
+/datum/action/xeno_action/activable/throw_hugger/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.throw_hugger(target)
+	return ..()
+
+/datum/action/xeno_action/activable/retrieve_egg/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/carrier/carrier_owner = owner
+	carrier_owner.retrieve_egg(target)
+	return ..()
+
+/datum/action/xeno_action/onclick/set_hugger_reserve/use_ability(atom/Atom)
+	var/mob/living/carbon/xenomorph/carrier/carrier = owner
+	carrier.huggers_reserved = tgui_input_number(usr,
+		"How many facehuggers would you like to keep safe from Observers wanting to join as facehuggers?",
+		"How many to reserve?",
+		carrier.huggers_reserved, carrier.huggers_max, 0
+	)
+	to_chat(carrier, SPAN_XENONOTICE("We reserve [carrier.huggers_reserved] facehuggers for ourself."))
+	return ..()

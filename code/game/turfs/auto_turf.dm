@@ -11,9 +11,6 @@
 /turf/open/auto_turf/insert_self_into_baseturfs()
 	baseturfs += type
 
-/turf/open/auto_turf/is_weedable()//for da xenos
-	return FULLY_WEEDABLE
-
 /turf/open/auto_turf/get_dirt_type()
 	return DIRT_TYPE_GROUND //automatically diggable I guess
 
@@ -166,6 +163,15 @@
 	icon_prefix = "snow"
 	layer_name = list("icy dirt", "shallow snow", "deep snow", "very deep snow", "rock filled snow")
 
+/turf/open/auto_turf/snow/Initialize(mapload, ...)
+	. = ..()
+	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
+
+/turf/open/auto_turf/snow/changing_layer(new_layer)
+	. = ..()
+	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
+
+
 /turf/open/auto_turf/snow/insert_self_into_baseturfs()
 	baseturfs += /turf/open/auto_turf/snow/layer0
 
@@ -174,9 +180,6 @@
 		return DIRT_TYPE_SNOW
 	else
 		return DIRT_TYPE_GROUND
-
-/turf/open/auto_turf/snow/is_weedable()
-	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/auto_turf/snow/attackby(obj/item/I, mob/user)
 	//Light Stick
@@ -235,12 +238,13 @@
 				slow_amount = 0.15
 				can_stuck = 0
 			var/new_slowdown = C.next_move_slowdown + (slow_amount * bleed_layer)
-			if(prob(2))
-				to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
-			else if(can_stuck && bleed_layer == 4 && prob(2))
-				to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
-				new_slowdown += 10
-			C.next_move_slowdown = new_slowdown
+			if(!HAS_TRAIT(C, TRAIT_HAULED))
+				if(prob(2))
+					to_chat(C, SPAN_WARNING("Moving through [src] slows you down.")) //Warning only
+				else if(can_stuck && bleed_layer == 4 && prob(2))
+					to_chat(C, SPAN_WARNING("You get stuck in [src] for a moment!"))
+					new_slowdown += 10
+				C.next_move_slowdown = new_slowdown
 	..()
 
 /turf/open/auto_turf/snow/layer0 //still have to manually define the layers for the editor
@@ -350,7 +354,9 @@
 /turf/open/auto_turf/shale/layer1
 	icon_state = "shale_1"
 	bleed_layer = 1
+	is_weedable = SEMI_WEEDABLE
 
 /turf/open/auto_turf/shale/layer2
 	icon_state = "shale_2"
 	bleed_layer = 2
+	is_weedable = SEMI_WEEDABLE

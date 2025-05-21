@@ -1,8 +1,7 @@
 
 /datum/action/xeno_action/onclick/feralrush
 	name = "Feral Rush"
-	action_icon_state = "charge_spit"
-	ability_name = "toughen up"
+	action_icon_state = "rage"
 	macro_path = /datum/action/xeno_action/verb/verb_feralrush
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_ACTIVATE
@@ -20,8 +19,7 @@
 
 /datum/action/xeno_action/onclick/predalien_roar
 	name = "Roar"
-	action_icon_state = "screech"
-	ability_name = "roar"
+	action_icon_state = "rage_screech"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	macro_path = /datum/action/xeno_action/verb/verb_predalien_roar
@@ -32,8 +30,7 @@
 
 /datum/action/xeno_action/activable/feral_smash
 	name = "Feral Smash"
-	ability_name = "Feral Smash"
-	action_icon_state = "lunge"
+	action_icon_state = "powerful_pounce"
 	action_type = XENO_ACTION_CLICK
 	macro_path = /datum/action/xeno_action/verb/feral_smash
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -48,8 +45,7 @@
 
 /datum/action/xeno_action/activable/feralfrenzy
 	name = "Feral Frenzy"
-	action_icon_state = "rav_eviscerate"
-	ability_name = "Feral Frenzy"
+	action_icon_state = "butchering"
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	macro_path = /datum/action/xeno_action/verb/verb_feralfrenzy
@@ -69,7 +65,7 @@
 
 /datum/action/xeno_action/onclick/toggle_gut_targeting
 	name = "Toggle Gutting Type"
-	action_icon_state = "gut" // starting targetting is SINGLETARGETGUT
+	action_icon_state = "rav_shard_shed" // starting targetting is SINGLETARGETGUT
 	macro_path = /datum/action/xeno_action/verb/verb_toggle_gut_targeting
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_5

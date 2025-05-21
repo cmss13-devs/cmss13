@@ -562,9 +562,6 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"dj" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/medical)
 "dk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -649,13 +646,8 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/corpsespawner/security,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/body,
-/obj/item/weapon/gun/pistol/holdout{
-	pixel_x = 9;
-	pixel_y = 18
-	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "if" = (
@@ -933,7 +925,6 @@
 	pixel_x = 4;
 	pixel_y = 9
 	},
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "wL" = (
@@ -965,16 +956,14 @@
 /area/bigredv2/outside/marshal_office)
 "yY" = (
 /obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
-	pixel_x = -1;
-	pixel_y = -6
+/obj/item/storage/box/mre/wy{
+	pixel_y = 10
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "za" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/shell,
-/obj/effect/landmark/corpsespawner/prisoner,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
@@ -1023,7 +1012,6 @@
 /obj/structure/machinery/camera/autoname{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/marshal_office)
 "DR" = (
@@ -1103,8 +1091,6 @@
 "Ho" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
 "HO" = (
@@ -1134,7 +1120,6 @@
 /area/bigredv2/outside/marshal_office)
 "IR" = (
 /obj/structure/machinery/light,
-/obj/effect/landmark/corpsespawner/prisoner,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /obj/item/shard,
@@ -1170,13 +1155,8 @@
 /area/bigredv2/outside/marshal_office)
 "Ml" = (
 /obj/item/ammo_casing/shell,
-/obj/effect/landmark/corpsespawner/prisoner,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
-/obj/item/tool/kitchen/knife/butcher{
-	pixel_x = 8;
-	pixel_y = 12
-	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "Mq" = (
@@ -1212,7 +1192,7 @@
 	name = "\improper Marshal Offices Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/medical)
+/area/bigredv2/outside/marshal_office)
 "MS" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1324,9 +1304,8 @@
 /area/bigredv2/outside/marshal_office)
 "UU" = (
 /obj/item/ammo_casing/shell,
-/obj/item/storage/box/MRE{
-	pixel_x = 3;
-	pixel_y = 3
+/obj/item/storage/box/mre/wy{
+	pixel_x = 10
 	},
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
@@ -1391,7 +1370,7 @@ cN
 ah
 ah
 ah
-dj
+ah
 "}
 (2,1,1) = {"
 ab
@@ -1415,7 +1394,7 @@ bi
 bG
 cZ
 gJ
-dj
+ah
 "}
 (3,1,1) = {"
 ab
@@ -1439,7 +1418,7 @@ cO
 cU
 cZ
 ci
-dj
+ah
 "}
 (4,1,1) = {"
 ac
@@ -1463,7 +1442,7 @@ cP
 bG
 cZ
 df
-dj
+ah
 "}
 (5,1,1) = {"
 ab
@@ -1487,7 +1466,7 @@ bk
 ah
 ah
 ah
-dj
+ah
 "}
 (6,1,1) = {"
 zv
@@ -1511,7 +1490,7 @@ bk
 bG
 cZ
 ix
-dj
+ah
 "}
 (7,1,1) = {"
 ac
@@ -1535,7 +1514,7 @@ bk
 cV
 cZ
 ci
-dj
+ah
 "}
 (8,1,1) = {"
 af
@@ -1559,7 +1538,7 @@ wm
 bG
 cZ
 df
-dj
+ah
 "}
 (9,1,1) = {"
 aa
@@ -1583,7 +1562,7 @@ bi
 ah
 ah
 ah
-dj
+ah
 "}
 (10,1,1) = {"
 VX
@@ -1607,7 +1586,7 @@ bi
 bG
 cZ
 de
-dj
+ah
 "}
 (11,1,1) = {"
 ah
@@ -1631,7 +1610,7 @@ bi
 Px
 cZ
 ci
-dj
+ah
 "}
 (12,1,1) = {"
 ah
@@ -1655,7 +1634,7 @@ cR
 bG
 cZ
 qm
-dj
+ah
 "}
 (13,1,1) = {"
 ah
@@ -1679,7 +1658,7 @@ cS
 ah
 ah
 ah
-dj
+ah
 "}
 (14,1,1) = {"
 ai
@@ -1703,7 +1682,7 @@ FK
 bG
 cZ
 de
-dj
+ah
 "}
 (15,1,1) = {"
 aj
@@ -1727,7 +1706,7 @@ bk
 cV
 cZ
 ci
-dj
+ah
 "}
 (16,1,1) = {"
 aj
@@ -1751,7 +1730,7 @@ bk
 bG
 cZ
 df
-dj
+ah
 "}
 (17,1,1) = {"
 aj
@@ -1775,7 +1754,7 @@ bk
 ah
 ah
 ah
-dj
+ah
 "}
 (18,1,1) = {"
 aj
@@ -1847,7 +1826,7 @@ bk
 ah
 bG
 bG
-dj
+ah
 "}
 (21,1,1) = {"
 cb

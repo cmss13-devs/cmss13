@@ -1,0 +1,228 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"c" = (
+/obj/structure/interior_wall/box_van{
+	icon_state = "back_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"e" = (
+/obj/structure/interior_wall/box_van{
+	icon_state = "back_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"f" = (
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "front_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"h" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/box_van/backright;
+	name = "back right entrance marker";
+	pixel_x = -32;
+	tag = "back_right"
+	},
+/obj/structure/largecrate,
+/turf/open/shuttle/vehicle/med/slate,
+/area/interior/vehicle/box_van)
+"i" = (
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"j" = (
+/obj/structure/interior_wall/box_van,
+/obj/structure/sign/poster/propaganda{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "roof_4"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"n" = (
+/obj/structure/interior_wall/box_van{
+	icon_state = "background_2";
+	alpha = 50;
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"o" = (
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	pixel_y = 30
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 12;
+	pixel_x = -11;
+	layer = 3.3
+	},
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "roof_3"
+	},
+/turf/open/shuttle/vehicle/med/slate,
+/area/interior/vehicle/box_van)
+"r" = (
+/obj/structure/interior_wall/box_van{
+	icon_state = "exterior_3"
+	},
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "roof_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"s" = (
+/obj/structure/interior_wall/box_van{
+	icon_state = "back_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"t" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 1;
+	exit_type = /obj/structure/interior_exit/vehicle/box_van/left;
+	name = "left entrance marker";
+	pixel_y = 32;
+	tag = "left"
+	},
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4;
+	icon_state = "comfychair_black"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon_state = "windshield_viewport_bottom";
+	icon = 'icons/obj/vehicles/interiors/box_van_interior.dmi'
+	},
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "front_roof_2"
+	},
+/turf/open/shuttle/vehicle/floor_3_11,
+/area/interior/vehicle/box_van)
+"v" = (
+/obj/effect/landmark/interior/spawn/interior_viewport/simple/windshield{
+	icon = 'icons/obj/vehicles/interiors/box_van_interior.dmi'
+	},
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "interior_door"
+	},
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "front_roof_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"w" = (
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "front_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"y" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
+	exit_type = /obj/structure/interior_exit/vehicle/box_van/right;
+	name = "right entrance marker";
+	tag = "right"
+	},
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle/floor_3_12,
+/area/interior/vehicle/box_van)
+"G" = (
+/obj/effect/landmark/interior/spawn/interior_viewport/simple{
+	alpha = 100;
+	pixel_y = -2
+	},
+/obj/structure/largecrate/random/barrel/purewhite{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/shuttle/vehicle/med/slate,
+/area/interior/vehicle/box_van)
+"J" = (
+/obj/structure/interior_wall/box_van{
+	icon_state = "background_3";
+	alpha = 50;
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"M" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/box_van/backleft;
+	name = "back left entrance marker";
+	pixel_x = -32;
+	tag = "back_left"
+	},
+/obj/structure/largecrate/random/secure{
+	pixel_y = 12;
+	layer = 4
+	},
+/obj/effect/vehicle_roof/box_van{
+	icon_state = "roof_2"
+	},
+/turf/open/shuttle/vehicle/med/slate,
+/area/interior/vehicle/box_van)
+"O" = (
+/turf/open/void/vehicle,
+/area/space)
+"V" = (
+/obj/structure/interior_wall/box_van{
+	icon_state = "exterior_door";
+	alpha = 50;
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+
+(1,1,1) = {"
+O
+O
+O
+O
+O
+"}
+(2,1,1) = {"
+O
+e
+s
+c
+O
+"}
+(3,1,1) = {"
+O
+j
+M
+h
+n
+"}
+(4,1,1) = {"
+O
+r
+o
+G
+J
+"}
+(5,1,1) = {"
+O
+v
+t
+y
+V
+"}
+(6,1,1) = {"
+O
+w
+f
+i
+O
+"}

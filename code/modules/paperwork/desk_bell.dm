@@ -3,7 +3,7 @@
 /obj/item/desk_bell
 	name = "desk bell"
 	desc = "The cornerstone of any customer service job. You feel an unending urge to ring it."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/items/table_decorations.dmi'
 	icon_state = "desk_bell"
 	w_class = SIZE_SMALL
 	embeddable = FALSE

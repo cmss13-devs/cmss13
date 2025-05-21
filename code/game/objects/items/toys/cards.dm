@@ -20,7 +20,12 @@
 	desc = "A simple deck of playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "deck"
+	item_state_slots = list(WEAR_AS_GARB = "card_deck")
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi',
+		)
 	w_class = SIZE_TINY
+	flags_obj = OBJ_IS_HELMET_GARB
 
 	var/base_icon = "deck"
 	var/max_cards = 52
@@ -44,12 +49,20 @@
 		for(var/number in list("ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"))
 			cards += new /datum/playing_card("[number] of [suit]", "[suit]_[number]", "back_[base_icon]", card_id++)
 
+/obj/item/toy/deck/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS))
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+	return
+
 /obj/item/toy/deck/uno
 	name = "deck of UNO cards"
 	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
 	icon_state = "deck_uno"
 	base_icon = "deck_uno"
+	item_state_slots = list(WEAR_AS_GARB = "card_uno")
 	max_cards = 108
+	flags_obj = OBJ_IS_HELMET_GARB
 
 /obj/item/toy/deck/uno/populate_deck()
 	var/card_id = 1
@@ -88,9 +101,12 @@
 
 /obj/item/toy/deck/update_icon()
 	var/cards_length = length(cards)
-	if(cards_length == max_cards) icon_state = base_icon
-	else if(!cards_length) icon_state = "[base_icon]_empty"
-	else icon_state = "[base_icon]_open"
+	if(cards_length == max_cards)
+		icon_state = base_icon
+	else if(!cards_length)
+		icon_state = "[base_icon]_empty"
+	else
+		icon_state = "[base_icon]_open"
 
 /obj/item/toy/deck/verb/draw_card()
 	set category = "Object"
@@ -101,7 +117,7 @@
 	if(usr.stat || !Adjacent(usr))
 		return
 
-	if(!ishuman(usr))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
 		return
 
 	var/mob/living/carbon/human/user = usr
@@ -126,11 +142,12 @@
 
 	handle_draw_cards(usr)
 
-/obj/item/toy/deck/proc/handle_draw_cards(mob/mob)
-	if(mob.stat || !ishuman(mob) || !Adjacent(mob))
+/obj/item/toy/deck/proc/handle_draw_cards(mob/living/carbon/user)
+	if(user.stat || !Adjacent(user))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_CARDPLAYING_THUMBS))
+		return
 
 	var/cards_length = length(cards)
 	if(!cards_length)
@@ -172,10 +189,13 @@
 	set category = "Object"
 	set src in view(1)
 
-	if(usr.stat || !ishuman(usr) || !Adjacent(usr))
+	if(usr.stat || !Adjacent(usr))
 		return
 
-	var/mob/living/carbon/human/user = usr
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+		return
+
+	var/mob/living/carbon/user = usr
 
 	var/cards_length = length(cards)
 	if(!cards_length)
@@ -202,6 +222,9 @@
 	set src in view(1)
 
 	if(usr.stat || !Adjacent(usr))
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
 		return
 
 	if(!length(cards))
@@ -251,7 +274,10 @@
 	if(!usr || !over)
 		return
 
-	if(!ishuman(over) || get_dist(usr, over) > 3)
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+		return
+
+	if(get_dist(usr, over) > 3)
 		return
 
 	if(!length(cards))
@@ -265,6 +291,8 @@
 	desc = "Some playing cards."
 	icon = 'icons/obj/items/playing_cards.dmi'
 	icon_state = "empty"
+	item_icons = list(WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/cards.dmi')
+	item_state_slots = list(WEAR_AS_GARB = "card_card")
 	w_class = SIZE_TINY
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
 
@@ -281,25 +309,36 @@
 	. = ..()
 	QDEL_NULL_LIST(cards)
 
+/obj/item/toy/handcard/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS))
+		attack_hand(xeno)
+		return XENO_NONCOMBAT_ACTION
+	return
+
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
 	desc = "An Ace of Spades"
+	item_state_slots = list(WEAR_AS_GARB = "ace_of_spades")
 
 /obj/item/toy/handcard/uno_reverse_red
 	icon_state = "red_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "red_reverse")
 
 /obj/item/toy/handcard/uno_reverse_blue
 	icon_state = "blue_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "blue_reverse")
 
 /obj/item/toy/handcard/uno_reverse_yellow
 	icon_state = "yellow_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "yellow_reverse")
 
 /obj/item/toy/handcard/uno_reverse_purple
 	icon_state = "purple_reverse"
 	desc = "Always handy to have one or three of these up your sleeve."
+	item_state_slots = list(WEAR_AS_GARB = "purple_reverse")
 
 /obj/item/toy/handcard/verb/toggle_discard_state()
 	set name = "Toggle Pile State"
@@ -307,7 +346,10 @@
 	set category = "Object"
 	set src in usr
 
-	if(usr.stat || !ishuman(usr))
+	if(usr.stat)
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
 		return
 
 	pile_state = !pile_state
@@ -320,7 +362,10 @@
 	set desc = "Sort this hand by deck's initial order."
 	set src in usr
 
-	if(usr.stat || !ishuman(usr))
+	if(usr.stat)
+		return
+
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
 		return
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
@@ -405,9 +450,13 @@
 	user.visible_message(SPAN_NOTICE("\The [user] [concealed ? "conceals" : "reveals"] their hand."), SPAN_NOTICE("You [concealed ? "conceal" : "reveal"] your hand."))
 
 /obj/item/toy/handcard/MouseDrop(atom/over)
-	if(usr != over || !Adjacent(usr))
+	if(usr != over || !Adjacent(over))
 		return
 	if(ismob(loc))
+		return
+	if(usr.stat)
+		return
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
 		return
 
 	if(isstorage(loc))

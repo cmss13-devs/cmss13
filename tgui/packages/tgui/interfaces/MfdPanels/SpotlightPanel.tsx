@@ -1,9 +1,10 @@
-import { useBackend } from '../../backend';
-import { Box, Stack } from '../../components';
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { useBackend } from 'tgui/backend';
+import { Box, Stack } from 'tgui/components';
+
+import type { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
-import { EquipmentContext, SpotlightSpec } from './types';
+import type { EquipmentContext, SpotlightSpec } from './types';
 
 const SpotPanel = (props: DropshipEquipment) => {
   const spotData = props.data as SpotlightSpec;

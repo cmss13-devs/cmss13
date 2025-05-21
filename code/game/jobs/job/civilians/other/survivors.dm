@@ -1,5 +1,7 @@
 #define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/9
 
+GLOBAL_LIST_EMPTY(spawned_survivors)
+
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
 	selection_class = "job_special"
@@ -12,6 +14,8 @@
 	var/story_text
 	/// Whether or not the survivor is an inherently hostile to marines.
 	var/hostile = FALSE
+	/// How many survs have been spawned total
+	var/static/total_spawned = 0
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
@@ -32,9 +36,23 @@
 		"
 		to_chat_spaced(survivor, html = entrydisplay)
 
+/datum/job/civilian/survivor/can_play_role_in_scenario(client/client)
+	. = ..()
+	if(!.)
+		return .
+
+	if(SSnightmare.get_scenario_is_hostile_survivor())
+		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_HOSTILE)
+	else
+		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_NON_HOSTILE)
+
 /datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
 	. = ..()
+	total_spawned++
+
 	var/mob/living/carbon/human/H = .
+
+	GLOB.spawned_survivors += WEAKREF(H)
 
 	var/list/potential_spawners = list()
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
@@ -44,6 +62,12 @@
 					potential_spawners += spawner
 			if(length(potential_spawners))
 				break
+	if(!length(potential_spawners))
+		// Generally this shouldn't happen since role authority shouldn't be rolling us for a survivor in a hostile scenario
+		message_admins("Failed to spawn_in_player [key_name_admin(H)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
+		H.send_to_lobby()
+		qdel(H)
+		return null
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
 	H.forceMove(get_turf(picked_spawner))
 

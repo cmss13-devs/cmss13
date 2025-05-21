@@ -35,12 +35,6 @@
 "ai" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
 /area/space)
-"aj" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "al" = (
 /turf/open/floor/almayer_hull,
 /area/space)
@@ -95,15 +89,6 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
-"ay" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "aA" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer,
@@ -402,13 +387,16 @@
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = 4;
 	pixel_x = -8
 	},
 /obj/item/device/flashlight/lamp{
 	pixel_y = 8;
 	pixel_x = 6
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
@@ -432,6 +420,11 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
+"br" = (
+/obj/structure/largecrate/supply,
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "bu" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/light{
@@ -604,6 +597,13 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
+"bT" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "bV" = (
 /obj/item/device/flashlight/lamp/green,
 /obj/structure/surface/table/reinforced/black,
@@ -625,6 +625,10 @@
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
+"cb" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "ce" = (
 /turf/open/floor/almayer/green/southeast,
 /area/adminlevel/chinook/cargo)
@@ -658,15 +662,6 @@
 "cl" = (
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/offices)
-"cm" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "cp" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8";
@@ -694,6 +689,10 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
+"cq" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/kutjevo,
+/area/adminlevel/chinook/event)
 "cr" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/storage/fancy/cigar,
@@ -942,6 +941,13 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
+"dm" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "dn" = (
 /obj/structure/closet/crate,
 /turf/open/floor/almayer/cargo,
@@ -1204,14 +1210,6 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/offices)
-"eq" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform/strata/metal,
-/turf/open/floor/almayer,
-/area/adminlevel/chinook)
 "er" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 25
@@ -1236,6 +1234,10 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook/offices)
+"ev" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/kutjevo,
+/area/adminlevel/chinook/event)
 "ew" = (
 /obj/structure/closet/secure_closet{
 	name = "secure evidence locker";
@@ -1267,16 +1269,6 @@
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook/offices)
-"eA" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "eB" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -1306,13 +1298,6 @@
 /obj/item/storage/box/bodybags,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
-"eG" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "eH" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1350,12 +1335,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
-"eO" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "eP" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -1484,6 +1463,14 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
+"ft" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/metal/strata/north,
+/turf/open/floor/almayer,
+/area/adminlevel/chinook)
 "fu" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -1492,12 +1479,6 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
-"fw" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "fx" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -1547,16 +1528,11 @@
 "fC" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin/uscm,
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_y = -3
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
-"fD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_leftengine"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "fE" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1615,17 +1591,12 @@
 	pixel_y = 8;
 	pixel_x = 6
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = -8;
 	pixel_y = 5
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
-"fP" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_3"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "fQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -1723,6 +1694,14 @@
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
+"gn" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/kutjevo/plate,
+/area/adminlevel/chinook/event)
 "go" = (
 /obj/structure/machinery/shower{
 	dir = 4
@@ -1764,11 +1743,10 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook)
-"gy" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan20"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
+"gx" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "gz" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_container/food/snacks/creamcheesebreadslice,
@@ -1839,10 +1817,6 @@
 /area/adminlevel/chinook)
 "gL" = (
 /turf/open/floor/almayer/red/northwest,
-/area/adminlevel/chinook)
-"gM" = (
-/obj/structure/platform_decoration/strata/metal,
-/turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "gN" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
@@ -1920,9 +1894,6 @@
 	},
 /turf/open/floor/prison/kitchen,
 /area/adminlevel/chinook/event)
-"hc" = (
-/turf/open/shuttle/dropship/light_grey_top_left,
-/area/adminlevel/chinook/shuttle/unpowered)
 "hd" = (
 /obj/structure/largecrate/random,
 /obj/item/circuitboard/airlock,
@@ -2202,6 +2173,19 @@
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/medical)
+"if" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/turf/open/floor/almayer,
+/area/adminlevel/chinook/cargo)
+"ig" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/chinook/cargo)
 "ih" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -2214,21 +2198,14 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
-"il" = (
-/obj/structure/platform{
-	dir = 1;
-	layer = 2
-	},
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
-"in" = (
+"io" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 2.1
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
+/obj/structure/platform/metal/strata/east,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "ip" = (
 /turf/open/floor/kutjevo/tan/alt_inner_edge,
 /area/adminlevel/chinook/event)
@@ -2256,27 +2233,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
-"iu" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 2.1
-	},
-/obj/structure/platform/stair_cut,
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
-"iw" = (
-/obj/structure/platform/stair_cut,
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "ix" = (
 /obj/structure/machinery/door_control{
 	id = "chinookarmory1";
@@ -2307,24 +2263,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
-"iD" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "iF" = (
 /obj/structure/sign/prop2{
 	pixel_y = 30
 	},
 /turf/open/floor/strata/faux_wood,
 /area/adminlevel/chinook/offices)
-"iG" = (
-/obj/structure/platform,
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
 "iH" = (
 /turf/open/floor/kutjevo/tan/alt_inner_edge/east,
 /area/adminlevel/chinook/event)
@@ -2335,18 +2279,8 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
-"iL" = (
-/obj/structure/platform,
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/kutjevo/plate,
-/area/adminlevel/chinook/event)
-"iN" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
+"iM" = (
+/obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "iO" = (
@@ -2416,15 +2350,6 @@
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/medical)
-"jb" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "jc" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
@@ -2491,17 +2416,6 @@
 /obj/item/roller,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/sec)
-"jp" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/stair_cut/alt,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
-"jq" = (
-/turf/closed/wall/almayer/outer,
-/area/adminlevel/chinook/shuttle/unpowered)
 "jr" = (
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/corsat/squares,
@@ -2603,18 +2517,6 @@
 /obj/item/device/multitool,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
-"jN" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
-"jO" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "jQ" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 12;
@@ -2622,11 +2524,6 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
-"jR" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan3"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "jS" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -2660,6 +2557,14 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
+"jX" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "jY" = (
 /turf/open/floor/almayer/silvercorner,
 /area/adminlevel/chinook)
@@ -2674,6 +2579,14 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
+"ke" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "kf" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/wood,
@@ -2844,7 +2757,7 @@
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "kN" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "kP" = (
@@ -2920,12 +2833,6 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
-"ld" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "lf" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
@@ -2971,22 +2878,23 @@
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/adminlevel/chinook/medical)
 "lm" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
+	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/offices)
 "ln" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = 3;
 	pixel_y = 3
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
-"ls" = (
-/obj/structure/platform{
-	dir = 4
-	},
+"lp" = (
+/obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
+/area/adminlevel/chinook/engineering)
 "lu" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3226,6 +3134,21 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cargo)
+"mx" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
+"my" = (
+/obj/structure/platform/metal/stair_cut/platform_right,
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "mz" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -3242,19 +3165,6 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
-"mC" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 8
-	},
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
-"mD" = (
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
-/obj/structure/platform/strata/metal,
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "mF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/pizzabox/meat{
@@ -3291,11 +3201,19 @@
 	pixel_x = -6;
 	pixel_y = 2
 	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
+	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "mK" = (
 /turf/open/floor/almayer/orange,
 /area/adminlevel/chinook)
+"mL" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "mN" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/flashlight/lamp/green{
@@ -3337,9 +3255,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
-"mX" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
-/area/adminlevel/chinook/shuttle/unpowered)
 "mY" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/computer/emails{
@@ -3398,18 +3313,6 @@
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
-"nj" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
-"nk" = (
-/obj/structure/platform/strata/metal,
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "nl" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/sign/prop1{
@@ -3484,6 +3387,15 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
+"nw" = (
+/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "ny" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/ashtray/glass{
@@ -3539,7 +3451,7 @@
 /obj/structure/sign/prop2{
 	pixel_y = 30
 	},
-/obj/structure/machinery/faxmachine/uscm/command/highcom{
+/obj/structure/machinery/faxmachine/uscm/highcom{
 	name = "Chinook Fax Machine";
 	department = "Chinook 91 GSO Station";
 	pixel_y = 5
@@ -3561,6 +3473,10 @@
 	},
 /turf/open/floor/strata/faux_wood,
 /area/adminlevel/chinook/offices)
+"nK" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "nL" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -3612,6 +3528,10 @@
 	pixel_y = 6
 	},
 /turf/open/floor/wood,
+/area/adminlevel/chinook/event)
+"nW" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "nX" = (
 /obj/structure/surface/table/reinforced/black,
@@ -3676,16 +3596,6 @@
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
-"oh" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "oi" = (
 /turf/open/space/basic,
 /area/space)
@@ -3708,7 +3618,7 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
 "on" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
 "op" = (
@@ -3737,12 +3647,6 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
-"ot" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "ou" = (
 /turf/open/floor/almayer/uscm/directional/north,
 /area/adminlevel/chinook/shuttle)
@@ -3773,15 +3677,6 @@
 /obj/item/device/lightreplacer,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
-"oz" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "oA" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer/sterile_green_side/east,
@@ -3805,12 +3700,6 @@
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
-"oD" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_2";
-	opacity = 0
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "oE" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -30
@@ -3950,22 +3839,9 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/event)
-"pg" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "ph" = (
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
-"pi" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan8"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "pj" = (
 /obj/item/trash/burger,
 /turf/open/floor/plating/plating_catwalk,
@@ -3974,16 +3850,6 @@
 /obj/structure/target,
 /turf/open/floor/almayer/redfull,
 /area/adminlevel/chinook)
-"pl" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "pm" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
@@ -4022,12 +3888,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
-"pv" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "pw" = (
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
@@ -4093,12 +3953,6 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
-"pG" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "pH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "\improper Command Offices"
@@ -4141,12 +3995,13 @@
 /obj/structure/machinery/computer/telecomms/traffic,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
-"pP" = (
-/obj/structure/platform{
-	dir = 1
+"pO" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
 	},
-/turf/open/floor/carpet,
-/area/adminlevel/chinook/event)
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "pQ" = (
 /turf/closed/shuttle/elevator{
 	dir = 6
@@ -4162,27 +4017,6 @@
 	},
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
-"pT" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
-"pU" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/cargo)
 "pV" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -4224,7 +4058,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "qb" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook)
 "qc" = (
@@ -4303,17 +4137,12 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
+"qs" = (
+/obj/docking_port/stationary/emergency_response/idle_port3,
+/turf/open/floor/almayer/orange,
+/area/adminlevel/chinook/engineering)
 "qu" = (
 /obj/item/toy/inflatable_duck,
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
-"qv" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
 /turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "qw" = (
@@ -4434,12 +4263,6 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
-"qS" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "qT" = (
 /obj/item/clothing/glasses/sunglasses,
 /obj/structure/surface/table/reinforced/black,
@@ -4500,16 +4323,18 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/adminlevel/chinook)
+"rg" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/strata,
+/turf/open/floor/almayer,
+/area/adminlevel/chinook)
 "rh" = (
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry,
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/medical)
-"ri" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_1";
-	opacity = 0
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "rj" = (
 /obj/structure/bed/chair/comfy{
 	dir = 8
@@ -4563,12 +4388,6 @@
 /obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
-"rw" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "rx" = (
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/adminlevel/chinook/medical)
@@ -4684,6 +4503,13 @@
 /obj/structure/machinery/power/smes,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
+"rZ" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform/metal/strata/west,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "sa" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/flashlight/lamp,
@@ -4742,6 +4568,9 @@
 /obj/structure/target,
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/chinook)
+"sq" = (
+/turf/open/floor/plating,
+/area/adminlevel/chinook/shuttle)
 "sr" = (
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook/offices)
@@ -4920,15 +4749,6 @@
 /obj/item/tool/weldpack,
 /turf/open/floor/almayer/orange/west,
 /area/adminlevel/chinook/engineering)
-"sU" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating_striped/east,
-/area/adminlevel/chinook/cargo)
 "sV" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/device/flashlight/lamp/green{
@@ -4936,15 +4756,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
-"sW" = (
-/obj/structure/platform/stair_cut,
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "sX" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer/cargo,
@@ -4986,11 +4797,14 @@
 /obj/item/storage/fancy/cigarettes/lucky_strikes,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cargo)
-"tf" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan22"
+"tg" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
 	},
-/area/adminlevel/chinook/shuttle/unpowered)
+/turf/open/floor/kutjevo,
+/area/adminlevel/chinook/event)
 "tj" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
@@ -5010,13 +4824,6 @@
 	},
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
-"to" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/obj/structure/platform/strata/metal,
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "tp" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -5128,11 +4935,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
-"tN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan25"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "tO" = (
 /obj/structure/target/syndicate,
 /turf/open/floor/almayer/redfull,
@@ -5321,12 +5123,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
-"uC" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "uD" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Firing Range";
@@ -5401,10 +5197,6 @@
 /obj/item/weapon/gun/shotgun/combat,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/offices)
-"uR" = (
-/obj/structure/machinery/floodlight/landing,
-/turf/open/floor/plating,
-/area/adminlevel/chinook/shuttle/unpowered)
 "uS" = (
 /obj/structure/desertdam/decals/road_edge{
 	pixel_x = 2;
@@ -5447,6 +5239,9 @@
 /obj/item/reagent_container/food/drinks/cans/beer{
 	pixel_x = -3;
 	pixel_y = 6
+	},
+/obj/structure/sign/calendar/ua{
+	pixel_y = 27
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
@@ -5582,9 +5377,6 @@
 	},
 /turf/open/floor/almayer/emerald,
 /area/adminlevel/chinook/shuttle)
-"vC" = (
-/turf/open/shuttle/dropship/light_grey_top_right,
-/area/adminlevel/chinook/shuttle/unpowered)
 "vE" = (
 /obj/structure/sign/safety/ammunition{
 	pixel_x = 32;
@@ -5631,6 +5423,13 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/tan,
 /area/adminlevel/chinook/event)
+"vL" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "vM" = (
 /obj/structure/surface/rack,
 /obj/item/device/binoculars,
@@ -5651,13 +5450,6 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
-"vQ" = (
-/obj/structure/largecrate/supply,
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "vR" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -5694,10 +5486,20 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
+"vY" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/west,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "vZ" = (
 /obj/structure/cargo_container/seegson/mid,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
+"wa" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "wc" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/device/taperecorder,
@@ -5844,7 +5646,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
 "wG" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "wH" = (
@@ -5894,12 +5696,6 @@
 "wW" = (
 /turf/open/floor/almayer/sterile_green_corner/north,
 /area/adminlevel/chinook/medical)
-"wX" = (
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "wY" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -5931,15 +5727,6 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
-"xf" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "xg" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -5986,15 +5773,6 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
-"xq" = (
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/obj/structure/platform/strata/metal{
-	dir = 8
-	},
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "xr" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
@@ -6070,11 +5848,6 @@
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
-"xK" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan23"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "xL" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_18"
@@ -6097,6 +5870,14 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/offices)
+"xQ" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/chinook/cargo)
 "xR" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21"
@@ -6117,9 +5898,6 @@
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
-"xW" = (
-/turf/open/shuttle/dropship/light_grey_bottom_left,
-/area/adminlevel/chinook/shuttle/unpowered)
 "xY" = (
 /obj/structure/bed/chair/comfy,
 /turf/open/floor/strata/faux_wood,
@@ -6154,11 +5932,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/event)
-"yh" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan27"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "yi" = (
 /obj/structure/prop/ice_colony/tiger_rug{
 	pixel_x = -16
@@ -6169,6 +5942,14 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
+"yk" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "yl" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -6195,6 +5976,10 @@
 /obj/structure/machinery/medical_pod/autodoc,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
+"yt" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "yu" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/computer/secure_data{
@@ -6247,6 +6032,13 @@
 /obj/item/trash/cigbutt,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/adminlevel/chinook/event)
+"yG" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "yJ" = (
 /obj/structure/cargo_container/arious/mid,
 /turf/open/floor/corsat/squares,
@@ -6271,17 +6063,6 @@
 "yN" = (
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook)
-"yO" = (
-/obj/structure/platform,
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/barricade/handrail/strata{
-	layer = 4.5
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "yP" = (
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/light{
@@ -6400,6 +6181,11 @@
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
+"zo" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "zp" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/paper_bin/uscm{
@@ -6433,6 +6219,13 @@
 "zw" = (
 /turf/open/floor/wood,
 /area/adminlevel/chinook/event)
+"zy" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "zC" = (
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
@@ -6519,24 +6312,8 @@
 /obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
-"zU" = (
-/obj/structure/platform,
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
-/obj/structure/barricade/handrail/strata{
-	layer = 4.5
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "zW" = (
 /turf/closed/wall/almayer/reinforced,
-/area/adminlevel/chinook/engineering)
-"zX" = (
-/obj/structure/platform,
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "zY" = (
 /obj/structure/surface/table/almayer,
@@ -6553,11 +6330,6 @@
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/offices)
-"Ad" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan1"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "Ae" = (
 /obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer/red,
@@ -6582,11 +6354,6 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
-"Ai" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan2"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "Aj" = (
 /obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/almayer/emeraldfull,
@@ -6619,6 +6386,10 @@
 /area/adminlevel/chinook/engineering)
 "As" = (
 /turf/closed/wall/almayer,
+/area/adminlevel/chinook/cargo)
+"At" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "Au" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -6663,6 +6434,13 @@
 	},
 /turf/open/floor/plating,
 /area/adminlevel/chinook/engineering)
+"AA" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/kutjevo,
+/area/adminlevel/chinook/event)
 "AB" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/almayer/sterile_green,
@@ -6748,18 +6526,6 @@
 /obj/structure/reagent_dispensers/water_cooler/stacks,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
-"AU" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan9"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
-"AV" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "AX" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
@@ -6857,6 +6623,10 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
+"Bm" = (
+/obj/structure/platform/metal/strata,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "Bn" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/belt/utility/full,
@@ -6961,12 +6731,6 @@
 /obj/structure/machinery/autolathe,
 /turf/open/floor/almayer/green/northwest,
 /area/adminlevel/chinook/cargo)
-"BP" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/kutjevo,
-/area/adminlevel/chinook/event)
 "BR" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/sterile_green_side,
@@ -6974,19 +6738,8 @@
 "BS" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/shuttle)
-"BU" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
-"BV" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
+"BT" = (
+/obj/structure/platform/metal/almayer/east,
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/event)
 "BW" = (
@@ -7021,12 +6774,10 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
-"Cb" = (
-/turf/closed/shuttle/ert{
-	icon_state = "leftengine_3";
-	opacity = 0
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
+"Cc" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "Cd" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/storage/fancy/cigar{
@@ -7086,15 +6837,6 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
-"Cp" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "Cq" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/floor/plating/plating_catwalk,
@@ -7126,6 +6868,10 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
+"Cv" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "Cw" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/sign/goldenplaque{
@@ -7153,6 +6899,10 @@
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
+"CD" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "CE" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -7184,13 +6934,18 @@
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
-"CP" = (
-/turf/open/shuttle/dropship/light_grey_bottom_right,
-/area/adminlevel/chinook/shuttle/unpowered)
+"CO" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/kutjevo,
+/area/adminlevel/chinook/event)
 "CQ" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
+"CR" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "CS" = (
 /obj/structure/machinery/cryopod/no_store,
 /turf/open/floor/almayer/sterile_green,
@@ -7306,7 +7061,7 @@
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
 "Dp" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -7348,6 +7103,12 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
+"Du" = (
+/obj/structure/machinery/light,
+/obj/structure/platform/metal/almayer,
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "Dv" = (
 /turf/closed/shuttle/elevator{
 	dir = 10
@@ -7367,11 +7128,6 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
-"Dy" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_2"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "Dz" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal8";
@@ -7416,6 +7172,17 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
+"DF" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 4.5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "DH" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -7425,9 +7192,14 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
-"DJ" = (
-/turf/closed/shuttle/ert,
-/area/adminlevel/chinook/shuttle/unpowered)
+"DI" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap";
+	layer = 2.1
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/turf/open/floor/kutjevo/plate,
+/area/adminlevel/chinook/event)
 "DL" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
@@ -7473,6 +7245,10 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/cryo)
+"DU" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "DV" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/plating/northeast,
@@ -7497,6 +7273,10 @@
 /obj/structure/machinery/cm_vending/clothing/dress,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/offices)
+"Ee" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "Eg" = (
 /obj/structure/closet/coffin,
 /turf/open/floor/almayer/plating/northeast,
@@ -7540,10 +7320,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
-"El" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "Em" = (
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook/offices)
@@ -7560,16 +7336,6 @@
 	dir = 4
 	},
 /turf/open/floor/kutjevo/tan/alt_inner_edge,
-/area/adminlevel/chinook)
-"Ep" = (
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
-	},
-/obj/structure/platform/strata/metal{
-	dir = 4
-	},
-/turf/open/gm/river/pool,
 /area/adminlevel/chinook)
 "Eq" = (
 /obj/structure/machinery/vending/hydronutrients,
@@ -7636,6 +7402,19 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/offices)
+"EH" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/sign/safety/high_voltage{
+	pixel_x = -15;
+	pixel_y = 5
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = -15;
+	pixel_y = -7
+	},
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "EJ" = (
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/kutjevo/tan/plate,
@@ -7684,6 +7463,18 @@
 "EV" = (
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook)
+"EY" = (
+/obj/structure/platform/metal/stair_cut/platform_left,
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "EZ" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/plating/northeast,
@@ -7778,12 +7569,6 @@
 "Fu" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/almayer/cargo,
-/area/adminlevel/chinook/engineering)
-"Fv" = (
-/obj/structure/platform_decoration{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Fx" = (
 /turf/closed/shuttle/elevator/gears,
@@ -7899,15 +7684,6 @@
 	},
 /turf/open/floor/wood,
 /area/adminlevel/chinook)
-"FX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "FY" = (
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/adminlevel/chinook)
@@ -7948,15 +7724,6 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
-"Gi" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "Gk" = (
 /obj/structure/sign/safety/medical{
 	pixel_y = 25
@@ -7984,6 +7751,12 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
+"Gr" = (
+/obj/vehicle/powerloader,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/chinook/cargo)
 "Gt" = (
 /obj/structure/sign/safety/galley{
 	pixel_y = 25
@@ -8023,6 +7796,10 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /turf/open/floor/almayer/red/west,
 /area/adminlevel/chinook/sec)
+"Gy" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "Gz" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1
@@ -8044,10 +7821,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/sec)
-"GD" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "GE" = (
 /obj/structure/largecrate/supply/medicine/blood,
 /turf/open/floor/almayer/plate,
@@ -8153,6 +7926,13 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/offices)
+"GY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "Ha" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
@@ -8248,6 +8028,11 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/adminlevel/chinook/sec)
+"Hw" = (
+/obj/structure/platform/metal/strata/east,
+/obj/structure/platform/metal/strata,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "Hx" = (
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/adminlevel/chinook)
@@ -8265,16 +8050,6 @@
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/event)
-"HA" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform/strata/metal{
-	dir = 1
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/chinook)
 "HC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 8;
@@ -8303,6 +8078,10 @@
 /obj/item/stack/sheet/metal/large_stack,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
+"HI" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/plating,
+/area/adminlevel/chinook/shuttle)
 "HJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -8365,17 +8144,6 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
-"HQ" = (
-/obj/structure/largecrate/supply,
-/obj/effect/spawner/random/tool,
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/sign/safety/coffee{
-	pixel_x = -16
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "HR" = (
 /obj/structure/largecrate/random/case/double,
 /obj/effect/decal/warning_stripes{
@@ -8528,18 +8296,16 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/adminlevel/chinook/offices)
+"Iz" = (
+/obj/docking_port/stationary/emergency_response/idle_port1,
+/turf/closed/wall/almayer/white,
+/area/adminlevel/chinook/medical)
 "IA" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/structure/bed/sofa/south/grey/right,
 /turf/open/floor/kutjevo/tan,
-/area/adminlevel/chinook/event)
-"IB" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/event)
 "IC" = (
 /obj/structure/bed/chair/comfy/black,
@@ -8559,11 +8325,6 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/orange/east,
 /area/adminlevel/chinook/engineering)
-"IK" = (
-/turf/closed/shuttle/ert{
-	icon_state = "rightengine_1"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "IL" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/green/north,
@@ -8604,6 +8365,13 @@
 	},
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook)
+"IV" = (
+/obj/vehicle/powerloader,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/test_floor4,
+/area/adminlevel/chinook/cargo)
 "IW" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -8666,6 +8434,13 @@
 	},
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/chinook)
+"Ji" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/barricade/handrail/strata{
+	layer = 4.5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "Jm" = (
 /obj/structure/bed/sofa/south/grey/left,
 /turf/open/floor/kutjevo/tan,
@@ -8742,12 +8517,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
-"JB" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "JC" = (
 /obj/structure/machinery/vending/hydroseeds,
 /turf/open/floor/plating/plating_catwalk,
@@ -8773,14 +8542,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/chinook/medical)
-"JI" = (
-/obj/structure/platform,
-/obj/structure/stairs/perspective{
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/almayer,
-/area/adminlevel/chinook/cargo)
 "JJ" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/red/northeast,
@@ -8836,10 +8597,6 @@
 /obj/item/clothing/under/shorts/grey,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
-"JU" = (
-/obj/structure/platform_decoration,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "JV" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/cargo,
@@ -8859,15 +8616,11 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
-"Kd" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform{
-	dir = 4
-	},
+"Kc" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
+/area/adminlevel/chinook/engineering)
 "Ke" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -8882,21 +8635,6 @@
 "Ki" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/almayer,
-/area/adminlevel/chinook/engineering)
-"Kj" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_full"
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
-"Kl" = (
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Km" = (
 /obj/structure/bed,
@@ -9022,17 +8760,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook)
-"KK" = (
-/obj/structure/closet/crate,
-/obj/item/clothing/gloves/marine/insulated,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/platform_decoration{
-	dir = 1
-	},
-/turf/open/floor/almayer/cargo,
-/area/adminlevel/chinook/cargo)
 "KM" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -9063,6 +8790,10 @@
 "KT" = (
 /turf/open/floor/almayer/silver/northeast,
 /area/adminlevel/chinook)
+"KU" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
 "KV" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -9392,6 +9123,10 @@
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/chinook)
+"LZ" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "Mb" = (
 /turf/open/floor/kutjevo/tan/plate,
 /area/adminlevel/chinook/event)
@@ -9450,6 +9185,11 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
+"Mo" = (
+/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/east,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "Mp" = (
 /obj/structure/prop/almayer/name_stencil{
 	icon_state = "chinook4";
@@ -9461,11 +9201,6 @@
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
-"Ms" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan5"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "Mt" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/book/manual/marine_law{
@@ -9474,6 +9209,11 @@
 	},
 /turf/open/floor/carpet,
 /area/adminlevel/chinook/sec)
+"Mu" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer/plating_striped/east,
+/area/adminlevel/chinook/cargo)
 "Mv" = (
 /obj/effect/spawner/random/tool,
 /obj/item/clothing/gloves/marine/insulated,
@@ -9522,12 +9262,6 @@
 	},
 /turf/open/floor/almayer/red,
 /area/adminlevel/chinook/sec)
-"MD" = (
-/obj/structure/platform_decoration{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "ME" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/book/manual/marine_law{
@@ -9615,6 +9349,18 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
+"MZ" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
+"Na" = (
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	id = "chinookairlock1";
+	name = "\improper Chinook Shuttle Airlock"
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/shuttle)
 "Nb" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plating/northeast,
@@ -9869,13 +9615,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
-"Oj" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/largecrate/random/barrel/yellow,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "On" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/defibrillator,
@@ -9907,6 +9646,14 @@
 /obj/structure/closet/secure_closet/medical_doctor,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
+"Ov" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/kutjevo/plate,
+/area/adminlevel/chinook/event)
 "Ow" = (
 /obj/structure/bed/chair/comfy{
 	dir = 4
@@ -10010,15 +9757,7 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
-"OS" = (
-/obj/structure/prop/pred_flight{
-	icon_state = "syndishuttle";
-	name = "shuttle control console"
-	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "OT" = (
-/obj/structure/machinery/cm_vending/clothing/synth/snowflake,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -10060,13 +9799,6 @@
 "OY" = (
 /turf/open/floor/carpet,
 /area/adminlevel/chinook)
-"OZ" = (
-/obj/structure/platform,
-/obj/structure/barricade/handrail/strata{
-	layer = 4.5
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "Pa" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigarettes/emeraldgreen{
@@ -10093,12 +9825,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
-"Pe" = (
-/obj/structure/platform_decoration/strata/metal{
-	dir = 4
-	},
-/turf/open/gm/river/pool,
-/area/adminlevel/chinook)
 "Pf" = (
 /turf/open/floor/kutjevo/colors/blue/edge/east,
 /area/adminlevel/chinook)
@@ -10140,15 +9866,6 @@
 /obj/item/trash/uscm_mre,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
-"Po" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N"
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "Pp" = (
 /obj/item/reagent_container/glass/bucket/janibucket,
 /turf/open/floor/almayer/plate,
@@ -10243,6 +9960,10 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
+"PD" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/kutjevo,
+/area/adminlevel/chinook/event)
 "PE" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -10258,6 +9979,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
+"PH" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "PI" = (
 /obj/structure/machinery/sleep_console{
 	dir = 8
@@ -10270,20 +9999,23 @@
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/sec)
-"PL" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	id = "chinookairlock1";
-	name = "\improper Chinook Shuttle Airlock"
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/shuttle/unpowered)
 "PM" = (
 /turf/open/floor/almayer/green/west,
 /area/adminlevel/chinook)
 "PP" = (
 /turf/open/floor/almayer/green,
 /area/adminlevel/chinook)
+"PQ" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/barricade/handrail/strata{
+	layer = 4.5
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "PR" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/storage/toolbox/mechanical,
@@ -10389,11 +10121,10 @@
 /obj/item/tool/soap,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
-"Qk" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan21"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
+"Qj" = (
+/obj/docking_port/stationary/emergency_response/chinook_port,
+/turf/open/floor/plating,
+/area/adminlevel/chinook/shuttle)
 "Qm" = (
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/chinook/offices)
@@ -10423,7 +10154,7 @@
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/engineering)
 "Qs" = (
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 3;
 	pixel_y = -1
 	},
@@ -10433,7 +10164,7 @@
 	pixel_y = 2
 	},
 /obj/structure/surface/table/reinforced/black,
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -10494,7 +10225,7 @@
 	pixel_y = 1;
 	pixel_x = 1
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 10;
 	pixel_y = 6
 	},
@@ -10678,12 +10409,6 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/offices)
-"Rp" = (
-/obj/structure/platform{
-	dir = 4
-	},
-/turf/open/floor/almayer/plating_striped/east,
-/area/adminlevel/chinook/cargo)
 "Rq" = (
 /obj/structure/closet/fireaxecabinet{
 	pixel_y = 25
@@ -10696,21 +10421,6 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
-"Rt" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/sign/safety/high_voltage{
-	pixel_x = -15;
-	pixel_y = 5
-	},
-/obj/structure/sign/safety/hazard{
-	pixel_x = -15;
-	pixel_y = -7
-	},
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "Rw" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/sterile_green_corner/east,
@@ -10741,12 +10451,6 @@
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/adminlevel/chinook/sec)
-"RD" = (
-/obj/structure/machinery/light,
-/obj/structure/platform,
-/obj/structure/prop/invuln/fusion_reactor,
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "RE" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
@@ -10857,6 +10561,11 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/sec)
+"Sf" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "Sg" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -11050,14 +10759,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook)
-"SV" = (
-/obj/structure/platform/stair_cut/alt,
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/engineering)
 "SX" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
 /turf/open/floor/almayer/test_floor5,
@@ -11098,9 +10799,6 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
-"Ti" = (
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "Tj" = (
 /turf/open/floor/almayer/bluecorner/west,
 /area/adminlevel/chinook)
@@ -11483,6 +11181,15 @@
 /obj/structure/machinery/computer/sentencing,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/chinook/sec)
+"US" = (
+/obj/structure/closet/crate,
+/obj/item/clothing/gloves/marine/insulated,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/almayer/cargo,
+/area/adminlevel/chinook/cargo)
 "UU" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/straight_jacket,
@@ -11499,11 +11206,6 @@
 /obj/item/clothing/glasses/sunglasses/blindfold,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
-"UV" = (
-/turf/closed/shuttle/ert{
-	icon_state = "stan_rightengine"
-	},
-/area/adminlevel/chinook/shuttle/unpowered)
 "UW" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
@@ -11520,16 +11222,6 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/adminlevel/chinook/medical)
-"UY" = (
-/obj/vehicle/powerloader,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/adminlevel/chinook/cargo)
 "UZ" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -11537,10 +11229,6 @@
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/sec)
-"Va" = (
-/obj/structure/surface/rack,
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "Vb" = (
 /turf/open/floor/almayer/blue/west,
 /area/adminlevel/chinook)
@@ -11639,6 +11327,14 @@
 /obj/structure/largecrate/supply/generator,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
+"Vy" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "Vz" = (
 /turf/open/floor/almayer/silver/west,
 /area/adminlevel/chinook)
@@ -11651,6 +11347,14 @@
 	},
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook/sec)
+"VC" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
+"VD" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "VE" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -11678,6 +11382,15 @@
 /obj/structure/machinery/telecomms/receiver,
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/chinook/engineering)
+"VL" = (
+/obj/structure/largecrate/supply,
+/obj/effect/spawner/random/tool,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/sign/safety/coffee{
+	pixel_x = -16
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "VN" = (
 /obj/item/smallDelivery{
 	pixel_x = -13;
@@ -11754,6 +11467,14 @@
 	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/adminlevel/chinook/medical)
+"VX" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap";
+	layer = 3.5
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/cargo)
 "VY" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/chinook/offices)
@@ -11803,6 +11524,15 @@
 	},
 /turf/open/floor/almayer/emerald/west,
 /area/adminlevel/chinook/shuttle)
+"Wj" = (
+/obj/structure/stairs/perspective{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap";
+	layer = 2.1
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/turf/open/floor/kutjevo/plate,
+/area/adminlevel/chinook/event)
 "Wl" = (
 /obj/structure/closet/crate,
 /obj/item/circuitboard,
@@ -12012,6 +11742,10 @@
 "WY" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/space)
+"WZ" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/kutjevo/plate,
+/area/adminlevel/chinook/event)
 "Xa" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/item/reagent_container/food/drinks/cans/beer{
@@ -12082,9 +11816,6 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/silver/northeast,
 /area/adminlevel/chinook)
-"Xl" = (
-/turf/open/floor/plating,
-/area/adminlevel/chinook/shuttle/unpowered)
 "Xm" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
@@ -12168,17 +11899,6 @@
 /obj/structure/largecrate/supply/medicine/optable,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/medical)
-"XK" = (
-/obj/vehicle/powerloader,
-/obj/structure/platform{
-	dir = 4
-	},
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/almayer/test_floor4,
-/area/adminlevel/chinook/cargo)
 "XL" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -12251,6 +11971,11 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/red/east,
 /area/adminlevel/chinook)
+"XX" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/prop/invuln/fusion_reactor,
+/turf/open/floor/almayer/plating/northeast,
+/area/adminlevel/chinook/engineering)
 "XZ" = (
 /obj/structure/machinery/chem_dispenser,
 /turf/open/floor/almayer/sterile_green_side/east,
@@ -12323,12 +12048,6 @@
 "Yj" = (
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/cryo)
-"Yk" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/adminlevel/chinook/cargo)
 "Ym" = (
 /obj/structure/machinery/computer/crew,
 /turf/open/floor/almayer/sterile_green_corner/east,
@@ -12446,6 +12165,11 @@
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer/test_floor5,
 /area/adminlevel/chinook/cryo)
+"YJ" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata,
+/turf/open/gm/river/pool,
+/area/adminlevel/chinook)
 "YK" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
@@ -12556,7 +12280,7 @@
 	pixel_y = 8;
 	pixel_x = 5
 	},
-/obj/item/tool/pen/fountain{
+/obj/item/tool/pen/multicolor/fountain{
 	pixel_x = 5;
 	pixel_y = 6
 	},
@@ -12646,9 +12370,6 @@
 /obj/structure/machinery/constructable_frame,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
-"Zt" = (
-/turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
-/area/adminlevel/chinook/shuttle/unpowered)
 "Zu" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/space)
@@ -14261,17 +13982,17 @@ ow
 lO
 ZZ
 CF
-xq
-wX
-wX
-wX
-wX
-wX
-wX
-wX
-wX
-wX
-to
+vY
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+Cc
+YJ
 bY
 fu
 af
@@ -14388,7 +14109,7 @@ ZZ
 lO
 ZZ
 CF
-pv
+CD
 pX
 pX
 pX
@@ -14398,7 +14119,7 @@ pX
 BJ
 pX
 pX
-nk
+Bm
 bY
 fu
 af
@@ -14514,8 +14235,8 @@ ZZ
 Tl
 lO
 qZ
-qv
-Pe
+rZ
+CR
 pX
 pX
 pX
@@ -14525,7 +14246,7 @@ pX
 pX
 pX
 pX
-nk
+Bm
 bY
 fu
 af
@@ -14641,8 +14362,8 @@ ZZ
 Tl
 lO
 qZ
-Ep
-mC
+io
+VD
 pX
 pX
 pX
@@ -14652,7 +14373,7 @@ pX
 pX
 pX
 pX
-nk
+Bm
 bY
 SP
 af
@@ -14769,7 +14490,7 @@ ow
 lO
 ZZ
 CF
-pv
+CD
 pX
 BJ
 pX
@@ -14779,7 +14500,7 @@ pX
 pX
 pX
 pX
-nk
+Bm
 fL
 SP
 af
@@ -14896,17 +14617,17 @@ ZZ
 lO
 ZZ
 CF
-xf
-eO
-eO
-eO
-eO
-eO
-eO
-mC
-gM
-eO
-mD
+Mo
+Cv
+Cv
+Cv
+Cv
+Cv
+Cv
+VD
+LZ
+Cv
+Hw
 bY
 SP
 af
@@ -15030,8 +14751,8 @@ oG
 Vb
 Vb
 gj
-HA
-eq
+ft
+rg
 Ry
 Vb
 ZZ
@@ -18841,14 +18562,14 @@ UK
 YA
 bz
 Ki
-sW
-pg
+nw
+ke
 UK
 UK
 UK
 UK
-iw
-yO
+EY
+PQ
 ZX
 Ig
 RM
@@ -18968,14 +18689,14 @@ UK
 YD
 bz
 Ki
-ot
-Kl
-AV
-eA
-Rt
-AV
-Fv
-OZ
+VC
+yt
+wa
+PH
+EH
+wa
+gx
+Ji
 IP
 zC
 Zz
@@ -19095,14 +18816,14 @@ UK
 YG
 bz
 Ki
-Gi
-MD
+Sf
+Gy
 no
 no
 no
 no
 UE
-OZ
+Ji
 jk
 Ig
 RM
@@ -19223,13 +18944,13 @@ Qr
 bz
 Ig
 uW
-ot
+VC
 mA
 mA
 mA
 mA
 iP
-zX
+XX
 UK
 jS
 RM
@@ -19350,13 +19071,13 @@ HW
 ZB
 Il
 Rl
-ot
+VC
 Hn
 Hn
 Hn
 Hn
 iP
-zX
+XX
 UK
 Lm
 RM
@@ -19477,13 +19198,13 @@ Mm
 Nv
 Il
 PR
-ot
+VC
 Hn
 Hn
 Hn
 Hn
 iP
-RD
+Du
 UK
 bJ
 RM
@@ -19604,13 +19325,13 @@ et
 bz
 Ig
 Ct
-ot
+VC
 Vg
 Hy
 tS
 lV
 iP
-zX
+XX
 UK
 lH
 RM
@@ -19621,7 +19342,7 @@ UK
 bz
 jI
 pp
-RM
+qs
 XH
 df
 df
@@ -19730,14 +19451,14 @@ gh
 YI
 bz
 Ki
-cm
-Fv
+Kc
+gx
 mA
 mA
 mA
 mA
 UE
-OZ
+Ji
 jK
 Ig
 OC
@@ -19857,14 +19578,14 @@ gh
 UF
 bz
 Ki
-ot
-JU
-eG
-pT
-eG
-eG
-MD
-OZ
+VC
+lp
+zo
+yk
+zo
+zo
+Gy
+Ji
 cv
 zC
 hd
@@ -19984,14 +19705,14 @@ gh
 YK
 bz
 Ki
-SV
-nj
+my
+jX
 UK
 UK
 UK
 UK
-jp
-zU
+Vy
+DF
 dr
 iZ
 Qh
@@ -20890,7 +20611,7 @@ Iv
 Zc
 Iv
 Iv
-Iv
+Iz
 Iv
 KI
 Iv
@@ -22367,8 +22088,8 @@ Tl
 Tm
 TQ
 TQ
-oh
-ld
+tg
+iM
 SL
 wj
 wj
@@ -22495,7 +22216,7 @@ Tm
 Vr
 Vr
 Vr
-BP
+cq
 SL
 wj
 wj
@@ -22622,7 +22343,7 @@ Tm
 lD
 Vr
 Vr
-BP
+cq
 SL
 wj
 wj
@@ -22749,7 +22470,7 @@ Tm
 WU
 Vr
 om
-pP
+KU
 Vr
 Vr
 Vr
@@ -22811,7 +22532,7 @@ As
 pw
 JY
 pw
-qS
+DU
 pw
 gp
 pw
@@ -22876,7 +22597,7 @@ Tm
 kG
 Vr
 om
-pP
+KU
 Vr
 Vr
 Vr
@@ -22929,16 +22650,16 @@ aw
 aw
 lQ
 lQ
-pU
-JI
+if
+xQ
 As
 lQ
 As
 As
 pw
 pw
-Kj
-ay
+zy
+GY
 pw
 pw
 pw
@@ -23003,7 +22724,7 @@ Tm
 Qt
 Vr
 Vr
-BP
+cq
 SL
 wj
 wj
@@ -23051,18 +22772,18 @@ ph
 aw
 Vq
 dn
-FX
+bT
 LQ
 OD
-KK
-Yk
-uC
-rw
-HQ
-vQ
+US
+MZ
+nK
+cb
+VL
+br
 OH
 As
-XK
+IV
 WV
 hi
 ar
@@ -23130,7 +22851,7 @@ Tm
 Vr
 Vr
 Vr
-BP
+cq
 SL
 wj
 wj
@@ -23178,7 +22899,7 @@ pe
 aw
 Vq
 dn
-qS
+DU
 Nt
 pw
 te
@@ -23256,8 +22977,8 @@ kq
 Tm
 TQ
 TQ
-oz
-BV
+AA
+PD
 SL
 wj
 wj
@@ -23304,8 +23025,8 @@ uF
 qf
 aw
 Nw
-BU
-uC
+yG
+nK
 Vq
 pw
 Vq
@@ -23316,10 +23037,10 @@ pw
 pw
 Nc
 As
-UY
+Gr
 WV
-Kd
-Cp
+dm
+pO
 pw
 Ex
 BC
@@ -23446,7 +23167,7 @@ Ke
 fi
 os
 ik
-qS
+DU
 pw
 pw
 TA
@@ -23558,8 +23279,8 @@ aw
 aw
 aw
 cQ
-jb
-JB
+mx
+At
 hS
 pw
 me
@@ -23570,10 +23291,10 @@ pw
 pw
 pw
 zL
-Po
-Yk
-Yk
-uC
+vL
+MZ
+MZ
+nK
 pw
 pw
 vZ
@@ -23686,13 +23407,13 @@ Nm
 lQ
 Vq
 cu
-sU
-Rp
-Rp
-Rp
-Rp
-ls
-JB
+Mu
+ig
+ig
+ig
+ig
+Ee
+At
 VN
 pw
 pw
@@ -23819,7 +23540,7 @@ Vq
 Vq
 Vq
 Vq
-pl
+VX
 lb
 pw
 pw
@@ -23947,8 +23668,8 @@ Vq
 Vq
 Vq
 Vq
-jb
-JB
+mx
+At
 pw
 Ke
 pw
@@ -24075,7 +23796,7 @@ Mv
 Vq
 Go
 YM
-qS
+DU
 Cn
 Id
 vU
@@ -24202,7 +23923,7 @@ uj
 Vq
 Vq
 bA
-Oj
+mL
 Sc
 Id
 BC
@@ -25595,23 +25316,23 @@ QF
 QF
 QF
 Br
-uR
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-uR
+HI
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+HI
 tC
 af
 Wf
@@ -25662,7 +25383,7 @@ Zu
 al
 Qx
 TQ
-il
+WZ
 SL
 SL
 kA
@@ -25722,23 +25443,23 @@ Yp
 Yp
 Yp
 Br
-Xl
-Xl
-Xl
-gy
-DJ
-GD
-DJ
-DJ
-DJ
-GD
-DJ
-fD
-Cb
-oD
-ri
-Xl
-Xl
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+Qj
+sq
+sq
 hM
 af
 Wf
@@ -25789,11 +25510,11 @@ Zu
 al
 Qx
 NU
-il
-iD
-jN
-jN
-ld
+WZ
+nW
+BT
+BT
+iM
 Mc
 Mc
 zw
@@ -25849,23 +25570,23 @@ lh
 lh
 tm
 Br
-Xl
-Xl
-Xl
-Qk
-Va
-Ti
-aj
-aj
-aj
-Ti
-Va
-pi
-DJ
-DJ
-Ad
-Xl
-Xl
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
 hM
 af
 Wf
@@ -25916,11 +25637,11 @@ Zu
 al
 SR
 TQ
-in
-iG
+DI
+Ov
 dQ
 kB
-IB
+WZ
 Mc
 Mc
 nP
@@ -25976,23 +25697,23 @@ Mh
 Mh
 Mh
 Br
-Xl
-Xl
-gy
-tf
-hc
-Zt
-Zt
-Zt
-Zt
-Zt
-xW
-Ti
-Ti
-Ti
-fw
-Xl
-Xl
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
 hM
 af
 Wf
@@ -26047,7 +25768,7 @@ ip
 iH
 WQ
 Hz
-IB
+WZ
 Mc
 Mc
 nV
@@ -26103,23 +25824,23 @@ Br
 Br
 Br
 Br
-Xl
-Xl
-yh
-OS
-mX
-El
-El
-El
-El
-El
-mX
-Zt
-Zt
-Zt
-Ai
-Xl
-Xl
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
 hM
 af
 Wf
@@ -26174,7 +25895,7 @@ BX
 JR
 Vr
 kC
-IB
+WZ
 Hz
 Vr
 Vr
@@ -26230,23 +25951,23 @@ yw
 WI
 mu
 Br
-Xl
-Xl
-tN
-xK
-vC
-Zt
-Zt
-Zt
-Zt
-Zt
-CP
-Ti
-Ti
-Ti
-fw
-Xl
-Xl
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
 hM
 af
 Wf
@@ -26301,7 +26022,7 @@ BX
 JR
 WQ
 kD
-IB
+WZ
 mg
 IM
 Vr
@@ -26357,23 +26078,23 @@ Um
 Um
 Um
 Br
-Xl
-Xl
-Xl
-Qk
-Va
-Ti
-pG
-pG
-pG
-Ti
-Va
-AU
-Ms
-Ms
-jR
-Xl
-Xl
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
 hM
 af
 Wf
@@ -26428,7 +26149,7 @@ BX
 JR
 Vr
 kG
-IB
+WZ
 mi
 Vr
 Vr
@@ -26484,23 +26205,23 @@ DO
 DO
 mh
 Br
-Xl
-Xl
-Xl
-tN
-Ms
-GD
-Ms
-Ms
-Ms
-GD
-Ms
-UV
-fP
-Dy
-IK
-Xl
-Xl
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
 hM
 af
 Wf
@@ -26555,7 +26276,7 @@ iq
 JX
 WQ
 Hz
-IB
+WZ
 Mc
 Mc
 nX
@@ -26611,23 +26332,23 @@ Tu
 Tu
 Tu
 Br
-uR
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-Xl
-uR
+HI
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+sq
+HI
 tC
 af
 Wf
@@ -26678,11 +26399,11 @@ Zu
 al
 SR
 TQ
-iu
-iL
+Wj
+gn
 dQ
 kB
-IB
+WZ
 Mc
 Mc
 nY
@@ -26738,23 +26459,23 @@ Se
 yy
 kk
 Br
-jq
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-PL
-jq
+tC
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+Na
+tC
 tC
 af
 oi
@@ -26805,11 +26526,11 @@ Zu
 al
 Qx
 NU
-il
-iN
-jO
-jO
-BV
+WZ
+CO
+ev
+ev
+PD
 Mc
 Mc
 zw
@@ -26932,7 +26653,7 @@ Zu
 al
 Qx
 TQ
-il
+WZ
 SL
 SL
 kI

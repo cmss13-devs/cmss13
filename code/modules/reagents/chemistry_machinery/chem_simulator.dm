@@ -19,6 +19,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "modifier"
 	active_power_usage = 1000
+	health = STRUCTURE_HEALTH_REINFORCED
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
 	bound_x = 32
@@ -271,6 +272,7 @@
 				if(reference_prop.code != params["property_code"])
 					continue
 				reference_property = reference_prop
+			update_costs()
 			if(!reference_property)
 				to_chat(usr, SPAN_WARNING("The [src] makes a suspicious wail."))
 				return
@@ -556,6 +558,9 @@
 				if(target_property.level >= GLOB.chemical_data.clearance_level*TECHTREE_LEVEL_MULTIPLIER + 2 && GLOB.chemical_data.clearance_level < 5)
 					status_bar = "CLEARANCE INSUFFICIENT FOR AMPLIFICATION"
 					return FALSE
+				if(target_property.level >= target_property.max_level)
+					status_bar = "PROPERTY CANNOT BE AMPLIFIED FURTHER"
+					return FALSE
 		else
 			status_bar = "TARGET NOT SELECTED"
 			return FALSE
@@ -610,7 +615,7 @@
 	var/datum/reagent/D = GLOB.chemical_reagents_list[id]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	report.name = "Simulation result for [D.id]"
-	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.id]</H2></center>"
+	report.info += "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Company Document</B><BR>Simulated Synthesis Report</I><HR><H2>Result for [D.id]</H2></center>"
 	report.generate(D)
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the Synthesis Simulator.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
 	playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)

@@ -1,6 +1,8 @@
 /datum/equipment_preset/survivor/engineer/soro
 	name = "Survivor - Sorokyne Strata State Contractor"
 	assignment = "Sorokyne Strata State Contractor"
+	minimap_icon = "upp_cont"
+	minimap_background = "background_upp"
 
 /datum/equipment_preset/survivor/engineer/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(new_human), WEAR_BODY)
@@ -14,6 +16,8 @@
 /datum/equipment_preset/survivor/security/soro
 	name = "Survivor - Sorokyne Strata Security"
 	assignment = "Sorokyne Strata Security"
+	minimap_icon = "upp_sec"
+	minimap_background = "background_upp"
 
 /datum/equipment_preset/survivor/security/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(new_human), WEAR_BODY)
@@ -28,6 +32,8 @@
 /datum/equipment_preset/survivor/doctor/soro
 	name = "Survivor - Sorokyne Strata Doctor"
 	assignment = "Sorokyne Strata Doctor"
+	minimap_icon = "upp_doc"
+	minimap_background = "background_upp"
 
 /datum/equipment_preset/survivor/doctor/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(new_human), WEAR_BODY)
@@ -38,6 +44,8 @@
 /datum/equipment_preset/survivor/scientist/soro
 	name = "Survivor - Sorokyne Strata Researcher"
 	assignment = "Sorokyne Strata Researcher"
+	minimap_icon = "upp_sci"
+	minimap_background = "background_upp"
 
 /datum/equipment_preset/survivor/scientist/soro/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/blue(new_human), WEAR_BODY)

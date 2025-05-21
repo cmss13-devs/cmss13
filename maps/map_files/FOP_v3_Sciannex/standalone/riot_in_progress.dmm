@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
+"ab" = (
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/turf/open/floor/prison,
+/area/fiorina/station/security)
 "am" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/donut_box{
@@ -31,7 +39,7 @@
 	dir = 8;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "bl" = (
@@ -82,7 +90,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/security)
 "cI" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/cell_stripe/east,
 /area/fiorina/station/security)
 "cZ" = (
@@ -338,7 +346,7 @@
 /turf/open/floor/prison,
 /area/fiorina/lz/near_lzII)
 "nD" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
@@ -724,14 +732,17 @@
 /area/fiorina/station/security)
 "BJ" = (
 /obj/structure/closet/secure_closet/guncabinet{
-	req_access = null
+	req_access = null;
+	name = "CMB riot locker"
 	},
-/obj/item/weapon/gun/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/ammo_magazine/smg/mp5,
-/obj/item/clothing/under/marine/ua_riot,
-/obj/item/clothing/suit/storage/marine/veteran/ua_riot,
-/obj/item/prop/helmetgarb/riot_shield,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/clothing/mask/gas/swat,
+/obj/item/clothing/head/helmet/marine/veteran/cmb,
+/obj/item/clothing/glasses/mgoggles/cmb_riot_shield,
+/obj/item/clothing/suit/storage/marine/veteran/cmb,
+/obj/item/clothing/under/marine/veteran/cmb,
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "Cb" = (
@@ -862,7 +873,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "HH" = (
-/obj/item/weapon/gun/launcher/grenade/m81/riot,
+/obj/item/weapon/gun/launcher/grenade/m84,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "HL" = (
@@ -951,7 +962,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "NL" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/security)
 "NN" = (
@@ -959,7 +970,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "Ox" = (
-/obj/structure/platform,
+/obj/structure/platform/metal/almayer,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/station/security)
 "OA" = (
@@ -1065,7 +1076,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut/alt,
+/obj/structure/platform/metal/stair_cut/platform_right,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "Tn" = (
@@ -1485,8 +1496,8 @@ Su
 YH
 hg
 PA
-sq
-sq
+ab
+aa
 sq
 PA
 FH

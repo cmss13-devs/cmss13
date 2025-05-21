@@ -161,10 +161,10 @@
 /area/lv624/ground/jungle/north_jungle)
 "bw" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "by" = (
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "bz" = (
 /obj/effect/landmark/lv624/fog_blocker,
@@ -246,14 +246,14 @@
 /area/lv624/ground/river/central_river)
 "Hi" = (
 /obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "HT" = (
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "Ir" = (
-/obj/structure/flora/bush/ausbushes/ppflowers,
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/river,
 /area/lv624/ground/river/central_river)
 "Jl" = (
@@ -266,7 +266,7 @@
 /area/lv624/ground/river/central_river)
 "Ow" = (
 /obj/structure/flora/jungle/planttop1,
-/turf/open/gm/dirtgrassborder/south,
+/turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/jungle/north_jungle)
 "Rp" = (
 /obj/structure/flora/jungle/planttop1,

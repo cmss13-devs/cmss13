@@ -3,6 +3,11 @@
 	desc = "A flare gun issued to JTAC operators to use with flares. Comes with a miniscope. One shot, one... life saved?"
 	icon_state = "m82f"
 	item_state = "m82f"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/pistols_righthand.dmi'
+	)
 	current_mag = /obj/item/ammo_magazine/internal/flare
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	fire_sound = 'sound/weapons/gun_flare.ogg'
@@ -54,6 +59,10 @@
 	update_icon()
 
 /obj/item/weapon/gun/flare/attackby(obj/item/attacking_item, mob/user)
+	if(istype(attacking_item, /obj/item/stack/repairable))
+		attempt_repair(user, attacking_item)
+		return
+
 	if(istype(attacking_item, /obj/item/device/flashlight/flare))
 		var/obj/item/device/flashlight/flare/attacking_flare = attacking_item
 		if(attacking_flare.on)
@@ -126,6 +135,9 @@
 	fired_flare.visible_message(SPAN_WARNING("\A [fired_flare] bursts into brilliant light in the sky!"))
 	fired_flare.invisibility = INVISIBILITY_MAXIMUM
 	fired_flare.mouse_opacity = FALSE
+	fired_flare.fuel = 3 MINUTES
+	fired_flare.light_range = 6
+	fired_flare.light_power = 3
 	playsound(user.loc, fire_sound, 50, 1)
 
 	var/obj/effect/flare_light/light_effect = new (fired_flare, fired_flare.light_range, fired_flare.light_power, fired_flare.light_color)
@@ -146,7 +158,7 @@
 	desc = "You are not supposed to see this. Please report it."
 	icon_state = "" //No sprite
 	invisibility = INVISIBILITY_MAXIMUM
-	light_system = STATIC_LIGHT
+	light_system = MOVABLE_LIGHT
 
 /obj/effect/flare_light/Initialize(mapload, light_range, light_power, light_color)
 	. = ..()

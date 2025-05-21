@@ -2,12 +2,15 @@
 //Shockwaves
 //------------------------------------------
 
+
 /obj/effect/shockwave
 	icon = 'icons/effects/light_overlays/shockwave.dmi'
 	icon_state = "shockwave"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	plane = DISPLACEMENT_PLATE_RENDER_LAYER
 	pixel_x = -496
 	pixel_y = -496
+	vis_flags = 0
 
 /obj/effect/shockwave/Initialize(mapload, radius, speed, easing_type = LINEAR_EASING, y_offset, x_offset)
 	. = ..()

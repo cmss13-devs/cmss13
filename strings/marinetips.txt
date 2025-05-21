@@ -105,3 +105,11 @@ The Queen can unbolt and break dropship doors by prying them open, even if they 
 If you jump out of a dropship with a parachute on (when there is no paradrop system active), you will land at a random location on the map.
 If you push crates out of a dropship when paradropping, it will land near the paradrop drop point.
 When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.
+Medbay cryotubes will process chemicals in the dead if Cryoxadone and or Clonexadone is present. In a mass-casualty situation or when a patient has severe injuries, consider injecting the dead with chemicals and putting them in the tubes.
+Unchambered magazine-fed guns can be chambered manually with a handful of bullets, so long as the caliber matches.
+Guns can jam occasionally after a certain durability threshold, and certain magazines, such as extended magazines can increase the chance to jam.
+Multi-Purpose Combat Lubricants can repair your gun at any durability, granted that it isn't worn-out and broken, for that you will need a repair kit.
+Your Engineering and Firearms skills have an effect on gun repairs. Whether that increases or decreases depends on your skills. Ask your friendly Synth for the best repair-job there is!
+You don't need to hold onto your firearm to repair it, you can set it down on a table or on the ground and it'll work just fine, provided you have something to repair it with.
+While on the ground, stray bullets, fire, and explosions can affect your guns durability. The durability loss depends on the severity and damage.
+The type of ammo fired can have an affect on a guns durability. While normal bullets don't damage as much and as often, special bullets, such as incendiary bullets, can damage the weapon much more and more often.

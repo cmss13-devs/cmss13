@@ -85,6 +85,8 @@
 
 /atom/movable/screen/action_button/proc/set_maptext(new_maptext, new_maptext_x, new_maptext_y)
 	overlays -= maptext_overlay
+	if(!new_maptext)
+		return
 	maptext_overlay = image(null, null, null, layer + 0.1)
 	maptext_overlay.maptext = new_maptext
 	if(new_maptext_x)
@@ -153,8 +155,8 @@
 	if (..())
 		return TRUE
 
-	var/icon_x = text2num(mods["icon-x"])
-	var/icon_y = text2num(mods["icon-y"])
+	var/icon_x = text2num(mods[ICON_X])
+	var/icon_y = text2num(mods[ICON_Y])
 	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
 
 	switch(icon_y)
@@ -321,7 +323,7 @@
 	if(user.is_mob_incapacitated())
 		return TRUE
 
-	if (mods["ctrl"])
+	if (mods[CTRL_CLICK])
 		carbon.toggle_throw_mode(THROW_MODE_HIGH)
 	else
 		carbon.toggle_throw_mode(THROW_MODE_NORMAL)
@@ -401,8 +403,8 @@
 	return 1
 
 /atom/movable/screen/act_intent/corner/clicked(mob/user, list/mods)
-	var/_x = text2num(mods["icon-x"])
-	var/_y = text2num(mods["icon-y"])
+	var/_x = text2num(mods[ICON_X])
+	var/_y = text2num(mods[ICON_Y])
 
 	if(_x<=16 && _y<=16)
 		user.a_intent_change(INTENT_HARM)
@@ -461,11 +463,11 @@
 	if(!istype(earpiece) || !earpiece.has_hud || !has_access)
 		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
 		return
-	if(mods["shift"])
+	if(mods[SHIFT_CLICK])
 		var/area/current_area = get_area(user)
 		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
 		return
-	else if(mods["alt"])
+	else if(mods[ALT_CLICK])
 		earpiece.switch_tracker_target()
 		return
 	if(user.get_active_hand())
@@ -481,14 +483,14 @@
 /atom/movable/screen/mark_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
-	if(mods["shift"] && user.tracked_marker)
+	if(mods[SHIFT_CLICK] && user.tracked_marker)
 		if(user.observed_xeno == user.tracked_marker)
 			user.overwatch(user.tracked_marker, TRUE) //passing in an obj/effect into a proc that expects mob/xenomorph B)
 		else
 			to_chat(user, SPAN_XENONOTICE("We psychically observe the [user.tracked_marker.mark_meaning.name] resin mark in [get_area_name(user.tracked_marker)]."))
 			user.overwatch(user.tracked_marker) //this is so scuffed, sorry if this causes errors
 		return
-	if(mods["alt"] && user.tracked_marker)
+	if(mods[ALT_CLICK] && user.tracked_marker)
 		user.stop_tracking_resin_mark()
 		return
 	if(!user.hive)
@@ -515,14 +517,14 @@
 /atom/movable/screen/queen_locator/clicked(mob/living/carbon/xenomorph/user, mods)
 	if(!istype(user))
 		return FALSE
-	if(mods["shift"])
+	if(mods[SHIFT_CLICK])
 		var/area/current_area = get_area(user)
 		to_chat(user, SPAN_NOTICE("We are currently at: <b>[current_area.name]</b>."))
 		return
 	if(!user.hive)
 		to_chat(user, SPAN_WARNING("We don't belong to a hive!"))
 		return FALSE
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		var/list/options = list()
 		if(user.hive.living_xeno_queen)
 			// Don't need weakrefs to this or the hive core, since there's only one possible target.
@@ -550,7 +552,11 @@
 		return FALSE
 	if(HAS_TRAIT(user, TRAIT_ABILITY_BURROWED) || user.is_mob_incapacitated() || user.buckled)
 		return FALSE
-	user.overwatch(user.hive.living_xeno_queen)
+	//Xenos should not be able to track tunnels. Queen's weakref is equal to null if selected.
+	if(tracker_type != TRACKER_LEADER || !tracking_ref)
+		user.overwatch(user.hive.living_xeno_queen)
+		return
+	user.overwatch(tracking_ref.resolve())
 
 // Reset to the defaults
 /atom/movable/screen/queen_locator/proc/reset_tracking()
@@ -579,6 +585,9 @@
 			icon_state = "nightvision_full"
 			vision_define = XENO_VISION_LEVEL_FULL_NVG
 		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			icon_state = "nightvision_three_quarters"
+			vision_define = XENO_VISION_LEVEL_HIGH_NVG
+		if(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 			icon_state = "nightvision_half"
 			vision_define = XENO_VISION_LEVEL_MID_NVG
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)

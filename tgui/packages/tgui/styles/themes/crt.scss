@@ -2,8 +2,9 @@
 @use 'sass:math';
 @use 'sass:meta';
 
-$font-family: monospace;
+$font-family: monospace !default;
 $background-radial-opacity: 0.2 !default;
+$scrollbar-color-multiplier: 0.5 !default;
 
 @use '../base.scss';
 
@@ -14,15 +15,15 @@ $background-radial-opacity: 0.2 !default;
 
 %theme-crt {
   @include meta.load-css(
-    '../components/Divider.scss',
+    '~tgui/styles/components/Divider',
     $with: ('color': base.$color-fg)
   );
-  @include meta.load-css('../components/Stack.scss');
+  @include meta.load-css('~tgui/styles/components/Stack');
 
   @include meta.load-css(
-    '../components/Slider.scss',
+    '~tgui/styles/components/Slider',
     $with: (
-      'cursor-color': darken(base.$color-fg, 0.2),
+      'cursor-color': color.adjust(base.$color-fg, $lightness: -0.2%),
       'popup-background-color': base.$color-bg,
       'popup-text-color': base.$color-fg
     )
@@ -30,16 +31,17 @@ $background-radial-opacity: 0.2 !default;
 
   @include meta.load-css(
     '../components/Input.scss',
+    // Replace this when tgui core has font family fixed as !default
     $with: (
-      'text-color': base.$color-fg,
-      'background-color': base.$color-bg,
-      'border-color': base.$color-fg,
-      'font-family': $font-family
-    )
+        'text-color': base.$color-fg,
+        'background-color': base.$color-bg,
+        'border-color': base.$color-fg,
+        'font-family': $font-family
+      )
   );
 
   @include meta.load-css(
-    '../components/NumberInput.scss',
+    '~tgui/styles/components/NumberInput',
     $with: (
       'text-color': base.$color-fg,
       'background-color': base.$color-bg,
@@ -48,7 +50,7 @@ $background-radial-opacity: 0.2 !default;
   );
 
   @include meta.load-css(
-    '../components/Knob.scss',
+    '~tgui/styles/components/Knob',
     $with: (
       'ring-color': base.$color-fg,
       'knob-color': base.$color-bg,
@@ -58,12 +60,12 @@ $background-radial-opacity: 0.2 !default;
   );
 
   @include meta.load-css(
-    '../components/ProgressBar.scss',
+    '~tgui/styles/components/ProgressBar',
     $with: ('color-default-fill': base.$color-fg)
   );
 
   @include meta.load-css(
-    '../components/BlockQuote.scss',
+    '~tgui/styles/components/BlockQuote',
     $with: ('color-default': base.$color-fg)
   );
 
@@ -74,22 +76,22 @@ $background-radial-opacity: 0.2 !default;
   );
   @include meta.load-css(
     '../layouts/Layout.scss',
-    $with: ('scrollbar-color-multiplier': 0.5)
+    $with: ('scrollbar-color-multiplier': $scrollbar-color-multiplier)
   );
   @include meta.load-css(
-    '../components/Section.scss',
+    '~tgui/styles/components/Section',
     $with: ('title-text-color': base.$color-fg)
   );
   @include meta.load-css(
-    '../components/Button.scss',
+    '~tgui/styles/components/Button',
     $with: (
       'color-default': base.$color-fg,
-      'color-disabled': darken(base.$color-fg, 30)
+      'color-disabled': color.adjust(base.$color-fg, $lightness: -30%)
     )
   );
 
   @include meta.load-css(
-    '../components/Tabs.scss',
+    '~tgui/styles/components/Tabs',
     $with: (
       'tab-color': base.$color-bg,
       'tab-color-selected': base.$color-fg,
@@ -97,6 +99,11 @@ $background-radial-opacity: 0.2 !default;
       'text-color-selected': base.$color-bg,
       'tab-color-hovered': rgba(base.$color-fg, 0.3)
     )
+  );
+
+  @include meta.load-css(
+    '~tgui/styles/components/Modal',
+    $with: ('background-color': base.$color-bg)
   );
 
   .Layout__content {
@@ -115,7 +122,7 @@ $background-radial-opacity: 0.2 !default;
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(18, 16, 16, 0.1);
+    background: hsla(0, 6%, 7%, 0.1);
     opacity: 0;
     z-index: 2;
     pointer-events: none;
@@ -128,15 +135,13 @@ $background-radial-opacity: 0.2 !default;
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%,
-        rgba(0, 0, 0, 0.25) 50%
-      ),
+    background:
+      linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
       linear-gradient(
         90deg,
-        rgba(255, 0, 0, 0.06),
-        rgba(0, 255, 0, 0.02),
-        rgba(0, 0, 255, 0.06)
+        hsla(0, 100%, 50%, 0.06),
+        hsla(120, 100%, 50%, 0.02),
+        hsla(240, 100%, 50%, 0.06)
       );
     z-index: 2;
     background-size:
@@ -163,12 +168,18 @@ $background-radial-opacity: 0.2 !default;
     font-family: $font-family;
     font-weight: bold;
     border: 1px solid base.$color-fg;
+  }
+
+  .NumberInput {
+    min-height: 23px;
+  }
+
+  .Button:not(.Button--selected) {
     &:hover,
-    &:focus,
     &:visited,
     &:target {
-      background-color: base.$color-fg;
-      color: base.$color-bg;
+      background-color: transparent;
+      color: base.$color-fg;
     }
   }
 
@@ -208,6 +219,13 @@ $background-radial-opacity: 0.2 !default;
     }
   }
 
+  .Dropdown__control {
+    & > .Dropdown__selected-text,
+    & > .Dropdown__arrow-button {
+      color: hsla(0, 0%, 0%, 1);
+    }
+  }
+
   hr {
     color: base.$color-fg;
     border: 1px solid base.$color-fg;
@@ -222,7 +240,7 @@ $background-radial-opacity: 0.2 !default;
       border: 2px solid base.$color-fg;
       border-bottom: 6px solid base.$color-fg;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0);
+      background-color: hsla(0, 0%, 0%, 0);
       font-weight: bold;
     }
 

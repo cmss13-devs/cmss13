@@ -107,6 +107,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom
 	name = "Reinforced Air supply pipe"
 	explodey = FALSE
+	color = PIPE_COLOR_PURPLE
 
 /obj/structure/pipes/standard/simple/hidden/yellow
 	color = PIPE_COLOR_YELLOW
@@ -120,6 +121,8 @@
 /obj/structure/pipes/standard/simple/hidden/purple
 	color = PIPE_COLOR_PURPLE
 
+/obj/structure/pipes/standard/simple/hidden/dark
+	color = PIPE_COLOR_DARKGREY
 
 /obj/structure/pipes/standard/simple/insulated
 	icon = 'icons/obj/pipes/red_pipe.dmi'

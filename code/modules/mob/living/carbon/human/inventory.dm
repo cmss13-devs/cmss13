@@ -8,6 +8,9 @@
 		if(!I)
 			to_chat(H, SPAN_NOTICE("You are not holding anything to equip."))
 			return
+		if(I.last_equipped_slot)
+			if(equip_to_slot_if_possible(I, I.last_equipped_slot, FALSE, FALSE, TRUE))
+				return
 		if(!H.equip_to_appropriate_slot(I, 0))
 			to_chat(H, SPAN_DANGER("You are unable to equip that."))
 
@@ -215,32 +218,45 @@
 	if(!has_limb_for_slot(slot))
 		return
 
-	if(equipping_item == l_hand)
-		if(equipping_item.flags_item & NODROP)
-			return
-		l_hand = null
-		update_inv_l_hand()
-		//removes item's actions, may be readded once re-equipped to the new slot
-		for(var/item_actions in equipping_item.actions)
-			var/datum/action/action = item_actions
-			action.remove_from(src)
+	// Already handled within the proc, usually storages that force move the item themselves
+	var/static/list/no_update = list(
+		WEAR_IN_BACK,
+		WEAR_IN_SCABBARD,
+		WEAR_IN_JACKET,
+		WEAR_IN_HELMET,
+		WEAR_IN_BELT,
+		WEAR_IN_J_STORE,
+		WEAR_IN_L_STORE,
+		WEAR_IN_R_STORE
+	)
 
-	else if(equipping_item == r_hand)
-		if(equipping_item.flags_item & NODROP)
-			return
-		r_hand = null
-		update_inv_r_hand()
-		//removes item's actions, may be readded once re-equipped to the new slot
-		for(var/item_actions in equipping_item.actions)
-			var/datum/action/action = item_actions
-			action.remove_from(src)
+	if(!(slot in no_update))
+		if(equipping_item == l_hand)
+			if(equipping_item.flags_item & NODROP)
+				return
+			l_hand = null
+			update_inv_l_hand()
+			//removes item's actions, may be readded once re-equipped to the new slot
+			for(var/item_actions in equipping_item.actions)
+				var/datum/action/action = item_actions
+				action.remove_from(src)
 
-	equipping_item.screen_loc = null
-	if(equipping_item.loc != src)
-		equipping_item.pickup(src, disable_warning)
-	equipping_item.forceMove(src)
-	equipping_item.layer = ABOVE_HUD_LAYER
-	equipping_item.plane = ABOVE_HUD_PLANE
+		else if(equipping_item == r_hand)
+			if(equipping_item.flags_item & NODROP)
+				return
+			r_hand = null
+			update_inv_r_hand()
+			//removes item's actions, may be readded once re-equipped to the new slot
+			for(var/item_actions in equipping_item.actions)
+				var/datum/action/action = item_actions
+				action.remove_from(src)
+
+		equipping_item.screen_loc = null
+		if(equipping_item.loc != src)
+			equipping_item.pickup(src, disable_warning)
+		equipping_item.forceMove(src)
+		equipping_item.layer = ABOVE_HUD_LAYER
+		equipping_item.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
 		if(WEAR_BACK)

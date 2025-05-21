@@ -5,6 +5,9 @@
 	icon = 'icons/obj/items/backpack_sprayers.dmi'
 	icon_state = "backpack_sprayer"
 	item_state = "backpack_sprayer"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/sprayers.dmi'
+	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	flags_atom = OPENCONTAINER
@@ -78,8 +81,8 @@
 /obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
 	if(W == noz)
 		remove_noz()
-	else
-		. = ..()
+		return TRUE
+	return ..()
 
 /obj/item/reagent_container/glass/watertank/verb/toggle_mister_verb()
 	set name = "Toggle Mister"
@@ -105,13 +108,6 @@
 			usr.put_in_l_hand(src)
 	add_fingerprint(usr)
 
-/obj/item/reagent_container/glass/watertank/attackby(obj/item/W, mob/user, params)
-	if(W == noz)
-		remove_noz()
-		return 1
-	else
-		return ..()
-
 /obj/item/reagent_container/glass/watertank/dropped(mob/user)
 	..()
 	remove_noz()
@@ -131,6 +127,10 @@
 	name = "water mister"
 	desc = "A mister nozzle attached to a water tank. This is what your reagents come out of."
 	icon = 'icons/obj/items/backpack_sprayers.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "nozzle"
 	item_state = "nozzle"
 	w_class = SIZE_LARGE

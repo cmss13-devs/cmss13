@@ -18,6 +18,8 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/datum/action/leave_hologram/leave_button
 	///If can be detected on motion detectors.
 	var/motion_sensed = FALSE
+	///If this hologram can hear speech.
+	var/hears_speech = FALSE
 
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
@@ -72,7 +74,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
-		M.client.mouse_pointer_icon = mouse_icon
 
 	return COMPONENT_OVERRIDE_VIEW
 
@@ -118,3 +119,46 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/techtree/proc/disallow_tree_entering(mob/M, datum/techtree/T, force)
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_TREE_ENTRY
+
+/mob/hologram/look_up
+	flags_atom = NO_ZFALL
+	var/view_registered = TRUE
+
+/mob/hologram/look_up/Initialize(mapload, mob/viewer)
+	. = ..()
+
+	if(viewer)
+		UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
+		RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
+
+/mob/hologram/look_up/Destroy()
+	if(linked_mob)
+		UnregisterSignal(linked_mob, COMSIG_MOVABLE_MOVED)
+
+	. = ..()
+
+/mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
+	var/turf/new_turf = get_step(loc, direct)
+	forceMove(new_turf)
+	
+	if(!istype(new_turf, /turf/open_space))
+		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
+		view_registered = FALSE
+		linked_mob.reset_view()
+	else if (!view_registered)
+		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(handle_view))
+		view_registered = TRUE
+		linked_mob.reset_view()
+
+/mob/hologram/look_up/movement_delay()
+	if(linked_mob)
+		return linked_mob.movement_delay()
+
+	return -2
+
+/mob/hologram/look_up/handle_view(mob/M, atom/target)	
+	if(M.client)
+		M.client.perspective = EYE_PERSPECTIVE
+		M.client.eye = src
+
+	return COMPONENT_OVERRIDE_VIEW

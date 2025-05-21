@@ -33,7 +33,7 @@
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
 	eye_protection = EYE_PROTECTION_WELDING
-	vision_impair = VISION_IMPAIR_MAX
+	vision_impair = VISION_IMPAIR_ULTRA
 
 /obj/item/clothing/head/welding/attack_self(mob/user)
 	..()
@@ -49,7 +49,7 @@
 		return
 
 	if(up)
-		vision_impair = VISION_IMPAIR_MAX
+		vision_impair = VISION_IMPAIR_ULTRA
 		flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
 		icon_state = initial(icon_state)

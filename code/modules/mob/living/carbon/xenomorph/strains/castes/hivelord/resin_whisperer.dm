@@ -43,14 +43,13 @@
 /datum/action/xeno_action/activable/secrete_resin/remote
 	name = "Coerce Resin (100)"
 	action_icon_state = "secrete_resin"
-	ability_name = "coerce resin"
-	xeno_cooldown = 1 SECONDS
+	xeno_cooldown = 2.5 SECONDS
 	thick = FALSE
 	make_message = FALSE
 
 	no_cooldown_msg = TRUE
 
-	build_speed_mod = 2 // the actual building part takes twice as long
+	build_speed_mod = 2.5 // the actual building part takes twice as long
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
@@ -66,7 +65,7 @@
 	if(!action_cooldown_check())
 		return
 
-	if(mods["click_catcher"])
+	if(mods[CLICK_CATCHER])
 		return
 
 	var/turf/target_turf = get_turf(target_atom)
@@ -78,21 +77,26 @@
 		return
 
 	/// Check if the target is a resin door and open or close it
+
 	if(istype(target_atom, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/resin_door = target_atom
-		resin_door.TryToSwitchState(owner)
-		if(resin_door.state)
-			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
-		else
-			to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
-		return
+		// Either we can't remotely reinforce the door, or its already reinforced
+		if(!thick || istype(target_atom, /obj/structure/mineral_door/resin/thick))
+			var/obj/structure/mineral_door/resin/resin_door = target_atom
+			if(resin_door.TryToSwitchState(owner))
+				if(resin_door.open)
+					to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely close the resin door."))
+				else
+					to_chat(owner, SPAN_XENONOTICE("We focus our connection to the resin and remotely open the resin door."))
+			return
 
 	// since actions are instanced per hivelord, and only one construction can be made at a time, tweaking the datum on the fly here is fine. you're going to have to figure something out if these conditions change, though
 	if(care_about_adjacency)
 		if(owner.Adjacent(target_turf))
 			build_speed_mod = 1
+			xeno_cooldown = 1 SECONDS
 		else
 			build_speed_mod = initial(build_speed_mod)
+			xeno_cooldown = initial(xeno_cooldown)
 
 	var/mob/living/carbon/xenomorph/hivelord = owner
 	if(!..())

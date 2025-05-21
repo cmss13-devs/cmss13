@@ -192,20 +192,28 @@
 	. = FALSE //For peace of mind when it comes to dealing with unintended proc failures
 	if(X in contents)
 		X.forceMove(loc)
-		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"), \
+		visible_message(SPAN_XENONOTICE("\The [X] pops out of the tunnel!"),
 		SPAN_XENONOTICE("We pop out through the other side!"))
 		return TRUE
 
 //Used for controling tunnel exiting and returning
 /obj/structure/tunnel/clicked(mob/user, list/mods)
-	if(!isxeno(user) || !isfriendly(user))
+	if(!isxeno(user))
 		return ..()
-	var/mob/living/carbon/xenomorph/X = user
-	if(mods["ctrl"] && pick_tunnel(X))//Returning to original tunnel
+
+	var/mob/living/carbon/xenomorph/xeno_user = user
+
+	if(!isfriendly(user))
+		if(mods[ALT_CLICK] && exit_tunnel(xeno_user))
+			return TRUE
+		return ..()
+
+	if(mods[CTRL_CLICK] && pick_tunnel(xeno_user))//Returning to original tunnel
 		return TRUE
-	else if(mods["alt"] && exit_tunnel(X))//Exiting the tunnel
+	else if(mods[ALT_CLICK] && exit_tunnel(xeno_user))//Exiting the tunnel
 		return TRUE
-	. = ..()
+
+	return ..()
 
 /obj/structure/tunnel/attack_larva(mob/living/carbon/xenomorph/M)
 	. = attack_alien(M)
@@ -214,12 +222,12 @@
 	if(!istype(M) || M.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 
-	if(!isfriendly(M))
+	if(M.hivenumber != hivenumber)
 		if(M.mob_size < MOB_SIZE_BIG)
 			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
 
-		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),\
+		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),
 		SPAN_XENONOTICE("We begin to fill [src] with dirt using our massive claws."), max_distance = 3)
 		xeno_attack_delay(M)
 
@@ -245,6 +253,9 @@
 		return XENO_NO_DELAY_ACTION
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
+
+	if(M.banished)
+		return
 
 	if(M.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
@@ -274,8 +285,27 @@
 /obj/structure/tunnel/maint_tunnel
 	name = "\improper Maintenance Hatch"
 	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "hatchclosed"
 
 /obj/structure/tunnel/maint_tunnel/no_xeno_desc
 	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."
+
+// Hybrisa tunnels
+/obj/structure/tunnel/maint_tunnel/hybrisa
+	name = "\improper Maintenance Hatch"
+	desc = "An entrance to a maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	icon = 'icons/obj/structures/ladders.dmi'
+	icon_state = "maintenancehatch_alt"
+
+/obj/structure/tunnel/maint_tunnel/hybrisa/no_xeno_desc
+	desc = "An entrance to a maintenance tunnel. Pieces of debris keep you from getting a closer look."
+
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate
+	name = "\improper Sewer Manhole"
+	desc = "An entrance to a sewage maintenance tunnel. You can see bits of slime and resin within. Pieces of debris keep you from getting a closer look."
+	icon = 'icons/obj/structures/ladders.dmi'
+	icon_state = "wymanhole"
+
+/obj/structure/tunnel/maint_tunnel/hybrisa/grate/no_xeno_desc
+	desc = "An entrance to a sewage maintenance tunnel. Pieces of debris keep you from getting a closer look."

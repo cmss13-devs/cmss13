@@ -2,7 +2,7 @@
 	name = "Drone"
 	var/caste_name = null
 	desc = "A builder of hives. Only drones may evolve into Queens."
-	icon = 'icons/mob/xenos/drone.dmi'
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi'
 	icon_gib = "syndicate_gib"
 	layer = BIG_XENO_LAYER
 	response_help = "pokes"
@@ -155,7 +155,7 @@
 /mob/living/simple_animal/hostile/alien/ravager
 	name = "Ravager"
 	desc = "A huge, nasty red alien with enormous scythed claws."
-	icon = 'icons/mob/xenos/ravager.dmi'
+	icon = 'icons/mob/xenos/castes/tier_3/ravager.dmi'
 	melee_damage_lower = XENO_DAMAGE_TIER_5
 	melee_damage_upper = XENO_DAMAGE_TIER_5
 	health = XENO_HEALTH_TIER_7
@@ -168,7 +168,7 @@
 /mob/living/simple_animal/hostile/alien/lurker
 	name = "Lurker"
 	desc = "A fast, powerful backline combatant."
-	icon = 'icons/mob/xenos/lurker.dmi'
+	icon = 'icons/mob/xenos/castes/tier_2/lurker.dmi'
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_3
 	health = XENO_HEALTH_TIER_3
@@ -176,19 +176,3 @@
 
 	pixel_x = -12
 	old_x = -12
-
-// Still using old projectile code - commenting this out for now
-// /mob/living/simple_animal/hostile/alien/sentinel
-// name = "alien sentinel"
-// icon_state = "Sentinel Running"
-// icon_living = "Sentinel Running"
-// icon_dead = "Sentinel Dead"
-// health = 120
-// melee_damage_lower = 15
-// melee_damage_upper = 15
-// ranged = 1
-// projectiletype = /obj/projectile/neurotox
-// projectilesound = 'sound/weapons/pierce.ogg'
-/obj/projectile/neurotox
-	damage = 30
-	icon_state = "toxin"

@@ -37,7 +37,7 @@
 	name ="\improper Western Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/west_jungle/ceiling
 	ceiling = CEILING_GLASS
@@ -71,6 +71,7 @@
 	name ="\improper West Central Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/east_central_jungle
 	name ="\improper East Central Jungle"
@@ -177,27 +178,31 @@
 /area/lv624/ground/colony/north_tcomms_road
 	name = "\improper North T-Comms Road"
 	icon_state = "north"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/colony/west_tcomms_road
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/colony/telecomm
 	name = "\improper LZ1 Communications Relay"
 	icon_state = "ass_line"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	ceiling_muffle = FALSE
 	base_muffle = MUFFLE_LOW
 	always_unpowered = FALSE
 
 /area/lv624/ground/colony/telecomm/cargo
 	name = "\improper Far North Storage Dome Communications Relay"
+	linked_lz = DROPSHIP_LZ1
 
 
 /area/lv624/ground/colony/telecomm/sw_lz1
 	name = "\improper South-West LZ1 Communications Relay"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/colony/telecomm/tcommdome
 	name = "\improper Telecomms Dome Communications Relay"
@@ -209,6 +214,7 @@
 /area/lv624/ground/colony/telecomm/sw_lz2
 	name = "\improper South-West LZ2 Communications Relay"
 	ceiling = CEILING_NONE
+	linked_lz = DROPSHIP_LZ2
 
 // ambience = list('sound/ambience/jungle_amb1.ogg')
 
@@ -224,6 +230,7 @@
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	minimap_color = MINIMAP_AREA_CAVES
+	unoviable_timer = FALSE
 
 /area/lv624/ground/caves/west_caves
 	name ="\improper Western Caves"
@@ -253,6 +260,11 @@
 	name ="\improper North Central Caves"
 	icon_state = "away3" //meh
 
+/area/lv624/ground/caves/north_central_caves/lake_house_tower
+	name = "\improper Lake House Communications Relay"
+	ceiling = CEILING_NONE
+	icon_state = "yellow"
+
 /area/lv624/ground/caves/south_central_caves
 	name ="\improper South Central Caves"
 	icon_state = "away2" //meh
@@ -278,14 +290,15 @@
 
 /area/lv624/lazarus/landing_zones
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
 /area/lv624/lazarus/landing_zones/lz1
 	name = "\improper Alamo Landing Zone"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/landing_zones/lz2
 	name = "\improper Normandy Landing Zone"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus
 	name = "\improper Lazarus"
@@ -295,6 +308,7 @@
 /area/lv624/lazarus/corporate_dome
 	name = "\improper Corporate Dome"
 	icon_state = "green"
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/yggdrasil
 	name = "\improper Yggdrasil Tree"
@@ -329,17 +343,17 @@
 /area/lv624/lazarus/kitchen
 	name = "\improper Kitchen"
 	icon_state = "kitchen"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/canteen
 	name = "\improper Canteen"
 	icon_state = "cafeteria"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/main_hall
 	name = "\improper Main Hallway"
 	icon_state = "hallC1"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
@@ -361,23 +375,23 @@
 /area/lv624/lazarus/sleep_female
 	name = "\improper Female Dorm"
 	icon_state = "Sleep"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/quart
 	name = "\improper Quartermasters"
 	icon_state = "quart"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/quartstorage
 	name = "\improper Cargo Bay"
 	icon_state = "quartstorage"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/quartstorage/outdoors
 	name = "\improper Cargo Bay Area"
 	icon_state = "purple"
 	ceiling = CEILING_NONE
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ1
 	always_unpowered = TRUE
 
 /area/lv624/lazarus/engineering
@@ -394,11 +408,12 @@
 	name = "\improper Secure Storage"
 	icon_state = "storage"
 	flags_area = AREA_NOTUNNEL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/robotics
 	name = "\improper Robotics"
 	icon_state = "ass_line"
-	is_resin_allowed = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/research
 	name = "\improper Research Lab"

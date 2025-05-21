@@ -8,8 +8,8 @@ import {
   Divider,
   Flex,
   Icon,
-  Input,
   Image,
+  Input,
   NumberInput,
   Table,
 } from 'tgui/components';
@@ -122,7 +122,12 @@ type XenoKey = {
 
 type TierSlot = { open_slots: string; guaranteed_slots: string };
 type XenoInfo = { name: string; straing: string; ref: string };
-type XenoVitals = { health: number; plasma: number; area: string; is_ssd: BooleanLike };
+type XenoVitals = {
+  health: number;
+  plasma: number;
+  area: string;
+  is_ssd: BooleanLike;
+};
 
 type Data = {
   total_xenos: number;
@@ -285,7 +290,12 @@ const XenoCounts = (props) => {
                   <Table className="xenoCountTable" collapsing>
                     <Table.Row header>
                       {Object.keys(counts).map((caste, i) => (
-                        <Table.Cell key={i} className="underlineCell" width={7} nowrap>
+                        <Table.Cell
+                          key={i}
+                          className="underlineCell"
+                          width={7}
+                          nowrap
+                        >
                           <Image
                             src={`data:image/jpeg;base64,${xeno_icons[tier][caste]}`}
                             style={{

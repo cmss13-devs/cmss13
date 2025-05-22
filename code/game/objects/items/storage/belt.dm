@@ -2345,6 +2345,11 @@
 	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/webley(src)
 
+/obj/item/storage/belt/gun/iasf_para_belt/webley_near_empty/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley())
+	for(var/i = 1 to 3)
+		new /obj/item/ammo_magazine/revolver/webley(src)
+
 /obj/item/storage/belt/gun/iasf_para_belt/custom
 	name = "\improper IASF custom paratrooper belt"
 	desc = "A modified IASF paratrooper belt featuring a black leather holster with gold inlay, originally designed for a Webley revolver but reworked to fit a custom L54 pistol. A large utility pouch and smaller compartments provide space for .455 speedloaders, L54 magazines, and other field essentials—standard kit for airborne troops in hostile territory."

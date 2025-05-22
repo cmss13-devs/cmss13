@@ -22,12 +22,14 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	var/shutdown_timer
 	var/turn_on_timer
 	var/active_since = 0
+	var/linked_lz
 	var/obj/structure/machinery/backup_generator/backup
 
 /obj/structure/machinery/transformer/Initialize(mapload, ...)
 	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "hvt")
 	GLOB.transformer = src
+
 	. = ..()
 
 /obj/structure/machinery/transformer/Destroy()
@@ -92,6 +94,10 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 
 	if(!HAS_TRAIT(item, TRAIT_TOOL_BLOWTORCH))
 		to_chat(user, SPAN_WARNING("[src] is completely broken, you need a blowtorch!"))
+		return
+
+	if(!(SSticker.mode.active_lz.linked_lz == src.linked_lz))
+		to_chat(user, SPAN_WARNING("This transformer does not power the primary landing zone."))
 		return
 
 	var/obj/item/tool/weldingtool/welder = item
@@ -186,6 +192,12 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source has shutdown!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_OFF)
+
+/obj/structure/machinery/transformer/lz1
+	linked_lz = DROPSHIP_LZ1
+
+/obj/structure/machinery/transformer/lz2
+	linked_lz = DROPSHIP_LZ2
 
 /obj/structure/machinery/transformer/active
 	state = STATE_MARINE_CAPTURED

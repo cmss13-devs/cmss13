@@ -32708,7 +32708,7 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/caves/lz_caves)
 "wul" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz2,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/marsh/center)
 "wuE" = (
@@ -33562,7 +33562,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/outpost_decks)
 "xGn" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz1,
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/exterior/marsh/spring_marshes)
 "xGA" = (

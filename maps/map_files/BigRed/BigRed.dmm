@@ -1514,7 +1514,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afK" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz1,
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
 /area/bigredv2/outside/nw)
 "afL" = (
@@ -36590,7 +36590,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/medical)
 "vxx" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz2,
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
 /area/bigredv2/outside/s)
 "vxI" = (

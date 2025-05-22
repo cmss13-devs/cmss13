@@ -80,7 +80,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "aap" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz2,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "aaq" = (
@@ -14642,7 +14642,7 @@
 /turf/open/floor/prison/platingdmg3,
 /area/fiorina/station/security)
 "lmm" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz1,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells/east)
 "lmu" = (

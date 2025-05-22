@@ -752,21 +752,12 @@
 /area/lv522/landing_zone_1)
 "acV" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating/warnplate/southwest,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
-"acW" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/southeast,
+/turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "acX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northwest,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
-"acY" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northeast,
+/turf/open/floor/prison,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "adk" = (
 /obj/structure/surface/table/almayer,
@@ -22660,7 +22651,7 @@
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/east_reactor)
 "mdH" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz1,
 /turf/open/floor/plating/platebotc,
 /area/lv522/indoors/b_block/hydro/glass)
 "mdJ" = (
@@ -38357,10 +38348,10 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "tUL" = (
-/obj/structure/machinery/transformer,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/machinery/transformer/lz2,
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "tUM" = (
@@ -65168,8 +65159,8 @@ qbG
 aPe
 nnG
 yfu
-acY
-acW
+acV
+acV
 vMX
 ylo
 hdG

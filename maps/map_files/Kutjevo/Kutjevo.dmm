@@ -215,7 +215,7 @@
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/exterior/runoff_dunes)
 "aba" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz2,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/scrubland)
 "abb" = (
@@ -5113,8 +5113,8 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/complex/botany/east_tech)
 "huv" = (
-/obj/structure/machinery/transformer,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/transformer/lz1,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
 "huJ" = (

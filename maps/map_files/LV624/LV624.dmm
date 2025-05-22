@@ -12919,7 +12919,7 @@
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
 "guV" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz1,
 /turf/open/floor/plating,
 /area/lv624/lazarus/quartstorage/outdoors)
 "guW" = (
@@ -20156,7 +20156,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_east_caves)
 "vmv" = (
-/obj/structure/machinery/transformer,
+/obj/structure/machinery/transformer/lz2,
 /turf/open/floor/plating,
 /area/lv624/ground/jungle/central_jungle)
 "vno" = (

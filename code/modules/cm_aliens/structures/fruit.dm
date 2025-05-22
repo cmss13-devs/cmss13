@@ -267,7 +267,7 @@
 
 //Spore
 /obj/effect/alien/resin/fruit/spore
-	desc = "A strange orange fruit-looking thing."
+	desc = "A strange bonsai-tree looking thing, with three small orange glowing sacs, hanging on the weird branches."
 	name = XENO_FRUIT_SPORE
 	time_to_mature = 15 SECONDS
 	icon_state = "fruit_spore_immature"
@@ -359,6 +359,7 @@
 	consumed_icon_state = "fruit_spent_2"
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/plasma
+	glow_color = "#1e6072"
 	gardener_sac_color = "#287A90"
 	var/plasma_amount = 240
 	var/plasma_time = 15
@@ -591,7 +592,7 @@
 	if(ishuman(user))
 		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The effect of fruit persist for [SPAN_NOTICE("60")] seconds. While not unrooted, it passively emits weak recovery pheromones around itself."
+		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The effect of fruit persist for [SPAN_NOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself."
 
 /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	name = XENO_FRUIT_SPEED

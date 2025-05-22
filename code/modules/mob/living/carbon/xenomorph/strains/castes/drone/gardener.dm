@@ -1,6 +1,6 @@
 /datum/xeno_strain/gardener
 	name = DRONE_GARDENER
-	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape. You can use Resin Surge to speed up the growth of your fruits."
+	description = "You trade your choice of resin secretions, your corrosive acid, and your ability to transfer plasma for a tiny bit of extra health regeneration on weeds and several new abilities, including the ability to plant hardier weeds, temporarily reinforce structures with your plasma, and to plant up to six potent resin fruits for your sisters by secreting your vital fluids at the cost of a bit of your health for each fruit you shape. You can use Resin Surge to accelerate maturity of your fruits."
 	flavor_description = "The glory of gardening: hands in the weeds, head in the dark, heart with resin."
 
 	actions_to_remove = list(
@@ -84,12 +84,12 @@
 		to_chat(xeno, SPAN_WARNING("These weeds do not belong to our hive; they reject our fruit."))
 		return
 
-	if(locate(/obj/effect/alien/resin/trap) in range(1, target_turf))
-		to_chat(xeno, SPAN_XENOWARNING("This location is too close to a resin hole!"))
+	if(locate(/obj/effect/alien/resin/trap) in range(0, target_turf))
+		to_chat(xeno, SPAN_XENOWARNING("You cannot plant our fruit over a resin hole!"))
 		return
 
 	if(locate(/obj/effect/alien/resin/fruit) in target_turf)
-		to_chat(xeno, SPAN_XENOWARNING("This location is too close to another fruit!"))
+		to_chat(xeno, SPAN_XENOWARNING("Our fruit has already taken root in this space!"))
 		return
 
 	if (check_and_use_plasma_owner())
@@ -265,7 +265,7 @@
 	if(door_present || wall_present)
 		var/structure_to_buff = door || wall
 		var/buff_already_present = FALSE
-		if(door_present )
+		if(door_present)
 			for(var/datum/effects/xeno_structure_reinforcement/sf in door.effects_list)
 				buff_already_present = TRUE
 				break
@@ -287,8 +287,9 @@
 			to_chat(xeno, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
 			xeno_cooldown = xeno_cooldown * 0.5
 		else
-			to_chat(xeno, SPAN_XENONOTICE("We surge the resin around the [F], speeding its growth somewhat!"))
-			F.reduce_timer(5 SECONDS)
+			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy into the resin around [F], bringing it to swift maturity!"))
+			F.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but it will triple cooldown.
+			xeno_cooldown = xeno_cooldown * 3
 
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),
@@ -343,6 +344,11 @@
 	spread_on_semiweedable = TRUE
 	fruit_growth_multiplier = 0.8
 	weed_strength = WEED_LEVEL_HARDY
+
+/obj/effect/alien/weeds/node/gardener/get_examine_text(mob/user)
+	. = ..()
+	if(isxeno(user) || isobserver(user))
+		. += "We sense that this weeds will benefit our resin fruits, increasing growth speed by [SPAN_NOTICE("20%")]."
 
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()
 	set category = "Alien"

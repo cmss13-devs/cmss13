@@ -34,7 +34,7 @@
 
 /obj/effect/alien/resin/special/eggmorph/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
-	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "morpher")
+	SSminimaps.add_marker(src, get_minimap_flag_for_faction(linked_hive?.hivenumber), image('icons/UI_icons/map_blips.dmi', null, "morpher"))
 
 /obj/effect/alien/resin/special/eggmorph/Destroy()
 	if(stored_huggers && linked_hive)

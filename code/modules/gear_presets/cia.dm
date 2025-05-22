@@ -16,8 +16,8 @@
 	rank = "Intelligence Analyst"
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
-	minimap_background = "background_civillian"
 	minimap_icon = "cia_ia"
+	minimap_background = "background_civillian"
 	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/analyst/load_gear(mob/living/carbon/human/new_human, client/mob_client)

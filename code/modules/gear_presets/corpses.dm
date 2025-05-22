@@ -20,6 +20,7 @@
 
 	// These two values matter because they are checked on death for weed_food
 	new_human.undefibbable = TRUE
+	SEND_SIGNAL(new_human, COMSIG_HUMAN_SET_UNDEFIBBABLE)
 	if(xenovictim)
 		new_human.chestburst = 2
 

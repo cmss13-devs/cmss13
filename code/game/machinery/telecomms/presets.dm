@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	GLOB.all_static_telecomms_towers += src
 	. = ..()
 	if(z)
-		SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "supply")
+		SSminimaps.add_marker(src, MINIMAP_FLAG_ALL, image('icons/UI_icons/map_blips.dmi', null, "supply"))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/Destroy()
 	GLOB.all_static_telecomms_towers -= src

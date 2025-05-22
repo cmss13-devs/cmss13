@@ -53,6 +53,10 @@
 		to_chat(user, SPAN_WARNING("You were interrupted."))
 		return
 
+	if(state == STATE_ON)
+		to_chat(user, SPAN_WARNING("Someone has already activated the backup generator."))
+		return
+
 	if(GLOB.transformer.is_active())
 		to_chat(user, SPAN_WARNING("The main transformer is already active, activating [src] now would be a waste."))
 		return
@@ -66,13 +70,13 @@
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have activated a backup power source, it will turn on in 30 seconds!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 	timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), 5 MINUTES, TIMER_STOPPABLE)
+	state = STATE_ON
 	addtimer(CALLBACK(src, PROC_REF(turn_on)), 30 SECONDS)
 
 /obj/structure/machinery/backup_generator/proc/turn_on()
 	if(!GLOB.transformer.is_active())
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_ON)
 	GLOB.transformer.backup = src
-	state = STATE_ON
 	update_icon()
 	marine_announcement("Power Alert: \nBackup generator online. Power grid operational.", "ARES Power Grid Monitor")
 	var/datum/hive_status/hive

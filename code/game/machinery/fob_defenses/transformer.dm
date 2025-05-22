@@ -97,7 +97,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		return
 
 	if(!SSticker.mode.active_lz || src.linked_lz && !(SSticker.mode.active_lz.linked_lz == src.linked_lz))
-		to_chat(user, SPAN_WARNING("The transformer beeps three times, indicating there is no landing zone being used, or it does not power the one being used."))
+		to_chat(user, SPAN_WARNING("[src] beeps three times, indicating there is no landing zone being used, or it does not power the one being used."))
 		return
 
 	var/obj/item/tool/weldingtool/welder = item

@@ -1058,7 +1058,6 @@
 		spikes++
 	return TRUE
 
-
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = null
@@ -1301,7 +1300,7 @@
 		WEAR_J_STORE = "plasma_wear_off"
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
-	ammo = /datum/ammo/energy/yautja/caster/stun
+	ammo = /datum/ammo/energy/yautja/caster/bolt/single_stun
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_HUGE
@@ -1318,7 +1317,7 @@
 	var/obj/item/clothing/gloves/yautja/hunter/source = null
 	charge_cost = 100 //How much energy is needed to fire.
 	var/mode = "stun"//fire mode (stun/lethal)
-	var/strength = "low power stun bolts"//what it's shooting
+	var/strength = "stun bolts"//what it's shooting
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
@@ -1350,65 +1349,59 @@
 	switch(mode)
 		if("stun")
 			switch(strength)
-				if("low power stun bolts")
-					strength = "high power stun bolts"
-					charge_cost = 50
-					set_fire_delay(FIRE_DELAY_TIER_1)
-					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
-					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
-				if("high power stun bolts")
+				if("stun bolts")
 					strength = "plasma immobilizers"
-					charge_cost = 200
+					charge_cost = 150
 					set_fire_delay(FIRE_DELAY_TIER_2 * 8)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/aoe_stun]
 				if("plasma immobilizers")
-					strength = "low power stun bolts"
+					strength = "stun bolts"
 					charge_cost = 30
 					set_fire_delay(FIRE_DELAY_TIER_6)
 					fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_stun]
 		if("lethal")
 			switch(strength)
-				if("plasma bolts")
-					strength = "plasma spheres"
+				if("plasma bolt")
+					strength = "plasma eradicator"
 					charge_cost = 1000
 					set_fire_delay(FIRE_DELAY_TIER_2 * 12)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
-				if("plasma spheres")
-					strength = "plasma bolts"
-					charge_cost = 100
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/aoe_lethal]
+				if("plasma eradicator")
+					strength = "plasma bolt"
+					charge_cost = 500
 					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_lethal]
+
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
 	switch(mode)
 		if("stun")
 			mode = "lethal"
 			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
-			strength = "plasma bolts"
+			strength = "plasma bolt"
 			charge_cost = 100
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_lethal]
 
 		if("lethal")
 			mode = "stun"
 			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
-			strength = "low power stun bolts"
+			strength = "stun bolts"
 			charge_cost = 30
 			set_fire_delay(FIRE_DELAY_TIER_6)
 			fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_stun]
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/get_examine_text(mob/user)
 	. = ..()

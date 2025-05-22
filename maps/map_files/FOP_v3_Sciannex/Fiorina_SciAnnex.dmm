@@ -17375,10 +17375,6 @@
 	},
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/civres_blue)
-"nqL" = (
-/obj/structure/machinery/power/apc/power/east,
-/turf/open/floor/plating/prison,
-/area/fiorina/maintenance)
 "nqN" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/station/security)
@@ -55508,7 +55504,7 @@ ubP
 ejs
 cME
 cME
-nqL
+cME
 cME
 cME
 aao

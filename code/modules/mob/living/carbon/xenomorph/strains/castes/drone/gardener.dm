@@ -287,9 +287,17 @@
 			to_chat(xeno, SPAN_XENONOTICE("The [F] is already mature. The [src.name] does nothing."))
 			xeno_cooldown = xeno_cooldown * 0.5
 		else
-			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy into the resin around [F], bringing it to swift maturity!"))
-			F.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but it will triple cooldown.
-			xeno_cooldown = xeno_cooldown * 3
+			to_chat(xeno, SPAN_XENONOTICE("We pour all our energy equal to [F] growth, bringing it to swift maturity!"))
+			F.reduce_timer(60 SECONDS) //We want surge to mature any fruit instantly, but you receive this fruit growth time as cooldown (-5s).
+			switch(F.type)
+				if(/obj/effect/alien/resin/fruit/greater)
+					xeno_cooldown *= 2.5
+				if(/obj/effect/alien/resin/fruit/unstable)
+					xeno_cooldown *= 4
+				if(/obj/effect/alien/resin/fruit/speed)
+					xeno_cooldown *= 3
+				if(/obj/effect/alien/resin/fruit/plasma)
+					xeno_cooldown *= 2
 
 	else if(target_weeds && istype(target_turf, /turf/open) && target_weeds.hivenumber == xeno.hivenumber)
 		xeno.visible_message(SPAN_XENODANGER("\The [xeno] surges the resin, creating an unstable wall!"),

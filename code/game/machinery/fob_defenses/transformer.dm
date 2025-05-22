@@ -96,7 +96,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		to_chat(user, SPAN_WARNING("[src] is completely broken, you need a blowtorch!"))
 		return
 
-	if(!SSticker.mode.active_lz || src.linked_lz && !(SSticker.mode.active_lz.linked_lz == src.linked_lz))
+	if(!SSticker.mode.active_lz || linked_lz && !(SSticker.mode.active_lz.linked_lz == linked_lz))
 		to_chat(user, SPAN_WARNING("[src] beeps three times, indicating there is no landing zone being used, or it does not power the one being used."))
 		return
 

@@ -96,8 +96,6 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 		icon_state = "halfarmor[armor_number]_[armor_material]"
 		LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
 
-
-
 /obj/item/clothing/suit/armor/yautja/hunter
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
@@ -345,12 +343,18 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 /obj/item/device/radio/headset/yautja/overseer //for council
 	name = "\improper Overseer Communicator"
 	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
+	initial_keys = list(/obj/item/device/encryptionkey/yautja/overseer)
 
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
 	icon_state = "cypherkey"
-	channels = list(RADIO_CHANNEL_YAUTJA = 1)
+	channels = list(RADIO_CHANNEL_YAUTJA = TRUE)
+
+/obj/item/device/encryptionkey/yautja/overseer
+	name = "\improper Yautja Overseer encryption key"
+	channels = list(RADIO_CHANNEL_YAUTJA = TRUE, RADIO_CHANNEL_YAUTJA_OVERSEER = TRUE)
+	abstract = TRUE
 
 //Yes, it's a backpack that goes on the belt. I want the backpack noises. Deal with it (tm)
 /obj/item/storage/backpack/yautja
@@ -1170,6 +1174,71 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
 	access = new_access
 
+///Able to dissolve anything not anchored to the ground or being held, while uncloaked.
+/obj/item/tool/yautja_cleaner
+	name = "cleanser gel vial"
+	desc = "A small vial containing a liquid capable of dissolving the gear of the fallen whilst in the field."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "dissolving_vial"
+	force = 0
+	throwforce = 1
+	w_class = SIZE_SMALL
+	flags_item = ITEM_PREDATOR
+	black_market_value = 150
+
+	var/image/dissolving_image
+
+/obj/item/tool/yautja_cleaner/afterattack(obj/item/target, mob/user, proximity)
+	if(!isitem(target))
+		return
+	if(loc != user) //Early returns if the cleaner has been inserted into a container. Whether or not this happens is based on the user's intent; see storage.dm for info.
+		return
+	if(!can_dissolve(target, user))
+		return
+	handle_dissolve(target, user)
+
+///Checks for permission and items dissallowed to be dissolved.
+/obj/item/tool/yautja_cleaner/proc/can_dissolve(obj/item/target, mob/user)
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		to_chat(user, SPAN_WARNING("You have no idea what this even does."))
+		return FALSE
+	if(HAS_TRAIT(target, TRAIT_ITEM_DISSOLVING))
+		to_chat(user, SPAN_WARNING("\The [target] is already covered in dissolving gel."))
+		return FALSE
+	if(HAS_TRAIT(user,TRAIT_CLOAKED))
+		to_chat(user, SPAN_WARNING("It would not be safe to attempt this while cloaked!"))
+		return FALSE
+	if(target.anchored)
+		to_chat(user, SPAN_WARNING("\The [target] cannot be moved by any means, why dissolve it?"))
+		return FALSE
+	if(isliving(target.loc))
+		to_chat(user, SPAN_WARNING("You cannot dissolve the [target] while it is being held."))
+		return
+	if(istype(target, /obj/item/tool/yautja_cleaner))
+		to_chat(user, SPAN_WARNING("You cannot dissolve more dissolving fluid."))
+		return FALSE
+	return TRUE
+
+///Actual action of using the vial on an item.
+/obj/item/tool/yautja_cleaner/proc/handle_dissolve(obj/item/target, mob/user)
+	user.visible_message(SPAN_DANGER("[user] uncaps a vial and begins to pour out a vibrant blue liquid over [target]!"),
+					SPAN_NOTICE("You begin to spread dissolving gel onto [target]!"))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		user.visible_message(SPAN_WARNING("[user] stops pouring liquid on to [target]!"),
+					SPAN_NOTICE("You decide not to cover [target] with dissolving gel."))
+		return
+	if(get_dist(target, user) > 1) //Late check to ensure the item hasn't moved out of range.
+		return
+	user.visible_message(SPAN_DANGER("[user] pours blue liquid all over [target]!"),
+				SPAN_NOTICE("You cover [target] with dissolving gel!"))
+	dissolving_image = image(icon, icon_state = "dissolving_gel")
+	target.overlays += dissolving_image
+	playsound(target.loc, 'sound/effects/acid_sizzle4.ogg', 25)
+	QDEL_IN(target, 15 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom, visible_message), SPAN_WARNING("[target] crumbles into pieces!")), 15 SECONDS)
+	ADD_TRAIT(target, TRAIT_ITEM_DISSOLVING, TRAIT_SOURCE_ITEM)
+	log_attack("[key_name(user)] dissolved [target] with Yautja Cleaner.")
+
 /obj/item/storage/medicomp
 	name = "medicomp"
 	desc = "A complex kit of alien tools and medicines."
@@ -1254,7 +1323,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/yautja.dmi'
 	accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi')
 	icon_state = null
-	slot = ACCESSORY_SLOT_TROPHY
+	worn_accessory_slot = ACCESSORY_SLOT_TROPHY
 	///Has it been cleaned by a polishing rag?
 	var/polished = FALSE
 	var/loosejaw = FALSE
@@ -1612,3 +1681,28 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 	new /obj/item/tool/wirecutters/yautja(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool/yautja(src)
+
+/obj/item/device/houndcam
+	name = "Hellhound Observation Pad"
+	desc = "A portable camera console device, used for remotely overwatching Hellhounds."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "houndpad"
+	flags_item = ITEM_PREDATOR
+	flags_atom = FPRINT|CONDUCT
+	w_class = SIZE_SMALL
+	force = 1
+	throwforce = 1
+	unacidable = TRUE
+	var/obj/structure/machinery/computer/cameras/yautja/internal_camera
+
+/obj/item/device/houndcam/Initialize()
+	. = ..()
+	internal_camera = new(src)
+
+/obj/item/device/houndcam/Destroy()
+	QDEL_NULL(internal_camera)
+	return ..()
+
+/obj/item/device/houndcam/attack_hand(mob/user)
+	. = ..()
+	internal_camera.tgui_interact(user)

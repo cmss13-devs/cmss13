@@ -199,6 +199,7 @@
 	worn_accessory_slot = ACCESSORY_SLOT_MEDAL
 	high_visibility = TRUE
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
+	worn_accessory_limit = 2
 
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
@@ -483,7 +484,7 @@
 	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 	flags_obj = OBJ_IS_HELMET_GARB
 	worn_accessory_slot = ACCESSORY_SLOT_PATCH
-	worn_accessory_limit = 2
+	worn_accessory_limit = 4
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "USCM Falling Falcons patch"
@@ -665,7 +666,7 @@
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/misc.dmi'
 	)
-	worn_accessory_slot = ACCESSORY_SLOT_MEDAL
+	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 
 /obj/item/clothing/accessory/poncho
 	name = "USCM Poncho"
@@ -1192,6 +1193,7 @@
 	)
 	flags_equip_slot = SLOT_WAIST
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
+	worn_accessory_slot = ACCESSORY_SLOT_DECOR
 
 	var/stored_name = null
 
@@ -1235,7 +1237,7 @@
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] invades [M]'s personal space, thrusting [src] into their face insistently."),SPAN_DANGER("You invade [M]'s personal space, thrusting [src] into their face insistently. You are the law."))
 
-/obj/item/storage/box/holobadge
+/obj/item/storage/box/holobadge // re-org this out in the future
 	name = "holobadge box"
 	desc = "A box claiming to contain holobadges."
 
@@ -1266,6 +1268,7 @@ Wrist Accessories
 	icon_state = "bracelet"
 	inv_overlay_icon = null
 	worn_accessory_slot = ACCESSORY_SLOT_WRIST_L
+	worn_accessory_limit = 4
 	var/which_wrist = "left wrist"
 
 /obj/item/clothing/accessory/wrist/get_examine_text(mob/user)

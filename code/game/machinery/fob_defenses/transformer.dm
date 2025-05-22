@@ -122,6 +122,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	playsound(loc, 'sound/items/weldingtool_weld.ogg', 25)
 
 	state = STATE_MARINE_CAPTURED
+	GLOB.transformer = src
 	update_icon()
 	if(shutdown_timer)
 		deltimer(shutdown_timer)

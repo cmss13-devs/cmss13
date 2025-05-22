@@ -127,6 +127,9 @@
 	var/max_distance = 6
 	var/windup = 8 DECISECONDS
 
+/datum/action/xeno_action/activable/prae_abduct/palatine_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
 	action_icon_state = "punch"
@@ -327,6 +330,8 @@
 	var/armor_buffs_speed_target = FALSE
 	var/rage_cost = 75
 
+/datum/action/xeno_action/activable/valkyrie_rage/palatine_macro
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"
@@ -368,3 +373,6 @@
 	var/max_distance = 7
 	var/windup = 6
 	var/retrieve_cost = 100
+
+/datum/action/xeno_action/activable/prae_retrieve/palatine_macro
+	ability_primacy = XENO_PRIMARY_ACTION_3

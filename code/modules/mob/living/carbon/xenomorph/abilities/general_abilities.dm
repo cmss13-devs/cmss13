@@ -238,7 +238,7 @@
 /**
  * Any additional effects to apply to the target
  * is called if and only if we actually hit a human target
- */
+*/
 /datum/action/xeno_action/activable/pounce/proc/additional_effects(mob/living/L)
 	return
 
@@ -453,6 +453,8 @@
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
+/datum/action/xeno_action/activable/xeno_spit/palatine_macro
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

@@ -202,6 +202,13 @@
 
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, new_human, 0, 3)
 
+/datum/equipment_preset/uscm/tank/full/mech
+	name = "USCM Mechsuit Operator (MECH)"
+	assignment = "Mechsuit Operator"
+	rank = "Mechsuit Operator"
+	role_comm_title = "MECH"
+	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/intel

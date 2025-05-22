@@ -250,20 +250,32 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "aaV" = (
-/obj/structure/largecrate/random/barrel/white,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/pontoon_beach)
-"aaW" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/varadero/exterior/pontoon_beach)
+"aaW" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/north,
+/area/varadero/exterior/pontoon_beach)
 "aaX" = (
-/obj/structure/fence,
-/turf/open/gm/dirt,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
 "aaY" = (
 /obj/structure/fence,
 /turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"aaZ" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"aba" = (
+/obj/item/tool/shovel,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"abb" = (
+/obj/structure/fence,
+/turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -5206,10 +5218,6 @@
 /obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security/north)
-"dZB" = (
-/obj/item/tool/shovel,
-/turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
 "dZT" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -14414,10 +14422,6 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
-"lBY" = (
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating/icefloor/asteroidplating,
-/area/varadero/exterior/pontoon_beach)
 "lCj" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -29697,10 +29701,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
-"xES" = (
-/obj/structure/prop/rock/brown,
-/turf/open/gm/coast/north,
-/area/varadero/exterior/pontoon_beach)
 "xFb" = (
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/eastocean)
@@ -49002,7 +49002,7 @@ aaY
 xzc
 oGv
 pfd
-aaW
+aaV
 lTR
 lTR
 lTR
@@ -49180,11 +49180,11 @@ stl
 cpF
 gVO
 uTu
-aaV
+aaZ
 vss
 vss
 vss
-xES
+aaW
 lTR
 lTR
 lTR
@@ -49362,9 +49362,9 @@ lTR
 lTR
 scL
 oGv
-dZB
+aba
 vss
-lBY
+aaX
 vss
 pfd
 oAC
@@ -50090,7 +50090,7 @@ cpF
 lTR
 lTR
 scL
-aaX
+abb
 vss
 oGv
 hwL

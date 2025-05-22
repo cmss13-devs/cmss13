@@ -100,9 +100,16 @@
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
 "aat" = (
+/turf/open/floor/prison/cell_stripe/west,
+/area/fiorina/maintenance)
+"aau" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/bluecorner/east,
 /area/fiorina/station/power_ring/reactor)
+"aav" = (
+/obj/structure/machinery/transformer/lz1,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/research_cells/east)
 "abG" = (
 /obj/item/trash/chunk,
 /turf/open/floor/prison/whitegreen/north,
@@ -10968,9 +10975,6 @@
 	},
 /turf/open/floor/prison/blue/north,
 /area/fiorina/tumor/servers)
-"iuZ" = (
-/turf/open/floor/prison/cell_stripe/west,
-/area/fiorina/maintenance)
 "ivb" = (
 /obj/effect/spawner/gibspawner/human,
 /turf/open/space/basic,
@@ -14641,10 +14645,6 @@
 	},
 /turf/open/floor/prison/platingdmg3,
 /area/fiorina/station/security)
-"lmm" = (
-/obj/structure/machinery/transformer/lz1,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/research_cells/east)
 "lmu" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -55931,9 +55931,9 @@ ubP
 ubP
 ubP
 ubP
-iuZ
-iuZ
-iuZ
+aat
+aat
+aat
 fRq
 ubP
 ubP
@@ -69832,7 +69832,7 @@ apg
 glj
 sXe
 wHV
-lmm
+aav
 sXe
 odQ
 nLO
@@ -74132,7 +74132,7 @@ tOM
 nYQ
 fbn
 fbn
-aat
+aau
 sgI
 sgI
 rTY

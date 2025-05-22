@@ -1672,6 +1672,12 @@
 "agA" = (
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/south_east_caves)
+"agB" = (
+/turf/open/floor/plating/warnplate/southwest,
+/area/lv624/lazarus/quartstorage/outdoors)
+"agC" = (
+/turf/open/floor/plating/warnplate,
+/area/lv624/lazarus/quartstorage/outdoors)
 "agD" = (
 /obj/structure/surface/table/reinforced{
 	dir = 8;
@@ -1704,10 +1710,32 @@
 /obj/item/explosive/grenade/incendiary,
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
+"agI" = (
+/turf/open/floor/plating/warnplate/southeast,
+/area/lv624/lazarus/quartstorage/outdoors)
+"agJ" = (
+/turf/open/floor/plating/warnplate/west,
+/area/lv624/lazarus/quartstorage/outdoors)
+"agK" = (
+/obj/structure/machinery/transformer/lz1,
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage/outdoors)
 "agL" = (
 /obj/structure/cargo_container/horizontal/blue/bottom,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
+"agM" = (
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage/outdoors)
+"agN" = (
+/turf/open/floor/plating/warnplate/east,
+/area/lv624/lazarus/quartstorage/outdoors)
+"agO" = (
+/turf/open/floor/plating/warnplate/northwest,
+/area/lv624/lazarus/quartstorage/outdoors)
+"agP" = (
+/turf/open/floor/plating/warnplate/north,
+/area/lv624/lazarus/quartstorage/outdoors)
 "agQ" = (
 /obj/item/ammo_casing,
 /turf/open/floor/plating/warnplate/west,
@@ -1761,6 +1789,13 @@
 "agX" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
+"agY" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor/plating/warnplate/north,
+/area/lv624/lazarus/quartstorage/outdoors)
+"agZ" = (
+/turf/open/floor/plating/warnplate/northeast,
+/area/lv624/lazarus/quartstorage/outdoors)
 "ahe" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/coast/west,
@@ -1888,9 +1923,6 @@
 /obj/item/tool/shovel,
 /turf/open/floor/redyellowfull,
 /area/lv624/ground/barrens/west_barrens/ceiling)
-"ahZ" = (
-/turf/open/floor/plating/warnplate/southeast,
-/area/lv624/lazarus/quartstorage/outdoors)
 "aie" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/redyellowfull,
@@ -12824,9 +12856,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"gkE" = (
-/turf/open/floor/plating/warnplate/west,
-/area/lv624/lazarus/quartstorage/outdoors)
 "glp" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river,
@@ -12918,10 +12947,6 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/quartstorage)
-"guV" = (
-/obj/structure/machinery/transformer/lz1,
-/turf/open/floor/plating,
-/area/lv624/lazarus/quartstorage/outdoors)
 "guW" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "storage-crashed-ship"
@@ -15216,9 +15241,6 @@
 "lsK" = (
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/lv624/ground/barrens/west_barrens)
-"ltE" = (
-/turf/open/floor/plating/warnplate/southwest,
-/area/lv624/lazarus/quartstorage/outdoors)
 "ltT" = (
 /turf/open/floor/plating/warnplate,
 /area/lv624/ground/jungle/central_jungle)
@@ -15231,9 +15253,6 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/barrens/south_eastern_barrens)
-"lxI" = (
-/turf/open/floor/plating/warnplate/northeast,
-/area/lv624/lazarus/quartstorage/outdoors)
 "lxX" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass/grass1,
@@ -18458,9 +18477,6 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,
 /area/lv624/ground/jungle/west_jungle)
-"rXb" = (
-/turf/open/floor/plating/warnplate/northwest,
-/area/lv624/lazarus/quartstorage/outdoors)
 "rXW" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /obj/structure/flora/jungle/vines/light_3,
@@ -19184,10 +19200,6 @@
 "tsa" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_central_jungle)
-"tsk" = (
-/obj/item/tool/warning_cone,
-/turf/open/floor/plating/warnplate/north,
-/area/lv624/lazarus/quartstorage/outdoors)
 "tsK" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/west,
@@ -19389,9 +19401,6 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
-"tOC" = (
-/turf/open/floor/plating/warnplate/north,
-/area/lv624/lazarus/quartstorage/outdoors)
 "tOS" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -19551,9 +19560,6 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
-"ufm" = (
-/turf/open/floor/plating/warnplate/east,
-/area/lv624/lazarus/quartstorage/outdoors)
 "ufG" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -20935,9 +20941,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
-"wUK" = (
-/turf/open/floor/plating,
-/area/lv624/lazarus/quartstorage/outdoors)
 "wVk" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/central_barrens)
@@ -21017,9 +21020,6 @@
 /obj/effect/decal/grass_overlay/grass1/inner,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
-"xbb" = (
-/turf/open/floor/plating/warnplate,
-/area/lv624/lazarus/quartstorage/outdoors)
 "xbu" = (
 /obj/item/shard,
 /turf/open/floor/whiteyellow/southwest,
@@ -51325,10 +51325,10 @@ cpY
 cpY
 cpY
 avP
-rXb
-gkE
-gkE
-ltE
+agO
+agJ
+agJ
+agB
 aqW
 aqW
 arH
@@ -51553,10 +51553,10 @@ cpY
 pba
 cpY
 avP
-tOC
-wUK
-guV
-xbb
+agP
+agM
+agK
+agC
 aqW
 asi
 aqW
@@ -51781,10 +51781,10 @@ cpY
 cpY
 cpY
 avP
-tsk
-wUK
-wUK
-xbb
+agY
+agM
+agM
+agC
 aqW
 arH
 aqW
@@ -52009,10 +52009,10 @@ fuY
 cpY
 aqF
 aqV
-lxI
-ufm
-ufm
-ahZ
+agZ
+agN
+agN
+agI
 asz
 aqW
 aqW

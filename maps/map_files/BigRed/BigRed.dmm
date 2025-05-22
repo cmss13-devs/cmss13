@@ -1407,8 +1407,9 @@
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
 "afq" = (
-/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west,
-/area/bigredv2/outside/nw)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1514,9 +1515,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afK" = (
-/obj/structure/machinery/transformer/lz1,
+/obj/structure/machinery/transformer/lz2,
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
-/area/bigredv2/outside/nw)
+/area/bigredv2/outside/s)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1529,7 +1530,7 @@
 /area/bigredv2/outside/space_port)
 "afN" = (
 /turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
-/area/bigredv2/outside/nw)
+/area/bigredv2/outside/s)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1550,8 +1551,8 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "afR" = (
-/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
-/area/bigredv2/outside/s)
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west,
+/area/bigredv2/outside/nw)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -1672,9 +1673,16 @@
 	},
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
+"agp" = (
+/obj/structure/machinery/transformer/lz1,
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "agq" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/n)
+"agr" = (
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "ags" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/n)
@@ -36589,10 +36597,6 @@
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/medical)
-"vxx" = (
-/obj/structure/machinery/transformer/lz2,
-/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
-/area/bigredv2/outside/s)
 "vxI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -38692,10 +38696,6 @@
 /obj/structure/window/framed/solaris/reinforced/hull,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/oob)
-"xIt" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/s)
 "xIv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 8;
@@ -50637,8 +50637,8 @@ aeI
 aeI
 vWw
 aoO
-afq
-afq
+afR
+afR
 aiw
 anp
 avT
@@ -50854,8 +50854,8 @@ aeI
 aeI
 aeI
 ajy
-afN
-afK
+agr
+agp
 ajx
 anp
 anp
@@ -51071,8 +51071,8 @@ aeI
 aeI
 mZh
 ajy
-afN
-afN
+agr
+agr
 ajx
 vCl
 ing
@@ -54822,7 +54822,7 @@ aMd
 bjx
 blq
 bjw
-xIt
+afq
 bjw
 axX
 lmi
@@ -55038,8 +55038,8 @@ phk
 aIn
 bjy
 blq
-afR
-vxx
+afN
+afK
 bjw
 axX
 bmp
@@ -55255,9 +55255,9 @@ cdI
 aIn
 bjy
 blq
-afR
-afR
-xIt
+afN
+afN
+afq
 axX
 bmq
 nVq

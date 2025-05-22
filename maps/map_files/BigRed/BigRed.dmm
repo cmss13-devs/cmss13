@@ -1337,8 +1337,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "afe" = (
-/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west,
-/area/bigredv2/outside/nw)
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1350,9 +1353,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "afh" = (
-/obj/structure/machinery/transformer,
-/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
-/area/bigredv2/outside/nw)
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/telecomm)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1391,15 +1396,19 @@
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "afo" = (
-/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
-/area/bigredv2/outside/nw)
-"afp" = (
-/turf/open/floor/asteroidwarning/east,
-/area/bigredv2/outside/nw)
-"afq" = (
 /obj/effect/landmark/spycam_start,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/space_port_lz2)
+"afp" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/space_port)
+"afq" = (
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west,
+/area/bigredv2/outside/nw)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1505,11 +1514,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "afK" = (
-/obj/structure/sign/calendar/wy{
-	pixel_y = 30
-	},
-/turf/open/floor/wood,
-/area/bigredv2/caves/lambda/breakroom)
+/obj/structure/machinery/transformer,
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1521,11 +1528,8 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
 "afN" = (
-/obj/structure/sign/calendar{
-	pixel_y = 30
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/telecomm)
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1546,12 +1550,8 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
 "afR" = (
-/obj/structure/machinery/landinglight/ds1{
-	dir = 8
-	},
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/asteroidwarning/west,
-/area/bigredv2/outside/space_port)
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/s)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -36589,6 +36589,10 @@
 /obj/structure/machinery/light,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/medical)
+"vxx" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/s)
 "vxI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -38689,11 +38693,9 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/oob)
 "xIt" = (
-/obj/item/trash/popcorn{
-	pixel_y = 9
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/nw)
+/area/bigredv2/outside/s)
 "xIv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 8;
@@ -41061,7 +41063,7 @@ acA
 aas
 aas
 acQ
-afN
+afh
 ade
 ade
 aeb
@@ -46483,7 +46485,7 @@ aaT
 aap
 aav
 aaG
-afR
+afp
 aap
 aav
 aaG
@@ -46997,7 +46999,7 @@ beP
 beP
 aSB
 tVp
-afq
+afo
 tVp
 tVp
 bgX
@@ -48916,10 +48918,10 @@ ahR
 aeI
 aeI
 aeI
-aoO
-afe
-afe
-ahQ
+aeI
+aeI
+aeI
+aeI
 aeI
 aeI
 ajz
@@ -49133,10 +49135,10 @@ ahR
 aeI
 aeI
 mZh
-ajy
-afo
-afh
-ahR
+aeI
+aeI
+aeI
+aeI
 aeI
 fWH
 aLZ
@@ -49350,10 +49352,10 @@ ahR
 nzX
 aeI
 aeI
-ajy
-afo
-afo
-ahR
+aeI
+aeI
+mZh
+aeI
 aeI
 aeI
 ajy
@@ -49567,10 +49569,10 @@ ahR
 aeI
 aeI
 aeI
-auF
-afp
-afp
-ahT
+aeI
+aeI
+aeI
+aeI
 aeI
 aeI
 ajy
@@ -50203,7 +50205,7 @@ aeI
 aeI
 aeI
 wHT
-ajy
+auF
 anp
 avT
 avT
@@ -50420,7 +50422,7 @@ aeI
 aeI
 aeI
 aeI
-ajy
+aeI
 anp
 qaR
 avT
@@ -50634,10 +50636,10 @@ aeI
 aeI
 aeI
 vWw
-aeI
-mZh
-aeI
-ajy
+aoO
+afq
+afq
+aiw
 anp
 avT
 avT
@@ -50851,10 +50853,10 @@ aeI
 aeI
 aeI
 aeI
-aeI
-aeI
-aeI
-caL
+ajy
+afN
+afK
+ajx
 anp
 anp
 alX
@@ -51067,11 +51069,11 @@ aeI
 aeI
 aeI
 aeI
-aeI
-aeI
-fWH
-aeI
+mZh
 ajy
+afN
+afN
+ajx
 vCl
 ing
 alu
@@ -51283,12 +51285,12 @@ aeI
 aoO
 aiw
 hxn
-aiw
-aiw
-aiw
-aiw
-aiw
-xIt
+ahQ
+aeI
+ajy
+ajx
+ajx
+ajx
 gyv
 vsz
 ngo
@@ -54818,9 +54820,9 @@ nKZ
 mEg
 aMd
 bjx
-bjx
-bjx
-bjx
+blq
+bjw
+xIt
 bjw
 axX
 lmi
@@ -55035,10 +55037,10 @@ vkR
 phk
 aIn
 bjy
-bjy
-bjy
-bjB
 blq
+afR
+vxx
+bjw
 axX
 bmp
 nVq
@@ -55252,10 +55254,10 @@ iww
 cdI
 aIn
 bjy
-bjy
-bjy
-bkp
 blq
+afR
+afR
+xIt
 axX
 bmq
 nVq
@@ -55469,10 +55471,10 @@ oYO
 vrD
 aIn
 bjz
-bjz
-bkp
-bjA
-blq
+blu
+bjx
+bjx
+bjx
 axX
 trr
 tTI
@@ -76242,7 +76244,7 @@ arG
 ara
 atf
 amk
-afK
+afe
 aqc
 ass
 aqc

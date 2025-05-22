@@ -250,23 +250,21 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "aaV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating/warnplate/southwest,
-/area/varadero/interior/comms3)
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
 "aaW" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/southeast,
-/area/varadero/interior/comms3)
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/pontoon_beach)
 "aaX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northwest,
-/area/varadero/interior/comms3)
+/obj/structure/fence,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
 "aaY" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/warnplate/northeast,
-/area/varadero/interior/comms3)
+/obj/structure/fence,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -5208,6 +5206,10 @@
 /obj/structure/prop/rock/brown,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance/security/north)
+"dZB" = (
+/obj/item/tool/shovel,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
 "dZT" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -10153,6 +10155,7 @@
 /area/varadero/interior/library)
 "ibs" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/fence,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "iby" = (
@@ -14411,6 +14414,10 @@
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
+"lBY" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
 "lCj" = (
 /obj/structure/platform/metal/kutjevo_smooth/west{
 	climb_delay = 1
@@ -29547,7 +29554,7 @@
 /area/varadero/interior/hall_N)
 "xzc" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt/desert0,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
 "xzd" = (
 /obj/effect/decal/cleanable/vomit,
@@ -29690,6 +29697,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior_protected/maintenance/south)
+"xES" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/north,
+/area/varadero/exterior/pontoon_beach)
 "xFb" = (
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/eastocean)
@@ -48442,7 +48453,7 @@ eGX
 hKK
 sRs
 hXR
-oGv
+vss
 oGv
 jSX
 hKK
@@ -48807,7 +48818,7 @@ lTR
 scL
 oGv
 hXR
-oGv
+vss
 lnO
 lTR
 lTR
@@ -48987,11 +48998,11 @@ cpF
 lTR
 lTR
 scL
-oGv
+aaY
 xzc
 oGv
-lnO
-daS
+pfd
+aaW
 lTR
 lTR
 lTR
@@ -49169,11 +49180,11 @@ stl
 cpF
 gVO
 uTu
-rKM
-oGv
-oGv
-lnO
-aTY
+aaV
+vss
+vss
+vss
+xES
 lTR
 lTR
 lTR
@@ -49351,11 +49362,11 @@ lTR
 lTR
 scL
 oGv
-oGv
-hXR
-oGv
+dZB
+vss
+lBY
+vss
 pfd
-jaF
 oAC
 lTR
 lTR
@@ -49532,12 +49543,12 @@ lTR
 lTR
 lTR
 scL
-oGv
-hXR
-oGv
-tmC
-oGv
-oGv
+vss
+vss
+vss
+vss
+vss
+vss
 lnO
 lTR
 lTR
@@ -49715,11 +49726,11 @@ lTR
 lTR
 scL
 oGv
-oGv
-ibs
+vss
+lQW
 lQW
 gux
-kGD
+lQW
 kgm
 mQG
 lTR
@@ -49898,7 +49909,7 @@ cpF
 eGX
 sRs
 lsN
-hXR
+vss
 ibs
 eFB
 kGD
@@ -50079,7 +50090,7 @@ cpF
 lTR
 lTR
 scL
-oGv
+aaX
 vss
 oGv
 hwL
@@ -50649,8 +50660,8 @@ inN
 tmm
 qdk
 eFJ
-aaX
-aaV
+eFJ
+xzr
 szp
 xzr
 eFJ
@@ -50831,8 +50842,8 @@ rkH
 szp
 ekg
 eFJ
-aaY
-aaW
+eFJ
+xzr
 szp
 xzr
 eFJ

@@ -74,12 +74,15 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/fiorina/lz/near_lzI)
 "aao" = (
-/obj/structure/machinery/transformer,
-/turf/open/floor/delivery,
-/area/fiorina/station/power_ring/reactor)
+/obj/structure/machinery/power/apc/power/east,
+/obj/structure/surface/rack,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
 "aap" = (
-/turf/open/floor/delivery,
-/area/fiorina/station/power_ring/reactor)
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/prison,
+/area/fiorina/maintenance)
 "aaq" = (
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating/prison,
@@ -10966,12 +10969,7 @@
 /turf/open/floor/prison/blue/north,
 /area/fiorina/tumor/servers)
 "iuZ" = (
-/obj/item/stack/rods,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	pixel_y = 21
-	},
-/turf/open/floor/plating/prison,
+/turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/maintenance)
 "ivb" = (
 /obj/effect/spawner/gibspawner/human,
@@ -14643,6 +14641,10 @@
 	},
 /turf/open/floor/prison/platingdmg3,
 /area/fiorina/station/security)
+"lmm" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/research_cells/east)
 "lmu" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -17374,8 +17376,6 @@
 /turf/open/organic/grass/astroturf,
 /area/fiorina/station/civres_blue)
 "nqL" = (
-/obj/structure/surface/rack,
-/obj/item/reagent_container/spray/cleaner,
 /obj/structure/machinery/power/apc/power/east,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
@@ -54874,7 +54874,7 @@ fXB
 voi
 voi
 vhB
-lgx
+oPU
 oPU
 oPU
 oPU
@@ -55083,10 +55083,10 @@ ubP
 ubP
 aTx
 eLu
-eLu
-eLu
-eLu
-tLC
+cME
+cME
+cME
+cME
 eLu
 eLu
 pdB
@@ -55293,13 +55293,13 @@ wrR
 axA
 ubP
 ubP
-ubP
-eLu
-iuZ
+ejs
+cME
+rIE
+cME
+aap
 cME
 nUJ
-cME
-cME
 eLu
 voi
 voi
@@ -55506,12 +55506,12 @@ xiF
 ubP
 ubP
 ejs
-liA
+cME
 cME
 nqL
 cME
 cME
-cME
+aao
 eLu
 voi
 voi
@@ -55719,10 +55719,10 @@ ubP
 ubP
 aTx
 eLu
-eLu
-eLu
-eLu
-tLC
+cME
+cME
+cME
+cME
 eLu
 eLu
 hpd
@@ -55931,9 +55931,9 @@ ubP
 ubP
 ubP
 ubP
-vnG
-vnG
-vnG
+iuZ
+iuZ
+iuZ
 fRq
 ubP
 ubP
@@ -69617,11 +69617,11 @@ cKa
 kjt
 mgz
 apg
-qBw
 cIa
-sXe
 wHV
 sXe
+sXe
+wHV
 aSz
 jmG
 jmG
@@ -69829,10 +69829,10 @@ cKa
 kjt
 jii
 apg
-qBw
 glj
 sXe
 wHV
+lmm
 sXe
 odQ
 nLO
@@ -70041,9 +70041,9 @@ cKa
 apm
 jii
 apg
-qBw
 glj
 sXe
+wHV
 wHV
 sXe
 vJh
@@ -70253,11 +70253,11 @@ cIa
 nVK
 lTs
 apg
-qBw
 cIa
-dcv
 wHV
+dcv
 sXe
+wHV
 lMi
 nLO
 bQM
@@ -73665,7 +73665,7 @@ ovq
 ukg
 jSZ
 jSZ
-mVk
+ovq
 ovq
 cLS
 oUg
@@ -74311,7 +74311,7 @@ uvn
 vja
 nSx
 oQS
-flG
+svS
 isw
 gRA
 flG
@@ -74985,8 +74985,8 @@ tEU
 qCx
 tEU
 tEU
-aap
-aao
+sgI
+sgI
 tEU
 tEU
 tEU
@@ -75197,8 +75197,8 @@ tEU
 tEU
 tEU
 tEU
-aap
-aap
+sgI
+sgI
 tEU
 tEU
 tEU

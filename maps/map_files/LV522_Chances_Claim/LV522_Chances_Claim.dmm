@@ -5418,6 +5418,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/kitchen/glass)
+"cTA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "cTU" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -5957,6 +5963,9 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/east_central_street)
+"dff" = (
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "dfk" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -10386,10 +10395,14 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1)
 "fBR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
 	},
-/turf/open/auto_turf/shale/layer1,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/asphalt/cement/cement9,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "fBY" = (
 /obj/item/prop/colony/used_flare,
@@ -10626,6 +10639,12 @@
 "fKu" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/lv522/atmos/reactor_garage)
+"fKL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "fLa" = (
 /turf/closed/shuttle/dropship3/tornado{
 	icon_state = "47"
@@ -12920,6 +12939,9 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/engineering)
+"gZh" = (
+/turf/open/floor/plating/platebotc,
+/area/lv522/indoors/b_block/hydro/glass)
 "gZp" = (
 /obj/structure/machinery/seed_extractor,
 /obj/effect/decal/cleanable/dirt,
@@ -15913,6 +15935,12 @@
 /obj/item/prop/alien/hugger,
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/windbreaker/observation)
+"iHK" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement12,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "iIs" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -16121,6 +16149,13 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv522/indoors/a_block/admin)
+"iNq" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement14,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "iNs" = (
 /obj/structure/cargo_container/kelland/left,
 /turf/open/floor/prison/blue_plate,
@@ -16321,6 +16356,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/admin)
+"iTI" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "iTS" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat/browncorner,
@@ -16693,7 +16734,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "jdv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -19160,6 +19201,16 @@
 /obj/structure/machinery/bioprinter,
 /turf/open/floor/strata/cyan2/east,
 /area/lv522/indoors/a_block/medical)
+"knH" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/asphalt/cement/cement2,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "knN" = (
 /obj/structure/stairs/perspective{
 	dir = 1;
@@ -19270,6 +19321,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv522/indoors/a_block/security)
+"kpU" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "kqa" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -22601,6 +22659,10 @@
 	},
 /turf/open/floor/corsat/brown/west,
 /area/lv522/atmos/east_reactor)
+"mdH" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/platebotc,
+/area/lv522/indoors/b_block/hydro/glass)
 "mdJ" = (
 /obj/structure/barricade/deployable{
 	dir = 8
@@ -25996,6 +26058,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/b_block/bar)
+"nOM" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement15,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "nOT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -30030,6 +30099,13 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/cell_stripe/north,
 /area/lv522/atmos/way_in_command_centre)
+"pYY" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "pZb" = (
 /turf/closed/shuttle/dropship3/tornado/typhoon{
 	icon_state = "33"
@@ -31333,6 +31409,9 @@
 	},
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
+"qEC" = (
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/lv522/outdoors/colony_streets/south_west_street)
 "qEU" = (
 /obj/structure/window/framed/strata/reinforced,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -38278,14 +38357,11 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "tUL" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 11;
-	pixel_y = 25
-	},
+/obj/structure/machinery/transformer,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "tUM" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -39631,11 +39707,8 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "uDT" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/indoors/b_block/bridge)
+/area/lv522/indoors/b_block/hydro/glass)
 "uEt" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -59308,11 +59381,11 @@ tSL
 hpq
 max
 xKk
-rIj
-rIj
-rIj
-rIj
-rIj
+qEC
+qEC
+qEC
+qEC
+qEC
 xKk
 max
 max
@@ -61583,8 +61656,8 @@ wIr
 rvu
 aPu
 fTP
-oLa
-oLa
+qzQ
+qzQ
 qzQ
 aPu
 qSS
@@ -61788,10 +61861,10 @@ hyf
 wIr
 fYm
 aPu
-oLa
-uWT
-uWT
-tkf
+qzQ
+uDT
+uDT
+fTP
 qzQ
 aPu
 jiF
@@ -61995,8 +62068,8 @@ cfz
 aPu
 qzQ
 oLa
-uWT
-uWT
+gZh
+mdH
 tkf
 fTP
 fTP
@@ -62201,8 +62274,8 @@ tIT
 jey
 iXM
 uIk
-uWT
-uWT
+gZh
+gZh
 eng
 iXM
 vUe
@@ -62406,10 +62479,10 @@ hyf
 wIr
 dgY
 aPu
-xgH
-uWT
-uWT
-xgH
+oqp
+uDT
+uDT
+oqp
 fTP
 dPv
 pcO
@@ -62613,8 +62686,8 @@ wIr
 qJv
 aPu
 bpN
-uDT
-pOs
+vUe
+hoy
 poD
 aPu
 rSW
@@ -69613,11 +69686,11 @@ six
 hMz
 fWG
 fWG
-fWG
+kpU
 jqr
 xxq
 xxq
-xxq
+xzK
 jdq
 vss
 vss
@@ -69823,8 +69896,8 @@ fWG
 uwT
 uwT
 uwT
-uwT
-tKe
+bqE
+iHK
 uwT
 uwT
 uwT
@@ -70028,13 +70101,13 @@ fWG
 fWG
 fWG
 uwT
+knH
+xzK
+fKL
+iNq
 uwT
 uwT
-tKe
-uwT
-uwT
-uwT
-uwT
+pYY
 uwT
 fWG
 fWG
@@ -70233,11 +70306,11 @@ gkY
 eZe
 fWG
 fWG
-uwT
-uwT
-uwT
+fWG
+bqE
+dff
 tUL
-uwT
+hMz
 uwT
 uwT
 fWG
@@ -70439,11 +70512,11 @@ jmG
 hkO
 eZe
 fWG
-uwT
-uwT
-ixP
-tKe
-uwT
+fWG
+bqE
+dff
+iTI
+hMz
 uwT
 cpy
 cpy
@@ -70645,12 +70718,12 @@ jmG
 jmG
 dVD
 fWG
-uwT
-uwT
-ixP
-tKe
 fWG
-cpy
+fBR
+xxq
+cTA
+nOM
+qZf
 cpy
 uje
 fWG
@@ -70851,10 +70924,10 @@ kua
 jmG
 fEY
 fWG
+fWG
 uwT
 uwT
-ixP
-fBR
+tKe
 fWG
 fWG
 fWG

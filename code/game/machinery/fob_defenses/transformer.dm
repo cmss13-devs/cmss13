@@ -134,7 +134,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
-		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source is powering up, It will be restored in approximately 30 seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts' power source is powering up, It will be restored in approximately 30 seconds."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /obj/structure/machinery/transformer/proc/turn_on()
 	marine_announcement("Power Alert: \nColony transformer active. Power grid operational.", "ARES Power Grid Monitor")
@@ -143,7 +143,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
-		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source has been restored!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts' power source has been restored!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_ON)
 	active_since = world.time
 
@@ -177,7 +177,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
-		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source was destroyed, It will shutdown in [round(time_to_shutdown)] minutes!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts' power source was destroyed, It will shutdown in [round(time_to_shutdown)] minutes!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 	shutdown_timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), time_to_shutdown MINUTES, TIMER_STOPPABLE)
 	if(turn_on_timer)
 		deltimer(turn_on_timer)
@@ -191,7 +191,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 		hive = GLOB.hive_datum[cur_hive_num]
 		if(!length(hive.totalXenos))
 			continue
-		xeno_announcement(SPAN_XENOANNOUNCE("The tallhost's power source has shutdown!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
+		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts' power source has shutdown!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_OFF)
 
 /obj/structure/machinery/transformer/lz1

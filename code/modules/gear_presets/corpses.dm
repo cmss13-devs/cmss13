@@ -161,7 +161,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/miner
-	name = "Corpse - KMCC - Miner"
+	name = "Corpse - KMCC - Shaft Miner"
 	assignment = "KMCC - Miner"
 	xenovictim = TRUE
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_LOGISTICS, ACCESS_CIVILIAN_ENGINEERING)

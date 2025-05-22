@@ -86,6 +86,7 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "recruiter"
 	minimap_background = "background_medical"
+	skills = /datum/skills/civilian/survivor/uscm_recruiter
 
 /datum/equipment_preset/survivor/uscm/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)

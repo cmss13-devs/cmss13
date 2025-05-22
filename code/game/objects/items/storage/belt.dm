@@ -1212,6 +1212,12 @@
 	else
 		return ..()
 
+/obj/item/storage/belt/grenade/bugkiller
+
+/obj/item/storage/belt/grenade/bugkiller/fill_preset_inventory()
+	new /obj/item/explosive/grenade/custom/antiweed(src)
+	new /obj/item/explosive/grenade/custom/antiweed(src)
+	new /obj/item/explosive/grenade/custom/antiweed(src)
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 

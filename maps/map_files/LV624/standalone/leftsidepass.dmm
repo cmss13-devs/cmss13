@@ -57,7 +57,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "aC" = (
 /obj/structure/flora/jungle/vines/light_2,
-/turf/open/gm/grass/grass2,
+/turf/open/gm/grass/grass2/weedable,
 /area/lv624/ground/jungle/west_jungle)
 "aD" = (
 /obj/structure/flora/jungle/vines/light_1,

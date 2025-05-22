@@ -493,6 +493,10 @@
 /turf/open/gm/grass/grass2
 	icon_state = "grass2"
 
+/turf/open/gm/grass/grass2/weedable
+	icon_state = "grass2"
+	is_weedable = FULLY_WEEDABLE
+
 /turf/open/gm/grass/grassbeach
 	icon_state = "grassbeach"
 

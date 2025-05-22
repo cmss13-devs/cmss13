@@ -244,7 +244,7 @@
 	desc = "The oranges aren't done yet... this sucks.";
 	name = "orange tree"
 	},
-/turf/open/gm/grass/grass1,
+/turf/open/gm/grass/grass1/weedable,
 /area/lv624/ground/caves/sand_temple)
 "gJ" = (
 /obj/structure/stairs/perspective{
@@ -494,7 +494,7 @@
 /area/lv624/ground/caves/sand_temple)
 "sH" = (
 /obj/structure/platform/stone/runed_sandstone/north,
-/turf/open/gm/grass/grass1,
+/turf/open/gm/grass/grass1/weedable,
 /area/lv624/ground/caves/sand_temple)
 "sN" = (
 /turf/open/gm/river,
@@ -1003,7 +1003,7 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
 "Kk" = (
-/turf/open/gm/grass/grass1,
+/turf/open/gm/grass/grass1/weedable,
 /area/lv624/ground/barrens/south_eastern_barrens)
 "KB" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -1289,7 +1289,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Vu" = (
-/turf/open/gm/grass/grass1,
+/turf/open/gm/grass/grass1/weedable,
 /area/lv624/ground/caves/sand_temple)
 "VP" = (
 /obj/structure/platform/stone/runed_sandstone,

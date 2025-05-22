@@ -34,10 +34,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
 "aj" = (
-/turf/open/gm/grass/grass1,
+/turf/open/gm/grass/grass1/weedable,
 /area/lv624/ground/jungle/north_jungle)
 "ak" = (
-/turf/open/gm/grass/grass2,
+/turf/open/gm/grass/grass2/weedable,
 /area/lv624/ground/jungle/north_jungle)
 "al" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -120,7 +120,7 @@
 /area/lv624/ground/river/central_river)
 "EG" = (
 /obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/grass/grass2,
+/turf/open/gm/grass/grass2/weedable,
 /area/lv624/ground/jungle/north_east_jungle)
 "Pz" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -131,7 +131,7 @@
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/ground/river/central_river)
 "VN" = (
-/turf/open/gm/grass/grass1,
+/turf/open/gm/grass/grass1/weedable,
 /area/lv624/ground/jungle/north_east_jungle)
 "Wb" = (
 /turf/open/gm/dirtgrassborder/north,

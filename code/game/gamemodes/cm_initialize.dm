@@ -232,7 +232,7 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
-	set waitfor = FALSE
+	// set waitfor = FALSE // BANDAMARINES REMOVE
 
 	if(!pred_candidate.client) // Legacy - probably due to spawn code sync sleeps
 		log_debug("Null client attempted to transform_predator")
@@ -267,7 +267,7 @@ Additional game mode variables.
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
 	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
-		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
+		elder_overseer_message("[new_predator.real_name] присоединяется к охоте.")
 
 	return new_predator
 

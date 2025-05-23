@@ -13,6 +13,8 @@
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 	var/new_bubble_icon = "machine"
 
+	remove_tts = TRUE // BANDAMARINES ADD
+
 /datum/equipment_preset/pmc/w_y_whiteout/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_GLOBAL)
@@ -25,8 +27,6 @@
 	new_human.b_eyes = 59
 	new_human.h_style = "Bald"
 	new_human.f_style = "Shaved"
-
-	new_human.remove_tts_component() // BANDAMARINES ADD
 
 /datum/equipment_preset/pmc/w_y_whiteout/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(MALE)

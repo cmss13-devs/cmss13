@@ -19,6 +19,9 @@
 	tts_seed = get_tts_seed()
 
 /mob/living/carbon/proc/change_tts_seed_ask()
+	if(!client)
+		return
+
 	var/alert = tgui_alert(src, "Хотите поменять свой голос? Текущий - [src.tts_seed]", "Смена TTS", list("Да","Нет"))
 	if(alert != "Да")
 		return
@@ -26,6 +29,10 @@
 
 /datum/equipment_preset/load_preset(mob/living/carbon/human/new_human, randomise = FALSE, count_participant = FALSE, client/mob_client, show_job_gear = TRUE)
 	. = ..()
+	if(remove_tts)
+		new_human.remove_tts_component()
+		return
+
 	if(!randomise)
 		return
 

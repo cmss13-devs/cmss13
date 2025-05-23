@@ -755,6 +755,8 @@
 	/// Used to set species when loading race
 	var/joe_type = SYNTH_WORKING_JOE
 
+	remove_tts = TRUE // BANDAMARINES ADD
+
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_GLOBAL)
@@ -775,8 +777,6 @@
 	new_human.r_facial = 255
 	new_human.g_facial = 255
 	new_human.b_facial = 255
-
-	new_human.remove_tts_component() // BANDAMARINES ADD
 
 /datum/equipment_preset/synth/working_joe/load_vanity(mob/living/carbon/human/new_human)
 	return

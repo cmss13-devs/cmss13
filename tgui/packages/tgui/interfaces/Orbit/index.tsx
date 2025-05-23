@@ -231,7 +231,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable(JobsRu('FORECON'), 'green', FORECONSquad),
     buildSquadObservable(JobsRu('SOF'), 'red', SOFSquad),
     buildSquadObservable(JobsRu('Other'), 'grey', other),
-    buildSquadObservable(JobsRu('Provost'), 'red', provost),
+    buildSquadObservable(JobsRu('ProvostCategory'), 'red', provost),
   ];
   return squads;
 };

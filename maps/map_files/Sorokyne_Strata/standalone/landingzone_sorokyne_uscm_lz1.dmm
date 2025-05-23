@@ -501,7 +501,7 @@
 /area/strata/interior/landing_zones/near_lz1)
 "bT" = (
 /obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/plating,
 /area/strata/interior/mining_outpost)
 "bY" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -666,7 +666,7 @@
 "dY" = (
 /obj/structure/window/framed/strata/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer,
-/turf/open/floor/strata/red1,
+/turf/open/floor/plating,
 /area/strata/interior/mining_outpost)
 "eb" = (
 /obj/effect/decal/strata_decals/grime/grime2{
@@ -716,7 +716,7 @@
 /area/strata/interior/mining_outpost/south_dormitories)
 "eE" = (
 /obj/structure/window/framed/strata,
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/plating,
 /area/strata/interior/landing_zones/near_lz1)
 "eP" = (
 /obj/structure/extinguisher_cabinet,
@@ -858,10 +858,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
-"iF" = (
-/obj/structure/window/framed/strata,
-/turf/open/floor/strata/floor3,
-/area/strata/interior/mining_outpost)
 "iG" = (
 /obj/item/storage/briefcase,
 /turf/open/floor/strata/red1,
@@ -954,10 +950,6 @@
 /obj/structure/machinery/optable,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost)
-"kX" = (
-/obj/structure/window/framed/strata,
-/turf/open/floor/strata/multi_tiles/west,
-/area/strata/interior/mining_outpost/south_dormitories)
 "ld" = (
 /turf/open/asphalt/cement/cement15,
 /area/strata/interior/landing_zones/lz1)
@@ -1294,10 +1286,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/landing_zones/near_lz1)
-"sW" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/interior/mining_outpost/flight_control)
 "tg" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/strata/floor3,
@@ -1406,10 +1394,6 @@
 /obj/structure/closet,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/hive)
-"vp" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/interior/landing_zones/near_lz1)
 "vr" = (
 /turf/open/floor/strata/white_cyan1,
 /area/strata/interior/mining_outpost)
@@ -1597,10 +1581,6 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost)
-"zr" = (
-/obj/structure/window/framed/strata,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/strata/interior/landing_zones/near_lz1)
 "zs" = (
 /obj/structure/sink{
 	dir = 8;
@@ -1939,7 +1919,7 @@
 /area/strata/interior/mining_outpost)
 "Hr" = (
 /obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/red1,
+/turf/open/floor/plating,
 /area/strata/interior/landing_zones/near_lz1)
 "Hu" = (
 /obj/item/fuel_cell,
@@ -2004,7 +1984,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 8
 	},
-/turf/open/floor/strata/red1,
+/turf/open/floor/plating,
 /area/strata/interior/mining_outpost)
 "IR" = (
 /obj/structure/barricade/plasteel/wired{
@@ -2100,7 +2080,7 @@
 /area/strata/interior/mining_outpost)
 "KA" = (
 /obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/floor3,
+/turf/open/floor/plating,
 /area/strata/interior/mining_outpost/flight_control)
 "KH" = (
 /obj/structure/machinery/light,
@@ -2660,7 +2640,7 @@
 /area/strata/interior/mining_outpost)
 "Ym" = (
 /obj/structure/window/framed/strata,
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating,
 /area/strata/interior/mining_outpost/south_dormitories)
 "Yr" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
@@ -2675,7 +2655,7 @@
 /area/strata/interior/mining_outpost)
 "Yu" = (
 /obj/structure/window/framed/strata,
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating,
 /area/strata/interior/mining_outpost)
 "Yv" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -3723,7 +3703,7 @@ xq
 XH
 RF
 ae
-zr
+eE
 cV
 cV
 cV
@@ -3784,7 +3764,7 @@ By
 ld
 RF
 ae
-zr
+eE
 cV
 cV
 cV
@@ -3845,7 +3825,7 @@ jl
 VT
 Cd
 XJ
-zr
+eE
 cV
 cV
 cV
@@ -3872,9 +3852,9 @@ cV
 cG
 Us
 Us
-sW
+KA
 Iz
-vp
+Hr
 LJ
 ai
 aF
@@ -3933,9 +3913,9 @@ cV
 cG
 Us
 Us
-sW
+KA
 LO
-vp
+Hr
 LJ
 aS
 Pq
@@ -4200,8 +4180,8 @@ WW
 yH
 Uh
 Uh
-iF
-iF
+Yu
+Yu
 TZ
 Hz
 CP
@@ -4698,8 +4678,8 @@ iX
 NK
 lq
 SH
-kX
-kX
+Ym
+Ym
 SH
 cV
 cV

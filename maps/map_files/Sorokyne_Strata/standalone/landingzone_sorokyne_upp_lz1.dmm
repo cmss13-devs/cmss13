@@ -828,7 +828,7 @@
 /area/strata/interior/research)
 "fe" = (
 /obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating,
 /area/strata/interior/research)
 "fk" = (
 /obj/structure/surface/rack{
@@ -1223,10 +1223,6 @@
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/research)
-"rS" = (
-/obj/structure/window/framed/strata/reinforced,
-/turf/open/floor/strata/multi_tiles/west,
-/area/strata/interior/research)
 "sf" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -1560,10 +1556,6 @@
 	color = "#858680"
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/strata/interior/research)
-"AU" = (
-/obj/structure/window/framed/strata,
-/turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)
 "Bs" = (
 /obj/structure/sign/flag/upp{
@@ -1957,7 +1949,7 @@
 /area/strata/interior/research)
 "Tz" = (
 /obj/structure/window/framed/strata,
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/plating,
 /area/strata/interior/research)
 "TB" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -2203,8 +2195,8 @@ iN
 iN
 pl
 mF
-rS
-rS
+fe
+fe
 mF
 mF
 mF
@@ -2561,12 +2553,12 @@ mF
 gc
 Dc
 fk
-AU
+Tz
 by
 bc
 bc
 by
-AU
+Tz
 kc
 LL
 bs
@@ -2613,12 +2605,12 @@ mF
 Um
 yu
 cf
-AU
+Tz
 oL
 bc
 bc
 oL
-AU
+Tz
 RO
 gQ
 yP
@@ -2665,12 +2657,12 @@ mF
 Lt
 oL
 iE
-AU
+Tz
 bL
 bc
 bc
 by
-AU
+Tz
 Sy
 UJ
 iE
@@ -2999,8 +2991,8 @@ lm
 Tz
 Tz
 mF
-rS
-rS
+fe
+fe
 mF
 wM
 XT
@@ -3230,7 +3222,7 @@ xY
 tK
 Mc
 Ln
-AU
+Tz
 bX
 jI
 jI
@@ -3282,7 +3274,7 @@ lF
 wi
 zV
 hC
-AU
+Tz
 bX
 jI
 jI
@@ -3415,8 +3407,8 @@ mF
 Tz
 Tz
 mF
-rS
-rS
+fe
+fe
 mF
 pN
 GJ

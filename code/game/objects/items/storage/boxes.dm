@@ -664,6 +664,49 @@
 	else
 		icon_state = "stomper_box"
 
+/// Plushies Mystery Box
+
+/obj/item/storage/box/plush
+	name = "\improper collectable plushies mystery box"
+	desc = "A colorful plushie mystery box with reflective surface and Weyland-Yutani logo on top. It jingles faintly when shaken, hinting at the soft, squishy surprises inside. A small sticker reads: 'Collect them all!'"
+	icon_state = "mystery_box"
+	item_state = "mystery_box"
+	w_class = SIZE_MEDIUM
+	bypass_w_limit = /obj/item/toy/plush
+	max_storage_space = 6
+	can_hold = list(/obj/item/toy/plush)
+
+/obj/item/storage/box/plush/update_icon()
+	if(!length(contents))
+		icon_state = "mystery_box_e"
+	else
+		icon_state = "mystery_box"
+
+/obj/item/storage/box/plush/fill_preset_inventory()
+	var/list/weighted_plushes = list(
+		/obj/item/toy/plush/therapy, /obj/item/toy/plush/therapy, /obj/item/toy/plush/therapy, /obj/item/toy/plush/therapy,
+		/obj/item/toy/plush/therapy/red, /obj/item/toy/plush/therapy/red, /obj/item/toy/plush/therapy/red, /obj/item/toy/plush/therapy/red,
+		/obj/item/toy/plush/therapy/blue, /obj/item/toy/plush/therapy/blue, /obj/item/toy/plush/therapy/blue, /obj/item/toy/plush/therapy/blue,
+		/obj/item/toy/plush/therapy/green, /obj/item/toy/plush/therapy/green, /obj/item/toy/plush/therapy/green, /obj/item/toy/plush/therapy/green,
+		/obj/item/toy/plush/therapy/orange, /obj/item/toy/plush/therapy/orange, /obj/item/toy/plush/therapy/orange, /obj/item/toy/plush/therapy/orange,
+		/obj/item/toy/plush/therapy/purple, /obj/item/toy/plush/therapy/purple, /obj/item/toy/plush/therapy/purple, /obj/item/toy/plush/therapy/purple,
+		/obj/item/toy/plush/therapy/yellow, /obj/item/toy/plush/therapy/yellow, /obj/item/toy/plush/therapy/yellow, /obj/item/toy/plush/therapy/yellow,
+		/obj/item/toy/plush/therapy/random_color, /obj/item/toy/plush/therapy/random_color, /obj/item/toy/plush/therapy/random_color, /obj/item/toy/plush/therapy/random_color,
+		/obj/item/toy/plush/rock, /obj/item/toy/plush/rock, /obj/item/toy/plush/rock, /obj/item/toy/plush/rock,
+		/obj/item/toy/plush/farwa, /obj/item/toy/plush/farwa, /obj/item/toy/plush/farwa, /obj/item/toy/plush/farwa,
+		/obj/item/toy/plush/barricade, /obj/item/toy/plush/barricade, /obj/item/toy/plush/barricade, /obj/item/toy/plush/barricade,
+		/obj/item/toy/plush/bee, /obj/item/toy/plush/bee, /obj/item/toy/plush/bee, /obj/item/toy/plush/bee,
+		/obj/item/toy/plush/shark, /obj/item/toy/plush/shark, /obj/item/toy/plush/shark, ,/obj/item/toy/plush/shark,
+		/obj/item/toy/plush/gnarp, /obj/item/toy/plush/gnarp,
+		/obj/item/toy/plush/gnarp/alt, /obj/item/toy/plush/gnarp/alt,
+		/obj/item/toy/plush/yautja, //// Rare
+		/obj/item/toy/plush/runner  //// Rare
+	)
+
+	for(var/plush_index = 1 to 3)
+		var/typepath = pick(weighted_plushes)
+		new typepath(src)
+
 ////////// MARINES BOXES //////////////////////////
 
 

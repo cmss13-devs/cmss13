@@ -696,7 +696,7 @@
 		/obj/item/toy/plush/farwa, /obj/item/toy/plush/farwa, /obj/item/toy/plush/farwa, /obj/item/toy/plush/farwa,
 		/obj/item/toy/plush/barricade, /obj/item/toy/plush/barricade, /obj/item/toy/plush/barricade, /obj/item/toy/plush/barricade,
 		/obj/item/toy/plush/bee, /obj/item/toy/plush/bee, /obj/item/toy/plush/bee, /obj/item/toy/plush/bee,
-		/obj/item/toy/plush/shark, /obj/item/toy/plush/shark, /obj/item/toy/plush/shark, ,/obj/item/toy/plush/shark,
+		/obj/item/toy/plush/shark, /obj/item/toy/plush/shark, /obj/item/toy/plush/shark, /obj/item/toy/plush/shark,
 		/obj/item/toy/plush/gnarp, /obj/item/toy/plush/gnarp,
 		/obj/item/toy/plush/gnarp/alt, /obj/item/toy/plush/gnarp/alt,
 		/obj/item/toy/plush/yautja, //// Rare

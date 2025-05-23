@@ -120,16 +120,18 @@
 	accurate_range = 12
 	damage = 45
 	penetration = ARMOR_PENETRATION_TIER_10
+	var/explosion_power = 100
+	var/explosion_falloff = 40
 
 /datum/ammo/bullet/rx47_cannon/on_hit_mob(mob/M, obj/projectile/P)
-	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(get_turf(M), explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/rx47_cannon/on_hit_obj(obj/O, obj/projectile/P)
-	cell_explosion(get_turf(O), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+	cell_explosion(get_turf(O), explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/rx47_cannon/on_hit_turf(turf/T, obj/projectile/P)
 	if(T.density)
-		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+		cell_explosion(T, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /obj/item/weapon/gun/mech/cannon
 	name = "\improper RX47 Siegebreaker"

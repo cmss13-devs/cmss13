@@ -26,17 +26,21 @@
 	var/gun_secondary_path = /obj/item/weapon/gun/mech/cupola
 
 	var/helmet_closed = FALSE
+	var/has_cannon = FALSE
+	var/has_tow_launcher = FALSE
 	var/markings_color
 	var/markings_specialty
 
 /obj/vehicle/rx47_mech/siegebreaker
 	name = "\improper RX47-SB Combat Mechsuit"
-	desc = "A RX47 'Siegebreaker' Combat Mechsuit, equipped with a 50mm IFF-locked explosive cannon and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
+	desc = "A RX47-SB 'Siegebreaker' Combat Mechsuit, equipped with a 50mm IFF-locked explosive cannon and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
+	has_cannon = TRUE
 	gun_primary_path = /obj/item/weapon/gun/mech/cannon
 
 /obj/vehicle/rx47_mech/exterminator
 	name = "\improper RX47-EX Combat Mechsuit"
-	desc = "A RX47 'Exterminator' Combat Mechsuit, equipped with a 20mm Chaingun and 50mm IFF-locked explosive cannon"
+	desc = "A RX47-EX 'Exterminator' Combat Mechsuit, equipped with a 20mm Chaingun and 50mm IFF-locked explosive cannon"
+	has_cannon = TRUE
 	gun_secondary_path = /obj/item/weapon/gun/mech/cannon
 
 //--------------------GENERAL PROCS-----------------
@@ -64,13 +68,19 @@
 	else
 		overlays += image(icon_state = "wymech_helmet_open", layer = MECH_LAYER)
 	overlays += image(icon_state = "wymech_arms", layer = MECH_LAYER)
-	overlays += image(icon_state = "wymech_weapon_left", layer = MECH_LAYER)
-	overlays += image(icon_state = "wymech_weapon_right", layer = MECH_LAYER)
+
+	overlays += image(icon_state = "weapon_left", layer = MECH_LAYER)
+	if(has_cannon)
+		overlays += image(icon_state = "weapon_cannon", layer = MECH_LAYER)
+	else
+		overlays += image(icon_state = "weapon_right", layer = MECH_LAYER)
+	if(has_tow_launcher)
+		overlays += image(icon_state = "weapon_tow", layer = MECH_LAYER)
+
 	if(markings_color)
 		overlays += image(icon_state = "markings_c_[markings_color]", layer = MECH_LAYER)
 	if(markings_specialty)
 		overlays += image(icon_state = "markings_s_[markings_specialty]", layer = MECH_LAYER)
-
 
 /obj/vehicle/rx47_mech/Destroy()
 	if(buckled_mob)

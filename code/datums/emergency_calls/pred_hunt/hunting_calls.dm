@@ -263,5 +263,5 @@
 /datum/emergency_call/young_bloods/hunting_party //Regular youngblood party
 	name = "Hunting Grounds - Experienced Youngblood Party"
 	blooding_name = "Experienced Youngblood Party (Three members)"
-	youngblood_time = 15 HOURS
-	time_required_for_job = 30 HOURS
+	youngblood_time = 10 HOURS
+	time_required_for_job = 20 HOURS

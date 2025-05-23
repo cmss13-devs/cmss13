@@ -236,6 +236,13 @@
 
 	spawn_weapon(/obj/item/weapon/gun/smg/m39, /obj/item/ammo_magazine/smg/m39/extended, new_human, 0, 3)
 
+/datum/equipment_preset/uscm/mech/lead
+	name = "USCM Lead Mechsuit Operator (MECH-L)"
+	assignment = JOB_MECH_OP_L
+	rank = JOB_MECH_OP_L
+	role_comm_title = "MECH-L"
+	idtype = /obj/item/card/id/silver
+	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/intel

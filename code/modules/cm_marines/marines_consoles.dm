@@ -1038,8 +1038,6 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 200-231: Visitors
 				JOB_UPP_REPRESENTATIVE = 201,
 				JOB_TWE_REPRESENTATIVE = 201,
-				JOB_TIS_SA = 210,
-				JOB_TIS_IO = 211,
 				JOB_PMC_DIRECTOR = 220,
 				JOB_PMC_LEADER = 220,
 				JOB_PMC_LEAD_INVEST = 220,
@@ -1074,13 +1072,18 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 					"[squad_name][JOB_SQUAD_SPECIALIST]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Scout)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Sniper)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (Heavy Sniper)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Demo)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Grenadier)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (SHARP Operator)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Pyro)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SMARTGUN]" = (squad_number + 3),
 					"[squad_name][JOB_SQUAD_ENGI]" = (squad_number + 4),
 					"[squad_name][JOB_SQUAD_MEDIC]" = (squad_number + 5),
-					"[squad_name][JOB_SQUAD_MARINE]" = (squad_number + 6),
+					"[squad_name]Loader" = (squad_number + 6),
+					"[squad_name]Spotter" = (squad_number + 6),
+					"[squad_name]Mortar Operator" = (squad_number + 6),
+					"[squad_name][JOB_SQUAD_MARINE]" = (squad_number + 7),
 				)
 				squad_number += 10
 		if(FACTION_WY, FACTION_PMC)

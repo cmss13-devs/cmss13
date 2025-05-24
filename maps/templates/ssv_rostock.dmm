@@ -1153,6 +1153,17 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_a)
+"adM" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/rostock/security/brig_holding_area)
 "adR" = (
 /turf/open/floor/strata/red4/north,
 /area/rostock/security/headquarters_bunk)
@@ -27002,17 +27013,6 @@
 "uRe" = (
 /turf/closed/wall/upp_ship/reinforced,
 /area/rostock/command/so)
-"uRK" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "rostock camera";
-	network = list("Rostock");
-	dir = 1
-	},
-/turf/open/floor/strata/fake_wood,
-/area/rostock/security/brig_holding_area)
 "uRW" = (
 /turf/open/floor/strata/orange_icorner,
 /area/rostock/lifeboat)
@@ -46622,7 +46622,7 @@ ogL
 trk
 ogL
 ogL
-uRK
+adM
 guf
 acP
 acs

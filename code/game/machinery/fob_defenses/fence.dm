@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(fence_recipes, list(
 	recipes = GLOB.fence_recipes
 
 /obj/item/stack/fence/full
-	amount = 10
+	amount = STACK_10
 
 #undef STATE_ON
 #undef STATE_OFF

@@ -646,6 +646,7 @@
 	new /obj/item/storage/box/evidence(src)
 	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src) //unskilled defib in the event that the handler dies
 
 /obj/item/storage/box/kit/k9_handler/corpsman
 	name = "\improper Medical K9 handler Kit"
@@ -659,6 +660,7 @@
 	new /obj/item/device/binoculars(src)
 	new /obj/item/pamphlet/skill/k9_handler(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src)
 
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"

@@ -118,6 +118,8 @@
 	trait_name = "K9 Handler Training"
 	trait_desc = "Allows the user to interface with Wey-Yu Synthetic K9 Units for rescue purposes"
 	skill = SKILL_JTAC
+	secondary_skill = SKILL_ENGINEER //enables the handler to use standard synth reset keys as well as easier repairs for the dog
+	skill_cap = SKILL_ENGINEER_NOVICE
 
 /datum/character_trait/skills/powerloader
 	trait_name = "Powerloader Usage Training"

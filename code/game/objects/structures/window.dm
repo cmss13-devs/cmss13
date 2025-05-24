@@ -1076,13 +1076,20 @@
 /obj/structure/window/framed/upp_ship/reinforced
 	name = "reinforced window"
 	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	//	icon_state = "upp_rwindow0"
 	health = 100
 	reinf = 1
 	window_frame = /obj/structure/window_frame/upp_ship/reinforced
 
 /obj/structure/window/framed/upp_ship/hull
+	name = "hull window"
 	desc = "A glass window. Something tells you this one is somehow indestructible."
-//	icon_state = "upp_rwindow0"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+	window_frame = /obj/structure/window_frame/upp_ship/hull
 
 //UPP almayer retexture windows
 

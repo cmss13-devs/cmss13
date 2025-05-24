@@ -1507,6 +1507,17 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/rostock/command/dining)
+"arp" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/rostock/security/brig_holding_area)
 "art" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	name = "\improper Umbillical Airlock";
@@ -9746,7 +9757,9 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
 "gYI" = (
-/obj/structure/window/framed/upp_ship/reinforced,
+/obj/structure/window/framed/upp_ship/reinforced{
+	desc = "A glass window. Light refracts incorrectly when looking through. It seems weaker than the other windows in the area, but still rather strong."
+	},
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
 	id = "uppbrig1";
@@ -9758,7 +9771,7 @@
 	name = "\improper Entrance Shutters"
 	},
 /turf/open/floor/plating,
-/area/rostock/security/brig_entryway)
+/area/rostock/security/brig_holding_area)
 "gZL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -12790,13 +12803,9 @@
 	name = "Entrance Shutter";
 	req_one_access = list(230, 240)
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "rostock camera";
-	network = list("Rostock");
-	dir = 1
-	},
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/strata/red2,
-/area/rostock/security/brig_entryway)
+/area/rostock/security/brig_holding_area)
 "jiF" = (
 /obj/structure/barricade/handrail{
 	pixel_x = 2
@@ -20203,6 +20212,11 @@
 	req_access = list(230);
 	req_one_access = null
 	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 4
+	},
 /turf/open/floor/almayer/cargo,
 /area/rostock/security/brig_entryway)
 "pmQ" = (
@@ -23993,6 +24007,11 @@
 /area/rostock/upperdeck_maint/p_a)
 "snr" = (
 /obj/structure/machinery/seed_extractor,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 8
+	},
 /turf/open/floor/strata/purp3/west,
 /area/rostock/security/brig_holding_area)
 "snF" = (
@@ -26721,7 +26740,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
-/obj/structure/machinery/power/apc/power/south,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -45877,7 +45895,7 @@ kSD
 pjY
 oRz
 jiy
-acl
+guf
 acL
 acD
 acv
@@ -46059,7 +46077,7 @@ lPy
 lPy
 eKA
 gYI
-acl
+guf
 acM
 acD
 acw
@@ -46604,7 +46622,7 @@ ogL
 trk
 ogL
 ogL
-ddO
+arp
 guf
 acP
 acs

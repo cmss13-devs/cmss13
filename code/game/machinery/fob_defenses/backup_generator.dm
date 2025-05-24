@@ -143,6 +143,7 @@
 	if(GLOB.transformer && GLOB.transformer?.backup == src)
 		GLOB.transformer.backup = null
 
+	STOP_PROCESSING(SSslowobj, src)
 	. = ..()
 
 #undef STATE_ON

@@ -1083,7 +1083,7 @@
 
 /obj/structure/window/framed/upp_ship/hull
 	name = "hull window"
-	desc = "A glass window. Something tells you this one is somehow indestructible."
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
 	not_damageable = TRUE
 	not_deconstructable = TRUE
 	unslashable = TRUE

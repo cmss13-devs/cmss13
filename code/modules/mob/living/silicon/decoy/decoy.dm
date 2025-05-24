@@ -32,6 +32,7 @@
 	return ..()
 
 /mob/living/silicon/decoy/Life(delta_time)
+	..()
 	if(stat == DEAD)
 		return FALSE
 	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD)

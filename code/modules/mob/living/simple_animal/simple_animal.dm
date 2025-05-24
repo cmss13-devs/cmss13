@@ -157,6 +157,7 @@
 		fire_overlay = fire_overlay_image
 
 /mob/living/simple_animal/Life(delta_time)
+	..()
 	if(affected_by_fire)
 		handle_fire()
 	//Health

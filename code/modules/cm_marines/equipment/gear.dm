@@ -57,7 +57,7 @@
 	var/can_store_dead = FALSE
 	var/is_animating = FALSE
 	var/first_open = TRUE
-	exit_stun = 0
+	exit_stun = 1
 	/// used to implement a delay before tarp can be entered again after opened (anti-exploit)
 	COOLDOWN_DECLARE(toggle_delay)
 

@@ -68,6 +68,7 @@
 
 	var/static/list/walking_state_cache = list()
 	var/has_walking_icon_state = FALSE
+	var/dodge_chance = 0 // 0% for guaranteed bullet dodge if RNG hits. (don't work when you are laying down)
 
 	//////////////////////////////////////////////////////////////////
 	//

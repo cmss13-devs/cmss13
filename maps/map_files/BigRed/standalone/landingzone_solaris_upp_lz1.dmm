@@ -225,7 +225,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/event/metal/dynamic/lit)
 "ic" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/event/metal/dynamic/lit)
 "io" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -705,7 +705,7 @@
 /turf/open/floor/whitegreen/northeast,
 /area/event/metal/dynamic/lit)
 "td" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves)
 "ti" = (
 /obj/structure/barricade/metal/wired{
@@ -836,7 +836,7 @@
 /area/event/metal/dynamic/lit)
 "vM" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/event/metal/dynamic/lit)
 "wh" = (
 /obj/structure/platform_decoration/metal/strata,
@@ -1228,7 +1228,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/s)
 "Kn" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/bigredv2/caves)
 "Ko" = (
 /obj/structure/machinery/door/airlock/almayer/command/reinforced{
@@ -1273,7 +1273,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/s)
 "Ly" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/s)
 "LA" = (
 /obj/structure/platform_decoration/metal/strata/west,
@@ -1414,7 +1414,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/event/metal/dynamic/lit)
 "QG" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/filtration_cave_cas)
 "QP" = (
 /turf/open/mars_cave/mars_dirt_6,
@@ -1638,7 +1638,7 @@
 /turf/open/floor/asteroidwarning/southwest,
 /area/bigredv2/outside/s)
 "Yl" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/event/metal/dynamic/lit)
 "Ym" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
@@ -1684,7 +1684,7 @@
 /turf/open/floor/plating/asteroidwarning/west,
 /area/event/metal/dynamic/lit)
 "ZK" = (
-/turf/closed/wall/solaris/reinforced/hull,
+/turf/closed/wall/solaris/hull,
 /area/bigredv2/caves_research)
 "ZM" = (
 /obj/effect/decal/strata_decals/grime/grime4,

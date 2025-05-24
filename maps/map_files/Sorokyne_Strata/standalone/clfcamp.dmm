@@ -192,7 +192,7 @@
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_dorms)
 "dG" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "dT" = (
 /obj/structure/flora/grass/tallgrass/ice/corner{
@@ -465,7 +465,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/ag/interior/outside/checkpoints/clf)
 "nN" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "oa" = (
 /obj/structure/barricade/handrail/strata{
@@ -512,7 +512,7 @@
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "pH" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/strata/ag/interior/outside/checkpoints/clf)
 "pM" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -884,7 +884,7 @@
 /turf/open/floor/wood,
 /area/strata/ag/interior/outpost/clf_dorms)
 "Cr" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/outside/checkpoints/clf)
 "CI" = (
 /obj/effect/blocker/sorokyne_cold_water,
@@ -1490,7 +1490,7 @@
 	pixel_x = -18;
 	pixel_y = 10
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/outside/checkpoints/clf)
 "YU" = (
 /obj/effect/landmark/survivor_spawner/clf_engi/soro,

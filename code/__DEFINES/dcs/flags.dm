@@ -24,7 +24,7 @@
 #define COMPONENT_DUPE_ALLOWED 1
 /// new component is deleted
 #define COMPONENT_DUPE_UNIQUE 2
-/// old component is given the initialization args of the new
+/// old component is given the initialization args of the new without any new component being created
 #define COMPONENT_DUPE_UNIQUE_PASSARGS 4
 /// each component of the same type is consulted as to whether the duplicate should be allowed
 #define COMPONENT_DUPE_SELECTIVE 5

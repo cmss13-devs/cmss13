@@ -76,3 +76,9 @@
 	desc = "darkred"
 	icon_state = "darkred"
 	worn_state = "darkred"
+
+/obj/item/clothing/under/color/white/alt
+	name = "white jumpsuit"
+	icon_state = "white_alt"
+	item_state = "w_suit"
+	worn_state = "white_alt"

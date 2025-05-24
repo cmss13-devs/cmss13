@@ -197,3 +197,13 @@
 	flags_inv_hide = HIDEALLHAIR
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/xenos
+	name = "alien costume helmet"
+	icon_state = "xenos"
+	item_state = "xenos_helm"
+	desc = "A helmet made out of a cheap fabric."
+	flags_inventory = COVERMOUTH|COVEREYES|BLOCKSHARPOBJ
+	flags_inv_hide = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEALLHAIR
+	siemens_coefficient = 2
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES

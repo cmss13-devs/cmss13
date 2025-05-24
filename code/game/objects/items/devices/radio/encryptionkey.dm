@@ -260,6 +260,15 @@
 	channels = list(RADIO_CHANNEL_WY_WO = TRUE, RADIO_CHANNEL_WY = TRUE)
 
 //---------------------------------------------------
+//Hyperdyne Keys
+
+/obj/item/device/encryptionkey/hyperdyne
+	name = "\improper Hyperdyne Corporation encryption key"
+	icon_state = "ce_key"
+	channels = list(RADIO_CHANNEL_HYPERDYNE = TRUE)
+	tracking_options = list("Corporate Liaison" = TRACKER_CL)
+
+//---------------------------------------------------
 //UPP Keys
 /obj/item/device/encryptionkey/upp
 	name = "\improper UPP Radio Encryption Key"

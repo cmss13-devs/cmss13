@@ -4,14 +4,14 @@
 #define FIRE_CANPASS_STOP 4
 
 
-/proc/_fire_spread_check(obj/flamer_fire/F, obj/flamer_fire/mover, turf/T, turf/prev_T, burn_dam)
+/proc/_fire_spread_check(obj/flamer_fire/F, obj/flamer_fire/mover, turf/prev_T, turf/T, burn_dam)
 	if(istype(T, /turf/open/space))
 		return FIRE_CANPASS_STOP
 
 	if(T.density)
 		T.flamer_fire_act(burn_dam, F.weapon_cause_data)
 		return FIRE_CANPASS_SET_AFLAME
-		
+
 	var/atom/A = LinkBlocked(mover, prev_T, T)
 
 	if(A)

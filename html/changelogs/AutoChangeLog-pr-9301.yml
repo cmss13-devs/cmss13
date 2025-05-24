@@ -1,4 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - bugfix: "Add \"Research Roles\" label to timelocks"

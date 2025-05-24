@@ -304,7 +304,7 @@
 
 /obj/item/paper/janitor
 	name = "crumbled paper"
-	icon_state = "pamphlet"
+	icon_state = "scrap"
 	info = "In loving memory of Cub Johnson."
 
 /obj/item/device/overwatch_camera

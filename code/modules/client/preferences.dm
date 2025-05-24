@@ -62,7 +62,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
 	var/be_special = BE_KING // Special role selection
-	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND // flags in #define/mode.dm
+	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS // flags in #define/mode.dm
 	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
 	var/auto_fit_viewport = FALSE
 	var/adaptive_zoom = 0
@@ -74,6 +74,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
 	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/toggles_ert = TOGGLES_ERT_DEFAULT
+	var/toggles_survivor = TOGGLES_SURVIVOR_DEFAULT
 	var/toggles_ert_pred = TOGGLES_ERT_GROUNDS
 	var/list/volume_preferences = list(1, 0.5, 1, 0.6) // Game, music, admin midis, lobby music (this is also set in sanitize_volume_preferences() call)
 	var/chat_display_preferences = CHAT_TYPE_ALL
@@ -107,7 +108,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
 	var/predator_use_legacy = "None"
-	var/predator_translator_type = "Modern"
+	var/predator_translator_type = PRED_TECH_MODERN
+	var/predator_invisibility_sound = PRED_TECH_MODERN
 	var/predator_mask_type = 1
 	var/predator_accessory_type = 0
 	var/predator_armor_type = 1
@@ -257,6 +259,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	var/tgui_fancy = TRUE
 	var/tgui_lock = FALSE
+	var/window_scale = TRUE
 
 	var/hear_vox = TRUE
 
@@ -300,6 +303,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// This contains any potential issues with the users' preferences, and presents them on the lobby screen
 	var/errors = list()
 
+	/// Sends messages in chat when the Xeno Action's cooldown is complete and adds cooldown timers in stat panel
+	var/show_cooldown_messages = FALSE
 
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -312,15 +317,21 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			if(load_preferences())
 				if(load_character())
 					return
+
+		C.tgui_say?.load()
+
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)
 	gender = pick(MALE, FEMALE)
 	real_name = random_name(gender)
 	gear = list()
 
+
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
+
+	C.tgui_say?.load()
 
 /datum/preferences/Del()
 	. = ..()
@@ -578,6 +589,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Tooltips:</b> <a href='byond://?_src_=prefs;preference=tooltips'><b>[tooltips ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>tgui Window Mode:</b> <a href='byond://?_src_=prefs;preference=tgui_fancy'><b>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</b></a><br>"
 			dat += "<b>tgui Window Placement:</b> <a href='byond://?_src_=prefs;preference=tgui_lock'><b>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</b></a><br>"
+			dat += "<b>Window Scaling:</b> <a href='byond://?_src_=prefs;preference=window_scale'><b>[window_scale ? "Larger windows (default)" : "Smaller zoom"]</b></a><br>"
 			dat += "<b>Play Admin Sounds:</b> <a href='byond://?_src_=prefs;preference=hear_admin_sounds'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Announcement Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_observer_announcements'><b>[(toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Play Fax Sounds As Ghost:</b> <a href='byond://?_src_=prefs;preference=hear_faxes'><b>[(toggles_sound & SOUND_FAX_MACHINE) ? "Yes" : "No"]</b></a><br>"
@@ -590,6 +602,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Play VOX Announcements:</b> <a href='byond://?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Ghost Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=ghost_vision_pref;task=input'><b>[ghost_vision_pref]</b></a><br>"
 			dat += "<b>Button To Activate Xenomorph Abilities:</b> <a href='byond://?_src_=prefs;preference=mouse_button_activation;task=input'><b>[xeno_ability_mouse_pref_to_string(xeno_ability_click_mode)]</b></a><br>"
+			dat += "<b>Xeno Cooldown Messages:</b> <a href='byond://?_src_=prefs;preference=show_cooldown_messages'><b>[(show_cooldown_messages) ? "Show" : "Hide"]</b></a><br>"
 			dat += "<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/receive_random_tip'>Read Random Tip of the Round</a><br>"
 			if(CONFIG_GET(flag/allow_Metadata))
 				dat += "<b>OOC Notes:</b> <a href='byond://?_src_=prefs;preference=metadata;task=input'> Edit </a>"
@@ -615,6 +628,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_EJECT_MAGAZINE_TO_HAND]'><b>[toggle_prefs & TOGGLE_EJECT_MAGAZINE_TO_HAND ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Automatic Punctuation: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTOMATIC_PUNCTUATION]'><b>[toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION ? "On" : "Off"]</b></a><br>"
+			dat += "<b>Toggle Leadership Spoken Orders: \
+					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_LEADERSHIP_SPOKEN_ORDERS]'><b>[toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Combat Click-Drag Override: \
 					</b> <a href='byond://?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
 			dat += "<b>Toggle Middle-Click Swap Hands: \
@@ -686,10 +701,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				dat += "</div>"
 
 
+			dat += "<div id='column2'>"
+			dat += "<h2><b><u>Survivor Settings:</u></b></h2>"
+			dat += "<b>Spawn as Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_HOSTILE ? "Yes" : "No"]</b></a><br>"
+			dat += "<b>Spawn as Non-Hostile:</b> <a href='byond://?_src_=prefs;preference=toggles_survivor;flag=[PLAY_SURVIVOR_NON_HOSTILE]'><b>[toggles_survivor & PLAY_SURVIVOR_NON_HOSTILE ? "Yes" : "No"]</b></a><br>"
+			dat += "</div>"
+
 	dat += "</div></body>"
 
 	winshow(user, "preferencewindow", TRUE)
-	show_browser(user, dat, "Preferences", "preferencewindow")
+	show_browser(user, dat, "Preferences", "preferencebrowser", width = 1000, height = 800, existing_container = "preferencewindow")
 	onclose(user, "preferencewindow", src)
 
 /**
@@ -808,7 +829,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "</tt></body>"
 
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Job Preferences", "mob_occupation", "size=[width]x[height]")
+	show_browser(user, HTML, "Job Preferences", "mob_occupation", width = width, height = height)
 	onclose(user, "mob_occupation", user.client, list("_src_" = "prefs", "preference" = "job", "task" = "close"))
 	return
 
@@ -890,7 +911,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "</tt></body>"
 
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Job Assignment", "job_slots_assignment", "size=[width]x[height]")
+	show_browser(user, HTML, "Job Assignment", "job_slots_assignment", width = width, height = height)
 	onclose(user, "job_slots_assignment", user.client, list("_src_" = "prefs", "preference" = "job_slot", "task" = "close"))
 	return
 
@@ -916,7 +937,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML += "</center></tt>"
 
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Set Records", "records", "size=350x300")
+	show_browser(user, HTML, "Set Records", "records", width = 350, height = 300)
 	return
 
 /datum/preferences/proc/SetFlavorText(mob/user)
@@ -929,7 +950,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML +="<a href='byond://?src=\ref[user];preference=flavor_text;task=done'>Done</a>"
 	HTML += "<tt>"
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Set Flavor Text", "flavor_text;size=430x300")
+	show_browser(user, HTML, "Set Flavor Text", "flavor_text", width = 400, height = 430)
 	return
 
 /datum/preferences/proc/SetJob(mob/user, role, priority)
@@ -1151,6 +1172,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		if("cycle_bg")
 			bg_state = next_in_list(bg_state, GLOB.bgstate_options)
 
+		if("show_cooldown_messages")
+			show_cooldown_messages = !show_cooldown_messages
+
 	switch (href_list["task"])
 		if ("random")
 			switch (href_list["preference"])
@@ -1287,6 +1311,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!new_translator_type)
 						return
 					predator_translator_type = new_translator_type
+				if("pred_invis_sound")
+					var/new_invis_sound = tgui_input_list(user, "Choose your invisibility sound.", "Invisibility Sound", PRED_INVIS_SOUNDS)
+					if(!new_invis_sound)
+						return
+					predator_translator_type = new_invis_sound
 				if("pred_mask_type")
 					var/new_predator_mask_type = tgui_input_number(user, "Choose your mask type:\n(1-19)", "Mask Selection", 1, PRED_MASK_TYPE_MAX, 1)
 					if(new_predator_mask_type)
@@ -1885,6 +1914,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/flag = text2num(href_list["flag"])
 					toggles_ert_pred ^= flag
 
+				if("toggles_survivor")
+					var/flag = text2num(href_list["flag"])
+					toggles_survivor ^= flag
+					if(!HAS_FLAG(toggles_survivor, PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE))
+						// Neither hostile nor non-hostile: Invert the other
+						if(flag == PLAY_SURVIVOR_NON_HOSTILE)
+							toggles_survivor ^= PLAY_SURVIVOR_HOSTILE
+						else
+							toggles_survivor ^= PLAY_SURVIVOR_NON_HOSTILE
+
 				if("ambientocclusion")
 					toggle_prefs ^= TOGGLE_AMBIENT_OCCLUSION
 					var/atom/movable/screen/plane_master/game_world/plane_master = locate() in user?.client.screen
@@ -1988,6 +2027,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					tgui_fancy = !tgui_fancy
 				if("tgui_lock")
 					tgui_lock = !tgui_lock
+				if("window_scale")
+					window_scale = !window_scale
+					owner.tgui_say?.load()
 
 				if("change_menu")
 					current_menu = href_list["menu"]

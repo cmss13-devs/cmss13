@@ -1,8 +1,7 @@
-import { BooleanLike, classes } from 'common/react';
-
-import { useBackend } from '../backend';
-import { Section } from '../components';
-import { Window } from '../layouts';
+import { type BooleanLike, classes } from 'common/react';
+import { useBackend } from 'tgui/backend';
+import { Section } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 interface MedalProps {
   medals: Medal[];

@@ -105,19 +105,3 @@
 
 /obj/structure/pipes/unary/outlet_injector/hide(invis)
 	update_underlays()
-
-
-/obj/structure/pipes/unary/oxygen_generator
-	icon = 'icons/obj/pipes/oxygen_generator.dmi'
-	icon_state = "intact_off"
-	density = TRUE
-	name = "Oxygen Generator"
-	desc = ""
-	dir = SOUTH
-	valid_directions = list(SOUTH)
-
-/obj/structure/pipes/unary/oxygen_generator/update_icon()
-	if(connected_to)
-		icon_state = "intact_on"
-	else
-		icon_state = "exposed_off"

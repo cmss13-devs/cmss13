@@ -196,6 +196,10 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
+"aP" = (
+/obj/item/storage/belt/medical/lifesaver/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/general_offices)
 "aQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -384,7 +388,7 @@
 /obj/item/weapon/gun/smg/m39/corporate/no_lock{
 	current_mag = null
 	},
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
+/obj/item/clothing/head/helmet/marine/veteran/pmc,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "bw" = (
@@ -672,10 +676,11 @@
 /area/bigredv2/outside/general_offices)
 "id" = (
 /obj/structure/surface/rack,
-/obj/item/storage/belt/marine,
-/obj/item/storage/belt/marine,
-/obj/item/storage/belt/marine,
-/obj/item/storage/belt/marine,
+/obj/item/storage/belt/marine/wy,
+/obj/item/storage/belt/marine/wy,
+/obj/item/storage/belt/marine/wy,
+/obj/item/storage/belt/marine/wy,
+/obj/item/storage/belt/marine/wy,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "ig" = (
@@ -1779,7 +1784,7 @@ aT
 bs
 be
 bk
-bk
+aP
 aL
 cd
 aC

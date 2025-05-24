@@ -243,13 +243,13 @@
 		return
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
 	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * effective_potency)
-	M.hallucination = max(M.hallucination, effective_potency) //Hallucinations and tox damage
-	M.apply_damage(0.5 *  effective_potency * delta_time, TOX)
+	M.hallucination = max(M.hallucination, POTENCY_MULTIPLIER_MEDIUM * effective_potency) //Hallucinations and tox damage
+	M.apply_damage(effective_potency * delta_time, TOX)
 
 /datum/chem_property/positive/painkilling/process_critical(mob/living/M, potency = 1)
 	var/effective_potency = (CHECK_BITFIELD(M.disabilities, OPIATE_RECEPTOR_DEFICIENCY) ? potency * 0.25 : potency)
-	M.apply_internal_damage(POTENCY_MULTIPLIER_HIGH * effective_potency, "liver")
-	M.apply_damage(effective_potency, BRAIN)
+	M.apply_internal_damage(POTENCY_MULTIPLIER_VVHIGH * effective_potency, "liver")
+	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM * effective_potency, BRAIN)
 	M.apply_damage(3, OXY)
 
 /datum/chem_property/positive/hepatopeutic
@@ -378,7 +378,7 @@
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
 	code = "BNM"
-	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
+	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-woven and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/positive/bonemending/process(mob/living/M, potency = 1, delta_time)
@@ -492,7 +492,7 @@
 		if(embryo && istype(embryo))
 			if(embryo.counter > 0)
 				embryo.counter = embryo.counter - (potency * delta_time)
-				current_human.take_limb_damage(0,POTENCY_MULTIPLIER_MEDIUM*potency)
+				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
@@ -552,7 +552,8 @@
 	category = PROPERTY_TYPE_REACTANT
 	value = 3
 	cost_penalty = FALSE
-	COOLDOWN_DECLARE(ghost_notif)
+	var/revivetimerid
+	COOLDOWN_DECLARE(revive_notif)
 
 /datum/chem_property/positive/defibrillating/on_delete(mob/living/M)
 	..()
@@ -575,22 +576,38 @@
 		return
 	M.apply_internal_damage(0.5 * potency * delta_time, "heart")
 
-/datum/chem_property/positive/defibrillating/process_dead(mob/living/M, potency = 1, delta_time)
-	if(!ishuman(M))
+/datum/chem_property/positive/defibrillating/process_dead(mob/living/affected_mob, potency = 1, delta_time)
+	if(!ishuman(affected_mob))
 		return
-	var/mob/living/carbon/human/dead = M
+	var/mob/living/carbon/human/dead = affected_mob
 	var/revivable = dead.check_tod() && dead.is_revivable()
-	for(var/datum/reagent/electrogenetic_reagent in M.reagents.reagent_list)
+	if(!revivable)
+		return
+
+	if(revivetimerid)
+		if(dead.health <= HEALTH_THRESHOLD_DEAD) //If the mob got damaged to below the threshold while the timer was ticking then we reset
+			deltimer(revivetimerid)
+			revivetimerid = null
+		return
+
+	for(var/datum/reagent/electrogenetic_reagent in affected_mob.reagents.reagent_list)
 		var/datum/chem_property/property = electrogenetic_reagent.get_property(PROPERTY_ELECTROGENETIC) //Adrenaline helps greatly at restarting the heart
 		if(property)
-			property.trigger(M)
-			M.reagents.remove_reagent(electrogenetic_reagent.id, 1)
+			property.trigger(affected_mob)
+			affected_mob.reagents.remove_reagent(electrogenetic_reagent.id, 1)
 			break
-	if(revivable && (dead.health > HEALTH_THRESHOLD_DEAD))
-		addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS)
+	if(dead.health > HEALTH_THRESHOLD_DEAD)
+		revivetimerid = addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS, TIMER_STOPPABLE)
+		if(!COOLDOWN_FINISHED(src, revive_notif))
+			return
+		COOLDOWN_START(src, revive_notif, 10 SECONDS)
 		to_chat(dead, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(dead.client, 'sound/effects/heart_beat_short.ogg', 35)
-	else if ((potency >= 1) && revivable && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
+		var/mob/dead/observer/ghost = dead.get_ghost()
+		if(ghost?.client)
+			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
+			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
+	else if ((potency >= 1) && dead.health <= HEALTH_THRESHOLD_DEAD) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)
@@ -602,15 +619,6 @@
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
 			dead.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
-		if(dead.health < HEALTH_THRESHOLD_DEAD)
-			return
-		if(!COOLDOWN_FINISHED(src, ghost_notif))
-			return
-		var/mob/dead/observer/ghost = dead.get_ghost()
-		if(ghost?.client)
-			COOLDOWN_START(src, ghost_notif, 30 SECONDS)
-			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
-			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -835,7 +843,7 @@
 	category = PROPERTY_TYPE_TOXICANT
 	max_level = 1
 
-/datum/chem_property/positive/photosensetive/process(mob/living/M, potency = 1)
+/datum/chem_property/positive/photosensitive/process(mob/living/M, potency = 1)
 	to_chat(M, SPAN_WARNING("Your feel a horrible migraine!"))
 	M.apply_internal_damage(potency, "brain")
 

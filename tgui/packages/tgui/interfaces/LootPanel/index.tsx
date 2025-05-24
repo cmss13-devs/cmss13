@@ -1,13 +1,13 @@
-import { KEY } from 'common/keys';
-import { BooleanLike } from 'common/react';
+import { isEscape } from 'common/keys';
+import type { BooleanLike } from 'common/react';
 import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Button, Input, Section, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
-import { useBackend } from '../../backend';
-import { Button, Input, Section, Stack } from '../../components';
-import { Window } from '../../layouts';
 import { GroupedContents } from './GroupedContents';
 import { RawContents } from './RawContents';
-import { SearchItem } from './types';
+import type { SearchItem } from './types';
 
 type Data = {
   contents: SearchItem[];
@@ -27,7 +27,7 @@ export function LootPanel(props) {
     <Window height={275} width={190} title={`Contents: ${total}`}>
       <Window.Content
         onKeyDown={(event) => {
-          if (event.key === KEY.Escape) {
+          if (isEscape(event.key)) {
             Byond.sendMessage('close');
           }
         }}

@@ -106,6 +106,32 @@
 /obj/structure/cargo_container/wy/right
 	icon_state = "wy_r"
 
+/obj/structure/cargo_container/wy2
+	name = "Weyland-Yutani Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from The Weyland-Yutani Corporation, you have probably heard of them before."
+
+/obj/structure/cargo_container/wy2/left
+	icon_state = "wy2_l"
+
+/obj/structure/cargo_container/wy2/mid
+	icon_state = "wy2_m"
+
+/obj/structure/cargo_container/wy2/right
+	icon_state = "wy2_r"
+
+/obj/structure/cargo_container/armat
+	name = "ARMAT Cargo Container"
+	desc = "A large industrial container. This one is from ARMAT, the defense contractors behind the M41A and other marine weaponry."
+
+/obj/structure/cargo_container/armat/left
+	icon_state = "armat_l"
+
+/obj/structure/cargo_container/armat/mid
+	icon_state = "armat_m"
+
+/obj/structure/cargo_container/armat/right
+	icon_state = "armat_r"
+
 /obj/structure/cargo_container/hd
 	name = "Hyperdyne Systems Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Hyperdyne Systems, a manufacturer of synthetics, prosthetics, and weapons.\nWe don't speak about their former affiliations with the UPP."

@@ -90,7 +90,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 
 /obj/structure/machinery/computer/altitude_control_console/ui_data(mob/user)
 	var/list/data = list()
-	data["alt"] = GLOB.ship_alt
+	data[ALT_CLICK] = GLOB.ship_alt
 	data["temp"] = GLOB.ship_temp
 
 	return data

@@ -40,9 +40,9 @@
 			return
 
 	flags_item    ^= WIELDED
+	place_offhand(user, name)
 	name    += " (Wielded)"
 	item_state += "_w"
-	place_offhand(user,initial(name))
 	return 1
 
 /obj/item/proc/unwield(mob/user)
@@ -253,7 +253,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/spears_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
@@ -281,6 +281,7 @@
 	hitsound = "swing_hit"
 
 	var/detonating = FALSE
+	var/gib_user = TRUE
 	var/wielded_attack_verb = list("charged")
 	var/wielded_hitsound = null
 	var/unwielded_attack_verb = list("whacked")
@@ -331,17 +332,20 @@
 	detonating = TRUE
 	playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
 
-	sleep(3)
+	addtimer(CALLBACK(src, PROC_REF(lungemine_detonate), target, user), 0.3 SECONDS)
 
+/obj/item/weapon/twohanded/lungemine/proc/lungemine_detonate(atom/target, mob/user)
 	var/turf/epicenter = get_turf(target)
-	target.ex_act(400, null, src, user, 100)
 	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
+	if(gib_user)
+		user.gib()
 	qdel(src)
 
 /obj/item/weapon/twohanded/lungemine/damaged
 	name = "damaged lunge mine"
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon. This one seems pretty badly damaged, you probably shouldn't even pick it up from the ground."
 	detonation_force = 50
+	gib_user = FALSE
 
 /obj/item/weapon/twohanded/breacher
 	name = "\improper D2 Breaching Hammer"
@@ -350,7 +354,7 @@
 	item_icons = list(
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/melee_weapons.dmi'
 	)
 	icon_state = "d2_breacher"
 	item_state = "d2_breacher"

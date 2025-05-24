@@ -703,7 +703,8 @@
 				if(JOB_MARINE_RAIDER_CMD)
 					old_lead.comm_title = "CMD."
 				else
-					old_lead.comm_title = "RFN"
+					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[GET_DEFAULT_ROLE(old_lead.job)]
+					old_lead.comm_title = job.gear_preset.role_comm_title
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
 				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 				if(headset)

@@ -9,7 +9,7 @@
 		return
 
 	if(banished)
-		apply_armoured_damage(ceil(health / XENO_BANISHMENT_DMG_DIVISOR))
+		apply_armoured_damage(max(ceil(health / XENO_BANISHMENT_DMG_DIVISOR), 1))
 
 	..()
 
@@ -25,7 +25,6 @@
 		handle_xeno_fire()
 		handle_pheromones()
 		handle_regular_status_updates()
-		handle_stomach_contents()
 		handle_overwatch() // For new Xeno hivewide overwatch - Fourk, 6/24/19
 		update_icons()
 		handle_luminosity()
@@ -175,12 +174,10 @@
 
 /mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
-		var/turf/T = loc
-		if(istype(T))
-			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
-				apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
-			else
-				apply_damage(-warding_aura, BRUTE)
+		if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
+			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
+		else
+			apply_damage(-warding_aura, BRUTE)
 
 	updatehealth()
 
@@ -221,23 +218,6 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph/proc/handle_stomach_contents()
-	//Deal with dissolving/damaging stuff in stomach.
-	if(length(stomach_contents))
-		for(var/atom/movable/M in stomach_contents)
-			if(ishuman(M))
-				if(world.time > devour_timer - 50 && world.time < devour_timer - 30)
-					to_chat(src, SPAN_WARNING("We're about to regurgitate [M]..."))
-					playsound(loc, 'sound/voice/alien_drool1.ogg', 50, 1)
-				var/mob/living/carbon/human/H = M
-				if(world.time > devour_timer || (H.stat == DEAD && !H.chestburst))
-					regurgitate(H)
-
-			M.acid_damage++
-			if(M.acid_damage > 300)
-				to_chat(src, SPAN_XENODANGER("\The [M] is dissolved in our gut with a gurgle."))
-				stomach_contents.Remove(M)
-				qdel(M)
 
 /mob/living/carbon/xenomorph/proc/handle_regular_hud_updates()
 	if(!mind)

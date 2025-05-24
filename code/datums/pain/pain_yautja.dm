@@ -17,7 +17,7 @@
 /datum/pain/yautja/oxyloss_drag(mob/living/source, mob/puller)
 	return
 
-/datum/pain/yautja/handle_devour(mob/living/source)
+/datum/pain/yautja/handle_haul(mob/living/source)
 	return
 
 /datum/pain/yautja/oxy_kill(mob/living/source)

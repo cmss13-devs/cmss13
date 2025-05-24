@@ -163,6 +163,8 @@
 #define TRAIT_TEMPORARILY_MUTED "temporarily_muted"
 /// Mob wont get hit by stray projectiles
 #define TRAIT_NO_STRAY "trait_no_stray"
+/// When a Xeno hauls us. We can take out our knife or gun if hauled though we are immobilized, also shielded from most damage.
+#define TRAIT_HAULED "hauled"
 // only used by valkyrie
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
 
@@ -187,6 +189,8 @@
 #define TRAIT_HIVEMIND_INTERFERENCE "t_interference"
 /// If the hive or xeno can use objects.
 #define TRAIT_OPPOSABLE_THUMBS "t_thumbs"
+/// If the hive or xeno can use playing cards.
+#define TRAIT_CARDPLAYING_THUMBS "t_card_thumbs"
 /// If the Hive delays round end (this is overridden for some hives). Does not occur naturally. Must be applied in events.
 #define TRAIT_NO_HIVE_DELAY "t_no_hive_delay"
 /// If the Hive uses it's colors on the mobs. Does not occur naturally, excepting the Mutated hive.
@@ -307,6 +311,9 @@
 // This item can't be implanted into someone, regardless of the size of the item.
 #define TRAIT_ITEM_NOT_IMPLANTABLE "t_item_not_implantable"
 
+//This item is being dissolved. Used by yautja_cleaner.
+#define TRAIT_ITEM_DISSOLVING "item_dissolving"
+
 //-- structure traits --
 // TABLE TRAITS
 /// If the table is being flipped, prevent any changes that will mess with adjacency handling
@@ -376,6 +383,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,
 		"TRAIT_ABILITY_OVIPOSITOR" = TRAIT_ABILITY_OVIPOSITOR,
 		"TRAIT_OPPOSABLE_THUMBS" = TRAIT_OPPOSABLE_THUMBS,
+		"TRAIT_CARDPLAYING_THUMBS" = TRAIT_CARDPLAYING_THUMBS,
 		"TRAIT_INTERFERENCE" = TRAIT_HIVEMIND_INTERFERENCE,
 		"TRAIT_VALKYRIE_ARMOR" = TRAIT_VALKYRIE_ARMORED,
 	),
@@ -439,6 +447,8 @@ GLOBAL_LIST(trait_name_map)
 #define TRAIT_SOURCE_STRAIN "t_s_strain"
 ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
+//Status trait coming from being hauled by a xeno.
+#define TRAIT_SOURCE_XENO_HAUL "t_s_xeno_haul"
 ///Status trait coming from being assigned as [acting] squad leader.
 #define TRAIT_SOURCE_SQUAD_LEADER "t_s_squad_leader"
 ///Status trait coming from their job
@@ -518,3 +528,5 @@ GLOBAL_LIST(trait_name_map)
 #define CHLOROFORM_TRAIT "chloroform"
 /// traits transparent turf
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
+/// traits from wall hiding
+#define WALL_HIDING_TRAIT "wallhiding"

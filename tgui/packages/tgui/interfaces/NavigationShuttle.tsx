@@ -1,15 +1,16 @@
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
   Dimmer,
+  Divider,
   Flex,
   Icon,
   ProgressBar,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 export interface DockingPort {
   id: string;
@@ -78,15 +79,19 @@ export const DestionationSelection = () => {
     undefined,
   );
   return (
-    <Section
-      title="Select Destination"
-      buttons={
-        <>
+    <Section title="Select Destination">
+      <Stack fill justify="space-evenly">
+        <Stack.Item align="center">
           <CancelLaunchButton />
+        </Stack.Item>
+        <Stack.Item>
+          <Divider vertical />
+        </Stack.Item>
+        <Stack.Item align="center">
           <LaunchButton />
-        </>
-      }
-    >
+        </Stack.Item>
+      </Stack>
+      <Divider />
       <Stack vertical className="DestinationSelector">
         {data.destinations
           .filter((x) => x.available === 1)
@@ -125,7 +130,7 @@ export const DestionationSelection = () => {
 export const ShuttleRecharge = () => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Section title="Refueling in progress">
+    <Section m="0" title="Refueling in progress">
       <div className="LaunchCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -150,7 +155,7 @@ export const ShuttleRecharge = () => {
 export const LaunchCountdown = () => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Section title="Launch in progress">
+    <Section m="0" title="Launch in progress">
       <div className="LaunchCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -178,6 +183,7 @@ export const InFlightCountdown = () => {
   return (
     <Section
       title={`In flight: ${data.target_destination}`}
+      m="0"
       buttons={
         data.target_destination === 'Flyby' && (
           <Button onClick={() => act('cancel-flyby')}>Cancel</Button>
@@ -236,21 +242,25 @@ const DoorControls = () => {
         </>
       }
     >
-      <Stack className="DoorControlStack">
-        <Stack.Item>
+      <Stack justify="space-evenly" align="center" className="DoorControlStack">
+        <Stack.Item grow>
           <Button
             disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('open')}
             icon="door-open"
+            width="100%"
+            textAlign="center"
           >
             Force Open
           </Button>
         </Stack.Item>
-        <Stack.Item>
+        <Stack.Item grow>
           <Button
             disabled={disable_normal_control || disable_door_controls}
             onClick={() => act('close')}
             icon="door-closed"
+            width="100%"
+            textAlign="center"
           >
             Force Close
           </Button>

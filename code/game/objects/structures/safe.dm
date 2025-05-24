@@ -129,7 +129,7 @@ FLOOR SAFES
 			var/obj/item/P = contents[i]
 			dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 		dat += "</table></center>"
-	show_browser(user, dat, name, "safe", "size=350x300")
+	show_browser(user, dat, name, "safe", width = 350, height = 300)
 	onclose(user, "safe")
 
 /obj/structure/safe/Topic(href, href_list)

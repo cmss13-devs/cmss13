@@ -26,7 +26,7 @@
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
 
-	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE)
+	if(!istype(T) || T.is_weedable < FULLY_WEEDABLE)
 		to_chat(X, SPAN_WARNING("You can't do that here."))
 		return FALSE
 
@@ -68,7 +68,7 @@
 		return FALSE
 
 	if(range_between_constructions)
-		for(var/i in urange(range_between_constructions, T))
+		for(var/i in long_range(range_between_constructions, T))
 			var/atom/A = i
 			if(A.type == build_path)
 				to_chat(X, SPAN_WARNING("This is too close to another similar structure!"))

@@ -416,7 +416,7 @@
 /area/navalis/indoors/residential
 	name = "Residential Rig - Indoors"
 	icon_state = "fitness"
-	ceiling = CEILING_REINFORCED_METAL
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	unoviable_timer = FALSE
 	minimap_color = MINIMAP_AREA_RESEARCH
 
@@ -437,19 +437,15 @@
 
 /area/navalis/indoors/residential/cafeteria
 	name = "Residential Rig - Level 2: Cafeteria"
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/navalis/indoors/residential/access
 	name = "Residential Rig - Level 2: Starboard Access"
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/navalis/indoors/residential/maint_stern
 	name = "Residential Rig - Level 2: Stern Maintenance"
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/navalis/indoors/residential/maint_starboard
 	name = "Residential Rig - Level 2: Starboard Maintenance"
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 
 // Landing Zones

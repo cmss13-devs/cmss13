@@ -1,6 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added tracking to command headsets."
-  - rscadd: "Added a tracker for Intel Squad Lead."
-  - rscadd: "Added XO and CO subtypes for the senior command headset. This has no identifying features aside from different tracking options."

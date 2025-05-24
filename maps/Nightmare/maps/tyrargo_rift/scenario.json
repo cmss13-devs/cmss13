@@ -2,8 +2,8 @@
     {
         "type": "pick", "name": "Tyrargo Global Event",
         "choices": [
-            { "weight": 1, "type": "def", "values": { "lvevent": "none"       } },
-            { "weight": 9, "type": "def", "values": { "lvevent": "dropshipcrash" } }
+            { "weight": 7, "type": "def", "values": { "lvevent": "none"       } },
+            { "weight": 3, "type": "def", "values": { "lvevent": "dropshipcrash" } }
         ]
     }
 ]

@@ -523,6 +523,10 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/tyrargo/indoors/tychon)
+"aX" = (
+/obj/structure/largecrate/supply/ammo/m41a/half,
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/area/tyrargo/indoors/tychon)
 "aY" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -597,6 +601,18 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
+"bg" = (
+/obj/structure/closet/crate/ammo{
+	name = "soft-point munitions crate";
+	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
+	opened = 1
+	},
+/obj/item/device/m56d_gun,
+/obj/item/device/m56d_post,
+/obj/item/ammo_magazine/m56d,
+/obj/item/ammo_magazine/m56d,
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
+/area/tyrargo/indoors/tychon)
 "bt" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
@@ -2699,7 +2715,7 @@ xe
 aI
 QI
 Cx
-sJ
+aX
 oI
 aW
 aw
@@ -2743,7 +2759,7 @@ aM
 aJ
 QI
 sJ
-sJ
+bg
 sJ
 vL
 az

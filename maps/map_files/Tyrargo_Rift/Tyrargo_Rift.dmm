@@ -4537,14 +4537,16 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-10";
-	pixel_y = 9
+	pixel_y = 9;
+	level = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
 "ang" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8";
-	pixel_y = 9
+	pixel_y = 9;
+	level = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
@@ -4672,7 +4674,8 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-10";
-	pixel_y = 9
+	pixel_y = 9;
+	level = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
@@ -4707,7 +4710,8 @@
 /obj/structure/machinery/power/port_gen/pacman,
 /obj/structure/cable/orange{
 	icon_state = "0-8";
-	pixel_y = 9
+	pixel_y = 9;
+	level = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
@@ -5711,7 +5715,8 @@
 /obj/structure/cable/orange{
 	icon_state = "6-10";
 	pixel_y = 24;
-	pixel_x = 9
+	pixel_x = 9;
+	level = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
@@ -5771,7 +5776,8 @@
 	name = "dirt"
 	},
 /obj/structure/cable/orange{
-	icon_state = "4-9"
+	icon_state = "4-9";
+	level = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
@@ -5793,7 +5799,8 @@
 	},
 /obj/structure/cable/orange{
 	icon_state = "4-8";
-	pixel_y = 5
+	pixel_y = 5;
+	level = 2
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
@@ -5895,7 +5902,8 @@
 "apO" = (
 /obj/structure/cable/orange{
 	icon_state = "6-10";
-	pixel_y = 20
+	pixel_y = 20;
+	level = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
@@ -6441,7 +6449,8 @@
 "arf" = (
 /obj/structure/cable/orange{
 	icon_state = "0-8";
-	pixel_y = 4
+	pixel_y = 4;
+	level = 2
 	},
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -15564,7 +15573,8 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8";
 	pixel_y = -6;
-	pixel_x = 1
+	pixel_x = 1;
+	level = 2
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
@@ -16004,7 +16014,8 @@
 /obj/item/ammo_casing/bullet,
 /obj/structure/cable/orange{
 	icon_state = "4-10";
-	pixel_y = 5
+	pixel_y = 5;
+	level = 2
 	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
@@ -27494,7 +27505,8 @@
 /obj/structure/cable/orange{
 	icon_state = "1-9";
 	pixel_x = -8;
-	pixel_y = 2
+	pixel_y = 2;
+	level = 2
 	},
 /turf/open/asphalt/cement/cement13,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -32614,13 +32626,15 @@
 /obj/structure/cable/orange{
 	icon_state = "5-8";
 	pixel_x = 4;
-	pixel_y = -28
+	pixel_y = -28;
+	level = 2
 	},
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north)
 "buH" = (
 /obj/structure/cable/orange{
-	icon_state = "4-10"
+	icon_state = "4-10";
+	level = 2
 	},
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -32634,7 +32648,8 @@
 /obj/structure/cable/orange{
 	icon_state = "4-9";
 	pixel_x = -6;
-	pixel_y = -15
+	pixel_y = -15;
+	level = 2
 	},
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -37792,7 +37807,8 @@
 /obj/structure/cable/orange{
 	icon_state = "4-9";
 	pixel_x = 1;
-	pixel_y = -6
+	pixel_y = -6;
+	level = 2
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
@@ -50390,7 +50406,8 @@
 /obj/structure/prop/turret/missile,
 /obj/structure/cable/orange{
 	icon_state = "1-10";
-	pixel_x = 7
+	pixel_x = 7;
+	level = 2
 	},
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -52554,6 +52571,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
+"cxY" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cxZ" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "pointybush_1"
@@ -52594,6 +52614,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/colony_exterior/north_west)
+"cyf" = (
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cyg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -52628,6 +52651,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/colony_exterior/north_west)
+"cym" = (
+/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cyn" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	pixel_x = -1;
@@ -54230,6 +54256,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/tyrargo/indoors/apartment/north_upper)
+"cEC" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open_space,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cED" = (
 /obj/structure/machinery/light,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
@@ -54417,6 +54447,9 @@
 "cFs" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/bar/upper/external)
+"cFt" = (
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cFu" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/tyrargo/indoors/bar/upper/external)
@@ -58654,6 +58687,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"cRL" = (
+/turf/open/floor/almayer_hull,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cRM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -58706,6 +58742,9 @@
 /obj/structure/roof/hybrisa/signs/mechanicsign,
 /turf/closed/wall/strata_outpost,
 /area/tyrargo/indoors/gararge/ground)
+"cRV" = (
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cRW" = (
 /obj/structure/prop/rock/black_ground{
 	icon_state = "black_ground_alt"
@@ -60661,6 +60700,9 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
+"cXp" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cXq" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -63707,6 +63749,9 @@
 	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"deN" = (
+/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "deO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/bedroll{
@@ -65073,6 +65118,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/central)
+"dij" = (
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "dik" = (
 /obj/structure/girder,
 /turf/open/hybrisa/street/cement2,
@@ -193579,11 +193627,11 @@ cSh
 cSh
 cSh
 cSh
-cSh
-cSh
-cSh
-cSh
-cSh
+aaj
+aaj
+aaj
+aaj
+aaj
 cSh
 cSh
 cSh
@@ -193767,8 +193815,8 @@ aaj
 aaj
 aaj
 aaj
-cSh
-cSh
+aaj
+aaj
 cSh
 cSh
 cSh
@@ -193941,17 +193989,17 @@ cSh
 cSh
 cSh
 aaj
-aky
-aky
-aky
-aky
-aky
-aky
-aky
-aaj
-aaj
-aaj
-aaj
+cEC
+cEC
+cEC
+cEC
+cEC
+cEC
+cEC
+cEC
+cEC
+cEC
+cSh
 cSh
 cSh
 cSh
@@ -194123,18 +194171,18 @@ cSh
 cSh
 cSh
 aaj
-aky
-aky
-aky
-aky
-aky
-aky
-aky
-aky
-aky
-aky
-aaj
-aaj
+cEC
+deN
+cFt
+cFt
+cFt
+cFt
+cFt
+cFt
+cFt
+cFt
+cxY
+cSh
 cSh
 cSh
 cSh
@@ -194304,20 +194352,20 @@ cSh
 cSh
 cSh
 cSh
-aaj
-aaj
-aaj
-aky
-aky
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
-aaj
+cSh
+cSh
+dij
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cyf
+cSh
+cSh
 cSh
 cSh
 cSh
@@ -194486,18 +194534,18 @@ cSh
 cSh
 cSh
 cSh
-aaj
-cSh
-aaj
-aky
-aky
-aaj
 cSh
 cSh
-cSh
-cSh
-cSh
-cSh
+dij
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cyf
 cSh
 cSh
 cSh
@@ -194670,16 +194718,16 @@ cSh
 cSh
 cSh
 cSh
-aaj
-aaj
-aaj
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
+dij
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cyf
 cSh
 cSh
 cSh
@@ -194852,16 +194900,16 @@ cSh
 cSh
 cSh
 cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
+dij
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cyf
 cSh
 cSh
 cSh
@@ -195034,16 +195082,16 @@ cSh
 cSh
 cSh
 cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
-cSh
+cXp
+cRV
+cRL
+cRL
+cRL
+cRL
+cRL
+cRL
+cRV
+cym
 cSh
 cSh
 cSh
@@ -195218,12 +195266,12 @@ cSh
 cSh
 cSh
 cSh
+cXp
+cym
 cSh
 cSh
-cSh
-cSh
-cSh
-cSh
+cXp
+cym
 cSh
 cSh
 cSh

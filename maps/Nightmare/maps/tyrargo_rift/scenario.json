@@ -1,0 +1,9 @@
+[
+    {
+        "type": "pick", "name": "Tyrargo Global Event",
+        "choices": [
+            { "weight": 7, "type": "def", "values": { "lvevent": "none"       } },
+            { "weight": 3, "type": "def", "values": { "lvevent": "dropshipcrash" } }
+        ]
+    }
+]

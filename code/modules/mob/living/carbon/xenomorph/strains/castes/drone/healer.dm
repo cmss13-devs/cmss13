@@ -29,8 +29,8 @@
 	drone.tackle_chance_modifier -= 5
 
 	drone.max_placeable = 3
-	drone.available_fruits = list(/obj/effect/alien/resin/fruit)
-	drone.selected_fruit = /obj/effect/alien/resin/fruit
+	drone.available_fruits = list(/obj/effect/alien/resin/fruit/lesser)
+	drone.selected_fruit = /obj/effect/alien/resin/fruit/lesser
 
 	drone.recalculate_everything()
 
@@ -186,6 +186,7 @@
 
 /datum/behavior_delegate/drone_healer/append_to_stat()
 	. = list()
+	. += "Fruits sustained: [length(bound_xeno.current_fruits)] / [bound_xeno.max_placeable]"
 	. += "Transferred health amount: [transferred_amount]/[required_transferred_amount]"
 	if(transferred_amount >= required_transferred_amount)
 		. += "Sacrifice will grant you new life."

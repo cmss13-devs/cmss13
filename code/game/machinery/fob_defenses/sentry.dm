@@ -11,6 +11,7 @@
 	needs_power = FALSE
 	pixel_x = -17
 	var/datum/shape/rectangle/square/range_bounds
+	var/ammo_type = /datum/ammo/bullet/turret/fob
 
 /obj/structure/machinery/sentry/Initialize(mapload, ...)
 	range_bounds = SQUARE(x, y, 15)

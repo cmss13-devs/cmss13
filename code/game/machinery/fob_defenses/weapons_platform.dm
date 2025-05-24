@@ -144,6 +144,9 @@
 				targets.Remove(target)
 				continue
 
+		if(!length(targets))
+			return
+
 		var/mob/target = pick(targets)
 
 		if(!target)
@@ -164,10 +167,13 @@
 			new /obj/effect/warning/explosive(get_turf(target), 0.1 SECONDS)
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), get_turf(target), 199, 150), 0.1 SECONDS)
 	else
+		var/obj/structure/machinery/sentry/linked_sentry = linked_weapon
 		linked_weapon.dir = get_dir(src, target)
 		update_icon()
-		var/obj/projectile/proj = new
-		proj.generate_bullet(/datum/ammo/bullet/turret/fob, 0, 0, src)
+		var/datum/ammo/ammo_datum = new linked_sentry.ammo_type()
+
+		var/obj/projectile/proj = new(loc, create_cause_data(ammo_datum, src))
+		proj.generate_bullet(ammo_datum)
 		GIVE_BULLET_TRAIT(proj, /datum/element/bullet_trait_iff, FACTION_MARINE)
 		proj.fire_at(target, src, src, proj.ammo.max_range, proj.ammo.shell_speed)
 

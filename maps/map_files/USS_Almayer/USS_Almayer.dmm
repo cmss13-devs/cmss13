@@ -36299,6 +36299,18 @@
 	pixel_y = 8;
 	pixel_x = 1
 	},
+/obj/item/device/motiondetector/dogtag{
+	pixel_x = 16;
+	pixel_y = -5
+	},
+/obj/item/device/motiondetector/dogtag{
+	pixel_x = 16;
+	pixel_y = -5
+	},
+/obj/item/device/motiondetector/dogtag{
+	pixel_x = 16;
+	pixel_y = -5
+	},
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/almayer/medical/lockerroom)
 "ixu" = (

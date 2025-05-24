@@ -9,7 +9,7 @@
         "/datum/equipment_preset/survivor/roughneck",
         "/datum/equipment_preset/survivor/chaplain/trijent",
         "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison",
-        "/datum/equipment_preset/survivor/colonial_marshal/trijent",
+        "/datum/equipment_preset/survivor/nspa/trijent",
         "/datum/equipment_preset/survivor/engineer/trijent",
         "/datum/equipment_preset/survivor/engineer/trijent/hydro",
         "/datum/equipment_preset/survivor/trucker/trijent",
@@ -30,7 +30,21 @@
     "monkey_types": [
         "stok"
     ],
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/DesertDam/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

@@ -18,6 +18,34 @@
 	var/state = STATE_OFF
 	var/timer
 
+/obj/structure/machinery/backup_generator/Initialize(mapload, ...)
+	START_PROCESSING(SSslowobj, src)
+
+	. = ..()
+
+/obj/structure/machinery/backup_generator/process(deltatime)
+	if(state != STATE_ON)
+		return
+
+	var/groundside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans += 1
+
+			if(groundside_humans > 12)
+				break
+
+	if(groundside_humans >= 12)
+		return
+
+	deltimer(timer)
+	turn_off()
+	STOP_PROCESSING(SSslowobj, src)
+
 /obj/structure/machinery/backup_generator/proc/is_active()
 	return state == STATE_ON
 

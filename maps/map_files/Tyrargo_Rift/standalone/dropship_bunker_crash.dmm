@@ -523,16 +523,6 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/tyrargo/indoors/tychon)
-"aX" = (
-/obj/structure/prop/hybrisa/airport/dropshipenginedamage{
-	light_on = 1;
-	light_power = 5;
-	light_range = 6;
-	pixel_x = -1;
-	pixel_y = -11
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central/landing_zone)
 "aY" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -1314,7 +1304,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "vo" = (
-/obj/effect/decal/remains/robot,
 /turf/open/shuttle/dropship/light_grey_bottom_left,
 /area/tyrargo/indoors/tychon)
 "vK" = (
@@ -1762,10 +1751,6 @@
 	dir = 8;
 	name = "\improper Tychon"
 	},
-/area/tyrargo/indoors/tychon)
-"EG" = (
-/obj/effect/decal/remains/robot,
-/turf/open/floor/plating/platingdmg1,
 /area/tyrargo/indoors/tychon)
 "Fb" = (
 /obj/structure/bed/chair/vehicle{
@@ -2531,7 +2516,7 @@ JX
 FK
 JX
 JX
-aX
+JX
 JX
 JX
 JX
@@ -2628,7 +2613,7 @@ aG
 Ve
 UQ
 Ve
-EG
+GZ
 NR
 Kc
 JX
@@ -2803,7 +2788,7 @@ hX
 Yg
 QI
 aE
-UQ
+QI
 sJ
 Ae
 aL
@@ -2980,7 +2965,7 @@ OH
 YD
 QI
 md
-EG
+GZ
 Lh
 ZP
 ZP

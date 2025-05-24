@@ -249,6 +249,34 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"aaV" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/pontoon_beach)
+"aaW" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/coast/north,
+/area/varadero/exterior/pontoon_beach)
+"aaX" = (
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"aaY" = (
+/obj/structure/fence,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"aaZ" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/exterior/pontoon_beach)
+"aba" = (
+/obj/item/tool/shovel,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
+"abb" = (
+/obj/structure/fence,
+/turf/open/gm/dirt,
+/area/varadero/exterior/pontoon_beach)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -10135,6 +10163,7 @@
 /area/varadero/interior/library)
 "ibs" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
+/obj/structure/fence,
 /turf/open/gm/dirt,
 /area/varadero/exterior/pontoon_beach)
 "iby" = (
@@ -29529,7 +29558,7 @@
 /area/varadero/interior/hall_N)
 "xzc" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
-/turf/open/gm/dirt/desert0,
+/turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/pontoon_beach)
 "xzd" = (
 /obj/effect/decal/cleanable/vomit,
@@ -48424,7 +48453,7 @@ eGX
 hKK
 sRs
 hXR
-oGv
+vss
 oGv
 jSX
 hKK
@@ -48789,7 +48818,7 @@ lTR
 scL
 oGv
 hXR
-oGv
+vss
 lnO
 lTR
 lTR
@@ -48969,11 +48998,11 @@ cpF
 lTR
 lTR
 scL
-oGv
+aaY
 xzc
 oGv
-lnO
-daS
+pfd
+aaV
 lTR
 lTR
 lTR
@@ -49151,11 +49180,11 @@ stl
 cpF
 gVO
 uTu
-rKM
-oGv
-oGv
-lnO
-aTY
+aaZ
+vss
+vss
+vss
+aaW
 lTR
 lTR
 lTR
@@ -49333,11 +49362,11 @@ lTR
 lTR
 scL
 oGv
-oGv
-hXR
-oGv
+aba
+vss
+aaX
+vss
 pfd
-jaF
 oAC
 lTR
 lTR
@@ -49514,12 +49543,12 @@ lTR
 lTR
 lTR
 scL
-oGv
-hXR
-oGv
-tmC
-oGv
-oGv
+vss
+vss
+vss
+vss
+vss
+vss
 lnO
 lTR
 lTR
@@ -49697,11 +49726,11 @@ lTR
 lTR
 scL
 oGv
-oGv
-ibs
+vss
+lQW
 lQW
 gux
-kGD
+lQW
 kgm
 mQG
 lTR
@@ -49880,7 +49909,7 @@ cpF
 eGX
 sRs
 lsN
-hXR
+vss
 ibs
 eFB
 kGD
@@ -50061,7 +50090,7 @@ cpF
 lTR
 lTR
 scL
-oGv
+abb
 vss
 oGv
 hwL

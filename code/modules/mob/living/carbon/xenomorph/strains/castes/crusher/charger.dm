@@ -258,6 +258,10 @@
 	if(!charger_ability.momentum)
 		charger_ability.stop_momentum()
 		return
+	if(electrified)
+		charger_ability.stop_momentum()
+		return
+
 	attack_generic(xeno,CHARGER_DAMAGE_CADE)
 	playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
 	if(QDELETED(src))

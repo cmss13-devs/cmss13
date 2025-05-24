@@ -1,0 +1,4 @@
+author: "Waseemq1235"
+delete-after: True
+changes:
+  - spellcheck: "Fixes a minor spelling mistake when attempting to tweak access requirements on a vending machine"

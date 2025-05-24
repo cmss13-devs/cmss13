@@ -202,6 +202,7 @@
 
 #define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"
 #define COMSIG_KB_YAUTJA_FOLD_COMBISTICK "keybinding_yautja_fold_combistick"
+#define COMSIG_KB_YAUTJA_GAUNTLET_GUARD "keybinding_yautja_gauntlet_guard"
 
 #define COMSIG_KB_OBSERVER_JOIN_XENO "keybinding_observer_join_as_xeno"
 #define COMSIG_KB_OBSERVER_JOIN_ERT "keybinding_observer_join_ert"

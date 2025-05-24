@@ -1119,6 +1119,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
+	window_frame = /obj/structure/window_frame/upp/hull
 //	icon_state = "upp_rwindow0"
 
 // Hybrisa Windows

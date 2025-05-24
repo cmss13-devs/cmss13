@@ -1178,7 +1178,9 @@
 	storage_slots = 26
 	can_hold = list(/obj/item/explosive/satchel_charge, /obj/item/satchel_charge_detonator)
 	var/starting_charges = 20
-	item_icons = item_icons = list(
+	icon_state = "satchelbelt"
+	item_state = "satchelbelt"
+	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
 	)
 

@@ -47,17 +47,6 @@
 	},
 /turf/open/floor/corsat/box,
 /area/tyrargo/underground/bunker/north)
-"l" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_left_cap,
-/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/tyrargo/underground/bunker/north)
-"m" = (
-/turf/closed/shuttle/dropship3/transparent{
-	icon_state = "33";
-	name = "\improper Tychon"
-	},
-/area/tyrargo/underground/bunker/north)
 "q" = (
 /turf/open/floor/corsat/darkgreencorner/east,
 /area/tyrargo/underground/bunker/north)
@@ -76,7 +65,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
 "t" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_right_exhaust,
+/obj/structure/prop/hybrisa/boulders,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "u" = (
@@ -100,37 +89,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
-"z" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_right_cap,
-/turf/open/auto_turf/hybrisa_auto_turf/layer2,
-/area/tyrargo/underground/bunker/north)
 "A" = (
 /turf/closed/wall/rock,
 /area/tyrargo/oob)
 "B" = (
-/obj/structure/prop/hybrisa/airport/dropshipenginedamage{
-	light_on = 1;
-	light_power = 5;
-	light_range = 6;
-	pixel_x = -1;
-	pixel_y = 10
-	},
-/turf/closed/shuttle/dropship3/transparent{
-	icon_state = "26";
-	name = "\improper Tychon"
-	},
+/obj/structure/prop/hybrisa/boulders/smallboulderdark,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "C" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/corsat/bluecorner/north,
-/area/tyrargo/underground/bunker/north)
-"D" = (
-/turf/closed/shuttle/dropship3/transparent{
-	icon_state = "39";
-	name = "\improper Tychon"
-	},
 /area/tyrargo/underground/bunker/north)
 "E" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
@@ -172,7 +142,7 @@
 /turf/open/floor/corsat/redcorner/east,
 /area/tyrargo/underground/bunker/north)
 "L" = (
-/obj/structure/shuttle/part/dropship3/transparent/engine_left_exhaust,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "M" = (
@@ -184,26 +154,22 @@
 	},
 /turf/open/floor/corsat/darkgreen/north,
 /area/tyrargo/underground/bunker/north)
-"O" = (
-/turf/closed/shuttle/dropship3/transparent{
-	icon_state = "27";
-	name = "\improper Tychon"
-	},
-/area/tyrargo/underground/bunker/north)
 "P" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/red/east,
 /area/tyrargo/underground/bunker/north)
 "Q" = (
-/turf/closed/shuttle/dropship3/transparent{
-	icon_state = "32";
-	name = "\improper Tychon"
+/obj/structure/prop/hybrisa/boulders/large_boulderdark,
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1{
+	pixel_y = -12
 	},
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "R" = (
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
+/obj/structure/prop/hybrisa/boulders/wide_boulderdark/wide_boulder1,
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "S" = (
@@ -238,10 +204,8 @@
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "W" = (
-/turf/closed/shuttle/dropship3/transparent{
-	icon_state = "38";
-	name = "\improper Tychon"
-	},
+/obj/structure/prop/hybrisa/boulders/large_boulderdark,
+/turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/underground/bunker/north)
 "X" = (
 /obj/effect/decal/cleanable/dirt,
@@ -299,7 +263,7 @@ A
 (4,1,1) = {"
 s
 j
-l
+L
 W
 Q
 B
@@ -311,10 +275,10 @@ A
 (5,1,1) = {"
 h
 C
-z
-D
-m
-O
+x
+x
+x
+x
 t
 R
 j

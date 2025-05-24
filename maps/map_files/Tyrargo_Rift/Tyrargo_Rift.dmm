@@ -4707,11 +4707,13 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/oob)
 "ant" = (
-/obj/structure/machinery/power/port_gen/pacman,
 /obj/structure/cable/orange{
 	icon_state = "0-8";
 	pixel_y = 9;
 	level = 2
+	},
+/obj/structure/prop/tyrargo/gen{
+	dir = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
@@ -4777,7 +4779,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -5764,7 +5766,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -6452,7 +6454,9 @@
 	pixel_y = 4;
 	level = 2
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/prop/tyrargo/gen{
+	dir = 4
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/east)
 "arg" = (
@@ -17914,7 +17918,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -32244,7 +32248,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -40203,6 +40207,12 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
+/obj/structure/cable/orange{
+	icon_state = "8-10";
+	pixel_x = -4;
+	pixel_y = -7;
+	level = 2
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bME" = (
@@ -41519,6 +41529,12 @@
 	pixel_y = 19;
 	explo_proof = 1;
 	unacidable = 1
+	},
+/obj/structure/cable/orange{
+	icon_state = "4-9";
+	level = 2;
+	pixel_y = -7;
+	pixel_x = -4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -48539,7 +48555,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -50280,7 +50296,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -51464,6 +51480,12 @@
 "cuj" = (
 /obj/structure/prop/turret{
 	dir = 1
+	},
+/obj/structure/cable/orange{
+	icon_state = "5-6";
+	level = 2;
+	pixel_y = -21;
+	pixel_x = 1
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -53661,7 +53683,7 @@
 	icon_state = "trash_8";
 	pixel_y = -12
 	},
-/turf/open/hybrisa/street/cement2,
+/turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "cCm" = (
 /turf/open/floor/plating,
@@ -55142,7 +55164,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -55334,7 +55356,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -55592,7 +55614,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -61195,7 +61217,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -61209,7 +61231,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62790,7 +62812,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62810,7 +62832,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62832,7 +62854,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62842,7 +62864,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62859,7 +62881,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62869,7 +62891,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62894,7 +62916,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62904,7 +62926,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -62961,7 +62983,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -63030,7 +63052,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -63200,7 +63222,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -63241,7 +63263,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -63877,7 +63899,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -63919,7 +63941,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -63934,7 +63956,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -64385,7 +64407,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -64835,7 +64857,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -65049,7 +65071,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -65389,7 +65411,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -65469,7 +65491,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -75111,7 +75133,7 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
+	light_range = 8;
 	light_power = 2;
 	light_color = "#FFEFD2"
 	},
@@ -80773,6 +80795,13 @@
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
+"dVC" = (
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/colony_streets/south_east)
+"dVD" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/colony_streets/south_east)
 "dVE" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark3{
 	unacidable = 1;
@@ -83720,6 +83749,15 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north_west)
+"ecj" = (
+/obj/structure/cable/orange{
+	icon_state = "4-5";
+	pixel_x = -2;
+	pixel_y = -6;
+	level = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "eck" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/siding{
@@ -84160,6 +84198,18 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
+"edk" = (
+/obj/structure/prop/tyrargo/gen{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "0-8";
+	pixel_y = -6;
+	level = 2;
+	pixel_x = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "edl" = (
 /obj/structure/platform_decoration/stone/hybrisa/rockdark,
 /obj/structure/blocker/forcefield/vehicles,
@@ -84173,6 +84223,15 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
+"edn" = (
+/obj/item/prop/colony/used_flare,
+/obj/structure/cable/orange{
+	icon_state = "5-9";
+	pixel_y = -19;
+	level = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "edo" = (
 /obj/structure/prop/tyrargo/traffic_signal/traffic_signal_3,
 /turf/open/hybrisa/street/sidewalk/east,
@@ -84247,6 +84306,18 @@
 /obj/effect/blocker/water,
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown,
 /area/tyrargo/oob)
+"edA" = (
+/obj/structure/prop/tyrargo/gen{
+	dir = 4
+	},
+/obj/structure/cable/orange{
+	icon_state = "2-10";
+	pixel_x = -3;
+	pixel_y = 11;
+	level = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
 "edB" = (
 /obj/structure/largecrate/supply/supplies/water,
 /obj/effect/blocker/water,
@@ -85795,8 +85866,9 @@
 /obj/structure/prop/tyrargo/illuminator{
 	icon_state = "floodlight-on";
 	light_on = 1;
-	light_range = 6;
-	light_power = 2
+	light_range = 8;
+	light_power = 2;
+	light_color = "#FFEFD2"
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
@@ -157016,7 +157088,7 @@ bNk
 bMF
 bME
 bPV
-bMr
+ecj
 cKK
 bLS
 bBE
@@ -157198,7 +157270,7 @@ bNa
 bMR
 bMP
 bMD
-bMr
+edk
 bMj
 aOm
 bBE
@@ -160462,7 +160534,7 @@ aQK
 bLV
 bMr
 cxe
-bMr
+edn
 bMr
 bMr
 dRh
@@ -160644,7 +160716,7 @@ bMT
 aQB
 bOo
 bMr
-bMO
+edA
 bLH
 bNF
 bOo
@@ -180555,8 +180627,8 @@ ciI
 ciI
 cCT
 ciI
-ciI
-ciI
+dVC
+dVC
 qoY
 qoY
 qoY
@@ -180737,8 +180809,8 @@ cCU
 ciI
 ciI
 cCl
-ciI
-abb
+dVC
+dVD
 fTs
 bsw
 bsw
@@ -180918,7 +180990,7 @@ cCV
 ciz
 chj
 chj
-chj
+dVC
 fTs
 fTs
 fTs

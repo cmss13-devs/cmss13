@@ -1112,7 +1112,13 @@
 	window_frame = /obj/structure/window_frame/upp/reinforced
 
 /obj/structure/window/framed/upp/hull
+	name = "hull window"
 	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
 //	icon_state = "upp_rwindow0"
 
 // Hybrisa Windows

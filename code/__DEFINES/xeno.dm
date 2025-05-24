@@ -81,15 +81,14 @@
 
 #define IGNORE_BUILD_DISTANCE -1
 
-#define XENO_LEADER_HIVE_POS(X)   (X + 1)
-#define GET_XENO_LEADER_NUM(X)  (X.hive_pos - 1)
-#define IS_XENO_LEADER(X)    (X.hive_pos > 1)
+#define XENO_LEADER_HIVE_POS(X) (X + 1)
+#define GET_XENO_LEADER_NUM(X) (X.hive_pos - 1)
+#define IS_XENO_LEADER(X) (X.hive_pos >= XENO_LEADER)
+#define IS_NORMAL_XENO(X) (X.hive_pos == NORMAL_XENO)
 
 #define NORMAL_XENO  0
 #define XENO_QUEEN   1
 #define XENO_LEADER  2
-/// Nobody can create constructions. (Feral)
-#define XENO_NOBODY  3
 
 #define XENO_HIVE_AREA_SIZE 21 //The turf size from the centrepiece of a hive in which special things can be done (like building structures)
 
@@ -106,8 +105,16 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
-#define XENO_SLASH_ALLOWED 0
-#define XENO_SLASH_FORBIDDEN 1
+#define XENO_SLASH_FORBIDDEN (1<<0)
+#define XENO_SLASH_RESTRICTED (1<<1)
+#define XENO_CONSTRUCTION_LEADERS_ONLY (1<<2)
+#define XENO_CONSTRUCTION_QUEEN_ONLY (1<<3)
+#define XENO_CONSTRUCTION_NOBODY (1<<4) //feral
+#define XENO_DECONSTRUCTION_QUEEN_ONLY (1<<5)
+#define XENO_DECONSTRUCTION_LEADERS_ONLY (1<<6)
+#define XENO_DECONSTRUCTION_NOBODY (1<<7) //feral
+#define XENO_UNNESTING_RESTRICTED (1<<8)
+
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.

@@ -92,3 +92,92 @@
   - code_imp: Plasma caster now only has 2 modes for stuns, one that stuns whatever
       it hits, and one that stuns anything  7 tiles from it
   - balance: Stun bolt timer is now 3 instead of 2
+2025-05-09:
+  Lagomorphica:
+  - balance: undamaged lungemines now gib the user on hit, ex_act was removed due
+      to being bugged (caused runtimes, did not do anything to xenomorphs due to checking
+      the user for the explosive pen so ultimately won't change anything about it)
+2025-05-12:
+  Detective-Google:
+  - rscadd: WY beacon guards now return to the WY ert station rather than the default
+      one.
+2025-05-13:
+  Blundir, Nomoresolvalou, TheManWithNoHands, Triiodine, Shad0vvs:
+  - rscadd: Added SHARP Operator spec, P9 SHARP rifle, and SHARP ammo belt
+  - balance: Added SHARP Operator spec to the squad spec vendor
+  - soundadd: Added SHARP gun sounds
+  - imageadd: Added SHARP rifle and ammo sprites (by Triiodine and TheManWithNoHands)
+  Detective-Google:
+  - bugfix: default accessories are wearable again
+  - bugfix: combat android bodyguard beacon now spawns the leader android properly
+  - balance: underbarrel flamethrowers no longer fit onto shotguns.
+  Lagomorphica:
+  - bugfix: fluffing no longer gives you an unremovable beard as a female character
+  Red-byte3D:
+  - soundadd: Added a bunch of new sounds, ported from TG
+  - bugfix: Caster stun timer now works properly
+  Unknownity:
+  - rscadd: Added a portable Hellhound camera console used to overwatch Hellhounds
+      from greater distances. You can find the Houndpads in the Houndmaster's quarters.
+  - imageadd: Added a unique sprite for the Houndpad.
+  kiVts:
+  - bugfix: Fix spammed runtimes related to tvs relaying messages
+  realforest2001:
+  - bugfix: Fixes HighCommand fax machines breaking.
+2025-05-15:
+  DangerRevolution:
+  - rscadd: Increased the number of M5 Camera Gears from 3 to 15 in the Requsition
+      Vendor.
+  - bugfix: M5 Camera Gear now properly spawns in the Squad Vendors.
+  jupyterkat:
+  - qol: quick equip will try to put an item to the slot it was drawn from.
+  - qol: mag harnessed weapons always prefers the slots it usually snaps to on quick-equip
+2025-05-16:
+  MistChristmas:
+  - bugfix: Edit Hotkey's search bar is case-insensitive.
+  Red-byte3D:
+  - qol: Xenos can now examine an acid runner to see how much acid they have.
+2025-05-17:
+  Uristthedorf:
+  - rscadd: Barcidine now has bicaridine.
+2025-05-18:
+  SPACE5891, A rich guy four:
+  - bugfix: can put FixOVein in first-aid kit
+2025-05-19:
+  stalkerino:
+  - balance: removed marsoc helmet from shiva
+2025-05-21:
+  FebrezeNinja:
+  - bugfix: Add "Research Roles" label to timelocks
+  LC4492:
+  - code_imp: Coded the new in_hands for the knives and IDs in.
+  - code_imp: All satchels have received a new mechanic that allows, upon right-click
+      interaction, changing on which shoulder the strap will be on in the on_mob (Works
+      only with satchels that have straps). Code by Blundir.
+  - imageadd: Backpacks and Belts needed to be updated to accomodate better new in_hands,
+      given that they were outdated and persistently overlapping with the character's
+      hands (and overlapping with objects being held by those hands, making stuff
+      ugly).
+  - imageadd: Swords have been updated to fix some mistakes I have done in the past,
+      and the katana looks less like a knife now!
+  - imageadd: All knives added by Zenith have now received proper in_hands, and fixes
+      have been done to already present ones. W-Y bayonet added by Blundir has also
+      received an exclusive in_hand.
+  - imageadd: ID cards and badges have received proper in_hand and on_mob versions,
+      matching a little more with their object counterparts.
+  - imageadd: Most scabbards have also received visual improvements to match with
+      the in_hand versions of the long blades, and the ceremonial sword's scabbard
+      have received a major fix and looks much better now.
+  lanse12:
+  - spellcheck: fixed typo in W-Y engi helm description
+2025-05-22:
+  MeH0y, TyranicRanger4:
+  - rscadd: Adds yautja cleaner vials to yautja hunting equipment
+2025-05-24:
+  TrollerNoob:
+  - imageadd: Updated the USCM and PMC's Sniper Specialist's HUD and Map icon.
+  realforest2001:
+  - rscadd: Added tracking to command headsets.
+  - rscadd: Added a tracker for Intel Squad Lead.
+  - rscadd: Added XO and CO subtypes for the senior command headset. This has no identifying
+      features aside from different tracking options.

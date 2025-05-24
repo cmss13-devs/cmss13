@@ -176,6 +176,13 @@
 	full_name = "Toggle Smartgun Frontline Mode"
 	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_FRONTLINE_MODE
 
+/datum/keybinding/human/combat/toggle_aim_assist
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_aim_assist"
+	full_name = "Toggle Smartgun Aim Assist"
+	keybind_signal = COMSIG_KB_HUMAN_WEAPON_TOGGLE_AIM_ASSIST
+
 /datum/keybinding/human/combat/toggle_iff
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

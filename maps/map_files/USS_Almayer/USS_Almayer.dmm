@@ -3806,6 +3806,13 @@
 /obj/item/reagent_container/food/snacks/mre_pack/meal1,
 /turf/open/floor/almayer/silver,
 /area/almayer/living/cafeteria_officer)
+"air" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/obj/structure/dropship_equipment/medevac_system,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "ais" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/wood/ship,
@@ -4246,6 +4253,13 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner,
 /area/almayer/medical/containment)
+"ajA" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/vehicle/powerloader/jd{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hallways/hangar)
 "ajB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -4371,6 +4385,14 @@
 	},
 /turf/open/floor/almayer/research/containment/corner_var1/east,
 /area/almayer/medical/containment/cell)
+"ajL" = (
+/obj/structure/largecrate/supply/fob_monitoring,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
+"ajM" = (
+/obj/structure/largecrate/supply/fob_support,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
 "ajN" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/east,
@@ -4585,6 +4607,10 @@
 /obj/structure/largecrate/random,
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
+"akv" = (
+/obj/structure/dropship_equipment/paradrop_system,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
 "akw" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/upper_medical)
@@ -4906,6 +4932,10 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop/hangar)
+"alw" = (
+/obj/structure/dropship_equipment/fulton_system,
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
 "alx" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower/workshop/hangar)
@@ -5426,13 +5456,6 @@
 "amX" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/navigation)
-"amY" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8
-	},
-/obj/structure/dropship_equipment/medevac_system,
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
 "amZ" = (
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/shipboard/stern_point_defense)
@@ -5457,10 +5480,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
-"and" = (
-/obj/structure/dropship_equipment/paradrop_system,
-/turf/open/floor/almayer/cargo,
-/area/almayer/hallways/hangar)
 "ane" = (
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/shipboard/stern_point_defense)
@@ -6090,10 +6109,6 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
-"aoL" = (
-/obj/structure/dropship_equipment/fulton_system,
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
 "aoM" = (
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/medical_science)
@@ -6106,10 +6121,6 @@
 "aoO" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/stern_point_defense)
-"aoP" = (
-/obj/structure/largecrate/supply/fob_weaponry,
-/turf/open/floor/almayer/cargo,
-/area/almayer/hallways/hangar)
 "aoQ" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/stern_point_defense)
@@ -6565,17 +6576,6 @@
 "apV" = (
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/hallways/lower/starboard_aft_hallway)
-"apW" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/vehicle/powerloader/jd{
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/hangar)
-"apX" = (
-/obj/structure/largecrate/supply/fob_monitoring,
-/turf/open/floor/almayer/cargo,
-/area/almayer/hallways/hangar)
 "apY" = (
 /obj/structure/machinery/telecomms/server/presets/medical,
 /obj/structure/machinery/telecomms/processor/preset_three{
@@ -6635,10 +6635,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
-"aqf" = (
-/obj/structure/largecrate/supply/fob_support,
-/turf/open/floor/almayer/cargo,
-/area/almayer/hallways/hangar)
 "aqg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -14913,6 +14909,10 @@
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
+"aYd" = (
+/obj/structure/largecrate/supply/fob_weaponry,
+/turf/open/floor/almayer/cargo,
+/area/almayer/hallways/hangar)
 "aYt" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
@@ -93716,7 +93716,7 @@ bfV
 baM
 bkd
 bdU
-amY
+air
 baM
 bkd
 bdU
@@ -93917,7 +93917,7 @@ aYt
 aYt
 aYt
 puI
-aoL
+alw
 pcl
 gHZ
 pcl
@@ -94527,7 +94527,7 @@ oYp
 oZp
 eXq
 vvp
-aoP
+aYd
 aaw
 bqF
 aat
@@ -94730,7 +94730,7 @@ imy
 gEg
 dRD
 bdV
-apW
+ajA
 tQL
 bcm
 bGu
@@ -94933,7 +94933,7 @@ lsD
 lkf
 eXq
 ooh
-apX
+ajL
 aax
 aav
 aMY
@@ -95136,7 +95136,7 @@ xnZ
 gYt
 aho
 aYt
-aqf
+ajM
 gHZ
 pcl
 gHZ
@@ -95542,7 +95542,7 @@ aYt
 aYt
 anW
 aYt
-and
+akv
 gHZ
 pcl
 gHZ

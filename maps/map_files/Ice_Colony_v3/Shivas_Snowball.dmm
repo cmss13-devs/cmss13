@@ -217,6 +217,11 @@
 "aaP" = (
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/caves/cp_camp)
+"aaQ" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/machinery/transformer,
+/turf/open/floor/plating,
+/area/shiva/interior/caves/cp_camp)
 "aaR" = (
 /obj/effect/spider/stickyweb,
 /obj/item/clothing/under/marine/veteran/marsoc,
@@ -228,11 +233,6 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/right_spiders)
 "aaT" = (
-/obj/structure/prop/ice_colony/ground_wire,
-/obj/structure/machinery/transformer,
-/turf/open/floor/plating,
-/area/shiva/interior/caves/cp_camp)
-"aaU" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/shuttle/elevator/grating,
 /area/shiva/interior/caves/cp_camp)
@@ -29909,7 +29909,7 @@ oRH
 sIP
 aaP
 bni
-aaT
+aaQ
 aaP
 tlB
 tlB
@@ -30232,7 +30232,7 @@ cQY
 pZB
 wMh
 wMh
-aaU
+aaT
 aaP
 wMh
 aaM

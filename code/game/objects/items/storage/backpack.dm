@@ -557,7 +557,23 @@
 	name = "\improper USCM expedition chestrig"
 	desc = "A heavy-duty IMP based chestrig, can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "intel_chestrig"
-	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel
+	name = "\improper USCM lightweight expedition satchel"
+	desc = "A heavy-duty IMP based satchel, reinforced with kevlar so it doesn't rip. Can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	icon_state = "intel_satchel"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_state_slots = list(
+		WEAR_BACK = "intel_satchel",
+		WEAR_R_HAND = "marinesatch",
+		WEAR_L_HAND = "marinesatch",
+	)
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"

@@ -52,11 +52,11 @@
 	id = FLAMESHAPE_DEFAULT
 
 /datum/flameshape/default/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
-	var/turf/start_turf = get_turf(F.loc)
+	var/turf/source_turf = get_turf(F.loc)
 
-	var/list/tiles_to_spread = list(start_turf)
+	var/list/tiles_to_spread = list(source_turf)
 	var/list/tiles_to_set_aflame = list()
-	var/list/checked_tiles = list(start_turf)
+	var/list/checked_tiles = list(source_turf)
 	var/obj/flamer_fire/temp = new()
 
 	for(var/spread_amount in 1 to fire_spread_amount)

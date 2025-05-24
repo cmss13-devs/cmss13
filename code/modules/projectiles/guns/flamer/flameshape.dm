@@ -145,13 +145,16 @@
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/turf/prev_T = source_turf
-	var/list/turfs = get_line(source_turf, F.target_clicked, FALSE)
+	var/list/turfs = get_line(source_turf, F.target_clicked)
 
-	if(fire_spread_amount > turfs.len)
+	if(source_turf.density) // prevents spreading through 1 tile wall
+		source_turf.flamer_fire_act(burn_dam, F.weapon_cause_data)
+		fire_spread_amount = 1
+	else if(fire_spread_amount > turfs.len)
 		fire_spread_amount = turfs.len
 
 	var/distance = 1
-	for(distance in 1 to fire_spread_amount)
+	for(distance in 2 to fire_spread_amount) // first tile already set on fire
 		var/obj/flamer_fire/temp = new()
 		var/turf/T = turfs[distance]
 		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
@@ -178,11 +181,16 @@
 /datum/flameshape/triangle/handle_fire_spread(obj/flamer_fire/F, fire_spread_amount, burn_dam, fuel_pressure = 1)
 	set waitfor = 0
 
-	var/unleash_dir = get_cardinal_dir(F, F.target_clicked)
-	var/list/turf/turfs = get_line(F, F.target_clicked, FALSE)
-	var/turf/prev_T = get_turf(F.loc)
+	var/turf/source_turf = get_turf(F.loc)
 
-	if(fire_spread_amount > turfs.len)
+	var/unleash_dir = get_cardinal_dir(source_turf, F.target_clicked)
+	var/list/turf/turfs = get_line(source_turf, F.target_clicked)
+	var/turf/prev_T = source_turf
+
+	if(source_turf.density) // prevents spreading through 1 tile wall
+		source_turf.flamer_fire_act(burn_dam, F.weapon_cause_data)
+		fire_spread_amount = 1
+	else if(fire_spread_amount > turfs.len)
 		fire_spread_amount = turfs.len
 
 	for(var/distance in 1 to fire_spread_amount)
@@ -190,14 +198,16 @@
 		var/turf/T = turfs[distance]
 		var/list/tiles_to_set_aflame = list()
 
-		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
-		switch(result)
-			if(FIRE_CANPASS_SPREAD)
-				tiles_to_set_aflame.Add(T)
-			if(FIRE_CANPASS_SET_AFLAME)
-				tiles_to_set_aflame.Add(T)
-			if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
-				break
+		var/result = FIRE_CANPASS_SPREAD
+		if(prev_T != T) // first tile already set on fire
+			result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+			switch(result)
+				if(FIRE_CANPASS_SPREAD)
+					tiles_to_set_aflame.Add(T)
+				if(FIRE_CANPASS_SET_AFLAME) // will stop spread after handling sides
+					tiles_to_set_aflame.Add(T)
+				if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
+					break
 
 		prev_T = T
 

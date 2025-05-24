@@ -79183,6 +79183,12 @@
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/engineering/ground)
+"dRv" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash_underground"
+	},
+/turf/closed/wall/rock,
+/area/tyrargo/oob)
 "dRw" = (
 /obj/structure/prop/hybrisa/misc/metergreen{
 	light_on = 1;
@@ -80003,6 +80009,10 @@
 	},
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"dTz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/red/west,
+/area/tyrargo/underground/bunker/north)
 "dTA" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/computer{
 	light_color = "#00ff9f";
@@ -80449,6 +80459,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/green,
 /area/tyrargo/indoors/sewer_treatment/lower)
+"dUM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash_surface"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central/landing_zone)
 "dUN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -109143,7 +109159,7 @@ bsw
 bsw
 bsw
 bsw
-bsw
+dRv
 bsw
 bsw
 bsw
@@ -109682,11 +109698,11 @@ ccv
 ccq
 ccm
 caA
+aMs
 kAA
 kAA
 kAA
-kAA
-kAA
+aMr
 caA
 caA
 bsw
@@ -109865,9 +109881,9 @@ aMn
 aMn
 aMl
 cbZ
-cbw
-cbw
-cbw
+dTz
+dTz
+dTz
 cbm
 cbe
 caA
@@ -150096,7 +150112,7 @@ arg
 arg
 arg
 bkF
-arg
+dUM
 bqj
 bIN
 bIz

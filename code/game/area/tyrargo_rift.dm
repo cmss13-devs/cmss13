@@ -577,6 +577,16 @@
 	requires_power = FALSE
 	unoviable_timer = FALSE
 
+// Tychon
+
+/area/tyrargo/indoors/tychon
+	name = "Dropship Tychon"
+	minimap_color = MINIMAP_SQUAD_ECHO
+	icon_state = "Holodeck"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	requires_power = FALSE
+	unoviable_timer = FALSE
+
 // ERT Spawn Area
 
 /area/tyrargo/outdoors/army_staging

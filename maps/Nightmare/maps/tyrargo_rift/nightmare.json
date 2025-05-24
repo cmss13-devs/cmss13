@@ -1,1 +1,16 @@
-[]
+[
+    {
+		"type": "map_insert",
+		"landmark": "crash_surface",
+		"chance": 1.0,
+		"path": "standalone/dropship_bunker_crash.dmm",
+		"when": { "lvevent": "dropshipcrash" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "crash_underground",
+		"chance": 1.0,
+		"path": "standalone/dropship_bunker_crash_underground.dmm",
+		"when": { "lvevent": "dropshipcrash" }
+	}
+]

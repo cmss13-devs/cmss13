@@ -999,7 +999,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SYNTH_K9 = 71,
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
-				JOB_PASSENGER = 141,
+				JOB_CORPORATE_BODYGUARD = 141,
+				JOB_PASSENGER = 142,
 				// Non Almayer jobs lower then registered
 				JOB_SYNTH_SURVIVOR = 150,
 				JOB_SURVIVOR = 151,
@@ -1050,7 +1051,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PMC_INVESTIGATOR = 224,
 				JOB_PMC_ENGINEER = 225,
 				JOB_PMC_STANDARD = 226,
-				JOB_PMC_DETAINER = 227,
+				JOB_PMC_SECURITY = 227,
 				JOB_PMC_CROWD_CONTROL = 228,
 				JOB_PMC_DOCTOR = 229,
 				JOB_WY_GOON_LEAD = 230,
@@ -1118,7 +1119,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 60-69: Investigation Team
 				JOB_PMC_LEAD_INVEST = 60,
 				JOB_PMC_INVESTIGATOR = 61,
-				JOB_PMC_DETAINER = 62,
+				JOB_PMC_SECURITY = 62,
 				JOB_PMC_CROWD_CONTROL = 63,
 
 				// 70-79 PMCs Combat Team

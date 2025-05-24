@@ -62,9 +62,6 @@
 	for(var/spread_amount in 1 to fire_spread_amount)
 		var/list/next_tiles_to_spread = list()
 
-		if(tiles_to_spread.len == 0)
-			break
-
 		for(var/turf/prev_T in tiles_to_spread)
 			for(var/dirn in GLOB.cardinals)
 				var/turf/T = get_step(prev_T, dirn)
@@ -83,6 +80,9 @@
 						checked_tiles[T] = TRUE
 					if(FIRE_CANPASS_STOP)
 						checked_tiles[T] = TRUE
+
+		if(next_tiles_to_spread.len == 0)
+			break
 
 		tiles_to_spread = next_tiles_to_spread
 
@@ -150,7 +150,8 @@
 	if(fire_spread_amount > turfs.len)
 		fire_spread_amount = turfs.len
 
-	for(var/distance in 1 to fire_spread_amount)
+	var/distance = 1
+	for(distance in 1 to fire_spread_amount)
 		var/obj/flamer_fire/temp = new()
 		var/turf/T = turfs[distance]
 		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
@@ -168,7 +169,7 @@
 		sleep(1) // sleep to properly check next tile spread
 
 	if(F.to_call)
-		addtimer(F.to_call, fire_spread_amount)
+		addtimer(F.to_call, distance)
 
 /datum/flameshape/triangle
 	name = "Triangle"
@@ -179,8 +180,6 @@
 
 	var/unleash_dir = get_cardinal_dir(F, F.target_clicked)
 	var/list/turf/turfs = get_line(F, F.target_clicked, FALSE)
-	var/distance = 1
-	var/hit_dense_atom_mid = FALSE
 	var/turf/prev_T = get_turf(F.loc)
 
 	if(fire_spread_amount > turfs.len)

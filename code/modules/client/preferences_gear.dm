@@ -426,6 +426,7 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/headwear/uscm/headset
 	display_name = "USCM headset"
 	path = /obj/item/clothing/head/headset
+	fluff_cost = 1
 
 /datum/gear/helmet_garb
 	category = "Helmet accessories"

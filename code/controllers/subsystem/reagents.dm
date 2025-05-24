@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(reagents)
 			GLOB.chemical_data.research_property_data += chem
 		if(prop.rarity > PROPERTY_DISABLED)
 			//Filters for the generator picking properties
-			if(prop.rarity == PROPERTY_RARE || prop.rarity == PROPERTY_LEGENDARY)
+			if(prop.rarity == PROPERTY_RARE) //legendary properties are no more
 				GLOB.chemical_properties_list["rare"][prop.name] = prop
 			else if(isNegativeProperty(prop))
 				GLOB.chemical_properties_list["negative"][prop.name] = prop
@@ -44,6 +44,24 @@ SUBSYSTEM_DEF(reagents)
 				GLOB.chemical_properties_list["neutral"][prop.name] = prop
 			else if(isPositiveProperty(prop))
 				GLOB.chemical_properties_list["positive"][prop.name] = prop
+	//preparing combining properties
+	var/list/special_chemicals = subtypesof(/datum/chem_property/special)//preparing random generation for legendary properties
+	for(var/property in special_chemicals)
+		var/list/recipe = list()
+		var/datum/chem_property/prop = property
+		if((prop.rarity == PROPERTY_LEGENDARY && prop.category != PROPERTY_TYPE_ANOMALOUS) || prop.name == PROPERTY_CIPHERING)
+			for(var/recipe_attempts in 1 to 5) //five attempts at generating valid recipe.
+				for(var/properties in 1 to LEGENDARY_COMBINE_PROPERTIES)
+					recipe += pick(GLOB.chemical_properties_list[pick("neutral", "positive", "negative")])
+				if(length(recipe) == LEGENDARY_COMBINE_PROPERTIES)
+					if(prop.name == PROPERTY_CIPHERING)
+						recipe[3] = PROPERTY_ENCRYPTED
+					break
+					recipe = list()//reset the list if its invalid
+			if(length(recipe) >= 3)
+				GLOB.combining_properties[prop.name] = recipe
+
+
 
 /datum/controller/subsystem/reagents/proc/prepare_reagents()
 	//I dislike having these here but map-objects are initialised before world/New() is called. >_>

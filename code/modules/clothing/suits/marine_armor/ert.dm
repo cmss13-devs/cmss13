@@ -248,8 +248,6 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	storage_slots = 4
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/jacket/ivan
 	name = "\improper UH4 Camo Jacket"
@@ -324,7 +322,6 @@
 	)
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/militia/Initialize()
 	. = ..()
@@ -412,8 +409,6 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/CMB/Initialize()
 	. = ..()

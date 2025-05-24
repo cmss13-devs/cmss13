@@ -112,7 +112,7 @@
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/seraph,
 		/obj/item/toy/spinningtoy,
-		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/clothing/shoes/slippers,
 		/obj/item/clothing/shoes/slippers_worn,
 		/obj/item/clothing/head/collectable/tophat/super,

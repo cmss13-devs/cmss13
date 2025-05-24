@@ -6409,6 +6409,7 @@
 /area/varadero/exterior/pontoon_beach)
 "faX" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fbw" = (

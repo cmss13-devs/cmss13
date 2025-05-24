@@ -1172,6 +1172,23 @@
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 	new /obj/item/explosive/grenade/high_explosive/airburst(src)
 
+/obj/item/storage/belt/satchelcharge
+	name = "\improper M910 Pattern EOD Harness"
+	desc = "A specialized storage rig designed to carry a high volume of various demolition charges, blasting caps, and fuses for explosive ordinance disposal. A separate, smaller pouch made to fit a detonator is affixed to the upper part of the shoulder strap. Made to hold a detonator, this pouch has been recently fitted with an anti-electromagnetic liner after one too many... incidents."
+	storage_slots = 26
+	can_hold = list(/obj/item/explosive/satchel_charge, /obj/item/satchel_charge_detonator)
+	var/starting_charges = 20
+	icon_state = "satchelbelt"
+	item_state = "satchelbelt"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+	)
+
+/obj/item/storage/belt/satchelcharge/fill_preset_inventory()
+	new /obj/item/satchel_charge_detonator(src)
+	for(var/i = 1 to starting_charges )
+		new /obj/item/explosive/satchel_charge(src)
+
 /obj/item/storage/belt/grenade/large/dutch
 	name = "\improper Dutch's Grenadier Rigging"
 	desc = "A high capacity rig filled to the brim with all the explosives you could ask for, what else is there to want?"

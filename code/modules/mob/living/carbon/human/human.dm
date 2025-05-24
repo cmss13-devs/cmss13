@@ -1016,6 +1016,9 @@
 		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
+		else if(istype(W, /obj/item/sharp))
+			var/obj/item/sharp/embedded = W
+			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon
 		else if(is_sharp(W))
 			if(organ.status & LIMB_SPLINTED) //Splints prevent movement.
@@ -1266,7 +1269,8 @@
 		TRACKER_CSL = /datum/squad/marine/charlie,
 		TRACKER_DSL = /datum/squad/marine/delta,
 		TRACKER_ESL = /datum/squad/marine/echo,
-		TRACKER_FSL = /datum/squad/marine/cryo
+		TRACKER_FSL = /datum/squad/marine/cryo,
+		TRACKER_ISL = /datum/squad/marine/intel
 	)
 	switch(tracker_setting)
 		if(TRACKER_SL)
@@ -1671,7 +1675,7 @@
 		drop_inv_item_on_ground(restraint)
 
 /mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority)
-	if(species)
+	if(species && !slot_equipment_priority)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
 

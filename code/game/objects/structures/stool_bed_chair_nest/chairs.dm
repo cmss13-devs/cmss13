@@ -582,7 +582,7 @@
 		if(!(istype(T)) || !proximity || T.density)
 			return
 		var/area/area = get_area(target)
-		if(!area.allow_construction)
+		if(!area.allow_construction || !area.allow_barricade_construction)
 			to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
 			return
 		if(!T.allow_construction)

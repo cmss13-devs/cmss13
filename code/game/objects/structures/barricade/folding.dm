@@ -173,7 +173,7 @@
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
 				var/area/area = get_area(src)
-				if(!area.allow_construction)
+				if(!area.allow_construction || !area.allow_barricade_construction)
 					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
 				var/turf/open/T = loc

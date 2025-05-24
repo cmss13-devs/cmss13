@@ -69,7 +69,6 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	shell_speed = AMMO_SPEED_TIER_3
 	handful_state = "beanbag_slug"
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SMALL_RUBBER // while not rubber, it's still a soft projectile and sometimes shit can get stuck on the barrel, probably
 
 /datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer)
@@ -118,8 +117,6 @@
 	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1
 	handful_state = "incendiary_slug"
-	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/shotgun/incendiary/set_bullet_traits()
 	. = ..()
@@ -154,8 +151,6 @@
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	handful_state = "flechette_shell"
 	multiple_handful_name = TRUE
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW //dart shaped projectiles and friction to a barrel doesnt bode well
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_FAIR
 
 /datum/ammo/bullet/shotgun/flechette/setup_faction_clash_values()
 	. = ..()
@@ -199,14 +194,11 @@
 	pen_armor_punch = 0
 	handful_state = "buckshot_shell"
 	multiple_handful_name = TRUE
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_FAIR
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary
 	name = "incendiary buckshot shell"
 	handful_state = "incen_buckshot"
 	handful_type = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SEVERE
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_SEVERE
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary/set_bullet_traits()
 	. = ..()
@@ -264,7 +256,6 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
 	pen_armor_punch = 0
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M,P)
@@ -284,8 +275,6 @@
 	damage = 60
 	accurate_range = 3
 	max_range = 4
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SEVERE
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_CRITICAL
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/set_bullet_traits()
@@ -311,7 +300,6 @@
 	damage = 90 //ouch.
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 2
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/projectile/P)
 	knockback(M, P, 7)
@@ -345,8 +333,6 @@
 	stamina_damage = 100
 	accuracy = HIT_ACCURACY_TIER_2
 	shell_speed = AMMO_SPEED_TIER_2
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SMALL_RUBBER // while not rubber, it's still a soft projectile and sometimes shit can get stuck on the barrel, probably
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_LOW // we also reflect this here, kinda
 
 /datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/projectile/P)
 	if(!M || M == P.firer)
@@ -370,8 +356,6 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW //dart shaped projectiles and friction to a barrel doesnt bode well
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/shotgun/heavy/flechette/setup_faction_clash_values()
 	. = ..()
@@ -410,7 +394,6 @@
 	max_range = 5
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	penetration = ARMOR_PENETRATION_TIER_1
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL // if these shells can easily break down a wall, then it can just as easily break its own barrel
 
 /datum/ammo/bullet/shotgun/light/breaching/spread
 	name = "additional light breaching fragments"
@@ -436,7 +419,6 @@
 	stamina_damage = 35
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	penetration = ARMOR_PENETRATION_TIER_1
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LONG_RUBBER // this is rubber and multiple of these going out the barrel is bound to leave a lot of residue
 
 /datum/ammo/bullet/shotgun/light/rubber/spread
 	name = "additional rubber buckshot"
@@ -457,7 +439,6 @@
 	penetration = ARMOR_PENETRATION_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
 	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL
 	var/hit_messages = list()
 
 /datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/projectile/P)

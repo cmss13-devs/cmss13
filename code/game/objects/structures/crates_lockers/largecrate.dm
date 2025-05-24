@@ -122,7 +122,6 @@
 						/obj/item/tool/weldingtool,
 						/obj/item/tool/wirecutters,
 						/obj/item/device/analyzer,
-						/obj/item/stack/repairable/gunlube/single,
 						/obj/item/clothing/under/marine,
 						/obj/item/clothing/shoes/marine)
 

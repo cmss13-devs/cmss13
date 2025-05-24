@@ -9888,7 +9888,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = 3;
 	pixel_y = 10
 	},
@@ -13989,7 +13989,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -8
 	},
 /turf/open/floor/almayer,
@@ -22184,7 +22184,7 @@
 	pixel_y = 13;
 	density = 0
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_y = 30;
 	pixel_x = 9
 	},
@@ -43587,7 +43587,7 @@
 "lzt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/screwdriver,
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -7;
 	pixel_y = 12
 	},
@@ -64563,7 +64563,7 @@
 /obj/effect/spawner/prop_gun/m41aMK1{
 	pixel_y = 7
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -10;
 	pixel_y = 1
 	},
@@ -72352,7 +72352,7 @@
 	pixel_x = -5;
 	pixel_y = 20
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = 3;
 	pixel_y = 16
@@ -73580,17 +73580,17 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "xZk" = (
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = -10;
 	pixel_y = 10
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = 4;
 	pixel_y = 9

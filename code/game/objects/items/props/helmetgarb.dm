@@ -14,6 +14,11 @@
 	if(garbage)
 		flags_obj |= OBJ_IS_HELMET_GARB
 
+/obj/item/prop/helmetgarb/gunoil
+	name = "gun oil"
+	desc = "It is a bottle of oil, for your gun. Don't fall for the rumors, the M41A is NOT a self-cleaning firearm."
+	icon_state = "gunoil"
+
 /obj/item/prop/helmetgarb/netting
 	name = "combat netting"
 	desc = "Probably combat netting for a helmet. Probably just an extra hairnet that got ordered for the phantom Almayer cooking staff. Probably useless."

@@ -259,6 +259,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/pouch/cassette = NO_GARB_OVERRIDE,
 
 	// PREFERENCES GEAR
+	/obj/item/prop/helmetgarb/gunoil = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting/desert = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting/jungle = NO_GARB_OVERRIDE,
@@ -356,7 +357,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/prop/helmetgarb/riot_shield = NO_GARB_OVERRIDE,
 	/obj/item/attachable/flashlight = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/chaplain_patch = NO_GARB_OVERRIDE,
-	/obj/item/stack/repairable/gunlube = NO_GARB_OVERRIDE,
 
 	// MEDICAL
 	/obj/item/stack/medical/bruise_pack = NO_GARB_OVERRIDE,

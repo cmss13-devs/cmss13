@@ -70,7 +70,7 @@
 /obj/item/weapon/gun/launcher/rocket/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(skill_locked && !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
+		if(skill_locked && skill_fail(user))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return 0
 		if(user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
@@ -79,6 +79,9 @@
 			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)
+
+/obj/item/weapon/gun/launcher/rocket/proc/skill_fail(mob/living/user)
+	return !skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET
 
 /obj/item/weapon/gun/launcher/rocket/load_into_chamber(mob/user)
 // if(active_attachable) active_attachable = null
@@ -391,3 +394,68 @@
 			C.apply_effect(4, STUN) //For good measure
 			C.apply_effect(6, STUTTER)
 			C.emote("pain")
+
+/obj/item/weapon/gun/launcher/rocket/brute
+	name = "\improper M6H-BRUTE launcher system"
+	desc = " Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
+	)
+	icon_state = "m6h"
+	item_state = "m6h"
+
+	current_mag = /obj/item/ammo_magazine/rocket/brute
+	skill_locked = TRUE
+	var/f_aiming_time = 4 SECONDS
+	var/aiming = FALSE
+
+/obj/item/weapon/gun/launcher/rocket/brute/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
+/obj/item/weapon/gun/launcher/rocket/brute/skill_fail(mob/living/user)
+	return !skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)
+
+/obj/item/weapon/gun/launcher/rocket/brute/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
+	if(aiming)
+		return
+
+	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
+		user.visible_message(SPAN_WARNING("Invalid target!"))
+		return
+
+	var/list/turf/path = get_line(user, target, include_start_atom = FALSE)
+	for(var/turf/T in path)
+		if(T.opacity && T != target)
+			user.visible_message(SPAN_WARNING("Target obscured!"))
+			return
+	aiming = TRUE
+	var/beam = "laser_beam_guided"
+	var/lockon = "sniper_lockon_guided"
+	var/image/lockon_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = lockon)
+	target.overlays += lockon_icon
+
+	var/image/lockon_direction_icon
+	lockon_direction_icon = image(icon = 'icons/effects/Targeted.dmi', icon_state = "[lockon]_direction", dir = get_cardinal_dir(target, user))
+	target.overlays += lockon_direction_icon
+	var/datum/beam/laser_beam
+	laser_beam = target.beam(user, beam, 'icons/effects/beam.dmi', (f_aiming_time + 1 SECONDS), beam_type = /obj/effect/ebeam/laser/intense)
+	laser_beam.visuals.alpha = 0
+	animate(laser_beam.visuals, alpha = initial(laser_beam.visuals.alpha), f_aiming_time, easing = SINE_EASING|EASE_OUT)
+
+
+	if(do_after(user, f_aiming_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(!QDELETED(target))
+			.=..()
+	target.overlays -= lockon_icon
+	target.overlays -= lockon_direction_icon
+	qdel(laser_beam)
+	aiming = FALSE
+
+/obj/item/weapon/gun/launcher/rocket/brute/make_rocket(mob/user, drop_override = 0, empty = 1)
+	if(empty)
+		return
+	.=..()

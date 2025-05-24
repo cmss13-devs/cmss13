@@ -146,3 +146,38 @@
 2025-05-19:
   stalkerino:
   - balance: removed marsoc helmet from shiva
+2025-05-21:
+  FebrezeNinja:
+  - bugfix: Add "Research Roles" label to timelocks
+  LC4492:
+  - code_imp: Coded the new in_hands for the knives and IDs in.
+  - code_imp: All satchels have received a new mechanic that allows, upon right-click
+      interaction, changing on which shoulder the strap will be on in the on_mob (Works
+      only with satchels that have straps). Code by Blundir.
+  - imageadd: Backpacks and Belts needed to be updated to accomodate better new in_hands,
+      given that they were outdated and persistently overlapping with the character's
+      hands (and overlapping with objects being held by those hands, making stuff
+      ugly).
+  - imageadd: Swords have been updated to fix some mistakes I have done in the past,
+      and the katana looks less like a knife now!
+  - imageadd: All knives added by Zenith have now received proper in_hands, and fixes
+      have been done to already present ones. W-Y bayonet added by Blundir has also
+      received an exclusive in_hand.
+  - imageadd: ID cards and badges have received proper in_hand and on_mob versions,
+      matching a little more with their object counterparts.
+  - imageadd: Most scabbards have also received visual improvements to match with
+      the in_hand versions of the long blades, and the ceremonial sword's scabbard
+      have received a major fix and looks much better now.
+  lanse12:
+  - spellcheck: fixed typo in W-Y engi helm description
+2025-05-22:
+  MeH0y, TyranicRanger4:
+  - rscadd: Adds yautja cleaner vials to yautja hunting equipment
+2025-05-24:
+  TrollerNoob:
+  - imageadd: Updated the USCM and PMC's Sniper Specialist's HUD and Map icon.
+  realforest2001:
+  - rscadd: Added tracking to command headsets.
+  - rscadd: Added a tracker for Intel Squad Lead.
+  - rscadd: Added XO and CO subtypes for the senior command headset. This has no identifying
+      features aside from different tracking options.

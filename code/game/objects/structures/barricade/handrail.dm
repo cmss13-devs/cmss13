@@ -55,6 +55,11 @@
 /obj/structure/barricade/handrail/Collided(atom/movable/movable)
 	if(!ismob(movable))
 		return ..()
+	var/mob/living/climber = movable
+
+	var/turf/turf = get_turf(get_step(get_turf(src), dir))
+	if(istype(turf, /turf/open_space))
+		return ..()
 
 	if(istype(movable, /mob/living/carbon/xenomorph/ravager) || istype(movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/xenomorph = movable
@@ -69,7 +74,7 @@
 		if(movable.last_bumped == world.time)
 			return ..()
 
-		var/mob/living/climber = movable
+
 		if(climber.a_intent != INTENT_HARM)
 			return ..()
 
@@ -226,6 +231,13 @@
 
 /obj/structure/barricade/handrail/strata
 	icon_state = "handrail_strata"
+
+/obj/structure/barricade/handrail/strata/navalis
+	stack_amount = 0
+	destroyed_stack_amount = 0
+	can_be_reinforced = FALSE
+	projectile_coverage = PROJECTILE_COVERAGE_MINIMAL
+	color = "#f50000"
 
 /obj/structure/barricade/handrail/medical
 	icon_state = "handrail_med"

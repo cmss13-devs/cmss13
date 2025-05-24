@@ -1140,6 +1140,40 @@
 	unacidable = TRUE
 	health = 1000000
 
+/obj/structure/window/framed/hybrisa/colony/hull/blastdoor
+	name = "hull window"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one has an automatic shutter system to prevent any flooding breach."
+	health = 200
+	//icon_state = "rwindow0_debug"
+	not_damageable = FALSE
+	unslashable = FALSE
+	unacidable = FALSE
+	var/triggered = FALSE //indicates if the shutters have already been triggered
+
+/obj/structure/window/framed/hybrisa/colony/hull/blastdoor/Destroy(force)
+	if(force)
+		return ..()
+	spawn_shutters()
+	. = ..()
+
+/obj/structure/window/framed/hybrisa/colony/hull/blastdoor/proc/spawn_shutters(from_dir = 0)
+	if(triggered)
+		return
+
+	triggered = TRUE
+	for(var/direction in GLOB.cardinals)
+		if(direction == from_dir)
+			continue //doesn't check backwards
+		for(var/obj/structure/window/framed/hybrisa/colony/hull/blastdoor/W in get_step(src,direction) )
+			W.spawn_shutters(turn(direction,180))
+	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/pressure_door = new(get_turf(src))
+	switch(junction)
+		if(4,5,8,9,12)
+			pressure_door.setDir(SOUTH)
+		else
+			pressure_door.setDir(EAST)
+	pressure_door.close()
+
 // Research
 /obj/structure/window/framed/hybrisa/research
 	name = "window"

@@ -313,7 +313,7 @@
 				return
 
 			if(isyautja(H))
-				if(H.check_shields(0, "the pounce", 1))
+				if(H.check_shields(0, "the pounce"))//FOREST THIS NEEDS UPDATING
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks our pouncing form with the combistick!"), null, 5)
 					apply_effect(3, WEAKEN)
 					throwing = FALSE

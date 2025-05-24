@@ -93,70 +93,85 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack", combistick=0)
+/mob/living/carbon/human/proc/check_shields(damage = 0, attack_text = "the attack")
 	var/block_effect = /obj/effect/block
 	var/owner_turf = get_turf(src)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand,/obj/item/weapon/yautja/chained/combistick) && prob(66))
-			var/obj/item/weapon/yautja/chained/combistick/C = l_hand
-			if(C.on)
-				return TRUE
+		var/obj/item/weapon/possible_shield = l_hand
 
-		if(l_hand.IsShield() && istype(l_hand,/obj/item/weapon/shield)) // Activable shields
-			var/obj/item/weapon/shield/S = l_hand
-			var/shield_blocked_l = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				S.lower_shield(src)
-				shield_blocked_l = TRUE
-			else if(prob(S.passive_block))
-				shield_blocked_l = TRUE
+		if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
+			var/obj/item/weapon/shield/solid_shield = possible_shield
 
-			if(shield_blocked_l)
+			if(prob(solid_shield.shield_chance))
 				new block_effect(owner_turf)
-				playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
+				playsound(src, solid_shield.shield_sound, 70, vary = TRUE)
+				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [solid_shield.name]!</B>"), null, null, 5)
+				if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+					solid_shield.lower_shield(src)
 				return TRUE
+
+		if(possible_shield.shield_type && possible_shield.shield_chance)
+			var/block_chance = possible_shield.shield_chance
+
+			///If the shield needs two hands, but it's only held in one, then it's not very effective.
+			if(!(possible_shield.flags_item & WIELDED) && ((possible_shield.shield_type == SHIELD_ABSOLUTE_TWOHANDS) || (possible_shield.shield_type == SHIELD_DIRECTIONAL_TWOHANDS)))
+				block_chance = block_chance / 3
+
+			switch(possible_shield.shield_type)
+				if(SHIELD_ABSOLUTE, SHIELD_ABSOLUTE_TWOHANDS)
+					if(prob(block_chance))
+						new block_effect(owner_turf)
+						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
+						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						return TRUE
+				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
+					if(prob(block_chance))
+						new block_effect(owner_turf)
+						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
+						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						return TRUE
+
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
-		var/obj/item/weapon/I = l_hand
-		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // 'other' shields, like predweapons. Make sure that item/weapon/shield does not apply here, no double-rolls.
-			new block_effect(owner_turf)
-			playsound(src, 'sound/items/parry.ogg', 70, vary = TRUE)
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [l_hand.name]!</B>"), null, null, 5)
-			return TRUE
-
 	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/yautja/chained/combistick) && prob(66))
-			var/obj/item/weapon/yautja/chained/combistick/C = r_hand
-			if(C.on)
-				return TRUE
+		var/obj/item/weapon/possible_shield = r_hand
 
-		if(r_hand.IsShield() && istype(r_hand,/obj/item/weapon/shield)) // Activable shields
-			var/obj/item/weapon/shield/S = r_hand
-			var/shield_blocked_r = FALSE
-			if(S.shield_readied && prob(S.readied_block)) // User activated his shield before the attack. Lower if it blocks.
-				shield_blocked_r = TRUE
-				S.lower_shield(src)
-			else if(prob(S.passive_block))
-				shield_blocked_r = TRUE
+		if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
+			var/obj/item/weapon/shield/solid_shield = possible_shield
 
-			if(shield_blocked_r)
+			if(prob(solid_shield.shield_chance))
 				new block_effect(owner_turf)
-				playsound(src, 'sound/items/block_shield.ogg', 70, vary = TRUE)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
+				playsound(src, solid_shield.shield_sound, 70, vary = TRUE)
+				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [solid_shield.name]!</B>"), null, null, 5)
+				if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+					solid_shield.lower_shield(src)
 				return TRUE
 
-		var/obj/item/weapon/I = r_hand
-		if(I.IsShield() && !istype(I, /obj/item/weapon/shield) && (prob(50 - floor(damage / 3)))) // other shields. Don't doublecheck activable here.
-			new block_effect(owner_turf)
-			playsound(src, 'sound/items/parry.ogg', 70, vary = TRUE)
-			visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [r_hand.name]!</B>"), null, null, 5)
-			return TRUE
+		if(possible_shield.shield_type && possible_shield.shield_chance)
+			var/block_chance = possible_shield.shield_chance
 
-	if(back && istype(back, /obj/item/weapon/shield/riot) && prob(20))
-		var/obj/item/weapon/shield/riot/shield = back
-		if(shield.blocks_on_back)
-			visible_message(SPAN_DANGER("<B>The [back] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+			///If the shield needs two hands, but it's only held in one, then it's not very effective.
+			if(!(possible_shield.flags_item & WIELDED) && ((possible_shield.shield_type == SHIELD_ABSOLUTE_TWOHANDS) || (possible_shield.shield_type == SHIELD_DIRECTIONAL_TWOHANDS)))
+				block_chance = block_chance / 3
+
+			switch(possible_shield.shield_type)
+				if(SHIELD_ABSOLUTE, SHIELD_ABSOLUTE_TWOHANDS)
+					if(prob(block_chance))
+						new block_effect(owner_turf)
+						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
+						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						return TRUE
+				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
+					if(prob(block_chance))
+						new block_effect(owner_turf)
+						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
+						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						return TRUE
+
+	if(back && istype(back, /obj/item/weapon/shield))
+		var/obj/item/weapon/shield/solid_shield = back
+		if(solid_shield.blocks_on_back && prob(20))
+			visible_message(SPAN_DANGER("<B>The [solid_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
 			return TRUE
 
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)

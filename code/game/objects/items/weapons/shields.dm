@@ -1,10 +1,11 @@
 /obj/item/weapon/shield
 	name = "shield"
 	var/base_icon_state = "shield"
-	var/passive_block = 15 // Percentage chance used in prob() to block incoming attack
+	var/passive_block = 15
 	var/readied_block = 30
 	var/readied_slowdown = SLOWDOWN_ARMOR_VERY_LIGHT // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
 	var/shield_readied = FALSE
+	var/blocks_on_back = FALSE
 
 // Toggling procs
 /obj/item/weapon/shield/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
@@ -17,6 +18,7 @@
 	H.shield_slowdown = max(readied_slowdown, H.shield_slowdown)
 	if(H.shield_slowdown != current_shield_slowdown)
 		H.recalculate_move_delay = TRUE
+	shield_chance = readied_block
 
 /obj/item/weapon/shield/proc/lower_shield(mob/user as mob)
 	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src]."))
@@ -36,6 +38,7 @@
 	H.shield_slowdown = set_shield_slowdown
 	if(H.shield_slowdown != current_shield_slowdown)
 		H.recalculate_move_delay = TRUE
+	shield_chance = passive_block
 
 /obj/item/weapon/shield/proc/toggle_shield(mob/user as mob)
 	if(shield_readied)
@@ -78,22 +81,22 @@
 	)
 
 	attack_verb = list("shoved", "bashed")
-	var/cooldown = 0 //shield bash cooldown. based on world.time
-	var/blocks_on_back = TRUE
+	blocks_on_back = TRUE
+	var/bash_cooldown = 0 //shield bash cooldown. based on world.time
 
-/obj/item/weapon/shield/riot/IsShield()
-	return 1
+	shield_type = SHIELD_DIRECTIONAL
+	shield_chance = 40
 
 /obj/item/weapon/shield/riot/attack_self(mob/user)
 	..()
 	toggle_shield(user)
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
-	if(cooldown < world.time - 25)
+	if(bash_cooldown < world.time - 25)
 		if(istype(W, /obj/item/weapon/baton) || istype(W, /obj/item/weapon/sword) || istype(W, /obj/item/weapon/telebaton) || istype(W, /obj/item/weapon/baseballbat) || istype(W, /obj/item/weapon/classic_baton) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/chainofcommand))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
-			cooldown = world.time
+			bash_cooldown = world.time
 	else
 		..()
 
@@ -116,7 +119,9 @@
 	w_class = SIZE_SMALL
 
 	attack_verb = list("shoved", "bashed")
-	var/active = 0
+
+	shield_type = SHIELD_DIRECTIONAL
+	var/active = FALSE // Changes the shield chance from 0 to 50
 
 /obj/item/weapon/shield/riot/metal
 	name = "metal riot shield"

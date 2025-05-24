@@ -700,8 +700,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	set waitfor = FALSE
 
 	var/image/holder = hud_list[HUNTER_CLAN]
+	var/the_icon_state = "predhud"
+	if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		the_icon_state = "councilhud"
 
-	holder.icon_state = "predhud"
+	holder.icon_state = the_icon_state
 
 	if(client && client.clan_info && client.clan_info.clan_id)
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)

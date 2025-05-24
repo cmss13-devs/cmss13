@@ -136,6 +136,10 @@
 		/obj/item/tool/pen,
 	)
 
+/obj/item/clothing/suit/chef/classic/stain
+	icon_state = "apronchef_stain"
+	item_state = "apronchef_stain"
+
 //Detective
 /obj/item/clothing/suit/storage/CMB/trenchcoat
 	name = "\improper tan trench-coat"

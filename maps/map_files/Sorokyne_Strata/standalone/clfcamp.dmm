@@ -443,7 +443,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "mz" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
 	dir = 8;
 	faction_group = list("CLF")
 	},
@@ -1004,9 +1004,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Ho" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "HF" = (

@@ -427,6 +427,9 @@
 
 	build_overlay = overlay
 
+	if((xeno.caste_type in xeno.caste_construct_whitelist) && !istype(xeno.strain, /datum/xeno_strain/designer))
+		thick_build = TRUE
+
 	addtimer(CALLBACK(src, PROC_REF(complete_construction), Turf, mark_meaning, xeno), 4 SECONDS)
 
 /obj/effect/alien/resin/design/construct_node/get_examine_text(mob/user)

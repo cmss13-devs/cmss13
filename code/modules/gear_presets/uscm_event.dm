@@ -91,7 +91,10 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/general(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/general(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/general(new_human), WEAR_JACKET)
+	var/obj/item/clothing/suit/storage/jacket/marine/dress/general/jacket = new()
+	var/obj/item/clothing/accessory/patch/msf_patch/patch = new()
+	jacket.attach_accessory(new_human,patch)
+	new_human.equip_to_slot_or_del(jacket, WEAR_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/large/mateba/impact(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)

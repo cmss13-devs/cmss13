@@ -4,7 +4,7 @@
 	name = "\improper Yautja Hunting Grounds"
 	icon_state = "green"
 	weather_enabled = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
+	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS|AREA_YAUTJA_HANGABLE
 	resin_construction_allowed = FALSE
 	can_build_special = FALSE
 	is_resin_allowed = TRUE
@@ -14,7 +14,6 @@
 	icon_state = "central"
 	ambience_exterior = AMBIENCE_JUNGLEMOON
 	soundscape_playlist = SCAPE_PL_JUNGLE_MOON
-	hangable = TRUE
 	soundscape_interval = 60
 
 /area/yautja_grounds/jungle/north

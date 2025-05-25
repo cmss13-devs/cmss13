@@ -44,7 +44,6 @@
 	var/allow_construction = TRUE // whether or not you can build things like barricades in this area
 	var/is_landing_zone = FALSE // primarily used to prevent mortars from hitting this location
 	var/resin_construction_allowed = TRUE // Allow construction of resin walls, and other special
-	var/hangable = FALSE // Can a body be hung from this area
 
 	// Weather
 	var/weather_enabled = TRUE // Manual override for weather if set to false

@@ -160,6 +160,9 @@
 		if(!(target in SSsensors.targets))
 			return
 
+		if(target.stat == DEAD || HAS_TRAIT(target, TRAIT_ABILITY_BURROWED) || target.is_ventcrawling)
+			return
+
 		if(islesserdrone(target) || isfacehugger(target))
 			playsound(get_turf(target), 'sound/effects/explosionfar.ogg', 25, 1, 7)
 			target.gib()

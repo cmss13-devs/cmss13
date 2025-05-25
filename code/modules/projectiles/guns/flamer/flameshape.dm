@@ -147,10 +147,7 @@
 	var/turf/prev_T = source_turf
 	var/list/turfs = get_line(source_turf, F.target_clicked)
 
-	if(source_turf.density) // prevents spreading through 1 tile wall
-		source_turf.flamer_fire_act(burn_dam, F.weapon_cause_data)
-		fire_spread_amount = 1
-	else if(fire_spread_amount > turfs.len)
+	if(fire_spread_amount > turfs.len)
 		fire_spread_amount = turfs.len
 
 	var/distance = 1
@@ -187,10 +184,7 @@
 	var/list/turf/turfs = get_line(source_turf, F.target_clicked)
 	var/turf/prev_T = source_turf
 
-	if(source_turf.density) // prevents spreading through 1 tile wall
-		source_turf.flamer_fire_act(burn_dam, F.weapon_cause_data)
-		fire_spread_amount = 1
-	else if(fire_spread_amount > turfs.len)
+	if(fire_spread_amount > turfs.len)
 		fire_spread_amount = turfs.len
 
 	for(var/distance in 1 to fire_spread_amount)

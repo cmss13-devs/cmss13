@@ -244,29 +244,21 @@
 	var/max_range = chem.rangefire
 	if(chem.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
-	var/distance = 0
 
 	var/turf/temp[] = get_line(get_turf(user), get_turf(target))
-	process_flame_tiles(temp, target, user, chem, max_range, flameshape, fire_type, distance, null, FALSE)
+	process_flame_tiles(temp, target, user, chem, max_range, flameshape, fire_type)
 
-/obj/item/weapon/gun/flamer/proc/process_flame_tiles(list/turfs, atom/target, mob/living/user, datum/reagent/chem, max_range, flameshape, fire_type, distance, turf/prev_turf, stop_at_turf)
-	if(!length(turfs))
+/obj/item/weapon/gun/flamer/proc/process_flame_tiles(list/turfs, atom/target, mob/living/user, datum/reagent/chem, max_range, flameshape, fire_type)
+	if(length(turfs) < 2) // prevents unleasing flame underneath user
 		return
 
-	var/turf/current_turf = turfs[1]
-	turfs.Cut(1, 2)
+	var/turf/prev_turf = turfs[1] // from get_line proc will be turf under user
+	var/turf/current_turf = turfs[2] // first turf to unleash flame onto
 
-	if(current_turf == user.loc)
-		prev_turf = current_turf
-		addtimer(CALLBACK(src, PROC_REF(process_flame_tiles), turfs, target, user, chem, max_range, flameshape, fire_type, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
-		return
-
-	if(distance >= max_range)
-		return
-
+	var/stop_at_turf = FALSE
 	if(current_turf.density)
 		stop_at_turf = TRUE
-	else if(prev_turf)
+	else
 		var/atom/movable/temp = new /obj/flamer_fire()
 		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
 		qdel(temp)
@@ -281,9 +273,6 @@
 		playsound(current_turf, src.get_fire_sound(), 50, TRUE)
 		show_percentage(user)
 		return
-
-	distance++
-	prev_turf = current_turf
 
 	playsound(current_turf, src.get_fire_sound(), 50, TRUE)
 

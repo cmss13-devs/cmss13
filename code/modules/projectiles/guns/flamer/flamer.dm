@@ -855,7 +855,7 @@
 	else
 		weather_smothering_strength = 0
 
-/proc/fire_spread_recur(turf/target, datum/cause_data/cause_data, remaining_distance, direction, /datum/reagent/fire_reag, aerial_flame_level)
+/proc/fire_spread_recur(turf/target, datum/cause_data/cause_data, remaining_distance, direction, datum/reagent/fire_reag, aerial_flame_level)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
 		new/obj/flamer_fire(target, cause_data, fire_reag)

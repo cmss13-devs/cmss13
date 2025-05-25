@@ -181,3 +181,7 @@
   - rscadd: Added a tracker for Intel Squad Lead.
   - rscadd: Added XO and CO subtypes for the senior command headset. This has no identifying
       features aside from different tracking options.
+2025-05-25:
+  Waseemq1235:
+  - spellcheck: Fixes a minor spelling mistake when attempting to tweak access requirements
+      on a vending machine

@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "CI now caches/installs Byond, spacemandmm, rust, bootstrap, node, and yarn differently for Github actions"

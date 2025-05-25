@@ -15552,7 +15552,7 @@
 	icon_state = "snowgrassall_3"
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "aNa" = (
 /obj/structure/platform/stone/kutjevo/east,
 /obj/structure/platform/stone/kutjevo,
@@ -25916,7 +25916,7 @@
 	pixel_y = -2
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bgT" = (
 /mob/living/simple_animal/mouse/rat/black,
 /turf/open/auto_turf/strata_grass,
@@ -27974,7 +27974,7 @@
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ble" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/boards/boards_2{
@@ -33705,7 +33705,7 @@
 "bxc" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/snow/brown_base/layer1,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bxd" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -24;
@@ -33887,7 +33887,7 @@
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bxG" = (
 /turf/open/auto_turf/strata_grass/layer1,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bxH" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -34016,7 +34016,7 @@
 	pixel_y = -2
 	},
 /turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "byb" = (
 /obj/structure/flora/tree/tyrargo,
 /obj/structure/flora/tree/tyrargo/tree_2{
@@ -34140,7 +34140,7 @@
 	icon_state = "sunnybush_1"
 	},
 /turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "byr" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/strata_grass,
@@ -34155,7 +34155,7 @@
 	fuel_rate = 5
 	},
 /turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "byu" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -23;
@@ -34335,7 +34335,7 @@
 	layer = 5.88
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "byN" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	layer = 2.9
@@ -34348,7 +34348,7 @@
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "byP" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
@@ -34421,7 +34421,7 @@
 	layer = 5.79
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "byZ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_1"
@@ -34566,13 +34566,13 @@
 	layer = 5.78
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzu" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzv" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -8;
@@ -34580,7 +34580,7 @@
 	layer = 5.89
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzw" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -34626,7 +34626,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzC" = (
 /obj/structure/flora/tree/tyrargo{
 	layer = 5.77
@@ -34642,7 +34642,7 @@
 	layer = 5.75
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzD" = (
 /obj/structure/flora/tree/tyrargo{
 	layer = 5.97
@@ -34662,7 +34662,7 @@
 "bzE" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzF" = (
 /obj/structure/flora/tree/dead/tree_2,
 /obj/structure/flora/tree/dead/tree_3{
@@ -34742,7 +34742,7 @@
 	layer = 5.72
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bzL" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_3";
@@ -34959,7 +34959,7 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "bAe" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
@@ -84478,6 +84478,9 @@
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob)
+"eej" = (
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "eek" = (
 /obj/effect/blocker/water,
 /turf/open/floor/plating,
@@ -84511,6 +84514,9 @@
 /obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
+"eeq" = (
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "eer" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -84580,6 +84586,9 @@
 /obj/effect/blocker/water,
 /turf/open/floor/plating,
 /area/tyrargo/underground/museum_carpark)
+"eeC" = (
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "eeD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/blocker/water,
@@ -85173,6 +85182,13 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/underground/museum_carpark)
+"egl" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1";
+	layer = 2.9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "egm" = (
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_y = -1;
@@ -85276,6 +85292,10 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/underground/museum_carpark)
+"egx" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "egy" = (
 /turf/open/floor/hybrisa/metal/stripe_red,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -85299,6 +85319,20 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/underground/museum_carpark)
+"egB" = (
+/obj/structure/flora/tree/tyrargo,
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.9
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -7;
+	pixel_y = 16;
+	layer = 5.89
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "egC" = (
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_y = -1;
@@ -85310,6 +85344,9 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/underground/museum_carpark)
+"egD" = (
+/turf/open/auto_turf/snow/brown_base/layer1,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "egE" = (
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_y = -1;
@@ -85382,6 +85419,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/underground/museum_carpark)
+"egO" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_3"
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "egP" = (
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/auto_turf/snow/brown_base/layer2,
@@ -85715,6 +85758,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
+"ehs" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"eht" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ehu" = (
 /obj/structure/machinery/power/apc/power/south{
 	start_charge = 30
@@ -86494,6 +86546,24 @@
 /obj/item/prop/alien/hugger,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
+"ejo" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -23;
+	pixel_y = 15;
+	layer = 5.96
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -9;
+	pixel_y = 19;
+	layer = 5.95
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ejp" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
@@ -86560,11 +86630,301 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/museum_storage/upper)
+"ejA" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejB" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejC" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -24;
+	pixel_y = 2;
+	layer = 5.94
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -8;
+	pixel_y = 9;
+	layer = 5.93
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -20;
+	pixel_y = 15;
+	layer = 5.92
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejD" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -23;
+	pixel_y = 15;
+	layer = 5.99
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -9;
+	pixel_y = 19;
+	layer = 5.98
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejE" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	layer = 2.9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejF" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejG" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejH" = (
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejI" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassbb_1"
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejJ" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowbush_2"
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejK" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -8;
+	pixel_y = 19;
+	layer = 5.95
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.96
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejL" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 4;
+	pixel_x = -1;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejM" = (
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejN" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejO" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejP" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejQ" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 9;
+	pixel_y = -11;
+	pixel_x = -14
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejR" = (
+/obj/structure/flora/tree/tyrargo{
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.96
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -7;
+	pixel_y = 16;
+	layer = 5.95
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejS" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejT" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassbb_3";
+	layer = 2.9
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejU" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejV" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejW" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.72
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -8;
+	pixel_y = 19;
+	layer = 5.7
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.71
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ejX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /turf/open/asphalt/cement/cement14,
 /area/tyrargo/outdoors/colony_streets/west)
+"ejY" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -8;
+	pixel_y = 19;
+	layer = 5.98
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.99
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ejZ" = (
+/obj/structure/prop/rock/black_ground{
+	dir = 5;
+	pixel_y = -11;
+	pixel_x = -14
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"eka" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -24;
+	pixel_y = 2
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -8;
+	pixel_y = 9;
+	layer = 5.89
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -20;
+	pixel_y = 15;
+	layer = 5.99
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ekb" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -24;
+	pixel_y = 2
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -15;
+	pixel_y = 15;
+	layer = 5.88
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -6;
+	pixel_y = 6;
+	layer = 5.99
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ekc" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -23;
+	pixel_y = 15;
+	layer = 5.99
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -9;
+	pixel_y = 19;
+	layer = 5.98
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"ekd" = (
+/obj/structure/flora/tree/tyrargo,
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.9
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -7;
+	pixel_y = 16;
+	layer = 5.89
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
+"eke" = (
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -8;
+	pixel_y = 19;
+	layer = 5.95
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -26;
+	pixel_y = 11;
+	layer = 5.96
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "ekm" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -148599,18 +148959,18 @@ bxr
 bxY
 bsw
 bsw
-arJ
-byZ
-bxY
-bxr
-bxr
-bxr
-bxr
-byW
-bxr
-bxr
-bxr
-bxr
+ekd
+ejI
+egD
+eej
+eej
+eej
+eej
+ejG
+eej
+eej
+eej
+eej
 bkv
 bkl
 bka
@@ -148781,18 +149141,18 @@ bxr
 bxY
 bsw
 bsw
-arO
-bAC
-bza
-bxY
-bxr
-bxr
-bzp
-byX
-bxr
+eke
+ekc
+ejJ
+egD
+eej
+eej
+ejN
+ejH
+eej
 byq
-bxr
-bxr
+eej
+eej
 aQY
 bkm
 bkb
@@ -148964,17 +149324,17 @@ bxr
 bsw
 bsw
 bsw
-bzD
-bAo
-bxE
-bxY
-bxr
-bzq
-bxr
-byI
-byr
-bxr
-bxr
+ejR
+eka
+eeC
+egD
+eej
+ejO
+eej
+ejB
+ehs
+eej
+eej
 aJw
 bkn
 bfI
@@ -149147,16 +149507,16 @@ bxr
 bsw
 bsw
 bsw
-bAb
-bzL
-bxY
-bxr
-bxr
-bxr
-bxr
-bxr
-bxr
-bxr
+ejY
+ejT
+egD
+eej
+eej
+eej
+eej
+eej
+eej
+eej
 bkw
 bxa
 bwH
@@ -149329,16 +149689,16 @@ bxr
 bxr
 bsw
 bsw
-bAp
-bxY
-bxr
-bxr
-bzr
-bxr
-bxr
-bys
-bxr
-bxr
+ekb
+egD
+eej
+eej
+ejP
+eej
+eej
+eht
+eej
+eej
 aJw
 bko
 bfJ
@@ -149511,16 +149871,16 @@ bxr
 bxr
 bxY
 bxY
-bxY
-bxY
-bxr
-bxr
-bxr
-byr
-bxr
-bxr
-bxW
-bxr
+egD
+egD
+eej
+eej
+eej
+ehs
+eej
+eej
+egx
+eej
 bky
 uBU
 bfK
@@ -149693,16 +150053,16 @@ bxr
 bxr
 bxr
 bxr
-bxr
-bxr
-bzq
+eej
+eej
+ejO
 bzB
-bzs
-bxr
-bxr
+ejQ
+eej
+eej
 byt
-bxr
-bxr
+eej
+eej
 bvw
 bvw
 bwf
@@ -149875,14 +150235,14 @@ byJ
 bxr
 bxr
 byr
-bxr
-bxr
-bzJ
-bxr
-bzq
-bxr
-bxr
-bxr
+eej
+eej
+ejS
+eej
+ejO
+eej
+eej
+eej
 bgS
 bvw
 bvw
@@ -150057,15 +150417,15 @@ bxr
 bxr
 bxY
 bxY
-bzL
-bxY
-bxY
-bxY
-bxr
-bxr
-byJ
-bxY
-bxE
+ejT
+egD
+egD
+egD
+eej
+eej
+egl
+egD
+eeC
 bsw
 bsB
 bwO
@@ -150239,14 +150599,14 @@ bxr
 ask
 bxE
 bxE
-bxY
-bxE
-bxE
-bxE
-bxY
-bxZ
-bxY
-bxE
+egD
+eeC
+eeC
+eeC
+egD
+egO
+egD
+eeC
 bsw
 bsw
 bxb
@@ -150422,14 +150782,14 @@ bxY
 ask
 bxE
 bsw
-bAa
+ejW
 bzK
 bzC
 bzt
 byY
-byK
-byu
-bxX
+ejC
+ejo
+egB
 bsw
 bsw
 bxb
@@ -151154,9 +151514,9 @@ bzK
 bzC
 bzt
 byY
-byK
-byu
-bxX
+ejC
+ejo
+egB
 bsw
 bxC
 bsw
@@ -151331,14 +151691,14 @@ bys
 bxr
 bxY
 bxE
-bxE
-bxY
-bzL
-bxE
+eeC
+egD
+ejT
+eeC
 bzu
-bxD
-bxD
-bxD
+eeq
+eeq
+eeq
 bsz
 bsw
 bsw
@@ -151513,15 +151873,15 @@ byr
 byr
 bxr
 bCl
-bxr
-bxY
-bxY
-bxY
-bxY
-byZ
-bxE
-bxD
-bxD
+eej
+egD
+egD
+egD
+egD
+ejI
+eeC
+eeq
+eeq
 bsz
 bsw
 bwL
@@ -151695,15 +152055,15 @@ bzr
 bzr
 bxr
 bxr
-bxr
-bxr
-bxr
-bxr
-bxr
-bxY
-bxY
-bxE
-bxD
+eej
+eej
+eej
+eej
+eej
+egD
+egD
+eeC
+eeq
 bsz
 bsw
 bxb
@@ -151877,16 +152237,16 @@ bxr
 bxr
 bxr
 bxY
-bxr
-bxr
-bxr
-bxr
-bxr
-bxr
-bxr
-bxY
-bxD
-bxD
+eej
+eej
+eej
+eej
+eej
+eej
+eej
+egD
+eeq
+eeq
 bsw
 bxb
 bwN
@@ -152059,16 +152419,16 @@ bxr
 bmH
 bzL
 bxE
-bxY
-bxr
-bxr
-bxr
-bxr
-bxr
-bxr
-bxY
-bxE
-bxD
+egD
+eej
+eej
+eej
+eej
+eej
+eej
+egD
+eeC
+eeq
 bsw
 bsD
 bwL
@@ -152241,15 +152601,15 @@ byJ
 bxY
 bxE
 bsw
-bzb
-byZ
-cix
-bxr
-bxr
-bxr
-bxr
-bxr
-bxY
+ejK
+ejI
+ejU
+eej
+eej
+eej
+eej
+eej
+egD
 bsw
 bsw
 bwK
@@ -152423,16 +152783,16 @@ bxr
 bxY
 bxE
 bsw
-bzD
-bAb
-bxY
-bxr
-bxr
-bxr
-bxr
-bxr
-bxZ
-bxE
+ejR
+ejY
+egD
+eej
+eej
+eej
+eej
+eej
+egO
+eeC
 bsw
 bsw
 bwO
@@ -152605,15 +152965,15 @@ bxr
 bxr
 bxE
 bsw
-byu
-bxX
-byZ
-bxY
-bxr
-bxr
-bxr
-bxr
-bxr
+ejo
+egB
+ejI
+egD
+eej
+eej
+eej
+eej
+eej
 bxc
 bsw
 bsw
@@ -152788,13 +153148,13 @@ bxr
 bxY
 bsw
 bsw
-bzD
+ejR
 bzv
-bxE
-bxY
-bxr
-bxr
-bxr
+eeC
+egD
+eej
+eej
+eej
 bya
 bxc
 bxc
@@ -152971,15 +153331,15 @@ bxE
 bAa
 bsw
 bsw
-byu
-bxX
-bxE
-bxY
-bxY
-bxr
-bxr
-bxr
-bxr
+ejo
+egB
+eeC
+egD
+egD
+eej
+eej
+eej
+eej
 bvk
 bfp
 bvk
@@ -153151,17 +153511,17 @@ bxr
 bxr
 bxY
 bxY
-bxX
+egB
 bsw
 bsw
-bzD
+ejR
 bzv
-bza
-bxY
-bxr
-bxr
-byJ
-bxr
+ejJ
+egD
+eej
+eej
+egl
+eej
 bvk
 bwP
 bwA
@@ -153333,15 +153693,15 @@ bAc
 bzJ
 bxr
 bxE
-bxE
+eeC
 bzK
 bsw
 bsw
-byu
-bxX
-bxE
-bxr
-bxr
+ejo
+egB
+eeC
+eej
+eej
 bxG
 bwQ
 bwQ
@@ -153515,14 +153875,14 @@ bxr
 dbd
 cRQ
 cRJ
-bxY
-bxE
-bxX
+egD
+eeC
+egB
 bsw
 bsw
-bzb
-byL
-bxr
+ejK
+ejD
+eej
 bxG
 bxG
 bxt
@@ -153697,14 +154057,14 @@ bxr
 dbl
 cSG
 cRK
-bxr
+eej
 aMZ
-bxE
+eeC
 aUS
 bsw
-bzb
+ejK
 byM
-bxr
+eej
 bxG
 bxG
 bwQ
@@ -153879,14 +154239,14 @@ bxr
 dbn
 cVL
 cRP
-bxr
-bxr
-bxY
-bxE
+eej
+eej
+egD
+eeC
 bzu
-bxE
-bxY
-bxr
+eeC
+egD
+eej
 bvk
 bwQ
 bwQ
@@ -154061,14 +154421,14 @@ bxr
 dbr
 cWm
 bxr
-bxr
-bxr
-bxr
-bxr
-bxY
-bxr
-byN
-bxr
+eej
+eej
+eej
+eej
+egD
+eej
+ejE
+eej
 bvk
 bAf
 bvk
@@ -154244,13 +154604,13 @@ bxr
 byN
 bxr
 bxr
-bxr
-byr
-bxr
-bxr
-bzc
-bxr
-bxr
+eej
+ehs
+eej
+eej
+ejL
+eej
+eej
 bvk
 bvk
 bwA
@@ -154426,13 +154786,13 @@ bwt
 bAP
 byJ
 bxr
-bxr
-bxr
-bxr
-bxr
-bxr
+eej
+eej
+eej
+eej
+eej
 byO
-byw
+ejA
 bwc
 bwc
 bwc
@@ -154608,12 +154968,12 @@ bAQ
 bwt
 bAE
 bxr
-bAc
-bxr
-bxr
+ejZ
+eej
+eej
 bld
-byw
-byP
+ejA
+ejF
 bvG
 bvG
 bvG
@@ -154790,11 +155150,11 @@ bzf
 bwt
 bwt
 bxr
-bxr
-bxr
+eej
+eej
 byO
-byP
-bzd
+ejF
+ejM
 bvG
 bvG
 adP
@@ -154973,9 +155333,9 @@ bAQ
 bwt
 bAq
 bAd
-bxr
+eej
 bzE
-bzd
+ejM
 adP
 uuo
 gsl
@@ -155154,9 +155514,9 @@ bxi
 bzf
 bwt
 bxr
-bxr
+eej
 byO
-byP
+ejF
 adP
 xkr
 adV
@@ -155336,9 +155696,9 @@ bAR
 bxi
 blx
 bwt
-bxr
-bzM
-bzd
+eej
+ejV
+ejM
 bzw
 aZA
 bvY

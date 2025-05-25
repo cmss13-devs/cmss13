@@ -28,8 +28,6 @@
 	ambience_exterior = AMBIENCE_TYRARGO_SEWER_CITY
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ceiling_muffle = FALSE
-//	soundscape_playlist = SCAPE_PL_TYRARGO_SEWER
-//	soundscape_interval = 13
 
 /area/tyrargo/oob
 	name = "Out Of Bounds"
@@ -442,6 +440,9 @@
 /area/tyrargo/outdoors/outskirts/north_east_usasf
 	name = "Outskirts  - North-East Anderson Airbase"
 
+/area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller
+	linked_lz = DROPSHIP_LZ2
+
 /area/tyrargo/outdoors/outskirts/central
 	name = "Outskirts  - Central"
 
@@ -512,10 +513,12 @@
 
 /area/tyrargo/underground/bunker/ammo_dump_entrance
 	name = "USASF Airbase Anderson - Underground Ammo Dump"
+	linked_lz = DROPSHIP_LZ2
 
 /area/tyrargo/underground/bunker/ammo_dump_connection
 	name = "USASF Airbase Anderson - Underground Cave Network"
 	requires_power = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 // Underground Sewer
 

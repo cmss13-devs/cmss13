@@ -20,8 +20,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y make man
 RUN update-alternatives --install /usr/local/bin/python python /usr/bin/python3 20
 ARG BYOND_MAJOR
 ARG BYOND_MINOR
-ARG BYOND_DOWNLOAD_URL=https://secure.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip
-RUN curl ${BYOND_DOWNLOAD_URL} -o byond.zip \
+ARG BYOND_DOWNLOAD_URL=http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip
+RUN curl ${BYOND_DOWNLOAD_URL} -o byond.zip -A "CMSS13/1.0 Continuous Integration"\
     && unzip byond.zip \
 	&& rm -rf byond.zip
 RUN DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/*

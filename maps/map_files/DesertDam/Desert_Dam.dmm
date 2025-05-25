@@ -919,12 +919,21 @@
 	},
 /turf/open/desert/rock/deep/transition/west,
 /area/desert_dam/interior/dam_interior/hanger)
+"adN" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_two)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
+"adP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -5631,6 +5640,9 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/item/phone,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayH" = (
@@ -29099,6 +29111,9 @@
 /area/desert_dam/building/medical/virology_wing)
 "cIN" = (
 /obj/structure/machinery/computer/crew,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "cIO" = (
@@ -57449,7 +57464,7 @@ cDX
 cDX
 cDX
 cDX
-cDX
+adN
 cDX
 cDX
 cDX
@@ -60554,7 +60569,7 @@ iKp
 iKp
 iKp
 iKp
-iKp
+adP
 iKp
 iKp
 iKp

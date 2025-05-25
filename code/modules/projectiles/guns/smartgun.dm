@@ -32,7 +32,6 @@
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
-	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -53,7 +52,6 @@
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 	attachable_allowed = list(
-		/obj/item/attachable/smartbarrel,
 		/obj/item/attachable/flashlight,
 	)
 
@@ -862,7 +860,6 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "magsg"
 	item_state = "magsg"
-	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()

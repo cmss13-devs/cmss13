@@ -14,6 +14,7 @@ They're all essentially identical when it comes to getting the job done.
 	icon_state = null
 	item_state = "ammo_mag" //PLACEHOLDER. This ensures the mag doesn't use the icon state instead.
 	var/bonus_overlay = null //Sprite pointer in ammo.dmi to an overlay to add to the gun, for extended mags, box mags, and so on
+	var/bonus_overlay_icon = null //Icon to use for the overlay, if null, it will use the icon of the gun
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	matter = list("metal" = 1000)
@@ -36,6 +37,7 @@ They're all essentially identical when it comes to getting the job done.
 	var/base_mag_item //the default mag item (inhand) state.
 	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
 	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
+	var/description_ammo = "rounds"
 	var/mag_jam_modifier = 0 //modifier for how much the gun jams when using this specific magazine
 
 	/// If this and ammo_band_icon aren't null, run update_ammo_band(). Is the color of the band, such as green on AP.

@@ -73,6 +73,7 @@
 		/obj/item/storage/belt/gun/type47,
 		/obj/item/storage/belt/gun/m4a3,
 		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
 		/obj/item/storage/belt/gun/flaregun,
 		/obj/item/device/motiondetector,
@@ -81,7 +82,7 @@
 		/obj/item/storage/belt/gun/m10,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK)
 
 	light_power = 3
 	light_range = 4
@@ -371,7 +372,7 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/rank/qm_suit)
 	specialty = "M3 pattern commanding officer"
 	item_state_slots = list(WEAR_JACKET = "co")
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK)
 	black_market_value = 35
 
 /obj/item/clothing/suit/storage/marine/MP/CO/jacket
@@ -384,7 +385,7 @@
 	icon_state = "bridge_coat_armored"
 	item_state = "bridge_coat_armored"
 	item_state_slots = list(WEAR_JACKET = "bridge_coat_armored")
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MASK)
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/marine/medium/leader
@@ -519,10 +520,12 @@
 	name = "\improper M3-VL pattern flak vest"
 	desc = "A combination of the standard non-combat M3-VL ballistics vest and M70 flak jacket, this piece of armor has been distributed to dropship crew to keep them safe from threats external and internal..."
 	icon_state = "VL_FLAK"
-	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_state = "VL_FLAK"
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
 	)
+	flags_atom = NO_NAME_OVERRIDE
 	storage_slots = 2
 
 /obj/item/clothing/suit/storage/marine/light/synvest

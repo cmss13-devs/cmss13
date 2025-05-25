@@ -27,6 +27,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	initial_jam_chance = GUN_JAM_CHANCE_LOW
 	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
 	durability_loss = GUN_DURABILITY_LOSS_MEDIUM
+	jam_threshold = GUN_DURABILITY_MEDIUM
 
 	fire_sound = 'sound/weapons/gun_shotgun.ogg'
 	reload_sound = "shell_load"
@@ -282,6 +283,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/attached_gun/extinguisher,
 	)
 
 /obj/item/weapon/gun/shotgun/es7/Initialize(mapload, spawn_empty)
@@ -346,6 +348,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/tactical,
 	)
+	starting_attachment_types = list(/obj/item/attachable/stock/tactical)
 
 /obj/item/weapon/gun/shotgun/combat/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -355,14 +358,10 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/combat/handle_starting_attachment()
 	..()
 	var/obj/item/attachable/attached_gun/grenade/ugl = new(src)
-	var/obj/item/attachable/stock/tactical/stock = new(src)
 	ugl.flags_attach_features &= ~ATTACH_REMOVABLE
 	ugl.hidden = TRUE
 	ugl.Attach(src)
 	update_attachable(ugl.slot)
-	stock.hidden = FALSE
-	stock.Attach(src)
-	update_attachable(stock.slot)
 
 /obj/item/weapon/gun/shotgun/combat/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 11, "stock_y" = 13.)
@@ -421,14 +420,16 @@ can cause issues with ammo types getting mixed up during the burst.
 	auto_retrieval_slot = WEAR_J_STORE
 	start_automatic = TRUE
 
+	starting_attachment_types = list()
+
 /obj/item/weapon/gun/shotgun/combat/marsoc/Initialize(mapload, spawn_empty)
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
-/obj/item/weapon/gun/shotgun/combat/marsoc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/shotgun/combat/marsoc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc, silent)
 	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
-		if(..(user, WEAR_WAIST)) //...first try to put it onto the waist.
+		if(..(user, WEAR_WAIST, check_loc, silent)) //...first try to put it onto the waist.
 			return TRUE
 	return ..()
 
@@ -441,14 +442,15 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/combat/marsoc/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_SHOTGUN_DEATHSQUAD)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
-	scatter = SCATTER_AMOUNT_TIER_6
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2 - SCATTER_AMOUNT_TIER_10
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2 - SCATTER_AMOUNT_TIER_10
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_4
-	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	recoil = RECOIL_AMOUNT_TIER_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 
 //-------------------------------------------------------
 //TYPE 23. SEMI-AUTO UPP SHOTGUN, BASED ON KS-23
@@ -471,8 +473,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/bayonet/upp,
 		/obj/item/attachable/verticalgrip, // Underbarrel
 		/obj/item/attachable/flashlight/grip,
-		/obj/item/attachable/attached_gun/flamer,
-		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/stock/type23, // Stock
@@ -899,6 +899,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
+		/obj/item/attachable/attached_gun/extinguisher,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/stock/mou53,
 	)
@@ -991,7 +992,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	delay_style = WEAPON_DELAY_NO_FIRE //This is a heavy, bulky weapon, and tricky to snapshot with.
 	flags_equip_slot = SLOT_BACK
 	actions_types = list(/datum/action/item_action/specialist/twobore_brace)
-	starting_attachment_types = list(/obj/item/attachable/stock/twobore)
+	hud_offset = 10 //A sprite long enough to touch the Moon.
 	aim_slowdown = SLOWDOWN_ADS_LMG //Quite slow, but VB has light-armor slowdown and doesn't feel pain.
 	civilian_usable_override = FALSE
 	var/braced = FALSE
@@ -1230,8 +1231,6 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/shotgun_choke,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/flamer,
-		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/stock/shotgun,
 	)
 	map_specific_decoration = TRUE
@@ -1453,16 +1452,17 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/compensator,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/flamer,
-		/obj/item/attachable/attached_gun/flamer/advanced,
 	)
-	starting_attachment_types = list(/obj/item/attachable/stock/hg3712)
+
+	pixel_x = -5
+	hud_offset = -5
+
 	map_specific_decoration = FALSE
 	civilian_usable_override = TRUE // Come on. It's THE, er, other, survivor shotgun.
 
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 17,"rail_x" = 8, "rail_y" = 21, "under_x" = 22, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 17, "rail_x" = 14, "rail_y" = 21, "under_x" = 28, "under_y" = 15, "stock_x" = 24, "stock_y" = 10)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/set_gun_config_values()
 	..()
@@ -1477,7 +1477,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/swat
-	starting_attachment_types = list(/obj/item/attachable/stock/hg3712, /obj/item/attachable/magnetic_harness, /obj/item/attachable/gyro)
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/gyro)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717
 	name = "\improper M37-17 pump shotgun"
@@ -1485,13 +1485,12 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "m3717"
 	item_state = "m3717"
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/cmb/m3717
-	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717/harness
-	starting_attachment_types = list(/obj/item/attachable/stock/hg3712/m3717, /obj/item/attachable/magnetic_harness)
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
 
 //-------------------------------------------------------

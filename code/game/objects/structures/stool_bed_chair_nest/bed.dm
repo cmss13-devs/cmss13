@@ -290,7 +290,7 @@
 	if(!length(contents))
 		new rollertype(src)
 	var/obj/structure/bed/roller/roller = locate(rollertype) in contents
-	roller.forceMove(user.loc)
+	roller.forceMove(location)
 	to_chat(user, SPAN_NOTICE("You deploy [roller]."))
 	roller.add_fingerprint(user)
 	user.temp_drop_inv_item(src)

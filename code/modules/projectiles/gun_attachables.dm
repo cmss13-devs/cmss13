@@ -210,13 +210,14 @@ Defined in conflicts.dm of the #defines folder.
 		detaching_gun.in_chamber._RemoveElement(L)
 
 	// Remove any leftover reference to the bullet trait
-	for(var/list/trait_list in detaching_gun.in_chamber.bullet_traits)
-		trait_list.Remove(traits_to_give)
-		if(!length(trait_list))
-			detaching_gun.in_chamber.bullet_traits.Remove(list(trait_list))
+	if(!isnull(detaching_gun.in_chamber))
+		for(var/list/trait_list in detaching_gun.in_chamber.bullet_traits)
+			trait_list.Remove(traits_to_give)
+			if(!length(trait_list))
+				detaching_gun.in_chamber.bullet_traits.Remove(list(trait_list))
 
-	if(!length(detaching_gun.in_chamber.bullet_traits))
-		detaching_gun.in_chamber.bullet_traits = null
+		if(!length(detaching_gun.in_chamber.bullet_traits))
+			detaching_gun.in_chamber.bullet_traits = null
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)
@@ -298,7 +299,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M5 'Night Raider' bayonet"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "bayonet"
-	item_state = "combat_knife"
+	item_state = "combat_bayonet"
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -336,24 +337,31 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
 /obj/item/attachable/bayonet/upp_replica
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 	icon_state = "upp_bayonet"
-	item_state = "combat_knife"
+	item_state = "upp_bayonet"
 	attach_icon = "upp_bayonet_a"
 
 /obj/item/attachable/bayonet/wy
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper SA120 L7 bayonet"
 	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
 	icon_state = "wy_bayonet"
+	item_state = "wy_bayonet"
 	attach_icon = "wy_bayonet_a"
 	unacidable = TRUE
 
 /obj/item/attachable/bayonet/upp
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
 	icon_state = "upp_bayonet"
-	item_state = "combat_knife"
+	item_state = "upp_bayonet"
 	attach_icon = "upp_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
@@ -361,6 +369,8 @@ Defined in conflicts.dm of the #defines folder.
 	pry_delay = 1 SECONDS
 
 /obj/item/attachable/bayonet/co2
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper M8 cartridge bayonet"
 	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
 	icon_state = "co2_knife"
@@ -368,10 +378,12 @@ Defined in conflicts.dm of the #defines folder.
 	var/filled = FALSE
 
 /obj/item/attachable/bayonet/rmc
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
 	icon_state = "twe_bayonet"
-	item_state = "combat_knife"
+	item_state = "twe_bayonet"
 	attach_icon = "twe_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
@@ -379,57 +391,75 @@ Defined in conflicts.dm of the #defines folder.
 	pry_delay = 1 SECONDS
 
 /obj/item/attachable/bayonet/antique
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper antique bayonet"
 	desc = "An antique-style bayonet, has a long blade, wooden handle with brass fittings, reflecting historical craftsmanship."
 	icon_state = "antique_bayonet"
-	item_state = "combat_knife"
+	item_state = "antique_bayonet"
 	attach_icon = "antique_bayonet_a"
 
 /obj/item/attachable/bayonet/rmc_replica
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
 	icon_state = "twe_bayonet"
-	item_state = "combat_knife"
+	item_state = "twe_bayonet"
 	attach_icon = "twe_bayonet_a"
 
 /obj/item/attachable/bayonet/custom
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper M5 'Raven's Claw' tactical bayonet"
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool."
 	icon_state = "bayonet_custom"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom"
 	attach_icon = "bayonet_custom_a"
 
 /obj/item/attachable/bayonet/custom/red
+	AUTOWIKI_SKIP(TRUE)
+
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a red grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_red"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_red"
 	attach_icon = "bayonet_custom_red_a"
 
 /obj/item/attachable/bayonet/custom/blue
+	AUTOWIKI_SKIP(TRUE)
+
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a blue grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_blue"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_blue"
 	attach_icon = "bayonet_custom_blue_a"
 
 /obj/item/attachable/bayonet/custom/black
+	AUTOWIKI_SKIP(TRUE)
+
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a black grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_black"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_black"
 	attach_icon = "bayonet_custom_black_a"
 
 /obj/item/attachable/bayonet/tanto
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper T9 tactical bayonet"
 	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
 	icon_state = "bayonet_tanto"
-	item_state = "combat_knife"
+	item_state = "bayonet_tanto"
 	attach_icon = "bayonet_tanto_a"
 
 /obj/item/attachable/bayonet/tanto/blue
+	AUTOWIKI_SKIP(TRUE)
+
 	icon_state = "bayonet_tanto_alt"
-	item_state = "combat_knife"
+	item_state = "bayonet_tanto_alt"
 	attach_icon = "bayonet_tanto_alt_a"
 
 /obj/item/attachable/bayonet/van_bandolier
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Fairbairn-Sykes fighting knife"
 	desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
 
@@ -561,127 +591,6 @@ Defined in conflicts.dm of the #defines folder.
 	detaching_gun.pump_delay += FIRE_DELAY_TIER_5
 	detaching_gun.fire_sound = initial(detaching_gun.fire_sound)
 	return ..()
-
-/obj/item/attachable/slavicbarrel
-	name = "sniper barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "slavicbarrel"
-	desc = "A heavy barrel. CANNOT BE REMOVED."
-	slot = "muzzle"
-
-	pixel_shift_x = 20
-	pixel_shift_y = 16
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = -4
-
-/obj/item/attachable/slavicbarrel/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/f90_dmr_barrel
-	name = "f90 barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon_state = "aug_dmr_barrel_a"
-	attach_icon = "aug_dmr_barrel_a"
-	slot = "muzzle"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-
-/obj/item/attachable/f90_shotgun_barrel
-	name = "f90 barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon_state = "aug_mkey_barrel_a"
-	attach_icon = "aug_mkey_barrel_a"
-	slot = "muzzle"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-
-/obj/item/attachable/l56a2_smartgun
-	name = "l56a2 barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon_state = "magsg_barrel_a"
-	attach_icon = "magsg_barrel_a"
-	slot = "muzzle"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-
-/obj/item/attachable/sniperbarrel
-	name = "sniper barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "sniperbarrel"
-	desc = "A heavy barrel. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = -3
-
-/obj/item/attachable/sniperbarrel/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/pmc_sniperbarrel
-	name = "sniper barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "pmc_sniperbarrel"
-	desc = "A heavy barrel. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = -3
-
-/obj/item/attachable/pmc_sniperbarrel/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/sniperbarrel/vulture
-	name = "\improper M707 barrel"
-	icon_state = "vulture_barrel"
-	hud_offset_mod = -1
-
-/obj/item/attachable/m60barrel
-	name = "M60 barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "m60barrel"
-	desc = "A heavy barrel. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = -6
-
-/obj/item/attachable/m60barrel/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/mar50barrel
-	name = "MAR-50 barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "mar50barrel"
-	desc = "A heavy barrel. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = -6
-
-/obj/item/attachable/mar50barrel/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/smartbarrel
-	name = "smartgun barrel"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "m56_barrel"
-	desc = "The very end of the M56 smart gun, featuring a compensator. CANNOT BE REMOVED."
-	slot = "muzzle"
-	flags_attach_features = NO_FLAGS
-	pixel_shift_x = 14
-	hud_offset_mod = -4
 
 // Mateba barrels
 
@@ -1825,7 +1734,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock //Generic stock parent and related things.
 	name = "default stock"
-	desc = "If you can read this, someone screwed up. Go Gitlab this and bug a coder."
+	desc = "If you can read this, someone screwed up. Go GitHub this and bug a coder."
 	icon_state = "stock"
 	slot = "stock"
 	wield_delay_mod = WIELD_DELAY_VERY_FAST
@@ -1962,35 +1871,6 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
 
-/obj/item/attachable/stock/vulture
-	name = "\improper M707 heavy stock"
-	icon_state = "vulture_stock"
-	attach_icon = "vulture_stock"
-	hud_offset_mod = 3
-
-/obj/item/attachable/stock/vulture/Initialize(mapload, ...)
-	. = ..()
-	select_gamemode_skin(type)
-	// Doesn't give any stat additions due to the gun already having really good ones, and this is unremovable from the gun itself
-
-/obj/item/attachable/stock/vulture/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..() // We are forcing attach_icon skin
-	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-			. = TRUE
-		if("desert")
-			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-			. = TRUE
-		if("classic")
-			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-			. = TRUE
-		if("urban")
-			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
-			. = TRUE
-	return .
-
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"
 	desc = "A metal stock made for the MK221 tactical shotgun."
@@ -2026,75 +1906,6 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
-
-/obj/item/attachable/stock/slavic
-	name = "wooden stock"
-	desc = "A non-standard heavy wooden stock for Slavic firearms."
-	icon_state = "slavicstock"
-	pixel_shift_x = 32
-	pixel_shift_y = 13
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = 0 //Already attached to base sprite.
-
-/obj/item/attachable/stock/slavic/New()
-	..()
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
-	recoil_mod = -RECOIL_AMOUNT_TIER_5
-	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	delay_mod = FIRE_DELAY_TIER_7
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
-	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
-	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
-	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
-
-/obj/item/attachable/stock/hunting
-	name = "wooden stock"
-	desc = "The non-detachable stock of a Basira-Armstrong rifle."
-	icon_state = "huntingstock"
-	pixel_shift_x = 41
-	pixel_shift_y = 10
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = 6
-
-/obj/item/attachable/stock/hunting/New()
-	..()
-	//it makes stuff much better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
-	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
-	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
-
-/obj/item/attachable/stock/hg3712
-	name = "hg3712 stock"
-	desc = "The non-detachable stock of a HG 37-12 pump shotgun."
-	icon_state = "hg3712_stock"
-	pixel_shift_x = 41
-	pixel_shift_y = 10
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = 6
-
-/obj/item/attachable/stock/hg3712/New()
-	..()
-
-	//HG stock is purely aesthetics, any changes should be done to the gun itself
-	accuracy_mod = 0
-	recoil_mod = 0
-	scatter_mod = 0
-	movement_onehanded_acc_penalty_mod = 0
-	accuracy_unwielded_mod = 0
-	recoil_unwielded_mod = 0
-	scatter_unwielded_mod = 0
-	aim_speed_mod = 0
-	wield_delay_mod = WIELD_DELAY_NONE
-
-/obj/item/attachable/stock/hg3712/m3717
-	name = "hg3717 stock"
-	desc = "The non-detachable stock of a M37-17 pump shotgun."
-	icon_state = "hg3717_stock"
 
 /obj/item/attachable/stock/rifle
 	name = "\improper M41A solid stock"
@@ -2188,29 +1999,12 @@ Defined in conflicts.dm of the #defines folder.
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
-/obj/item/attachable/stock/m16
-	name = "\improper M16 bump stock"
-	desc = "Technically illegal in the state of California."
-	icon_state = "m16_stock"
-	attach_icon = "m16_stock"
-	wield_delay_mod = WIELD_DELAY_MIN
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = 3
 
-/obj/item/attachable/stock/m16/New()//no stats, its cosmetic
-	..()
-
-/obj/item/attachable/stock/m16/m16a5
-	name = "\improper M16A5 bump stock"
-	icon_state = "m16a5_stock"
-	attach_icon = "m16a5_stock"
-
-/obj/item/attachable/stock/m16/xm177
+/obj/item/attachable/stock/xm177
 	name = "\improper collapsible M16 stock"
 	desc = "Very illegal in the state of California."
 	icon_state = "m16_folding"
 	attach_icon = "m16_folding"
-	hud_offset_mod = 3
 	collapsible = TRUE
 	stock_activated = FALSE
 	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
@@ -2219,7 +2013,7 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_action_type = /datum/action/item_action/toggle
 	var/base_icon = "m16_folding"
 
-/obj/item/attachable/stock/m16/xm177/Initialize()
+/obj/item/attachable/stock/xm177/Initialize()
 	.=..()
 	accuracy_mod = 0
 	recoil_mod = 0
@@ -2231,7 +2025,7 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = 0
 	wield_delay_mod = WIELD_DELAY_NONE
 
-/obj/item/attachable/stock/m16/xm177/apply_on_weapon(obj/item/weapon/gun/gun)
+/obj/item/attachable/stock/xm177/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
 		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
 		recoil_mod = -RECOIL_AMOUNT_TIER_5
@@ -2259,32 +2053,13 @@ Defined in conflicts.dm of the #defines folder.
 	gun.update_overlays(src, "stock")
 
 
-/obj/item/attachable/stock/m16/xm177/car15a3
+/obj/item/attachable/stock/xm177/car15a3
 	name = "\improper collapsible CAR-15A3 stock"
 	icon_state = "car_folding"
 	attach_icon = "car_folding"
 	base_icon = "car_folding"
 
-/obj/item/attachable/stock/ar10
-	name = "\improper AR10 wooden stock"
-	desc = "The spring's in here, don't take it off!"
-	icon_state = "ar10_stock"
-	attach_icon = "ar10_stock"
-	wield_delay_mod = WIELD_DELAY_MIN
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = 3
 
-/obj/item/attachable/stock/ar10/New()//no stats, its cosmetic
-	..()
-
-/obj/item/attachable/stock/m79
-	name = "\improper M79 hardened polykevlon stock"
-	desc = "Helps to mitigate the recoil of launching a 40mm grenade. Fits only to the M79."
-	icon_state = "m79_stock"
-	icon_state = "m79_stock_a"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = 2
 
 /obj/item/attachable/stock/xm51
 	name = "\improper XM51 stock"
@@ -2331,6 +2106,8 @@ Defined in conflicts.dm of the #defines folder.
 	return .
 
 /obj/item/attachable/stock/mod88
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "\improper Mod 88 burst stock"
 	desc = "Increases the fire rate and burst amount on the Mod 88. Some versions act as a holster for the weapon when un-attached. This is a test item and should not be used in normal gameplay (yet)."
 	icon_state = "mod88_stock"
@@ -2411,194 +2188,6 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42A3 Battle Rifle. Not effective as a blunt force weapon."
 
 	wield_delay_mod = WIELD_DELAY_FAST
-
-/obj/item/attachable/stock/rifle/marksman
-	name = "\improper M41A marksman stock"
-	icon_state = "m4markstock"
-	attach_icon = "m4markstock"
-	flags_attach_features = NO_FLAGS
-	hud_offset_mod = 2
-
-/obj/item/attachable/stock/twobore
-	name = "heavy wooden stock"
-	icon_state = "twobore_stock"
-	attach_icon = "twobore_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-	pixel_shift_x = 24
-	pixel_shift_y = 16
-	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
-
-/obj/item/attachable/m4ra_barrel
-	name = "M4RA barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon_state = "m4ra_barrel"
-	attach_icon = "m4ra_barrel"
-	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-
-/obj/item/attachable/m4ra_barrel/New()
-	..()
-	select_gamemode_skin(type)
-
-/obj/item/attachable/m4ra_barrel/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..() // We are forcing attach_icon skin
-	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-			. = TRUE
-		if("desert")
-			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-			. = TRUE
-		if("classic")
-			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-			. = TRUE
-		if("urban")
-			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
-			. = TRUE
-	return .
-
-/obj/item/attachable/m4ra_barrel_custom
-	name = "custom M4RA barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon_state = "m4ra_custom_barrel"
-	attach_icon = "m4ra_custom_barrel"
-	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
-	size_mod = 0
-
-/obj/item/attachable/m4ra_barrel_custom/New()
-	..()
-	select_gamemode_skin(type)
-
-/obj/item/attachable/m4ra_barrel_custom/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..() // We are forcing attach_icon skin
-	var/new_attach_icon
-	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
-		if("snow")
-			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
-			. = TRUE
-		if("desert")
-			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
-			. = TRUE
-		if("classic")
-			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
-			. = TRUE
-		if("urban")
-			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
-			. = TRUE
-	return .
-
-/obj/item/attachable/upp_rpg_breech
-	name = "HJRA-12 Breech"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
-	icon_state = "hjra_breech"
-	attach_icon = "hjra_breech"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0
-	size_mod = 0
-
-/obj/item/attachable/pkpbarrel
-	name = "QYJ-72 Barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "uppmg_barrel"
-	attach_icon = "uppmg_barrel"
-	slot = "muzzle"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0
-	size_mod = 0
-
-/obj/item/attachable/stock/pkpstock
-	name = "QYJ-72 Stock"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
-	icon_state = "uppmg_stock"
-	attach_icon = "uppmg_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 20 //the thought of a upp spec beating people to death with a pk makes me laugh
-	size_mod = 0
-
-/obj/item/attachable/type88_barrel
-	name = "Type-88 Barrel"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "type88_barrel"
-	attach_icon = "type88_barrel"
-	slot = "special"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0
-	size_mod = 0
-
-/obj/item/attachable/type73suppressor
-	name = "Type 73 Integrated Suppressor"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
-	icon_state = "type73_suppressor"
-	attach_icon = "type73_suppressor"
-	slot = "muzzle"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 0
-	size_mod = 0
-
-/obj/item/attachable/stock/type71
-	name = "Type 71 Stock"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
-	icon_state = "type71_stock"
-	attach_icon = "type71_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 15
-	size_mod = 0
-
-/obj/item/attachable/stock/type71/New()
-	..()
-
-/obj/item/attachable/stock/m60
-	name = "M60 stock"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
-	icon_state = "m60_stock"
-	attach_icon = "m60_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 15
-	size_mod = 0
-
-
-/obj/item/attachable/stock/ppsh
-	name = "PPSh-17b stock"
-	desc = "This isn't supposed to be separated from the gun, how'd this happen?"
-	icon = 'icons/obj/items/weapons/guns/attachments/stock.dmi'
-	icon_state = "ppsh17b_stock"
-	attach_icon = "ppsh17b_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	flags_attach_features = NO_FLAGS
-	melee_mod = 10
-	size_mod = 0
-
-
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"
@@ -2850,30 +2439,6 @@ Defined in conflicts.dm of the #defines folder.
 		R.folded = FALSE
 	else
 		R.flags_equip_slot |= SLOT_WAIST
-
-/obj/item/attachable/stock/nsg23
-	name = "NSG 23 stock"
-	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
-	icon_state = "nsg23_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	melee_mod = 5
-	size_mod = 2
-	pixel_shift_x = 21
-	pixel_shift_y = 20
-	hud_offset_mod = 2
-
-/obj/item/attachable/stock/l23
-	name = "L23 stock"
-	desc = "If you can read this, someone screwed up. Go Github this and bug a coder."
-	icon_state = "l23_stock"
-	slot = "stock"
-	wield_delay_mod = WIELD_DELAY_NONE
-	melee_mod = 5
-	size_mod = 2
-	pixel_shift_x = 21
-	pixel_shift_y = 20
-	hud_offset_mod = 2
 
 // ======== Underbarrel Attachments ======== //
 
@@ -3947,6 +3512,15 @@ Defined in conflicts.dm of the #defines folder.
 			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
 			. = TRUE
 	return .
+
+/obj/item/attachable/bipod/vulture/bipod/New()
+	..()
+
+	delay_mod = FIRE_DELAY_TIER_11
+	wield_delay_mod = WIELD_DELAY_FAST
+	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
+	scatter_mod = SCATTER_AMOUNT_NONE
+	recoil_mod = RECOIL_AMOUNT_TIER_5
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

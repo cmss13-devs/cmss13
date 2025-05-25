@@ -254,10 +254,18 @@
 	set waitfor = 0
 	var/list/turf_list = RANGE_TURFS(3, impact) //This is its area of effect
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
+
+	var/datum/reagent/fire_reag = new()
+	fire_reag.intensityfire = 75
+	fire_reag.durationfire = 5
+	fire_reag.burn_sprite = "dynamic"
+	fire_reag.burncolor = "#EE6515"
+
 	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited
-		var/turf/U = pick(turf_list)
-		turf_list -= U
-		fire_spread_recur(U, create_cause_data(fired_from.name, source_mob), 1, null, 5, 75, "#EE6515")//Very, very intense, but goes out very quick
+		var/turf/U = pick_n_take(turf_list)
+		var/obj/flamer_fire/foundflame = locate() in U
+		if(!foundflame)
+			new/obj/flamer_fire(U, create_cause_data(fired_from.name, source_mob), fire_reag)//Very, very intense, but goes out very quick
 
 	if(!ammo_count && !QDELETED(src))
 		qdel(src) //deleted after last laser beam is fired and impact the ground.

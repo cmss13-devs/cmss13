@@ -404,7 +404,7 @@
 			if(length(loaded_pill_bottles) == 0)
 				return
 
-			var/label = copytext(reject_bad_text(params["text"]), 1, 4)
+			var/label = copytext(reject_bad_text(params["text"]), 1, MAX_NAME_LEN)
 			if(!label)
 				return
 

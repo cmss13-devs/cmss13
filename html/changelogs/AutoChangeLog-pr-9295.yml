@@ -1,0 +1,4 @@
+author: "Contrabang"
+delete-after: True
+changes:
+  - imageadd: "added a locked icon for locked dropship controls"

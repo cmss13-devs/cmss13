@@ -314,7 +314,7 @@
 	if(ishuman(user))
 		. += "A basketball sized resin growth. Its translucent insides radiate faint orange light. It appears to be loosely attached to the weeds below."
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The effect of fruit persist for [SPAN_NOTICE("60")] seconds. While not unrooted, it passively emits weak recovery pheromones around itself."
+		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The effect of fruit persist for [SPAN_NOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself."
 
 /obj/effect/alien/resin/fruit/speed
 	name = XENO_FRUIT_SPEED

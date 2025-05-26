@@ -383,7 +383,7 @@
 		spark.start()
 
 	if(prob(smoke_chance))
-		var/datum/effect_system/smoke_spread/smoke = new datum/effect_system/smoke_spread()
+		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread()
 		smoke.set_up(0, 0, location, direct = null, smoke_time = 3 DECISECONDS)
 		smoke.start()
 

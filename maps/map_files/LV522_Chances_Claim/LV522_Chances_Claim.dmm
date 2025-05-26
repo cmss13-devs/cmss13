@@ -733,6 +733,23 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop2/lv522)
+"acS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/lv522/indoors/b_block/bar)
+"acT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_2)
+"acU" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_1)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -9846,6 +9863,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "flN" = (
@@ -20594,6 +20614,10 @@
 /area/lv522/indoors/a_block/security)
 "kZe" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29;
+	pixel_x = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo)
 "kZj" = (
@@ -34215,12 +34239,11 @@
 /area/lv522/outdoors/colony_streets/south_street)
 "rSG" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = 5;
-	pixel_y = -6
+	pixel_x = 2
 	},
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = 10
+	pixel_x = -13;
+	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -41532,8 +41555,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "vyD" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = -6
+	pixel_x = -6
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/bar)
@@ -52503,7 +52525,7 @@ wuK
 xfW
 wuK
 xcY
-sAT
+acU
 sAT
 pnj
 uiM
@@ -59686,7 +59708,7 @@ jaO
 lYR
 wmI
 mBF
-wDy
+acS
 hds
 mBF
 mBF
@@ -77456,7 +77478,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78061,7 +78083,7 @@ gRp
 iGr
 iGr
 uIn
-uIn
+acT
 rqn
 qvA
 lhE

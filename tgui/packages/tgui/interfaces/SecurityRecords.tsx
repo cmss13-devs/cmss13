@@ -383,7 +383,7 @@ export const SecurityRecords = () => {
   );
 
   const renderRecordDetails = (record: RecordEntry) => (
-    <Section title={`Details for ${record.general_name}`}>
+    <Section m="0" title={`Details for ${record.general_name}`}>
       <Flex direction="column">
         <Flex direction="row" gap={2}>
           <Flex.Item grow={1}>
@@ -399,7 +399,7 @@ export const SecurityRecords = () => {
           </Flex.Item>
 
           <Flex.Item>
-            <Section title="Photo">
+            <Section title="Photo" m="0">
               <Box style={{ textAlign: 'center', padding: '10px' }}>
                 <img
                   src={
@@ -535,7 +535,7 @@ export const SecurityRecords = () => {
         )}
 
         <Divider />
-        <Flex direction="row" gap={2}>
+        <Flex justify="space-between" direction="row" gap={2}>
           <Button
             onClick={() => act('print_personal_record', { id: record.id })}
             color="blue"
@@ -560,8 +560,14 @@ export const SecurityRecords = () => {
   );
 
   const renderRecordsTable = () => (
-    <Section title="Security Records" fill scrollable>
-      <Flex direction="row" gap={2} mb={2}>
+    <Section fill m="0" pr="0.5%" pl="0.5%">
+      <Flex justify="space-evenly">
+        <Box bold fontSize="20px">
+          Security Records
+        </Box>
+      </Flex>
+      <Divider />
+      <Flex justify="space-evenly" direction="row" gap={2} mb={2}>
         <Button
           onClick={() => {
             act('new_general_record');
@@ -721,17 +727,21 @@ export const SecurityRecords = () => {
   return (
     <Window theme="crtred" width={630} height={700}>
       <Window.Content>
-        {viewFingerprintScanner ? (
-          renderFingerprintScannerView()
-        ) : selectedRecord ? (
-          renderRecordDetails(selectedRecord)
-        ) : (
-          <>
-            {renderFingerprintScannerSection()}
-            {renderRecordsTable()}
-          </>
-        )}
-        {editField && renderEditModal()}
+        <Section fill scrollable>
+          {viewFingerprintScanner ? (
+            renderFingerprintScannerView()
+          ) : selectedRecord ? (
+            renderRecordDetails(selectedRecord)
+          ) : (
+            <Flex>
+              <Flex.Item width="100%">
+                {renderFingerprintScannerSection()}
+                {renderRecordsTable()}
+              </Flex.Item>
+            </Flex>
+          )}
+          {editField && renderEditModal()}
+        </Section>
         {commentModalOpen && renderCommentModal()}
       </Window.Content>
     </Window>

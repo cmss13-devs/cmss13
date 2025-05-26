@@ -28,4 +28,22 @@
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/synthetic/synth_k9/growl/get_sound(mob/living/user)
-	return pick('sound/voice/growl1.ogg','sound/voice/growl2.ogg','sound/voice/growl3.ogg','sound/voice/growl4.ogg')
+	return pick('sound/voice/doggrowl1.ogg','sound/voice/doggrowl2.ogg','sound/voice/doggrowl3.ogg')
+
+//Plaintive Whine
+/datum/emote/living/carbon/human/synthetic/synth_k9/whine
+	key = "whine"
+	key_third_person = "whines"
+	message = "whines."
+	audio_cooldown = 3 SECONDS
+	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/synthetic/synth_k9/whine/get_sound(mob/living/user)
+	return pick('sound/voice/dogwhine1.ogg','sound/voice/dogwhine2.ogg','sound/voice/dogwhine3.ogg')
+
+//Wagging Tail
+/datum/emote/living/carbon/human/synthetic/synth_k9/tail
+	key = "tail"
+	key_third_person = "wags their tail"
+	message = "wags their tail."
+	emote_type = EMOTE_VISIBLE

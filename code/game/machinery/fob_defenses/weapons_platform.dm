@@ -152,7 +152,8 @@
 		if(!target)
 			return
 
-		fire_at(target)
+		for(var/index in 1 to 4)
+			addtimer(CALLBACK(src, PROC_REF(fire_at), target), 0.2 SECONDS * index)
 
 /obj/structure/machinery/weapons_platform/proc/fire_at(mob/living/carbon/xenomorph/target)
 	if(istype(linked_weapon, /obj/structure/machinery/rocket_launcher))
@@ -168,8 +169,14 @@
 			target.gib()
 		else
 			new /obj/effect/warning/explosive(get_turf(target), 0.1 SECONDS)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), get_turf(target), 199, 150), 0.1 SECONDS)
+			if(target.small_explosives_stun)
+				cell_explosion(get_turf(target), 199, 199)
+			else
+				cell_explosion(get_turf(target), 350, 350)
 	else
+		if(get_dist(src, target) > 7)
+			return
+
 		var/obj/structure/machinery/sentry/linked_sentry = linked_weapon
 		linked_weapon.dir = get_dir(src, target)
 		update_icon()

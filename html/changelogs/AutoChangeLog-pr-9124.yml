@@ -1,0 +1,5 @@
+author: "IroquoisLou"
+delete-after: True
+changes:
+  - balance: "Lowered Maximum RMC ERT Personnel down to 6 instead of 7,"
+  - balance: "Ups recoil for the L23 and lowers the damage from 57.2 to 50."

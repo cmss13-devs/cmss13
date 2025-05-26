@@ -94,6 +94,9 @@
 			if (!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
+			if (HAS_TRAIT(target, TRAIT_NESTED))
+				continue
+
 			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
 			SPAN_XENOWARNING("We slash [target] multiple times!"))
 			xeno.flick_attack_overlay(target, "slash")
@@ -101,8 +104,9 @@
 			log_attack("[key_name(xeno)] attacked [key_name(target)] with Flurry")
 			target.apply_armoured_damage(get_xeno_damage_slash(target, xeno.caste.melee_damage_upper), ARMOR_MELEE, BRUTE, rand_zone())
 			playsound(get_turf(target), 'sound/weapons/alien_claw_flesh4.ogg', 30, TRUE)
-			xeno.flick_heal_overlay(1 SECONDS, "#00B800")
-			xeno.gain_health(30)
+			if(!xeno.on_fire)
+				xeno.flick_heal_overlay(1 SECONDS, "#00B800")
+				xeno.gain_health(30)
 			xeno.animation_attack_on(target)
 
 	xeno.emote("roar")
@@ -261,9 +265,10 @@
 	xeno.animation_attack_on(target_carbon, pixel_offset = 16)
 	target_carbon.apply_armoured_damage(60, ARMOR_MELEE, BRUTE, "head", 5) //DIE
 	target_carbon.death(create_cause_data("headbite execution", xeno), FALSE)
-	xeno.gain_health(150)
-	xeno.xeno_jitter(1 SECONDS)
-	xeno.flick_heal_overlay(3 SECONDS, "#00B800")
+	if(!xeno.on_fire)
+		xeno.gain_health(150)
+		xeno.xeno_jitter(1 SECONDS)
+		xeno.flick_heal_overlay(3 SECONDS, "#00B800")
 	xeno.emote("roar")
 	log_attack("[key_name(xeno)] was executed by [key_name(target_carbon)] with a headbite!")
 	apply_cooldown()

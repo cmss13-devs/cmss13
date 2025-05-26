@@ -12,7 +12,7 @@
 /obj/structure/airlock_assembly
 	name = "airlock assembly"
 	icon = 'icons/obj/structures/doors/airlock_assembly.dmi'
-	icon_state = "door_as_0"
+	icon_state = "assembly_generic0"
 	anchored = FALSE
 	density = TRUE
 	var/state = STATE_STANDARD
@@ -20,6 +20,13 @@
 	var/base_name = "airlock"
 	var/obj/item/circuitboard/airlock/electronics = null
 	var/airlock_type = "generic" //the type path of the airlock once completed
+	var/list/airlock_types = list(	  // list of the selectable airlock types
+		"generic",
+		"security",
+		"engineering",
+		"command",
+		"medical"
+	)
 	var/glass = AIRLOCK_NOGLASS // see defines
 	var/created_name = null
 	/// Used for multitile assemblies
@@ -52,7 +59,8 @@
 		if(STATE_WIRES)
 			helpmessage += "Secure the circuit with a [SPAN_HELPFUL("screwdriver")]. "
 		if(STATE_SCREWDRIVER)
-			helpmessage += "[SPAN_HELPFUL("Weld")] it all in place. "
+			helpmessage += "Use a [SPAN_HELPFUL("Multitool")] to change its type. "
+			helpmessage += "You can [SPAN_HELPFUL("Weld")] it all in place. "
 	helpmessage += "You can name it with a [SPAN_HELPFUL("pen")]."
 	. += SPAN_NOTICE(helpmessage)
 
@@ -124,6 +132,10 @@
 					to_chat(user, SPAN_WARNING("[src] cannot be unwrenched."))
 					return
 				if(!anchored)
+					var/area/area = get_area(src)
+					if(!area.allow_construction)
+						to_chat(user, SPAN_WARNING("\The [src] cannot be secured here!"))
+						return
 					var/turf/open/checked_turf = loc
 					if(!(istype(checked_turf) && checked_turf.allow_construction))
 						to_chat(user, SPAN_WARNING("\The [src] cannot be secured here!"))
@@ -204,6 +216,16 @@
 				return
 
 		if(STATE_SCREWDRIVER)
+			if(HAS_TRAIT(attacking_item, TRAIT_TOOL_MULTITOOL))
+				to_chat(user, SPAN_NOTICE("You begin to adjust the airlock systems."))
+				if(!do_after(user, 4 SECONDS * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				airlock_type = tgui_input_list(user,"Select an airlock type." , "Airlock Type" , airlock_types)
+				if(airlock_type)
+					update_icon()
+				else
+					to_chat(user, SPAN_WARNING("You must choose a type"))
+					return
 			if(iswelder(attacking_item))
 				if(!HAS_TRAIT(attacking_item, TRAIT_TOOL_BLOWTORCH))
 					to_chat(user, SPAN_WARNING("You need a stronger blowtorch!"))
@@ -242,11 +264,13 @@
 	. = ..()
 
 /obj/structure/airlock_assembly/update_icon()
-	icon_state = "door_as_[state]"
-	if(glass == AIRLOCK_GLASSIN)
-		icon_state = "door_as_g[state]"
+	if(state == STATE_SCREWDRIVER) /// they just look diferent on their last step
+		icon_state = "assembly_[glass ? "glass_" : ""][airlock_type][state]"
 	else
-		icon_state = "door_as_[base_icon_state][state]"
+		icon_state = "assembly_[glass ? "glass_" : ""]generic[state]"
+
+/obj/structure/airlock_assembly/multi_tile/update_icon() // when multidoors get sprites this can be removed
+	icon_state = "assembly_[glass ? "glass_" : ""]generic[state]"
 
 /obj/structure/airlock_assembly/proc/get_airlock_path()
 	//For some reason multi_tile doors have different paths... can't say it isn't annoying
@@ -258,85 +282,9 @@
 /obj/structure/airlock_assembly/proc/update_collision_box()
 	return
 
-/obj/structure/airlock_assembly/airlock_assembly_com
-	base_icon_state = "com"
-	base_name = "Command Airlock"
-	airlock_type = "command"
-
-/obj/structure/airlock_assembly/airlock_assembly_sec
-	base_icon_state = "sec"
-	base_name = "Security Airlock"
-	airlock_type = "security"
-
-/obj/structure/airlock_assembly/airlock_assembly_eng
-	base_icon_state = "eng"
-	base_name = "Engineering Airlock"
-	airlock_type = "engineering"
-
-/obj/structure/airlock_assembly/airlock_assembly_min
-	base_icon_state = "min"
-	base_name = "Mining Airlock"
-	airlock_type = "mining"
-
-/obj/structure/airlock_assembly/airlock_assembly_atmo
-	base_icon_state = "atmo"
-	base_name = "Atmospherics Airlock"
-	airlock_type = "atmos"
-
-/obj/structure/airlock_assembly/airlock_assembly_research
-	base_icon_state = "res"
-	base_name = "Research Airlock"
-	airlock_type = "research"
-
-/obj/structure/airlock_assembly/airlock_assembly_science
-	base_icon_state = "sci"
-	base_name = "Science Airlock"
-	airlock_type = "science"
-
-/obj/structure/airlock_assembly/airlock_assembly_med
-	base_icon_state = "med"
-	base_name = "Medical Airlock"
-	airlock_type = "medical"
-
-/obj/structure/airlock_assembly/airlock_assembly_mai
-	base_icon_state = "mai"
-	base_name = "Maintenance Airlock"
-	airlock_type = "maintenance"
-	glass = AIRLOCK_CANTGLASS
-
-/obj/structure/airlock_assembly/airlock_assembly_ext
-	base_icon_state = "ext"
-	base_name = "External Airlock"
-	airlock_type = "external"
-	glass = AIRLOCK_CANTGLASS
-
-/obj/structure/airlock_assembly/airlock_assembly_fre
-	base_icon_state = "fre"
-	base_name = "Freezer Airlock"
-	airlock_type = "freezer"
-	glass = AIRLOCK_CANTGLASS
-
-/obj/structure/airlock_assembly/airlock_assembly_hatch
-	base_icon_state = "hatch"
-	base_name = "Airtight Hatch"
-	airlock_type = "hatch"
-	glass = AIRLOCK_CANTGLASS
-
-/obj/structure/airlock_assembly/airlock_assembly_mhatch
-	base_icon_state = "mhatch"
-	base_name = "Maintenance Hatch"
-	airlock_type = "maintenance_hatch"
-	glass = AIRLOCK_CANTGLASS
-
-/obj/structure/airlock_assembly/airlock_assembly_highsecurity // Borrowing this until WJohnston makes sprites for the assembly
-	base_icon_state = "highsec"
-	base_name = "High Security Airlock"
-	airlock_type = "highsecurity"
-	glass = AIRLOCK_CANTGLASS
-
 /obj/structure/airlock_assembly/multi_tile
 	icon = 'icons/obj/structures/doors/airlock_assembly2x1.dmi'
-	icon_state = "door_as_0"
+	icon_state = "assembly_generic0"
 	width = 2
 
 /obj/structure/airlock_assembly/multi_tile/Initialize(mapload, ...)

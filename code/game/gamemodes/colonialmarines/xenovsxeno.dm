@@ -279,6 +279,7 @@
 	calculate_end_statistics()
 	declare_fun_facts()
 
+	GLOB.round_statistics?.save()
 
 	return TRUE
 

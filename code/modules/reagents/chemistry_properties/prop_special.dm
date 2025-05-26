@@ -274,7 +274,7 @@
 	code = "RAD"
 	description = "Controls the radius of a fire, using unknown means"
 	rarity = PROPERTY_ADMIN
-	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
 
 /datum/chem_property/special/radius/reset_reagent()
@@ -298,7 +298,7 @@
 	code = "INT"
 	description = "Controls the intensity of a fire, using unknown means"
 	rarity = PROPERTY_ADMIN
-	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
 
 /datum/chem_property/special/intensity/reset_reagent()
@@ -320,7 +320,7 @@
 	code = "DUR"
 	description = "Controls the duration of a fire, using unknown means"
 	rarity = PROPERTY_ADMIN
-	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
+	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_UNADJUSTABLE
 	value = 666
 
 /datum/chem_property/special/duration/reset_reagent()

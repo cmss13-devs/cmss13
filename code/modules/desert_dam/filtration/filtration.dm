@@ -127,7 +127,6 @@ Each var depends on others
 	if(isliving(A))
 		var/mob/living/M = A
 
-		// Inside a xeno for example
 		if(!istype(M.loc, /turf))
 			return
 
@@ -135,6 +134,9 @@ Each var depends on others
 			if(M.pulling)
 				to_chat(M, SPAN_WARNING("The current forces you to release [M.pulling]!"))
 				M.stop_pulling()
+
+		if(HAS_TRAIT(M, TRAIT_HAULED))
+			return
 
 		cause_damage(M)
 		START_PROCESSING(SSobj, src)

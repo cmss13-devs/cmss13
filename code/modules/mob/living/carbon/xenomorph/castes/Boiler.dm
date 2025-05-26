@@ -22,7 +22,7 @@
 	caste_desc = "Gross!"
 	acid_level = 3
 	caste_luminosity = 2
-	spit_types = list(/datum/ammo/xeno/boiler_gas, /datum/ammo/xeno/boiler_gas/acid)
+	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
 	fire_immunity = FIRE_VULNERABILITY
 	// 3x fire damage
 	fire_vulnerability_mult = FIRE_MULTIPLIER_DEADLY
@@ -66,7 +66,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/boiler,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
@@ -77,6 +77,8 @@
 		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
+	skull = /obj/item/skull/boiler
+	pelt = /obj/item/pelt/boiler
 
 /mob/living/carbon/xenomorph/boiler/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
@@ -84,8 +86,6 @@
 	smoke.attach(src)
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
-	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid]
-	spit_types = list(/datum/ammo/xeno/boiler_gas/acid, /datum/ammo/xeno/boiler_gas)
 
 	update_icon_source()
 

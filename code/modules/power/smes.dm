@@ -438,5 +438,9 @@
 		return "[href]=-[Limit]'>-</A>"+rate+"[href]=[Limit]'>+</A>"
 	return rate
 
+/obj/structure/machinery/power/smes/magical/yautja
+	name = "Yautja Energy Core"
+	desc = "A highly advanced power source of Yautja design, utilizing unknown technology to generate and distribute energy efficiently throughout the vessel."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 #undef SMESRATE

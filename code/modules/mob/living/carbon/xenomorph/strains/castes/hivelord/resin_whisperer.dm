@@ -65,7 +65,7 @@
 	if(!action_cooldown_check())
 		return
 
-	if(mods["click_catcher"])
+	if(mods[CLICK_CATCHER])
 		return
 
 	var/turf/target_turf = get_turf(target_atom)

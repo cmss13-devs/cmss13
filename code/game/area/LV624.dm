@@ -260,6 +260,11 @@
 	name ="\improper North Central Caves"
 	icon_state = "away3" //meh
 
+/area/lv624/ground/caves/north_central_caves/lake_house_tower
+	name = "\improper Lake House Communications Relay"
+	ceiling = CEILING_NONE
+	icon_state = "yellow"
+
 /area/lv624/ground/caves/south_central_caves
 	name ="\improper South Central Caves"
 	icon_state = "away2" //meh

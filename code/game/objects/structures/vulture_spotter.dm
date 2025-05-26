@@ -116,7 +116,7 @@
 	unscope()
 
 /obj/structure/vulture_spotter_tripod/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(in_range(src, user) && !user.is_mob_incapacitated())
 			rotate(user)
 		return TRUE

@@ -1,8 +1,7 @@
-/* eslint-disable func-style */
 import { classes } from 'common/react';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 
-import { BoxProps, unit } from './Box';
+import { type BoxProps, unit } from './Box';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { Popper } from './Popper';

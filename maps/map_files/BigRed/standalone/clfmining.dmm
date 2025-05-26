@@ -1,0 +1,4907 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/prop/almayer/computer/PC{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"ab" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"ac" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	icon = 'icons/obj/pipes/manifold.dmi';
+	icon_state = "map";
+	name = "Pipe manifold"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ad" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/shard,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"ae" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"ag" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"ah" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"ai" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"aj" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"ak" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"am" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"an" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_20,
+/area/bigredv2/caves/mining)
+"ao" = (
+/obj/effect/landmark/corpsespawner/colonist/burst,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"ap" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aq" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_y = 32
+	},
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"ar" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"as" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"at" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"au" = (
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"av" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aw" = (
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"ax" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"ay" = (
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"az" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-5"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/wetleather,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aB" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"aC" = (
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"aD" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/caves/mining)
+"aE" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"aF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aH" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 8;
+	name = "\improper Abandoned Mining Storage"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aI" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/mars_cave,
+/area/bigredv2/caves/mining)
+"aJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg2/west,
+/area/bigredv2/caves/mining)
+"aK" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 6
+	},
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"aL" = (
+/obj/item/ammo_box/magazine/misc/mre/emergency,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aM" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"aP" = (
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"aW" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"bc" = (
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"bi" = (
+/obj/structure/reagent_dispensers/fueltank/gas,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"bq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"bs" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"bt" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"bC" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"bE" = (
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves/mining)
+"bG" = (
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"bO" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"bT" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/copper{
+	pixel_y = 1
+	},
+/obj/item/stack/sheet/mineral/osmium{
+	pixel_y = 6
+	},
+/obj/item/stack/sheet/mineral/platinum{
+	pixel_y = 12
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"cw" = (
+/obj/structure/toilet{
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"cz" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"cI" = (
+/obj/item/storage/belt/grenade,
+/obj/structure/closet/crate,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"cJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"cX" = (
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"dj" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"ds" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_3"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"du" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/frame/rack,
+/obj/effect/spawner/random/toolbox,
+/obj/structure/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/pipes/valve/open,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"dw" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"dy" = (
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"dG" = (
+/obj/effect/decal/cleanable/blood{
+	base_icon = 'icons/obj/items/weapons/grenade.dmi';
+	desc = "An expended M55C tear gas grenade that was used for nonlethal riot control. These used to be used on USCM ships until they found out that marines are already used to teargas so the U.S.S Re-education made a better model through 'extensive trials' that works on marines, which is now the M66 used by MPs today. Being now utterly useless to marines and phased out by the M66, M55Cs were spread around the colonies across the UA galaxy like salt to be used on poor colonists instead.";
+	icon = 'icons/obj/items/weapons/grenade.dmi';
+	icon_state = "grenade_custom";
+	name = "M55C Teargas grenade"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"dU" = (
+/obj/effect/landmark/crap_item,
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"dV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/flare{
+	pixel_y = -7
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"eu" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "\improper Machine room"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"eA" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"eE" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"eV" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6
+	},
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"fh" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"fA" = (
+/obj/effect/decal/hefa_cult_decals/d32,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"fE" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"fO" = (
+/obj/structure/sign/safety/fire_haz,
+/turf/closed/wall/wood,
+/area/bigredv2/caves/mining)
+"fR" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 27
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"fW" = (
+/obj/structure/girder,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ga" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"gb" = (
+/obj/item/ore{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"gz" = (
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe/plasmacutter{
+	pixel_y = 5
+	},
+/obj/item/tool/pickaxe/plasmacutter{
+	pixel_y = -5
+	},
+/obj/item/tool/pickaxe/plasmacutter,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"gG" = (
+/obj/item/device/flashlight/lantern,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"gR" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"gX" = (
+/obj/structure/tent/med,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"hd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/pistol/m1911,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"hy" = (
+/obj/structure/surface/table,
+/obj/item/storage/fancy/cigarettes/lucky_strikes{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/obj/item/storage/box/matches,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"hE" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/obj/item/paper/bigred/final,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"hL" = (
+/obj/item/paper/bigred/them,
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"hN" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"hQ" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"hU" = (
+/obj/structure/machinery/door/poddoor/almayer/closed,
+/obj/structure/cable,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"hW" = (
+/obj/effect/landmark/corpsespawner/ua_riot,
+/obj/item/weapon/gun/rifle/m41a/training,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"hY" = (
+/obj/effect/spawner/random/attachment,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"il" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"in" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = -3;
+	pixel_y = 16
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 7
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"iq" = (
+/obj/item/toy/prize/fireripley{
+	pixel_y = 19
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"iv" = (
+/obj/structure/reagent_dispensers/fueltank/gas,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"iy" = (
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"iA" = (
+/obj/item/stack/cable_coil/cut,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"iI" = (
+/obj/effect/landmark/survivor_spawner/clf_engi/solaris,
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves/mining)
+"jb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe/drill{
+	pixel_y = 8
+	},
+/obj/item/tool/pickaxe/drill{
+	pixel_y = -8
+	},
+/obj/item/tool/pickaxe/drill,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"jD" = (
+/obj/structure/ore_box,
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves/mining)
+"jM" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"jU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/item/weapon/gun/rifle/nsg23/no_lock,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/ap,
+/obj/item/ammo_magazine/rifle/nsg23/extended,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"kd" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/fueltank/gas,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"ki" = (
+/obj/item/trash/burger,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"kj" = (
+/obj/item/ore{
+	pixel_x = 9;
+	pixel_y = 13
+	},
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"kl" = (
+/turf/open/mars_cave/mars_cave_9,
+/area/bigredv2/caves/mining)
+"ko" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ore/diamond,
+/obj/effect/landmark/corpsespawner/miner,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"kt" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_container/food/drinks/flask/vacuumflask{
+	pixel_x = -7
+	},
+/obj/item/storage/fancy/cigarettes/kpack{
+	pixel_x = 6
+	},
+/obj/item/tool/lighter/zippo{
+	pixel_x = -1;
+	pixel_y = 14
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ky" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/lantern,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"kA" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"kF" = (
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/obj/structure/bed/chair,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/misc/flares,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"kH" = (
+/turf/template_noop,
+/area/template_noop)
+"kU" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"kV" = (
+/obj/effect/decal/cleanable/blood{
+	base_icon = 'icons/obj/items/weapons/grenade.dmi';
+	desc = "An expended M55C tear gas grenade that was used for nonlethal riot control. These used to be used on USCM ships until they found out that marines are already used to teargas so the U.S.S Re-education made a better model through 'extensive trials' that works on marines, which is now the M66 used by MPs today. Being now utterly useless to marines and phased out by the M66, M55Cs were spread around the colonies across the UA galaxy like salt to be used on poor colonists instead.";
+	icon = 'icons/obj/items/weapons/grenade.dmi';
+	icon_state = "grenade_custom";
+	name = "M55C Teargas grenade"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"lc" = (
+/obj/structure/closet/crate/miningcar,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ln" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"lo" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/good_item,
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"lD" = (
+/obj/item/stack/cable_coil/cut{
+	pixel_x = -3;
+	pixel_y = -5
+	},
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 9;
+	pixel_y = -8
+	},
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves/mining)
+"lE" = (
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	icon = 'icons/obj/pipes/manifold.dmi';
+	icon_state = "map";
+	name = "Pipe manifold"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"lG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/bigred/union,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"lJ" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/cans/beer{
+	pixel_x = -9;
+	pixel_y = 1
+	},
+/turf/open/mars_cave,
+/area/bigredv2/caves/mining)
+"lK" = (
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"lM" = (
+/obj/item/device/flashlight,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"lP" = (
+/obj/item/stack/medical/splint{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/folder{
+	pixel_x = -9;
+	pixel_y = -14
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"lT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/moneybag,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"lV" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"lW" = (
+/obj/structure/prop/almayer/cannon_cables{
+	name = "\improper Large Cables";
+	pixel_y = 13
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"mn" = (
+/obj/structure/window_frame/solaris/reinforced,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ms" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/snacks/tofu{
+	pixel_y = 11
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"mu" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"mz" = (
+/obj/structure/ore_box,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"mF" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"mG" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Abandoned Mining Storage"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"mM" = (
+/obj/structure/prop/almayer/cannon_cable_connector{
+	name = "\improper Control Module";
+	pixel_y = 13
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"mV" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"mZ" = (
+/obj/item/robot_parts/robot_component/diagnosis_unit{
+	pixel_y = 15
+	},
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"nd" = (
+/obj/structure/sign/poster/ad,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"nh" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"nk" = (
+/obj/item/weapon/broken_bottle,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"no" = (
+/obj/structure/cable{
+	icon_state = "5-6"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"nq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
+	pixel_y = 12
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"nu" = (
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"nB" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/food/drinks/bottle/goldschlager,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"nI" = (
+/obj/structure/cargo_container/hd/left/alt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"nJ" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"nW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"om" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/obj/item/mre_food_packet/clf,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"op" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"ov" = (
+/obj/structure/largecrate/supply,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ox" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"pf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/plasteel/medium_stack,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"pN" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"pS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/lantern,
+/turf/open/floor/plating/platingdmg2/west,
+/area/bigredv2/caves/mining)
+"pU" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"qf" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	icon = 'icons/obj/pipes/manifold.dmi';
+	icon_state = "map";
+	name = "Pipe manifold"
+	},
+/obj/structure/cable{
+	icon_state = "2-9"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"qh" = (
+/obj/structure/surface/table,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"qi" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"qn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves/mining)
+"qq" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"qA" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 7
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = -5
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = -3;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"qM" = (
+/obj/structure/machinery/vending/sovietsoda{
+	icon_state = "sovietsoda-broken";
+	stat = 1
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"qN" = (
+/obj/item/device/flashlight/lantern{
+	pixel_x = -6
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"qR" = (
+/obj/structure/surface/rack,
+/obj/item/storage/backpack/general_belt,
+/obj/item/storage/backpack/general_belt,
+/obj/item/storage/backpack/general_belt,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"qU" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"qV" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"rd" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 13;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"rf" = (
+/obj/effect/landmark/crap_item,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"rj" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"rl" = (
+/obj/item/tool/pickaxe/gold,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"ry" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"rB" = (
+/obj/structure/machinery/light/small,
+/obj/item/ammo_casing,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"rD" = (
+/obj/item/shard,
+/obj/item/stack/rods,
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"rK" = (
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = -12;
+	pixel_y = -4
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "Righty tighty, lefty loosey!";
+	dir = 1;
+	icon = 'icons/obj/pipes/valve.dmi';
+	icon_state = "map_valve1";
+	name = "Pressure Valve"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"rL" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 1;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"rS" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"rU" = (
+/obj/structure/fence,
+/obj/structure/disposalpipe/segment,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"sc" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"sj" = (
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"sp" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	name = "\improper Access door"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"sv" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/pistol/m1911,
+/obj/item/ammo_magazine/pistol/m1911,
+/obj/item/ammo_magazine/pistol/m1911,
+/obj/item/ammo_magazine/pistol/m1911,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/ammo_magazine/pistol/m1911,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"sx" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"sG" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"sK" = (
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"sS" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves/mining)
+"td" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"tp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"tw" = (
+/obj/item/ammo_magazine/smg/bizon{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/weapon/gun/smg/bizon{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/obj/item/ammo_magazine/smg/bizon{
+	pixel_x = 11;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/smg/bizon,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"tJ" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"tO" = (
+/obj/structure/closet/medical_wall,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"tU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/camera/oldcamera,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ua" = (
+/obj/item/tool/crowbar/red,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"uj" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"uy" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"uI" = (
+/obj/structure/fence,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"vg" = (
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"vl" = (
+/obj/structure/sign/safety/manualopenclose{
+	desc = "The now broken door access console for these podlocks. Seems like some poor bastard was frantically trying to slide their card due to the the card reader being scraped up. Poor bastards.";
+	icon = 'icons/obj/structures/machinery/monitors.dmi';
+	icon_state = "auth_off";
+	name = "Access console";
+	pixel_y = -2
+	},
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/caves/mining)
+"vp" = (
+/obj/structure/prop/almayer/missile_tube{
+	desc = "A detached drill arm of a big old Seegson D-602 Mining Robot. Seems to be jury rigged to run without the main robot assembly.";
+	name = "\improper Massive mining drill";
+	pixel_y = 13
+	},
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"vu" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_3"
+	},
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"vy" = (
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves/mining)
+"vA" = (
+/obj/item/ore{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"vB" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"vC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"vF" = (
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 19
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"wj" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"wk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"wu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"wC" = (
+/obj/item/spacecash/c1,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"wH" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/general_air_control/large_tank_control,
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"wP" = (
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"wU" = (
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe{
+	pixel_y = -7
+	},
+/obj/item/tool/pickaxe{
+	pixel_y = -3
+	},
+/obj/item/tool/pickaxe,
+/obj/item/tool/pickaxe{
+	pixel_y = 4
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"wV" = (
+/obj/item/ore/coal{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/item/ore/coal,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"xa" = (
+/obj/effect/landmark/corpsespawner/clf,
+/obj/effect/decal/cleanable/blood,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"xk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"xE" = (
+/obj/item/trash/cigbutt/ucigbutt,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_y = 7
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"xK" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"xL" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"xX" = (
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"yi" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"yp" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"yt" = (
+/obj/item/paper/bigred/walls,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"yB" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"yF" = (
+/obj/effect/landmark/corpsespawner/security/marshal,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/weapon/gun/launcher/grenade/m81/m79{
+	pixel_x = -3;
+	pixel_y = -9
+	},
+/obj/structure/cable{
+	icon_state = "1-5"
+	},
+/obj/item/clothing/head/helmet/marine/veteran/ua_riot,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"yK" = (
+/obj/structure/cargo_container/hd/right/alt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"yR" = (
+/obj/structure/closet,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/ore{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/reagent_container/food/snacks/packaged_burger,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"yU" = (
+/obj/item/device/flashlight/lamp{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/item/ashtray/plastic,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"yY" = (
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"zb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"zd" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/shotgun,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ze" = (
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/obj/item/trash/cigbutt,
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	icon = 'icons/obj/pipes/manifold.dmi';
+	icon_state = "map";
+	name = "Pipe manifold"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"zh" = (
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"zj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"zp" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves/mining)
+"zs" = (
+/obj/structure/surface/rack,
+/obj/item/storage/bag/ore{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"zK" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"zS" = (
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves/mining)
+"zZ" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Ad" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Av" = (
+/obj/item/tool/pickaxe,
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"Aw" = (
+/obj/structure/window/framed/solaris/reinforced,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Az" = (
+/obj/structure/ore_box,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"AA" = (
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"AH" = (
+/obj/structure/sign/safety/high_voltage,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"AR" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"AV" = (
+/turf/closed/wall/wood,
+/area/bigredv2/caves/mining)
+"AW" = (
+/obj/structure/closet/boxinggloves,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Be" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 17
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Bo" = (
+/obj/structure/surface/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/pistol/holdout,
+/obj/structure/machinery/light,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Bq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Br" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Bt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hefa_cult_decals/d32,
+/obj/effect/landmark/corpsespawner/clf,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"BH" = (
+/obj/item/explosive/grenade/slug/baton{
+	dir = 1;
+	pixel_y = -8
+	},
+/obj/item/explosive/grenade/baton{
+	dir = 4;
+	pixel_x = 9;
+	pixel_y = -8
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-5"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"BR" = (
+/obj/structure/surface/table,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/obj/item/device/radio,
+/turf/open/mars_cave,
+/area/bigredv2/caves/mining)
+"BX" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves/mining)
+"Cg" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 8;
+	icon_state = "gib6";
+	layer = 4;
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/miner,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Cp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard{
+	icon_state = "small"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ct" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/obj/item/weapon/twohanded/spear{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"Cw" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"CD" = (
+/obj/item/ore{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"CK" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"CM" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"CO" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"CS" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"CT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"CU" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"CW" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = -10;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Dg" = (
+/obj/item/weapon/gun/rifle/mar40,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"Dp" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/caves/mining)
+"Ds" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Dv" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -4;
+	pixel_y = 20
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Dy" = (
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"DI" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"DM" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"DN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/burger,
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"DV" = (
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"Ei" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ej" = (
+/obj/structure/computer3frame/wallcomp,
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ek" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Dormitories Toilet"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ev" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "1-4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Ey" = (
+/obj/effect/spawner/random/tool,
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"EC" = (
+/obj/structure/closet/secure_closet,
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
+/obj/item/explosive/plastic{
+	desc = "A compact explosive charge for controlled demolitions. Looks to be made from C4";
+	name = "Mining explosives"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"EE" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"EM" = (
+/obj/item/tool/pickaxe{
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"ER" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Fe" = (
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"Fg" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Fj" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = -3;
+	pixel_y = 16
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 7
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Fl" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/twohanded/lungemine{
+	pixel_y = 8
+	},
+/obj/item/weapon/twohanded/lungemine{
+	pixel_y = -7
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Fo" = (
+/obj/item/ore/diamond{
+	pixel_x = 8;
+	pixel_y = -11
+	},
+/obj/item/storage/firstaid/fire,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Fp" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Fq" = (
+/obj/item/ore{
+	pixel_x = -1
+	},
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"FC" = (
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"FF" = (
+/obj/item/ore{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"FK" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "An exchange valve";
+	dir = 8;
+	icon = 'icons/obj/pipes/filter.dmi';
+	icon_state = "map";
+	name = "Automated Valve"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"FL" = (
+/obj/structure/sign/poster/safety,
+/turf/closed/wall/wood,
+/area/bigredv2/caves/mining)
+"FO" = (
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"FT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper/bigred/witness,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"FW" = (
+/obj/structure/pipes/standard/tank,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"FZ" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Gd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Gf" = (
+/turf/open/mars_cave,
+/area/bigredv2/caves/mining)
+"Gi" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves/mining)
+"Gk" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Gp" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "1-2";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"GH" = (
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/caves/mining)
+"GO" = (
+/obj/structure/window/framed/solaris/reinforced,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"GQ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"GR" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "Righty tighty, lefty loosey!";
+	dir = 1;
+	icon = 'icons/obj/pipes/valve.dmi';
+	icon_state = "map_valve1";
+	name = "Pressure Valve"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Hg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/obj/structure/pipes/standard/tank/oxygen,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Hm" = (
+/obj/item/ore/iron{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/ore/iron{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/obj/item/ore/iron,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Ho" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/pistol/m4a3,
+/obj/item/ammo_magazine/pistol/hp{
+	pixel_x = 8;
+	pixel_y = -7
+	},
+/obj/item/ammo_magazine/pistol{
+	pixel_y = -4
+	},
+/obj/structure/cable{
+	icon_state = "9-10"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Hx" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"HL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"HQ" = (
+/obj/structure/bed/chair,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"HT" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_cave_9,
+/area/bigredv2/caves/mining)
+"HX" = (
+/obj/item/ore/diamond,
+/obj/item/stack/sheet/mineral/diamond{
+	pixel_x = 13;
+	pixel_y = -5
+	},
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"HZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/bible/hefa,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Ik" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "Righty tighty, lefty loosey!";
+	dir = 1;
+	icon = 'icons/obj/pipes/valve.dmi';
+	icon_state = "map_valve1";
+	name = "Pressure Valve"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"It" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"Iw" = (
+/obj/structure/machinery/door/poddoor/almayer/closed,
+/obj/structure/prop/invuln/minecart_tracks,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"IA" = (
+/obj/item/ore{
+	pixel_x = 9
+	},
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"IJ" = (
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"IZ" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Ja" = (
+/obj/structure/machinery/light/small,
+/turf/open/mars_cave/mars_cave_20,
+/area/bigredv2/caves/mining)
+"Jb" = (
+/obj/structure/sign/nosmoking_1,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"Jl" = (
+/obj/structure/cargo_container/hd/mid/alt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Jw" = (
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"JA" = (
+/obj/structure/fence,
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"JE" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_cave_20,
+/area/bigredv2/caves/mining)
+"JU" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"JV" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"JW" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/computer3frame/wallcomp,
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Kd" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/general_air_control/large_tank_control{
+	name = "Oxygen Supply Console"
+	},
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ki" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Km" = (
+/obj/structure/machinery/light/small,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"Ks" = (
+/obj/effect/landmark/survivor_spawner/clf_lead/solaris,
+/turf/open/mars_cave/mars_cave_9,
+/area/bigredv2/caves/mining)
+"Kv" = (
+/obj/structure/sign/safety/one{
+	pixel_x = 16
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"KB" = (
+/obj/item/ore{
+	pixel_x = -1;
+	pixel_y = -8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"KJ" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 1;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"Lo" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 6
+	},
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"Lp" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Lr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/broken,
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0;
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Lw" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"LB" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	icon = 'icons/obj/pipes/manifold.dmi';
+	icon_state = "map";
+	name = "Pipe manifold"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"LF" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/firealarm{
+	dir = 1
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"LG" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/obj/item/paper/bigred/clf,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"LJ" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 1;
+	name = "\improper Machine room"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"LW" = (
+/obj/structure/sign/safety/bulkhead_door{
+	pixel_x = -3
+	},
+/obj/structure/sign/safety/airlock{
+	pixel_x = 11
+	},
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/caves/mining)
+"LY" = (
+/obj/structure/prop/invuln/minecart_tracks,
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"LZ" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1;
+	icon_state = "metal_2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Mf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Mq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/snacks/tofu{
+	pixel_x = -1;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/snacks/tofu{
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/snacks/tofu,
+/obj/structure/cable{
+	icon_state = "5-9"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Mz" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"MB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"MC" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "1-2";
+	name = "heavy duty power cable"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ML" = (
+/obj/item/ore{
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"MP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hefa_cult_decals/d32,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"MQ" = (
+/obj/structure/pipes/standard/tank/oxygen,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"MS" = (
+/obj/item/weapon/gun/boltaction,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"MT" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/rack,
+/obj/item/hardpoint/locomotion/van_wheels,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"MX" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"Nc" = (
+/obj/item/paper/bigred/crazy,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ni" = (
+/obj/effect/decal/cleanable/dirt{
+	pixel_x = 8
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 4;
+	pixel_y = 15
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 6;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Np" = (
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves/mining)
+"NJ" = (
+/obj/structure/bed/chair,
+/obj/item/trash/cigbutt,
+/obj/item/storage/fancy/cigarettes/lady_finger{
+	pixel_x = 11
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"NT" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"NU" = (
+/obj/structure/cable{
+	icon_state = "5-8"
+	},
+/obj/structure/cable{
+	icon_state = "5-6"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"NV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/harpoon,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"NZ" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 4;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/obj/structure/cable{
+	icon_state = "2-5"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Oc" = (
+/obj/item/device/flashlight/lantern,
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"Oe" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 3;
+	pixel_y = 15
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Og" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/writing,
+/obj/structure/barricade/metal/wired{
+	dir = 8;
+	icon_state = "metal_1"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Oh" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"Oi" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "Righty tighty, lefty loosey!";
+	dir = 1;
+	icon = 'icons/obj/pipes/valve.dmi';
+	icon_state = "map_valve1";
+	name = "Pressure Valve"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Os" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ore{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Oy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"OL" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves/mining)
+"ON" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Pd" = (
+/obj/structure/largecrate/guns/merc{
+	icon_state = "case_double";
+	name = "supply crate"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Pe" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Pq" = (
+/obj/structure/closet/secure_closet/medical_wall{
+	pixel_y = -5
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"Ps" = (
+/obj/structure/window_frame/solaris/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Pw" = (
+/obj/structure/cable{
+	icon_state = "1-6"
+	},
+/obj/structure/cable{
+	icon_state = "6-8"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Pz" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"PB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg2/west,
+/area/bigredv2/caves/mining)
+"PI" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/caves/mining)
+"PM" = (
+/obj/structure/machinery/door/poddoor/almayer/closed,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"PO" = (
+/obj/item/tool/weldpack,
+/obj/item/frame/rack,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"PS" = (
+/obj/structure/machinery/mineral/processing_unit,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"PZ" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"Qb" = (
+/obj/structure/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/pipes/valve/open,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Qj" = (
+/obj/item/ore/gold,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Qy" = (
+/obj/structure/closet/crate/miningcar/yellow,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"QD" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/storage/firstaid/adv,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"QE" = (
+/obj/structure/machinery/power/apc/power/north,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"QF" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"QT" = (
+/obj/item/shard,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"QZ" = (
+/obj/item/ore/uranium{
+	pixel_x = 4;
+	pixel_y = 15
+	},
+/obj/item/ore/uranium{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/obj/item/ore/uranium,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Rg" = (
+/obj/structure/window/framed/solaris/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/safety/hvac{
+	pixel_x = -32
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Rn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Rw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Rz" = (
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"RA" = (
+/obj/item/tool/pickaxe{
+	pixel_y = -3
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"RD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"RE" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"RH" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks/bumper{
+	dir = 4
+	},
+/obj/item/ore/uranium,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"RP" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"Sa" = (
+/obj/effect/decal/cleanable/dirt{
+	pixel_x = 17
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Sb" = (
+/obj/item/ore{
+	pixel_x = 13;
+	pixel_y = 12
+	},
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"Sc" = (
+/obj/item/paper/bigred/finance{
+	pixel_x = -9
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Se" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Sh" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -9;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Sl" = (
+/obj/structure/largecrate,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Sp" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib1"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Su" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/obj/effect/landmark/survivor_spawner/clf_medic/solaris,
+/turf/open/mars_cave/mars_cave_20,
+/area/bigredv2/caves/mining)
+"Sv" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 8
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves/mining)
+"Sw" = (
+/obj/structure/prop/almayer/computers/sensor_computer1{
+	desc = "An old W-Y systems control computer that manages the air enviorment for a large area. Commonly used in mining operations in order to control O2 levels, alert of any dangerous gases and make the heat slightly more bearable.";
+	name = "W-Y Enviorment Control System Control Panel"
+	},
+/obj/structure/cable{
+	icon_state = "11-2"
+	},
+/obj/structure/cable{
+	icon_state = "11-10"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Sy" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "1-2-4";
+	name = "heavy duty power cable"
+	},
+/obj/structure/machinery/power/port_gen/pacman/super,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"SU" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"SW" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/gold/small_stack,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ti" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1;
+	name = "\improper Abandoned Mining Storage";
+	welded = 1
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Tp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"Tv" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 5;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Tw" = (
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"TG" = (
+/obj/item/device/flashlight/lantern,
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"TJ" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = 13;
+	pixel_y = 10
+	},
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/caves/mining)
+"TM" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"Un" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Uq" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"Ur" = (
+/obj/structure/pipes/standard/tank/phoron,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"UB" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"UC" = (
+/obj/structure/surface/table,
+/obj/item/restraint/handcuffs{
+	pixel_y = 12
+	},
+/obj/item/restraint/handcuffs{
+	pixel_y = 10
+	},
+/obj/item/mre_food_packet/clf,
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/caves/mining)
+"UE" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/plasticflaps,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Vc" = (
+/obj/structure/cable{
+	icon_state = "1-6"
+	},
+/obj/structure/cable{
+	icon_state = "1-9"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Ve" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/mars_cave,
+/area/bigredv2/caves/mining)
+"Vq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/remains/human,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"VH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ore{
+	pixel_x = 13;
+	pixel_y = 12
+	},
+/obj/item/ammo_box/magazine/misc/flares/empty,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"VN" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"VP" = (
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"VR" = (
+/turf/open/mars_cave/mars_cave_20,
+/area/bigredv2/caves/mining)
+"Wm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/explosive/grenade/high_explosive/frag{
+	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Wp" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Wt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hefa_cult_decals/d96,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Wy" = (
+/obj/structure/surface/table,
+/obj/item/folder/black_random,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 15
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"WA" = (
+/obj/item/ore{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/caves/mining)
+"WD" = (
+/obj/effect/decal/cleanable/blood{
+	base_icon = 'icons/obj/items/weapons/grenade.dmi';
+	desc = "An expended M55C tear gas grenade that was used for nonlethal riot control. These used to be used on USCM ships until they found out that marines are already used to teargas so the U.S.S Re-education made a better model through 'extensive trials' that works on marines, which is now the M66 used by MPs today. Being now utterly useless to marines and phased out by the M66, M55Cs were spread around the colonies across the UA galaxy like salt to be used on poor colonists instead.";
+	icon = 'icons/obj/items/weapons/grenade.dmi';
+	icon_state = "grenade_custom";
+	name = "M55C Teargas grenade"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_3"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"WP" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A pipe.";
+	dir = 10;
+	icon = 'icons/obj/pipes/pipes.dmi';
+	icon_state = "intact";
+	name = "Pipe"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"WV" = (
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/corpsespawner/clf,
+/turf/open/mars_cave/mars_cave_3,
+/area/bigredv2/caves/mining)
+"Xo" = (
+/obj/structure/largecrate/guns/merc{
+	name = "\improper dodgy crate"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Xp" = (
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"Xq" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/effect/landmark/survivor_spawner/clf/solaris,
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/caves/mining)
+"Xy" = (
+/turf/open/mars_cave/mars_cave_14,
+/area/bigredv2/caves/mining)
+"XO" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"XQ" = (
+/obj/structure/surface/rack,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/belt/medical/full,
+/obj/item/storage/firstaid/regular,
+/turf/open/mars_cave/mars_cave_13,
+/area/bigredv2/caves/mining)
+"XX" = (
+/obj/item/ore{
+	pixel_x = 9;
+	pixel_y = 13
+	},
+/obj/item/ore{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/caves/mining)
+"Yl" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Yt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Yx" = (
+/obj/item/ore{
+	pixel_x = -1;
+	pixel_y = -8
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"YI" = (
+/obj/structure/machinery/filtration/console{
+	pixel_y = 13
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+"YR" = (
+/obj/structure/closet/fireaxecabinet{
+	pixel_y = 27
+	},
+/obj/structure/closet/toolcloset,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"YW" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "Righty tighty, lefty loosey!";
+	dir = 1;
+	icon = 'icons/obj/pipes/valve.dmi';
+	icon_state = "map_valve1";
+	name = "Pressure Valve"
+	},
+/obj/structure/cable{
+	icon_state = "1-9"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-5"
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Zb" = (
+/obj/item/tool/pickaxe/drill,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/snacks/cheeseburger{
+	pixel_y = 22
+	},
+/turf/open/floor/plating,
+/area/bigredv2/caves/mining)
+"Zi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Zo" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_3"
+	},
+/obj/structure/barricade/plasteel/wired{
+	icon_state = "plasteel_2";
+	density = 1;
+	closed = 0
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves/mining)
+"Zr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/device/flashlight/lantern,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"Zu" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "1-2";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/caves/mining)
+"Zw" = (
+/obj/item/ore,
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/caves/mining)
+"ZG" = (
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ZM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ZP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/stack/cable_coil/random,
+/obj/effect/spawner/random/powercell{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/plating/platingdmg3/west,
+/area/bigredv2/caves/mining)
+"ZY" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	desc = "A heavy duty power cable for high voltage applications";
+	dir = 1;
+	icon = 'icons/obj/pipes/power_cond_heavy.dmi';
+	icon_state = "4-8";
+	name = "heavy duty power cable"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/caves/mining)
+
+(1,1,1) = {"
+kH
+kH
+kH
+Lw
+hW
+Lw
+dG
+Lw
+Lw
+Lw
+Dy
+Dy
+Dy
+aj
+Dy
+yY
+AR
+FO
+FO
+GH
+kH
+kH
+kH
+kH
+Lw
+yY
+RP
+FO
+FO
+lK
+FO
+PZ
+kA
+FO
+FO
+GH
+Lw
+Lw
+Lw
+rf
+"}
+(2,1,1) = {"
+kH
+kH
+kH
+Lw
+bG
+bG
+bG
+bG
+VN
+iA
+WV
+ak
+Dy
+Dy
+Dy
+aj
+kl
+RP
+FO
+kH
+kH
+kH
+kH
+NT
+NT
+NT
+NT
+GO
+bc
+Ti
+GO
+NT
+NT
+NT
+sS
+zZ
+Lw
+UB
+vy
+Lw
+"}
+(3,1,1) = {"
+kH
+kH
+kH
+OL
+Qy
+Yx
+ML
+Zw
+an
+Lw
+Ve
+aI
+Gf
+Gf
+Gf
+Gf
+aP
+AV
+kH
+kH
+kH
+kH
+kH
+NT
+cw
+tw
+NT
+om
+aA
+Zi
+pN
+kt
+Bo
+NT
+Uq
+nJ
+bG
+bG
+Lw
+yY
+"}
+(4,1,1) = {"
+kH
+kH
+kH
+Ct
+lK
+Av
+IA
+vA
+lK
+GH
+uj
+Ei
+Og
+xk
+Lr
+Hx
+tJ
+rU
+kH
+du
+NT
+NT
+NT
+NT
+vF
+Ek
+Fe
+Sl
+nW
+sG
+bc
+Ki
+JV
+NT
+kH
+kH
+wP
+wP
+GH
+yY
+"}
+(5,1,1) = {"
+kH
+kH
+kH
+AV
+AV
+wP
+wP
+TG
+bE
+zh
+LZ
+ky
+DN
+ER
+aF
+ky
+Tw
+uI
+PO
+rS
+NT
+qh
+LG
+MT
+rd
+ua
+tO
+Sl
+lV
+Yt
+bc
+Se
+ZM
+NT
+wP
+wP
+Av
+lK
+GH
+yY
+"}
+(6,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+JU
+pU
+Fp
+al
+ln
+aG
+Wt
+Bt
+Lw
+uI
+kH
+Qb
+NT
+Gk
+Sh
+lG
+Vq
+cz
+NT
+kF
+hN
+ZM
+cz
+Ki
+Ki
+NT
+kH
+Fq
+kj
+Sb
+GH
+Lw
+"}
+(7,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+Az
+aM
+sc
+Be
+ZM
+Wm
+Rw
+FT
+FC
+uI
+Sy
+MC
+NT
+Wy
+Nc
+nq
+CW
+wC
+nd
+CM
+qi
+ZM
+ki
+ZM
+AW
+NT
+kH
+kH
+lK
+wP
+GH
+HQ
+"}
+(8,1,1) = {"
+NT
+NT
+NT
+NT
+NT
+NT
+NT
+Sv
+yB
+qq
+vg
+aJ
+hd
+Gd
+ln
+MP
+Lw
+uI
+Un
+iy
+NT
+bs
+hY
+zj
+QF
+EE
+mV
+CO
+ZM
+Rn
+bc
+CO
+ZM
+NT
+kH
+kH
+xK
+wP
+GH
+hQ
+"}
+(9,1,1) = {"
+NT
+iq
+Zb
+Lp
+Br
+HX
+sv
+Aw
+cX
+Pe
+Gd
+pS
+PB
+HZ
+ZM
+Zr
+Lw
+uI
+JA
+rS
+NT
+NT
+NT
+am
+ZM
+am
+wk
+gz
+ZP
+ZM
+bc
+xX
+sK
+NT
+kH
+kH
+kH
+AA
+Lw
+HQ
+"}
+(10,1,1) = {"
+NT
+aa
+Cw
+Sc
+cX
+Fo
+ko
+Aw
+cX
+kU
+cX
+td
+tU
+PB
+PB
+ZM
+Lw
+Lw
+rj
+Lw
+dj
+Lw
+GO
+bc
+Ad
+dV
+Qj
+ZM
+ZM
+Sa
+bc
+Pd
+jU
+NT
+kH
+Lw
+Lw
+Lw
+Lw
+Lw
+"}
+(11,1,1) = {"
+NT
+yU
+rl
+yp
+IJ
+lT
+aW
+Oe
+Wp
+Pz
+zK
+zS
+lD
+Zu
+Zu
+Zu
+Gp
+Gp
+Ev
+yY
+GH
+dj
+GO
+Cp
+VH
+jb
+zd
+SW
+nB
+sG
+NT
+NT
+NT
+NT
+Bq
+Lw
+Lw
+Lw
+Lw
+Lw
+"}
+(12,1,1) = {"
+Pq
+bc
+cX
+lP
+vC
+fA
+bc
+Aw
+NJ
+xE
+Ni
+rL
+rL
+KJ
+bG
+KJ
+bG
+bG
+bt
+Xp
+bG
+Lw
+aH
+Os
+bq
+pf
+lM
+ov
+ZM
+il
+NT
+ap
+fh
+Ps
+Mf
+Lw
+ab
+Lw
+Lw
+Lw
+"}
+(13,1,1) = {"
+NT
+EC
+cX
+ao
+cX
+cX
+yi
+NT
+kd
+Ik
+ze
+Lw
+zp
+FO
+FO
+FO
+FO
+FO
+MX
+FO
+VP
+GH
+bc
+ZM
+cJ
+bT
+bc
+zs
+lo
+bO
+tp
+ar
+hL
+mn
+ad
+ae
+Lw
+vy
+XO
+Lw
+"}
+(14,1,1) = {"
+NT
+yR
+cX
+cX
+eA
+cX
+Xo
+Jb
+iv
+rK
+LB
+yY
+FO
+VP
+lK
+lK
+DV
+FO
+ZY
+lK
+wP
+GH
+GO
+ZM
+ZM
+bc
+bc
+bc
+bc
+au
+ar
+dw
+fh
+rD
+af
+UB
+Lw
+Dy
+AV
+AV
+"}
+(15,1,1) = {"
+NT
+FZ
+sx
+CT
+ox
+bc
+cI
+fO
+Ur
+GR
+lE
+DM
+Dg
+VP
+lK
+DV
+FO
+FO
+ZY
+FO
+FO
+GH
+GO
+Pd
+fR
+Fl
+qA
+bc
+wU
+av
+at
+nk
+fh
+Ps
+HL
+ae
+ab
+Km
+AV
+AV
+"}
+(16,1,1) = {"
+NT
+NT
+NT
+NT
+NT
+NT
+NT
+AV
+Ur
+GR
+FK
+yY
+RP
+FO
+lK
+DV
+FO
+lK
+gR
+lK
+FO
+Ja
+NT
+qM
+ZM
+Cg
+bc
+ZM
+ZM
+MB
+au
+as
+yt
+mn
+af
+QT
+Lw
+Lw
+yY
+mF
+"}
+(17,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+AV
+FW
+Oi
+LB
+bi
+AV
+mz
+lK
+Oc
+lK
+FO
+xL
+dU
+wP
+FO
+NT
+YR
+NV
+MS
+bc
+gb
+xX
+bc
+PS
+bc
+NT
+NT
+wk
+NT
+Lw
+Lw
+yY
+FO
+"}
+(18,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+JU
+WA
+EM
+mZ
+YI
+FO
+xL
+DV
+lK
+lK
+NT
+cX
+nI
+bc
+Pd
+bc
+qU
+bc
+bc
+bc
+RH
+qN
+mu
+NT
+Lw
+zS
+zS
+AA
+"}
+(19,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+FF
+XX
+vp
+lW
+mM
+FO
+BX
+TJ
+CK
+Ks
+NT
+cX
+Jl
+bc
+NT
+LF
+Sp
+qV
+ZG
+bc
+Ds
+Hm
+bc
+NT
+bG
+bG
+bG
+bG
+"}
+(20,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+CD
+KB
+Ey
+lK
+FO
+Dp
+BR
+UC
+RE
+NT
+cX
+yK
+RA
+Fe
+bc
+bc
+fW
+ZG
+ZM
+Mz
+ZM
+QZ
+NT
+AV
+AA
+AA
+AA
+"}
+(21,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+JU
+JU
+kl
+FO
+FO
+Xq
+lJ
+hy
+dy
+NT
+NT
+NT
+NT
+NT
+bc
+mG
+NT
+GO
+GO
+UE
+sp
+NT
+NT
+NT
+bG
+bG
+bG
+"}
+(22,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+vl
+bG
+Jw
+bG
+gX
+bG
+QD
+XQ
+qR
+Xy
+FO
+DV
+Su
+jM
+op
+iI
+mF
+FO
+FO
+FO
+FO
+GH
+Lw
+IZ
+yY
+FO
+ga
+lK
+Rz
+NT
+NT
+FO
+FO
+FO
+"}
+(23,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+LW
+zb
+uy
+FO
+DV
+FO
+FO
+FO
+FO
+FO
+FO
+FO
+ZY
+lK
+FO
+FO
+lK
+gG
+FO
+FO
+FO
+GH
+Lw
+Lw
+yY
+DV
+TM
+wV
+Rz
+NT
+NT
+It
+kA
+It
+"}
+(24,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+PM
+wu
+wP
+FO
+FO
+FO
+lK
+FO
+FO
+lK
+FO
+FO
+xL
+FO
+kV
+FO
+ag
+FO
+lK
+FO
+FO
+GH
+Lw
+Lw
+yY
+FO
+TM
+lK
+rS
+NT
+NT
+kH
+kH
+kH
+"}
+(25,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+Iw
+Tp
+SU
+SU
+SU
+SU
+Oh
+Oh
+SU
+SU
+SU
+Oh
+vB
+SU
+SU
+SU
+PI
+SU
+SU
+SU
+HT
+JE
+nh
+nh
+Gi
+LY
+eE
+FO
+Rz
+NT
+kH
+kH
+kH
+kH
+"}
+(26,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+PM
+RD
+AA
+AA
+AA
+AA
+AA
+AA
+AA
+kl
+FO
+FO
+ZY
+FO
+FO
+wP
+bE
+AA
+AA
+AA
+kl
+FO
+FO
+nu
+RP
+lK
+sj
+bE
+bc
+NT
+kH
+kH
+kH
+kH
+"}
+(27,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+PM
+qn
+zS
+Np
+AV
+AV
+NT
+NT
+GO
+GO
+eu
+AH
+ZY
+lK
+FO
+DV
+GH
+JU
+JU
+aq
+bG
+lK
+FO
+jD
+NT
+CU
+ON
+aL
+lc
+NT
+kH
+kH
+kH
+kH
+"}
+(28,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+hU
+Oy
+Dy
+AV
+AV
+AV
+NT
+kH
+MQ
+GR
+Tv
+Aw
+ZY
+FO
+lK
+FO
+GH
+AV
+AV
+AA
+AA
+FO
+FO
+kH
+NT
+NT
+NT
+NT
+NT
+NT
+kH
+kH
+kH
+kH
+"}
+(29,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+NT
+hE
+in
+kH
+kH
+kH
+NT
+JW
+Vc
+bc
+CS
+Aw
+GQ
+FO
+FO
+FO
+VR
+bG
+bG
+bG
+Xy
+bE
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(30,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+NT
+kH
+MQ
+YW
+ac
+NT
+AV
+AV
+kl
+FO
+FO
+FO
+bE
+AA
+AA
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(31,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+NT
+Ej
+Yl
+NU
+NZ
+NT
+AV
+FL
+yY
+FO
+lK
+FO
+GH
+Lw
+Lw
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(32,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+Fe
+kH
+Hg
+GR
+qf
+NT
+kH
+IZ
+DM
+FO
+aw
+FO
+GH
+Lw
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(33,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+NT
+QE
+Pw
+no
+WP
+Kv
+Fj
+Lw
+aC
+xa
+bC
+AA
+Lw
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(34,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+NT
+Kd
+Yl
+Mq
+Ho
+Rg
+Lw
+aE
+ai
+ay
+ax
+rB
+AV
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(35,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+NT
+wH
+BH
+Yt
+ms
+LJ
+aK
+Lo
+aD
+aB
+DI
+Lw
+AV
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(36,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+NT
+Sw
+az
+yF
+Dv
+fE
+ds
+vu
+ds
+WD
+ds
+Zo
+iA
+Lw
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(37,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+Lw
+Lw
+wj
+bG
+bG
+ry
+Lw
+Lw
+Lw
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}
+(38,1,1) = {"
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+Lw
+eV
+ah
+FO
+VR
+ab
+Fg
+Lw
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+kH
+"}

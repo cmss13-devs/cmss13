@@ -20,8 +20,9 @@
 
 /datum/emergency_call/pred/mixed/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
-	if(mob_min > length(members))
+	if(length(members) < mob_min)
 		message_all_yautja("Not enough humans in storage for the hunt to start.")
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 	else
 		message_all_yautja("Released [length(members)] humans from storage, let the hunt commence!")
 
@@ -116,7 +117,8 @@
 
 /datum/emergency_call/pred/xeno/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
-	if(mob_min > length(members))
+	if(length(members) < mob_min)
+		COOLDOWN_RESET(GLOB, hunt_timer_yautja)
 		message_all_yautja("Not enough serpents in storage for the hunt to start.")
 	else
 		message_all_yautja("Released [length(members)] serpents from storage, let the hunt commence!")
@@ -185,14 +187,14 @@
 /datum/emergency_call/young_bloods/remove_nonqualifiers(list/datum/mind/candidates_list)
 	var/list/datum/mind/youngblood_candidates_clean = list()
 	for(var/datum/mind/youngblood_candidate in candidates_list)
-		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current?.client, ERT_JOB_YOUNGBLOOD))
+		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current, ERT_JOB_YOUNGBLOOD))
 			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you are already whitelisted for predator or you are job banned from youngblood."))
 			continue
 		if(check_timelock(youngblood_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_job) && (youngblood_candidate.current?.client.get_total_xeno_playtime() >= time_required_for_job))
 			youngblood_candidates_clean.Add(youngblood_candidate)
 			continue
 		if(youngblood_candidate.current)
-			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round(time_required_for_job / 36000)] hours on both squad roles and xenomorph roles ."))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round(time_required_for_job / 36000)] hours on both squad roles and xenomorph roles."))
 	return youngblood_candidates_clean
 
 /datum/emergency_call/young_bloods/hunting_party
@@ -204,7 +206,11 @@
 
 /datum/emergency_call/young_bloods/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
-	message_all_yautja("Awoke [length(members)] youngbloods for the ritual.")
+	if(length(members) < mob_min)
+		message_all_yautja("No youngbloods answered the call.")
+		GLOB.blooding_activated = FALSE
+	else
+		message_all_yautja("Awoke [length(members)] youngbloods for the ritual.")
 
 /datum/emergency_call/young_bloods/create_member(datum/mind/player, turf/override_spawn_loc)
 	set waitfor = 0
@@ -227,7 +233,6 @@
 				break
 		FOR_DVIEW_END
 
-
 	if(!leader && HAS_FLAG(hunter?.client.prefs.toggles_ert, PLAY_LEADER)) // If someone wants to play as the dominant youngblood, they can. The role is purely roleplay-oriented with no mechanical advantage
 		leader = hunter
 		arm_equipment(hunter, /datum/equipment_preset/yautja/non_wl_leader, TRUE, TRUE)
@@ -238,4 +243,7 @@
 		to_chat(hunter, SPAN_ROLE_HEADER("You are a Yautja Youngblood!"))
 		to_chat(hunter, SPAN_YAUTJABOLDBIG("You are expected to remain in character at all times, follow all commands given to you by whitelisted players, and adhere to the honor code. If you fail to comply with any of these, you will be dispatched via a kill switch embedded within all Youngbloods. You may also face OOC repercussions. Good luck and have fun."))
 
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), hunter, SPAN_YAUTJABOLD("Objectives:</b> [objectives]")), 30 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), hunter, SPAN_YAUTJABOLD("Objectives:</b> [objectives]")), 30 SECONDS)
+
+	if(SSticker.mode)
+		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)

@@ -161,6 +161,10 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaE" = (
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/almayer/plate,
+/area/strata/ag/exterior/marsh/crash)
 "aaF" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -172,6 +176,18 @@
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"aaH" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/kitchen/utensil/pfork{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat{
+	pixel_y = 8;
+	pixel_x = -7
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/ag/interior/outpost/canteen)
 "aaI" = (
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
@@ -195,6 +211,26 @@
 /obj/structure/fence,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"aaN" = (
+/obj/structure/surface/rack,
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/ag/interior/mining_outpost/maintenance)
 "aaO" = (
 /obj/structure/surface/rack,
 /obj/item/tool/shovel/snow,
@@ -234,6 +270,12 @@
 /obj/effect/blocker/sorokyne_cold_water,
 /turf/open/gm/river,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"aaV" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfcrash"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
 "aaW" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -248,6 +290,12 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/ag/interior/outside/wooden_hospital)
+"aaY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/strata/ag/exterior/landing_zones/lz2)
 "aaZ" = (
 /obj/structure/surface/rack,
 /obj/item/roller/medevac,
@@ -320,6 +368,19 @@
 /obj/effect/landmark/yautja_teleport,
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abm" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/strata_ice/dirty,
+/area/strata/ag/interior/mountain)
+"abn" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/gm/dirt,
+/area/strata/ug/interior/jungle/carplake/north)
 "abo" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/ice/layer1,
@@ -328,6 +389,12 @@
 /obj/structure/machinery/light,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
+"abq" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/ag/interior/outpost/med)
 "abr" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -352,6 +419,19 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abw" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/strata/ag/interior/outpost/canteen)
+"abx" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "aby" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -397,6 +477,15 @@
 	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ug/interior/jungle/structures/research)
+"abG" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/red1,
+/area/strata/ag/interior/outpost/security)
 "abH" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/explosive_mines,
@@ -444,6 +533,12 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/interior/outside/bball/cave)
+"abO" = (
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "abP" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -456,6 +551,15 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/exterior/paths/far_north_outpost)
+"abR" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement/cement4,
+/area/strata/ag/exterior/landing_zones/lz2)
+"abS" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/strata/floor3,
+/area/strata/ag/interior/landing_zones/near_lz1)
 "abT" = (
 /obj/structure/surface/rack,
 /obj/item/storage/pill_bottle/bicaridine,
@@ -1142,9 +1246,7 @@
 /area/strata/ug/interior/jungle/structures/research)
 "aeH" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -1451,7 +1553,9 @@
 /area/strata/ag/interior/outside/bball)
 "afO" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/dogtag{
+	icon_state = "dogtag_upp_taken"
+	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/outside/bball)
 "afP" = (
@@ -1596,6 +1700,9 @@
 /area/strata/ug/interior/jungle/structures/research)
 "agu" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_y = 11
+	},
 /turf/open/floor/almayer/test_floor5,
 /area/strata/ug/interior/jungle/structures/research)
 "agv" = (
@@ -1691,13 +1798,29 @@
 /area/strata/ag/interior/mining_outpost/canteen)
 "agK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/spray/cleaner,
-/obj/item/reagent_container/food/snacks/flour,
+/obj/item/reagent_container/spray/cleaner{
+	pixel_y = 19;
+	pixel_x = 9
+	},
+/obj/item/reagent_container/food/snacks/flour{
+	pixel_x = 11;
+	pixel_y = 3
+	},
+/obj/item/tool/kitchen/can_opener/compact{
+	pixel_x = -6;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
+	pixel_x = -7;
+	pixel_y = 3
+	},
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "agL" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/microwave,
+/obj/structure/machinery/microwave{
+	pixel_y = 7
+	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
@@ -1705,7 +1828,9 @@
 /area/strata/ag/interior/mining_outpost/canteen)
 "agM" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagentgrinder,
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 9
+	},
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/mining_outpost/canteen)
 "agN" = (
@@ -2460,6 +2585,7 @@
 	pixel_y = 22
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_boiled_milk,
 /turf/open/floor/strata/white_cyan1,
 /area/strata/ag/interior/mining_outpost/canteen)
 "aka" = (
@@ -2805,6 +2931,7 @@
 "amg" = (
 /obj/structure/surface/rack,
 /obj/item/spacecash/c500,
+/obj/item/storage/box/mre/upp,
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/research)
 "ami" = (
@@ -4177,7 +4304,9 @@
 "atV" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/item/device/encryptionkey/dutch,
-/obj/item/dogtag,
+/obj/item/dogtag{
+	icon_state = "dogtag_upp_taken"
+	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/ag/interior/outpost/canteen)
 "atW" = (
@@ -4400,7 +4529,10 @@
 /turf/open/asphalt/cement/cement15,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "avg" = (
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
+	pixel_y = 19;
+	pixel_x = -6
+	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/structures/research/old_tunnels)
 "avi" = (
@@ -4856,7 +4988,7 @@
 /area/strata/ag/interior/outpost/engi)
 "axr" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
 	},
@@ -5195,7 +5327,9 @@
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
 "azo" = (
-/obj/item/dogtag,
+/obj/item/dogtag{
+	icon_state = "dogtag_upp_taken"
+	},
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outpost/maint)
@@ -5213,7 +5347,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/ruin)
 "azs" = (
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
+	pixel_y = 1;
+	pixel_x = 14
+	},
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/structures/ruin)
 "azt" = (
@@ -5434,7 +5571,7 @@
 /area/strata/ag/interior/outpost/engi)
 "aAw" = (
 /obj/structure/surface/rack,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /obj/item/tool/crowbar,
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -5565,7 +5702,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ug/interior/jungle/structures/ruin)
 "aBa" = (
-/obj/item/dogtag,
+/obj/item/dogtag{
+	icon_state = "dogtag_upp_taken"
+	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
 /area/strata/ug/interior/jungle/structures/ruin)
@@ -6163,7 +6302,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/structures/ruin)
 "aEu" = (
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
 /obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ug/interior/jungle/structures/ruin)
@@ -6834,9 +6973,6 @@
 	pixel_y = 3
 	},
 /obj/item/reagent_container/food/condiment/peppermill,
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/canteen)
 "aJm" = (
@@ -9047,6 +9183,10 @@
 "aVA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/kitchen/rollingpin,
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_y = -9;
+	pixel_x = 7
+	},
 /turf/open/floor/strata/white_cyan1,
 /area/strata/ag/interior/outpost/canteen/bar)
 "aVB" = (
@@ -9259,6 +9399,10 @@
 /obj/item/reagent_container/food/snacks/meat{
 	pixel_x = -1;
 	pixel_y = 2
+	},
+/obj/item/tool/kitchen/can_opener/compact{
+	pixel_y = 11;
+	pixel_x = 9
 	},
 /turf/open/floor/strata/white_cyan1,
 /area/strata/ag/interior/outpost/canteen/bar)
@@ -9795,7 +9939,9 @@
 /area/strata/ag/exterior/paths/flight_control_exterior)
 "baL" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
+	pixel_y = 5
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/ag/interior/outside/bball)
 "baM" = (
@@ -10466,6 +10612,9 @@
 /area/strata/ag/interior/outside/administration)
 "beT" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outside/administration)
 "beU" = (
@@ -12486,7 +12635,7 @@
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/strata/ag/exterior/paths/south_outpost)
 "bqP" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/strata/ag/exterior/marsh/center)
 "bqQ" = (
@@ -12637,11 +12786,11 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "brK" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/marsh/center)
 "brL" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/strata/ag/exterior/marsh/center)
 "brM" = (
@@ -14739,7 +14888,7 @@
 /turf/open/floor/strata/white_cyan2,
 /area/strata/ag/interior/outpost/med)
 "bKE" = (
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/security)
 "bKF" = (
@@ -15687,7 +15836,10 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outpost/security)
 "bYl" = (
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
+	pixel_y = 19;
+	pixel_x = 8
+	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/interior/tatami,
 /area/strata/ag/interior/outpost/canteen)
@@ -16400,7 +16552,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/wo_supplies/storage/belts/medical,
-/obj/item/dogtag,
+/obj/item/dogtag{
+	icon_state = "dogtag_upp_taken"
+	},
 /obj/item/clothing/suit/armor/riot,
 /obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/landmark/objective_landmark/far,
@@ -16696,7 +16850,7 @@
 /area/strata/ag/interior/outpost/canteen/bar)
 "ckd" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp,
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cke" = (
@@ -16810,6 +16964,9 @@
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "clo" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/mre/upp{
+	pixel_y = 7
+	},
 /turf/open/floor/almayer/plate,
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "clr" = (
@@ -17759,7 +17916,9 @@
 "czw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/ids,
-/obj/item/clothing/glasses/thermal/syndi,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/purp1,
 /area/strata/ug/interior/jungle/structures/monitoring)
 "czT" = (
@@ -19390,6 +19549,9 @@
 "eNz" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/communications,
+/obj/structure/sign/calendar/upp{
+	pixel_y = 29
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north)
 "eNF" = (
@@ -19661,10 +19823,6 @@
 "ffS" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
-/obj/item/reagent_container/food/condiment/saltshaker,
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/canteen)
 "fhl" = (
@@ -20261,7 +20419,6 @@
 "fVE" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
-/obj/item/reagent_container/food/condiment/peppermill,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/canteen)
 "fVX" = (
@@ -21088,7 +21245,7 @@
 /area/strata/ag/exterior/outpost_decks)
 "haN" = (
 /obj/structure/largecrate/random,
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
@@ -21779,7 +21936,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/ag/exterior/vanyard)
 "ibH" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outside/engineering/parts_storage)
@@ -21942,6 +22099,7 @@
 /area/strata/ag/exterior/marsh/relay_marshes)
 "imV" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/box/mre/upp,
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outside/checkpoints/north_armor)
 "imZ" = (
@@ -23052,7 +23210,9 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_y = 5
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/canteen)
 "jNE" = (
@@ -23410,9 +23570,10 @@
 /area/strata/ag/interior/landing_zones/near_lz1)
 "klG" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
-/obj/item/reagent_container/food/drinks/cans/waterbottle,
+/obj/item/reagent_container/food/drinks/cans/waterbottle/upp{
+	pixel_y = 19;
+	pixel_x = 8
+	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outside/bball)
@@ -25755,8 +25916,9 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/item/reagent_container/food/condiment/peppermill,
-/obj/structure/bed/chair,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_y = 5
+	},
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/outpost/canteen)
 "nFN" = (
@@ -25803,7 +25965,9 @@
 /area/strata/ag/interior/outpost/med)
 "nJh" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/dogtag{
+	icon_state = "dogtag_upp_taken"
+	},
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/outpost/canteen/bar)
 "nJr" = (
@@ -25979,9 +26143,8 @@
 /area/strata/ug/interior/jungle/structures/research/hot_springs)
 "nXR" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/cans/aspen,
-/obj/structure/bed/chair{
-	dir = 8
+/obj/item/reagent_container/food/drinks/cans/aspen{
+	pixel_y = 5
 	},
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/outpost/canteen)
@@ -26729,7 +26892,9 @@
 /area/strata/ag/exterior/marsh/water)
 "oUB" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/dogtag,
+/obj/item/dogtag{
+	icon_state = "dogtag_upp_taken"
+	},
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "oUD" = (
@@ -27843,7 +28008,9 @@
 "qpw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
-/obj/item/reagent_container/food/condiment/peppermill,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_y = -13
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/canteen)
 "qqO" = (
@@ -28307,7 +28474,9 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/item/reagent_container/food/condiment/peppermill,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_y = 4
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/canteen)
 "qTV" = (
@@ -28562,7 +28731,6 @@
 /turf/open/asphalt/cement,
 /area/strata/ag/interior/outside/engineering/parts_storage_exterior)
 "rkb" = (
-/obj/item/clothing/glasses/thermal/syndi,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/ag/interior/outside/checkpoints/north)
@@ -28748,6 +28916,10 @@
 "ryh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
+	pixel_y = 11;
+	pixel_x = 6
+	},
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "ryw" = (
@@ -28882,6 +29054,10 @@
 "rIC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/drinks/cans/ale,
+/obj/item/tool/kitchen/utensil/pspoon{
+	pixel_y = -11;
+	pixel_x = -6
+	},
 /turf/open/floor/strata/cyan1/east,
 /area/strata/ag/interior/outpost/canteen)
 "rIM" = (
@@ -30454,6 +30630,9 @@
 "tNa" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/tool/kitchen/can_opener{
+	pixel_y = 6
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/canteen)
 "tNz" = (
@@ -31087,7 +31266,9 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_y = 4
+	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/canteen)
 "uCH" = (
@@ -32446,7 +32627,7 @@
 /turf/open/floor/strata/floor2,
 /area/strata/ag/interior/outpost/med)
 "wsj" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/semki,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/ag/interior/outpost/engi)
 "wsm" = (
@@ -33143,7 +33324,9 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/item/reagent_container/food/condiment/saltshaker,
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_y = 5
+	},
 /turf/open/floor/strata/blue1,
 /area/strata/ag/interior/outpost/canteen)
 "xwn" = (
@@ -34157,7 +34340,7 @@ alz
 alz
 alz
 aac
-aac
+abm
 aac
 aac
 aac
@@ -36632,7 +36815,7 @@ gZp
 oeA
 oeA
 mKX
-oeA
+aaE
 cXU
 bhO
 bhO
@@ -37115,7 +37298,7 @@ aol
 aol
 aol
 aol
-aol
+abS
 aol
 cso
 aol
@@ -37970,7 +38153,7 @@ aoj
 cnv
 cru
 azx
-dCq
+abO
 ard
 arV
 dCq
@@ -41921,7 +42104,7 @@ jWs
 jWs
 jWs
 jWs
-jWs
+aaY
 jWs
 jWs
 jWs
@@ -43133,7 +43316,7 @@ pAZ
 bvE
 bvE
 xTU
-eFa
+abR
 bJI
 vsp
 hue
@@ -43394,7 +43577,7 @@ ajt
 ajt
 aHq
 aqD
-ajt
+aaN
 ajt
 aHq
 aHq
@@ -52354,7 +52537,7 @@ blb
 iNi
 boV
 blb
-bTF
+abq
 byF
 bBX
 ryK
@@ -56351,7 +56534,7 @@ atJ
 ddK
 bWM
 ijo
-ceI
+abG
 gAm
 gAm
 gAm
@@ -57753,7 +57936,7 @@ ijo
 awf
 ceI
 ijo
-aAD
+abx
 aCd
 aDf
 cea
@@ -59474,7 +59657,7 @@ agR
 aac
 aac
 aac
-aac
+aaV
 aac
 aac
 aac
@@ -59860,7 +60043,7 @@ nap
 ckN
 nGk
 jBG
-aai
+aaH
 xSL
 ffS
 aJe
@@ -62304,7 +62487,7 @@ cjn
 cjn
 bFx
 cjn
-chd
+abw
 jnt
 chd
 aFz
@@ -70540,7 +70723,7 @@ jUA
 jUA
 jUA
 cei
-chj
+abn
 cei
 jUA
 jUA

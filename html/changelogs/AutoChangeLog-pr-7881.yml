@@ -1,9 +1,0 @@
-author: "Sergeant_Lemon"
-delete-after: True
-changes:
-  - rscadd: "new fish types to the old fishing code"
-  - rscadd: "added turf flag 'fishable_turf'"
-  - rscadd: "added items to fishing loot table"
-  - bugfix: "fixed fishing rod code so it fishes on ocean and rivers"
-  - code_imp: "Changed code in the fishing category as well as meat, ore, and atoms"
-  - imageadd: "sprites for new fish and pearl item"

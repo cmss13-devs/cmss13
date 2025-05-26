@@ -13,7 +13,8 @@
 	var/pill_maker = TRUE
 	var/vial_maker = FALSE
 	var/obj/item/reagent_container/beaker = null
-	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
+	var/list/loaded_pill_bottles = list()
+	var/list/loaded_pill_bottles_to_fill = list()
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
@@ -22,6 +23,7 @@
 	var/pillsprite = "1"
 	var/client/has_sprites = list()
 	var/max_pill_count = 20
+	var/max_bottles_count = 8
 	var/tether_range = 3
 	var/obj/structure/machinery/smartfridge/chemistry/connected
 
@@ -61,26 +63,31 @@
 		icon_state = (beaker?"[base_state]1":"[base_state]0")
 
 
-/obj/structure/machinery/chem_master/attackby(obj/item/B, mob/living/user)
-	if(istype(B, /obj/item/reagent_container/glass))
+/obj/structure/machinery/chem_master/attackby(obj/item/inputed_item, mob/living/user)
+	if(istype(inputed_item, /obj/item/reagent_container/glass))
 		var/obj/item/old_beaker = beaker
-		beaker = B
-		user.drop_inv_item_to_loc(B, src)
+		beaker = inputed_item
+		user.drop_inv_item_to_loc(inputed_item, src)
 		if(old_beaker)
-			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [B]."))
+			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [inputed_item]."))
 			user.put_in_hands(old_beaker)
 		else
 			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		SStgui.update_uis(src)
 		update_icon()
 
-	else if(istype(B, /obj/item/storage/pill_bottle) && pill_maker)
-		if(loaded_pill_bottle)
-			to_chat(user, SPAN_WARNING("A pill bottle is already loaded into the machine."))
+	else if(istype(inputed_item, /obj/item/storage/pill_bottle) && pill_maker)
+		var/obj/item/storage/pill_bottle/bottle = inputed_item
+
+		if(length(loaded_pill_bottles) >= max_bottles_count)
+			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 			return
 
-		loaded_pill_bottle = B
-		user.drop_inv_item_to_loc(B, src)
+		loaded_pill_bottles += bottle
+		if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
+			loaded_pill_bottles_to_fill += bottle
+
+		user.drop_inv_item_to_loc(bottle, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		SStgui.update_uis(src)
 	return
@@ -107,15 +114,17 @@
 	.["pillsprite"] = pillsprite
 	.["bottlesprite"] = bottlesprite
 
-	.["pill_bottle"] = null
-	if(loaded_pill_bottle)
-		var/datum/component/label/label = loaded_pill_bottle.GetComponent(/datum/component/label)
-		.["pill_bottle"] = list(
-			"size" = length(loaded_pill_bottle.contents),
-			"max_size" = loaded_pill_bottle.max_storage_space,
-			"label" = label ? label.label_name : null,
-			"icon_state" = loaded_pill_bottle.icon_state
-		)
+	.["pill_bottles"] = list()
+	if(length(loaded_pill_bottles) > 0)
+		for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles)
+			var/datum/component/label/label = bottle.GetComponent(/datum/component/label)
+			LAZYADD(.["pill_bottles"], list(list(
+					"size" = length(bottle.contents),
+					"max_size" = bottle.max_storage_space,
+					"label" = label ? label.label_name : null,
+					"icon_state" = bottle.icon_state,
+					"isNeedsToBeFilled" = LAZYFIND(loaded_pill_bottles_to_fill, bottle) > 0
+				)))
 
 	.["beaker"] = null
 	if(beaker)
@@ -172,41 +181,54 @@
 
 	switch(action)
 		if("eject_pill")
-			if(!loaded_pill_bottle)
+			var/bottle_index = params["bottleIndex"] + 1;
+			if(length(loaded_pill_bottles) == 0 || bottle_index > length(loaded_pill_bottles))
 				return
 
-			if(!user.put_in_hands(loaded_pill_bottle))
-				loaded_pill_bottle.forceMove(loc)
+			var/obj/item/storage/pill_bottle/bottle = loaded_pill_bottles[bottle_index]
 
-			loaded_pill_bottle = null
+			if (!bottle)
+				return
+
+			if(!user.put_in_hands(loaded_pill_bottles[bottle_index]))
+				bottle.forceMove(loc)
+
+			if(LAZYFIND(loaded_pill_bottles_to_fill, bottle) > 0)
+				loaded_pill_bottles_to_fill -= bottle
+			loaded_pill_bottles -= bottle
+
+			if(length(loaded_pill_bottles_to_fill) == 0 && length(loaded_pill_bottles) > 0)
+				loaded_pill_bottles_to_fill += loaded_pill_bottles[1]
+			if(length(loaded_pill_bottles) == 1)
+				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
 
 			return TRUE
 
 		if("label_pill")
-			if(!loaded_pill_bottle)
+			if(length(loaded_pill_bottles) == 0)
 				return
 
 			var/label = copytext(reject_bad_text(params["text"]), 1, MAX_NAME_LEN)
 			if(!label)
 				return
 
-			loaded_pill_bottle.AddComponent(/datum/component/label, label)
-			if(length(label) < 3)
-				loaded_pill_bottle.maptext_label = label
-				loaded_pill_bottle.update_icon()
+			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+				bottle.AddComponent(/datum/component/label, label)
+				if(length(label) < 4)
+					bottle.maptext_label = label
+					bottle.update_icon()
 
 			return TRUE
 
 		if("color_pill")
-			if(!loaded_pill_bottle)
+			if(length(loaded_pill_bottles) == 0)
 				return
 
 			var/picked_color = params["color"]
-			if(picked_color && (picked_color in loaded_pill_bottle.possible_colors))
-				loaded_pill_bottle.icon_state = loaded_pill_bottle.base_icon + loaded_pill_bottle.possible_colors[picked_color]
-				return
 
-			loaded_pill_bottle.choose_color(user)
+			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+				if(picked_color && (picked_color in bottle.possible_colors))
+					bottle.icon_state = bottle.base_icon + bottle.possible_colors[picked_color]
 
 		if("add")
 			var/amount = params["amount"]
@@ -282,19 +304,53 @@
 					return
 
 				reagents_in_pill += contained_reagent.name
+			var/amount_per_pill = null
+			var/total_possible_pills = null
+			if(length(loaded_pill_bottles_to_fill) == 0)
+				amount_per_pill = clamp((reagents.total_volume / to_create), 0, 60)
+			else
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					if(bottle && length(bottle.contents) == bottle.max_storage_space)
+						loaded_pill_bottles_to_fill -= bottle
+					else
+						total_possible_pills +=  (bottle.max_storage_space - length(bottle.contents))
+				if (to_create > total_possible_pills || (to_create * length(loaded_pill_bottles_to_fill)) > total_possible_pills)
+					to_chat(user, SPAN_WARNING("Selected pill bottles do not have enough space in each bottle."))
+					return
+				else
+					amount_per_pill = clamp((reagents.total_volume / to_create) / length(loaded_pill_bottles_to_fill), 0, 60)
 
-			var/amount_per_pill = clamp(reagents.total_volume / to_create, 0, 60)
+			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create * clamp((length(loaded_pill_bottles_to_fill)), 1, max_bottles_count)] in [length(loaded_pill_bottles_to_fill)] pill bottles) (REAGENTS: [english_list(reagents_in_pill)] AMOUNT PER PILL: [amount_per_pill]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-			msg_admin_niche("[key_name(user)] created one or more pills (total pills to synthesize: [to_create]) (REAGENTS: [english_list(reagents_in_pill)]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			for(var/iterator in 1 to to_create)
-				var/obj/item/reagent_container/pill/creating_pill = new(loc)
-				creating_pill.pill_desc = "A custom pill."
-				creating_pill.icon_state = "pill[pillsprite]"
+			if (length(loaded_pill_bottles_to_fill) > 0)
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					var/obj/item/storage/pill_bottle/main_bottle = loaded_pill_bottles_to_fill[1]
+					var/datum/component/label/label_component_on_main_bottle = main_bottle.GetComponent(/datum/component/label)
+					var/datum/component/label/label_component_on_inputed_bottle = bottle.GetComponent(/datum/component/label)
 
-				reagents.trans_to(creating_pill, amount_per_pill)
-				if(loaded_pill_bottle && length(loaded_pill_bottle.contents) < loaded_pill_bottle.max_storage_space)
-					loaded_pill_bottle.handle_item_insertion(creating_pill, TRUE)
+					if(label_component_on_main_bottle != label_component_on_inputed_bottle)
+						bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
+						if(length(main_bottle.maptext_label) < 4)
+							bottle.maptext_label = main_bottle.maptext_label
+							bottle.update_icon()
+					else if(label_component_on_inputed_bottle != label_component_on_main_bottle)
+						qdel(label_component_on_inputed_bottle)
+					bottle.icon_state = main_bottle.icon_state
+					for(var/iterator in 1 to to_create)
+						var/obj/item/reagent_container/pill/creating_pill = new(loc)
+						creating_pill.pill_desc = "A custom pill."
+						creating_pill.icon_state = "pill[pillsprite]"
 
+						reagents.trans_to(creating_pill, amount_per_pill)
+						if(bottle && length(bottle.contents) < bottle.max_storage_space)
+							bottle.handle_item_insertion(creating_pill, TRUE)
+			else
+				for(var/iterator in 1 to to_create)
+					var/obj/item/reagent_container/pill/creating_pill = new(loc)
+					creating_pill.pill_desc = "A custom pill."
+					creating_pill.icon_state = "pill[pillsprite]"
+
+					reagents.trans_to(creating_pill, amount_per_pill)
 			return TRUE
 
 		if("create_glass")
@@ -315,7 +371,7 @@
 			switch(params["type"])
 				if("glass")
 					new_container = new /obj/item/reagent_container/glass/bottle()
-					new_container.name = "[name] Bottle"
+					new_container.name = "[name] bottle"
 					new_container.icon_state = "bottle-[bottlesprite]"
 					reagents.trans_to(new_container, 60)
 				if("vial")
@@ -358,7 +414,9 @@
 
 
 		if("transfer_pill")
-			if(!loaded_pill_bottle)
+			var/bottle_index = params["bottleIndex"] + 1;
+
+			if(length(loaded_pill_bottles) == 0 || bottle_index > length(loaded_pill_bottles))
 				return
 
 			if(QDELETED(connected))
@@ -371,13 +429,28 @@
 				attack_hand(user)
 				return
 
-			connected.add_local_item(loaded_pill_bottle)
-			loaded_pill_bottle = null
+			connected.add_local_item(loaded_pill_bottles[bottle_index])
+			if(LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[bottle_index]) > 0)
+				loaded_pill_bottles_to_fill -= loaded_pill_bottles[bottle_index]
+			loaded_pill_bottles -= loaded_pill_bottles[bottle_index]
+
+			if(length(loaded_pill_bottles_to_fill) == 0 && length(loaded_pill_bottles) > 0)
+				loaded_pill_bottles_to_fill += loaded_pill_bottles[1] //Indexs starting at one - Kill me
+
+			if(length(loaded_pill_bottles) == 1)
+				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
 			return TRUE
 
 		if("connect")
 			connect_smartfridge()
 			return TRUE
+		if("check_pill_bottle")
+			if(params["bottleIndex"] + 1 > length(loaded_pill_bottles))
+				return FALSE
+			if(params["value"])
+				loaded_pill_bottles_to_fill += loaded_pill_bottles[params["bottleIndex"] + 1]
+			else if (LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[params["bottleIndex"] + 1]) != 0)
+				loaded_pill_bottles_to_fill -= loaded_pill_bottles[params["bottleIndex"] + 1]
 
 
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)
@@ -415,3 +488,6 @@
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0
+
+/obj/structure/machinery/chem_master/vial
+	vial_maker = TRUE

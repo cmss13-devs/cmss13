@@ -35,7 +35,7 @@
 	pixel_x = -14
 	},
 /turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "aah" = (
 /obj/structure/bed/chair/hunter{
 	dir = 8
@@ -174,12 +174,81 @@
 	},
 /turf/open/gm/river/shallow_ocean_shallow_ocean,
 /area/varadero/interior/beach_bar)
+"aaE" = (
+/turf/open/gm/coast/beachcorner2/north_east,
+/area/varadero/exterior/islands)
+"aaF" = (
+/turf/open/gm/coast/north,
+/area/varadero/exterior/islands)
 "aaG" = (
 /obj/effect/landmark/lv624/fog_blocker{
 	time_to_dispel = 25000
 	},
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/varadero/exterior/monsoon)
+"aaH" = (
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/varadero/exterior/islands)
+"aaI" = (
+/turf/open/gm/coast/east,
+/area/varadero/exterior/islands)
+"aaJ" = (
+/turf/open/gm/coast/west,
+/area/varadero/exterior/islands)
+"aaK" = (
+/obj/effect/overlay/palmtree_r,
+/turf/open/gm/dirt,
+/area/varadero/exterior/islands)
+"aaL" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/varadero/exterior/islands)
+"aaM" = (
+/turf/open/gm/coast/south,
+/area/varadero/exterior/islands)
+"aaN" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/varadero/exterior/islands)
+"aaO" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "clfraid"
+	},
+/turf/open/auto_turf/sand_white/layer1,
+/area/varadero/interior_protected/caves/swcaves)
+"aaP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/rock/brown,
+/area/varadero/interior/oob)
+"aaQ" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/gm/grass/grass1/weedable,
+/area/varadero/interior/caves/north_research)
+"aaR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/gm/dirt,
+/area/varadero/exterior/lz2_near)
+"aaS" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/security)
+"aaT" = (
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/varadero/interior/library)
+"aaU" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidfloor/north,
+/area/varadero/exterior/lz1_near)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -1056,6 +1125,9 @@
 	pixel_y = 6
 	},
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/research)
 "aHu" = (
@@ -4018,7 +4090,7 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "dbV" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/eat,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_NW)
 "dcC" = (
@@ -4654,7 +4726,7 @@
 "dFt" = (
 /obj/structure/prop/fishing/line/long,
 /turf/open/gm/coast/beachcorner2/south_west,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "dGh" = (
 /obj/effect/landmark/objective_landmark/medium,
 /obj/structure/closet/crate/hydroponics/prespawned,
@@ -6449,9 +6521,9 @@
 	pixel_x = 7;
 	pixel_y = 13
 	},
-/obj/item/implantcase/explosive{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/item/implantcase/death_alarm{
+	pixel_y = -3;
+	pixel_x = 3
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
@@ -7735,7 +7807,7 @@
 	pixel_y = 5
 	},
 /turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "gcK" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -9621,7 +9693,7 @@
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
 /turf/open/auto_turf/sand_white/layer1,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "hJw" = (
 /obj/structure/largecrate/random,
 /obj/item/storage/photo_album{
@@ -9853,12 +9925,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "hRs" = (
-/obj/structure/machinery/power/smes/magical{
-	capacity = 9e+008;
-	charge = 9e+008;
-	dir = 4;
-	name = "plasma power generator"
-	},
+/obj/structure/prop/invuln/fusion_reactor,
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "hRv" = (
@@ -9973,7 +10040,7 @@
 	pixel_y = 9
 	},
 /turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "hXq" = (
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/caves/digsite)
@@ -10846,6 +10913,9 @@
 /area/varadero/exterior/pool)
 "iIt" = (
 /obj/structure/filingcabinet/chestdrawer,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "iIC" = (
@@ -13861,7 +13931,7 @@
 	dir = 4
 	},
 /obj/structure/surface/table,
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/m240,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/electrical)
 "leP" = (
@@ -19626,7 +19696,7 @@
 "pPf" = (
 /obj/structure/surface/table,
 /obj/item/prop/helmetgarb/flair_uscm,
-/obj/item/storage/box/uscm_mre{
+/obj/item/storage/box/mre{
 	pixel_x = -4;
 	pixel_y = 13
 	},
@@ -23649,7 +23719,7 @@
 /area/varadero/interior/research)
 "sKz" = (
 /obj/structure/closet/crate/supply,
-/obj/item/storage/box/wy_mre,
+/obj/item/storage/box/mre/wy,
 /obj/item/storage/beer_pack,
 /obj/item/spacecash,
 /turf/open/gm/dirt,
@@ -24050,6 +24120,7 @@
 /turf/open/shuttle/elevator/grating,
 /area/varadero/interior/hall_N)
 "tfc" = (
+/obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning,
 /area/varadero/exterior/lz2_near)
 "tfj" = (
@@ -26666,7 +26737,7 @@
 "vom" = (
 /obj/item/storage/beer_pack,
 /turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "voJ" = (
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -27081,7 +27152,7 @@
 	anchored = 1
 	},
 /turf/open/gm/coast/beachcorner/south_west,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "vDC" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/blood/oil,
@@ -27240,7 +27311,7 @@
 	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "vLt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28043,7 +28114,7 @@
 	pixel_x = 10
 	},
 /turf/open/gm/dirt,
-/area/varadero/exterior/pontoon_beach)
+/area/varadero/exterior/islands)
 "wnE" = (
 /obj/structure/tunnel{
 	id = "north_research_tunnel"
@@ -32038,7 +32109,7 @@ srg
 srg
 xCn
 fzc
-jQa
+aaO
 hdh
 jQa
 jQa
@@ -35456,7 +35527,7 @@ qul
 qul
 qul
 qHc
-mJe
+aaQ
 xCn
 xCn
 oPQ
@@ -43077,7 +43148,7 @@ bZU
 bZU
 xsH
 mrC
-wMw
+aaU
 wMw
 wMw
 wMw
@@ -44493,9 +44564,9 @@ xVw
 qwQ
 daS
 qwQ
-gVO
-jaF
-qgm
+aaL
+aaI
+aaE
 lTR
 dXg
 dXg
@@ -44675,9 +44746,9 @@ wBp
 qwQ
 qwQ
 lTR
-scL
+aaM
 vLo
-lnO
+aaF
 qwQ
 qwQ
 qwQ
@@ -44857,9 +44928,9 @@ xVw
 qwQ
 qwQ
 qwQ
-eGX
-hKK
-fLY
+aaN
+aaJ
+aaH
 qwQ
 qwQ
 qwQ
@@ -45587,11 +45658,11 @@ rYC
 dXg
 qwQ
 lTR
-gVO
-jaF
-jaF
-jaF
-qgm
+aaL
+aaI
+aaI
+aaI
+aaE
 qwQ
 qwQ
 qwQ
@@ -45769,11 +45840,11 @@ wBp
 daS
 dXg
 aTY
-scL
-lsN
+aaM
+aaK
 gcF
 wnA
-lnO
+aaF
 qwQ
 qwQ
 qwQ
@@ -45951,11 +46022,11 @@ wBp
 qwQ
 uYJ
 lTR
-scL
+aaM
 vom
 hJq
 hXe
-lnO
+aaF
 qwQ
 pAX
 qwQ
@@ -46133,11 +46204,11 @@ wBp
 qwQ
 aTY
 lTR
-eGX
-hKK
+aaN
+aaJ
 vDw
 aag
-lnO
+aaF
 qwQ
 lTR
 qwQ
@@ -46318,8 +46389,8 @@ aTY
 qwQ
 aTY
 dFt
-hKK
-fLY
+aaJ
+aaH
 lTR
 qwQ
 lTR
@@ -47278,7 +47349,7 @@ hsl
 giN
 hyr
 sXb
-tzw
+aaT
 aJP
 svH
 kBo
@@ -50038,7 +50109,7 @@ fEZ
 htt
 wVf
 wVf
-idw
+aaS
 jQB
 psb
 idw
@@ -54307,7 +54378,7 @@ mCF
 mCF
 pGs
 pGs
-pGs
+aaP
 wUU
 "}
 (132,1,1) = {"
@@ -56527,7 +56598,7 @@ wlB
 wlB
 wlB
 wlB
-wlB
+aaR
 wlB
 wlB
 wlB

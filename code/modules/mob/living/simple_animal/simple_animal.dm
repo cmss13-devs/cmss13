@@ -125,6 +125,16 @@
 		return
 	return ..()
 
+/mob/living/simple_animal/update_stat()
+	if(stat == DEAD)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+		set_stat(UNCONSCIOUS)
+		return
+
+	set_stat(CONSCIOUS)
+
 /mob/living/simple_animal/update_fire()
 	if(!on_fire)
 		overlays -= fire_overlay

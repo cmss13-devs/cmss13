@@ -16,7 +16,7 @@
 	available_strains = list(/datum/xeno_strain/resin_whisperer)
 
 	evolution_allowed = FALSE
-	caste_desc = "A builder of really big hives."
+	caste_desc = "For all your resin needs."
 	deevolves_to = list(XENO_CASTE_DRONE)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS
@@ -60,7 +60,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -86,6 +86,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Hivelord_1","Hivelord_2","Hivelord_3")
 	weed_food_states_flipped = list("Hivelord_1","Hivelord_2","Hivelord_3")
+
+	skull = /obj/item/skull/hivelord
+	pelt = /obj/item/pelt/hivelord
 
 /datum/behavior_delegate/hivelord_base
 	name = "Base Hivelord Behavior Delegate"

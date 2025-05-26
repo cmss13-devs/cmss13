@@ -28,6 +28,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply/station/upp
 	name = "Supply Shuttle UPP"
 
+
+
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
@@ -429,6 +431,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CARGO)
 	var/x_supply = 0
 	var/y_supply = 0
+	var/z_supply = 0
 	var/datum/squad/current_squad = null
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
@@ -477,6 +480,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
+	data["z_offset"] = z_supply
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -493,16 +497,23 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	switch(action)
 		if("set_x")
 			var/new_x = text2num(params["set_x"])
-			if(!new_x)
+			if(isnull(new_x))
 				return
 			x_supply = new_x
 			. = TRUE
 
 		if("set_y")
 			var/new_y = text2num(params["set_y"])
-			if(!new_y)
+			if(isnull(new_y))
 				return
 			y_supply = new_y
+			. = TRUE
+
+		if("set_z")
+			var/new_z = text2num(params["set_z"])
+			if(isnull(new_z))
+				return
+			z_supply = new_z
 			. = TRUE
 
 		if("pick_squad")
@@ -559,11 +570,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_supply)
+
+	if(!is_ground_level(z_coord))
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
@@ -1021,7 +1032,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(scramble)
 		paper_info = stars_decode_html(info)
 	// Tossing ref in widow id as this allows us to read multiple manifests at same time
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", width = 550, height = 650)
 	onclose(user, "manifest\ref[src]")
 
 /obj/item/paper/manifest/proc/generate_contents()
@@ -1438,7 +1449,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			else
 				dat += "<a href='byond://?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
 
-	show_browser(H, dat, asrs_name, "computer", "size=575x450")
+	show_browser(H, dat, asrs_name, "computer", width = 575, height = 450)
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()

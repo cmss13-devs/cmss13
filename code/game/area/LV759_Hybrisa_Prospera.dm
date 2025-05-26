@@ -711,6 +711,41 @@
 /area/lv759/indoors/weyyu_office/supervisor
 	name = "Weyland-Yutani Offices - Colony Supervisors Office"
 
+// Weyland-Yutani Offices
+
+/area/lv759/indoors/twe_souter_outpost
+	name = "IASF Outpost Souter - Entrance"
+	icon_state = "security_hub"
+	minimap_color = MINIMAP_AREA_COMMAND
+
+/area/lv759/indoors/twe_souter_outpost/reception
+	name = "IASF Outpost Souter - Reception Office"
+
+/area/lv759/indoors/twe_souter_outpost/hallway
+	name = "IASF Outpost Souter - Main Hall"
+
+/area/lv759/indoors/twe_souter_outpost/dorm
+	name = "IASF Outpost Souter - Dormitory"
+
+/area/lv759/indoors/twe_souter_outpost/maint
+	name = "IASF Outpost Souter - Flight Maintenance Room"
+
+/area/lv759/indoors/twe_souter_outpost/hangar
+	name = "IASF Outpost Souter - Hangar"
+
+/area/lv759/indoors/twe_souter_outpost/flight
+	name = "IASF Outpost Souter - Flight Control"
+
+/area/lv759/indoors/twe_souter_outpost/armoury
+	name = "IASF Outpost Souter - Armoury"
+// Using 'armoury' is correct here since its for a base controlled by future British people, not Americans
+
+/area/lv759/indoors/twe_souter_outpost/twe_gunship
+	name = "TWE UD4-UK"
+	icon_state = "wydropship"
+	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY
+
 // Bar & Entertainment Complex
 
 /area/lv759/indoors/bar

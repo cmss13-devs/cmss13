@@ -130,7 +130,7 @@
 	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
-/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks)
+/atom/movable/proc/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
 	var/temp_pass_flags = pass_flags
 	switch (launch_type)
 		if (NORMAL_LAUNCH)
@@ -153,10 +153,18 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
 		return
 
-	launch_towards(LM)
+	flags_atom |= NO_ZFALL
+
+	launch_towards(LM, tracking)
+
+	flags_atom &= ~NO_ZFALL
+	var/turf/end_turf = get_turf(src)
+	if(end_turf)
+		end_turf.on_throw_end(src)
+
 
 // Proc for throwing or propelling movable atoms towards a target
-/atom/movable/proc/launch_towards(datum/launch_metadata/LM)
+/atom/movable/proc/launch_towards(datum/launch_metadata/LM, tracking = FALSE)
 	if (!istype(LM))
 		CRASH("invalid launch_metadata passed to launch_towards")
 	if (!LM.target || !src)
@@ -214,6 +222,8 @@
 				if(A == LM.target)
 					hit_atom = A
 					break
+			if(!hit_atom && tracking && get_dist(src, LM.target) <= 1 && get_dist(start_turf, LM.target) <= 1) // If we missed, but we are tracking and the target is still next to us and the turf we launched from, then we still count it as a hit
+				hit_atom = LM.target
 		launch_impact(hit_atom)
 	if (loc)
 		throwing = FALSE

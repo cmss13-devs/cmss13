@@ -3,6 +3,45 @@
 	density = TRUE
 	opacity = TRUE
 
+/turf/closed/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/closed/attack_hand(mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return
+
+	var/turf/above_current = SSmapping.get_turf_above(get_turf(src))
+	var/turf/above_user = SSmapping.get_turf_above(get_turf(user))
+
+	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
+		return
+
+	while(above_current.density)
+		above_current = SSmapping.get_turf_above(get_turf(above_current))
+		above_user = SSmapping.get_turf_above(get_turf(above_user))
+
+		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
+			return
+
+	for(var/atom/possible_blocker in above_current)
+		if(possible_blocker.density)
+			return
+
+	if(user.action_busy)
+		return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing up [src]."), SPAN_WARNING("You start climbing up [src]."))
+
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] climbs up [src]."), SPAN_WARNING("You climb up [src]."))
+
+	user.forceMove(above_current)
+	return
+
+
 /turf/closed/insert_self_into_baseturfs()
 	return
 
@@ -247,8 +286,9 @@
 	icon = 'icons/turf/shuttle.dmi'
 	layer = ABOVE_TURF_LAYER
 
-/turf/closed/shuttle/is_weedable()
-	return FULLY_WEEDABLE
+/turf/closed/shuttle/Initialize(mapload)
+	. = ..()
+	is_weedable = FULLY_WEEDABLE
 
 /turf/closed/shuttle/dropship
 	icon = 'icons/turf/walls/walls.dmi'

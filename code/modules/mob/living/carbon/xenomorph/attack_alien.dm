@@ -12,6 +12,10 @@
 	if(attacking_xeno.fortify || HAS_TRAIT(attacking_xeno, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		to_chat(attacking_xeno, SPAN_WARNING("[src] is being hauled, we cannot do anything to them."))
+		return
+
 	var/intent = attacking_xeno.a_intent
 
 	if(attacking_xeno.behavior_delegate)
@@ -69,8 +73,6 @@
 			attacking_xeno.track_slashes(attacking_xeno.caste_type) //Adds to slash stat.
 			var/damage = rand(attacking_xeno.melee_damage_lower, attacking_xeno.melee_damage_upper) + dam_bonus
 			var/acid_damage = 0
-			if(attacking_xeno.burn_damage_lower)
-				acid_damage = rand(attacking_xeno.burn_damage_lower, attacking_xeno.burn_damage_upper)
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(attacking_xeno.frenzy_aura > 0)
@@ -123,6 +125,11 @@
 				n_damage = attacking_xeno.behavior_delegate.melee_attack_modify_damage(n_damage, src)
 				attacking_xeno.behavior_delegate.melee_attack_additional_effects_target(src)
 				attacking_xeno.behavior_delegate.melee_attack_additional_effects_self()
+
+			//xenos damaging gun durability
+			var/obj/item/weapon/gun/gun_inhand = get_active_hand()
+			if(istype(gun_inhand))
+				gun_inhand.xeno_attack_durability(attacking_xeno, src) //damages durability of gun on the active hand regardless of which hand is targetted by the xeno
 
 			var/slash_noise = attacking_xeno.slash_sound
 			var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)
@@ -295,7 +302,7 @@
 	return TRUE
 
 /mob/living/carbon/human/is_xeno_grabbable()
-	if(stat != DEAD || chestburst)
+	if(stat != DEAD)
 		return TRUE
 
 	if(status_flags & XENO_HOST)
@@ -304,8 +311,8 @@
 				return FALSE
 		if(world.time > timeofdeath + revive_grace_period)
 			return FALSE // they ain't gonna burst now
-	else
-		return FALSE // leave the dead alone
+		return TRUE
+	return FALSE // leave the dead alone
 
 //This proc is here to prevent Xenomorphs from picking up objects (default attack_hand behaviour)
 //Note that this is overridden by every proc concerning a child of obj unless inherited
@@ -594,13 +601,19 @@
 	if(M.is_mob_incapacitated() || M.body_position != STANDING_UP)
 		return XENO_NO_DELAY_ACTION
 
-	var/delay
+	var/delay = 4 SECONDS
 
 	if(!arePowerSystemsOn())
 		delay = 1 SECONDS
 		playsound(loc, "alien_doorpry", 25, TRUE)
 	else
-		delay = 4 SECONDS
+		switch(M.mob_size)
+			if(MOB_SIZE_XENO_SMALL, MOB_SIZE_XENO_VERY_SMALL)
+				delay = 4 SECONDS
+			if(MOB_SIZE_BIG)
+				delay = 1 SECONDS
+			if(MOB_SIZE_XENO)
+				delay = 3 SECONDS
 		playsound(loc, "alien_doorpry", 25, TRUE)
 
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."),
@@ -945,23 +958,6 @@
 			SPAN_DANGER("We smash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		return XENO_ATTACK_ACTION
 
-/obj/structure/girder/attack_alien(mob/living/carbon/xenomorph/M)
-	if((M.caste && M.caste.tier < 2 && M.claw_type < CLAW_TYPE_VERY_SHARP) || unacidable)
-		to_chat(M, SPAN_WARNING("Our claws aren't sharp enough to damage [src]."))
-		return XENO_NO_DELAY_ACTION
-	M.animation_attack_on(src)
-	health -= floor(rand(M.melee_damage_lower, M.melee_damage_upper) * 0.5)
-	if(health <= 0)
-		M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"),
-		SPAN_DANGER("We slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
-		dismantle()
-	else
-		M.visible_message(SPAN_DANGER("[M] smashes [src]!"),
-		SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-		playsound(loc, 'sound/effects/metalhit.ogg', 25, TRUE)
-	return XENO_ATTACK_ACTION
-
 /obj/structure/machinery/vending/attack_alien(mob/living/carbon/xenomorph/M)
 	if(is_tipped_over)
 		to_chat(M, SPAN_WARNING("There's no reason to bother with that old piece of trash."))
@@ -974,6 +970,7 @@
 			M.visible_message(SPAN_DANGER("[M] smashes [src] beyond recognition!"),
 			SPAN_DANGER("We enter a frenzy and smash [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 			malfunction()
+			tip_over()
 		else
 			M.visible_message(SPAN_DANGER("[M] [M.slashes_verb] [src]!"),
 			SPAN_DANGER("We [M.slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)

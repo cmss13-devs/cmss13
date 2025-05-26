@@ -9,6 +9,10 @@
 	var/remaining_survivors = 0
 	/// How many xenos have died
 	var/xeno_deaths
+	/// How many players on when this point was recorded
+	var/total_population
+	/// The name of the map played when this point was recorded
+	var/map_name
 
 /datum/entity/survivor_survival/New()
 	. = ..()
@@ -17,12 +21,14 @@
 	total_survivors = /datum/job/civilian/survivor::total_spawned
 	for(var/datum/weakref/ref as anything in GLOB.spawned_survivors)
 		var/mob/living/carbon/human/human = ref.resolve()
-		if(!human || (human.stat == DEAD))
+		if(!human || (human.stat == DEAD) || (human.status_flags & XENO_HOST))
 			continue
 
 		remaining_survivors++
-		
+
 	xeno_deaths = GLOB.total_dead_xenos
+	total_population = length(GLOB.clients)
+	map_name = SSmapping.configs[GROUND_MAP]?.map_name || "Unknown Map"
 
 /datum/entity/survivor_survival/post_creation()
 	save()
@@ -36,4 +42,6 @@
 		"total_survivors" = DB_FIELDTYPE_INT,
 		"remaining_survivors" = DB_FIELDTYPE_INT,
 		"xeno_deaths" = DB_FIELDTYPE_INT,
+		"total_population" = DB_FIELDTYPE_INT,
+		"map_name" = DB_FIELDTYPE_STRING_MEDIUM,
 	)

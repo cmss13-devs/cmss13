@@ -1,7 +1,7 @@
 /datum/emergency_call/contractors
 	name = "Military Contractors (Squad) (Friendly)"
 	mob_max = 7
-	probability = 20
+	probability = 10
 
 	max_engineers =  1
 	max_medics = 1
@@ -87,7 +87,7 @@
 /datum/emergency_call/contractors/covert
 	name = "Military Contractors (Covert) (Friendly)"
 	mob_max = 7
-	probability = 20
+	probability = 10
 	max_medics = 1
 	max_engineers = 1
 	max_heavies = 1

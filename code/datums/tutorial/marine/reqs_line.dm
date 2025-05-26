@@ -87,6 +87,7 @@
 		/obj/item/clothing/accessory/storage/black_vest = list("Black webbing", "Black webbing vest"),
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest = list("Brown webbing", "Brown webbing vest"),
 		/obj/item/clothing/accessory/storage/webbing = list("Webbing", "Normal webbing", "Web"),
+		/obj/item/clothing/accessory/storage/webbing/black = list("Normal black webbing", "Black normal webbing","Normal black web"),
 		/obj/item/clothing/accessory/storage/droppouch = list("Drop Pouch"),
 		/obj/item/clothing/suit/storage/webbing = list("External webbing"),
 		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit = list("Pyro pack", "Pyro backpack", "G4-1 pack", "Flamer backpack"),

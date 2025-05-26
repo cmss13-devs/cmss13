@@ -173,3 +173,24 @@
 2025-05-22:
   MeH0y, TyranicRanger4:
   - rscadd: Adds yautja cleaner vials to yautja hunting equipment
+2025-05-24:
+  TrollerNoob:
+  - imageadd: Updated the USCM and PMC's Sniper Specialist's HUD and Map icon.
+  realforest2001:
+  - rscadd: Added tracking to command headsets.
+  - rscadd: Added a tracker for Intel Squad Lead.
+  - rscadd: Added XO and CO subtypes for the senior command headset. This has no identifying
+      features aside from different tracking options.
+2025-05-25:
+  Waseemq1235:
+  - spellcheck: Fixes a minor spelling mistake when attempting to tweak access requirements
+      on a vending machine
+2025-05-26:
+  Contrabang:
+  - imageadd: added a locked icon for locked dropship controls
+  Drathek:
+  - code_imp: CI now caches/installs Byond, spacemandmm, rust, bootstrap, node, and
+      yarn differently for Github actions
+  KornFlaks:
+  - bugfix: Xenos can no longer acid resin doors.
+  - bugfix: Xenos are no longer health scannable.

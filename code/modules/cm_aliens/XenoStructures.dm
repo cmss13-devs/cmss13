@@ -361,6 +361,7 @@
 	mineralType = "resin"
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
+	unacidable = TRUE
 	var/close_delay = 100
 	var/hivenumber = XENO_HIVE_NORMAL
 

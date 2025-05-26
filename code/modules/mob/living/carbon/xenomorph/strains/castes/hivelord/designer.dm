@@ -427,6 +427,9 @@
 
 	build_overlay = overlay
 
+	if(bound_weed.weed_strength >= WEED_LEVEL_HIVE)
+		thick_build = TRUE
+
 	if((xeno.caste_type in xeno.caste_construct_whitelist) && !istype(xeno.strain, /datum/xeno_strain/designer))
 		thick_build = TRUE
 

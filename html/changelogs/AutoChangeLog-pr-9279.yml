@@ -1,0 +1,6 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - rscadd: "Added a no skill synth reset key to the handler's kit. Added novice engi skills to the handler's pamphlet."
+  - soundadd: "Added 3 whine sounds. Added 3 new growl sounds."
+  - sounddel: "Removed old growl sounds"

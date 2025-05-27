@@ -9,6 +9,7 @@ This is something like a gun spin, where the user spins it in the hand.
 Instead of being uniform, it starts out a littler slower, goes fast in the middle, then slows down again.
 4 ticks * 5 = 2 seconds. Doesn't loop on default, and spins right.
 */
+
 /proc/animation_wrist_flick(atom/A, direction = 1, loop_num = 0) //-1 for a left spin.
 	animate(A, transform = matrix(120 * direction, MATRIX_ROTATE), time = 1, loop = loop_num, easing = SINE_EASING|EASE_IN)
 	animate(transform = matrix(240 * direction, MATRIX_ROTATE), time = 1)
@@ -174,11 +175,12 @@ Can look good elsewhere as well.*/
 
 
 /mob/living/proc/animation_attack_on(atom/A, pixel_offset = 8)
+	SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 	if(A.clone)
 		if(src.Adjacent(A.clone))
 			A = A.clone
 	if(buckled || anchored || HAS_TRAIT(src, TRAIT_HAULED)) //it would look silly.
-		return 
+		return
 	var/pixel_x_diff = 0
 	var/pixel_y_diff = 0
 	var/direction = get_dir(src, A)
@@ -244,6 +246,10 @@ Can look good elsewhere as well.*/
 		animate(transform = turn(matrix(transform), sway*2 * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING)
 
 	animate(transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = 0, pixel_y = 0, time = 0)//ease it back
+
+/mob/sway_jitter(times = 3, steps = 3, strength = 3, sway = 5)
+	SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
+	return ..()
 
 /mob/living/carbon/human/proc/animation_rappel()
 	var/pre_rappel_alpha = alpha

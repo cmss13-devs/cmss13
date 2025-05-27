@@ -135,6 +135,10 @@
 
 	return TRUE
 
+/// Whether the client passes requirements for the scenario
+/datum/job/proc/can_play_role_in_scenario(client/client)
+	return TRUE
+
 /datum/job/proc/get_role_requirements(client/C)
 	var/list/return_requirements = list()
 	for(var/prereq in minimum_playtimes)
@@ -347,4 +351,8 @@
 
 /// Called when the job owner enters deep cryogenic storage
 /datum/job/proc/on_cryo(mob/living/carbon/human/cryoing)
+	return
+
+/// Returns the active player on this job, specifically for singleton jobs
+/datum/job/proc/get_active_player_on_job()
 	return

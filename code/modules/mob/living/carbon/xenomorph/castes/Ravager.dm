@@ -69,6 +69,9 @@
 	weed_food_states = list("Ravager_1","Ravager_2","Ravager_3")
 	weed_food_states_flipped = list("Ravager_1","Ravager_2","Ravager_3")
 
+	skull = /obj/item/skull/ravager
+	pelt = /obj/item/pelt/ravager
+
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
@@ -123,7 +126,7 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(mid_charge)
+	if(mid_charge && target_carbon)
 		return INTENT_HARM
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
@@ -252,7 +255,6 @@
 	human.apply_effect(behavior.knockdown_amount, WEAKEN)
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 	behavior.mid_charge = FALSE
-
 
 	var/facing = get_dir(xeno, human)
 

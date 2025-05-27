@@ -1,9 +1,10 @@
-import { useBackend } from '../../backend';
-import { Box } from '../../components';
-import { ByondUi } from '../../components';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { useBackend } from 'tgui/backend';
+import { Box } from 'tgui/components';
+import { ByondUi } from 'tgui/components';
+
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState } from './stateManagers';
-import { MapProps } from './types';
+import type { MapProps } from './types';
 
 export const MapMfdPanel = (props: MfdProps) => {
   const { setPanelState } = mfdState(props.panelStateId);

@@ -153,10 +153,10 @@
 		icon_state = initial(icon_state)
 
 /obj/item/clothing/shoes/veteran/pmc/knife
-	spawn_item_type = /obj/item/attachable/bayonet
+	spawn_item_type = /obj/item/attachable/bayonet/wy
 
 /obj/item/clothing/shoes/veteran/pmc/commando
-	name = "\improper PMC commando boots"
+	name = "\improper W-Y commando boots"
 	desc = "A pair of heavily armored, acid-resistant boots."
 
 	armor_bio = CLOTHING_ARMOR_HIGH
@@ -164,7 +164,23 @@
 	unacidable = TRUE
 
 /obj/item/clothing/shoes/veteran/pmc/commando/knife
-	spawn_item_type = /obj/item/attachable/bayonet
+	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+/obj/item/clothing/shoes/veteran/pmc/combat_android
+	name = "\improper M7X greaves"
+	desc = "A pair of heavily armored, acid-resistant boots, made to complete the M7X Apesuit."
+	icon_state = "droid_boots"
+	item_state = "droid_boots"
+	armor_bio = CLOTHING_ARMOR_HIGH
+	siemens_coefficient = 0.2
+	unacidable = TRUE
+	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+/obj/item/clothing/shoes/veteran/pmc/combat_android/dark
+	name = "\improper M7X Mark II greaves"
+	desc = "A pair of heavily armored, optical camouflaged, acid-resistant boots, made to complete the M7X Mark II Apesuit."
+	icon_state = "invis_droid_boots"
+	item_state = "invis_droid_boots"
 
 /obj/item/clothing/shoes/veteran/pmc/van_bandolier
 	name = "hiking boots"

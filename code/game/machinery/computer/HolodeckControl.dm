@@ -242,18 +242,3 @@
 	for(var/mob/M in currentarea)
 		to_chat(M, "FIGHT!")
 
-//Holorack
-
-/obj/structure/surface/rack/holorack
-	name = "rack"
-	desc = "Different from the Middle Ages version."
-	icon = 'icons/obj/objects.dmi'
-	icon_state = "rack"
-
-/obj/structure/surface/rack/holorack/attack_hand(mob/user as mob)
-	return
-
-/obj/structure/surface/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
-	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
-		to_chat(user, "It's a holorack!  You can't unwrench it!")
-		return

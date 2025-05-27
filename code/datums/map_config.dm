@@ -103,7 +103,6 @@
 		/datum/equipment_preset/synth/survivor/atc_synth,
 		/datum/equipment_preset/synth/survivor/cmb_synth,
 		/datum/equipment_preset/synth/survivor/wy/security_synth,
-		/datum/equipment_preset/synth/survivor/wy/protection_synth,
 		/datum/equipment_preset/synth/survivor/wy/corporate_synth,
 		/datum/equipment_preset/synth/survivor/detective_synth,
 		/datum/equipment_preset/synth/survivor/icc_synth,

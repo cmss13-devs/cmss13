@@ -28,10 +28,8 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 
-	burrow_cooldown = 20
-	tunnel_cooldown = 70
-	widen_cooldown = 70
-
+	burrow_cooldown = 2 SECONDS
+	tunnel_cooldown = 7 SECONDS
 
 	minimum_evolve_time = 7 MINUTES
 
@@ -82,6 +80,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
 	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
+
+	skull = /obj/item/skull/burrower
+	pelt = /obj/item/pelt/burrower
 
 /mob/living/carbon/xenomorph/burrower/ex_act(severity)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -197,7 +198,7 @@
 	playsound(loc, 'sound/effects/burrowoff.ogg', 25)
 	for(var/mob/living/carbon/mob in loc)
 		if(!can_not_harm(mob))
-			mob.apply_effect(2, WEAKEN)
+			mob.apply_effect(1.5, WEAKEN)
 
 	addtimer(CALLBACK(src, PROC_REF(do_burrow_cooldown)), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_icons()
@@ -262,7 +263,8 @@
 		to_chat(src, SPAN_NOTICE("We cannot tunnel to there!"))
 	tunnel = TRUE
 	to_chat(src, SPAN_NOTICE("We start tunneling!"))
-	tunnel_timer = (get_dist(src, target)*10) + world.time
+	var/target_distance = max(get_dist(src, target), 1) // Min distance of 1 is to prevent stunlocking
+	tunnel_timer = (target_distance*10) + world.time
 	process_tunnel(target)
 
 
@@ -310,20 +312,21 @@
 /datum/action/xeno_action/onclick/tremor/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/burrower_tremor = owner
 
-	if (HAS_TRAIT(burrower_tremor, TRAIT_ABILITY_BURROWED))
+	if(HAS_TRAIT(burrower_tremor, TRAIT_ABILITY_BURROWED))
 		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
-	if (burrower_tremor.is_ventcrawling)
+	if(burrower_tremor.is_ventcrawling)
 		to_chat(burrower_tremor, SPAN_XENOWARNING("We must be above ground to do this."))
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
-	if (!burrower_tremor.check_state())
+	if(!burrower_tremor.check_state())
 		return
-	if (!check_and_use_plasma_owner())
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	playsound(burrower_tremor, 'sound/effects/alien_footstep_charge3.ogg', 75, 0)

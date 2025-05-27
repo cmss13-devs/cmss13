@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -9,9 +8,10 @@ import {
   Section,
   Stack,
   Tabs,
-} from '../components';
-import { ByondUi } from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { ByondUi } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
 import { CanvasLayer } from './CanvasLayer';
 import { DrawnMap } from './DrawnMap';
 
@@ -20,7 +20,7 @@ interface TacMapProps {
   toolbarUpdatedSelection: string;
   updatedCanvas: boolean;
   themeId: number;
-  svgData: any;
+  svgData: (string | number | CanvasGradient | CanvasPattern)[];
   canViewTacmap: boolean;
   canDraw: boolean;
   isxeno: boolean;
@@ -32,10 +32,10 @@ interface TacMapProps {
   mapFallback: string;
   mapRef: string;
   currentMenu: string;
-  lastUpdateTime: any;
-  canvasCooldownDuration: any;
-  canvasCooldown: any;
-  exportedTacMapImage: any;
+  lastUpdateTime: number;
+  canvasCooldownDuration: number;
+  canvasCooldown: number;
+  exportedTacMapImage: HTMLImageElement;
   tacmapReady: boolean;
   canChangeZ: boolean;
 }
@@ -244,7 +244,7 @@ const DrawMapPanel = (props) => {
   const timeLeftPct = data.canvasCooldown / data.canvasCooldownDuration;
   const canUpdate = data.canvasCooldown <= 0 && !data.updatedCanvas;
 
-  const handleTacMapExport = (image: any) => {
+  const handleTacMapExport = (image: HTMLImageElement) => {
     data.exportedTacMapImage = image;
   };
 

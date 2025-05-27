@@ -40,6 +40,11 @@
 		products_sets = listed_products[/datum/equipment_preset/clf]
 	return products_sets
 
+/obj/structure/machinery/cm_vending/clothing/antag/upp
+	name = "\improper Automated Equipment Rack"
+	icon_state = "upp_clothing"
+	req_access = list(ACCESS_UPP_GENERAL)
+
 //--------------RANDOM EQUIPMENT AND GEAR------------------------
 
 /obj/effect/essentials_set/random/clf_shoes

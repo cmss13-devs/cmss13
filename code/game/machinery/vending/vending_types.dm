@@ -500,6 +500,13 @@
 	premium = list(/obj/item/reagent_container/glass/bottle/ammonia = 10,/obj/item/reagent_container/glass/bottle/diethylamine = 5)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 
+/obj/structure/machinery/vending/hydronutrients/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	hacking_safety = TRUE
+
+/obj/structure/machinery/vending/hydronutrients/yautja/checking_id()
+	return FALSE
+
 /obj/structure/machinery/vending/hydroseeds
 	name = "\improper MegaSeed Servitor"
 	desc = "When you need seeds fast!"
@@ -522,6 +529,13 @@
 		/obj/item/seeds/reishimycelium = 1,
 	)
 	premium = list(/obj/item/toy/waterflower = 1)
+
+/obj/structure/machinery/vending/hydroseeds/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	hacking_safety = TRUE
+
+/obj/structure/machinery/vending/hydroseeds/yautja/checking_id()
+	return FALSE
 
 /obj/structure/machinery/vending/dinnerware
 	name = "\improper Dinnerware"

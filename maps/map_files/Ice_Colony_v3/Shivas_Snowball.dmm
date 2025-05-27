@@ -157,19 +157,35 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/warehouse)
+"aaF" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/oob)
 "aaG" = (
 /obj/structure/prop/ice_colony/surveying_device{
 	dir = 8
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_lz2)
+"aaH" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
+"aaI" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/lz1_valley)
 "aaJ" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/flamer_tank{
-	pixel_x = -5
-	},
-/obj/item/ammo_magazine/flamer_tank{
+/obj/item/ammo_magazine/flamer_tank/survivor{
 	pixel_x = 4
+	},
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = -5
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
@@ -177,8 +193,12 @@
 /obj/item/tool/pickaxe/drill,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
+"aaL" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/shiva/floor3,
+/area/shiva/exterior/lz2_fortress)
 "aaN" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /obj/structure/surface/rack,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
@@ -187,11 +207,6 @@
 /obj/item/explosive/plastic,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
-"aaQ" = (
-/obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/sof,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/right_spiders)
 "aaR" = (
 /obj/effect/spider/stickyweb,
 /obj/item/clothing/under/marine/veteran/marsoc,
@@ -2608,7 +2623,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "arO" = (
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	name = "ceremonial knife"
 	},
 /turf/open/auto_turf/ice/layer1,
@@ -2863,11 +2878,11 @@
 /area/shiva/interior/valley_huts/disposals)
 "atF" = (
 /obj/item/evidencebag,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atG" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/popcorn,
 /turf/open/floor/plating/warnplate,
 /area/shiva/interior/valley_huts/disposals)
 "atH" = (
@@ -6984,7 +6999,10 @@
 /turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "cTY" = (
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = -10;
+	pixel_y = -7
+	},
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "cUl" = (
@@ -11781,9 +11799,12 @@
 "iWS" = (
 /obj/structure/prop/invuln/dense{
 	desc = "Gonzo is trying to drill his way to freedom. He made this himself.";
-	icon = 'icons/obj/structures/props/mining.dmi';
-	icon_state = "gigadrill";
-	name = "Gigadrill"
+	icon = 'icons/obj/structures/props/gigadrill.dmi';
+	icon_state = "drillcat";
+	name = "Gigadrill";
+	dir = 4;
+	pixel_x = 20;
+	pixel_y = 5
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
@@ -13597,11 +13618,11 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "kZK" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/handful/shotgun/buckshot{
 	pixel_x = 4;
 	pixel_y = -16
 	},
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "las" = (
@@ -15320,7 +15341,9 @@
 /turf/open/floor/shiva/green/east,
 /area/shiva/interior/colony/botany)
 "naG" = (
-/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank/survivor{
+	pixel_x = 4
+	},
 /obj/structure/machinery/light/double{
 	dir = 1;
 	pixel_y = 9
@@ -15355,7 +15378,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/warehouse)
 "ncY" = (
-/obj/item/weapon/gun/flamer,
+/obj/item/weapon/gun/flamer/survivor,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/central)
 "ndJ" = (
@@ -19102,14 +19125,15 @@
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "rUD" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	desc = "Shhhh, he's sleeping.";
-	pixel_x = 3;
-	pixel_y = -10
-	},
 /obj/item/bedsheet{
 	pixel_x = 3;
 	pixel_y = -7
+	},
+/obj/item/weapon/gun/shotgun/double/sawn{
+	name = "\improper sawn-off Sleepyhead Rival 78";
+	desc = "Shhhh, he's sleeping.";
+	pixel_x = 3;
+	pixel_y = -10
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
@@ -27824,7 +27848,7 @@ cQW
 cQW
 cQW
 cQW
-cQW
+aaH
 cQW
 cQW
 cQW
@@ -28055,7 +28079,7 @@ pGg
 mhP
 otV
 iuK
-iuK
+aaL
 iuK
 iuK
 iuK
@@ -29122,7 +29146,7 @@ kLM
 kLM
 iQq
 iQq
-kLM
+aaI
 iQq
 iQq
 kLM
@@ -54260,7 +54284,7 @@ puZ
 puZ
 puZ
 puZ
-puZ
+aaF
 "}
 (187,1,1) = {"
 acH
@@ -54320,7 +54344,7 @@ ecj
 aaz
 gkv
 ecj
-aaQ
+imk
 aaR
 ecj
 ecj

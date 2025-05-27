@@ -180,7 +180,7 @@
 	name = "CIA Spy (UPP Soldier)"
 	skills = /datum/skills/cia
 
-/datum/equipment_preset/upp/soldier/dressed/New()
+/datum/equipment_preset/upp/soldier/dressed/cia/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
 

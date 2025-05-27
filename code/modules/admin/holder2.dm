@@ -39,6 +39,11 @@ GLOBAL_PROTECT(href_token)
 /datum/admins/vv_edit_var(var_name, var_value)
 	return FALSE
 
+/datum/admins/can_vv_get(var_name)
+	if(var_name == NAMEOF(src, href_token))
+		return FALSE
+	return ..()
+
 /datum/admins/proc/associate(client/C)
 	if(istype(C))
 		owner = C

@@ -1,7 +1,6 @@
 import { classes } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend } from '../backend';
+import { useBackend } from 'tgui/backend';
 import {
   Button,
   Icon,
@@ -10,9 +9,10 @@ import {
   Stack,
   Tabs,
   Tooltip,
-} from '../components';
-import { Table, TableCell, TableRow } from '../components/Table';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Table, TableCell, TableRow } from 'tgui/components/Table';
+import { Window } from 'tgui/layouts';
+
 import { ElectricalPanel } from './common/ElectricalPanel';
 
 interface SmartFridgeData {

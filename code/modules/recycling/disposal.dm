@@ -128,6 +128,8 @@
 
 	if(isstorage(I))
 		var/obj/item/storage/S = I
+		if(!S.can_storage_interact(user))
+			return
 		if(length(S.contents) > 0)
 			to_chat(user, SPAN_NOTICE("You empty [S] into [src]."))
 			for(var/obj/item/O in S.contents)

@@ -132,3 +132,9 @@
 	min_val = 0
 	config_entry_value = 140
 	integer = TRUE
+
+/datum/config_entry/number/nuclear_lock_marines_percentage
+	min_val = 0
+	config_entry_value = 0	// Type 0 to disable lock
+	max_val = 100
+	integer = TRUE

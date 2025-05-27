@@ -201,6 +201,8 @@
 	shovelspeed = 60
 	dirt_amt_per_dig = 1
 
+/obj/item/tool/shovel/spade/yautja
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 
 //Snow Shovel----------
 /obj/item/tool/shovel/snow

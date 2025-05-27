@@ -95,8 +95,8 @@
 	matter = list("metal" = 50)
 	attack_verb = list("slashed", "sliced", "cut", "clawed")
 
-
-
+/obj/item/tool/minihoe/yautja
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 
 //Hatchets and things to kill kudzu
 /obj/item/tool/hatchet

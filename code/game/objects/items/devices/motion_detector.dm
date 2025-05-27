@@ -113,7 +113,7 @@
 /obj/item/device/motiondetector/clicked(mob/user, list/mods)
 	if (isobserver(user) || isxeno(user)) return
 
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!long_range_locked)

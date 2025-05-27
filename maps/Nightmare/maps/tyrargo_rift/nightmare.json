@@ -1,5 +1,9 @@
 [
     {
+        "type": "map_sprinkle",
+        "path": "sprinkles/"
+    },
+    {
 		"type": "map_insert",
 		"landmark": "crash_surface",
 		"chance": 1.0,

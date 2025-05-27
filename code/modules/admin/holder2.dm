@@ -59,7 +59,8 @@ GLOBAL_PROTECT(href_token)
 	owner.update_special_keybinds()
 	GLOB.admins |= C
 
-	notify_login()
+	if(rights & R_MOD)
+		notify_login()
 
 /datum/admins/proc/notify_login()
 	message_admins("Admin login: [key_name(owner)]")

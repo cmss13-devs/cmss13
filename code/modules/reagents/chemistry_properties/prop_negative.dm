@@ -86,7 +86,8 @@
 	if(!iscarbon(M))
 		return
 	var/mob/living/carbon/C = M
-	if(C.wear_mask) // Wearing a mask
+	// Higher concentration, less effective gas mask.
+	if(method == TOUCH && C.wear_mask && !prob(100 * min(volume * 5, 1))) // Wearing a mask
 		return
 	C.apply_damage(potency, TOX)  // applies potency toxin damage
 

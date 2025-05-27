@@ -194,3 +194,22 @@
   KornFlaks:
   - bugfix: Xenos can no longer acid resin doors.
   - bugfix: Xenos are no longer health scannable.
+2025-05-27:
+  DarkLordCabbage:
+  - rscadd: Added a no skill synth reset key to the handler's kit. Added novice engi
+      skills to the handler's pamphlet.
+  - soundadd: Added 3 whine sounds. Added 3 new growl sounds.
+  - sounddel: Removed old growl sounds
+  IowaPotatoFarmer:
+  - rscadd: Added the rebalanced double-barrel back to the maps it was removed from,
+      some in the same locations they were previously.
+  IroquoisLou:
+  - balance: Lowered Maximum RMC ERT Personnel down to 6 instead of 7,
+  - balance: Ups recoil for the L23 and lowers the damage from 57.2 to 50.
+  KornFlaks:
+  - rscadd: Dogtags added to crosses will now always display the fallen marine's name
+      at end of round memoriam, even if the cross is later destroyed.
+  Red-byte3D:
+  - bugfix: Thermap tarps now have stun to match the rest of the tarps
+  stalkerino, thwomper, lagomorphica:
+  - rscadd: Adds a satchel to Intelligence Officers

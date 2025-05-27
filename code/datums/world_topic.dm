@@ -154,7 +154,7 @@
 	data["testmerges"] = list()
 	for(var/datum/tgs_revision_information/test_merge/test_merge as anything in GLOB.revdata.testmerge)
 		data["testmerges"] += list(
-			list("title" = test_merge.title, "number" = test_merge.number, "url" = test_merge.url)
+			list("title" = test_merge.title, "number" = test_merge.number, "url" = test_merge.url, "author" = test_merge.author)
 		)
 
 /datum/world_topic/certify

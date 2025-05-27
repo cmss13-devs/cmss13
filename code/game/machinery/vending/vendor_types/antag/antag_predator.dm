@@ -106,6 +106,32 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 		list("The Skewering Scimitars", 0, list(/obj/item/bracer_attachments/scimitars_alt, /obj/item/bracer_attachments/scimitars_alt), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 			))
 
+GLOBAL_LIST_INIT(cm_vending_thrall, list(
+		list("Essential Hunting Supplies", 0, null, null, null),
+		list("Hunting Equipment", 0, list(/obj/item/clothing/under/chainshirt/thrall, /obj/item/storage/backpack/yautja), MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
+		list("Armor Material (CHOOSE 1)", 0, null, null, null),
+		list("Ebony", 0, list(/obj/item/clothing/suit/armor/yautja/thrall, /obj/item/clothing/shoes/yautja/thrall, /obj/item/clothing/mask/gas/yautja/thrall), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Silver", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/silver, /obj/item/clothing/shoes/yautja/thrall/silver, /obj/item/clothing/mask/gas/yautja/thrall/silver), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Gold", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/gold, /obj/item/clothing/shoes/yautja/thrall/gold, /obj/item/clothing/mask/gas/yautja/thrall/gold), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Crimson", 0, list(/obj/item/clothing/suit/armor/yautja/thrall/crimson, /obj/item/clothing/shoes/yautja/thrall/crimson, /obj/item/clothing/mask/gas/yautja/thrall/crimson), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("Bone", 0, list(/obj/item/clothing/mask/gas/yautja/thrall/bone, /obj/item/clothing/shoes/yautja/thrall/bone, /obj/item/clothing/suit/armor/yautja/thrall/bone), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+
+		list("Main Weapons (CHOOSE 1)", 0, null, null, null),
+		list("The Primary Hunting Sword", 0, /obj/item/weapon/yautja/sword, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Rending Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_1, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Piercing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_2, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Severing Hunting Sword", 0, /obj/item/weapon/yautja/sword/alt_3, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Sundering Chain-Whip", 0, /obj/item/weapon/yautja/chain, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Cleaving War-Scythe", 0, /obj/item/weapon/yautja/scythe, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Ripping War-Scythe", 0, /obj/item/weapon/yautja/scythe/alt, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Adaptive Combi-Stick", 0, /obj/item/weapon/yautja/chained/combistick, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Butchering War Axe", 0, /obj/item/weapon/yautja/chained/war_axe, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Lumbering Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Imposing Glaive", 0, /obj/item/weapon/twohanded/yautja/glaive/alt, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("The Crushing Longaxe", 0, /obj/item/weapon/twohanded/yautja/glaive/longaxe, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+			))
+
 /obj/structure/machinery/cm_vending/clothing/yautja
 	name = "\improper Yautja Hunting Gear Rack"
 	desc = "A gear rack for hunting."
@@ -180,6 +206,28 @@ GLOBAL_LIST_INIT(cm_vending_young_yautja, list(
 /obj/structure/machinery/cm_vending/clothing/yautja/young_blood/get_listed_products(mob/user)
 	return GLOB.cm_vending_young_yautja
 
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall
+	name = "\improper Yautja Thrall Gear Rack"
+	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
+	icon_state = "pred_vendor_left"
+	req_access = list(ACCESS_YAUTJA_SECURE)
+	show_points = FALSE
+	vendor_theme = VENDOR_THEME_YAUTJA
+
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/left_centre
+	icon_state = "pred_vendor_lcenter"
+
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/centre
+	icon_state = "pred_vendor_centre"
+
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/right_centre
+	icon_state = "pred_vendor_rcentre"
+
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/right
+	icon_state = "pred_vendor_right"
+
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/get_listed_products(mob/user)
+	return GLOB.cm_vending_thrall
 //Armour Prefs
 /obj/item/clothing/suit/armor/yautja/post_vendor_spawn_hook(mob/living/carbon/human/user)
 	if(!user?.client?.prefs)

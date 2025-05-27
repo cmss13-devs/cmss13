@@ -157,6 +157,8 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_YAUTJA_ELDER 392
 /// Ancients only
 #define ACCESS_YAUTJA_ANCIENT 393
+///Thrall only
+#define ACCESS_YAUTJA_THRALL 394
 
 /// Anything in a tutorial sequence that shouldn't be accessed
 #define ACCESS_TUTORIAL_LOCKED 998

@@ -1167,6 +1167,8 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER,)
 			if(CLAN_RANK_ADMIN_INT)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+			if(SPECIES_HUMAN)
+				new_access = list(ACCESS_YAUTJA_THRALL)
 	access = new_access
 
 /obj/item/storage/medicomp

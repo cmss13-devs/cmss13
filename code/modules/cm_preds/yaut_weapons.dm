@@ -367,11 +367,11 @@
 		return
 
 	var/mob/living/carbon/human/user = chain.affected_atom
-	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja/hunter))
+	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja))
 		cleanup_chain()
 		return
 
-	var/obj/item/clothing/gloves/yautja/hunter/pred_gloves = user.gloves
+	var/obj/item/clothing/gloves/yautja/pred_gloves = user.gloves
 
 	if(user.put_in_hands(src, TRUE))
 		if(!pred_gloves.drain_power(user, 70))

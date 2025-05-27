@@ -49,20 +49,27 @@
 /datum/chem_property/negative/toxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(potency * POTENCY_MULTIPLIER_VHIGH, TOX)
 
-/datum/chem_property/negative/toxic/reaction_obj(obj/O, volume, potency = 1)
-	if(istype(O,/obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.take_damage(25 * potency) // Kills alien weeds on touch
+/datum/chem_property/negative/toxic/reaction_obj(obj/object, volume, potency = 1)
+	if(istype(object,/obj/effect/alien/weeds/))
+		var/obj/effect/alien/weeds/alien_weeds = object
+		var/damage_multi = 15
+
+		// Reduces damage from chemicals acting as weedkiller (e.g., welder fuel).
+		if (alien_weeds.weed_strength >= WEED_LEVEL_HARDY)
+			damage_multi /= WEED_LEVEL_HARDY
+
+		// Kills alien weeds on touch.
+		alien_weeds.take_damage(damage_multi * potency)
 		return
-	if(istype(O,/obj/effect/glowshroom))
-		qdel(O)
+	if(istype(object,/obj/effect/glowshroom))
+		qdel(object)
 		return
-	if(istype(O,/obj/effect/plantsegment))
+	if(istype(object,/obj/effect/plantsegment))
 		if(prob(50))
-			qdel(O)
+			qdel(object)
 		return
-	if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
-		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
+	if(istype(object,/obj/structure/machinery/portable_atmospherics/hydroponics))
+		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = object
 
 		if(!tray.seed)
 			return

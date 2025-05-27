@@ -59,6 +59,14 @@ GLOBAL_PROTECT(href_token)
 	owner.update_special_keybinds()
 	GLOB.admins |= C
 
+	notify_login()
+
+/datum/admins/proc/notify_login()
+	message_admins("Admin login: [key_name(owner)]")
+
+	var/list/adm = get_admin_counts(R_MOD)
+	REDIS_PUBLISH("byond.access", "type" = "login", "key" = owner.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
+
 /datum/admins/proc/disassociate()
 	if(owner)
 		GLOB.admins -= owner

@@ -898,14 +898,14 @@
 	icon_state = "hair_pixie"
 	gender = FEMALE
 
-/datum/sprite_accessory/hair/ponytail_maid
-	name = "Maid Ponytail"
-	icon_state = "hair_ponytail_maid"
-	gender = FEMALE
-
 /datum/sprite_accessory/hair/ponytail11
 	name = "Ponytail 11"
 	icon_state = "hair_ponytail_11"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/ponytail_maid
+	name = "Maid Ponytail"
+	icon_state = "hair_ponytail_maid"
 	gender = FEMALE
 
 /datum/sprite_accessory/hair/ponytail_spiky

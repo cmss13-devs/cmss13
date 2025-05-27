@@ -173,3 +173,43 @@
 2025-05-22:
   MeH0y, TyranicRanger4:
   - rscadd: Adds yautja cleaner vials to yautja hunting equipment
+2025-05-24:
+  TrollerNoob:
+  - imageadd: Updated the USCM and PMC's Sniper Specialist's HUD and Map icon.
+  realforest2001:
+  - rscadd: Added tracking to command headsets.
+  - rscadd: Added a tracker for Intel Squad Lead.
+  - rscadd: Added XO and CO subtypes for the senior command headset. This has no identifying
+      features aside from different tracking options.
+2025-05-25:
+  Waseemq1235:
+  - spellcheck: Fixes a minor spelling mistake when attempting to tweak access requirements
+      on a vending machine
+2025-05-26:
+  Contrabang:
+  - imageadd: added a locked icon for locked dropship controls
+  Drathek:
+  - code_imp: CI now caches/installs Byond, spacemandmm, rust, bootstrap, node, and
+      yarn differently for Github actions
+  KornFlaks:
+  - bugfix: Xenos can no longer acid resin doors.
+  - bugfix: Xenos are no longer health scannable.
+2025-05-27:
+  DarkLordCabbage:
+  - rscadd: Added a no skill synth reset key to the handler's kit. Added novice engi
+      skills to the handler's pamphlet.
+  - soundadd: Added 3 whine sounds. Added 3 new growl sounds.
+  - sounddel: Removed old growl sounds
+  IowaPotatoFarmer:
+  - rscadd: Added the rebalanced double-barrel back to the maps it was removed from,
+      some in the same locations they were previously.
+  IroquoisLou:
+  - balance: Lowered Maximum RMC ERT Personnel down to 6 instead of 7,
+  - balance: Ups recoil for the L23 and lowers the damage from 57.2 to 50.
+  KornFlaks:
+  - rscadd: Dogtags added to crosses will now always display the fallen marine's name
+      at end of round memoriam, even if the cross is later destroyed.
+  Red-byte3D:
+  - bugfix: Thermap tarps now have stun to match the rest of the tarps
+  stalkerino, thwomper, lagomorphica:
+  - rscadd: Adds a satchel to Intelligence Officers

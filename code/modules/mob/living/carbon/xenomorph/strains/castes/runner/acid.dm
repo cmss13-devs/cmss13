@@ -75,8 +75,6 @@
 	if(acid_amount >= acid_gen_cap)
 		. += "Passive acid generation cap ([acid_gen_cap]) reached"
 	. += "Battle acid generation: [combat_gen_active ? "Active" : "Inactive"]"
-	if(caboom_trigger)
-		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	if(ishuman(target_mob)) //Will acid be applied to the mob
@@ -141,6 +139,7 @@
 /datum/behavior_delegate/runner_acider/handle_death(mob/M)
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
+	STOP_PROCESSING(SSfasteffects, src)
 
 /datum/behavior_delegate/runner_acider/proc/do_caboom()
 	if(!bound_xeno)

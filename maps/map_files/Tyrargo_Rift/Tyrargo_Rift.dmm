@@ -66099,6 +66099,9 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "government_resin"
+	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north)
 "dlq" = (

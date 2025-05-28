@@ -86,8 +86,8 @@
 	if(!iscarbon(M))
 		return
 	var/mob/living/carbon/C = M
-	// Higher concentration, less effective gas mask.
-	if(method == TOUCH && C.wear_mask && !prob(100 * min(volume * 5, 1))) // Wearing a mask
+	// Gas masks only block airborne chems.
+	if(method == TOUCH && (C.wear_mask && (C.wear_mask.flags_inventory & BLOCKGASEFFECT)))
 		return
 	C.apply_damage(potency, TOX)  // applies potency toxin damage
 

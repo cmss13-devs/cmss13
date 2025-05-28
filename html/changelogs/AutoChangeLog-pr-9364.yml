@@ -1,0 +1,4 @@
+author: "KornFlaks"
+delete-after: True
+changes:
+  - bugfix: "Xenos now heal at full speed while not on fire."

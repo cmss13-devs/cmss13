@@ -1,0 +1,5 @@
+author: "BOBAMAx"
+delete-after: True
+changes:
+  - balance: "the mar-50 LMG can no longer be used with a bipod"
+  - bugfix: "the mar-50 no longer spawns with other invalid attachments like barrel attachments"

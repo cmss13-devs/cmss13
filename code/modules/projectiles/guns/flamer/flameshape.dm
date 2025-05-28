@@ -221,9 +221,9 @@
 					tiles_to_set_aflame.Add(side_T)
 				if(FIRE_CANPASS_SET_AFLAME)
 					tiles_to_set_aflame.Add(side_T)
-					break
+					continue
 				if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
-					break
+					continue
 
 		addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, FALSE, fuel_pressure), 0)
 

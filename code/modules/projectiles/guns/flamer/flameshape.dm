@@ -3,6 +3,8 @@
 #define FIRE_CANPASS_STOP_BORDER 3 // found dense atom on border
 #define FIRE_CANPASS_STOP 4 // found space
 
+#define SET_AFLAME_LIST_SOFT_CAP 30 // prevent creating too big to be set aflame lists
+
 
 /proc/_fire_spread_check(obj/flamer_fire/F, obj/flamer_fire/mover, turf/prev_T, turf/T, burn_dam)
 	if(istype(T, /turf/open/space))
@@ -80,6 +82,10 @@
 						checked_tiles[T] = TRUE
 					if(FIRE_CANPASS_STOP)
 						checked_tiles[T] = TRUE
+
+		if(tiles_to_set_aflame.len >= SET_AFLAME_LIST_SOFT_CAP)
+			addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, FALSE, fuel_pressure), 0)
+			tiles_to_set_aflame = list()
 
 		if(next_tiles_to_spread.len == 0)
 			break
@@ -247,3 +253,5 @@ GLOBAL_LIST_INIT(flameshapes, list(
 #undef FIRE_CANPASS_SET_AFLAME
 #undef FIRE_CANPASS_STOP_BORDER
 #undef FIRE_CANPASS_STOP
+
+#undef SET_AFLAME_LIST_SOFT_CAP

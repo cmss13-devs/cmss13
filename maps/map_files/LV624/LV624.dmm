@@ -973,6 +973,11 @@
 "adO" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"adP" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
 "adQ" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/weapon/gun/rifle/mar40,
@@ -1432,6 +1437,21 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"afA" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/west_caves)
+"afB" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/east_caves)
+"afC" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
 "afE" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -24702,11 +24722,11 @@ mdQ
 xZE
 wlh
 oAV
-xZE
+afA
 tOS
 gwP
 gwP
-xZE
+afA
 oAV
 wlh
 xZE
@@ -25156,15 +25176,15 @@ mdQ
 mdQ
 mdQ
 xZE
-xZE
-xZE
-xZE
+afA
+afA
+afA
 gwP
 gwP
 tOS
-xZE
-xZE
-xZE
+afA
+afA
+afA
 xZE
 mdQ
 mdQ
@@ -25614,11 +25634,11 @@ mdQ
 xZE
 wlh
 oAV
-xZE
+afA
 tOS
 gwP
 gwP
-xZE
+afA
 oAV
 wlh
 xZE
@@ -38373,8 +38393,8 @@ acf
 acf
 acf
 izh
-izh
-izh
+afC
+afC
 izh
 abl
 abl
@@ -39057,8 +39077,8 @@ acf
 acf
 acf
 izh
-izh
-izh
+afC
+afC
 izh
 abl
 abl
@@ -58695,8 +58715,8 @@ whU
 whU
 whU
 jMS
-jMS
-jMS
+adP
+adP
 jMS
 jMS
 wEO
@@ -59354,9 +59374,9 @@ egU
 nzw
 nHq
 jAo
-nzw
+afB
 acg
-nzw
+afB
 iyr
 eZC
 uBR
@@ -59380,8 +59400,8 @@ whU
 whU
 whU
 jMS
-jMS
-jMS
+adP
+adP
 fIt
 fTM
 fIt
@@ -59609,7 +59629,7 @@ whU
 whU
 whU
 jMS
-jMS
+adP
 aed
 fIt
 jMS
@@ -59808,13 +59828,13 @@ pUm
 bvj
 bvj
 gVR
-nzw
-nzw
-nzw
+afB
+afB
+afB
 aaN
-nzw
-nzw
-nzw
+afB
+afB
+afB
 uBR
 vVC
 vVC
@@ -60266,9 +60286,9 @@ pUm
 uBR
 jhj
 upQ
-nzw
+afB
 acg
-nzw
+afB
 fAD
 rPK
 uBR

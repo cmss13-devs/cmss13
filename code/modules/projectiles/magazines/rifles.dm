@@ -47,14 +47,14 @@
 
 /obj/item/ammo_magazine/rifle/heap
 	name = "\improper M41A HEAP magazine (10x24mm)"
-	desc = "A high explosive armor piercing 10x24mm assault rifle magazine."
+	desc = "A high-explosive armor-piercing 10x24mm assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
-	desc = "An armor piercing 10x24mm assault rifle magazine."
+	desc = "An armor-piercing 10x24mm assault rifle magazine."
 	desc_lore = "Unlike standard HEAP magazines, these reserve bullets do not have depleted uranium tips. Instead, these rounds trade off some of their bullet package for a lighter weight, reducing damage but increasing penetration capabilities and muzzle velocity.
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
@@ -175,7 +175,7 @@
 
 /obj/item/ammo_magazine/rifle/m4ra/heap
 	name = "\improper M4RA high-explosive armor-piercing magazine (10x24mm)"
-	desc = "A magazine of high explosive armor piercing 10x24mm rounds for use in the M4RA battle rifle."
+	desc = "A magazine of high-explosive armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
@@ -263,7 +263,7 @@
 
 /obj/item/ammo_magazine/rifle/m16/ap
 	name = "\improper M16 AP magazine (5.56x45mm)"
-	desc = "An armor piercing 5.56x45mm magazine for the M16 assault rifle."
+	desc = "An armor-piercing 5.56x45mm magazine for the M16 assault rifle."
 	caliber = "5.56x45mm"
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 20
@@ -319,7 +319,7 @@
 
 /obj/item/ammo_magazine/rifle/lmg/ap
 	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
-	desc = "A semi-rectangular armor piercing box magazine for the M41AE2 Heavy Pulse Rifle."
+	desc = "A semi-rectangular armor-piercing box magazine for the M41AE2 Heavy Pulse Rifle."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 300
 	ammo_band_color = AMMO_BAND_COLOR_AP
@@ -351,13 +351,13 @@
 
 /obj/item/ammo_magazine/rifle/type71/ap
 	name = "\improper Type 71 AP magazine (5.45x39mm)"
-	desc = "An armor piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	desc = "An armor-piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	default_ammo = /datum/ammo/bullet/rifle/type71/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/type71/heap
 	name = "\improper Type 71 HEAP magazine (5.45x39mm)"
-	desc = "A standard high explosive armor piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
+	desc = "A standard high-explosive armor-piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	default_ammo = /datum/ammo/bullet/rifle/type71/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
@@ -382,7 +382,7 @@
 
 /obj/item/ammo_magazine/rifle/l42a/ap
 	name = "\improper L42A AP magazine (10x24mm)"
-	desc = "An armor piercing 10x24mm battle rifle magazine."
+	desc = "An armor-piercing 10x24mm battle rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 

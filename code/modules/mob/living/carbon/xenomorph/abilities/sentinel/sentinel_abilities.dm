@@ -7,6 +7,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 2 SECONDS
 	plasma_cost = 20
+	is_acid_based = TRUE
 
 // Scatterspit
 /datum/action/xeno_action/activable/scattered_spit
@@ -17,6 +18,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 6 SECONDS
 	plasma_cost = 30
+	is_acid_based = TRUE
 
 // Paralyzing slash
 /datum/action/xeno_action/onclick/paralyzing_slash

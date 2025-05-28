@@ -973,11 +973,6 @@
 "adO" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
-"adP" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_central_caves)
 "adQ" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/item/weapon/gun/rifle/mar40,
@@ -1361,6 +1356,11 @@
 /obj/structure/cargo_container/ferret/left,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"afm" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "afn" = (
 /obj/structure/cargo_container/ferret/mid,
 /turf/open/floor,
@@ -1369,11 +1369,34 @@
 /obj/structure/cargo_container/ferret/right,
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
+"afp" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt/desert0,
+/area/lv624/ground/caves/south_west_caves)
+"afq" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt/desert3,
+/area/lv624/ground/caves/south_west_caves)
 "afr" = (
 /obj/structure/ore_box,
 /obj/structure/fence,
 /turf/open/floor/warning/east,
 /area/lv624/ground/barrens/containers)
+"afs" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt/desert1,
+/area/lv624/ground/caves/south_west_caves)
+"aft" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 8
+	},
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "afu" = (
 /obj/item/ammo_casing,
 /obj/structure/machinery/colony_floodlight,
@@ -1401,6 +1424,14 @@
 /obj/structure/machinery/colony_floodlight,
 /turf/open/floor/plating/warnplate/northeast,
 /area/lv624/ground/barrens/central_barrens)
+"afz" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 9
+	},
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_west_caves)
 "afE" = (
 /obj/effect/decal/remains/xeno,
 /obj/structure/stairs/perspective{
@@ -1549,7 +1580,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/barrens/central_barrens)
 "agm" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "ago" = (
@@ -10534,8 +10565,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "bLs" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_east_caves)
 "bLE" = (
@@ -11206,8 +11237,8 @@
 /turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "daY" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 9
 	},
@@ -11258,11 +11289,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_west_caves)
-"diW" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/south_east_caves)
 "diZ" = (
 /obj/structure/surface/rack,
 /obj/item/tool/crowbar,
@@ -11478,14 +11504,6 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"dFz" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/obj/effect/decal/grass_overlay/grass1{
-	dir = 10
-	},
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "dGc" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/barrens/south_eastern_barrens)
@@ -12641,7 +12659,7 @@
 /area/lv624/ground/river/east_river)
 "fYl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "fYG" = (
@@ -13348,7 +13366,7 @@
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz1)
 "hzR" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "hBt" = (
@@ -13358,11 +13376,6 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
-"hBL" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/central_caves)
 "hDe" = (
 /obj/structure/bed/stool,
 /obj/item/prop/alien/hugger,
@@ -13878,8 +13891,8 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/colony/west_nexus_road)
 "iDX" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_central_caves)
 "iFp" = (
@@ -14944,8 +14957,8 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/north_east,
 /area/lv624/ground/colony/north_tcomms_road)
 "kVG" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /obj/effect/decal/grass_overlay/grass1,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/west_caves)
@@ -16802,10 +16815,6 @@
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder/grassdirt_corner2/south_east,
 /area/lv624/ground/colony/west_nexus_road)
-"oMZ" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "oNJ" = (
 /obj/structure/safe{
 	spawnkey = 0
@@ -18781,11 +18790,6 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
-"sMx" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
 "sMK" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -18878,8 +18882,8 @@
 /turf/open/floor,
 /area/lv624/lazarus/hydroponics)
 "sVx" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 1
 	},
@@ -19327,8 +19331,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
 "tPH" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 9
 	},
@@ -19585,11 +19589,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/lv624/lazarus/secure_storage)
-"umb" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_membrane,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/east_caves)
 "unp" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/south_east_caves)
@@ -24703,11 +24702,11 @@ mdQ
 xZE
 wlh
 oAV
-sMx
+xZE
 tOS
 gwP
 gwP
-sMx
+xZE
 oAV
 wlh
 xZE
@@ -25157,15 +25156,15 @@ mdQ
 mdQ
 mdQ
 xZE
-sMx
-sMx
-sMx
+xZE
+xZE
+xZE
 gwP
 gwP
 tOS
-sMx
-sMx
-sMx
+xZE
+xZE
+xZE
 xZE
 mdQ
 mdQ
@@ -25446,8 +25445,8 @@ ahF
 ahF
 ahF
 ahF
-ahF
-ahF
+afm
+afm
 ahF
 ahF
 krs
@@ -25615,11 +25614,11 @@ mdQ
 xZE
 wlh
 oAV
-sMx
+xZE
 tOS
 gwP
 gwP
-sMx
+xZE
 oAV
 wlh
 xZE
@@ -25674,8 +25673,8 @@ ahF
 ahF
 ahV
 ahF
-xYD
-gTj
+afz
+aft
 gTj
 nys
 ahF
@@ -25910,8 +25909,8 @@ nys
 ePu
 ahF
 ahF
-ahF
-ahF
+afm
+afm
 ahF
 ahF
 ahF
@@ -26138,8 +26137,8 @@ rHV
 nys
 ahF
 ahF
-ahF
-aYI
+afm
+afp
 ahF
 ahH
 ahF
@@ -29559,8 +29558,8 @@ ahF
 ahF
 ahF
 ahF
-ahF
-ahF
+afm
+afm
 ahF
 ahF
 ahF
@@ -29787,8 +29786,8 @@ ahF
 ahF
 krs
 ahF
-ahF
-ahF
+afm
+afm
 ahF
 ahF
 ahF
@@ -30007,8 +30006,8 @@ uWJ
 fmW
 qSG
 ahF
-ahF
-cCP
+afm
+afs
 ahF
 ahH
 ahF
@@ -30235,8 +30234,8 @@ uWJ
 fmW
 rHV
 nys
-ahF
-ahF
+afm
+afm
 ahF
 ahF
 ahF
@@ -30924,8 +30923,8 @@ fmW
 lWl
 ahF
 ahF
-ahF
-ahF
+afm
+afm
 krs
 ahF
 ahF
@@ -31152,8 +31151,8 @@ fmW
 lWl
 ahF
 hRy
-hRy
-hRy
+afq
+afq
 hRy
 ahF
 ahF
@@ -31338,7 +31337,7 @@ onU
 dmT
 dmT
 kVG
-sMx
+xZE
 gwP
 gwP
 gwP
@@ -31566,7 +31565,7 @@ onU
 dmT
 xHW
 kVG
-sMx
+xZE
 gwP
 gwP
 tOS
@@ -32024,8 +32023,8 @@ dmT
 uRe
 tOS
 gwP
-sMx
-sMx
+xZE
+xZE
 gwP
 gwP
 gwP
@@ -32252,18 +32251,18 @@ qhl
 wHh
 gwP
 gwP
-sMx
-sMx
+xZE
+xZE
 gwP
 gwP
 tOS
 gwP
-oMZ
-oMZ
+uSF
+uSF
 gwP
 gwP
 xZE
-oMZ
+uSF
 gwP
 acp
 mdQ
@@ -32486,12 +32485,12 @@ gwP
 gwP
 gwP
 gwP
-oMZ
+uSF
 xZE
 gwP
 gwP
-oMZ
-oMZ
+uSF
+uSF
 gwP
 gwP
 gwP
@@ -33135,8 +33134,8 @@ gwP
 gwP
 gwP
 gwP
-sMx
-sMx
+xZE
+xZE
 gwP
 gwP
 aca
@@ -33170,8 +33169,8 @@ hhs
 eft
 xKL
 gwP
-oMZ
-oMZ
+uSF
+uSF
 gwP
 gwP
 xZE
@@ -33363,8 +33362,8 @@ gwP
 gwP
 gwP
 gwP
-sMx
-sMx
+xZE
+xZE
 gwP
 gwP
 aca
@@ -33398,8 +33397,8 @@ dmT
 hhs
 soz
 jqr
-dFz
-oMZ
+sxl
+uSF
 aca
 aca
 xZE
@@ -35904,8 +35903,8 @@ abS
 eGD
 eGD
 eGD
-adP
-adP
+ufG
+ufG
 eGD
 acq
 eGD
@@ -36132,9 +36131,9 @@ abS
 eGD
 eGD
 eGD
-adP
-adP
-adP
+ufG
+ufG
+ufG
 bje
 gVw
 tMQ
@@ -36361,7 +36360,7 @@ eGD
 eGD
 eGD
 eGD
-adP
+ufG
 daY
 tPH
 rTT
@@ -38374,8 +38373,8 @@ acf
 acf
 acf
 izh
-hBL
-hBL
+izh
+izh
 izh
 abl
 abl
@@ -39058,8 +39057,8 @@ acf
 acf
 acf
 izh
-hBL
-hBL
+izh
+izh
 izh
 abl
 abl
@@ -40210,10 +40209,10 @@ abl
 abl
 abl
 abl
-hBL
-hBL
-hBL
-hBL
+izh
+izh
+izh
+izh
 abl
 abl
 izh
@@ -40438,10 +40437,10 @@ abl
 abl
 abl
 abl
-hBL
-hBL
-hBL
-hBL
+izh
+izh
+izh
+izh
 abl
 abl
 izh
@@ -52254,8 +52253,8 @@ aag
 aai
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aag
 aag
@@ -52482,8 +52481,8 @@ aag
 aag
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aag
 aag
@@ -53842,8 +53841,8 @@ aaD
 aag
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aag
 dzM
@@ -54070,8 +54069,8 @@ aab
 aag
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aai
 dzM
@@ -56360,8 +56359,8 @@ aag
 aag
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aag
 aag
@@ -56588,8 +56587,8 @@ aag
 aag
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aag
 aag
@@ -56807,8 +56806,8 @@ aag
 aag
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aag
 aag
@@ -57035,8 +57034,8 @@ aag
 aag
 aag
 aag
-aag
-aag
+aab
+aab
 aag
 aag
 aai
@@ -57790,7 +57789,7 @@ jlt
 pET
 fTM
 fTM
-diW
+jMS
 fTM
 whU
 whU
@@ -58018,7 +58017,7 @@ jMS
 fTM
 fTM
 fTM
-diW
+jMS
 agm
 agm
 whU
@@ -58474,7 +58473,7 @@ jMS
 fTM
 fTM
 fTM
-diW
+jMS
 akL
 whU
 fTM
@@ -58696,13 +58695,13 @@ whU
 whU
 whU
 jMS
-diW
-diW
 jMS
-diW
+jMS
+jMS
+jMS
 wEO
 wEO
-diW
+jMS
 fTM
 fTM
 fTM
@@ -58930,7 +58929,7 @@ wEO
 fTM
 fTM
 akL
-diW
+jMS
 fTM
 fTM
 fTM
@@ -59355,9 +59354,9 @@ egU
 nzw
 nHq
 jAo
-umb
+nzw
 acg
-umb
+nzw
 iyr
 eZC
 uBR
@@ -59381,12 +59380,12 @@ whU
 whU
 whU
 jMS
-diW
-diW
+jMS
+jMS
 fIt
 fTM
 fIt
-diW
+jMS
 fTM
 fTM
 whU
@@ -59614,7 +59613,7 @@ jMS
 aed
 fIt
 jMS
-diW
+jMS
 agm
 whU
 whU
@@ -59809,13 +59808,13 @@ pUm
 bvj
 bvj
 gVR
-umb
-umb
-umb
+nzw
+nzw
+nzw
 aaN
-umb
-umb
-umb
+nzw
+nzw
+nzw
 uBR
 vVC
 vVC
@@ -60267,9 +60266,9 @@ pUm
 uBR
 jhj
 upQ
-umb
+nzw
 acg
-umb
+nzw
 fAD
 rPK
 uBR

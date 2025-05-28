@@ -213,3 +213,15 @@
   - bugfix: Thermap tarps now have stun to match the rest of the tarps
   stalkerino, thwomper, lagomorphica:
   - rscadd: Adds a satchel to Intelligence Officers
+2025-05-28:
+  Ansekishoku:
+  - imageadd: New sprites for armored gloves
+  Detective-Google:
+  - maptweak: trijent LZs can now be powered
+  DolphinShark20:
+  - spellcheck: Fixes slight spelling mistake within the description of meatbread.
+  Some Random Guy 3124, Morrowwolf, Amory:
+  - rscadd: Added MSF Herculis patch for USCM Generals, added MP armband for provost
+      enforcers
+  - imageadd: added New USCM General Uniform and Provost uniforms
+  - imagedel: deleted the old USCM General Uniforms, TIS and Provost gear.

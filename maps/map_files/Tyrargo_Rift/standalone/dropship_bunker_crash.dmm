@@ -165,7 +165,8 @@
 	},
 /obj/structure/shuttle/part/dropship2/transparent/engine_right_cap{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -181,7 +182,8 @@
 	dir = 1
 	},
 /obj/structure/shuttle/part/dropship2/transparent/lower_right_wing{
-	dir = 8
+	dir = 8;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -190,7 +192,8 @@
 	dir = 1
 	},
 /obj/structure/shuttle/part/dropship2/transparent/middle_right_wing{
-	dir = 8
+	dir = 8;
+	name = "Tychon"
 	},
 /obj/structure/machinery/light/dropship/green{
 	needs_power = 0
@@ -202,7 +205,8 @@
 	dir = 1
 	},
 /obj/structure/shuttle/part/dropship2/transparent/upper_right_wing{
-	dir = 8
+	dir = 8;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -260,7 +264,8 @@
 	},
 /obj/structure/shuttle/part/dropship2/transparent/engine_left_cap{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -324,7 +329,8 @@
 	},
 /obj/structure/shuttle/part/dropship2/transparent/nose_top_right{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -372,7 +378,8 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/shuttle/part/dropship2/transparent/nose_top_left{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -485,14 +492,16 @@
 "aT" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/shuttle/part/dropship2/transparent/lower_left_wing{
-	dir = 8
+	dir = 8;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "aU" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/shuttle/part/dropship2/transparent/middle_left_wing{
-	dir = 8
+	dir = 8;
+	name = "Tychon"
 	},
 /obj/structure/machinery/light/dropship/red{
 	dir = 1;
@@ -503,7 +512,8 @@
 "aV" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/shuttle/part/dropship2/transparent/upper_left_wing{
-	dir = 8
+	dir = 8;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -552,7 +562,8 @@
 "bc" = (
 /obj/structure/shuttle/part/dropship2/transparent/engine_right_cap{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
@@ -586,7 +597,8 @@
 "bf" = (
 /obj/structure/shuttle/part/dropship2/transparent/engine_left_cap{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /obj/structure/flora/tree/tyrargo_small/tree_stump{
 	layer = 3;
@@ -862,7 +874,8 @@
 	dir = 8
 	},
 /obj/structure/shuttle/part/dropship2/transparent/right_outer_bottom_wing{
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -1029,7 +1042,8 @@
 	},
 /obj/structure/shuttle/part/dropship2/transparent/nose_center{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -1744,7 +1758,8 @@
 	},
 /obj/structure/shuttle/part/dropship2/transparent/left_outer_bottom_wing{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -1977,7 +1992,8 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/shuttle/part/dropship2/transparent/left_outer_inner_wing{
 	dir = 8;
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -2079,7 +2095,8 @@
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "LH" = (
 /obj/structure/shuttle/part/dropship2/transparent/right_inner_bottom_wing{
-	density = 0
+	density = 0;
+	name = "Tychon"
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)

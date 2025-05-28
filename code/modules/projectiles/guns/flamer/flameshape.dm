@@ -6,7 +6,7 @@
 #define SET_AFLAME_LIST_SOFT_CAP 30 // prevent creating too big to be set aflame lists
 
 
-/proc/_fire_spread_check(obj/flamer_fire/F, obj/flamer_fire/mover, turf/prev_T, turf/T, burn_dam)
+/proc/_fire_spread_check(obj/flamer_fire/F, turf/prev_T, turf/T, burn_dam)
 	if(istype(T, /turf/open/space))
 		return FIRE_CANPASS_STOP
 
@@ -14,7 +14,12 @@
 		T.flamer_fire_act(burn_dam, F.weapon_cause_data)
 		return FIRE_CANPASS_SET_AFLAME
 
-	var/atom/A = LinkBlocked(mover, prev_T, T)
+	var/static/obj/flamer_fire/eternal
+	if(QDELETED(eternal)) // initialization or in case someone was able to extinguish it in nullspace
+		eternal = new()
+		STOP_PROCESSING(SSobj, eternal) // prevent self deliting because of nullspace
+
+	var/atom/A = LinkBlocked(eternal, prev_T, T)
 
 	if(A)
 		A.flamer_fire_act(burn_dam, F.weapon_cause_data)
@@ -59,7 +64,6 @@
 	var/list/tiles_to_spread = list(source_turf) // tiles to spread from on this iteration
 	var/list/tiles_to_set_aflame = list()
 	var/list/checked_tiles = list(source_turf)
-	var/obj/flamer_fire/temp = new()
 
 	for(var/spread_amount in 1 to fire_spread_amount)
 		var/list/next_tiles_to_spread = list() // tiles to spread from on next iteration
@@ -71,7 +75,7 @@
 				if(checked_tiles[T])
 					continue
 
-				var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+				var/result = _fire_spread_check(F, prev_T, T, burn_dam)
 				switch(result)
 					if(FIRE_CANPASS_SPREAD)
 						next_tiles_to_spread.Add(T)
@@ -92,7 +96,6 @@
 
 		tiles_to_spread = next_tiles_to_spread
 
-	qdel(temp)
 	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, FALSE, fuel_pressure), 0)
 
 
@@ -113,7 +116,6 @@
 
 	var/list/dirs = dirs_to_use()
 	var/list/tiles_to_set_aflame = list()
-	var/obj/flamer_fire/temp = new()
 
 	for(var/dirn in dirs)
 		var/endturf = get_ranged_target_turf(F, dirn, fire_spread_amount)
@@ -121,7 +123,7 @@
 
 		var/turf/prev_T = source_turf
 		for(var/turf/T as anything in turfs)
-			var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+			var/result = _fire_spread_check(F, prev_T, T, burn_dam)
 			switch(result)
 				if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 					break
@@ -129,7 +131,6 @@
 			tiles_to_set_aflame.Add(T)
 			prev_T = T
 
-	qdel(temp)
 	addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, FALSE, fuel_pressure), 0)
 
 /datum/flameshape/star/minor
@@ -159,9 +160,8 @@
 
 	var/distance = 1
 	for(distance in 2 to fire_spread_amount) // first tile already set on fire
-		var/obj/flamer_fire/temp = new()
 		var/turf/T = turfs[distance]
-		var/result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+		var/result = _fire_spread_check(F, prev_T, T, burn_dam)
 		switch(result)
 			if(FIRE_CANPASS_SPREAD)
 				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, TRUE, fuel_pressure), 1)
@@ -172,7 +172,6 @@
 				break
 
 		prev_T = T
-		QDEL_NULL(temp)
 		sleep(1) // sleep to properly check next tile spread
 
 	if(F.to_call)
@@ -195,13 +194,12 @@
 		fire_spread_amount = turfs.len
 
 	for(var/distance in 1 to fire_spread_amount)
-		var/obj/flamer_fire/temp = new()
 		var/turf/T = turfs[distance]
 		var/list/tiles_to_set_aflame = list()
 
 		var/result = FIRE_CANPASS_SPREAD
 		if(prev_T != T) // first tile already set on fire
-			result = _fire_spread_check(F, temp, prev_T, T, burn_dam)
+			result = _fire_spread_check(F, prev_T, T, burn_dam)
 			switch(result)
 				if(FIRE_CANPASS_SPREAD)
 					tiles_to_set_aflame.Add(T)
@@ -217,7 +215,7 @@
 			var/side_dir = turn(unleash_dir, side_turn)
 
 			var/side_T = get_step(side_prev_T, side_dir)
-			var/side_result = _fire_spread_check(F, temp, side_prev_T, side_T, burn_dam)
+			var/side_result = _fire_spread_check(F, side_prev_T, side_T, burn_dam)
 			switch(side_result)
 				if(FIRE_CANPASS_SPREAD)
 					tiles_to_set_aflame.Add(side_T)
@@ -232,7 +230,6 @@
 		if(result == FIRE_CANPASS_SET_AFLAME)
 			break
 
-		QDEL_NULL(temp)
 		sleep(3) // 1 from step forward, 1 for each step in each side
 
 	if(F.to_call)

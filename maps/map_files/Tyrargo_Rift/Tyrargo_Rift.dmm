@@ -4543,6 +4543,12 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
+"ang" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "government_resin_upper"
+	},
+/turf/open_space,
+/area/tyrargo/outdoors/colony_streets/north)
 "anh" = (
 /obj/structure/flora/tree/dead/tree_2,
 /obj/structure/flora/tree/dead/tree_3{
@@ -216589,7 +216595,7 @@ cFO
 cFO
 cFO
 cFy
-cUc
+ang
 cUc
 cUc
 cUc

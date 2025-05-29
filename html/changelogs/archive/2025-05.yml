@@ -225,3 +225,10 @@
       enforcers
   - imageadd: added New USCM General Uniform and Provost uniforms
   - imagedel: deleted the old USCM General Uniforms, TIS and Provost gear.
+2025-05-29:
+  BOBAMAx:
+  - balance: the mar-50 LMG can no longer be used with a bipod
+  - bugfix: the mar-50 no longer spawns with other invalid attachments like barrel
+      attachments
+  KornFlaks:
+  - bugfix: Xenos now heal at full speed while not on fire.

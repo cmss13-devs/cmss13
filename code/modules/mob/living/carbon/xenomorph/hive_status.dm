@@ -477,17 +477,23 @@
 		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = ""),
 		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "")
 	)
-	
+
 	for(var/caste in GLOB.xeno_datum_list)
 		var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[caste]
 
 		// Special castes like king will not show up.
 		if(caste_datum.tier < 0 || caste_datum.tier >= length(xeno_icons) || !(caste_datum.caste_type in xeno_icons[caste_datum.tier+1]))
 			continue
-		
+
 		xeno_icons[caste_datum.tier+1][caste_datum.caste_type] = GLOB.minimap_icons[caste_datum.minimap_icon]
-	
+
 	return xeno_icons
+
+/// Returns the default minimap icon background, as specified on drone caste.
+/datum/hive_status/proc/get_xeno_background()
+	var/datum/caste_datum/drone = GLOB.xeno_datum_list[XENO_CASTE_DRONE]
+
+	return GLOB.minimap_icons[drone.minimap_background]
 
 /**
  * Returns a sorted list of some basic info (stuff that's needed for sorting) about all the xenos in the hive

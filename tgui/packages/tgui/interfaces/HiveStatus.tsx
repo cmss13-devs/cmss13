@@ -142,6 +142,7 @@ type Data = {
   burrowed_larva: number;
   evilution_level: number;
   pylon_status: string;
+  xeno_background: string;
   is_in_ovi: BooleanLike;
   user_ref: string;
   hive_color: string;
@@ -225,7 +226,8 @@ const GeneralInformation = (props) => {
 
 const XenoCounts = (props) => {
   const { data } = useBackend<Data>();
-  const { xeno_icons, xeno_counts, tier_slots, hive_color } = data;
+  const { xeno_background, xeno_icons, xeno_counts, tier_slots, hive_color } =
+    data;
 
   return (
     <Flex direction="column-reverse">
@@ -288,18 +290,28 @@ const XenoCounts = (props) => {
               <Flex.Item>
                 <center>
                   <Table className="xenoCountTable" collapsing>
-                    <Table.Row header>
+                    <Table.Row header style={{ transform: 'translateX(10px)' }}>
                       {Object.keys(counts).map((caste, i) => (
                         <Table.Cell
                           key={i}
                           className="underlineCell"
-                          width={7}
+                          width={caste.length}
                           nowrap
                         >
                           <Image
-                            src={`data:image/jpeg;base64,${xeno_icons[tier][caste]}`}
+                            src={`data:image/jpeg;base64,${xeno_background}`}
+                            position="absolute"
                             style={{
-                              transform: 'scale(3) translateX(-3px)',
+                              transform:
+                                'scale(3) translateX(-6px) translateY(1px)',
+                            }}
+                          />
+                          <Image
+                            src={`data:image/jpeg;base64,${xeno_icons[tier][caste]}`}
+                            position="absolute"
+                            style={{
+                              transform:
+                                'scale(3) translateX(-6px) translateY(1px)',
                             }}
                           />
                           {caste === 'Bloody Larva' ? 'Larva' : caste}

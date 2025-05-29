@@ -13,6 +13,7 @@
 	var/burrowed_larva
 	var/evilution_level
 	var/pylon_status
+	var/xeno_background
 
 	var/data_initialized = FALSE
 
@@ -102,6 +103,7 @@
 
 /datum/hive_status_ui/proc/update_xeno_icons(send_update = TRUE)
 	xeno_icons = assoc_hive.get_xeno_icons()
+	xeno_background = assoc_hive.get_xeno_background()
 
 	if(send_update)
 		SStgui.update_uis(src)
@@ -164,6 +166,7 @@
 	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
 	.["pylon_status"] = pylon_status
+	.["xeno_background"] = xeno_background
 
 	var/mob/living/carbon/xenomorph/queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor

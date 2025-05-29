@@ -6,6 +6,16 @@
 #define SET_AFLAME_LIST_SOFT_CAP 30 // prevent creating too big to be set aflame lists
 
 
+// Same as LinkBlocked, but for fire as mover
+/proc/FireLinkBlocked(turf/prev_T, turf/T)
+	var/static/obj/flamer_fire/eternal
+	if(QDELETED(eternal)) // initialization or in case someone was able to extinguish it in nullspace
+		eternal = new()
+		STOP_PROCESSING(SSobj, eternal) // prevent self deliting because of nullspace
+
+	return LinkBlocked(eternal, prev_T, T)
+
+
 /proc/_fire_spread_check(obj/flamer_fire/F, turf/prev_T, turf/T, burn_dam)
 	if(istype(T, /turf/open/space))
 		return FIRE_CANPASS_STOP
@@ -14,12 +24,7 @@
 		T.flamer_fire_act(burn_dam, F.weapon_cause_data)
 		return FIRE_CANPASS_SET_AFLAME
 
-	var/static/obj/flamer_fire/eternal
-	if(QDELETED(eternal)) // initialization or in case someone was able to extinguish it in nullspace
-		eternal = new()
-		STOP_PROCESSING(SSobj, eternal) // prevent self deliting because of nullspace
-
-	var/atom/A = LinkBlocked(eternal, prev_T, T)
+	var/atom/A = FireLinkBlocked(prev_T, T)
 
 	if(A)
 		A.flamer_fire_act(burn_dam, F.weapon_cause_data)

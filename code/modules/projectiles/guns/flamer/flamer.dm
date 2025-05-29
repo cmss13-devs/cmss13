@@ -259,9 +259,7 @@
 	if(current_turf.density)
 		stop_at_turf = TRUE
 	else
-		var/atom/movable/temp = new /obj/flamer_fire()
-		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
-		qdel(temp)
+		var/atom/movable/blocked = FireLinkBlocked(prev_turf, current_turf)
 
 		if(blocked)
 			if(blocked.flags_atom & ON_BORDER)

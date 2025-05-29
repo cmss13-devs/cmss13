@@ -574,6 +574,8 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define STORAGE_ALLOW_QUICKDRAW (1<<11)
 /// Whether using this item will try not to empty it if possible
 #define STORAGE_DISABLE_USE_EMPTY (1<<12)
+/// Whether the user can withdraw the items in storage while being hauled by a xeno
+#define STORAGE_ALLOW_WHILE_HAULED (1<<13)
 
 #define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
 #define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)

@@ -307,7 +307,7 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/xenomorph/proc/handle_environment()
 	var/turf/T = loc
-	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || fire_stacks == 0) ? recovery_aura : 0
+	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
 	if(caste && !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
 		if(env_temperature > (T0C + 66))

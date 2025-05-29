@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_9
+	speed = XENO_SPEED_TIER_3
 
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
@@ -43,6 +43,7 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/oppressor_punch,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(

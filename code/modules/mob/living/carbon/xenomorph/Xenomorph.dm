@@ -155,12 +155,6 @@
 	var/tier = 1 //This will track their "tier" to restrict/limit evolutions
 	var/time_of_birth
 
-	// Queen permission toggles cooldown
-	var/toggle_slash_delay = FALSE
-	var/toggle_construction_delay = FALSE
-	var/toggle_deconstruction_delay = FALSE
-	var/toggle_unnesting_delay = FALSE
-
 	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution, deactivates dchat death messages
 
 	//Naming variables

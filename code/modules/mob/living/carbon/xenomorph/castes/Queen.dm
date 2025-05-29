@@ -659,7 +659,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		CRASH("[src] attempted to toggle slashing without a linked hive")
 
-	if(toggle_slash_delay)
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_TOGGLE_SLASH))
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
@@ -667,8 +667,7 @@
 	if(!choice)
 		return
 
-	toggle_slash_delay = TRUE
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph, do_claw_toggle_cooldown)), 30 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_TOGGLE_SLASH, 30 SECONDS)
 
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
@@ -685,9 +684,6 @@
 		hive.hive_flags &= ~XENO_SLASH_RESTRICTED
 		hive.hive_flags |= XENO_SLASH_FORBIDDEN
 
-/mob/living/carbon/xenomorph/proc/do_claw_toggle_cooldown()
-	toggle_slash_delay = FALSE
-
 /mob/living/carbon/xenomorph/proc/construction_toggle()
 	set name = "Permit/Disallow Construction Placement"
 	set desc = "Allows you to permit the hive to place construction nodes freely."
@@ -697,7 +693,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	if(toggle_construction_delay)
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_TOGGLE_CONSTRUCTION))
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
@@ -706,8 +702,7 @@
 	if(!choice)
 		return
 
-	toggle_construction_delay = TRUE
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph, do_construction_toggle_cooldown)), 30 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_TOGGLE_CONSTRUCTION, 30 SECONDS)
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
@@ -724,9 +719,6 @@
 		hive.hive_flags &= ~XENO_CONSTRUCTION_LEADERS_ONLY
 		hive.hive_flags |= XENO_CONSTRUCTION_QUEEN_ONLY
 
-/mob/living/carbon/xenomorph/proc/do_construction_toggle_cooldown()
-	toggle_construction_delay = FALSE
-
 /mob/living/carbon/xenomorph/proc/destruction_toggle()
 	set name = "Permit/Disallow Special Structure Destruction"
 	set desc = "Allows you to permit the hive to destroy special structures freely."
@@ -736,7 +728,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	if(toggle_deconstruction_delay)
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_TOGGLE_DECONSTRUCTION))
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
@@ -745,8 +737,7 @@
 	if(!choice)
 		return
 
-	toggle_deconstruction_delay = TRUE
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph, do_deconstruction_toggle_cooldown)), 30 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_TOGGLE_DECONSTRUCTION, 30 SECONDS)
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
@@ -763,9 +754,6 @@
 		hive.hive_flags &= ~XENO_DECONSTRUCTION_LEADERS_ONLY
 		hive.hive_flags |= XENO_DECONSTRUCTION_QUEEN_ONLY
 
-/mob/living/carbon/xenomorph/proc/do_deconstruction_toggle_cooldown()
-	toggle_deconstruction_delay = FALSE
-
 /mob/living/carbon/xenomorph/proc/unnesting_toggle()
 	set name = "Permit/Disallow Unnesting"
 	set desc = "Allows you to restrict unnesting to drones."
@@ -774,12 +762,11 @@
 	if(stat)
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 
-	if(toggle_unnesting_delay)
+	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_TOGGLE_UNNESTING))
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	toggle_unnesting_delay = TRUE
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/xenomorph, do_deconstruction_toggle_cooldown)), 30 SECONDS)
+	TIMER_COOLDOWN_START(src, COOLDOWN_TOGGLE_UNNESTING, 30 SECONDS)
 
 	if(hive.hive_flags & XENO_UNNESTING_RESTRICTED)
 		to_chat(src, SPAN_XENONOTICE("You have allowed everyone to unnest hosts."))
@@ -789,9 +776,6 @@
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
 		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.", hivenumber = src.hivenumber)
 		hive.hive_flags |= XENO_UNNESTING_RESTRICTED
-
-/mob/living/carbon/xenomorph/proc/do_unnesting_toggle_cooldown()
-	toggle_unnesting_delay = FALSE
 
 /mob/living/carbon/xenomorph/queen/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	return COMPONENT_SCREECH_ACT_CANCEL

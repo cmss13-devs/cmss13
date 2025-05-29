@@ -105,6 +105,12 @@
 
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
+// Queen permission toggles
+#define COOLDOWN_TOGGLE_SLASH "cooldown_toggle_slash"
+#define COOLDOWN_TOGGLE_CONSTRUCTION "cooldown_toggle_construction"
+#define COOLDOWN_TOGGLE_DECONSTRUCTION "cooldown_toggle_deconstruction"
+#define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
+
 #define XENO_SLASH_FORBIDDEN (1<<0)
 #define XENO_SLASH_RESTRICTED (1<<1)
 #define XENO_CONSTRUCTION_LEADERS_ONLY (1<<2)

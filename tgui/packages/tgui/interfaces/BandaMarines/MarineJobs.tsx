@@ -6,6 +6,10 @@
  */
 
 const JOBS_RU = {
+  // MARK: Mutiny
+  MUTINY: 'МЯТЕЖНИКИ',
+  LOYALIST: 'ЛОЯЛИСТЫ',
+  'NON-COMBAT': 'НЕКОМБАТАНТЫ',
   // MARK: Squads
   Alpha: 'Альфа',
   Bravo: 'Браво',

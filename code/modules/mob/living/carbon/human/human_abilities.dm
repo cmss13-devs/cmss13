@@ -501,6 +501,7 @@ CULT
 	human_owner.join_mutiny(TRUE, MUTINY_MUTINEER)
 	start_mutiny(human_owner.faction)
 	message_admins("[key_name_admin(human_owner)] has begun the mutiny.")
+	human_owner.set_selected_ability(null) // BANDAMARINES ADD
 	remove_from(human_owner)
 
 /proc/start_mutiny(mutiny_faction = FACTION_MARINE)

@@ -1441,7 +1441,6 @@ and you're good to go.
 /obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
-	var/is_dual_wield = dual_wield
 	var/atom/original_target = target //This is for burst mode, in case the target changes per scatter chance in between fired bullets.
 
 	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
@@ -1456,7 +1455,7 @@ and you're good to go.
 
 	var/original_scatter = projectile_to_fire.scatter
 	var/original_accuracy = projectile_to_fire.accuracy
-	apply_bullet_scatter(projectile_to_fire, user, reflex, is_dual_wield) //User can be passed as null.
+	apply_bullet_scatter(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
 
 	curloc = get_turf(user)
 	if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
@@ -1517,7 +1516,7 @@ and you're good to go.
 		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 			return NONE
 
-	apply_bullet_effects(projectile_to_fire, user, reflex, is_dual_wield) //User can be passed as null.
+	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
 	projectile_to_fire.firer = user
@@ -1526,7 +1525,7 @@ and you're good to go.
 
 	play_firing_sounds(projectile_to_fire, user)
 
-	simulate_recoil(is_dual_wield, user, target)
+	simulate_recoil(dual_wield, user, target)
 
 	//This is where the projectile leaves the barrel and deals with projectile code only.
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -1546,7 +1545,7 @@ and you're good to go.
 
 	shots_fired++
 
-	if(is_dual_wield && !fired_by_akimbo)
+	if(dual_wield && !fired_by_akimbo)
 		switch(user?.client?.prefs?.dual_wield_pref)
 			if(DUAL_WIELD_FIRE)
 				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)

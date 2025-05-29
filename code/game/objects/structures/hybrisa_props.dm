@@ -1207,15 +1207,36 @@
 	desc = "A metal grate."
 	icon_state = "solidgrate1"
 
+/obj/structure/prop/hybrisa/misc/floorprops/grate/indestructible
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
+
 /obj/structure/prop/hybrisa/misc/floorprops/grate2
 	name = "solid metal grate"
 	desc = "A metal grate."
 	icon_state = "solidgrate5"
 
+/obj/structure/prop/hybrisa/misc/floorprops/grate2/indestructible
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
 /obj/structure/prop/hybrisa/misc/floorprops/grate3
 	name = "solid metal grate"
 	desc = "A metal grate."
 	icon_state = "zhalfgrate1"
+
+/obj/structure/prop/hybrisa/misc/floorprops/grate4
+	name = "solid metal grate"
+	desc = "A metal grate."
+	icon_state = "zhalfgrate2"
+
+/obj/structure/prop/hybrisa/misc/floorprops/plate
+	name = "plating"
+	desc = "A metal plate."
+	icon_state = "plating"
 
 /obj/structure/prop/hybrisa/misc/floorprops/floorglass
 	name = "reinforced glass floor"
@@ -1336,6 +1357,12 @@
 	desc = "A golden framed picture of an ominous skeletal figure ordorned in golden garb, fancy for a pile of bones..."
 	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
 	icon_state = "pictureframe"
+
+/obj/structure/prop/hybrisa/misc/picture_oil
+	name = "framed picture"
+	desc = "A silver framed picture of someone wearing a corporate issue deepsea powered hardsuit, the base of the frame has some words inscribed, 'site director'."
+	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
+	icon_state = "pictureframe_oil"
 
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
 	name = "Weyland-Yutani 'M5X Apesuit' showcase"

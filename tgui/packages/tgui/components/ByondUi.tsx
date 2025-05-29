@@ -49,10 +49,13 @@ function createByondUiElement(elementId: string | undefined): ByondUiElement {
     render: (params: SampleByondParams) => {
       byondUiStack[index] = id;
 
+      Byond.sendMessage('renderByondUi', { byondUiId: id });
       Byond.winset(id, { ...params, style: Byond.styleSheet });
     },
     unmount: () => {
       byondUiStack[index] = null;
+
+      Byond.sendMessage('unmountByondUi', { ByondUiId: id });
       Byond.winset(id, {
         parent: '',
       });

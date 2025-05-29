@@ -97,7 +97,6 @@
 		if(!length(hive.totalXenos))
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have activated a backup power source, it will turn on in 30 seconds!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
-	timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), 5 MINUTES, TIMER_STOPPABLE)
 	state = STATE_ON
 	addtimer(CALLBACK(src, PROC_REF(turn_on)), 30 SECONDS)
 
@@ -113,7 +112,7 @@
 		if(!length(hive.totalXenos))
 			continue
 		xeno_announcement(SPAN_XENOANNOUNCE("The tallhosts have activated a backup power source!"), cur_hive_num, XENO_GENERAL_ANNOUNCE)
-	timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), 5 MINUTES, TIMER_STOPPABLE)
+	timer = addtimer(CALLBACK(src, PROC_REF(turn_off)), 1 MINUTES, TIMER_STOPPABLE)
 
 /obj/structure/machinery/backup_generator/proc/turn_off()
 	state = STATE_DEPLETED

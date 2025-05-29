@@ -37,7 +37,7 @@
 				marine_rk = "gp"
 			if(JOB_DROPSHIP_PILOT)
 				marine_rk = "dp"
-			if(JOB_TANK_CREW, JOB_MECH_OP)
+			if(JOB_TANK_CREW)
 				marine_rk = "tc"
 			if(JOB_INTEL)
 				marine_rk = "io"
@@ -132,7 +132,7 @@
 				border_rk = "command"
 			if(JOB_POLICE)
 				marine_rk = "mp"
-			if(JOB_TANK_CREW, JOB_MECH_OP)
+			if(JOB_TANK_CREW)
 				marine_rk = "tc"
 			if(JOB_WARDEN)
 				marine_rk = "warden"

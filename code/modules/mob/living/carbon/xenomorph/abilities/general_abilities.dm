@@ -453,8 +453,6 @@
 
 /datum/action/xeno_action/activable/xeno_spit/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_3
-/datum/action/xeno_action/activable/xeno_spit/palatine_macro
-	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/activable/bombard
 	name = "Bombard"

@@ -140,8 +140,6 @@
 						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
 					else if(istype(X) && IS_XENO_LEADER(X))
 						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name][track] hisses, <span class='normal'>'[message]'</span>")
-					else if(istype(X, /mob/living/carbon/xenomorph/palatine))
-						ghostrend = SPAN_XENOPALATINE("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
 					else
 						ghostrend = SPAN_XENO("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
 					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
@@ -154,8 +152,6 @@
 					rendered = SPAN_XENOQUEEN("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else if(istype(X) && IS_XENO_LEADER(X))
 					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-				else if(istype(X, /mob/living/carbon/xenomorph/palatine))
-					rendered = SPAN_XENOPALATINE("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else
 					rendered = SPAN_XENO("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 

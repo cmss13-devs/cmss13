@@ -15,9 +15,6 @@
 	if(HAS_TRAIT(src, TRAIT_HAULED))
 		to_chat(attacking_xeno, SPAN_WARNING("[src] is being hauled, we cannot do anything to them."))
 		return
-	if(HAS_TRAIT(src, TRAIT_INSIDE_VEHICLE))
-		to_chat(attacking_xeno, SPAN_WARNING("[src] is inside a vehicle, we cannot directly harm them."))
-		return
 
 	var/intent = attacking_xeno.a_intent
 

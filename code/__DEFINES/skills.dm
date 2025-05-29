@@ -136,8 +136,7 @@
 #define SKILL_POWERLOADER_DEFAULT 0
 #define SKILL_POWERLOADER_TRAINED 1 //
 #define SKILL_POWERLOADER_MASTER 2 //Pilot, CT, Req, OT, CE
-#define SKILL_POWERLOADER_COMBAT 3
-#define SKILL_POWERLOADER_MAX 3
+#define SKILL_POWERLOADER_MAX 2
 
 //leadership skill
 #define SKILL_LEAD_NOVICE 0 //Anyone but the above. Using SL items is possible but painfully slow

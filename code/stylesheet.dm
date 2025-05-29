@@ -123,7 +123,6 @@ h1.alert, h2.alert {color: #000000;}
 
 .xeno {color: #900090; font-style: italic;}
 .xenoleader {color: #730d73; font-style: italic; font-size: 3;}
-.xenopalatine {color: #3f053f; font-style: italic; font-size: 3;}
 .xenoqueen {color: #730d73; font-style: italic; font-weight: bold; font-size: 3;}
 .psy_talk {color: #a70090; font-style: italic; font-weight: bold; font-size: 3;}
 

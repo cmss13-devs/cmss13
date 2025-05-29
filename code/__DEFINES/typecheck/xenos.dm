@@ -43,7 +43,7 @@
 		var/datum/hive_status/corrupted/renegade/renegade_hive = hive
 		return renegade_hive.iff_protection_check(src, attempt_harm_mob)
 
-	if(HAS_TRAIT(attempt_harm_mob, TRAIT_HAULED) || HAS_TRAIT(attempt_harm_mob, TRAIT_INSIDE_VEHICLE))
+	if(HAS_TRAIT(attempt_harm_mob, TRAIT_HAULED))
 		return TRUE
 
 	return hive.is_ally(attempt_harm_mob)

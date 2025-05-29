@@ -951,30 +951,6 @@ Defined in conflicts.dm of the #defines folder.
 			. = TRUE
 	return .
 
-/obj/item/attachable/powerloader_harness
-	name = "magnetic harness"
-	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to any set of USCM armor."
-	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'
-	icon_state = "magnetic"
-	attach_icon = "magnetic_a"
-	slot = "rail"
-	pixel_shift_x = 13
-	var/linked_loader //Needs MANUAL linking
-
-/obj/item/attachable/powerloader_harness/can_be_attached_to_gun(mob/user, obj/item/weapon/gun/G)
-	if(SEND_SIGNAL(G, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
-		to_chat(user, SPAN_WARNING("[G] already has a retrieval system installed!"))
-		return FALSE
-	return ..()
-
-/obj/item/attachable/powerloader_harness/Attach(obj/item/weapon/gun/G)
-	. = ..()
-	G.AddElement(/datum/element/drop_retrieval/powerloader, linked_loader)
-
-/obj/item/attachable/powerloader_harness/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
-	. = ..()
-	detaching_gun.RemoveElement(/datum/element/drop_retrieval/powerloader, linked_loader)
-
 /obj/item/attachable/alt_iff_scope
 	name = "B8 Smart-Scope"
 	icon = 'icons/obj/items/weapons/guns/attachments/rail.dmi'

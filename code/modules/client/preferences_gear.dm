@@ -1340,11 +1340,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 
 // Plushies - either civilian only or removed completely perhaps...
 
-/datum/gear/civilian/plush/mystery_box
-	display_name = "collectible plushies mystery box"
-	path = /obj/item/storage/box/plush
-	fluff_cost = 7 // Potential for ultra-rare plushies not found on the rest of the loadout menu...
-
 /datum/gear/civilian/plush/farwa
 	display_name = "Farwa plush"
 	path = /obj/item/toy/plush/farwa

@@ -319,29 +319,38 @@
 	item_state = "hazard_black"
 
 //Lawyer
-/obj/item/clothing/suit/storage/lawyer
+/obj/item/clothing/suit/storage/jacket/marine/lawyer
+	desc = "A snappy dress jacket."
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
-
-/obj/item/clothing/suit/storage/lawyer/bluejacket
-	name = "Blue Suit Jacket"
-	desc = "A snappy dress jacket."
-	icon_state = "suitjacket_blue_open"
-	item_state = "suitjacket_blue_open"
-	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
-
-/obj/item/clothing/suit/storage/lawyer/purpjacket
-	name = "Purple Suit Jacket"
-	desc = "A snappy dress jacket."
-	icon_state = "suitjacket_purp"
-	item_state = "suitjacket_purp"
+	has_buttons = TRUE
 	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket
+	name = "Blue Suit Jacket"
+	icon_state = "suitjacket_blue"
+	initial_icon_state = "suitjacket_blue"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/purpjacket
+	name = "Purple Suit Jacket"
+	icon_state = "suitjacket_purp"
+	initial_icon_state = "suitjacket_purp"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/redjacket
+	name = "Red Suit Jacket"
+	icon_state = "suitjacket_red"
+	initial_icon_state = "suitjacket_red"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/blackjacket
+	name = "Black Suit Jacket"
+	icon_state = "suitjacket_black"
+	initial_icon_state = "suitjacket_black"
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker

@@ -1,0 +1,5 @@
+author: "MiraHell"
+delete-after: True
+changes:
+  - bugfix: "Исправлено двойное оповещение о мятеже"
+  - spellcheck: "Перевод мятежа в обсерве"

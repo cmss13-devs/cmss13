@@ -1,0 +1,101 @@
+/datum/caste_datum/pathogen/sprinter
+	caste_type = NEOMORPH_SPRINTER
+	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
+	tier = 1
+	melee_damage_lower = XENO_DAMAGE_TIER_1
+	melee_damage_upper = XENO_DAMAGE_TIER_2
+	melee_vehicle_damage = 0
+	plasma_gain = XENO_PLASMA_GAIN_TIER_1
+	plasma_max = XENO_NO_PLASMA
+	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
+	armor_deflection = XENO_NO_ARMOR
+	max_health = XENO_HEALTH_RUNNER
+	evasion = XENO_EVASION_NONE
+	speed = XENO_SPEED_RUNNER
+	attack_delay = -4
+
+	available_strains = list()
+	behavior_delegate_type = /datum/behavior_delegate/sprinter_base
+	evolves_to = list(NEOMORPH_BLIGHT)
+	deevolves_to = list()
+
+	tackle_min = 4
+	tackle_max = 5
+	tackle_chance = 40
+	tacklestrength_min = 4
+	tacklestrength_max = 4
+
+	heal_resting = 1.75
+
+	minimum_evolve_time = 5 MINUTES
+
+	minimap_icon = "sprinter"
+
+/mob/living/carbon/xenomorph/sprinter
+	caste_type = NEOMORPH_SPRINTER
+	name = NEOMORPH_SPRINTER
+	desc = "A small white alien that looks like it could run fairly quickly..."
+	icon = 'icons/mob/neo/sprinter.dmi'
+	icon_state = "Sprinter Walking"
+	icon_size = 64
+	layer = MOB_LAYER
+	plasma_types = list(PLASMA_CATECHOLAMINE)
+	tier = 1
+	pixel_x = -16  //Needed for 2x2
+	old_x = -16
+	base_pixel_x = 0
+	base_pixel_y = -20
+	pull_speed = -0.5
+	viewsize = 9
+	organ_value = 500 //worthless
+
+	mob_size = MOB_SIZE_XENO_SMALL
+
+	base_actions = list(
+		/datum/action/xeno_action/onclick/xeno_resting,
+		/datum/action/xeno_action/onclick/release_haul,
+		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/xenohide,
+		/datum/action/xeno_action/activable/pounce/runner,
+		/datum/action/xeno_action/activable/runner_skillshot,
+		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+		/datum/action/xeno_action/onclick/tacmap,
+	)
+	inherent_verbs = list(
+		/mob/living/carbon/xenomorph/proc/vent_crawl,
+	)
+
+	icon_xeno = 'icons/mob/neo/sprinter.dmi'
+	icon_xenonid = 'icons/mob/neo/sprinter.dmi'
+	need_weeds = FALSE
+
+	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
+	weed_food_states = list("Drone_1","Drone_2","Drone_3")
+	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+
+	AUTOWIKI_SKIP(TRUE)
+	hivenumber = XENO_HIVE_NEOMORPH
+	speaking_noise = "neo_talk"
+
+
+/mob/living/carbon/xenomorph/sprinter/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
+	..()
+	if (pass_flags_container)
+		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
+
+/mob/living/carbon/xenomorph/sprinter/recalculate_actions()
+	. = ..()
+	pull_multiplier *= 0.85
+	if(is_zoomed)
+		zoom_out()
+
+/datum/behavior_delegate/sprinter_base
+	name = "Base Sprinter Behavior Delegate"
+
+/datum/behavior_delegate/sprinter_base/melee_attack_additional_effects_self()
+	..()
+
+	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)
+	if(hide)
+		hide.post_attack()

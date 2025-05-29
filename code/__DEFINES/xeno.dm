@@ -703,7 +703,12 @@
 
 //Neo
 #define NEOMORPH_BURSTER "Bloodburster"
+#define NEOMORPH_SPRINTER "Sprinter"
+#define NEOMORPH_POPPER "Popper"
 #define NEOMORPH_GROWN "Neomorph"
+#define NEOMORPH_BLIGHT "Blight"
+#define NEOMORPH_BRUTE "Brute"
+#define NEOMORPH_VENATOR "Venator"
 
 //special
 #define XENO_CASTE_PREDALIEN  "Predalien"

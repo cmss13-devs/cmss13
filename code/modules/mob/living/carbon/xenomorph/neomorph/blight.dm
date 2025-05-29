@@ -1,5 +1,5 @@
-/datum/caste_datum/pathogen/neomorph
-	caste_type = NEOMORPH_GROWN
+/datum/caste_datum/pathogen/blight
+	caste_type = NEOMORPH_BLIGHT
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -16,23 +16,23 @@
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
 	available_strains = list()
-	behavior_delegate_type = /datum/behavior_delegate/neomorph_base
+	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
 
-	deevolves_to = list(NEOMORPH_POPPER)
+	deevolves_to = list(NEOMORPH_SPRINTER)
 	caste_desc = "A fast, powerful combatant."
-	evolves_to = list(NEOMORPH_BRUTE)
+	evolves_to = list(NEOMORPH_VENATOR)
 
 	heal_resting = 1
 	minimum_evolve_time = 0
 
-	minimap_icon = "neomorph"
+	minimap_icon = "blight"
 
-/mob/living/carbon/xenomorph/neomorph
-	caste_type = NEOMORPH_GROWN
-	name = NEOMORPH_GROWN
+/mob/living/carbon/xenomorph/blight
+	caste_type = NEOMORPH_BLIGHT
+	name = NEOMORPH_BLIGHT
 	desc = "A sleek, fast alien with sharp claws."
 	icon_size = 48
-	icon_state = "Neomorph Walking"
+	icon_state = "Blight Walking"
 	plasma_types = list()
 	pixel_x = -12
 	old_x = -12
@@ -43,8 +43,6 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/runner/neomorph,
-		/datum/action/xeno_action/activable/headbite,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
@@ -55,8 +53,8 @@
 	tackle_min = 2
 	tackle_max = 6
 
-	icon_xeno = 'icons/mob/neo/neomorph.dmi'
-	icon_xenonid = 'icons/mob/neo/neomorph.dmi'
+	icon_xeno = 'icons/mob/neo/blight.dmi'
+	icon_xenonid = 'icons/mob/neo/blight.dmi'
 	need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
@@ -66,27 +64,3 @@
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_NEOMORPH
 	speaking_noise = "neo_talk"
-
-/datum/behavior_delegate/neomorph_base
-	name = "Base Neomorph Behavior Delegate"
-
-	// Config
-	var/slash_slow_duration = 35
-
-/datum/behavior_delegate/neomorph_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
-	if (!isxeno_human(target_carbon))
-		return
-
-	if (HAS_TRAIT(target_carbon, TRAIT_FLOORED))
-		new /datum/effects/xeno_slow(target_carbon, bound_xeno, null, null, get_xeno_stun_duration(target_carbon, slash_slow_duration))
-
-	return
-
-/datum/action/xeno_action/activable/pounce/runner/neomorph
-	xeno_cooldown = 5 SECONDS
-	knockdown = TRUE // Should we knock down the target?
-	knockdown_duration = 1
-	slash = TRUE // Do we slash upon reception?
-	freeze_self = TRUE // Should we freeze ourselves after the lunge?
-	freeze_time = 5
-	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory

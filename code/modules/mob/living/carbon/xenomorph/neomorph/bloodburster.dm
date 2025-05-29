@@ -1,7 +1,7 @@
-/datum/caste_datum/bloodburster
+/datum/caste_datum/pathogen/bloodburster
 	caste_type = NEOMORPH_BURSTER
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
-	tier = 1
+	tier = 0
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
 	melee_vehicle_damage = 0
@@ -39,7 +39,7 @@
 	icon_size = 32
 	layer = MOB_LAYER
 	plasma_types = list()
-	tier = 1
+	tier = 0
 	base_pixel_x = 0
 	base_pixel_y = -20
 	pull_speed = -0.5

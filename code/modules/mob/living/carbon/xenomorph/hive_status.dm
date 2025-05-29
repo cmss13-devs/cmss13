@@ -1605,5 +1605,27 @@
 	hive_orders = "Kill everyone and everything."
 
 	free_slots = list(
-		/datum/caste_datum/neomorph = 6,
+		/datum/caste_datum/pathogen/neomorph = 6,
 	)
+
+/datum/hive_status/neomorph/get_xeno_counts()
+	// Every caste is manually defined here so you get
+	var/list/xeno_counts = list(
+		// Yes, Queen is technically considered to be tier 0
+		list(NEOMORPH_BURSTER = 0),
+		list(NEOMORPH_POPPER = 0, NEOMORPH_SPRINTER = 0),
+		list(NEOMORPH_GROWN = 0, NEOMORPH_BLIGHT = 0),
+		list(NEOMORPH_BRUTE = 0, NEOMORPH_VENATOR = 0)
+	)
+
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+				continue
+
+		if(xeno.caste && xeno.counts_for_slots)
+			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
+
+	return xeno_counts

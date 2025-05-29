@@ -26,8 +26,8 @@
 
 	var/charges = NO_ACTION_CHARGES
 
-	// Any ability marked as 'acid-based' triggers the acid overlay for their respective caste upon action selection and clears it upon deselection.
-	var/is_acid_based
+	/// Should the ability trigger an acid overlay for their respective caste upon action selection and deselection.
+	var/ability_uses_acid_overlay = FALSE
 
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
@@ -175,7 +175,7 @@
 		xeno.set_selected_ability(null)
 		if(charge_time)
 			stop_charging_ability()
-		if (is_acid_based)
+		if(ability_uses_acid_overlay)
 			xeno.overlays -= xeno.acid_overlay
 	else
 		to_chat(xeno, "You will now use [name] with [xeno.get_ability_mouse_name()].")
@@ -190,13 +190,15 @@
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
 		if(charge_time)
 			start_charging_ability()
-		if (is_acid_based && !(xeno.acid_overlay in xeno.overlays))
+		if(ability_uses_acid_overlay && !(xeno.acid_overlay in xeno.overlays) && !xeno.resting)
 			xeno.overlays += xeno.acid_overlay
 
 // Called when a different action is clicked on and this one is deselected.
 /datum/action/xeno_action/activable/proc/action_deselect()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(ability_uses_acid_overlay)
+		xeno.overlays -= xeno.acid_overlay
 	button.icon_state = "template"
-
 
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()

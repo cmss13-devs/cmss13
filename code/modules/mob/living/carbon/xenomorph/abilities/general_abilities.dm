@@ -141,7 +141,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_corrosive_acid
 	ability_primacy = XENO_CORROSIVE_ACID
 	action_type = XENO_ACTION_CLICK
-	is_acid_based = TRUE
+	ability_uses_acid_overlay = TRUE
 
 /datum/action/xeno_action/activable/corrosive_acid/New()
 	update_level()
@@ -358,7 +358,7 @@
 	var/action_text = "spray acid"
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	action_type = XENO_ACTION_CLICK
-	is_acid_based = TRUE
+	ability_uses_acid_overlay = TRUE
 
 	plasma_cost = 40
 	xeno_cooldown = 80
@@ -447,7 +447,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	cooldown_message = "We feel our neurotoxin glands swell with ichor. We can spit again."
 	xeno_cooldown = 60 SECONDS
-	is_acid_based = TRUE
+	ability_uses_acid_overlay = TRUE
 
 	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
 	var/spitting = FALSE
@@ -465,7 +465,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 230
-	is_acid_based = TRUE
+	ability_uses_acid_overlay = TRUE
 
 	// Range and other config
 	var/effect_range = 3

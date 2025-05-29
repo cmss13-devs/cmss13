@@ -122,33 +122,33 @@
 
 
 //Drops the item in our left hand
-/mob/proc/drop_l_hand(forced)
+/mob/proc/drop_l_hand()
 	if(l_hand)
-		return drop_inv_item_on_ground(l_hand, force = forced)
+		return drop_inv_item_on_ground(l_hand)
 	return FALSE
 
 //Drops the item in our right hand
-/mob/proc/drop_r_hand(forced)
+/mob/proc/drop_r_hand()
 	if(r_hand)
-		return drop_inv_item_on_ground(r_hand, force = forced)
+		return drop_inv_item_on_ground(r_hand)
 	return FALSE
 
 //Drops the item in our active hand. If passed with an item, it will check each hand for the item and drop the right one.
-/mob/proc/drop_held_item(obj/item/I, forced)
+/mob/proc/drop_held_item(obj/item/I)
 	if(I)
 		if(I == r_hand)
-			return drop_r_hand(forced)
+			return drop_r_hand()
 		else if (I == l_hand)
-			return drop_l_hand(forced)
+			return drop_l_hand()
 	else if(hand)
-		return drop_l_hand(forced)
+		return drop_l_hand()
 	else
-		return drop_r_hand(forced)
+		return drop_r_hand()
 
 //Drops the items in our hands.
-/mob/proc/drop_held_items(forced)
-	drop_r_hand(forced)
-	drop_l_hand(forced)
+/mob/proc/drop_held_items()
+	drop_r_hand()
+	drop_l_hand()
 
 //drop the inventory item on a specific location
 /mob/proc/drop_inv_item_to_loc(obj/item/I, atom/newloc, nomoveupdate, force)

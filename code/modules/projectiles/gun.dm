@@ -230,8 +230,6 @@
 	var/gun_firemode = GUN_FIREMODE_SEMIAUTO
 	///List of allowed firemodes.
 	var/list/gun_firemode_list = list()
-	///If dual wield is forbidden.
-	var/akimbo_forbidden = FALSE
 	///How many bullets the gun fired while bursting/auto firing
 	var/shots_fired = 0
 	/// Currently selected target to fire at. Set with set_target()
@@ -1429,8 +1427,8 @@ and you're good to go.
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
-	if(!reflex && !dual_wield && !akimbo_forbidden && user)
-		if(istype(akimbo) && !akimbo.akimbo_forbidden && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+	if(!reflex && !dual_wield && user)
+		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
@@ -1448,8 +1446,6 @@ and you're good to go.
 
 	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 		return TRUE
-	if(akimbo_forbidden)
-		is_dual_wield = FALSE
 
 	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
 	var/obj/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
@@ -1714,8 +1710,8 @@ and you're good to go.
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
-	if(!dual_wield && user && !akimbo_forbidden)
-		if(istype(akimbo) && !akimbo_forbidden && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+	if(!dual_wield && user)
+		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/bullets_to_fire = 1

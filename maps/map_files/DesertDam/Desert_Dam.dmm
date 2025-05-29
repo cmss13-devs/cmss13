@@ -934,6 +934,13 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_one)
+"adQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -6686,7 +6693,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDq" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDr" = (
@@ -32483,6 +32490,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "dax" = (
@@ -44810,7 +44818,7 @@
 /turf/open/floor/prison/whitegreen/southeast,
 /area/desert_dam/building/medical/emergency_room)
 "mqi" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "mqM" = (
@@ -61721,7 +61729,7 @@ aPF
 aSC
 aau
 aOc
-aUH
+adQ
 aVk
 aVk
 aVk

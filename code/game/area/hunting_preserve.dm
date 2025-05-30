@@ -12,7 +12,7 @@
 /area/yautja_grounds/jungle
 	name = "\improper Yautja Hunting Grounds Jungle Central"
 	icon_state = "central"
-	flags_area = AREA_YAUTJA_HANGABLE
+	flags_area = AREA_YAUTJA_HANGABLE|AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
 	ambience_exterior = AMBIENCE_JUNGLEMOON
 	soundscape_playlist = SCAPE_PL_JUNGLE_MOON
 	soundscape_interval = 60

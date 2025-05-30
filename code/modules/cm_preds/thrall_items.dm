@@ -159,6 +159,10 @@
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = -1
 
+	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
+		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
+		return
+
 	if(H.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return

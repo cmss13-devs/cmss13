@@ -522,7 +522,7 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 
 /obj/structure/machinery/hunting_ground_selection/attack_hand(mob/living/user)
 	. = ..()
-	if(!isyautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
@@ -1172,8 +1172,6 @@ GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER,)
 			if(CLAN_RANK_ADMIN_INT)
 				new_access = list(ACCESS_YAUTJA_SECURE, ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
-			if(SPECIES_HUMAN)
-				new_access = list(ACCESS_YAUTJA_THRALL)
 	access = new_access
 
 ///Able to dissolve anything not anchored to the ground or being held, while uncloaked.

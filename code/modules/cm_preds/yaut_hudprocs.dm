@@ -14,6 +14,7 @@
 	var/list/options = list()
 	var/list/optionsp = list(
 		"Un-Mark as Thralled",
+		"Mark as Blooded",
 		"Mark as Honored",
 		"Un-Mark as Honored",
 		"Mark as Dishonorable",
@@ -59,6 +60,8 @@
 				T.mark_thralled()
 			if("Un-Mark as Thralled")
 				T.unmark_thralled()
+			if("Mark as Blooded")
+				T.mark_blooded()
 
 	return
 
@@ -442,6 +445,47 @@
 		thrall.hud_set_hunter()
 	else
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
+
+/mob/living/carbon/human/proc/mark_blooded()
+	if(is_mob_incapacitated())
+		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
+		return
+
+	if(!isyautja(src))
+		to_chat(src, SPAN_WARNING("How did you get this verb?"))
+		return
+
+	var/list/target_list = list()
+	for(var/mob/living/carbon/target in range(7, usr.client))
+		if(ishuman_strict(target) && target.stat != DEAD)
+			target_list += target
+
+	var/mob/living/carbon/T = tgui_input_list(usr, "Target", "Choose a target.", target_list)
+	if(!T)
+		return
+	if(T.hunter_data.blooded)
+		to_chat(src, SPAN_YAUTJABOLD("[T] has already been blooded by [T.hunter_data.blooded_set.real_name] for '[T.hunter_data.blooded_reason]'!"))
+		return
+	if(!T.hunter_data.thralled)
+		to_chat(src, SPAN_YAUTJABOLD("[T] has not proved themselves worthy of blooding."))
+		return
+
+	var/reason = stripped_input(usr, "Enter the reason for marking your target as blooded.", "Mark as Blooded", "", 120)
+
+	if(!reason)
+		return
+
+	log_interact(src, T, "[key_name(src)] has blooded [key_name(T)] for '[reason]'.")
+	message_all_yautja("[real_name] has blooded [T] for '[reason]'.")
+
+	ADD_TRAIT(T, TRAIT_YAUTJA_TECH, "Yautja Tech")
+	to_chat(T, SPAN_YAUTJABOLD("You are a Blooded Thrall. Focus on interacting with Predators and developing your reputation. You should be observant and discreet while exercising discretionary restraint when hunting worthy prey. Learn Yautja lore and their Honor Code. If you have any questions, ask the whitelisted players in LOOC."))
+
+	T.hunter_data.blooded_set = src
+	T.hunter_data.blooded = TRUE
+	T.hunter_data.blooded_reason = reason
+	hunter_data.newblood = T
+	T.hud_set_hunter()
 
 /mob/living/carbon/human/proc/call_combi()
 	set name = "Yank combi-stick"

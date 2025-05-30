@@ -70,6 +70,7 @@
 #define TRACKER_DSL "_dsl" // Delta Squad Leader
 #define TRACKER_ESL "_esl" // Echo Squad Leader
 #define TRACKER_FSL "_fsl" // Cryo Squad Leader
+#define TRACKER_ISL "_isl" // Intel Squad Leader
 
 //for tracking the queen/hivecore on xeno locator huds
 #define TRACKER_QUEEN "Queen"

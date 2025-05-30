@@ -733,7 +733,6 @@
 	desc = "A custom set of M3 armor designed for USCM Scouts."
 	icon_state = "scout_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE

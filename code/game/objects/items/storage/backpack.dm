@@ -904,10 +904,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
-
 /obj/item/storage/backpack/marine/satchel/scout_cloak/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(flags_atom & NO_GAMEMODE_SKIN)
 		return

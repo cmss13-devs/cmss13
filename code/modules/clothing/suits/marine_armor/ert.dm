@@ -804,11 +804,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	storage_slots = 4
 	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
-
-/obj/item/clothing/suit/storage/marine/veteran/royal_marine/light/iasf/synth/Initialize()
-	flags_atom |= NO_NAME_OVERRIDE
-	flags_marine_armor |= SYNTH_ALLOWED
-	return ..()
+	flags_marine_armor = parent_type::flags_marine_armor|SYNTH_ALLOWED
 
 //CBRN
 

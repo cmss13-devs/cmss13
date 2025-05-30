@@ -281,19 +281,19 @@
 		var/list/turf/above_turfs = impacted_turfs
 		while(TRUE) // we know that it starts with len > 0
 			var/list/turf/temp = SSmapping.get_same_z_turfs_above(above_turfs)
-			if(temp.len == 0) // levels is not connected
+			if(temp.len == 0) // levels are not connected
 				break
 			above_turfs = list()
 			for(var/turf/T as anything in temp)
 				if(istransparentturf(T))
-					above_turfs += T // next time check only above transparent turfs
+					above_turfs += T // turf from which we can see light below
 			if(above_turfs.len == 0)
 				break
-			impacted_turfs += above_turfs // and add them to the impacted
+			impacted_turfs += above_turfs // add them to the impacted
 
 		while(below_turfs.len > 0)
 			var/list/turf/temp = SSmapping.get_same_z_turfs_below(below_turfs)
-			if(temp.len == 0) // levels is not connected
+			if(temp.len == 0) // levels are not connected
 				break
 			impacted_turfs += temp // add turfs that we found below transparent
 			below_turfs = list()

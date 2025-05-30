@@ -50,7 +50,7 @@
 
 	var/list/uniform_sets = null
 
-
+	var/remove_tts = FALSE // BANDAMARINES ADD
 
 /datum/equipment_preset/New()
 	uniform_sets = list(

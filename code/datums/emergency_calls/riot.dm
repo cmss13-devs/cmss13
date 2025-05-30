@@ -4,7 +4,7 @@
 	name = "USCM Riot Control"
 	mob_max = 10
 	mob_min = 5
-	objectives = "Ensure order is restored and Marine Law is maintained."
+	objectives = "Обеспечьте восстановление порядка и соблюдение законов."
 	probability = 0
 
 

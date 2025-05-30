@@ -1,0 +1,984 @@
+# Uncategorized SS13 stuff
+
+[holopad]
+nominative = "голопад"
+genitive = "голопада"
+dative = "голопаду"
+accusative = "голопад"
+instrumental = "голопадом"
+prepositional = "голопаде"
+gender = "male"
+
+["secure holopad"]
+nominative = "защищенный голопад"
+genitive = "защищенного голопада"
+dative = "защищенному голопаду"
+accusative = "защищенный голопад"
+instrumental = "защищенным голопадом"
+prepositional = "защищенном голопаде"
+
+["recharging station"]
+nominative = "зарядная станция"
+genitive = "зарядной станции"
+dative = "зарядной станции"
+accusative = "зарядную станцию"
+instrumental = "зарядной станцией"
+prepositional = "зарядной станции"
+
+["security camera"]
+nominative = "камера наблюдения"
+genitive = "камеры наблюдения"
+dative = "камере наблюдения"
+accusative = "камеру наблюдения"
+instrumental = "камерой наблюдения"
+prepositional = "камере наблюдения"
+
+["motion-sensitive security camera"]
+nominative = "камера наблюдения с датчиком движения"
+genitive = "камеры наблюдения с датчиком движения"
+dative = "камере наблюдения с датчиком движения"
+accusative = "камеру наблюдения с датчиком движения"
+instrumental = "камерой наблюдения с датчиком движения"
+prepositional = "камере наблюдения с датчиком движения"
+
+["Confessional intercom"]
+accusative = "интерком исповедания"
+dative = "интеркому исповедания"
+genitive = "интеркома исповедания"
+instrumental = "интеркомом исповедания"
+nominative = "интерком исповедания"
+prepositional = "интеркоме исповедания"
+
+[Ian]
+accusative = "Иана"
+dative = "Иану"
+genitive = "Иана"
+instrumental = "Ианом"
+nominative = "Иан"
+prepositional = "Иане"
+
+["alien embryo"]
+accusative = "эмбрион Чужих"
+dative = "эмбриону Чужих"
+genitive = "эмбриона Чужих"
+instrumental = "эмбрионом Чужих"
+nominative = "эмбрион Чужих"
+prepositional = "эмбрионе Чужих"
+
+[bush]
+accusative = "куст"
+dative = "кусту"
+genitive = "куста"
+instrumental = "кустом"
+nominative = "куст"
+prepositional = "кусте"
+
+[chair]
+accusative = "стул"
+dative = "стулу"
+genitive = "стула"
+instrumental = "стулом"
+nominative = "стул"
+prepositional = "стуле"
+
+["chameleon projector"]
+accusative = "маскировочный проектор"
+dative = "маскировочному проектору"
+genitive = "маскировочного проектора"
+instrumental = "маскировочным проектором"
+nominative = "маскировочный проектор"
+prepositional = "маскировочном проекторе"
+
+["claw hammer"]
+accusative = "молоток-гвоздодер"
+dative = "молотку-гвоздодеру"
+genitive = "молотка-гвоздодера"
+instrumental = "молотком-гвоздодером"
+nominative = "молоток-гвоздодер"
+prepositional = "молотке-гвоздодере"
+
+["command intercom"]
+accusative = "интерком командования"
+dative = "интеркому командования"
+genitive = "интеркома командования"
+instrumental = "интеркомом командования"
+nominative = "интерком командования"
+prepositional = "интеркоме командования"
+
+["critter crate"]
+accusative = "ящик для животных"
+dative = "ящику для животных"
+genitive = "ящика для животных"
+instrumental = "ящиком для животных"
+nominative = "ящик для животных"
+prepositional = "ящике для животных"
+
+["cyborg chameleon projector"]
+accusative = "маскировочный проектор киборга"
+dative = "маскировочному проектору киборга"
+genitive = "маскировочного проектора киборга"
+instrumental = "маскировочным проектором киборга"
+nominative = "маскировочный проектор киборга"
+prepositional = "маскировочном проекторе киборга"
+
+["disk compartmentalizer"]
+accusative = "сортировщик дисков"
+dative = "сортировщику дисков"
+genitive = "сортировщика дисков"
+instrumental = "сортировщиком дисков"
+nominative = "сортировщик дисков"
+prepositional = "сортировщике дисков"
+
+["drink showcase"]
+accusative = "витрину дла напитков"
+dative = "витрине дла напитков"
+genitive = "витрины дла напитков"
+instrumental = "витриной дла напитков"
+nominative = "витрина дла напитков"
+prepositional = "витрине дла напитков"
+
+["engineering crate"]
+accusative = "инженерный ящик"
+dative = "инженерному ящику"
+genitive = "инженерного ящика"
+instrumental = "инженерным ящиком"
+nominative = "инженерный ящик"
+prepositional = "инженерном ящиком"
+
+["fishing rod"]
+accusative = "удочку"
+dative = "удочке"
+genitive = "удочки"
+instrumental = "удочкой"
+nominative = "удочка"
+prepositional = "удочке"
+
+["intercom frame"]
+accusative = "каркас интеркома"
+dative = "каркасу интеркома"
+genitive = "каркаса интеркома"
+instrumental = "каркасом интеркома"
+nominative = "каркас интеркома"
+prepositional = "каркасе интеркома"
+
+["lizard plushie"]
+accusative = "плюшевую ящерицу"
+dative = "плюшевой ящерице"
+genitive = "плюшевой ящерицы"
+instrumental = "плюшевой ящерицей"
+nominative = "плюшевая ящерица"
+prepositional = "плюшевой ящерице"
+
+["moth plushie"]
+nominative = "плюшевая моль"
+genitive = "плюшевой моли"
+dative = "плюшевой моли"
+accusative = "плюшевую моль"
+instrumental = "плюшевой молью"
+prepositional = "плюшевой моли"
+gender = "female"
+
+["mech removal tool"]
+accusative = "огромный лом"
+dative = "огромному лому"
+genitive = "огромного лома"
+instrumental = "огромным ломом"
+nominative = "огромный лом"
+prepositional = "огромном ломе"
+
+["medical syringe gun"]
+accusative = "медицинский шприцемёт"
+dative = "медицинскому шприцемёту"
+genitive = "медицинского шприцимёта"
+instrumental = "медицинским шприцемётом"
+nominative = "медицинский шприцемёт"
+prepositional = "медицинском шприцемёте"
+
+[mist]
+accusative = "туман"
+dative = "туману"
+genitive = "тумана"
+instrumental = "туманом"
+nominative = "туман"
+prepositional = "тумане"
+
+[moffers]
+accusative = "мофферсы"
+dative = "мофферсам"
+genitive = "мофферсов"
+instrumental = "мофферсами"
+nominative = "мофферсы"
+prepositional = "мофферсах"
+
+[mop]
+accusative = "швабру"
+dative = "швабре"
+genitive = "швабры"
+instrumental = "шваброй"
+nominative = "швабра"
+prepositional = "швабре"
+
+["operating table"]
+accusative = "операционный стол"
+dative = "операционному столу"
+genitive = "операционного стола"
+instrumental = "операционным столом"
+nominative = "операционный стол"
+prepositional = "операционном столе"
+
+["personal AI device"]
+accusative = "устройство ПИИ"
+dative = "устройству ПИИ"
+genitive = "устройства ПИИ"
+instrumental = "устройством ПИИ"
+nominative = "устройство ПИИ"
+prepositional = "устройстве ПИИ"
+
+["Personal Artificial Intelligence Card"] # Unique Design Name
+nominative = "Устройство персонального искусственного интеллекта"
+
+[photocopier]
+accusative = "ксерокс"
+dative = "ксероксу"
+genitive = "ксерокса"
+instrumental = "ксероксом"
+nominative = "ксерокс"
+prepositional = "ксероксе"
+
+["plastic potted plant"]
+accusative = "пластиковое растение"
+dative = "пластиковому растению"
+genitive = "пластикового растения"
+instrumental = "пластиковым растением"
+nominative = "пластиковое растение"
+prepositional = "пластиковом растении"
+
+[plunger]
+accusative = "вантуз"
+dative = "вантузу"
+genitive = "вантуза"
+instrumental = "вантузом"
+nominative = "вантуз"
+prepositional = "вантузе"
+
+["potted plant"]
+accusative = "комнатное растение"
+dative = "комнатному растению"
+genitive = "комнатного растения"
+instrumental = "комнатным растением"
+nominative = "комнатное растение"
+prepositional = "комнатном растении"
+
+["receive-only intercom"]
+accusative = "интерком для приема"
+dative = "интеркому для приема"
+genitive = "интеркома для приема"
+instrumental = "интеркомом для приема"
+nominative = "интерком для приема"
+prepositional = "интеркоме для приема"
+
+["reinforced plunger"]
+accusative = "усиленный вантуз"
+dative = "усиленному вантузу"
+genitive = "усиленного вантуза"
+instrumental = "усиленным вантузом"
+nominative = "усиленный вантуз"
+prepositional = "усиленном вантузе"
+
+["reinforced table"]
+accusative = "укреплённый стол"
+dative = "укреплённому столу"
+genitive = "укреплённого стола"
+instrumental = "укреплённым столом"
+nominative = "укреплённый стол"
+prepositional = "укреплённом столе"
+
+[shower]
+accusative = "душ"
+dative = "душу"
+genitive = "душа"
+instrumental = "душем"
+nominative = "душ"
+prepositional = "душе"
+
+["shower frame"]
+accusative = "каркас душа"
+dative = "каркасу душа"
+genitive = "каркаса душа"
+instrumental = "каркасом душа"
+nominative = "каркас душа"
+prepositional = "каркасе душа"
+
+["station intercom"]
+accusative = "интерком станции"
+dative = "интеркому станции"
+genitive = "интеркома станции"
+instrumental = "интеркомом станции"
+nominative = "интерком станции"
+prepositional = "интеркоме станции"
+
+["syndicate intercom"]
+accusative = "интерком синдиката"
+dative = "интеркому синдиката"
+genitive = "интеркома синдиката"
+instrumental = "интеркомом синдиката"
+nominative = "интерком синдиката"
+prepositional = "интеркоме синдиката"
+
+["syndicate wide-band intercom"]
+accusative = "широкополосный интерком синдиката"
+dative = "широкополосному интеркому синдиката"
+genitive = "широкополосного интеркома синдиката"
+instrumental = "широкополосным интеркомом синдиката"
+nominative = "широкополосный интерком синдиката"
+prepositional = "широкополосном интеркоме синдиката"
+
+["briefcase"]
+nominative = "портфель"
+genitive = "портфеля"
+dative = "портфелю"
+accusative = "портфель"
+instrumental = "портфелем"
+prepositional = "портфеле"
+
+["suture"]
+nominative = "шов"
+genitive = "шва"
+dative = "шву"
+accusative = "шов"
+instrumental = "швом"
+prepositional = "шве"
+
+["hologram"]
+nominative = "голограмма"
+genitive = "голограммы"
+dative = "голограмме"
+accusative = "голограмму"
+instrumental = "голограммой"
+prepositional = "голограмме"
+gender = "female"
+
+["box"]
+nominative = "коробка"
+genitive = "коробки"
+dative = "коробке"
+accusative = "коробку"
+instrumental = "коробкой"
+prepositional = "коробке"
+gender = "female"
+
+["cryogenic freezer"]
+nominative = "криогенная морозильная камера"
+genitive = "криогенной морозильной камеры"
+dative = "криогенной морозильной камере"
+accusative = "криогенную морозильную камеру"
+instrumental = "криогенной морозильной камерой"
+prepositional = "криогенной морозильной камере"
+gender = "female"
+
+["cryogenic oversight console"]
+nominative = "консоль криогенного контроля"
+genitive = "консоли криогенного контроля"
+dative = "консоли криогенного контроля"
+accusative = "консоль криогенного контроля"
+instrumental = "консолью криогенного контроля"
+prepositional = "консоли криогенного контроля"
+gender = "female"
+
+["Black Market Uplink"]
+nominative = "аплинк Чёрного рынка"
+genitive = "аплинка Чёрного рынка"
+dative = "аплинку Чёрного рынка"
+accusative = "аплинк Чёрного рынка"
+instrumental = "аплинком Чёрного рынка"
+prepositional = "аплинке Чёрного рынка"
+gender = "male"
+
+["breath mask"]
+nominative = "маска для дыхания"
+genitive = "маски для дыхания"
+dative = "маске для дыхания"
+accusative = "маску для дыхания"
+instrumental = "маской для дыхания"
+prepositional = "маске для дыхания"
+gender = "female"
+
+["patriotic suit"]
+nominative = "патриотический костюм"
+genitive = "патриотического костюма"
+dative = "патриотическому костюму"
+accusative = "патриотический костюм"
+instrumental = "патриотическим костюмом"
+prepositional = "патриотическом костюме"
+gender = "male"
+
+["patriotic bedsheet"]
+nominative = "патриотическая простыня"
+genitive = "патриотической простыни"
+dative = "патриотической простыне"
+accusative = "патриотическую простыню"
+instrumental = "патриотической простыней"
+prepositional = "патриотической простыне"
+
+["ID stickers box"]
+nominative = "коробка с наклейками на карту"
+genitive = "коробки с наклейками на карту"
+dative = "коробке с наклейками на карту"
+accusative = "коробку с наклейками на карту"
+instrumental = "коробкой с наклейками на карту"
+prepositional = "коробке с наклейками на карту"
+gender = "female"
+
+["ID sticker"]
+nominative = "наклейка на карту"
+genitive = "наклейки на карту"
+dative = "наклейке на карту"
+accusative = "наклейку на карту"
+instrumental = "наклейкой на карту"
+prepositional = "наклейке на карту"
+gender = "female"
+
+["holographic ID sticker"]
+nominative = "голографическая наклейка на карту"
+genitive = "голографической наклейки на карту"
+dative = "голографической наклейке на карту"
+accusative = "голографическую наклейку на карту"
+instrumental = "голографической наклейкой на карту"
+prepositional = "голографической наклейке на карту"
+gender = "female"
+
+["donut ID sticker"]
+nominative = "пончиковая наклейка на карту"
+genitive = "пончиковой наклейки на карту"
+dative = "пончиковой наклейке на карту"
+accusative = "пончиковую наклейку на карту"
+instrumental = "пончиковой наклейкой на карту"
+prepositional = "пончиковой наклейке на карту"
+gender = "female"
+
+["silver ID sticker"]
+nominative = "серебряная наклейка на карту"
+genitive = "серебряной наклейки на карту"
+dative = "себеряной наклейке на карту"
+accusative = "серебряную наклейку на карту"
+instrumental = "серебряной наклейкой на карту"
+prepositional = "серебряной наклейке на карту"
+gender = "female"
+
+["silver holographic ID sticker"]
+nominative = "серебряная голо-наклейка на карту"
+genitive = "серебряной голо-наклейки на карту"
+dative = "серебряной голо-наклейке на карту"
+accusative = "серебряную голо-наклейку на карту"
+instrumental = "серебряной голо-наклейкой на карту"
+prepositional = "серебряной голо-наклейке на карту"
+gender = "female"
+
+["gold ID sticker"]
+nominative = "золотая наклейка на карту"
+genitive = "золотой наклейки на карту"
+dative = "золотой наклейке на карту"
+accusative = "золотую наклейку на карту"
+instrumental = "золотой наклейкой на карту"
+prepositional = "золотой наклейке на карту"
+gender = "female"
+
+["businessman ID sticker"]
+nominative = "бизнесменская наклейка на карту"
+genitive = "бизнесменской наклейки на карту"
+dative = "бизнесменской наклейке на карту"
+accusative = "бизнесменскую наклейку на карту"
+instrumental = "бизнесменской наклейкой на карту"
+prepositional = "бизнесменской наклейке на карту"
+gender = "female"
+
+["stylish ID sticker"]
+nominative = "стильная наклейка на карту"
+genitive = "стильной наклейки на карту"
+dative = "стильной наклейке на карту"
+accusative = "стильную наклейку на карту"
+instrumental = "стильной наклейкой на карту"
+prepositional = "стильной наклейке на карту"
+gender = "female"
+
+["communistic ID sticker"]
+nominative = "коммунистическая наклейка на карту"
+genitive = "коммунистической наклейки на карту"
+dative = "коммунистической наклейке на карту"
+accusative = "коммунистическую наклейку на карту"
+instrumental = "коммунистической наклейкой на карту"
+prepositional = "коммунистической наклейке на карту"
+gender = "female"
+
+["clownish ID sticker"]
+nominative = "клоунская наклейка на карту"
+genitive = "клоунской наклейки на карту"
+dative = "клоунской наклейке на карту"
+accusative = "клоунскую наклейку на карту"
+instrumental = "клоунской наклейкой на карту"
+prepositional = "клоунской наклейке на карту"
+gender = "female"
+
+["neon ID sticker"]
+nominative = "неоновая наклейка на карту"
+genitive = "неоновой наклейки на карту"
+dative = "неоновой наклейке на карту"
+accusative = "неоновую наклейку на карту"
+instrumental = "неоновой наклейкой на карту"
+prepositional = "неоновой наклейке на карту"
+gender = "female"
+
+["neon holographic ID sticker"]
+nominative = "неоновая голо-наклейка на карту"
+genitive = "неоновой голо-наклейки на карту"
+dative = "неоновой голо-наклейке на карту"
+accusative = "неоновую голо-наклейку на карту"
+instrumental = "неоновой голо-наклейкой на карту"
+prepositional = "неоновой голо-наклейке на карту"
+gender = "female"
+
+["black-and-pink ID sticker"]
+nominative = "чёрно-розовая наклейка на карту"
+genitive = "чёрно-розовой наклейки на карту"
+dative = "чёрно-розовой наклейке на карту"
+accusative = "чёрно-розовую наклейку на карту"
+instrumental = "чёрно-розовой наклейкой на карту"
+prepositional = "черно-розовой наклейке на карту"
+gender = "female"
+
+["Ouija ID sticker"]
+nominative = "Уиджи наклейка на карту"
+genitive = "Уиджи наклейки на карту"
+dative = "Уиджи наклейке на карту"
+accusative = "Уиджи наклейку на карту"
+instrumental = "Уиджи наклейкой на карту"
+prepositional = "Уиджи наклейке на карту"
+gender = "female"
+
+["beach ID sticker"]
+nominative = "пляжная наклейка на карту"
+genitive = "пляжной наклейки на карту"
+dative = "пляжной наклейке на карту"
+accusative = "пляжную наклейку на карту"
+instrumental = "пляжной наклейкой на карту"
+prepositional = "пляжной наклейке на карту"
+gender = "female"
+
+["rainbow ID sticker"]
+nominative = "радужная наклейка на карту"
+genitive = "радужной наклейки на карту"
+dative = "радужной наклейке на карту"
+accusative = "радужную наклейку на карту"
+instrumental = "радужной наклейкой на карту"
+prepositional = "радужной наклейке на карту"
+gender = "female"
+
+["SPACE ID sticker"]
+nominative = "КОСМИЧЕСКАЯ наклейка на карту"
+genitive = "КОСМИЧЕСКОЙ наклейки на карту"
+dative = "КОСМИЧЕСКОЙ наклейке на карту"
+accusative = "КОСМИЧЕСКУЮ наклейку на карту"
+instrumental = "КОСМИЧЕСКОЙ наклейкой на карту"
+prepositional = "КОСМИЧЕСКОЙ наклейке на карту"
+gender = "female"
+
+["cat ID sticker"]
+nominative = "кото-наклейка на карту"
+genitive = "кото-наклейки на карту"
+dative = "кото-наклейке на карту"
+accusative = "кото-наклейку на карту"
+instrumental = "кото-наклейкой на карту"
+prepositional = "кото-наклейке на карту"
+gender = "female"
+
+["cat holographic ID sticker"]
+nominative = "голографическая кото-наклейка на карту"
+genitive = "голографической кото-наклейки на карту"
+dative = "голографической кото-наклейке на карту"
+accusative = "голографическую кото-наклейку на карту"
+instrumental = "голографической кото-наклейкой на карту"
+prepositional = "голографической кото-наклейке на карту"
+gender = "female"
+
+["anime ID sticker"]
+nominative = "аниме наклейка на карту"
+genitive = "аниме наклейки на карту"
+dative = "аниме наклейке на карту"
+accusative = "аниме наклейку на карту"
+instrumental = "аниме наклейкой на карту"
+prepositional = "аниме наклейке на карту"
+gender = "female"
+
+["running ID sticker"]
+nominative = "бегущая наклейка на карту"
+genitive = "бегущей наклейки на карту"
+dative = "бегущей наклейке на карту"
+accusative = "бегущую наклейку на карту"
+instrumental = "бегущей наклейкой на карту"
+prepositional = "бегущей наклейке на карту"
+gender = "female"
+
+["magical ID sticker"]
+nominative = "магическая наклейка на карту"
+genitive = "магической наклейки на карту"
+dative = "магической наклейке на карту"
+accusative = "магическую наклейку на карту"
+instrumental = "магической наклейкой на карту"
+prepositional = "магической наклейке на карту"
+gender = "female"
+
+["terminal ID sticker"]
+nominative = "наклейка на карту в виде терминала"
+genitive = "наклейки на карту в виде терминала"
+dative = "наклейке на карту в виде терминала"
+accusative = "наклейку на крату в виде терминала"
+instrumental = "наклейкой на карту в виде терминала"
+prepositional = "наклейке на карту в виде терминала"
+gender = "female"
+
+["jokerge ID sticker"]
+nominative = "джокерге наклейка на карту"
+genitive = "джокерге наклейки на карту"
+dative = "джокерге наклейке на карту"
+accusative = "джокерге наклейку на карту"
+instrumental = "джокерге наклейкой на карту"
+prepositional = "джокерге наклейке на карту"
+gender = "female"
+
+["boykisser ID sticker"]
+nominative = "бойкиссер наклейка на карту"
+genitive = "бойкиссер наклейки на карту"
+dative = "бойкиссер наклейке на карту"
+accusative = "бойкиссер наклейку на карту"
+instrumental = "бойкиссер наклейкой на карту"
+prepositional = "бойкиссер наклейке на карту"
+gender = "female"
+
+["EVA suit"]
+nominative = "скафандр ВКД"
+genitive = "скафандра ВКД"
+dative = "скафандру ВКД"
+accusative = "скафандр ВКД"
+instrumental = "скафандром ВКД"
+prepositional = "скафандре ВКД"
+gender = "male"
+
+["EVA helmet"]
+nominative = "шлем ВКД"
+genitive = "шлема ВКД"
+dative = "шлему ВКД"
+accusative = "шлем ВКД"
+instrumental = "шлемом ВКД"
+prepositional = "шлеме ВКД"
+gender = "male"
+
+["rainbow jumpsuit"]
+nominative = "радужный комбинезон"
+genitive = "радужного комбинезона"
+dative = "радужному комбинезону"
+accusative = "радужный комбинезон"
+instrumental = "радужным комбинезоном"
+prepositional = "радужном комбинезоне"
+gender = "male"
+
+["yellow jumpsuit"]
+nominative = "желтый комбинезон"
+genitive = "желтого комбинезона"
+dative = "желтому комбинезону"
+accusative = "желтый комбинезон"
+instrumental = "желтым комбинезоном"
+prepositional = "желтом комбинезоне"
+gender = "male"
+
+["coupon"]
+nominative = "купон"
+genitive = "купона"
+dative = "купону"
+accusative = "купон"
+instrumental = "купонoм"
+prepositional = "купоне"
+gender = "male"
+
+["black jumpsuit"]
+nominative = "черный комбинезон"
+genitive = "черного комбинезона"
+dative = "черному комбинезону"
+accusative = "черный комбинезон"
+instrumental = "черным комбинезоном"
+prepositional = "черном комбинезоне"
+gender = "male"
+
+["cardborg suit"]
+nominative = "костюм картборга"
+genitive = "костюма картборга"
+dative = "костюму картборга"
+accusative = "костюм картборга"
+instrumental = "костюмом картборга"
+prepositional = "костюме картборга"
+gender = "male"
+
+["cardborg helmet"]
+nominative = "шлем картборга"
+genitive = "шлема картборга"
+dative = "шлему картборга"
+accusative = "шлем картборга"
+instrumental = "шлемом картборга"
+prepositional = "шлеме картборга"
+gender = "male"
+
+["fertile egg box"]
+nominative = "коробка с плодородными яйцами"
+genitive = "коробки с плодородными яйцами"
+dative = "коробке с плодородными яйцами"
+accusative = "коробку с плодородными яйцами"
+instrumental = "коробкой с плодородными яйцами"
+prepositional = "коробке с плодородными яйцами"
+gender = "female"
+
+["firefighter helmet"]
+nominative = "шлем пожарного"
+genitive = "шлема пожарного"
+dative = "шлему пожарного"
+accusative = "шлем пожарного"
+instrumental = "шлемом пожарного"
+prepositional = "шлеме пожарного"
+gender = "male"
+
+["blue jumpsuit"]
+nominative = "синий комбинезон"
+genitive = "синего комбинезона"
+dative = "синему комбинезону"
+accusative = "синий комбинезон"
+instrumental = "синим комбинезоном"
+prepositional = "синем комбинезоне"
+gender = "male"
+
+["bloated human suit"]
+nominative = "раздутый человеческий костюм"
+genitive = "раздутого человеческого костюма"
+dative = "раздутому человеческому костюму"
+accusative = "раздутый человеческий костюм"
+instrumental = "раздутым человеческим костюмом"
+prepositional = "раздутом человеческом костюме"
+gender = "male"
+
+["green jumpsuit"]
+nominative = "зеленый комбинезон"
+genitive = "зеленого комбинезона"
+dative = "зеленому комбинезону"
+accusative = "зеленый комбинезон"
+instrumental = "зеленым комбинезоном"
+prepositional = "зеленом комбинезоне"
+gender = "male"
+
+["red jumpsuit"]
+nominative = "красный комбинезон"
+genitive = "красного комбинезона"
+dative = "красному комбинезону"
+accusative = "красный комбинезон"
+instrumental = "красным комбинезоном"
+prepositional = "красном комбинезоне"
+gender = "male"
+
+["collectable police officer's hat"]
+nominative = "коллекционная шляпа полицейского"
+genitive = "коллекционной шляпы полицейского"
+dative = "коллекционной шляпе полицейского"
+accusative = "коллекционную шляпу полицейского"
+instrumental = "коллекционной шляпой полицейского"
+prepositional = "коллекционной шляпе полицейского"
+gender = "female"
+
+["lantern"]
+nominative = "фонарь"
+genitive = "фонаря"
+dative = "фонарю"
+accusative = "фонарь"
+instrumental = "фонарем"
+prepositional = "фонаре"
+gender = "male"
+
+["monkey suit"]
+nominative = "костюм обезьяны"
+genitive = "костюма обезьяны"
+dative = "костюму обезьяны"
+accusative = "костюм обезьяны"
+instrumental = "костюмом обезьяны"
+prepositional = "костюме обезьяны"
+gender = "male"
+
+["monkey mask"]
+nominative = "маска обезьяны"
+genitive = "маски обезьяны"
+dative = "маске обезьяны"
+accusative = "маску обезьяны"
+instrumental = "маской обезьяны"
+prepositional = "маске обезьяны"
+gender = "female"
+
+["light purple jumpsuit"]
+nominative = "светло-фиолетовый комбинезон"
+genitive = "светло-фиолетового комбинезона"
+dative = "светло-фиолетовому комбинезону"
+accusative = "светло-фиолетовый комбинезон"
+instrumental = "светло-фиолетовым комбинезоном"
+prepositional = "светло-фиолетовом комбинезоне"
+gender = "male"
+
+["white jumpsuit"]
+nominative = "белый комбинезон"
+genitive = "белого комбинезона"
+dative = "белому комбинезону"
+accusative = "белый комбинезон"
+instrumental = "белым комбинезоном"
+prepositional = "белом комбинезоне"
+gender = "male"
+
+["bottle of multiver pills"]
+nominative = "бутылка с таблетками мультивера"
+genitive = "бутылки с таблетками мультивера"
+dative = "бутылке с таблетками мультивера"
+accusative = "бутылку с таблетками мультивера"
+instrumental = "бутылкой с таблетками мультивера"
+prepositional = "бутылке с таблетками мультивера"
+gender = "female"
+
+["bottle of mutadone pills"]
+nominative = "бутылка с таблетками мутадона"
+genitive = "бутылки с таблетками мутадона"
+dative = "бутылке с таблетками мутадона"
+accusative = "бутылку с таблетками мутадона"
+instrumental = "бутылкой с таблетками мутадона"
+prepositional = "бутылке с таблетками мутадона"
+gender = "female"
+
+["dark blue jumpsuit"]
+nominative = "темно-синий комбинезон"
+genitive = "темно-синего комбинезона"
+dative = "темно-синему комбинезону"
+accusative = "темно-синий комбинезон"
+instrumental = "темно-синим комбинезоном"
+prepositional = "темно-синем комбинезоне"
+gender = "male"
+
+["blue laser tag armor"]
+nominative = "синяя броня для лазертага"
+genitive = "синей брони для лазертага"
+dative = "синей броне для лазертага"
+accusative = "синюю броню для лазертага"
+instrumental = "синей броней для лазертага"
+prepositional = "синей броне для лазертага"
+gender = "female"
+
+["blue laser tag helmet"]
+nominative = "синий шлем для лазертага"
+genitive = "синего шлема для лазертага"
+dative = "синему шлему для лазертага"
+accusative = "синий шлем для лазертага"
+instrumental = "синим шлемом для лазертага"
+prepositional = "сином шлеме для лазертага"
+gender = "male"
+
+["orange jumpsuit"]
+nominative = "оранжевый комбинезон"
+genitive = "оранжевого комбинезона"
+dative = "оранжевому комбинезону"
+accusative = "оранжевый комбинезон"
+instrumental = "оранжевым комбинезоном"
+prepositional = "оранжевом комбинезоне"
+gender = "male"
+
+["red laser tag armor"]
+nominative = "красная броня для лазертага"
+genitive = "красной брони для лазертага"
+dative = "красной броне для лазертага"
+accusative = "красную броню для лазертага"
+instrumental = "красной броней для лазертага"
+prepositional = "красной броне для лазертага"
+gender = "female"
+
+["red laser tag helmet"]
+nominative = "красный шлем для лазертага"
+genitive = "красного шлема для лазертага"
+dative = "красному шлему для лазертага"
+accusative = "красный шлем для лазертага"
+instrumental = "красным шлемом для лазертага"
+prepositional = "красном шлеме для лазертага"
+gender = "male"
+
+["grey jumpsuit"]
+nominative = "серый комбинезон"
+genitive = "серого комбинезона"
+dative = "серому комбинезону"
+accusative = "серый комбинезон"
+instrumental = "серым комбинезоном"
+prepositional = "сером комбинезоне"
+gender = "male"
+
+["CQC implant"]
+nominative = "CQC имплант"
+genitive = "CQC импланта"
+dative = "CQC импланту"
+accusative = "CQC имплант"
+instrumental = "CQC имплантом"
+prepositional = "CQC импланте"
+gender = "male"
+
+["implanter (CQC)"]
+nominative = "имплантер (CQC)"
+genitive = "иплантера (CQC)"
+dative = "имплантеру (CQC)"
+accusative = "имплантер (CQC)"
+instrumental = "имплантером (CQC)"
+prepositional = "имплантере (CQC)"
+gender = "male"
+
+["implant case - 'Close Quarters Combat'"]
+nominative = "кейс импланта - 'Close Quarters Combat'"
+genitive = "кейса импланта - 'Close Quarters Combat'"
+dative = "кейсу импланта - 'Close Quarters Combat'"
+accusative = "кейс импланта - 'Close Quarters Combat'"
+instrumental = "кейсом импланта - 'Close Quarters Combat'"
+prepositional = "кейсе импланта - 'Close Quarters Combat'"
+gender = "male"
+
+["fake moustache"]
+nominative = "накладные усы"
+genitive = "накладных усов"
+dative = "накладным усам"
+accusative = "накладные усы"
+instrumental = "накладными усами"
+prepositional = "накладных усах"
+gender = "plural"
+
+["hookah"]
+nominative = "кальян"
+genitive = "кальяна"
+dative = "кальяну"
+accusative = "кальян"
+instrumental = "кальяном"
+prepositional = "кальяне"
+
+["mouthpiece"]
+nominative = "кальянный мундштук"
+genitive = "кальянного мундштука"
+dative = "кальянному мундштуку"
+accusative = "кальянного мундштука"
+instrumental = "кальянным мундштуком"
+prepositional = "кальянном мундштуке"
+
+["hookah coals"]
+nominative = "угли для кальяна"
+genitive = "углей для кальяна"
+dative = "углям для кальяна"
+accusative = "угли для кальяна"
+instrumental = "углями для кальяна"
+prepositional = "углях для кальяна"
+
+["emperor guards's mantle"]
+nominative = "мантия гвардии Императора"
+genitive = "мантии гвардии Императора"
+dative = "мантии гвардии Императора"
+accusative = "мантию гвардии Императора"
+instrumental = "мантией гвардии Императора"
+prepositional = "мантии гвардии Императора"

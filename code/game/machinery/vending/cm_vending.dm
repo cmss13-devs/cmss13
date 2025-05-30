@@ -828,7 +828,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 //-----------TGUI PROCS------------------------
 /obj/structure/machinery/cm_vending/ui_static_data(mob/user)
 	. = list()
-	.["vendor_name"] = name
+	.["vendor_name"] = declent_ru(NOMINATIVE)
 	.["vendor_type"] = "base"
 	.["theme"] = vendor_theme
 	if(vend_flags & VEND_FACTION_THEMES)
@@ -1322,6 +1322,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			"prod_cost" = p_cost,
 			"image" = imgid,
 			"image_size" = image_size,
+			"prod_name_en" = myprod["english_name"] || p_name, // BANDAMARINES EDIT ADD - Vendor Translate
 		)
 
 		if (is_category == 1)

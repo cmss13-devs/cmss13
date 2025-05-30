@@ -129,18 +129,18 @@
 	sleep(10)
 	switch(map_locale) //Switching it up.
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("Это капитан Ганс Найш, командир третьего батальона \"Пыльных рейдеров\" на LV-624. Во время наших попыток основать базу на этой планете несколько наших патрулей были уничтожены враждебными существами. Мы устанавливаем сигнал бедствия, но нам нужно, чтобы вы удерживали [SSmapping.configs[GROUND_MAP].map_name], чтобы наши инженеры могли установить ретранслятор. Мы готовим несколько минометных установок M402 для огневой поддержки. Если они прорвут вашу позицию, мы будем стерты с лица земли и не сможем позвать на помощь. Держите строй или мы все погибнем.", "Капитан Найш, командование третьего батальона, гарнизон LV-624")
 	addtimer(CALLBACK(src, PROC_REF(story_announce), 0), 3 MINUTES)
 	return ..()
 
 /datum/game_mode/whiskey_outpost/proc/story_announce(time)
 	switch(time)
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("Это капитан Ганс Найш, командир третьего батальона \"Пыльных рейдеров\" на LV-624. Как вы уже знаете, несколько наших патрулей пропали без вести и, скорее всего, были уничтожены враждебными местными существами, когда мы пытались основать нашу базу.", "Капитан Найш, командование третьего батальона, гарнизон LV-624")
 		if(1)
-			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("Наши разведчики сообщают о повышенной активности в этом районе, и, учитывая наши данные, мы уже готовимся к худшему. Мы устанавливаем ретранслятор связи, чтобы послать сигнал бедствия, но нам потребуется время, пока наши инженеры подготовят все необходимое. Всем остальным станциям следует подготовиться соответствующим образом и привести себя в максимальную боевую готовность, немедленно.", "Капитан Найш, командование третьего батальона, гарнизон LV-624")
 		if(2)
-			marine_announcement("Captain Naiche here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("Капитан Найш на связи. Мы отследили основную часть вражеских сил на подходе, и [SSmapping.configs[GROUND_MAP].map_name], скорее всего, будет атакован до того, как они достигнут базы. Нам нужно, чтобы вы задержали их, пока мы закончим посылать сигнал бедствия. Ожидайте прибытия в течение нескольких минут. С Богом, [SSmapping.configs[GROUND_MAP].map_name].", "Капитан Найш, командование третьего батальона, гарнизон LV-624")
 
 	if(time <= 2)
 		addtimer(CALLBACK(src, PROC_REF(story_announce), time+1), 3 MINUTES)

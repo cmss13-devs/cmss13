@@ -1,0 +1,629 @@
+["heart"]
+nominative = "сердце"
+genitive = "сердца"
+dative = "сердцу"
+accusative = "сердце"
+instrumental = "сердцем"
+prepositional = "сердце"
+gender = "neuter"
+
+["lungs"]
+nominative = "лёгкие"
+genitive = "лёгких"
+dative = "лёгким"
+accusative = "лёгкие"
+instrumental = "лёгкими"
+prepositional = "лёгких"
+gender = "plural"
+
+["liver"]
+nominative = "печень"
+genitive = "печени"
+dative = "печени"
+accusative = "печень"
+instrumental = "печенью"
+prepositional = "печени"
+gender = "female"
+
+["stomach"]
+nominative = "желудок"
+genitive = "желудка"
+dative = "желудку"
+accusative = "желудок"
+instrumental = "желудком"
+prepositional = "желудке"
+gender = "male"
+
+["appendix"]
+nominative = "аппендикс"
+genitive = "аппендикса"
+dative = "аппендиксу"
+accusative = "аппендикс"
+instrumental = "аппендиксом"
+prepositional = "аппендиксе"
+gender = "male"
+
+["eyes"]
+nominative = "глаза"
+genitive = "глаз"
+dative = "глазам"
+accusative = "глаза"
+instrumental = "глазами"
+prepositional = "глазах"
+gender = "plural"
+
+["ears"]
+nominative = "уши"
+genitive = "ушей"
+dative = "ушам"
+accusative = "уши"
+instrumental = "ушами"
+prepositional = "ушах"
+gender = "plural"
+
+["tongue"]
+nominative = "язык"
+genitive = "языка"
+dative = "языку"
+accusative = "язык"
+instrumental = "языком"
+prepositional = "языке"
+gender = "male"
+
+["fabricated lizard tail"]
+nominative = "ящерский хвост (напечатанный)"
+genitive = "ящерского хвоста (напечатанного)"
+dative = "ящерскому хвосту (напечатанному)"
+accusative = "ящерский хвост (напечатанный)"
+instrumental = "ящерским хвостом (напечатанным)"
+prepositional = "ящерском хвосте (напечатанном)"
+gender = "male"
+
+["forked tongue"]
+nominative = "раздвоенный язык"
+genitive = "раздвоенного языка"
+dative = "раздвоенному языку"
+accusative = "раздвоенный язык"
+instrumental = "раздвоенным языком"
+prepositional = "раздвоенном языке"
+gender = "male"
+
+["tail"]
+nominative = "кошачий хвост"
+genitive = "кошачьего хвоста"
+dative = "кошачьему хвосту"
+accusative = "кошачий хвост"
+instrumental = "кошачьим хвостом"
+prepositional = "кошачьем хвосте"
+gender = "male"
+
+["cat ears"]
+nominative = "кошачьи уши"
+genitive = "кошачьих ушей"
+dative = "кошачьим ушам"
+accusative = "кошачьи уши"
+instrumental = "кошачьими ушами"
+prepositional = "кошачьих ушах"
+gender = "plural"
+
+["monkey tail"]
+nominative = "обезьяний хвост"
+genitive = "обезьяньего хвоста"
+dative = "обезьяньему хвосту"
+accusative = "обезьяний хвост"
+instrumental = "обезьяньим хвостом"
+prepositional = "обезьяньем хвосте"
+gender = "male"
+
+["plasma filter"]
+nominative = "плазменный фильтр"
+genitive = "плазменного фильтра"
+dative = "плазменному фильтру"
+accusative = "плазменный фильтр"
+instrumental = "плазменным фильтром"
+prepositional = "плазменном фильтре"
+gender = "male"
+
+["plasma bone \"tongue\""]
+nominative = "костлявий плазменный \"язык\""
+genitive = "костлявого плазменного \"языка\""
+dative = "костлявому плазменному \"языку\""
+accusative = "костлявий плазменный \"язык\""
+instrumental = "костлявым плазменным \"языком\""
+prepositional = "костлявом плазменном \"языке\""
+gender = "male"
+
+["reagent processing crystal"]
+nominative = "кристалл обработки реагентов"
+genitive = "кристалла обработки реагентов"
+dative = "кристаллу обработки реагентов"
+accusative = "кристалл обработки реагентов"
+instrumental = "кристаллом обработки реагентов"
+prepositional = "кристалле обработки реагентов"
+gender = "male"
+
+["digestive crystal"]
+nominative = "пищеварительный кристалл"
+genitive = "пищеварительного кристалла"
+dative = "пищеварительному кристаллу"
+accusative = "пищеварительный кристалл"
+instrumental = "пищеварительным кристаллом"
+prepositional = "пищеварительном кристалле"
+gender = "male"
+
+["biological battery"]
+nominative = "биологическая батарея"
+genitive = "биологической батареи"
+dative = "биологической батарее"
+accusative = "биологическую батарею"
+instrumental = "биологической батареей"
+prepositional = "биологической батарее"
+gender = "female"
+
+["electric discharger"]
+nominative = "электрический разрядник"
+genitive = "электрического разрядника"
+dative = "электрическому разряднику"
+accusative = "электрический разрядник"
+instrumental = "электрическим разрядником"
+prepositional = "электрическом разряднике"
+gender = "male"
+
+["aeration reticulum"]
+nominative = "аэрационная сеть"
+genitive = "аэрационной сети"
+dative = "аэрационной сети"
+accusative = "аэрационную сеть"
+instrumental = "аэрационной сетью"
+prepositional = "аэрационной сети"
+gender = "female"
+
+["crystal core"]
+nominative = "кристаллическое ядро"
+genitive = "кристаллического ядра"
+dative = "кристаллическому ядру"
+accusative = "кристаллическое ядро"
+instrumental = "кристаллическим ядром"
+prepositional = "кристаллическом ядре"
+gender = "neuter"
+
+["synthetic arm blade"]
+nominative = "синтетический меч-клинок"
+genitive = "синтетического меча-клинка"
+dative = "синтетическому мечу-клинку"
+accusative = "синтетический меч-клинок"
+instrumental = "синтетическим мечом-клинком"
+prepositional = "синтетическом мече-клинке"
+gender = "male"
+
+["Limb Design Disk"]
+nominative = "диск с дизайном конечностей"
+genitive = "диска с дизайном конечностей"
+dative = "диску с дизайном конечностей"
+accusative = "диск с дизайном конечностей"
+instrumental = "диском с дизайном конечностей"
+prepositional = "диске с дизайном конечностей"
+gender = "male"
+
+["Felinid Organ Design Disk"]
+nominative = "диск с дизайном органов фелинида"
+genitive = "диска с дизайном органов фелинида"
+dative = "диску с дизайном органов фелинида"
+accusative = "диск с дизайном органов фелинида"
+instrumental = "диском с дизайном органов фелинида"
+prepositional = "диске с дизайном органов фелинида"
+gender = "male"
+
+["Lizard Organ Design Disk"]
+nominative = "диск с дизайном органов унатха"
+genitive = "диска с дизайном органов унатха"
+dative = "диску с дизайном органов унатха"
+accusative = "диск с дизайном органов унатха"
+instrumental = "диском с дизайном органов унатха"
+prepositional = "диске с дизайном органов унатха"
+gender = "male"
+
+["Plasmaman Organ Design Disk"]
+nominative = "диск с дизайном органов плазмамена"
+genitive = "диска с дизайном органов плазмамена"
+dative = "диску с дизайном органов плазмамена"
+accusative = "диск с дизайном органов плазмамена"
+instrumental = "диском с дизайном органов плазмамена"
+prepositional = "диске с дизайном органов плазмамена"
+gender = "male"
+
+["Ethereal Organ Design Disk"]
+nominative = "диск с дизайном органов эфирала"
+genitive = "диска с дизайном органов эфирала"
+dative = "диску с дизайном органов эфирала"
+accusative = "диск с дизайном органов эфирала"
+instrumental = "диском с дизайном органов эфирала"
+prepositional = "диске с дизайном органов эфирала"
+gender = "male"
+
+["basic cybernetic liver"]
+nominative = "базовая кибернетическая печень"
+genitive = "базовой кибернетической печени"
+dative = "базовой кибернетической печени"
+accusative = "базовую кибернетическую печень"
+instrumental = "базовой кибернетической печенью"
+prepositional = "базовой кибернетической печени"
+gender = "female"
+
+["cybernetic liver"]
+nominative = "кибернетическая печень"
+genitive = "кибернетической печени"
+dative = "кибернетической печени"
+accusative = "кибернетическую печень"
+instrumental = "кибернетической печенью"
+prepositional = "кибернетической печени"
+gender = "female"
+
+["upgraded cybernetic liver"]
+nominative = "улучшенная кибернетическая печень"
+genitive = "улучшенной кибернетической печени"
+dative = "улучшенной кибернетической печени"
+accusative = "улучшенную кибернетическую печень"
+instrumental = "улучшенной кибернетической печенью"
+prepositional = "улучшенной кибернетической печени"
+gender = "female"
+
+["basic cybernetic heart"]
+nominative = "базовое кибернетическое сердце"
+genitive = "базового кибернетического сердца"
+dative = "базовому кибернетическому сердцу"
+accusative = "базовое кибернетическое сердце"
+instrumental = "базовым кибернетическим сердцем"
+prepositional = "базовом кибернетическом сердце"
+gender = "neuter"
+
+["cybernetic heart"]
+nominative = "кибернетическое сердце"
+genitive = "кибернетического сердца"
+dative = "кибернетическому сердцу"
+accusative = "кибернетическое сердце"
+instrumental = "кибернетическим сердцем"
+prepositional = "кибернетическом сердце"
+gender = "neuter"
+
+["upgraded cybernetic heart"]
+nominative = "улучшенное кибернетическое сердце"
+genitive = "улучшенного кибернетического сердца"
+dative = "улучшенному кибернетическому сердцу"
+accusative = "улучшенное кибернетическое сердце"
+instrumental = "улучшенным кибернетическим сердцем"
+prepositional = "улучшенном кибернетическом сердце"
+gender = "neuter"
+
+["voltaic combat cyberheart"]
+nominative = "гальваническое боевое киберсердце"
+genitive = "гальванического боевого киберсердца"
+dative = "гальваническому боевому киберсердцу"
+accusative = "гальваническое боевое киберсердце"
+instrumental = "гальваническим боевым киберсердцем"
+prepositional = "гальваническом боевом киберсердце"
+gender = "neuter"
+
+["basic cybernetic lungs"]
+nominative = "базовые кибернетические лёгкие"
+genitive = "базовых кибернетических лёгких"
+dative = "базовым кибернетическим лёгким"
+accusative = "базовые кибернетические лёгкие"
+instrumental = "базовыми кибернетическими лёгкими"
+prepositional = "базовых кибернетических лёгких"
+gender = "plural"
+
+["cybernetic lungs"]
+nominative = "кибернетические лёгкие"
+genitive = "кибернетических лёгких"
+dative = "кибернетическим лёгким"
+accusative = "кибернетические лёгкие"
+instrumental = "кибернетическими лёгкими"
+prepositional = "кибернетических лёгких"
+gender = "plural"
+
+["upgraded cybernetic lungs"]
+nominative = "улучшенные кибернетические лёгкие"
+genitive = "улучшенных кибернетических лёгких"
+dative = "улучшенным кибернетическим лёгким"
+accusative = "улучшенные кибернетические лёгкие"
+instrumental = "улучшенными кибернетическими лёгкими"
+prepositional = "улучшенных кибернетических лёгких"
+gender = "plural"
+
+["basic cybernetic stomach"]
+nominative = "базовый кибернетический желудок"
+genitive = "базового кибернетического желудка"
+dative = "базовому кибернетическому желудку"
+accusative = "базовый кибернетический желудок"
+instrumental = "базовым кибернетическим желудком"
+prepositional = "базовом кибернетическом желудке"
+gender = "male"
+
+["cybernetic stomach"]
+nominative = "кибернетический желудок"
+genitive = "кибернетического желудка"
+dative = "кибернетическому желудку"
+accusative = "кибернетический желудок"
+instrumental = "кибернетическим желудком"
+prepositional = "кибернетическом желудке"
+gender = "male"
+
+["upgraded cybernetic stomach"]
+nominative = "улучшенный кибернетический желудок"
+genitive = "улучшенного кибернетического желудка"
+dative = "улучшенному кибернетическому желудку"
+accusative = "улучшенный кибернетический желудок"
+instrumental = "улучшенным кибернетическим желудком"
+prepositional = "улучшенном кибернетическом желудке"
+gender = "male"
+
+["basic cybernetic ears"]
+nominative = "базовые кибернетические уши"
+genitive = "базовых кибернетических ушей"
+dative = "базовым кибернетическим ушам"
+accusative = "базовые кибернетические уши"
+instrumental = "базовыми кибернетическими ушами"
+prepositional = "базовых кибернетических ушах"
+gender = "plural"
+
+["cybernetic ears"]
+nominative = "кибернетические уши"
+genitive = "кибернетических ушей"
+dative = "кибернетическим ушам"
+accusative = "кибернетические уши"
+instrumental = "кибернетическими ушами"
+prepositional = "кибернетических ушах"
+gender = "plural"
+
+["whisper-sensitive cybernetic ears"]
+nominative = "кибернетические уши с усилением шёпота"
+genitive = "кибернетических ушей с усилением шёпота"
+dative = "кибернетическим ушам с усилением шёпота"
+accusative = "кибернетические уши с усилением шёпота"
+instrumental = "кибернетическими ушами с усилением шёпота"
+prepositional = "кибернетических ушах с усилением шёпота"
+gender = "plural"
+
+["wall-penetrating cybernetic ears"]
+nominative = "кибернетические уши с пробитием стен"
+genitive = "кибернетических ушей с пробитием стен"
+dative = "кибернетическим ушам с пробитием стен"
+accusative = "кибернетические уши с пробитием стен"
+instrumental = "кибернетическими ушами с пробитием стен"
+prepositional = "кибернетических ушах с пробитием стен"
+gender = "plural"
+
+["basic robotic eyes"]
+nominative = "базовые кибернетические глаза"
+genitive = "базовых кибернетических глаз"
+dative = "базовым кибернетическим глазам"
+accusative = "базовые кибернетические глаза"
+instrumental = "базовыми кибернетическими глазами"
+prepositional = "базовых кибернетических глазах"
+gender = "plural"
+
+["basic robotic moth eyes"]
+nominative = "базовые кибернетические молиные глаза"
+genitive = "базовых кибернетических молиных глаз"
+dative = "базовым кибернетическим молиным глазам"
+accusative = "базовые кибернетические молиные глаза"
+instrumental = "базовыми кибернетическими молиными глазами"
+prepositional = "базовых кибернетических молиных глазах"
+gender = "plural"
+
+["robotic eyes"]
+nominative = "кибернетические глаза"
+genitive = "кибернетических глаз"
+dative = "кибернетическим глазам"
+accusative = "кибернетические глаза"
+instrumental = "кибернетическими глазами"
+prepositional = "кибернетических глазах"
+gender = "plural"
+
+["robotic moth eyes"]
+nominative = "кибернетические молиные глаза"
+genitive = "кибернетических молиных глаз"
+dative = "кибернетическим молиным глазам"
+accusative = "кибернетические молиные глаза"
+instrumental = "кибернетическими молиными глазами"
+prepositional = "кибернетических молиных глазах"
+gender = "plural"
+
+["shielded robotic eyes"]
+nominative = "кибернетические глаза с защитой от вспышек"
+genitive = "кибернетических глаз с защитой от вспышек"
+dative = "кибернетическим глазам с защитой от вспышек"
+accusative = "кибернетические глаза с защитой от вспышек"
+instrumental = "кибернетическими глазами с защитой от вспышек"
+prepositional = "кибернетических глазах с защитой от вспышек"
+gender = "plural"
+
+["shielded robotic moth eyes"]
+nominative = "кибернетические молиные глаза с защитой от вспышек"
+genitive = "кибернетических молиных глаз с защитой от вспышек"
+dative = "кибернетическим молиным глазам с защитой от вспышек"
+accusative = "кибернетические молиные глаза с защитой от вспышек"
+instrumental = "кибернетическими молиными глазами с защитой от вспышек"
+prepositional = "кибернетических молиных глазах с защитой от вспышек"
+gender = "plural"
+
+["high luminosity eyes"]
+nominative = "люминесцентные глаза"
+genitive = "люминесцентных глаз"
+dative = "люминесцентным глазам"
+accusative = "люминесцентные глаза"
+instrumental = "люминесцентными глазами"
+prepositional = "люминесцентных глазах"
+gender = "plural"
+
+["high luminosity moth eyes"]
+nominative = "люминесцентные молиные глаза"
+genitive = "люминесцентных молиных глаз"
+dative = "люминесцентным молиным глазам"
+accusative = "люминесцентные молиные глаза"
+instrumental = "люминесцентными молиными глазами"
+prepositional = "люминесцентных молиных глазах"
+gender = "plural"
+
+["breathing tube implant"]
+nominative = "имплант дыхательной трубки"
+genitive = "импланта дыхательной трубки"
+dative = "импланту дыхательной трубки"
+accusative = "имплант дыхательной трубки"
+instrumental = "имплантом дыхательной трубки"
+prepositional = "импланте дыхательной трубки"
+gender = "male"
+
+["surgical toolset implant"]
+nominative = "хирургический имплант"
+genitive = "хирургического импланта"
+dative = "хирургическому импланту"
+accusative = "хирургический имплант"
+instrumental = "хирургическим имплантом"
+prepositional = "хирургическом импланте"
+gender = "male"
+
+["integrated toolset implant"]
+nominative = "инструментальный имплант"
+genitive = "инструментального импланта"
+dative = "инструментальному импланту"
+accusative = "инструментальный имплант"
+instrumental = "инструментальным имплантом"
+prepositional = "инструментальном импланте"
+gender = "male"
+
+["medical HUD implant"]
+nominative = "имплант медицинского ИЛС"
+genitive = "импланта медицинского ИЛС"
+dative = "импланту медицинского ИЛС"
+accusative = "имплант медицинского ИЛС"
+instrumental = "имплантом медицинского ИЛС"
+prepositional = "импланте медицинского ИЛС"
+gender = "male"
+
+["security HUD implant"]
+nominative = "имплант охранного ИЛС"
+genitive = "импланта охранного ИЛС"
+dative = "импланту охранного ИЛС"
+accusative = "имплант охранного ИЛС"
+instrumental = "имплантом охранного ИЛС"
+prepositional = "импланте охранного ИЛС"
+gender = "male"
+
+["diagnostic HUD implant"]
+nominative = "имплант диагностического ИЛС"
+genitive = "импланта диагностического ИЛС"
+dative = "импланту диагностического ИЛС"
+accusative = "имплант диагностического ИЛС"
+instrumental = "имплантом диагностического ИЛС"
+prepositional = "импланте диагностического ИЛС"
+gender = "male"
+
+["x-ray eyes"]
+nominative = "рентгеновские глаза"
+genitive = "рентгеновских глаз"
+dative = "рентгеновским глазам"
+accusative = "рентгеновские глаза"
+instrumental = "рентгеновскими глазами"
+prepositional = "рентгеновских глазах"
+gender = "plural"
+
+["moth x-ray eyes"]
+nominative = "рентгеновские молиные глаза"
+genitive = "рентгеновских молиных глаз"
+dative = "рентгеновским молиным глазам"
+accusative = "рентгеновские молиные глаза"
+instrumental = "рентгеновскими молиными глазами"
+prepositional = "рентгеновских молиных глазах"
+gender = "plural"
+
+["thermal eyes"]
+nominative = "термальные глаза"
+genitive = "термальных глаз"
+dative = "термальным глазам"
+accusative = "термальные глаза"
+instrumental = "термальными глазами"
+prepositional = "термальных глазах"
+gender = "plural"
+
+["thermal moth eyes"]
+nominative = "термальные молиные глаза"
+genitive = "термальных молиных глаз"
+dative = "термальным молиным глазам"
+accusative = "термальные молиные глаза"
+instrumental = "термальными молиными глазами"
+prepositional = "термальных молиных глазах"
+gender = "plural"
+
+["anti-drop implant"]
+nominative = "имплант антидроп"
+genitive = "импланта антидроп"
+dative = "импланту антидроп"
+accusative = "имплант антидроп"
+instrumental = "имплантом антидроп"
+prepositional = "импланте антидроп"
+gender = "male"
+
+["CNS rebooter implant"]
+nominative = "имплант перезапуска ЦНС"
+genitive = "импланта перезапуска ЦНС"
+dative = "импланту перезапуска ЦНС"
+accusative = "имплант перезапуска ЦНС"
+instrumental = "имплантом перезапуска ЦНС"
+prepositional = "импланте перезапуска ЦНС"
+gender = "male"
+
+["Herculean gravitronic spinal implant"]
+nominative = "Геркулесный гравитронный спинномозговой имплант"
+genitive = "Геркулесного гравитронного спинномозгового импланта"
+dative = "Геркулесному гравитронному спинномозговому импланту"
+accusative = "Геркулесный гравитронный спинномозговой имплант"
+instrumental = "Геркулесным гравитронным спинномозговым имплантом"
+prepositional = "Геркулесном гравитронном спинномозговом импланте"
+gender = "male"
+
+["CNS skillchip connector implant"]
+nominative = "имплант подключения скилл-чипов к ЦНС"
+genitive = "импланта подключения скилл-чипов к ЦНС"
+dative = "импланту подключения скилл-чипов к ЦНС"
+accusative = "имплант подключения скилл-чипов к ЦНС"
+instrumental = "имплантом подключения скилл-чипов к ЦНС"
+prepositional = "импланте подключения скилл-чипов к ЦНС"
+gender = "male"
+
+["nutriment pump implant"]
+nominative = "имплант питающей помпы"
+genitive = "импланта питающей помпы"
+dative = "импланту питающей помпы"
+accusative = "имплант питающей помпы"
+instrumental = "имплантом питающей помпы"
+prepositional = "импланте питающей помпы"
+gender = "male"
+
+["nutriment pump implant PLUS"]
+nominative = "имплант питающей помпы ПЛЮС"
+genitive = "импланта питающей помпы ПЛЮС"
+dative = "импланту питающей помпы ПЛЮС"
+accusative = "имплант питающей помпы ПЛЮС"
+instrumental = "имплантом питающей помпы ПЛЮС"
+prepositional = "импланте питающей помпы ПЛЮС"
+gender = "male"
+
+["reviver implant"]
+nominative = "оживляющий имплант"
+genitive = "оживляющего импланта"
+dative = "оживляющему импланту"
+accusative = "оживляющий имплант"
+instrumental = "оживляющим имплантом"
+prepositional = "оживляющем импланте"
+gender = "male"
+
+["implantable thrusters set"]
+nominative = "имплант толкателей"
+genitive = "импланта толкателей"
+dative = "импланту толкателей"
+accusative = "имплант толкателей"
+instrumental = "имплантом толкателей"
+prepositional = "импланте толкателей"
+gender = "male"

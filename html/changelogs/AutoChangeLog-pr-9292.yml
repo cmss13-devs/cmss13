@@ -1,8 +1,0 @@
-author: "Joe Lampost, Suprisedbaby_"
-delete-after: True
-changes:
-  - rscadd: "Areas now have a hangable var that allows for the hanging of bodies where it would be feasible for them to be hung."
-  - bugfix: "Fixes some upside-down tiles on LV-624."
-  - soundadd: "Added New ambience for the Jungle Moon."
-  - soundadd: "Added three new random animal noises for the Jungle Moon."
-  - maptweak: "Updated the Jungle moon."

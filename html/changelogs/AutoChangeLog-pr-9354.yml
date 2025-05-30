@@ -1,4 +1,0 @@
-author: "KornFlaks"
-delete-after: True
-changes:
-  - bugfix: "Newly evolved xenos no longer become a solid wall when resting."

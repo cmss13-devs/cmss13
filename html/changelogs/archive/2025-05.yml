@@ -232,3 +232,38 @@
       attachments
   KornFlaks:
   - bugfix: Xenos now heal at full speed while not on fire.
+2025-05-30:
+  Ansekishoku:
+  - rscadd: Added black drop pouches to vendors.
+  - imageadd: Resprited all drop pouch sprites including the surgical drop pouches
+      and also slightly tweaks item sprites.
+  Joe Lampost, Suprisedbaby_:
+  - rscadd: Areas now have a hangable var that allows for the hanging of bodies where
+      it would be feasible for them to be hung.
+  - bugfix: Fixes some upside-down tiles on LV-624.
+  - soundadd: Added New ambience for the Jungle Moon.
+  - soundadd: Added three new random animal noises for the Jungle Moon.
+  - maptweak: Updated the Jungle moon.
+  KornFlaks:
+  - bugfix: Dropping handheld crew monitor now properly closes the UI.
+  - rscadd: Weapons in scabbards can now be accessed while hauled for reverse bursting.
+      This also includes the machete pouch.
+  - bugfix: Newly evolved xenos no longer become a solid wall when resting.
+  Lagomorphica:
+  - balance: CLF squad leader no longer has Endurance 5 or full construction/engineering
+      skill, now having basic medical and surgical skills to treat IB. Most CLF roles
+      aside from the squad leader and synthetic have lost the ability to drive the
+      van. CLF engineer now has proper engineering training, and all CLF survivors
+      have Endurance 1.
+  - balance: CLF insert sentries no longer have unlimited ammo, instead spawning with
+      a random amount between 100 - 500 to simulate them having been crashed for a
+      while.
+  Swagile:
+  - rscadd: Gives SL radio supply channel access by default.
+  Willzadl:
+  - maptweak: LV-624 will now always generate a fog gap.
+  hry-gh:
+  - server: the server now returns additional testmerge info in the world/Topic api
+  realforest2001:
+  - bugfix: SHARP Operator, Heavy Sniper, and marine specialist support roles now
+      show properly on the crew monitor.

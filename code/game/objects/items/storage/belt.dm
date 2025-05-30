@@ -2723,7 +2723,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
-	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,

@@ -15,13 +15,13 @@
 
 /datum/specialist_set/anti_mat_sniper
 	//name = "Anti-Materiel Sniper Set"
-	role_name_ru = "Тяж. Снайпер"
+	role_name_ru = "AMR снайпер"
 
 /datum/specialist_set/grenadier
 	//name = "Heavy Grenadier Set"
-	role_name_ru = "Гренадёр"
+	role_name_ru = "Гранатомётчик"
 
 /datum/specialist_set/pyro
 	//name = "Pyro Set"
-	role_name_ru = "Пиротехник"
+	role_name_ru = "Огнемётчик"
 

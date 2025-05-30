@@ -4100,18 +4100,16 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_security)
 "amB" = (
-/obj/structure/grille,
+/obj/structure/closet/crate,
+/obj/item/vehicle_clamp,
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/north)
 "amC" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4
 	},
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
-/area/desert_dam/building/security/maint/north)
-"amD" = (
-/obj/structure/closet/crate/trashcart,
+/obj/structure/grille,
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/north)
 "amE" = (
@@ -12339,10 +12337,68 @@
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/stairwell/upper_north)
+"aMK" = (
+/obj/structure/grille,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/medical/maint/south)
+"aML" = (
+/obj/structure/grille,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/medical/maint/south)
+"aMM" = (
+/obj/structure/grille,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 6;
+	layer = 5.12
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/medical/maint/east)
+"aMN" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/desert_dam/building/security/maint/north)
 "aMO" = (
 /obj/effect/blocker/toxic_water,
 /turf/open/desert/desert_shore/shore_edge1/east,
 /area/desert_dam/exterior/river/riverside_east)
+"aMP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/handcuffs,
+/turf/open/floor/plating,
+/area/desert_dam/building/security/maint/north)
+"aMQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 7
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/security/maint/north)
+"aMR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/plating,
+/area/desert_dam/building/security/maint/north)
+"aMS" = (
+/obj/structure/grille,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 5;
+	layer = 5.12
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/security/maint/north)
 "aMV" = (
 /obj/structure/surface/rack,
 /obj/item/storage/box/mousetraps,
@@ -33102,6 +33158,10 @@
 /area/desert_dam/interior/dam_interior/workshop)
 "iKa" = (
 /obj/structure/grille,
+/obj/structure/prop/invuln/overhead_pipe{
+	color = "#a6aeab";
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/maint/east)
 "iKm" = (
@@ -71545,11 +71605,6 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/exterior/valley/south_valley_dam)
-"xIv" = (
-/obj/structure/closet/crate,
-/obj/item/storage/box/handcuffs,
-/turf/open/floor/plating,
-/area/desert_dam/building/security/maint/north)
 "xIA" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
 	dir = 2;
@@ -135210,7 +135265,7 @@ gNv
 gNv
 aml
 amB
-xIv
+qtE
 amo
 mxZ
 upD
@@ -135443,8 +135498,8 @@ gNv
 gNv
 gNv
 aml
-amB
-qtE
+aMS
+aMP
 ams
 amm
 cSj
@@ -135678,7 +135733,7 @@ gNv
 gNv
 aml
 amC
-amt
+aMQ
 amt
 amn
 cSj
@@ -135911,9 +135966,9 @@ gNv
 gNv
 gNv
 aml
-amD
-amt
-amo
+amC
+aMR
+aMN
 amo
 cSj
 kdm
@@ -165888,7 +165943,7 @@ kyR
 cHr
 iJr
 eMY
-iJJ
+aMK
 fDF
 qaR
 qaR
@@ -166122,7 +166177,7 @@ dGN
 cHr
 cJA
 rzd
-iJJ
+aML
 fDF
 qaR
 qaR
@@ -171956,7 +172011,7 @@ pUg
 czW
 czW
 czW
-iKa
+aMM
 iKa
 iKa
 bru

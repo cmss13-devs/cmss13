@@ -63,6 +63,7 @@
 
 /datum/equipment_preset/survivor/chaplain/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(new_human), WEAR_JACKET)
+	add_survivor_rare_item(new_human)
 	..()
 
 /datum/equipment_preset/survivor/security/solaris

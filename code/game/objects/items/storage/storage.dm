@@ -466,6 +466,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		if(L.mode)
 			return 0
 
+	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+		return
+
 	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
 		return
@@ -638,7 +641,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return handle_item_insertion(W, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
-	if(HAS_TRAIT(user, TRAIT_HAULED))
+	if(HAS_TRAIT(user, TRAIT_HAULED) && !HAS_FLAG(storage_flags, STORAGE_ALLOW_WHILE_HAULED))
 		return
 	if (loc == user)
 		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.

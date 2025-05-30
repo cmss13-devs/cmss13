@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - qol: "Allows xenos to drag lying/unconcious queen without getting shoved when pulling her on same tile as player."

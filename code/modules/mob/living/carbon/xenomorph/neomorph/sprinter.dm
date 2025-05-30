@@ -2,17 +2,17 @@
 	caste_type = NEOMORPH_SPRINTER
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = 1
-	melee_damage_lower = XENO_DAMAGE_TIER_1
-	melee_damage_upper = XENO_DAMAGE_TIER_2
+	melee_damage_lower = XENO_DAMAGE_TIER_2
+	melee_damage_upper = XENO_DAMAGE_TIER_3
 	melee_vehicle_damage = 0
 	plasma_gain = XENO_PLASMA_GAIN_TIER_1
 	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_1
 	armor_deflection = XENO_NO_ARMOR
-	max_health = XENO_HEALTH_RUNNER
+	max_health = XENO_HEALTH_TIER_3
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_RUNNER
-	attack_delay = -4
+	attack_delay = -1
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/sprinter_base
@@ -25,7 +25,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 4
 
-	heal_resting = 1.75
+	heal_resting = 1.4
 
 	minimum_evolve_time = 5 MINUTES
 

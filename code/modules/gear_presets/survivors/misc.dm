@@ -226,7 +226,7 @@ Everything below isn't used or out of place.
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 
-	var/random_gear = rand(0, 10)
+	var/random_gear = rand(0, 11)
 	switch(random_gear)
 		if(0) // Sleepy Colonist
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(new_human), WEAR_BODY)
@@ -318,6 +318,18 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/stack/flag/red, WEAR_IN_BELT)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
+		if(11) // "Comedian"
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette, WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/lawyer/comedian, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/lawyer/comedian, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather/fancy, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/facepaint/clown/alt, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/notepad/red(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo/gold(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/lucky_strikes(new_human), WEAR_IN_R_STORE)
 
 	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)

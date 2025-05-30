@@ -244,11 +244,19 @@
 	name = "red jacket"
 	desc = "A red forensics technician jacket."
 	icon_state = "forensics_red"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/forensics/blue
 	name = "blue jacket"
 	desc = "A blue forensics technician jacket."
 	icon_state = "forensics_blue"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
@@ -333,24 +341,29 @@
 	blood_overlay_type = "coat"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket
-	name = "Blue Suit Jacket"
+	name = "blue suit-jacket"
 	icon_state = "suitjacket_blue"
 	initial_icon_state = "suitjacket_blue"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/purpjacket
-	name = "Purple Suit Jacket"
+	name = "purple suit-jacket"
 	icon_state = "suitjacket_purp"
 	initial_icon_state = "suitjacket_purp"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/redjacket
-	name = "Red Suit Jacket"
+	name = "red suit-jacket"
 	icon_state = "suitjacket_red"
 	initial_icon_state = "suitjacket_red"
 
 /obj/item/clothing/suit/storage/jacket/marine/lawyer/blackjacket
-	name = "Black Suit Jacket"
+	name = "black suit-jacket"
 	icon_state = "suitjacket_black"
 	initial_icon_state = "suitjacket_black"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/comedian
+	name = "bright red suit-jacket"
+	icon_state = "suitjacket_comedian"
+	initial_icon_state = "suitjacket_comedian"
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker

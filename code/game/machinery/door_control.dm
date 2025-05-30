@@ -212,10 +212,12 @@
 
 /obj/structure/machinery/door_control/brbutton
 	icon_state = "big_red_button_wallv"
+	explo_proof = TRUE
 
 
 /obj/structure/machinery/door_control/brbutton/alt
 	icon_state = "big_red_button_tablev"
+	explo_proof = TRUE
 
 /obj/structure/machinery/door_control/airlock
 	icon = 'icons/obj/structures/machinery/computer.dmi'

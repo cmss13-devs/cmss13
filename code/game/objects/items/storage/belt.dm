@@ -2328,13 +2328,12 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
-	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	storage_slots = 8
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/m44/custom/webley,
 		/obj/item/ammo_magazine/revolver,
 	)
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	holster_slots = list(
 		"1" = list(
 			"icon_x" = -1,

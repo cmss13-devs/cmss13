@@ -1133,11 +1133,11 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		if(1 to 4) // 2%
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary(new_human), WEAR_IN_BACK)
 		if(5 to 8) // 2%
-			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health(new_human), WEAR_IN_BACK)
 		if(9 to 16) // 4%
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/czsp/medic_upgraded_kits/full(new_human), WEAR_IN_BACK)
 		if(17 to 26) // 5%
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact(new_human), WEAR_IN_BACK)
 		if(27 to 38) // 6%
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BACK)
 		if(39 to 54) // 8%

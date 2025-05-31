@@ -26,7 +26,7 @@
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 				return 1
 
-			if((src.species.flags & IS_SYNTHETIC_K9) && back && Adjacent(attacking_mob) && !attacking_mob.action_busy) //If we click on a synth-k9 with a backpack, we open it.
+			if((species.flags & IS_SYNTHETIC_K9) && back && Adjacent(attacking_mob) && !attacking_mob.action_busy) //If we click on a synth-k9 with a backpack, we open it.
 				back.add_fingerprint(attacking_mob)
 				var/obj/item/storage/backpack = back
 				if(backpack && !attacking_mob.action_busy)

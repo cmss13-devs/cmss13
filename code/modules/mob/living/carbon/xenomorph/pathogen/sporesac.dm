@@ -1,5 +1,5 @@
 /obj/effect/pathogen
-	icon = 'icons/mob/neo/egg_sacs.dmi'
+	icon = 'icons/mob/pathogen/egg_sacs.dmi'
 	density = FALSE
 	anchored = TRUE
 

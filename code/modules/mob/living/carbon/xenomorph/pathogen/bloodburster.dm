@@ -34,7 +34,7 @@
 	caste_type = PATHOGEN_CREATURE_BURSTER
 	name = PATHOGEN_CREATURE_BURSTER
 	desc = "What the hell is THAT..."
-	icon = 'icons/mob/neo/bloodburster.dmi'
+	icon = 'icons/mob/pathogen/bloodburster.dmi'
 	icon_state = "Bloody Bloodburster"
 	icon_size = 32
 	layer = MOB_LAYER
@@ -62,8 +62,8 @@
 	)
 	claw_type = CLAW_TYPE_SHARP
 
-	icon_xeno = 'icons/mob/neo/bloodburster.dmi'
-	icon_xenonid = 'icons/mob/neo/bloodburster.dmi'
+	icon_xeno = 'icons/mob/pathogen/bloodburster.dmi'
+	icon_xenonid = 'icons/mob/pathogen/bloodburster.dmi'
 	need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
@@ -247,6 +247,6 @@
 		victim.update_burst()
 
 /obj/item/alien_embryo/bloodburster
-	icon = 'icons/mob/neo/bloodburster.dmi'
+	icon = 'icons/mob/pathogen/bloodburster.dmi'
 	flags_embryo = FLAG_EMBRYO_PATHOGEN
 	hivenumber = XENO_HIVE_PATHOGEN

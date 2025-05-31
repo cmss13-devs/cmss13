@@ -30,7 +30,7 @@
 /mob/living/carbon/xenomorph/blight
 	caste_type = PATHOGEN_CREATURE_BLIGHT
 	name = PATHOGEN_CREATURE_BLIGHT
-	desc = "A sleek, fast alien with sharp claws."
+	desc = "A sleek and stealthy hunter, always watching."
 	icon_size = 48
 	icon_state = "Blight Walking"
 	plasma_types = list()
@@ -55,8 +55,8 @@
 	tackle_min = 2
 	tackle_max = 6
 
-	icon_xeno = 'icons/mob/neo/blight.dmi'
-	icon_xenonid = 'icons/mob/neo/blight.dmi'
+	icon_xeno = 'icons/mob/pathogen/blight.dmi'
+	icon_xenonid = 'icons/mob/pathogen/blight.dmi'
 	need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

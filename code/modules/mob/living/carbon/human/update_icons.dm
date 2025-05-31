@@ -741,7 +741,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	var/bursting_icon = "stand"
 	var/icon_file = 'icons/mob/xenos/effects.dmi'
 	if(mob_flags & BLOOD_BURSTING)
-		icon_file = 'icons/mob/neo/bloodburster_stage.dmi'
+		icon_file = 'icons/mob/pathogen/bloodburster_stage.dmi'
 	if(isyautja(src))
 		bursting_icon = "yautja_stand"
 	switch(chestburst)

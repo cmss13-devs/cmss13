@@ -52,8 +52,8 @@
 	tackle_min = 2
 	tackle_max = 6
 
-	icon_xeno = 'icons/mob/neo/popper.dmi'
-	icon_xenonid = 'icons/mob/neo/popper.dmi'
+	icon_xeno = 'icons/mob/pathogen/popper.dmi'
+	icon_xenonid = 'icons/mob/pathogen/popper.dmi'
 	need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

@@ -47,8 +47,8 @@
 		qdel(src)
 		return FALSE
 
-	if((flags_embryo & FLAG_EMBRYO_PATHOGEN) && icon != 'icons/mob/neo/bloodburster.dmi')
-		icon = 'icons/mob/neo/bloodburster.dmi'
+	if((flags_embryo & FLAG_EMBRYO_PATHOGEN) && icon != 'icons/mob/pathogen/bloodburster.dmi')
+		icon = 'icons/mob/pathogen/bloodburster.dmi'
 
 	if(loc != affected_mob) //Our location is not the host
 		affected_mob.status_flags &= ~(XENO_HOST)

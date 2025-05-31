@@ -19,7 +19,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
 
 	deevolves_to = list(PATHOGEN_CREATURE_BLIGHT)
-	caste_desc = "A fast, powerful combatant."
+	caste_desc = "Rage, rage, and rage some more."
 	evolves_to = list()
 
 	heal_resting = 1.6
@@ -31,7 +31,7 @@
 /mob/living/carbon/xenomorph/venator
 	caste_type = PATHOGEN_CREATURE_VENATOR
 	name = PATHOGEN_CREATURE_VENATOR
-	desc = "A sleek, fast alien with sharp claws."
+	desc = "A wandering ball of death."
 	icon_size = 48
 	icon_state = "Venator Walking"
 	plasma_types = list()
@@ -43,7 +43,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab/venator,
+		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
 		/datum/action/xeno_action/activable/venator_abduct,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -55,8 +55,8 @@
 	tackle_min = 2
 	tackle_max = 6
 
-	icon_xeno = 'icons/mob/neo/venator.dmi'
-	icon_xenonid = 'icons/mob/neo/venator.dmi'
+	icon_xeno = 'icons/mob/pathogen/venator.dmi'
+	icon_xenonid = 'icons/mob/pathogen/venator.dmi'
 	need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
@@ -67,12 +67,11 @@
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
-
-/datum/action/xeno_action/activable/tail_stab/venator
+/datum/action/xeno_action/activable/tail_stab/pathogen_t3
 	name = "Spike Lash"
 	stab_range = 3
 
-/datum/action/xeno_action/activable/tail_stab/venator/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+/datum/action/xeno_action/activable/tail_stab/pathogen_t3/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 
 	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
 
@@ -84,7 +83,7 @@
 	var/stab_overlay
 
 	if(blunt_stab)
-		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("We swipe our tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] slams a giant arm into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("We slam our giant arm into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
 		if(prob(1))
 			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
 		else
@@ -92,14 +91,17 @@
 		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
 		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
 		stab_overlay = "slam"
+		log_attack("[key_name(stabbing_xeno)] whacked [key_name(target)] at [get_area_name(stabbing_xeno)]")
+		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was whacked by [key_name(stabbing_xeno)]</font>")
+		stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>whacked [key_name(target)]</font>")
 	else
 		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor spikes!"), SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor spikes!"))
 		playsound(target, "alien_bite", 50, TRUE)
 		// The xeno flips around for a second to impale the target with their tail. These look awsome.
 		stab_overlay = "tail"
-	log_attack("[key_name(stabbing_xeno)] spikelashed [key_name(target)] at [get_area_name(stabbing_xeno)]")
-	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was spikelashed by [key_name(stabbing_xeno)]</font>")
-	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>spikelashed [key_name(target)]</font>")
+		log_attack("[key_name(stabbing_xeno)] spikelashed [key_name(target)] at [get_area_name(stabbing_xeno)]")
+		target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was spikelashed by [key_name(stabbing_xeno)]</font>")
+		stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>spikelashed [key_name(target)]</font>")
 
 	if(last_dir != stab_direction)
 		stabbing_xeno.setDir(stab_direction)

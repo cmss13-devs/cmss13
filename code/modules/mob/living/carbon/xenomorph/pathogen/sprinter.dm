@@ -35,7 +35,7 @@
 	caste_type = PATHOGEN_CREATURE_SPRINTER
 	name = PATHOGEN_CREATURE_SPRINTER
 	desc = "A small white alien that looks like it could run fairly quickly..."
-	icon = 'icons/mob/neo/sprinter.dmi'
+	icon = 'icons/mob/pathogen/sprinter.dmi'
 	icon_state = "Sprinter Walking"
 	icon_size = 64
 	layer = MOB_LAYER
@@ -66,8 +66,8 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/neo/sprinter.dmi'
-	icon_xenonid = 'icons/mob/neo/sprinter.dmi'
+	icon_xeno = 'icons/mob/pathogen/sprinter.dmi'
+	icon_xenonid = 'icons/mob/pathogen/sprinter.dmi'
 	need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'

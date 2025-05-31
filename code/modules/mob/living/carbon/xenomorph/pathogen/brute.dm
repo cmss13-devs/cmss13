@@ -19,7 +19,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
 
 	deevolves_to = list(PATHOGEN_CREATURE_NEOMORPH)
-	caste_desc = "A fast, powerful combatant."
+	caste_desc = "Why run if you can whack them to death."
 	evolves_to = list()
 
 	heal_resting = 1.8
@@ -31,7 +31,7 @@
 /mob/living/carbon/xenomorph/brute
 	caste_type = PATHOGEN_CREATURE_BRUTE
 	name = PATHOGEN_CREATURE_BRUTE
-	desc = "A sleek, fast alien with sharp claws."
+	desc = "A lumbering tank on legs."
 	icon_size = 64
 	icon_state = "Brute Walking"
 	plasma_types = list()
@@ -43,6 +43,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute,
 		/datum/action/xeno_action/activable/oppressor_punch,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -54,8 +55,8 @@
 	tackle_min = 2
 	tackle_max = 6
 
-	icon_xeno = 'icons/mob/neo/brute.dmi'
-	icon_xenonid = 'icons/mob/neo/brute.dmi'
+	icon_xeno = 'icons/mob/pathogen/brute.dmi'
+	icon_xenonid = 'icons/mob/pathogen/brute.dmi'
 	need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
@@ -65,3 +66,10 @@
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
+
+
+
+/datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute
+	name = "Arm Whack"
+	blunt_stab = TRUE
+	stab_range = 2

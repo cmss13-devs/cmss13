@@ -583,7 +583,7 @@
 	equipment_to_spawn = list(
 		WEAR_EYES = /obj/item/clothing/glasses/regular/hipster,
 		WEAR_BODY = /obj/item/clothing/under/liaison_suit/black,
-		WEAR_ACCESSORY = /obj/item/clothing/accessory/blue,
+		WEAR_ACCESSORY = /obj/item/clothing/accessory/tie,
 		WEAR_BACK = /obj/item/storage/backpack/satchel,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/jacket/marine/corporate/black,

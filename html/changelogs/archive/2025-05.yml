@@ -267,3 +267,7 @@
   realforest2001:
   - bugfix: SHARP Operator, Heavy Sniper, and marine specialist support roles now
       show properly on the crew monitor.
+2025-05-31:
+  Venuska1117:
+  - qol: Allows xenos to drag lying/unconcious queen without getting shoved when pulling
+      her on same tile as player.

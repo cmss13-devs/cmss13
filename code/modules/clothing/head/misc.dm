@@ -197,3 +197,9 @@
 	flags_inv_hide = HIDEALLHAIR
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/foil
+	name = "foil hat"
+	desc = "Keeps the government, aliens, and your in-laws from reading your thoughts. Probably."
+	icon_state = "foil"
+	item_state = "foil"

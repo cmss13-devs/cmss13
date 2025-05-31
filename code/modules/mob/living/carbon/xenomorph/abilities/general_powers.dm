@@ -101,7 +101,6 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/set_lying_down()
-
 	if(selected_ability && selected_ability.ability_uses_acid_overlay)
 		overlays -= acid_overlay
 

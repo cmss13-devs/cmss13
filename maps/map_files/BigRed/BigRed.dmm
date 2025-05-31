@@ -15227,7 +15227,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/lz2_south_cas)
 "buU" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "buY" = (
@@ -17608,7 +17608,7 @@
 "bOR" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/body,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/whiteblue/southeast,
 /area/bigredv2/outside/medical)
 "bPe" = (
@@ -17772,7 +17772,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigred/ground/garage_workshop)
 "bWw" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bXe" = (
@@ -27331,8 +27331,8 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "mnu" = (
-/obj/item/ammo_casing/shell,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
@@ -29050,7 +29050,7 @@
 /area/bigredv2/outside/cargo)
 "odN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/whiteblue,
 /area/bigredv2/outside/medical)
 "oea" = (
@@ -29326,7 +29326,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "oqr" = (
@@ -31359,7 +31359,7 @@
 /area/bigredv2/outside/nw)
 "qtT" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
@@ -33331,7 +33331,7 @@
 /turf/open/mars_cave/mars_cave_18,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "sjQ" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
@@ -33752,7 +33752,7 @@
 "sCT" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "sDs" = (
@@ -37755,7 +37755,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/eta)
 "wIR" = (
-/obj/item/ammo_casing/shell,
+/obj/effect/decal/ammo_casing/shell,
 /turf/open/floor/whiteblue/north,
 /area/bigredv2/outside/medical)
 "wJd" = (

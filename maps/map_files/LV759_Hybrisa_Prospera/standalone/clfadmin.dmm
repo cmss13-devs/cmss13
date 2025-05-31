@@ -33,22 +33,22 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/weyyu_office)
 "ad" = (
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/lv759/indoors/weyyu_office/pressroom)
 "ae" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "af" = (
@@ -58,7 +58,7 @@
 	pixel_y = 32;
 	layer = 3.2
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/lv759/indoors/weyyu_office/supervisor)
 "ag" = (
@@ -74,15 +74,15 @@
 /area/lv759/indoors/weyyu_office)
 "ai" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "aj" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "ak" = (
@@ -102,10 +102,10 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "am" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "an" = (
@@ -118,18 +118,18 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "ap" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "aq" = (
@@ -187,8 +187,8 @@
 /area/lv759/indoors/weyyu_office/pressroom)
 "aC" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/west,
 /area/lv759/indoors/weyyu_office/floor)
 "aH" = (
@@ -313,8 +313,8 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/supervisor)
 "bW" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/vip)
 "bZ" = (
@@ -341,9 +341,9 @@
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/pressroom)
 "ch" = (
@@ -401,8 +401,8 @@
 	pixel_x = 32
 	},
 /obj/item/weapon/gun/smg/p90,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "cY" = (
@@ -410,8 +410,8 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/northwest,
 /area/lv759/indoors/weyyu_office/floor)
 "de" = (
@@ -828,7 +828,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv759/outdoors/colony_streets/north_street)
 "fX" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "gq" = (
@@ -916,7 +916,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/lv759/indoors/weyyu_office/pressroom)
 "gX" = (
@@ -1222,9 +1222,9 @@
 	layer = 3.2;
 	pixel_y = -32
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "kh" = (
@@ -1388,10 +1388,10 @@
 /obj/structure/barricade/handrail/strata{
 	layer = 3.1
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "ls" = (
@@ -1556,9 +1556,9 @@
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office/pressroom)
 "mo" = (
@@ -1628,9 +1628,9 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office/pressroom)
 "nl" = (
@@ -1751,7 +1751,7 @@
 /area/lv759/outdoors/colony_streets/north_west_street)
 "oC" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/south,
 /area/lv759/indoors/weyyu_office/vip)
 "oN" = (
@@ -1880,8 +1880,8 @@
 "pK" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/item/trash/hybrisa/cuppa_joes/lid,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "pL" = (
@@ -1904,11 +1904,11 @@
 "pX" = (
 /obj/structure/pipes/standard/manifold/hidden/dark,
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "pY" = (
@@ -2380,8 +2380,8 @@
 	pixel_y = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office/pressroom)
 "uo" = (
@@ -2404,7 +2404,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/weyyu_office)
 "uE" = (
@@ -2572,9 +2572,9 @@
 /obj/structure/pipes/standard/manifold/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office/pressroom)
 "vP" = (
@@ -2843,10 +2843,10 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "yP" = (
@@ -2861,7 +2861,7 @@
 	pixel_x = 32
 	},
 /obj/item/ammo_magazine/smg/fp9000,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/vip)
 "yR" = (
@@ -2939,9 +2939,9 @@
 /turf/open/floor/hybrisa/metal/grated/east,
 /area/lv759/outdoors/colony_streets/central_streets)
 "zp" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office/hallway)
 "zt" = (
@@ -2980,11 +2980,11 @@
 /obj/structure/pipes/standard/manifold/hidden/dark{
 	dir = 1
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plate,
 /area/lv759/indoors/weyyu_office)
 "zP" = (
@@ -3073,12 +3073,12 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,
 /area/lv759/indoors/weyyu_office/floor)
 "Am" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/lv759/indoors/weyyu_office/supervisor)
 "Aq" = (
@@ -3433,7 +3433,7 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "Dy" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/north,
 /area/lv759/indoors/weyyu_office/vip)
@@ -3452,8 +3452,8 @@
 /obj/effect/decal/hybrisa/road/lines4{
 	pixel_x = 1
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/pressroom)
 "DG" = (
@@ -3466,9 +3466,9 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "DM" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/lv759/indoors/weyyu_office)
 "DX" = (
@@ -3489,7 +3489,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "Ed" = (
@@ -3657,7 +3657,7 @@
 /area/lv759/indoors/weyyu_office/floor)
 "FH" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "FM" = (
@@ -3685,8 +3685,8 @@
 	pixel_y = -1
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office/pressroom)
 "Gx" = (
@@ -3804,9 +3804,9 @@
 "Hy" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
 /obj/item/trash/cigbutt,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office/hallway)
 "HA" = (
@@ -3891,8 +3891,8 @@
 /obj/item/weapon/gun/revolver/cmb{
 	pixel_y = 5
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/hybrisa/street/sidewalk/east,
 /area/lv759/outdoors/colony_streets/north_west_street)
 "If" = (
@@ -3907,7 +3907,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "Is" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
 	icon_state = "gib6"
@@ -4062,7 +4062,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
@@ -4334,7 +4334,7 @@
 	dir = 4
 	},
 /obj/item/shard,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/southwest,
 /area/lv759/indoors/weyyu_office/floor)
 "Md" = (
@@ -4800,8 +4800,8 @@
 /area/lv759/indoors/weyyu_office/supervisor)
 "PW" = (
 /obj/structure/pipes/standard/simple/hidden/dark,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/lv759/indoors/weyyu_office/supervisor)
 "PZ" = (
@@ -4881,7 +4881,7 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/supervisor)
 "QK" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/breakroom)
 "QQ" = (
@@ -5005,10 +5005,10 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv759/indoors/weyyu_office/floor)
 "RE" = (
@@ -5460,7 +5460,7 @@
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/weyyu_office)
 "VF" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "VP" = (
@@ -5638,9 +5638,9 @@
 	pixel_y = 22;
 	pixel_x = 12
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv759/indoors/weyyu_office)
 "WV" = (
@@ -5651,7 +5651,7 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/effect/landmark/survivor_spawner/clf_engi/hybrisa,
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/pressroom)
@@ -5660,9 +5660,9 @@
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv759/indoors/weyyu_office/vip)
 "Xn" = (
@@ -5886,7 +5886,7 @@
 /turf/open/floor/hybrisa/carpet/carpetblack,
 /area/lv759/indoors/weyyu_office/breakroom)
 "YY" = (
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /obj/item/weapon/gun/pistol/mod88,
 /turf/open/floor/hybrisa/carpet/blue_grey,
 /area/lv759/indoors/weyyu_office/supervisor)

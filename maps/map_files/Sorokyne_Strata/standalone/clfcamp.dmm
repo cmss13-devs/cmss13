@@ -50,14 +50,14 @@
 /area/strata/ug/interior)
 "af" = (
 /obj/effect/landmark/survivor_spawner/clf/soro,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "ag" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "ah" = (
@@ -1020,16 +1020,16 @@
 /obj/structure/barricade/sandbags{
 	dir = 8
 	},
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "It" = (
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Ix" = (
@@ -1427,7 +1427,7 @@
 	dir = 8
 	},
 /obj/structure/barricade/sandbags,
-/obj/item/ammo_casing,
+/obj/effect/decal/ammo_casing,
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/ag/exterior/paths/far_north_outpost)
 "Wb" = (

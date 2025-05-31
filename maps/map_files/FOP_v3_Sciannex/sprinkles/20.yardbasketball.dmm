@@ -69,7 +69,7 @@
 /turf/open/floor/wood,
 /area/template_noop)
 "k" = (
-/obj/item/ammo_casing{
+/obj/effect/decal/ammo_casing{
 	dir = 6;
 	icon_state = "casing_10_1"
 	},

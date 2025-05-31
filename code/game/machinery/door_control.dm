@@ -12,6 +12,7 @@
 	power_channel = POWER_CHANNEL_ENVIRON
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 	var/id = null
 	var/range = 10
 	var/normaldoorcontrol = CONTROL_POD_DOORS
@@ -212,12 +213,10 @@
 
 /obj/structure/machinery/door_control/brbutton
 	icon_state = "big_red_button_wallv"
-	explo_proof = TRUE
 
 
 /obj/structure/machinery/door_control/brbutton/alt
 	icon_state = "big_red_button_tablev"
-	explo_proof = TRUE
 
 /obj/structure/machinery/door_control/airlock
 	icon = 'icons/obj/structures/machinery/computer.dmi'

@@ -52,7 +52,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/effect/decal/ammo_casing/shell
 	name = "spent shell"
-	icon_state = "redshell" //placeholder for now
+	icon_state = "red_shell" //placeholder for now
 
 /obj/effect/decal/ammo_casing/shell/green_shell
 	name = "spent shell"

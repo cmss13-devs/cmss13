@@ -120,16 +120,6 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 	icon = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 
-/atom/movable/vis_obj/xeno_wounds/rogue
-	icon = 'icons/mob/xenos/castes/tier_4/roguedamage.dmi'
-
-/mob/living/carbon/xenomorph/king/rogue/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	vis_contents -= wound_icon_holder
-	wound_icon_holder = new /atom/movable/vis_obj/xeno_wounds/rogue(null, src)
-	vis_contents += wound_icon_holder
-
-
 /*
 	REND ABILITY
 	3x3 aoe damage centred on the King. Basic ability, spammable, low damage.

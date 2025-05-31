@@ -987,27 +987,17 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "bucket"
 
 /obj/item/clothing/head/general
-	name = "\improper armored General cap"
-	desc = "A sturdy general officer's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."
+	name = "\improper USCM officer peaked service cap"
+	desc = "A standard issue officer service cap, worn by USCM commissioned officers on official visits."
 	icon_state = "general_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 	)
-	siemens_coefficient = 2
-	flags_armor_protection = BODY_FLAG_HEAD
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS
+
 
 /obj/item/clothing/head/durag
 	name = "durag"

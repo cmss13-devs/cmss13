@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Edit Hotkey's search bar is case-insensitive."

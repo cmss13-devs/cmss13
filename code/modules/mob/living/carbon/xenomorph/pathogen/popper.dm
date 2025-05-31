@@ -6,8 +6,8 @@
 	melee_damage_upper = XENO_DAMAGE_TIER_2
 	melee_vehicle_damage = 0
 	max_health = XENO_HEALTH_TIER_2
-	plasma_gain = XENO_PLASMA_GAIN_TIER_5
-	plasma_max = XENO_PLASMA_TIER_3
+	plasma_gain = XENO_PLASMA_GAIN_TIER_1
+	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
 	evasion = XENO_EVASION_LOW
@@ -18,7 +18,7 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
 
-	deevolves_to = list()
+	deevolves_to = list(PATHOGEN_CREATURE_BURSTER)
 	caste_desc = "A fast, powerful combatant."
 	evolves_to = list(PATHOGEN_CREATURE_NEOMORPH)
 
@@ -67,9 +67,9 @@
 
 
 /datum/action/xeno_action/onclick/place_spores
-	name = "Place spore sac (200)"
+	name = "Place spore sac (1000)"
 	action_icon_state = "place_trap"
-	plasma_cost = 150
+	plasma_cost = 1000
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 

@@ -26,7 +26,7 @@
 
 #define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A))
 
-#define isneomorph(A) (istype(A, /mob/living/carbon/xenomorph/neomorph)) || (istype(A, /mob/living/carbon/xenomorph/bloodburster))
+#define is_pathogen_creature(A) (istype(A, /mob/living/carbon/xenomorph)) && (istype(A?:caste, /datum/caste_datum/pathogen))
 
 /// Returns true/false based on if the xenomorph can harm the passed carbon mob.
 /mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)

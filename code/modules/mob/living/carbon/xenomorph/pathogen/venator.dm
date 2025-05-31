@@ -1,5 +1,5 @@
 /datum/caste_datum/pathogen/venator
-	caste_type = NEOMORPH_VENATOR
+	caste_type = PATHOGEN_CREATURE_VENATOR
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
@@ -18,7 +18,7 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
 
-	deevolves_to = list(NEOMORPH_BLIGHT)
+	deevolves_to = list(PATHOGEN_CREATURE_BLIGHT)
 	caste_desc = "A fast, powerful combatant."
 	evolves_to = list()
 
@@ -29,8 +29,8 @@
 	evolution_allowed = FALSE
 
 /mob/living/carbon/xenomorph/venator
-	caste_type = NEOMORPH_VENATOR
-	name = NEOMORPH_VENATOR
+	caste_type = PATHOGEN_CREATURE_VENATOR
+	name = PATHOGEN_CREATURE_VENATOR
 	desc = "A sleek, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Venator Walking"
@@ -64,7 +64,7 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 	AUTOWIKI_SKIP(TRUE)
-	hivenumber = XENO_HIVE_NEOMORPH
+	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
 

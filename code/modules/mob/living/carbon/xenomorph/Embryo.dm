@@ -47,7 +47,7 @@
 		qdel(src)
 		return FALSE
 
-	if((flags_embryo & FLAG_EMBRYO_NEOMORPH) && icon != 'icons/mob/neo/bloodburster.dmi')
+	if((flags_embryo & FLAG_EMBRYO_PATHOGEN) && icon != 'icons/mob/neo/bloodburster.dmi')
 		icon = 'icons/mob/neo/bloodburster.dmi'
 
 	if(loc != affected_mob) //Our location is not the host
@@ -246,7 +246,7 @@
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-	if(flags_embryo & FLAG_EMBRYO_NEOMORPH)
+	if(flags_embryo & FLAG_EMBRYO_PATHOGEN)
 		new_xeno = new /mob/living/carbon/xenomorph/bloodburster(affected_mob)
 	else
 		new_xeno = new /mob/living/carbon/xenomorph/larva(affected_mob)

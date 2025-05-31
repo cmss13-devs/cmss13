@@ -344,8 +344,8 @@
 
 	if (pounceAction.freeze_self)
 		if(pounceAction.freeze_play_sound)
-			if(istype(hive, /datum/hive_status/neomorph))
-				playsound(loc, 'sound/neomorph/neo_pounce.ogg', 60, 1)
+			if(istype(hive, /datum/hive_status/pathogen))
+				playsound(loc, 'sound/pathogen_creatures/neo_pounce.ogg', 60, 1)
 			else
 				playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))

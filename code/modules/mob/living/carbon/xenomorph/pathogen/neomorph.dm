@@ -1,5 +1,5 @@
 /datum/caste_datum/pathogen/neomorph
-	caste_type = NEOMORPH_GROWN
+	caste_type = PATHOGEN_CREATURE_NEOMORPH
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -18,9 +18,9 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/neomorph_base
 
-	deevolves_to = list(NEOMORPH_BURSTER)
+	deevolves_to = list(PATHOGEN_CREATURE_BURSTER)
 	caste_desc = "A fast, powerful combatant."
-	evolves_to = list(NEOMORPH_BRUTE)
+	evolves_to = list(PATHOGEN_CREATURE_BRUTE)
 
 	heal_resting = 1
 	minimum_evolve_time = 0
@@ -28,8 +28,8 @@
 	minimap_icon = "neomorph"
 
 /mob/living/carbon/xenomorph/neomorph
-	caste_type = NEOMORPH_GROWN
-	name = NEOMORPH_GROWN
+	caste_type = PATHOGEN_CREATURE_NEOMORPH
+	name = PATHOGEN_CREATURE_NEOMORPH
 	desc = "A sleek, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Neomorph Walking"
@@ -64,7 +64,7 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 	AUTOWIKI_SKIP(TRUE)
-	hivenumber = XENO_HIVE_NEOMORPH
+	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
 /datum/behavior_delegate/neomorph_base

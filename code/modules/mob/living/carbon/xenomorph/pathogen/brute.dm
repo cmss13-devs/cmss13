@@ -1,5 +1,5 @@
 /datum/caste_datum/pathogen/brute
-	caste_type = NEOMORPH_BRUTE
+	caste_type = PATHOGEN_CREATURE_BRUTE
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
@@ -18,7 +18,7 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
 
-	deevolves_to = list(NEOMORPH_GROWN)
+	deevolves_to = list(PATHOGEN_CREATURE_NEOMORPH)
 	caste_desc = "A fast, powerful combatant."
 	evolves_to = list()
 
@@ -29,8 +29,8 @@
 	evolution_allowed = FALSE
 
 /mob/living/carbon/xenomorph/brute
-	caste_type = NEOMORPH_BRUTE
-	name = NEOMORPH_BRUTE
+	caste_type = PATHOGEN_CREATURE_BRUTE
+	name = PATHOGEN_CREATURE_BRUTE
 	desc = "A sleek, fast alien with sharp claws."
 	icon_size = 64
 	icon_state = "Brute Walking"
@@ -63,5 +63,5 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 	AUTOWIKI_SKIP(TRUE)
-	hivenumber = XENO_HIVE_NEOMORPH
+	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"

@@ -1,5 +1,5 @@
 /datum/caste_datum/pathogen/sprinter
-	caste_type = NEOMORPH_SPRINTER
+	caste_type = PATHOGEN_CREATURE_SPRINTER
 	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
 	tier = 1
 	melee_damage_lower = XENO_DAMAGE_TIER_2
@@ -16,8 +16,8 @@
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/sprinter_base
-	evolves_to = list(NEOMORPH_BLIGHT)
-	deevolves_to = list(NEOMORPH_BURSTER)
+	evolves_to = list(PATHOGEN_CREATURE_BLIGHT)
+	deevolves_to = list(PATHOGEN_CREATURE_BURSTER)
 
 	tackle_min = 4
 	tackle_max = 5
@@ -32,8 +32,8 @@
 	minimap_icon = "sprinter"
 
 /mob/living/carbon/xenomorph/sprinter
-	caste_type = NEOMORPH_SPRINTER
-	name = NEOMORPH_SPRINTER
+	caste_type = PATHOGEN_CREATURE_SPRINTER
+	name = PATHOGEN_CREATURE_SPRINTER
 	desc = "A small white alien that looks like it could run fairly quickly..."
 	icon = 'icons/mob/neo/sprinter.dmi'
 	icon_state = "Sprinter Walking"
@@ -75,7 +75,7 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 	AUTOWIKI_SKIP(TRUE)
-	hivenumber = XENO_HIVE_NEOMORPH
+	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
 

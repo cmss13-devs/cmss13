@@ -1,5 +1,5 @@
 /datum/caste_datum/pathogen/bloodburster
-	caste_type = NEOMORPH_BURSTER
+	caste_type = PATHOGEN_CREATURE_BURSTER
 	caste_desc = "A tiny sharp-clawed terror that just tore its way out of a living host."
 	tier = 0
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -16,7 +16,7 @@
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/bloodburster_base
-	evolves_to = list(NEOMORPH_POPPER, NEOMORPH_SPRINTER, NEOMORPH_GROWN)
+	evolves_to = list(PATHOGEN_CREATURE_POPPER, PATHOGEN_CREATURE_SPRINTER, PATHOGEN_CREATURE_NEOMORPH)
 	deevolves_to = list()
 
 	tackle_min = 4
@@ -31,8 +31,8 @@
 	minimap_icon = "bloodburster"
 
 /mob/living/carbon/xenomorph/bloodburster
-	caste_type = NEOMORPH_BURSTER
-	name = NEOMORPH_BURSTER
+	caste_type = PATHOGEN_CREATURE_BURSTER
+	name = PATHOGEN_CREATURE_BURSTER
 	desc = "What the hell is THAT..."
 	icon = 'icons/mob/neo/bloodburster.dmi'
 	icon_state = "Bloody Bloodburster"
@@ -71,7 +71,7 @@
 	weed_food_states_flipped = list("Runner_1","Runner_2","Runner_3")
 
 	AUTOWIKI_SKIP(TRUE)
-	hivenumber = XENO_HIVE_NEOMORPH
+	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
 	var/bloody_state = LARVA_STATE_BLOODY
@@ -248,5 +248,5 @@
 
 /obj/item/alien_embryo/bloodburster
 	icon = 'icons/mob/neo/bloodburster.dmi'
-	flags_embryo = FLAG_EMBRYO_NEOMORPH
-	hivenumber = XENO_HIVE_NEOMORPH
+	flags_embryo = FLAG_EMBRYO_PATHOGEN
+	hivenumber = XENO_HIVE_PATHOGEN

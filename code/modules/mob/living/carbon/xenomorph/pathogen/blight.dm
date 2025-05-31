@@ -1,5 +1,5 @@
 /datum/caste_datum/pathogen/blight
-	caste_type = NEOMORPH_BLIGHT
+	caste_type = PATHOGEN_CREATURE_BLIGHT
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -18,9 +18,9 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/blight_base
 
-	deevolves_to = list(NEOMORPH_SPRINTER)
+	deevolves_to = list(PATHOGEN_CREATURE_SPRINTER)
 	caste_desc = "A fast, powerful combatant."
-	evolves_to = list(NEOMORPH_VENATOR)
+	evolves_to = list(PATHOGEN_CREATURE_VENATOR)
 
 	heal_resting = 1.5
 	minimum_evolve_time = 0
@@ -28,8 +28,8 @@
 	minimap_icon = "blight"
 
 /mob/living/carbon/xenomorph/blight
-	caste_type = NEOMORPH_BLIGHT
-	name = NEOMORPH_BLIGHT
+	caste_type = PATHOGEN_CREATURE_BLIGHT
+	name = PATHOGEN_CREATURE_BLIGHT
 	desc = "A sleek, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Blight Walking"
@@ -64,7 +64,7 @@
 	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
 
 	AUTOWIKI_SKIP(TRUE)
-	hivenumber = XENO_HIVE_NEOMORPH
+	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
 /datum/behavior_delegate/blight_base

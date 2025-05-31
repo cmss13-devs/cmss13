@@ -23,7 +23,7 @@
 	if(!client.prefs.playtime_perks)
 		age = XENO_NORMAL
 
-	if(hivenumber == XENO_HIVE_NEOMORPH)
+	if(hivenumber == XENO_HIVE_PATHOGEN)
 		switch(age)
 			if(XENO_YOUNG)
 				age_prefix = "Fresh "

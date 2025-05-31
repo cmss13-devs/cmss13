@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT(admin_verbs_spawn, list(
 	/client/proc/game_panel,
 	/client/proc/create_humans,
 	/client/proc/create_xenos,
-	/client/proc/create_neomorphs,
+	/client/proc/create_pathogen_creatures,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_server, list(

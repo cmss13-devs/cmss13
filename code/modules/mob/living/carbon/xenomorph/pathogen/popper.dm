@@ -65,6 +65,8 @@
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
+	mob_size = MOB_SIZE_XENO_SMALL
+
 
 /datum/action/xeno_action/onclick/place_spores
 	name = "Place spore sac (1000)"

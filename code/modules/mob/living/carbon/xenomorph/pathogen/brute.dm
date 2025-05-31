@@ -64,6 +64,8 @@
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 
+	mob_size = MOB_SIZE_BIG
+
 
 
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute

@@ -478,7 +478,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 /// Default accessory slot for non-accessory specific clothing, this should almost never be used for proper categorization
 #define ACCESSORY_SLOT_DEFAULT "Accessory"
 
-/// Accessory slots that have mechanics tied to them
+// Accessory slots that have mechanics tied to them
 #define ACCESSORY_SLOT_UTILITY "Utility"
 #define ACCESSORY_SLOT_STORAGE "Storage"
 #define ACCESSORY_SLOT_ARMOR_C "Chest armor"

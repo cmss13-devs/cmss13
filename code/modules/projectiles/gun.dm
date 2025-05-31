@@ -183,7 +183,7 @@
 	///What attachments this gun starts with THAT CAN BE REMOVED. Important to avoid nuking the attachments on restocking! Added on New()
 	var/list/starting_attachment_types = null
 
-	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	var/flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AUTO_EJECT_CASINGS
 	///Only guns of the same category can be fired together while dualwielding.
 	var/gun_category
 
@@ -244,6 +244,8 @@
 	var/projectile_type = /obj/projectile
 	/// The multiplier for how much slower this should fire in automatic mode. 1 is normal, 1.2 is 20% slower, 2 is 100% slower, etc. Protected due to it never needing to be edited.
 	VAR_PROTECTED/autofire_slow_mult = 1
+	/// How many empty shell casings are in the gun?
+	var/empty_casings = 0
 	/// enables jamming code, default should be false, change the vars in parent gun or individually to enable jamming
 	var/can_jam = FALSE
 	/// if gun is currently jammed
@@ -1526,6 +1528,10 @@ and you're good to go.
 
 	play_firing_sounds(projectile_to_fire, user)
 
+	empty_casings++
+	if(flags_gun_features & GUN_AUTO_EJECT_CASINGS)
+		eject_casing()
+
 	simulate_recoil(dual_wield, user, target)
 
 	//This is where the projectile leaves the barrel and deals with projectile code only.
@@ -2447,3 +2453,29 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	icon = spin_32
 	. = ..()
 	addtimer(VARSET_CALLBACK(src, icon, current_icon), (speed*loop_amount)-0.8)
+
+/// For ejecting the spent casing from corresponding guns
+/obj/item/weapon/gun/proc/eject_casing()
+	if(empty_casings == 0)
+		return
+	if(!ammo)
+		return
+	if(ammo.shell_casing)
+		var/turf/ejection_turf = get_turf(src)
+		if(!ejection_turf)
+			return
+
+		for(var/ejecting = 1 to empty_casings)
+			var/obj/effect/decal/ammo_casing/found_casings = null
+			for(var/obj/effect/decal/ammo_casing/casing in ejection_turf)
+				if(casing.type == ammo.shell_casing)
+					found_casings = casing
+					break
+			if(!found_casings)
+				found_casings = new ammo.shell_casing(ejection_turf)
+				found_casings.current_casings = 0
+
+			found_casings.current_casings += 1
+			found_casings.update_icon()
+
+	empty_casings = 0

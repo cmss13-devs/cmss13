@@ -238,6 +238,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	current_mag.chamber_position++
 	current_mag.chamber_contents[current_mag.chamber_position] = selection
 	playsound(user, reload_sound, 25, TRUE)
+	eject_casing()
 	return TRUE
 
 /obj/item/weapon/gun/lever_action/proc/work_lever(mob/living/carbon/human/user)
@@ -265,6 +266,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 			twohand_lever(user)
 
 		playsound(user, lever_sound, 25, TRUE)
+		eject_casing()
 		levered = TRUE
 
 /obj/item/weapon/gun/lever_action/proc/twohand_lever(mob/living/carbon/human/user)

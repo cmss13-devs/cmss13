@@ -226,7 +226,7 @@ Everything below isn't used or out of place.
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 
-	var/random_gear = rand(0, 12)
+	var/random_gear = rand(0, 14)
 	switch(random_gear)
 		if(0) // Sleepy Colonist
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(new_human), WEAR_BODY)
@@ -346,6 +346,32 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/food/upp/soup(new_human), WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/food/upp/stew(new_human), WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/flask/canteen(new_human), WEAR_IN_R_STORE)
+		if(13) // Mad Scientist
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/kutjevo(new_human), WEAR_FACE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm/green, WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/scientist/hybrisa, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/green, WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/green, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding/superior, WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/green, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/emergency(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/pamphlet/skill/medical, WEAR_IN_BACK)
+		if(14) // Cameraman
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big, WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/reporter(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/vest/grey(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/broadcasting(new_human), WEAR_R_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/device/camera, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/camera/oldcamera, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/device/camera_film, WEAR_IN_R_STORE)
+
 	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)
 

@@ -1,6 +1,6 @@
 /datum/xeno_strain/acider
 	name = RUNNER_ACIDER
-	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. When outside of combat, only a limited amount of acid will generate. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them fills your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
+	description = "At the cost of a little bit of your speed and all of your current abilities, you gain a considerable amount of health, some armor, and a new organ that fills with volatile acid over time. When outside of combat, only a limited amount of acid will generate. Your Tail Stab and slashes apply acid to living lifeforms that slowly burns them and fills your acid glands. You also gain Corrosive Acid equivalent to that of a boiler that you can deploy more quickly than any other caste, at the cost of a chunk of your acid reserves with each use. Finally, after a twenty second windup, you can force your body to explode, covering everything near you with acid. The more acid you have stored, the more devastating the explosion will be, but during those twenty seconds before detonation you are slowed and give off several warning signals which give talls an opportunity to end you before you can detonate. If you successfully explode, you will reincarnate as a larva again!"
 	flavor_description = "This one will be the last thing they hear. A martyr."
 	icon_state_prefix = "Acider"
 
@@ -194,6 +194,12 @@
 		to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl when you are about to explode!"))
 		return FALSE
 	return ..()
+
+/mob/living/carbon/xenomorph/runner/get_examine_text(mob/user)
+	. = ..()
+	var/datum/behavior_delegate/runner_acider/behavior = behavior_delegate
+	if(istype(behavior) && isxeno(user))
+		. += "it has [SPAN_GREEN(behavior.acid_amount)] acid!"
 
 /datum/behavior_delegate/runner_acider/proc/combat_gen_end() //This proc is triggerd once the combat acid timer runs out.
 	combat_gen_active = FALSE //turns combat acid off

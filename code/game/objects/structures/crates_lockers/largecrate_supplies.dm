@@ -127,7 +127,7 @@
 /obj/structure/largecrate/supply/weapons/flamers
 	name = "\improper M240A1 incinerator weapons chest (x4)"
 	desc = "A weapons chest containing four M240A1 incinerator units."
-	supplies = list(/obj/item/weapon/gun/flamer = 4)
+	supplies = list(/obj/item/weapon/gun/flamer/m240 = 4)
 
 /obj/structure/largecrate/supply/weapons/hpr
 	name = "\improper M41AE2 heavy pulse rifle weapons chest (x2)"
@@ -261,6 +261,16 @@
 	name = "\improper USCM MRE crate (x60)"
 	desc = "A supply crate containing sixty USCM MRE packets."
 	supplies = list(/obj/item/ammo_box/magazine/misc/mre = 5)
+
+/obj/structure/largecrate/supply/supplies/mre/wy
+	name = "\improper W-Y brand rations crate (x60)"
+	desc = "A supply crate containing sixty W-Y brand ration packets."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre/wy = 5)
+
+/obj/structure/largecrate/supply/supplies/wy_emergency_food
+	name = "\improper WY emergency nutrition briquettes crate (x100)"
+	desc = "A supply crate containing one hundred WY emergency nutrition briquettes."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre/emergency = 5)
 
 /obj/structure/largecrate/supply/supplies/water
 	name = "\improper WY Bottled Water crate (x50)"

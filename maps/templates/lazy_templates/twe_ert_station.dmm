@@ -1,7 +1,55 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/teabags{
+	pixel_y = 10;
+	pixel_x = -7
+	},
+/obj/item/storage/box/cups{
+	pixel_y = -5;
+	pixel_x = -7
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/royal_marines_station)
+"ab" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_y = 12;
+	pixel_x = -8
+	},
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_y = 12;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/plate,
+/area/adminlevel/ert_station/royal_marines_station)
+"ac" = (
+/obj/structure/surface/table/almayer,
+/obj/item/reagent_container/food/snacks/mre_food/twe/side/nigirisushi{
+	pixel_y = 5;
+	pixel_x = -12
+	},
+/obj/item/reagent_container/food/snacks/mre_food/uscm/snack/sushi,
+/turf/open/floor/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
 "ad" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/almayer,
+/area/adminlevel/ert_station/royal_marines_station)
+"ae" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/reagent_dispensers/water_cooler/stacks,
+/turf/open/floor/almayer/orange/west,
+/area/adminlevel/ert_station/royal_marines_station)
+"af" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/mre/twe,
+/turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "ai" = (
 /obj/structure/machinery/light{
@@ -574,6 +622,9 @@
 "nl" = (
 /obj/structure/largecrate/random/barrel/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar/twe{
+	pixel_y = 28
+	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
 "nn" = (
@@ -683,6 +734,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/recharger,
+/obj/structure/sign/calendar/twe{
+	pixel_y = 28
+	},
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/royal_marines_station)
 "qw" = (
@@ -900,6 +954,9 @@
 /obj/item/book/manual/marine_law{
 	pixel_x = -3;
 	pixel_y = 1
+	},
+/obj/structure/sign/calendar/twe{
+	pixel_y = 28
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/royal_marines_station)
@@ -1986,7 +2043,9 @@
 /area/adminlevel/ert_station/royal_marines_station)
 "UZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/snacks/fishandchips,
+/obj/item/reagent_container/food/snacks/mre_food/twe/entree/fishnchips{
+	pixel_y = 11
+	},
 /turf/open/floor/almayer,
 /area/adminlevel/ert_station/royal_marines_station)
 "Va" = (
@@ -2375,15 +2434,15 @@ WS
 TY
 yK
 Sv
-Sv
+af
 Sv
 gS
 TY
 TY
 TY
 gS
-Sv
-Sv
+ab
+aa
 Sv
 uq
 OE
@@ -2428,7 +2487,7 @@ IQ
 gJ
 gJ
 gJ
-IQ
+ae
 NF
 Ac
 Ac
@@ -2570,7 +2629,7 @@ kh
 kh
 Uv
 ZA
-kh
+ac
 kh
 Uv
 RF

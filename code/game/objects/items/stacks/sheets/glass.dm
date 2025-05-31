@@ -85,6 +85,10 @@
 	var/to_build = tgui_input_list(user, title, "What would you like to construct?", construction_options)
 	if(!to_build)
 		return
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("Windows must be constructed on a proper surface!"))
+		return
 	var/turf/open/T = user.loc
 	if(!(istype(T) && T.allow_construction))
 		to_chat(user, SPAN_WARNING("Windows must be constructed on a proper surface!"))

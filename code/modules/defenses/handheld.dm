@@ -65,7 +65,10 @@
 	for(var/mob/M in T)
 		blocked = TRUE
 		break
-
+	var/area/area = get_area(T)
+	if(!area.allow_construction)
+		to_chat(user, SPAN_WARNING("You cannot deploy \a [src] here, find a more secure surface!"))
+		return
 	if(istype(T, /turf/open))
 		var/turf/open/floor = T
 		if(!floor.allow_construction)

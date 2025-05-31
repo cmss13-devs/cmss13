@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/Type64_x10
-	name = "Type 64 Submachinegun (x10)"
+	name = "UPP Type 64 Submachinegun (x10)"
 	contains = list(
 		/obj/item/weapon/gun/smg/bizon/upp,
 		/obj/item/weapon/gun/smg/bizon/upp,
@@ -18,7 +18,7 @@
 	group = "UPP Weapons"
 
 /datum/supply_packs/upp/Type23_x10
-	name = "Type 23 riot shotgun (x10)"
+	name = "UPP Type 23 riot shotgun (x10)"
 	contains = list(
 		/obj/item/weapon/gun/shotgun/type23,
 		/obj/item/weapon/gun/shotgun/type23,
@@ -37,7 +37,7 @@
 	group = "UPP Weapons"
 
 /datum/supply_packs/upp/Type71_x10
-	name = "Type 71 Pulse Rifle (x10)"
+	name = "UPP Type 71 Pulse Rifle (x10)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/type71,
 		/obj/item/weapon/gun/rifle/type71,
@@ -56,7 +56,7 @@
 	group = "UPP Weapons"
 
 /datum/supply_packs/upp/Type71_carbine_x10
-	name = "Type 71 Pulse Rifle Carbine (x10)"
+	name = "UPP Type 71 Pulse Rifle Carbine (x10)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/type71/carbine,
 		/obj/item/weapon/gun/rifle/type71/carbine,
@@ -75,7 +75,7 @@
 	group = "UPP Weapons"
 
 /datum/supply_packs/upp/m2c_hmg_upp
-	name = "M2C Heavy Machine Gun (x1)"
+	name = "UPP M2C Heavy Machine Gun (x1)"
 	contains = list(
 		/obj/item/storage/box/guncase/m2c,
 	)
@@ -85,7 +85,7 @@
 	group = "UPP Weapons"
 
 /datum/supply_packs/upp/pkp
-	name = "QYJ-72 General Purpose Machine Gun (x2)"
+	name = "UPP QYJ-72 General Purpose Machine Gun (x2)"
 	contains = list(
 		/obj/item/weapon/gun/pkp,
 		/obj/item/weapon/gun/pkp,
@@ -98,7 +98,7 @@
 	group = "UPP Weapons"
 
 /datum/supply_packs/upp/minigun
-	name = "GSh-7.62 Rotary Machine Gun (x2)"
+	name = "UPP GSh-7.62 Rotary Machine Gun (x2)"
 	contains = list(
 		/obj/item/weapon/gun/minigun/upp,
 		/obj/item/weapon/gun/minigun/upp,
@@ -111,7 +111,7 @@
 	group = "UPP Special Weapon"
 
 /datum/supply_packs/upp/Type88_marksman_rifle_x10
-	name = "Type 88 designated marksman rifle (x2)"
+	name = "UPP Type 88 designated marksman rifle (x2)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/sniper/svd,
 		/obj/item/weapon/gun/rifle/sniper/svd,
@@ -124,7 +124,7 @@
 	group = "UPP Special Weapon"
 
 /datum/supply_packs/upp/Type71_carbine_commando_x10
-	name = "Type 71 'Commando' pulse carbine (x2)"
+	name = "UPP Type 71 'Commando' pulse carbine (x2)"
 	contains = list(
 		/obj/item/weapon/gun/rifle/type71/carbine/commando,
 		/obj/item/weapon/gun/rifle/type71/carbine/commando,

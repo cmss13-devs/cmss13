@@ -180,7 +180,6 @@
 	var/mob/living/crossing_mob = atom_movable
 
 	var/weed_slow = weed_strength
-
 	if(crossing_mob.ally_of_hivenumber(linked_hive.hivenumber))
 		if( (crossing_mob.hivenumber != linked_hive.hivenumber) && prob(7)) // small chance for allied mobs to get a message indicating this
 			to_chat(crossing_mob, SPAN_NOTICE("The weeds seem to reshape themselves around your feet as you walk on them."))
@@ -224,10 +223,9 @@
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T))
 			continue
-		var/is_weedable = T.is_weedable()
-		if(!is_weedable)
+		if(!T.is_weedable)
 			continue
-		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
+		if(!spread_on_semiweedable && T.is_weedable < FULLY_WEEDABLE)
 			continue
 		T.clean_cleanables()
 

@@ -136,12 +136,22 @@
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
 				serialized["nickname"] = human.real_name
+				if(human.mob_flags & MUTINY_MUTINEER)
+					serialized["mutiny_status"] = "Mutineer"
+				else if(human.mob_flags & MUTINY_LOYALIST)
+					serialized["mutiny_status"] = "Loyalist"
+				else if(human.mob_flags & MUTINY_NONCOMBAT)
+					serialized["mutiny_status"] = "Non-Combatant"
 
 				var/icon = human.assigned_equipment_preset?.minimap_icon
 				if(islist(icon))
 					for(var/key in icon)
 						icon = key
 						break
+				if(id_card?.minimap_icon_override)
+					icon = id_card.minimap_icon_override
+				if(human.rank_override)
+					icon = human.rank_override
 				serialized["icon"] = icon ? icon : "private"
 
 				if(human.assigned_squad)
@@ -151,14 +161,17 @@
 
 				if(istype(get_area(human), /area/tdome))
 					in_thunderdome += list(serialized)
-				else if(human.job in FAX_RESPONDER_JOB_LIST)
+					continue
+
+				if(issynth(human) && !isinfiltratorsynthetic(human))
+					synthetics += list(serialized)
+
+				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
-				else if(issynth(human) && !isinfiltratorsynthetic(human))
-					synthetics += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)

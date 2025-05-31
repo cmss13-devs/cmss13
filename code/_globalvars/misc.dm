@@ -134,5 +134,5 @@ GLOBAL_VAR(obfs_y)
 /// A number between -10 and 10
 GLOBAL_VAR(obfs_z)
 
-/// The current amount of giant lizards that are alive.
-GLOBAL_VAR_INIT(giant_lizards_alive, 0)
+/// List of giant lizards that are alive.
+GLOBAL_LIST_EMPTY(giant_lizards_alive)

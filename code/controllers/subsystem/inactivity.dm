@@ -7,20 +7,32 @@ SUBSYSTEM_DEF(inactivity)
 	priority = SS_PRIORITY_INACTIVITY
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
+	var/list/client/current_run = list()
+
 /datum/controller/subsystem/inactivity/fire(resumed = FALSE)
 	if(list_clear_nulls(GLOB.clients))
 		debug_log("Removed nulls from GLOB.clients!")
 	if(list_clear_nulls(GLOB.player_list))
 		debug_log("Removed nulls from GLOB.player_list!")
 
-	if (!CONFIG_GET(flag/kick_inactive))
+	if(!CONFIG_GET(flag/kick_inactive))
 		return
 
-	for(var/client/current as anything in GLOB.clients)
+	if(!resumed)
+		current_run = GLOB.clients.Copy()
+
+	while(length(current_run))
+		var/client/current = current_run[length(current_run)]
+		current_run.len--
+
 		if(CLIENT_IS_AFK_SAFE(current)) //Skip admins.
 			continue
+
 		if(current.is_afk(INACTIVITY_KICK))
 			if(!istype(current.mob, /mob/dead))
 				log_access("AFK: [key_name(current)]")
 				to_chat(current, SPAN_WARNING("You have been inactive for more than [INACTIVITY_KICK / 600] minutes and have been disconnected."))
 				qdel(current)
+
+		if(MC_TICK_CHECK)
+			return

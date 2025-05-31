@@ -51,6 +51,8 @@
 #define AREA_YAUTJA_GROUNDS (1<<5)
 /// Flags the area as a hunting grounds for the Yautja, sometimes blocking game interaction.
 #define AREA_YAUTJA_HUNTING_GROUNDS (1<<6)
+/// Flags the area as hangable, allowing the hanging of skinned bodies.
+#define AREA_YAUTJA_HANGABLE (1<<7)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

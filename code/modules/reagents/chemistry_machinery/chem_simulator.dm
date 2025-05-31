@@ -19,6 +19,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "modifier"
 	active_power_usage = 1000
+	health = STRUCTURE_HEALTH_REINFORCED
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
 	bound_x = 32

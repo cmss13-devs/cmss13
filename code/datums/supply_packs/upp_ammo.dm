@@ -1,5 +1,5 @@
 /datum/supply_packs/upp/ammo_rounds_box_5_45x39mm
-	name = "ammo box crate (5.45x39mm) (x600 rounds)"
+	name = "UPP ammo box crate (5.45x39mm) (x600 rounds)"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71,
 	)
@@ -9,7 +9,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_rounds_box_5_45x39mm_ap
-	name = "ammo box crate (5.45x39mm AP) (x600 rounds)"
+	name = "UPP ammo box crate (5.45x39mm AP) (x600 rounds)"
 	contains = list(
 		/obj/item/ammo_box/rounds/type71/ap,
 	)
@@ -20,7 +20,7 @@
 
 
 /datum/supply_packs/upp/ammo_8g_slug
-	name = "Magazine box (Type 23, 20x slug)"
+	name = "UPP Magazine box (Type 23, 20x slug)"
 	contains = list(
 		/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
 		/obj/item/ammo_magazine/handful/shotgun/heavy/slug,
@@ -69,7 +69,7 @@
 
 
 /datum/supply_packs/upp/ammo_Type64_x10
-	name = "Magazine box (Type 64, 10x regular mags)"
+	name = "UPP Magazine box (Type 64, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type64,
 	)
@@ -79,7 +79,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_Type71_box
-	name = "Magazine box (Type 71, 10x regular mags)"
+	name = "UPP Magazine box (Type 71, 10x regular mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type71,
 	)
@@ -89,7 +89,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_Type71_box_ap
-	name = "Magazine box (Type 71, 10x AP mags)"
+	name = "UPP Magazine box (Type 71, 10x AP mags)"
 	contains = list(
 		/obj/item/ammo_box/magazine/type71/ap,
 	)
@@ -99,7 +99,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_m2c_upp
-	name = "M2C ammunition crate (x2)"
+	name = "UPP M2C ammunition crate (x2)"
 	contains = list(
 		/obj/item/ammo_magazine/m2c,
 		/obj/item/ammo_magazine/m2c,
@@ -110,7 +110,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_pkp_mags
-	name = "Magazines (QYJ-72, 4x mags)"
+	name = "UPP Magazines (QYJ-72, 4x mags)"
 	contains = list(
 		/obj/item/ammo_magazine/pkp,
 		/obj/item/ammo_magazine/pkp,
@@ -123,7 +123,7 @@
 	group = "UPP Ammo"
 
 /datum/supply_packs/upp/ammo_minigun_mags
-	name = "Magazines (GSh-7.62, 4x mags)"
+	name = "UPP Magazines (GSh-7.62, 4x mags)"
 	contains = list(
 		/obj/item/ammo_magazine/minigun,
 		/obj/item/ammo_magazine/minigun,
@@ -136,7 +136,7 @@
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_he
-	name = "HJRA-12 HE Rocket Crate (x3)"
+	name = "UPP HJRA-12 HE Rocket Crate (x3)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp,
 		/obj/item/ammo_magazine/rocket/upp,
@@ -148,7 +148,7 @@
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_ap
-	name = "HJRA-12 AP Rocket Crate (x3)"
+	name = "UPP HJRA-12 AP Rocket Crate (x3)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp/at,
 		/obj/item/ammo_magazine/rocket/upp/at,
@@ -160,7 +160,7 @@
 	group = "UPP Special Ammo"
 
 /datum/supply_packs/upp/ammo_rpg_wp
-	name = "HJRA-12 Extreme-Intensity Incendiary Rocket Crate (x3)"
+	name = "UPP HJRA-12 Extreme-Intensity Incendiary Rocket Crate (x3)"
 	contains = list(
 		/obj/item/ammo_magazine/rocket/upp/incen,
 		/obj/item/ammo_magazine/rocket/upp/incen,

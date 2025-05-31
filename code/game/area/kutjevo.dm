@@ -302,30 +302,46 @@
 
 /area/kutjevo/interior/colony_north
 	name = "Kutjevo - North Colony Caves"
-	ceiling = CEILING_DEEP_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "colony_caves_1"
 	unoviable_timer = FALSE
 
-/area/kutjevo/interior/colony_S_East
-	name = "Kutjevo - North East Colony Caves"
-	ceiling = CEILING_DEEP_UNDERGROUND
+/area/kutjevo/interior/colony_southeast
+	name = "Kutjevo - Southeast Colony Caves"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "colony_caves_2"
 	unoviable_timer = FALSE
 
-/area/kutjevo/interior/colony_N_East
-	name = "Kutjevo - South East Colony Caves"
-	ceiling = CEILING_DEEP_UNDERGROUND
+/area/kutjevo/interior/colony_northeast
+	name = "Kutjevo - Northeast Colony Caves"
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "colony_caves_2"
 	unoviable_timer = FALSE
 
-/area/kutjevo/interior/colony_South
+/area/kutjevo/interior/colony_south
 	name = "Kutjevo - South Colony Caves"
-	ceiling = CEILING_DEEP_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "colony_caves_3"
 
-/area/kutjevo/interior/colony_South/power2
+/area/kutjevo/interior/colony_south/power2
 	name = "Kutjevo - South Colony Treatment Plant"
-	ceiling = CEILING_DEEP_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	icon_state = "colony_caves_3"
 	minimap_color = MINIMAP_AREA_ENGI_CAVE
 	unoviable_timer = FALSE
+
+//CLF insert areas
+/area/kutjevo/interior/colony/landing_zone_checkpoint
+	name = "Kutjevo - Landing Zone Checkpoint"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	icon_state = "colony_int"
+
+/area/kutjevo/interior/colony/clf_shuttle
+	name = "Kutjevo - Unregistered Freighter"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	icon_state = "colony_int"
+
+/area/kutjevo/exterior/clf_lz
+	name = "Kutjevo - Tertiary Landing Zone"
+	ceiling = CEILING_NONE
+	icon_state = "ext"

@@ -436,3 +436,146 @@
   realforest2001:
   - bugfix: You can no longer place C4 or Breaching Charges onto objects that are
       explosion proof.
+2025-02-22:
+  Drathek:
+  - spellcheck: Fixed a missing 'and' in acider strain purchase message
+  Nomoresolvou:
+  - bugfix: Fixed preds being unable to use abilities after SDing a thrall
+  - bugfix: Thralls are now set back to humans and can shoot guns again after being
+      unthralled
+  - code_imp: removed a couple one letter vars
+  Red-byte3D:
+  - code_imp: Removed all var/lol
+  - bugfix: Oreboxes are no longer unslashable and unbreakable
+  Steelpoint:
+  - mapadd: IASF Outpost Souter has been added as a nightmare insert for Hybrisa Prospera.
+      Part of the larger detachment of Imperial Armed Space Forces that defended the
+      colony. The IASF had been forced to withdraw prior to the events of the xenomorph
+      outbreak, however this insert represents a timeline where the IASF had not fully
+      completed their withdrawal.
+  - code_imp: Added a set of transparent versions of the TWE cosmetic Dropship for
+      mappers to use, instead of the older version that leaves a void overlay.
+  Steelpoint, Blundir:
+  - rscadd: Adds a UPP Squad gun and ammo vendor. Similar in function to the USCM
+      squad vendor. Supplies UPP soldiers with their weapons and munitions.
+  - rscadd: Shotgun shell boxes for UPP shotgun ammunition have been added to the
+      game, they have also been added to all UPP vendors.
+2025-02-23:
+  Drathek:
+  - rscadd: Defenders, Sentinels, and Runners can now also evolve to Queen if there
+      is no queen (no need to de-evolve)
+  - bugfix: Fixed incorrect evolve messaging when there is no queen (always would
+      say queen had died recently)
+  - bugfix: Fixed incorrect evolve messaging when the caste cannot evolve any further
+      (would say there were no castes to evolve to currently)
+  - bugfix: Fixed do_evolve considering queen job banned players as potential queen
+      candidates
+  - code_imp: Cleaned up code in do_evolve and hive_status
+  - bugfix: Fixed young blood job ban check and end game note who played as Predator
+  - bugfix: Fixed young blood leader objectives
+  - code_imp: Cleaned up the jobban_isbanned proc
+  Git-Nivrak:
+  - bugfix: Fixed issues with overwatch console when ground height is 0
+  detectivegoogle, ihatethisengine:
+  - balance: The smartscope now uses alt IFF and cannot fire through friendlies.
+  - balance: The smartscope now only applies a small damage and falloff malus to the
+      mounted weapon.
+  - balance: The smartscope can be mounted to the m41a MK2
+  - balance: The smartscope has lost it's zoom functionality.
+  realforest2001:
+  - rscadd: Added follow tabs to Mutated xeno hive and to Hellhounds.
+  - rscadd: Added sub-follow tabs to Weyland-Yutani.
+  - rscadd: Synthetics now appear in their faction follow tabs, as well as Synth tab.
+  - bugfix: Fixed the name of Whiteout Medic deathsquad version.
+2025-02-24:
+  Red-byte3D:
+  - bugfix: Smashing through stuff now takes the objects range instead of the users
+  - bugfix: Girders are now no longer immortal against xenos.
+2025-02-25:
+  IowaPotatoFarmer:
+  - rscadd: Added unique map-specific synthetic survivors to Kutjevo Refinery.
+  - rscadd: Added a lower quality goon squad synthetic vest, only used by the Kutjevo
+      Refinery corporate security synth for now.
+  SpypigDev:
+  - rscadd: Mateba and CO Deagle unique ability 'fire into the air'
+  SubjectD9341, Red-byte3D:
+  - balance: Reworked hellhounds, now they have slightly less health, better dodge
+      and a better pounce that slashes the person you land on.
+  - imageadd: New hellhound sprites
+  - rscadd: Hellhounds now get assigned to their own predator, that being whomever
+      called it in.
+  - spellcheck: Rewrites hellhound spawn text
+  - bugfix: Fixes a long standing bug with hellhound pack (hive status) not working
+  - balance: Hellhounds are no longer slowed by xeno weeds.
+  TrollerNoob:
+  - imageadd: Added missing back sprites for the M42A's Urban variant.
+  VileBeggar:
+  - qol: Clicking 'Watch' while already overwatching a xeno will now make you exit
+      overwatch. You can now overwatch leader xenos with the hive tracker, instead
+      of only being able to see the Queen.
+2025-02-26:
+  BOBAMAx:
+  - maptweak: Areas can now disallow construction. Applies this to the islands north
+      of the LZ on NV, along with depowering it permanently.
+  - maptweak: Ocean tiles no longer allow construction
+  LC4492:
+  - maptweak: Updates Lower Medbay to uh... *different* standards. Updates morgue
+      to allow for more symmetry. Changes the CMO's bunks a little to accomodate the
+      new set of ladders. Updates research to have more internal space in the containment
+      area, including other addons.
+  - rscadd: Adds an access define for Field Medical supply room.
+  NHC:
+  - bugfix: fixed PO tactical fligthsuit to use the TOGGLEJACKET verb instead of the
+      ROLL_SLEEVES verb to toggle its jacket
+  efzapa:
+  - rscadd: Added Sandstone Ceilings.
+  - mapadd: Jungle Moon Hunting Grounds Rooms now have proper Sandstone Ceilings.
+  neeshacark:
+  - balance: the skill required to use a synth reset key has been reduced to novice
+      (you can use it w/ a pamphlet)
+  realforest2001:
+  - rscadd: Added Leader uniform for Kutjevo Goon camo, and changed backend for how
+      the goon presets pick their uniform and helmets to allow for simpler use by
+      staff in events.
+  - imageadd: Added Leader uniform for Kutjevo Goon camo.
+  - imageadd: Added Lead Researcher hud icon for WY.
+2025-02-27:
+  Drathek:
+  - code_imp: Set ScopeOperandNamedType to be an error
+  - bugfix: Fixed WO doctor job overlapping with new Field Doctor
+  - code_imp: Added a check to ensure all usage of GLOBAL_SUBTYPE_INDEXED has uniquely
+      indexed entries
+  - rscdel: Removed unused young blood leader job datum
+  - rscadd: Added a preference to opt in for flashing lights (e.g. AR goggles and
+      happy pills)
+  - code_imp: Cleanup client_prefs
+  Git-Nivrak:
+  - bugfix: Fixed Queen being able to expand weeds into unweedable tiles
+  - code_imp: Added support for transparent turfs
+  - bugfix: Fixed layering issues with multiz
+  - code_imp: Added support for turf-specific modifiers for falling
+  hry-gh:
+  - rscadd: the synthetic snowflake vendor items are now found in the loadout in the
+      character setup menu
+2025-02-28:
+  Blundir, Crowford, Nauticall, Cuberound, Triiodine, LC4492:
+  - rscadd: added UPP, WY, PMC, TWE, WY emergency, Generic food rations, floor boxes
+      for them
+  - rscadd: USCM MRE now has cheese spread in multiple variations, beverage bag in
+      multiple variations (you need to pour water into it)
+  - rscadd: balaji imperial 4 packs and matches, matches added to WY vendor, both
+      matches and cigs can appear in TWE ration
+  - rscadd: USCM MRE now has an iconic MRE spoon
+  - rscadd: added numerous new mains, sides, snacks and desserts to USCM MRE
+  - rscadd: all ration food now has unique descriptions and reagents inside them having
+      custom reagents now displays food taste correctly
+  - rscadd: new rations to loadouts that should logically have them
+  - rscdel: WY brand MRE box got removed and replaced with an actual WY rations
+  - rscdel: USCM tray boxes got removed and replaced with an actual MREs
+  - rscdel: remove MRE from prep vendors
+  - refactor: mre backend changed severely and moved to separate .dm files
+  - rscdel: core nutrient reagent is no longer used for mre foods, apart from some
+      exceptions
+  - maptweak: added new rations around the maps where they logically make sense
+  Git-Nivrak:
+  - bugfix: Fixed squad assignment

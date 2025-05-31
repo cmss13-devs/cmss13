@@ -1,3 +1,7 @@
+/datum/prefab_document/wey_yu/liaison/nda_long
+	var/preset_recipient = "<span class=\"paper_field\"></span>"
+	var/doc_code = "WY442"
+
 /datum/prefab_document/wey_yu/liaison/nda_long/New()
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/dat = ""
@@ -10,10 +14,7 @@
 	dat += "background-image: url('[asset.get_url_mappings()["background_white.jpg"]]');"
 	dat += "background-position: center;"
 	dat += "background-color: #ffffff;"
-	dat += "}"
-	dat += ""
-	dat += "p {"
-	dat += "font-family: Verdana, Geneva, Tahoma, sans-serif;"
+	dat += "font-family: 'Courier New';"
 	dat += "}"
 	dat += ""
 	dat += "#wy-fax-logo {"
@@ -113,14 +114,14 @@
 	dat += "<!--Header Info here-->"
 	dat += "<div class=\"message-header-text\">"
 	dat += "<p class=\"header-title\">Non Disclosure Agreement</p>"
-	dat += "<p class=\"header-subtitle\">WY442</p>"
+	dat += "<p class=\"header-subtitle\">[doc_code]</p>"
 	dat += "<hr style=\"margin-top:5px; margin-bottom:35px;\">"
 	dat += "</div> <!-- /Heasder Info -->"
 	dat += ""
 	dat += ""
 	dat += "<!-- Message -->"
 	dat += "<div class=\"message-body-text\">"
-	dat += "This Non-disclosure Agreement is made effective as of <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font> by and between The Company and the United States Colonial Marines <b>(the \"recipient\")</b> of property and information regarding all operational procedures of <span class=\"paper_field\"></span>.</p>"
+	dat += "This Non-disclosure Agreement is made effective as of <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font> by and between The Company and [preset_recipient] <b>(the \"recipient\")</b> of property and information regarding all operational procedures of <span class=\"paper_field\"></span>.</p>"
 	dat += "<hr>"
 	dat += "<p><b>I . Confidential Information.</b><br>The term \"Confidential Information\" means by any information which is proprietary to the Owner, whether or not owned or developed by the Owner, which is generally known other than by the Owner, which the Recipient may obtain through any direct or indirect contact with the owner, regardless of whether specifically identified as confidential or proprietary, Confidential Information shall include any information provided by the Owner concerning the business, technology and information of the Owner and any third party with which the owner deals, including, without limitation, business records and plans, trade secrets, technical data, product are ideas, contracts, financial information, pricing structure, health discounts, computer programs, listings and unknown wildlife, are all copyright and intellectual property. The nature of the information and the manner of disclosure are such that a reasonable person would understand is confidential.</p>"
 	dat += ""
@@ -152,9 +153,9 @@
 	dat += "<hr>"
 	dat += "<p><b>X . TERM.</b><br> The obligations of this agreement shall survive 03/30/2293 from the Effective date or until the Owner sends the Recipient written notice releasing the Recipient from this Agreement. After that, the Recipient must continue to protect the confidential information that was received during the term of this agreement from unauthorized use or disclosure for a additional time of the Owners Choosing.</p>"
 	dat += "<hr>"
-	dat += "<p><b>XI. Signatories.</b><br> This Agreement shall be executed by the named representative, on behalf of The Company and USS Almayer's Commander, on behalf of United States Colonial Marines and delivered in the manner prescribed by law as of the date first written above.</p>"
+	dat += "<p><b>XI. Signatories.</b><br> This Agreement shall be executed by the named corporate representative, on behalf of The Company, and the recipient's named representative, and delivered in the manner prescribed by law as of the date first written above.</p>"
 	dat += "<p><b>A. The Company.</b><br>Date: <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>Representative: <span class=\"paper_field\"></span><br>Title: <span class=\"paper_field\"></span><br>Signature: <span class=\"paper_field\"></span><br></p>"
-	dat += "<p><b>B. USCM.</b><br>Date: <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>Representative: <span class=\"paper_field\"></span><br>Rank: <span class=\"paper_field\"></span><br>Signature: <span class=\"paper_field\"></span><br></p>"
+	dat += "<p><b>B. The Recipient.</b><br>Date: <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>Representative: <span class=\"paper_field\"></span><br>Rank: <span class=\"paper_field\"></span><br>Signature: <span class=\"paper_field\"></span><br></p>"
 	dat += "</div> <!-- /message-body-text -->"
 	dat += ""
 	dat += "<div class=\"message-signature-text\">"
@@ -169,3 +170,7 @@
 
 
 	contents = dat
+
+/datum/prefab_document/wey_yu/liaison/nda_long/uscm
+	preset_recipient = "the United States Colonial Marines"
+	doc_code = "WY442-B"

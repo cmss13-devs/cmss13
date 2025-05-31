@@ -1,6 +1,6 @@
 /obj/structure/barricade/deployable
 	name = "portable composite barricade"
-	desc = "A plasteel-carbon composite barricade. Resistant to most acids while being simple to repair. There are two pushplates that allow this barricade to fold into a neat package. Use a blowtorch to repair."
+	desc = "A plasteel-carbon composite barricade. This MB-6 model is simple to repair. There are two pushplates that allow this barricade to fold into a neat package. Use a blowtorch to repair."
 	icon_state = "folding_0"
 	health = 350
 	maxhealth = 350
@@ -13,7 +13,6 @@
 	can_wire = FALSE
 	can_change_dmg_state = 1
 	climbable = FALSE
-	unacidable = TRUE
 	anchored = TRUE
 	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
@@ -132,6 +131,11 @@
 		if(B.dir == user.dir)
 			to_chat(user, SPAN_WARNING("There is already \a [B] in this direction!"))
 			return
+
+	var/area/area = get_area(user)
+	if(!area.allow_construction)
+		to_chat(usr, SPAN_WARNING("[singular_name] must be constructed on a proper surface!"))
+		return
 
 	var/turf/open/OT = usr.loc
 	var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in OT // for M2C HMG, look at smartgun_mount.dm

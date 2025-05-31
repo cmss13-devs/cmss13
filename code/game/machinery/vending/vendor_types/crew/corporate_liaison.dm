@@ -95,7 +95,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	vendor_theme = VENDOR_THEME_USCM
 	show_points = FALSE
 	req_access = list()
-	vendor_role = list(JOB_CORPORATE_LIAISON, JOB_SURVIVOR, JOB_TRAINEE, JOB_JUNIOR_EXECUTIVE, JOB_EXECUTIVE, JOB_SENIOR_EXECUTIVE, JOB_EXECUTIVE_SPECIALIST, JOB_EXECUTIVE_SUPERVISOR, JOB_ASSISTANT_MANAGER, JOB_DIVISION_MANAGER, JOB_CHIEF_EXECUTIVE, JOB_DIRECTOR, JOB_WY_GOON_RESEARCHER)
+	vendor_role = JOB_CORPORATE_ROLES_LIST
 
 /obj/structure/machinery/cm_vending/clothing/corporate_liaison/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_corporate_liaison

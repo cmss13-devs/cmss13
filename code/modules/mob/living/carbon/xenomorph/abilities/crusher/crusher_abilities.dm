@@ -136,8 +136,8 @@
 	if(Xeno.is_mob_incapacitated())
 		if(!momentum)
 			return
-		var/lol = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
-		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), lol, momentum/2, SPEED_FAST, null, TRUE)
+		var/distance_to_throw = get_ranged_target_turf(Xeno, charge_dir, momentum/2)
+		INVOKE_ASYNC(Xeno, TYPE_PROC_REF(/atom/movable, throw_atom), distance_to_throw, momentum/2, SPEED_FAST, null, TRUE)
 		stop_momentum()
 		return
 	if(!isturf(Xeno.loc))

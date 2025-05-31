@@ -249,8 +249,8 @@
 
 	attachable_allowed = list()
 
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
@@ -304,9 +304,24 @@
 //folded version of the sadar
 /obj/item/prop/folded_anti_tank_sadar
 	name = "\improper M83 SADAR (folded)"
-	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the Z key."
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded by in-hand activation."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
+	)
 	icon_state = "m83a2_folded"
+	item_state = "m83a2_folded"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
+	)
+
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	w_class = SIZE_MEDIUM
 	garbage = FALSE
 
@@ -342,7 +357,9 @@
 	skill_locked = FALSE
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
 
-	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
+	pixel_x = -7
+	hud_offset = -7
+
 
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
 
@@ -353,11 +370,6 @@
 
 /obj/item/weapon/gun/launcher/rocket/upp/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/upp_rpg_breech/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachables()
-
 	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
 	Integrated.hidden = TRUE
 	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE

@@ -109,7 +109,7 @@
 		for(var/entry in A.attack_log)
 			logs += "[entry]<br>"
 
-		show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", "size=600x480")
+		show_browser(usr, logs.Join(), "Combat Logs", "logs_\ref[src]", width = 600, height = 480)
 
 
 	//Finally, refresh if something modified the list.

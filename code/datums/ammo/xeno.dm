@@ -162,7 +162,7 @@
 /datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
+		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return FALSE
 	..()
 
@@ -252,7 +252,7 @@
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
-		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
 	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 	if(!neuro_effect)
@@ -302,7 +302,7 @@
 /datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
-		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(moob,"acid_strike",75,1)
@@ -330,7 +330,7 @@
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
@@ -360,7 +360,7 @@
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)

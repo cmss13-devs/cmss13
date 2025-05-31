@@ -220,7 +220,9 @@
 /// NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -200
 
-#define OPEN_SPACE_PLANE -9
+#define OPEN_SPACE_PLANE_END -20
+// Do no put anything between these two, adjust more z level support as needed
+#define OPEN_SPACE_PLANE_START -9
 
 #define OPENSPACE_BACKDROP_PLANE -8
 

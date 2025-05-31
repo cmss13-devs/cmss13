@@ -152,9 +152,9 @@
 	name = "rat"
 	desc = "It's a big rat."
 	icon = 'icons/mob/animal.dmi'
-	icon_state = "rat_white"
+	icon_state = "rat_gray"
 	w_class = SIZE_TINY
-	flags_equip_slot = null
+	flags_equip_slot = SLOT_EAR
 
 /obj/item/holder/rat/white
 	icon_state = "rat_white"
@@ -176,3 +176,17 @@
 /obj/item/holder/rat/brown/Old_Timmy
 	name = "Old Timmy"
 	desc = "An ancient looking rat from the old days of the colony."
+
+/obj/item/holder/rat/pet
+	name = "Pet Rat"
+	desc = "This is someone's pet rat. I wonder what it's doing here."
+
+/obj/item/holder/rat/pet/marvin
+	name = "Marvin"
+	desc = "A sleek well kept rat with a tiny collar around it's neck, it must belong to someone. For a rodent it appears remarkably clean and hygenic."
+	icon_state = "rat_black"
+
+/obj/item/holder/rat/pet/ikit
+	name = "Ikit"
+	desc = "An albino rat with a tiny collar around it's neck, it must belong to someone. Hope it doesn't have some sort of genetically engineered disease or something..."
+	icon_state = "rat_white"

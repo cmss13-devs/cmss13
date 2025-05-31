@@ -35,7 +35,8 @@
 
 /obj/item/reagent_container/hypospray/attack_self(mob/user)
 	..()
-
+	if(HAS_TRAIT(user, TRAIT_HAULED))
+		return
 	if(next_inject > world.time)
 		return
 	next_inject = world.time + inject_cd
@@ -43,7 +44,7 @@
 
 //Transfer amount switch//
 /obj/item/reagent_container/hypospray/clicked(mob/user, list/mods)
-	if(!isnull(possible_transfer_amounts) && mods["alt"]) //Autoinjectors aren't supposed to have toggleable transfer amounts.
+	if(!isnull(possible_transfer_amounts) && mods[ALT_CLICK]) //Autoinjectors aren't supposed to have toggleable transfer amounts.
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)

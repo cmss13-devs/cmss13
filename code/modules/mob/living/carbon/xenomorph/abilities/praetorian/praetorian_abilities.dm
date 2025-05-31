@@ -9,7 +9,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_pierce
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 30
+	xeno_cooldown = 3 SECONDS
 	plasma_cost = 50
 
 	// Config
@@ -124,7 +124,7 @@
 	plasma_cost = 180
 
 	// Config
-	var/max_distance = 7
+	var/max_distance = 6
 	var/windup = 8 DECISECONDS
 
 /datum/action/xeno_action/activable/oppressor_punch
@@ -148,7 +148,7 @@
 	action_text = "crush"
 	macro_path = /datum/action/xeno_action/verb/verb_crush
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 100
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 80*/
 
 // Tail lash
@@ -240,6 +240,41 @@
 	var/activation_delay = 1 SECONDS
 	var/prime_delay = 1 SECONDS
 
+/datum/action/xeno_action/activable/prae_acid_ball/use_ability(atom/target)
+	if (!target)
+		return
+
+	var/mob/living/carbon/xenomorph/acidball_user = owner
+	if (!acidball_user.check_state() || acidball_user.action_busy)
+		return
+
+	if (!action_cooldown_check())
+		return
+	var/turf/current_turf = get_turf(acidball_user)
+
+	if (!current_turf)
+		return
+
+	if (!do_after(acidball_user, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(acidball_user, SPAN_XENODANGER("We cancel our acid ball."))
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	apply_cooldown()
+
+	to_chat(acidball_user, SPAN_XENOWARNING("We lob a compressed ball of acid into the air!"))
+
+	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
+	grenade.cause_data = create_cause_data(initial(acidball_user.caste_type), acidball_user)
+	grenade.forceMove(get_turf(acidball_user))
+	grenade.throw_atom(target, 5, SPEED_SLOW, acidball_user, TRUE)
+	addtimer(CALLBACK(grenade, TYPE_PROC_REF(/obj/item/explosive, prime)), prime_delay)
+
+	return ..()
+
+
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid
 	name = "Spray Acid"
 	action_icon_state = "spray_acid"
@@ -281,6 +316,7 @@
 	var/armor_buff = 10 // the idea behind this is you can buff somebody to go in, or get them out which is why the armor is so high while the duration is so low, will need tweaks according to how well it does
 	var/armor_buffs_duration = 5 SECONDS // your buff lasts longer because its less and ideally you should be in there slashing people already
 	var/armor_buffs_active = FALSE
+	var/max_range = 8
 
 	var/target_armor_buff = 15
 	var/armor_buffs_targer_dur = 3 SECONDS

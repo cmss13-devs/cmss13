@@ -236,7 +236,7 @@
 
 			var/turf/above = SSmapping.get_turf_above(T)
 
-			while(above && istype(above, /turf/open_space))
+			while(above && istransparentturf(above))
 				if (!above.lighting_corners_initialised)
 					above.static_generate_missing_corners()
 				corners[above.lighting_corner_NE] = 0
@@ -251,7 +251,7 @@
 			var/turf/below = SSmapping.get_turf_below(T)
 			var/turf/previous = T
 
-			while(below && istype(previous, /turf/open_space))
+			while(below && istransparentturf(previous))
 				if (!below.lighting_corners_initialised)
 					below.static_generate_missing_corners()
 				corners[below.lighting_corner_NE] = 0

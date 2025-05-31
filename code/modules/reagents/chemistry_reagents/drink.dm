@@ -125,19 +125,19 @@
 	name = "Watermelon Juice"
 	id = "watermelonjuice"
 	description = "Delicious juice made from watermelon."
-	color = "#863333" // rgb: 134, 51, 51
+	color = "#a71d1d" // rgb: 167, 29, 29
 
 /datum/reagent/drink/lemonjuice
 	name = "Lemon Juice"
 	id = "lemonjuice"
 	description = "This juice is VERY sour."
-	color = "#863333" // rgb: 175, 175, 0
+	color = "#d1db42" // rgb: 209, 219, 66
 
 /datum/reagent/drink/banana
 	name = "Banana Juice"
 	id = "banana"
 	description = "The raw essence of a banana."
-	color = "#863333" // rgb: 175, 175, 0
+	color = "#e4c439" // rgb: 228, 196, 57
 
 /datum/reagent/drink/potato_juice
 	name = "Potato Juice"
@@ -176,6 +176,14 @@
 	id = "soymilk"
 	description = "An opaque white liquid made from soybeans."
 	color = "#DFDFC7" // rgb: 223, 223, 199
+
+/datum/reagent/drink/milk/coconut
+	name = "Coconut Milk"
+	id = "coconutmilk"
+	description = "A very light, half opague milk from coconuts, barely has any taste on its own."
+	color = "#DFDFC7" // rgb: 223, 223, 199
+	chemclass = CHEM_CLASS_NONE
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/drink/milk/cream
 	name = "Cream"
@@ -458,7 +466,16 @@
 	color = "#104038" // rgb: 16, 64, 56
 	adj_temp = 0
 
-
+/datum/reagent/drink/tea_leaves
+	name = "Tea leaves"
+	id = "tea_leaves"
+	description = "Black tea leaves, freeze dried."
+	color = "#1a2b1c" // rgb: 16, 16, 0
+	adj_dizzy = -2
+	adj_drowsy = -1
+	adj_sleepy = -3
+	chemclass = CHEM_CLASS_NONE
+	flags = REAGENT_NO_GENERATION
 
 //OTHER//
 
@@ -690,4 +707,10 @@
 	adj_temp = 1
 	target_temp = T90C
 
-
+/datum/reagent/drink/bugjuice
+	name = "Bug Juice"
+	id = "bugjuice"
+	description = "Soda drink made from all kinds of insects, very nutritious."
+	nutriment_factor = 2 * FOOD_METABOLISM
+	color = "#2ca314" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_RARE

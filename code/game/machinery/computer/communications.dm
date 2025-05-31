@@ -502,7 +502,7 @@
 				return FALSE
 
 	dat += "<BR>[(state != STATE_DEFAULT) ? "<A href='byond://?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A href='byond://?src=\ref[user];mach_close=communications'>Close</A>"
-	show_browser(user, dat, "Communications Console", "communications", "size=400x500")
+	show_browser(user, dat, "Communications Console", "communications", width = 400, height = 500)
 	onclose(user, "communications")
 #undef STATE_DEFAULT
 #undef STATE_MESSAGELIST

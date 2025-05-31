@@ -19,8 +19,6 @@
 	return ..()
 
 /datum/soundOutput/Destroy()
-	UnregisterSignal(owner.mob, list(COMSIG_MOVABLE_MOVED, COMSIG_MOB_LOGOUT))
-	UnregisterSignal(owner, COMSIG_CLIENT_MOB_LOGGED_IN)
 	owner = null
 	return ..()
 

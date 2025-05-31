@@ -160,7 +160,7 @@
 
 	dat += "</font>"
 	temp = ""
-	show_browser(user, dat, "[src] Access", "tcommachine", "size=520x500;can_resize=0")
+	show_browser(user, dat, "[src] Access", "tcommachine", "can_resize=0", width = 520, height = 500)
 	onclose(user, "tcommachine")
 
 

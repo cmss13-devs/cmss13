@@ -37,3 +37,4 @@
 
 /obj/effect/landmark/ert_spawns/distress_pizza
 	name = "Distress_Pizza"
+	icon_state = "spawn_distress_pizza"

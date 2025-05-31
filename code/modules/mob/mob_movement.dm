@@ -96,6 +96,12 @@
 	if(isliving(mob))
 		living_mob = mob
 
+	if(ishuman(living_mob)) // Might as well just do it here than set movement delay to 0
+		var/mob/living/carbon/human/human = living_mob
+		if(HAS_TRAIT(human, TRAIT_HAULED))
+			human.handle_haul_resist()
+			return
+
 	if(world.time < next_movement)
 		return
 	if(living_mob && living_mob.body_position == LYING_DOWN && mob.crawling)

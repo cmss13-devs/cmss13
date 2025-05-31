@@ -6781,7 +6781,7 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/ammo_casing{
 	icon_state = "cartridge_1"
 	},
 /obj/item/weapon/gun/pistol/b92fs,

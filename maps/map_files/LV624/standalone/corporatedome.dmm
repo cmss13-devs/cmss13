@@ -675,7 +675,7 @@
 /turf/open/floor/whiteblue/west,
 /area/lv624/lazarus/corporate_dome)
 "Hn" = (
-/obj/item/ammo_casing/bullet{
+/obj/effect/decal/ammo_casing{
 	icon_state = "cartridge_9_1"
 	},
 /obj/effect/decal/cleanable/blood/gibs/xeno,

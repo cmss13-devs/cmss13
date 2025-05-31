@@ -4982,7 +4982,7 @@
 /area/fiorina/tumor/servers)
 "dRs" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/clothing/accessory/blue,
+/obj/item/clothing/accessory/tie,
 /turf/open/floor/prison/floor_plate,
 /area/fiorina/tumor/aux_engi)
 "dRx" = (

@@ -22621,7 +22621,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
 "meM" = (
-/obj/item/clothing/accessory/red,
+/obj/item/clothing/accessory/tie/red,
 /obj/item/clothing/under/liaison_suit/field{
 	pixel_x = -4;
 	pixel_y = 9

@@ -1,4 +1,0 @@
-author: "Swagile"
-delete-after: True
-changes:
-  - rscadd: "Gives SL radio supply channel access by default."

@@ -1,5 +1,0 @@
-author: "Ansekishoku"
-delete-after: True
-changes:
-  - rscadd: "Added black drop pouches to vendors."
-  - imageadd: "Resprited all drop pouch sprites including the surgical drop pouches and also slightly tweaks item sprites."

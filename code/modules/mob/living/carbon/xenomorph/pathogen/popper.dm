@@ -84,7 +84,7 @@
 		return
 	var/area/turf_area = get_area(target_turf)
 	if(istype(turf_area,/area/shuttle/drop1/lz1) || istype(turf_area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
-		to_chat(popper, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
+		to_chat(popper, SPAN_WARNING("We sense this is not a suitable area for creating a spore sac."))
 		return
 	if(!target_turf.check_spore_sac_placement(popper))
 		return
@@ -97,8 +97,8 @@
 	return ..()
 
 /turf/proc/check_spore_sac_placement(mob/living/carbon/xenomorph/xeno)
-	if(is_weedable < FULLY_WEEDABLE || !can_xeno_build(src))
-		to_chat(xeno, SPAN_XENOWARNING("We can't do that here."))
+	if(is_weedable < FULLY_WEEDABLE)
+		to_chat(xeno, SPAN_XENOWARNING("This place cannot support a spore sac."))
 		return FALSE
 
 	var/obj/effect/alien/weeds/alien_weeds = locate() in src

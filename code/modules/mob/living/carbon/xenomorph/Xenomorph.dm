@@ -305,7 +305,7 @@
 
 	var/icon_xeno
 	var/icon_xenonid
-	///Acid overlay is for applying spitting/drooling overlays when the appropriate abilities are selected e.g. xeno_spit
+	/// Stores the overlay icon for spitting/drooling when acid-based abilities are selected
 	var/acid_overlay
 
 	bubble_icon = "alien"

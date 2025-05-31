@@ -47,9 +47,6 @@
 		/datum/action/xeno_action/activable/venator_abduct,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
-	inherent_verbs = list(
-		/mob/living/carbon/xenomorph/proc/vent_crawl,
-	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 
 	tackle_min = 2
@@ -105,7 +102,6 @@
 
 	if(last_dir != stab_direction)
 		stabbing_xeno.setDir(stab_direction)
-		stabbing_xeno.emote("tail")
 		/// Ditto.
 		var/new_dir = stabbing_xeno.dir
 		addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)

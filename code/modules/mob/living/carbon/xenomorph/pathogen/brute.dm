@@ -47,9 +47,6 @@
 		/datum/action/xeno_action/activable/oppressor_punch,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
-	inherent_verbs = list(
-		/mob/living/carbon/xenomorph/proc/vent_crawl,
-	)
 	claw_type = CLAW_TYPE_SHARP
 
 	tackle_min = 2

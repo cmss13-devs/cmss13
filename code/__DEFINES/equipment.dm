@@ -485,7 +485,7 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 #define ACCESSORY_SLOT_WRIST_L "Left wrist"
 #define ACCESSORY_SLOT_WRIST_R "Right wrist"
 
-/// Accessory slots that are purely if not mostly cosmetic
+// Accessory slots that are purely if not mostly cosmetic
 #define ACCESSORY_SLOT_TIE "Tie"
 #define ACCESSORY_SLOT_PATCH "Patch"
 #define ACCESSORY_SLOT_ARMBAND "Armband"

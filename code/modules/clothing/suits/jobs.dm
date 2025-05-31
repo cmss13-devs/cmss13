@@ -232,8 +232,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
@@ -303,7 +301,6 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
 	)
@@ -334,9 +331,9 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	has_buttons = TRUE
 	blood_overlay_type = "coat"
 
@@ -397,8 +394,6 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	var/zip_unzip = FALSE
 	actions_types = list(/datum/action/item_action/toggle)
 	item_icons = list(

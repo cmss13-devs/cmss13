@@ -16,7 +16,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	dir = NORTH //Always north when it spawns.
 	var/current_casings = 1 //This is manipulated in the procs that use these.
 	var/max_casings = 16
-	var/current_icon = 0
+	var/current_icon = 1
 	var/number_of_states = 10 //How many variations of this item there are.
 	garbage = TRUE
 	appearance_flags = PIXEL_SCALE

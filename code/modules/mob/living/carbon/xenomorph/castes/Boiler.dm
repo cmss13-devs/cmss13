@@ -216,12 +216,6 @@
 
 			xeno_action.apply_cooldown_override(cooldown_duration)
 
-/datum/action/xeno_action/activable/xeno_spit/bombard/action_deselect()
-	..()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno)
-		return
-	xeno.overlays -= xeno.acid_overlay
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/affected_atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas

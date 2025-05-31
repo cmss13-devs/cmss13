@@ -184,26 +184,6 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/scattered_spit/action_activate()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno)
-		return
-	var/was_selected_before = (xeno.selected_ability == src) //action_deselect() doesn't work for toggling the same ability, so we need to account for this.
-	..()
-	var/is_selected_now = (xeno.selected_ability == src)
-	if(!was_selected_before && is_selected_now)
-		xeno.overlays += xeno.acid_overlay
-	else if(was_selected_before && !is_selected_now)
-		xeno.overlays -= xeno.acid_overlay
-
-/datum/action/xeno_action/activable/scattered_spit/action_deselect()
-	..()
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(!xeno)
-		return
-	if(istype(xeno, /mob/living/carbon/xenomorph/sentinel))
-		xeno.overlays -= xeno.acid_overlay
-
 /datum/action/xeno_action/onclick/paralyzing_slash/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/paraslash_user = owner
 

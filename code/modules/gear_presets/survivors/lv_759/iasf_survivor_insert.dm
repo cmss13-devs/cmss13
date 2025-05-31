@@ -270,7 +270,7 @@
 /datum/equipment_preset/survivor/hybrisa/iasf_commander/load_gear(mob/living/carbon/human/new_human)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/black, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/tie/black, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/neckerchief/brown, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/royal_marine(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/royal_marine/iasf(new_human), WEAR_BODY)

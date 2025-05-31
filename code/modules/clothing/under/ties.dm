@@ -1300,6 +1300,7 @@ Wrist Accessories
 	desc = "A cheap 24-hour only digital wrist watch. It has a crappy red display, great for looking at in the dark!"
 	icon = 'icons/obj/items/clothing/accessory/watches.dmi'
 	icon_state = "cheap_watch"
+	worn_accessory_limit = 1 // though, this means you can wear a watch on each wrist, which should be fine, although you might look stupid for doing this
 
 /obj/item/clothing/accessory/wrist/watch/get_examine_text(mob/user)
 	. = ..()

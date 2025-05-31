@@ -31,7 +31,7 @@
 				help_shake_act(attacking_mob)
 				return 1
 
-			if(src.species.flags & IS_SYNTHETIC)
+			if(species.flags & IS_SYNTHETIC)
 				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly... "))
 				return 0
 

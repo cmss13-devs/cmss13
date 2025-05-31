@@ -1589,7 +1589,7 @@
 	icon_state = "attack"
 
 /datum/hive_status/neomorph
-	name = "Neomorph Hive"
+	name = "Pathogen Confluence"
 	reporting_id = "neomorph"
 	hivenumber = XENO_HIVE_NEOMORPH
 	prefix = ""
@@ -1606,6 +1606,9 @@
 
 	free_slots = list(
 		/datum/caste_datum/pathogen/neomorph = 6,
+		/datum/caste_datum/pathogen/blight = 4,
+		/datum/caste_datum/pathogen/brute = 1,
+		/datum/caste_datum/pathogen/venator = 2,
 	)
 
 /datum/hive_status/neomorph/get_xeno_counts()

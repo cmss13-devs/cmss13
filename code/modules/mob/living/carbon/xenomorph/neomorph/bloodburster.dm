@@ -1,6 +1,6 @@
 /datum/caste_datum/pathogen/bloodburster
 	caste_type = NEOMORPH_BURSTER
-	caste_desc = "A fast, four-legged terror, but weak in sustained combat."
+	caste_desc = "A tiny sharp-clawed terror that just tore its way out of a living host."
 	tier = 0
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
@@ -16,7 +16,7 @@
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/bloodburster_base
-	evolves_to = list(NEOMORPH_GROWN)
+	evolves_to = list(NEOMORPH_POPPER, NEOMORPH_SPRINTER, NEOMORPH_GROWN)
 	deevolves_to = list()
 
 	tackle_min = 4

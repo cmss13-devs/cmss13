@@ -18,7 +18,7 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/neomorph_base
 
-	deevolves_to = list(NEOMORPH_POPPER)
+	deevolves_to = list(NEOMORPH_BURSTER)
 	caste_desc = "A fast, powerful combatant."
 	evolves_to = list(NEOMORPH_BRUTE)
 

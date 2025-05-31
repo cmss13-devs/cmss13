@@ -148,6 +148,47 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	)
 	),
 
+	"Pathogen Creatures (Minor)" = list(
+	list(
+	name = NEOMORPH_BURSTER,
+	key = /mob/living/carbon/xenomorph/bloodburster,
+	color = "white"
+	),
+	list(
+	name = NEOMORPH_POPPER,
+	key = /mob/living/carbon/xenomorph/popper,
+	color = "white"
+	),
+	list(
+	name = NEOMORPH_SPRINTER,
+	key = /mob/living/carbon/xenomorph/sprinter,
+	color = "white"
+	)
+	),
+
+	"Pathogen Creatures (Major)" = list(
+	list(
+	name = NEOMORPH_GROWN,
+	key = /mob/living/carbon/xenomorph/neomorph,
+	color = "white"
+	),
+	list(
+	name = NEOMORPH_BLIGHT,
+	key = /mob/living/carbon/xenomorph/blight,
+	color = "white"
+	),
+	list(
+	name = NEOMORPH_BRUTE,
+	key = /mob/living/carbon/xenomorph/brute,
+	color = "white"
+	),
+	list(
+	name = NEOMORPH_VENATOR,
+	key = /mob/living/carbon/xenomorph/venator,
+	color="white"
+	)
+	),
+
 	"Miscellaneous" = list(
 	list(
 	name = "Cat",

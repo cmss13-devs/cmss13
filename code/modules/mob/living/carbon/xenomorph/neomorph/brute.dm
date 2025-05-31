@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
 	armor_deflection = XENO_ARMOR_TIER_3
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_3
+	speed = XENO_SPEED_TIER_4
 
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
@@ -26,6 +26,7 @@
 	minimum_evolve_time = 0
 
 	minimap_icon = "brute"
+	evolution_allowed = FALSE
 
 /mob/living/carbon/xenomorph/brute
 	caste_type = NEOMORPH_BRUTE

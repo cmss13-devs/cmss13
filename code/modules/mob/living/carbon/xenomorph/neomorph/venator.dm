@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_4
+	speed = XENO_SPEED_TIER_5
 
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
@@ -26,6 +26,7 @@
 	minimum_evolve_time = 0
 
 	minimap_icon = "venator"
+	evolution_allowed = FALSE
 
 /mob/living/carbon/xenomorph/venator
 	caste_type = NEOMORPH_VENATOR
@@ -71,9 +72,65 @@
 	name = "Spike Lash"
 	stab_range = 3
 
+/datum/action/xeno_action/activable/tail_stab/venator/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+
+	target.last_damage_data = create_cause_data(initial(stabbing_xeno.caste_type), stabbing_xeno)
+
+	/// To reset the direction if they haven't moved since then in below callback.
+	var/last_dir = stabbing_xeno.dir
+	/// Direction var to make the tail stab look cool and immersive.
+	var/stab_direction
+
+	var/stab_overlay
+
+	if(blunt_stab)
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] swipes its tail into [target]'s [limb ? limb.display_name : "chest"], bashing it!"), SPAN_XENOWARNING("We swipe our tail into [target]'s [limb? limb.display_name : "chest"], bashing it!"))
+		if(prob(1))
+			playsound(target, 'sound/effects/comical_bonk.ogg', 50, TRUE)
+		else
+			playsound(target, "punch", 50, TRUE)
+		// The xeno smashes the target with their tail, moving it to the side and thus their direction as well.
+		stab_direction = turn(stabbing_xeno.dir, pick(90, -90))
+		stab_overlay = "slam"
+	else
+		stabbing_xeno.visible_message(SPAN_XENOWARNING("\The [stabbing_xeno] skewers [target] through the [limb ? limb.display_name : "chest"] with its razor spikes!"), SPAN_XENOWARNING("We skewer [target] through the [limb? limb.display_name : "chest"] with our razor spikes!"))
+		playsound(target, "alien_bite", 50, TRUE)
+		// The xeno flips around for a second to impale the target with their tail. These look awsome.
+		stab_overlay = "tail"
+	log_attack("[key_name(stabbing_xeno)] spikelashed [key_name(target)] at [get_area_name(stabbing_xeno)]")
+	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>was spikelashed by [key_name(stabbing_xeno)]</font>")
+	stabbing_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>spikelashed [key_name(target)]</font>")
+
+	if(last_dir != stab_direction)
+		stabbing_xeno.setDir(stab_direction)
+		stabbing_xeno.emote("tail")
+		/// Ditto.
+		var/new_dir = stabbing_xeno.dir
+		addtimer(CALLBACK(src, PROC_REF(reset_direction), stabbing_xeno, last_dir, new_dir), 0.5 SECONDS)
+
+	stabbing_xeno.animation_attack_on(target)
+	stabbing_xeno.flick_attack_overlay(target, stab_overlay)
+
+	var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
+
+	if(stabbing_xeno.behavior_delegate)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_target(target)
+		stabbing_xeno.behavior_delegate.melee_attack_additional_effects_self()
+		damage = stabbing_xeno.behavior_delegate.melee_attack_modify_damage(damage, target)
+
+	target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb ? limb.name : "chest")
+	if(stabbing_xeno.mob_size >= MOB_SIZE_BIG)
+		target.apply_effect(3, DAZE)
+	else if(stabbing_xeno.mob_size == MOB_SIZE_XENO)
+		target.apply_effect(1, DAZE)
+	shake_camera(target, 2, 1)
+
+	target.handle_blood_splatter(get_dir(owner.loc, target.loc))
+	return target
+
 /datum/action/xeno_action/activable/venator_abduct
 	name = "Tentacle Grab"
-	action_icon_state = "Tentacle Grab"
+	action_icon_state = "abduct"
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 15 SECONDS

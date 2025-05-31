@@ -625,8 +625,18 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/king
 		if(NEOMORPH_BURSTER)
 			M = /mob/living/carbon/xenomorph/bloodburster
+		if(NEOMORPH_POPPER)
+			M = /mob/living/carbon/xenomorph/popper
+		if(NEOMORPH_SPRINTER)
+			M = /mob/living/carbon/xenomorph/sprinter
 		if(NEOMORPH_GROWN)
 			M = /mob/living/carbon/xenomorph/neomorph
+		if(NEOMORPH_BLIGHT)
+			M = /mob/living/carbon/xenomorph/blight
+		if(NEOMORPH_VENATOR)
+			M = /mob/living/carbon/xenomorph/venator
+		if(NEOMORPH_BRUTE)
+			M = /mob/living/carbon/xenomorph/brute
 	return M
 
 

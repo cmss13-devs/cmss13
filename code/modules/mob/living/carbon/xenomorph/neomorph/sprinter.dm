@@ -17,7 +17,7 @@
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/sprinter_base
 	evolves_to = list(NEOMORPH_BLIGHT)
-	deevolves_to = list()
+	deevolves_to = list(NEOMORPH_BURSTER)
 
 	tackle_min = 4
 	tackle_max = 5

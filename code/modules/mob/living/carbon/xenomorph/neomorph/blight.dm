@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_ARMOR_TIER_1
 	evasion = XENO_EVASION_LOW
-	speed = XENO_SPEED_TIER_6
+	speed = XENO_SPEED_TIER_7
 
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
@@ -43,7 +43,7 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/lurker_invisibility,
+		/datum/action/xeno_action/onclick/lurker_invisibility/blight,
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -154,3 +154,38 @@
 
 	to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We bumped into someone and lost our invisibility!"))
 	lurker_invisibility_action.invisibility_off(0.5) // partial refund of remaining time
+
+
+/datum/action/xeno_action/onclick/lurker_invisibility/blight/invisibility_off(refund_multiplier = 0.0)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!istype(xeno))
+		return
+	if(owner.alpha == initial(owner.alpha) && !xeno.stealth)
+		return
+
+	if(invis_timer_id != TIMER_ID_NULL)
+		deltimer(invis_timer_id)
+		invis_timer_id = TIMER_ID_NULL
+
+	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
+	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
+
+	button.icon_state = "template"
+	xeno.update_icons()
+
+	xeno.speed_modifier += speed_buff
+	xeno.recalculate_speed()
+
+	var/datum/behavior_delegate/blight_base/behavior = xeno.behavior_delegate
+	if(!istype(behavior))
+		CRASH("blight_base behavior_delegate missing/invalid for [xeno]!")
+
+	var/recharge_time = behavior.invis_recharge_time
+	if(behavior.invis_start_time > 0) // Sanity
+		refund_multiplier = clamp(refund_multiplier, 0, 1)
+		var/remaining = 1 - (world.time - behavior.invis_start_time) / behavior.invis_duration
+		recharge_time = behavior.invis_recharge_time - remaining * refund_multiplier * behavior.invis_recharge_time
+	apply_cooldown_override(recharge_time)
+
+	behavior.on_invisibility_off()

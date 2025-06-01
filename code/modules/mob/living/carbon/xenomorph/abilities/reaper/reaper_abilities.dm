@@ -45,7 +45,7 @@
 
 /datum/action/xeno_action/onclick/emit_mist
 	name = "Emit Mist"
-	action_icon_state = "screech"
+	action_icon_state = "gas_mine"
 	macro_path = /datum/action/xeno_action/verb/verb_mist
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4

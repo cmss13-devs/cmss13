@@ -231,6 +231,7 @@
 	var/last_use = 0
 	/// 15 mins of usable cryostasis
 	var/max_uses = 1800
+	/// The triage card color of whichever patient is contained within
 	var/holo_card_color
 
 /obj/structure/closet/bodybag/cryobag/Initialize(mapload, obj/item/bodybag/cryobag/CB)

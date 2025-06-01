@@ -244,6 +244,10 @@
 		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
 
+	if(M.hauled_mob)
+		to_chat(M, SPAN_WARNING("We can't tunnel and haul someone at the same time."))
+		return XENO_NO_DELAY_ACTION
+
 	if(!length(hive.tunnels))
 		to_chat(M, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION

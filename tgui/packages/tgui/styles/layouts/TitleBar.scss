@@ -7,10 +7,10 @@
 @use '../base.scss';
 @use '../colors.scss';
 
-$text-color: rgba(255, 255, 255, 0.75) !default;
-$background-color: #363636 !default;
-$shadow-color-core: #161616 !default;
-$shadow-color: rgba(0, 0, 0, 0.1) !default;
+$text-color: hsla(0, 0%, 100%, 0.75) !default;
+$background-color: hsl(0, 0%, 21%) !default;
+$shadow-color-core: hsl(0, 0%, 9%) !default;
+$shadow-color: hsla(0, 0%, 0%, 0.1) !default;
 
 .TitleBar {
   background-color: $background-color;
@@ -18,7 +18,6 @@ $shadow-color: rgba(0, 0, 0, 0.1) !default;
   box-shadow: 0 2px 2px $shadow-color;
   box-shadow: 0 base.rem(2px) base.rem(2px) $shadow-color;
   user-select: none;
-  -ms-user-select: none;
 }
 
 .TitleBar__clickable {
@@ -29,8 +28,8 @@ $shadow-color: rgba(0, 0, 0, 0.1) !default;
     background-color 250ms ease-out;
 
   &:hover {
-    color: rgba(255, 255, 255, 1);
-    background-color: #cc0000;
+    color: hsla(0, 0%, 100%, 1);
+    background-color: hsl(0, 100%, 40%);
     transition:
       color 0ms,
       background-color 0ms;
@@ -106,6 +105,6 @@ $shadow-color: rgba(0, 0, 0, 0.1) !default;
   padding: 2px 4px;
   padding: base.rem(2px) base.rem(4px);
   background-color: rgba(colors.$good, 0.75);
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   text-align: center;
 }

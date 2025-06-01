@@ -83,10 +83,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/pmc(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/pmc(src)
-			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
+			new /obj/item/clothing/suit/storage/marine/veteran/pmc/light(src)
+			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/clothing/mask/gas/pmc(src)
-			new /obj/item/storage/backpack/lightpack/five_slot(src)
+			new /obj/item/storage/backpack/pmc(src)
 		if(2) //pizza
 			new /obj/item/clothing/under/pizza(src)
 			new /obj/item/clothing/head/soft/red(src)
@@ -616,7 +616,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/toy/prize/deathripley,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
-		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/pamphlet/skill/powerloader,
 		/obj/item/pamphlet/language/russian,

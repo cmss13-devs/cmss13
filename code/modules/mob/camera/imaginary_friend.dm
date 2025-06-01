@@ -167,6 +167,8 @@
 			hud = GLOB.huds[MOB_HUD_FACTION_TWE]
 		if("Faction CLF HUD")
 			hud = GLOB.huds[MOB_HUD_FACTION_CLF]
+		if("Faction WO HUD")
+			hud = GLOB.huds[MOB_HUD_FACTION_WO]
 
 	if(hud_choice in current_huds)
 		hud.remove_hud_from(src, src)

@@ -128,7 +128,7 @@
 						dat += "<br><A href='byond://?src=\ref[src];choice=Return'>Return to index.</A>"
 		else
 			dat += "<A href='byond://?src=\ref[src];choice=Log In'>{Log In}</A>"
-	show_browser(user, dat, "Employment Records", "secure_rec", "size=600x400")
+	show_browser(user, dat, "Employment Records", "secure_rec", width = 600, height = 400)
 	onclose(user, "secure_rec")
 	return
 

@@ -1,6 +1,6 @@
 /obj/structure/closet/phonebox
 	name = "phonebox"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_on_empty_closed"
 	density = TRUE
@@ -24,7 +24,7 @@
 
 /obj/structure/closet/phonebox/off
 	name = "phonebox"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, the bulb has been smashed and it seems the line is down."
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, the bulb has been smashed and it seems the line is down."
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_empty_closed"
 	density = TRUE
@@ -77,7 +77,7 @@
 	name = "phonebox"
 	icon = 'icons/obj/structures/props/phonebox.dmi'
 	icon_state = "phonebox_off_empty_closed"
-	desc = "It's a phonebox, outdated but realiable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
+	desc = "It's a phonebox, outdated but reliable technology. These are used to communicate throughout the colony and connected colonies without interference. As reliable as they are, it seems the line is down."
 	bound_width = 32
 	bound_height = 64
 	density = TRUE

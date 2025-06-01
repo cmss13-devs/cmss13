@@ -99,7 +99,7 @@
 /obj/effect/landmark/wo_supplies/guns/rare/flamer
 	icon_state = "m240"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
-	stuff = list(/obj/item/weapon/gun/flamer)
+	stuff = list(/obj/item/weapon/gun/flamer/m240)
 
 /obj/effect/landmark/wo_supplies/guns/rare/hpr
 	icon_state = "m41ae2"

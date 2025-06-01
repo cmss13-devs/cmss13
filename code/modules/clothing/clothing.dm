@@ -12,13 +12,77 @@
 	var/armor_rad = 0
 	var/armor_internaldamage = 0
 	var/movement_compensation = 0
-	var/list/accessories
-	var/list/valid_accessory_slots = list()
-	var/list/restricted_accessory_slots = list()
 	var/drag_unequip = FALSE
 	var/blood_overlay_type = "" //which type of blood overlay to use on the mob when bloodied
 	var/list/clothing_traits // Trait modification, lazylist of traits to add/take away, on equipment/drop in the correct slot
 	var/clothing_traits_active = TRUE //are the clothing traits that are applied to the item active (acting on the mob) or not?
+
+	// accessory stuff
+	var/list/accessories
+	var/list/valid_accessory_slots = list()
+	/// Whether this item can be converted into an accessory when used
+	var/can_become_accessory = FALSE
+	/// default slot for accessories, pathed here for use for non-accessories
+	var/worn_accessory_slot = ACCESSORY_SLOT_DEFAULT
+	/// for pathing to different accessory subtypes with unique mechanics
+	var/accessory_path = /obj/item/clothing/accessory
+	/// default limit for attaching accessories, should only be 1 for most accessories, you don't want multiple storage accessories after all
+	var/worn_accessory_limit = 1
+
+/obj/item/clothing/proc/convert_to_accessory(mob/user)
+	if(!can_become_accessory)
+		to_chat(user, SPAN_NOTICE("[src] cannot be turned into an accessory."))
+		return
+
+	// copies the properties of the clothing item to the accessory, in the future, take literally almost every var from ties.dm parent object and place it in clothing parent
+	var/obj/item/clothing/accessory/new_accessory = new accessory_path(loc)
+	new_accessory.name = name
+	new_accessory.icon = icon
+	new_accessory.icon_state = icon_state
+	new_accessory.desc = desc
+	var/list/accessory_icons = item_icons ? item_icons.Copy() : list()
+	if(accessory_icons[WEAR_FACE]) // this is really hacky, will probably need to change it in the future for dynamic implementations
+		accessory_icons[WEAR_JACKET] = accessory_icons[WEAR_FACE]
+		accessory_icons[WEAR_BODY] = accessory_icons[WEAR_FACE]
+	new_accessory.accessory_icons = accessory_icons
+	new_accessory.high_visibility = TRUE
+	new_accessory.removable = TRUE
+	new_accessory.worn_accessory_slot = worn_accessory_slot
+	new_accessory.worn_accessory_limit = worn_accessory_limit
+	new_accessory.can_become_accessory = can_become_accessory
+
+	new_accessory.inv_overlay = image("icon" = accessory_icons[WEAR_FACE], "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]") // will need a dynamic implementation in the future, or path directly to accessory\inventory_overlays to its own dmi file  - nihi
+
+	new_accessory.original_item_path = src.type
+
+	if(ismob(loc) && loc == user)
+		user.put_in_hands(new_accessory)
+
+	to_chat(user, SPAN_NOTICE("You will start wearing [src] as an accessory."))
+	// we dont want duplicates man
+	qdel(src)
+
+/obj/item/clothing/proc/revert_from_accessory(mob/user)
+	var/obj/item/clothing/accessory/access = src
+	if(!access.original_item_path)
+		to_chat(user, SPAN_NOTICE("[src] cannot be reverted because the original item path is missing."))
+		return
+
+	var/obj/item/clothing/original_item = new access.original_item_path(loc)
+	if(!original_item)
+		to_chat(user, SPAN_NOTICE("Failed to revert [src] to its original item."))
+		return
+
+	if(ismob(loc) && loc == user)
+		user.put_in_hands(original_item)
+
+	to_chat(user, SPAN_NOTICE("You will start wearing [src] as normal."))
+	// ditto
+	qdel(src)
+
+/obj/item/clothing/attack_self(mob/user)
+	if(can_become_accessory)
+		convert_to_accessory(user)
 
 /obj/item/clothing/get_examine_line(mob/user)
 	. = ..()
@@ -191,6 +255,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
 	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_PATCH)
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -230,7 +295,6 @@
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
 	valid_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R) // To prevent infinitely putting watches/wrist accessories on your gloves. That can be reserved for uniforms, where you have the whole ARM to put shit on
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 	blood_overlay_type = "hands"
 	var/gloves_blood_amt = 0 //taken from blood.dm
@@ -405,6 +469,7 @@
 	if(!user.drop_inv_item_to_loc(item_to_insert, src))
 		return FALSE
 	_insert_item(item_to_insert)
+	item_to_insert.last_equipped_slot = WEAR_IN_SHOES
 	to_chat(user, SPAN_NOTICE("You slide [item_to_insert] into [src]."))
 	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	return TRUE
@@ -471,13 +536,13 @@
 	return null
 
 /obj/item/clothing/clicked(mob/user, list/mods)
-	if(mods["alt"] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+	if(mods[ALT_CLICK] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
 		for(var/V in verbs)
 			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
 				return
 
 	var/obj/item/storage/internal/pockets = get_pockets()
-	if(pockets && !mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+	if(pockets && !mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		pockets.open(user)
 		return TRUE
 

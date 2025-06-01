@@ -1154,7 +1154,7 @@
 /area/shiva/interior/colony/s_admin)
 "PV" = (
 /obj/structure/bed/bedroll,
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_pmc,
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_commando,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Qh" = (

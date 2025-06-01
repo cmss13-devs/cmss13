@@ -110,7 +110,7 @@ DEFINES in setup.dm, referenced here.
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/clicked(mob/user, list/mods)
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		toggle_gun_safety()
@@ -191,15 +191,17 @@ DEFINES in setup.dm, referenced here.
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc = TRUE, silent = FALSE)
 	if (!loc || !user)
 		return FALSE
-	if (!isturf(loc))
+	if (!isturf(loc) && check_loc)
 		return FALSE
 	if(!retrieval_check(user, retrieval_slot))
 		return FALSE
 	if(!user.equip_to_slot_if_possible(src, retrieval_slot, disable_warning = TRUE))
 		return FALSE
+	if(silent)
+		return TRUE
 	var/message
 	switch(retrieval_slot)
 		if(WEAR_BACK)
@@ -217,10 +219,11 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
-		return
+		return FALSE
 	if (!retrieval_check(user, retrieval_slot))
-		return
+		return FALSE
 	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	return TRUE
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -251,20 +254,57 @@ DEFINES in setup.dm, referenced here.
 	if(user.equip_to_slot_if_possible(src, WEAR_BACK))
 		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
 
+//repair popup stuff
+
+/obj/item/weapon/gun/proc/gun_repair_popup(mob/living/carbon/human/user)
+	if(gun_durability > GUN_DURABILITY_BROKEN)
+		if(user)
+			to_chat(user, SPAN_GREEN("The [name] has been successfully repaired."))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
+			balloon_alert(user, "*repaired*")
+	else if(gun_durability <= GUN_DURABILITY_BROKEN)
+		if(user)
+			to_chat(user, SPAN_GREEN("The [name] is no longer worn out."))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
+			balloon_alert(user, "*functional*")
+
+/obj/item/weapon/gun/proc/attempt_repair(mob/user, obj/item/stack/repairable/item)
+	var/strong_repair = FALSE
+	if(item.repair_amount_min >= 50)
+		strong_repair = TRUE
+
+	if(gun_durability >= GUN_DURABILITY_MAX)
+		to_chat(user, SPAN_GREEN("[src] is already fully repaired."))
+		if(user)
+			balloon_alert(user, "*max durability*")
+		return
+
+	if(gun_durability <= GUN_DURABILITY_BROKEN && item.repair_amount_min <= 49)
+		to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with [item]!"))
+		if(user)
+			balloon_alert(user, "*can't repair*")
+		return
+
+	if(do_after(user, item.repair_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+		clean_blood()
+		gun_repair_popup(user)
+		heal_gun_durability(rand(item.repair_amount_min, item.repair_amount_max), user)
+		user.visible_message("[user] [pick(item.repair_verb)] [src]. It looks to be repaired [strong_repair ? "significantly!" : "slightly."]")
+		item.use(1)
+	else
+		return
+
 //Clicking stuff onto the gun.
 //Attachables & Reloading
 /obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user)
+	if(user.action_busy)
+		return
+
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
-		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
-		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
-			src.clean_blood()
-		else
-			return
-
+	if(istype(attack_item, /obj/item/stack/repairable))
+		attempt_repair(user, attack_item)
 
 	if(istype(attack_item,/obj/item/attachable))
 		if(check_inactive_hand(user))
@@ -441,7 +481,10 @@ DEFINES in setup.dm, referenced here.
 		overlays -= gun_image
 		attachable_overlays["mag"] = null
 	if(current_mag && current_mag.bonus_overlay)
-		gun_image = image(current_mag.icon,src,current_mag.bonus_overlay)
+		if(current_mag.bonus_overlay_icon)
+			gun_image = image(current_mag.bonus_overlay_icon, src, current_mag.bonus_overlay)
+		else
+			gun_image = image(icon, src, current_mag.bonus_overlay)
 		gun_image.pixel_x += bonus_overlay_x
 		gun_image.pixel_y += bonus_overlay_y
 		attachable_overlays["mag"] = gun_image
@@ -537,12 +580,20 @@ DEFINES in setup.dm, referenced here.
 /mob/living/carbon/human/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = TRUE
-	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained() || IsKnockDown() || HAS_TRAIT_FROM(src, TRAIT_UNDENSE, LYING_DOWN_TRAIT))
+	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained() || IsKnockDown() || HAS_TRAIT_FROM(src, TRAIT_UNDENSE, LYING_DOWN_TRAIT) && !HAS_TRAIT(src, TRAIT_HAULED))
 		to_chat(src, SPAN_WARNING("You can't draw a weapon in your current state."))
 		return
 
 	var/obj/item/active_hand = get_active_hand()
 	if(active_hand)
+		//drop retrievals goes first
+		if(SEND_SIGNAL(active_hand, COMSIG_ITEM_HOLSTER, usr) & COMPONENT_ITEM_HOLSTER_CANCELLED)
+			return TRUE
+
+		if(active_hand.last_equipped_slot)
+			if(equip_to_slot_if_possible(active_hand, active_hand.last_equipped_slot, FALSE, FALSE, TRUE))
+				return TRUE
+
 		if(active_hand.preferred_storage)
 			for(var/storage in active_hand.preferred_storage)
 				var/list/items_in_slot
@@ -584,7 +635,8 @@ DEFINES in setup.dm, referenced here.
 						storage.handle_item_insertion(active_hand, user = src)
 						return
 
-		quick_equip()
+		if(!equip_to_appropriate_slot(active_hand, 0))
+			to_chat(src, SPAN_DANGER("You are unable to equip that."))
 	else //empty hand, start checking slots and holsters
 
 		//default order: suit, belt, back, pockets, uniform, shoes
@@ -964,7 +1016,7 @@ DEFINES in setup.dm, referenced here.
 		return target
 	if(!istype(target, /atom/movable/screen/click_catcher))
 		return null
-	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)
+	return params2turf(modifiers[SCREEN_LOC], get_turf(user), user.client)
 
 /// check if the gun contains any light source that is currently turned on.
 /obj/item/weapon/gun/proc/light_sources()

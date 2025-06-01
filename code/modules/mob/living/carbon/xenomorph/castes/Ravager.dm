@@ -53,7 +53,7 @@
 	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/charge,
@@ -68,6 +68,9 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Ravager_1","Ravager_2","Ravager_3")
 	weed_food_states_flipped = list("Ravager_1","Ravager_2","Ravager_3")
+
+	skull = /obj/item/skull/ravager
+	pelt = /obj/item/pelt/ravager
 
 
 // Mutator delegate for base ravager
@@ -123,7 +126,7 @@
 	if(!isxeno_human(target_carbon))
 		return
 
-	if(mid_charge)
+	if(mid_charge && target_carbon)
 		return INTENT_HARM
 
 /datum/action/xeno_action/onclick/empower/use_ability(atom/target)
@@ -252,7 +255,6 @@
 	human.apply_effect(behavior.knockdown_amount, WEAKEN)
 	human.attack_alien(xeno, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 	behavior.mid_charge = FALSE
-
 
 	var/facing = get_dir(xeno, human)
 

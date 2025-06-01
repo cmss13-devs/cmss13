@@ -1,8 +1,7 @@
-import { BooleanLike, classes } from 'common/react';
+import { type BooleanLike, classes } from 'common/react';
 import { useState } from 'react';
-
-import { resolveAsset } from '../assets';
-import { useBackend } from '../backend';
+import { resolveAsset } from 'tgui/assets';
+import { useBackend } from 'tgui/backend';
 import {
   Button,
   Icon,
@@ -11,8 +10,8 @@ import {
   NoticeBox,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type Data = {
   selected: string;

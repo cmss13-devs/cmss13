@@ -255,7 +255,8 @@
 
 	close_doors(turfs_int) // adding this for safety.
 
-	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+	// Ever a flyby is possible this way it needs to check for such
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop()
 
 	in_transit_time_left = travel_time

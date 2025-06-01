@@ -1,8 +1,7 @@
-import { BooleanLike } from 'common/react';
-
-import { useBackend } from '../backend';
-import { Box, Button, Flex, NoticeBox, Section } from '../components';
-import { Window } from '../layouts';
+import type { BooleanLike } from 'common/react';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Flex, NoticeBox, Section } from 'tgui/components';
+import { Window } from 'tgui/layouts';
 
 type Ingredient = {
   name: string;

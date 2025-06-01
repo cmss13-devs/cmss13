@@ -1,4 +1,3 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
@@ -6,17 +5,17 @@
  */
 
 import { classes } from 'common/react';
+import type { ComponentProps } from 'react';
+import { useBackend } from 'tgui/backend';
+import { Box } from 'tgui/components';
+import { useDebug } from 'tgui/debug';
 
-import { useBackend } from '../backend';
-import { Box } from '../components';
-import { BoxProps } from '../components/Box';
-import { useDebug } from '../debug';
 import { Layout } from './Layout';
 
 type Props = Partial<{
   theme: string;
 }> &
-  BoxProps;
+  ComponentProps<typeof Box>;
 
 export function Pane(props: Props) {
   const { theme, children, className, ...rest } = props;
@@ -36,7 +35,7 @@ type ContentProps = Partial<{
   fitted: boolean;
   scrollable: boolean;
 }> &
-  BoxProps;
+  ComponentProps<typeof Box>;
 
 function PaneContent(props: ContentProps) {
   const { className, fitted, children, ...rest } = props;

@@ -67,14 +67,14 @@
 			add_fingerprint(usr)
 
 /obj/item/storage/clicked(mob/user, list/mods)
-	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
-	if(mods["alt"]  && loc == user && !user.get_active_hand())
+	if(mods[ALT_CLICK]  && loc == user && !user.get_active_hand())
 		return FALSE
 
 	return ..()
@@ -309,7 +309,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		var/obj/item/I = user.get_active_hand()
 		var/user_carried_master = user.contains(master)
 		// Placing something in the storage screen
-		if(I && !mods["alt"] && !mods["shift"] && !mods["ctrl"]) //These mods should be caught later on and either examine or do nothing.
+		if(I && !mods[ALT_CLICK] && !mods[SHIFT_CLICK] && !mods[CTRL_CLICK]) //These mods should be caught later on and either examine or do nothing.
 			if(world.time <= user.next_move && !user_carried_master) //Click delay doesn't apply to clicking items in your first-layer inventory.
 				return TRUE
 			user.next_move = world.time
@@ -318,7 +318,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 			return TRUE
 
 		// examining or taking something out of the storage screen by clicking on item border overlay
-		var/list/screen_loc_params = splittext(mods["screen-loc"], ",")
+		var/list/screen_loc_params = splittext(mods[SCREEN_LOC], ",")
 		var/list/screen_loc_X = splittext(screen_loc_params[1],":")
 		var/click_x = text2num(screen_loc_X[1])*32+text2num(screen_loc_X[2]) - 144
 
@@ -396,14 +396,21 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 ///Returns TRUE if there is room for the given item. W_class_override allows checking for just a generic W_class, meant for checking shotgun handfuls without having to spawn and delete one just to check.
 /obj/item/storage/proc/has_room(obj/item/new_item, W_class_override = null)
 	for(var/obj/item/cur_item in contents)
-		if(!istype(cur_item, /obj/item/stack) || !istype(new_item, /obj/item/stack))
+		if(istype(cur_item, /obj/item/stack) && istype(new_item, /obj/item/stack))
+			var/obj/item/stack/cur_stack = cur_item
+			var/obj/item/stack/new_stack = new_item
+
+			if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
+				return TRUE
+
+		else if(istype(cur_item, /obj/item/ammo_magazine/handful) && istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			if(cur_handful.is_transferable(new_handful))
+				return TRUE
+		else
 			continue
-
-		var/obj/item/stack/cur_stack = cur_item
-		var/obj/item/stack/new_stack = new_item
-
-		if(cur_stack.amount < cur_stack.max_amount && new_stack.stack_id == cur_stack.stack_id)
-			return TRUE
 
 	if(storage_slots != null && length(contents) < storage_slots)
 		return TRUE //At least one open slot.
@@ -458,6 +465,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		var/obj/item/tool/hand_labeler/L = W
 		if(L.mode)
 			return 0
+
+	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+		return
 
 	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
@@ -519,6 +529,21 @@ user can be null, it refers to the potential mob doing the insertion.**/
 
 			if(!QDELETED(new_stack) && can_be_inserted(new_stack, user))
 				if(!user.drop_inv_item_to_loc(new_item, src))
+					return FALSE
+			else
+				return TRUE
+		else if(istype(new_item, /obj/item/ammo_magazine/handful))
+			var/obj/item/ammo_magazine/handful/new_handful = new_item
+
+			for(var/obj/item/cur_item in contents)
+				if(!istype(cur_item, /obj/item/ammo_magazine/handful))
+					continue
+				var/obj/item/ammo_magazine/handful/cur_handful = cur_item
+				if(cur_handful.is_transferable(new_handful))
+					cur_handful.transfer_ammo(new_handful, user, new_handful.current_rounds)
+
+			if(!QDELETED(new_handful) && can_be_inserted(new_handful, user))
+				if(!user.drop_inv_item_to_loc(new_handful, src))
 					return FALSE
 			else
 				return TRUE
@@ -616,8 +641,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return handle_item_insertion(W, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
+	if(HAS_TRAIT(user, TRAIT_HAULED) && !HAS_FLAG(storage_flags, STORAGE_ALLOW_WHILE_HAULED))
+		return
 	if (loc == user)
-		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
+		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]
@@ -674,7 +701,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	if (!isturf(T) || get_dist(src, T) > 1)
 		T = get_turf(src)
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
@@ -729,7 +756,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 				SPAN_NOTICE("You shake \the [src] but nothing falls out. It feels empty."))
 		return
 
-	if(!allowed(user))
+	if(!can_storage_interact(user))
 		user.visible_message(SPAN_NOTICE("[user] shakes \the [src] but nothing falls out."),
 			SPAN_NOTICE("You shake \the [src] but nothing falls out. Access denied."))
 		return
@@ -933,6 +960,11 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 ///Things to be done after selecting a map skin (if any) and before adding inventory and updating icon for the first time. Most likely saving basic icon state.
 /obj/item/storage/proc/post_skin_selection()
 	return
+
+/obj/item/storage/proc/can_storage_interact(mob/user)
+	if(!allowed(user))
+		return FALSE
+	return TRUE
 
 /**Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.
 Returning 1 == directly inside the container's contents, 2 == inside something which is itself inside the container, etc.

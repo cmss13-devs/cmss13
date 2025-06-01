@@ -50,9 +50,6 @@
 
 	var/turf_flags = NO_FLAGS
 
-	// Fishing
-	var/supports_fishing = FALSE // set to false when MRing, this is just for testing
-
 	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
 	var/dynamic_lumcount = 0
 
@@ -69,6 +66,9 @@
 
 	/// Is fishing allowed on this turf
 	var/fishing_allowed = FALSE
+
+	/// Can xenomorph weeds grow on the tile
+	var/is_weedable = FULLY_WEEDABLE
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -91,7 +91,7 @@
 
 	if(above)
 		above.multiz_new(dir=DOWN)
-	
+
 	if(below)
 		below.multiz_new(dir=UP)
 
@@ -116,6 +116,11 @@
 
 	if(opacity)
 		directional_opacity = ALL_CARDINALS
+
+	//dense turfs stop weeds
+	if(density)
+		is_weedable = NOT_WEEDABLE
+
 
 	if(istransparentturf(src))
 		return INITIALIZE_HINT_LATELOAD
@@ -180,7 +185,7 @@
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(above)
 		above.multiz_del(dir=DOWN)
-	
+
 	if(below)
 		below.multiz_del(dir=UP)
 
@@ -679,44 +684,6 @@
 
 //////////////////////////////////////////////////////////
 
-//Check if you can plant weeds on that turf.
-//Does NOT return a message, just a 0 or 1.
-/turf/proc/is_weedable()
-	return density ? NOT_WEEDABLE : FULLY_WEEDABLE
-
-/turf/open/space/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/gm/grass/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/gm/dirtgrassborder/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/gm/river/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/gm/coast/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/snow/is_weedable()
-	return bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
-
-/turf/open/mars/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/jungle/is_weedable()
-	return NOT_WEEDABLE
-
-/turf/open/auto_turf/shale/layer1/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/open/auto_turf/shale/layer2/is_weedable()
-	return SEMI_WEEDABLE
-
-/turf/closed/wall/is_weedable()
-	return FULLY_WEEDABLE //so we can spawn weeds on the walls
-
 
 /turf/proc/can_dig_xeno_tunnel()
 	return FALSE
@@ -949,7 +916,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 1)
 	if(ishuman_strict(victim))
-		var/mob/living/carbon/human/human_victim = victim 
+		var/mob/living/carbon/human/human_victim = victim
 		if (stun_modifier > 0)
 			human_victim.KnockDown(5 * height * stun_modifier)
 			human_victim.Stun(5 * height * stun_modifier)

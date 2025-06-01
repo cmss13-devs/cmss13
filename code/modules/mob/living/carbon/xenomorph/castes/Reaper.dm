@@ -61,16 +61,15 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/place_construction/not_primary,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/activable/retrieve_hugger_egg,
 		/datum/action/xeno_action/onclick/set_hugger_reserve_reaper,
-		/datum/action/xeno_action/activable/haul_corpse,
-		/datum/action/xeno_action/activable/flesh_harvest, //second macro
-		/datum/action/xeno_action/activable/replenish, //third macro
-		/datum/action/xeno_action/onclick/emit_mist, //fourth macro
+		/datum/action/xeno_action/activable/reap, //second macro
+		/datum/action/xeno_action/activable/flesh_harvest, //third macro
+		/datum/action/xeno_action/activable/replenish, //fourth macro
+		/datum/action/xeno_action/onclick/emit_mist, //fifth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -96,10 +95,6 @@
 	var/flesh_plasma = 0
 	var/flesh_plasma_max = 600
 
-	var/list/corpses_hauled = list()
-	var/corpse_no = 0
-	var/corpse_max = 4
-
 /mob/living/carbon/xenomorph/reaper/recalculate_actions()
 	. = ..()
 	huggers_max = caste.huggers_max
@@ -108,8 +103,6 @@
 /mob/living/carbon/xenomorph/reaper/get_status_tab_items()
 	. = ..()
 	. += "Flesh Plasma: [flesh_plasma]/[flesh_plasma_max]"
-	if(corpse_max > 0)
-		. += "Hauled Corpses: [corpse_no] / [corpse_max]"
 	. += ""
 	if(huggers_max > 0)
 		. += "Stored Huggers: [huggers_cur] / [huggers_max]"
@@ -123,22 +116,9 @@
 	if(flesh_plasma < 0)
 		flesh_plasma = 0
 
-/mob/living/carbon/xenomorph/reaper/get_examine_text(mob/user)
-	. = ..()
-	if(corpse_no > 0)
-		. += "[corpse_no] corpses hang from its back limbs."
-
 /mob/living/carbon/xenomorph/reaper/death(cause, gibbed)
 	. = ..(cause, gibbed)
 	if(.)
-		if(corpse_no > 0)
-			visible_message(SPAN_XENOWARNING("The corpses on [src]s back limbs fall off!"))
-			for(var/atom/movable/corpse_mob in corpses_hauled)
-				corpses_hauled.Remove(corpse_mob)
-				corpse_no -= 1
-				corpse_mob.forceMove(get_true_turf(loc))
-				step_away(corpse_mob, src, 1)
-
 //	Code from this point has been shamelessly yoinked from Carrier with minimal alterations
 //	If it works, it works
 
@@ -454,33 +434,22 @@
 	to_chat(xeno, SPAN_XENONOTICE("We reserve [xeno.huggers_reserved] facehuggers for ourself."))
 	return ..()
 
-/datum/action/xeno_action/activable/haul_corpse/use_ability(atom/target)
+/datum/action/xeno_action/activable/reap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 	var/mob/living/carbon/carbon = target
+	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 
-	if(!action_cooldown_check())
+	if(!action_cooldown_check() || !xeno.check_state())
 		return
 
-	if(!xeno.check_state())
+	if(!isxeno_human(carbon) || xeno.can_not_harm(carbon) || carbon.stat == DEAD || (HAS_TRAIT(carbon, TRAIT_NESTED)))
 		return
 
-	if(target == xeno)
-		if(xeno.corpse_no > 0)
-			corpse_retrieve(carbon)
-			return
-		else
-			to_chat(xeno, SPAN_XENONOTICE("We aren't hauling any corpses."))
-			return
-
-	var/distance = get_dist(xeno, target)
-	if((distance > 2) && !xeno.Adjacent(target))
+	if(get_dist(xeno, target) > range)
+		to_chat(xeno, SPAN_WARNING("They are too far away!"))
 		return
 
-	if(xeno.harvesting == TRUE)
-		to_chat(xeno, SPAN_XENOWARNING("We are busy harvesting!"))
-		return
-
-	if(istype(target, /obj/effect/alien/weeds)) // To get at weed fooded corpses, can be used to restart weed growth
+	if(istype(target, /obj/effect/alien/weeds) && xeno.Adjacent(target)) // To get at weed fooded corpses, can be used to restart weed growth
 		var/obj/effect/alien/weeds/target_weeds = target
 		var/target_weeds_loc = target.loc
 		var/obj/effect/alien/weeds/node/target_weeds_node = null
@@ -509,45 +478,47 @@
 		target_weeds_node = null
 		return
 
-	if(xeno.corpse_no == xeno.corpse_max)
-		to_chat(xeno, SPAN_XENOWARNING("We cannot haul more!"))
+	if(!check_and_use_plasma_owner())
 		return
 
-	if(!iscarbon(carbon))
-		return
+	var/list/turf/path = get_line(xeno, carbon, include_start_atom = FALSE)
+	for(var/turf/path_turf as anything in path)
+		if(path_turf.density)
+			to_chat(xeno, SPAN_WARNING("There's something blocking our strike!"))
+			return
+		for(var/obj/path_contents in path_turf.contents)
+			if(path_contents != carbon && path_contents.density && !path_contents.throwpass)
+				to_chat(xeno, SPAN_WARNING("There's something blocking our strike!"))
+				return
 
-	if(issynth(carbon))
-		to_chat(xeno, SPAN_XENOWARNING("This one is a fake, why would we try hauling it?"))
-		return
+		var/atom/barrier = path_turf.handle_barriers(xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		if(barrier != path_turf)
+			to_chat(xeno, SPAN_WARNING("There's something blocking our strike!"))
+			return
+		for(var/obj/structure/current_structure in path_turf)
+			if(current_structure.density && !current_structure.throwpass)
+				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
+				return
 
-	if(!carbon.chestburst)
-		to_chat(xeno, SPAN_XENOWARNING("We can only haul those that have burst."))
-		return
+	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
+	if(ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+		target_limb = carbon.get_limb("chest")
 
-	if(ishuman(carbon))
-		corpse_add(carbon)
+	xeno.face_atom(carbon)
+	xeno.animation_attack_on(carbon)
+	xeno.flick_attack_overlay(carbon, "slash")
+	playsound(carbon, 'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its large claws at [carbon], slicing them in the [target_limb ? target_limb.display_name : "chest"]!"), \
+	SPAN_XENOWARNING("We slice [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
 
+	var/damage = (xeno.melee_damage_upper + xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
+	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+	carbon.apply_effect(1, DAZE)
+	reaper.pause_decay = TRUE
+	reaper.modify_passive_mult(1)
+	shake_camera(target, 2, 1)
+	apply_cooldown()
 	return ..()
-
-/datum/action/xeno_action/activable/haul_corpse/proc/corpse_add(mob/living/corpse)
-	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-
-	xeno.corpses_hauled.Add(corpse)
-	xeno.corpse_no += 1
-	corpse.forceMove(xeno)
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] impales [corpse] with a wing-like limb."), \
-	SPAN_XENONOTICE("We hoist the corpse onto our back for hauling."))
-
-/datum/action/xeno_action/activable/haul_corpse/proc/corpse_retrieve(mob/living/corpse)
-	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-
-	for(var/atom/movable/corpse_mob in xeno.corpses_hauled)
-		xeno.corpses_hauled.Remove(corpse_mob)
-		xeno.corpse_no -= 1
-		corpse_mob.forceMove(get_true_turf(xeno.loc))
-		break
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] slides a corpse off one of its wing-like limbs with its tail."), \
-	SPAN_XENONOTICE("We remove a corpse from one of our back limbs."))
 
 /datum/action/xeno_action/activable/flesh_harvest/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
@@ -775,10 +746,13 @@
 	if(xeno_carbon.health < 0)
 		recovery_amount = (xeno_carbon.maxHealth * 0.05) + abs(xeno_carbon.health) // If they're in crit, get them out of it but heal less
 
-	xeno_carbon.gain_health(recovery_amount)
-	xeno_carbon.updatehealth()
+	if(isfacehugger(xeno_carbon))
+		xeno_carbon.gain_health(recovery_amount)
+		xeno_carbon.updatehealth()
+	else
+		new /datum/effects/heal_over_time(xeno_carbon, heal_amount = recovery_amount)
 	xeno_carbon.xeno_jitter(1 SECONDS)
-	xeno_carbon.flick_heal_overlay(3 SECONDS, "#c5bc81")
+	xeno_carbon.flick_heal_overlay(2.5 SECONDS, "#c5bc81")
 
 	if(xeno.Adjacent(xeno_carbon))
 		xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]s wounds, causing them to rapidly close!"), \
@@ -822,78 +796,5 @@
 		SPAN_XENOWARNING("We breath a cloud of mist of evaporated flesh plasma!"))
 
 	xeno.modify_flesh_plasma(-flesh_plasma_cost)
-	apply_cooldown()
-	return ..()
-
-
-// Strain Powers (Here as it's a WIP and maybe not a great idea to include with a brand new xeno right off the bat)
-
-/datum/action/xeno_action/activable/reap/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-	var/mob/living/carbon/carbon = target
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-
-	var/damage = xeno.melee_damage_upper + xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER
-
-	if(!action_cooldown_check())
-		return
-
-	if(!isxeno_human(carbon) || xeno.can_not_harm(carbon))
-		return
-
-	if(!xeno.check_state())
-		return
-
-	if(carbon.stat == DEAD)
-		return
-
-	if(HAS_TRAIT(carbon, TRAIT_NESTED))
-		return
-
-	if(get_dist(xeno, target) > range)
-		to_chat(xeno, SPAN_WARNING("They are too far away!"))
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	var/list/turf/path = get_line(xeno, carbon, include_start_atom = FALSE)
-	for(var/turf/path_turf as anything in path)
-		if(path_turf.density)
-			to_chat(xeno, SPAN_WARNING("There's something blocking our strike!"))
-			return
-		for(var/obj/path_contents in path_turf.contents)
-			if(path_contents != carbon && path_contents.density && !path_contents.throwpass)
-				to_chat(xeno, SPAN_WARNING("There's something blocking our strike!"))
-				return
-
-		var/atom/barrier = path_turf.handle_barriers(xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
-		if(barrier != path_turf)
-			to_chat(xeno, SPAN_WARNING("There's something blocking our strike!"))
-			return
-		for(var/obj/structure/current_structure in path_turf)
-			if(current_structure.density && !current_structure.throwpass)
-				to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
-				return
-
-	var/obj/limb/target_limb = carbon.get_limb(check_zone(xeno.zone_selected))
-	if(ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
-		target_limb = carbon.get_limb("chest")
-
-	xeno.face_atom(carbon)
-	xeno.animation_attack_on(carbon)
-	xeno.flick_attack_overlay(carbon, "slash")
-	playsound(carbon, 'sound/weapons/alien_tail_attack.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_XENOWARNING("[xeno] swings its large claws at [carbon], slicing them in the [target_limb ? target_limb.display_name : "chest"]!"), \
-	SPAN_XENOWARNING("We slice [carbon] in the [target_limb ? target_limb.display_name : "chest"]!"))
-	if(iscarbon(carbon))
-		var/mob/living/carbon/human/victim = carbon
-		if(!issynth(victim))
-			carbon.apply_damage(round(xeno.flesh_plasma * 0.05, 1))
-	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
-	carbon.apply_effect(1, DAZE)
-	reaper.pause_decay = TRUE
-	reaper.modify_passive_mult(1)
-	shake_camera(target, 2, 1)
 	apply_cooldown()
 	return ..()

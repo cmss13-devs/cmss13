@@ -231,6 +231,7 @@
 	var/last_use = 0
 	/// 15 mins of usable cryostasis
 	var/max_uses = 1800
+	var/holo_card_color
 
 /obj/structure/closet/bodybag/cryobag/Initialize(mapload, obj/item/bodybag/cryobag/CB)
 	. = ..()
@@ -262,6 +263,19 @@
 		layer = LYING_BETWEEN_MOB_LAYER
 	else
 		layer = initial(layer)
+
+	update_stasis_holo_card()
+
+/obj/structure/closet/bodybag/cryobag/proc/update_stasis_holo_card()
+	if(stasis_mob && stasis_mob.holo_card_color)
+		holo_card_color = stasis_mob.holo_card_color
+		var/image/holo_card_icon = image('icons/obj/bodybag.dmi', src, "cryocard_[holo_card_color]")
+		if(holo_card_color) // makes sure an icon was actually located
+			overlays.Cut()	// makes sure any previous triage cards are removed
+			overlays |= holo_card_icon
+	else
+		holo_card_color = null
+		overlays.Cut()
 
 /obj/structure/closet/bodybag/cryobag/open()
 	var/mob/living/L = locate() in contents

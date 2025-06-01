@@ -26,21 +26,6 @@
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 				return 1
 
-			if((species.flags & IS_SYNTHETIC_K9) && back && Adjacent(attacking_mob) && !attacking_mob.action_busy) //If we click on a synth-k9 with a backpack, we open it.
-				back.add_fingerprint(attacking_mob)
-				var/obj/item/storage/backpack = back
-				if(backpack && !attacking_mob.action_busy)
-					attacking_mob.visible_message(SPAN_NOTICE("\The [attacking_mob] starts opening \the [backpack] on [src]"),
-					SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."), null, 5, CHAT_TYPE_FLUFF_ACTION)
-					if(!do_after(attacking_mob, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC)) //Timed opening.
-						to_chat(attacking_mob, SPAN_WARNING("You were interrupted!"))
-						return FALSE
-					if(!Adjacent(attacking_mob))
-						to_chat(attacking_mob, SPAN_WARNING("You were interrupted!"))
-						return FALSE
-					backpack.open(attacking_mob)
-				return
-
 			// If unconscious with oxygen damage, do CPR. If dead, we do CPR
 			if(!(stat == UNCONSCIOUS && getOxyLoss() > 0) && !(stat == DEAD))
 				help_shake_act(attacking_mob)

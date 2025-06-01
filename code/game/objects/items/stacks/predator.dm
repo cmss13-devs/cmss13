@@ -40,8 +40,8 @@
 		if(rturf.density)
 			to_chat(user, SPAN_WARNING("They're in a wall!"))
 			return TRUE
-		if(rarea.ceiling == CEILING_NONE)
-			to_chat(user, SPAN_WARNING("There's no ceiling to hang them from!"))
+		if(rarea.ceiling == CEILING_NONE && !(rarea.flags_area == AREA_YAUTJA_HANGABLE))
+			to_chat(user, SPAN_WARNING("There's nothing to hang them from!"))
 			return TRUE
 		user.visible_message(SPAN_NOTICE("[user] secures the rope."),
 			SPAN_NOTICE("You secure the rope."))

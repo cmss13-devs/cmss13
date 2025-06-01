@@ -6,7 +6,7 @@
 	melee_damage_lower = XENO_DAMAGE_TIER_2
 	melee_damage_upper = XENO_DAMAGE_TIER_4
 	melee_vehicle_damage = XENO_DAMAGE_TIER_3
-	max_health = XENO_HEALTH_TIER_9
+	max_health = XENO_HEALTH_TIER_10
 	plasma_gain = XENO_PLASMA_GAIN_TIER_6
 	plasma_max = XENO_PLASMA_TIER_6
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
@@ -43,7 +43,7 @@
 /mob/living/carbon/xenomorph/reaper
 	caste_type = XENO_CASTE_REAPER
 	name = XENO_CASTE_REAPER
-	desc = "A large gangly alien with a grim visage. The stench of rot follows it wherever it goes."
+	desc = "A large gangly alien with a grim visage. Smells of death."
 	icon_size = 64
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/reaper.dmi'
 	icon_state = "Reaper Walking"
@@ -59,8 +59,9 @@
 	organ_value = 3000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/place_construction/not_primary,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
@@ -131,7 +132,7 @@
 	. = ..(cause, gibbed)
 	if(.)
 		if(corpse_no > 0)
-			visible_message(SPAN_XENOWARNING("The corpses on [src]'s back limbs fall off!"))
+			visible_message(SPAN_XENOWARNING("The corpses on [src]s back limbs fall off!"))
 			for(var/atom/movable/corpse_mob in corpses_hauled)
 				corpses_hauled.Remove(corpse_mob)
 				corpse_no -= 1
@@ -545,7 +546,7 @@
 		xeno.corpse_no -= 1
 		corpse_mob.forceMove(get_true_turf(xeno.loc))
 		break
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] slides a corpse off one of its wing-like limbs with it's tail."), \
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] slides a corpse off one of its wing-like limbs with its tail."), \
 	SPAN_XENONOTICE("We remove a corpse from one of our back limbs."))
 
 /datum/action/xeno_action/activable/flesh_harvest/use_ability(atom/target)
@@ -638,7 +639,7 @@
 	var/limb_remove_start = pick('sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg')
 
 	xeno.harvesting = TRUE
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]'s [limb.display_name], twisting and pulling at it!"), \
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]s [limb.display_name], twisting and pulling at it!"), \
 	SPAN_XENONOTICE("We begin to harvest the [limb.display_name]!"))
 
 	playsound(victim, limb_remove_start, 50, TRUE)
@@ -650,11 +651,11 @@
 
 	playsound(xeno, limb_remove_end, 25, TRUE)
 	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion and drops it!"), \
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]s [limb.display_name] with a final violent motion and drops it!"), \
 		SPAN_XENOWARNING("We harvest the [limb.display_name], but it's a useless fake!"))
 		limb.droplimb(FALSE, FALSE, "flesh harvest")
 	else
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]'s [limb.display_name] with a final violent motion and swallows it whole!"), \
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]s [limb.display_name] with a final violent motion and swallows it whole!"), \
 		SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
 		limb.droplimb(FALSE, TRUE, "flesh harvest")
 		xeno.modify_flesh_plasma(harvest_gain)
@@ -672,7 +673,7 @@
 
 	xeno.harvesting = TRUE
 	xeno.visible_message(SPAN_XENONOTICE("[xeno] gently lifts [victim]!"), \
-	SPAN_XENONOTICE("We prepare our inner jaw to harvest [victim]'s chest organs!"))
+	SPAN_XENONOTICE("We prepare our inner jaw to harvest [victim]s chest organs!"))
 
 	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 		if(!xeno.Adjacent(victim))
@@ -692,9 +693,11 @@
 		var/datum/cause_data/cause = create_cause_data("reaper living burst chest", src)
 		victim.last_damage_data = cause
 		victim.death(cause)
+	xeno.animation_attack_on(carbon)
+	xeno.flick_attack_overlay(carbon, "bite")
 	playsound(victim, 'sound/weapons/alien_bite2.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_XENOWARNING("[xeno]'s inner jaw shoots out of it's mouth, gouging a large hole in [victim]'s chest!"), \
-	SPAN_XENOWARNING("We plunge our inner jaw into [victim]'s chest and harvest their organs!"))
+	xeno.visible_message(SPAN_XENOWARNING("[xeno]s inner jaw shoots out of its mouth, gouging a large hole in [victim]s chest!"), \
+	SPAN_XENOWARNING("We plunge our inner jaw into [victim]s chest and harvest their organs!"))
 	victim.chestburst = 2
 	victim.update_burst()
 	xeno.modify_flesh_plasma(harvest_gain * 2)
@@ -728,7 +731,7 @@
 		return
 
 	if(!xeno.can_not_harm(xeno_carbon))
-		to_chat(xeno, SPAN_XENODANGER("We must target an ally!"))
+		to_chat(xeno, SPAN_XENODANGER("We must target a sister!"))
 		return
 
 	if(get_dist(xeno, xeno_carbon) > range)
@@ -753,10 +756,10 @@
 		var/obj/effect/alien/weeds/user_weeds = locate() in xeno.loc
 		var/obj/effect/alien/weeds/target_weeds = locate() in xeno_carbon.loc
 		if((!user_weeds && !target_weeds))
-			to_chat(xeno, SPAN_XENOWARNING("We must either be adjacent to our target or both of us must be on our hive's weeds!"))
+			to_chat(xeno, SPAN_XENOWARNING("We must either be adjacent to our target or both of us must be on allied weeds!"))
 			return
-		if(user_weeds.linked_hive.hivenumber != xeno.hivenumber && target_weeds.linked_hive.hivenumber != xeno.hivenumber)
-			to_chat(xeno, SPAN_XENOWARNING("Both us and our target must be on our hive's weeds!"))
+		if(!(HIVE_ALLIED_TO_HIVE(xeno.hive, user_weeds.linked_hive)) && !(HIVE_ALLIED_TO_HIVE(xeno.hive, target_weeds.linked_hive)))
+			to_chat(xeno, SPAN_XENOWARNING("Both us and our target must be on allied weeds!"))
 			return
 
 	xeno.face_atom(xeno_carbon)
@@ -767,7 +770,7 @@
 		recovery_amount = xeno_carbon.maxHealth * 0.3 // 15% on these ones ain't much, so let them get 30% instead
 
 	else if(isfacehugger(xeno_carbon))
-		recovery_amount = xeno_carbon.maxHealth // Can as well just fully heal them if you choose to waste the flesh plasma on them
+		recovery_amount = xeno_carbon.maxHealth // Can as well just fully heal huggers if you choose to waste the flesh plasma on them
 
 	if(xeno_carbon.health < 0)
 		recovery_amount = (xeno_carbon.maxHealth * 0.05) + abs(xeno_carbon.health) // If they're in crit, get them out of it but heal less
@@ -778,12 +781,12 @@
 	xeno_carbon.flick_heal_overlay(3 SECONDS, "#c5bc81")
 
 	if(xeno.Adjacent(xeno_carbon))
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]'s wounds, causing them to rapidly close!"), \
-		SPAN_XENOWARNING("We use flesh plasma to heal [xeno_carbon]'s wounds!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] smears a foul-smelling ooze onto [xeno_carbon]s wounds, causing them to rapidly close!"), \
+		SPAN_XENOWARNING("We use flesh plasma to heal [xeno_carbon]s wounds!"))
 		to_chat(xeno_carbon, SPAN_XENOWARNING("[xeno] smears a pale ooze onto our wounds, causing them to close up faster!"))
 	else if(!xeno.Adjacent(xeno_carbon))
-		xeno.visible_message(SPAN_XENOWARNING("The weeds between [xeno] and [xeno_carbon] ripple and emit a foul scent as [xeno_carbon]'s wounds to rapidly close!"), \
-		SPAN_XENOWARNING("We channel flesh plasma to heal [xeno_carbon]'s wounds from afar!"))
+		xeno.visible_message(SPAN_XENOWARNING("The weeds between [xeno] and [xeno_carbon] ripple and emit a foul scent as [xeno_carbon]s wounds to rapidly close!"), \
+		SPAN_XENOWARNING("We channel flesh plasma to heal [xeno_carbon]s wounds from afar!"))
 		to_chat(xeno_carbon, SPAN_XENOWARNING("The weeds beneath us shudder as a pale ooze forms on our wounds, causing them to close up faster!"))
 
 	use_plasma_owner(plasma_cost * final_cost_mult)

@@ -536,22 +536,22 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/accessory/armband/medgreen
 
 /datum/gear/synthetic/blue_tie
-	path = /obj/item/clothing/accessory/blue
+	path = /obj/item/clothing/accessory/tie
 
 /datum/gear/synthetic/green_tie
-	path = /obj/item/clothing/accessory/green
+	path = /obj/item/clothing/accessory/tie/green
 
 /datum/gear/synthetic/black_tie
-	path = /obj/item/clothing/accessory/black
+	path = /obj/item/clothing/accessory/tie/black
 
 /datum/gear/synthetic/gold_tie
-	path = /obj/item/clothing/accessory/gold
+	path = /obj/item/clothing/accessory/tie/gold
 
 /datum/gear/synthetic/red_tie
-	path = /obj/item/clothing/accessory/red
+	path = /obj/item/clothing/accessory/tie/red
 
 /datum/gear/synthetic/purple_tie
-	path = /obj/item/clothing/accessory/purple
+	path = /obj/item/clothing/accessory/tie/purple
 
 /datum/gear/synthetic/dress_gloves
 	path = /obj/item/clothing/gloves/marine/dress

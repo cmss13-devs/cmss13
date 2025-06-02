@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - server: "the server now returns additional testmerge info in the world/Topic api"

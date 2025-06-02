@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - admin: "server operators can now choose to enforce two factor authentication in game for admins"

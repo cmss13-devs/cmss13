@@ -106,7 +106,7 @@
 
 /obj/structure/machinery/medical_pod/autodoc/power_change(area/master_area = null)
 	..()
-	if(stat && NOPOWER && occupant)
+	if(stat & NOPOWER)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
 		surgery = 0
 		go_out()

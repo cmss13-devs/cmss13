@@ -10,3 +10,6 @@
   - code_imp: Cleans up the valid accessory lists.
   - refactor: Defuncts restricted_accessory_slots on clothings for a more intuitive
       per accessory slot limit dependent on accessory category.
+2025-06-02:
+  Git-Nivrak:
+  - balance: Facehuggers now gib when ghosting

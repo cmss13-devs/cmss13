@@ -29,6 +29,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	RegisterSignal(get_turf(src), COMSIG_WEEDNODE_GROWTH, PROC_REF(handle_xeno_acquisition))
 	SSminimaps.add_marker(src, z, MINIMAP_FLAG_ALL, "hvt")
 	GLOB.transformer = src
+	START_PROCESSING(SSslowobj, src)
 
 	. = ..()
 
@@ -37,7 +38,36 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	SSminimaps.remove_marker(src)
 	backup = null
 	GLOB.transformer = null
+	STOP_PROCESSING(SSslowobj, src)
 	. = ..()
+
+/obj/structure/machinery/transformer/process(deltatime)
+	if(state != STATE_ON || !SSobjectives.first_drop_complete)
+		return
+
+	var/groundside_humans = 0
+	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
+		if(!(isspecieshuman(current_human) || isspeciessynth(current_human)))
+			continue
+
+		var/turf/turf = get_turf(current_human)
+		if(is_ground_level(turf?.z))
+			groundside_humans += 1
+
+			if(groundside_humans > 12)
+				break
+
+	if(groundside_humans >= 12)
+		return
+
+	if(turn_on_timer)
+		deltimer(turn_on_timer)
+
+	if(shutdown_timer)
+		deltimer(shutdown_timer)
+	turn_off()
+	STOP_PROCESSING(SSslowobj, src)
+
 
 /obj/structure/machinery/transformer/proc/is_active()
 	return state == STATE_MARINE_CAPTURED || shutdown_timer && timeleft(shutdown_timer) > 0 || backup?.is_active()

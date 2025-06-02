@@ -101,6 +101,9 @@
 	addtimer(CALLBACK(src, PROC_REF(turn_on)), 30 SECONDS)
 
 /obj/structure/machinery/backup_generator/proc/turn_on()
+	if(state != STATE_ON)
+		return // Means marines evac-ed
+
 	if(!GLOB.transformer.is_active())
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_TRASNFORMER_ON)
 	GLOB.transformer.backup = src

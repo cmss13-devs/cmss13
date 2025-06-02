@@ -6,6 +6,7 @@
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
 	icon_state = "thrallarmor_ebony"
 	item_state = "thrallarmor_ebony"
+	item_state_slots = list(WEAR_JACKET = "thrallarmor_ebony")
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)

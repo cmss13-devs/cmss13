@@ -247,7 +247,6 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	name = "\improper Yautja Blooded Thrall Gear Rack"
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_left"
-	req_access = list(TRAIT_YAUTJA_TECH)
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 

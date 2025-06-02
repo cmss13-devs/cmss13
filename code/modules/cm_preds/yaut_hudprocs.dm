@@ -446,7 +446,7 @@
 	else
 		to_chat(src, SPAN_YAUTJABOLD("You cannot undo the actions of a living brother or sister!"))
 
-/mob/living/carbon/human/proc/mark_blooded()
+/mob/living/carbon/human/proc/mark_blooded() //No mark_unblooded, once a thrall becomes a blooded hunter, there is no going back.
 	if(is_mob_incapacitated())
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
@@ -466,26 +466,38 @@
 	if(T.hunter_data.blooded)
 		to_chat(src, SPAN_YAUTJABOLD("[T] has already been blooded by [T.hunter_data.blooded_set.real_name] for '[T.hunter_data.blooded_reason]'!"))
 		return
-	if(!T.hunter_data.thralled)
+	if(T.faction == FACTION_YAUTJA_YOUNG || T.hunter_data.thralled)
+
+		var/reason = stripped_input(usr, "Enter the reason for marking your target as blooded.", "Mark as Blooded", "", 120)
+
+		if(!reason)
+			return
+
+		log_interact(src, T, "[key_name(src)] has blooded [key_name(T)] for '[reason]'.")
+		message_all_yautja("[real_name] has blooded [T] for '[reason]'.")
+
+		ADD_TRAIT(T, TRAIT_YAUTJA_TECH, "Yautja Tech")
+		to_chat(T, SPAN_YAUTJABOLD("You are a Blooded Thrall. Focus on interacting with Predators and developing your reputation. You should be observant and discreet while exercising discretionary restraint when hunting worthy prey. Learn Yautja lore and their Honor Code. If you have any questions, ask the whitelisted players in LOOC."))
+
+		T.set_skills(/datum/skills/yautja/warrior) //Overrides exsiting skill path to allow for use of the medicomp. SKills never updated to proper hero mob status prior to this.
+		T.hunter_data.blooded_set = src
+		T.hunter_data.blooded = TRUE
+		T.hunter_data.blooded_reason = reason
+		hunter_data.newblood = T
+		T.hud_set_hunter()
+
+	if(T.faction == FACTION_YAUTJA_YOUNG)
+		return
+
+	else if(T.hunter_data.thralled)
+		var/predtitle = stripped_input(usr, "Enter the newly blooded's new name.", "Blooded Name", "", 120)
+
+		change_real_name(T, predtitle)
+		return
+
+	else if(!T.hunter_data.thralled)
 		to_chat(src, SPAN_YAUTJABOLD("[T] has not proved themselves worthy of blooding."))
 		return
-
-	var/reason = stripped_input(usr, "Enter the reason for marking your target as blooded.", "Mark as Blooded", "", 120)
-
-	if(!reason)
-		return
-
-	log_interact(src, T, "[key_name(src)] has blooded [key_name(T)] for '[reason]'.")
-	message_all_yautja("[real_name] has blooded [T] for '[reason]'.")
-
-	ADD_TRAIT(T, TRAIT_YAUTJA_TECH, "Yautja Tech")
-	to_chat(T, SPAN_YAUTJABOLD("You are a Blooded Thrall. Focus on interacting with Predators and developing your reputation. You should be observant and discreet while exercising discretionary restraint when hunting worthy prey. Learn Yautja lore and their Honor Code. If you have any questions, ask the whitelisted players in LOOC."))
-
-	T.hunter_data.blooded_set = src
-	T.hunter_data.blooded = TRUE
-	T.hunter_data.blooded_reason = reason
-	hunter_data.newblood = T
-	T.hud_set_hunter()
 
 /mob/living/carbon/human/proc/call_combi()
 	set name = "Yank combi-stick"

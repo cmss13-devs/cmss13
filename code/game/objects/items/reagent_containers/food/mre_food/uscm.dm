@@ -409,7 +409,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/honeyflan
 	name = "honey flan"
 	icon_state = "honey flan"
-	desc = "A soft milky biscuit pie, covered in a honey topping. The topping itself is more of a thick gel than a syrupy sauce. Maybe the USCM learned from the cinnamon apple slices."
+	desc = "A soft milky biscuit pie, covered in a honey topping. The topping itself is more of a thick gel than a syrupy sauce. Maybe the manufacturer learned from the cinnamon apple slices."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/honeyflan/Initialize()
 	. = ..()
@@ -459,7 +459,7 @@
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/strawberrytoaster
 	name = "strawberry toaster pastry"
 	icon_state = "strawberry toaster pastry"
-	desc = "A crunchy biscuit with artifical tasting strawberry jam inside of it. Dry frosting on the top completes the look of a popular breakfast product. Despite the impression, this is actually a toaster pastry: the USCM wanted to avoid copyright infringement."
+	desc = "A crunchy biscuit with artifical tasting strawberry jam inside of it. Dry frosting on the top completes the look of a popular breakfast product. Despite the impression, this is actually a toaster pastry: the manufacturer wanted to avoid copyright infringement."
 
 /obj/item/reagent_container/food/snacks/mre_food/uscm/dessert/strawberrytoaster/Initialize()
 	. = ..()

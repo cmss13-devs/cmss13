@@ -132,8 +132,9 @@
 	next_haul_resist = world.time + 1.4 SECONDS
 	if(istype(get_active_hand(), /obj/item))
 		var/obj/item/item = get_active_hand()
-		if(item.force)
-			var/damage_of_item = rand(floor(item.force / 4), item.force)
+		if(item.force > 0)
+			var/limited_force = min(item.force, 35)
+			var/damage_of_item = rand(floor(limited_force / 4), limited_force)
 
 			xeno.last_damage_data = create_cause_data("scuffling", src)
 			attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYE: [uppertext(BRUTE)])</font>"

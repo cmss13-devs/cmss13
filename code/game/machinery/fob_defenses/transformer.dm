@@ -42,7 +42,7 @@ GLOBAL_DATUM(transformer, /obj/structure/machinery/transformer)
 	. = ..()
 
 /obj/structure/machinery/transformer/process(deltatime)
-	if(state != STATE_ON || !SSobjectives.first_drop_complete)
+	if(state != STATE_MARINE_CAPTURED || !SSobjectives.first_drop_complete)
 		return
 
 	var/groundside_humans = 0

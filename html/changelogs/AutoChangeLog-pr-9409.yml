@@ -1,0 +1,4 @@
+author: "Drulikar"
+delete-after: True
+changes:
+  - bugfix: "Fixed a source of nulls being added to GLOB.new_player_list and GLOB.player_list"

@@ -2265,6 +2265,8 @@
 #include "code\modules\mob\new_player\sprite_accessories\undershirt.dm"
 #include "code\modules\mob\new_player\sprite_accessories\underwear.dm"
 #include "code\modules\mob\new_player\sprite_accessories\yautja_hair.dm"
+#include "code\modules\mob\unauthenticated\entity.dm"
+#include "code\modules\mob\unauthenticated\unauthenticated.dm"
 #include "code\modules\movement\movement.dm"
 #include "code\modules\movement\pass_flags_container.dm"
 #include "code\modules\movement\launching\launching.dm"

@@ -4666,6 +4666,15 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_west)
+"anq" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4;
+	layer = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/central)
 "anr" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 1;
@@ -153406,7 +153415,7 @@ bsw
 bsC
 buT
 bKH
-bKH
+bCR
 bCR
 bQN
 bri
@@ -153587,8 +153596,8 @@ bsw
 bsw
 bsw
 bsB
-buV
-bKH
+bsO
+anq
 bBw
 bBg
 bBg

@@ -413,7 +413,7 @@ SUBSYSTEM_DEF(statpanels)
 		client.stat_panel.send_message("remove_listedturf")
 		client.obj_window.stop_turf_tracking()
 
-/client/verb/open_statbrowser_options(current_fontsize as num|null)
+CLIENT_VERB(open_statbrowser_options, current_fontsize as num|null)
 	set name = "Open Statbrowser Options"
 	set hidden = TRUE
 

@@ -139,6 +139,9 @@
 			if(!COOLDOWN_FINISHED(src, recall_code_cooldown))
 				return
 
+			if(!params["code"])
+				return
+
 			COOLDOWN_START(src, recall_code_cooldown, 5 SECONDS)
 
 			check_logged_in(params["code"])

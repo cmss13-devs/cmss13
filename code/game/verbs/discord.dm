@@ -1,4 +1,4 @@
-/client/verb/discord_connect()
+CLIENT_VERB(discord_connect)
 	set name = "Discord Certify"
 	set category = "OOC"
 

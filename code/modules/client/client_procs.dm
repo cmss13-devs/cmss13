@@ -312,7 +312,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	acquire_dpi()
 
 	// we should interrupt this here, now
-	if(IsGuestKey(ckey) && !check_localhost_status())
+	if(IsGuestKey(key) && CONFIG_GET(string/auth_url) && !check_localhost_status())
 		mob = new /mob/unauthenticated()
 		return mob
 
@@ -404,6 +404,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 /client/proc/PostLogin()
+	add_verb(src, collect_client_verbs())
+
 	// Initialize tgui panel
 	stat_panel.initialize(
 		assets = list(
@@ -635,7 +637,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=")
 
-/client/verb/read_key_down(key as text|null)
+CLIENT_VERB(read_key_down, key as text|null)
 	set name = ".Read Key Down"
 	set hidden = TRUE
 
@@ -644,7 +646,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
-/client/verb/read_key_up(key as text|null)
+CLIENT_VERB(read_key_up, key as text|null)
 	set name = ".Read Key Up"
 	set hidden = TRUE
 
@@ -821,7 +823,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 	return FALSE
 
-/client/verb/fix_stat_panel()
+CLIENT_VERB(fix_stat_panel)
 	set name = "Fix Stat Panel"
 	set hidden = TRUE
 
@@ -904,7 +906,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	return total_t3_playtime
 
-/client/verb/action_hide_menu()
+CLIENT_VERB(action_hide_menu)
 	set name = "Show/Hide Actions"
 	set category = "IC"
 

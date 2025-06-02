@@ -42,7 +42,7 @@ module.exports = (env = {}, argv) => {
     },
     mode: mode === 'production' ? 'production' : 'development',
     context: path.resolve(__dirname),
-    target: ['web', 'browserslist:last 6 Edge versions'],
+    target: ['web', 'browserslist:edge >= 123'],
     entry: {
       tgui: ['./packages/tgui'],
       'tgui-panel': ['./packages/tgui-panel'],

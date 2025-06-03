@@ -147,7 +147,7 @@
 	w_class = SIZE_MEDIUM
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket
-	gun_type = /obj/item/weapon/gun/launcher/rocket
+	gun_type = /obj/item/weapon/gun/launcher/rocket/m5
 	flags_magazine = NO_FLAGS
 
 /obj/item/ammo_magazine/rocket/attack_self(mob/user)

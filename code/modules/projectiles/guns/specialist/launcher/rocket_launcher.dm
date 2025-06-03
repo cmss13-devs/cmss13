@@ -1,10 +1,9 @@
 
-//-------------------------------------------------------
-//M5 RPG
+
 
 /obj/item/weapon/gun/launcher/rocket
-	name = "\improper M5 RPG"
-	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	name = "\improper common rocket launcher ancestor"
+	desc = "You should not be seeing this"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m5"
 	item_state = "m5"
@@ -211,6 +210,14 @@
 		mob.apply_effect(6, STUTTER)
 		mob.emote("pain")
 
+
+//-------------------------------------------------------
+//M5 RPG
+
+/obj/item/weapon/gun/launcher/rocket/m5
+	name = "\improper M5 RPG"
+	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN
 
@@ -395,6 +402,9 @@
 			C.apply_effect(6, STUTTER)
 			C.emote("pain")
 
+//-------------------------------------------------------
+//BRUTE
+
 /obj/item/weapon/gun/launcher/rocket/brute
 	name = "\improper M6H-BRUTE launcher system"
 	desc = " Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
@@ -415,6 +425,20 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
+
+/obj/item/weapon/gun/launcher/rocket/brute/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc, silent)
+	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
+		if(..(user, WEAR_IN_BACK, check_loc, silent)) //...first try to put it onto the Broiler.
+			return TRUE
+	return ..()
+
+/obj/item/weapon/gun/launcher/rocket/brute/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
+	if(retrieval_slot == WEAR_IN_BACK)
+		var/obj/item/storage/belt/gun/brutepack/brutepack = user.back
+		if(istype(brutepack) && brutepack.can_be_inserted(src, user, TRUE))
+			return TRUE
+		return FALSE
+	return ..()
 
 /obj/item/weapon/gun/launcher/rocket/brute/skill_fail(mob/living/user)
 	return !skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)

@@ -259,7 +259,7 @@
 	var/special_tick_dir = p_special_tick_dir /// If it gets a special call, if it ticks up or down in order to prevent advantages
 
 	var/create_new_lighting_timer = p_create_new_lighting_timer /// used to prevent timer dupes, keep this as False unless its supposed to be the first call
-	var/lighting_deactivates = p_lighting_deactivates /// If the lighting deactivates
+	var/lighting_deactivates = p_lighting_deactivates /// If the lighting deactivates, at the moment, theres no justifications to have this set to false
 
 	var/lighting_stage = clamp((floor((ROUND_TIME + stage_time - special_start_time - startup_delay)/stage_time)), 0, max_stages) /// the current stage of the lighting, ticks up by 1 every stagetime after startup_delay + start_time
 	//uses formula (x + y - w - z)/(y) with x = round_time, y = stage_time, w = special_start_time, and z being startup_delay
@@ -274,13 +274,13 @@
 
 	var/static/list/warm_color_progression = list("#da8b4a", "#a9633c", "#90422d", "#68333a", "#4d2b35", "#231935", "#050c27", "#000")
 	var/static/list/cold_color_progression = list("#6679a8", "#516a8b", "#38486e", "#2c2f4d", "#211b36", "#1f1b33", "#0c0a1b", "#000")
-	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#b97034")
+	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#d89d6d")
 	var/is_cold = (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 
 	if(special_lighting == SPECIAL_LIGHTING_SUNSET)
 		var/clamped_sunset_stage = clamp(lighting_stage, 1, 8)
 		lighting_color = is_cold ? cold_color_progression[clamped_sunset_stage] : warm_color_progression[clamped_sunset_stage]
-	else
+	if(special_lighting == SPECIAL_LIGHTING_SUNRISE)
 		var/clamped_sunrise_stage = clamp(lighting_stage, 1, 7)
 		lighting_color = sunrise_color_progression[clamped_sunrise_stage]
 
@@ -386,7 +386,6 @@
 			max_stages = 7
 			special_start_time = GLOB.sunrise_starting_time
 			special_tick_dir = -1
-			lighting_deactivates = FALSE
 
 
 	var/area/mob_old_area = old_area

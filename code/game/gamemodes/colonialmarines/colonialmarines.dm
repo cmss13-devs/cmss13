@@ -528,7 +528,7 @@
 					if(!lighting_mob.special_lighting && lighting_mob.fullscreens["lighting_backdrop"])
 						lighting_mob.special_lighting = SPECIAL_LIGHTING_SUNRISE
 						lighting_mob.special_lighting_active_timer = TRUE
-						lighting_mob.special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 6, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
+						lighting_mob.special_lighting_animate(SPECIAL_LIGHTING_SUNRISE, 30 SECONDS, 7, 10 SECONDS, GLOB.sunrise_starting_time, null, -1, FALSE, TRUE, FALSE)
 			ares_conclude()
 			addtimer(VARSET_CALLBACK(SSticker, roundend_check_paused, FALSE), MARINE_MAJOR_ROUND_END_DELAY)
 	else if(!num_humans && !num_xenos)

@@ -84,8 +84,8 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 
 	var/is_nested = HAS_TRAIT(affected_mob, TRAIT_NESTED)
-	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents && affected_mob.reagents.get_reagent_amount("hoststabilizer") < 2)
-		affected_mob.reagents.add_reagent("hoststabilizer", 5)
+	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents && affected_mob.reagents.get_reagent_amount("host_stabilizer") < 1)
+		affected_mob.reagents.add_reagent("host_stabilizer", 1)
 
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.

@@ -416,10 +416,10 @@
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
 
-/datum/reagent/medical/hoststabilizer
-	name = "Unknown Substance"
-	id = "hoststabilizer"
-	description = "An unknown substance."
+/datum/reagent/medical/host_stabilizer
+	name = "Embryo secretion"
+	id = "host_stabilizer"
+	description = "An unknown substance secreted by an embryo."
 	reagent_state = LIQUID
 	color = BLOOD_COLOR_XENO
 	chemclass = CHEM_CLASS_NONE

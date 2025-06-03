@@ -246,6 +246,7 @@
 
 	if(M.hauled_mob)
 		to_chat(M, SPAN_WARNING("We can't tunnel and haul someone at the same time."))
+		M.balloon_alert(M, "we're hauling someone!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return XENO_NO_DELAY_ACTION
 
 	if(!length(hive.tunnels))

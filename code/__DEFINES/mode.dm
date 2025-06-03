@@ -316,3 +316,6 @@ GLOBAL_VAR(last_qm_callout)
 
 /// Registered a single time, used to determine sunrise stuff
 GLOBAL_VAR(sunrise_starting_time)
+
+/// Determines the latest record lighting_stage for sunset stuff
+GLOBAL_VAR(record_lighting)

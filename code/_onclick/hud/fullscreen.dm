@@ -308,6 +308,9 @@
 
 	animate(screen, color = lighting_color, time = stage_time)
 
+	GLOB.record_lighting = lighting_stage
+
+
 /mob/proc/special_lighting_register_signals()
 
 	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(special_lighting_z_change), TRUE)
@@ -364,31 +367,6 @@
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
 
-	var/stage_time = 1.5 SECONDS // so moving in and out of caves doesnt take decades for lighting to change
-	var/max_stages = null
-	var/startup_delay = 1.5 SECONDS // we want this to be fast
-	var/special_start_time = 0
-	var/special_stage_time = 4 SECONDS
-	var/special_tick_dir = 0
-	var/special_call = AREA_CHANGE_CALL
-	var/create_new_lighting_timer = FALSE
-	var/lighting_stays_active = TRUE
-
-
-	if(!special_lighting || special_lighting == SPECIAL_LIGHTING_PREROUND)
-		return
-
-	switch(special_lighting)
-		if(SPECIAL_LIGHTING_SUNSET)
-			max_stages = 8
-			special_tick_dir = 1
-		if(SPECIAL_LIGHTING_SUNRISE)
-			max_stages = 7
-			special_start_time = GLOB.sunrise_starting_time
-			special_tick_dir = -1
-			lighting_stays_active = FALSE
-
-
 	var/area/mob_old_area = old_area
 	var/area/mob_new_area = new_area
 
@@ -401,9 +379,9 @@
 		newloc_incave = TRUE
 
 	if(newloc_incave && !oldloc_incave) //handles both null old loc and false oldloc
-		animate(screen, color = "#000", time = 10 SECONDS, easing = QUAD_EASING | EASE_OUT)
+		animate(screen, color = "#000", time = 1.5 SECONDS, easing = QUAD_EASING | EASE_OUT)
 	else if(oldloc_incave && !newloc_incave)
-		special_lighting_animate(special_lighting, 10 SECONDS, max_stages, startup_delay, special_start_time, special_stage_time, special_tick_dir, special_call, create_new_lighting_timer, lighting_stays_active)
+		special_lighting_animate(special_lighting, 2.5 SECONDS, , , , , , , , , GLOB.record_lighting)
 
 #undef Z_CHANGE_CALL
 #undef AREA_CHANGE_CALL

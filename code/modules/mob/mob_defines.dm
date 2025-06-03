@@ -161,7 +161,7 @@
 	var/faction = FACTION_NEUTRAL
 	var/faction_group
 
-	var/looc_overhead = FALSE
+	var/looc_overhead = TRUE // BANDAMARINES EDIT FALSE->TRUE
 
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 									//see skills.dm in #define folder and code/datums/skills.dm for more info
@@ -227,7 +227,7 @@
 
 	can_block_movement = TRUE
 
-	appearance_flags = TILE_BOUND
+	// appearance_flags = TILE_BOUND // SS220 REMOVE
 
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel

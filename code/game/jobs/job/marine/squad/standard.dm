@@ -8,7 +8,7 @@
 	gear_preset = /datum/equipment_preset/uscm/pfc
 
 /datum/job/marine/standard/on_config_load()
-	entry_message_body = "You are a rank-and-file <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Marine of the USCM</a>, and that is your strength. What you lack alone, you gain standing shoulder to shoulder with the men and women of the corps. Ooh-rah!"
+	entry_message_body = "Вы - <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Морпех ККМП</a>, и в этом ваша сила. Тех качеств, которых вам не достает в одиночку, вы приобретаете, стоя плечом к плечу с мужчинами и женщинами своего корпуса. Ура!"	// SS220 EDIT TRANSLATE
 	return ..()
 
 /datum/job/marine/standard/set_spawn_positions(count)

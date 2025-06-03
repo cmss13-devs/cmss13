@@ -342,8 +342,8 @@
 
 	switch(special_lighting) //figure out a way of handling this better if possible
 		if(SPECIAL_LIGHTING_SUNSET)
-			startup_delay = 2.5 SECONDS
-			stage_time = 15 SECONDS // roughly equivalent to 2 minutes of daylight prep for survivors
+			startup_delay = 1.5 SECONDS
+			stage_time = 8 SECONDS // roughly equivalent to 1 minute of visible daylight prep for survivors
 			max_stages = 8
 			special_tick_dir = 1
 		if(SPECIAL_LIGHTING_SUNRISE)

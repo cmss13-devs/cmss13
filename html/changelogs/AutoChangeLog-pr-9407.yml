@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - bugfix: "Prevents an error message  about ejecting an occupant from an auotdoc if there is no occupant."

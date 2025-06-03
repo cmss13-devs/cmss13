@@ -1,6 +1,0 @@
-author: "Some Random Guy 3124, Morrowwolf, Amory"
-delete-after: True
-changes:
-  - rscadd: "Added MSF Herculis patch for USCM Generals, added MP armband for provost enforcers"
-  - imageadd: "added New USCM General Uniform and Provost uniforms"
-  - imagedel: "deleted the old USCM General Uniforms, TIS and Provost gear."

@@ -211,7 +211,6 @@
 	button.set_maptext()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/process(delta_time)
-	. = ..()
 	return update_caboom_maptext()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/update_caboom_maptext()

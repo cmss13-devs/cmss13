@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - rscdel: "Removed CPR'ing synths"

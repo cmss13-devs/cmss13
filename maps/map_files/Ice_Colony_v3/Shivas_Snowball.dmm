@@ -13618,11 +13618,11 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "kZK" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/handful/shotgun/buckshot{
 	pixel_x = 4;
 	pixel_y = -16
 	},
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "las" = (
@@ -19125,14 +19125,15 @@
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "rUD" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	desc = "Shhhh, he's sleeping.";
-	pixel_x = 3;
-	pixel_y = -10
-	},
 /obj/item/bedsheet{
 	pixel_x = 3;
 	pixel_y = -7
+	},
+/obj/item/weapon/gun/shotgun/double/sawn{
+	name = "\improper sawn-off Sleepyhead Rival 78";
+	desc = "Shhhh, he's sleeping.";
+	pixel_x = 3;
+	pixel_y = -10
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)

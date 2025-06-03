@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "nuke detonation countdown is now called detonation countdown, not \"preparation cycle\""

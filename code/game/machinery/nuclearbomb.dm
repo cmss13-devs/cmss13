@@ -346,7 +346,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 		//xenos part
 		var/warning
 		if(timer_warning & NUKE_SHOW_TIMER_HALF)
-			warning = "Дрожь пробегает по нашему панцирю, мы чувствуем приближение конца... Убийца ульев прошел половину подготовительного этапа!"
+			warning = "Дрожь пробегает по нашему панцирю, мы чувствуем приближение конца... Убийца ульев уже на полпути к детонации!"
 		else if(timer_warning & NUKE_SHOW_TIMER_MINUTE)
 			warning = "Каждый наш орган чувств вопит... Убийца ульев близок к своему воплощению!"
 		else

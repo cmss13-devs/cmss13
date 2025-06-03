@@ -344,7 +344,7 @@
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
+	var/atom/movable/vis_obj/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE

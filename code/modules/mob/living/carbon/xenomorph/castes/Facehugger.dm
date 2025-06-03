@@ -99,9 +99,7 @@
 		return
 
 	if(!aghosted)
-		// Become a npc once again
-		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-		qdel(src)
+		gib()
 
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()

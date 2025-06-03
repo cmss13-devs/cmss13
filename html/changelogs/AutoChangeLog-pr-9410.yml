@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - qol: "You can now use the hand labeler to label crates"

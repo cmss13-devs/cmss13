@@ -447,6 +447,8 @@
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
+	if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
+		return
 	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
 		if(xeno.stat == DEAD)
 			continue

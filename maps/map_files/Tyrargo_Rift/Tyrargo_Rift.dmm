@@ -4702,6 +4702,13 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/oob)
+"ant" = (
+/obj/structure/barricade/handrail/hybrisa/handrail,
+/obj/structure/largecrate/random/barrel/green{
+	layer = 2.97
+	},
+/turf/open/floor/coagulation/icon7_0,
+/area/tyrargo/indoors/sewer_treatment/lower)
 "anu" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowbush_6"
@@ -5785,6 +5792,10 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
+"apG" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/coagulation/icon0_5,
+/area/tyrargo/indoors/sewer_treatment/lower)
 "apH" = (
 /obj/structure/barricade/handrail/kutjevo{
 	dir = 8;
@@ -5880,6 +5891,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
+"apO" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/coagulation/icon1_1,
+/area/tyrargo/indoors/sewer_treatment/lower)
 "apP" = (
 /obj/structure/flora/tree/dead/tree_5,
 /obj/structure/flora/tree/dead/tree_6{
@@ -123496,7 +123511,7 @@ dqu
 dqO
 dqu
 dqu
-dqu
+apG
 crd
 ddE
 ahW
@@ -123678,8 +123693,8 @@ dqU
 aTb
 aTb
 dqC
-dqv
-dfS
+apO
+ant
 ddE
 ahW
 bsw

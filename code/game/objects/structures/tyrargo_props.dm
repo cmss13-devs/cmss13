@@ -100,7 +100,7 @@
 
 /obj/structure/prop/tyrargo/illuminator
 	name = "\improper UE-92/B Area Illuminator"
-	desc = "Varient of the UE-92, a large deployable floodlight. This version is less powerful but it a internal power source that allows it to operate for several hours without being linked to a power generator."
+	desc = "Varient of the UE-92, a large deployable floodlight. This version is less powerful but it houses an internal power source that allows it to operate for several hours without being linked to a power generator."
 	icon = 'icons/obj/structures/props/industrial/illuminator.dmi'
 	icon_state = "floodlight-off"
 	health = 300

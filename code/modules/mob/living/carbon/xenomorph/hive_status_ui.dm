@@ -115,6 +115,7 @@
 	update_xeno_keys(FALSE)
 	update_xeno_info(FALSE)
 	update_pylon_status(FALSE)
+	update_xeno_icons(FALSE)
 
 	if(send_update)
 		SStgui.update_uis(src)
@@ -125,7 +126,6 @@
 	update_all_xeno_data(FALSE)
 	update_burrowed_larva(FALSE)
 	update_pylon_status(FALSE)
-	update_xeno_icons(FALSE)
 	SStgui.update_uis(src)
 
 /datum/hive_status_ui/proc/update_pylon_status(send_update = TRUE)

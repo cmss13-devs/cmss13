@@ -1,4 +1,0 @@
-author: "matttheficus"
-delete-after: True
-changes:
-  - qol: "flaying a target with the Ceremonial Dagger now announces and unsets Prey like the Butcher Verb."

@@ -272,7 +272,7 @@
 		if(time_til_next_lighting_call < special_stage_time)
 			time_til_next_lighting_call = time_til_next_lighting_call + special_stage_time //delays main anims until the special call anim is done
 
-	var/static/list/warm_color_progression = list("#da8b4a", "#a9633c", "#90422d", "#68333a", "#4d2b35", "#231935", "#050c27", "#000")
+	var/static/list/warm_color_progression = list("#da8b4a", "#a9633c", "#90422d", "#5c2d33", "#42232c", "#231935", "#050c27", "#000")
 	var/static/list/cold_color_progression = list("#6679a8", "#516a8b", "#38486e", "#2c2f4d", "#211b36", "#1f1b33", "#0c0a1b", "#000")
 	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#d89d6d")
 	var/is_cold = (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])

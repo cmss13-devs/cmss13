@@ -112,10 +112,10 @@
 
 /obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
 	var/datum/component/label/label = A.GetComponent(/datum/component/label)
-	if(label)
+	if(label && label.has_label())
 		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."),
 						SPAN_NOTICE("You remove the label from [A]."))
-		label.remove_label()
+		label.clear_label()
 		log_admin("[user] has removed label from [A.name]. (CKEY: ([user.ckey]))")
 		playsound(A, remove_label_sound, 20, TRUE)
 		return
@@ -221,13 +221,13 @@
 			if(input == oldname || !input)
 				to_chat(user, SPAN_NOTICE("You changed [target] to... well... [target]."))
 			else
-				msg_admin_niche("[key_name(usr)] changed \the [src]'s name to [input] [ADMIN_JMP(src)]")
+				msg_admin_niche("[key_name(usr)] changed [src]'s name to [input] [ADMIN_JMP(src)]")
 				target.AddComponent(/datum/component/rename, input, target.desc)
 				var/datum/component/label/label = target.GetComponent(/datum/component/label)
 				if(label)
-					label.remove_label()
+					label.clear_label()
 					label.apply_label()
-				to_chat(user, SPAN_NOTICE("You have successfully renamed \the [oldname] to [target]."))
+				to_chat(user, SPAN_NOTICE("You have successfully renamed [oldname] to [target]."))
 				obj_target.renamedByPlayer = TRUE
 				playsound(target, "paper_writing", 15, TRUE)
 
@@ -254,7 +254,7 @@
 			//reapply any label to name
 			var/datum/component/label/label = target.GetComponent(/datum/component/label)
 			if(label)
-				label.remove_label()
+				label.clear_label()
 				label.apply_label()
 
 			to_chat(user, SPAN_NOTICE("You have successfully reset [target]'s name and description."))

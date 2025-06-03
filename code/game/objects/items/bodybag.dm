@@ -118,10 +118,10 @@
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
-		src.overlays.Cut()
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
+		overlays.Cut()
+		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
 		if(labelcomponent)
-			labelcomponent.remove_label()
+			labelcomponent.clear_label()
 		return
 	else if(istype(W, /obj/item/weapon/zombie_claws))
 		open()

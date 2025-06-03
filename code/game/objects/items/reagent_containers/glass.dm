@@ -179,10 +179,10 @@
 			prior_label_text = labelcomponent.label_name
 		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
 		if(tmp_label == "" || !tmp_label)
-			if(labelcomponent)
-				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."),
-				SPAN_NOTICE("You remove the label from \the [src]."))
+			if(labelcomponent && labelcomponent.has_label())
+				labelcomponent.clear_label()
+				user.visible_message(SPAN_NOTICE("[user] removes the label from [src]."),
+				SPAN_NOTICE("You remove the label from [src]."))
 				return
 			else
 				return

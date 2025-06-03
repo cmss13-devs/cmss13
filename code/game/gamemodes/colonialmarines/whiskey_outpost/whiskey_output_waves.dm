@@ -59,7 +59,7 @@
 		var/spawn_loc = pick(xeno_spawns)
 		var/xeno_type = GLOB.RoleAuthority.get_caste_by_text(userInput)
 		var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(spawn_loc)
-		new_xeno.hive.hive_flags |= XENO_CONSTRUCTION_QUEEN_ONLY
+		new_xeno.hive.hive_flags |= XENO_CONSTRUCTION_QUEEN
 		new_xeno.nocrit(xeno_wave)
 		xeno_pool -= userInput
 		if(isnewplayer(xeno_candidate))

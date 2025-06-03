@@ -124,23 +124,29 @@
 		else
 			. += "Slashing: PERMITTED"
 
-		if(hive.hive_flags & XENO_CONSTRUCTION_LEADERS_ONLY)
-			. += "Special Structure Placement: LEADERS"
-		else if(hive.hive_flags & XENO_CONSTRUCTION_QUEEN_ONLY)
-			. += "Special Structure Placement: QUEEN"
-		else if(hive.hive_flags & XENO_CONSTRUCTION_NOBODY)
-			. += "Special Structure Placement: NOBODY"
+		var/str_builder = "NOBODY"
+		if ((hive.hive_flags & XENO_CONSTRUCTION_ALLOW_ALL) == XENO_CONSTRUCTION_ALLOW_ALL)
+			str_builder = "ANYONE"
 		else
-			. += "Special Structure Placement: ANYONE"
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+				str_builder = "QUEEN"
+				if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+					str_builder += " and "
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+				str_builder += "LEADERS"
+		. += "Special Structure Placement: [str_builder]"
 		
-		if(hive.hive_flags & XENO_DECONSTRUCTION_LEADERS_ONLY)
-			. += "Special Structure Destruction: LEADERS"
-		else if(hive.hive_flags & XENO_DECONSTRUCTION_QUEEN_ONLY)
-			. += "Special Structure Destruction: QUEEN"
-		else if(hive.hive_flags & XENO_DECONSTRUCTION_NOBODY)
-			. += "Special Structure Destruction: NOBODY"
+		str_builder = "NOBODY"
+		if ((hive.hive_flags & XENO_DECONSTRUCTION_ALLOW_ALL) == XENO_DECONSTRUCTION_ALLOW_ALL)
+			str_builder = "ANYONE"
 		else
-			. += "Special Structure Destruction: BUILDERS and LEADERS"
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN))
+				str_builder = "QUEEN"
+				if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+					str_builder += " and "
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+				str_builder += "LEADERS"
+		. += "Special Structure Destruction: [str_builder]"
 
 		if(hive.hive_flags & XENO_UNNESTING_RESTRICTED)
 			. += "Unnesting: BUILDERS"

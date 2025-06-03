@@ -622,14 +622,17 @@
 		return FALSE
 
 	//Make sure construction is unrestricted
-	if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_LEADERS_ONLY) && IS_NORMAL_XENO(X))
-		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
-		return FALSE
-	if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_QUEEN_ONLY) && !istype(X.caste, /datum/caste_datum/queen))
-		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
-		return FALSE
-	if(X.hive && (X.hive.hive_flags & XENO_CONSTRUCTION_NOBODY))
+	if(X.hive && !(X.hive.hive_flags & XENO_CONSTRUCTION_ALLOW_ALL))
 		to_chat(X, SPAN_WARNING("The hive is too weak and fragile to have the strength to design constructions."))
+		return FALSE
+	if(X.hive && IS_NORMAL_XENO(X) && !HAS_FLAG(X.hive.hive_flags, XENO_CONSTRUCTION_NORMAL))
+		to_chat(X, SPAN_WARNING("Construction by normal sisters is currently restricted!"))
+		return FALSE
+	if(X.hive && IS_XENO_LEADER(X) && !HAS_FLAG(X.hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+		to_chat(X, SPAN_WARNING("Construction by leader sisters is currently restricted!"))
+		return FALSE
+	if(X.hive && isqueen(X) && !HAS_FLAG(X.hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+		to_chat(X, SPAN_WARNING("We are currently not allowed to designate construction!"))
 		return FALSE
 
 	var/turf/T = get_turf(A)

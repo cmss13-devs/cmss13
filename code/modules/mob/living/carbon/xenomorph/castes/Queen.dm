@@ -707,17 +707,17 @@
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
 		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!", hivenumber = src.hivenumber)
-		hive.hive_flags &= ~(XENO_CONSTRUCTION_LEADERS_ONLY|XENO_CONSTRUCTION_QUEEN_ONLY)
+		hive.hive_flags |= XENO_CONSTRUCTION_ALLOW_ALL
 	else if(choice == "Leaders")
 		to_chat(src, SPAN_XENONOTICE("You restrict construction placement to leaders only."))
 		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.", hivenumber = src.hivenumber)
-		hive.hive_flags &= ~XENO_CONSTRUCTION_QUEEN_ONLY
-		hive.hive_flags |= XENO_CONSTRUCTION_LEADERS_ONLY
+		hive.hive_flags &= ~XENO_CONSTRUCTION_ALLOW_ALL
+		hive.hive_flags |= XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS
 	else if(choice == "Queen")
 		to_chat(src, SPAN_XENONOTICE("You forbid construction placement entirely."))
 		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to all but herself.", hivenumber = src.hivenumber)
-		hive.hive_flags &= ~XENO_CONSTRUCTION_LEADERS_ONLY
-		hive.hive_flags |= XENO_CONSTRUCTION_QUEEN_ONLY
+		hive.hive_flags &= ~XENO_CONSTRUCTION_ALLOW_ALL
+		hive.hive_flags |= XENO_CONSTRUCTION_QUEEN
 
 /mob/living/carbon/xenomorph/proc/destruction_toggle()
 	set name = "Permit/Disallow Special Structure Destruction"
@@ -742,17 +742,17 @@
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
 		xeno_message("The Queen has <b>permitted</b> the destruction of special structures to all builder castes and leaders!", hivenumber = src.hivenumber)
-		hive.hive_flags &= ~(XENO_DECONSTRUCTION_LEADERS_ONLY|XENO_DECONSTRUCTION_QUEEN_ONLY)
+		hive.hive_flags |= XENO_DECONSTRUCTION_ALLOW_ALL
 	else if(choice == "Leaders")
 		to_chat(src, SPAN_XENONOTICE("You restrict special structure destruction to leaders only."))
 		xeno_message("The Queen has <b>restricted</b> the destruction of special structures to leaders only.", hivenumber = src.hivenumber)
-		hive.hive_flags &= ~XENO_DECONSTRUCTION_QUEEN_ONLY
-		hive.hive_flags |= XENO_DECONSTRUCTION_LEADERS_ONLY
+		hive.hive_flags &= ~XENO_DECONSTRUCTION_ALLOW_ALL
+		hive.hive_flags |= XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS
 	else if(choice == "Queen")
 		to_chat(src, SPAN_XENONOTICE("You forbid special structure destruction entirely."))
 		xeno_message("The Queen has <b>forbidden</b> the destruction of special structures to all but herself.", hivenumber = src.hivenumber)
-		hive.hive_flags &= ~XENO_DECONSTRUCTION_LEADERS_ONLY
-		hive.hive_flags |= XENO_DECONSTRUCTION_QUEEN_ONLY
+		hive.hive_flags &= ~XENO_DECONSTRUCTION_ALLOW_ALL
+		hive.hive_flags |= XENO_DECONSTRUCTION_QUEEN
 
 /mob/living/carbon/xenomorph/proc/unnesting_toggle()
 	set name = "Permit/Disallow Unnesting"

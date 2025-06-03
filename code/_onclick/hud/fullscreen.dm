@@ -278,7 +278,7 @@
 	var/is_cold = SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] || SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM || MAP_PRISON_STATION_V3
 
 	if(special_lighting == SPECIAL_LIGHTING_SUNSET)
-		lighting_color = is_cold ? cold_color_progression[lighting_stage] : warm_color_progression[lighting_stage]
+		lighting_color = is_cold ? cold_color_progression[lighting_stage + 1] : warm_color_progression[lighting_stage + 1]
 	else
 		lighting_color = sunrise_color_progression[lighting_stage]
 

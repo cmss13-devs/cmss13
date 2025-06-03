@@ -99,6 +99,12 @@
 	)
 	flags_armor_protection = 0
 
+/obj/item/clothing/head/straw
+	name = "\improper straw hat"
+	icon_state = "strawhat"
+	item_state = "strawhat"
+	desc = "A weathered straw hat with a brown leather band around the crown. It looks perfect for sunny days and long afternoons in the fields."
+
 //stylish bs12 hats
 
 /obj/item/clothing/head/bowlerhat

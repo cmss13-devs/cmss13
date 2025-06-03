@@ -226,7 +226,7 @@ Everything below isn't used or out of place.
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
 
-	var/random_gear = rand(0, 14)
+	var/random_gear = rand(0, 17)
 	switch(random_gear)
 		if(0) // Sleepy Colonist
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pj/blue(new_human), WEAR_BODY)
@@ -234,7 +234,8 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/roller/bedroll/comfy(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/bedsheet/bedroll/blue(new_human.back), WEAR_IN_BACK)
-		if(1) // Bug Exteriminator Colonist
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(new_human.back), WEAR_IN_BACK)
+		if(1) // Bug Exterminator Colonist
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/sanitation, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(new_human), WEAR_FEET)
@@ -371,7 +372,42 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/device/camera, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/camera/oldcamera, WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/device/camera_film, WEAR_IN_R_STORE)
-
+		if(15) // Pro Welder
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding/painted(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/support(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/utility_vest(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/pamphlet/skill/engineer, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/weldpack(new_human.back), WEAR_R_HAND)
+		if(16) // Farmer
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm/orange_line(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/straw(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/khaki(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/apron/overalls(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/botanic_leather(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/minihoe(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/grown/wheat(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/grown/wheat(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/grown/wheat(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/scythe/deadly(new_human.back), WEAR_R_HAND)
+		if(17) // Fisherman
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator/silver, WEAR_EYES)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/boonie/fisherman(new_human), WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/green(new_human), WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/apron/overalls/tan(new_human), WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/fish_bait(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/fish_bait(new_human), WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/fish_bait(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/fishing_pole(new_human.back), WEAR_R_HAND)
 	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)
 

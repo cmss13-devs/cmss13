@@ -151,3 +151,10 @@
 			if(prob(80))
 				qdel(B)
 		qdel(A)
+
+/obj/item/tool/scythe/deadly
+	name = "sharp scythe"
+	desc = "A wickedly curved, razor-sharp blade set atop a long, fibremetal handle. It looks like it could harvest more than just crops."
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	force = MELEE_FORCE_VERY_STRONG

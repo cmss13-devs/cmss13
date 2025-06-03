@@ -85,7 +85,7 @@
 		if(ROUND_TIME < 4 SECONDS) //if you're in before full setup, dont let special lightings get called prior, it gets messy
 			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, null, 1, FALSE, TRUE, TRUE), 3 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(special_lighting_register_signals)), 3 SECONDS)
-		else if(ROUND_TIME < 280 SECONDS)
+		else if(ROUND_TIME < 180 SECONDS)
 			special_lighting = SPECIAL_LIGHTING_SUNSET
 			special_lighting_active_timer = TRUE
 			special_lighting_animate(SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, 0.1 SECONDS, 1, TRUE, TRUE, TRUE)
@@ -272,15 +272,17 @@
 		if(time_til_next_lighting_call < special_stage_time)
 			time_til_next_lighting_call = time_til_next_lighting_call + special_stage_time //delays main anims until the special call anim is done
 
-	var/static/list/warm_color_progression = list("#e3a979", "#e29658", "#da8b4a", "#a9633c", "#90422d", "#68333a", "#4d2b35", "#231935", "#050c27", "#000")
-	var/static/list/cold_color_progression = list("#a8c3cf", "#7a9abb", "#6679a8", "#516a8b", "#38486e", "#2c2f4d", "#211b36", "#1f1b33", "#0c0a1b", "#000")
+	var/static/list/warm_color_progression = list("#da8b4a", "#a9633c", "#90422d", "#68333a", "#4d2b35", "#231935", "#050c27", "#000")
+	var/static/list/cold_color_progression = list("#6679a8", "#516a8b", "#38486e", "#2c2f4d", "#211b36", "#1f1b33", "#0c0a1b", "#000")
 	var/static/list/sunrise_color_progression = list("#000", "#040712", "#111322", "#291642", "#3f2239", "#632c3d", "#b97034")
-	var/is_cold = SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] || SSmapping.configs[GROUND_MAP].map_name == MAP_LV522_CHANCES_CLAIM || MAP_PRISON_STATION_V3
+	var/is_cold = (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 
 	if(special_lighting == SPECIAL_LIGHTING_SUNSET)
-		lighting_color = is_cold ? cold_color_progression[lighting_stage + 1] : warm_color_progression[lighting_stage + 1]
+		var/clamped_sunset_stage = clamp(lighting_stage, 1, 8)
+		lighting_color = is_cold ? cold_color_progression[clamped_sunset_stage] : warm_color_progression[clamped_sunset_stage]
 	else
-		lighting_color = sunrise_color_progression[lighting_stage]
+		var/clamped_sunrise_stage = clamp(lighting_stage, 1, 7)
+		lighting_color = sunrise_color_progression[clamped_sunrise_stage]
 
 	if(lighting_stage == 0) //there aren't any cases you won't want these coming up fast
 		special_stage_time = 0.5 SECONDS
@@ -340,10 +342,12 @@
 
 	switch(special_lighting) //figure out a way of handling this better if possible
 		if(SPECIAL_LIGHTING_SUNSET)
-			max_stages = 9
+			startup_delay = 2.5 SECONDS
+			stage_time = 15 SECONDS // roughly equivalent to 2 minutes of daylight prep for survivors
+			max_stages = 8
 			special_tick_dir = 1
 		if(SPECIAL_LIGHTING_SUNRISE)
-			max_stages = 6
+			max_stages = 7
 			special_start_time = GLOB.sunrise_starting_time
 			special_tick_dir = -1
 			lighting_deactivates = FALSE
@@ -360,9 +364,9 @@
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
 
-	var/stage_time = 30 SECONDS
+	var/stage_time = 1.5 SECONDS // so moving in and out of caves doesnt take decades for lighting to change
 	var/max_stages = null
-	var/startup_delay = 10 SECONDS
+	var/startup_delay = 1.5 SECONDS // we want this to be fast
 	var/special_start_time = 0
 	var/special_stage_time = 4 SECONDS
 	var/special_tick_dir = 0
@@ -376,10 +380,10 @@
 
 	switch(special_lighting)
 		if(SPECIAL_LIGHTING_SUNSET)
-			max_stages = 9
+			max_stages = 8
 			special_tick_dir = 1
 		if(SPECIAL_LIGHTING_SUNRISE)
-			max_stages = 6
+			max_stages = 7
 			special_start_time = GLOB.sunrise_starting_time
 			special_tick_dir = -1
 			lighting_deactivates = FALSE
@@ -397,9 +401,9 @@
 		newloc_incave = TRUE
 
 	if(newloc_incave && !oldloc_incave) //handles both null old loc and false oldloc
-		animate(screen, color = "#000", time = 4 SECONDS, easing = QUAD_EASING | EASE_OUT)
+		animate(screen, color = "#000", time = 10 SECONDS, easing = QUAD_EASING | EASE_OUT)
 	else if(oldloc_incave && !newloc_incave)
-		special_lighting_animate(special_lighting, stage_time, max_stages, startup_delay, special_start_time, special_stage_time, special_tick_dir, special_call, create_new_lighting_timer, lighting_deactivates)
+		special_lighting_animate(special_lighting, 10 SECONDS, max_stages, startup_delay, special_start_time, special_stage_time, special_tick_dir, special_call, create_new_lighting_timer, lighting_deactivates)
 
 #undef Z_CHANGE_CALL
 #undef AREA_CHANGE_CALL

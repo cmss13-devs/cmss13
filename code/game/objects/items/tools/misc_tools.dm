@@ -110,14 +110,14 @@
 
 */
 
-/obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
-	var/datum/component/label/label = A.GetComponent(/datum/component/label)
+/obj/item/tool/hand_labeler/proc/remove_label(atom/target, mob/user)
+	var/datum/component/label/label = target.GetComponent(/datum/component/label)
 	if(label && label.has_label())
-		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."),
-						SPAN_NOTICE("You remove the label from [A]."))
+		user.visible_message(SPAN_NOTICE("[user] removes label from [target]."),
+						SPAN_NOTICE("You remove the label from [target]."))
 		label.clear_label()
-		log_admin("[user] has removed label from [A.name]. (CKEY: ([user.ckey]))")
-		playsound(A, remove_label_sound, 20, TRUE)
+		log_admin("[user] has removed label from [target.name]. (CKEY: ([user.ckey]))")
+		playsound(target, remove_label_sound, 20, TRUE)
 		return
 	else
 		to_chat(user, SPAN_NOTICE("There is no label to remove."))

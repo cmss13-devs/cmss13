@@ -85,7 +85,7 @@
 		if(ROUND_TIME < 4 SECONDS) //if you're in before full setup, dont let special lightings get called prior, it gets messy
 			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, null, 1, FALSE, TRUE, TRUE), 3 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(special_lighting_register_signals)), 3 SECONDS)
-		else if(ROUND_TIME < 180 SECONDS)
+		else if(ROUND_TIME < 120 SECONDS)
 			special_lighting = SPECIAL_LIGHTING_SUNSET
 			special_lighting_active_timer = TRUE
 			special_lighting_animate(SPECIAL_LIGHTING_SUNSET, 30 SECONDS, 9, 10 SECONDS, 0, 0.1 SECONDS, 1, TRUE, TRUE, TRUE)
@@ -238,7 +238,7 @@
 	appearance_flags = NONE
 	show_when_dead = TRUE
 
-/mob/proc/special_lighting_animate(p_special_lighting_type = null, p_stage_time, p_max_stages, p_startup_delay = 1 SECONDS, p_special_start_time = 0, p_special_stage_time = null, p_special_tick_dir, p_special_call = FALSE, p_create_new_lighting_timer = FALSE, p_lighting_deactivates = TRUE)
+/mob/proc/special_lighting_animate(p_special_lighting_type = null, p_stage_time, p_max_stages, p_startup_delay = 1 SECONDS, p_special_start_time = 0, p_special_stage_time = null, p_special_tick_dir, p_special_call = FALSE, p_create_new_lighting_timer = FALSE, p_lighting_stays_active = TRUE)
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
 	var/area/lighting_mob_area = get_area(src)
@@ -259,7 +259,7 @@
 	var/special_tick_dir = p_special_tick_dir /// If it gets a special call, if it ticks up or down in order to prevent advantages
 
 	var/create_new_lighting_timer = p_create_new_lighting_timer /// used to prevent timer dupes, keep this as False unless its supposed to be the first call
-	var/lighting_deactivates = p_lighting_deactivates /// If the lighting deactivates, at the moment, theres no justifications to have this set to false
+	var/lighting_stays_active = p_lighting_stays_active /// determines if the lighting should stay active until the end of its animation
 
 	var/lighting_stage = clamp((floor((ROUND_TIME + stage_time - special_start_time - startup_delay)/stage_time)), 0, max_stages) /// the current stage of the lighting, ticks up by 1 every stagetime after startup_delay + start_time
 	//uses formula (x + y - w - z)/(y) with x = round_time, y = stage_time, w = special_start_time, and z being startup_delay
@@ -267,7 +267,7 @@
 	var/time_til_next_lighting_call = max(((lighting_stage * stage_time) + startup_delay + special_start_time - ROUND_TIME), 0.5 SECONDS) /// how long until the next sunstage occurs (minimum of 0.5 seconds)
 
 	if(special_call && lighting_stage != 0) // controls stuff related to special calls, prevents people from getting unfair advantages by getting stages reset, unnecessary for short anims
-		if(lighting_deactivates && ROUND_TIME < (stage_time * max_stages) + special_start_time + startup_delay) //if its finished max stage anim and doesn't deactivate, make special calls animate to full
+		if(lighting_stays_active && ROUND_TIME < (stage_time * max_stages) + special_start_time + startup_delay) //if its finished max stage anim and doesn't deactivate, make special calls animate to full
 			lighting_stage = clamp((lighting_stage + special_tick_dir), 0, max_stages)
 		if(time_til_next_lighting_call < special_stage_time)
 			time_til_next_lighting_call = time_til_next_lighting_call + special_stage_time //delays main anims until the special call anim is done
@@ -293,9 +293,9 @@
 
 	if(!special_lighting_active_timer)
 		if(lighting_stage < max_stages)
-			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), special_lighting, stage_time, max_stages, startup_delay, special_start_time, null, special_tick_dir, FALSE, TRUE, lighting_deactivates), time_til_next_lighting_call, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
+			addtimer(CALLBACK(src, PROC_REF(special_lighting_animate), special_lighting, stage_time, max_stages, startup_delay, special_start_time, null, special_tick_dir, FALSE, TRUE, lighting_stays_active), time_til_next_lighting_call, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
 			special_lighting_active_timer = TRUE
-		if(lighting_stage == max_stages && lighting_deactivates) // deactives special lighting when the sun hits #000
+		if(lighting_stage == max_stages && lighting_stays_active) // deactives special lighting when the sun hits #000
 			addtimer(CALLBACK(src, PROC_REF(special_lighting_unregister_signals)), time_til_next_lighting_call, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
 
 	if(CEILING_IS_PROTECTED(lighting_mob_area?.ceiling, CEILING_PROTECTION_TIER_2)) //if underground, don't animate, this is needed in combo with the special area check
@@ -335,7 +335,7 @@
 	var/special_tick_dir = 0
 	var/special_call = Z_CHANGE_CALL
 	var/create_new_lighting_timer = FALSE
-	var/lighting_deactivates = TRUE
+	var/lighting_stays_active = TRUE
 
 	if(!special_lighting || special_lighting == SPECIAL_LIGHTING_PREROUND)
 		return
@@ -350,10 +350,10 @@
 			max_stages = 7
 			special_start_time = GLOB.sunrise_starting_time
 			special_tick_dir = -1
-			lighting_deactivates = FALSE
+			lighting_stays_active = FALSE
 
 	if(is_ground_level(new_z))
-		special_lighting_animate(special_lighting, stage_time, max_stages, startup_delay, special_start_time, special_stage_time, special_tick_dir, special_call, create_new_lighting_timer, lighting_deactivates)
+		special_lighting_animate(special_lighting, stage_time, max_stages, startup_delay, special_start_time, special_stage_time, special_tick_dir, special_call, create_new_lighting_timer, lighting_stays_active)
 
 	if(!is_ground_level(new_z))
 		animate(screen, color = "#000", time = 0.1 SECONDS)
@@ -372,7 +372,7 @@
 	var/special_tick_dir = 0
 	var/special_call = AREA_CHANGE_CALL
 	var/create_new_lighting_timer = FALSE
-	var/lighting_deactivates = TRUE
+	var/lighting_stays_active = TRUE
 
 
 	if(!special_lighting || special_lighting == SPECIAL_LIGHTING_PREROUND)
@@ -386,6 +386,7 @@
 			max_stages = 7
 			special_start_time = GLOB.sunrise_starting_time
 			special_tick_dir = -1
+			lighting_stays_active = FALSE
 
 
 	var/area/mob_old_area = old_area
@@ -402,7 +403,7 @@
 	if(newloc_incave && !oldloc_incave) //handles both null old loc and false oldloc
 		animate(screen, color = "#000", time = 10 SECONDS, easing = QUAD_EASING | EASE_OUT)
 	else if(oldloc_incave && !newloc_incave)
-		special_lighting_animate(special_lighting, 10 SECONDS, max_stages, startup_delay, special_start_time, special_stage_time, special_tick_dir, special_call, create_new_lighting_timer, lighting_deactivates)
+		special_lighting_animate(special_lighting, 10 SECONDS, max_stages, startup_delay, special_start_time, special_stage_time, special_tick_dir, special_call, create_new_lighting_timer, lighting_stays_active)
 
 #undef Z_CHANGE_CALL
 #undef AREA_CHANGE_CALL

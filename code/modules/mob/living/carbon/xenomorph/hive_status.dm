@@ -478,7 +478,7 @@
 		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "")
 	)
 
-	for(var/caste as anything in GLOB.xeno_datum_list)
+	for(var/caste in GLOB.xeno_datum_list)
 		var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[caste]
 
 		// Special castes like king will not show up.

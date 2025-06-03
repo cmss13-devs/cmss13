@@ -83,6 +83,8 @@
 		plane_masters["[instance.plane]"] = instance
 		if(owner.client)
 			instance.backdrop(mymob)
+			if(!isnewplayer(mymob) && !mymob.special_lighting) //if they have a client but arent on the title screen
+				mymob.initialize_special_lighting()
 
 	for(var/z_level in 0 to OPEN_SPACE_PLANE_START - OPEN_SPACE_PLANE_END)
 		var/atom/movable/screen/plane_master/open_space/instance = new(null, z_level)

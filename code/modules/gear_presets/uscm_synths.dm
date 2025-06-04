@@ -135,3 +135,16 @@
 	name = "USCM Synthetic Council (Command)"
 	paygrades = list(PAY_SHORT_MCWO = JOB_PLAYTIME_TIER_0)
 	is_council = TRUE
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/synth/uscm/everything
+	name = "USCM Synthetic (Everything)"
+	role_comm_title = "Syn"
+	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
+	skills = /datum/skills/synthetic
+	subtype = "all"
+
+/datum/equipment_preset/synth/uscm/everything/council
+	name = "USCM Synthetic Council (Everything)"
+	is_council = TRUE

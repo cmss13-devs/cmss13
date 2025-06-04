@@ -117,10 +117,12 @@
 			playsound(src, "paper_writing", 15, TRUE)
 		return
 	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
-		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
 		overlays.Cut()
 		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
-		if(labelcomponent)
+		if(labelcomponent && labelcomponent.has_label())
+			log_admin("[key_name(user)] has removed label from [src].")
+			user.visible_message(SPAN_NOTICE("[user] cuts the tag off of the [name]."),
+								SPAN_NOTICE("You cut the tag off the [name]."))
 			labelcomponent.clear_label()
 		return
 	else if(istype(W, /obj/item/weapon/zombie_claws))

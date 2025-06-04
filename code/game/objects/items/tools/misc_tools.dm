@@ -115,8 +115,8 @@
 	if(label && label.has_label())
 		user.visible_message(SPAN_NOTICE("[user] removes label from [target]."),
 						SPAN_NOTICE("You remove the label from [target]."))
+		log_admin("[key_name(user)] has removed label from [target].")
 		label.clear_label()
-		log_admin("[user] has removed label from [target.name]. (CKEY: ([user.ckey]))")
 		playsound(target, remove_label_sound, 20, TRUE)
 		return
 	else

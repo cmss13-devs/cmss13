@@ -60,9 +60,11 @@
 	if(!istype(labeler) || labeler.mode)
 		return
 
+	log_admin("[key_name(user)] has removed label from [parent].")
+	user.visible_message(SPAN_NOTICE("[user] removes label from [parent]."),
+						SPAN_NOTICE("You remove the label from [parent]."))
 	clear_label()
 	playsound(parent, 'sound/items/poster_ripped.ogg', 20, TRUE)
-	to_chat(user, SPAN_WARNING("You remove the label from [parent]."))
 	qdel(src) // Remove the component from the object.
 
 /**

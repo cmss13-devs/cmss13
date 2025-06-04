@@ -269,37 +269,37 @@
 	var/list/datum/static_lighting_corner/corners = list()
 	if (source_turf)
 		var/list/turf/impacted_turfs = list()
-		var/list/turf/below_turfs = list()
+		var/list/turf/check_below_turfs = list()
 		var/oldlum = source_turf.luminosity
 		source_turf.luminosity = CEILING(light_range, 1)
 		for(var/turf/T in view(CEILING(light_range, 1), source_turf))
 			if(!IS_OPAQUE_TURF(T))
 				impacted_turfs += T
 			if(istransparentturf(T))
-				below_turfs += T // we need to go below only for transparent turfs
+				check_below_turfs += T // we need to go below only for transparent turfs
 
-		var/list/turf/above_turfs = impacted_turfs
+		var/list/turf/check_above_turfs = impacted_turfs
 		while(TRUE) // we know that it starts with len > 0
-			var/list/turf/temp = SSmapping.get_same_z_turfs_above(above_turfs)
-			if(temp.len == 0) // levels are not connected
+			var/list/turf/above_turfs = SSmapping.get_same_z_turfs_above(check_above_turfs)
+			if(above_turfs.len == 0) // levels are not connected
 				break
-			above_turfs = list()
-			for(var/turf/T as anything in temp)
+			check_above_turfs = list()
+			for(var/turf/T as anything in above_turfs)
 				if(istransparentturf(T))
-					above_turfs += T // turf from which we can see light below
-			if(above_turfs.len == 0)
+					check_above_turfs += T // turf from which we can see light below
+			if(check_above_turfs.len == 0)
 				break
-			impacted_turfs += above_turfs // add them to the impacted
+			impacted_turfs += check_above_turfs // add them to the impacted
 
-		while(below_turfs.len > 0)
-			var/list/turf/temp = SSmapping.get_same_z_turfs_below(below_turfs)
-			if(temp.len == 0) // levels are not connected
+		while(check_below_turfs.len > 0)
+			var/list/turf/below_turfs = SSmapping.get_same_z_turfs_below(check_below_turfs)
+			if(below_turfs.len == 0) // levels are not connected
 				break
-			impacted_turfs += temp // add turfs that we found below transparent
-			below_turfs = list()
-			for(var/turf/T as anything in temp)
+			impacted_turfs += below_turfs // add turfs that we found below transparent
+			check_below_turfs = list()
+			for(var/turf/T as anything in below_turfs)
 				if(istransparentturf(T))
-					below_turfs += T // next time check only below transparent
+					check_below_turfs += T // next time check only below transparent
 
 		for(var/turf/T as anything in impacted_turfs)
 			if (!T.lighting_corners_initialised)

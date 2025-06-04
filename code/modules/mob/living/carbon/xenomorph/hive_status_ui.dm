@@ -170,7 +170,6 @@
 
 	var/mob/living/carbon/xenomorph/queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor
-	.["is_queen"] = istype(Q)
 
 /datum/hive_status_ui/ui_static_data(mob/user)
 	. = list()

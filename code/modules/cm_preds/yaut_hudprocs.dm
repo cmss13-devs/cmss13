@@ -466,7 +466,7 @@
 	if(T.hunter_data.blooded)
 		to_chat(src, SPAN_YAUTJABOLD("[T] has already been blooded by [T.hunter_data.blooded_set.real_name] for '[T.hunter_data.blooded_reason]'!"))
 		return
-	if(T.faction == FACTION_YAUTJA_YOUNG || T.hunter_data.thralled)
+	if(T.faction == FACTION_YAUTJA_YOUNG || T.hunter_data.thralled) //Only youngbloods or thralls can become blooded hunters.
 
 		var/reason = stripped_input(usr, "Enter the reason for marking your target as blooded.", "Mark as Blooded", "", 120)
 
@@ -490,9 +490,8 @@
 		return
 
 	else if(T.hunter_data.thralled)
-		var/predtitle = stripped_input(usr, "Enter the newly blooded's new name.", "Blooded Name", "", 120)
-
-		change_real_name(T, predtitle)
+		var/predtitle = (stripped_input(usr, "Enter the newblood's new name.", "Blooded Name", "" , MAX_NAME_LEN))
+		change_real_name(T, html_decode(predtitle))
 		return
 
 	else if(!T.hunter_data.thralled)

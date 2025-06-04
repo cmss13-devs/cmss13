@@ -6,7 +6,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
-	rank = JOB_SYNTH
+	job_title = JOB_SYNTH
 	role_comm_title = "Syn"
 	preset_generation_support = FALSE
 
@@ -69,6 +69,7 @@
 	skills = /datum/skills/synth_specialised/engineering
 	subtype = "eng"
 	assignment = "Engineering Synthetic"
+	manifest_title = "Engineering Synthetic"
 
 /datum/equipment_preset/synth/uscm/engineering/council
 	name = "USCM Synthetic Council (Engineering)"
@@ -83,6 +84,7 @@
 	skills = /datum/skills/synth_specialised/medical
 	subtype = "med"
 	assignment = "Medical Synthetic"
+	manifest_title = "Medical Synthetic"
 
 /datum/equipment_preset/synth/uscm/medical/council
 	name = "USCM Synthetic Council (Medical)"
@@ -97,6 +99,7 @@
 	skills = /datum/skills/synth_specialised/intel
 	subtype = "io"
 	assignment = "Intelligence Synthetic"
+	manifest_title = "Intelligence Synthetic"
 
 /datum/equipment_preset/synth/uscm/intel/council
 	name = "USCM Synthetic Council (Intel)"
@@ -111,6 +114,7 @@
 	skills = /datum/skills/synth_specialised/mp
 	subtype = "mp"
 	assignment = "Military Police Synthetic"
+	manifest_title = "Military Police Synthetic"
 
 /datum/equipment_preset/synth/uscm/mp/council
 	name = "USCM Synthetic Council (MP)"
@@ -125,6 +129,7 @@
 	skills = /datum/skills/synth_specialised/command
 	subtype = "cmd"
 	assignment = "Command Support Synthetic"
+	manifest_title = "Command Support Synthetic"
 
 /datum/equipment_preset/synth/uscm/command/council
 	name = "USCM Synthetic Council (Command)"

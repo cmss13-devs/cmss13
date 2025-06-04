@@ -210,13 +210,14 @@ Defined in conflicts.dm of the #defines folder.
 		detaching_gun.in_chamber._RemoveElement(L)
 
 	// Remove any leftover reference to the bullet trait
-	for(var/list/trait_list in detaching_gun.in_chamber.bullet_traits)
-		trait_list.Remove(traits_to_give)
-		if(!length(trait_list))
-			detaching_gun.in_chamber.bullet_traits.Remove(list(trait_list))
+	if(!isnull(detaching_gun.in_chamber))
+		for(var/list/trait_list in detaching_gun.in_chamber.bullet_traits)
+			trait_list.Remove(traits_to_give)
+			if(!length(trait_list))
+				detaching_gun.in_chamber.bullet_traits.Remove(list(trait_list))
 
-	if(!length(detaching_gun.in_chamber.bullet_traits))
-		detaching_gun.in_chamber.bullet_traits = null
+		if(!length(detaching_gun.in_chamber.bullet_traits))
+			detaching_gun.in_chamber.bullet_traits = null
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	activate_attachment(G, user)
@@ -298,7 +299,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M5 'Night Raider' bayonet"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "bayonet"
-	item_state = "combat_knife"
+	item_state = "combat_bayonet"
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -341,7 +342,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 	icon_state = "upp_bayonet"
-	item_state = "combat_knife"
+	item_state = "upp_bayonet"
 	attach_icon = "upp_bayonet_a"
 
 /obj/item/attachable/bayonet/wy
@@ -350,6 +351,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper SA120 L7 bayonet"
 	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
 	icon_state = "wy_bayonet"
+	item_state = "wy_bayonet"
 	attach_icon = "wy_bayonet_a"
 	unacidable = TRUE
 
@@ -359,7 +361,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
 	icon_state = "upp_bayonet"
-	item_state = "combat_knife"
+	item_state = "upp_bayonet"
 	attach_icon = "upp_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
@@ -381,7 +383,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
 	icon_state = "twe_bayonet"
-	item_state = "combat_knife"
+	item_state = "twe_bayonet"
 	attach_icon = "twe_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
@@ -394,7 +396,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper antique bayonet"
 	desc = "An antique-style bayonet, has a long blade, wooden handle with brass fittings, reflecting historical craftsmanship."
 	icon_state = "antique_bayonet"
-	item_state = "combat_knife"
+	item_state = "antique_bayonet"
 	attach_icon = "antique_bayonet_a"
 
 /obj/item/attachable/bayonet/rmc_replica
@@ -403,7 +405,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
 	icon_state = "twe_bayonet"
-	item_state = "combat_knife"
+	item_state = "twe_bayonet"
 	attach_icon = "twe_bayonet_a"
 
 /obj/item/attachable/bayonet/custom
@@ -412,7 +414,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M5 'Raven's Claw' tactical bayonet"
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool."
 	icon_state = "bayonet_custom"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom"
 	attach_icon = "bayonet_custom_a"
 
 /obj/item/attachable/bayonet/custom/red
@@ -420,7 +422,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a red grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_red"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_red"
 	attach_icon = "bayonet_custom_red_a"
 
 /obj/item/attachable/bayonet/custom/blue
@@ -428,7 +430,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a blue grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_blue"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_blue"
 	attach_icon = "bayonet_custom_blue_a"
 
 /obj/item/attachable/bayonet/custom/black
@@ -436,7 +438,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a black grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_black"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_black"
 	attach_icon = "bayonet_custom_black_a"
 
 /obj/item/attachable/bayonet/tanto
@@ -445,14 +447,14 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper T9 tactical bayonet"
 	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
 	icon_state = "bayonet_tanto"
-	item_state = "combat_knife"
+	item_state = "bayonet_tanto"
 	attach_icon = "bayonet_tanto_a"
 
 /obj/item/attachable/bayonet/tanto/blue
 	AUTOWIKI_SKIP(TRUE)
 
 	icon_state = "bayonet_tanto_alt"
-	item_state = "combat_knife"
+	item_state = "bayonet_tanto_alt"
 	attach_icon = "bayonet_tanto_alt_a"
 
 /obj/item/attachable/bayonet/van_bandolier
@@ -2500,6 +2502,7 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = initial(icon_state)
 		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 		G.recalculate_attachment_bonuses()
+		G.last_fired = world.time
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
@@ -2508,6 +2511,7 @@ Defined in conflicts.dm of the #defines folder.
 		G.damage_mult = 1
 		RegisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
 		icon_state += "-on"
+		G.last_fired = world.time
 
 	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
 

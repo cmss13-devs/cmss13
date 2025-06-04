@@ -229,7 +229,7 @@
 				/obj/item/toy/sword,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,\
 				/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,\
-				/obj/item/clothing/accessory/horrible,\
+				/obj/item/clothing/accessory/tie/horrible,\
 				/obj/item/clothing/shoes/slippers,\
 				/obj/item/clothing/shoes/slippers_worn,\
 				/obj/item/clothing/head/collectable/tophat/super)
@@ -268,11 +268,7 @@
 	icon_state = "loot_goggles"
 
 /obj/effect/spawner/random/goggles/item_to_spawn()
-	return pick(prob(4);/obj/item/clothing/glasses/thermal/syndi/bug_b_gone,\
-				prob(4);/obj/item/clothing/glasses/thermal/syndi,\
-				prob(4);/obj/item/clothing/glasses/thermal/monocle,\
-				prob(4);/obj/item/clothing/glasses/thermal/eyepatch,\
-				prob(4);/obj/item/clothing/glasses/welding/superior,\
+	return pick(prob(4);/obj/item/clothing/glasses/welding/superior,\
 				prob(4);/obj/item/clothing/glasses/hud/security/jensenshades,\
 				prob(4);/obj/item/clothing/glasses/meson/refurbished,\
 				prob(4);/obj/item/clothing/glasses/science,\

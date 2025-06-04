@@ -421,7 +421,7 @@
 
 		// If the ammo should hit the surface of the target and the next turf is dense
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			// We "hit" the current turf but strike the actual blockage
 			ammo.on_hit_turf(get_turf(src),src)
 		else
@@ -482,7 +482,7 @@
 
 		// If the ammo should hit the surface of the target and there is an object blocking
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			var/turf/T = get_turf(O)
 
 			// We "hit" the current turf but strike the actual blockage
@@ -1043,6 +1043,7 @@
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
 			var/obj/item/large_shrapnel/large_embed = new P.ammo.shrapnel_type
+			var/embed_sound = pick('sound/effects/crackandbleed.ogg', 'sound/effects/pierce3.ogg')
 			if(istype(large_embed))
 				large_embed.on_embed(src, organ)
 			if(istype(new_embed))
@@ -1060,6 +1061,7 @@
 				if(!stat && pain.feels_pain)
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
+					playsound(src, embed_sound, 75, 1)
 	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.

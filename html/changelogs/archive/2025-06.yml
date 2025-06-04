@@ -1,0 +1,63 @@
+2025-06-01:
+  Blundir:
+  - refactor: xeno wound icons have been moved to xeno caste dmi files
+  Nihisohel:
+  - rscadd: You can now attach patches on armor; this might look ugly if you are sleeveless
+      and padless, however.
+  - rscadd: Nearly every exosuit clothing can now hold accessories.
+  - bugfix: Accessories now have a limit to them, typically only 1 but some items
+      can go up to 4.
+  - code_imp: Cleans up the valid accessory lists.
+  - refactor: Defuncts restricted_accessory_slots on clothings for a more intuitive
+      per accessory slot limit dependent on accessory category.
+2025-06-02:
+  Git-Nivrak:
+  - balance: Facehuggers now gib when ghosting
+2025-06-03:
+  BOBAMAx:
+  - bugfix: clf surv skills work now
+  DarkLordCabbage:
+  - spellcheck: Fixes the synth recharge station being referred to as a sleeper in
+      some cases.
+  Drulikar:
+  - bugfix: Fixed a source of nulls being added to GLOB.new_player_list and GLOB.player_list
+  hry-gh:
+  - admin: server operators can now choose to enforce two factor authentication in
+      game for admins
+  matttheficus:
+  - qol: flaying a target with the Ceremonial Dagger now announces and unsets Prey
+      like the Butcher Verb.
+2025-06-04:
+  DarkLordCabbage:
+  - rscdel: Removed CPR'ing synths
+  - qol: You can now use the hand labeler to label crates
+  - bugfix: Prevents an error message  about ejecting an occupant from an auotdoc
+      if there is no occupant.
+  Joelampost:
+  - bugfix: Fixes the area checks for the hunting grounds
+  KornFlaks:
+  - qol: Xeno minimap icons are now shown alongside caste name in hive status
+  - qol: Xeno plasma percentage column is added to the hive status
+  Lagomorphica:
+  - rscadd: a variety of new clothing, patches, and other options in the synthetic
+      loadout menu, moving some from the synthetic vendor to the loadout menu as well
+  - rscadd: most uniforms now have their map specific variants as separate spawnable
+      variants - NOT ALL OF THESE WERE ADDED TO SYNTHETIC. only the currently existing
+      ones (standard marine, comtech, corpsman, MP) were added, however all uniforms
+      with a gamemode skin now have spawnable types with that gamemode skin.
+  Red-byte3D:
+  - qol: Spitter empowered acids (when you spit at somebody and they get the yellow
+      acid) now make sound when you hit them with the spray line.
+  - qol: Shrapnel embeds now have a noise.
+  - qol: A ton of new noises for praetorian pierce, vanguard tail sweep  and bone
+      breaks
+  Venuska1117:
+  - qol: For The Hive! ability countdown now display on action button instead of status
+      panel.
+  Willzadl:
+  - bugfix: Door control buttons can no longer be destroyed by explosives
+  kalazus:
+  - bugfix: fixed king stunning himself by jumping on turrets.
+  zzzmike:
+  - qol: nuke detonation countdown is now called detonation countdown, not "preparation
+      cycle"

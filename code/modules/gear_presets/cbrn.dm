@@ -1,7 +1,7 @@
 /datum/equipment_preset/uscm/cbrn
 	name = "Generic CBRN" //Parent type for easier gear
 	assignment = JOB_SQUAD_MARINE
-	rank = JOB_SQUAD_MARINE
+	job_title = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CBRN"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -69,7 +69,7 @@
 	name = "CBRN Combat Technician"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_ENGI
-	rank = JOB_SQUAD_ENGI
+	job_title = JOB_SQUAD_ENGI
 	role_comm_title = "ComTech"
 	minimap_icon = "engi"
 	skills = /datum/skills/pmc/engineer
@@ -113,7 +113,7 @@
 	name = "CBRN Hospital Corpsman"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_MEDIC
-	rank = JOB_SQUAD_MEDIC
+	job_title = JOB_SQUAD_MEDIC
 	role_comm_title = "HM"
 	minimap_icon = "medic"
 	skills = /datum/skills/pmc/medic
@@ -156,7 +156,7 @@
 	name = "CBRN Fireteam Leader"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_TEAM_LEADER
-	rank = JOB_SQUAD_TEAM_LEADER
+	job_title = JOB_SQUAD_TEAM_LEADER
 	role_comm_title = "TL"
 	minimap_icon = "tl"
 	skills = /datum/skills/pmc/SL
@@ -191,7 +191,7 @@
 	name = "CBRN Specialist"
 	paygrades = list(PAY_SHORT_OPR = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_SQUAD_SPECIALIST
-	rank = JOB_SQUAD_SPECIALIST
+	job_title = JOB_SQUAD_SPECIALIST
 	role_comm_title = "Spc"
 	minimap_icon = "spec"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
@@ -241,6 +241,6 @@
 /datum/equipment_preset/uscm/cbrn/specialist/lead //Same gear, better title
 	name = "CBRN Specialist SL"
 	assignment = JOB_SQUAD_LEADER
-	rank = JOB_SQUAD_LEADER
+	job_title = JOB_SQUAD_LEADER
 	role_comm_title = "Spc SL"
 	skills = /datum/skills/commando/deathsquad/leader

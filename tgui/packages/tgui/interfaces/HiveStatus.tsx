@@ -359,9 +359,8 @@ const XenoList = (props) => {
     user_ref,
     is_in_ovi,
     hive_color,
-    is_queen,
   } = data;
-  const [showPlasma, setShowPlasma] = useState(is_queen ? true : false);
+  const [showPlasma, setShowPlasma] = useState(is_in_ovi ? true : false);
 
   const xeno_entries = filterXenos({
     searchKey: searchKey,

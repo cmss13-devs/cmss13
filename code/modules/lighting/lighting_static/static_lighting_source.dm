@@ -299,8 +299,7 @@
 			below_turfs = list()
 			for(var/turf/T as anything in temp)
 				if(istransparentturf(T))
-					above_turfs += T // next time check only below transparent
-			impacted_turfs += below_turfs
+					below_turfs += T // next time check only below transparent
 
 		for(var/turf/T as anything in impacted_turfs)
 			if (!T.lighting_corners_initialised)

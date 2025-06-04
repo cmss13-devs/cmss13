@@ -2504,7 +2504,7 @@ Defined in conflicts.dm of the #defines folder.
 			playsound(user, gun_deactivate_sound, 30, 1)
 		underbarrel_gun.active_attachable = null
 		icon_state = initial(icon_state)
-		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
+		UnregisterSignal(underbarrel_gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 		underbarrel_gun.recalculate_attachment_bonuses()
 		underbarrel_gun.last_fired = world.time
 	else if(!turn_off)

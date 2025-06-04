@@ -352,10 +352,17 @@ const XenoList = (props) => {
     location: true,
   });
   const [maxHealth, setMaxHealth] = useState(100);
-  const { xeno_keys, xeno_vitals, xeno_info, user_ref, is_in_ovi, hive_color, is_queen } =
-    data;
+  const {
+    xeno_keys,
+    xeno_vitals,
+    xeno_info,
+    user_ref,
+    is_in_ovi,
+    hive_color,
+    is_queen,
+  } = data;
   const [showPlasma, setShowPlasma] = useState(is_queen ? true : false);
-  
+
   const xeno_entries = filterXenos({
     searchKey: searchKey,
     searchFilters: searchFilters,
@@ -420,9 +427,7 @@ const XenoList = (props) => {
               inline
               checked={showPlasma}
               backgroundColor={showPlasma && hive_color}
-              onClick={() =>
-                setShowPlasma(!showPlasma)
-              }
+              onClick={() => setShowPlasma(!showPlasma)}
             >
               Show Plasma
             </Button.Checkbox>
@@ -461,9 +466,7 @@ const XenoList = (props) => {
           <Table.Cell width="15%">Strain</Table.Cell>
           <Table.Cell>Location</Table.Cell>
           <Table.Cell width="60px">Health</Table.Cell>
-          {(showPlasma && (
-            <Table.Cell width="60px">Plasma</Table.Cell>
-          ))}
+          {showPlasma && <Table.Cell width="60px">Plasma</Table.Cell>}
           <Table.Cell width="100px" />
         </Table.Row>
 
@@ -491,17 +494,17 @@ const XenoList = (props) => {
                 <>{entry.health}%</>
               )}
             </Table.Cell>
-            {(showPlasma && (
-                <Table.Cell>
-                  {entry.plasma < 0 ? (
-                    <div style={grayFont}>------</div>
-                  ) : entry.plasma < 30 ? (
-                    <b style={redFont}>{entry.plasma}%</b>
-                  ) : (
-                    <>{entry.plasma}%</>
-                  )}
-                </Table.Cell>
-            ))}
+            {showPlasma && (
+              <Table.Cell>
+                {entry.plasma < 0 ? (
+                  <div style={grayFont}>------</div>
+                ) : entry.plasma < 30 ? (
+                  <b style={redFont}>{entry.plasma}%</b>
+                ) : (
+                  <>{entry.plasma}%</>
+                )}
+              </Table.Cell>
+            )}
             <Table.Cell className="noPadCell" textAlign="center">
               {entry.ref !== user_ref && (
                 <Flex

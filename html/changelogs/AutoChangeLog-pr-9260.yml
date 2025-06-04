@@ -1,5 +1,0 @@
-author: "Lagomorphica"
-delete-after: True
-changes:
-  - rscadd: "a variety of new clothing, patches, and other options in the synthetic loadout menu, moving some from the synthetic vendor to the loadout menu as well"
-  - rscadd: "most uniforms now have their map specific variants as separate spawnable variants - NOT ALL OF THESE WERE ADDED TO SYNTHETIC. only the currently existing ones (standard marine, comtech, corpsman, MP) were added, however all uniforms with a gamemode skin now have spawnable types with that gamemode skin."

@@ -1,5 +1,0 @@
-author: "KornFlaks"
-delete-after: True
-changes:
-  - qol: "Xeno minimap icons are now shown alongside caste name in hive status"
-  - qol: "Xeno plasma percentage column is added to the hive status"

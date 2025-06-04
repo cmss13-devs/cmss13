@@ -72,6 +72,10 @@
 	contains = list(
 		/obj/item/ammo_magazine/rocket/brute,
 		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives

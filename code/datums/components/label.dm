@@ -60,7 +60,7 @@
 	if(!istype(labeler) || labeler.mode)
 		return
 
-	log_admin("[key_name(user)] has removed label from [parent].")
+	log_admin("[key_name(usr)] has removed label from [parent].")
 	user.visible_message(SPAN_NOTICE("[user] removes label from [parent]."),
 						SPAN_NOTICE("You remove the label from [parent]."))
 	clear_label()

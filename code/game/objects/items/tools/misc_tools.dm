@@ -89,19 +89,19 @@
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)
-		to_chat(user, SPAN_NOTICE("You turn on \the [src]."))
+		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 		//Now let them choose the text.
-		var/str = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
+		var/str = copytext(reject_bad_text(tgui_input_text(user, "Label text?", "Set label", "", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)), 1, MAX_NAME_LEN)
 		if(!str || !length(str))
 			to_chat(user, SPAN_NOTICE("Label text cleared. You can now remove labels."))
 			label = null
 			return
 		label = str
 		to_chat(user, SPAN_NOTICE("You set the text to '[str]'."))
-	else
-		to_chat(user, SPAN_NOTICE("You turn off \the [src]."))
+		return
 
-
+	to_chat(user, SPAN_NOTICE("You turn off [src]."))
+	return
 
 /*
 	Allow the user of the labeler to remove a label, if there is no text set
@@ -115,13 +115,13 @@
 	if(label && label.has_label())
 		user.visible_message(SPAN_NOTICE("[user] removes label from [target]."),
 						SPAN_NOTICE("You remove the label from [target]."))
-		log_admin("[key_name(user)] has removed label from [target].")
+		log_admin("[key_name(usr)] has removed label from [target].")
 		label.clear_label()
 		playsound(target, remove_label_sound, 20, TRUE)
 		return
-	else
-		to_chat(user, SPAN_NOTICE("There is no label to remove."))
-		return
+
+	to_chat(user, SPAN_NOTICE("There is no label to remove."))
+	return
 
 /**
 	Allow the user to refill the labeller

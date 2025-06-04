@@ -58,13 +58,13 @@
 				return XENO_NO_DELAY_ACTION
 
 			if(attacking_xeno.caste && !attacking_xeno.caste.is_intelligent)
-				if(attacking_xeno.hive.hive_flags & XENO_SLASH_FORBIDDEN)
+				if(HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_ANY))
 					attacking_xeno.animation_attack_on(src)
 					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
 					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))
 					return XENO_ATTACK_ACTION
 
-				else if((attacking_xeno.hive.hive_flags & XENO_SLASH_RESTRICTED) && (status_flags & XENO_HOST))
+				else if(HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_INFECTED) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
 							attacking_xeno.animation_attack_on(src)

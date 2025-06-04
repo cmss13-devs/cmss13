@@ -117,9 +117,9 @@
 		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
-		if(hive.hive_flags & XENO_SLASH_FORBIDDEN)
+		if(HAS_FLAG(hive.hive_flags, XENO_SLASH_ANY))
 			. += "Slashing: FORBIDDEN"
-		else if(hive.hive_flags & XENO_SLASH_RESTRICTED)
+		else if(HAS_FLAG(hive.hive_flags, XENO_SLASH_INFECTED))
 			. += "Slashing: RESTRICTED AGAINST INFECTED"
 		else
 			. += "Slashing: PERMITTED"

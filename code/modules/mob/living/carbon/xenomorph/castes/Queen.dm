@@ -672,17 +672,17 @@
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), 2, hivenumber)
-		hive.hive_flags &= ~(XENO_SLASH_FORBIDDEN|XENO_SLASH_RESTRICTED)
+		hive.hive_flags &= ~(XENO_SLASH_ANY|XENO_SLASH_INFECTED)
 	else if(choice == "Restricted - Infected Hosts")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing of infected hosts."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You can no longer slash infected hosts."), 2, hivenumber)
-		hive.hive_flags &= ~XENO_SLASH_FORBIDDEN
-		hive.hive_flags |= XENO_SLASH_RESTRICTED
+		hive.hive_flags &= ~XENO_SLASH_ANY
+		hive.hive_flags |= XENO_SLASH_INFECTED
 	else if(choice == "Forbidden")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, hivenumber)
-		hive.hive_flags &= ~XENO_SLASH_RESTRICTED
-		hive.hive_flags |= XENO_SLASH_FORBIDDEN
+		hive.hive_flags &= ~XENO_SLASH_INFECTED
+		hive.hive_flags |= XENO_SLASH_ANY
 
 /mob/living/carbon/xenomorph/proc/construction_toggle()
 	set name = "Permit/Disallow Construction Placement"

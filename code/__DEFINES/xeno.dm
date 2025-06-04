@@ -111,8 +111,8 @@
 #define COOLDOWN_TOGGLE_DECONSTRUCTION "cooldown_toggle_deconstruction"
 #define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
 
-#define XENO_SLASH_FORBIDDEN (1<<0)
-#define XENO_SLASH_RESTRICTED (1<<1)
+#define XENO_SLASH_ANY (1<<0)
+#define XENO_SLASH_INFECTED (1<<1)
 #define XENO_UNNESTING_RESTRICTED (1<<2)
 #define XENO_CONSTRUCTION_NORMAL (1<<3)
 #define XENO_CONSTRUCTION_LEADERS (1<<4)

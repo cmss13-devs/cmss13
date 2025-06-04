@@ -8,7 +8,7 @@
 		return
 
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	hive.hive_flags &= ~(XENO_SLASH_FORBIDDEN|XENO_SLASH_RESTRICTED) //Allows harm intent for aliens
+	hive.hive_flags &= ~(XENO_SLASH_ANY|XENO_SLASH_INFECTED) //Allows harm intent for aliens
 	var/xenos_to_spawn
 	if(wave_data.wave_type == WO_SCALED_WAVE)
 		xenos_to_spawn = max(count_marines(SSmapping.levels_by_trait(ZTRAIT_GROUND)),5) * wave_data.scaling_factor * WO_SPAWN_MULTIPLIER

@@ -65,7 +65,7 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 
 /datum/supply_packs/contraband/seized/black_market_scanner
 	name = "black market scanner crate"
-	contains = list(/obj/structure/closet/coffin/woodencrate)
+	contains = list(/obj/item/device/black_market_scanner)
 	containername = "interesting wooden crate"
 	dollar_cost = 5
 	crate_heat = 0

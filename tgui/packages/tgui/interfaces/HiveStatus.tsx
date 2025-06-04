@@ -147,7 +147,6 @@ type Data = {
   user_ref: string;
   hive_color: string;
   hive_name: string;
-  is_queen: BooleanLike;
 };
 
 export const HiveStatus = (props) => {
@@ -352,14 +351,8 @@ const XenoList = (props) => {
     location: true,
   });
   const [maxHealth, setMaxHealth] = useState(100);
-  const {
-    xeno_keys,
-    xeno_vitals,
-    xeno_info,
-    user_ref,
-    is_in_ovi,
-    hive_color,
-  } = data;
+  const { xeno_keys, xeno_vitals, xeno_info, user_ref, is_in_ovi, hive_color } =
+    data;
   const [showPlasma, setShowPlasma] = useState(is_in_ovi ? true : false);
 
   const xeno_entries = filterXenos({

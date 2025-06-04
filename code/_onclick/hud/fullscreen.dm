@@ -8,6 +8,7 @@
 	var/special_lighting = null
 	///A var to check if there is currently an active special lighting timer already set in order to prevent dupes
 	var/special_lighting_active_timer = FALSE
+	var/memory_lighting_stage = 0 // for debugging, doesnt do anything on its own
 
 /mob/proc/overlay_fullscreen(category, type, severity)
 	var/atom/movable/screen/fullscreen/screen = fullscreens[category]
@@ -238,7 +239,7 @@
 	appearance_flags = NONE
 	show_when_dead = TRUE
 
-/mob/proc/special_lighting_animate(p_special_lighting_type = null, p_stage_time, p_max_stages, p_startup_delay = 1 SECONDS, p_special_start_time = 0, p_special_stage_time = null, p_special_tick_dir, p_special_call = FALSE, p_create_new_lighting_timer = FALSE, p_lighting_stays_active = TRUE)
+/mob/proc/special_lighting_animate(p_special_lighting_type = null, p_stage_time, p_max_stages, p_startup_delay = 1 SECONDS, p_special_start_time = 0, p_special_stage_time = null, p_special_tick_dir, p_special_call = FALSE, p_create_new_lighting_timer = FALSE, p_lighting_stays_active = TRUE, bypass_lighting_stage = 0)
 
 	var/atom/movable/screen/fullscreen/screen = fullscreens["lighting_backdrop"]
 	var/area/lighting_mob_area = get_area(src)
@@ -280,9 +281,19 @@
 	if(special_lighting == SPECIAL_LIGHTING_SUNSET)
 		var/clamped_sunset_stage = clamp(lighting_stage, 1, 8)
 		lighting_color = is_cold ? cold_color_progression[clamped_sunset_stage] : warm_color_progression[clamped_sunset_stage]
+		GLOB.record_lighting = clamped_sunset_stage
 	if(special_lighting == SPECIAL_LIGHTING_SUNRISE)
 		var/clamped_sunrise_stage = clamp(lighting_stage, 1, 7)
 		lighting_color = sunrise_color_progression[clamped_sunrise_stage]
+		GLOB.record_lighting = clamped_sunrise_stage
+
+	if(bypass_lighting_stage >= 1) //bypass the lighting stage, used for special area changes
+		lighting_stage = bypass_lighting_stage
+		startup_delay = 0.1 SECONDS
+		special_stage_time = 2.5 SECONDS // so it happens instantly
+		if(special_lighting == SPECIAL_LIGHTING_SUNSET)
+			var/bypassed_sunset_stage = clamp(lighting_stage, 1, 8)
+			lighting_color = is_cold ? cold_color_progression[bypassed_sunset_stage] : warm_color_progression[bypassed_sunset_stage]
 
 	if(lighting_stage == 0) //there aren't any cases you won't want these coming up fast
 		special_stage_time = 0.5 SECONDS
@@ -308,8 +319,7 @@
 
 	animate(screen, color = lighting_color, time = stage_time)
 
-	GLOB.record_lighting = lighting_stage
-
+	memory_lighting_stage = GLOB.record_lighting // for debugging, doesn't do anything on its own
 
 /mob/proc/special_lighting_register_signals()
 
@@ -380,8 +390,9 @@
 
 	if(newloc_incave && !oldloc_incave) //handles both null old loc and false oldloc
 		animate(screen, color = "#000", time = 1.5 SECONDS, easing = QUAD_EASING | EASE_OUT)
-	else if(oldloc_incave && !newloc_incave)
-		special_lighting_animate(special_lighting, 2.5 SECONDS, , , , , , , , , GLOB.record_lighting)
+	if(oldloc_incave && !newloc_incave)
+		var/bypass_lighting_stage = GLOB.record_lighting
+		special_lighting_animate(SPECIAL_LIGHTING_SUNSET, 2.5 SECONDS, , , , , , , , , bypass_lighting_stage)
 
 #undef Z_CHANGE_CALL
 #undef AREA_CHANGE_CALL

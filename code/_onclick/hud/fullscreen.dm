@@ -8,7 +8,6 @@
 	var/special_lighting = null
 	///A var to check if there is currently an active special lighting timer already set in order to prevent dupes
 	var/special_lighting_active_timer = FALSE
-	var/memory_lighting_stage = 0 // for debugging, doesnt do anything on its own
 
 /mob/proc/overlay_fullscreen(category, type, severity)
 	var/atom/movable/screen/fullscreen/screen = fullscreens[category]
@@ -289,6 +288,7 @@
 
 	if(bypass_lighting_stage >= 1) //bypass the lighting stage, used for special area changes
 		lighting_stage = bypass_lighting_stage
+		GLOB.record_lighting = bypass_lighting_stage
 		startup_delay = 0.1 SECONDS
 		special_stage_time = 2.5 SECONDS // so it happens instantly
 		if(special_lighting == SPECIAL_LIGHTING_SUNSET)
@@ -318,8 +318,6 @@
 		stage_time = special_stage_time
 
 	animate(screen, color = lighting_color, time = stage_time)
-
-	memory_lighting_stage = GLOB.record_lighting // for debugging, doesn't do anything on its own
 
 /mob/proc/special_lighting_register_signals()
 

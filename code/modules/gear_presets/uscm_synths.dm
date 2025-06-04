@@ -12,7 +12,7 @@
 
 	minimap_icon = "synth"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/synth_specialised
+	skills = /datum/skills/synth_specialised/generalised
 
 	var/is_council = FALSE
 

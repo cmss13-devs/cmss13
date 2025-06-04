@@ -137,9 +137,9 @@
 			var/damage_of_item = rand(floor(limited_force / 4), limited_force)
 
 			xeno.last_damage_data = create_cause_data("scuffling", src)
-			attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYE: [uppertext(BRUTE)])</font>"
-			xeno.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [key_name(src)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYE: [uppertext(BRUTE)])</font>"
-			msg_admin_attack("[key_name(src)] attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYE: [uppertext(BRUTE)]) in [get_area(xeno)] ([xeno.loc.x],[xeno.loc.y],[xeno.loc.z]).", xeno.loc.x, xeno.loc.y, xeno.loc.z)
+			attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)])</font>"
+			xeno.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [key_name(src)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)])</font>"
+			msg_admin_attack("[key_name(src)] attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)]) in [get_area(xeno)] ([xeno.loc.x],[xeno.loc.y],[xeno.loc.z]).", xeno.loc.x, xeno.loc.y, xeno.loc.z)
 
 			xeno.take_limb_damage(damage_of_item)
 			for(var/mob/mobs_in_view as anything in viewers(src, null))

@@ -85,8 +85,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["id"] = id
 	record_general.fields["name"] = target.real_name
 	record_general.name = target.real_name
-	record_general.fields["real_rank"] = manifest_title
-	record_general.fields["rank"] = assignment
+	record_general.fields["real_rank"] = assignment
+	record_general.fields["rank"] = manifest_title
 	record_general.fields["squad"] = target.assigned_squad ? target.assigned_squad.name : null
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"

@@ -487,18 +487,6 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
-"eO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/obj/structure/machinery/landinglight{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
-/area/tyrargo/indoors/heyst)
 "eP" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -581,9 +569,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/tyrargo/indoors/heyst)
 "fl" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -763,9 +749,7 @@
 /area/tyrargo/outdoors/outskirts/central)
 "gP" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/tyrargo/indoors/heyst)
 "gQ" = (
 /obj/item/stack/sheet/wood,
@@ -955,9 +939,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/tyrargo/indoors/heyst)
 "iC" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -1980,12 +1962,6 @@
 /obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
-"rr" = (
-/turf/open/floor/almayer{
-	allow_construction = 0;
-	icon_state = "plate"
-	},
-/area/tyrargo/indoors/heyst)
 "ru" = (
 /obj/structure/prop/tyrargo/watchtower,
 /turf/open/auto_turf/strata_grass,
@@ -3205,13 +3181,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
-"Bp" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer{
-	allow_construction = 0;
-	icon_state = "plate"
-	},
-/area/tyrargo/indoors/heyst)
 "By" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -3268,9 +3237,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
 "Cd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -3344,9 +3311,7 @@
 	name = "dirt"
 	},
 /obj/effect/decal/remains/robot,
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/tyrargo/indoors/heyst)
 "CN" = (
 /turf/closed/shuttle/escapepod{
@@ -3360,9 +3325,7 @@
 /obj/structure/machinery/landinglight{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
 "CU" = (
 /obj/structure/powerloader_wreckage,
@@ -3530,9 +3493,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/tyrargo/indoors/heyst)
 "Ev" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -3975,9 +3936,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
 "IM" = (
 /turf/open/floor/plating,
@@ -4481,9 +4440,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/indoors/heyst)
 "NQ" = (
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/tyrargo/indoors/heyst)
 "NR" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -5553,9 +5510,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/turf/open/floor/almayer{
-	icon_state = "test_floor4"
-	},
+/turf/open/floor/almayer/test_floor4,
 /area/tyrargo/indoors/heyst)
 "YP" = (
 /obj/structure/barricade/metal/wired{
@@ -6619,7 +6574,7 @@ nW
 CO
 BZ
 IL
-eO
+AP
 Vh
 By
 AP
@@ -6976,7 +6931,7 @@ rw
 oz
 ji
 NQ
-rr
+kU
 Qe
 vG
 OO
@@ -7044,7 +6999,7 @@ ji
 gQ
 ji
 iA
-Bp
+vd
 kB
 Oy
 eb
@@ -7112,7 +7067,7 @@ jw
 ji
 ji
 YM
-rr
+kU
 QW
 CA
 ky

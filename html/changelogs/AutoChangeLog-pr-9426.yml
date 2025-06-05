@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - ui: "Ping relay browser will attempt to retry once if a relay errors"

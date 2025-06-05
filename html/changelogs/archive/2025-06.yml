@@ -61,3 +61,12 @@
   zzzmike:
   - qol: nuke detonation countdown is now called detonation countdown, not "preparation
       cycle"
+2025-06-05:
+  DarkLordCabbage:
+  - spellcheck: fixed a few typos and grammatical errors in MRE food item descriptions,
+      added some fluff as well.
+  Drathek:
+  - bugfix: Simple mobs and decoys now update away_timer
+  - refactor: Calling parent for Life() is now required as well as other minor Life()
+      refactoring
+  - ui: Ping relay browser will attempt to retry once if a relay errors

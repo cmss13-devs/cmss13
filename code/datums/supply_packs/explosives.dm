@@ -68,14 +68,18 @@
 	group = "Explosives"
 
 /datum/supply_packs/brute_rockets
-	name = "BRUTE rocket crate (x2)"
+	name = "BRUTE rocket crate (x6)"
 	contains = list(
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
+		/obj/item/ammo_magazine/rocket/brute,
 		/obj/item/ammo_magazine/rocket/brute,
 		/obj/item/ammo_magazine/rocket/brute,
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper plastic explosives crate (WARNING)"
+	containername = "\improper BRUTE rocket crate (WARNING)"
 	group = "Explosives"
 
 /datum/supply_packs/explosives_incendiary

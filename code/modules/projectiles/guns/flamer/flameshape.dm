@@ -166,18 +166,18 @@
 	var/distance = 1
 	for(distance in 2 to fire_spread_amount) // first tile already set on fire
 		var/turf/T = turfs[distance]
+		sleep(1) // sleep to properly check next tile spread
 		var/result = _fire_spread_check(F, prev_T, T, burn_dam)
 		switch(result)
 			if(FIRE_CANPASS_SPREAD)
-				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, TRUE, fuel_pressure), 1)
+				generate_fire(T, F, TRUE, fuel_pressure)
 			if(FIRE_CANPASS_SET_AFLAME)
-				addtimer(CALLBACK(src, PROC_REF(generate_fire), T, F, TRUE, fuel_pressure), 1)
+				generate_fire(T, F, TRUE, fuel_pressure)
 				break
 			if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 				break
 
 		prev_T = T
-		sleep(1) // sleep to properly check next tile spread
 
 	if(F.to_call)
 		addtimer(F.to_call, distance)
@@ -204,38 +204,28 @@
 
 		var/result = FIRE_CANPASS_SPREAD
 		if(prev_T != T) // first tile already set on fire
+			sleep(1)
 			result = _fire_spread_check(F, prev_T, T, burn_dam)
 			switch(result)
-				if(FIRE_CANPASS_SPREAD)
-					tiles_to_set_aflame.Add(T)
-				if(FIRE_CANPASS_SET_AFLAME) // will stop spread after handling sides
-					tiles_to_set_aflame.Add(T)
+				if(FIRE_CANPASS_SPREAD, FIRE_CANPASS_SET_AFLAME) // FIRE_CANPASS_SET_AFLAME will stop spread after handling sides
+					generate_fire(T, F, TRUE, fuel_pressure)
 				if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
 					break
 
 		prev_T = T
-
 		for(var/side_turn in list(90, -90))
 			var/turf/side_prev_T = T
 			var/side_dir = turn(unleash_dir, side_turn)
-
 			var/side_T = get_step(side_prev_T, side_dir)
+
+			sleep(1)
 			var/side_result = _fire_spread_check(F, side_prev_T, side_T, burn_dam)
 			switch(side_result)
-				if(FIRE_CANPASS_SPREAD)
-					tiles_to_set_aflame.Add(side_T)
-				if(FIRE_CANPASS_SET_AFLAME)
-					tiles_to_set_aflame.Add(side_T)
-					continue
-				if(FIRE_CANPASS_STOP, FIRE_CANPASS_STOP_BORDER)
-					continue
-
-		addtimer(CALLBACK(src, PROC_REF(generate_fire_list), tiles_to_set_aflame, F, FALSE, fuel_pressure), 0)
+				if(FIRE_CANPASS_SPREAD, FIRE_CANPASS_SET_AFLAME)
+					generate_fire(T, F, TRUE, fuel_pressure)
 
 		if(result == FIRE_CANPASS_SET_AFLAME)
 			break
-
-		sleep(3) // 1 from step forward, 1 for each step in each side
 
 	if(F.to_call)
 		F.to_call.Invoke()

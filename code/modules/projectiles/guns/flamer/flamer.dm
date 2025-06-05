@@ -249,7 +249,7 @@
 	process_flame_tiles(temp, target, user, chem, max_range, flameshape, fire_type)
 
 /obj/item/weapon/gun/flamer/proc/process_flame_tiles(list/turfs, atom/target, mob/living/user, datum/reagent/chem, max_range, flameshape, fire_type)
-	if(length(turfs) < 2) // prevents unleasing flame underneath user
+	if(length(turfs) < 2) // prevents unleashing flame underneath user
 		return
 
 	var/turf/prev_turf = turfs[1] // from get_line proc will be turf under user

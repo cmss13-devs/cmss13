@@ -26,6 +26,10 @@
 			var/atom/movable/poi = locate(ref) in GLOB.mob_list
 			if (poi == null)
 				poi = locate(ref) in GLOB.all_multi_vehicles
+				// SS220 EDIT - START - Spec Vehicles Support
+				if(poi == null)
+					poi = locate(ref) in GLOB.all_spec_vehicles
+				// SS220 EDIT - END - Spec Vehicles Support
 				if (poi == null)
 					. = TRUE
 					return
@@ -89,7 +93,7 @@
 
 		var/mob/poi_mob = poi
 		if(!istype(poi_mob))
-			if(isVehicleMultitile(poi_mob))
+			if(isVehicleMultitile(poi_mob) || isVehicle(poi_mob))	// SS220 EDIT - Spec Vehicles Support
 				vehicles += list(serialized)
 			else
 				misc += list(serialized)

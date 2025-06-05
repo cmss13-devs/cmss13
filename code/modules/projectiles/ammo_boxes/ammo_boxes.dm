@@ -180,6 +180,7 @@
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
 	M.icon_state = icon_state_deployed ? icon_state_deployed : icon_state
 	M.name = name
+	M.ru_names_rename(ru_names_toml(name)) // SS220 - EDIT ADDITTION
 	M.desc = desc
 	M.item_box = src
 	M.can_explode = can_explode

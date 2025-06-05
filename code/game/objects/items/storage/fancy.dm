@@ -257,7 +257,7 @@
 /obj/item/storage/fancy/cigarettes/kpack
 	name = "\improper Koorlander Gold packet"
 	desc = "Lovingly machine-rolled for YOUR pleasure. For when you want to look cool and the risk of a slow horrible death isn't really a factor."
-	desc_lore = "Popularized by Seegson workers during the construction of Sevastol Station, these cigarettes lit easily, burned evenly, and offered a straightforward, dependable smoke. The flat, dusty flavor and steady draw quickly made them a colonial staple. Koorlander later scaled production on frontier farming worlds and locked in exclusive trade deals with the USCM."
+	desc_lore = "Popularized by Seegson workers during the construction of Sevastopol Station, these cigarettes lit easily, burned evenly, and offered a straightforward, dependable smoke. The flat, dusty flavor and steady draw quickly made them a colonial staple. Koorlander later scaled production on frontier farming worlds and locked in exclusive trade deals with the USCM."
 	icon_state = "kpacket"
 	icon = 'icons/obj/items/smoking/packets/koorlander.dmi'
 	item_state = "kpacket"

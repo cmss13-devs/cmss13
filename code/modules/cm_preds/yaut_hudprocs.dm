@@ -492,7 +492,9 @@
 	else if(T.hunter_data.thralled)
 		var/predtitle = (stripped_input(usr, "Enter the newblood's new name.", "Blooded Name", "" , MAX_NAME_LEN))
 		change_real_name(T, html_decode(predtitle))
-		return
+		GLOB.human_mob_list -= T
+		GLOB.yautja_mob_list += T
+		T.faction = FACTION_BLOODED_HUNTER
 
 	else if(!T.hunter_data.thralled)
 		to_chat(src, SPAN_YAUTJABOLD("[T] has not proved themselves worthy of blooding."))

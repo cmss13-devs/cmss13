@@ -288,14 +288,14 @@
 
 /datum/action/item_action/smartgun/toggle_auto_aim/action_activate()
 	. = ..()
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	G.toggle_auto_aim(usr)
+	var/obj/item/weapon/gun/smartgun/dumbgun = holder_item
+	dumbgun.toggle_auto_aim(usr)
 
 /datum/action/item_action/smartgun/toggle_auto_aim/proc/update_icon()
 	if(!holder_item)
 		return
-	var/obj/item/weapon/gun/smartgun/G = holder_item
-	if(G.auto_aim)
+	var/obj/item/weapon/gun/smartgun/dumbgun = holder_item
+	if(dumbgun.auto_aim)
 		button.icon_state = "template_on"
 	else
 		button.icon_state = "template"

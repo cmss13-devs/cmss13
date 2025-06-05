@@ -590,6 +590,17 @@
 	requires_power = FALSE
 	unoviable_timer = FALSE
 
+// USS Heyst
+
+/area/tyrargo/indoors/heyst
+	name = "USS Heyst"
+	minimap_color = MINIMAP_SQUAD_ECHO
+	icon_state = "Holodeck"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	soundscape_playlist = SCAPE_PL_LV759_INDOORS
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	ceiling_muffle = FALSE
+
 // ERT Spawn Area
 
 /area/tyrargo/outdoors/army_staging

@@ -511,6 +511,10 @@
 /obj/structure/prop/turret{
 	dir = 4
 	},
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
 /turf/open/asphalt/cement/cement14,
 /area/tyrargo/oob)
 "abM" = (
@@ -6434,6 +6438,12 @@
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
+"arf" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "heyst_under"
+	},
+/turf/closed/wall/rock,
+/area/tyrargo/oob)
 "arg" = (
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -6789,6 +6799,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /turf/open/asphalt,
+/area/tyrargo/oob)
+"arL" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/turf/open/asphalt/cement,
 /area/tyrargo/oob)
 "arM" = (
 /obj/structure/flora/bush/snow{
@@ -48746,8 +48763,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door_control{
 	id = "tyrargo_carpark_south";
-	name = "Carpark Entrance Barrier";
-	explo_proof = 1
+	name = "Carpark Entrance Barrier"
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
@@ -49290,6 +49306,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/alt_edge/east,
 /area/tyrargo/outdoors/colony_streets/west)
+"cmW" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
+	},
+/turf/open/asphalt/cement/cement15,
+/area/tyrargo/oob)
 "cmX" = (
 /obj/structure/stairs/multiz/up{
 	dir = 1
@@ -86059,8 +86082,7 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "tyrargo_carpark_north";
-	name = "Carpark Entrance Barrier";
-	explo_proof = 1
+	name = "Carpark Entrance Barrier"
 	},
 /turf/open/floor/almayer/plating,
 /area/tyrargo/indoors/museum_storage/ground)
@@ -86952,6 +86974,18 @@
 	},
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north_west)
+"ekq" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "heyst_surface"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
+"ekr" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "heyst_above"
+	},
+/turf/open_space,
+/area/tyrargo/outdoors/outskirts_road/central)
 "els" = (
 /obj/structure/stairs{
 	dir = 1
@@ -113095,7 +113129,7 @@ bYV
 bYV
 bYV
 bYb
-bsw
+arf
 bsw
 bsw
 bsw
@@ -153154,7 +153188,7 @@ bnj
 bxr
 bmT
 bmU
-bxr
+ekq
 bxr
 bBe
 bxr
@@ -171386,7 +171420,7 @@ cgc
 afF
 bta
 bta
-aas
+arL
 yaU
 oPL
 bsZ
@@ -171568,7 +171602,7 @@ afL
 bta
 bta
 bta
-oPL
+cmW
 dcD
 btW
 bsZ
@@ -172478,7 +172512,7 @@ afP
 afG
 bta
 bta
-aas
+arL
 qRA
 ymd
 bsZ
@@ -198458,7 +198492,7 @@ cSe
 cSe
 cSe
 cSe
-cSe
+ekr
 cSe
 cSe
 cSe

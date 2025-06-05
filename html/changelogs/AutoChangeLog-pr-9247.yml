@@ -1,8 +1,0 @@
-author: "Nihisohel"
-delete-after: True
-changes:
-  - rscadd: "You can now attach patches on armor; this might look ugly if you are sleeveless and padless, however."
-  - rscadd: "Nearly every exosuit clothing can now hold accessories."
-  - bugfix: "Accessories now have a limit to them, typically only 1 but some items can go up to 4."
-  - code_imp: "Cleans up the valid accessory lists."
-  - refactor: "Defuncts restricted_accessory_slots on clothings for a more intuitive per accessory slot limit dependent on accessory category."

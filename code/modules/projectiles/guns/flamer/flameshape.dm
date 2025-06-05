@@ -200,7 +200,6 @@
 
 	for(var/distance in 1 to fire_spread_amount)
 		var/turf/T = turfs[distance]
-		var/list/tiles_to_set_aflame = list()
 
 		var/result = FIRE_CANPASS_SPREAD
 		if(prev_T != T) // first tile already set on fire

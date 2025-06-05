@@ -86986,6 +86986,12 @@
 	},
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts_road/central)
+"eks" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crash_aboveground"
+	},
+/turf/open_space,
+/area/tyrargo/outdoors/outskirts/central)
 "els" = (
 /obj/structure/stairs{
 	dir = 1
@@ -195544,7 +195550,7 @@ cSk
 cSk
 cSk
 cSk
-cSk
+eks
 cSk
 cSk
 cSk
@@ -198492,8 +198498,8 @@ cSe
 cSe
 cSe
 cSe
-ekr
 cSe
+ekr
 cSe
 cSe
 cSe

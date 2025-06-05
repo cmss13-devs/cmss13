@@ -1,34 +1,31 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/closed/wall/almayer/outer,
-/area/tyrargo/oob)
 "g" = (
 /turf/open/floor/almayer_hull/outerhull_dir/west,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "z" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "A" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "D" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "N" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "R" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "S" = (
 /turf/open/floor/almayer_hull,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "U" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "X" = (
 /turf/open/floor/almayer_hull/outerhull_dir,
-/area/tyrargo/oob)
+/area/tyrargo/outdoors/outskirts/central)
 "Z" = (
 /turf/template_noop,
 /area/template_noop)
@@ -37,10 +34,10 @@
 Z
 Z
 Z
-a
-a
-a
-a
+Z
+Z
+Z
+Z
 Z
 Z
 Z
@@ -71,18 +68,18 @@ Z
 Z
 "}
 (2,1,1) = {"
-a
-a
-a
-a
+Z
+Z
+Z
+Z
 R
 N
-a
-a
-a
-a
-a
-a
+Z
+Z
+Z
+Z
+Z
+Z
 Z
 Z
 Z
@@ -108,8 +105,8 @@ Z
 Z
 "}
 (3,1,1) = {"
-a
-R
+Z
+g
 g
 g
 S
@@ -119,8 +116,8 @@ g
 g
 g
 N
-a
-a
+Z
+Z
 Z
 Z
 Z
@@ -145,8 +142,8 @@ Z
 Z
 "}
 (4,1,1) = {"
-a
-z
+Z
+S
 S
 S
 S
@@ -157,7 +154,6 @@ S
 S
 S
 N
-a
 Z
 Z
 Z
@@ -165,26 +161,27 @@ Z
 Z
 Z
 Z
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
 Z
 Z
 Z
 "}
 (5,1,1) = {"
-a
-z
-S
+Z
+Z
+Z
 S
 S
 S
@@ -194,15 +191,15 @@ S
 S
 S
 X
-a
 Z
 Z
 Z
 Z
 Z
 Z
-a
-a
+Z
+Z
+Z
 R
 g
 g
@@ -213,15 +210,15 @@ g
 g
 g
 N
-a
-a
-a
-a
+Z
+Z
+Z
+Z
 "}
 (6,1,1) = {"
-a
-z
-S
+Z
+Z
+Z
 S
 S
 S
@@ -231,14 +228,14 @@ S
 S
 S
 X
-a
-a
 Z
 Z
 Z
 Z
 Z
-a
+Z
+Z
+Z
 R
 S
 S
@@ -253,11 +250,11 @@ S
 g
 g
 N
-a
+Z
 "}
 (7,1,1) = {"
-a
-z
+Z
+Z
 S
 S
 S
@@ -268,14 +265,14 @@ S
 S
 S
 X
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
 z
 S
 S
@@ -290,11 +287,11 @@ S
 S
 S
 X
-a
+Z
 "}
 (8,1,1) = {"
-a
-z
+Z
+S
 S
 S
 S
@@ -327,13 +324,13 @@ S
 S
 S
 X
-a
+Z
 "}
 (9,1,1) = {"
-a
-z
+Z
+Z
 S
-S
+Z
 S
 S
 S
@@ -364,13 +361,13 @@ S
 S
 S
 X
-a
+Z
 "}
 (10,1,1) = {"
-a
-z
-S
-S
+Z
+Z
+Z
+Z
 S
 S
 S
@@ -401,11 +398,11 @@ S
 S
 S
 X
-a
+Z
 "}
 (11,1,1) = {"
-a
-z
+Z
+Z
 S
 S
 S
@@ -438,11 +435,11 @@ S
 S
 S
 X
-a
+Z
 "}
 (12,1,1) = {"
-a
-z
+Z
+S
 S
 S
 S
@@ -475,11 +472,11 @@ S
 S
 S
 X
-a
+Z
 "}
 (13,1,1) = {"
-a
-z
+Z
+Z
 S
 S
 S
@@ -490,14 +487,14 @@ S
 S
 S
 X
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
 z
 S
 S
@@ -512,12 +509,12 @@ S
 S
 S
 X
-a
+Z
 "}
 (14,1,1) = {"
-a
-z
-S
+Z
+Z
+Z
 S
 S
 S
@@ -527,14 +524,14 @@ S
 S
 S
 X
-a
-a
 Z
 Z
 Z
 Z
 Z
-a
+Z
+Z
+Z
 A
 S
 S
@@ -549,11 +546,11 @@ S
 D
 D
 U
-a
+Z
 "}
 (15,1,1) = {"
-a
-z
+Z
+Z
 S
 S
 S
@@ -564,15 +561,15 @@ S
 S
 S
 X
-a
 Z
 Z
 Z
 Z
 Z
 Z
-a
-a
+Z
+Z
+Z
 A
 D
 D
@@ -583,15 +580,15 @@ D
 D
 D
 U
-a
-a
-a
-a
+Z
+Z
+Z
+Z
 "}
 (16,1,1) = {"
-a
-z
-S
+Z
+Z
+Z
 S
 S
 S
@@ -601,7 +598,6 @@ S
 S
 S
 U
-a
 Z
 Z
 Z
@@ -609,25 +605,26 @@ Z
 Z
 Z
 Z
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
+Z
 Z
 Z
 Z
 "}
 (17,1,1) = {"
-a
-A
+Z
+Z
 D
 D
 S
@@ -637,8 +634,8 @@ D
 D
 D
 U
-a
-a
+Z
+Z
 Z
 Z
 Z
@@ -663,18 +660,18 @@ Z
 Z
 "}
 (18,1,1) = {"
-a
-a
-a
-a
+Z
+Z
+Z
+Z
 A
 U
-a
-a
-a
-a
-a
-a
+Z
+Z
+Z
+Z
+Z
+Z
 Z
 Z
 Z
@@ -703,10 +700,10 @@ Z
 Z
 Z
 Z
-a
-a
-a
-a
+Z
+Z
+Z
+Z
 Z
 Z
 Z

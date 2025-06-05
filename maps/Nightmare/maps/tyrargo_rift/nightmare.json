@@ -19,6 +19,13 @@
 	},
     {
 		"type": "map_insert",
+		"landmark": "crash_aboveground",
+		"chance": 1.0,
+		"path": "standalone/dropship_bunker_crash_aboveground.dmm",
+		"when": { "lvevent": "dropshipcrash" }
+	},
+    {
+		"type": "map_insert",
 		"landmark": "heyst_surface",
 		"chance": 1.0,
 		"path": "standalone/uss_heyst.dmm",

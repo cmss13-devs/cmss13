@@ -98,7 +98,7 @@
 	var/hits_lying_mobs = FALSE
 
 	/// Type of empty shell casing
-	var/shell_casing = null
+	var/shell_casing
 
 /datum/ammo/New()
 	set_bullet_traits()

@@ -1,6 +1,6 @@
 /datum/xeno_strain/eggsac
 	name = CARRIER_EGGSAC
-	description = "In exchange for your ability to store huggers and place traps, you gain larger plasma stores, strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nYou can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
+	description = "In exchange for your ability to store huggers and place traps as well as smaller plasma stores, you gain strong pheromones, and the ability to lay eggs by using your plasma stores. In addition, you can now carry twelve eggs at once and can place eggs one pace further than normal. \n\nYou can also place a small number of fragile eggs on normal weeds. These eggs have a lifetime of five minutes while you remain within 14 tiles. Or one minute if you leave this range."
 	flavor_description = "An egg is always an adventure; the next one may be different."
 	icon_state_prefix = "Eggsac"
 
@@ -20,6 +20,7 @@
 /datum/xeno_strain/eggsac/apply_strain(mob/living/carbon/xenomorph/carrier/carrier)
 	carrier.plasma_types = list(PLASMA_EGG)
 	carrier.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
+	carrier.plasmapool_modifier = 0.75 // With Carrier getting 800 Plasma instead of 600, keep it as a drawback on Eggsac
 	carrier.recalculate_plasma()
 	carrier.recalculate_pheromones()
 
@@ -122,7 +123,7 @@
 				xeno.eggs_cur++
 				to_chat(xeno, SPAN_XENONOTICE("We generate an egg. Now sheltering: [xeno.eggs_cur] / [xeno.eggs_max]."))
 				xeno.update_icons()
-			
+
 #undef EGGSAC_OFF_WEED_EGGCAP
 #undef EGGSAC_EGG_SUSTAIN_DISTANCE
 

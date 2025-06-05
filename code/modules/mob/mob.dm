@@ -237,6 +237,7 @@
 
 
 /mob/proc/Life(delta_time)
+	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++

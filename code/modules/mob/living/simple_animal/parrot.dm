@@ -269,7 +269,7 @@
 	if(client || stat)
 		return //Lets not force players or dead/incap parrots to move
 
-	if(!isturf(src.loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
+	if(!isturf(loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
 		return //If it can't move, dont let it move. (The buckled check probably isn't necessary thanks to canmove)
 
 

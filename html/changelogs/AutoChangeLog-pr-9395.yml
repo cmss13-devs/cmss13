@@ -1,4 +1,0 @@
-author: "kalazus"
-delete-after: True
-changes:
-  - bugfix: "fixed king stunning himself by jumping on turrets."

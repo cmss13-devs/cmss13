@@ -535,6 +535,15 @@
 
 // Underground Other
 
+/area/tyrargo/underground/oob_area
+	name = "Disconnected Underground Bunker Network"
+	minimap_color = MINIMAP_AREA_OOB
+	icon_state = "Holodeck"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	requires_power = FALSE
+
 /area/tyrargo/underground/engineering
 	name = "Sector F: Power Plant - Underground"
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING

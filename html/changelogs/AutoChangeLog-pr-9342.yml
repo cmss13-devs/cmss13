@@ -1,0 +1,6 @@
+author: "Joelampost"
+delete-after: True
+changes:
+  - rscadd: "Adds a hard lockout for player who have reached 10 youngblood hours from youngblood."
+  - rscadd: "Adds a cooldown for youngblood ERTs (40 minutes)."
+  - rscadd: "Adds three new youngblood ERTs intended for newer and more experienced players"

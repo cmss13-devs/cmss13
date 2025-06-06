@@ -13,6 +13,7 @@
 	var/weaken_power = 0.5
 	var/slowdown = 2
 	var/fling_damage = 0
+	var/range = 1
 
 // Warrior Lunge
 /datum/action/xeno_action/activable/lunge

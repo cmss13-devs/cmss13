@@ -23,8 +23,6 @@
 	tackle_min = 2
 	tackle_max = 4
 
-	agility_speed_increase = -0.9
-
 	heal_resting = 1.4
 
 	minimum_evolve_time = 9 MINUTES
@@ -52,6 +50,7 @@
 		/datum/action/xeno_action/activable/bludgeon,
 		/datum/action/xeno_action/activable/fling/bash,
 		/datum/action/xeno_action/activable/pounce/blitz,
+		/datum/action/xeno_action/activable/brutalize,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -256,6 +255,7 @@
 	if(did_reset)
 		var/datum/action/xeno_action/activable/pounce/charge/action = get_action(xeno, /datum/action/xeno_action/activable/pounce/blitz)
 		action.end_cooldown()
+		reset_timer = addtimer(CALLBACK(src, PROC_REF(go_on_cooldown)), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 		if(resets == max_resets)
 			xeno.add_filter("empowered_blitz", 1, list("type" = "outline", "color" = "#8B0000", "size" = 1))
@@ -273,3 +273,82 @@
 	button.overlays.Cut()
 	action_icon_state = "blitz[resets + 1]"
 	button.overlays += image(icon_file, button, action_icon_state)
+
+/datum/action/xeno_action/activable/pounce/blitz/proc/go_on_cooldown()
+	apply_cooldown()
+	resets = 0
+	unique_hits.Cut()
+	button.overlays.Cut()
+	action_icon_state = "blitz[resets + 1]"
+	button.overlays += image(icon_file, button, action_icon_state)
+
+/datum/action/xeno_action/activable/brutalize/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!action_cooldown_check())
+		return
+
+	if(!affected_atom)
+		return
+
+	if(!isturf(xeno.loc))
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if(xeno.can_not_harm(affected_atom) || !ismob(affected_atom))
+		return
+
+	if(xeno.action_busy)
+		return
+
+	var/mob/living/carbon/carbon = affected_atom
+
+	if(!carbon.Adjacent(xeno))
+		return
+
+	if(carbon.stat == DEAD)
+		return
+
+	if(!isliving(affected_atom))
+		return
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] begins slowly lifting [carbon] into the air."),
+	SPAN_XENOWARNING("You begin focusing your anger as you slowly lift [carbon] into the air."))
+
+	if(!do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		return
+
+	if(!carbon.Adjacent(xeno))
+		return
+
+	if(carbon.stat == DEAD)
+		return
+
+	if(!isliving(affected_atom))
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] brutally slams [carbon] into the ground!"),
+	SPAN_XENOWARNING("You slam [carbon] brutally into the ground!"))
+
+	apply_cooldown()
+	playsound(carbon, 'sound/effects/bang.ogg', 25, 0)
+	animate(carbon, pixel_y = carbon.pixel_y + 32, time = 4, easing = SINE_EASING)
+	addtimer(CALLBACK(src, PROC_REF(slam), carbon), 0.4 SECONDS)
+
+	. = ..()
+
+/datum/action/xeno_action/activable/brutalize/proc/slam(mob/living/carbon/target)
+	playsound(target, 'sound/effects/bang.ogg', 25, 0)
+	playsound(target,"slam", 50, 1)
+	animate(target, pixel_y = 0, time = 4, easing = BOUNCE_EASING)
+	target.apply_armoured_damage(get_xeno_damage_slash(target, 45), ARMOR_MELEE, BRUTE, "chest", 20)
+
+	if(!(HAS_TRAIT(target, TRAIT_KNOCKEDOUT) || target.stat == UNCONSCIOUS))
+		return
+
+	target.death(create_cause_data("brutalize", owner))

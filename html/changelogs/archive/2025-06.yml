@@ -70,3 +70,12 @@
   - refactor: Calling parent for Life() is now required as well as other minor Life()
       refactoring
   - ui: Ping relay browser will attempt to retry once if a relay errors
+2025-06-06:
+  Drathek:
+  - bugfix: Fixed hauled persons being able to pull stuff and other people being able
+      to pull hauled people
+  - bugfix: Fixed monkeys being able to move while hauled
+  dadlips:
+  - bugfix: infinite money glitch
+  kiVts:
+  - bugfix: fixed an attachment exploit

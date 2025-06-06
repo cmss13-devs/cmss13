@@ -2,8 +2,8 @@
 	caste_type = XENO_CASTE_BRUISER
 	tier = 2
 
-	melee_damage_lower = XENO_DAMAGE_TIER_4
-	melee_damage_upper = XENO_DAMAGE_TIER_4
+	melee_damage_lower = XENO_DAMAGE_TIER_3
+	melee_damage_upper = XENO_DAMAGE_TIER_3
 	melee_vehicle_damage = XENO_DAMAGE_TIER_5
 	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
@@ -48,8 +48,8 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/bludgeon,
-		/datum/action/xeno_action/activable/fling/bash,
 		/datum/action/xeno_action/activable/pounce/blitz,
+		/datum/action/xeno_action/activable/fling/bash,
 		/datum/action/xeno_action/activable/brutalize,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -210,6 +210,10 @@
 
 	var/turf/before_turf = get_turf(xeno)
 	. = ..()
+
+	if(!.)
+		return
+
 	var/turf/after_turf = get_turf(xeno)
 	var/list/turf/path = get_line(before_turf, after_turf)
 
@@ -253,8 +257,6 @@
 
 	behavior.dashing = FALSE
 	if(did_reset)
-		var/datum/action/xeno_action/activable/pounce/charge/action = get_action(xeno, /datum/action/xeno_action/activable/pounce/blitz)
-		action.end_cooldown()
 		reset_timer = addtimer(CALLBACK(src, PROC_REF(go_on_cooldown)), 4 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
 		if(resets == max_resets)
@@ -266,6 +268,7 @@
 			bash_action.end_cooldown()
 			bludgeon_action.end_cooldown()
 
+		apply_cooldown()
 		xeno.remove_filter("empowered_blitz")
 		resets = 0
 		unique_hits.Cut()

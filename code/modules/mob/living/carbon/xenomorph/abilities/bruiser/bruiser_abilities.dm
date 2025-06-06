@@ -38,6 +38,7 @@
 	slash = FALSE
 	freeze_self = FALSE
 	can_be_shield_blocked = FALSE
+	apply_cooldown = FALSE
 
 	var/list/datum/weakref/unique_hits = list()
 	var/resets = 0

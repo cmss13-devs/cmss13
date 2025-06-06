@@ -224,6 +224,8 @@
 	var/list/pounce_callbacks = null // Specific callbacks to invoke when a pounce lands on an atom of a specific type
 										// (note that if a collided atom does not match any of the key types, defaults to the appropriate X_launch_collision proc)
 
+	var/apply_cooldown = TRUE
+
 /datum/action/xeno_action/activable/pounce/New()
 	. = ..()
 	initialize_pounce_pass_flags()

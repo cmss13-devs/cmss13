@@ -328,7 +328,7 @@
 		return
 	else if(!fling_user.Adjacent(affected_atom) && get_dist(affected_atom, fling_user) <= range)
 		fling_user.throw_atom(get_step_towards(affected_atom, fling_user), 3, SPEED_SLOW, fling_user, tracking=TRUE)
-	else
+	else if(get_dist(affected_atom, fling_user) > range)
 		return
 
 	var/mob/living/carbon/carbon = affected_atom

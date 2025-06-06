@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(cm_vending_thrall, list(
 
 GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		list("Blooded Equipment", 0, null, null, null),
-		list("Simple Relay Beacon", 0, /obj/item/device/thrall_teleporter, /obj/item/storage/medicomp/full, MARINE_CAN_BUY_MAP, VENDOR_ITEM_REGULAR),
+		list("Blooded Equipment", 0, list(/obj/item/device/thrall_teleporter, /obj/item/storage/medicomp/full), MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 
 		list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),
 		list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -181,7 +181,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 				vend_fail()
 			return FALSE
 
-/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		return TRUE
 	if(!hacked || ignore_hack)

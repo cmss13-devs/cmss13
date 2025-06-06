@@ -7374,8 +7374,9 @@
 /turf/open/floor/predship/hull/non_weedable_hull/west,
 /area/yautja/lower_deck)
 "zx" = (
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/left_centre,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/shuttle/bright_red/glow,
 /area/yautja/lower_deck)
 "zy" = (
 /obj/structure/prop/invuln/catwalk_support{
@@ -10053,6 +10054,10 @@
 /obj/structure/platform_decoration/metal/hunter/north,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_5/north,
 /area/yautja)
+"Il" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/right,
+/turf/open/floor/corsat,
+/area/yautja)
 "In" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -11373,6 +11378,10 @@
 "Nj" = (
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/east,
 /area/yautja/lower_deck)
+"Nk" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/right,
+/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/area/yautja/lower_deck)
 "Nn" = (
 /obj/structure/pipes/unary/freezer/yautja{
 	dir = 8
@@ -11896,6 +11905,7 @@
 /turf/open/shuttle/bright_red/glow,
 /area/yautja/lower_deck)
 "Pg" = (
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/left,
 /turf/open/floor/corsat,
 /area/yautja)
 "Po" = (
@@ -13283,7 +13293,7 @@
 /area/yautja/hangar)
 "TQ" = (
 /obj/structure/machinery/door/airlock/yautja{
-	name = "\Thrall Quarters"
+	name = "\improper Thrall Quarters"
 	},
 /obj/effect/decal/cleanable/dirt{
 	layer = 3.2;
@@ -14427,8 +14437,9 @@
 /turf/closed/wall/huntership,
 /area/yautja)
 "Xb" = (
+/obj/effect/hunter/catwalk/hunter_grate,
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/centre,
-/turf/open/shuttle/dropship/predship/hunter_catwalk_new,
+/turf/open/shuttle/bright_red/glow,
 /area/yautja/lower_deck)
 "Xc" = (
 /obj/structure/prop/hunter/fake_platform/hunter/north,
@@ -20528,7 +20539,7 @@ lv
 hH
 aV
 aV
-Pg
+Il
 hC
 Mu
 rm
@@ -26811,8 +26822,8 @@ dI
 dI
 dI
 qR
+rP
 nx
-IM
 Sw
 xM
 bl
@@ -26913,8 +26924,8 @@ dI
 dI
 qR
 rP
+rP
 zx
-uP
 uP
 uP
 IM
@@ -27015,8 +27026,8 @@ dI
 dI
 zL
 rP
+rP
 Xb
-uP
 px
 uP
 St
@@ -27117,8 +27128,8 @@ dI
 dI
 zL
 rP
-IM
-IM
+rP
+Nk
 iz
 LN
 mU

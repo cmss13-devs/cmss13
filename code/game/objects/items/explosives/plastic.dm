@@ -209,10 +209,6 @@
 			to_chat(user, SPAN_WARNING("You are unable to stick [src] to [W]!"))
 			return FALSE
 
-	if(istype(target, /obj/structure/blocker/fog))
-		to_chat(user, SPAN_WARNING("You cannot plant [name] on [target]!"))
-		return FALSE
-
 	if(istype(target, /obj/structure/window))
 		var/obj/structure/window/W = target
 		if(W.not_damageable)
@@ -350,10 +346,6 @@
 
 	if(target.explo_proof)
 		to_chat(user, SPAN_WARNING("[name] would do nothing to [target]!"))
-		return FALSE
-
-	if(istype(target, /obj/structure/blocker/fog))
-		to_chat(user, SPAN_WARNING("You are unable to stick to [target]."))
 		return FALSE
 
 	if(SSinterior.in_interior(target))// vehicle checks again JUST IN CASE

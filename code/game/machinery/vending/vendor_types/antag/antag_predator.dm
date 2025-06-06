@@ -263,7 +263,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	icon_state = "pred_vendor_rcentre"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/right
-	icon_state = "pred_vendor_right"
+	icon_state = "pred_vendor_thrall_right"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/get_listed_products(mob/user)
 	return GLOB.cm_vending_thrall
@@ -275,17 +275,11 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
-/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/left_centre
-	icon_state = "pred_vendor_lcenter"
-
-/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thralll/centre
-	icon_state = "pred_vendor_centre"
-
-/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/right_centre
-	icon_state = "pred_vendor_rcentre"
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/left
+	icon_state = "pred_vendor_blooded_left"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/right
-	icon_state = "pred_vendor_right"
+	icon_state = "pred_vendor_blooded_right"
 
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/get_listed_products(mob/user)
 	return GLOB.cm_vending_blooded_thrall

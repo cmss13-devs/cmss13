@@ -2504,7 +2504,6 @@ Defined in conflicts.dm of the #defines folder.
 			playsound(user, gun_deactivate_sound, 30, 1)
 		underbarrel_gun.active_attachable = null
 		icon_state = initial(icon_state)
-
 		UnregisterSignal(underbarrel_gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 		underbarrel_gun.recalculate_attachment_bonuses()
 
@@ -2516,7 +2515,7 @@ Defined in conflicts.dm of the #defines folder.
 		underbarrel_gun.damage_mult = 1
 		RegisterSignal(underbarrel_gun, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
 		icon_state += "-on"
-    
+
 	SEND_SIGNAL(underbarrel_gun, COMSIG_GUN_INTERRUPT_FIRE)
 
 	for(var/X in underbarrel_gun.actions)

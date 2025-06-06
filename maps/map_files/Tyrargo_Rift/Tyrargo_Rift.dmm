@@ -87767,9 +87767,6 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 30
-	},
 /turf/open/floor/corsat/box,
 /area/tyrargo/underground/bunker/north)
 "emZ" = (

@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed hauled persons being able to pull stuff and other people being able to pull hauled people"
+  - bugfix: "Fixed monkeys being able to move while hauled"

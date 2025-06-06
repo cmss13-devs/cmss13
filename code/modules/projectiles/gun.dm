@@ -1703,6 +1703,7 @@ and you're good to go.
 			check_for_attachment_fire = TRUE
 		else
 			active_attachable.activate_attachment(src, null, TRUE)//No way.
+			return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE) //do nothing
 
 	var/fired_by_akimbo = FALSE
 	if(dual_wield)

@@ -261,6 +261,7 @@
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You are swept off your feet by [dancer_user]!"))
 	if (daze_duration > 0)
 		target_carbon.apply_effect(daze_duration, DAZE)
+	playsound(dancer_user, 'sound/effects/hit_kick.ogg', 75, 1)
 
 	apply_cooldown()
 	return ..()

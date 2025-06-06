@@ -81,6 +81,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	color = "purple"
 	),
 	list(
+	name = XENO_CASTE_BRUISER,
+	key = /mob/living/carbon/xenomorph/bruiser,
+	color = "purple"
+	),
+	list(
 	name = XENO_CASTE_SPITTER,
 	key = /mob/living/carbon/xenomorph/spitter,
 	color = "purple"

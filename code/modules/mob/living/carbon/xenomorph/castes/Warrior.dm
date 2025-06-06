@@ -15,7 +15,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
-	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
+	evolves_to = list(XENO_CASTE_PRAETORIAN)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
@@ -362,6 +362,14 @@
 	fling_user.animation_attack_on(carbon)
 	fling_user.flick_attack_overlay(carbon, "disarm")
 	fling_user.throw_carbon(carbon, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+
+	if(fling_damage)
+		var/obj/limb/target_limb = carbon.get_limb(check_zone(fling_user.zone_selected))
+
+		if (ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+			target_limb = carbon.get_limb("chest")
+
+		carbon.apply_armoured_damage(fling_damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 
 	apply_cooldown()
 	return ..()

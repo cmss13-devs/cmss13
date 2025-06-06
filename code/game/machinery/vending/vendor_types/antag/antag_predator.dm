@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(cm_vending_thrall, list(
 
 GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		list("Blooded Equipment", 0, null, null, null),
-		list("Simple Relay Beacon", 0, /obj/item/device/thrall_teleporter, MARINE_CAN_BUY_MAP, VENDOR_ITEM_REGULAR),
+		list("Simple Relay Beacon", 0, /obj/item/device/thrall_teleporter, /obj/item/storage/medicomp/full, MARINE_CAN_BUY_MAP, VENDOR_ITEM_REGULAR),
 
 		list("Clothing Accessory (CHOOSE 1)", 0, null, null, null),
 		list("Third-Cape", 0, /obj/item/clothing/yautja_cape/third, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		list("Poncho", 0, /obj/item/clothing/yautja_cape/poncho, MARINE_CAN_BUY_COMBAT_ARMOR, VENDOR_ITEM_MANDATORY),
 			))
 
-/obj/structure/machinery/cm_vending/clothing/yautja
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter
 	name = "\improper Yautja Hunting Gear Rack"
 	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
@@ -157,7 +157,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
-/obj/structure/machinery/cm_vending/clothing/yautja/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(!allowed(user))
 		if(display)
 			to_chat(user, SPAN_WARNING("Access denied."))
@@ -171,25 +171,50 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return FALSE
 	return TRUE
 
-/obj/structure/machinery/cm_vending/clothing/yautja/left_centre
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(isthrall(user))
+		return TRUE
+	if(!hacked || ignore_hack)
+		if(!allowed(user))
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied."))
+				vend_fail()
+			return FALSE
+
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		return TRUE
+	if(!hacked || ignore_hack)
+		if(!allowed(user))
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied."))
+				vend_fail()
+			return FALSE
+
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/left_centre
 	icon_state = "pred_vendor_lcenter"
 
-/obj/structure/machinery/cm_vending/clothing/yautja/centre
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/centre
 	icon_state = "pred_vendor_centre"
 
-/obj/structure/machinery/cm_vending/clothing/yautja/right_centre
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/right_centre
 	icon_state = "pred_vendor_rcentre"
 
-/obj/structure/machinery/cm_vending/clothing/yautja/right
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/right
 	icon_state = "pred_vendor_right"
 
-/obj/structure/machinery/cm_vending/clothing/yautja/get_listed_products(mob/user)
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/get_listed_products(mob/user)
 	return GLOB.cm_vending_equipment_yautja
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder
 	name = "\improper Yautja Elder Hunting Gear Rack"
+	desc = "A gear rack for hunting."
+	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"
 	req_access = list(ACCESS_YAUTJA_ELITE)
+	vendor_role = list(JOB_PREDATOR)
+	show_points = FALSE
+	vendor_theme = VENDOR_THEME_YAUTJA
 
 /obj/structure/machinery/cm_vending/clothing/yautja/elder/right
 	icon_state = "pred_vendor_elder_right"

@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_6
 	armor_deflection = XENO_ARMOR_TIER_3
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_6
+	speed = XENO_SPEED_TIER_5
 
 	behavior_delegate_type = /datum/behavior_delegate/bruiser_base
 

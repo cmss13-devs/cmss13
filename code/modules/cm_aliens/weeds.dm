@@ -500,6 +500,7 @@
 	layer = ABOVE_BLOOD_LAYER
 	plane = FLOOR_PLANE
 	var/static/image/staticnode
+	var/static/image/staticnode_p
 	var/overlay_node = TRUE
 
 	// Which weeds are being kept alive by this node?
@@ -525,15 +526,19 @@
 
 /obj/effect/alien/weeds/node/update_icon()
 	..()
-	if((hivenumber == XENO_HIVE_PATHOGEN) && staticnode)
-		staticnode.icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	if(overlay_node)
-		overlays += staticnode
+		if(hivenumber == XENO_HIVE_PATHOGEN)
+			overlays += staticnode_p
+		else
+			overlays += staticnode
 
 /obj/effect/alien/weeds/node/proc/trap_destroyed()
 	SIGNAL_HANDLER
 	overlay_node = TRUE
-	overlays += staticnode
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		overlays += staticnode_p
+	else
+		overlays += staticnode
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/xenomorph/xeno, datum/hive_status/hive)
 	if (istype(hive))
@@ -554,16 +559,16 @@
 	. = ..(mapload, src)
 
 	if(!staticnode)
-		if(hivenumber == XENO_HIVE_PATHOGEN)
-			staticnode = image('icons/mob/pathogen/pathogen_weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
-		else
-			staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
+		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
+	if(!staticnode_p)
+		staticnode_p = image('icons/mob/pathogen/pathogen_weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
 
 	var/obj/effect/alien/resin/trap/trap = locate() in loc
 	if(trap)
 		RegisterSignal(trap, COMSIG_PARENT_PREQDELETED, PROC_REF(trap_destroyed))
 		overlay_node = FALSE
 		overlays -= staticnode
+		overlays -= staticnode_p
 
 	if(xeno)
 		add_hiddenprint(xeno)

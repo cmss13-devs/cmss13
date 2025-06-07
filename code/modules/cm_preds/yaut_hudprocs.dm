@@ -486,8 +486,8 @@
 		return
 
 	else if(newblood.hunter_data.thralled)
-		var/predtitle = sanitize_control_chars(stripped_input(usr, "Enter the newblood's new name.", "Blooded Name", "" , MAX_NAME_LEN))
-		change_real_name(newblood, (predtitle))
+		var/predtitle = (stripped_input(usr, "Enter the newblood's new name.", "Blooded Name", "" , MAX_NAME_LEN))
+		change_real_name(newblood, html_decode(predtitle))
 		GLOB.yautja_mob_list += newblood
 		newblood.faction = FACTION_BLOODED_HUNTER
 		newblood.faction_group = FACTION_LIST_YAUTJA

@@ -786,6 +786,10 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 	var/image/holder = hud_list[HOLOCARD_HUD]
 	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
 
+	if(in_stasis && istype(loc, /obj/structure/closet/bodybag/cryobag))
+		var/obj/structure/closet/bodybag/cryobag/stasis_bag = loc
+		stasis_bag.update_stasis_holo_card()
+
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()
 	var/image/execute_holder = hud_list[XENO_EXECUTE]

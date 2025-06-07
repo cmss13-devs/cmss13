@@ -1035,6 +1035,17 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_NEUROSHIELDING = 1)
 
+/datum/reagent/plasma/nutrient
+	name = "Nutrient Plasma"
+	id = PLASMA_NUTRIENT
+	description = "A tarquise plasma..."
+	color = "#2fbe88"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_FUELING = 1, PROPERTY_VISCOUS = 3, PROPERTY_ADDICTIVE = 4, PROPERTY_NUTRITIOUS = 3)
+
 /datum/reagent/plasma/purple
 	name = "Purple Plasma"
 	id = PLASMA_PURPLE

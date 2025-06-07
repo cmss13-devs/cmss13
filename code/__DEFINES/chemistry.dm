@@ -97,6 +97,7 @@
 #define PLASMA_PHEROMONE "pheromoneplasma"
 #define PLASMA_CHITIN "chitinplasma"
 #define PLASMA_CATECHOLAMINE "catecholamineplasma"
+#define PLASMA_NUTRIENT "nutrientplasma"
 #define PLASMA_EGG "eggplasma"
 #define PLASMA_NEUROTOXIN "neurotoxinplasma"
 #define PLASMA_ROYAL "royalplasma"

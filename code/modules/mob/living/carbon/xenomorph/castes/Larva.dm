@@ -196,8 +196,7 @@
 		if(!client.attempt_talking())
 			return FALSE
 
-	// Otherwise, ""roar""!
-	playsound(loc, "alien_roar_larva", 15)
+	roar_and_delay()
 	return TRUE
 
 /mob/living/carbon/xenomorph/larva/is_xeno_grabbable()

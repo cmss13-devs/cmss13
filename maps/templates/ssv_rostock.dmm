@@ -506,7 +506,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "abC" = (
-/obj/effect/decal/floor_symbol/westface/northwest,
+/obj/effect/decal/floor_symbol/upp/westface/northwest,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
@@ -592,7 +592,7 @@
 /turf/open/floor/strata/green4/east,
 /area/rostock/lifeboat)
 "abS" = (
-/obj/effect/decal/floor_symbol/westface/southwest,
+/obj/effect/decal/floor_symbol/upp/westface/southwest,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
@@ -601,7 +601,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "abU" = (
-/obj/effect/decal/floor_symbol/westface/west,
+/obj/effect/decal/floor_symbol/upp/westface/west,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
@@ -5978,14 +5978,14 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
 "dVf" = (
-/obj/effect/decal/floor_symbol/westface/east,
+/obj/effect/decal/floor_symbol/upp/westface/east,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "dVg" = (
-/obj/effect/decal/floor_symbol/westface/north,
+/obj/effect/decal/floor_symbol/upp/westface/north,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "dVi" = (
@@ -6800,7 +6800,7 @@
 	dir = 4;
 	layer = 2.7
 	},
-/obj/effect/decal/floor_symbol/westface/northeast,
+/obj/effect/decal/floor_symbol/upp/westface/northeast,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "eFn" = (
@@ -8265,7 +8265,7 @@
 /turf/open/floor/corsat/arrow_west,
 /area/rostock/lowerdeck_maint/s_a)
 "fIz" = (
-/obj/effect/decal/floor_symbol/westface,
+/obj/effect/decal/floor_symbol/upp/westface,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "fIL" = (
@@ -9344,7 +9344,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/medical/morgue)
 "gJW" = (
-/obj/effect/decal/floor_symbol/westface/southwest,
+/obj/effect/decal/floor_symbol/upp/westface/southwest,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "gKY" = (
@@ -10057,7 +10057,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/bathroom)
 "hiB" = (
-/obj/effect/decal/floor_symbol/westface/north,
+/obj/effect/decal/floor_symbol/upp/westface/north,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "hiG" = (
@@ -10426,7 +10426,7 @@
 /turf/open/floor/grey_dark2,
 /area/rostock/railgun/starboard)
 "hzt" = (
-/obj/effect/decal/floor_symbol/westface/southwest,
+/obj/effect/decal/floor_symbol/upp/westface/southwest,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "hzx" = (
@@ -12217,7 +12217,7 @@
 	layer = 3.1;
 	pixel_x = -6
 	},
-/obj/effect/decal/floor_symbol/westface/southeast,
+/obj/effect/decal/floor_symbol/upp/westface/southeast,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "iMA" = (
@@ -14635,7 +14635,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/command/hallway)
 "kzq" = (
-/obj/effect/decal/floor_symbol{
+/obj/effect/decal/floor_symbol/upp{
 	dir = 8
 	},
 /turf/open/floor/strata/floor2,
@@ -16256,7 +16256,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/req)
 "lUc" = (
-/obj/effect/decal/floor_symbol/westface/west,
+/obj/effect/decal/floor_symbol/upp/westface/west,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "lUm" = (
@@ -18679,7 +18679,7 @@
 /turf/open/floor/strata/red3/west,
 /area/rostock/lifeboat)
 "odu" = (
-/obj/effect/decal/floor_symbol/westface/northwest,
+/obj/effect/decal/floor_symbol/upp/westface/northwest,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "odQ" = (
@@ -19156,7 +19156,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/rostock/engineering/reactor)
 "oBg" = (
-/obj/effect/decal/floor_symbol/westface/southeast,
+/obj/effect/decal/floor_symbol/upp/westface/southeast,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "oBm" = (
@@ -19780,7 +19780,7 @@
 /turf/open/floor/strata/blue3/north,
 /area/rostock/command/cic)
 "oVB" = (
-/obj/effect/decal/floor_symbol{
+/obj/effect/decal/floor_symbol/upp{
 	dir = 8
 	},
 /turf/open/floor/strata/floor2,
@@ -20008,7 +20008,7 @@
 	dir = 4;
 	layer = 2.7
 	},
-/obj/effect/decal/floor_symbol/westface/east,
+/obj/effect/decal/floor_symbol/upp/westface/east,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "phS" = (
@@ -20090,7 +20090,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_f)
 "pjC" = (
-/obj/effect/decal/floor_symbol/westface/west,
+/obj/effect/decal/floor_symbol/upp/westface/west,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "pjD" = (
@@ -20362,7 +20362,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/req)
 "pus" = (
-/obj/effect/decal/floor_symbol/westface/north,
+/obj/effect/decal/floor_symbol/upp/westface/north,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "puz" = (
@@ -21700,7 +21700,7 @@
 	layer = 3.1;
 	pixel_x = -6
 	},
-/obj/effect/decal/floor_symbol/westface/east,
+/obj/effect/decal/floor_symbol/upp/westface/east,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "quP" = (
@@ -23319,7 +23319,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/security/headquarters_storage)
 "rMA" = (
-/obj/effect/decal/floor_symbol{
+/obj/effect/decal/floor_symbol/upp{
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -23419,7 +23419,7 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_office)
 "rSu" = (
-/obj/effect/decal/floor_symbol/westface/northwest,
+/obj/effect/decal/floor_symbol/upp/westface/northwest,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "rSC" = (
@@ -26435,7 +26435,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_f)
 "urx" = (
-/obj/effect/decal/floor_symbol/westface,
+/obj/effect/decal/floor_symbol/upp/westface,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "urF" = (
@@ -26573,7 +26573,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "uwj" = (
-/obj/effect/decal/floor_symbol/westface/west,
+/obj/effect/decal/floor_symbol/upp/westface/west,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
@@ -29694,7 +29694,7 @@
 /turf/open/floor/corsat/squares,
 /area/rostock/engineering/reactor)
 "wRt" = (
-/obj/effect/decal/floor_symbol/westface/northeast,
+/obj/effect/decal/floor_symbol/upp/westface/northeast,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "wRv" = (
@@ -29936,7 +29936,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/rostock/ert_dock/starboard)
 "xct" = (
-/obj/effect/decal/floor_symbol/westface/southwest,
+/obj/effect/decal/floor_symbol/upp/westface/southwest,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "xcv" = (
@@ -30302,7 +30302,7 @@
 /turf/open/floor/corsat/brown/southwest,
 /area/rostock/command/cic)
 "xre" = (
-/obj/effect/decal/floor_symbol/westface/northwest,
+/obj/effect/decal/floor_symbol/upp/westface/northwest,
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "xrJ" = (
@@ -30395,7 +30395,7 @@
 	dir = 4;
 	layer = 2.7
 	},
-/obj/effect/decal/floor_symbol/westface/southeast,
+/obj/effect/decal/floor_symbol/upp/westface/southeast,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/briefing)
 "xvl" = (
@@ -31315,7 +31315,7 @@
 	layer = 3.1;
 	pixel_x = -6
 	},
-/obj/effect/decal/floor_symbol/westface/northeast,
+/obj/effect/decal/floor_symbol/upp/westface/northeast,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "ygN" = (
@@ -31326,7 +31326,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_a)
 "ygO" = (
-/obj/effect/decal/floor_symbol/westface,
+/obj/effect/decal/floor_symbol/upp/westface,
 /turf/open/floor/strata/floor2,
 /area/rostock/command/cic)
 "ygZ" = (

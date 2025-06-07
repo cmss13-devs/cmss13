@@ -743,7 +743,7 @@
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -797,7 +797,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/kutjevo/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -1083,7 +1083,7 @@
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
 	rank = JOB_WY_GOON
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)

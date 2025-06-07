@@ -2,7 +2,7 @@
 	name = "Dress Blues - (E-2) Private First Class"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_MARINE
-	rank = JOB_MARINE
+	job_title = JOB_MARINE
 	access = list(ACCESS_MARINE_PREP)
 	minimum_age = 18
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)

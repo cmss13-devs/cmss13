@@ -45,8 +45,8 @@
 /proc/sg_slot_formula(playercount)
 	return job_slot_formula(playercount,20,1,2,4)
 
-/proc/synth_slot_formula(playercount)
-	return job_slot_formula(playercount,120,1,1,2)
+/proc/synth_slot_formula(playercount)//THIS IS A TEST FEATURE, UNCERTAIN ON PERMANENCY
+	return job_slot_formula(playercount,50,1,2,3)
 
 /proc/working_joe_slot_formula(playercount)
 	return job_slot_formula(playercount,30,1,3,6)

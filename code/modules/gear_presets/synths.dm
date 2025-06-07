@@ -6,6 +6,7 @@
 	minimap_icon = "synth"
 	skills = /datum/skills/synthetic
 	var/preset_generation_support = FALSE
+	var/subtype
 
 /datum/equipment_preset/synth/New()
 	. = ..()
@@ -47,78 +48,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/synth/uscm
-	name = "USCM Synthetic"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
-	idtype = /obj/item/card/id/gold
-	assignment = JOB_SYNTH
-	rank = "Synthetic"
-	role_comm_title = "Syn"
-	preset_generation_support = TRUE
-
-	minimap_icon = "synth"
-	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/marine/satchel
-	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
-		back_item = /obj/item/storage/backpack/industrial
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/synth/uscm/councillor
-	name = "USCM Synthetic Councillor"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-	faction = FACTION_MARINE
-	idtype = /obj/item/card/id/gold
-	assignment = JOB_SYNTH
-	rank = "Synthetic"
-	role_comm_title = "Syn"
-	paygrades = list(PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/synth/uscm/councillor/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/satchel
-	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
-		back_item = /obj/item/storage/backpack/industrial
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/synth/uscm/wo
-	name = "WO Support Synthetic"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
-	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
-
-/datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/new_human)
-
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/synth(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/RO(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest/brown_vest(new_human), WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/a1/tan(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(new_human), WEAR_L_STORE)
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/synth/survivor
 	name = "Survivor - Synthetic - Classic Joe"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -126,7 +55,7 @@
 	faction_group = list(FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
-	rank = JOB_SYNTH_SURVIVOR
+	job_title = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = TRUE
 
@@ -617,7 +546,7 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	rank = JOB_CMB_SYN
+	job_title = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
@@ -646,7 +575,7 @@
 /datum/equipment_preset/synth/survivor/wy/security_synth
 	name = "Survivor - Synthetic - W-Y Security Guard Synthetic"
 	assignment = JOB_WY_SEC_SYNTH
-	rank = JOB_WY_SEC_SYNTH
+	job_title = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
@@ -746,7 +675,7 @@
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE)
 	assignment = JOB_WORKING_JOE
-	rank = JOB_WORKING_JOE
+	job_title = JOB_WORKING_JOE
 
 	minimap_icon = "joe"
 
@@ -757,7 +686,7 @@
 
 /datum/equipment_preset/synth/working_joe/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_GLOBAL)
+	access = get_access(ACCESS_LIST_MARINE_ALL)
 
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()
@@ -837,7 +766,7 @@
 /datum/equipment_preset/synth/working_joe/upp
 	name = "Synthetic - Dzho Automaton"
 	assignment = JOB_UPP_JOE
-	rank = JOB_UPP_JOE
+	job_title = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
 	idtype = /obj/item/card/id/dogtag
 	minimap_background = "background_upp"
@@ -950,7 +879,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_NEUTRAL
 	assignment = JOB_COLONIST
-	rank = JOB_COLONIST
+	job_title = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)

@@ -3,7 +3,7 @@
 	name = "Corpse"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_COLONIST
-	rank = JOB_COLONIST
+	job_title = JOB_COLONIST
 	faction = FACTION_COLONIST
 	languages = list()
 	access = list(ACCESS_CIVILIAN_PUBLIC)
@@ -208,7 +208,7 @@
 
 /datum/equipment_preset/corpse/security/cmb
 	name = "Corpse - Colonial Marshal Deputy"
-	rank = JOB_CMB
+	job_title = JOB_CMB
 	paygrades = list(PAY_SHORT_CMBD = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy
 	xenovictim = TRUE
@@ -239,7 +239,7 @@
 
 /datum/equipment_preset/corpse/security/cmb/riot
 	name = "Corpse - CMB Riot Control Officer"
-	rank = JOB_CMB_RIOT
+	job_title = JOB_CMB_RIOT
 	paygrades = list(PAY_SHORT_CMBR = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/deputy/riot
 	xenovictim = FALSE
@@ -272,7 +272,7 @@
 /datum/equipment_preset/corpse/liaison
 	name = "Corpse - Corporate Liaison"
 	assignment = JOB_EXECUTIVE
-	rank = JOB_EXECUTIVE
+	job_title = JOB_EXECUTIVE
 	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
@@ -349,7 +349,7 @@
 /datum/equipment_preset/corpse/manager
 	name = "Corpse - Colony Division Manager"
 	assignment = "Colonial Division Manager"
-	rank = JOB_DIVISION_MANAGER
+	job_title = JOB_DIVISION_MANAGER
 	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 	access = list(
@@ -385,7 +385,7 @@
 /datum/equipment_preset/corpse/administrator
 	name = "Corpse - Colony Administrator"
 	assignment = "Colonial Administrator"
-	rank = JOB_DEPUTY_DIRECTOR
+	job_title = JOB_DEPUTY_DIRECTOR
 	faction_group = FACTION_LIST_WY
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver/cl
@@ -574,7 +574,7 @@
 	assignment = "Colony Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
-	rank = FACTION_WY
+	job_title = FACTION_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = FACTION_LIST_WY
 	access = list(
@@ -616,7 +616,7 @@
 	name = "Corpse - Colonial Liberation Front Soldier"
 	assignment = JOB_CLF
 	idtype = /obj/item/card/id/data
-	rank = JOB_CLF
+	job_title = JOB_CLF
 	faction = FACTION_CLF
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 
@@ -656,7 +656,7 @@
 	assignment = JOB_UPP
 	idtype = /obj/item/card/id/dogtag/upp
 	paygrades = list(PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_0)
-	rank = JOB_UPP
+	job_title = JOB_UPP
 	faction = FACTION_UPP
 
 /datum/equipment_preset/corpse/upp/New()
@@ -691,7 +691,7 @@
 	assignment = JOB_PMC_STANDARD
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
-	rank = JOB_PMC_STANDARD
+	job_title = JOB_PMC_STANDARD
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/pmc
 	access = list(
@@ -742,7 +742,7 @@
 	name = "Corpse - Weyland-Yutani Corporate (Goon)"
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
-	rank = JOB_WY_GOON
+	job_title = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/load_gear(mob/living/carbon/human/new_human)
@@ -767,7 +767,7 @@
 	name = "Corpse - Weyland-Yutani Corporate Security Lead (Goon Lead)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
-	rank = JOB_WY_GOON_LEAD
+	job_title = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/lead/load_gear(mob/living/carbon/human/new_human)
@@ -796,7 +796,7 @@
 	name = "Corpse - Weyland-Yutani Corporate Security (Kutjevo Goon)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON
-	rank = JOB_WY_GOON
+	job_title = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/goon/kutjevo/load_gear(mob/living/carbon/human/new_human)
@@ -822,7 +822,7 @@
 /datum/equipment_preset/corpse/freelancer
 	name = "Corpse - Freelancer"
 	paygrades = list(PAY_SHORT_FL_S = JOB_PLAYTIME_TIER_0)
-	rank = FACTION_FREELANCER
+	job_title = FACTION_FREELANCER
 	idtype = /obj/item/card/id/data
 	faction = FACTION_FREELANCER
 
@@ -1082,7 +1082,7 @@
 	name = "Corpse - Weyland-Yutani - Corporate Security"
 	languages = list(LANGUAGE_ENGLISH)
 	assignment = JOB_WY_GOON
-	rank = JOB_WY_GOON
+	job_title = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/load_gear(mob/living/carbon/human/new_human)
@@ -1113,7 +1113,7 @@
 	name = "Corpse - Weyland-Yutani - Corporate Security Lead"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_WY_GOON_LEAD
-	rank = JOB_WY_GOON_LEAD
+	job_title = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/load_gear(mob/living/carbon/human/new_human)

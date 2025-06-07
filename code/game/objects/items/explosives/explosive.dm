@@ -279,3 +279,178 @@
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
 		to_chat(usr, SPAN_NOTICE("You disable [src]'s blast wave dampener, restoring the blast radius to full."))
 	playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
+
+/obj/item/satchel_charge_detonator
+	name = "M38-D Multipurpose Detonator"
+	desc = "An ergonomic detonator capable of detonating multiple types of command explosives, notable being satchel charges, detcords and plastic explosives."
+	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon_state = "detonator"
+	w_class = SIZE_TINY
+
+	/// list of linked explosives to handle
+	var/list/linked_charges = list()
+	var/pressed = FALSE
+	var/maximal_connected_charges = 5
+
+/obj/item/satchel_charge_detonator/proc/can_connect()
+	if(length(linked_charges)>= maximal_connected_charges)
+		return FALSE
+	return TRUE
+
+/obj/item/satchel_charge_detonator/attack_self(mob/user, parameters) // when attackl_self, detonate charges
+	. = ..()
+	if(!skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI))
+		to_chat(user, SPAN_WARNING("The ID lock prevents you from using this."))
+		return
+
+	to_chat(user, SPAN_BOLDWARNING("You hold down the detonator button."))
+	if(pressed)
+		return
+	pressed = TRUE
+	flick("detonator_active", src)
+	playsound(src.loc, 'sound/handling/charge-detonator.ogg', 25, 1)
+	sleep(40)
+	pressed = FALSE
+	var/detonation_count = 0
+	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+		if(charges.detonate(src))
+			detonation_count++
+	to_chat(user, SPAN_NOTICE("[src] reported [detonation_count] charge[detonation_count > 1 ? "s" : ""] detonated."))
+
+/obj/item/satchel_charge_detonator/clicked(mob/user, list/mods)  // kill me
+	if (isobserver(user) || isxeno(user))
+		return
+
+	if (mods["alt"]) // alt+click to ping charges?
+		to_chat(user, SPAN_NOTICE("You ping the detonator's [length(linked_charges)] linked charges."))
+		for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+			flick("satchel_primed", charges)
+			charges.beep(TRUE)
+		return TRUE
+	return
+
+/obj/item/satchel_charge_detonator/Destroy()
+	for(var/obj/item/explosive/satchel_charge/charges in linked_charges)
+		charges.linked_detonator = null
+	linked_charges = null
+	return ..()
+
+/obj/item/explosive/satchel_charge
+	name = "M17 Satchel Charge"
+	desc = "After linked to a detonator, and thrown, will become primed and able to be detonated."
+	desc_lore = "The M17 is a simple satchel charge system used by Marines in situations where their usual fire support can't reach, designed to be thrown at or into structures before exploding. This one is set to automatically disarm after a short period, to reduce the chances of civilian injuries from abandoned UXO.\nTo detonate it, link the satchel charge with the included M38-D universal detonator beforehand, then throw it. The detonator's safety mechanism takes four seconds to deactivate after being thrown."
+	gender = PLURAL
+	icon = 'icons/obj/items/weapons/grenade.dmi'
+	icon_state = "satchel"
+	flags_item = NOBLUDGEON
+	w_class = SIZE_SMALL
+	antigrief_protection = TRUE
+	max_container_volume = 180
+	reaction_limits = list(	"max_ex_power" = 260,	"base_ex_falloff" = 90,	"max_ex_shards" = 64,
+							"max_fire_rad" = 6,		"max_fire_int" = 26,	"max_fire_dur" = 30,
+							"min_fire_rad" = 2,		"min_fire_int" = 4,		"min_fire_dur" = 5
+	)
+
+	var/prime_time  = 3 SECONDS
+	var/prime_timer  = null
+	var/obj/item/satchel_charge_detonator/linked_detonator = null
+	var/activated = FALSE
+	var/armed = FALSE
+
+/obj/item/explosive/satchel_charge/attack_self(mob/user)
+	. = ..()
+	if(antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(src, user))
+		to_chat(user, SPAN_WARNING("[name]'s safe-area accident inhibitor prevents you from planting it!"))
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] [ADMIN_JMP(src.loc)]")
+		return
+	if(!linked_detonator)
+		to_chat(user, SPAN_NOTICE("This Charge is not linked to any detonator"))
+		return
+	icon_state = "satchel_primed"
+	playsound(src.loc, 'sound/handling/charge-primed.ogg', 25, 1)
+	var/mob/living/carbon/living_carbon = user
+	if(istype(living_carbon) && !living_carbon.throw_mode)
+		living_carbon.toggle_throw_mode(THROW_MODE_NORMAL)
+	to_chat(user, SPAN_NOTICE("You activate the M17 Satchel Charge, it will now arm itself after a short time once thrown."))
+	w_class = SIZE_MASSIVE
+	activated = TRUE
+	addtimer(CALLBACK(src, PROC_REF(un_activate)), 10 SECONDS, TIMER_UNIQUE)
+
+/obj/item/explosive/satchel_charge/attackby(obj/item/weapon_thing, mob/user)
+	. = ..()
+	if(armed)
+		to_chat(user, SPAN_WARNING("This charge is armed, its linking cannot be altered unless disarmed."))
+		return
+	if(!istype(weapon_thing, /obj/item/satchel_charge_detonator))
+		return
+	var/obj/item/satchel_charge_detonator/detonator = weapon_thing
+	if(linked_detonator == detonator)
+		detonator.linked_charges -= src
+		linked_detonator = null
+		to_chat(user, SPAN_NOTICE("You unlink the charge from [detonator]."))
+		icon_state = "satchel"
+		return
+
+	if(!detonator.can_connect())
+		to_chat(user, SPAN_NOTICE("[detonator] already has too many linked charges."))
+		return
+	else
+		linked_detonator?.linked_charges -= src
+		detonator.linked_charges |= src
+		linked_detonator = detonator
+		to_chat(user, SPAN_NOTICE("[detonator] indicates a new charge has been linked."))
+		playsound(src.loc, 'sound/handling/charge-connection.ogg', 25, 1)
+		icon_state = "satchel_linked"
+
+/obj/item/explosive/satchel_charge/proc/un_activate()
+	if(activated)
+		activated = FALSE
+		w_class = SIZE_SMALL
+		if(linked_detonator)
+			icon_state = "satchel_linked"
+		else
+			icon_state = "satchel"
+
+/obj/item/explosive/satchel_charge/throw_atom(atom/target, range, speed, atom/thrower, spin, launch_type, pass_flags)
+	. = ..()
+	dir = get_dir(src, thrower)
+	if(activated && linked_detonator)
+		icon_state = "satchel_primed"
+		prime_timer  = addtimer(CALLBACK(src, PROC_REF(arm)), prime_time, TIMER_UNIQUE)
+		beep()
+
+/obj/item/explosive/satchel_charge/proc/beep(beep_once)
+	playsound(src.loc, 'sound/weapons/mine_tripped.ogg', 10, 1)
+	if(!armed && beep_once != TRUE)
+		addtimer(CALLBACK(src, PROC_REF(beep)), 1 SECONDS, TIMER_UNIQUE)
+
+
+/obj/item/explosive/satchel_charge/proc/arm()
+	activated = FALSE
+	if(!linked_detonator || armed)
+		return
+	icon_state = "satchel_armed"
+	armed = TRUE
+
+/obj/item/explosive/satchel_charge/pickup(mob/user)
+	if(armed)
+		if(linked_detonator)
+			icon_state = "satchel_linked"
+		else
+			icon_state = "satchel"
+		armed = FALSE
+		w_class = SIZE_SMALL
+	return ..()
+
+/obj/item/explosive/satchel_charge/proc/detonate(triggerer)
+	if(!armed || linked_detonator != triggerer)
+		return FALSE
+	cell_explosion(loc, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+	qdel(src)
+	return TRUE
+
+/obj/item/explosive/satchel_charge/Destroy()
+	linked_detonator?.linked_charges -= src
+	linked_detonator = null
+	return ..()
+

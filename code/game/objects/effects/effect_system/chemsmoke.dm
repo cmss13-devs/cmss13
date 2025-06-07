@@ -113,11 +113,11 @@
 	//reagent application - only run if there are extra reagents in the smoke
 	if(length(chemholder.reagents.reagent_list))
 		for(var/datum/reagent/R in chemholder.reagents.reagent_list)
-			var/proba = 100
+			var/proba = 20
 			var/runs = 5
 
 			//dilute the reagents according to cloud density
-			R.volume /= density
+			R.volume *= POTENCY_MULTIPLIER_VVLOW / (density * runs * range)
 			chemholder.reagents.update_total()
 
 			//apply wall affecting reagents to walls
@@ -136,18 +136,17 @@
 			spawn(0)
 				for(var/i = 0, i < runs, i++)
 					for(var/turf/T in targetTurfs)
-						if(prob(proba))
-							R.reaction_turf(T, R.volume)
+						if (!prob(proba))
+							continue
+						var/volume = R.volume / max(1, cheap_pythag(T.x - location.x, T.y - location.y))
+						R.reaction_turf(T, volume)
 						for(var/atom/A in T.contents)
 							if(istype(A, /obj/effect/particle_effect/smoke/chem)) //skip the item if it is chem smoke
 								continue
 							else if(istype(A, /mob))
-								var/dist = cheap_pythag(T.x - location.x, T.y - location.y)
-								if(!dist)
-									dist = 1
-								R.reaction_mob(A, volume = R.volume * POTENCY_MULTIPLIER_VLOW / dist, permeable = FALSE)
+								R.reaction_mob(A, TOUCH, volume, FALSE)
 							else if(istype(A, /obj))
-								R.reaction_obj(A, R.volume)
+								R.reaction_obj(A, volume)
 					sleep(3 SECONDS)
 
 

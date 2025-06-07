@@ -18,6 +18,9 @@
 
 	var/obj/item/noz
 
+	var/last_fired = 0
+	var/fire_delay = FIRE_DELAY_TIER_5 * 3 // 40% faster than flamer to fire.
+
 /obj/item/reagent_container/glass/watertank/Initialize()
 	. = ..()
 	if(!spawn_empty)
@@ -177,7 +180,10 @@
 		to_chat(user, SPAN_WARNING("The safety is on!"))
 		return
 
+	if (world.time - W.last_fired < W.fire_delay)
+		return
 
+	W.last_fired = world.time
 	Spray_at(A, user)
 
 	playsound(src.loc, 'sound/effects/spray2.ogg', 25, 1, 3)

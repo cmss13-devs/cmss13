@@ -46,6 +46,8 @@
 	/// Any partial packets that we have received from TGUI, waiting to be sent
 	var/partial_packets
 
+	var/list/byond_ui_elements
+
 /**
  * public
  *
@@ -160,6 +162,9 @@
 		window.close(can_be_suspended)
 		src_object.ui_close(user)
 		SStgui.on_close(src)
+
+		for(var/byond_ui_element in byond_ui_elements)
+			winset(user.client, byond_ui_element, list("parent" = ""))
 	state = null
 	qdel(src)
 
@@ -402,6 +407,18 @@
 			LAZYINITLIST(src_object.tgui_shared_states)
 			src_object.tgui_shared_states[href_list["key"]] = href_list["value"]
 			SStgui.update_uis(src_object)
+		if("renderByondUi")
+			var/byond_ui_id = payload["byondUiId"]
+			if(!byond_ui_id)
+				return
+
+			LAZYADD(byond_ui_elements, byond_ui_id)
+		if("unmountByondUi")
+			var/byond_ui_id = payload["byondUiId"]
+			if(!byond_ui_id)
+				return
+
+			LAZYREMOVE(byond_ui_elements, byond_ui_id)
 
 /// Wrapper for behavior to potentially wait until the next tick if the server is overloaded
 /datum/tgui/proc/on_act_message(act_type, payload, state)

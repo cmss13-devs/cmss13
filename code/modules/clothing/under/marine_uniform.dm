@@ -1470,7 +1470,7 @@
 	worn_state = "liaison_charcoal"
 
 /obj/item/clothing/under/liaison_suit/charcoal/skirt
-	name = "liaison's charcoal suit"
+	name = "liaison's charcoal suitskirt"
 	desc = "A stiff, stylish charcoal suit commonly worn by businesswomen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
 	icon_state = "liaison_charcoal_skirt"
 	worn_state = "liaison_charcoal_skirt"
@@ -1510,7 +1510,7 @@
 	worn_state = "corporate_field"
 
 /obj/item/clothing/under/liaison_suit/field/skirt
-	name = "corporate casual"
+	name = "corporate casual skirt"
 	desc = "A black pencil skirt paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
 	icon_state = "corporate_field_skirt"
 	worn_state = "corporate_field_skirt"
@@ -1540,7 +1540,7 @@
 	worn_state = "corporate_black"
 
 /obj/item/clothing/under/liaison_suit/black/skirt
-	name = "black suit pants"
+	name = "black suitskirt"
 	desc = "A black pencil skirt paired with a white shirt. A common pairing among corporate workers."
 	icon_state = "corporate_black_skirt"
 	worn_state = "corporate_black_skirt"

@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Country Club Outfit", 0, /obj/item/clothing/under/liaison_suit/ivy, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Orange Outfit", 0, /obj/item/clothing/under/liaison_suit/orange, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Corporate Casual", 0, /obj/item/clothing/under/liaison_suit/field, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
-	list("Corporate Casual Suitskirt", 0, /obj/item/clothing/under/liaison_suit/field/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Corporate Casual Skirt", 0, /obj/item/clothing/under/liaison_suit/field/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Grey Workwear", 0, /obj/item/clothing/under/colonist/workwear, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Khaki Workwear", 0, /obj/item/clothing/under/colonist/workwear/khaki, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Pink Workwear", 0, /obj/item/clothing/under/colonist/workwear/pink, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),

@@ -45513,7 +45513,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "nTW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/morgue)
 "nUp" = (
@@ -47189,7 +47189,7 @@
 /turf/open/gm/river/desert/shallow_corner/east,
 /area/desert_dam/exterior/river/riverside_east)
 "rnE" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/morgue)
 "rob" = (
@@ -49859,7 +49859,7 @@
 /turf/open/desert/dirt/desert_transition_corner1/north,
 /area/desert_dam/exterior/landing_pad_one)
 "wEQ" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/desert_dam/building/medical/morgue)
 "wFv" = (

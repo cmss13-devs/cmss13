@@ -191,7 +191,7 @@
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "fg" = (
@@ -226,11 +226,11 @@
 	dir = 4
 	},
 /obj/effect/landmark/survivor_spawner/clf/varadero,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "fG" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/research)
@@ -309,7 +309,7 @@
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "hz" = (
@@ -397,14 +397,14 @@
 /turf/open/floor/almayer,
 /area/varadero/interior/research/clfship)
 "ko" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/research)
 "kB" = (
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/maintenance/research)
 "kO" = (
@@ -429,7 +429,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "li" = (
@@ -544,7 +544,7 @@
 /turf/open/floor/shiva/purplecorners/west,
 /area/varadero/interior/research)
 "ng" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/shard,
 /turf/open/floor/shiva/purple/north,
 /area/varadero/interior/research)
@@ -657,7 +657,7 @@
 "pY" = (
 /obj/effect/landmark/objective_landmark/science,
 /obj/item/shard,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/structure/barricade/sandbags/wired{
 	dir = 1
 	},
@@ -1125,7 +1125,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/research)
 "Ai" = (
@@ -1401,7 +1401,7 @@
 /area/varadero/interior/research)
 "FT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating,
 /area/varadero/interior/maintenance/research)
@@ -1678,7 +1678,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "Le" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "Lm" = (
@@ -1831,7 +1831,7 @@
 	pixel_x = 16;
 	pixel_y = 24
 	},
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "OX" = (
@@ -2149,13 +2149,13 @@
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
 "Wg" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/rifle/mar40,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "Wo" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
@@ -2227,7 +2227,7 @@
 /area/varadero/interior/research)
 "Yn" = (
 /obj/item/stack/rods,
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "Yq" = (

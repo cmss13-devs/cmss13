@@ -42,7 +42,7 @@
 /// Handles sentry flamers glob
 #define AMMO_FLAME (1<<22)
 // If the projectile hits a dense turf it'll do on_hit_turf on the turf just in front of the turf instead of on the turf itself (This one does not work on mobs)
-#define AMMO_STRIKES_SURFACE_ONLY	(1<<23) 
+#define AMMO_STRIKES_SURFACE_ONLY	(1<<23)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 
@@ -76,6 +76,8 @@
 #define GUN_SUPPORT_PLATFORM (1<<16)
 /// No gun description, only base desc
 #define GUN_NO_DESCRIPTION (1<<17)
+/// Automatically eject shell casings
+#define GUN_AUTO_EJECT_CASINGS (1<<18)
 // NOTE: Don't add flags past 1<<23, it'll break things due to BYOND limitations. You can usually use a Component instead.
 
 #define USES_STREAKS (1<<0)

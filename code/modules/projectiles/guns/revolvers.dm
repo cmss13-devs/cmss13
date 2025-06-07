@@ -91,6 +91,7 @@
 	if(current_mag)
 		for(var/i = 1 to current_mag.max_rounds)
 			current_mag.chamber_contents[i] = "empty"
+	eject_casing()
 
 //The cylinder is always emptied out before a reload takes place.
 /obj/item/weapon/gun/revolver/proc/add_to_cylinder(mob/user) //Bullets are added forward.

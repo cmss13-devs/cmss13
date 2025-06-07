@@ -1081,8 +1081,15 @@
 	window_frame = /obj/structure/window_frame/upp_ship/reinforced
 
 /obj/structure/window/framed/upp_ship/hull
-	desc = "A glass window. Something tells you this one is somehow indestructible."
-//	icon_state = "upp_rwindow0"
+	name = "hull window"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	//	icon_state = "upp_rwindow0"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+	window_frame = /obj/structure/window_frame/upp_ship/hull
 
 //UPP almayer retexture windows
 
@@ -1105,7 +1112,14 @@
 	window_frame = /obj/structure/window_frame/upp/reinforced
 
 /obj/structure/window/framed/upp/hull
+	name = "hull window"
 	desc = "A glass window. Something tells you this one is somehow indestructible."
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+	window_frame = /obj/structure/window_frame/upp/hull
 //	icon_state = "upp_rwindow0"
 
 // Hybrisa Windows

@@ -415,3 +415,13 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	properties = list(PROPERTY_CURING = 2)
+
+/datum/reagent/medical/host_stabilizer
+	name = "Embryo secretion"
+	id = "host_stabilizer"
+	description = "An unknown substance secreted by an embryo."
+	reagent_state = LIQUID
+	color = BLOOD_COLOR_XENO
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_CRITICALSTABILIZE = 1)
+	flags = REAGENT_TYPE_MEDICAL | REAGENT_NO_GENERATION

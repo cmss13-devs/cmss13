@@ -527,6 +527,26 @@
 /datum/chem_property/positive/organstabilize/process_critical(mob/living/M, potency = 1)
 	M.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
 
+/datum/chem_property/positive/criticalstabilize
+	name = PROPERTY_CRITICALSTABILIZE
+	code = "CTS"
+	description = "Stabilizes critical damage and bleeding."
+	rarity = PROPERTY_DISABLED
+	value = 2
+
+/datum/chem_property/positive/criticalstabilize/process(mob/living/living_mob, potency = 1, delta_time)
+	if(!ishuman(living_mob))
+		return
+	var/mob/living/carbon/human/human_mob = living_mob
+
+	human_mob.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+
+	var/heal_brute = human_mob.getBruteLoss()/human_mob.maxHealth >= 1 ? 1 : 0
+	var/heal_burn = human_mob.getFireLoss()/human_mob.maxHealth >= 1 ? 1 : 0
+	human_mob.heal_overall_damage(heal_brute, heal_burn)
+	if(human_mob.getOxyLoss() > 20)
+		human_mob.apply_damage(-1, OXY)
+
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"

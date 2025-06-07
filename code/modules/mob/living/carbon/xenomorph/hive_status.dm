@@ -1089,9 +1089,12 @@
 	return hit_larva_pylon_limit
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
-/datum/hive_status/proc/increase_larva_after_burst()
+/datum/hive_status/proc/increase_larva_after_burst(is_nested)
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	if(is_nested)
+		var/extra_per_nested_burst = CONFIG_GET(number/extra_larva_per_nested_burst)
+		partial_larva += extra_per_nested_burst
 	convert_partial_larva_to_full_larva()
 
 ///Called after times when partial larva are added to process them to stored larva

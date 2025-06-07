@@ -11,7 +11,7 @@
 /datum/equipment_preset/survivor/security/trijent
 	name = "Survivor - Trijent Security Guard"
 	assignment = JOB_WY_SEC
-	rank = JOB_WY_SEC
+	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
 	minimap_icon = "cmp"
 	faction = FACTION_WY

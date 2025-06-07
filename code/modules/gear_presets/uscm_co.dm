@@ -6,7 +6,7 @@
 
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
-	rank = JOB_CO
+	job_title = JOB_CO
 	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CO"
 	minimum_age = 30
@@ -313,7 +313,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_USCM_OBSV
-	rank = JOB_USCM_OBSV
+	job_title = JOB_USCM_OBSV
 	role_comm_title = "VO"
 	minimap_background = "background_medical_WO"
 
@@ -322,7 +322,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/gold/council
-	rank = JOB_CO
+	job_title = JOB_CO
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CO"
 	minimum_age = 35

@@ -55,9 +55,10 @@
 	icon_xenonid = 'icons/mob/pathogen/brute.dmi'
 	//need_weeds = FALSE
 
-	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
-	weed_food_states = list("Drone_1","Drone_2","Drone_3")
-	weed_food_states_flipped = list("Drone_1","Drone_2","Drone_3")
+	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
+	weed_food_states = list("Brute_1","Brute_2","Brute_3")
+	weed_food_states_flipped = list("Brute_1","Brute_2","Brute_3")
 
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN

@@ -67,11 +67,14 @@
 
 	mob_size = MOB_SIZE_XENO_SMALL
 
+/mob/living/carbon/xenomorph/popper/death(cause, gibbed)
+	. = ..()
+	new /obj/effect/pathogen/spore_cloud(loc)
 
 /datum/action/xeno_action/onclick/place_spores
-	name = "Place spore sac (1000)"
+	name = "Place spore sac (750)"
 	action_icon_state = "place_trap"
-	plasma_cost = 1000
+	plasma_cost = 750
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 

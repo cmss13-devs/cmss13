@@ -155,7 +155,7 @@
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
 		/obj/item/stack/barbed_wire,
-		/obj/item/defenses/handheld/sentry,
+		/obj/item/defenses/handheld,
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
 		/obj/item/device/defibrillator/synthetic,
@@ -169,7 +169,7 @@
 		/obj/item/stack/sheet,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
-		/obj/item/defenses/handheld/sentry,
+		/obj/item/defenses/handheld,
 	)
 
 /obj/item/storage/belt/medical

@@ -702,7 +702,6 @@ Defined in conflicts.dm of the #defines folder.
 	light_mod = 5
 	slot = "rail"
 	matter = list("metal" = 50,"glass" = 20)
-	flags_obj = OBJ_IS_HELMET_GARB
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 	activation_sound = 'sound/handling/light_on_1.ogg'

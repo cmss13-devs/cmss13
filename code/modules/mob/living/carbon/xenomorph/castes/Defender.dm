@@ -14,7 +14,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_6
 
-	evolves_to = list(XENO_CASTE_WARRIOR)
+	evolves_to = list(XENO_CASTE_WARRIOR, XENO_CASTE_BRUISER)
 	deevolves_to = list(XENO_CASTE_LARVA)
 	can_vent_crawl = 0
 

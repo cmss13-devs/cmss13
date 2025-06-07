@@ -411,7 +411,8 @@
 	if (!tracks_target)
 		A = get_turf(A)
 
-	apply_cooldown()
+	if(apply_cooldown)
+		apply_cooldown()
 
 	if (windup)
 		X.set_face_dir(get_cardinal_dir(X, A))

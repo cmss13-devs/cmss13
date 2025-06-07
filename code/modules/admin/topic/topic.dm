@@ -199,6 +199,8 @@
 				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/defender, null, null, delmob )
 			if("warrior")
 				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/warrior, null, null, delmob )
+			if("bruiser")
+				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/bruiser , null, null, delmob )
 			if("runner")
 				transformed = M.change_mob_type( /mob/living/carbon/xenomorph/runner , null, null, delmob )
 			if("drone")

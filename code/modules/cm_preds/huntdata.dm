@@ -31,9 +31,9 @@
 	var/mob/living/carbon/thrall //The Thrall the Hunter marked.
 
 	var/blooded = FALSE
-	var/mob/living/carbon/blooded_set //The Yautja that blooded the thrall
-	var/blooded_reason // The reason the thrall was blooded
-	var/mob/living/carbon/newblood //The thrall that is now blooded
+	var/mob/living/carbon/blooded_set //! The Yautja that blooded the thrall
+	var/blooded_reason //! The reason the thrall was blooded
+	var/mob/living/carbon/newblood //! The thrall that is now blooded
 
 /datum/huntdata/proc/clean_data()
 	if(dishonored)

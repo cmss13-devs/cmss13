@@ -451,53 +451,49 @@
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
 
-	if(!isyautja(src))
-		to_chat(src, SPAN_WARNING("How did you get this verb?"))
-		return
-
 	var/list/target_list = list()
-	for(var/mob/living/carbon/target in range(7, usr.client))
+	for(var/mob/living/carbon/target in long_range(7, usr))
 		if(ishuman_strict(target) && target.stat != DEAD)
 			target_list += target
 
-	var/mob/living/carbon/T = tgui_input_list(usr, "Target", "Choose a target.", target_list)
-	if(!T)
+	var/mob/living/carbon/newblood = tgui_input_list(usr, "Target", "Choose a target.", target_list)
+	if(!newblood)
 		return
-	if(T.hunter_data.blooded)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has already been blooded by [T.hunter_data.blooded_set.real_name] for '[T.hunter_data.blooded_reason]'!"))
+	if(newblood.hunter_data.blooded)
+		to_chat(src, SPAN_YAUTJABOLD("[newblood] has already been blooded by [newblood.hunter_data.blooded_set.real_name] for '[newblood.hunter_data.blooded_reason]'!"))
 		return
-	if(T.faction == FACTION_YAUTJA_YOUNG || T.hunter_data.thralled) //Only youngbloods or thralls can become blooded hunters.
+	if(newblood.faction == FACTION_YAUTJA_YOUNG || newblood.hunter_data.thralled) //Only youngbloods or thralls can become blooded hunters.
 
 		var/reason = stripped_input(usr, "Enter the reason for marking your target as blooded.", "Mark as Blooded", "", 120)
 
 		if(!reason)
 			return
 
-		log_interact(src, T, "[key_name(src)] has blooded [key_name(T)] for '[reason]'.")
-		message_all_yautja("[real_name] has blooded [T] for '[reason]'.")
+		log_interact(src, newblood, "[key_name(src)] has blooded [key_name(newblood)] for '[reason]'.")
+		message_all_yautja("[real_name] has blooded [newblood] for '[reason]'.")
 
-		ADD_TRAIT(T, TRAIT_YAUTJA_TECH, "Yautja Tech")
-		to_chat(T, SPAN_YAUTJABOLD("You are a Blooded Thrall. Focus on interacting with Predators and developing your reputation. You should be observant and discreet while exercising discretionary restraint when hunting worthy prey. Learn Yautja lore and their Honor Code. If you have any questions, ask the whitelisted players in LOOC."))
+		ADD_TRAIT(newblood, TRAIT_YAUTJA_TECH, "Yautja Tech")
+		to_chat(newblood, SPAN_YAUTJABOLD("You are a Blooded Thrall. Focus on interacting with Predators and developing your reputation. You should be observant and discreet while exercising discretionary restraint when hunting worthy prey. Learn Yautja lore and their Honor Code. If you have any questions, ask the whitelisted players in LOOC."))
 
-		T.set_skills(/datum/skills/yautja/warrior) //Overrides exsiting skill path to allow for use of the medicomp. SKills never updated to proper hero mob status prior to this.
-		T.hunter_data.blooded_set = src
-		T.hunter_data.blooded = TRUE
-		T.hunter_data.blooded_reason = reason
-		hunter_data.newblood = T
-		T.hud_set_hunter()
+		newblood.set_skills(/datum/skills/yautja/warrior) //Overrides exsiting skill path to allow for use of the medicomp. SKills never updated to proper hero mob status prior to this.
+		newblood.hunter_data.blooded_set = src
+		newblood.hunter_data.blooded = TRUE
+		newblood.hunter_data.blooded_reason = reason
+		hunter_data.newblood = newblood
+		newblood.hud_set_hunter()
 
-	if(T.faction == FACTION_YAUTJA_YOUNG)
+	if(newblood.faction == FACTION_YAUTJA_YOUNG)
 		return
 
-	else if(T.hunter_data.thralled)
-		var/predtitle = (stripped_input(usr, "Enter the newblood's new name.", "Blooded Name", "" , MAX_NAME_LEN))
-		change_real_name(T, html_decode(predtitle))
-		GLOB.human_mob_list -= T
-		GLOB.yautja_mob_list += T
-		T.faction = FACTION_BLOODED_HUNTER
+	else if(newblood.hunter_data.thralled)
+		var/predtitle = sanitize_control_chars(stripped_input(usr, "Enter the newblood's new name.", "Blooded Name", "" , MAX_NAME_LEN))
+		change_real_name(newblood, (predtitle))
+		GLOB.yautja_mob_list += newblood
+		newblood.faction = FACTION_BLOODED_HUNTER
+		newblood.faction_group = FACTION_LIST_YAUTJA
 
-	else if(!T.hunter_data.thralled)
-		to_chat(src, SPAN_YAUTJABOLD("[T] has not proved themselves worthy of blooding."))
+	else if(!newblood.hunter_data.thralled)
+		to_chat(src, SPAN_YAUTJABOLD("[newblood] has not proved themselves worthy of blooding."))
 		return
 
 /mob/living/carbon/human/proc/call_combi()

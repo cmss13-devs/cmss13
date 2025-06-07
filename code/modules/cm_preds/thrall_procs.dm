@@ -165,7 +165,7 @@
 	to_chat(master, SPAN_DANGER("You set the timer. They have failed you."))
 	explode(thrall)
 	exploding = FALSE
-	do_after(thrall, rand(72, 80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
+	do_after(thrall, (80), INTERRUPT_NONE, BUSY_ICON_HOSTILE)
 
 	if(thrall)
 		cell_explosion(thrall, 800, 550, EXPLOSION_FALLOFF_SHAPE_LINEAR, null)

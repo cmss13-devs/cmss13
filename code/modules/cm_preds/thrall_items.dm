@@ -141,17 +141,14 @@
 	icon_state = "thrall_teleporter"
 
 	flags_item = ITEM_PREDATOR
-	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
 	force = 1
 	throwforce = 1
 	unacidable = TRUE
 	black_market_value = 100
-	var/timer = 0
+	var/teleporting = FALSE
 
 /obj/item/device/thrall_teleporter/attack_self(mob/user)
-	set waitfor = FALSE
-
 	..()
 
 	if(!ishuman(user))
@@ -168,7 +165,7 @@
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
-	if(isthrall(usr))
+	if(isthrall(user))
 		var/datum/entity/clan_player/clan_info = H.client.clan_info
 		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
 			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
@@ -191,7 +188,7 @@
 
 	// Let's go
 	playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
-	timer = 1
+	teleporting = TRUE
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 
 	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -212,6 +209,6 @@
 		animation_teleport_quick_in(user)
 		if(istype(M) && !QDELETED(M))
 			animation_teleport_quick_in(M)
-		timer = 0
+		teleporting = FALSE
 	else
-		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
+		VARSET_CALLBACK(src, teleporting, FALSE)

@@ -22,6 +22,7 @@ GLOBAL_LIST_INIT(cm_vending_equipment_yautja, list(
 		list("Wrist Blades", 0,list(/obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("The Fearsome Scimitars", 0, list(/obj/item/bracer_attachments/scimitars, /obj/item/bracer_attachments/scimitars), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Skewering Scimitars", 0, list(/obj/item/bracer_attachments/scimitars_alt, /obj/item/bracer_attachments/scimitars_alt), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
+		list("The Chain Gauntlets", 0, list(/obj/item/bracer_attachments/chain_gauntlets, /obj/item/bracer_attachments/chain_gauntlets, /obj/item/yautja/chain), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 
 		list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
 		list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -63,7 +64,7 @@ GLOBAL_LIST_INIT(cm_vending_elder_yautja, list(
 		list("Wrist Blades", 0,list(/obj/item/bracer_attachments/wristblades, /obj/item/bracer_attachments/wristblades), MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("The Fearsome Scimitars", 0, list(/obj/item/bracer_attachments/scimitars, /obj/item/bracer_attachments/scimitars), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("The Skewering Scimitars", 0, list(/obj/item/bracer_attachments/scimitars_alt, /obj/item/bracer_attachments/scimitars_alt), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
-
+		list("The Chain Gauntlets", 0, list(/obj/item/bracer_attachments/chain_gauntlets, /obj/item/bracer_attachments/chain_gauntlets, /obj/item/yautja/chain), MARINE_CAN_BUY_SECONDARY, VENDOR_ITEM_RECOMMENDED),
 		list("Secondary Equipment (CHOOSE 2)", 0, null, null, null),
 		list("The Fleeting Spike Launcher", 0, /obj/item/weapon/gun/launcher/spike, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
 		list("The Swift Plasma Pistol", 0, /obj/item/weapon/gun/energy/yautja/plasmapistol, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),

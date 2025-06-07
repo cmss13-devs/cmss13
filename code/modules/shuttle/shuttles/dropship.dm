@@ -275,7 +275,7 @@
 
 	for(var/mob/living/affected_mob as anything in affected_list["mobs"])
 		to_chat(affected_mob, SPAN_DANGER("The dropship jolts violently as it enters freefall!"))
-		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD / 3, 1)
+		shake_camera(affected_mob, DROPSHIP_TURBULENCE_FREEFALL_PERIOD / 2, 1)
 		if(!affected_mob.buckled)
 			affected_mob.KnockDown(DROPSHIP_TURBULENCE_FREEFALL_PERIOD * 0.1)
 			affected_mob.throw_random_direction(2, spin = TRUE)
@@ -292,8 +292,8 @@
 	if(!in_flight())
 		return
 	var/flight_time_left = timeLeft(1)
-	if(flight_time_left >= DROPSHIP_TURBULENCE_PERIOD*2)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/mobile/marine_dropship, turbulence)), (rand(DROPSHIP_TURBULENCE_PERIOD, min((flight_time_left/2), DROPSHIP_TURBULENCE_PERIOD))))
+	if(flight_time_left >= DROPSHIP_TURBULENCE_PERIOD*2 && !(flight_time_left == INFINITY))
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/docking_port/mobile/marine_dropship, turbulence)), (rand(DROPSHIP_TURBULENCE_PERIOD, max((flight_time_left/2), DROPSHIP_TURBULENCE_PERIOD))))
 	if(!prob(DROPSHIP_TURBULENCE_PROBABILITY))
 		return
 
@@ -301,7 +301,7 @@
 
 	for(var/mob/living/affected_mob as anything in affected_list["mobs"])
 		to_chat(affected_mob, SPAN_DANGER("The dropship jolts violently!"))
-		shake_camera(affected_mob, DROPSHIP_TURBULENCE_PERIOD, 1)
+		shake_camera(affected_mob, DROPSHIP_TURBULENCE_PERIOD / 3, 1)
 		if(!affected_mob.buckled && affected_mob.body_position == STANDING_UP && affected_mob.m_intent == MOVE_INTENT_RUN)
 			if(!prob(DROPSHIP_TURBULENCE_GRIPLOSS_PROBABILITY))
 				continue

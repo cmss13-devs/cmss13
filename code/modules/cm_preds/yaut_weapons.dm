@@ -367,11 +367,11 @@
 		return
 
 	var/mob/living/carbon/human/user = chain.affected_atom
-	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja/hunter))
+	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja))
 		cleanup_chain()
 		return
 
-	var/obj/item/clothing/gloves/yautja/hunter/pred_gloves = user.gloves
+	var/obj/item/clothing/gloves/yautja/pred_gloves = user.gloves
 
 	if(user.put_in_hands(src, TRUE))
 		if(!pred_gloves.drain_power(user, 70))
@@ -497,7 +497,7 @@
 		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
 /obj/item/weapon/yautja/chained/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
-	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
@@ -656,11 +656,6 @@
 					user.put_in_inactive_hand(cut_scalp) //Put it in the user's offhand if possible.
 					victim.h_style = "Bald"
 					victim.update_hair() //tear the hair off with the scalp
-					if(user.hunter_data.prey == target)
-						to_chat(src, SPAN_YAUTJABOLD("You have claimed the scalp of [target] as your trophy."))
-						user.emote("roar2")
-						message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.")
-						user.hunter_data.prey = null
 
 		if(FLAY_STAGE_STRIP)
 			user.visible_message(SPAN_DANGER("<B>[user] jabs \his [tool.name] into [victim]'s cuts, prying, cutting, then tearing off large areas of skin. The remainder hangs loosely.</B>"),

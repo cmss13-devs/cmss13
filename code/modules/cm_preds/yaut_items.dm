@@ -1,5 +1,5 @@
+GLOBAL_VAR_INIT(blooding_activated, FALSE)
 GLOBAL_VAR_INIT(hunt_timer_yautja, 0)
-GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.
@@ -522,7 +522,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/structure/machinery/hunting_ground_selection/attack_hand(mob/living/user)
 	. = ..()
-	if(!isyautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 
@@ -706,16 +706,15 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		to_chat(user, SPAN_WARNING("This is not for you."))
 		return
 
-	if(!COOLDOWN_FINISHED(GLOB, youngblood_timer_yautja))
-		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, youngblood_timer_yautja))
-		to_chat(user, SPAN_WARNING("You may begin another hunt in: [remaining_time]."))
+	if(GLOB.blooding_activated) //only one per round unless admins spawn more or var edit the console.
+		to_chat(user, SPAN_WARNING("A blooding ritual has already taken place. Maybe ask the AI for another."))
 		return
 
 	if(!length(un_blooded))
 		to_chat(user, SPAN_WARNING("There are no youngbloods available."))
 		return
 
-	var/choice = tgui_input_list(user, "Available youngblood groups to awaken.", "[src]", un_blooded)
+	var/choice = tgui_input_list(user, "Available youngblood groups to awaken.", "[src]", un_blooded) // maybe we can add varients of the ert sometime.
 	if(!choice)
 		to_chat(user, SPAN_WARNING("You choose not to awaken any youngbloods."))
 		return
@@ -724,7 +723,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	message_all_yautja("[user.real_name] has chosen to awaken: [choice].")
 	message_admins(FONT_SIZE_LARGE("ALERT: [user.real_name] ([user.key]) has called [choice] (Youngblood ERT)."))
 	SSticker.mode.get_specific_call(un_blooded[choice], TRUE, FALSE)
-	COOLDOWN_START(GLOB, youngblood_timer_yautja, 40 MINUTES)
+	GLOB.blooding_activated = TRUE
 
 //=================//\\=================\\
 //======================================\\

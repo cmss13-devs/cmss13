@@ -145,7 +145,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
 "aau" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/r_wall/almayer/temphull,
 /area/almayer/hallways/upper/fore_hallway)
 "aav" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -389,7 +389,7 @@
 /obj/item/device/radio/listening_bug/radio_linked/fax/uscm_pvst{
 	nametag = "Brig Perma"
 	},
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/perma)
 "aaU" = (
 /obj/structure/machinery/shower{
@@ -591,7 +591,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "abA" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/lockerroom)
 "abB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -649,10 +649,10 @@
 /turf/open/floor/almayer/blue/north,
 /area/almayer/living/offices/flight)
 "abI" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/operating_room_three)
 "abJ" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/operating_room_four)
 "abK" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -1604,7 +1604,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/shipboard/starboard_missiles)
 "adH" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/lower_medical_lobby)
 "adI" = (
 /obj/structure/machinery/line_nexter/med{
@@ -2740,7 +2740,7 @@
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
 "agj" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/living/commandbunks)
 "agk" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -2921,7 +2921,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "agF" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/chemistry)
 "agG" = (
 /obj/structure/disposalpipe/segment{
@@ -3824,10 +3824,10 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
 "aiu" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/operating_room_one)
 "aiv" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/operating_room_two)
 "aiw" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -4002,7 +4002,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/morgue)
 "aiV" = (
 /obj/structure/machinery/camera/autoname/almayer/containment{
@@ -4092,7 +4092,7 @@
 	dir = 2;
 	id = "almayerlink_med_req"
 	},
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/morgue)
 "ajd" = (
 /obj/effect/decal/warning_stripes{
@@ -4623,7 +4623,7 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/hallways/lower/port_midship_hallway)
 "akC" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "akD" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -5065,7 +5065,7 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/lower/port_fore)
 "alU" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/navigation)
 "alV" = (
 /obj/structure/machinery/cm_vending/clothing/vehicle_crew{
@@ -6923,7 +6923,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/panic)
 "aqU" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/command/airoom)
 "aqV" = (
 /obj/structure/foamed_metal/iron,
@@ -8716,7 +8716,7 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/upper_engineering)
 "awz" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/command/cichallway)
 "awA" = (
 /obj/structure/prop/almayer/computers/sensor_computer3{
@@ -8750,7 +8750,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/port_midship_hallway)
 "awF" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/living/numbertwobunks)
 "awG" = (
 /obj/structure/machinery/light{
@@ -10137,7 +10137,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "aAs" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/command/cicconference)
 "aAt" = (
 /obj/structure/pipes/vents/pump,
@@ -11037,7 +11037,7 @@
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/hallways/upper/midship_hallway)
 "aCG" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/command/securestorage)
 "aCH" = (
 /obj/structure/machinery/telecomms/server/presets/common,
@@ -11160,7 +11160,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aCY" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/living/auxiliary_officer_office)
 "aCZ" = (
 /obj/structure/surface/rack,
@@ -12071,7 +12071,7 @@
 /area/almayer/command/cichallway)
 "aFp" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/living/auxiliary_officer_office)
 "aFq" = (
 /turf/open/floor/almayer/flooredgesmooth2/north,
@@ -12159,7 +12159,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "aFH" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/r_wall/almayer/temphull,
 /area/almayer/lifeboat_pumps/north1)
 "aFI" = (
 /obj/structure/machinery/light,
@@ -12569,7 +12569,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/numbertwobunks)
 "aGW" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/morgue)
 "aGX" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15702,7 +15702,7 @@
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/living/cryo_cells)
 "bfs" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/maint/hull/lower/l_f_s)
 "bft" = (
 /obj/structure/disposalpipe/junction{
@@ -17993,7 +17993,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bBA" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/weapon_room)
 "bBC" = (
 /obj/structure/bed/chair{
@@ -18903,7 +18903,7 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/navigation)
 "bIJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -20855,7 +20855,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_a_s)
 "bYW" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/panic)
 "bYY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -22828,7 +22828,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_lobby)
 "cAR" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/mp_bunks)
 "cBb" = (
 /obj/structure/machinery/light{
@@ -23128,7 +23128,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering)
 "cHk" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/warden_office)
 "cHl" = (
 /obj/effect/decal/warning_stripes{
@@ -23540,7 +23540,7 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/containment)
 "cQv" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/general_equipment)
 "cQy" = (
 /obj/structure/platform/metal/almayer/west,
@@ -23919,7 +23919,7 @@
 	name = "Research Armory";
 	req_one_access_txt = "4;28"
 	},
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/upper_medical)
 "cXX" = (
 /obj/structure/disposalpipe/segment,
@@ -26300,7 +26300,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_m_p)
 "ebN" = (
-/turf/closed/wall/almayer/aicore/reinforced,
+/turf/closed/wall/r_wall/almayer/aicore,
 /area/almayer/command/airoom)
 "ecb" = (
 /obj/structure/machinery/light/small{
@@ -26324,7 +26324,7 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/cichallway)
 "ecr" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/living/captain_mess)
 "ecS" = (
 /obj/structure/sign/safety/hvac_old{
@@ -26830,7 +26830,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/upper_engineering)
 "emp" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/processing)
 "emr" = (
 /obj/structure/disposalpipe/segment,
@@ -27429,7 +27429,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/squads/bravo)
 "eyD" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/starboard_hallway)
 "eyM" = (
 /obj/structure/largecrate/random/barrel/blue,
@@ -28654,7 +28654,7 @@
 	dir = 8;
 	id = "almayerlink_med_req"
 	},
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/hydroponics)
 "eZm" = (
 /turf/closed/wall/almayer,
@@ -31415,7 +31415,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "gpY" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "gqt" = (
 /obj/structure/sign/safety/storage{
@@ -31786,7 +31786,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/warden_office)
 "gxI" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/maint/hull/upper/s_bow)
 "gxO" = (
 /turf/open/floor/almayer/blue/southwest,
@@ -33674,7 +33674,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "hmA" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/maint/hull/upper/p_bow)
 "hmC" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
@@ -33949,7 +33949,7 @@
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
 "hsy" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/engineering/lower/engine_core)
 "hsK" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -33967,7 +33967,7 @@
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/squads/bravo)
 "hte" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/hallways/lower/starboard_umbilical)
 "htg" = (
 /obj/structure/sign/safety/hvac_old{
@@ -34066,7 +34066,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/briefing)
 "hvd" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/interrogation)
 "hvv" = (
 /obj/structure/disposalpipe/segment,
@@ -38867,7 +38867,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/command/cic)
 "jvY" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/command/telecomms)
 "jwi" = (
 /turf/open/floor/almayer/red,
@@ -40242,10 +40242,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "kcH" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/living/synthcloset)
 "kcN" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/r_wall/almayer/temphull,
 /area/almayer/living/commandbunks)
 "kde" = (
 /turf/open/floor/plating/plating_catwalk,
@@ -41352,7 +41352,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/hallways/lower/vehiclehangar)
 "kCi" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/port_missiles)
 "kCj" = (
 /obj/structure/machinery/light,
@@ -42584,7 +42584,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "ldc" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/engineering/lower/workshop)
 "lde" = (
 /obj/structure/machinery/conveyor{
@@ -43062,7 +43062,7 @@
 /turf/open/floor/almayer/silvercorner,
 /area/almayer/shipboard/brig/cic_hallway)
 "lnu" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/r_wall/almayer/temphull,
 /area/almayer/living/gym)
 "lnP" = (
 /obj/structure/machinery/vending/cola,
@@ -43233,7 +43233,7 @@
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/living/starboard_emb)
 "lrq" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/armory)
 "lrE" = (
 /obj/structure/window/framed/almayer/hull,
@@ -45393,7 +45393,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "mtl" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/execution)
 "mto" = (
 /obj/item/tool/mop{
@@ -45973,7 +45973,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/lower)
 "mFQ" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/maint/hull/lower/s_bow)
 "mGb" = (
 /turf/open/floor/almayer/test_floor4,
@@ -46204,7 +46204,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/hallways/upper/port)
 "mKq" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/living/bridgebunks)
 "mKw" = (
 /obj/structure/disposalpipe/segment{
@@ -46971,7 +46971,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/lower/workshop/hangar)
 "naB" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/perma)
 "naK" = (
 /obj/structure/machinery/light{
@@ -47661,7 +47661,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/securestorage)
 "nmY" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/engineering/lower/workshop/hangar)
 "nne" = (
 /obj/structure/ladder{
@@ -47953,7 +47953,7 @@
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
 "ntj" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/command/computerlab)
 "ntx" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -49648,7 +49648,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/computerlab)
 "oeZ" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/medical)
 "ofH" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
@@ -52957,7 +52957,7 @@
 /turf/open/floor/almayer/bluecorner/north,
 /area/almayer/living/briefing)
 "pzW" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/hallways/lower/vehiclehangar)
 "pAm" = (
 /turf/open/floor/almayer,
@@ -55387,7 +55387,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/hydroponics)
 "qAK" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -58597,7 +58597,7 @@
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/panic)
 "rQy" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/hydroponics)
 "rQA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -59784,7 +59784,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "sqf" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/upper_medical)
 "sqg" = (
 /turf/closed/wall/almayer,
@@ -62232,7 +62232,7 @@
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/medical_science)
 "tsX" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/lobby)
 "ttd" = (
 /obj/structure/sign/safety/bathunisex{
@@ -64792,7 +64792,7 @@
 /turf/open/floor/almayer/red/west,
 /area/almayer/hallways/upper/starboard)
 "uys" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/squads/req)
 "uyC" = (
 /obj/structure/window/framed/almayer/hull,
@@ -67215,7 +67215,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "vxM" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/cryo)
 "vxX" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -68093,7 +68093,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/maint/hull/lower/l_m_s)
 "vOy" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/almayer/medical/medical_science)
 "vOG" = (
 /obj/structure/largecrate/supply/ammo/m41a/half,
@@ -68423,7 +68423,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
 "vUP" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
 "vVb" = (
 /obj/structure/machinery/cm_vending/gear/tl{
@@ -70170,7 +70170,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/bravo)
 "wDM" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/r_wall/almayer/temphull,
 /area/almayer/engineering/upper_engineering)
 "wDP" = (
 /obj/structure/sign/safety/storage{
@@ -70405,7 +70405,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_s)
 "wIC" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/chief_mp_office)
 "wIG" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -71108,7 +71108,7 @@
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/shipboard/panic)
 "wVW" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/command/cic)
 "wWg" = (
 /obj/structure/pipes/vents/pump,
@@ -71322,7 +71322,7 @@
 /turf/open/floor/almayer/uscm/directional/northeast,
 /area/almayer/command/lifeboat)
 "xba" = (
-/turf/closed/wall/almayer/reinforced/temphull,
+/turf/closed/wall/r_wall/almayer/temphull,
 /area/almayer/living/cryo_cells)
 "xbd" = (
 /obj/effect/decal/warning_stripes{
@@ -71743,7 +71743,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_bow)
 "xkd" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/cells)
 "xkB" = (
 /obj/structure/bed/chair/comfy/charlie{
@@ -71875,7 +71875,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "xoB" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
 "xoJ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -72481,7 +72481,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south2)
 "xyN" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/shipboard/brig/execution_storage)
 "xyY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -72544,7 +72544,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "xBe" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/engineering/upper_engineering)
 "xBn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
@@ -73327,7 +73327,7 @@
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/engine_core)
 "xTx" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/maint/hull/upper/u_f_p)
 "xTG" = (
 /obj/structure/closet/emcloset,
@@ -74031,7 +74031,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/mp_bunks)
 "yhZ" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/almayer/maint/hull/lower/p_bow)
 "yia" = (
 /obj/structure/closet/firecloset,

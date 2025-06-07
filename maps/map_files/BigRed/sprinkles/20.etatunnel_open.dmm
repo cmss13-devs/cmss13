@@ -191,7 +191,7 @@
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/outside/lz2_south_cas)
 "yw" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves)
 "zB" = (
 /turf/open/mars_cave/mars_cave_2,
@@ -377,7 +377,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves_sw)
 "VR" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/mining)
 "Wy" = (
 /obj/structure/window/framed/solaris/reinforced,

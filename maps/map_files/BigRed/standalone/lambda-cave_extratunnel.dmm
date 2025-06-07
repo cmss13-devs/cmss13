@@ -46,7 +46,7 @@
 /turf/open/mars_cave/mars_cave_11,
 /area/bigredv2/caves_lambda)
 "n" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/lambda/virology)
 "o" = (
 /obj/structure/curtain/medical,

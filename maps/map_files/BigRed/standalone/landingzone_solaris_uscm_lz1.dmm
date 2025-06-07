@@ -235,7 +235,7 @@
 "et" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/telecomm)
 "ez" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -989,7 +989,7 @@
 /area/bigredv2/outside/nw)
 "vQ" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/telecomm)
 "vR" = (
 /obj/structure/flora/grass/desert/lightgrass_12,
@@ -1334,14 +1334,14 @@
 /area/bigredv2/outside/space_port)
 "EB" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "EH" = (
 /turf/open/floor/asteroidfloor/north,
 /area/bigred/ground/garage_workshop)
 "EK" = (
 /obj/structure/sign/prop1,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "ES" = (
 /obj/structure/surface/table,
@@ -1470,7 +1470,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
 "He" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigred/ground/garage_workshop)
 "Hr" = (
 /turf/open/mars_cave/mars_cave_14,
@@ -1753,7 +1753,7 @@
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "Nb" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/telecomm)
 "Nd" = (
 /obj/structure/largecrate/random/barrel/true_random,
@@ -2024,7 +2024,7 @@
 /area/bigredv2/outside/space_port)
 "RZ" = (
 /obj/structure/sign/safety/hazard,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/telecomm)
 "Sk" = (
 /turf/open/mars_cave/mars_cave_16,
@@ -2183,7 +2183,7 @@
 /turf/open/mars_cave/mars_cave_2,
 /area/space)
 "VT" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "Wc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -2349,7 +2349,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/space_port)
 "Zg" = (
 /obj/effect/decal/warning_stripes{

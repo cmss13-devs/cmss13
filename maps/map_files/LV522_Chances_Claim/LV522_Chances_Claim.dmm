@@ -625,7 +625,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "acs" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/storage_blocks/east)
 "act" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -665,7 +665,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "acB" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
 "acC" = (
 /turf/open/floor/prison,
@@ -719,13 +719,13 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "Reactor_e_entry_3"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/east_reactor/south)
 "acQ" = (
 /obj/structure/machinery/door_control/brbutton{
 	id = "Reactor_e_entry_4"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/filt)
 "acR" = (
 /obj/effect/landmark/nightmare{
@@ -1045,7 +1045,7 @@
 /turf/open/floor/corsat/brown/north,
 /area/lv522/atmos/reactor_garage)
 "alI" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/lv522/oob)
 "alJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1136,7 +1136,7 @@
 /area/lv522/indoors/a_block/admin)
 "anG" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "anH" = (
 /obj/structure/largecrate/random,
@@ -3813,7 +3813,7 @@
 /turf/open/floor/corsat/brown/north,
 /area/lv522/atmos/north_command_centre)
 "bZK" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "bZV" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -8275,7 +8275,7 @@
 /obj/structure/prop/invuln/ice_prefab/standalone/trim{
 	icon_state = "white_trim"
 	},
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "enP" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -9195,7 +9195,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "ePK" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/cargo_intake)
 "eQf" = (
 /obj/effect/alien/resin/sticky,
@@ -9456,14 +9456,14 @@
 /turf/open/floor/strata/white_cyan3/west,
 /area/lv522/indoors/a_block/medical/glass)
 "eYM" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/landing_zone_1/tunnel)
 "eZe" = (
 /turf/open/asphalt/cement/cement14,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "eZq" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/cargo_intake)
 "eZC" = (
 /obj/structure/platform/metal/almayer/north,
@@ -10003,7 +10003,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "Reactor_garage_2"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/reactor_garage)
 "fpW" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -11256,7 +11256,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/cargo)
 "gcn" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/outdoors/nw_rockies)
 "gcv" = (
 /obj/structure/foamed_metal,
@@ -11924,7 +11924,7 @@
 /area/lv522/outdoors/nw_rockies)
 "gwC" = (
 /obj/effect/alien/resin/sticky,
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "gwE" = (
 /obj/structure/platform_decoration/metal/almayer/north,
@@ -12955,7 +12955,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/filt)
 "haq" = (
 /turf/open/floor/strata/white_cyan3,
@@ -13290,7 +13290,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "Reactor_garage_1"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/reactor_garage)
 "hij" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -14125,7 +14125,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/way_in_command_centre)
 "hJG" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -14868,7 +14868,7 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor/south)
 "idL" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/lv522/oob)
 "idX" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -14891,7 +14891,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "ien" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "ieE" = (
 /obj/item/ammo_magazine/rifle/heap{
@@ -15647,7 +15647,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo)
 "iAv" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/reactor_garage)
 "iAU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18112,7 +18112,7 @@
 /area/lv522/indoors/b_block/bridge)
 "jOF" = (
 /obj/effect/acid_hole,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/storage_blocks/east)
 "jOG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -18132,7 +18132,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "jPk" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/indoors/a_block/fitness)
 "jPv" = (
 /turf/open/asphalt/cement/cement14,
@@ -20083,7 +20083,7 @@
 /area/lv522/outdoors/colony_streets/north_east_street)
 "kKD" = (
 /obj/structure/closet/crate/trashcart,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/outdoors/colony_streets/north_east_street)
 "kKR" = (
 /turf/open/floor/plating/platingdmg1,
@@ -24203,7 +24203,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/garden_bridge)
 "mSj" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/outdoors/colony_streets/containers)
 "mSl" = (
 /obj/structure/showcase{
@@ -25169,7 +25169,7 @@
 /area/lv522/outdoors/colony_streets/north_street)
 "nqN" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/way_in_command_centre)
 "nqY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27491,7 +27491,7 @@
 	dir = 4;
 	explo_proof = 1
 	},
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/lv522/oob)
 "oCs" = (
 /obj/structure/surface/rack,
@@ -28153,7 +28153,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/b_block/bar)
 "oUq" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/way_in_command_centre)
 "oVk" = (
 /obj/structure/largecrate/random{
@@ -31167,7 +31167,7 @@
 	pixel_x = 4;
 	pixel_y = -3
 	},
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "qBR" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -32605,7 +32605,7 @@
 	pixel_x = -4;
 	pixel_y = -3
 	},
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "rdz" = (
 /obj/structure/surface/table/almayer,
@@ -32970,7 +32970,7 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
 "rnq" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/landing_zone_2)
 "rns" = (
 /obj/structure/stairs/perspective{
@@ -34714,7 +34714,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
 "shD" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/filt)
 "shK" = (
 /obj/structure/surface/table/almayer,
@@ -35051,7 +35051,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/east_reactor/south)
 "spz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -37112,7 +37112,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "trZ" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/chunk)
 "tsm" = (
 /obj/effect/landmark/lv624/fog_blocker/short,
@@ -39531,7 +39531,7 @@
 /turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/central_streets)
 "uzI" = (
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/space)
 "uzK" = (
 /obj/item/stack/rods,
@@ -41373,7 +41373,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "vtc" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/outdoors/nw_rockies)
 "vtl" = (
 /obj/structure/machinery/power/apc/power/north{
@@ -42287,7 +42287,7 @@
 	id = "mining_secure_blast_1";
 	name = "Blast Door Control"
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "vOj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -43398,7 +43398,7 @@
 /turf/open/floor/plating,
 /area/lv522/indoors/c_block/casino)
 "wqa" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/outdoors/colony_streets/north_west_street)
 "wqn" = (
 /obj/structure/surface/table/almayer,
@@ -44465,7 +44465,7 @@
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/mining)
 "wUp" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/oob)
 "wUx" = (
 /obj/structure/barricade/deployable{
@@ -45078,7 +45078,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "xkO" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/toilet)
 "xln" = (
 /obj/structure/closet/crate,
@@ -45234,7 +45234,7 @@
 /area/lv522/atmos/way_in_command_centre)
 "xoj" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced/hull/lv522,
+/turf/closed/wall/solaris/hull/lv522,
 /area/lv522/oob)
 "xoC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -45980,7 +45980,7 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "xKk" = (
-/turf/closed/wall/strata_outpost_ribbed,
+/turf/closed/wall/r_wall/strata_outpost_ribbed,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "xKH" = (
 /obj/structure/machinery/vending/cigarette/wy,
@@ -46452,7 +46452,7 @@
 /turf/open/floor/shiva/radiator_tile2,
 /area/lv522/indoors/a_block/bridges/op_centre)
 "xVd" = (
-/turf/closed/wall/strata_outpost_ribbed,
+/turf/closed/wall/r_wall/strata_outpost_ribbed,
 /area/lv522/indoors/lone_buildings/engineering)
 "xVq" = (
 /obj/structure/prop/invuln/overhead/flammable_pipe/fly{
@@ -46611,7 +46611,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/bridges/corpo)
 "xZE" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/lv522/atmos/east_reactor/south)
 "xZL" = (
 /turf/open/floor/corsat,
@@ -47179,7 +47179,7 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/command_centre)
 "ylo" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "ylp" = (
 /obj/effect/decal/cleanable/dirt,

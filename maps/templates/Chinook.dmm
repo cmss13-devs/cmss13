@@ -80,7 +80,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
 "aw" = (
-/turf/closed/wall/almayer/white/reinforced,
+/turf/closed/wall/r_wall/almayer/white,
 /area/adminlevel/chinook/medical)
 "ax" = (
 /obj/structure/machinery/light{
@@ -1281,7 +1281,7 @@
 /area/adminlevel/chinook/sec)
 "eD" = (
 /obj/structure/machinery/cm_vending/sorted/attachments,
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/cargo)
 "eE" = (
 /obj/item/stack/sheet/wood/medium_stack{
@@ -1674,7 +1674,7 @@
 	},
 /area/adminlevel/chinook/cargo)
 "gh" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/cryo)
 "gi" = (
 /obj/structure/machinery/disposal,
@@ -2936,7 +2936,7 @@
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
 "lC" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/event)
 "lD" = (
 /obj/structure/sign/prop1{
@@ -4958,7 +4958,7 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/adminlevel/chinook/engineering)
 "tT" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/shuttle)
 "tU" = (
 /turf/open/floor/almayer/silvercorner/west,
@@ -6313,7 +6313,7 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/adminlevel/chinook/medical)
 "zW" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/engineering)
 "zY" = (
 /obj/structure/surface/table/almayer,
@@ -6641,7 +6641,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
 "Br" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/sec)
 "Bt" = (
 /obj/structure/surface/rack,
@@ -8206,7 +8206,7 @@
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/engineering)
 "Id" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/cargo)
 "Ie" = (
 /turf/open/floor/prison/kitchen,
@@ -10705,7 +10705,7 @@
 /area/adminlevel/chinook/event)
 "SM" = (
 /obj/structure/sign/ROsign,
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook)
 "SN" = (
 /obj/structure/sign/safety/debark_lounge{
@@ -12075,7 +12075,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
 /area/space)
 "Ys" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook)
 "Yt" = (
 /turf/open/floor/almayer_hull/outerhull_dir/west,
@@ -12131,7 +12131,7 @@
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/adminlevel/chinook/sec)
 "YC" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/r_wall/almayer,
 /area/adminlevel/chinook/offices)
 "YD" = (
 /obj/structure/closet/radiation,

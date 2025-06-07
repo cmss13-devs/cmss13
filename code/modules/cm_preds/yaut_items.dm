@@ -709,6 +709,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	if(!COOLDOWN_FINISHED(GLOB, youngblood_timer_yautja))
 		var/remaining_time = DisplayTimeText(COOLDOWN_TIMELEFT(GLOB, youngblood_timer_yautja))
 		to_chat(user, SPAN_WARNING("You may begin another hunt in: [remaining_time]."))
+		return
 
 	if(!length(un_blooded))
 		to_chat(user, SPAN_WARNING("There are no youngbloods available."))

@@ -23,7 +23,6 @@
 	evolves_to = list()
 
 	heal_resting = 1.8
-	minimum_evolve_time = 0
 
 	minimap_icon = "brute"
 	evolution_allowed = FALSE

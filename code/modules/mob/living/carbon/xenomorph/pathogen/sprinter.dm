@@ -27,8 +27,6 @@
 
 	heal_resting = 1.4
 
-	minimum_evolve_time = 5 MINUTES
-
 	minimap_icon = "sprinter"
 
 /mob/living/carbon/xenomorph/sprinter

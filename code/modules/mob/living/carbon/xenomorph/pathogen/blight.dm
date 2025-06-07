@@ -23,7 +23,6 @@
 	evolves_to = list(PATHOGEN_CREATURE_VENATOR)
 
 	heal_resting = 1.5
-	minimum_evolve_time = 0
 
 	minimap_icon = "blight"
 

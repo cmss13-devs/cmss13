@@ -23,7 +23,6 @@
 	evolves_to = list(PATHOGEN_CREATURE_BRUTE)
 
 	heal_resting = 1
-	minimum_evolve_time = 0
 
 	minimap_icon = "neomorph"
 

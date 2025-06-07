@@ -26,7 +26,6 @@
 	tacklestrength_max = 4
 
 	heal_resting = 0.75
-	minimum_evolve_time = 0
 
 	minimap_icon = "bloodburster"
 

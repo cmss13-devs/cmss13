@@ -16,32 +16,30 @@
 		icon_state = "[initial(icon_state)]"
 
 /obj/item/device/motiondetector/dogtag/scan()
-	set waitfor = 0
 	if(scanning)
 		return
 	scanning = TRUE
-	var/mob/living/carbon/human/human_user
-	if(ishuman(loc))
-		human_user = loc
+
+	if(!ishuman(loc))
+		return
+
+	var/mob/living/carbon/human/human_user = loc
 
 	var/detected_sound = FALSE
 
-	for(var/mob/living/carbon/human/sourcemob in orange(detector_range, loc))
-		var/detected
-		if(loc == null || sourcemob == null)
+	var/list/nearby = orange(detector_range, loc)
+	nearby -= loc  // remove the user from detection
+
+	for(var/mob/living/carbon/human/sourcemob in nearby)
+		if(loc.z != sourcemob?.z)
 			continue
-		if(loc.z != sourcemob.z)
-			continue
-		if(sourcemob == loc)
-			continue //device user isn't detected
-		if(ishuman(sourcemob) && sourcemob.undefibbable && length(sourcemob.contents) && sourcemob.faction == FACTION_MARINE)
+
+		if(sourcemob.undefibbable && length(sourcemob.contents) && sourcemob.faction == FACTION_MARINE)
 			for(var/obj/I in sourcemob.contents_twice())
 				if(istype(I, /obj/item/card/id/dogtag))
-					detected = TRUE
-		if(human_user && detected)
-			show_blip(human_user, sourcemob)
-			if(detected)
-				detected_sound = TRUE
+					show_blip(human_user, sourcemob)
+					detected_sound = TRUE
+					break  // no need to keep checking contents
 
 		CHECK_TICK
 

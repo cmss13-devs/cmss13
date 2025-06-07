@@ -538,7 +538,7 @@
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_aim(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [auto_aim ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
+	to_chat(user, "[icon2html(src, user)] You [auto_aim ? "<B>disable</b>" : "<B>enable</b>"] \the [src]'s aim assist.")
 	balloon_alert(user, "aim assist [auto_aim ? "disabled" : "enabled"]")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_aim = !auto_aim

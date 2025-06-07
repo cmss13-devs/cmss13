@@ -1620,3 +1620,47 @@
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
 
+/datum/hive_status/pathogen
+	name = "Pathogen Confluence"
+	reporting_id = "pathogen"
+	hivenumber = XENO_HIVE_PATHOGEN
+	prefix = ""
+	color = "#bdc9c4"
+	ui_color = "#bdc9c4"
+
+	hive_inherant_traits = list(TRAIT_NO_COLOR)
+	latejoin_burrowed = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	allow_no_queen_evo = TRUE
+
+	hive_orders = "Kill everyone and everything."
+
+	free_slots = list(
+		/datum/caste_datum/pathogen/neomorph = 6,
+		/datum/caste_datum/pathogen/blight = 4,
+		/datum/caste_datum/pathogen/brute = 1,
+		/datum/caste_datum/pathogen/venator = 2,
+	)
+
+/datum/hive_status/pathogen/get_xeno_counts()
+	// Every caste is manually defined here so you get
+	var/list/xeno_counts = list(
+		// Yes, Queen is technically considered to be tier 0
+		list(PATHOGEN_CREATURE_BURSTER = 0),
+		list(PATHOGEN_CREATURE_POPPER = 0, PATHOGEN_CREATURE_SPRINTER = 0),
+		list(PATHOGEN_CREATURE_NEOMORPH = 0, PATHOGEN_CREATURE_BLIGHT = 0),
+		list(PATHOGEN_CREATURE_BRUTE = 0, PATHOGEN_CREATURE_VENATOR = 0)
+	)
+
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+				continue
+
+		if(xeno.caste && xeno.counts_for_slots)
+			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
+
+	return xeno_counts

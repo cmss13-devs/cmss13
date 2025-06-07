@@ -310,6 +310,7 @@
 			if(structure_blocker.opacity)
 				blocked = TRUE
 				break
+
 		if(blocked)
 			break
 

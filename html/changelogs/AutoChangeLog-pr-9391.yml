@@ -1,0 +1,6 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "Medium, RTO, Tanker, Ghillie, Scout, and Pyro armor now have 20 bomb prot (from 15)."
+  - balance: "Light and Press armor now have 15 bomb prot (from 20)."
+  - bugfix: "light armor no longer has more bomb armor than medium."

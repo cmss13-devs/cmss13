@@ -338,6 +338,8 @@
 		ticks_left = 9
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
+	RegisterSignal(acid_t, COMSIG_ITEM_PICKUP, PROC_REF(is_acided_item))
+	RegisterSignal(acid_t, COMSIG_MOVABLE_MOVED, PROC_REF(move_acid))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 	START_PROCESSING(SSoldeffects, src)
 
@@ -349,6 +351,18 @@
 /obj/effect/xenomorph/acid/proc/cleanup()
 	SIGNAL_HANDLER
 	qdel(src)
+
+/obj/effect/xenomorph/acid/proc/move_acid()
+	SIGNAL_HANDLER
+	var/turf/new_loc = get_turf(acid_t)
+	if(!new_loc)
+		qdel(src)
+		return
+	forceMove(new_loc)
+
+/obj/effect/xenomorph/acid/proc/is_acided_item()
+	SIGNAL_HANDLER
+	return COMSIG_ITEM_PICKUP_CANCELLED
 
 /obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER

@@ -2856,9 +2856,7 @@ Defined in conflicts.dm of the #defines folder.
 		current_turf.flamer_fire_act(0, cause_data)
 		stop_at_turf = TRUE
 	else if(prev_turf)
-		var/atom/movable/temp = new/obj/flamer_fire()
-		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
-		qdel(temp)
+		var/atom/movable/blocked = FireLinkBlocked(prev_turf, current_turf)
 
 		if(blocked)
 			blocked.flamer_fire_act(0, cause_data)

@@ -1,4 +1,0 @@
-author: "Willzadl"
-delete-after: True
-changes:
-  - maptweak: "LV-624 will now always generate a fog gap."

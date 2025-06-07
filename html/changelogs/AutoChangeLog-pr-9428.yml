@@ -1,0 +1,6 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed various behaviors regarding applying and removing labels"
+  - code_imp: "Most labeling now uses tgui_input_text"
+  - admin: "Most means of removing labels is now logged"

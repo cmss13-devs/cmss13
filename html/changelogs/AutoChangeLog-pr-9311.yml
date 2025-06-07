@@ -1,5 +1,0 @@
-author: "Lagomorphica"
-delete-after: True
-changes:
-  - balance: "CLF squad leader no longer has Endurance 5 or full construction/engineering skill, now having basic medical and surgical skills to treat IB. Most CLF roles aside from the squad leader and synthetic have lost the ability to drive the van. CLF engineer now has proper engineering training, and all CLF survivors have Endurance 1."
-  - balance: "CLF insert sentries no longer have unlimited ammo, instead spawning with a random amount between 100 - 500 to simulate them having been crashed for a while."

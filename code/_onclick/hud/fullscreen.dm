@@ -8,6 +8,9 @@
 	var/special_lighting = null
 	///A var to check if there is currently an active special lighting timer already set in order to prevent dupes
 	var/special_lighting_active_timer = FALSE
+	///The current global lighting stage
+	var/latest_recorded_lighting = GLOB.record_lighting
+
 
 /mob/proc/overlay_fullscreen(category, type, severity)
 	var/atom/movable/screen/fullscreen/screen = fullscreens[category]
@@ -281,6 +284,7 @@
 		var/clamped_sunset_stage = clamp(lighting_stage, 1, 8)
 		lighting_color = is_cold ? cold_color_progression[clamped_sunset_stage] : warm_color_progression[clamped_sunset_stage]
 		GLOB.record_lighting = clamped_sunset_stage
+
 	if(special_lighting == SPECIAL_LIGHTING_SUNRISE)
 		var/clamped_sunrise_stage = clamp(lighting_stage, 1, 7)
 		lighting_color = sunrise_color_progression[clamped_sunrise_stage]
@@ -288,7 +292,6 @@
 
 	if(bypass_lighting_stage >= 1) //bypass the lighting stage, used for special area changes
 		lighting_stage = bypass_lighting_stage
-		GLOB.record_lighting = bypass_lighting_stage
 		startup_delay = 0.1 SECONDS
 		special_stage_time = 2.5 SECONDS // so it happens instantly
 		if(special_lighting == SPECIAL_LIGHTING_SUNSET)
@@ -389,7 +392,7 @@
 	if(newloc_incave && !oldloc_incave) //handles both null old loc and false oldloc
 		animate(screen, color = "#000", time = 1.5 SECONDS, easing = QUAD_EASING | EASE_OUT)
 	if(oldloc_incave && !newloc_incave)
-		var/bypass_lighting_stage = GLOB.record_lighting
+		var/bypass_lighting_stage = latest_recorded_lighting
 		special_lighting_animate(SPECIAL_LIGHTING_SUNSET, 2.5 SECONDS, , , , , , , , , bypass_lighting_stage)
 
 #undef Z_CHANGE_CALL

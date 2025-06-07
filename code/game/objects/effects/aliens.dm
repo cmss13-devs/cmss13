@@ -352,7 +352,11 @@
 
 /obj/effect/xenomorph/acid/proc/move_acid()
 	SIGNAL_HANDLER
-	loc = get_turf(acid_t)
+	var/turf/new_loc = get_turf(acid_t)
+	if(!new_loc)
+		qdel(src)
+		return
+	forceMove(new_loc)
 
 /obj/effect/xenomorph/acid/proc/is_acided_item()
 	SIGNAL_HANDLER

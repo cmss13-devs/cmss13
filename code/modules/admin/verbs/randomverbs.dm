@@ -162,7 +162,7 @@
 
 /client/proc/set_dropship_airlock()
 	set name = "Set Dropship Airlock"
-	set category = "Admin.Game"
+	set category = "Admin.Shuttles"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		return

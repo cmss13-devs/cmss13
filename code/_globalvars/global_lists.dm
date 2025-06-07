@@ -48,6 +48,9 @@ GLOBAL_LIST_EMPTY(cached_maps)
 	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
 		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
 		icons[iconstate] += image
+	for(var/iconstate in icon_states('icons/mob/pathogen/neo_blips.dmi'))
+		var/icon/image = icon('icons/mob/pathogen/neo_blips.dmi', icon_state = iconstate)
+		icons[iconstate] += image
 
 	var/list/base64_icons = list()
 	for(var/iconstate in icons)

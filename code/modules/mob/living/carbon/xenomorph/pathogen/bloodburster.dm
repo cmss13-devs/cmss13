@@ -64,7 +64,7 @@
 
 	icon_xeno = 'icons/mob/pathogen/bloodburster.dmi'
 	icon_xenonid = 'icons/mob/pathogen/bloodburster.dmi'
-	need_weeds = FALSE
+	//need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Runner_1","Runner_2","Runner_3")

@@ -54,7 +54,7 @@
 
 	icon_xeno = 'icons/mob/pathogen/brute.dmi'
 	icon_xenonid = 'icons/mob/pathogen/brute.dmi'
-	need_weeds = FALSE
+	//need_weeds = FALSE
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Drone_1","Drone_2","Drone_3")

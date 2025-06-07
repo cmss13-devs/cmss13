@@ -42,6 +42,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/place_spores,
+		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(

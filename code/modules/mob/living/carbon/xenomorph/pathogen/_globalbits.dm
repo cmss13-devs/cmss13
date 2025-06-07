@@ -30,3 +30,35 @@
 	set category = "Admin.Events"
 	if(admin_holder)
 		admin_holder.create_pathogen_creatures(usr)
+
+
+/// WEEDS
+/obj/effect/alien/weeds/node/pathogen
+	name = "mycelium blight node"
+	desc = "A weird, pulsating node."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/weeds/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/weeds/weedwall/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/datum/action/xeno_action/onclick/plant_weeds/pathogen
+	name = "Spread Blight (200)"
+	action_icon_state = "plant_weeds"
+	plasma_cost = 200
+	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 1 SECONDS
+	ability_primacy = XENO_PRIMARY_ACTION_1
+
+	plant_on_semiweedable = TRUE
+	node_type = /obj/effect/alien/weeds/node/pathogen

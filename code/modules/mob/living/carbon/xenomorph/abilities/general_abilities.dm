@@ -444,7 +444,6 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 2.5 SECONDS
-	no_cooldown_msg = TRUE
 
 	/// Var that keeps track of in-progress wind-up spits like Bombard to prevent spitting multiple spits at the same time
 	var/spitting = FALSE

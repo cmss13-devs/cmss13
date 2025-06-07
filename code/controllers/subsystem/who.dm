@@ -282,14 +282,14 @@ SUBSYSTEM_DEF(who)
 
 
 // VERBS
-/mob/verb/who()
+CLIENT_VERB(who)
 	set category = "OOC"
 	set name = "Who"
 
-	SSwho.who.tgui_interact(src)
+	SSwho.who.tgui_interact(mob)
 
-/mob/verb/staffwho()
+CLIENT_VERB(staffwho)
 	set category = "Admin"
 	set name = "StaffWho"
 
-	SSwho.staff_who.tgui_interact(src)
+	SSwho.staff_who.tgui_interact(mob)

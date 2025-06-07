@@ -3,8 +3,8 @@
 	name = "HEFA knights"
 	mob_max = 15
 	mob_min = 3
-	arrival_message = "'Prepaerth to surrender thine HEFAs unto the order!'"
-	objectives = "You are a Brother of the Order of HEFA! You and your fellow brothers must retrieve as many HEFAs as possible!"
+	arrival_message = "'Приготовьтесь сдаться в распоряжение ГЕФА!'"
+	objectives = "Вы - брат ордена ГЕФА! Вы и ваши братья должны вернуть как можно больше ГЕФА!"
 	probability = 0
 	hostility = TRUE
 

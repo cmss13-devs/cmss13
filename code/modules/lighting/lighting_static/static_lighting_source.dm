@@ -220,47 +220,47 @@
 		return //nothing's changed
 
 	var/list/datum/static_lighting_corner/corners = list()
-	var/list/turf/turfs = list()
 	if (source_turf)
+		var/list/turf/impacted_turfs = list()
+		var/list/turf/check_below_turfs = list()
 		var/oldlum = source_turf.luminosity
 		source_turf.luminosity = ceil(light_range)
 		for(var/turf/T in view(ceil(light_range), source_turf))
 			if(!IS_OPAQUE_TURF(T))
-				if (!T.lighting_corners_initialised)
-					T.static_generate_missing_corners()
-				corners[T.lighting_corner_NE] = 0
-				corners[T.lighting_corner_SE] = 0
-				corners[T.lighting_corner_SW] = 0
-				corners[T.lighting_corner_NW] = 0
-			turfs += T
+				impacted_turfs += T
+			if(istransparentturf(T))
+				check_below_turfs += T // we need to go below only for transparent turfs
 
-			var/turf/above = SSmapping.get_turf_above(T)
+		var/list/turf/check_above_turfs = impacted_turfs
+		while(TRUE) // we know that it starts with len > 0
+			var/list/turf/above_turfs = SSmapping.get_same_z_turfs_above(check_above_turfs)
+			if(above_turfs.len == 0) // levels are not connected
+				break
+			check_above_turfs = list()
+			for(var/turf/T as anything in above_turfs)
+				if(istransparentturf(T))
+					check_above_turfs += T // turf from which we can see light below
+			if(check_above_turfs.len == 0)
+				break
+			impacted_turfs += check_above_turfs // add them to the impacted
 
-			while(above && istransparentturf(above))
-				if (!above.lighting_corners_initialised)
-					above.static_generate_missing_corners()
-				corners[above.lighting_corner_NE] = 0
-				corners[above.lighting_corner_SE] = 0
-				corners[above.lighting_corner_SW] = 0
-				corners[above.lighting_corner_NW] = 0
+		while(check_below_turfs.len > 0)
+			var/list/turf/below_turfs = SSmapping.get_same_z_turfs_below(check_below_turfs)
+			if(below_turfs.len == 0) // levels are not connected
+				break
+			impacted_turfs += below_turfs // add turfs that we found below transparent
+			check_below_turfs = list()
+			for(var/turf/T as anything in below_turfs)
+				if(istransparentturf(T))
+					check_below_turfs += T // next time check only below transparent
 
-				above = SSmapping.get_turf_above(above)
-
-			turfs += above
-
-			var/turf/below = SSmapping.get_turf_below(T)
-			var/turf/previous = T
-
-			while(below && istransparentturf(previous))
-				if (!below.lighting_corners_initialised)
-					below.static_generate_missing_corners()
-				corners[below.lighting_corner_NE] = 0
-				corners[below.lighting_corner_SE] = 0
-				corners[below.lighting_corner_SW] = 0
-				corners[below.lighting_corner_NW] = 0
-
-				previous = below
-				below = SSmapping.get_turf_below(below)
+		for(var/turf/T as anything in impacted_turfs)
+			if (!T.lighting_corners_initialised)
+				T.static_generate_missing_corners()
+			corners[T.lighting_corner_NE] = 0
+			corners[T.lighting_corner_SE] = 0
+			corners[T.lighting_corner_SW] = 0
+			corners[T.lighting_corner_NW] = 0
 
 		source_turf.luminosity = oldlum
 

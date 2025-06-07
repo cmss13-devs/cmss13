@@ -1,5 +1,6 @@
-//// Abilities PRIMARILY used by Praetorian.
-
+/datum/action/xeno_action/activable/xeno_spit/praetorian
+	name = "Spit Acid"
+	xeno_cooldown = 2 SECONDS
 
 ////////// VANGUARD ABILITIES
 

@@ -57,8 +57,8 @@
  * Lawyer
  */
 /obj/structure/closet/lawcloset
-	name = "legal closet"
-	desc = "It's a storage unit for courtroom apparel and items."
+	name = "suit closet"
+	desc = "It's a storage unit for formal apparel and items."
 	icon_state = "blue"
 	icon_closed = "blue"
 	icon_opened = "blue_open"
@@ -69,8 +69,11 @@
 	new /obj/item/clothing/under/lawyer/black(src)
 	new /obj/item/clothing/under/lawyer/red(src)
 	new /obj/item/clothing/under/lawyer/bluesuit(src)
-	new /obj/item/clothing/suit/storage/lawyer/bluejacket(src)
+	new /obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket(src)
+	new /obj/item/clothing/suit/storage/jacket/marine/lawyer/redjacket(src)
+	new /obj/item/clothing/suit/storage/jacket/marine/lawyer/purpjacket(src)
+	new /obj/item/clothing/suit/storage/jacket/marine/lawyer/blackjacket(src)
+
 	new /obj/item/clothing/under/lawyer/purpsuit(src)
-	new /obj/item/clothing/suit/storage/lawyer/purpjacket(src)
 	new /obj/item/clothing/shoes/brown(src)
 	new /obj/item/clothing/shoes/black(src)

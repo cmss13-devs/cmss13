@@ -392,6 +392,18 @@
 	desc = "A trendy-looking satchel."
 	icon_state = "satchel-norm"
 
+/obj/item/storage/backpack/satchel/norm/blue
+	icon_state = "satchel-chem"
+
+/obj/item/storage/backpack/satchel/norm/red_line
+	icon_state = "satchel-med"
+
+/obj/item/storage/backpack/satchel/norm/orange_line
+	icon_state = "satchel-eng"
+
+/obj/item/storage/backpack/satchel/norm/green
+	icon_state = "satchel_hyd"
+
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"
 	desc = "A tough satchel with extra pockets."

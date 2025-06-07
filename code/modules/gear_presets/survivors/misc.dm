@@ -239,7 +239,7 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/sanitation, WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/commando/cbrn(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/cbrn(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/cbrn_non_armored(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/bugkiller(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas(new_human), WEAR_FACE)
@@ -284,7 +284,7 @@ Everything below isn't used or out of place.
 		if(7) // Escaped Colony Prisoner
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/escaped_prisoner_colony(new_human), WEAR_BODY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc(new_human), WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double/sawn(new_human.back), WEAR_L_HAND)
 		if(8) // Stowaway
@@ -317,7 +317,7 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt, WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/flag/red, WEAR_IN_BELT)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine, WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife, WEAR_FEET)
 		if(11) // "Comedian"
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/cigarette, WEAR_FACE)
@@ -378,7 +378,7 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/support(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/utility_vest(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated(new_human), WEAR_HANDS)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/pamphlet/skill/engineer, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/weldpack(new_human.back), WEAR_R_HAND)

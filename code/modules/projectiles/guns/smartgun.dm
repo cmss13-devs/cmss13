@@ -619,7 +619,7 @@
 	var/mob/living/unconscious_target = null
 	var/mob/living/conscious_target = null
 
-	for(var/mob/living/targetted_mob in viewers(range, target) & oviewers(user.get_maximum_view_range(), user))
+	for(var/mob/living/targetted_mob in range(range, target) & oviewers(user.get_maximum_view_range(), user))
 		if(targetted_mob.invisibility)
 			continue
 

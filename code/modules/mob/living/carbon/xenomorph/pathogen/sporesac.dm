@@ -176,9 +176,7 @@
 	var/mob/living/carbon/human/human_passer = crosser
 	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || isyautja(human_passer) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
 		return
-	if(!attempt_inhale(human_passer))
-		inhaling = FALSE
-	else
+	if(attempt_inhale(human_passer))
 		addtimer(CALLBACK(src, PROC_REF(decay)), 1 SECONDS)
 
 /obj/effect/pathogen/spore_cloud/proc/attempt_inhale(mob/living/carbon/human/human_passer)
@@ -186,8 +184,10 @@
 		return FALSE
 	inhaling = TRUE
 	if(prob(80) && (human_passer.wear_mask && (human_passer.wear_mask.flags_inventory & BLOCKGASEFFECT)))
+		inhaling = FALSE
 		return FALSE
 	if(prob(80) && (human_passer.head && (human_passer.head.flags_inventory & BLOCKGASEFFECT)))
+		inhaling = FALSE
 		return FALSE
 
 	var/embryos = 0
@@ -213,6 +213,7 @@
 			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores!", source = human_passer, action = NOTIFY_ORBIT)
 			to_chat(src, SPAN_DEADSAY("<b>[human_passer]</b> has been infected with pathogen spores"))
 		return TRUE
+	inhaling = FALSE
 	return FALSE
 
 /obj/effect/pathogen/spore_cloud/flamer_fire_act()

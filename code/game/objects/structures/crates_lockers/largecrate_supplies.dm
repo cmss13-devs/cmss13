@@ -515,3 +515,41 @@
 	qdel(src)
 
 //----------------------------------------------------//
+
+/obj/structure/largecrate/supply/fob_weaponry
+	name = "\improper FOB Weaponry Crate"
+	desc = "A crate containing three UH-02 Systems Platforms, Two UH-46 Heavy Sentry Guns and a singular UH-99 Smart Rocket Launcher."
+	icon_state = "fob_crate"
+	supplies = list(
+		/obj/structure/machinery/weapons_platform = 3,
+		/obj/structure/machinery/sentry = 2,
+		/obj/structure/machinery/rocket_launcher = 1,
+	)
+
+/obj/structure/largecrate/supply/fob_support
+	name = "\improper FOB Support Crate"
+	desc = "A crate containing two UE-92 Area Illuminators and thirty UE-02 Deployable Fences."
+	icon_state = "fob_crate"
+	supplies = list(
+		/obj/item/stack/fence/full = 3,
+		/obj/structure/machinery/illuminator = 2,
+	)
+
+/obj/structure/largecrate/supply/fob_support
+	name = "\improper FOB Support Crate"
+	desc = "A crate containing two UE-92 Area Illuminators and thirty UE-02 Deployable Fences."
+	icon_state = "fob_crate"
+	supplies = list(
+		/obj/item/stack/fence/full = 3,
+		/obj/structure/machinery/illuminator = 2,
+	)
+
+/obj/structure/largecrate/supply/fob_monitoring
+	name = "\improper FOB Monitoring Crate"
+	desc = "A crate containing one UE-11 Generator Unit, one UE-09 Service Terminal and six UE-04 Grid Sensors."
+	icon_state = "fob_crate"
+	supplies = list(
+		/obj/structure/machinery/terminal = 1,
+		/obj/structure/machinery/backup_generator = 1,
+		/obj/item/sensor = 6,
+	)

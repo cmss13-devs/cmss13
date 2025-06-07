@@ -51,11 +51,6 @@
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
 	movement_onehanded_acc_penalty_mult = 3
-	can_jam = TRUE //for the sake of posterity, we also allow revolvers to jam
-	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
-	unjam_chance = GUN_UNJAM_CHANCE_RELIABLE
-	durability_loss = GUN_DURABILITY_LOSS_INSUBSTANTIAL
-	jam_threshold = GUN_DURABILITY_LOW
 
 /obj/item/weapon/gun/revolver/get_examine_text(mob/user)
 	. = ..()
@@ -206,10 +201,7 @@
 
 // FLUFF
 /obj/item/weapon/gun/revolver/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else
-		spin_cylinder(user)
+	spin_cylinder(user)
 
 /obj/item/weapon/gun/revolver/proc/revolver_basic_spin(mob/living/carbon/human/user, direction = 1, obj/item/weapon/gun/revolver/double)
 	set waitfor = 0
@@ -660,7 +652,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
 	recoil = RECOIL_AMOUNT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/revolver/mateba/pmc
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/ap

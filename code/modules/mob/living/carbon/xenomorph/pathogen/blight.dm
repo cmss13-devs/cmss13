@@ -67,6 +67,7 @@
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
+	acid_blood_damage = 0
 
 /datum/behavior_delegate/blight_base
 	name = "Base Blight Behavior Delegate"

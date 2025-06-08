@@ -67,6 +67,7 @@
 	speaking_noise = "neo_talk"
 
 	mob_size = MOB_SIZE_XENO_SMALL
+	acid_blood_damage = 0
 
 /mob/living/carbon/xenomorph/popper/death(cause, gibbed)
 	. = ..()

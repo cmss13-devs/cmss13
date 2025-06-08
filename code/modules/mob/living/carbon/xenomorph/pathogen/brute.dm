@@ -65,6 +65,7 @@
 	speaking_noise = "neo_talk"
 
 	mob_size = MOB_SIZE_BIG
+	acid_blood_damage = 0
 
 
 

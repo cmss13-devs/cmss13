@@ -1087,3 +1087,30 @@
 	reacting_prints.set_visiblity(TRUE)
 
 	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, set_visiblity), FALSE), 1 MINUTES, TIMER_UNIQUE|TIMER_OVERRIDE)
+
+/datum/reagent/blood/xeno_blood/blight
+	name = "Blight Fluid"
+	id = BLOOD_BLIGHT
+	description = "What is this...?"
+	color = "#ceb8b0"
+	overdose = REAGENTS_OVERDOSE
+	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	objective_value = OBJECTIVE_EXTREME_VALUE
+	properties = list(PROPERTY_PAINING = 2, PROPERTY_FLUXING = 3, PROPERTY_HEMOSITIC = 2)
+
+/datum/reagent/blood/xeno_blood/blight/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if((locate(/obj/item/alien_embryo) in H.contents) || (H.species.flags & IS_SYNTHETIC) || !H.huggable)
+			volume = 0
+			return
+		if(volume < overdose_critical)
+			return
+		//it turns into an actual bloodburster at this point
+		volume = 0
+		var/obj/item/alien_embryo/bloodburster/embryo = new(H)
+		to_chat(H, SPAN_WARNING("Your body tremors as something moves under your skin!"))

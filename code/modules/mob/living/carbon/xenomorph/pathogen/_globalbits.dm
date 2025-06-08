@@ -1,8 +1,10 @@
 /datum/behavior_delegate/pathogen_base
 	name = "Base Pathogen Behavior Delegate"
 
+/datum/caste_datum/var/pathogen_creature = FALSE
 /datum/caste_datum/pathogen
 	minimum_evolve_time = 0
+	pathogen_creature = TRUE
 
 /datum/caste_datum/pathogen/get_minimap_icon()
 	var/image/background = mutable_appearance('icons/mob/pathogen/neo_blips.dmi', minimap_background)

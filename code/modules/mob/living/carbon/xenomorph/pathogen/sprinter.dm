@@ -37,7 +37,7 @@
 	icon_state = "Sprinter Walking"
 	icon_size = 64
 	layer = MOB_LAYER
-	plasma_types = list(PLASMA_CATECHOLAMINE)
+	plasma_types = list()
 	tier = 1
 	pixel_x = -16  //Needed for 2x2
 	old_x = -16
@@ -48,6 +48,7 @@
 	organ_value = 500 //worthless
 
 	mob_size = MOB_SIZE_XENO_SMALL
+	acid_blood_damage = 0
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

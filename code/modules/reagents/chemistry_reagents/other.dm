@@ -1112,5 +1112,5 @@
 			return
 		//it turns into an actual bloodburster at this point
 		volume = 0
-		var/obj/item/alien_embryo/bloodburster/embryo = new(H)
+		new /obj/item/alien_embryo/bloodburster(H)
 		to_chat(H, SPAN_WARNING("Your body tremors as something moves under your skin!"))

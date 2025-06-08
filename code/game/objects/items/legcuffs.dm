@@ -3,12 +3,13 @@
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
 	icon = 'icons/obj/items/security.dmi'
-	icon_state = "handcuff"
+	icon_state = "legcuff"
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 0
 	w_class = SIZE_MEDIUM
 
 	target_zone = SLOT_LEGS
+	var/stop_xeno_slash = FALSE
 
 /obj/item/restraint/proc/apply_legcuffs(mob/living/carbon/target, mob/user)
 	playsound(loc, 'sound/weapons/handcuffs.ogg', 25, 1, 4)
@@ -92,3 +93,49 @@
 					var/mob/living/simple_animal/SA = AM
 					SA.health -= 20
 	..()
+
+
+/obj/item/restraint/legcuffs/xeno_restraints
+	name = "xeno restraints"
+	desc = "Use this to hold xenomorphic creatures moderately-safely."
+	gender = PLURAL
+	flags_atom = FPRINT|CONDUCT
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	w_class = SIZE_SMALL
+	throw_speed = SPEED_SLOW
+	throw_range = 5
+	matter = list("metal" = 500)
+
+	breakouttime = 2 MINUTES
+
+/obj/item/restraint/legcuffs/xeno_restraints/apply_legcuffs(mob/living/carbon/target, mob/user)
+	return FALSE
+
+/obj/item/restraint/legcuffs/xeno_restraints/attack(mob/living/carbon/C as mob, mob/user as mob)
+	if(!istype(C, /mob/living/carbon/xenomorph))
+		to_chat(user, SPAN_DANGER("The cuffs do not fit!"))
+		return
+	if(!C.legcuffed)
+		var/turf/p_loc = user.loc
+		var/turf/p_loc_m = C.loc
+		playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
+		for(var/mob/O in viewers(user, null))
+			O.show_message(SPAN_DANGER("<B>[user] is trying to put restraints on [C]!</B>"), SHOW_MESSAGE_VISIBLE)
+		spawn(30)
+			if(!C)
+				return
+			if(p_loc == user.loc && p_loc_m == C.loc)
+				C.legcuffed = src
+				forceMove(C)
+				C.legcuff_update()
+				C.visible_message(SPAN_DANGER("[C] has been successfully restrained by [user]!"))
+	return
+
+/obj/item/restraint/legcuffs/xeno_restraints/strong
+	name = "strong xeno restraints"
+	desc = "Use this to hold xenomorphic creatures safely."
+	color = "#ff0000"
+
+	breakouttime = 3 MINUTES
+	stop_xeno_slash = TRUE

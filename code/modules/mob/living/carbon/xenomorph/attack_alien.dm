@@ -44,6 +44,12 @@
 				attacking_xeno.start_pulling(src)
 
 		if(INTENT_HARM)
+			if(attacking_xeno.claw_restrained())
+				attacking_xeno.animation_attack_on(src)
+				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] tries to strike [src]"),
+				SPAN_XENONOTICE("We try to strike [src] but fail due to our restraints!"))
+				return XENO_ATTACK_ACTION
+
 			if(attacking_xeno.can_not_harm(src))
 				attacking_xeno.animation_attack_on(src)
 				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),

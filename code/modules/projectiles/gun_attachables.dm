@@ -2502,7 +2502,6 @@ Defined in conflicts.dm of the #defines folder.
 		icon_state = initial(icon_state)
 		UnregisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES)
 		G.recalculate_attachment_bonuses()
-		G.last_fired = world.time
 	else if(!turn_off)
 		if(user)
 			to_chat(user, SPAN_NOTICE("You are now using [src]."))
@@ -2511,7 +2510,6 @@ Defined in conflicts.dm of the #defines folder.
 		G.damage_mult = 1
 		RegisterSignal(G, COMSIG_GUN_RECALCULATE_ATTACHMENT_BONUSES, PROC_REF(reset_damage_mult))
 		icon_state += "-on"
-		G.last_fired = world.time
 
 	SEND_SIGNAL(G, COMSIG_GUN_INTERRUPT_FIRE)
 

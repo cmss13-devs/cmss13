@@ -902,9 +902,6 @@
 		if(evasion > 0)
 			. -= evasion
 
-/mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/projectile/P)
-	return FALSE // just stop them getting hit by projectiles completely
-
 
 /obj/projectile/proc/play_hit_effect(mob/hit_mob)
 	if(ammo.sound_hit)

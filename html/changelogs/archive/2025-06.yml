@@ -86,3 +86,30 @@
   - rscadd: Adds a cooldown for youngblood ERTs (40 minutes).
   - rscadd: Adds three new youngblood ERTs intended for newer and more experienced
       players
+2025-06-08:
+  Drathek:
+  - bugfix: Fixed various behaviors regarding applying and removing labels
+  - code_imp: Most labeling now uses tgui_input_text
+  - admin: Most means of removing labels is now logged
+  - admin: Resisting with a weapon while hauled is now attack logged and all attack
+      logs indicating a damage type changed
+  - balance: Reverse bursting no longer gibs the xeno and instead forces a drop using
+      the same probabilities based on health as before
+  - balance: Xenos can no longer tunnel while hauling someone
+  - balance: An additional larva is granted if a nested human bursts
+  - balance: Struggling damage is capped at 35
+  - balance: Nested hosts under stage 4 are stabilized (brute/burn heals if above
+      max health, oxy heals if above 20, bleeding cured)
+  - config: Added extra_larva_per_nested_burst to grant additional larva for nested
+      bursts
+  MemesLauncher:
+  - bugfix: Fix being able to put C4 / Custom C4 / Breaching charges / Non-lethal
+      breaching charges / Plasma breaching charges to dense fog.
+  Willzadl:
+  - rscadd: extra descriptions and lore to many gun magazines
+  - spellcheck: fixed many typos in the descriptions of gun magazines
+  private-tristan:
+  - balance: Medium, RTO, Tanker, Ghillie, Scout, and Pyro armor now have 20 bomb
+      prot (from 15).
+  - balance: Light and Press armor now have 15 bomb prot (from 20).
+  - bugfix: light armor no longer has more bomb armor than medium.

@@ -20,30 +20,30 @@ SUBSYSTEM_DEF(fz_transitions)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/fz_transitions/fire(resumed = FALSE)
-	for(var/obj/effect/projector/P as anything in GLOB.projectors)
-		if(!P || !P.loc)
-			GLOB.projectors -= P
+	for(var/obj/effect/projector/target_projector as anything in GLOB.projectors)
+		if(!target_projector || !target_projector.loc)
+			GLOB.projectors -= target_projector
 			continue
-		if(!P.loc.clone)
-			P.loc.create_clone(P)
+		if(!target_projector.loc.clone)
+			target_projector.loc.create_clone(target_projector)
 
-		if(P.loc.contents)
-			for(var/atom/movable/O as anything in P.loc.contents)
-				if(!O.clone)
-					if(!(istype(O, /obj/effect/projector) || istype(O, /mob/dead/observer) || istype(O, /obj/structure/stairs) || istype(O, /obj/structure/catwalk) || O.type == /atom/movable/clone))
-						O.create_clone_movable(P)
+		if(target_projector.loc.contents)
+			for(var/atom/movable/target_atom as anything in target_projector.loc.contents)
+				if(!target_atom.clone)
+					if(!(istype(target_atom, /obj/effect/projector) || istype(target_atom, /mob/dead/observer) || istype(target_atom, /obj/structure/stairs) || istype(target_atom, /obj/structure/catwalk) || target_atom.type == /atom/movable/clone))
+						target_atom.create_clone_movable(target_projector)
 				else
-					if(!(istype(O, /obj/effect/projector) || istype(O, /mob/dead/observer) || istype(O, /obj/structure/stairs) || istype(O, /obj/structure/catwalk) || O.type == /atom/movable/clone))
-						O.clone.proj_x = P.vector_x //Make sure projection is correct
-						O.clone.proj_y = P.vector_y
+					if(!(istype(target_atom, /obj/effect/projector) || istype(target_atom, /mob/dead/observer) || istype(target_atom, /obj/structure/stairs) || istype(target_atom, /obj/structure/catwalk) || target_atom.type == /atom/movable/clone))
+						target_atom.clone.proj_x = target_projector.vector_x //Make sure projection is correct
+						target_atom.clone.proj_y = target_projector.vector_y
 
 
-	for(var/atom/movable/clone/C as anything in GLOB.clones)
-		if(C.mstr == null || !istype(C.mstr.loc, /turf))
-			C.mstr.destroy_clone() //Kill clone if master has been destroyed or picked up
+	for(var/atom/movable/clone/target_clone as anything in GLOB.clones)
+		if(target_clone.mstr == null || !istype(target_clone.mstr.loc, /turf))
+			target_clone.mstr.destroy_clone() //Kill clone if master has been destroyed or picked up
 		else
-			if(C != C.mstr && selective_update[C.proj.firing_id])
-				C.mstr.update_clone() //NOTE: Clone updates are also forced by player movement to reduce latency
+			if(target_clone != target_clone.mstr && selective_update[target_clone.proj.firing_id])
+				target_clone.mstr.update_clone() //NOTE: Clone updates are also forced by player movement to reduce latency
 
 	for(var/atom/T as anything in GLOB.clones_t)
 		if(T.clone && T.icon_state) //Just keep the icon updated for explosions etc.
@@ -52,13 +52,13 @@ SUBSYSTEM_DEF(fz_transitions)
 /datum/controller/subsystem/fz_transitions/proc/toggle_selective_update(update, firing_id)
 	selective_update[firing_id] = update
 	if(update)
-		for(var/obj/effect/projector/P as anything in GLOB.deselected_projectors)
-			if(selective_update[P.firing_id])
-				GLOB.deselected_projectors -= P
-				GLOB.projectors += P
+		for(var/obj/effect/projector/target_projector as anything in GLOB.deselected_projectors)
+			if(selective_update[target_projector.firing_id])
+				GLOB.deselected_projectors -= target_projector
+				GLOB.projectors += target_projector
 	else
-		for(var/obj/effect/projector/P as anything in GLOB.projectors)
-			if(!selective_update[P.firing_id])
-				GLOB.projectors -= P
-				GLOB.deselected_projectors += P
+		for(var/obj/effect/projector/target_projector as anything in GLOB.projectors)
+			if(!selective_update[target_projector.firing_id])
+				GLOB.projectors -= target_projector
+				GLOB.deselected_projectors += target_projector
 	fire()

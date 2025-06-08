@@ -117,6 +117,11 @@
 			set_security_level(SEC_LEVEL_RED)
 			return
 
+/obj/docking_port/mobile/marine_dropship/on_prearrival()
+	if(destination)
+		destination.on_prearrival(src)
+	return
+
 /obj/docking_port/mobile/marine_dropship/proc/on_dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 	for(var/place in shuttle_areas)
@@ -202,13 +207,13 @@
 			outer_airlock_dock = automated_hangar
 			if(outer_airlock_dock?.linked_inner?.processing)
 				return
-			if(outer_airlock_dock?.linked_inner?.test_conditions(test_outer = FALSE) && !istype(get_docked(), /obj/docking_port/stationary/marine_dropship/airlock/inner))
+			if(outer_airlock_dock?.linked_inner?.test_conditions(test_open_outer = FALSE) && !istype(get_docked(), /obj/docking_port/stationary/marine_dropship/airlock/inner))
 				is_hangar_dock_ready = FALSE
 		if(flags_automated_airlock_presence & DROPSHIP_LZ_DOCK_IS_AIRLOCK)
 			outer_airlock_dock = automated_lz
 			if(outer_airlock_dock?.linked_inner?.processing)
 				return
-			if(outer_airlock_dock?.linked_inner?.test_conditions(test_outer = FALSE) && !istype(get_docked(), /obj/docking_port/stationary/marine_dropship/airlock/inner))
+			if(outer_airlock_dock?.linked_inner?.test_conditions(test_open_outer = FALSE) && !istype(get_docked(), /obj/docking_port/stationary/marine_dropship/airlock/inner))
 				is_lz_dock_ready = FALSE
 		if(!is_lz_dock_ready || !is_hangar_dock_ready)
 			log_ares_flight("Automatic","Automatic dropship flight on [name] has been disabled due to a lack of response from a dropship airlock.")

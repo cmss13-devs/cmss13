@@ -633,8 +633,7 @@
 /obj/docking_port/mobile/proc/on_prearrival()
 	if(destination)
 		destination.on_prearrival(src)
-	if(!istype(src, /obj/docking_port/mobile/marine_dropship))
-		playsound(return_center_turf(), landing_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_AMB)
+	playsound(return_center_turf(), landing_sound, channel = SOUND_CHANNEL_DROPSHIP, vol_cat = VOLUME_AMB)
 	return
 
 /obj/docking_port/mobile/proc/on_crash()
@@ -1029,16 +1028,6 @@
 	return cooldown_coeff
 
 /obj/docking_port/mobile/proc/in_flight()
-	/*
-	switch(mode)
-		if(SHUTTLE_CALL,SHUTTLE_RECALL)
-			return TRUE
-		if(SHUTTLE_IDLE,SHUTTLE_IGNITING)
-			return FALSE
-		else
-			return FALSE // hmm
-	*/
-	// A replacement way a part of the logic for dropship airlocks (for when a shuttle is idle but in transit)
 	if(istype(get_docked(), /obj/docking_port/stationary/transit))
 		return TRUE
 	return FALSE

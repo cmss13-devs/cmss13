@@ -284,21 +284,21 @@
 	. = ..()
 /////////////////////
 
-/atom/movable/proc/create_clone_movable(obj/effect/projector/P)
-	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = FALSE
-	C.proj_x = P.vector_x
-	C.proj_y = P.vector_y
-	if(P.mask_layer)
-		C.proj_base_layer = P.mask_layer-0.5
-	C.proj_plane = P.movables_projection_plane
-	C.proj_mouse_opacity = P.projected_mouse_opacity
-	C.proj_opacity = P.projected_opacity
+/atom/movable/proc/create_clone_movable(obj/effect/projector/related_projector)
+	var/atom/movable/clone/new_clone = new /atom/movable/clone(loc)
+	new_clone.density = FALSE
+	new_clone.proj_x = related_projector.vector_x
+	new_clone.proj_y = related_projector.vector_y
+	if(related_projector.mask_layer)
+		new_clone.proj_base_layer = related_projector.mask_layer-0.5
+	new_clone.proj_plane = related_projector.movables_projection_plane
+	new_clone.proj_mouse_opacity = related_projector.projected_mouse_opacity
+	new_clone.proj_opacity = related_projector.projected_opacity
 
-	GLOB.clones.Add(C)
-	C.mstr = src //Link clone and master
-	C.proj = P
-	src.clone = C
+	GLOB.clones.Add(new_clone)
+	new_clone.mstr = src //Link clone and master
+	new_clone.proj = related_projector
+	clone = new_clone
 
 /atom/movable/proc/update_clone()
 	///---Var-Copy---////

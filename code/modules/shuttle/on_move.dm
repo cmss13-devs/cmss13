@@ -42,10 +42,10 @@ All ShuttleMove procs go here
 				// Ordered by most likely:
 				if(istype(thing, /obj/effect/projector))
 					// delete the clone not the projector
-					if(src.clone)
-						GLOB.clones.Remove(src.clone)
-						qdel(src.clone, TRUE)
-						src.clone = null
+					if(clone)
+						GLOB.clones.Remove(clone)
+						qdel(clone, TRUE)
+						clone = null
 					continue
 				if(istype(thing, /obj/effect/hangar_airlock))
 					continue

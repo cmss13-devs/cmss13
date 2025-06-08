@@ -12,35 +12,52 @@ Docking Port Definitions
 #############################################################################*/
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner
-	var/dropship_airlock_id = "generic" // id that links it to outer, and objs.
+	/// The id that links the inner airlock to the outer airlock and other objects.
+	var/dropship_airlock_id = "generic"
 
 	// variables changed during the process of using the airlock, changed once its related proc is complete.
-	var/allow_processing_to_end = TRUE // mostly for hijack, needs var/processing to be TRUE to do anything, virtually disables player manual input when FALSE.
-	var/processing = FALSE // TRUE whilst the user interface procs and timer-induced procs are running
 	var/playing_airlock_alarm = FALSE
 	var/open_inner_airlock = FALSE
 	var/lowered_dropship = FALSE
 	var/open_outer_airlock = FALSE
 	var/disengaged_clamps = FALSE
 
-	var/obj/docking_port/stationary/marine_dropship/airlock/outer/linked_outer // the other, mostly normal, dock port. needs to be spawned manually and given the same dropship_airlock_id
-	var/obj/effect/hangar_airlock/inner/inner_airlock_effect // the actual effect itself, contains the icon_state for the inner airlock, generated on late initialize
-	var/obj/effect/hangar_airlock/outer/outer_airlock_effect // the actual effect itself, contains the icon_state for the outer airlock, generated on late initialize
+	// more special variables that are reliant upon special things
+	/// Mainly a way to warn admins before they input another command to the airlock.
+	var/undergoing_admin_command = FALSE
+	/// Mostly for hijack, needs var/processing to be TRUE to do anything, virtually disables player manual input when FALSE.
+	var/allow_processing_to_end = TRUE
+	/// TRUE whilst the user interface procs and timer-induced procs of the airlock are running
+	var/processing = FALSE
 
-	var/list/dropship_height_masks = null // all height masks that may need to be deleted/changed with the altitude of the dropship, generated on inner on_arrival()
-	var/list/inner_airlock_turf_lists = null // self-explanatory, the list are populated on get_inner_airlock_turf_lists()
-	var/list/outer_airlock_turf_lists = null // self-explanatory, the lists are populated on get_outer_airlock_turf_lists()
+	/// The other, mostly normal, dock port. needs to be spawned manually and given the same dropship_airlock_id
+	var/obj/docking_port/stationary/marine_dropship/airlock/outer/linked_outer
+	/// The actual effect itself, contains the icon_state for the inner airlock, generated on late initialize
+	var/obj/effect/hangar_airlock/inner/inner_airlock_effect
+	/// The actual effect itself, contains the icon_state for the outer airlock, generated on late initialize
+	var/obj/effect/hangar_airlock/outer/outer_airlock_effect
 
-	// all /dropship_airlock/ objects with the dropship_airlock_id for its linked_inner_dropship_airlock_id, need to be spawned manually and given the correct id.
+	/// All height masks that may need to be deleted/changed with the altitude of the dropship, generated on inner on_arrival()
+	var/list/dropship_height_masks = null
+	/// Self-explanatory, the list are populated on get_inner_airlock_turf_lists()
+	var/list/inner_airlock_turf_lists = null
+	/// Self-explanatory, the lists are populated on get_outer_airlock_turf_lists()
+	var/list/outer_airlock_turf_lists = null
+
+	// All /dropship_airlock/ objects with the dropship_airlock_id for its linked_inner_dropship_airlock_id, need to be spawned manually and given the correct id.
 	var/list/floodlights = null
 	var/list/door_controls = null
 	var/list/poddoors = null
 	var/list/railings = null
 
-	var/obj/docking_port/mobile/marine_dropship/docked_mobile = null // not a regularly updated variable
+	/// NOT A REGULARLY UPDATED VARIABLE.
+	var/obj/docking_port/mobile/marine_dropship/docked_mobile = null
+
+	// For use in the autopilot system (see automatic_process)
 	var/automatic_process_stage_change = 0
 	var/automatic_process_stage = FALSE
 	COOLDOWN_DECLARE(dropship_airlock_cooldown)
+
 	auto_open = TRUE // for dropship doors
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/almayer_one
@@ -59,7 +76,8 @@ Docking Port Definitions
 	name = "Hangar Airlock Outer"
 	id = GENERIC_A_O
 	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner
-	var/dropship_airlock_id = "generic"  // id that links it to inner
+	/// The id that links outer airlock to inner airlock (must be the same as inner's dropship_airlock_id)
+	var/dropship_airlock_id = "generic"
 
 /obj/docking_port/stationary/marine_dropship/airlock/outer/almayer_one
 	name = "Almayer Hangar Airlock 1 Outer"
@@ -211,8 +229,6 @@ Player Interactablility Procs
 		for(var/obj/structure/machinery/door/poddoor/almayer/airlock/poddoor as anything in poddoors)
 			poddoor.close()
 		omnibus_airlock_transition("outer", TRUE, outer_airlock_turf_lists, outer_airlock_effect, DROPSHIP_AIRLOCK_DOOR_PERIOD)
-		if(!registered)
-			linked_outer.register(TRUE)
 		.["to_chat"] = "Opening outer airlock."
 	else
 		omnibus_airlock_transition("outer", FALSE, outer_airlock_turf_lists, outer_airlock_effect, DROPSHIP_AIRLOCK_DOOR_PERIOD)
@@ -262,8 +278,18 @@ Timer Delayed/Looping Procs
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/delayed_airlock_alarm()
 	docked_mobile = get_docked()
+	docked_mobile?.door_control?.control_doors(playing_airlock_alarm ? "lock" : "unlock", "all") // the only time you want it controlling doors is when there is a dropship docked on the inner port. This is a neat-ish way of doing that.
+	if(!docked_mobile)
+		docked_mobile = linked_outer.get_docked()
+
 	if(docked_mobile)
-		docked_mobile.door_control.control_doors(playing_airlock_alarm ? "lock" : "unlock", "all")
+		if(playing_airlock_alarm)
+			docked_mobile.alarm_sound_loop.start()
+			docked_mobile.playing_launch_announcement_alarm = TRUE
+		else
+			docked_mobile.alarm_sound_loop.stop()
+			docked_mobile.playing_launch_announcement_alarm = FALSE
+
 	var/obj/structure/machinery/door/poddoor/railing/airlock_railing
 	if(playing_airlock_alarm)
 		for(airlock_railing as anything in railings)
@@ -284,9 +310,9 @@ Timer Delayed/Looping Procs
 			airlock.icon_state = "[transition]_[decisecond * 0.1]s"
 	for(var/turf/open/floor/hangar_airlock/T as anything in airlock_turf_lists["[decisecond]"])
 		T.open = open
-		for(var/atom/movable/AM in T.contents)
-			if(!AM.anchored)
-				T.Entered(AM)
+		for(var/atom/movable/contents_atom in T.contents)
+			if(!contents_atom.anchored)
+				T.Entered(contents_atom)
 		T.clean_cleanables()
 		T.can_bloody = !open
 	INVOKE_NEXT_TICK(src, PROC_REF(delayed_airlock_transition), airlock_type, open, airlock_turf_lists, airlock, end_decisecond, transition)
@@ -303,12 +329,28 @@ Timer Delayed/Looping Procs
 		for(var/list in outer_airlock_turf_lists)
 			list = null
 		outer_airlock_turf_lists = null
+		var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = docked_mobile.getControlConsole()
+		if(root_console)
+			root_console.visible_message(message = SPAN_WARNING("DROPSHIP AUTOMATIC EXIT PROCEDURE ACTIVATED. The shuttle will automatically exit in [DROPSHIP_AIRLOCK_OUTER_AIRLOCK_ACCESS_GRACE_PERIOD * 0.1] seconds if still in a lowered position."), max_distance = 3)
+		addtimer(CALLBACK(src, PROC_REF(end_outer_airlock_access), TRUE), DROPSHIP_AIRLOCK_OUTER_AIRLOCK_ACCESS_GRACE_PERIOD)
 		end_of_interaction()
 		return
 	var/alpha_reiteration = (DROPSHIP_AIRLOCK_HEIGHT_TRANSITION - COOLDOWN_TIMELEFT(src, dropship_airlock_cooldown)) * 2
 	for(var/obj/effect/hangar_airlock/height_mask/dropship/transitioning_height_mask as anything in dropship_height_masks)
 		transitioning_height_mask.alpha = alpha_reiteration
 	INVOKE_NEXT_TICK(src, PROC_REF(delayed_height_decrease))
+
+/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/end_outer_airlock_access(go_down = TRUE) // intended to be called exclusively by delayed_height_decrease & outer on_arrival
+	if(automatic_process_stage) // it is already an automated system, no need to force it.
+		return
+	if(!test_conditions(null, null, TRUE, null, FALSE))
+		return
+
+	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = docked_mobile?.getControlConsole()
+	if(root_console)
+		root_console.visible_message(message = go_down ? SPAN_WARNING("MANUAL PROCEDURE TIMEOUT. The dropship is beginning to automatically depart. Please prepare for freefall.") : SPAN_WARNING("MANUAL PROCEDURE TIMEOUT. The dropship is beginning to be automatically raised up."), max_distance = 3)
+	allow_processing_to_end = FALSE
+	force_process(go_down ? DROPSHIP_AIRLOCK_GO_DOWN : DROPSHIP_AIRLOCK_GO_UP)
 
 /obj/docking_port/stationary/marine_dropship/airlock/inner/proc/delayed_height_increase()
 	docked_mobile.initiate_docking(src)
@@ -325,6 +367,8 @@ Timer Delayed/Looping Procs
 		SSshuttle.generate_transit_dock(docked_mobile)
 	docked_mobile.set_mode(SHUTTLE_IDLE)
 	docked_mobile.initiate_docking(docked_mobile.assigned_transit)
+	if(!registered)
+		linked_outer.register(TRUE)
 	var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = docked_mobile.getControlConsole()
 	root_console.update_static_data_for_all_viewers()
 	INVOKE_NEXT_TICK(docked_mobile, TYPE_PROC_REF(/obj/docking_port/mobile/marine_dropship, dropship_freefall))
@@ -373,16 +417,16 @@ New Backend Procs
 	if(allow_processing_to_end)
 		processing = FALSE
 
-/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/test_conditions(test_alarm = null, test_inner = null, test_height = null, test_outer = null, test_clamps = null)
-	if(test_alarm != null && test_alarm != playing_airlock_alarm)
+/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/test_conditions(test_playing_alarm = null, test_open_inner = null, test_lowered_dropship = null, test_open_outer = null, test_disengaged_clamps = null)
+	if(test_playing_alarm != null && test_playing_alarm != playing_airlock_alarm)
 		return FALSE
-	if(test_inner != null && test_inner != open_inner_airlock)
+	if(test_open_inner != null && test_open_inner != open_inner_airlock)
 		return FALSE
-	if(test_height != null && test_height != lowered_dropship)
+	if(test_lowered_dropship != null && test_lowered_dropship != lowered_dropship)
 		return FALSE
-	if(test_outer != null && test_outer != open_outer_airlock)
+	if(test_open_outer != null && test_open_outer != open_outer_airlock)
 		return FALSE
-	if(test_clamps != null && test_clamps != disengaged_clamps)
+	if(test_disengaged_clamps != null && test_disengaged_clamps != disengaged_clamps)
 		return FALSE
 	return TRUE
 
@@ -492,6 +536,11 @@ New Backend Procs
 
 	return number_to_call * DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD
 
+/obj/docking_port/stationary/marine_dropship/airlock/inner/proc/end_of_admin_command()
+	undergoing_admin_command = FALSE
+	allow_processing_to_end = TRUE
+	processing = FALSE
+
 /obj/docking_port/stationary/marine_dropship/airlock/outer/proc/handle_obscuring_shuttle_turfs()
 	for(var/turf/open/open_turf in block(DROPSHIP_AIRLOCK_BOUNDS))
 		if(istype(open_turf, /turf/open/floor/hangar_airlock/outer))
@@ -590,6 +639,11 @@ New Backend Procs
 	var/obj/docking_port/mobile/marine_dropship/arriving_dropship = arriving_shuttle
 	if((src == arriving_dropship.automated_hangar || src == arriving_dropship.automated_lz) && arriving_dropship.automated_delay && !linked_inner.processing)
 		linked_inner.automatic_process(DROPSHIP_AIRLOCK_GO_UP)
+	else
+		var/obj/structure/machinery/computer/shuttle/dropship/flight/root_console = arriving_dropship.getControlConsole()
+		if(root_console)
+			root_console.visible_message(message = SPAN_WARNING("DROPSHIP AUTOMATIC RETURN PROCEDURE ACTIVATED. The shuttle will automatically return to the top of the airlock in [DROPSHIP_AIRLOCK_OUTER_AIRLOCK_ACCESS_GRACE_PERIOD * 0.1] seconds if still in a lowered position."), max_distance = 3)
+		addtimer(CALLBACK(linked_inner, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, end_outer_airlock_access), FALSE), DROPSHIP_AIRLOCK_OUTER_AIRLOCK_ACCESS_GRACE_PERIOD)
 
 /*#############################################################################
 Airlock Appearance Effects
@@ -679,53 +733,53 @@ Airlock Turfs Definitions
 Airlock Turf Interactability Procs
 #############################################################################*/
 
-/turf/open/floor/hangar_airlock/Entered(atom/movable/AM)
+/turf/open/floor/hangar_airlock/Entered(atom/movable/entered_atom)
 	if(open)
-		if(!isobserver(AM) && !istype(AM, /obj/docking_port) && !istype(AM, /atom/movable/clone) && !istype(AM, /obj/effect/hangar_airlock))
-			enter_depths(AM)
+		if(!isobserver(entered_atom) && !istype(entered_atom, /obj/docking_port) && !istype(entered_atom, /atom/movable/clone) && !istype(entered_atom, /obj/effect/hangar_airlock))
+			enter_depths(entered_atom)
 
-/turf/open/floor/hangar_airlock/proc/enter_depths(/atom/movable/AM)
+/turf/open/floor/hangar_airlock/proc/enter_depths(/atom/movable/entered_atom)
 	return
 
-/turf/open/floor/hangar_airlock/inner/enter_depths(atom/movable/AM)
-	if(AM.throwing == 0)
-		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
-		for(var/A in src.contents)
-			if(istype(A, /atom/movable/clone))
-				var/atom/movable/clone/C = A
+/turf/open/floor/hangar_airlock/inner/enter_depths(atom/movable/entered_atom)
+	if(entered_atom.throwing == 0)
+		entered_atom.visible_message(SPAN_WARNING("[entered_atom] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
+		for(var/contents_atom in src.contents)
+			if(istype(contents_atom, /atom/movable/clone))
+				var/atom/movable/clone/clone = contents_atom
 				// why not just use .loc? well, because of /atom/movable/clone facsimile 'turfs', it is potentially the case that we'd locate an area (from the mstr turf of the facsimile) when we just want the exact turf.
-				if(istype(get_turf(C.mstr), /turf/open/floor/hangar_airlock))
-					AM.forceMove(locate(C.mstr.x, C.mstr.y, C.mstr.z))
+				if(istype(get_turf(clone.mstr), /turf/open/floor/hangar_airlock))
+					entered_atom.forceMove(locate(clone.mstr.x, clone.mstr.y, clone.mstr.z))
 					break
 
 				var/obj/structure/shuttle/part/dropship_part_to_locate
-				dropship_part_to_locate = locate(/obj/structure/shuttle/part) in range(4, C.mstr)
+				dropship_part_to_locate = locate(/obj/structure/shuttle/part) in range(4, clone.mstr)
 				if(dropship_part_to_locate) // presumably, shuttle parts are on the outside skin of a dropship.
-					AM.forceMove(dropship_part_to_locate.loc)
-					AM.visible_message(SPAN_WARNING("[AM] slides off the roof of the dropship!"), SPAN_WARNING("You slide off the roof of the dropship!"))
+					entered_atom.forceMove(dropship_part_to_locate.loc)
+					entered_atom.visible_message(SPAN_WARNING("[entered_atom] slides off the roof of the dropship!"), SPAN_WARNING("You slide off the roof of the dropship!"))
 					break
 
-				AM.visible_message(SPAN_WARNING("[AM] falls onto the engines of the dropship, burning into ash!"), SPAN_WARNING("You fall onto the engines of the dropship, burning into ash!"))
-				qdel(AM)
+				entered_atom.visible_message(SPAN_WARNING("[entered_atom] falls onto the engines of the dropship, burning into ash!"), SPAN_WARNING("You fall onto the engines of the dropship, burning into ash!"))
+				qdel(entered_atom)
 				break
 
-		INVOKE_ASYNC(src, PROC_REF(depths_damage), AM)
+		INVOKE_ASYNC(src, PROC_REF(depths_damage), entered_atom)
 
-/turf/open/floor/hangar_airlock/inner/proc/depths_damage(atom/movable/AM)
-	if(!isliving(AM))
+/turf/open/floor/hangar_airlock/inner/proc/depths_damage(atom/movable/entered_atom)
+	if(!isliving(entered_atom))
 		return
-	var/mob/living/fallen_living = AM
+	var/mob/living/fallen_living = entered_atom
 	fallen_living.visible_message(SPAN_WARNING("[fallen_living] splatters onto the ground with a thud!"), SPAN_BOLDWARNING("You splatter onto the ground with a thud!"))
 	if(iscarbon(fallen_living))
 		var/mob/living/carbon/fallen_carbon = fallen_living
 		fallen_carbon.gib(create_cause_data("falling into an open dropship airlock", fallen_carbon))
 		return
-	qdel(AM)
+	qdel(entered_atom)
 
-/turf/open/floor/hangar_airlock/outer/enter_depths(atom/movable/AM)
-	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/hangar_airlock))
-		AM.visible_message(SPAN_WARNING("There is an onrush of air. [AM] falls into space!"), SPAN_WARNING("There is an onrush of air. You fall into space!"))
-		qdel(AM)
+/turf/open/floor/hangar_airlock/outer/enter_depths(atom/movable/entered_atom)
+	if(entered_atom.throwing == 0 && istype(get_turf(entered_atom), /turf/open/floor/hangar_airlock))
+		entered_atom.visible_message(SPAN_WARNING("There is an onrush of air. [entered_atom] falls into space!"), SPAN_WARNING("There is an onrush of air. You fall into space!"))
+		qdel(entered_atom)
 
 /*#############################################################################
 Turf Definitions From Instances

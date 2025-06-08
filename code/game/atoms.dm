@@ -424,39 +424,39 @@ Parameters are passed from New.
 	var/proj_y = 0
 	var/obj/effect/projector/proj = null
 
-/atom/proc/create_clone(obj/effect/projector/P) //NOTE: Use only for turfs, otherwise use create_clone_movable
-	var/turf/T = null
-	T = locate(src.x + P.vector_x, src.y + P.vector_y, z)
+/atom/proc/create_clone(obj/effect/projector/related_projector) //NOTE: Use only for turfs, otherwise use create_clone_movable
+	var/turf/target_turf = null
+	target_turf = locate(x + related_projector.vector_x, y + related_projector.vector_y, z)
 
-	if(P.modify_turf)
-		T.appearance = src.appearance
-		T.setDir(src.dir)
+	if(related_projector.modify_turf)
+		target_turf.appearance = appearance
+		target_turf.setDir(dir)
 
-		if(P.mask_layer)
-			T.layer = ((P.mask_layer-0.5)+(src.layer/10))
+		if(related_projector.mask_layer)
+			target_turf.layer = ((related_projector.mask_layer-0.5)+(layer/10))
 
 		GLOB.clones_t.Add(src)
-		src.clone = T
+		clone = target_turf
 	else
-		var/atom/movable/clone/facsimile_T = new /atom/movable/clone(T)
+		var/atom/movable/clone/facsimile_turf = new /atom/movable/clone(target_turf)
 
-		facsimile_T.appearance = src.appearance
+		facsimile_turf.appearance = appearance
 
 		// we don't want a projected lighting underlay (especially when this generates at roundstart) to duplicate over the real turf's lighting (not a very sound way of doing it, but the only one plausible it seems like.)
-		facsimile_T.underlays -= facsimile_T.underlays[1]
+		facsimile_turf.underlays -= facsimile_turf.underlays[1]
 		// spider webs and etcetra may be an issue
-		facsimile_T.overlays = list()
+		facsimile_turf.overlays = list()
 
-		facsimile_T.setDir(src.dir)
-		if(P.mask_layer)
-			facsimile_T.layer = ((P.mask_layer-0.5)+(src.layer/10))
-		facsimile_T.plane = -7
-		facsimile_T.opacity = P.projected_opacity
+		facsimile_turf.setDir(dir)
+		if(related_projector.mask_layer)
+			facsimile_turf.layer = ((related_projector.mask_layer-0.5)+(layer/10))
+		facsimile_turf.plane = -7
+		facsimile_turf.opacity = related_projector.projected_opacity
 
 		GLOB.clones_t.Add(src)
-		src.clone = facsimile_T
-		facsimile_T.mstr = src
-		facsimile_T.proj = P
+		clone = facsimile_turf
+		facsimile_turf.mstr = src
+		facsimile_turf.proj = related_projector
 
 // EFFECTS
 /atom/proc/extinguish_acid()

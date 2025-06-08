@@ -695,15 +695,19 @@
 		if("play_launch_announcement_alarm")
 			if(!shuttle)
 				return FALSE
-			if (shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
+			if(shuttle.mode != SHUTTLE_IDLE && shuttle.mode != SHUTTLE_RECHARGING)
 				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is designed to tell people that you're going to take off soon."))
 				return TRUE
+			if(active_airlock_dock?.playing_airlock_alarm)
+				to_chat(usr, SPAN_WARNING("The Launch Announcement Alarm is already playing as a part of the airlock alarm."))
 			shuttle.alarm_sound_loop.start()
 			shuttle.playing_launch_announcement_alarm = TRUE
 			return TRUE
 		if ("stop_playing_launch_announcement_alarm")
 			if(!shuttle)
 				return FALSE
+			if(active_airlock_dock?.playing_airlock_alarm)
+				to_chat(usr, SPAN_WARNING("In order to stop the the Launch Announcement Alarm, you must disable it as a part of the airlock alarm!"))
 			stop_playing_launch_announcement_alarm()
 			return TRUE
 		if ("change_shuttle")

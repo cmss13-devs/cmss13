@@ -349,7 +349,7 @@ COMMAND STAFF
 	return ..()
 
 /datum/skills/CMO
-	name = "CMO"
+	name = "Chief Medical Officer"
 	skills = list(
 		SKILL_FIREARMS = SKILL_FIREARMS_CIVILIAN,
 		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,
@@ -364,7 +364,7 @@ COMMAND STAFF
 	)
 
 /datum/skills/CMP
-	name = "Chief MP"
+	name = "Chief Military Police"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,

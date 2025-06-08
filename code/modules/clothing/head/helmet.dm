@@ -1098,11 +1098,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP/WO
-	name = "\improper M3 pattern chief MP helmet"
-	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	name = "\improper M3 pattern CMP helmet"
+	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief Military Polices. Useful for letting your men know who is in charge."
 	icon_state = "cmp_helmet"
 	item_state = "cmp_helmet"
-	specialty = "M10 pattern chief MP"
+	specialty = "M10 pattern CMP"
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"

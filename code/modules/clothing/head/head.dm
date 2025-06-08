@@ -650,7 +650,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 
 /obj/item/clothing/head/beret/marine/mp/cmp
-	name = "\improper USCM chief MP beret"
+	name = "\improper USCM CMP beret"
 	desc = "A beret with the USCM Military Police First Lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'

@@ -324,11 +324,11 @@
 	specialty = "M3 pattern warden MP"
 
 /obj/item/clothing/suit/storage/marine/MP/WO
-	name = "\improper M3 pattern chief MP armor"
-	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief MPs. Useful for letting your men know who is in charge."
+	name = "\improper M3 pattern CMP armor"
+	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief Military Polices. Useful for letting your men know who is in charge."
 	icon_state = "warrant_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
-	specialty = "M3 pattern chief MP"
+	specialty = "M3 pattern CMP"
 	black_market_value = 30
 
 /obj/item/clothing/suit/storage/marine/MP/general

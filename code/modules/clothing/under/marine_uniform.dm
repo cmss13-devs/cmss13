@@ -178,14 +178,14 @@
 	specialty = "marine intelligence officer"
 
 /obj/item/clothing/under/marine/officer/warrant
-	name = "\improper chief MP uniform"
-	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
+	name = "\improper CMP uniform"
+	desc = "A uniform typically worn by a Chief Military Police of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
 	icon_state = "WO_jumpsuit"
 	item_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 	flags_jumpsuit = FALSE
-	specialty = "chief MP"
+	specialty = "Chief Military Police"
 
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"

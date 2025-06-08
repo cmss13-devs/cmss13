@@ -537,7 +537,7 @@
 	misc_tracking = TRUE
 
 	inbuilt_tracking_options = list(
-		"Chief MP" = TRACKER_CMP,
+		"Chief Military Police" = TRACKER_CMP,
 		"Military Warden" = TRACKER_WARDEN,
 	)
 
@@ -554,12 +554,12 @@
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
-		"Chief MP" = TRACKER_CMP,
+		"Chief Military Police" = TRACKER_CMP,
 		"Military Warden" = TRACKER_WARDEN,
 	)
 
 /obj/item/device/radio/headset/almayer/mwcom
-	name = "marine Military Warden radio headset"
+	name = "marine military warden radio headset"
 	desc = "It seems oddly similar to the CMPs'... Smells like donuts too. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
@@ -571,11 +571,11 @@
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
-		"Chief MP" = TRACKER_CMP,
+		"Chief Military Police" = TRACKER_CMP,
 	)
 
 /obj/item/device/radio/headset/almayer/cmpcom
-	name = "marine chief MP radio headset"
+	name = "marine chief military police radio headset"
 	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
@@ -709,7 +709,7 @@
 	inbuilt_tracking_options = list(
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
-		"Chief MP" = TRACKER_CMP
+		"Chief Military Police" = TRACKER_CMP
 	)
 
 /obj/item/device/radio/headset/almayer/mcom/synth

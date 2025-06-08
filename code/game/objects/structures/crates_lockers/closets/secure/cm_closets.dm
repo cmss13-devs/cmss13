@@ -179,7 +179,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 		new /obj/item/storage/backpack/satchel/sec(src)
 
 /obj/structure/closet/secure_closet/warrant_officer
-	name = "chief MP's locker"
+	name = "chief military police's locker"
 	req_access = list(ACCESS_MARINE_ARMORY)
 	icon_state = "secure_locked_warrant"
 	icon_closed = "secure_unlocked_warrant"

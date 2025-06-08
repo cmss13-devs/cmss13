@@ -43048,7 +43048,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 8;
-	name = "\improper Chief MP's Office"
+	name = "\improper CMP's Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -67317,7 +67317,7 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "vzj" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
-	name = "\improper Chief MP's Bedroom"
+	name = "\improper CMP's Bedroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/chief_mp_office)
@@ -69705,7 +69705,7 @@
 /obj/item/tool/stamp/hos{
 	pixel_y = 7;
 	pixel_x = -8;
-	name = "Chief MP's rubber stamp"
+	name = "CMP's rubber stamp"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)

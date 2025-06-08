@@ -19,7 +19,7 @@
 		icon_state = "door_electronics_smoked"
 
 /obj/item/circuitboard/airlock/attack_self(mob/user as mob)
-	if (!ishuman(user) && !istype(user,/mob/living/silicon/robot))
+	if (!ishuman(user))
 		return ..(user)
 
 	var/mob/living/carbon/human/H = user

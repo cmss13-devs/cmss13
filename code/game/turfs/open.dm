@@ -535,6 +535,48 @@
 			if("gbcorner")
 				GLOB.turf_edgeinfo_cache["gbcorner"] = GLOB.edgeinfo_corner
 
+/turf/open/gm/grass/grassmud
+	icon_state = "grassmud_edge"
+
+/turf/open/gm/grass/grassmud/north
+
+/turf/open/gm/grass/grassmud/south
+	dir = 1
+
+/turf/open/gm/grass/grassmud/west
+	dir = 4
+
+/turf/open/gm/grass/grassmud/east
+	dir = 8
+
+/turf/open/gm/grass/grassmud/corner
+	icon_state = "grassmud_corner"
+
+/turf/open/gm/grass/grassmud/corner/north_west
+
+/turf/open/gm/grass/grassmud/corner/south_east
+	dir = 1
+
+/turf/open/gm/grass/grassmud/corner/south_west
+	dir = 4
+
+/turf/open/gm/grass/grassmud/corner/north_east
+	dir = 8
+
+/turf/open/gm/grass/grassmud/corner2
+	icon_state = "grassmud_corner2"
+
+/turf/open/gm/grass/grassmud/corner2/north_west
+
+/turf/open/gm/grass/grassmud/corner2/south_east
+	dir = 1
+
+/turf/open/gm/grass/grassmud/corner2/south_west
+	dir = 4
+
+/turf/open/gm/grass/grassmud/corner2/north_east
+	dir = 8
+
 /turf/open/gm/dirt2
 	name = "dirt"
 	icon_state = "dirt"
@@ -852,6 +894,48 @@
 	dir = 4
 
 /turf/open/gm/coast/beachcorner2/south_east
+	dir = 8
+
+/turf/open/gm/mudcoast
+	icon_state = "mudbeach_edge"
+
+/turf/open/gm/mudcoast/north
+
+/turf/open/gm/mudcoast/south
+	dir = 1
+
+/turf/open/gm/mudcoast/west
+	dir = 4
+
+/turf/open/gm/mudcoast/east
+	dir = 8
+
+/turf/open/gm/mudcoast/corner
+	icon_state = "mudbeach_corner"
+
+/turf/open/gm/mudcoast/corner/north_west
+
+/turf/open/gm/mudcoast/corner/south_east
+	dir = 1
+
+/turf/open/gm/mudcoast/corner/south_west
+	dir = 4
+
+/turf/open/gm/mudcoast/corner/north_east
+	dir = 8
+
+/turf/open/gm/mudcoast/corner2
+	icon_state = "mudbeach_corner2"
+
+/turf/open/gm/mudcoast/corner2/north_west
+
+/turf/open/gm/mudcoast/corner2/south_east
+	dir = 1
+
+/turf/open/gm/mudcoast/corner2/south_west
+	dir = 4
+
+/turf/open/gm/mudcoast/corner2/north_east
 	dir = 8
 
 /turf/open/gm/riverdeep

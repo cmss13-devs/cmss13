@@ -201,13 +201,13 @@
 		PF.flags_pass = PASS_UNDER
 
 /mob/living/simple_animal/chick/Life(delta_time)
-	. =..()
+	. = ..()
 	if(!.)
 		return
-	if(!stat)
+	if(stat == CONSCIOUS)
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
-			new /mob/living/simple_animal/chicken(src.loc)
+			new /mob/living/simple_animal/chicken(loc)
 			qdel(src)
 
 GLOBAL_VAR_INIT(MAX_CHICKENS, 50)
@@ -274,10 +274,10 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 		..()
 
 /mob/living/simple_animal/chicken/Life(delta_time)
-	. =..()
+	. = ..()
 	if(!.)
 		return
-	if(!stat && prob(3) && eggsleft > 0)
+	if(stat == CONSCIOUS && prob(3) && eggsleft > 0)
 		visible_message("[src] [pick("lays an egg.","squats down and croons.","begins making a huge racket.","begins clucking raucously.")]")
 		eggsleft--
 		var/obj/item/reagent_container/food/snacks/egg/E = new(get_turf(src))

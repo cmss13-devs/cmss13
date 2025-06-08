@@ -231,8 +231,6 @@
 	var/last_use = 0
 	/// 15 mins of usable cryostasis
 	var/max_uses = 1800
-	/// The triage card color of whichever patient is contained within
-	var/holo_card_color
 
 /obj/structure/closet/bodybag/cryobag/Initialize(mapload, obj/item/bodybag/cryobag/CB)
 	. = ..()
@@ -260,58 +258,63 @@
 /obj/structure/closet/bodybag/cryobag/update_icon()
 	. = ..()
 	// Bump up a living player in the bag to layer of an actual corpse and not just an accidentally coverable prop
-	if(stasis_mob)
-		layer = LYING_BETWEEN_MOB_LAYER
-	else
+
+	overlays.Cut()	// makes sure any previous triage cards are removed
+
+	if(!stasis_mob)
 		layer = initial(layer)
+		return
 
-	update_stasis_holo_card()
+	layer = LYING_BETWEEN_MOB_LAYER
 
-/obj/structure/closet/bodybag/cryobag/proc/update_stasis_holo_card()
-	if(stasis_mob && stasis_mob.holo_card_color)
-		holo_card_color = stasis_mob.holo_card_color
-		var/image/holo_card_icon = image('icons/obj/bodybag.dmi', src, "cryocard_[holo_card_color]")
-		if(holo_card_color) // makes sure an icon was actually located
-			overlays.Cut()	// makes sure any previous triage cards are removed
-			overlays |= holo_card_icon
-	else
-		holo_card_color = null
-		overlays.Cut()
+	if(stasis_mob.holo_card_color)
+		var/image/holo_card_icon = image('icons/obj/bodybag.dmi', src, "cryocard_[stasis_mob.holo_card_color]")
+
+		if(!holo_card_icon) // makes sure an icon was actually located
+			return
+
+		overlays |= holo_card_icon
 
 /obj/structure/closet/bodybag/cryobag/open()
-	var/mob/living/L = locate() in contents
-	if(L)
-		L.in_stasis = FALSE
-		stasis_mob = null
-		STOP_PROCESSING(SSobj, src)
 	. = ..()
+	if(locate(stasis_mob) in contents)
+		stasis_mob.in_stasis = FALSE
+		UnregisterSignal(stasis_mob, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
+	stasis_mob = null
+	STOP_PROCESSING(SSobj, src)
 	if(used > max_uses)
 		new /obj/item/trash/used_stasis_bag(loc)
 		qdel(src)
 
-/obj/structure/closet/bodybag/cryobag/store_mobs(stored_units) // overriding this
+/obj/structure/closet/bodybag/cryobag/store_mobs(stored_units)
+	. = ..()
 	var/list/mobs_can_store = list()
-	for(var/mob/living/carbon/human/H in loc)
-		if(H.buckled)
+	for(var/mob/living/carbon/human/human in loc)
+		if(human.buckled || (human.stat == DEAD))
 			continue
-		if(H.stat == DEAD) // dead, nope
-			continue
-		mobs_can_store += H
+		mobs_can_store += human
 	var/mob/living/carbon/human/mob_to_store
-	if(length(mobs_can_store))
-		mob_to_store = pick(mobs_can_store)
+	if(length(mobs_can_store) > 1)
+		to_chat(usr, SPAN_WARNING("The [name] is too full to close properly!"))
+		return
+	if(length(mobs_can_store) == 1)
+		var/mob/living/carbon/human/mob_to_store = listgetindex(mobs_can_store, 1)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size
+	else
+		to_chat(usr, SPAN_WARNING("The [name] is too full to close properly!"))
 	return stored_units
 
 /obj/structure/closet/bodybag/cryobag/close()
 	. = ..()
 	last_use = used + 1
-	var/mob/living/carbon/human/H = locate() in contents
-	if(H)
-		stasis_mob = H
+	for(var/mob/living/carbon/human/human in contents)
+		stasis_mob = human
+		// Uses RegisterSignal with an override, just in case the human escaped the last bag without calling open() somehow
+		RegisterSignal(human, COMSIG_HUMAN_TRIAGE_CARD_UPDATED, PROC_REF(update_icon), TRUE)
 		START_PROCESSING(SSobj, src)
 		update_icon()
+		return
 
 /obj/structure/closet/bodybag/cryobag/process()
 	used++

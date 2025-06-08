@@ -785,10 +785,7 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 /mob/living/carbon/human/hud_set_holocard()
 	var/image/holder = hud_list[HOLOCARD_HUD]
 	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
-
-	if(in_stasis && istype(loc, /obj/structure/closet/bodybag/cryobag))
-		var/obj/structure/closet/bodybag/cryobag/stasis_bag = loc
-		stasis_bag.update_stasis_holo_card()
+	SEND_SIGNAL(holder, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
 
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()

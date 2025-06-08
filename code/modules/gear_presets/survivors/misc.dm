@@ -274,7 +274,7 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/chef/classic/stain(new_human), WEAR_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(new_human), WEAR_HANDS)
-			new_human.equip_to_slot_or_del(new /obj/item/tool/kitchen/knife/butcher/sharp(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/kitchen/knife/butcher(new_human), WEAR_IN_BACK)
 		if(6) // Ripley outfit from Aliens
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
@@ -394,7 +394,7 @@ Everything below isn't used or out of place.
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/grown/wheat(new_human), WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/grown/wheat(new_human), WEAR_IN_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/grown/wheat(new_human), WEAR_IN_R_STORE)
-			new_human.equip_to_slot_or_del(new /obj/item/tool/scythe/deadly(new_human.back), WEAR_R_HAND)
+			new_human.equip_to_slot_or_del(new /obj/item/tool/scythe(new_human.back), WEAR_R_HAND)
 		if(17) // Fisherman
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator/silver, WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)

@@ -234,12 +234,6 @@
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-/obj/item/tool/kitchen/knife/butcher/sharp
-	name = "sharp butcher's cleaver"
-	force = MELEE_FORCE_STRONG
-	throwforce = MELEE_FORCE_STRONG
-	sharp = IS_SHARP_ITEM_ACCURATE
-
 /*
  * Rolling Pins
  */
